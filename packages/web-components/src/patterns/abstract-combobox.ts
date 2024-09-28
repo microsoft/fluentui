@@ -49,7 +49,10 @@ export abstract class AbstractCombobox extends FASTElement {
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
-  protected anchorId = uniqueId('fluent-anchor-');
+  protected disconnectedAbortController = new AbortController();
+  protected listboxDisconnectedAbortController = new AbortController();
+
+  protected anchorId = uniqueId('anchor-');
   protected anchorPositioningStyleSheet?: CSSStyleSheet;
   protected anchorPositioningStyleElement?: HTMLStyleElement;
 
@@ -79,13 +82,6 @@ export abstract class AbstractCombobox extends FASTElement {
 
     this.setAttribute('aria-activedescendant', next ? next.id : '');
   }
-
-  private clickListener?: (event: PointerEvent | MouseEvent) => void;
-  private keydownListener?: (event: KeyboardEvent) => void;
-  // @ts-expect-error Popover API
-  private listboxToggleListener?: (event: ToggleEvent) => void;
-  private listboxInputListener?: (event: Event) => void;
-  private listboxKeydownListener?: (event: KeyboardEvent) => void;
 
   private inputForValidationMessage = document.createElement('input');
 
@@ -153,12 +149,9 @@ export abstract class AbstractCombobox extends FASTElement {
   public list?: string;
   protected listChanged(prev: string | undefined) {
     if (prev) {
-      const prevListElement = this.getListElementById(prev);
-      if (prevListElement) {
-        this.unbindListboxEvents(prevListElement);
-      }
+      this.listboxDisconnectedAbortController.abort();
+      this.listboxDisconnectedAbortController = new AbortController();
     }
-
     if (this.listElement) {
       this.connectListbox();
     }
@@ -390,8 +383,8 @@ export abstract class AbstractCombobox extends FASTElement {
   disconnectedCallback() {
     super.disconnectedCallback();
 
-    this.unbindEvents();
-    this.unbindListboxEvents();
+    this.disconnectedAbortController.abort();
+    this.listboxDisconnectedAbortController.abort();
   }
 
   /**
@@ -488,56 +481,16 @@ export abstract class AbstractCombobox extends FASTElement {
   }
 
   protected bindEvents() {
-    this.clickListener = this.handleClick.bind(this);
-    this.addEventListener('click', this.clickListener);
-
-    this.keydownListener = this.handleKeydown.bind(this);
-    this.addEventListener('keydown', this.keydownListener);
-  }
-
-  protected unbindEvents() {
-    if (this.clickListener) {
-      this.removeEventListener('click', this.clickListener);
-    }
-
-    if (this.keydownListener) {
-      this.removeEventListener('keydown', this.keydownListener);
-    }
+    const {signal} = this.disconnectedAbortController;
+    this.addEventListener('click', evt => this.handleClick(evt), { signal });
+    this.addEventListener('keydown', evt => this.handleKeydown(evt), { signal });
   }
 
   protected bindListboxEvents() {
-    if (!this.listElement) {
-      return;
-    }
-
-    this.listboxToggleListener = this.handleListboxToggle.bind(this);
-    this.listElement.addEventListener('toggle', this.listboxToggleListener);
-
-    this.listboxInputListener = this.handleListboxInput.bind(this);
-    this.listElement.addEventListener('input', this.listboxInputListener);
-
-    this.listboxKeydownListener = this.handleListboxKeydown.bind(this);
-    this.listElement.addEventListener('keydown', this.listboxKeydownListener);
-  }
-
-  protected unbindListboxEvents(el?: AbstractListbox) {
-    const target = el ?? this.listElement;
-
-    if (!target) {
-      return;
-    }
-
-    if (this.listboxToggleListener) {
-      target.removeEventListener('toggle', this.listboxToggleListener);
-    }
-
-    if (this.listboxInputListener) {
-      target.removeEventListener('input', this.listboxInputListener);
-    }
-
-    if (this.listboxKeydownListener) {
-      target.removeEventListener('keydown', this.listboxKeydownListener);
-    }
+    const {signal} = this.listboxDisconnectedAbortController;
+    this.listElement?.addEventListener('toggle', evt => this.handleListboxToggle(evt), { signal });
+    this.listElement?.addEventListener('input', evt => this.handleListboxInput(evt), { signal });
+    this.listElement?.addEventListener('keydown', evt => this.handleListboxKeydown(evt), { signal });
   }
 
   /**
@@ -590,8 +543,6 @@ export abstract class AbstractCombobox extends FASTElement {
     if (SUPPORTS_ANCHOR_POSITIONING) {
       if (!this.anchorPositioningStyleSheet) {
         this.anchorPositioningStyleSheet = new CSSStyleSheet();
-      }
-      if (!document.adoptedStyleSheets.includes(this.anchorPositioningStyleSheet)) {
         document.adoptedStyleSheets.push(this.anchorPositioningStyleSheet);
       }
       this.anchorPositioningStyleSheet.replaceSync(css);
