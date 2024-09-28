@@ -267,6 +267,8 @@ export abstract class AbstractCombobox extends FASTElement {
   public set selectedIndex(index: number) {
     if (Number.isInteger(index) && index >= 0 && index < this.options.length) {
       this.value = this.options[index].value;
+    } else {
+      this.value = '';
     }
   }
 
@@ -314,6 +316,13 @@ export abstract class AbstractCombobox extends FASTElement {
       return;
     }
 
+    if (!next) {
+      for (const option of this.options) {
+        option.selected = false;
+      }
+      return;
+    }
+
     const option = this.options.find(option => option.value === next);
     if (option && !option.disabled && !option.selected) {
       const originalMultiple = this.multiple;
@@ -343,6 +352,7 @@ export abstract class AbstractCombobox extends FASTElement {
    */
   public get validationMessage(): string {
     this.inputForValidationMessage.required = this.required;
+    this.inputForValidationMessage.disabled = this.disabled;
     return this.elementInternals.validationMessage || this.inputForValidationMessage.validationMessage;
   }
 

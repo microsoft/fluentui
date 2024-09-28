@@ -160,11 +160,13 @@ test.describe('Dropdown', () => {
         </fluent-dropdown-list>
       `);
 
+      const listElement = await list.evaluateHandle(node => node);
+
       await expect(dropdown).toHaveJSProperty('list', 'list');
       await expect(dropdown).toHaveJSProperty('length', 3);
       await expect(dropdown).toHaveJSProperty('options.length', 3);
       await expect(dropdown).toHaveAttribute('aria-controls', 'list');
-      await expect(dropdown).toHaveJSProperty('listElement.id', 'list');
+      await expect(dropdown).toHaveJSProperty('listElement', listElement);
       await expect(list).toHaveJSProperty('popover', 'auto');
     });
 
@@ -291,6 +293,13 @@ test.describe('Dropdown', () => {
       await expect(options.nth(1)).toHaveJSProperty('selected', false);
       await expect(options.nth(2)).toHaveJSProperty('selected', true);
       await expect(dropdown).toHaveJSProperty('selectedOptions.length', 1);
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.value = '';
+      });
+
+      await expect(options.nth(2)).toHaveJSProperty('selected', false);
+      await expect(dropdown).toHaveJSProperty('selectedOptions.length', 0);
     });
 
     test('should return the first selected option’s value with `value`', async ({ page }) => {
@@ -335,6 +344,13 @@ test.describe('Dropdown', () => {
       await expect(options.nth(1)).toHaveJSProperty('selected', false);
       await expect(options.nth(2)).toHaveJSProperty('selected', true);
       await expect(dropdown).toHaveJSProperty('selectedOptions.length', 1);
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.selectedIndex = -1;
+      });
+
+      await expect(options.nth(2)).toHaveJSProperty('selected', false);
+      await expect(dropdown).toHaveJSProperty('selectedOptions.length', 0);
     });
 
     test('should return the first selected option’s index with `selectedIndex`', async ({ page }) => {
@@ -379,14 +395,128 @@ test.describe('Dropdown', () => {
   });
 
   test.describe('form associated', () => {
-    test.skip('should return label elements', async ({ page }) => {});
-    test.skip('should connect to the given `<form>` element', async ({ page }) => {});
-    test.skip('should be disabled when the parent `<fieldset>` is disabled', async ({ page }) => {});
-    test.describe('form reset', () => {
+    test('should return label elements', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+      const labels = page.locator('label');
+
+      await page.setContent(/* html */ `
+        <label for="dropdown">Dropdown</label>
+        <fluent-dropdown id="dropdown"></fluent-dropdown>
+        <label for="dropdown">Dropdown</label>
+      `);
+
+      const label1Element = await labels.nth(0).evaluate(node => node);
+      const label2Element = await labels.nth(0).evaluate(node => node);
+      const labelsValue = await dropdown.evaluate((el: Dropdown) => Array.from(el.labels));
+
+      expect(labelsValue).toStrictEqual([label1Element, label2Element]);
+
+      await expect(dropdown).not.toBeFocused();
+
+      await labels.nth(1).click();
+
+      await expect(dropdown).toBeFocused();
     });
 
-    // .validity
-    // .validationMessage
+    test('should connect to the given `<form>` element', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+
+      await page.setContent(/* html */ `
+        <form id="form1">
+          <fluent-dropdown></fluent-dropdown>
+        </form>
+        <form id="form2"></form>
+      `);
+
+      await expect(dropdown).toHaveJSProperty('form.id', 'form1');
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.setAttribute('form', 'form2');
+      });
+
+      await expect(dropdown).toHaveJSProperty('form.id', 'form2');
+    });
+  });
+
+  test.describe('validity and validation message', () => {
+    test('should set `valueMissing` flag if required and no option is selected', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown required list="list"></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one">One</fluent-option>
+          <fluent-option value="two">Two</fluent-option>
+          <fluent-option value="three">Three</fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      await expect(dropdown).toHaveJSProperty('validity.valid', false);
+      await expect(dropdown).toHaveJSProperty('validity.valueMissing', true);
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.selectedIndex = 1;
+      });
+
+      await expect(dropdown).toHaveJSProperty('validity.valid', true);
+      await expect(dropdown).toHaveJSProperty('validity.valueMissing', false);
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.selectedIndex = -1;
+        node.required = false;
+      });
+
+      await expect(dropdown).toHaveJSProperty('validity.valid', true);
+      await expect(dropdown).toHaveJSProperty('validity.valueMissing', false);
+    });
+
+    test('should always be valid if disabled', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown disabled required list="list"></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one">One</fluent-option>
+          <fluent-option value="two">Two</fluent-option>
+          <fluent-option value="three">Three</fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      await expect(dropdown).toHaveJSProperty('validity.valid', true);
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.disabled = false;
+      });
+
+      await expect(dropdown).toHaveJSProperty('validity.valid', false);
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.disabled = true;
+      });
+
+      await expect(dropdown).toHaveJSProperty('validity.valid', true);
+    });
+
+    test('should set the correct validation messages', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown disabled required list="list"></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one">One</fluent-option>
+          <fluent-option value="two">Two</fluent-option>
+          <fluent-option value="three">Three</fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      await expect(dropdown).toHaveJSProperty('validationMessage', '');
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.disabled = false;
+      });
+
+      await expect(dropdown).toHaveJSProperty('validationMessage', 'Please fill out this field.');
+    });
   });
 
   test.describe('pointer interactions', () => {});
