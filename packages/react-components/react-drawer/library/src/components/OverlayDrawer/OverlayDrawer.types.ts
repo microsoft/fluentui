@@ -14,8 +14,15 @@ export type OverlayDrawerSlots = {
    * Slot for the root element.
    */
   root: Slot<OverlayDrawerSurfaceProps>;
-
+  /**
+   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
+   *
+   */
   backdropMotion?: Slot<PresenceMotionSlotProps<OverlayDrawerSurfaceMotionParams>>;
+  /**
+   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
+   *
+   */
   surfaceMotion?: Slot<PresenceMotionSlotProps<DrawerMotionParams>>;
 };
 
