@@ -1,9 +1,11 @@
+import { FileIconType } from './FileIconType';
+
 /**
  * Enumeration of icon file names, and what extensions they map to.
  * Please keep items alphabetical. Items without extensions may require specific logic in the code to map.
  * Always use getFileTypeIconProps to get the most up-to-date icon at the right pixel density.
  */
-export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
+export const FileTypeIconMap: { [key: string]: { extensions?: string[], types?: FileIconType[] } } = {
   accdb: {
     extensions: ['accdb', 'mdb'],
   },
@@ -268,9 +270,15 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   designer: {
     extensions: ['design'],
   },
-  desktopfolder: {},
-  docset: {},
-  documentsfolder: {},
+  desktopfolder: {
+    types: [FileIconType.desktopFolder]
+  },
+  docset: { 
+    types: [FileIconType.docset] 
+  },
+  documentsfolder: { 
+    types: [FileIconType.documentsFolder] 
+  },
   docx: {
     extensions: ['doc', 'docm', 'docx', 'docb'],
   },
@@ -283,13 +291,18 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   exe: {
     extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'],
   },
-  favoritesfolder: {},
-  folder: {},
+  folder: {
+    types: [FileIconType.folder]
+  },
   font: {
     extensions: ['ttf', 'otf', 'woff'],
   },
-  form: {},
-  genericfile: {},
+  form: {
+    types: [FileIconType.form]
+  },
+  genericfile: {
+    types: [FileIconType.genericFile]
+  },
   html: {
     extensions: ['htm', 'html', 'mht', 'mhtml'],
   },
@@ -299,16 +312,24 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   link: {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
   },
-  linkedfolder: {},
-  listitem: {},
+  linkedfolder: {
+    types: [FileIconType.linkedFolder]
+  },
+  listitem: { 
+    types: [FileIconType.listItem] 
+  },
   loop: {
     extensions: ['fluid', 'loop', 'note'],
   },
-  loopworkspace: {},
+  loopworkspace: {
+    types: [FileIconType.loopworkspace]
+  },
   officescript: {
     extensions: ['osts'],
   },
-  splist: {},
+  splist: {
+    types: [FileIconType.list]
+  },
   mcworld: {
     extensions: ['mcworld'],
   },
@@ -351,7 +372,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   mpt: {
     extensions: ['mpt'],
   },
-  multiple: {},
+  multiple: {
+    types: [FileIconType.multiple]
+  },
   one: {
     // This is a partial OneNote page or section export. Not whole notebooks, see "onetoc"
     extensions: ['one'],
@@ -408,9 +431,15 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ],
   },
   photo360: {},
-  picturesfolder: {},
-  planner: {},
-  portfolio: {},
+  picturesfolder: {
+    types: [FileIconType.picturesFolder]
+  },
+  planner: {
+    types: [FileIconType.planner]
+  },
+  portfolio: {
+    types: [FileIconType.portfolio]
+  },
   potx: {
     extensions: ['pot', 'potm', 'potx'],
   },
@@ -432,16 +461,24 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   spo: {
     extensions: ['aspx'],
   },
-  sponews: {},
+  sponews: {
+    types: [FileIconType.news]
+  },
   spreadsheet: {
     extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],
   },
   rtf: {
     extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
   },
-  sharedfolder: {},
-  playlist: {},
-  sway: {},
+  sharedfolder: { 
+    types: [FileIconType.sharedFolder]
+  },
+  playlist: {
+    types: [FileIconType.playlist]
+  },
+  sway: {
+    types: [FileIconType.sway]
+  },
   sysfile: {
     extensions: [
       'bak',
@@ -475,7 +512,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'xll',
     ],
   },
-  todoitem: {},
+  todoitem: {
+    types: [FileIconType.todoItem]
+  },
   txt: {
     extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'],
   },
@@ -508,6 +547,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ],
   },
   video: {
+    types: [FileIconType.stream],
     extensions: [
       '3g2',
       '3gp',
