@@ -1,7 +1,5 @@
 import { type Page, test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
-import type { DropdownList } from '../dropdown-list/dropdown-list.js';
-import { DropdownAppearance, DropdownSize } from './dropdown.options.js';
 import type { Dropdown } from './dropdown.js';
 
 /**
@@ -799,5 +797,38 @@ test.describe('Dropdown', () => {
     ]);
 
     expect(wasChanged).toBe(true);
+  });
+
+  test.describe('Anchor Positioning', () => {
+    test('should have anchor name that’s associated with its list', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+      const list = page.locator('fluent-dropdown-list');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list" placeholder="Select…"></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one">One</fluent-option>
+          <fluent-option value="two">Two</fluent-option>
+          <fluent-option value="three">Three</fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      await expect(dropdown).toHaveAttribute('data-anchorid');
+      const anchorId = await dropdown.getAttribute('data-anchorid');
+      const anchorName = `--${anchorId}`;
+
+      await expect(dropdown).toHaveCSS('anchor-name', anchorName);
+
+      await dropdown.click();
+      await list.waitFor({ state: 'visible' });
+
+      const dropdownBoundingBox = await dropdown.boundingBox();
+      const listBoundingBox = await list.boundingBox();
+      const expectedListX = dropdownBoundingBox?.x ?? 0;
+      const expectedListY = (dropdownBoundingBox?.y ?? 0) + (dropdownBoundingBox?.height ?? 0);
+
+      expect(expectedListX).toEqual(listBoundingBox?.x);
+      expect(expectedListY).toEqual(listBoundingBox?.y);
+    });
   });
 });
