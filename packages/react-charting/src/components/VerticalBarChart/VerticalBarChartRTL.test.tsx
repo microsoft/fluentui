@@ -277,9 +277,7 @@ const simpleDatePoints = [
   },
 ];
 
-const secondaryYScalePoints = [
-  { yMaxValue: 50000, yMinValue: 10000 }
-];
+const secondaryYScalePoints = [{ yMaxValue: 50000, yMinValue: 10000 }];
 
 describe('Vertical bar chart rendering', () => {
   beforeEach(sharedBeforeEach);
@@ -387,15 +385,12 @@ describe('Vertical bar chart rendering', () => {
   testWithoutWait(
     'Should render the vertical bar chart with secondary Y axis',
     VerticalBarChart,
-    { data: chartPointsVBC,
-      secondaryYScaleOptions: secondaryYScalePoints,
-     },
+    { data: chartPointsVBC, secondaryYScaleOptions: secondaryYScalePoints },
     container => {
       // Assert
       expect(getById(container, /yAxisGElementSecondarychart_/i)).toBeDefined();
     },
   );
-
 });
 
 describe('Vertical bar chart - Subcomponent bar', () => {

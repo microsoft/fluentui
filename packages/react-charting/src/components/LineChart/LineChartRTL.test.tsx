@@ -210,9 +210,7 @@ const chartPointsWithGaps = {
   lineChartData: pointsWithGaps,
 };
 
-const secondaryYScalePoints = [
-  { yMaxValue: 50000, yMinValue: 10000 }
-];
+const secondaryYScalePoints = [{ yMaxValue: 50000, yMinValue: 10000 }];
 
 describe('Line chart rendering', () => {
   beforeEach(updateChartWidthAndHeight);
@@ -278,15 +276,12 @@ describe('Line chart rendering', () => {
   testWithoutWait(
     'Should render the line chart with secondary Y axis',
     LineChart,
-    { data: basicChartPoints,
-      secondaryYScaleOptions: secondaryYScalePoints,
-     },
+    { data: basicChartPoints, secondaryYScaleOptions: secondaryYScalePoints },
     container => {
       // Assert
       expect(getById(container, /yAxisGElementSecondarychart_/i)).toBeDefined();
     },
   );
-
 });
 
 const simplePoints = {

@@ -283,9 +283,7 @@ const chartDataWithDates = {
   pointLineOptions: { strokeWidth: 2, strokeDasharray: '10 10', stroke: DefaultPalette.blueDark },
 };
 
-const secondaryYScalePoints = [
-  { yMaxValue: 50000, yMinValue: 10000 }
-];
+const secondaryYScalePoints = [{ yMaxValue: 50000, yMinValue: 10000 }];
 
 describe('Area chart rendering', () => {
   beforeEach(updateChartWidthAndHeight);
@@ -345,15 +343,12 @@ describe('Area chart rendering', () => {
   testWithoutWait(
     'Should render the Area chart with secondary Y axis',
     AreaChart,
-    { data: chartData,
-      secondaryYScaleOptions: secondaryYScalePoints,
-     },
+    { data: chartData, secondaryYScaleOptions: secondaryYScalePoints },
     container => {
       // Assert
       expect(getById(container, /yAxisGElementSecondarychart_/i)).toBeDefined();
     },
   );
-
 });
 
 describe('Area chart - Subcomponent Area', () => {
