@@ -556,6 +556,7 @@ export abstract class AbstractCombobox extends FASTElement {
         document.head.append(this.anchorPositioningStyleElement);
       }
       this.anchorPositioningStyleElement.textContent = css;
+      document.dispatchEvent(new CustomEvent('anchor-polyfill'));
     }
   }
 
