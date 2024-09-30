@@ -1,40 +1,6 @@
-import { type Page, test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL, setDropdownPageContent } from '../helpers.tests.js';
 import type { Dropdown } from './dropdown.js';
-
-/**
- * Helper function to fix `Page#setContent()`. Because `setContent()` uses
- * `document.write()` internally, when the `<fluent-dropdown-list>` element
- * is written into the document, it may not have been connected, hence the
- * `<fluent-dropdown>` element wouldn’t be able to find the DropdownList
- * element based on the IDREF in the Dropdown’s `list` attribute.
- */
-async function setPageContent(page: Page, content: string) {
-  const dropdownLocator = page.locator('fluent-dropdown');
-  const dropdownListLocator = page.locator('fluent-dropdown-list');
-  await page.setContent(content);
-
-  // Reassign value for Dropdown.list
-  await dropdownLocator.evaluate((node: Dropdown) => {
-    if (!node.list) {
-      return;
-    }
-    const listId = node.list;
-    node.list = '';
-    node.list = listId;
-  });
-
-  // Reassign Options to Listbox
-  await dropdownListLocator.evaluate(node => {
-    const options = node.querySelectorAll('fluent-option');
-    if (!options.length) {
-      return;
-    }
-
-    const clonedOptions = Array.from(options).map(option => option.cloneNode(true));
-    node.replaceChildren(...clonedOptions);
-  });
-}
 
 test.describe('Dropdown', () => {
   test.beforeEach(async ({ page }) => {
@@ -148,7 +114,7 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const list = page.locator('fluent-dropdown-list');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
@@ -175,7 +141,7 @@ test.describe('Dropdown', () => {
       const list = page.locator('fluent-dropdown-list');
       const option = page.locator('fluent-option');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list" multiple></fluent-dropdown>
@@ -202,7 +168,7 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const options = page.locator('fluent-option');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list" name="foo"></fluent-dropdown>
@@ -231,7 +197,7 @@ test.describe('Dropdown', () => {
     test('should return the first selected option with `selectedOptions` in single select', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
@@ -254,7 +220,7 @@ test.describe('Dropdown', () => {
     test('should return the all selected options with `selectedOptions` in multiple select', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list" multiple></fluent-dropdown>
@@ -278,7 +244,7 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const options = page.locator('fluent-option');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
@@ -320,7 +286,7 @@ test.describe('Dropdown', () => {
     test('should return the first selected option’s value with `value`', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list" multiple></fluent-dropdown>
@@ -339,7 +305,7 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const options = page.locator('fluent-option');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
@@ -377,7 +343,7 @@ test.describe('Dropdown', () => {
     test('should return the first selected option’s index with `selectedIndex`', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list" multiple></fluent-dropdown>
@@ -396,7 +362,7 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const list = page.locator('fluent-dropdown-list');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
@@ -469,7 +435,7 @@ test.describe('Dropdown', () => {
     test('should set `valueMissing` flag if required and no option is selected', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown required list="list"></fluent-dropdown>
@@ -503,7 +469,7 @@ test.describe('Dropdown', () => {
     test('should always be valid if disabled', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown disabled required list="list"></fluent-dropdown>
@@ -533,7 +499,7 @@ test.describe('Dropdown', () => {
     test('should set the correct validation messages', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown disabled required list="list"></fluent-dropdown>
@@ -562,7 +528,7 @@ test.describe('Dropdown', () => {
       const list = page.locator('fluent-dropdown-list');
       const options = page.locator('fluent-option');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
@@ -593,7 +559,7 @@ test.describe('Dropdown', () => {
       const options = page.locator('fluent-option');
       const outsideButton = page.locator('button');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <button>outside</button>
@@ -633,7 +599,7 @@ test.describe('Dropdown', () => {
       const list = page.locator('fluent-dropdown-list');
       const options = page.locator('fluent-option');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
@@ -682,7 +648,7 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const list = page.locator('fluent-dropdown-list');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
@@ -709,7 +675,7 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const options = page.locator('fluent-option');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
@@ -754,7 +720,7 @@ test.describe('Dropdown', () => {
     test('should skip disabled options while navigating', async ({ page }) => {
       const options = page.locator('fluent-option');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
@@ -779,7 +745,7 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const options = page.locator('fluent-option');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
@@ -816,7 +782,7 @@ test.describe('Dropdown', () => {
   test('should emit `input` event when an opton is selected', async ({ page }) => {
     const dropdown = page.locator('fluent-dropdown');
 
-    await setPageContent(
+    await setDropdownPageContent(
       page,
       /* html */ `
       <fluent-dropdown list="list"></fluent-dropdown>
@@ -843,7 +809,7 @@ test.describe('Dropdown', () => {
   test('should emit `change` event when value is changed', async ({ page }) => {
     const dropdown = page.locator('fluent-dropdown');
 
-    await setPageContent(
+    await setDropdownPageContent(
       page,
       /* html */ `
       <fluent-dropdown list="list"></fluent-dropdown>
@@ -872,7 +838,7 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const list = page.locator('fluent-dropdown-list');
 
-      await setPageContent(
+      await setDropdownPageContent(
         page,
         /* html */ `
         <fluent-dropdown list="list" placeholder="Select…"></fluent-dropdown>

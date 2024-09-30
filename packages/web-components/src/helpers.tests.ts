@@ -1,5 +1,11 @@
 import qs from 'qs';
-import { expect as baseExpect, type ExpectMatcherState, type Locator } from '@playwright/test';
+import {
+  expect as baseExpect,
+  type ExpectMatcherState,
+  type Locator,
+  type Page,
+} from '@playwright/test';
+import type { Dropdown } from './dropdown/dropdown.js';
 
 /**
  * Returns a formatted URL for a given Storybook fixture.
@@ -84,3 +90,41 @@ async function toHaveCustomState(
 export const expect = baseExpect.extend({
   toHaveCustomState,
 });
+
+
+/**
+ * Helper function to fix `Page#setContent()` for Dropdown, DropdownList, and
+ * Option.
+ *
+ * Because `setContent()` uses `document.write()` internally, when the
+ * `<fluent-dropdown-list>` element is written into the document, it may not
+ * have been connected, hence the `<fluent-dropdown>` element wouldn’t be able
+ * to find the DropdownList element based on the IDREF in the Dropdown’s `list`
+ * attribute.
+ */
+export async function setDropdownPageContent(page: Page, content: string) {
+  const dropdownLocator = page.locator('fluent-dropdown');
+  const dropdownListLocator = page.locator('fluent-dropdown-list');
+  await page.setContent(content);
+
+  // Reassign value for Dropdown.list
+  await dropdownLocator.evaluate((node: Dropdown) => {
+    if (!node.list) {
+      return;
+    }
+    const listId = node.list;
+    node.list = '';
+    node.list = listId;
+  });
+
+  // Reassign Options to Listbox
+  await dropdownListLocator.evaluate(node => {
+    const options = node.querySelectorAll('fluent-option');
+    if (!options.length) {
+      return;
+    }
+
+    const clonedOptions = Array.from(options).map(option => option.cloneNode(true));
+    node.replaceChildren(...clonedOptions);
+  });
+}
