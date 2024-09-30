@@ -1,10 +1,17 @@
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { getIntrinsicElementProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  slot,
+  useEventCallback,
+  useIsomorphicLayoutEffect,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import type { CarouselProps, CarouselState } from './Carousel.types';
 import type { CarouselContextValue } from '../CarouselContext.types';
 import { useEmblaCarousel } from '../useEmblaCarousel';
+import { useAnnounce } from '@fluentui/react-shared-contexts';
 
 /**
  * Create the state required to render Carousel.
@@ -25,19 +32,21 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     groupSize = 'auto',
     draggable = false,
     whitespace = false,
+    announcement,
   } = props;
 
   const { dir } = useFluent();
-  const { activeIndex, carouselApi, containerRef, subscribeForValues, enableAutoplay } = useEmblaCarousel({
-    align,
-    direction: dir,
-    loop: circular,
-    slidesToScroll: groupSize,
-    defaultActiveIndex: props.defaultActiveIndex,
-    activeIndex: props.activeIndex,
-    watchDrag: draggable,
-    containScroll: whitespace ? false : 'keepSnaps',
-  });
+  const { activeIndex, carouselApi, containerRef, subscribeForValues, enableAutoplay, resetAutoplay } =
+    useEmblaCarousel({
+      align,
+      direction: dir,
+      loop: circular,
+      slidesToScroll: groupSize,
+      defaultActiveIndex: props.defaultActiveIndex,
+      activeIndex: props.activeIndex,
+      watchDrag: draggable,
+      containScroll: whitespace ? false : 'keepSnaps',
+    });
 
   const selectPageByElement: CarouselContextValue['selectPageByElement'] = useEventCallback((event, element, jump) => {
     const foundIndex = carouselApi.scrollToElement(element, jump);
@@ -61,6 +70,45 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
   const mergedRefs = useMergedRefs(ref, containerRef);
 
+  // Announce carousel updates
+  const announcementTextRef = React.useRef<string>('');
+  const totalNavLength = React.useRef<number>(0);
+  const navGroupRef = React.useRef<number[][]>([]);
+
+  const { announce } = useAnnounce();
+
+  const updateAnnouncement = useEventCallback(() => {
+    if (totalNavLength.current <= 0 || !announcement) {
+      // Ignore announcements until slides discovered
+      return;
+    }
+
+    const announcementText = announcement(activeIndex, totalNavLength.current, navGroupRef.current);
+
+    if (announcementText !== announcementTextRef.current) {
+      announcementTextRef.current = announcementText;
+      announce(announcementText, { polite: true });
+    }
+  });
+
+  useIsomorphicLayoutEffect(() => {
+    // Subscribe to any non-index carousel state changes
+    return subscribeForValues(data => {
+      if (totalNavLength.current <= 0 && data.navItemsCount > 0 && announcement) {
+        const announcementText = announcement(data.activeIndex, data.navItemsCount, data.groupIndexList);
+        // Initialize our string to prevent updateAnnouncement from reading an initial load
+        announcementTextRef.current = announcementText;
+      }
+      totalNavLength.current = data.navItemsCount;
+      navGroupRef.current = data.groupIndexList;
+      updateAnnouncement();
+    });
+  }, [subscribeForValues, updateAnnouncement, announcement]);
+
+  useIsomorphicLayoutEffect(() => {
+    updateAnnouncement();
+  }, [activeIndex, updateAnnouncement]);
+
   return {
     components: {
       root: 'div',
@@ -82,5 +130,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     selectPageByIndex,
     subscribeForValues,
     enableAutoplay,
+    resetAutoplay,
   };
 }

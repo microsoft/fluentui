@@ -2,6 +2,27 @@
   "name": "@fluentui/react-carousel-preview",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2024 14:15:27 GMT",
+      "tag": "@fluentui/react-carousel-preview_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "6c31158068ee0da8fb164582127597ca650518ae",
+            "comment": "feat: Add resetAutoplay feature to reset index change timer"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.92",
+            "commit": "c81b5b5cc9ad3b0e374938d108e44fcb34ec98fe"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Sep 2024 12:40:12 GMT",
       "tag": "@fluentui/react-carousel-preview_v0.5.0",
       "version": "0.5.0",

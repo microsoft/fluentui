@@ -25,11 +25,6 @@ export declare interface FASTComponentsRenderer extends Renderer {
 }
 
 /**
- * Metadata to configure the stories for a component.
- */
-export declare type NewMeta<TArgs = Args> = ComponentAnnotations<FASTComponentsRenderer, StoryArgs<TArgs>>;
-
-/**
  * A helper that returns a function to bind a Storybook story to a ViewTemplate.
  */
 export type FASTFramework = Renderer & {
@@ -40,7 +35,7 @@ export type FASTFramework = Renderer & {
 /**
  * Metadata to configure the stories for a component.
  */
-export type Meta<TArgs = Args> = ComponentAnnotations<FASTFramework, Omit<TArgs, keyof FASTElement>>;
+export declare type Meta<TArgs = Args> = ComponentAnnotations<FASTComponentsRenderer, StoryArgs<TArgs>>;
 
 /**
  * Story object that represents a CSFv3 component example.
@@ -65,3 +60,42 @@ export declare type Story<TArgs = Args> = StoryFn<StoryArgs<TArgs>>;
  * Combined Storybook story args.
  */
 export type StoryArgs<TArgs = Args> = Partial<Omit<TArgs, keyof FASTElement>> & Args;
+
+export function generateImage({
+  width,
+  height = width,
+  backgroundColor = 'rgb(204, 204, 204)',
+  color = 'rgb(150, 150, 150)',
+  text = `${width} x ${height}`,
+}: {
+  width: number;
+  height?: number;
+  backgroundColor?: string;
+  color?: string;
+  text?: string;
+}): string {
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d') as CanvasRenderingContext2D;
+
+  canvas.width = width;
+  canvas.height = height;
+
+  // Clear the canvas.
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  // get the font size to fit the text
+  context.font = '1px sans-serif';
+  const maxFontSize = Math.max(width / context.measureText(text).width / 2, 7);
+
+  // Draw the background
+  context.fillStyle = backgroundColor;
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
+  context.font = `${maxFontSize}px Helvetica, Arial, sans-serif`;
+  context.textAlign = 'center';
+  context.textBaseline = 'middle';
+  context.fillStyle = color;
+  context.fillText(text, canvas.width / 2, canvas.height / 2);
+
+  return canvas.toDataURL('image/png');
+}

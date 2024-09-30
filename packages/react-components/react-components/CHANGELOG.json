@@ -2,6 +2,63 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2024 14:15:26 GMT",
+      "tag": "@fluentui/react-components_v9.54.17",
+      "version": "9.54.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "6d209c7ce179a81c5faa56977995b0fade71693d",
+            "comment": "fix: hovered menubutton icon does not disappear"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "110b34637b082f57ca5c863227e0e3a88b2e3e77",
+            "comment": "fix tabIndex for clear button in Dropdown component"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "c81b5b5cc9ad3b0e374938d108e44fcb34ec98fe",
+            "comment": "fix: reversed animations"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "3a68e589a477f4ae97e825913d8721ed44ecbb7e",
+            "comment": "fix: table selection checkbox or radio should be rendered even if invisible"
+          }
+        ],
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "6c31158068ee0da8fb164582127597ca650518ae",
+            "comment": "feat: Add resetAutoplay feature to reset index change timer"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "6cfb9c80f12449ae53eead80baef0eac1725d80b",
+            "comment": "docs: improve usage docs and fix invalid links to sb docs"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "12d545e2f9eda489784fc1c4869a70fd50a4f5c7",
+            "comment": "BREAKING CHANGE (useVirtualizerDynamicMeasure): optimized with scrollPos state and children height reference, updated algorithm to be more accurate, and exported measurement hook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Sep 2024 12:40:11 GMT",
       "tag": "@fluentui/react-components_v9.54.16",
       "version": "9.54.16",

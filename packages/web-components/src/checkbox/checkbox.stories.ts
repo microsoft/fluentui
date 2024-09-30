@@ -1,7 +1,7 @@
 import { html, repeat } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 import { LabelPosition, ValidationFlags } from '../field/field.options.js';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { Checkbox as FluentCheckbox } from './checkbox.js';
 import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
@@ -87,6 +87,7 @@ export default {
       description: 'Sets the shape of the checkbox',
       control: 'select',
       options: Object.values(CheckboxShape),
+      mapping: { '': null, ...CheckboxShape },
       table: {
         category: 'attributes',
         type: { summary: Object.values(CheckboxShape).join('|') },
@@ -96,6 +97,7 @@ export default {
       description: 'Sets the size of the checkbox',
       control: 'select',
       options: Object.values(CheckboxSize),
+      mapping: { '': null, ...CheckboxSize },
       table: {
         category: 'attributes',
         type: { summary: Object.values(CheckboxSize).join('|') },
@@ -117,6 +119,8 @@ export default {
     messageSlottedContent: { table: { disable: true } },
   },
 } as Meta<FluentCheckbox>;
+
+export const Default: Story = {};
 
 export const Checkbox: Story = {
   render: renderComponent(storyTemplate).bind({}),

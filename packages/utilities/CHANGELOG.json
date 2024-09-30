@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Mon, 30 Sep 2024 07:23:12 GMT",
+      "tag": "@fluentui/utilities_v8.15.16",
+      "version": "8.15.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "1cc4d4845bf0b5946b7c26912820ee00c5ce2b19",
+            "comment": "fix: correctly handle style function in customizer"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2024 07:23:36 GMT",
       "tag": "@fluentui/utilities_v8.15.15",
       "version": "8.15.15",
