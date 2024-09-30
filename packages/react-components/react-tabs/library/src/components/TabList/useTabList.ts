@@ -27,6 +27,7 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
     onTabSelect,
     selectTabOnFocus = false,
     size = 'medium',
+    shape,
     vertical = false,
   } = props;
 
@@ -102,6 +103,7 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
     selectTabOnFocus,
     selectedValue,
     size,
+    shape,
     vertical,
     onRegister,
     onUnregister,

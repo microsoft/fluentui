@@ -42,10 +42,12 @@ export type TabListProps = ComponentProps<TabListSlots> & {
    * A tab list can supports 'transparent' and 'subtle' appearance.
    *- 'subtle': Minimizes emphasis to blend into the background until hovered or focused.
    *- 'transparent': No background and border styling
+   *- 'filled': Adds background and border styling
+   *
    * The appearance affects each of the contained tabs.
    * @default 'transparent'
    */
-  appearance?: 'transparent' | 'subtle';
+  appearance?: 'transparent' | 'subtle' | 'filled';
 
   /**
    * Tab size may change between unselected and selected states.
@@ -93,6 +95,11 @@ export type TabListProps = ComponentProps<TabListSlots> & {
   size?: 'small' | 'medium' | 'large';
 
   /**
+   * A tab list can be set to have a circular shape. Could be used with 'filled' or 'subtle' appearance.
+   */
+  shape?: 'circular';
+
+  /**
    * A tab list can arrange its tabs vertically.
    * @default false
    */
@@ -101,7 +108,7 @@ export type TabListProps = ComponentProps<TabListSlots> & {
 
 export type TabListContextValue = Pick<
   TabListProps,
-  'onTabSelect' | 'selectTabOnFocus' | 'selectedValue' | 'reserveSelectedTabSpace'
+  'onTabSelect' | 'selectTabOnFocus' | 'selectedValue' | 'shape' | 'reserveSelectedTabSpace'
 > &
   Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
     /** A callback to allow a tab to register itself with the tab list. */

@@ -52,7 +52,8 @@ export type TabState = ComponentState<TabInternalSlots> &
     /**
      * A tab supports 'transparent' and 'subtle' appearance.
      */
-    appearance?: 'transparent' | 'subtle';
+    appearance?: 'transparent' | 'subtle' | 'filled';
+
     /**
      * A tab can have only an icon slot filled and no content.
      */
@@ -72,6 +73,9 @@ export type TabState = ComponentState<TabInternalSlots> &
      * A tab can be either 'small', 'medium', or 'large' size.
      */
     size: 'small' | 'medium' | 'large';
+
+    shape?: 'circular';
+
     /**
      * A tab can arrange its content based on if the tabs in the list are arranged vertically.
      */

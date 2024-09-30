@@ -173,6 +173,92 @@ const useRootStyles = makeStyles({
   },
 });
 
+const useCircularStyles = makeStyles({
+  base: {
+    borderRadius: tokens.borderRadiusCircular,
+    '& .fui-Tab__icon': {
+      color: 'inherit',
+    },
+    '& .fui-Tab__content': {
+      color: 'inherit',
+    },
+  },
+  subtle: {
+    backgroundColor: tokens.colorTransparentBackground,
+    border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
+    color: tokens.colorNeutralForeground2,
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackground1Hover,
+      border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStroke1Hover}`,
+      color: tokens.colorNeutralForeground2Hover,
+    },
+    ':active': {
+      backgroundColor: tokens.colorNeutralBackground1Pressed,
+      border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStroke1Pressed}`,
+      color: tokens.colorNeutralForeground2Pressed,
+    },
+  },
+  subtleSelected: {
+    backgroundColor: tokens.colorBrandBackground2,
+    border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStroke}`,
+    color: tokens.colorBrandForeground2,
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackground2Hover,
+      border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStrokeHover}`,
+      color: tokens.colorBrandForeground2Hover,
+    },
+    ':active': {
+      backgroundColor: tokens.colorBrandBackground2Pressed,
+      border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStrokePressed}`,
+      color: tokens.colorBrandForeground2Pressed,
+    },
+  },
+  subtleDisabled: {
+    backgroundColor: tokens.colorTransparentBackground,
+    color: tokens.colorNeutralForegroundDisabled,
+    border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
+  },
+  subtleDisabledSelected: {
+    backgroundColor: tokens.colorTransparentBackground,
+    color: tokens.colorNeutralForegroundDisabled,
+    border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeDisabled}`,
+  },
+  filled: {
+    backgroundColor: tokens.colorNeutralBackground3,
+    color: tokens.colorNeutralForeground2,
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackground3Hover,
+      color: tokens.colorNeutralForeground2Hover,
+    },
+    ':active': {
+      backgroundColor: tokens.colorNeutralBackground3Pressed,
+      color: tokens.colorNeutralForeground2Pressed,
+    },
+  },
+  filledSelected: {
+    backgroundColor: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForegroundOnBrand,
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackgroundHover,
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+    ':active': {
+      backgroundColor: tokens.colorBrandBackgroundPressed,
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+  },
+  filledDisabled: {
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
+    color: tokens.colorNeutralForegroundDisabled,
+  },
+  filledDisabledSelected: {
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeDisabled}`,
+    color: tokens.colorNeutralForegroundDisabled,
+  },
+});
+
 /**
  * Focus styles for the root slot
  */
@@ -472,35 +558,37 @@ export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
   const pendingIndicatorStyles = usePendingIndicatorStyles();
   const activeIndicatorStyles = useActiveIndicatorStyles();
 
-  const { disabled, selected, size, vertical } = state;
+  const { disabled, selected, size, shape, vertical } = state;
 
-  state.root.className = mergeClasses(
-    tabClassNames.root,
-    rootStyles.root,
+  const classes: Parameters<typeof mergeClasses> = [tabClassNames.root, rootStyles.root];
 
-    // pending indicator (before pseudo element)
-    pendingIndicatorStyles.base,
-    size === 'small' && (vertical ? pendingIndicatorStyles.smallVertical : pendingIndicatorStyles.smallHorizontal),
-    size === 'medium' && (vertical ? pendingIndicatorStyles.mediumVertical : pendingIndicatorStyles.mediumHorizontal),
-    size === 'large' && (vertical ? pendingIndicatorStyles.largeVertical : pendingIndicatorStyles.largeHorizontal),
-    disabled && pendingIndicatorStyles.disabled,
+  // Only apply indicator styles if the shape is not circular
+  if (shape !== 'circular') {
+    classes.push(
+      // pending indicator (before pseudo element)
+      pendingIndicatorStyles.base,
+      size === 'small' && (vertical ? pendingIndicatorStyles.smallVertical : pendingIndicatorStyles.smallHorizontal),
+      size === 'medium' && (vertical ? pendingIndicatorStyles.mediumVertical : pendingIndicatorStyles.mediumHorizontal),
+      size === 'large' && (vertical ? pendingIndicatorStyles.largeVertical : pendingIndicatorStyles.largeHorizontal),
+      disabled && pendingIndicatorStyles.disabled,
 
-    // active indicator (after pseudo element)
-    selected && activeIndicatorStyles.base,
-    selected && !disabled && activeIndicatorStyles.selected,
-    selected &&
-      size === 'small' &&
-      (vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
-    selected &&
-      size === 'medium' &&
-      (vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
-    selected &&
-      size === 'large' &&
-      (vertical ? activeIndicatorStyles.largeVertical : activeIndicatorStyles.largeHorizontal),
-    selected && disabled && activeIndicatorStyles.disabled,
+      // active indicator (after pseudo element)
+      selected && activeIndicatorStyles.base,
+      selected && !disabled && activeIndicatorStyles.selected,
+      selected &&
+        size === 'small' &&
+        (vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
+      selected &&
+        size === 'medium' &&
+        (vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
+      selected &&
+        size === 'large' &&
+        (vertical ? activeIndicatorStyles.largeVertical : activeIndicatorStyles.largeHorizontal),
+      selected && disabled && activeIndicatorStyles.disabled,
+    );
+  }
 
-    state.root.className,
-  );
+  state.root.className = mergeClasses(...classes, state.root.className);
 
   useTabAnimatedIndicatorStyles_unstable(state);
 
@@ -522,20 +610,39 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
 
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
+  const circularStyles = useCircularStyles();
 
-  const { appearance, disabled, selected, size, vertical } = state;
+  const { appearance, shape, disabled, selected, size, vertical } = state;
+
+  const isCircular = shape === 'circular';
 
   slot.className = mergeClasses(
     rootStyles.button,
+    // orientation
     vertical ? rootStyles.vertical : rootStyles.horizontal,
+    // size
     size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
     size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
     size === 'large' && (vertical ? rootStyles.largeVertical : rootStyles.largeHorizontal),
     focusStyles.base,
-    !disabled && appearance === 'subtle' && rootStyles.subtle,
+    // appearance
+    !disabled && appearance === 'subtle' && !isCircular && rootStyles.subtle,
     !disabled && appearance === 'transparent' && rootStyles.transparent,
-    !disabled && selected && rootStyles.selected,
+    !disabled && selected && !isCircular && rootStyles.selected,
     disabled && rootStyles.disabled,
+
+    // circular tabs
+    isCircular && circularStyles.base,
+    // subtle + circular
+    !disabled && appearance === 'subtle' && isCircular && circularStyles.subtle,
+    !disabled && appearance === 'subtle' && selected && isCircular && circularStyles.subtleSelected,
+    disabled && appearance === 'subtle' && isCircular && circularStyles.subtleDisabled,
+    disabled && appearance === 'subtle' && selected && isCircular && circularStyles.subtleDisabledSelected,
+    // filled + circular
+    !disabled && appearance === 'filled' && isCircular && circularStyles.filled,
+    !disabled && appearance === 'filled' && selected && isCircular && circularStyles.filledSelected,
+    disabled && appearance === 'filled' && isCircular && circularStyles.filledDisabled,
+    disabled && appearance === 'filled' && selected && isCircular && circularStyles.filledDisabledSelected,
 
     slot.className,
   );

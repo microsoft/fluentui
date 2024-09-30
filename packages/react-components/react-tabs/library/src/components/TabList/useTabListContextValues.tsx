@@ -12,6 +12,7 @@ export function useTabListContextValues_unstable(state: TabListState): TabListCo
     onSelect,
     getRegisteredTabs,
     size,
+    shape,
     vertical,
   } = state;
 
@@ -26,6 +27,7 @@ export function useTabListContextValues_unstable(state: TabListState): TabListCo
     onUnregister,
     getRegisteredTabs,
     size,
+    shape,
     vertical,
   };
 
