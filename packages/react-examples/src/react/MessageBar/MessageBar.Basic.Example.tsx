@@ -134,7 +134,9 @@ const WarningExample = (p: IExampleProps) => {
 
   const win = useWindow();
   React.useEffect(() => {
-    onResize();
+    // The setTimeout is needed for the initial render because the
+    // contents of the MessageBar is wrapped in a DelayedRender.
+    setTimeout(onResize, 0);
 
     win && win.addEventListener('resize', onResize);
 
