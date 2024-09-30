@@ -31,8 +31,7 @@ async function setPageContent(page: Page, content: string) {
       return;
     }
 
-    const clonedOptions = Array.from(options)
-        .map(option => option.cloneNode(true));
+    const clonedOptions = Array.from(options).map(option => option.cloneNode(true));
     node.replaceChildren(...clonedOptions);
   });
 }
@@ -149,14 +148,17 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const list = page.locator('fluent-dropdown-list');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one">One</fluent-option>
           <fluent-option value="two">Two</fluent-option>
           <fluent-option value="three">Three</fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       const listElement = await list.evaluateHandle(node => node);
 
@@ -173,12 +175,15 @@ test.describe('Dropdown', () => {
       const list = page.locator('fluent-dropdown-list');
       const option = page.locator('fluent-option');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list" multiple></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option></fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await expect(dropdown).toHaveJSProperty('multiple', true);
       await expect(list).toHaveJSProperty('multiple', true);
@@ -197,14 +202,17 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const options = page.locator('fluent-option');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list" name="foo"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option></fluent-option>
           <fluent-option></fluent-option>
           <fluent-option name="bar"></fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await expect(dropdown).toHaveAttribute('name', 'foo');
       await expect(options.nth(0)).toHaveJSProperty('name', 'foo');
@@ -223,14 +231,17 @@ test.describe('Dropdown', () => {
     test('should return the first selected option with `selectedOptions` in single select', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one" selected></fluent-option>
           <fluent-option value="two"></fluent-option>
           <fluent-option value="three" selected></fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       const selectedOptionsValues = await dropdown.evaluate((node: Dropdown) => {
         return node.selectedOptions.map(option => option.value);
@@ -243,14 +254,17 @@ test.describe('Dropdown', () => {
     test('should return the all selected options with `selectedOptions` in multiple select', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list" multiple></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one" selected></fluent-option>
           <fluent-option value="two"></fluent-option>
           <fluent-option value="three" selected></fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       const selectedOptionsValues = await dropdown.evaluate((node: Dropdown) => {
         return node.selectedOptions.map(option => option.value);
@@ -264,14 +278,17 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const options = page.locator('fluent-option');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one"></fluent-option>
           <fluent-option value="two"></fluent-option>
           <fluent-option value="three"></fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await expect(dropdown).toHaveJSProperty('value', '');
 
@@ -303,14 +320,17 @@ test.describe('Dropdown', () => {
     test('should return the first selected option’s value with `value`', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list" multiple></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one" selected></fluent-option>
           <fluent-option value="two"></fluent-option>
           <fluent-option value="three" selected></fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await expect(dropdown).toHaveJSProperty('value', 'one');
     });
@@ -319,14 +339,17 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const options = page.locator('fluent-option');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one"></fluent-option>
           <fluent-option value="two"></fluent-option>
           <fluent-option value="three"></fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await dropdown.evaluate((node: Dropdown) => {
         node.selectedIndex = 1;
@@ -354,14 +377,17 @@ test.describe('Dropdown', () => {
     test('should return the first selected option’s index with `selectedIndex`', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list" multiple></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one"></fluent-option>
           <fluent-option value="two" selected></fluent-option>
           <fluent-option value="three" selected></fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await expect(dropdown).toHaveJSProperty('selectedIndex', 1);
     });
@@ -370,10 +396,13 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const list = page.locator('fluent-dropdown-list');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
         <fluent-dropdown-list id="list"></fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await expect(list).toBeHidden();
 
@@ -440,14 +469,17 @@ test.describe('Dropdown', () => {
     test('should set `valueMissing` flag if required and no option is selected', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown required list="list"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one">One</fluent-option>
           <fluent-option value="two">Two</fluent-option>
           <fluent-option value="three">Three</fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await expect(dropdown).toHaveJSProperty('validity.valid', false);
       await expect(dropdown).toHaveJSProperty('validity.valueMissing', true);
@@ -471,14 +503,17 @@ test.describe('Dropdown', () => {
     test('should always be valid if disabled', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown disabled required list="list"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one">One</fluent-option>
           <fluent-option value="two">Two</fluent-option>
           <fluent-option value="three">Three</fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await expect(dropdown).toHaveJSProperty('validity.valid', true);
 
@@ -498,14 +533,17 @@ test.describe('Dropdown', () => {
     test('should set the correct validation messages', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown disabled required list="list"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one">One</fluent-option>
           <fluent-option value="two">Two</fluent-option>
           <fluent-option value="three">Three</fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await expect(dropdown).toHaveJSProperty('validationMessage', '');
 
@@ -524,14 +562,17 @@ test.describe('Dropdown', () => {
       const list = page.locator('fluent-dropdown-list');
       const options = page.locator('fluent-option');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one">One</fluent-option>
           <fluent-option value="two">Two</fluent-option>
           <fluent-option value="three">Three</fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await expect(list).toBeHidden();
 
@@ -552,7 +593,9 @@ test.describe('Dropdown', () => {
       const options = page.locator('fluent-option');
       const outsideButton = page.locator('button');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <button>outside</button>
         <fluent-dropdown list="list" multiple></fluent-dropdown>
         <fluent-dropdown-list id="list">
@@ -560,7 +603,8 @@ test.describe('Dropdown', () => {
           <fluent-option value="two">Two</fluent-option>
           <fluent-option value="three">Three</fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await expect(list).toBeHidden();
 
@@ -589,14 +633,17 @@ test.describe('Dropdown', () => {
       const list = page.locator('fluent-dropdown-list');
       const options = page.locator('fluent-option');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one">One</fluent-option>
           <fluent-option value="two">Two</fluent-option>
           <fluent-option value="three">Three</fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await page.keyboard.press('Tab');
 
@@ -635,14 +682,17 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const list = page.locator('fluent-dropdown-list');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one">One</fluent-option>
           <fluent-option value="two">Two</fluent-option>
           <fluent-option value="three">Three</fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
@@ -659,14 +709,17 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const options = page.locator('fluent-option');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one">One</fluent-option>
           <fluent-option value="two">Two</fluent-option>
           <fluent-option value="three">Three</fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       const option1Id = await options.nth(0).evaluate(node => node.id);
       const option2Id = await options.nth(1).evaluate(node => node.id);
@@ -699,17 +752,19 @@ test.describe('Dropdown', () => {
     });
 
     test('should skip disabled options while navigating', async ({ page }) => {
-      const dropdown = page.locator('fluent-dropdown');
       const options = page.locator('fluent-option');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one">One</fluent-option>
           <fluent-option value="two" disabled>Two</fluent-option>
           <fluent-option value="three">Three</fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
@@ -724,14 +779,17 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const options = page.locator('fluent-option');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one">One</fluent-option>
           <fluent-option value="two">Two</fluent-option>
           <fluent-option value="three">Three</fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
@@ -758,20 +816,25 @@ test.describe('Dropdown', () => {
   test('should emit `input` event when an opton is selected', async ({ page }) => {
     const dropdown = page.locator('fluent-dropdown');
 
-    await setPageContent(page, /* html */ `
+    await setPageContent(
+      page,
+      /* html */ `
       <fluent-dropdown list="list"></fluent-dropdown>
       <fluent-dropdown-list id="list">
         <fluent-option value="one">One</fluent-option>
         <fluent-option value="two">Two</fluent-option>
         <fluent-option value="three">Three</fluent-option>
       </fluent-dropdown-list>
-    `);
+    `,
+    );
 
     const [wasInput] = await Promise.all([
       dropdown.evaluate(
         node => new Promise(resolve => node.addEventListener('input', () => resolve(true), { once: true })),
       ),
-      dropdown.evaluate((node: Dropdown) => { node.value = 'one' }),
+      dropdown.evaluate((node: Dropdown) => {
+        node.value = 'one';
+      }),
     ]);
 
     expect(wasInput).toBe(true);
@@ -780,20 +843,25 @@ test.describe('Dropdown', () => {
   test('should emit `change` event when value is changed', async ({ page }) => {
     const dropdown = page.locator('fluent-dropdown');
 
-    await setPageContent(page, /* html */ `
+    await setPageContent(
+      page,
+      /* html */ `
       <fluent-dropdown list="list"></fluent-dropdown>
       <fluent-dropdown-list id="list">
         <fluent-option value="one" selected>One</fluent-option>
         <fluent-option value="two">Two</fluent-option>
         <fluent-option value="three">Three</fluent-option>
       </fluent-dropdown-list>
-    `);
+    `,
+    );
 
     const [wasChanged] = await Promise.all([
       dropdown.evaluate(
         node => new Promise(resolve => node.addEventListener('change', () => resolve(true), { once: true })),
       ),
-      dropdown.evaluate((node: Dropdown) => { node.value = 'two' }),
+      dropdown.evaluate((node: Dropdown) => {
+        node.value = 'two';
+      }),
     ]);
 
     expect(wasChanged).toBe(true);
@@ -804,14 +872,17 @@ test.describe('Dropdown', () => {
       const dropdown = page.locator('fluent-dropdown');
       const list = page.locator('fluent-dropdown-list');
 
-      await setPageContent(page, /* html */ `
+      await setPageContent(
+        page,
+        /* html */ `
         <fluent-dropdown list="list" placeholder="Select…"></fluent-dropdown>
         <fluent-dropdown-list id="list">
           <fluent-option value="one">One</fluent-option>
           <fluent-option value="two">Two</fluent-option>
           <fluent-option value="three">Three</fluent-option>
         </fluent-dropdown-list>
-      `);
+      `,
+      );
 
       await expect(dropdown).toHaveAttribute('data-anchorid');
       const anchorId = await dropdown.getAttribute('data-anchorid');
@@ -824,8 +895,8 @@ test.describe('Dropdown', () => {
 
       const dropdownBoundingBox = await dropdown.boundingBox();
       const listBoundingBox = await list.boundingBox();
-      const expectedListX = dropdownBoundingBox?.x ?? 0;
-      const expectedListY = (dropdownBoundingBox?.y ?? 0) + (dropdownBoundingBox?.height ?? 0);
+      const expectedListX = dropdownBoundingBox.x;
+      const expectedListY = dropdownBoundingBox.y + dropdownBoundingBox.height;
 
       expect(expectedListX).toEqual(listBoundingBox?.x);
       expect(expectedListY).toEqual(listBoundingBox?.y);
@@ -837,8 +908,8 @@ test.describe('Dropdown', () => {
 
       const newListBoundingBox = await list.boundingBox();
 
-      expect(expectedListX + 50).toEqual(newListBoundingBox?.x);
-      expect(expectedListY + 20).toEqual(newListBoundingBox?.y);
+      expect(expectedListX + 50).toEqual(newListBoundingBox.x);
+      expect(expectedListY + 20).toEqual(newListBoundingBox.y);
     });
   });
 });

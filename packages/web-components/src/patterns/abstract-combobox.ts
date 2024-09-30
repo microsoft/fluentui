@@ -481,13 +481,13 @@ export abstract class AbstractCombobox extends FASTElement {
   }
 
   protected bindEvents() {
-    const {signal} = this.disconnectedAbortController;
+    const { signal } = this.disconnectedAbortController;
     this.addEventListener('click', evt => this.handleClick(evt), { signal });
     this.addEventListener('keydown', evt => this.handleKeydown(evt), { signal });
   }
 
   protected bindListboxEvents() {
-    const {signal} = this.listboxDisconnectedAbortController;
+    const { signal } = this.listboxDisconnectedAbortController;
     this.listElement?.addEventListener('toggle', evt => this.handleListboxToggle(evt), { signal });
     this.listElement?.addEventListener('input', evt => this.handleListboxInput(evt), { signal });
     this.listElement?.addEventListener('keydown', evt => this.handleListboxKeydown(evt), { signal });
@@ -731,7 +731,7 @@ export abstract class AbstractCombobox extends FASTElement {
 
   private getListElementById(id = ''): AbstractListbox | null {
     const rootNode = this.getRootNode();
-    const el =  (rootNode instanceof ShadowRoot ? rootNode : document).getElementById(id);
+    const el = (rootNode instanceof ShadowRoot ? rootNode : document).getElementById(id);
     return el instanceof AbstractListbox ? el : null;
   }
 }

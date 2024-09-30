@@ -193,7 +193,9 @@ export class BaseOption extends BaseCheckbox {
     const listbox = listboxShadowRoot.host;
 
     const rootNode = this.getRootNode();
-    const combobox = (rootNode instanceof ShadowRoot ? rootNode : document).querySelector(`[aria-controls="${listbox.id}"]`);
+    const combobox = (rootNode instanceof ShadowRoot ? rootNode : document).querySelector(
+      `[aria-controls="${listbox.id}"]`,
+    );
 
     return combobox instanceof AbstractCombobox ? combobox : null;
   }

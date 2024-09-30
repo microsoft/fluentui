@@ -1,11 +1,16 @@
-import { css, html, render, repeat, when } from '@microsoft/fast-element';
+import { html, render, repeat, when } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import type { Divider as FluentDivider } from '../divider/divider.js';
 import type { Option as FluentOption } from '../option/option.js';
-import { typographyCaption1Styles } from '../styles/index.js';
-import { colorNeutralForeground2, colorNeutralForeground3, fontFamilyBase, fontSizeBase200, fontWeightRegular, lineHeightBase200 } from '../theme/design-tokens.js';
+import {
+  colorNeutralForeground3,
+  fontFamilyBase,
+  fontSizeBase200,
+  fontWeightRegular,
+  lineHeightBase200,
+} from '../theme/design-tokens.js';
 import { DropdownAppearance, DropdownSize } from './dropdown.options.js';
 import type { Dropdown as FluentDropdown } from './dropdown.js';
 
@@ -21,9 +26,7 @@ const optionTemplate = html<StoryArgs<FluentOption>>`
   </fluent-option>
 `;
 
-const dividerTemplate = html<StoryArgs<FluentDivider>>`
-  <fluent-divider></fluent-divider>
-`;
+const dividerTemplate = html<StoryArgs<FluentDivider>>` <fluent-divider></fluent-divider> `;
 
 interface StoryOption {
   value: string;
@@ -59,22 +62,15 @@ const storyTemplate = () => {
       placeholder="${x => x.placeholder ?? 'Select a fruit'}"
       list="${listId}"
       name="fruit"
-      dir="${x => x.rtl ? 'rtl' : null}"
+      dir="${x => (x.rtl ? 'rtl' : null)}"
       ?block="${x => x.block}"
       ?multiple="${x => x.multiple}"
       ?disabled="${x => x.disabled}"
       ?display-shadow="${x => x.displayShadow}"
       ?required="${x => x.required}"
     ></fluent-dropdown>
-    <fluent-dropdown-list
-      slot="${x => x.slot ?? 'input'}"
-      id="${listId}"
-      dir="${x => x.rtl ? 'rtl' : null}"
-    >
-      ${repeat(
-        x => x.storyOptions ?? storyOptions,
-        html`${x => x.divider ? dividerTemplate : optionTemplate}`
-      )}
+    <fluent-dropdown-list slot="${x => x.slot ?? 'input'}" id="${listId}" dir="${x => (x.rtl ? 'rtl' : null)}">
+      ${repeat(x => x.storyOptions ?? storyOptions, html`${x => (x.divider ? dividerTemplate : optionTemplate)}`)}
     </fluent-dropdown-list>
   `;
 };
@@ -245,7 +241,8 @@ const storyOptionsWithDescriptions = [
   {
     value: 'apple',
     label: 'Apple',
-    description: 'An edible fruit produced by an apple tree. Apple trees are the most widely grown species in the genus Malus.',
+    description:
+      'An edible fruit produced by an apple tree. Apple trees are the most widely grown species in the genus Malus.',
   },
   {
     value: 'banana',
