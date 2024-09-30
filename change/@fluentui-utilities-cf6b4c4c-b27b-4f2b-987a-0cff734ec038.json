@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: correctly handle style function in customizer",
-  "packageName": "@fluentui/utilities",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
