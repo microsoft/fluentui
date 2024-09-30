@@ -64,7 +64,7 @@ export function expectPresenceMotionFunction(PresenceComponent: PresenceComponen
   expect(presenceMotionFn).toBeInstanceOf(Function);
 }
 
-export const mockAnimation: Animation = {
+export const mockAnimation: () => Animation = () => ({
   finish: jest.fn(),
   cancel: jest.fn(),
   persist: jest.fn(),
@@ -90,32 +90,4 @@ export const mockAnimation: Animation = {
   pending: false,
   replaceState: 'active',
   commitStyles: jest.fn(),
-};
-
-export const mockAnimateFunction = function (
-  this: HTMLElement,
-  keyframes: Keyframe[] | PropertyIndexedKeyframes | null,
-) {
-  if (!this) {
-    throw new Error("'this' is undefined in animate mockImplementation");
-  }
-
-  // Return mockAnimation early if keyframes is null
-  if (keyframes === null) {
-    return mockAnimation;
-  }
-
-  // Ensure keyframes is treated as an array
-  const keyframesArray: Keyframe[] = Array.isArray(keyframes) ? keyframes : [keyframes as Keyframe];
-
-  // Update style properties for each keyframe
-  keyframesArray.forEach(keyframe => {
-    Object.entries(keyframe).forEach(([property, value]) => {
-      if (value !== undefined && value !== null) {
-        this.style.setProperty(property, String(value));
-      }
-    });
-  });
-
-  return mockAnimation;
-};
+});
