@@ -27,4 +27,3 @@ export enum FileIconType {
   todoItem,
   portfolio,
 }
-

@@ -5,7 +5,7 @@ import { FileIconType } from './FileIconType';
  * Please keep items alphabetical. Items without extensions may require specific logic in the code to map.
  * Always use getFileTypeIconProps to get the most up-to-date icon at the right pixel density.
  */
-export const FileTypeIconMap: { [key: string]: { extensions?: string[], types?: FileIconType[] } } = {
+export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: FileIconType[] } } = {
   accdb: {
     extensions: ['accdb', 'mdb'],
   },
@@ -271,13 +271,13 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[], types?: 
     extensions: ['design'],
   },
   desktopfolder: {
-    types: [FileIconType.desktopFolder]
+    types: [FileIconType.desktopFolder],
   },
-  docset: { 
-    types: [FileIconType.docset] 
+  docset: {
+    types: [FileIconType.docset],
   },
-  documentsfolder: { 
-    types: [FileIconType.documentsFolder] 
+  documentsfolder: {
+    types: [FileIconType.documentsFolder],
   },
   docx: {
     extensions: ['doc', 'docm', 'docx', 'docb'],
@@ -292,16 +292,16 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[], types?: 
     extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'],
   },
   folder: {
-    types: [FileIconType.folder]
+    types: [FileIconType.folder],
   },
   font: {
     extensions: ['ttf', 'otf', 'woff'],
   },
   form: {
-    types: [FileIconType.form]
+    types: [FileIconType.form],
   },
   genericfile: {
-    types: [FileIconType.genericFile]
+    types: [FileIconType.genericFile],
   },
   html: {
     extensions: ['htm', 'html', 'mht', 'mhtml'],
@@ -313,22 +313,22 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[], types?: 
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
   },
   linkedfolder: {
-    types: [FileIconType.linkedFolder]
+    types: [FileIconType.linkedFolder],
   },
-  listitem: { 
-    types: [FileIconType.listItem] 
+  listitem: {
+    types: [FileIconType.listItem],
   },
   loop: {
     extensions: ['fluid', 'loop', 'note'],
   },
   loopworkspace: {
-    types: [FileIconType.loopworkspace]
+    types: [FileIconType.loopworkspace],
   },
   officescript: {
     extensions: ['osts'],
   },
   splist: {
-    types: [FileIconType.list]
+    types: [FileIconType.list],
   },
   mcworld: {
     extensions: ['mcworld'],
@@ -373,7 +373,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[], types?: 
     extensions: ['mpt'],
   },
   multiple: {
-    types: [FileIconType.multiple]
+    types: [FileIconType.multiple],
   },
   one: {
     // This is a partial OneNote page or section export. Not whole notebooks, see "onetoc"
@@ -432,13 +432,13 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[], types?: 
   },
   photo360: {},
   picturesfolder: {
-    types: [FileIconType.picturesFolder]
+    types: [FileIconType.picturesFolder],
   },
   planner: {
-    types: [FileIconType.planner]
+    types: [FileIconType.planner],
   },
   portfolio: {
-    types: [FileIconType.portfolio]
+    types: [FileIconType.portfolio],
   },
   potx: {
     extensions: ['pot', 'potm', 'potx'],
@@ -462,7 +462,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[], types?: 
     extensions: ['aspx'],
   },
   sponews: {
-    types: [FileIconType.news]
+    types: [FileIconType.news],
   },
   spreadsheet: {
     extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],
@@ -470,14 +470,14 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[], types?: 
   rtf: {
     extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
   },
-  sharedfolder: { 
-    types: [FileIconType.sharedFolder]
+  sharedfolder: {
+    types: [FileIconType.sharedFolder],
   },
   playlist: {
-    types: [FileIconType.playlist]
+    types: [FileIconType.playlist],
   },
   sway: {
-    types: [FileIconType.sway]
+    types: [FileIconType.sway],
   },
   sysfile: {
     extensions: [
@@ -513,7 +513,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[], types?: 
     ],
   },
   todoitem: {
-    types: [FileIconType.todoItem]
+    types: [FileIconType.todoItem],
   },
   txt: {
     extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'],

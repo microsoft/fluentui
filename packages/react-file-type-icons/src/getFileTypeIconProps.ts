@@ -2,7 +2,7 @@ import { FileTypeIconMap } from './FileTypeIconMap';
 import { FileIconType } from './FileIconType';
 
 let _extensionToIconName: { [key: string]: string };
-let _typeToIconName: { [key:number]: string};
+let _typeToIconName: { [key: number]: string };
 
 const GENERIC_FILE = 'genericfile';
 
@@ -79,9 +79,7 @@ export function getFileTypeIconNameFromExtensionOrType(
     // Strip periods, force lowercase.
     extension = extension.replace('.', '').toLowerCase();
     return _extensionToIconName[extension] || GENERIC_FILE;
-
   } else if (type) {
-    
     if (!_typeToIconName) {
       _typeToIconName = {};
 
@@ -90,7 +88,7 @@ export function getFileTypeIconNameFromExtensionOrType(
 
         if (types) {
           for (let i = 0; i < types.length; i++) {
-            _typeToIconName[types[i]] = iconName
+            _typeToIconName[types[i]] = iconName;
           }
         }
       }
