@@ -389,6 +389,7 @@ describe('Vertical bar chart rendering', () => {
     container => {
       // Assert
       expect(getById(container, /yAxisGElementSecondarychart_/i)).toBeDefined();
+      expect(container).toMatchSnapshot();
     },
   );
 });

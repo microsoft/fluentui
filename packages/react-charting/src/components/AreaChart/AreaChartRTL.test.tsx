@@ -347,6 +347,7 @@ describe('Area chart rendering', () => {
     container => {
       // Assert
       expect(getById(container, /yAxisGElementSecondarychart_/i)).toBeDefined();
+      expect(container).toMatchSnapshot();
     },
   );
 });
