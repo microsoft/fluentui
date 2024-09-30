@@ -27,6 +27,7 @@ import './radio/define.js';
 import './rating-display/define.js';
 import './slider/define.js';
 import './spinner/define.js';
+import './split-button/define.js';
 import './switch/define.js';
 import './tab-panel/define.js';
 import './tab/define.js';
