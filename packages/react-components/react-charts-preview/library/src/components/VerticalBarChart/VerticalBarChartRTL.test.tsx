@@ -403,6 +403,7 @@ describe('Vertical bar chart rendering', () => {
 });
 
 describe('Vertical bar chart - Subcomponent bar', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -418,6 +419,29 @@ describe('Vertical bar chart - Subcomponent bar', () => {
       expect(bars[2].getAttribute('width')).toEqual('100');
     },
   );
+
+  test('Should render the bar with the given xAxisInnerPadding and check x attribute differences', async () => {
+    // Arrange
+    const { container, rerender } = render(
+      <VerticalBarChart data={simplePoints} xAxisInnerPadding={0.5} xAxisOuterPadding={0.5} />,
+    );
+
+    // Act
+    const bars = container.querySelectorAll('rect');
+    const x1Iteration1 = parseFloat(bars[0].getAttribute('x') || '0');
+    const x2Iteration1 = parseFloat(bars[1].getAttribute('x') || '0');
+    const iteration1Diff = x2Iteration1 - x1Iteration1;
+
+    // Re-render with different xAxisInnerPadding
+    rerender(<VerticalBarChart data={simplePoints} xAxisInnerPadding={0.75} xAxisOuterPadding={0.5} />);
+    const barsUpdated = container.querySelectorAll('rect');
+    const x1Iteration2 = parseFloat(barsUpdated[0].getAttribute('x') || '0');
+    const x2Iteration2 = parseFloat(barsUpdated[1].getAttribute('x') || '0');
+    const iteration2Diff = x2Iteration2 - x1Iteration2;
+
+    // Assert
+    expect(iteration1Diff).toBeLessThan(iteration2Diff);
+  });
 
   testWithWait(
     'Should render the bar with the given width with Date X-Axis',
