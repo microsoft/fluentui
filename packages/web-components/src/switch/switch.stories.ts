@@ -1,6 +1,6 @@
 import { html, repeat } from '@microsoft/fast-element';
 import { LabelPosition, ValidationFlags } from '../field/field.options.js';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Switch as FluentSwitch } from './switch.js';
 
 type Story = StoryObj<FluentSwitch>;

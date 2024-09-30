@@ -128,7 +128,7 @@ const getRandomPage = (): SelectedPage => {
   }
 };
 
-export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
+export const Controlled = (props: Partial<NavDrawerProps>) => {
   const styles = useStyles();
 
   const multipleLabelId = useId('multiple-label');

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Thu, 08 Aug 2024 07:24:18 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Sep 2024 07:23:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.16](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.16)
+
+Mon, 30 Sep 2024 07:23:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.15..@fluentui/utilities_v8.15.16)
+
+### Patches
+
+- fix: correctly handle style function in customizer ([PR #32940](https://github.com/microsoft/fluentui/pull/32940) by seanmonahan@microsoft.com)
 
 ## [8.15.15](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.15)
 

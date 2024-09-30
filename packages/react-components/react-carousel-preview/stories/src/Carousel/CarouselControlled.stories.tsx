@@ -9,7 +9,13 @@ import {
   Toolbar,
   ToolbarButton,
 } from '@fluentui/react-components';
-import { Carousel, CarouselButton, CarouselCard, CarouselSlider } from '@fluentui/react-carousel-preview';
+import {
+  Carousel,
+  CarouselAnnouncerFunction,
+  CarouselButton,
+  CarouselCard,
+  CarouselSlider,
+} from '@fluentui/react-carousel-preview';
 import * as React from 'react';
 
 const useClasses = makeStyles({
@@ -92,6 +98,10 @@ const useClasses = makeStyles({
   },
 });
 
+const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}`;
+};
+
 const WireframeContent: React.FC<{
   index: number;
 }> = props => {
@@ -119,6 +129,7 @@ export const Controlled = () => {
         className={classes.carousel}
         groupSize={1}
         onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
+        announcement={getAnnouncement}
       >
         <Tooltip content="Go To Previous Page" relationship="label">
           <CarouselButton navType="prev" aria-label="Previous Carousel Page Button" />
