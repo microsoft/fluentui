@@ -829,6 +829,16 @@ test.describe('Dropdown', () => {
 
       expect(expectedListX).toEqual(listBoundingBox?.x);
       expect(expectedListY).toEqual(listBoundingBox?.y);
+
+      await dropdown.evaluate(node => {
+        node.style.marginBlockStart = '20px';
+        node.style.marginInlineStart = '50px';
+      });
+
+      const newListBoundingBox = await list.boundingBox();
+
+      expect(expectedListX + 50).toEqual(newListBoundingBox?.x);
+      expect(expectedListY + 20).toEqual(newListBoundingBox?.y);
     });
   });
 });
