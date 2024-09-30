@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-virtualizer
 
-This log was last generated on Mon, 23 Sep 2024 12:40:17 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2024 14:15:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.85)
+
+Thu, 26 Sep 2024 14:15:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.84..@fluentui/react-virtualizer_v9.0.0-alpha.85)
+
+### Changes
+
+- BREAKING CHANGE (useVirtualizerDynamicMeasure): optimized with scrollPos state and children height reference, updated algorithm to be more accurate, and exported measurement hook ([PR #32375](https://github.com/microsoft/fluentui/pull/32375) by mifraser@microsoft.com)
 
 ## [9.0.0-alpha.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.84)
 

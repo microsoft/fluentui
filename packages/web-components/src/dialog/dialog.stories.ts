@@ -1,12 +1,6 @@
 import { css, html, ref } from '@microsoft/fast-element';
 import type { DialogBody as FluentDialogBody } from '../dialog-body/dialog-body.js';
-import {
-  generateImage,
-  type NewMeta as Meta,
-  renderComponent,
-  type StoryArgs,
-  type StoryObj,
-} from '../helpers.stories.js';
+import { generateImage, Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { definition } from './dialog.definition.js';
 import type { Dialog as FluentDialog } from './dialog.js';
 import { DialogType } from './dialog.options.js';

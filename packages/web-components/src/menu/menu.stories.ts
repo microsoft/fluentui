@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Menu as FluentMenu } from './menu.js';
 
 type Story = StoryObj<FluentMenu>;

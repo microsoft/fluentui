@@ -10,6 +10,7 @@ import {
   Stories,
   type DocsContextProps,
 } from '@storybook/addon-docs';
+import type { PreparedStory, Renderer } from '@storybook/types';
 import type { SBEnumType } from '@storybook/csf';
 import { makeStyles, shorthands, tokens, Link, Text } from '@fluentui/react-components';
 import { InfoFilled } from '@fluentui/react-icons';
@@ -17,6 +18,8 @@ import { DIR_ID, THEME_ID, themes } from '@fluentui/react-storybook-addon';
 import { DirSwitch } from './DirSwitch.stories';
 import { ThemePicker } from './ThemePicker.stories';
 import { Toc, nameToHash } from './Toc.stories';
+
+type PrimaryStory = PreparedStory<Renderer>;
 
 const useStyles = makeStyles({
   divider: {
@@ -130,6 +133,49 @@ const getNativeElementsList = (elements: SBEnumType['value']): JSX.Element => {
   );
 };
 
+const RenderArgsTable = ({ hideArgsTable, primaryStory }: { primaryStory: PrimaryStory; hideArgsTable: boolean }) => {
+  const styles = useStyles();
+  return hideArgsTable ? null : (
+    <>
+      <ArgsTable of={primaryStory.component} />
+      {primaryStory.argTypes.as && primaryStory.argTypes.as?.type?.name === 'enum' && (
+        <div className={styles.nativeProps}>
+          <InfoFilled className={styles.nativePropsIcon} />
+          <div className={styles.nativePropsMessage}>
+            <b>
+              Native props are supported <span role="presentation">🙌</span>
+            </b>
+            <span>
+              All HTML attributes native to the {getNativeElementsList(primaryStory.argTypes.as.type.value)}, including
+              all <code>aria-*</code> and <code>data-*</code> attributes, can be applied as native props on this
+              component.
+            </span>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+const RenderPrimaryStory = ({
+  primaryStory,
+  skipPrimaryStory,
+}: {
+  primaryStory: PrimaryStory;
+  skipPrimaryStory: boolean;
+}) => {
+  const styles = useStyles();
+  return skipPrimaryStory ? null : (
+    <>
+      <hr className={styles.divider} />
+      <HeaderMdx as="h3" id={nameToHash(primaryStory.name)}>
+        {primaryStory.name}
+      </HeaderMdx>
+      <Primary />
+    </>
+  );
+};
+
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
   const stories = context.componentStories();
@@ -140,6 +186,9 @@ export const FluentDocsPage = () => {
 
   const dir = primaryStoryContext.parameters?.dir ?? primaryStoryContext.globals?.[DIR_ID] ?? 'ltr';
   const selectedTheme = themes.find(theme => theme.id === primaryStoryContext.globals![THEME_ID]);
+
+  const hideArgsTable = Boolean(primaryStoryContext.parameters?.docs?.hideArgsTable);
+  const skipPrimaryStory = Boolean(primaryStoryContext.parameters?.docs?.skipPrimaryStory);
 
   const videos = primaryStoryContext.parameters?.videos ?? null;
   const styles = useStyles();
@@ -169,27 +218,8 @@ export const FluentDocsPage = () => {
             <Description />
             {videos && <VideoPreviews videos={videos} />}
           </div>
-          <hr className={styles.divider} />
-          <HeaderMdx as="h3" id={nameToHash(primaryStory.name)}>
-            {primaryStory.name}
-          </HeaderMdx>
-          <Primary />
-          <ArgsTable of={primaryStory.component} />
-          {primaryStory.argTypes.as && primaryStory.argTypes.as?.type?.name === 'enum' && (
-            <div className={styles.nativeProps}>
-              <InfoFilled className={styles.nativePropsIcon} />
-              <div className={styles.nativePropsMessage}>
-                <b>
-                  Native props are supported <span role="presentation">🙌</span>
-                </b>
-                <span>
-                  All HTML attributes native to the {getNativeElementsList(primaryStory.argTypes.as.type.value)},
-                  including all <code>aria-*</code> and <code>data-*</code> attributes, can be applied as native props
-                  on this component.
-                </span>
-              </div>
-            </div>
-          )}
+          <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
+          <RenderArgsTable primaryStory={primaryStory} hideArgsTable={hideArgsTable} />
           <Stories />
         </div>
         <div className={styles.toc}>

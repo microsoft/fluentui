@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons-mdl2-branded",
   "entries": [
     {
+      "date": "Mon, 30 Sep 2024 07:23:12 GMT",
+      "tag": "@fluentui/react-icons-mdl2-branded_v1.2.78",
+      "version": "1.2.78",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2-branded",
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.3.76",
+            "commit": "7ef0d028b9f061ff06665d467b2e17a4df6755ae"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2024 07:23:39 GMT",
       "tag": "@fluentui/react-icons-mdl2-branded_v1.2.77",
       "version": "1.2.77",

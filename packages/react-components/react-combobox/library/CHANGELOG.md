@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Mon, 23 Sep 2024 12:40:17 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2024 14:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.13.8)
+
+Thu, 26 Sep 2024 14:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.13.7..@fluentui/react-combobox_v9.13.8)
+
+### Patches
+
+- fix tabIndex for clear button in Dropdown component ([PR #32278](https://github.com/microsoft/fluentui/pull/32278) by kirpadv@gmail.com)
 
 ## [9.13.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.13.7)
 

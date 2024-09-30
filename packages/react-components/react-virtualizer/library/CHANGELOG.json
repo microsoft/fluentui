@@ -2,6 +2,21 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2024 14:15:28 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.85",
+      "version": "9.0.0-alpha.85",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "12d545e2f9eda489784fc1c4869a70fd50a4f5c7",
+            "comment": "BREAKING CHANGE (useVirtualizerDynamicMeasure): optimized with scrollPos state and children height reference, updated algorithm to be more accurate, and exported measurement hook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Sep 2024 12:40:17 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.84",
       "version": "9.0.0-alpha.84",

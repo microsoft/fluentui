@@ -1,7 +1,7 @@
 name: '🚀 Feature proposal'
 description: Propose a new feature.
 title: '[Feature]: '
-labels: ['Type: Feature', 'Needs: Triage 🔍']
+labels: ['Type: Feature', 'Needs: Triage :mag:']
 projects: ['microsoft/395']
 assignees: []
 body:

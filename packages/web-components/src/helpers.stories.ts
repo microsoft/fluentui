@@ -25,11 +25,6 @@ export declare interface FASTComponentsRenderer extends Renderer {
 }
 
 /**
- * Metadata to configure the stories for a component.
- */
-export declare type NewMeta<TArgs = Args> = ComponentAnnotations<FASTComponentsRenderer, StoryArgs<TArgs>>;
-
-/**
  * A helper that returns a function to bind a Storybook story to a ViewTemplate.
  */
 export type FASTFramework = Renderer & {
@@ -40,7 +35,7 @@ export type FASTFramework = Renderer & {
 /**
  * Metadata to configure the stories for a component.
  */
-export type Meta<TArgs = Args> = ComponentAnnotations<FASTFramework, Omit<TArgs, keyof FASTElement>>;
+export declare type Meta<TArgs = Args> = ComponentAnnotations<FASTComponentsRenderer, StoryArgs<TArgs>>;
 
 /**
  * Story object that represents a CSFv3 component example.
