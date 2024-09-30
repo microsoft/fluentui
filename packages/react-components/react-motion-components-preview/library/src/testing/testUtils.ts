@@ -63,3 +63,59 @@ export function expectPresenceMotionFunction(PresenceComponent: PresenceComponen
 
   expect(presenceMotionFn).toBeInstanceOf(Function);
 }
+
+export const mockAnimation: Animation = {
+  finish: jest.fn(),
+  cancel: jest.fn(),
+  persist: jest.fn(),
+  currentTime: null,
+  effect: null,
+  finished: Promise.resolve({} as Animation),
+  id: '',
+  play: jest.fn(),
+  pause: jest.fn(),
+  updatePlaybackRate: jest.fn(),
+  reverse: jest.fn(),
+  playState: 'running',
+  playbackRate: 1,
+  startTime: null,
+  timeline: null,
+  oncancel: null,
+  onfinish: null,
+  ready: Promise.resolve({} as Animation),
+  removeEventListener: jest.fn(),
+  addEventListener: jest.fn(),
+  dispatchEvent: jest.fn(),
+  onremove: null,
+  pending: false,
+  replaceState: 'active',
+  commitStyles: jest.fn(),
+};
+
+export const mockAnimateFunction = function (
+  this: HTMLElement,
+  keyframes: Keyframe[] | PropertyIndexedKeyframes | null,
+) {
+  if (!this) {
+    throw new Error("'this' is undefined in animate mockImplementation");
+  }
+
+  // Return mockAnimation early if keyframes is null
+  if (keyframes === null) {
+    return mockAnimation;
+  }
+
+  // Ensure keyframes is treated as an array
+  const keyframesArray: Keyframe[] = Array.isArray(keyframes) ? keyframes : [keyframes as Keyframe];
+
+  // Update style properties for each keyframe
+  keyframesArray.forEach(keyframe => {
+    Object.entries(keyframe).forEach(([property, value]) => {
+      if (value !== undefined && value !== null) {
+        this.style.setProperty(property, String(value));
+      }
+    });
+  });
+
+  return mockAnimation;
+};
