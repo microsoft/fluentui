@@ -66,11 +66,13 @@ export function getFileTypeIconNameFromExtensionOrType(
       _extensionToIconName = {};
 
       for (const iconName in FileTypeIconMap) {
-        const extensions = FileTypeIconMap[iconName].extensions;
+        if (FileTypeIconMap.hasOwnProperty(iconName)) {
+          const extensions = FileTypeIconMap[iconName].extensions;
 
-        if (extensions) {
-          for (let i = 0; i < extensions.length; i++) {
-            _extensionToIconName[extensions[i]] = iconName;
+          if (extensions) {
+            for (let i = 0; i < extensions.length; i++) {
+              _extensionToIconName[extensions[i]] = iconName;
+            }
           }
         }
       }
@@ -84,11 +86,13 @@ export function getFileTypeIconNameFromExtensionOrType(
       _typeToIconName = {};
 
       for (const iconName in FileTypeIconMap) {
-        const types = FileTypeIconMap[iconName].types;
+        if (FileTypeIconMap.hasOwnProperty(iconName)) {
+          const types = FileTypeIconMap[iconName].types;
 
-        if (types) {
-          for (let i = 0; i < types.length; i++) {
-            _typeToIconName[types[i]] = iconName;
+          if (types) {
+            for (let i = 0; i < types.length; i++) {
+              _typeToIconName[types[i]] = iconName;
+            }
           }
         }
       }
