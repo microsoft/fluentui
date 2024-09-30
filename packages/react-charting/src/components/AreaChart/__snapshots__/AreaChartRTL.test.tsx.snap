@@ -3857,6 +3857,1278 @@ exports[`Area chart rendering Should render the Area chart with date x-axis data
 </div>
 `;
 
+exports[`Area chart rendering Should render the Area chart with secondary Y axis 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_6"
+  >
+    <div
+      id="defaultTabbableElement_7"
+    />
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone8"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <svg
+        aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. The secondary Y axis displays values. "
+        focusable="false"
+        height="292"
+        role="region"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_6"
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H610.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(40.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(167.16666666666666,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(293.8333333333333,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              40
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(420.49999999999994,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(547.1666666666666,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              60
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_6"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="570"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="570"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              37
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="currentColor"
+              x2="570"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              74
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="570"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              110
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="570"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              150
+            </text>
+          </g>
+        </g>
+        <g>
+          <g
+            class=
+
+                & text {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #323130;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+                & path {
+                  display: none;
+                }
+                & line {
+                  opacity: 0.2;
+                  stroke: #323130;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                  opacity: 0.1;
+                  stroke: rgb(179, 179, 179);
+                }
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="yAxisGElementSecondarychart_6"
+            text-anchor="end"
+            transform="translate(610, 0)"
+          >
+            <path
+              class="domain"
+              d="M-6,257.5H0.5V20.5H-6"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,257.5)"
+            >
+              <line
+                stroke="currentColor"
+                x2="570"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                0
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,198.25)"
+            >
+              <line
+                stroke="currentColor"
+                x2="570"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                25
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,139)"
+            >
+              <line
+                stroke="currentColor"
+                x2="570"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                50
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,79.75)"
+            >
+              <line
+                stroke="currentColor"
+                x2="570"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                75
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,20.5)"
+            >
+              <line
+                stroke="currentColor"
+                x2="570"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                100
+              </text>
+            </g>
+          </g>
+        </g>
+        <g>
+          <rect
+            fill="transparent"
+            height="272"
+            id="rectangle3"
+            width="610"
+          />
+        </g>
+        <g>
+          <path
+            d="M40,242.588C61.111,238.584,82.222,234.581,103.333,234.581C124.444,234.581,145.556,234.581,166.667,234.581C187.778,234.581,208.889,220.169,230,220.169C251.111,220.169,272.222,224.973,293.333,224.973C314.444,224.973,335.556,207.358,356.667,207.358C377.778,207.358,398.889,209.493,420,210.561C441.111,211.628,462.222,213.764,483.333,213.764C504.444,213.764,525.556,204.155,546.667,197.75C567.778,191.345,588.889,183.338,610,175.331"
+            fill="transparent"
+            id="0-line-areaChart_0"
+            opacity="0.3"
+            stroke="green"
+            stroke-width="3"
+          />
+          <path
+            d="M40,242.588C61.111,238.584,82.222,234.581,103.333,234.581C124.444,234.581,145.556,234.581,166.667,234.581C187.778,234.581,208.889,220.169,230,220.169C251.111,220.169,272.222,224.973,293.333,224.973C314.444,224.973,335.556,207.358,356.667,207.358C377.778,207.358,398.889,209.493,420,210.561C441.111,211.628,462.222,213.764,483.333,213.764C504.444,213.764,525.556,204.155,546.667,197.75C567.778,191.345,588.889,183.338,610,175.331L610,257C588.889,257,567.778,257,546.667,257C525.556,257,504.444,257,483.333,257C462.222,257,441.111,257,420,257C398.889,257,377.778,257,356.667,257C335.556,257,314.444,257,293.333,257C272.222,257,251.111,257,230,257C208.889,257,187.778,257,166.667,257C145.556,257,124.444,257,103.333,257C82.222,257,61.111,257,40,257Z"
+            fill="green"
+            fill-opacity="0.7"
+            id="0-graph-areaChart_0"
+            opacity="1"
+          />
+          <path
+            d="M40,208.959C61.111,201.753,82.222,194.547,103.333,194.547C124.444,194.547,145.556,218.568,166.667,218.568C187.778,218.568,208.889,205.223,230,204.155C251.111,203.088,272.222,203.622,293.333,202.554C314.444,201.486,335.556,178.534,356.667,178.534C377.778,178.534,398.889,196.149,420,196.149C441.111,196.149,462.222,176.932,483.333,176.932C504.444,176.932,525.556,186.541,546.667,186.541C567.778,186.541,588.889,136.899,610,87.257"
+            fill="transparent"
+            id="1-line-areaChart_0"
+            opacity="0.3"
+            stroke="yellow"
+            stroke-width="3"
+          />
+          <path
+            d="M40,208.959C61.111,201.753,82.222,194.547,103.333,194.547C124.444,194.547,145.556,218.568,166.667,218.568C187.778,218.568,208.889,205.223,230,204.155C251.111,203.088,272.222,203.622,293.333,202.554C314.444,201.486,335.556,178.534,356.667,178.534C377.778,178.534,398.889,196.149,420,196.149C441.111,196.149,462.222,176.932,483.333,176.932C504.444,176.932,525.556,186.541,546.667,186.541C567.778,186.541,588.889,136.899,610,87.257L610,175.331C588.889,183.338,567.778,191.345,546.667,197.75C525.556,204.155,504.444,213.764,483.333,213.764C462.222,213.764,441.111,211.628,420,210.561C398.889,209.493,377.778,207.358,356.667,207.358C335.556,207.358,314.444,224.973,293.333,224.973C272.222,224.973,251.111,220.169,230,220.169C208.889,220.169,187.778,234.581,166.667,234.581C145.556,234.581,124.444,234.581,103.333,234.581C82.222,234.581,61.111,238.584,40,242.588Z"
+            fill="yellow"
+            fill-opacity="0.7"
+            id="1-graph-areaChart_0"
+            opacity="1"
+          />
+          <path
+            d="M40,160.919C61.111,149.709,82.222,138.5,103.333,138.5C124.444,138.5,145.556,165.723,166.667,165.723C187.778,165.723,208.889,140.101,230,140.101C251.111,140.101,272.222,186.541,293.333,186.541C314.444,186.541,335.556,114.48,356.667,114.48C377.778,114.48,398.889,141.703,420,141.703C441.111,141.703,462.222,121.419,483.333,112.878C504.444,104.338,525.556,105.405,546.667,90.459C567.778,75.514,588.889,49.358,610,23.203"
+            fill="transparent"
+            id="2-line-areaChart_0"
+            opacity="0.3"
+            stroke="blue"
+            stroke-width="3"
+          />
+          <path
+            d="M40,160.919C61.111,149.709,82.222,138.5,103.333,138.5C124.444,138.5,145.556,165.723,166.667,165.723C187.778,165.723,208.889,140.101,230,140.101C251.111,140.101,272.222,186.541,293.333,186.541C314.444,186.541,335.556,114.48,356.667,114.48C377.778,114.48,398.889,141.703,420,141.703C441.111,141.703,462.222,121.419,483.333,112.878C504.444,104.338,525.556,105.405,546.667,90.459C567.778,75.514,588.889,49.358,610,23.203L610,87.257C588.889,136.899,567.778,186.541,546.667,186.541C525.556,186.541,504.444,176.932,483.333,176.932C462.222,176.932,441.111,196.149,420,196.149C398.889,196.149,377.778,178.534,356.667,178.534C335.556,178.534,314.444,201.486,293.333,202.554C272.222,203.622,251.111,203.088,230,204.155C208.889,205.223,187.778,218.568,166.667,218.568C145.556,218.568,124.444,194.547,103.333,194.547C82.222,194.547,61.111,201.753,40,208.959Z"
+            fill="blue"
+            fill-opacity="0.7"
+            id="2-graph-areaChart_0"
+            opacity="1"
+          />
+          <g
+            aria-label="legend1, series 1 of 3 with 10 data points."
+            clip-path="url(#clip)"
+            d="M40,242.588C61.111,238.584,82.222,234.581,103.333,234.581C124.444,234.581,145.556,234.581,166.667,234.581C187.778,234.581,208.889,220.169,230,220.169C251.111,220.169,272.222,224.973,293.333,224.973C314.444,224.973,335.556,207.358,356.667,207.358C377.778,207.358,398.889,209.493,420,210.561C441.111,211.628,462.222,213.764,483.333,213.764C504.444,213.764,525.556,204.155,546.667,197.75C567.778,191.345,588.889,183.338,610,175.331L610,257C588.889,257,567.778,257,546.667,257C525.556,257,504.444,257,483.333,257C462.222,257,441.111,257,420,257C398.889,257,377.778,257,356.667,257C335.556,257,314.444,257,293.333,257C272.222,257,251.111,257,230,257C208.889,257,187.778,257,166.667,257C145.556,257,124.444,257,103.333,257C82.222,257,61.111,257,40,257Z"
+            role="region"
+          >
+            <circle
+              aria-label="20. legend1, 9."
+              cx="40"
+              cy="242.58783783783784"
+              data-is-focusable="true"
+              fill="green"
+              id="circle2_0"
+              r="0"
+              role="img"
+              stroke="green"
+              stroke-width="3"
+              tabindex="0"
+            />
+            <circle
+              aria-label="25. legend1, 14."
+              cx="103.33333333333333"
+              cy="234.5810810810811"
+              data-is-focusable="true"
+              fill="green"
+              id="circle2_1"
+              r="0"
+              role="img"
+              stroke="green"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="30. legend1, 14."
+              cx="166.66666666666666"
+              cy="234.5810810810811"
+              data-is-focusable="true"
+              fill="green"
+              id="circle2_2"
+              r="0"
+              role="img"
+              stroke="green"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="35. legend1, 23."
+              cx="230"
+              cy="220.1689189189189"
+              data-is-focusable="true"
+              fill="green"
+              id="circle2_3"
+              r="0"
+              role="img"
+              stroke="green"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="40. legend1, 20."
+              cx="293.3333333333333"
+              cy="224.972972972973"
+              data-is-focusable="true"
+              fill="green"
+              id="circle2_4"
+              r="0"
+              role="img"
+              stroke="green"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="45. legend1, 31."
+              cx="356.6666666666667"
+              cy="207.35810810810813"
+              data-is-focusable="true"
+              fill="green"
+              id="circle2_5"
+              r="0"
+              role="img"
+              stroke="green"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="50. legend1, 29."
+              cx="419.99999999999994"
+              cy="210.5608108108108"
+              data-is-focusable="true"
+              fill="green"
+              id="circle2_6"
+              r="0"
+              role="img"
+              stroke="green"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="55. legend1, 27."
+              cx="483.33333333333337"
+              cy="213.76351351351352"
+              data-is-focusable="true"
+              fill="green"
+              id="circle2_7"
+              r="0"
+              role="img"
+              stroke="green"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="60. legend1, 37."
+              cx="546.6666666666666"
+              cy="197.75"
+              data-is-focusable="true"
+              fill="green"
+              id="circle2_8"
+              r="0"
+              role="img"
+              stroke="green"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="65. legend1, 51."
+              cx="610"
+              cy="175.33108108108112"
+              data-is-focusable="true"
+              fill="green"
+              id="circle2_9"
+              r="0"
+              role="img"
+              stroke="green"
+              stroke-width="3"
+              tabindex="-1"
+            />
+          </g>
+          <g
+            aria-label="legend2, series 2 of 3 with 10 data points."
+            clip-path="url(#clip)"
+            d="M40,208.959C61.111,201.753,82.222,194.547,103.333,194.547C124.444,194.547,145.556,218.568,166.667,218.568C187.778,218.568,208.889,205.223,230,204.155C251.111,203.088,272.222,203.622,293.333,202.554C314.444,201.486,335.556,178.534,356.667,178.534C377.778,178.534,398.889,196.149,420,196.149C441.111,196.149,462.222,176.932,483.333,176.932C504.444,176.932,525.556,186.541,546.667,186.541C567.778,186.541,588.889,136.899,610,87.257L610,175.331C588.889,183.338,567.778,191.345,546.667,197.75C525.556,204.155,504.444,213.764,483.333,213.764C462.222,213.764,441.111,211.628,420,210.561C398.889,209.493,377.778,207.358,356.667,207.358C335.556,207.358,314.444,224.973,293.333,224.973C272.222,224.973,251.111,220.169,230,220.169C208.889,220.169,187.778,234.581,166.667,234.581C145.556,234.581,124.444,234.581,103.333,234.581C82.222,234.581,61.111,238.584,40,242.588Z"
+            role="region"
+          >
+            <circle
+              aria-label="20. legend2, 21."
+              cx="40"
+              cy="208.95945945945945"
+              data-is-focusable="true"
+              fill="yellow"
+              id="circle2_10"
+              r="0"
+              role="img"
+              stroke="yellow"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="25. legend2, 25."
+              cx="103.33333333333333"
+              cy="194.5472972972973"
+              data-is-focusable="true"
+              fill="yellow"
+              id="circle2_11"
+              r="0"
+              role="img"
+              stroke="yellow"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="30. legend2, 10."
+              cx="166.66666666666666"
+              cy="218.56756756756758"
+              data-is-focusable="true"
+              fill="yellow"
+              id="circle2_12"
+              r="0"
+              role="img"
+              stroke="yellow"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="35. legend2, 10."
+              cx="230"
+              cy="204.1554054054054"
+              data-is-focusable="true"
+              fill="yellow"
+              id="circle2_13"
+              r="0"
+              role="img"
+              stroke="yellow"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="40. legend2, 14."
+              cx="293.3333333333333"
+              cy="202.55405405405403"
+              data-is-focusable="true"
+              fill="yellow"
+              id="circle2_14"
+              r="0"
+              role="img"
+              stroke="yellow"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="45. legend2, 18."
+              cx="356.6666666666667"
+              cy="178.53378378378375"
+              data-is-focusable="true"
+              fill="yellow"
+              id="circle2_15"
+              r="0"
+              role="img"
+              stroke="yellow"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="50. legend2, 9."
+              cx="419.99999999999994"
+              cy="196.14864864864865"
+              data-is-focusable="true"
+              fill="yellow"
+              id="circle2_16"
+              r="0"
+              role="img"
+              stroke="yellow"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="55. legend2, 23."
+              cx="483.33333333333337"
+              cy="176.93243243243242"
+              data-is-focusable="true"
+              fill="yellow"
+              id="circle2_17"
+              r="0"
+              role="img"
+              stroke="yellow"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="60. legend2, 7."
+              cx="546.6666666666666"
+              cy="186.54054054054052"
+              data-is-focusable="true"
+              fill="yellow"
+              id="circle2_18"
+              r="0"
+              role="img"
+              stroke="yellow"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="65. legend2, 55."
+              cx="610"
+              cy="87.25675675675676"
+              data-is-focusable="true"
+              fill="yellow"
+              id="circle2_19"
+              r="0"
+              role="img"
+              stroke="yellow"
+              stroke-width="3"
+              tabindex="-1"
+            />
+          </g>
+          <g
+            aria-label="legend3, series 3 of 3 with 10 data points."
+            clip-path="url(#clip)"
+            d="M40,160.919C61.111,149.709,82.222,138.5,103.333,138.5C124.444,138.5,145.556,165.723,166.667,165.723C187.778,165.723,208.889,140.101,230,140.101C251.111,140.101,272.222,186.541,293.333,186.541C314.444,186.541,335.556,114.48,356.667,114.48C377.778,114.48,398.889,141.703,420,141.703C441.111,141.703,462.222,121.419,483.333,112.878C504.444,104.338,525.556,105.405,546.667,90.459C567.778,75.514,588.889,49.358,610,23.203L610,87.257C588.889,136.899,567.778,186.541,546.667,186.541C525.556,186.541,504.444,176.932,483.333,176.932C462.222,176.932,441.111,196.149,420,196.149C398.889,196.149,377.778,178.534,356.667,178.534C335.556,178.534,314.444,201.486,293.333,202.554C272.222,203.622,251.111,203.088,230,204.155C208.889,205.223,187.778,218.568,166.667,218.568C145.556,218.568,124.444,194.547,103.333,194.547C82.222,194.547,61.111,201.753,40,208.959Z"
+            role="region"
+          >
+            <circle
+              aria-label="20. legend3, 30."
+              cx="40"
+              cy="160.91891891891888"
+              data-is-focusable="true"
+              fill="blue"
+              id="circle2_20"
+              r="0"
+              role="img"
+              stroke="blue"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="25. legend3, 35."
+              cx="103.33333333333333"
+              cy="138.5"
+              data-is-focusable="true"
+              fill="blue"
+              id="circle2_21"
+              r="0"
+              role="img"
+              stroke="blue"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="30. legend3, 33."
+              cx="166.66666666666666"
+              cy="165.722972972973"
+              data-is-focusable="true"
+              fill="blue"
+              id="circle2_22"
+              r="0"
+              role="img"
+              stroke="blue"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="35. legend3, 40."
+              cx="230"
+              cy="140.10135135135135"
+              data-is-focusable="true"
+              fill="blue"
+              id="circle2_23"
+              r="0"
+              role="img"
+              stroke="blue"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="40. legend3, 10."
+              cx="293.3333333333333"
+              cy="186.54054054054052"
+              data-is-focusable="true"
+              fill="blue"
+              id="circle2_24"
+              r="0"
+              role="img"
+              stroke="blue"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="45. legend3, 40."
+              cx="356.6666666666667"
+              cy="114.47972972972974"
+              data-is-focusable="true"
+              fill="blue"
+              id="circle2_25"
+              r="0"
+              role="img"
+              stroke="blue"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="50. legend3, 34."
+              cx="419.99999999999994"
+              cy="141.7027027027027"
+              data-is-focusable="true"
+              fill="blue"
+              id="circle2_26"
+              r="0"
+              role="img"
+              stroke="blue"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="55. legend3, 40."
+              cx="483.33333333333337"
+              cy="112.87837837837837"
+              data-is-focusable="true"
+              fill="blue"
+              id="circle2_27"
+              r="0"
+              role="img"
+              stroke="blue"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="60. legend3, 60."
+              cx="546.6666666666666"
+              cy="90.45945945945944"
+              data-is-focusable="true"
+              fill="blue"
+              id="circle2_28"
+              r="0"
+              role="img"
+              stroke="blue"
+              stroke-width="3"
+              tabindex="-1"
+            />
+            <circle
+              aria-label="65. legend3, 40."
+              cx="610"
+              cy="23.202702702702695"
+              data-is-focusable="true"
+              fill="blue"
+              id="circle2_29"
+              r="0"
+              role="img"
+              stroke="blue"
+              stroke-width="3"
+              tabindex="-1"
+            />
+          </g>
+          <line
+            id="verticalLine_1"
+            opacity="0.5"
+            stroke="blue"
+            stroke-dasharray="5.5"
+            stroke-width="1"
+            visibility="hidden"
+            x1="0"
+            x2="0"
+            y1="0"
+            y2="292"
+          />
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style=""
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone9"
+                data-tabster="{\\"uncontrolled\\": {}}"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="legend1"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: green;
+                              border-color: green;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, green, green);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        legend1
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="legend2"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: yellow;
+                              border-color: yellow;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, yellow, yellow);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        legend2
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="legend3"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: blue;
+                              border-color: blue;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, blue, blue);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        legend3
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Area chart rendering Should render the area chart with date x-axis data in IST timezone 1`] = `
 <div>
   <div
