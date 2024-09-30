@@ -2,6 +2,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { NavItemProps } from '../NavItem/NavItem.types';
 import { ButtonProps, MenuButtonProps, ToggleButtonProps } from '@fluentui/react-button';
 import { NavSize } from '../Nav/Nav.types';
+import { NavSubItemProps } from '../NavSubItem/NavSubItem.types';
 
 export type SplitNavItemSlots = {
   /**
@@ -11,8 +12,16 @@ export type SplitNavItemSlots = {
 
   /**
    * Primary navigation item in SplitNavItem.
+   * Should be used mutually exclusive with NavSubItem.
    */
   navItem?: Slot<NavItemProps>;
+
+  /**
+   * Navigation sub item in SplitNavItem.
+   * A child (visually, but not in the DOM) of the navItem.
+   * Should be used mutually exclusive with NavItem.
+   */
+  navSubItem?: Slot<NavSubItemProps>;
 
   /**
    * Basic button slot.

@@ -5,6 +5,7 @@ import { useNavContext_unstable } from '../NavContext';
 import { Button, MenuButton, ToggleButton } from '@fluentui/react-button';
 import { MoreHorizontalFilled, Pin20Regular } from '@fluentui/react-icons';
 import { NavItem } from '../NavItem/index';
+import { NavSubItem } from '../NavSubItem/NavSubItem';
 
 /**
  * Create the state required to render SplitNavItem.
@@ -19,7 +20,7 @@ export const useSplitNavItem_unstable = (
   props: SplitNavItemProps,
   ref: React.Ref<HTMLDivElement>,
 ): SplitNavItemState => {
-  const { navItem, actionButton, toggleButton, menuButton, children } = props;
+  const { navItem, navSubItem, actionButton, toggleButton, menuButton, children } = props;
 
   const { size = 'medium' } = useNavContext_unstable();
 
@@ -27,8 +28,12 @@ export const useSplitNavItem_unstable = (
     defaultProps: {
       children,
     },
-    renderByDefault: true,
     elementType: NavItem,
+  });
+
+  const navSubItemShorthand = slot.optional(navSubItem, {
+    defaultProps: { children },
+    elementType: NavSubItem,
   });
 
   const actionButtonShorthand = slot.optional(actionButton, {
@@ -62,6 +67,7 @@ export const useSplitNavItem_unstable = (
     components: {
       root: 'div',
       navItem: NavItem,
+      navSubItem: NavSubItem,
       actionButton: Button,
       toggleButton: ToggleButton,
       menuButton: MenuButton,
@@ -77,6 +83,7 @@ export const useSplitNavItem_unstable = (
       { elementType: 'div' },
     ),
     navItem: navItemShorthand,
+    navSubItem: navSubItemShorthand,
     actionButton: actionButtonShorthand,
     toggleButton: toggleButtonShorthand,
     menuButton: menuButtonShorthand,

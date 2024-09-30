@@ -7,6 +7,7 @@ import { tokens } from '@fluentui/react-theme';
 export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
   root: 'fui-SplitNavItem',
   navItem: 'fui-SplitNavItem__navItem',
+  navSubItem: 'fui-SplitNavItem__navSubItem',
   actionButton: 'fui-SplitNavItem__actionButton',
   toggleButton: 'fui-SplitNavItem__toggleButton',
   menuButton: 'fui-SplitNavItem__menuButton',
@@ -14,6 +15,13 @@ export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
 // Don't use makeResetStyles here because the sub components call it once and
 // This links says that makeResetStyles should only be called once per element
 // https://griffel.js.org/react/api/make-reset-styles/#limitations
+
+const navSubItemBackgroundTokens = {
+  backgroundColor: navItemTokens.backgroundColorHover,
+  transitionDuration: navItemTokens.animationTokens.animationDuration,
+  transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
+  transitionProperty: 'background',
+};
 
 /**
  * Styles for the root slot
@@ -24,27 +32,23 @@ const useSplitNaveItemStyles = makeStyles({
     alignItems: 'start',
     padding: 'unset',
     textAlign: 'unset',
-    backgroundColor: navItemTokens.backgroundColor,
 
+    paddingInlineEnd: '6px',
+
+    backgroundColor: navItemTokens.backgroundColor,
     transitionDuration: navItemTokens.animationTokens.animationDuration,
     transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
     transitionProperty: 'background',
 
-    ':hover .fui-NavItem': {
-      backgroundColor: navItemTokens.backgroundColorHover,
-      transitionDuration: navItemTokens.animationTokens.animationDuration,
-      transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
-      transitionProperty: 'background',
-    },
+    ':hover .fui-NavItem': navSubItemBackgroundTokens,
 
-    ':active .fui-NavItem': {
-      backgroundColor: navItemTokens.backgroundColorPressed,
-      transitionDuration: navItemTokens.animationTokens.animationDuration,
-      transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
-      transitionProperty: 'background',
-    },
+    ':active .fui-NavItem': navSubItemBackgroundTokens,
+
+    ':hover .fui-NavSubItem': navSubItemBackgroundTokens,
+
+    ':active .fui-NavSubItem': navSubItemBackgroundTokens,
   },
-  basenavItem: {
+  baseNavItem: {
     // styles that we want to disagree with the default on
     display: 'flex',
     textTransform: 'none',
@@ -94,8 +98,16 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
   if (state.navItem) {
     state.navItem.className = mergeClasses(
       splitNavItemClassNames.navItem,
-      splitNavItemStyles.basenavItem,
+      splitNavItemStyles.baseNavItem,
       state.navItem.className,
+    );
+  }
+
+  if (state.navSubItem) {
+    state.navSubItem.className = mergeClasses(
+      splitNavItemClassNames.navSubItem,
+      splitNavItemStyles.baseNavItem,
+      state.navSubItem.className,
     );
   }
 
