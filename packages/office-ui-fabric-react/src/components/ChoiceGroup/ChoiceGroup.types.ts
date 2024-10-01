@@ -112,4 +112,9 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
    * This value is maintained by the component and is accessible during onRenderField
    */
   labelId?: string;
+
+  /**
+   * The aria label of the ChoiceGroupOption for the benefit of screen readers.
+   */
+  ariaLabel?: string;
 }

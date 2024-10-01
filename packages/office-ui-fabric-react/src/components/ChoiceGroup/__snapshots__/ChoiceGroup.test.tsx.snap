@@ -20,6 +20,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
           className="ms-ChoiceField-wrapper"
         >
           <input
+            aria-label={undefined}
             aria-labelledby="ChoiceGroupLabel1-1"
             checked={false}
             className="ms-ChoiceField-input"
@@ -53,6 +54,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
           className="ms-ChoiceField-wrapper"
         >
           <input
+            aria-label={undefined}
             aria-labelledby="ChoiceGroupLabel1-2"
             checked={false}
             className="ms-ChoiceField-input"
@@ -85,6 +87,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
           className="ms-ChoiceField-wrapper"
         >
           <input
+            aria-label={undefined}
             aria-labelledby="ChoiceGroupLabel1-3"
             checked={false}
             className="ms-ChoiceField-input"
