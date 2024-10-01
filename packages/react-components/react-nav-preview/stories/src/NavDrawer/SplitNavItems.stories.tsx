@@ -13,7 +13,6 @@ import {
   SplitNavItem,
   SplitNavItemProps,
   NavItemProps,
-  NavSubItemProps,
   NavCategoryItemProps,
   NavCategoryProps,
   NavSubItemGroup,
