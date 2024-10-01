@@ -2,6 +2,27 @@
   "name": "@fluentui/react-drawer",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2024 14:15:27 GMT",
+      "tag": "@fluentui/react-drawer_v9.5.16",
+      "version": "9.5.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "c81b5b5cc9ad3b0e374938d108e44fcb34ec98fe",
+            "comment": "fix: reversed animations"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.11.16",
+            "commit": "c81b5b5cc9ad3b0e374938d108e44fcb34ec98fe"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Sep 2024 12:40:13 GMT",
       "tag": "@fluentui/react-drawer_v9.5.15",
       "version": "9.5.15",

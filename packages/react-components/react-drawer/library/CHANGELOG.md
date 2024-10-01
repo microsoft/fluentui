@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Mon, 23 Sep 2024 12:40:13 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2024 14:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.5.16)
+
+Thu, 26 Sep 2024 14:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.5.15..@fluentui/react-drawer_v9.5.16)
+
+### Patches
+
+- fix: reversed animations ([PR #32924](https://github.com/microsoft/fluentui/pull/32924) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-dialog to v9.11.16 ([PR #32924](https://github.com/microsoft/fluentui/pull/32924) by beachball)
 
 ## [9.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.5.15)
 

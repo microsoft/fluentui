@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { RatingDisplay as FluentRatingDisplay } from './rating-display.js';
 import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
@@ -13,7 +13,8 @@ const storyTemplate = html<StoryArgs<FluentRatingDisplay>>`
     max=${story => story.max}
     size=${story => story.size}
     value=${story => story.value}
-  ></fluent-rating-display>
+    >${story => story.iconSlottedContent?.()}</fluent-rating-display
+  >
 `;
 
 export default {
@@ -51,6 +52,17 @@ export default {
       description: 'The number of ratings',
       table: { category: 'attributes', type: { summary: 'number' } },
     },
+    'icon-view-box': {
+      control: 'text',
+      table: {
+        type: {
+          summary: 'The `viewBox` attribute of the icon SVG element',
+        },
+        defaultValue: {
+          summary: '0 0 20 20',
+        },
+      },
+    },
     max: {
       control: 'number',
       description: 'The maximum possible value of the rating. This attribute determines the number of icons displayed.',
@@ -60,6 +72,12 @@ export default {
       control: 'number',
       description: 'The value of the rating',
       table: { category: 'attributes', type: { summary: 'number' } },
+    },
+    iconSlottedContent: {
+      control: false,
+      description: 'The slot for the SVG element used as the rating icon',
+      name: 'icon',
+      table: { category: 'slots', type: {} },
     },
   },
 } as Meta<FluentRatingDisplay>;
@@ -116,5 +134,16 @@ export const Compact: Story = {
   args: {
     value: 3.5,
     compact: true,
+  },
+};
+
+export const CustomIcon: Story = {
+  args: {
+    value: 3.7,
+    iconSlottedContent: () => html`<svg slot="icon">
+      <path
+        d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2Z"
+      />
+    </svg>`,
   },
 };

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs: improve usage docs and fix invalid links to sb docs",
-  "packageName": "@fluentui/react-jsx-runtime",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

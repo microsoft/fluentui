@@ -19,6 +19,9 @@ export type NavItemSlots = {
  * NavItem Props
  */
 export type NavItemProps = ComponentProps<NavItemSlots> & {
+  /**
+   * Destination where the nav item points to.
+   */
   href?: string;
   /**
    * The value that identifies this navCategoryItem when selected.

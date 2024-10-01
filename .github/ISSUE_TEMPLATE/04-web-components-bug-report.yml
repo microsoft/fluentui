@@ -1,7 +1,7 @@
 name: '🌎 Web Components - 🐞 Bug Report'
 description: File a bug report.
 title: '[Bug]: '
-labels: ['Type: Bug 🐛', 'Needs: Triage 🔍', 'web-components', 'Fluent UI WC (v3)']
+labels: ['Type: Bug :bug:', 'Needs: Triage :mag:', 'web-components', 'Fluent UI WC (v3)']
 projects: ['microsoft/395']
 assignees: ['@microsoft/fui-wc']
 body:
