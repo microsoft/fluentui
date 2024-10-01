@@ -74,6 +74,9 @@ export type TabState = ComponentState<TabInternalSlots> &
      */
     size: 'small' | 'medium' | 'large';
 
+    /**
+     * A tab can have a circular shape. Could be used only with 'filled' or 'subtle' appearance.
+     */
     shape?: 'circular';
 
     /**

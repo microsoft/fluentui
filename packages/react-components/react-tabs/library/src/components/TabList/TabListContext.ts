@@ -2,7 +2,7 @@ import { createContext, useContextSelector } from '@fluentui/react-context-selec
 import type { Context, ContextSelector } from '@fluentui/react-context-selector';
 import { TabListContextValue } from './TabList.types';
 
-const tabListContextDefaultValue = {
+const tabListContextDefaultValue: TabListContextValue = {
   appearance: 'transparent',
   reserveSelectedTabSpace: true,
   selectTabOnFocus: false,
@@ -25,7 +25,7 @@ const tabListContextDefaultValue = {
   shape: undefined,
   size: 'medium',
   vertical: false,
-} as TabListContextValue;
+};
 
 export const TabListContext: Context<TabListContextValue> = createContext<TabListContextValue | undefined>(
   undefined,

@@ -43,7 +43,8 @@ export const Circular = () => {
 Circular.parameters = {
   docs: {
     description: {
-      story: 'A tab list can be `circlular` appearance to make tabs look like pills.',
+      story:
+        'A tab list can be `circular` appearance to make tabs look like pills. shape. Could be used only with `filled` or `subtle` appearance.',
     },
   },
 };
