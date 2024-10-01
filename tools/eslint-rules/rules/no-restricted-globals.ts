@@ -68,14 +68,15 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
       return {};
     }
 
-    const restrictedGlobalMessages = context.options.reduce<Record<string, string | null>>((memo, option) => {
+    const restrictedGlobalMessages = context.options.reduce<Record<string, string | null>>((acc, option) => {
       if (typeof option === 'string') {
-        memo[option] = null;
-      } else {
-        memo[option.name] = option.message!;
+        acc[option] = null;
+        return acc;
       }
 
-      return memo;
+      acc[option.name] = option.message ?? null;
+
+      return acc;
     }, {});
 
     /**
@@ -103,12 +104,16 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
      * Check if the given name is a restricted global name.
      * @param  name name of a variable
      * @returns whether the variable is a restricted global or not
-     * @private
      */
     function isRestricted(name: string): boolean {
-      return Object.prototype.hasOwnProperty.call(restrictedGlobalMessages, name);
+      return Object.hasOwn(restrictedGlobalMessages, name);
     }
 
+    /**
+     * Determines if global reference is a TypeScript type ( which is ignored as it doesn't have any impact on runtime)
+     * @param reference
+     * @returns
+     */
     function isTypeReference(reference: Reference) {
       if (reference.isTypeReference) {
         return true;
