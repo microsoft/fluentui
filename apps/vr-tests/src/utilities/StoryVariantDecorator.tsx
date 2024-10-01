@@ -14,7 +14,7 @@ const StoryVariantDecorator: Decorator = (storyFn, context) => {
       {storyFn(context)}
     </ThemeProvider>
   ) : (
-    storyFn(context)
+    <ThemeProvider>{storyFn(context)}</ThemeProvider>
   );
 };
 
