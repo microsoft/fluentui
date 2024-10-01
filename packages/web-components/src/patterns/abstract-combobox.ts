@@ -471,7 +471,7 @@ export abstract class AbstractCombobox extends FASTElement {
       this.activeOption = undefined;
     }
 
-    if (this.listElement) {
+    if (this.listElement && this.$fastController.isConnected) {
       this.setAttribute('aria-controls', this.listElement.id);
       this.setAnchorPositioningCSS();
       this.bindListboxEvents();
