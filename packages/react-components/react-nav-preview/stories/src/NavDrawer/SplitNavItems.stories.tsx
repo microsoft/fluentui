@@ -246,7 +246,7 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
         );
       } else if (item.navCategoryItem) {
         return (
-          <NavCategory value={item.navCategory?.value || ''}>
+          <NavCategory key={index} value={item.navCategory?.value || ''}>
             <NavCategoryItem {...item.navCategoryItem} />
             <NavSubItemGroup>
               {item.navSubItems?.map((subItem, subItemIndex) => (
