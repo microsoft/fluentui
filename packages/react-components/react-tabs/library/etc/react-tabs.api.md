@@ -48,7 +48,7 @@ export const TabList: ForwardRefComponent<TabListProps>;
 export const tabListClassNames: SlotClassNames<TabListSlots>;
 
 // @public (undocumented)
-export type TabListContextValue = Pick<TabListProps, 'onTabSelect' | 'selectTabOnFocus' | 'selectedValue' | 'reserveSelectedTabSpace'> & Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
+export type TabListContextValue = Pick<TabListProps, 'onTabSelect' | 'selectTabOnFocus' | 'selectedValue' | 'shape' | 'reserveSelectedTabSpace'> & Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
     onRegister: RegisterTabEventHandler;
     onUnregister: RegisterTabEventHandler;
     onSelect: SelectTabEventHandler;
@@ -66,7 +66,7 @@ export type TabListContextValues = {
 
 // @public
 export type TabListProps = ComponentProps<TabListSlots> & {
-    appearance?: 'transparent' | 'subtle';
+    appearance?: 'transparent' | 'subtle' | 'filled';
     reserveSelectedTabSpace?: boolean;
     defaultSelectedValue?: TabValue;
     disabled?: boolean;
@@ -74,6 +74,7 @@ export type TabListProps = ComponentProps<TabListSlots> & {
     selectTabOnFocus?: boolean;
     selectedValue?: TabValue;
     size?: 'small' | 'medium' | 'large';
+    shape?: 'circular';
     vertical?: boolean;
 };
 
@@ -109,11 +110,12 @@ export type TabSlots = {
 
 // @public
 export type TabState = ComponentState<TabInternalSlots> & Pick<TabProps, 'value'> & Required<Pick<TabProps, 'disabled'>> & {
-    appearance?: 'transparent' | 'subtle';
+    appearance?: 'transparent' | 'subtle' | 'filled';
     iconOnly: boolean;
     selected: boolean;
     contentReservedSpaceClassName?: string;
     size: 'small' | 'medium' | 'large';
+    shape?: 'circular';
     vertical: boolean;
 };
 
