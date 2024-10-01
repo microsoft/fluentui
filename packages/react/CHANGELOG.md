@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 30 Sep 2024 07:23:12 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Oct 2024 07:21:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.121.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.0)
+
+Tue, 01 Oct 2024 07:21:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.120.10..@fluentui/react_v8.121.0)
+
+### Minor changes
+
+- fix (v8 MessageBar): Add showExpandButton prop to allow manual override to explicitly show the expand button ([PR #32884](https://github.com/microsoft/fluentui/pull/32884) by jiangemma@microsoft.com)
 
 ## [8.120.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.10)
 
