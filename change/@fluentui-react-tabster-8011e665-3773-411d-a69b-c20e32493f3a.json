@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Bump tabster to 8.2.0 to fix trapped modalizer tab issue",
-  "packageName": "@fluentui/react-tabster",
-  "email": "jiangemma@microsoft.com",
-  "dependentChangeType": "patch"
-}
