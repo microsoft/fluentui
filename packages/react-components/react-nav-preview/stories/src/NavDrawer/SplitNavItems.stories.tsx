@@ -17,6 +17,7 @@ import {
   NavCategoryItemProps,
   NavCategoryProps,
   NavSubItemGroup,
+  NavDivider,
 } from '@fluentui/react-nav-preview';
 import {
   Label,
@@ -168,12 +169,12 @@ const splitNavItemNestedProps: SplitNavItemNestedProps[] = [
   },
 ];
 
-const SomeMenuPopover = () => {
+const DemoMenuPopover = () => {
   return (
     <MenuPopover>
       <MenuList>
-        <MenuItem>Item a</MenuItem>
-        <MenuItem>Item b</MenuItem>
+        <MenuItem>New </MenuItem>
+        <MenuItem>New Window</MenuItem>
       </MenuList>
     </MenuPopover>
   );
@@ -219,18 +220,28 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
     }
   };
 
-  const generateNavItems = () => {
-    return splitNavItemNestedProps.map((item, index) => {
+  const getToggleButtonProps = (value?: string) => {
+    if (value) {
+      return {
+        onClick: () => handlePinClick(value),
+        icon: pinnedValues.includes(value) ? <Pin20Filled /> : <Pin20Regular />,
+      };
+    }
+    return { icon: <Pin20Regular /> };
+  };
+
+  const getNavItems = (isPinnable: boolean) => {
+    const startIndex = isPinnable ? 4 : 0;
+    const endIndex = isPinnable ? splitNavItemNestedProps.length : 4;
+
+    return splitNavItemNestedProps.slice(startIndex, endIndex).map((item, index) => {
       if ((item?.splitNavItem?.navItem as NavItemProps)?.value) {
         return (
           <SplitNavItem
+            key={index}
             navItem={item?.splitNavItem?.navItem}
-            menuButton={{}}
             toggleButton={
-              {
-                // onClick: () => handlePinClick(item.splitNavItem?.navItem.value),
-                // icon: pinnedValues.includes(item.splitNavItem.navItem.value) ? <Pin20Filled /> : <Pin20Regular />,
-              }
+              isPinnable ? getToggleButtonProps((item.splitNavItem?.navItem as NavItemProps)?.value) : undefined
             }
           />
         );
@@ -239,17 +250,23 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
           <NavCategory value={item.navCategory?.value || ''}>
             <NavCategoryItem {...item.navCategoryItem} />
             <NavSubItemGroup>
-              {item.navSubItems?.map(subItem => (
-                <SplitNavItem
-                  navSubItem={subItem.navSubItem}
-                  menuButton={{}}
-                  toggleButton={
-                    {
-                      // onClick: () => handlePinClick(subItem.navSubItem.value),
-                      // icon: pinnedValues.includes(subItem.navSubItem.value) ? <Pin20Filled /> : <Pin20Regular />,
-                    }
-                  }
-                />
+              {item.navSubItems?.map((subItem, subItemIndex) => (
+                <Menu key={subItemIndex}>
+                  <MenuTrigger>
+                    {(triggerProps: MenuButtonProps) => (
+                      <SplitNavItem
+                        navSubItem={subItem.navSubItem}
+                        menuButton={triggerProps}
+                        toggleButton={
+                          isPinnable
+                            ? getToggleButtonProps((item.splitNavItem?.navItem as NavItemProps)?.value)
+                            : undefined
+                        }
+                      />
+                    )}
+                  </MenuTrigger>
+                  <DemoMenuPopover />
+                </Menu>
               ))}
             </NavSubItemGroup>
           </NavCategory>
@@ -269,7 +286,9 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
         </NavDrawerHeader>
         <NavDrawerBody>
           {appItem}
-          {generateNavItems()}
+          {getNavItems(false)}
+          <NavDivider />
+          {getNavItems(true)}
         </NavDrawerBody>
       </NavDrawer>
       <div className={styles.content}>
