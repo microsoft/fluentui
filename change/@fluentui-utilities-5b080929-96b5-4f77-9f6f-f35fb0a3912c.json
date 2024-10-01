@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: correctly handle style function in customizer",
+  "comment": "fix: remove circular dependency to better support AMD loaders",
   "packageName": "@fluentui/utilities",
   "email": "seanmonahan@microsoft.com",
   "dependentChangeType": "patch"

@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 10 Sep 2024 07:21:59 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Oct 2024 07:21:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.121.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.0)
+
+Tue, 01 Oct 2024 07:21:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.120.10..@fluentui/react_v8.121.0)
+
+### Minor changes
+
+- fix (v8 MessageBar): Add showExpandButton prop to allow manual override to explicitly show the expand button ([PR #32884](https://github.com/microsoft/fluentui/pull/32884) by jiangemma@microsoft.com)
+
+## [8.120.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.10)
+
+Mon, 30 Sep 2024 07:23:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.120.9..@fluentui/react_v8.120.10)
+
+### Patches
+
+- Bump @fluentui/foundation-legacy to v8.4.17 ([PR #32437](https://github.com/microsoft/fluentui/pull/32437) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.51 ([PR #32437](https://github.com/microsoft/fluentui/pull/32437) by beachball)
+- Bump @fluentui/react-focus to v8.9.14 ([PR #32437](https://github.com/microsoft/fluentui/pull/32437) by beachball)
+- Bump @fluentui/react-hooks to v8.8.13 ([PR #32437](https://github.com/microsoft/fluentui/pull/32437) by beachball)
+- Bump @fluentui/style-utilities to v8.11.0 ([PR #32437](https://github.com/microsoft/fluentui/pull/32437) by beachball)
+- Bump @fluentui/theme to v2.6.60 ([PR #32437](https://github.com/microsoft/fluentui/pull/32437) by beachball)
+- Bump @fluentui/utilities to v8.15.16 ([PR #32437](https://github.com/microsoft/fluentui/pull/32437) by beachball)
 
 ## [8.120.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.9)
 

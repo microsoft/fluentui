@@ -2,6 +2,42 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Tue, 01 Oct 2024 07:21:08 GMT",
+      "tag": "@fluentui/react-cards_v0.205.175",
+      "version": "0.205.175",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/react to v8.121.0",
+            "commit": "ee4737807c332db95f503a18b270041def2b9836"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Sep 2024 07:23:12 GMT",
+      "tag": "@fluentui/react-cards_v0.205.174",
+      "version": "0.205.174",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/react to v8.120.10",
+            "commit": "7ef0d028b9f061ff06665d467b2e17a4df6755ae"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.17",
+            "commit": "7ef0d028b9f061ff06665d467b2e17a4df6755ae"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Sep 2024 07:21:59 GMT",
       "tag": "@fluentui/react-cards_v0.205.173",
       "version": "0.205.173",
