@@ -382,6 +382,8 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       xScale,
       yScale,
       yScaleSecondary,
+      containerHeight,
+      containerWidth,
     });
 
     if (!props.hideTooltip && calloutProps!.isPopoverOpen) {

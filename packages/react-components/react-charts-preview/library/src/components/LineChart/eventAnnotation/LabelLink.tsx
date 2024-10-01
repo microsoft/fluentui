@@ -36,7 +36,9 @@ export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
   if (showCard) {
     const cards = props.labelDef.aggregatedIdx.map(i => props.lineDefs[i].onRenderCard!).filter(c => !!c);
     if (cards.length > 0) {
-      callout = {
+      callout = null;
+      // TODO - need to replace callout with popover
+      /*callout = {
         /* <Callout
           target={gRef.current}
           // eslint-disable-next-line react/jsx-no-bind
@@ -51,8 +53,8 @@ export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
               onRenderCell={onRenderCell}
             />
           </FocusZone>
-        </Callout> */
-      };
+        </Callout>
+      };*/
     }
   }
 
