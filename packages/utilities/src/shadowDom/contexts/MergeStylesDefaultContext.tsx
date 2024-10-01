@@ -5,7 +5,7 @@ import type { AdoptedStylesheetExHook, AdoptedStylesheetHook } from '../hooks/us
 import type { ShadowConfigHook } from '../hooks/useShadowConfig';
 import type {
   HasMergeStylesShadowRootContextHook,
-  MergeStylesShadowRootContetHook,
+  MergeStylesShadowRootContextHook,
 } from '../hooks/useMergeStylesShadowRoot';
 import type { MergeStylesRootStylesheetsHook } from '../hooks/useMergeStylesRootStylesheets';
 import type { UseStyledHook } from '../hooks/useStyled';
@@ -36,7 +36,7 @@ export type MergeStylesDefaultContextValue = {
   useAdoptedStylesheetEx: AdoptedStylesheetExHook;
   useAdoptedStylesheet: AdoptedStylesheetHook;
   useShadowConfig: ShadowConfigHook;
-  useMergeStylesShadowRootContext: MergeStylesShadowRootContetHook;
+  useMergeStylesShadowRootContext: MergeStylesShadowRootContextHook;
   useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContextHook;
   useMergeStylesRootStylesheets: MergeStylesRootStylesheetsHook;
   useWindow: UseWindowHook;
