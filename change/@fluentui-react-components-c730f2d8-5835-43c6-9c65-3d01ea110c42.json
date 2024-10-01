@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "'feat:",
+  "comment": "feat: Stable release of react-carousel",
   "packageName": "@fluentui/react-components",
   "email": "mifraser@microsoft.com",
   "dependentChangeType": "patch"
