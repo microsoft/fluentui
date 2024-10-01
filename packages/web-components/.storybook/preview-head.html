@@ -1,10 +1,5 @@
 <script id="anchor-polyfill" type="module">
   document.addEventListener('anchor-polyfill', () => {
-    if (!window.ANCHOR_POLYFILL) {
-      window.ANCHOR_POLYFILL = import(
-        'https://unpkg.com/@oddbird/css-anchor-positioning/dist/css-anchor-positioning-fn.js'
-      );
-    }
-    window.ANCHOR_POLYFILL(true);
+    import('https://unpkg.com/@oddbird/css-anchor-positioning@latest');
   });
 </script>
