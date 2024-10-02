@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeHero700,
     fontWeight: tokens.fontWeightSemibold,
     fill: tokens.colorNeutralForeground1,
-    selectors: {
+    '& selectors': {
       [HighContrastSelectorBlack]: {
         fill: 'rgb(179, 179, 179)',
       },

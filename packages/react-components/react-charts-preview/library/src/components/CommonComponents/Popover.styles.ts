@@ -51,7 +51,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
   },
   calloutBlockContainertoDrawShapefalse: {
-    selectors: {
+    '& selectors': {
       [HighContrastSelector]: {
         forcedColorAdjust: 'none',
       },
@@ -69,7 +69,7 @@ const useStyles = makeStyles({
     fontSize: 'fontSizeBase200',
     lineHeight: '16px',
     color: tokens.colorNeutralForeground2,
-    selectors: {
+    '& selectors': {
       [HighContrastSelectorBlack]: {
         color: 'rgb(255, 255, 255)',
       },
@@ -79,7 +79,7 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeBase400,
     fontWeight: 'bold',
     lineHeight: '36px',
-    selectors: {
+    '& selectors': {
       [HighContrastSelectorBlack]: {
         color: 'rgb(255, 255, 255)',
       },

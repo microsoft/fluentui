@@ -105,7 +105,10 @@ describe('Donut chart interactions', () => {
     expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
     const firstLegend = screen.queryByText('first')?.closest('button');
     expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-    expect(firstLegend).toHaveAttribute('style', '--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;');
+    expect(firstLegend).toHaveAttribute(
+      'style',
+      '--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;',
+    );
   });
 
   test('Should deselect legend on double mouse click on legends', () => {
@@ -122,7 +125,10 @@ describe('Donut chart interactions', () => {
     expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
     const firstLegend = screen.queryByText('first')?.closest('button');
     expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-    expect(firstLegend).toHaveAttribute('style', '--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;');
+    expect(firstLegend).toHaveAttribute(
+      'style',
+      '--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;',
+    );
     // double click on same first legend
     fireEvent.click(legend!);
 
@@ -161,7 +167,7 @@ describe('Donut chart interactions', () => {
     fireEvent.mouseOver(getById(container, /Pie/i)[1]);
 
     // Assert
-    await(() => {
+    await (() => {
       expect(getByClass(container, /PopoverSurface/i)[1]).toHaveTextContent('39,000');
     });
   });

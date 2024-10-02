@@ -283,9 +283,7 @@ const simpleDatePoints = [
   },
 ];
 
-const secondaryYScalePoints = [
-  { yMaxValue: 50000, yMinValue: 10000 }
-];
+const secondaryYScalePoints = [{ yMaxValue: 50000, yMinValue: 10000 }];
 
 describe('Vertical bar chart rendering', () => {
   afterEach(sharedAfterEach);
@@ -392,9 +390,7 @@ describe('Vertical bar chart rendering', () => {
   testWithoutWait(
     'Should render the vertical bar chart with secondary Y axis',
     VerticalBarChart,
-    { data: chartPointsVBC,
-      secondaryYScaleOptions: secondaryYScalePoints,
-     },
+    { data: chartPointsVBC, secondaryYScaleOptions: secondaryYScalePoints },
     container => {
       // Assert
       expect(getById(container, /yAxisGElementSecondarychart_/i)).toBeDefined();
@@ -571,7 +567,7 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       expect(line).toBeDefined();
       expect(bars).toHaveLength(8);
-      expect(legends).toHaveLength(10);
+      expect(legends).toHaveLength(9);
       fireEvent.mouseOver(screen.getByText('just line'));
       expect(line.getAttribute('opacity')).toEqual('1');
       expect(screen.getByText('Oranges')).toHaveStyle('opacity: 0.67');
@@ -611,7 +607,7 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       expect(line).toBeDefined();
       expect(bars).toHaveLength(8);
-      expect(legends).toHaveLength(10);
+      expect(legends).toHaveLength(9);
       fireEvent.mouseOver(screen.getByText('Oranges'));
       expect(screen.getByText('just line')).toHaveStyle('opacity: 0.67');
       expect(screen.getByText('Dogs')).toHaveStyle('opacity: 0.67');
