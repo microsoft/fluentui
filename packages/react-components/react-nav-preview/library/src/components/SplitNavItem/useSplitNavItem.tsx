@@ -6,6 +6,7 @@ import { Button, MenuButton, ToggleButton } from '@fluentui/react-button';
 import { MoreHorizontalFilled, Pin20Regular } from '@fluentui/react-icons';
 import { NavItem, NavItemProps } from '../NavItem/index';
 import { NavSubItem } from '../NavSubItem/NavSubItem';
+import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 
 /**
  * Create the state required to render SplitNavItem.
@@ -24,7 +25,9 @@ export const useSplitNavItem_unstable = (
 
   const { size = 'medium' } = useNavContext_unstable();
 
-  const mainNavItemType = (navItem as NavItemProps).icon ? 'navItem' : 'navSubItem';
+  const { value: potentialParenValue } = useNavCategoryContext_unstable();
+
+  const mainNavItemType = potentialParenValue ? 'navSubItem' : 'navItem';
 
   const navItemShorthand = slot.optional(navItem, {
     defaultProps: {

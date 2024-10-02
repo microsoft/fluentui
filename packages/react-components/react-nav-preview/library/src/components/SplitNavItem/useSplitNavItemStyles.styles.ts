@@ -21,11 +21,11 @@ export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
  */
 const useSplitNaveItemStyles = makeStyles({
   baseRoot: {
+    display: 'flex',
     gap: 'unset',
-    alignItems: 'start',
+    alignItems: 'stretch',
     padding: 'unset',
     textAlign: 'unset',
-    paddingInlineEnd: '6px',
     backgroundColor: navItemTokens.backgroundColor,
     ...navItemTokens.transitionTokens,
 
@@ -38,17 +38,20 @@ const useSplitNaveItemStyles = makeStyles({
     // styles that we want to disagree with the default on
     display: 'flex',
     textTransform: 'none',
+    alignSelf: 'stretch',
     textAlign: 'left',
     position: 'relative',
     justifyContent: 'start',
     gap: tokens.spacingVerticalL,
   },
   baseSecondary: {
-    maxWidth: '24px',
-    minWidth: '24px',
-    paddingInline: '4px',
-    marginBlockStart: '4px',
-
+    maxWidth: '28px',
+    minWidth: '28px',
+    paddingInlineEnd: '12px',
+    paddingInlineStart: '5px',
+    paddingBlockStart: '5px',
+    alignItems: 'start',
+    backgroundColor: navItemTokens.backgroundColor,
     transitionDuration: navItemTokens.animationTokens.animationDuration,
     transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
     transitionProperty: 'background',
@@ -61,7 +64,7 @@ const useSplitNaveItemStyles = makeStyles({
     },
   },
   baseMedium: {
-    paddingBlockStart: '6px',
+    paddingBlockStart: '9px',
   },
 });
 

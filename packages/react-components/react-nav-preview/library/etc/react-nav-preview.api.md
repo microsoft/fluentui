@@ -398,8 +398,7 @@ export type SplitNavItemProps = ComponentProps<SplitNavItemSlots>;
 // @public (undocumented)
 export type SplitNavItemSlots = {
     root: Slot<'div'>;
-    navItem?: Slot<NavItemProps>;
-    navSubItem?: Slot<NavSubItemProps>;
+    navItem?: Slot<NavItemProps & NavSubItemProps>;
     actionButton?: Slot<ButtonProps>;
     toggleButton?: Slot<ToggleButtonProps>;
     menuButton?: Slot<MenuButtonProps>;

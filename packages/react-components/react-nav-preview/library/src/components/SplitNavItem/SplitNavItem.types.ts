@@ -11,8 +11,8 @@ export type SplitNavItemSlots = {
   root: Slot<'div'>;
 
   /**
-   * Primary navigation item in SplitNavItem.
-   * Should be used mutually exclusive with NavSubItem.
+   * The NavItem Slot.
+   * Will behave as a SubNavItem if it's in an a SubGroup.
    */
   navItem?: Slot<NavItemProps & NavSubItemProps>;
 
