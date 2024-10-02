@@ -7,7 +7,6 @@ import { tokens } from '@fluentui/react-theme';
 export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
   root: 'fui-SplitNavItem',
   navItem: 'fui-SplitNavItem__navItem',
-  // navSubItem: 'fui-SplitNavItem__navSubItem',
   actionButton: 'fui-SplitNavItem__actionButton',
   toggleButton: 'fui-SplitNavItem__toggleButton',
   menuButton: 'fui-SplitNavItem__menuButton',

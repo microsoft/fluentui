@@ -47,4 +47,10 @@ export type SplitNavItemState = ComponentState<SplitNavItemSlots> & {
    * @default 'medium'
    */
   size: NavSize;
+
+  /**
+   * A boolean that represents if the main item in the SplitNavItem is a SubNav item.
+   * If false, it's a NavItem.
+   */
+  isSubNav: boolean;
 };

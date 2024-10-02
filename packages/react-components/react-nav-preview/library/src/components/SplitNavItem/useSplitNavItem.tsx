@@ -27,13 +27,13 @@ export const useSplitNavItem_unstable = (
 
   const { value: potentialParenValue } = useNavCategoryContext_unstable();
 
-  const mainNavItemType = potentialParenValue ? 'navSubItem' : 'navItem';
+  const isSubNav = potentialParenValue.length > 0 ? true : false;
 
   const navItemShorthand = slot.optional(navItem, {
     defaultProps: {
       children,
     },
-    elementType: mainNavItemType === 'navItem' ? NavItem : NavSubItem,
+    elementType: isSubNav ? NavSubItem : NavItem,
   });
 
   const actionButtonShorthand = slot.optional(actionButton, {
@@ -66,7 +66,7 @@ export const useSplitNavItem_unstable = (
   return {
     components: {
       root: 'div',
-      navItem: mainNavItemType === 'navItem' ? NavItem : NavSubItem,
+      navItem: isSubNav ? NavSubItem : NavItem,
       actionButton: Button,
       toggleButton: ToggleButton,
       menuButton: MenuButton,
@@ -86,5 +86,6 @@ export const useSplitNavItem_unstable = (
     toggleButton: toggleButtonShorthand,
     menuButton: menuButtonShorthand,
     size,
+    isSubNav,
   };
 };
