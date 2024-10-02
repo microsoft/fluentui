@@ -35,7 +35,6 @@ module.exports = {
       },
     ],
     'react-compiler/react-compiler': ['error'],
-    '@nx/workspace-no-missing-jsx-pragma': 'error',
   },
   overrides: [
     // Enable rules requiring type info only for appropriate files/circumstances
