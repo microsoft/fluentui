@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: enable @nx/workspace-no-missing-jsx-pragma rule for react v9 projects",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
