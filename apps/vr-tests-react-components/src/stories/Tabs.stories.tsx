@@ -208,7 +208,7 @@ export const WithIconOnlyAndVertical = () => (
 WithIconOnlyAndVertical.storyName = 'With icon only and vertical';
 
 export const SubtleRoundedAppearance = () => (
-  <TabList appearance="subtle-rounded">
+  <TabList appearance="subtle-rounded" defaultSelectedValue="1">
     <Tab value="1">First</Tab>
     <Tab className="mouse-target" value="2">
       Second
@@ -222,7 +222,7 @@ export const SubtleRoundedAppearanceDarkMode = getStoryVariant(SubtleRoundedAppe
 export const SubtleRoundedAppearanceHighContrast = getStoryVariant(SubtleRoundedAppearance, HIGH_CONTRAST);
 
 export const FilledRoundedAppearance = () => (
-  <TabList appearance="filled-rounded">
+  <TabList appearance="filled-rounded" defaultSelectedValue="1">
     <Tab value="1">First</Tab>
     <Tab className="mouse-target" value="2">
       Second

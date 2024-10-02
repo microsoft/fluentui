@@ -94,22 +94,22 @@ const useRootStyles = makeStyles({
     ':enabled:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
-    [`& ${tabClassNames.icon}`]: {
+    [`& .${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2,
     },
-    [`:enabled:hover ${tabClassNames.icon}`]: {
+    [`:enabled:hover .${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2Hover,
     },
-    [`:enabled:active ${tabClassNames.icon}`]: {
+    [`:enabled:active .${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2Pressed,
     },
-    [`& ${tabClassNames.content}`]: {
+    [`& .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2,
     },
-    [`:enabled:hover ${tabClassNames.content}`]: {
+    [`:enabled:hover .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2Hover,
     },
-    [`:enabled:active ${tabClassNames.content}`]: {
+    [`:enabled:active .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2Pressed,
     },
   },
@@ -121,62 +121,62 @@ const useRootStyles = makeStyles({
     ':enabled:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
     },
-    [`& ${tabClassNames.icon}`]: {
+    [`& .${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2,
     },
-    [`:enabled:hover ${tabClassNames.icon}`]: {
+    [`:enabled:hover .${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2Hover,
     },
-    [`:enabled:active ${tabClassNames.icon}`]: {
+    [`:enabled:active .${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2Pressed,
     },
-    [`& ${tabClassNames.content}`]: {
+    [`& .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2,
     },
-    [`:enabled:hover ${tabClassNames.content}`]: {
+    [`:enabled:hover .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2Hover,
     },
-    [`:enabled:active ${tabClassNames.content}`]: {
+    [`:enabled:active .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2Pressed,
     },
   },
   disabled: {
     backgroundColor: tokens.colorTransparentBackground,
 
-    [`& ${tabClassNames.icon}`]: {
+    [`& .${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForegroundDisabled,
     },
-    [`& ${tabClassNames.content}`]: {
+    [`& .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForegroundDisabled,
     },
     cursor: 'not-allowed',
   },
   selected: {
-    [`& ${tabClassNames.icon}`]: {
+    [`& .${tabClassNames.icon}`]: {
       color: tokens.colorCompoundBrandForeground1,
     },
-    [`:enabled:hover ${tabClassNames.icon}`]: {
+    [`:enabled:hover .${tabClassNames.icon}`]: {
       color: tokens.colorCompoundBrandForeground1Hover,
     },
-    [`:enabled:active ${tabClassNames.icon}`]: {
+    [`:enabled:active .${tabClassNames.icon}`]: {
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
-    [`& ${tabClassNames.content}`]: {
+    [`& .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground1,
     },
-    [`:enabled:hover ${tabClassNames.content}`]: {
+    [`:enabled:hover .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground1Hover,
     },
-    [`:enabled:active ${tabClassNames.content}`]: {
+    [`:enabled:active .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground1Pressed,
     },
   },
   rounded: {
     borderRadius: tokens.borderRadiusCircular,
-    [`& ${tabClassNames.icon}`]: {
+    [`& .${tabClassNames.icon}`]: {
       color: 'inherit',
     },
-    [`& ${tabClassNames.content}`]: {
+    [`& .${tabClassNames.content}`]: {
       color: 'inherit',
     },
   },
@@ -632,9 +632,9 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
     size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
     size === 'large' && (vertical ? rootStyles.largeVertical : rootStyles.largeHorizontal),
     focusStyles.base,
-    appearance === 'subtle' && rootStyles.subtle,
-    appearance === 'transparent' && rootStyles.transparent,
-    ...(isRounded ? roundedAppearance : [selected && rootStyles.selected]),
+    !disabled && appearance === 'subtle' && rootStyles.subtle,
+    !disabled && appearance === 'transparent' && rootStyles.transparent,
+    ...(isRounded ? roundedAppearance : [!disabled && selected && rootStyles.selected]),
     disabled && rootStyles.disabled,
 
     slot.className,
