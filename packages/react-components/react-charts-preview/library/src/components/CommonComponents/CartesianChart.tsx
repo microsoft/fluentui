@@ -147,7 +147,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
       // eslint-disable-next-line react-hooks/exhaustive-deps
       isIntegralDataset = !props.points.some((point: { y: number }) => point.y % 1 !== 0);
     }
-  }, [props, prevProps]);
+  });
 
   /**
    * Dedicated function to return the Callout JSX Element , which can further be used to only call this when
@@ -383,6 +383,8 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
       xScale,
       yScale,
       yScaleSecondary,
+      containerHeight,
+      containerWidth,
     });
 
     if (!props.hideTooltip && calloutProps!.isPopoverOpen) {
