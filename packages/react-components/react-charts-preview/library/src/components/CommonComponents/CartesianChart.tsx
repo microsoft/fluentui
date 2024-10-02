@@ -38,9 +38,9 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
   const chartContainer = React.useRef<HTMLDivElement>();
   let legendContainer: HTMLDivElement;
   const minLegendContainerHeight: number = 40;
-  const xAxisElement = React.useRef<SVGElement>();
-  const yAxisElement = React.useRef<SVGElement>();
-  const yAxisElementSecondary = React.useRef<SVGElement>();
+  const xAxisElement = React.useRef<SVGSVGElement>();
+  const yAxisElement = React.useRef<SVGSVGElement>();
+  const yAxisElementSecondary = React.useRef<SVGSVGElement>();
   let margins: IMargins;
   const idForGraph: string = 'chart_';
   const idForDefaultTabbableElement: string = 'defaultTabbableElement_';
@@ -210,7 +210,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
       ),
       containerHeight: containerHeight - removalValueForTextTuncate!,
       margins: margins,
-      xAxisElement: xAxisElement.current! as SVGSVGElement,
+      xAxisElement: xAxisElement.current!,
       showRoundOffXTickValues: true,
       xAxisCount: props.xAxisTickCount,
       xAxistickSize: props.xAxistickSize,
@@ -224,7 +224,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
       margins: margins,
       containerWidth: containerWidth,
       containerHeight: containerHeight - removalValueForTextTuncate!,
-      yAxisElement: yAxisElement.current as SVGSVGElement,
+      yAxisElement: yAxisElement.current,
       yAxisTickFormat: props.yAxisTickFormat!,
       yAxisTickCount: props.yAxisTickCount!,
       yMinValue: props.yMinValue || 0,
@@ -321,7 +321,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
           margins: margins,
           containerWidth: containerWidth,
           containerHeight: containerHeight - removalValueForTextTuncate!,
-          yAxisElement: yAxisElementSecondary.current as SVGSVGElement,
+          yAxisElement: yAxisElementSecondary.current,
           yAxisTickFormat: props.yAxisTickFormat!,
           yAxisTickCount: props.yAxisTickCount!,
           yMinValue: props.secondaryYScaleOptions?.yMinValue || 0,
@@ -526,7 +526,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
           {...svgProps}
         >
           <g
-            ref={(e: SVGElement | null) => {
+            ref={(e: SVGSVGElement | null) => {
               xAxisElement.current = e!;
             }}
             id={`xAxisGElement${idForGraph}`}
@@ -548,7 +548,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
             />
           )}
           <g
-            ref={(e: SVGElement | null) => {
+            ref={(e: SVGSVGElement | null) => {
               yAxisElement.current = e!;
             }}
             id={`yAxisGElement${idForGraph}`}
@@ -560,7 +560,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
           {props.secondaryYScaleOptions && (
             <g>
               <g
-                ref={(e: SVGElement | null) => {
+                ref={(e: SVGSVGElement | null) => {
                   yAxisElementSecondary.current = e!;
                 }}
                 id={`yAxisGElementSecondary${idForGraph}`}

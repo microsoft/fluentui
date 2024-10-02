@@ -70,7 +70,7 @@ export enum YAxisType {
 }
 
 export interface IWrapLabelProps {
-  node: SVGElement | null;
+  node: SVGSVGElement | null;
   xAxis: NumericAxis | StringAxis;
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
