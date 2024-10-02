@@ -16,13 +16,6 @@ export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
 // This links says that makeResetStyles should only be called once per element
 // https://griffel.js.org/react/api/make-reset-styles/#limitations
 
-const navSubItemBackgroundTokens = {
-  backgroundColor: navItemTokens.backgroundColorHover,
-  transitionDuration: navItemTokens.animationTokens.animationDuration,
-  transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
-  transitionProperty: 'background',
-};
-
 /**
  * Styles for the root slot
  */
@@ -32,21 +25,16 @@ const useSplitNaveItemStyles = makeStyles({
     alignItems: 'start',
     padding: 'unset',
     textAlign: 'unset',
-
     paddingInlineEnd: '6px',
+    ...navItemTokens.transitionTokens,
 
-    backgroundColor: navItemTokens.backgroundColor,
-    transitionDuration: navItemTokens.animationTokens.animationDuration,
-    transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
-    transitionProperty: 'background',
+    ':hover .fui-NavItem': navItemTokens.transitionTokens,
 
-    ':hover .fui-NavItem': navSubItemBackgroundTokens,
+    ':active .fui-NavItem': navItemTokens.transitionTokens,
 
-    ':active .fui-NavItem': navSubItemBackgroundTokens,
+    ':hover .fui-NavSubItem': navItemTokens.transitionTokens,
 
-    ':hover .fui-NavSubItem': navSubItemBackgroundTokens,
-
-    ':active .fui-NavSubItem': navSubItemBackgroundTokens,
+    ':active .fui-NavSubItem': navItemTokens.transitionTokens,
   },
   baseNavItem: {
     // styles that we want to disagree with the default on
