@@ -29,6 +29,7 @@ const defaultTriggerSlottedContent = html`<fluent-menu-button
   shape="${story => story.shape}"
   size="${story => story.size}"
   slot="trigger"
+  aria-label="Open menu"
   icon-only
 >
 </fluent-menu-button>`;
