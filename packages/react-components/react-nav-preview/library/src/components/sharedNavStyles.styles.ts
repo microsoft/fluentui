@@ -17,7 +17,6 @@ export const navItemTokens = {
     animationTimingFunction: tokens.curveAccelerateMid,
   },
   transitionTokens: {
-    backgroundColor: tokens.colorNeutralBackground4Hover,
     transitionDuration: tokens.durationFast,
     transitionTimingFunction: tokens.curveAccelerateMid,
     transitionProperty: 'background',

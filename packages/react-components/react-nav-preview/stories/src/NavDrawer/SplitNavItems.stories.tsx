@@ -131,8 +131,8 @@ const splitNavItemNestedProps: SplitNavItemNestedProps[] = [
     navCategory: { value: '6' },
     navCategoryItem: { icon: <JobPostings />, children: 'Job Postings' },
     navSubItems: [
-      { navSubItem: { value: '7', children: 'Openings' } },
-      { navSubItem: { value: '8', children: 'Submissions' } },
+      { navItem: { value: '7', children: 'Openings' } },
+      { navItem: { value: '8', children: 'Submissions' } },
     ],
   },
   {
@@ -145,8 +145,8 @@ const splitNavItemNestedProps: SplitNavItemNestedProps[] = [
     navCategory: { value: '11' },
     navCategoryItem: { icon: <Person />, children: 'Retirement' },
     navSubItems: [
-      { navSubItem: { value: '13', children: 'Plan Information' } },
-      { navSubItem: { value: '14', children: 'Fund Performance' } },
+      { navItem: { value: '13', children: 'Plan Information' } },
+      { navItem: { value: '14', children: 'Fund Performance' } },
     ],
   },
   {
@@ -156,8 +156,8 @@ const splitNavItemNestedProps: SplitNavItemNestedProps[] = [
     navCategory: { value: '16' },
     navCategoryItem: { icon: <CareerDevelopment />, children: 'Career Development' },
     navSubItems: [
-      { navSubItem: { value: '17', children: 'Career Paths' } },
-      { navSubItem: { value: '18', children: 'Planning' } },
+      { navItem: { value: '17', children: 'Career Paths' } },
+      { navItem: { value: '18', children: 'Planning' } },
     ],
   },
   {
@@ -255,7 +255,7 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
                     {(triggerProps: MenuButtonProps) => (
                       <SplitNavItem
                         key={`${subItemIndex}-sni`}
-                        navSubItem={subItem.navSubItem}
+                        navItem={subItem.navItem}
                         menuButton={triggerProps}
                         toggleButton={
                           isPinnable

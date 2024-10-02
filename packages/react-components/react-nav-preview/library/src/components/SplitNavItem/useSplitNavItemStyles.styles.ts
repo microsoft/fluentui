@@ -7,7 +7,7 @@ import { tokens } from '@fluentui/react-theme';
 export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
   root: 'fui-SplitNavItem',
   navItem: 'fui-SplitNavItem__navItem',
-  navSubItem: 'fui-SplitNavItem__navSubItem',
+  // navSubItem: 'fui-SplitNavItem__navSubItem',
   actionButton: 'fui-SplitNavItem__actionButton',
   toggleButton: 'fui-SplitNavItem__toggleButton',
   menuButton: 'fui-SplitNavItem__menuButton',
@@ -26,14 +26,12 @@ const useSplitNaveItemStyles = makeStyles({
     padding: 'unset',
     textAlign: 'unset',
     paddingInlineEnd: '6px',
+    backgroundColor: navItemTokens.backgroundColor,
     ...navItemTokens.transitionTokens,
 
     ':hover .fui-NavItem': navItemTokens.transitionTokens,
-
     ':active .fui-NavItem': navItemTokens.transitionTokens,
-
     ':hover .fui-NavSubItem': navItemTokens.transitionTokens,
-
     ':active .fui-NavSubItem': navItemTokens.transitionTokens,
   },
   baseNavItem: {
@@ -88,14 +86,6 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
       splitNavItemClassNames.navItem,
       splitNavItemStyles.baseNavItem,
       state.navItem.className,
-    );
-  }
-
-  if (state.navSubItem) {
-    state.navSubItem.className = mergeClasses(
-      splitNavItemClassNames.navSubItem,
-      splitNavItemStyles.baseNavItem,
-      state.navSubItem.className,
     );
   }
 
