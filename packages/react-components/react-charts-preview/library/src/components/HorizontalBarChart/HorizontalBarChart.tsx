@@ -391,6 +391,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
         customizedCallout={
           props.onRenderCalloutPerHorizontalBar ? props.onRenderCalloutPerHorizontalBar(barCalloutProps!) : undefined
         }
+        customProps={props.customProps ? props.customProps(barCalloutProps!) : undefined}
       />
     </div>
   ) : (

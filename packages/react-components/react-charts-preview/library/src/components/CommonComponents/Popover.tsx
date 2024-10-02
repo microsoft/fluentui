@@ -18,20 +18,21 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
 >((props, forwardedRef) => {
   const virtualElement: PositioningVirtualElement = {
     getBoundingClientRect: () => ({
-      top: props.clickPosition.y,
-      left: props.clickPosition.x,
-      right: props.clickPosition.x,
-      bottom: props.clickPosition.y,
-      x: props.clickPosition.x,
-      y: props.clickPosition.y,
+      top: props.clickPosition!.y,
+      left: props.clickPosition!.x,
+      right: props.clickPosition!.x,
+      bottom: props.clickPosition!.y,
+      x: props.clickPosition!.x,
+      y: props.clickPosition!.y,
       width: 0,
       height: 0,
     }),
   };
-
+  props = { ...props, ...props.customProps };
   const classes = usePopoverStyles_unstable(props);
   const Legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
   const YValue = props.yCalloutValue ? props.yCalloutValue : props.YValue;
+
   return (
     <div id={useId('callout')}>
       <Popover
@@ -230,7 +231,6 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
                   style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
                 >
                   {convertToLocaleString(subcounts[subcountName], culture)}
-                  style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
                 </div>
               </div>
             );

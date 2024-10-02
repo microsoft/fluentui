@@ -313,6 +313,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
           customizedCallout={
             props.onRenderCalloutPerDataPoint ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps!) : undefined
           }
+          customProps={props.customProps ? props.customProps(dataPointCalloutProps!) : undefined}
         />
         {!hideLegend && <div className={classes.legendContainer}>{legendBars}</div>}
       </div>
