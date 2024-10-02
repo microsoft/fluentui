@@ -197,7 +197,6 @@ export {
   SliderTemplate,
 } from './slider/index.js';
 export type { SliderConfiguration, SliderOptions } from './slider/index.js';
-export { SplitButton, SplitButtonDefinition, SplitButtonStyles, SplitButtonTemplate } from './split-button/index.js';
 export {
   BaseSpinner,
   Spinner,

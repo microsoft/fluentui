@@ -142,8 +142,17 @@ export const baseButtonStyles = css`
     margin-inline-end: var(--icon-spacing);
   }
 
-  :is([slot='end'], ::slotted([slot='end'])) {
+  :host(:not(${iconOnlyState})) :is([slot='end'], :host(:not(${iconOnlyState}))::slotted([slot='end'])) {
     margin-inline-start: var(--icon-spacing);
+  }
+
+  slot {
+    display: inherit;
+  }
+
+  ::slotted([slot='end']) {
+    width: 20px;
+    height: 20px;
   }
 
   :host(${iconOnlyState}) {

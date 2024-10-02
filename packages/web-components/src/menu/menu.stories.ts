@@ -22,6 +22,7 @@ const defaultTriggerSlottedContent = html`<fluent-menu-button
 
 const storyTemplate = html<StoryArgs<FluentMenu>>`
   <fluent-menu
+    ?split="${story => story.split}"
     ?open-on-hover="${story => story.openOnHover}"
     ?open-on-context="${story => story.openOnContext}"
     ?close-on-scroll="${story => story.closeOnScroll}"
@@ -33,7 +34,7 @@ const storyTemplate = html<StoryArgs<FluentMenu>>`
 `;
 
 export default {
-  title: 'Components/Menu',
+  title: 'Components/Menu/Menu',
   render: renderComponent(storyTemplate),
   args: {
     slottedContent: () => defaultSlottedContent,
@@ -41,6 +42,12 @@ export default {
     '--menu-max-height': 'auto',
   },
   argTypes: {
+    split: {
+      control: 'boolean',
+      description: 'Sets whether menu opens on hover',
+      name: 'split',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
     openOnHover: {
       control: 'boolean',
       description: 'Sets whether menu opens on hover',

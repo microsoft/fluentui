@@ -73,6 +73,13 @@ export class Menu extends FASTElement {
   public persistOnItemClick?: boolean;
 
   /**
+   * Determines if the menu is in split state.
+   * @public
+   */
+  @attr({ mode: 'boolean' })
+  public split?: boolean;
+
+  /**
    * Holds the slotted menu list.
    * @public
    */
@@ -85,6 +92,13 @@ export class Menu extends FASTElement {
    */
   @observable
   public slottedTriggers: HTMLElement[] = [];
+
+  /**
+   * Holds the primary slot element.
+   * @public
+   */
+  @observable
+  public primaryAction!: HTMLSlotElement;
 
   /**
    * Defines whether the menu is open or not.
@@ -102,6 +116,12 @@ export class Menu extends FASTElement {
    * @internal
    */
   private _menuList?: HTMLElement;
+
+  /**
+   * The primary action element of the menu.
+   * @internal
+   */
+  private _primaryAction?: HTMLElement;
 
   /**
    * Called when the element is connected to the DOM.
@@ -360,7 +380,11 @@ export class Menu extends FASTElement {
         break;
       case keyTab:
         if (this._open) this.closeMenu();
-        if (e.shiftKey && e.composedPath()[0] !== this._trigger) {
+        if (
+          e.shiftKey &&
+          e.composedPath()[0] !== this._trigger &&
+          (e.composedPath()[0] as HTMLElement).assignedSlot !== this.primaryAction
+        ) {
           this.focusTrigger();
         } else if (e.shiftKey) {
           return true;
