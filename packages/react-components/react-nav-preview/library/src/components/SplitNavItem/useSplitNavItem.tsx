@@ -29,7 +29,7 @@ export const useSplitNavItem_unstable = (
 
   const isSubNav = potentialParenValue.length > 0 ? true : false;
 
-  const navItemShorthand = slot.optional(navItem, {
+  const navItemShorthand = slot.always(navItem, {
     defaultProps: {
       children,
     },
