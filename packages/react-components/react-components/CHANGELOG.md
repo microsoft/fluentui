@@ -1,8 +1,137 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 16 Aug 2024 10:24:16 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2024 14:15:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.17)
+
+Thu, 26 Sep 2024 14:15:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.16..@fluentui/react-components_v9.54.17)
+
+### Minor changes
+
+- `@fluentui/react-carousel-preview`
+  - feat: Add resetAutoplay feature to reset index change timer ([PR #32897](https://github.com/microsoft/fluentui/pull/32897) by mifraser@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: hovered menubutton icon does not disappear ([PR #32917](https://github.com/microsoft/fluentui/pull/32917) by sarah.higley@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix tabIndex for clear button in Dropdown component ([PR #32278](https://github.com/microsoft/fluentui/pull/32278) by kirpadv@gmail.com)
+- `@fluentui/react-drawer`
+  - fix: reversed animations ([PR #32924](https://github.com/microsoft/fluentui/pull/32924) by marcosvmmoura@gmail.com)
+- `@fluentui/react-table`
+  - fix: table selection checkbox or radio should be rendered even if invisible ([PR #32846](https://github.com/microsoft/fluentui/pull/32846) by sarah.higley@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - BREAKING CHANGE (useVirtualizerDynamicMeasure): optimized with scrollPos state and children height reference, updated algorithm to be more accurate, and exported measurement hook ([PR #32375](https://github.com/microsoft/fluentui/pull/32375) by mifraser@microsoft.com)
+
+## [9.54.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.16)
+
+Mon, 23 Sep 2024 12:40:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.15..@fluentui/react-components_v9.54.16)
+
+### Minor changes
+
+- `@fluentui/react-carousel-preview`
+  - feat: Handle nav disabled behavior and provide index based aria labels for next/prev buttons ([PR #32844](https://github.com/microsoft/fluentui/pull/32844) by mifraser@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - Scaffolds SplitNavItem ([PR #32870](https://github.com/microsoft/fluentui/pull/32870) by matejera@microsoft.com)
+  -  [BREAKING] Removed non functional reserveSelectedNavItemSpace prop. Added defaultOpenCategories and openCategories prop and example. Updated icon selection logic for NavCategoryItem. Exports OnNavItemSelectData. ([PR #32489](https://github.com/microsoft/fluentui/pull/32489) by matejera@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-drawer`
+  - fix: add correct direction of animations when RTL ([PR #32813](https://github.com/microsoft/fluentui/pull/32813) by marcosvmmoura@gmail.com)
+- `@fluentui/react-menu`
+  - fix(Menu): Do not rely on tabster restorer for focus restore ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by lingfangao@hotmail.com)
+- `@fluentui/react-migration-v8-v9`
+  - fix: cleanup production dependencies and fix forbidden sub-package import within Menu ([PR #32359](https://github.com/microsoft/fluentui/pull/32359) by martinhochel@microsoft.com)
+
+### Changes
+
+- `@fluentui/tokens`
+  - feat: add z-index tokens ([PR #32356](https://github.com/microsoft/fluentui/pull/32356) by marcosvmmoura@gmail.com)
+
+## [9.54.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.15)
+
+Fri, 13 Sep 2024 00:49:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.14..@fluentui/react-components_v9.54.15)
+
+### Minor changes
+
+- `@fluentui/react-carousel-preview`
+  - feat: Add CarouselNavContainer for easy layout options, add missing exports and cleanup focus behavior of multiple cards ([PR #32457](https://github.com/microsoft/fluentui/pull/32457) by mifraser@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-carousel-preview`
+  - chore: cleanup before the release ([PR #32475](https://github.com/microsoft/fluentui/pull/32475) by olfedias@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: Adjust window height comparison in fractional cases. ([PR #32480](https://github.com/microsoft/fluentui/pull/32480) by owcampbe@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: update scroll state when children changes ([PR #32818](https://github.com/microsoft/fluentui/pull/32818) by marcosvmmoura@gmail.com)
+  - fix: apply position: absolute when mountNode is passed ([PR #32816](https://github.com/microsoft/fluentui/pull/32816) by marcosvmmoura@gmail.com)
+
+## [9.54.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.14)
+
+Tue, 10 Sep 2024 10:19:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.13..@fluentui/react-components_v9.54.14)
+
+### Minor changes
+
+- `@fluentui/react-carousel-preview`
+  - feat: Add accessibility and focus modes to cards ([PR #32181](https://github.com/microsoft/fluentui/pull/32181) by mifraser@microsoft.com)
+  - feat: Add brand appearance to nav buttons, update action states ([PR #32348](https://github.com/microsoft/fluentui/pull/32348) by mifraser@microsoft.com)
+  - feat: Add enableDrag option for mouse/touch scroll support ([PR #32388](https://github.com/microsoft/fluentui/pull/32388) by mifraser@microsoft.com)
+- `@fluentui/react-tabs`
+  - export Tab component style hooks ([PR #32125](https://github.com/microsoft/fluentui/pull/32125) by kirpadv@gmail.com)
+- `@fluentui/react-tree`
+  - bugfix: recover from tabIndex=-1 when TreeItem is removed ([PR #32442](https://github.com/microsoft/fluentui/pull/32442) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: medium and large SplitButton menuButton is at least 24px wide ([PR #32309](https://github.com/microsoft/fluentui/pull/32309) by sarah.higley@microsoft.com)
+- `@fluentui/react-card`
+  - fix: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-carousel-preview`
+  - chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-checkbox`
+  - chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-dialog`
+  - chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-drawer`
+  - chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-overflow`
+  - fix(useOverflowContainer): Removes double overflowManager creation ([PR #32459](https://github.com/microsoft/fluentui/pull/32459) by lingfangao@hotmail.com)
+- `@fluentui/react-select`
+  - chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-spinbutton`
+  - fix: remove aria-valuenow from native input element ([PR #32360](https://github.com/microsoft/fluentui/pull/32360) by sarah.higley@microsoft.com)
+- `@fluentui/react-table`
+  - fix(TableHeaderCell): should use hover and pressed tokens ([PR #32352](https://github.com/microsoft/fluentui/pull/32352) by lingfangao@hotmail.com)
+- `@fluentui/react-tabs`
+  - fix: Improve animation for active tab indicator on tabs with falsy values ([PR #32374](https://github.com/microsoft/fluentui/pull/32374) by kirpadv@gmail.com)
+- `@fluentui/react-tag-picker`
+  - bugfix: ensures input behaviour on text selection ([PR #32285](https://github.com/microsoft/fluentui/pull/32285) by bernardo.sunderhus@gmail.com)
+  - fix(react-tag-picker): compute aria-label/aria-labelledby for expand button, stories a11y fixes ([PR #32297](https://github.com/microsoft/fluentui/pull/32297) by jiangemma@microsoft.com)
+  - fix(react-tag-picker): allows TagPickerGroup to be disabled ([PR #32317](https://github.com/microsoft/fluentui/pull/32317) by jiangemma@microsoft.com)
+- `@fluentui/react-tags`
+  - fix(react-tags): allows TagGroup to be disabled ([PR #32317](https://github.com/microsoft/fluentui/pull/32317) by jiangemma@microsoft.com)
+  - fix(react-tags): allow TagGroup to be disabled, remove role='img' from Tag dismiss ([PR #32297](https://github.com/microsoft/fluentui/pull/32297) by jiangemma@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - fix: Update popover size to match design guidance 320px, enable image to auto size based on popover surface bounds ([PR #32363](https://github.com/microsoft/fluentui/pull/32363) by mifraser@microsoft.com)
+- `@fluentui/react-tree`
+  - bugfix: ensure actions visibility between successive mouse events ([PR #32477](https://github.com/microsoft/fluentui/pull/32477) by bernardo.sunderhus@gmail.com)
+  - fix: remove unnecessary aria-hidden attributes that were causing accessibility issues ([PR #32081](https://github.com/microsoft/fluentui/pull/32081) by sarah.higley@microsoft.com)
+  - bugfix: ensure onClick handler is not called on every click ([PR #32434](https://github.com/microsoft/fluentui/pull/32434) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-utilities`
+  - chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
 
 ## [9.54.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.13)
 

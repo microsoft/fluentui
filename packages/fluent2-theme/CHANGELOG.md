@@ -1,8 +1,44 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Wed, 28 Aug 2024 07:21:50 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Oct 2024 07:21:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.107.103](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.103)
+
+Tue, 01 Oct 2024 07:21:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.102..@fluentui/fluent2-theme_v8.107.103)
+
+### Patches
+
+- Bump @fluentui/react to v8.121.0 ([PR #32884](https://github.com/microsoft/fluentui/pull/32884) by beachball)
+
+## [8.107.102](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.102)
+
+Mon, 30 Sep 2024 07:23:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.101..@fluentui/fluent2-theme_v8.107.102)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.10 ([PR #32437](https://github.com/microsoft/fluentui/pull/32437) by beachball)
+
+## [8.107.101](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.101)
+
+Tue, 10 Sep 2024 07:21:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.100..@fluentui/fluent2-theme_v8.107.101)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.9 ([PR #32442](https://github.com/microsoft/fluentui/pull/32442) by beachball)
+
+## [8.107.100](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.100)
+
+Fri, 06 Sep 2024 07:21:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.99..@fluentui/fluent2-theme_v8.107.100)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.8 ([PR #32376](https://github.com/microsoft/fluentui/pull/32376) by beachball)
 
 ## [8.107.99](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.99)
 

@@ -657,6 +657,8 @@ export class BaseRatingDisplay extends FASTElement {
     generateIcons(): string;
     protected getMaxIcons(): number;
     protected getSelectedValue(): number;
+    icon?: string;
+    iconViewBox?: string;
     max?: number;
     value?: number;
 }
@@ -2277,7 +2279,6 @@ export const DividerAppearance: {
     readonly strong: "strong";
     readonly brand: "brand";
     readonly subtle: "subtle";
-    readonly default: "default";
 };
 
 // @public
@@ -2288,10 +2289,7 @@ export const DividerDefinition: FASTElementDefinition<typeof Divider>;
 
 // @public
 export const DividerOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * Divider roles
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -2544,7 +2542,6 @@ export const ImageFit: {
     readonly center: "center";
     readonly contain: "contain";
     readonly cover: "cover";
-    readonly default: "default";
 };
 
 // @public
@@ -2666,6 +2663,11 @@ export type LinkAppearance = ValuesOf<typeof LinkAppearance>;
 
 // @public (undocumented)
 export const LinkDefinition: FASTElementDefinition<typeof Link>;
+
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const LinkStyles: ElementStyles;
 
 // @public
 export const LinkTarget: {
@@ -2891,6 +2893,66 @@ export const MenuStyles: ElementStyles;
 //
 // @public (undocumented)
 export const MenuTemplate: ElementViewTemplate<Menu>;
+
+// @public
+export class MessageBar extends FASTElement {
+    constructor();
+    dismissMessageBar: () => void;
+    // @internal
+    elementInternals: ElementInternals;
+    intent?: MessageBarIntent;
+    intentChanged(prev: MessageBarIntent | undefined, next: MessageBarIntent | undefined): void;
+    layout?: MessageBarLayout;
+    layoutChanged(prev: MessageBarLayout | undefined, next: MessageBarLayout | undefined): void;
+    shape?: MessageBarShape;
+    shapeChanged(prev: MessageBarShape | undefined, next: MessageBarShape | undefined): void;
+}
+
+// @public
+export const MessageBarDefinition: FASTElementDefinition<typeof MessageBar>;
+
+// Warning: (ae-missing-release-tag) "MessageBarIntent" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarIntent: {
+    readonly success: "success";
+    readonly warning: "warning";
+    readonly error: "error";
+    readonly info: "info";
+};
+
+// @public (undocumented)
+export type MessageBarIntent = ValuesOf<typeof MessageBarIntent>;
+
+// Warning: (ae-missing-release-tag) "MessageBarLayout" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarLayout: {
+    readonly multiline: "multiline";
+    readonly singleline: "singleline";
+};
+
+// @public (undocumented)
+export type MessageBarLayout = ValuesOf<typeof MessageBarLayout>;
+
+// Warning: (ae-missing-release-tag) "MessageBarShape" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarShape: {
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public (undocumented)
+export type MessageBarShape = ValuesOf<typeof MessageBarShape>;
+
+// @public
+export const MessageBarStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
 
 // @public
 class ProgressBar_2 extends BaseProgressBar {
@@ -3535,10 +3597,7 @@ export const TablistDefinition: FASTElementDefinition<typeof Tablist>;
 
 // @public
 export const TablistOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * The appearance of the component
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -3738,6 +3797,9 @@ export const TextAreaAppearance: {
 
 // @public (undocumented)
 export type TextAreaAppearance = ValuesOf<typeof TextAreaAppearance>;
+
+// @public
+export const TextAreaAppearancesForDisplayShadow: Partial<TextAreaAppearance[]>;
 
 // Warning: (ae-missing-release-tag) "TextAreaAutocomplete" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //

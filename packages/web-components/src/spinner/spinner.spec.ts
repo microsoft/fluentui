@@ -5,7 +5,7 @@ import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 
 test.describe('Spinner', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-spinner--spinner'));
+    await page.goto(fixtureURL('components-spinner--default'));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-spinner'));
   });

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
 
-export type SliderOnChangeEventHandler = EventHandler<SliderOnChangeData>;
-
 export type SliderOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
   value: number;
+  channel: string;
 };
 
 export type ColorSliderSlots = {
@@ -21,6 +20,7 @@ export type ColorSliderProps = Omit<
   ComponentProps<Partial<ColorSliderSlots>, 'input'>,
   'defaultValue' | 'onChange' | 'value'
 > & {
+  channel?: string;
   /**
    * The starting value for an uncontrolled ColorSlider.
    * Mutually exclusive with `value` prop.

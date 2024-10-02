@@ -11,7 +11,9 @@ export function useCarouselContextValues_unstable(state: CarouselState): Carouse
     selectPageByIndex,
     subscribeForValues,
     enableAutoplay,
+    resetAutoplay,
     circular,
+    containerRef,
   } = state;
 
   const carousel = React.useMemo(
@@ -22,7 +24,9 @@ export function useCarouselContextValues_unstable(state: CarouselState): Carouse
       selectPageByIndex,
       subscribeForValues,
       enableAutoplay,
+      resetAutoplay,
       circular,
+      containerRef,
     }),
     [
       activeIndex,
@@ -31,7 +35,9 @@ export function useCarouselContextValues_unstable(state: CarouselState): Carouse
       selectPageByIndex,
       subscribeForValues,
       enableAutoplay,
+      resetAutoplay,
       circular,
+      containerRef,
     ],
   );
 

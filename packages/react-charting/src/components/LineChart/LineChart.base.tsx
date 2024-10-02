@@ -709,6 +709,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               stroke={lineColor}
               strokeWidth={strokeWidth}
               strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
+              strokeDasharray={this._points[i].lineOptions?.strokeDasharray}
               onMouseMove={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight)}
               onMouseOver={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight)}
               onMouseOut={this._handleMouseOut}
@@ -727,6 +728,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               stroke={lineColor}
               strokeWidth={strokeWidth}
               strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
+              strokeDasharray={this._points[i].lineOptions?.strokeDasharray}
               opacity={0.1}
             />,
           );

@@ -18,6 +18,7 @@ const useStyles = makeStyles({
     marginBottom: 'auto',
     color: tokens.colorNeutralForeground2,
     backgroundColor: tokens.colorNeutralBackgroundAlpha,
+    pointerEvents: 'all',
     ':hover': {
       cursor: 'pointer',
     },
@@ -38,6 +39,7 @@ export const useCarouselButtonStyles_unstable = (state: CarouselButtonState): Ca
   };
 
   state.root.className = mergeClasses(carouselButtonClassNames.root, styles.root, state.root.className);
+
   if (state.icon) {
     state.icon.className = mergeClasses(carouselButtonClassNames.icon, state.icon.className);
   }

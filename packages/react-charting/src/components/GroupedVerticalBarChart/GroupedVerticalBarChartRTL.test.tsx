@@ -164,7 +164,46 @@ describe('Grouped Vertical bar chart rendering', () => {
   );
 });
 
+describe.skip('Grouped vertical bar chart - Subcomponent bar', () => {
+  test('Should render the bar with the given xAxisInnerPadding and check x attribute differences', async () => {
+    // Arrange
+    const { container, rerender } = render(
+      <GroupedVerticalBarChart data={chartPoints} xAxisInnerPadding={0.5} xAxisOuterPadding={0.5} />,
+    );
+
+    // Act
+    const bars = container.querySelectorAll('rect');
+    const x1Iteration1 = parseFloat(bars[0].getAttribute('x') || '0');
+    const x2Iteration1 = parseFloat(bars[1].getAttribute('x') || '0');
+    const iteration1Diff = x2Iteration1 - x1Iteration1;
+
+    // Re-render with different xAxisInnerPadding
+    rerender(<GroupedVerticalBarChart data={chartPoints} xAxisInnerPadding={0.75} xAxisOuterPadding={0.5} />);
+    const barsUpdated = container.querySelectorAll('rect');
+    const x1Iteration2 = parseFloat(barsUpdated[0].getAttribute('x') || '0');
+    const x2Iteration2 = parseFloat(barsUpdated[1].getAttribute('x') || '0');
+    const iteration2Diff = x2Iteration2 - x1Iteration2;
+
+    // Assert
+    expect(iteration1Diff).toBeLessThan(iteration2Diff);
+  });
+});
+
 describe('Grouped vertical bar chart - Subcomponent bar', () => {
+  testWithWait(
+    'Should render the bar with the given width',
+    GroupedVerticalBarChart,
+    { data: chartPoints, barWidth: 'auto', maxBarWidth: 50 },
+    container => {
+      // Assert
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      expect(bars).toHaveLength(6);
+      expect(bars[0].getAttribute('width')).toEqual('16');
+      expect(bars[1].getAttribute('width')).toEqual('16');
+      expect(bars[2].getAttribute('width')).toEqual('16');
+    },
+  );
+
   testWithWait(
     'Should render the bars with the specified colors',
     GroupedVerticalBarChart,
