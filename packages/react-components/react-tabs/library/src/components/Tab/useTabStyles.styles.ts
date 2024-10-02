@@ -94,22 +94,22 @@ const useRootStyles = makeStyles({
     ':enabled:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
-    '& .fui-Tab__icon': {
+    [`& ${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2,
     },
-    ':enabled:hover .fui-Tab__icon': {
+    [`:enabled:hover ${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':enabled:active .fui-Tab__icon': {
+    [`:enabled:active ${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2Pressed,
     },
-    '& .fui-Tab__content': {
+    [`& ${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2,
     },
-    ':enabled:hover .fui-Tab__content': {
+    [`:enabled:hover ${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':enabled:active .fui-Tab__content': {
+    [`:enabled:active ${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2Pressed,
     },
   },
@@ -121,62 +121,62 @@ const useRootStyles = makeStyles({
     ':enabled:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
     },
-    '& .fui-Tab__icon': {
+    [`& ${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2,
     },
-    ':enabled:hover .fui-Tab__icon': {
+    [`:enabled:hover ${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':enabled:active .fui-Tab__icon': {
+    [`:enabled:active ${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2Pressed,
     },
-    '& .fui-Tab__content': {
+    [`& ${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2,
     },
-    ':enabled:hover .fui-Tab__content': {
+    [`:enabled:hover ${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':enabled:active .fui-Tab__content': {
+    [`:enabled:active ${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2Pressed,
     },
   },
   disabled: {
     backgroundColor: tokens.colorTransparentBackground,
 
-    '& .fui-Tab__icon': {
+    [`& ${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForegroundDisabled,
     },
-    '& .fui-Tab__content': {
+    [`& ${tabClassNames.content}`]: {
       color: tokens.colorNeutralForegroundDisabled,
     },
     cursor: 'not-allowed',
   },
   selected: {
-    '& .fui-Tab__icon': {
+    [`& ${tabClassNames.icon}`]: {
       color: tokens.colorCompoundBrandForeground1,
     },
-    ':enabled:hover .fui-Tab__icon': {
+    [`:enabled:hover ${tabClassNames.icon}`]: {
       color: tokens.colorCompoundBrandForeground1Hover,
     },
-    ':enabled:active .fui-Tab__icon': {
+    [`:enabled:active ${tabClassNames.icon}`]: {
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
-    '& .fui-Tab__content': {
+    [`& ${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground1,
     },
-    ':enabled:hover .fui-Tab__content': {
+    [`:enabled:hover ${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground1Hover,
     },
-    ':enabled:active .fui-Tab__content': {
+    [`:enabled:active ${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground1Pressed,
     },
   },
   rounded: {
     borderRadius: tokens.borderRadiusCircular,
-    '& .fui-Tab__icon': {
+    [`& ${tabClassNames.icon}`]: {
       color: 'inherit',
     },
-    '& .fui-Tab__content': {
+    [`& ${tabClassNames.content}`]: {
       color: 'inherit',
     },
   },
