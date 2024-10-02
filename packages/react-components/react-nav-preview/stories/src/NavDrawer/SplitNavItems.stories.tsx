@@ -247,13 +247,14 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
       } else if (item.navCategoryItem) {
         return (
           <NavCategory key={index} value={item.navCategory?.value || ''}>
-            <NavCategoryItem {...item.navCategoryItem} />
-            <NavSubItemGroup>
+            <NavCategoryItem key={`${index}-cat`} {...item.navCategoryItem} />
+            <NavSubItemGroup key={`${index}-sig`}>
               {item.navSubItems?.map((subItem, subItemIndex) => (
                 <Menu key={subItemIndex}>
-                  <MenuTrigger>
+                  <MenuTrigger key={`${subItemIndex}-sit`}>
                     {(triggerProps: MenuButtonProps) => (
                       <SplitNavItem
+                        key={`${subItemIndex}-sni`}
                         navSubItem={subItem.navSubItem}
                         menuButton={triggerProps}
                         toggleButton={
