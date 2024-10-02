@@ -32,6 +32,7 @@ const __internal = {
           rules: {
             '@nx/workspace-consistent-callback-type': 'error',
             '@nx/workspace-no-restricted-globals': restrictedGlobals.react,
+            '@nx/workspace-no-missing-jsx-pragma': ['error', { runtime: 'automatic' }],
           },
         }
       : null,
