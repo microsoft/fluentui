@@ -13,7 +13,7 @@ type CollapseVariantParams = {
   /** Time (ms) for the exit transition (collapse). Defaults to the `enterDuration` param for symmetry. */
   exitDuration?: number;
 
-  /** Easing curve for the exit transition (expand). Defaults to the `enterEasing` param for symmetry.  */
+  /** Easing curve for the exit transition (collapse). Defaults to the `enterEasing` param for symmetry.  */
   exitEasing?: string;
 };
 
