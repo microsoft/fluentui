@@ -150,11 +150,6 @@ export const baseButtonStyles = css`
     display: inherit;
   }
 
-  ::slotted([slot='end']) {
-    width: 20px;
-    height: 20px;
-  }
-
   :host(${iconOnlyState}) {
     min-width: 32px;
     max-width: 32px;
