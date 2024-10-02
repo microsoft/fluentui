@@ -207,8 +207,8 @@ export const WithIconOnlyAndVertical = () => (
 
 WithIconOnlyAndVertical.storyName = 'With icon only and vertical';
 
-export const CircularSubtleAppearance = () => (
-  <TabList appearance="subtle" shape="circular">
+export const SubtleRoundedAppearance = () => (
+  <TabList appearance="subtle-rounded">
     <Tab value="1">First</Tab>
     <Tab className="mouse-target" value="2">
       Second
@@ -217,12 +217,12 @@ export const CircularSubtleAppearance = () => (
   </TabList>
 );
 
-export const CircularSubtleAppearanceDarkMode = getStoryVariant(CircularSubtleAppearance, DARK_MODE);
+export const SubtleRoundedAppearanceDarkMode = getStoryVariant(SubtleRoundedAppearance, DARK_MODE);
 
-export const CircularSubtleAppearanceHighContrast = getStoryVariant(CircularSubtleAppearance, HIGH_CONTRAST);
+export const SubtleRoundedAppearanceHighContrast = getStoryVariant(SubtleRoundedAppearance, HIGH_CONTRAST);
 
-export const CircularFilledAppearance = () => (
-  <TabList appearance="filled" shape="circular">
+export const FilledRoundedAppearance = () => (
+  <TabList appearance="filled-rounded">
     <Tab value="1">First</Tab>
     <Tab className="mouse-target" value="2">
       Second
@@ -231,6 +231,6 @@ export const CircularFilledAppearance = () => (
   </TabList>
 );
 
-export const CircularFilledAppearanceDarkMode = getStoryVariant(CircularFilledAppearance, DARK_MODE);
+export const FilledRoundedAppearanceDarkMode = getStoryVariant(FilledRoundedAppearance, DARK_MODE);
 
-export const CircularFilledAppearanceHighContrast = getStoryVariant(CircularFilledAppearance, HIGH_CONTRAST);
+export const FilledRoundedAppearanceHighContrast = getStoryVariant(FilledRoundedAppearance, HIGH_CONTRAST);

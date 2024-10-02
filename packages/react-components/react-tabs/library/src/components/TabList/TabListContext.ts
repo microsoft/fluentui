@@ -22,7 +22,6 @@ const tabListContextDefaultValue: TabListContextValue = {
       registeredTabs: {},
     };
   },
-  shape: undefined,
   size: 'medium',
   vertical: false,
 };

@@ -26,10 +26,10 @@ const useStyles = makeStyles({
     alignItems: 'stretch',
     flexDirection: 'column',
   },
-  circularSmall: {
+  roundedSmall: {
     gap: tokens.spacingHorizontalSNudge,
   },
-  circular: {
+  rounded: {
     gap: tokens.spacingHorizontalS,
   },
 });
@@ -40,15 +40,17 @@ const useStyles = makeStyles({
 export const useTabListStyles_unstable = (state: TabListState): TabListState => {
   'use no memo';
 
-  const { vertical, shape, size } = state;
+  const { appearance, vertical, size } = state;
 
   const styles = useStyles();
+
+  const isRounded = appearance === 'subtle-rounded' || appearance === 'filled-rounded';
 
   state.root.className = mergeClasses(
     tabListClassNames.root,
     styles.root,
     vertical ? styles.vertical : styles.horizontal,
-    shape === 'circular' && (size === 'small' ? styles.circularSmall : styles.circular),
+    isRounded && (size === 'small' ? styles.roundedSmall : styles.rounded),
     state.root.className,
   );
 

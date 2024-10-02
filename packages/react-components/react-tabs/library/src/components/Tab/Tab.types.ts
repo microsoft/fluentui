@@ -50,9 +50,9 @@ export type TabState = ComponentState<TabInternalSlots> &
   Pick<TabProps, 'value'> &
   Required<Pick<TabProps, 'disabled'>> & {
     /**
-     * A tab supports 'transparent' and 'subtle' appearance.
+     * A tab supports 'transparent', 'subtle', `subtle-rounded` and `filled-rounded` appearance.
      */
-    appearance?: 'transparent' | 'subtle' | 'filled';
+    appearance?: 'transparent' | 'subtle' | 'subtle-rounded' | 'filled-rounded';
 
     /**
      * A tab can have only an icon slot filled and no content.
@@ -73,12 +73,6 @@ export type TabState = ComponentState<TabInternalSlots> &
      * A tab can be either 'small', 'medium', or 'large' size.
      */
     size: 'small' | 'medium' | 'large';
-
-    /**
-     * A tab can have a circular shape. Could be used only with 'filled' or 'subtle' appearance.
-     */
-    shape?: 'circular';
-
     /**
      * A tab can arrange its content based on if the tabs in the list are arranged vertically.
      */

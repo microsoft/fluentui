@@ -88,55 +88,55 @@ const useRootStyles = makeStyles({
   },
   transparent: {
     backgroundColor: tokens.colorTransparentBackground,
-    ':hover': {
+    ':enabled:hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
     },
-    ':active': {
+    ':enabled:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
     '& .fui-Tab__icon': {
       color: tokens.colorNeutralForeground2,
     },
-    ':hover .fui-Tab__icon': {
+    ':enabled:hover .fui-Tab__icon': {
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':active .fui-Tab__icon': {
+    ':enabled:active .fui-Tab__icon': {
       color: tokens.colorNeutralForeground2Pressed,
     },
     '& .fui-Tab__content': {
       color: tokens.colorNeutralForeground2,
     },
-    ':hover .fui-Tab__content': {
+    ':enabled:hover .fui-Tab__content': {
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':active .fui-Tab__content': {
+    ':enabled:active .fui-Tab__content': {
       color: tokens.colorNeutralForeground2Pressed,
     },
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
-    ':hover': {
+    ':enabled:hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
     },
-    ':active': {
+    ':enabled:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
     },
     '& .fui-Tab__icon': {
       color: tokens.colorNeutralForeground2,
     },
-    ':hover .fui-Tab__icon': {
+    ':enabled:hover .fui-Tab__icon': {
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':active .fui-Tab__icon': {
+    ':enabled:active .fui-Tab__icon': {
       color: tokens.colorNeutralForeground2Pressed,
     },
     '& .fui-Tab__content': {
       color: tokens.colorNeutralForeground2,
     },
-    ':hover .fui-Tab__content': {
+    ':enabled:hover .fui-Tab__content': {
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':active .fui-Tab__content': {
+    ':enabled:active .fui-Tab__content': {
       color: tokens.colorNeutralForeground2Pressed,
     },
   },
@@ -155,26 +155,23 @@ const useRootStyles = makeStyles({
     '& .fui-Tab__icon': {
       color: tokens.colorCompoundBrandForeground1,
     },
-    ':hover .fui-Tab__icon': {
+    ':enabled:hover .fui-Tab__icon': {
       color: tokens.colorCompoundBrandForeground1Hover,
     },
-    ':active .fui-Tab__icon': {
+    ':enabled:active .fui-Tab__icon': {
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
     '& .fui-Tab__content': {
       color: tokens.colorNeutralForeground1,
     },
-    ':hover .fui-Tab__content': {
+    ':enabled:hover .fui-Tab__content': {
       color: tokens.colorNeutralForeground1Hover,
     },
-    ':active .fui-Tab__content': {
+    ':enabled:active .fui-Tab__content': {
       color: tokens.colorNeutralForeground1Pressed,
     },
   },
-});
-
-const useCircularStyles = makeStyles({
-  base: {
+  rounded: {
     borderRadius: tokens.borderRadiusCircular,
     '& .fui-Tab__icon': {
       color: 'inherit',
@@ -183,79 +180,75 @@ const useCircularStyles = makeStyles({
       color: 'inherit',
     },
   },
-  subtle: {
+  subtleRounded: {
     backgroundColor: tokens.colorTransparentBackground,
     border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
     color: tokens.colorNeutralForeground2,
-    ':hover': {
+    ':enabled:hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
       border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStroke1Hover}`,
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':active': {
+    ':enabled:active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
       border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStroke1Pressed}`,
       color: tokens.colorNeutralForeground2Pressed,
     },
   },
-  subtleSelected: {
+  subtleRoundedSelected: {
     backgroundColor: tokens.colorBrandBackground2,
     border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStroke}`,
     color: tokens.colorBrandForeground2,
-    ':hover': {
+    ':enabled:hover': {
       backgroundColor: tokens.colorBrandBackground2Hover,
       border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStrokeHover}`,
       color: tokens.colorBrandForeground2Hover,
     },
-    ':active': {
+    ':enabled:active': {
       backgroundColor: tokens.colorBrandBackground2Pressed,
       border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStrokePressed}`,
       color: tokens.colorBrandForeground2Pressed,
     },
   },
-  subtleDisabled: {
+  subtleRoundedDisabled: {
     backgroundColor: tokens.colorTransparentBackground,
     color: tokens.colorNeutralForegroundDisabled,
     border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
   },
-  subtleDisabledSelected: {
-    backgroundColor: tokens.colorTransparentBackground,
-    color: tokens.colorNeutralForegroundDisabled,
+  subtleRoundedDisabledSelected: {
     border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeDisabled}`,
   },
-  filled: {
+  filledRounded: {
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground2,
-    ':hover': {
+    ':enabled:hover': {
       backgroundColor: tokens.colorNeutralBackground3Hover,
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':active': {
+    ':enabled:active': {
       backgroundColor: tokens.colorNeutralBackground3Pressed,
       color: tokens.colorNeutralForeground2Pressed,
     },
   },
-  filledSelected: {
+  filledRoundedSelected: {
     backgroundColor: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundOnBrand,
-    ':hover': {
+    ':enabled:hover': {
       backgroundColor: tokens.colorBrandBackgroundHover,
       color: tokens.colorNeutralForegroundOnBrand,
     },
-    ':active': {
+    ':enabled:active': {
       backgroundColor: tokens.colorBrandBackgroundPressed,
       color: tokens.colorNeutralForegroundOnBrand,
     },
   },
-  filledDisabled: {
+  filledRoundedDisabled: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
     border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
     color: tokens.colorNeutralForegroundDisabled,
   },
-  filledDisabledSelected: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+  filledRoundedDisabledSelected: {
     border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeDisabled}`,
-    color: tokens.colorNeutralForegroundDisabled,
   },
 });
 
@@ -377,20 +370,20 @@ const useActiveIndicatorStyles = makeStyles({
     '::after': {
       backgroundColor: tokens.colorCompoundBrandStroke,
     },
-    ':hover::after': {
+    ':enabled:hover::after': {
       backgroundColor: tokens.colorCompoundBrandStrokeHover,
     },
-    ':active::after': {
+    ':enabled:active::after': {
       backgroundColor: tokens.colorCompoundBrandStrokePressed,
     },
     '@media (forced-colors: active)': {
       '::after': {
         backgroundColor: 'ButtonText',
       },
-      ':hover::after': {
+      ':enabled:hover::after': {
         backgroundColor: 'ButtonText',
       },
-      ':active::after': {
+      ':enabled:active::after': {
         backgroundColor: 'ButtonText',
       },
     },
@@ -558,12 +551,11 @@ export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
   const pendingIndicatorStyles = usePendingIndicatorStyles();
   const activeIndicatorStyles = useActiveIndicatorStyles();
 
-  const { disabled, selected, size, shape, vertical } = state;
+  const { appearance, disabled, selected, size, vertical } = state;
 
   const classes: Parameters<typeof mergeClasses> = [tabClassNames.root, rootStyles.root];
 
-  // Only apply indicator styles if the shape is not circular
-  if (shape !== 'circular') {
+  if (appearance !== 'subtle-rounded' && appearance !== 'filled-rounded') {
     classes.push(
       // pending indicator (before pseudo element)
       pendingIndicatorStyles.base,
@@ -610,11 +602,26 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
 
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
-  const circularStyles = useCircularStyles();
 
-  const { appearance, shape, disabled, selected, size, vertical } = state;
+  const { appearance, disabled, selected, size, vertical } = state;
 
-  const isCircular = shape === 'circular';
+  const isSubtleRounded = appearance === 'subtle-rounded';
+  const isFilledRounded = appearance === 'filled-rounded';
+  const isRounded = isSubtleRounded || isFilledRounded;
+
+  const roundedAppearance = [
+    rootStyles.rounded,
+    // subtle-rounded appearance
+    isSubtleRounded && rootStyles.subtleRounded,
+    selected && isSubtleRounded && rootStyles.subtleRoundedSelected,
+    disabled && isSubtleRounded && rootStyles.subtleRoundedDisabled,
+    selected && disabled && isSubtleRounded && rootStyles.subtleRoundedDisabledSelected,
+    // filled-rounded appearance
+    isFilledRounded && rootStyles.filledRounded,
+    selected && isFilledRounded && rootStyles.filledRoundedSelected,
+    disabled && isFilledRounded && rootStyles.filledRoundedDisabled,
+    selected && disabled && isFilledRounded && rootStyles.filledRoundedDisabledSelected,
+  ];
 
   slot.className = mergeClasses(
     rootStyles.button,
@@ -625,24 +632,10 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
     size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
     size === 'large' && (vertical ? rootStyles.largeVertical : rootStyles.largeHorizontal),
     focusStyles.base,
-    // appearance
-    !disabled && appearance === 'subtle' && !isCircular && rootStyles.subtle,
-    !disabled && appearance === 'transparent' && rootStyles.transparent,
-    !disabled && selected && !isCircular && rootStyles.selected,
+    appearance === 'subtle' && rootStyles.subtle,
+    appearance === 'transparent' && rootStyles.transparent,
+    ...(isRounded ? roundedAppearance : [selected && rootStyles.selected]),
     disabled && rootStyles.disabled,
-
-    // circular tabs
-    isCircular && circularStyles.base,
-    // subtle + circular
-    !disabled && appearance === 'subtle' && isCircular && circularStyles.subtle,
-    !disabled && appearance === 'subtle' && selected && isCircular && circularStyles.subtleSelected,
-    disabled && appearance === 'subtle' && isCircular && circularStyles.subtleDisabled,
-    disabled && appearance === 'subtle' && selected && isCircular && circularStyles.subtleDisabledSelected,
-    // filled + circular
-    !disabled && appearance === 'filled' && isCircular && circularStyles.filled,
-    !disabled && appearance === 'filled' && selected && isCircular && circularStyles.filledSelected,
-    disabled && appearance === 'filled' && isCircular && circularStyles.filledDisabled,
-    disabled && appearance === 'filled' && selected && isCircular && circularStyles.filledDisabledSelected,
 
     slot.className,
   );

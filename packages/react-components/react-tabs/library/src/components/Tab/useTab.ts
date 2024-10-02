@@ -33,7 +33,6 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
   const onSelect = useTabListContext_unstable(ctx => ctx.onSelect);
   const size = useTabListContext_unstable(ctx => ctx.size);
   const vertical = useTabListContext_unstable(ctx => !!ctx.vertical);
-  const shape = useTabListContext_unstable(ctx => ctx.shape);
   const disabled = listDisabled || tabDisabled;
 
   const innerRef = React.useRef<HTMLElement>(null);
@@ -89,7 +88,6 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
       elementType: 'span',
     }),
     appearance,
-    shape,
     disabled,
     selected,
     size,
