@@ -19,7 +19,16 @@ import { ESLintUtils, AST_NODE_TYPES, AST_TOKEN_TYPES, ASTUtils, TSESTree } from
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-no-missing-jsx-pragma"
 export const RULE_NAME = 'no-missing-jsx-pragma';
 
-export const rule = ESLintUtils.RuleCreator(() => __filename)({
+type Options = Array<{ runtime: 'automatic' | 'classic' }>;
+type MessageIds =
+  | 'missingJsxImportSource'
+  | 'missingJsxPragma'
+  | 'missingCreateElementFactoryImport'
+  | 'invalidJSXPragmaForAutomatic'
+  | 'invalidJSXPragmaForClassic'
+  | 'redundantPragma';
+
+export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageIds>({
   name: RULE_NAME,
   meta: {
     type: 'problem',
@@ -27,10 +36,26 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
       description: 'Enforce properly configured of @jsx or @jsxImportSource pragma for files using Fluent slot API',
       recommended: 'recommended',
     },
-    schema: [],
+    schema: [
+      {
+        type: 'object',
+        properties: {
+          runtime: {
+            type: 'string',
+            enum: ['automatic', 'classic'],
+          },
+        },
+      },
+    ],
     messages: {
-      missingPragma: `File uses JSX slots API but doesn't specify custom jsx transforms. To fix this add /** @jsxImportSource @fluentui/react-jsx-runtime */`,
+      missingJsxImportSource: `File uses JSX slots API but doesn't specify custom jsx transforms. To fix this add /** @jsxImportSource @fluentui/react-jsx-runtime */`,
+      missingJsxPragma: `File uses JSX slots API but doesn't specify custom jsx transforms. To fix this add /** @jsx createElement */`,
       missingCreateElementFactoryImport: `File uses JSX slots API, has defined /** jsx createElement */ pragma, but is missing 'createElement' factory function import. To fix this add "import {createElement} from '@fluentui/react-jsx-runtime'"`,
+      invalidJSXPragmaForAutomatic:
+        'Found @jsx pragma which is not allowed. Please use /** @jsxImportSource @fluentui/react-jsx-runtime */',
+      invalidJSXPragmaForClassic:
+        'Found @jsxImportSource pragma which is not allowed. Please use /** @jsx createElement */',
+      redundantPragma: 'Unused JSX pragma found. Needs to be removed as there is no Slot api used within jsx template',
     },
   },
   defaultOptions: [],
@@ -38,18 +63,26 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
     let hasCreateElementImport = false;
     let hasAssertSlots = false;
     let hasSlotJsxExpression = false;
-    let hasJsxImportSourcePragma = false;
+    let hasJsxImportSource = false;
     let hasJsxPragma = false;
-    let specifiedJsxRuntimePragma: 'automatic' | 'classic' | null = null;
+    let specifiedJsxRuntimePragma: string;
+    const { runtime } = context.options[0];
+
+    if (!runtime) {
+      throw new Error('missing runtime configuration. Please use on of ["automatic", "classic"]');
+    }
 
     return {
       Program(node) {
         if (!node.comments) {
           return;
         }
+        if (node.comments.length === 0) {
+          return;
+        }
 
         // Check comments in the program
-        node.comments.forEach(checkJsxPragmas);
+        node.comments.forEach(node => checkJsxPragmas(node));
       },
       'ImportDeclaration ImportSpecifier[local.name=createElement]'(node: TSESTree.ImportSpecifier) {
         hasCreateElementImport = true;
@@ -63,40 +96,81 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
         }
       },
       'Program:exit'() {
-        if (!(hasSlotJsxExpression && hasAssertSlots)) {
-          return;
-        }
+        const usesSlotApi = hasSlotJsxExpression && hasAssertSlots;
+        const hasAnyPragma = hasJsxImportSource || hasJsxPragma;
 
-        const hasRequiredPragma = hasJsxImportSourcePragma || hasJsxPragma;
-
-        if (!hasRequiredPragma) {
+        if (!usesSlotApi && hasAnyPragma) {
           context.report({
-            messageId: 'missingPragma',
-            // Adjust location if needed
-            loc: { line: 1, column: 1 },
-          });
-
-          return;
-        }
-
-        if (hasJsxPragma && !hasCreateElementImport) {
-          context.report({
-            messageId: 'missingCreateElementFactoryImport',
+            messageId: 'redundantPragma',
             // Adjust location if needed
             loc: { line: 1, column: 1 },
           });
           return;
+        }
+
+        if (!usesSlotApi) {
+          return;
+        }
+
+        if (runtime === 'automatic') {
+          if (hasJsxPragma) {
+            context.report({
+              messageId: 'invalidJSXPragmaForAutomatic',
+              // Adjust location if needed
+              loc: { line: 1, column: 1 },
+            });
+            return;
+          }
+
+          if (!hasJsxImportSource) {
+            context.report({
+              messageId: 'missingJsxImportSource',
+              // Adjust location if needed
+              loc: { line: 1, column: 1 },
+            });
+            return;
+          }
+        }
+
+        if (runtime === 'classic') {
+          if (hasJsxImportSource) {
+            context.report({
+              messageId: 'invalidJSXPragmaForClassic',
+              // Adjust location if needed
+              loc: { line: 1, column: 1 },
+            });
+            return;
+          }
+
+          if (!hasJsxPragma) {
+            context.report({
+              messageId: 'missingJsxPragma',
+              // Adjust location if needed
+              loc: { line: 1, column: 1 },
+            });
+            return;
+          }
+
+          if (!hasCreateElementImport) {
+            context.report({
+              messageId: 'missingCreateElementFactoryImport',
+              // Adjust location if needed
+              loc: { line: 1, column: 1 },
+            });
+            return;
+          }
         }
       },
     };
 
     function checkJsxPragmas(node: TSESTree.Comment) {
+      // ignore non block comments
       if (node.type !== AST_TOKEN_TYPES.Block) {
         return;
       }
 
       if (node.value.includes('@jsxImportSource @fluentui/react-jsx-runtime')) {
-        hasJsxImportSourcePragma = true;
+        hasJsxImportSource = true;
       }
       if (node.value.includes('@jsx createElement')) {
         hasJsxPragma = true;
