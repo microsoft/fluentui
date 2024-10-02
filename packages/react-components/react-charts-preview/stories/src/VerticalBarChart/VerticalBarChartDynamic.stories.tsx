@@ -118,9 +118,6 @@ export const VCDynamic = () => {
     setXAxisType(option.value);
     setDynamicData(_getData(dataSize, option.value));
   };
-  const _onEnableReflowCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
-    setEnableReflow(checked.checked);
-  };
   const _onDataSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const dataSize = Number(e.target.value);
     setDataSize(dataSize);
@@ -164,7 +161,6 @@ export const VCDynamic = () => {
   const [xAxisOuterPadding, setXAxisOuterPadding] = React.useState<number>(0);
   const [width, setWidth] = React.useState<number>(650);
   const [xAxisType, setXAxisType] = React.useState<string>(initialXAxisType);
-  const [enableReflow, setEnableReflow] = React.useState<CheckboxProps['checked']>(false);
   const [dataSize, setDataSize] = React.useState<number>(initialDataSize);
 
   _changeData = _changeData.bind(this);
@@ -243,9 +239,6 @@ export const VCDynamic = () => {
           />
           <span>&nbsp;{xAxisOuterPadding}</span>
         </div>
-        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
-          <Checkbox label="enableReflow" checked={enableReflow} onChange={_onEnableReflowCheckChange} />
-        </div>
       </div>
       <div style={{ display: 'flex', marginTop: '20px' }}>
         <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
@@ -267,14 +260,13 @@ export const VCDynamic = () => {
       <div style={{ width: `${width}px`, height: '350px' }}>
         <VerticalBarChart
           // Force rerender when any of the following states change
-          key={`${xAxisType}-${enableReflow}`}
+          key={xAxisType}
           chartTitle="Vertical bar chart dynamic example"
           data={dynamicData}
           colors={colors}
           hideLegend={true}
           yMaxValue={100}
           width={width}
-          enableReflow={enableReflow}
           barWidth={barWidth}
           maxBarWidth={maxBarWidth}
           xAxisInnerPadding={xAxisInnerPaddingEnabled ? xAxisInnerPadding : undefined}

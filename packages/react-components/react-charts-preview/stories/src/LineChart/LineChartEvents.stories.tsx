@@ -162,7 +162,6 @@ export const LCEvents = (props: ILineChartProps) => {
           yAxisTickFormat={d3.format('$,')}
           tickFormat={'%m/%d'}
           allowMultipleShapesForPoints={allowMultipleShapes}
-          enableReflow={true}
           tickValues={[
             new Date('2020-03-03'),
             new Date('2020-03-04'),

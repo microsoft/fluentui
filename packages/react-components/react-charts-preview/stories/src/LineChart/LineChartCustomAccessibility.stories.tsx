@@ -210,7 +210,6 @@ export const LCCustomAccess = (props: ILineChartProps) => {
           tickValues={tickValues}
           height={height}
           width={width}
-          enableReflow={true}
           legendProps={{ canSelectMultipleLegends: true, allowFocusOnLegends: true }}
           colorFillBars={colorFillBarData}
           allowMultipleShapesForPoints={allowMultipleShapes}

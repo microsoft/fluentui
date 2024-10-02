@@ -71,7 +71,6 @@ export const DonutCustomCallout = () => {
         legendsOverflowText={'overflow Items'}
         hideLegend={false}
         height={220}
-        width={176}
         valueInsideDonut={39000}
         customProps={(props: IChartDataPoint) => customPopoverProps(props)}
         onRenderCalloutPerDataPoint={(props: IChartDataPoint) => customPopover(props)}

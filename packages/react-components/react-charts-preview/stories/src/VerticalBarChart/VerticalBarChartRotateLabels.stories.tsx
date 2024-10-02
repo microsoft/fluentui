@@ -35,7 +35,6 @@ export const VCRotateLabels = () => {
           width={650}
           hideLegend={true}
           rotateXAxisLables={true}
-          enableReflow={true}
         />
       </div>
     </>

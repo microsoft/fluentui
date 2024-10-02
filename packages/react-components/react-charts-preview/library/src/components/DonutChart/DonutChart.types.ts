@@ -86,4 +86,9 @@ export interface IDonutChartStyles {
    * Style for the legend container.
    */
   legendContainer: string;
+
+  /**
+   * Styles for the chart wrapper div
+   */
+  chartWrapper?: string;
 }

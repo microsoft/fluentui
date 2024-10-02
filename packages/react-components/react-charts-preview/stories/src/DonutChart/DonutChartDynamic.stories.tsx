@@ -126,7 +126,6 @@ export const DonutDynamic = () => {
           onChange={_onShowPercentCheckChange}
         />
       </div>
-
       <DonutChart
         data={data}
         innerRadius={innerRadius}
@@ -135,6 +134,7 @@ export const DonutDynamic = () => {
         }}
         hideLabels={hideLabels}
         showLabelsInPercent={showLabelsInPercent}
+        height={248}
       />
       <Button onClick={_changeData}> Change data </Button>
       <Button onClick={_changeColors}> Change colors </Button>

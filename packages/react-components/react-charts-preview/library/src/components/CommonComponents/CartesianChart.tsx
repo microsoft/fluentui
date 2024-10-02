@@ -25,12 +25,13 @@ import {
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import PopoverComponent from './Popover';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { ResponsiveContainer } from './ResponsiveContainer';
 
 /**
  * Cartesian Chart component
  * {@docCategory CartesianChart}
  */
-export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProps> = React.forwardRef<
+const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> = React.forwardRef<
   HTMLDivElement,
   IModifiedCartesianChartProps
 >((props, forwardedRef) => {
@@ -614,4 +615,21 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
     </div>
   );
 });
+
+export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProps> = props => {
+  if (!props.responsive) {
+    return <CartesianChartBase {...props} />;
+  }
+
+  return (
+    <ResponsiveContainer onResize={props.onResize} width={props.width} height={props.height}>
+      {({ containerWidth, containerHeight }) => (
+        <CartesianChartBase {...props} width={containerWidth} height={containerHeight} />
+      )}
+    </ResponsiveContainer>
+  );
+};
 CartesianChart.displayName = 'CartesianChart';
+CartesianChart.defaultProps = {
+  responsive: true,
+};
