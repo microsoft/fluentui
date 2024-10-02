@@ -4,7 +4,7 @@ import type { Menu } from './menu.js';
 
 test.describe('Menu', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-menu-menu--default'));
+    await page.goto(fixtureURL('components-menu--default'));
 
     await page.waitForFunction(() =>
       Promise.all([

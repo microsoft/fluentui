@@ -34,7 +34,7 @@ const storyTemplate = html<StoryArgs<FluentMenu>>`
 `;
 
 export default {
-  title: 'Components/Menu/Menu',
+  title: 'Components/Menu',
   render: renderComponent(storyTemplate),
   args: {
     slottedContent: () => defaultSlottedContent,

@@ -1,7 +1,7 @@
 import { html, repeat } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options.js';
-import type { Menu as FluentMenu } from './menu.js';
+import type { Menu as FluentMenu } from '../menu/menu.js';
 
 type Story = StoryObj<FluentMenu>;
 
@@ -42,7 +42,7 @@ const storyTemplate = html<StoryArgs<FluentMenu>>`
 `;
 
 export default {
-  title: 'Components/Menu/Split-Button',
+  title: 'Components/Button/Split-Button',
   args: {
     primaryActionSlottedContent: () => generatePimaryActionSlottedContent(),
     slottedContent: () => defaultSlottedContent,
