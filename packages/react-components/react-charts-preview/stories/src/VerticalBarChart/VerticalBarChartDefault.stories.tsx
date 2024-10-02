@@ -202,7 +202,6 @@ export const VCBasic = () => {
             height={height}
             width={width}
             hideLegend={false}
-            enableReflow={true}
             useSingleColor={useSingleColor}
             hideLabels={hideLabels}
             lineLegendText={'just line'}
@@ -236,7 +235,6 @@ export const VCBasic = () => {
             height={height}
             width={width}
             hideLegend={false}
-            enableReflow={true}
             useSingleColor={useSingleColor}
             hideLabels={hideLabels}
             lineLegendText={'just line'}

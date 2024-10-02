@@ -25,7 +25,6 @@ export const DonutBasic = () => {
       legendsOverflowText={'overflow Items'}
       hideLegend={false}
       height={220}
-      width={176}
       valueInsideDonut={39000}
     />
   );

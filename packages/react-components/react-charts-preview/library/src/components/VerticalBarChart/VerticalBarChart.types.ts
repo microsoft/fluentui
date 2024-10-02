@@ -141,11 +141,6 @@ export interface IVerticalBarChartStyles extends ICartesianChartStyles {
   yAxisTicks?: string;
 
   /**
-   * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
-   */
-  opacityChangeOnHover: string;
-
-  /**
    * Style for the bar labels
    */
   barLabel: string;

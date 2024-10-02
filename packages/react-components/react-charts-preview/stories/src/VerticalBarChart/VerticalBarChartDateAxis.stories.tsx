@@ -51,7 +51,6 @@ export const VCDateAxis = () => {
           width={650}
           hideLegend={true}
           //rotateXAxisLables={true}
-          enableReflow={true}
           useUTC={false}
         />
       </div>

@@ -11,7 +11,6 @@ import {
   InputProps,
   InputOnChangeData,
 } from '@fluentui/react-components';
-import { StackShim } from '@fluentui/react-migration-v8-v9';
 
 export const VCAxisTooltip = () => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');
@@ -113,7 +112,7 @@ export const VCAxisTooltip = () => {
         </div>
         <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
-            maxBarWidth:
+            maxBarWidth:&nbsp;
           </label>
           <Input
             type="number"
@@ -125,7 +124,7 @@ export const VCAxisTooltip = () => {
           />
         </div>
       </div>
-      <div style={{ display: 'flex', gap: '20px' }}>
+      <div style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
         <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <Checkbox
             label="xAxisInnerPadding:&nbsp;"
@@ -161,7 +160,7 @@ export const VCAxisTooltip = () => {
           <span>&nbsp;{xAxisOuterPadding}</span>
         </div>
       </div>
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex', marginTop: '20px' }}>
         <Field label="Pick one">
           <RadioGroup defaultValue="showTooltip" onChange={(_ev, option) => option && setSelectedCallout(option.value)}>
             <Radio value="WrapTickValues" label="Wrap X Axis Ticks" />
@@ -179,7 +178,6 @@ export const VCAxisTooltip = () => {
           hideTooltip={false}
           showXAxisLablesTooltip={selectedCallout === 'showTooltip' ? true : false}
           wrapXAxisLables={selectedCallout === 'WrapTickValues' ? true : false}
-          enableReflow={true}
           barWidth={barWidthEnabled ? barWidth : 'auto'}
           maxBarWidth={maxBarWidth}
           xAxisInnerPadding={xAxisInnerPaddingEnabled ? xAxisInnerPadding : undefined}

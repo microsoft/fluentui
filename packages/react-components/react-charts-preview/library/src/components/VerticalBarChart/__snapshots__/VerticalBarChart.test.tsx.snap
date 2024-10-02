@@ -14,33 +14,35 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_"
-  />
-  <svg
-    height={0}
-    style={
-      Object {
-        "display": "block",
-      }
-    }
-    width={0}
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
-    <g
-      className="fui-cart__xAxis"
-      id="xAxisGElementchart_"
-      transform="translate(0, -35)"
-    />
-    <g
-      className="fui-cart__yAxis"
-      id="yAxisGElementchart_"
-      transform="translate(40, 0)"
-    />
-    <g>
-       
-       
-       
-    </g>
-  </svg>
+    <svg
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+         
+         
+         
+      </g>
+    </svg>
+  </div>
   <div
     className="fui-cart__legendContainer"
   >
@@ -48,7 +50,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
       aria-label="Legends"
       aria-multiselectable={false}
       className="fui-legend__root"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
       style={
         Object {
@@ -62,11 +64,8 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
       >
         <button
           aria-label="First"
-          aria-posinset={1}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -88,17 +87,19 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             First
           </div>
         </button>
         <button
           aria-label="Second"
-          aria-posinset={2}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -120,17 +121,19 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             Second
           </div>
         </button>
         <button
           aria-label="Third"
-          aria-posinset={3}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -152,6 +155,11 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             Third
           </div>
@@ -170,33 +178,35 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_"
-  />
-  <svg
-    height={0}
-    style={
-      Object {
-        "display": "block",
-      }
-    }
-    width={0}
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
-    <g
-      className="fui-cart__xAxis"
-      id="xAxisGElementchart_"
-      transform="translate(0, -35)"
-    />
-    <g
-      className="fui-cart__yAxis"
-      id="yAxisGElementchart_"
-      transform="translate(40, 0)"
-    />
-    <g>
-       
-       
-       
-    </g>
-  </svg>
+    <svg
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+         
+         
+         
+      </g>
+    </svg>
+  </div>
   <div
     className="fui-cart__legendContainer"
   >
@@ -204,7 +214,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
       aria-label="Legends"
       aria-multiselectable={false}
       className="fui-legend__root"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
       style={
         Object {
@@ -218,11 +228,8 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
       >
         <button
           aria-label="First"
-          aria-posinset={1}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -244,17 +251,19 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             First
           </div>
         </button>
         <button
           aria-label="Second"
-          aria-posinset={2}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -276,17 +285,19 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             Second
           </div>
         </button>
         <button
           aria-label="Third"
-          aria-posinset={3}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -308,6 +319,11 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             Third
           </div>
@@ -326,33 +342,35 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_"
-  />
-  <svg
-    height={0}
-    style={
-      Object {
-        "display": "block",
-      }
-    }
-    width={0}
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
-    <g
-      className="fui-cart__xAxis"
-      id="xAxisGElementchart_"
-      transform="translate(0, -35)"
-    />
-    <g
-      className="fui-cart__yAxis"
-      id="yAxisGElementchart_"
-      transform="translate(40, 0)"
-    />
-    <g>
-       
-       
-       
-    </g>
-  </svg>
+    <svg
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+         
+         
+         
+      </g>
+    </svg>
+  </div>
   <div
     className="fui-cart__legendContainer"
   >
@@ -360,7 +378,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
       aria-label="Legends"
       aria-multiselectable={false}
       className="fui-legend__root"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
       style={
         Object {
@@ -374,11 +392,8 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
       >
         <button
           aria-label="First"
-          aria-posinset={1}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -400,17 +415,19 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             First
           </div>
         </button>
         <button
           aria-label="Second"
-          aria-posinset={2}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -432,17 +449,19 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             Second
           </div>
         </button>
         <button
           aria-label="Third"
-          aria-posinset={3}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -464,6 +483,11 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             Third
           </div>
@@ -482,33 +506,35 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_"
-  />
-  <svg
-    height={0}
-    style={
-      Object {
-        "display": "block",
-      }
-    }
-    width={0}
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
-    <g
-      className="fui-cart__xAxis"
-      id="xAxisGElementchart_"
-      transform="translate(0, -35)"
-    />
-    <g
-      className="fui-cart__yAxis"
-      id="yAxisGElementchart_"
-      transform="translate(40, 0)"
-    />
-    <g>
-       
-       
-       
-    </g>
-  </svg>
+    <svg
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+         
+         
+         
+      </g>
+    </svg>
+  </div>
 </div>
 `;
 
@@ -520,33 +546,35 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_"
-  />
-  <svg
-    height={0}
-    style={
-      Object {
-        "display": "block",
-      }
-    }
-    width={0}
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
-    <g
-      className="fui-cart__xAxis"
-      id="xAxisGElementchart_"
-      transform="translate(0, -35)"
-    />
-    <g
-      className="fui-cart__yAxis"
-      id="yAxisGElementchart_"
-      transform="translate(40, 0)"
-    />
-    <g>
-       
-       
-       
-    </g>
-  </svg>
+    <svg
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+         
+         
+         
+      </g>
+    </svg>
+  </div>
   <div
     className="fui-cart__legendContainer"
   >
@@ -554,7 +582,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
       aria-label="Legends"
       aria-multiselectable={false}
       className="fui-legend__root"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
       style={
         Object {
@@ -568,11 +596,8 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
       >
         <button
           aria-label="First"
-          aria-posinset={1}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -594,17 +619,19 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             First
           </div>
         </button>
         <button
           aria-label="Second"
-          aria-posinset={2}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -626,17 +653,19 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             Second
           </div>
         </button>
         <button
           aria-label="Third"
-          aria-posinset={3}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -658,6 +687,11 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             Third
           </div>
@@ -676,84 +710,89 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_"
-  />
-  <svg
-    height={0}
-    style={
-      Object {
-        "display": "block",
-      }
-    }
-    width={0}
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
-    <g
-      className="fui-cart__xAxis"
-      id="xAxisGElementchart_"
-      transform="translate(0, NaN)"
-    />
-    <g
-      className="fui-cart__yAxis"
-      id="yAxisGElementchart_"
-      transform="translate(40, 0)"
-    />
-    <g>
+    <svg
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, NaN)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
       <g>
-        <rect
-          aria-label="2020/04/30. First, 10%."
-          className="fui-vbc__opacityChangeOnHover"
-          data-is-focusable={true}
-          fill="aqua"
-          height={NaN}
-          id="_VBC_bar_28-0"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={1}
-          x={48}
-          y={NaN}
-        />
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            data-is-focusable={true}
+            fill="aqua"
+            height={NaN}
+            id="_VBC_bar_28-0"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            tabIndex={0}
+            width={1}
+            x={48}
+            y={NaN}
+          />
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            data-is-focusable={true}
+            fill="blue"
+            height={NaN}
+            id="_VBC_bar_28-1"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            tabIndex={0}
+            width={1}
+            x={18.384615384615387}
+            y={NaN}
+          />
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            data-is-focusable={true}
+            fill="navy"
+            height={NaN}
+            id="_VBC_bar_28-2"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            tabIndex={0}
+            width={1}
+            x={-26.03846153846154}
+            y={NaN}
+          />
+        </g>
       </g>
-      <g>
-        <rect
-          aria-label="2020/04/30. Second, 20%."
-          className="fui-vbc__opacityChangeOnHover"
-          data-is-focusable={true}
-          fill="blue"
-          height={NaN}
-          id="_VBC_bar_28-1"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={1}
-          x={18.384615384615387}
-          y={NaN}
-        />
-      </g>
-      <g>
-        <rect
-          aria-label="2020/04/30. Third, 37%."
-          className="fui-vbc__opacityChangeOnHover"
-          data-is-focusable={true}
-          fill="navy"
-          height={NaN}
-          id="_VBC_bar_28-2"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={1}
-          x={-26.03846153846154}
-          y={NaN}
-        />
-      </g>
-    </g>
-  </svg>
+    </svg>
+  </div>
   <div
     className="fui-cart__legendContainer"
   >
@@ -761,7 +800,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
       aria-label="Legends"
       aria-multiselectable={false}
       className="fui-legend__root"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
       style={
         Object {
@@ -775,11 +814,8 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
       >
         <button
           aria-label="First"
-          aria-posinset={1}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -801,17 +837,19 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             First
           </div>
         </button>
         <button
           aria-label="Second"
-          aria-posinset={2}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -833,17 +871,19 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             Second
           </div>
         </button>
         <button
           aria-label="Third"
-          aria-posinset={3}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -865,6 +905,11 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             Third
           </div>
@@ -883,84 +928,89 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_"
-  />
-  <svg
-    height={0}
-    style={
-      Object {
-        "display": "block",
-      }
-    }
-    width={0}
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
-    <g
-      className="fui-cart__xAxis"
-      id="xAxisGElementchart_"
-      transform="translate(0, NaN)"
-    />
-    <g
-      className="fui-cart__yAxis"
-      id="yAxisGElementchart_"
-      transform="translate(40, 0)"
-    />
-    <g>
+    <svg
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, NaN)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
       <g>
-        <rect
-          aria-label="2020/04/30. First, 10%."
-          className="fui-vbc__opacityChangeOnHover"
-          data-is-focusable={true}
-          fill="aqua"
-          height={NaN}
-          id="_VBC_bar_34-0"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={1}
-          x={48}
-          y={NaN}
-        />
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            data-is-focusable={true}
+            fill="aqua"
+            height={NaN}
+            id="_VBC_bar_34-0"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            tabIndex={0}
+            width={1}
+            x={48}
+            y={NaN}
+          />
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            data-is-focusable={true}
+            fill="blue"
+            height={NaN}
+            id="_VBC_bar_34-1"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            tabIndex={0}
+            width={1}
+            x={18.384615384615387}
+            y={NaN}
+          />
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            data-is-focusable={true}
+            fill="navy"
+            height={NaN}
+            id="_VBC_bar_34-2"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            tabIndex={0}
+            width={1}
+            x={-26.03846153846154}
+            y={NaN}
+          />
+        </g>
       </g>
-      <g>
-        <rect
-          aria-label="2020/04/30. Second, 20%."
-          className="fui-vbc__opacityChangeOnHover"
-          data-is-focusable={true}
-          fill="blue"
-          height={NaN}
-          id="_VBC_bar_34-1"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={1}
-          x={18.384615384615387}
-          y={NaN}
-        />
-      </g>
-      <g>
-        <rect
-          aria-label="2020/04/30. Third, 37%."
-          className="fui-vbc__opacityChangeOnHover"
-          data-is-focusable={true}
-          fill="navy"
-          height={NaN}
-          id="_VBC_bar_34-2"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          width={1}
-          x={-26.03846153846154}
-          y={NaN}
-        />
-      </g>
-    </g>
-  </svg>
+    </svg>
+  </div>
   <div
     className="fui-cart__legendContainer"
   >
@@ -968,7 +1018,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
       aria-label="Legends"
       aria-multiselectable={false}
       className="fui-legend__root"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
       style={
         Object {
@@ -982,11 +1032,8 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
       >
         <button
           aria-label="First"
-          aria-posinset={1}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -1008,17 +1055,19 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             First
           </div>
         </button>
         <button
           aria-label="Second"
-          aria-posinset={2}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -1040,17 +1089,19 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             Second
           </div>
         </button>
         <button
           aria-label="Third"
-          aria-posinset={3}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -1072,6 +1123,11 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             Third
           </div>
@@ -1090,33 +1146,35 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_"
-  />
-  <svg
-    height={0}
-    style={
-      Object {
-        "display": "block",
-      }
-    }
-    width={0}
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   >
-    <g
-      className="fui-cart__xAxis"
-      id="xAxisGElementchart_"
-      transform="translate(0, -35)"
-    />
-    <g
-      className="fui-cart__yAxis"
-      id="yAxisGElementchart_"
-      transform="translate(40, 0)"
-    />
-    <g>
-       
-       
-       
-    </g>
-  </svg>
+    <svg
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+         
+         
+         
+      </g>
+    </svg>
+  </div>
   <div
     className="fui-cart__legendContainer"
   >
@@ -1124,7 +1182,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
       aria-label="Legends"
       aria-multiselectable={false}
       className="fui-legend__root"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       role="listbox"
       style={
         Object {
@@ -1138,11 +1196,8 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
       >
         <button
           aria-label="First"
-          aria-posinset={1}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -1164,17 +1219,19 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             First
           </div>
         </button>
         <button
           aria-label="Second"
-          aria-posinset={2}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -1196,17 +1253,19 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             Second
           </div>
         </button>
         <button
           aria-label="Third"
-          aria-posinset={3}
           aria-selected={false}
-          aria-setsize={3}
           className="fui-Button fui-legend__legend"
-          data-is-focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -1228,6 +1287,11 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           />
           <div
             className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
           >
             Third
           </div>

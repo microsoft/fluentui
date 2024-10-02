@@ -5,10 +5,13 @@ import {
   IChartDataPoint,
   DataVizPalette,
   getColorFromToken,
-  PopoverComponent,
+  IPopoverComponentProps,
 } from '@fluentui/react-charts-preview';
+import { Switch } from '../../../../react-switch/library/src/Switch';
 
 export const DonutCustomCallout = () => {
+  const [useCustomPopover, setUseCustomPopover] = React.useState(false);
+
   const points: IChartDataPoint[] = [
     {
       legend: 'first',
@@ -26,13 +29,41 @@ export const DonutCustomCallout = () => {
     },
   ];
 
+  const _onTogglePopoverCheckChange = React.useCallback(ev => {
+    setUseCustomPopover(ev.currentTarget.checked);
+  }, []);
+
   const data: IChartProps = {
     chartTitle: 'Donut chart custom callout example',
     chartData: points,
   };
 
+  const customPopoverProps = (props: IChartDataPoint): IPopoverComponentProps => {
+    const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : '';
+    return {
+      XValue: 'Custom XVal',
+      legend: 'Custom Legend',
+      YValue: yValue,
+      color: getColorFromToken(DataVizPalette.warning),
+    };
+  };
+
+  const customPopover = (props: IChartDataPoint): JSX.Element | undefined => {
+    const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : 'Y Value';
+    const xValue = props ? props.xAxisCalloutData! : 'X Value';
+    const legend = props ? props.legend : 'Legend';
+    return useCustomPopover ? (
+      <div>
+        <div>{xValue}</div>
+        <div>{legend}</div>
+        <div>{yValue}</div>
+      </div>
+    ) : undefined;
+  };
+
   return (
     <>
+      <Switch label={'Custom Popover Override'} checked={useCustomPopover} onChange={_onTogglePopoverCheckChange} />
       <DonutChart
         data={data}
         innerRadius={55}
@@ -40,23 +71,14 @@ export const DonutCustomCallout = () => {
         legendsOverflowText={'overflow Items'}
         hideLegend={false}
         height={220}
-        width={176}
         valueInsideDonut={39000}
-        // eslint-disable-next-line react/jsx-no-bind
-        onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
-          props ? (
-            <PopoverComponent
-              XValue={'Custom XVal'}
-              Legend={'Custom Legend'}
-              YValue={`${props.yAxisCalloutData || props.data} h`}
-              color={getColorFromToken(DataVizPalette.warning)}
-            />
-          ) : null
-        }
+        customProps={(props: IChartDataPoint) => customPopoverProps(props)}
+        onRenderCalloutPerDataPoint={(props: IChartDataPoint) => customPopover(props)}
       />
     </>
   );
 };
+
 DonutCustomCallout.parameters = {
   docs: {
     description: {

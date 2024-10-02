@@ -152,6 +152,10 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     const _isRTL: boolean = isRtl();
     let xAxisCalloutAccessibilityData: IAccessibilityProps = {};
 
+    props.eventAnnotationProps &&
+      props.eventAnnotationProps.labelHeight &&
+      (eventLabelHeight = props.eventAnnotationProps.labelHeight);
+
     const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
     const [activeLegend, setActiveLegend] = React.useState<string>('');
     const [YValueHover, setYValueHover] = React.useState<[]>([]);
@@ -1324,15 +1328,14 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                   {_renderedColorFillBars}
                   {lines}
                 </g>
-                {/*{eventAnnotationProps && (
+                {eventAnnotationProps && (
                   <EventsAnnotation
-                    theme={props.theme}
                     {...eventAnnotationProps}
                     scale={props.xScale!}
                     chartYTop={margins.top! + eventLabelHeight}
                     chartYBottom={props.containerHeight! - 35}
                   />
-                )} */}
+                )}
               </g>
             </>
           );

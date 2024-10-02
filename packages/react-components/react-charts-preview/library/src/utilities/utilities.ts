@@ -71,14 +71,14 @@ export enum YAxisType {
 }
 
 export interface IWrapLabelProps {
-  node: SVGElement | null;
+  node: SVGSVGElement | null;
   xAxis: NumericAxis | StringAxis;
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
 }
 
 export interface IRotateLabelProps {
-  node: SVGElement | null;
+  node: SVGSVGElement | null;
   xAxis: NumericAxis | StringAxis;
 }
 
@@ -1520,7 +1520,7 @@ export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
   let maxHeight: number = 0;
   const xAxisTranslations: string[] = [];
   d3Select(node)
-    .call(g => xAxis)
+    .call(xAxis)
     .selectAll('.tick')
     .each(function () {
       const translateValue = (this as SVGElement).getAttribute('transform');
@@ -1543,11 +1543,11 @@ export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
 
   let idx = 0;
   d3Select(node)
-    .call(g => xAxis)
+    .call(xAxis)
     .selectAll('.tick')
     .each(function () {
       if (xAxisTranslations.length > idx) {
-        (this as SVGElement).setAttribute(
+        (this as SVGSVGElement).setAttribute(
           'transform',
           `translate(${xAxisTranslations[idx]},${maxHeight / 2})rotate(-45)`,
         ); // Translate y by max height/2

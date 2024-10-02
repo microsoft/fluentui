@@ -1,10 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
-//import { DarkTheme } from '@fluentui/theme-samples';
-import { DefaultPalette, ThemeProvider, resetIds } from '@fluentui/react';
+import { FluentProvider } from '@fluentui/react-provider';
 import { ILineChartPoints, LineChart } from './index';
-import { mergeStyles } from '@fluentui/merge-styles';
 import '@testing-library/jest-dom';
 
 import {
@@ -19,10 +17,6 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 const { Timezone } = require('../../../scripts/constants');
 
 expect.extend(toHaveNoViolations);
-
-beforeEach(() => {
-  resetIds();
-});
 
 const originalRAF = window.requestAnimationFrame;
 
@@ -46,11 +40,6 @@ function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
 }
-
-const calloutItemStyle = mergeStyles({
-  borderBottom: '1px solid #D9D9D9',
-  padding: '3px',
-});
 
 const basicPoints: ILineChartPoints[] = [
   {
@@ -202,8 +191,12 @@ const pointsWithGaps: ILineChartPoints[] = [
         y: 269000,
       },
     ],
-    color: DefaultPalette.blue,
+    color: '#0000FF',
   },
+];
+
+const secondaryYScalePoints = [
+  { yMaxValue: 50000, yMinValue: 10000 }
 ];
 
 const chartPointsWithGaps = {
@@ -212,7 +205,6 @@ const chartPointsWithGaps = {
 };
 
 describe('Line chart rendering', () => {
-  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -269,6 +261,18 @@ describe('Line chart rendering', () => {
     container => {
       // Assert
       expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the Line Chart with secondary Y axis',
+    LineChart,
+    { data: basicChartPoints,
+      secondaryYScaleOptions: secondaryYScalePoints,
+     },
+    container => {
+      // Assert
+      expect(getById(container, /yAxisGElementSecondarychart_/i)).toBeDefined();
     },
   );
 });
@@ -368,27 +372,27 @@ const eventAnnotationProps = {
     {
       event: 'event 1',
       date: new Date('2020-03-04T00:00:00.000Z'),
-      onRenderCard: () => <div className={calloutItemStyle}>event 1 message</div>,
+      onRenderCard: () => <div>event 1 message</div>,
     },
     {
       event: 'event 2',
       date: new Date('2020-03-04T00:00:00.000Z'),
-      onRenderCard: () => <div className={calloutItemStyle}>event 2 message</div>,
+      onRenderCard: () => <div>event 2 message</div>,
     },
     {
       event: 'event 3',
       date: new Date('2020-03-04T00:00:00.000Z'),
-      onRenderCard: () => <div className={calloutItemStyle}>event 3 message</div>,
+      onRenderCard: () => <div>event 3 message</div>,
     },
     {
       event: 'event 4',
       date: new Date('2020-03-06T00:00:00.000Z'),
-      onRenderCard: () => <div className={calloutItemStyle}>event 4 message</div>,
+      onRenderCard: () => <div>event 4 message</div>,
     },
     {
       event: 'event 5',
       date: new Date('2020-03-08T00:00:00.000Z'),
-      onRenderCard: () => <div className={calloutItemStyle}>event 5 message</div>,
+      onRenderCard: () => <div>event 5 message</div>,
     },
   ],
   strokeColor: 'red',
@@ -638,7 +642,6 @@ describe.skip('Line chart - Subcomponent Event', () => {
 });
 
 describe('Screen resolution', () => {
-  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -675,15 +678,14 @@ describe('Screen resolution', () => {
 });
 
 describe('Theme and accessibility', () => {
-  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
-      <ThemeProvider theme={DarkTheme}>
+      <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
         <LineChart culture={window.navigator.language} data={basicChartPoints} />
-      </ThemeProvider>,
+      </FluentProvider>
     );
     // Assert
     expect(container).toMatchSnapshot();

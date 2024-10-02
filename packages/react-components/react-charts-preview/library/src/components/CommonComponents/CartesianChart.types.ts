@@ -414,6 +414,19 @@ export interface ICartesianChartProps {
   useUTC?: string | boolean;
 
   /**
+   * Enables the chart to automatically adjust its size based on the container's dimensions.
+   * @default true
+   */
+  responsive?: boolean;
+
+  /**
+   * The function that is called when the chart is resized.
+   * @param {number} width - The new width of the chart.
+   * @param {number} height - The new height of the chart.
+   */
+  onResize?: (width: number, height: number) => void;
+
+  /**
    * Determines whether overlapping x-axis tick labels should be hidden.
    * @default false
    */

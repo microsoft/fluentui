@@ -1,19 +1,17 @@
 jest.mock('react-dom');
 import * as React from 'react';
-import { resetIds } from '../../Utilities';
 import * as renderer from 'react-test-renderer';
 import { Legends } from './index';
-import { ILegendState, LegendsBase } from './Legends.base';
+import { ILegendState } from './Legends';
 import { mount, ReactWrapper } from 'enzyme';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { ILegendsProps } from './Legends.types';
+import { render, act } from '@testing-library/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 // Wrapper of the Legends to be tested.
-let wrapper: ReactWrapper<ILegendsProps, ILegendState, LegendsBase> | undefined;
-
-function sharedBeforeEach() {
-  resetIds();
-}
+let wrapper: ReactWrapper<ILegendsProps, ILegendState > | undefined;
 
 function sharedAfterEach() {
   if (wrapper) {
@@ -32,71 +30,71 @@ function sharedAfterEach() {
 const legends = [
   {
     title: 'Legend 1',
-    color: DefaultPalette.red,
+    color: '#FF0000',
   },
   {
     title: 'Legend 2',
-    color: DefaultPalette.black,
+    color: '#000000',
   },
   {
     title: 'Legend 3',
-    color: DefaultPalette.green,
+    color: '#008000',
   },
   {
     title: 'Legend 4',
-    color: DefaultPalette.blue,
+    color: '#0000ff',
   },
   {
     title: 'Legend 5',
-    color: DefaultPalette.blueMid,
+    color: '#191970',
   },
   {
     title: 'Legend 6',
-    color: DefaultPalette.whiteTranslucent40,
+    color: '#E4E3E9',
   },
   {
     title: 'Legend 7',
-    color: DefaultPalette.greenDark,
+    color: '#013220',
   },
   {
     title: 'Legend 8',
-    color: DefaultPalette.blueDark,
+    color: '#00008B',
   },
   {
     title: 'Legend 9',
-    color: DefaultPalette.orange,
+    color: '#FFA500',
   },
   {
     title: 'Legend 10',
-    color: DefaultPalette.purpleDark,
+    color: '#301934',
   },
   {
     title: 'Legend 11',
-    color: DefaultPalette.yellowLight,
+    color: '#Ffffed',
   },
   {
     title: 'Legend 12',
-    color: DefaultPalette.greenLight,
+    color: '#90ee90',
   },
   {
     title: 'Legend 13',
-    color: DefaultPalette.orangeLighter,
+    color: '#FFA500',
   },
   {
     title: 'Legend 14',
-    color: DefaultPalette.teal,
+    color: '#008080',
   },
   {
     title: 'Legend 15',
-    color: DefaultPalette.tealLight,
+    color: '#008080',
   },
   {
     title: 'Legend 16',
-    color: DefaultPalette.redDark,
+    color: 'FF0000',
   },
   {
     title: 'Legend 17',
-    color: DefaultPalette.white,
+    color: '#FFFFFF',
   },
 ];
 
@@ -108,9 +106,9 @@ const styles = {
 
 const overflowProps = {
   styles: {
-    item: { border: `1px dotted ${DefaultPalette.green}` },
+    item: { border: `1px dotted #008000` },
     root: {},
-    overflowButton: { backgroundColor: DefaultPalette.neutralLight },
+    overflowButton: { backgroundColor: '#Ffe536' },
   },
 };
 
@@ -119,7 +117,6 @@ const focusZonePropsInHoverCard = {
 };
 
 describe('Legends snapShot testing', () => {
-  beforeEach(sharedBeforeEach);
 
   it('renders Legends correctly', () => {
     const component = renderer.create(<Legends legends={legends} />);
@@ -147,7 +144,6 @@ describe('Legends snapShot testing', () => {
 });
 
 describe('Legends - basic props', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   it('Should not mount legends when empty', () => {
@@ -185,26 +181,24 @@ describe('Legends - basic props', () => {
 
   it('Should render data-is-focusable correctly', () => {
     wrapper = mount(<Legends legends={legends} data-is-focusable={true} />);
-    const dataIsFocusable = wrapper.getDOMNode().querySelector('[class^="legend"]')?.getAttribute('data-is-focusable');
+    const dataIsFocusable = wrapper.getDOMNode().querySelector('[class~="fui-legend__legend"]')?.getAttribute('data-is-focusable');
     expect(dataIsFocusable).toBeTruthy();
   });
 });
 
 describe('Render calling with respective to props', () => {
-  beforeEach(sharedBeforeEach);
 
+  //To Do - This tc will be need to revisit because the logic is not correct.
   it('No prop changes', () => {
-    const renderMock = jest.spyOn(LegendsBase.prototype, 'render');
     const props = {
       legends,
     };
     const component = mount(<Legends {...props} />);
+    expect(component).toMatchSnapshot();
     component.setProps({ ...props });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+    expect(component).toMatchSnapshot();
   });
   it('prop changes', () => {
-    const renderMock = jest.spyOn(LegendsBase.prototype, 'render');
     const props = {
       legends,
       allowFocusOnLegends: true,
@@ -213,14 +207,13 @@ describe('Render calling with respective to props', () => {
       overflowText: 'OverFlow Items',
     };
     const component = mount(<Legends {...props} />);
-    component.setProps({ ...props });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+    component.setProps({ ...props, hideTooltip: true });
+    const renderedDOM = component.findWhere(node => node.prop('hideTooltip') === true);
+    expect(renderedDOM!.length).toBe(1);
   });
 });
 
 describe('Legends - multi Legends', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
   it('Should render defaultSelectedLegends', () => {
     wrapper = mount(
@@ -232,5 +225,17 @@ describe('Legends - multi Legends', () => {
     );
     const renderedLegends = wrapper.getDOMNode().querySelectorAll('button[aria-selected="true"]');
     expect(renderedLegends?.length).toBe(2);
+  });
+});
+
+describe('Legends - axe-core', () => {
+
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<Legends legends={legends} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
   });
 });

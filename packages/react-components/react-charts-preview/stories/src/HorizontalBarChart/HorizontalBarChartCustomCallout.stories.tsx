@@ -6,11 +6,14 @@ import {
   DataVizPalette,
   getColorFromToken,
   PopoverComponent,
+  IPopoverComponentProps,
 } from '@fluentui/react-charts-preview';
 import * as d3 from 'd3-format';
+import { Switch } from '../../../../react-switch/library/src/Switch';
 
 export const HBCCustomCallout = () => {
   const hideRatio: boolean[] = [true, false];
+  const [useCustomPopover, setUseCustomPopover] = React.useState(false);
 
   const data: IChartProps[] = [
     {
@@ -110,8 +113,37 @@ export const HBCCustomCallout = () => {
       ],
     },
   ];
+  const customPopoverProps = (props: IChartDataPoint): IPopoverComponentProps => {
+    const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : '';
+    const color = props ? props.color : getColorFromToken(DataVizPalette.color28);
+    return {
+      XValue: 'Custom XVal',
+      legend: 'Custom Legend',
+      YValue: yValue,
+      color: color,
+      isCalloutForStack: false,
+    };
+  };
+
+  const _onTogglePopoverCheckChange = React.useCallback(ev => {
+    setUseCustomPopover(ev.currentTarget.checked);
+  }, []);
+
+  const customPopover = (props: IChartDataPoint): JSX.Element | undefined => {
+    const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : 'Y Value';
+    const xValue = props ? props.xAxisCalloutData! : 'X Value';
+    const legend = props ? props.legend : 'Legend';
+    return useCustomPopover ? (
+      <div>
+        <div>{xValue}</div>
+        <div>{legend}</div>
+        <div>{yValue}</div>
+      </div>
+    ) : undefined;
+  };
   return (
     <div style={{ maxWidth: 600 }}>
+      <Switch label={'Custom Popover Override'} checked={useCustomPopover} onChange={_onTogglePopoverCheckChange} />
       <HorizontalBarChart
         data={data}
         hideRatio={hideRatio}
@@ -127,18 +159,8 @@ export const HBCCustomCallout = () => {
             </div>
           );
         }}
-        // eslint-disable-next-line react/jsx-no-bind
-        onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) =>
-          props ? (
-            <PopoverComponent
-              xCalloutValue={props.xAxisCalloutData}
-              yCalloutValue={`${props.yAxisCalloutData || props.horizontalBarChartdata?.y} h`}
-              legend={props.legend}
-              color={props.color}
-              isCalloutForStack={false}
-            />
-          ) : null
-        }
+        customProps={(props: IChartDataPoint) => customPopoverProps(props)}
+        onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) => customPopover(props)}
       />
     </div>
   );
