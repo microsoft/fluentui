@@ -34,7 +34,7 @@ export function useMessageBarReflow(enabled: boolean = false) {
 
       // `borderBoxSize` is not supported before Chrome 84, Firefox 92, nor Safari 15.4
       let inlineSize: number | undefined;
-      if (entry.borderBoxSize && entry.borderBoxSize.length > 0) {
+      if (entry.borderBoxSize?.length) {
         inlineSize = entry.borderBoxSize[0].inlineSize;
       } else {
         inlineSize = entry.target.getBoundingClientRect().width;
