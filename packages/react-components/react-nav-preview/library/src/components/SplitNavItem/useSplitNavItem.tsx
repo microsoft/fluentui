@@ -4,7 +4,7 @@ import type { SplitNavItemProps, SplitNavItemState } from './SplitNavItem.types'
 import { useNavContext_unstable } from '../NavContext';
 import { Button, MenuButton, ToggleButton } from '@fluentui/react-button';
 import { MoreHorizontalFilled, Pin20Regular } from '@fluentui/react-icons';
-import { NavItem, NavItemProps } from '../NavItem/index';
+import { NavItem } from '../NavItem/index';
 import { NavSubItem } from '../NavSubItem/NavSubItem';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 
