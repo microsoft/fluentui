@@ -14,7 +14,7 @@ export type SplitNavItemSlots = {
    * The NavItem Slot.
    * Will behave as a SubNavItem if it's in an a SubGroup.
    */
-  navItem?: Slot<NavItemProps & NavSubItemProps>;
+  navItem?: NonNullable<Slot<NavItemProps & NavSubItemProps>>;
 
   /**
    * Basic button slot.
