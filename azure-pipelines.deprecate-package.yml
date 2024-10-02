@@ -24,7 +24,7 @@ variables:
 pool: '1ES-Host-Ubuntu'
 
 jobs:
-  - job: Deprecate Published Package
+  - job: DeprecatePublishedPackage
     pool:
       name: '1ES-Host-Ubuntu'
       image: '1ES-PT-Ubuntu-20.04'
