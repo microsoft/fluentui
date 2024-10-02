@@ -29,7 +29,7 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
-      - run: yarn nx run scripts-executors:test -t start
+      - run: yarn nx run scripts-executors:test -t 'smoke test'
 
       - run: yarn nx run workspace-plugin:test -t 'prepare-initial-release generator'
 

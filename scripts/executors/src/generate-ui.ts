@@ -46,7 +46,6 @@ async function main() {
     choices: pluginChoices,
     limit: 10,
     suggest,
-    // header,
     footer: () => {
       return output.dim('(Scroll up and down to reveal more choices)');
     },
@@ -120,23 +119,6 @@ async function main() {
 }
 
 // ====================================================================================================================
-
-function serializeFlagState(state: Record<string, unknown>) {
-  return Object.entries(state)
-    .reduce<string[]>((acc, [key, value]) => {
-      // eslint-disable-next-line eqeqeq
-      if (value == null) {
-        return acc;
-      }
-
-      if (typeof value === 'boolean') {
-        return value ? [...acc, `--${key}`] : acc;
-      }
-
-      return [...acc, `--${key}=${value}`];
-    }, [])
-    .join(' ');
-}
 
 /**
  * TODO: adopt logic from https://github.com/nrwl/nx/blob/master/packages/nx/src/utils/params.ts
@@ -241,8 +223,6 @@ function createGeneratorFlagsChoices(
             message: 'Select Project',
             choices: Object.keys(projects),
             limit: 10,
-            // suggest,
-            // header,
             footer,
           })
             .on('keypress', async (_char, key) => {
@@ -331,7 +311,24 @@ function createPluginChoices(plugins: Map<string, PluginCapabilities>): Array<Ch
   }
 }
 
-// ========================
+// ====================================================================================================================
+
+function serializeFlagState(state: Record<string, unknown>) {
+  return Object.entries(state)
+    .reduce<string[]>((acc, [key, value]) => {
+      // eslint-disable-next-line eqeqeq
+      if (value == null) {
+        return acc;
+      }
+
+      if (typeof value === 'boolean') {
+        return value ? [...acc, `--${key}`] : acc;
+      }
+
+      return [...acc, `--${key}=${value}`];
+    }, [])
+    .join(' ');
+}
 
 function suggest(typed: string, choices: Array<Choice>) {
   const matches = choices.filter(choice => choice.value.includes(typed));
