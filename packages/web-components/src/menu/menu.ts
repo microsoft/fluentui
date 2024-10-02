@@ -118,12 +118,6 @@ export class Menu extends FASTElement {
   private _menuList?: HTMLElement;
 
   /**
-   * The primary action element of the menu.
-   * @internal
-   */
-  private _primaryAction?: HTMLElement;
-
-  /**
    * Called when the element is connected to the DOM.
    * Sets up the component.
    * @public
