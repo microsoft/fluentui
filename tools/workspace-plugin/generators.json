@@ -1,34 +1,59 @@
 {
   "generators": {
+    "bundle-size-configuration": {
+      "factory": "./src/generators/bundle-size-configuration/generator",
+      "schema": "./src/generators/bundle-size-configuration/schema.json",
+      "description": "Setup bundle-size measurements for React (v9) project"
+    },
     "cypress-component-configuration": {
       "implementation": "./src/generators/cypress-component-configuration/index.ts",
       "schema": "./src/generators/cypress-component-configuration/schema.json",
-      "description": "Set up Cypress component test for a project."
+      "description": "Setup Cypress component testing for a React (v9) project."
     },
-    "dependency-mismatch": {
-      "implementation": "./src/generators/dependency-mismatch/index.ts",
-      "schema": "./src/generators/dependency-mismatch/schema.json",
-      "description": "Generator dependency-mismatch"
+    "react-component": {
+      "implementation": "./src/generators/react-component/index.ts",
+      "schema": "./src/generators/react-component/schema.json",
+      "description": "Create a React (v9) Component"
     },
-    "epic-generator": {
-      "implementation": "./src/generators/epic-generator/index.ts",
-      "schema": "./src/generators/epic-generator/schema.json",
-      "description": "Generator epic-generator"
+    "react-library": {
+      "implementation": "./src/generators/react-library/index.ts",
+      "schema": "./src/generators/react-library/schema.json",
+      "description": "Create a React (v9) library"
+    },
+    "recipe-generator": {
+      "implementation": "./src/generators/recipe-generator/index.ts",
+      "schema": "./src/generators/recipe-generator/schema.json",
+      "description": "Create new react v9 recipe (within `recipes` project)"
+    },
+    "prepare-initial-release": {
+      "implementation": "./src/generators/prepare-initial-release/index.ts",
+      "schema": "./src/generators/prepare-initial-release/schema.json",
+      "description": "Prepare a project (v9) for release (various stages)"
+    },
+    "eslint-rule": {
+      "factory": "./src/generators/eslint-rule/generator",
+      "schema": "./src/generators/eslint-rule/schema.json",
+      "description": "Create workspace eslint rule"
+    },
+    "tsconfig-base-all": {
+      "implementation": "./src/generators/tsconfig-base-all/index.ts",
+      "schema": "./src/generators/tsconfig-base-all/schema.json",
+      "description": "Generate tsconfig.base.all.json with merged 'compilerOptions.paths' from v0,v8,v9 tsconfigs"
+    },
+    "workspace-generator": {
+      "implementation": "./src/generators/workspace-generator/index.ts",
+      "schema": "./src/generators/workspace-generator/schema.json",
+      "description": "Create workspace generator"
     },
     "migrate-converged-pkg": {
       "implementation": "./src/generators/migrate-converged-pkg/index.ts",
       "schema": "./src/generators/migrate-converged-pkg/schema.json",
-      "description": "Generator migrate-converged-pkg"
-    },
-    "migrate-fixed-versions": {
-      "implementation": "./src/generators/migrate-fixed-versions/index.ts",
-      "schema": "./src/generators/migrate-fixed-versions/schema.json",
-      "description": "Generator migrate-fixed-versions"
+      "description": "Update v9 projects setup"
     },
     "migrate-v8-pkg": {
       "implementation": "./src/generators/migrate-v8-pkg/index.ts",
       "schema": "./src/generators/migrate-v8-pkg/schema.json",
-      "description": "Generator migrate-v8-pkg"
+      "description": "Update v8 projects setup"
     },
     "move-packages": {
       "implementation": "./src/generators/move-packages/index.ts",
@@ -38,62 +63,39 @@
     "normalize-package-dependencies": {
       "implementation": "./src/generators/normalize-package-dependencies/index.ts",
       "schema": "./src/generators/normalize-package-dependencies/schema.json",
-      "description": "Generator normalize-package-dependencies"
-    },
-    "prepare-initial-release": {
-      "implementation": "./src/generators/prepare-initial-release/index.ts",
-      "schema": "./src/generators/prepare-initial-release/schema.json",
-      "description": "Generator prepare-initial-release"
-    },
-    "rc-caret": {
-      "implementation": "./src/generators/rc-caret/index.ts",
-      "schema": "./src/generators/rc-caret/schema.json",
-      "description": "Generator rc-caret"
-    },
-    "react-component": {
-      "implementation": "./src/generators/react-component/index.ts",
-      "schema": "./src/generators/react-component/schema.json",
-      "description": "Create React Component within v9 package"
-    },
-    "react-library": {
-      "implementation": "./src/generators/react-library/index.ts",
-      "schema": "./src/generators/react-library/schema.json",
-      "description": "Generator react-library"
-    },
-    "recipe-generator": {
-      "implementation": "./src/generators/recipe-generator/index.ts",
-      "schema": "./src/generators/recipe-generator/schema.json",
-      "description": "Generator recipe-generator"
-    },
-    "tsconfig-base-all": {
-      "implementation": "./src/generators/tsconfig-base-all/index.ts",
-      "schema": "./src/generators/tsconfig-base-all/schema.json",
-      "description": "Create tsconfig.json with merged 'compilerOptions.paths' from v0,v8,v9 tsconfigs"
+      "description": "Normalizes all projects dependencies within package.json (used on CI)"
     },
     "version-bump": {
       "implementation": "./src/generators/version-bump/index.ts",
       "schema": "./src/generators/version-bump/schema.json",
-      "description": "Generator version-bump"
+      "description": "Bumps packages. The allowed package bumps the same ones available from the official (used on CI)"
     },
-    "workspace-generator": {
-      "implementation": "./src/generators/workspace-generator/index.ts",
-      "schema": "./src/generators/workspace-generator/schema.json",
-      "description": "Generator workspace-generator"
+    "dependency-mismatch": {
+      "implementation": "./src/generators/dependency-mismatch/index.ts",
+      "schema": "./src/generators/dependency-mismatch/schema.json",
+      "description": "Fixes any dependency mismatches caused by beachball scoping (used on CI)"
     },
-    "eslint-rule": {
-      "factory": "./src/generators/eslint-rule/generator",
-      "schema": "./src/generators/eslint-rule/schema.json",
-      "description": "eslint-rule generator"
+    "rc-caret": {
+      "implementation": "./src/generators/rc-caret/index.ts",
+      "schema": "./src/generators/rc-caret/schema.json",
+      "description": "DEPRECATED: Short-lived workspace generator that converts pinned Fluent UI RC dependencies to be caret dependencies"
     },
-    "bundle-size-configuration": {
-      "factory": "./src/generators/bundle-size-configuration/generator",
-      "schema": "./src/generators/bundle-size-configuration/schema.json",
-      "description": "bundle-size-configuration generator"
+    "migrate-fixed-versions": {
+      "implementation": "./src/generators/migrate-fixed-versions/index.ts",
+      "schema": "./src/generators/migrate-fixed-versions/schema.json",
+      "description": "DEPRECATED: Migrate converged package dependencies from carets to fixed versions"
     },
     "split-library-in-two": {
       "factory": "./src/generators/split-library-in-two/generator",
       "schema": "./src/generators/split-library-in-two/schema.json",
-      "description": "split-library-in-two generator"
+      "description": "DO NOT INVOKE DIRECTLY WITH `nx generate`. Used internally within `react-library` generator",
+      "hidden": true
+    },
+    "epic-generator": {
+      "implementation": "./src/generators/epic-generator/index.ts",
+      "schema": "./src/generators/epic-generator/schema.json",
+      "description": "DEPRECATED: Create a migration tracker issue epic and subsequent team sub-issues on GitHub for React v9",
+      "hidden": true
     }
   }
 }
