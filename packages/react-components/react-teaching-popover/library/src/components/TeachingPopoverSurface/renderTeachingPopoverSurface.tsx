@@ -1,6 +1,3 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
-
 import type { TeachingPopoverSurfaceSlots, TeachingPopoverSurfaceState } from './TeachingPopoverSurface.types';
 import { assertSlots } from '@fluentui/react-utilities';
 import { renderPopoverSurface_unstable } from '@fluentui/react-popover';

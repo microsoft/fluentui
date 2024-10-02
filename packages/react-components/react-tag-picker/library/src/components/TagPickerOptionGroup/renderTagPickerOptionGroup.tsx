@@ -1,6 +1,3 @@
-/** @jsxRuntime automatic */
-/** @jsxImportSource @fluentui/react-jsx-runtime */
-
 import type { TagPickerOptionGroupState } from './TagPickerOptionGroup.types';
 import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
 

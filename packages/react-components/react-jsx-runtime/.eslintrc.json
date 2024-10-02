@@ -1,4 +1,13 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react"],
-  "root": true
+  "root": true,
+  "overrides": [
+    {
+      "files": ["**/*.{test,spec}.tsx"],
+      "excludedFiles": ["jsx-runtime.test.tsx"],
+      "rules": {
+        "@nx/workspace-no-missing-jsx-pragma": ["error", { "runtime": "classic" }]
+      }
+    }
+  ]
 }
