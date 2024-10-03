@@ -17,7 +17,7 @@ export const parameters = {
   docs: {
     source: {
       excludeDecorators: true,
-      type: 'code',
+      type: 'source',
     },
   },
   exportToSandbox: {
