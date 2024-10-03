@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { Tooltip } from '@fluentui/react-tooltip';
 import type { SplitNavItemProps, SplitNavItemState } from './SplitNavItem.types';
 import { useNavContext_unstable } from '../NavContext';
 import { Button, MenuButton, ToggleButton } from '@fluentui/react-button';
@@ -21,7 +22,16 @@ export const useSplitNavItem_unstable = (
   props: SplitNavItemProps,
   ref: React.Ref<HTMLDivElement>,
 ): SplitNavItemState => {
-  const { navItem, actionButton, toggleButton, menuButton, children } = props;
+  const {
+    navItem,
+    actionButton,
+    toggleButton,
+    menuButton,
+    actionButtonTooltip,
+    toggleButtonTooltip,
+    menuButtonTooltip,
+    children,
+  } = props;
 
   const { size = 'medium' } = useNavContext_unstable();
 
@@ -63,6 +73,21 @@ export const useSplitNavItem_unstable = (
     elementType: MenuButton,
   });
 
+  const actionButtonTooltipShorthand = slot.optional(actionButtonTooltip, {
+    defaultProps: { relationship: 'label' },
+    elementType: Tooltip,
+  });
+
+  const toggleButtonTooltipShorthand = slot.optional(toggleButtonTooltip, {
+    defaultProps: { relationship: 'label' },
+    elementType: Tooltip,
+  });
+
+  const menuButtonTooltipShorthand = slot.optional(menuButtonTooltip, {
+    defaultProps: { relationship: 'label' },
+    elementType: Tooltip,
+  });
+
   return {
     components: {
       root: 'div',
@@ -70,6 +95,9 @@ export const useSplitNavItem_unstable = (
       actionButton: Button,
       toggleButton: ToggleButton,
       menuButton: MenuButton,
+      actionButtonTooltip: Tooltip,
+      toggleButtonTooltip: Tooltip,
+      menuButtonTooltip: Tooltip,
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -85,6 +113,9 @@ export const useSplitNavItem_unstable = (
     actionButton: actionButtonShorthand,
     toggleButton: toggleButtonShorthand,
     menuButton: menuButtonShorthand,
+    actionButtonTooltip: actionButtonTooltipShorthand,
+    toggleButtonTooltip: toggleButtonTooltipShorthand,
+    menuButtonTooltip: menuButtonTooltipShorthand,
     size,
     isSubNav,
   };

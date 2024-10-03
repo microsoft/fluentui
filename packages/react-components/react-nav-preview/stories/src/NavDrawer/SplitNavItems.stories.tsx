@@ -30,6 +30,7 @@ import {
   RadioGroup,
   Switch,
   Tooltip,
+  TooltipProps,
   makeStyles,
   tokens,
   useId,
@@ -229,46 +230,61 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
     return { icon: <Pin20Regular /> };
   };
 
+  const getToggleButtonTooltipProps = (value?: string): TooltipProps => {
+    if (value) {
+      return {
+        content: pinnedValues.includes(value) ? 'Unpin' : 'Pin',
+        relationship: 'label',
+      };
+    }
+    return { content: 'Pin', relationship: 'label' };
+  };
+
+  const getSubItems = (subItems: SplitNavItemProps[]) => {
+    return subItems.map((subItem, subItemIndex) => {
+      const subItemValue = (subItem.navItem as NavItemProps).value;
+      return (
+        <Menu key={subItemIndex}>
+          <MenuTrigger key={`${subItemIndex}-sit`}>
+            {(triggerProps: MenuButtonProps) => (
+              <SplitNavItem
+                key={`${subItemIndex}-sni`}
+                navItem={subItem.navItem}
+                menuButton={triggerProps}
+                menuButtonTooltip={{ content: 'More options', relationship: 'label' }}
+                toggleButtonTooltip={getToggleButtonTooltipProps(subItemValue)}
+                toggleButton={getToggleButtonProps(subItemValue)}
+              />
+            )}
+          </MenuTrigger>
+          <DemoMenuPopover />
+        </Menu>
+      );
+    });
+  };
+
   const getNavItems = (isPinnable: boolean) => {
+    // We don't want the top four items to be pinnable.
     const startIndex = isPinnable ? 4 : 0;
     const endIndex = isPinnable ? splitNavItemNestedProps.length : 4;
 
     return splitNavItemNestedProps.slice(startIndex, endIndex).map((item, index) => {
-      if ((item?.splitNavItem?.navItem as NavItemProps)?.value) {
+      const itemValue = (item.splitNavItem?.navItem as NavItemProps)?.value;
+
+      if (itemValue) {
         return (
           <SplitNavItem
             key={index}
             navItem={item?.splitNavItem?.navItem}
-            toggleButton={
-              isPinnable ? getToggleButtonProps((item.splitNavItem?.navItem as NavItemProps)?.value) : undefined
-            }
+            toggleButtonTooltip={isPinnable ? getToggleButtonTooltipProps(itemValue) : null}
+            toggleButton={isPinnable ? getToggleButtonProps(itemValue) : undefined}
           />
         );
       } else if (item.navCategoryItem) {
         return (
           <NavCategory key={index} value={item.navCategory?.value || ''}>
             <NavCategoryItem key={`${index}-cat`} {...item.navCategoryItem} />
-            <NavSubItemGroup key={`${index}-sig`}>
-              {item.navSubItems?.map((subItem, subItemIndex) => (
-                <Menu key={subItemIndex}>
-                  <MenuTrigger key={`${subItemIndex}-sit`}>
-                    {(triggerProps: MenuButtonProps) => (
-                      <SplitNavItem
-                        key={`${subItemIndex}-sni`}
-                        navItem={subItem.navItem}
-                        menuButton={triggerProps}
-                        toggleButton={
-                          isPinnable
-                            ? getToggleButtonProps((item.splitNavItem?.navItem as NavItemProps)?.value)
-                            : undefined
-                        }
-                      />
-                    )}
-                  </MenuTrigger>
-                  <DemoMenuPopover />
-                </Menu>
-              ))}
-            </NavSubItemGroup>
+            <NavSubItemGroup key={`${index}-sig`}>{getSubItems(item.navSubItems || [])}</NavSubItemGroup>
           </NavCategory>
         );
       }

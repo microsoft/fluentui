@@ -10,6 +10,12 @@ export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
   actionButton: 'fui-SplitNavItem__actionButton',
   toggleButton: 'fui-SplitNavItem__toggleButton',
   menuButton: 'fui-SplitNavItem__menuButton',
+  /**
+   * Tooltips don't have a class name prop, so this is just to satisfy the linter.
+   */
+  actionButtonTooltip: 'fui-SplitNavItem__actionButtonTooltip',
+  toggleButtonTooltip: 'fui-SplitNavItem__toggleButtonTooltip',
+  menuButtonTooltip: 'fui-SplitNavItem__menuButtonTooltip',
 };
 // Don't use makeResetStyles here because the sub components call it once and
 // This links says that makeResetStyles should only be called once per element
