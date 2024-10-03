@@ -17,6 +17,7 @@ export async function processAsyncQueue(value: Promise<unknown>[], successCallba
 export interface NormalizedOptions extends ReturnType<typeof normalizeOptions> {}
 export function normalizeOptions(schema: BuildExecutorSchema, context: ExecutorContext) {
   const defaults = {
+    generateApi: true,
     clean: true,
   };
   const project = context.projectsConfigurations!.projects[context.projectName!];

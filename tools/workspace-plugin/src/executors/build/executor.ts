@@ -7,6 +7,7 @@ import { cleanOutput } from './lib/clean';
 import { NormalizedOptions, normalizeOptions, processAsyncQueue } from './lib/shared';
 
 import { measureEnd, measureStart } from '../../utils';
+import generateApiExecutor from '../generate-api/executor';
 
 import { type BuildExecutorSchema } from './schema';
 
@@ -14,8 +15,12 @@ const runExecutor: PromiseExecutor<BuildExecutorSchema> = async (schema, context
   measureStart('BuildExecutor');
 
   const options = normalizeOptions(schema, context);
+  const tasksInParallel = [
+    runBuild(options, context),
+    options.generateApi ? generateApiExecutor({}, context) : null,
+  ].filter(Boolean) as Array<Promise<boolean>>;
 
-  const success = await runBuild(options, context);
+  const success = await processAsyncQueue(tasksInParallel);
 
   measureEnd('BuildExecutor');
 
