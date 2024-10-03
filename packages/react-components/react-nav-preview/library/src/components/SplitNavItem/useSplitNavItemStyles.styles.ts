@@ -53,7 +53,6 @@ const useSplitNaveItemStyles = makeStyles({
     backgroundColor: 'transparent',
   },
   baseSecondary: {
-    maxWidth: '28px',
     minWidth: '28px',
     paddingInlineEnd: '12px',
     paddingInlineStart: '5px',
