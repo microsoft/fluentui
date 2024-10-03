@@ -186,6 +186,6 @@ export const SplitButton: Story = {
       slot="trigger"
       icon-only
     ></fluent-menu-button>`,
-    primaryActionSlottedContent: () => html`${generatePimaryActionSlottedContent('Primary Action')}`,
+    primaryActionSlottedContent: () => html`${generatePimaryActionSlottedContent()}`,
   },
 };
