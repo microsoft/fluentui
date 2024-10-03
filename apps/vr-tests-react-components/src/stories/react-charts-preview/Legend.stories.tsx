@@ -13,9 +13,7 @@ export default {
       const steps = context.name.includes('Overflow')
         ? new Steps()
             .snapshot('default', { cropTo: '.testWrapper' })
-            .executeScript(
-              `document.querySelectorAll('div[class^="overflowIndicationTextStyle"]')[0].click()`,
-            )
+            .executeScript(`document.querySelectorAll('div[class^="overflowIndicationTextStyle"]')[0].click()`)
             .snapshot('expanded', { cropTo: '.testWrapper' })
             .end()
         : new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
