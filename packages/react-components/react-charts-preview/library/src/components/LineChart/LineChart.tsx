@@ -559,7 +559,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
               fill={tokens.colorNeutralBackground1}
               strokeWidth={DEFAULT_LINE_STROKE_SIZE}
               stroke={lineColor}
-              visibility={isPointHighlighted ? 'visibility' : 'hidden'}
+              visibility={'hidden'}
               onMouseMove={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event)}
               onMouseOver={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event)}
               onMouseOut={_handleMouseOut}

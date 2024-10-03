@@ -117,21 +117,6 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
         _fitParentContainer();
       }
     }
-    if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
-      const rotateLabelProps = {
-        node: xAxisElement.current!,
-        xAxis: _xScale,
-      };
-      const rotatedHeight = rotateXAxisLabels(rotateLabelProps);
-      if (
-        isRemoveValCalculated &&
-        removalValueForTextTuncate !== rotatedHeight! + margins.bottom! &&
-        rotatedHeight! > 0
-      ) {
-        setRemovalValueForTextTuncate(rotatedHeight! + margins.bottom!);
-        setIsRemoveValCalculated(false);
-      }
-    }
     if (props.chartType === ChartTypes.HorizontalBarChartWithAxis && props.showYAxisLables && yAxisElement.current) {
       const maxYAxisLabelLength = calculateLongestLabelWidth(
         props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
@@ -146,6 +131,25 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
     if (prevProps !== null && prevProps.points !== props.points) {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       isIntegralDataset = !props.points.some((point: { y: number }) => point.y % 1 !== 0);
+    }
+  }, [props, prevProps]);
+
+  React.useEffect(() => {
+    if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
+      const rotateLabelProps = {
+        node: xAxisElement.current!,
+        xAxis: _xScale,
+      };
+      const rotatedHeight = rotateXAxisLabels(rotateLabelProps);
+
+      if (
+        isRemoveValCalculated &&
+        removalValueForTextTuncate !== rotatedHeight! + margins.bottom! &&
+        rotatedHeight! > 0
+      ) {
+        setRemovalValueForTextTuncate(rotatedHeight! + margins.bottom!);
+        setIsRemoveValCalculated(false);
+      }
     }
   });
 
