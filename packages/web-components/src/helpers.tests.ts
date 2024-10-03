@@ -1,5 +1,5 @@
 import qs from 'qs';
-import { expect as baseExpect, type ExpectMatcherState, type Locator } from '@playwright/test';
+import { expect as baseExpect, type ExpectMatcherState, type Locator, type Page } from '@playwright/test';
 
 /**
  * Returns a formatted URL for a given Storybook fixture.
@@ -84,3 +84,45 @@ async function toHaveCustomState(
 export const expect = baseExpect.extend({
   toHaveCustomState,
 });
+
+/**
+ * A helper function to override the built-in `HTMLElement.prototype.attachInternals()`
+ * method, the overridden `attachInternals()` would set ARIA-related attributes
+ * on the host element when they are set on the `ElementInternals` object, so that
+ * Axe is able to assess the element’s accessibility properly.
+ * @see https://github.com/dequelabs/axe-core/issues/4259
+ *
+ * This function should be called before calling `page.goto(..)`.
+ */
+export async function createElementInternalsTrapsForAxe(page: Page) {
+  await page.addInitScript(() => {
+    function getAriaAttrName(prop: string | symbol): string | null {
+      return typeof prop === 'string' && (prop === 'role' || prop.startsWith('aria')) ?
+        prop.replace(/(?:aria)(\w+)/, (_, w) => `aria-${w.toLowerCase()}`) :
+        null;
+    }
+
+    const original =HTMLElement.prototype.attachInternals;
+    HTMLElement.prototype.attachInternals = function() {
+      const originalInternals = original.call(this);
+
+      return new Proxy(({} as ElementInternals), {
+        get(target, prop) {
+          return getAriaAttrName(prop) ?
+            Reflect.get(target, prop) ?? null :
+            Reflect.get(originalInternals, prop);
+        },
+        set(target, prop, value) {
+          const attrName = getAriaAttrName(prop);
+          if (attrName) {
+            Reflect.set(target, prop, value);
+            originalInternals.shadowRoot?.host.setAttribute(attrName, value);
+          } else {
+            Reflect.set(originalInternals, prop, value);
+          }
+          return true;
+        },
+      });
+    };
+  });
+}
