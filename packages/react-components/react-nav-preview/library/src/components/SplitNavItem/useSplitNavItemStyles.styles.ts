@@ -34,10 +34,12 @@ const useSplitNaveItemStyles = makeStyles({
     backgroundColor: navItemTokens.backgroundColor,
     ...navItemTokens.transitionTokens,
 
-    ':hover .fui-NavItem': navItemTokens.transitionTokens,
-    ':active .fui-NavItem': navItemTokens.transitionTokens,
-    ':hover .fui-NavSubItem': navItemTokens.transitionTokens,
-    ':active .fui-NavSubItem': navItemTokens.transitionTokens,
+    ':hover': {
+      backgroundColor: navItemTokens.backgroundColorHover,
+    },
+    ':active': {
+      backgroundColor: navItemTokens.backgroundColorPressed,
+    },
   },
   baseNavItem: {
     // styles that we want to disagree with the default on
@@ -48,6 +50,7 @@ const useSplitNaveItemStyles = makeStyles({
     position: 'relative',
     justifyContent: 'start',
     gap: tokens.spacingVerticalL,
+    backgroundColor: 'transparent',
   },
   baseSecondary: {
     maxWidth: '28px',
@@ -56,17 +59,6 @@ const useSplitNaveItemStyles = makeStyles({
     paddingInlineStart: '5px',
     paddingBlockStart: '5px',
     alignItems: 'start',
-    backgroundColor: navItemTokens.backgroundColor,
-    transitionDuration: navItemTokens.animationTokens.animationDuration,
-    transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
-    transitionProperty: 'background',
-
-    ':hover': {
-      backgroundColor: navItemTokens.backgroundColorHover,
-    },
-    ':active': {
-      backgroundColor: navItemTokens.backgroundColorPressed,
-    },
   },
   baseMedium: {
     paddingBlockStart: '9px',
