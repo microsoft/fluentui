@@ -77,9 +77,9 @@ const useThumbStyles = makeStyles({
  */
 const useInputStyles = makeStyles({
   input: {
-    cursor: 'pointer',
     overflow: 'hidden',
     position: 'absolute',
+    pointerEvents: 'none',
     top: 0,
     left: 0,
     opacity: 0,

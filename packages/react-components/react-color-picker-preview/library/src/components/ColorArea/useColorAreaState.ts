@@ -33,31 +33,29 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
     const newX = Math.round(((event.clientX - rect.left) / rect.width) * 100);
     const newY = 100 - Math.round(((event.clientY - rect.top) / rect.height) * 100);
 
-    setCoordinates([clamp(newX, min, max), clamp(newY, min, max)]);
     return {
       x: clamp(newX, min, max),
       y: clamp(newY, min, max),
     };
   }
 
-  const requestColorChange = useEventCallback((event: React.MouseEvent<HTMLDivElement>) =>
-    onColorChange?.(event, {
+  const requestColorChange = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    const { x: newX, y: newY } = getCoordinates(event);
+    setCoordinates([newX, newY]);
+    return onColorChange?.(event, {
       type: 'onMouseMove',
       event,
-      ...getCoordinates(event),
-    }),
-  );
+      x: newX,
+      y: newY,
+    });
+  });
 
   const _onMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
     event.preventDefault();
     onMouseDown?.(event);
     setIsDragging(true);
-    onColorChange?.(event, {
-      type: 'onMouseMove',
-      event,
-      ...getCoordinates(event),
-    });
+    requestColorChange(event);
     targetDocument?.addEventListener('mousemove', requestColorChange);
   });
 
@@ -65,22 +63,15 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
     onMouseUp?.(event);
     setIsDragging(false);
     targetDocument?.removeEventListener('mousemove', requestColorChange);
-    onColorChange?.(event, {
-      type: 'onMouseMove',
-      event,
-      x: getCoordinates(event).x,
-      y: getCoordinates(event).y,
-    });
   });
 
   React.useEffect(() => {
     if (isDragging) {
-      targetDocument?.addEventListener('mouseup', () => {
-        setIsDragging(false);
-        targetDocument?.removeEventListener('mousemove', requestColorChange);
-      });
+      targetDocument?.addEventListener('mouseup', _onMouseUp);
+    } else {
+      targetDocument?.removeEventListener('mouseup', _onMouseUp);
     }
-  }, [isDragging, requestColorChange, targetDocument]);
+  }, [isDragging, _onMouseUp, targetDocument]);
 
   const rootVariables = {
     [areaXProgressVar]: `${valueXPercent}%`,
