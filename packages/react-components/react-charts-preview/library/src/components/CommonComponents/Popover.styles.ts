@@ -40,15 +40,16 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
   },
   calloutContentX: {
-    fontSize: tokens.fontSizeBase200,
+    fontSize: tokens.fontSizeBase100,
     lineHeight: '16px',
     opacity: '0.8',
     color: tokens.colorNeutralForeground2,
   },
   calloutBlockContainer: {
-    fontSize: 'fontSizeBase200',
+    fontSize: tokens.fontSizeBase200,
     marginTop: '13px',
     color: tokens.colorNeutralForeground2,
+    paddingLeft: '8px',
   },
   calloutBlockContainertoDrawShapefalse: {
     '& selectors': {
@@ -56,7 +57,6 @@ const useStyles = makeStyles({
         forcedColorAdjust: 'none',
       },
     },
-    ...shorthands.borderLeft('4px solid'),
     paddingLeft: '8px',
   },
   calloutBlockContainertoDrawShapetrue: {
@@ -66,7 +66,7 @@ const useStyles = makeStyles({
     marginRight: '8px',
   },
   calloutLegendText: {
-    fontSize: 'fontSizeBase200',
+    fontSize: tokens.fontSizeBase200,
     lineHeight: '16px',
     color: tokens.colorNeutralForeground2,
     '& selectors': {
@@ -76,7 +76,7 @@ const useStyles = makeStyles({
     },
   },
   calloutContentY: {
-    fontSize: tokens.fontSizeBase400,
+    fontSize: tokens.fontSizeHero700,
     fontWeight: 'bold',
     lineHeight: '36px',
     '& selectors': {
