@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { clamp, useControllableState, useEventCallback, EventHandler } from '@fluentui/react-utilities';
+import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { colorAreaCSSVars } from './useColorAreaStyles.styles';
-import type { ColorAreaState, ColorAreaProps, ColorAreaOnColorChangeData } from './ColorArea.types';
+import type { ColorAreaState, ColorAreaProps } from './ColorArea.types';
 
 const { areaXProgressVar, areaYProgressVar, thumbColorVar, mainColorVar } = colorAreaCSSVars;
 
@@ -10,25 +10,19 @@ const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
 };
 
+type Coordinates = [number, number];
+
 export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAreaProps) => {
   'use no memo';
 
   const { targetDocument } = useFluent();
-  const { color, min = 0, max = 100, x, y, onColorChange, onMouseDown, onMouseUp } = props;
+  const { color, min = 0, max = 100, x = 0, y = 0, onColorChange, onMouseDown, onMouseUp } = props;
 
-  const [currentXValue, setCurrentXValue] = useControllableState({
-    state: x,
-    initialState: 0,
-  });
-  const [currentYValue, setCurrentYValue] = useControllableState({
-    state: y,
-    initialState: 0,
-  });
-
+  const [coordinates, setCoordinates] = useControllableState<Coordinates>({ state: [x, y], initialState: [0, 0] });
   const [isDragging, setIsDragging] = React.useState(false);
 
-  const clampedXValue = clamp(currentXValue, min, max);
-  const clampedYValue = clamp(currentYValue, min, max);
+  const clampedXValue = clamp(coordinates[0], min, max);
+  const clampedYValue = clamp(coordinates[1], min, max);
 
   const valueXPercent = getPercent(clampedXValue, min, max);
   const valueYPercent = getPercent(clampedYValue, min, max);
@@ -39,8 +33,7 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
     const newX = Math.round(((event.clientX - rect.left) / rect.width) * 100);
     const newY = 100 - Math.round(((event.clientY - rect.top) / rect.height) * 100);
 
-    setCurrentXValue(clamp(newX, min, max));
-    setCurrentYValue(clamp(newY, min, max));
+    setCoordinates([clamp(newX, min, max), clamp(newY, min, max)]);
     return {
       x: clamp(newX, min, max),
       y: clamp(newY, min, max),
@@ -51,8 +44,7 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
     onColorChange?.(event, {
       type: 'onMouseMove',
       event,
-      x: getCoordinates(event).x,
-      y: getCoordinates(event).y,
+      ...getCoordinates(event),
     }),
   );
 
@@ -65,7 +57,6 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
       type: 'onMouseMove',
       event,
       ...getCoordinates(event),
-      y: getCoordinates(event).y,
     });
     targetDocument?.addEventListener('mousemove', requestColorChange);
   });
