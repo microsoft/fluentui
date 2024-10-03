@@ -674,10 +674,6 @@ export class BaseSpinner extends FASTElement {
 }
 
 // @public
-export class BaseSplitButton extends FASTElement {
-}
-
-// @public
 export class BaseTablist extends FASTElement {
     activeid: string;
     // @internal (undocumented)
@@ -2733,9 +2729,11 @@ export class Menu extends FASTElement {
     openOnHoverChanged(oldValue: boolean, newValue: boolean): void;
     persistOnItemClick?: boolean;
     persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
+    primaryAction: HTMLSlotElement;
     setComponent(): void;
     slottedMenuList: MenuList[];
     slottedTriggers: HTMLElement[];
+    split?: boolean;
     toggleHandler: (e: Event) => void;
     toggleMenu: () => void;
     triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
@@ -3488,21 +3486,6 @@ export const SpinnerStyles: ElementStyles;
 //
 // @public (undocumented)
 export const SpinnerTemplate: ViewTemplate<Spinner, any>;
-
-// @public
-export class SplitButton extends BaseSplitButton {
-}
-
-// @public
-export const SplitButtonDefinition: FASTElementDefinition<typeof SplitButton>;
-
-// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
-export const SplitButtonStyles: ElementStyles;
-
-// @public
-export const SplitButtonTemplate: ElementViewTemplate<SplitButton>;
 
 // @public
 export class StartEnd {

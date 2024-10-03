@@ -13,9 +13,11 @@ import { MenuItemRole } from '../menu-item/menu-item.options.js';
  * @attr open-on-context - Determines if the menu should open on right click.
  * @attr close-on-scroll - Determines if the menu should close on scroll.
  * @attr persist-on-item-click - Determines if the menu open state should persist on click of menu item.
+ * @attr split - Determines if the menu is in split state.
  *
  * @cssproperty --menu-max-height - The max-height of the menu.
  *
+ * @slot primary-action - Slot for the primary action elements. Used when in `split` state.
  * @slot trigger - Slot for the trigger elements.
  * @slot - Default slot for the menu list.
  *

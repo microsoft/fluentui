@@ -41,6 +41,12 @@ const storyTemplate = html<StoryArgs<FluentMenu>>`
   </fluent-menu>
 `;
 
+const link = '<a href="/docs/components-menu--docs">Menu</a>';
+
+const storyDescription = `
+The split-button is a variation of the ${link} component, refer to the ${link} for more details.
+`;
+
 export default {
   title: 'Components/Button/Split-Button',
   args: {
@@ -48,11 +54,18 @@ export default {
     slottedContent: () => defaultSlottedContent,
     triggerSlottedContent: () => defaultTriggerSlottedContent,
   },
+  parameters: {
+    docs: {
+      description: {
+        component: storyDescription,
+      },
+    },
+  },
   render: renderComponent(storyTemplate),
   argTypes: {
     split: {
       control: 'boolean',
-      description: 'Sets whether menu opens on hover',
+      description: 'Sets the split visual state. Used in Cordination with the `primary-action` slot.',
       name: 'split',
       table: { category: 'attributes', type: { summary: 'boolean' } },
     },
