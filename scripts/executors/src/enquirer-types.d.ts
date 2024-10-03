@@ -1,5 +1,3 @@
-// import { initial } from 'lodash';
-
 export {};
 
 // Enquirer Type definitions are not in best state - https://github.com/enquirer/enquirer/pull/307
@@ -11,28 +9,6 @@ declare module 'enquirer' {
     message?: string;
     value: string;
   };
-
-  // class Prompt {
-  //   public run(): Promise<string>;
-  //   public on(eventName: 'submit', callback: (answer: string) => void): this;
-  //   public on(eventName: 'cancel', callback: (error: string) => void): this;
-  //   public on(
-  //     eventName: 'keypress',
-  //     callback: (
-  //       input: string,
-  //       key: {
-  //         name: string;
-  //         ctrl: boolean;
-  //         meta: boolean;
-  //         shift: boolean;
-  //         option: boolean;
-  //         sequence: string;
-  //         raw: string;
-  //         action: string;
-  //       },
-  //     ) => void,
-  //   ): this;
-  // }
 
   export class Confirm extends Prompt {
     constructor(options: { name: string; message: string });

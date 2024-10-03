@@ -76,7 +76,6 @@ async function main() {
     choices: flagChoices,
     limit: 5,
     suggest,
-    // header,
     footer: () => {
       return output.dim('(Scroll up and down to reveal more choices)');
     },
