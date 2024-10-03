@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
   },
   calloutContentX: {
-    fontSize: tokens.fontSizeBase100,
+    fontSize: tokens.fontSizeBase200,
     lineHeight: '16px',
     opacity: '0.8',
     color: tokens.colorNeutralForeground2,

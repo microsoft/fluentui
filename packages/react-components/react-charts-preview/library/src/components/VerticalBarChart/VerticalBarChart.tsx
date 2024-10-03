@@ -955,6 +955,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     }),
     color: color,
     legend: calloutLegend,
+    XValue: xCalloutValue,
     YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
     ...props.calloutProps,
     ...getAccessibleDataObject(callOutAccessibilityData),
