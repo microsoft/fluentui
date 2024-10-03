@@ -60,12 +60,18 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
   },
   defaultOptions: [],
   create(context) {
+    // track variables assigned from slot.*() apis
+    const slotVariables = new Set<string>();
+
     let hasCreateElementImport = false;
     let hasAssertSlots = false;
     let hasSlotJsxExpression = false;
+    let hasSlotJsxElement = false;
     let hasJsxImportSource = false;
     let hasJsxPragma = false;
+    // @TODO - implement valid /* @jsxRuntime */ docblock specification in future - which shouldn't be used as pragma/import-source infers the runtime.
     let specifiedJsxRuntimePragma: string;
+
     const { runtime } = context.options[0];
 
     if (!runtime) {
@@ -84,6 +90,35 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
         // Check comments in the program
         node.comments.forEach(node => checkJsxPragmas(node));
       },
+      // Capture variable declarations that are assigned via slot.*() call expression`
+      VariableDeclarator(node: TSESTree.VariableDeclarator) {
+        if (!node.init) {
+          return;
+        }
+
+        if (
+          node.init.type === 'CallExpression' &&
+          node.init.callee.type === 'MemberExpression' &&
+          node.init.callee.object.type === 'Identifier' &&
+          node.init.callee.object.name === 'slot' &&
+          node.init.callee.property.type === 'Identifier' &&
+          (node.init.callee.property.name === 'always' || node.init.callee.property.name === 'optional') &&
+          node.id.type === 'Identifier'
+        ) {
+          slotVariables.add(node.id.name); // Track the variable name assigned to slot.always()
+        }
+      },
+      // Capture JSX elements like: `<RootSlot />`
+      JSXOpeningElement(node: TSESTree.JSXOpeningElement) {
+        if (node.name.type !== 'JSXIdentifier') {
+          return;
+        }
+
+        const elementName = node.name.name;
+        if (slotVariables.has(elementName)) {
+          hasSlotJsxElement = true;
+        }
+      },
       'ImportDeclaration ImportSpecifier[local.name=createElement]'(node: TSESTree.ImportSpecifier) {
         hasCreateElementImport = true;
       },
@@ -96,7 +131,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
         }
       },
       'Program:exit'() {
-        const usesSlotApi = hasSlotJsxExpression && hasAssertSlots;
+        const usesSlotApi = (hasSlotJsxExpression && hasAssertSlots) || hasSlotJsxElement;
         const hasAnyPragma = hasJsxImportSource || hasJsxPragma;
 
         if (!usesSlotApi && hasAnyPragma) {

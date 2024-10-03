@@ -98,6 +98,75 @@ ruleTester.run(RULE_NAME, rule, {
     };
     `,
     },
+    // =====================================================================================
+    // using slot.* apis via direct JSX rendering - anti-pattern in v9 framework composition
+    // =====================================================================================
+    {
+      options: [{ runtime: 'automatic' }],
+      code: `
+    import { slot, getIntrinsicElementProps } from '@fluentui/react-utilities';
+
+    export const factory = (props: {}) => {
+      const SlotComponent = slot.always(getIntrinsicElementProps('span', {}),{ elementType: 'span' })
+      const InlineCmp = () => <div>inline</div>
+
+      return {SlotComponent,InlineCmp}
+    };
+    `,
+    },
+    {
+      options: [{ runtime: 'automatic' }],
+      code: `
+    /** @jsxImportSource @fluentui/react-jsx-runtime */
+    import { slot, getIntrinsicElementProps } from '@fluentui/react-utilities';
+
+    export const Test = (props: {}) => {
+      const SlotComponent = slot.always(getIntrinsicElementProps('span', {}),{ elementType: 'span' })
+
+      return (
+          <div>
+            <SlotComponent/>
+          </div>
+      );
+    };
+    `,
+    },
+    {
+      options: [{ runtime: 'automatic' }],
+      code: `
+    /** @jsxImportSource @fluentui/react-jsx-runtime */
+    import { slot, getIntrinsicElementProps } from '@fluentui/react-utilities';
+
+    export const Test = (props: {}) => {
+      const SlotComponent = slot.optional(getIntrinsicElementProps('span', {}),{ elementType: 'span' })
+
+      return (
+          <div>
+            <SlotComponent/>
+          </div>
+      );
+    };
+    `,
+    },
+    {
+      options: [{ runtime: 'automatic' }],
+      code: `
+    /** @jsxImportSource @fluentui/react-jsx-runtime */
+    import { slot, getIntrinsicElementProps } from '@fluentui/react-utilities';
+
+    export const Test = (props: {}) => {
+      const SlotComponent = slot.always(getIntrinsicElementProps('span', {}),{ elementType: 'span' })
+      const SlotOptionalComponent = slot.optional(getIntrinsicElementProps('span', {}),{ elementType: 'span' })
+
+      return (
+          <div>
+            <SlotComponent/>
+            <SlotOptionalComponent/>
+          </div>
+      );
+    };
+    `,
+    },
   ],
   invalid: [
     {
@@ -223,6 +292,62 @@ ruleTester.run(RULE_NAME, rule, {
       };
       `,
       errors: [{ messageId: 'redundantPragma' }],
+    },
+    // =====================================================================================
+    // using slot.* apis via direct JSX rendering - anti-pattern in v9 framework composition
+    // =====================================================================================
+    {
+      options: [{ runtime: 'automatic' }],
+      code: `
+    import { slot, getIntrinsicElementProps } from '@fluentui/react-utilities';
+
+    export const Test = (props: {}) => {
+      const SlotComponent = slot.always(getIntrinsicElementProps('span', {}),{ elementType: 'span' })
+
+      return (
+          <div>
+            <SlotComponent/>
+          </div>
+      );
+    };
+    `,
+      errors: [{ messageId: 'missingJsxImportSource' }],
+    },
+    {
+      options: [{ runtime: 'automatic' }],
+      code: `
+    import { slot, getIntrinsicElementProps } from '@fluentui/react-utilities';
+
+    export const Test = (props: {}) => {
+      const SlotComponent = slot.optional(getIntrinsicElementProps('span', {}),{ elementType: 'span' })
+
+      return (
+          <div>
+            <SlotComponent/>
+          </div>
+      );
+    };
+    `,
+      errors: [{ messageId: 'missingJsxImportSource' }],
+    },
+    {
+      options: [{ runtime: 'automatic' }],
+      code: `
+    import { slot, getIntrinsicElementProps } from '@fluentui/react-utilities';
+
+    export const Test = (props: {}) => {
+      const SlotComponent = slot.always(getIntrinsicElementProps('span', {}),{ elementType: 'span' })
+      const SlotOptionalComponent = slot.optional(getIntrinsicElementProps('span', {}),{ elementType: 'span' })
+
+      return (
+          <div>
+            <SlotComponent/>
+            <SlotOptionalComponent/>
+          </div>
+      );
+    };
+    `,
+      errors: [{ messageId: 'missingJsxImportSource' }],
     },
   ],
 });
