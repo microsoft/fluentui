@@ -64,7 +64,7 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
     onColorChange?.(event, {
       type: 'onMouseMove',
       event,
-      x: getCoordinates(event).x,
+      ...getCoordinates(event),
       y: getCoordinates(event).y,
     });
     targetDocument?.addEventListener('mousemove', requestColorChange);
