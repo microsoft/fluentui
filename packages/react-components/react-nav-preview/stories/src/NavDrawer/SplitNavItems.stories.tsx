@@ -104,6 +104,7 @@ const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletLis
 const JobPostings = bundleIcon(NotePin20Filled, NotePin20Regular);
 const Person = bundleIcon(Person20Filled, Person20Regular);
 const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
+const Pin = bundleIcon(Pin20Filled, Pin20Regular);
 
 type SplitNavItemNestedProps = {
   splitNavItem?: SplitNavItemProps;
@@ -224,10 +225,10 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
     if (value) {
       return {
         onClick: () => handlePinClick(value),
-        icon: pinnedValues.includes(value) ? <Pin20Filled /> : <Pin20Regular />,
+        icon: pinnedValues.includes(value) ? <Pin20Filled /> : <Pin />,
       };
     }
-    return { icon: <Pin20Regular /> };
+    return { icon: <Pin /> };
   };
 
   const getToggleButtonTooltipProps = (value?: string): TooltipProps => {
