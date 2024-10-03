@@ -54,12 +54,13 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
                 {/* <div className={classNames.calloutContentX}>07:00am</div> */}
               </div>
               <div
-                style={
-                  props.ratio && {
+                style={{
+                  ...(props.ratio && {
                     display: 'flex',
                     alignItems: 'flex-end',
-                  }
-                }
+                  }),
+                  borderLeft: `4px solid ${props.color}`,
+                }}
               >
                 <div className={classes.calloutBlockContainer}>
                   <div className={classes.calloutlegendText}>{convertToLocaleString(Legend, props.culture)}</div>
