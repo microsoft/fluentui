@@ -710,9 +710,12 @@ export class BaseRatingDisplay extends FASTElement {
     generateIcons(): string;
     protected getMaxIcons(): number;
     protected getSelectedValue(): number;
-    icon?: string;
     iconViewBox?: string;
     max?: number;
+    // @internal (undocumented)
+    slottedIcon: HTMLElement[];
+    // @internal (undocumented)
+    slottedIconChanged(): void;
     value?: number;
 }
 
@@ -2341,7 +2344,10 @@ export const DividerDefinition: FASTElementDefinition<typeof Divider>;
 
 // @public
 export const DividerOrientation: {
-    readonly horizontal: "horizontal";
+    readonly horizontal: "horizontal"; /**
+    * Divider roles
+    * @public
+    */
     readonly vertical: "vertical";
 };
 
@@ -2834,9 +2840,11 @@ export class Menu extends FASTElement {
     openOnHoverChanged(oldValue: boolean, newValue: boolean): void;
     persistOnItemClick?: boolean;
     persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
+    primaryAction: HTMLSlotElement;
     setComponent(): void;
     slottedMenuList: MenuList[];
     slottedTriggers: HTMLElement[];
+    split?: boolean;
     toggleHandler: (e: Event) => void;
     toggleMenu: () => void;
     triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
@@ -3730,7 +3738,10 @@ export const TablistDefinition: FASTElementDefinition<typeof Tablist>;
 
 // @public
 export const TablistOrientation: {
-    readonly horizontal: "horizontal";
+    readonly horizontal: "horizontal"; /**
+    * The appearance of the component
+    * @public
+    */
     readonly vertical: "vertical";
 };
 
