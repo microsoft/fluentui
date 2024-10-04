@@ -208,7 +208,7 @@ test.describe('Drawer', () => {
   });
 });
 
-test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+test('should not have auto detectable accessibility issues', async ({ page }) => {
   await createElementInternalsTrapsForAxe(page);
 
   await page.goto(fixtureURL(storybookDocId));

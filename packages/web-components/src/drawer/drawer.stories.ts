@@ -65,6 +65,7 @@ const storyTemplate = html<StoryArgs<FluentDrawer>>`
       position="${story => story.position}"
       size="${story => story.size}"
       type="${story => story.type}"
+      dialog-label="Drawer example"
       style="${story =>
         story['--drawer-width'] !== '' ? `--drawer-width: ${story['--drawer-width']};` : ''} ${story =>
         story['--dialog-backdrop'] !== '' ? `--dialog-backdrop: ${story['--dialog-backdrop']};` : ''}"
