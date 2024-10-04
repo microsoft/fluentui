@@ -164,10 +164,10 @@ export const MenuWithInteractiveItems: Story = {
   },
 };
 
-const link = '<a href="/docs/components-button-split-button--docs">split-button stories</a>';
+const link = '<a href="/docs/components-button-split-button--docs">split-button</a>';
 
 const storyDescription = `
-  The split-button variation, refer to the ${link} for more examples.
+  The split-button variation, refer to ${link} for more examples.
 `;
 
 export const SplitButton: Story = {

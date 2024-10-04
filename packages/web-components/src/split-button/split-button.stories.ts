@@ -53,6 +53,7 @@ export default {
     primaryActionSlottedContent: () => generatePimaryActionSlottedContent(),
     slottedContent: () => defaultSlottedContent,
     triggerSlottedContent: () => defaultTriggerSlottedContent,
+    split: true,
   },
   parameters: {
     docs: {
@@ -64,10 +65,15 @@ export default {
   render: renderComponent(storyTemplate),
   argTypes: {
     split: {
-      control: 'boolean',
+      control: false,
       description: 'Sets the split visual state. Used in Cordination with the `primary-action` slot.',
       name: 'split',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
+      table: {
+        category: 'attributes',
+        readonly: true,
+        defaultValue: { summary: 'true' },
+        type: { summary: 'boolean' },
+      },
     },
     appearance: {
       control: 'select',
