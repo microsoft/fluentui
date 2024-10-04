@@ -32,12 +32,6 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
   const classes = usePopoverStyles_unstable(props);
   const Legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
   const YValue = props.yCalloutValue ? props.yCalloutValue : props.YValue;
-  const calloutBlockContainerStyle = props.isCartesian
-    ? classes.calloutBlockContainerCartesian
-    : classes.calloutBlockContainerNonCartesian;
-  const calloutContentYStyle = props.isCartesian
-    ? classes.calloutContentYCartesian
-    : classes.calloutContentYNonCartesian;
   return (
     <div id={useId('callout')}>
       <Popover
@@ -70,10 +64,10 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
                   borderLeft: `4px solid ${props.color}`,
                 }}
               >
-                <div className={calloutBlockContainerStyle}>
+                <div className={classes.calloutBlockContainer}>
                   <div className={classes.calloutlegendText}>{convertToLocaleString(Legend, props.culture)}</div>
                   <div
-                    className={calloutContentYStyle}
+                    className={classes.calloutContentY}
                     style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
                   >
                     {convertToLocaleString(YValue, props.culture)}
@@ -186,7 +180,7 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
           )}
           <div
             id={`${index}_${xValue.y}`}
-            className={calloutBlockContainerStyle}
+            className={classes.calloutBlockContainer}
             style={{
               marginTop: props.XValue ? '13px' : 'unset',
               ...(!toDrawShape
@@ -207,14 +201,14 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
             )}
             <div
               className={mergeClasses(
-                calloutBlockContainerStyle,
+                classes.calloutBlockContainer,
                 toDrawShape
                   ? classes.calloutBlockContainertoDrawShapetrue
                   : classes.calloutBlockContainertoDrawShapefalse,
               )}
             >
               <div className={classes.calloutlegendText}> {xValue.legend}</div>
-              <div className={calloutContentYStyle}>
+              <div className={classes.calloutContentY}>
                 {convertToLocaleString(
                   xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
                   culture,
@@ -233,10 +227,10 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
           </div>
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
-              <div key={subcountName} className={calloutBlockContainerStyle}>
+              <div key={subcountName} className={classes.calloutBlockContainer}>
                 <div className={classes.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
                 <div
-                  className={calloutContentYStyle}
+                  className={classes.calloutContentY}
                   style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
                 >
                   {convertToLocaleString(subcounts[subcountName], culture)}

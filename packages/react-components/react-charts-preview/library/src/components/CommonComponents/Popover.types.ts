@@ -29,14 +29,12 @@ export interface IPopoverComponentStyles {
   calloutContentRoot: string;
   calloutDateTimeContainer: string;
   calloutContentX: string;
-  calloutBlockContainerCartesian: string;
-  calloutBlockContainerNonCartesian: string;
+  calloutBlockContainer: string;
   calloutBlockContainertoDrawShapefalse: string;
   calloutBlockContainertoDrawShapetrue: string;
   shapeStyles: string;
   calloutlegendText: string;
-  calloutContentYCartesian: string;
-  calloutContentYNonCartesian: string;
+  calloutContentY: string;
   descriptionMessage: string;
   ratio: string;
   numerator: string;

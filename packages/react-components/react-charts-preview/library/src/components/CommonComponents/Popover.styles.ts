@@ -11,14 +11,12 @@ export const popoverClassNames: SlotClassNames<IPopoverComponentStyles> = {
   calloutContentRoot: 'fui-cart__calloutContentRoot',
   calloutDateTimeContainer: 'fui-cart__calloutDateTimeContainer',
   calloutContentX: 'fui-cart__calloutContentX',
-  calloutBlockContainerCartesian: 'fui-cart__calloutBlockContainerCartesian',
-  calloutBlockContainerNonCartesian: 'fui-cart__calloutBlockContainerNonCartesian',
+  calloutBlockContainer: 'fui-cart__calloutBlockContainer',
   calloutBlockContainertoDrawShapefalse: 'fui-cart__calloutBlockContainertoDrawShapefalse',
   calloutBlockContainertoDrawShapetrue: 'fui-cart__calloutBlockContainertoDrawShapetrue',
   shapeStyles: 'fui-cart__shapeStyles',
   calloutlegendText: 'fui-cart__calloutlegendText',
-  calloutContentYCartesian: 'fui-cart__calloutContentYCartesian',
-  calloutContentYNonCartesian: 'fui-cart__calloutContentYNonCartesian',
+  calloutContentY: 'fui-cart__calloutContentY',
   descriptionMessage: 'fui-cart__descriptionMessage',
   ratio: 'fui-cart__ratio',
   numerator: 'fui-cart__numerator',
@@ -48,15 +46,15 @@ const useStyles = makeStyles({
     opacity: '0.8',
     color: tokens.colorNeutralForeground2,
   },
+  calloutBlockContainer: {
+    color: tokens.colorNeutralForeground2,
+  },
   calloutBlockContainerCartesian: {
     fontSize: tokens.fontSizeBase200,
     marginTop: '13px',
-    color: tokens.colorNeutralForeground2,
   },
   calloutBlockContainerNonCartesian: {
     fontSize: tokens.fontSizeHero700,
-    color: tokens.colorNeutralForeground2,
-    paddingLeft: '8px',
     lineHeight: '22px',
     '& selectors': {
       [HighContrastSelector]: {
@@ -88,25 +86,21 @@ const useStyles = makeStyles({
       },
     },
   },
-  calloutContentYCartesian: {
-    fontSize: tokens.fontSizeBase400,
+  calloutContentY: {
     fontWeight: 'bold',
-    lineHeight: '22px',
     '& selectors': {
       [HighContrastSelectorBlack]: {
         color: 'rgb(255, 255, 255)',
       },
     },
   },
+  calloutContentYCartesian: {
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: '22px',
+  },
   calloutContentYNonCartesian: {
     fontSize: tokens.fontSizeHero700,
-    fontWeight: 'bold',
     lineHeight: '36px',
-    '& selectors': {
-      [HighContrastSelectorBlack]: {
-        color: 'rgb(255, 255, 255)',
-      },
-    },
   },
   descriptionMessage: {
     fontSize: tokens.fontSizeBase200,
@@ -134,6 +128,7 @@ const useStyles = makeStyles({
  * Apply styling to the Carousel slots based on the state
  */
 export const usePopoverStyles_unstable = (props: IPopoverComponentProps): IPopoverComponentStyles => {
+  const { isCartesian } = props;
   const baseStyles = useStyles();
   return {
     calloutContentRoot: mergeClasses(
@@ -148,13 +143,10 @@ export const usePopoverStyles_unstable = (props: IPopoverComponentProps): IPopov
       popoverClassNames.calloutContentX,
       baseStyles.calloutContentX /*props.styles?.calloutContentX*/,
     ),
-    calloutBlockContainerCartesian: mergeClasses(
-      popoverClassNames.calloutBlockContainerCartesian,
-      baseStyles.calloutBlockContainerCartesian /*props.styles?.calloutBlockContainerCartesian*/,
-    ),
-    calloutBlockContainerNonCartesian: mergeClasses(
-      popoverClassNames.calloutBlockContainerNonCartesian,
-      baseStyles.calloutBlockContainerNonCartesian /*props.styles?.calloutBlockContainerNonCartesian*/,
+    calloutBlockContainer: mergeClasses(
+      popoverClassNames.calloutBlockContainer,
+      baseStyles.calloutBlockContainer /*props.styles?.calloutBlockContainerCartesian*/,
+      isCartesian ? baseStyles.calloutBlockContainerCartesian : baseStyles.calloutBlockContainerNonCartesian,
     ),
     calloutBlockContainertoDrawShapefalse: mergeClasses(
       popoverClassNames.calloutBlockContainertoDrawShapefalse,
@@ -169,13 +161,10 @@ export const usePopoverStyles_unstable = (props: IPopoverComponentProps): IPopov
       popoverClassNames.calloutlegendText,
       baseStyles.calloutLegendText /*props.styles?.calloutlegendText*/,
     ),
-    calloutContentYCartesian: mergeClasses(
-      popoverClassNames.calloutContentYCartesian,
-      baseStyles.calloutContentYCartesian /*props.styles?.calloutContentYCartesian*/,
-    ),
-    calloutContentYNonCartesian: mergeClasses(
-      popoverClassNames.calloutContentYNonCartesian,
-      baseStyles.calloutContentYNonCartesian /*props.styles?.calloutContentYNonCartesian*/,
+    calloutContentY: mergeClasses(
+      popoverClassNames.calloutContentY,
+      baseStyles.calloutContentY /*props.styles?.calloutContentYNonCartesian*/,
+      isCartesian ? baseStyles.calloutContentYCartesian : baseStyles.calloutContentYNonCartesian,
     ),
     descriptionMessage: mergeClasses(
       popoverClassNames.descriptionMessage,
