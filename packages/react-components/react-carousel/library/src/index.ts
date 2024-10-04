@@ -68,10 +68,8 @@ export {
   renderCarouselSlider_unstable,
   useCarouselSliderStyles_unstable,
   useCarouselSlider_unstable,
-  type CarouselSliderProps,
-  type CarouselSliderSlots,
-  type CarouselSliderState,
 } from './CarouselSlider';
+export type { CarouselSliderProps, CarouselSliderSlots, CarouselSliderState } from './CarouselSlider';
 export type {
   CarouselNavContainerProps,
   CarouselNavContainerSlots,
