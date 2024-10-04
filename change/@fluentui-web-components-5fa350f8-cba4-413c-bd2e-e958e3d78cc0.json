@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix: removes display inheritance so all html elements can render",
+  "comment": "feat: adds split-button",
   "packageName": "@fluentui/web-components",
   "email": "jes@microsoft.com",
   "dependentChangeType": "patch"
