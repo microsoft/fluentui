@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Avatar } from './avatar.js';
-import { AvatarAppearance, AvatarColor, AvatarSize } from './avatar.options.js';
+import type { AvatarAppearance, AvatarColor, AvatarSize } from './avatar.options.js';
 
 const storybookDocId = 'components-avatar--docs';
 
@@ -212,7 +212,7 @@ test.describe('Avatar Component', () => {
   });
 });
 
-test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+test('should not have auto detectable accessibility issues', async ({ page }) => {
   await createElementInternalsTrapsForAxe(page);
 
   await page.goto(fixtureURL(storybookDocId));

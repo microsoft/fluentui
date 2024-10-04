@@ -18,6 +18,7 @@ const storyTemplate = html<StoryArgs<FluentCheckbox>>`
     shape="${story => story.shape}"
     size="${story => story.size}"
     slot="${story => story.slot}"
+    aria-label="${story => story.label ? null : 'Checkbox example'}"
   >
     ${story => story.checkedIndicatorContent?.()} ${story => story.indeterminateIndicatorContent?.()}
   </fluent-checkbox>
@@ -252,8 +253,8 @@ export const Required: Story = {
   render: renderComponent(html<StoryArgs<FluentCheckbox>>`
     <form style="display: inline-flex; gap: 1em; align-items: baseline">
       <div>
-        <fluent-checkbox id="required-fluent-checkbox" required></fluent-checkbox>
-        <label for="required-fluent-checkbox">Required</label>
+        <fluent-checkbox id="required-fluent-checkbox" required aria-labelledby="required-fluent-checkbox-label"></fluent-checkbox>
+        <label for="required-fluent-checkbox" id="required-fluent-checkbox-label">Required</label>
       </div>
       ${fieldStoryTemplate}
       <fluent-button type="submit">Submit</fluent-button>

@@ -31,6 +31,7 @@ export const template: ElementViewTemplate = html`
         class="title-action"
         appearance="transparent"
         icon-only
+        aria-label="${x => x.titleActionLabel}"
         @click=${x => x.parentNode?.hide()}
         ${ref('defaultTitleAction')}
       >

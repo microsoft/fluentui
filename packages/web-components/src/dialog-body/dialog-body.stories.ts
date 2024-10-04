@@ -35,7 +35,7 @@ const dismissCircle20Regular = html`<svg
 </svg>`;
 
 const storyTemplate = html<StoryArgs<FluentDialogBody>>`
-  <fluent-dialog-body>
+  <fluent-dialog-body title-action-label="${x => x.titleActionLabel ?? 'Dismiss'}">
       ${x => x.titleSlottedContent?.()}
       ${x => x.titleActionSlottedContent?.()}
       ${x => x.slottedContent?.()}
@@ -56,6 +56,10 @@ export default {
         defaultValue: { summary: 'false' },
         type: { summary: 'boolean' },
       },
+    },
+    titleActionLabel: {
+      description: 'ARIA label for the default title action button.',
+      table: { category: 'attributes' }
     },
     slottedContent: {
       control: false,
@@ -136,7 +140,7 @@ export const Actions: Story = {
       </p>
     `,
     titleActionSlottedContent: () => html`
-      <fluent-button appearance="transparent" icon-only slot="title-action"> ${dismissed20Regular} </fluent-button>
+      <fluent-button appearance="transparent" icon-only slot="title-action" aria-label="Dismiss"> ${dismissed20Regular} </fluent-button>
     `,
     titleSlottedContent: () => html` <div slot="title">Actions</div> `,
   },
@@ -165,6 +169,7 @@ export const CustomTitleAction: Story = {
         appearance="transparent"
         icon-only
         @click="${() => alert('This is a custom action')}"
+        aria-label="Dismiss"
       >
         ${dismissCircle20Regular}
       </fluent-button>
