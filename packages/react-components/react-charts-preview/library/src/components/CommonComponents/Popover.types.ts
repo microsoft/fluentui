@@ -12,14 +12,17 @@ export interface IPopoverComponentProps {
   XValue?: string;
   color?: string;
   culture?: string;
-  customProps?: IPopoverComponentProps;
+  customProps?: {
+    customizedCallout?: JSX.Element;
+    customCalloutProps?: IPopoverComponentProps;
+  };
   isCalloutForStack?: boolean;
-  customizedCallout?: JSX.Element;
   xAxisCalloutAccessibilityData?: { ariaLabel?: string; data?: string };
   hoverXValue?: string | number;
   YValueHover?: IYValueHover[];
   descriptionMessage?: string;
   ratio?: [number, number];
+  isCartesian?: boolean;
 }
 
 export interface IPopoverComponentStyles {
@@ -36,4 +39,5 @@ export interface IPopoverComponentStyles {
   ratio: string;
   numerator: string;
   denominator: string;
+  calloutInfoContainer: string;
 }

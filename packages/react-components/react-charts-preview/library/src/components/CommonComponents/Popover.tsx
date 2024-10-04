@@ -32,7 +32,6 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
   const classes = usePopoverStyles_unstable(props);
   const Legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
   const YValue = props.yCalloutValue ? props.yCalloutValue : props.YValue;
-
   return (
     <div id={useId('callout')}>
       <Popover
@@ -42,11 +41,13 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
       >
         <PopoverSurface>
           {/** Given custom callout, then it will render */}
-          {props.customizedCallout && props.customizedCallout}
+          {props.customProps && props.customProps.customizedCallout && props.customProps.customizedCallout}
           {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
-          {!props.customizedCallout && props.isCalloutForStack && _multiValueCallout()}
+          {(!props.customProps || !props.customProps.customizedCallout) &&
+            props.isCalloutForStack &&
+            _multiValueCallout()}
           {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
-          {!props.customizedCallout && !props.isCalloutForStack && (
+          {(!props.customProps || !props.customProps.customizedCallout) && !props.isCalloutForStack && (
             <div className={classes.calloutContentRoot}>
               <div className={classes.calloutDateTimeContainer}>
                 <div className={classes.calloutContentX}>{props.XValue} </div>
@@ -54,12 +55,14 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
                 {/* <div className={classNames.calloutContentX}>07:00am</div> */}
               </div>
               <div
-                style={
-                  props.ratio && {
+                className={classes.calloutInfoContainer}
+                style={{
+                  ...(props.ratio && {
                     display: 'flex',
                     alignItems: 'flex-end',
-                  }
-                }
+                  }),
+                  borderLeft: `4px solid ${props.color}`,
+                }}
               >
                 <div className={classes.calloutBlockContainer}>
                   <div className={classes.calloutlegendText}>{convertToLocaleString(Legend, props.culture)}</div>
