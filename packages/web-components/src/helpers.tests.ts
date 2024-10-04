@@ -133,10 +133,9 @@ export async function createElementInternalsTrapsForAxe(page: Page) {
             } else {
               host?.removeAttribute(attrName);
             }
-          } else {
-            Reflect.set(originalInternals, prop, value);
           }
-          return true;
+
+          return Reflect.set(originalInternals, prop, value);
         },
       });
     };
