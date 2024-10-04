@@ -10,11 +10,13 @@ import { Types, TABSTER_ATTRIBUTE_NAME } from 'tabster';
  * @returns single merged tabster attribute
  */
 export const useMergedTabsterAttributes_unstable = (
-  ...attributes: Partial<Types.TabsterDOMAttribute>[]
+  ...attributes: (Partial<Types.TabsterDOMAttribute> | null | undefined)[]
 ): Types.TabsterDOMAttribute => {
   'use no memo';
 
-  const stringAttributes = attributes.reduce<string[]>((acc, curr) => {
+  const validAttributes = attributes.filter((attr): attr is Partial<Types.TabsterDOMAttribute> => !!attr);
+
+  const stringAttributes = validAttributes.reduce<string[]>((acc, curr) => {
     if (curr[TABSTER_ATTRIBUTE_NAME]) {
       acc.push(curr[TABSTER_ATTRIBUTE_NAME]);
     }
