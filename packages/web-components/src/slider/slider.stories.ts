@@ -16,6 +16,7 @@ const storyTemplate = html<StoryArgs<FluentSlider>>`
     orientation="${story => story.orientation}"
     value="${story => story.value}"
     slot="${story => story.slot}"
+    aria-label="Example slider"
   ></fluent-slider>
 `;
 

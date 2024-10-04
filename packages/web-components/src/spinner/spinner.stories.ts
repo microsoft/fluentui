@@ -6,7 +6,11 @@ import { Spinner as FluentSpinner } from './spinner.js';
 type Story = StoryObj<FluentSpinner>;
 
 const storyTemplate = html<StoryArgs<FluentSpinner>>`
-  <fluent-spinner appearance="${story => story.appearance}" size="${story => story.size}"></fluent-spinner>
+  <fluent-spinner
+    appearance="${story => story.appearance}"
+    size="${story => story.size}"
+    aria-label="Example progress"
+  ></fluent-spinner>
 `;
 
 export default {

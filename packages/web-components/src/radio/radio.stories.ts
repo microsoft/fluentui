@@ -12,6 +12,7 @@ const storyTemplate = html<StoryArgs<FluentRadio>>`
     name="${story => story.name}"
     ?required="${story => story.required}"
     value="${story => story.value}"
+    aria-label="Example radio button"
   ></fluent-radio>
 `;
 
