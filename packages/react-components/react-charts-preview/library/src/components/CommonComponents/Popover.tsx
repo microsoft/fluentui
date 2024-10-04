@@ -47,11 +47,13 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
       >
         <PopoverSurface>
           {/** Given custom callout, then it will render */}
-          {props.customizedCallout && props.customizedCallout}
+          {props.customProps && props.customProps.customizedCallout && props.customProps.customizedCallout}
           {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
-          {!props.customizedCallout && props.isCalloutForStack && _multiValueCallout()}
+          {(!props.customProps || !props.customProps.customizedCallout) &&
+            props.isCalloutForStack &&
+            _multiValueCallout()}
           {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
-          {!props.customizedCallout && !props.isCalloutForStack && (
+          {(!props.customProps || !props.customProps.customizedCallout) && !props.isCalloutForStack && (
             <div className={classes.calloutContentRoot}>
               <div className={classes.calloutDateTimeContainer}>
                 <div className={classes.calloutContentX}>{props.XValue} </div>
@@ -59,6 +61,7 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
                 {/* <div className={classNames.calloutContentX}>07:00am</div> */}
               </div>
               <div
+                className={classes.calloutInfoContainer}
                 style={{
                   ...(props.ratio && {
                     display: 'flex',
@@ -230,7 +233,7 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
           </div>
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
-              <div key={subcountName} className={classes.calloutBlockContainer}>
+              <div key={subcountName} className={calloutBlockContainerStyle}>
                 <div className={classes.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
                 <div
                   className={calloutContentYStyle}

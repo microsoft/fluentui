@@ -158,12 +158,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function _generateCallout(calloutProps: any): JSX.Element {
-    const popoverProps = {
-      ...calloutProps,
-      customizedCallout: props.customizedCallout,
-      isCalloutForStack: props.isCalloutForStack,
-    };
-    return <PopoverComponent {...popoverProps} />;
+    return <PopoverComponent {...calloutProps} />;
   }
 
   const {

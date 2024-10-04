@@ -315,10 +315,12 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
           YValue={value!}
           color={color}
           isCalloutForStack={false}
-          customizedCallout={
-            props.onRenderCalloutPerDataPoint ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps!) : undefined
-          }
-          customProps={props.customProps ? props.customProps(dataPointCalloutProps!) : undefined}
+          customProps={{
+            customizedCallout: props.onRenderCalloutPerDataPoint
+              ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps!)
+              : undefined,
+            customCalloutProps: props.customProps ? props.customProps(dataPointCalloutProps!) : undefined,
+          }}
           isCartesian={false}
         />
         {!hideLegend && (

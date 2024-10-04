@@ -1280,6 +1280,10 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       isCalloutForStack: true,
       culture: props.culture ?? 'en-us',
       isCartesian: true,
+      customProps: {
+        customizedCallout: _getCustomizedCallout(),
+        customCalloutProps: props.customProps ? props.customProps(dataPointCalloutProps!) : undefined,
+      },
     };
     const tickParams = {
       tickValues,
@@ -1292,14 +1296,12 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         chartTitle={props.data.chartTitle}
         points={points}
         chartType={ChartTypes.LineChart}
-        isCalloutForStack
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
         getmargins={_getMargins}
         getGraphData={_initializeLineChartData}
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
-        customizedCallout={_getCustomizedCallout()}
         onChartMouseLeave={_handleChartMouseLeave}
         enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
         /* eslint-disable react/jsx-no-bind */
