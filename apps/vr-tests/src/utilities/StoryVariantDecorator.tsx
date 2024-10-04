@@ -9,10 +9,12 @@ const StoryVariantDecorator: Decorator = (storyFn, context) => {
 
   setRTL(dir === 'rtl');
 
-  return (
+  return theme ? (
     <ThemeProvider applyTo="element" theme={theme}>
       {storyFn(context)}
     </ThemeProvider>
+  ) : (
+    storyFn(context)
   );
 };
 
