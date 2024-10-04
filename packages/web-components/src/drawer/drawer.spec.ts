@@ -1,11 +1,13 @@
-import { expect, test } from '@playwright/test';
+import { test } from '@playwright/test';
 
-import { fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Drawer } from './drawer.js';
+
+const storybookDocId = 'components-drawer--docs';
 
 test.describe('Drawer', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-drawer--drawer'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-drawer'));
   });
@@ -204,4 +206,24 @@ test.describe('Drawer', () => {
 
     expect(wasDismissed).toBe(true);
   });
+});
+
+test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-drawer'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
+
+  const button = page.getByText('Toggle Drawer');
+  const drawer = page.locator('fluent-drawer-body');
+  await button.click();
+  await drawer.waitFor({ state: 'visible' });
+
+  const openedResult = await analyzePageWithAxe(page);
+
+  expect(openedResult.violations).toEqual([]);
 });

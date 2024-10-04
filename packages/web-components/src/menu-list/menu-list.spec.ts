@@ -1,10 +1,12 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
-test.describe('Menu', () => {
+const storybookDocId = 'components-menulist--docs';
+
+test.describe('MenuList', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-menulist--menu-list'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-menu-list'));
   });
@@ -521,4 +523,15 @@ test.describe('Menu', () => {
       await expect(item).toHaveAttribute('data-indent', '2');
     }
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-menu-list'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

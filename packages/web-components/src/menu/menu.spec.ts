@@ -1,10 +1,12 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Menu } from './menu.js';
+
+const storybookDocId = 'components-menu--docs';
 
 test.describe('Menu', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-menu--default'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() =>
       Promise.all([
@@ -342,4 +344,31 @@ test.describe('Menu', () => {
 
     await expect(menuItems.first()).toBeFocused();
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() =>
+    Promise.all([
+      customElements.whenDefined('fluent-menu'),
+      customElements.whenDefined('fluent-menu-list'),
+      customElements.whenDefined('fluent-menu-item'),
+      customElements.whenDefined('fluent-menu-button'),
+    ]),
+  );
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
+
+  const menu = page.locator('fluent-menu').nth(0);
+  const menuButton = menu.locator('fluent-menu-button');
+  const menuList = menu.locator('fluent-menu-list');
+  await menuButton.click();
+  await menuList.waitFor({ state: 'visible' });
+  const openedResults = await analyzePageWithAxe(page);
+
+  expect(openedResults.violations).toEqual([]);
 });

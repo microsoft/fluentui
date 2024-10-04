@@ -1,12 +1,14 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Tab } from '../tab/tab.js';
 import type { Tablist } from './tablist.js';
 import { TablistAppearance, TablistSize } from './tablist.options.js';
 
+const storybookDocId = 'components-tablist--docs';
+
 test.describe('Tablist', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-tabs--tabs-default'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() =>
       Promise.all([customElements.whenDefined('fluent-tablist'), customElements.whenDefined('fluent-tab')]),
@@ -400,4 +402,19 @@ test.describe('Tablist', () => {
 
     await expect(element).toHaveJSProperty('activeid', secondTabId);
   });
+});
+
+// FIXME: When tablist is disabled, either itself or all of its tab children may need
+// `aria-disabled=true`.
+test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() =>
+    Promise.all([customElements.whenDefined('fluent-tablist'), customElements.whenDefined('fluent-tab')]),
+  );
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

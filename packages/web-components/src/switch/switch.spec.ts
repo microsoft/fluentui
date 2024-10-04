@@ -1,10 +1,12 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Switch } from './switch.js';
+
+const storybookDocId = 'components-switch--docs';
 
 test.describe('Switch', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-switch--switch'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-switch'));
   });
@@ -288,4 +290,16 @@ test.describe('Switch', () => {
 
     expect(page.url()).toContain('?switch=foo&switch=bar');
   });
+});
+
+// FIXME: examples need accessible names.
+test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-switch'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

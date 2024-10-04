@@ -1,4 +1,5 @@
 import qs from 'qs';
+import AxeBuilder from '@axe-core/playwright';
 import { expect as baseExpect, type ExpectMatcherState, type Locator, type Page } from '@playwright/test';
 
 /**
@@ -92,7 +93,9 @@ export const expect = baseExpect.extend({
  * Axe is able to assess the element’s accessibility properly.
  * @see https://github.com/dequelabs/axe-core/issues/4259
  *
- * This function should be called before calling `page.goto(..)`.
+ * This function should be called before calling `page.goto(..)`. And it should
+ * be contained in 1-2 tests per suite. It shouldn’t be used casually due to the
+ * heavy-handedness of modifying built-in API.
  */
 export async function createElementInternalsTrapsForAxe(page: Page) {
   await page.addInitScript(() => {
@@ -102,21 +105,34 @@ export async function createElementInternalsTrapsForAxe(page: Page) {
         null;
     }
 
-    const original =HTMLElement.prototype.attachInternals;
+    const original = HTMLElement.prototype.attachInternals;
     HTMLElement.prototype.attachInternals = function() {
       const originalInternals = original.call(this);
 
       return new Proxy(({} as ElementInternals), {
         get(target, prop) {
-          return getAriaAttrName(prop) ?
-            Reflect.get(target, prop) ?? null :
-            Reflect.get(originalInternals, prop);
+          if (getAriaAttrName(prop)) {
+            return Reflect.get(target, prop) ?? null;
+          }
+
+          const propValue = Reflect.get(originalInternals, prop);
+
+          if (typeof propValue === 'function') {
+            return propValue.bind(originalInternals);
+          }
+
+          return propValue;
         },
         set(target, prop, value) {
           const attrName = getAriaAttrName(prop);
           if (attrName) {
             Reflect.set(target, prop, value);
-            originalInternals.shadowRoot?.host.setAttribute(attrName, value);
+            const host = originalInternals.shadowRoot?.host;
+            if (value) {
+              host?.setAttribute(attrName, value);
+            } else {
+              host?.removeAttribute(attrName);
+            }
           } else {
             Reflect.set(originalInternals, prop, value);
           }
@@ -125,4 +141,13 @@ export async function createElementInternalsTrapsForAxe(page: Page) {
       });
     };
   });
+}
+
+/**
+ * Helper function to run Axe analysis. The main motivation of creating this
+ * function is to centralize the `.include('.sb-story')` call in case Storybook
+ * changes the class name in future.
+ */
+export async function analyzePageWithAxe(page: Page): Promise<ReturnType<AxeBuilder['analyze']>> {
+  return await new AxeBuilder({ page }).include('.sb-story').analyze();
 }

@@ -1,11 +1,13 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Text } from './text.js';
 import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 
+const storybookDocId = 'components-text--docs';
+
 test.describe('Text Component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-text--text'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-text'));
   });
@@ -102,3 +104,15 @@ test.describe('Text Component', () => {
     });
   }
 });
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-text'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
+});
+

@@ -1,11 +1,13 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Dialog } from '../dialog/dialog.js';
 import type { DialogBody } from './dialog-body.js';
 
+const storybookDocId = 'components-dialog-dialog-body--docs';
+
 test.describe('Dialog Body', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-dialog-dialog-body--default'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() =>
       Promise.all([
@@ -65,4 +67,21 @@ test.describe('Dialog Body', () => {
       await expect(closeButton).toBeHidden();
     });
   });
+});
+
+test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() =>
+    Promise.all([
+      customElements.whenDefined('fluent-button'),
+      customElements.whenDefined('fluent-dialog'),
+      customElements.whenDefined('fluent-dialog-body'),
+    ]),
+  );
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

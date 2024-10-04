@@ -1,10 +1,12 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
-import { Divider } from './divider.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
+import type { Divider } from './divider.js';
+
+const storybookDocId = 'components-divider--docs';
 
 test.describe('Divider', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-divider--divider'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-divider'));
   });
@@ -210,4 +212,15 @@ test.describe('Divider', () => {
 
     await expect(element).not.toHaveCustomState('align-end');
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-divider'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

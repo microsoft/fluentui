@@ -1,6 +1,5 @@
 import { test } from '@playwright/test';
-import AxeBuilder from '@axe-core/playwright';
-import { createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 
 const storybookDocId = 'components-button-button--docs';
 
@@ -659,7 +658,7 @@ test('should not have auto detectable accessibility issues', async ({ page }) =>
   await page.goto(fixtureURL(storybookDocId));
   await page.waitForFunction(() => customElements.whenDefined('fluent-button'));
 
-  const results = await new AxeBuilder({ page }).include('.sb-story').analyze();
+  const results = await analyzePageWithAxe(page);
 
   expect(results.violations).toEqual([]);
 });

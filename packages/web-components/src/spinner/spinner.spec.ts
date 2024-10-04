@@ -1,11 +1,13 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Spinner } from './spinner.js';
 import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 
+const storybookDocId = 'components-spinner--docs';
+
 test.describe('Spinner', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-spinner--default'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-spinner'));
   });
@@ -55,4 +57,16 @@ test.describe('Spinner', () => {
       });
     });
   }
+});
+
+// FIXME: examples need accessible names
+test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-spinner'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

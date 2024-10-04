@@ -1,7 +1,9 @@
 import { spinalCase } from '@microsoft/fast-web-utilities';
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
-import { Link } from './link.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
+import type { Link } from './link.js';
+
+const storybookDocId = 'components-link--docs';
 
 const proxyAttributes = {
   href: 'href',
@@ -21,7 +23,7 @@ const attributes = {
 
 test.describe('Link', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-link--appearance'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-link'));
   });
@@ -88,4 +90,15 @@ test.describe('Link', () => {
 
     await expect(element).not.toHaveCustomState('inline');
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-link'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

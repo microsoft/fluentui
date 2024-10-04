@@ -1,11 +1,13 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { TextInput } from './text-input.js';
 import { ImplicitSubmissionBlockingTypes } from './text-input.options.js';
 
+const storybookDocId = 'components-textinput--docs';
+
 test.describe('TextInput', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-textinput--default'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-text-input'));
   });
@@ -834,3 +836,16 @@ test.describe('TextInput', () => {
     });
   });
 });
+
+// FIXME: examples need accessible names.
+test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-text-input'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
+});
+

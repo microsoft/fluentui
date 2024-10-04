@@ -1,10 +1,12 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Radio } from './radio.js';
+
+const storybookDocId = 'components-radio--docs';
 
 test.describe('Radio', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-radio--radio'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-radio'));
   });
@@ -348,4 +350,16 @@ test.describe('Radio', () => {
 
     expect(page.url()).not.toContain('?radio=foo');
   });
+});
+
+// FIXME: radio examples need accessible names
+test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-radio'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

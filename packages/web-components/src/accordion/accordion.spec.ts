@@ -1,10 +1,12 @@
 import type { Locator } from '@playwright/test';
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
+
+const storybookDocId = 'components-accordion--docs';
 
 test.describe('Accordion', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-accordion--accordion'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() =>
       Promise.all([
@@ -434,4 +436,21 @@ test.describe('Accordion', () => {
 
     await expect(item).toHaveAttribute('expanded');
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() =>
+    Promise.all([
+      customElements.whenDefined('fluent-accordion'),
+      customElements.whenDefined('fluent-accordion-item'),
+      customElements.whenDefined('fluent-checkbox'),
+    ]),
+  );
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

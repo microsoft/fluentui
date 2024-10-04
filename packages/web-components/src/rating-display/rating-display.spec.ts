@@ -1,13 +1,15 @@
-import { Locator, test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { type Locator, test } from '@playwright/test';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import { RatingDisplaySize } from './rating-display.options.js';
-import { RatingDisplay } from './rating-display.js';
+import type { RatingDisplay } from './rating-display.js';
+
+const storybookDocId ='components-rating-display--docs';
 
 test.describe('Rating Display', () => {
   let element: Locator;
 
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-rating-display--default'));
+    await page.goto(fixtureURL(storybookDocId));
     await page.waitForFunction(() => customElements.whenDefined('fluent-rating-display'));
 
     element = page.locator('fluent-rating-display');
@@ -203,4 +205,16 @@ test.describe('Rating Display', () => {
     await expect(icon.locator('> path')).toBeVisible();
     await expect(icon.locator('> use')).toBeHidden();
   });
+});
+
+// FIXME: Star images need accessible names.
+test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-rating-display'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

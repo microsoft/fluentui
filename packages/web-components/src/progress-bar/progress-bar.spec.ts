@@ -1,10 +1,12 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { ProgressBar } from './progress-bar.js';
+
+const storybookDocId = 'components-progressbar--docs';
 
 test.describe('Progress Bar', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-progressbar--default'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-progress-bar'));
   });
@@ -165,4 +167,16 @@ test.describe('Progress Bar', () => {
     await expect(element).not.toHaveCustomState('warning');
     await expect(element).not.toHaveCustomState('error');
   });
+});
+
+// FIXME: Story examples needs accessible names.
+test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-progress-bar'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

@@ -1,11 +1,13 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Avatar } from './avatar.js';
 import { AvatarAppearance, AvatarColor, AvatarSize } from './avatar.options.js';
 
+const storybookDocId = 'components-avatar--docs';
+
 test.describe('Avatar Component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-avatar--image'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-avatar'));
   });
@@ -208,4 +210,15 @@ test.describe('Avatar Component', () => {
       });
     }
   });
+});
+
+test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-avatar'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });
