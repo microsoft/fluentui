@@ -848,4 +848,3 @@ test.fixme('should not have auto detectable accessibility issues', async ({ page
 
   expect(results.violations).toEqual([]);
 });
-

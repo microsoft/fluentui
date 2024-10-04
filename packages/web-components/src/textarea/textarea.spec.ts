@@ -1035,10 +1035,9 @@ test.fixme('should not have auto detectable accessibility issues', async ({ page
   await createElementInternalsTrapsForAxe(page);
 
   await page.goto(fixtureURL(storybookDocId));
-  await page.waitForFunction(() => Promise.all([
-    customElements.whenDefined('fluent-textarea'),
-    customElements.whenDefined('fluent-label'),
-  ]));
+  await page.waitForFunction(() =>
+    Promise.all([customElements.whenDefined('fluent-textarea'), customElements.whenDefined('fluent-label')]),
+  );
 
   const results = await analyzePageWithAxe(page);
 

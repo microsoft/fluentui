@@ -3,7 +3,7 @@ import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureU
 import { RatingDisplaySize } from './rating-display.options.js';
 import type { RatingDisplay } from './rating-display.js';
 
-const storybookDocId ='components-rating-display--docs';
+const storybookDocId = 'components-rating-display--docs';
 
 test.describe('Rating Display', () => {
   let element: Locator;
