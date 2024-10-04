@@ -20,18 +20,21 @@ export interface IPopoverComponentProps {
   YValueHover?: IYValueHover[];
   descriptionMessage?: string;
   ratio?: [number, number];
+  isCartesian?: boolean;
 }
 
 export interface IPopoverComponentStyles {
   calloutContentRoot: string;
   calloutDateTimeContainer: string;
   calloutContentX: string;
-  calloutBlockContainer: string;
+  calloutBlockContainerCartesian: string;
+  calloutBlockContainerNonCartesian: string;
   calloutBlockContainertoDrawShapefalse: string;
   calloutBlockContainertoDrawShapetrue: string;
   shapeStyles: string;
   calloutlegendText: string;
-  calloutContentY: string;
+  calloutContentYCartesian: string;
+  calloutContentYNonCartesian: string;
   descriptionMessage: string;
   ratio: string;
   numerator: string;

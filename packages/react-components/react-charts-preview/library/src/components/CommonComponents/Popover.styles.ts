@@ -11,12 +11,14 @@ export const popoverClassNames: SlotClassNames<IPopoverComponentStyles> = {
   calloutContentRoot: 'fui-cart__calloutContentRoot',
   calloutDateTimeContainer: 'fui-cart__calloutDateTimeContainer',
   calloutContentX: 'fui-cart__calloutContentX',
-  calloutBlockContainer: 'fui-cart__calloutBlockContainer',
+  calloutBlockContainerCartesian: 'fui-cart__calloutBlockContainerCartesian',
+  calloutBlockContainerNonCartesian: 'fui-cart__calloutBlockContainerNonCartesian',
   calloutBlockContainertoDrawShapefalse: 'fui-cart__calloutBlockContainertoDrawShapefalse',
   calloutBlockContainertoDrawShapetrue: 'fui-cart__calloutBlockContainertoDrawShapetrue',
   shapeStyles: 'fui-cart__shapeStyles',
   calloutlegendText: 'fui-cart__calloutlegendText',
-  calloutContentY: 'fui-cart__calloutContentY',
+  calloutContentYCartesian: 'fui-cart__calloutContentYCartesian',
+  calloutContentYNonCartesian: 'fui-cart__calloutContentYNonCartesian',
   descriptionMessage: 'fui-cart__descriptionMessage',
   ratio: 'fui-cart__ratio',
   numerator: 'fui-cart__numerator',
@@ -45,11 +47,21 @@ const useStyles = makeStyles({
     opacity: '0.8',
     color: tokens.colorNeutralForeground2,
   },
-  calloutBlockContainer: {
+  calloutBlockContainerCartesian: {
     fontSize: tokens.fontSizeBase200,
     marginTop: '13px',
     color: tokens.colorNeutralForeground2,
+  },
+  calloutBlockContainerNonCartesian: {
+    fontSize: tokens.fontSizeHero700,
+    color: tokens.colorNeutralForeground2,
     paddingLeft: '8px',
+    lineHeight: '22px',
+    '& selectors': {
+      [HighContrastSelector]: {
+        forcedColorAdjust: 'none',
+      },
+    },
   },
   calloutBlockContainertoDrawShapefalse: {
     '& selectors': {
@@ -75,7 +87,17 @@ const useStyles = makeStyles({
       },
     },
   },
-  calloutContentY: {
+  calloutContentYCartesian: {
+    fontSize: tokens.fontSizeBase400,
+    fontWeight: 'bold',
+    lineHeight: '22px',
+    '& selectors': {
+      [HighContrastSelectorBlack]: {
+        color: 'rgb(255, 255, 255)',
+      },
+    },
+  },
+  calloutContentYNonCartesian: {
     fontSize: tokens.fontSizeHero700,
     fontWeight: 'bold',
     lineHeight: '36px',
@@ -122,9 +144,13 @@ export const usePopoverStyles_unstable = (props: IPopoverComponentProps): IPopov
       popoverClassNames.calloutContentX,
       baseStyles.calloutContentX /*props.styles?.calloutContentX*/,
     ),
-    calloutBlockContainer: mergeClasses(
-      popoverClassNames.calloutBlockContainer,
-      baseStyles.calloutBlockContainer /*props.styles?.calloutBlockContainer*/,
+    calloutBlockContainerCartesian: mergeClasses(
+      popoverClassNames.calloutBlockContainerCartesian,
+      baseStyles.calloutBlockContainerCartesian /*props.styles?.calloutBlockContainerCartesian*/,
+    ),
+    calloutBlockContainerNonCartesian: mergeClasses(
+      popoverClassNames.calloutBlockContainerNonCartesian,
+      baseStyles.calloutBlockContainerNonCartesian /*props.styles?.calloutBlockContainerNonCartesian*/,
     ),
     calloutBlockContainertoDrawShapefalse: mergeClasses(
       popoverClassNames.calloutBlockContainertoDrawShapefalse,
@@ -139,9 +165,13 @@ export const usePopoverStyles_unstable = (props: IPopoverComponentProps): IPopov
       popoverClassNames.calloutlegendText,
       baseStyles.calloutLegendText /*props.styles?.calloutlegendText*/,
     ),
-    calloutContentY: mergeClasses(
-      popoverClassNames.calloutContentY,
-      baseStyles.calloutContentY /*props.styles?.calloutContentY*/,
+    calloutContentYCartesian: mergeClasses(
+      popoverClassNames.calloutContentYCartesian,
+      baseStyles.calloutContentYCartesian /*props.styles?.calloutContentYCartesian*/,
+    ),
+    calloutContentYNonCartesian: mergeClasses(
+      popoverClassNames.calloutContentYNonCartesian,
+      baseStyles.calloutContentYNonCartesian /*props.styles?.calloutContentYNonCartesian*/,
     ),
     descriptionMessage: mergeClasses(
       popoverClassNames.descriptionMessage,

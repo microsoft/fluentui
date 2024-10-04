@@ -963,6 +963,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     isPopoverOpen: isPopoverOpen,
     isCalloutForStack: true,
     culture: props.culture ?? 'en-us',
+    isCartesian: true,
   };
 
   const tickParams = {

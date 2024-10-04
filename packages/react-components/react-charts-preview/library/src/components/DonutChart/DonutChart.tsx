@@ -319,6 +319,7 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
             props.onRenderCalloutPerDataPoint ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps!) : undefined
           }
           customProps={props.customProps ? props.customProps(dataPointCalloutProps!) : undefined}
+          isCartesian={false}
         />
         {!hideLegend && (
           <div ref={(e: HTMLDivElement) => (legendContainer.current = e)} className={classes.legendContainer}>

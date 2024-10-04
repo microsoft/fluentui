@@ -1279,6 +1279,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       isPopoverOpen: isPopoverOpen,
       isCalloutForStack: true,
       culture: props.culture ?? 'en-us',
+      isCartesian: true,
     };
     const tickParams = {
       tickValues,
