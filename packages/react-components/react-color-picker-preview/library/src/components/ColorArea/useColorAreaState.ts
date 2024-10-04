@@ -10,7 +10,10 @@ const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
 };
 
-type Coordinates = [number, number];
+type Coordinates = {
+  x: number;
+  y: number;
+};
 
 export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAreaProps) => {
   'use no memo';
@@ -18,11 +21,14 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
   const { targetDocument } = useFluent();
   const { color, min = 0, max = 100, x = 0, y = 0, onColorChange, onMouseDown, onMouseUp } = props;
 
-  const [coordinates, setCoordinates] = useControllableState<Coordinates>({ state: [x, y], initialState: [0, 0] });
+  const [coordinates, setCoordinates] = useControllableState<Coordinates>({
+    state: { x, y },
+    initialState: { x: 0, y: 0 },
+  });
   const [isDragging, setIsDragging] = React.useState(false);
 
-  const clampedXValue = clamp(coordinates[0], min, max);
-  const clampedYValue = clamp(coordinates[1], min, max);
+  const clampedXValue = clamp(coordinates.x, min, max);
+  const clampedYValue = clamp(coordinates.y, min, max);
 
   const valueXPercent = getPercent(clampedXValue, min, max);
   const valueYPercent = getPercent(clampedYValue, min, max);
@@ -40,13 +46,12 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
   }
 
   const requestColorChange = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    const { x: newX, y: newY } = getCoordinates(event);
-    setCoordinates([newX, newY]);
+    const _coordinates = getCoordinates(event);
+    setCoordinates(_coordinates);
     return onColorChange?.(event, {
       type: 'onMouseMove',
       event,
-      x: newX,
-      y: newY,
+      ..._coordinates,
     });
   });
 
