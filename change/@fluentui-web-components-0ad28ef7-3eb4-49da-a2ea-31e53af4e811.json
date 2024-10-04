@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: removes display inheritance so all html elements can render",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}

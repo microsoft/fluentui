@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 04 Oct 2024 04:09:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.67",
+      "version": "3.0.0-beta.67",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "4e32dbf10f0cd1ddfa2d51bef2de83fba7cc865a",
+            "comment": "fix: removes display inheritance so all html elements can render"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Sep 2024 04:07:03 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.66",
       "version": "3.0.0-beta.66",
