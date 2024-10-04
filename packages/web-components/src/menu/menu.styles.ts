@@ -40,6 +40,11 @@ export const styles = css`
     border-end-end-radius: 0;
   }
 
+  /* Keeps focus visible visuals above trigger slot*/
+  :host([split]) ::slotted([slot='primary-action']:focus-visible) {
+    z-index: 1;
+  }
+
   :host([split]) ::slotted([slot='primary-action'][appearance='primary']) {
     border-inline-end: ${strokeWidthThin} solid white;
   }
