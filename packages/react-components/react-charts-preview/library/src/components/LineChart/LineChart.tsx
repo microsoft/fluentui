@@ -1281,7 +1281,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       culture: props.culture ?? 'en-us',
       isCartesian: true,
       customProps: {
-        customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout() : undefined,
+        customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,
         customCalloutProps: props.customProps ? props.customProps(dataPointCalloutProps!) : undefined,
       },
     };
