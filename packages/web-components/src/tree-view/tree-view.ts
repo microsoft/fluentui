@@ -1,7 +1,3 @@
-// Copyright (C) Microsoft Corporation. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 /**
  * The <tree-view> element is mainly responsible for these things:
  * 1. To act as a tree role, e.i. role='tree'

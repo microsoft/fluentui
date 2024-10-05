@@ -1,7 +1,3 @@
-// Copyright (C) Microsoft Corporation. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import { children, elements, html, when } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { TreeItem } from './tree-item.js';
