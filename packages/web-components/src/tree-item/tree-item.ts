@@ -2,6 +2,7 @@ import { attr, customElement, FASTElement, nullableNumberConverter, observable, 
 import { FluentDesignSystem } from '../fluent-design-system.js';
 import { template } from './tree-item.template.js';
 import { styles } from './tree-item.style.js';
+import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
 
 @customElement({
   name: `${FluentDesignSystem.prefix}-tree-item`,
@@ -55,7 +56,7 @@ export class TreeItem extends FASTElement {
    * The size of the tree item element
    */
   @observable
-  size: 'medium' | 'small' = 'medium';
+  size: TreeItemSize = 'medium';
   private sizeChanged() {
     this.updateChildTreeItems();
   }
@@ -64,7 +65,7 @@ export class TreeItem extends FASTElement {
    * The size of the tree item element
    */
   @observable
-  appearance: 'subtle' | 'subtle-alpha' | 'transparent' = 'subtle';
+  appearance: TreeItemAppearance = 'subtle';
   private appearanceChanged() {
     this.updateChildTreeItems();
   }

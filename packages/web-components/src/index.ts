@@ -253,8 +253,20 @@ export {
   ToggleButtonTemplate,
 } from './toggle-button/index.js';
 export type { ToggleButtonOptions } from './toggle-button/index.js';
-export { TreeItem } from './tree-item/index.js';
-export { TreeView } from './tree-view/index.js';
+export {
+  TreeItem,
+  TreeItemDefinition,
+  TreeItemTemplate,
+  TreeItemStyles,
+  TreeItemAppearance,
+  TreeItemSize,
+} from './tree-item/index.js';
+export {
+  TreeView,
+  TreeViewDefinition,
+  TreeViewStyles,
+  TreeViewTemplate,
+} from './tree-view/index.js';
 export {
   darkModeStylesheetBehavior,
   forcedColorsStylesheetBehavior,
