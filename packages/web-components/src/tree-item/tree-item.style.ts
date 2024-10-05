@@ -39,21 +39,12 @@ import {
   spacingVerticalXXXL,
 } from '../theme/design-tokens.js';
 
+export const treeItemLevelToken = '--fluentTreeItemLevel' as const;
+
 export const styles = css`
   :host {
     display: block;
     outline: none;
-    /**
-     * The tree-view's font-size is 0, so 1em = 0px,
-     * by applying this, we are going to have:
-     *
-     * Medium/Default:
-     * <tree-item> font-size: 24px
-     *     <tree-item> font-size: 48px
-     *         <tree-item> font-size: 72px
-     *             ...
-     */
-    font-size: calc(1em + ${spacingHorizontalXXL});
   }
 
   :host(:focus-visible) .positioning-region {
@@ -92,7 +83,7 @@ export const styles = css`
      *         indentation: 48
      *             ...
      */
-    padding-inline-start: calc(1em - ${spacingHorizontalXXL});
+    padding-inline-start: calc(var(${treeItemLevelToken}) * ${spacingHorizontalXXL});
 
     & .content-region {
       display: flex;
@@ -166,17 +157,7 @@ export const styles = css`
     }
   }
 
-  /* Size variants - small */
-  :host(.small) {
-    /**
-     *
-     * <tree-item> font-size: 12px
-     *     <tree-item> font-size: 24px
-     *         <tree-item> font-size: 36px
-     *             ...
-     */
-    font-size: calc(1em + ${spacingHorizontalM});
-  }
+
 
   :host(.small) .positioning-region {
     height: ${spacingVerticalXXL};
@@ -187,7 +168,7 @@ export const styles = css`
      *         indentation: 24
      *             ...
      */
-    padding-inline-start: calc(1em - ${spacingHorizontalM});
+    padding-inline-start: calc(var(${treeItemLevelToken}) * ${spacingHorizontalM});
   }
 
   :host(.leaf) .positioning-region {
@@ -195,10 +176,10 @@ export const styles = css`
      * According to the designs, the indentation of the leaf item will be 24px larger than non-leaf item,
      * So we don't need to subtract with the ${spacingHorizontalXXL} or ${spacingHorizontalM}, and just set it to 1em
      */
-    padding-inline-start: 1em;
+    padding-inline-start: calc((var(${treeItemLevelToken}) + 1) * ${spacingHorizontalXXL});
   }
   :host(.leaf.small) .positioning-region {
-    padding-inline-start: calc(1em + ${spacingHorizontalM});
+    padding-inline-start: calc(var(${treeItemLevelToken}) * ${spacingHorizontalM} + ${spacingHorizontalXXL});
   }
 
   /* Appearance variants - subtle-alpha */

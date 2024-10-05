@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import { attr, customElement, FASTElement, observable, volatile } from '@microsoft/fast-element';
+import { attr, customElement, FASTElement, nullableNumberConverter, observable, volatile } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
 import { template } from './tree-item.template.js';
 import { styles } from './tree-item.style.js';
@@ -21,6 +21,12 @@ export class TreeItem extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   disabled = false;
+
+  /**
+   * The depth of the tree item
+   */
+  @attr({ converter: nullableNumberConverter })
+  depth: number = 0;
 
   /**
    * When true, the control will be appear expanded by user interaction.
@@ -84,6 +90,7 @@ export class TreeItem extends FASTElement {
     this.childTreeItems.forEach(item => {
       item.size = this.size;
       item.appearance = this.appearance;
+      item.depth = this.depth + 1;
     });
   }
 

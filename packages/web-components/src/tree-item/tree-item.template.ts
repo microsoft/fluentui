@@ -5,6 +5,7 @@
 import { children, elements, html, when } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { TreeItem } from './tree-item.js';
+import { treeItemLevelToken } from './tree-item.style.js';
 
 // We don't put the icon into the icons/index.ts file because
 // this icon is the default chevron icon of the tree-item component,
@@ -31,6 +32,7 @@ export const template = html<TreeItem>`
     aria-expanded="${x => (x?.childTreeItems?.length ? x.expanded : void 0)}"
     @focusin="${(x, c) => x.handleFocus(c.event as FocusEvent)}"
     @focusout="${(x, c) => x.handleBlur(c.event as FocusEvent)}"
+    style="${(x) => (`${treeItemLevelToken}: ${x.depth};`)}"
     ${children({
       property: 'childTreeItems',
       filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
