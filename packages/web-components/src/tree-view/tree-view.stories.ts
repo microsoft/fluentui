@@ -17,7 +17,15 @@ const storyTemplate = html<TreeViewStoryArgs>`
   </fluent-tree-item>
   <fluent-tree-item expanded>
     Item 2
-    <fluent-tree-item>Item 2-1</fluent-tree-item>
+    <fluent-tree-item expanded>
+      Item 2-1
+      <fluent-tree-item>
+        Item 2-1-1
+        <fluent-tree-item>Item 2-1-1-1</fluent-tree-item>
+        <fluent-tree-item>Item 2-1-1-1</fluent-tree-item>
+      </fluent-tree-item>
+      <fluent-tree-item>Item 2-1-2</fluent-tree-item>
+    </fluent-tree-item>
     <fluent-tree-item>Item 2-2</fluent-tree-item>
     <fluent-tree-item>Item 2-3</fluent-tree-item>
   </fluent-tree-item>
