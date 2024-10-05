@@ -49,8 +49,9 @@ import {
   TabListDef,
   GroupsDef,
 } from './components-definitions/index';
-import { create, get } from 'lodash';
+import { add, create, get, set } from 'lodash';
 import { SelectionCard } from './SelectionCard';
+import { Question } from './Question';
 
 const decisionRadioValues: Record<string, string[]> = {
   navigationBy: ['navigationByArrowKeys', 'navigationByTabKey'],
@@ -147,6 +148,10 @@ export const Selector = () => {
       narratesPosition: false,
     },
   });
+
+  React.useEffect(() => {
+    console.log(`UseEffect: Selector`);
+  }, []);
 
   const [selectedComponents, setSelectedComponents] = React.useState<string[]>([]);
   const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
@@ -264,48 +269,48 @@ export const Selector = () => {
   //   return suitableComponents;
   // }, [selectedDecisions]);
 
-  const updateDecisions = (name: string, value: boolean | string, modifySelectedDecisions = true) => {
-    const category = getDecisionCategory(name) as string;
-    decisionState[category][name] = value;
-    setDecisionState({ ...decisionState });
+  // const updateDecisions = (name: string, value: boolean | string, modifySelectedDecisions = true) => {
+  //   const category = getDecisionCategory(name) as string;
+  //   decisionState[category][name] = value;
+  //   setDecisionState({ ...decisionState });
 
-    // Currently not in use, but might be useful in future to have options which do not modify the selected decisions
-    if (!modifySelectedDecisions) {
-      return;
-    }
+  //   // Currently not in use, but might be useful in future to have options which do not modify the selected decisions
+  //   if (!modifySelectedDecisions) {
+  //     return;
+  //   }
 
-    if (value) {
-      // Determine if the option is a radio as opposed to checkbox
-      if (name in decisionRadioValues) {
-        // Clear all the properties in this category
-        for (let nameToRemove in decisionState[category]) {
-          if (nameToRemove in decisionRadioValues) {
-            decisionRadioValues[nameToRemove].forEach(item => {
-              removeFromArray(selectedDecisions.current, item);
-            });
-          } else {
-            removeFromArray(selectedDecisions.current, nameToRemove);
-          }
-        }
+  //   if (value) {
+  //     // Determine if the option is a radio as opposed to checkbox
+  //     if (name in decisionRadioValues) {
+  //       // Clear all the properties in this category
+  //       for (let nameToRemove in decisionState[category]) {
+  //         if (nameToRemove in decisionRadioValues) {
+  //           decisionRadioValues[nameToRemove].forEach(item => {
+  //             removeFromArray(selectedDecisions.current, item);
+  //           });
+  //         } else {
+  //           removeFromArray(selectedDecisions.current, nameToRemove);
+  //         }
+  //       }
 
-        // Remove the props other than the value from selected decisions
-        decisionRadioValues[name].forEach(prop => {
-          if (prop !== value) {
-            removeFromArray(selectedDecisions.current, prop);
-          }
-        });
+  //       // Remove the props other than the value from selected decisions
+  //       decisionRadioValues[name].forEach(prop => {
+  //         if (prop !== value) {
+  //           removeFromArray(selectedDecisions.current, prop);
+  //         }
+  //       });
 
-        // The value is the name of the prop we want to push into selected decisions
-        if (decisionRadioValues[name].includes(value as string)) {
-          selectedDecisions.current.push(value as string);
-        }
-      } else {
-        selectedDecisions.current.push(name);
-      }
-    } else {
-      removeFromArray(selectedDecisions.current, name);
-    }
-  };
+  //       // The value is the name of the prop we want to push into selected decisions
+  //       if (decisionRadioValues[name].includes(value as string)) {
+  //         selectedDecisions.current.push(value as string);
+  //       }
+  //     } else {
+  //       selectedDecisions.current.push(name);
+  //     }
+  //   } else {
+  //     removeFromArray(selectedDecisions.current, name);
+  //   }
+  // };
 
   const updateDecisionsForCheckbox = (name: string, checked: boolean | string) => {
     if (checked) {
@@ -382,8 +387,6 @@ export const Selector = () => {
     return suitableComponents;
   };
 
-  const foundComponents = getComponent();
-
   const namesOfComponents = () => {
     const definitionsWithDisplayName = componentsDefinitions.current.map(definition => {
       const componentName = definition.story ? `${definition.name} : ${definition.story}` : definition.name;
@@ -398,8 +401,10 @@ export const Selector = () => {
   const addComponent = name => {
     console.log(`addComponent: ${name}`);
     console.log(`selectedComponents: ${selectedComponents}`);
-    setSelectedComponents([...selectedComponents, name]);
+    setSelectedComponents(prevArray => [...prevArray, name]);
   };
+  // setSelectedComponents([...selectedComponents, name]);
+  // };
 
   // setSelectedComponents(selectedComponents.filter(component => component !== name));
 
@@ -414,91 +419,100 @@ export const Selector = () => {
     </>
   ));
 
-  // const QuestionSelect = () => {
-  //   const selectId = useId();
+  const updateDecisionForQuestion = (currentName: string, previousName: string) => {
+    if (currentName === 'none' && previousName === 'none') {
+      return;
+    }
+    if (currentName === previousName) {
+      return;
+    }
+    if (currentName === 'none') {
+      // remove preiously added rado value as now no option is selected
+      setSelectedBehaviours(previousItems => previousItems.filter(item => item !== previousName));
+      return;
+    }
+    setSelectedBehaviours(previousItems => {
+      // remove previous radio item value and add new one
+      const arrayWithoutPerviousItem = previousItems.filter(item => item !== previousName);
+      return [...arrayWithoutPerviousItem, currentName];
+    });
+  };
+
+  const allQuestions = getAllQuestions(selectedComponents, questions);
+  const QuestionRadioGroup = allQuestions.map((item, index) => (
+    <>
+      <Question
+        key={item.id}
+        QuestionItem={item}
+        indexQuestion={index}
+        updateDecisionForQuestion={updateDecisionForQuestion}
+      />
+    </>
+  ));
+
+  // const QuestionRadioGroup = () => {
+  //   // const [selectedBehavioursFromQuestions, setSelectedBehavioursFromQuestions] = React.useState<string[]>([]);
+  //   React.useEffect(() => {
+  //     console.log(`UseEffect: QuestionRadioGroup: Array: ${selectedBehaviours}`);
+  //   }, []);
+
+  //   const allQuestions = getAllQuestions(selectedComponents, questions);
 
   //   return (
   //     <>
-  //       <label htmlFor={selectId}></label>
-  //       <Select defaultValue={questions[0].selectText} id={selectId}>
-  //         {questions.map(item => (
-  //           <option>{item.selectText}</option>
+  //       {allQuestions.length > 0 && <h2 className={classes.heading}>Questions</h2>}
+  //       {allQuestions.length > 0 &&
+  //         allQuestions.map((item, index) => (
+  //           <Question
+  //             key={item.id}
+  //             QuestionItem={item}
+  //             indexQuestion={index}
+  //             updateDecisionForQuestion={updateDecisionForQuestion}
+  //           />
   //         ))}
-  //       </Select>
   //     </>
   //   );
   // };
 
-  const Questionnaire = () => {
-    return (
-      <>
-        {/* <QuestionSelect /> */}
-        <QuestionRadioGroup />
-      </>
-    );
-  };
+  const MatchingComponents = () => {
+    const foundComponents = getComponent();
 
-  const updateDecisionsForRadio = (name: string) => {
-    console.log(`Milan: updateDecisionsForRadio: ${name}`);
-    if (selectedBehaviours.includes(name)) {
-      const array = selectedBehaviours.filter(behavior => behavior !== name);
-      setSelectedBehaviours(array);
-    } else {
-      setSelectedBehaviours([...selectedBehaviours, name]);
-    }
-  };
-
-  const QuestionRadioGroup = () => {
-    const [radioItems, setRadioItems] = React.useState([
-      { id: 0, value: 'item1' },
-      { id: 1, value: 'item2' },
-      { id: 2, value: 'item3' },
-    ]);
-    const updateItem = (id, newValue) => {
-      console.log('updateItem: Update Item: ', newValue);
-      const newArray = radioItems.map(radio => (radio.id === id ? (radio.value = newValue) : radio));
-      const anotherNewArray = [...newArray];
-      anotherNewArray.forEach(item => {
-        console.log(`updatedItem: Radio items: ${item.value}`);
-      });
-      setRadioItems(anotherNewArray);
-    };
-
-    // radioItems.forEach(item => {
-    //   console.log(`STATE: Radio items: ${item.value}`);
-    // });
-
-    const allQuestions = getAllQuestions(selectedComponents, questions);
+    React.useEffect(() => {
+      console.log(`UseEffect: MatchingComponents: foundComponents: ${foundComponents}`);
+    }, []);
 
     return (
       <>
-        {allQuestions.length > 0 && <h2 className={classes.heading}>Questions</h2>}
-        {allQuestions.length > 0 &&
-          allQuestions.map((item, index) => (
-            <div className={classes.questionsWrapper}>
-              <Field className={classes.questionsField}>
-                <RadioGroup
-                  value={radioItems[index].value}
-                  onChange={(_, data) => {
-                    updateDecisionsForRadio(data.value);
-                    updateItem(index, data);
-                  }}
-                >
-                  <div className={classes.questionContainer}>
-                    <div className={classes.questionLeftSide}>
-                      <span className={classes.questionsLabel}>{`Q${index + 1}`}</span>
-                    </div>
-                    <div className={classes.questionRightSide}>
-                      <span className={classes.questionsText}>{item.question}</span>
-                      {item.answers.map(item => (
-                        <Radio key={item.value} value={item.value} label={item.text} className={classes.radioItem} />
-                      ))}
-                    </div>
+        <h2 id="matching-heading" className={classes.heading}>
+          Matching components
+        </h2>
+        <div role="group" aria-labelledby="matching-heading">
+          <div className={classes.foundMessage}>
+            <Text as="h3" weight="bold">
+              {/* Found {foundComponents.length} component(s).{' '} */}
+            </Text>
+          </div>
+          {foundComponents.map((component, index) => {
+            return (
+              <div key={`component-${index}}`}>
+                <Text weight="semibold">
+                  Component name:{' '}
+                  <Link target="_blank" inline href={getComponentStoryUrl(component)}>
+                    {component.name}{' '}
+                  </Link>
+                </Text>
+                <br />
+                <Text weight="semibold">Example:</Text> {component.exampleName ? component.exampleName : 'Default'}
+                {component.note && (
+                  <div>
+                    <Text weight="semibold">Note:</Text> <Text>{component.note}</Text>
                   </div>
-                </RadioGroup>
-              </Field>
-            </div>
-          ))}
+                )}
+                <Divider appearance="strong" />
+              </div>
+            );
+          })}
+        </div>
       </>
     );
   };
@@ -526,7 +540,8 @@ export const Selector = () => {
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
-      <Questionnaire />
+      {/* <QuestionRadioGroup /> */}
+      {QuestionRadioGroup}
       <h2 className={classes.heading}>Choose behavior</h2>
       <div className={classes.behaviors}>
         <ToggleButton
@@ -618,36 +633,7 @@ export const Selector = () => {
       </div>
 
       {/* nova komponenta na resutls: Found components */}
-      <h2 id="matching-heading" className={classes.heading}>
-        Matching components
-      </h2>
-      <div role="group" aria-labelledby="matching-heading">
-        <div className={classes.foundMessage}>
-          <Text as="h3" weight="bold">
-            Found {foundComponents.length} component(s).{' '}
-          </Text>
-        </div>
-        {foundComponents.map((component, index) => {
-          return (
-            <div key={`component-${index}}`}>
-              <Text weight="semibold">
-                Component name:{' '}
-                <Link target="_blank" inline href={getComponentStoryUrl(component)}>
-                  {component.name}{' '}
-                </Link>
-              </Text>
-              <br />
-              <Text weight="semibold">Example:</Text> {component.exampleName ? component.exampleName : 'Default'}
-              {component.note && (
-                <div>
-                  <Text weight="semibold">Note:</Text> <Text>{component.note}</Text>
-                </div>
-              )}
-              <Divider appearance="strong" />
-            </div>
-          );
-        })}
-      </div>
+      <MatchingComponents />
     </>
   );
 };
