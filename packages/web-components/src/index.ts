@@ -390,6 +390,20 @@ export {
   TooltipTemplate,
 } from './tooltip/index.js';
 export {
+  TreeItem,
+  TreeItemDefinition,
+  TreeItemTemplate,
+  TreeItemStyles,
+  TreeItemAppearance,
+  TreeItemSize,
+} from './tree-item/index.js';
+export {
+  TreeView,
+  TreeViewDefinition,
+  TreeViewStyles,
+  TreeViewTemplate,
+} from './tree-view/index.js';
+export {
   darkModeStylesheetBehavior,
   forcedColorsStylesheetBehavior,
   lightModeStylesheetBehavior,

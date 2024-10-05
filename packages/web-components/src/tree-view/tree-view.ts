@@ -22,7 +22,7 @@ import {
   keySpace,
 } from '@microsoft/fast-web-utilities';
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { TreeItem } from '../tree-item/index.js';
+import { TreeItem, TreeItemAppearance, TreeItemSize } from '../tree-item/index.js';
 import { template } from './tree-view.template.js';
 import { styles } from './tree-view.style.js';
 
@@ -52,7 +52,7 @@ export class TreeView extends FASTElement {
    * HTML Attribute: size
    */
   @attr()
-  size: 'medium' | 'small' = 'medium';
+  size: TreeItemSize = 'medium';
   private sizeChanged() {
     this.updateSizeAndAppearance();
   }
@@ -63,7 +63,7 @@ export class TreeView extends FASTElement {
    * HTML Attribute: appearance
    */
   @attr()
-  appearance: 'subtle' | 'subtle-alpha' | 'transparent' = 'subtle';
+  appearance: TreeItemAppearance = 'subtle';
   private appearanceChanged() {
     this.updateSizeAndAppearance();
   }
