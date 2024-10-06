@@ -47,15 +47,11 @@ export const template = html<TreeItem>`
             </span>
           `,
         )}
-        <span class="start-region" part="start-region">
           <slot name="start"></slot>
-        </span>
-        <div class="middle-region" part="middle-region">
-          <slot></slot>
-        </div>
-        <span class="end-region" part="end-region">
+          <slot name="middle">
+            <slot></slot>
+          </slot>
           <slot name="end"></slot>
-        </span>
       </div>
       <div class="badging-region" part="badging-region">
         <slot name="badging"></slot>

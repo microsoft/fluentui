@@ -103,19 +103,19 @@ export const styles = css`
         }
       }
 
-      & .start-region,
-      & .middle-region {
+      ::slotted([slot='start']),
+      ::slotted([slot='middle']) {
         display: flex;
         align-items: center;
         min-width: 0;
       }
 
-      & .start-region {
+      ::slotted([slot='start']) {
         flex-shrink: 0;
         margin-inline-end: ${spacingHorizontalXS};
       }
 
-      & .middle-region {
+      ::slotted([slot='middle']) {
         padding-inline: ${spacingHorizontalXXS};
       }
     }
