@@ -29,16 +29,6 @@ export type ColorAreaProps = Omit<
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
   onChange?: EventHandler<ColorAreaOnColorChangeData>;
-
-  /**
-   * The current X value of the controlled ColorArea.
-   */
-  x?: number;
-
-  /**
-   * The current Y value of the controlled ColorArea.
-   */
-  y?: number;
 };
 
 /**

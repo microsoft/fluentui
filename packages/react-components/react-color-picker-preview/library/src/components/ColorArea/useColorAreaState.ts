@@ -3,6 +3,7 @@ import { clamp, useControllableState, useEventCallback } from '@fluentui/react-u
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { colorAreaCSSVars } from './useColorAreaStyles.styles';
 import type { ColorAreaState, ColorAreaProps } from './ColorArea.types';
+import { tinycolor } from '@ctrl/tinycolor';
 
 const { areaXProgressVar, areaYProgressVar, thumbColorVar, mainColorVar } = colorAreaCSSVars;
 
@@ -22,19 +23,11 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
   'use no memo';
 
   const { targetDocument } = useFluent();
-  const { color, x = 0, y = 0, onChange, onMouseDown, onMouseUp } = props;
-
-  const [coordinates, setCoordinates] = useControllableState<Coordinates>({
-    state: { x, y },
-    initialState: { x: 0, y: 0 },
-  });
-  const [isDragging, setIsDragging] = React.useState(false);
-
-  const clampedXValue = clamp(coordinates.x, MIN, MAX);
-  const clampedYValue = clamp(coordinates.y, MIN, MAX);
-
-  const valueXPercent = getPercent(clampedXValue);
-  const valueYPercent = getPercent(clampedYValue);
+  const { color, onChange, onMouseDown, onMouseUp } = props;
+  const hsvColor = tinycolor(color).toHsv();
+  const saturation = hsvColor.s * 100;
+  const value = hsvColor.v * 100;
+  const [coordinates, setCoordinates] = React.useState<Coordinates>({ x: saturation, y: value });
 
   function getCoordinates(event: React.MouseEvent<HTMLDivElement>) {
     const ref = state.root.ref as React.MutableRefObject<HTMLDivElement>;
@@ -51,39 +44,32 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
   const requestColorChange = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     const _coordinates = getCoordinates(event);
     setCoordinates(_coordinates);
-    return onChange?.(event, {
+
+    onChange?.(event, {
       type: 'onMouseMove',
       event,
       ..._coordinates,
     });
   });
 
-  const _onMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+  const _onMouseDown = useEventCallback((event: React.MouseEvent<HTMLInputElement>) => {
     event.stopPropagation();
     event.preventDefault();
     onMouseDown?.(event);
-    setIsDragging(true);
     requestColorChange(event);
     targetDocument?.addEventListener('mousemove', requestColorChange);
+    targetDocument?.addEventListener('mouseup', _onMouseUp);
   });
 
-  const _onMouseUp = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+  const _onMouseUp = useEventCallback((event: React.MouseEvent<HTMLInputElement>) => {
     onMouseUp?.(event);
-    setIsDragging(false);
     targetDocument?.removeEventListener('mousemove', requestColorChange);
+    targetDocument?.removeEventListener('mouseup', _onMouseUp);
   });
-
-  React.useEffect(() => {
-    if (isDragging) {
-      targetDocument?.addEventListener('mouseup', _onMouseUp);
-    } else {
-      targetDocument?.removeEventListener('mouseup', _onMouseUp);
-    }
-  }, [isDragging, _onMouseUp, targetDocument]);
 
   const rootVariables = {
-    [areaXProgressVar]: `${valueXPercent}%`,
-    [areaYProgressVar]: `${valueYPercent}%`,
+    [areaXProgressVar]: `${getPercent(coordinates.x)}%`,
+    [areaYProgressVar]: `${getPercent(coordinates.y)}%`,
     [thumbColorVar]: 'transparent',
     [mainColorVar]: color || 'red',
   };
@@ -93,8 +79,8 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
     ...state.root.style,
   };
 
-  state.inputX.value = clampedXValue;
-  state.inputY.value = clampedYValue;
+  state.inputX.value = coordinates.x;
+  state.inputY.value = coordinates.y;
   state.root.onMouseDown = _onMouseDown;
   state.root.onMouseUp = _onMouseUp;
 

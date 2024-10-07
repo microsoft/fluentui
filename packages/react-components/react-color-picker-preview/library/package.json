@@ -36,6 +36,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@ctrl/tinycolor": "3.3.4",
     "@fluentui/react-context-selector": "^9.1.67",
     "@fluentui/react-jsx-runtime": "^9.0.44",
     "@fluentui/react-shared-contexts": "^9.20.1",

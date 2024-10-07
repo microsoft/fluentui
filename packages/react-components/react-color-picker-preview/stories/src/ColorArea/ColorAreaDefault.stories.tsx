@@ -44,7 +44,7 @@ export const Default = () => {
       <Label htmlFor={id}>
         ColorArea [ Current Values: X: {x} Y: {y} ]
       </Label>
-      <ColorArea color={`hsl(${hue}, 100%, 50%)`} x={x} y={y} onChange={onChange} id={id} />
+      <ColorArea color={`hsl(${hue}, 100%, 50%)`} onChange={onChange} id={id} />
       <div className={styles.previewColor} style={{ backgroundColor: color }} />
       <Button onClick={resetSlider}>Reset</Button>
     </div>
