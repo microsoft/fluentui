@@ -128,7 +128,7 @@ export async function createElementInternalsTrapsForAxe(page: Page) {
           if (attrName) {
             Reflect.set(target, prop, value);
             const host = originalInternals.shadowRoot?.host;
-            if (value !== null || value !== undefined) {
+            if (value !== null && value !== undefined) {
               host?.setAttribute(attrName, value.toString());
             } else {
               host?.removeAttribute(attrName);
