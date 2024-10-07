@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix: List V9 - update stories to work with dark themes",
+  "packageName": "@fluentui/react-list-preview",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "none"
+}

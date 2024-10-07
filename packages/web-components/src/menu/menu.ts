@@ -13,9 +13,11 @@ import { MenuItemRole } from '../menu-item/menu-item.options.js';
  * @attr open-on-context - Determines if the menu should open on right click.
  * @attr close-on-scroll - Determines if the menu should close on scroll.
  * @attr persist-on-item-click - Determines if the menu open state should persist on click of menu item.
+ * @attr split - Determines if the menu is in split state.
  *
  * @cssproperty --menu-max-height - The max-height of the menu.
  *
+ * @slot primary-action - Slot for the primary action elements. Used when in `split` state.
  * @slot trigger - Slot for the trigger elements.
  * @slot - Default slot for the menu list.
  *
@@ -73,6 +75,13 @@ export class Menu extends FASTElement {
   public persistOnItemClick?: boolean;
 
   /**
+   * Determines if the menu is in split state.
+   * @public
+   */
+  @attr({ mode: 'boolean' })
+  public split?: boolean;
+
+  /**
    * Holds the slotted menu list.
    * @public
    */
@@ -85,6 +94,13 @@ export class Menu extends FASTElement {
    */
   @observable
   public slottedTriggers: HTMLElement[] = [];
+
+  /**
+   * Holds the primary slot element.
+   * @public
+   */
+  @observable
+  public primaryAction!: HTMLSlotElement;
 
   /**
    * Defines whether the menu is open or not.
@@ -360,7 +376,11 @@ export class Menu extends FASTElement {
         break;
       case keyTab:
         if (this._open) this.closeMenu();
-        if (e.shiftKey && e.composedPath()[0] !== this._trigger) {
+        if (
+          e.shiftKey &&
+          e.composedPath()[0] !== this._trigger &&
+          (e.composedPath()[0] as HTMLElement).assignedSlot !== this.primaryAction
+        ) {
           this.focusTrigger();
         } else if (e.shiftKey) {
           return true;

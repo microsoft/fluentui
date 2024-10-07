@@ -2,6 +2,72 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 04 Oct 2024 07:22:48 GMT",
+      "tag": "@fluentui/react_v8.121.2",
+      "version": "8.121.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b4e0624a8992b0c9f67d35ac97c569162f8f8859",
+            "comment": "fix: clear Modal timer on component unmount"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Oct 2024 07:23:57 GMT",
+      "tag": "@fluentui/react_v8.121.1",
+      "version": "8.121.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.18",
+            "commit": "5af931fcf73f7f6b5c758902f58e87137f3846bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.52",
+            "commit": "5af931fcf73f7f6b5c758902f58e87137f3846bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.9.15",
+            "commit": "5af931fcf73f7f6b5c758902f58e87137f3846bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.8.14",
+            "commit": "5af931fcf73f7f6b5c758902f58e87137f3846bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.11.1",
+            "commit": "5af931fcf73f7f6b5c758902f58e87137f3846bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.61",
+            "commit": "5af931fcf73f7f6b5c758902f58e87137f3846bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.15.17",
+            "commit": "5af931fcf73f7f6b5c758902f58e87137f3846bb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Oct 2024 07:21:07 GMT",
       "tag": "@fluentui/react_v8.121.0",
       "version": "8.121.0",
