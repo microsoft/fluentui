@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove circular dependency to better support AMD loaders",
-  "packageName": "@fluentui/utilities",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
