@@ -59,7 +59,7 @@ export default {
     },
     titleActionLabel: {
       description: 'ARIA label for the default title action button.',
-      table: { category: 'attributes' }
+      table: { category: 'attributes' },
     },
     slottedContent: {
       control: false,
@@ -140,7 +140,9 @@ export const Actions: Story = {
       </p>
     `,
     titleActionSlottedContent: () => html`
-      <fluent-button appearance="transparent" icon-only slot="title-action" aria-label="Dismiss"> ${dismissed20Regular} </fluent-button>
+      <fluent-button appearance="transparent" icon-only slot="title-action" aria-label="Dismiss">
+        ${dismissed20Regular}
+      </fluent-button>
     `,
     titleSlottedContent: () => html` <div slot="title">Actions</div> `,
   },

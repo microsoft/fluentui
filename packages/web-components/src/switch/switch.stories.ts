@@ -94,7 +94,11 @@ export const Required: Story = {
   render: renderComponent(html<StoryArgs<FluentSwitch>>`
     <form style="display: flex; gap: 1em; align-items: end">
       <div>
-        <fluent-switch id="required-fluent-switch" required aria-labelledby="required-fluent-switch-label"></fluent-switch>
+        <fluent-switch
+          id="required-fluent-switch"
+          required
+          aria-labelledby="required-fluent-switch-label"
+        ></fluent-switch>
         <label for="required-fluent-switch" id="required-fluent-switch-label">Required</label>
       </div>
       <div>${fieldStoryTemplate}</div>

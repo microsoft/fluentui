@@ -142,7 +142,9 @@ export const Badge: Story = {
 };
 
 export const ColorBrand: Story = {
-  render: renderComponent(html<StoryArgs<FluentAvatar>>`<fluent-avatar color="brand" aria-label="avatar"></fluent-avatar>`),
+  render: renderComponent(
+    html<StoryArgs<FluentAvatar>>`<fluent-avatar color="brand" aria-label="avatar"></fluent-avatar>`,
+  ),
 };
 
 export const Color: Story = {
@@ -232,7 +234,9 @@ export const ActiveAppearance: Story = {
 };
 
 export const CustomInitials: Story = {
-  render: renderComponent(html<StoryArgs<FluentAvatar>>` <fluent-avatar initials="CRF" aria-label="avatar"></fluent-avatar> `),
+  render: renderComponent(
+    html<StoryArgs<FluentAvatar>>` <fluent-avatar initials="CRF" aria-label="avatar"></fluent-avatar> `,
+  ),
 };
 
 export const Size: Story = {
