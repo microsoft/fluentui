@@ -72,7 +72,7 @@
 /LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar @tudorpopams
 /packages/react/LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar @tudorpopams
 /.github/CODEOWNERS @microsoft/fluentui-react-build @justSlone @jurokapsiar @tudorpopams
-/.github/ISSUE_TEMPLATE* @justSlone @jurokapsiar @tudorpopams
+/.github/ISSUE_TEMPLATE/ @microsoft/fluentui-react-build @justSlone @jurokapsiar @tudorpopams
 
 ## Tooling packages
 scripts/api-extractor @microsoft/fluentui-react-build
