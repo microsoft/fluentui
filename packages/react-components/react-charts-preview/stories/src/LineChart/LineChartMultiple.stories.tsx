@@ -289,7 +289,7 @@ export const LCMultiple = (props: ILineChartProps) => {
           data={data}
           strokeWidth={4}
           tickFormat={timeFormat}
-          tickValues={tickValues}
+          // tickValues={tickValues}
           height={height}
           width={width}
           legendProps={{ canSelectMultipleLegends: true, allowFocusOnLegends: true }}
@@ -297,6 +297,7 @@ export const LCMultiple = (props: ILineChartProps) => {
           allowMultipleShapesForPoints={allowMultipleShapes}
           enablePerfOptimization={true}
           useUTC={false}
+          hideTickOverlap={true}
         />
       </div>
     </>
