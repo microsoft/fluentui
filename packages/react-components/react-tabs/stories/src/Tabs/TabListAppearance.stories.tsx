@@ -36,10 +36,10 @@ export const Appearance = () => {
       <TabList defaultSelectedValue="tab2" appearance="subtle">
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedValue="tab2" appearance="subtle-rounded">
+      <TabList defaultSelectedValue="tab2" appearance="subtle-circular">
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedValue="tab2" appearance="filled-rounded">
+      <TabList defaultSelectedValue="tab2" appearance="filled-circular">
         {renderTabs()}
       </TabList>
     </div>
@@ -50,7 +50,7 @@ Appearance.parameters = {
   docs: {
     description: {
       story:
-        'A tab list can have a `transparent`, `subtle`, `subtle-rounded` and `filled-rounded` appearance. The default is `transparent`.',
+        'A tab list can have a `transparent`, `subtle`, `subtle-circular` and `filled-circular` appearance. The default is `transparent`.',
     },
   },
 };

@@ -44,7 +44,7 @@ export const useTabListStyles_unstable = (state: TabListState): TabListState => 
 
   const styles = useStyles();
 
-  const isRounded = appearance === 'subtle-rounded' || appearance === 'filled-rounded';
+  const isRounded = appearance === 'subtle-circular' || appearance === 'filled-circular';
 
   state.root.className = mergeClasses(
     tabListClassNames.root,

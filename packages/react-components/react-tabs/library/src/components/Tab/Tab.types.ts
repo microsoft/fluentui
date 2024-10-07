@@ -50,9 +50,9 @@ export type TabState = ComponentState<TabInternalSlots> &
   Pick<TabProps, 'value'> &
   Required<Pick<TabProps, 'disabled'>> & {
     /**
-     * A tab supports 'transparent', 'subtle', `subtle-rounded` and `filled-rounded` appearance.
+     * A tab supports 'transparent', 'subtle', `subtle-circular` and `filled-circular` appearance.
      */
-    appearance?: 'transparent' | 'subtle' | 'subtle-rounded' | 'filled-rounded';
+    appearance?: 'transparent' | 'subtle' | 'subtle-circular' | 'filled-circular';
 
     /**
      * A tab can have only an icon slot filled and no content.

@@ -171,7 +171,7 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForeground1Pressed,
     },
   },
-  rounded: {
+  circular: {
     borderRadius: tokens.borderRadiusCircular,
     [`& .${tabClassNames.icon}`]: {
       color: 'inherit',
@@ -180,7 +180,7 @@ const useRootStyles = makeStyles({
       color: 'inherit',
     },
   },
-  subtleRounded: {
+  subtleCircular: {
     backgroundColor: tokens.colorTransparentBackground,
     border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
     color: tokens.colorNeutralForeground2,
@@ -195,7 +195,7 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForeground2Pressed,
     },
   },
-  subtleRoundedSelected: {
+  subtleCircularSelected: {
     backgroundColor: tokens.colorBrandBackground2,
     border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStroke}`,
     color: tokens.colorBrandForeground2,
@@ -210,15 +210,15 @@ const useRootStyles = makeStyles({
       color: tokens.colorBrandForeground2Pressed,
     },
   },
-  subtleRoundedDisabled: {
+  subtleCircularDisabled: {
     backgroundColor: tokens.colorTransparentBackground,
     color: tokens.colorNeutralForegroundDisabled,
     border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
   },
-  subtleRoundedDisabledSelected: {
+  subtleCircularDisabledSelected: {
     border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeDisabled}`,
   },
-  filledRounded: {
+  filledCircular: {
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground2,
     ':enabled:hover': {
@@ -230,7 +230,7 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForeground2Pressed,
     },
   },
-  filledRoundedSelected: {
+  filledCircularSelected: {
     backgroundColor: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundOnBrand,
     ':enabled:hover': {
@@ -242,12 +242,12 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForegroundOnBrand,
     },
   },
-  filledRoundedDisabled: {
+  filledCircularDisabled: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
     border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
     color: tokens.colorNeutralForegroundDisabled,
   },
-  filledRoundedDisabledSelected: {
+  filledCircularDisabledSelected: {
     border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeDisabled}`,
   },
 });
@@ -555,7 +555,7 @@ export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
 
   const classes: Parameters<typeof mergeClasses> = [tabClassNames.root, rootStyles.root];
 
-  if (appearance !== 'subtle-rounded' && appearance !== 'filled-rounded') {
+  if (appearance !== 'subtle-circular' && appearance !== 'filled-circular') {
     classes.push(
       // pending indicator (before pseudo element)
       pendingIndicatorStyles.base,
@@ -605,22 +605,22 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
 
   const { appearance, disabled, selected, size, vertical } = state;
 
-  const isSubtleRounded = appearance === 'subtle-rounded';
-  const isFilledRounded = appearance === 'filled-rounded';
-  const isRounded = isSubtleRounded || isFilledRounded;
+  const isSubtleCircular = appearance === 'subtle-circular';
+  const isFilledCircular = appearance === 'filled-circular';
+  const isCircular = isSubtleCircular || isFilledCircular;
 
-  const roundedAppearance = [
-    rootStyles.rounded,
-    // subtle-rounded appearance
-    isSubtleRounded && rootStyles.subtleRounded,
-    selected && isSubtleRounded && rootStyles.subtleRoundedSelected,
-    disabled && isSubtleRounded && rootStyles.subtleRoundedDisabled,
-    selected && disabled && isSubtleRounded && rootStyles.subtleRoundedDisabledSelected,
-    // filled-rounded appearance
-    isFilledRounded && rootStyles.filledRounded,
-    selected && isFilledRounded && rootStyles.filledRoundedSelected,
-    disabled && isFilledRounded && rootStyles.filledRoundedDisabled,
-    selected && disabled && isFilledRounded && rootStyles.filledRoundedDisabledSelected,
+  const circularAppearance = [
+    rootStyles.circular,
+    // subtle-circular appearance
+    isSubtleCircular && rootStyles.subtleCircular,
+    selected && isSubtleCircular && rootStyles.subtleCircularSelected,
+    disabled && isSubtleCircular && rootStyles.subtleCircularDisabled,
+    selected && disabled && isSubtleCircular && rootStyles.subtleCircularDisabledSelected,
+    // filled-circular appearance
+    isFilledCircular && rootStyles.filledCircular,
+    selected && isFilledCircular && rootStyles.filledCircularSelected,
+    disabled && isFilledCircular && rootStyles.filledCircularDisabled,
+    selected && disabled && isFilledCircular && rootStyles.filledCircularDisabledSelected,
   ];
 
   slot.className = mergeClasses(
@@ -634,7 +634,7 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
     focusStyles.base,
     !disabled && appearance === 'subtle' && rootStyles.subtle,
     !disabled && appearance === 'transparent' && rootStyles.transparent,
-    ...(isRounded ? roundedAppearance : [!disabled && selected && rootStyles.selected]),
+    ...(isCircular ? circularAppearance : [!disabled && selected && rootStyles.selected]),
     disabled && rootStyles.disabled,
 
     slot.className,

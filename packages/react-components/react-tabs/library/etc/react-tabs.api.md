@@ -66,7 +66,7 @@ export type TabListContextValues = {
 
 // @public
 export type TabListProps = ComponentProps<TabListSlots> & {
-    appearance?: 'transparent' | 'subtle' | 'subtle-rounded' | 'filled-rounded';
+    appearance?: 'transparent' | 'subtle' | 'subtle-circular' | 'filled-circular';
     reserveSelectedTabSpace?: boolean;
     defaultSelectedValue?: TabValue;
     disabled?: boolean;
@@ -109,7 +109,7 @@ export type TabSlots = {
 
 // @public
 export type TabState = ComponentState<TabInternalSlots> & Pick<TabProps, 'value'> & Required<Pick<TabProps, 'disabled'>> & {
-    appearance?: 'transparent' | 'subtle' | 'subtle-rounded' | 'filled-rounded';
+    appearance?: 'transparent' | 'subtle' | 'subtle-circular' | 'filled-circular';
     iconOnly: boolean;
     selected: boolean;
     contentReservedSpaceClassName?: string;
