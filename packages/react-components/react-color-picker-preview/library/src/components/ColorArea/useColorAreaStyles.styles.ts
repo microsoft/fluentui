@@ -6,8 +6,6 @@ import type { ColorAreaSlots, ColorAreaState } from './ColorArea.types';
 export const colorAreaClassNames: SlotClassNames<ColorAreaSlots> = {
   root: 'fui-ColorArea',
   thumb: 'fui-ColorArea__thumb',
-  inputX: 'fui-ColorArea__inputX',
-  inputY: 'fui-ColorArea__inputY',
 };
 
 export const colorAreaCSSVars = {
@@ -73,24 +71,6 @@ const useThumbStyles = makeStyles({
 });
 
 /**
- * Styles for the Input slot
- */
-const useInputStyles = makeStyles({
-  input: {
-    overflow: 'hidden',
-    position: 'absolute',
-    pointerEvents: 'none',
-    top: 0,
-    left: 0,
-    opacity: 0,
-    padding: '0',
-    margin: '0',
-    width: '100%',
-    height: '100%',
-  },
-});
-
-/**
  * Apply styling to the ColorArea slots based on the state
  */
 export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaState => {
@@ -98,14 +78,9 @@ export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaSta
 
   const rootStyles = useRootStyles();
   const thumbStyles = useThumbStyles();
-  const inputStyles = useInputStyles();
 
   state.root.className = mergeClasses(colorAreaClassNames.root, rootStyles, state.root.className);
-
   state.thumb.className = mergeClasses(colorAreaClassNames.thumb, thumbStyles.thumb, state.thumb.className);
 
-  state.inputX.className = mergeClasses(colorAreaClassNames.inputX, inputStyles.input, state.inputX.className);
-
-  state.inputY.className = mergeClasses(colorAreaClassNames.inputY, inputStyles.input, state.inputY.className);
   return state;
 };

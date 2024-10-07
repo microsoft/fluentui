@@ -9,17 +9,12 @@ export type ColorAreaOnColorChangeData = EventData<'click' | 'onMouseMove', Reac
 export type ColorAreaSlots = {
   root: NonNullable<Slot<'div'>>;
   thumb: NonNullable<Slot<'div'>>;
-  inputX: NonNullable<Slot<'input'>>;
-  inputY: NonNullable<Slot<'input'>>;
 };
 
 /**
  * ColorArea Props
  */
-export type ColorAreaProps = Omit<
-  ComponentProps<Partial<ColorAreaSlots>, 'inputX'>,
-  'defaultValue' | 'onChange' | 'value'
-> & {
+export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {
   /**
    * The current color of the ColorArea.
    */

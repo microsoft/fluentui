@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import { clamp, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { colorAreaCSSVars } from './useColorAreaStyles.styles';
 import type { ColorAreaState, ColorAreaProps } from './ColorArea.types';
@@ -52,19 +52,19 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
     });
   });
 
-  const _onMouseDown = useEventCallback((event: React.MouseEvent<HTMLInputElement>) => {
+  const _onMouseUp = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    onMouseUp?.(event);
+    targetDocument?.removeEventListener('mousemove', requestColorChange as unknown as EventListener);
+    targetDocument?.removeEventListener('mouseup', _onMouseUp as unknown as EventListener);
+  });
+
+  const _onMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
     event.preventDefault();
     onMouseDown?.(event);
     requestColorChange(event);
-    targetDocument?.addEventListener('mousemove', requestColorChange);
-    targetDocument?.addEventListener('mouseup', _onMouseUp);
-  });
-
-  const _onMouseUp = useEventCallback((event: React.MouseEvent<HTMLInputElement>) => {
-    onMouseUp?.(event);
-    targetDocument?.removeEventListener('mousemove', requestColorChange);
-    targetDocument?.removeEventListener('mouseup', _onMouseUp);
+    targetDocument?.addEventListener('mousemove', requestColorChange as unknown as EventListener);
+    targetDocument?.addEventListener('mouseup', _onMouseUp as unknown as EventListener);
   });
 
   const rootVariables = {
@@ -79,8 +79,6 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
     ...state.root.style,
   };
 
-  state.inputX.value = coordinates.x;
-  state.inputY.value = coordinates.y;
   state.root.onMouseDown = _onMouseDown;
   state.root.onMouseUp = _onMouseUp;
 
