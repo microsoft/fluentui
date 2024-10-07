@@ -36,6 +36,7 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { ToggleButtonProps } from '@fluentui/react-button';
+import type { TooltipProps } from '@fluentui/react-tooltip';
 
 // @public
 export const AppItem: ForwardRefComponent<AppItemProps>;
@@ -398,15 +399,19 @@ export type SplitNavItemProps = ComponentProps<SplitNavItemSlots>;
 // @public (undocumented)
 export type SplitNavItemSlots = {
     root: Slot<'div'>;
-    navItem?: Slot<NavItemProps>;
+    navItem?: NonNullable<Slot<NavItemProps & NavSubItemProps>>;
     actionButton?: Slot<ButtonProps>;
     toggleButton?: Slot<ToggleButtonProps>;
     menuButton?: Slot<MenuButtonProps>;
+    actionButtonTooltip?: Slot<TooltipProps>;
+    toggleButtonTooltip?: Slot<TooltipProps>;
+    menuButtonTooltip?: Slot<TooltipProps>;
 };
 
 // @public
 export type SplitNavItemState = ComponentState<SplitNavItemSlots> & {
     size: NavSize;
+    isSubNav: boolean;
 };
 
 // @public
