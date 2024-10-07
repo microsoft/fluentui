@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 02 Oct 2024 07:23:57 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Oct 2024 07:22:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.121.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.2)
+
+Fri, 04 Oct 2024 07:22:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.121.1..@fluentui/react_v8.121.2)
+
+### Patches
+
+- fix: clear Modal timer on component unmount ([PR #32969](https://github.com/microsoft/fluentui/pull/32969) by seanmonahan@microsoft.com)
 
 ## [8.121.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.1)
 

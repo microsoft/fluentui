@@ -2615,3 +2615,51 @@ export const curveEasyEase = 'var(--curveEasyEase)';
  * @public
  */
 export const curveLinear = 'var(--curveLinear)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#zIndexBackground | `zIndexBackground`} design token.
+ * @public
+ */
+export const zIndexBackground = 'var(--zIndexBackground)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#zIndexContent | `zIndexContent`} design token.
+ * @public
+ */
+export const zIndexContent = 'var(--zIndexContent)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#zIndexOverlay | `zIndexOverlay`} design token.
+ * @public
+ */
+export const zIndexOverlay = 'var(--zIndexOverlay)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#zIndexPopup | `zIndexPopup`} design token.
+ * @public
+ */
+export const zIndexPopup = 'var(--zIndexPopup)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#zIndexMessages | `zIndexMessages`} design token.
+ * @public
+ */
+export const zIndexMessages = 'var(--zIndexMessages)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#zIndexFloating | `zIndexFloating`} design token.
+ * @public
+ */
+export const zIndexFloating = 'var(--zIndexFloating)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#zIndexPriority | `zIndexPriority`} design token.
+ * @public
+ */
+export const zIndexPriority = 'var(--zIndexPriority)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#zIndexDebug | `zIndexDebug`} design token.
+ * @public
+ */
+export const zIndexDebug = 'var(--zIndexDebug)';

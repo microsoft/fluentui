@@ -143,6 +143,10 @@ export const baseButtonStyles = css`
   }
 
   :is([slot='end'], ::slotted([slot='end'])) {
+    flex-shrink: 0;
+  }
+
+  :host(:not(${iconOnlyState})) :is([slot='end'], :host(:not(${iconOnlyState}))::slotted([slot='end'])) {
     margin-inline-start: var(--icon-spacing);
   }
 
