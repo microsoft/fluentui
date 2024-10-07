@@ -62,6 +62,10 @@ test.describe('Link', () => {
   test('should add a custom state matching the `appearance` attribute when provided', async ({ page }) => {
     const element = page.locator('fluent-link');
 
+    await page.setContent(/* html */ `
+      <fluent-link></fluent-link>
+    `);
+
     await element.evaluate((node: Link) => {
       node.appearance = 'subtle';
     });
@@ -77,6 +81,10 @@ test.describe('Link', () => {
 
   test('should add a custom state of `inline` when true', async ({ page }) => {
     const element = page.locator('fluent-link');
+
+    await page.setContent(/* html */ `
+      <fluent-link></fluent-link>
+    `);
 
     await element.evaluate((node: Link) => {
       node.inline = true;

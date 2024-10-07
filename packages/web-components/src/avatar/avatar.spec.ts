@@ -83,6 +83,10 @@ test.describe('Avatar Component', () => {
   test('should have a role of img', async ({ page }) => {
     const element = page.locator('fluent-avatar');
 
+    await page.setContent(/* html */ `
+      <fluent-avatar></fluent-avatar>
+    `);
+
     await expect(element).toHaveJSProperty('elementInternals.role', 'img');
   });
 
@@ -121,6 +125,10 @@ test.describe('Avatar Component', () => {
   test('should render correctly in active state', async ({ page }) => {
     const element = page.locator('fluent-avatar');
 
+    await page.setContent(/* html */ `
+      <fluent-avatar></fluent-avatar>
+    `);
+
     await element.evaluate((node: Avatar) => {
       node.active = 'active';
     });
@@ -131,6 +139,10 @@ test.describe('Avatar Component', () => {
   test('should render correctly in inactive state', async ({ page }) => {
     const element = page.locator('fluent-avatar');
 
+    await page.setContent(/* html */ `
+      <fluent-avatar></fluent-avatar>
+    `);
+
     await element.evaluate((node: Avatar) => {
       node.active = 'inactive';
     });
@@ -140,6 +152,10 @@ test.describe('Avatar Component', () => {
 
   test('default color should be neutral', async ({ page }) => {
     const element = page.locator('fluent-avatar');
+
+    await page.setContent(/* html */ `
+      <fluent-avatar></fluent-avatar>
+    `);
 
     await expect(element).toHaveCustomState('neutral');
   });
@@ -167,6 +183,10 @@ test.describe('Avatar Component', () => {
   test(`should set the color attribute on the internal control`, async ({ page }) => {
     const element = page.locator('fluent-avatar');
 
+    await page.setContent(/* html */ `
+      <fluent-avatar></fluent-avatar>
+    `);
+
     for (const [, value] of Object.entries(colorAttributes)) {
       await test.step(value, async () => {
         await element.evaluate((node: Avatar, colorValue: string) => {
@@ -183,6 +203,10 @@ test.describe('Avatar Component', () => {
   test(`should set the size attribute on the internal control`, async ({ page }) => {
     const element = page.locator('fluent-avatar');
 
+    await page.setContent(/* html */ `
+      <fluent-avatar></fluent-avatar>
+    `);
+
     for (const [, value] of Object.entries(sizeAttributes)) {
       await test.step(`${value}`, async () => {
         await element.evaluate((node: Avatar, sizeValue: number) => {
@@ -198,6 +222,10 @@ test.describe('Avatar Component', () => {
 
   test(`should set and reflect the appearance attribute on the internal control`, async ({ page }) => {
     const element = page.locator('fluent-avatar');
+
+    await page.setContent(/* html */ `
+      <fluent-avatar></fluent-avatar>
+    `);
 
     for (const [, value] of Object.entries(appearanceAttributes)) {
       await test.step(value, async () => {

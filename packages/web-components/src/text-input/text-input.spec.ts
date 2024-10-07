@@ -201,6 +201,10 @@ test.describe('TextInput', () => {
   test('should reflect `appearance` attribute values', async ({ page }) => {
     const element = page.locator('fluent-text-input');
 
+    await page.setContent(/* html */ `
+      <fluent-text-input></fluent-text-input>
+    `);
+
     await element.evaluate((node: TextInput) => {
       node.appearance = 'outline';
     });

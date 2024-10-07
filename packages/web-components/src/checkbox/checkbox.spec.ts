@@ -14,6 +14,10 @@ test.describe('Checkbox', () => {
   test('should set and retrieve the `shape` property correctly', async ({ page }) => {
     const element = page.locator('fluent-checkbox');
 
+    await page.setContent(/* html */ `
+        <fluent-checkbox></fluent-checkbox>
+    `);
+
     await expect(element).toHaveCount(1);
 
     await test.step('should set the `shape` property to `circular`', async () => {
@@ -71,6 +75,10 @@ test.describe('Checkbox', () => {
 
   test('should set and retrieve the `size` property correctly', async ({ page }) => {
     const element = page.locator('fluent-checkbox');
+
+    await page.setContent(/* html */ `
+      <fluent-checkbox></fluent-checkbox>
+  `);
 
     await element.evaluate((node: Checkbox) => {
       node.size = 'medium';

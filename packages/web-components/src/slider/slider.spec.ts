@@ -222,6 +222,10 @@ test.describe('Slider', () => {
   test('should set and retrieve the `size` property correctly', async ({ page }) => {
     const element = page.locator('fluent-slider');
 
+    await page.setContent(/* html */ `
+      <fluent-slider></fluent-slider>
+    `);
+
     await element.evaluate((node: Slider) => {
       node.size = 'small';
     });

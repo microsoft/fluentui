@@ -9,6 +9,10 @@ test.describe('Progress Bar', () => {
     await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-progress-bar'));
+
+    await page.setContent(/* html */ `
+        <fluent-progress-bar></fluent-progress-bar>
+    `);
   });
 
   test('should include a role of progressbar', async ({ page }) => {

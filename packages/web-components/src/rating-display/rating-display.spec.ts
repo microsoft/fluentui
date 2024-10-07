@@ -12,6 +12,10 @@ test.describe('Rating Display', () => {
     await page.goto(fixtureURL(storybookDocId));
     await page.waitForFunction(() => customElements.whenDefined('fluent-rating-display'));
 
+    await page.setContent(/* html */ `
+      <fluent-rating-display></fluent-rating-display>
+    `);
+
     element = page.locator('fluent-rating-display');
   });
 

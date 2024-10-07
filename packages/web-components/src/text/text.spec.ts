@@ -76,9 +76,9 @@ test.describe('Text Component', () => {
     test(`should set and reflect the align attribute to \`${value}\` when provided`, async ({ page }) => {
       const element = page.locator('fluent-text');
 
-      await element.evaluate((node: Text, alignValue: string) => {
-        node.align = alignValue as TextAlign;
-      }, value as string);
+      await page.setContent(/* html */ `
+        <fluent-text align="${value}">Text</fluent-text>
+      `);
 
       await expect(element).toHaveJSProperty('align', value);
 
@@ -92,9 +92,9 @@ test.describe('Text Component', () => {
     test(`should set and reflect the font attribute to \`${value}\` when provided`, async ({ page }) => {
       const element = page.locator('fluent-text');
 
-      await element.evaluate((node: Text, fontValue: string) => {
-        node.font = fontValue as TextFont;
-      }, value as string);
+      await page.setContent(/* html */ `
+        <fluent-text font="${value}">Text</fluent-text>
+      `);
 
       await expect(element).toHaveJSProperty('font', value);
 

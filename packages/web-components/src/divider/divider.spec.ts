@@ -75,6 +75,11 @@ test.describe('Divider', () => {
   test('should add a custom state matching the `orientation` attribute when provided', async ({ page }) => {
     const element = page.locator('fluent-divider');
 
+    await page.setContent(/* html */ `
+      <fluent-divider></fluent-divider>
+    `);
+
+
     await element.evaluate((node: Divider) => {
       node.orientation = 'vertical';
     });
@@ -148,6 +153,10 @@ test.describe('Divider', () => {
   test('should add a custom state matching the `appearance` attribute when provided', async ({ page }) => {
     const element = page.locator('fluent-divider');
 
+    await page.setContent(/* html */ `
+      <fluent-divider></fluent-divider>
+    `);
+
     await element.evaluate((node: Divider) => {
       node.appearance = 'strong';
     });
@@ -174,6 +183,10 @@ test.describe('Divider', () => {
   test('should add a custom state of `inset` when the value is true', async ({ page }) => {
     const element = page.locator('fluent-divider');
 
+    await page.setContent(/* html */ `
+      <fluent-divider></fluent-divider>
+    `);
+
     await element.evaluate((node: Divider) => {
       node.inset = true;
     });
@@ -189,6 +202,10 @@ test.describe('Divider', () => {
 
   test('should add a custom state matching the `align-content` attribute value when provided', async ({ page }) => {
     const element = page.locator('fluent-divider');
+
+    await page.setContent(/* html */ `
+      <fluent-divider></fluent-divider>
+    `);
 
     await element.evaluate((node: Divider) => {
       node.alignContent = 'start';

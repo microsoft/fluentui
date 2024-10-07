@@ -32,6 +32,12 @@ test.describe('Image', () => {
   test('should add a custom state of `block` when a value of true is provided', async ({ page }) => {
     const element = page.locator('fluent-image');
 
+    await page.setContent(/* html */ `
+      <fluent-image block>
+        <img alt="Short image description" src="300x100.png" />
+      </fluent-image>
+    `);
+
     await element.evaluate((node: Image) => {
       node.block = true;
     });
@@ -66,6 +72,12 @@ test.describe('Image', () => {
   test('should add a custom state of `bordered` when a value of true is provided', async ({ page }) => {
     const element = page.locator('fluent-image');
 
+    await page.setContent(/* html */ `
+      <fluent-image block>
+        <img alt="Short image description" src="300x100.png" />
+      </fluent-image>
+    `);
+
     await element.evaluate((node: Image) => {
       node.bordered = true;
     });
@@ -99,6 +111,12 @@ test.describe('Image', () => {
 
   test('should add a custom state of `shadow` when a value of true is provided', async ({ page }) => {
     const element = page.locator('fluent-image');
+
+    await page.setContent(/* html */ `
+      <fluent-image block>
+        <img alt="Short image description" src="300x100.png" />
+      </fluent-image>
+    `);
 
     await element.evaluate((node: Image) => {
       node.shadow = true;
@@ -152,6 +170,12 @@ test.describe('Image', () => {
   test('should add a custom state matching the `fit` attribute when provided', async ({ page }) => {
     const element = page.locator('fluent-image');
 
+    await page.setContent(/* html */ `
+      <fluent-image block>
+        <img alt="Short image description" src="300x100.png" />
+      </fluent-image>
+    `);
+
     await element.evaluate((node: Image) => {
       node.fit = 'contain';
     });
@@ -201,6 +225,12 @@ test.describe('Image', () => {
 
   test('should add a custom state matching the `shape` attribute when provided', async ({ page }) => {
     const element = page.locator('fluent-image');
+
+    await page.setContent(/* html */ `
+      <fluent-image block>
+        <img alt="Short image description" src="300x100.png" />
+      </fluent-image>
+    `);
 
     await element.evaluate((node: Image) => {
       node.shape = 'circular';

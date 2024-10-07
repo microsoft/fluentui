@@ -16,6 +16,10 @@ test.describe('Spinner', () => {
     test(`should set and retrieve the \`appearance\` property correctly to ${thisAppearance}`, async ({ page }) => {
       const element = page.locator('fluent-spinner');
 
+      await page.setContent(/* html */ `
+        <fluent-spinner></fluent-spinner>
+      `);
+
       await element.evaluate((node: Spinner, appearance) => {
         node.appearance = appearance;
       }, thisAppearance as SpinnerAppearance);
@@ -38,6 +42,10 @@ test.describe('Spinner', () => {
   for (const thisSize in SpinnerSize) {
     test(`should set and retrieve the \`size\` property correctly to ${thisSize}`, async ({ page }) => {
       const element = page.locator('fluent-spinner');
+
+      await page.setContent(/* html */ `
+        <fluent-spinner></fluent-spinner>
+      `);
 
       await element.evaluate((node: Spinner, size) => {
         node.size = size;

@@ -8,6 +8,9 @@ test.describe('Message Bar', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(fixtureURL(storybookDocId));
     await page.waitForFunction(() => customElements.whenDefined('fluent-message-bar'));
+    await page.setContent(/* html */ `
+      <fluent-message-bar></fluent-message-bar>
+    `);
   });
 
   test('should include a role of status', async ({ page }) => {
