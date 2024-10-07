@@ -30,7 +30,7 @@ const pointPath: PointPathType = {
 export const Shape: React.FunctionComponent<IShapeProps> = React.forwardRef<HTMLDivElement, IShapeProps>(
   ({ svgProps, pathProps, shape, classNameForNonSvg, style }, forwardedRef) => {
     if (Object.keys(pointPath).indexOf(shape) === -1) {
-      return <div className={classNameForNonSvg} />;
+      return <div className={classNameForNonSvg} style={style} />;
     }
     return (
       <svg
@@ -41,7 +41,6 @@ export const Shape: React.FunctionComponent<IShapeProps> = React.forwardRef<HTML
         transform={`rotate(${
           shape === Points[Points.diamond] ? 45 : shape === Points[Points.pyramid] ? 180 : 0
         }, 0, 0)`}
-        style={style}
       >
         <path d={pointPath[shape]} {...pathProps} />
       </svg>

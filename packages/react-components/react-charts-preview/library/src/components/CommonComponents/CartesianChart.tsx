@@ -217,6 +217,9 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
       xAxisPadding: props.xAxisPadding,
       xAxisInnerPadding: props.xAxisInnerPadding,
       xAxisOuterPadding: props.xAxisOuterPadding,
+      containerWidth: containerWidth,
+      hideTickOverlap:
+        props.hideTickOverlap && !props.rotateXAxisLables && !props.showXAxisLablesTooltip && !props.wrapXAxisLables,
     };
 
     const YAxisParams = {
@@ -247,7 +250,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
     let tickValues: (string | number)[];
     switch (props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, props.chartType, culture));
+        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, props.tickParams!, props.chartType, culture));
         break;
       case XAxisTypes.DateAxis:
         ({ xScale, tickValues } = createDateXAxis(
@@ -269,7 +272,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
         ));
         break;
       default:
-        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, props.chartType, culture));
+        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, props.tickParams!, props.chartType, culture));
     }
     _xScale = xScale;
     _tickValues = tickValues;

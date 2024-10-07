@@ -198,6 +198,7 @@ export const LegendsWrapLines = () => {
       overflowText={'Overflow Items'}
       allowFocusOnLegends={true}
       canSelectMultipleLegends={false}
+      enabledWrapLines={true}
     />
   );
 };
