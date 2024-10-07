@@ -129,12 +129,7 @@ export const Basic = () => {
 
   return (
     <div style={{ padding: '10px' }}>
-      <HorizontalBarChart
-        culture={window.navigator.language}
-        data={data}
-        hideRatio={hideRatio}
-        width={600}
-      />
+      <HorizontalBarChart culture={window.navigator.language} data={data} hideRatio={hideRatio} width={600} />
     </div>
   );
 };
@@ -281,11 +276,7 @@ export const Variant = () => {
 
   return (
     <div style={{ padding: '10px' }}>
-      <HorizontalBarChart
-        data={data}
-        variant={HorizontalBarChartVariant.AbsoluteScale}
-        hideLabels={false}
-      />
+      <HorizontalBarChart data={data} variant={HorizontalBarChartVariant.AbsoluteScale} hideLabels={false} />
     </div>
   );
 };

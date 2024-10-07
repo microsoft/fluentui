@@ -431,6 +431,12 @@ export interface ICartesianChartProps {
    * @default false
    */
   hideTickOverlap?: boolean;
+
+  /**
+   * Define a custom callout props override
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  customProps?: (dataPointCalloutProps: any) => IPopoverComponentProps;
 }
 
 export interface IYValueHover {
@@ -540,21 +546,10 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   children(props: IChildProps): React.ReactNode;
 
-  /**
-   * To enable callout for individualbar or complete stack. Using for only Vertical stacked bar chart.
-   * @default false
-   * @type \{boolean \}
-   */
-  isCalloutForStack?: boolean;
-
   /** dataset values to find out domain of the String axis
    * Present using for only vertical stacked bar chart and grouped vertical bar chart
    */
   datasetForXAxisDomain?: string[];
-
-  /** Own callout design */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customizedCallout?: any;
 
   /**
    * if the data points for the y-axis is of type string, then we need to give this

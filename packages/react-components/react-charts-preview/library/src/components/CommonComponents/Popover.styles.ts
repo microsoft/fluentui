@@ -21,6 +21,7 @@ export const popoverClassNames: SlotClassNames<IPopoverComponentStyles> = {
   ratio: 'fui-cart__ratio',
   numerator: 'fui-cart__numerator',
   denominator: 'fui-cart__denominator',
+  calloutInfoContainer: 'fui-cart__calloutInfoContainer',
 };
 
 /**
@@ -46,17 +47,27 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
   },
   calloutBlockContainer: {
-    fontSize: 'fontSizeBase200',
-    marginTop: '13px',
     color: tokens.colorNeutralForeground2,
   },
-  calloutBlockContainertoDrawShapefalse: {
-    selectors: {
+  calloutBlockContainerCartesian: {
+    fontSize: tokens.fontSizeBase200,
+    marginTop: '13px',
+  },
+  calloutBlockContainerNonCartesian: {
+    fontSize: tokens.fontSizeHero700,
+    lineHeight: '22px',
+    '& selectors': {
       [HighContrastSelector]: {
         forcedColorAdjust: 'none',
       },
     },
-    ...shorthands.borderLeft('4px solid'),
+  },
+  calloutBlockContainertoDrawShapefalse: {
+    '& selectors': {
+      [HighContrastSelector]: {
+        forcedColorAdjust: 'none',
+      },
+    },
     paddingLeft: '8px',
   },
   calloutBlockContainertoDrawShapetrue: {
@@ -66,24 +77,30 @@ const useStyles = makeStyles({
     marginRight: '8px',
   },
   calloutLegendText: {
-    fontSize: 'fontSizeBase200',
+    fontSize: tokens.fontSizeBase200,
     lineHeight: '16px',
     color: tokens.colorNeutralForeground2,
-    selectors: {
+    '& selectors': {
       [HighContrastSelectorBlack]: {
         color: 'rgb(255, 255, 255)',
       },
     },
   },
   calloutContentY: {
-    fontSize: tokens.fontSizeBase400,
     fontWeight: 'bold',
-    lineHeight: '36px',
-    selectors: {
+    '& selectors': {
       [HighContrastSelectorBlack]: {
         color: 'rgb(255, 255, 255)',
       },
     },
+  },
+  calloutContentYCartesian: {
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: '22px',
+  },
+  calloutContentYNonCartesian: {
+    fontSize: tokens.fontSizeHero700,
+    lineHeight: '36px',
   },
   descriptionMessage: {
     fontSize: tokens.fontSizeBase200,
@@ -103,11 +120,15 @@ const useStyles = makeStyles({
   denominator: {
     fontWeight: tokens.fontWeightSemibold,
   },
+  calloutInfoContainer: {
+    paddingLeft: '8px',
+  },
 });
 /**
  * Apply styling to the Carousel slots based on the state
  */
 export const usePopoverStyles_unstable = (props: IPopoverComponentProps): IPopoverComponentStyles => {
+  const { isCartesian } = props;
   const baseStyles = useStyles();
   return {
     calloutContentRoot: mergeClasses(
@@ -124,7 +145,8 @@ export const usePopoverStyles_unstable = (props: IPopoverComponentProps): IPopov
     ),
     calloutBlockContainer: mergeClasses(
       popoverClassNames.calloutBlockContainer,
-      baseStyles.calloutBlockContainer /*props.styles?.calloutBlockContainer*/,
+      baseStyles.calloutBlockContainer /*props.styles?.calloutBlockContainerCartesian*/,
+      isCartesian ? baseStyles.calloutBlockContainerCartesian : baseStyles.calloutBlockContainerNonCartesian,
     ),
     calloutBlockContainertoDrawShapefalse: mergeClasses(
       popoverClassNames.calloutBlockContainertoDrawShapefalse,
@@ -141,7 +163,8 @@ export const usePopoverStyles_unstable = (props: IPopoverComponentProps): IPopov
     ),
     calloutContentY: mergeClasses(
       popoverClassNames.calloutContentY,
-      baseStyles.calloutContentY /*props.styles?.calloutContentY*/,
+      baseStyles.calloutContentY /*props.styles?.calloutContentYNonCartesian*/,
+      isCartesian ? baseStyles.calloutContentYCartesian : baseStyles.calloutContentYNonCartesian,
     ),
     descriptionMessage: mergeClasses(
       popoverClassNames.descriptionMessage,
@@ -150,5 +173,6 @@ export const usePopoverStyles_unstable = (props: IPopoverComponentProps): IPopov
     ratio: mergeClasses(popoverClassNames.ratio, baseStyles.ratio /*props.styles?.ratio*/),
     numerator: mergeClasses(popoverClassNames.numerator, baseStyles.numerator /*props.styles?.numerator*/),
     denominator: mergeClasses(popoverClassNames.denominator, baseStyles.denominator /*props.styles?.denominator*/),
+    calloutInfoContainer: mergeClasses(popoverClassNames.calloutInfoContainer, baseStyles.calloutInfoContainer),
   };
 };

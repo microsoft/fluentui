@@ -9,7 +9,7 @@ import {
   IPopoverComponentProps,
 } from '@fluentui/react-charts-preview';
 import * as d3 from 'd3-format';
-import { Switch } from '../../../../react-switch/library/src/Switch';
+import { Switch } from '@fluentui/react-switch';
 
 export const HBCCustomCallout = () => {
   const hideRatio: boolean[] = [true, false];

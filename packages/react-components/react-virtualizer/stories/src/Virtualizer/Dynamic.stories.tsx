@@ -1,9 +1,6 @@
 import * as React from 'react';
-import {
-  Virtualizer,
-  useDynamicVirtualizerMeasure,
-  VirtualizerContextProvider,
-} from '@fluentui/react-components/unstable';
+import { Virtualizer, useDynamicVirtualizerMeasure, VirtualizerContextProvider } from '@fluentui/react-virtualizer';
+import type { DynamicVirtualizerContextProps } from '@fluentui/react-virtualizer';
 import { makeStyles } from '@fluentui/react-components';
 import { useCallback, useRef } from 'react';
 
@@ -34,6 +31,8 @@ const useStyles = makeStyles({
 
 export const Dynamic = () => {
   const [currentIndex, setCurrentIndex] = React.useState(-1);
+  const [currentPosition, setCurrentPosition] = React.useState(0);
+  const childProgressiveSizes = React.useRef<number[]>([]);
   const [flag, toggleFlag] = React.useState(false);
   const styles = useStyles();
   const childLength = 1000;
@@ -63,15 +62,23 @@ export const Dynamic = () => {
     [flag],
   );
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useDynamicVirtualizerMeasure({
+  const contextState: DynamicVirtualizerContextProps = {
+    contextIndex: currentIndex,
+    setContextIndex: setCurrentIndex,
+    contextPosition: currentPosition,
+    setContextPosition: setCurrentPosition,
+    childProgressiveSizes,
+  };
+
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useDynamicVirtualizerMeasure({
     defaultItemSize: 100,
     getItemSize: getSizeForIndex,
     numItems: childLength,
-    currentIndex,
+    virtualizerContext: contextState,
   });
 
   return (
-    <VirtualizerContextProvider value={{ contextIndex: currentIndex, setContextIndex: setCurrentIndex }}>
+    <VirtualizerContextProvider value={contextState}>
       <div aria-label="Dynamic Virtualizer Example" className={styles.container} role={'list'} ref={scrollRef}>
         <Virtualizer
           getItemSize={getSizeForIndex}
@@ -80,6 +87,8 @@ export const Dynamic = () => {
           bufferItems={bufferItems}
           virtualizerLength={virtualizerLength}
           itemSize={100}
+          containerSizeRef={containerSizeRef}
+          virtualizerContext={contextState}
         >
           {useCallback(
             (index: number) => {

@@ -7,7 +7,6 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 expect.extend(toHaveNoViolations);
 
 describe('Sparkline chart rendering', () => {
-
   test('Should re-render the Sparkline chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<Sparkline data={emptySparklinePoints} />);
@@ -26,7 +25,6 @@ describe('Sparkline chart rendering', () => {
 });
 
 describe('Sparkline Chart - axe-core', () => {
-
   test('Should pass accessibility tests', async () => {
     const { container } = render(<Sparkline data={sparkline1Points} />);
     let axeResults;

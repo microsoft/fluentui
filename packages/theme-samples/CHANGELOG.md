@@ -1,8 +1,45 @@
 # Change Log - @fluentui/theme-samples
 
-This log was last generated on Wed, 28 Aug 2024 07:21:50 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Oct 2024 07:21:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.175](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.175)
+
+Tue, 01 Oct 2024 07:21:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.174..@fluentui/theme-samples_v8.7.175)
+
+### Patches
+
+- Bump @fluentui/react to v8.121.0 ([PR #32884](https://github.com/microsoft/fluentui/pull/32884) by beachball)
+
+## [8.7.174](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.174)
+
+Mon, 30 Sep 2024 07:23:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.173..@fluentui/theme-samples_v8.7.174)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.10 ([PR #32437](https://github.com/microsoft/fluentui/pull/32437) by beachball)
+- Bump @fluentui/scheme-utilities to v8.3.61 ([PR #32437](https://github.com/microsoft/fluentui/pull/32437) by beachball)
+
+## [8.7.173](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.173)
+
+Tue, 10 Sep 2024 07:21:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.172..@fluentui/theme-samples_v8.7.173)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.9 ([PR #32442](https://github.com/microsoft/fluentui/pull/32442) by beachball)
+
+## [8.7.172](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.172)
+
+Fri, 06 Sep 2024 07:21:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.171..@fluentui/theme-samples_v8.7.172)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.8 ([PR #32376](https://github.com/microsoft/fluentui/pull/32376) by beachball)
 
 ## [8.7.171](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.171)
 

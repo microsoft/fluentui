@@ -46,7 +46,7 @@ describe('ContextualMenuButton', () => {
       );
       component.find('a').simulate('click', mockEvent);
       expect(onClickMock).toHaveBeenCalledTimes(1);
-      expect(onClickMock).toBeCalledWith(menuItem, expect.objectContaining(mockEvent));
+      expect(onClickMock).toHaveBeenCalledWith(menuItem, expect.objectContaining(mockEvent));
     });
 
     it('invokes optional onItemClick on checkmark node "click"', () => {

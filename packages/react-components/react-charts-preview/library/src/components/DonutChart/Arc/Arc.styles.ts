@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     cursor: 'default',
     ...shorthands.outline('transparent'),
     stroke: tokens.colorNeutralBackground1,
-    selectors: {
+    '& selectors': {
       '::-moz-focus-inner': {
         ...shorthands.border('0'),
       },

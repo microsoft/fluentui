@@ -1,211 +1,150 @@
-import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
+import { html, ref } from '@microsoft/fast-element';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Tablist as FluentTablist } from './tablist.js';
 import { TablistAppearance as TablistAppearanceValues, TablistOrientation, TablistSize } from './tablist.options.js';
 
-type TablistStoryArgs = Args & FluentTablist;
-type TablistStoryMeta = Meta<TablistStoryArgs>;
+type Story = StoryObj<FluentTablist>;
 
-const tabIds = ['first-tab', 'second-tab', 'third-tab', 'fourth-tab'];
-
-function changeTab() {
-  const tablist = document.querySelector('fluent-tablist') as FluentTablist;
-  const panelPlaceholder = document.querySelector('#panel-placeholder')!;
-  // there's a million ways to do this, but this is the simplest
-  panelPlaceholder.innerHTML = `
-  <div role="tabpanel" aria-labelledby="tablist.activeid">
-    Tab changed to ${tablist.activeid}
-  </div>`;
-}
-
-const tabsDefault = html`
-  <style>
-    #demo-layout {
-      display: grid;
-      gap: 1rem;
-    }
-    #demo-layout:has(fluent-tablist[orientation='vertical']) {
-      grid-template-columns: max-content 1fr;
-    }
-  </style>
-  <div id="demo-layout">
+const storyTemplate = html<StoryArgs<FluentTablist>>`
+  <div style="display: flex; flex-direction: column; gap: 1rem;">
     <fluent-tablist
-      orientation=${x => x.orientation}
-      appearance=${x => x.appearance}
-      ?disabled=${x => x.disabled}
-      size=${x => x.size}
-      activeid=${x => x.activeid}
-      @change="${() => changeTab()}"
+      orientation="${story => story.orientation}"
+      appearance="${story => story.appearance}"
+      ?disabled="${story => story.disabled}"
+      size="${story => story.size}"
+      activeid="${story => story.activeid}"
+      @change="${(x, c) => {
+        x.panel.textContent = `Panel changed to ${(c.event.target as FluentTablist).activetab?.textContent}`;
+      }}"
+      ${ref('tablist')}
     >
-      <fluent-tab id=${tabIds[0]}> First Tab </fluent-tab>
-      <fluent-tab id=${tabIds[1]}> Second Tab</fluent-tab>
-      <fluent-tab id=${tabIds[2]}> Third Tab</fluent-tab>
-      <fluent-tab id=${tabIds[3]}> Fourth Tab</fluent-tab>
+      <fluent-tab id="first-tab">First Tab</fluent-tab>
+      <fluent-tab id="second-tab">Second Tab</fluent-tab>
+      <fluent-tab id="third-tab">Third Tab</fluent-tab>
+      <fluent-tab id="fourth-tab">Fourth Tab</fluent-tab>
     </fluent-tablist>
-
-    <div id="panel-placeholder"></div>
+    <div ${ref('panel')}></div>
   </div>
 `;
-export const TablistDefault = renderComponent(tabsDefault).bind({});
-
-const tabsHorizontal = html`
-  <fluent-tablist orientation="horizontal">
-    <fluent-tab> First Tab </fluent-tab>
-    <fluent-tab> Second Tab</fluent-tab>
-    <fluent-tab> Third Tab</fluent-tab>
-    <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tablist>
-`;
-export const TablistHorizontal = renderComponent(tabsHorizontal).bind({});
-
-const tabsVertical = html`
-  <fluent-tablist orientation="vertical">
-    <fluent-tab> First Tab </fluent-tab>
-    <fluent-tab> Second Tab</fluent-tab>
-    <fluent-tab> Third Tab</fluent-tab>
-    <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tablist>
-`;
-export const TablistVertical = renderComponent(tabsVertical).bind({});
-
-const tabsAppearance = html`
-  <fluent-tablist appearance="transparent">
-    <fluent-tab> First Tab </fluent-tab>
-    <fluent-tab> Second Tab</fluent-tab>
-    <fluent-tab> Third Tab</fluent-tab>
-    <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tablist>
-  <fluent-tablist appearance="subtle">
-    <fluent-tab active> First Tab </fluent-tab>
-    <fluent-tab> Second Tab</fluent-tab>
-    <fluent-tab> Third Tab</fluent-tab>
-    <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tablist>
-`;
-export const TablistAppearance = renderComponent(tabsAppearance).bind({});
-
-const tabsDisabledTablist = html`
-  <fluent-tablist disabled>
-    <fluent-tab> First Tab </fluent-tab>
-    <fluent-tab> Second Tab</fluent-tab>
-    <fluent-tab> Third Tab</fluent-tab>
-    <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tablist>
-  <fluent-tablist>
-    <fluent-tab> First Tab </fluent-tab>
-    <fluent-tab disabled> Second Tab</fluent-tab>
-    <fluent-tab> Third Tab</fluent-tab>
-    <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tablist>
-`;
-export const TablistDisabled = renderComponent(tabsDisabledTablist).bind({});
-
-const tabsSizeSmall = html`
-  <fluent-tablist size="small">
-    <fluent-tab> First Tab </fluent-tab>
-    <fluent-tab> Second Tab</fluent-tab>
-    <fluent-tab> Third Tab</fluent-tab>
-    <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tablist>
-  <br />
-  <fluent-tablist size="small" orientation="vertical">
-    <fluent-tab> First Tab </fluent-tab>
-    <fluent-tab> Second Tab</fluent-tab>
-    <fluent-tab> Third Tab</fluent-tab>
-    <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tablist>
-`;
-export const TablistSizeSmall = renderComponent(tabsSizeSmall).bind({});
-
-const tabsSizeMedium = html`
-  <fluent-tablist size="medium">
-    <fluent-tab> First Tab </fluent-tab>
-    <fluent-tab> Second Tab</fluent-tab>
-    <fluent-tab> Third Tab</fluent-tab>
-    <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tablist>
-  <br />
-  <fluent-tablist size="medium" orientation="vertical">
-    <fluent-tab> First Tab </fluent-tab>
-    <fluent-tab> Second Tab</fluent-tab>
-    <fluent-tab> Third Tab</fluent-tab>
-    <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tablist>
-`;
-export const TablistSizeMedium = renderComponent(tabsSizeMedium).bind({});
-
-const tabsSizeLarge = html`
-  <fluent-tablist size="large">
-    <fluent-tab> First Tab </fluent-tab>
-    <fluent-tab> Second Tab</fluent-tab>
-    <fluent-tab> Third Tab</fluent-tab>
-    <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tablist>
-  <br />
-  <fluent-tablist size="large" orientation="vertical">
-    <fluent-tab> First Tab </fluent-tab>
-    <fluent-tab> Second Tab</fluent-tab>
-    <fluent-tab> Third Tab</fluent-tab>
-    <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tablist>
-`;
-export const TablistSizeLarge = renderComponent(tabsSizeLarge).bind({});
-
-const rtl = html`
-  <div dir="rtl">
-    <fluent-tablist>
-      <fluent-tab> First Tab </fluent-tab>
-      <fluent-tab> Second Tab</fluent-tab>
-      <fluent-tab> Third Tab</fluent-tab>
-      <fluent-tab> Fourth Tab</fluent-tab>
-    </fluent-tablist>
-    <br />
-    <fluent-tablist orientation="vertical">
-      <fluent-tab> First Tab </fluent-tab>
-      <fluent-tab> Second Tab</fluent-tab>
-      <fluent-tab> Third Tab</fluent-tab>
-      <fluent-tab> Fourth Tab</fluent-tab>
-    </fluent-tablist>
-  </div>
-`;
-export const RTL = renderComponent(rtl).bind({});
 
 export default {
   title: 'Components/Tablist',
-  args: {
-    appearance: 'transparent',
-    disabled: false,
-    orientation: 'horizontal',
-    size: 'medium',
-  },
+  render: renderComponent(storyTemplate),
   argTypes: {
-    appearance: {
-      options: Object.values(TablistAppearanceValues),
-      defaultValue: TablistAppearanceValues.transparent,
-      control: {
-        type: 'select',
-      },
-    },
     activeid: {
-      options: tabIds,
-      defaultValue: tabIds[0],
-      control: { type: 'select' },
+      control: 'text',
+      description: 'The id of the active tab',
+      name: 'active-id',
+      table: { category: 'attributes', type: { summary: 'string' } },
     },
     disabled: {
-      options: [true, false],
-      defaultValue: false,
-      control: { type: 'select' },
-    },
-    size: {
-      options: Object.values(TablistSize),
-      defaultValue: TablistSize.medium,
-      control: { type: 'select' },
+      control: 'boolean',
+      description: 'Disables the tablist',
+      name: 'disabled',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
     },
     orientation: {
-      options: Object.values(TablistOrientation),
-      defaultValue: TablistOrientation.horizontal,
-      control: { type: 'select' },
+      control: 'select',
+      description: 'The orientation of the tablist.',
+      mapping: { '': null, ...TablistOrientation },
+      options: ['', ...Object.values(TablistOrientation)],
+      table: {
+        category: 'attributes',
+        type: { summary: Object.values(TablistOrientation).join('|') },
+      },
+    },
+    appearance: {
+      control: 'select',
+      description: 'The appearance of the tablist.',
+      mapping: { '': null, ...TablistAppearanceValues },
+      options: ['', ...Object.values(TablistAppearanceValues)],
+      table: {
+        category: 'attributes',
+        type: { summary: Object.values(TablistAppearanceValues).join('|') },
+      },
+    },
+    size: {
+      control: 'select',
+      description: 'The size of the tablist.',
+      mapping: { '': null, ...TablistSize },
+      options: ['', ...Object.values(TablistSize)],
+      table: {
+        category: 'attributes',
+        type: { summary: Object.values(TablistSize).join('|') },
+      },
     },
   },
-} as TablistStoryMeta;
+} as Meta<FluentTablist>;
+
+export const Default: Story = {};
+
+export const VerticalOrientation: Story = {
+  args: {
+    orientation: TablistOrientation.vertical,
+  },
+  decorators: [
+    Story => {
+      const story = Story() as HTMLDivElement;
+      story.style.flexDirection = 'row';
+      return story;
+    },
+  ],
+};
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+  },
+};
+
+export const ActiveId: Story = {
+  args: {
+    activeid: 'third-tab',
+  },
+};
+
+export const SubtleAppearance: Story = {
+  args: {
+    appearance: 'subtle',
+  },
+};
+
+export const SmallSize: Story = {
+  args: {
+    size: 'small',
+  },
+};
+
+export const LargeSize: Story = {
+  args: {
+    size: 'small',
+  },
+};
+
+export const SmallSizeVerticalOrientation: Story = {
+  args: {
+    orientation: TablistOrientation.vertical,
+    size: 'small',
+  },
+  decorators: [
+    Story => {
+      const story = Story() as HTMLDivElement;
+      story.style.flexDirection = 'row';
+      return story;
+    },
+  ],
+};
+
+export const LargeSizeVerticalOrientation: Story = {
+  args: {
+    orientation: TablistOrientation.vertical,
+    size: 'large',
+  },
+  decorators: [
+    Story => {
+      const story = Story() as HTMLDivElement;
+      story.style.flexDirection = 'row';
+      return story;
+    },
+  ],
+};

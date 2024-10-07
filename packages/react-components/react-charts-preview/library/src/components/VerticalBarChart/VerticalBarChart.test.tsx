@@ -43,7 +43,6 @@ function sharedAfterEach() {
 }
 
 describe('VerticalBarChart snapShot testing', () => {
-
   it('renders VerticalBarChart correctly', () => {
     let component: any;
     renderer.act(() => {
@@ -189,7 +188,6 @@ describe('VerticalBarChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
-
   it('No prop changes', () => {
     const props = {
       data: chartPointsVBC,
@@ -216,12 +214,11 @@ describe('Render calling with respective to props', () => {
       wrapper.setProps({ ...props, hideTooltip: true });
     });
     const renderedDOM = wrapper.findWhere(node => node.prop('hideTooltip') === true);
-    expect(renderedDOM!.length).toBe(2);
+    expect(renderedDOM!.length).toBe(3);
   });
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
-
   it('No empty chart aria label div rendered', () => {
     act(() => {
       wrapper = mount(
@@ -242,7 +239,6 @@ describe('Render empty chart aria label div when chart is empty', () => {
 });
 
 describe('Render empty chart calling with respective to props', () => {
-
   it('No prop changes', () => {
     const props = {
       data: chartPointsVBC,
@@ -263,6 +259,6 @@ describe('Render empty chart calling with respective to props', () => {
       wrapper.setProps({ ...props, data: chartPointsVBC, hideTooltip: true });
     });
     const renderedDOM = wrapper.findWhere(node => node.prop('hideTooltip') === true);
-    expect(renderedDOM!.length).toBe(2);
+    expect(renderedDOM!.length).toBe(3);
   });
 });

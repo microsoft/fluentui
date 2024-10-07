@@ -206,7 +206,6 @@ describe('LineChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
-
   it('No prop changes', () => {
     const props = {
       data: chartPoints,
@@ -327,7 +326,6 @@ describe('LineChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
-
   it('No empty chart aria label div rendered', () => {
     act(() => {
       wrapper = mount(<LineChart data={chartPoints} />);

@@ -38,12 +38,12 @@ export const useTableSelectionCell_unstable = (
       radioIndicator: Radio,
     },
     checkboxIndicator: slot.optional(props.checkboxIndicator, {
-      renderByDefault: type === 'checkbox' && !invisible,
+      renderByDefault: type === 'checkbox',
       defaultProps: { checked: props.checked },
       elementType: Checkbox,
     }),
     radioIndicator: slot.optional(props.radioIndicator, {
-      renderByDefault: type === 'radio' && !invisible,
+      renderByDefault: type === 'radio',
       defaultProps: { checked: !!checked, input: { name: useId('table-selection-radio') } },
       elementType: Radio,
     }),

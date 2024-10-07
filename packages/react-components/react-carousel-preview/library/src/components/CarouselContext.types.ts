@@ -16,19 +16,20 @@ export type CarouselIndexChangeData = EventData<
 export type CarouselContextValue = {
   activeIndex: number;
   circular: boolean;
-  selectPageByElement: (event: React.FocusEvent, element: HTMLElement, jump?: boolean) => void;
+  selectPageByElement: (event: React.FocusEvent, element: HTMLElement, jump?: boolean) => number;
   selectPageByDirection: (
     event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
     direction: 'next' | 'prev',
-  ) => void;
+  ) => number;
   selectPageByIndex: (
     event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
     value: number,
     jump?: boolean,
   ) => void;
-
   subscribeForValues: (listener: (data: CarouselUpdateData) => void) => () => void;
   enableAutoplay: (autoplay: boolean) => void;
+  resetAutoplay: () => void;
+  containerRef?: React.RefObject<HTMLDivElement>;
 };
 
 /**

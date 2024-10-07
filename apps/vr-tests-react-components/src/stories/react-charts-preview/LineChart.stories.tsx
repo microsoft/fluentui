@@ -601,12 +601,8 @@ export const MultipleRTL = getStoryVariant(Multiple, RTL);
 export const MultipleDarkMode = getStoryVariant(Multiple, DARK_MODE);
 
 export const Gaps = () => {
-  const _calculateCalloutDescription = (
-    calloutDataProps: ICustomizedCalloutData,
-  ): string | undefined => {
-    if (
-      calloutDataProps.values.filter(value => value.legend === 'Low Confidence Data*').length > 0
-    ) {
+  const _calculateCalloutDescription = (calloutDataProps: ICustomizedCalloutData): string | undefined => {
+    if (calloutDataProps.values.filter(value => value.legend === 'Low Confidence Data*').length > 0) {
       return '* This data was below our confidence threshold.';
     }
     return undefined;

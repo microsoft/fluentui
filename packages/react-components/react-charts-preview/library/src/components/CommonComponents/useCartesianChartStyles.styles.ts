@@ -60,7 +60,7 @@ const useStyles = makeStyles({
     '& text': {
       fill: tokens.colorNeutralForeground1,
       fontWeight: '300',
-      selectors: {
+      '& selectors': {
         [HighContrastSelectorBlack]: {
           fill: 'rgb(179, 179, 179)',
         },
@@ -70,7 +70,7 @@ const useStyles = makeStyles({
       opacity: 0.2,
       stroke: tokens.colorNeutralForeground1,
       width: '1px',
-      selectors: {
+      '& selectors': {
         [HighContrastSelectorBlack]: {
           opacity: 0.1,
           stroke: 'rgb(179, 179, 179)',
@@ -86,7 +86,7 @@ const useStyles = makeStyles({
       fontSize: tokens.fontSizeBase100,
       fill: tokens.colorNeutralForeground1,
       fontWeight: '300',
-      selectors: {
+      '& selectors': {
         [HighContrastSelectorBlack]: {
           fill: 'rgb(179, 179, 179)',
         },
@@ -95,7 +95,7 @@ const useStyles = makeStyles({
     '& line': {
       opacity: 0.2,
       stroke: tokens.colorNeutralForeground1,
-      selectors: {
+      '& selectors': {
         [HighContrastSelectorBlack]: {
           opacity: 0.1,
           stroke: 'rgb(179, 179, 179)',
@@ -144,7 +144,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
   },
   calloutBlockContainertoDrawShapefalse: {
-    selectors: {
+    '& selectors': {
       [HighContrastSelector]: {
         forcedColorAdjust: 'none',
       },
@@ -162,7 +162,7 @@ const useStyles = makeStyles({
     fontSize: 'fontSizeBase200',
     lineHeight: '16px',
     color: tokens.colorNeutralForeground2,
-    selectors: {
+    '& selectors': {
       [HighContrastSelectorBlack]: {
         color: 'rgb(255, 255, 255)',
       },
@@ -172,7 +172,7 @@ const useStyles = makeStyles({
     fontSize: 'fontSizeBase400',
     fontWeight: 'bold',
     lineHeight: '22px',
-    selectors: {
+    '& selectors': {
       [HighContrastSelectorBlack]: {
         color: 'rgb(255, 255, 255)',
       },

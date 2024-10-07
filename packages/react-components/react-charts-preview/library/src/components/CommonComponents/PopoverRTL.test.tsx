@@ -77,7 +77,6 @@ describe('Popover', () => {
   test('displays the correct Legend', () => {
     const Legend = 'Sample Legend';
     const { container } = render(<PopoverComponent legend={Legend} isPopoverOpen={true} />);
-    screen.debug(container, Infinity);
     const LegendElement = getByText(container, /Sample Legend/);
     expect(LegendElement).toBeDefined();
   });
@@ -127,7 +126,6 @@ describe('Popover', () => {
 });
 
 describe('Popover - axe-core', () => {
-
   test('Should pass accessibility tests', async () => {
     const { container } = render(<PopoverComponent isPopoverOpen={true} />);
     let axeResults;

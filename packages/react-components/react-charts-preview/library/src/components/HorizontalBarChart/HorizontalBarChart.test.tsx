@@ -114,7 +114,6 @@ describe('HorizontalBarChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
-
   it('No prop changes', () => {
     const props = {
       data: chartPoints,
@@ -180,7 +179,6 @@ describe('HorizontalBarChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
-
   it('No empty chart aria label div rendered', () => {
     wrapper = mount(<HorizontalBarChart data={chartPoints} />);
     const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');

@@ -13,7 +13,8 @@ export const colorPickerClassNames: SlotClassNames<ColorPickerSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'flex',
+    flexDirection: 'column',
   },
 
   // TODO add additional classes for different states and/or slots

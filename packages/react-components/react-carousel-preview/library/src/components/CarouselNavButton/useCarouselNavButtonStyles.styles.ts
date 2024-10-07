@@ -14,6 +14,7 @@ export const carouselNavButtonClassNames: SlotClassNames<CarouselNavButtonSlots>
 const useStyles = makeStyles({
   root: {
     cursor: 'pointer',
+    pointerEvents: 'all',
     width: tokens.spacingHorizontalS,
     height: tokens.spacingVerticalS,
     padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,

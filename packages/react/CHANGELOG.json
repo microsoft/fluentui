@@ -2,6 +2,102 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 01 Oct 2024 07:21:07 GMT",
+      "tag": "@fluentui/react_v8.121.0",
+      "version": "8.121.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ee4737807c332db95f503a18b270041def2b9836",
+            "comment": "fix (v8 MessageBar): Add showExpandButton prop to allow manual override to explicitly show the expand button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Sep 2024 07:23:12 GMT",
+      "tag": "@fluentui/react_v8.120.10",
+      "version": "8.120.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.17",
+            "commit": "7ef0d028b9f061ff06665d467b2e17a4df6755ae"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.51",
+            "commit": "7ef0d028b9f061ff06665d467b2e17a4df6755ae"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.9.14",
+            "commit": "7ef0d028b9f061ff06665d467b2e17a4df6755ae"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.8.13",
+            "commit": "7ef0d028b9f061ff06665d467b2e17a4df6755ae"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.11.0",
+            "commit": "7ef0d028b9f061ff06665d467b2e17a4df6755ae"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.60",
+            "commit": "7ef0d028b9f061ff06665d467b2e17a4df6755ae"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.15.16",
+            "commit": "7ef0d028b9f061ff06665d467b2e17a4df6755ae"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Sep 2024 07:21:59 GMT",
+      "tag": "@fluentui/react_v8.120.9",
+      "version": "8.120.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "420834+andyrooger@users.noreply.github.com",
+            "package": "@fluentui/react",
+            "commit": "2a31760ba6d9a2d1f0c6c4c824358dfa61efdeeb",
+            "comment": "fix: Debouncing onResolveSuggestions correctly after a picker has been remounted in React 18 strict mode."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Sep 2024 07:21:40 GMT",
+      "tag": "@fluentui/react_v8.120.8",
+      "version": "8.120.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ec65f4cae8331689288477c08862f84f96382c2e",
+            "comment": "fix: ColorPicker initializes focus outlines"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Aug 2024 07:21:50 GMT",
       "tag": "@fluentui/react_v8.120.7",
       "version": "8.120.7",

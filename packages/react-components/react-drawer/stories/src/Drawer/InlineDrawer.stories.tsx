@@ -7,7 +7,7 @@ import {
   Button,
   makeStyles,
   tokens,
-  DrawerProps,
+  InlineDrawerProps,
   mergeClasses,
   useRestoreFocusSource,
   useRestoreFocusTarget,
@@ -54,48 +54,25 @@ const useStyles = makeStyles({
   },
 });
 
-type DrawerInlineExampleProps = DrawerProps & {
+type DrawerInlineExampleProps = InlineDrawerProps & {
   setOpen: (open: boolean) => void;
 };
 
-const getMappedPosition = (position: DrawerProps['position']) => {
-  switch (position) {
-    case 'end':
-      return 'Right';
+const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-    case 'bottom':
-      return 'Bottom';
+const getButtonText = (open: boolean, position: Required<InlineDrawerProps>['position']) => {
+  const buttonText = open ? 'Close' : 'Open';
 
-    default:
-      return 'Left';
-  }
-};
-
-const setButtonText = (open: boolean, position: DrawerProps['position']) => {
-  let buttonText = open ? 'Close' : 'Open';
-
-  switch (position) {
-    case 'start':
-      buttonText = `${buttonText} left`;
-      break;
-
-    case 'end':
-      buttonText = `${buttonText} right`;
-      break;
-
-    case 'bottom':
-      buttonText = `${buttonText} bottom`;
-      break;
-
-    default:
-      buttonText = `${buttonText} drawer`;
+  if (['start', 'end', 'bottom'].includes(position)) {
+    return `${buttonText} ${position}`;
   }
 
-  return buttonText;
+  return `${buttonText} drawer`;
 };
 
 const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...props }) => {
   const restoreFocusSourceAttributes = useRestoreFocusSource();
+
   return (
     <InlineDrawer {...restoreFocusSourceAttributes} {...props}>
       <DrawerHeader>
@@ -104,7 +81,7 @@ const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...p
             <Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} onClick={() => setOpen(false)} />
           }
         >
-          {getMappedPosition(props.position)} Inline Drawer
+          {capitalize(props.position!)} Inline Drawer
         </DrawerHeaderTitle>
       </DrawerHeader>
 
@@ -118,8 +95,8 @@ const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...p
 export const Inline = () => {
   const styles = useStyles();
 
-  const [leftOpen, setLeftOpen] = React.useState(false);
-  const [rightOpen, setRightOpen] = React.useState(false);
+  const [startOpen, setStartOpen] = React.useState(false);
+  const [endOpen, setEndOpen] = React.useState(false);
   const [bottomOpen, setBottomOpen] = React.useState(false);
 
   const restoreFocusTargetAttributes = useRestoreFocusTarget();
@@ -127,20 +104,20 @@ export const Inline = () => {
   return (
     <div className={mergeClasses(styles.root, styles.flexColumn)}>
       <div className={styles.root}>
-        <DrawerInlineExample as="aside" open={leftOpen} setOpen={setLeftOpen} position="start" />
+        <DrawerInlineExample as="aside" open={startOpen} setOpen={setStartOpen} position="start" />
 
         <div className={styles.content}>
           <div className={styles.buttons}>
-            <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
-              {setButtonText(leftOpen, 'start')}
+            <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setStartOpen(!startOpen)}>
+              {getButtonText(startOpen, 'start')}
             </Button>
 
-            <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
-              {setButtonText(rightOpen, 'end')}
+            <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setEndOpen(!endOpen)}>
+              {getButtonText(endOpen, 'end')}
             </Button>
 
             <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setBottomOpen(!bottomOpen)}>
-              {setButtonText(bottomOpen, 'bottom')}
+              {getButtonText(bottomOpen, 'bottom')}
             </Button>
           </div>
 
@@ -153,7 +130,7 @@ export const Inline = () => {
           ))}
         </div>
 
-        <DrawerInlineExample open={rightOpen} setOpen={setRightOpen} position="end" />
+        <DrawerInlineExample open={endOpen} setOpen={setEndOpen} position="end" />
       </div>
 
       <DrawerInlineExample open={bottomOpen} setOpen={setBottomOpen} position="bottom" />

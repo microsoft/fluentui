@@ -1,10 +1,10 @@
+import type { Meta } from '@storybook/react';
 import descriptionMd from './UseAnnounceDescription.md';
 
 export { Default } from './UseAnnounceDefault.stories';
 
 export default {
   title: 'Utilities/ARIA live/useAnnounce',
-  component: null,
   parameters: {
     docs: {
       description: {
@@ -12,4 +12,4 @@ export default {
       },
     },
   },
-};
+} satisfies Meta;
