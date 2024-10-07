@@ -80,7 +80,9 @@ export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaSta
   const thumbStyles = useThumbStyles();
 
   state.root.className = mergeClasses(colorAreaClassNames.root, rootStyles, state.root.className);
-  state.thumb.className = mergeClasses(colorAreaClassNames.thumb, thumbStyles.thumb, state.thumb.className);
+  if (state.thumb) {
+    state.thumb.className = mergeClasses(colorAreaClassNames.thumb, thumbStyles.thumb, state.thumb.className);
+  }
 
   return state;
 };

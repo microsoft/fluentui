@@ -8,7 +8,7 @@ export type ColorAreaOnColorChangeData = EventData<'click' | 'onMouseMove', Reac
 
 export type ColorAreaSlots = {
   root: NonNullable<Slot<'div'>>;
-  thumb: NonNullable<Slot<'div'>>;
+  thumb?: NonNullable<Slot<'div'>>;
 };
 
 /**

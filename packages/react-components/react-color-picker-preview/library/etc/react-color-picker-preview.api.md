@@ -45,7 +45,7 @@ export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {
 // @public (undocumented)
 export type ColorAreaSlots = {
     root: NonNullable<Slot<'div'>>;
-    thumb: NonNullable<Slot<'div'>>;
+    thumb?: NonNullable<Slot<'div'>>;
 };
 
 // @public

@@ -10,9 +10,5 @@ import type { ColorAreaState, ColorAreaSlots } from './ColorArea.types';
 export const renderColorArea_unstable = (state: ColorAreaState) => {
   assertSlots<ColorAreaSlots>(state);
 
-  return (
-    <state.root>
-      <state.thumb />
-    </state.root>
-  );
+  return <state.root>{state.thumb && <state.thumb />}</state.root>;
 };
