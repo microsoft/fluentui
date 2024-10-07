@@ -153,6 +153,12 @@ export default {
 
 export const Default: Story = {};
 
+export const IconOnly: Story = {
+  args: {
+    iconOnly: true,
+  },
+};
+
 export const Appearance: Story = {
   render: renderComponent(html<StoryArgs<FluentMenuButton>>`
     <fluent-menu-button>Default</fluent-menu-button>
