@@ -68,7 +68,6 @@ import {
   Person20Filled,
   Person20Regular,
 } from '@fluentui/react-icons';
-import { check } from 'prettier';
 
 const useStyles = makeStyles({
   root: {
