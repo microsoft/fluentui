@@ -32,12 +32,12 @@ export interface IDonutChartProps extends ICartesianChartProps {
   /**
    * Define a custom callout renderer for a data point
    */
-  onRenderCalloutPerDataPoint?: (dataPointCalloutProps: IChartDataPoint) => JSX.Element;
+  onRenderCalloutPerDataPoint?: (dataPointCalloutProps: IChartDataPoint) => JSX.Element | null;
 
   /**
    * props for the callout in the chart
    */
-  calloutProps: IPopoverComponentProps;
+  calloutProps?: IPopoverComponentProps;
 
   /**
    * The prop used to define the culture to localized the numbers
