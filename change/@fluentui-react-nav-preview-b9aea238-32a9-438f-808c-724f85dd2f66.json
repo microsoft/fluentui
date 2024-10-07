@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: Add proprs for SubNavItems and Tooltips. Other pixel pushing on SplitNavItem",
+  "comment": "feat: Add props for SplitSubNavItems and Tooltips. Other pixel pushing on SplitNavItem",
   "packageName": "@fluentui/react-nav-preview",
   "email": "matejera@microsoft.com",
   "dependentChangeType": "patch"
