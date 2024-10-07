@@ -271,6 +271,7 @@ export const VCDynamic = () => {
           maxBarWidth={maxBarWidth}
           xAxisInnerPadding={xAxisInnerPaddingEnabled ? xAxisInnerPadding : undefined}
           xAxisOuterPadding={xAxisOuterPaddingEnabled ? xAxisOuterPadding : undefined}
+          hideTickOverlap={true}
         />
       </div>
       <div>

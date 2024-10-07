@@ -69,31 +69,58 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       overflowHoverCardLegends.push(hoverCardElement);
     });
     const overflowString = props.overflowText ? props.overflowText : 'more';
+    return props.enabledWrapLines ? renderWrappedLegends() : renderLegends();
 
-    return (
-      <div
-        {...focusAttributes}
-        {...arrowAttributes}
-        {...(allowFocusOnLegends && {
-          role: 'listbox',
-          'aria-label': 'Legends',
-          'aria-multiselectable': canSelectMultipleLegends,
-        })}
-        style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}
-        className={classes.root}
-      >
-        <Overflow>
-          <div className={classes.resizableArea}>
+    function renderLegends(): JSX.Element {
+      return (
+        <div
+          {...focusAttributes}
+          {...arrowAttributes}
+          {...(allowFocusOnLegends && {
+            role: 'listbox',
+            'aria-label': 'Legends',
+            'aria-multiselectable': canSelectMultipleLegends,
+          })}
+          style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}
+          className={classes.root}
+        >
+          <Overflow>
+            <div className={classes.resizableArea}>
+              {dataToRender.map((item, id) => (
+                <OverflowItem key={id} id={id.toString()}>
+                  {_renderButton(item)}
+                </OverflowItem>
+              ))}
+              <OverflowMenu itemIds={itemIds} title={`${overflowString}`} items={overflowHoverCardLegends} />
+            </div>
+          </Overflow>
+        </div>
+      );
+    }
+
+    function renderWrappedLegends(): JSX.Element {
+      return (
+        <div
+          {...focusAttributes}
+          {...arrowAttributes}
+          {...(allowFocusOnLegends && {
+            role: 'listbox',
+            'aria-label': 'Legends',
+            'aria-multiselectable': canSelectMultipleLegends,
+          })}
+          style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}
+          className={classes.root}
+        >
+          <div className={classes.resizableArea} style={{ display: 'flex', flexWrap: 'wrap', overflow: 'auto' }}>
             {dataToRender.map((item, id) => (
-              <OverflowItem key={id} id={id.toString()}>
+              <div key={id} style={{ flex: '0 1 auto', margin: '4px' }}>
                 {_renderButton(item)}
-              </OverflowItem>
+              </div>
             ))}
-            <OverflowMenu itemIds={itemIds} title={`${overflowString}`} items={overflowHoverCardLegends} />
           </div>
-        </Overflow>
-      </div>
-    );
+        </div>
+      );
+    }
 
     function _generateData(): ILegendItem[] {
       const { allowFocusOnLegends = true, shape } = props;
@@ -235,6 +262,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
           onFocus={onHoverHandler}
           onBlur={onMouseOut}
           appearance={'outline'}
+          size="small"
           style={{
             '--rect-height': legend.isLineLegendInBarChart ? '4px' : '12px',
             '--rect-backgroundColor': legend.stripePattern ? '' : color,
