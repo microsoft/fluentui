@@ -203,7 +203,7 @@ const mapBorderRadiusTokens = (effects: IEffects): Partial<BorderRadiusTokens> =
 
 /**
  * Creates a v9 theme from a v8 theme.
- * You can optional pass a base v9 theme; otherwise webLightTheme is used.
+ * You can optional pass a base v9 theme; otherwise webLightTheme or webDarkTheme is used, depending on whether the v8 theme is inverted
  */
 export const createV9Theme = (themeV8: ThemeV8, baseThemeV9?: ThemeV9): ThemeV9 => {
   const baseTheme = baseThemeV9 ?? (themeV8.isInverted ? webDarkTheme : webLightTheme);
