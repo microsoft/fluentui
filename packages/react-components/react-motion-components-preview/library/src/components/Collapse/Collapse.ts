@@ -1,6 +1,8 @@
 import { motionTokens, createPresenceComponent } from '@fluentui/react-motion';
 import type { PresenceMotionFnCreator } from '../../types';
 
+type CollapseOrientation = 'horizontal' | 'vertical';
+
 type CollapseVariantParams = {
   /** Time (ms) for the enter transition (expand). Defaults to the `durationNormal` value (200 ms). */
   enterDuration?: number;
@@ -18,6 +20,9 @@ type CollapseVariantParams = {
 type CollapseRuntimeParams = {
   /** Whether to animate the opacity. Defaults to `true`. */
   animateOpacity?: boolean;
+
+  /** The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height. */
+  orientation?: CollapseOrientation;
 };
 
 /** Define a presence motion for collapse/expand */
@@ -28,25 +33,29 @@ export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantPara
     exitDuration = enterDuration,
     exitEasing = enterEasing,
   } = {}) =>
-  ({ element, animateOpacity = true }) => {
+  ({ element, animateOpacity = true, orientation = 'vertical' }) => {
+    // TODO: don't change opacity at all if animateOpacity is false
     const fromOpacity = animateOpacity ? 0 : 1;
     const toOpacity = 1;
-    const fromHeight = '0'; // Could be a custom param in the future to start partially expanded
-    const toHeight = `${element.scrollHeight}px`;
-    const overflow = 'hidden';
+    const fromSize = '0'; // Could be a custom param in the future to start with partially expanded width or height
+    const measuredSize = orientation === 'horizontal' ? element.scrollWidth : element.scrollHeight;
+    const toSize = `${measuredSize}px`;
+    // use generic names for size and overflow, handling vertical or horizontal orientation
+    const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
+    const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
 
     const enterKeyframes = [
-      { opacity: fromOpacity, maxHeight: fromHeight, overflow },
+      { opacity: fromOpacity, [sizeName]: fromSize, [overflowName]: 'hidden' },
       // Transition to the height of the content, at 99.99% of the duration.
-      { opacity: toOpacity, maxHeight: toHeight, offset: 0.9999, overflow },
+      { opacity: toOpacity, [sizeName]: toSize, offset: 0.9999, [overflowName]: 'hidden' },
       // On completion, remove the maxHeight because the content might need to expand later.
       // This extra keyframe is simpler than firing a callback on completion.
-      { opacity: toOpacity, maxHeight: 'unset', overflow },
+      { opacity: toOpacity, [sizeName]: 'unset', [overflowName]: 'hidden' },
     ];
 
     const exitKeyframes = [
-      { opacity: toOpacity, maxHeight: toHeight, overflow },
-      { opacity: fromOpacity, maxHeight: fromHeight, overflow },
+      { opacity: toOpacity, [sizeName]: toSize, [overflowName]: 'hidden' },
+      { opacity: fromOpacity, [sizeName]: fromSize, [overflowName]: 'hidden' },
     ];
 
     return {
