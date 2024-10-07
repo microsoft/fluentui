@@ -7,6 +7,7 @@ import { IChartDataPoint } from '../../DonutChart';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { getNextGradient } from '../../utilities/index';
 import { IAccessibilityProps, ILegend, Legends } from '../../index';
+import { ScaleOrdinal } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import PopoverComponent from '../CommonComponents/Popover';
@@ -26,7 +27,6 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
     const _uniqText: string = useId('_Pie_');
     /* eslint-disable @typescript-eslint/no-explicit-any */
     let _currentHoverElement: any;
-    let _calloutId: string = useId('callout');
     let _calloutAnchorPoint: IChartDataPoint | null;
     let _emptyChartId: string | null;
     const legendContainer = React.useRef<HTMLDivElement | null>(null);

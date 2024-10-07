@@ -185,6 +185,7 @@ export interface ICartesianChartProps {
     chartLabel?: string;
     className?: string;
     customDateTimeFormatter?: (dateTime: Date) => string;
+    customProps?: (dataPointCalloutProps: any) => IPopoverComponentProps;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
     enableReflow?: boolean;
@@ -703,7 +704,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     chartType: ChartTypes;
     children(props: IChildProps): React_2.ReactNode;
     culture?: string;
-    customizedCallout?: any;
     datasetForXAxisDomain?: string[];
     enableFirstRenderOptimization?: boolean;
     // (undocumented)
@@ -711,7 +711,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     getDomainMargins?: (containerWidth: number) => IMargins;
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
-    isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
@@ -743,15 +742,18 @@ export interface IPopoverComponentProps {
     // (undocumented)
     culture?: string;
     // (undocumented)
-    customizedCallout?: JSX.Element;
-    // (undocumented)
-    customProps?: IPopoverComponentProps;
+    customProps?: {
+        customizedCallout?: JSX.Element;
+        customCalloutProps?: IPopoverComponentProps;
+    };
     // (undocumented)
     descriptionMessage?: string;
     // (undocumented)
     hoverXValue?: string | number;
     // (undocumented)
     isCalloutForStack?: boolean;
+    // (undocumented)
+    isCartesian?: boolean;
     // (undocumented)
     isPopoverOpen?: boolean;
     // (undocumented)
@@ -791,6 +793,8 @@ export interface IPopoverComponentStyles {
     calloutContentY: string;
     // (undocumented)
     calloutDateTimeContainer: string;
+    // (undocumented)
+    calloutInfoContainer: string;
     // (undocumented)
     calloutlegendText: string;
     // (undocumented)
