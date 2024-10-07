@@ -1,0 +1,143 @@
+import * as React from 'react';
+import {
+  Button,
+  Carousel,
+  CarouselAnnouncerFunction,
+  CarouselCard,
+  CarouselNav,
+  CarouselNavButton,
+  CarouselSlider,
+  Dialog,
+  DialogSurface,
+  DialogTrigger,
+  Image,
+  makeStyles,
+  shorthands,
+  tokens,
+  typographyStyles,
+} from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  surface: {
+    padding: 0,
+    ...shorthands.border('none'),
+    overflow: 'hidden',
+  },
+  carousel: { padding: 0 },
+  card: {},
+  footer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 'auto',
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingVerticalXXL} ${tokens.spacingVerticalXXL} ${tokens.spacingVerticalXXL}`,
+  },
+  header: {
+    display: 'block',
+    // We use margin instead of padding to avoid messing with the focus indicator in the header
+    margin: `${tokens.spacingVerticalXXL} ${tokens.spacingVerticalXXL} ${tokens.spacingVerticalS} ${tokens.spacingVerticalXXL}`,
+    ...typographyStyles.subtitle1,
+  },
+  text: {
+    display: 'block',
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingVerticalXXL}`,
+    ...typographyStyles.body1,
+  },
+});
+
+const PAGES = [
+  {
+    alt: 'Copilot logo',
+    imgSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg',
+    header: 'Discover Copilot, a whole new way to work',
+    text: 'Explore new ways to work smarter and faster using the power of AI. Copilot in [Word] can help you [get started from scratch], [work from an existing file], [get actionable insights about documents], and more.',
+  },
+  {
+    alt: 'Copilot logo 2',
+    imgSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg',
+    header: 'Use your own judgment',
+    text: 'Copilot can make mistakes so remember to verify the results. To help improve the experience, please share your feedback with us.',
+  },
+];
+
+const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
+  console.log(`Carousel slide ${index + 1} of ${totalSlides}, ${PAGES[index].header}`);
+  return `Carousel slide ${index + 1} of ${totalSlides}, ${PAGES[index].header}`;
+};
+
+export const CarouselFirstRunExperience = () => {
+  const styles = useStyles();
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [open, setModalOpen] = React.useState(false);
+  const totalPages = PAGES.length;
+
+  const setPage = (page: number) => {
+    if (page < 0 || page >= totalPages) {
+      setModalOpen(false);
+      return;
+    }
+    setActiveIndex(page);
+  };
+  // NearButton and FarButton are function components that handle navigation and focus management
+  const NearButton = () => (
+    <Button onClick={() => setPage(activeIndex - 1)}>{activeIndex <= 0 ? 'Not Now' : 'Previous'}</Button>
+  );
+
+  const FarButton = () => (
+    <Button appearance="primary" onClick={() => setPage(activeIndex + 1)}>
+      {activeIndex === totalPages - 1 ? 'Try Copilot' : 'Next'}
+    </Button>
+  );
+
+  return (
+    <Dialog
+      open={open}
+      onOpenChange={(e, data) => {
+        if (data.open) {
+          // Reset on open (avoid changing carousel values while Modal is closed)
+          console.log('Set active index on open:');
+          setActiveIndex(0);
+          // You could restore the previous page on open here to persist state instead
+          // requestAnimationFrame(() => {
+          //   setActiveIndex(1);
+          // });
+        }
+        setModalOpen(data.open);
+      }}
+    >
+      <DialogTrigger>
+        <Button>Open Dialog</Button>
+      </DialogTrigger>
+      <DialogSurface className={styles.surface}>
+        <Carousel
+          className={styles.carousel}
+          groupSize={1}
+          circular
+          announcement={getAnnouncement}
+          activeIndex={activeIndex}
+          fade
+          onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
+        >
+          <CarouselSlider>
+            {PAGES.map((page, index) => (
+              <CarouselCard className={styles.card} key={`fre-card-${index}`}>
+                <Image src={page.imgSrc} width={600} height={324} alt={page.imgSrc} />
+                <h1 tabIndex={-1} className={styles.header}>
+                  {page.header}
+                </h1>
+                <span className={styles.text}>{page.text}</span>
+              </CarouselCard>
+            ))}
+          </CarouselSlider>
+          <div className={styles.footer}>
+            {NearButton()}
+            <CarouselNav appearance="brand">
+              {index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}
+            </CarouselNav>
+            {FarButton()}
+          </div>
+        </Carousel>
+      </DialogSurface>
+    </Dialog>
+  );
+};

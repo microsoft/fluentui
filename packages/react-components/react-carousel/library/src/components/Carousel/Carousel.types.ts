@@ -58,6 +58,12 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   whitespace?: boolean;
 
   /**
+   * Sets motion to fade in/out style with minimal movement
+   * Defaults: false
+   */
+  fade?: boolean;
+
+  /**
    * Localizes the string used to announce carousel page changes
    * Defaults to: undefined
    */
