@@ -46,6 +46,7 @@ export class BaseTablist extends FASTElement {
    */
   protected disabledChanged(prev: boolean, next: boolean): void {
     toggleState(this.elementInternals, 'disabled', next);
+    this.elementInternals.ariaDisabled = next.toString();
   }
 
   /**

@@ -404,9 +404,7 @@ test.describe('Tablist', () => {
   });
 });
 
-// FIXME: When tablist is disabled, either itself or all of its tab children may need
-// `aria-disabled=true`.
-test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+test('should not have auto detectable accessibility issues', async ({ page }) => {
   await createElementInternalsTrapsForAxe(page);
 
   await page.goto(fixtureURL(storybookDocId));
