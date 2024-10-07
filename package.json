@@ -25,6 +25,7 @@
     "preinstall": "node ./scripts/package-manager/src/preinstall.js",
     "publish:beachball": "beachball publish -b origin/master --access public -y",
     "start": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/start",
+    "generate": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/generate-ui",
     "//": "↓↓↓ DEPRECATED ↓↓↓ - WILL BE REMOVED IN THE FUTURE",
     "prebuildto": "echo '⚠️ NOTE ⚠️:\nThis command is deprecated and will be removed.\nUse nx run <project>:<target> instead'",
     "buildto": "nx build --nxBail",
