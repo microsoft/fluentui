@@ -45,4 +45,9 @@ describe('Spinner', () => {
     expect(result.container.getElementsByClassName('fui-Spinner__Progressbar')).toBeNull;
     expect(result.container.getElementsByClassName('fui-Spinner__label')).toBeNull;
   });
+
+  it('renders span as a root slot tag', () => {
+    const result = render(<Spinner as="span" />);
+    expect(result.queryByRole('progressbar')?.tagName).toBe('SPAN');
+  });
 });
