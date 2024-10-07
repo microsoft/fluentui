@@ -364,9 +364,9 @@ packages/react-components/react-icons-compat/stories @microsoft/cxe-red @tomi-ms
 packages/react-components/react-tag-picker @microsoft/teams-prg
 packages/react-components/react-tag-picker/library @microsoft/teams-prg
 packages/react-components/react-tag-picker/stories @microsoft/teams-prg
-packages/react-components/react-carousel-preview @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
-packages/react-components/react-carousel-preview/library @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
-packages/react-components/react-carousel-preview/stories @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
+packages/react-components/react-carousel @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
+packages/react-components/react-carousel/library @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
+packages/react-components/react-carousel/stories @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
 packages/react-components/recipes @microsoft/fluentui-react @sopranopillow
 packages/react-components/react-motion-components-preview/library @microsoft/teams-prg
 packages/react-components/react-motion-components-preview/stories @microsoft/teams-prg
