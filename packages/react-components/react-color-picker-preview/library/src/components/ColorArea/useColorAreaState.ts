@@ -6,8 +6,11 @@ import type { ColorAreaState, ColorAreaProps } from './ColorArea.types';
 
 const { areaXProgressVar, areaYProgressVar, thumbColorVar, mainColorVar } = colorAreaCSSVars;
 
-const getPercent = (value: number, min: number, max: number) => {
-  return max === min ? 0 : ((value - min) / (max - min)) * 100;
+const MIN = 0;
+const MAX = 100;
+
+const getPercent = (value: number) => {
+  return ((value - MIN) / (MAX - MIN)) * 100;
 };
 
 type Coordinates = {
@@ -19,7 +22,7 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
   'use no memo';
 
   const { targetDocument } = useFluent();
-  const { color, min = 0, max = 100, x = 0, y = 0, onColorChange, onMouseDown, onMouseUp } = props;
+  const { color, x = 0, y = 0, onChange, onMouseDown, onMouseUp } = props;
 
   const [coordinates, setCoordinates] = useControllableState<Coordinates>({
     state: { x, y },
@@ -27,11 +30,11 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
   });
   const [isDragging, setIsDragging] = React.useState(false);
 
-  const clampedXValue = clamp(coordinates.x, min, max);
-  const clampedYValue = clamp(coordinates.y, min, max);
+  const clampedXValue = clamp(coordinates.x, MIN, MAX);
+  const clampedYValue = clamp(coordinates.y, MIN, MAX);
 
-  const valueXPercent = getPercent(clampedXValue, min, max);
-  const valueYPercent = getPercent(clampedYValue, min, max);
+  const valueXPercent = getPercent(clampedXValue);
+  const valueYPercent = getPercent(clampedYValue);
 
   function getCoordinates(event: React.MouseEvent<HTMLDivElement>) {
     const ref = state.root.ref as React.MutableRefObject<HTMLDivElement>;
@@ -40,15 +43,15 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
     const newY = 100 - Math.round(((event.clientY - rect.top) / rect.height) * 100);
 
     return {
-      x: clamp(newX, min, max),
-      y: clamp(newY, min, max),
+      x: clamp(newX, MIN, MAX),
+      y: clamp(newY, MIN, MAX),
     };
   }
 
   const requestColorChange = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     const _coordinates = getCoordinates(event);
     setCoordinates(_coordinates);
-    return onColorChange?.(event, {
+    return onChange?.(event, {
       type: 'onMouseMove',
       event,
       ..._coordinates,

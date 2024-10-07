@@ -6,8 +6,8 @@ import type { ColorAreaSlots, ColorAreaState } from './ColorArea.types';
 export const colorAreaClassNames: SlotClassNames<ColorAreaSlots> = {
   root: 'fui-ColorArea',
   thumb: 'fui-ColorArea__thumb',
-  inputX: 'fui-ColorArea__input',
-  inputY: 'fui-ColorArea__input',
+  inputX: 'fui-ColorArea__inputX',
+  inputY: 'fui-ColorArea__inputY',
 };
 
 export const colorAreaCSSVars = {

@@ -9,10 +9,8 @@ describe('ColorArea', () => {
     displayName: 'ColorArea',
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
-    const result = render(<ColorArea>Default ColorArea</ColorArea>);
-    expect(result.container).toMatchSnapshot();
+    const result = render(<ColorArea color="red" />);
+    expect(result.container).toMatchInlineSnapshot();
   });
 });

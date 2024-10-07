@@ -24,7 +24,7 @@ export const Default = () => {
   const [x, setX] = React.useState(100);
   const [y, setY] = React.useState(100);
   const [color, setColor] = React.useState('');
-  const onColorChange: ColorAreaProps['onColorChange'] = (_, data) => {
+  const onChange: ColorAreaProps['onChange'] = (_, data) => {
     data.x && setX(data.x);
     data.y && setY(data.y);
   };
@@ -44,7 +44,7 @@ export const Default = () => {
       <Label htmlFor={id}>
         ColorArea [ Current Values: X: {x} Y: {y} ]
       </Label>
-      <ColorArea color={`hsl(${hue}, 100%, 50%)`} x={x} y={y} max={100} onColorChange={onColorChange} id={id} />
+      <ColorArea color={`hsl(${hue}, 100%, 50%)`} x={x} y={y} onChange={onChange} id={id} />
       <div className={styles.previewColor} style={{ backgroundColor: color }} />
       <Button onClick={resetSlider}>Reset</Button>
     </div>

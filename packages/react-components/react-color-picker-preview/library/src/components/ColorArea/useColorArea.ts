@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getPartitionedNativeProps, getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { ColorAreaProps, ColorAreaState } from './ColorArea.types';
 import { useColorAreaState_unstable } from './useColorAreaState';
 

@@ -37,11 +37,21 @@ export const ColorArea: ForwardRefComponent<ColorAreaProps>;
 export const colorAreaClassNames: SlotClassNames<ColorAreaSlots>;
 
 // @public
-export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {};
+export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {
+    color?: string;
+    max?: number;
+    min?: number;
+    onColorChange?: EventHandler<ColorAreaOnColorChangeData>;
+    x?: number;
+    y?: number;
+};
 
 // @public (undocumented)
 export type ColorAreaSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
+    thumb: NonNullable<Slot<'div'>>;
+    inputX: NonNullable<Slot<'input'>>;
+    inputY: NonNullable<Slot<'input'>>;
 };
 
 // @public

@@ -16,28 +16,19 @@ export type ColorAreaSlots = {
 /**
  * ColorArea Props
  */
-export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {
+export type ColorAreaProps = Omit<
+  ComponentProps<Partial<ColorAreaSlots>, 'inputX'>,
+  'defaultValue' | 'onChange' | 'value'
+> & {
   /**
    * The current color of the ColorArea.
    */
   color?: string;
 
   /**
-   * The max value of the ColorArea.
-   * @default 100
-   */
-  max?: number;
-
-  /**
-   * The min value of the ColorArea.
-   * @default 0
-   */
-  min?: number;
-
-  /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
-  onColorChange?: EventHandler<ColorAreaOnColorChangeData>;
+  onChange?: EventHandler<ColorAreaOnColorChangeData>;
 
   /**
    * The current X value of the controlled ColorArea.
