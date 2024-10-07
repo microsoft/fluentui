@@ -132,7 +132,7 @@ interface ICreateXAxisParams extends Partial<Omit<utils.IXAxisParams, 'domainNRa
   domainNRangeValues?: Partial<utils.IDomainNRange>;
 }
 const createXAxisParams = (xAxisParams?: ICreateXAxisParams): utils.IXAxisParams => {
-  const xAxisElement = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  const xAxisElement = document.createElementNS('http://www.w3.org/2000/svg', 'g') as SVGSVGElement;
 
   return {
     xAxisElement,
@@ -317,7 +317,7 @@ describe('prepareDatapoints', () => {
 });
 
 const createYAxisParams = (yAxisParams?: Partial<utils.IYAxisParams>): utils.IYAxisParams => {
-  const yAxisElement = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  const yAxisElement = document.createElementNS('http://www.w3.org/2000/svg', 'g') as SVGSVGElement;
 
   return {
     yMinMaxValues: {

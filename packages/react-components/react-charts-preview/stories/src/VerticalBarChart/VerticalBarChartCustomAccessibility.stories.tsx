@@ -63,7 +63,6 @@ export const VCCustomAccess = () => {
           yAxisTickCount={6}
           colors={customColors}
           hideLegend={true}
-          enableReflow={true}
           lineLegendColor={`rgb(174, 140, 0)`}
         />
       </div>

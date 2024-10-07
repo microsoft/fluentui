@@ -25,21 +25,22 @@ import {
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import PopoverComponent from './Popover';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { ResponsiveContainer } from './ResponsiveContainer';
 
 /**
  * Cartesian Chart component
  * {@docCategory CartesianChart}
  */
-export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProps> = React.forwardRef<
+const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> = React.forwardRef<
   HTMLDivElement,
   IModifiedCartesianChartProps
 >((props, forwardedRef) => {
   const chartContainer = React.useRef<HTMLDivElement>();
   let legendContainer: HTMLDivElement;
   const minLegendContainerHeight: number = 40;
-  const xAxisElement = React.useRef<SVGElement>();
-  const yAxisElement = React.useRef<SVGElement>();
-  const yAxisElementSecondary = React.useRef<SVGElement>();
+  const xAxisElement = React.useRef<SVGSVGElement>();
+  const yAxisElement = React.useRef<SVGSVGElement>();
+  const yAxisElementSecondary = React.useRef<SVGSVGElement>();
   let margins: IMargins;
   const idForGraph: string = 'chart_';
   const idForDefaultTabbableElement: string = 'defaultTabbableElement_';
@@ -116,21 +117,6 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
         _fitParentContainer();
       }
     }
-    if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
-      const rotateLabelProps = {
-        node: xAxisElement.current!,
-        xAxis: _xScale,
-      };
-      const rotatedHeight = rotateXAxisLabels(rotateLabelProps);
-      if (
-        isRemoveValCalculated &&
-        removalValueForTextTuncate !== rotatedHeight! + margins.bottom! &&
-        rotatedHeight! > 0
-      ) {
-        setRemovalValueForTextTuncate(rotatedHeight! + margins.bottom!);
-        setIsRemoveValCalculated(false);
-      }
-    }
     if (props.chartType === ChartTypes.HorizontalBarChartWithAxis && props.showYAxisLables && yAxisElement.current) {
       const maxYAxisLabelLength = calculateLongestLabelWidth(
         props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
@@ -148,6 +134,25 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
     }
   }, [props, prevProps]);
 
+  React.useEffect(() => {
+    if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
+      const rotateLabelProps = {
+        node: xAxisElement.current!,
+        xAxis: _xScale,
+      };
+      const rotatedHeight = rotateXAxisLabels(rotateLabelProps);
+
+      if (
+        isRemoveValCalculated &&
+        removalValueForTextTuncate !== rotatedHeight! + margins.bottom! &&
+        rotatedHeight! > 0
+      ) {
+        setRemovalValueForTextTuncate(rotatedHeight! + margins.bottom!);
+        setIsRemoveValCalculated(false);
+      }
+    }
+  });
+
   /**
    * Dedicated function to return the Callout JSX Element , which can further be used to only call this when
    * only the calloutprops and charthover props changes.
@@ -157,12 +162,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function _generateCallout(calloutProps: any): JSX.Element {
-    const popoverProps = {
-      ...calloutProps,
-      customizedCallout: props.customizedCallout,
-      isCalloutForStack: props.isCalloutForStack,
-    };
-    return <PopoverComponent {...popoverProps} />;
+    return <PopoverComponent {...calloutProps} />;
   }
 
   const {
@@ -209,7 +209,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       ),
       containerHeight: containerHeight - removalValueForTextTuncate!,
       margins: margins,
-      xAxisElement: xAxisElement.current! as SVGSVGElement,
+      xAxisElement: xAxisElement.current!,
       showRoundOffXTickValues: true,
       xAxisCount: props.xAxisTickCount,
       xAxistickSize: props.xAxistickSize,
@@ -223,7 +223,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       margins: margins,
       containerWidth: containerWidth,
       containerHeight: containerHeight - removalValueForTextTuncate!,
-      yAxisElement: yAxisElement.current as SVGSVGElement,
+      yAxisElement: yAxisElement.current,
       yAxisTickFormat: props.yAxisTickFormat!,
       yAxisTickCount: props.yAxisTickCount!,
       yMinValue: props.yMinValue || 0,
@@ -320,7 +320,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
           margins: margins,
           containerWidth: containerWidth,
           containerHeight: containerHeight - removalValueForTextTuncate!,
-          yAxisElement: yAxisElementSecondary.current as SVGSVGElement,
+          yAxisElement: yAxisElementSecondary.current,
           yAxisTickFormat: props.yAxisTickFormat!,
           yAxisTickCount: props.yAxisTickCount!,
           yMinValue: props.secondaryYScaleOptions?.yMinValue || 0,
@@ -382,6 +382,8 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       xScale,
       yScale,
       yScaleSecondary,
+      containerHeight,
+      containerWidth,
     });
 
     if (!props.hideTooltip && calloutProps!.isPopoverOpen) {
@@ -523,7 +525,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
           {...svgProps}
         >
           <g
-            ref={(e: SVGElement | null) => {
+            ref={(e: SVGSVGElement | null) => {
               xAxisElement.current = e!;
             }}
             id={`xAxisGElement${idForGraph}`}
@@ -545,7 +547,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
             />
           )}
           <g
-            ref={(e: SVGElement | null) => {
+            ref={(e: SVGSVGElement | null) => {
               yAxisElement.current = e!;
             }}
             id={`yAxisGElement${idForGraph}`}
@@ -557,7 +559,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
           {props.secondaryYScaleOptions && (
             <g>
               <g
-                ref={(e: SVGElement | null) => {
+                ref={(e: SVGSVGElement | null) => {
                   yAxisElementSecondary.current = e!;
                 }}
                 id={`yAxisGElementSecondary${idForGraph}`}
@@ -614,4 +616,21 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
     </div>
   );
 });
+
+export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProps> = props => {
+  if (!props.responsive) {
+    return <CartesianChartBase {...props} />;
+  }
+
+  return (
+    <ResponsiveContainer onResize={props.onResize} width={props.width} height={props.height}>
+      {({ containerWidth, containerHeight }) => (
+        <CartesianChartBase {...props} width={containerWidth} height={containerHeight} />
+      )}
+    </ResponsiveContainer>
+  );
+};
 CartesianChart.displayName = 'CartesianChart';
+CartesianChart.defaultProps = {
+  responsive: true,
+};

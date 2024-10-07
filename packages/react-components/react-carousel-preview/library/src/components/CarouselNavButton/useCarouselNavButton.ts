@@ -1,4 +1,4 @@
-import { ARIAButtonElement, ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
+import { type ARIAButtonElement, type ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import {
   getIntrinsicElementProps,
@@ -12,6 +12,7 @@ import * as React from 'react';
 
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 import { useCarouselNavContext } from '../CarouselNav/CarouselNavContext';
+import { useCarouselNavIndexContext } from '../CarouselNav/CarouselNavIndexContext';
 import type { CarouselNavButtonProps, CarouselNavButtonState } from './CarouselNavButton.types';
 
 /**
@@ -29,10 +30,13 @@ export const useCarouselNavButton_unstable = (
 ): CarouselNavButtonState => {
   const { onClick, as = 'button' } = props;
 
-  const { index, appearance } = useCarouselNavContext();
+  const { appearance } = useCarouselNavContext();
+  const index = useCarouselNavIndexContext();
+
   const selectPageByIndex = useCarouselContext(ctx => ctx.selectPageByIndex);
   const selected = useCarouselContext(ctx => ctx.activeIndex === index);
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
+  const resetAutoplay = useCarouselContext(ctx => ctx.resetAutoplay);
 
   const handleClick: ARIAButtonSlotProps['onClick'] = useEventCallback(event => {
     onClick?.(event);
@@ -40,6 +44,9 @@ export const useCarouselNavButton_unstable = (
     if (!event.defaultPrevented && isHTMLElement(event.target)) {
       selectPageByIndex(event, index);
     }
+
+    // Ensure any autoplay timers are extended/reset
+    resetAutoplay();
   });
 
   const defaultTabProps = useTabsterAttributes({

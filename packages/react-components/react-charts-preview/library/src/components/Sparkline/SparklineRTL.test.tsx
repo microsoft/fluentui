@@ -3,17 +3,10 @@ import { act, queryAllByAttribute, render, waitFor } from '@testing-library/reac
 import { emptySparklinePoints, sparkline1Points } from './Sparkline.test';
 import { Sparkline } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { resetIds } from '@fluentui/react';
 
 expect.extend(toHaveNoViolations);
 
-function sharedBeforeEach() {
-  resetIds();
-}
-
 describe('Sparkline chart rendering', () => {
-  beforeEach(sharedBeforeEach);
-
   test('Should re-render the Sparkline chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<Sparkline data={emptySparklinePoints} />);
@@ -32,8 +25,6 @@ describe('Sparkline chart rendering', () => {
 });
 
 describe('Sparkline Chart - axe-core', () => {
-  beforeEach(sharedBeforeEach);
-
   test('Should pass accessibility tests', async () => {
     const { container } = render(<Sparkline data={sparkline1Points} />);
     let axeResults;

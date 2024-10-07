@@ -152,6 +152,10 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     const _isRTL: boolean = isRtl();
     let xAxisCalloutAccessibilityData: IAccessibilityProps = {};
 
+    props.eventAnnotationProps &&
+      props.eventAnnotationProps.labelHeight &&
+      (eventLabelHeight = props.eventAnnotationProps.labelHeight);
+
     const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
     const [activeLegend, setActiveLegend] = React.useState<string>('');
     const [YValueHover, setYValueHover] = React.useState<[]>([]);
@@ -555,7 +559,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
               fill={tokens.colorNeutralBackground1}
               strokeWidth={DEFAULT_LINE_STROKE_SIZE}
               stroke={lineColor}
-              visibility={isPointHighlighted ? 'visibility' : 'hidden'}
+              visibility={'hidden'}
               onMouseMove={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event)}
               onMouseOver={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event)}
               onMouseOut={_handleMouseOut}
@@ -1275,6 +1279,11 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       isPopoverOpen: isPopoverOpen,
       isCalloutForStack: true,
       culture: props.culture ?? 'en-us',
+      isCartesian: true,
+      customProps: {
+        customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,
+        customCalloutProps: props.customProps ? props.customProps(dataPointCalloutProps!) : undefined,
+      },
     };
     const tickParams = {
       tickValues,
@@ -1287,14 +1296,12 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         chartTitle={props.data.chartTitle}
         points={points}
         chartType={ChartTypes.LineChart}
-        isCalloutForStack
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
         getmargins={_getMargins}
         getGraphData={_initializeLineChartData}
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
-        customizedCallout={_getCustomizedCallout()}
         onChartMouseLeave={_handleChartMouseLeave}
         enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
         /* eslint-disable react/jsx-no-bind */
@@ -1324,15 +1331,14 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                   {_renderedColorFillBars}
                   {lines}
                 </g>
-                {/*{eventAnnotationProps && (
+                {eventAnnotationProps && (
                   <EventsAnnotation
-                    theme={props.theme}
                     {...eventAnnotationProps}
                     scale={props.xScale!}
                     chartYTop={margins.top! + eventLabelHeight}
                     chartYBottom={props.containerHeight! - 35}
                   />
-                )} */}
+                )}
               </g>
             </>
           );

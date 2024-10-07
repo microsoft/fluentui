@@ -1,7 +1,9 @@
 import { html } from '@microsoft/fast-element';
-import { Meta, renderComponent, Story, StoryArgs } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Drawer as FluentDrawer } from './drawer.js';
 import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
+
+type Story = StoryObj<FluentDrawer>;
 
 const dismissed20Regular = html<StoryArgs<FluentDrawer>>`<svg
   fill="currentColor"
@@ -60,10 +62,12 @@ const storyTemplate = html<StoryArgs<FluentDrawer>>`
   <div class="demo">
     <fluent-drawer
       id="drawer-default"
-      position="${x => x.position}"
-      size="${x => x.size}"
-      type="${x => x.type}"
-      style="${x => (x['--drawer-width'] !== '' ? `--drawer-width: ${x['--drawer-width']}` : void 0)}"
+      position="${story => story.position}"
+      size="${story => story.size}"
+      type="${story => story.type}"
+      style="${story =>
+        story['--drawer-width'] !== '' ? `--drawer-width: ${story['--drawer-width']};` : ''} ${story =>
+        story['--dialog-backdrop'] !== '' ? `--dialog-backdrop: ${story['--dialog-backdrop']};` : ''}"
     >
       <fluent-drawer-body>
         <span slot="title"> Drawer Header</span>
@@ -135,65 +139,63 @@ const storyTemplate = html<StoryArgs<FluentDrawer>>`
 
 export default {
   title: 'Components/Drawer',
+  render: renderComponent(storyTemplate),
   args: {
     type: DrawerType.modal,
     size: DrawerSize.medium,
     position: DrawerPosition.start,
     '--drawer-width': '',
+    '--dialog-backdrop': 'var(--colorBackgroundOverlay)',
   },
   argTypes: {
     position: {
-      options: Object.values(DrawerPosition),
-      control: {
-        type: 'select',
-      },
+      control: 'select',
+      description: 'Sets the position of drawer',
+      mapping: { '': null, ...DrawerPosition },
+      options: ['', ...Object.values(DrawerPosition)],
       table: {
-        type: {
-          summary: 'Sets the position of drawer',
-        },
-        defaultValue: {
-          summary: DrawerPosition.start,
-        },
+        category: 'attributes',
+        type: { summary: Object.values(DrawerPosition).join('|') },
       },
     },
     type: {
-      options: Object.values(DrawerType),
-      control: {
-        type: 'select',
-      },
+      control: 'select',
+      description: 'Sets the modal type of the drawer',
+      mapping: { '': null, ...DrawerType },
+      options: ['', ...Object.values(DrawerType)],
       table: {
-        type: {
-          summary: 'Sets the modal type of the drawer',
-        },
-        defaultValue: {
-          summary: DrawerType.modal,
-        },
+        category: 'attributes',
+        type: { summary: Object.values(DrawerType).join('|') },
       },
     },
     size: {
-      options: Object.values(DrawerSize),
-      control: {
-        type: 'select',
-      },
+      control: 'select',
+      description: 'Sets the modal type of the drawer',
+      mapping: { '': null, ...DrawerSize },
+      options: ['', ...Object.values(DrawerSize)],
       table: {
-        type: {
-          summary: 'Sets the width of drawer',
-        },
-        defaultValue: {
-          summary: DrawerSize.medium,
-        },
+        category: 'attributes',
+        type: { summary: Object.values(DrawerSize).join('|') },
       },
     },
     '--drawer-width': {
       control: 'text',
+      description: 'Sets the custom width of drawer, e.g. 300px',
       required: false,
       table: {
-        type: {
-          summary: 'Sets the custom width of drawer, e.g. 300px',
-        },
+        category: 'CSS Custom Properties',
+      },
+    },
+    '--dialog-backdrop': {
+      control: 'color',
+      description: 'Sets the custom color of the drawer backdrop, e.g. #000000',
+      required: false,
+      table: {
+        category: 'CSS Custom Properties',
+        type: { summary: 'Defaults to --colorBackgroundOverlay' },
       },
     },
   },
 } as Meta<FluentDrawer>;
 
-export const Drawer: Story<FluentDrawer> = renderComponent(storyTemplate).bind({});
+export const Default: Story = {};

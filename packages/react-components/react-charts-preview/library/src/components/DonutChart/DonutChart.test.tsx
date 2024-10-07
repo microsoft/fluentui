@@ -2,7 +2,6 @@ jest.mock('react-dom');
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { chartPointsDC, chartPointsDCElevateMinimums, pointsDC } from '../../utilities/test-data';
-import { resetIds } from '../../Utilities';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { IDonutChartProps, DonutChart } from './index';
@@ -13,10 +12,6 @@ import { act as domAct } from 'react-dom/test-utils';
 
 // Wrapper of the DonutChart to be tested.
 let wrapper: ReactWrapper<IDonutChartProps> | undefined;
-
-function sharedBeforeEach() {
-  resetIds();
-}
 
 function sharedAfterEach() {
   if (wrapper) {
@@ -51,7 +46,6 @@ export const noColorsChartPoints: IChartProps = {
 };
 
 describe('DonutChart snapShot testing', () => {
-  beforeEach(sharedBeforeEach);
   it('renders DonutChart correctly', () => {
     let component: any;
     rendererAct(() => {
@@ -138,7 +132,6 @@ describe('DonutChart snapShot testing', () => {
 });
 
 describe('DonutChart - basic props', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   it('Should mount legend when hideLegend false ', () => {
@@ -194,7 +187,6 @@ describe('DonutChart - basic props', () => {
 });
 
 describe('DonutChart - mouse events', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   it('Should render callout correctly on mouseover', () => {
@@ -242,7 +234,6 @@ describe('DonutChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
-  beforeEach(sharedBeforeEach);
   it('No empty chart aria label div rendered', () => {
     domAct(() => {
       wrapper = mount(<DonutChart data={chartPointsDC} />);

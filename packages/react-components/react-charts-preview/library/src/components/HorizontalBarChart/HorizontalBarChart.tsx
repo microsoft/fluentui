@@ -391,9 +391,13 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
         YValue={hoverValue!}
         color={lineColor}
         isCalloutForStack={false}
-        customizedCallout={
-          props.onRenderCalloutPerHorizontalBar ? props.onRenderCalloutPerHorizontalBar(barCalloutProps!) : undefined
-        }
+        customProps={{
+          customizedCallout: props.onRenderCalloutPerHorizontalBar
+            ? props.onRenderCalloutPerHorizontalBar(barCalloutProps!)
+            : undefined,
+          customCalloutProps: props.customProps ? props.customProps(barCalloutProps!) : undefined,
+        }}
+        isCartesian={false}
       />
     </div>
   ) : (

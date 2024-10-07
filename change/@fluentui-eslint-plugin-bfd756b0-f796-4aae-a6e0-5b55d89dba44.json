@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: resolve circular dependencies and remove ban-context-export tests tight coupling to monorepo setup/package",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

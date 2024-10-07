@@ -3,17 +3,11 @@ import '@testing-library/jest-dom';
 import { chartPointsDC } from '../../utilities/test-data';
 import { DonutChart } from './index';
 import * as React from 'react';
-import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider } from '@fluentui/react';
+import { FluentProvider } from '@fluentui/react-provider';
 import * as utils from '../../utilities/utilities';
-import { resetIds } from '../../Utilities';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
-
-function sharedBeforeEach() {
-  resetIds();
-}
 
 beforeAll(() => {
   // https://github.com/jsdom/jsdom/issues/3368
@@ -32,7 +26,6 @@ beforeAll(() => {
 
 describe('Donut chart interactions', () => {
   beforeEach(() => {
-    sharedBeforeEach();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
   afterEach(() => {
@@ -112,7 +105,10 @@ describe('Donut chart interactions', () => {
     expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
     const firstLegend = screen.queryByText('first')?.closest('button');
     expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-    expect(firstLegend).toHaveAttribute('style', '--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;');
+    expect(firstLegend).toHaveAttribute(
+      'style',
+      '--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;',
+    );
   });
 
   test('Should deselect legend on double mouse click on legends', () => {
@@ -129,7 +125,10 @@ describe('Donut chart interactions', () => {
     expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
     const firstLegend = screen.queryByText('first')?.closest('button');
     expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-    expect(firstLegend).toHaveAttribute('style', '--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;');
+    expect(firstLegend).toHaveAttribute(
+      'style',
+      '--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;',
+    );
     // double click on same first legend
     fireEvent.click(legend!);
 
@@ -168,7 +167,7 @@ describe('Donut chart interactions', () => {
     fireEvent.mouseOver(getById(container, /Pie/i)[1]);
 
     // Assert
-    await(() => {
+    await (() => {
       expect(getByClass(container, /PopoverSurface/i)[1]).toHaveTextContent('39,000');
     });
   });
@@ -193,9 +192,9 @@ describe('Donut chart interactions', () => {
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
-      <ThemeProvider theme={DarkTheme}>
+      <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
         <DonutChart culture={window.navigator.language} data={chartPointsDC} innerRadius={55} />
-      </ThemeProvider>,
+      </FluentProvider>,
     );
 
     // Assert
@@ -204,7 +203,6 @@ describe('Donut chart interactions', () => {
 });
 
 describe('Donut Chart - axe-core', () => {
-  beforeEach(sharedBeforeEach);
   test('Should pass accessibility tests', async () => {
     const { container } = render(<DonutChart data={chartPointsDC} />);
     let axeResults;

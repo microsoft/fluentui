@@ -12,7 +12,7 @@ import { SankeyNode } from 'd3-sankey';
 import { SVGProps } from 'react';
 import { TimeLocaleDefinition } from 'd3-time-format';
 
-// @public
+// @public (undocumented)
 export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartProps>;
 
 // @public
@@ -99,7 +99,7 @@ export const DataVizPalette: {
     highSuccess: string;
 };
 
-// @public
+// @public (undocumented)
 export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 
 // @public (undocumented)
@@ -198,7 +198,9 @@ export interface ICartesianChartProps {
     legendsOverflowText?: any;
     margins?: IMargins;
     noOfCharsToTruncate?: number;
+    onResize?: (width: number, height: number) => void;
     parentRef?: HTMLElement | null;
+    responsive?: boolean;
     rotateXAxisLables?: boolean;
     secondaryYAxistitle?: string;
     secondaryYScaleOptions?: {
@@ -368,10 +370,11 @@ export interface IDonutChart {
 export interface IDonutChartProps extends ICartesianChartProps {
     calloutProps: IPopoverComponentProps;
     culture?: string;
+    customProps?: (dataPointCalloutProps: IChartDataPoint) => IPopoverComponentProps;
     data?: IChartProps;
     hideLabels?: boolean;
     innerRadius?: number;
-    onRenderCalloutPerDataPoint?: (dataPointCalloutProps: IChartDataPoint) => JSX.Element;
+    onRenderCalloutPerDataPoint?: (dataPointCalloutProps: IChartDataPoint) => JSX.Element | undefined;
     showLabelsInPercent?: boolean;
     styles?: IDonutChartStyles;
     valueInsideDonut?: string | number;
@@ -384,6 +387,7 @@ export interface IDonutChartStyleProps extends ICartesianChartStyleProps {
 // @public
 export interface IDonutChartStyles {
     chart?: string;
+    chartWrapper?: string;
     legendContainer: string;
     root?: string;
 }
@@ -469,11 +473,12 @@ export interface IHorizontalBarChartProps extends React.RefAttributes<HTMLDivEle
     className?: string;
     color?: string;
     culture?: string;
+    customProps?: (dataPointCalloutProps: IChartDataPoint) => IPopoverComponentProps;
     data?: IChartProps[];
     hideLabels?: boolean;
     hideRatio?: boolean[];
     hideTooltip?: boolean;
-    onRenderCalloutPerHorizontalBar?: (props: IChartDataPoint) => JSX.Element;
+    onRenderCalloutPerHorizontalBar?: (props: IChartDataPoint) => JSX.Element | undefined;
     showTriangle?: boolean;
     styles?: IHorizontalBarChartStyles;
     variant?: HorizontalBarChartVariant;
@@ -729,28 +734,28 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
 // @public (undocumented)
 export interface IPopoverComponentProps {
     // (undocumented)
-    clickPosition: {
+    clickPosition?: {
         x: number;
         y: number;
     };
     // (undocumented)
     color?: string;
     // (undocumented)
-    culture: string;
+    culture?: string;
     // (undocumented)
     customizedCallout?: JSX.Element;
+    // (undocumented)
+    customProps?: IPopoverComponentProps;
     // (undocumented)
     descriptionMessage?: string;
     // (undocumented)
     hoverXValue?: string | number;
     // (undocumented)
-    isCalloutForStack: boolean;
+    isCalloutForStack?: boolean;
     // (undocumented)
-    isPopoverOpen: boolean;
+    isPopoverOpen?: boolean;
     // (undocumented)
-    Legend?: string | number | Date;
-    // (undocumented)
-    legend?: string;
+    legend?: string | number | Date;
     // (undocumented)
     ratio?: [number, number];
     // (undocumented)
@@ -895,7 +900,6 @@ export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
 // @public
 export interface IVerticalBarChartStyles extends ICartesianChartStyles {
     barLabel: string;
-    opacityChangeOnHover: string;
     // @deprecated
     xAxisTicks?: string;
     // @deprecated

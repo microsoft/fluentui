@@ -10,23 +10,27 @@ import { IAccessibilityProps, ILegend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import PopoverComponent from '../CommonComponents/Popover';
+import { ResponsiveContainer } from '../CommonComponents/ResponsiveContainer';
 
-const LEGEND_CONTAINER_HEIGHT = 40;
+const MIN_LEGEND_CONTAINER_HEIGHT = 40;
 
 // Create a DonutChart variant which uses these default styles and this styled subcomponent.
 /**
  * Donutchart component.
  * {@docCategory DonutChart}
  */
-export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwardRef<HTMLDivElement, IDonutChartProps>(
+const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardRef<HTMLDivElement, IDonutChartProps>(
   (props, forwardedRef) => {
-    let _rootElem: HTMLElement | null;
+    let colors: ScaleOrdinal<string, {}>;
+    const _rootElem = React.useRef<HTMLDivElement | null>(null);
     const _uniqText: string = useId('_Pie_');
     /* eslint-disable @typescript-eslint/no-explicit-any */
     let _currentHoverElement: any;
     let _calloutId: string = useId('callout');
     let _calloutAnchorPoint: IChartDataPoint | null;
     let _emptyChartId: string | null;
+    const legendContainer = React.useRef<HTMLDivElement | null>(null);
+    const prevSize = React.useRef<{ width?: number; height?: number }>({});
 
     const [showHover, setShowHover] = React.useState<boolean>(false);
     const [value, setValue] = React.useState<string | undefined>('');
@@ -45,31 +49,16 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
 
     React.useEffect(() => {
-      if (_rootElem) {
-        setWidth(_rootElem.offsetWidth);
-        setHeight(_rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT);
-      }
+      _fitParentContainer();
     }, []);
 
-    // TO DO: Need to check if this is required.
-    // This was part of getDerivedStateFromProps in v8. Keeping this changes the position of rendered donut chart.
-    // React.useEffect(() => {
-    //   let widthState: { _width: number } | undefined;
-    //   if (props.width && props.width !== _width) {
-    //     widthState = { _width: props.width };
-    //   }
-
-    //   let heightState: { _height: number } | undefined;
-    //   if (props.height && props.height !== _height) {
-    //     heightState = { _height: props.height - LEGEND_CONTAINER_HEIGHT };
-    //   }
-    //   if (widthState && widthState._width) {
-    //     setWidth(widthState!._width);
-    //   }
-    //   if (heightState && heightState._height) {
-    //     setHeight(heightState!._height);
-    //   }
-    // }, [props.width, props.height, _width, _height]);
+    React.useEffect(() => {
+      if (prevSize.current.height !== props.height || prevSize.current.width !== props.width) {
+        _fitParentContainer();
+      }
+      prevSize.current.height = props.height;
+      prevSize.current.width = props.width;
+    }, [props.width, props.height]);
 
     function _closeCallout() {
       setPopoverOpen(false);
@@ -96,19 +85,6 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
       });
       return elevatedData;
     }
-    function _setViewBox(node: SVGElement | null): void {
-      if (node === null) {
-        return;
-      }
-
-      const widthVal = node.parentElement ? node.parentElement.clientWidth : _width;
-
-      const heightVal =
-        node.parentElement && node.parentElement?.offsetHeight > _height! ? node.parentElement?.offsetHeight : _height;
-      const viewbox = `0 0 ${widthVal!} ${heightVal!}`;
-      node.setAttribute('viewBox', viewbox);
-    }
-
     function _createLegends(chartData: IChartDataPoint[]): JSX.Element {
       const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
         // mapping data to the format Legends component needs
@@ -247,6 +223,41 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
       }
     }
 
+    /**
+     * When screen resizes, along with screen, chart also auto adjusted.
+     * This method used to adjust height and width of the charts.
+     */
+    function _fitParentContainer(): void {
+      //_reqID = requestAnimationFrame(() => {
+      let legendContainerHeight;
+      if (props.hideLegend) {
+        // If there is no legend, need not to allocate some space from total chart space.
+        legendContainerHeight = 0;
+      } else {
+        const legendContainerComputedStyles = legendContainer.current && getComputedStyle(legendContainer.current);
+        legendContainerHeight =
+          ((legendContainer.current && legendContainer.current.getBoundingClientRect().height) ||
+            MIN_LEGEND_CONTAINER_HEIGHT) +
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginTop) || '0') +
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginBottom) || '0');
+      }
+      if (props.parentRef || _rootElem.current) {
+        const container = props.parentRef ? props.parentRef : _rootElem.current!;
+        const currentContainerWidth = container.getBoundingClientRect().width;
+        const currentContainerHeight =
+          container.getBoundingClientRect().height > legendContainerHeight
+            ? container.getBoundingClientRect().height
+            : 200;
+        const shouldResize =
+          _width !== currentContainerWidth || _height !== currentContainerHeight - legendContainerHeight;
+        if (shouldResize) {
+          setWidth(currentContainerWidth);
+          setHeight(currentContainerHeight - legendContainerHeight);
+        }
+      }
+      //});
+    }
+
     const { data, hideLegend = false } = props;
     const points = _addDefaultGradients(data?.chartData);
 
@@ -262,36 +273,30 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
     return !_isChartEmpty() ? (
       <div
         className={classes.root}
-        ref={(rootElem: HTMLElement | null) => (_rootElem = rootElem)}
+        ref={(rootElem: HTMLDivElement | null) => (_rootElem.current = rootElem)}
         onMouseLeave={_handleChartMouseLeave}
       >
-        <div {...focusAttributes}>
-          <div>
-            <svg
-              className={classes.chart}
-              aria-label={data?.chartTitle}
-              ref={(node: SVGElement | null) => _setViewBox(node)}
-            >
-              <Pie
-                width={_width!}
-                height={_height!}
-                outerRadius={outerRadius}
-                innerRadius={props.innerRadius!}
-                data={chartData!}
-                onFocusCallback={_focusCallback}
-                hoverOnCallback={_hoverCallback}
-                hoverLeaveCallback={_hoverLeave}
-                uniqText={_uniqText}
-                onBlurCallback={_onBlur}
-                activeArc={_getHighlightedLegend()}
-                focusedArcId={focusedArcId || ''}
-                href={props.href!}
-                valueInsideDonut={_toLocaleString(valueInsideDonut)}
-                showLabelsInPercent={props.showLabelsInPercent}
-                hideLabels={props.hideLabels}
-              />
-            </svg>
-          </div>
+        <div className={classes.chartWrapper} {...focusAttributes}>
+          <svg className={classes.chart} aria-label={data?.chartTitle} width={_width} height={_height}>
+            <Pie
+              width={_width!}
+              height={_height!}
+              outerRadius={outerRadius}
+              innerRadius={props.innerRadius!}
+              data={chartData!}
+              onFocusCallback={_focusCallback}
+              hoverOnCallback={_hoverCallback}
+              hoverLeaveCallback={_hoverLeave}
+              uniqText={_uniqText}
+              onBlurCallback={_onBlur}
+              activeArc={_getHighlightedLegend()}
+              focusedArcId={focusedArcId || ''}
+              href={props.href!}
+              valueInsideDonut={_toLocaleString(valueInsideDonut)}
+              showLabelsInPercent={props.showLabelsInPercent}
+              hideLabels={props.hideLabels}
+            />
+          </svg>
         </div>
         <PopoverComponent
           xCalloutValue={xCalloutValue}
@@ -303,11 +308,19 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
           YValue={value!}
           color={color}
           isCalloutForStack={false}
-          customizedCallout={
-            props.onRenderCalloutPerDataPoint ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps!) : undefined
-          }
+          customProps={{
+            customizedCallout: props.onRenderCalloutPerDataPoint
+              ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps!)
+              : undefined,
+            customCalloutProps: props.customProps ? props.customProps(dataPointCalloutProps!) : undefined,
+          }}
+          isCartesian={false}
         />
-        {!hideLegend && <div className={classes.legendContainer}>{legendBars}</div>}
+        {!hideLegend && (
+          <div ref={(e: HTMLDivElement) => (legendContainer.current = e)} className={classes.legendContainer}>
+            {legendBars}
+          </div>
+        )}
       </div>
     ) : (
       <div id={_emptyChartId!} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
@@ -315,8 +328,22 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
   },
 );
 
+export const DonutChart: React.FunctionComponent<IDonutChartProps> = props => {
+  if (!props.responsive) {
+    return <DonutChartBase {...props} />;
+  }
+
+  return (
+    <ResponsiveContainer onResize={props.onResize} width={props.width} height={props.height}>
+      {({ containerWidth, containerHeight }) => (
+        <DonutChartBase {...props} width={containerWidth} height={containerHeight} />
+      )}
+    </ResponsiveContainer>
+  );
+};
 DonutChart.displayName = 'DonutChart';
 DonutChart.defaultProps = {
   innerRadius: 0,
   hideLabels: true,
+  responsive: true,
 };

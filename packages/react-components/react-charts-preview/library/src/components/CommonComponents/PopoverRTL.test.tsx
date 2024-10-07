@@ -1,15 +1,10 @@
 import * as React from 'react';
 import PopoverComponent from './Popover';
-import { resetIds } from '../../Utilities';
 import { getByClass, getById } from '../../utilities/TestUtility.test';
 import { act, getByText, render, screen } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
-
-function sharedBeforeEach() {
-  resetIds();
-}
 
 beforeAll(() => {
   // https://github.com/jsdom/jsdom/issues/3368
@@ -82,7 +77,6 @@ describe('Popover', () => {
   test('displays the correct Legend', () => {
     const Legend = 'Sample Legend';
     const { container } = render(<PopoverComponent legend={Legend} isPopoverOpen={true} />);
-    screen.debug(container, Infinity);
     const LegendElement = getByText(container, /Sample Legend/);
     expect(LegendElement).toBeDefined();
   });
@@ -132,8 +126,6 @@ describe('Popover', () => {
 });
 
 describe('Popover - axe-core', () => {
-  beforeEach(sharedBeforeEach);
-
   test('Should pass accessibility tests', async () => {
     const { container } = render(<PopoverComponent isPopoverOpen={true} />);
     let axeResults;

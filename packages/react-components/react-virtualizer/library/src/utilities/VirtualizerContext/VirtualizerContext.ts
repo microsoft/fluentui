@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { VirtualizerContextProps } from './types';
-import { useMemo, useState } from 'react';
+import type { DynamicVirtualizerContextProps, VirtualizerContextProps } from './types';
+import { useMemo, useState, useRef } from 'react';
 
 const VirtualizerContext = React.createContext<VirtualizerContextProps | undefined>(
   undefined,
@@ -14,20 +14,26 @@ export const useVirtualizerContext_unstable = () => {
 
 export const useVirtualizerContextState_unstable = (
   passedContext?: VirtualizerContextProps,
-): VirtualizerContextProps => {
+): DynamicVirtualizerContextProps => {
   const virtualizerContext = useVirtualizerContext_unstable();
   const [_contextIndex, _setContextIndex] = useState<number>(-1);
+  const [_contextPosition, _setContextPosition] = useState<number>(0);
+  const childProgressiveSizes = useRef<number[]>([]);
 
   /* We respect any wrapped providers while also ensuring defaults or passed through
    * Order of usage -> Passed Prop -> Provider Context -> Internal State default
    */
-  const _context = useMemo(
-    () => passedContext ?? virtualizerContext ?? { contextIndex: _contextIndex, setContextIndex: _setContextIndex },
-    [_contextIndex, passedContext, virtualizerContext],
+  const context = useMemo(
+    () => ({
+      contextIndex: passedContext?.contextIndex ?? virtualizerContext?.contextIndex ?? _contextIndex,
+      setContextIndex: passedContext?.setContextIndex ?? virtualizerContext?.setContextIndex ?? _setContextIndex,
+      contextPosition: passedContext?.contextPosition ?? virtualizerContext?.contextPosition ?? _contextPosition,
+      setContextPosition:
+        passedContext?.setContextPosition ?? virtualizerContext?.setContextPosition ?? _setContextPosition,
+      childProgressiveSizes,
+    }),
+    [_contextIndex, _contextPosition, passedContext, virtualizerContext],
   );
-  const context = useMemo(() => {
-    return { contextIndex: _context.contextIndex, setContextIndex: _context.setContextIndex };
-  }, [_context]);
 
   return context;
 };

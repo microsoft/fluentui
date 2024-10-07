@@ -1,23 +1,28 @@
+import * as React from 'react';
 import { IChartDataPoint, IYValueHover } from '../../index';
+import { PopoverSurfaceSlots } from '@fluentui/react-popover';
 
 export interface IPopoverComponentProps {
-  clickPosition: { x: number; y: number };
-  isPopoverOpen: boolean;
+  clickPosition?: { x: number; y: number };
+  isPopoverOpen?: boolean;
   xCalloutValue?: string;
-  legend?: string;
+  legend?: string | number | Date;
   yCalloutValue?: string;
   YValue?: string | number | Date;
   XValue?: string;
   color?: string;
-  culture: string;
-  isCalloutForStack: boolean;
-  customizedCallout?: JSX.Element;
+  culture?: string;
+  customProps?: {
+    customizedCallout?: JSX.Element;
+    customCalloutProps?: IPopoverComponentProps;
+  };
+  isCalloutForStack?: boolean;
   xAxisCalloutAccessibilityData?: { ariaLabel?: string; data?: string };
   hoverXValue?: string | number;
   YValueHover?: IYValueHover[];
   descriptionMessage?: string;
-  Legend?: string | number | Date;
   ratio?: [number, number];
+  isCartesian?: boolean;
 }
 
 export interface IPopoverComponentStyles {
@@ -34,4 +39,5 @@ export interface IPopoverComponentStyles {
   ratio: string;
   numerator: string;
   denominator: string;
+  calloutInfoContainer: string;
 }

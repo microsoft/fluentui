@@ -4,11 +4,6 @@
     "libsDir": "packages",
     "appsDir": "apps"
   },
-  "pluginsConfig": {
-    "@nx/js": {
-      "analyzeSourceFiles": false
-    }
-  },
   "targetDefaults": {
     "bundle-size": {
       "dependsOn": ["build"],
@@ -79,6 +74,23 @@
       ],
       "options": {
         "command": "eslint src"
+      }
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier --write {projectRoot}"
+      },
+      "metadata": {
+        "help": {
+          "command": "yarn prettier --help",
+          "options": {}
+        }
+      },
+      "configurations": {
+        "check": {
+          "command": "prettier --check {projectRoot}"
+        }
       }
     },
     "verify-packaging": {

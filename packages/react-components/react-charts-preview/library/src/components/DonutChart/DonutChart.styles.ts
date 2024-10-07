@@ -10,6 +10,7 @@ export const donutClassNames: SlotClassNames<IDonutChartStyles> = {
   root: 'fui-donut__root',
   chart: 'fui-donut__chart',
   legendContainer: 'fui-donut__legendContainer',
+  chartWrapper: 'fui-donut__chartWrapper',
 };
 
 /**
@@ -17,10 +18,9 @@ export const donutClassNames: SlotClassNames<IDonutChartStyles> = {
  */
 const useStyles = makeStyles({
   root: {
-    alignItems: 'center',
-    // TO DO remove these
-    // display: 'flex',
-    // flexDirection: 'column',
+    // alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
     width: '100%',
     height: '100%',
   },
@@ -48,5 +48,6 @@ export const useDonutChartStyles_unstable = (props: IDonutChartProps): IDonutCha
       baseStyles.legendContainer,
       props.styles?.legendContainer,
     ),
+    chartWrapper: donutClassNames.chartWrapper,
   };
 };

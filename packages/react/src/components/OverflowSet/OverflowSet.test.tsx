@@ -364,7 +364,7 @@ describe('OverflowSet', () => {
         layerRef.current!.processInput('c');
         // Nothing should happen, the current keytip should still be the root
         expect(keytipTree.currentKeytip).toEqual(keytipTree.root);
-        expect(overflowKeytips.overflowItemKeytip3.onExecute).not.toBeCalled();
+        expect(overflowKeytips.overflowItemKeytip3.onExecute).not.toHaveBeenCalled();
       });
     });
 

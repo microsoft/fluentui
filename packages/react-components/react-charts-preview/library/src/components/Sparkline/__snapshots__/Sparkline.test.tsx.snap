@@ -8,8 +8,27 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
   <svg
     aria-label="Sparkline with label 19.64"
     height={20}
+    tabIndex={0}
     width={80}
-  />
+  >
+    <path
+      className="line"
+      d={null}
+      fill="transparent"
+      opacity={1}
+      stroke="#00AA00"
+      strokeWidth={2}
+    />
+    <path
+      aria-hidden={true}
+      className="area"
+      d={null}
+      fill="#00AA00"
+      fillOpacity={0.2}
+      opacity={1}
+      role="img"
+    />
+  </svg>
   <svg
     height={20}
     width={80}
@@ -36,6 +55,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly with no legend 1
   <svg
     aria-label="Sparkline with label 131.33"
     height={20}
+    tabIndex={0}
     width={80}
   >
     <path

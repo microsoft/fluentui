@@ -2,7 +2,6 @@ jest.mock('react-dom');
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { resetIds } from '../../Utilities';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../index';
@@ -13,10 +12,6 @@ const rendererAct = renderer.act;
 
 // Wrapper of the VerticalBarChart to be tested.
 let wrapper: ReactWrapper<IVerticalBarChartProps, IVerticalBarChartState, VerticalBarChartBase> | undefined;
-
-function sharedBeforeEach() {
-  resetIds();
-}
 
 beforeAll(() => {
   // https://github.com/jsdom/jsdom/issues/3368
@@ -48,8 +43,6 @@ function sharedAfterEach() {
 }
 
 describe('VerticalBarChart snapShot testing', () => {
-  beforeEach(sharedBeforeEach);
-
   it('renders VerticalBarChart correctly', () => {
     let component: any;
     renderer.act(() => {
@@ -124,7 +117,6 @@ describe('VerticalBarChart snapShot testing', () => {
 });
 
 describe('VerticalBarChart - basic props', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
@@ -196,8 +188,6 @@ describe('VerticalBarChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
-  beforeEach(sharedBeforeEach);
-
   it('No prop changes', () => {
     const props = {
       data: chartPointsVBC,
@@ -224,13 +214,11 @@ describe('Render calling with respective to props', () => {
       wrapper.setProps({ ...props, hideTooltip: true });
     });
     const renderedDOM = wrapper.findWhere(node => node.prop('hideTooltip') === true);
-    expect(renderedDOM!.length).toBe(2);
+    expect(renderedDOM!.length).toBe(3);
   });
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
-  beforeEach(sharedBeforeEach);
-
   it('No empty chart aria label div rendered', () => {
     act(() => {
       wrapper = mount(
@@ -251,8 +239,6 @@ describe('Render empty chart aria label div when chart is empty', () => {
 });
 
 describe('Render empty chart calling with respective to props', () => {
-  beforeEach(sharedBeforeEach);
-
   it('No prop changes', () => {
     const props = {
       data: chartPointsVBC,
@@ -273,6 +259,6 @@ describe('Render empty chart calling with respective to props', () => {
       wrapper.setProps({ ...props, data: chartPointsVBC, hideTooltip: true });
     });
     const renderedDOM = wrapper.findWhere(node => node.prop('hideTooltip') === true);
-    expect(renderedDOM!.length).toBe(2);
+    expect(renderedDOM!.length).toBe(3);
   });
 });

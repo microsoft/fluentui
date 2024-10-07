@@ -6,7 +6,6 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts-preview';
-import { getGradientFromToken, DataVizGradientPalette } from '@fluentui/react-charting';
 
 import { Button, Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
@@ -28,20 +27,6 @@ export const DonutDynamic = () => {
     [DataVizPalette.color8, DataVizPalette.color9, DataVizPalette.color10, DataVizPalette.color11],
     [DataVizPalette.color12, DataVizPalette.color13, DataVizPalette.color14, DataVizPalette.color15],
     [DataVizPalette.color16, DataVizPalette.color17, DataVizPalette.color18],
-  ];
-  const _gradientColors = [
-    [
-      getGradientFromToken(DataVizGradientPalette.gradient1),
-      getGradientFromToken(DataVizGradientPalette.gradient3),
-      getGradientFromToken(DataVizGradientPalette.gradient9),
-    ],
-    [getGradientFromToken(DataVizGradientPalette.gradient2), getGradientFromToken(DataVizGradientPalette.gradient4)],
-    [
-      getGradientFromToken(DataVizGradientPalette.gradient5),
-      getGradientFromToken(DataVizGradientPalette.gradient6),
-      getGradientFromToken(DataVizGradientPalette.gradient10),
-    ],
-    [getGradientFromToken(DataVizGradientPalette.gradient7), getGradientFromToken(DataVizGradientPalette.gradient8)],
   ];
 
   const [dynamicData, setDynamicData] = React.useState<IChartDataPoint[]>([
@@ -69,10 +54,10 @@ export const DonutDynamic = () => {
 
   const _changeColors = (): void => {
     setDynamicData([
-      { legend: 'first', data: 40, color: _randomColor(0), gradient: _randomGradient(0) },
-      { legend: 'second', data: 20, color: _randomColor(1), gradient: _randomGradient(1) },
-      { legend: 'third', data: 30, color: _randomColor(2), gradient: _randomGradient(2) },
-      { legend: 'fourth', data: 10, color: _randomColor(3), gradient: _randomGradient(3) },
+      { legend: 'first', data: 40, color: _randomColor(0) },
+      { legend: 'second', data: 20, color: _randomColor(1) },
+      { legend: 'third', data: 30, color: _randomColor(2) },
+      { legend: 'fourth', data: 10, color: _randomColor(3) },
     ]);
     setStatusKey(statusKey + 1);
     setStatusMessage('Donut chart colors changed');
@@ -84,10 +69,6 @@ export const DonutDynamic = () => {
 
   const _randomColor = (index: number): string => {
     return getColorFromToken(_colors[index][Math.floor(Math.random() * _colors[index].length)]);
-  };
-
-  const _randomGradient = (index: number): [string, string] => {
-    return _gradientColors[index][Math.floor(Math.random() * _gradientColors[index].length)];
   };
 
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
@@ -126,7 +107,6 @@ export const DonutDynamic = () => {
           onChange={_onShowPercentCheckChange}
         />
       </div>
-
       <DonutChart
         data={data}
         innerRadius={innerRadius}
@@ -135,6 +115,7 @@ export const DonutDynamic = () => {
         }}
         hideLabels={hideLabels}
         showLabelsInPercent={showLabelsInPercent}
+        height={248}
       />
       <Button onClick={_changeData}> Change data </Button>
       <Button onClick={_changeColors}> Change colors </Button>

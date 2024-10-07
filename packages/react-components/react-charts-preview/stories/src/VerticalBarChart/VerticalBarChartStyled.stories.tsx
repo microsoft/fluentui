@@ -53,7 +53,6 @@ export const VCStyled = () => {
           colors={customColors}
           lineLegendColor={`rgb(174, 140, 0)`}
           hideLegend={true}
-          enableReflow={true}
         />
       </div>
     </>
