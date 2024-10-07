@@ -1,5 +1,7 @@
 import * as React from 'react';
 import {
+  NavCategory,
+  NavCategoryItem,
   Hamburger,
   NavDrawer,
   NavDrawerBody,
@@ -11,6 +13,10 @@ import {
   SplitNavItem,
   SplitNavItemProps,
   NavItemProps,
+  NavCategoryItemProps,
+  NavCategoryProps,
+  NavSubItemGroup,
+  NavDivider,
 } from '@fluentui/react-nav-preview';
 import {
   Label,
@@ -24,6 +30,7 @@ import {
   RadioGroup,
   Switch,
   Tooltip,
+  TooltipProps,
   makeStyles,
   tokens,
   useId,
@@ -54,6 +61,12 @@ import {
   PersonCircle24Regular,
   Pin20Filled,
   Pin20Regular,
+  NotePin20Filled,
+  NotePin20Regular,
+  PeopleStar20Filled,
+  PeopleStar20Regular,
+  Person20Filled,
+  Person20Regular,
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -88,56 +101,81 @@ const HealthPlans = bundleIcon(HeartPulse20Filled, HeartPulse20Regular);
 const TrainingPrograms = bundleIcon(BoxMultiple20Filled, BoxMultiple20Regular);
 const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
 const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
+const JobPostings = bundleIcon(NotePin20Filled, NotePin20Regular);
+const Person = bundleIcon(Person20Filled, Person20Regular);
+const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
+const Pin = bundleIcon(Pin20Filled, Pin20Regular);
 
-const splitNavItems: SplitNavItemProps[] = [
+type SplitNavItemNestedProps = {
+  splitNavItem?: SplitNavItemProps;
+  navCategory?: NavCategoryProps;
+  navCategoryItem?: NavCategoryItemProps;
+  navSubItems?: SplitNavItemProps[];
+};
+
+const splitNavItemNestedProps: SplitNavItemNestedProps[] = [
   {
-    navItem: { value: '1', icon: <Dashboard /> },
-    children: 'Dashboard',
+    splitNavItem: { navItem: { value: '1', icon: <Dashboard />, children: 'Dashboard' } },
   },
   {
-    navItem: { value: '2', icon: <Announcements /> },
-    children: 'Announcements',
+    splitNavItem: { navItem: { value: '2', icon: <Announcements />, children: 'Announcements' } },
   },
   {
-    navItem: { value: '3', icon: <EmployeeSpotlight /> },
-    children: 'Employee Spotlight',
+    splitNavItem: { navItem: { value: '3', icon: <EmployeeSpotlight />, children: 'Employee Spotlight' } },
   },
   {
-    navItem: { value: '4', icon: <Search /> },
-    children: 'Profile Search',
+    splitNavItem: { navItem: { value: '4', icon: <Search />, children: 'Profile Search' } },
   },
   {
-    navItem: { value: '5', icon: <PerformanceReviews /> },
-    children: 'Performance Reviews',
+    splitNavItem: { navItem: { value: '5', icon: <PerformanceReviews />, children: 'Performance Reviews' } },
   },
   {
-    navItem: { value: '9', icon: <Interviews /> },
-    children: 'Interviews',
+    navCategory: { value: '6' },
+    navCategoryItem: { icon: <JobPostings />, children: 'Job Postings' },
+    navSubItems: [
+      { navItem: { value: '7', children: 'Openings' } },
+      { navItem: { value: '8', children: 'Submissions' } },
+    ],
   },
   {
-    navItem: { value: '10', icon: <HealthPlans /> },
-    children: 'Health Plans',
+    splitNavItem: { navItem: { value: '9', icon: <Interviews />, children: 'Interviews' } },
   },
   {
-    navItem: { value: '15', icon: <TrainingPrograms /> },
-    children: 'Training Programs',
+    splitNavItem: { navItem: { value: '10', icon: <HealthPlans />, children: 'Health Plans' } },
   },
   {
-    navItem: { value: '19', icon: <Analytics /> },
-    children: 'Workforce Data',
+    navCategory: { value: '11' },
+    navCategoryItem: { icon: <Person />, children: 'Retirement' },
+    navSubItems: [
+      { navItem: { value: '13', children: 'Plan Information' } },
+      { navItem: { value: '14', children: 'Fund Performance' } },
+    ],
   },
   {
-    navItem: { value: '20', icon: <Reports /> },
-    children: 'Reports',
+    splitNavItem: { navItem: { value: '15', icon: <TrainingPrograms />, children: 'Training Programs' } },
+  },
+  {
+    navCategory: { value: '16' },
+    navCategoryItem: { icon: <CareerDevelopment />, children: 'Career Development' },
+    navSubItems: [
+      { navItem: { value: '17', children: 'Career Paths' } },
+      { navItem: { value: '18', children: 'Planning' } },
+    ],
+  },
+  {
+    splitNavItem: { navItem: { value: '19', icon: <Analytics />, children: 'Workforce Data' } },
+  },
+  {
+    splitNavItem: { navItem: { value: '20', icon: <Reports />, children: 'Reports' } },
   },
 ];
 
-const SomeMenuPopover = () => {
+const DemoMenuPopover = () => {
   return (
     <MenuPopover>
       <MenuList>
-        <MenuItem>Item a</MenuItem>
-        <MenuItem>Item b</MenuItem>
+        <MenuItem>New </MenuItem>
+        <MenuItem>New Window</MenuItem>
       </MenuList>
     </MenuPopover>
   );
@@ -179,33 +217,79 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
     if (pinnedValues.includes(value)) {
       setPinnedValues(pinnedValues.filter(v => v !== value));
     } else {
-      setPinnedValues([...pinnedValues, value]);
+      setPinnedValues([value, ...pinnedValues]);
     }
   };
 
-  const generateSplitNavItems = () => {
-    return splitNavItems.map((item: SplitNavItemProps, index) => {
-      const value: string = (item.navItem as NavItemProps).value;
+  const getToggleButtonProps = (value?: string) => {
+    if (value) {
+      return {
+        checked: pinnedValues.includes(value),
+        onClick: () => handlePinClick(value),
+        icon: pinnedValues.includes(value) ? <Pin /> : <Pin20Regular />,
+      };
+    }
+  };
 
+  const getToggleButtonTooltipProps = (value?: string): TooltipProps => {
+    if (value) {
+      return {
+        content: pinnedValues.includes(value) ? 'Unpin' : 'Pin',
+        relationship: 'label',
+      };
+    }
+    return { content: 'Pin', relationship: 'label' };
+  };
+
+  const getSubItems = (subItems: SplitNavItemProps[]) => {
+    return subItems.map((subItem, subItemIndex) => {
+      const subItemValue = (subItem.navItem as NavItemProps).value;
       return (
-        <Menu key={index} positioning="below-end">
-          <MenuTrigger>
+        <Menu key={subItemIndex}>
+          <MenuTrigger key={`${subItemIndex}-sit`}>
             {(triggerProps: MenuButtonProps) => (
               <SplitNavItem
-                navItem={item.navItem}
-                toggleButton={{
-                  onClick: () => handlePinClick(value),
-                  icon: pinnedValues.includes(value) ? <Pin20Filled /> : <Pin20Regular />,
-                }}
+                key={`${subItemIndex}-sni`}
+                navItem={subItem.navItem}
                 menuButton={triggerProps}
-              >
-                {item.children}
-              </SplitNavItem>
+                menuButtonTooltip={{ content: 'More options', relationship: 'label' }}
+                toggleButtonTooltip={getToggleButtonTooltipProps(subItemValue)}
+                toggleButton={getToggleButtonProps(subItemValue)}
+              />
             )}
           </MenuTrigger>
-          <SomeMenuPopover />
+          <DemoMenuPopover />
         </Menu>
       );
+    });
+  };
+
+  const getNavItems = (isPinnable: boolean) => {
+    // We don't want the top four items to be pinnable.
+    const startIndex = isPinnable ? 4 : 0;
+    const endIndex = isPinnable ? splitNavItemNestedProps.length : 4;
+
+    return splitNavItemNestedProps.slice(startIndex, endIndex).map((item, index) => {
+      const itemValue = (item.splitNavItem?.navItem as NavItemProps)?.value;
+
+      if (itemValue) {
+        return (
+          <SplitNavItem
+            key={index}
+            navItem={item?.splitNavItem?.navItem}
+            toggleButtonTooltip={isPinnable ? getToggleButtonTooltipProps(itemValue) : null}
+            toggleButton={isPinnable ? getToggleButtonProps(itemValue) : undefined}
+          />
+        );
+      } else if (item.navCategoryItem) {
+        return (
+          <NavCategory key={index} value={item.navCategory?.value || ''}>
+            <NavCategoryItem key={`${index}-cat`} {...item.navCategoryItem} />
+            <NavSubItemGroup key={`${index}-sig`}>{getSubItems(item.navSubItems || [])}</NavSubItemGroup>
+          </NavCategory>
+        );
+      }
+      return null;
     });
   };
 
@@ -219,7 +303,9 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
         </NavDrawerHeader>
         <NavDrawerBody>
           {appItem}
-          {generateSplitNavItems()}
+          {getNavItems(false)}
+          <NavDivider />
+          {getNavItems(true)}
         </NavDrawerBody>
       </NavDrawer>
       <div className={styles.content}>
