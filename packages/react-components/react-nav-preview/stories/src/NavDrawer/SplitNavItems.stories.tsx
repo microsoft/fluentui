@@ -68,6 +68,7 @@ import {
   Person20Filled,
   Person20Regular,
 } from '@fluentui/react-icons';
+import { check } from 'prettier';
 
 const useStyles = makeStyles({
   root: {
@@ -217,18 +218,18 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
     if (pinnedValues.includes(value)) {
       setPinnedValues(pinnedValues.filter(v => v !== value));
     } else {
-      setPinnedValues([...pinnedValues, value]);
+      setPinnedValues([value, ...pinnedValues]);
     }
   };
 
   const getToggleButtonProps = (value?: string) => {
     if (value) {
       return {
+        checked: pinnedValues.includes(value),
         onClick: () => handlePinClick(value),
-        icon: pinnedValues.includes(value) ? <Pin20Filled /> : <Pin />,
+        icon: pinnedValues.includes(value) ? <Pin /> : <Pin20Regular />,
       };
     }
-    return { icon: <Pin /> };
   };
 
   const getToggleButtonTooltipProps = (value?: string): TooltipProps => {
