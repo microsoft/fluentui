@@ -3,10 +3,35 @@ import { join } from 'node:path';
 
 import { type BuildExecutorSchema } from '../schema';
 
-export async function processAsyncQueue(value: Promise<unknown>[], successCallback?: () => Promise<boolean>) {
+type Tasks = () => Promise<boolean>;
+
+export async function runInParallel(...tasks: Tasks[]): Promise<boolean> {
+  const processes = tasks.map(task => task());
+
+  return Promise.all(processes)
+    .then(() => {
+      return true;
+    })
+    .catch(err => {
+      logger.error(err);
+      return false;
+    });
+}
+
+export async function runSerially(...tasks: Tasks[]): Promise<boolean> {
+  for (const task of tasks) {
+    const result = await task();
+    if (!result) {
+      return false;
+    }
+  }
+  return true;
+}
+
+export async function processAsyncQueue(value: Promise<unknown>[]): Promise<boolean> {
   return Promise.all(value)
     .then(() => {
-      return successCallback ? successCallback() : true;
+      return true;
     })
     .catch(err => {
       logger.error(err);
