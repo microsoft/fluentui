@@ -142,11 +142,24 @@ export async function createElementInternalsTrapsForAxe(page: Page) {
   });
 }
 
+interface AnalyzePageWithAxeOptions {
+  exclude: string[];
+}
 /**
  * Helper function to run Axe analysis. The main motivation of creating this
  * function is to centralize the `.include('.sb-story')` call in case Storybook
  * changes the class name in future.
  */
-export async function analyzePageWithAxe(page: Page): Promise<ReturnType<AxeBuilder['analyze']>> {
-  return await new AxeBuilder({ page }).include('.sb-story').analyze();
+export async function analyzePageWithAxe(
+  page: Page,
+  options?: AnalyzePageWithAxeOptions
+): Promise<ReturnType<AxeBuilder['analyze']>> {
+  let builder = new AxeBuilder({ page }).include('.sb-story');
+  if (options?.exclude?.length) {
+    for (const exclude of options.exclude) {
+      builder = builder.exclude(exclude);
+      console.log(builder);
+    }
+  }
+  return await builder.analyze();
 }

@@ -837,14 +837,15 @@ test.describe('TextInput', () => {
   });
 });
 
-// FIXME: examples need accessible names.
-test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+test('should not have auto detectable accessibility issues', async ({ page }) => {
   await createElementInternalsTrapsForAxe(page);
 
   await page.goto(fixtureURL(storybookDocId));
   await page.waitForFunction(() => customElements.whenDefined('fluent-text-input'));
 
-  const results = await analyzePageWithAxe(page);
+  const results = await analyzePageWithAxe(page, {
+    exclude: ['#story--components-textinput--without-label-inner'],
+  });
 
   expect(results.violations).toEqual([]);
 });
