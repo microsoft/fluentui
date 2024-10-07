@@ -27,20 +27,10 @@ export function useMessageBarReflow(enabled: boolean = false) {
       }
 
       const entry = entries[0];
-
-      if (!entry) {
-        return;
-      }
-
       // `borderBoxSize` is not supported before Chrome 84, Firefox 92, nor Safari 15.4
-      let inlineSize: number | undefined;
-      if (entry.borderBoxSize?.length) {
-        inlineSize = entry.borderBoxSize[0].inlineSize;
-      } else {
-        inlineSize = entry.target.getBoundingClientRect().width;
-      }
+      const inlineSize = entry?.borderBoxSize?.[0]?.inlineSize ?? entry?.target.getBoundingClientRect().width;
 
-      if (inlineSize === undefined) {
+      if (inlineSize === undefined || !entry) {
         return;
       }
 
