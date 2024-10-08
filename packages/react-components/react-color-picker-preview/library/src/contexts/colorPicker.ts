@@ -12,7 +12,7 @@ export type ColorPickerContextValue = Pick<ColorPickerProps, 'color'> & {
    * Callback used by Sliders to request a change on it's selected value
    * Should be used to get value of color channel
    */
-  requestChange: (event: React.ChangeEvent<HTMLInputElement>, data: { value?: number; channel?: string }) => void;
+  requestChange: (event: React.ChangeEvent<HTMLInputElement>, data: { color: string }) => void;
 };
 
 export const useColorPickerContextValues = (state: ColorPickerState): ColorPickerContextValues => {
@@ -31,7 +31,7 @@ export const colorPickerContextDefaultValue: ColorPickerContextValue = {
   requestChange: () => {
     /*noop*/
   },
-  color: undefined,
+  color: '',
 };
 
 export type ColorPickerContextValues = {

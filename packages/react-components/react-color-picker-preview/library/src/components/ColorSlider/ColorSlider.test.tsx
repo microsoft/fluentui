@@ -41,33 +41,23 @@ describe('ColorSlider', () => {
     expect(screen.getByRole('slider').getAttribute('id')).toEqual(testId);
   });
 
-  it('applies the defaultValue prop', () => {
-    render(<ColorSlider defaultValue={10} />);
-    expect(screen.getByRole('slider').getAttribute('value')).toEqual('10');
-  });
-
-  it('applies the value prop', () => {
-    render(<ColorSlider value={10} />);
-    expect(screen.getByRole('slider').getAttribute('value')).toEqual('10');
+  it('applies the color prop', () => {
+    render(<ColorSlider color="#f09" />);
+    expect(screen.getByRole('slider').getAttribute('value')).toEqual('324');
   });
 
   it('applies the correct value prop when min is set', () => {
-    render(<ColorSlider value={0} min={20} />);
+    render(<ColorSlider color="#e73500" min={20} />);
     expect(screen.getByRole('slider').getAttribute('value')).toEqual('20');
   });
 
   it('applies the correct value prop when max is set', () => {
-    render(<ColorSlider value={30} max={20} />);
+    render(<ColorSlider color="purple" max={20} />);
     expect(screen.getByRole('slider').getAttribute('value')).toEqual('20');
   });
 
-  it('clamps an initial defaultValue that is out of bounds', () => {
-    render(<ColorSlider defaultValue={-10} min={0} max={100} />);
-    expect(screen.getByRole('slider').getAttribute('value')).toEqual('0');
-  });
-
   it('applies focus to the hidden input', () => {
-    render(<ColorSlider defaultValue={3} />);
+    render(<ColorSlider />);
     const input = screen.getByRole('slider');
 
     input.focus();

@@ -4,6 +4,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { colorSliderCSSVars } from './useColorSliderStyles.styles';
 import type { ColorSliderState, ColorSliderProps } from './ColorSlider.types';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
+import { tinycolor } from '@ctrl/tinycolor';
 
 const { sliderProgressVar, sliderDirectionVar, thumbColorVar } = colorSliderCSSVars;
 
@@ -18,11 +19,13 @@ export const useColorSliderState_unstable = (state: ColorSliderState, props: Col
 
   const { dir } = useFluent();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
-  const { channel = 'hue', defaultValue, min = 0, max = MAX_COLOR_HUE, onChange = onChangeFromContext, value } = props;
+  const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
+  const { min = 0, max = MAX_COLOR_HUE, onChange = onChangeFromContext, color } = props;
+  const _color = colorFromContext || color;
+  const hsvColor = tinycolor(_color).toHsv();
 
   const [currentValue, setCurrentValue] = useControllableState({
-    state: value,
-    defaultState: defaultValue,
+    state: hsvColor.h,
     initialState: 0,
   });
   const clampedValue = clamp(currentValue, min, max);
@@ -32,12 +35,12 @@ export const useColorSliderState_unstable = (state: ColorSliderState, props: Col
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
     const newValue = Number(event.target.value);
+    const newColor = tinycolor({ ...hsvColor, h: newValue }).toRgbString();
     setCurrentValue(clamp(newValue, min, max));
     inputOnChange?.(event);
-    onChange?.(event, { type: 'change', event, value: newValue, channel });
+    onChange?.(event, { type: 'change', event, color: newColor });
     onChangeFromContext(event, {
-      value: Number(event.target.value),
-      channel,
+      color: newColor,
     });
   });
 

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { tinycolor } from '@ctrl/tinycolor';
 import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { alphaSliderCSSVars } from './useAlphaSliderStyles.styles';
@@ -16,19 +17,13 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
 
   const { dir } = useFluent();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
-  const {
-    channel = 'alpha',
-    defaultValue,
-    min = 0,
-    max = 100,
-    onChange = onChangeFromContext,
-    value,
-    overlayColor,
-  } = props;
+  const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
+  const { color, min = 0, max = 100, onChange = onChangeFromContext } = props;
+  const _color = colorFromContext || color;
+  const hslColor = tinycolor(_color).toHsl();
 
   const [currentValue, setCurrentValue] = useControllableState({
-    state: value,
-    defaultState: defaultValue,
+    state: hslColor.a * 100,
     initialState: 0,
   });
   const clampedValue = clamp(currentValue, min, max);
@@ -38,12 +33,12 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
     const newValue = Number(event.target.value);
+    const newColor = tinycolor({ ...hslColor, a: newValue / 100 }).toRgbString();
     setCurrentValue(clamp(newValue, min, max));
     inputOnChange?.(event);
-    onChange?.(event, { type: 'change', event, value: newValue, channel });
+    onChange?.(event, { type: 'change', event, color: newColor });
     onChangeFromContext(event, {
-      value: Number(event.target.value),
-      channel,
+      color: newColor,
     });
   });
 
@@ -51,7 +46,7 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
     [sliderDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '-90deg',
     [sliderProgressVar]: `${valuePercent}%`,
     [thumbColorVar]: `transparent`,
-    [railColorVar]: overlayColor,
+    [railColorVar]: `hsl(${hslColor.h} ${hslColor.s * 100}%, ${hslColor.l * 100}%)`,
   };
 
   // Root props
