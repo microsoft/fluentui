@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix TypeError in portalContainsElement when element is Document or similar",
-  "packageName": "@fluentui/dom-utilities",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch"
-}

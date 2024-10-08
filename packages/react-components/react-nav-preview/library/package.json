@@ -31,7 +31,7 @@
   "dependencies": {
     "@fluentui/react-aria": "^9.13.6",
     "@fluentui/react-button": "^9.3.92",
-    "@fluentui/react-tooltip": "^9.1.20",
+    "@fluentui/react-tooltip": "^9.4.39",
     "@fluentui/react-context-selector": "^9.1.67",
     "@fluentui/react-divider": "^9.2.75",
     "@fluentui/react-drawer": "^9.5.16",
