@@ -1196,7 +1196,7 @@ export function getDomainNRangeValues(
   isRTL: boolean,
   xAxisType: XAxisTypes,
   barWidth: number,
-  tickValues: Date[] | number[] | undefined,
+  tickValues: Date[] | number[] | string[] | undefined,
   shiftX: number,
 ): IDomainNRange {
   let domainNRangeValue: IDomainNRange;

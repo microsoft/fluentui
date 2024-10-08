@@ -19,6 +19,36 @@ export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartPr
 export type ChartDataMode = 'default' | 'fraction' | 'percentage';
 
 // @public (undocumented)
+export const DataVizGradientPalette: {
+    gradient1: string;
+    gradient2: string;
+    gradient3: string;
+    gradient4: string;
+    gradient5: string;
+    gradient6: string;
+    gradient7: string;
+    gradient8: string;
+    gradient9: string;
+    gradient10: string;
+    gradient1Ext: string;
+    gradient2Ext: string;
+    gradient3Ext: string;
+    gradient4Ext: string;
+    gradient5Ext: string;
+    gradient6Ext: string;
+    gradient7Ext: string;
+    gradient8Ext: string;
+    gradient9Ext: string;
+    gradient10Ext: string;
+    success: string;
+    highSuccess: string;
+    warning: string;
+    error: string;
+    highError: string;
+    disabled: string;
+};
+
+// @public (undocumented)
 export const DataVizPalette: {
     color1: string;
     color2: string;
@@ -76,7 +106,13 @@ export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
+export const getGradientFromToken: (token: string, isDarkTheme?: boolean) => [string, string];
+
+// @public (undocumented)
 export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolean) => string;
+
+// @public (undocumented)
+export const getNextGradient: (index: number, offset?: number, isDarkTheme?: boolean) => [string, string];
 
 // @public
 export const HorizontalBarChart: React_2.FunctionComponent<IHorizontalBarChartProps>;
@@ -149,11 +185,13 @@ export interface ICartesianChartProps {
     chartLabel?: string;
     className?: string;
     customDateTimeFormatter?: (dateTime: Date) => string;
+    customProps?: (dataPointCalloutProps: any) => IPopoverComponentProps;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
     enableReflow?: boolean;
     height?: number;
     hideLegend?: boolean;
+    hideTickOverlap?: boolean;
     hideTooltip?: boolean;
     href?: string;
     // (undocumented)
@@ -177,7 +215,7 @@ export interface ICartesianChartProps {
     svgProps?: React_2.SVGProps<SVGSVGElement>;
     tickFormat?: string;
     tickPadding?: number;
-    tickValues?: number[] | Date[];
+    tickValues?: number[] | Date[] | string[];
     timeFormatLocale?: TimeLocaleDefinition;
     useUTC?: string | boolean;
     width?: number;
@@ -235,8 +273,8 @@ export interface ICartesianChartStyles {
 // @public (undocumented)
 export interface IChartDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
-    color?: string;
     data?: number;
+    gradient?: [string, string];
     horizontalBarChartdata?: IHorizontalDataPoint;
     legend?: string;
     onClick?: VoidFunction;
@@ -332,7 +370,7 @@ export interface IDonutChart {
 
 // @public
 export interface IDonutChartProps extends ICartesianChartProps {
-    calloutProps: IPopoverComponentProps;
+    calloutProps: Partial<IPopoverComponentProps>;
     culture?: string;
     customProps?: (dataPointCalloutProps: IChartDataPoint) => IPopoverComponentProps;
     data?: IChartProps;
@@ -667,7 +705,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     chartType: ChartTypes;
     children(props: IChildProps): React_2.ReactNode;
     culture?: string;
-    customizedCallout?: any;
     datasetForXAxisDomain?: string[];
     enableFirstRenderOptimization?: boolean;
     // (undocumented)
@@ -675,7 +712,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     getDomainMargins?: (containerWidth: number) => IMargins;
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
-    isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
@@ -684,7 +720,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];
     tickParams?: {
-        tickValues?: number[] | Date[];
+        tickValues?: number[] | Date[] | string[];
         tickFormat?: string;
     };
     xAxisInnerPadding?: number;
@@ -707,15 +743,18 @@ export interface IPopoverComponentProps {
     // (undocumented)
     culture?: string;
     // (undocumented)
-    customizedCallout?: JSX.Element;
-    // (undocumented)
-    customProps?: IPopoverComponentProps;
+    customCallout?: {
+        customizedCallout?: JSX.Element;
+        customCalloutProps?: IPopoverComponentProps;
+    };
     // (undocumented)
     descriptionMessage?: string;
     // (undocumented)
     hoverXValue?: string | number;
     // (undocumented)
     isCalloutForStack?: boolean;
+    // (undocumented)
+    isCartesian?: boolean;
     // (undocumented)
     isPopoverOpen?: boolean;
     // (undocumented)
@@ -755,6 +794,8 @@ export interface IPopoverComponentStyles {
     calloutContentY: string;
     // (undocumented)
     calloutDateTimeContainer: string;
+    // (undocumented)
+    calloutInfoContainer: string;
     // (undocumented)
     calloutlegendText: string;
     // (undocumented)

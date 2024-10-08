@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { ICartesianChartProps, ICartesianChartStyleProps } from '../CommonComponents/index';
 import { IChartProps, IChartDataPoint } from './index';
 import { IPopoverComponentProps } from '../CommonComponents/Popover.types';
@@ -42,7 +43,7 @@ export interface IDonutChartProps extends ICartesianChartProps {
   /**
    * props for the callout in the chart
    */
-  calloutProps: IPopoverComponentProps;
+  calloutProps: Partial<IPopoverComponentProps> ;
 
   /**
    * The prop used to define the culture to localized the numbers

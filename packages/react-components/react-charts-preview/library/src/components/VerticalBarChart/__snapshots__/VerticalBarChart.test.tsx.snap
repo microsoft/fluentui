@@ -93,6 +93,14 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "aqua",
+                  "borderColor": "aqua",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -127,6 +135,14 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "blue",
+                  "borderColor": "blue",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -161,6 +177,14 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "navy",
+                  "borderColor": "navy",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -267,6 +291,14 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "aqua",
+                  "borderColor": "aqua",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -301,6 +333,14 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "blue",
+                  "borderColor": "blue",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -335,6 +375,14 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "navy",
+                  "borderColor": "navy",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -417,110 +465,168 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         }
       >
         <div
-          className="fui-Overflow fui-legend__resizableArea"
+          className="fui-legend__resizableArea"
+          style={
+            Object {
+              "display": "flex",
+              "flexWrap": "wrap",
+              "overflow": "auto",
+            }
+          }
         >
-          <button
-            aria-label="First"
-            aria-selected={false}
-            className="fui-Button fui-legend__legend"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            role="option"
+          <div
             style={
               Object {
-                "--rect-backgroundColor": "aqua",
-                "--rect-borderColor": "aqua",
-                "--rect-content": "",
-                "--rect-height": "12px",
+                "flex": "0 1 auto",
+                "margin": "4px",
               }
             }
-            type="button"
           >
-            <div
-              className="fui-legend__rect"
-            />
-            <div
-              className="fui-legend__text"
+            <button
+              aria-label="First"
+              aria-selected={false}
+              className="fui-Button fui-legend__legend"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              role="option"
               style={
                 Object {
-                  "opacity": "",
+                  "--rect-backgroundColor": "aqua",
+                  "--rect-borderColor": "aqua",
+                  "--rect-content": "",
+                  "--rect-height": "12px",
                 }
               }
+              type="button"
             >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected={false}
-            className="fui-Button fui-legend__legend"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            role="option"
+              <div
+                className="fui-legend__rect"
+                style={
+                  Object {
+                    "backgroundColor": "aqua",
+                    "borderColor": "aqua",
+                    "content": "",
+                    "height": "12px",
+                  }
+                }
+              />
+              <div
+                className="fui-legend__text"
+                style={
+                  Object {
+                    "opacity": "",
+                  }
+                }
+              >
+                First
+              </div>
+            </button>
+          </div>
+          <div
             style={
               Object {
-                "--rect-backgroundColor": "blue",
-                "--rect-borderColor": "blue",
-                "--rect-content": "",
-                "--rect-height": "12px",
+                "flex": "0 1 auto",
+                "margin": "4px",
               }
             }
-            type="button"
           >
-            <div
-              className="fui-legend__rect"
-            />
-            <div
-              className="fui-legend__text"
+            <button
+              aria-label="Second"
+              aria-selected={false}
+              className="fui-Button fui-legend__legend"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              role="option"
               style={
                 Object {
-                  "opacity": "",
+                  "--rect-backgroundColor": "blue",
+                  "--rect-borderColor": "blue",
+                  "--rect-content": "",
+                  "--rect-height": "12px",
                 }
               }
+              type="button"
             >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected={false}
-            className="fui-Button fui-legend__legend"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            role="option"
+              <div
+                className="fui-legend__rect"
+                style={
+                  Object {
+                    "backgroundColor": "blue",
+                    "borderColor": "blue",
+                    "content": "",
+                    "height": "12px",
+                  }
+                }
+              />
+              <div
+                className="fui-legend__text"
+                style={
+                  Object {
+                    "opacity": "",
+                  }
+                }
+              >
+                Second
+              </div>
+            </button>
+          </div>
+          <div
             style={
               Object {
-                "--rect-backgroundColor": "navy",
-                "--rect-borderColor": "navy",
-                "--rect-content": "",
-                "--rect-height": "12px",
+                "flex": "0 1 auto",
+                "margin": "4px",
               }
             }
-            type="button"
           >
-            <div
-              className="fui-legend__rect"
-            />
-            <div
-              className="fui-legend__text"
+            <button
+              aria-label="Third"
+              aria-selected={false}
+              className="fui-Button fui-legend__legend"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              role="option"
               style={
                 Object {
-                  "opacity": "",
+                  "--rect-backgroundColor": "navy",
+                  "--rect-borderColor": "navy",
+                  "--rect-content": "",
+                  "--rect-height": "12px",
                 }
               }
+              type="button"
             >
-              Third
-            </div>
-          </button>
+              <div
+                className="fui-legend__rect"
+                style={
+                  Object {
+                    "backgroundColor": "navy",
+                    "borderColor": "navy",
+                    "content": "",
+                    "height": "12px",
+                  }
+                }
+              />
+              <div
+                className="fui-legend__text"
+                style={
+                  Object {
+                    "opacity": "",
+                  }
+                }
+              >
+                Third
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -665,6 +771,14 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "aqua",
+                  "borderColor": "aqua",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -699,6 +813,14 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "blue",
+                  "borderColor": "blue",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -733,6 +855,14 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "navy",
+                  "borderColor": "navy",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -798,7 +928,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               data-is-focusable={true}
               fill="aqua"
               height={NaN}
-              id="_VBC_bar_28-0"
+              id="_VBC_bar_27-0"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -817,7 +947,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               data-is-focusable={true}
               fill="blue"
               height={NaN}
-              id="_VBC_bar_28-1"
+              id="_VBC_bar_27-1"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -836,7 +966,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               data-is-focusable={true}
               fill="navy"
               height={NaN}
-              id="_VBC_bar_28-2"
+              id="_VBC_bar_27-2"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -893,6 +1023,14 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "aqua",
+                  "borderColor": "aqua",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -927,6 +1065,14 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "blue",
+                  "borderColor": "blue",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -961,6 +1107,14 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "navy",
+                  "borderColor": "navy",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1026,7 +1180,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               data-is-focusable={true}
               fill="aqua"
               height={NaN}
-              id="_VBC_bar_34-0"
+              id="_VBC_bar_33-0"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1045,7 +1199,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               data-is-focusable={true}
               fill="blue"
               height={NaN}
-              id="_VBC_bar_34-1"
+              id="_VBC_bar_33-1"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1064,7 +1218,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               data-is-focusable={true}
               fill="navy"
               height={NaN}
-              id="_VBC_bar_34-2"
+              id="_VBC_bar_33-2"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1121,6 +1275,14 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "aqua",
+                  "borderColor": "aqua",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1155,6 +1317,14 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "blue",
+                  "borderColor": "blue",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1189,6 +1359,14 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "navy",
+                  "borderColor": "navy",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1295,6 +1473,14 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "aqua",
+                  "borderColor": "aqua",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1329,6 +1515,14 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "blue",
+                  "borderColor": "blue",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1363,6 +1557,14 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "navy",
+                  "borderColor": "navy",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"

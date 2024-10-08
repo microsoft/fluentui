@@ -67,7 +67,8 @@ export const useVerticalBarChartStyles_unstable = (props: IVerticalBarChartProps
   return {
     opacityChangeOnHover: mergeClasses(
       verticalbarchartClassNames.opacityChangeOnHover,
-      baseStyles.opacityChangeOnHover /*props.styles?.opacityChangeOnHover*/,
+      // baseStyles.opacityChangeOnHover /*
+      props.styles?.opacityChangeOnHover,
     ),
     xAxisTicks: mergeClasses(
       // eslint-disable-next-line deprecation/deprecation

@@ -255,7 +255,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 data-is-focusable="true"
                 fill="aqua"
                 height="47.400000000000006"
-                id="_VBC_bar_154-0"
+                id="_VBC_bar_142-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -279,7 +279,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 data-is-focusable="true"
                 fill="blue"
                 height="237"
-                id="_VBC_bar_154-1"
+                id="_VBC_bar_142-1"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -303,7 +303,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 data-is-focusable="true"
                 fill="navy"
                 height="142.2"
-                id="_VBC_bar_154-2"
+                id="_VBC_bar_142-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -349,6 +349,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: aqua; border-color: aqua;"
               />
               <div
                 class="fui-legend__text"
@@ -367,6 +368,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: blue; border-color: blue;"
               />
               <div
                 class="fui-legend__text"
@@ -385,6 +387,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: navy; border-color: navy;"
               />
               <div
                 class="fui-legend__text"
@@ -655,7 +658,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 data-is-focusable="true"
                 fill="aqua"
                 height="47.400000000000006"
-                id="_VBC_bar_160-0"
+                id="_VBC_bar_148-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -679,7 +682,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 data-is-focusable="true"
                 fill="blue"
                 height="237"
-                id="_VBC_bar_160-1"
+                id="_VBC_bar_148-1"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -703,7 +706,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 data-is-focusable="true"
                 fill="navy"
                 height="142.2"
-                id="_VBC_bar_160-2"
+                id="_VBC_bar_148-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -749,6 +752,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: aqua; border-color: aqua;"
               />
               <div
                 class="fui-legend__text"
@@ -767,6 +771,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: blue; border-color: blue;"
               />
               <div
                 class="fui-legend__text"
@@ -785,6 +790,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: navy; border-color: navy;"
               />
               <div
                 class="fui-legend__text"
@@ -803,7 +809,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 exports[`Theme Change Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider162"
+    class="fui-FluentProvider fui-FluentProvider150"
     dir="ltr"
   >
     <div
@@ -1058,7 +1064,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   data-is-focusable="true"
                   fill="aqua"
                   height="47.400000000000006"
-                  id="_VBC_bar_167-0"
+                  id="_VBC_bar_155-0"
                   opacity="1"
                   role="img"
                   tabindex="0"
@@ -1082,7 +1088,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   data-is-focusable="true"
                   fill="blue"
                   height="237"
-                  id="_VBC_bar_167-1"
+                  id="_VBC_bar_155-1"
                   opacity="1"
                   role="img"
                   tabindex="0"
@@ -1106,7 +1112,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   data-is-focusable="true"
                   fill="navy"
                   height="142.2"
-                  id="_VBC_bar_167-2"
+                  id="_VBC_bar_155-2"
                   opacity="1"
                   role="img"
                   tabindex="0"
@@ -1152,6 +1158,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
+                  style="height: 12px; background-color: aqua; border-color: aqua;"
                 />
                 <div
                   class="fui-legend__text"
@@ -1170,6 +1177,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
+                  style="height: 12px; background-color: blue; border-color: blue;"
                 />
                 <div
                   class="fui-legend__text"
@@ -1188,6 +1196,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
+                  style="height: 12px; background-color: navy; border-color: navy;"
                 />
                 <div
                   class="fui-legend__text"
@@ -1208,7 +1217,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_VBC_empty170"
+    id="_VBC_empty158"
     role="alert"
     style="opacity: 0;"
   />
@@ -1469,7 +1478,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 data-is-focusable="true"
                 fill="aqua"
                 height="47.400000000000006"
-                id="_VBC_bar_173-0"
+                id="_VBC_bar_161-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -1493,7 +1502,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 data-is-focusable="true"
                 fill="blue"
                 height="237"
-                id="_VBC_bar_173-1"
+                id="_VBC_bar_161-1"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -1517,7 +1526,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 data-is-focusable="true"
                 fill="navy"
                 height="142.2"
-                id="_VBC_bar_173-2"
+                id="_VBC_bar_161-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -1563,6 +1572,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: aqua; border-color: aqua;"
               />
               <div
                 class="fui-legend__text"
@@ -1581,6 +1591,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: blue; border-color: blue;"
               />
               <div
                 class="fui-legend__text"
@@ -1599,6 +1610,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: navy; border-color: navy;"
               />
               <div
                 class="fui-legend__text"
@@ -10242,6 +10254,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: aqua; border-color: aqua;"
               />
               <div
                 class="fui-legend__text"
@@ -10260,6 +10273,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: blue; border-color: blue;"
               />
               <div
                 class="fui-legend__text"
@@ -10278,6 +10292,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: navy; border-color: navy;"
               />
               <div
                 class="fui-legend__text"
@@ -10597,6 +10612,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(98, 124, 239); border-color: #627cef;"
               />
               <div
                 class="fui-legend__text"
@@ -10613,6 +10629,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(193, 156, 0); border-color: #c19c00;"
               />
               <div
                 class="fui-legend__text"
@@ -10629,6 +10646,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(230, 80, 175); border-color: #e650af;"
               />
               <div
                 class="fui-legend__text"
@@ -10645,6 +10663,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(14, 120, 120); border-color: #0e7878;"
               />
               <div
                 class="fui-legend__text"
@@ -10912,7 +10931,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 data-is-focusable="true"
                 fill="aqua"
                 height="47.400000000000006"
-                id="_VBC_bar_179-0"
+                id="_VBC_bar_167-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -10936,7 +10955,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 data-is-focusable="true"
                 fill="blue"
                 height="237"
-                id="_VBC_bar_179-1"
+                id="_VBC_bar_167-1"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -10960,7 +10979,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 data-is-focusable="true"
                 fill="navy"
                 height="142.2"
-                id="_VBC_bar_179-2"
+                id="_VBC_bar_167-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -10993,62 +11012,75 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           style="justify-content: unset; flex-wrap: wrap;"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="fui-legend__resizableArea"
+            style="display: flex; flex-wrap: wrap; overflow: auto;"
           >
-            <button
-              aria-label="First"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-              type="button"
+            <div
+              style="flex: 0 1 auto; margin: 4px;"
             >
-              <div
-                class="fui-legend__rect"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="First"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+                type="button"
               >
-                First
-              </div>
-            </button>
-            <button
-              aria-label="Second"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-              type="button"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: aqua; border-color: aqua;"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  First
+                </div>
+              </button>
+            </div>
+            <div
+              style="flex: 0 1 auto; margin: 4px;"
             >
-              <div
-                class="fui-legend__rect"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Second"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+                type="button"
               >
-                Second
-              </div>
-            </button>
-            <button
-              aria-label="Third"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-              type="button"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: blue; border-color: blue;"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Second
+                </div>
+              </button>
+            </div>
+            <div
+              style="flex: 0 1 auto; margin: 4px;"
             >
-              <div
-                class="fui-legend__rect"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Third"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+                type="button"
               >
-                Third
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: navy; border-color: navy;"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Third
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -11311,7 +11343,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 data-is-focusable="true"
                 fill="aqua"
                 height="47.400000000000006"
-                id="_VBC_bar_187-0"
+                id="_VBC_bar_172-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -11335,7 +11367,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 data-is-focusable="true"
                 fill="blue"
                 height="237"
-                id="_VBC_bar_187-1"
+                id="_VBC_bar_172-1"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -11359,7 +11391,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 data-is-focusable="true"
                 fill="navy"
                 height="142.2"
-                id="_VBC_bar_187-2"
+                id="_VBC_bar_172-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -11392,62 +11424,75 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           style="justify-content: unset; flex-wrap: wrap;"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
+            class="fui-legend__resizableArea"
+            style="display: flex; flex-wrap: wrap; overflow: auto;"
           >
-            <button
-              aria-label="First"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-              type="button"
+            <div
+              style="flex: 0 1 auto; margin: 4px;"
             >
-              <div
-                class="fui-legend__rect"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="First"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+                type="button"
               >
-                First
-              </div>
-            </button>
-            <button
-              aria-label="Second"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-              type="button"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: aqua; border-color: aqua;"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  First
+                </div>
+              </button>
+            </div>
+            <div
+              style="flex: 0 1 auto; margin: 4px;"
             >
-              <div
-                class="fui-legend__rect"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Second"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+                type="button"
               >
-                Second
-              </div>
-            </button>
-            <button
-              aria-label="Third"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-              type="button"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: blue; border-color: blue;"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Second
+                </div>
+              </button>
+            </div>
+            <div
+              style="flex: 0 1 auto; margin: 4px;"
             >
-              <div
-                class="fui-legend__rect"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Third"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+                type="button"
               >
-                Third
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: navy; border-color: navy;"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Third
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
