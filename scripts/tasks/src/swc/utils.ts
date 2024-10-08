@@ -19,19 +19,11 @@ export function addJsExtensionToImports(code: string, type: Options['module']['t
   });
 }
 
-export function postprocessOutput(
-  code: string,
-  options: { moduleType: Options['module']['type']; addExplicitJsExtensionToImports: boolean },
-) {
+export function postprocessOutput(code: string) {
   // Strip @jsx comments, see https://github.com/microsoft/fluentui/issues/29126
-  let resultCode = code
+  const resultCode = code
     .replace('/** @jsxRuntime automatic */', '')
     .replace('/** @jsxImportSource @fluentui/react-jsx-runtime */', '');
-
-  // TODO: Remove after swc implement proper js extension addition https://github.com/microsoft/fluentui/issues/30634
-  resultCode = options.addExplicitJsExtensionToImports
-    ? addJsExtensionToImports(resultCode, options.moduleType)
-    : resultCode;
 
   return resultCode;
 }

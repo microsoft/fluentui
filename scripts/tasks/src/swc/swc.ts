@@ -45,10 +45,7 @@ async function swcTransform(options: Options) {
       outputPath,
     });
 
-    const resultCode = postprocessOutput(result.code, {
-      addExplicitJsExtensionToImports: enableResolveFully,
-      moduleType,
-    });
+    const resultCode = postprocessOutput(result.code);
 
     const compiledFilePath = path.resolve(packageRoot, fileName.replace(`${sourceRootDirName}`, outputPath));
 
