@@ -79,6 +79,12 @@ export const LegendsStyled = () => {
       overflowText={'Overflow Items'}
       allowFocusOnLegends={true}
       canSelectMultipleLegends={false}
+      overflowStyles={{
+        item: { border: `1px dotted ${getColorFromToken(DataVizPalette.color5)}` },
+      }}
+      styles={{
+        text: { fontWeight: 900 },
+      }}
     />
   );
 };

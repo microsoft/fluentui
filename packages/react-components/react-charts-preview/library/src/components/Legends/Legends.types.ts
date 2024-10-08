@@ -50,6 +50,65 @@ export interface ILegendsStyles {
 
 /**
  * @public
+ * Legends styles
+ * {@docCategory Legends}
+ */
+export interface ILegendsStylesOverrides {
+  /**
+   * Style set for the root of the legend component
+   */
+  root?: React.CSSProperties;
+
+  /**
+   * Style set for Legend. This is a wrapping class for text of legend and the rectange box that represents a legend
+   */
+  legend?: React.CSSProperties;
+
+  /**
+   * Style set for the rectangle that represents a legend
+   */
+  rect?: React.CSSProperties;
+
+  /**
+   * styles set for the shape that represents a legend
+   */
+  shape?: React.CSSProperties;
+
+  /**
+   * Style set for the triangle that represents a legend
+   */
+  triangle?: React.CSSProperties;
+
+  /**
+   * Style for the legend text
+   */
+  text?: React.CSSProperties;
+
+  /**
+   * Style for the legend text
+   */
+  hoverChange?: React.CSSProperties;
+
+  /**
+   * Style for the area that is resizable
+   */
+  resizableArea?: React.CSSProperties;
+}
+
+/**
+ * @public
+ * Legends styles
+ * {@docCategory Legends}
+ */
+export interface ILegendsOverflowStylesOverrides {
+  /**
+   * Style set for the overflow items of the legend component
+   */
+  item?: React.CSSProperties;
+}
+
+/**
+ * @public
  * ILegend interface
  * {@docCategory Legends}
  */
@@ -139,7 +198,7 @@ export interface ILegendsProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: ILegendsStyles;
+  styles?: ILegendsStylesOverrides;
 
   /**
    * This prop makes the legends component align itself to the center in the container it is sitting in
@@ -154,7 +213,7 @@ export interface ILegendsProps {
   /**
    * style for the overflow component
    */
-  overflowStyles?: React.CSSProperties;
+  overflowStyles?: ILegendsOverflowStylesOverrides;
 
   /**
    * text for overflow legends string
