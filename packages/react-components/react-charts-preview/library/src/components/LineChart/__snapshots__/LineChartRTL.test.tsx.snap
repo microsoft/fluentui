@@ -4345,6 +4345,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: red; border-color: red;"
               />
               <div
                 class="fui-legend__text"
@@ -4363,6 +4364,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: green; border-color: green;"
               />
               <div
                 class="fui-legend__text"
@@ -4381,6 +4383,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: yellow; border-color: yellow;"
               />
               <div
                 class="fui-legend__text"
@@ -4856,6 +4859,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               <svg
                 class="fui-legend__shape"
                 height="14"
+                style="width: 14px; height: 14px;"
                 transform="rotate(0, 0, 0)"
                 viewBox="-1 -1 14 14"
                 width="14"
@@ -4885,6 +4889,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               <svg
                 class="fui-legend__shape"
                 height="14"
+                style="width: 14px; height: 14px;"
                 transform="rotate(0, 0, 0)"
                 viewBox="-1 -1 14 14"
                 width="14"
@@ -4914,6 +4919,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               <svg
                 class="fui-legend__shape"
                 height="14"
+                style="width: 14px; height: 14px;"
                 transform="rotate(0, 0, 0)"
                 viewBox="-1 -1 14 14"
                 width="14"
@@ -5403,6 +5409,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: red; border-color: red;"
               />
               <div
                 class="fui-legend__text"
@@ -5421,6 +5428,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: green; border-color: green;"
               />
               <div
                 class="fui-legend__text"
@@ -5439,6 +5447,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: yellow; border-color: yellow;"
               />
               <div
                 class="fui-legend__text"
@@ -5918,6 +5927,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: red; border-color: red;"
               />
               <div
                 class="fui-legend__text"
@@ -5936,6 +5946,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: green; border-color: green;"
               />
               <div
                 class="fui-legend__text"
@@ -5954,6 +5965,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: yellow; border-color: yellow;"
               />
               <div
                 class="fui-legend__text"
@@ -6436,6 +6448,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
+                  style="height: 12px; background-color: red; border-color: red;"
                 />
                 <div
                   class="fui-legend__text"
@@ -6454,6 +6467,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
+                  style="height: 12px; background-color: green; border-color: green;"
                 />
                 <div
                   class="fui-legend__text"
@@ -6472,6 +6486,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
+                  style="height: 12px; background-color: yellow; border-color: yellow;"
                 />
                 <div
                   class="fui-legend__text"
