@@ -2396,7 +2396,7 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
     onFocus?: React_2.FocusEventHandler<HTMLInputElement | Autofill>;
     onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onInputChange?: (input: string) => string;
-    onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
+    onItemSelected?: (selectedItem?: T) => T | PromiseLike<T | null> | null;
     onRemoveSuggestion?: (item: T) => void;
     onRenderItem?: (props: IPickerItemProps<T>) => JSX.Element;
     onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
