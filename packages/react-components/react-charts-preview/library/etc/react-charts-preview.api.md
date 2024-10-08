@@ -191,6 +191,7 @@ export interface ICartesianChartProps {
     enableReflow?: boolean;
     height?: number;
     hideLegend?: boolean;
+    hideTickOverlap?: boolean;
     hideTooltip?: boolean;
     href?: string;
     // (undocumented)
@@ -214,7 +215,7 @@ export interface ICartesianChartProps {
     svgProps?: React_2.SVGProps<SVGSVGElement>;
     tickFormat?: string;
     tickPadding?: number;
-    tickValues?: number[] | Date[];
+    tickValues?: number[] | Date[] | string[];
     timeFormatLocale?: TimeLocaleDefinition;
     useUTC?: string | boolean;
     width?: number;
@@ -369,7 +370,7 @@ export interface IDonutChart {
 
 // @public
 export interface IDonutChartProps extends ICartesianChartProps {
-    calloutProps: IPopoverComponentProps;
+    calloutProps: Partial<IPopoverComponentProps>;
     culture?: string;
     customProps?: (dataPointCalloutProps: IChartDataPoint) => IPopoverComponentProps;
     data?: IChartProps;
@@ -719,7 +720,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];
     tickParams?: {
-        tickValues?: number[] | Date[];
+        tickValues?: number[] | Date[] | string[];
         tickFormat?: string;
     };
     xAxisInnerPadding?: number;
@@ -742,7 +743,7 @@ export interface IPopoverComponentProps {
     // (undocumented)
     culture?: string;
     // (undocumented)
-    customProps?: {
+    customCallout?: {
         customizedCallout?: JSX.Element;
         customCalloutProps?: IPopoverComponentProps;
     };
