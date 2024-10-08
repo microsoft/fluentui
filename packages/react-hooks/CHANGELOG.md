@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-hooks
 
-This log was last generated on Wed, 02 Oct 2024 07:23:57 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2024 07:23:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.8.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.8.15)
+
+Tue, 08 Oct 2024 07:23:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.8.14..@fluentui/react-hooks_v8.8.15)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.15.18 ([PR #32971](https://github.com/microsoft/fluentui/pull/32971) by beachball)
 
 ## [8.8.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.8.14)
 
