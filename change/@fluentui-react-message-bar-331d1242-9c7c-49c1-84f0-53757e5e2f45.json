@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use LinkContextProvider to force all links inside MessageBody to be underlined",
-  "packageName": "@fluentui/react-message-bar",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}
