@@ -41,6 +41,10 @@ export const Shape: React.FunctionComponent<IShapeProps> = React.forwardRef<HTML
         transform={`rotate(${
           shape === Points[Points.diamond] ? 45 : shape === Points[Points.pyramid] ? 180 : 0
         }, 0, 0)`}
+        style={{
+          width: '14px',
+          height: '14px',
+        }}
       >
         <path d={pointPath[shape]} {...pathProps} />
       </svg>

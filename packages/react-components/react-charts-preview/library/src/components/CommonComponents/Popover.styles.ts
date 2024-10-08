@@ -70,9 +70,7 @@ const useStyles = makeStyles({
     },
     paddingLeft: '8px',
   },
-  calloutBlockContainertoDrawShapetrue: {
-    display: 'flex',
-  },
+  calloutBlockContainertoDrawShapetrue: { display: 'inline-grid' },
   shapeStyles: {
     marginRight: '8px',
   },
