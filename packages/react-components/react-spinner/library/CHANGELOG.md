@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Mon, 23 Sep 2024 12:40:17 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2024 22:05:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.5.0)
+
+Tue, 08 Oct 2024 22:05:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.4.14..@fluentui/react-spinner_v9.5.0)
+
+### Minor changes
+
+- feat: spinner root slot as span ([PR #32989](https://github.com/microsoft/fluentui/pull/32989) by kirpadv@gmail.com)
 
 ## [9.4.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.4.14)
 

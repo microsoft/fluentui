@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Mon, 23 Sep 2024 12:40:17 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2024 22:05:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.22.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.22.8)
+
+Tue, 08 Oct 2024 22:05:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.22.7..@fluentui/react-tabster_v9.22.8)
+
+### Patches
+
+- Bump tabster to 8.2.0 to fix trapped Modalizer logic ([PR #32963](https://github.com/microsoft/fluentui/pull/32963) by jiangemma@microsoft.com)
 
 ## [9.22.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.22.7)
 
