@@ -16,11 +16,16 @@ body:
       label: Component
       description: |
         Which Component/Utility is affected
+
+        > 💡 available options align with our docs menu https://react.fluentui.dev/
       options:
         - Accordion
         - Avatar
         - AvatarGroup
+        - Badge
         - Breadcrumb
+        - Button
+        - Card
         - Checkbox
         - Combobox
         - DataGrid
@@ -35,10 +40,12 @@ body:
         - Input
         - Label
         - Link
+        - Menu
         - MessageBar
         - Overflow
         - Persona
         - Popover
+        - Portal
         - ProgressBar
         - RadioGroup
         - Rating
@@ -53,6 +60,7 @@ body:
         - Switch
         - Table
         - TabList
+        - Tag
         - TagPicker
         - TeachingPopover
         - Text
@@ -71,9 +79,9 @@ body:
         - Motion
         - Icons
         - Theme/Tokens
+        - Utilities (utilities we provide besides Components, e.g. apis from react-utilities)
         - Migration Shims v0
         - Migration Shims v8
-        - Utilities (utilities we provide besides Components, e.g. apis from react-utilities)
         - Other...
     validations:
       required: true
