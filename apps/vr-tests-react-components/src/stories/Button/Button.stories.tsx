@@ -26,6 +26,7 @@ export const AsAnAnchor = () => (
 );
 
 AsAnAnchor.storyName = 'As an anchor';
+console.log(AsAnAnchor.storyName);
 
 export const Circular = () => (
   <Button id={buttonId} shape="circular">
