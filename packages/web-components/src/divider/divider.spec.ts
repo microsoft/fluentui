@@ -79,7 +79,6 @@ test.describe('Divider', () => {
       <fluent-divider></fluent-divider>
     `);
 
-
     await element.evaluate((node: Divider) => {
       node.orientation = 'vertical';
     });
