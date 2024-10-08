@@ -177,7 +177,7 @@ export function useEmblaCarousel(
         }
       },
     };
-  }, [setActiveIndex]);
+  }, [setActiveIndex, fade]);
 
   const carouselApi = React.useMemo(
     () => ({
