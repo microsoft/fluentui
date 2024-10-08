@@ -296,18 +296,15 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
           pathProps={svgChildProps}
           shape={legend.shape as LegendShape}
           classNameForNonSvg={classes.rect}
-          style={
-            {
-              // ToDo These styles are causing build breaks. Fix it and then uncomment
-              // '--rect-height': legend.isLineLegendInBarChart ? '4px' : '12px',
-              //'--rect-backgroundColor': legend.stripePattern ? '' : color,
-              //'--rect-borderColor': legend.color ? legend.color : tokens.colorNeutralStroke1,
-              //'--rect-content': legend.stripePattern
-              //  ? // eslint-disable-next-line @fluentui/max-len
-              //    `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
-              //  : '',
-            }
-          } /* eslint-enable react/jsx-no-bind */
+          style={{
+            height: legend.isLineLegendInBarChart ? '4px' : '12px',
+            backgroundColor: legend.stripePattern ? '' : color,
+            borderColor: legend.color ? legend.color : tokens.colorNeutralStroke1,
+            content: legend.stripePattern
+              ? // eslint-disable-next-line @fluentui/max-len
+                `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
+              : '',
+          }}
         />
       );
     }

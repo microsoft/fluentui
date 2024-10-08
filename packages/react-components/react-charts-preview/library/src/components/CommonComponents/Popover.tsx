@@ -187,7 +187,7 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
                 ? {
                     borderLeft: `4px solid ${xValue.color}`,
                   }
-                : { display: 'flex' }),
+                : {}),
             }}
           >
             {toDrawShape && (
