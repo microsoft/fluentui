@@ -315,7 +315,7 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
           YValue={value!}
           color={color}
           isCalloutForStack={false}
-          customProps={{
+          customCallout={{
             customizedCallout: props.onRenderCalloutPerDataPoint
               ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps!)
               : undefined,

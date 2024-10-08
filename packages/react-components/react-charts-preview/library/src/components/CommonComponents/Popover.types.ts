@@ -12,7 +12,7 @@ export interface IPopoverComponentProps {
   XValue?: string;
   color?: string;
   culture?: string;
-  customProps?: {
+  customCallout?: {
     customizedCallout?: JSX.Element;
     customCalloutProps?: IPopoverComponentProps;
   };
