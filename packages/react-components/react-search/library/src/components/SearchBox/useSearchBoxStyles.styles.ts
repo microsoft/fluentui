@@ -74,10 +74,11 @@ const useContentAfterStyles = makeStyles({
     columnGap: tokens.spacingHorizontalXS,
   },
   rest: {
-    opacity: 0,
+    // opacity: 0,
     height: 0,
     width: 0,
     paddingLeft: 0,
+    visibility: 'hidden',
   },
 });
 
