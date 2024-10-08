@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: adds split-button",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}

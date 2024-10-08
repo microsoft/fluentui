@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 07 Oct 2024 04:08:32 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.68",
+      "version": "3.0.0-beta.68",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e3983599ad7d12a6354f9fcd614cd71e742a3d5a",
+            "comment": "feat: adds split-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Oct 2024 04:09:02 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.67",
       "version": "3.0.0-beta.67",
