@@ -50,7 +50,7 @@ export interface ILegendsStyles {
 
 /**
  * @public
- * Legends styles
+ * Legends style overrides
  * {@docCategory Legends}
  */
 export interface ILegendsStylesOverrides {
@@ -97,7 +97,7 @@ export interface ILegendsStylesOverrides {
 
 /**
  * @public
- * Legends styles
+ * Legends overflow item style overrides
  * {@docCategory Legends}
  */
 export interface ILegendsOverflowStylesOverrides {
