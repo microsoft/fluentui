@@ -134,16 +134,16 @@ export const HBCCustomCallout = () => {
     const xValue = props ? props.xAxisCalloutData! : 'X Value';
     const legend = props ? props.legend : 'Legend';
     return useCustomPopover ? (
-      <div>
-        <div>{xValue}</div>
-        <div>{legend}</div>
-        <div>{yValue}</div>
+      <div style={{ border: '1.5px dotted black' }}>
+        <div style={{ color: getColorFromToken(DataVizPalette.color5), border: '1px black' }}>{xValue}</div>
+        <div style={{ color: getColorFromToken(DataVizPalette.color6), border: '1px black' }}>{legend}</div>
+        <div style={{ color: getColorFromToken(DataVizPalette.color7) }}>{yValue}</div>
       </div>
     ) : undefined;
   };
   return (
     <div style={{ maxWidth: 600 }}>
-      <Switch label={'Custom Popover Override'} checked={useCustomPopover} onChange={_onTogglePopoverCheckChange} />
+      <Switch label={'User Popover Override'} checked={useCustomPopover} onChange={_onTogglePopoverCheckChange} />
       <HorizontalBarChart
         data={data}
         hideRatio={hideRatio}
