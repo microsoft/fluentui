@@ -100,16 +100,16 @@ export const expect = baseExpect.extend({
 export async function createElementInternalsTrapsForAxe(page: Page) {
   await page.addInitScript(() => {
     function getAriaAttrName(prop: string | symbol): string | null {
-      return typeof prop === 'string' && (prop === 'role' || prop.startsWith('aria')) ?
-        prop.replace(/(?:aria)(\w+)/, (_, w) => `aria-${w.toLowerCase()}`) :
-        null;
+      return typeof prop === 'string' && (prop === 'role' || prop.startsWith('aria'))
+        ? prop.replace(/(?:aria)(\w+)/, (_, w) => `aria-${w.toLowerCase()}`)
+        : null;
     }
 
     const original = HTMLElement.prototype.attachInternals;
-    HTMLElement.prototype.attachInternals = function() {
+    HTMLElement.prototype.attachInternals = function () {
       const originalInternals = original.call(this);
 
-      return new Proxy(({} as ElementInternals), {
+      return new Proxy({} as ElementInternals, {
         get(target, prop) {
           if (getAriaAttrName(prop)) {
             return Reflect.get(target, prop) ?? null;
@@ -152,7 +152,7 @@ interface AnalyzePageWithAxeOptions {
  */
 export async function analyzePageWithAxe(
   page: Page,
-  options?: AnalyzePageWithAxeOptions
+  options?: AnalyzePageWithAxeOptions,
 ): Promise<ReturnType<AxeBuilder['analyze']>> {
   let builder = new AxeBuilder({ page }).include('.sb-story');
   if (options?.exclude?.length) {
