@@ -28,7 +28,7 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
       height: 0,
     }),
   };
-  props = { ...props, ...props.customProps };
+  props = { ...props, ...props.customCallout!.customCalloutProps };
   const classes = usePopoverStyles_unstable(props);
   const Legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
   const YValue = props.yCalloutValue ? props.yCalloutValue : props.YValue;
@@ -41,13 +41,13 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
       >
         <PopoverSurface>
           {/** Given custom callout, then it will render */}
-          {props.customProps && props.customProps.customizedCallout && props.customProps.customizedCallout}
+          {props.customCallout && props.customCallout.customizedCallout && props.customCallout.customizedCallout}
           {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
-          {(!props.customProps || !props.customProps.customizedCallout) &&
+          {(!props.customCallout || !props.customCallout.customizedCallout) &&
             props.isCalloutForStack &&
             _multiValueCallout()}
           {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
-          {(!props.customProps || !props.customProps.customizedCallout) && !props.isCalloutForStack && (
+          {(!props.customCallout || !props.customCallout.customizedCallout) && !props.isCalloutForStack && (
             <div className={classes.calloutContentRoot}>
               <div className={classes.calloutDateTimeContainer}>
                 <div className={classes.calloutContentX}>{props.XValue} </div>
