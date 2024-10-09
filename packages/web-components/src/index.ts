@@ -312,3 +312,4 @@ export {
   HorizontalBarChartStyles,
   HorizontalBarChartTemplate,
 } from './horizontalbarchart/index.js';
+export { DonutChart, DonutChartDefinition, DonutChartStyles, DonutChartTemplate } from './donut-chart/index.js';
