@@ -3,6 +3,6 @@
   "root": true,
   "rules": {
     "@griffel/styles-file": "off",
-    "no-restricted-globals": "off"
+    "@nx/workspace-no-restricted-globals": "off"
   }
 }

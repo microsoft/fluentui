@@ -22,9 +22,8 @@ export type CarouselSliderProps = Partial<ComponentProps<CarouselSliderSlots>> &
   cardFocus?: boolean;
 };
 
+export type CarouselSliderContextValue = Pick<CarouselSliderProps, 'cardFocus'>;
 /**
  * State used in rendering CarouselSlider
  */
-export type CarouselSliderState = ComponentState<CarouselSliderSlots> & Pick<CarouselSliderProps, 'cardFocus'>;
-
-export type CarouselSliderContextValue = Pick<CarouselSliderProps, 'cardFocus'>;
+export type CarouselSliderState = ComponentState<CarouselSliderSlots> & CarouselSliderContextValue;
