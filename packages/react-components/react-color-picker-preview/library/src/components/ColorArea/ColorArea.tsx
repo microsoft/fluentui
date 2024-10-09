@@ -7,7 +7,7 @@ import type { ColorAreaProps } from './ColorArea.types';
 /**
  * ColorArea component
  */
-export const ColorArea: React.FC<ColorAreaProps> = props => {
+export const ColorArea = (props: ColorAreaProps) => {
   const state = useColorArea_unstable(props);
 
   useColorAreaStyles_unstable(state);
