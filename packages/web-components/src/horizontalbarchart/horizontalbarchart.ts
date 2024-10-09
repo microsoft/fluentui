@@ -1,6 +1,12 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
 import * as d3 from 'd3';
+import { createTabster, getGroupper, getMover, getTabsterAttribute, Types } from 'tabster';
 import { IChartDataPoint, IChartProps, Variant } from './horizontalbarchart.options.js';
+
+// During the page startup.
+const tabsterCore = createTabster(window);
+getMover(tabsterCore);
+getGroupper(tabsterCore);
 
 /**
  * A Horizontal Bar Chart HTML Element.
@@ -202,7 +208,17 @@ export class HorizontalBarChart extends FASTElement {
       .data(this.inpData!)
       .enter()
       .append('div')
-      .each((d, i, nodes) => this.createSingleChartBars(d, i, nodes));
+      .each((d, i, nodes) => {
+        this.createSingleChartBars(d, i, nodes);
+
+        //Get the tabster attributes
+        const attributes = getTabsterAttribute({ root: {} });
+
+        //Apply attributes directly to the current node
+        Object.keys(attributes).forEach(key => {
+          nodes[i].setAttribute(key, attributes[key]);
+        });
+      });
   }
 
   public _createBarsAndLegends(data: IChartProps, barNo?: number) {
@@ -303,19 +319,50 @@ export class HorizontalBarChart extends FASTElement {
         )
         .attr('y', 0)
         .attr('width', value + '%')
-        .attr('height', barHeight);
+        .attr('height', barHeight)
+        .attr('style', `fill: ${point.color}`)
+        .attr('tabindex', 0)
+        .attr('data-tabster', '{"groupper": {...}}"')
+        .attr('data-tabster', '{"mover": {...}}"');
     }
 
-    const containerDiv = d3.create('div');
+    const containerDiv = d3.create('div').attr('style', 'position: relative');
+
+    let tooltip: any;
 
     const svgEle = containerDiv
       .append('svg')
+      .attr('height', 20)
       .attr('aria-label', data?.chartTitle ? data?.chartTitle : '')
       .selectAll('g')
       .data(data.chartData!)
       .enter()
       .append('g')
-      .each(createBars);
+      .each(createBars)
+      .on('mouseover', function (event, d) {
+        const tooltipHTML = `
+        <div style="border-left:4px solid ${d.color}; padding-left: 8px;">
+            <div style="font-size: 15px;lineHeight: 16px;
+        color: theme.semanticColors.bodyText; margin-top: 4px;">${d.legend}</div>
+            <div style="font-weight:bold; color: ${d.color}; font-size: 30px; text-align: left; lineHeight: 36px; margin-top: 4px;">${d.data}</div>
+        </div>
+       `;
+        tooltip = containerDiv
+          .append('div')
+          .attr(
+            'style',
+            'position:absolute; display: grid; overflow: hidden; padding: 11px 16px 10px 16px;  backgroundColor: theme.semanticColors.bodyBackground; backgroundBlendMode: normal, luminosity; text-align:center; font:12px sans-serif; background:white; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); border:2px; pointer-events:none; opacity:0;' +
+              'opacity: 1; left: ' +
+              (event.pageX - containerDiv.node()!.getBoundingClientRect().left + window.scrollX) +
+              'px; top: ' +
+              (event.pageY - (containerDiv.node()!.getBoundingClientRect().top + window.scrollY) - 68) +
+              'px;',
+          );
+        tooltip.html(tooltipHTML);
+      })
+      .on('mouseout', function () {
+        tooltip.attr('style', 'position: absolute; opacity:0');
+      });
 
     if (this.variant === Variant.AbsoluteScale) {
       const showLabel = true;
@@ -334,7 +381,7 @@ export class HorizontalBarChart extends FASTElement {
             }%`,
           )
           .attr('textAnchor', 'start')
-          .attr('y', this.barHeight / 2)
+          .attr('y', this.barHeight / 2 + 6)
           .attr('dominantBaseline', 'central')
           .attr('transform', `translate(${this._isRTL ? -4 : 4})`)
           .attr('aria-label', `Total: ${barLabel}`)
