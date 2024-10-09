@@ -69,11 +69,8 @@ export const useCarouselCard_unstable = (
   const handleFocusCapture = React.useCallback(
     (e: React.FocusEvent) => {
       if (!e.defaultPrevented && isHTMLElement(e.currentTarget) && !isMouseEvent.current) {
-        e.preventDefault();
-
         // We want to prevent any browser scroll intervention for 'offscreen' focus
         containerRef?.current?.scrollTo(0, 0);
-
         selectPageByElement(e, e.currentTarget, false);
       }
     },
