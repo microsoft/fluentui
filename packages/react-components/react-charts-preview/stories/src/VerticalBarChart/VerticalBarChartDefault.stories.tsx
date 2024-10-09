@@ -13,7 +13,7 @@ import {
 } from '@fluentui/react-components';
 import { tokens } from '@fluentui/react-theme';
 
-export const VCBasic = () => {
+export const VerticalBarDefault = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [isCalloutselected, setIsCalloutSelected] = React.useState<boolean>(false);
@@ -258,10 +258,8 @@ export const VCBasic = () => {
     </>
   );
 };
-VCBasic.parameters = {
+VerticalBarDefault.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

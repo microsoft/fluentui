@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HorizontalBarChart, IChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charts-preview';
 
-export const HBCBenchmark = () => {
+export const HorizontalBarBenchmark = () => {
   const hideRatio: boolean[] = [true, false];
   const data: IChartProps[] = [
     {
@@ -48,10 +48,8 @@ export const HBCBenchmark = () => {
   );
 };
 
-HBCBenchmark.parameters = {
+HorizontalBarBenchmark.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

@@ -7,7 +7,7 @@ import {
   DataVizPalette,
 } from '@fluentui/react-charts-preview';
 
-export const LCGaps = (props: ILineChartProps) => {
+export const LineChartGaps = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(400);
 
@@ -267,10 +267,8 @@ export const LCGaps = (props: ILineChartProps) => {
     </>
   );
 };
-LCGaps.parameters = {
+LineChartGaps.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

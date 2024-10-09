@@ -9,7 +9,7 @@ import {
 } from '@fluentui/react-charts-preview';
 import { Switch } from '@fluentui/react-switch';
 
-export const DonutCustomCallout = () => {
+export const DonutChartCustomCallout = () => {
   const [useCustomPopover, setUseCustomPopover] = React.useState(false);
 
   const points: IChartDataPoint[] = [
@@ -79,7 +79,7 @@ export const DonutCustomCallout = () => {
   );
 };
 
-DonutCustomCallout.parameters = {
+DonutChartCustomCallout.parameters = {
   docs: {
     description: {
       story: 'Donut Chart Story.',

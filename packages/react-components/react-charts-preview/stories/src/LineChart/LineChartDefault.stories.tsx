@@ -3,7 +3,7 @@ import { ILineChartProps, LineChart, IChartProps, DataVizPalette } from '@fluent
 import { Switch, Checkbox } from '@fluentui/react-components';
 import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
-export const LCBasic = (props: ILineChartProps) => {
+export const LineChartBasic = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
@@ -230,10 +230,8 @@ export const LCBasic = (props: ILineChartProps) => {
     </>
   );
 };
-LCBasic.parameters = {
+LineChartBasic.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

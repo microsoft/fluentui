@@ -3,13 +3,13 @@ import { VerticalBarChart } from '@fluentui/react-charts-preview';
 import descriptionMd from './VerticalBarChartDescription.md';
 import bestPracticesMd from './VerticalBarChartBestPractices.md';
 
-export { VCBasic } from './VerticalBarChartDefault.stories';
-export { VCCustomAccess } from './VerticalBarChartCustomAccessibility.stories';
-export { VCDateAxis } from './VerticalBarChartDateAxis.stories';
-export { VCAxisTooltip } from './VerticalBarChartAxisTooltip.stories';
-export { VCRotateLabels } from './VerticalBarChartRotateLabels.stories';
-export { VCStyled } from './VerticalBarChartStyled.stories';
-export { VCDynamic } from './VerticalBarChartDynamic.stories';
+export { VerticalBarDefault } from './VerticalBarChartDefault.stories';
+export { VerticalBarCustomAccessibility } from './VerticalBarChartCustomAccessibility.stories';
+export { VerticalBarDateAxis } from './VerticalBarChartDateAxis.stories';
+export { VerticalBarAxisTooltip } from './VerticalBarChartAxisTooltip.stories';
+export { VerticalBarRotateLabels } from './VerticalBarChartRotateLabels.stories';
+export { VerticalBarStyled } from './VerticalBarChartStyled.stories';
+export { VerticalBarDynamic } from './VerticalBarChartDynamic.stories';
 
 export default {
   title: 'Compat Components/Charts/VerticalBarChart',

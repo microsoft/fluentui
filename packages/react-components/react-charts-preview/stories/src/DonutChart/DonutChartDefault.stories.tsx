@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DonutChart, IChartProps, getColorFromToken, DataVizPalette } from '@fluentui/react-charts-preview';
 
-export const DonutBasic = () => {
+export const DonutChartBasic = () => {
   const points = [
     { legend: 'first', data: 20000, color: getColorFromToken(DataVizPalette.color1), xAxisCalloutData: '2020/04/30' },
     {
@@ -30,10 +30,8 @@ export const DonutBasic = () => {
   );
 };
 
-DonutBasic.parameters = {
+DonutChartBasic.parameters = {
   docs: {
-    description: {
-      story: 'Donut Chart Story.',
-    },
+    description: {},
   },
 };

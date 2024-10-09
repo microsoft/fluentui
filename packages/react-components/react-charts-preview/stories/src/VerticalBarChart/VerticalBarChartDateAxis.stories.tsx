@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
 
-export const VCDateAxis = () => {
+export const VerticalBarDateAxis = () => {
   const points: IVerticalBarChartDataPoint[] = [
     {
       x: new Date('2018/01/01'),
@@ -57,10 +57,8 @@ export const VCDateAxis = () => {
     </>
   );
 };
-VCDateAxis.parameters = {
+VerticalBarDateAxis.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

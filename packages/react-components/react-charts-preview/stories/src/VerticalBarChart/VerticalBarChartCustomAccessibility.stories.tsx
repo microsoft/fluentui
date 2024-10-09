@@ -2,7 +2,7 @@ import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
 import { Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
-export const VCCustomAccess = () => {
+export const VerticalBarCustomAccessibility = () => {
   const [isChecked, setIsChecked] = React.useState<CheckboxProps['checked']>(true);
   const [useSingleColor, setUseSingleColor] = React.useState<CheckboxProps['checked']>(true);
 
@@ -69,10 +69,8 @@ export const VCCustomAccess = () => {
     </>
   );
 };
-VCCustomAccess.parameters = {
+VerticalBarCustomAccessibility.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

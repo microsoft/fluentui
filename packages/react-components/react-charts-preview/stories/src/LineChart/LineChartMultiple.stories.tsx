@@ -3,7 +3,7 @@ import { ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-char
 
 import { Switch } from '@fluentui/react-components';
 
-export const LCMultiple = (props: ILineChartProps) => {
+export const LineChartMultiple = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
@@ -303,10 +303,8 @@ export const LCMultiple = (props: ILineChartProps) => {
     </>
   );
 };
-LCMultiple.parameters = {
+LineChartMultiple.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

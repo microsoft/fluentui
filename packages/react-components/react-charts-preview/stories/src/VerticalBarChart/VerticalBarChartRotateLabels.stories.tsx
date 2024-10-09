@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
 
-export const VCRotateLabels = () => {
+export const VerticalBarRotateLabels = () => {
   const points: IVerticalBarChartDataPoint[] = [
     {
       x: 'This is a medium long label. ',
@@ -40,10 +40,9 @@ export const VCRotateLabels = () => {
     </>
   );
 };
-VCRotateLabels.parameters = {
+VerticalBarRotateLabels.parameters = {
   docs: {
     description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
     },
   },
 };

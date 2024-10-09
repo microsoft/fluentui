@@ -21,7 +21,7 @@ const screenReaderOnlyStyle: React.CSSProperties = {
   border: 0,
 };
 
-export const DonutDynamic = () => {
+export const DonutChartDynamic = () => {
   const _colors = [
     [DataVizPalette.color3, DataVizPalette.color4, DataVizPalette.color5, DataVizPalette.color6, DataVizPalette.color7],
     [DataVizPalette.color8, DataVizPalette.color9, DataVizPalette.color10, DataVizPalette.color11],
@@ -128,10 +128,8 @@ export const DonutDynamic = () => {
     </div>
   );
 };
-DonutDynamic.parameters = {
+DonutChartDynamic.parameters = {
   docs: {
-    description: {
-      story: 'Donut Chart Story.',
-    },
+    description: {},
   },
 };
