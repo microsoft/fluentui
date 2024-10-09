@@ -25,14 +25,11 @@ export const Default = () => {
   const [y, setY] = React.useState(100);
   const [color, setColor] = React.useState('');
   const onChange: ColorAreaProps['onChange'] = (_, data) => {
+    const _color = { h: hue, s: x, v: y };
+    setColor(tinycolor(_color).toHexString());
     data.x && setX(data.x);
     data.y && setY(data.y);
   };
-
-  React.useEffect(() => {
-    const _color = { h: hue, s: x, v: y };
-    setColor(tinycolor(_color).toHexString());
-  }, [x, y]);
 
   const resetSlider = () => {
     setX(0);
