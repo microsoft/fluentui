@@ -14,10 +14,8 @@ export const useMergedTabsterAttributes_unstable = (
 ): Types.TabsterDOMAttribute => {
   'use no memo';
 
-  const validAttributes = attributes.filter((attr): attr is Partial<Types.TabsterDOMAttribute> => !!attr);
-
-  const stringAttributes = validAttributes.reduce<string[]>((acc, curr) => {
-    if (curr[TABSTER_ATTRIBUTE_NAME]) {
+  const stringAttributes = attributes.reduce<string[]>((acc, curr) => {
+    if (curr?.[TABSTER_ATTRIBUTE_NAME]) {
       acc.push(curr[TABSTER_ATTRIBUTE_NAME]);
     }
     return acc;
