@@ -8,7 +8,7 @@ import { Collapse } from '@fluentui/react-motion-components-preview';
 function Component({ visible }) {
   return (
     <Collapse visible={visible}>
-      <div style={{ background: 'lightblue' }}>Content</div>
+      <div>Content</div>
     </Collapse>
   );
 }

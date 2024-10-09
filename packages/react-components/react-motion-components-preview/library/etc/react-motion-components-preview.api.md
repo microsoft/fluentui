@@ -5,21 +5,27 @@
 ```ts
 
 import { PresenceComponent } from '@fluentui/react-motion';
+import { PresenceMotionCreator } from '@fluentui/react-motion';
+import { PresenceMotionFnCreator } from '@fluentui/react-motion';
+import { PresenceParams } from '@fluentui/react-motion';
 
 // @public
-export const Collapse: PresenceComponent<    {
-animateOpacity?: boolean | undefined;
-}>;
+export const Collapse: PresenceComponent<CollapseRuntimeParams>;
 
 // @public (undocumented)
-export const CollapseExaggerated: PresenceComponent<    {
-animateOpacity?: boolean | undefined;
-}>;
+export const CollapseDelayed: PresenceComponent<CollapseRuntimeParams>;
 
 // @public (undocumented)
-export const CollapseSnappy: PresenceComponent<    {
-animateOpacity?: boolean | undefined;
-}>;
+export const CollapseExaggerated: PresenceComponent<CollapseRuntimeParams>;
+
+// @public (undocumented)
+export const CollapseSnappy: PresenceComponent<CollapseRuntimeParams>;
+
+// @public
+export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, CollapseRuntimeParams>;
+
+// @public
+export const createFadePresence: PresenceMotionCreator<PresenceParams>;
 
 // @public
 export const Fade: PresenceComponent<    {}>;

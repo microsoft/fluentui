@@ -10,9 +10,12 @@ const useClasses = makeStyles({
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
     gap: '20px 10px',
   },
-  card: {
+  cardWrapper: {
     gridArea: 'card',
-    padding: '10px',
+  },
+  card: {
+    padding: '20px',
+    backgroundColor: tokens.colorNeutralBackground6,
   },
   controls: {
     display: 'flex',
@@ -49,9 +52,11 @@ export const Snappy = () => {
         </Field>
       </div>
 
-      <CollapseSnappy visible={visible}>
-        <div className={classes.card}>
-          <LoremIpsum />
+      <CollapseSnappy visible={visible} unmountOnExit>
+        <div className={classes.cardWrapper}>
+          <div className={classes.card}>
+            <LoremIpsum />
+          </div>
         </div>
       </CollapseSnappy>
     </div>

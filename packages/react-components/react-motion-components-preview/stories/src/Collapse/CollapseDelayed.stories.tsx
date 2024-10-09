@@ -1,8 +1,8 @@
 import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
-import { CollapseExaggerated } from '@fluentui/react-motion-components-preview';
+import { CollapseDelayed } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
 
-import description from './CollapseExaggerated.stories.md';
+import description from './CollapseDelayed.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -40,7 +40,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Exaggerated = () => {
+export const Delayed = () => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
 
@@ -52,18 +52,18 @@ export const Exaggerated = () => {
         </Field>
       </div>
 
-      <CollapseExaggerated visible={visible} unmountOnExit>
+      <CollapseDelayed visible={visible} unmountOnExit>
         <div className={classes.cardWrapper}>
           <div className={classes.card}>
             <LoremIpsum />
           </div>
         </div>
-      </CollapseExaggerated>
+      </CollapseDelayed>
     </div>
   );
 };
 
-Exaggerated.parameters = {
+Delayed.parameters = {
   docs: {
     description: {
       story: description,

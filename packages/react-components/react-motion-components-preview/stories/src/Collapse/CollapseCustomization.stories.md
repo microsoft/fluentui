@@ -2,13 +2,17 @@
 - The predefined fade transition can be disabled by setting `animateOpacity` to `false`.
 
 ```tsx
-import { motionTokens, createPresenceComponentVariant } from '@fluentui/react-components';
-import { Collapse } from '@fluentui/react-motion-components-preview';
+import { motionTokens, createPresenceComponent } from '@fluentui/react-components';
+import { createCollapsePresence } from '@fluentui/react-motion-components-preview';
 
-const CustomCollapseVariant = createPresenceComponentVariant(Collapse, {
-  enter: { duration: motionTokens.durationSlow, easing: motionTokens.curveEasyEaseMax },
-  exit: { duration: motionTokens.durationNormal, easing: motionTokens.curveEasyEaseMax },
-});
+const CustomCollapseVariant = createPresenceComponent(
+  createCollapsePresence({
+    enterSizeDuration: motionTokens.durationSlow,
+    enterEasing: motionTokens.curveEasyEaseMax,
+    exitSizeDuration: motionTokens.durationNormal,
+    exitEasing: motionTokens.curveEasyEaseMax,
+  }),
+);
 
 const CustomCollapse = ({ visible }) => (
   <CustomCollapseVariant animateOpacity={false} unmountOnExit visible={visible}>

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "add types",
+  "packageName": "@fluentui/react-motion",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
