@@ -21,7 +21,6 @@ export type CarouselSliderContextValues = {
 
 export function useCarouselSliderContextValues_unstable(state: CarouselSliderState): CarouselSliderContextValues {
   const { cardFocus } = state;
-
   const carouselSlider = React.useMemo(
     () => ({
       cardFocus,

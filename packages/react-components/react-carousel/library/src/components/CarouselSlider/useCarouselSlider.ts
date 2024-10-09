@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import type { CarouselSliderProps, CarouselSliderState } from './CarouselSlider.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 
 /**
  * Create the state required to render CarouselSlider.
@@ -18,8 +19,9 @@ export const useCarouselSlider_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): CarouselSliderState => {
   const { cardFocus = false } = props;
+  const circular = useCarouselContext(ctx => ctx.circular);
   const focusableGroupAttr = useArrowNavigationGroup({
-    circular: false, // We don't want circular focus here, it's confusing in carousel.
+    circular,
     axis: 'horizontal',
     memorizeCurrent: false,
     // eslint-disable-next-line @typescript-eslint/naming-convention
