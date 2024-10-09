@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "style: replace no-restricted-globals with type aware @nx/workspace-no-restricted-globals in v9",
+  "packageName": "@fluentui/react-utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

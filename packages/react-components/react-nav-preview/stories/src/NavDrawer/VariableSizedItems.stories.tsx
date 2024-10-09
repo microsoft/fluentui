@@ -163,9 +163,7 @@ export const VariableSizedItems = (props: Partial<NavDrawerProps>) => {
             Health Plans
           </NavItem>
           <NavCategory value="11">
-            <NavCategoryItem icon={<Person />} value="12">
-              Retirement
-            </NavCategoryItem>
+            <NavCategoryItem icon={<Person />}>Retirement</NavCategoryItem>
             <NavSubItemGroup>
               <NavSubItem href={linkDestination} value="13">
                 Plan Information

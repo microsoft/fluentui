@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Mon, 23 Sep 2024 12:40:17 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2024 22:05:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.2.38)
+
+Tue, 08 Oct 2024 22:05:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.2.37..@fluentui/react-checkbox_v9.2.38)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.77 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-tabster to v9.22.8 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
 
 ## [9.2.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.2.37)
 
