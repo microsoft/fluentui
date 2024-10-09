@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: useMergedTabsterAttributes should accept null/undefined values",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
