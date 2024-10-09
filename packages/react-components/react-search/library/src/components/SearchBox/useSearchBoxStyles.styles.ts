@@ -78,7 +78,7 @@ const useContentAfterStyles = makeStyles({
     height: 0,
     width: 0,
     paddingLeft: 0,
-    visibility: 'hidden',
+    overflow: 'hidden',
   },
 });
 
