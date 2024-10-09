@@ -58,10 +58,7 @@ const useThumbStyles = makeStyles({
     bottom: `var(${areaYProgressVar})`,
     '::before': {
       position: 'absolute',
-      top: '0px',
-      left: '0px',
-      bottom: '0px',
-      right: '0px',
+      inset: '0px',
       borderRadius: tokens.borderRadiusCircular,
       boxSizing: 'border-box',
       content: "''",
