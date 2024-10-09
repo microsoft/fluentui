@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { useId, Button, Label, makeStyles } from '@fluentui/react-components';
+import { Button, makeStyles } from '@fluentui/react-components';
 import { ColorArea, ColorAreaProps } from '@fluentui/react-color-picker-preview';
-import { tinycolor } from '@ctrl/tinycolor';
 
 const useStyles = makeStyles({
   example: {
@@ -19,29 +18,15 @@ const useStyles = makeStyles({
 });
 export const Default = () => {
   const styles = useStyles();
-  const id = useId();
-  const hue = 0;
-  const [x, setX] = React.useState(100);
-  const [y, setY] = React.useState(100);
-  const [color, setColor] = React.useState('');
-  const onChange: ColorAreaProps['onChange'] = (_, data) => {
-    const _color = { h: hue, s: x, v: y };
-    setColor(tinycolor(_color).toHexString());
-    data.x && setX(data.x);
-    data.y && setY(data.y);
-  };
+  const defaultColor = '#ff0000';
+  const [color, setColor] = React.useState(defaultColor);
+  const onChange: ColorAreaProps['onChange'] = (_, data) => setColor(data.color);
 
-  const resetSlider = () => {
-    setX(0);
-    setY(0);
-  };
+  const resetSlider = () => setColor(defaultColor);
 
   return (
     <div className={styles.example}>
-      <Label htmlFor={id}>
-        ColorArea [ Current Values: X: {x} Y: {y} ]
-      </Label>
-      <ColorArea color={`hsl(${hue}, 100%, 50%)`} onChange={onChange} id={id} />
+      <ColorArea color={defaultColor} onChange={onChange} />
       <div className={styles.previewColor} style={{ backgroundColor: color }} />
       <Button onClick={resetSlider}>Reset</Button>
     </div>

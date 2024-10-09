@@ -44,11 +44,12 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
   const requestColorChange = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     const _coordinates = getCoordinates(event);
     setCoordinates(_coordinates);
+    const newColor = tinycolor({ h: hsvColor.h, s: _coordinates.x / 100, v: _coordinates.y / 100 }).toRgbString();
 
     onChange?.(event, {
       type: 'onMouseMove',
       event,
-      ..._coordinates,
+      color: newColor,
     });
   });
 
@@ -71,7 +72,7 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
     [areaXProgressVar]: `${getPercent(coordinates.x)}%`,
     [areaYProgressVar]: `${getPercent(coordinates.y)}%`,
     [thumbColorVar]: 'transparent',
-    [mainColorVar]: color || 'red',
+    [mainColorVar]: color || '#fff',
   };
 
   state.root.style = {

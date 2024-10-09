@@ -2,8 +2,7 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
 
 export type ColorAreaOnColorChangeData = EventData<'click' | 'onMouseMove', React.MouseEvent> & {
-  x: number;
-  y: number;
+  color: string;
 };
 
 export type ColorAreaSlots = {
