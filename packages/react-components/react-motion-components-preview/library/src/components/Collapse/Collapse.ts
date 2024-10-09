@@ -1,8 +1,6 @@
 import { motionTokens, createPresenceComponent } from '@fluentui/react-motion';
 import type { PresenceMotionFnCreator } from '../../types';
 
-const { durationNormal, durationSlower, durationFast, curveEasyEaseMax } = motionTokens;
-
 type CollapseVariantParams = {
   /** Time (ms) for the enter transition (expand). Defaults to the `durationNormal` value (200 ms). */
   enterDuration?: number;
@@ -25,8 +23,8 @@ type CollapseRuntimeParams = {
 /** Define a presence motion for collapse/expand */
 export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantParams, CollapseRuntimeParams> =
   ({
-    enterDuration = durationNormal,
-    enterEasing = curveEasyEaseMax,
+    enterDuration = motionTokens.durationNormal,
+    enterEasing = motionTokens.curveEasyEaseMax,
     exitDuration = enterDuration,
     exitEasing = enterEasing,
   } = {}) =>
@@ -60,6 +58,10 @@ export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantPara
 /** A React component that applies collapse/expand transitions to its children. */
 export const Collapse = createPresenceComponent(createCollapsePresence());
 
-export const CollapseSnappy = createPresenceComponent(createCollapsePresence({ enterDuration: durationFast }));
+export const CollapseSnappy = createPresenceComponent(
+  createCollapsePresence({ enterDuration: motionTokens.durationFast }),
+);
 
-export const CollapseExaggerated = createPresenceComponent(createCollapsePresence({ enterDuration: durationSlower }));
+export const CollapseExaggerated = createPresenceComponent(
+  createCollapsePresence({ enterDuration: motionTokens.durationSlower }),
+);
