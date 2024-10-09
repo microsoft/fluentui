@@ -309,14 +309,49 @@ export class HorizontalBarChart extends FASTElement {
         .attr('height', barHeight);
     }
 
+<<<<<<< Updated upstream
     const svgEle = d3
       .create('svg')
+=======
+    const containerDiv = d3.create('div').attr('style', 'position: relative');
+
+    let tooltip: any;
+
+    const svgEle = containerDiv
+      .append('svg')
+      .attr('height', 20)
+>>>>>>> Stashed changes
       .attr('aria-label', data?.chartTitle ? data?.chartTitle : '')
       .selectAll('g')
       .data(data.chartData!)
       .enter()
       .append('g')
-      .each(createBars);
+      .each(createBars)
+      .on('mouseover', function (event, d) {
+        console.log(event.pageX, event.pageY);
+        const tooltipHTML = `
+        <div style="">
+            <div style="font-size: 15px;lineHeight: 16px;
+        color: theme.semanticColors.bodyText; margin-top: 4px;">${d.legend}</div>
+            <div style="font-weight:bold; color: ${d.color}; font-size: 30px; text-align: left; lineHeight: 36px; margin-top: 4px;">${d.data}</div>
+        </div>
+       `;
+        tooltip = containerDiv
+          .append('div')
+          .attr(
+            'style',
+            'position:absolute; display: grid; overflow: hidden; padding: 11px 16px 10px 16px;  backgroundColor: theme.semanticColors.bodyBackground; backgroundBlendMode: normal, luminosity; text-align:center; font:12px sans-serif; background:white; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); border:2px; pointer-events:none; opacity:0;' +
+              'opacity: 1; left: ' +
+              (event.pageX - containerDiv.node()!.getBoundingClientRect().left + window.scrollX) +
+              'px; top: ' +
+              (event.pageY - (containerDiv.node()!.getBoundingClientRect().top + window.scrollY) - 68) +
+              'px;',
+          );
+        tooltip.html(tooltipHTML);
+      })
+      .on('mouseout', function () {
+        tooltip.attr('style', 'position: absolute; opacity:0');
+      });
 
     if (this.variant === Variant.AbsoluteScale) {
       const showLabel = true;
