@@ -98,22 +98,6 @@ ruleTester.run(RULE_NAME, rule, {
     };
     `,
     },
-    // =====================================================================================
-    // using slot.* apis via direct JSX rendering - anti-pattern in v9 framework composition
-    // =====================================================================================
-    {
-      options: [{ runtime: 'automatic' }],
-      code: `
-    import { slot, getIntrinsicElementProps } from '@fluentui/react-utilities';
-
-    export const factory = (props: {}) => {
-      const SlotComponent = slot.always(getIntrinsicElementProps('span', {}),{ elementType: 'span' })
-      const InlineCmp = () => <div>inline</div>
-
-      return {SlotComponent,InlineCmp}
-    };
-    `,
-    },
     {
       options: [{ runtime: 'automatic' }],
       code: `
@@ -164,6 +148,21 @@ ruleTester.run(RULE_NAME, rule, {
             <SlotOptionalComponent/>
           </div>
       );
+    };
+    `,
+    },
+
+    // using slot.* apis return value without direct JSX rendering - anti-pattern in v9 framework composition
+    {
+      options: [{ runtime: 'automatic' }],
+      code: `
+    import { slot, getIntrinsicElementProps } from '@fluentui/react-utilities';
+
+    export const factory = (props: {}) => {
+      const SlotComponent = slot.always(getIntrinsicElementProps('span', {}),{ elementType: 'span' })
+      const InlineCmp = () => <div>inline</div>
+
+      return {SlotComponent,InlineCmp}
     };
     `,
     },
@@ -293,9 +292,8 @@ ruleTester.run(RULE_NAME, rule, {
       `,
       errors: [{ messageId: 'redundantPragma' }],
     },
-    // =====================================================================================
-    // using slot.* apis via direct JSX rendering - anti-pattern in v9 framework composition
-    // =====================================================================================
+
+    // using slot.* apis return value to render JSX directly - anti-pattern in v9 framework composition
     {
       options: [{ runtime: 'automatic' }],
       code: `
@@ -313,6 +311,8 @@ ruleTester.run(RULE_NAME, rule, {
     `,
       errors: [{ messageId: 'missingJsxImportSource' }],
     },
+
+    // using slot.* apis return value to render JSX directly - anti-pattern in v9 framework composition
     {
       options: [{ runtime: 'automatic' }],
       code: `
@@ -330,6 +330,8 @@ ruleTester.run(RULE_NAME, rule, {
     `,
       errors: [{ messageId: 'missingJsxImportSource' }],
     },
+
+    // using slot.* apis return value to render JSX directly - anti-pattern in v9 framework composition
     {
       options: [{ runtime: 'automatic' }],
       code: `
