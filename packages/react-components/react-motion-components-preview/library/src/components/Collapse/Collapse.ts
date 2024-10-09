@@ -11,23 +11,24 @@ const collapseMotion: PresenceMotionFn<{ animateOpacity?: boolean }> = ({ elemen
   const toOpacity = 1;
   const fromHeight = '0'; // Could be a custom param in the future: start partially expanded
   const toHeight = `${element.scrollHeight}px`;
-  const overflow = 'hidden';
+  const overflowHidden = 'hidden';
 
   const duration = motionTokens.durationNormal;
   const easing = motionTokens.curveEasyEaseMax;
 
   const enterKeyframes = [
-    { opacity: fromOpacity, maxHeight: fromHeight, overflow },
+    // over
+    { opacity: fromOpacity, maxHeight: fromHeight, overflowX: overflowHidden, overflowY: overflowHidden },
     // Transition to the height of the content, at 99.99% of the duration.
-    { opacity: toOpacity, maxHeight: toHeight, offset: 0.9999, overflow },
+    { opacity: toOpacity, maxHeight: toHeight, offset: 0.9999, overflowX: overflowHidden, overflowY: overflowHidden },
     // On completion, remove the maxHeight because the content might need to expand later.
     // This extra keyframe is simpler than firing a callback on completion.
-    { opacity: toOpacity, maxHeight: 'unset', overflow },
+    { opacity: toOpacity, maxHeight: 'unset', overflowX: overflowHidden, overflowY: overflowHidden },
   ];
 
   const exitKeyframes = [
-    { opacity: toOpacity, maxHeight: toHeight, overflow },
-    { opacity: fromOpacity, maxHeight: fromHeight, overflow },
+    { opacity: toOpacity, maxHeight: toHeight, overflowX: overflowHidden, overflowY: overflowHidden },
+    { opacity: fromOpacity, maxHeight: fromHeight, overflowX: overflowHidden, overflowY: overflowHidden },
   ];
 
   return {
