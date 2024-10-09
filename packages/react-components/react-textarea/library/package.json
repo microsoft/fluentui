@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-textarea",
-  "version": "9.3.88",
+  "version": "9.3.89",
   "description": "Fluent UI TextArea component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,7 +32,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "^9.1.76",
+    "@fluentui/react-field": "^9.1.77",
     "@fluentui/react-shared-contexts": "^9.20.1",
     "@fluentui/react-theme": "^9.1.20",
     "@fluentui/react-utilities": "^9.18.15",

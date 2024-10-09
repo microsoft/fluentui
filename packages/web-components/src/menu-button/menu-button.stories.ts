@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { MenuButton as FluentMenuButton } from './menu-button.js';
 import { MenuButtonAppearance, MenuButtonShape, MenuButtonSize } from './menu-button.options.js';
 
@@ -152,6 +152,12 @@ export default {
 } as Meta<FluentMenuButton>;
 
 export const Default: Story = {};
+
+export const IconOnly: Story = {
+  args: {
+    iconOnly: true,
+  },
+};
 
 export const Appearance: Story = {
   render: renderComponent(html<StoryArgs<FluentMenuButton>>`

@@ -657,7 +657,12 @@ export class BaseRatingDisplay extends FASTElement {
     generateIcons(): string;
     protected getMaxIcons(): number;
     protected getSelectedValue(): number;
+    iconViewBox?: string;
     max?: number;
+    // @internal (undocumented)
+    slottedIcon: HTMLElement[];
+    // @internal (undocumented)
+    slottedIconChanged(): void;
     value?: number;
 }
 
@@ -2724,9 +2729,11 @@ export class Menu extends FASTElement {
     openOnHoverChanged(oldValue: boolean, newValue: boolean): void;
     persistOnItemClick?: boolean;
     persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
+    primaryAction: HTMLSlotElement;
     setComponent(): void;
     slottedMenuList: MenuList[];
     slottedTriggers: HTMLElement[];
+    split?: boolean;
     toggleHandler: (e: Event) => void;
     toggleMenu: () => void;
     triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
@@ -4131,6 +4138,30 @@ export const ValidationFlags: {
 
 // @public (undocumented)
 export type ValidationFlags = ValuesOf<typeof ValidationFlags>;
+
+// @public
+export const zIndexBackground = "var(--zIndexBackground)";
+
+// @public
+export const zIndexContent = "var(--zIndexContent)";
+
+// @public
+export const zIndexDebug = "var(--zIndexDebug)";
+
+// @public
+export const zIndexFloating = "var(--zIndexFloating)";
+
+// @public
+export const zIndexMessages = "var(--zIndexMessages)";
+
+// @public
+export const zIndexOverlay = "var(--zIndexOverlay)";
+
+// @public
+export const zIndexPopup = "var(--zIndexPopup)";
+
+// @public
+export const zIndexPriority = "var(--zIndexPriority)";
 
 // Warnings were encountered during analysis:
 //

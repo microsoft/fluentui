@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-experiments",
-  "version": "8.14.170",
+  "version": "8.14.175",
   "description": "Experimental React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -38,17 +38,17 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.120.9",
-    "@fluentui/theme": "^2.6.59",
+    "@fluentui/react": "^8.121.3",
+    "@fluentui/theme": "^2.6.62",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.4.25",
-    "@fluentui/foundation-legacy": "^8.4.16",
-    "@fluentui/font-icons-mdl2": "^8.5.50",
+    "@fluentui/foundation-legacy": "^8.4.19",
+    "@fluentui/font-icons-mdl2": "^8.5.53",
     "@fluentui/merge-styles": "^8.6.13",
-    "@fluentui/react-hooks": "^8.8.12",
+    "@fluentui/react-hooks": "^8.8.15",
     "@fluentui/set-version": "^8.2.23",
-    "@fluentui/style-utilities": "^8.10.21",
-    "@fluentui/utilities": "^8.15.15",
+    "@fluentui/style-utilities": "^8.11.2",
+    "@fluentui/utilities": "^8.15.18",
     "deep-assign": "^2.0.0",
     "prop-types": "^15.7.2",
     "tslib": "^2.1.0"

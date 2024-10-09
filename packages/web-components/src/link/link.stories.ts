@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { AnchorTarget } from '../anchor-button/anchor-button.options.js';
 import type { Link as FluentLink } from './link.js';
 import { LinkAppearance } from './link.options.js';

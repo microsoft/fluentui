@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Menu as FluentMenu } from './menu.js';
 
 type Story = StoryObj<FluentMenu>;
@@ -22,15 +22,21 @@ const defaultTriggerSlottedContent = html`<fluent-menu-button
 
 const storyTemplate = html<StoryArgs<FluentMenu>>`
   <fluent-menu
+    ?split="${story => story.split}"
     ?open-on-hover="${story => story.openOnHover}"
     ?open-on-context="${story => story.openOnContext}"
     ?close-on-scroll="${story => story.closeOnScroll}"
     ?persist-on-item-click="${story => story.persistOnItemClick}"
     style="${story => (story['--menu-max-height'] !== '' ? `--menu-max-height: ${story['--menu-max-height']};` : '')}"
   >
-    ${story => story.triggerSlottedContent?.()} ${story => story.slottedContent?.()}
+    ${story => story.primaryActionSlottedContent?.()} ${story => story.triggerSlottedContent?.()}
+    ${story => story.slottedContent?.()}
   </fluent-menu>
 `;
+
+const generatePimaryActionSlottedContent = (content: string = 'Primary Action') => {
+  return html`<fluent-button appearance="primary" slot="primary-action">${content}</fluent-button>`;
+};
 
 export default {
   title: 'Components/Menu',
@@ -41,6 +47,12 @@ export default {
     '--menu-max-height': 'auto',
   },
   argTypes: {
+    split: {
+      control: 'boolean',
+      description: 'Sets the split visual state. Used in Cordination with the `primary-action` slot.',
+      name: 'split',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
     openOnHover: {
       control: 'boolean',
       description: 'Sets whether menu opens on hover',
@@ -72,6 +84,24 @@ export default {
       table: {
         category: 'CSS Custom Properties',
       },
+    },
+    slottedContent: {
+      control: false,
+      description: 'The default slot',
+      name: '',
+      table: { category: 'slots', type: {} },
+    },
+    primaryActionSlottedContent: {
+      control: false,
+      description: 'The primary action slot. Used when the menu is `split`',
+      name: '',
+      table: { category: 'slots', type: {} },
+    },
+    triggerSlottedContent: {
+      control: false,
+      description: 'The trigger slot',
+      name: '',
+      table: { category: 'slots', type: {} },
     },
   },
 } as Meta<FluentMenu>;
@@ -131,5 +161,31 @@ export const MenuWithInteractiveItems: Story = {
         <fluent-menu-item>Menu item 8</fluent-menu-item>
       </fluent-menu-list>
     `,
+  },
+};
+
+const link = '<a href="/docs/components-button-split-button--docs">split-button</a>';
+
+const storyDescription = `
+  The split-button variation, refer to ${link} for more examples.
+`;
+
+export const SplitButton: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: storyDescription,
+      },
+    },
+  },
+  args: {
+    split: true,
+    triggerSlottedContent: () => html`<fluent-menu-button
+      aria-label="Toggle Menu"
+      appearance="primary"
+      slot="trigger"
+      icon-only
+    ></fluent-menu-button>`,
+    primaryActionSlottedContent: () => html`${generatePimaryActionSlottedContent()}`,
   },
 };

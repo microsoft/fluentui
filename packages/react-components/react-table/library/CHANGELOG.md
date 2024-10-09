@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Mon, 23 Sep 2024 12:40:15 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2024 22:05:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.15.19)
+
+Tue, 08 Oct 2024 22:05:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.15.18..@fluentui/react-table_v9.15.19)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.7 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-avatar to v9.6.40 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.38 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-radio to v9.2.33 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-tabster to v9.22.8 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+
+## [9.15.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.15.18)
+
+Thu, 26 Sep 2024 14:15:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.15.17..@fluentui/react-table_v9.15.18)
+
+### Patches
+
+- fix: table selection checkbox or radio should be rendered even if invisible ([PR #32846](https://github.com/microsoft/fluentui/pull/32846) by sarah.higley@microsoft.com)
 
 ## [9.15.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.15.17)
 
