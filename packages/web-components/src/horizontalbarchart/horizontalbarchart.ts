@@ -339,9 +339,8 @@ export class HorizontalBarChart extends FASTElement {
       .append('g')
       .each(createBars)
       .on('mouseover', function (event, d) {
-        console.log(event.pageX, event.pageY);
         const tooltipHTML = `
-        <div style="">
+        <div style="border-left:4px solid ${d.color}; padding-left: 8px;">
             <div style="font-size: 15px;lineHeight: 16px;
         color: theme.semanticColors.bodyText; margin-top: 4px;">${d.legend}</div>
             <div style="font-weight:bold; color: ${d.color}; font-size: 30px; text-align: left; lineHeight: 36px; margin-top: 4px;">${d.data}</div>
