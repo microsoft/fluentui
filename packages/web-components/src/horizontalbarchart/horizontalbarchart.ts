@@ -308,6 +308,7 @@ export class HorizontalBarChart extends FASTElement {
         .append('rect')
         .attr('key', index)
         .attr('id', `${barNo}-${index}`)
+        .attr('style', `fill:${point.color!}`)
         .attr(
           'x',
           `${
