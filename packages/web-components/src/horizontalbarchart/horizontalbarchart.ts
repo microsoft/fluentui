@@ -1,6 +1,12 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
 import * as d3 from 'd3';
+import { createTabster, getGroupper, getMover, getTabsterAttribute, Types } from 'tabster';
 import { IChartDataPoint, IChartProps, Variant } from './horizontalbarchart.options.js';
+
+// During the page startup.
+const tabsterCore = createTabster(window);
+getMover(tabsterCore);
+getGroupper(tabsterCore);
 
 /**
  * A Horizontal Bar Chart HTML Element.
@@ -39,7 +45,6 @@ export class HorizontalBarChart extends FASTElement {
 
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
 
     const chartPoints1: IChartDataPoint[] = [
       {
@@ -129,8 +134,7 @@ export class HorizontalBarChart extends FASTElement {
   private bindEvents() {}
 
   connectedCallback() {
-    //this.render();
-    this.renderSingle();
+    this.render();
   }
 
   renderSingle() {
@@ -197,16 +201,24 @@ export class HorizontalBarChart extends FASTElement {
   }
 
   render() {
-    const div = d3.select(this.shadowRoot).append('div').attr('width', 800).attr('height', 800);
-    const rootDivEle = d3
-      .create('div')
+    const div = d3.select(this.shadowRoot).append('div').attr('width', 800).attr('height', 400);
+    div
+      .append('div')
       .selectAll('div')
       .data(this.inpData!)
       .enter()
       .append('div')
-      .each((d, i, nodes) => this.createSingleChartBars(d, i, nodes));
+      .each((d, i, nodes) => {
+        this.createSingleChartBars(d, i, nodes);
 
-    div.node()?.appendChild(rootDivEle.node()!);
+        //Get the tabster attributes
+        const attributes = getTabsterAttribute({ root: {} });
+
+        //Apply attributes directly to the current node
+        Object.keys(attributes).forEach(key => {
+          nodes[i].setAttribute(key, attributes[key]);
+        });
+      });
   }
 
   public _createBarsAndLegends(data: IChartProps, barNo?: number) {
@@ -287,7 +299,7 @@ export class HorizontalBarChart extends FASTElement {
       startingPoint.push(prevPosition);
 
       const gEle = d3
-        .select(this) // 'this' refers to the current 'rect' element
+        .select(this) // 'this' refers to the current 'g' element
         .attr('key', index)
         .attr('role', 'img')
         .attr('aria-label', pointData);
@@ -306,13 +318,13 @@ export class HorizontalBarChart extends FASTElement {
         )
         .attr('y', 0)
         .attr('width', value + '%')
-        .attr('height', barHeight);
+        .attr('height', barHeight)
+        .attr('style', `fill: ${point.color}`)
+        .attr('tabindex', 0)
+        .attr('data-tabster', '{"groupper": {...}}"')
+        .attr('data-tabster', '{"mover": {...}}"');
     }
 
-<<<<<<< Updated upstream
-    const svgEle = d3
-      .create('svg')
-=======
     const containerDiv = d3.create('div').attr('style', 'position: relative');
 
     let tooltip: any;
@@ -320,7 +332,6 @@ export class HorizontalBarChart extends FASTElement {
     const svgEle = containerDiv
       .append('svg')
       .attr('height', 20)
->>>>>>> Stashed changes
       .attr('aria-label', data?.chartTitle ? data?.chartTitle : '')
       .selectAll('g')
       .data(data.chartData!)
@@ -370,7 +381,7 @@ export class HorizontalBarChart extends FASTElement {
             }%`,
           )
           .attr('textAnchor', 'start')
-          .attr('y', this.barHeight / 2)
+          .attr('y', this.barHeight / 2 + 6)
           .attr('dominantBaseline', 'central')
           .attr('transform', `translate(${this._isRTL ? -4 : 4})`)
           .attr('aria-label', `Total: ${barLabel}`)
@@ -380,9 +391,6 @@ export class HorizontalBarChart extends FASTElement {
     }
 
     const getChartData = () => (data!.chartData![0].data ? data!.chartData![0].data : 0);
-
-    const containerDiv = d3.create('div');
-    containerDiv.node()!.appendChild(svgEle.node()!); // ToDo - Handle nulls properly
 
     return containerDiv;
   }
