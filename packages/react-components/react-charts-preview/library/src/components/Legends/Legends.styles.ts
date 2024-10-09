@@ -90,13 +90,16 @@ export const useLegendStyles_unstable = (props: ILegendsProps): ILegendsStyles =
   const baseStyles = useStyles();
 
   return {
-    root: mergeClasses(legendClassNames.root, baseStyles.root, className, props.styles?.root),
-    legend: mergeClasses(legendClassNames.legend, baseStyles.legend, props.styles?.legend),
-    rect: mergeClasses(legendClassNames.rect, baseStyles.rect, props.styles?.rect),
-    shape: mergeClasses(legendClassNames.shape, baseStyles.shape, props.styles?.shape),
-    triangle: mergeClasses(legendClassNames.triangle, baseStyles.triangle, props.styles?.triangle),
-    text: mergeClasses(legendClassNames.text, baseStyles.text, props.styles?.text),
-    hoverChange: mergeClasses(legendClassNames.hoverChange, baseStyles.hoverChange, props.styles?.hoverChange),
-    resizableArea: mergeClasses(legendClassNames.resizableArea, baseStyles.resizableArea, props.styles?.resizableArea),
+    root: mergeClasses(legendClassNames.root, baseStyles.root, className /**props.styles?.root**/),
+    legend: mergeClasses(legendClassNames.legend, baseStyles.legend /**props.styles?.legend**/),
+    rect: mergeClasses(legendClassNames.rect, baseStyles.rect /**props.styles?.rect**/),
+    shape: mergeClasses(legendClassNames.shape, baseStyles.shape /**props.styles?.shape**/),
+    triangle: mergeClasses(legendClassNames.triangle, baseStyles.triangle /**props.styles?.triangle**/),
+    text: mergeClasses(legendClassNames.text, baseStyles.text /**props.styles?.text**/),
+    hoverChange: mergeClasses(legendClassNames.hoverChange, baseStyles.hoverChange /**props.styles?.hoverChange**/),
+    resizableArea: mergeClasses(
+      legendClassNames.resizableArea,
+      baseStyles.resizableArea /**props.styles?.resizableArea**/,
+    ),
   };
 };

@@ -60,7 +60,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
 
     _isLegendSelected = Object.keys(selectedLegends).length > 0;
     const dataToRender = _generateData();
-    const { overflowStyles, allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
+    const { overflowStyles, styles, allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
     const classes = useLegendStyles_unstable(props);
     const itemIds = dataToRender.map((_item, index) => index.toString());
     const overflowHoverCardLegends: JSX.Element[] = [];
@@ -81,17 +81,29 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
             'aria-label': 'Legends',
             'aria-multiselectable': canSelectMultipleLegends,
           })}
-          style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}
+          style={{
+            justifyContent: props.centerLegends ? 'center' : 'unset',
+            flexWrap: 'wrap',
+            ...(typeof styles?.root === 'object' ? styles.root : {}),
+          }}
           className={classes.root}
         >
           <Overflow>
-            <div className={classes.resizableArea}>
+            <div
+              className={classes.resizableArea}
+              style={{ ...(typeof styles?.resizableArea === 'object' ? styles.resizableArea : {}) }}
+            >
               {dataToRender.map((item, id) => (
                 <OverflowItem key={id} id={id.toString()}>
                   {_renderButton(item)}
                 </OverflowItem>
               ))}
-              <OverflowMenu itemIds={itemIds} title={`${overflowString}`} items={overflowHoverCardLegends} />
+              <OverflowMenu
+                itemIds={itemIds}
+                title={`${overflowString}`}
+                items={overflowHoverCardLegends}
+                overflowItemStyles={overflowStyles!}
+              />
             </div>
           </Overflow>
         </div>
@@ -263,18 +275,16 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
           onBlur={onMouseOut}
           appearance={'outline'}
           size="small"
-          style={{
-            '--rect-height': legend.isLineLegendInBarChart ? '4px' : '12px',
-            '--rect-backgroundColor': legend.stripePattern ? '' : color,
-            '--rect-borderColor': legend.color ? legend.color : tokens.colorNeutralStroke1,
-            '--rect-content': legend.stripePattern
-              ? // eslint-disable-next-line @fluentui/max-len
-                `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
-              : '',
-          }} /* eslint-enable react/jsx-no-bind */
+          style={{ ...(typeof styles?.legend === 'object' ? styles.legend : {}) }}
         >
           {shape}
-          <div className={classes.text} style={{ opacity: color === tokens.colorNeutralBackground1 ? '0.67' : '' }}>
+          <div
+            className={classes.text}
+            style={{
+              opacity: color === tokens.colorNeutralBackground1 ? '0.67' : '1',
+              ...(typeof styles?.text === 'object' ? styles.text : {}),
+            }}
+          >
             {legend.title}
           </div>
         </Button>
@@ -284,6 +294,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
     function _getShape(legend: ILegend, color: string): React.ReactNode | string {
       const svgParentProps: React.SVGAttributes<SVGElement> = {
         className: classes.shape,
+        style: { ...(typeof styles?.shape === 'object' ? styles.shape : {}) },
       };
       const svgChildProps: React.SVGAttributes<SVGElement> = {
         fill: color,
@@ -304,6 +315,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
               ? // eslint-disable-next-line @fluentui/max-len
                 `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
               : '',
+            ...(typeof styles?.rect === 'object' ? styles.rect : {}),
           }}
         />
       );
