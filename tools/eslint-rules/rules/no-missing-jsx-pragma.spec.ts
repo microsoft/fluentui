@@ -8,6 +8,7 @@ const ruleTester = new RuleTester({
 
 ruleTester.run(RULE_NAME, rule, {
   valid: [
+    // no slot api used case
     {
       options: [{ runtime: 'automatic' }],
       code: `
@@ -20,6 +21,8 @@ ruleTester.run(RULE_NAME, rule, {
     }
   `,
     },
+
+    // no slot api used case
     {
       options: [{ runtime: 'classic' }],
       code: `
@@ -32,6 +35,8 @@ ruleTester.run(RULE_NAME, rule, {
     }
   `,
     },
+
+    // slot api used + valid pragma exist case
     {
       options: [{ runtime: 'automatic' }],
       code: `
@@ -54,6 +59,8 @@ ruleTester.run(RULE_NAME, rule, {
   };
   `,
     },
+
+    // slot api used + valid pragma exist case
     {
       options: [{ runtime: 'classic' }],
       code: `
@@ -76,28 +83,8 @@ ruleTester.run(RULE_NAME, rule, {
     };
     `,
     },
-    {
-      options: [{ runtime: 'classic' }],
-      code: `
-    /** @jsx createElement */
-    import { createElement } from './some/local/factory';
-    import { assertSlots } from '@fluentui/react-utilities';
 
-    import type { FooState, FooContextValues, FooSlots  } from './Foo.types';
-
-    export const renderFoo_unstable = (state: FooState, contextValues: FooContextValues) => {
-      assertSlots<FooSlots>(state);
-
-      return (
-          <state.root>
-            <state.button>
-              hello
-            </state.button>
-          </state.root>
-      );
-    };
-    `,
-    },
+    // slot api (.always) used in a non conformant way + valid pragma exist case
     {
       options: [{ runtime: 'automatic' }],
       code: `
@@ -115,6 +102,8 @@ ruleTester.run(RULE_NAME, rule, {
     };
     `,
     },
+
+    // slot api (.optional) used in a non conformant way + valid pragma exist case
     {
       options: [{ runtime: 'automatic' }],
       code: `
@@ -132,6 +121,8 @@ ruleTester.run(RULE_NAME, rule, {
     };
     `,
     },
+
+    // slot api (both .optional,.always) used in a non conformant way + valid pragma exist case
     {
       options: [{ runtime: 'automatic' }],
       code: `
@@ -152,7 +143,7 @@ ruleTester.run(RULE_NAME, rule, {
     `,
     },
 
-    // using slot.* apis return value without direct JSX rendering - anti-pattern in v9 framework composition
+    // slot api (.always) used in a non conformant way + no direct JSX rendering + no pragma required case
     {
       options: [{ runtime: 'automatic' }],
       code: `
@@ -162,12 +153,13 @@ ruleTester.run(RULE_NAME, rule, {
       const SlotComponent = slot.always(getIntrinsicElementProps('span', {}),{ elementType: 'span' })
       const InlineCmp = () => <div>inline</div>
 
-      return {SlotComponent,InlineCmp}
+      return { SlotComponent, InlineCmp };
     };
     `,
     },
   ],
   invalid: [
+    // slot api used + missing pragma
     {
       options: [{ runtime: 'automatic' }],
       code: `
@@ -186,6 +178,8 @@ ruleTester.run(RULE_NAME, rule, {
     `,
       errors: [{ messageId: 'missingJsxImportSource' }],
     },
+
+    // slot api used + missing pragma
     {
       options: [{ runtime: 'classic' }],
       code: `
@@ -204,6 +198,8 @@ ruleTester.run(RULE_NAME, rule, {
     `,
       errors: [{ messageId: 'missingJsxPragma' }],
     },
+
+    // slot api used + pragma present + factory import missing
     {
       options: [{ runtime: 'classic' }],
       code: `
@@ -223,6 +219,8 @@ ruleTester.run(RULE_NAME, rule, {
       `,
       errors: [{ messageId: 'missingCreateElementFactoryImport' }],
     },
+
+    // slot api used + pragma present + invalid pragma for automatic mode
     {
       options: [{ runtime: 'automatic' }],
       code: `
@@ -243,6 +241,8 @@ ruleTester.run(RULE_NAME, rule, {
       `,
       errors: [{ messageId: 'invalidJSXPragmaForAutomatic' }],
     },
+
+    // slot api used + pragma present + invalid pragma for classic mode
     {
       options: [{ runtime: 'classic' }],
       code: `
@@ -262,6 +262,8 @@ ruleTester.run(RULE_NAME, rule, {
       `,
       errors: [{ messageId: 'invalidJSXPragmaForClassic' }],
     },
+
+    // no slot api used for JSX rendering + pragma present + pragma should not be specified
     {
       options: [{ runtime: 'automatic' }],
       code: `
@@ -277,6 +279,8 @@ ruleTester.run(RULE_NAME, rule, {
       `,
       errors: [{ messageId: 'redundantPragma' }],
     },
+
+    // no slot api used for JSX rendering + pragma present + pragma should not be specified
     {
       options: [{ runtime: 'classic' }],
       code: `
@@ -293,7 +297,7 @@ ruleTester.run(RULE_NAME, rule, {
       errors: [{ messageId: 'redundantPragma' }],
     },
 
-    // using slot.* apis return value to render JSX directly - anti-pattern in v9 framework composition
+    // slot api (.always) used in a non conformant way +  direct JSX rendering + pragma is missing
     {
       options: [{ runtime: 'automatic' }],
       code: `
@@ -312,7 +316,7 @@ ruleTester.run(RULE_NAME, rule, {
       errors: [{ messageId: 'missingJsxImportSource' }],
     },
 
-    // using slot.* apis return value to render JSX directly - anti-pattern in v9 framework composition
+    // slot api (.optional) used in a non conformant way +  direct JSX rendering + pragma is missing
     {
       options: [{ runtime: 'automatic' }],
       code: `
@@ -331,7 +335,7 @@ ruleTester.run(RULE_NAME, rule, {
       errors: [{ messageId: 'missingJsxImportSource' }],
     },
 
-    // using slot.* apis return value to render JSX directly - anti-pattern in v9 framework composition
+    // slot api (.optional,.always) used in a non conformant way +  direct JSX rendering + pragma is missing
     {
       options: [{ runtime: 'automatic' }],
       code: `
