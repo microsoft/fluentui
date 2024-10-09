@@ -4,6 +4,7 @@
     "/testing",
     "/**/*.cy.ts",
     "/**/*.cy.tsx",
+    "/**/*.spec-e2e.ts",
     "/**/*.spec.ts",
     "/**/*.spec.tsx",
     "/**/*.test.ts",
