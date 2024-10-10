@@ -1,6 +1,8 @@
 import { spinalCase } from '@microsoft/fast-web-utilities';
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
+
+const storybookDocId = 'components-button-anchor--docs';
 
 const proxyAttributes = {
   href: 'href',
@@ -27,7 +29,7 @@ const booleanAttributes = {
 
 test.describe('Anchor Button', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-button-anchor--anchor-button'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-anchor-button'));
   });
@@ -142,4 +144,15 @@ test.describe('Anchor Button', () => {
 
     expect(newPage.url()).toContain(expectedUrl);
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-anchor-button'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

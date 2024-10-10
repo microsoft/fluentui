@@ -1,11 +1,13 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Spinner } from './spinner.js';
 import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 
+const storybookDocId = 'components-spinner--docs';
+
 test.describe('Spinner', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-spinner--default'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-spinner'));
   });
@@ -13,6 +15,10 @@ test.describe('Spinner', () => {
   for (const thisAppearance in SpinnerAppearance) {
     test(`should set and retrieve the \`appearance\` property correctly to ${thisAppearance}`, async ({ page }) => {
       const element = page.locator('fluent-spinner');
+
+      await page.setContent(/* html */ `
+        <fluent-spinner></fluent-spinner>
+      `);
 
       await element.evaluate((node: Spinner, appearance) => {
         node.appearance = appearance;
@@ -37,6 +43,10 @@ test.describe('Spinner', () => {
     test(`should set and retrieve the \`size\` property correctly to ${thisSize}`, async ({ page }) => {
       const element = page.locator('fluent-spinner');
 
+      await page.setContent(/* html */ `
+        <fluent-spinner></fluent-spinner>
+      `);
+
       await element.evaluate((node: Spinner, size) => {
         node.size = size;
       }, thisSize as SpinnerSize);
@@ -55,4 +65,15 @@ test.describe('Spinner', () => {
       });
     });
   }
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-spinner'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

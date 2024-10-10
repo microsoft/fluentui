@@ -14,6 +14,7 @@ const storyTemplate = html<StoryArgs<FluentAvatar>>`
     size="${story => story.size}"
     initials="${story => story.initials}"
     name="${story => story.name}"
+    aria-label="avatar"
   >
     ${story => story.slottedContent?.()} ${story => story.badgeSlottedContent?.()}
   </fluent-avatar>
@@ -102,7 +103,7 @@ export default {
 export const Default: Story = {};
 
 export const Image: Story = {
-  render: renderComponent(html<StoryArgs<FluentAvatar>>`<fluent-avatar>
+  render: renderComponent(html<StoryArgs<FluentAvatar>>`<fluent-avatar aria-label="avatar photo">
     <img
       alt="Persona test"
       role="presentation"
@@ -114,7 +115,7 @@ export const Image: Story = {
 
 export const Icon: Story = {
   render: renderComponent(html<StoryArgs<FluentAvatar>>`
-    <fluent-avatar>
+    <fluent-avatar aria-label="group icon">
       <svg
         fill="currentColor"
         aria-hidden="true"
@@ -133,50 +134,54 @@ export const Icon: Story = {
 };
 
 export const Badge: Story = {
-  render: renderComponent(html<StoryArgs<FluentAvatar>>` <fluent-avatar name="Lydia Bauer"
-    ><fluent-badge slot="badge" size="extra-small"></fluent-badge
-  ></fluent-avatar>`),
+  render: renderComponent(html<StoryArgs<FluentAvatar>>`
+    <fluent-avatar name="Lydia Bauer" aria-label="Lydia Bauer’s avatar">
+      <fluent-badge slot="badge" size="extra-small"></fluent-badge>
+    </fluent-avatar>
+  `),
 };
 
 export const ColorBrand: Story = {
-  render: renderComponent(html<StoryArgs<FluentAvatar>>`<fluent-avatar color="brand"></fluent-avatar>`),
+  render: renderComponent(
+    html<StoryArgs<FluentAvatar>>`<fluent-avatar color="brand" aria-label="avatar"></fluent-avatar>`,
+  ),
 };
 
 export const Color: Story = {
   render: renderComponent(html<StoryArgs<FluentAvatar>>`
     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-      <fluent-avatar color="neutral" name="Neutral avatar"></fluent-avatar>
-      <fluent-avatar color="brand" name="Brand avatar"></fluent-avatar>
-      <fluent-avatar color="dark-red" name="dark-red avatar"></fluent-avatar>
-      <fluent-avatar color="cranberry" name="cranberry avatar"></fluent-avatar>
-      <fluent-avatar color="red" name="red avatar"></fluent-avatar>
-      <fluent-avatar color="pumpkin" name="pumpkin avatar"></fluent-avatar>
-      <fluent-avatar color="peach" name="peach avatar"></fluent-avatar>
-      <fluent-avatar color="marigold" name="marigold avatar"></fluent-avatar>
-      <fluent-avatar color="gold" name="gold avatar"></fluent-avatar>
-      <fluent-avatar color="brass" name="brass avatar"></fluent-avatar>
-      <fluent-avatar color="brown" name="brown avatar"></fluent-avatar>
-      <fluent-avatar color="forest" name="forest avatar"></fluent-avatar>
-      <fluent-avatar color="seafoam" name="seafoam avatar"></fluent-avatar>
-      <fluent-avatar color="dark-green" name="dark-green avatar"></fluent-avatar>
-      <fluent-avatar color="light-teal" name="light-teal avatar"></fluent-avatar>
-      <fluent-avatar color="teal" name="teal avatar"></fluent-avatar>
-      <fluent-avatar color="steel" name="steel avatar"></fluent-avatar>
-      <fluent-avatar color="blue" name="blue avatar"></fluent-avatar>
-      <fluent-avatar color="royal-blue" name="royal-blue avatar"></fluent-avatar>
-      <fluent-avatar color="cornflower" name="cornflower avatar"></fluent-avatar>
-      <fluent-avatar color="navy" name="navy avatar"></fluent-avatar>
-      <fluent-avatar color="lavender" name="lavender avatar"></fluent-avatar>
-      <fluent-avatar color="purple" name="purple avatar"></fluent-avatar>
-      <fluent-avatar color="grape" name="grape avatar"></fluent-avatar>
-      <fluent-avatar color="lilac" name="lilac avatar"></fluent-avatar>
-      <fluent-avatar color="pink" name="pink avatar"></fluent-avatar>
-      <fluent-avatar color="magenta" name="magenta avatar"></fluent-avatar>
-      <fluent-avatar color="plum" name="plum avatar"></fluent-avatar>
-      <fluent-avatar color="beige" name="beige avatar"></fluent-avatar>
-      <fluent-avatar color="mink" name="mink avatar"></fluent-avatar>
-      <fluent-avatar color="platinum" name="platinum avatar"></fluent-avatar>
-      <fluent-avatar color="anchor" name="anchor avatar"></fluent-avatar>
+      <fluent-avatar color="neutral" name="Neutral avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="brand" name="Brand avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="dark-red" name="dark-red avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="cranberry" name="cranberry avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="red" name="red avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="pumpkin" name="pumpkin avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="peach" name="peach avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="marigold" name="marigold avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="gold" name="gold avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="brass" name="brass avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="brown" name="brown avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="forest" name="forest avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="seafoam" name="seafoam avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="dark-green" name="dark-green avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="light-teal" name="light-teal avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="teal" name="teal avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="steel" name="steel avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="blue" name="blue avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="royal-blue" name="royal-blue avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="cornflower" name="cornflower avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="navy" name="navy avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="lavender" name="lavender avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="purple" name="purple avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="grape" name="grape avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="lilac" name="lilac avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="pink" name="pink avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="magenta" name="magenta avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="plum" name="plum avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="beige" name="beige avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="mink" name="mink avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="platinum" name="platinum avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="anchor" name="anchor avatar" aria-label="avatar"></fluent-avatar>
     </div>
   `),
 };
@@ -184,35 +189,35 @@ export const Color: Story = {
 export const Colorful: Story = {
   render: renderComponent(html<StoryArgs<FluentAvatar>>`
     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-      <fluent-avatar color="colorful" name="Mona Kane"></fluent-avatar>
-      <fluent-avatar color="colorful" name="Tim Deboer"></fluent-avatar>
-      <fluent-avatar color="colorful" name="Kevin Sturgis"></fluent-avatar>
-      <fluent-avatar color="colorful" color-id="pumpkin" name="pumpkin avatar"></fluent-avatar>
-      <fluent-avatar color="colorful" color-id="lilac" name="lilac avatar"></fluent-avatar>
-      <fluent-avatar color="colorful" color-id="pink" name="pink avatar"></fluent-avatar>
-      <fluent-avatar color="colorful" color-id="magenta" name="magenta avatar"></fluent-avatar>
-      <fluent-avatar color="colorful" color-id="plum" name="plum avatar"></fluent-avatar>
-      <fluent-avatar color="colorful" color-id="beige" name="beige avatar"></fluent-avatar>
-      <fluent-avatar color="colorful" color-id="mink" name="mink avatar"></fluent-avatar>
-      <fluent-avatar color="colorful" color-id="platinum" name="platinum avatar"></fluent-avatar>
-      <fluent-avatar color="colorful" color-id="anchor" name="anchor avatar"></fluent-avatar>
+      <fluent-avatar color="colorful" name="Mona Kane" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="colorful" name="Tim Deboer" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="colorful" name="Kevin Sturgis" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="colorful" color-id="pumpkin" name="pumpkin avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="colorful" color-id="lilac" name="lilac avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="colorful" color-id="pink" name="pink avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="colorful" color-id="magenta" name="magenta avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="colorful" color-id="plum" name="plum avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="colorful" color-id="beige" name="beige avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="colorful" color-id="mink" name="mink avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="colorful" color-id="platinum" name="platinum avatar" aria-label="avatar"></fluent-avatar>
+      <fluent-avatar color="colorful" color-id="anchor" name="anchor avatar" aria-label="avatar"></fluent-avatar>
     </div>
   `),
 };
 
 export const Shape: Story = {
   render: renderComponent(html<StoryArgs<FluentAvatar>>`
-    <fluent-avatar shape="circular"></fluent-avatar>
-    <fluent-avatar shape="square"></fluent-avatar>
+    <fluent-avatar shape="circular" aria-label="avatar"></fluent-avatar>
+    <fluent-avatar shape="square" aria-label="avatar"></fluent-avatar>
   `),
 };
 
 export const Active: Story = {
   render: renderComponent(html<StoryArgs<FluentAvatar>>`
     <div style="display: flex; gap: 24px; flex-wrap: wrap;">
-      <fluent-avatar>U</fluent-avatar>
-      <fluent-avatar active="active">A</fluent-avatar>
-      <fluent-avatar active="inactive">I</fluent-avatar>
+      <fluent-avatar aria-label="avatar">U</fluent-avatar>
+      <fluent-avatar active="active" aria-label="avatar">A</fluent-avatar>
+      <fluent-avatar active="inactive" aria-label="avatar">I</fluent-avatar>
       <div></div>
     </div>
   `),
@@ -221,34 +226,36 @@ export const Active: Story = {
 export const ActiveAppearance: Story = {
   render: renderComponent(html<StoryArgs<FluentAvatar>>`
     <div style="display: flex; gap: 24px; flex-wrap: wrap;">
-      <fluent-avatar active="active" appearance="ring">R</fluent-avatar>
-      <fluent-avatar active="active" appearance="shadow">S</fluent-avatar>
-      <fluent-avatar active="active" appearance="ring-shadow">RS</fluent-avatar>
+      <fluent-avatar active="active" appearance="ring" aria-label="avatar">R</fluent-avatar>
+      <fluent-avatar active="active" appearance="shadow" aria-label="avatar">S</fluent-avatar>
+      <fluent-avatar active="active" appearance="ring-shadow" aria-label="avatar">RS</fluent-avatar>
     </div>
   `),
 };
 
 export const CustomInitials: Story = {
-  render: renderComponent(html<StoryArgs<FluentAvatar>>` <fluent-avatar initials="CRF"></fluent-avatar> `),
+  render: renderComponent(
+    html<StoryArgs<FluentAvatar>>` <fluent-avatar initials="CRF" aria-label="avatar"></fluent-avatar> `,
+  ),
 };
 
 export const Size: Story = {
   render: renderComponent(html<StoryArgs<FluentAvatar>>`
     <div style="display: flex; gap: 24px; flex-wrap: wrap;">
-      <fluent-avatar name="Jane Doe" size="16">16</fluent-avatar>
-      <fluent-avatar name="Lydia Bauer" size="20">20</fluent-avatar>
-      <fluent-avatar name="Amanda Brady" size="24">24</fluent-avatar>
-      <fluent-avatar name="Henry Brill" size="28">28</fluent-avatar>
-      <fluent-avatar name="Robin Counts" size="32">32</fluent-avatar>
-      <fluent-avatar name="Tim Deboer" size="36">36</fluent-avatar>
-      <fluent-avatar name="Cameron Evans" size="40">40</fluent-avatar>
-      <fluent-avatar name="Mona Kane" size="48">48</fluent-avatar>
-      <fluent-avatar name="Allan Munger" size="56">56</fluent-avatar>
-      <fluent-avatar name="Erik Nason" size="64">64</fluent-avatar>
-      <fluent-avatar name="Daisy Phillips" size="72">72</fluent-avatar>
-      <fluent-avatar name="Kevin Sturgis" size="96">96</fluent-avatar>
-      <fluent-avatar name="Elliot Woodward" size="120">120</fluent-avatar>
-      <fluent-avatar name="John Doe" size="128">128</fluent-avatar>
+      <fluent-avatar name="Jane Doe" size="16" aria-label="avatar">16</fluent-avatar>
+      <fluent-avatar name="Lydia Bauer" size="20" aria-label="avatar">20</fluent-avatar>
+      <fluent-avatar name="Amanda Brady" size="24" aria-label="avatar">24</fluent-avatar>
+      <fluent-avatar name="Henry Brill" size="28" aria-label="avatar">28</fluent-avatar>
+      <fluent-avatar name="Robin Counts" size="32" aria-label="avatar">32</fluent-avatar>
+      <fluent-avatar name="Tim Deboer" size="36" aria-label="avatar">36</fluent-avatar>
+      <fluent-avatar name="Cameron Evans" size="40" aria-label="avatar">40</fluent-avatar>
+      <fluent-avatar name="Mona Kane" size="48" aria-label="avatar">48</fluent-avatar>
+      <fluent-avatar name="Allan Munger" size="56" aria-label="avatar">56</fluent-avatar>
+      <fluent-avatar name="Erik Nason" size="64" aria-label="avatar">64</fluent-avatar>
+      <fluent-avatar name="Daisy Phillips" size="72" aria-label="avatar">72</fluent-avatar>
+      <fluent-avatar name="Kevin Sturgis" size="96" aria-label="avatar">96</fluent-avatar>
+      <fluent-avatar name="Elliot Woodward" size="120" aria-label="avatar">120</fluent-avatar>
+      <fluent-avatar name="John Doe" size="128" aria-label="avatar">128</fluent-avatar>
     </div>
   `),
 };

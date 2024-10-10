@@ -1,9 +1,11 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
+
+const storybookDocId = 'components-button-toggle-button--docs';
 
 test.describe('Toggle Button', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-button-toggle-button--button'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-toggle-button'));
   });
@@ -159,4 +161,15 @@ test.describe('Toggle Button', () => {
 
     await expect(element).toHaveCustomState('pressed');
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-toggle-button'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

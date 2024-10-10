@@ -1,11 +1,13 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Avatar } from './avatar.js';
-import { AvatarAppearance, AvatarColor, AvatarSize } from './avatar.options.js';
+import type { AvatarAppearance, AvatarColor, AvatarSize } from './avatar.options.js';
+
+const storybookDocId = 'components-avatar--docs';
 
 test.describe('Avatar Component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-avatar--image'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-avatar'));
   });
@@ -81,6 +83,10 @@ test.describe('Avatar Component', () => {
   test('should have a role of img', async ({ page }) => {
     const element = page.locator('fluent-avatar');
 
+    await page.setContent(/* html */ `
+      <fluent-avatar></fluent-avatar>
+    `);
+
     await expect(element).toHaveJSProperty('elementInternals.role', 'img');
   });
 
@@ -119,6 +125,10 @@ test.describe('Avatar Component', () => {
   test('should render correctly in active state', async ({ page }) => {
     const element = page.locator('fluent-avatar');
 
+    await page.setContent(/* html */ `
+      <fluent-avatar></fluent-avatar>
+    `);
+
     await element.evaluate((node: Avatar) => {
       node.active = 'active';
     });
@@ -129,6 +139,10 @@ test.describe('Avatar Component', () => {
   test('should render correctly in inactive state', async ({ page }) => {
     const element = page.locator('fluent-avatar');
 
+    await page.setContent(/* html */ `
+      <fluent-avatar></fluent-avatar>
+    `);
+
     await element.evaluate((node: Avatar) => {
       node.active = 'inactive';
     });
@@ -138,6 +152,10 @@ test.describe('Avatar Component', () => {
 
   test('default color should be neutral', async ({ page }) => {
     const element = page.locator('fluent-avatar');
+
+    await page.setContent(/* html */ `
+      <fluent-avatar></fluent-avatar>
+    `);
 
     await expect(element).toHaveCustomState('neutral');
   });
@@ -165,6 +183,10 @@ test.describe('Avatar Component', () => {
   test(`should set the color attribute on the internal control`, async ({ page }) => {
     const element = page.locator('fluent-avatar');
 
+    await page.setContent(/* html */ `
+      <fluent-avatar></fluent-avatar>
+    `);
+
     for (const [, value] of Object.entries(colorAttributes)) {
       await test.step(value, async () => {
         await element.evaluate((node: Avatar, colorValue: string) => {
@@ -180,6 +202,10 @@ test.describe('Avatar Component', () => {
 
   test(`should set the size attribute on the internal control`, async ({ page }) => {
     const element = page.locator('fluent-avatar');
+
+    await page.setContent(/* html */ `
+      <fluent-avatar></fluent-avatar>
+    `);
 
     for (const [, value] of Object.entries(sizeAttributes)) {
       await test.step(`${value}`, async () => {
@@ -197,6 +223,10 @@ test.describe('Avatar Component', () => {
   test(`should set and reflect the appearance attribute on the internal control`, async ({ page }) => {
     const element = page.locator('fluent-avatar');
 
+    await page.setContent(/* html */ `
+      <fluent-avatar></fluent-avatar>
+    `);
+
     for (const [, value] of Object.entries(appearanceAttributes)) {
       await test.step(value, async () => {
         await element.evaluate((node: Avatar, appearanceValue: string) => {
@@ -208,4 +238,15 @@ test.describe('Avatar Component', () => {
       });
     }
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-avatar'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

@@ -77,7 +77,7 @@ export class BaseButton extends FASTElement {
    */
   public disabledFocusableChanged(previous: boolean, next: boolean): void {
     if (this.$fastController.isConnected) {
-      this.elementInternals.ariaDisabled = `${!!next}`;
+      this.elementInternals.ariaDisabled = `${!!next || !!this.disabled}`;
     }
   }
 
@@ -260,7 +260,7 @@ export class BaseButton extends FASTElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.elementInternals.ariaDisabled = `${!!this.disabledFocusable}`;
+    this.elementInternals.ariaDisabled = `${!!this.disabledFocusable || !!this.disabled}`;
   }
 
   constructor() {

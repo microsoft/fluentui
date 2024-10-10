@@ -38,6 +38,9 @@ export class Drawer extends FASTElement {
   public type: DrawerType = DrawerType.modal;
 
   /**
+   * FIXME: this should be deprecated and removed, because it’s not valid to
+   * use `aria-labelledby` and `aria-label` on an element that doesn’t have a
+   * valid labellable role (the host element doesn’t have any role).
    * @public
    * The ID of the element that labels the drawer.
    */
@@ -51,7 +54,14 @@ export class Drawer extends FASTElement {
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
 
-  /**""
+  /**
+   * @public
+   * The accessible label of the dialog.
+   */
+  @attr({ attribute: 'dialog-label' })
+  public dialogLabel = '';
+
+  /**
    * @public
    * @defaultValue start
    * Sets the position of the drawer (start/end).
