@@ -8,7 +8,7 @@
     "type-check": "just-scripts type-check",
     "lint": "eslint src/",
     "format": "just-scripts prettier",
-    "test-ssr": "test-ssr \"./src/**/*.stories.tsx\""
+    "test-ssr": "test-ssr \"./src/**/*.stories.ssr.tsx\""
   },
   "devDependencies": {
     "@fluentui/react-charts-preview": "*",
