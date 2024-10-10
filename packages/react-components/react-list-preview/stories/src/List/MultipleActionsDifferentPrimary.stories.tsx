@@ -50,6 +50,7 @@ const useStyles = makeStyles({
     borderRadius: '5px',
   },
   title: {
+    color: tokens.colorNeutralForeground1,
     fontWeight: 600,
     display: 'block',
   },

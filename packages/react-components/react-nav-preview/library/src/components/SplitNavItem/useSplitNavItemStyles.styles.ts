@@ -10,6 +10,12 @@ export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
   actionButton: 'fui-SplitNavItem__actionButton',
   toggleButton: 'fui-SplitNavItem__toggleButton',
   menuButton: 'fui-SplitNavItem__menuButton',
+  /**
+   * Tooltips don't have a class name prop, so this is just to satisfy the linter.
+   */
+  actionButtonTooltip: 'fui-SplitNavItem__actionButtonTooltip',
+  toggleButtonTooltip: 'fui-SplitNavItem__toggleButtonTooltip',
+  menuButtonTooltip: 'fui-SplitNavItem__menuButtonTooltip',
 };
 // Don't use makeResetStyles here because the sub components call it once and
 // This links says that makeResetStyles should only be called once per element
@@ -20,48 +26,13 @@ export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
  */
 const useSplitNaveItemStyles = makeStyles({
   baseRoot: {
+    display: 'flex',
     gap: 'unset',
-    alignItems: 'start',
+    alignItems: 'stretch',
     padding: 'unset',
     textAlign: 'unset',
     backgroundColor: navItemTokens.backgroundColor,
-
-    transitionDuration: navItemTokens.animationTokens.animationDuration,
-    transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
-    transitionProperty: 'background',
-
-    ':hover .fui-NavItem': {
-      backgroundColor: navItemTokens.backgroundColorHover,
-      transitionDuration: navItemTokens.animationTokens.animationDuration,
-      transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
-      transitionProperty: 'background',
-    },
-
-    ':active .fui-NavItem': {
-      backgroundColor: navItemTokens.backgroundColorPressed,
-      transitionDuration: navItemTokens.animationTokens.animationDuration,
-      transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
-      transitionProperty: 'background',
-    },
-  },
-  basenavItem: {
-    // styles that we want to disagree with the default on
-    display: 'flex',
-    textTransform: 'none',
-    textAlign: 'left',
-    position: 'relative',
-    justifyContent: 'start',
-    gap: tokens.spacingVerticalL,
-  },
-  baseSecondary: {
-    maxWidth: '24px',
-    minWidth: '24px',
-    paddingInline: '4px',
-    marginBlockStart: '4px',
-
-    transitionDuration: navItemTokens.animationTokens.animationDuration,
-    transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
-    transitionProperty: 'background',
+    ...navItemTokens.transitionTokens,
 
     ':hover': {
       backgroundColor: navItemTokens.backgroundColorHover,
@@ -70,8 +41,26 @@ const useSplitNaveItemStyles = makeStyles({
       backgroundColor: navItemTokens.backgroundColorPressed,
     },
   },
+  baseNavItem: {
+    // styles that we want to disagree with the default on
+    display: 'flex',
+    textTransform: 'none',
+    alignSelf: 'stretch',
+    textAlign: 'left',
+    position: 'relative',
+    justifyContent: 'start',
+    gap: tokens.spacingVerticalL,
+    backgroundColor: 'transparent',
+  },
+  baseSecondary: {
+    minWidth: '28px',
+    paddingInlineEnd: '12px',
+    paddingInlineStart: '5px',
+    paddingBlockStart: '5px',
+    alignItems: 'start',
+  },
   baseMedium: {
-    paddingBlockStart: '6px',
+    paddingBlockStart: '9px',
   },
 });
 
@@ -94,7 +83,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
   if (state.navItem) {
     state.navItem.className = mergeClasses(
       splitNavItemClassNames.navItem,
-      splitNavItemStyles.basenavItem,
+      splitNavItemStyles.baseNavItem,
       state.navItem.className,
     );
   }

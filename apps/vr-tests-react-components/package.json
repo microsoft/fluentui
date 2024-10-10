@@ -79,6 +79,7 @@
     "@fluentui/react-rating": "*",
     "@fluentui/react-search": "*",
     "@fluentui/react-teaching-popover": "*",
-    "@fluentui/react-tag-picker": "*"
+    "@fluentui/react-tag-picker": "*",
+    "@fluentui/react-carousel": "*"
   }
 }
