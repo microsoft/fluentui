@@ -33,10 +33,6 @@ export const SVGTooltipText: React.FunctionComponent<ISVGTooltipTextProps> = Rea
   const ignoreNextFocusEvent = useRef(false);
   const portalMountNode = usePortalMountNode();
 
-  const getTargetElement = useCallback((): HTMLElement | undefined => {
-    return tooltipHostRef.current as unknown as HTMLElement;
-  }, []);
-
   const wrapContentCallback = useCallback(() => {
     if (
       props.content &&

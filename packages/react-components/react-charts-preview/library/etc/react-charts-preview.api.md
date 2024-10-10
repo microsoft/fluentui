@@ -149,11 +149,13 @@ export interface ICartesianChartProps {
     chartLabel?: string;
     className?: string;
     customDateTimeFormatter?: (dateTime: Date) => string;
+    customProps?: (dataPointCalloutProps: any) => IPopoverComponentProps;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
     enableReflow?: boolean;
     height?: number;
     hideLegend?: boolean;
+    hideTickOverlap?: boolean;
     hideTooltip?: boolean;
     href?: string;
     // (undocumented)
@@ -177,7 +179,7 @@ export interface ICartesianChartProps {
     svgProps?: React_2.SVGProps<SVGSVGElement>;
     tickFormat?: string;
     tickPadding?: number;
-    tickValues?: number[] | Date[];
+    tickValues?: number[] | Date[] | string[] | undefined;
     timeFormatLocale?: TimeLocaleDefinition;
     useUTC?: string | boolean;
     width?: number;
@@ -667,7 +669,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     chartType: ChartTypes;
     children(props: IChildProps): React_2.ReactNode;
     culture?: string;
-    customizedCallout?: any;
     datasetForXAxisDomain?: string[];
     enableFirstRenderOptimization?: boolean;
     // (undocumented)
@@ -675,7 +676,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     getDomainMargins?: (containerWidth: number) => IMargins;
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
-    isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
@@ -684,7 +684,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];
     tickParams?: {
-        tickValues?: number[] | Date[];
+        tickValues?: number[] | Date[] | string[];
         tickFormat?: string;
     };
     xAxisInnerPadding?: number;
@@ -707,15 +707,18 @@ export interface IPopoverComponentProps {
     // (undocumented)
     culture?: string;
     // (undocumented)
-    customizedCallout?: JSX.Element;
-    // (undocumented)
-    customProps?: IPopoverComponentProps;
+    customCallout?: {
+        customizedCallout?: JSX.Element;
+        customCalloutProps?: IPopoverComponentProps;
+    };
     // (undocumented)
     descriptionMessage?: string;
     // (undocumented)
     hoverXValue?: string | number;
     // (undocumented)
     isCalloutForStack?: boolean;
+    // (undocumented)
+    isCartesian?: boolean;
     // (undocumented)
     isPopoverOpen?: boolean;
     // (undocumented)
@@ -755,6 +758,8 @@ export interface IPopoverComponentStyles {
     calloutContentY: string;
     // (undocumented)
     calloutDateTimeContainer: string;
+    // (undocumented)
+    calloutInfoContainer: string;
     // (undocumented)
     calloutlegendText: string;
     // (undocumented)

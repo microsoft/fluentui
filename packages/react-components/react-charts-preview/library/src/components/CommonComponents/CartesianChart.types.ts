@@ -218,7 +218,7 @@ export interface ICartesianChartProps {
    * This is a optional parameter if not specified D3 will decide which values appear on the x-axis for you
    * Please look at https://github.com/d3/d3-scale for more information on how D3 decides what data to appear on the axis of chart
    */
-  tickValues?: number[] | Date[] | string[];
+  tickValues?: number[] | Date[] | string[] | undefined;
 
   /**
    * the format for the data on x-axis. For date object this can be specified to your requirement. Eg: '%m/%d', '%d'

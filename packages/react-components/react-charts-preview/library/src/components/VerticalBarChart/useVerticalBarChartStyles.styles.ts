@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { IVerticalBarChartProps, IVerticalBarChartStyles, IVerticalBarChartStyleProps } from '../../index';
+import { IVerticalBarChartProps, IVerticalBarChartStyles } from '../../index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 

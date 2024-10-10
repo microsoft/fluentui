@@ -43,7 +43,6 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
   const yAxisElementSecondary = React.useRef<SVGSVGElement>();
   let margins: IMargins;
   const idForGraph: string = 'chart_';
-  const idForDefaultTabbableElement: string = 'defaultTabbableElement_';
   let _reqID: number;
   const _isRtl: boolean = isRtl();
   let _tickValues: (string | number)[];
@@ -55,8 +54,6 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
 
   const [containerWidth, setContainerWidth] = React.useState<number>(0);
   const [containerHeight, setContainerHeight] = React.useState<number>(0);
-  const [width, setWidth] = React.useState<number>(props.width || 600);
-  const [height, setHeight] = React.useState<number>(props.height || 350);
   const [isRemoveValCalculated, setIsRemoveValCalculated] = React.useState<boolean>(true);
   const [removalValueForTextTuncate, setRemovalValueForTextTuncate] = React.useState<number>(0);
   const [startFromX, setStartFromX] = React.useState<number>(0);

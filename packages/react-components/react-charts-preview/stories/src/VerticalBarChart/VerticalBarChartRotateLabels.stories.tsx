@@ -42,7 +42,6 @@ export const VerticalBarRotateLabels = () => {
 };
 VerticalBarRotateLabels.parameters = {
   docs: {
-    description: {
-    },
+    description: {},
   },
 };

@@ -1196,7 +1196,7 @@ export function getDomainNRangeValues(
   isRTL: boolean,
   xAxisType: XAxisTypes,
   barWidth: number,
-  tickValues: Date[] | number[] | undefined,
+  tickValues: number[] | Date[] | string[] | undefined,
   shiftX: number,
 ): IDomainNRange {
   let domainNRangeValue: IDomainNRange;
@@ -1502,7 +1502,7 @@ export const convertToLocaleString = (data: LocaleStringDataProps, culture?: str
   culture = culture || undefined;
   if (typeof data === 'number') {
     return data.toLocaleString(culture);
-  } else if (typeof data === 'string' && !window.isNaN(Number(data))) {
+  } else if (typeof data === 'string' && !isNaN(Number(data))) {
     const num = Number(data);
     return num.toLocaleString(culture);
   } else if (data instanceof Date) {

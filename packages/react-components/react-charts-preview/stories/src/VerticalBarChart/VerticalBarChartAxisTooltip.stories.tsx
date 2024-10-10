@@ -189,7 +189,6 @@ export const VerticalBarAxisTooltip = () => {
 };
 VerticalBarAxisTooltip.parameters = {
   docs: {
-    description: {
-    },
+    description: {},
   },
 };

@@ -6,8 +6,7 @@ import { useDonutChartStyles_unstable } from './useDonutChartStyles.styles';
 import { IChartDataPoint } from '../../DonutChart';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { getColorFromToken, getNextColor } from '../../utilities/index';
-import { IAccessibilityProps, ILegend, Legends } from '../../index';
-import { ScaleOrdinal } from 'd3-scale';
+import { ILegend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import PopoverComponent from '../CommonComponents/Popover';
@@ -22,18 +21,14 @@ const MIN_LEGEND_CONTAINER_HEIGHT = 40;
  */
 const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardRef<HTMLDivElement, IDonutChartProps>(
   (props, forwardedRef) => {
-    let colors: ScaleOrdinal<string, {}>;
     const _rootElem = React.useRef<HTMLDivElement | null>(null);
     const _uniqText: string = useId('_Pie_');
     /* eslint-disable @typescript-eslint/no-explicit-any */
-    let _currentHoverElement: any;
-    let _calloutId: string = useId('callout');
     let _calloutAnchorPoint: IChartDataPoint | null;
     let _emptyChartId: string | null;
     const legendContainer = React.useRef<HTMLDivElement | null>(null);
     const prevSize = React.useRef<{ width?: number; height?: number }>({});
 
-    const [showHover, setShowHover] = React.useState<boolean>(false);
     const [value, setValue] = React.useState<string | undefined>('');
     const [legend, setLegend] = React.useState<string | undefined>('');
     const [_width, setWidth] = React.useState<number | undefined>(props.width || 200);
@@ -45,7 +40,6 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
     const [selectedLegend, setSelectedLegend] = React.useState<string>('');
     const [focusedArcId, setFocusedArcId] = React.useState<string>('');
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<IChartDataPoint | undefined>();
-    const [callOutAccessibilityData, setCallOutAccessibilityData] = React.useState<IAccessibilityProps | undefined>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
 
@@ -60,10 +54,6 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
       prevSize.current.height = props.height;
       prevSize.current.width = props.width;
     }, [props.width, props.height]);
-
-    function _closeCallout() {
-      setPopoverOpen(false);
-    }
 
     function _elevateToMinimums(data: IChartDataPoint[]) {
       let sumOfData = 0;
@@ -122,7 +112,6 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
     }
 
     function _focusCallback(data: IChartDataPoint, id: string, element: SVGPathElement): void {
-      _currentHoverElement = element;
       setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
       setValue(data.data!.toString());
       setLegend(data.legend);
@@ -131,13 +120,11 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
       setYCalloutValue(data.yAxisCalloutData!);
       setFocusedArcId(id);
       setDataPointCalloutProps(data);
-      setCallOutAccessibilityData(data.callOutAccessibilityData!);
     }
 
     function _hoverCallback(data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
       if (_calloutAnchorPoint !== data) {
         _calloutAnchorPoint = data;
-        _currentHoverElement = e;
         setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
         setValue(data.data!.toString());
         setLegend(data.legend);
@@ -145,7 +132,6 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
         setXCalloutValue(data.xAxisCalloutData!);
         setYCalloutValue(data.yAxisCalloutData!);
         setDataPointCalloutProps(data);
-        setCallOutAccessibilityData(data.callOutAccessibilityData!);
         updatePosition(e.clientX, e.clientY);
       }
     }

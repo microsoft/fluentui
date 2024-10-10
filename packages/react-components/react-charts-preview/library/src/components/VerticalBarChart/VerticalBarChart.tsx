@@ -83,9 +83,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
-  const [refSelected, setRefSelected] = React.useState<React.MouseEvent<SVGElement> | SVGElement | undefined | null>(
-    null,
-  );
   const [selectedLegend, setSelectedLegend] = React.useState<string | undefined>('');
   const [activeLegend, setActiveLegend] = React.useState<string | undefined>('');
   const [xCalloutValue, setXCalloutValue] = React.useState<string | undefined>('');
@@ -110,7 +107,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     yScaleSecondary?: any,
   ): React.ReactNode {
     const isStringAxis = _xAxisType === XAxisTypes.StringAxis;
-    const { xBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
     const { data, lineLegendColor = tokens.colorPaletteYellowBackground1, lineLegendText } = props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -404,7 +400,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     const { YValueHover, hoverXValue } = _getCalloutContentForLineAndBar(point);
     if (_calloutAnchorPoint !== point) {
       _calloutAnchorPoint = point;
-      setRefSelected(mouseEvent);
       /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
       updatePosition(mouseEvent.clientX, mouseEvent.clientY);
       setPopoverOpen(selectedLegend === '' || selectedLegend === point.legend);
@@ -442,7 +437,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     const { YValueHover, hoverXValue } = _getCalloutContentForLineAndBar(point);
     _refArray.forEach((obj: IRefArrayData, index: number) => {
       if (obj.index === point.legend! && refArrayIndexNumber === index) {
-        setRefSelected(obj.refElement);
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
         setPopoverOpen(selectedLegend === '' || selectedLegend === point.legend);
         setDataForHoverCard(point.y);
@@ -479,7 +473,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     _refSelected: React.MouseEvent<SVGElement> | SVGCircleElement,
   ) {
     const { lineLegendText = '', lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
-    setRefSelected(_refSelected);
     setPopoverOpen(false);
     setCalloutLegend(lineLegendText);
     setDataForHoverCard(point.lineData!.y);
@@ -752,10 +745,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       xAxisElement && tooltipOfXAxislabels(tooltipProps);
     }
     return bars;
-  }
-
-  function _closeCallout() {
-    setPopoverOpen(false);
   }
 
   function _onLegendClick(legendTitle: string): void {

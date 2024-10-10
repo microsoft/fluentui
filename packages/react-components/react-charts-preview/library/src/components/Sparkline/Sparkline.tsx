@@ -27,9 +27,9 @@ export const Sparkline: React.FunctionComponent<ISparklineProps> = React.forward
     let _emptyChartId: string = '_SparklineChart_empty';
     let _isRTL: boolean = isRtl();
     const [points, setPoints] = React.useState<ILineChartDataPoint[]>([]);
-    const [width, setWidth] = React.useState<number>(80);
-    const [height, setHight] = React.useState<number>(20);
-    const [valueTextWidth, setValueTextWidth] = React.useState<number>(80);
+    const width = 80;
+    const height = 20;
+    const valueTextWidth = 80;
 
     const line = React.useMemo(() => {
       return d3Line<ILineChartDataPoint>()

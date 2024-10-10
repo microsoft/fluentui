@@ -4,7 +4,6 @@ import { Button } from '@fluentui/react-button';
 import { ILegend, ILegendsProps, LegendShape } from './Legends.types';
 import { Shape } from './shape';
 import { useLegendStyles_unstable } from './useLegendsStyles.styles';
-import { getIntrinsicElementProps } from '@fluentui/react-utilities';
 /* import { buttonProperties } from '@fluentui/react-components'; */
 import { Overflow, OverflowItem } from '@fluentui/react-overflow';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -123,7 +122,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
     }
 
     function _generateData(): ILegendItem[] {
-      const { allowFocusOnLegends = true, shape } = props;
+      const { /*allowFocusOnLegends = true,*/ shape } = props;
       const dataItems: ILegendItem[] = props.legends.map((legend: ILegend, index: number) => {
         return {
           /* ...(allowFocusOnLegends && {

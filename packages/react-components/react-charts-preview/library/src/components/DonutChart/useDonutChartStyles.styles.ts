@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { typographyStyles } from '@fluentui/react-theme';
 import { IDonutChartProps, IDonutChartStyles } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
