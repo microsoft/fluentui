@@ -18,7 +18,7 @@ export const DonutChartBasic = () => {
   };
   return (
     <DonutChart
-      culture={window.navigator.language}
+      culture={typeof window !== 'undefined' ? window.navigator.language : 'en-us'}
       data={data}
       innerRadius={55}
       href={'https://developer.microsoft.com/en-us/'}

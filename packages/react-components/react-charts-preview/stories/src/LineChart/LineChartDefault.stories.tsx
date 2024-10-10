@@ -188,7 +188,7 @@ export const LineChartBasic = (props: ILineChartProps) => {
       {showAxisTitles && (
         <div style={rootStyle}>
           <LineChart
-            culture={window.navigator.language}
+            culture={typeof window !== 'undefined' ? window.navigator.language : 'en-us'}
             data={data}
             legendsOverflowText={'Overflow Items'}
             yMinValue={200}
@@ -211,7 +211,7 @@ export const LineChartBasic = (props: ILineChartProps) => {
       {!showAxisTitles && (
         <div style={rootStyle}>
           <LineChart
-            culture={window.navigator.language}
+            culture={typeof window !== 'undefined' ? window.navigator.language : 'en-us'}
             data={data}
             legendsOverflowText={'Overflow Items'}
             yMinValue={200}

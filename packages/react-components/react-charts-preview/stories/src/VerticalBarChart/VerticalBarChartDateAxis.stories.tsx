@@ -43,7 +43,7 @@ export const VerticalBarDateAxis = () => {
       <div style={rootStyle}>
         <VerticalBarChart
           chartTitle="Vertical bar chart Date axis example "
-          culture={window.navigator.language}
+          culture={typeof window !== 'undefined' ? window.navigator.language : 'en-us'}
           data={points}
           height={350}
           tickFormat={timeFormat}

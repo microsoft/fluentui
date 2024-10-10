@@ -197,7 +197,7 @@ export const VerticalBarDefault = () => {
         <div style={rootStyle}>
           <VerticalBarChart
             chartTitle="Vertical bar chart basic example "
-            culture={window.navigator.language}
+            culture={typeof window !== 'undefined' ? window.navigator.language : 'en-us'}
             data={points}
             height={height}
             width={width}
@@ -230,7 +230,7 @@ export const VerticalBarDefault = () => {
         <div style={rootStyle}>
           <VerticalBarChart
             chartTitle="Vertical bar chart basic example "
-            culture={window.navigator.language}
+            culture={typeof window !== 'undefined' ? window.navigator.language : 'en-us'}
             data={points}
             height={height}
             width={width}

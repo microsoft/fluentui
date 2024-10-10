@@ -124,7 +124,7 @@ export const LineChartLargeData = (props: ILineChartProps) => {
       />
       <div style={rootStyle}>
         <LineChart
-          culture={window.navigator.language}
+          culture={typeof window !== 'undefined' ? window.navigator.language : 'en-us'}
           data={data}
           legendsOverflowText={'Overflow Items'}
           yMinValue={200}
