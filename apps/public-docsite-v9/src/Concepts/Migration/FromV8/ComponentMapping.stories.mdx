@@ -32,22 +32,20 @@ import { Meta } from '@storybook/addon-docs';
 
 
 Here is the mapping of v8 components to their v9 component replacement or equivalent. This table provides a side-by-side comparison of React v8 components and their corresponding counterparts in React v9. Where a direct v9 equivalent doesn't exist, an alternative or note is provided.
-
 - Blank cells mean that there is not a v9 component (yet) or the component did not exist in v8.
 - A (🔁) means the v9 component is currently being developed. It may be in preview or not exported from react-components yet.
 
 Check out the latest schedule information on the [v9 Component Roadmap](https://github.com/microsoft/fluentui/wiki/Fluent-UI-React-v9-Component-Roadmap)
 
-
 | **React v8 Component**                | **React v9 Component**            | **Notes**                                                                 |
 |---------------------------------------|-----------------------------------|---------------------------------------------------------------------------|
 | `ActionButton`                        | [`Button`](https://react.fluentui.dev/?path=/docs/components-button-button--docs)                          | Use `Button` with `iconPosition="before"` for similar functionality.      |
-| `ActivityItem`                        | Not available                     | No direct equivalent in v9; custom implementation needed.                 |
+| `ActivityItem`                        | Not available                     | No direct equivalent in v9.                 |
 | `Announced`                           | Not available                     | No direct equivalent in v9.                                               |
 | `Breadcrumb`                          | [`Breadcrumb`](https://react.fluentui.dev/?path=/docs/components-breadcrumb--docs)                     | No major changes; available in v9.                                        |
 | `Button`                              | [`Button`](https://react.fluentui.dev/?path=/docs/components-button-button--docs)                         | Unified button API; use `appearance` prop for variants like `PrimaryButton`. |
 | `Callout`                             | [`Popover` ](https://react.fluentui.dev/?path=/docs/components-popover--docs)                        | Replaced by `Popover`, with enhanced accessibility and customization.     |
-| `Calendar` | [`CalendarCompat`](https://react.fluentui.dev/?path=/docs/compat-components-calendar--docs)  | Use the compact variant in v9.|
+| `Calendar` | [`CalendarCompat`](https://react.fluentui.dev/?path=/docs/compat-components-calendar--docs)  | Replaced by  `CalendarCompat` in v9; under `@fluentui/react-calendar-compat`.                ||
 | `CommandBar` | [`Toolbar`](https://react.fluentui.dev/?path=/docs/components-toolbar--docs) | Similar functionality in v9.      |
 | `CommandBarButton` | [`Toolbar`](https://react.fluentui.dev/?path=/docs/components-toolbar--docs)| Similar functionality in v9.      |
 | `CommandButton` | [`MenuButton`](https://react.fluentui.dev/?path=/docs/components-button-docs--docs)| Similar functionality in v9.   |
@@ -55,25 +53,25 @@ Check out the latest schedule information on the [v9 Component Roadmap](https://
 | `Charts` | [`Migration Guide`](https://react.fluentui.dev/?path=/docs/concepts-migration-from-v8-components-charts-migration--page) | No direct equivalent in v9. 
 | `Checkbox`                        | [`Checkbox`](https://react.fluentui.dev/?path=/docs/components-checkbox--docs)                        | API remains mostly the same in v9.                                        |
 | `ChoiceGroup`                     | [`RadioGroup`](https://react.fluentui.dev/?path=/docs/components-radiogroup--docs)                    | Renamed to `RadioGroup` with similar functionality.                       |
-| `Coachmark`                       | [`TeachingPopover`](https://react.fluentui.dev/?path=/docs/components-teachingpopover--docs)                   | Use `TeachingPopover` in v9 for the same functionality. |
+| `Coachmark`                       | Not available                    | Can use [`TeachingPopover`](https://react.fluentui.dev/?path=/docs/components-teachingpopover--docs) in v9 for the same functionality. |
 | `ColorPicker`                     | 🔁                     | No major changes in v9.             |
 | `ComboBox`                        | [`Combobox`](https://react.fluentui.dev/?path=/docs/components-combobox--docs)                        | Renamed to `Combobox` with API improvements.                              |
 | `CommandBar`                      | [`Toolbar`](https://react.fluentui.dev/?path=/docs/components-toolbar--docs) | CommandBar replaced by `Toolbar` for managing actions.                    |
 | `ContextualMenu`                  |[`Menu`](https://react.fluentui.dev/?path=/docs/components-menu-menu--docs) with Button as the `MenuTrigger`                          | Use `Menu` in v9 with `MenuTrigger`.|
 | `DefaultButton (anchor)`          | [`Button`](https://react.fluentui.dev/?path=/docs/components-button-button--docs) | Use `Button` in v9.|
 | `DefaultButton (menu)`            | [`MenuButton`](https://react.fluentui.dev/?path=/docs/components-button-menubutton--docs) | Use `Button` in v9. |
-| `DatePicker`                      | [`DatePickerCompat`](https://react.fluentui.dev/?path=/docs/compat-components-datepicker--docs)                      | API remains similar with enhanced theming options.                        |
+| `DatePicker`                      | [`DatePickerCompat`](https://react.fluentui.dev/?path=/docs/compat-components-datepicker--docs)                      | Replaced by  `DatePickerCompat` in v9; under `@fluentui/react-datepicker-compat`.                |
 | `DetailsList`                         | [`DataGrid`](https://react.fluentui.dev/?path=/docs/components-datagrid--docs)                | Experimental `DataGrid` in v9 could be a substitute.                     |
 | `Dialog`                              | [`Dialog`](https://react.fluentui.dev/?path=/docs/components-dialog--docs)                          | Refined API, using `open` and `onOpenChange` props.                      |
 | `DocumentCard`                        | [`Card`](https://react.fluentui.dev/?path=/docs/components-card-card--docs)    |   Use `Card` in v9.      |
 | `Dropdown`                            | [`Dropdown`](https://react.fluentui.dev/?path=/docs/components-dropdown--docs)                        | API and performance enhancements.                                         |
-| `Fabric`                              | [`FluentProvider`](https://react.fluentui.dev/?path=/docs/components-fluentprovider--docs)                 | Use `FluentProvider` for managing themes and global context.              |
+| `Fabric`                              | Not available                  | Use [`FluentProvider`](https://react.fluentui.dev/?path=/docs/components-fluentprovider--docs) for managing themes and global context.              |
 | `Facepile`                            | [`AvatarGroup`](https://react.fluentui.dev/?path=/docs/components-avatargroup--docs)                    | Replaced by `AvatarGroup` in v9.                     |
 | `FocusTrapZone`                       | [`Tabster`](https://tabster.io/)                       | Use `Tabster`.                           |
 | `FocusZone`                           | [`Tabster`](https://tabster.io/)                       | Use `Tabster`.                           |
 | `Grid`                                | Not available                     | No direct equivalent in v9.                                               |
 | `GroupedList`                         | [`Tree`](https://react.fluentui.dev/?path=/docs/components-tree--docs)   | Use `Tree` in v9.            |
-| `HoverCard`                           | Not available                     | No direct equivalent; could use `Popover` with custom behavior.          |
+| `HoverCard`                           | Not available                     | No direct equivalent in v9.          |
 | `Icon`                                | [`@fluentui/react-icons package`](https://react.fluentui.dev/?path=/docs/concepts-developer-icons-icons--page)                            | v9 provides more customization options.                                   |
 | `IconButton`                                | [`Button`](https://react.fluentui.dev/?path=/docs/components-button-button--docs)                          | v9 provides more customization options.                                   |
 | `Image`                               | [`Image`](https://react.fluentui.dev/?path=/docs/components-image--docs)                           | No major changes in v9.                                                   |
@@ -111,42 +109,57 @@ Check out the latest schedule information on the [v9 Component Roadmap](https://
 | `Text` | [`Text`](https://react.fluentui.dev/?path=/docs/components-text--docs)| Similar functionality in v9.           |
 | `TextField`                           | [`Input`](https://react.fluentui.dev/?path=/docs/components-input--docs)                           | Replaced by `Input` in v9 for text input functionality.                   |
 | `ThemeProvider`                              | [`FluentProvider`](https://react.fluentui.dev/?path=/docs/components-fluentprovider--docs) | Replaced by  `FluentProvider` in v9; similar behavior.                             |
-| `TimePicker`                              | [`TimePickerCompat`](https://react.fluentui.dev/?path=/docs/compat-components-timepicker--docs) | Replaced by  `TimePickerCompat` in v9; similar behavior.                             |
+| `TimePicker`                              | [`TimePickerCompat`](https://react.fluentui.dev/?path=/docs/compat-components-timepicker--docs)| Replaced by  `TimePickerCompat` in v9; under `@fluentui/react-timepicker-compat`.                             |
 | `ToggleButton`                              | [`ToggleButton`](https://react.fluentui.dev/?path=/docs/components-button-togglebutton--docs)                          | Renamed to `Switch` in v9; similar behavior.                             |
 | `Toggle`                              | [`Switch`](https://react.fluentui.dev/?path=/docs/components-switch--docs)                          | Renamed to `Switch` in v9; similar behavior.                             |
 | `Tooltip`                             | [`Tooltip`](https://react.fluentui.dev/?path=/docs/components-tooltip--docs)                         | No major changes in v9.                                                  |
 ---
-# New Components in v9
+
+## New Components in v9
+
 React v9 introduces several new components that were not present in v8:
-1. [**Avatar**](https://react.fluentui.dev/?path=/docs/components-avatar--docs): Replaces `Persona` for rendering user images.
+
+1. [**Avatar**](https://react.fluentui.dev/?path=/docs/components-avatar--docs): New component replacing `Persona` for rendering user images.
 2. [**Popover**](https://react.fluentui.dev/?path=/docs/components-popover--docs): Enhanced version of `Callout` with improved accessibility.
-3. [**Drawer**](https://react.fluentui.dev/?path=/docs/components-drawer--docs): Replaces `Panel` for side-drawer navigation.
+3. [**Drawer**](https://react.fluentui.dev/?path=/docs/components-drawer--docs): New component replacing `Panel` for side-drawer navigation.
 4. [**TabList**](https://react.fluentui.dev/?path=/docs/components-tablist--docs): Replaces `Pivot` for tabbed navigation.
 5. [**ProgressBar**](https://react.fluentui.dev/?path=/docs/components-progressbar--docs): Renamed from `ProgressIndicator`, with similar functionality but refined API.
-6. [**Input**](https://react.fluentui.dev/?path=/docs/components-input--docs): A new input component replacing `TextField` for simpler text input handling.
-7. [**Switch**](https://react.fluentui.dev/?path=/docs/components-switch--docs): A new component replacing `Toggle` for binary options.
-8. [**SwatchPicker**](https://react.fluentui.dev/?path=/docs/components-swatchpicker--docs): A new component replacing `SwatchColorPicker` with added functionality.
-9. [**Accordion**](https://react.fluentui.dev/?path=/docs/components-accordion--docs): Allows users to toggle the display of content by expanding or collapsing sections.
-10. [**Badge**](https://react.fluentui.dev/?path=/docs/components-badge-badge--docs): Displays text and/or an icon.
+6. [**Input**](https://react.fluentui.dev/?path=/docs/components-input--docs): New component replacing `TextField` for simpler text input handling.
+7. [**Switch**](https://react.fluentui.dev/?path=/docs/components-switch--docs): New component replacing `Toggle` for binary options.
+8. [**SwatchPicker**](https://react.fluentui.dev/?path=/docs/components-swatchpicker--docs): New component replacing `SwatchColorPicker` with added functionality.
+9. [**Accordion**](https://react.fluentui.dev/?path=/docs/components-accordion--docs): New component allowing to toggle the display of content by expanding or collapsing sections.
+10. [**Badge**](https://react.fluentui.dev/?path=/docs/components-badge-badge--docs): Displays text and/or an `icon`.
 11. [**CounterBadge**](https://react.fluentui.dev/?path=/docs/components-badge-counter-badge--docs): Displays Badge numerical values.
 12. [**PresenceBadge**](https://react.fluentui.dev/?path=/docs/components-badge-presencebadge--docs): Displays Badge status.
-13. [**InfoLabel**](https://react.fluentui.dev/?path=/docs/components-badge-presencebadge--docs):An `InfoLabel` is a Label with an `InfoButton` at the end.
-14. [**Toast**](https://react.fluentui.dev/?path=/docs/components-badge-presencebadge--docs): Displays temporary content to the user.
+13. [**InfoLabel**](https://react.fluentui.dev/?path=/docs/components-badge-presencebadge--docs):A Label with an `InfoButton` at the end.
+14. [**Toast**](https://react.fluentui.dev/?path=/docs/components-badge-presencebadge--docs):Displays temporary content to the user.
 15. [**TeachingPopover**](https://react.fluentui.dev/?path=/docs/components-teachingpopover--docs): A new component in v9 that replaces `TeachingBubble` and `Coachmark` in v8.
 16. [**Carousel**](https://react.fluentui.dev/?path=/docs/components-carousel--docs): Sliding window of elements controlled by previous, next, and direct pagination buttons.
+
+
 ---
-# Deprecated Components
+
+## Deprecated Components
+
 Some components in React v8 are not present in v9. Here’s a list of deprecated components:
-- **`Coachmark`**: `TeachingPopover` serves the desired use cases of a Coachmark component.
+
+- **`Coachmark`**: No direct equivalent.
 - **`ActivityItem`**: No direct equivalent.
 - **`Hovercard`**: No direct equivalent.
-- **`Grid`**: No direct equivalent; no longer supported.
-- **`MarqueeSelection`**:No direct equivalent; no longer supported.
-- **`ResizeGroup`**:No direct equivalent; no longer supported.
-- **`ScrollablePane`**:No direct equivalent; no longer supported.
-- **`Pickers`**:No direct equivalent; no longer supported.
+- **`Grid`**: No direct equivalent.
+- **`MarqueeSelection`**:No direct equivalent.
+- **`ResizeGroup`**:No direct equivalent.
+- **`ScrollablePane`**:No direct equivalent.
+- **`DetailsList`**:No direct equivalent.
+- **`Pickers`**:No direct equivalent.
+
 ---
-# Additional Resources
+
+## Additional Resources
+
 For more information on Fluent UI v9, consult these resources:
-- [Fluent UI v9 Documentation](https://react.fluentui.dev/)
+
+- [Fluent UI Extensions Packages](https://github.com/microsoft/fluentui-contrib)
+- [Fluent 2 Design System Website](https://fluent2.microsoft.design/)
+- [Fluent UI GitHub](https://github.com/microsoft/fluentui)
 ---
