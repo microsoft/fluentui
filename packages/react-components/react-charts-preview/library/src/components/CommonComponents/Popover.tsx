@@ -7,7 +7,7 @@ import { useId } from '@fluentui/react-utilities';
 import { getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { Shape } from '../Legends/shape';
-import { usePopoverStyles_unstable } from './Popover.styles';
+import { usePopoverStyles_unstable } from './usePopoverStyles.styles';
 import { IYValueHover } from './CartesianChart.types';
 import { LegendShape } from '../Legends/Legends.types';
 import { IPopoverComponentProps } from './Popover.types';

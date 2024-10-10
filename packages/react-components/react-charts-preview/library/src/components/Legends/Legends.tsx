@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 import { ILegend, ILegendsProps, LegendShape } from './Legends.types';
 import { Shape } from './shape';
-import { useLegendStyles_unstable } from './Legends.styles';
+import { useLegendStyles_unstable } from './useLegendsStyles.styles';
 import { getIntrinsicElementProps } from '@fluentui/react-utilities';
 /* import { buttonProperties } from '@fluentui/react-components'; */
 import { Overflow, OverflowItem } from '@fluentui/react-overflow';

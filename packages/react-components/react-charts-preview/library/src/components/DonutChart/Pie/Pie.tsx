@@ -6,7 +6,7 @@ import { pie as d3Pie } from 'd3-shape';
 import { IPieProps } from './index';
 import { Arc, IArcData } from '../Arc/index';
 import { IChartDataPoint } from '../index';
-import { usePieStyles_unstable } from './Pie.styles';
+import { usePieStyles_unstable } from './usePieStyles.styles';
 import { wrapTextInsideDonut } from '../../../utilities/index';
 const TEXT_PADDING: number = 5;
 

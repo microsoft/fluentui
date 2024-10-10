@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Pie } from './Pie/index';
 import { IDonutChartProps } from './DonutChart.types';
-import { useDonutChartStyles_unstable } from './DonutChart.styles';
+import { useDonutChartStyles_unstable } from './useDonutChartStyles.styles';
 import { IChartDataPoint } from '../../DonutChart';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { getColorFromToken, getNextColor } from '../../utilities/index';
