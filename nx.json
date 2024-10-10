@@ -76,23 +76,7 @@
         "command": "eslint src"
       }
     },
-    "format": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "prettier --write {projectRoot}"
-      },
-      "metadata": {
-        "help": {
-          "command": "yarn prettier --help",
-          "options": {}
-        }
-      },
-      "configurations": {
-        "check": {
-          "command": "prettier --check {projectRoot}"
-        }
-      }
-    },
+    "format": {},
     "verify-packaging": {
       "dependsOn": ["build"],
       "cache": true
@@ -147,6 +131,27 @@
       "plugin": "@nx/eslint/plugin",
       "options": {
         "targetName": "lint"
+      },
+      "include": ["tools/**/*", "scripts/**/*"]
+    },
+    {
+      "plugin": "./tools/workspace-plugin/src/plugins/format-plugin.ts",
+      "options": {
+        "targetName": "format"
+      },
+      "include": ["tools/**/*", "scripts/**/*"]
+    },
+    {
+      "plugin": "./tools/workspace-plugin/src/plugins/type-check-plugin.ts",
+      "options": {
+        "targetName": "type-check"
+      },
+      "include": ["tools/**/*", "scripts/**/*"]
+    },
+    {
+      "plugin": "./tools/workspace-plugin/src/plugins/clean-plugin.ts",
+      "options": {
+        "targetName": "clean"
       },
       "include": ["tools/**/*", "scripts/**/*"]
     }
