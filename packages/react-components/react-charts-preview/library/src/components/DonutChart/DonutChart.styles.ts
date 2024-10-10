@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { typographyStyles } from '@fluentui/react-theme';
 import { IDonutChartProps, IDonutChartStyles } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -19,6 +19,7 @@ export const donutClassNames: SlotClassNames<IDonutChartStyles> = {
 const useStyles = makeStyles({
   root: {
     // alignItems: 'center',
+    ...typographyStyles.body1,
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
@@ -28,7 +29,7 @@ const useStyles = makeStyles({
     boxSizing: 'content-box',
     alignmentAdjust: 'center',
     display: 'block',
-    ...shorthands.overflow('visible'),
+    overflow: 'visible',
   },
   legendContainer: { paddingTop: '16px' },
 });

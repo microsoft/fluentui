@@ -1,6 +1,6 @@
 import { IArcProps, IArcStyles } from './Arc.types';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
@@ -32,8 +32,7 @@ const useStyles = makeStyles({
     fill: 'transparent',
   },
   arcLabel: {
-    fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightSemibold,
+    ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
   },
 });

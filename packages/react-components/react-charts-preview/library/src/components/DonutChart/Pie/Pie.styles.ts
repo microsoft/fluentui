@@ -1,5 +1,5 @@
 import { IPieProps, IPieStyles } from './Pie.types';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HighContrastSelectorBlack } from '../../../utilities/index';
 
 import { makeStyles, mergeClasses } from '@griffel/react';
@@ -19,8 +19,7 @@ export const donutPieClassNames: SlotClassNames<IPieStyles> = {
 const useStyles = makeStyles({
   root: {},
   insideDonutString: {
-    fontSize: tokens.fontSizeHero700,
-    fontWeight: tokens.fontWeightSemibold,
+    ...typographyStyles.title2,
     fill: tokens.colorNeutralForeground1,
     '& selectors': {
       [HighContrastSelectorBlack]: {

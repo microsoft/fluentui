@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { HighContrastSelectorBlack, HighContrastSelector } from '../../utilities/index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { IPopoverComponentProps, IPopoverComponentStyles } from './Popover.types';
 
 /**
@@ -41,8 +41,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
   },
   calloutContentX: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: '16px',
+    ...typographyStyles.caption1,
     opacity: '0.8',
     color: tokens.colorNeutralForeground2,
   },
@@ -50,7 +49,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
   },
   calloutBlockContainerCartesian: {
-    fontSize: tokens.fontSizeBase200,
+    ...typographyStyles.caption1,
     marginTop: '13px',
   },
   calloutBlockContainerNonCartesian: {
@@ -75,8 +74,7 @@ const useStyles = makeStyles({
     marginRight: '8px',
   },
   calloutLegendText: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: '16px',
+    ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
     '& selectors': {
       [HighContrastSelectorBlack]: {
@@ -85,7 +83,6 @@ const useStyles = makeStyles({
     },
   },
   calloutContentY: {
-    fontWeight: 'bold',
     '& selectors': {
       [HighContrastSelectorBlack]: {
         color: 'rgb(255, 255, 255)',
@@ -93,30 +90,28 @@ const useStyles = makeStyles({
     },
   },
   calloutContentYCartesian: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: '22px',
+    ...typographyStyles.subtitle2Stronger,
   },
   calloutContentYNonCartesian: {
-    fontSize: tokens.fontSizeHero700,
-    lineHeight: '36px',
+    ...typographyStyles.title2,
   },
   descriptionMessage: {
-    fontSize: tokens.fontSizeBase200,
+    ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
     marginTop: '10px',
     paddingTop: '10px',
     ...shorthands.borderTop(`1px solid ${tokens.colorNeutralStroke2}`),
   },
   ratio: {
-    fontSize: tokens.fontSizeBase100,
+    ...typographyStyles.caption2,
     marginLeft: '6px',
     color: tokens.colorNeutralForeground1,
   },
   numerator: {
-    fontWeight: tokens.fontWeightBold,
+    ...typographyStyles.caption2Strong,
   },
   denominator: {
-    fontWeight: tokens.fontWeightSemibold,
+    ...typographyStyles.caption2Strong,
   },
   calloutInfoContainer: {
     paddingLeft: '8px',

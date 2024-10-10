@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { ILegendsProps, ILegendsStyles } from './Legends.types';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 /**
  * @internal
@@ -59,8 +59,8 @@ const useStyles = makeStyles({
   },
   // TO DO Add props when these styles are used in the component
   text: {
-    lineHeight: '16px',
-    fontSize: tokens.fontSizeBase200,
+    ...typographyStyles.caption1,
+    color: tokens.colorNeutralForeground1,
   },
   // TO DO Add props when these styles are used in the component
   hoverChange: {

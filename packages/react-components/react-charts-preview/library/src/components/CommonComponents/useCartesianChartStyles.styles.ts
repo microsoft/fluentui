@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { ICartesianChartProps, ICartesianChartStyles } from './CartesianChart.types';
 import { HighContrastSelectorBlack, HighContrastSelector } from '../../utilities/index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { isRtl } from '../../utilities/utilities';
 
 /**
@@ -37,29 +37,27 @@ export const cartesianchartClassNames: SlotClassNames<ICartesianChartStyles> = {
  */
 const useStyles = makeStyles({
   root: {
-    fontSize: tokens.fontSizeBase300,
+    ...typographyStyles.body1,
     display: 'flex',
     width: '100%',
     height: '100%',
     flexDirection: 'column',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
   },
   chartWrapper: {
-    ...shorthands.overflow('auto'),
+    overflow: 'auto',
   },
   axisTitle: {
-    fontSize: tokens.fontSizeBase100,
-    textAlign: 'center',
-    fontWeight: tokens.fontWeightRegular,
+    ...typographyStyles.caption2Strong,
     fontStyle: 'normal',
-    lineHeight: tokens.fontSizeBase100,
-    color: '#323130', // ToDo - Find correct token for this color
+    textAlign: 'center',
+    color: tokens.colorNeutralForeground2,
     fill: tokens.colorNeutralForeground1,
   },
   xAxis: {
     '& text': {
       fill: tokens.colorNeutralForeground1,
-      fontWeight: '300',
+      ...typographyStyles.caption2Strong,
       '& selectors': {
         [HighContrastSelectorBlack]: {
           fill: 'rgb(179, 179, 179)',
@@ -83,9 +81,8 @@ const useStyles = makeStyles({
   },
   yAxis: {
     '& text': {
-      fontSize: tokens.fontSizeBase100,
+      ...typographyStyles.caption2Strong,
       fill: tokens.colorNeutralForeground1,
-      fontWeight: '300',
       '& selectors': {
         [HighContrastSelectorBlack]: {
           fill: 'rgb(179, 179, 179)',
@@ -113,8 +110,8 @@ const useStyles = makeStyles({
   },
   ltr: {},
   opacityChangeOnHover: {
-    opacity: '0.1', //supports custom opacity
-    cursor: 'default', //supports custom cursor
+    opacity: '0.1', //supports custom opacity ??
+    cursor: 'default', //supports custom cursor ??
   },
   legendContainer: {
     marginTop: '8px',
@@ -122,7 +119,7 @@ const useStyles = makeStyles({
   },
   calloutContentRoot: {
     display: 'grid',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
     ...shorthands.padding('11px 16px 10px 16px'),
     backgroundColor: tokens.colorNeutralBackground1,
     backgroundBlendMode: 'normal, luminosity',
@@ -133,13 +130,12 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
   },
   calloutContentX: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: '16px',
+    ...typographyStyles.caption1,
     opacity: '0.8',
     color: tokens.colorNeutralForeground2,
   },
   calloutBlockContainer: {
-    fontSize: 'fontSizeBase400',
+    ...typographyStyles.body2,
     marginTop: '13px',
     color: tokens.colorNeutralForeground2,
   },
@@ -159,8 +155,7 @@ const useStyles = makeStyles({
     marginRight: '8px',
   },
   calloutLegendText: {
-    fontSize: 'fontSizeBase200',
-    lineHeight: '16px',
+    ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
     '& selectors': {
       [HighContrastSelectorBlack]: {
@@ -169,9 +164,7 @@ const useStyles = makeStyles({
     },
   },
   calloutContentY: {
-    fontSize: 'fontSizeBase400',
-    fontWeight: 'bold',
-    lineHeight: '22px',
+    ...typographyStyles.subtitle2Stronger,
     '& selectors': {
       [HighContrastSelectorBlack]: {
         color: 'rgb(255, 255, 255)',
@@ -179,7 +172,7 @@ const useStyles = makeStyles({
     },
   },
   descriptionMessage: {
-    fontSize: 'fontSizeBase200',
+    ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
     marginTop: '10px',
     paddingTop: '10px',

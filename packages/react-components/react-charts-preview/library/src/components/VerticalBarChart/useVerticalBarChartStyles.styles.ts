@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { IVerticalBarChartProps, IVerticalBarChartStyles, IVerticalBarChartStyleProps } from '../../index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const verticalbarchartClassNames: SlotClassNames<IVerticalBarChartStyles> = {
   opacityChangeOnHover: 'fui-vbc__opacityChangeOnHover',
@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     transform: 'scaleX(-1)',
   },
   tooltip: {
-    fontSize: tokens.fontSizeBase300,
+    ...typographyStyles.body1,
     display: 'flex',
     flexDirection: 'column',
     ...shorthands.padding('8px'),
@@ -52,8 +52,7 @@ const useStyles = makeStyles({
     pointerEvents: 'none',
   },
   barLabel: {
-    fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightSemibold,
+    ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
   },
 });

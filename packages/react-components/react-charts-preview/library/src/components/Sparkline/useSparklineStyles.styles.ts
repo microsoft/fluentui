@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { ISparklineProps, ISparklineStyles } from './Sparkline.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 /**
  * @internal
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     display: 'inline',
   },
   valueText: {
-    fontSize: tokens.fontSizeBase200,
+    ...typographyStyles.caption1,
     fill: tokens.colorNeutralForeground1,
   },
 });
