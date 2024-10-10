@@ -33,7 +33,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     draggable = false,
     whitespace = false,
     announcement,
-    fade = false,
+    motion = 'slide',
   } = props;
 
   const { dir } = useFluent();
@@ -47,7 +47,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       activeIndex: props.activeIndex,
       watchDrag: draggable,
       containScroll: whitespace ? false : 'keepSnaps',
-      fade,
+      motion,
     });
 
   const selectPageByElement: CarouselContextValue['selectPageByElement'] = useEventCallback((event, element, jump) => {

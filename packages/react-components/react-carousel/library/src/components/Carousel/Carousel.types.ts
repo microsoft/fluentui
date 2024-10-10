@@ -11,6 +11,11 @@ export type CarouselSlots = {
 export type CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => string;
 
 /**
+ * List of integrated motion types
+ */
+export type CarouselMotion = 'slide' | 'fade';
+
+/**
  * Carousel Props
  */
 export type CarouselProps = ComponentProps<CarouselSlots> & {
@@ -61,7 +66,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Sets motion to fade in/out style with minimal movement
    * Defaults: false
    */
-  fade?: boolean;
+  motion?: CarouselMotion;
 
   /**
    * Localizes the string used to announce carousel page changes

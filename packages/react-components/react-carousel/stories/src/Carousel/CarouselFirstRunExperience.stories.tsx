@@ -16,6 +16,7 @@ import {
   tokens,
   typographyStyles,
 } from '@fluentui/react-components';
+import { useEffect } from 'react';
 
 const useStyles = makeStyles({
   surface: {
@@ -47,12 +48,14 @@ const useStyles = makeStyles({
 
 const PAGES = [
   {
+    id: 'Copilot-page-1',
     alt: 'Copilot logo',
     imgSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg',
     header: 'Discover Copilot, a whole new way to work',
     text: 'Explore new ways to work smarter and faster using the power of AI. Copilot in [Word] can help you [get started from scratch], [work from an existing file], [get actionable insights about documents], and more.',
   },
   {
+    id: 'Copilot-page-2',
     alt: 'Copilot logo 2',
     imgSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg',
     header: 'Use your own judgment',
@@ -89,22 +92,15 @@ export const CarouselFirstRunExperience = () => {
     </Button>
   );
 
+  useEffect(() => {
+    // Reset or initialize page on open if nessecary
+    if (open) {
+      setActiveIndex(0);
+    }
+  }, [open]);
+
   return (
-    <Dialog
-      open={open}
-      onOpenChange={(e, data) => {
-        if (data.open) {
-          // Reset on open (avoid changing carousel values while Modal is closed)
-          console.log('Set active index on open:');
-          setActiveIndex(0);
-          // You could restore the previous page on open here to persist state instead
-          // requestAnimationFrame(() => {
-          //   setActiveIndex(1);
-          // });
-        }
-        setModalOpen(data.open);
-      }}
-    >
+    <Dialog open={open} onOpenChange={(e, data) => setModalOpen(data.open)}>
       <DialogTrigger>
         <Button>Open Dialog</Button>
       </DialogTrigger>
@@ -115,12 +111,12 @@ export const CarouselFirstRunExperience = () => {
           circular
           announcement={getAnnouncement}
           activeIndex={activeIndex}
-          fade
+          motion="fade"
           onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
         >
           <CarouselSlider>
             {PAGES.map((page, index) => (
-              <CarouselCard className={styles.card} key={`fre-card-${index}`}>
+              <CarouselCard className={styles.card} key={page.id}>
                 <Image src={page.imgSrc} width={600} height={324} alt={page.imgSrc} />
                 <h1 tabIndex={-1} className={styles.header}>
                   {page.header}

@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { carouselCardClassNames } from './CarouselCard/useCarouselCardStyles.styles';
 import { carouselSliderClassNames } from './CarouselSlider/useCarouselSliderStyles.styles';
-import { CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
+import { CarouselMotion, CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import Fade from 'embla-carousel-fade';
 
@@ -39,10 +39,10 @@ export function useEmblaCarousel(
   options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'watchDrag' | 'containScroll'> & {
     defaultActiveIndex: number | undefined;
     activeIndex: number | undefined;
-    fade?: boolean;
+    motion?: CarouselMotion;
   },
 ) {
-  const { align, direction, loop, slidesToScroll, watchDrag, containScroll, fade } = options;
+  const { align, direction, loop, slidesToScroll, watchDrag, containScroll, motion } = options;
   const [activeIndex, setActiveIndex] = useControllableState({
     defaultState: options.defaultActiveIndex,
     state: options.activeIndex,
@@ -80,6 +80,27 @@ export function useEmblaCarousel(
     },
     [resetAutoplay],
   );
+
+  const getPlugins = React.useCallback(() => {
+    const plugins: EmblaPluginType[] = [
+      Autoplay({
+        playOnInit: autoplayRef.current,
+        stopOnInteraction: !autoplayRef.current,
+        stopOnMouseEnter: true,
+        stopOnFocusIn: true,
+        rootNode: (emblaRoot: HTMLElement) => {
+          return emblaRoot.querySelector(sliderClassname) ?? emblaRoot;
+        },
+      }),
+    ];
+
+    // Optionally add Fade plugin
+    if (motion === 'fade') {
+      plugins.push(Fade());
+    }
+
+    return plugins;
+  }, [motion]);
 
   // Listeners contains callbacks for UI elements that may require state update based on embla changes
   const listeners = React.useRef(new Set<(data: CarouselUpdateData) => void>());
@@ -134,22 +155,7 @@ export function useEmblaCarousel(
       });
     };
 
-    const plugins: EmblaPluginType[] = [
-      Autoplay({
-        playOnInit: autoplayRef.current,
-        stopOnInteraction: !autoplayRef.current,
-        stopOnMouseEnter: true,
-        stopOnFocusIn: true,
-        rootNode: (emblaRoot: HTMLElement) => {
-          return emblaRoot.querySelector(sliderClassname) ?? emblaRoot;
-        },
-      }),
-    ];
-
-    // Optionally add Fade plugin
-    if (fade) {
-      plugins.push(Fade());
-    }
+    const plugins = getPlugins();
 
     return {
       set current(newElement: HTMLDivElement | null) {
@@ -177,7 +183,7 @@ export function useEmblaCarousel(
         }
       },
     };
-  }, [setActiveIndex, fade]);
+  }, [getPlugins, setActiveIndex]);
 
   const carouselApi = React.useMemo(
     () => ({
@@ -218,22 +224,7 @@ export function useEmblaCarousel(
   }, [activeIndex]);
 
   React.useEffect(() => {
-    const plugins: EmblaPluginType[] = [
-      Autoplay({
-        playOnInit: autoplayRef.current,
-        stopOnInteraction: !autoplayRef.current,
-        stopOnMouseEnter: true,
-        stopOnFocusIn: true,
-        rootNode: (emblaRoot: HTMLElement) => {
-          return emblaRoot.querySelector(sliderClassname) ?? emblaRoot;
-        },
-      }),
-    ];
-
-    // Optionally add Fade plugin
-    if (fade) {
-      plugins.push(Fade());
-    }
+    const plugins = getPlugins();
 
     emblaOptions.current = { align, direction, loop, slidesToScroll, watchDrag, containScroll };
     emblaApi.current?.reInit(
@@ -243,7 +234,7 @@ export function useEmblaCarousel(
       },
       plugins,
     );
-  }, [align, direction, loop, slidesToScroll, watchDrag, containScroll, fade]);
+  }, [align, direction, loop, slidesToScroll, watchDrag, containScroll, getPlugins]);
 
   return {
     activeIndex,

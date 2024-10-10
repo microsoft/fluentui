@@ -212,7 +212,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     groupSize?: number | 'auto';
     draggable?: boolean;
     whitespace?: boolean;
-    fade?: boolean;
+    motion?: CarouselMotion;
     announcement?: CarouselAnnouncerFunction;
 };
 
