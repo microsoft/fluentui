@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "\"Fixed XSS Vulnerabilities in tooltips\"",
+  "packageName": "@fluentui/react-charting",
+  "email": "apoorvaj20@iitk.ac.in",
+  "dependentChangeType": "patch"
+}
