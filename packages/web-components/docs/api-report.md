@@ -14,6 +14,7 @@ import { FASTElementDefinition } from '@microsoft/fast-element';
 import type { HostBehavior } from '@microsoft/fast-element';
 import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
+import type { InlineTemplateDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
 import type { SyntheticViewTemplate } from '@microsoft/fast-element';
 import { ViewTemplate } from '@microsoft/fast-element';
@@ -529,6 +530,8 @@ export class BaseCheckbox extends FASTElement {
     clickHandler(e: MouseEvent): boolean | void;
     // (undocumented)
     connectedCallback(): void;
+    // @internal
+    protected dirtyState: boolean;
     disabled?: boolean;
     disabledAttribute?: boolean;
     // @internal
@@ -555,19 +558,23 @@ export class BaseCheckbox extends FASTElement {
     // @internal
     keyupHandler(e: KeyboardEvent): boolean | void;
     get labels(): ReadonlyArray<HTMLLabelElement>;
+    // Warning: (ae-forgotten-export) The symbol "CheckboxMode" needs to be exported by the entry point index.d.ts
+    //
+    // @internal
+    protected mode: CheckboxMode;
     name: string;
     reportValidity(): boolean;
     required: boolean;
     // @internal
     protected requiredChanged(prev: boolean, next: boolean): void;
     // @internal
-    protected setAriaChecked(value?: boolean): void;
+    protected setAriaProperties(value?: boolean): void;
     setCustomValidity(message: string): void;
     // @internal
     setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
-    toggleChecked(force?: boolean): void;
+    toggle(force?: boolean): void;
     get validationMessage(): string;
     get validity(): ValidityState;
     get value(): string;
@@ -587,6 +594,21 @@ export class BaseDivider extends FASTElement {
     role: DividerRole;
     // @internal
     roleChanged(previous: string | null, next: string | null): void;
+}
+
+// Warning: (ae-forgotten-export) The symbol "AbstractCombobox" needs to be exported by the entry point index.d.ts
+//
+// @public
+export class BaseDropdown extends AbstractCombobox {
+    // @internal (undocumented)
+    displayContent(): string;
+}
+
+// Warning: (ae-forgotten-export) The symbol "AbstractListbox" needs to be exported by the entry point index.d.ts
+//
+// @public
+export class BaseDropdownList extends AbstractListbox {
+    options: Option_2[];
 }
 
 // @public
@@ -621,6 +643,37 @@ export class BaseField extends FASTElement {
     slottedInputs: SlottableInput[];
     // @internal
     slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined): void;
+}
+
+// @public
+export class BaseOption extends BaseCheckbox {
+    constructor();
+    get active(): boolean;
+    set active(next: boolean);
+    // (undocumented)
+    clickHandler(e: MouseEvent): boolean | void;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    // @internal
+    formResetCallback(): void;
+    // @override
+    id: string;
+    // @override
+    initialChecked?: boolean;
+    initialLabel?: string;
+    // (undocumented)
+    get label(): string;
+    set label(next: string);
+    // @internal
+    protected mode: CheckboxMode;
+    get selected(): boolean;
+    set selected(next: boolean);
+    // @internal
+    protected setAriaProperties(value?: boolean): void;
+    // @internal
+    protected setName(): void;
+    get text(): string;
+    set text(next: string);
 }
 
 // @public
@@ -723,7 +776,6 @@ export class BaseTextArea extends FASTElement {
     protected disabledChanged(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
-    displayShadow: boolean;
     // @internal
     elementInternals: ElementInternals;
     get form(): HTMLFormElement | null;
@@ -951,14 +1003,14 @@ export class Checkbox extends BaseCheckbox {
     // @internal
     protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal @override
-    protected setAriaChecked(value?: boolean): void;
+    protected setAriaProperties(value?: boolean): void;
     shape?: CheckboxShape;
     // @internal
     protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
     // @internal
     protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
-    toggleChecked(force?: boolean): void;
+    toggle(force?: boolean): void;
 }
 
 // @public
@@ -2401,6 +2453,65 @@ export const DrawerType: {
 export type DrawerType = ValuesOf<typeof DrawerType>;
 
 // @public
+export class Dropdown extends BaseDropdown {
+    // Warning: (ae-forgotten-export) The symbol "DropdownAppearance" needs to be exported by the entry point index.d.ts
+    appearance: DropdownAppearance;
+    // (undocumented)
+    protected appearanceChanged(prev: DropdownAppearance | undefined, next: DropdownAppearance | undefined): void;
+    block: boolean;
+    // (undocumented)
+    protected blockChanged(): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
+    displayShadow: boolean;
+    // @internal (undocumented)
+    handleChange(_: unknown, propertyName: string): void;
+    // Warning: (ae-forgotten-export) The symbol "DropdownSize" needs to be exported by the entry point index.d.ts
+    size: DropdownSize;
+    // (undocumented)
+    protected sizeChanged(prev: DropdownSize | undefined, next: DropdownSize | undefined): void;
+}
+
+// @public
+export const DropdownDefinition: FASTElementDefinition<typeof Dropdown>;
+
+// @public
+export class DropdownList extends BaseDropdownList {
+}
+
+// @public
+export const DropdownListDefinition: FASTElementDefinition<typeof DropdownList>;
+
+// Warning: (ae-missing-release-tag) "DropdownListOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export type DropdownListOptions = Record<string, any>;
+
+// @public
+export const DropdownListStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DropdownListTemplate: ElementViewTemplate<DropdownList>;
+
+// Warning: (ae-missing-release-tag) "DropdownOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export interface DropdownOptions {
+    // (undocumented)
+    triggerIndicator?: InlineTemplateDirective;
+}
+
+// @public
+export const DropdownStyles: ElementStyles;
+
+// @public
+export const DropdownTemplate: ElementViewTemplate<Dropdown>;
+
+// @public
 export const durationFast = "var(--durationFast)";
 
 // @public
@@ -2961,6 +3072,28 @@ export const MessageBarStyles: ElementStyles;
 //
 // @public
 export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
+
+// @public
+class Option_2 extends BaseOption {
+}
+export { Option_2 as Option }
+
+// @public
+export const OptionDefinition: FASTElementDefinition<typeof Option_2>;
+
+// Warning: (ae-missing-release-tag) "OptionOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export interface OptionOptions {
+    // (undocumented)
+    checkedIndicator?: InlineTemplateDirective;
+}
+
+// @public
+export const OptionStyles: ElementStyles;
+
+// @public
+export const OptionTemplate: ElementViewTemplate<Option_2>;
 
 // @public
 class ProgressBar_2 extends BaseProgressBar {
@@ -3788,6 +3921,7 @@ export class TextArea extends BaseTextArea {
     connectedCallback(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
+    displayShadow: boolean;
     // @internal (undocumented)
     handleChange(_: any, propertyName: string): void;
     // (undocumented)

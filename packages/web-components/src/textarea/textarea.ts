@@ -145,16 +145,6 @@ export class BaseTextArea extends FASTElement {
   }
 
   /**
-   * Indicates whether the element displays a box shadow. This only has effect when `appearance` is set to be `filled-darker` or `filled-lighter`.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `display-shadow`
-   */
-  @attr({ attribute: 'display-shadow', mode: 'boolean' })
-  public displayShadow = false;
-
-  /**
    * The id of a form to associate the element to.
    *
    * @public
@@ -684,6 +674,16 @@ export class TextArea extends BaseTextArea {
   protected blockChanged() {
     toggleState(this.elementInternals, 'block', this.block);
   }
+
+  /**
+   * Indicates whether the element displays a box shadow. This only has effect when `appearance` is set to be `filled-darker` or `filled-lighter`.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `display-shadow`
+   */
+  @attr({ attribute: 'display-shadow', mode: 'boolean' })
+  public displayShadow = false;
 
   /**
    * Sets the size of the control.
