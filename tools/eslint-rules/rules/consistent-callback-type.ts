@@ -1,9 +1,13 @@
-import { ESLintUtils, AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils';
+import { ESLintUtils, AST_NODE_TYPES, TSESTree, TSESLint } from '@typescript-eslint/utils';
 
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-consistent-callback-type"
 export const RULE_NAME = 'consistent-callback-type';
 
-export const rule = ESLintUtils.RuleCreator(() => __filename)({
+type Docs = {
+  recommended: TSESLint.RuleRecommendation;
+};
+
+export const rule = ESLintUtils.RuleCreator<Docs>(() => __filename)({
   name: RULE_NAME,
   meta: {
     type: 'problem',
@@ -41,7 +45,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
                   typeAnnotation.type === AST_NODE_TYPES.TSTypeReference &&
                   typeAnnotation.typeName.type === AST_NODE_TYPES.Identifier &&
                   typeAnnotation.typeName.name === 'EventHandler' &&
-                  typeAnnotation.typeParameters
+                  typeAnnotation.typeArguments
                 )
               ) {
                 context.report({
