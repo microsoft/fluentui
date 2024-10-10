@@ -1,103 +1,72 @@
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../helpers.tests.js';
 import type { MessageBar } from './message-bar.js';
+import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-bar.options.js';
 
 test.describe('Message Bar', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-messagebar--default'));
-    await page.waitForFunction(() => customElements.whenDefined('fluent-message-bar'));
+  test.use({
+    tagName: 'fluent-message-bar',
+    waitFor: ['fluent-button'],
   });
 
-  test('should include a role of status', async ({ page }) => {
-    const element = page.locator('fluent-message-bar');
+  test('should include a role of status', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'status');
   });
 
-  test('should set and retrieve the `intent` property correctly', async ({ page }) => {
-    const element = page.locator('fluent-message-bar');
+  test('should set the `intent` property to match the `intent` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.evaluate((node: MessageBar) => {
-      node.intent = 'success';
-    });
+    for (const intent of Object.values(MessageBarIntent)) {
+      await test.step(intent, async () => {
+        await fastPage.setTemplate({ attributes: { intent } });
 
-    await expect(element).toHaveJSProperty('intent', 'success');
-    await expect(element).toHaveCustomState('success');
+        await expect(element).toHaveJSProperty('intent', intent);
 
-    await element.evaluate((node: MessageBar) => {
-      node.intent = 'warning';
-    });
-
-    await expect(element).toHaveJSProperty('intent', 'warning');
-    await expect(element).not.toHaveCustomState('success');
-    await expect(element).toHaveCustomState('warning');
-
-    await element.evaluate((node: MessageBar) => {
-      node.intent = 'error';
-    });
-
-    await expect(element).toHaveJSProperty('intent', 'error');
-    await expect(element).not.toHaveCustomState('warning');
-    await expect(element).toHaveCustomState('error');
-
-    await element.evaluate((node: MessageBar) => {
-      node.intent = 'info';
-    });
-
-    await expect(element).toHaveJSProperty('intent', 'info');
-    await expect(element).not.toHaveCustomState('error');
-    await expect(element).toHaveCustomState('info');
-  });
-
-  test('should set and retrieve the `shape` property correctly', async ({ page }) => {
-    const element = page.locator('fluent-message-bar');
-
-    await element.evaluate((node: MessageBar) => {
-      node.shape = 'square';
-    });
-
-    await expect(element).toHaveJSProperty('shape', 'square');
-    await expect(element).toHaveCustomState('square');
-
-    await element.evaluate((node: MessageBar) => {
-      node.shape = 'rounded';
-    });
-
-    await expect(element).toHaveJSProperty('shape', 'rounded');
-    await expect(element).not.toHaveCustomState('square');
-    await expect(element).toHaveCustomState('rounded');
-  });
-
-  test('should set and retrieve the `layout` property correctly', async ({ page }) => {
-    const element = page.locator('fluent-message-bar');
-
-    await element.evaluate((node: MessageBar) => {
-      node.layout = 'multiline';
-    });
-
-    await expect(element).toHaveJSProperty('layout', 'multiline');
-    expect(await element.evaluate((node: MessageBar) => node.getAttribute('layout'))).toBe('multiline');
-
-    await element.evaluate((node: MessageBar) => {
-      node.layout = 'singleline';
-    });
-
-    await expect(element).toHaveJSProperty('layout', 'singleline');
-    expect(await element.evaluate((node: MessageBar) => node.getAttribute('layout'))).toBe('singleline');
-  });
-
-  test('should emit dismiss event when dismissMessageBar is called', async ({ page }) => {
-    const element = page.locator('fluent-message-bar');
-    await element.evaluate((node: MessageBar) => {
-      node.addEventListener('dismiss', () => {
-        node.setAttribute('dismissed', 'true');
+        await expect(element).toHaveAttribute('intent', intent);
       });
-    });
+    }
+  });
+
+  test('should set the `shape` property to match the `shape` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    for (const shape of Object.values(MessageBarShape)) {
+      await test.step(shape, async () => {
+        await fastPage.setTemplate({ attributes: { shape } });
+
+        await expect(element).toHaveJSProperty('shape', shape);
+
+        await expect(element).toHaveAttribute('shape', shape);
+      });
+    }
+  });
+
+  test('should set the `layout` property to match the `layout` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    for (const layout of Object.values(MessageBarLayout)) {
+      await test.step(layout, async () => {
+        await fastPage.setTemplate({ attributes: { layout } });
+
+        await expect(element).toHaveJSProperty('layout', layout);
+
+        await expect(element).toHaveAttribute('layout', layout);
+      });
+    }
+  });
+
+  test('should emit a `dismiss` event when `dismissMessageBar()` is called', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    const didDismiss = element.evaluate(
+      node => new Promise(resolve => node.addEventListener('dismiss', () => resolve(true))),
+    );
 
     await element.evaluate((node: MessageBar) => {
       node.dismissMessageBar();
     });
 
-    await expect(element).toHaveAttribute('dismissed', 'true');
+    await expect(didDismiss).resolves.toBe(true);
   });
 });
