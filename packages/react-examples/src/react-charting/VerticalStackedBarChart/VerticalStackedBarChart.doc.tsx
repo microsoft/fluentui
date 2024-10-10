@@ -8,6 +8,7 @@ import { VerticalStackedBarChartCalloutExample } from './VerticalStackedBarChart
 import { VerticalStackedBarChartTooltipExample } from './VerticalStackedBarChart.AxisTooltip.Example';
 import { VerticalStackedBarChartCustomAccessibilityExample } from './VerticalStackedBarChart.CustomAccessibility.Example';
 import { VerticalStackedBarChartDateAxisExample } from './VerticalStackedBarChart.DateAxis.Example';
+import { VerticalStackedBarChartReflowExample } from './VerticalStackedBarChart.Reflow.Example';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Basic.Example.tsx') as string;
@@ -21,6 +22,8 @@ const VerticalBarChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.CustomAccessibility.Example.tsx') as string;
 const VerticalStackedBarChartDateAxisExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.DateAxis.Example.tsx') as string;
+const VerticalStackedBarChartReflowExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Reflow.Example.tsx') as string;
 
 export const VerticalStackedBarChartPageProps: IDocPageProps = {
   title: 'VerticalStackedBarChart',
@@ -28,6 +31,11 @@ export const VerticalStackedBarChartPageProps: IDocPageProps = {
   componentUrl:
     'https://github.com/microsoft/fluentui/VerticalStackedBar/master/packages/react-charting/src/components/VerticalStackedBarChart',
   examples: [
+    {
+      title: 'VerticalStackedBarChart reflow',
+      code: VerticalStackedBarChartReflowExampleCode,
+      view: <VerticalStackedBarChartReflowExample />,
+    },
     {
       title: 'VerticalStackedBarChart basic',
       code: VerticalBarChartBasicExampleCode,
