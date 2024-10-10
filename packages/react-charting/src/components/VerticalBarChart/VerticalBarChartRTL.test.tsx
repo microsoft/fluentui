@@ -14,13 +14,13 @@ import {
   testScreenResolutionChanges,
   testWithWait,
   testWithoutWait,
+  isTestEnv,
 } from '../../utilities/TestUtility.test';
 import { IVerticalBarChartProps } from './VerticalBarChart.types';
 import { IVerticalBarChartDataPoint } from '../../index';
 import { chartPointsVBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
 const { Timezone } = require('../../../scripts/constants');
-const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
 
@@ -314,7 +314,7 @@ describe('Vertical bar chart rendering', () => {
       },
       undefined,
       undefined,
-      !(isTimezoneSet(tzIdentifier) && env === 'TEST'),
+      !(isTimezoneSet(tzIdentifier) && isTestEnv()),
     );
   });
 
@@ -332,7 +332,7 @@ describe('Vertical bar chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithoutWait(
@@ -348,7 +348,7 @@ describe('Vertical bar chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithoutWait(
@@ -364,7 +364,7 @@ describe('Vertical bar chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithoutWait(
@@ -379,7 +379,7 @@ describe('Vertical bar chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithoutWait(
