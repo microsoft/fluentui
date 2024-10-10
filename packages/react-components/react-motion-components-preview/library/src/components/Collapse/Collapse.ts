@@ -1,5 +1,7 @@
-import { motionTokens, createPresenceComponent } from '@fluentui/react-motion';
+import { motionTokens, createPresenceComponent, AtomMotion } from '@fluentui/react-motion';
 import type { PresenceMotionFnCreator } from '../../types';
+
+type CollapseOrientation = 'horizontal' | 'vertical';
 
 type CollapseVariantParams = {
   /** Time (ms) for the enter transition (expand). Defaults to the `durationNormal` value (200 ms). */
@@ -18,6 +20,9 @@ type CollapseVariantParams = {
 type CollapseRuntimeParams = {
   /** Whether to animate the opacity. Defaults to `true`. */
   animateOpacity?: boolean;
+
+  /** The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height. */
+  orientation?: CollapseOrientation;
 };
 
 /** Define a presence motion for collapse/expand */
@@ -28,30 +33,68 @@ export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantPara
     exitDuration = enterDuration,
     exitEasing = enterEasing,
   } = {}) =>
-  ({ element, animateOpacity = true }) => {
-    const fromOpacity = animateOpacity ? 0 : 1;
+  ({ element, animateOpacity = true, orientation = 'vertical' }) => {
+    const fromOpacity = 0;
     const toOpacity = 1;
-    const fromHeight = '0'; // Could be a custom param in the future to start partially expanded
-    const toHeight = `${element.scrollHeight}px`;
-    const overflow = 'hidden';
+    const fromSize = '0'; // Could be a custom param in the future to start with partially expanded width or height
+    const measuredSize = orientation === 'horizontal' ? element.scrollWidth : element.scrollHeight;
+    const toSize = `${measuredSize}px`;
+    // use generic names for size and overflow, handling vertical or horizontal orientation
+    const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
+    const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
 
-    const enterKeyframes = [
-      { opacity: fromOpacity, maxHeight: fromHeight, overflow },
-      // Transition to the height of the content, at 99.99% of the duration.
-      { opacity: toOpacity, maxHeight: toHeight, offset: 0.9999, overflow },
-      // On completion, remove the maxHeight because the content might need to expand later.
-      // This extra keyframe is simpler than firing a callback on completion.
-      { opacity: toOpacity, maxHeight: 'unset', overflow },
+    // The enter transition is an array of up to 2 motion atoms: size and opacity.
+    const enterAtoms: AtomMotion[] = [
+      // Expand size (height or width)
+      {
+        keyframes: [
+          {
+            [sizeName]: fromSize,
+            [overflowName]: 'hidden',
+          },
+          { [sizeName]: toSize, offset: 0.9999, [overflowName]: 'hidden' },
+          { [sizeName]: 'unset', [overflowName]: 'unset' },
+        ],
+        duration: enterDuration,
+        easing: enterEasing,
+      },
     ];
+    // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
+    if (animateOpacity) {
+      enterAtoms.push({
+        keyframes: [{ opacity: fromOpacity }, { opacity: toOpacity }],
+        duration: enterDuration,
+        easing: enterEasing,
+        fill: 'both',
+      });
+    }
 
-    const exitKeyframes = [
-      { opacity: toOpacity, maxHeight: toHeight, overflow },
-      { opacity: fromOpacity, maxHeight: fromHeight, overflow },
-    ];
+    // The exit transition is an array of up to 2 motion atoms: opacity and size.
+    const exitAtoms: AtomMotion[] = [];
+    // Fade out only if animateOpacity is false. Otherwise, leave opacity unaffected.
+    if (animateOpacity) {
+      exitAtoms.push({
+        keyframes: [{ opacity: toOpacity }, { opacity: fromOpacity }],
+        duration: exitDuration,
+        easing: exitEasing,
+      });
+    }
+    exitAtoms.push(
+      // Collapse size (height or width)
+      {
+        keyframes: [
+          { [sizeName]: toSize, [overflowName]: 'hidden' },
+          { [sizeName]: fromSize, [overflowName]: 'hidden' },
+        ],
+        duration: exitDuration,
+        easing: exitEasing,
+        fill: 'both',
+      },
+    );
 
     return {
-      enter: { duration: enterDuration, easing: enterEasing, keyframes: enterKeyframes },
-      exit: { duration: exitDuration, easing: exitEasing, keyframes: exitKeyframes },
+      enter: enterAtoms,
+      exit: exitAtoms,
     };
   };
 
