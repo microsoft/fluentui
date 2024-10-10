@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 26 Sep 2024 14:15:26 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2024 22:05:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.55.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.55.0)
+
+Tue, 08 Oct 2024 22:05:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.17..@fluentui/react-components_v9.55.0)
+
+### Minor changes
+
+- `@fluentui/react-carousel`
+  - feat: Stable release react-carousel ([PR #32883](https://github.com/microsoft/fluentui/pull/32883) by mifraser@microsoft.com)
+- `@fluentui/react-components`
+  - feat: Stable release of react-carousel ([PR #32883](https://github.com/microsoft/fluentui/pull/32883) by mifraser@microsoft.com)
+- `@fluentui/react-link`
+  - feat: add LinkContextProvider ([PR #32850](https://github.com/microsoft/fluentui/pull/32850) by vgenaev@gmail.com)
+- `@fluentui/react-nav-preview`
+  - feat: Build out SplitNavItem ([PR #32873](https://github.com/microsoft/fluentui/pull/32873) by matejera@microsoft.com)
+  - feat: Add props for SplitSubNavItems and Tooltips. Other pixel pushing on SplitNavItem ([PR #32964](https://github.com/microsoft/fluentui/pull/32964) by matejera@microsoft.com)
+- `@fluentui/react-spinner`
+  - feat: spinner root slot as span ([PR #32989](https://github.com/microsoft/fluentui/pull/32989) by kirpadv@gmail.com)
+
+### Patches
+
+- `@fluentui/react-message-bar`
+  - fix: add null check in ResizeObserver callback ([PR #32971](https://github.com/microsoft/fluentui/pull/32971) by seanmonahan@microsoft.com)
+  - fix: use LinkContextProvider to force all links inside MessageBody to be underlined ([PR #32850](https://github.com/microsoft/fluentui/pull/32850) by vgenaev@gmail.com)
+- `@fluentui/react-tabster`
+  - Bump tabster to 8.2.0 to fix trapped Modalizer logic ([PR #32963](https://github.com/microsoft/fluentui/pull/32963) by jiangemma@microsoft.com)
 
 ## [9.54.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.17)
 

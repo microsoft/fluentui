@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-message-bar
 
-This log was last generated on Thu, 26 Sep 2024 14:15:28 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2024 22:05:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.2.13)
+
+Tue, 08 Oct 2024 22:05:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.2.12..@fluentui/react-message-bar_v9.2.13)
+
+### Patches
+
+- fix: add null check in ResizeObserver callback ([PR #32971](https://github.com/microsoft/fluentui/pull/32971) by seanmonahan@microsoft.com)
+- fix: use LinkContextProvider to force all links inside MessageBody to be underlined ([PR #32850](https://github.com/microsoft/fluentui/pull/32850) by vgenaev@gmail.com)
+- Bump @fluentui/react-button to v9.3.93 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-link to v9.3.0 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
 
 ## [9.2.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.2.12)
 

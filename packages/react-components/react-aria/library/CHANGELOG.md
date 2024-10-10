@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Mon, 23 Sep 2024 12:40:12 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2024 22:05:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.13.7)
+
+Tue, 08 Oct 2024 22:05:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.13.6..@fluentui/react-aria_v9.13.7)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.22.8 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
 
 ## [9.13.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.13.6)
 

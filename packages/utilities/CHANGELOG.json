@@ -2,6 +2,36 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Tue, 08 Oct 2024 07:23:46 GMT",
+      "tag": "@fluentui/utilities_v8.15.18",
+      "version": "8.15.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.3.8",
+            "commit": "cb45ddc4221507d78b6bd739366d4ec2c1c46a2c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Oct 2024 07:23:57 GMT",
+      "tag": "@fluentui/utilities_v8.15.17",
+      "version": "8.15.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "5af931fcf73f7f6b5c758902f58e87137f3846bb",
+            "comment": "fix: remove circular dependency to better support AMD loaders"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Sep 2024 07:23:12 GMT",
       "tag": "@fluentui/utilities_v8.15.16",
       "version": "8.15.16",
