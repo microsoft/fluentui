@@ -72,17 +72,19 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        align-items: center;
                         background-color: transparent;
                         border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
                         color: #605e5c;
                         cursor: pointer;
-                        display: inline-block;
+                        display: inline-flex;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        justify-content: center;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1333,17 +1335,19 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        align-items: center;
                         background-color: transparent;
                         border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
                         color: #605e5c;
                         cursor: pointer;
-                        display: inline-block;
+                        display: inline-flex;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        justify-content: center;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1566,17 +1570,19 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        align-items: center;
                         background-color: transparent;
                         border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
                         color: #605e5c;
                         cursor: pointer;
-                        display: inline-block;
+                        display: inline-flex;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        justify-content: center;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1799,17 +1805,19 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        align-items: center;
                         background-color: transparent;
                         border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
                         color: #605e5c;
                         cursor: pointer;
-                        display: inline-block;
+                        display: inline-flex;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        justify-content: center;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2323,17 +2331,19 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        align-items: center;
                         background-color: transparent;
                         border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
                         color: #605e5c;
                         cursor: pointer;
-                        display: inline-block;
+                        display: inline-flex;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        justify-content: center;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;

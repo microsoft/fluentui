@@ -209,17 +209,19 @@ exports[`ComboBox Renders correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #605e5c;
               cursor: default;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
               height: 100%;
+              justify-content: center;
               line-height: 30px;
               outline: transparent;
               padding-bottom: 0;
@@ -558,17 +560,19 @@ exports[`ComboBox Renders correctly when open 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: #edebe9;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #201f1e;
               cursor: default;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
               height: 100%;
+              justify-content: center;
               line-height: 30px;
               outline: transparent;
               padding-bottom: 0;
@@ -842,6 +846,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
+                            align-items: center;
                             background-color: transparent;
                             border-color: transparent;
                             border-radius: 0px;
@@ -856,6 +861,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                             font-size: 14px;
                             font-weight: 400;
                             height: auto;
+                            justify-content: center;
                             line-height: 20px;
                             min-height: 36px;
                             outline: transparent;
@@ -1015,6 +1021,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
+                          align-items: center;
                           background-color: transparent;
                           border-color: transparent;
                           border-radius: 0px;
@@ -1029,6 +1036,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           height: auto;
+                          justify-content: center;
                           line-height: 20px;
                           min-height: 36px;
                           outline: transparent;
@@ -1391,17 +1399,19 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: #edebe9;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #201f1e;
               cursor: default;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
               height: 100%;
+              justify-content: center;
               line-height: 30px;
               outline: transparent;
               padding-bottom: 0;
@@ -2320,17 +2330,19 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #605e5c;
               cursor: default;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
               height: 100%;
+              justify-content: center;
               line-height: 30px;
               outline: transparent;
               padding-bottom: 0;

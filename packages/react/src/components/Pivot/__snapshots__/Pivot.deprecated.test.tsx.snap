@@ -47,6 +47,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -58,6 +59,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             font-size: 14px;
             font-weight: 600;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -237,6 +239,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -248,6 +251,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
