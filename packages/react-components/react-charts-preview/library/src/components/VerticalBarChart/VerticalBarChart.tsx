@@ -964,7 +964,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     isCalloutForStack: _isHavingLine && _noLegendHighlighted(),
     culture: props.culture ?? 'en-us',
     isCartesian: true,
-    customProps: {
+    customCallout: {
       customizedCallout: _getCustomizedCallout() != null ? _getCustomizedCallout()! : undefined,
       customCalloutProps: props.customProps ? props.customProps(dataPointCalloutProps!) : undefined,
     },
