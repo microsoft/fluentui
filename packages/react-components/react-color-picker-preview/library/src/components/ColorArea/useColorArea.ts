@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { ColorAreaProps, ColorAreaState } from './ColorArea.types';
+import { useColorAreaState_unstable } from './useColorAreaState';
 
 /**
  * Create the state required to render ColorArea.
@@ -11,15 +12,19 @@ import type { ColorAreaProps, ColorAreaState } from './ColorArea.types';
  * @param props - props from this instance of ColorArea
  * @param ref - reference to root HTMLDivElement of ColorArea
  */
-export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLDivElement>): ColorAreaState => {
-  return {
-    // TODO add appropriate props/defaults
+export const useColorArea_unstable = (props: ColorAreaProps): ColorAreaState => {
+  const ref = React.useRef(null);
+
+  const {
+    // Slots
+    thumb,
+  } = props;
+
+  const state: ColorAreaState = {
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
+      thumb: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
@@ -27,5 +32,10 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
       }),
       { elementType: 'div' },
     ),
+    thumb: slot.always(thumb, { elementType: 'div' }),
   };
+
+  useColorAreaState_unstable(state, props);
+
+  return state;
 };

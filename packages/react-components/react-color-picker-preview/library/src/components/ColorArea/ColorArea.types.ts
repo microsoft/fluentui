@@ -1,17 +1,31 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import * as React from 'react';
+import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
+
+export type ColorAreaOnColorChangeData = EventData<'click' | 'onMouseMove', React.MouseEvent> & {
+  color: string;
+};
 
 export type ColorAreaSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
+  thumb?: NonNullable<Slot<'div'>>;
 };
 
 /**
  * ColorArea Props
  */
-export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {};
+export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {
+  /**
+   * The current color of the ColorArea.
+   */
+  color?: string;
+
+  /**
+   * Triggers a callback when the value has been changed. This will be called on every individual step.
+   */
+  onChange?: EventHandler<ColorAreaOnColorChangeData>;
+};
 
 /**
  * State used in rendering ColorArea
  */
 export type ColorAreaState = ComponentState<ColorAreaSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from ColorAreaProps.
-// & Required<Pick<ColorAreaProps, 'propName'>>

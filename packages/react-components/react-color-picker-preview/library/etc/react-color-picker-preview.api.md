@@ -31,17 +31,21 @@ export type AlphaSliderSlots = ColorSliderSlots;
 export type AlphaSliderState = ComponentState<AlphaSliderSlots> & Pick<AlphaSliderProps, 'vertical'> & Omit<ColorSliderState, keyof ColorSliderSlots | 'components'>;
 
 // @public
-export const ColorArea: ForwardRefComponent<ColorAreaProps>;
+export const ColorArea: React_2.FC<ColorAreaProps>;
 
 // @public (undocumented)
 export const colorAreaClassNames: SlotClassNames<ColorAreaSlots>;
 
 // @public
-export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {};
+export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {
+    color?: string;
+    onChange?: EventHandler<ColorAreaOnColorChangeData>;
+};
 
 // @public (undocumented)
 export type ColorAreaSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
+    thumb?: NonNullable<Slot<'div'>>;
 };
 
 // @public
@@ -114,7 +118,7 @@ export const useAlphaSlider_unstable: (props: AlphaSliderProps, ref: React_2.Ref
 export const useAlphaSliderStyles_unstable: (state: AlphaSliderState) => AlphaSliderState;
 
 // @public
-export const useColorArea_unstable: (props: ColorAreaProps, ref: React_2.Ref<HTMLDivElement>) => ColorAreaState;
+export const useColorArea_unstable: (props: ColorAreaProps) => ColorAreaState;
 
 // @public
 export const useColorAreaStyles_unstable: (state: ColorAreaState) => ColorAreaState;
