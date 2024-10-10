@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 08 Oct 2024 07:23:46 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Oct 2024 07:21:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.6)
+
+Thu, 10 Oct 2024 07:21:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.5..@fluentui/react-charting_v5.23.6)
+
+### Patches
+
+- "Fixed XSS Vulnerabilities in tooltips" ([PR #33002](https://github.com/microsoft/fluentui/pull/33002) by apoorvaj20@iitk.ac.in)
 
 ## [5.23.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.5)
 
