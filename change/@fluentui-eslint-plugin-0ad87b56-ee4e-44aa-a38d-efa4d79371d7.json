@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: introduce consistent type import/export rules for v9 projects",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
