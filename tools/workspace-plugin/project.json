@@ -35,9 +35,6 @@
           }
         ]
       }
-    },
-    "type-check": {
-      "executor": "@fluentui/workspace-plugin:type-check"
     }
   }
 }
