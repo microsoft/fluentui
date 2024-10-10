@@ -205,7 +205,7 @@ export class BaseField extends FASTElement {
    * @internal
    */
   public setStates() {
-    if (this.$fastController.isConnected) {
+    if (this.elementInternals && this.input) {
       toggleState(this.elementInternals, 'disabled', !!this.input.disabled);
       toggleState(this.elementInternals, 'readonly', !!this.input.readOnly);
       toggleState(this.elementInternals, 'required', !!this.input.required);
