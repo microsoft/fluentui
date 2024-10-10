@@ -33,7 +33,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               className="fui-donut-arc__root"
               d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
               data-is-focusable={true}
-              id="_Pie_56first20000"
+              id="_Pie_42first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -55,7 +55,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               className="fui-donut-arc__root"
               d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
               data-is-focusable={true}
-              id="_Pie_56second39000"
+              id="_Pie_42second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -77,7 +77,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               className="fui-donut-arc__root"
               d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
               data-is-focusable={true}
-              id="_Pie_56third45000"
+              id="_Pie_42third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -97,7 +97,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
       </svg>
     </div>
     <div
-      id="callout58"
+      id="callout43"
     >
       <div
         className="fui-PopoverSurface"
@@ -335,7 +335,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               className="fui-donut-arc__root"
               d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
               data-is-focusable={true}
-              id="_Pie_66first20000"
+              id="_Pie_50first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -357,7 +357,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               className="fui-donut-arc__root"
               d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
               data-is-focusable={true}
-              id="_Pie_66second39000"
+              id="_Pie_50second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -379,7 +379,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               className="fui-donut-arc__root"
               d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
               data-is-focusable={true}
-              id="_Pie_66third45000"
+              id="_Pie_50third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -399,7 +399,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
       </svg>
     </div>
     <div
-      id="callout68"
+      id="callout51"
     >
       <div
         className="fui-PopoverSurface"
@@ -607,7 +607,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               className="fui-donut-arc__root"
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              id="_Pie_32first20000"
+              id="_Pie_24first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -629,7 +629,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               className="fui-donut-arc__root"
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              id="_Pie_32second39000"
+              id="_Pie_24second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -651,7 +651,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               className="fui-donut-arc__root"
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              id="_Pie_32third45000"
+              id="_Pie_24third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -671,7 +671,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
       </svg>
     </div>
     <div
-      id="callout34"
+      id="callout25"
     />
     <div
       className="fui-donut__legendContainer"
@@ -858,7 +858,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               className="fui-donut-arc__root"
               d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
               data-is-focusable={true}
-              id="_Pie_24first20000"
+              id="_Pie_18first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -890,7 +890,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               className="fui-donut-arc__root"
               d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
               data-is-focusable={true}
-              id="_Pie_24second39000"
+              id="_Pie_18second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -922,7 +922,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               className="fui-donut-arc__root"
               d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
               data-is-focusable={true}
-              id="_Pie_24third45000"
+              id="_Pie_18third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -952,7 +952,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
       </svg>
     </div>
     <div
-      id="callout26"
+      id="callout19"
     />
     <div
       className="fui-donut__legendContainer"
@@ -1139,7 +1139,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               className="fui-donut-arc__root"
               d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
               data-is-focusable={true}
-              id="_Pie_28first20000"
+              id="_Pie_21first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1171,7 +1171,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               className="fui-donut-arc__root"
               d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
               data-is-focusable={true}
-              id="_Pie_28second39000"
+              id="_Pie_21second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1203,7 +1203,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               className="fui-donut-arc__root"
               d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
               data-is-focusable={true}
-              id="_Pie_28third45000"
+              id="_Pie_21third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1233,7 +1233,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
       </svg>
     </div>
     <div
-      id="callout30"
+      id="callout22"
     />
     <div
       className="fui-donut__legendContainer"
@@ -1484,7 +1484,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
       </svg>
     </div>
     <div
-      id="callout3"
+      id="callout2"
     />
     <div
       className="fui-donut__legendContainer"
@@ -1671,7 +1671,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               className="fui-donut-arc__root"
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              id="_Pie_5first20000"
+              id="_Pie_4first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1693,7 +1693,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               className="fui-donut-arc__root"
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              id="_Pie_5second39000"
+              id="_Pie_4second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1715,7 +1715,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               className="fui-donut-arc__root"
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              id="_Pie_5third45000"
+              id="_Pie_4third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1735,7 +1735,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
       </svg>
     </div>
     <div
-      id="callout7"
+      id="callout5"
     />
     <div
       className="fui-donut__legendContainer"
@@ -1922,7 +1922,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               className="fui-donut-arc__root"
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              id="_Pie_16first20000"
+              id="_Pie_12first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1944,7 +1944,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               className="fui-donut-arc__root"
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              id="_Pie_16second39000"
+              id="_Pie_12second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1966,7 +1966,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               className="fui-donut-arc__root"
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              id="_Pie_16third45000"
+              id="_Pie_12third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1986,7 +1986,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
       </svg>
     </div>
     <div
-      id="callout18"
+      id="callout13"
     />
     <div
       className="fui-donut__legendContainer"
@@ -2173,6 +2173,109 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               className="fui-donut-arc__root"
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
+              id="_Pie_7first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#E5E5E5",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className="fui-donut-arc__root"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_7second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#0078D4",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className="fui-donut-arc__root"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_7third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#DADADA",
+                }
+              }
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      id="callout8"
+    />
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
+<div
+  className="fui-charts-resp__root"
+  style={
+    Object {
+      "height": undefined,
+      "width": undefined,
+    }
+  }
+>
+  <div
+    className="fui-donut__root"
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="fui-donut__chartWrapper"
+      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+    >
+      <svg
+        aria-label="Donut chart example"
+        className="fui-donut__chart"
+        height={200}
+        width={200}
+      >
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className="fui-donut-arc__root"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+              data-is-focusable={true}
               id="_Pie_9first20000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -2237,110 +2340,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
       </svg>
     </div>
     <div
-      id="callout11"
-    />
-  </div>
-</div>
-`;
-
-exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
-<div
-  className="fui-charts-resp__root"
-  style={
-    Object {
-      "height": undefined,
-      "width": undefined,
-    }
-  }
->
-  <div
-    className="fui-donut__root"
-    onMouseLeave={[Function]}
-  >
-    <div
-      className="fui-donut__chartWrapper"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-    >
-      <svg
-        aria-label="Donut chart example"
-        className="fui-donut__chart"
-        height={200}
-        width={200}
-      >
-        <g
-          transform="translate(100, 100)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              className="fui-donut-arc__root"
-              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_12first20000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              opacity={1}
-              role="img"
-              style={
-                Object {
-                  "cursor": "default",
-                  "fill": "#E5E5E5",
-                }
-              }
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              className="fui-donut-arc__root"
-              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_12second39000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              opacity={1}
-              role="img"
-              style={
-                Object {
-                  "cursor": "default",
-                  "fill": "#0078D4",
-                }
-              }
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              className="fui-donut-arc__root"
-              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_12third45000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              opacity={1}
-              role="img"
-              style={
-                Object {
-                  "cursor": "default",
-                  "fill": "#DADADA",
-                }
-              }
-            />
-          </g>
-        </g>
-      </svg>
-    </div>
-    <div
-      id="callout14"
+      id="callout10"
     />
     <div
       className="fui-donut__legendContainer"
@@ -2527,7 +2527,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               className="fui-donut-arc__root"
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              id="_Pie_20first20000"
+              id="_Pie_15first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2549,7 +2549,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               className="fui-donut-arc__root"
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              id="_Pie_20second39000"
+              id="_Pie_15second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2571,7 +2571,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               className="fui-donut-arc__root"
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              id="_Pie_20third45000"
+              id="_Pie_15third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2599,7 +2599,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
       </svg>
     </div>
     <div
-      id="callout22"
+      id="callout16"
     />
     <div
       className="fui-donut__legendContainer"

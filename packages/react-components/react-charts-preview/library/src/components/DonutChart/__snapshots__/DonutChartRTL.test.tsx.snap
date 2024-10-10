@@ -61,7 +61,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
         </svg>
       </div>
       <div
-        id="callout3"
+        id="callout2"
       />
       <div
         class="fui-donut__legendContainer"
@@ -145,7 +145,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
 exports[`Donut chart interactions Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider41"
+    class="fui-FluentProvider fui-FluentProvider32"
     dir="ltr"
   >
     <div
@@ -173,7 +173,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   class="fui-donut-arc__root"
                   d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_42first20000"
+                  id="_Pie_33first20000"
                   opacity="1"
                   role="img"
                   style="fill: #E5E5E5; cursor: default;"
@@ -185,7 +185,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   class="fui-donut-arc__root"
                   d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_42second39000"
+                  id="_Pie_33second39000"
                   opacity="1"
                   role="img"
                   style="fill: #0078D4; cursor: default;"
@@ -197,7 +197,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   class="fui-donut-arc__root"
                   d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_42third45000"
+                  id="_Pie_33third45000"
                   opacity="1"
                   role="img"
                   style="fill: #DADADA; cursor: default;"
@@ -207,7 +207,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
           </svg>
         </div>
         <div
-          id="callout44"
+          id="callout34"
         />
         <div
           class="fui-donut__legendContainer"
