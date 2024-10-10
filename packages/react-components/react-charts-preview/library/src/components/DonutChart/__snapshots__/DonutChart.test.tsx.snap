@@ -119,7 +119,14 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                
             </div>
           </div>
-          <div>
+          <div
+            className="fui-cart__calloutInfoContainer"
+            style={
+              Object {
+                "borderLeft": "4px solid #E5E5E5",
+              }
+            }
+          >
             <div
               className="fui-cart__calloutBlockContainer"
             >
@@ -184,6 +191,14 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#E5E5E5",
+                  "borderColor": "#E5E5E5",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -218,6 +233,14 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#0078D4",
+                  "borderColor": "#0078D4",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -252,6 +275,14 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#DADADA",
+                  "borderColor": "#DADADA",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -432,6 +463,14 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#E5E5E5",
+                  "borderColor": "#E5E5E5",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -466,6 +505,14 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#0078D4",
+                  "borderColor": "#0078D4",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -500,6 +547,14 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#DADADA",
+                  "borderColor": "#DADADA",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -659,6 +714,14 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#E5E5E5",
+                  "borderColor": "#E5E5E5",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -693,6 +756,14 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#0078D4",
+                  "borderColor": "#0078D4",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -727,6 +798,14 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#DADADA",
+                  "borderColor": "#DADADA",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -916,6 +995,14 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#E5E5E5",
+                  "borderColor": "#E5E5E5",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -950,6 +1037,14 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#0078D4",
+                  "borderColor": "#0078D4",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -984,6 +1079,14 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#DADADA",
+                  "borderColor": "#DADADA",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1173,6 +1276,14 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#E5E5E5",
+                  "borderColor": "#E5E5E5",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1207,6 +1318,14 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#0078D4",
+                  "borderColor": "#0078D4",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1241,6 +1360,14 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#DADADA",
+                  "borderColor": "#DADADA",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1400,6 +1527,14 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#E5E5E5",
+                  "borderColor": "#E5E5E5",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1434,6 +1569,14 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#0078D4",
+                  "borderColor": "#0078D4",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1468,6 +1611,14 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#DADADA",
+                  "borderColor": "#DADADA",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1627,6 +1778,14 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                  "borderColor": "var(--colorNeutralStroke1)",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1661,6 +1820,14 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                  "borderColor": "var(--colorNeutralStroke1)",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1695,6 +1862,14 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                  "borderColor": "var(--colorNeutralStroke1)",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1854,6 +2029,14 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#E5E5E5",
+                  "borderColor": "#E5E5E5",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1888,6 +2071,14 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#0078D4",
+                  "borderColor": "#0078D4",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -1922,6 +2113,14 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#DADADA",
+                  "borderColor": "#DADADA",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -2184,6 +2383,14 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#E5E5E5",
+                  "borderColor": "#E5E5E5",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -2218,6 +2425,14 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#0078D4",
+                  "borderColor": "#0078D4",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -2252,6 +2467,14 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#DADADA",
+                  "borderColor": "#DADADA",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -2419,6 +2642,14 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#E5E5E5",
+                  "borderColor": "#E5E5E5",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -2453,6 +2684,14 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#0078D4",
+                  "borderColor": "#0078D4",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"
@@ -2487,6 +2726,14 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           >
             <div
               className="fui-legend__rect"
+              style={
+                Object {
+                  "backgroundColor": "#DADADA",
+                  "borderColor": "#DADADA",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
             />
             <div
               className="fui-legend__text"

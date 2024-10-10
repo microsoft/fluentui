@@ -28,7 +28,7 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
       height: 0,
     }),
   };
-  props = { ...props, ...props.customCallout!.customCalloutProps };
+  props = { ...props, ...props.customCallout?.customCalloutProps };
   const classes = usePopoverStyles_unstable(props);
   const Legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
   const YValue = props.yCalloutValue ? props.yCalloutValue : props.YValue;

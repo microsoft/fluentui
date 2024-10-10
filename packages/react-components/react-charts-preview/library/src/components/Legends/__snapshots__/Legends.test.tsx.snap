@@ -39,6 +39,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FF0000",
+            "borderColor": "#FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -73,6 +81,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#000000",
+            "borderColor": "#000000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -107,6 +123,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#008000",
+            "borderColor": "#008000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -141,6 +165,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#0000ff",
+            "borderColor": "#0000ff",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -175,6 +207,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#191970",
+            "borderColor": "#191970",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -209,6 +249,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#E4E3E9",
+            "borderColor": "#E4E3E9",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -243,6 +291,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#013220",
+            "borderColor": "#013220",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -277,6 +333,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#00008B",
+            "borderColor": "#00008B",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -311,6 +375,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -345,6 +417,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#301934",
+            "borderColor": "#301934",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -379,6 +459,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#Ffffed",
+            "borderColor": "#Ffffed",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -413,6 +501,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#90ee90",
+            "borderColor": "#90ee90",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -447,6 +543,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -481,6 +585,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -515,6 +627,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -549,6 +669,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "FF0000",
+            "borderColor": "FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -583,6 +711,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#FFFFFF",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -638,6 +774,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FF0000",
+            "borderColor": "#FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -672,6 +816,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#000000",
+            "borderColor": "#000000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -706,6 +858,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#008000",
+            "borderColor": "#008000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -740,6 +900,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#0000ff",
+            "borderColor": "#0000ff",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -774,6 +942,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#191970",
+            "borderColor": "#191970",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -808,6 +984,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#E4E3E9",
+            "borderColor": "#E4E3E9",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -842,6 +1026,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#013220",
+            "borderColor": "#013220",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -876,6 +1068,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#00008B",
+            "borderColor": "#00008B",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -910,6 +1110,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -944,6 +1152,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#301934",
+            "borderColor": "#301934",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -978,6 +1194,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#Ffffed",
+            "borderColor": "#Ffffed",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1012,6 +1236,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#90ee90",
+            "borderColor": "#90ee90",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1046,6 +1278,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1080,6 +1320,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1114,6 +1362,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1148,6 +1404,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "FF0000",
+            "borderColor": "FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1182,6 +1446,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#FFFFFF",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1237,6 +1509,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FF0000",
+            "borderColor": "#FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1271,6 +1551,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#000000",
+            "borderColor": "#000000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1305,6 +1593,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#008000",
+            "borderColor": "#008000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1339,6 +1635,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#0000ff",
+            "borderColor": "#0000ff",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1373,6 +1677,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#191970",
+            "borderColor": "#191970",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1407,6 +1719,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#E4E3E9",
+            "borderColor": "#E4E3E9",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1441,6 +1761,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#013220",
+            "borderColor": "#013220",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1475,6 +1803,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#00008B",
+            "borderColor": "#00008B",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1509,6 +1845,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1543,6 +1887,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#301934",
+            "borderColor": "#301934",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1577,6 +1929,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#Ffffed",
+            "borderColor": "#Ffffed",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1611,6 +1971,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#90ee90",
+            "borderColor": "#90ee90",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1645,6 +2013,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1679,6 +2055,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1713,6 +2097,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1747,6 +2139,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "FF0000",
+            "borderColor": "FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1781,6 +2181,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#FFFFFF",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1836,6 +2244,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FF0000",
+            "borderColor": "#FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1870,6 +2286,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#000000",
+            "borderColor": "#000000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1904,6 +2328,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#008000",
+            "borderColor": "#008000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1938,6 +2370,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#0000ff",
+            "borderColor": "#0000ff",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -1972,6 +2412,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#191970",
+            "borderColor": "#191970",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -2006,6 +2454,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#E4E3E9",
+            "borderColor": "#E4E3E9",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -2040,6 +2496,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#013220",
+            "borderColor": "#013220",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -2074,6 +2538,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#00008B",
+            "borderColor": "#00008B",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -2108,6 +2580,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -2142,6 +2622,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#301934",
+            "borderColor": "#301934",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -2176,6 +2664,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#Ffffed",
+            "borderColor": "#Ffffed",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -2210,6 +2706,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#90ee90",
+            "borderColor": "#90ee90",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -2244,6 +2748,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -2278,6 +2790,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -2312,6 +2832,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -2346,6 +2874,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "FF0000",
+            "borderColor": "FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"
@@ -2380,6 +2916,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     >
       <div
         className="fui-legend__rect"
+        style={
+          Object {
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#FFFFFF",
+            "content": "",
+            "height": "12px",
+          }
+        }
       />
       <div
         className="fui-legend__text"

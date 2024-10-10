@@ -88,6 +88,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5;"
               />
               <div
                 class="fui-legend__text"
@@ -106,6 +107,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4;"
               />
               <div
                 class="fui-legend__text"
@@ -124,6 +126,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
             >
               <div
                 class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada;"
               />
               <div
                 class="fui-legend__text"
@@ -231,6 +234,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(229, 229, 229); border-color: #e5e5e5;"
                 />
                 <div
                   class="fui-legend__text"
@@ -249,6 +253,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4;"
                 />
                 <div
                   class="fui-legend__text"
@@ -267,6 +272,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(218, 218, 218); border-color: #dadada;"
                 />
                 <div
                   class="fui-legend__text"
