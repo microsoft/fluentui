@@ -26,7 +26,10 @@ export const sliderClassNames: SlotClassNames<SliderSlots>;
 export const sliderCSSVars: {
     sliderDirectionVar: string;
     sliderProgressVar: string;
+    sliderProgressValueVar: string;
     sliderStepsPercentVar: string;
+    sliderStepsGradientVar: string;
+    sliderStepsColorVar: string;
 };
 
 // @public (undocumented)
