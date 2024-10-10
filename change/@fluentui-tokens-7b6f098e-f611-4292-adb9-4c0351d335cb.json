@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: add explicit .js file extensions to all relative import/export statement within built output to support native ESM within browser",
+  "packageName": "@fluentui/tokens",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
