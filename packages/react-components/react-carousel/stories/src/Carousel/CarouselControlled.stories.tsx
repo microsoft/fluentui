@@ -119,7 +119,7 @@ const WireframeContent: React.FC<{
 };
 
 export const Controlled = () => {
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [activeIndex, setActiveIndex] = React.useState(1);
   const classes = useClasses();
 
   return (
