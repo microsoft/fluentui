@@ -64,7 +64,6 @@ const PAGES = [
 ];
 
 const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
-  console.log(`Carousel slide ${index + 1} of ${totalSlides}, ${PAGES[index].header}`);
   return `Carousel slide ${index + 1} of ${totalSlides}, ${PAGES[index].header}`;
 };
 
