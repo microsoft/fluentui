@@ -1,4 +1,4 @@
-import { tokens } from '@fluentui/react-theme';
+import { avatarTokens } from './Avatar.tokens'
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { AvatarSlots, AvatarState } from './Avatar.types';
@@ -24,10 +24,10 @@ const useRootClassName = makeResetStyles({
   flexShrink: 0,
   position: 'relative',
   verticalAlign: 'middle',
-  borderRadius: tokens.borderRadiusCircular,
-  fontFamily: tokens.fontFamilyBase,
-  fontWeight: tokens.fontWeightSemibold,
-  fontSize: tokens.fontSizeBase300,
+  borderRadius: avatarTokens.ctrlBorderRadiusCircular,
+  fontFamily: avatarTokens.ctrlFontFamilyBase,
+  fontWeight: avatarTokens.ctrlFontWeightSemibold,
+  fontSize: avatarTokens.ctrlFontSizeBase300,
   width: '32px',
   height: '32px',
 
@@ -43,8 +43,8 @@ const useRootClassName = makeResetStyles({
     margin: `calc(-2 * var(${vars.ringWidth}, 0px))`,
     borderRadius: 'inherit',
     transitionProperty: 'margin, opacity',
-    transitionTimingFunction: `${tokens.curveEasyEaseMax}, ${tokens.curveLinear}`,
-    transitionDuration: `${tokens.durationUltraSlow}, ${tokens.durationSlower}`,
+    transitionTimingFunction: `${avatarTokens.ctrlCurveEasyEaseMax}, ${avatarTokens.ctrlCurveLinear}`,
+    transitionDuration: `${avatarTokens.ctrlDurationUltraSlow}, ${avatarTokens.ctrlDurationSlower}`,
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',
     },
@@ -75,7 +75,7 @@ const useIconInitialsClassName = makeResetStyles({
   width: '100%',
   height: '100%',
   lineHeight: '1',
-  border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+  border: `${avatarTokens.ctrlStrokeWidthThin} solid ${avatarTokens.ctrlColorTransparentStroke}`,
 
   display: 'flex',
   alignItems: 'center',
@@ -108,22 +108,22 @@ const badgeMask = (margin?: string) => {
 };
 
 const useStyles = makeStyles({
-  textCaption2Strong: { fontSize: tokens.fontSizeBase100 },
-  textCaption1Strong: { fontSize: tokens.fontSizeBase200 },
-  textSubtitle2: { fontSize: tokens.fontSizeBase400 },
-  textSubtitle1: { fontSize: tokens.fontSizeBase500 },
-  textTitle3: { fontSize: tokens.fontSizeBase600 },
+  textCaption2Strong: { fontSize: avatarTokens.ctrlFontSizeBase100 },
+  textCaption1Strong: { fontSize: avatarTokens.ctrlFontSizeBase200 },
+  textSubtitle2: { fontSize: avatarTokens.ctrlFontSizeBase400 },
+  textSubtitle1: { fontSize: avatarTokens.ctrlFontSizeBase500 },
+  textTitle3: { fontSize: avatarTokens.ctrlFontSizeBase600 },
 
-  squareSmall: { borderRadius: tokens.borderRadiusSmall },
-  squareMedium: { borderRadius: tokens.borderRadiusMedium },
-  squareLarge: { borderRadius: tokens.borderRadiusLarge },
-  squareXLarge: { borderRadius: tokens.borderRadiusXLarge },
+  squareSmall: { borderRadius: avatarTokens.ctrlBorderRadiusSmall },
+  squareMedium: { borderRadius: avatarTokens.ctrlBorderRadiusMedium },
+  squareLarge: { borderRadius: avatarTokens.ctrlBorderRadiusLarge },
+  squareXLarge: { borderRadius: avatarTokens.ctrlBorderRadiusXLarge },
 
   activeOrInactive: {
     transform: 'perspective(1px)', // Work-around for text pixel snapping at the end of the animation
     transitionProperty: 'transform, opacity',
-    transitionDuration: `${tokens.durationUltraSlow}, ${tokens.durationFaster}`,
-    transitionTimingFunction: `${tokens.curveEasyEaseMax}, ${tokens.curveLinear}`,
+    transitionDuration: `${avatarTokens.ctrlDurationUltraSlow}, ${avatarTokens.ctrlDurationFaster}`,
+    transitionTimingFunction: `${avatarTokens.ctrlCurveEasyEaseMax}, ${avatarTokens.ctrlCurveLinear}`,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',
@@ -138,13 +138,13 @@ const useStyles = makeStyles({
     '::before': { maskImage: badgeMask(/*margin =*/ `2 * var(${vars.ringWidth})`) },
   },
   ringThick: {
-    [vars.ringWidth]: tokens.strokeWidthThick,
+    [vars.ringWidth]: avatarTokens.ctrlStrokeWidthThick,
   },
   ringThicker: {
-    [vars.ringWidth]: tokens.strokeWidthThicker,
+    [vars.ringWidth]: avatarTokens.ctrlStrokeWidthThicker,
   },
   ringThickest: {
-    [vars.ringWidth]: tokens.strokeWidthThickest,
+    [vars.ringWidth]: avatarTokens.ctrlStrokeWidthThickest,
   },
 
   shadow: {
@@ -152,27 +152,27 @@ const useStyles = makeStyles({
     '::after': { content: '""' },
   },
   shadow4: {
-    '::after': { boxShadow: tokens.shadow4 },
+    '::after': { boxShadow: avatarTokens.ctrlShadow4 },
   },
   shadow8: {
-    '::after': { boxShadow: tokens.shadow8 },
+    '::after': { boxShadow: avatarTokens.ctrlShadow8 },
   },
   shadow16: {
-    '::after': { boxShadow: tokens.shadow16 },
+    '::after': { boxShadow: avatarTokens.ctrlShadow16 },
   },
   shadow28: {
-    '::after': { boxShadow: tokens.shadow28 },
+    '::after': { boxShadow: avatarTokens.ctrlShadow28 },
   },
 
   inactive: {
     opacity: '0.8',
     transform: 'scale(0.875)',
-    transitionTimingFunction: `${tokens.curveDecelerateMin}, ${tokens.curveLinear}`,
+    transitionTimingFunction: `${avatarTokens.ctrlCurveDecelerateMin}, ${avatarTokens.ctrlCurveLinear}`,
 
     '::before,::after': {
       margin: 0,
       opacity: 0,
-      transitionTimingFunction: `${tokens.curveDecelerateMin}, ${tokens.curveLinear}`,
+      transitionTimingFunction: `${avatarTokens.ctrlCurveDecelerateMin}, ${avatarTokens.ctrlCurveLinear}`,
     },
   },
 
@@ -198,27 +198,27 @@ const useStyles = makeStyles({
   // Badge size: applied to root when there is a badge
   tiny: {
     [vars.badgeRadius]: '3px',
-    [vars.badgeGap]: tokens.strokeWidthThin,
+    [vars.badgeGap]: avatarTokens.ctrlStrokeWidthThin,
   },
   'extra-small': {
     [vars.badgeRadius]: '5px',
-    [vars.badgeGap]: tokens.strokeWidthThin,
+    [vars.badgeGap]: avatarTokens.ctrlStrokeWidthThin,
   },
   small: {
     [vars.badgeRadius]: '6px',
-    [vars.badgeGap]: tokens.strokeWidthThin,
+    [vars.badgeGap]: avatarTokens.ctrlStrokeWidthThin,
   },
   medium: {
     [vars.badgeRadius]: '8px',
-    [vars.badgeGap]: tokens.strokeWidthThin,
+    [vars.badgeGap]: avatarTokens.ctrlStrokeWidthThin,
   },
   large: {
     [vars.badgeRadius]: '10px',
-    [vars.badgeGap]: tokens.strokeWidthThick,
+    [vars.badgeGap]: avatarTokens.ctrlStrokeWidthThick,
   },
   'extra-large': {
     [vars.badgeRadius]: '14px',
-    [vars.badgeGap]: tokens.strokeWidthThick,
+    [vars.badgeGap]: avatarTokens.ctrlStrokeWidthThick,
   },
 
   icon12: { fontSize: '12px' },
@@ -249,231 +249,231 @@ export const useSizeStyles = makeStyles({
 
 const useColorStyles = makeStyles({
   neutral: {
-    color: tokens.colorNeutralForeground3,
-    backgroundColor: tokens.colorNeutralBackground6,
+    color: avatarTokens.ctrlColorNeutralForeground3,
+    backgroundColor: avatarTokens.ctrlColorNeutralBackground6,
   },
   brand: {
-    color: tokens.colorNeutralForegroundStaticInverted,
-    backgroundColor: tokens.colorBrandBackgroundStatic,
+    color: avatarTokens.ctrlColorNeutralForegroundStaticInverted,
+    backgroundColor: avatarTokens.ctrlColorBrandBackgroundStatic,
   },
   'dark-red': {
-    color: tokens.colorPaletteDarkRedForeground2,
-    backgroundColor: tokens.colorPaletteDarkRedBackground2,
+    color: avatarTokens.ctrlColorPaletteDarkRedForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteDarkRedBackground2,
   },
   cranberry: {
-    color: tokens.colorPaletteCranberryForeground2,
-    backgroundColor: tokens.colorPaletteCranberryBackground2,
+    color: avatarTokens.ctrlColorPaletteCranberryForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteCranberryBackground2,
   },
   red: {
-    color: tokens.colorPaletteRedForeground2,
-    backgroundColor: tokens.colorPaletteRedBackground2,
+    color: avatarTokens.ctrlColorPaletteRedForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteRedBackground2,
   },
   pumpkin: {
-    color: tokens.colorPalettePumpkinForeground2,
-    backgroundColor: tokens.colorPalettePumpkinBackground2,
+    color: avatarTokens.ctrlColorPalettePumpkinForeground2,
+    backgroundColor: avatarTokens.ctrlColorPalettePumpkinBackground2,
   },
   peach: {
-    color: tokens.colorPalettePeachForeground2,
-    backgroundColor: tokens.colorPalettePeachBackground2,
+    color: avatarTokens.ctrlColorPalettePeachForeground2,
+    backgroundColor: avatarTokens.ctrlColorPalettePeachBackground2,
   },
   marigold: {
-    color: tokens.colorPaletteMarigoldForeground2,
-    backgroundColor: tokens.colorPaletteMarigoldBackground2,
+    color: avatarTokens.ctrlColorPaletteMarigoldForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteMarigoldBackground2,
   },
   gold: {
-    color: tokens.colorPaletteGoldForeground2,
-    backgroundColor: tokens.colorPaletteGoldBackground2,
+    color: avatarTokens.ctrlColorPaletteGoldForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteGoldBackground2,
   },
   brass: {
-    color: tokens.colorPaletteBrassForeground2,
-    backgroundColor: tokens.colorPaletteBrassBackground2,
+    color: avatarTokens.ctrlColorPaletteBrassForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteBrassBackground2,
   },
   brown: {
-    color: tokens.colorPaletteBrownForeground2,
-    backgroundColor: tokens.colorPaletteBrownBackground2,
+    color: avatarTokens.ctrlColorPaletteBrownForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteBrownBackground2,
   },
   forest: {
-    color: tokens.colorPaletteForestForeground2,
-    backgroundColor: tokens.colorPaletteForestBackground2,
+    color: avatarTokens.ctrlColorPaletteForestForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteForestBackground2,
   },
   seafoam: {
-    color: tokens.colorPaletteSeafoamForeground2,
-    backgroundColor: tokens.colorPaletteSeafoamBackground2,
+    color: avatarTokens.ctrlColorPaletteSeafoamForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteSeafoamBackground2,
   },
   'dark-green': {
-    color: tokens.colorPaletteDarkGreenForeground2,
-    backgroundColor: tokens.colorPaletteDarkGreenBackground2,
+    color: avatarTokens.ctrlColorPaletteDarkGreenForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteDarkGreenBackground2,
   },
   'light-teal': {
-    color: tokens.colorPaletteLightTealForeground2,
-    backgroundColor: tokens.colorPaletteLightTealBackground2,
+    color: avatarTokens.ctrlColorPaletteLightTealForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteLightTealBackground2,
   },
   teal: {
-    color: tokens.colorPaletteTealForeground2,
-    backgroundColor: tokens.colorPaletteTealBackground2,
+    color: avatarTokens.ctrlColorPaletteTealForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteTealBackground2,
   },
   steel: {
-    color: tokens.colorPaletteSteelForeground2,
-    backgroundColor: tokens.colorPaletteSteelBackground2,
+    color: avatarTokens.ctrlColorPaletteSteelForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteSteelBackground2,
   },
   blue: {
-    color: tokens.colorPaletteBlueForeground2,
-    backgroundColor: tokens.colorPaletteBlueBackground2,
+    color: avatarTokens.ctrlColorPaletteBlueForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteBlueBackground2,
   },
   'royal-blue': {
-    color: tokens.colorPaletteRoyalBlueForeground2,
-    backgroundColor: tokens.colorPaletteRoyalBlueBackground2,
+    color: avatarTokens.ctrlColorPaletteRoyalBlueForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteRoyalBlueBackground2,
   },
   cornflower: {
-    color: tokens.colorPaletteCornflowerForeground2,
-    backgroundColor: tokens.colorPaletteCornflowerBackground2,
+    color: avatarTokens.ctrlColorPaletteCornflowerForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteCornflowerBackground2,
   },
   navy: {
-    color: tokens.colorPaletteNavyForeground2,
-    backgroundColor: tokens.colorPaletteNavyBackground2,
+    color: avatarTokens.ctrlColorPaletteNavyForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteNavyBackground2,
   },
   lavender: {
-    color: tokens.colorPaletteLavenderForeground2,
-    backgroundColor: tokens.colorPaletteLavenderBackground2,
+    color: avatarTokens.ctrlColorPaletteLavenderForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteLavenderBackground2,
   },
   purple: {
-    color: tokens.colorPalettePurpleForeground2,
-    backgroundColor: tokens.colorPalettePurpleBackground2,
+    color: avatarTokens.ctrlColorPalettePurpleForeground2,
+    backgroundColor: avatarTokens.ctrlColorPalettePurpleBackground2,
   },
   grape: {
-    color: tokens.colorPaletteGrapeForeground2,
-    backgroundColor: tokens.colorPaletteGrapeBackground2,
+    color: avatarTokens.ctrlColorPaletteGrapeForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteGrapeBackground2,
   },
   lilac: {
-    color: tokens.colorPaletteLilacForeground2,
-    backgroundColor: tokens.colorPaletteLilacBackground2,
+    color: avatarTokens.ctrlColorPaletteLilacForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteLilacBackground2,
   },
   pink: {
-    color: tokens.colorPalettePinkForeground2,
-    backgroundColor: tokens.colorPalettePinkBackground2,
+    color: avatarTokens.ctrlColorPalettePinkForeground2,
+    backgroundColor: avatarTokens.ctrlColorPalettePinkBackground2,
   },
   magenta: {
-    color: tokens.colorPaletteMagentaForeground2,
-    backgroundColor: tokens.colorPaletteMagentaBackground2,
+    color: avatarTokens.ctrlColorPaletteMagentaForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteMagentaBackground2,
   },
   plum: {
-    color: tokens.colorPalettePlumForeground2,
-    backgroundColor: tokens.colorPalettePlumBackground2,
+    color: avatarTokens.ctrlColorPalettePlumForeground2,
+    backgroundColor: avatarTokens.ctrlColorPalettePlumBackground2,
   },
   beige: {
-    color: tokens.colorPaletteBeigeForeground2,
-    backgroundColor: tokens.colorPaletteBeigeBackground2,
+    color: avatarTokens.ctrlColorPaletteBeigeForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteBeigeBackground2,
   },
   mink: {
-    color: tokens.colorPaletteMinkForeground2,
-    backgroundColor: tokens.colorPaletteMinkBackground2,
+    color: avatarTokens.ctrlColorPaletteMinkForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteMinkBackground2,
   },
   platinum: {
-    color: tokens.colorPalettePlatinumForeground2,
-    backgroundColor: tokens.colorPalettePlatinumBackground2,
+    color: avatarTokens.ctrlColorPalettePlatinumForeground2,
+    backgroundColor: avatarTokens.ctrlColorPalettePlatinumBackground2,
   },
   anchor: {
-    color: tokens.colorPaletteAnchorForeground2,
-    backgroundColor: tokens.colorPaletteAnchorBackground2,
+    color: avatarTokens.ctrlColorPaletteAnchorForeground2,
+    backgroundColor: avatarTokens.ctrlColorPaletteAnchorBackground2,
   },
 });
 
 const useRingColorStyles = makeStyles({
   neutral: {
-    '::before': { color: tokens.colorBrandStroke1 },
+    '::before': { color: avatarTokens.ctrlColorBrandStroke1 },
   },
   brand: {
-    '::before': { color: tokens.colorBrandStroke1 },
+    '::before': { color: avatarTokens.ctrlColorBrandStroke1 },
   },
   'dark-red': {
-    '::before': { color: tokens.colorPaletteDarkRedBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteDarkRedBorderActive },
   },
   cranberry: {
-    '::before': { color: tokens.colorPaletteCranberryBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteCranberryBorderActive },
   },
   red: {
-    '::before': { color: tokens.colorPaletteRedBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteRedBorderActive },
   },
   pumpkin: {
-    '::before': { color: tokens.colorPalettePumpkinBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPalettePumpkinBorderActive },
   },
   peach: {
-    '::before': { color: tokens.colorPalettePeachBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPalettePeachBorderActive },
   },
   marigold: {
-    '::before': { color: tokens.colorPaletteMarigoldBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteMarigoldBorderActive },
   },
   gold: {
-    '::before': { color: tokens.colorPaletteGoldBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteGoldBorderActive },
   },
   brass: {
-    '::before': { color: tokens.colorPaletteBrassBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteBrassBorderActive },
   },
   brown: {
-    '::before': { color: tokens.colorPaletteBrownBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteBrownBorderActive },
   },
   forest: {
-    '::before': { color: tokens.colorPaletteForestBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteForestBorderActive },
   },
   seafoam: {
-    '::before': { color: tokens.colorPaletteSeafoamBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteSeafoamBorderActive },
   },
   'dark-green': {
-    '::before': { color: tokens.colorPaletteDarkGreenBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteDarkGreenBorderActive },
   },
   'light-teal': {
-    '::before': { color: tokens.colorPaletteLightTealBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteLightTealBorderActive },
   },
   teal: {
-    '::before': { color: tokens.colorPaletteTealBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteTealBorderActive },
   },
   steel: {
-    '::before': { color: tokens.colorPaletteSteelBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteSteelBorderActive },
   },
   blue: {
-    '::before': { color: tokens.colorPaletteBlueBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteBlueBorderActive },
   },
   'royal-blue': {
-    '::before': { color: tokens.colorPaletteRoyalBlueBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteRoyalBlueBorderActive },
   },
   cornflower: {
-    '::before': { color: tokens.colorPaletteCornflowerBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteCornflowerBorderActive },
   },
   navy: {
-    '::before': { color: tokens.colorPaletteNavyBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteNavyBorderActive },
   },
   lavender: {
-    '::before': { color: tokens.colorPaletteLavenderBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteLavenderBorderActive },
   },
   purple: {
-    '::before': { color: tokens.colorPalettePurpleBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPalettePurpleBorderActive },
   },
   grape: {
-    '::before': { color: tokens.colorPaletteGrapeBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteGrapeBorderActive },
   },
   lilac: {
-    '::before': { color: tokens.colorPaletteLilacBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteLilacBorderActive },
   },
   pink: {
-    '::before': { color: tokens.colorPalettePinkBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPalettePinkBorderActive },
   },
   magenta: {
-    '::before': { color: tokens.colorPaletteMagentaBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteMagentaBorderActive },
   },
   plum: {
-    '::before': { color: tokens.colorPalettePlumBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPalettePlumBorderActive },
   },
   beige: {
-    '::before': { color: tokens.colorPaletteBeigeBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteBeigeBorderActive },
   },
   mink: {
-    '::before': { color: tokens.colorPaletteMinkBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteMinkBorderActive },
   },
   platinum: {
-    '::before': { color: tokens.colorPalettePlatinumBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPalettePlatinumBorderActive },
   },
   anchor: {
-    '::before': { color: tokens.colorPaletteAnchorBorderActive },
+    '::before': { color: avatarTokens.ctrlColorPaletteAnchorBorderActive },
   },
 });
 
