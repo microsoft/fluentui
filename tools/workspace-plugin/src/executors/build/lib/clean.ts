@@ -6,7 +6,7 @@ import { type NormalizedOptions, processAsyncQueue } from './shared';
 
 export async function cleanOutput(options: NormalizedOptions, assetFiles: Array<{ input: string; output: string }>) {
   if (!options.clean) {
-    return;
+    return true;
   }
 
   const swcOutputPaths = options.moduleOutput.map(outputConfig => {
