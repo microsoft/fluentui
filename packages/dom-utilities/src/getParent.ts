@@ -17,18 +17,15 @@ export function getParent(child: HTMLElement, allowVirtualParents: boolean = tru
     return parent;
   }
 
-  let parentElement: Element | HTMLSlotElement | ParentNode | null;
   // Support looking for parents in shadow DOM
   if (typeof (child as HTMLSlotElement).assignedElements !== 'function' && child.assignedSlot?.parentNode) {
     // Element is slotted
-    parentElement = child.assignedSlot;
+    return child.assignedSlot as HTMLElement;
   } else if (child.parentNode?.nodeType === 11) {
     // nodeType 11 is DOCUMENT_FRAGMENT
     // Element is in shadow root
-    parentElement = (child.parentNode as ShadowRoot).host;
+    return (child.parentNode as ShadowRoot).host as HTMLElement;
   } else {
-    parentElement = child.parentNode;
+    return child.parentNode as HTMLElement;
   }
-
-  return !!parentElement && parentElement instanceof HTMLElement ? parentElement : null;
 }
