@@ -421,8 +421,8 @@ export interface ICartesianChartProps {
 
   /**
    * The function that is called when the chart is resized.
-   * @param {number} width - The new width of the chart.
-   * @param {number} height - The new height of the chart.
+   * @param width - The new width of the chart.
+   * @param height - The new height of the chart.
    */
   onResize?: (width: number, height: number) => void;
 
