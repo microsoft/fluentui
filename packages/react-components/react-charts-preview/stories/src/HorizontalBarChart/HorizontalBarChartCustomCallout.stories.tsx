@@ -120,7 +120,7 @@ export const HorizontalBarCustomCallout = () => {
       XValue: 'Custom XVal',
       legend: 'Custom Legend',
       YValue: yValue,
-      color: color,
+      color,
       isCalloutForStack: false,
     };
   };
@@ -147,7 +147,6 @@ export const HorizontalBarCustomCallout = () => {
       <HorizontalBarChart
         data={data}
         hideRatio={hideRatio}
-        // eslint-disable-next-line react/jsx-no-bind
         barChartCustomData={(props: IChartProps) => {
           const chartData: IChartDataPoint = props!.chartData![0];
           const x = chartData.horizontalBarChartdata!.x;

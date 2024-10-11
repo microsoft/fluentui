@@ -11,7 +11,6 @@ import {
   RadioGroupOnChangeData,
   RadioGroupProps,
 } from '@fluentui/react-components';
-import { tokens } from '@fluentui/react-theme';
 
 export const VerticalBarDefault = () => {
   const [width, setWidth] = React.useState<number>(650);
@@ -40,12 +39,9 @@ export const VerticalBarDefault = () => {
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setHideLabels(checked.checked);
   };
-  const _onToggleAxisTitlesCheckChange = React.useCallback(
-    ev => {
-      setShowAxisTitles(ev.currentTarget.checked);
-    },
-    [showAxisTitles],
-  );
+  const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
+    setShowAxisTitles(ev.currentTarget.checked);
+  }, []);
   const points: IVerticalBarChartDataPoint[] = [
     {
       x: 0,
@@ -150,7 +146,7 @@ export const VerticalBarDefault = () => {
         So instead of a numeric value, the callout will show the date that is passed in the{' '}
         <code>xAxisCalloutData</code> property.
       </text>
-      <br></br>
+      <br />
       <label htmlFor="changeWidth">Change Width:</label>
       <input
         type="range"

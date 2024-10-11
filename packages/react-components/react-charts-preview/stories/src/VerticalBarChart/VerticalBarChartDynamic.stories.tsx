@@ -18,7 +18,6 @@ import {
   InputProps,
   InputOnChangeData,
 } from '@fluentui/react-components';
-import { StackShim } from '@fluentui/react-migration-v8-v9';
 
 export const VerticalBarDynamic = () => {
   /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */

@@ -47,8 +47,8 @@ export const DonutChartDynamic = () => {
       { legend: 'second', data: _randomY(), color: getColorFromToken(DataVizPalette.color2) },
       { legend: 'third', data: _randomY(), color: getColorFromToken(DataVizPalette.color3) },
       { legend: 'fourth', data: _randomY(), color: getColorFromToken(DataVizPalette.color4) },
-    ]),
-      setStatusKey(statusKey + 1);
+    ]);
+    setStatusKey(statusKey + 1);
     setStatusMessage('Donut chart data changed');
   };
 

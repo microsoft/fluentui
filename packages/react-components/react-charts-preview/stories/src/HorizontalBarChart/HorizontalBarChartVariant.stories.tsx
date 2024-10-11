@@ -98,12 +98,7 @@ export const HorizontalBarAbsoluteScale = () => {
   return (
     <>
       <div style={{ marginBottom: '20px' }}>
-        <Checkbox
-          label="Hide labels"
-          checked={hideLabels}
-          // eslint-disable-next-line react/jsx-no-bind
-          onChange={_onCheckChange}
-        />
+        <Checkbox label="Hide labels" checked={hideLabels} onChange={_onCheckChange} />
       </div>
       <div style={{ maxWidth: 600 }}>
         <HorizontalBarChart data={data} variant={HorizontalBarChartVariant.AbsoluteScale} hideLabels={hideLabels} />

@@ -16,12 +16,9 @@ export const LineChartMultiple = (props: ILineChartProps) => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onShapeChange = React.useCallback(
-    ev => {
-      setAllowMultipleShapes(ev.currentTarget.checked);
-    },
-    [allowMultipleShapes],
-  );
+  const _onShapeChange = React.useCallback(ev => {
+    setAllowMultipleShapes(ev.currentTarget.checked);
+  }, []);
 
   const _onLegendClickHandler = (selectedLegend: string | null): void => {
     if (selectedLegend !== null) {
