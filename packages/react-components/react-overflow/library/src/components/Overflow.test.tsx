@@ -48,6 +48,26 @@ describe('Overflow', () => {
     );
   });
 
+  it('accepts render function', () => {
+    const { getAllByRole } = render(
+      <Overflow>
+        {props => (
+          <div {...props}>
+            <OverflowItem id="1">
+              <button>foo</button>
+            </OverflowItem>
+            <OverflowItem id="2">
+              <button>foo</button>
+            </OverflowItem>
+          </div>
+        )}
+      </Overflow>,
+    );
+
+    const buttons = getAllByRole('button');
+    expect(buttons).toHaveLength(2);
+  });
+
   describe('ref', () => {
     it('handles ref propagation', () => {
       const itemRef = jest.fn();
