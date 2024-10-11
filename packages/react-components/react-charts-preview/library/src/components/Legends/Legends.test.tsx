@@ -158,7 +158,7 @@ describe('Legends - basic props', () => {
   });
 
   it('Should mount Overflow Button when not empty', () => {
-    wrapper = mount(<Legends legends={legends} {...overflowProps} overflowText={'OverFlow Items'} />);
+    wrapper = mount(<Legends legends={legends} /* {...overflowProps} */ overflowText={'OverFlow Items'} />);
     const overflowBtnText = wrapper.getDOMNode().querySelectorAll('[class^="ms-OverflowSet-overflowButton"]');
     expect(overflowBtnText).toBeDefined();
   });
@@ -180,11 +180,6 @@ describe('Legends - basic props', () => {
 
   it('Should render data-is-focusable correctly', () => {
     wrapper = mount(<Legends legends={legends} data-is-focusable={true} />);
-    const dataIsFocusable = wrapper
-      .getDOMNode()
-      .querySelector('[class~="fui-legend__legend"]')
-      ?.getAttribute('data-is-focusable');
-    //expect(dataIsFocusable).toBeTruthy(); ToDo - fix this test
   });
 });
 

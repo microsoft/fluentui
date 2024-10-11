@@ -33,9 +33,7 @@ describe('Donut chart interactions', () => {
   });
   test('Should hide callout on mouse leave', () => {
     // Arrange
-    const { container } = render(
-      <DonutChart data={chartPointsDC} innerRadius={55} calloutProps={{ doNotLayer: true }} />,
-    );
+    const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} />);
     const getByClass = queryAllByAttribute.bind(null, 'class');
     // Act
     const getById = queryAllByAttribute.bind(null, 'id');
@@ -49,9 +47,7 @@ describe('Donut chart interactions', () => {
 
   test('Should show callout on focus', () => {
     // Arrange
-    const { container } = render(
-      <DonutChart data={chartPointsDC} innerRadius={55} calloutProps={{ doNotLayer: true }} />,
-    );
+    const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} />);
 
     // Act
     const getById = queryAllByAttribute.bind(null, 'id');
@@ -63,9 +59,7 @@ describe('Donut chart interactions', () => {
 
   test('Should remove focus on blur', () => {
     // Arrange
-    const { container } = render(
-      <DonutChart data={chartPointsDC} innerRadius={55} calloutProps={{ doNotLayer: true }} />,
-    );
+    const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} />);
 
     // Act
     const getById = queryAllByAttribute.bind(null, 'id');
@@ -155,9 +149,7 @@ describe('Donut chart interactions', () => {
 
   test('Should display correct callout data on mouse move', async () => {
     // Arrange
-    const { container } = render(
-      <DonutChart data={chartPointsDC} innerRadius={55} calloutProps={{ doNotLayer: true }} />,
-    );
+    const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} />);
     const getByClass = queryAllByAttribute.bind(null, 'class');
     // Act
     const getById = queryAllByAttribute.bind(null, 'id');

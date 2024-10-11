@@ -370,7 +370,7 @@ export interface ICartesianChartProps {
   /**
    * Callout customization props
    */
-  calloutProps: Partial<IPopoverComponentProps>;
+  calloutProps?: Partial<IPopoverComponentProps>;
 
   /**
    * props for the svg; use this to include aria-* or other attributes on the tag
@@ -500,7 +500,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Callout props
    */
-  calloutProps: IPopoverComponentProps;
+  calloutProps?: IPopoverComponentProps;
 
   /**
    * Callback method used for to get margins to the chart.

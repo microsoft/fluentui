@@ -11,7 +11,7 @@ import { chartPointsVBC } from '../../utilities/test-data';
 const rendererAct = renderer.act;
 
 // Wrapper of the VerticalBarChart to be tested.
-let wrapper: ReactWrapper<IVerticalBarChartProps, IVerticalBarChartState, VerticalBarChartBase> | undefined;
+let wrapper: ReactWrapper<IVerticalBarChartProps> | undefined;
 
 beforeAll(() => {
   // https://github.com/jsdom/jsdom/issues/3368
@@ -198,7 +198,7 @@ describe('Render calling with respective to props', () => {
       wrapper = mount(<VerticalBarChart {...props} />);
     });
     expect(wrapper).toMatchSnapshot();
-    wrapper.setProps({ ...props });
+    wrapper!.setProps({ ...props });
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -213,7 +213,7 @@ describe('Render calling with respective to props', () => {
       wrapper = mount(<VerticalBarChart {...props} />);
       wrapper.setProps({ ...props, hideTooltip: true });
     });
-    const renderedDOM = wrapper.findWhere(node => node.prop('hideTooltip') === true);
+    const renderedDOM = wrapper!.findWhere(node => node.prop('hideTooltip') === true);
     expect(renderedDOM!.length).toBe(3);
   });
 });
@@ -221,9 +221,7 @@ describe('Render calling with respective to props', () => {
 describe('Render empty chart aria label div when chart is empty', () => {
   it('No empty chart aria label div rendered', () => {
     act(() => {
-      wrapper = mount(
-        <VerticalBarChart data={chartPointsVBC} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
-      );
+      wrapper = mount(<VerticalBarChart data={chartPointsVBC} enabledLegendsWrapLines />);
     });
     const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
     expect(renderedDOM!.length).toBe(0);
@@ -231,7 +229,7 @@ describe('Render empty chart aria label div when chart is empty', () => {
 
   it('Empty chart aria label div rendered', () => {
     act(() => {
-      wrapper = mount(<VerticalBarChart data={[]} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />);
+      wrapper = mount(<VerticalBarChart data={[]} enabledLegendsWrapLines />);
     });
     const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
     expect(renderedDOM!.length).toBe(1);
@@ -258,7 +256,7 @@ describe('Render empty chart calling with respective to props', () => {
       wrapper = mount(<VerticalBarChart {...props} />);
       wrapper.setProps({ ...props, data: chartPointsVBC, hideTooltip: true });
     });
-    const renderedDOM = wrapper.findWhere(node => node.prop('hideTooltip') === true);
+    const renderedDOM = wrapper!.findWhere(node => node.prop('hideTooltip') === true);
     expect(renderedDOM!.length).toBe(3);
   });
 });

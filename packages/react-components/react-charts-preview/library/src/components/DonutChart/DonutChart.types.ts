@@ -42,7 +42,7 @@ export interface IDonutChartProps extends ICartesianChartProps {
   /**
    * props for the callout in the chart
    */
-  calloutProps: IPopoverComponentProps;
+  calloutProps?: IPopoverComponentProps;
 
   /**
    * The prop used to define the culture to localized the numbers
