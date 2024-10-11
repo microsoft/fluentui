@@ -15,8 +15,6 @@ interface FormatPluginOptions {
   targetName?: string;
 }
 
-const pmc = getPackageManagerCommand();
-
 export const createNodesV2: CreateNodesV2<FormatPluginOptions> = [
   projectConfigGlob,
   (configFiles, options, context) => {
@@ -52,6 +50,22 @@ function createNodesInternal(
 
   const normalizedOptions = normalizeOptions(options);
 
+  const targetConfig = buildFormatTarget(normalizedOptions, context);
+
+  return {
+    projects: {
+      [projectRoot]: {
+        targets: {
+          [normalizedOptions.targetName]: targetConfig,
+        },
+      },
+    },
+  };
+}
+
+export function buildFormatTarget(options: FormatPluginOptions, context: CreateNodesContextV2) {
+  const pmc = getPackageManagerCommand();
+
   const targetConfig: TargetConfiguration = {
     command: 'prettier --write {projectRoot}',
     cache: true,
@@ -77,13 +91,5 @@ function createNodesInternal(
     },
   };
 
-  return {
-    projects: {
-      [projectRoot]: {
-        targets: {
-          [normalizedOptions.targetName]: targetConfig,
-        },
-      },
-    },
-  };
+  return targetConfig;
 }

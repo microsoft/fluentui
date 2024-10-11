@@ -49,9 +49,7 @@ function createNodesInternal(
 
   const normalizedOptions = normalizeOptions(options);
 
-  const targetConfig: TargetConfiguration = {
-    executor: '@fluentui/workspace-plugin:clean',
-  };
+  const targetConfig = buildCleanTarget(options, context);
 
   return {
     projects: {
@@ -62,4 +60,12 @@ function createNodesInternal(
       },
     },
   };
+}
+
+export function buildCleanTarget(options: CleanPluginOptions, context: CreateNodesContextV2) {
+  const targetConfig: TargetConfiguration = {
+    executor: '@fluentui/workspace-plugin:clean',
+  };
+
+  return targetConfig;
 }

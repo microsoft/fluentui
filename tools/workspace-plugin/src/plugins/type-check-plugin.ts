@@ -52,15 +52,7 @@ function createNodesInternal(
 
   const normalizedOptions = normalizeOptions(options);
 
-  const targetConfig: TargetConfiguration = {
-    executor: '@fluentui/workspace-plugin:type-check',
-    cache: true,
-    inputs: ['default', '{projectRoot}/tsconfig.json', '{projectRoot}/tsconfig.*.json'],
-    metadata: {
-      technologies: ['typescript'],
-      description: 'Type check code with TypeScript',
-    },
-  };
+  const targetConfig = buildTypeCheckTarget(normalizedOptions, context);
 
   return {
     projects: {
@@ -71,4 +63,18 @@ function createNodesInternal(
       },
     },
   };
+}
+
+export function buildTypeCheckTarget(options: TypeCheckPluginOptions, context: CreateNodesContextV2) {
+  const targetConfig: TargetConfiguration = {
+    executor: '@fluentui/workspace-plugin:type-check',
+    cache: true,
+    inputs: ['default', '{projectRoot}/tsconfig.json', '{projectRoot}/tsconfig.*.json'],
+    metadata: {
+      technologies: ['typescript'],
+      description: 'Type check code with TypeScript',
+    },
+  };
+
+  return targetConfig;
 }
