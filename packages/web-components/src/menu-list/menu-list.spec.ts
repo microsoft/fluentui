@@ -1,6 +1,8 @@
+import { once } from 'events';
 import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
+import { MenuItem } from '../menu-item/menu-item.js';
 
 test.describe('Menu', () => {
   test.beforeEach(async ({ page }) => {
@@ -521,4 +523,67 @@ test.describe('Menu', () => {
       await expect(item).toHaveAttribute('data-indent', '2');
     }
   });
+
+  test.describe('`change` event', () => {
+    test('should emit `change` event when `checked` property changed', async ({ page }) => {
+      const element = page.locator('fluent-menu-list');
+      const menuItems = element.locator('fluent-menu-item');
+
+      await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item role="menuitemradio">Menu Item 1</fluent-menu-item>
+        <fluent-menu-item>Menu item 2</fluent-menu-item>
+        <fluent-menu-item>Menu item 3</fluent-menu-item>
+        <fluent-menu-item>Menu item 4</fluent-menu-item>
+      </fluent-menu-list>
+      `);
+
+      const [wasChanged] = await Promise.all([
+        menuItems.nth(0).evaluate(
+          node => new Promise(resolve => node.addEventListener('change', () => resolve(true), { once: true })),
+        ),
+        menuItems.nth(0).evaluate((node: MenuItem) => {
+          node.checked = true;
+        }),
+      ]);
+
+      expect(wasChanged).toEqual(true);
+    });
+
+    test('should emit change event when menu-item checked and unchecked', async ({ page }) => {
+      const element = page.locator('fluent-menu-list');
+      const menuItems = element.locator('fluent-menu-item');
+
+      await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item role="menuitemradio">Menu Item 1</fluent-menu-item>
+        <fluent-menu-item checked role="menuitemradio">Menu item 2</fluent-menu-item>
+        <fluent-menu-item role="menuitemradio">Menu item 3</fluent-menu-item>
+        <fluent-menu-item role="menuitemradio">Menu item 4</fluent-menu-item>
+      </fluent-menu-list>
+      `);
+
+      let wasChanged = menuItems.nth(0).evaluate((node: MenuItem) => {
+          return new Promise(resolve => {
+              node.addEventListener('change', (evt) => {
+                resolve((evt as any).detail)
+              });
+          });
+      });
+
+        await menuItems.nth(0).click();
+        await expect(wasChanged).resolves.toBeTruthy();
+
+        wasChanged = menuItems.nth(0).evaluate((node: MenuItem) => {
+          return new Promise(resolve => {
+              node.addEventListener('change', (evt) => {
+                resolve((evt as any).detail)
+              });
+          });
+      });
+
+      await menuItems.nth(1).click();
+      await expect(wasChanged).resolves.toBeFalsy();
+    });
+    });
 });
