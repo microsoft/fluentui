@@ -26,8 +26,8 @@ export const Default = (props: Partial<ColorSliderProps>) => {
 
   return (
     <div className={styles.example}>
-      <ColorSlider color={color} max={360} onChange={onSliderChange} {...props} />
-      <ColorSlider color={color} max={360} onChange={onSliderChange} vertical {...props} />
+      <ColorSlider color={color} onChange={onSliderChange} {...props} />
+      <ColorSlider color={color} onChange={onSliderChange} vertical {...props} />
       <div className={styles.previewColor} style={{ backgroundColor: color }} />
       <Button onClick={resetSlider}>Reset</Button>
     </div>

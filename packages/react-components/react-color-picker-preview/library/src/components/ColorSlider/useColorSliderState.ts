@@ -8,7 +8,8 @@ import { tinycolor } from '@ctrl/tinycolor';
 
 const { sliderProgressVar, sliderDirectionVar, thumbColorVar } = colorSliderCSSVars;
 
-const MAX_COLOR_HUE = 360;
+const MAX = 360;
+const MIN = 0;
 
 const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
@@ -20,7 +21,7 @@ export const useColorSliderState_unstable = (state: ColorSliderState, props: Col
   const { dir } = useFluent();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
-  const { min = 0, max = MAX_COLOR_HUE, onChange = onChangeFromContext, color } = props;
+  const { onChange = onChangeFromContext, color } = props;
   const _color = colorFromContext || color;
   const hsvColor = tinycolor(_color).toHsv();
 
@@ -28,15 +29,15 @@ export const useColorSliderState_unstable = (state: ColorSliderState, props: Col
     state: hsvColor.h,
     initialState: 0,
   });
-  const clampedValue = clamp(currentValue, min, max);
-  const valuePercent = getPercent(clampedValue, min, max);
+  const clampedValue = clamp(currentValue, MIN, MAX);
+  const valuePercent = getPercent(clampedValue, MIN, MAX);
 
   const inputOnChange = state.input.onChange;
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
     const newValue = Number(event.target.value);
     const newColor = tinycolor({ ...hsvColor, h: newValue }).toRgbString();
-    setCurrentValue(clamp(newValue, min, max));
+    setCurrentValue(clamp(newValue, MIN, MAX));
     inputOnChange?.(event);
     onChange?.(event, { type: 'change', event, color: newColor });
     onChangeFromContext(event, {

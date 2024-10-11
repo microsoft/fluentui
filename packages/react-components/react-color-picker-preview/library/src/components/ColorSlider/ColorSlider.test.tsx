@@ -46,16 +46,6 @@ describe('ColorSlider', () => {
     expect(screen.getByRole('slider').getAttribute('value')).toEqual('324');
   });
 
-  it('applies the correct value prop when min is set', () => {
-    render(<ColorSlider color="#e73500" min={20} />);
-    expect(screen.getByRole('slider').getAttribute('value')).toEqual('20');
-  });
-
-  it('applies the correct value prop when max is set', () => {
-    render(<ColorSlider color="purple" max={20} />);
-    expect(screen.getByRole('slider').getAttribute('value')).toEqual('20');
-  });
-
   it('applies focus to the hidden input', () => {
     render(<ColorSlider />);
     const input = screen.getByRole('slider');

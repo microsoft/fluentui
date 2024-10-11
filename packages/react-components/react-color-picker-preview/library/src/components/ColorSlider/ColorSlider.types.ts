@@ -22,18 +22,6 @@ export type ColorSliderProps = Omit<
   channel?: string;
 
   /**
-   * The max value of the Slider.
-   * @default 360
-   */
-  max?: number;
-
-  /**
-   * The min value of the Slider.
-   * @default 0
-   */
-  min?: number;
-
-  /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
   onChange?: EventHandler<SliderOnChangeData>;

@@ -76,8 +76,6 @@ export const colorSliderClassNames: SlotClassNames<ColorSliderSlots>;
 // @public
 export type ColorSliderProps = Omit<ComponentProps<Partial<ColorSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value'> & {
     channel?: string;
-    max?: number;
-    min?: number;
     onChange?: EventHandler<SliderOnChangeData>;
     vertical?: boolean;
     color?: string;
