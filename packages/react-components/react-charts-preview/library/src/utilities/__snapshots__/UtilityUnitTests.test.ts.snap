@@ -687,13 +687,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
   >
     <line
       stroke="currentColor"
-      y2="6"
+      y2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      y="16"
+      y="10"
     >
       0
     </text>
@@ -705,13 +705,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
   >
     <line
       stroke="currentColor"
-      y2="6"
+      y2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      y="16"
+      y="10"
     >
       20
     </text>
@@ -723,13 +723,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
   >
     <line
       stroke="currentColor"
-      y2="6"
+      y2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      y="16"
+      y="10"
     >
       40
     </text>
@@ -741,13 +741,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
   >
     <line
       stroke="currentColor"
-      y2="6"
+      y2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      y="16"
+      y="10"
     >
       60
     </text>
@@ -759,13 +759,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
   >
     <line
       stroke="currentColor"
-      y2="6"
+      y2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      y="16"
+      y="10"
     >
       80
     </text>
@@ -777,13 +777,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
   >
     <line
       stroke="currentColor"
-      y2="6"
+      y2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
       fill="currentColor"
-      y="16"
+      y="10"
     >
       100
     </text>
