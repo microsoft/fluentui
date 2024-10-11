@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add null check in ResizeObserver callback",
-  "packageName": "@fluentui/react-message-bar",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

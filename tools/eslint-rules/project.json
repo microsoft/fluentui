@@ -4,5 +4,9 @@
   "sourceRoot": "tools/eslint-rules",
   "projectType": "library",
   "tags": ["platform:node", "tools"],
-  "targets": {}
+  "targets": {
+    "type-check": {
+      "executor": "@fluentui/workspace-plugin:type-check"
+    }
+  }
 }

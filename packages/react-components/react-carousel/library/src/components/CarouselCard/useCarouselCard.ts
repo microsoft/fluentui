@@ -33,6 +33,7 @@ export const useCarouselCard_unstable = (
   const elementRef = React.useRef<HTMLDivElement>(null);
   const isMouseEvent = React.useRef<boolean>(false);
   const selectPageByElement = useCarouselContext(ctx => ctx.selectPageByElement);
+  const containerRef = useCarouselContext(ctx => ctx.containerRef);
   const { cardFocus } = useCarouselSliderContext();
 
   const focusAttr = useFocusableGroup({
@@ -68,10 +69,12 @@ export const useCarouselCard_unstable = (
   const handleFocusCapture = React.useCallback(
     (e: React.FocusEvent) => {
       if (!e.defaultPrevented && isHTMLElement(e.currentTarget) && !isMouseEvent.current) {
-        selectPageByElement(e, e.currentTarget, true);
+        // We want to prevent any browser scroll intervention for 'offscreen' focus
+        containerRef?.current?.scrollTo(0, 0);
+        selectPageByElement(e, e.currentTarget, false);
       }
     },
-    [selectPageByElement],
+    [selectPageByElement, containerRef],
   );
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {

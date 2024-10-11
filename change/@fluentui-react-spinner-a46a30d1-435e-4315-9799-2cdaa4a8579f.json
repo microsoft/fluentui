@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: spinner root slot as span",
-  "packageName": "@fluentui/react-spinner",
-  "email": "kirpadv@gmail.com",
-  "dependentChangeType": "patch"
-}
