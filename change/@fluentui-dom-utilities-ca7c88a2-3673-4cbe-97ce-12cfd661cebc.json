@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix regression caused by #32996",
-  "packageName": "@fluentui/dom-utilities",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch"
-}
