@@ -112,7 +112,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
         </svg>
       </div>
       <div
-        id="callout2"
+        id="callout5"
       />
       <div
         class="fui-donut__legendContainer"
@@ -196,7 +196,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
 exports[`Donut chart interactions Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider32"
+    class="fui-FluentProvider fui-FluentProvider59"
     dir="ltr"
   >
     <div
@@ -223,8 +223,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   aria-label="2020/04/30, 20000."
                   d="M0.497,-49.747A5,5,0,0,1,6.047,-54.667A55,55,0,0,1,49.18,-24.624A5,5,0,0,1,46.489,-17.713L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_33first20000"
-                  opacity="1"
+                  id="_Pie_60first20000"
                   role="img"
                   style="fill: transparent; cursor: default;"
                 />
@@ -253,8 +252,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   aria-label="2020/04/20, 39000."
                   d="M46.834,-16.78A5,5,0,0,1,53.373,-13.28A55,55,0,0,1,-17.233,52.23A5,5,0,0,1,-20.234,45.449L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_33second39000"
-                  opacity="1"
+                  id="_Pie_60second39000"
                   role="img"
                   style="fill: transparent; cursor: default;"
                 />
@@ -283,8 +281,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   aria-label="2020/04/25, 45000."
                   d="M-21.139,45.035A5,5,0,0,1,-28.232,47.201A55,55,0,0,1,-6.047,-54.667A5,5,0,0,1,-0.497,-49.747L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_33third45000"
-                  opacity="1"
+                  id="_Pie_60third45000"
                   role="img"
                   style="fill: transparent; cursor: default;"
                 />
@@ -312,7 +309,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
           </svg>
         </div>
         <div
-          id="callout34"
+          id="callout64"
         />
         <div
           class="fui-donut__legendContainer"

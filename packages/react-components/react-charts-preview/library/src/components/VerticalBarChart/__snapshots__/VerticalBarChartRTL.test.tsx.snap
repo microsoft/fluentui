@@ -255,7 +255,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 data-is-focusable="true"
                 fill="aqua"
                 height="47.400000000000006"
-                id="_VBC_bar_142-0"
+                id="_VBC_bar_154-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -279,7 +279,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 data-is-focusable="true"
                 fill="blue"
                 height="237"
-                id="_VBC_bar_142-1"
+                id="_VBC_bar_154-1"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -303,7 +303,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 data-is-focusable="true"
                 fill="navy"
                 height="142.2"
-                id="_VBC_bar_142-2"
+                id="_VBC_bar_154-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -658,7 +658,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 data-is-focusable="true"
                 fill="aqua"
                 height="47.400000000000006"
-                id="_VBC_bar_148-0"
+                id="_VBC_bar_160-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -682,7 +682,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 data-is-focusable="true"
                 fill="blue"
                 height="237"
-                id="_VBC_bar_148-1"
+                id="_VBC_bar_160-1"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -706,7 +706,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 data-is-focusable="true"
                 fill="navy"
                 height="142.2"
-                id="_VBC_bar_148-2"
+                id="_VBC_bar_160-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -809,7 +809,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 exports[`Theme Change Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider150"
+    class="fui-FluentProvider fui-FluentProvider162"
     dir="ltr"
   >
     <div
@@ -1064,7 +1064,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   data-is-focusable="true"
                   fill="aqua"
                   height="47.400000000000006"
-                  id="_VBC_bar_155-0"
+                  id="_VBC_bar_167-0"
                   opacity="1"
                   role="img"
                   tabindex="0"
@@ -1088,7 +1088,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   data-is-focusable="true"
                   fill="blue"
                   height="237"
-                  id="_VBC_bar_155-1"
+                  id="_VBC_bar_167-1"
                   opacity="1"
                   role="img"
                   tabindex="0"
@@ -1112,7 +1112,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   data-is-focusable="true"
                   fill="navy"
                   height="142.2"
-                  id="_VBC_bar_155-2"
+                  id="_VBC_bar_167-2"
                   opacity="1"
                   role="img"
                   tabindex="0"
@@ -1217,7 +1217,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_VBC_empty158"
+    id="_VBC_empty170"
     role="alert"
     style="opacity: 0;"
   />
@@ -1478,7 +1478,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 data-is-focusable="true"
                 fill="aqua"
                 height="47.400000000000006"
-                id="_VBC_bar_161-0"
+                id="_VBC_bar_173-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -1502,7 +1502,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 data-is-focusable="true"
                 fill="blue"
                 height="237"
-                id="_VBC_bar_161-1"
+                id="_VBC_bar_173-1"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -1526,7 +1526,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 data-is-focusable="true"
                 fill="navy"
                 height="142.2"
-                id="_VBC_bar_161-2"
+                id="_VBC_bar_173-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -10356,7 +10356,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 fill="currentColor"
                 y="16"
               >
-                This is a medium long label.
+                This is a medium long label. 
               </text>
             </g>
             <g
@@ -10931,7 +10931,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 data-is-focusable="true"
                 fill="aqua"
                 height="47.400000000000006"
-                id="_VBC_bar_167-0"
+                id="_VBC_bar_179-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -10955,7 +10955,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 data-is-focusable="true"
                 fill="blue"
                 height="237"
-                id="_VBC_bar_167-1"
+                id="_VBC_bar_179-1"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -10979,7 +10979,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 data-is-focusable="true"
                 fill="navy"
                 height="142.2"
-                id="_VBC_bar_167-2"
+                id="_VBC_bar_179-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
