@@ -5,11 +5,10 @@ import {
   IChartDataPoint,
   DataVizPalette,
   getColorFromToken,
-  PopoverComponent,
   IPopoverComponentProps,
 } from '@fluentui/react-charts-preview';
 import * as d3 from 'd3-format';
-import { Switch } from '@fluentui/react-switch';
+import { Switch } from '@fluentui/react-components';
 
 export const HorizontalBarCustomCallout = () => {
   const hideRatio: boolean[] = [true, false];
