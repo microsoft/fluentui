@@ -205,8 +205,6 @@ export const LegendsWrapLines = () => {
 
 LegendsWrapLines.parameters = {
   docs: {
-    description: {
-      story: 'Legends wrap lines story.',
-    },
+    description: {},
   },
 };

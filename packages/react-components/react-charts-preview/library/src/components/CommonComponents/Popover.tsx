@@ -7,7 +7,7 @@ import { useId } from '@fluentui/react-utilities';
 import { getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { Shape } from '../Legends/shape';
-import { usePopoverStyles_unstable } from './Popover.styles';
+import { usePopoverStyles_unstable } from './usePopoverStyles.styles';
 import { IYValueHover } from './CartesianChart.types';
 import { LegendShape } from '../Legends/Legends.types';
 import { IPopoverComponentProps } from './Popover.types';
@@ -28,7 +28,7 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
       height: 0,
     }),
   };
-  props = { ...props, ...props.customCallout!.customCalloutProps };
+  props = { ...props, ...props.customCallout?.customCalloutProps };
   const classes = usePopoverStyles_unstable(props);
   const Legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
   const YValue = props.yCalloutValue ? props.yCalloutValue : props.YValue;

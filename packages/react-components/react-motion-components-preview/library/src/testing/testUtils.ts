@@ -16,8 +16,13 @@ function getMotionFunction(component: PresenceComponent): PresenceMotionFn | nul
 export function expectPresenceMotionObject(component: PresenceComponent) {
   const presenceMotionFn = getMotionFunction(component);
 
-  // eslint-disable-next-line no-restricted-globals
-  expect(presenceMotionFn?.({ element: document.createElement('div') })).toMatchObject({
+  expect(
+    presenceMotionFn?.({
+      element:
+        // eslint-disable-next-line @nx/workspace-no-restricted-globals
+        document.createElement('div'),
+    }),
+  ).toMatchObject({
     enter: expect.objectContaining({
       duration: expect.any(Number),
       easing: expect.any(String),

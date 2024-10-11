@@ -8,7 +8,7 @@ import { Label, Switch } from '@fluentui/react-components';
   padding: '3px',
 }); */
 
-export const LCEvents = (props: ILineChartProps) => {
+export const LineChartEvents = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
@@ -213,10 +213,8 @@ export const LCEvents = (props: ILineChartProps) => {
     </>
   );
 };
-LCEvents.parameters = {
+LineChartEvents.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

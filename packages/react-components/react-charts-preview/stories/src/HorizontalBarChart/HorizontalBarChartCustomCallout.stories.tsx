@@ -11,7 +11,7 @@ import {
 import * as d3 from 'd3-format';
 import { Switch } from '@fluentui/react-switch';
 
-export const HBCCustomCallout = () => {
+export const HorizontalBarCustomCallout = () => {
   const hideRatio: boolean[] = [true, false];
   const [useCustomPopover, setUseCustomPopover] = React.useState(false);
 
@@ -165,10 +165,8 @@ export const HBCCustomCallout = () => {
     </div>
   );
 };
-HBCCustomCallout.parameters = {
+HorizontalBarCustomCallout.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

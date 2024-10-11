@@ -159,14 +159,12 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
     const [activeLegend, setActiveLegend] = React.useState<string>('');
     const [YValueHover, setYValueHover] = React.useState<[]>([]);
-    const [refSelected, setRefSelected] = React.useState<SVGGElement | null | string | undefined>(null);
     const [selectedLegend, setSelectedLegend] = React.useState<string>('');
     const [selectedLegendPoints, setSelectedLegendPoints] = React.useState<any[]>([]);
     const [selectedColorBarLegend, setSelectedColorBarLegend] = React.useState<any[]>([]);
     const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(false);
     const [activePoint, setActivePoint] = React.useState<string>('');
     const [nearestCircleToHighlight, setNearestCircleToHighlight] = React.useState<ILineChartDataPoint | null>(null);
-    const [activeLine, setActiveLine] = React.useState<number | null>(0);
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<ICustomizedCalloutData>();
     const [stackCalloutProps, setStackCalloutProps] = React.useState<ICustomizedCalloutData>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
@@ -546,8 +544,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
               />,
             );
           }
-
-          const isPointHighlighted = activeLine !== null && activeLine === i;
 
           pointsForLine.push(
             <circle
@@ -971,7 +967,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         }
       }
 
-      const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![linenumber].data[index as number];
+      const { xAxisCalloutData } = lineChartData![linenumber].data[index as number];
       const formattedDate =
         xPointToHighlight instanceof Date ? formatDate(xPointToHighlight, props.useUTC) : xPointToHighlight;
       const modifiedXVal = xPointToHighlight instanceof Date ? xPointToHighlight.getTime() : xPointToHighlight;
@@ -1001,20 +997,17 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
 
         setNearestCircleToHighlight(pointToHighlight);
         updatePosition(mouseEvent.clientX, mouseEvent.clientY);
-        setRefSelected(`#${_staticHighlightCircle}_${linenumber}`);
         setStackCalloutProps(found!);
         setYValueHover(found.values);
         setDataPointCalloutProps(found!);
         xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue(formattedDate);
         setActivePoint('');
-        setActiveLine(linenumber);
       }
 
       if (!found) {
         setPopoverOpen(false);
         setNearestCircleToHighlight(pointToHighlight);
         setActivePoint('');
-        setActiveLine(linenumber);
       }
     };
 
@@ -1039,7 +1032,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         _refArray.forEach((obj: IRefArrayData) => {
           if (obj.index === lineId) {
             setPopoverOpen(true);
-            setRefSelected(obj.refElement);
             xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
             setYValueHover(found.values);
             setStackCalloutProps(found!);
@@ -1076,19 +1068,16 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         if (_uniqueCallOutID !== circleId) {
           _uniqueCallOutID = circleId;
           updatePosition(mouseEvent.clientX, mouseEvent.clientY);
-          setRefSelected(`#${circleId}`);
           xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
           setYValueHover(found.values);
           setStackCalloutProps(found!);
           setDataPointCalloutProps(found!);
           setActivePoint(circleId);
           setNearestCircleToHighlight(null);
-          setActiveLine(null);
         }
       } else {
         setActivePoint(circleId);
         setNearestCircleToHighlight(null);
-        setActiveLine(null);
       }
     }
 
@@ -1113,7 +1102,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     function _handleChartMouseLeave() {
       _uniqueCallOutID = null;
       setActivePoint('');
-      setActiveLine(null);
       if (isPopoverOpen) {
         setPopoverOpen(false);
       }
@@ -1280,7 +1268,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       isCalloutForStack: true,
       culture: props.culture ?? 'en-us',
       isCartesian: true,
-      customProps: {
+      customCallout: {
         customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,
         customCalloutProps: props.customProps ? props.customProps(dataPointCalloutProps!) : undefined,
       },

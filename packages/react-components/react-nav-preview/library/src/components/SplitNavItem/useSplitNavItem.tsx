@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { Tooltip } from '@fluentui/react-tooltip';
 import type { SplitNavItemProps, SplitNavItemState } from './SplitNavItem.types';
 import { useNavContext_unstable } from '../NavContext';
 import { Button, MenuButton, ToggleButton } from '@fluentui/react-button';
 import { MoreHorizontalFilled, Pin20Regular } from '@fluentui/react-icons';
 import { NavItem } from '../NavItem/index';
+import { NavSubItem } from '../NavSubItem/NavSubItem';
+import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 
 /**
  * Create the state required to render SplitNavItem.
@@ -19,16 +22,28 @@ export const useSplitNavItem_unstable = (
   props: SplitNavItemProps,
   ref: React.Ref<HTMLDivElement>,
 ): SplitNavItemState => {
-  const { navItem, actionButton, toggleButton, menuButton, children } = props;
+  const {
+    navItem,
+    actionButton,
+    toggleButton,
+    menuButton,
+    actionButtonTooltip,
+    toggleButtonTooltip,
+    menuButtonTooltip,
+    children,
+  } = props;
 
   const { size = 'medium' } = useNavContext_unstable();
 
-  const navItemShorthand = slot.optional(navItem, {
+  const { value: potentialParenValue } = useNavCategoryContext_unstable();
+
+  const isSubNav = potentialParenValue.length > 0 ? true : false;
+
+  const navItemShorthand = slot.always(navItem, {
     defaultProps: {
       children,
     },
-    renderByDefault: true,
-    elementType: NavItem,
+    elementType: isSubNav ? NavSubItem : NavItem,
   });
 
   const actionButtonShorthand = slot.optional(actionButton, {
@@ -58,13 +73,31 @@ export const useSplitNavItem_unstable = (
     elementType: MenuButton,
   });
 
+  const actionButtonTooltipShorthand = slot.optional(actionButtonTooltip, {
+    defaultProps: { relationship: 'label' },
+    elementType: Tooltip,
+  });
+
+  const toggleButtonTooltipShorthand = slot.optional(toggleButtonTooltip, {
+    defaultProps: { relationship: 'label' },
+    elementType: Tooltip,
+  });
+
+  const menuButtonTooltipShorthand = slot.optional(menuButtonTooltip, {
+    defaultProps: { relationship: 'label' },
+    elementType: Tooltip,
+  });
+
   return {
     components: {
       root: 'div',
-      navItem: NavItem,
+      navItem: isSubNav ? NavSubItem : NavItem,
       actionButton: Button,
       toggleButton: ToggleButton,
       menuButton: MenuButton,
+      actionButtonTooltip: Tooltip,
+      toggleButtonTooltip: Tooltip,
+      menuButtonTooltip: Tooltip,
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -80,6 +113,10 @@ export const useSplitNavItem_unstable = (
     actionButton: actionButtonShorthand,
     toggleButton: toggleButtonShorthand,
     menuButton: menuButtonShorthand,
+    actionButtonTooltip: actionButtonTooltipShorthand,
+    toggleButtonTooltip: toggleButtonTooltipShorthand,
+    menuButtonTooltip: menuButtonTooltipShorthand,
     size,
+    isSubNav,
   };
 };

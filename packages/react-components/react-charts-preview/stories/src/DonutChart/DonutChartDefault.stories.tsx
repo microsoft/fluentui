@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { DonutChart, IChartProps, IChartDataPoint, DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charts-preview';
+import { DonutChart, IChartProps, DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charts-preview';
 
-export const DonutBasic = () => {
-  const points:IChartDataPoint[] = [
+export const DonutChartBasic = () => {
+  const points = [
     {
       legend: 'first',
       data: 20000,
       gradient: getGradientFromToken(DataVizGradientPalette.gradient1),
-      xAxisCalloutData: '2020/04/30'
+      xAxisCalloutData: '2020/04/30',
     },
     {
       legend: 'second',
@@ -23,7 +23,7 @@ export const DonutBasic = () => {
   };
   return (
     <DonutChart
-      culture={window.navigator.language}
+      culture={typeof window !== 'undefined' ? window.navigator.language : 'en-us'}
       data={data}
       innerRadius={55}
       href={'https://developer.microsoft.com/en-us/'}
@@ -35,10 +35,8 @@ export const DonutBasic = () => {
   );
 };
 
-DonutBasic.parameters = {
+DonutChartBasic.parameters = {
   docs: {
-    description: {
-      story: 'Donut Chart Story.',
-    },
+    description: {},
   },
 };

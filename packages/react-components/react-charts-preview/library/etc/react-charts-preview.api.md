@@ -215,7 +215,7 @@ export interface ICartesianChartProps {
     svgProps?: React_2.SVGProps<SVGSVGElement>;
     tickFormat?: string;
     tickPadding?: number;
-    tickValues?: number[] | Date[] | string[];
+    tickValues?: number[] | Date[] | string[] | undefined;
     timeFormatLocale?: TimeLocaleDefinition;
     useUTC?: string | boolean;
     width?: number;

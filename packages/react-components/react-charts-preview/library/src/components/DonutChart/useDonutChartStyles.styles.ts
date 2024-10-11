@@ -1,0 +1,54 @@
+import { makeStyles, mergeClasses } from '@griffel/react';
+import { typographyStyles } from '@fluentui/react-theme';
+import { IDonutChartProps, IDonutChartStyles } from './index';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+/**
+ * @internal
+ */
+export const donutClassNames: SlotClassNames<IDonutChartStyles> = {
+  root: 'fui-donut__root',
+  chart: 'fui-donut__chart',
+  legendContainer: 'fui-donut__legendContainer',
+  chartWrapper: 'fui-donut__chartWrapper',
+};
+
+/**
+ * Base Styles
+ */
+const useStyles = makeStyles({
+  root: {
+    // alignItems: 'center',
+    ...typographyStyles.body1,
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    height: '100%',
+  },
+  chart: {
+    boxSizing: 'content-box',
+    alignmentAdjust: 'center',
+    display: 'block',
+    overflow: 'visible',
+  },
+  legendContainer: { paddingTop: '16px' },
+});
+
+/**
+ * Apply styling to the DonutChart component
+ */
+export const useDonutChartStyles_unstable = (props: IDonutChartProps): IDonutChartStyles => {
+  const { className } = props;
+  const baseStyles = useStyles();
+
+  return {
+    root: mergeClasses(donutClassNames.root, baseStyles.root, className, props.styles?.root),
+    chart: mergeClasses(donutClassNames.chart, baseStyles.chart, props.styles?.chart),
+    legendContainer: mergeClasses(
+      donutClassNames.legendContainer,
+      baseStyles.legendContainer,
+      props.styles?.legendContainer,
+    ),
+    chartWrapper: donutClassNames.chartWrapper,
+  };
+};

@@ -7,7 +7,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charts-preview';
 
-export const DonutCustomAccess = () => {
+export const DonutChartCustomAccessibility = () => {
   const points: IChartDataPoint[] = [
     {
       legend: 'first',
@@ -41,10 +41,8 @@ export const DonutCustomAccess = () => {
     />
   );
 };
-DonutCustomAccess.parameters = {
+DonutChartCustomAccessibility.parameters = {
   docs: {
-    description: {
-      story: 'Donut Chart Story.',
-    },
+    description: {},
   },
 };

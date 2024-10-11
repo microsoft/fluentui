@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useHorizontalBarChartStyles_unstable } from './useHorizontalBarChartStyles.styles';
 import {
-  IAccessibilityProps,
   IChartProps,
   IHorizontalBarChartProps,
   IChartDataPoint,
@@ -9,7 +8,7 @@ import {
   HorizontalBarChartVariant,
 } from './index';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { formatValueWithSIPrefix, getAccessibleDataObject, isRtl, find, getNextGradient } from '../../utilities/index';
+import { formatValueWithSIPrefix, getAccessibleDataObject, isRtl, getNextGradient } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useFocusableGroup } from '@fluentui/react-tabster';
@@ -28,21 +27,19 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
 >((props, forwardedRef) => {
   let _barHeight: number;
   //let _classNames: IProcessedStyleSet<IHorizontalBarChartStyles>;
-  let _uniqLineText: string = '_HorizontalLine_' + Math.random().toString(36).substring(7);
-  let _refArray: IRefArrayData[] = [];
+  const _uniqLineText: string = '_HorizontalLine_' + Math.random().toString(36).substring(7);
+  const _refArray: IRefArrayData[] = [];
   let _calloutAnchorPoint: IChartDataPoint | null;
   const _isRTL: boolean = isRtl();
-  let barChartSvgRef: React.RefObject<SVGSVGElement> = React.createRef<SVGSVGElement>();
+  const barChartSvgRef: React.RefObject<SVGSVGElement> = React.createRef<SVGSVGElement>();
   const _emptyChartId: string = useId('_HBC_empty');
 
-  const [refSelected, setRefSelected] = React.useState<SVGGElement | null | undefined>(null);
   const [hoverValue, setHoverValue] = React.useState<string | number | Date | null>('');
   const [lineColor, setLineColor] = React.useState<string>('');
   const [legend, setLegend] = React.useState<string | null>('');
   const [xCalloutValue, setXCalloutValue] = React.useState<string | undefined>('');
   const [yCalloutValue, setYCalloutValue] = React.useState<string | undefined>('');
   const [barCalloutProps, setBarCalloutProps] = React.useState<IChartDataPoint>();
-  const [callOutAccessibilityData, setCallOutAccessibilityData] = React.useState<IAccessibilityProps | undefined>();
   const [barSpacingInPercent, setBarSpacingInPercent] = React.useState<number>(0);
   const [isPopoverOpen, setPopoverOpen] = React.useState<boolean>(false);
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
@@ -57,20 +54,14 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
     point: IChartDataPoint,
   ): void {
     if ((!isPopoverOpen || legend !== point.legend!) && _calloutAnchorPoint !== point) {
-      const currentHoveredElement = find(
-        _refArray,
-        (currentElement: IRefArrayData) => currentElement.index === point.legend,
-      );
       _calloutAnchorPoint = point;
       updatePosition(event.clientX, event.clientY);
       setHoverValue(hoverVal);
       setLineColor(point.gradient![0]);
       setLegend(point.legend!);
-      setRefSelected(currentHoveredElement?.refElement);
       setXCalloutValue(point.xAxisCalloutData!);
       setYCalloutValue(point.yAxisCalloutData!);
       setBarCalloutProps(point);
-      setCallOutAccessibilityData(point.callOutAccessibilityData);
       // ToDo - Confirm setting multiple state variables like this is performant.
     }
   }
@@ -84,7 +75,6 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
     if (isPopoverOpen) {
       setPopoverOpen(false);
       setHoverValue('');
-      setRefSelected(null);
       setLineColor('');
       setLegend('');
     }
@@ -274,11 +264,11 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   }
 
   const _getAriaLabel = (point: IChartDataPoint): string => {
-    const legend = point.xAxisCalloutData || point.legend;
+    const pointLegend = point.xAxisCalloutData || point.legend;
     const yValue =
       point.yAxisCalloutData ||
       (point.horizontalBarChartdata ? `${point.horizontalBarChartdata.x}/${point.horizontalBarChartdata.y}` : 0);
-    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
+    return point.callOutAccessibilityData?.ariaLabel || (pointLegend ? `${pointLegend}, ` : '') + `${yValue}.`;
   };
 
   function _isChartEmpty(): boolean {

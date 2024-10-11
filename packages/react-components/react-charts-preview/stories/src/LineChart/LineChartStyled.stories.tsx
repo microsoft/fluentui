@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts-preview';
 
-export const LCStyled = (props: ILineChartProps) => {
+export const LineChartStyled = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
 
@@ -98,10 +98,8 @@ export const LCStyled = (props: ILineChartProps) => {
     </>
   );
 };
-LCStyled.parameters = {
+LineChartStyled.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

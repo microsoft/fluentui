@@ -1,6 +1,4 @@
-import * as React from 'react';
-import { IChartDataPoint, IYValueHover } from '../../index';
-import { PopoverSurfaceSlots } from '@fluentui/react-popover';
+import { IYValueHover } from '../../index';
 
 export interface IPopoverComponentProps {
   clickPosition?: { x: number; y: number };

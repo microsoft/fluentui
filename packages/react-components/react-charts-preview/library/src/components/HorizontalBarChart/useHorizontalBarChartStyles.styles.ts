@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { IHorizontalBarChartProps, IHorizontalBarChartStyles, HorizontalBarChartVariant } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -40,17 +40,17 @@ const useStyles = makeStyles({
     width: '100%',
     height: '12px', // Support custom bar height
     display: 'block',
-    ...shorthands.overflow('visible'),
+    overflow: 'visible',
   },
   barWrapper: {},
   chartTitle: {
-    fontSize: tokens.fontSizeBase200,
+    ...typographyStyles.caption1,
     display: 'flex',
     justifyContent: 'space-between',
   },
   chartTitleLeft: {
     textOverflow: 'ellipsis',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
     whiteSpace: 'nowrap',
     display: 'block',
     color: tokens.colorNeutralForeground1,
@@ -62,12 +62,11 @@ const useStyles = makeStyles({
     marginBottom: '5px',
   },
   chartTitleRight: {
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightSemibold,
+    ...typographyStyles.body1Strong,
     color: tokens.colorNeutralForeground1,
   },
   chartDataTextDenominator: {
-    fontSize: tokens.fontSizeBase300,
+    ...typographyStyles.body1,
     color: tokens.colorNeutralForeground1,
   },
   benchmarkContainer: {
@@ -87,8 +86,7 @@ const useStyles = makeStyles({
     position: 'absolute',
   },
   barLabel: {
-    fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightSemibold,
+    ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
   },
   chartWrapper40ppadding: {

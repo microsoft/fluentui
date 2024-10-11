@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-charts-preview';
 import { Switch } from '@fluentui/react-components';
 
-export const LCLargeData = (props: ILineChartProps) => {
+export const LineChartLargeData = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
@@ -124,7 +124,7 @@ export const LCLargeData = (props: ILineChartProps) => {
       />
       <div style={rootStyle}>
         <LineChart
-          culture={window.navigator.language}
+          culture={typeof window !== 'undefined' ? window.navigator.language : 'en-us'}
           data={data}
           legendsOverflowText={'Overflow Items'}
           yMinValue={200}
@@ -140,10 +140,8 @@ export const LCLargeData = (props: ILineChartProps) => {
     </>
   );
 };
-LCLargeData.parameters = {
+LineChartLargeData.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

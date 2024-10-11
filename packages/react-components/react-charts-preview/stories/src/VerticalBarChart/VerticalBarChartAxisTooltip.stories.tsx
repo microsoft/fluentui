@@ -12,7 +12,7 @@ import {
   InputOnChangeData,
 } from '@fluentui/react-components';
 
-export const VCAxisTooltip = () => {
+export const VerticalBarAxisTooltip = () => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');
   const [barWidthEnabled, setBarWidthEnabled] = React.useState<CheckboxProps['checked']>(true);
   const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<CheckboxProps['checked']>(false);
@@ -187,10 +187,8 @@ export const VCAxisTooltip = () => {
     </>
   );
 };
-VCAxisTooltip.parameters = {
+VerticalBarAxisTooltip.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

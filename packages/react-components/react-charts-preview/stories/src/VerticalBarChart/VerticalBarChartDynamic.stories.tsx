@@ -20,7 +20,7 @@ import {
 } from '@fluentui/react-components';
 import { StackShim } from '@fluentui/react-migration-v8-v9';
 
-export const VCDynamic = () => {
+export const VerticalBarDynamic = () => {
   /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
   const screenReaderOnlyStyle: React.CSSProperties = {
     position: 'absolute',
@@ -287,10 +287,8 @@ export const VCDynamic = () => {
     </>
   );
 };
-VCDynamic.parameters = {
+VerticalBarDynamic.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

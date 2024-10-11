@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts-preview';
 import { Switch } from '@fluentui/react-components';
 
-export const LCCustomLocale = (props: ILineChartProps) => {
+export const LineChartCustomLocaleDateAxis = (props: ILineChartProps) => {
   const locale = require('d3-time-format/locale/it-IT.json');
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
@@ -172,10 +172,8 @@ export const LCCustomLocale = (props: ILineChartProps) => {
     </>
   );
 };
-LCCustomLocale.parameters = {
+LineChartCustomLocaleDateAxis.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HorizontalBarChart, IChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charts-preview';
 
-export const HBCCustomAccess = () => {
+export const HorizontalBarCustomAccessibility = () => {
   const data: IChartProps[] = [
     {
       chartTitle: 'one',
@@ -130,10 +130,8 @@ export const HBCCustomAccess = () => {
     </div>
   );
 };
-HBCCustomAccess.parameters = {
+HorizontalBarCustomAccessibility.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

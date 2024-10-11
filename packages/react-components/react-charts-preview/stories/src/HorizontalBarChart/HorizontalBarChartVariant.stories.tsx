@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-charts-preview';
 import { Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
-export const HBCVariant = () => {
+export const HorizontalBarAbsoluteScale = () => {
   const [hideLabels, setHideLabels] = React.useState<CheckboxProps['checked'] | boolean>(false);
   const _onCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
     setHideLabels(checked.checked);
@@ -111,10 +111,8 @@ export const HBCVariant = () => {
     </>
   );
 };
-HBCVariant.parameters = {
+HorizontalBarAbsoluteScale.parameters = {
   docs: {
-    description: {
-      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
-    },
+    description: {},
   },
 };

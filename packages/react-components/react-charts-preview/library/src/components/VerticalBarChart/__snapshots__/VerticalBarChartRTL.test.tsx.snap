@@ -10356,7 +10356,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 fill="currentColor"
                 y="16"
               >
-                This is a medium long label. 
+                This is a medium long label.
               </text>
             </g>
             <g
@@ -11343,7 +11343,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 data-is-focusable="true"
                 fill="aqua"
                 height="47.400000000000006"
-                id="_VBC_bar_172-0"
+                id="_VBC_bar_186-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -11367,7 +11367,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 data-is-focusable="true"
                 fill="blue"
                 height="237"
-                id="_VBC_bar_172-1"
+                id="_VBC_bar_186-1"
                 opacity="1"
                 role="img"
                 tabindex="0"
@@ -11391,7 +11391,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 data-is-focusable="true"
                 fill="navy"
                 height="142.2"
-                id="_VBC_bar_172-2"
+                id="_VBC_bar_186-2"
                 opacity="1"
                 role="img"
                 tabindex="0"

@@ -4,9 +4,9 @@
 import * as React from 'react';
 import { pie as d3Pie, PieArcDatum } from 'd3-shape';
 import { IPieProps } from './index';
-import { Arc, IArcData } from '../Arc/index';
+import { Arc } from '../Arc/index';
 import { IChartDataPoint } from '../index';
-import { usePieStyles_unstable } from './Pie.styles';
+import { usePieStyles_unstable } from './usePieStyles.styles';
 import { getNextGradient, wrapTextInsideDonut } from '../../../utilities/index';
 const TEXT_PADDING: number = 5;
 
@@ -25,7 +25,7 @@ export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivE
     const classes = usePieStyles_unstable(props);
     const pieForFocusRing = d3Pie()
       .sort(null)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
       .value((d: any) => d.data)
       .padAngle(0);
 
@@ -45,7 +45,7 @@ export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivE
       return totalValue;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     function arcGenerator(d: PieArcDatum<IChartDataPoint>, i: number, focusData: any, href?: string): JSX.Element {
       const gradient = d.data.gradient ?? getNextGradient(i, 0);
 
@@ -80,7 +80,7 @@ export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivE
     // const piechart = d3Pie<DataItem>().value(d => d.value)(data1);
     const piechart = d3Pie<IChartDataPoint>()
       .sort(null)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
       .value((d: any) => d.data)
       .padAngle(0.02)(data);
     const translate = `translate(${props.width / 2}, ${props.height / 2})`;

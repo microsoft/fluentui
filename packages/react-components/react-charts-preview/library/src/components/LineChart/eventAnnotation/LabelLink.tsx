@@ -28,9 +28,7 @@ interface ILabelLinkProps {
 export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
   const gRef = React.useRef<SVGGElement>(null);
   const [showCard, setShowCard] = React.useState(false);
-  const onDismiss = () => setShowCard(false);
   const onClick = () => setShowCard(true);
-  const onRenderCell = (i: (() => React.ReactNode) | undefined) => <div data-is-focusable={true}>{i && i()}</div>;
 
   let callout: React.ReactNode = null;
   if (showCard) {

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
-import { useArcStyles_unstable } from './Arc.styles';
+import { useArcStyles_unstable } from './useArcStyles.styles';
 import { IChartDataPoint } from '../index';
-import { IArcProps, IArcStyles } from './index';
+import { IArcProps } from './index';
 import { format as d3Format } from 'd3-format';
 import { formatValueWithSIPrefix, isRtl } from '../../../utilities/index';
 import { useId } from '@fluentui/react-utilities';

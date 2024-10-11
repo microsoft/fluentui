@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { ResponsiveContainerProps } from './ResponsiveContainer.types';
-import { useResponsiveContainerStyles_unstable } from './ResponsiveContainer.styles';
+import { useResponsiveContainerStyles_unstable } from './useResponsiveContainerStyles.styles';
 
 export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => {
   const containerRef = React.useRef<HTMLDivElement>(null);

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-spinner",
   "entries": [
     {
+      "date": "Tue, 08 Oct 2024 22:05:59 GMT",
+      "tag": "@fluentui/react-spinner_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "0776fdb478a64a51ffb8b8e6f1092342d21fac9c",
+            "comment": "feat: spinner root slot as span"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Sep 2024 12:40:17 GMT",
       "tag": "@fluentui/react-spinner_v9.4.14",
       "version": "9.4.14",

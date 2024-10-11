@@ -42,7 +42,7 @@ const useStyles = makeStyles({
     textAlign: 'center',
     top: '0px',
     fill: tokens.colorNeutralBackground1,
-    ...shorthands.borderRadius('2px'),
+    borderRadius: '2px',
     pointerEvents: 'none',
   },
 });
