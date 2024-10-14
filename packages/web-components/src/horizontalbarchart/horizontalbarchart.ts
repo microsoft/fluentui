@@ -134,6 +134,7 @@ export class HorizontalBarChart extends FASTElement {
   private bindEvents() {}
 
   connectedCallback() {
+    super.connectedCallback();
     this.render();
   }
 
@@ -201,7 +202,7 @@ export class HorizontalBarChart extends FASTElement {
   }
 
   render() {
-    const div = d3.select(this.shadowRoot).append('div').attr('width', 800).attr('height', 400);
+    const div = d3.select(this.shadowRoot).append('div');
     div
       .append('div')
       .selectAll('div')
@@ -326,17 +327,49 @@ export class HorizontalBarChart extends FASTElement {
         .attr('data-tabster', '{"mover": {...}}"');
     }
 
-    const containerDiv = d3.create('div');
+    const containerDiv = d3.create('div').attr('style', 'position: relative');
+
+    let tooltip: any;
+
+    containerDiv
+      .append('span')
+      .attr('class', 'chartTitle')
+      .text(data?.chartTitle ? data?.chartTitle : '');
 
     const svgEle = containerDiv
       .append('svg')
       .attr('height', 20)
+      .attr('width', 100 + '%')
       .attr('aria-label', data?.chartTitle ? data?.chartTitle : '')
       .selectAll('g')
       .data(data.chartData!)
       .enter()
       .append('g')
-      .each(createBars);
+      .each(createBars)
+      .on('mouseover', function (event, d) {
+        const tooltipHTML = `
+        <div style="border-left:4px solid ${d.color}; padding-left: 8px;">
+            <div style="font-size: 15px;lineHeight: 16px;
+        color: theme.semanticColors.bodyText; margin-top: 4px;">${d.legend}</div>
+            <div style="font-weight:bold; color: ${d.color}; font-size: 30px; text-align: left; lineHeight: 36px; margin-top: 4px;">${d.data}</div>
+        </div>
+       `;
+        tooltip = containerDiv
+          .append('div')
+          .attr('class', 'tooltip')
+          .attr(
+            'style',
+            'opacity: 1; left: ' +
+              (event.pageX - containerDiv.node()!.getBoundingClientRect().left + window.scrollX) +
+              'px; top: ' +
+              (event.pageY - (containerDiv.node()!.getBoundingClientRect().top + window.scrollY) - 40) +
+              'px;',
+          );
+        tooltip.html(tooltipHTML);
+      })
+      .on('mouseout', function () {
+        tooltip.attr('style', 'position: absolute; opacity:0');
+      });
 
     if (this.variant === Variant.AbsoluteScale) {
       const showLabel = true;
