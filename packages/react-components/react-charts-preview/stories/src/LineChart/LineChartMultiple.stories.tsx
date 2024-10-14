@@ -20,7 +20,7 @@ export const LineChartMultiple = (props: ILineChartProps) => {
     setAllowMultipleShapes(ev.currentTarget.checked);
   }, []);
 
-  const _onLegendClickHandler = (selectedLegend: string | null): void => {
+  const _onLegendClickHandler = (selectedLegend: string | string[] | null): void => {
     if (selectedLegend !== null) {
       console.log(`Selected legend - ${selectedLegend}`);
     }
@@ -286,7 +286,7 @@ export const LineChartMultiple = (props: ILineChartProps) => {
           data={data}
           strokeWidth={4}
           tickFormat={timeFormat}
-          // tickValues={tickValues}
+          tickValues={tickValues}
           height={height}
           width={width}
           legendProps={{ canSelectMultipleLegends: true, allowFocusOnLegends: true }}

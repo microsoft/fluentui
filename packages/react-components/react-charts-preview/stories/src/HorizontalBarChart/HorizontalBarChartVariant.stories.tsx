@@ -6,12 +6,12 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts-preview';
-import { Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
+import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
 
 export const HorizontalBarAbsoluteScale = () => {
-  const [hideLabels, setHideLabels] = React.useState<CheckboxProps['checked'] | boolean>(false);
+  const [hideLabels, setHideLabels] = React.useState<boolean>(false);
   const _onCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
-    setHideLabels(checked.checked);
+    setHideLabels(checked.checked as boolean);
   };
   const data: IChartProps[] = [
     {

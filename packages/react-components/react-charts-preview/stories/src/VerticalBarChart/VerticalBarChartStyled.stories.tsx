@@ -4,13 +4,13 @@ import { Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-c
 
 export const VerticalBarStyled = () => {
   const [isChecked, setIsChecked] = React.useState<CheckboxProps['checked']>(true);
-  const [useSingleColor, setUseSingleColor] = React.useState<CheckboxProps['checked']>(true);
+  const [useSingleColor, setUseSingleColor] = React.useState<boolean>(true);
 
   const _onChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setIsChecked(checked.checked);
   };
   const _onCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
-    setUseSingleColor(checked.checked);
+    setUseSingleColor(checked.checked as boolean);
   };
 
   const points: IVerticalBarChartDataPoint[] = [

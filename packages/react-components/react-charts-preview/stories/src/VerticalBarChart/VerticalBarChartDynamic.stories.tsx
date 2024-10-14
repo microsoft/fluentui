@@ -76,7 +76,7 @@ export const VerticalBarDynamic = () => {
     return Math.floor(Math.random() * 90) + 1;
   };
 
-  const _onBarWidthCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+  const _onBarWidthCheckChange = (ev: React.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => {
     if (typeof barWidth === 'undefined') {
       setBarWidth('auto');
     } else if (barWidth === 'auto') {
@@ -113,9 +113,9 @@ export const VerticalBarDynamic = () => {
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(Number(e.target.value));
   };
-  const _onAxisTypeChange = (e: React.FormEvent<HTMLInputElement>, option: RadioGroupOnChangeData) => {
-    setXAxisType(option.value);
-    setDynamicData(_getData(dataSize, option.value));
+  const _onAxisTypeChange = (ev: React.FormEvent<HTMLDivElement>, data: RadioGroupOnChangeData) => {
+    setXAxisType(data.value);
+    setDynamicData(_getData(dataSize, data.value));
   };
   const _onDataSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const dataSize = Number(e.target.value);
@@ -177,9 +177,8 @@ export const VerticalBarDynamic = () => {
         <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <Checkbox
             label="barWidth:&nbsp;"
-            checked={typeof barWidth === 'number'}
+            checked={typeof barWidth === 'number' ? true : barWidth === 'auto' ? 'mixed' : false}
             onChange={_onBarWidthCheckChange}
-            indeterminate={barWidth === 'auto'}
           />
           {typeof barWidth === 'number' ? (
             <Input type="number" value={barWidth.toString()} min={1} max={300} onChange={_onBarWidthChange} />

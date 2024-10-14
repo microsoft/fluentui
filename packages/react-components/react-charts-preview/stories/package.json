@@ -11,6 +11,7 @@
     "test-ssr": "test-ssr \"./src/**/*.stories.ssr.tsx\""
   },
   "devDependencies": {
+    "d3-time-format": "*",
     "@fluentui/react-charts-preview": "*",
     "@fluentui/react-components": "*",
     "@fluentui/react-storybook-addon": "*",

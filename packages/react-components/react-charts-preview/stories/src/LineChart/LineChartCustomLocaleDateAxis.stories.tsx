@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts-preview';
+import { ILineChartProps, IChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts-preview';
 import { Switch } from '@fluentui/react-components';
+import { TimeLocaleDefinition } from 'd3-time-format';
+import itITLocale from 'd3-time-format/locale/it-IT.json';
 
 export const LineChartCustomLocaleDateAxis = (props: ILineChartProps) => {
-  const locale = require('d3-time-format/locale/it-IT.json');
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [customLocale, setCustomLocale] = React.useState<any>(locale);
+
+  const customLocale = itITLocale;
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -163,7 +164,7 @@ export const LineChartCustomLocaleDateAxis = (props: ILineChartProps) => {
           xAxisTickCount={10}
           allowMultipleShapesForPoints={allowMultipleShapes}
           rotateXAxisLables={true}
-          timeFormatLocale={customLocale}
+          timeFormatLocale={customLocale as TimeLocaleDefinition}
           enablePerfOptimization={true}
         />
       </div>

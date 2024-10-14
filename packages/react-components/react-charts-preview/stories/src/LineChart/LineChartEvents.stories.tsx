@@ -12,7 +12,7 @@ export const LineChartEvents = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
-  const [customEventAnnotationColor, setCustomEventAnnotationColor] = React.useState<string | undefined>(undefined);
+  const customEventAnnotationColor: string | undefined = undefined;
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
