@@ -200,7 +200,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
             <div
               className="fui-cart__calloutContentX"
             >
-
+               
             </div>
           </div>
           <div
@@ -577,18 +577,46 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
         onMouseLeave={[Function]}
         role="group"
       >
-        <div>
-          <pre>
-            {
-  "legend": "first",
-  "data": 20000,
-  "xAxisCalloutData": "2020/04/30",
-  "gradient": [
-    "#E5E5E5",
-    ""
-  ]
-}
-          </pre>
+        <div
+          className="fui-cart__calloutContentRoot"
+        >
+          <div
+            className="fui-cart__calloutDateTimeContainer"
+          >
+            <div
+              className="fui-cart__calloutContentX"
+            >
+               
+            </div>
+          </div>
+          <div
+            className="fui-cart__calloutInfoContainer"
+            style={
+              Object {
+                "borderLeft": "4px solid #E5E5E5",
+              }
+            }
+          >
+            <div
+              className="fui-cart__calloutBlockContainer"
+            >
+              <div
+                className="fui-cart__calloutlegendText"
+              >
+                2020/04/30
+              </div>
+              <div
+                className="fui-cart__calloutContentY"
+                style={
+                  Object {
+                    "color": "#E5E5E5",
+                  }
+                }
+              >
+                20,000
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
