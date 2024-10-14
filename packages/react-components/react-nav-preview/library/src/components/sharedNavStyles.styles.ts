@@ -16,6 +16,11 @@ export const navItemTokens = {
     animationFillMode: 'both',
     animationTimingFunction: tokens.curveAccelerateMid,
   },
+  transitionTokens: {
+    transitionDuration: tokens.durationFast,
+    transitionTimingFunction: tokens.curveAccelerateMid,
+    transitionProperty: 'background',
+  },
 };
 
 /**

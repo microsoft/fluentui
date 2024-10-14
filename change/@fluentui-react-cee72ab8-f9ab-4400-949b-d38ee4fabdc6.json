@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: clear Modal timer on component unmount",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

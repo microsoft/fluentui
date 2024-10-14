@@ -342,4 +342,43 @@ test.describe('Menu', () => {
 
     await expect(menuItems.first()).toBeFocused();
   });
+
+  test('should focus trigger after menu is closed', async ({ page }) => {
+    const element = page.locator('fluent-menu');
+    const menuButton = element.locator('fluent-menu-button');
+
+    page.setContent(/* html */ `
+      <fluent-menu>
+        <fluent-menu-button appearance="primary" slot="trigger" icon-only></fluent-menu-button>
+        <fluent-button appearance="primary" slot="primary-action">Primary Action</fluent-menu-button>
+        <fluent-menu-list>
+          <fluent-menu-item>
+            Item 1
+            <fluent-menu-list slot="submenu">
+              <fluent-menu-item> Subitem 1 </fluent-menu-item>
+              <fluent-menu-item> Subitem 2 </fluent-menu-item>
+            </fluent-menu-list>
+          </fluent-menu-item>
+
+          <fluent-menu-item role="menuitemcheckbox"> Item 2 </fluent-menu-item>
+          <fluent-menu-item role="menuitemcheckbox"> Item 3 </fluent-menu-item>
+
+          <fluent-divider role="separator" aria-orientation="horizontal" orientation="horizontal"></fluent-divider>
+
+          <fluent-menu-item>Menu item 4</fluent-menu-item>
+          <fluent-menu-item>Menu item 5</fluent-menu-item>
+          <fluent-menu-item>Menu item 6</fluent-menu-item>
+
+          <fluent-menu-item>Menu item 7</fluent-menu-item>
+          <fluent-menu-item>Menu item 8</fluent-menu-item>
+        </fluent-menu-list>
+      </fluent-menu>
+    `);
+
+    await menuButton.click();
+
+    await page.keyboard.press('Escape');
+
+    await expect(menuButton).toBeFocused();
+  });
 });
