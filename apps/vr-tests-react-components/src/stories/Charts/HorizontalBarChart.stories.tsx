@@ -5,7 +5,7 @@ import { Steps, StoryWright } from 'storywright';
 import { IChartProps, HorizontalBarChart, HorizontalBarChartVariant } from '@fluentui/react-charts-preview';
 
 export default {
-  title: 'react-charts-preview/HorizontalBarChart',
+  title: 'Charts/HorizontalBarChart',
 
   decorators: [
     (story, context) => TestWrapperDecorator(story, context),

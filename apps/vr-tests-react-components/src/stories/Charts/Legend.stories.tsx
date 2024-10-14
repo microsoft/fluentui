@@ -5,7 +5,7 @@ import { Steps, StoryWright } from 'storywright';
 import { ILegend, Legends } from '@fluentui/react-charts-preview';
 
 export default {
-  title: 'react-charts-preview/Legend',
+  title: 'Charts/Legend',
 
   decorators: [
     (story, context) => TestWrapperDecorator(story, context),
