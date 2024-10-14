@@ -1,8 +1,17 @@
 # Change Log - @fluentui/dom-utilities
 
-This log was last generated on Tue, 08 Oct 2024 07:23:46 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Oct 2024 16:51:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.9](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.3.9)
+
+Fri, 11 Oct 2024 16:51:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.3.8..@fluentui/dom-utilities_v2.3.9)
+
+### Patches
+
+- Fix regression caused by #32996 ([PR #33024](https://github.com/microsoft/fluentui/pull/33024) by miclo@microsoft.com)
 
 ## [2.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.3.8)
 
