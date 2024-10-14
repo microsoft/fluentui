@@ -7,7 +7,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charts-preview';
 
-import { Button, Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
+import { Button, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
 const screenReaderOnlyStyle: React.CSSProperties = {
@@ -35,8 +35,8 @@ export const DonutChartDynamic = () => {
     { legend: 'third', data: 30, color: getColorFromToken(DataVizPalette.color3) },
     { legend: 'fourth', data: 10, color: getColorFromToken(DataVizPalette.color4) },
   ]);
-  const [hideLabels, setHideLabels] = React.useState<CheckboxProps['checked'] | boolean>(false);
-  const [showLabelsInPercent, setShowLabelsInPercent] = React.useState<CheckboxProps['checked'] | boolean>(false);
+  const [hideLabels, setHideLabels] = React.useState<boolean>(false);
+  const [showLabelsInPercent, setShowLabelsInPercent] = React.useState<boolean>(false);
   const [innerRadius, setInnerRadius] = React.useState<number>(35);
   const [statusKey, setStatusKey] = React.useState<number>(0);
   const [statusMessage, setStatusMessage] = React.useState<string>('');
@@ -78,12 +78,12 @@ export const DonutChartDynamic = () => {
     } else {
       _innerRadius = 35;
     }
-    setHideLabels(checked.checked);
+    setHideLabels(checked.checked as boolean);
     setInnerRadius(_innerRadius);
   };
 
   const _onShowPercentCheckChange = (ev: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
-    setShowLabelsInPercent(checked.checked);
+    setShowLabelsInPercent(checked.checked as boolean);
   };
 
   const data: IChartProps = {

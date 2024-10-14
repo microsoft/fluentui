@@ -4,20 +4,18 @@ import {
   Switch,
   Checkbox,
   CheckboxOnChangeData,
-  CheckboxProps,
   Field,
   Radio,
   RadioGroup,
   RadioGroupOnChangeData,
-  RadioGroupProps,
 } from '@fluentui/react-components';
 
 export const VerticalBarDefault = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [isCalloutselected, setIsCalloutSelected] = React.useState<boolean>(false);
-  const [useSingleColor, setUseSingleColor] = React.useState<CheckboxProps['checked']>(false);
-  const [hideLabels, setHideLabels] = React.useState<CheckboxProps['checked']>(false);
+  const [useSingleColor, setUseSingleColor] = React.useState<boolean>(false);
+  const [hideLabels, setHideLabels] = React.useState<boolean>(false);
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +24,7 @@ export const VerticalBarDefault = () => {
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
   };
-  const _onChange = (ev: React.FormEvent<HTMLInputElement>, option: RadioGroupOnChangeData): void => {
+  const _onChange = (ev: React.FormEvent<HTMLDivElement>, data: RadioGroupOnChangeData): void => {
     if (isCalloutselected) {
       setIsCalloutSelected(false);
     } else {
@@ -34,10 +32,10 @@ export const VerticalBarDefault = () => {
     }
   };
   const _onCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
-    setUseSingleColor(checked.checked);
+    setUseSingleColor(checked.checked as boolean);
   };
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
-    setHideLabels(checked.checked);
+    setHideLabels(checked.checked as boolean);
   };
   const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
     setShowAxisTitles(ev.currentTarget.checked);
@@ -236,12 +234,12 @@ export const VerticalBarDefault = () => {
             lineLegendText={'just line'}
             lineLegendColor={'brown'}
             lineOptions={lineOptions}
-            {...(isCalloutselected && {
+            /* {...(isCalloutselected && {
               onRenderCalloutPerDataPoint: (
                 props: IVerticalBarChartDataPoint,
                 defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
               ) => (props ? defaultRender(props) : null),
-            })}
+            })} */
             yAxisTitle={
               showAxisTitles
                 ? 'Different categories of animals and fruits and their corresponding count are shown here'

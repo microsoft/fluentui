@@ -257,9 +257,6 @@ export const LineChartGaps = (props: ILineChartProps) => {
           height={height}
           width={width}
           margins={margins}
-          calloutProps={{
-            calloutMaxWidth: 200,
-          }}
           getCalloutDescriptionMessage={_calculateCalloutDescription}
           enablePerfOptimization={true}
         />

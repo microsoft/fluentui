@@ -7,7 +7,9 @@
     "importHelpers": true,
     "jsx": "react",
     "noUnusedLocals": true,
-    "preserveConstEnums": true
+    "preserveConstEnums": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": [],
   "files": [],

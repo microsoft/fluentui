@@ -139,7 +139,6 @@ export const LineChartBasic = (props: ILineChartProps) => {
   };
 
   const rootStyle = { width: `${width}px`, height: `${height}px` };
-  const margins = { left: 35, top: 20, bottom: 35, right: 20 };
 
   return (
     <>

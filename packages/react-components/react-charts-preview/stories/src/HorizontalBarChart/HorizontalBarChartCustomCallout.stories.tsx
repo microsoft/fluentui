@@ -7,7 +7,7 @@ import {
   getColorFromToken,
   IPopoverComponentProps,
 } from '@fluentui/react-charts-preview';
-import * as d3 from 'd3-format';
+// import * as d3 from 'd3-format';
 import { Switch } from '@fluentui/react-components';
 
 export const HorizontalBarCustomCallout = () => {
@@ -146,7 +146,7 @@ export const HorizontalBarCustomCallout = () => {
       <HorizontalBarChart
         data={data}
         hideRatio={hideRatio}
-        barChartCustomData={(props: IChartProps) => {
+        /* barChartCustomData={(props: IChartProps) => {
           const chartData: IChartDataPoint = props!.chartData![0];
           const x = chartData.horizontalBarChartdata!.x;
           const y = chartData.horizontalBarChartdata!.y;
@@ -156,7 +156,7 @@ export const HorizontalBarCustomCallout = () => {
               <span>{`/${d3.format('.2s')(y)} hours`}</span>
             </div>
           );
-        }}
+        }} */
         customProps={(props: IChartDataPoint) => customPopoverProps(props)}
         onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) => customPopover(props)}
       />

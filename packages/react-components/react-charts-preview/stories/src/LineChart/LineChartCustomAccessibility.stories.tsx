@@ -19,7 +19,7 @@ export const LineChartCustomAccessibility = (props: ILineChartProps) => {
     setAllowMultipleShapes(ev.currentTarget.checked);
   }, []);
 
-  const _onLegendClickHandler = (selectedLegend: string | null): void => {
+  const _onLegendClickHandler = (selectedLegend: string | string[] | null): void => {
     if (selectedLegend !== null) {
       console.log(`Selected legend - ${selectedLegend}`);
     }

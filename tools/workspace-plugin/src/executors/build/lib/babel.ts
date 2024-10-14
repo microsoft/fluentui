@@ -25,7 +25,7 @@ export function hasStylesFilesToProcess(normalizedOptions: NormalizedOptions) {
   return files.length > 0;
 }
 
-export async function compileWithGriffelStylesAOT(options: NormalizedOptions, successCallback: () => Promise<boolean>) {
+export async function compileWithGriffelStylesAOT(options: NormalizedOptions) {
   const { esmConfig, restOfConfigs } = options.moduleOutput.reduce<{
     esmConfig: NormalizedOptions['moduleOutput'][number] | null;
     restOfConfigs: NormalizedOptions['moduleOutput'];
@@ -47,7 +47,7 @@ export async function compileWithGriffelStylesAOT(options: NormalizedOptions, su
     const compilationQueue = restOfConfigs.map(outputConfig => {
       return compileSwc(outputConfig, options);
     });
-    return processAsyncQueue(compilationQueue, successCallback);
+    return processAsyncQueue(compilationQueue);
   }
 
   await compileSwc(esmConfig, options);
@@ -65,7 +65,7 @@ export async function compileWithGriffelStylesAOT(options: NormalizedOptions, su
     });
   });
 
-  return processAsyncQueue(compilationQueue, successCallback);
+  return processAsyncQueue(compilationQueue);
 }
 
 async function babel(esmModuleOutput: NormalizedOptions['moduleOutput'][number], normalizedOptions: NormalizedOptions) {

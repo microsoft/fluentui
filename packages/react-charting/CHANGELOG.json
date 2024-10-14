@@ -2,6 +2,48 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 11 Oct 2024 16:51:54 GMT",
+      "tag": "@fluentui/react-charting_v5.23.7",
+      "version": "5.23.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.17",
+            "commit": "3fec026661e874b8e458bb4f2deab1b3a9e73cd1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.179",
+            "commit": "3fec026661e874b8e458bb4f2deab1b3a9e73cd1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.121.4",
+            "commit": "3fec026661e874b8e458bb4f2deab1b3a9e73cd1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Oct 2024 07:21:57 GMT",
+      "tag": "@fluentui/react-charting_v5.23.6",
+      "version": "5.23.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "apoorvaj20@iitk.ac.in",
+            "package": "@fluentui/react-charting",
+            "commit": "969e7c9d4c747cb68453df92c7d6e99bd71711ba",
+            "comment": "\"Fixed XSS Vulnerabilities in tooltips\""
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 08 Oct 2024 07:23:46 GMT",
       "tag": "@fluentui/react-charting_v5.23.5",
       "version": "5.23.5",

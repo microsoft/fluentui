@@ -1,4 +1,5 @@
 import { RULE_NAME as noRestrictedGlobalsName, rule as noRestrictedGlobals } from './rules/no-restricted-globals';
+import { RULE_NAME as noMissingJsxPragmaName, rule as noMissingJsxPragma } from './rules/no-missing-jsx-pragma';
 import {
   RULE_NAME as consistentCallbackTypeName,
   rule as consistentCallbackType,
@@ -28,5 +29,9 @@ module.exports = {
    *  [myCustomRuleName]: myCustomRule
    * }
    */
-  rules: { [consistentCallbackTypeName]: consistentCallbackType, [noRestrictedGlobalsName]: noRestrictedGlobals },
+  rules: {
+    [consistentCallbackTypeName]: consistentCallbackType,
+    [noRestrictedGlobalsName]: noRestrictedGlobals,
+    [noMissingJsxPragmaName]: noMissingJsxPragma,
+  },
 };

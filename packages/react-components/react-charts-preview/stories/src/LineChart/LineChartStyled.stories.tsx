@@ -73,13 +73,6 @@ export const LineChartStyled = (props: ILineChartProps) => {
           tickFormat={'%m/%d'}
           tickValues={[new Date('2018-01-01'), new Date('2018-02-09')]}
           enablePerfOptimization={true}
-          legendProps={{
-            styles: {
-              legend: {
-                textTransform: 'none',
-              },
-            },
-          }}
         />
       </div>
     </>

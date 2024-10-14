@@ -203,6 +203,16 @@ const chartPointsWithGaps = {
   lineChartData: pointsWithGaps,
 };
 
+const tickValues = [
+  new Date('2020-03-03T00:00:00.000Z'),
+  new Date('2020-03-04T00:00:00.000Z'),
+  new Date('2020-03-05T00:00:00.000Z'),
+  new Date('2020-03-06T00:00:00.000Z'),
+  new Date('2020-03-07T00:00:00.000Z'),
+  new Date('2020-03-08T00:00:00.000Z'),
+  new Date('2020-03-09T00:00:00.000Z'),
+];
+
 describe('Line chart rendering', () => {
   afterEach(sharedAfterEach);
 
@@ -353,16 +363,6 @@ const simplePoints = {
     },
   ],
 };
-
-const tickValues = [
-  new Date('2020-03-03T00:00:00.000Z'),
-  new Date('2020-03-04T00:00:00.000Z'),
-  new Date('2020-03-05T00:00:00.000Z'),
-  new Date('2020-03-06T00:00:00.000Z'),
-  new Date('2020-03-07T00:00:00.000Z'),
-  new Date('2020-03-08T00:00:00.000Z'),
-  new Date('2020-03-09T00:00:00.000Z'),
-];
 
 const eventAnnotationProps = {
   events: [
