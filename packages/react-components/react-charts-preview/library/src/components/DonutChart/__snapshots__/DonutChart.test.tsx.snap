@@ -200,7 +200,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
             <div
               className="fui-cart__calloutContentX"
             >
-               
+
             </div>
           </div>
           <div

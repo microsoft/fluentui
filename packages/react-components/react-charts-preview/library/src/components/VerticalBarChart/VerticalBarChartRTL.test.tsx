@@ -641,7 +641,7 @@ describe('Vertical bar chart - Subcomponent callout', () => {
 
   test('Should call the handler on mouse over bar and on mouse leave from bar', async () => {
     // Arrange
-    const { container } = render(<VerticalBarChart data={pointsWithLine} calloutProps={{ doNotLayer: true }} />);
+    const { container } = render(<VerticalBarChart data={pointsWithLine} />);
     await waitFor(() => {
       const bars = getById(container, /_VBC_bar/i);
       expect(bars).toHaveLength(8);

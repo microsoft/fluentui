@@ -7,6 +7,7 @@ export const LineChartCustomLocaleDateAxis = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [customLocale, setCustomLocale] = React.useState<any>(locale);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,12 +18,9 @@ export const LineChartCustomLocaleDateAxis = (props: ILineChartProps) => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onShapeChange = React.useCallback(
-    ev => {
-      setAllowMultipleShapes(ev.currentTarget.checked);
-    },
-    [allowMultipleShapes],
-  );
+  const _onShapeChange = React.useCallback(ev => {
+    setAllowMultipleShapes(ev.currentTarget.checked);
+  }, []);
 
   const data: IChartProps = {
     chartTitle: 'Line Chart',

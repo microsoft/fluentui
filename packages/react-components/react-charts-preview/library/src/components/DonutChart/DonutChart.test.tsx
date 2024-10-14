@@ -163,13 +163,13 @@ describe('DonutChart - basic props', () => {
       wrapper = mount(
         <DonutChart
           data={chartPointsDC}
-          onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
+          /* onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
             props ? (
               <div className="onRenderCalloutPerDataPoint">
                 <p>Custom Callout Content</p>
               </div>
             ) : null
-          }
+          } */
         />,
       );
     });
@@ -191,7 +191,7 @@ describe('DonutChart - mouse events', () => {
 
   it('Should render callout correctly on mouseover', () => {
     domAct(() => {
-      wrapper = mount(<DonutChart data={chartPointsDC} innerRadius={55} calloutProps={{ doNotLayer: true }} />);
+      wrapper = mount(<DonutChart data={chartPointsDC} innerRadius={55} />);
     });
     wrapper!.find('path[id^="_Pie_"]').at(0).simulate('mouseover');
     const tree = toJson(wrapper!, { mode: 'deep' });
@@ -200,7 +200,7 @@ describe('DonutChart - mouse events', () => {
 
   it('Should render callout correctly on mousemove', () => {
     domAct(() => {
-      wrapper = mount(<DonutChart data={chartPointsDC} innerRadius={55} calloutProps={{ doNotLayer: true }} />);
+      wrapper = mount(<DonutChart data={chartPointsDC} innerRadius={55} />);
     });
     wrapper!.find('path[id^="_Pie_"]').at(0).simulate('mousemove');
     const html1 = wrapper!.html();
@@ -216,14 +216,13 @@ describe('DonutChart - mouse events', () => {
         <DonutChart
           data={chartPointsDC}
           innerRadius={55}
-          calloutProps={{ doNotLayer: true }}
-          onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
+          /* onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
             props ? (
               <div>
                 <pre>{JSON.stringify(props, null, 2)}</pre>
               </div>
             ) : null
-          }
+          } */
         />,
       );
     });

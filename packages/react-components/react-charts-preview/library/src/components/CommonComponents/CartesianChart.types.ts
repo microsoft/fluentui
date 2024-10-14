@@ -370,7 +370,7 @@ export interface ICartesianChartProps {
   /**
    * Callout customization props
    */
-  calloutProps: Partial<IPopoverComponentProps>;
+  calloutProps?: Partial<IPopoverComponentProps>;
 
   /**
    * props for the svg; use this to include aria-* or other attributes on the tag
@@ -421,8 +421,8 @@ export interface ICartesianChartProps {
 
   /**
    * The function that is called when the chart is resized.
-   * @param {number} width - The new width of the chart.
-   * @param {number} height - The new height of the chart.
+   * @param width - The new width of the chart.
+   * @param height - The new height of the chart.
    */
   onResize?: (width: number, height: number) => void;
 
@@ -500,7 +500,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Callout props
    */
-  calloutProps: IPopoverComponentProps;
+  calloutProps?: IPopoverComponentProps;
 
   /**
    * Callback method used for to get margins to the chart.

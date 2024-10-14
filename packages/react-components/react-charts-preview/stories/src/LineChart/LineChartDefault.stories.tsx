@@ -22,19 +22,13 @@ export const LineChartBasic = (props: ILineChartProps) => {
     setUseUTC(checked.checked);
   };
 
-  const _onShapeChange = React.useCallback(
-    ev => {
-      setAllowMultipleShapes(ev.currentTarget.checked);
-    },
-    [allowMultipleShapes],
-  );
+  const _onShapeChange = React.useCallback(ev => {
+    setAllowMultipleShapes(ev.currentTarget.checked);
+  }, []);
 
-  const _onToggleAxisTitlesCheckChange = React.useCallback(
-    ev => {
-      setShowAxisTitles(ev.currentTarget.checked);
-    },
-    [showAxisTitles],
-  );
+  const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
+    setShowAxisTitles(ev.currentTarget.checked);
+  }, []);
 
   const data: IChartProps = {
     chartTitle: 'Line Chart Basic Example',

@@ -7,7 +7,7 @@ import {
   getColorFromToken,
   IPopoverComponentProps,
 } from '@fluentui/react-charts-preview';
-import { Switch } from '@fluentui/react-switch';
+import { Switch } from '@fluentui/react-components';
 
 export const DonutChartCustomCallout = () => {
   const [useCustomPopover, setUseCustomPopover] = React.useState(false);

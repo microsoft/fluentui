@@ -1,13 +1,7 @@
 jest.mock('react-dom');
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import {
-  IChartProps,
-  IChartDataPoint,
-  IHorizontalBarChartProps,
-  HorizontalBarChart,
-  HorizontalBarChartVariant,
-} from './index';
+import { IChartProps, IHorizontalBarChartProps, HorizontalBarChart, HorizontalBarChartVariant } from './index';
 import toJson from 'enzyme-to-json';
 import * as renderer from 'react-test-renderer';
 import { act } from 'react-test-renderer';
@@ -93,13 +87,13 @@ describe('HorizontalBarChart - basic props', () => {
     wrapper = mount(
       <HorizontalBarChart
         data={chartPoints}
-        onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) =>
+        /* onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) =>
           props ? (
             <div className="onRenderCalloutPerHorizonalBar">
               <p>Custom Callout Content</p>
             </div>
           ) : null
-        }
+        } */
       />,
     );
     const renderedDOM = wrapper.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
@@ -152,7 +146,7 @@ describe('HorizontalBarChart - mouse events', () => {
   });
 
   it('Should render callout correctly on mouseover', () => {
-    wrapper = mount(<HorizontalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper = mount(<HorizontalBarChart data={chartPoints} />);
     wrapper.find('rect').at(2).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
@@ -162,14 +156,13 @@ describe('HorizontalBarChart - mouse events', () => {
     wrapper = mount(
       <HorizontalBarChart
         data={chartPoints}
-        calloutProps={{ doNotLayer: true }}
-        onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) =>
+        /* onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) =>
           props ? (
             <div>
               <pre>{JSON.stringify(props, null, 2)}</pre>
             </div>
           ) : null
-        }
+        } */
       />,
     );
     wrapper.find('rect').at(0).simulate('mouseover');

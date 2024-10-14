@@ -258,7 +258,7 @@ describe('LineChart - mouse events', () => {
   it.skip('Should render callout correctly on mouseover', () => {
     act(() => {
       // document.getElementbyId() returns null if component is not attached to DOM
-      wrapper = mount(<LineChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
+      wrapper = mount(<LineChart data={chartPoints} />, { attachTo: root });
       wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
     });
     // Direct DOM changes like toggling visibility attr of verticalLine dont seem to update enzyme wrapper here
@@ -269,7 +269,7 @@ describe('LineChart - mouse events', () => {
 
   it('Should render callout correctly on mousemove', () => {
     act(() => {
-      wrapper = mount(<LineChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
+      wrapper = mount(<LineChart data={chartPoints} />, { attachTo: root });
       wrapper.find('path[id^="circle"]').at(0).simulate('mousemove');
       const html1 = wrapper.html();
       wrapper.find('path[id^="circle"]').at(1).simulate('mousemove');
@@ -284,7 +284,6 @@ describe('LineChart - mouse events', () => {
       wrapper = mount(
         <LineChart
           data={chartPoints}
-          calloutProps={{ doNotLayer: true }}
           onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
             props ? (
               <div>
@@ -307,7 +306,6 @@ describe('LineChart - mouse events', () => {
       wrapper = mount(
         <LineChart
           data={chartPoints}
-          calloutProps={{ doNotLayer: true }}
           onRenderCalloutPerStack={(props: ICustomizedCalloutData) =>
             props ? (
               <div>

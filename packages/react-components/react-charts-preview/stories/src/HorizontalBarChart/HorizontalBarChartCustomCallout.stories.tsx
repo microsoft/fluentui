@@ -5,11 +5,10 @@ import {
   IChartDataPoint,
   DataVizPalette,
   getColorFromToken,
-  PopoverComponent,
   IPopoverComponentProps,
 } from '@fluentui/react-charts-preview';
 import * as d3 from 'd3-format';
-import { Switch } from '@fluentui/react-switch';
+import { Switch } from '@fluentui/react-components';
 
 export const HorizontalBarCustomCallout = () => {
   const hideRatio: boolean[] = [true, false];
@@ -120,7 +119,7 @@ export const HorizontalBarCustomCallout = () => {
       XValue: 'Custom XVal',
       legend: 'Custom Legend',
       YValue: yValue,
-      color: color,
+      color,
       isCalloutForStack: false,
     };
   };
@@ -147,7 +146,6 @@ export const HorizontalBarCustomCallout = () => {
       <HorizontalBarChart
         data={data}
         hideRatio={hideRatio}
-        // eslint-disable-next-line react/jsx-no-bind
         barChartCustomData={(props: IChartProps) => {
           const chartData: IChartDataPoint = props!.chartData![0];
           const x = chartData.horizontalBarChartdata!.x;

@@ -180,7 +180,7 @@ export interface IBasestate {
 
 // @public
 export interface ICartesianChartProps {
-    calloutProps: Partial<IPopoverComponentProps>;
+    calloutProps?: Partial<IPopoverComponentProps>;
     // @deprecated
     chartLabel?: string;
     className?: string;
@@ -370,7 +370,7 @@ export interface IDonutChart {
 
 // @public
 export interface IDonutChartProps extends ICartesianChartProps {
-    calloutProps: Partial<IPopoverComponentProps>;
+    calloutProps?: IPopoverComponentProps;
     culture?: string;
     customProps?: (dataPointCalloutProps: IChartDataPoint) => IPopoverComponentProps;
     data?: IChartProps;
@@ -700,7 +700,7 @@ export interface IMargins {
 // @public (undocumented)
 export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     barwidth?: number;
-    calloutProps: IPopoverComponentProps;
+    calloutProps?: IPopoverComponentProps;
     chartTitle?: string;
     chartType: ChartTypes;
     children(props: IChildProps): React_2.ReactNode;

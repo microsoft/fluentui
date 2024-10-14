@@ -20,7 +20,7 @@ expect.extend(toHaveNoViolations);
 
 const originalRAF = window.requestAnimationFrame;
 
-function updateChartWidthAndHeight() {
+/* function updateChartWidthAndHeight() {
   jest.useFakeTimers();
   Object.defineProperty(window, 'requestAnimationFrame', {
     writable: true,
@@ -35,7 +35,8 @@ function updateChartWidthAndHeight() {
       top: 20,
       width: 650,
     } as DOMRect);
-}
+} */
+
 function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;

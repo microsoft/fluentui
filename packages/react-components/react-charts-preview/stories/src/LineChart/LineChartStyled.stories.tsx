@@ -72,19 +72,6 @@ export const LineChartStyled = (props: ILineChartProps) => {
           width={width}
           tickFormat={'%m/%d'}
           tickValues={[new Date('2018-01-01'), new Date('2018-02-09')]}
-          // eslint-disable-next-line react/jsx-no-bind
-
-          //onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
-          //   props ? (
-          //    <ChartHoverCard
-          //     XValue={`${props.values[0].xAxisCalloutData}`}
-          //    Legend={'Custom Legend'}
-          //    YValue={`${props.values[0].yAxisCalloutData || props.values[0].y} h`}
-          //    color={'red'}
-          //  />
-          // ) : null
-          // }
-
           enablePerfOptimization={true}
           legendProps={{
             styles: {

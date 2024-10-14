@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PopoverComponent from './Popover';
 import { getByClass, getById } from '../../utilities/TestUtility.test';
-import { act, getByText, render, screen } from '@testing-library/react';
+import { act, getByText, render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
@@ -99,7 +99,7 @@ describe('Popover', () => {
 
   test('displays the popover card correctly when Legend is undefined', () => {
     const Legend = undefined;
-    const { container } = render(<PopoverComponent Legend={Legend} isPopoverOpen={true} />);
+    const { container } = render(<PopoverComponent legend={Legend} isPopoverOpen={true} />);
     const LegendElement = getByClass(container, /calloutlegendText/)[0] as HTMLElement;
     expect(LegendElement.children[0]).toBeUndefined();
   });
