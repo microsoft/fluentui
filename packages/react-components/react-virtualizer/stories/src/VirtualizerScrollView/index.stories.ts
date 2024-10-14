@@ -1,4 +1,4 @@
-import { VirtualizerScrollView } from '@fluentui/react-components/unstable';
+import { VirtualizerScrollView } from '@fluentui/react-virtualizer';
 import descriptionMd from './VirtualizerScrollViewDescription.md';
 
 export { Default } from './Default.stories';

@@ -15,11 +15,10 @@ const memoizedMakeShadowConfig = memoizeFunction(makeShadowConfig);
 const mergeComponentStyles = memoizeFunction(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (defaultStyles: any, componentStyles: any, shadowConfig: ShadowConfig): any => {
-    return {
-      ...defaultStyles,
-      ...componentStyles,
-      __shadowConfig__: shadowConfig,
-    };
+    const styles = componentStyles ?? defaultStyles ?? {};
+    styles.__shadowConfig__ = shadowConfig;
+
+    return styles;
   },
 );
 

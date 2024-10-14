@@ -15,6 +15,15 @@ import type { SetStateAction } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+// @public
+export type DynamicVirtualizerContextProps = Required<VirtualizerContextProps>;
+
+// @public (undocumented)
+export interface IndexedResizeCallbackElement {
+    // (undocumented)
+    handleResize: () => void;
+}
+
 // @public (undocumented)
 export const renderVirtualizer_unstable: (state: VirtualizerState) => JSX.Element;
 
@@ -71,6 +80,7 @@ export const useDynamicVirtualizerMeasure: <TElement extends HTMLElement>(virtua
     bufferItems: number;
     bufferSize: number;
     scrollRef: (instance: TElement | null) => void;
+    containerSizeRef: React_2.RefObject<number>;
 };
 
 // @public
@@ -78,6 +88,15 @@ export const useIntersectionObserver: (callback: IntersectionObserverCallback, o
     setObserverList: Dispatch<SetStateAction<Element[] | undefined>>;
     setObserverInit: (newInit: IntersectionObserverInit | undefined) => void;
     observer: MutableRefObject<IntersectionObserver | undefined>;
+};
+
+// @public
+export function useMeasureList<TElement extends HTMLElement & IndexedResizeCallbackElement = HTMLElement & IndexedResizeCallbackElement>(currentIndex: number, refLength: number, totalLength: number, defaultItemSize: number): {
+    widthArray: React_2.MutableRefObject<any[]>;
+    heightArray: React_2.MutableRefObject<any[]>;
+    createIndexedRef: (index: number) => (el: TElement) => void;
+    refArray: React_2.MutableRefObject<(TElement | null | undefined)[]>;
+    sizeUpdateCount: number;
 };
 
 // @public
@@ -89,6 +108,7 @@ export const useStaticVirtualizerMeasure: <TElement extends HTMLElement>(virtual
     bufferItems: number;
     bufferSize: number;
     scrollRef: (instance: TElement | null) => void;
+    containerSizeRef: React_2.MutableRefObject<number>;
 };
 
 // @public (undocumented)
@@ -115,7 +135,7 @@ export const useVirtualizerStyles_unstable: (state: VirtualizerState) => Virtual
 // @public
 export const Virtualizer: FC<VirtualizerProps>;
 
-// @public (undocumented)
+// @public
 export type VirtualizerChildRenderFunction = (index: number, isScrolling: boolean) => React_2.ReactNode;
 
 // @public (undocumented)
@@ -125,6 +145,9 @@ export const virtualizerClassNames: SlotClassNames<VirtualizerSlots>;
 export type VirtualizerContextProps = {
     contextIndex: number;
     setContextIndex: (index: number) => void;
+    contextPosition?: number;
+    setContextPosition?: (index: number) => void;
+    childProgressiveSizes?: React_2.MutableRefObject<number[]>;
 };
 
 // @public (undocumented)
@@ -141,16 +164,20 @@ export type VirtualizerDataRef = {
 // @public (undocumented)
 export type VirtualizerMeasureDynamicProps = {
     defaultItemSize: number;
-    currentIndex: number;
+    virtualizerContext: DynamicVirtualizerContextProps;
     numItems: number;
     getItemSize: (index: number) => number;
     direction?: 'vertical' | 'horizontal';
+    bufferItems?: number;
+    bufferSize?: number;
 };
 
 // @public (undocumented)
 export type VirtualizerMeasureProps = {
     defaultItemSize: number;
     direction?: 'vertical' | 'horizontal';
+    bufferItems?: number;
+    bufferSize?: number;
 };
 
 // @public (undocumented)
@@ -169,13 +196,14 @@ export const VirtualizerScrollViewDynamic: React_2.FC<VirtualizerScrollViewDynam
 export const virtualizerScrollViewDynamicClassNames: SlotClassNames<VirtualizerScrollViewDynamicSlots>;
 
 // @public (undocumented)
-export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex'>> & {
+export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex' | 'virtualizerContext'>> & {
     itemSize: number;
     getItemSize?: (index: number) => number;
     numItems: number;
     children: VirtualizerChildRenderFunction;
     imperativeRef?: RefObject<ScrollToInterface>;
     enablePagination?: boolean;
+    virtualizerContext?: DynamicVirtualizerContextProps;
 };
 
 // @public (undocumented)

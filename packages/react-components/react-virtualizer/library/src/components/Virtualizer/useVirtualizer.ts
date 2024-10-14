@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
 import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
 
-import { useEffect, useRef, useCallback, useReducer, useImperativeHandle, useState } from 'react';
+import { useEffect, useRef, useCallback, useImperativeHandle, useState, useReducer } from 'react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-import { flushSync } from 'react-dom';
 import { useVirtualizerContextState_unstable } from '../../Utilities';
 import { slot, useTimeout } from '@fluentui/react-utilities';
+import { flushSync } from 'react-dom';
 
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {
   'use no memo';
@@ -18,12 +18,14 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     getItemSize,
     bufferItems = Math.round(virtualizerLength / 4.0),
     bufferSize = Math.floor(bufferItems / 2.0) * itemSize,
-    scrollViewRef,
     axis = 'vertical',
     reversed = false,
     virtualizerContext,
     onRenderedFlaggedIndex,
     imperativeVirtualizerRef,
+    containerSizeRef,
+    scrollViewRef,
+    enableScrollLoad,
   } = props;
 
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
@@ -31,13 +33,20 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   // We use this ref as a constant source to access the virtualizer's state imperatively
   const actualIndexRef = useRef<number>(_virtualizerContext.contextIndex);
-  if (actualIndexRef.current !== _virtualizerContext.contextIndex) {
-    actualIndexRef.current = _virtualizerContext.contextIndex;
-  }
   const flaggedIndex = useRef<number | null>(null);
 
   const actualIndex = _virtualizerContext.contextIndex;
-  const setActualIndex = _virtualizerContext.setContextIndex;
+  // Just in case our ref gets out of date vs the context during a re-render
+  if (_virtualizerContext.contextIndex !== actualIndexRef.current) {
+    actualIndexRef.current = _virtualizerContext.contextIndex;
+  }
+  const setActualIndex = useCallback(
+    (index: number) => {
+      actualIndexRef.current = index;
+      _virtualizerContext.setContextIndex(index);
+    },
+    [_virtualizerContext],
+  );
 
   // Store ref to before padding element
   const beforeElementRef = useRef<Element | null>(null);
@@ -51,14 +60,12 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   /* We keep track of the progressive sizing/placement down the list,
   this helps us skip re-calculations unless children/size changes */
   const childProgressiveSizes = useRef<number[]>(new Array<number>(getItemSize ? numItems : 0));
+  if (virtualizerContext?.childProgressiveSizes) {
+    virtualizerContext.childProgressiveSizes.current = childProgressiveSizes.current;
+  }
 
   // The internal tracking REF for child array (updates often).
   const childArray = useRef<ReactNode[]>(new Array(virtualizerLength));
-
-  // We want to be methodical about updating the render with child reference array
-  const forceUpdate = useReducer(() => ({}), {})[1];
-
-  const horizontal = axis === 'horizontal';
 
   const populateSizeArrays = () => {
     if (!getItemSize) {
@@ -72,6 +79,9 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     if (numItems !== childProgressiveSizes.current.length) {
       childProgressiveSizes.current = new Array<number>(numItems);
+      if (virtualizerContext?.childProgressiveSizes) {
+        virtualizerContext.childProgressiveSizes.current = childProgressiveSizes.current;
+      }
     }
 
     for (let index = 0; index < numItems; index++) {
@@ -89,6 +99,10 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   const scrollCounter = useRef<number>(0);
 
   const initializeScrollingTimer = useCallback(() => {
+    if (!enableScrollLoad) {
+      // Disabled by default for reduction of render callbacks
+      return;
+    }
     /*
      * This can be considered the 'velocity' required to start 'isScrolling'
      * INIT_SCROLL_FLAG_REQ: Number of renders required to activate isScrolling
@@ -107,175 +121,134 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       setIsScrolling(false);
       scrollCounter.current = 0;
     }, INIT_SCROLL_FLAG_DELAY);
-  }, [clearScrollTimer, setScrollTimer]);
+  }, [clearScrollTimer, setScrollTimer, enableScrollLoad]);
 
   useEffect(() => {
     initializeScrollingTimer();
   }, [actualIndex, initializeScrollingTimer]);
 
-  const batchUpdateNewIndex = (index: number) => {
-    // Local updates
-    updateChildRows(index);
-    updateCurrentItemSizes(index);
-
-    // Set before 'setActualIndex' call
-    // If it changes before render, or injected via context, re-render will update ref.
-    actualIndexRef.current = index;
-
-    // State setters
-    setActualIndex(index);
-  };
-
-  // Observe intersections of virtualized components
-  const { setObserverList } = useIntersectionObserver(
-    // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-    // eslint-disable-next-line no-restricted-globals
-    (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
-      /* Sanity check - do we even need virtualization? */
-      if (virtualizerLength > numItems) {
-        if (actualIndex !== 0) {
-          batchUpdateNewIndex(0);
-        }
-        // No-op
+  const updateChildRows = useCallback(
+    (newIndex: number) => {
+      if (numItems === 0) {
+        /* Nothing to virtualize */
         return;
       }
 
-      /* IO initiates this function when needed (bookend entering view) */
-      let measurementPos = 0;
-      let bufferCount = bufferItems;
-
-      // Grab latest entry that is intersecting
-      const latestEntry =
-        entries.length === 1
-          ? entries[0]
-          : entries
-              .sort((entry1, entry2) => entry2.time - entry1.time)
-              .find(entry => {
-                return entry.intersectionRatio > 0;
-              });
-
-      if (!latestEntry) {
-        // If we don't find an intersecting area, ignore for now.
-        return;
-      }
-
-      if (latestEntry.target === afterElementRef.current) {
-        // We need to inverse the buffer count
-        bufferCount = virtualizerLength - bufferItems;
-        measurementPos = reversed ? calculateAfter() : calculateTotalSize() - calculateAfter();
-        if (!horizontal) {
-          if (reversed) {
-            // Scrolling 'up' and hit the after element below
-            measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
-          } else if (latestEntry.boundingClientRect.top < 0) {
-            // Scrolling 'down' and hit the after element above top: 0
-            measurementPos -= latestEntry.boundingClientRect.top;
-          }
-        } else {
-          if (reversed) {
-            // Scrolling 'left' and hit the after element
-            measurementPos -= Math.abs(latestEntry.boundingClientRect.right);
-          } else if (latestEntry.boundingClientRect.left < 0) {
-            // Scrolling 'right' and hit the after element
-            measurementPos -= latestEntry.boundingClientRect.left;
-          }
-        }
-      } else if (latestEntry.target === beforeElementRef.current) {
-        measurementPos = reversed ? calculateTotalSize() - calculateBefore() : calculateBefore();
-        if (!horizontal) {
-          if (!reversed) {
-            measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
-          } else if (latestEntry.boundingClientRect.top < 0) {
-            // Scrolling 'down' in reverse order and hit the before element above top: 0
-            measurementPos -= latestEntry.boundingClientRect.top;
-          }
-        } else {
-          if (!reversed) {
-            measurementPos -= Math.abs(latestEntry.boundingClientRect.right);
-          } else if (latestEntry.boundingClientRect.left < 0) {
-            // Scrolling 'left' and hit before element
-            measurementPos -= latestEntry.boundingClientRect.left;
-          }
-        }
-      }
-
-      if (reversed) {
-        // We're reversed, up is down, left is right, invert the scroll measure.
-        measurementPos = Math.max(calculateTotalSize() - Math.abs(measurementPos), 0);
-      }
-
-      // For now lets use hardcoded size to assess current element to paginate on
-      const startIndex = getIndexFromScrollPosition(measurementPos);
-      const bufferedIndex = Math.max(startIndex - bufferCount, 0);
-
-      // Safety limits
-      const maxIndex = Math.max(numItems - virtualizerLength, 0);
-      const newStartIndex = Math.min(Math.max(bufferedIndex, 0), maxIndex);
-
-      if (actualIndex !== newStartIndex) {
-        // We flush sync this and perform an immediate state update
-        flushSync(() => {
-          batchUpdateNewIndex(newStartIndex);
-        });
+      /*
+        We reset the array every time to ensure children are re-rendered
+        This function should only be called when update is nessecary
+       */
+      childArray.current = new Array(virtualizerLength);
+      const _actualIndex = Math.max(newIndex, 0);
+      const end = Math.min(_actualIndex + virtualizerLength, numItems);
+      for (let i = _actualIndex; i < end; i++) {
+        childArray.current[i - _actualIndex] = renderChild(i, isScrolling);
       }
     },
-    {
-      root: scrollViewRef ? scrollViewRef?.current : null,
-      rootMargin: '0px',
-      threshold: 0,
-    },
+    [isScrolling, numItems, renderChild, virtualizerLength],
   );
 
-  const findIndexRecursive = (scrollPos: number, lowIndex: number, highIndex: number): number => {
-    if (lowIndex > highIndex) {
-      // We shouldn't get here - but no-op the index if we do.
-      return actualIndex;
-    }
-    const midpoint = Math.floor((lowIndex + highIndex) / 2);
-    const iBefore = Math.max(midpoint - 1, 0);
-    const iAfter = Math.min(midpoint + 1, childProgressiveSizes.current.length - 1);
-    const indexValue = childProgressiveSizes.current[midpoint];
-    const afterIndexValue = childProgressiveSizes.current[iAfter];
-    const beforeIndexValue = childProgressiveSizes.current[iBefore];
-    if (scrollPos <= afterIndexValue && scrollPos >= beforeIndexValue) {
-      /* We've found our index - if we are exactly matching before/after index that's ok,
+  const updateCurrentItemSizes = useCallback(
+    (newIndex: number) => {
+      if (!getItemSize) {
+        // Static sizes, not required.
+        return;
+      }
+      // We should always call our size function on index change (only for the items that will be rendered)
+      // This ensures we request the latest data for incoming items in case sizing has changed.
+      const endIndex = Math.min(newIndex + virtualizerLength, numItems);
+      const startIndex = Math.max(newIndex, 0);
+
+      let didUpdate = false;
+      for (let i = startIndex; i < endIndex; i++) {
+        const newSize = getItemSize(i);
+        if (newSize !== childSizes.current[i]) {
+          childSizes.current[i] = newSize;
+          didUpdate = true;
+        }
+      }
+
+      if (didUpdate) {
+        // Update our progressive size array
+        for (let i = startIndex; i < numItems; i++) {
+          const prevSize = i > 0 ? childProgressiveSizes.current[i - 1] : 0;
+          childProgressiveSizes.current[i] = prevSize + childSizes.current[i];
+        }
+      }
+    },
+    [getItemSize, numItems, virtualizerLength],
+  );
+
+  const batchUpdateNewIndex = useCallback(
+    (index: number) => {
+      // Local updates
+      updateChildRows(index);
+      updateCurrentItemSizes(index);
+
+      // State setters
+      setActualIndex(index);
+    },
+    [setActualIndex, updateChildRows, updateCurrentItemSizes],
+  );
+
+  const findIndexRecursive = useCallback(
+    (scrollPos: number, lowIndex: number, highIndex: number): number => {
+      if (lowIndex > highIndex) {
+        // We shouldn't get here - but no-op the index if we do.
+        return actualIndex;
+      }
+      const midpoint = Math.floor((lowIndex + highIndex) / 2);
+      const iBefore = Math.max(midpoint - 1, 0);
+      const iAfter = Math.min(midpoint + 1, childProgressiveSizes.current.length - 1);
+      const indexValue = childProgressiveSizes.current[midpoint];
+      const afterIndexValue = childProgressiveSizes.current[iAfter];
+      const beforeIndexValue = childProgressiveSizes.current[iBefore];
+      if (scrollPos <= afterIndexValue && scrollPos >= beforeIndexValue) {
+        /* We've found our index - if we are exactly matching before/after index that's ok,
       better to reduce checks if it's right on the boundary. */
-      return midpoint;
-    }
+        return midpoint;
+      }
 
-    if (indexValue > scrollPos) {
-      return findIndexRecursive(scrollPos, lowIndex, midpoint - 1);
-    } else {
-      return findIndexRecursive(scrollPos, midpoint + 1, highIndex);
-    }
-  };
+      if (indexValue > scrollPos) {
+        return findIndexRecursive(scrollPos, lowIndex, midpoint - 1);
+      } else {
+        return findIndexRecursive(scrollPos, midpoint + 1, highIndex);
+      }
+    },
+    [actualIndex],
+  );
 
-  const getIndexFromSizeArray = (scrollPos: number): number => {
-    /* Quick searches our progressive height array */
-    if (
-      scrollPos === 0 ||
-      childProgressiveSizes.current.length === 0 ||
-      scrollPos <= childProgressiveSizes.current[0]
-    ) {
-      // Check start
-      return 0;
-    }
+  const getIndexFromSizeArray = useCallback(
+    (scrollPos: number): number => {
+      /* Quick searches our progressive height array */
+      if (
+        scrollPos === 0 ||
+        childProgressiveSizes.current.length === 0 ||
+        scrollPos <= childProgressiveSizes.current[0]
+      ) {
+        // Check start
+        return 0;
+      }
 
-    if (scrollPos >= childProgressiveSizes.current[childProgressiveSizes.current.length - 1]) {
-      // Check end
-      return childProgressiveSizes.current.length - 1;
-    }
+      if (scrollPos >= childProgressiveSizes.current[childProgressiveSizes.current.length - 1]) {
+        // Check end
+        return childProgressiveSizes.current.length - 1;
+      }
 
-    return findIndexRecursive(scrollPos, 0, childProgressiveSizes.current.length - 1);
-  };
+      return findIndexRecursive(scrollPos, 0, childProgressiveSizes.current.length - 1);
+    },
+    [findIndexRecursive],
+  );
+  const getIndexFromScrollPosition = useCallback(
+    (scrollPos: number) => {
+      if (!getItemSize) {
+        return Math.round(scrollPos / itemSize);
+      }
 
-  const getIndexFromScrollPosition = (scrollPos: number) => {
-    if (!getItemSize) {
-      return Math.round(scrollPos / itemSize);
-    }
-
-    return getIndexFromSizeArray(scrollPos);
-  };
+      return getIndexFromSizeArray(scrollPos);
+    },
+    [getIndexFromSizeArray, getItemSize, itemSize],
+  );
 
   const calculateTotalSize = useCallback(() => {
     if (!getItemSize) {
@@ -318,25 +291,146 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     return childProgressiveSizes.current[numItems - 1] - childProgressiveSizes.current[lastItemIndex - 1];
   }, [actualIndex, getItemSize, itemSize, numItems, virtualizerLength]);
 
-  const updateChildRows = useCallback(
-    (newIndex: number) => {
-      if (numItems === 0) {
-        /* Nothing to virtualize */
-        return;
-      }
+  // Observe intersections of virtualized components
+  const { setObserverList } = useIntersectionObserver(
+    useCallback(
+      // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
+      // eslint-disable-next-line no-restricted-globals
+      (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+        /* Sanity check - do we even need virtualization? */
+        if (virtualizerLength > numItems) {
+          if (actualIndex !== 0) {
+            batchUpdateNewIndex(0);
+          }
+          // No-op
+          return;
+        }
 
-      /*
-        We reset the array every time to ensure children are re-rendered
-        This function should only be called when update is nessecary
-       */
-      childArray.current = new Array(virtualizerLength);
-      const _actualIndex = Math.max(newIndex, 0);
-      const end = Math.min(_actualIndex + virtualizerLength, numItems);
-      for (let i = _actualIndex; i < end; i++) {
-        childArray.current[i - _actualIndex] = renderChild(i, isScrolling);
-      }
+        // Grab latest entry that is intersecting
+        const latestEntry =
+          entries.length === 1
+            ? entries[0]
+            : entries
+                .sort((entry1, entry2) => entry2.time - entry1.time)
+                .find(entry => {
+                  return entry.intersectionRatio > 0;
+                });
+
+        if (!latestEntry || !latestEntry.isIntersecting) {
+          // If we don't find an intersecting area, ignore for now.
+          return;
+        }
+
+        // We have to be sure our item sizes are up to date with current indexed ref before calculation
+        // Check if we still need
+        updateCurrentItemSizes(actualIndexRef.current);
+
+        const calculateOverBuffer = (): number => {
+          /**
+           * We avoid using the scroll ref scrollTop, it may be incorrect
+           * as virtualization may exist within a scroll view with other elements
+           * The benefit of using IO is that we can detect relative scrolls,
+           * so any items can be placed around the virtualizer in the scroll view
+           */
+          let measurementPos = 0;
+          if (latestEntry.target === afterElementRef.current) {
+            // Get after buffers position
+            measurementPos = calculateTotalSize() - calculateAfter();
+
+            // Get exact intersection position based on overflow size (how far into IO did we scroll?)
+            const overflowAmount =
+              axis === 'vertical' ? latestEntry.intersectionRect.height : latestEntry.intersectionRect.width;
+            // Add to original after position
+            measurementPos += overflowAmount;
+            // Ignore buffer size (IO offset)
+            measurementPos -= bufferSize;
+            // we hit the after buffer and detected the end of view, we need to find the start index.
+            measurementPos -= containerSizeRef.current ?? 0;
+
+            // Calculate how far past the window bounds we are (this will be zero if IO is within window)
+            const hOverflow = latestEntry.boundingClientRect.top - latestEntry.intersectionRect.top;
+            const hOverflowReversed = latestEntry.boundingClientRect.bottom - latestEntry.intersectionRect.bottom;
+            const wOverflow = latestEntry.boundingClientRect.left - latestEntry.intersectionRect.left;
+            const wOverflowReversed = latestEntry.boundingClientRect.right - latestEntry.intersectionRect.right;
+            const widthOverflow = reversed ? wOverflowReversed : wOverflow;
+            const heightOverflow = reversed ? hOverflowReversed : hOverflow;
+            const additionalOverflow = axis === 'vertical' ? heightOverflow : widthOverflow;
+
+            if (reversed) {
+              measurementPos += additionalOverflow;
+            } else {
+              measurementPos -= additionalOverflow;
+            }
+          } else if (latestEntry.target === beforeElementRef.current) {
+            // Get before buffers position
+            measurementPos = calculateBefore();
+            // Get exact intersection position based on overflow size (how far into window did we scroll IO?)
+            const overflowAmount =
+              axis === 'vertical' ? latestEntry.intersectionRect.height : latestEntry.intersectionRect.width;
+            // Minus from original before position
+            measurementPos -= overflowAmount;
+            // Ignore buffer size (IO offset)
+            measurementPos += bufferSize;
+
+            // Calculate how far past the window bounds we are (this will be zero if IO is within window)
+            const hOverflow = latestEntry.boundingClientRect.bottom - latestEntry.intersectionRect.bottom;
+            const hOverflowReversed = latestEntry.boundingClientRect.top - latestEntry.intersectionRect.top;
+            const wOverflow = latestEntry.boundingClientRect.right - latestEntry.intersectionRect.right;
+            const wOverflowReversed = latestEntry.boundingClientRect.left - latestEntry.intersectionRect.left;
+            const widthOverflow = reversed ? wOverflowReversed : wOverflow;
+            const heightOverflow = reversed ? hOverflowReversed : hOverflow;
+            const additionalOverflow = axis === 'vertical' ? heightOverflow : widthOverflow;
+
+            if (reversed) {
+              measurementPos += additionalOverflow;
+            } else {
+              measurementPos -= additionalOverflow;
+            }
+          }
+
+          return measurementPos;
+        };
+
+        // Get exact relative 'scrollTop' via IO values
+        const measurementPos = calculateOverBuffer();
+
+        const maxIndex = Math.max(numItems - virtualizerLength, 0);
+
+        const startIndex = getIndexFromScrollPosition(measurementPos) - bufferItems;
+
+        // Safety limits
+        const newStartIndex = Math.min(Math.max(startIndex, 0), maxIndex);
+
+        flushSync(() => {
+          _virtualizerContext.setContextPosition(measurementPos);
+          if (actualIndex !== newStartIndex) {
+            batchUpdateNewIndex(newStartIndex);
+          }
+        });
+      },
+      [
+        _virtualizerContext,
+        actualIndex,
+        axis,
+        batchUpdateNewIndex,
+        bufferItems,
+        bufferSize,
+        calculateAfter,
+        calculateBefore,
+        calculateTotalSize,
+        containerSizeRef,
+        getIndexFromScrollPosition,
+        numItems,
+        reversed,
+        updateCurrentItemSizes,
+        virtualizerLength,
+      ],
+    ),
+    {
+      root: scrollViewRef ? scrollViewRef?.current : null,
+      rootMargin: '0px',
+      threshold: 0,
     },
-    [isScrolling, numItems, renderChild, virtualizerLength],
   );
 
   const setBeforeRef = useCallback(
@@ -379,34 +473,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     [setObserverList],
   );
 
-  const updateCurrentItemSizes = (newIndex: number) => {
-    if (!getItemSize) {
-      // Static sizes, not required.
-      return;
-    }
-    // We should always call our size function on index change (only for the items that will be rendered)
-    // This ensures we request the latest data for incoming items in case sizing has changed.
-    const endIndex = Math.min(newIndex + virtualizerLength, numItems);
-    const startIndex = Math.max(newIndex, 0);
-
-    let didUpdate = false;
-    for (let i = startIndex; i < endIndex; i++) {
-      const newSize = getItemSize(i);
-      if (newSize !== childSizes.current[i]) {
-        childSizes.current[i] = newSize;
-        didUpdate = true;
-      }
-    }
-
-    if (didUpdate) {
-      // Update our progressive size array
-      for (let i = startIndex; i < numItems; i++) {
-        const prevSize = i > 0 ? childProgressiveSizes.current[i - 1] : 0;
-        childProgressiveSizes.current[i] = prevSize + childSizes.current[i];
-      }
-    }
-  };
-
   // Initialize the size array before first render.
   const hasInitialized = useRef<boolean>(false);
   const initializeSizeArray = () => {
@@ -438,14 +504,22 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /*
+   * forceUpdate:
+   * We only want to trigger this when scrollLoading is enabled and set to false,
+   * it will force re-render all children elements
+   */
+  const forceUpdate = useReducer(() => ({}), {})[1];
   // If the user passes in an updated renderChild function - update current children
   useEffect(() => {
     if (actualIndex >= 0) {
       updateChildRows(actualIndex);
-      forceUpdate();
+      if (enableScrollLoad && !isScrolling) {
+        forceUpdate();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [renderChild, updateChildRows]);
+  }, [renderChild, isScrolling]);
 
   useEffect(() => {
     // Ensure we repopulate if getItemSize callback changes

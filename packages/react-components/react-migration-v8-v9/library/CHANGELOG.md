@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Fri, 13 Sep 2024 00:49:25 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2024 22:05:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.34)
+
+Tue, 08 Oct 2024 22:05:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.33..@fluentui/react-migration-v8-v9_v9.6.34)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.55.0 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+
+## [9.6.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.33)
+
+Thu, 26 Sep 2024 14:15:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.32..@fluentui/react-migration-v8-v9_v9.6.33)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.54.17 ([PR #32924](https://github.com/microsoft/fluentui/pull/32924) by beachball)
+
+## [9.6.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.32)
+
+Mon, 23 Sep 2024 12:40:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.31..@fluentui/react-migration-v8-v9_v9.6.32)
+
+### Patches
+
+- fix: cleanup production dependencies and fix forbidden sub-package import within Menu ([PR #32359](https://github.com/microsoft/fluentui/pull/32359) by martinhochel@microsoft.com)
+- Bump @fluentui/react-components to v9.54.16 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
 
 ## [9.6.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.31)
 

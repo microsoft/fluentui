@@ -155,7 +155,6 @@ export const styles = css`
   }
 
   ::slotted(*) {
-    display: inherit;
     font: inherit;
     line-height: inherit;
     text-decoration-line: inherit;

@@ -1,83 +1,68 @@
 import { html } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities';
-import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
-import { renderComponent } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Radio as FluentRadio } from './radio.js';
+
+type Story = StoryObj<FluentRadio>;
 
 const storyTemplate = html<StoryArgs<FluentRadio>>`
   <fluent-radio
-    slot="${x => x.slot}"
-    id="${x => x.id}"
-    ?checked="${x => x.checked}"
-    ?disabled="${x => x.disabled}"
-    name="${x => x.name}"
-    ?required="${x => x.required}"
-    value="${x => x.value}"
+    id="${story => story.id}"
+    ?checked="${story => story.checked}"
+    ?disabled="${story => story.disabled}"
+    name="${story => story.name}"
+    ?required="${story => story.required}"
+    value="${story => story.value}"
   ></fluent-radio>
-`;
-
-const fieldTemplate = html<StoryArgs<FluentRadio>>`
-  <fluent-field label-position="after">
-    <label slot="label">${x => x.value}</label>
-    ${storyTemplate}
-  </fluent-field>
 `;
 
 export default {
   title: 'Components/Radio',
-  args: {
-    slot: 'input',
-  },
+  render: renderComponent(storyTemplate),
   argTypes: {
     checked: {
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        type: {
-          summary: 'Sets checked state on radio',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
-      },
+      control: 'boolean',
+      description: 'Sets checked state on radio',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
     },
     disabled: {
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        type: {
-          summary: 'Sets disabled state on radio',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
-      },
+      control: 'boolean',
+      description: 'Sets disabled state on radio',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
     },
-    slot: { table: { disable: true } },
   },
 } as Meta<FluentRadio>;
 
-export const Radio: Story<FluentRadio> = renderComponent(storyTemplate).bind({});
-Radio.args = {
-  slot: null,
-  checked: false,
-  disabled: false,
+export const Default: Story = {};
+
+export const Checked: Story = {
+  args: {
+    checked: true,
+  },
 };
 
-export const Checked: Story<FluentRadio> = renderComponent(html<StoryArgs<FluentRadio>>`
-  <fluent-radio checked value="Apple"></fluent-radio>
-`);
-
-export const Disabled: Story<FluentRadio> = renderComponent(fieldTemplate).bind({});
-Disabled.args = {
-  value: 'Disabled Radio',
-  disabled: true,
+export const Disabled: Story = {
+  args: {
+    value: 'Disabled Radio',
+    disabled: true,
+  },
 };
 
-export const Field: Story<FluentRadio> = renderComponent(fieldTemplate).bind({});
-Field.args = {
-  id: uniqueId('radio-'),
-  value: 'Apple',
+export const Field: Story = {
+  render: renderComponent(html<StoryArgs<FluentRadio>>`
+    <fluent-field label-position="after">
+      <label slot="label">${story => story.value}</label>
+      <fluent-radio
+        slot="input"
+        id="${story => story.id}"
+        ?checked="${story => story.checked}"
+        ?disabled="${story => story.disabled}"
+        name="${story => story.name}"
+        ?required="${story => story.required}"
+        value="${story => story.value}"
+      ></fluent-radio>
+    </fluent-field>
+  `),
+  args: {
+    value: 'Apple',
+  },
 };

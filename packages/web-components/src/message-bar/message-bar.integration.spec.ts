@@ -4,7 +4,7 @@ import type { MessageBar } from './message-bar.js';
 
 test.describe('Message Bar', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-messagebar--message'));
+    await page.goto(fixtureURL('components-messagebar--default'));
     await page.waitForFunction(() => customElements.whenDefined('fluent-message-bar'));
   });
 
