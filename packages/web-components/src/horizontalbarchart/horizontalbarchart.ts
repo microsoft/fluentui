@@ -134,6 +134,7 @@ export class HorizontalBarChart extends FASTElement {
   private bindEvents() {}
 
   connectedCallback() {
+    super.connectedCallback();
     this.render();
   }
 
@@ -201,7 +202,7 @@ export class HorizontalBarChart extends FASTElement {
   }
 
   render() {
-    const div = d3.select(this.shadowRoot).append('div').attr('width', 800).attr('height', 400);
+    const div = d3.select(this.shadowRoot).append('div');
     div
       .append('div')
       .selectAll('div')
@@ -330,9 +331,15 @@ export class HorizontalBarChart extends FASTElement {
 
     let tooltip: any;
 
+    containerDiv
+      .append('span')
+      .attr('class', 'chartTitle')
+      .text(data?.chartTitle ? data?.chartTitle : '');
+
     const svgEle = containerDiv
       .append('svg')
       .attr('height', 20)
+      .attr('width', 100 + '%')
       .attr('aria-label', data?.chartTitle ? data?.chartTitle : '')
       .selectAll('g')
       .data(data.chartData!)
@@ -349,13 +356,13 @@ export class HorizontalBarChart extends FASTElement {
        `;
         tooltip = containerDiv
           .append('div')
+          .attr('class', 'tooltip')
           .attr(
             'style',
-            'position:absolute; display: grid; overflow: hidden; padding: 11px 16px 10px 16px;  backgroundColor: theme.semanticColors.bodyBackground; backgroundBlendMode: normal, luminosity; text-align:center; font:12px sans-serif; background:white; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); border:2px; pointer-events:none; opacity:0;' +
-              'opacity: 1; left: ' +
+            'opacity: 1; left: ' +
               (event.pageX - containerDiv.node()!.getBoundingClientRect().left + window.scrollX) +
               'px; top: ' +
-              (event.pageY - (containerDiv.node()!.getBoundingClientRect().top + window.scrollY) - 68) +
+              (event.pageY - (containerDiv.node()!.getBoundingClientRect().top + window.scrollY) - 40) +
               'px;',
           );
         tooltip.html(tooltipHTML);
