@@ -64,7 +64,7 @@ function createNodesInternal(
 
   return {
     projects: {
-      [projectRoot]: { targets: targetsConfig, metadata: { description: 'zoro' } },
+      [projectRoot]: { targets: targetsConfig },
     },
   };
 }
