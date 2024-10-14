@@ -13,9 +13,26 @@ export const renderSplitNavItem_unstable = (state: SplitNavItemState) => {
   return (
     <state.root>
       {state.navItem && <state.navItem />}
-      {state.actionButton && <state.actionButton />}
-      {state.toggleButton && <state.toggleButton />}
-      {state.menuButton && <state.menuButton />}
+      {state.actionButton && state.actionButtonTooltip && (
+        <state.actionButtonTooltip>
+          <state.actionButton />
+        </state.actionButtonTooltip>
+      )}
+      {state.actionButton && !state.actionButtonTooltip && <state.actionButton />}
+
+      {state.toggleButton && state.toggleButtonTooltip && (
+        <state.toggleButtonTooltip>
+          <state.toggleButton />
+        </state.toggleButtonTooltip>
+      )}
+      {state.toggleButton && !state.toggleButtonTooltip && <state.toggleButton />}
+
+      {state.menuButton && state.menuButtonTooltip && (
+        <state.menuButtonTooltip>
+          <state.menuButton />
+        </state.menuButtonTooltip>
+      )}
+      {state.menuButton && !state.menuButtonTooltip && <state.menuButton />}
     </state.root>
   );
 };

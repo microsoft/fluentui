@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-nav-preview
 
-This log was last generated on Thu, 26 Sep 2024 14:15:28 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2024 22:05:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.9.0)
+
+Tue, 08 Oct 2024 22:05:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.8.1..@fluentui/react-nav-preview_v0.9.0)
+
+### Minor changes
+
+- feat: Build out SplitNavItem ([PR #32873](https://github.com/microsoft/fluentui/pull/32873) by matejera@microsoft.com)
+- feat: Add props for SplitSubNavItems and Tooltips. Other pixel pushing on SplitNavItem ([PR #32964](https://github.com/microsoft/fluentui/pull/32964) by matejera@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.7 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-button to v9.3.93 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-tooltip to v9.4.40 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-drawer to v9.5.17 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-tabster to v9.22.8 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
 
 ## [0.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.8.1)
 

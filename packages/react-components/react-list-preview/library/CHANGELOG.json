@@ -2,6 +2,35 @@
   "name": "@fluentui/react-list-preview",
   "entries": [
     {
+      "date": "Tue, 08 Oct 2024 22:05:57 GMT",
+      "tag": "@fluentui/react-list-preview_v0.3.8",
+      "version": "0.3.8",
+      "comments": {
+        "none": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "22fbb428ace328b43839f81038758740bf8c1a9f",
+            "comment": "fix: List V9 - update stories to work with dark themes"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list-preview",
+            "comment": "Bump @fluentui/react-checkbox to v9.2.38",
+            "commit": "2b9483934958dd8abcbe8181c68286f4711b9aac"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.22.8",
+            "commit": "2b9483934958dd8abcbe8181c68286f4711b9aac"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Sep 2024 12:40:13 GMT",
       "tag": "@fluentui/react-list-preview_v0.3.7",
       "version": "0.3.7",

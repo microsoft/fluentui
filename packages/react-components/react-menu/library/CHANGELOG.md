@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Mon, 23 Sep 2024 12:40:14 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Oct 2024 22:05:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.14.17)
+
+Tue, 08 Oct 2024 22:05:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.14.16..@fluentui/react-menu_v9.14.17)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.7 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-portal to v9.4.36 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-tabster to v9.22.8 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
 
 ## [9.14.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.14.16)
 
