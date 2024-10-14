@@ -539,9 +539,11 @@ test.describe('Menu', () => {
       `);
 
       const [wasChanged] = await Promise.all([
-        menuItems.nth(0).evaluate(
-          node => new Promise(resolve => node.addEventListener('change', () => resolve(true), { once: true })),
-        ),
+        menuItems
+          .nth(0)
+          .evaluate(
+            node => new Promise(resolve => node.addEventListener('change', () => resolve(true), { once: true })),
+          ),
         menuItems.nth(0).evaluate((node: MenuItem) => {
           node.checked = true;
         }),
@@ -564,26 +566,26 @@ test.describe('Menu', () => {
       `);
 
       let wasChanged = menuItems.nth(0).evaluate((node: MenuItem) => {
-          return new Promise(resolve => {
-              node.addEventListener('change', (evt) => {
-                resolve((evt as any).detail)
-              });
+        return new Promise(resolve => {
+          node.addEventListener('change', evt => {
+            resolve((evt as any).detail);
           });
+        });
       });
 
-        await menuItems.nth(0).click();
-        await expect(wasChanged).resolves.toBeTruthy();
+      await menuItems.nth(0).click();
+      await expect(wasChanged).resolves.toBeTruthy();
 
-        wasChanged = menuItems.nth(0).evaluate((node: MenuItem) => {
-          return new Promise(resolve => {
-              node.addEventListener('change', (evt) => {
-                resolve((evt as any).detail)
-              });
+      wasChanged = menuItems.nth(0).evaluate((node: MenuItem) => {
+        return new Promise(resolve => {
+          node.addEventListener('change', evt => {
+            resolve((evt as any).detail);
           });
+        });
       });
 
       await menuItems.nth(1).click();
       await expect(wasChanged).resolves.toBeFalsy();
     });
-    });
+  });
 });
