@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/schema",
   "version": 2,
   "title": "Build executor",
-  "description": "Builds TS files with SWC to specified JS module type, transforms *.styles.* files via Babel(Griffel) and copies provided Assets.",
+  "description": "Transpiles TS files with SWC to specified JS module type, Generates rolluped .d.ts + api.md, transforms *.styles.* files via Babel(Griffel) and copies provided Assets.",
   "type": "object",
   "properties": {
     "sourceRoot": {
@@ -27,6 +27,11 @@
         },
         "required": ["module", "outputPath"]
       }
+    },
+    "generateApi": {
+      "type": "boolean",
+      "description": "Generate rolluped 'd.ts' bundle including 'api.md' that provides project public API",
+      "default": true
     },
     "assets": {
       "type": "array",

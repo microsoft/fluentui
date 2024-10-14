@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feature: add rounded tab variant",
+  "packageName": "@fluentui/react-tabs",
+  "email": "kirpadv@gmail.com",
+  "dependentChangeType": "patch"
+}
