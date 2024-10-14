@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-charts-preview';
 
 export default {
-  title: 'react-charts-preview/LineChart',
+  title: 'Charts/LineChart',
 
   decorators: [
     TestWrapperDecorator,
@@ -315,7 +315,7 @@ export const EventsRTL = getStoryVariant(Events, RTL);
 export const EventsDarkMode = getStoryVariant(Events, DARK_MODE);
 
 export const Multiple = () => {
-  const _onLegendClickHandler = (selectedLegend: string | null): void => {
+  const _onLegendClickHandler = (selectedLegend: string | string[] | null): void => {
     if (selectedLegend !== null) {
       console.log(`Selected legend - ${selectedLegend}`);
     }
@@ -820,9 +820,6 @@ export const Gaps = () => {
           height={300}
           width={700}
           margins={margins}
-          calloutProps={{
-            calloutMaxWidth: 200,
-          }}
           getCalloutDescriptionMessage={_calculateCalloutDescription}
           enablePerfOptimization={true}
         />

@@ -5,7 +5,7 @@ import { Steps, StoryWright } from 'storywright';
 import { IChartProps, IChartDataPoint, DonutChart } from '@fluentui/react-charts-preview';
 
 export default {
-  title: 'react-charts-preview/DonutChart',
+  title: 'Charts/DonutChart',
 
   decorators: [
     (story, context) => TestWrapperDecorator(story, context),

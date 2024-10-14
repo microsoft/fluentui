@@ -5,7 +5,7 @@ import { Steps, StoryWright } from 'storywright';
 import { ILineChartLineOptions, IVerticalBarChartDataPoint, VerticalBarChart } from '@fluentui/react-charts-preview';
 
 export default {
-  title: 'react-charts-preview/VerticalBarChart',
+  title: 'Charts/VerticalBarChart',
 
   decorators: [
     (story, context) => TestWrapperDecorator(story, context),

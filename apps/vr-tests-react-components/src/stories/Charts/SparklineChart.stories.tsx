@@ -5,7 +5,7 @@ import { Steps, StoryWright } from 'storywright';
 import { IChartProps, Sparkline } from '@fluentui/react-charts-preview';
 
 export default {
-  title: 'react-charts-preview/SparkLineChart',
+  title: 'Charts/SparkLineChart',
 
   decorators: [
     (story, context) => TestWrapperDecorator(story, context),
