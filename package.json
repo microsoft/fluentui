@@ -21,7 +21,7 @@
     "create-package": "yarn nx g @fluentui/workspace-plugin:react-library",
     "format": "node scripts/executors/src/format.js",
     "generate-version-files": "node -r ./scripts/ts-node/src/register ./scripts/generators/src/generate-version-files",
-    "postinstall": "node ./scripts/package-manager/src/postinstall.js",
+    "postinstall": "npx patch-package && node ./scripts/package-manager/src/postinstall.js",
     "preinstall": "node ./scripts/package-manager/src/preinstall.js",
     "publish:beachball": "beachball publish -b origin/master --access public -y",
     "start": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/start",
