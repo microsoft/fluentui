@@ -7,6 +7,7 @@ steps:
     displayName: yarn (install packages)
 
   - script: |
+      yarn workspace @fluentui/set-version build && yarn workspace @fluentui/merge-styles build && yarn workspace @fluentui/jest-serializer-merge-styles build
       yarn nx run workspace-plugin:check-graph
       yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --verify
       yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies --verify
