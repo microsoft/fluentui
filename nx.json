@@ -140,15 +140,13 @@
       "plugin": "@nx/jest/plugin",
       "options": {
         "targetName": "test"
-      },
-      "include": ["tools/**/*", "scripts/**/*", "packages/react-components/react-text/**"]
+      }
     },
     {
       "plugin": "@nx/eslint/plugin",
       "options": {
         "targetName": "lint"
-      },
-      "include": ["tools/**/*", "scripts/**/*", "packages/react-components/react-text/**"]
+      }
     },
     {
       "plugin": "./tools/workspace-plugin/src/plugins/workspace-plugin.ts",
