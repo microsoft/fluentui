@@ -65,6 +65,8 @@
     "./package.json": "./package.json"
   },
   "sideEffects": [
+    "define.*",
+    "index-rollup.*",
     "./dist/esm/**/define.js",
     "./dist/web-components.js",
     "./dist/web-components.min.js"
@@ -86,6 +88,8 @@
     "start": "yarn start-storybook -p 6006 --docs",
     "start-storybook": "storybook dev",
     "build-storybook": "storybook build -o ./dist/storybook --docs",
+    "build-harness": "vite build test/harness",
+    "serve-harness": "vite preview test/harness",
     "e2e": "playwright test",
     "test:dev": "playwright test"
   },

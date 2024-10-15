@@ -7,11 +7,7 @@ const config: PlaywrightTestConfig = {
   fullyParallel: process.env.CI ? false : true,
   timeout: process.env.CI ? 10000 : 30000,
   use: {
-    baseURL: 'http://localhost:6006/iframe.html',
-    viewport: {
-      height: 720,
-      width: 1280,
-    },
+    baseURL: 'http://localhost:5173',
   },
   projects: [
     {
@@ -31,10 +27,9 @@ const config: PlaywrightTestConfig = {
     },
   ],
   webServer: {
-    // double-quotes are required for Windows
-    command: `node -e "import('express').then(({ default: e }) => e().use(e.static('./dist/storybook')).listen(6006))"`,
-    port: 6006,
-    reuseExistingServer: process.env.CI ? false : true,
+    command: 'yarn serve-harness',
+    port: 5173,
+    reuseExistingServer: true,
   },
 };
 
