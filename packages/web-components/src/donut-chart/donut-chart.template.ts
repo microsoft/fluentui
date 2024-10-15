@@ -7,13 +7,7 @@ import type { DonutChart } from './donut-chart.js';
  * @public
  */
 export function donutChartTemplate<T extends DonutChart>(): ElementViewTemplate<T> {
-  return html<T>`
-    <template>
-      <div class="root" part="root">
-        <donut-chart></donut-chart>
-      </div>
-    </template>
-  `;
+  return html<T>``;
 }
 
 /**
