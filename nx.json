@@ -146,7 +146,8 @@
       "plugin": "@nx/eslint/plugin",
       "options": {
         "targetName": "lint"
-      }
+      },
+      "exclude": ["packages/common-styles/**", "packages/fluentui/ability-attributes/**", "packages/fluentui/digest/**"]
     },
     {
       "plugin": "./tools/workspace-plugin/src/plugins/workspace-plugin.ts",
