@@ -51,7 +51,7 @@ export function useKeytipData(options: KeytipDataOptions): IKeytipData {
   }, []);
 
   let nativeKeytipProps: IKeytipData = {
-    ariaDescribedBy: undefined,
+    ariaDescribedBy: options.ariaDescribedBy,
     keytipId: undefined,
   };
 
