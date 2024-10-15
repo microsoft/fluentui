@@ -88,10 +88,8 @@
     "start": "yarn start-storybook -p 6006 --docs",
     "start-storybook": "storybook dev",
     "build-storybook": "storybook build -o ./dist/storybook --docs",
-    "build-harness": "vite build test/harness",
-    "serve-harness": "vite preview test/harness",
-    "e2e": "playwright test",
-    "test:dev": "playwright test --ui"
+    "e2e": "node ./scripts/e2e.js",
+    "e2e:local": "node ./scripts/e2e.js --ui"
   },
   "devDependencies": {
     "@microsoft/fast-element": "2.0.0",

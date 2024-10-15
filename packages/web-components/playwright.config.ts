@@ -24,7 +24,7 @@ const config: PlaywrightTestConfig = {
     },
   ],
   webServer: {
-    command: 'yarn serve-harness',
+    command: 'yarn vite preview test/harness',
     port: 5173,
     reuseExistingServer: true,
   },
