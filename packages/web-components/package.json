@@ -91,7 +91,7 @@
     "build-harness": "vite build test/harness",
     "serve-harness": "vite preview test/harness",
     "e2e": "playwright test",
-    "test:dev": "playwright test"
+    "test:dev": "playwright test --ui"
   },
   "devDependencies": {
     "@microsoft/fast-element": "2.0.0",
