@@ -89,4 +89,6 @@ This is a known issue and will indicate that you need to refresh the page. We're
 
 ## Testing
 
-When testing locally, start the dev server and in a separate terminal window, run `yarn test:dev` within the web-components folder.
+To run Playwright tests locally in [UI mode](https://playwright.dev/docs/test-ui-mode), use the command `yarn test:dev` in the `packages/web-components` directory. This will start a local development server and open the Playwright test runner UI.
+
+On CI, the test harness is first built with `yarn build-harness`. The tests are then run with `yarn e2e`, where Playwright is configured to serve the harness with the `yarn serve-harness` command. To run the tests locally against a generated harness, run `yarn serve-harness` in the background and then run Playwright commands separately. This method runs tests faster, but doesn't automatically reload the harness when changes are made.
