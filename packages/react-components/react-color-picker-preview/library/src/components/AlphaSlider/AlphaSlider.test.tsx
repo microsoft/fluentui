@@ -30,13 +30,13 @@ describe('AlphaSlider', () => {
       <div>
         <div
           class="fui-ColorSlider fui-AlphaSlider"
-          style="--fui-AlphaSlider--direction: 90deg; --fui-AlphaSlider--progress: 0%; --fui-AlphaSlider__thumb--color: transparent; --fui-AlphaSlider__rail--color: red;"
+          style="--fui-AlphaSlider--direction: 90deg; --fui-AlphaSlider--progress: 100%; --fui-AlphaSlider__thumb--color: transparent; --fui-AlphaSlider__rail--color: hsl(0 0%, 0%);"
         >
           <input
             class="fui-ColorSlider__input fui-AlphaSlider__input"
             id="slider-9"
             type="range"
-            value="0"
+            value="100"
           />
           <div
             class="fui-ColorSlider__rail fui-AlphaSlider__rail"

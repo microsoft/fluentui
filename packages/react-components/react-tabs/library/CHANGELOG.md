@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Tue, 08 Oct 2024 22:05:59 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2024 17:17:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.6.0)
+
+Tue, 15 Oct 2024 17:17:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.5.2..@fluentui/react-tabs_v9.6.0)
+
+### Minor changes
+
+- feature: add rounded tab variant ([PR #32944](https://github.com/microsoft/fluentui/pull/32944) by kirpadv@gmail.com)
+- Bump @fluentui/react-context-selector to v9.1.68 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.45 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.2 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-tabster to v9.22.9 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-theme to v9.1.21 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-utilities to v9.18.16 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
 
 ## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.5.2)
 

@@ -2,6 +2,39 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Tue, 15 Oct 2024 17:17:51 GMT",
+      "tag": "@fluentui/react-tabster_v9.22.9",
+      "version": "9.22.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b474188d1a98e1ee24c864d324278c6003e834c9",
+            "comment": "fix: useMergedTabsterAttributes should accept null/undefined values"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.20.2",
+            "commit": "1907e859fbe89f001cf92eda8e3674d961cab6ac"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-theme to v9.1.21",
+            "commit": "1907e859fbe89f001cf92eda8e3674d961cab6ac"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.18.16",
+            "commit": "1907e859fbe89f001cf92eda8e3674d961cab6ac"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 08 Oct 2024 22:05:59 GMT",
       "tag": "@fluentui/react-tabster_v9.22.8",
       "version": "9.22.8",

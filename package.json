@@ -220,6 +220,7 @@
     "ejs": "3.1.10",
     "embla-carousel": "8.3.0",
     "embla-carousel-autoplay": "8.3.0",
+    "embla-carousel-fade": "8.3.0",
     "enquirer": "2.3.6",
     "enzyme": "3.10.0",
     "enzyme-to-json": "3.6.2",

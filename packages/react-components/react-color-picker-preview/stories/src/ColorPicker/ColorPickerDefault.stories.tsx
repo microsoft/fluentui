@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
-import { ColorPicker, ColorSlider, AlphaSlider, ColorPickerProps } from '@fluentui/react-color-picker-preview';
+import {
+  ColorPicker,
+  ColorSlider,
+  AlphaSlider,
+  ColorPickerProps,
+  ColorArea,
+} from '@fluentui/react-color-picker-preview';
 
 const useStyles = makeStyles({
   example: {
@@ -19,24 +25,19 @@ const useStyles = makeStyles({
 
 export const Default = () => {
   const styles = useStyles();
-
-  const [hue, setHue] = React.useState(160);
-  const [alpha, setAlpha] = React.useState(50);
-  const handleChange: ColorPickerProps['onColorChange'] = (_, data) => {
-    if (data.value) {
-      data.channel === 'hue' && setHue(data.value);
-      data.channel === 'alpha' && setAlpha(data.value);
-    }
-  };
+  const defaultColor = '#2be700';
+  const [color, setColor] = React.useState(defaultColor);
+  const handleChange: ColorPickerProps['onColorChange'] = (_, data) => setColor(data.color);
 
   return (
     <div className={styles.example}>
-      <ColorPicker onColorChange={handleChange}>
-        <ColorSlider value={hue} max={360} />
-        <AlphaSlider overlayColor={`hsl(${hue}, 100%, 45%)`} value={alpha} />
+      <ColorPicker color={color} onColorChange={handleChange}>
+        <ColorSlider max={360} />
+        <AlphaSlider />
+        <ColorArea />
       </ColorPicker>
 
-      <div className={styles.previewColor} style={{ backgroundColor: `hsla(${hue}, 100%, 45%, ${alpha / 100})` }} />
+      <div className={styles.previewColor} style={{ backgroundColor: color }} />
     </div>
   );
 };

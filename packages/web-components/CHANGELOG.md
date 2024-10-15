@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 07 Oct 2024 04:08:32 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2024 04:07:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.69](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.69)
+
+Tue, 15 Oct 2024 04:07:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.68..@fluentui/web-components_v3.0.0-beta.69)
+
+### Changes
+
+- Fix: menu-item emit current state when checked change event fires ([PR #33029](https://github.com/microsoft/fluentui/pull/33029) by jes@microsoft.com)
+- fix prefers-reduced-motion media query in button ([PR #33034](https://github.com/microsoft/fluentui/pull/33034) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.68](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.68)
 
