@@ -36,6 +36,28 @@ export function expectPresenceMotionObject(component: PresenceComponent) {
   });
 }
 
+export function expectPresenceMotionArray(component: PresenceComponent) {
+  const presenceMotionFn = getMotionFunction(component);
+
+  // eslint-disable-next-line @nx/workspace-no-restricted-globals
+  expect(presenceMotionFn?.({ element: document.createElement('div') })).toMatchObject({
+    enter: expect.arrayContaining([
+      {
+        duration: expect.any(Number),
+        easing: expect.any(String),
+        keyframes: expect.any(Array),
+      },
+    ]),
+    exit: expect.arrayContaining([
+      {
+        duration: expect.any(Number),
+        easing: expect.any(String),
+        keyframes: expect.any(Array),
+      },
+    ]),
+  });
+}
+
 export function expectPresenceMotionFunction(PresenceComponent: PresenceComponent) {
   const presenceMotionFn = getMotionFunction(PresenceComponent);
 
