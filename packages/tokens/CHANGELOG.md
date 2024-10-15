@@ -1,8 +1,17 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Mon, 23 Sep 2024 12:40:16 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2024 17:17:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.18)
+
+Tue, 15 Oct 2024 17:17:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.17..@fluentui/tokens_v1.0.0-alpha.18)
+
+### Changes
+
+- feat: add explicit .js file extensions to all relative import/export statement within built output to support native ESM within browser ([PR #30770](https://github.com/microsoft/fluentui/pull/30770) by martinhochel@microsoft.com)
 
 ## [1.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.17)
 
