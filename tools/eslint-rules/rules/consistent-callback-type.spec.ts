@@ -3,6 +3,10 @@ import { rule, RULE_NAME } from './consistent-callback-type';
 
 const ruleTester = new RuleTester();
 
+global.structuredClone = jest.fn(val => {
+  return JSON.parse(JSON.stringify(val));
+});
+
 ruleTester.run(RULE_NAME, rule, {
   valid: [
     // Valid when prop is TSTypeAliasDeclaration and the callback uses EventHandler
