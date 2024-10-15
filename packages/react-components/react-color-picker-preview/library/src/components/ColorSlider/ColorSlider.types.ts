@@ -2,8 +2,7 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
 
 export type SliderOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
-  value: number;
-  channel: string;
+  color: string;
 };
 
 export type ColorSliderSlots = {
@@ -21,23 +20,6 @@ export type ColorSliderProps = Omit<
   'defaultValue' | 'onChange' | 'value'
 > & {
   channel?: string;
-  /**
-   * The starting value for an uncontrolled ColorSlider.
-   * Mutually exclusive with `value` prop.
-   */
-  defaultValue?: number;
-
-  /**
-   * The max value of the Slider.
-   * @default 360
-   */
-  max?: number;
-
-  /**
-   * The min value of the Slider.
-   * @default 0
-   */
-  min?: number;
 
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
@@ -51,10 +33,9 @@ export type ColorSliderProps = Omit<
   vertical?: boolean;
 
   /**
-   * The current value of the controlled ColorSlider.
-   * Mutually exclusive with `defaultValue` prop.
+   * Color of the COlorPicker
    */
-  value?: number;
+  color?: string;
 };
 
 /**

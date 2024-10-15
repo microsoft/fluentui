@@ -55,7 +55,7 @@ export const colorPickerClassNames: SlotClassNames<ColorPickerSlots>;
 
 // @public
 export type ColorPickerProps = ComponentProps<ColorPickerSlots> & {
-    color?: string;
+    color: string;
     onColorChange?: EventHandler<ColorPickerOnChangeData>;
 };
 
@@ -76,12 +76,9 @@ export const colorSliderClassNames: SlotClassNames<ColorSliderSlots>;
 // @public
 export type ColorSliderProps = Omit<ComponentProps<Partial<ColorSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value'> & {
     channel?: string;
-    defaultValue?: number;
-    max?: number;
-    min?: number;
     onChange?: EventHandler<SliderOnChangeData>;
     vertical?: boolean;
-    value?: number;
+    color?: string;
 };
 
 // @public (undocumented)
