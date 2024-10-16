@@ -83,3 +83,5 @@ export {
 } from './contexts/index';
 
 export type { DialogContextValue, DialogSurfaceContextValue } from './contexts/index';
+
+export { DialogBackdropMotion, DialogSurfaceMotion } from './components/index';
