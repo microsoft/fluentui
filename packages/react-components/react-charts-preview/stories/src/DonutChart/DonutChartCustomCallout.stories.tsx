@@ -7,7 +7,7 @@ import {
   getColorFromToken,
   IPopoverComponentProps,
 } from '@fluentui/react-charts-preview';
-import { Switch } from '@fluentui/react-components';
+import { Switch, tokens } from '@fluentui/react-components';
 
 export const DonutChartCustomCallout = () => {
   const [useCustomPopover, setUseCustomPopover] = React.useState(false);
@@ -53,10 +53,34 @@ export const DonutChartCustomCallout = () => {
     const xValue = props ? props.xAxisCalloutData! : 'X Value';
     const legend = props ? props.legend : 'Legend';
     return useCustomPopover ? (
-      <div style={{ border: '1.5px dotted black' }}>
-        <div style={{ color: getColorFromToken(DataVizPalette.color5), border: '1px black' }}>{xValue}</div>
-        <div style={{ color: getColorFromToken(DataVizPalette.color6), border: '1px black' }}>{legend}</div>
-        <div style={{ color: getColorFromToken(DataVizPalette.color7) }}>{yValue}</div>
+      <div style={{ border: `1.5px dotted ${getColorFromToken(DataVizPalette.color10)}`, padding: '10px' }}>
+        <div
+          style={{
+            color: getColorFromToken(DataVizPalette.warning),
+            fontSize: tokens.fontSizeBase400,
+            fontWeight: tokens.fontWeightBold,
+          }}
+        >
+          {xValue}
+        </div>
+        <div
+          style={{
+            color: getColorFromToken(DataVizPalette.color3),
+            fontSize: tokens.fontSizeBase400,
+            fontWeight: tokens.fontWeightBold,
+          }}
+        >
+          {legend}
+        </div>
+        <div
+          style={{
+            color: getColorFromToken(DataVizPalette.color2),
+            fontSize: tokens.fontSizeBase400,
+            fontWeight: tokens.fontWeightBold,
+          }}
+        >
+          {yValue}
+        </div>
       </div>
     ) : undefined;
   };
