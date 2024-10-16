@@ -863,7 +863,6 @@ export {
   useDialogSurfaceContext_unstable,
   useDialogSurfaceContextValues_unstable,
   DialogProvider,
-  DialogBackdropMotion,
   DialogSurfaceMotion,
 } from '@fluentui/react-dialog';
 
