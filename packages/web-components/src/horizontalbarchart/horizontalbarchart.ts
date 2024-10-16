@@ -225,6 +225,8 @@ export class HorizontalBarChart extends FASTElement {
   }
 
   render() {
+    // Array to hold references to the buttons
+    const legendButtonRefs: any = [];
     const div = d3.select(this.shadowRoot).append('div');
     div
       .append('div')
@@ -248,10 +250,12 @@ export class HorizontalBarChart extends FASTElement {
     div.node()!.appendChild(legendContainer);
     legendContainer.classList.add('legendcontainer');
 
-    this.uniqueLegends?.forEach(d => {
+    this.uniqueLegends?.forEach((d, index) => {
       const button = document.createElement('button');
       legendContainer.appendChild(button);
       button.classList.add('legend');
+      // Store a reference to the button
+      legendButtonRefs[index] = button;
 
       const legendRect = document.createElement('div');
       button.appendChild(legendRect);
@@ -265,36 +269,50 @@ export class HorizontalBarChart extends FASTElement {
       legendText.classList.add('legendText');
     });
 
-    const buttons = legendContainer.getElementsByTagName('button');
     const bars = this.shadowRoot?.querySelectorAll('.bar');
 
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].addEventListener('mouseover', () => {
+    for (let i = 0; i < legendButtonRefs.length; i++) {
+      legendButtonRefs[i].addEventListener('mouseover', () => {
         for (let j = 0; j < bars!.length; j++) {
-          if (bars![j].getAttribute('barinfo') !== buttons[i].textContent) {
+          if (bars![j].getAttribute('barinfo') !== legendButtonRefs[i].textContent) {
             bars![j].style['opacity'] = '0.1';
           }
         }
-        for (let j = 0; j < buttons.length; j++) {
+        for (let j = 0; j < legendButtonRefs.length; j++) {
           if (j !== i) {
-            const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
-            legendRect.style['backgroundColor'] = 'transparent';
-
-            const legendText = buttons[j].getElementsByClassName('legendText')[0];
-            legendText.style['opacity'] = '0.67';
+            const legendRect = legendButtonRefs[j].getElementsByClassName('legendRect')[0];
+            if (legendRect) {
+              legendRect.style['backgroundColor'] = 'transparent';
+            } else {
+              console.warn(`legendRect not found for button index ${j}`);
+            }
+            const legendText = legendButtonRefs[j].getElementsByClassName('legendText')[0];
+            if (legendText) {
+              legendText.style['opacity'] = '0.67';
+            } else {
+              console.warn(`legendText not found for button index ${j}`);
+            }
           }
         }
       });
-      buttons[i].addEventListener('mouseout', () => {
+      legendButtonRefs[i].addEventListener('mouseout', () => {
         for (let j = 0; j < bars!.length; j++) {
           bars![j].style['opacity'] = '1';
         }
-        for (let j = 0; j < buttons.length; j++) {
-          const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
-          legendRect.style['backgroundColor'] = this.uniqueLegends[j].color;
+        for (let j = 0; j < legendButtonRefs.length; j++) {
+          const legendRect = legendButtonRefs[j].getElementsByClassName('legendRect')[0];
+          if (legendRect) {
+            legendRect.style['backgroundColor'] = this.uniqueLegends[j].color;
+          } else {
+            console.warn(`legendRect not found for button index ${j}`);
+          }
 
-          const legendText = buttons[j].getElementsByClassName('legendText')[0];
-          legendText.style['opacity'] = '1';
+          const legendText = legendButtonRefs[j].getElementsByClassName('legendText')[0];
+          if (legendText) {
+            legendText.style['opacity'] = '1';
+          } else {
+            console.warn(`legendText not found for button index ${j}`);
+          }
         }
       });
     }
@@ -418,7 +436,7 @@ export class HorizontalBarChart extends FASTElement {
     const svgEle = containerDiv
       .append('svg')
       .attr('height', 20)
-      .attr('width', 100 + '%')
+      .attr('width', 90 + '%')
       .attr('aria-label', data?.chartTitle ? data?.chartTitle : '')
       .selectAll('g')
       .data(data.chartData!)

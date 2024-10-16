@@ -44,6 +44,7 @@ import {
 } from '../theme/design-tokens.js';
 import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
+import { typographyCaption1Styles } from '../styles/partials/typography.partials.js';
 
 /**
  * Styles for the HorizontalBarChart component.
@@ -90,7 +91,7 @@ export const styles: ElementStyles = css`
     font-size: 14px;
     font-weight: 400px;
     line-height: 16px;
-    color: rgb(50, 49, 48);
+    color: ${colorNeutralForeground1};
     margin-bottom: 5px;
   }
   .legendcontainer {
@@ -118,10 +119,7 @@ export const styles: ElementStyles = css`
     border: 1px solid;
   }
   .legendText {
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase200};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase200};
+    ${typographyCaption1Styles}
     color: ${colorNeutralForeground1};
   }
   .barLabel {
