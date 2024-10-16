@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: re-export DialogSurfaceMotion",
+  "packageName": "@fluentui/react-components",
+  "email": "walterb@microsoft.com",
+  "dependentChangeType": "patch"
+}
