@@ -58,8 +58,9 @@ function createNodesInternal(
   }
 
   const normalizedOptions = normalizeOptions(options);
+  const config = { pmc: getPackageManagerCommand('yarn') };
 
-  const targetsConfig = buildWorkspaceTargets(projectRoot, normalizedOptions, context);
+  const targetsConfig = buildWorkspaceTargets(projectRoot, normalizedOptions, context, config);
 
   return {
     projects: {
@@ -79,6 +80,7 @@ function buildWorkspaceTargets(
   projectRoot: string,
   options: Required<WorkspacePluginOptions>,
   context: CreateNodesContextV2,
+  sharedConfig: Pick<TaskBuilderConfig, 'pmc'>,
 ) {
   const targets: Record<string, TargetConfiguration> = {};
 
@@ -86,7 +88,7 @@ function buildWorkspaceTargets(
   const packageJSON: PackageJson = readJsonFile(join(projectRoot, 'package.json'));
 
   const tags = projectJSON.tags ?? [];
-  const config = { projectJSON, packageJSON, pmc: getPackageManagerCommand('yarn'), tags };
+  const config = { projectJSON, packageJSON, pmc: sharedConfig.pmc, tags };
 
   targets.clean = buildCleanTarget({}, context, config);
   targets.format = buildFormatTarget({}, context, config);
