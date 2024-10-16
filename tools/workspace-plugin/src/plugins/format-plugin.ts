@@ -63,7 +63,7 @@ function createNodesInternal(
   };
 }
 
-export function buildFormatTarget(options: FormatPluginOptions, context: CreateNodesContextV2) {
+export function buildFormatTarget(_options: FormatPluginOptions, _context: CreateNodesContextV2) {
   const pmc = getPackageManagerCommand();
 
   const targetConfig: TargetConfiguration = {

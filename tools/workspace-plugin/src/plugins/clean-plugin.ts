@@ -62,7 +62,7 @@ function createNodesInternal(
   };
 }
 
-export function buildCleanTarget(options: CleanPluginOptions, context: CreateNodesContextV2) {
+export function buildCleanTarget(_options: CleanPluginOptions, _context: CreateNodesContextV2) {
   const targetConfig: TargetConfiguration = {
     executor: '@fluentui/workspace-plugin:clean',
   };

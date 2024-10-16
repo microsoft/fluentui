@@ -65,7 +65,7 @@ function createNodesInternal(
   };
 }
 
-export function buildTypeCheckTarget(options: TypeCheckPluginOptions, context: CreateNodesContextV2) {
+export function buildTypeCheckTarget(_options: TypeCheckPluginOptions, _context: CreateNodesContextV2) {
   const targetConfig: TargetConfiguration = {
     executor: '@fluentui/workspace-plugin:type-check',
     cache: true,
