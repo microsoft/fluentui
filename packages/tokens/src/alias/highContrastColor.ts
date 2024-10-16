@@ -53,7 +53,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorBrandForeground2Pressed: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorNeutralForeground1Static: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralForegroundStaticInverted: hcCanvasText, // CanvasText Global.Color.hcCanvasText
-  colorNeutralForegroundInverted: hcHighlightText, // HighlightText Global.Color.hcHighlightText
+  colorNeutralForegroundInverted: hcCanvasText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForegroundInvertedHover: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForegroundInvertedPressed: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForegroundInvertedSelected: hcHighlightText, // HighlightText Global.Color.hcHighlightText
