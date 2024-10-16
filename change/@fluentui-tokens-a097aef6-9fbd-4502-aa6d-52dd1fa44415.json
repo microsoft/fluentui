@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updating colorNeutralForegroundInverted2 and colorNeutralBackgroundInverted in Teams High Contrast",
+  "packageName": "@fluentui/tokens",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}
