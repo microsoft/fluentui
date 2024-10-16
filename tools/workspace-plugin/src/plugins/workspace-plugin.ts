@@ -86,11 +86,11 @@ function buildWorkspaceTargets(
   const packageJSON: PackageJson = readJsonFile(join(projectRoot, 'package.json'));
 
   const tags = projectJSON.tags ?? [];
-  const config = { projectJSON, packageJSON, pmc: getPackageManagerCommand(), tags };
+  const config = { projectJSON, packageJSON, pmc: getPackageManagerCommand('yarn'), tags };
 
-  targets.clean = buildCleanTarget({}, context);
-  targets.format = buildFormatTarget({}, context);
-  targets['type-check'] = buildTypeCheckTarget({}, context);
+  targets.clean = buildCleanTarget({}, context, config);
+  targets.format = buildFormatTarget({}, context, config);
+  targets['type-check'] = buildTypeCheckTarget({}, context, config);
 
   const lintTarget = buildLintTarget(projectRoot, normalizeOptions, context, config);
   if (lintTarget) {

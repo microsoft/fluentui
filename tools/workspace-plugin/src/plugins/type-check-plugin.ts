@@ -8,7 +8,7 @@ import {
 } from '@nx/devkit';
 import { dirname } from 'node:path';
 
-import { assertProjectExists } from './shared';
+import { type TaskBuilderConfig, assertProjectExists } from './shared';
 
 interface TypeCheckPluginOptions {
   targetName?: string;
@@ -52,7 +52,7 @@ function createNodesInternal(
 
   const normalizedOptions = normalizeOptions(options);
 
-  const targetConfig = buildTypeCheckTarget(normalizedOptions, context);
+  const targetConfig = buildTypeCheckTarget(normalizedOptions, context, {});
 
   return {
     projects: {
@@ -65,7 +65,11 @@ function createNodesInternal(
   };
 }
 
-export function buildTypeCheckTarget(_options: TypeCheckPluginOptions, _context: CreateNodesContextV2) {
+export function buildTypeCheckTarget(
+  _options: TypeCheckPluginOptions,
+  _context: CreateNodesContextV2,
+  _config: TaskBuilderConfig,
+) {
   const targetConfig: TargetConfiguration = {
     executor: '@fluentui/workspace-plugin:type-check',
     cache: true,

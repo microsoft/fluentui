@@ -9,7 +9,7 @@ import {
 } from '@nx/devkit';
 import { dirname } from 'node:path';
 
-import { assertProjectExists, projectConfigGlob } from './shared';
+import { type TaskBuilderConfig, assertProjectExists, projectConfigGlob } from './shared';
 
 interface FormatPluginOptions {
   targetName?: string;
@@ -49,8 +49,9 @@ function createNodesInternal(
   }
 
   const normalizedOptions = normalizeOptions(options);
+  const config = { pmc: getPackageManagerCommand('yarn') };
 
-  const targetConfig = buildFormatTarget(normalizedOptions, context);
+  const targetConfig = buildFormatTarget(normalizedOptions, context, config);
 
   return {
     projects: {
@@ -63,9 +64,11 @@ function createNodesInternal(
   };
 }
 
-export function buildFormatTarget(_options: FormatPluginOptions, _context: CreateNodesContextV2) {
-  const pmc = getPackageManagerCommand();
-
+export function buildFormatTarget(
+  _options: FormatPluginOptions,
+  _context: CreateNodesContextV2,
+  config: Required<TaskBuilderConfig>,
+) {
   const targetConfig: TargetConfiguration = {
     command: 'prettier --write {projectRoot}',
     cache: true,
@@ -80,7 +83,7 @@ export function buildFormatTarget(_options: FormatPluginOptions, _context: Creat
       technologies: ['prettier'],
       description: 'Format code with prettier',
       help: {
-        command: `${pmc.exec} prettier --help`,
+        command: `${config.pmc.exec} prettier --help`,
         example: {},
       },
     },

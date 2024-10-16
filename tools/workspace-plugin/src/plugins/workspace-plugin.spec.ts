@@ -55,82 +55,82 @@ describe(`workspace-plugin`, () => {
     const targets = getTargets(results);
 
     expect(targets?.lint).toMatchInlineSnapshot(`
-        Object {
-          "cache": true,
-          "command": "npx eslint src",
-          "inputs": Array [
-            "default",
-            "{projectRoot}/.eslintrc.json",
-            "{projectRoot}/.eslintrc.js",
-            "{workspaceRoot}/.eslintrc.json",
-            "{workspaceRoot}/.eslintignore",
-            "{workspaceRoot}/eslint.config.js",
-            Object {
-              "externalDependencies": Array [
-                "eslint",
-              ],
-            },
-          ],
-          "metadata": Object {
-            "description": "Runs ESLint on project",
-            "help": Object {
-              "command": "npx eslint --help",
-              "example": Object {
-                "options": Object {
-                  "max-warnings": 0,
-                },
-              },
-            },
-            "technologies": Array [
+      Object {
+        "cache": true,
+        "command": "yarn eslint src",
+        "inputs": Array [
+          "default",
+          "{projectRoot}/.eslintrc.json",
+          "{projectRoot}/.eslintrc.js",
+          "{workspaceRoot}/.eslintrc.json",
+          "{workspaceRoot}/.eslintignore",
+          "{workspaceRoot}/eslint.config.js",
+          Object {
+            "externalDependencies": Array [
               "eslint",
             ],
           },
-          "options": Object {
-            "cwd": "proj",
-          },
-          "outputs": Array [
-            "{options.outputFile}",
-          ],
-        }
-      `);
-
-    expect(targets?.test).toMatchInlineSnapshot(`
-        Object {
-          "cache": true,
-          "command": "npx jest",
-          "inputs": Array [
-            "default",
-            "^production",
-            "{workspaceRoot}/jest.preset.js",
-            Object {
-              "externalDependencies": Array [
-                "jest",
-              ],
-            },
-          ],
-          "metadata": Object {
-            "description": "Run Jest Tests",
-            "help": Object {
-              "command": "npx jest --help",
-              "example": Object {
-                "options": Object {
-                  "coverage": true,
-                },
+        ],
+        "metadata": Object {
+          "description": "Runs ESLint on project",
+          "help": Object {
+            "command": "yarn eslint --help",
+            "example": Object {
+              "options": Object {
+                "max-warnings": 0,
               },
             },
-            "technologies": Array [
+          },
+          "technologies": Array [
+            "eslint",
+          ],
+        },
+        "options": Object {
+          "cwd": "proj",
+        },
+        "outputs": Array [
+          "{options.outputFile}",
+        ],
+      }
+    `);
+
+    expect(targets?.test).toMatchInlineSnapshot(`
+      Object {
+        "cache": true,
+        "command": "yarn jest",
+        "inputs": Array [
+          "default",
+          "^production",
+          "{workspaceRoot}/jest.preset.js",
+          Object {
+            "externalDependencies": Array [
               "jest",
             ],
           },
-          "options": Object {
-            "cwd": "proj",
-            "passWithNoTests": true,
+        ],
+        "metadata": Object {
+          "description": "Run Jest Tests",
+          "help": Object {
+            "command": "yarn jest --help",
+            "example": Object {
+              "options": Object {
+                "coverage": true,
+              },
+            },
           },
-          "outputs": Array [
-            "{projectRoot}/coverage",
+          "technologies": Array [
+            "jest",
           ],
-        }
-      `);
+        },
+        "options": Object {
+          "cwd": "proj",
+          "passWithNoTests": true,
+        },
+        "outputs": Array [
+          "{projectRoot}/coverage",
+        ],
+      }
+    `);
   });
 
   describe(`v9 project nodes`, () => {
@@ -189,7 +189,7 @@ describe(`workspace-plugin`, () => {
                       ],
                       "metadata": Object {
                         "help": Object {
-                          "command": "npx nx run undefined:build --help",
+                          "command": "yarn nx run undefined:build --help",
                           "example": Object {},
                         },
                         "technologies": Array [
@@ -241,7 +241,7 @@ describe(`workspace-plugin`, () => {
                       "metadata": Object {
                         "description": "Format code with prettier",
                         "help": Object {
-                          "command": "npx prettier --help",
+                          "command": "yarn prettier --help",
                           "example": Object {},
                         },
                         "technologies": Array [
@@ -266,7 +266,7 @@ describe(`workspace-plugin`, () => {
                       ],
                       "metadata": Object {
                         "help": Object {
-                          "command": "npx nx run undefined:generate-api --help",
+                          "command": "yarn nx run undefined:generate-api --help",
                           "example": Object {},
                         },
                         "technologies": Array [
@@ -280,14 +280,14 @@ describe(`workspace-plugin`, () => {
                       ],
                     },
                     "start": Object {
-                      "command": "npx storybook",
+                      "command": "yarn storybook",
                       "options": Object {
                         "cwd": "proj",
                       },
                     },
                     "storybook": Object {
                       "cache": true,
-                      "command": "npx --cwd ../stories storybook",
+                      "command": "yarn --cwd ../stories storybook",
                       "metadata": Object {
                         "technologies": Array [
                           "storybook",
@@ -348,7 +348,7 @@ describe(`workspace-plugin`, () => {
 
       expect(targets?.storybook).toMatchInlineSnapshot(`
         Object {
-          "command": "npx storybook dev",
+          "command": "yarn storybook dev",
           "inputs": Array [
             "production",
             "{workspaceRoot}/.storybook/**",
@@ -361,7 +361,7 @@ describe(`workspace-plugin`, () => {
           ],
           "metadata": Object {
             "help": Object {
-              "command": "npx storybook dev --help",
+              "command": "yarn storybook dev --help",
               "example": Object {},
             },
             "technologies": Array [
@@ -376,10 +376,10 @@ describe(`workspace-plugin`, () => {
       expect(targets?.['test-ssr']).toMatchInlineSnapshot(`
         Object {
           "cache": true,
-          "command": "npx test-ssr \\"./src/**/*.stories.tsx\\"",
+          "command": "yarn test-ssr \\"./src/**/*.stories.tsx\\"",
           "metadata": Object {
             "help": Object {
-              "command": "npx test-ssr --help",
+              "command": "yarn test-ssr --help",
               "example": Object {},
             },
             "technologies": Array [
