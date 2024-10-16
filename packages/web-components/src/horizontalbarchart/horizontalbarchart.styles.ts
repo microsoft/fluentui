@@ -58,6 +58,8 @@ export const styles: ElementStyles = css`
     width: 100vw;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    position: relative;
   }
   .tooltip {
     position: absolute;
@@ -75,6 +77,9 @@ export const styles: ElementStyles = css`
     opacity: 0;
     z-index: 999;
   }
+  .bar {
+    opacity: 1;
+  }
   .chartTitle {
     display: flex;
     justify-content: space-between;
@@ -82,6 +87,44 @@ export const styles: ElementStyles = css`
     overflow: hidden;
     white-space: nowrap;
     display: block;
-    color: theme.palette.neutralPrimary;
+    font-size: 14px;
+    font-weight: 400px;
+    line-height: 16px;
+    color: rgb(50, 49, 48);
+    margin-bottom: 5px;
+  }
+  .legendcontainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    width: 90%;
+    align-items: center;
+    margin: -8px 0 0 -8px;
+  }
+  .legend {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    padding: 8px;
+    background: none;
+    text-transform: capitalize;
+  }
+  .legendRect {
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+    border: 1px solid;
+  }
+  .legendText {
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase200};
+    font-weight: ${fontWeightRegular};
+    line-height: ${lineHeightBase200};
+    color: ${colorNeutralForeground1};
+  }
+  .barLabel {
+    font-size: ${fontSizeBase300};
   }
 `;

@@ -41,6 +41,9 @@ export class HorizontalBarChart extends FASTElement {
   @attr
   public inpData: IChartProps[] = [];
 
+  @attr
+  public uniqueLegends: IChartDataPoint[] = [];
+
   private barHeight: number = 12;
 
   constructor() {
@@ -63,7 +66,7 @@ export class HorizontalBarChart extends FASTElement {
         color: '#4F68ED',
       },
       {
-        legend: 'Credit card numbers',
+        legend: 'Credit card Numbers',
         data: 87,
         color: '#AE8C00',
       },
@@ -91,7 +94,7 @@ export class HorizontalBarChart extends FASTElement {
         color: '#4F68ED',
       },
       {
-        legend: 'Credit card numbers',
+        legend: 'Credit card Numbers',
         data: 92,
         color: '#AE8C00',
       },
@@ -114,6 +117,26 @@ export class HorizontalBarChart extends FASTElement {
         color: '#AE8C00',
       },
     ];
+
+    const allchartPoints = [...chartPoints1, ...chartPoints2, ...chartPoints3];
+
+    // Create a map to store unique legends
+    const uniqueLegendsMap = new Map();
+
+    // Iterate through all chart points and populate the map
+    allchartPoints.forEach(point => {
+      // Check if the legend is already in the map
+      if (!uniqueLegendsMap.has(point.legend)) {
+        uniqueLegendsMap.set(point.legend, {
+          legend: point.legend,
+          data: point.data,
+          color: point.color,
+        });
+      }
+    });
+
+    // Convert the map values back to an array
+    this.uniqueLegends = Array.from(uniqueLegendsMap.values());
 
     this.inpData = [
       {
@@ -220,6 +243,61 @@ export class HorizontalBarChart extends FASTElement {
           nodes[i].setAttribute(key, attributes[key]);
         });
       });
+
+    const legendContainer = document.createElement('div');
+    div.node()!.appendChild(legendContainer);
+    legendContainer.classList.add('legendcontainer');
+
+    this.uniqueLegends?.forEach(d => {
+      const button = document.createElement('button');
+      legendContainer.appendChild(button);
+      button.classList.add('legend');
+
+      const legendRect = document.createElement('div');
+      button.appendChild(legendRect);
+      legendRect.classList.add('legendRect');
+      legendRect.style['backgroundColor'] = d.color!;
+      legendRect.style['borderColor'] = d.color!;
+
+      const legendText = document.createElement('div');
+      button.appendChild(legendText);
+      legendText.textContent = d.legend!;
+      legendText.classList.add('legendText');
+    });
+
+    const buttons = legendContainer.getElementsByTagName('button');
+    const bars = this.shadowRoot?.querySelectorAll('.bar');
+
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener('mouseover', () => {
+        for (let j = 0; j < bars!.length; j++) {
+          if (bars![j].getAttribute('barinfo') !== buttons[i].textContent) {
+            bars![j].style['opacity'] = '0.1';
+          }
+        }
+        for (let j = 0; j < buttons.length; j++) {
+          if (j !== i) {
+            const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+            legendRect.style['backgroundColor'] = 'transparent';
+
+            const legendText = buttons[j].getElementsByClassName('legendText')[0];
+            legendText.style['opacity'] = '0.67';
+          }
+        }
+      });
+      buttons[i].addEventListener('mouseout', () => {
+        for (let j = 0; j < bars!.length; j++) {
+          bars![j].style['opacity'] = '1';
+        }
+        for (let j = 0; j < buttons.length; j++) {
+          const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+          legendRect.style['backgroundColor'] = this.uniqueLegends[j].color;
+
+          const legendText = buttons[j].getElementsByClassName('legendText')[0];
+          legendText.style['opacity'] = '1';
+        }
+      });
+    }
   }
 
   public _createBarsAndLegends(data: IChartProps, barNo?: number) {
@@ -309,6 +387,8 @@ export class HorizontalBarChart extends FASTElement {
         .append('rect')
         .attr('key', index)
         .attr('id', `${barNo}-${index}`)
+        .attr('barinfo', `${point.legend}`)
+        .attr('class', 'bar')
         .attr('style', `fill:${point.color!}`)
         .attr(
           'x',
@@ -321,7 +401,6 @@ export class HorizontalBarChart extends FASTElement {
         .attr('y', 0)
         .attr('width', value + '%')
         .attr('height', barHeight)
-        .attr('style', `fill: ${point.color}`)
         .attr('tabindex', 0)
         .attr('data-tabster', '{"groupper": {...}}"')
         .attr('data-tabster', '{"mover": {...}}"');
@@ -379,6 +458,7 @@ export class HorizontalBarChart extends FASTElement {
         svgEle
           .append('text')
           .attr('key', 'text')
+          .attr('class', 'barLabel')
           .attr(
             'x',
             `${
