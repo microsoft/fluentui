@@ -12,6 +12,8 @@ import {
   getPackageManagerCommand,
   readJsonFile,
 } from '@nx/devkit';
+import { type RunCommandsOptions } from 'nx/src/executors/run-commands/run-commands.impl';
+import { type Config as JestConfig } from '@jest/types';
 
 import { type PackageJson } from '../types';
 import { type BuildExecutorSchema } from '../executors/build/schema';
@@ -21,9 +23,7 @@ import { buildCleanTarget } from './clean-plugin';
 import { buildFormatTarget } from './format-plugin';
 import { buildTypeCheckTarget } from './type-check-plugin';
 
-interface WorkspacePluginOptions {
-  // targetName?: string;
-}
+interface WorkspacePluginOptions {}
 
 export const createNodesV2: CreateNodesV2<WorkspacePluginOptions> = [
   projectConfigGlob,
@@ -42,7 +42,6 @@ export const createNodesV2: CreateNodesV2<WorkspacePluginOptions> = [
 // ===================================================================================================================
 function normalizeOptions(options: WorkspacePluginOptions | undefined): Required<WorkspacePluginOptions> {
   options ??= {};
-  // options.targetName ??= 'type-check';
 
   return options as Required<WorkspacePluginOptions>;
 }
@@ -82,37 +81,46 @@ function buildWorkspaceTargets(
   context: CreateNodesContextV2,
 ) {
   const targets: Record<string, TargetConfiguration> = {};
-  const pmc = getPackageManagerCommand();
 
   const projectJSON: ProjectConfiguration = readJsonFile(join(projectRoot, 'project.json'));
   const packageJSON: PackageJson = readJsonFile(join(projectRoot, 'package.json'));
 
   const tags = projectJSON.tags ?? [];
-  const config = { projectJSON, packageJSON, pmc, tags };
+  const config = { projectJSON, packageJSON, pmc: getPackageManagerCommand(), tags };
+
+  targets.clean = buildCleanTarget({}, context);
+  targets.format = buildFormatTarget({}, context);
+  targets['type-check'] = buildTypeCheckTarget({}, context);
+
+  const lintTarget = buildLintTarget(projectRoot, normalizeOptions, context, config);
+  if (lintTarget) {
+    targets.lint = lintTarget;
+  }
+
+  const testTarget = buildTestTarget(projectRoot, normalizeOptions, context, config);
+  if (testTarget) {
+    targets.test = testTarget;
+  }
 
   // react v9 lib
   if (projectJSON.projectType === 'library' && tags.includes('vNext')) {
-    targets.clean = buildCleanTarget({}, context);
-    targets.format = buildFormatTarget({}, context);
-    targets['type-check'] = buildTypeCheckTarget({}, context);
-
     // *-stories projects
     if (tags.includes('type:stories')) {
       targets['test-ssr'] = {
         cache: true,
-        command: `${pmc.exec} test-ssr "./src/**/*.stories.tsx"`,
+        command: `${config.pmc.exec} test-ssr "./src/**/*.stories.tsx"`,
         options: { cwd: projectRoot },
         metadata: {
           technologies: ['test-ssr'],
           help: {
-            command: `${pmc.exec} test-ssr --help`,
+            command: `${config.pmc.exec} test-ssr --help`,
             example: {},
           },
         },
       };
-      targets.start = { command: `${pmc.exec} storybook`, options: { cwd: projectRoot } };
+      targets.start = { command: `${config.pmc.exec} storybook`, options: { cwd: projectRoot } };
       targets.storybook = {
-        command: `${pmc.exec} storybook dev`,
+        command: `${config.pmc.exec} storybook dev`,
         inputs: [
           'production',
           '{workspaceRoot}/.storybook/**',
@@ -123,7 +131,7 @@ function buildWorkspaceTargets(
         metadata: {
           technologies: ['storybook'],
           help: {
-            command: `${pmc.exec} storybook dev --help`,
+            command: `${config.pmc.exec} storybook dev --help`,
             example: {},
           },
         },
@@ -144,11 +152,11 @@ function buildWorkspaceTargets(
         '{projectRoot}/src/**/*.tsx?',
         { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
       ],
-      outputs: [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${projectJSON.name}.api.md`],
+      outputs: [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`],
       metadata: {
         technologies: ['typescript', 'api-extractor'],
         help: {
-          command: `${pmc.exec} nx run ${projectJSON.name}:generate-api --help`,
+          command: `${config.pmc.exec} nx run ${config.projectJSON.name}:generate-api --help`,
           example: {},
         },
       },
@@ -188,31 +196,31 @@ function buildWorkspaceTargets(
       metadata: {
         technologies: ['swc', 'typescript', 'api-extractor'],
         help: {
-          command: `${pmc.exec} nx run ${projectJSON.name}:build --help`,
+          command: `${config.pmc.exec} nx run ${config.projectJSON.name}:build --help`,
           example: {},
         },
       },
     };
 
     targets.start = {
-      command: `${pmc.exec} storybook`,
+      command: `${config.pmc.exec} storybook`,
       options: { cwd: projectRoot },
     };
     targets.storybook = {
       cache: true,
-      command: `${pmc.exec} --cwd ../stories storybook`,
+      command: `${config.pmc.exec} --cwd ../stories storybook`,
       options: { cwd: projectRoot },
       metadata: {
         technologies: ['storybook'],
       },
     };
 
-    const bundleSizeTarget = buildBundleSizeTarget(projectRoot, options, context, pmc);
+    const bundleSizeTarget = buildBundleSizeTarget(projectRoot, options, context, config);
     if (bundleSizeTarget) {
       targets['bundle-size'] = bundleSizeTarget;
     }
 
-    const e2eTarget = buildE2eTarget(projectRoot, options, context, pmc);
+    const e2eTarget = buildE2eTarget(projectRoot, options, context, config);
     if (e2eTarget) {
       targets.e2e = e2eTarget;
     }
@@ -222,12 +230,80 @@ function buildWorkspaceTargets(
       targets['verify-packaging'] = verifyPackagingTarget;
     }
 
-    // test and lint added by nx core plugins
-
     return targets;
   }
 
   return targets;
+}
+
+function buildTestTarget(
+  projectRoot: string,
+  options: Required<WorkspacePluginOptions>,
+  context: CreateNodesContextV2,
+  config: TaskBuilderConfig,
+): TargetConfiguration<JestConfig.InitialOptions & Pick<RunCommandsOptions, 'cwd'>> | null {
+  if (!existsSync(join(projectRoot, 'jest.config.js')) && !existsSync(join(projectRoot, 'jest.config.ts'))) {
+    return null;
+  }
+
+  return {
+    command: `${config.pmc.exec} jest`,
+    options: { cwd: projectRoot, passWithNoTests: true },
+    cache: true,
+    inputs: ['default', '^production', '{workspaceRoot}/jest.preset.js', { externalDependencies: ['jest'] }],
+    outputs: ['{projectRoot}/coverage'],
+    metadata: {
+      technologies: ['jest'],
+      description: 'Run Jest Tests',
+      help: {
+        command: `${config.pmc.exec} jest --help`,
+        example: {
+          options: {
+            coverage: true,
+          },
+        },
+      },
+    },
+  };
+}
+
+function buildLintTarget(
+  projectRoot: string,
+  options: Required<WorkspacePluginOptions>,
+  context: CreateNodesContextV2,
+  config: TaskBuilderConfig,
+): TargetConfiguration | null {
+  if (!existsSync(join(projectRoot, '.eslintrc.json')) && !existsSync(join(projectRoot, '.eslintrc.js'))) {
+    return null;
+  }
+
+  return {
+    cache: true,
+    command: `${config.pmc.exec} eslint src`,
+    options: { cwd: projectRoot },
+    inputs: [
+      'default',
+      '{projectRoot}/.eslintrc.json',
+      '{projectRoot}/.eslintrc.js',
+      '{workspaceRoot}/.eslintrc.json',
+      '{workspaceRoot}/.eslintignore',
+      '{workspaceRoot}/eslint.config.js',
+      { externalDependencies: ['eslint'] },
+    ],
+    outputs: ['{options.outputFile}'],
+    metadata: {
+      description: 'Runs ESLint on project',
+      technologies: ['eslint'],
+      help: {
+        command: `${config.pmc.exec} eslint --help`,
+        example: {
+          options: {
+            'max-warnings': 0,
+          },
+        },
+      },
+    },
+  };
 }
 
 function buildVerifyPackagingTarget(
@@ -249,7 +325,7 @@ function buildBundleSizeTarget(
   projectRoot: string,
   options: Required<WorkspacePluginOptions>,
   context: CreateNodesContextV2,
-  pmc: ReturnType<typeof getPackageManagerCommand>,
+  config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   const hasMonosize =
     existsSync(join(projectRoot, 'bundle-size')) || existsSync(join(projectRoot, 'monosize.config.mjs'));
@@ -260,7 +336,7 @@ function buildBundleSizeTarget(
 
   return {
     cache: true,
-    command: `${pmc.exec} monosize measure`,
+    command: `${config.pmc.exec} monosize measure`,
     options: { cwd: projectRoot },
     inputs: [
       `{projectRoot}/bundle-size`,
@@ -271,7 +347,7 @@ function buildBundleSizeTarget(
     metadata: {
       technologies: ['monosize'],
       help: {
-        command: `${pmc.exec} monosize measure --help`,
+        command: `${config.pmc.exec} monosize measure --help`,
         example: {},
       },
     },
@@ -282,7 +358,7 @@ function buildE2eTarget(
   projectRoot: string,
   options: Required<WorkspacePluginOptions>,
   context: CreateNodesContextV2,
-  pmc: ReturnType<typeof getPackageManagerCommand>,
+  config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   const hasCypress =
     existsSync(join(projectRoot, 'cypress.config.ts')) && existsSync(join(projectRoot, 'tsconfig.cy.json'));
@@ -294,11 +370,11 @@ function buildE2eTarget(
 
   if (hasCypress) {
     return {
-      command: `${pmc.exec} cypress run --component`,
+      command: `${config.pmc.exec} cypress run --component`,
       options: { cwd: projectRoot },
       configurations: {
         local: {
-          command: `${pmc.exec} cypress open --component`,
+          command: `${config.pmc.exec} cypress open --component`,
         },
       },
       inputs: [
@@ -309,7 +385,7 @@ function buildE2eTarget(
       ],
       metadata: {
         help: {
-          command: `${pmc.exec} cypress run --help`,
+          command: `${config.pmc.exec} cypress run --help`,
           example: {},
         },
       },
@@ -318,11 +394,11 @@ function buildE2eTarget(
 
   if (hasPlaywright) {
     return {
-      command: `${pmc.exec} playwright test`,
+      command: `${config.pmc.exec} playwright test`,
       options: { cwd: projectRoot },
       configurations: {
         local: {
-          command: `${pmc.exec} playwright test --ui`,
+          command: `${config.pmc.exec} playwright test --ui`,
         },
       },
       inputs: [
@@ -334,7 +410,7 @@ function buildE2eTarget(
       ],
       metadata: {
         help: {
-          command: `${pmc.exec} playwright test --help`,
+          command: `${config.pmc.exec} playwright test --help`,
           example: {},
         },
       },
