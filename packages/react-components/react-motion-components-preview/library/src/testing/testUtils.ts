@@ -63,3 +63,31 @@ export function expectPresenceMotionFunction(PresenceComponent: PresenceComponen
 
   expect(presenceMotionFn).toBeInstanceOf(Function);
 }
+
+export const mockAnimation: () => Animation = () => ({
+  finish: jest.fn(),
+  cancel: jest.fn(),
+  persist: jest.fn(),
+  currentTime: null,
+  effect: null,
+  finished: Promise.resolve({} as Animation),
+  id: '',
+  play: jest.fn(),
+  pause: jest.fn(),
+  updatePlaybackRate: jest.fn(),
+  reverse: jest.fn(),
+  playState: 'running',
+  playbackRate: 1,
+  startTime: null,
+  timeline: null,
+  oncancel: null,
+  onfinish: null,
+  ready: Promise.resolve({} as Animation),
+  removeEventListener: jest.fn(),
+  addEventListener: jest.fn(),
+  dispatchEvent: jest.fn(),
+  onremove: null,
+  pending: false,
+  replaceState: 'active',
+  commitStyles: jest.fn(),
+});
