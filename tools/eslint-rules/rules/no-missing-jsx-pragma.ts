@@ -14,7 +14,7 @@
  * https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/src/rules
  */
 
-import { ESLintUtils, AST_NODE_TYPES, AST_TOKEN_TYPES, ASTUtils, TSESTree } from '@typescript-eslint/utils';
+import { ESLintUtils, AST_NODE_TYPES, AST_TOKEN_TYPES, TSESLint, TSESTree } from '@typescript-eslint/utils';
 
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-no-missing-jsx-pragma"
 export const RULE_NAME = 'no-missing-jsx-pragma';
@@ -28,7 +28,11 @@ type MessageIds =
   | 'invalidJSXPragmaForClassic'
   | 'redundantPragma';
 
-export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageIds>({
+type Docs = {
+  recommended: TSESLint.RuleRecommendation;
+};
+
+export const rule = ESLintUtils.RuleCreator<Docs>(() => __filename)<Options, MessageIds>({
   name: RULE_NAME,
   meta: {
     type: 'problem',

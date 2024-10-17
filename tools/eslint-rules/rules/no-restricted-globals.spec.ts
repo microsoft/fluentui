@@ -5,6 +5,10 @@ import { rule, RULE_NAME } from './no-restricted-globals';
 
 const ruleTester = new RuleTester();
 
+global.structuredClone = jest.fn(val => {
+  return JSON.parse(JSON.stringify(val));
+});
+
 ruleTester.run(RULE_NAME, rule, {
   valid: [
     {
@@ -18,7 +22,9 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: 'event',
       options: ['foo'],
-      globals: globals.browser,
+      languageOptions: {
+        globals: globals.browser,
+      },
     },
     { options: ['KeyboardEvent'], code: `let ev: KeyboardEvent;` },
     {
@@ -44,7 +50,9 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: 'event',
       options: ['foo', 'event'],
-      globals: globals.browser,
+      languageOptions: {
+        globals: globals.browser,
+      },
       errors: [
         {
           messageId: 'defaultMessage',
