@@ -1,0 +1,27 @@
+diff --git a/node_modules/@nx/jest/src/plugins/plugin.js b/node_modules/@nx/jest/src/plugins/plugin.js
+index 05da142..eba9b14 100644
+--- a/node_modules/@nx/jest/src/plugins/plugin.js
++++ b/node_modules/@nx/jest/src/plugins/plugin.js
+@@ -24,14 +24,22 @@ const jestConfigGlob = '**/jest.config.{cjs,mjs,js,cts,mts,ts}';
+ exports.createNodesV2 = [
+     jestConfigGlob,
+     async (configFiles, options, context) => {
++        performance.mark('jest-plugin:start');
++
+         const optionsHash = (0, devkit_internals_1.hashObject)(options);
+         const cachePath = (0, path_1.join)(cache_directory_1.workspaceDataDirectory, `jest-${optionsHash}.hash`);
+         const targetsCache = readTargetsCache(cachePath);
++        console.count('jest:createNodesV2');
++
+         try {
+             return await (0, devkit_1.createNodesFromFiles)((configFile, options, context) => createNodesInternal(configFile, options, context, targetsCache), configFiles, options, context);
+         }
+         finally {
+             writeTargetsToCache(cachePath, targetsCache);
++
++            performance.mark('jest-plugin:end');
++            const measure = performance.measure('jest-plugin', `jest-plugin:start`, `jest-plugin:end`);
++            console.log(`Execution Timings: jest-plugin (${(measure.duration / 1000).toFixed(2)} s)`)
+         }
+     },
+ ];

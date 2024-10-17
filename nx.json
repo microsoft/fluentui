@@ -140,15 +140,19 @@
       "plugin": "@nx/jest/plugin",
       "options": {
         "targetName": "test"
-      },
-      "include": ["tools/**/*", "scripts/**/*"]
+      }
     },
     {
       "plugin": "@nx/eslint/plugin",
       "options": {
         "targetName": "lint"
       },
-      "include": ["tools/**/*", "scripts/**/*"]
+      "exclude": ["packages/common-styles/**", "packages/fluentui/ability-attributes/**", "packages/fluentui/digest/**"]
+    },
+    {
+      "plugin": "./tools/workspace-plugin/src/plugins/workspace-plugin.ts",
+      "options": {},
+      "include": ["packages/react-components/react-text/**"]
     }
   ]
 }

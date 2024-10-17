@@ -1,0 +1,60 @@
+diff --git a/node_modules/@nx/eslint/src/plugins/plugin.js b/node_modules/@nx/eslint/src/plugins/plugin.js
+index 064546a..c1d2b5d 100644
+--- a/node_modules/@nx/eslint/src/plugins/plugin.js
++++ b/node_modules/@nx/eslint/src/plugins/plugin.js
+@@ -20,6 +20,8 @@ const ESLINT_CONFIG_GLOB_V2 = (0, globs_1.combineGlobPatterns)([
+     ...config_file_1.ESLINT_CONFIG_FILENAMES.map((f) => `**/${f}`),
+     ...PROJECT_CONFIG_FILENAMES.map((f) => `**/${f}`),
+ ]);
++
++
+ function readTargetsCache(cachePath) {
+     return process.env.NX_CACHE_PROJECT_GRAPH !== 'false' && (0, node_fs_1.existsSync)(cachePath)
+         ? (0, devkit_1.readJsonFile)(cachePath)
+@@ -97,6 +99,7 @@ const internalCreateNodes = async (configFilePath, options, context, projectsCac
+     };
+ };
+ const internalCreateNodesV2 = async (configFilePath, options, context, eslintConfigFiles, projectRootsByEslintRoots, lintableFilesPerProjectRoot, projectsCache) => {
++
+     const configDir = (0, posix_1.dirname)(configFilePath);
+     const ESLint = await (0, resolve_eslint_class_1.resolveESLintClass)({
+         useFlatConfigOverrideVal: (0, config_file_1.isFlatConfig)(configFilePath),
+@@ -110,9 +113,12 @@ const internalCreateNodesV2 = async (configFilePath, options, context, eslintCon
+             nxJsonConfiguration: context.nxJsonConfiguration,
+             workspaceRoot: context.workspaceRoot,
+         }, [...parentConfigs, (0, posix_1.join)(projectRoot, '.eslintignore')]);
++
++        // console.log('loading----',{projectsCache,hash,cache:projectsCache[hash]})
+         if (projectsCache[hash]) {
+             // We can reuse the projects in the cache.
+             Object.assign(projects, projectsCache[hash]);
++
+             return;
+         }
+         const eslint = new ESLint({
+@@ -148,17 +154,25 @@ const internalCreateNodesV2 = async (configFilePath, options, context, eslintCon
+ exports.createNodesV2 = [
+     ESLINT_CONFIG_GLOB_V2,
+     async (configFiles, options, context) => {
++        performance.mark('lint-plugin:start');
++
+         options = normalizeOptions(options);
+         const optionsHash = (0, file_hasher_1.hashObject)(options);
+         const cachePath = (0, posix_1.join)(cache_directory_1.workspaceDataDirectory, `eslint-${optionsHash}.hash`);
+         const targetsCache = readTargetsCache(cachePath);
+         const { eslintConfigFiles, projectRoots, projectRootsByEslintRoots } = splitConfigFiles(configFiles);
+         const lintableFilesPerProjectRoot = await collectLintableFilesByProjectRoot(projectRoots, options, context);
++
++        console.count('lint:createNodesV2');
+         try {
+             return await (0, devkit_1.createNodesFromFiles)((configFile, options, context) => internalCreateNodesV2(configFile, options, context, eslintConfigFiles, projectRootsByEslintRoots, lintableFilesPerProjectRoot, targetsCache), eslintConfigFiles, options, context);
+         }
+         finally {
+             writeTargetsToCache(cachePath, targetsCache);
++
++            performance.mark('lint-plugin:end');
++            const measure = performance.measure('lint-plugin', `lint-plugin:start`, `lint-plugin:end`);
++            console.log(`Execution Timings: lint-plugin (${(measure.duration / 1000).toFixed(2)} s)`)
+         }
+     },
+ ];

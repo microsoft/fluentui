@@ -29,6 +29,8 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
+      - run: yarn workspace @fluentui/set-version build && yarn workspace @fluentui/merge-styles build && yarn workspace @fluentui/jest-serializer-merge-styles build
+
       - run: yarn nx run scripts-executors:test -t 'smoke test'
 
       - run: yarn nx run workspace-plugin:test -t 'prepare-initial-release generator'

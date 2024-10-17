@@ -4,5 +4,10 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-text/library/src",
   "tags": ["vNext", "platform:web"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "verify-packaging": {
+      "executor": "@fluentui/workspace-plugin:verify-packaging"
+    }
+  }
 }

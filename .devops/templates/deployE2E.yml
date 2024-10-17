@@ -16,6 +16,7 @@ steps:
 
   # this also builds FUI N* docs if appropriate
   - script: |
+      yarn workspace @fluentui/set-version build && yarn workspace @fluentui/merge-styles build && yarn workspace @fluentui/jest-serializer-merge-styles build
       yarn nx affected -t bundle --nxBail $(sinceArg)
     displayName: bundle
     condition: eq(variables.isPR, true)
