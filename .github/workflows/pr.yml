@@ -7,6 +7,7 @@ on:
 
 env:
   NX_PARALLEL: 8 # ubuntu-latest = 8-core CPU / 32 GB of RAM
+  NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 
 jobs:
@@ -23,6 +24,12 @@ jobs:
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: 'master'
+
+      - run: |
+          echo "BASE: ${{ env.NX_BASE }}"
+          echo "HEAD: ${{ env.NX_HEAD }}"
 
       - uses: actions/setup-node@v4
         with:
