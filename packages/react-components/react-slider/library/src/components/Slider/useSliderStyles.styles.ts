@@ -13,6 +13,8 @@ export const sliderClassNames: SlotClassNames<SliderSlots> = {
 
 // Internal CSS variables
 const thumbSizeVar = `--fui-Slider__thumb--size`;
+const thumbOffsetVar = `--fui-Slider__thumb--offset`;
+const thumbPositionVar = `--fui-Slider__thumb--position`;
 const railSizeVar = `--fui-Slider__rail--size`;
 const railColorVar = `--fui-Slider__rail--color`;
 const progressColorVar = `--fui-Slider__progress--color`;
@@ -21,16 +23,22 @@ const thumbColorVar = `--fui-Slider__thumb--color`;
 export const sliderCSSVars = {
   sliderDirectionVar: `--fui-Slider--direction`,
   sliderProgressVar: `--fui-Slider--progress`,
+  sliderProgressValueVar: `--fui-Slider--progress-value`,
   sliderStepsPercentVar: `--fui-Slider--steps-percent`,
+  sliderStepsGradientVar: `--fui-Slider--steps-gradient`,
+  sliderStepsColorVar: `--fui-Slider--steps-color`,
 };
 
-const { sliderDirectionVar, sliderStepsPercentVar, sliderProgressVar } = sliderCSSVars;
+const { sliderDirectionVar, sliderProgressVar, sliderProgressValueVar, sliderStepsGradientVar, sliderStepsColorVar } =
+  sliderCSSVars;
 
 /**
  * Styles for the root slot
  */
 const useRootStyles = makeStyles({
   root: {
+    [`${thumbOffsetVar}`]: `calc(var(${thumbSizeVar}) * 0.3)`,
+    [`${thumbPositionVar}`]: `calc(var(${thumbOffsetVar}) + calc(var(${sliderProgressValueVar}) * (100% - var(${thumbOffsetVar}) * 2)))`,
     position: 'relative',
     display: 'inline-grid',
     touchAction: 'none',
@@ -65,6 +73,7 @@ const useRootStyles = makeStyles({
   },
 
   enabled: {
+    [sliderStepsColorVar]: tokens.colorNeutralBackground1,
     [railColorVar]: tokens.colorNeutralStrokeAccessible,
     [progressColorVar]: tokens.colorCompoundBrandBackground,
     [thumbColorVar]: tokens.colorCompoundBrandBackground,
@@ -80,6 +89,7 @@ const useRootStyles = makeStyles({
       [railColorVar]: 'CanvasText',
       [thumbColorVar]: 'Highlight',
       [progressColorVar]: 'Highlight',
+      [sliderStepsColorVar]: 'HighlightText',
       ':hover': {
         [thumbColorVar]: 'Highlight',
         [progressColorVar]: 'Highlight',
@@ -135,24 +145,7 @@ const useRailStyles = makeStyles({
     '::before': {
       content: "''",
       position: 'absolute',
-      // Repeating gradient represents the steps if provided
-      backgroundImage: `repeating-linear-gradient(
-        var(${sliderDirectionVar}),
-        #0000 0%,
-        #0000 calc(var(${sliderStepsPercentVar}) - 1px),
-        ${tokens.colorNeutralBackground1} calc(var(${sliderStepsPercentVar}) - 1px),
-        ${tokens.colorNeutralBackground1} var(${sliderStepsPercentVar})
-      )`,
-      // force steps to use HighlightText for high contrast mode
-      '@media (forced-colors: active)': {
-        backgroundImage: `repeating-linear-gradient(
-          var(${sliderDirectionVar}),
-          #0000 0%,
-          #0000 calc(var(${sliderStepsPercentVar}) - 1px),
-          HighlightText calc(var(${sliderStepsPercentVar}) - 1px),
-          HighlightText var(${sliderStepsPercentVar})
-        )`,
-      },
+      backgroundImage: `var(${sliderStepsGradientVar})`,
     },
   },
 
@@ -160,8 +153,8 @@ const useRailStyles = makeStyles({
     width: '100%',
     height: `var(${railSizeVar})`,
     '::before': {
-      left: '-1px',
-      right: '-1px',
+      left: `var(${thumbOffsetVar})`,
+      right: `var(${thumbOffsetVar})`,
       height: `var(${railSizeVar})`,
     },
   },
@@ -171,8 +164,8 @@ const useRailStyles = makeStyles({
     height: '100%',
     '::before': {
       width: `var(${railSizeVar})`,
-      top: '-1px',
-      bottom: '1px',
+      top: `var(${thumbOffsetVar})`,
+      bottom: `var(${thumbOffsetVar})`,
     },
   },
 });
@@ -214,11 +207,11 @@ const useThumbStyles = makeStyles({
   },
   horizontal: {
     transform: 'translateX(-50%)',
-    left: `var(${sliderProgressVar})`,
+    left: `var(${thumbPositionVar})`,
   },
   vertical: {
     transform: 'translateY(50%)',
-    bottom: `var(${sliderProgressVar})`,
+    bottom: `var(${thumbPositionVar})`,
   },
 });
 

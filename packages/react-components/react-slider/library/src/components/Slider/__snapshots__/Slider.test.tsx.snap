@@ -4,7 +4,7 @@ exports[`Slider renders disabled Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    style="--fui-Slider--direction: 90deg; --fui-Slider--progress: 50%;"
+    style="--fui-Slider--direction: 90deg; --fui-Slider--progress: 50%; --fui-Slider--progress-value: 0.5;"
   >
     <input
       class="fui-Slider__input"
@@ -29,7 +29,7 @@ exports[`Slider renders horizontal Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    style="--fui-Slider--direction: 90deg; --fui-Slider--progress: 50%;"
+    style="--fui-Slider--direction: 90deg; --fui-Slider--progress: 50%; --fui-Slider--progress-value: 0.5;"
   >
     <input
       class="fui-Slider__input"
@@ -53,7 +53,7 @@ exports[`Slider renders vertical Slider correctly 1`] = `
 <div>
   <div
     class="fui-Slider"
-    style="--fui-Slider--direction: 0deg; --fui-Slider--progress: 50%;"
+    style="--fui-Slider--direction: 0deg; --fui-Slider--progress: 50%; --fui-Slider--progress-value: 0.5;"
   >
     <input
       class="fui-Slider__input"
