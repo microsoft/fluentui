@@ -1,0 +1,65 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+env:
+  NX_PARALLEL: 8 # ubuntu-latest = 8-core CPU / 32 GB of RAM
+  NX_VERBOSE_LOGGING: true
+
+jobs:
+  main:
+    runs-on: macos-14-xlarge
+    permissions:
+      contents: 'read'
+      actions: 'read'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: yarn install --frozen-lockfile
+
+      - name: Workspace lint
+        run: |
+          yarn nx run workspace-plugin:check-graph
+          yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --verify
+          yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies --verify
+
+      - name: Type-check just.config.ts files
+        run: |
+          # following packages need to be build in advance:
+          # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts,
+          # @fluentui/digest is used within packages/fluentui/perf-test-northstar/just.config.ts, thus it needs to be build in advance
+          #
+          # NOTE: we are running this via nx in order to get cache hits later on
+          yarn nx run-many -t build -p api-docs digest
+          yarn tsc -p ./tsconfig.just-scripts-configs.json
+
+      - name: 'check packages: installed dependencies versions'
+        run: |
+          yarn check:installed-dependencies-versions
+
+      - name: check formatting
+        run: |
+          yarn nx format:check --base origin/master
+
+      - name: build, test, lint, test-ssr (affected)
+        run: |
+          yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --nxBail
+
+      - name: 'Check for unstaged changes'
+        run: |
+          git status --porcelain
+          git diff-index --quiet HEAD -- || exit 1
