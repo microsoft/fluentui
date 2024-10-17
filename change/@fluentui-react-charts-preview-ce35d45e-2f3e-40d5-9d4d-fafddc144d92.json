@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Create charts components as native v9 controls.",
+  "packageName": "@fluentui/react-charts-preview",
+  "email": "98592573+AtishayMsft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
