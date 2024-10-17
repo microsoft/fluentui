@@ -153,6 +153,141 @@ type CollapseDelayedVariantParams = {
   exitEasing?: string;
 };
 
+const sizeEnterAtom = ({
+  fromSize,
+  toSize,
+  orientation,
+  duration,
+  easing,
+}: {
+  fromSize: string;
+  toSize: string;
+  orientation: CollapseOrientation;
+  duration: number;
+  easing: string;
+}): AtomMotion => {
+  const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
+  const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
+  return {
+    keyframes: [
+      { [sizeName]: fromSize, [overflowName]: 'hidden' },
+      { [sizeName]: toSize, offset: 0.9999, [overflowName]: 'hidden' },
+      { [sizeName]: 'unset', [overflowName]: 'unset' },
+    ],
+    duration,
+    easing,
+  };
+};
+
+const sizeExitAtom = ({
+  fromSize,
+  toSize,
+  orientation,
+  duration,
+  easing,
+  delay = 0,
+}: {
+  fromSize: string;
+  toSize: string;
+  orientation: CollapseOrientation;
+  duration: number;
+  easing: string;
+  delay?: number;
+}): AtomMotion => {
+  const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
+  const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
+  return {
+    keyframes: [
+      { [sizeName]: toSize, [overflowName]: 'hidden' },
+      { [sizeName]: fromSize, [overflowName]: 'hidden' },
+    ],
+    duration,
+    easing,
+    fill: 'both',
+    delay,
+  };
+};
+
+// Because a height of zero does not eliminate padding,
+// we will create keyframes to animate it to zero.
+// TODO: consider collapsing margin, perhaps as an option.
+
+const whitespaceEnterAtom = ({
+  orientation,
+  duration,
+  easing,
+}: {
+  orientation: CollapseOrientation;
+  duration: number;
+  easing: string;
+}): AtomMotion => {
+  const paddingStart = orientation === 'horizontal' ? 'paddingLeft' : 'paddingTop';
+  const paddingEnd = orientation === 'horizontal' ? 'paddingRight' : 'paddingBottom';
+  return {
+    keyframes: [{ [paddingStart]: '0', [paddingEnd]: '0', offset: 0 }],
+    duration,
+    easing,
+  };
+};
+
+const whitespaceExitAtom = ({
+  orientation,
+  duration,
+  easing,
+  delay = 0,
+}: {
+  orientation: CollapseOrientation;
+  duration: number;
+  easing: string;
+  delay?: number;
+}): AtomMotion => {
+  const paddingStart = orientation === 'horizontal' ? 'paddingLeft' : 'paddingTop';
+  const paddingEnd = orientation === 'horizontal' ? 'paddingRight' : 'paddingBottom';
+  return {
+    keyframes: [{ [paddingStart]: '0', [paddingEnd]: '0', offset: 1 }],
+    duration,
+    easing,
+    fill: 'forwards',
+    delay,
+  };
+};
+
+const opacityEnterAtom = ({
+  fromOpacity,
+  toOpacity,
+  duration,
+  easing,
+  delay = 0,
+}: {
+  fromOpacity: number;
+  toOpacity: number;
+  duration: number;
+  easing: string;
+  delay?: number;
+}): AtomMotion => ({
+  keyframes: [{ opacity: fromOpacity }, { opacity: toOpacity }],
+  duration,
+  easing,
+  fill: 'both',
+  delay,
+});
+
+const opacityExitAtom = ({
+  fromOpacity,
+  toOpacity,
+  duration,
+  easing,
+}: {
+  fromOpacity: number;
+  toOpacity: number;
+  duration: number;
+  easing: string;
+}): AtomMotion => ({
+  keyframes: [{ opacity: toOpacity }, { opacity: fromOpacity }],
+  duration,
+  easing,
+});
+
 /** Define a presence motion for collapse/expand */
 export const createCollapseDelayedPresence: PresenceMotionFnCreator<
   CollapseDelayedVariantParams,
@@ -168,7 +303,6 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<
     // exit
     exitSizeDuration = enterSizeDuration,
     exitOpacityDuration = enterOpacityDuration,
-    // exitOpacityDuration = exitSizeDuration,
     exitEasing = enterEasing,
     exitDelay = 0,
   } = {}) =>
@@ -178,92 +312,65 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<
     const fromSize = '0'; // Could be a custom param in the future to start with partially expanded width or height
     const measuredSize = orientation === 'horizontal' ? element.scrollWidth : element.scrollHeight;
     const toSize = `${measuredSize}px`;
-    // use generic names for size and overflow, handling vertical or horizontal orientation
-    const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
-    const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
-
-    // Because a height of zero does not eliminate padding,
-    // we will create keyframes to animate it to zero.
-    // TODO: consider collapsing margin, perhaps as an option.
-    const collapsedWhiteSpace = {} as { [key: string]: string };
-    if (orientation === 'horizontal') {
-      collapsedWhiteSpace.paddingLeft = '0';
-      collapsedWhiteSpace.paddingRight = '0';
-    } else {
-      collapsedWhiteSpace.paddingTop = '0';
-      collapsedWhiteSpace.paddingBottom = '0';
-    }
 
     // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
     const enterAtoms: AtomMotion[] = [
-      // Expand size (height or width)
-      {
-        keyframes: [
-          {
-            [sizeName]: fromSize,
-            [overflowName]: 'hidden',
-          },
-          { [sizeName]: toSize, offset: 0.9999, [overflowName]: 'hidden' },
-          { [sizeName]: 'unset', [overflowName]: 'unset' },
-        ],
+      sizeEnterAtom({
+        fromSize,
+        toSize,
+        orientation,
         duration: enterSizeDuration,
         easing: enterEasing,
-      },
-      // Expand whitespace (padding currently).
-      {
-        // Animate from zero values to the element's natural values (i.e. the missing other keyframe).
-        keyframes: [{ ...collapsedWhiteSpace, offset: 0 }],
+      }),
+      whitespaceEnterAtom({
+        orientation,
         duration: enterSizeDuration,
         easing: enterEasing,
-      },
+      }),
     ];
     // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
     if (animateOpacity) {
-      enterAtoms.push({
-        // If enterDelay > 0, the fade-in will start after the size expand.
-        delay: enterDelay,
-        keyframes: [{ opacity: fromOpacity }, { opacity: toOpacity }],
-        duration: enterOpacityDuration,
-        easing: enterEasing,
-        fill: 'both',
-      });
+      enterAtoms.push(
+        opacityEnterAtom({
+          fromOpacity,
+          toOpacity,
+          duration: enterOpacityDuration,
+          easing: enterEasing,
+          delay: enterDelay,
+        }),
+      );
     }
 
     // The exit transition is an array of up to 3 motion atoms: opacity, size and whitespace.
     const exitAtoms: AtomMotion[] = [];
-    // Fade out only if animateOpacity is false. Otherwise, leave opacity unaffected.
+    // Fade out only if animateOpacity is true. Otherwise, leave opacity unaffected.
     if (animateOpacity) {
-      exitAtoms.push({
-        keyframes: [{ opacity: toOpacity }, { opacity: fromOpacity }],
-        duration: exitOpacityDuration,
-        easing: exitEasing,
-      });
+      exitAtoms.push(
+        opacityExitAtom({
+          fromOpacity,
+          toOpacity,
+          duration: exitOpacityDuration,
+          easing: exitEasing,
+        }),
+      );
     }
     exitAtoms.push(
-      // Collapse size (height or width)
-      {
-        // If exitDelay > 0, the size collapse will start after the fade-out.
-        delay: exitDelay,
-        keyframes: [
-          { [sizeName]: toSize, [overflowName]: 'hidden' },
-          { [sizeName]: fromSize, [overflowName]: 'hidden' },
-        ],
+      sizeExitAtom({
+        fromSize,
+        toSize,
+        orientation,
         duration: exitSizeDuration,
         easing: exitEasing,
-        fill: 'both',
-      },
+        delay: exitDelay,
+      }),
     );
     exitAtoms.push(
-      // Collapse whitespace (padding currently).
-      {
-        // If exitDelay > 0, the whitespace collapse will start after the fade-out.
-        delay: exitDelay,
-        // Animate from the element's natural values (i.e. the missing other keyframe) to zero values.
-        keyframes: [{ ...collapsedWhiteSpace, offset: 1 }],
+      whitespaceExitAtom({
+        orientation,
         duration: exitSizeDuration,
         easing: exitEasing,
-        fill: 'forwards',
-      },
+        delay: exitDelay,
+      }),
     );
 
     return {
