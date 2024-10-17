@@ -22,9 +22,10 @@ export const sliderCSSVars = {
   sliderDirectionVar: `--fui-Slider--direction`,
   sliderProgressVar: `--fui-Slider--progress`,
   sliderStepsPercentVar: `--fui-Slider--steps-percent`,
+  sliderThumbOffsetRatio: `--fui-Slider__thumb--offset-ratio`,
 };
 
-const { sliderDirectionVar, sliderStepsPercentVar, sliderProgressVar } = sliderCSSVars;
+const { sliderDirectionVar, sliderStepsPercentVar, sliderProgressVar, sliderThumbOffsetRatio } = sliderCSSVars;
 
 /**
  * Styles for the root slot
@@ -214,11 +215,11 @@ const useThumbStyles = makeStyles({
   },
   horizontal: {
     transform: 'translateX(-50%)',
-    left: `var(${sliderProgressVar})`,
+    left: `calc(var(${sliderProgressVar}) + var(${sliderThumbOffsetRatio}) * var(${thumbSizeVar}))`,
   },
   vertical: {
     transform: 'translateY(50%)',
-    bottom: `var(${sliderProgressVar})`,
+    bottom: `calc(var(${sliderProgressVar}) + var(${sliderThumbOffsetRatio}) * var(${thumbSizeVar}))`,
   },
 });
 
