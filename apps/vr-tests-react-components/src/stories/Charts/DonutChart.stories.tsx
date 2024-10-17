@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
-import { IChartProps, IChartDataPoint, DonutChart } from '@fluentui/react-charts-preview';
+import { ChartProps, ChartDataPoint, DonutChart } from '@fluentui/react-charts-preview';
 
 export default {
   title: 'Charts/DonutChart',
@@ -17,12 +17,12 @@ export default {
 } satisfies Meta<typeof DonutChart>;
 
 export const Basic = () => {
-  const points: IChartDataPoint[] = [
+  const points: ChartDataPoint[] = [
     { legend: 'first', data: 20000, color: '#DADADA', xAxisCalloutData: '2020/04/30' },
     { legend: 'second', data: 39000, color: '#0078D4', xAxisCalloutData: '2020/04/20' },
   ];
 
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Donut chart basic example',
     chartData: points,
   };
@@ -48,7 +48,7 @@ export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 export const BasicRTL = getStoryVariant(Basic, RTL);
 
 export const Dynamic = () => {
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Donut chart dynamic example',
     chartData: [
       {
