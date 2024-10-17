@@ -27,10 +27,6 @@ jobs:
         with:
           main-branch-name: 'master'
 
-      - run: |
-          echo "BASE: ${{ env.NX_BASE }}"
-          echo "HEAD: ${{ env.NX_HEAD }}"
-
       - uses: actions/setup-node@v4
         with:
           cache: 'yarn'
