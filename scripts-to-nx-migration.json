@@ -1,0 +1,2961 @@
+{
+  "eslint-plugin": {
+    "npm": ["type-check", "lint", "test"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["type-check", "lint", "format", "clean", "nx-release-publish"]
+  },
+  "babel-preset-global-context": {
+    "npm": [
+      "build",
+      "clean",
+      "code-style",
+      "e2e",
+      "e2e:local",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "generate-api",
+      "test-ssr"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "babel-preset-storybook-full-source": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "test", "type-check", "generate-api"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test", "generate-api", "build", "start", "storybook"]
+  },
+  "global-context": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "e2e",
+      "e2e:local",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "generate-api",
+      "test-ssr"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "keyboard-keys": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "test", "type-check", "generate-api", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "priority-overflow": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "generate-api",
+      "test-ssr"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-accordion": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-accordion-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-aria": {
+    "npm": [
+      "build",
+      "clean",
+      "code-style",
+      "e2e",
+      "e2e:local",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-aria-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-avatar": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "e2e",
+      "e2e:local",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-avatar-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-badge": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-badge-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-breadcrumb": {
+    "npm": [
+      "build",
+      "clean",
+      "code-style",
+      "e2e",
+      "e2e:local",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "generate-api",
+      "storybook",
+      "start",
+      "bundle-size"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-breadcrumb-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-button": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-button-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-calendar-compat": {
+    "npm": ["build", "bundle-size", "clean", "generate-api", "lint", "start", "storybook", "test", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-calendar-compat-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-card": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "e2e",
+      "e2e:local",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-card-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-carousel": {
+    "npm": ["build", "clean", "generate-api", "lint", "start", "storybook", "test", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-carousel-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-checkbox": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-checkbox-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-color-picker-preview": {
+    "npm": ["build", "clean", "generate-api", "lint", "start", "storybook", "test", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test", "generate-api", "build", "start", "storybook"]
+  },
+  "react-color-picker-preview-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-colorpicker-compat": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "test", "test-ssr", "type-check", "generate-api"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test", "generate-api", "build", "start", "storybook"]
+  },
+  "react-combobox": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api",
+      "e2e",
+      "e2e:local"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-combobox-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-components": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "type-check",
+      "generate-api",
+      "verify-packaging"
+    ],
+    "metadata": {
+      "copy": {
+        "copyTo": {
+          "unstable/package.json": "./src/unstable/package.json__tmpl__"
+        }
+      }
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-conformance-griffel": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "test", "type-check", "generate-api"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-context-selector": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "test", "type-check", "generate-api", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-datepicker-compat": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "e2e",
+      "e2e:local",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "generate-api",
+      "storybook",
+      "start"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-datepicker-compat-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-dialog": {
+    "npm": [
+      "build",
+      "clean",
+      "code-style",
+      "bundle-size",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "e2e",
+      "e2e:local",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-dialog-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-divider": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-divider-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-drawer": {
+    "npm": [
+      "build",
+      "clean",
+      "code-style",
+      "e2e",
+      "e2e:local",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "generate-api",
+      "storybook",
+      "start"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-drawer-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-field": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "storybook",
+      "test",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-field-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-icons-compat": {
+    "npm": ["build", "clean", "generate-api", "lint", "start", "storybook", "test", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-icons-compat-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-image": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-image-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-infolabel": {
+    "npm": ["build", "clean", "e2e", "e2e:local", "generate-api", "lint", "start", "storybook", "test", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-infolabel-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-input": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-input-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-jsx-runtime": {
+    "npm": [
+      "build",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "generate-api",
+      "test-ssr",
+      "bundle-size"
+    ],
+    "metadata": {
+      "copy": {
+        "copyTo": {
+          "jsx-runtime/package.json": "./src/jsx-runtime/package.json__tmpl__",
+          "jsx-dev-runtime/package.json": "./src/jsx-dev-runtime/package.json__tmpl__",
+          "dist/jsx-runtime.d.ts": "./src/jsx-runtime/index.d.ts__tmpl__",
+          "dist/jsx-dev-runtime.d.ts": "./src/jsx-dev-runtime/index.d.ts__tmpl__"
+        }
+      }
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-keytips-preview": {
+    "npm": ["build", "clean", "generate-api", "lint", "start", "storybook", "test", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test", "generate-api", "build", "start", "storybook"]
+  },
+  "react-keytips-preview-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-label": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-label-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-link": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-link-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-list-preview": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "generate-api",
+      "lint",
+      "start",
+      "storybook",
+      "test",
+      "type-check",
+      "e2e",
+      "e2e:local"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-list-preview-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-menu": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "e2e",
+      "e2e:local",
+      "just",
+      "lint",
+      "start",
+      "storybook",
+      "test",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-menu-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-message-bar": {
+    "npm": ["build", "bundle-size", "clean", "generate-api", "lint", "start", "storybook", "test", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-message-bar-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-migration-v0-v9": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "test", "type-check", "generate-api", "storybook", "start"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-migration-v0-v9-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-migration-v8-v9": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "test", "type-check", "generate-api", "storybook", "start"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-migration-v8-v9-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-motion": {
+    "npm": [
+      "build",
+      "clean",
+      "generate-api",
+      "lint",
+      "start",
+      "storybook",
+      "test",
+      "type-check",
+      "e2e",
+      "e2e:local",
+      "bundle-size"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-motion-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-motion-components-preview": {
+    "npm": ["build", "clean", "generate-api", "lint", "start", "storybook", "test", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-motion-components-preview-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-nav-preview": {
+    "npm": ["build", "clean", "generate-api", "lint", "start", "storybook", "test", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-nav-preview-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-overflow": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "e2e",
+      "e2e:local",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-overflow-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-persona": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "storybook",
+      "start",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-persona-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-popover": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "e2e",
+      "e2e:local",
+      "storybook",
+      "test",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-popover-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-portal": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-portal-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-portal-compat": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "e2e",
+      "e2e:local",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "generate-api",
+      "test-ssr"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-portal-compat-context": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "test", "type-check", "generate-api", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-positioning": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "generate-api",
+      "test-ssr"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-progress": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "storybook",
+      "start",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-progress-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-provider": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "test",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "storybook",
+      "start",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-provider-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-radio": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-radio-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-rating": {
+    "npm": ["build", "clean", "generate-api", "lint", "start", "storybook", "test", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-rating-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-search": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "test", "type-check", "generate-api", "storybook", "start"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-search-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-select": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-select-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-shared-contexts": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "test", "type-check", "generate-api", "storybook", "start"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-shared-contexts-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-skeleton": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "test", "generate-api", "type-check", "storybook", "start"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-skeleton-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-slider": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-slider-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-spinbutton": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-spinbutton-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-spinner": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-spinner-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-storybook-addon": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "start", "test", "storybook", "type-check", "generate-api"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test", "generate-api", "build", "start", "storybook"]
+  },
+  "react-storybook-addon-export-to-sandbox": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "test", "type-check", "generate-api"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test", "generate-api", "build", "start", "storybook"]
+  },
+  "react-swatch-picker": {
+    "npm": [
+      "build",
+      "clean",
+      "e2e",
+      "e2e:local",
+      "generate-api",
+      "lint",
+      "start",
+      "storybook",
+      "test",
+      "type-check",
+      "bundle-size"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-swatch-picker-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-switch": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-switch-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-table": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "e2e",
+      "e2e:local",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "storybook",
+      "start",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-table-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-tabs": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "start", "test", "storybook", "type-check", "generate-api"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-tabs-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-tabster": {
+    "npm": [
+      "build",
+      "clean",
+      "code-style",
+      "e2e",
+      "e2e:local",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "generate-api",
+      "test-ssr"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-tag-picker": {
+    "npm": [
+      "build",
+      "clean",
+      "generate-api",
+      "lint",
+      "start",
+      "storybook",
+      "test",
+      "type-check",
+      "e2e",
+      "e2e:local",
+      "bundle-size"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-tag-picker-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-tags": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "test",
+      "e2e",
+      "e2e:local",
+      "type-check",
+      "generate-api",
+      "storybook",
+      "start"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-tags-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-teaching-popover": {
+    "npm": ["build", "clean", "generate-api", "lint", "start", "storybook", "test", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-teaching-popover-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-text": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api",
+      "verify-packaging"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-text-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-textarea": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-textarea-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-theme": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "storybook",
+      "test",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-theme-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-theme-sass": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "test", "type-check", "generate-api", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-timepicker-compat": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "e2e",
+      "e2e:local",
+      "generate-api",
+      "lint",
+      "start",
+      "storybook",
+      "test",
+      "type-check"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-timepicker-compat-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-toast": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "generate-api",
+      "storybook",
+      "start",
+      "e2e",
+      "e2e:local"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-toast-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-toolbar": {
+    "npm": [
+      "build",
+      "clean",
+      "code-style",
+      "e2e",
+      "e2e:local",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-toolbar-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-tooltip": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-tooltip-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-tree": {
+    "npm": ["build", "clean", "generate-api", "lint", "start", "storybook", "test", "type-check", "e2e", "e2e:local"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-tree-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-utilities": {
+    "npm": [
+      "build",
+      "bundle-size",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "test",
+      "type-check",
+      "generate-api",
+      "test-ssr",
+      "e2e",
+      "e2e:local"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "bundle-size",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-utilities-compat": {
+    "npm": ["build", "clean", "generate-api", "lint", "start", "storybook", "test", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test", "generate-api", "build", "start", "storybook"]
+  },
+  "react-utilities-compat-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "react-virtualizer": {
+    "npm": ["build", "clean", "code-style", "just", "lint", "test", "storybook", "start", "generate-api", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "react-virtualizer-stories": {
+    "npm": ["start", "storybook", "type-check", "lint", "format", "test-ssr"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test-ssr", "start", "storybook"]
+  },
+  "recipes": {
+    "npm": ["build", "clean", "generate-api", "lint", "test", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test", "test-ssr", "start", "storybook"]
+  },
+  "theme-designer": {
+    "npm": [
+      "build",
+      "build-storybook",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "start",
+      "test",
+      "storybook",
+      "type-check",
+      "generate-api",
+      "test-ssr"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test", "generate-api", "build", "start", "storybook"]
+  },
+  "react-conformance": {
+    "npm": ["build", "clean", "code-style", "just", "test", "lint", "generate-api", "type-check"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "verify-packaging",
+      "nx-release-publish"
+    ]
+  },
+  "tokens": {
+    "npm": [
+      "build",
+      "clean",
+      "code-style",
+      "just",
+      "lint",
+      "test",
+      "token-pipeline",
+      "type-check",
+      "generate-api",
+      "e2e"
+    ],
+    "metadata": {
+      "copy": null
+    },
+    "nx": [
+      "clean",
+      "format",
+      "type-check",
+      "lint",
+      "test",
+      "generate-api",
+      "build",
+      "start",
+      "storybook",
+      "e2e",
+      "verify-packaging",
+      "nx-release-publish",
+      "token-pipeline"
+    ]
+  },
+  "scripts-api-extractor": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-babel": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-beachball": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-cypress": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-dangerjs": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-executors": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-fluentui-publish": {
+    "npm": ["lint", "test"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-generators": {
+    "npm": ["lint", "test"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-github": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-gulp": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-jest": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-lint-staged": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-monorepo": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-package-manager": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-perf-test-flamegrill": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-prettier": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-projects-test": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-puppeteer": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-storybook": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-tasks": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-test-ssr": {
+    "npm": ["lint", "test"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-triage-bot": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-ts-node": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-update-release-notes": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-utils": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "scripts-webpack": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test"]
+  },
+  "eslint-rules": {
+    "npm": [],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "test"]
+  },
+  "workspace-plugin": {
+    "npm": ["check-graph"],
+    "metadata": {
+      "copy": null
+    },
+    "nx": ["clean", "format", "type-check", "lint", "test", "build", "check-graph"]
+  }
+}

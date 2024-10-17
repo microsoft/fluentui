@@ -9,13 +9,11 @@ import {
 } from '@nx/devkit';
 import { dirname } from 'node:path';
 
-import { assertProjectExists, projectConfigGlob } from './shared';
+import { type TaskBuilderConfig, assertProjectExists, projectConfigGlob } from './shared';
 
 interface FormatPluginOptions {
   targetName?: string;
 }
-
-const pmc = getPackageManagerCommand();
 
 export const createNodesV2: CreateNodesV2<FormatPluginOptions> = [
   projectConfigGlob,
@@ -51,7 +49,26 @@ function createNodesInternal(
   }
 
   const normalizedOptions = normalizeOptions(options);
+  const config = { pmc: getPackageManagerCommand('yarn') };
 
+  const targetConfig = buildFormatTarget(normalizedOptions, context, config);
+
+  return {
+    projects: {
+      [projectRoot]: {
+        targets: {
+          [normalizedOptions.targetName]: targetConfig,
+        },
+      },
+    },
+  };
+}
+
+export function buildFormatTarget(
+  _options: FormatPluginOptions,
+  _context: CreateNodesContextV2,
+  config: Required<TaskBuilderConfig>,
+) {
   const targetConfig: TargetConfiguration = {
     command: 'prettier --write {projectRoot}',
     cache: true,
@@ -66,7 +83,7 @@ function createNodesInternal(
       technologies: ['prettier'],
       description: 'Format code with prettier',
       help: {
-        command: `${pmc.exec} prettier --help`,
+        command: `${config.pmc.exec} prettier --help`,
         example: {},
       },
     },
@@ -77,13 +94,5 @@ function createNodesInternal(
     },
   };
 
-  return {
-    projects: {
-      [projectRoot]: {
-        targets: {
-          [normalizedOptions.targetName]: targetConfig,
-        },
-      },
-    },
-  };
+  return targetConfig;
 }
