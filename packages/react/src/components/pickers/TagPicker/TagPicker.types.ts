@@ -3,6 +3,7 @@ import type { IStyle, ITheme } from '../../../Styling';
 import type { IStyleFunctionOrObject } from '../../../Utilities';
 import type { IPickerItemProps } from '../PickerItem.types';
 import type { IBasePickerProps } from '../BasePicker.types';
+import type { IButtonProps } from '../../Button/Button.types';
 
 /**
  * TagPickerItem item interface.
@@ -21,6 +22,15 @@ export interface ITag {
  * {@docCategory TagPicker}
  */
 export interface ITagPickerProps extends IBasePickerProps<ITag> {}
+
+/**
+ * TagItem remove button component props
+ * {@docCategory TagPicker}
+ */
+export interface ITagItemRemoveButtonProps extends IButtonProps {
+  /** data-id to manually trigger interaction or to identify users' interactions */
+  'data-id'?: string;
+}
 
 /**
  * TagItem component props
@@ -47,6 +57,9 @@ export interface ITagItemProps extends IPickerItemProps<ITag> {
 
   /** Theme provided by High-Order Component. */
   theme?: ITheme;
+
+  /** Allows to pass any additional props directly to the remove IconButton. */
+  removeButtonProps?: ITagItemRemoveButtonProps;
 }
 
 /**
