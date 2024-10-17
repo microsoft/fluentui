@@ -4,5 +4,29 @@
   "projectType": "library",
   "implicitDependencies": [],
   "sourceRoot": "packages/react-components/react-jsx-runtime/src",
-  "tags": ["vNext", "platform:any"]
+  "tags": ["vNext", "platform:any"],
+  "targets": {
+    "build": {
+      "options": {
+        "assets": [
+          {
+            "input": "{projectRoot}/src/{jsx-runtime,jsx-dev-runtime}",
+            "output": "{projectRoot}",
+            "glob": "*.json__tmpl__",
+            "substitutions": {
+              "__tmpl__": ""
+            }
+          },
+          {
+            "input": "{projectRoot}/src/{jsx-runtime,jsx-dev-runtime}",
+            "output": "{projectRoot}/dist",
+            "glob": "*.d.ts__tmpl__",
+            "substitutions": {
+              "__tmpl__": ""
+            }
+          }
+        ]
+      }
+    }
+  }
 }
