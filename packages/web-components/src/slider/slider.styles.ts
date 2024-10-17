@@ -1,6 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { smallState, verticalState } from '../styles/states/index.js';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -16,6 +14,9 @@ import {
   colorStrokeFocus1,
   colorStrokeFocus2,
 } from '../theme/design-tokens.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
+import { display } from '../utils/display.js';
+import { state } from '../utils/states.js';
 
 /** Text styles
  * @public
@@ -68,14 +69,14 @@ export const styles = css`
     --slider-direction: -90deg;
   }
 
-  :host(${smallState}) {
+  :host(${state('small')}) {
     --thumb-size: 16px;
     --track-overhang: -1px;
     --track-size: 2px;
     --border-radius: ${borderRadiusSmall};
   }
 
-  :host(${verticalState}) {
+  :host(${state('vertical')}) {
     --slider-direction: 0deg;
     --step-marker-inset: -1px var(--track-overhang);
     min-height: 120px;
@@ -91,13 +92,13 @@ export const styles = css`
     outline: 1px solid ${colorStrokeFocus1};
   }
 
-  :host:after,
+  :host::after,
   .track {
     height: var(--track-size);
     width: 100%;
   }
 
-  :host:after {
+  :host::after {
     background-image: linear-gradient(
       var(--slider-direction),
       var(--rail-color) 0%,
@@ -120,13 +121,13 @@ export const styles = css`
     overflow: hidden;
   }
 
-  :host(${verticalState})::after,
-  :host(${verticalState}) .track {
+  :host(${state('vertical')})::after,
+  :host(${state('vertical')}) .track {
     height: 100%;
     width: var(--track-size);
   }
 
-  :host(${verticalState}) .track {
+  :host(${state('vertical')}) .track {
     top: var(--track-overhang);
     bottom: var(--track-overhang);
   }
@@ -140,7 +141,7 @@ export const styles = css`
     width: var(--slider-progress);
   }
 
-  :host(${verticalState}) .track::before {
+  :host(${state('vertical')}) .track::before {
     width: 100%;
     bottom: 0;
     height: var(--slider-progress);
@@ -168,7 +169,7 @@ export const styles = css`
     left: var(--slider-thumb);
   }
 
-  :host(${verticalState}) .thumb-container {
+  :host(${state('vertical')}) .thumb-container {
     transform: translateY(50%);
     left: unset;
     bottom: var(--slider-thumb);

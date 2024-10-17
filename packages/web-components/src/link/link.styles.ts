@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   colorBrandForegroundLink,
   colorBrandForegroundLinkHover,
@@ -12,7 +11,9 @@ import {
   fontWeightRegular,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
-import { subtleState } from '../styles/states/index.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
+import { display } from '../utils/display.js';
+import { state } from '../utils/states.js';
 
 export const styles = css`
   ${display('inline')}
@@ -29,7 +30,7 @@ export const styles = css`
     overflow: inherit;
     text-align: start;
     text-decoration: none;
-    text-decoration-thinkness: ${strokeWidthThin};
+    text-decoration-thickness: ${strokeWidthThin};
     text-overflow: inherit;
     user-select: text;
   }
@@ -48,21 +49,21 @@ export const styles = css`
       color: ${colorBrandForegroundLinkPressed};
     }
 
-    :host(${subtleState}:hover) {
+    :host(${state('subtle')}:hover) {
       color: ${colorNeutralForeground2LinkHover};
     }
 
-    :host(${subtleState}:active) {
+    :host(${state('subtle')}:active) {
       color: ${colorNeutralForeground2LinkPressed};
     }
   }
 
-  :host(${subtleState}) {
+  :host(${state('subtle')}) {
     color: ${colorNeutralForeground2Link};
   }
 
   :host-context(:is(h1, h2, h3, h4, h5, h6, p, fluent-text)),
-  :host(:is([state--inline], :state(inline))) {
+  :host(${state('inline')}) {
     font: inherit;
     text-decoration: underline;
   }

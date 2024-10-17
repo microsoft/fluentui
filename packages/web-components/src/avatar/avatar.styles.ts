@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
 import {
   borderRadiusCircular,
   borderRadiusLarge,
@@ -101,6 +100,8 @@ import {
   strokeWidthThickest,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+import { display } from '../utils/display.js';
+import { state } from '../utils/states.js';
 
 const animations = {
   fastOutSlowInMax: curveDecelerateMax,
@@ -322,157 +323,157 @@ export const styles = css`
     border-radius: ${borderRadiusXLarge};
   }
 
-  :host(:is([state--brand], :state(brand))) {
+  :host(${state('brand')}) {
     color: ${colorNeutralForegroundStaticInverted};
     background-color: ${colorBrandBackgroundStatic};
   }
 
-  :host(:is([state--dark-red], :state(dark-red))) {
+  :host(${state('dark-red')}) {
     color: ${colorPaletteDarkRedForeground2};
     background-color: ${colorPaletteDarkRedBackground2};
   }
 
-  :host(:is([state--cranberry], :state(cranberry))) {
+  :host(${state('cranberry')}) {
     color: ${colorPaletteCranberryForeground2};
     background-color: ${colorPaletteCranberryBackground2};
   }
 
-  :host(:is([state--red], :state(red))) {
+  :host(${state('red')}) {
     color: ${colorPaletteRedForeground2};
     background-color: ${colorPaletteRedBackground2};
   }
 
-  :host(:is([state--pumpkin], :state(pumpkin))) {
+  :host(${state('pumpkin')}) {
     color: ${colorPalettePumpkinForeground2};
     background-color: ${colorPalettePumpkinBackground2};
   }
 
-  :host(:is([state--peach], :state(peach))) {
+  :host(${state('peach')}) {
     color: ${colorPalettePeachForeground2};
     background-color: ${colorPalettePeachBackground2};
   }
 
-  :host(:is([state--marigold], :state(marigold))) {
+  :host(${state('marigold')}) {
     color: ${colorPaletteMarigoldForeground2};
     background-color: ${colorPaletteMarigoldBackground2};
   }
 
-  :host(:is([state--gold], :state(gold))) {
+  :host(${state('gold')}) {
     color: ${colorPaletteGoldForeground2};
     background-color: ${colorPaletteGoldBackground2};
   }
 
-  :host(:is([state--brass], :state(brass))) {
+  :host(${state('brass')}) {
     color: ${colorPaletteBrassForeground2};
     background-color: ${colorPaletteBrassBackground2};
   }
 
-  :host(:is([state--brown], :state(brown))) {
+  :host(${state('brown')}) {
     color: ${colorPaletteBrownForeground2};
     background-color: ${colorPaletteBrownBackground2};
   }
 
-  :host(:is([state--forest], :state(forest))) {
+  :host(${state('forest')}) {
     color: ${colorPaletteForestForeground2};
     background-color: ${colorPaletteForestBackground2};
   }
 
-  :host(:is([state--seafoam], :state(seafoam))) {
+  :host(${state('seafoam')}) {
     color: ${colorPaletteSeafoamForeground2};
     background-color: ${colorPaletteSeafoamBackground2};
   }
 
-  :host(:is([state--dark-green], :state(dark-green))) {
+  :host(${state('dark-green')}) {
     color: ${colorPaletteDarkGreenForeground2};
     background-color: ${colorPaletteDarkGreenBackground2};
   }
 
-  :host(:is([state--light-teal], :state(light-teal))) {
+  :host(${state('light-teal')}) {
     color: ${colorPaletteLightTealForeground2};
     background-color: ${colorPaletteLightTealBackground2};
   }
 
-  :host(:is([state--teal], :state(teal))) {
+  :host(${state('teal')}) {
     color: ${colorPaletteTealForeground2};
     background-color: ${colorPaletteTealBackground2};
   }
 
-  :host(:is([state--steel], :state(steel))) {
+  :host(${state('steel')}) {
     color: ${colorPaletteSteelForeground2};
     background-color: ${colorPaletteSteelBackground2};
   }
 
-  :host(:is([state--blue], :state(blue))) {
+  :host(${state('blue')}) {
     color: ${colorPaletteBlueForeground2};
     background-color: ${colorPaletteBlueBackground2};
   }
 
-  :host(:is([state--royal-blue], :state(royal-blue))) {
+  :host(${state('royal-blue')}) {
     color: ${colorPaletteRoyalBlueForeground2};
     background-color: ${colorPaletteRoyalBlueBackground2};
   }
 
-  :host(:is([state--cornflower], :state(cornflower))) {
+  :host(${state('cornflower')}) {
     color: ${colorPaletteCornflowerForeground2};
     background-color: ${colorPaletteCornflowerBackground2};
   }
 
-  :host(:is([state--navy], :state(navy))) {
+  :host(${state('navy')}) {
     color: ${colorPaletteNavyForeground2};
     background-color: ${colorPaletteNavyBackground2};
   }
 
-  :host(:is([state--lavender], :state(lavender))) {
+  :host(${state('lavender')}) {
     color: ${colorPaletteLavenderForeground2};
     background-color: ${colorPaletteLavenderBackground2};
   }
 
-  :host(:is([state--purple], :state(purple))) {
+  :host(${state('purple')}) {
     color: ${colorPalettePurpleForeground2};
     background-color: ${colorPalettePurpleBackground2};
   }
 
-  :host(:is([state--grape], :state(grape))) {
+  :host(${state('grape')}) {
     color: ${colorPaletteGrapeForeground2};
     background-color: ${colorPaletteGrapeBackground2};
   }
 
-  :host(:is([state--lilac], :state(lilac))) {
+  :host(${state('lilac')}) {
     color: ${colorPaletteLilacForeground2};
     background-color: ${colorPaletteLilacBackground2};
   }
 
-  :host(:is([state--pink], :state(pink))) {
+  :host(${state('pink')}) {
     color: ${colorPalettePinkForeground2};
     background-color: ${colorPalettePinkBackground2};
   }
 
-  :host(:is([state--magenta], :state(magenta))) {
+  :host(${state('magenta')}) {
     color: ${colorPaletteMagentaForeground2};
     background-color: ${colorPaletteMagentaBackground2};
   }
 
-  :host(:is([state--plum], :state(plum))) {
+  :host(${state('plum')}) {
     color: ${colorPalettePlumForeground2};
     background-color: ${colorPalettePlumBackground2};
   }
 
-  :host(:is([state--beige], :state(beige))) {
+  :host(${state('beige')}) {
     color: ${colorPaletteBeigeForeground2};
     background-color: ${colorPaletteBeigeBackground2};
   }
 
-  :host(:is([state--mink], :state(mink))) {
+  :host(${state('mink')}) {
     color: ${colorPaletteMinkForeground2};
     background-color: ${colorPaletteMinkBackground2};
   }
 
-  :host(:is([state--platinum], :state(platinum))) {
+  :host(${state('platinum')}) {
     color: ${colorPalettePlatinumForeground2};
     background-color: ${colorPalettePlatinumBackground2};
   }
 
-  :host(:is([state--anchor], :state(anchor))) {
+  :host(${state('anchor')}) {
     color: ${colorPaletteAnchorForeground2};
     background-color: ${colorPaletteAnchorBackground2};
   }

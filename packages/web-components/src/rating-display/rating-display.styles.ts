@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   colorBrandBackground,
   colorBrandStroke2,
@@ -17,7 +16,9 @@ import {
   spacingHorizontalXS,
   spacingHorizontalXXS,
 } from '../theme/design-tokens.js';
-import { brandState, largeState, neutralState, smallState } from '../styles/states/index.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
+import { display } from '../utils/display.js';
+import { state } from '../utils/states.js';
 
 /**
  * The styles for the Rating Display component.
@@ -40,11 +41,11 @@ export const styles = css`
     user-select: none;
   }
 
-  :host(${smallState}) {
+  :host(${state('small')}) {
     --icon-size: 12px;
   }
 
-  :host(${largeState}) {
+  :host(${state('large')}) {
     --icon-size: 20px;
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
@@ -66,11 +67,11 @@ export const styles = css`
     margin-inline-end: calc(0px - var(--icon-size));
   }
 
-  :host(${neutralState}) svg {
+  :host(${state('neutral')}) svg {
     --icon-color-filled: ${colorNeutralForeground1};
   }
 
-  :host(${brandState}) svg {
+  :host(${state('brand')}) svg {
     --icon-color-filled: ${colorBrandBackground};
   }
 
@@ -80,15 +81,15 @@ export const styles = css`
     fill: var(--icon-color-empty);
   }
 
-  :host(${neutralState}:is([value^='-'], [value='0'])) svg,
-  :host(${neutralState}:not([value])) svg,
-  :host(${neutralState}) svg[selected] ~ svg {
+  :host(${state('neutral')}:is([value^='-'], [value='0'])) svg,
+  :host(${state('neutral')}:not([value])) svg,
+  :host(${state('neutral')}) svg[selected] ~ svg {
     --icon-color-empty: ${colorNeutralBackground1Pressed};
   }
 
-  :host(${brandState}:is([value^='-'], [value='0'])) svg,
-  :host(${brandState}:not([value])) svg,
-  :host(${brandState}) svg[selected] ~ svg {
+  :host(${state('brand')}:is([value^='-'], [value='0'])) svg,
+  :host(${state('brand')}:not([value])) svg,
+  :host(${state('brand')}) svg[selected] ~ svg {
     --icon-color-empty: ${colorBrandStroke2};
   }
 
@@ -99,13 +100,13 @@ export const styles = css`
     font-weight: ${fontWeightSemibold};
   }
 
-  :host(${smallState}) .value-label,
-  :host(${smallState}) ::slotted([slot='value']) {
+  :host(${state('small')}) .value-label,
+  :host(${state('small')}) ::slotted([slot='value']) {
     margin-inline-start: ${spacingHorizontalXXS};
   }
 
-  :host(${largeState}) .value-label,
-  :host(${largeState}) ::slotted([slot='value']) {
+  :host(${state('large')}) .value-label,
+  :host(${state('large')}) ::slotted([slot='value']) {
     margin-inline-start: ${spacingHorizontalSNudge};
   }
 
@@ -119,13 +120,13 @@ export const styles = css`
     margin-inline: ${spacingHorizontalXS};
   }
 
-  :host(${smallState}) .count-label::before,
-  :host(${smallState}) ::slotted([slot='count'])::before {
+  :host(${state('small')}) .count-label::before,
+  :host(${state('small')}) ::slotted([slot='count'])::before {
     margin-inline: ${spacingHorizontalXXS};
   }
 
-  :host(${largeState}) .count-label::before,
-  :host(${largeState}) ::slotted([slot='count'])::before {
+  :host(${state('large')}) .count-label::before,
+  :host(${state('large')}) ::slotted([slot='count'])::before {
     margin-inline: ${spacingHorizontalSNudge};
   }
 `.withBehaviors(

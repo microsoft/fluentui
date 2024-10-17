@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   colorBrandStroke1,
   colorBrandStroke2,
@@ -9,15 +8,9 @@ import {
   strokeWidthThicker,
   strokeWidthThickest,
 } from '../theme/design-tokens.js';
-import {
-  extraLargeState,
-  extraSmallState,
-  hugeState,
-  invertedState,
-  largeState,
-  smallState,
-  tinyState,
-} from '../styles/states/index.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
+import { display } from '../utils/display.js';
+import { state } from '../utils/states.js';
 
 export const styles = css`
   ${display('inline-flex')}
@@ -32,27 +25,27 @@ export const styles = css`
     content-visibility: auto;
   }
 
-  :host(${tinyState}) {
+  :host(${state('tiny')}) {
     --indicatorSize: ${strokeWidthThick};
     --size: 20px;
   }
-  :host(${extraSmallState}) {
+  :host(${state('extra-small')}) {
     --indicatorSize: ${strokeWidthThick};
     --size: 24px;
   }
-  :host(${smallState}) {
+  :host(${state('small')}) {
     --indicatorSize: ${strokeWidthThick};
     --size: 28px;
   }
-  :host(${largeState}) {
+  :host(${state('large')}) {
     --indicatorSize: ${strokeWidthThicker};
     --size: 36px;
   }
-  :host(${extraLargeState}) {
+  :host(${state('extra-large')}) {
     --indicatorSize: ${strokeWidthThicker};
     --size: 40px;
   }
-  :host(${hugeState}) {
+  :host(${state('huge')}) {
     --indicatorSize: ${strokeWidthThickest};
     --size: 44px;
   }
@@ -83,7 +76,7 @@ export const styles = css`
     border-radius: 50%;
   }
 
-  :host(${invertedState}) .background {
+  :host(${state('inverted')}) .background {
     border-color: rgba(255, 255, 255, 0.2);
   }
 
@@ -110,7 +103,7 @@ export const styles = css`
     border-inline-end-color: currentcolor;
   }
 
-  :host(${invertedState}) .indicator {
+  :host(${state('inverted')}) .indicator {
     color: ${colorNeutralStrokeOnBrand2};
   }
 

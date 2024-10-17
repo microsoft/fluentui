@@ -1,14 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
-import {
-  alignEndState,
-  blockState,
-  disabledState,
-  expandedState,
-  extraLargeState,
-  largeState,
-  smallState,
-} from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -31,6 +21,8 @@ import {
   spacingHorizontalMNudge,
   spacingHorizontalS,
 } from '../theme/design-tokens.js';
+import { display } from '../utils/display.js';
+import { state } from '../utils/states.js';
 
 export const styles = css`
   ${display('block')}
@@ -116,29 +108,29 @@ export const styles = css`
 
   /* --- Disabled attr styles --- */
 
-  :host(${disabledState}) .button {
+  :host(${state('disabled')}) .button {
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host(${disabledState}) svg {
+  :host(${state('disabled')}) svg {
     filter: invert(89%) sepia(0%) saturate(569%) hue-rotate(155deg) brightness(88%) contrast(87%);
   }
 
   /* --- Expanded attr styles --- */
 
-  :host(${expandedState}) .content {
+  :host(${state('expanded')}) .content {
     display: block;
   }
 
-  :host(${expandedState}) .default-marker-collapsed,
-  :host(${expandedState}) ::slotted([slot='marker-collapsed']),
-  :host(:not(${expandedState})) :is(.default-marker-expanded, .content),
-  :host(:not(${expandedState})) ::slotted([slot='marker-expanded']) {
+  :host(${state('expanded')}) .default-marker-collapsed,
+  :host(${state('expanded')}) ::slotted([slot='marker-collapsed']),
+  :host(:not(${state('expanded')})) :is(.default-marker-expanded, .content),
+  :host(:not(${state('expanded')})) ::slotted([slot='marker-expanded']) {
     display: none;
   }
 
-  :host(${expandedState}) ::slotted([slot='marker-expanded']),
-  :host(:not(${expandedState})) ::slotted([slot='marker-collapsed']) {
+  :host(${state('expanded')}) ::slotted([slot='marker-expanded']),
+  :host(:not(${state('expanded')})) ::slotted([slot='marker-collapsed']) {
     display: flex;
   }
 
@@ -149,34 +141,34 @@ export const styles = css`
     line-height: ${lineHeightBase300};
   }
 
-  :host(${smallState}) .heading {
+  :host(${state('small')}) .heading {
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
 
-  :host(${largeState}) .heading {
+  :host(${state('large')}) .heading {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
 
-  :host(${extraLargeState}) .heading {
+  :host(${state('extra-large')}) .heading {
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
   }
 
   /* --- marker-position attr styles --- */
 
-  :host(${alignEndState}) :slotted([slot='start']) {
+  :host(${state('align-end')}) :slotted([slot='start']) {
     grid-column: 1 / span 1;
   }
 
-  :host(${alignEndState}) :is(.default-marker-collapsed, .default-marker-expanded) {
+  :host(${state('align-end')}) :is(.default-marker-collapsed, .default-marker-expanded) {
     grid-column: 4 / span 1;
     padding-inline-start: ${spacingHorizontalS};
     padding-inline-end: 0;
   }
 
-  :host(${alignEndState}) .button {
+  :host(${state('align-end')}) .button {
     grid-column: 2 / span 3;
   }
 
@@ -186,20 +178,20 @@ export const styles = css`
     max-width: 100%;
   }
 
-  :host(${alignEndState}) .heading {
+  :host(${state('align-end')}) .heading {
     grid-template-columns: auto auto 28px;
     padding-inline: ${spacingHorizontalM};
   }
 
-  :host(${alignEndState}:has([slot='start'])) .heading {
+  :host(${state('align-end')}:has([slot='start'])) .heading {
     padding-inline: ${spacingHorizontalMNudge} ${spacingHorizontalM};
   }
 
-  :host(${blockState}${alignEndState}) .heading {
+  :host(${state('block')}${state('align-end')}) .heading {
     grid-template-columns: auto 1fr;
   }
 
-  :host(${alignEndState}) :is(.default-marker-collapsed, .default-marker-expanded) {
+  :host(${state('align-end')}) :is(.default-marker-collapsed, .default-marker-expanded) {
     grid-column: 5 / span 1;
   }
 `;

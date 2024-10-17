@@ -1,4 +1,3 @@
-import type { ElementStyles } from '@microsoft/fast-element';
 import { css } from '@microsoft/fast-element';
 import {
   borderRadiusMedium,
@@ -19,17 +18,18 @@ import {
   spacingVerticalMNudge,
   spacingVerticalS,
 } from '../theme/design-tokens.js';
-
-import { errorState, multiLineState, squareState, successState, warningState } from '../styles/states/index.js';
+import { display } from '../utils/display.js';
+import { state } from '../utils/states.js';
 
 /**
  * Styles for the MessageBar component.
  *
  * @public
  */
-export const styles: ElementStyles = css`
+export const styles = css`
+  ${display('grid')}
+
   :host {
-    display: grid;
     box-sizing: border-box;
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase200};
@@ -45,26 +45,26 @@ export const styles: ElementStyles = css`
     contain: layout style paint;
   }
 
-  :host(${squareState}) {
+  :host(${state('square')}) {
     border-radius: 0;
   }
 
-  :host(${successState}) {
+  :host(${state('success')}) {
     background-color: ${colorPaletteGreenBackground1};
     border-color: ${colorPaletteGreenBorder1};
   }
 
-  :host(${warningState}) {
+  :host(${state('warning')}) {
     background-color: ${colorPaletteDarkOrangeBackground1};
     border-color: ${colorPaletteDarkOrangeBorder1};
   }
 
-  :host(${errorState}) {
+  :host(${state('error')}) {
     background-color: ${colorPaletteRedBackground1};
     border-color: ${colorPaletteRedBorder1};
   }
 
-  :host(${multiLineState}) {
+  :host(${state('multi-line')}) {
     grid-template-areas:
       'icon body dismiss'
       'actions actions actions';
@@ -81,7 +81,7 @@ export const styles: ElementStyles = css`
     padding-inline: 0;
   }
 
-  :host(${multiLineState}) .content {
+  :host(${state('multi-line')}) .content {
     padding: 0;
   }
 
@@ -94,7 +94,7 @@ export const styles: ElementStyles = css`
     margin-inline-end: ${spacingHorizontalS};
   }
 
-  :host(${multiLineState}) ::slotted([slot='icon']) {
+  :host(${state('multi-line')}) ::slotted([slot='icon']) {
     align-items: start;
     height: 100%;
   }
@@ -111,12 +111,12 @@ export const styles: ElementStyles = css`
     gap: ${spacingHorizontalS};
   }
 
-  :host(${multiLineState}) .actions {
+  :host(${state('multi-line')}) .actions {
     margin-block-start: ${spacingVerticalMNudge};
     margin-inline-end: 0;
   }
 
-  :host(${multiLineState}) ::slotted([slot='dismiss']) {
+  :host(${state('multi-line')}) ::slotted([slot='dismiss']) {
     align-items: start;
     height: 100%;
     padding-block-start: ${spacingVerticalS};
