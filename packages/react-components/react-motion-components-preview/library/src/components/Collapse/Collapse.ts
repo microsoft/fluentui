@@ -3,22 +3,28 @@ import type { PresenceMotionFnCreator } from '../../types';
 
 type CollapseOrientation = 'horizontal' | 'vertical';
 
+const sizeValuesForOrientation = (orientation: CollapseOrientation, element: Element) => {
+  const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
+  const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
+  const measuredSize = orientation === 'horizontal' ? element.scrollWidth : element.scrollHeight;
+  const toSize = `${measuredSize}px`;
+  return { sizeName, overflowName, toSize };
+};
+
 const sizeEnterAtom = ({
   orientation,
   duration,
   easing,
   element,
+  fromSize = '0',
 }: {
   orientation: CollapseOrientation;
   duration: number;
   easing: string;
   element: HTMLElement;
+  fromSize?: string;
 }): AtomMotion => {
-  const fromSize = '0'; // Could be a custom param in the future to start with partially expanded width or height
-  const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
-  const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
-  const measuredSize = orientation === 'horizontal' ? element.scrollWidth : element.scrollHeight;
-  const toSize = `${measuredSize}px`;
+  const { sizeName, overflowName, toSize } = sizeValuesForOrientation(orientation, element);
 
   return {
     keyframes: [
@@ -37,18 +43,16 @@ const sizeExitAtom = ({
   easing,
   element,
   delay = 0,
+  fromSize = '0',
 }: {
   orientation: CollapseOrientation;
   duration: number;
   easing: string;
   element: HTMLElement;
   delay?: number;
+  fromSize?: string;
 }): AtomMotion => {
-  const fromSize = '0'; // Could be a custom param in the future to start with partially expanded width or height
-  const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
-  const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
-  const measuredSize = orientation === 'horizontal' ? element.scrollWidth : element.scrollHeight;
-  const toSize = `${measuredSize}px`;
+  const { sizeName, overflowName, toSize } = sizeValuesForOrientation(orientation, element);
 
   return {
     keyframes: [
@@ -60,6 +64,12 @@ const sizeExitAtom = ({
     fill: 'both',
     delay,
   };
+};
+
+const whitespaceValuesForOrientation = (orientation: CollapseOrientation) => {
+  const paddingStart = orientation === 'horizontal' ? 'paddingLeft' : 'paddingTop';
+  const paddingEnd = orientation === 'horizontal' ? 'paddingRight' : 'paddingBottom';
+  return { paddingStart, paddingEnd };
 };
 
 // Because a height of zero does not eliminate padding,
@@ -75,8 +85,7 @@ const whitespaceEnterAtom = ({
   duration: number;
   easing: string;
 }): AtomMotion => {
-  const paddingStart = orientation === 'horizontal' ? 'paddingLeft' : 'paddingTop';
-  const paddingEnd = orientation === 'horizontal' ? 'paddingRight' : 'paddingBottom';
+  const { paddingStart, paddingEnd } = whitespaceValuesForOrientation(orientation);
   return {
     keyframes: [{ [paddingStart]: '0', [paddingEnd]: '0', offset: 0 }],
     duration,
@@ -95,8 +104,7 @@ const whitespaceExitAtom = ({
   easing: string;
   delay?: number;
 }): AtomMotion => {
-  const paddingStart = orientation === 'horizontal' ? 'paddingLeft' : 'paddingTop';
-  const paddingEnd = orientation === 'horizontal' ? 'paddingRight' : 'paddingBottom';
+  const { paddingStart, paddingEnd } = whitespaceValuesForOrientation(orientation);
   return {
     keyframes: [{ [paddingStart]: '0', [paddingEnd]: '0', offset: 1 }],
     duration,
@@ -177,7 +185,7 @@ type CollapseRuntimeParams = {
   orientation?: CollapseOrientation;
 };
 
-/** Define a presence motion for collapse/expand */
+/** Define a presence motion for collapse/expand that can stagger the size and opacity motions by a given delay. */
 export const createCollapseDelayedPresence: PresenceMotionFnCreator<
   CollapseDelayedVariantParams,
   CollapseRuntimeParams
