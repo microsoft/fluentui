@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: correct expectations for Button rendered as a link with an href",
+  "packageName": "@fluentui/react-aria",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
