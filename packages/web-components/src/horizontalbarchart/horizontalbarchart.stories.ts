@@ -13,12 +13,6 @@ export default {
 
 export const Basic: Story<FluentHorizontalBarChart> = renderComponent(storyTemplate).bind({});
 
-export const NMVariant: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
-  <div>
-    <fluent-horizontalbarchart variant="part-to-whole"> </fluent-horizontalbarchart>
-  </div>
-`);
-
 export const RTL: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
   <div style="display: flex; flex-direction: column; gap: 1rem;" dir="rtl">
     <div>
