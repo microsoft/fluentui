@@ -8,16 +8,8 @@ import {
   colorNeutralShadowAmbient,
   colorNeutralShadowKey,
   colorTransparentStroke,
-  fontFamilyBase,
-  fontSizeBase200,
-  fontSizeBase300,
-  fontSizeHero700,
-  fontWeightRegular,
-  fontWeightSemibold,
-  lineHeightBase200,
-  lineHeightBase300,
-  lineHeightHero700,
 } from '../theme/design-tokens.js';
+import { typographyBody1Styles, typographyCaption1Styles, typographyTitle2Styles } from '../styles/index.js';
 
 /**
  * Styles for the DonutChart component.
@@ -28,15 +20,12 @@ export const styles = css`
   ${display('inline-block')}
 
   .root {
+    ${typographyBody1Styles}
     align-items: center;
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-    // font-family: ${fontFamilyBase};
-    // font-size: ${fontSizeBase300};
-    // font-weight: ${fontWeightRegular};
-    // line-height: ${lineHeightBase300};
     position: relative;
   }
 
@@ -60,10 +49,7 @@ export const styles = css`
   }
 
   .insideDonutString {
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeHero700};
-    font-weight: ${fontWeightSemibold};
-    line-height: ${lineHeightHero700};
+    ${typographyTitle2Styles}
     fill: ${colorNeutralForeground1};
   }
 
@@ -85,10 +71,7 @@ export const styles = css`
   }
 
   .legendText {
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase200};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase200};
+    ${typographyCaption1Styles}
     color: ${colorNeutralForeground1};
   }
 
@@ -115,17 +98,11 @@ export const styles = css`
   }
 
   .calloutLegendText {
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase200};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase200};
+    ${typographyCaption1Styles}
     color: ${colorNeutralForeground2};
   }
 
   .calloutContentY {
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeHero700};
-    font-weight: ${fontWeightSemibold};
-    line-height: ${lineHeightHero700};
+    ${typographyTitle2Styles}
   }
 `;
