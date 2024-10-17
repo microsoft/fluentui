@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { ICartesianChartProps, ICartesianChartStyleProps } from '../CommonComponents/index';
 import { IChartProps, IChartDataPoint } from './index';
 import { IPopoverComponentProps } from '../CommonComponents/Popover.types';

@@ -80,9 +80,9 @@ describe('Donut chart interactions', () => {
     fireEvent.mouseOver(legend!);
 
     // Assert
-    const getById = queryAllByAttribute.bind(null, 'id');
-    expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
-    expect(getById(container, /Pie.*?third/i)[0]).toHaveAttribute('opacity', '0.1');
+    const getByClass = queryAllByAttribute.bind(null, 'class');
+    expect(getByClass(container, /fui-donut-arc__root/i)[1]).toHaveStyle('opacity: 0.1');
+    expect(getByClass(container, /fui-donut-arc__root/i)[2]).toHaveStyle('opacity: 0.1');
   });
 
   test('Should select legend on single mouse click on legends', () => {
@@ -95,8 +95,8 @@ describe('Donut chart interactions', () => {
     fireEvent.click(legend!);
 
     // Assert
-    const getById = queryAllByAttribute.bind(null, 'id');
-    expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
+    const getByClass = queryAllByAttribute.bind(null, 'class');
+    expect(getByClass(container, /fui-donut-arc__root/i)[1]).toHaveStyle('opacity: 0.1');
     const firstLegend = screen.queryByText('first')?.closest('button');
     expect(firstLegend).toHaveAttribute('aria-selected', 'true');
     expect(firstLegend).toHaveAttribute(
@@ -115,8 +115,8 @@ describe('Donut chart interactions', () => {
 
     //single click on first legend
     fireEvent.click(legend!);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
+    const getByClass = queryAllByAttribute.bind(null, 'class');
+    expect(getByClass(container, /fui-donut-arc__root/i)[1]).toHaveStyle('opacity: 0.1');
     const firstLegend = screen.queryByText('first')?.closest('button');
     expect(firstLegend).toHaveAttribute('aria-selected', 'true');
     expect(firstLegend).toHaveAttribute(
@@ -138,13 +138,13 @@ describe('Donut chart interactions', () => {
     const legend = screen.queryByText('first');
     expect(legend).toBeDefined();
     fireEvent.mouseOver(legend!);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
+    const getByClass = queryAllByAttribute.bind(null, 'class');
+    expect(getByClass(container, /fui-donut-arc__root/i)[1]).toHaveStyle('opacity: 0.1');
     fireEvent.mouseOut(legend!);
 
     // Assert
-    expect(getById(container, /Pie.*?first/i)[0]).toHaveAttribute('opacity', '1');
-    expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '1');
+    expect(getByClass(container, /fui-donut-arc__root/i)[0]).toHaveStyle('opacity: 1');
+    expect(getByClass(container, /fui-donut-arc__root/i)[1]).toHaveStyle('opacity: 1');
   });
 
   test('Should display correct callout data on mouse move', async () => {

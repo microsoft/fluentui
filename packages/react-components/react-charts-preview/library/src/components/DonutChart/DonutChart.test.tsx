@@ -21,7 +21,6 @@ function sharedAfterEach() {
 
   // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
   // cleaned up in fake timers world
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if ((global.setTimeout as any).mock) {
     jest.useRealTimers();
   }
@@ -56,8 +55,8 @@ describe('DonutChart snapShot testing', () => {
   });
 
   it('renders DonutChart correctly without color points', () => {
-    const chartPointColor = pointsDC[0].color;
-    delete pointsDC[0].color;
+    const chartPointColor = pointsDC[0].gradient;
+    delete pointsDC[0].gradient;
 
     let component: any;
     rendererAct(() => {
@@ -65,7 +64,7 @@ describe('DonutChart snapShot testing', () => {
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
-    pointsDC[0].color = chartPointColor;
+    pointsDC[0].gradient = chartPointColor;
   });
 
   it('renders hideLegend correctly', () => {

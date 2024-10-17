@@ -5,7 +5,7 @@ import { IDonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles_unstable } from './useDonutChartStyles.styles';
 import { IChartDataPoint } from '../../DonutChart';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { getColorFromToken, getNextColor } from '../../utilities/index';
+import { getNextGradient } from '../../utilities/index';
 import { ILegend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
@@ -78,11 +78,10 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
     }
     function _createLegends(chartData: IChartDataPoint[]): JSX.Element {
       const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
-        const color: string = point.color!;
         // mapping data to the format Legends component needs
         const legend: ILegend = {
           title: point.legend!,
-          color,
+          color: point.gradient![0],
           action: () => {
             if (selectedLegend === point.legend) {
               setSelectedLegend('');
@@ -100,6 +99,7 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
         };
         return legend;
       });
+
       const legends = (
         <Legends
           legends={legendDataItems}
@@ -115,7 +115,7 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
       setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
       setValue(data.data!.toString());
       setLegend(data.legend);
-      setColor(data.color!);
+      setColor(data.gradient![0]);
       setXCalloutValue(data.xAxisCalloutData!);
       setYCalloutValue(data.yAxisCalloutData!);
       setFocusedArcId(id);
@@ -128,7 +128,7 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
         setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
         setValue(data.data!.toString());
         setLegend(data.legend);
-        setColor(data.color!);
+        setColor(data.gradient![0]);
         setXCalloutValue(data.xAxisCalloutData!);
         setYCalloutValue(data.yAxisCalloutData!);
         setDataPointCalloutProps(data);
@@ -190,17 +190,11 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
       );
     }
 
-    function _addDefaultColors(donutChartDataPoint?: IChartDataPoint[]): IChartDataPoint[] {
+    function _addDefaultGradients(donutChartDataPoint?: IChartDataPoint[]): IChartDataPoint[] {
       return donutChartDataPoint
         ? donutChartDataPoint.map((item, index) => {
-            let defaultColor: string;
-            if (typeof item.color === 'undefined') {
-              defaultColor = getNextColor(index, 0);
-            } else {
-              defaultColor = getColorFromToken(item.color);
-            }
-            return { ...item, defaultColor };
-          })
+          return { ...item, gradient: item.gradient ?? getNextGradient(index, 0) };
+        })
         : [];
     }
 
@@ -252,7 +246,7 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
     }
 
     const { data, hideLegend = false } = props;
-    const points = _addDefaultColors(data?.chartData);
+    const points = _addDefaultGradients(data?.chartData);
 
     const classes = useDonutChartStyles_unstable(props);
 

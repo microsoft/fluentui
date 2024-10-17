@@ -23,7 +23,7 @@ export const chartPoints: IChartProps[] = [
       {
         legend: 'one',
         horizontalBarChartdata: { x: 1543, y: 15000 },
-        color: '#004b50',
+        gradient: ['#004b50', ''],
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '94%',
       },
@@ -35,7 +35,7 @@ export const chartPoints: IChartProps[] = [
       {
         legend: 'two',
         horizontalBarChartdata: { x: 800, y: 15000 },
-        color: '#5c2d91',
+        gradient: ['#5c2d91', ''],
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '19%',
       },

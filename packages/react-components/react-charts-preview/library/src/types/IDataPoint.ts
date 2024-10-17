@@ -130,9 +130,9 @@ export interface IChartDataPoint {
   onClick?: VoidFunction;
 
   /**
-   * Color for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default gradient palette.
    */
-  color?: string;
+  gradient?: [string, string];
 
   /**
    * placeholder data point
