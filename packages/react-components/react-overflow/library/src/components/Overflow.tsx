@@ -19,7 +19,7 @@ interface OverflowState {
 export type OverflowProps = Partial<
   Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'>
 > & {
-  children: React.ReactElement;
+  children: React.ReactElement | ((props: React.ComponentPropsWithRef<React.ElementType>) => React.ReactElement);
 };
 
 /**
@@ -69,7 +69,12 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
   const child = getTriggerChild(children);
   const clonedChild = applyTriggerPropsToChildren(children, {
     ref: useMergedRefs(containerRef, ref, child?.ref),
-    className: mergeClasses('fui-Overflow', styles.overflowMenu, styles.overflowingItems, children.props.className),
+    className: mergeClasses(
+      'fui-Overflow',
+      styles.overflowMenu,
+      styles.overflowingItems,
+      React.isValidElement(children) && (children as React.ReactElement).props.className,
+    ),
   });
 
   return (
