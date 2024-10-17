@@ -41,6 +41,9 @@ export class HorizontalBarChart extends FASTElement {
   @attr
   public inpData: IChartProps[] = [];
 
+  @attr
+  public uniqueLegends: IChartDataPoint[] = [];
+
   private barHeight: number = 12;
 
   constructor() {
@@ -63,7 +66,7 @@ export class HorizontalBarChart extends FASTElement {
         color: '#4F68ED',
       },
       {
-        legend: 'Credit card numbers',
+        legend: 'Credit card Numbers',
         data: 87,
         color: '#AE8C00',
       },
@@ -91,7 +94,7 @@ export class HorizontalBarChart extends FASTElement {
         color: '#4F68ED',
       },
       {
-        legend: 'Credit card numbers',
+        legend: 'Credit card Numbers',
         data: 92,
         color: '#AE8C00',
       },
@@ -114,6 +117,26 @@ export class HorizontalBarChart extends FASTElement {
         color: '#AE8C00',
       },
     ];
+
+    const allchartPoints = [...chartPoints1, ...chartPoints2, ...chartPoints3];
+
+    // Create a map to store unique legends
+    const uniqueLegendsMap = new Map();
+
+    // Iterate through all chart points and populate the map
+    allchartPoints.forEach(point => {
+      // Check if the legend is already in the map
+      if (!uniqueLegendsMap.has(point.legend)) {
+        uniqueLegendsMap.set(point.legend, {
+          legend: point.legend,
+          data: point.data,
+          color: point.color,
+        });
+      }
+    });
+
+    // Convert the map values back to an array
+    this.uniqueLegends = Array.from(uniqueLegendsMap.values());
 
     this.inpData = [
       {
@@ -202,6 +225,8 @@ export class HorizontalBarChart extends FASTElement {
   }
 
   render() {
+    // Array to hold references to the buttons
+    const legendButtonRefs: any = [];
     const div = d3.select(this.shadowRoot).append('div');
     div
       .append('div')
@@ -220,6 +245,77 @@ export class HorizontalBarChart extends FASTElement {
           nodes[i].setAttribute(key, attributes[key]);
         });
       });
+
+    const legendContainer = document.createElement('div');
+    div.node()!.appendChild(legendContainer);
+    legendContainer.classList.add('legendcontainer');
+
+    this.uniqueLegends?.forEach((d, index) => {
+      const button = document.createElement('button');
+      legendContainer.appendChild(button);
+      button.classList.add('legend');
+      // Store a reference to the button
+      legendButtonRefs[index] = button;
+
+      const legendRect = document.createElement('div');
+      button.appendChild(legendRect);
+      legendRect.classList.add('legendRect');
+      legendRect.style['backgroundColor'] = d.color!;
+      legendRect.style['borderColor'] = d.color!;
+
+      const legendText = document.createElement('div');
+      button.appendChild(legendText);
+      legendText.textContent = d.legend!;
+      legendText.classList.add('legendText');
+    });
+
+    const bars = this.shadowRoot?.querySelectorAll('.bar');
+
+    for (let i = 0; i < legendButtonRefs.length; i++) {
+      legendButtonRefs[i].addEventListener('mouseover', () => {
+        for (let j = 0; j < bars!.length; j++) {
+          if (bars![j].getAttribute('barinfo') !== legendButtonRefs[i].textContent) {
+            bars![j].style['opacity'] = '0.1';
+          }
+        }
+        for (let j = 0; j < legendButtonRefs.length; j++) {
+          if (j !== i) {
+            const legendRect = legendButtonRefs[j].getElementsByClassName('legendRect')[0];
+            if (legendRect) {
+              legendRect.style['backgroundColor'] = 'transparent';
+            } else {
+              console.warn(`legendRect not found for button index ${j}`);
+            }
+            const legendText = legendButtonRefs[j].getElementsByClassName('legendText')[0];
+            if (legendText) {
+              legendText.style['opacity'] = '0.67';
+            } else {
+              console.warn(`legendText not found for button index ${j}`);
+            }
+          }
+        }
+      });
+      legendButtonRefs[i].addEventListener('mouseout', () => {
+        for (let j = 0; j < bars!.length; j++) {
+          bars![j].style['opacity'] = '1';
+        }
+        for (let j = 0; j < legendButtonRefs.length; j++) {
+          const legendRect = legendButtonRefs[j].getElementsByClassName('legendRect')[0];
+          if (legendRect) {
+            legendRect.style['backgroundColor'] = this.uniqueLegends[j].color;
+          } else {
+            console.warn(`legendRect not found for button index ${j}`);
+          }
+
+          const legendText = legendButtonRefs[j].getElementsByClassName('legendText')[0];
+          if (legendText) {
+            legendText.style['opacity'] = '1';
+          } else {
+            console.warn(`legendText not found for button index ${j}`);
+          }
+        }
+      });
+    }
   }
 
   public _createBarsAndLegends(data: IChartProps, barNo?: number) {
@@ -309,6 +405,8 @@ export class HorizontalBarChart extends FASTElement {
         .append('rect')
         .attr('key', index)
         .attr('id', `${barNo}-${index}`)
+        .attr('barinfo', `${point.legend}`)
+        .attr('class', 'bar')
         .attr('style', `fill:${point.color!}`)
         .attr(
           'x',
@@ -321,7 +419,6 @@ export class HorizontalBarChart extends FASTElement {
         .attr('y', 0)
         .attr('width', value + '%')
         .attr('height', barHeight)
-        .attr('style', `fill: ${point.color}`)
         .attr('tabindex', 0)
         .attr('data-tabster', '{"groupper": {...}}"')
         .attr('data-tabster', '{"mover": {...}}"');
@@ -339,7 +436,7 @@ export class HorizontalBarChart extends FASTElement {
     const svgEle = containerDiv
       .append('svg')
       .attr('height', 20)
-      .attr('width', 100 + '%')
+      .attr('width', 90 + '%')
       .attr('aria-label', data?.chartTitle ? data?.chartTitle : '')
       .selectAll('g')
       .data(data.chartData!)
@@ -379,6 +476,7 @@ export class HorizontalBarChart extends FASTElement {
         svgEle
           .append('text')
           .attr('key', 'text')
+          .attr('class', 'barLabel')
           .attr(
             'x',
             `${
