@@ -25,3 +25,12 @@ export const numberLikeStringConverter: ValueConverter = {
     return Number.isNaN(valueAsNumber) ? undefined : valueAsNumber.toString();
   },
 };
+
+export const jsonConverter: ValueConverter = {
+  toView(value: any): string {
+    return JSON.stringify(value);
+  },
+  fromView(value: string): any {
+    return JSON.parse(value);
+  },
+};

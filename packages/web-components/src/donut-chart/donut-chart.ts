@@ -1,65 +1,38 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
 import { arc as d3Arc, pie as d3Pie } from 'd3';
 import { createTabster, getMover, getTabsterAttribute, MoverDirections } from 'tabster';
-import { IChartDataPoint, IChartProps } from './donut-chart.options.js';
+import { jsonConverter } from '../utils/converters.js';
+import { IChartProps } from './donut-chart.options.js';
 
 const tabsterCore = createTabster(window);
 getMover(tabsterCore);
 
 export class DonutChart extends FASTElement {
-  public get type(): 'donut-chart' {
-    return 'donut-chart';
-  }
+  @attr({ converter: nullableNumberConverter })
+  public height: number = 200;
 
-  @attr
-  public height?: number = 200;
+  @attr({ converter: nullableNumberConverter })
+  public width: number = 200;
 
-  @attr
-  public width?: number = 200;
+  @attr({ attribute: 'hide-legends', mode: 'boolean' })
+  public hideLegends?: boolean;
 
-  // @attr({ attribute: 'hide-legends' })
-  // public hideLegends?: boolean;
+  @attr({ attribute: 'hide-tooltip', mode: 'boolean' })
+  public hideTooltip?: boolean;
 
-  // @attr({ attribute: 'hide-tooltip' })
-  // public hideTooltip?: boolean;
+  @attr({ converter: jsonConverter })
+  public data!: IChartProps;
 
-  @attr
-  public data: IChartProps;
-
-  @attr({ attribute: 'inner-radius' })
-  public innerRadius?: number;
+  @attr({ attribute: 'inner-radius', converter: nullableNumberConverter })
+  public innerRadius: number = 1;
 
   @attr({ attribute: 'value-inside-donut' })
-  public valueInsideDonut?: string = '35,000';
-
-  // @attr({ attribute: 'show-labels-in-percent' })
-  // public showLabelsInPercent?: boolean;
-
-  // @attr({ attribute: 'hide-labels' })
-  // public hideLabels?: boolean;
+  public valueInsideDonut?: string;
 
   private _selectedLegend: string = '';
 
   constructor() {
     super();
-
-    const points: IChartDataPoint[] = [
-      {
-        legend: 'first',
-        data: 20000,
-        color: '#0099BC',
-      },
-      {
-        legend: 'second',
-        data: 39000,
-        color: '#77004D',
-      },
-    ];
-
-    this.data = {
-      chartTitle: 'Donut chart basic example',
-      chartData: points,
-    };
   }
 
   private bindEvents() {}
@@ -85,27 +58,21 @@ export class DonutChart extends FASTElement {
 
     const svg = document.createElementNS(svgNS, 'svg');
     chartWrapper.appendChild(svg);
-    svg.setAttribute('width', '200');
-    svg.setAttribute('height', '200');
+    svg.setAttribute('width', `${this.width}`);
+    svg.setAttribute('height', `${this.height}`);
     svg.setAttribute('aria-label', this.data.chartTitle);
     svg.classList.add('chart');
 
     const group = document.createElementNS(svgNS, 'g');
     svg.appendChild(group);
-    group.setAttribute('transform', 'translate(100, 100)');
-
-    const text = document.createElementNS(svgNS, 'text');
-    group.appendChild(text);
-    text.classList.add('insideDonutString');
-    text.setAttribute('y', '5');
-    text.setAttribute('text-anchor', 'middle');
-    text.setAttribute('dominant-baseline', 'middle');
-    text.textContent = this.valueInsideDonut;
+    group.setAttribute('transform', `translate(${this.width / 2}, ${this.height / 2})`);
 
     const pie = d3Pie()
       .value((d: any) => d.data)
       .padAngle(0.02);
-    const arc = d3Arc().innerRadius(55).outerRadius(90);
+    const arc = d3Arc()
+      .innerRadius(this.innerRadius)
+      .outerRadius((Math.min(this.height, this.width) - 20) / 2);
 
     const tooltip = document.createElement('div');
     rootDiv.appendChild(tooltip);
@@ -171,6 +138,14 @@ export class DonutChart extends FASTElement {
     rootDiv.addEventListener('mouseleave', () => {
       tooltip.style['opacity'] = '0';
     });
+
+    const text = document.createElementNS(svgNS, 'text');
+    group.appendChild(text);
+    text.classList.add('insideDonutString');
+    text.setAttribute('y', '5');
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('dominant-baseline', 'middle');
+    text.textContent = this.valueInsideDonut;
 
     const legends = this.data.chartData?.map(d => ({ title: d.legend, color: d.color }));
 
