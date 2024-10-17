@@ -4,20 +4,22 @@ import type { PresenceMotionFnCreator } from '../../types';
 type CollapseOrientation = 'horizontal' | 'vertical';
 
 const sizeEnterAtom = ({
-  fromSize,
-  toSize,
   orientation,
   duration,
   easing,
+  element,
 }: {
-  fromSize: string;
-  toSize: string;
   orientation: CollapseOrientation;
   duration: number;
   easing: string;
+  element: HTMLElement;
 }): AtomMotion => {
+  const fromSize = '0'; // Could be a custom param in the future to start with partially expanded width or height
   const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
   const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
+  const measuredSize = orientation === 'horizontal' ? element.scrollWidth : element.scrollHeight;
+  const toSize = `${measuredSize}px`;
+
   return {
     keyframes: [
       { [sizeName]: fromSize, [overflowName]: 'hidden' },
@@ -30,22 +32,24 @@ const sizeEnterAtom = ({
 };
 
 const sizeExitAtom = ({
-  fromSize,
-  toSize,
   orientation,
   duration,
   easing,
+  element,
   delay = 0,
 }: {
-  fromSize: string;
-  toSize: string;
   orientation: CollapseOrientation;
   duration: number;
   easing: string;
+  element: HTMLElement;
   delay?: number;
 }): AtomMotion => {
+  const fromSize = '0'; // Could be a custom param in the future to start with partially expanded width or height
   const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
   const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
+  const measuredSize = orientation === 'horizontal' ? element.scrollWidth : element.scrollHeight;
+  const toSize = `${measuredSize}px`;
+
   return {
     keyframes: [
       { [sizeName]: toSize, [overflowName]: 'hidden' },
@@ -103,35 +107,35 @@ const whitespaceExitAtom = ({
 };
 
 const opacityEnterAtom = ({
-  fromOpacity,
-  toOpacity,
   duration,
   easing,
   delay = 0,
+  fromOpacity = 0,
+  toOpacity = 1,
 }: {
-  fromOpacity: number;
-  toOpacity: number;
   duration: number;
   easing: string;
   delay?: number;
+  fromOpacity?: number;
+  toOpacity?: number;
 }): AtomMotion => ({
   keyframes: [{ opacity: fromOpacity }, { opacity: toOpacity }],
   duration,
   easing,
-  fill: 'both',
   delay,
+  fill: 'both',
 });
 
 const opacityExitAtom = ({
-  fromOpacity,
-  toOpacity,
   duration,
   easing,
+  fromOpacity = 0,
+  toOpacity = 1,
 }: {
-  fromOpacity: number;
-  toOpacity: number;
   duration: number;
   easing: string;
+  fromOpacity?: number;
+  toOpacity?: number;
 }): AtomMotion => ({
   keyframes: [{ opacity: toOpacity }, { opacity: fromOpacity }],
   duration,
@@ -181,31 +185,24 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<
   ({
     // enter
     enterSizeDuration = motionTokens.durationNormal,
-    enterOpacityDuration = enterSizeDuration,
+    enterOpacityDuration = enterSizeDuration, // in sync with size duration by default
     enterEasing = motionTokens.curveEasyEaseMax,
     enterDelay = 0,
 
-    // exit
+    // exit: durations and easing default to enter values for symmetry
     exitSizeDuration = enterSizeDuration,
     exitOpacityDuration = enterOpacityDuration,
     exitEasing = enterEasing,
     exitDelay = 0,
   } = {}) =>
   ({ element, animateOpacity = true, orientation = 'vertical' }) => {
-    const fromOpacity = 0;
-    const toOpacity = 1;
-    const fromSize = '0'; // Could be a custom param in the future to start with partially expanded width or height
-    const measuredSize = orientation === 'horizontal' ? element.scrollWidth : element.scrollHeight;
-    const toSize = `${measuredSize}px`;
-
     // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
     const enterAtoms: AtomMotion[] = [
       sizeEnterAtom({
-        fromSize,
-        toSize,
         orientation,
         duration: enterSizeDuration,
         easing: enterEasing,
+        element,
       }),
       whitespaceEnterAtom({
         orientation,
@@ -217,8 +214,6 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<
     if (animateOpacity) {
       enterAtoms.push(
         opacityEnterAtom({
-          fromOpacity,
-          toOpacity,
           duration: enterOpacityDuration,
           easing: enterEasing,
           delay: enterDelay,
@@ -232,8 +227,6 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<
     if (animateOpacity) {
       exitAtoms.push(
         opacityExitAtom({
-          fromOpacity,
-          toOpacity,
           duration: exitOpacityDuration,
           easing: exitEasing,
         }),
@@ -241,11 +234,10 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<
     }
     exitAtoms.push(
       sizeExitAtom({
-        fromSize,
-        toSize,
         orientation,
         duration: exitSizeDuration,
         easing: exitEasing,
+        element,
         delay: exitDelay,
       }),
     );
