@@ -4,7 +4,7 @@
     "metadata": {
       "copy": null
     },
-    "nx": ["nx-release-publish"]
+    "nx": ["type-check", "lint", "format", "clean", "nx-release-publish"]
   },
   "babel-preset-global-context": {
     "npm": [
