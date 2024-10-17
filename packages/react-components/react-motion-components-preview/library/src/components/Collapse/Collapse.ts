@@ -43,7 +43,19 @@ export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantPara
     const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
     const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
 
-    // The enter transition is an array of up to 2 motion atoms: size and opacity.
+    // Because a height of zero does not eliminate padding,
+    // we will create keyframes to animate it to zero.
+    // TODO: consider collapsing margin, perhaps as an option.
+    const collapsedWhiteSpace = {} as { [key: string]: string };
+    if (orientation === 'horizontal') {
+      collapsedWhiteSpace.paddingLeft = '0';
+      collapsedWhiteSpace.paddingRight = '0';
+    } else {
+      collapsedWhiteSpace.paddingTop = '0';
+      collapsedWhiteSpace.paddingBottom = '0';
+    }
+
+    // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
     const enterAtoms: AtomMotion[] = [
       // Expand size (height or width)
       {
@@ -58,6 +70,13 @@ export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantPara
         duration: enterDuration,
         easing: enterEasing,
       },
+      // Expand whitespace (padding currently).
+      {
+        // Animate from zero values to the element's natural values (i.e. the missing other keyframe).
+        keyframes: [{ ...collapsedWhiteSpace, offset: 0 }],
+        duration: enterDuration,
+        easing: enterEasing,
+      },
     ];
     // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
     if (animateOpacity) {
@@ -69,7 +88,7 @@ export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantPara
       });
     }
 
-    // The exit transition is an array of up to 2 motion atoms: opacity and size.
+    // The exit transition is an array of up to 3 motion atoms: opacity, size and whitespace.
     const exitAtoms: AtomMotion[] = [];
     // Fade out only if animateOpacity is false. Otherwise, leave opacity unaffected.
     if (animateOpacity) {
@@ -89,6 +108,16 @@ export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantPara
         duration: exitDuration,
         easing: exitEasing,
         fill: 'both',
+      },
+    );
+    exitAtoms.push(
+      // Collapse whitespace (padding currently).
+      {
+        // Animate from the element's natural values (i.e. the missing other keyframe) to zero values.
+        keyframes: [{ ...collapsedWhiteSpace, offset: 1 }],
+        duration: exitDuration,
+        easing: exitEasing,
+        fill: 'forwards',
       },
     );
 
