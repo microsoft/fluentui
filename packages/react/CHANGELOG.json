@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 17 Oct 2024 07:23:06 GMT",
+      "tag": "@fluentui/react_v8.121.6",
+      "version": "8.121.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "263ead68a05ac23499be137b41e02a5579522c08",
+            "comment": "fix: make button children rendering equal for both button and button as anchor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Oct 2024 07:22:38 GMT",
       "tag": "@fluentui/react_v8.121.5",
       "version": "8.121.5",

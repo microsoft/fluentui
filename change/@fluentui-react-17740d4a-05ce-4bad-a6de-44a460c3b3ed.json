@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: make button children rendering equal for both button and button as anchor",
-  "packageName": "@fluentui/react",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
