@@ -1,7 +1,13 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '../utils/display.js';
 import {
+  borderRadiusMedium,
+  colorNeutralBackground1,
   colorNeutralForeground1,
+  colorNeutralForeground2,
+  colorNeutralShadowAmbient,
+  colorNeutralShadowKey,
+  colorTransparentStroke,
   fontFamilyBase,
   fontSizeBase200,
   fontSizeBase300,
@@ -84,5 +90,42 @@ export const styles = css`
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase200};
     color: ${colorNeutralForeground1};
+  }
+
+  .calloutContentRoot {
+    display: grid;
+    overflow: hidden;
+    padding: 11px 16px 10px 16px;
+    background-color: ${colorNeutralBackground1};
+    background-blend-mode: normal, luminosity;
+
+    border-radius: ${borderRadiusMedium};
+    border: 1px solid ${colorTransparentStroke};
+    filter: drop-shadow(0 0 2px ${colorNeutralShadowAmbient}) drop-shadow(0 8px 16px ${colorNeutralShadowKey});
+
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .calloutBlockContainer {
+    padding-left: 8px;
+    color: ${colorNeutralForeground2};
+  }
+
+  .calloutLegendText {
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase200};
+    font-weight: ${fontWeightRegular};
+    line-height: ${lineHeightBase200};
+    color: ${colorNeutralForeground2};
+  }
+
+  .calloutContentY {
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeHero700};
+    font-weight: ${fontWeightSemibold};
+    line-height: ${lineHeightHero700};
   }
 `;

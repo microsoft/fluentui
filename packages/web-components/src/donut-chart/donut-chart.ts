@@ -38,6 +38,8 @@ export class DonutChart extends FASTElement {
   // @attr({ attribute: 'hide-labels' })
   // public hideLabels?: boolean;
 
+  private _selectedLegend: string = '';
+
   constructor() {
     super();
 
@@ -107,14 +109,19 @@ export class DonutChart extends FASTElement {
 
     const tooltip = document.createElement('div');
     rootDiv.appendChild(tooltip);
-    tooltip.style['position'] = 'absolute';
-    tooltip.style['opacity'] = '0';
+    tooltip.classList.add('calloutContentRoot');
+
+    const tooltipBody = document.createElement('div');
+    tooltip.appendChild(tooltipBody);
+    tooltipBody.classList.add('calloutBlockContainer');
 
     const legendText = document.createElement('div');
-    tooltip.appendChild(legendText);
+    tooltipBody.appendChild(legendText);
+    legendText.classList.add('calloutLegendText');
 
     const yText = document.createElement('div');
-    tooltip.appendChild(yText);
+    tooltipBody.appendChild(yText);
+    yText.classList.add('calloutContentY');
 
     pie(this.data.chartData).forEach(d => {
       const path = document.createElementNS(svgNS, 'path');
@@ -123,15 +130,41 @@ export class DonutChart extends FASTElement {
       path.setAttribute('fill', d.data.color);
       path.setAttribute('data-id', d.data.legend);
       path.setAttribute('tabindex', '0');
-      path.setAttribute('aria-label', '.....lorem ipsum.....');
+      path.setAttribute('aria-label', `${d.data.legend}, ${d.data.data}.`);
       path.setAttribute('role', 'img');
       path.addEventListener('mouseover', event => {
+        if (this._selectedLegend !== '' && this._selectedLegend !== d.data.legend) {
+          return;
+        }
+
+        tooltipBody.style['borderLeft'] = `4px solid ${d.data.color}`;
         legendText.textContent = d.data.legend;
         yText.textContent = d.data.data;
+        yText.style['color'] = d.data.color;
         tooltip.style['opacity'] = '1';
-        tooltip.style['left'] = `${event.pageX - rootDiv.getBoundingClientRect().left + window.scrollX}px`;
-        tooltip.style['top'] = `${event.pageY - rootDiv.getBoundingClientRect().top - window.scrollY}px`;
-        // tooltip.style['pointerEvents'] = 'none';
+
+        const bounds = rootDiv.getBoundingClientRect();
+        tooltip.style['left'] = `${event.clientX - bounds.left}px`;
+        tooltip.style['top'] = `${event.clientY - bounds.top - 85}px`;
+      });
+      path.addEventListener('focus', event => {
+        if (this._selectedLegend !== '' && this._selectedLegend !== d.data.legend) {
+          return;
+        }
+
+        tooltipBody.style['borderLeft'] = `4px solid ${d.data.color}`;
+        legendText.textContent = d.data.legend;
+        yText.textContent = d.data.data;
+        yText.style['color'] = d.data.color;
+        tooltip.style['opacity'] = '1';
+
+        const rootBounds = rootDiv.getBoundingClientRect();
+        const arcBounds = path.getBoundingClientRect();
+        tooltip.style['left'] = `${arcBounds.left + arcBounds.width / 2 - rootBounds.left}px`;
+        tooltip.style['top'] = `${arcBounds.top - rootBounds.top - 85}px`;
+      });
+      path.addEventListener('blur', event => {
+        tooltip.style['opacity'] = '0';
       });
     });
 
@@ -167,9 +200,15 @@ export class DonutChart extends FASTElement {
 
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].addEventListener('mouseover', () => {
+        if (this._selectedLegend !== '') {
+          return;
+        }
+
         for (let j = 0; j < arcs.length; j++) {
           if (arcs[j].getAttribute('data-id') !== buttons[i].textContent) {
             arcs[j].style['opacity'] = '0.1';
+          } else {
+            arcs[j].style['opacity'] = '1';
           }
         }
         for (let j = 0; j < buttons.length; j++) {
@@ -179,10 +218,20 @@ export class DonutChart extends FASTElement {
 
             const legendText = buttons[j].getElementsByClassName('legendText')[0];
             legendText.style['opacity'] = '0.67';
+          } else {
+            const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+            legendRect.style['backgroundColor'] = legends[j].color;
+
+            const legendText = buttons[j].getElementsByClassName('legendText')[0];
+            legendText.style['opacity'] = '1';
           }
         }
       });
       buttons[i].addEventListener('mouseout', () => {
+        if (this._selectedLegend !== '') {
+          return;
+        }
+
         for (let j = 0; j < arcs.length; j++) {
           arcs[j].style['opacity'] = '1';
         }
@@ -192,6 +241,91 @@ export class DonutChart extends FASTElement {
 
           const legendText = buttons[j].getElementsByClassName('legendText')[0];
           legendText.style['opacity'] = '1';
+        }
+      });
+      buttons[i].addEventListener('focus', () => {
+        if (this._selectedLegend !== '') {
+          return;
+        }
+
+        for (let j = 0; j < arcs.length; j++) {
+          if (arcs[j].getAttribute('data-id') !== buttons[i].textContent) {
+            arcs[j].style['opacity'] = '0.1';
+          } else {
+            arcs[j].style['opacity'] = '1';
+          }
+        }
+        for (let j = 0; j < buttons.length; j++) {
+          if (j !== i) {
+            const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+            legendRect.style['backgroundColor'] = 'transparent';
+
+            const legendText = buttons[j].getElementsByClassName('legendText')[0];
+            legendText.style['opacity'] = '0.67';
+          } else {
+            const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+            legendRect.style['backgroundColor'] = legends[j].color;
+
+            const legendText = buttons[j].getElementsByClassName('legendText')[0];
+            legendText.style['opacity'] = '1';
+          }
+        }
+      });
+      buttons[i].addEventListener('blur', () => {
+        if (this._selectedLegend !== '') {
+          return;
+        }
+
+        for (let j = 0; j < arcs.length; j++) {
+          arcs[j].style['opacity'] = '1';
+        }
+        for (let j = 0; j < buttons.length; j++) {
+          const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+          legendRect.style['backgroundColor'] = legends[j].color;
+
+          const legendText = buttons[j].getElementsByClassName('legendText')[0];
+          legendText.style['opacity'] = '1';
+        }
+      });
+      buttons[i].addEventListener('click', () => {
+        if (this._selectedLegend === legends[i].title) {
+          this._selectedLegend = '';
+
+          for (let j = 0; j < arcs.length; j++) {
+            arcs[j].style['opacity'] = '1';
+          }
+          for (let j = 0; j < buttons.length; j++) {
+            const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+            legendRect.style['backgroundColor'] = legends[j].color;
+
+            const legendText = buttons[j].getElementsByClassName('legendText')[0];
+            legendText.style['opacity'] = '1';
+          }
+        } else {
+          this._selectedLegend = legends[i].title;
+
+          for (let j = 0; j < arcs.length; j++) {
+            if (arcs[j].getAttribute('data-id') !== buttons[i].textContent) {
+              arcs[j].style['opacity'] = '0.1';
+            } else {
+              arcs[j].style['opacity'] = '1';
+            }
+          }
+          for (let j = 0; j < buttons.length; j++) {
+            if (j !== i) {
+              const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+              legendRect.style['backgroundColor'] = 'transparent';
+
+              const legendText = buttons[j].getElementsByClassName('legendText')[0];
+              legendText.style['opacity'] = '0.67';
+            } else {
+              const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+              legendRect.style['backgroundColor'] = legends[j].color;
+
+              const legendText = buttons[j].getElementsByClassName('legendText')[0];
+              legendText.style['opacity'] = '1';
+            }
+          }
         }
       });
     }
