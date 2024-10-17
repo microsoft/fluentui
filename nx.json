@@ -142,6 +142,7 @@
       "include": [
         "tools/**/*",
         "scripts/**/*",
+        "packages/eslint-plugin/**",
         "packages/tokens/**",
         "packages/react-conformance/**",
         "packages/react-components/**/*"
