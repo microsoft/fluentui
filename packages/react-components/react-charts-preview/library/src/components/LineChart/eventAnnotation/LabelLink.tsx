@@ -3,7 +3,10 @@ import { IEventAnnotation } from '../../../types/IEventAnnotation';
 import { Textbox } from './Textbox';
 import { getColorFromToken } from '../../../utilities/colors';
 import { tokens } from '@fluentui/react-theme';
-
+import PopoverComponent from '../../CommonComponents/Popover';
+import { MenuList } from '../../../../../../react-menu/library/src/MenuList';
+import { MenuItem } from '../../../../../../react-menu/library/src/MenuItem';
+import { useFocusableGroup } from '@fluentui/react-tabster';
 export interface ILineDef extends IEventAnnotation {
   x: number;
 }
@@ -28,31 +31,47 @@ interface ILabelLinkProps {
 export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
   const gRef = React.useRef<SVGGElement>(null);
   const [showCard, setShowCard] = React.useState(false);
-  const onClick = () => setShowCard(true);
+  const [clickPosition, setClickPosition] = React.useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const focusAttributes = useFocusableGroup();
 
+  function updatePosition(newX: number, newY: number) {
+    const threshold = 1; // Set a threshold for movement
+    const { x, y } = clickPosition;
+    // Calculate the distance moved
+    const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
+    // Update the position only if the distance moved is greater than the threshold
+    if (distance > threshold) {
+      setClickPosition({ x: newX, y: newY });
+      setShowCard(true);
+    }
+  }
+
+  const onClick = (e: React.MouseEvent<SVGGElement>) => updatePosition(e.clientX, e.clientY);
+  const onDismiss = () => setShowCard(false);
   let callout: React.ReactNode = null;
   if (showCard) {
     const cards = props.labelDef.aggregatedIdx.map(i => props.lineDefs[i].onRenderCard!).filter(c => !!c);
+    //convert the cards into a list of menuItem
+    const cardsList = cards.map((card, index) => {
+      return <MenuItem key={index}>{card}</MenuItem>;
+    });
     if (cards.length > 0) {
       callout = null;
-      // TODO - need to replace callout with popover
-      /*callout = {
-        /* <Callout
-          target={gRef.current}
-          // eslint-disable-next-line react/jsx-no-bind
-          onDismiss={onDismiss}
-          setInitialFocus={true}
-          role="dialog"
-        >
-          <FocusZone isCircularNavigation={true} direction={FocusZoneDirection.vertical}>
-            <List<() => React.ReactNode>
-              items={cards}
-              // eslint-disable-next-line react/jsx-no-bind
-              onRenderCell={onRenderCell}
-            />
-          </FocusZone>
-        </Callout>
-      };*/
+      callout = (
+        <PopoverComponent
+          clickPosition={clickPosition}
+          isPopoverOpen={showCard}
+          customCallout={{
+            customizedCallout: (
+              <div {...focusAttributes}>
+                <MenuList>{cardsList}</MenuList>
+              </div>
+            ),
+          }}
+          inline={false}
+          withArrow={true}
+        />
+      );
     }
   }
 
@@ -69,7 +88,7 @@ export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
 
   return (
     <>
-      <g ref={gRef} onClick={onClick} data-is-focusable={false} style={{ cursor: 'pointer' }}>
+      <g ref={gRef} onClick={onClick} onMouseOut={onDismiss} data-is-focusable={false} style={{ cursor: 'pointer' }}>
         <Textbox
           text={text}
           x={props.labelDef.x}

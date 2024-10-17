@@ -21,6 +21,8 @@ export interface IPopoverComponentProps {
   descriptionMessage?: string;
   ratio?: [number, number];
   isCartesian?: boolean;
+  inline?: boolean;
+  withArrow?: boolean;
 }
 
 export interface IPopoverComponentStyles {
