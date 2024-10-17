@@ -22,13 +22,15 @@ import { assertProjectExists, projectConfigGlob } from './shared';
 import { buildCleanTarget } from './clean-plugin';
 import { buildFormatTarget } from './format-plugin';
 import { buildTypeCheckTarget } from './type-check-plugin';
+import { measureStart, measureEnd } from '../utils';
 
 interface WorkspacePluginOptions {}
 
 export const createNodesV2: CreateNodesV2<WorkspacePluginOptions> = [
   projectConfigGlob,
-  (configFiles, options, context) => {
-    return createNodesFromFiles(
+  async (configFiles, options, context) => {
+    measureStart('workspace-plugin');
+    const nodes = await createNodesFromFiles(
       (configFile, options, context) => {
         return createNodesInternal(configFile, options ?? {}, context);
       },
@@ -36,6 +38,10 @@ export const createNodesV2: CreateNodesV2<WorkspacePluginOptions> = [
       options,
       context,
     );
+
+    measureEnd('workspace-plugin');
+
+    return nodes;
   },
 ];
 
@@ -52,6 +58,9 @@ function createNodesInternal(
   context: CreateNodesContextV2,
 ): CreateNodesResult {
   const projectRoot = dirname(configFilePath);
+
+  // console.count('workspace-plugin');
+  // console.log({ projectRoot });
 
   if (!assertProjectExists(projectRoot, context)) {
     return {};
