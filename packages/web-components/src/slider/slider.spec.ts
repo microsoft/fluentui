@@ -1,11 +1,13 @@
 import type { Direction } from '@microsoft/fast-web-utilities';
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Slider } from './slider.js';
+
+const storybookDocId = 'components-slider--docs';
 
 test.describe('Slider', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-slider--slider'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-slider'));
   });
@@ -219,6 +221,10 @@ test.describe('Slider', () => {
 
   test('should set and retrieve the `size` property correctly', async ({ page }) => {
     const element = page.locator('fluent-slider');
+
+    await page.setContent(/* html */ `
+      <fluent-slider></fluent-slider>
+    `);
 
     await element.evaluate((node: Slider) => {
       node.size = 'small';
@@ -773,4 +779,15 @@ test.describe('Slider', () => {
       expect(wasChanged).toEqual(true);
     });
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-slider'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

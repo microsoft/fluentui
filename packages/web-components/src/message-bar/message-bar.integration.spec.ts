@@ -1,11 +1,16 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { MessageBar } from './message-bar.js';
+
+const storybookDocId = 'components-messagebar--docs';
 
 test.describe('Message Bar', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-messagebar--default'));
+    await page.goto(fixtureURL(storybookDocId));
     await page.waitForFunction(() => customElements.whenDefined('fluent-message-bar'));
+    await page.setContent(/* html */ `
+      <fluent-message-bar></fluent-message-bar>
+    `);
   });
 
   test('should include a role of status', async ({ page }) => {
@@ -100,4 +105,15 @@ test.describe('Message Bar', () => {
 
     await expect(element).toHaveAttribute('dismissed', 'true');
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-message-bar'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

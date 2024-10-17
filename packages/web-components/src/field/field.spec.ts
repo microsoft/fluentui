@@ -1,11 +1,13 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
-import { TextInput } from '../index.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
+import type { TextInput } from '../index.js';
 import type { Field } from './field.js';
+
+const storybookDocId = 'components-field--docs';
 
 test.describe('Field', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-field--field'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-field'));
   });
@@ -481,4 +483,19 @@ test.describe('Field', () => {
 
     await expect(element.locator('input:right-of(label)')).toHaveCount(1);
   });
+});
+
+// FIXME: Should remove all examples of using `<fluent-text-input>` because it’s not
+// currently supported and it’s causing ARIA issues since `<fluent-field>` would add
+// `aria-labelledby` on the `<fluent-text-input>` element but it doesn’t have a valid
+// labellable role.
+test.fixme('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-field'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

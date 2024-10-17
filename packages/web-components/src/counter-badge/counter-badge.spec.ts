@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { CounterBadge } from './counter-badge.js';
 import {
   CounterBadgeAppearance,
@@ -8,9 +8,11 @@ import {
   CounterBadgeSize,
 } from './counter-badge.options.js';
 
+const storybookDocId = 'components-badge-counter-badge--docs';
+
 test.describe('CounterBadge component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-badge-counter-badge--counter-badge'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-counter-badge'));
   });
@@ -247,4 +249,15 @@ test.describe('CounterBadge component', () => {
       await expect(element).toHaveCustomState(appearance);
     });
   }
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-counter-badge'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

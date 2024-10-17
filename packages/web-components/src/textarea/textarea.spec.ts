@@ -1,12 +1,14 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import { LabelSize } from '../label/label.options.js';
 import { TextAreaAppearance, TextAreaResize, TextAreaSize } from './textarea.options.js';
 import type { TextArea } from './textarea.js';
 
+const storybookDocId = 'components-textarea--docs';
+
 test.describe('TextArea', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-textarea--text-area'));
+    await page.goto(fixtureURL(storybookDocId));
     await page.waitForFunction(() => customElements.whenDefined('fluent-textarea'));
   });
 
@@ -1026,4 +1028,17 @@ test.describe('TextArea', () => {
       expect(wasChanged).toBe(false);
     });
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() =>
+    Promise.all([customElements.whenDefined('fluent-textarea'), customElements.whenDefined('fluent-label')]),
+  );
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

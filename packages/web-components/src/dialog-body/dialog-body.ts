@@ -7,9 +7,16 @@ import { attr, FASTElement } from '@microsoft/fast-element';
  */
 export class DialogBody extends FASTElement {
   /**
-   * @public
    * Indicates whether the dialog has a title action
+   * @public
    */
   @attr({ mode: 'boolean', attribute: 'no-title-action' })
   public noTitleAction: boolean = false;
+
+  /**
+   * ARIA label for the default title action button.
+   * @public
+   */
+  @attr({ attribute: 'title-action-label' })
+  public titleActionLabel = '';
 }
