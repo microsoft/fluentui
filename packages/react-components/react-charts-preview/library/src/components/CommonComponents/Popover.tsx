@@ -8,13 +8,13 @@ import { getAccessibleDataObject, Points, pointTypes } from '../../utilities/ind
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { Shape } from '../Legends/shape';
 import { usePopoverStyles_unstable } from './usePopoverStyles.styles';
-import { IYValueHover } from './CartesianChart.types';
+import { YValueHover } from './CartesianChart.types';
 import { LegendShape } from '../Legends/Legends.types';
-import { IPopoverComponentProps } from './Popover.types';
+import { PopoverComponentProps } from './Popover.types';
 
-const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.forwardRef<
+const PopoverComponent: React.FunctionComponent<PopoverComponentProps> = React.forwardRef<
   HTMLDivElement,
-  IPopoverComponentProps
+  PopoverComponentProps
 >((props, forwardedRef) => {
   const virtualElement: PositioningVirtualElement = {
     getBoundingClientRect: () => ({
@@ -112,7 +112,7 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
         </div>
         <div style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}>
           {props!.YValueHover &&
-            props!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
+            props!.YValueHover.map((yValue: YValueHover, index: number, yValues: YValueHover[]) => {
               const isLast: boolean = index + 1 === yValues.length;
               const { shouldDrawBorderBottom = false } = yValue;
               return (
@@ -146,7 +146,7 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
     );
   }
 
-  function _yValueHoverSubCountsExists(yValueHover?: IYValueHover[]) {
+  function _yValueHoverSubCountsExists(yValueHover?: YValueHover[]) {
     if (yValueHover) {
       return yValueHover.some(
         (yValue: {
@@ -161,7 +161,7 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
   }
 
   function _getCalloutContent(
-    xValue: IYValueHover,
+    xValue: YValueHover,
     index: number,
     yValueHoverSubCountsExists: boolean,
     isLast: boolean,

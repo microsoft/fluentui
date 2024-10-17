@@ -4,14 +4,14 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../index';
+import { VerticalBarChart, VerticalBarChartProps, VerticalBarChartDataPoint } from '../../index';
 import { act } from 'react-dom/test-utils';
 import { chartPointsVBC } from '../../utilities/test-data';
 
 const rendererAct = renderer.act;
 
 // Wrapper of the VerticalBarChart to be tested.
-let wrapper: ReactWrapper<IVerticalBarChartProps> | undefined;
+let wrapper: ReactWrapper<VerticalBarChartProps> | undefined;
 
 beforeAll(() => {
   // https://github.com/jsdom/jsdom/issues/3368
@@ -164,7 +164,7 @@ describe('VerticalBarChart - basic props', () => {
       wrapper = mount(
         <VerticalBarChart
           data={chartPointsVBC}
-          onRenderCalloutPerDataPoint={(props: IVerticalBarChartDataPoint) =>
+          onRenderCalloutPerDataPoint={(props: VerticalBarChartDataPoint) =>
             props ? (
               <div className="onRenderCalloutPerDataPoint">
                 <p>Custom Callout Content</p>

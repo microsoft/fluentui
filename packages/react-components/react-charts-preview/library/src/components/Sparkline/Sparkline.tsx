@@ -4,9 +4,9 @@ import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { area as d3Area, line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
 import { max as d3Max, extent as d3Extent } from 'd3-array';
 import { useFocusableGroup } from '@fluentui/react-tabster';
-import { ILineChartDataPoint } from '../../types/IDataPoint';
-import { isRtl } from '../../utilities/index';
-import { ISparklineProps } from '../../index';
+import { LineChartDataPoint } from '../../types/DataPoint';
+import { useRtl } from '../../utilities/index';
+import { SparklineProps } from '../../index';
 
 /**
  * Sparkline is the context wrapper and container for all Sparkline content/controls,
@@ -14,7 +14,7 @@ import { ISparklineProps } from '../../index';
  *
  * Sparkline also provides API interfaces for callbacks that will occur on navigation events.
  */
-export const Sparkline: React.FunctionComponent<ISparklineProps> = React.forwardRef<HTMLDivElement, ISparklineProps>(
+export const Sparkline: React.FunctionComponent<SparklineProps> = React.forwardRef<HTMLDivElement, SparklineProps>(
   (props, forwardedRef) => {
     let margin = {
       top: 2,
@@ -25,24 +25,24 @@ export const Sparkline: React.FunctionComponent<ISparklineProps> = React.forward
     let x: any;
     let y: any;
     let _emptyChartId: string = '_SparklineChart_empty';
-    let _isRTL: boolean = isRtl();
-    const [points, setPoints] = React.useState<ILineChartDataPoint[]>([]);
+    let _isRTL: boolean = useRtl();
+    const [points, setPoints] = React.useState<LineChartDataPoint[]>([]);
     const width = 80;
     const height = 20;
     const valueTextWidth = 80;
 
     const line = React.useMemo(() => {
-      return d3Line<ILineChartDataPoint>()
-        .x((d: ILineChartDataPoint) => x(d.x))
-        .y((d: ILineChartDataPoint) => y(d.y))
+      return d3Line<LineChartDataPoint>()
+        .x((d: LineChartDataPoint) => x(d.x))
+        .y((d: LineChartDataPoint) => y(d.y))
         .curve(d3curveLinear);
     }, [x, y]);
 
     const area = React.useMemo(() => {
-      return d3Area<ILineChartDataPoint>()
-        .x((d: ILineChartDataPoint) => x(d.x))
+      return d3Area<LineChartDataPoint>()
+        .x((d: LineChartDataPoint) => x(d.x))
         .y0(height)
-        .y1((d: ILineChartDataPoint) => y(d.y))
+        .y1((d: LineChartDataPoint) => y(d.y))
         .curve(d3curveLinear);
     }, [height, x, y]);
 

@@ -1,13 +1,13 @@
 jest.mock('react-dom');
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import { IChartProps, IHorizontalBarChartProps, HorizontalBarChart, HorizontalBarChartVariant } from './index';
+import { ChartProps, HorizontalBarChartProps, HorizontalBarChart, HorizontalBarChartVariant } from './index';
 import toJson from 'enzyme-to-json';
 import * as renderer from 'react-test-renderer';
 import { act } from 'react-test-renderer';
 
 // Wrapper of the HorizontalBarChart to be tested.
-let wrapper: ReactWrapper<IHorizontalBarChartProps> | undefined;
+let wrapper: ReactWrapper<HorizontalBarChartProps> | undefined;
 
 function sharedAfterEach() {
   if (wrapper) {
@@ -16,7 +16,7 @@ function sharedAfterEach() {
   }
 }
 
-export const chartPoints: IChartProps[] = [
+export const chartPoints: ChartProps[] = [
   {
     chartTitle: 'one',
     chartData: [

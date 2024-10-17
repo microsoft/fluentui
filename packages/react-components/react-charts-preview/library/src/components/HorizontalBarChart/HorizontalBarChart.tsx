@@ -1,14 +1,8 @@
 import * as React from 'react';
 import { useHorizontalBarChartStyles_unstable } from './useHorizontalBarChartStyles.styles';
-import {
-  IChartProps,
-  IHorizontalBarChartProps,
-  IChartDataPoint,
-  IRefArrayData,
-  HorizontalBarChartVariant,
-} from './index';
+import { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData, HorizontalBarChartVariant } from './index';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { formatValueWithSIPrefix, getAccessibleDataObject, isRtl } from '../../utilities/index';
+import { formatValueWithSIPrefix, getAccessibleDataObject, useRtl } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useFocusableGroup } from '@fluentui/react-tabster';
@@ -21,17 +15,17 @@ import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
  *
  * HorizontalBarChart also provides API interfaces for callbacks that will occur on navigation events.
  */
-export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProps> = React.forwardRef<
+export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps> = React.forwardRef<
   HTMLDivElement,
-  IHorizontalBarChartProps
+  HorizontalBarChartProps
 >((props, forwardedRef) => {
   let _barHeight: number;
   //let _classNames: IProcessedStyleSet<IHorizontalBarChartStyles>;
-  let _uniqLineText: string = '_HorizontalLine_' + Math.random().toString(36).substring(7);
-  let _refArray: IRefArrayData[] = [];
-  let _calloutAnchorPoint: IChartDataPoint | null;
-  const _isRTL: boolean = isRtl();
-  let barChartSvgRef: React.RefObject<SVGSVGElement> = React.createRef<SVGSVGElement>();
+  const _uniqLineText: string = '_HorizontalLine_' + Math.random().toString(36).substring(7);
+  const _refArray: RefArrayData[] = [];
+  let _calloutAnchorPoint: ChartDataPoint | null;
+  const _isRTL: boolean = useRtl();
+  const barChartSvgRef: React.RefObject<SVGSVGElement> = React.createRef<SVGSVGElement>();
   const _emptyChartId: string = useId('_HBC_empty');
 
   const [hoverValue, setHoverValue] = React.useState<string | number | Date | null>('');
@@ -39,7 +33,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   const [legend, setLegend] = React.useState<string | null>('');
   const [xCalloutValue, setXCalloutValue] = React.useState<string | undefined>('');
   const [yCalloutValue, setYCalloutValue] = React.useState<string | undefined>('');
-  const [barCalloutProps, setBarCalloutProps] = React.useState<IChartDataPoint>();
+  const [barCalloutProps, setBarCalloutProps] = React.useState<ChartDataPoint>();
   const [barSpacingInPercent, setBarSpacingInPercent] = React.useState<number>(0);
   const [isPopoverOpen, setPopoverOpen] = React.useState<boolean>(false);
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
@@ -51,7 +45,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   function _hoverOn(
     event: React.MouseEvent<SVGRectElement, MouseEvent>,
     hoverVal: string | number | Date,
-    point: IChartDataPoint,
+    point: ChartDataPoint,
   ): void {
     if ((!isPopoverOpen || legend !== point.legend!) && _calloutAnchorPoint !== point) {
       _calloutAnchorPoint = point;
@@ -67,7 +61,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   }
 
   function _hoverOff(): void {
-    /**/
+    /*ToDo. To fix*/
   }
 
   const _handleChartMouseLeave = () => {
@@ -84,7 +78,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
     _barHeight = props.barHeight || 12;
   };
 
-  const _getChartDataText = (data: IChartProps) => {
+  const _getChartDataText = (data: ChartProps) => {
     /* return props.barChartCustomData ? (
         <div role="text">{props.barChartCustomData(data)}</div>
       ) : ( */
@@ -92,10 +86,10 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
     //)
   };
 
-  function _getDefaultTextData(data: IChartProps): JSX.Element {
+  function _getDefaultTextData(data: ChartProps): JSX.Element {
     const { culture } = props;
     const chartDataMode = props.chartDataMode || 'default';
-    const chartData: IChartDataPoint = data!.chartData![0];
+    const chartData: ChartDataPoint = data!.chartData![0];
     const x = chartData.horizontalBarChartdata!.x;
     const y = chartData.horizontalBarChartdata!.y;
 
@@ -124,7 +118,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
     }
   }
 
-  function _createBenchmark(data: IChartProps): JSX.Element {
+  function _createBenchmark(data: ChartProps): JSX.Element {
     const totalData = data.chartData![0].horizontalBarChartdata!.y;
     const benchmarkData = data.chartData![0].data;
     const benchmarkRatio = Math.round(((benchmarkData ? benchmarkData : 0) / totalData) * 100);
@@ -147,9 +141,9 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
    * Extra margin is also provided, in the x value to provide some spacing in between the bars
    */
 
-  function _createBars(data: IChartProps): JSX.Element[] {
+  function _createBars(data: ChartProps): JSX.Element[] {
     const noOfBars =
-      data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
+      data.chartData?.reduce((count: number, point: ChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
     const totalMarginPercent = barSpacingInPercent * (noOfBars - 1);
     const defaultColors: string[] = [
@@ -162,7 +156,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
     const total = data.chartData!.reduce(
-      (acc: number, point: IChartDataPoint) =>
+      (acc: number, point: ChartDataPoint) =>
         acc + (point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0),
       0,
     );
@@ -170,7 +164,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
     let value = 0;
 
     let sumOfPercent = 0;
-    data.chartData!.map((point: IChartDataPoint, index: number) => {
+    data.chartData!.map((point: ChartDataPoint, index: number) => {
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       value = (pointData / total) * 100;
       if (value < 0) {
@@ -193,7 +187,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
      */
     const scalingRatio = sumOfPercent !== 0 ? (sumOfPercent - totalMarginPercent) / 100 : 1;
 
-    const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
+    const bars = data.chartData!.map((point: ChartDataPoint, index: number) => {
       const color: string = point.color ? point.color : defaultColors[Math.floor(Math.random() * 4 + 1)];
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       if (index > 0) {
@@ -262,7 +256,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
     return bars;
   }
 
-  const _getAriaLabel = (point: IChartDataPoint): string => {
+  const _getAriaLabel = (point: ChartDataPoint): string => {
     const legend = point.xAxisCalloutData || point.legend;
     const yValue =
       point.yAxisCalloutData ||
@@ -294,7 +288,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
       const currentBarSpacing = (MARGIN_WIDTH_IN_PX / svgWidth) * 100;
       setBarSpacingInPercent(currentBarSpacing);
     }
-  }, []);
+  }, [barChartSvgRef]);
 
   const { data } = props;
   _adjustProps();
@@ -304,7 +298,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   let datapoint: number | undefined = 0;
   return !_isChartEmpty() ? (
     <div className={classes.root} onMouseLeave={_handleChartMouseLeave}>
-      {data!.map((points: IChartProps, index: number) => {
+      {data!.map((points: ChartProps, index: number) => {
         if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
           datapoint = points.chartData![0].horizontalBarChartdata!.x;
         } else {

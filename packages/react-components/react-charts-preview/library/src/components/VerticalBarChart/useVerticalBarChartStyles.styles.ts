@@ -1,9 +1,9 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { IVerticalBarChartProps, IVerticalBarChartStyles } from '../../index';
+import { VerticalBarChartProps, VerticalBarChartStyles } from '../../index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 
-export const verticalbarchartClassNames: SlotClassNames<IVerticalBarChartStyles> = {
+export const verticalbarchartClassNames: SlotClassNames<VerticalBarChartStyles> = {
   opacityChangeOnHover: 'fui-vbc__opacityChangeOnHover',
   xAxisTicks: 'fui-vbc__xAxisTicks',
   yAxisTicks: 'fui-vbc__yAxisTicks',
@@ -60,7 +60,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useVerticalBarChartStyles_unstable = (props: IVerticalBarChartProps): IVerticalBarChartStyles => {
+export const useVerticalBarChartStyles_unstable = (props: VerticalBarChartProps): VerticalBarChartStyles => {
   const baseStyles = useStyles();
 
   return {

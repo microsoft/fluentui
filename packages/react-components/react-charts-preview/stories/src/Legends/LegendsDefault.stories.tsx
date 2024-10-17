@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ILegend, Legends, getColorFromToken, DataVizPalette } from '@fluentui/react-charts-preview';
+import { Legend, Legends, getColorFromToken, DataVizPalette } from '@fluentui/react-charts-preview';
 
 export const LegendsBasic = () => {
-  const legends: ILegend[] = [
+  const legends: Legend[] = [
     {
       title: 'Legend 1',
       color: getColorFromToken(DataVizPalette.color1),

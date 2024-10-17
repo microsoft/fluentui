@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   HorizontalBarChart,
   HorizontalBarChartVariant,
-  IChartProps,
+  ChartProps,
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts-preview';
@@ -13,7 +13,7 @@ export const HorizontalBarAbsoluteScale = () => {
   const _onCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
     setHideLabels(checked.checked as boolean);
   };
-  const data: IChartProps[] = [
+  const data: ChartProps[] = [
     {
       chartTitle: 'one',
       chartData: [

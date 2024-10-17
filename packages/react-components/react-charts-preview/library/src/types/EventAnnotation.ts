@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface IEventAnnotation {
+export interface EventAnnotation {
   date: Date;
   event: string;
   onRenderCard?: () => React.ReactNode;

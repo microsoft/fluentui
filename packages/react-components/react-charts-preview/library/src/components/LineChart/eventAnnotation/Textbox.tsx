@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { select } from 'd3-selection';
 
-interface ITextboxProps {
+interface TextboxProps {
   text: string;
   width: number;
   x: number;
@@ -12,7 +12,7 @@ interface ITextboxProps {
   fill?: string;
 }
 
-export const Textbox: React.FunctionComponent<ITextboxProps> = props => {
+export const Textbox: React.FunctionComponent<TextboxProps> = props => {
   const textElementRef: React.RefObject<SVGTextElement> = React.useRef(null);
 
   const wrapWords = () => {

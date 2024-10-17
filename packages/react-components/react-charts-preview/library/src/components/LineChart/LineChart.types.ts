@@ -1,62 +1,62 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { IRenderFunction } from '../../utilities/index';
+import { RenderFunction } from '../../utilities/index';
 import {
-  IChartProps,
-  ILineChartPoints,
-  IMargins,
-  IBasestate,
-  IRefArrayData,
-  ICustomizedCalloutData,
+  ChartProps,
+  LineChartPoints,
+  Margins,
+  Basestate,
+  RefArrayData,
+  CustomizedCalloutData,
 } from '../../types/index';
-import { IEventAnnotation } from '../../types/IEventAnnotation';
+import { EventAnnotation } from '../../types/EventAnnotation';
 import {
-  ICartesianChartProps,
-  ICartesianChartStyleProps,
-  ICartesianChartStyles,
-  IChildProps,
+  CartesianChartProps,
+  CartesianChartStyleProps,
+  CartesianChartStyles,
+  ChildProps,
 } from '../CommonComponents/index';
 
-export type { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
+export type { ChildProps, LineChartPoints, Margins, Basestate, RefArrayData };
 
 /**
  * Line Chart properties
  * {@docCategory LineChart}
  */
-export interface ILineChartProps extends ICartesianChartProps {
+export interface LineChartProps extends CartesianChartProps {
   /**
    * Data to render in the chart.
    */
-  data: IChartProps;
+  data: ChartProps;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: ILineChartStyles;
+  styles?: LineChartStyles;
 
   /**
    * Show event annotation
    */
-  eventAnnotationProps?: IEventsAnnotationProps;
+  eventAnnotationProps?: EventsAnnotationProps;
 
   /**
    * Define a custom callout renderer for a data point
    */
-  onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
+  onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
 
   /**
    * Define a custom callout renderer for a stack; default is to render per data point
    */
-  onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
+  onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
 
   /**
    * Callback for getting callout description message
    */
-  getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
+  getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
 
   /*
    * Color fill bars for the chart,
    */
-  colorFillBars?: IColorFillBarsProps[];
+  colorFillBars?: ColorFillBarsProps[];
 
   /**
    * if this is set to true, then for each line there will be a unique shape assigned to the point,
@@ -93,8 +93,8 @@ export interface ILineChartProps extends ICartesianChartProps {
 /**
  * {@docCategory LineChart}
  */
-export interface IEventsAnnotationProps {
-  events: IEventAnnotation[];
+export interface EventsAnnotationProps {
+  events: EventAnnotation[];
   strokeColor?: string;
   labelColor?: string;
   labelHeight?: number;
@@ -106,21 +106,21 @@ export interface IEventsAnnotationProps {
  * Line Chart styles
  * {@docCategory LineChart}
  */
-export interface ILineChartStyles extends ICartesianChartStyles {}
+export interface LineChartStyles extends CartesianChartStyles {}
 
 /**
  * Line Chart style properties
  * {@docCategory LineChart}
  */
-export interface ILineChartStyleProps extends ICartesianChartStyleProps {}
+export interface LineChartStyleProps extends CartesianChartStyleProps {}
 
 /**
  * {@docCategory LineChart}
  */
-export interface IColorFillBarsProps {
+export interface ColorFillBarsProps {
   legend: string;
   color: string;
-  data: IColorFillBarData[];
+  data: ColorFillBarData[];
   applyPattern?: boolean;
   onLegendClick?: (selectedLegend: string | string[] | null) => void | undefined;
 }
@@ -128,7 +128,7 @@ export interface IColorFillBarsProps {
 /**
  * {@docCategory LineChart}
  */
-export interface IColorFillBarData {
+export interface ColorFillBarData {
   startX: number | Date;
   endX: number | Date;
 }

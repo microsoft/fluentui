@@ -1,12 +1,12 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { ILegendsProps, ILegendsStyles } from './Legends.types';
+import { LegendsProps, LegendsStyles } from './Legends.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 /**
  * @internal
  */
-export const legendClassNames: SlotClassNames<ILegendsStyles> = {
+export const legendClassNames: SlotClassNames<LegendsStyles> = {
   root: 'fui-legend__root',
   legend: 'fui-legend__legend',
   rect: 'fui-legend__rect',
@@ -85,7 +85,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useLegendStyles_unstable = (props: ILegendsProps): ILegendsStyles => {
+export const useLegendStyles_unstable = (props: LegendsProps): LegendsStyles => {
   const { className } = props; // ToDo - width, barHeight is non enumerable. Need to be used inline.
   const baseStyles = useStyles();
 

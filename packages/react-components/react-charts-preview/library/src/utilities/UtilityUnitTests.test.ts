@@ -3,11 +3,11 @@ import * as colors from './colors';
 import { TimeLocaleDefinition as d3TimeLocaleDefinition } from 'd3-time-format';
 import { format as d3Format } from 'd3-format';
 import {
-  IDataPoint,
-  IHorizontalBarChartWithAxisDataPoint,
-  ILineChartPoints,
-  IVerticalBarChartDataPoint,
-} from '../types/IDataPoint';
+  DataPoint,
+  HorizontalBarChartWithAxisDataPoint,
+  LineChartPoints,
+  VerticalBarChartDataPoint,
+} from '../types/DataPoint';
 import { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
@@ -126,10 +126,10 @@ describe('Unit test for getting colors from token and returning the theme specif
   });
 });
 
-interface ICreateXAxisParams extends Partial<Omit<utils.IXAxisParams, 'domainNRangeValues'>> {
+interface CreateXAxisParams extends Partial<Omit<utils.IXAxisParams, 'domainNRangeValues'>> {
   domainNRangeValues?: Partial<utils.IDomainNRange>;
 }
-const createXAxisParams = (xAxisParams?: ICreateXAxisParams): utils.IXAxisParams => {
+const createXAxisParams = (xAxisParams?: CreateXAxisParams): utils.IXAxisParams => {
   const xAxisElement = document.createElementNS('http://www.w3.org/2000/svg', 'g') as SVGSVGElement;
 
   return {
@@ -205,7 +205,7 @@ describe('createNumericXAxis', () => {
 });
 
 conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('createDateXAxis', () => {
-  const domainNRangeValues: ICreateXAxisParams['domainNRangeValues'] = {
+  const domainNRangeValues: CreateXAxisParams['domainNRangeValues'] = {
     dStartValue: new Date(2021, 6, 1),
     dEndValue: new Date(2022, 5, 30),
   };
@@ -522,7 +522,7 @@ describe('createStringYAxisForOtherCharts', () => {
 
 describe('calloutData', () => {
   it('should return an array of data points grouped by their numeric x coordinates', () => {
-    const values: ILineChartPoints[] = [
+    const values: LineChartPoints[] = [
       {
         legend: 'Line 1',
         data: [
@@ -543,7 +543,7 @@ describe('calloutData', () => {
   });
 
   it('should return an array of data points grouped by their date-based x coordinates', () => {
-    const values: ILineChartPoints[] = [
+    const values: LineChartPoints[] = [
       {
         legend: 'Line 1',
         data: [
@@ -783,7 +783,7 @@ describe('tooltipOfXAxislabels', () => {
 
 describe('getXAxisType', () => {
   it('should return false when chart is empty', () => {
-    let points: ILineChartPoints[] = [];
+    let points: LineChartPoints[] = [];
     expect(utils.getXAxisType(points)).toBe(false);
 
     points = [{ legend: 'Line 1', data: [] }];
@@ -791,18 +791,18 @@ describe('getXAxisType', () => {
   });
 
   it('should return false for data points with numeric x coordinates', () => {
-    const points: ILineChartPoints[] = [{ legend: 'Line 1', data: [{ x: 10, y: 10 }] }];
+    const points: LineChartPoints[] = [{ legend: 'Line 1', data: [{ x: 10, y: 10 }] }];
     expect(utils.getXAxisType(points)).toBe(false);
   });
 
   it('should return true for data points with date-based x coordinates', () => {
-    const points: ILineChartPoints[] = [{ legend: 'Line 1', data: [{ x: new Date(), y: 10 }] }];
+    const points: LineChartPoints[] = [{ legend: 'Line 1', data: [{ x: new Date(), y: 10 }] }];
     expect(utils.getXAxisType(points)).toBe(true);
   });
 });
 
 describe('domainRangeOfDateForAreaChart', () => {
-  const points: ILineChartPoints[] = [
+  const points: LineChartPoints[] = [
     {
       legend: 'Line 1',
       data: [
@@ -856,7 +856,7 @@ describe('domainRangeOfDateForAreaChart', () => {
 });
 
 describe('domainRangeOfNumericForAreaChart', () => {
-  const points: ILineChartPoints[] = [
+  const points: LineChartPoints[] = [
     {
       legend: 'Line 1',
       data: [
@@ -884,7 +884,7 @@ describe('domainRangeOfNumericForAreaChart', () => {
 });
 
 describe('domainRangeOfNumericForHorizontalBarChartWithAxis', () => {
-  const points: IHorizontalBarChartWithAxisDataPoint[] = [
+  const points: HorizontalBarChartWithAxisDataPoint[] = [
     { x: 10, y: 20 },
     { x: 30, y: 40 },
   ];
@@ -926,7 +926,7 @@ describe('domainRangeOfXStringAxis', () => {
 });
 
 describe('domainRangeOfVSBCNumeric', () => {
-  const points: IDataPoint[] = [
+  const points: DataPoint[] = [
     { x: 10, y: 20 },
     { x: 30, y: 40 },
   ];
@@ -949,7 +949,7 @@ describe('domainRangeOfVSBCNumeric', () => {
 });
 
 describe('domainRageOfVerticalNumeric', () => {
-  const points: IDataPoint[] = [
+  const points: DataPoint[] = [
     { x: 10, y: 20 },
     { x: 30, y: 40 },
   ];
@@ -980,7 +980,7 @@ describe('getDomainNRangeValues', () => {
   };
 
   it('should return domain and range values correctly for line chart with numeric x-axis', () => {
-    const points: ILineChartPoints[] = [
+    const points: LineChartPoints[] = [
       {
         legend: 'Line 1',
         data: [
@@ -1004,7 +1004,7 @@ describe('getDomainNRangeValues', () => {
   });
 
   it('should return domain and range values correctly for vertical stacked bar chart with numeric x-axis', () => {
-    const points: IDataPoint[] = [
+    const points: DataPoint[] = [
       { x: 10, y: 20 },
       { x: 30, y: 40 },
     ];
@@ -1023,7 +1023,7 @@ describe('getDomainNRangeValues', () => {
   });
 
   it('should return domain and range values correctly for vertical bar chart with numeric x-axis', () => {
-    const points: IDataPoint[] = [
+    const points: DataPoint[] = [
       { x: 10, y: 20 },
       { x: 30, y: 40 },
     ];
@@ -1042,7 +1042,7 @@ describe('getDomainNRangeValues', () => {
   });
 
   it('should return domain and range values correctly for horizontal bar chart with numeric x-axis', () => {
-    const points: IHorizontalBarChartWithAxisDataPoint[] = [
+    const points: HorizontalBarChartWithAxisDataPoint[] = [
       { x: 10, y: 20 },
       { x: 30, y: 40 },
     ];
@@ -1076,7 +1076,7 @@ describe('getDomainNRangeValues', () => {
   });
 
   it('should return domain and range values correctly for line chart with date x-axis', () => {
-    const points: ILineChartPoints[] = [
+    const points: LineChartPoints[] = [
       {
         legend: 'Line 1',
         data: [
@@ -1146,7 +1146,7 @@ describe('getDomainNRangeValues', () => {
 });
 
 test('findNumericMinMaxOfY should return minimum and maximum values for line chart with numeric y-axis', () => {
-  const points: ILineChartPoints[] = [
+  const points: LineChartPoints[] = [
     {
       legend: 'Line 1',
       data: [
@@ -1160,7 +1160,7 @@ test('findNumericMinMaxOfY should return minimum and maximum values for line cha
 });
 
 test('findVSBCNumericMinMaxOfY should return minimum and maximum values for numeric y-axis', () => {
-  const points: IDataPoint[] = [
+  const points: DataPoint[] = [
     { x: 10, y: 20 },
     { x: 30, y: 40 },
   ];
@@ -1170,7 +1170,7 @@ test('findVSBCNumericMinMaxOfY should return minimum and maximum values for nume
 
 describe('findVerticalNumericMinMaxOfY', () => {
   it('should return minimum and maximum values for numeric y-axis', () => {
-    const points: IVerticalBarChartDataPoint[] = [
+    const points: VerticalBarChartDataPoint[] = [
       { x: 10, y: 20 },
       { x: 30, y: 40 },
     ];
@@ -1179,7 +1179,7 @@ describe('findVerticalNumericMinMaxOfY', () => {
   });
 
   it('should return minimum and maximum values for numeric y-axis when line data is also provided', () => {
-    const points: IVerticalBarChartDataPoint[] = [
+    const points: VerticalBarChartDataPoint[] = [
       { x: 10, y: 20, lineData: { y: 50 } },
       { x: 30, y: 40, lineData: { y: 10 } },
     ];
@@ -1190,7 +1190,7 @@ describe('findVerticalNumericMinMaxOfY', () => {
 
 describe('findHBCWANumericMinMaxOfY', () => {
   it('should return empty minimum and maximum values for non numeric y-axis', () => {
-    const points: IHorizontalBarChartWithAxisDataPoint[] = [
+    const points: HorizontalBarChartWithAxisDataPoint[] = [
       { x: 10, y: 'label 1' },
       { x: 20, y: 'label 2' },
     ];
@@ -1199,7 +1199,7 @@ describe('findHBCWANumericMinMaxOfY', () => {
   });
 
   it('should return minimum and maximum values for numeric y-axis', () => {
-    const points: IHorizontalBarChartWithAxisDataPoint[] = [
+    const points: HorizontalBarChartWithAxisDataPoint[] = [
       { x: 10, y: 20 },
       { x: 30, y: 40 },
     ];
@@ -1210,7 +1210,7 @@ describe('findHBCWANumericMinMaxOfY', () => {
 
 describe('getMinMaxOfYAxis', () => {
   it('should return minimum and maximum values for line chart with numeric y-axis', () => {
-    const points: ILineChartPoints[] = [
+    const points: LineChartPoints[] = [
       {
         legend: 'Line 1',
         data: [
@@ -1224,7 +1224,7 @@ describe('getMinMaxOfYAxis', () => {
   });
 
   it('should return minimum and maximum values for vertical stacked bar chart with numeric y-axis', () => {
-    const points: IDataPoint[] = [
+    const points: DataPoint[] = [
       { x: 10, y: 20 },
       { x: 30, y: 40 },
     ];
@@ -1233,7 +1233,7 @@ describe('getMinMaxOfYAxis', () => {
   });
 
   it('should return minimum and maximum values for vertical bar chart with numeric y-axis', () => {
-    const points: IVerticalBarChartDataPoint[] = [
+    const points: VerticalBarChartDataPoint[] = [
       { x: 10, y: 20 },
       { x: 30, y: 40 },
     ];
@@ -1242,7 +1242,7 @@ describe('getMinMaxOfYAxis', () => {
   });
 
   it('should return minimum and maximum values for horizontal bar chart with numeric y-axis', () => {
-    const points: IHorizontalBarChartWithAxisDataPoint[] = [
+    const points: HorizontalBarChartWithAxisDataPoint[] = [
       { x: 10, y: 20 },
       { x: 30, y: 40 },
     ];

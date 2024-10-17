@@ -1,18 +1,18 @@
 import * as React from 'react';
 import {
   DonutChart,
-  IChartProps,
-  IChartDataPoint,
+  ChartProps,
+  ChartDataPoint,
   DataVizPalette,
   getColorFromToken,
-  IPopoverComponentProps,
+  PopoverComponentProps,
 } from '@fluentui/react-charts-preview';
 import { Switch, tokens } from '@fluentui/react-components';
 
 export const DonutChartCustomCallout = () => {
   const [useCustomPopover, setUseCustomPopover] = React.useState(false);
 
-  const points: IChartDataPoint[] = [
+  const points: ChartDataPoint[] = [
     {
       legend: 'first',
       data: 20000,
@@ -33,12 +33,12 @@ export const DonutChartCustomCallout = () => {
     setUseCustomPopover(ev.currentTarget.checked);
   }, []);
 
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Donut chart custom callout example',
     chartData: points,
   };
 
-  const customPopoverProps = (props: IChartDataPoint): IPopoverComponentProps => {
+  const customPopoverProps = (props: ChartDataPoint): PopoverComponentProps => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : '';
     return {
       XValue: 'Custom XVal',
@@ -48,7 +48,7 @@ export const DonutChartCustomCallout = () => {
     };
   };
 
-  const customPopover = (props: IChartDataPoint): JSX.Element | undefined => {
+  const customPopover = (props: ChartDataPoint): JSX.Element | undefined => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : 'Y Value';
     const xValue = props ? props.xAxisCalloutData! : 'X Value';
     const legend = props ? props.legend : 'Legend';
@@ -96,8 +96,8 @@ export const DonutChartCustomCallout = () => {
         hideLegend={false}
         height={220}
         valueInsideDonut={39000}
-        customProps={(props: IChartDataPoint) => customPopoverProps(props)}
-        onRenderCalloutPerDataPoint={(props: IChartDataPoint) => customPopover(props)}
+        customProps={(props: ChartDataPoint) => customPopoverProps(props)}
+        onRenderCalloutPerDataPoint={(props: ChartDataPoint) => customPopover(props)}
       />
     </>
   );

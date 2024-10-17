@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts-preview';
+import { LineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts-preview';
 
-export const LineChartStyled = (props: ILineChartProps) => {
+export const LineChartStyled = (props: LineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
 

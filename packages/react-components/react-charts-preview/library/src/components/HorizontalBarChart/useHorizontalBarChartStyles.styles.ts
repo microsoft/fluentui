@@ -1,12 +1,12 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { IHorizontalBarChartProps, IHorizontalBarChartStyles, HorizontalBarChartVariant } from './index';
+import { HorizontalBarChartProps, HorizontalBarChartStyles, HorizontalBarChartVariant } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
  * @internal
  */
-export const hbcClassNames: SlotClassNames<IHorizontalBarChartStyles> = {
+export const hbcClassNames: SlotClassNames<HorizontalBarChartStyles> = {
   root: 'fui-hbc__root',
   items: 'fui-hbc__items',
   chart: 'fui-hbc__chart',
@@ -100,7 +100,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useHorizontalBarChartStyles_unstable = (props: IHorizontalBarChartProps): IHorizontalBarChartStyles => {
+export const useHorizontalBarChartStyles_unstable = (props: HorizontalBarChartProps): HorizontalBarChartStyles => {
   const { className, showTriangle, variant, hideLabels } = props; // ToDo - width, barHeight is non enumerable. Need to be used inline.
   const baseStyles = useStyles();
 

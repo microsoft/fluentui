@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
+import { VerticalBarChart, VerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
 import {
   Checkbox,
   Field,
@@ -57,7 +57,7 @@ export const VerticalBarAxisTooltip = () => {
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(Number(e.target.value));
   };
-  const points: IVerticalBarChartDataPoint[] = [
+  const points: VerticalBarChartDataPoint[] = [
     {
       x: 'Simple Text',
       y: 1000,

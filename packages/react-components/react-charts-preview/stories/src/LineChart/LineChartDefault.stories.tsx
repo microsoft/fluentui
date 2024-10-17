@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ILineChartProps, LineChart, IChartProps, DataVizPalette } from '@fluentui/react-charts-preview';
+import { LineChartProps, LineChart, ChartProps, DataVizPalette } from '@fluentui/react-charts-preview';
 import { Switch, Checkbox } from '@fluentui/react-components';
 import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
-export const LineChartBasic = (props: ILineChartProps) => {
+export const LineChartBasic = (props: LineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
@@ -30,7 +30,7 @@ export const LineChartBasic = (props: ILineChartProps) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
 
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Line Chart Basic Example',
     lineChartData: [
       {

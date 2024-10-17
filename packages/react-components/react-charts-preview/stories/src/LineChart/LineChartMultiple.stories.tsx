@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts-preview';
+import { LineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts-preview';
 
 import { Switch } from '@fluentui/react-components';
 
-export const LineChartMultiple = (props: ILineChartProps) => {
+export const LineChartMultiple = (props: LineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);

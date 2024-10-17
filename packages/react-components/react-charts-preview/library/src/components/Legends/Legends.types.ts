@@ -6,7 +6,7 @@ import { CustomPoints, Points } from '../../utilities/utilities';
  * Legends styles
  * {@docCategory Legends}
  */
-export interface ILegendsStyles {
+export interface LegendsStyles {
   /**
    * Style set for the root of the legend component
    */
@@ -53,7 +53,7 @@ export interface ILegendsStyles {
  * ILegend interface
  * {@docCategory Legends}
  */
-export interface ILegend {
+export interface Legend {
   /**
    * Defines the title of the legend
    */
@@ -110,7 +110,7 @@ export interface ILegend {
  * Legend style properties
  * {@docCategory Legends}
  */
-export interface ILegendStyleProps {
+export interface LegendStyleProps {
   className?: string;
   colorOnSelectedState?: string;
   borderColor?: string;
@@ -125,11 +125,11 @@ export interface ILegendStyleProps {
  * Legend properties
  * {@docCategory Legends}
  */
-export interface ILegendsProps {
+export interface LegendsProps {
   /**
    * Prop that takes list of legends
    */
-  legends: ILegend[];
+  legends: Legend[];
 
   /**
    * Additional CSS class(es) to apply to the legneds component.
@@ -139,7 +139,7 @@ export interface ILegendsProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: ILegendsStyles;
+  styles?: LegendsStyles;
 
   /**
    * This prop makes the legends component align itself to the center in the container it is sitting in
@@ -176,7 +176,7 @@ export interface ILegendsProps {
   /**
    * Callback issued when the selected option changes.
    */
-  onChange?: (selectedLegends: string[], event: React.MouseEvent<HTMLButtonElement>, currentLegend?: ILegend) => void;
+  onChange?: (selectedLegends: string[], event: React.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
 
   /**
    * Keys (title) that will be initially used to set selected items.

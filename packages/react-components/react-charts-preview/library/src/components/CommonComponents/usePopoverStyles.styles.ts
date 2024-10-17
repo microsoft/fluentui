@@ -2,12 +2,12 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { HighContrastSelectorBlack, HighContrastSelector } from '../../utilities/index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { IPopoverComponentProps, IPopoverComponentStyles } from './Popover.types';
+import { PopoverComponentProps, PopoverComponentStyles } from './Popover.types';
 
 /**
  * @internal
  */
-export const popoverClassNames: SlotClassNames<IPopoverComponentStyles> = {
+export const popoverClassNames: SlotClassNames<PopoverComponentStyles> = {
   calloutContentRoot: 'fui-cart__calloutContentRoot',
   calloutDateTimeContainer: 'fui-cart__calloutDateTimeContainer',
   calloutContentX: 'fui-cart__calloutContentX',
@@ -30,7 +30,7 @@ export const popoverClassNames: SlotClassNames<IPopoverComponentStyles> = {
 const useStyles = makeStyles({
   calloutContentRoot: {
     display: 'contents',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
     ...shorthands.padding('11px 16px 10px 16px'),
     backgroundColor: tokens.colorNeutralBackground1,
     backgroundBlendMode: 'normal, luminosity',
@@ -120,7 +120,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const usePopoverStyles_unstable = (props: IPopoverComponentProps): IPopoverComponentStyles => {
+export const usePopoverStyles_unstable = (props: PopoverComponentProps): PopoverComponentStyles => {
   const { isCartesian } = props;
   const baseStyles = useStyles();
   return {

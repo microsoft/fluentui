@@ -2,7 +2,7 @@ import * as React from 'react';
 import { LegendShape } from './Legends.types';
 import { CustomPoints, Points } from '../../utilities/utilities';
 
-export interface IShapeProps {
+export interface ShapeProps {
   svgProps: React.SVGAttributes<SVGElement>;
   pathProps: React.SVGAttributes<SVGPathElement>;
   shape: LegendShape;
@@ -27,7 +27,7 @@ const pointPath: PointPathType = {
   [`${CustomPoints[CustomPoints.dottedLine]}`]: 'M0 6 H3 M5 6 H8 M10 6 H13',
 };
 
-export const Shape: React.FunctionComponent<IShapeProps> = React.forwardRef<HTMLDivElement, IShapeProps>(
+export const Shape: React.FunctionComponent<ShapeProps> = React.forwardRef<HTMLDivElement, ShapeProps>(
   ({ svgProps, pathProps, shape, classNameForNonSvg, style }, forwardedRef) => {
     if (Object.keys(pointPath).indexOf(shape) === -1) {
       return <div className={classNameForNonSvg} style={style} />;

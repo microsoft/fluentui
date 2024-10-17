@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {
-  ILineChartProps,
+  LineChartProps,
   LineChart,
-  IChartProps,
-  ILineChartDataPoint,
+  ChartProps,
+  LineChartDataPoint,
   DataVizPalette,
 } from '@fluentui/react-charts-preview';
 import { Switch } from '@fluentui/react-components';
 
-export const LineChartLargeData = (props: ILineChartProps) => {
+export const LineChartLargeData = (props: LineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
@@ -26,7 +26,7 @@ export const LineChartLargeData = (props: ILineChartProps) => {
   }, []);
 
   const _getdata = () => {
-    const data: ILineChartDataPoint[] = [];
+    const data: LineChartDataPoint[] = [];
     const startdate = new Date('2020-03-01T00:00:00.000Z');
     for (let i = 0; i < 10000; i++) {
       data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: 500000 });
@@ -35,7 +35,7 @@ export const LineChartLargeData = (props: ILineChartProps) => {
   };
 
   const _getdata2 = () => {
-    const data: ILineChartDataPoint[] = [];
+    const data: LineChartDataPoint[] = [];
     const startdate = new Date('2020-03-01T00:00:00.000Z');
     for (let i = 1000; i < 9000; i++) {
       data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: _getY(i) });
@@ -58,7 +58,7 @@ export const LineChartLargeData = (props: ILineChartProps) => {
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   const margins = { left: 35, top: 20, bottom: 35, right: 20 };
 
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Line Chart',
     lineChartData: [
       {

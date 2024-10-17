@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { HorizontalBarChart, IChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charts-preview';
+import { HorizontalBarChart, ChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charts-preview';
 
 export const HorizontalBarBenchmark = () => {
   const hideRatio: boolean[] = [true, false];
-  const data: IChartProps[] = [
+  const data: ChartProps[] = [
     {
       chartTitle: 'one',
       chartData: [
