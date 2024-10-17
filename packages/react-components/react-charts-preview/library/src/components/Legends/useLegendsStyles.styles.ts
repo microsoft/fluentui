@@ -71,7 +71,7 @@ const useStyles = makeStyles({
   },
   resizableArea: {
     position: 'relative',
-    textAlign: 'center',
+    textAlign: 'left',
     transform: 'translate(-50%, 0)',
     top: 'auto',
     left: '50%',
