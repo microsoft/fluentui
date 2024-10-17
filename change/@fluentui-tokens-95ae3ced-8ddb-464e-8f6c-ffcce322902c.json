@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update colorNeutralForegroundInverted to be a white color.",
+  "packageName": "@fluentui/tokens",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}
