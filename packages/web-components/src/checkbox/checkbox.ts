@@ -1,6 +1,6 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
-import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
+import { CheckboxMode, CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
 /**
  * The base class for a component with a toggleable checked state.
@@ -25,7 +25,7 @@ export class BaseCheckbox extends FASTElement {
    * @public
    */
   public get checked(): boolean {
-    Observable.track(this, 'checked');
+    Observable.track(this, this.mode);
     return !!this._checked;
   }
 
@@ -33,9 +33,9 @@ export class BaseCheckbox extends FASTElement {
     this._checked = next;
     this.setFormValue(next ? this.value : null);
     this.setValidity();
-    this.setAriaChecked();
-    toggleState(this.elementInternals, 'checked', next);
-    Observable.notify(this, 'checked');
+    this.setAriaProperties();
+    toggleState(this.elementInternals, this.mode, next);
+    Observable.notify(this, this.mode);
   }
 
   /**
@@ -106,7 +106,7 @@ export class BaseCheckbox extends FASTElement {
    * @internal
    */
   protected initialCheckedChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    if (!this.dirtyChecked) {
+    if (!this.dirtyState) {
       this.checked = !!next;
     }
   }
@@ -178,7 +178,7 @@ export class BaseCheckbox extends FASTElement {
    *
    * @internal
    */
-  private dirtyChecked: boolean = false;
+  protected dirtyState: boolean = false;
 
   /**
    * The associated `<form>` element.
@@ -214,6 +214,13 @@ export class BaseCheckbox extends FASTElement {
   public get labels(): ReadonlyArray<HTMLLabelElement> {
     return Object.freeze(Array.from(this.elementInternals.labels) as HTMLLabelElement[]);
   }
+
+  /**
+   * The mode of the checkbox.
+   *
+   * @internal
+   */
+  protected mode: CheckboxMode = CheckboxMode.checked;
 
   /**
    * The fallback validation message, taken from a native checkbox `<input>` element.
@@ -318,13 +325,13 @@ export class BaseCheckbox extends FASTElement {
       return;
     }
 
-    this.dirtyChecked = true;
+    this.dirtyState = true;
 
-    const previousChecked = this.checked;
+    const previous = this.checked;
 
-    this.toggleChecked();
+    this.toggle();
 
-    if (previousChecked !== this.checked) {
+    if (previous !== this.checked) {
       this.$emit('change');
       this.$emit('input');
     }
@@ -335,7 +342,7 @@ export class BaseCheckbox extends FASTElement {
   connectedCallback() {
     super.connectedCallback();
 
-    this.setAriaChecked();
+    this.setAriaProperties();
     this.setValidity();
   }
 
@@ -385,7 +392,7 @@ export class BaseCheckbox extends FASTElement {
    */
   formResetCallback(): void {
     this.checked = this.initialChecked ?? false;
-    this.dirtyChecked = false;
+    this.dirtyState = false;
     this.setValidity();
   }
 
@@ -406,7 +413,7 @@ export class BaseCheckbox extends FASTElement {
    * @param value - The checked state
    * @internal
    */
-  protected setAriaChecked(value: boolean = this.checked) {
+  protected setAriaProperties(value: boolean = this.checked) {
     this.elementInternals.ariaChecked = value ? 'true' : 'false';
   }
 
@@ -460,7 +467,7 @@ export class BaseCheckbox extends FASTElement {
    * @param force - Forces the element to be checked or unchecked
    * @public
    */
-  public toggleChecked(force: boolean = !this.checked): void {
+  public toggle(force: boolean = !this.checked): void {
     this.checked = force;
   }
 }
@@ -493,7 +500,7 @@ export class Checkbox extends BaseCheckbox {
    * @internal
    */
   protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    this.setAriaChecked();
+    this.setAriaProperties();
     toggleState(this.elementInternals, 'indeterminate', next);
   }
 
@@ -560,13 +567,13 @@ export class Checkbox extends BaseCheckbox {
    * @internal
    * @override
    */
-  protected setAriaChecked(value: boolean = this.checked) {
+  protected setAriaProperties(value: boolean = this.checked) {
     if (this.indeterminate) {
       this.elementInternals.ariaChecked = 'mixed';
       return;
     }
 
-    super.setAriaChecked(value);
+    super.setAriaProperties(value);
   }
 
   /**
@@ -575,8 +582,10 @@ export class Checkbox extends BaseCheckbox {
    * @param force - Forces the element to be checked or unchecked
    * @public
    */
-  public toggleChecked(force: boolean = !this.checked): void {
-    this.indeterminate = false;
-    super.toggleChecked(force);
+  public toggle(force: boolean = !this.checked): void {
+    if (this.dirtyState) {
+      this.indeterminate = false;
+    }
+    super.toggle(force);
   }
 }
