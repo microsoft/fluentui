@@ -1,7 +1,7 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
 import { arc as d3Arc, pie as d3Pie } from 'd3';
 import { createTabster, getMover, getTabsterAttribute, MoverDirections } from 'tabster';
-import { jsonConverter } from '../utils/converters.js';
+import { getDataConverter } from '../utils/chart-helpers.js';
 import { IChartProps } from './donut-chart.options.js';
 
 const tabsterCore = createTabster(window);
@@ -20,7 +20,7 @@ export class DonutChart extends FASTElement {
   @attr({ attribute: 'hide-tooltip', mode: 'boolean' })
   public hideTooltip?: boolean;
 
-  @attr({ converter: jsonConverter })
+  @attr({ converter: getDataConverter('donut-chart') })
   public data!: IChartProps;
 
   @attr({ attribute: 'inner-radius', converter: nullableNumberConverter })

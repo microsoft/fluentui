@@ -10,11 +10,6 @@ export interface IChartDataPoint {
   data?: number;
 
   /**
-   * onClick action for each datapoint in the chart
-   */
-  onClick?: VoidFunction;
-
-  /**
    * Color for the legend in the chart. If not provided, it will fallback on the default color palette.
    */
   color?: string;
