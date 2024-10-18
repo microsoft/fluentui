@@ -1,13 +1,19 @@
-import { readFileSync } from 'node:fs';
 import { mkdir, writeFile } from 'node:fs/promises';
-import { basename, dirname, join } from 'node:path';
+import { dirname, join } from 'node:path';
 
 import { globSync } from 'fast-glob';
 import { isMatch } from 'micromatch';
-import { transform, type Config } from '@swc/core';
+import { transformFile, type Config } from '@swc/core';
 import { logger, readJsonFile } from '@nx/devkit';
 
 import { type NormalizedOptions } from './shared';
+
+// extend @swc/core types by missing apis
+declare module '@swc/core' {
+  interface BaseModuleConfig {
+    resolveFully?: boolean;
+  }
+}
 
 interface Options {
   module: 'es6' | 'commonjs' | 'amd';
@@ -35,15 +41,10 @@ export async function compileSwc(options: Options, normalizedOptions: Normalized
       continue;
     }
 
-    const sourceCode = readFileSync(srcFilePath, 'utf-8');
-
-    const result = await transform(sourceCode, {
-      filename: fileName,
-      sourceFileName: basename(fileName),
-      module: { type: module },
-      outputPath,
-      // this is crucial in order to transpile with project config SWC
-      configFile: swcConfigPath,
+    const result = await transformFile(srcFilePath, {
+      module: { type: module, resolveFully: Boolean(swcConfig.jsc?.baseUrl) },
+      // srcFilePath is absolute path so outputPath needs to be as well in order to properly emit relative path within .map (eg: `"sources":["../src/utils/createDarkTheme.ts"]`)
+      outputPath: join(normalizedOptions.absoluteProjectRoot, outputPath),
     });
 
     // Strip @jsx comments, see https://github.com/microsoft/fluentui/issues/29126
