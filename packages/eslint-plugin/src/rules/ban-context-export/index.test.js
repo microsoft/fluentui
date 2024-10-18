@@ -21,14 +21,14 @@ function getLanguageOptions(fixtureName) {
 ruleTester.run('ban-context-export', rule, {
   valid: [
     {
-      languageOptions: getParserOptions('internal-export'),
+      languageOptions: getLanguageOptions('internal-export'),
       code: `
           export { MyContext } from './context'
       `,
       filename: 'src/internal/index.ts',
     },
     {
-      languageOptions: getParserOptions('not-a-context'),
+      languageOptions: getLanguageOptions('not-a-context'),
       code: `
           export { MyContext } from './context'
       `,
@@ -36,7 +36,7 @@ ruleTester.run('ban-context-export', rule, {
     },
     {
       options: [{ exclude: ['**/special-path/**/*'] }],
-      languageOptions: getParserOptions('exclude'),
+      languageOptions: getLanguageOptions('exclude'),
       code: `
       import * as React from 'react';
       export const MyContext = React.createContext({});
@@ -47,7 +47,7 @@ ruleTester.run('ban-context-export', rule, {
   invalid: [
     {
       errors: [{ messageId: 'nativeContext' }],
-      languageOptions: getParserOptions('export-specifier'),
+      languageOptions: getLanguageOptions('export-specifier'),
       code: `
           export { MyContext } from './context'
       `,
@@ -55,7 +55,7 @@ ruleTester.run('ban-context-export', rule, {
     },
     {
       errors: [{ messageId: 'contextSelector' }],
-      languageOptions: getParserOptions('context-selector'),
+      languageOptions: getLanguageOptions('context-selector'),
       code: `
       export { MyContext } from './context'
       `,
@@ -63,7 +63,7 @@ ruleTester.run('ban-context-export', rule, {
     },
     {
       errors: [{ messageId: 'nativeContext' }],
-      languageOptions: getParserOptions('named-export'),
+      languageOptions: getLanguageOptions('named-export'),
       code: `
       import * as React from 'react';
       export const MyContext = React.createContext({});
@@ -72,7 +72,7 @@ ruleTester.run('ban-context-export', rule, {
     },
     {
       errors: [{ messageId: 'contextSelector' }],
-      languageOptions: getParserOptions('named-export'),
+      languageOptions: getLanguageOptions('named-export'),
       code: `
       import { createContext } from '@proj/react-context-selector';
       export const MyContext = createContext({});
@@ -82,7 +82,7 @@ ruleTester.run('ban-context-export', rule, {
     {
       errors: [{ messageId: 'nativeContext' }],
       options: [{ exclude: ['**/wrong-path/**/*'] }],
-      languageOptions: getParserOptions('exclude'),
+      languageOptions: getLanguageOptions('exclude'),
       code: `
       import * as React from 'react';
       export const MyContext = React.createContext({});
