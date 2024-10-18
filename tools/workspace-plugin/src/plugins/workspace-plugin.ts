@@ -29,10 +29,12 @@ interface WorkspacePluginOptions {}
 export const createNodesV2: CreateNodesV2<WorkspacePluginOptions> = [
   projectConfigGlob,
   async (configFiles, options, context) => {
+    const globalConfig: Pick<TaskBuilderConfig, 'pmc'> = { pmc: getPackageManagerCommand('yarn') };
+
     measureStart('workspace-plugin');
     const nodes = await createNodesFromFiles(
       (configFile, options, context) => {
-        return createNodesInternal(configFile, options ?? {}, context);
+        return createNodesInternal(configFile, options ?? {}, context, globalConfig);
       },
       configFiles,
       options,
@@ -56,6 +58,7 @@ function createNodesInternal(
   configFilePath: string,
   options: WorkspacePluginOptions,
   context: CreateNodesContextV2,
+  globalConfig: Pick<TaskBuilderConfig, 'pmc'>,
 ): CreateNodesResult {
   const projectRoot = dirname(configFilePath);
 
@@ -67,7 +70,7 @@ function createNodesInternal(
   }
 
   const normalizedOptions = normalizeOptions(options);
-  const config = { pmc: getPackageManagerCommand('yarn') };
+  const config = { ...globalConfig };
 
   const targetsConfig = buildWorkspaceTargets(projectRoot, normalizedOptions, context, config);
 
