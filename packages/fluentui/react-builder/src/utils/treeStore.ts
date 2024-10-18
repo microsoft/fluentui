@@ -37,7 +37,7 @@ export const readTreeFromURL = (url: string): JSONTreeElement | null => {
   }
   try {
     return treeParse(treeString);
-  } catch (e) {
+  } catch {
     // TODO: client should know it failed
     return null;
   }

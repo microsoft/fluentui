@@ -79,7 +79,7 @@ export const useContextSelectors = <
         }
 
         return [payload[1], nextSelected] as const;
-      } catch (e) {
+      } catch {
         // ignored (stale props or some other reason)
       }
       return [...prevState] as const; // schedule update
