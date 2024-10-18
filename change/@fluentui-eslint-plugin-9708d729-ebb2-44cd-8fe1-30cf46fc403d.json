@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "update minimal typescript version to 4.8.4",
+  "comment": "fix: bump minimal typescript version to 4.8.4",
   "packageName": "@fluentui/eslint-plugin",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"
