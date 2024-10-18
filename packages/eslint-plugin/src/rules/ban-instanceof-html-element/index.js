@@ -4,18 +4,15 @@ const createRule = require('../../utils/createRule');
 
 /**
  * @typedef {import('./types').HTMLElementConstructorName} HTMLElementConstructorName
- * @typedef { import('@typescript-eslint/utils').TSESLint.RuleMetaDataDocs} RuleMetaDataDocs
- * @typedef { import('@typescript-eslint/utils').TSESLint.RuleRecommendation} RuleRecommendation
  */
 
 module.exports = createRule({
   name: 'ban-instanceof-html-element',
   meta: {
     type: 'problem',
-    docs: /** @type {RuleMetaDataDocs & { recommended: RuleRecommendation }} */ ({
+    docs: {
       description: 'Ban usage of instanceof HTMLElement comparison',
-      recommended: 'recommended',
-    }),
+    },
     messages: {
       invalidBinaryExpression: 'instanceof {{right}} should be avoided, use isHTMLElement instead.',
     },

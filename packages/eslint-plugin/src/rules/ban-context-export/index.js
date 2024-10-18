@@ -7,8 +7,6 @@ const { getTypeServices } = require('../../utils/type-services');
 
 /** @typedef { import('@typescript-eslint/utils').TSESTree.VariableDeclarator } VariableDeclarator*/
 /** @typedef { import('@typescript-eslint/utils').TSESTree.ExportSpecifier} ExportSpecifier */
-/** @typedef { import('@typescript-eslint/utils').TSESLint.RuleMetaDataDocs} RuleMetaDataDocs*/
-/** @typedef { import('@typescript-eslint/utils').TSESLint.RuleRecommendation} RuleRecommendation */
 /**
  * @typedef {{
  *  exclude?: string[];
@@ -35,10 +33,9 @@ module.exports = createRule({
       },
     ],
     type: 'problem',
-    docs: /** @type {RuleMetaDataDocs & { recommended: RuleRecommendation }} */ ({
+    docs: {
       description: 'Ban export of React context or context selector objects',
-      recommended: 'recommended',
-    }),
+    },
     messages: {
       nativeContext: '{{exportName}} should not be exported directly',
       contextSelector: '{{exportName}} should not be exported directly',

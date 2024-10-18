@@ -2,19 +2,13 @@
 const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
 const createRule = require('../utils/createRule');
 
-/**
- * @typedef { import('@typescript-eslint/utils').TSESLint.RuleMetaDataDocs} RuleMetaDataDocs
- * @typedef { import('@typescript-eslint/utils').TSESLint.RuleRecommendation} RuleRecommendation
- */
-
 module.exports = createRule({
   name: 'no-global-react',
   meta: {
     type: 'problem',
-    docs: /** @type {RuleMetaDataDocs & { recommended: RuleRecommendation }} */ ({
+    docs: {
       description: 'Prevent accidental references to the global React namespace',
-      recommended: 'recommended',
-    }),
+    },
     messages: {
       missingImport: 'You must explicitly import React to reference it',
     },
