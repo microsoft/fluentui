@@ -37,7 +37,8 @@ export const PopoverComponent: React.FunctionComponent<PopoverComponentProps> = 
       <Popover
         positioning={{ target: virtualElement, autoSize: 'always', offset: 20, coverTarget: false }}
         open={props.isPopoverOpen}
-        inline
+        inline={props.inline !== undefined ? props.inline : true}
+        withArrow={props.withArrow !== undefined ? props.withArrow : false}
       >
         <PopoverSurface>
           {/** Given custom callout, then it will render */}

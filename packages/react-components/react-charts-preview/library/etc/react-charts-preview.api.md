@@ -698,6 +698,8 @@ export interface PopoverComponentProps {
     // (undocumented)
     hoverXValue?: string | number;
     // (undocumented)
+    inline?: boolean;
+    // (undocumented)
     isCalloutForStack?: boolean;
     // (undocumented)
     isCartesian?: boolean;
@@ -707,6 +709,8 @@ export interface PopoverComponentProps {
     legend?: string | number | Date;
     // (undocumented)
     ratio?: [number, number];
+    // (undocumented)
+    withArrow?: boolean;
     // (undocumented)
     xAxisCalloutAccessibilityData?: {
         ariaLabel?: string;
