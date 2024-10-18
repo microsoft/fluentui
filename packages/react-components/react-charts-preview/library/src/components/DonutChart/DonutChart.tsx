@@ -9,7 +9,7 @@ import { getColorFromToken, getNextColor } from '../../utilities/index';
 import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
-import PopoverComponent from '../CommonComponents/Popover';
+import { PopoverComponent } from '../CommonComponents/Popover';
 import { ResponsiveContainer } from '../CommonComponents/ResponsiveContainer';
 
 const MIN_LEGEND_CONTAINER_HEIGHT = 40;

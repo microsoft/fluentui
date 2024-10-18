@@ -67,11 +67,11 @@ const useStyles = makeStyles({
         forcedColorAdjust: 'none',
       },
     },
-    paddingLeft: '8px',
+    paddingLeft: tokens.spacingHorizontalS,
   },
   calloutBlockContainertoDrawShapetrue: { display: 'inline-grid' },
   shapeStyles: {
-    marginRight: '8px',
+    marginRight: tokens.spacingHorizontalS,
   },
   calloutLegendText: {
     ...typographyStyles.caption1,
@@ -98,13 +98,13 @@ const useStyles = makeStyles({
   descriptionMessage: {
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
-    marginTop: '10px',
-    paddingTop: '10px',
+    marginTop: tokens.spacingVerticalMNudge,
+    paddingTop: tokens.spacingVerticalMNudge,
     ...shorthands.borderTop(`1px solid ${tokens.colorNeutralStroke2}`),
   },
   ratio: {
     ...typographyStyles.caption2,
-    marginLeft: '6px',
+    marginLeft: tokens.spacingHorizontalSNudge,
     color: tokens.colorNeutralForeground1,
   },
   numerator: {
@@ -114,7 +114,7 @@ const useStyles = makeStyles({
     ...typographyStyles.caption2Strong,
   },
   calloutInfoContainer: {
-    paddingLeft: '8px',
+    paddingLeft: tokens.spacingHorizontalS,
   },
 });
 /**

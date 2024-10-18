@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     justifyContent: 'left',
     cursor: 'pointer',
     ...shorthands.border('none'),
-    ...shorthands.padding('8px'),
+    ...shorthands.padding(tokens.spacingHorizontalS),
     textTransform: 'capitalize',
   },
   rect: {
@@ -43,10 +43,10 @@ const useStyles = makeStyles({
     // },
     width: '12px',
     border: '1px solid',
-    marginRight: '8px',
+    marginRight: tokens.spacingHorizontalS,
   },
   shape: {
-    marginRight: '8px',
+    marginRight: tokens.spacingHorizontalS,
   },
   // TO DO Add props when these styles are used in the component
   triangle: {
@@ -55,7 +55,7 @@ const useStyles = makeStyles({
     ...shorthands.borderLeft('6px solid transparent'),
     ...shorthands.borderRight('6px solid transparent'),
     ...shorthands.borderTop('10.4px solid'),
-    marginRight: '8px',
+    marginRight: tokens.spacingHorizontalS,
   },
   // TO DO Add props when these styles are used in the component
   text: {
@@ -66,7 +66,7 @@ const useStyles = makeStyles({
   hoverChange: {
     width: '12px',
     height: '12px',
-    marginRight: '8px',
+    marginRight: tokens.spacingHorizontalS,
     ...shorthands.border('1px solid'),
   },
   resizableArea: {

@@ -114,8 +114,8 @@ const useStyles = makeStyles({
     cursor: 'default', //supports custom cursor ??
   },
   legendContainer: {
-    marginTop: '8px',
-    marginLeft: '20px',
+    marginTop: tokens.spacingVerticalS,
+    marginLeft: tokens.spacingHorizontalXL,
   },
   calloutContentRoot: {
     display: 'grid',
@@ -146,13 +146,13 @@ const useStyles = makeStyles({
       },
     },
     ...shorthands.borderLeft('4px solid'),
-    paddingLeft: '8px',
+    paddingLeft: tokens.spacingHorizontalS,
   },
   calloutBlockContainertoDrawShapetrue: {
     display: 'flex',
   },
   shapeStyles: {
-    marginRight: '8px',
+    marginRight: tokens.spacingHorizontalS,
   },
   calloutLegendText: {
     ...typographyStyles.caption1,
@@ -174,8 +174,8 @@ const useStyles = makeStyles({
   descriptionMessage: {
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
-    marginTop: '10px',
-    paddingTop: '10px',
+    marginTop: tokens.spacingVerticalMNudge,
+    paddingTop: tokens.spacingVerticalMNudge,
     ...shorthands.borderTop(`1px solid ${tokens.colorNeutralStroke2}`),
   },
 });

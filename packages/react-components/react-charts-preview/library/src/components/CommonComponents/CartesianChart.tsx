@@ -23,7 +23,7 @@ import {
   useRtl,
 } from '../../utilities/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
-import PopoverComponent from './Popover';
+import { PopoverComponent } from './Popover';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ResponsiveContainer } from './ResponsiveContainer';
 

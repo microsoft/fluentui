@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-components';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HorizontalBarChartProps, HorizontalBarChartStyles, HorizontalBarChartVariant } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -31,10 +31,10 @@ const useStyles = makeStyles({
     width: '100%', // Support custom width
   },
   items10pMargin: {
-    marginBottom: '10px',
+    marginBottom: tokens.spacingVerticalMNudge,
   },
   items16pMargin: {
-    marginBottom: '16px',
+    marginBottom: tokens.spacingVerticalL,
   },
   chart: {
     width: '100%',
@@ -82,7 +82,7 @@ const useStyles = makeStyles({
     ...shorthands.borderRight('4px', 'solid', 'transparent'),
     ...shorthands.borderTop('7px', 'solid'),
     borderTopColor: tokens.colorPaletteBlueBorderActive,
-    marginBottom: '4px',
+    marginBottom: tokens.spacingVerticalXS,
     position: 'absolute',
   },
   barLabel: {
@@ -93,7 +93,7 @@ const useStyles = makeStyles({
     paddingRight: '40p',
   },
   chartWrapper0ppadding: {
-    paddingRight: 0,
+    paddingRight: tokens.spacingHorizontalNone,
   },
 });
 

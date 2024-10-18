@@ -37,12 +37,12 @@ const useStyles = makeStyles({
   tooltip: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.padding('8px'),
+    ...shorthands.padding(tokens.spacingHorizontalS),
     position: 'absolute',
     textAlign: 'center',
-    top: '0px',
+    top: tokens.spacingVerticalNone,
     fill: tokens.colorNeutralBackground1,
-    borderRadius: '2px',
+    borderRadius: tokens.borderRadiusSmall,
     pointerEvents: 'none',
   },
 });

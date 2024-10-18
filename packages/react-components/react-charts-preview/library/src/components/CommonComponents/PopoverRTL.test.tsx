@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PopoverComponent from './Popover';
+import { PopoverComponent } from './Popover';
 import { getByClass, getById } from '../../utilities/TestUtility.test';
 import { act, getByText, render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';

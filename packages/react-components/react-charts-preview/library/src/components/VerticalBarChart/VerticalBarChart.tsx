@@ -22,6 +22,7 @@ import {
   Legends,
   ChildProps,
   YValueHover,
+  PopoverComponent,
 } from '../../index';
 import {
   ChartTypes,
@@ -38,7 +39,6 @@ import {
   calculateAppropriateBarWidth,
   useRtl,
 } from '../../utilities/index';
-import Popover from '../CommonComponents/Popover';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -265,7 +265,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const content: JSX.Element[] = YValueHover.map((item: YValueHover, index: number) => {
       return (
         <>
-          <Popover
+          <PopoverComponent
             culture={props.culture ?? 'en-us'}
             clickPosition={clickPosition}
             isPopoverOpen={isPopoverOpen}
@@ -284,7 +284,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   function _renderContentForOnlyBars(_props: VerticalBarChartDataPoint): JSX.Element {
     return (
       <>
-        <Popover
+        <PopoverComponent
           XValue={_props.xAxisCalloutData || (_props.x as string)}
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}

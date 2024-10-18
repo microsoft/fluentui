@@ -6,7 +6,7 @@ import { formatValueWithSIPrefix, getAccessibleDataObject, useRtl } from '../../
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useFocusableGroup } from '@fluentui/react-tabster';
-import PopoverComponent from '../CommonComponents/Popover';
+import { PopoverComponent } from '../CommonComponents/Popover';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 /**

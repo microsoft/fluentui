@@ -12,7 +12,7 @@ import { YValueHover } from './CartesianChart.types';
 import { LegendShape } from '../Legends/Legends.types';
 import { PopoverComponentProps } from './Popover.types';
 
-const PopoverComponent: React.FunctionComponent<PopoverComponentProps> = React.forwardRef<
+export const PopoverComponent: React.FunctionComponent<PopoverComponentProps> = React.forwardRef<
   HTMLDivElement,
   PopoverComponentProps
 >((props, forwardedRef) => {
@@ -243,5 +243,4 @@ const PopoverComponent: React.FunctionComponent<PopoverComponentProps> = React.f
     }
   }
 });
-
-export default PopoverComponent;
+PopoverComponent.displayName = 'PopoverComponent';

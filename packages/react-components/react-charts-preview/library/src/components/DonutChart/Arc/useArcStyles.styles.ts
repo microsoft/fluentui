@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   },
   focusRing: {
     stroke: tokens.colorStrokeFocus2,
-    strokeWidth: '4px',
+    strokeWidth: tokens.strokeWidthThickest,
     fill: 'transparent',
   },
   arcLabel: {

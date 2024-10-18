@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { typographyStyles } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { DonutChartProps, DonutChartStyles } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     display: 'block',
     overflow: 'visible',
   },
-  legendContainer: { paddingTop: '16px' },
+  legendContainer: { paddingTop: tokens.spacingVerticalL },
 });
 
 /**
