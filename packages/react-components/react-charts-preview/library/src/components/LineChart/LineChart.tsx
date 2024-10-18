@@ -1,24 +1,24 @@
 import * as React from 'react';
-import { ILineChartProps } from './LineChart.types';
+import { LineChartProps } from './LineChart.types';
 import { useLineChartStyles_unstable } from './useLineChartStyles.styles';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
-import { ILegend, Legends } from '../Legends/index';
+import { Legend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
 import { useId } from '@fluentui/react-utilities';
 import { find } from '../../utilities/index';
 import {
-  IAccessibilityProps,
+  AccessibilityProps,
   CartesianChart,
-  IChildProps,
-  ILineChartPoints,
-  ICustomizedCalloutData,
-  IMargins,
-  IRefArrayData,
-  IColorFillBarsProps,
-  ILineChartGap,
-  ILineChartDataPoint,
+  ChildProps,
+  LineChartPoints,
+  CustomizedCalloutData,
+  Margins,
+  RefArrayData,
+  ColorFillBarsProps,
+  LineChartGap,
+  LineChartDataPoint,
 } from '../../index';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { tokens } from '@fluentui/react-theme';
@@ -34,7 +34,7 @@ import {
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
-  isRtl,
+  useRtl,
   formatDate,
 } from '../../utilities/index';
 
@@ -115,14 +115,14 @@ const _getPointPath = (x: number, y: number, w: number, index: number): string =
   return allPointPaths[index];
 };
 
-type LineChartDataWithIndex = ILineChartPoints & { index: number };
+type LineChartDataWithIndex = LineChartPoints & { index: number };
 
 // Create a LineChart variant which uses these default styles and this styled subcomponent.
 /**
  * Linechart component
  * {@docCategory LineChart}
  */
-export const LineChart: React.FunctionComponent<ILineChartProps> = React.forwardRef<HTMLDivElement, ILineChartProps>(
+export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardRef<HTMLDivElement, LineChartProps>(
   (props, forwardedRef) => {
     let _points: LineChartDataWithIndex[] = _injectIndexPropertyInLineChartData(props.data.lineChartData);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -137,20 +137,20 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     let _verticalLine: string = useId('verticalLine');
     let _colorFillBarPatternId: string = useId('colorFillBarPattern');
     let _uniqueCallOutID: string | null = '';
-    let _refArray: IRefArrayData[] = [];
-    let margins: IMargins;
+    let _refArray: RefArrayData[] = [];
+    let margins: Margins;
     let eventLabelHeight: number = 36;
     let lines: JSX.Element[];
     let _renderedColorFillBars: JSX.Element[];
-    const _colorFillBars = React.useRef<IColorFillBarsProps[]>([]);
+    const _colorFillBars = React.useRef<ColorFillBarsProps[]>([]);
     let _tooltipId: string = useId('LineChartTooltipId_');
     let _rectId: string = useId('containerRectLD');
     let _staticHighlightCircle: string = useId('staticHighlightCircle');
     let _firstRenderOptimization = true;
     let _emptyChartId: string = useId('_LineChart_empty');
     const _colorFillBarId = useId('_colorFillBarId');
-    const _isRTL: boolean = isRtl();
-    let xAxisCalloutAccessibilityData: IAccessibilityProps = {};
+    const _isRTL: boolean = useRtl();
+    let xAxisCalloutAccessibilityData: AccessibilityProps = {};
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -164,9 +164,9 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     const [selectedColorBarLegend, setSelectedColorBarLegend] = React.useState<any[]>([]);
     const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(false);
     const [activePoint, setActivePoint] = React.useState<string>('');
-    const [nearestCircleToHighlight, setNearestCircleToHighlight] = React.useState<ILineChartDataPoint | null>(null);
-    const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<ICustomizedCalloutData>();
-    const [stackCalloutProps, setStackCalloutProps] = React.useState<ICustomizedCalloutData>();
+    const [nearestCircleToHighlight, setNearestCircleToHighlight] = React.useState<LineChartDataPoint | null>(null);
+    const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<CustomizedCalloutData>();
+    const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
 
@@ -183,10 +183,10 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       }
     }, [props.height, props.width, props.data]);
 
-    function _injectIndexPropertyInLineChartData(lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] {
+    function _injectIndexPropertyInLineChartData(lineChartData?: LineChartPoints[]): LineChartDataWithIndex[] | [] {
       const { allowMultipleShapesForPoints = false } = props;
       return lineChartData
-        ? lineChartData.map((item: ILineChartPoints, index: number) => {
+        ? lineChartData.map((item: LineChartPoints, index: number) => {
             let color: string;
             if (typeof item.color === 'undefined') {
               color = getNextColor(index, 0);
@@ -222,7 +222,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         : null;
     }
 
-    function _getMargins(_margins: IMargins) {
+    function _getMargins(_margins: Margins) {
       margins = _margins;
     }
 
@@ -239,7 +239,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       lines = _createLines(xElement!, containerHeight!);
     }
 
-    function _handleSingleLegendSelectionAction(lineChartItem: LineChartDataWithIndex | IColorFillBarsProps) {
+    function _handleSingleLegendSelectionAction(lineChartItem: LineChartDataWithIndex | ColorFillBarsProps) {
       if (selectedLegend === lineChartItem.legend) {
         setSelectedLegend('');
         _handleLegendClick(lineChartItem, null);
@@ -256,7 +256,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     }
 
     function _handleLegendClick(
-      lineChartItem: LineChartDataWithIndex | IColorFillBarsProps,
+      lineChartItem: LineChartDataWithIndex | ColorFillBarsProps,
       selectedLegend: string | null | string[],
     ): void {
       if (lineChartItem.onLegendClick) {
@@ -270,7 +270,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       const legendDataItems = data.map((point: LineChartDataWithIndex) => {
         const color: string = point.color!;
         // mapping data to the format Legends component needs
-        const legend: ILegend = {
+        const legend: Legend = {
           title: point.legend!,
           color,
           action: () => {
@@ -291,17 +291,17 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
             shape: point.legendShape,
           }),
           ...(allowMultipleShapesForPoints && {
-            shape: Points[point.index % Object.keys(pointTypes).length] as ILegend['shape'],
+            shape: Points[point.index % Object.keys(pointTypes).length] as Legend['shape'],
           }),
         };
         return legend;
       });
 
       const colorFillBarsLegendDataItems = props.colorFillBars
-        ? props.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
+        ? props.colorFillBars.map((colorFillBar: ColorFillBarsProps, index: number) => {
             const title = colorFillBar.legend;
             const color = getColorFromToken(colorFillBar.color);
-            const legend: ILegend = {
+            const legend: Legend = {
               title,
               color,
               action: () => {
@@ -901,7 +901,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       );
     }
 
-    function _checkInGap(pointIndex: number, gaps: ILineChartGap[], currentGapIndex: number) {
+    function _checkInGap(pointIndex: number, gaps: LineChartGap[], currentGapIndex: number) {
       let gapIndex = currentGapIndex;
       let isInGap = false;
 
@@ -931,8 +931,8 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       // This will get the value of the X when mouse is on the chart
       const xOffset = _xAxisScale.invert(pointer(mouseEvent)[0], document.getElementById(_rectId)!);
       const i = bisect(lineChartData![linenumber].data, xOffset);
-      const d0 = lineChartData![linenumber].data[i - 1] as ILineChartDataPoint;
-      const d1 = lineChartData![linenumber].data[i] as ILineChartDataPoint;
+      const d0 = lineChartData![linenumber].data[i - 1] as LineChartDataPoint;
+      const d1 = lineChartData![linenumber].data[i] as LineChartDataPoint;
       let axisType: XAxisTypes | null = null;
       let xPointToHighlight: string | Date | number = 0;
       let index: null | number = null;
@@ -975,7 +975,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       const found: any = find(_calloutPoints, (element: { x: string | number }) => {
         return element.x === modifiedXVal;
       });
-      const pointToHighlight: ILineChartDataPoint = lineChartData![linenumber].data[index!];
+      const pointToHighlight: LineChartDataPoint = lineChartData![linenumber].data[index!];
       const pointToHighlightUpdated =
         nearestCircleToHighlight === null ||
         (nearestCircleToHighlight !== null &&
@@ -1017,7 +1017,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
 
       xAxisCalloutData: string | undefined,
       circleId: string,
-      xAxisCalloutAccessibilityData?: IAccessibilityProps,
+      xAxisCalloutAccessibilityData?: AccessibilityProps,
     ) {
       _uniqueCallOutID = circleId;
       const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
@@ -1029,7 +1029,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         d3Select(`#${_verticalLine}`)
           .attr('transform', () => `translate(${_xAxisScale(x)}, 0)`)
           .attr('visibility', 'visibility');
-        _refArray.forEach((obj: IRefArrayData) => {
+        _refArray.forEach((obj: RefArrayData) => {
           if (obj.index === lineId) {
             setPopoverOpen(true);
             xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
@@ -1050,7 +1050,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       lineHeight: number,
       xAxisCalloutData: string | undefined,
       circleId: string,
-      xAxisCalloutAccessibilityData: IAccessibilityProps | undefined,
+      xAxisCalloutAccessibilityData: AccessibilityProps | undefined,
       mouseEvent: React.MouseEvent<SVGElement>,
     ) {
       mouseEvent?.persist();
@@ -1147,7 +1147,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       _handleLegendClick(selectedLine, selectedLegendTitlesToPass);
     }
 
-    function _handleMultipleColorFillBarLegendSelectionAction(selectedColorFillBar: IColorFillBarsProps) {
+    function _handleMultipleColorFillBarLegendSelectionAction(selectedColorFillBar: ColorFillBarsProps) {
       const selectedColorFillBarIndex = selectedColorBarLegend.reduce((acc, colorFillBar, index) => {
         if (acc > -1 || colorFillBar.legend !== selectedColorFillBar.legend) {
           return acc;
@@ -1156,7 +1156,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         }
       }, -1);
 
-      let selectedColorFillBars: IColorFillBarsProps[];
+      let selectedColorFillBars: ColorFillBarsProps[];
       if (selectedColorFillBarIndex === -1) {
         selectedColorFillBars = [...selectedColorBarLegend, selectedColorFillBar];
       } else {
@@ -1185,7 +1185,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       }
 
       const selectedLegendTitlesToPass = selectedColorFillBars.map(
-        (colorFillBar: IColorFillBarsProps) => colorFillBar.legend,
+        (colorFillBar: ColorFillBarsProps) => colorFillBar.legend,
       );
       _handleLegendClick(selectedColorFillBar, selectedLegendTitlesToPass);
     }
@@ -1213,7 +1213,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       return selectedLegend === '' && activeLegend === '';
     }
 
-    function _getColorFillBarOpacity(colorFillBar: IColorFillBarsProps) {
+    function _getColorFillBarOpacity(colorFillBar: ColorFillBarsProps) {
       return colorFillBar.applyPattern ? 1 : 0.4;
     }
 
@@ -1232,7 +1232,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         props.data &&
         props.data.lineChartData &&
         props.data.lineChartData.length > 0 &&
-        props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
+        props.data.lineChartData.filter((item: LineChartPoints) => item.data.length).length > 0
       );
     }
 
@@ -1294,7 +1294,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
-        children={(props: IChildProps) => {
+        children={(props: ChildProps) => {
           _xAxisScale = props.xScale!;
           _yAxisScale = props.yScale!;
           return (

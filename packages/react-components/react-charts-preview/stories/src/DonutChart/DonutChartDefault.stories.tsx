@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DonutChart, IChartProps, getColorFromToken, DataVizPalette } from '@fluentui/react-charts-preview';
+import { DonutChart, ChartProps, getColorFromToken, DataVizPalette } from '@fluentui/react-charts-preview';
 
 export const DonutChartBasic = () => {
   const points = [
@@ -12,7 +12,7 @@ export const DonutChartBasic = () => {
     },
   ];
 
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Donut chart basic example',
     chartData: points,
   };

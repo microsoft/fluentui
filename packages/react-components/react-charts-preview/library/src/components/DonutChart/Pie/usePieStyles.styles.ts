@@ -1,4 +1,4 @@
-import { IPieProps, IPieStyles } from './Pie.types';
+import { PieProps, PieStyles } from './Pie.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HighContrastSelectorBlack } from '../../../utilities/index';
 
@@ -8,7 +8,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 /**
  * @internal
  */
-export const donutPieClassNames: SlotClassNames<IPieStyles> = {
+export const donutPieClassNames: SlotClassNames<PieStyles> = {
   root: 'fui-donut-pie__root',
   insideDonutString: 'fui-donut-pie__insideDonutString',
 };
@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Pie inside donut chart component
  */
-export const usePieStyles_unstable = (props: IPieProps): IPieStyles => {
+export const usePieStyles_unstable = (props: PieProps): PieStyles => {
   const { className } = props;
 
   const baseStyles = useStyles();

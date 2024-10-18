@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
-import { IChartProps, Sparkline } from '@fluentui/react-charts-preview';
+import { ChartProps, Sparkline } from '@fluentui/react-charts-preview';
 
 export default {
   title: 'Charts/SparkLineChart',
@@ -17,7 +17,7 @@ export default {
 } satisfies Meta<typeof Sparkline>;
 
 export const Basic = () => {
-  const sl1: IChartProps = {
+  const sl1: ChartProps = {
     chartTitle: '10.21',
     lineChartData: [
       {
@@ -60,7 +60,7 @@ export const Basic = () => {
       },
     ],
   };
-  const sl2: IChartProps = {
+  const sl2: ChartProps = {
     chartTitle: '49.44',
     lineChartData: [
       {
@@ -95,7 +95,7 @@ export const Basic = () => {
       },
     ],
   };
-  const sl3: IChartProps = {
+  const sl3: ChartProps = {
     chartTitle: '49.44',
     lineChartData: [
       {
@@ -130,7 +130,7 @@ export const Basic = () => {
       },
     ],
   };
-  const sl4: IChartProps = {
+  const sl4: ChartProps = {
     chartTitle: '49.44',
     lineChartData: [
       {
@@ -165,7 +165,7 @@ export const Basic = () => {
       },
     ],
   };
-  const sl5: IChartProps = {
+  const sl5: ChartProps = {
     chartTitle: '49.44',
     lineChartData: [
       {
@@ -200,7 +200,7 @@ export const Basic = () => {
       },
     ],
   };
-  const sl6: IChartProps = {
+  const sl6: ChartProps = {
     chartTitle: '49.44',
     lineChartData: [
       {
@@ -235,7 +235,7 @@ export const Basic = () => {
       },
     ],
   };
-  const sl7: IChartProps = {
+  const sl7: ChartProps = {
     chartTitle: '49.44',
     lineChartData: [
       {
@@ -270,7 +270,7 @@ export const Basic = () => {
       },
     ],
   };
-  const sl8: IChartProps = {
+  const sl8: ChartProps = {
     chartTitle: '541.44',
     lineChartData: [
       {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartDataPoint, ILineChartLineOptions } from '@fluentui/react-charts-preview';
+import { VerticalBarChart, VerticalBarChartDataPoint, LineChartLineOptions } from '@fluentui/react-charts-preview';
 import {
   Switch,
   Checkbox,
@@ -40,7 +40,7 @@ export const VerticalBarDefault = () => {
   const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
-  const points: IVerticalBarChartDataPoint[] = [
+  const points: VerticalBarChartDataPoint[] = [
     {
       x: 0,
       y: 10000,
@@ -135,7 +135,7 @@ export const VerticalBarDefault = () => {
       },
     },
   ];
-  const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+  const lineOptions: LineChartLineOptions = { lineBorderWidth: '2' };
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   return (
     <>
@@ -203,8 +203,8 @@ export const VerticalBarDefault = () => {
             lineOptions={lineOptions}
             /*             {...(isCalloutselected && {
               onRenderCalloutPerDataPoint: (
-                props: IVerticalBarChartDataPoint,
-                defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
+                props: VerticalBarChartDataPoint,
+                defaultRender: IRenderFunction<VerticalBarChartDataPoint>,
               ) => (props ? defaultRender(props) : null),
             })} */
             yAxisTitle={
@@ -236,8 +236,8 @@ export const VerticalBarDefault = () => {
             lineOptions={lineOptions}
             /* {...(isCalloutselected && {
               onRenderCalloutPerDataPoint: (
-                props: IVerticalBarChartDataPoint,
-                defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
+                props: VerticalBarChartDataPoint,
+                defaultRender: IRenderFunction<VerticalBarChartDataPoint>,
               ) => (props ? defaultRender(props) : null),
             })} */
             yAxisTitle={

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
+import { VerticalBarChart, VerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
 
 export const VerticalBarRotateLabels = () => {
-  const points: IVerticalBarChartDataPoint[] = [
+  const points: VerticalBarChartDataPoint[] = [
     {
       x: 'This is a medium long label. ',
       y: 3500,

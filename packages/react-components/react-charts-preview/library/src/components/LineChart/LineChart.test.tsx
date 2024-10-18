@@ -1,13 +1,13 @@
 jest.mock('react-dom');
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import { ILineChartPoints, ILineChartProps, LineChart } from './index';
-import { ICustomizedCalloutData } from '../../index';
+import { LineChartPoints, LineChartProps, LineChart } from './index';
+import { CustomizedCalloutData } from '../../index';
 import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
 
 // Wrapper of the LineChart to be tested.
-let wrapper: ReactWrapper<ILineChartProps> | undefined;
+let wrapper: ReactWrapper<LineChartProps> | undefined;
 const originalRAF = window.requestAnimationFrame;
 
 function sharedAfterEach() {
@@ -26,7 +26,7 @@ function sharedAfterEach() {
   window.requestAnimationFrame = originalRAF;
 }
 
-const points: ILineChartPoints[] = [
+const points: LineChartPoints[] = [
   {
     legend: 'metaData1',
     data: [
@@ -284,7 +284,7 @@ describe('LineChart - mouse events', () => {
       wrapper = mount(
         <LineChart
           data={chartPoints}
-          onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
+          onRenderCalloutPerDataPoint={(props: CustomizedCalloutData) =>
             props ? (
               <div>
                 <pre>{JSON.stringify(props, null, 2)}</pre>
@@ -306,7 +306,7 @@ describe('LineChart - mouse events', () => {
       wrapper = mount(
         <LineChart
           data={chartPoints}
-          onRenderCalloutPerStack={(props: ICustomizedCalloutData) =>
+          onRenderCalloutPerStack={(props: CustomizedCalloutData) =>
             props ? (
               <div>
                 <pre>{JSON.stringify(props, null, 2)}</pre>

@@ -1,15 +1,15 @@
 jest.mock('react-dom');
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { ISparklineProps, Sparkline } from './index';
-import { IChartProps } from '../../index';
+import { SparklineProps, Sparkline } from './index';
+import { ChartProps } from '../../index';
 import { mount, ReactWrapper } from 'enzyme';
 //import { ISparklineState, SparklineBase } from './Sparkline.base';
 
 // Wrapper of the SparklineChart to be tested.
-let wrapper: ReactWrapper<ISparklineProps> | undefined;
+let wrapper: ReactWrapper<SparklineProps> | undefined;
 
-export const sparkline1Points: IChartProps = {
+export const sparkline1Points: ChartProps = {
   chartTitle: '10.21',
   lineChartData: [
     {
@@ -53,7 +53,7 @@ export const sparkline1Points: IChartProps = {
   ],
 };
 
-const sparkline2Points: IChartProps = {
+const sparkline2Points: ChartProps = {
   chartTitle: '49.44',
   lineChartData: [
     {
@@ -89,7 +89,7 @@ const sparkline2Points: IChartProps = {
   ],
 };
 
-export const emptySparklinePoints: IChartProps = {
+export const emptySparklinePoints: ChartProps = {
   chartTitle: 'Empty sparkline chart',
   lineChartData: [
     {

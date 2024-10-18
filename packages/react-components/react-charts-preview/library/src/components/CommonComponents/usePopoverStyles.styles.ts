@@ -2,12 +2,12 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { HighContrastSelectorBlack, HighContrastSelector } from '../../utilities/index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { IPopoverComponentProps, IPopoverComponentStyles } from './Popover.types';
+import { PopoverComponentProps, PopoverComponentStyles } from './Popover.types';
 
 /**
  * @internal
  */
-export const popoverClassNames: SlotClassNames<IPopoverComponentStyles> = {
+export const popoverClassNames: SlotClassNames<PopoverComponentStyles> = {
   calloutContentRoot: 'fui-cart__calloutContentRoot',
   calloutDateTimeContainer: 'fui-cart__calloutDateTimeContainer',
   calloutContentX: 'fui-cart__calloutContentX',
@@ -30,7 +30,7 @@ export const popoverClassNames: SlotClassNames<IPopoverComponentStyles> = {
 const useStyles = makeStyles({
   calloutContentRoot: {
     display: 'contents',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
     ...shorthands.padding('11px 16px 10px 16px'),
     backgroundColor: tokens.colorNeutralBackground1,
     backgroundBlendMode: 'normal, luminosity',
@@ -67,11 +67,11 @@ const useStyles = makeStyles({
         forcedColorAdjust: 'none',
       },
     },
-    paddingLeft: '8px',
+    paddingLeft: tokens.spacingHorizontalS,
   },
   calloutBlockContainertoDrawShapetrue: { display: 'inline-grid' },
   shapeStyles: {
-    marginRight: '8px',
+    marginRight: tokens.spacingHorizontalS,
   },
   calloutLegendText: {
     ...typographyStyles.caption1,
@@ -98,13 +98,13 @@ const useStyles = makeStyles({
   descriptionMessage: {
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
-    marginTop: '10px',
-    paddingTop: '10px',
+    marginTop: tokens.spacingVerticalMNudge,
+    paddingTop: tokens.spacingVerticalMNudge,
     ...shorthands.borderTop(`1px solid ${tokens.colorNeutralStroke2}`),
   },
   ratio: {
     ...typographyStyles.caption2,
-    marginLeft: '6px',
+    marginLeft: tokens.spacingHorizontalSNudge,
     color: tokens.colorNeutralForeground1,
   },
   numerator: {
@@ -114,13 +114,13 @@ const useStyles = makeStyles({
     ...typographyStyles.caption2Strong,
   },
   calloutInfoContainer: {
-    paddingLeft: '8px',
+    paddingLeft: tokens.spacingHorizontalS,
   },
 });
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const usePopoverStyles_unstable = (props: IPopoverComponentProps): IPopoverComponentStyles => {
+export const usePopoverStyles_unstable = (props: PopoverComponentProps): PopoverComponentStyles => {
   const { isCartesian } = props;
   const baseStyles = useStyles();
   return {

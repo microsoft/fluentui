@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { IModifiedCartesianChartProps, IHorizontalBarChartWithAxisDataPoint } from '../../index';
+import { ModifiedCartesianChartProps, HorizontalBarChartWithAxisDataPoint } from '../../index';
 import { useCartesianChartStyles_unstable } from './useCartesianChartStyles.styles';
 import {
   createNumericXAxis,
@@ -20,10 +20,10 @@ import {
   createYAxisLabels,
   ChartTypes,
   wrapContent,
-  isRtl,
+  useRtl,
 } from '../../utilities/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
-import PopoverComponent from './Popover';
+import { PopoverComponent } from './Popover';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ResponsiveContainer } from './ResponsiveContainer';
 
@@ -31,9 +31,9 @@ import { ResponsiveContainer } from './ResponsiveContainer';
  * Cartesian Chart component
  * {@docCategory CartesianChart}
  */
-const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> = React.forwardRef<
+const CartesianChartBase: React.FunctionComponent<ModifiedCartesianChartProps> = React.forwardRef<
   HTMLDivElement,
-  IModifiedCartesianChartProps
+  ModifiedCartesianChartProps
 >((props, forwardedRef) => {
   const chartContainer = React.useRef<HTMLDivElement>();
   let legendContainer: HTMLDivElement;
@@ -44,7 +44,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
   let margins: IMargins;
   const idForGraph: string = 'chart_';
   let _reqID: number;
-  const _isRtl: boolean = isRtl();
+  const _useRtl: boolean = useRtl();
   let _tickValues: (string | number)[];
   const titleMargin: number = 8;
   const _isFirstRender = React.useRef<boolean>(true);
@@ -57,7 +57,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
   const [isRemoveValCalculated, setIsRemoveValCalculated] = React.useState<boolean>(true);
   const [removalValueForTextTuncate, setRemovalValueForTextTuncate] = React.useState<number>(0);
   const [startFromX, setStartFromX] = React.useState<number>(0);
-  const [prevProps, setPrevProps] = React.useState<IModifiedCartesianChartProps | null>(null);
+  const [prevProps, setPrevProps] = React.useState<ModifiedCartesianChartProps | null>(null);
 
   /**
    * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
@@ -69,15 +69,19 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
   margins = {
     top: props.margins?.top ?? 20,
     bottom: props.margins?.bottom ?? 35,
-    right: _isRtl ? props.margins?.left ?? 40 : props.margins?.right ?? props?.secondaryYScaleOptions ? 40 : 20,
-    left: _isRtl ? (props.margins?.right ?? props?.secondaryYScaleOptions ? 40 : 20) : props.margins?.left ?? 40,
+    right: _useRtl ? props.margins?.left ?? 40 : props.margins?.right ?? props?.secondaryYScaleOptions ? 40 : 20,
+    left: _useRtl ? (props.margins?.right ?? props?.secondaryYScaleOptions ? 40 : 20) : props.margins?.left ?? 40,
   };
   if (props.xAxisTitle !== undefined && props.xAxisTitle !== '') {
     margins.bottom! = props.margins?.bottom ?? 55;
   }
   if (props.yAxisTitle !== undefined && props.yAxisTitle !== '') {
-    margins.left! = _isRtl ? (props.margins?.right ?? props?.secondaryYAxistitle ? 60 : 40) : props.margins?.left ?? 60;
-    margins.right! = _isRtl ? props.margins?.left ?? 60 : props.margins?.right ?? props?.secondaryYAxistitle ? 60 : 40;
+    margins.left! = _useRtl
+      ? props.margins?.right ?? props?.secondaryYAxistitle
+        ? 60
+        : 40
+      : props.margins?.left ?? 60;
+    margins.right! = _useRtl ? props.margins?.left ?? 60 : props.margins?.right ?? props?.secondaryYAxistitle ? 60 : 40;
   }
 
   const classes = useCartesianChartStyles_unstable(props);
@@ -91,7 +95,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
     }
     if (props.chartType === ChartTypes.HorizontalBarChartWithAxis && props.showYAxisLables && yAxisElement.current) {
       const maxYAxisLabelLength = calculateLongestLabelWidth(
-        props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
+        props.points.map((point: HorizontalBarChartWithAxisDataPoint) => point.y),
         `.${classes.yAxis} text`,
       );
       if (startFromX !== maxYAxisLabelLength) {
@@ -116,7 +120,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
     }
     if (props.chartType === ChartTypes.HorizontalBarChartWithAxis && props.showYAxisLables && yAxisElement.current) {
       const maxYAxisLabelLength = calculateLongestLabelWidth(
-        props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
+        props.points.map((point: HorizontalBarChartWithAxisDataPoint) => point.y),
         `.${classes.yAxis} text`,
       );
       if (startFromX !== maxYAxisLabelLength) {
@@ -177,7 +181,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
   }
   const margin = { ...margins };
   if (props.chartType === ChartTypes.HorizontalBarChartWithAxis) {
-    if (!_isRtl) {
+    if (!_useRtl) {
       margin.left! += startFromX;
     } else {
       margin.right! += startFromX;
@@ -197,7 +201,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
         props.getDomainMargins ? props.getDomainMargins(containerWidth) : margins,
         containerWidth,
         chartType,
-        _isRtl,
+        _useRtl,
         props.xAxisType,
         props.barwidth!,
         props.tickValues!,
@@ -309,7 +313,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
       yScale = createStringYAxis(
         YAxisParams,
         props.stringDatasetForYAxisDomain!,
-        _isRtl,
+        _useRtl,
         props.chartType,
         props.barwidth,
         culture,
@@ -333,7 +337,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
 
         yScaleSecondary = createYAxis(
           YAxisParamsSecondary,
-          _isRtl,
+          _useRtl,
           axisData,
           chartType,
           props.barwidth!,
@@ -341,7 +345,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
           true,
         );
       }
-      yScale = createYAxis(YAxisParams, _isRtl, axisData, chartType, props.barwidth!, isIntegralDataset);
+      yScale = createYAxis(YAxisParams, _useRtl, axisData, chartType, props.barwidth!, isIntegralDataset);
     }
 
     /*
@@ -357,7 +361,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
         props.noOfCharsToTruncate || 4,
         props.showYAxisLablesTooltip || false,
         startFromX,
-        _isRtl,
+        _useRtl,
       );
 
     // Call back to the chart.
@@ -552,7 +556,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
             }}
             id={`yAxisGElement${idForGraph}`}
             transform={`translate(${
-              _isRtl ? svgDimensions.width - margins.right! - startFromX : margins.left! + startFromX
+              _useRtl ? svgDimensions.width - margins.right! - startFromX : margins.left! + startFromX
             }, 0)`}
             className={classes.yAxis}
           />
@@ -563,7 +567,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
                   yAxisElementSecondary.current = e!;
                 }}
                 id={`yAxisGElementSecondary${idForGraph}`}
-                transform={`translate(${_isRtl ? margins.left! : svgDimensions.width - margins.right!}, 0)`}
+                transform={`translate(${_useRtl ? margins.left! : svgDimensions.width - margins.right!}, 0)`}
                 className={classes.yAxis}
               />
               {props.secondaryYAxistitle !== undefined && props.secondaryYAxistitle !== '' && (
@@ -571,10 +575,10 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
                   content={props.secondaryYAxistitle}
                   textProps={{
                     x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + removalValueForTextTuncate!,
-                    y: _isRtl ? startFromX - titleMargin : svgDimensions.width - margins.right!,
+                    y: _useRtl ? startFromX - titleMargin : svgDimensions.width - margins.right!,
                     textAnchor: 'middle',
                     transform: `translate(${
-                      _isRtl ? margins.right! / 2 - titleMargin : margins.right! / 2 + titleMargin
+                      _useRtl ? margins.right! / 2 - titleMargin : margins.right! / 2 + titleMargin
                     },
                  ${svgDimensions.height - margins.bottom! - margins.top! - titleMargin})rotate(-90)`,
                     className: classes.axisTitle!,
@@ -591,7 +595,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
               content={props.yAxisTitle}
               textProps={{
                 x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + removalValueForTextTuncate!,
-                y: _isRtl
+                y: _useRtl
                   ? svgDimensions.width - margins.right! / 2 + titleMargin
                   : margins.left! / 2 + startFromX - titleMargin,
                 textAnchor: 'middle',
@@ -617,7 +621,7 @@ const CartesianChartBase: React.FunctionComponent<IModifiedCartesianChartProps> 
   );
 });
 
-export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProps> = props => {
+export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps> = props => {
   if (!props.responsive) {
     return <CartesianChartBase {...props} />;
   }

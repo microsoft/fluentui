@@ -1,15 +1,15 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { Pie } from './Pie/index';
-import { IDonutChartProps } from './DonutChart.types';
+import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles_unstable } from './useDonutChartStyles.styles';
-import { IChartDataPoint } from '../../DonutChart';
+import { ChartDataPoint } from '../../DonutChart';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { getColorFromToken, getNextColor } from '../../utilities/index';
-import { ILegend, Legends } from '../../index';
+import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
-import PopoverComponent from '../CommonComponents/Popover';
+import { PopoverComponent } from '../CommonComponents/Popover';
 import { ResponsiveContainer } from '../CommonComponents/ResponsiveContainer';
 
 const MIN_LEGEND_CONTAINER_HEIGHT = 40;
@@ -19,12 +19,12 @@ const MIN_LEGEND_CONTAINER_HEIGHT = 40;
  * Donutchart component.
  * {@docCategory DonutChart}
  */
-const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardRef<HTMLDivElement, IDonutChartProps>(
+const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRef<HTMLDivElement, DonutChartProps>(
   (props, forwardedRef) => {
     const _rootElem = React.useRef<HTMLDivElement | null>(null);
     const _uniqText: string = useId('_Pie_');
     /* eslint-disable @typescript-eslint/no-explicit-any */
-    let _calloutAnchorPoint: IChartDataPoint | null;
+    let _calloutAnchorPoint: ChartDataPoint | null;
     let _emptyChartId: string | null;
     const legendContainer = React.useRef<HTMLDivElement | null>(null);
     const prevSize = React.useRef<{ width?: number; height?: number }>({});
@@ -39,7 +39,7 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
     const [yCalloutValue, setYCalloutValue] = React.useState<string>('');
     const [selectedLegend, setSelectedLegend] = React.useState<string>('');
     const [focusedArcId, setFocusedArcId] = React.useState<string>('');
-    const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<IChartDataPoint | undefined>();
+    const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<ChartDataPoint | undefined>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
 
@@ -55,10 +55,10 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
       prevSize.current.width = props.width;
     }, [props.width, props.height]);
 
-    function _elevateToMinimums(data: IChartDataPoint[]) {
+    function _elevateToMinimums(data: ChartDataPoint[]) {
       let sumOfData = 0;
       const minPercent = 0.01;
-      const elevatedData: IChartDataPoint[] = [];
+      const elevatedData: ChartDataPoint[] = [];
       data.forEach(item => {
         sumOfData += item.data!;
       });
@@ -76,11 +76,11 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
       });
       return elevatedData;
     }
-    function _createLegends(chartData: IChartDataPoint[]): JSX.Element {
-      const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
+    function _createLegends(chartData: ChartDataPoint[]): JSX.Element {
+      const legendDataItems = chartData.map((point: ChartDataPoint, index: number) => {
         const color: string = point.color!;
         // mapping data to the format Legends component needs
-        const legend: ILegend = {
+        const legend: Legend = {
           title: point.legend!,
           color,
           action: () => {
@@ -111,7 +111,7 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
       return legends;
     }
 
-    function _focusCallback(data: IChartDataPoint, id: string, element: SVGPathElement): void {
+    function _focusCallback(data: ChartDataPoint, id: string, element: SVGPathElement): void {
       setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
       setValue(data.data!.toString());
       setLegend(data.legend);
@@ -122,7 +122,7 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
       setDataPointCalloutProps(data);
     }
 
-    function _hoverCallback(data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
+    function _hoverCallback(data: ChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
       if (_calloutAnchorPoint !== data) {
         _calloutAnchorPoint = data;
         setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
@@ -148,11 +148,11 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
       setPopoverOpen(false);
     }
 
-    function _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
+    function _valueInsideDonut(valueInsideDonut: string | number | undefined, data: ChartDataPoint[]) {
       const highlightedLegend = _getHighlightedLegend();
       if (valueInsideDonut !== undefined && (highlightedLegend !== '' || isPopoverOpen)) {
         let legendValue = valueInsideDonut;
-        data!.map((point: IChartDataPoint, index: number) => {
+        data!.map((point: ChartDataPoint, index: number) => {
           if (point.legend === highlightedLegend || (isPopoverOpen && point.legend === legend)) {
             legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
           }
@@ -186,11 +186,11 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
       return !(
         props.data &&
         props.data.chartData &&
-        props.data.chartData!.filter((d: IChartDataPoint) => d.data! > 0).length > 0
+        props.data.chartData!.filter((d: ChartDataPoint) => d.data! > 0).length > 0
       );
     }
 
-    function _addDefaultColors(donutChartDataPoint?: IChartDataPoint[]): IChartDataPoint[] {
+    function _addDefaultColors(donutChartDataPoint?: ChartDataPoint[]): ChartDataPoint[] {
       return donutChartDataPoint
         ? donutChartDataPoint.map((item, index) => {
             let defaultColor: string;
@@ -260,7 +260,7 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
     const donutMarginHorizontal = props.hideLabels ? 0 : 80;
     const donutMarginVertical = props.hideLabels ? 0 : 40;
     const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical) / 2;
-    const chartData = _elevateToMinimums(points.filter((d: IChartDataPoint) => d.data! >= 0));
+    const chartData = _elevateToMinimums(points.filter((d: ChartDataPoint) => d.data! >= 0));
     const valueInsideDonut = _valueInsideDonut(props.valueInsideDonut!, chartData!);
     const focusAttributes = useFocusableGroup();
     return !_isChartEmpty() ? (
@@ -321,7 +321,7 @@ const DonutChartBase: React.FunctionComponent<IDonutChartProps> = React.forwardR
   },
 );
 
-export const DonutChart: React.FunctionComponent<IDonutChartProps> = props => {
+export const DonutChart: React.FunctionComponent<DonutChartProps> = props => {
   if (!props.responsive) {
     return <DonutChartBase {...props} />;
   }

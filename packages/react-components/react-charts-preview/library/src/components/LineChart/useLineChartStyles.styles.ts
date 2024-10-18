@@ -1,12 +1,12 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { ILineChartProps, ILineChartStyles } from './LineChart.types';
+import { LineChartProps, LineChartStyles } from './LineChart.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 
 /**
  * @internal
  */
-export const linechartClassNames: SlotClassNames<ILineChartStyles> = {
+export const linechartClassNames: SlotClassNames<LineChartStyles> = {
   tooltip: 'fui-line__tooltip',
   root: 'fui-line__root',
   xAxis: 'fui-line__xAxis',
@@ -37,12 +37,12 @@ const useStyles = makeStyles({
   tooltip: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.padding('8px'),
+    ...shorthands.padding(tokens.spacingHorizontalS),
     position: 'absolute',
     textAlign: 'center',
-    top: '0px',
+    top: tokens.spacingVerticalNone,
     fill: tokens.colorNeutralBackground1,
-    borderRadius: '2px',
+    borderRadius: tokens.borderRadiusSmall,
     pointerEvents: 'none',
   },
 });
@@ -50,7 +50,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useLineChartStyles_unstable = (props: ILineChartProps): ILineChartStyles => {
+export const useLineChartStyles_unstable = (props: LineChartProps): LineChartStyles => {
   const baseStyles = useStyles();
   return {
     tooltip: mergeClasses(linechartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),

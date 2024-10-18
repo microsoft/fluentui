@@ -1,15 +1,16 @@
-import { IPopoverComponentProps } from '../CommonComponents/Popover.types';
-import { IChartDataPoint, IChartProps } from './index';
+import * as React from 'react';
+import { PopoverComponentProps } from '../CommonComponents/Popover.types';
+import { ChartDataPoint, ChartProps } from './index';
 
 /**
  * Horizontal Bar Chart properties
  * {@docCategory HorizontalBarChart}
  */
-export interface IHorizontalBarChartProps extends React.RefAttributes<HTMLDivElement> {
+export interface HorizontalBarChartProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * An array of chart data points for the Horizontal bar chart
    */
-  data?: IChartProps[];
+  data?: ChartProps[];
 
   /**
    * Width of bar chart
@@ -49,7 +50,7 @@ export interface IHorizontalBarChartProps extends React.RefAttributes<HTMLDivEle
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IHorizontalBarChartStyles;
+  styles?: HorizontalBarChartStyles;
 
   /**
    * Define a custom callout renderer for a horizontal bar
@@ -59,7 +60,7 @@ export interface IHorizontalBarChartProps extends React.RefAttributes<HTMLDivEle
   /**
    * props for the callout in the chart
    */
-  calloutProps?: IPopoverComponentProps;
+  calloutProps?: PopoverComponentProps;
 
   /**
    * Custom text to the chart (right side of the chart)
@@ -99,19 +100,19 @@ export interface IHorizontalBarChartProps extends React.RefAttributes<HTMLDivEle
   /**
    * prop to render the custom callout
    */
-  onRenderCalloutPerHorizontalBar?: (props: IChartDataPoint) => JSX.Element | undefined;
+  onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSX.Element | undefined;
 
   /**
    * Define a custom callout props override
    */
-  customProps?: (dataPointCalloutProps: IChartDataPoint) => IPopoverComponentProps;
+  customProps?: (dataPointCalloutProps: ChartDataPoint) => PopoverComponentProps;
 }
 
 /**
  * Horizontal Bar Chart styles
  * {@docCategory HorizontalBarChart}
  */
-export interface IHorizontalBarChartStyles {
+export interface HorizontalBarChartStyles {
   /**
    * Styling for the root container
    */

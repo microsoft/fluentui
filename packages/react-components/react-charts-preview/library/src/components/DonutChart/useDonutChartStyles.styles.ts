@@ -1,12 +1,12 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { typographyStyles } from '@fluentui/react-theme';
-import { IDonutChartProps, IDonutChartStyles } from './index';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { DonutChartProps, DonutChartStyles } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
  * @internal
  */
-export const donutClassNames: SlotClassNames<IDonutChartStyles> = {
+export const donutClassNames: SlotClassNames<DonutChartStyles> = {
   root: 'fui-donut__root',
   chart: 'fui-donut__chart',
   legendContainer: 'fui-donut__legendContainer',
@@ -31,13 +31,13 @@ const useStyles = makeStyles({
     display: 'block',
     overflow: 'visible',
   },
-  legendContainer: { paddingTop: '16px' },
+  legendContainer: { paddingTop: tokens.spacingVerticalL },
 });
 
 /**
  * Apply styling to the DonutChart component
  */
-export const useDonutChartStyles_unstable = (props: IDonutChartProps): IDonutChartStyles => {
+export const useDonutChartStyles_unstable = (props: DonutChartProps): DonutChartStyles => {
   const { className } = props;
   const baseStyles = useStyles();
 

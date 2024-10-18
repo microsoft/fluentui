@@ -4,13 +4,13 @@ import { useCallback, useState, useEffect, useRef } from 'react';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { hasOverflow } from './overflow-utils';
 import { getAccessibleDataObject } from './index';
-import { IAccessibilityProps } from '../types/index';
+import { AccessibilityProps } from '../types/index';
 import { Async } from './async-utils';
 
 interface IFocusableTooltipTextProps {
   className?: string;
   content: string | JSX.Element | JSX.Element[];
-  accessibilityData?: IAccessibilityProps;
+  accessibilityData?: AccessibilityProps;
 }
 
 export const FocusableTooltipText: React.FunctionComponent<IFocusableTooltipTextProps> = React.forwardRef<

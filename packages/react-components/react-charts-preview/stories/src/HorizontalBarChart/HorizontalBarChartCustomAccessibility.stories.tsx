@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { HorizontalBarChart, IChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charts-preview';
+import { HorizontalBarChart, ChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charts-preview';
 
 export const HorizontalBarCustomAccessibility = () => {
-  const data: IChartProps[] = [
+  const data: ChartProps[] = [
     {
       chartTitle: 'one',
       chartTitleAccessibilityData: { ariaLabel: 'Bar chart depicting about one' },

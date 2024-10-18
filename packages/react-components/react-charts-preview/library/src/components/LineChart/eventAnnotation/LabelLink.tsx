@@ -1,25 +1,25 @@
 import * as React from 'react';
-import { IEventAnnotation } from '../../../types/IEventAnnotation';
+import { EventAnnotation } from '../../../types/EventAnnotation';
 import { Textbox } from './Textbox';
 import { getColorFromToken } from '../../../utilities/colors';
 import { tokens } from '@fluentui/react-theme';
-import PopoverComponent from '../../CommonComponents/Popover';
-import { MenuList } from '../../../../../../react-menu/library/src/MenuList';
-import { MenuItem } from '../../../../../../react-menu/library/src/MenuItem';
+import { PopoverComponent } from '../../CommonComponents/Popover';
 import { useFocusableGroup } from '@fluentui/react-tabster';
-export interface ILineDef extends IEventAnnotation {
+import { MenuList, MenuItem } from '@fluentui/react-menu';
+
+export interface LineDef extends EventAnnotation {
   x: number;
 }
 
-export interface ILabelDef {
+export interface LabelDef {
   x: number;
   aggregatedIdx: number[];
   anchor: 'start' | 'end';
 }
 
-interface ILabelLinkProps {
-  lineDefs: ILineDef[];
-  labelDef: ILabelDef;
+interface LabelLinkProps {
+  lineDefs: LineDef[];
+  labelDef: LabelDef;
   textY: number;
   textWidth: number;
   textLineHeight: number;
@@ -28,7 +28,7 @@ interface ILabelLinkProps {
   mergedLabel: (count: number) => string;
 }
 
-export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
+export const LabelLink: React.FunctionComponent<LabelLinkProps> = props => {
   const gRef = React.useRef<SVGGElement>(null);
   const [showCard, setShowCard] = React.useState(false);
   const [clickPosition, setClickPosition] = React.useState<{ x: number; y: number }>({ x: 0, y: 0 });

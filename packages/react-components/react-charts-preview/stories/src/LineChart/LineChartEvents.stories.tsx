@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ILineChartProps, LineChart, IChartProps, DataVizPalette } from '@fluentui/react-charts-preview';
+import { LineChartProps, LineChart, ChartProps, DataVizPalette } from '@fluentui/react-charts-preview';
 import * as d3 from 'd3-format';
 import { Label, Switch } from '@fluentui/react-components';
 
@@ -8,7 +8,7 @@ import { Label, Switch } from '@fluentui/react-components';
   padding: '3px',
 }); */
 
-export const LineChartEvents = (props: ILineChartProps) => {
+export const LineChartEvents = (props: LineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
@@ -27,7 +27,7 @@ export const LineChartEvents = (props: ILineChartProps) => {
     setAllowMultipleShapes(ev.currentTarget.checked);
   }, []);
 
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Line Chart',
     lineChartData: [
       {

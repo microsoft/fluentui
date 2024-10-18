@@ -2,16 +2,16 @@ jest.mock('react-dom');
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { Legends } from './index';
-import { ILegendState } from './Legends';
+import { LegendState } from './Legends';
 import { mount, ReactWrapper } from 'enzyme';
-import { ILegendsProps } from './Legends.types';
+import { LegendsProps } from './Legends.types';
 import { render, act } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
 // Wrapper of the Legends to be tested.
-let wrapper: ReactWrapper<ILegendsProps, ILegendState> | undefined;
+let wrapper: ReactWrapper<LegendsProps, LegendState> | undefined;
 
 function sharedAfterEach() {
   if (wrapper) {

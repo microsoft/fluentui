@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ILineChartProps, IChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts-preview';
+import { LineChartProps, ChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts-preview';
 import { Switch } from '@fluentui/react-components';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import itITLocale from 'd3-time-format/locale/it-IT.json';
 
-export const LineChartCustomLocaleDateAxis = (props: ILineChartProps) => {
+export const LineChartCustomLocaleDateAxis = (props: LineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
@@ -23,7 +23,7 @@ export const LineChartCustomLocaleDateAxis = (props: ILineChartProps) => {
     setAllowMultipleShapes(ev.currentTarget.checked);
   }, []);
 
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Line Chart',
     lineChartData: [
       {

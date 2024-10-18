@@ -1,26 +1,26 @@
-import { IRenderFunction } from '../../utilities/index';
+import { RenderFunction } from '../../utilities/index';
 import {
-  ICartesianChartProps,
-  ICartesianChartStyleProps,
-  ICartesianChartStyles,
-  IVerticalBarChartDataPoint,
+  CartesianChartProps,
+  CartesianChartStyleProps,
+  CartesianChartStyles,
+  VerticalBarChartDataPoint,
 } from '../../index';
-import { ILineChartLineOptions } from '../../types/index';
+import { LineChartLineOptions } from '../../types/index';
 
 /**
  * Vertical Bar Chart properties
  * {@docCategory VerticalBarChart}
  */
-export interface IVerticalBarChartProps extends ICartesianChartProps {
+export interface VerticalBarChartProps extends CartesianChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: IVerticalBarChartDataPoint[];
+  data?: VerticalBarChartDataPoint[];
 
   /**
    * Define a custom callout renderer for a data point.
    */
-  onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
+  onRenderCalloutPerDataPoint?: RenderFunction<VerticalBarChartDataPoint>;
 
   /**
    * Width of each bar in the chart. When set to `undefined` or `'default'`, the bar width defaults to 16px,
@@ -62,7 +62,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IVerticalBarChartStyles;
+  styles?: VerticalBarChartStyles;
 
   /**
    * The prop used to define the culture to localized the numbers
@@ -77,7 +77,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
   /**
    * options for the line drawn
    */
-  lineOptions?: ILineChartLineOptions;
+  lineOptions?: LineChartLineOptions;
 
   /**
    * Prop to hide the bar labels
@@ -110,7 +110,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
  * Vertical Bar Chart style properties
  * {@docCategory VerticalBarChart}
  */
-export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
+export interface VerticalBarChartStyleProps extends CartesianChartStyleProps {
   /**
    * color of the datapoint legend
    */
@@ -121,7 +121,7 @@ export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
  * Vertical Bar Chart styles
  * {@docCategory VerticalBarChart}
  */
-export interface IVerticalBarChartStyles extends ICartesianChartStyles {
+export interface VerticalBarChartStyles extends CartesianChartStyles {
   /**
    * Style for the lines representing the ticks along the x-axis.
    * @deprecated This style cannot be customized anymore

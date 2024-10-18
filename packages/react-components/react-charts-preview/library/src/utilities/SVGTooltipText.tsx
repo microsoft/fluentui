@@ -6,7 +6,7 @@ import { Async } from './async-utils';
 import { KeyCodes } from './KeyCodes';
 import { useId } from '@fluentui/react-utilities';
 
-interface ISVGTooltipTextProps {
+interface SVGTooltipTextProps {
   closeDelay?: number;
   content: string;
   delay?: number;
@@ -19,9 +19,9 @@ interface ISVGTooltipTextProps {
   wrapContent?: (content: string, id: string, maxWidth: number, maxHeight?: number) => boolean;
 }
 
-export const SVGTooltipText: React.FunctionComponent<ISVGTooltipTextProps> = React.forwardRef<
+export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = React.forwardRef<
   HTMLDivElement,
-  ISVGTooltipTextProps
+  SVGTooltipTextProps
 >((props, forwardedRef) => {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const [isOverflowing, setIsOverflowing] = useState(false);

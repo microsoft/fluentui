@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {
   HorizontalBarChart,
-  IChartProps,
-  IChartDataPoint,
+  ChartProps,
+  ChartDataPoint,
   DataVizPalette,
   getColorFromToken,
-  IPopoverComponentProps,
+  PopoverComponentProps,
 } from '@fluentui/react-charts-preview';
 // import * as d3 from 'd3-format';
 import { Switch, tokens } from '@fluentui/react-components';
@@ -14,7 +14,7 @@ export const HorizontalBarCustomCallout = () => {
   const hideRatio: boolean[] = [true, false];
   const [useCustomPopover, setUseCustomPopover] = React.useState(false);
 
-  const data: IChartProps[] = [
+  const data: ChartProps[] = [
     {
       chartTitle: 'one',
       chartData: [
@@ -112,7 +112,7 @@ export const HorizontalBarCustomCallout = () => {
       ],
     },
   ];
-  const customPopoverProps = (props: IChartDataPoint): IPopoverComponentProps => {
+  const customPopoverProps = (props: ChartDataPoint): PopoverComponentProps => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : '';
     const color = props ? props.color : getColorFromToken(DataVizPalette.color28);
     return {
@@ -128,7 +128,7 @@ export const HorizontalBarCustomCallout = () => {
     setUseCustomPopover(ev.currentTarget.checked);
   }, []);
 
-  const customPopover = (props: IChartDataPoint): JSX.Element | undefined => {
+  const customPopover = (props: ChartDataPoint): JSX.Element | undefined => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : 'Y Value';
     const xValue = props ? props.xAxisCalloutData! : 'X Value';
     const legend = props ? props.legend : 'Legend';
@@ -170,8 +170,8 @@ export const HorizontalBarCustomCallout = () => {
       <HorizontalBarChart
         data={data}
         hideRatio={hideRatio}
-        /* barChartCustomData={(props: IChartProps) => {
-          const chartData: IChartDataPoint = props!.chartData![0];
+        /* barChartCustomData={(props: ChartProps) => {
+          const chartData: ChartDataPoint = props!.chartData![0];
           const x = chartData.horizontalBarChartdata!.x;
           const y = chartData.horizontalBarChartdata!.y;
           return (
@@ -181,8 +181,8 @@ export const HorizontalBarCustomCallout = () => {
             </div>
           );
         }} */
-        customProps={(props: IChartDataPoint) => customPopoverProps(props)}
-        onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) => customPopover(props)}
+        customProps={(props: ChartDataPoint) => customPopoverProps(props)}
+        onRenderCalloutPerHorizontalBar={(props: ChartDataPoint) => customPopover(props)}
       />
     </div>
   );

@@ -12,16 +12,17 @@ import {
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import {
-  IAccessibilityProps,
+  AccessibilityProps,
   CartesianChart,
-  IMargins,
-  ILegend,
-  IRefArrayData,
-  IVerticalBarChartProps,
-  IVerticalBarChartDataPoint,
+  Margins,
+  Legend,
+  RefArrayData,
+  VerticalBarChartProps,
+  VerticalBarChartDataPoint,
   Legends,
-  IChildProps,
-  IYValueHover,
+  ChildProps,
+  YValueHover,
+  PopoverComponent,
 } from '../../index';
 import {
   ChartTypes,
@@ -36,9 +37,8 @@ import {
   getScalePadding,
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
-  isRtl,
+  useRtl,
 } from '../../utilities/index';
-import Popover from '../CommonComponents/Popover';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -52,16 +52,16 @@ const MIN_DOMAIN_MARGIN = 8;
  * VerticalBarchart component
  * {@docCategory VerticalBarChart}
  */
-export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> = React.forwardRef<
+export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = React.forwardRef<
   HTMLDivElement,
-  IVerticalBarChartProps
+  VerticalBarChartProps
 >((props, forwardedRef) => {
-  let _points: IVerticalBarChartDataPoint[] = [];
+  let _points: VerticalBarChartDataPoint[] = [];
   let _barWidth: number = 0;
   let _colors: string[];
-  const _refArray: IRefArrayData[] = [];
-  let margins: IMargins;
-  const _isRtl: boolean = isRtl();
+  const _refArray: RefArrayData[] = [];
+  let margins: Margins;
+  const _useRtl: boolean = useRtl();
   let _bars: JSX.Element[];
   let _xAxisLabels: string[];
   let _yMax: number;
@@ -71,7 +71,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     props.data! && props.data!.length > 0
       ? (getTypeOfAxis(props.data![0].x, true) as XAxisTypes)
       : XAxisTypes.StringAxis;
-  let _calloutAnchorPoint: IVerticalBarChartDataPoint | null;
+  let _calloutAnchorPoint: VerticalBarChartDataPoint | null;
   let _domainMargin: number;
   const _emptyChartId: string = useId('_VBC_empty');
   const _vbcLineId: string = useId('_VBC_line_');
@@ -88,11 +88,11 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   const [xCalloutValue, setXCalloutValue] = React.useState<string | undefined>('');
   const [yCalloutValue, setYCalloutValue] = React.useState<string | undefined>('');
   const [activeXdataPoint, setActiveXDatapoint] = React.useState<string | number | Date | null>(null);
-  const [YValueHover, setYValueHover] = React.useState<IYValueHover[]>();
+  const [YValueHover, setYValueHover] = React.useState<YValueHover[]>();
   const [hoverXValue, setHoverXValue] = React.useState<string | number | undefined>('');
   const [calloutLegend, setCalloutLegend] = React.useState<string>('');
-  const [callOutAccessibilityData, setCalloutAccessibilityData] = React.useState<IAccessibilityProps>();
-  const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<IVerticalBarChartDataPoint>();
+  const [callOutAccessibilityData, setCalloutAccessibilityData] = React.useState<AccessibilityProps>();
+  const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<VerticalBarChartDataPoint>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
 
@@ -113,7 +113,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     const lineData: Array<any> = [];
     const line: JSX.Element[] = [];
     data &&
-      data.forEach((item: IVerticalBarChartDataPoint, index: number) => {
+      data.forEach((item: VerticalBarChartDataPoint, index: number) => {
         if (item.lineData && item.lineData.y) {
           lineData.push({
             x: item.x,
@@ -167,7 +167,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
           x: number | string;
           y: number;
           useSecondaryYScale: boolean;
-          point: IVerticalBarChartDataPoint;
+          point: VerticalBarChartDataPoint;
           index: number;
         },
         index: number,
@@ -236,7 +236,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
 
   function _checkForLine(): boolean {
     const { data } = props;
-    return data!.some((item: IVerticalBarChartDataPoint) => item?.lineData?.y !== undefined);
+    return data!.some((item: VerticalBarChartDataPoint) => item?.lineData?.y !== undefined);
   }
 
   function _adjustProps(): void {
@@ -255,17 +255,17 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     _xAxisOuterPadding = getScalePadding(props.xAxisOuterPadding, props.xAxisPadding, 0);
   }
 
-  function _getMargins(_margins: IMargins) {
+  function _getMargins(_margins: Margins) {
     margins = _margins;
   }
 
-  function _renderContentForBothLineAndBars(point: IVerticalBarChartDataPoint): JSX.Element {
+  function _renderContentForBothLineAndBars(point: VerticalBarChartDataPoint): JSX.Element {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { YValueHover, hoverXValue } = _getCalloutContentForLineAndBar(point);
-    const content: JSX.Element[] = YValueHover.map((item: IYValueHover, index: number) => {
+    const content: JSX.Element[] = YValueHover.map((item: YValueHover, index: number) => {
       return (
         <>
-          <Popover
+          <PopoverComponent
             culture={props.culture ?? 'en-us'}
             clickPosition={clickPosition}
             isPopoverOpen={isPopoverOpen}
@@ -281,10 +281,10 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     return <>{content}</>;
   }
 
-  function _renderContentForOnlyBars(_props: IVerticalBarChartDataPoint): JSX.Element {
+  function _renderContentForOnlyBars(_props: VerticalBarChartDataPoint): JSX.Element {
     return (
       <>
-        <Popover
+        <PopoverComponent
           XValue={_props.xAxisCalloutData || (_props.x as string)}
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}
@@ -301,7 +301,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   }
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  function _renderCallout(props?: IVerticalBarChartDataPoint): JSX.Element | null {
+  function _renderCallout(props?: VerticalBarChartDataPoint): JSX.Element | null {
     return props ? (_isHavingLine ? _renderContentForBothLineAndBars(props) : _renderContentForOnlyBars(props)) : null;
   }
 
@@ -348,15 +348,15 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     _refArray.push({ index: legendTitle, refElement: element });
   }
 
-  function _getCalloutContentForLineAndBar(point: IVerticalBarChartDataPoint): {
-    YValueHover: IYValueHover[];
+  function _getCalloutContentForLineAndBar(point: VerticalBarChartDataPoint): {
+    YValueHover: YValueHover[];
     hoverXValue: string | number | undefined;
   } {
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    const YValueHover: IYValueHover[] = [];
+    const YValueHover: YValueHover[] = [];
     const { useSingleColor = false } = props;
     const { data, lineLegendText, lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
-    const selectedPoint = data!.filter((xDataPoint: IVerticalBarChartDataPoint) => xDataPoint.x === point.x);
+    const selectedPoint = data!.filter((xDataPoint: VerticalBarChartDataPoint) => xDataPoint.x === point.x);
     // there might be no y value of the line for the hovered bar. so we need to check this condition
     if (_isHavingLine && selectedPoint[0].lineData?.y !== undefined) {
       // callout data for the  line
@@ -389,7 +389,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   }
 
   function _onBarHover(
-    point: IVerticalBarChartDataPoint,
+    point: VerticalBarChartDataPoint,
     // eslint-disable-next-line @typescript-eslint/no-shadow
     color: string,
     mouseEvent: React.MouseEvent<SVGElement>,
@@ -432,10 +432,10 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   }
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
-  function _onBarFocus(point: IVerticalBarChartDataPoint, refArrayIndexNumber: number, color: string): void {
+  function _onBarFocus(point: VerticalBarChartDataPoint, refArrayIndexNumber: number, color: string): void {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { YValueHover, hoverXValue } = _getCalloutContentForLineAndBar(point);
-    _refArray.forEach((obj: IRefArrayData, index: number) => {
+    _refArray.forEach((obj: RefArrayData, index: number) => {
       if (obj.index === point.legend! && refArrayIndexNumber === index) {
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
         setPopoverOpen(selectedLegend === '' || selectedLegend === point.legend);
@@ -457,19 +457,19 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     });
   }
 
-  function _lineHover(point: IVerticalBarChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>) {
+  function _lineHover(point: VerticalBarChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>) {
     mouseEvent.persist();
     _lineHoverFocus(point, mouseEvent);
   }
 
-  function _lineFocus(point: IVerticalBarChartDataPoint, ref: { refElement: SVGCircleElement | null }) {
+  function _lineFocus(point: VerticalBarChartDataPoint, ref: { refElement: SVGCircleElement | null }) {
     if (ref.refElement) {
       _lineHoverFocus(point, ref.refElement);
     }
   }
 
   function _lineHoverFocus(
-    point: IVerticalBarChartDataPoint,
+    point: VerticalBarChartDataPoint,
     _refSelected: React.MouseEvent<SVGElement> | SVGCircleElement,
   ) {
     const { lineLegendText = '', lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
@@ -498,19 +498,19 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       .range([0, containerHeight - margins.bottom! - margins.top!]);
 
     if (_xAxisType === XAxisTypes.NumericAxis) {
-      const xMax = d3Max(_points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
-      const xMin = d3Min(_points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
+      const xMax = d3Max(_points, (point: VerticalBarChartDataPoint) => point.x as number)!;
+      const xMin = d3Min(_points, (point: VerticalBarChartDataPoint) => point.x as number)!;
       xBarScale = d3ScaleLinear()
-        .domain(_isRtl ? [xMax, xMin] : [xMin, xMax])
+        .domain(_useRtl ? [xMax, xMin] : [xMin, xMax])
         .nice()
         .range([margins.left! + _domainMargin, containerWidth - margins.right! - _domainMargin]);
     } else if (_xAxisType === XAxisTypes.DateAxis) {
-      const sDate = d3Min(_points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
-      const lDate = d3Max(_points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
+      const sDate = d3Min(_points, (point: VerticalBarChartDataPoint) => point.x as Date)!;
+      const lDate = d3Max(_points, (point: VerticalBarChartDataPoint) => point.x as Date)!;
       xBarScale = d3ScaleUtc()
         .domain([sDate, lDate])
         .range(
-          _isRtl
+          _useRtl
             ? [containerWidth - margins.right! - _domainMargin, margins.left! + _domainMargin]
             : [margins.left! + _domainMargin, containerWidth - margins.right! - _domainMargin],
         );
@@ -518,7 +518,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       xBarScale = d3ScaleBand()
         .domain(_xAxisLabels)
         .range(
-          _isRtl
+          _useRtl
             ? [containerWidth - margins.right! - _domainMargin, margins.left! + _domainMargin]
             : [margins.left! + _domainMargin, containerWidth - margins.right! - _domainMargin],
         )
@@ -535,7 +535,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
-    const bars = _points.map((point: IVerticalBarChartDataPoint, index: number) => {
+    const bars = _points.map((point: VerticalBarChartDataPoint, index: number) => {
       const shouldHighlight = _legendHighlighted(point.legend!) || _noLegendHighlighted() ? true : false;
 
       const barHeight: number = Math.max(yBarScale(point.y), 0);
@@ -605,7 +605,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   function _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
-    const bars = _points.map((point: IVerticalBarChartDataPoint, index: number) => {
+    const bars = _points.map((point: VerticalBarChartDataPoint, index: number) => {
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       let adjustedBarHeight = 0;
       if (barHeight <= 0) {
@@ -681,7 +681,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
-    const bars = _points.map((point: IVerticalBarChartDataPoint, index: number) => {
+    const bars = _points.map((point: VerticalBarChartDataPoint, index: number) => {
       const shouldHighlight = _legendHighlighted(point.legend!) || _noLegendHighlighted() ? true : false;
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       let adjustedBarHeight = 0;
@@ -763,15 +763,15 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     setActiveLegend('');
   }
 
-  function _getLegendData(data: IVerticalBarChartDataPoint[]): JSX.Element {
+  function _getLegendData(data: VerticalBarChartDataPoint[]): JSX.Element {
     const { useSingleColor } = props;
     const { lineLegendText, lineLegendColor = tokens.colorPaletteYellowForeground1 } = props;
-    const actions: ILegend[] = [];
-    data.forEach((point: IVerticalBarChartDataPoint, _index: number) => {
+    const actions: Legend[] = [];
+    data.forEach((point: VerticalBarChartDataPoint, _index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const color: string = !useSingleColor ? point.color! : _createColors()(1);
       // mapping data to the format Legends component needs
-      const legend: ILegend = {
+      const legend: Legend = {
         title: point.legend!,
         color,
         action: () => {
@@ -788,7 +788,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       actions.push(legend);
     });
     if (_isHavingLine && lineLegendText && lineLegendColor) {
-      const lineLegend: ILegend = {
+      const lineLegend: Legend = {
         title: lineLegendText,
         color: lineLegendColor,
         action: () => {
@@ -840,7 +840,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     return selectedLegend === '' && activeLegend === '';
   }
 
-  function _getAriaLabel(point: IVerticalBarChartDataPoint): string {
+  function _getAriaLabel(point: VerticalBarChartDataPoint): string {
     const xValue = point.xAxisCalloutData
       ? point.xAxisCalloutData
       : point.x instanceof Date
@@ -877,7 +877,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     );
   }
 
-  function _getDomainMargins(containerWidth: number): IMargins {
+  function _getDomainMargins(containerWidth: number): Margins {
     _domainMargin = MIN_DOMAIN_MARGIN;
 
     /** Total width available to render the bars */
@@ -917,7 +917,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
 
   function _isChartEmpty(): boolean {
     return (
-      _points.length === 0 || (d3Max(_points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !_isHavingLine)
+      _points.length === 0 || (d3Max(_points, (point: VerticalBarChartDataPoint) => point.y)! <= 0 && !_isHavingLine)
     );
   }
 
@@ -934,8 +934,8 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   }
 
   _adjustProps();
-  _xAxisLabels = _points.map((point: IVerticalBarChartDataPoint) => point.x as string);
-  _yMax = Math.max(d3Max(_points, (point: IVerticalBarChartDataPoint) => point.y)!, props.yMaxValue || 0);
+  _xAxisLabels = _points.map((point: VerticalBarChartDataPoint) => point.x as string);
+  _yMax = Math.max(d3Max(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMaxValue || 0);
   const legendBars: JSX.Element = _getLegendData(_points);
   const calloutProps = {
     ...(_isHavingLine && {
@@ -986,7 +986,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       })}
       /* eslint-disable react/jsx-no-bind */
       // eslint-disable-next-line react/no-children-prop
-      children={(props: IChildProps) => {
+      children={(props: ChildProps) => {
         return (
           <>
             <g>{_bars}</g>

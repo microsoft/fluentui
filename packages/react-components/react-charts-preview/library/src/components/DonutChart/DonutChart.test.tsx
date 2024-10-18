@@ -4,14 +4,14 @@ import * as React from 'react';
 import { chartPointsDC, chartPointsDCElevateMinimums, pointsDC } from '../../utilities/test-data';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
-import { IDonutChartProps, DonutChart } from './index';
-import { IChartProps, IChartDataPoint } from '../../index';
+import { DonutChartProps, DonutChart } from './index';
+import { ChartProps, ChartDataPoint } from '../../index';
 import toJson from 'enzyme-to-json';
 const rendererAct = renderer.act;
 import { act as domAct } from 'react-dom/test-utils';
 
 // Wrapper of the DonutChart to be tested.
-let wrapper: ReactWrapper<IDonutChartProps> | undefined;
+let wrapper: ReactWrapper<DonutChartProps> | undefined;
 
 function sharedAfterEach() {
   if (wrapper) {
@@ -27,7 +27,7 @@ function sharedAfterEach() {
   }
 }
 
-const pointsNoColors: IChartDataPoint[] = [
+const pointsNoColors: ChartDataPoint[] = [
   { legend: 'first', data: 20000, xAxisCalloutData: '2020/04/30' },
   { legend: 'second', data: 39000, xAxisCalloutData: '2020/04/20' },
   { legend: 'third', data: 45000, xAxisCalloutData: '2020/04/25' },
@@ -35,12 +35,12 @@ const pointsNoColors: IChartDataPoint[] = [
 
 const chartTitle = 'Donut chart example';
 
-export const emptyChartPoints: IChartProps = {
+export const emptyChartPoints: ChartProps = {
   chartTitle,
   chartData: [],
 };
 
-export const noColorsChartPoints: IChartProps = {
+export const noColorsChartPoints: ChartProps = {
   chartTitle,
   chartData: pointsNoColors,
 };

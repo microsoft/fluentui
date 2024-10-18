@@ -3,11 +3,11 @@ import type { Meta } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import {
-  ILineChartPoints,
+  LineChartPoints,
   LineChart,
-  IChartProps,
+  ChartProps,
   DataVizPalette,
-  ICustomizedCalloutData,
+  CustomizedCalloutData,
 } from '@fluentui/react-charts-preview';
 
 export default {
@@ -36,7 +36,7 @@ export default {
 
 export const Basic = () => {
   const margins = { left: 35, top: 20, bottom: 35, right: 20 };
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Line Chart',
     lineChartData: [
       {
@@ -170,7 +170,7 @@ export const BasicRTL = getStoryVariant(Basic, RTL);
 export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 
 export const Events = () => {
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Line Chart',
     lineChartData: [
       {
@@ -321,7 +321,7 @@ export const Multiple = () => {
     }
   };
 
-  const points: ILineChartPoints[] = [
+  const points: LineChartPoints[] = [
     {
       data: [
         {
@@ -534,7 +534,7 @@ export const Multiple = () => {
     },
   ];
 
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Line Chart',
     lineChartData: points,
   };
@@ -601,14 +601,14 @@ export const MultipleRTL = getStoryVariant(Multiple, RTL);
 export const MultipleDarkMode = getStoryVariant(Multiple, DARK_MODE);
 
 export const Gaps = () => {
-  const _calculateCalloutDescription = (calloutDataProps: ICustomizedCalloutData): string | undefined => {
+  const _calculateCalloutDescription = (calloutDataProps: CustomizedCalloutData): string | undefined => {
     if (calloutDataProps.values.filter(value => value.legend === 'Low Confidence Data*').length > 0) {
       return '* This data was below our confidence threshold.';
     }
     return undefined;
   };
 
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Line Chart',
     lineChartData: [
       {

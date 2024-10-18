@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
-import { ILineChartLineOptions, IVerticalBarChartDataPoint, VerticalBarChart } from '@fluentui/react-charts-preview';
+import { LineChartLineOptions, VerticalBarChartDataPoint, VerticalBarChart } from '@fluentui/react-charts-preview';
 
 export default {
   title: 'Charts/VerticalBarChart',
@@ -17,7 +17,7 @@ export default {
 } satisfies Meta<typeof VerticalBarChart>;
 
 export const BasicSecondaryYAxis = () => {
-  const points: IVerticalBarChartDataPoint[] = [
+  const points: VerticalBarChartDataPoint[] = [
     {
       x: 0,
       y: 10000,
@@ -108,7 +108,7 @@ export const BasicSecondaryYAxis = () => {
     },
   ];
 
-  const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+  const lineOptions: LineChartLineOptions = { lineBorderWidth: '2' };
 
   const rootStyle = { width: `${650}px`, height: `${350}px` };
 
@@ -138,7 +138,7 @@ export const BasicSecondaryYAxisDarkMode = getStoryVariant(BasicSecondaryYAxis, 
 export const BasicSecondaryYAxisRTL = getStoryVariant(BasicSecondaryYAxis, RTL);
 
 export const DateAxisVbc = () => {
-  const points: IVerticalBarChartDataPoint[] = [
+  const points: VerticalBarChartDataPoint[] = [
     {
       x: new Date('2018/10/01'),
       y: 3500,
@@ -193,7 +193,7 @@ export const DateAxisVbcDarkMode = getStoryVariant(DateAxisVbc, DARK_MODE);
 export const DateAxisVbcRTL = getStoryVariant(DateAxisVbc, RTL);
 
 export const DynamicWrapLabels = () => {
-  const points: IVerticalBarChartDataPoint[] = [
+  const points: VerticalBarChartDataPoint[] = [
     {
       x: 'Simple Text',
       y: 1000,
@@ -237,7 +237,7 @@ export const DynamicWrapLabelsRTL = getStoryVariant(DynamicWrapLabels, RTL);
 export const DynamicWrapLabelsDarkMode = getStoryVariant(DynamicWrapLabels, DARK_MODE);
 
 export const RotatedLabelHideLegends = () => {
-  const points: IVerticalBarChartDataPoint[] = [
+  const points: VerticalBarChartDataPoint[] = [
     {
       x: 'This is a medium long label. ',
       y: 3500,

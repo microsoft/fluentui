@@ -7,16 +7,252 @@
 /// <reference types="react" />
 
 import * as React_2 from 'react';
-import { SankeyLink } from 'd3-sankey';
-import { SankeyNode } from 'd3-sankey';
 import { SVGProps } from 'react';
 import { TimeLocaleDefinition } from 'd3-time-format';
 
 // @public (undocumented)
-export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartProps>;
+export interface AccessibilityProps {
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    ariaLabelledBy?: string;
+}
+
+// @public (undocumented)
+export interface Basestate {
+    // (undocumented)
+    activeLegend?: string;
+    // (undocumented)
+    color?: string;
+    // (undocumented)
+    containerHeight?: number;
+    // (undocumented)
+    containerWidth?: number;
+    // (undocumented)
+    dataForHoverCard?: number;
+    // (undocumented)
+    _height?: number;
+    // (undocumented)
+    hoveredLineColor?: string;
+    // (undocumented)
+    hoverXValue?: string | number | null;
+    // (undocumented)
+    hoverYValue?: string | number | null;
+    // (undocumented)
+    isCalloutVisible: boolean;
+    // (undocumented)
+    isLegendHovered?: boolean;
+    // (undocumented)
+    isLegendSelected?: boolean;
+    // (undocumented)
+    lineColor?: string;
+    // (undocumented)
+    refSelected?: any;
+    // (undocumented)
+    selectedLegend?: string;
+    // (undocumented)
+    _width?: number;
+    // (undocumented)
+    xCalloutValue?: string;
+    // (undocumented)
+    yCalloutValue?: string;
+    // (undocumented)
+    YValueHover?: {
+        legend?: string;
+        y?: number;
+        color?: string;
+    }[];
+}
+
+// @public (undocumented)
+export const CartesianChart: React_2.FunctionComponent<ModifiedCartesianChartProps>;
+
+// @public
+export interface CartesianChartProps {
+    calloutProps?: Partial<PopoverComponentProps>;
+    // @deprecated
+    chartLabel?: string;
+    className?: string;
+    customDateTimeFormatter?: (dateTime: Date) => string;
+    customProps?: (dataPointCalloutProps: any) => PopoverComponentProps;
+    dateLocalizeOptions?: Intl.DateTimeFormatOptions;
+    enabledLegendsWrapLines?: boolean;
+    enableReflow?: boolean;
+    height?: number;
+    hideLegend?: boolean;
+    hideTickOverlap?: boolean;
+    hideTooltip?: boolean;
+    href?: string;
+    // (undocumented)
+    legendProps?: Partial<LegendsProps>;
+    // (undocumented)
+    legendsOverflowText?: any;
+    margins?: Margins;
+    noOfCharsToTruncate?: number;
+    onResize?: (width: number, height: number) => void;
+    parentRef?: HTMLElement | null;
+    responsive?: boolean;
+    rotateXAxisLables?: boolean;
+    secondaryYAxistitle?: string;
+    secondaryYScaleOptions?: {
+        yMinValue?: number;
+        yMaxValue?: number;
+    };
+    showXAxisLablesTooltip?: boolean;
+    strokeWidth?: number;
+    styles?: CartesianChartStyles;
+    svgProps?: React_2.SVGProps<SVGSVGElement>;
+    tickFormat?: string;
+    tickPadding?: number;
+    tickValues?: number[] | Date[] | string[] | undefined;
+    timeFormatLocale?: TimeLocaleDefinition;
+    useUTC?: string | boolean;
+    width?: number;
+    wrapXAxisLables?: boolean;
+    xAxisTickCount?: number;
+    xAxisTickPadding?: number;
+    xAxistickSize?: number;
+    xAxisTitle?: string;
+    xMaxValue?: number;
+    yAxisTickCount?: number;
+    yAxisTickFormat?: any;
+    yAxisTitle?: string;
+    yMaxValue?: number;
+    yMinValue?: number;
+}
+
+// @public
+export interface CartesianChartStyleProps {
+    className?: string;
+    color?: string;
+    height?: number;
+    href?: string;
+    lineColor?: string;
+    shouldHighlight?: boolean;
+    toDrawShape?: boolean;
+    useRtl?: boolean;
+    width?: number;
+}
+
+// @public
+export interface CartesianChartStyles {
+    axisTitle?: string;
+    calloutBlockContainer?: string;
+    calloutBlockContainertoDrawShapefalse?: string;
+    calloutBlockContainertoDrawShapetrue?: string;
+    calloutContentRoot?: string;
+    calloutContentX?: string;
+    calloutContentY?: string;
+    calloutDateTimeContainer?: string;
+    calloutInfoContainer?: string;
+    calloutlegendText?: string;
+    chartTitle?: string;
+    chartWrapper?: string;
+    descriptionMessage?: string;
+    hover?: string;
+    legendContainer?: string;
+    opacityChangeOnHover?: string;
+    root?: string;
+    shapeStyles?: string;
+    tooltip?: string;
+    xAxis?: string;
+    yAxis?: string;
+}
 
 // @public
 export type ChartDataMode = 'default' | 'fraction' | 'percentage';
+
+// @public (undocumented)
+export interface ChartDataPoint {
+    callOutAccessibilityData?: AccessibilityProps;
+    color?: string;
+    data?: number;
+    horizontalBarChartdata?: HorizontalDataPoint;
+    legend?: string;
+    onClick?: VoidFunction;
+    placeHolder?: boolean;
+    xAxisCalloutData?: string;
+    yAxisCalloutData?: string;
+}
+
+// @public (undocumented)
+export interface ChartProps {
+    chartData?: ChartDataPoint[];
+    chartDataAccessibilityData?: AccessibilityProps;
+    chartTitle?: string;
+    chartTitleAccessibilityData?: AccessibilityProps;
+    lineChartData?: LineChartPoints[];
+    pointLineOptions?: SVGProps<SVGLineElement>;
+    pointOptions?: SVGProps<SVGCircleElement>;
+}
+
+// @public (undocumented)
+export interface ChildProps {
+    // (undocumented)
+    containerHeight?: number;
+    // (undocumented)
+    containerWidth?: number;
+    // (undocumented)
+    optimizeLargeData?: boolean;
+    // (undocumented)
+    xScale?: any;
+    // (undocumented)
+    yScale?: any;
+    // (undocumented)
+    yScaleSecondary?: any;
+}
+
+// @public (undocumented)
+export interface ColorFillBarData {
+    // (undocumented)
+    endX: number | Date;
+    // (undocumented)
+    startX: number | Date;
+}
+
+// @public (undocumented)
+export interface ColorFillBarsProps {
+    // (undocumented)
+    applyPattern?: boolean;
+    // (undocumented)
+    color: string;
+    // (undocumented)
+    data: ColorFillBarData[];
+    // (undocumented)
+    legend: string;
+    // (undocumented)
+    onLegendClick?: (selectedLegend: string | string[] | null) => void | undefined;
+}
+
+// @public
+export interface CustomizedCalloutData {
+    // (undocumented)
+    values: CustomizedCalloutDataPoint[];
+    // (undocumented)
+    x: number | string | Date;
+}
+
+// @public (undocumented)
+export interface CustomizedCalloutDataPoint {
+    // (undocumented)
+    color: string;
+    // (undocumented)
+    legend: string;
+    // (undocumented)
+    xAxisCalloutData?: string;
+    // (undocumented)
+    y: number;
+    // (undocumented)
+    yAxisCalloutData?: string | {
+        [id: string]: number;
+    };
+}
+
+// @public (undocumented)
+export interface DataPoint {
+    onClick?: VoidFunction;
+    x: number | string;
+    y: number;
+}
 
 // @public (undocumented)
 export const DataVizPalette: {
@@ -70,288 +306,28 @@ export const DataVizPalette: {
 };
 
 // @public (undocumented)
-export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
-
-// @public (undocumented)
-export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
-
-// @public (undocumented)
-export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolean) => string;
+export const DonutChart: React_2.FunctionComponent<DonutChartProps>;
 
 // @public
-export const HorizontalBarChart: React_2.FunctionComponent<IHorizontalBarChartProps>;
-
-// @public (undocumented)
-export enum HorizontalBarChartVariant {
-    // (undocumented)
-    AbsoluteScale = "absolute-scale",
-    // (undocumented)
-    PartToWhole = "part-to-whole"
-}
-
-// @public (undocumented)
-export interface IAccessibilityProps {
-    ariaDescribedBy?: string;
-    ariaLabel?: string;
-    ariaLabelledBy?: string;
-}
-
-// @public (undocumented)
-export interface IBasestate {
-    // (undocumented)
-    activeLegend?: string;
-    // (undocumented)
-    color?: string;
-    // (undocumented)
-    containerHeight?: number;
-    // (undocumented)
-    containerWidth?: number;
-    // (undocumented)
-    dataForHoverCard?: number;
-    // (undocumented)
-    _height?: number;
-    // (undocumented)
-    hoveredLineColor?: string;
-    // (undocumented)
-    hoverXValue?: string | number | null;
-    // (undocumented)
-    hoverYValue?: string | number | null;
-    // (undocumented)
-    isCalloutVisible: boolean;
-    // (undocumented)
-    isLegendHovered?: boolean;
-    // (undocumented)
-    isLegendSelected?: boolean;
-    // (undocumented)
-    lineColor?: string;
-    // (undocumented)
-    refSelected?: any;
-    // (undocumented)
-    selectedLegend?: string;
-    // (undocumented)
-    _width?: number;
-    // (undocumented)
-    xCalloutValue?: string;
-    // (undocumented)
-    yCalloutValue?: string;
-    // (undocumented)
-    YValueHover?: {
-        legend?: string;
-        y?: number;
-        color?: string;
-    }[];
-}
-
-// @public
-export interface ICartesianChartProps {
-    calloutProps?: Partial<IPopoverComponentProps>;
-    // @deprecated
-    chartLabel?: string;
-    className?: string;
-    customDateTimeFormatter?: (dateTime: Date) => string;
-    customProps?: (dataPointCalloutProps: any) => IPopoverComponentProps;
-    dateLocalizeOptions?: Intl.DateTimeFormatOptions;
-    enabledLegendsWrapLines?: boolean;
-    enableReflow?: boolean;
-    height?: number;
-    hideLegend?: boolean;
-    hideTickOverlap?: boolean;
-    hideTooltip?: boolean;
-    href?: string;
-    // (undocumented)
-    legendProps?: Partial<ILegendsProps>;
-    // (undocumented)
-    legendsOverflowText?: any;
-    margins?: IMargins;
-    noOfCharsToTruncate?: number;
-    onResize?: (width: number, height: number) => void;
-    parentRef?: HTMLElement | null;
-    responsive?: boolean;
-    rotateXAxisLables?: boolean;
-    secondaryYAxistitle?: string;
-    secondaryYScaleOptions?: {
-        yMinValue?: number;
-        yMaxValue?: number;
-    };
-    showXAxisLablesTooltip?: boolean;
-    strokeWidth?: number;
-    styles?: ICartesianChartStyles;
-    svgProps?: React_2.SVGProps<SVGSVGElement>;
-    tickFormat?: string;
-    tickPadding?: number;
-    tickValues?: number[] | Date[] | string[] | undefined;
-    timeFormatLocale?: TimeLocaleDefinition;
-    useUTC?: string | boolean;
-    width?: number;
-    wrapXAxisLables?: boolean;
-    xAxisTickCount?: number;
-    xAxisTickPadding?: number;
-    xAxistickSize?: number;
-    xAxisTitle?: string;
-    xMaxValue?: number;
-    yAxisTickCount?: number;
-    yAxisTickFormat?: any;
-    yAxisTitle?: string;
-    yMaxValue?: number;
-    yMinValue?: number;
-}
-
-// @public
-export interface ICartesianChartStyleProps {
-    className?: string;
-    color?: string;
-    height?: number;
-    href?: string;
-    isRtl?: boolean;
-    lineColor?: string;
-    shouldHighlight?: boolean;
-    toDrawShape?: boolean;
-    width?: number;
-}
-
-// @public
-export interface ICartesianChartStyles {
-    axisTitle?: string;
-    calloutBlockContainer?: string;
-    calloutBlockContainertoDrawShapefalse?: string;
-    calloutBlockContainertoDrawShapetrue?: string;
-    calloutContentRoot?: string;
-    calloutContentX?: string;
-    calloutContentY?: string;
-    calloutDateTimeContainer?: string;
-    calloutInfoContainer?: string;
-    calloutlegendText?: string;
-    chartTitle?: string;
-    chartWrapper?: string;
-    descriptionMessage?: string;
-    hover?: string;
-    legendContainer?: string;
-    opacityChangeOnHover?: string;
-    root?: string;
-    shapeStyles?: string;
-    tooltip?: string;
-    xAxis?: string;
-    yAxis?: string;
-}
-
-// @public (undocumented)
-export interface IChartDataPoint {
-    callOutAccessibilityData?: IAccessibilityProps;
-    color?: string;
-    data?: number;
-    horizontalBarChartdata?: IHorizontalDataPoint;
-    legend?: string;
-    onClick?: VoidFunction;
-    placeHolder?: boolean;
-    xAxisCalloutData?: string;
-    yAxisCalloutData?: string;
-}
-
-// @public (undocumented)
-export interface IChartProps {
-    chartData?: IChartDataPoint[];
-    chartDataAccessibilityData?: IAccessibilityProps;
-    chartTitle?: string;
-    chartTitleAccessibilityData?: IAccessibilityProps;
-    lineChartData?: ILineChartPoints[];
-    pointLineOptions?: SVGProps<SVGLineElement>;
-    pointOptions?: SVGProps<SVGCircleElement>;
-    SankeyChartData?: ISankeyChartData;
-}
-
-// @public (undocumented)
-export interface IChildProps {
-    // (undocumented)
-    containerHeight?: number;
-    // (undocumented)
-    containerWidth?: number;
-    // (undocumented)
-    optimizeLargeData?: boolean;
-    // (undocumented)
-    xScale?: any;
-    // (undocumented)
-    yScale?: any;
-    // (undocumented)
-    yScaleSecondary?: any;
-}
-
-// @public (undocumented)
-export interface IColorFillBarData {
-    // (undocumented)
-    endX: number | Date;
-    // (undocumented)
-    startX: number | Date;
-}
-
-// @public (undocumented)
-export interface IColorFillBarsProps {
-    // (undocumented)
-    applyPattern?: boolean;
-    // (undocumented)
-    color: string;
-    // (undocumented)
-    data: IColorFillBarData[];
-    // (undocumented)
-    legend: string;
-    // (undocumented)
-    onLegendClick?: (selectedLegend: string | string[] | null) => void | undefined;
-}
-
-// @public
-export interface ICustomizedCalloutData {
-    // (undocumented)
-    values: ICustomizedCalloutDataPoint[];
-    // (undocumented)
-    x: number | string | Date;
-}
-
-// @public (undocumented)
-export interface ICustomizedCalloutDataPoint {
-    // (undocumented)
-    color: string;
-    // (undocumented)
-    legend: string;
-    // (undocumented)
-    xAxisCalloutData?: string;
-    // (undocumented)
-    y: number;
-    // (undocumented)
-    yAxisCalloutData?: string | {
-        [id: string]: number;
-    };
-}
-
-// @public (undocumented)
-export interface IDataPoint {
-    onClick?: VoidFunction;
-    x: number | string;
-    y: number;
-}
-
-// @public (undocumented)
-export interface IDonutChart {
-}
-
-// @public
-export interface IDonutChartProps extends ICartesianChartProps {
-    calloutProps?: IPopoverComponentProps;
+export interface DonutChartProps extends CartesianChartProps {
+    calloutProps?: PopoverComponentProps;
     culture?: string;
-    customProps?: (dataPointCalloutProps: IChartDataPoint) => IPopoverComponentProps;
-    data?: IChartProps;
+    customProps?: (dataPointCalloutProps: ChartDataPoint) => PopoverComponentProps;
+    data?: ChartProps;
     hideLabels?: boolean;
     innerRadius?: number;
-    onRenderCalloutPerDataPoint?: (dataPointCalloutProps: IChartDataPoint) => JSX.Element | undefined;
+    onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSX.Element | undefined;
     showLabelsInPercent?: boolean;
-    styles?: IDonutChartStyles;
+    styles?: DonutChartStyles;
     valueInsideDonut?: string | number;
 }
 
 // @public
-export interface IDonutChartStyleProps extends ICartesianChartStyleProps {
+export interface DonutChartStyleProps extends CartesianChartStyleProps {
 }
 
 // @public
-export interface IDonutChartStyles {
+export interface DonutChartStyles {
     chart?: string;
     chartWrapper?: string;
     legendContainer: string;
@@ -359,9 +335,9 @@ export interface IDonutChartStyles {
 }
 
 // @public (undocumented)
-export interface IEventsAnnotationProps {
+export interface EventsAnnotationProps {
     // (undocumented)
-    events: IEventAnnotation[];
+    events: EventAnnotation[];
     // (undocumented)
     labelColor?: string;
     // (undocumented)
@@ -375,15 +351,21 @@ export interface IEventsAnnotationProps {
 }
 
 // @public (undocumented)
-export interface IGroupedVerticalBarChartData {
+export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
+
+// @public (undocumented)
+export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolean) => string;
+
+// @public (undocumented)
+export interface GroupedVerticalBarChartData {
     name: string;
-    series: IGVBarChartSeriesPoint[];
-    stackCallOutAccessibilityData?: IAccessibilityProps;
+    series: GVBarChartSeriesPoint[];
+    stackCallOutAccessibilityData?: AccessibilityProps;
 }
 
 // @public (undocumented)
-export interface IGVBarChartSeriesPoint {
-    callOutAccessibilityData?: IAccessibilityProps;
+export interface GVBarChartSeriesPoint {
+    callOutAccessibilityData?: AccessibilityProps;
     color: string;
     data: number;
     key: string;
@@ -394,65 +376,45 @@ export interface IGVBarChartSeriesPoint {
 }
 
 // @public (undocumented)
-export interface IGVDataPoint {
+export interface GVDataPoint {
     [key: string]: number | string;
 }
 
 // @public (undocumented)
-export interface IGVForBarChart {
-    [key: string]: IGVBarChartSeriesPoint;
+export interface GVForBarChart {
+    [key: string]: GVBarChartSeriesPoint;
 }
 
 // @public (undocumented)
-export interface IGVSingleDataPoint {
-    [key: string]: IGVDataPoint;
-}
-
-// @public (undocumented)
-export interface IHeatMapChartData {
-    // (undocumented)
-    data: IHeatMapChartDataPoint[];
-    legend: string;
-    value: number;
-}
-
-// @public (undocumented)
-export interface IHeatMapChartDataPoint {
-    callOutAccessibilityData?: IAccessibilityProps;
-    descriptionMessage?: string;
-    onClick?: VoidFunction;
-    ratio?: [number, number];
-    rectText?: string | number;
-    // (undocumented)
-    value: number;
-    // (undocumented)
-    x: string | Date | number;
-    // (undocumented)
-    y: string | Date | number;
+export interface GVSingleDataPoint {
+    [key: string]: GVDataPoint;
 }
 
 // @public
-export interface IHorizontalBarChartProps extends React.RefAttributes<HTMLDivElement> {
+export const HorizontalBarChart: React_2.FunctionComponent<HorizontalBarChartProps>;
+
+// @public
+export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivElement> {
     barHeight?: number;
-    calloutProps?: IPopoverComponentProps;
+    calloutProps?: PopoverComponentProps;
     chartDataMode?: ChartDataMode;
     className?: string;
     color?: string;
     culture?: string;
-    customProps?: (dataPointCalloutProps: IChartDataPoint) => IPopoverComponentProps;
-    data?: IChartProps[];
+    customProps?: (dataPointCalloutProps: ChartDataPoint) => PopoverComponentProps;
+    data?: ChartProps[];
     hideLabels?: boolean;
     hideRatio?: boolean[];
     hideTooltip?: boolean;
-    onRenderCalloutPerHorizontalBar?: (props: IChartDataPoint) => JSX.Element | undefined;
+    onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSX.Element | undefined;
     showTriangle?: boolean;
-    styles?: IHorizontalBarChartStyles;
+    styles?: HorizontalBarChartStyles;
     variant?: HorizontalBarChartVariant;
     width?: number;
 }
 
 // @public
-export interface IHorizontalBarChartStyles {
+export interface HorizontalBarChartStyles {
     barLabel: string;
     barWrapper: string;
     benchmarkContainer: string;
@@ -468,8 +430,16 @@ export interface IHorizontalBarChartStyles {
 }
 
 // @public (undocumented)
-export interface IHorizontalBarChartWithAxisDataPoint {
-    callOutAccessibilityData?: IAccessibilityProps;
+export enum HorizontalBarChartVariant {
+    // (undocumented)
+    AbsoluteScale = "absolute-scale",
+    // (undocumented)
+    PartToWhole = "part-to-whole"
+}
+
+// @public (undocumented)
+export interface HorizontalBarChartWithAxisDataPoint {
+    callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     legend?: string;
     onClick?: VoidFunction;
@@ -480,13 +450,13 @@ export interface IHorizontalBarChartWithAxisDataPoint {
 }
 
 // @public (undocumented)
-export interface IHorizontalDataPoint {
+export interface HorizontalDataPoint {
     x: number;
     y: number;
 }
 
 // @public
-export interface ILegend {
+export interface Legend {
     action?: VoidFunction;
     color: string;
     hoverAction?: VoidFunction;
@@ -501,13 +471,19 @@ export interface ILegend {
 }
 
 // @public (undocumented)
-export interface ILegendDataItem {
+export interface LegendDataItem {
     legendColor: string;
     legendText: string | number;
 }
 
+// @public (undocumented)
+export const Legends: React_2.FunctionComponent<LegendsProps>;
+
 // @public
-export interface ILegendsProps {
+export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
+
+// @public
+export interface LegendsProps {
     allowFocusOnLegends?: boolean;
     canSelectMultipleLegends?: boolean;
     centerLegends?: boolean;
@@ -515,16 +491,16 @@ export interface ILegendsProps {
     defaultSelectedLegend?: string;
     defaultSelectedLegends?: string[];
     enabledWrapLines?: boolean;
-    legends: ILegend[];
-    onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: ILegend) => void;
+    legends: Legend[];
+    onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
     overflowStyles?: React_2.CSSProperties;
     overflowText?: string;
     shape?: LegendShape;
-    styles?: ILegendsStyles;
+    styles?: LegendsStyles;
 }
 
 // @public
-export interface ILegendsStyles {
+export interface LegendsStyles {
     hoverChange?: string;
     legend?: string;
     rect?: string;
@@ -536,14 +512,14 @@ export interface ILegendsStyles {
 }
 
 // @public (undocumented)
-export interface ILegendState {
+export interface LegendState {
     // (undocumented)
     activeLegend: string;
     selectedLegends: LegendMap;
 }
 
 // @public
-export interface ILegendStyleProps {
+export interface LegendStyleProps {
     // (undocumented)
     borderColor?: string;
     // (undocumented)
@@ -560,13 +536,16 @@ export interface ILegendStyleProps {
     stripePattern?: boolean;
 }
 
+// @public
+export const LineChart: React_2.FunctionComponent<LineChartProps>;
+
 // @public (undocumented)
-export interface ILineChartDataPoint {
-    callOutAccessibilityData?: IAccessibilityProps;
+export interface LineChartDataPoint {
+    callOutAccessibilityData?: AccessibilityProps;
     hideCallout?: boolean;
     onDataPointClick?: () => void;
     x: number | Date;
-    xAxisCalloutAccessibilityData?: IAccessibilityProps;
+    xAxisCalloutAccessibilityData?: AccessibilityProps;
     xAxisCalloutData?: string;
     y: number;
     yAxisCalloutData?: string | {
@@ -575,13 +554,13 @@ export interface ILineChartDataPoint {
 }
 
 // @public (undocumented)
-export interface ILineChartGap {
+export interface LineChartGap {
     endIndex: number;
     startIndex: number;
 }
 
 // @public (undocumented)
-export interface ILineChartLineOptions extends SVGProps<SVGPathElement> {
+export interface LineChartLineOptions extends SVGProps<SVGPathElement> {
     lineBorderColor?: string;
     lineBorderWidth?: string | number;
     strokeDasharray?: string | number;
@@ -591,56 +570,56 @@ export interface ILineChartLineOptions extends SVGProps<SVGPathElement> {
 }
 
 // @public (undocumented)
-export interface ILineChartPoints {
+export interface LineChartPoints {
     color?: string;
-    data: ILineChartDataPoint[];
-    gaps?: ILineChartGap[];
+    data: LineChartDataPoint[];
+    gaps?: LineChartGap[];
     hideNonActiveDots?: boolean;
     legend: string;
     legendShape?: LegendShape;
-    lineOptions?: ILineChartLineOptions;
+    lineOptions?: LineChartLineOptions;
     onLegendClick?: (selectedLegend: string | null | string[]) => void;
     onLineClick?: () => void;
     opacity?: number;
 }
 
 // @public
-export interface ILineChartProps extends ICartesianChartProps {
+export interface LineChartProps extends CartesianChartProps {
     allowMultipleShapesForPoints?: boolean;
     // (undocumented)
-    colorFillBars?: IColorFillBarsProps[];
+    colorFillBars?: ColorFillBarsProps[];
     culture?: string;
-    data: IChartProps;
+    data: ChartProps;
     enablePerfOptimization?: boolean;
-    eventAnnotationProps?: IEventsAnnotationProps;
-    getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
-    onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
-    onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
+    eventAnnotationProps?: EventsAnnotationProps;
+    getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
+    onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
+    onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
     // (undocumented)
     optimizeLargeData?: boolean;
-    styles?: ILineChartStyles;
+    styles?: LineChartStyles;
 }
 
 // @public
-export interface ILineChartStyleProps extends ICartesianChartStyleProps {
+export interface LineChartStyleProps extends CartesianChartStyleProps {
 }
 
 // @public
-export interface ILineChartStyles extends ICartesianChartStyles {
+export interface LineChartStyles extends CartesianChartStyles {
 }
 
 // @public (undocumented)
-export interface ILineDataInVerticalBarChart {
+export interface LineDataInVerticalBarChart {
     onClick?: VoidFunction;
     useSecondaryYScale?: boolean;
     // (undocumented)
-    y: IVerticalBarChartDataPoint['y'];
+    y: VerticalBarChartDataPoint['y'];
     // (undocumented)
     yAxisCalloutData?: string | undefined;
 }
 
 // @public (undocumented)
-export interface ILineDataInVerticalStackedBarChart {
+export interface LineDataInVerticalStackedBarChart {
     // (undocumented)
     color: string;
     data?: number;
@@ -654,7 +633,7 @@ export interface ILineDataInVerticalStackedBarChart {
 }
 
 // @public (undocumented)
-export interface IMargins {
+export interface Margins {
     bottom?: number;
     left?: number;
     right?: number;
@@ -662,20 +641,20 @@ export interface IMargins {
 }
 
 // @public (undocumented)
-export interface IModifiedCartesianChartProps extends ICartesianChartProps {
+export interface ModifiedCartesianChartProps extends CartesianChartProps {
     barwidth?: number;
-    calloutProps?: IPopoverComponentProps;
+    calloutProps?: PopoverComponentProps;
     chartTitle?: string;
     chartType: ChartTypes;
-    children(props: IChildProps): React_2.ReactNode;
+    children(props: ChildProps): React_2.ReactNode;
     culture?: string;
     datasetForXAxisDomain?: string[];
     enableFirstRenderOptimization?: boolean;
     // (undocumented)
     getAxisData?: any;
-    getDomainMargins?: (containerWidth: number) => IMargins;
+    getDomainMargins?: (containerWidth: number) => Margins;
     getGraphData?: any;
-    getmargins?: (margins: IMargins) => void;
+    getmargins?: (margins: Margins) => void;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
@@ -696,7 +675,10 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
 }
 
 // @public (undocumented)
-export interface IPopoverComponentProps {
+export const PopoverComponent: React_2.FunctionComponent<PopoverComponentProps>;
+
+// @public (undocumented)
+export interface PopoverComponentProps {
     // (undocumented)
     clickPosition?: {
         x: number;
@@ -709,12 +691,14 @@ export interface IPopoverComponentProps {
     // (undocumented)
     customCallout?: {
         customizedCallout?: JSX.Element;
-        customCalloutProps?: IPopoverComponentProps;
+        customCalloutProps?: PopoverComponentProps;
     };
     // (undocumented)
     descriptionMessage?: string;
     // (undocumented)
     hoverXValue?: string | number;
+    // (undocumented)
+    inline?: boolean;
     // (undocumented)
     isCalloutForStack?: boolean;
     // (undocumented)
@@ -725,6 +709,8 @@ export interface IPopoverComponentProps {
     legend?: string | number | Date;
     // (undocumented)
     ratio?: [number, number];
+    // (undocumented)
+    withArrow?: boolean;
     // (undocumented)
     xAxisCalloutAccessibilityData?: {
         ariaLabel?: string;
@@ -739,11 +725,11 @@ export interface IPopoverComponentProps {
     // (undocumented)
     YValue?: string | number | Date;
     // (undocumented)
-    YValueHover?: IYValueHover[];
+    YValueHover?: YValueHover[];
 }
 
 // @public (undocumented)
-export interface IPopoverComponentStyles {
+export interface PopoverComponentStyles {
     // (undocumented)
     calloutBlockContainer: string;
     // (undocumented)
@@ -775,7 +761,7 @@ export interface IPopoverComponentStyles {
 }
 
 // @public (undocumented)
-export interface IRefArrayData {
+export interface RefArrayData {
     // (undocumented)
     index?: string;
     // (undocumented)
@@ -783,15 +769,10 @@ export interface IRefArrayData {
 }
 
 // @public (undocumented)
-export interface ISankeyChartData {
-    // (undocumented)
-    links: SLink[];
-    // (undocumented)
-    nodes: SNode[];
-}
+export const Shape: React_2.FunctionComponent<ShapeProps>;
 
 // @public (undocumented)
-export interface IShapeProps {
+export interface ShapeProps {
     // (undocumented)
     classNameForNonSvg?: string;
     // (undocumented)
@@ -805,23 +786,26 @@ export interface IShapeProps {
 }
 
 // @public
-export interface ISparklineProps extends React.RefAttributes<HTMLDivElement> {
+export const Sparkline: React_2.FunctionComponent<SparklineProps>;
+
+// @public
+export interface SparklineProps extends React.RefAttributes<HTMLDivElement> {
     className?: string;
     culture?: string;
-    data?: IChartProps;
+    data?: ChartProps;
     height?: number;
     showLegend?: boolean;
-    styles?: ISparklineStyles;
+    styles?: SparklineStyles;
     valueTextWidth?: number;
     width?: number;
 }
 
 // @public (undocumented)
-export interface ISparklineStyleProps extends ICartesianChartStyleProps {
+export interface SparklineStyleProps extends CartesianChartStyleProps {
 }
 
 // @public
-export interface ISparklineStyles {
+export interface SparklineStyles {
     // (undocumented)
     inlineBlock?: string;
     // (undocumented)
@@ -829,11 +813,17 @@ export interface ISparklineStyles {
 }
 
 // @public (undocumented)
-export interface IVerticalBarChartDataPoint {
-    callOutAccessibilityData?: IAccessibilityProps;
+export const Textbox: React_2.FunctionComponent<TextboxProps>;
+
+// @public
+export const VerticalBarChart: React_2.FunctionComponent<VerticalBarChartProps>;
+
+// @public (undocumented)
+export interface VerticalBarChartDataPoint {
+    callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     legend?: string;
-    lineData?: ILineDataInVerticalBarChart;
+    lineData?: LineDataInVerticalBarChart;
     onClick?: VoidFunction;
     x: number | string | Date;
     xAxisCalloutData?: string;
@@ -842,19 +832,19 @@ export interface IVerticalBarChartDataPoint {
 }
 
 // @public
-export interface IVerticalBarChartProps extends ICartesianChartProps {
+export interface VerticalBarChartProps extends CartesianChartProps {
     barWidth?: number | 'default' | 'auto';
     chartTitle?: string;
     colors?: string[];
     culture?: string;
-    data?: IVerticalBarChartDataPoint[];
+    data?: VerticalBarChartDataPoint[];
     hideLabels?: boolean;
     lineLegendColor?: string;
     lineLegendText?: string;
-    lineOptions?: ILineChartLineOptions;
+    lineOptions?: LineChartLineOptions;
     maxBarWidth?: number;
-    onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
-    styles?: IVerticalBarChartStyles;
+    onRenderCalloutPerDataPoint?: RenderFunction<VerticalBarChartDataPoint>;
+    styles?: VerticalBarChartStyles;
     useSingleColor?: boolean;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
@@ -862,12 +852,12 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
 }
 
 // @public
-export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
+export interface VerticalBarChartStyleProps extends CartesianChartStyleProps {
     legendColor?: string;
 }
 
 // @public
-export interface IVerticalBarChartStyles extends ICartesianChartStyles {
+export interface VerticalBarChartStyles extends CartesianChartStyles {
     barLabel: string;
     // @deprecated
     xAxisTicks?: string;
@@ -878,22 +868,22 @@ export interface IVerticalBarChartStyles extends ICartesianChartStyles {
 }
 
 // @public (undocumented)
-export interface IVerticalStackedBarDataPoint extends Omit<IDataPoint, 'x'> {
+export interface VerticalStackedBarDataPoint extends Omit<DataPoint, 'x'> {
     x: number | string | Date;
 }
 
 // @public (undocumented)
-export interface IVerticalStackedChartProps {
-    chartData: IVSChartDataPoint[];
-    lineData?: ILineDataInVerticalStackedBarChart[];
-    stackCallOutAccessibilityData?: IAccessibilityProps;
+export interface VerticalStackedChartProps {
+    chartData: VSChartDataPoint[];
+    lineData?: LineDataInVerticalStackedBarChart[];
+    stackCallOutAccessibilityData?: AccessibilityProps;
     xAxisCalloutData?: string;
     xAxisPoint: number | string | Date;
 }
 
 // @public (undocumented)
-export interface IVSChartDataPoint {
-    callOutAccessibilityData?: IAccessibilityProps;
+export interface VSChartDataPoint {
+    callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     data: number;
     legend: string;
@@ -902,9 +892,9 @@ export interface IVSChartDataPoint {
 }
 
 // @public (undocumented)
-export interface IYValueHover {
+export interface YValueHover {
     // (undocumented)
-    callOutAccessibilityData?: IAccessibilityProps;
+    callOutAccessibilityData?: AccessibilityProps;
     // (undocumented)
     color?: string;
     // (undocumented)
@@ -922,36 +912,6 @@ export interface IYValueHover {
         [id: string]: number;
     };
 }
-
-// @public (undocumented)
-export const Legends: React_2.FunctionComponent<ILegendsProps>;
-
-// @public
-export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
-
-// @public
-export const LineChart: React_2.FunctionComponent<ILineChartProps>;
-
-// @public (undocumented)
-export const PopoverComponent: React_2.FunctionComponent<IPopoverComponentProps>;
-
-// @public (undocumented)
-export const Shape: React_2.FunctionComponent<IShapeProps>;
-
-// @public (undocumented)
-export type SLink = SankeyLink<ISNodeExtra, ISLinkExtra>;
-
-// @public (undocumented)
-export type SNode = SankeyNode<ISNodeExtra, ISLinkExtra>;
-
-// @public
-export const Sparkline: React_2.FunctionComponent<ISparklineProps>;
-
-// @public (undocumented)
-export const Textbox: React_2.FunctionComponent<ITextboxProps>;
-
-// @public
-export const VerticalBarChart: React_2.FunctionComponent<IVerticalBarChartProps>;
 
 // (No @packageDocumentation comment for this package)
 

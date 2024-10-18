@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
-import { ILegend, Legends } from '@fluentui/react-charts-preview';
+import { Legend, Legends } from '@fluentui/react-charts-preview';
 
 export default {
   title: 'Charts/Legend',
@@ -23,7 +23,7 @@ export default {
 } satisfies Meta<typeof Legends>;
 
 export const Basic = () => {
-  const legends: ILegend[] = [
+  const legends: Legend[] = [
     {
       title: 'fsd 1',
       color: '#0078d4',
@@ -84,7 +84,7 @@ export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 export const BasicRTL = getStoryVariant(Basic, RTL);
 
 export const Overflow = () => {
-  const legends: ILegend[] = [
+  const legends: Legend[] = [
     {
       title: 'Legend 1',
       color: '#e81123',

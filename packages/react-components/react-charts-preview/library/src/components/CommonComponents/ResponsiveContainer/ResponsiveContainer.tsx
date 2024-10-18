@@ -7,7 +7,7 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
   const containerRef = React.useRef<HTMLDivElement>(null);
   const onResizeRef = React.useRef<ResponsiveContainerProps['onResize']>();
   const { targetDocument } = useFluent_unstable();
-  const classes = useResponsiveContainerStyles_unstable();
+  const classes = useResponsiveContainerStyles_unstable(props);
 
   const [size, setSize] = React.useState<{ containerWidth?: number; containerHeight?: number }>({});
 
@@ -59,3 +59,4 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
     </div>
   );
 };
+ResponsiveContainer.displayName = 'ResponsiveContainer';

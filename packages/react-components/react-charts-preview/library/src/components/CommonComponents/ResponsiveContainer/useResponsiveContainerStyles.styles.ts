@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { ResponsiveContainerStyles } from './ResponsiveContainer.types';
+import { ResponsiveContainerProps, ResponsiveContainerStyles } from './ResponsiveContainer.types';
 
 export const responsiveContainerClassNames: ResponsiveContainerStyles = {
   root: 'fui-charts-resp__root',
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useResponsiveContainerStyles_unstable = (): ResponsiveContainerStyles => {
+export const useResponsiveContainerStyles_unstable = (props: ResponsiveContainerProps): ResponsiveContainerStyles => {
   const baseStyles = useStyles();
 
   return {

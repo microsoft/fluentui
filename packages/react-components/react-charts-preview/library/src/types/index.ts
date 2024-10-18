@@ -1,2 +1,2 @@
-export * from './IDataPoint';
-export * from './ILegendDataItem';
+export * from './DataPoint';
+export * from './LegendDataItem';

@@ -1,12 +1,12 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-components';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { IHorizontalBarChartProps, IHorizontalBarChartStyles, HorizontalBarChartVariant } from './index';
+import { HorizontalBarChartProps, HorizontalBarChartStyles, HorizontalBarChartVariant } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 /**
  * @internal
  */
-export const hbcClassNames: SlotClassNames<IHorizontalBarChartStyles> = {
+export const hbcClassNames: SlotClassNames<HorizontalBarChartStyles> = {
   root: 'fui-hbc__root',
   items: 'fui-hbc__items',
   chart: 'fui-hbc__chart',
@@ -31,10 +31,10 @@ const useStyles = makeStyles({
     width: '100%', // Support custom width
   },
   items10pMargin: {
-    marginBottom: '10px',
+    marginBottom: tokens.spacingVerticalMNudge,
   },
   items16pMargin: {
-    marginBottom: '16px',
+    marginBottom: tokens.spacingVerticalL,
   },
   chart: {
     width: '100%',
@@ -82,7 +82,7 @@ const useStyles = makeStyles({
     ...shorthands.borderRight('4px', 'solid', 'transparent'),
     ...shorthands.borderTop('7px', 'solid'),
     borderTopColor: tokens.colorPaletteBlueBorderActive,
-    marginBottom: '4px',
+    marginBottom: tokens.spacingVerticalXS,
     position: 'absolute',
   },
   barLabel: {
@@ -93,14 +93,14 @@ const useStyles = makeStyles({
     paddingRight: '40p',
   },
   chartWrapper0ppadding: {
-    paddingRight: 0,
+    paddingRight: tokens.spacingHorizontalNone,
   },
 });
 
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useHorizontalBarChartStyles_unstable = (props: IHorizontalBarChartProps): IHorizontalBarChartStyles => {
+export const useHorizontalBarChartStyles_unstable = (props: HorizontalBarChartProps): HorizontalBarChartStyles => {
   const { className, showTriangle, variant, hideLabels } = props; // ToDo - width, barHeight is non enumerable. Need to be used inline.
   const baseStyles = useStyles();
 

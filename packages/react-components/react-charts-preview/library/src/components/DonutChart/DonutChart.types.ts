@@ -1,18 +1,16 @@
-import { ICartesianChartProps, ICartesianChartStyleProps } from '../CommonComponents/index';
-import { IChartProps, IChartDataPoint } from './index';
-import { IPopoverComponentProps } from '../CommonComponents/Popover.types';
-
-export interface IDonutChart {}
+import { CartesianChartProps, CartesianChartStyleProps } from '../CommonComponents/index';
+import { ChartProps, ChartDataPoint } from './index';
+import { PopoverComponentProps } from '../CommonComponents/Popover.types';
 
 /**
  * Donut Chart properties.
  * {@docCategory DonutChart}
  */
-export interface IDonutChartProps extends ICartesianChartProps {
+export interface DonutChartProps extends CartesianChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: IChartProps;
+  data?: ChartProps;
 
   /**
    * inner radius for donut size
@@ -22,7 +20,7 @@ export interface IDonutChartProps extends ICartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IDonutChartStyles;
+  styles?: DonutChartStyles;
 
   /**
    * props for inside donut value
@@ -32,17 +30,17 @@ export interface IDonutChartProps extends ICartesianChartProps {
   /**
    * Define a custom callout renderer for a data point
    */
-  onRenderCalloutPerDataPoint?: (dataPointCalloutProps: IChartDataPoint) => JSX.Element | undefined;
+  onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSX.Element | undefined;
 
   /**
    * Define a custom callout props override
    */
-  customProps?: (dataPointCalloutProps: IChartDataPoint) => IPopoverComponentProps;
+  customProps?: (dataPointCalloutProps: ChartDataPoint) => PopoverComponentProps;
 
   /**
    * props for the callout in the chart
    */
-  calloutProps?: IPopoverComponentProps;
+  calloutProps?: PopoverComponentProps;
 
   /**
    * The prop used to define the culture to localized the numbers
@@ -66,13 +64,13 @@ export interface IDonutChartProps extends ICartesianChartProps {
  * Donut Chart style properties
  * {@docCategory DonutChart}
  */
-export interface IDonutChartStyleProps extends ICartesianChartStyleProps {}
+export interface DonutChartStyleProps extends CartesianChartStyleProps {}
 
 /**
  * Donut Chart styles
  * {@docCategory DonutChart}
  */
-export interface IDonutChartStyles {
+export interface DonutChartStyles {
   /**
    *  Style for the root element.
    */
