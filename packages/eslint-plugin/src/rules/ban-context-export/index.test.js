@@ -8,7 +8,7 @@ const ruleTester = new RuleTester();
 /**
  * @param {string} fixtureName
  */
-function getParserOptions(fixtureName) {
+function getLanguageOptions(fixtureName) {
   return {
     parserOptions: {
       parser: '@typescript-eslint/parser',
