@@ -44,7 +44,7 @@ import {
 } from '../theme/design-tokens.js';
 import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
-import { typographyCaption1Styles } from '../styles/partials/typography.partials.js';
+import { typographyBody1StrongerStyles, typographyCaption1Styles } from '../styles/partials/typography.partials.js';
 
 /**
  * Styles for the HorizontalBarChart component.
@@ -124,5 +124,18 @@ export const styles: ElementStyles = css`
   }
   .barLabel {
     font-size: ${fontSizeBase300};
+  }
+  .chartTitleDiv {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .ratioNumerator {
+    ${typographyBody1StrongerStyles}
+    color: ${colorNeutralForeground1};
+  }
+  .ratioDenominator {
+    font-size: ${fontSizeBase300};
+    color: ${colorNeutralForeground1};
   }
 `;
