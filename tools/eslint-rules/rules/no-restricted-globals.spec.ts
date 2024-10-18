@@ -5,10 +5,6 @@ import { rule, RULE_NAME } from './no-restricted-globals';
 
 const ruleTester = new RuleTester();
 
-global.structuredClone = jest.fn(val => {
-  return JSON.parse(JSON.stringify(val));
-});
-
 ruleTester.run(RULE_NAME, rule, {
   valid: [
     {
