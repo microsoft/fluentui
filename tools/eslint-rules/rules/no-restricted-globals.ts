@@ -15,7 +15,7 @@
  */
 
 import { Reference } from '@typescript-eslint/scope-manager';
-import { ESLintUtils, AST_NODE_TYPES, TSESTree, TSESLint } from '@typescript-eslint/utils';
+import { ESLintUtils, AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils';
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-no-restricted-globals"
 export const RULE_NAME = 'no-restricted-globals';
 
@@ -23,17 +23,12 @@ type MessageIds = 'defaultMessage' | 'customMessage';
 
 type Options = Array<{ name: string; message?: string } | string>;
 
-type Docs = {
-  recommended: TSESLint.RuleRecommendation;
-};
-
-export const rule = ESLintUtils.RuleCreator<Docs>(() => __filename)<Options, MessageIds>({
+export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageIds>({
   name: RULE_NAME,
   meta: {
     type: 'problem',
     docs: {
       description: ``,
-      recommended: 'recommended',
     },
     schema: {
       type: 'array',

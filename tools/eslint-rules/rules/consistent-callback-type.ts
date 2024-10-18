@@ -1,19 +1,14 @@
-import { ESLintUtils, AST_NODE_TYPES, TSESTree, TSESLint } from '@typescript-eslint/utils';
+import { ESLintUtils, AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils';
 
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-consistent-callback-type"
 export const RULE_NAME = 'consistent-callback-type';
 
-type Docs = {
-  recommended: TSESLint.RuleRecommendation;
-};
-
-export const rule = ESLintUtils.RuleCreator<Docs>(() => __filename)({
+export const rule = ESLintUtils.RuleCreator(() => __filename)({
   name: RULE_NAME,
   meta: {
     type: 'problem',
     docs: {
       description: 'Enforce callback props to be typed with `EventHandler`',
-      recommended: 'recommended',
     },
     messages: {
       invalidType: 'callback props should be typed with @fluentui/react-utilities#EventHandler<T>',
