@@ -11,7 +11,7 @@
         "assets": [
           {
             "input": "{projectRoot}/src/unstable",
-            "output": "{projectRoot}/unstable",
+            "output": "unstable",
             "glob": "*.json__tmpl__",
             "substitutions": {
               "__tmpl__": ""

@@ -10,19 +10,37 @@
       "options": {
         "assets": [
           {
-            "input": "{projectRoot}/src/{jsx-runtime,jsx-dev-runtime}",
-            "output": "{projectRoot}",
+            "input": "{projectRoot}/src/jsx-runtime",
+            "output": "jsx-runtime",
             "glob": "*.json__tmpl__",
             "substitutions": {
               "__tmpl__": ""
             }
           },
           {
-            "input": "{projectRoot}/src/{jsx-runtime,jsx-dev-runtime}",
-            "output": "{projectRoot}/dist",
+            "input": "{projectRoot}/src/jsx-runtime",
+            "output": "dist",
             "glob": "*.d.ts__tmpl__",
             "substitutions": {
+              "__tmpl__": "",
+              "index": "jsx-runtime"
+            }
+          },
+          {
+            "input": "{projectRoot}/src/jsx-dev-runtime",
+            "output": "jsx-dev-runtime",
+            "glob": "*.json__tmpl__",
+            "substitutions": {
               "__tmpl__": ""
+            }
+          },
+          {
+            "input": "{projectRoot}/src/jsx-dev-runtime",
+            "output": "dist",
+            "glob": "*.d.ts__tmpl__",
+            "substitutions": {
+              "__tmpl__": "",
+              "index": "jsx-dev-runtime"
             }
           }
         ]
