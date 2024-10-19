@@ -13,13 +13,7 @@ getGroupper(tabsterCore);
  * @public
  */
 export function horizontalbarchartTemplate<T extends HorizontalBarChart>(): ElementViewTemplate<T> {
-  return html<T>`
-    <template>
-      <div class="root" part="root">
-        <horizontalbarchart></horizontalbarchart>
-      </div>
-    </template>
-  `;
+  return html<T>``;
 }
 
 /**

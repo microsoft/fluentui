@@ -1,6 +1,7 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
 import * as d3 from 'd3';
 import { createTabster, getGroupper, getMover, getTabsterAttribute, Types } from 'tabster';
+import { getDataConverter } from '../utils/chart-helpers.js';
 import { IChartDataPoint, IChartProps, Variant } from './horizontalbarchart.options.js';
 
 // During the page startup.
@@ -38,8 +39,8 @@ export class HorizontalBarChart extends FASTElement {
   @attr
   public _isRTL: boolean = false;
 
-  @attr
-  public inpData: IChartProps[] = [];
+  @attr({ converter: getDataConverter('horizontal-bar-chart') })
+  public data!: IChartProps[];
 
   @attr
   public uniqueLegends: IChartDataPoint[] = [];
@@ -48,110 +49,6 @@ export class HorizontalBarChart extends FASTElement {
 
   constructor() {
     super();
-
-    const chartPoints1: IChartDataPoint[] = [
-      {
-        legend: 'Debit card numbers (EU and USA)',
-        data: 40,
-        color: '#0099BC',
-      },
-      {
-        legend: 'Passport numbers (USA)',
-        data: 23,
-        color: '#77004D',
-      },
-      {
-        legend: 'Social security numbers',
-        data: 35,
-        color: '#4F68ED',
-      },
-      {
-        legend: 'Credit card Numbers',
-        data: 87,
-        color: '#AE8C00',
-      },
-      {
-        legend: 'Tax identification numbers (USA)',
-        data: 87,
-        color: '#004E8C',
-      },
-    ];
-
-    const chartPoints2: IChartDataPoint[] = [
-      {
-        legend: 'Debit card numbers (EU and USA)',
-        data: 40,
-        color: '#0099BC',
-      },
-      {
-        legend: 'Passport numbers (USA)',
-        data: 56,
-        color: '#77004D',
-      },
-      {
-        legend: 'Social security numbers',
-        data: 35,
-        color: '#4F68ED',
-      },
-      {
-        legend: 'Credit card Numbers',
-        data: 92,
-        color: '#AE8C00',
-      },
-      {
-        legend: 'Tax identification numbers (USA)',
-        data: 87,
-        color: '#004E8C',
-      },
-    ];
-
-    const chartPoints3: IChartDataPoint[] = [
-      {
-        legend: 'Phone Numbers',
-        data: 40,
-        color: '#881798',
-      },
-      {
-        legend: 'Credit card Numbers',
-        data: 23,
-        color: '#AE8C00',
-      },
-    ];
-
-    const allchartPoints = [...chartPoints1, ...chartPoints2, ...chartPoints3];
-
-    // Create a map to store unique legends
-    const uniqueLegendsMap = new Map();
-
-    // Iterate through all chart points and populate the map
-    allchartPoints.forEach(point => {
-      // Check if the legend is already in the map
-      if (!uniqueLegendsMap.has(point.legend)) {
-        uniqueLegendsMap.set(point.legend, {
-          legend: point.legend,
-          data: point.data,
-          color: point.color,
-        });
-      }
-    });
-
-    // Convert the map values back to an array
-    this.uniqueLegends = Array.from(uniqueLegendsMap.values());
-
-    this.inpData = [
-      {
-        chartTitle: 'Monitored First',
-        chartData: chartPoints1,
-      },
-      {
-        chartTitle: 'Monitored Second',
-        chartData: chartPoints2,
-      },
-      {
-        chartTitle: 'Unmonitored',
-        chartData: chartPoints3,
-      },
-    ];
   }
 
   private bindEvents() {}
@@ -159,57 +56,6 @@ export class HorizontalBarChart extends FASTElement {
   connectedCallback() {
     super.connectedCallback();
     this.render();
-  }
-
-  renderSingle() {
-    const svg = d3
-      .select(this.shadowRoot)
-      .append('svg')
-      .attr('width', 800)
-      .attr('height', 800)
-      .attr('style', 'margin-left: 20px');
-
-    // Create tooltip div
-    const tooltip = d3
-      .select(this.shadowRoot)
-      .append('div')
-      .attr(
-        'style',
-        'position:absolute, text-align:center, width:60px, height:28px, padding:2px, font:12px sans-serif, background:yellow, border:2px, border-radius:8px, pointer-events:none, opacity:0',
-      );
-
-    const data = [12, 10, 15, 16, 23, 42]; // Sample data
-    const colors = ['#637cef', '#e3008c', '#2aa0a4', '#9373c0', '#13a10e', '#3a96dd'];
-
-    svg
-      .selectAll('rect')
-      .data(data)
-      .enter()
-      .append('rect')
-      .attr('y', (d, i) => i * 30) // Space out bars vertically
-      .attr('x', 0) // Start bars from the left edge
-      .attr('height', 25) // Fixed height for all bars
-      .attr('width', d => d + '%') // Width based on data
-      .attr('fill', (d, i) => colors[i % colors.length])
-      .on('mouseover', function (event, d) {
-        console.log(event.pageX, event.pageY);
-        tooltip.transition().duration(200).style('opacity', 0.9);
-        tooltip.html(d + ' hovered').attr('style', 'left:' + event.pageX + 'px, top:' + (event.pageY - 28) + 'px');
-      })
-      .on('mouseout', function () {
-        tooltip.transition().duration(500).attr('style', 'opacity:0');
-      });
-
-    svg
-      .selectAll('text')
-      .data(data)
-      .enter()
-      .append('text')
-      .attr('y', (d, i) => i * 30 + 15) // Position text in the middle of each bar vertically
-      .attr('x', d => d + 1 + '%') // Slight offset from the left edge
-      .text(d => d) // Set text content to data value
-      .attr('fill', 'black') // Text color
-      .attr('font-size', '12px'); // Text size
   }
 
   private createSingleChartBars(singleChartData: IChartProps, index: number, nodes: any) {
@@ -224,6 +70,28 @@ export class HorizontalBarChart extends FASTElement {
       .appendChild(singleChartBars.node());
   }
 
+  private hydrateLegends() {
+    // Create a map to store unique legends
+    const uniqueLegendsMap = new Map();
+
+    // Iterate through all chart points and populate the map
+    this.data.forEach(dataSeries => {
+      dataSeries.chartData!.forEach(point => {
+        // Check if the legend is already in the map
+        if (!uniqueLegendsMap.has(point.legend)) {
+          uniqueLegendsMap.set(point.legend, {
+            legend: point.legend,
+            data: point.data,
+            color: point.color,
+          });
+        }
+      });
+    });
+
+    // Convert the map values back to an array
+    this.uniqueLegends = Array.from(uniqueLegendsMap.values());
+  }
+
   render() {
     // Array to hold references to the buttons
     const legendButtonRefs: any = [];
@@ -231,7 +99,7 @@ export class HorizontalBarChart extends FASTElement {
     div
       .append('div')
       .selectAll('div')
-      .data(this.inpData!)
+      .data(this.data!)
       .enter()
       .append('div')
       .each((d, i, nodes) => {
@@ -246,6 +114,7 @@ export class HorizontalBarChart extends FASTElement {
         });
       });
 
+    this.hydrateLegends();
     const legendContainer = document.createElement('div');
     div.node()!.appendChild(legendContainer);
     legendContainer.classList.add('legendcontainer');

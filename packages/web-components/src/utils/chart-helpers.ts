@@ -3,6 +3,9 @@ import type { ValueConverter } from '@microsoft/fast-element';
 export const getDataConverter = (chartType: string): ValueConverter => {
   let validate: (obj: any) => void;
   switch (chartType) {
+    case 'horizontal-bar-chart':
+      validate = validateChartPropsArray;
+      break;
     case 'donut-chart':
     default:
       validate = validateChartProps;
@@ -22,8 +25,18 @@ export const getDataConverter = (chartType: string): ValueConverter => {
 
 type Dict = { [key: string]: any };
 
+const validateChartPropsArray = (obj: any) => {
+  if (obj === null || typeof obj !== 'object' || !Array.isArray(obj)) {
+    throw TypeError('Invalid data: Expected an object.');
+  }
+
+  obj.forEach((item, idx) => {
+    validateChartProps(item);
+  });
+};
+
 const validateChartProps = (obj: any) => {
-  if (typeof obj !== 'object' || Array.isArray(obj) || obj === null) {
+  if (obj === null || typeof obj !== 'object' || Array.isArray(obj)) {
     throw TypeError('Invalid data: Expected an object.');
   }
 
