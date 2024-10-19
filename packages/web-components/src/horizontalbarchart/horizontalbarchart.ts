@@ -94,7 +94,7 @@ export class HorizontalBarChart extends FASTElement {
   render() {
     // Array to hold references to the buttons
     const legendButtonRefs: any = [];
-    const div = d3Select(this.shadowRoot).append('div');
+    const div = d3Select(this.shadowRoot as any).append('div');
     div
       .append('div')
       .selectAll('div')
@@ -243,9 +243,7 @@ export class HorizontalBarChart extends FASTElement {
     let prevPosition = 0;
     let value = 0;
 
-    function createBars(point: IChartDataPoint, index: number) {
-      const startColor: string = point.color!;
-      const endColor: string = startColor;
+    function createBars(this: SVGGElement, point: IChartDataPoint, index: number) {
       const _isRTL = false;
       const barHeight = 12;
       const pointData = point.data ? point.data : 0;
