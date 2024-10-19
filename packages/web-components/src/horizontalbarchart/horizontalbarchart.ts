@@ -1,6 +1,6 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import * as d3 from 'd3';
-import { createTabster, getGroupper, getMover, getTabsterAttribute, Types } from 'tabster';
+import { create as d3Create, select as d3Select } from 'd3-selection';
+import { createTabster, getGroupper, getMover, getTabsterAttribute } from 'tabster';
 import { getDataConverter } from '../utils/chart-helpers.js';
 import { IChartDataPoint, IChartProps, Variant } from './horizontalbarchart.options.js';
 
@@ -62,8 +62,7 @@ export class HorizontalBarChart extends FASTElement {
     const singleChartBars = this._createBarsAndLegends(singleChartData!, index);
 
     // create a div element. Loop through chart bars and add to the div as its children
-    const divEle = d3
-      .select(nodes[index])
+    const divEle = d3Select(nodes[index])
       .attr('key', index)
       .attr('id', `_MSBC_bar-${index}`)
       .node()!
@@ -95,7 +94,7 @@ export class HorizontalBarChart extends FASTElement {
   render() {
     // Array to hold references to the buttons
     const legendButtonRefs: any = [];
-    const div = d3.select(this.shadowRoot).append('div');
+    const div = d3Select(this.shadowRoot).append('div');
     div
       .append('div')
       .selectAll('div')
@@ -264,8 +263,7 @@ export class HorizontalBarChart extends FASTElement {
 
       startingPoint.push(prevPosition);
 
-      const gEle = d3
-        .select(this) // 'this' refers to the current 'g' element
+      const gEle = d3Select(this) // 'this' refers to the current 'g' element
         .attr('key', index)
         .attr('role', 'img')
         .attr('aria-label', pointData);
@@ -293,7 +291,7 @@ export class HorizontalBarChart extends FASTElement {
         .attr('data-tabster', '{"mover": {...}}"');
     }
 
-    const containerDiv = d3.create('div').attr('style', 'position: relative');
+    const containerDiv = d3Create('div').attr('style', 'position: relative');
 
     let tooltip: any;
 

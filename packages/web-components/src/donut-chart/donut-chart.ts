@@ -1,5 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
-import { arc as d3Arc, pie as d3Pie } from 'd3';
+import { arc as d3Arc, pie as d3Pie } from 'd3-shape';
 import { createTabster, getMover, getTabsterAttribute, MoverDirections } from 'tabster';
 import { getDataConverter } from '../utils/chart-helpers.js';
 import { IChartProps } from './donut-chart.options.js';
