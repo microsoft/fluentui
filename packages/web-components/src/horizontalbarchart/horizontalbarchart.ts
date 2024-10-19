@@ -1,6 +1,6 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
 import { create as d3Create, select as d3Select } from 'd3-selection';
-import { createTabster, getGroupper, getMover, getTabsterAttribute } from 'tabster';
+import { createTabster, getGroupper, getMover, getTabsterAttribute, TABSTER_ATTRIBUTE_NAME } from 'tabster';
 import { getDataConverter } from '../utils/chart-helpers.js';
 import { IChartDataPoint, IChartProps, Variant } from './horizontalbarchart.options.js';
 
@@ -108,9 +108,9 @@ export class HorizontalBarChart extends FASTElement {
         const attributes = getTabsterAttribute({ root: {} });
 
         //Apply attributes directly to the current node
-        Object.keys(attributes).forEach(key => {
-          nodes[i].setAttribute(key, attributes[key]);
-        });
+        if (attributes[TABSTER_ATTRIBUTE_NAME] !== undefined) {
+          nodes[i].setAttribute(TABSTER_ATTRIBUTE_NAME, attributes[TABSTER_ATTRIBUTE_NAME]);
+        }
       });
 
     this.hydrateLegends();
@@ -137,7 +137,7 @@ export class HorizontalBarChart extends FASTElement {
       legendText.classList.add('legendText');
     });
 
-    const bars = this.shadowRoot?.querySelectorAll('.bar');
+    const bars = this.shadowRoot?.querySelectorAll<HTMLElement>('.bar');
 
     for (let i = 0; i < legendButtonRefs.length; i++) {
       legendButtonRefs[i].addEventListener('mouseover', () => {

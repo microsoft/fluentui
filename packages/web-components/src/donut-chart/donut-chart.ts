@@ -188,16 +188,16 @@ export class DonutChart extends FASTElement {
         }
         for (let j = 0; j < buttons.length; j++) {
           if (j !== i) {
-            const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+            const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
             legendRect.style['backgroundColor'] = 'transparent';
 
-            const legendText = buttons[j].getElementsByClassName('legendText')[0];
+            const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
             legendText.style['opacity'] = '0.67';
           } else {
-            const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+            const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
             legendRect.style['backgroundColor'] = legends[j].color;
 
-            const legendText = buttons[j].getElementsByClassName('legendText')[0];
+            const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
             legendText.style['opacity'] = '1';
           }
         }
@@ -211,10 +211,10 @@ export class DonutChart extends FASTElement {
           arcs[j].style['opacity'] = '1';
         }
         for (let j = 0; j < buttons.length; j++) {
-          const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+          const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
           legendRect.style['backgroundColor'] = legends[j].color;
 
-          const legendText = buttons[j].getElementsByClassName('legendText')[0];
+          const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
           legendText.style['opacity'] = '1';
         }
       });
@@ -232,16 +232,16 @@ export class DonutChart extends FASTElement {
         }
         for (let j = 0; j < buttons.length; j++) {
           if (j !== i) {
-            const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+            const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
             legendRect.style['backgroundColor'] = 'transparent';
 
-            const legendText = buttons[j].getElementsByClassName('legendText')[0];
+            const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
             legendText.style['opacity'] = '0.67';
           } else {
-            const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+            const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
             legendRect.style['backgroundColor'] = legends[j].color;
 
-            const legendText = buttons[j].getElementsByClassName('legendText')[0];
+            const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
             legendText.style['opacity'] = '1';
           }
         }
@@ -255,10 +255,10 @@ export class DonutChart extends FASTElement {
           arcs[j].style['opacity'] = '1';
         }
         for (let j = 0; j < buttons.length; j++) {
-          const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+          const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
           legendRect.style['backgroundColor'] = legends[j].color;
 
-          const legendText = buttons[j].getElementsByClassName('legendText')[0];
+          const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
           legendText.style['opacity'] = '1';
         }
       });
@@ -270,10 +270,10 @@ export class DonutChart extends FASTElement {
             arcs[j].style['opacity'] = '1';
           }
           for (let j = 0; j < buttons.length; j++) {
-            const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+            const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
             legendRect.style['backgroundColor'] = legends[j].color;
 
-            const legendText = buttons[j].getElementsByClassName('legendText')[0];
+            const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
             legendText.style['opacity'] = '1';
           }
         } else {
@@ -288,16 +288,24 @@ export class DonutChart extends FASTElement {
           }
           for (let j = 0; j < buttons.length; j++) {
             if (j !== i) {
-              const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+              const legendRect = (
+                buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
+              )[0];
               legendRect.style['backgroundColor'] = 'transparent';
 
-              const legendText = buttons[j].getElementsByClassName('legendText')[0];
+              const legendText = (
+                buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
+              )[0];
               legendText.style['opacity'] = '0.67';
             } else {
-              const legendRect = buttons[j].getElementsByClassName('legendRect')[0];
+              const legendRect = (
+                buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
+              )[0];
               legendRect.style['backgroundColor'] = legends[j].color;
 
-              const legendText = buttons[j].getElementsByClassName('legendText')[0];
+              const legendText = (
+                buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
+              )[0];
               legendText.style['opacity'] = '1';
             }
           }
