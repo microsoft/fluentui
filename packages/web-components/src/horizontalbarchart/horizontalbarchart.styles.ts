@@ -1,50 +1,21 @@
 import type { ElementStyles } from '@microsoft/fast-element';
 import { css } from '@microsoft/fast-element';
 import {
-  borderRadiusMedium,
-  colorCompoundBrandStroke,
   colorNeutralBackground1,
-  colorNeutralBackground3,
-  colorNeutralBackgroundInverted,
   colorNeutralForeground1,
-  colorNeutralForeground4,
-  colorNeutralForegroundDisabled,
-  colorNeutralForegroundInverted,
-  colorNeutralStroke1,
-  colorNeutralStroke1Hover,
-  colorNeutralStroke1Pressed,
-  colorNeutralStrokeAccessible,
-  colorNeutralStrokeAccessibleHover,
-  colorNeutralStrokeAccessiblePressed,
-  colorNeutralStrokeDisabled,
-  colorPaletteRedBorder2,
-  colorTransparentBackground,
-  curveAccelerateMid,
-  curveDecelerateMid,
-  durationNormal,
-  durationUltraFast,
-  fontFamilyBase,
-  fontSizeBase200,
-  fontSizeBase300,
-  fontSizeBase400,
-  fontWeightRegular,
-  lineHeightBase200,
-  lineHeightBase300,
-  lineHeightBase400,
-  shadow2,
-  spacingHorizontalM,
-  spacingHorizontalMNudge,
+  shadow4,
+  spacingHorizontalL,
+  spacingHorizontalS,
   spacingHorizontalSNudge,
-  spacingHorizontalXS,
-  spacingHorizontalXXS,
-  spacingVerticalS,
-  spacingVerticalSNudge,
-  spacingVerticalXS,
-  strokeWidthThin,
+  spacingVerticalL,
+  spacingVerticalMNudge,
 } from '../theme/design-tokens.js';
-import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
-import { typographyCaption1Styles } from '../styles/partials/typography.partials.js';
+import {
+  typographyBody1StrongStyles,
+  typographyBody1Styles,
+  typographyCaption1Styles,
+} from '../styles/partials/typography.partials.js';
 
 /**
  * Styles for the HorizontalBarChart component.
@@ -55,7 +26,7 @@ export const styles: ElementStyles = css`
   ${display('inline-block')}
 
   .root {
-    background-color: var(--background-color);
+    background-color: ${colorNeutralBackground1};
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -63,16 +34,16 @@ export const styles: ElementStyles = css`
     position: relative;
   }
   .tooltip {
+    ${typographyCaption1Styles}
     position: absolute;
     display: grid;
     overflow: hidden;
-    padding: 11px 16px 10px 16px;
-    backgroundcolor: theme.semanticColors.bodyBackground;
+    padding: ${spacingVerticalMNudge} ${spacingHorizontalL};
+    backgroundcolor: ${colorNeutralBackground1};
     backgroundblendmode: normal, luminosity;
     text-align: center;
-    font: 12px sans-serif;
     background: white;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: ${shadow4};
     border: 2px;
     pointer-events: none;
     opacity: 0;
@@ -82,23 +53,21 @@ export const styles: ElementStyles = css`
     opacity: 1;
   }
   .chartTitle {
+    ${typographyBody1Styles}
     display: flex;
     justify-content: space-between;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     display: block;
-    font-size: 14px;
-    font-weight: 400px;
-    line-height: 16px;
     color: ${colorNeutralForeground1};
-    margin-bottom: 5px;
+    margin-bottom: ${spacingHorizontalSNudge};
   }
   .legendcontainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-top: 16px;
+    padding-top: ${spacingVerticalL};
     width: 90%;
     align-items: center;
     margin: -8px 0 0 -8px;
@@ -108,14 +77,14 @@ export const styles: ElementStyles = css`
     align-items: center;
     cursor: pointer;
     border: none;
-    padding: 8px;
+    padding: ${spacingHorizontalS};
     background: none;
     text-transform: capitalize;
   }
   .legendRect {
     width: 12px;
     height: 12px;
-    margin-right: 8px;
+    margin-right: ${spacingHorizontalS};
     border: 1px solid;
   }
   .legendText {
@@ -123,6 +92,6 @@ export const styles: ElementStyles = css`
     color: ${colorNeutralForeground1};
   }
   .barLabel {
-    font-size: ${fontSizeBase300};
+    ${typographyBody1StrongStyles}
   }
 `;

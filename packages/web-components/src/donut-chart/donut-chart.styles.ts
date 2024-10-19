@@ -8,6 +8,10 @@ import {
   colorNeutralShadowAmbient,
   colorNeutralShadowKey,
   colorTransparentStroke,
+  spacingHorizontalL,
+  spacingHorizontalS,
+  spacingVerticalL,
+  spacingVerticalMNudge,
 } from '../theme/design-tokens.js';
 import { typographyBody1Styles, typographyCaption1Styles, typographyTitle2Styles } from '../styles/index.js';
 
@@ -37,7 +41,7 @@ export const styles = css`
   }
 
   .legendContainer {
-    padding-top: 16px;
+    padding-top: ${spacingVerticalL};
 
     white-space: nowrap;
     width: 100%;
@@ -58,7 +62,7 @@ export const styles = css`
     align-items: center;
     cursor: pointer;
     border: none;
-    padding: 8px;
+    padding: ${spacingHorizontalS};
     background: none;
     text-transform: capitalize;
   }
@@ -66,7 +70,7 @@ export const styles = css`
   .legendRect {
     width: 12px;
     height: 12px;
-    margin-right: 8px;
+    margin-right: ${spacingHorizontalS};
     border: 1px solid;
   }
 
@@ -78,7 +82,7 @@ export const styles = css`
   .calloutContentRoot {
     display: grid;
     overflow: hidden;
-    padding: 11px 16px 10px 16px;
+    padding: ${spacingVerticalMNudge} ${spacingHorizontalL};
     background-color: ${colorNeutralBackground1};
     background-blend-mode: normal, luminosity;
 
@@ -93,7 +97,7 @@ export const styles = css`
   }
 
   .calloutBlockContainer {
-    padding-left: 8px;
+    padding-left: ${spacingHorizontalS};
     color: ${colorNeutralForeground2};
   }
 
