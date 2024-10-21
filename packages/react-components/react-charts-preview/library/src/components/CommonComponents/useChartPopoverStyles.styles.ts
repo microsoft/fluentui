@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { HighContrastSelectorBlack, HighContrastSelector } from '../../utilities/index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { PopoverComponentProps, PopoverComponentStyles } from './Popover.types';
+import { ChartPopoverProps, PopoverComponentStyles } from './ChartPopover.types';
 
 /**
  * @internal
@@ -120,7 +120,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const usePopoverStyles_unstable = (props: PopoverComponentProps): PopoverComponentStyles => {
+export const usePopoverStyles_unstable = (props: ChartPopoverProps): PopoverComponentStyles => {
   const { isCartesian } = props;
   const baseStyles = useStyles();
   return {

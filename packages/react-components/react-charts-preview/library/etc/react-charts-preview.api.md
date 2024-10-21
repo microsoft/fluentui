@@ -68,12 +68,12 @@ export const CartesianChart: React_2.FunctionComponent<ModifiedCartesianChartPro
 
 // @public
 export interface CartesianChartProps {
-    calloutProps?: Partial<PopoverComponentProps>;
+    calloutProps?: Partial<ChartPopoverProps>;
     // @deprecated
     chartLabel?: string;
     className?: string;
     customDateTimeFormatter?: (dateTime: Date) => string;
-    customProps?: (dataPointCalloutProps: any) => PopoverComponentProps;
+    customProps?: (dataPointCalloutProps: any) => ChartPopoverProps;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
     enableReflow?: boolean;
@@ -172,6 +172,56 @@ export interface ChartDataPoint {
     placeHolder?: boolean;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;
+}
+
+// @public (undocumented)
+export const ChartPopover: React_2.FunctionComponent<ChartPopoverProps>;
+
+// @public (undocumented)
+export interface ChartPopoverProps {
+    // (undocumented)
+    clickPosition?: {
+        x: number;
+        y: number;
+    };
+    // (undocumented)
+    color?: string;
+    // (undocumented)
+    culture?: string;
+    // (undocumented)
+    customCallout?: {
+        customizedCallout?: JSX.Element;
+        customCalloutProps?: ChartPopoverProps;
+    };
+    // (undocumented)
+    descriptionMessage?: string;
+    // (undocumented)
+    hoverXValue?: string | number;
+    // (undocumented)
+    isCalloutForStack?: boolean;
+    // (undocumented)
+    isCartesian?: boolean;
+    // (undocumented)
+    isPopoverOpen?: boolean;
+    // (undocumented)
+    legend?: string | number | Date;
+    // (undocumented)
+    ratio?: [number, number];
+    // (undocumented)
+    xAxisCalloutAccessibilityData?: {
+        ariaLabel?: string;
+        data?: string;
+    };
+    // (undocumented)
+    xCalloutValue?: string;
+    // (undocumented)
+    XValue?: string;
+    // (undocumented)
+    yCalloutValue?: string;
+    // (undocumented)
+    YValue?: string | number | Date;
+    // (undocumented)
+    YValueHover?: YValueHover[];
 }
 
 // @public (undocumented)
@@ -310,9 +360,9 @@ export const DonutChart: React_2.FunctionComponent<DonutChartProps>;
 
 // @public
 export interface DonutChartProps extends CartesianChartProps {
-    calloutProps?: PopoverComponentProps;
+    calloutProps?: ChartPopoverProps;
     culture?: string;
-    customProps?: (dataPointCalloutProps: ChartDataPoint) => PopoverComponentProps;
+    customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     data?: ChartProps;
     hideLabels?: boolean;
     innerRadius?: number;
@@ -396,12 +446,12 @@ export const HorizontalBarChart: React_2.FunctionComponent<HorizontalBarChartPro
 // @public
 export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivElement> {
     barHeight?: number;
-    calloutProps?: PopoverComponentProps;
+    calloutProps?: ChartPopoverProps;
     chartDataMode?: ChartDataMode;
     className?: string;
     color?: string;
     culture?: string;
-    customProps?: (dataPointCalloutProps: ChartDataPoint) => PopoverComponentProps;
+    customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     data?: ChartProps[];
     hideLabels?: boolean;
     hideRatio?: boolean[];
@@ -643,7 +693,7 @@ export interface Margins {
 // @public (undocumented)
 export interface ModifiedCartesianChartProps extends CartesianChartProps {
     barwidth?: number;
-    calloutProps?: PopoverComponentProps;
+    calloutProps?: ChartPopoverProps;
     chartTitle?: string;
     chartType: ChartTypes;
     children(props: ChildProps): React_2.ReactNode;
@@ -672,56 +722,6 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     xAxisType: XAxisTypes;
     yAxisPadding?: number;
     yAxisType?: YAxisType;
-}
-
-// @public (undocumented)
-export const PopoverComponent: React_2.FunctionComponent<PopoverComponentProps>;
-
-// @public (undocumented)
-export interface PopoverComponentProps {
-    // (undocumented)
-    clickPosition?: {
-        x: number;
-        y: number;
-    };
-    // (undocumented)
-    color?: string;
-    // (undocumented)
-    culture?: string;
-    // (undocumented)
-    customCallout?: {
-        customizedCallout?: JSX.Element;
-        customCalloutProps?: PopoverComponentProps;
-    };
-    // (undocumented)
-    descriptionMessage?: string;
-    // (undocumented)
-    hoverXValue?: string | number;
-    // (undocumented)
-    isCalloutForStack?: boolean;
-    // (undocumented)
-    isCartesian?: boolean;
-    // (undocumented)
-    isPopoverOpen?: boolean;
-    // (undocumented)
-    legend?: string | number | Date;
-    // (undocumented)
-    ratio?: [number, number];
-    // (undocumented)
-    xAxisCalloutAccessibilityData?: {
-        ariaLabel?: string;
-        data?: string;
-    };
-    // (undocumented)
-    xCalloutValue?: string;
-    // (undocumented)
-    XValue?: string;
-    // (undocumented)
-    yCalloutValue?: string;
-    // (undocumented)
-    YValue?: string | number | Date;
-    // (undocumented)
-    YValueHover?: YValueHover[];
 }
 
 // @public (undocumented)

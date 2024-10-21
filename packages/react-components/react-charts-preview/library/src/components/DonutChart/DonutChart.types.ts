@@ -1,6 +1,6 @@
 import { CartesianChartProps, CartesianChartStyleProps } from '../CommonComponents/index';
 import { ChartProps, ChartDataPoint } from './index';
-import { PopoverComponentProps } from '../CommonComponents/Popover.types';
+import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 
 /**
  * Donut Chart properties.
@@ -35,12 +35,12 @@ export interface DonutChartProps extends CartesianChartProps {
   /**
    * Define a custom callout props override
    */
-  customProps?: (dataPointCalloutProps: ChartDataPoint) => PopoverComponentProps;
+  customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
 
   /**
    * props for the callout in the chart
    */
-  calloutProps?: PopoverComponentProps;
+  calloutProps?: ChartPopoverProps;
 
   /**
    * The prop used to define the culture to localized the numbers

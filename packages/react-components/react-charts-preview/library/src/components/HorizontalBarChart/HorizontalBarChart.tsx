@@ -6,7 +6,7 @@ import { formatValueWithSIPrefix, getAccessibleDataObject, useRtl } from '../../
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useFocusableGroup } from '@fluentui/react-tabster';
-import { PopoverComponent } from '../CommonComponents/Popover';
+import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 /**
@@ -361,7 +361,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
           </div>
         );
       })}
-      <PopoverComponent
+      <ChartPopover
         xCalloutValue={xCalloutValue}
         yCalloutValue={yCalloutValue}
         culture={props.culture ?? 'en-us'}

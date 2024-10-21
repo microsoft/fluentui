@@ -3,7 +3,7 @@ import { LegendsProps } from '../Legends/index';
 import { AccessibilityProps, Margins } from '../../types/index';
 import { ChartTypes, XAxisTypes, YAxisType } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
-import { PopoverComponentProps } from './Popover.types';
+import { ChartPopoverProps } from './ChartPopover.types';
 /**
  * Cartesian Chart style properties
  * {@docCategory CartesianChart}
@@ -370,7 +370,7 @@ export interface CartesianChartProps {
   /**
    * Callout customization props
    */
-  calloutProps?: Partial<PopoverComponentProps>;
+  calloutProps?: Partial<ChartPopoverProps>;
 
   /**
    * props for the svg; use this to include aria-* or other attributes on the tag
@@ -436,7 +436,7 @@ export interface CartesianChartProps {
    * Define a custom callout props override
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customProps?: (dataPointCalloutProps: any) => PopoverComponentProps;
+  customProps?: (dataPointCalloutProps: any) => ChartPopoverProps;
 }
 
 export interface YValueHover {
@@ -500,7 +500,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /**
    * Callout props
    */
-  calloutProps?: PopoverComponentProps;
+  calloutProps?: ChartPopoverProps;
 
   /**
    * Callback method used for to get margins to the chart.
