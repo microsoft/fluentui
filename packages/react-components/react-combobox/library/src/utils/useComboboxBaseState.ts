@@ -126,7 +126,7 @@ export const useComboboxBaseState = (
     // we do not want to accidentally override defaultValue on a second render
     // unless another value is intentionally set
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [controllableValue, editable, getOptionsMatchingValue, multiselect, props.defaultValue, selectedOptions]);
+  }, [controllableValue, editable, getOptionsMatchingValue, multiselect, selectedOptions]);
 
   // Handle open state, which is shared with options in context
   const [open, setOpenState] = useControllableState({
