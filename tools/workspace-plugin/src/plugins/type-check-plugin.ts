@@ -8,7 +8,7 @@ import {
 } from '@nx/devkit';
 import { dirname } from 'node:path';
 
-import { assertProjectExists } from './shared';
+import { type TaskBuilderConfig, assertProjectExists } from './shared';
 
 interface TypeCheckPluginOptions {
   targetName?: string;
@@ -52,15 +52,7 @@ function createNodesInternal(
 
   const normalizedOptions = normalizeOptions(options);
 
-  const targetConfig: TargetConfiguration = {
-    executor: '@fluentui/workspace-plugin:type-check',
-    cache: true,
-    inputs: ['default', '{projectRoot}/tsconfig.json', '{projectRoot}/tsconfig.*.json'],
-    metadata: {
-      technologies: ['typescript'],
-      description: 'Type check code with TypeScript',
-    },
-  };
+  const targetConfig = buildTypeCheckTarget(normalizedOptions, context, {});
 
   return {
     projects: {
@@ -71,4 +63,22 @@ function createNodesInternal(
       },
     },
   };
+}
+
+export function buildTypeCheckTarget(
+  _options: TypeCheckPluginOptions,
+  _context: CreateNodesContextV2,
+  _config: TaskBuilderConfig,
+) {
+  const targetConfig: TargetConfiguration = {
+    executor: '@fluentui/workspace-plugin:type-check',
+    cache: true,
+    inputs: ['default', '{projectRoot}/tsconfig.json', '{projectRoot}/tsconfig.*.json'],
+    metadata: {
+      technologies: ['typescript'],
+      description: 'Type check code with TypeScript',
+    },
+  };
+
+  return targetConfig;
 }

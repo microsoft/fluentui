@@ -1,6 +1,7 @@
-import { type CreateNodesContextV2 } from '@nx/devkit';
+import { getPackageManagerCommand, type CreateNodesContextV2 } from '@nx/devkit';
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
+
 export const projectConfigGlob = '**/project.json';
 
 export function assertProjectExists(projectRoot: string, context: CreateNodesContextV2) {
@@ -11,4 +12,8 @@ export function assertProjectExists(projectRoot: string, context: CreateNodesCon
   }
 
   return false;
+}
+
+export interface TaskBuilderConfig {
+  pmc?: ReturnType<typeof getPackageManagerCommand>;
 }

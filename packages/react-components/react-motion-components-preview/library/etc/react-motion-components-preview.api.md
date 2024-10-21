@@ -12,10 +12,16 @@ import type { PresenceMotionFn } from '@fluentui/react-motion';
 export const Collapse: PresenceComponent<CollapseRuntimeParams>;
 
 // @public (undocumented)
+export const CollapseDelayed: PresenceComponent<CollapseRuntimeParams>;
+
+// @public (undocumented)
 export const CollapseExaggerated: PresenceComponent<CollapseRuntimeParams>;
 
 // @public (undocumented)
 export const CollapseSnappy: PresenceComponent<CollapseRuntimeParams>;
+
+// @public
+export const createCollapseDelayedPresence: PresenceMotionFnCreator<CollapseDelayedVariantParams, CollapseRuntimeParams>;
 
 // @public
 export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantParams, CollapseRuntimeParams>;
