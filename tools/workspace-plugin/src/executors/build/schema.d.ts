@@ -55,14 +55,7 @@ export interface BuildExecutorSchema {
          * Key-value pairs to replace in the output path
          */
         substitutions?: {
-          /**
-           * The key to replace.
-           */
-          key: string;
-          /**
-           * The value to replace.
-           */
-          value: string;
+          [k: string]: string;
         };
       }
     | string

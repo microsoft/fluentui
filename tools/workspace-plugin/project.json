@@ -36,8 +36,11 @@
         ]
       }
     },
-    "type-check": {
-      "executor": "@fluentui/workspace-plugin:type-check"
+    "check-graph": {
+      "command": "node ./scripts/check-dep-graph.js",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
     }
   }
 }

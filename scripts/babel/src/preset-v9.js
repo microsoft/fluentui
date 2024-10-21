@@ -3,16 +3,14 @@ const path = require('path');
 
 const { workspaceRoot } = require('@nx/devkit');
 
-const cwd = process.cwd();
-const rootOffset = path.relative(cwd, workspaceRoot);
-
 /**
  *
- * @param {{tsBaseConfigPath:string}} options
+ * @param {{tsBaseConfigPath:string;caller:'nx' | 'just-scripts' | null;cwd?:string}} options
  * @returns
  */
 function createModuleResolverAliases(options) {
-  const { tsBaseConfigPath } = options;
+  const { tsBaseConfigPath, caller, cwd = process.cwd() } = options;
+  const rootOffset = path.relative(cwd, workspaceRoot);
   const tsBaseConfigPathAbsolute = path.join(workspaceRoot, tsBaseConfigPath);
   const tsConfigBase = JSON.parse(fs.readFileSync(tsBaseConfigPathAbsolute, 'utf-8'));
 
@@ -24,9 +22,24 @@ function createModuleResolverAliases(options) {
     const tsSourceRoot = aliasTuple[0];
     const jsSourceRoot = tsSourceRoot.replace('src', 'lib').replace('.ts', '.js');
     const aliasRegex = `^${packageName}$`;
-    acc[aliasRegex] = path.resolve(rootOffset, jsSourceRoot);
+    acc[aliasRegex] = buildAliasToTranspiledProjectAsset(jsSourceRoot);
     return acc;
   }, /** @type {Record<string,string>} */ ({}));
+
+  /**
+   *
+   * @param {string} sourceRoot
+   * @returns
+   */
+  function buildAliasToTranspiledProjectAsset(sourceRoot) {
+    if (caller === 'nx') {
+      // our build executor is invoked from workspace root
+      return path.join(workspaceRoot, sourceRoot);
+    }
+
+    // just-scripts are invoked from projects cwd
+    return path.resolve(rootOffset, sourceRoot);
+  }
 }
 
 /** @type {Array<import('./types').BabelPluginItem>} */
@@ -40,7 +53,9 @@ const plugins = [];
  * @param {import('./types').BabelPresetOptions} options
  */
 const preset = (api, options) => {
-  const moduleResolverAliasMappings = createModuleResolverAliases(options);
+  const caller = api.caller(getCaller);
+  const moduleResolverAliasMappings = createModuleResolverAliases({ ...options, caller });
+
   /** @type {Array<import('./types').BabelPluginItem>} */
   const dynamicPresets = [
     [
@@ -78,5 +93,24 @@ const preset = (api, options) => {
 
   return { presets, plugins };
 };
+
+/**
+ *
+ * @param {import('@babel/core').TransformOptions['caller']} caller
+ * @returns
+ */
+function getCaller(caller) {
+  if (!caller) {
+    return null;
+  }
+  if (caller.name === '@fluentui/workspace-plugin:build') {
+    return 'nx';
+  }
+  if (caller.name === 'just-scripts') {
+    return 'just-scripts';
+  }
+
+  return null;
+}
 
 module.exports = preset;

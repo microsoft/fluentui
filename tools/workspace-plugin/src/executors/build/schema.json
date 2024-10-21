@@ -47,12 +47,9 @@
               "substitutions": {
                 "type": "object",
                 "description": "Key-value pairs to replace in the output path",
-                "properties": {
-                  "key": { "type": "string", "description": "The key to replace." },
-                  "value": { "type": "string", "description": "The value to replace." }
-                },
-                "additionalProperties": false,
-                "required": ["key", "value"]
+                "additionalProperties": {
+                  "type": "string"
+                }
               }
             },
             "additionalProperties": false,

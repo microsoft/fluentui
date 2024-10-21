@@ -84,7 +84,7 @@ function generateTypeDeclarations(options: NormalizedOptions) {
     '--pretty',
     '--emitDeclarationOnly',
     // turn off path aliases.
-    '--baseUrl .',
+    `--baseUrl ${options.projectAbsolutePath}`,
   ].join(' ');
 
   verboseLog(`Emitting '.d.ts' files via: "${cmd}"`);

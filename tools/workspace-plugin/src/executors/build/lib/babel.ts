@@ -85,6 +85,7 @@ async function babel(esmModuleOutput: NormalizedOptions['moduleOutput'][number],
     const sourceCode = codeBuffer.toString().replace(EOL_REGEX, '\n');
 
     const result = (await transformAsync(sourceCode, {
+      cwd: normalizedOptions.absoluteProjectRoot,
       ast: false,
       sourceMaps: true,
 

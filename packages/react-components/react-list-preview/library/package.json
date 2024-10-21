@@ -17,26 +17,12 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "just-scripts build",
-    "bundle-size": "monosize measure",
-    "clean": "just-scripts clean",
-    "generate-api": "just-scripts generate-api",
-    "lint": "just-scripts lint",
-    "start": "yarn storybook",
-    "storybook": "yarn --cwd ../stories storybook",
-    "test": "jest --passWithNoTests",
-    "type-check": "just-scripts type-check",
-    "e2e": "cypress run --component",
-    "e2e:local": "cypress open --component"
-  },
   "devDependencies": {
     "@fluentui/react-provider": "*",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {

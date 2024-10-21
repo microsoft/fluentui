@@ -10,14 +10,23 @@ const { workspaceRoot } = require('./utils');
  * @returns {Set<string>} - Set of packages that are affected by in the current branch
  */
 function getAffectedPackages(base = 'origin/master') {
-  const res = spawnSync('nx', ['show', 'projects', '--affected', `--base=${base}`, '--json'], {
+  const cmdArgs = [
+    'show',
+    'projects',
+    '--affected',
+    `--base=${base}`,
+    '--json',
+    // override NX_VERBOSE_LOGGING in order to emit valid JSON
+    `--verbose=false`,
+  ];
+  const res = spawnSync('nx', cmdArgs, {
     cwd: workspaceRoot,
     shell: true,
   });
 
   if (res.status !== 0) {
     console.error(res.stderr);
-    throw new Error(`'nx show projects --affected --base ${base} --json' failed with status ${res.status}`);
+    throw new Error(`'nx ${cmdArgs.join(' ')}' failed with status ${res.status}`);
   }
 
   const output = res.stdout.toString();
