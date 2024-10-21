@@ -310,8 +310,11 @@ export class HorizontalBarChart extends FASTElement {
 
     if (showRatio) {
       const ratioDiv = chartTitleDiv.append('div').attr('role', 'text');
-      ratioDiv.append('span').attr('class', 'ratioNumerator').text('40');
-      ratioDiv.append('span').attr('class', 'ratioDenominator').text('/67');
+      const numData = data!.chartData![0].data;
+      const denomData = data!.chartData![1].data;
+      const total = numData! + denomData!;
+      ratioDiv.append('span').attr('class', 'ratioNumerator').text(numData!);
+      ratioDiv.append('span').attr('class', 'ratioDenominator').text(`/${total!}`);
     }
 
     const svgEle = containerDiv
