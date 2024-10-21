@@ -130,7 +130,7 @@ export const useTagPickerInput_unstable = (
     components: {
       root: 'input',
     },
-    root,
+    root: { ...root, onMouseDown: root.onClick, onClick: undefined },
     disabled,
     size,
   };
