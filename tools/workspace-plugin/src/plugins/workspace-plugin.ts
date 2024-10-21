@@ -147,6 +147,11 @@ function buildWorkspaceTargets(
     targets.test = testTarget;
   }
 
+  const storybookTarget = buildStorybookTarget(projectRoot, options, context, config);
+  if (storybookTarget) {
+    targets.storybook = storybookTarget;
+  }
+
   // react v9 lib
   if (projectJSON.projectType === 'library' && tags.includes('vNext')) {
     // *-stories projects
@@ -156,24 +161,9 @@ function buildWorkspaceTargets(
         targets[options.testSSR.targetName] = testSsrTarget;
       }
 
-      targets.start = { command: `${config.pmc.exec} storybook`, options: { cwd: projectRoot } };
-      targets.storybook = {
-        command: `${config.pmc.exec} storybook dev`,
-        inputs: [
-          'production',
-          '{workspaceRoot}/.storybook/**',
-          '{projectRoot}/.storybook/**',
-          { externalDependencies: ['storybook'] },
-        ],
-        options: { cwd: projectRoot },
-        metadata: {
-          technologies: ['storybook'],
-          help: {
-            command: `${config.pmc.exec} storybook dev --help`,
-            example: {},
-          },
-        },
-      };
+      if (storybookTarget) {
+        targets.start = { command: `nx run ${config.projectJSON.name}:storybook`, cache: true };
+      }
 
       return targets;
     }
@@ -240,18 +230,11 @@ function buildWorkspaceTargets(
       },
     };
 
-    targets.start = {
-      command: `${config.pmc.exec} storybook`,
-      options: { cwd: projectRoot },
-    };
-    targets.storybook = {
-      cache: true,
-      command: `${config.pmc.exec} --cwd ../stories storybook`,
-      options: { cwd: projectRoot },
-      metadata: {
-        technologies: ['storybook'],
-      },
-    };
+    if (existsSync(join(projectRoot, '../stories/project.json'))) {
+      const storybookTarget = { command: `nx run ${config.projectJSON.name}-stories:storybook`, cache: true };
+      targets.storybook = storybookTarget;
+      targets.start = storybookTarget;
+    }
 
     const bundleSizeTarget = buildBundleSizeTarget(projectRoot, options, context, config);
     if (bundleSizeTarget) {
@@ -429,6 +412,7 @@ function buildE2eTarget(
         { externalDependencies: ['cypress', '@cypress/react'] },
       ],
       metadata: {
+        technologies: ['cypress'],
         help: {
           command: `${config.pmc.exec} cypress run --help`,
           example: {},
@@ -451,9 +435,10 @@ function buildE2eTarget(
         '{projectRoot}/playwright.config.ts',
         '!{projectRoot}/**/?(*.)+spec.[jt]s?(x)?',
         '!{projectRoot}/**/?(*.)+spec-e2e.[jt]s?(x)?',
-        { externalDependencies: ['playwright'] },
+        { externalDependencies: ['@playwright/test'] },
       ],
       metadata: {
+        technologies: ['playwright'],
         help: {
           command: `${config.pmc.exec} playwright test --help`,
           example: {},
@@ -470,7 +455,7 @@ function buildTestSsrTarget(
   options: NormalizedOptions,
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
-): TargetConfiguration<JestConfig.InitialOptions & Pick<RunCommandsOptions, 'cwd'>> | null {
+): TargetConfiguration | null {
   if (options.testSSR.include.length && !options.testSSR.include?.includes(config.projectJSON.name!)) {
     return null;
   }
@@ -486,6 +471,36 @@ function buildTestSsrTarget(
       technologies: ['test-ssr'],
       help: {
         command: `${config.pmc.exec} test-ssr --help`,
+        example: {},
+      },
+    },
+  };
+}
+
+function buildStorybookTarget(
+  projectRoot: string,
+  options: NormalizedOptions,
+  context: CreateNodesContextV2,
+  config: TaskBuilderConfig,
+): TargetConfiguration | null {
+  if (!existsSync(join(projectRoot, '.storybook/main.js'))) {
+    return null;
+  }
+
+  return {
+    command: `${config.pmc.exec} storybook dev`,
+    cache: true,
+    inputs: [
+      'production',
+      '{workspaceRoot}/.storybook/**',
+      '{projectRoot}/.storybook/**',
+      { externalDependencies: ['storybook'] },
+    ],
+    options: { cwd: projectRoot },
+    metadata: {
+      technologies: ['storybook'],
+      help: {
+        command: `${config.pmc.exec} storybook dev --help`,
         example: {},
       },
     },
