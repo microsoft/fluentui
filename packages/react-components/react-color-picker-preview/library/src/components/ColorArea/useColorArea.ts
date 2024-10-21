@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { useId, slot, getPartitionedNativeProps } from '@fluentui/react-utilities';
 import type { ColorAreaProps, ColorAreaState } from './ColorArea.types';
+import { useColorAreaState_unstable } from './useColorAreaState';
 
 /**
  * Create the state required to render ColorArea.
@@ -9,23 +10,56 @@ import type { ColorAreaProps, ColorAreaState } from './ColorArea.types';
  * before being passed to renderColorArea_unstable.
  *
  * @param props - props from this instance of ColorArea
- * @param ref - reference to root HTMLDivElement of ColorArea
+ * @param ref - reference to root HTMLInputElement of ColorArea
  */
-export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLDivElement>): ColorAreaState => {
-  return {
-    // TODO add appropriate props/defaults
+export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLInputElement>): ColorAreaState => {
+  const divRef = React.useRef(null);
+
+  const nativeProps = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'input',
+    excludedPropNames: ['onChange'],
+  });
+
+  const {
+    // Slots
+    root,
+    inputX,
+    inputY,
+    thumb,
+  } = props;
+
+  const state: ColorAreaState = {
     components: {
-      // TODO add each slot's element type or component
+      inputX: 'input',
+      inputY: 'input',
       root: 'div',
+      thumb: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: slot.always(
-      getIntrinsicElementProps('div', {
+    root: slot.always(root, {
+      defaultProps: { ...nativeProps.root, ref: divRef },
+      elementType: 'div',
+    }),
+    inputX: slot.always(inputX, {
+      defaultProps: {
+        id: useId('sliderX-', props.id),
+        type: 'range',
         ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
+        ...nativeProps.primary,
+      },
+      elementType: 'input',
+    }),
+    inputY: slot.always(inputY, {
+      defaultProps: {
+        id: useId('sliderY-', props.id),
+        type: 'range',
+      },
+      elementType: 'input',
+    }),
+    thumb: slot.always(thumb, { elementType: 'div' }),
   };
+
+  useColorAreaState_unstable(state, props);
+
+  return state;
 };

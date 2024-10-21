@@ -1,17 +1,39 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import * as React from 'react';
+import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
+
+export type ColorAreaOnColorChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> &
+  EventData<'click' | 'mousemove', React.MouseEvent<HTMLDivElement>> & {
+    color: string;
+  };
 
 export type ColorAreaSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
+  thumb: NonNullable<Slot<'div'>>;
+  inputX: NonNullable<Slot<'input'>>;
+  inputY: NonNullable<Slot<'input'>>;
 };
 
 /**
  * ColorArea Props
  */
-export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {};
+export type ColorAreaProps = Omit<ComponentProps<Partial<ColorAreaSlots>, 'inputX'>, 'onChange'> & {
+  /**
+   * The current color of the ColorArea.
+   */
+  color?: string;
+
+  /**
+   * The starting value for an uncontrolled ColorArea.
+   */
+  defaultColor?: string;
+
+  /**
+   * Triggers a callback when the value has been changed. This will be called on every individual step.
+   */
+  onChange?: EventHandler<ColorAreaOnColorChangeData>;
+};
 
 /**
  * State used in rendering ColorArea
  */
-export type ColorAreaState = ComponentState<ColorAreaSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from ColorAreaProps.
-// & Required<Pick<ColorAreaProps, 'propName'>>
+export type ColorAreaState = ComponentState<ColorAreaSlots> & Pick<ColorAreaProps, 'color'>;
