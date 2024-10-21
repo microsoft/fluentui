@@ -24,7 +24,21 @@ import { buildFormatTarget } from './format-plugin';
 import { buildTypeCheckTarget } from './type-check-plugin';
 import { measureStart, measureEnd } from '../utils';
 
-interface WorkspacePluginOptions {}
+interface WorkspacePluginOptions {
+  testSSR?: TargetPluginOption;
+  verifyPackaging?: TargetPluginOption;
+}
+interface TargetPluginOption {
+  targetName?: string;
+  /**
+   * project names to exclude from adding target
+   */
+  exclude?: string[];
+  /**
+   * project names to include for adding target
+   */
+  include?: string[];
+}
 
 export const createNodesV2: CreateNodesV2<WorkspacePluginOptions> = [
   projectConfigGlob,
@@ -48,10 +62,26 @@ export const createNodesV2: CreateNodesV2<WorkspacePluginOptions> = [
 ];
 
 // ===================================================================================================================
-function normalizeOptions(options: WorkspacePluginOptions | undefined): Required<WorkspacePluginOptions> {
+type NormalizedOptions = ReturnType<typeof normalizeOptions>;
+
+type DeepRequired<T> = {
+  [K in keyof T]-?: NonNullable<T[K]> extends object ? DeepRequired<T[K]> : NonNullable<T[K]>;
+};
+
+function normalizeOptions(options: WorkspacePluginOptions | undefined): DeepRequired<WorkspacePluginOptions> {
   options ??= {};
 
-  return options as Required<WorkspacePluginOptions>;
+  options.testSSR ??= {};
+  options.testSSR.targetName ??= 'test-ssr';
+  options.testSSR.include ??= [];
+  options.testSSR.exclude ??= [];
+
+  options.verifyPackaging ??= {};
+  options.verifyPackaging.targetName ??= 'verify-packaging';
+  options.verifyPackaging.include ??= [];
+  options.verifyPackaging.exclude ??= [];
+
+  return options as DeepRequired<WorkspacePluginOptions>;
 }
 
 function createNodesInternal(
@@ -70,6 +100,7 @@ function createNodesInternal(
   }
 
   const normalizedOptions = normalizeOptions(options);
+
   const config = { ...globalConfig };
 
   const targetsConfig = buildWorkspaceTargets(projectRoot, normalizedOptions, context, config);
@@ -90,7 +121,7 @@ interface TaskBuilderConfig {
 
 function buildWorkspaceTargets(
   projectRoot: string,
-  options: Required<WorkspacePluginOptions>,
+  options: NormalizedOptions,
   context: CreateNodesContextV2,
   sharedConfig: Pick<TaskBuilderConfig, 'pmc'>,
 ) {
@@ -106,12 +137,12 @@ function buildWorkspaceTargets(
   targets.format = buildFormatTarget({}, context, config);
   targets['type-check'] = buildTypeCheckTarget({}, context, config);
 
-  const lintTarget = buildLintTarget(projectRoot, normalizeOptions, context, config);
+  const lintTarget = buildLintTarget(projectRoot, options, context, config);
   if (lintTarget) {
     targets.lint = lintTarget;
   }
 
-  const testTarget = buildTestTarget(projectRoot, normalizeOptions, context, config);
+  const testTarget = buildTestTarget(projectRoot, options, context, config);
   if (testTarget) {
     targets.test = testTarget;
   }
@@ -120,18 +151,11 @@ function buildWorkspaceTargets(
   if (projectJSON.projectType === 'library' && tags.includes('vNext')) {
     // *-stories projects
     if (tags.includes('type:stories')) {
-      targets['test-ssr'] = {
-        cache: true,
-        command: `${config.pmc.exec} test-ssr "./src/**/*.stories.tsx"`,
-        options: { cwd: projectRoot },
-        metadata: {
-          technologies: ['test-ssr'],
-          help: {
-            command: `${config.pmc.exec} test-ssr --help`,
-            example: {},
-          },
-        },
-      };
+      const testSsrTarget = buildTestSsrTarget(projectRoot, options, context, config);
+      if (testSsrTarget) {
+        targets[options.testSSR.targetName] = testSsrTarget;
+      }
+
       targets.start = { command: `${config.pmc.exec} storybook`, options: { cwd: projectRoot } };
       targets.storybook = {
         command: `${config.pmc.exec} storybook dev`,
@@ -239,9 +263,9 @@ function buildWorkspaceTargets(
       targets.e2e = e2eTarget;
     }
 
-    const verifyPackagingTarget = buildVerifyPackagingTarget(projectRoot, normalizeOptions, context, config);
+    const verifyPackagingTarget = buildVerifyPackagingTarget(projectRoot, options, context, config);
     if (verifyPackagingTarget) {
-      targets['verify-packaging'] = verifyPackagingTarget;
+      targets[options.verifyPackaging.targetName] = verifyPackagingTarget;
     }
 
     return targets;
@@ -322,10 +346,17 @@ function buildLintTarget(
 
 function buildVerifyPackagingTarget(
   projectRoot: string,
-  options: Required<WorkspacePluginOptions>,
+  options: NormalizedOptions,
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
+  if (options.verifyPackaging.include.length && !options.verifyPackaging.include.includes(config.projectJSON.name!)) {
+    return null;
+  }
+  if (options.verifyPackaging.exclude.length && options.verifyPackaging.exclude.includes(config.projectJSON.name!)) {
+    return null;
+  }
+
   if (config.packageJSON.private) {
     return null;
   }
@@ -432,4 +463,31 @@ function buildE2eTarget(
   }
 
   return null;
+}
+
+function buildTestSsrTarget(
+  projectRoot: string,
+  options: NormalizedOptions,
+  context: CreateNodesContextV2,
+  config: TaskBuilderConfig,
+): TargetConfiguration<JestConfig.InitialOptions & Pick<RunCommandsOptions, 'cwd'>> | null {
+  if (options.testSSR.include.length && !options.testSSR.include?.includes(config.projectJSON.name!)) {
+    return null;
+  }
+  if (options.testSSR.exclude.length && options.testSSR.exclude?.includes(config.projectJSON.name!)) {
+    return null;
+  }
+
+  return {
+    cache: true,
+    command: `${config.pmc.exec} test-ssr "./src/**/*.stories.tsx"`,
+    options: { cwd: projectRoot },
+    metadata: {
+      technologies: ['test-ssr'],
+      help: {
+        command: `${config.pmc.exec} test-ssr --help`,
+        example: {},
+      },
+    },
+  };
 }
