@@ -16,6 +16,14 @@
             "substitutions": {
               "__tmpl__": ""
             }
+          },
+          {
+            "input": "{projectRoot}/src/unstable",
+            "output": "dist",
+            "glob": "*.d.ts__tmpl__",
+            "substitutions": {
+              "__tmpl__": ""
+            }
           }
         ]
       }
