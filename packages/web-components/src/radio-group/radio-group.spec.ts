@@ -1,11 +1,13 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Radio } from '../radio/index.js';
 import type { RadioGroup } from './radio-group.js';
 
+const storybookDocId = 'components-radiogroup--docs';
+
 test.describe('RadioGroup', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-radiogroup--radio-group'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() =>
       Promise.all([customElements.whenDefined('fluent-radio'), customElements.whenDefined('fluent-radio-group')]),
@@ -638,4 +640,17 @@ test.describe('RadioGroup', () => {
 
     await expect(page).not.toHaveURL(/radio=/);
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() =>
+    Promise.all([customElements.whenDefined('fluent-radio'), customElements.whenDefined('fluent-radio-group')]),
+  );
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

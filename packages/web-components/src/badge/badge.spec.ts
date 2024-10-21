@@ -1,10 +1,12 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Badge } from './badge.js';
+
+const storybookDocId = 'components-badge-badge--docs';
 
 test.describe('Badge component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-badge--badge'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-badge'));
   });
@@ -208,4 +210,15 @@ test.describe('Badge component', () => {
 
     await expect(element).toHaveJSProperty('shape', 'square');
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-badge'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

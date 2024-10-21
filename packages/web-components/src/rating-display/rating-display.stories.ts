@@ -13,6 +13,7 @@ const storyTemplate = html<StoryArgs<FluentRatingDisplay>>`
     max=${story => story.max}
     size=${story => story.size}
     value=${story => story.value}
+    aria-label="${story => `Rating: ${story.value}`}"
     >${story => story.iconSlottedContent?.()}</fluent-rating-display
   >
 `;

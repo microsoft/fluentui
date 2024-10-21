@@ -13,6 +13,7 @@ const storyTemplate = html<StoryArgs<FluentSwitch>>`
     name="${story => story.name}"
     ?required="${story => story.required}"
     slot="${story => story.slot}"
+    aria-label="Example switch"
   ></fluent-switch>
 `;
 
@@ -93,8 +94,12 @@ export const Required: Story = {
   render: renderComponent(html<StoryArgs<FluentSwitch>>`
     <form style="display: flex; gap: 1em; align-items: end">
       <div>
-        <fluent-switch id="required-fluent-switch" required></fluent-switch>
-        <label for="required-fluent-switch">Required</label>
+        <fluent-switch
+          id="required-fluent-switch"
+          required
+          aria-labelledby="required-fluent-switch-label"
+        ></fluent-switch>
+        <label for="required-fluent-switch" id="required-fluent-switch-label">Required</label>
       </div>
       <div>${fieldStoryTemplate}</div>
       <fluent-button type="submit">Submit</fluent-button>

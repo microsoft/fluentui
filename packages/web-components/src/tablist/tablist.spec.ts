@@ -1,12 +1,14 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Tab } from '../tab/tab.js';
 import type { Tablist } from './tablist.js';
 import { TablistAppearance, TablistSize } from './tablist.options.js';
 
+const storybookDocId = 'components-tablist--docs';
+
 test.describe('Tablist', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-tabs--tabs-default'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() =>
       Promise.all([customElements.whenDefined('fluent-tablist'), customElements.whenDefined('fluent-tab')]),
@@ -17,7 +19,7 @@ test.describe('Tablist', () => {
     const element = page.locator('fluent-tablist');
     const tabs = element.locator('fluent-tab');
 
-    page.setContent(/* html */ `
+    await page.setContent(/* html */ `
       <fluent-tablist>
           <fluent-tab>Tab one</fluent-tab>
           <fluent-tab>Tab two</fluent-tab>
@@ -37,7 +39,7 @@ test.describe('Tablist', () => {
     const tabs = element.locator('fluent-tab');
     const tab = tabs.nth(2);
 
-    page.setContent(/* html */ `
+    await page.setContent(/* html */ `
       <fluent-tablist>
           <fluent-tab>Tab one</fluent-tab>
           <fluent-tab>Tab two</fluent-tab>
@@ -55,7 +57,7 @@ test.describe('Tablist', () => {
   test('should have reflect disabled attribute on control', async ({ page }) => {
     const element = page.locator('fluent-tablist');
 
-    page.setContent(/* html */ `
+    await page.setContent(/* html */ `
       <fluent-tablist>
           <fluent-tab>Tab one</fluent-tab>
           <fluent-tab>Tab two</fluent-tab>
@@ -75,7 +77,7 @@ test.describe('Tablist', () => {
   test('should have role of `tablist`', async ({ page }) => {
     const element = page.locator('fluent-tablist');
 
-    page.setContent(/* html */ `
+    await page.setContent(/* html */ `
       <fluent-tablist>
           <fluent-tab>Tab one</fluent-tab>
           <fluent-tab>Tab two</fluent-tab>
@@ -91,7 +93,7 @@ test.describe('Tablist', () => {
   }) => {
     const element = page.locator('fluent-tablist');
 
-    page.setContent(/* html */ `
+    await page.setContent(/* html */ `
       <fluent-tablist>
           <fluent-tab>Tab one</fluent-tab>
           <fluent-tab>Tab two</fluent-tab>
@@ -106,7 +108,7 @@ test.describe('Tablist', () => {
     const element = page.locator('fluent-tablist');
     const tabs = element.locator('fluent-tab');
 
-    page.setContent(/* html */ `
+    await page.setContent(/* html */ `
       <fluent-tablist>
           <fluent-tab>Tab one</fluent-tab>
           <fluent-tab>Tab two</fluent-tab>
@@ -134,7 +136,7 @@ test.describe('Tablist', () => {
       const element = page.locator('fluent-tablist');
       const tabs = element.locator('fluent-tab');
 
-      page.setContent(/* html */ `
+      await page.setContent(/* html */ `
         <fluent-tablist>
             <fluent-tab>Tab one</fluent-tab>
             <fluent-tab>Tab two</fluent-tab>
@@ -162,7 +164,7 @@ test.describe('Tablist', () => {
       const element = page.locator('fluent-tablist');
       const tabs = element.locator('fluent-tab');
 
-      page.setContent(/* html */ `
+      await page.setContent(/* html */ `
         <fluent-tablist>
             <fluent-tab>Tab one</fluent-tab>
             <fluent-tab>Tab two</fluent-tab>
@@ -181,7 +183,7 @@ test.describe('Tablist', () => {
       const element = page.locator('fluent-tablist');
       const tabs = element.locator('fluent-tab');
 
-      page.setContent(/* html */ `
+      await page.setContent(/* html */ `
         <fluent-tablist>
             <fluent-tab>Tab one</fluent-tab>
             <fluent-tab>Tab two</fluent-tab>
@@ -204,7 +206,7 @@ test.describe('Tablist', () => {
       const element = page.locator('fluent-tablist');
       const tabs = element.locator('fluent-tab');
 
-      page.setContent(/* html */ `
+      await page.setContent(/* html */ `
         <fluent-tablist>
             <fluent-tab>Tab one</fluent-tab>
             <fluent-tab>Tab two</fluent-tab>
@@ -230,7 +232,7 @@ test.describe('Tablist', () => {
     test(`should set appearance to \`${appearance}\``, async ({ page }) => {
       const element = page.locator('fluent-tablist');
 
-      page.setContent(/* html */ `
+      await page.setContent(/* html */ `
         <fluent-tablist appearance="${appearance}">
             <fluent-tab>Tab one</fluent-tab>
             <fluent-tab>Tab two</fluent-tab>
@@ -248,7 +250,7 @@ test.describe('Tablist', () => {
     test(`should set size to \`${size}\``, async ({ page }) => {
       const element = page.locator('fluent-tablist');
 
-      page.setContent(/* html */ `
+      await page.setContent(/* html */ `
         <fluent-tablist size="${size}">
             <fluent-tab>Tab one</fluent-tab>
             <fluent-tab>Tab two</fluent-tab>
@@ -349,7 +351,7 @@ test.describe('Tablist', () => {
     const element = page.locator('fluent-tablist');
     const tabs = element.locator('fluent-tab');
 
-    page.setContent(/* html */ `
+    await page.setContent(/* html */ `
       <fluent-tablist>
           <fluent-tab>Tab one</fluent-tab>
           <fluent-tab hidden>Tab two</fluent-tab>
@@ -377,7 +379,7 @@ test.describe('Tablist', () => {
     const element = page.locator('fluent-tablist');
     const tabs = element.locator('fluent-tab');
 
-    page.setContent(/* html */ `
+    await page.setContent(/* html */ `
       <fluent-tablist>
           <fluent-tab>Tab one</fluent-tab>
           <fluent-tab>Tab two</fluent-tab>
@@ -400,4 +402,17 @@ test.describe('Tablist', () => {
 
     await expect(element).toHaveJSProperty('activeid', secondTabId);
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() =>
+    Promise.all([customElements.whenDefined('fluent-tablist'), customElements.whenDefined('fluent-tab')]),
+  );
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });
