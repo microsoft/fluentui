@@ -9,7 +9,6 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
     type: 'problem',
     docs: {
       description: 'Enforce callback props to be typed with `EventHandler`',
-      recommended: 'recommended',
     },
     messages: {
       invalidType: 'callback props should be typed with @fluentui/react-utilities#EventHandler<T>',
@@ -41,7 +40,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
                   typeAnnotation.type === AST_NODE_TYPES.TSTypeReference &&
                   typeAnnotation.typeName.type === AST_NODE_TYPES.Identifier &&
                   typeAnnotation.typeName.name === 'EventHandler' &&
-                  typeAnnotation.typeParameters
+                  typeAnnotation.typeArguments
                 )
               ) {
                 context.report({

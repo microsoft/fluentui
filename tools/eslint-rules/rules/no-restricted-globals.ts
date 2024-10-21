@@ -15,8 +15,7 @@
  */
 
 import { Reference } from '@typescript-eslint/scope-manager';
-import { ESLintUtils, AST_NODE_TYPES } from '@typescript-eslint/utils';
-
+import { ESLintUtils, AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils';
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-no-restricted-globals"
 export const RULE_NAME = 'no-restricted-globals';
 
@@ -30,7 +29,6 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
     type: 'problem',
     docs: {
       description: ``,
-      recommended: 'recommended',
     },
     schema: {
       type: 'array',
@@ -60,7 +58,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
     },
   },
   defaultOptions: [],
-  create(context, options) {
+  create(context) {
     const sourceCode = context.sourceCode;
 
     // If no globals are restricted, we don't need to do anything
