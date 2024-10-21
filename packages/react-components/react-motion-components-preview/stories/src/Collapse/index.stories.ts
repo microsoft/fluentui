@@ -6,6 +6,7 @@ export { Horizontal } from './CollapseHorizontal.stories';
 export { Snappy } from './CollapseSnappy.stories';
 export { Exaggerated } from './CollapseExaggerated.stories';
 export { Customization } from './CollapseCustomization.stories';
+export { DisableMotion } from './CollapseDisableMotion.stories'
 
 export default {
   title: 'Motion/Components (preview)/Collapse',
