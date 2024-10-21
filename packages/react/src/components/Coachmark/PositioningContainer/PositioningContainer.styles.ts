@@ -27,7 +27,6 @@ export const getClassNames = memoizeFunction((): IPositioningContainerNames => {
       {
         position: 'absolute',
         boxSizing: 'border-box',
-        border: '1px solid ${}',
         selectors: {
           [HighContrastSelector]: {
             border: '1px solid WindowText',
