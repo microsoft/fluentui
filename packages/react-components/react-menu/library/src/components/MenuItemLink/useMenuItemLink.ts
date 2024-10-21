@@ -27,6 +27,7 @@ export const useMenuItemLink_unstable = (
   return {
     ...baseState,
     components: {
+      // eslint-disable-next-line deprecation/deprecation
       ...baseState.components,
       root: 'a',
     },

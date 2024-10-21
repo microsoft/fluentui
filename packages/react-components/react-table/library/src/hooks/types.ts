@@ -142,7 +142,7 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
    * A React.Ref object to be set as a ref for the table.
    * Used with column resizing.
    */
-  tableRef: React.Ref<HTMLDivElement>;
+  tableRef: React.Ref<HTMLDivElement & HTMLTableElement>;
 }
 
 export interface UseTableSortOptions {
