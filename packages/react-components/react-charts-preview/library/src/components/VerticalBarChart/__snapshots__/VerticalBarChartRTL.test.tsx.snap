@@ -16,7 +16,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          height="292"
+          height="300"
           style="display: block;"
           width="650"
         >
@@ -27,7 +27,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 257)"
+            transform="translate(0, 265)"
           >
             <path
               class="domain"
@@ -154,13 +154,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             <path
               class="domain"
-              d="M-6,257.5H0.5V20.5H-6"
+              d="M-6,265.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,257.5)"
+              transform="translate(0,265.5)"
             >
               <line
                 stroke="currentColor"
@@ -178,7 +178,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,198.25)"
+              transform="translate(0,204.25)"
             >
               <line
                 stroke="currentColor"
@@ -196,7 +196,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,139)"
+              transform="translate(0,143)"
             >
               <line
                 stroke="currentColor"
@@ -214,7 +214,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,79.75)"
+              transform="translate(0,81.75)"
             >
               <line
                 stroke="currentColor"
@@ -254,21 +254,21 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 aria-label="2020/04/30. First, 10%."
                 data-is-focusable="true"
                 fill="aqua"
-                height="47.400000000000006"
+                height="49"
                 id="_VBC_bar_154-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
                 width="16"
                 x="48"
-                y="209.6"
+                y="216"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
                 x="56"
-                y="203.6"
+                y="210"
               >
                 10.0k
               </text>
@@ -278,7 +278,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 aria-label="2020/04/30. Second, 20%."
                 data-is-focusable="true"
                 fill="blue"
-                height="237"
+                height="245"
                 id="_VBC_bar_154-1"
                 opacity="1"
                 role="img"
@@ -302,21 +302,21 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 aria-label="2020/04/30. Third, 37%."
                 data-is-focusable="true"
                 fill="navy"
-                height="142.2"
+                height="147"
                 id="_VBC_bar_154-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
                 width="16"
                 x="584.5384615384615"
-                y="114.80000000000001"
+                y="118"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
                 x="592.5384615384615"
-                y="108.80000000000001"
+                y="112"
               >
                 30.0k
               </text>
@@ -419,7 +419,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          height="292"
+          height="300"
           style="display: block;"
           width="650"
         >
@@ -430,7 +430,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 257)"
+            transform="translate(0, 265)"
           >
             <path
               class="domain"
@@ -557,13 +557,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             <path
               class="domain"
-              d="M-6,257.5H0.5V20.5H-6"
+              d="M-6,265.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,257.5)"
+              transform="translate(0,265.5)"
             >
               <line
                 stroke="currentColor"
@@ -581,7 +581,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,198.25)"
+              transform="translate(0,204.25)"
             >
               <line
                 stroke="currentColor"
@@ -599,7 +599,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,139)"
+              transform="translate(0,143)"
             >
               <line
                 stroke="currentColor"
@@ -617,7 +617,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,79.75)"
+              transform="translate(0,81.75)"
             >
               <line
                 stroke="currentColor"
@@ -657,21 +657,21 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 aria-label="2020/04/30. First, 10%."
                 data-is-focusable="true"
                 fill="aqua"
-                height="47.400000000000006"
+                height="49"
                 id="_VBC_bar_160-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
                 width="16"
                 x="48"
-                y="209.6"
+                y="216"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
                 x="56"
-                y="203.6"
+                y="210"
               >
                 10.0k
               </text>
@@ -681,7 +681,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 aria-label="2020/04/30. Second, 20%."
                 data-is-focusable="true"
                 fill="blue"
-                height="237"
+                height="245"
                 id="_VBC_bar_160-1"
                 opacity="1"
                 role="img"
@@ -705,21 +705,21 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 aria-label="2020/04/30. Third, 37%."
                 data-is-focusable="true"
                 fill="navy"
-                height="142.2"
+                height="147"
                 id="_VBC_bar_160-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
                 width="16"
                 x="584.5384615384615"
-                y="114.80000000000001"
+                y="118"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
                 x="592.5384615384615"
-                y="108.80000000000001"
+                y="112"
               >
                 30.0k
               </text>
@@ -825,7 +825,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            height="292"
+            height="300"
             style="display: block;"
             width="650"
           >
@@ -836,7 +836,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 257)"
+              transform="translate(0, 265)"
             >
               <path
                 class="domain"
@@ -963,13 +963,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
             >
               <path
                 class="domain"
-                d="M-6,257.5H0.5V20.5H-6"
+                d="M-6,265.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,257.5)"
+                transform="translate(0,265.5)"
               >
                 <line
                   stroke="currentColor"
@@ -987,7 +987,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,198.25)"
+                transform="translate(0,204.25)"
               >
                 <line
                   stroke="currentColor"
@@ -1005,7 +1005,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,139)"
+                transform="translate(0,143)"
               >
                 <line
                   stroke="currentColor"
@@ -1023,7 +1023,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,79.75)"
+                transform="translate(0,81.75)"
               >
                 <line
                   stroke="currentColor"
@@ -1063,21 +1063,21 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   aria-label="2020/04/30. First, 10%."
                   data-is-focusable="true"
                   fill="aqua"
-                  height="47.400000000000006"
+                  height="49"
                   id="_VBC_bar_167-0"
                   opacity="1"
                   role="img"
                   tabindex="0"
                   width="16"
                   x="48"
-                  y="209.6"
+                  y="216"
                 />
                 <text
                   aria-hidden="true"
                   class="fui-vbc__barLabel"
                   text-anchor="middle"
                   x="56"
-                  y="203.6"
+                  y="210"
                 >
                   10.0k
                 </text>
@@ -1087,7 +1087,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   aria-label="2020/04/30. Second, 20%."
                   data-is-focusable="true"
                   fill="blue"
-                  height="237"
+                  height="245"
                   id="_VBC_bar_167-1"
                   opacity="1"
                   role="img"
@@ -1111,21 +1111,21 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   aria-label="2020/04/30. Third, 37%."
                   data-is-focusable="true"
                   fill="navy"
-                  height="142.2"
+                  height="147"
                   id="_VBC_bar_167-2"
                   opacity="1"
                   role="img"
                   tabindex="0"
                   width="16"
                   x="584.5384615384615"
-                  y="114.80000000000001"
+                  y="118"
                 />
                 <text
                   aria-hidden="true"
                   class="fui-vbc__barLabel"
                   text-anchor="middle"
                   x="592.5384615384615"
-                  y="108.80000000000001"
+                  y="112"
                 >
                   30.0k
                 </text>
@@ -1239,7 +1239,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          height="292"
+          height="300"
           style="display: block;"
           width="650"
         >
@@ -1250,7 +1250,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 257)"
+            transform="translate(0, 265)"
           >
             <path
               class="domain"
@@ -1377,13 +1377,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           >
             <path
               class="domain"
-              d="M-6,257.5H0.5V20.5H-6"
+              d="M-6,265.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,257.5)"
+              transform="translate(0,265.5)"
             >
               <line
                 stroke="currentColor"
@@ -1401,7 +1401,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,198.25)"
+              transform="translate(0,204.25)"
             >
               <line
                 stroke="currentColor"
@@ -1419,7 +1419,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,139)"
+              transform="translate(0,143)"
             >
               <line
                 stroke="currentColor"
@@ -1437,7 +1437,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,79.75)"
+              transform="translate(0,81.75)"
             >
               <line
                 stroke="currentColor"
@@ -1477,21 +1477,21 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 aria-label="2020/04/30. First, 10%."
                 data-is-focusable="true"
                 fill="aqua"
-                height="47.400000000000006"
+                height="49"
                 id="_VBC_bar_173-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
                 width="16"
                 x="48"
-                y="209.6"
+                y="216"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
                 x="56"
-                y="203.6"
+                y="210"
               >
                 10.0k
               </text>
@@ -1501,7 +1501,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 aria-label="2020/04/30. Second, 20%."
                 data-is-focusable="true"
                 fill="blue"
-                height="237"
+                height="245"
                 id="_VBC_bar_173-1"
                 opacity="1"
                 role="img"
@@ -1525,21 +1525,21 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 aria-label="2020/04/30. Third, 37%."
                 data-is-focusable="true"
                 fill="navy"
-                height="142.2"
+                height="147"
                 id="_VBC_bar_173-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
                 width="16"
                 x="584.5384615384615"
-                y="114.80000000000001"
+                y="118"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
                 x="592.5384615384615"
-                y="108.80000000000001"
+                y="112"
               >
                 30.0k
               </text>
@@ -9948,7 +9948,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          height="302"
+          height="310"
           style="display: block;"
           width="0"
         >
@@ -9959,7 +9959,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 267)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
@@ -10086,13 +10086,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <path
               class="domain"
-              d="M-6,267.5H0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,267.5)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
@@ -10110,7 +10110,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,205.75)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
@@ -10128,7 +10128,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,144)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
@@ -10146,7 +10146,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,82.25)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
@@ -10186,14 +10186,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 aria-label="2020/04/30. First, 10%."
                 data-is-focusable="true"
                 fill="aqua"
-                height="49.400000000000006"
+                height="51"
                 id="_VBC_bar_5-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
                 width="1"
                 x="48"
-                y="217.6"
+                y="224"
               />
             </g>
             <g>
@@ -10201,7 +10201,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 aria-label="2020/04/30. Second, 20%."
                 data-is-focusable="true"
                 fill="blue"
-                height="247"
+                height="255"
                 id="_VBC_bar_5-1"
                 opacity="1"
                 role="img"
@@ -10216,14 +10216,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 aria-label="2020/04/30. Third, 37%."
                 data-is-focusable="true"
                 fill="navy"
-                height="148.2"
+                height="153"
                 id="_VBC_bar_5-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
                 width="1"
                 x="-26.03846153846154"
-                y="118.80000000000001"
+                y="122"
               />
             </g>
           </g>
@@ -10323,7 +10323,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          height="302"
+          height="310"
           style="display: block;"
           width="0"
         >
@@ -10334,7 +10334,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 267)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
@@ -10425,13 +10425,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <path
               class="domain"
-              d="M-6,267.5H0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,267.5)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
@@ -10449,7 +10449,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,205.75)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
@@ -10467,7 +10467,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,144)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
@@ -10485,7 +10485,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,82.25)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
@@ -10527,7 +10527,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 aria-label="This is a medium long label. . 3500."
                 data-is-focusable="true"
                 fill="#627CEF"
-                height="247"
+                height="255"
                 id="_VBC_bar_11-0"
                 role="img"
                 tabindex="0"
@@ -10543,13 +10543,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 aria-label="This is a long label This is a long label. 2500."
                 data-is-focusable="true"
                 fill="#C19C00"
-                height="176.42857142857144"
+                height="182.14285714285714"
                 id="_VBC_bar_11-1"
                 role="img"
                 tabindex="0"
                 width="7.600000000000001"
                 x="17.6"
-                y="90.57142857142856"
+                y="92.85714285714286"
               />
             </g>
             <g
@@ -10559,13 +10559,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 aria-label="This label is as long as the previous one. 1900."
                 data-is-focusable="true"
                 fill="#E650AF"
-                height="134.0857142857143"
+                height="138.42857142857142"
                 id="_VBC_bar_11-2"
                 role="img"
                 tabindex="0"
                 width="7.600000000000001"
                 x="-5.199999999999999"
-                y="132.9142857142857"
+                y="136.57142857142858"
               />
             </g>
             <g
@@ -10575,13 +10575,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 aria-label="A short label. 2800."
                 data-is-focusable="true"
                 fill="#0E7878"
-                height="197.60000000000002"
+                height="204"
                 id="_VBC_bar_11-3"
                 role="img"
                 tabindex="0"
                 width="7.600000000000001"
                 x="-28"
-                y="69.39999999999998"
+                y="71"
               />
             </g>
           </g>
@@ -10692,7 +10692,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          height="292"
+          height="300"
           style="display: block;"
           width="650"
         >
@@ -10703,7 +10703,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 257)"
+            transform="translate(0, 265)"
           >
             <path
               class="domain"
@@ -10830,13 +10830,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           >
             <path
               class="domain"
-              d="M-6,257.5H0.5V20.5H-6"
+              d="M-6,265.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,257.5)"
+              transform="translate(0,265.5)"
             >
               <line
                 stroke="currentColor"
@@ -10854,7 +10854,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,198.25)"
+              transform="translate(0,204.25)"
             >
               <line
                 stroke="currentColor"
@@ -10872,7 +10872,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,139)"
+              transform="translate(0,143)"
             >
               <line
                 stroke="currentColor"
@@ -10890,7 +10890,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,79.75)"
+              transform="translate(0,81.75)"
             >
               <line
                 stroke="currentColor"
@@ -10930,21 +10930,21 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 aria-label="2020/04/30. First, 10%."
                 data-is-focusable="true"
                 fill="aqua"
-                height="47.400000000000006"
+                height="49"
                 id="_VBC_bar_179-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
                 width="16"
                 x="48"
-                y="209.6"
+                y="216"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
                 x="56"
-                y="203.6"
+                y="210"
               >
                 10.0k
               </text>
@@ -10954,7 +10954,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 aria-label="2020/04/30. Second, 20%."
                 data-is-focusable="true"
                 fill="blue"
-                height="237"
+                height="245"
                 id="_VBC_bar_179-1"
                 opacity="1"
                 role="img"
@@ -10978,21 +10978,21 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 aria-label="2020/04/30. Third, 37%."
                 data-is-focusable="true"
                 fill="navy"
-                height="142.2"
+                height="147"
                 id="_VBC_bar_179-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
                 width="16"
                 x="584.5384615384615"
-                y="114.80000000000001"
+                y="118"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
                 x="592.5384615384615"
-                y="108.80000000000001"
+                y="112"
               >
                 30.0k
               </text>
@@ -11104,7 +11104,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          height="292"
+          height="300"
           style="display: block;"
           width="650"
         >
@@ -11115,7 +11115,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 257)"
+            transform="translate(0, 265)"
           >
             <path
               class="domain"
@@ -11242,13 +11242,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           >
             <path
               class="domain"
-              d="M-6,257.5H0.5V20.5H-6"
+              d="M-6,265.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,257.5)"
+              transform="translate(0,265.5)"
             >
               <line
                 stroke="currentColor"
@@ -11266,7 +11266,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,198.25)"
+              transform="translate(0,204.25)"
             >
               <line
                 stroke="currentColor"
@@ -11284,7 +11284,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,139)"
+              transform="translate(0,143)"
             >
               <line
                 stroke="currentColor"
@@ -11302,7 +11302,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,79.75)"
+              transform="translate(0,81.75)"
             >
               <line
                 stroke="currentColor"
@@ -11342,21 +11342,21 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 aria-label="2020/04/30. First, 10%."
                 data-is-focusable="true"
                 fill="aqua"
-                height="47.400000000000006"
+                height="49"
                 id="_VBC_bar_186-0"
                 opacity="1"
                 role="img"
                 tabindex="0"
                 width="16"
                 x="48"
-                y="209.6"
+                y="216"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
                 x="56"
-                y="203.6"
+                y="210"
               >
                 10.0k
               </text>
@@ -11366,7 +11366,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 aria-label="2020/04/30. Second, 20%."
                 data-is-focusable="true"
                 fill="blue"
-                height="237"
+                height="245"
                 id="_VBC_bar_186-1"
                 opacity="1"
                 role="img"
@@ -11390,21 +11390,21 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 aria-label="2020/04/30. Third, 37%."
                 data-is-focusable="true"
                 fill="navy"
-                height="142.2"
+                height="147"
                 id="_VBC_bar_186-2"
                 opacity="1"
                 role="img"
                 tabindex="0"
                 width="16"
                 x="584.5384615384615"
-                y="114.80000000000001"
+                y="118"
               />
               <text
                 aria-hidden="true"
                 class="fui-vbc__barLabel"
                 text-anchor="middle"
                 x="592.5384615384615"
-                y="108.80000000000001"
+                y="112"
               >
                 30.0k
               </text>
