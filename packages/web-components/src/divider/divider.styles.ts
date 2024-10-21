@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   colorBrandForeground1,
   colorBrandStroke1,
@@ -14,15 +13,9 @@ import {
   fontWeightRegular,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
-import {
-  alignEndState,
-  alignStartState,
-  brandState,
-  insetState,
-  strongState,
-  subtleState,
-  verticalState,
-} from '../styles/states/index.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
+import { display } from '../utils/display.js';
+import { state } from '../utils/states.js';
 
 /** Divider styles
  * @public
@@ -45,7 +38,7 @@ export const styles = css`
     height: ${strokeWidthThin};
   }
 
-  :host(${insetState}) {
+  :host(${state('inset')}) {
     padding: 0 12px;
   }
 
@@ -58,90 +51,88 @@ export const styles = css`
     padding: 0 12px;
   }
 
-  :host(${alignStartState})::before,
-  :host(${alignEndState})::after {
+  :host(${state('align-start')})::before,
+  :host(${state('align-end')})::after {
     flex-basis: 12px;
     flex-grow: 0;
     flex-shrink: 0;
   }
 
-  :host(${verticalState}) {
+  :host(${state('vertical')}) {
     height: 100%;
     min-height: 84px;
   }
-  :host(${verticalState}):empty {
+  :host(${state('vertical')}):empty {
     min-height: 20px;
   }
 
-  :host(${verticalState}) {
+  :host(${state('vertical')}) {
     flex-direction: column;
     align-items: center;
   }
 
-  :host(${verticalState}${insetState})::before {
+  :host(${state('vertical')}${state('inset')})::before {
     margin-top: 12px;
   }
-  :host(${verticalState}${insetState})::after {
+  :host(${state('vertical')}${state('inset')})::after {
     margin-bottom: 12px;
   }
 
-  :host(${verticalState}):empty::before,
-  :host(${verticalState}):empty::after {
+  :host(${state('vertical')}):empty::before,
+  :host(${state('vertical')}):empty::after {
     height: 10px;
     min-height: 10px;
     flex-grow: 0;
   }
 
-  :host(${verticalState})::before,
-  :host(${verticalState})::after {
+  :host(${state('vertical')})::before,
+  :host(${state('vertical')})::after {
     width: ${strokeWidthThin};
     min-height: 20px;
     height: 100%;
   }
 
-  :host(${verticalState}) ::slotted(*) {
+  :host(${state('vertical')}) ::slotted(*) {
     display: flex;
     flex-direction: column;
     padding: 12px 0;
     line-height: 20px;
   }
 
-  :host(${verticalState}${alignStartState})::before {
-    min-height: 8px;
-  }
-  :host(${verticalState}${alignEndState})::after {
+  :host(${state('vertical')}${state('align-start')})::before,
+  :host(${state('vertical')}${state('align-end')})::after {
     min-height: 8px;
   }
 
-  :host(${strongState})::before,
-  :host(${strongState})::after {
+  :host(${state('strong')})::before,
+  :host(${state('strong')})::after {
     background: ${colorNeutralStroke1};
   }
-  :host(${strongState}) ::slotted(*) {
+  :host(${state('strong')}) ::slotted(*) {
     color: ${colorNeutralForeground1};
   }
-  :host(${brandState})::before,
-  :host(${brandState})::after {
+  :host(${state('brand')})::before,
+  :host(${state('brand')})::after {
     background: ${colorBrandStroke1};
   }
-  :host(${brandState}) ::slotted(*) {
+  :host(${state('brand')}) ::slotted(*) {
     color: ${colorBrandForeground1};
   }
-  :host(${subtleState})::before,
-  :host(${subtleState})::after {
+  :host(${state('subtle')})::before,
+  :host(${state('subtle')})::after {
     background: ${colorNeutralStroke3};
   }
-  :host(${subtleState}) ::slotted(*) {
+  :host(${state('subtle')}) ::slotted(*) {
     color: ${colorNeutralForeground3};
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
-    :host(${strongState})::before,
-    :host(${strongState})::after,
-    :host(${brandState})::before,
-    :host(${brandState})::after,
-    :host(${subtleState})::before,
-    :host(${subtleState})::after,
+    :host(${state('strong')})::before,
+    :host(${state('strong')})::after,
+    :host(${state('brand')})::before,
+    :host(${state('brand')})::after,
+    :host(${state('subtle')})::before,
+    :host(${state('subtle')})::after,
     :host::after,
     :host::before {
       background: WindowText;

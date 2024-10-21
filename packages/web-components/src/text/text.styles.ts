@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
 import {
   fontFamilyBase,
   fontFamilyMonospace,
@@ -29,30 +28,8 @@ import {
   lineHeightHero800,
   lineHeightHero900,
 } from '../theme/design-tokens.js';
-
-/**
- * Selector for the `nowrap` state.
- * @public
- */
-const nowrapState = css.partial`:is([state--nowrap], :state(nowrap))`;
-
-/**
- * Selector for the `truncate` state.
- * @public
- */
-const truncateState = css.partial`:is([state--truncate], :state(truncate))`;
-
-/**
- * Selector for the `underline` state.
- * @public
- */
-const underlineState = css.partial`:is([state--underline], :state(underline))`;
-
-/**
- * Selector for the `strikethrough` state.
- * @public
- */
-const strikethroughState = css.partial`:is([state--strikethrough], :state(strikethrough))`;
+import { display } from '../utils/display.js';
+import { state } from '../utils/states.js';
 
 /** Text styles
  * @public
@@ -69,88 +46,88 @@ export const styles = css`
     text-align: start;
   }
 
-  :host(${nowrapState}),
-  :host(${nowrapState}) ::slotted(*) {
+  :host(${state('nowrap')}),
+  :host(${state('nowrap')}) ::slotted(*) {
     white-space: nowrap;
     overflow: hidden;
   }
-  :host(${truncateState}),
-  :host(${truncateState}) ::slotted(*) {
+  :host(${state('truncate')}),
+  :host(${state('truncate')}) ::slotted(*) {
     text-overflow: ellipsis;
   }
-  :host(:is([state--block], :state(block))) {
+  :host(${state('block')}) {
     display: block;
   }
-  :host(:is([state--italic], :state(italic))) {
+  :host(${state('italic')}) {
     font-style: italic;
   }
-  :host(${underlineState}) {
+  :host(${state('underline')}) {
     text-decoration-line: underline;
   }
-  :host(${strikethroughState}) {
+  :host(${state('strikethrough')}) {
     text-decoration-line: line-through;
   }
-  :host(${underlineState}${strikethroughState}) {
+  :host(${state('underline')}${state('strikethrough')}) {
     text-decoration-line: line-through underline;
   }
-  :host(:is([state--size-100], :state(size-100))) {
+  :host(${state('size-100')}) {
     font-size: ${fontSizeBase100};
     line-height: ${lineHeightBase100};
   }
-  :host(:is([state--size-200], :state(size-200))) {
+  :host(${state('size-200')}) {
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
-  :host(:is([state--size-400], :state(size-400))) {
+  :host(${state('size-400')}) {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
-  :host(:is([state--size-500], :state(size-500))) {
+  :host(${state('size-500')}) {
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
   }
-  :host(:is([state--size-600], :state(size-600))) {
+  :host(${state('size-600')}) {
     font-size: ${fontSizeBase600};
     line-height: ${lineHeightBase600};
   }
-  :host(:is([state--size-700], :state(size-700))) {
+  :host(${state('size-700')}) {
     font-size: ${fontSizeHero700};
     line-height: ${lineHeightHero700};
   }
-  :host(:is([state--size-800], :state(size-800))) {
+  :host(${state('size-800')}) {
     font-size: ${fontSizeHero800};
     line-height: ${lineHeightHero800};
   }
-  :host(:is([state--size-900], :state(size-900))) {
+  :host(${state('size-900')}) {
     font-size: ${fontSizeHero900};
     line-height: ${lineHeightHero900};
   }
-  :host(:is([state--size-1000], :state(size-1000))) {
+  :host(${state('size-1000')}) {
     font-size: ${fontSizeHero1000};
     line-height: ${lineHeightHero1000};
   }
-  :host(:is([state--monospace], :state(monospace))) {
+  :host(${state('monospace')}) {
     font-family: ${fontFamilyMonospace};
   }
-  :host(:is([state--numeric], :state(numeric))) {
+  :host(${state('numeric')}) {
     font-family: ${fontFamilyNumeric};
   }
-  :host(:is([state--medium], :state(medium))) {
+  :host(${state('medium')}) {
     font-weight: ${fontWeightMedium};
   }
-  :host(:is([state--semibold], :state(semibold))) {
+  :host(${state('semibold')}) {
     font-weight: ${fontWeightSemibold};
   }
-  :host(:is([state--bold], :state(bold))) {
+  :host(${state('bold')}) {
     font-weight: ${fontWeightBold};
   }
-  :host(:is([state--center], :state(center))) {
+  :host(${state('center')}) {
     text-align: center;
   }
-  :host(:is([state--end], :state(end))) {
+  :host(${state('end')}) {
     text-align: end;
   }
-  :host(:is([state--justify], :state(justify))) {
+  :host(${state('justify')}) {
     text-align: justify;
   }
 

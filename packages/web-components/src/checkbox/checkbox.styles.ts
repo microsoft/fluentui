@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { checkedState, circularState, largeState } from '../styles/states/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -24,12 +23,7 @@ import {
 } from '../theme/design-tokens.js';
 import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
-
-/**
- * Selector for the `indeterminate` state.
- * @public
- */
-const indeterminateState = css.partial`:is([state--indeterminate], :state(indeterminate))`;
+import { state } from '../utils/states.js';
 
 /** Checkbox styles
  *
@@ -63,12 +57,12 @@ export const styles = css`
     border-color: ${colorNeutralStrokeAccessiblePressed};
   }
 
-  :host(${checkedState}:hover) {
+  :host(${state('checked')}:hover) {
     background-color: ${colorCompoundBrandBackgroundHover};
     border-color: ${colorCompoundBrandStrokeHover};
   }
 
-  :host(${checkedState}:active) {
+  :host(${state('checked')}:active) {
     background-color: ${colorCompoundBrandBackgroundPressed};
     border-color: ${colorCompoundBrandStrokePressed};
   }
@@ -107,43 +101,43 @@ export const styles = css`
     width: 12px;
   }
 
-  :host(:not(${checkedState})) *:is(::slotted([slot='checked-indicator']), .checked-indicator) {
+  :host(:not(${state('checked')})) :is(::slotted([slot='checked-indicator']), .checked-indicator) {
     display: none;
   }
 
-  :host(${checkedState}),
-  :host(${indeterminateState}) {
+  :host(${state('checked')}),
+  :host(${state('indeterminate')}) {
     border-color: ${colorCompoundBrandStroke};
   }
 
-  :host(${checkedState}),
-  :host(${indeterminateState}) .indeterminate-indicator {
+  :host(${state('checked')}),
+  :host(${state('indeterminate')}) .indeterminate-indicator {
     background-color: ${colorCompoundBrandBackground};
   }
 
-  :host(${indeterminateState}) .indeterminate-indicator {
+  :host(${state('indeterminate')}) .indeterminate-indicator {
     border-radius: ${borderRadiusSmall};
     position: absolute;
     width: calc(var(--size) / 2);
     inset: 0;
   }
 
-  :host(${largeState}) {
+  :host(${state('large')}) {
     --size: 20px;
   }
 
-  :host(${largeState}) ::slotted([slot='checked-indicator']),
-  :host(${largeState}) .checked-indicator {
+  :host(${state('large')}) ::slotted([slot='checked-indicator']),
+  :host(${state('large')}) .checked-indicator {
     width: 16px;
   }
 
-  :host(${circularState}),
-  :host(${circularState}) .indeterminate-indicator {
+  :host(${state('circular')}),
+  :host(${state('circular')}) .indeterminate-indicator {
     border-radius: ${borderRadiusCircular};
   }
 
   :host([disabled]),
-  :host([disabled]${checkedState}) {
+  :host([disabled]${state('checked')}) {
     background-color: ${colorNeutralBackgroundDisabled};
     border-color: ${colorNeutralStrokeDisabled};
   }
@@ -152,11 +146,11 @@ export const styles = css`
     cursor: unset;
   }
 
-  :host([disabled]${indeterminateState}) .indeterminate-indicator {
+  :host([disabled]${state('indeterminate')}) .indeterminate-indicator {
     background-color: ${colorNeutralStrokeDisabled};
   }
 
-  :host([disabled]${checkedState}) .checked-indicator {
+  :host([disabled]${state('checked')}) .checked-indicator {
     color: ${colorNeutralStrokeDisabled};
   }
 `.withBehaviors(
@@ -170,7 +164,7 @@ export const styles = css`
     }
 
     :host(:not([disabled]):hover),
-    :host(${checkedState}:not([disabled]):hover),
+    :host(${state('checked')}:not([disabled]):hover),
     :host(:not([slot='input']):focus-visible)::after {
       border-color: Highlight;
     }
@@ -180,13 +174,13 @@ export const styles = css`
       color: HighlightText;
     }
 
-    :host(${checkedState}),
-    :host(${indeterminateState}) .indeterminate-indicator {
+    :host(${state('checked')}),
+    :host(${state('indeterminate')}) .indeterminate-indicator {
       background-color: FieldText;
     }
 
-    :host(${checkedState}:not([disabled]):hover),
-    :host(${indeterminateState}:not([disabled]):hover) .indeterminate-indicator {
+    :host(${state('checked')}:not([disabled]):hover),
+    :host(${state('indeterminate')}:not([disabled]):hover) .indeterminate-indicator {
       background-color: Highlight;
     }
 
@@ -194,12 +188,12 @@ export const styles = css`
       border-color: GrayText;
     }
 
-    :host([disabled]${indeterminateState}) .indeterminate-indicator {
+    :host([disabled]${state('indeterminate')}) .indeterminate-indicator {
       background-color: GrayText;
     }
 
     :host([disabled]),
-    :host([disabled]${checkedState}) .checked-indicator {
+    :host([disabled]${state('checked')}) .checked-indicator {
       color: GrayText;
     }
   `),

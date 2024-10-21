@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { checkedState, disabledState } from '../styles/states/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -21,6 +20,7 @@ import {
 } from '../theme/design-tokens.js';
 import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
+import { state } from '../utils/states.js';
 
 /**
  * Styles for the Radio component
@@ -74,15 +74,15 @@ export const styles = css`
     border-color: ${colorNeutralStrokeAccessibleHover};
   }
 
-  :host(${checkedState}) {
+  :host(${state('checked')}) {
     border-color: ${colorCompoundBrandStroke};
   }
 
-  :host(${checkedState}) .checked-indicator {
+  :host(${state('checked')}) .checked-indicator {
     background-color: ${colorCompoundBrandBackground};
   }
 
-  :host(${checkedState}:hover) .checked-indicator {
+  :host(${state('checked')}:hover) .checked-indicator {
     background-color: ${colorCompoundBrandBackgroundHover};
   }
 
@@ -90,7 +90,7 @@ export const styles = css`
     border-color: ${colorNeutralStrokeAccessiblePressed};
   }
 
-  :host(${checkedState}:active) .checked-indicator {
+  :host(${state('checked')}:active) .checked-indicator {
     background-color: ${colorCompoundBrandBackgroundPressed};
   }
 
@@ -98,12 +98,12 @@ export const styles = css`
     outline: none;
   }
 
-  :host(${disabledState}) {
+  :host(${state('disabled')}) {
     background-color: ${colorNeutralBackgroundDisabled};
     border-color: ${colorNeutralStrokeDisabled};
   }
 
-  :host(${checkedState}${disabledState}) .checked-indicator {
+  :host(${state('checked')}${state('disabled')}) .checked-indicator {
     background-color: ${colorNeutralStrokeDisabled};
   }
 `.withBehaviors(
@@ -116,7 +116,7 @@ export const styles = css`
       border-color: Canvas;
     }
 
-    :host(:not(${disabledState}):hover),
+    :host(:not(${state('disabled')}):hover),
     :host(:not([slot='input']):focus-visible)::after {
       border-color: Highlight;
     }
@@ -125,20 +125,20 @@ export const styles = css`
       color: HighlightText;
     }
 
-    :host(${checkedState}) .checked-indicator {
+    :host(${state('checked')}) .checked-indicator {
       background-color: FieldText;
     }
 
-    :host(${checkedState}:not(${disabledState}):hover) .checked-indicator {
+    :host(${state('checked')}:not(${state('disabled')}):hover) .checked-indicator {
       background-color: Highlight;
     }
 
-    :host(${disabledState}) {
+    :host(${state('disabled')}) {
       border-color: GrayText;
       color: GrayText;
     }
 
-    :host(${disabledState}${checkedState}) .checked-indicator {
+    :host(${state('disabled')}${state('checked')}) .checked-indicator {
       background-color: GrayText;
     }
   `),
