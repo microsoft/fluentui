@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "ES2019",
     "module": "ESNext",
-    "moduleResolution": "Node16",
     "esModuleInterop": true,
     "sourceMap": true,
     "strict": true,
