@@ -245,4 +245,4 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
     }
   }
 });
-ChartPopover.displayName = 'PopoverComponent';
+ChartPopover.displayName = 'ChartPopover';

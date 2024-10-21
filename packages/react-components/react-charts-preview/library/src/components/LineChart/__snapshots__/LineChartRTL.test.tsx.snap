@@ -3898,7 +3898,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
       >
         <svg
           aria-label="LineChart"
-          height="302"
+          height="310"
           style="display: block;"
           width="0"
         >
@@ -3909,7 +3909,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 267)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
@@ -4036,13 +4036,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           >
             <path
               class="domain"
-              d="M-6,267.5H0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,267.5)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
@@ -4060,7 +4060,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,205.75)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
@@ -4078,7 +4078,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,144)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
@@ -4096,7 +4096,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,82.25)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
@@ -4139,7 +4139,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               x1="0"
               x2="0"
               y1="0"
-              y2="302"
+              y2="310"
             />
             <g>
               <g
@@ -4154,15 +4154,15 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                   stroke-width="4"
                   x1="-20"
                   x2="16"
-                  y1="186.45652173913044"
-                  y2="52.217391304347835"
+                  y1="191.84782608695653"
+                  y2="53.2608695652174"
                 />
                 <path
                   aria-label="70. metaData3, 30."
-                  d="M-20.5 186.45652173913044
-     A0.5 0.5 0 1 0 -19.5 186.45652173913044
-     M-20.5 186.45652173913044
-     A 0.5 0.5 0 1 1 -19.5 186.45652173913044
+                  d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
      "
                   data-is-focusable="true"
                   fill="yellow"
@@ -4175,10 +4175,10 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 />
                 <path
                   aria-label="40. metaData3, 80."
-                  d="M15.5 52.217391304347835
-     A0.5 0.5 0 1 0 16.5 52.217391304347835
-     M15.5 52.217391304347835
-     A 0.5 0.5 0 1 1 16.5 52.217391304347835
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
      "
                   data-is-focusable="true"
                   fill="yellow"
@@ -4191,7 +4191,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 />
                 <circle
                   cx="16"
-                  cy="52.217391304347835"
+                  cy="53.2608695652174"
                   focusable="false"
                   id="circle1_2_11D"
                   opacity="0"
@@ -4212,15 +4212,15 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                   stroke-width="4"
                   x1="28"
                   x2="4"
-                  y1="105.91304347826086"
-                  y2="25.3695652173913"
+                  y1="108.69565217391303"
+                  y2="25.543478260869563"
                 />
                 <path
                   aria-label="30. metaData2, 60."
-                  d="M27.5 105.91304347826086
-     A0.5 0.5 0 1 0 28.5 105.91304347826086
-     M27.5 105.91304347826086
-     A 0.5 0.5 0 1 1 28.5 105.91304347826086
+                  d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
      "
                   data-is-focusable="true"
                   fill="green"
@@ -4233,10 +4233,10 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 />
                 <path
                   aria-label="50. metaData2, 90."
-                  d="M3.5 25.3695652173913
-     A0.5 0.5 0 1 0 4.5 25.3695652173913
-     M3.5 25.3695652173913
-     A 0.5 0.5 0 1 1 4.5 25.3695652173913
+                  d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
      "
                   data-is-focusable="true"
                   fill="green"
@@ -4249,7 +4249,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 />
                 <circle
                   cx="4"
-                  cy="25.3695652173913"
+                  cy="25.543478260869563"
                   focusable="false"
                   id="circle1_1_11D"
                   opacity="0"
@@ -4270,15 +4270,15 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                   stroke-width="4"
                   x1="40"
                   x2="16"
-                  y1="132.7608695652174"
-                  y2="52.217391304347835"
+                  y1="136.41304347826087"
+                  y2="53.2608695652174"
                 />
                 <path
                   aria-label="20. metaData1, 50."
-                  d="M39.5 132.7608695652174
-     A0.5 0.5 0 1 0 40.5 132.7608695652174
-     M39.5 132.7608695652174
-     A 0.5 0.5 0 1 1 40.5 132.7608695652174
+                  d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
      "
                   data-is-focusable="true"
                   fill="red"
@@ -4291,10 +4291,10 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 />
                 <path
                   aria-label="40. metaData1, 80."
-                  d="M15.5 52.217391304347835
-     A0.5 0.5 0 1 0 16.5 52.217391304347835
-     M15.5 52.217391304347835
-     A 0.5 0.5 0 1 1 16.5 52.217391304347835
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
      "
                   data-is-focusable="true"
                   fill="red"
@@ -4307,7 +4307,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 />
                 <circle
                   cx="16"
-                  cy="52.217391304347835"
+                  cy="53.2608695652174"
                   focusable="false"
                   id="circle1_0_11D"
                   opacity="0"
@@ -4415,7 +4415,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
       >
         <svg
           aria-label="LineChart"
-          height="302"
+          height="310"
           style="display: block;"
           width="0"
         >
@@ -4426,7 +4426,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 267)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
@@ -4553,13 +4553,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           >
             <path
               class="domain"
-              d="M-6,267.5H0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,267.5)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
@@ -4577,7 +4577,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,205.75)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
@@ -4595,7 +4595,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,144)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
@@ -4613,7 +4613,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,82.25)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
@@ -4656,7 +4656,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               x1="0"
               x2="0"
               y1="0"
-              y2="302"
+              y2="310"
             />
             <g>
               <g
@@ -4671,14 +4671,14 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                   stroke-width="4"
                   x1="-20"
                   x2="16"
-                  y1="186.45652173913044"
-                  y2="52.217391304347835"
+                  y1="191.84782608695653"
+                  y2="53.2608695652174"
                 />
                 <path
                   aria-label="70. metaData3, 30."
-                  d="M-25 183.57052173913044
+                  d="M-25 188.96182608695653
      H -15
-     L-20 192.23052173913044 Z"
+     L-20 197.62182608695653 Z"
                   data-is-focusable="true"
                   fill="yellow"
                   id="circle12_2_1"
@@ -4690,9 +4690,9 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 />
                 <path
                   aria-label="40. metaData3, 80."
-                  d="M11 49.33139130434783
+                  d="M11 50.374869565217395
      H 21
-     L16 57.991391304347836 Z"
+     L16 59.0348695652174 Z"
                   data-is-focusable="true"
                   fill="yellow"
                   id="circle12_2_11L"
@@ -4704,7 +4704,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 />
                 <circle
                   cx="16"
-                  cy="52.217391304347835"
+                  cy="53.2608695652174"
                   focusable="false"
                   id="circle12_2_11D"
                   opacity="0"
@@ -4725,15 +4725,15 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                   stroke-width="4"
                   x1="28"
                   x2="4"
-                  y1="105.91304347826086"
-                  y2="25.3695652173913"
+                  y1="108.69565217391303"
+                  y2="25.543478260869563"
                 />
                 <path
                   aria-label="30. metaData2, 60."
-                  d="M23 100.91304347826086
-     L33 100.91304347826086
-     L33 110.91304347826086
-     L23 110.91304347826086
+                  d="M23 103.69565217391303
+     L33 103.69565217391303
+     L33 113.69565217391303
+     L23 113.69565217391303
      Z"
                   data-is-focusable="true"
                   fill="green"
@@ -4746,10 +4746,10 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 />
                 <path
                   aria-label="50. metaData2, 90."
-                  d="M-1 20.3695652173913
-     L9 20.3695652173913
-     L9 30.3695652173913
-     L-1 30.3695652173913
+                  d="M-1 20.543478260869563
+     L9 20.543478260869563
+     L9 30.543478260869563
+     L-1 30.543478260869563
      Z"
                   data-is-focusable="true"
                   fill="green"
@@ -4762,7 +4762,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 />
                 <circle
                   cx="4"
-                  cy="25.3695652173913"
+                  cy="25.543478260869563"
                   focusable="false"
                   id="circle12_1_11D"
                   opacity="0"
@@ -4783,15 +4783,15 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                   stroke-width="4"
                   x1="40"
                   x2="16"
-                  y1="132.7608695652174"
-                  y2="52.217391304347835"
+                  y1="136.41304347826087"
+                  y2="53.2608695652174"
                 />
                 <path
                   aria-label="20. metaData1, 50."
-                  d="M35 132.7608695652174
-     A5 5 0 1 0 45 132.7608695652174
-     M35 132.7608695652174
-     A 5 5 0 1 1 45 132.7608695652174
+                  d="M35 136.41304347826087
+     A5 5 0 1 0 45 136.41304347826087
+     M35 136.41304347826087
+     A 5 5 0 1 1 45 136.41304347826087
      "
                   data-is-focusable="true"
                   fill="red"
@@ -4804,10 +4804,10 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 />
                 <path
                   aria-label="40. metaData1, 80."
-                  d="M11 52.217391304347835
-     A5 5 0 1 0 21 52.217391304347835
-     M11 52.217391304347835
-     A 5 5 0 1 1 21 52.217391304347835
+                  d="M11 53.2608695652174
+     A5 5 0 1 0 21 53.2608695652174
+     M11 53.2608695652174
+     A 5 5 0 1 1 21 53.2608695652174
      "
                   data-is-focusable="true"
                   fill="red"
@@ -4820,7 +4820,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 />
                 <circle
                   cx="16"
-                  cy="52.217391304347835"
+                  cy="53.2608695652174"
                   focusable="false"
                   id="circle12_0_11D"
                   opacity="0"
@@ -4962,7 +4962,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       >
         <svg
           aria-label="LineChart"
-          height="302"
+          height="310"
           style="display: block;"
           width="0"
         >
@@ -4973,7 +4973,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 267)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
@@ -5100,13 +5100,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             <path
               class="domain"
-              d="M-6,267.5H0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,267.5)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
@@ -5124,7 +5124,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,205.75)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
@@ -5142,7 +5142,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,144)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
@@ -5160,7 +5160,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,82.25)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
@@ -5203,7 +5203,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               x1="0"
               x2="0"
               y1="0"
-              y2="302"
+              y2="310"
             />
             <g>
               <g
@@ -5218,15 +5218,15 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                   stroke-width="4"
                   x1="-20"
                   x2="16"
-                  y1="186.45652173913044"
-                  y2="52.217391304347835"
+                  y1="191.84782608695653"
+                  y2="53.2608695652174"
                 />
                 <path
                   aria-label="70. metaData3, 30."
-                  d="M-20.5 186.45652173913044
-     A0.5 0.5 0 1 0 -19.5 186.45652173913044
-     M-20.5 186.45652173913044
-     A 0.5 0.5 0 1 1 -19.5 186.45652173913044
+                  d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
      "
                   data-is-focusable="true"
                   fill="yellow"
@@ -5239,10 +5239,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 />
                 <path
                   aria-label="40. metaData3, 80."
-                  d="M15.5 52.217391304347835
-     A0.5 0.5 0 1 0 16.5 52.217391304347835
-     M15.5 52.217391304347835
-     A 0.5 0.5 0 1 1 16.5 52.217391304347835
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
      "
                   data-is-focusable="true"
                   fill="yellow"
@@ -5255,7 +5255,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 />
                 <circle
                   cx="16"
-                  cy="52.217391304347835"
+                  cy="53.2608695652174"
                   focusable="false"
                   id="circle166_2_11D"
                   opacity="0"
@@ -5276,15 +5276,15 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                   stroke-width="4"
                   x1="28"
                   x2="4"
-                  y1="105.91304347826086"
-                  y2="25.3695652173913"
+                  y1="108.69565217391303"
+                  y2="25.543478260869563"
                 />
                 <path
                   aria-label="30. metaData2, 60."
-                  d="M27.5 105.91304347826086
-     A0.5 0.5 0 1 0 28.5 105.91304347826086
-     M27.5 105.91304347826086
-     A 0.5 0.5 0 1 1 28.5 105.91304347826086
+                  d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
      "
                   data-is-focusable="true"
                   fill="green"
@@ -5297,10 +5297,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 />
                 <path
                   aria-label="50. metaData2, 90."
-                  d="M3.5 25.3695652173913
-     A0.5 0.5 0 1 0 4.5 25.3695652173913
-     M3.5 25.3695652173913
-     A 0.5 0.5 0 1 1 4.5 25.3695652173913
+                  d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
      "
                   data-is-focusable="true"
                   fill="green"
@@ -5313,7 +5313,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 />
                 <circle
                   cx="4"
-                  cy="25.3695652173913"
+                  cy="25.543478260869563"
                   focusable="false"
                   id="circle166_1_11D"
                   opacity="0"
@@ -5334,15 +5334,15 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                   stroke-width="4"
                   x1="40"
                   x2="16"
-                  y1="132.7608695652174"
-                  y2="52.217391304347835"
+                  y1="136.41304347826087"
+                  y2="53.2608695652174"
                 />
                 <path
                   aria-label="20. metaData1, 50."
-                  d="M39.5 132.7608695652174
-     A0.5 0.5 0 1 0 40.5 132.7608695652174
-     M39.5 132.7608695652174
-     A 0.5 0.5 0 1 1 40.5 132.7608695652174
+                  d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
      "
                   data-is-focusable="true"
                   fill="red"
@@ -5355,10 +5355,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 />
                 <path
                   aria-label="40. metaData1, 80."
-                  d="M15.5 52.217391304347835
-     A0.5 0.5 0 1 0 16.5 52.217391304347835
-     M15.5 52.217391304347835
-     A 0.5 0.5 0 1 1 16.5 52.217391304347835
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
      "
                   data-is-focusable="true"
                   fill="red"
@@ -5371,7 +5371,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 />
                 <circle
                   cx="16"
-                  cy="52.217391304347835"
+                  cy="53.2608695652174"
                   focusable="false"
                   id="circle166_0_11D"
                   opacity="0"
@@ -5480,7 +5480,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       >
         <svg
           aria-label="LineChart"
-          height="302"
+          height="310"
           style="display: block;"
           width="0"
         >
@@ -5491,7 +5491,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 267)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
@@ -5618,13 +5618,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             <path
               class="domain"
-              d="M-6,267.5H0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,267.5)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
@@ -5642,7 +5642,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,205.75)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
@@ -5660,7 +5660,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,144)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
@@ -5678,7 +5678,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,82.25)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
@@ -5721,7 +5721,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               x1="0"
               x2="0"
               y1="0"
-              y2="302"
+              y2="310"
             />
             <g>
               <g
@@ -5736,15 +5736,15 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                   stroke-width="4"
                   x1="-20"
                   x2="16"
-                  y1="186.45652173913044"
-                  y2="52.217391304347835"
+                  y1="191.84782608695653"
+                  y2="53.2608695652174"
                 />
                 <path
                   aria-label="70. metaData3, 30."
-                  d="M-20.5 186.45652173913044
-     A0.5 0.5 0 1 0 -19.5 186.45652173913044
-     M-20.5 186.45652173913044
-     A 0.5 0.5 0 1 1 -19.5 186.45652173913044
+                  d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
      "
                   data-is-focusable="true"
                   fill="yellow"
@@ -5757,10 +5757,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 />
                 <path
                   aria-label="40. metaData3, 80."
-                  d="M15.5 52.217391304347835
-     A0.5 0.5 0 1 0 16.5 52.217391304347835
-     M15.5 52.217391304347835
-     A 0.5 0.5 0 1 1 16.5 52.217391304347835
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
      "
                   data-is-focusable="true"
                   fill="yellow"
@@ -5773,7 +5773,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 />
                 <circle
                   cx="16"
-                  cy="52.217391304347835"
+                  cy="53.2608695652174"
                   focusable="false"
                   id="circle177_2_11D"
                   opacity="0"
@@ -5794,15 +5794,15 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                   stroke-width="4"
                   x1="28"
                   x2="4"
-                  y1="105.91304347826086"
-                  y2="25.3695652173913"
+                  y1="108.69565217391303"
+                  y2="25.543478260869563"
                 />
                 <path
                   aria-label="30. metaData2, 60."
-                  d="M27.5 105.91304347826086
-     A0.5 0.5 0 1 0 28.5 105.91304347826086
-     M27.5 105.91304347826086
-     A 0.5 0.5 0 1 1 28.5 105.91304347826086
+                  d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
      "
                   data-is-focusable="true"
                   fill="green"
@@ -5815,10 +5815,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 />
                 <path
                   aria-label="50. metaData2, 90."
-                  d="M3.5 25.3695652173913
-     A0.5 0.5 0 1 0 4.5 25.3695652173913
-     M3.5 25.3695652173913
-     A 0.5 0.5 0 1 1 4.5 25.3695652173913
+                  d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
      "
                   data-is-focusable="true"
                   fill="green"
@@ -5831,7 +5831,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 />
                 <circle
                   cx="4"
-                  cy="25.3695652173913"
+                  cy="25.543478260869563"
                   focusable="false"
                   id="circle177_1_11D"
                   opacity="0"
@@ -5852,15 +5852,15 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                   stroke-width="4"
                   x1="40"
                   x2="16"
-                  y1="132.7608695652174"
-                  y2="52.217391304347835"
+                  y1="136.41304347826087"
+                  y2="53.2608695652174"
                 />
                 <path
                   aria-label="20. metaData1, 50."
-                  d="M39.5 132.7608695652174
-     A0.5 0.5 0 1 0 40.5 132.7608695652174
-     M39.5 132.7608695652174
-     A 0.5 0.5 0 1 1 40.5 132.7608695652174
+                  d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
      "
                   data-is-focusable="true"
                   fill="red"
@@ -5873,10 +5873,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 />
                 <path
                   aria-label="40. metaData1, 80."
-                  d="M15.5 52.217391304347835
-     A0.5 0.5 0 1 0 16.5 52.217391304347835
-     M15.5 52.217391304347835
-     A 0.5 0.5 0 1 1 16.5 52.217391304347835
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
      "
                   data-is-focusable="true"
                   fill="red"
@@ -5889,7 +5889,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 />
                 <circle
                   cx="16"
-                  cy="52.217391304347835"
+                  cy="53.2608695652174"
                   focusable="false"
                   id="circle177_0_11D"
                   opacity="0"
@@ -6001,7 +6001,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
         >
           <svg
             aria-label="LineChart"
-            height="302"
+            height="310"
             style="display: block;"
             width="0"
           >
@@ -6012,7 +6012,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 267)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
@@ -6139,13 +6139,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             >
               <path
                 class="domain"
-                d="M-6,267.5H0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,267.5)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
@@ -6163,7 +6163,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,205.75)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
@@ -6181,7 +6181,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,144)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
@@ -6199,7 +6199,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,82.25)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
@@ -6242,7 +6242,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 x1="0"
                 x2="0"
                 y1="0"
-                y2="302"
+                y2="310"
               />
               <g>
                 <g
@@ -6257,15 +6257,15 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                     stroke-width="4"
                     x1="-20"
                     x2="16"
-                    y1="186.45652173913044"
-                    y2="52.217391304347835"
+                    y1="191.84782608695653"
+                    y2="53.2608695652174"
                   />
                   <path
                     aria-label="70. metaData3, 30."
-                    d="M-20.5 186.45652173913044
-     A0.5 0.5 0 1 0 -19.5 186.45652173913044
-     M-20.5 186.45652173913044
-     A 0.5 0.5 0 1 1 -19.5 186.45652173913044
+                    d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
      "
                     data-is-focusable="true"
                     fill="yellow"
@@ -6278,10 +6278,10 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   />
                   <path
                     aria-label="40. metaData3, 80."
-                    d="M15.5 52.217391304347835
-     A0.5 0.5 0 1 0 16.5 52.217391304347835
-     M15.5 52.217391304347835
-     A 0.5 0.5 0 1 1 16.5 52.217391304347835
+                    d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
      "
                     data-is-focusable="true"
                     fill="yellow"
@@ -6294,7 +6294,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   />
                   <circle
                     cx="16"
-                    cy="52.217391304347835"
+                    cy="53.2608695652174"
                     focusable="false"
                     id="circle189_2_11D"
                     opacity="0"
@@ -6315,15 +6315,15 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                     stroke-width="4"
                     x1="28"
                     x2="4"
-                    y1="105.91304347826086"
-                    y2="25.3695652173913"
+                    y1="108.69565217391303"
+                    y2="25.543478260869563"
                   />
                   <path
                     aria-label="30. metaData2, 60."
-                    d="M27.5 105.91304347826086
-     A0.5 0.5 0 1 0 28.5 105.91304347826086
-     M27.5 105.91304347826086
-     A 0.5 0.5 0 1 1 28.5 105.91304347826086
+                    d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
      "
                     data-is-focusable="true"
                     fill="green"
@@ -6336,10 +6336,10 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   />
                   <path
                     aria-label="50. metaData2, 90."
-                    d="M3.5 25.3695652173913
-     A0.5 0.5 0 1 0 4.5 25.3695652173913
-     M3.5 25.3695652173913
-     A 0.5 0.5 0 1 1 4.5 25.3695652173913
+                    d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
      "
                     data-is-focusable="true"
                     fill="green"
@@ -6352,7 +6352,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   />
                   <circle
                     cx="4"
-                    cy="25.3695652173913"
+                    cy="25.543478260869563"
                     focusable="false"
                     id="circle189_1_11D"
                     opacity="0"
@@ -6373,15 +6373,15 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                     stroke-width="4"
                     x1="40"
                     x2="16"
-                    y1="132.7608695652174"
-                    y2="52.217391304347835"
+                    y1="136.41304347826087"
+                    y2="53.2608695652174"
                   />
                   <path
                     aria-label="20. metaData1, 50."
-                    d="M39.5 132.7608695652174
-     A0.5 0.5 0 1 0 40.5 132.7608695652174
-     M39.5 132.7608695652174
-     A 0.5 0.5 0 1 1 40.5 132.7608695652174
+                    d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
      "
                     data-is-focusable="true"
                     fill="red"
@@ -6394,10 +6394,10 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   />
                   <path
                     aria-label="40. metaData1, 80."
-                    d="M15.5 52.217391304347835
-     A0.5 0.5 0 1 0 16.5 52.217391304347835
-     M15.5 52.217391304347835
-     A 0.5 0.5 0 1 1 16.5 52.217391304347835
+                    d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
      "
                     data-is-focusable="true"
                     fill="red"
@@ -6410,7 +6410,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   />
                   <circle
                     cx="16"
-                    cy="52.217391304347835"
+                    cy="53.2608695652174"
                     focusable="false"
                     id="circle189_0_11D"
                     opacity="0"
