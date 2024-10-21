@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Introduced a new skip prop for createPresenceComponent to disable animations on a per-instance basis",
+  "packageName": "@fluentui/react-motion",
+  "email": "olkatruk@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -60,6 +60,9 @@ export type PresenceComponentProps = {
   /** Defines whether a component is visible; triggers the "enter" or "exit" motions. */
   visible?: boolean;
 
+  /** Determines whether the component should skip all animations */
+  skip?: boolean;
+
   /**
    * By default, the child component remains mounted after it reaches the "finished" state. Set "unmountOnExit" if
    * you prefer to unmount the component after it finishes exiting.
@@ -96,6 +99,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
         onMotionStart,
         onMotionCancel,
         visible,
+        skip,
         unmountOnExit,
         ..._rest
       } = merged;
@@ -159,7 +163,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
             handleMotionStart(direction);
           }
 
-          const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
+          const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() || !!skip });
 
           if (applyInitialStyles) {
             // Heads up!

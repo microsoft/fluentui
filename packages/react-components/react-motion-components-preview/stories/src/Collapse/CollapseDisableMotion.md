@@ -1,0 +1,1 @@
+Use the `skip` property to prevent animations from playing while keeping all functionality, such as callbacks (e.g., `onMotionFinished`), intact. This is especially useful for improving accessibility by offering a non-animated experience while ensuring the component logic remains unaffected.
