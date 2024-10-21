@@ -151,10 +151,10 @@ export const styles = css`
     }
 
     ::slotted([popover]) {
-      inset-area: inline-end span-block-end;
       margin: 0;
       max-height: var(--menu-max-height, auto);
       position: absolute;
+      position-area: inline-end span-block-end;
       position-anchor: --menu-trigger;
       position-try-options: flip-inline, inset-area(block-start);
       z-index: 1;
