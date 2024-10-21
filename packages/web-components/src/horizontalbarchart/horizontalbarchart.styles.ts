@@ -68,7 +68,7 @@ export const styles: ElementStyles = css`
     flex-direction: row;
     flex-wrap: wrap;
     padding-top: ${spacingVerticalL};
-    width: 90%;
+    width: 100%;
     align-items: center;
     margin: -8px 0 0 -8px;
   }
@@ -93,5 +93,19 @@ export const styles: ElementStyles = css`
   }
   .barLabel {
     ${typographyBody1StrongStyles}
+  }
+  .chartTitleDiv {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .ratioNumerator {
+    ${typographyBody1StrongStyles}
+    color: ${colorNeutralForeground1};
+  }
+  .ratioDenominator {
+    ${typographyBody1StrongStyles}
+    color: ${colorNeutralForeground1};
+    font-weight: bold;
   }
 `;
