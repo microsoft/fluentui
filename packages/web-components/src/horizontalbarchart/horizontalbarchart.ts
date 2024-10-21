@@ -305,7 +305,7 @@ export class HorizontalBarChart extends FASTElement {
 
     const hideNumber = this.hideRatio === undefined ? false : this.hideRatio;
 
-    const showRatio = this.variant !== Variant.AbsoluteScale && !hideNumber && data!.chartData!.length === 2;
+    const showRatio = this.variant === Variant.PartToWhole && !hideNumber && data!.chartData!.length === 2;
     const getChartData = () => (data!.chartData![0].data ? data!.chartData![0].data : 0);
 
     if (showRatio) {
