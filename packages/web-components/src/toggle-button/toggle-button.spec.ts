@@ -1,41 +1,26 @@
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 
 test.describe('Toggle Button', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-button-toggle-button--button'));
+  test.use({ tagName: 'fluent-toggle-button' });
 
-    await page.waitForFunction(() => customElements.whenDefined('fluent-toggle-button'));
-  });
-
-  test('should have the `aria-pressed` attribute set to `false` by default', async ({ page }) => {
-    const element = page.locator('fluent-toggle-button');
-
-    await page.setContent(/* html */ `
-      <fluent-toggle-button>Toggle</fluent-toggle-button>
-    `);
+  test('should have the `aria-pressed` attribute set to `false` by default', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'false');
   });
 
   test('should set the `aria-pressed` attribute to `true` when the `pressed` attribute is present', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-toggle-button');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-toggle-button pressed>Toggle</fluent-toggle-button>
-    `);
+    await fastPage.setTemplate({ attributes: { pressed: true } });
 
     await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'true');
   });
 
-  test('should toggle the `pressed` attribute when clicked', async ({ page }) => {
-    const element = page.locator('fluent-toggle-button');
-
-    await page.setContent(/* html */ `
-      <fluent-toggle-button>Toggle</fluent-toggle-button>
-    `);
+  test('should toggle the `pressed` attribute when clicked', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'false');
 
@@ -55,13 +40,11 @@ test.describe('Toggle Button', () => {
   });
 
   test('should NOT toggle the `pressed` attribute when clicked when the `disabled` attribute is present', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-toggle-button');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-toggle-button disabled>Toggle</fluent-toggle-button>
-    `);
+    await fastPage.setTemplate({ attributes: { disabled: true } });
 
     await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'false');
 
@@ -81,13 +64,11 @@ test.describe('Toggle Button', () => {
   });
 
   test('should NOT toggle the `pressed` attribute when clicked when the `disabled-focusable` attribute is present', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-toggle-button');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-toggle-button disabled-focusable>Toggle</fluent-toggle-button>
-    `);
+    await fastPage.setTemplate({ attributes: { 'disabled-focusable': true } });
 
     await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'false');
 
@@ -106,34 +87,30 @@ test.describe('Toggle Button', () => {
     await expect(element).not.toHaveCustomState('pressed');
   });
 
-  test('should set the `aria-pressed` attribute to `mixed` when the `mixed` attribute is present', async ({ page }) => {
-    const element = page.locator('fluent-toggle-button');
+  test('should set the `aria-pressed` attribute to `mixed` when the `mixed` attribute is present', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-toggle-button mixed>Toggle</fluent-toggle-button>
-    `);
+    await fastPage.setTemplate({ attributes: { mixed: true } });
 
     await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'mixed');
   });
 
-  test('should set the `pressed` state when the `mixed` attribute is present', async ({ page }) => {
-    const element = page.locator('fluent-toggle-button');
+  test('should set the `pressed` state when the `mixed` attribute is present', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-toggle-button mixed>Toggle</fluent-toggle-button>
-    `);
+    await fastPage.setTemplate({ attributes: { mixed: true } });
 
     await expect(element).toHaveCustomState('pressed');
   });
 
   test('should set the `aria-pressed` attribute to match the `pressed` attribute when the `mixed` attribute is removed', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-toggle-button');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-toggle-button mixed pressed>Toggle</fluent-toggle-button>
-    `);
+    await fastPage.setTemplate({ attributes: { mixed: true, pressed: true } });
 
     await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'mixed');
 
@@ -144,12 +121,10 @@ test.describe('Toggle Button', () => {
     await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'true');
   });
 
-  test('should persist the `pressed` state when the `mixed` attribute is removed', async ({ page }) => {
-    const element = page.locator('fluent-toggle-button');
+  test('should persist the `pressed` state when the `mixed` attribute is removed', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-toggle-button mixed pressed>Toggle</fluent-toggle-button>
-    `);
+    await fastPage.setTemplate({ attributes: { mixed: true, pressed: true } });
 
     await expect(element).toHaveCustomState('pressed');
 

@@ -1,35 +1,4 @@
-import qs from 'qs';
-import { expect as baseExpect, type ExpectMatcherState, type Locator } from '@playwright/test';
-
-/**
- * Returns a formatted URL for a given Storybook fixture.
- *
- * @param id - the Storybook fixture ID
- * @param args - Story args
- * @returns - the local URL for the Storybook fixture iframe
- */
-export function fixtureURL(id: string = 'debug--blank', args?: Record<string, any>): string {
-  const params: Record<string, any> = { id };
-  if (args) {
-    params.args = qs
-      .stringify(args, {
-        allowDots: true,
-        delimiter: ';',
-        format: 'RFC1738',
-        encode: false,
-      })
-      .replace(/=/g, ':')
-      .replace(/\//g, '--');
-  }
-
-  const url = qs.stringify(params, {
-    addQueryPrefix: true,
-    format: 'RFC1738',
-    encode: false,
-  });
-
-  return url;
-}
+import { expect as baseExpect, ExpectMatcherState, type Locator } from '@playwright/test';
 
 /**
  * Evaluate whether an element has the given state or not on its `elementInternals` property.
@@ -39,7 +8,7 @@ export function fixtureURL(id: string = 'debug--blank', args?: Record<string, an
  * @param expected - Whether the given state is expected to exist.
  * @param has - Whether the element is expected to have or not have the given state, defaults to `true`.
  */
-async function toHaveCustomState(
+export async function toHaveCustomState(
   this: ExpectMatcherState,
   locator: Locator,
   state: string,
@@ -80,7 +49,3 @@ async function toHaveCustomState(
     actual: matcherResult?.actual,
   };
 }
-
-export const expect = baseExpect.extend({
-  toHaveCustomState,
-});
