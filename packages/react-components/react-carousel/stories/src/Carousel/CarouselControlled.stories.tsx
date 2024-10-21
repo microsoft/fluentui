@@ -130,6 +130,7 @@ export const Controlled = () => {
         groupSize={1}
         onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
         announcement={getAnnouncement}
+        draggable
       >
         <Tooltip content="Go To Previous Page" relationship="label">
           <CarouselButton navType="prev" aria-label="Previous Carousel Page Button" />

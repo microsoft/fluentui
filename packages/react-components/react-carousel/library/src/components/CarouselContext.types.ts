@@ -4,8 +4,8 @@ import * as React from 'react';
 import type { CarouselUpdateData } from '../Carousel';
 
 export type CarouselIndexChangeData = EventData<
-  'click' | 'focus',
-  React.FocusEvent | React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
+  'click' | 'focus' | 'drag',
+  TouchEvent | MouseEvent | React.FocusEvent | React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
 > & {
   /**
    * The index to be set after event has occurred.
