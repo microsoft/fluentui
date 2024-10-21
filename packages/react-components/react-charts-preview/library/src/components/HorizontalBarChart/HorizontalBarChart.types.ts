@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PopoverComponentProps } from '../CommonComponents/Popover.types';
+import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { ChartDataPoint, ChartProps } from './index';
 
 /**
@@ -60,7 +60,7 @@ export interface HorizontalBarChartProps extends React.RefAttributes<HTMLDivElem
   /**
    * props for the callout in the chart
    */
-  calloutProps?: PopoverComponentProps;
+  calloutProps?: ChartPopoverProps;
 
   /**
    * Custom text to the chart (right side of the chart)
@@ -105,7 +105,7 @@ export interface HorizontalBarChartProps extends React.RefAttributes<HTMLDivElem
   /**
    * Define a custom callout props override
    */
-  customProps?: (dataPointCalloutProps: ChartDataPoint) => PopoverComponentProps;
+  customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
 }
 
 /**

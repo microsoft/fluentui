@@ -9,7 +9,7 @@ import { getColorFromToken, getNextColor } from '../../utilities/index';
 import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
-import { PopoverComponent } from '../CommonComponents/Popover';
+import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { ResponsiveContainer } from '../CommonComponents/ResponsiveContainer';
 
 const MIN_LEGEND_CONTAINER_HEIGHT = 40;
@@ -291,7 +291,7 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
             />
           </svg>
         </div>
-        <PopoverComponent
+        <ChartPopover
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}
           culture={props.culture ?? 'en-us'}

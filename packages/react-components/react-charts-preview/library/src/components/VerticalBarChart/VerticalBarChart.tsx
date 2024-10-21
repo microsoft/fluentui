@@ -22,7 +22,7 @@ import {
   Legends,
   ChildProps,
   YValueHover,
-  PopoverComponent,
+  ChartPopover,
 } from '../../index';
 import {
   ChartTypes,
@@ -265,7 +265,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const content: JSX.Element[] = YValueHover.map((item: YValueHover, index: number) => {
       return (
         <>
-          <PopoverComponent
+          <ChartPopover
             culture={props.culture ?? 'en-us'}
             clickPosition={clickPosition}
             isPopoverOpen={isPopoverOpen}
@@ -284,7 +284,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   function _renderContentForOnlyBars(_props: VerticalBarChartDataPoint): JSX.Element {
     return (
       <>
-        <PopoverComponent
+        <ChartPopover
           XValue={_props.xAxisCalloutData || (_props.x as string)}
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}
