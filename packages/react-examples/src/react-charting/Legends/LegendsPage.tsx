@@ -13,6 +13,7 @@ import { LegendBasicExample } from './Legends.Basic.Example';
 import { LegendWrapLinesExample } from './Legends.WrapLines.Example';
 import { LegendStyledExample } from './Legends.Styled.Example';
 import { LegendsOnChangeExample } from './Legends.OnChange.Example';
+import { LegendsControlledExample } from './Legends.Controlled.Example';
 
 const LegendsOverflowExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Overflow.Example.tsx') as string;
@@ -24,6 +25,8 @@ const LegendsStyledExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Styled.Example.tsx') as string;
 const LegendsOnChangeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.OnChange.Example.tsx') as string;
+const LegendsControlledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Controlled.Example.tsx') as string;
 
 export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -51,6 +54,10 @@ export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
 
             <ExampleCard title="Legends onChange" code={LegendsOnChangeExampleCode}>
               <LegendsOnChangeExample />
+            </ExampleCard>
+
+            <ExampleCard title="Legends controlled selection" code={LegendsControlledExampleCode}>
+              <LegendsControlledExample />
             </ExampleCard>
           </div>
         }
