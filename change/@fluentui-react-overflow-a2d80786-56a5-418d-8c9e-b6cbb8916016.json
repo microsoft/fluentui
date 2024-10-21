@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Allow Overflow children to be a render function",
+  "packageName": "@fluentui/react-overflow",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

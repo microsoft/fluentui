@@ -26,7 +26,7 @@ export const DATA_OVERFLOWING = "data-overflowing";
 
 // @public
 export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<ObserveOptions, "padding" | "overflowDirection" | "overflowAxis" | "minimumVisible">> & {
-    children: React_2.ReactElement;
+    children: React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>> | ((props: React_2.ComponentPropsWithRef<React_2.ElementType>) => React_2.ReactElement);
 } & React_2.RefAttributes<unknown>>;
 
 // @public
@@ -45,7 +45,7 @@ export type OverflowItemProps = {
 
 // @public
 export type OverflowProps = Partial<Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'>> & {
-    children: React_2.ReactElement;
+    children: React_2.ReactElement | ((props: React_2.ComponentPropsWithRef<React_2.ElementType>) => React_2.ReactElement);
 };
 
 // @public (undocumented)
