@@ -49,6 +49,22 @@ export const styles: ElementStyles = css`
     pointer-events: none;
     opacity: 0;
   }
+  .tooltipline {
+    padding-left: 8px;
+    height: 50px;
+  }
+  .tooltiplegend {
+    font-size: 13px;
+    color: theme.semanticColors.bodyText;
+    text-align: left;
+  }
+  .tooltipdata {
+    font-weight: bold;
+    font-size: 30px;
+    text-align: left;
+    lineheight: 36px;
+    margin-top: 12px;
+  }
   .bar {
     opacity: 1;
   }

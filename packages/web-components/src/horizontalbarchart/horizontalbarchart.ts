@@ -189,7 +189,6 @@ export class HorizontalBarChart extends FASTElement {
   public _createBarsAndLegends(data: IChartProps, barNo?: number) {
     const _isRTL = this._isRTL;
     const _computeLongestBarTotalValue = () => {
-      console.log(data);
       let longestBarTotalValue = 0;
       this.data!.forEach(({ chartData, chartTitle }) => {
         const barTotalValue = chartData!.reduce(
@@ -323,10 +322,9 @@ export class HorizontalBarChart extends FASTElement {
       .each(createBars)
       .on('mouseover', function (event, d) {
         const tooltipHTML = `
-        <div style="border-left:4px solid ${d.color}; padding-left: 8px; height: 50px;">
-            <div style="font-size: 13px;
-        color: theme.semanticColors.bodyText; text-align: left;">${d.legend}</div>
-            <div style="font-weight:bold; color: ${d.color}; font-size: 30px; text-align: left; lineHeight: 36px; margin-top: 12px;">${d.data}</div>
+        <div class="tooltipline" style="border-left:4px solid ${d.color};">
+            <div class="tooltiplegend">${d.legend}</div>
+            <div class="tooltipdata" style="color: ${d.color};">${d.data}</div>
         </div>
        `;
         tooltip = containerDiv

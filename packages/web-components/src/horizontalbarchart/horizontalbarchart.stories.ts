@@ -4,7 +4,7 @@ import { renderComponent } from '../helpers.stories.js';
 import { HorizontalBarChart as FluentHorizontalBarChart } from './horizontalbarchart.js';
 import { IChartDataPoint, IChartProps } from './horizontalbarchart.options.js';
 
-const hbcData = [
+const singleBarHBCData = [
   {
     chartTitle: 'one',
     chartData: [
@@ -189,17 +189,16 @@ export default {
 
 export const Basic: Story<FluentHorizontalBarChart> = renderComponent(storyTemplate).bind({});
 
-export const HBCAbsoluteScale: Story<FluentHorizontalBarChart> = renderComponent(html<
-  StoryArgs<FluentHorizontalBarChart>
->`
+export const singleBarHBC: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
   <div>
-    <fluent-horizontalbarchart style="width: 100%" data="${JSON.stringify(hbcData)}"> </fluent-horizontalbarchart>
+    <fluent-horizontalbarchart style="width: 100%" data="${JSON.stringify(singleBarHBCData)}">
+    </fluent-horizontalbarchart>
   </div>
 `);
 
 export const HBCNMVariant: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
   <div>
-    <fluent-horizontalbarchart style="width: 100%" variant="part-to-whole" data="${JSON.stringify(hbcData)}">
+    <fluent-horizontalbarchart style="width: 100%" variant="part-to-whole" data="${JSON.stringify(singleBarHBCData)}">
     </fluent-horizontalbarchart>
   </div>
 `);
