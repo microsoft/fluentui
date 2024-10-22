@@ -48,19 +48,26 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
     });
   });
 
-  const _onMouseUp = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    onMouseUp?.(event);
-    targetDocument?.removeEventListener('mousemove', requestColorChange as unknown as EventListener);
-    targetDocument?.removeEventListener('mouseup', _onMouseUp as unknown as EventListener);
+  const handleDocumentMouseMove = React.useCallback(
+    (event: MouseEvent) => {
+      requestColorChange(event);
+    },
+    [requestColorChange],
+  );
+  const handleDocumentMouseUp = useEventCallback(() => {
+    targetDocument?.removeEventListener('mousemove', handleDocumentMouseMove);
+    targetDocument?.removeEventListener('mouseup', handleDocumentMouseUp);
   });
 
   const _onMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
     event.preventDefault();
+
     onMouseDown?.(event);
     requestColorChange(event);
-    targetDocument?.addEventListener('mousemove', requestColorChange as unknown as EventListener);
-    targetDocument?.addEventListener('mouseup', _onMouseUp as unknown as EventListener);
+
+    targetDocument?.addEventListener('mousemove', handleDocumentMouseMove);
+    targetDocument?.addEventListener('mouseup', handleDocumentMouseUp);
   });
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
