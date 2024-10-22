@@ -36,18 +36,34 @@ export const styles: ElementStyles = css`
   .tooltip {
     ${typographyCaption1Styles}
     position: absolute;
+    z-index: 999;
     display: grid;
     overflow: hidden;
     padding: ${spacingVerticalMNudge} ${spacingHorizontalL};
     backgroundcolor: ${colorNeutralBackground1};
     backgroundblendmode: normal, luminosity;
     text-align: center;
-    background: white;
+    background: ${colorNeutralBackground1};
     box-shadow: ${shadow4};
     border: 2px;
     pointer-events: none;
     opacity: 0;
-    z-index: 999;
+  }
+  .tooltipline {
+    padding-left: 8px;
+    height: 50px;
+  }
+  .tooltiplegend {
+    font-size: 13px;
+    color: theme.semanticColors.bodyText;
+    text-align: left;
+  }
+  .tooltipdata {
+    font-weight: bold;
+    font-size: 30px;
+    text-align: left;
+    lineheight: 36px;
+    margin-top: 12px;
   }
   .bar {
     opacity: 1;
@@ -93,6 +109,7 @@ export const styles: ElementStyles = css`
   }
   .barLabel {
     ${typographyBody1StrongStyles}
+    fill: ${colorNeutralForeground1};
   }
   .chartTitleDiv {
     width: 100%;
