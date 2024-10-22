@@ -45,6 +45,9 @@ export class HorizontalBarChart extends FASTElement {
   @attr
   public uniqueLegends: IChartDataPoint[] = [];
 
+  @attr
+  public hideRatio = false;
+
   private barHeight: number = 12;
 
   constructor() {
@@ -305,10 +308,26 @@ export class HorizontalBarChart extends FASTElement {
 
     let tooltip: any;
 
-    containerDiv
+    const chartTitleDiv = containerDiv.append('div').attr('class', 'chartTitleDiv');
+    chartTitleDiv
+      .append('div')
       .append('span')
       .attr('class', 'chartTitle')
       .text(data?.chartTitle ? data?.chartTitle : '');
+
+    const hideNumber = this.hideRatio === undefined ? false : this.hideRatio;
+
+    const showRatio = this.variant === Variant.PartToWhole && !hideNumber && data!.chartData!.length === 2;
+    const getChartData = () => (data!.chartData![0].data ? data!.chartData![0].data : 0);
+
+    if (showRatio) {
+      const ratioDiv = chartTitleDiv.append('div').attr('role', 'text');
+      const numData = data!.chartData![0].data;
+      const denomData = data!.chartData![1].data;
+      const total = numData! + denomData!;
+      ratioDiv.append('span').attr('class', 'ratioNumerator').text(numData!);
+      ratioDiv.append('span').attr('class', 'ratioDenominator').text(`/${total!}`);
+    }
 
     const svgEle = containerDiv
       .append('svg')

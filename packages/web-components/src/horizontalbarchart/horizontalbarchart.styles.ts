@@ -111,4 +111,18 @@ export const styles: ElementStyles = css`
     ${typographyBody1StrongStyles}
     fill: ${colorNeutralForeground1};
   }
+  .chartTitleDiv {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .ratioNumerator {
+    ${typographyBody1StrongStyles}
+    color: ${colorNeutralForeground1};
+  }
+  .ratioDenominator {
+    ${typographyBody1StrongStyles}
+    color: ${colorNeutralForeground1};
+    font-weight: bold;
+  }
 `;

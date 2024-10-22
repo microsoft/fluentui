@@ -200,6 +200,7 @@ export const HBCNMVariant: Story<FluentHorizontalBarChart> = renderComponent(htm
   <div>
     <fluent-horizontalbarchart style="width: 100%" variant="part-to-whole" data="${JSON.stringify(singleBarHBCData)}">
     </fluent-horizontalbarchart>
+
   </div>
 `);
 
