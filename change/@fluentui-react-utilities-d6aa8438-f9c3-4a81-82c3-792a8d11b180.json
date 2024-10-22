@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feature(slots): merge refs and tabster attributes",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

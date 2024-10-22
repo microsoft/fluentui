@@ -7,6 +7,8 @@ import type {
 } from './types';
 import * as React from 'react';
 import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import { createMemoize } from './memoize';
+import { mergeRefs } from '../hooks/useMergedRefs';
 
 export type SlotOptions<Props extends UnknownSlotProps> = {
   elementType:
@@ -42,6 +44,23 @@ export function always<Props extends UnknownSlotProps>(
     ...props,
     [SLOT_ELEMENT_TYPE_SYMBOL]: elementType,
   } as SlotComponentType<Props>;
+
+  if (props && defaultProps) {
+    if ('ref' in defaultProps && 'ref' in props) {
+      Object.assign(propsWithMetadata, {
+        ref: memoizeRef(
+          () => mergeRefs(defaultProps.ref as React.Ref<unknown>, props.ref as React.Ref<unknown>),
+          [defaultProps.ref, props.ref],
+        ),
+      });
+    }
+    if (TABSTER_ATTRIBUTE_NAME in defaultProps && TABSTER_ATTRIBUTE_NAME in props) {
+      Object.assign(
+        propsWithMetadata,
+        memoizeAndMergeTabsterAttributes(defaultProps as TabsterDOMAttribute, props as TabsterDOMAttribute),
+      );
+    }
+  }
 
   if (props && typeof props.children === 'function') {
     propsWithMetadata[SLOT_RENDER_FUNCTION_SYMBOL] = props.children as SlotRenderFunction<Props>;
@@ -95,7 +114,7 @@ export function resolveShorthand<Props extends UnknownSlotProps | null | undefin
     // TODO: would be nice to have a link to slot documentation in this error message
     // eslint-disable-next-line no-console
     console.error(/** #__DE-INDENT__ */ `
-      @fluentui/react-utilities [slot.${resolveShorthand.name}]:
+      @fluentui/react-utilities [slot.resolveShorthand]:
       A slot got an invalid value "${value}" (${typeof value}).
       A valid value for a slot is a slot shorthand or slot properties object.
       Slot shorthands can be strings, numbers, arrays or JSX elements
@@ -104,3 +123,49 @@ export function resolveShorthand<Props extends UnknownSlotProps | null | undefin
 
   return value;
 }
+
+// FIXME: import this from tabster instead, for now this is being duplicated just to avoid package dependency
+const TABSTER_ATTRIBUTE_NAME = 'data-tabster';
+// FIXME: import this from tabster instead, for now this is being duplicated just to avoid package dependency
+type TabsterDOMAttribute = { [TABSTER_ATTRIBUTE_NAME]?: string };
+
+// FIXME: this is equivalent to useMergedTabsterAttributes from react-tabster, but without hooks
+// this cannot be imported from react-tabster as it would cause a circular dependency
+const memoizeAndMergeTabsterAttributes = (
+  ...attributes: (TabsterDOMAttribute | null | undefined)[]
+): TabsterDOMAttribute => {
+  const stringAttributes = attributes.reduce<string[]>((acc, curr) => {
+    if (curr?.[TABSTER_ATTRIBUTE_NAME]) {
+      acc.push(curr[TABSTER_ATTRIBUTE_NAME]);
+    }
+    return acc;
+  }, []);
+
+  return memoizeTabsterAttributes(
+    () => ({
+      [TABSTER_ATTRIBUTE_NAME]: stringAttributes.length > 0 ? stringAttributes.reduce(mergeJSONStrings) : undefined,
+    }),
+    stringAttributes,
+  );
+};
+
+/**
+ * Merges two JSON strings into one.
+ */
+const mergeJSONStrings = (a: string, b: string): string =>
+  JSON.stringify(Object.assign(safelyParseJSON(a), safelyParseJSON(b)));
+
+/**
+ * Tries to parse a JSON string and returns an object.
+ * If the JSON string is invalid, an empty object is returned.
+ */
+const safelyParseJSON = (json: string): object => {
+  try {
+    return JSON.parse(json);
+  } catch {
+    return {};
+  }
+};
+
+const memoizeRef = createMemoize<React.Ref<unknown>>();
+const memoizeTabsterAttributes = createMemoize<TabsterDOMAttribute>();
