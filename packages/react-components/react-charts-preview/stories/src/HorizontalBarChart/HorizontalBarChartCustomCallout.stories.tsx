@@ -5,7 +5,7 @@ import {
   ChartDataPoint,
   DataVizPalette,
   getColorFromToken,
-  PopoverComponentProps,
+  ChartPopoverProps,
 } from '@fluentui/react-charts-preview';
 // import * as d3 from 'd3-format';
 import { Switch, tokens } from '@fluentui/react-components';
@@ -112,7 +112,7 @@ export const HorizontalBarCustomCallout = () => {
       ],
     },
   ];
-  const customPopoverProps = (props: ChartDataPoint): PopoverComponentProps => {
+  const customPopoverProps = (props: ChartDataPoint): ChartPopoverProps => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : '';
     const color = props ? props.color : getColorFromToken(DataVizPalette.color28);
     return {
