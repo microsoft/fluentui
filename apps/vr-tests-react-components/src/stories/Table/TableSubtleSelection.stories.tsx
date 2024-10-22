@@ -22,6 +22,6 @@ export default {
 } satisfies Meta<typeof Table>;
 
 export const Rest = () => <SubtleSelection noNativeElements={false} />;
+Rest.storyName = 'rest';
 
 export const NoSelection = () => <SubtleSelectionEmpty noNativeElements={false} />;
-Rest.storyName = 'rest';

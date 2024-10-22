@@ -652,7 +652,7 @@ export const SubtleSelectionEmpty: React.FC<SharedVrTestArgs> = ({ noNativeEleme
     <TableBody>
       {items.map((item, i) => (
         <TableRow key={item.file.label}>
-          <TableSelectionCell subtle type="checkbox" />
+          <TableSelectionCell subtle type="checkbox" className="not-selected" />
           <TableCell>
             <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
           </TableCell>
