@@ -190,6 +190,19 @@ export class HorizontalBarChart extends FASTElement {
   }
 
   public _createBarsAndLegends(data: ChartProps, barNo?: number) {
+    const _isRTL = this._isRTL;
+    const _computeLongestBarTotalValue = () => {
+      let longestBarTotalValue = 0;
+      this.data!.forEach(({ chartData, chartTitle }) => {
+        const barTotalValue = chartData!.reduce(
+          (acc: number, point: ChartDataPoint) => acc + (point.data ? point.data : 0),
+          0,
+        );
+        longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue);
+      });
+      return longestBarTotalValue;
+    };
+    const longestBarTotalValue = _computeLongestBarTotalValue();
     const noOfBars =
       data.chartData?.reduce((count: number, point: ChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
@@ -201,7 +214,7 @@ export class HorizontalBarChart extends FASTElement {
       (acc: number, point: ChartDataPoint) => acc + (point.data ? point.data : 0),
       0,
     );
-    const total = this.variant === Variant.AbsoluteScale ? 400 : barTotalValue;
+    const total = this.variant === Variant.AbsoluteScale ? longestBarTotalValue : barTotalValue;
 
     let sumOfPercent = 0;
     data.chartData!.map((point: ChartDataPoint, index: number) => {
@@ -247,7 +260,6 @@ export class HorizontalBarChart extends FASTElement {
     let value = 0;
 
     function createBars(this: SVGGElement, point: ChartDataPoint, index: number) {
-      const _isRTL = false;
       const barHeight = 12;
       const pointData = point.data ? point.data : 0;
       if (index > 0) {
@@ -329,10 +341,9 @@ export class HorizontalBarChart extends FASTElement {
       .each(createBars)
       .on('mouseover', function (event, d) {
         const tooltipHTML = `
-        <div style="border-left:4px solid ${d.color}; padding-left: 8px;">
-            <div style="font-size: 15px;lineHeight: 16px;
-        color: theme.semanticColors.bodyText; margin-top: 4px;">${d.legend}</div>
-            <div style="font-weight:bold; color: ${d.color}; font-size: 30px; text-align: left; lineHeight: 36px; margin-top: 4px;">${d.data}</div>
+        <div class="tooltipline" style="border-left:4px solid ${d.color};">
+            <div class="tooltiplegend">${d.legend}</div>
+            <div class="tooltipdata" style="color: ${d.color};">${d.data}</div>
         </div>
        `;
         tooltip = containerDiv
@@ -378,7 +389,6 @@ export class HorizontalBarChart extends FASTElement {
           .text(barLabel);
       }
     }
-
     return containerDiv;
   }
 }
