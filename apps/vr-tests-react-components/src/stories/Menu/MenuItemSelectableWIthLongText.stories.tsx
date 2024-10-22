@@ -1,22 +1,20 @@
 import * as React from 'react';
-
-import {
-  Button,
-  Menu,
-  MenuTrigger,
-  MenuList,
-  MenuItem,
-  MenuItemCheckbox,
-  MenuPopover,
-} from '@fluentui/react-components';
+import type { Meta } from '@storybook/react';
+import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItemCheckbox, MenuItem } from '@fluentui/react-menu';
+import { StoryWright } from 'storywright';
 import { CutRegular, CutFilled, bundleIcon } from '@fluentui/react-icons';
 
 const CutIcon = bundleIcon(CutFilled, CutRegular);
 
-export const AligningWithSelectableItems = () => (
+export default {
+  title: 'Menu Converged - selection',
+  decorators: [story => <StoryWright>{story()}</StoryWright>],
+} satisfies Meta<typeof Menu>;
+
+export const SelectableWithLongText = () => (
   <Menu hasIcons hasCheckmarks open>
     <MenuTrigger disableButtonEnhancement>
-      <Button>Toggle menu</Button>
+      <button>Toggle menu</button>
     </MenuTrigger>
     <MenuPopover>
       <MenuList>
@@ -30,12 +28,4 @@ export const AligningWithSelectableItems = () => (
   </Menu>
 );
 
-AligningWithSelectableItems.parameters = {
-  docs: {
-    description: {
-      story: ['The `hasCheckmarks` prop will align menu items if only a subset of menu items are selectable.'].join(
-        '\n',
-      ),
-    },
-  },
-};
+SelectableWithLongText.storyName = 'selectable with long text';
