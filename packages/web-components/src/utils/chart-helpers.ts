@@ -1,4 +1,6 @@
 import type { ValueConverter } from '@microsoft/fast-element';
+import { Direction } from '@microsoft/fast-web-utilities';
+import { getDirection } from './direction.js';
 
 export const getDataConverter = (chartType: string): ValueConverter => {
   let validate: (obj: any) => void;
@@ -72,36 +74,15 @@ export const DataVizPalette = {
   color8: 'qualitative.8',
   color9: 'qualitative.9',
   color10: 'qualitative.10',
-  color11: 'qualitative.11',
-  color12: 'qualitative.12',
-  color13: 'qualitative.13',
-  color14: 'qualitative.14',
-  color15: 'qualitative.15',
-  color16: 'qualitative.16',
-  color17: 'qualitative.17',
-  color18: 'qualitative.18',
-  color19: 'qualitative.19',
-  color20: 'qualitative.20',
-  color21: 'qualitative.21',
-  color22: 'qualitative.22',
-  color23: 'qualitative.23',
-  color24: 'qualitative.24',
-  color25: 'qualitative.25',
-  color26: 'qualitative.26',
-  color27: 'qualitative.27',
-  color28: 'qualitative.28',
-  color29: 'qualitative.29',
-  color30: 'qualitative.30',
-  color31: 'qualitative.31',
-  color32: 'qualitative.32',
-  color33: 'qualitative.33',
-  color34: 'qualitative.34',
-  color35: 'qualitative.35',
-  color36: 'qualitative.36',
-  color37: 'qualitative.37',
-  color38: 'qualitative.38',
-  color39: 'qualitative.39',
-  color40: 'qualitative.40',
+  color11: 'qualitative.21',
+  color12: 'qualitative.22',
+  color13: 'qualitative.23',
+  color14: 'qualitative.24',
+  color15: 'qualitative.25',
+  color16: 'qualitative.26',
+  color17: 'qualitative.27',
+  color18: 'qualitative.28',
+  color19: 'qualitative.29',
   info: 'semantic.info',
   disabled: 'semantic.disabled',
   highError: 'semantic.highError',
@@ -130,16 +111,6 @@ const QualitativePalette: Palette = {
   '8': ['#57811b'], // [lime.shade20],
   '9': ['#b146c2'], // [lilac.primary],
   '10': ['#ae8c00'], // [gold.shade10],
-  '11': ['#3c51b4', '#93a4f4'], // [cornflower.shade20, cornflower.tint30],
-  '12': ['#ad006a', '#ee5fb7'], // [hotPink.shade20, hotPink.tint30],
-  '13': ['#026467', '#4cb4b7'], // [teal.shade20, teal.tint30],
-  '14': ['#674c8c', '#a083c9'], // [orchid.shade20, orchid.tint20],
-  '15': ['#0e7a0b', '#27ac22'], // [lightGreen.shade20, lightGreen.tint10],
-  '16': ['#2c72a8', '#4fa1e1'], // [lightBlue.shade20, lightBlue.tint10],
-  '17': ['#9a3d0c', '#d77440'], // [pumpkin.shade20, pumpkin.tint20],
-  '18': ['#405f14', '#73aa24'], // [lime.shade30, lime.primary],
-  '19': ['#863593', '#c36bd1'], // [lilac.shade20, lilac.tint20],
-  '20': ['#6d5700', '#d0b232'], // [gold.shade30, gold.tint20],
   '21': ['#4f6bed'], // [cornflower.primary],
   '22': ['#ea38a6'], // [hotPink.tint20],
   '23': ['#038387'], // [teal.primary],
@@ -149,17 +120,6 @@ const QualitativePalette: Palette = {
   '27': ['#d06228'], // [pumpkin.tint10],
   '28': ['#689920'], // [lime.shade10],
   '29': ['#ba58c9'], // [lilac.tint10],
-  '30': ['#937700', '#c19c00'], // [gold.shade20, gold.primary],
-  '31': ['#2c3c85', '#c8d1fa'], // [cornflower.shade30, cornflower.tint40],
-  '32': ['#7f004e', '#f7adda'], // [hotPink.shade30, hotPink.tint40],
-  '33': ['#02494c', '#9bd9db'], // [teal.shade30, teal.tint40],
-  '34': ['#4c3867', '#b29ad4'], // [orchid.shade30, orchid.tint30],
-  '35': ['#0b5a08', '#a7e3a5'], // [lightGreen.shade30, lightGreen.tint40],
-  '36': ['#20547c', '#83bdeb'], // [lightBlue.shade30, lightBlue.tint30],
-  '37': ['#712d09', '#df8e64'], // [pumpkin.shade30, pumpkin.tint30],
-  '38': ['#23330b', '#a4cc6c'], // [lime.shade40, lime.tint30],
-  '39': ['#63276d', '#cf87da'], // [lilac.shade30, lilac.tint30],
-  '40': ['#3a2f00', '#dac157'], // [gold.shade40, gold.tint30],
 };
 
 const SemanticPalette: Palette = {
@@ -203,4 +163,8 @@ export const getColorFromToken = (token: string, isDarkTheme: boolean = false): 
     return getThemeSpecificColor(colors, isDarkTheme);
   }
   return token;
+};
+
+export const getRTL = (rootNode: HTMLElement): boolean => {
+  return getDirection(rootNode) === Direction.rtl;
 };

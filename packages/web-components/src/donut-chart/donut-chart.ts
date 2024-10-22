@@ -1,9 +1,7 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
 import { arc as d3Arc, pie as d3Pie } from 'd3-shape';
 import { createTabster, getMover, getTabsterAttribute, MoverDirections } from 'tabster';
-import { Direction } from '@microsoft/fast-web-utilities';
-import { getColorFromToken, getDataConverter, getNextColor } from '../utils/chart-helpers.js';
-import { getDirection } from '../utils/direction.js';
+import { getColorFromToken, getDataConverter, getNextColor, getRTL } from '../utils/chart-helpers.js';
 import type { ChartProps } from './donut-chart.options.js';
 
 const tabsterCore = createTabster(window);
@@ -43,8 +41,6 @@ export class DonutChart extends FASTElement {
   connectedCallback() {
     super.connectedCallback();
 
-    this._isRTL = getDirection(this) === Direction.rtl;
-
     this.data.chartData?.forEach((d, i) => {
       if (d.color) {
         d.color = getColorFromToken(d.color);
@@ -52,6 +48,8 @@ export class DonutChart extends FASTElement {
         d.color = getNextColor(i);
       }
     });
+
+    this._isRTL = getRTL(this);
 
     this.render();
   }
