@@ -92,9 +92,6 @@ function createNodesInternal(
 ): CreateNodesResult {
   const projectRoot = dirname(configFilePath);
 
-  // console.count('workspace-plugin');
-  // console.log({ projectRoot });
-
   if (!assertProjectExists(projectRoot, context)) {
     return {};
   }
