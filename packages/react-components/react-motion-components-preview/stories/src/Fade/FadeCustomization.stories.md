@@ -1,4 +1,4 @@
-- `duration` and `easing` can be customized for each transition separately using `createPresenceComponentVariant()`.
+- A fade variant can be created with the factory function `createFadePresence()`, then converting the result to a React component using `createPresenceComponent()`:
 
 ```tsx
 import { motionTokens } from '@fluentui/react-components';
