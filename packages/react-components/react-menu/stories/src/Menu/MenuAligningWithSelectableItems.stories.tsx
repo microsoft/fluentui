@@ -14,7 +14,7 @@ import { CutRegular, CutFilled, bundleIcon } from '@fluentui/react-icons';
 const CutIcon = bundleIcon(CutFilled, CutRegular);
 
 export const AligningWithSelectableItems = () => (
-  <Menu hasIcons hasCheckmarks open>
+  <Menu hasIcons hasCheckmarks>
     <MenuTrigger disableButtonEnhancement>
       <Button>Toggle menu</Button>
     </MenuTrigger>
@@ -23,7 +23,7 @@ export const AligningWithSelectableItems = () => (
         <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
           Checkbox item
         </MenuItemCheckbox>
-        <MenuItem>Menu item with really long text, this is really really long text</MenuItem>
+        <MenuItem>Menu item</MenuItem>
         <MenuItem>Menu item</MenuItem>
       </MenuList>
     </MenuPopover>
