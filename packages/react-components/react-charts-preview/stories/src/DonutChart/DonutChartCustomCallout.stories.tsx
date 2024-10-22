@@ -5,7 +5,7 @@ import {
   ChartDataPoint,
   DataVizPalette,
   getColorFromToken,
-  PopoverComponentProps,
+  ChartPopoverProps,
 } from '@fluentui/react-charts-preview';
 import { Switch, tokens } from '@fluentui/react-components';
 
@@ -38,7 +38,7 @@ export const DonutChartCustomCallout = () => {
     chartData: points,
   };
 
-  const customPopoverProps = (props: ChartDataPoint): PopoverComponentProps => {
+  const customPopoverProps = (props: ChartDataPoint): ChartPopoverProps => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : '';
     return {
       XValue: 'Custom XVal',
