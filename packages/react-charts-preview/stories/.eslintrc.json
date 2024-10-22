@@ -5,7 +5,7 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "packageDir": [".", "../../../../"]
+        "packageDir": [".", "../../../"]
       }
     ]
   }

@@ -1,6 +1,6 @@
 {
   "name": "react-charts-preview-stories",
-  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-charts-preview/stories/src",
   "tags": ["vNext", "platform:web", "type:stories"],
