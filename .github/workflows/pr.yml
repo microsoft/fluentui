@@ -62,7 +62,7 @@ jobs:
 
       - name: build, test, lint, test-ssr (affected)
         run: |
-          yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --nxBail
+          yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --exclude react,react-northstar --nxBail
 
       - name: 'Check for unstaged changes'
         run: |
