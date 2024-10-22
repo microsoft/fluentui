@@ -32,13 +32,6 @@ export const createMemoize = <V>() => {
     const currentOwner = getCurrentOwner();
 
     if (currentOwner === null) {
-      if (process.env.NODE_ENV !== 'production') {
-        // eslint-disable-next-line no-console
-        console.error(/** #__DE-INDENT__ */ `
-        @fluentui/react-utilities [slot]:
-        slot method was called outside of a component render.
-      `);
-      }
       return init();
     }
 
