@@ -120,14 +120,10 @@ describe('split-library-in-two generator', () => {
     );
 
     const newConfigPackageJSON = readJson(tree, `${newConfig.root}/package.json`);
-    expect(newConfigPackageJSON.scripts['test-ssr']).toEqual(undefined);
+    expect(newConfigPackageJSON.scripts).toEqual(undefined);
     expect(newConfigPackageJSON).toEqual(
       expect.objectContaining({
         name: '@proj/react-hello',
-        scripts: expect.objectContaining({
-          'type-check': 'just-scripts type-check',
-          storybook: 'yarn --cwd ../stories storybook',
-        }),
         devDependencies: {
           '@proj/react-one-for-test': '*',
           '@proj/react-provider': '*',
@@ -184,18 +180,9 @@ describe('split-library-in-two generator', () => {
           "@proj/react-storybook-addon-export-to-sandbox": "*",
           "@proj/react-two-preview": "*",
           "@proj/scripts-storybook": "*",
-          "@proj/scripts-tasks": "*",
         },
         "name": "@proj/react-hello-stories",
         "private": true,
-        "scripts": Object {
-          "format": "just-scripts prettier",
-          "lint": "eslint src/",
-          "start": "yarn storybook",
-          "storybook": "storybook dev",
-          "test-ssr": "test-ssr \\"./src/**/*.stories.tsx\\"",
-          "type-check": "just-scripts type-check",
-        },
         "version": "0.0.0",
       }
     `);
@@ -372,21 +359,6 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
       version: '9.0.0',
       typings: 'lib/index.d.ts',
       main: 'lib-commonjs/index.js',
-      scripts: {
-        build: 'just-scripts build',
-        'bundle-size': 'monosize measure',
-        clean: 'just-scripts clean',
-        'code-style': 'just-scripts code-style',
-        just: 'just-scripts',
-        lint: 'just-scripts lint',
-        start: 'yarn storybook',
-        test: 'jest --passWithNoTests',
-        storybook: 'storybook dev',
-        'type-check': 'tsc -b tsconfig.json',
-        'generate-api': 'just-scripts generate-api',
-        'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
-        'verify-packaging': 'just-scripts verify-packaging',
-      },
       dependencies: {},
     },
     tsConfig: {

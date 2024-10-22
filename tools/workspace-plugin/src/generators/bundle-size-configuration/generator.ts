@@ -6,13 +6,11 @@ import {
   ProjectConfiguration,
   readProjectConfiguration,
   Tree,
-  updateJson,
   visitNotIgnoredFiles,
 } from '@nx/devkit';
 
 import * as path from 'path';
 
-import { PackageJson } from '../../types';
 import { getNpmScope } from '../../utils';
 import { assertStoriesProject, isSplitProject } from '../split-library-in-two/shared';
 
@@ -50,12 +48,6 @@ export async function bundleSizeConfigurationGenerator(tree: Tree, schema: Bundl
   if (options.overrideBaseConfig === false) {
     tree.delete(configPaths.bundleSizeConfig);
   }
-
-  updateJson(tree, joinPathFragments(project.root, 'package.json'), (json: PackageJson) => {
-    json.scripts = json.scripts ?? {};
-    json.scripts['bundle-size'] = 'monosize measure';
-    return json;
-  });
 
   await formatFiles(tree);
 }

@@ -38,9 +38,7 @@ interface Options extends SplitLibraryInTwoGeneratorSchema {
     packageJSON: Record<string, unknown>;
   };
 
-  oldPackageMetadata: {
-    ssrTestsScript: string | undefined;
-  };
+  oldPackageMetadata: {};
 }
 
 const noop = () => {
@@ -134,9 +132,7 @@ function splitLibraryInTwoInternal(
       tsConfig: readJson(tree, joinPathFragments(projectConfig.root, 'tsconfig.json')),
       packageJSON,
     },
-    oldPackageMetadata: {
-      ssrTestsScript: packageJSON?.scripts?.['test-ssr'],
-    },
+    oldPackageMetadata: {},
   };
 
   cleanup(tree, normalizedOptions, logger);
@@ -195,11 +191,6 @@ function makeSrcLibrary(tree: Tree, options: Options, logger: CLIOutput) {
   };
 
   updateJson(tree, filePaths.pkgJson, json => {
-    json.scripts ??= {};
-    json.scripts.storybook = 'yarn --cwd ../stories storybook';
-    json.scripts['type-check'] = 'just-scripts type-check';
-    delete json.scripts['test-ssr'];
-
     const deps = getMissingDevDependenciesFromCypressAndJestFiles(
       tree,
       {
@@ -323,14 +314,6 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
       name: `@${options.npmScope}/${newProjectName}`,
       version: '0.0.0',
       private: true,
-      scripts: {
-        start: 'yarn storybook',
-        storybook: 'storybook dev',
-        'type-check': 'just-scripts type-check',
-        lint: 'eslint src/',
-        format: 'just-scripts prettier',
-        ...(options.oldPackageMetadata.ssrTestsScript ? { 'test-ssr': `test-ssr "./src/**/*.stories.tsx"` } : null),
-      },
       devDependencies: {
         ...storiesWorkspaceDeps,
         // always added
@@ -338,14 +321,8 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
         [`@${options.npmScope}/react-storybook-addon-export-to-sandbox`]: '*',
         [`@${options.npmScope}/scripts-storybook`]: '*',
         [`@${options.npmScope}/eslint-plugin`]: '*',
-        [`@${options.npmScope}/scripts-tasks`]: '*',
       },
     },
-    justConfig: stripIndents`
-      import { preset, task } from '@fluentui/scripts-tasks';
-
-      preset();
-  `,
     publicApi: stripIndents`export {}`,
     eslintrc: {
       extends: ['plugin:@fluentui/eslint-plugin/react'],
@@ -384,7 +361,6 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
 
   tree.write(joinPathFragments(newProjectRoot, 'README.md'), templates.readme);
   tree.write(joinPathFragments(newProjectSourceRoot, 'index.ts'), templates.publicApi);
-  tree.write(joinPathFragments(newProjectRoot, 'just.config.ts'), templates.justConfig);
   writeJson(tree, joinPathFragments(newProjectRoot, '.eslintrc.json'), templates.eslintrc);
   writeJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.json'), templates.tsconfig.root);
   writeJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.lib.json'), templates.tsconfig.lib);
