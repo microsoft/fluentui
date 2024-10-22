@@ -36,18 +36,18 @@ export const styles: ElementStyles = css`
   .tooltip {
     ${typographyCaption1Styles}
     position: absolute;
+    z-index: 999;
     display: grid;
     overflow: hidden;
     padding: ${spacingVerticalMNudge} ${spacingHorizontalL};
     backgroundcolor: ${colorNeutralBackground1};
     backgroundblendmode: normal, luminosity;
     text-align: center;
-    background: white;
+    background: ${colorNeutralBackground1};
     box-shadow: ${shadow4};
     border: 2px;
     pointer-events: none;
     opacity: 0;
-    z-index: 999;
   }
   .bar {
     opacity: 1;
@@ -68,7 +68,7 @@ export const styles: ElementStyles = css`
     flex-direction: row;
     flex-wrap: wrap;
     padding-top: ${spacingVerticalL};
-    width: 90%;
+    width: 100%;
     align-items: center;
     margin: -8px 0 0 -8px;
   }
@@ -93,5 +93,6 @@ export const styles: ElementStyles = css`
   }
   .barLabel {
     ${typographyBody1StrongStyles}
+    fill: ${colorNeutralForeground1};
   }
 `;

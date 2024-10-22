@@ -4,6 +4,97 @@ import { renderComponent } from '../helpers.stories.js';
 import { HorizontalBarChart as FluentHorizontalBarChart } from './horizontalbarchart.js';
 import { IChartDataPoint, IChartProps } from './horizontalbarchart.options.js';
 
+const hbcData = [
+  {
+    chartTitle: 'one',
+    chartData: [
+      {
+        legend: 'one',
+        data: 1543,
+        y: 15000,
+        color: '#637cef',
+      },
+    ],
+  },
+  {
+    chartTitle: 'two',
+    chartData: [
+      {
+        legend: 'two',
+        data: 800,
+        y: 15000,
+        color: '#e3008c',
+      },
+    ],
+  },
+  {
+    chartTitle: 'three',
+    chartData: [
+      {
+        legend: 'three',
+        data: 8888,
+        y: 15000,
+        color: '#2aa0a4',
+      },
+    ],
+  },
+  {
+    chartTitle: 'four',
+    chartData: [
+      {
+        legend: 'four',
+        data: 15888,
+        y: 15000,
+        color: '#9373c0',
+      },
+    ],
+  },
+  {
+    chartTitle: 'five',
+    chartData: [
+      {
+        legend: 'five',
+        data: 11444,
+        y: 15000,
+        color: '#13a10e',
+      },
+    ],
+  },
+  {
+    chartTitle: 'six',
+    chartData: [
+      {
+        legend: 'six',
+        data: 14000,
+        y: 15000,
+        color: '#3a96dd',
+      },
+    ],
+  },
+  {
+    chartTitle: 'seven',
+    chartData: [
+      {
+        legend: 'seven',
+        data: 9855,
+        y: 15000,
+        color: '#ca5010',
+      },
+    ],
+  },
+  {
+    chartTitle: 'eight',
+    chartData: [
+      {
+        legend: 'eight',
+        data: 4250,
+        y: 15000,
+        color: '#57811b',
+      },
+    ],
+  },
+];
+
 const chartPoints1: IChartDataPoint[] = [
   {
     legend: 'Debit card numbers (EU and USA)',
@@ -98,10 +189,25 @@ export default {
 
 export const Basic: Story<FluentHorizontalBarChart> = renderComponent(storyTemplate).bind({});
 
+export const HBCAbsoluteScale: Story<FluentHorizontalBarChart> = renderComponent(html<
+  StoryArgs<FluentHorizontalBarChart>
+>`
+  <div>
+    <fluent-horizontalbarchart style="width: 100%" data="${JSON.stringify(hbcData)}"> </fluent-horizontalbarchart>
+  </div>
+`);
+
+export const HBCNMVariant: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
+  <div>
+    <fluent-horizontalbarchart style="width: 100%" variant="part-to-whole" data="${JSON.stringify(hbcData)}">
+    </fluent-horizontalbarchart>
+  </div>
+`);
+
 export const RTL: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
-  <div style="display: flex; flex-direction: column; gap: 1rem;" dir="rtl">
+  <div dir="rtl">
     <div>
-      <fluent-horizontalbarchart data="${JSON.stringify(data)}"> </fluent-horizontalbarchart>
+      <fluent-horizontalbarchart _isRTL="true" data="${JSON.stringify(data)}"> </fluent-horizontalbarchart>
     </div>
   </div>
 `);
