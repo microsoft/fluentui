@@ -75,13 +75,8 @@ export const styles = css`
   .legendRect {
     width: 12px;
     height: 12px;
-    margin-right: ${spacingHorizontalS};
+    margin-inline-end: ${spacingHorizontalS};
     border: 1px solid;
-  }
-
-  .legendRect:dir(rtl) {
-    margin-left: ${spacingHorizontalS};
-    margin-right: 0;
   }
 
   .legendText {
@@ -107,8 +102,9 @@ export const styles = css`
   }
 
   .calloutBlockContainer {
-    padding-left: ${spacingHorizontalS};
+    padding-inline-start: ${spacingHorizontalS};
     color: ${colorNeutralForeground1};
+    border-inline-start: 4px solid;
   }
 
   .calloutLegendText {

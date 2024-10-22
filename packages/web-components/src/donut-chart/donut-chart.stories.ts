@@ -2,9 +2,9 @@ import { html } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import { DonutChart as FluentDonutChart } from './donut-chart.js';
-import { IChartDataPoint, IChartProps } from './donut-chart.options.js';
+import { ChartDataPoint, ChartProps } from './donut-chart.options.js';
 
-const points: IChartDataPoint[] = [
+const points: ChartDataPoint[] = [
   {
     legend: 'first',
     data: 20000,
@@ -15,7 +15,7 @@ const points: IChartDataPoint[] = [
   },
 ];
 
-const data: IChartProps = {
+const data: ChartProps = {
   chartTitle: 'Donut chart basic example',
   chartData: points,
 };
