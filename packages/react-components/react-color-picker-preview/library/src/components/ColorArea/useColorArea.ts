@@ -13,7 +13,6 @@ import { useColorAreaState_unstable } from './useColorAreaState';
  * @param ref - reference to root HTMLInputElement of ColorArea
  */
 export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLInputElement>): ColorAreaState => {
-  const divRef = React.useRef(null);
 
   const nativeProps = getPartitionedNativeProps({
     props,
