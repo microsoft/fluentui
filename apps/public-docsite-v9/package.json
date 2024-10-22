@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@fluentui/react-calendar-compat": "*",
+    "@fluentui/react-charts-preview": "*",
     "@fluentui/react-datepicker-compat": "*",
     "@fluentui/react-migration-v8-v9": "*",
     "@fluentui/react-migration-v0-v9": "*",
