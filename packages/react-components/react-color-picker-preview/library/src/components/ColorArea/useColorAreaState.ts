@@ -77,12 +77,7 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
   const _onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
       event.preventDefault();
-      let newY = coordinates.y;
-      if (event.key === 'ArrowUp') {
-        newY = clamp(coordinates.y + 1, MIN, MAX);
-      } else {
-        newY = clamp(coordinates.y - 1, MIN, MAX);
-      }
+      const newY = event.key === 'ArrowUp' ? clamp(coordinates.y + 1, MIN, MAX) : clamp(coordinates.y - 1, MIN, MAX);
       const newColor = { h: hsvColor.h, s: coordinates.x / 100, v: newY / 100, a: 1 };
       setColor(newColor);
       onChange?.(event, {
