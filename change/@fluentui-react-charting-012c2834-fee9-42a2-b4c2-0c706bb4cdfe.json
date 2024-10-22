@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix incorrect scaling ratio in Horizontal bar chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "mhersi819@gamil.com",
+  "dependentChangeType": "patch"
+}
