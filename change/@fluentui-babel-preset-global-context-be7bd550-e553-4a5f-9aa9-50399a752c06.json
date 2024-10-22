@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: replace npm-scripts and just-scrtips with nx inferred tasks",
+  "packageName": "@fluentui/babel-preset-global-context",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
