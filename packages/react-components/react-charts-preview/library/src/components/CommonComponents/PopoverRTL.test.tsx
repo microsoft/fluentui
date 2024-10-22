@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PopoverComponent } from './Popover';
+import { ChartPopover } from './ChartPopover';
 import { getByClass, getById } from '../../utilities/TestUtility.test';
 import { act, getByText, render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -23,14 +23,14 @@ beforeAll(() => {
 
 describe('Popover', () => {
   test('renders the popover component', () => {
-    const { container } = render(<PopoverComponent isPopoverOpen={true} />);
+    const { container } = render(<ChartPopover isPopoverOpen={true} />);
     const popoverElement = getById(container, /callout1/);
     expect(popoverElement).toBeDefined();
   });
 
   test('displays the correct XValue', () => {
     const XValue = 'Sample XValue';
-    const { container } = render(<PopoverComponent XValue={XValue} isPopoverOpen={true} />);
+    const { container } = render(<ChartPopover XValue={XValue} isPopoverOpen={true} />);
     const XValueElement = getByText(container, /Sample XValue/);
     expect(XValueElement).toBeDefined();
     expect(XValueElement.textContent?.trim()).toBe(XValue);
@@ -38,14 +38,14 @@ describe('Popover', () => {
 
   test('displays the popover card correctly when XValue is undefined', () => {
     const XValue = undefined;
-    const { container } = render(<PopoverComponent XValue={XValue} isPopoverOpen={true} />);
+    const { container } = render(<ChartPopover XValue={XValue} isPopoverOpen={true} />);
     const XValueElement = getByClass(container, /calloutContentX/)[0] as HTMLElement;
     expect(XValueElement.children[0]).toBeUndefined();
   });
 
   test('displays the correct YValue', () => {
     const YValue = 'Sample YValue';
-    const { container } = render(<PopoverComponent YValue={YValue} isPopoverOpen={true} />);
+    const { container } = render(<ChartPopover YValue={YValue} isPopoverOpen={true} />);
     const YValueElement = getByText(container, /Sample YValue/);
     expect(YValueElement).toBeDefined();
     expect(YValueElement.textContent?.trim()).toBe(YValue);
@@ -53,14 +53,14 @@ describe('Popover', () => {
 
   test('displays the popover card correctly when YValue is undefined', () => {
     const YValue = undefined;
-    const { container } = render(<PopoverComponent YValue={YValue} isPopoverOpen={true} />);
+    const { container } = render(<ChartPopover YValue={YValue} isPopoverOpen={true} />);
     const YValueElement = getByClass(container, /calloutContentY/)[0] as HTMLElement;
     expect(YValueElement.children[0]).toBeUndefined();
   });
 
   test('displays the correct YValue when YValue is a number', () => {
     const YValue = 123;
-    const { container } = render(<PopoverComponent YValue={YValue} isPopoverOpen={true} />);
+    const { container } = render(<ChartPopover YValue={YValue} isPopoverOpen={true} />);
     const YValueElement = getByText(container, /123/);
     expect(YValueElement).toBeDefined();
     expect(YValueElement.textContent?.trim()).toBe(YValue.toString());
@@ -68,7 +68,7 @@ describe('Popover', () => {
 
   test('displays the correct YValue when YValue is a date', () => {
     const YValue = new Date('2021-01-01');
-    const { container } = render(<PopoverComponent YValue={YValue} isPopoverOpen={true} />);
+    const { container } = render(<ChartPopover YValue={YValue} isPopoverOpen={true} />);
     const YValueElement = getByText(container, '1/1/2021');
     expect(YValueElement).toBeDefined();
     expect(YValueElement.textContent?.trim()).toBe(YValue.toLocaleDateString());
@@ -76,14 +76,14 @@ describe('Popover', () => {
 
   test('displays the correct Legend', () => {
     const Legend = 'Sample Legend';
-    const { container } = render(<PopoverComponent legend={Legend} isPopoverOpen={true} />);
+    const { container } = render(<ChartPopover legend={Legend} isPopoverOpen={true} />);
     const LegendElement = getByText(container, /Sample Legend/);
     expect(LegendElement).toBeDefined();
   });
 
   test('displays the correct Legend when Legend is a number', () => {
     const Legend = 123;
-    const { container } = render(<PopoverComponent legend={Legend} isPopoverOpen={true} />);
+    const { container } = render(<ChartPopover legend={Legend} isPopoverOpen={true} />);
     const LegendElement = getByText(container, /123/);
     expect(LegendElement).toBeDefined();
     expect(LegendElement.textContent?.trim()).toBe(Legend.toString());
@@ -91,7 +91,7 @@ describe('Popover', () => {
 
   test('displays the correct Legend when Legend is a date', () => {
     const Legend = new Date('2021-01-01');
-    const { container } = render(<PopoverComponent legend={Legend} isPopoverOpen={true} />);
+    const { container } = render(<ChartPopover legend={Legend} isPopoverOpen={true} />);
     const LegendElement = getByText(container, '1/1/2021');
     expect(LegendElement).toBeDefined();
     expect(LegendElement.textContent?.trim()).toBe(Legend.toLocaleDateString());
@@ -99,14 +99,14 @@ describe('Popover', () => {
 
   test('displays the popover card correctly when Legend is undefined', () => {
     const Legend = undefined;
-    const { container } = render(<PopoverComponent legend={Legend} isPopoverOpen={true} />);
+    const { container } = render(<ChartPopover legend={Legend} isPopoverOpen={true} />);
     const LegendElement = getByClass(container, /calloutlegendText/)[0] as HTMLElement;
     expect(LegendElement.children[0]).toBeUndefined();
   });
 
   test('displays the correct ratio', () => {
     const ratio: [number, number] = [1, 2];
-    const { container } = render(<PopoverComponent ratio={ratio} isPopoverOpen={true} />);
+    const { container } = render(<ChartPopover ratio={ratio} isPopoverOpen={true} />);
     expect(getByClass(container, /ratio/)).toBeDefined();
     const numerator = getByText(container, '1');
     expect(numerator).toBeDefined();
@@ -118,7 +118,7 @@ describe('Popover', () => {
 
   it('displays the correct descriptionMessage', () => {
     const descriptionMessage = 'Sample descriptionMessage';
-    const { container } = render(<PopoverComponent descriptionMessage={descriptionMessage} isPopoverOpen={true} />);
+    const { container } = render(<ChartPopover descriptionMessage={descriptionMessage} isPopoverOpen={true} />);
     const descriptionMessageElement = getByText(container, /Sample descriptionMessage/);
     expect(descriptionMessageElement).toBeDefined();
     expect(descriptionMessageElement.textContent?.trim()).toBe(descriptionMessage);
@@ -127,7 +127,7 @@ describe('Popover', () => {
 
 describe('Popover - axe-core', () => {
   test('Should pass accessibility tests', async () => {
-    const { container } = render(<PopoverComponent isPopoverOpen={true} />);
+    const { container } = render(<ChartPopover isPopoverOpen={true} />);
     let axeResults;
     await act(async () => {
       axeResults = await axe(container);

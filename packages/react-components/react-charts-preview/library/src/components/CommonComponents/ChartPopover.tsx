@@ -7,14 +7,16 @@ import { useId } from '@fluentui/react-utilities';
 import { getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { Shape } from '../Legends/shape';
-import { usePopoverStyles_unstable } from './usePopoverStyles.styles';
+import { usePopoverStyles_unstable } from './useChartPopoverStyles.styles';
 import { YValueHover } from './CartesianChart.types';
 import { LegendShape } from '../Legends/Legends.types';
-import { PopoverComponentProps } from './Popover.types';
+import { ChartPopoverProps } from './ChartPopover.types';
 
-export const PopoverComponent: React.FunctionComponent<PopoverComponentProps> = React.forwardRef<
+/* This component is a wrapper over Popover component which implements the logic for rendering popovers for any chart
+combining the logic for Callout and ChartHoverCard in v8 charts. */
+export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.forwardRef<
   HTMLDivElement,
-  PopoverComponentProps
+  ChartPopoverProps
 >((props, forwardedRef) => {
   const virtualElement: PositioningVirtualElement = {
     getBoundingClientRect: () => ({
@@ -30,10 +32,10 @@ export const PopoverComponent: React.FunctionComponent<PopoverComponentProps> = 
   };
   props = { ...props, ...props.customCallout?.customCalloutProps };
   const classes = usePopoverStyles_unstable(props);
-  const Legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
+  const legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
   const YValue = props.yCalloutValue ? props.yCalloutValue : props.YValue;
   return (
-    <div id={useId('callout')}>
+    <div id={useId('callout')} ref={forwardedRef}>
       <Popover
         positioning={{ target: virtualElement, autoSize: 'always', offset: 20, coverTarget: false }}
         open={props.isPopoverOpen}
@@ -65,7 +67,7 @@ export const PopoverComponent: React.FunctionComponent<PopoverComponentProps> = 
                 }}
               >
                 <div className={classes.calloutBlockContainer}>
-                  <div className={classes.calloutlegendText}>{convertToLocaleString(Legend, props.culture)}</div>
+                  <div className={classes.calloutlegendText}>{convertToLocaleString(legend, props.culture)}</div>
                   <div
                     className={classes.calloutContentY}
                     style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
@@ -96,7 +98,7 @@ export const PopoverComponent: React.FunctionComponent<PopoverComponentProps> = 
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function _multiValueCallout() {
-    const yValueHoverSubCountsExists: boolean = _yValueHoverSubCountsExists(props.YValueHover);
+    const yValueHoverSubCountsExists: boolean = _yValueHoverSubCountsExists(props.YValueHover) ?? false;
     return (
       <div className={classes.calloutContentRoot}>
         <div
@@ -146,18 +148,18 @@ export const PopoverComponent: React.FunctionComponent<PopoverComponentProps> = 
     );
   }
 
-  function _yValueHoverSubCountsExists(yValueHover?: YValueHover[]) {
-    if (yValueHover) {
-      return yValueHover.some(
+  function _yValueHoverSubCountsExists(yValueHover?: YValueHover[]): boolean | undefined {
+    return (
+      yValueHover &&
+      yValueHover.some(
         (yValue: {
           legend?: string;
           y?: number;
           color?: string;
           yAxisCalloutData?: string | { [id: string]: number };
         }) => yValue.yAxisCalloutData && typeof yValue.yAxisCalloutData !== 'string',
-      );
-    }
-    return false;
+      )
+    );
   }
 
   function _getCalloutContent(
@@ -243,4 +245,4 @@ export const PopoverComponent: React.FunctionComponent<PopoverComponentProps> = 
     }
   }
 });
-PopoverComponent.displayName = 'PopoverComponent';
+ChartPopover.displayName = 'ChartPopover';

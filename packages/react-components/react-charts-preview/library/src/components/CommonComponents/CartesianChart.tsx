@@ -23,7 +23,7 @@ import {
   useRtl,
 } from '../../utilities/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
-import { PopoverComponent } from './Popover';
+import { ChartPopover } from './ChartPopover';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ResponsiveContainer } from './ResponsiveContainer';
 
@@ -163,7 +163,7 @@ const CartesianChartBase: React.FunctionComponent<ModifiedCartesianChartProps> =
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function _generateCallout(calloutProps: any): JSX.Element {
-    return <PopoverComponent {...calloutProps} />;
+    return <ChartPopover {...calloutProps} />;
   }
 
   const {

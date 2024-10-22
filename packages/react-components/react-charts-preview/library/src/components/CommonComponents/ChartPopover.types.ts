@@ -1,6 +1,6 @@
 import { YValueHover } from '../../index';
 
-export interface PopoverComponentProps {
+export interface ChartPopoverProps {
   clickPosition?: { x: number; y: number };
   isPopoverOpen?: boolean;
   xCalloutValue?: string;
@@ -12,7 +12,7 @@ export interface PopoverComponentProps {
   culture?: string;
   customCallout?: {
     customizedCallout?: JSX.Element;
-    customCalloutProps?: PopoverComponentProps;
+    customCalloutProps?: ChartPopoverProps;
   };
   isCalloutForStack?: boolean;
   xAxisCalloutAccessibilityData?: { ariaLabel?: string; data?: string };
