@@ -56,8 +56,6 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
-      - run: yarn nx run workspace-plugin:test --nxBail
-
       - name: Workspace lint
         run: |
           yarn nx run workspace-plugin:check-graph
@@ -81,6 +79,12 @@ jobs:
       - name: check formatting
         run: |
           yarn nx format:check --base origin/master
+
+      - name: measure v8 test impact
+        run: yarn nx run react:test --nxBail
+
+      - name: measure v0 test impact
+        run: yarn nx run react-northstar:test --nxBail
 
       - name: build, test, lint, test-ssr (affected)
         run: |
