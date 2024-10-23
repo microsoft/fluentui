@@ -26,7 +26,7 @@ const getExampleModule = (
       namedExports: examplesContext(modulePath),
       source: exampleSourcesContext(sourcePath),
     };
-  } catch (e) {
+  } catch {
     return null;
   }
 };
