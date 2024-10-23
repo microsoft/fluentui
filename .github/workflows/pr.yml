@@ -223,11 +223,33 @@ jobs:
       - name: Compare Reports Output
         run: cat ./monosize-report.md
 
+      - name: Read the monosize report
+        id: read_report
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          if [ -f monosize-report.md ]; then
+            report=$(cat monosize-report.md)
+            echo "report<<EOF" >> $GITHUB_ENV
+            echo "$report" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
+          else
+            echo "No report found"
+          fi
+
       - name: Post results to PR (PR only)
         if: github.event_name == 'pull_request'
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: actions/github-script@v7
         with:
-          path: monosize-report.md
+          github-token: ${{ secrets.GITHUB_TOKEN }} # Use a GitHub token (this is automatically provided)
+          script: |
+            const run = require('./.github/bundle-size-comment');
+            await run({github,context,core});
+
+      # - name: Post results to PR (PR only)
+      #   if: github.event_name == 'pull_request'
+      #   uses: marocchino/sticky-pull-request-comment@v2
+      #   with:
+      #     path: monosize-report.md
 
       - name: Build all packages & create reports (non-PR)
         if: github.event_name != 'pull_request'
