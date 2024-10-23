@@ -2,7 +2,7 @@ import { attr, FASTElement } from '@microsoft/fast-element';
 import { create as d3Create, select as d3Select } from 'd3-selection';
 import { createTabster, getGroupper, getMover, getTabsterAttribute, TABSTER_ATTRIBUTE_NAME } from 'tabster';
 import { getDataConverter } from '../utils/chart-helpers.js';
-import { IChartDataPoint, IChartProps, Variant } from './horizontalbarchart.options.js';
+import { ChartDataPoint, ChartProps, Variant } from './horizontalbarchart.options.js';
 
 // During the page startup.
 const tabsterCore = createTabster(window);
@@ -40,10 +40,10 @@ export class HorizontalBarChart extends FASTElement {
   public _isRTL: boolean = false;
 
   @attr({ converter: getDataConverter('horizontal-bar-chart') })
-  public data!: IChartProps[];
+  public data!: ChartProps[];
 
   @attr
-  public uniqueLegends: IChartDataPoint[] = [];
+  public uniqueLegends: ChartDataPoint[] = [];
 
   @attr
   public hideRatio = false;
@@ -61,7 +61,7 @@ export class HorizontalBarChart extends FASTElement {
     this.render();
   }
 
-  private createSingleChartBars(singleChartData: IChartProps, index: number, nodes: any) {
+  private createSingleChartBars(singleChartData: ChartProps, index: number, nodes: any) {
     const singleChartBars = this._createBarsAndLegends(singleChartData!, index);
 
     // create a div element. Loop through chart bars and add to the div as its children
@@ -189,13 +189,13 @@ export class HorizontalBarChart extends FASTElement {
     }
   }
 
-  public _createBarsAndLegends(data: IChartProps, barNo?: number) {
+  public _createBarsAndLegends(data: ChartProps, barNo?: number) {
     const _isRTL = this._isRTL;
     const _computeLongestBarTotalValue = () => {
       let longestBarTotalValue = 0;
       this.data!.forEach(({ chartData, chartTitle }) => {
         const barTotalValue = chartData!.reduce(
-          (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
+          (acc: number, point: ChartDataPoint) => acc + (point.data ? point.data : 0),
           0,
         );
         longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue);
@@ -204,20 +204,20 @@ export class HorizontalBarChart extends FASTElement {
     };
     const longestBarTotalValue = _computeLongestBarTotalValue();
     const noOfBars =
-      data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
+      data.chartData?.reduce((count: number, point: ChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
     const barSpacingInPercent = 1;
     const totalMarginPercent = barSpacingInPercent * (noOfBars - 1);
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
     const barTotalValue = data.chartData!.reduce(
-      (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
+      (acc: number, point: ChartDataPoint) => acc + (point.data ? point.data : 0),
       0,
     );
     const total = this.variant === Variant.AbsoluteScale ? longestBarTotalValue : barTotalValue;
 
     let sumOfPercent = 0;
-    data.chartData!.map((point: IChartDataPoint, index: number) => {
+    data.chartData!.map((point: ChartDataPoint, index: number) => {
       const pointData = point.data ? point.data : 0;
       const currValue = (pointData / total) * 100;
       let value = currValue ? currValue : 0;
@@ -259,7 +259,7 @@ export class HorizontalBarChart extends FASTElement {
     let prevPosition = 0;
     let value = 0;
 
-    function createBars(this: SVGGElement, point: IChartDataPoint, index: number) {
+    function createBars(this: SVGGElement, point: ChartDataPoint, index: number) {
       const barHeight = 12;
       const pointData = point.data ? point.data : 0;
       if (index > 0) {

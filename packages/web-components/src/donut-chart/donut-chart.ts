@@ -1,8 +1,8 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
 import { arc as d3Arc, pie as d3Pie } from 'd3-shape';
 import { createTabster, getMover, getTabsterAttribute, MoverDirections } from 'tabster';
-import { getDataConverter } from '../utils/chart-helpers.js';
-import { IChartProps } from './donut-chart.options.js';
+import { getColorFromToken, getDataConverter, getNextColor, getRTL } from '../utils/chart-helpers.js';
+import type { ChartProps } from './donut-chart.options.js';
 
 const tabsterCore = createTabster(window);
 getMover(tabsterCore);
@@ -21,7 +21,7 @@ export class DonutChart extends FASTElement {
   public hideTooltip?: boolean;
 
   @attr({ converter: getDataConverter('donut-chart') })
-  public data!: IChartProps;
+  public data!: ChartProps;
 
   @attr({ attribute: 'inner-radius', converter: nullableNumberConverter })
   public innerRadius: number = 1;
@@ -30,6 +30,7 @@ export class DonutChart extends FASTElement {
   public valueInsideDonut?: string;
 
   private _selectedLegend: string = '';
+  private _isRTL: boolean = false;
 
   constructor() {
     super();
@@ -39,6 +40,17 @@ export class DonutChart extends FASTElement {
 
   connectedCallback() {
     super.connectedCallback();
+
+    this.data.chartData?.forEach((d, i) => {
+      if (d.color) {
+        d.color = getColorFromToken(d.color);
+      } else {
+        d.color = getNextColor(i);
+      }
+    });
+
+    this._isRTL = getRTL(this);
+
     this.render();
   }
 
@@ -114,7 +126,7 @@ export class DonutChart extends FASTElement {
           return;
         }
 
-        tooltipBody.style['borderLeft'] = `4px solid ${d.data.color}`;
+        tooltipBody.style['borderColor'] = d.data.color;
         legendText.textContent = d.data.legend;
         yText.textContent = d.data.data;
         yText.style['color'] = d.data.color;
@@ -129,7 +141,7 @@ export class DonutChart extends FASTElement {
           return;
         }
 
-        tooltipBody.style['borderLeft'] = `4px solid ${d.data.color}`;
+        tooltipBody.style['borderColor'] = d.data.color;
         legendText.textContent = d.data.legend;
         yText.textContent = d.data.data;
         yText.style['color'] = d.data.color;
@@ -162,11 +174,17 @@ export class DonutChart extends FASTElement {
     const legendContainer = document.createElement('div');
     rootDiv.appendChild(legendContainer);
     legendContainer.classList.add('legendContainer');
+    legendContainer.setAttribute('role', 'listbox');
+    legendContainer.setAttribute('aria-label', 'Legends');
 
-    legends?.forEach(d => {
+    legends?.forEach((d, index) => {
       const button = document.createElement('button');
       legendContainer.appendChild(button);
       button.classList.add('legend');
+      button.setAttribute('role', 'option');
+      button.setAttribute('aria-setsize', `${legends.length}`);
+      button.setAttribute('aria-posinset', `${index + 1}`);
+      button.setAttribute('aria-selected', `${this._selectedLegend === d.title}`);
 
       const legendRect = document.createElement('div');
       button.appendChild(legendRect);
