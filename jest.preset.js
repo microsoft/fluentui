@@ -61,7 +61,7 @@ function isCI() {
   console.log({ env: JSON.stringify(process.env, null, 2) });
   return (
     (process.env.CI && process.env.CI !== 'false') ||
-    process.env.TF_BUILD === 'true' ||
+    (process.env.TF_BUILD && process.env.TF_BUILD.toLowerCase() === 'true') ||
     process.env.GITHUB_ACTIONS === 'true'
   );
 }
