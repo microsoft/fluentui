@@ -453,10 +453,10 @@ function buildTestSsrTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
-  if (options.testSSR.include.length && !options.testSSR.include?.includes(config.projectJSON.name!)) {
+  if (options.testSSR.include.length && !options.testSSR.include.includes(config.projectJSON.name!)) {
     return null;
   }
-  if (options.testSSR.exclude.length && options.testSSR.exclude?.includes(config.projectJSON.name!)) {
+  if (options.testSSR.exclude.length && options.testSSR.exclude.includes(config.projectJSON.name!)) {
     return null;
   }
 
