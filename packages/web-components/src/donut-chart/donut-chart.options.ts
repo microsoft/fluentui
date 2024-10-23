@@ -1,4 +1,4 @@
-export interface IChartDataPoint {
+export interface ChartDataPoint {
   /**
    * Legend text for the datapoint in the chart
    */
@@ -27,7 +27,7 @@ export interface IChartDataPoint {
   yAxisCalloutData?: string;
 }
 
-export interface IChartProps {
+export interface ChartProps {
   /**
    * chart title for the chart
    */
@@ -36,5 +36,5 @@ export interface IChartProps {
   /**
    * data for the points in the chart
    */
-  chartData?: IChartDataPoint[];
+  chartData?: ChartDataPoint[];
 }

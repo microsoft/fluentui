@@ -4,7 +4,6 @@ import {
   borderRadiusMedium,
   colorNeutralBackground1,
   colorNeutralForeground1,
-  colorNeutralForeground2,
   colorNeutralShadowAmbient,
   colorNeutralShadowKey,
   colorTransparentStroke,
@@ -13,7 +12,13 @@ import {
   spacingVerticalL,
   spacingVerticalMNudge,
 } from '../theme/design-tokens.js';
-import { typographyBody1Styles, typographyCaption1Styles, typographyTitle2Styles } from '../styles/index.js';
+import {
+  typographyBody1Styles,
+  typographyCaption1Styles,
+  typographyTitle2Styles,
+  typographyTitle3Styles,
+} from '../styles/index.js';
+import { forcedColorsStylesheetBehavior } from '../utils/index.js';
 
 /**
  * Styles for the DonutChart component.
@@ -53,7 +58,7 @@ export const styles = css`
   }
 
   .insideDonutString {
-    ${typographyTitle2Styles}
+    ${typographyTitle3Styles}
     fill: ${colorNeutralForeground1};
   }
 
@@ -70,7 +75,7 @@ export const styles = css`
   .legendRect {
     width: 12px;
     height: 12px;
-    margin-right: ${spacingHorizontalS};
+    margin-inline-end: ${spacingHorizontalS};
     border: 1px solid;
   }
 
@@ -97,16 +102,33 @@ export const styles = css`
   }
 
   .calloutBlockContainer {
-    padding-left: ${spacingHorizontalS};
-    color: ${colorNeutralForeground2};
+    padding-inline-start: ${spacingHorizontalS};
+    color: ${colorNeutralForeground1};
+    border-inline-start: 4px solid;
   }
 
   .calloutLegendText {
     ${typographyCaption1Styles}
-    color: ${colorNeutralForeground2};
   }
 
   .calloutContentY {
     ${typographyTitle2Styles}
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    .insideDonutString {
+      fill: rgb(179, 179, 179);
+    }
+
+    .legendRect,
+    .calloutBlockContainer {
+      forced-color-adjust: none;
+    }
+
+    .calloutLegendText,
+    .calloutContentY {
+      forced-color-adjust: auto;
+      color: rgb(255, 255, 255);
+    }
+  `),
+);
