@@ -1,7 +1,9 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
+import type { TooltipPositioningOption } from './tooltip.options.js';
 
-const SUPPORTS_ANCHOR_POSITIONING = CSS.supports('anchor-name: --a');
+const SUPPORTS_CSS_ANCHOR_POSITIONING = CSS.supports('anchor-name: --a');
+const SUPPORTS_HTML_ANCHOR_POSITIONING = 'anchor' in HTMLElement.prototype;
 
 /**
  * A Tooltip Custom HTML Element.
@@ -40,7 +42,7 @@ export class Tooltip extends FASTElement {
    * Set the positioning of the tooltip
    */
   @attr
-  public positioning?: string;
+  public positioning?: TooltipPositioningOption;
 
   /**
    * The id of the anchor element for the tooltip
@@ -82,11 +84,13 @@ export class Tooltip extends FASTElement {
     const describedBy = this.anchorElement.getAttribute('aria-describedby');
     this.anchorElement.setAttribute('aria-describedby', describedBy ? `${describedBy} ${this.id}` : this.id);
 
-    if (SUPPORTS_ANCHOR_POSITIONING) {
-      // @ts-expect-error - Baseline 2024
-      this.anchorElement.style.anchorName = anchorName;
-      // @ts-expect-error - Baseline 2024
-      this.style.positionAnchor = anchorName;
+    if (SUPPORTS_CSS_ANCHOR_POSITIONING) {
+      if (!SUPPORTS_HTML_ANCHOR_POSITIONING) {
+        // @ts-expect-error - Baseline 2024
+        this.anchorElement.style.anchorName = anchorName;
+        // @ts-expect-error - Baseline 2024
+        this.style.positionAnchor = anchorName;
+      }
     } else {
       // Provide style fallback for browsers that do not support anchor positioning
       if (!this.anchorPositioningStyleElement) {
@@ -105,23 +109,27 @@ export class Tooltip extends FASTElement {
         alignment = 'centerY';
       }
 
-      const directionCSS =
-        {
-          above: `bottom: anchor(${anchorName} top);`,
-          below: `top: anchor(${anchorName} bottom);`,
-          before: `right: anchor(${anchorName} left);`,
-          after: `left: anchor(${anchorName} right);`,
-        }[direction] || 'above';
+      const directionCSSMap = {
+        above: `bottom: anchor(${anchorName} top);`,
+        below: `top: anchor(${anchorName} bottom);`,
+        before: `right: anchor(${anchorName} left);`,
+        after: `left: anchor(${anchorName} right);`,
+      } as const;
 
-      const alignmentCSS =
-        {
-          start: `left: anchor(${anchorName} left);`,
-          end: `right: anchor(${anchorName} right);`,
-          top: `top: anchor(${anchorName} top);`,
-          bottom: `bottom: anchor(${anchorName} bottom);`,
-          centerX: `left: anchor(${anchorName} center); translate: -50% 0;`,
-          centerY: `top: anchor(${anchorName} center); translate: 0 -50%;`,
-        }[alignment] || 'centerX';
+      type DirectionMapOption = keyof typeof directionCSSMap;
+      const directionCSS = directionCSSMap[direction as DirectionMapOption] ?? directionCSSMap.above;
+
+      const alignmentCSSMap = {
+        start: `left: anchor(${anchorName} left);`,
+        end: `right: anchor(${anchorName} right);`,
+        top: `top: anchor(${anchorName} top);`,
+        bottom: `bottom: anchor(${anchorName} bottom);`,
+        centerX: `left: anchor(${anchorName} center); translate: -50% 0;`,
+        centerY: `top: anchor(${anchorName} center); translate: 0 -50%;`,
+      } as const;
+
+      type AlignmentMapOption = keyof typeof alignmentCSSMap;
+      const alignmentCSS = alignmentCSSMap[alignment as AlignmentMapOption] ?? alignmentCSSMap.centerX;
 
       this.anchorPositioningStyleElement.textContent = `
           #${this.anchor} {
@@ -161,7 +169,7 @@ export class Tooltip extends FASTElement {
   public showTooltip(delay: number = this.defaultDelay): void {
     setTimeout(() => {
       this.setAttribute('aria-hidden', 'false');
-      // @ts-expect-error Baseline 2024
+      // @ts-expect-error - Baseline 2024
       this.showPopover();
     }, delay);
   }
@@ -180,7 +188,7 @@ export class Tooltip extends FASTElement {
       }
 
       this.setAttribute('aria-hidden', 'true');
-      // @ts-expect-error Baseline 2024
+      // @ts-expect-error - Baseline 2024
       this.hidePopover();
     }, delay);
   }

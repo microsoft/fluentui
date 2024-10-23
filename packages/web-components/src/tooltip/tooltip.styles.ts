@@ -10,10 +10,11 @@ import {
   fontFamilyBase,
   fontSizeBase200,
   lineHeightBase200,
+  spacingHorizontalMNudge,
   spacingHorizontalXS,
   spacingVerticalXS,
 } from '../theme/design-tokens.js';
-import { TooltipPositioning } from './tooltip.options.js';
+import { TooltipPositioningOption } from './tooltip.options.js';
 
 /**
  * Styles for the tooltip component
@@ -42,7 +43,7 @@ export const styles = css`
     line-height: ${lineHeightBase200};
     margin: unset; /* Remove browser default for [popover] */
     max-width: 240px;
-    padding: 4px 11px 6px;
+    padding: 4px ${spacingHorizontalMNudge} 6px;
     position: absolute;
     position-area: block-start;
     width: auto;
@@ -59,39 +60,39 @@ export const styles = css`
   }
 
   :host([positioning='above-start']) {
-    position-area: ${TooltipPositioning['above-start']};
+    position-area: ${TooltipPositioningOption['above-start']};
   }
   :host([positioning='above']) {
-    position-area: ${TooltipPositioning.above};
+    position-area: ${TooltipPositioningOption.above};
   }
   :host([positioning='above-end']) {
-    position-area: ${TooltipPositioning['above-end']};
+    position-area: ${TooltipPositioningOption['above-end']};
   }
   :host([positioning='below-start']) {
-    position-area: ${TooltipPositioning['below-start']};
+    position-area: ${TooltipPositioningOption['below-start']};
   }
   :host([positioning='below']) {
-    position-area: ${TooltipPositioning.below};
+    position-area: ${TooltipPositioningOption.below};
   }
   :host([positioning='below-end']) {
-    position-area: ${TooltipPositioning['below-end']};
+    position-area: ${TooltipPositioningOption['below-end']};
   }
   :host([positioning='before-top']) {
-    position-area: ${TooltipPositioning['before-top']};
+    position-area: ${TooltipPositioningOption['before-top']};
   }
   :host([positioning='before']) {
-    position-area: ${TooltipPositioning.before};
+    position-area: ${TooltipPositioningOption.before};
   }
   :host([positioning='before-bottom']) {
-    position-area: ${TooltipPositioning['before-bottom']};
+    position-area: ${TooltipPositioningOption['before-bottom']};
   }
   :host([positioning='after-top']) {
-    position-area: ${TooltipPositioning['after-top']};
+    position-area: ${TooltipPositioningOption['after-top']};
   }
   :host([positioning='after']) {
-    position-area: ${TooltipPositioning.after};
+    position-area: ${TooltipPositioningOption.after};
   }
   :host([positioning='after-bottom']) {
-    position-area: ${TooltipPositioning['after-bottom']};
+    position-area: ${TooltipPositioningOption['after-bottom']};
   }
 `;

@@ -4040,19 +4040,22 @@ export const ToggleButtonTemplate: ElementViewTemplate<ToggleButton>;
 export class Tooltip extends FASTElement {
     constructor();
     anchor: string;
+    // @internal
+    protected anchorPositioningStyleElement: HTMLStyleElement | null;
+    blurAnchorHandler: () => void;
     // (undocumented)
     connectedCallback(): void;
     delay?: number;
     // (undocumented)
     disconnectedCallback(): void;
     elementInternals: ElementInternals;
-    handleBlur: () => void;
-    handleFocus: () => void;
-    handleMouseEnter: () => void;
-    handleMouseLeave: () => void;
+    focusAnchorHandler: () => void;
     // @internal
     hideTooltip(delay?: number): void;
-    positioning: string;
+    id: string;
+    mouseenterAnchorHandler: () => void;
+    mouseleaveAnchorHandler: () => void;
+    positioning?: TooltipPositioningOption;
     // @internal
     showTooltip(delay?: number): void;
 }
@@ -4061,23 +4064,23 @@ export class Tooltip extends FASTElement {
 export const TooltipDefinition: FASTElementDefinition<typeof Tooltip>;
 
 // @public
-export const TooltipPositioning: {
-    'above-start': string;
-    above: string;
-    'above-end': string;
-    'below-start': string;
-    below: string;
-    'below-end': string;
-    'before-top': string;
-    before: string;
-    'before-bottom': string;
-    'after-top': string;
-    after: string;
-    'after-bottom': string;
+export const TooltipPositioningOption: {
+    readonly 'above-start': "block-start span-inline-end";
+    readonly above: "block-start";
+    readonly 'above-end': "block-start span-inline-start";
+    readonly 'below-start': "block-end span-inline-end";
+    readonly below: "block-end";
+    readonly 'below-end': "block-end span-inline-start";
+    readonly 'before-top': "inline-start span-block-end";
+    readonly before: "inline-start";
+    readonly 'before-bottom': "inline-start span-block-start";
+    readonly 'after-top': "inline-end span-block-end";
+    readonly after: "inline-end";
+    readonly 'after-bottom': "inline-end span-block-start";
 };
 
 // @public
-export type TooltipPositioning = ValuesOf<typeof TooltipPositioning>;
+export type TooltipPositioningOption = ValuesOf<typeof TooltipPositioningOption>;
 
 // @public
 export const TooltipStyles: ElementStyles;
