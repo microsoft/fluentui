@@ -77,10 +77,10 @@ export class HorizontalBarChart extends FASTElement {
     const uniqueLegendsMap = new Map();
 
     // Iterate through all chart points and populate the map
-    this.data.forEach(dataSeries => {
-      dataSeries.chartData!.forEach(point => {
-        if (point.placeholder) {
-          return;
+    for (const dataSeries of this.data) {
+      for (const point of dataSeries.chartData!) {
+        if (point.color === '#edebe9') {
+          continue;
         }
         // Check if the legend is already in the map
         if (!uniqueLegendsMap.has(point.legend)) {
@@ -90,15 +90,45 @@ export class HorizontalBarChart extends FASTElement {
             color: point.color,
           });
         }
-      });
-    });
+      }
+    }
 
     // Convert the map values back to an array
     this.uniqueLegends = Array.from(uniqueLegendsMap.values());
   }
 
+  private _hydrateData() {
+    this.data!.forEach(({ chartTitle, chartData }) => {
+      if (chartData!.length === 1) {
+        const pointData = chartData![0];
+        const newEntry = {
+          legend: '',
+          data: pointData.y! - pointData.data!,
+          y: pointData.y!,
+          color: '#edebe9',
+        };
+        chartData!.push(newEntry);
+      }
+    });
+  }
+
+  private calculateBarSpacing(): number {
+    //todo: replace 650 with width of svg or div.
+    const svgWidth = 650;
+    let barSpacing = 0;
+    const MARGIN_WIDTH_IN_PX = 3;
+    if (svgWidth) {
+      const currentBarSpacing = (MARGIN_WIDTH_IN_PX / svgWidth) * 100;
+      barSpacing = currentBarSpacing;
+    }
+    return barSpacing;
+  }
+
   render() {
     // Array to hold references to the buttons
+    if (this.variant === Variant.SingleBarHBC) {
+      this._hydrateData();
+    }
     const legendButtonRefs: any = [];
     const div = d3Select(this.shadowRoot as any).append('div');
     div
@@ -208,7 +238,7 @@ export class HorizontalBarChart extends FASTElement {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
-    const barSpacingInPercent = 1;
+    const barSpacingInPercent = this.calculateBarSpacing();
     const totalMarginPercent = barSpacingInPercent * (noOfBars - 1);
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
@@ -342,7 +372,7 @@ export class HorizontalBarChart extends FASTElement {
       .append('g')
       .each(createBars)
       .on('mouseover', function (event, d) {
-        if (d.placeholder) {
+        if (d.color === '#edebe9') {
           return;
         }
         const tooltipHTML = `

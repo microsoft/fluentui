@@ -1,6 +1,7 @@
 export enum Variant {
   PartToWhole = 'part-to-whole',
   AbsoluteScale = 'absolute-scale',
+  SingleBarHBC = 'single-bar-hbc',
 }
 
 export interface IChartDataPoint {
@@ -15,6 +16,11 @@ export interface IChartDataPoint {
   data?: number;
 
   /**
+   * y value of datapoint
+   */
+  y?: number;
+
+  /**
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;
@@ -23,11 +29,6 @@ export interface IChartDataPoint {
    * Color for the legend in the chart. If not provided, it will fallback on the default color palette.
    */
   color?: string;
-
-  /**
-   * imaginary bar as placeholder
-   */
-  placeholder?: boolean;
 }
 
 export interface IChartProps {
