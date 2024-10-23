@@ -46,6 +46,7 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
   const project = context.projectsConfigurations!.projects[context.projectName!];
 
   const resolveLocalFlag = Boolean(process.env.__FORCE_API_MD_UPDATE__) || isCI() ? false : resolvedSchema.local;
+  console.log({ resolveLocalFlag });
   const projectAbsolutePath = join(context.root, project.root);
   const resolveConfig = getApiExtractorConfigPath(resolvedSchema, projectAbsolutePath);
   const tsConfigPathForCompilation = getTsConfigPathUsedForProduction(projectAbsolutePath);
@@ -69,6 +70,8 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
   };
 
   function isCI() {
+    console.log({ ci: process.env.CI, gh: process.env.GITHUB_ACTIONS });
+    console.log({ env: JSON.stringify(process.env, null, 2) });
     return (
       (process.env.CI && process.env.CI !== 'false') ||
       process.env.TF_BUILD === 'true' ||
