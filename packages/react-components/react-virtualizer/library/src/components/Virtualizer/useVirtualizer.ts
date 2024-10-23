@@ -419,7 +419,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         });
       },
       [
-        updateScrollPosition,
         actualIndex,
         virtualizerLength,
         axis,
@@ -428,6 +427,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         bufferSize,
         bufferItems,
         scrollViewRef,
+        containerSizeRef,
+        updateScrollPosition,
         batchUpdateNewIndex,
         calculateAfter,
         calculateBefore,
