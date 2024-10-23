@@ -3,7 +3,7 @@ import { uniqueId } from '@microsoft/fast-web-utilities';
 import { Meta, renderComponent, Story } from '../helpers.stories.js';
 import { definition } from './tooltip.definition.js';
 import { Tooltip } from './tooltip.js';
-import { TooltipPositioning } from './tooltip.options.js';
+import { TooltipPositioningOption } from './tooltip.options.js';
 
 const storyTemplate = () => {
   const id = uniqueId('anchor-');
@@ -40,11 +40,11 @@ export default {
     positioning: {
       control: 'select',
       description: 'Controls the positioning of the tooltip',
-      mapping: { '': null, ...Object.keys(TooltipPositioning) },
-      options: ['', ...Object.keys(TooltipPositioning)],
+      mapping: { '': null, ...Object.keys(TooltipPositioningOption) },
+      options: ['', ...Object.keys(TooltipPositioningOption)],
       table: {
         category: 'attributes',
-        type: { summary: Object.keys(TooltipPositioning).join('|') },
+        type: { summary: Object.keys(TooltipPositioningOption).join('|') },
       },
     },
   },
@@ -148,5 +148,5 @@ export const Positioning: Story<Tooltip> = renderComponent(html`
 `).bind({});
 
 Positioning.args = {
-  storyItems: Object.keys(TooltipPositioning).map(id => ({ id })),
+  storyItems: Object.keys(TooltipPositioningOption).map(id => ({ id })),
 };

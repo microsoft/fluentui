@@ -4,7 +4,7 @@ import type { ValuesOf } from '../utils/typings.js';
  * The TooltipPositioning options and their corresponding CSS values
  * @public
  */
-export const TooltipPositioning = {
+export const TooltipPositioningOption = {
   'above-start': 'block-start span-inline-end',
   above: 'block-start',
   'above-end': 'block-start span-inline-start',
@@ -23,4 +23,4 @@ export const TooltipPositioning = {
  * The TooltipPositioning type
  * @public
  */
-export type TooltipPositioning = ValuesOf<typeof TooltipPositioning>;
+export type TooltipPositioningOption = ValuesOf<typeof TooltipPositioningOption>;
