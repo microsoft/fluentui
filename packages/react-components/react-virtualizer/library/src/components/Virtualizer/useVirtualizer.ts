@@ -428,6 +428,12 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         bufferSize,
         bufferItems,
         scrollViewRef,
+        batchUpdateNewIndex,
+        calculateAfter,
+        calculateBefore,
+        calculateTotalSize,
+        getIndexFromScrollPosition,
+        updateCurrentItemSizes,
       ],
     ),
     {
