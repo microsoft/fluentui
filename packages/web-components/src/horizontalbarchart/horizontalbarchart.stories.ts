@@ -293,7 +293,7 @@ export const singleBarNMVariant: Story<FluentHorizontalBarChart> = renderCompone
   <div>
     <fluent-horizontalbarchart
       style="width: 100%"
-      variant="single-bar-hbc"
+      variant="single-bar"
       data="${JSON.stringify(singleBarNMVariantData)}"
     >
     </fluent-horizontalbarchart>

@@ -126,7 +126,7 @@ export class HorizontalBarChart extends FASTElement {
 
   render() {
     // Array to hold references to the buttons
-    if (this.variant === Variant.SingleBarHBC) {
+    if (this.variant === Variant.SingleBar) {
       this._hydrateData();
     }
     const legendButtonRefs: any = [];

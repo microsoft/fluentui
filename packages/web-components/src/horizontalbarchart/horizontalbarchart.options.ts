@@ -1,7 +1,7 @@
 export enum Variant {
   PartToWhole = 'part-to-whole',
   AbsoluteScale = 'absolute-scale',
-  SingleBarHBC = 'single-bar-hbc',
+  SingleBar = 'single-bar',
 }
 
 export interface IChartDataPoint {
