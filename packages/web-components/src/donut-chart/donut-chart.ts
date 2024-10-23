@@ -91,14 +91,24 @@ export class DonutChart extends FASTElement {
     yText.classList.add('calloutContentY');
 
     pie(this.data.chartData).forEach(d => {
+      const arcGroup = document.createElementNS(svgNS, 'g');
+      group.appendChild(arcGroup);
+
+      const pathOutline = document.createElementNS(svgNS, 'path');
+      arcGroup.appendChild(pathOutline);
+      pathOutline.classList.add('focusOutline');
+      pathOutline.setAttribute('d', arc(d));
+
       const path = document.createElementNS(svgNS, 'path');
-      group.appendChild(path);
+      arcGroup.appendChild(path);
+      path.classList.add('arc');
       path.setAttribute('d', arc(d));
       path.setAttribute('fill', d.data.color);
       path.setAttribute('data-id', d.data.legend);
       path.setAttribute('tabindex', '0');
       path.setAttribute('aria-label', `${d.data.legend}, ${d.data.data}.`);
       path.setAttribute('role', 'img');
+
       path.addEventListener('mouseover', event => {
         if (this._selectedLegend !== '' && this._selectedLegend !== d.data.legend) {
           return;
@@ -170,8 +180,8 @@ export class DonutChart extends FASTElement {
       legendText.classList.add('legendText');
     });
 
-    const buttons = legendContainer.getElementsByTagName('button');
-    const arcs = group.getElementsByTagName('path');
+    const buttons = legendContainer.getElementsByClassName('legend') as HTMLCollectionOf<HTMLButtonElement>;
+    const arcs = group.getElementsByClassName('arc') as HTMLCollectionOf<SVGPathElement>;
 
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].addEventListener('mouseover', () => {
