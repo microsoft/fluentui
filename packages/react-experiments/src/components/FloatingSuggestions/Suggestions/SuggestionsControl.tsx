@@ -53,7 +53,10 @@ export class SuggestionsHeaderFooterItem extends React.Component<ISuggestionsHea
 /**
  * Class when used with SuggestionsStore, renders a suggestions control with customizable headers and footers
  */
-export class SuggestionsControl<T> extends React.Component<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
+export class SuggestionsControl<T extends {}> extends React.Component<
+  ISuggestionsControlProps<T>,
+  ISuggestionsControlState<T>
+> {
   private _selectedElement = React.createRef<HTMLDivElement>();
   private _suggestions = React.createRef<SuggestionsCore<T>>();
 

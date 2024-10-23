@@ -45,8 +45,8 @@ const Component = () => (
 | dismissOnContentMouseEnter | Use controlled `visible` prop with custom `onMouseEnter` handler on `content` ([codesandbox example](https://codesandbox.io/s/tooltip-migration-2gy8r1?file=/DismissOnContentMouseEnterExample.jsx:246-279)) |
 
 Postioning props: `align`, `autoSize`, `flipBoundary`, `offset`,`overflowBoundary`,`popperRef`,`position`,`positionFixed`,`target`, `unstable_disableTether`, `unstable_pinned` are now attributes of the `positioning` prop.
-v9 positioning shorthand is recommended when only `positon` or/and `align` is used: `<Tooltip position="below" align="end" />` can be migrate to a string like `<Tooltip positioning="below-end" />`.
-See [Migrate positioning props](?path=/docs/concepts-migrating-from-v0-positioning--page) for more.
+v9 positioning shorthand is recommended when only `positon` or/and `align` is used: `<Tooltip position="below" align="end" />` can be migrated to a string like `<Tooltip positioning="below-end" />`.
+See [Migrate positioning props](?path=/docs/concepts-migration-from-v0-positioning--page) for more.
 
 Here's a [codesandbox](https://codesandbox.io/s/tooltip-migration-2gy8r1?file=/example.js) comparing v0 and v9 Tooltip.
 
@@ -119,7 +119,7 @@ export const useStyles = makeStyles({
 });
 ```
 
-⚠️ **If this is your first time migrating style overrides**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migrating-from-v0-custom-style-overrides--page).
+⚠️ **If this is your first time migrating style overrides**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migration-from-v0-custom-style-overrides--page).
 
 ## Migrate accessibility
 

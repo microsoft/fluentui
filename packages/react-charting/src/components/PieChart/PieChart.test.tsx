@@ -36,6 +36,8 @@ export const chartPoints = [
 export const colors = [DefaultPalette.red, DefaultPalette.blue, DefaultPalette.green];
 
 describe('PieChart snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
+
   it('renders PieChart correctly', () => {
     const component = renderer.create(<PieChart data={chartPoints} colors={colors} />);
     const tree = component.toJSON();
@@ -67,6 +69,8 @@ describe('PieChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(PieChartBase.prototype, 'render');
     const props = {
@@ -95,6 +99,8 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No empty chart aria label div rendered', () => {
     wrapper = mount(<PieChart data={chartPoints} colors={colors} />);
     const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');

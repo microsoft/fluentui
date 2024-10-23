@@ -13,11 +13,12 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { convertToLocaleString } from '../../utilities/locale-util';
 import {
   ChartHoverCard,
-  convertToLocaleString,
   formatValueWithSIPrefix,
   getAccessibleDataObject,
+  getNextGradient,
 } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
@@ -116,6 +117,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       const calloutYVal = this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard;
 
       this._longestBarTotalValue = this._computeLongestBarTotalValue();
+
       const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
         const singleChartBars = this._createBarsAndLegends(
           singleChartData!,
@@ -163,6 +165,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         </div>
       );
     }
+
     return (
       <div
         id={this._emptyChartId}
@@ -248,11 +251,16 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     let value = 0;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
-      const color: string = point.color
+      let startColor: string = point.color
         ? point.color
         : point.placeHolder
         ? palette.neutralLight
         : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      let endColor: string = startColor;
+      if (this.props.enableGradient) {
+        startColor = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+        endColor = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+      }
       const pointData = point.data ? point.data : 0;
       if (index > 0) {
         prevPosition += value;
@@ -270,6 +278,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
       const styles = this.props.styles;
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
+      const hoverCardYColor = point.placeHolder ? this.props.theme!.semanticColors.bodyText : startColor;
 
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
@@ -278,6 +287,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         variant: this.props.variant,
         hideLabels: this.props.hideLabels,
       });
+
+      const gradientId = getId('MSBC_Gradient') + `_${barNo}_${index}`;
+
       return (
         <g
           key={index}
@@ -285,16 +297,24 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           ref={(e: SVGGElement) => {
             this._refCallback(e, point.legend!);
           }}
-          data-is-focusable={!this.props.hideTooltip}
-          onFocus={this._onBarFocus.bind(this, pointData, color, point)}
+          data-is-focusable={!this.props.hideTooltip && shouldHighlight}
+          onFocus={this._onBarFocus.bind(this, pointData, hoverCardYColor, point)}
           onBlur={this._onBarLeave}
           role="img"
           aria-label={this._getAriaLabel(point)}
-          onMouseOver={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
-          onMouseMove={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
-          onMouseLeave={point.placeHolder ? undefined : this._onBarLeave}
+          onMouseOver={this._onBarHover.bind(this, pointData, hoverCardYColor, point)}
+          onMouseMove={this._onBarHover.bind(this, pointData, hoverCardYColor, point)}
+          onMouseLeave={this._onBarLeave}
           onClick={href ? (point.placeHolder ? undefined : this._redirectToUrl.bind(this, href)) : point.onClick}
         >
+          {this.props.enableGradient && (
+            <defs>
+              <linearGradient id={gradientId}>
+                <stop offset="0" stopColor={startColor} />
+                <stop offset="100%" stopColor={endColor} />
+              </linearGradient>
+            </defs>
+          )}
           <rect
             key={index}
             id={`${this._barId}-${barNo}-${index}`}
@@ -306,7 +326,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             y={0}
             width={value + '%'}
             height={barHeight}
-            fill={color}
+            rx={this.props.roundCorners ? 3 : 0}
+            fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
           />
         </g>
       );
@@ -359,6 +380,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
               width={'100%'}
               height={barHeight}
               fill={palette.neutralLight}
+              rx={this.props.roundCorners ? 3 : 0}
             />
           </g>,
         );
@@ -374,6 +396,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
               width={'100%'}
               height={barHeight}
               fill={palette.neutralLight}
+              rx={this.props.roundCorners ? 3 : 0}
             />
           </g>,
         );
@@ -442,7 +465,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           color,
           xCalloutValue: point.xAxisCalloutData!,
           yCalloutValue: point.yAxisCalloutData!,
-          dataPointCalloutProps: point,
+          dataPointCalloutProps: { ...point, color },
           callOutAccessibilityData: point.callOutAccessibilityData!,
         });
       }
@@ -478,8 +501,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       if (validChartData!.length < 3) {
         const hideNumber = hideRatio[index] === undefined ? false : hideRatio[index];
         if (hideNumber) {
-          validChartData!.forEach((point: IChartDataPoint) => {
-            const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+          validChartData!.forEach((point: IChartDataPoint, pointIndex: number) => {
+            let color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+            if (this.props.enableGradient) {
+              color = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
+            }
+
             const checkSimilarLegends = actions.filter(
               (leg: ILegend) => leg.title === point.legend! && leg.color === color,
             );
@@ -504,8 +531,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           });
         }
       } else {
-        validChartData!.forEach((point: IChartDataPoint) => {
-          const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+        validChartData!.forEach((point: IChartDataPoint, pointIndex: number) => {
+          let color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+          if (this.props.enableGradient) {
+            color = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
+          }
+
           const checkSimilarLegends = actions.filter(
             (leg: ILegend) => leg.title === point.legend! && leg.color === color,
           );
@@ -578,7 +609,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         color,
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
-        dataPointCalloutProps: point,
+        dataPointCalloutProps: { ...point, color },
         callOutAccessibilityData: point.callOutAccessibilityData!,
       });
     }
@@ -628,7 +659,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _getAriaLabel = (point: IChartDataPoint): string => {
     const legend = point.xAxisCalloutData || point.legend;
     const yValue = point.yAxisCalloutData || point.data || 0;
-    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
+    return (
+      point.callOutAccessibilityData?.ariaLabel ||
+      (legend ? `${legend}, ` : point.placeHolder ? 'Remaining, ' : '') + `${yValue}.`
+    );
   };
 
   private _computeLongestBarTotalValue = () => {

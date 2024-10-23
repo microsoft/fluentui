@@ -17,6 +17,8 @@ stats/
 # northstar README lives in packages/fluentui and is automatically copied to react-northstar during build
 packages/fluentui/react-northstar/README.md
 
+monosize-report.md
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -59,6 +61,7 @@ dist.stats.json
 bower_components
 node_modules
 temp
+tmp
 lib
 lib-amd
 lib-commonjs
@@ -68,6 +71,10 @@ dist
 dist-storybook
 screenshots
 !tools/**/lib
+tools/**/__fixtures__/**/lib
+tools/**/__fixtures__/**/lib-commonjs
+# Playwright
+test-results/
 
 *.tar.gz
 
@@ -152,6 +159,9 @@ rush.json
 # tsdoc
 tsdoc-metadata.json
 
+# benchmarking
+.tensile/
+
 # tools cache
 gulp-cache
 .cache
@@ -159,3 +169,4 @@ gulp-cache
 .rollupcache
 .swc
 .nx/cache
+.nx/workspace-data

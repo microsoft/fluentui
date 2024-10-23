@@ -61,6 +61,8 @@ const pointsForWrapLabels = [
 ];
 
 describe('HorizontalBarChartWithAxis snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
+
   it('renders HorizontalBarChartWithAxis correctly', () => {
     let component: any;
     rendererAct(() => {
@@ -97,6 +99,17 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
       );
     });
     const tree = component!.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render gradients on bars', () => {
+    const component = renderer.create(<HorizontalBarChartWithAxis data={pointsHBCWA} enableGradient={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should render rounded corners on bars', () => {
+    const component = renderer.create(<HorizontalBarChartWithAxis data={pointsHBCWA} roundCorners={true} />);
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
@@ -138,6 +151,8 @@ describe('HorizontalBarChartWithAxis - basic props', () => {
   });
 });
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(HorizontalBarChartWithAxisBase.prototype, 'render');
     const props = {

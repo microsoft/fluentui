@@ -5,7 +5,7 @@ import { mount } from 'enzyme';
 import { customizable } from './customizable';
 import { Customizations } from './Customizations';
 import { Customizer } from './Customizer';
-import type { IStyle } from '@fluentui/merge-styles';
+import type { IStyle, IStyleFunction, ShadowConfig } from '@fluentui/merge-styles';
 
 @customizable('Foo', ['field'])
 class Foo extends React.Component<{ field?: string }, {}> {
@@ -16,10 +16,15 @@ class Foo extends React.Component<{ field?: string }, {}> {
 
 interface IComponentStyles {
   root: IStyle;
+  __shadowConfig__?: ShadowConfig;
 }
 
 interface IComponentProps {
   styles: IComponentStyles;
+}
+
+interface IComponentStyleFunctionProps {
+  styles: IStyleFunction<IComponentProps, IComponentStyles>;
 }
 
 @customizable('ConcatStyles', ['styles'], true)
@@ -31,6 +36,13 @@ class ConcatStyles extends React.Component<IComponentProps, {}> {
 
 @customizable('OverrideStyles', ['styles'])
 class OverrideStyles extends React.Component<IComponentProps, {}> {
+  public render(): JSX.Element {
+    return <div />;
+  }
+}
+
+@customizable('StyleFunction', ['styles'])
+class StyleFunction extends React.Component<IComponentStyleFunctionProps> {
   public render(): JSX.Element {
     return <div />;
   }
@@ -75,7 +87,45 @@ describe('customizable', () => {
       </Customizer>,
     );
     const component = wrapper.find('ConcatStyles');
-    expect((component.props() as IComponentProps).styles).toEqual({ root: [globalStyles, componentStyles] });
+    const props = component.props() as IComponentProps;
+    expect(Object.keys(props.styles)).toEqual(['root', '__shadowConfig__']);
+    expect(props.styles.root).toEqual([globalStyles, componentStyles]);
+  });
+
+  it('can concatenate global styles and component styles', () => {
+    const globalStyles: IStyleFunction<IComponentProps, IComponentStyles> = _props => {
+      return { root: { color: 'red', background: 'green' } };
+    };
+    const componentStyles = { root: { color: 'blue' } };
+
+    Customizations.applySettings({ styles: globalStyles });
+    const wrapper = mount(
+      <Customizer>
+        <ConcatStyles styles={componentStyles} />
+      </Customizer>,
+    );
+
+    const component = wrapper.find('ConcatStyles');
+    const props = component.props() as IComponentProps;
+    expect(Object.keys(props.styles)).toEqual(['root', '__shadowConfig__']);
+    expect(props.styles.root).toEqual([globalStyles({} as IComponentProps).root, componentStyles.root]);
+  });
+
+  it('will apply component style function when no global styles are present', () => {
+    const componentStyles: IStyleFunction<IComponentProps, IComponentStyles> = _props => {
+      return { root: { color: 'red', background: 'green' } };
+    };
+
+    const wrapper = mount(
+      <Customizer>
+        <StyleFunction styles={componentStyles} />
+      </Customizer>,
+    );
+
+    const component = wrapper.find('StyleFunction');
+    const props = component.props() as IComponentProps;
+    expect(typeof props.styles).toBe('function');
+    expect(props.styles.__shadowConfig__).toBeTruthy();
   });
 
   it('can concatenate scoped styles and component styles', () => {
@@ -89,8 +139,9 @@ describe('customizable', () => {
       </Customizer>,
     );
     const component = wrapper.find('ConcatStyles');
-
-    expect((component.props() as IComponentProps).styles).toEqual({ root: [scopedStyles, componentStyles] });
+    const props = component.props() as IComponentProps;
+    expect(Object.keys(props.styles)).toEqual(['root', '__shadowConfig__']);
+    expect(props.styles.root).toEqual([scopedStyles, componentStyles]);
   });
 
   it('can override global styles with component styles', () => {
@@ -104,8 +155,9 @@ describe('customizable', () => {
       </Customizer>,
     );
     const component = wrapper.find('OverrideStyles');
-
-    expect((component.props() as IComponentProps).styles).toEqual({ root: componentStyles });
+    const props = component.props() as IComponentProps;
+    expect(Object.keys(props.styles)).toEqual(['root', '__shadowConfig__']);
+    expect(props.styles.root).toEqual(componentStyles);
   });
 
   it('can override scoped styles with component styles', () => {
@@ -119,8 +171,9 @@ describe('customizable', () => {
       </Customizer>,
     );
     const component = wrapper.find('OverrideStyles');
-
-    expect((component.props() as IComponentProps).styles).toEqual({ root: componentStyles });
+    const props = component.props() as IComponentProps;
+    expect(Object.keys(props.styles)).toEqual(['root', '__shadowConfig__']);
+    expect(props.styles.root).toEqual(componentStyles);
   });
 
   it('should not mutate styles if no change to component and global styles', () => {
@@ -136,7 +189,8 @@ describe('customizable', () => {
     );
     const component = wrapper.find('ConcatStyles');
     const finalStyles = (component.props() as IComponentProps).styles;
-    expect(finalStyles).toEqual({ root: [globalRootStyles, componentRootStyles] });
+    expect(Object.keys(finalStyles)).toEqual(['root', '__shadowConfig__']);
+    expect(finalStyles.root).toEqual([globalRootStyles, componentRootStyles]);
 
     wrapper.setProps({});
 
@@ -156,13 +210,14 @@ describe('customizable', () => {
     );
     const component = wrapper.find('ConcatStyles');
     const finalStyles = (component.props() as IComponentProps).styles;
-    expect(finalStyles).toEqual(componentStyles);
+    expect(Object.keys(finalStyles)).toEqual(['root', '__shadowConfig__']);
+    expect(finalStyles.root).toEqual(componentStyles.root);
 
     wrapper.setProps({});
 
     const updatedComponent = wrapper.find('ConcatStyles');
     const finalStylesAfterRerender = (updatedComponent.props() as IComponentProps).styles;
-    expect(finalStylesAfterRerender).toBe(finalStyles);
+    expect(finalStylesAfterRerender).toStrictEqual(finalStyles);
     expect(finalStylesAfterRerender).toEqual(finalStyles);
   });
 
@@ -179,7 +234,8 @@ describe('customizable', () => {
     );
     const component = wrapper.find('ConcatStyles');
     const finalStyles = (component.props() as IComponentProps).styles;
-    expect(finalStyles).toEqual({ root: [globalRootStyles, componentRootStyles] });
+    expect(Object.keys(finalStyles)).toEqual(['root', '__shadowConfig__']);
+    expect(finalStyles.root).toEqual([globalRootStyles, componentRootStyles]);
 
     const newComponentRootStyles = { color: 'red' };
     const newComponentStyles = { root: newComponentRootStyles };
@@ -191,6 +247,7 @@ describe('customizable', () => {
 
     const updatedComponent = wrapper.find('ConcatStyles');
     const finalStylesAfterRerender = (updatedComponent.props() as IComponentProps).styles;
-    expect(finalStylesAfterRerender).toEqual({ root: [globalRootStyles, newComponentRootStyles] });
+    expect(Object.keys(finalStylesAfterRerender)).toEqual(['root', '__shadowConfig__']);
+    expect(finalStylesAfterRerender.root).toEqual([globalRootStyles, newComponentRootStyles]);
   });
 });

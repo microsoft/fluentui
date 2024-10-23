@@ -2,6 +2,9 @@ import * as React from 'react';
 import { IContextualMenuProps, Stack } from '@fluentui/react'; // IStackTokens
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
+export default {
+  title: 'Components/SplitButton',
+};
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
   disabled?: boolean;

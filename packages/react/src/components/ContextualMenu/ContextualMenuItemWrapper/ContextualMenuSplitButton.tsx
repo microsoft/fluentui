@@ -183,6 +183,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       checked: item.checked,
       iconProps: item.iconProps,
       id: this._dismissLabelId,
+      onClick: item.onClick,
       onRenderIcon: item.onRenderIcon,
       data: item.data,
       'data-is-focusable': false,

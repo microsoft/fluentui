@@ -37,6 +37,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-color: #f3f2f1;
               border-radius: 2px;
@@ -44,11 +45,12 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               box-sizing: border-box;
               color: #c8c6c4;
               cursor: default;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -75,6 +77,24 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -121,6 +141,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -198,6 +219,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-color: #f3f2f1;
               border-radius: 2px;
@@ -205,11 +227,12 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               box-sizing: border-box;
               color: #c8c6c4;
               cursor: default;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -236,6 +259,24 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -282,6 +323,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -346,17 +388,18 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 2px;
             border: none;
             box-sizing: border-box;
             color: #000000;
             cursor: pointer;
-            display: inline-block;
+            display: inline-flex;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
+            justify-content: center;
             min-height: 32px;
             min-width: 32px;
             outline: transparent;
@@ -385,6 +428,24 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -453,17 +514,18 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 2px;
             border: none;
             box-sizing: border-box;
             color: #000000;
             cursor: pointer;
-            display: inline-block;
+            display: inline-flex;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
+            justify-content: center;
             min-height: 32px;
             min-width: 32px;
             outline: transparent;
@@ -492,6 +554,24 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -560,17 +640,18 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 2px;
             border: none;
             box-sizing: border-box;
             color: #000000;
             cursor: pointer;
-            display: inline-block;
+            display: inline-flex;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
+            justify-content: center;
             min-height: 32px;
             min-width: 32px;
             outline: transparent;
@@ -599,6 +680,24 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -667,17 +766,18 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 2px;
             border: none;
             box-sizing: border-box;
             color: #000000;
             cursor: pointer;
-            display: inline-block;
+            display: inline-flex;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
+            justify-content: center;
             min-height: 32px;
             min-width: 32px;
             outline: transparent;
@@ -706,6 +806,24 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -774,17 +892,18 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 2px;
             border: none;
             box-sizing: border-box;
             color: #000000;
             cursor: pointer;
-            display: inline-block;
+            display: inline-flex;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
+            justify-content: center;
             min-height: 32px;
             min-width: 32px;
             outline: transparent;
@@ -813,6 +932,24 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -892,17 +1029,19 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #0078d4;
               cursor: pointer;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -929,6 +1068,24 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -980,6 +1137,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1052,17 +1210,19 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #0078d4;
               cursor: pointer;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -1089,6 +1249,24 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1140,6 +1318,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1219,6 +1398,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          align-items: center;
           background-color: #f3f2f1;
           border-color: #f3f2f1;
           border-radius: 2px;
@@ -1226,11 +1406,12 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           box-sizing: border-box;
           color: #c8c6c4;
           cursor: default;
-          display: inline-block;
+          display: inline-flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           height: 32px;
+          justify-content: center;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1257,6 +1438,24 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          bottom: -2px;
+          left: -2px;
+          outline-color: ButtonText;
+          right: -2px;
+          top: -2px;
+        }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid transparent;
+          bottom: 2px;
+          content: "";
+          left: 2px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -1303,6 +1502,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;
@@ -1348,6 +1548,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          align-items: center;
           background-color: #f3f2f1;
           border-color: #f3f2f1;
           border-radius: 2px;
@@ -1355,11 +1556,12 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           box-sizing: border-box;
           color: #c8c6c4;
           cursor: default;
-          display: inline-block;
+          display: inline-flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           height: 32px;
+          justify-content: center;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1386,6 +1588,24 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          bottom: -2px;
+          left: -2px;
+          outline-color: ButtonText;
+          right: -2px;
+          top: -2px;
+        }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid transparent;
+          bottom: 2px;
+          content: "";
+          left: 2px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -1432,6 +1652,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;
@@ -1695,17 +1916,19 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #605e5c;
               cursor: default;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
               height: 100%;
+              justify-content: center;
               line-height: 30px;
               outline: transparent;
               padding-bottom: 0;
@@ -1734,6 +1957,24 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1805,6 +2046,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1846,17 +2088,19 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          align-items: center;
           background-color: transparent;
           border-radius: 2px;
           border: none;
           box-sizing: border-box;
           color: #0078d4;
           cursor: pointer;
-          display: inline-block;
+          display: inline-flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           height: 32px;
+          justify-content: center;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1883,6 +2127,24 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          bottom: -2px;
+          left: -2px;
+          outline-color: ButtonText;
+          right: -2px;
+          top: -2px;
+        }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid transparent;
+          bottom: 2px;
+          content: "";
+          left: 2px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -1934,6 +2196,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;
@@ -1973,17 +2236,19 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          align-items: center;
           background-color: transparent;
           border-radius: 2px;
           border: none;
           box-sizing: border-box;
           color: #0078d4;
           cursor: pointer;
-          display: inline-block;
+          display: inline-flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           height: 32px;
+          justify-content: center;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -2010,6 +2275,24 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          bottom: -2px;
+          left: -2px;
+          outline-color: ButtonText;
+          right: -2px;
+          top: -2px;
+        }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid transparent;
+          bottom: 2px;
+          content: "";
+          left: 2px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -2061,6 +2344,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;

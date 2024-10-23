@@ -4,7 +4,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 1`] = `
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_PieChart_empty45"
+    id="_PieChart_empty0"
     role="alert"
     style="opacity: 0;"
   />
@@ -32,7 +32,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone46"
+      data-focuszone-id="FocusZone1"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -52,7 +52,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                   outline: none;
                 }
             data-is-focusable="true"
-            id="piechart_arc48"
+            id="piechart_arc3"
             role="img"
             tabindex="0"
           >
@@ -74,7 +74,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                   }
               data-is-focusable="false"
               dominant-baseline="auto"
-              id="tooltip-host49"
+              id="tooltip-host4"
               tabindex="-1"
               text-anchor="start"
               x="158.9995031252588"
@@ -91,7 +91,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                   outline: none;
                 }
             data-is-focusable="true"
-            id="piechart_arc51"
+            id="piechart_arc6"
             role="img"
             tabindex="-1"
           >
@@ -113,7 +113,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                   }
               data-is-focusable="false"
               dominant-baseline="hanging"
-              id="tooltip-host52"
+              id="tooltip-host7"
               tabindex="-1"
               text-anchor="end"
               x="-112.00757625617408"
@@ -130,7 +130,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                   outline: none;
                 }
             data-is-focusable="true"
-            id="piechart_arc54"
+            id="piechart_arc9"
             role="img"
             tabindex="-1"
           >
@@ -152,7 +152,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                   }
               data-is-focusable="false"
               dominant-baseline="auto"
-              id="tooltip-host55"
+              id="tooltip-host10"
               tabindex="-1"
               text-anchor="end"
               x="-112.57042780891464"
@@ -358,7 +358,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone1"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -380,7 +380,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 outline: none;
               }
           data-is-focusable={true}
-          id="piechart_arc14"
+          id="piechart_arc3"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -403,7 +403,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
-            id="tooltip-host15"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -424,7 +424,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 outline: none;
               }
           data-is-focusable={true}
-          id="piechart_arc17"
+          id="piechart_arc6"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -447,7 +447,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 }
             data-is-focusable={false}
             dominantBaseline="hanging"
-            id="tooltip-host18"
+            id="tooltip-host7"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -468,7 +468,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 outline: none;
               }
           data-is-focusable={true}
-          id="piechart_arc20"
+          id="piechart_arc9"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -491,7 +491,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
-            id="tooltip-host21"
+            id="tooltip-host10"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}

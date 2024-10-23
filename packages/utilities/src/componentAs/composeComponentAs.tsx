@@ -3,10 +3,10 @@ import { createMemoizer } from '../memoize';
 import type { IComponentAs, IComponentAsProps } from '../IComponentAs';
 
 interface IComposeComponentAs {
-  <TProps>(outer: IComponentAs<TProps>): (inner: IComponentAs<TProps>) => IComponentAs<TProps>;
+  <TProps extends {}>(outer: IComponentAs<TProps>): (inner: IComponentAs<TProps>) => IComponentAs<TProps>;
 }
 
-function createComposedComponent<TProps>(
+function createComposedComponent<TProps extends {}>(
   outer: IComponentAs<TProps>,
 ): (inner: IComponentAs<TProps>) => IComponentAs<TProps> {
   const Outer = outer;
@@ -51,7 +51,7 @@ const componentAsMemoizer = createMemoizer<IComposeComponentAs>(createComposedCo
  *
  * @public
  */
-export function composeComponentAs<TProps>(
+export function composeComponentAs<TProps extends {}>(
   outer: IComponentAs<TProps>,
   inner: IComponentAs<TProps>,
 ): IComponentAs<TProps> {

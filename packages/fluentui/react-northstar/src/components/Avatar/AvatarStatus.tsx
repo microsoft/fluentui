@@ -73,16 +73,12 @@ export const AvatarStatus = React.forwardRef<HTMLSpanElement, AvatarStatusProps>
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(AvatarStatus.handledProps, props);
 
-  const iconElement = createShorthand(
-    AvatarStatusIcon,
-    icon as ShorthandValue<AvatarStatusIconProps & { as: 'span' }>,
-    {
-      defaultProps: () => ({
-        size,
-        state,
-      }),
-    },
-  );
+  const iconElement = createShorthand<React.FC<AvatarStatusIconProps>>(AvatarStatusIcon, icon, {
+    defaultProps: () => ({
+      size,
+      state,
+    }),
+  });
 
   const imageElement = createShorthand(AvatarStatusImage, image, {
     defaultProps: () =>

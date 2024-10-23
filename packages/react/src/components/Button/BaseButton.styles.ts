@@ -46,19 +46,19 @@ export const getStyles = memoizeFunction((theme: ITheme): IButtonStyles => {
         borderRadius: effects.roundedCorner2,
         boxSizing: 'border-box',
         cursor: 'pointer',
-        display: 'inline-block',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         padding: '0 16px',
         textDecoration: 'none',
         textAlign: 'center',
         userSelect: 'none',
 
-        selectors: {
-          // IE11 workaround for preventing shift of child elements of a button when active.
-          ':active > span': {
-            position: 'relative',
-            left: 0,
-            top: 0,
-          },
+        // IE11 workaround for preventing shift of child elements of a button when active.
+        ':active > span': {
+          position: 'relative',
+          left: 0,
+          top: 0,
         },
       },
     ],
@@ -70,28 +70,22 @@ export const getStyles = memoizeFunction((theme: ITheme): IButtonStyles => {
         borderColor: disabledBackground,
         color: disabledText,
         cursor: 'default',
-        selectors: {
-          ':hover': noOutline,
-          ':focus': noOutline,
-        },
+        ':hover': noOutline,
+        ':focus': noOutline,
       },
     ],
 
     iconDisabled: {
       color: disabledText,
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'GrayText',
-        },
+      [HighContrastSelector]: {
+        color: 'GrayText',
       },
     },
 
     menuIconDisabled: {
       color: disabledText,
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'GrayText',
-        },
+      [HighContrastSelector]: {
+        color: 'GrayText',
       },
     },
 

@@ -1,4 +1,4 @@
-import { addProjectConfiguration, getProjects, logger, Tree } from '@nx/devkit';
+import { addProjectConfiguration, getProjects, logger, ProjectConfiguration, Tree } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import chalk from 'chalk';
 import { disableChalk, formatMockedCalls } from '../utils-testing';
@@ -109,7 +109,7 @@ describe(`print stats`, () => {
   it(`should use custom project data`, () => {
     const loggerInfoSpy = jest.spyOn(logger, 'info');
 
-    const customProjects = new Map(
+    const customProjects = new Map<string, ProjectConfiguration & { metadata: { ultimateTruth: string } }>(
       Array.from(getProjects(tree).entries()).map(([projectName, project]) => {
         const metadata = { ultimateTruth: 'it iz wat it iiiz' };
         const extendedProject = { ...project, metadata };

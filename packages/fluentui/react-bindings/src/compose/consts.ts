@@ -171,7 +171,7 @@ export type ComposePreparedOptions<TProps = {}, TInputState = any, TParentState 
 
   state: (props: TParentState, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions) => TInputState;
 
-  resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
+  resolveSlotProps: <TResolvedProps extends {}>(props: TResolvedProps) => Record<string, object>;
   shorthandConfig: ShorthandConfig<TProps>;
 };
 
@@ -206,7 +206,7 @@ export type ObjectSlotProp<TProps extends GenericDictionary> = TProps & {
   children?: TProps['children'] | SlotPropRenderFunction<TProps>;
 };
 
-export type SlotProp<TProps> =
+export type SlotProp<TProps extends {}> =
   | React.ReactChild
   | React.ReactNode[]
   | React.ReactPortal

@@ -1,44 +1,37 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { ColorPicker, Fabric } from '@fluentui/react';
 
-storiesOf('ColorPicker', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story =>
-    // prettier-ignore
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>,
-  )
-  .addStory(
-    'Root',
-    () => (
-      <Fabric>
-        <ColorPicker
-          color="#FFF"
-          styles={{
-            input: { fontFamily: 'Segoe UI' },
-          }}
-        />
-      </Fabric>
-    ),
-    {
-      includeRtl: true,
-    },
-  )
-  .addStory('Blue', () => (
-    <Fabric>
-      <ColorPicker
-        color="#48B"
-        styles={{
-          input: { fontFamily: 'Segoe UI' },
-        }}
-      />
-    </Fabric>
-  ));
+export default {
+  title: 'ColorPicker',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
+  ],
+};
+
+export const Root = () => (
+  <Fabric>
+    <ColorPicker
+      color="#FFF"
+      styles={{
+        input: { fontFamily: 'Segoe UI' },
+      }}
+    />
+  </Fabric>
+);
+
+export const RootRTL = getStoryVariant(Root, RTL);
+
+export const Blue = () => (
+  <Fabric>
+    <ColorPicker
+      color="#48B"
+      styles={{
+        input: { fontFamily: 'Segoe UI' },
+      }}
+    />
+  </Fabric>
+);

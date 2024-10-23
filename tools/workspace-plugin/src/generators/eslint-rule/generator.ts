@@ -1,17 +1,15 @@
-import { formatFiles, joinPathFragments, ProjectConfiguration, readProjectConfiguration, Tree } from '@nx/devkit';
-
-import * as tsquery from '@phenomnomnominal/tsquery';
+import { formatFiles, Tree, joinPathFragments, readProjectConfiguration, ProjectConfiguration } from '@nx/devkit';
 import { EslintRuleGeneratorSchema } from './schema';
 import { lintWorkspaceRuleGenerator } from '@nx/eslint/src/generators/workspace-rule/workspace-rule';
-
-interface Options extends ReturnType<typeof normalizeSchema> {}
+import * as tsquery from '@phenomnomnominal/tsquery';
 
 export async function eslintRuleGenerator(tree: Tree, schema: EslintRuleGeneratorSchema) {
   const options = normalizeSchema(schema);
   await lintWorkspaceRuleGenerator(tree, options);
 
   const project = readProjectConfiguration(tree, 'eslint-rules');
-  replaceBoilerplateToUseOldTypescriptEslintSyntax(tree, { project, ...options });
+
+  replaceBoilerplateToUseRuleTester(tree, { project, ...options });
 
   await formatFiles(tree);
 }
@@ -22,43 +20,24 @@ function normalizeSchema(schema: EslintRuleGeneratorSchema) {
   return { ...schema, directory: schema.directory ?? 'rules' } as Required<EslintRuleGeneratorSchema>;
 }
 
-// TODO: remove this after we migrate to @typescript-eslint v5 which exposes utils package instead of experimental-utils
-function replaceBoilerplateToUseOldTypescriptEslintSyntax(
+function replaceBoilerplateToUseRuleTester(
   tree: Tree,
-  options: Options & { project: ProjectConfiguration },
+  options: EslintRuleGeneratorSchema & { project: ProjectConfiguration },
 ) {
-  const ruleDir = joinPathFragments(options.project.root, options.directory);
-  const paths = {
-    impl: joinPathFragments(ruleDir, `${options.name}.ts`),
-    spec: joinPathFragments(ruleDir, `${options.name}.spec.ts`),
-  };
+  const dir = joinPathFragments(options.project.root, options.directory ?? '');
+  const specPath = joinPathFragments(dir, `${options.name}.spec.ts`);
+  const content = tree.read(specPath, 'utf-8') ?? '';
 
-  const implContent = tree.read(paths.impl, 'utf-8') ?? '';
-  const specContent = tree.read(paths.spec, 'utf-8') ?? '';
+  const IMPORT_SELECTOR = `:matches(ImportDeclaration):has(Identifier[name="TSESLint"]):has(StringLiteral[value=@typescript-eslint/utils])`;
+  const TESTER_SELECTOR = `:matches(VariableStatement):has(Identifier[name="ruleTester"])`;
 
-  const defaultImport = '@typescript-eslint/utils';
-  const ourImport = '@typescript-eslint/experimental-utils';
-  const IMPORT_AST_SELECTOR = `ImportDeclaration StringLiteral[value=${defaultImport}]`;
-
-  const updatedSpecContent = tsquery.replace(specContent, IMPORT_AST_SELECTOR, () => {
-    return `'${ourImport}'`;
+  let updatedSpecContent = tsquery.replace(content, IMPORT_SELECTOR, () => {
+    return `import { RuleTester } from '@typescript-eslint/rule-tester'`;
   });
 
-  let updatedImplContent = tsquery.replace(implContent, IMPORT_AST_SELECTOR, () => {
-    return `'${ourImport}'`;
+  updatedSpecContent = tsquery.replace(updatedSpecContent, TESTER_SELECTOR, () => {
+    return `const ruleTester = new RuleTester()`;
   });
-  updatedImplContent = tsquery.replace(
-    updatedImplContent,
-    'ObjectLiteralExpression PropertyAssignment Identifier[name=docs] ~ ObjectLiteralExpression',
-    () => {
-      return `{
-        category: 'Best Practices',
-        description: \`\`,
-        recommended: 'error',
-      }`;
-    },
-  );
 
-  tree.write(paths.impl, updatedImplContent);
-  tree.write(paths.spec, updatedSpecContent);
+  tree.write(specPath, updatedSpecContent);
 }

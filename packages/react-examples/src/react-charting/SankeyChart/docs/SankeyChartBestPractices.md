@@ -9,7 +9,7 @@ Sankey charts require a minimum of 2 layers/ column groups to compare and can go
 - Streams have a color gradient from their source to the destination.
 - Hover states over both nodes and streams
 
-### Accessibilit
+### Accessibility
 
 In the case where data equates to 1 (which is 4px) the node does not show content. The text is shown when a user hovers over the node.
 

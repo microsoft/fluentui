@@ -7,6 +7,8 @@ import { VerticalBarChart } from '../src/components/VerticalBarChart/VerticalBar
 import { VerticalBarChartBase } from '../src/components/VerticalBarChart/VerticalBarChart.base';
 import { max as d3Max } from 'd3-array';
 import { IVerticalBarChartDataPoint } from '../src/index';
+import { resetIds } from '@fluentui/react';
+import { XAxisTypes } from '../src/utilities/utilities';
 const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -23,6 +25,10 @@ const stringPoints = [
     color: '#C19C00',
   },
 ];
+
+beforeEach(() => {
+  resetIds();
+});
 
 runTest('VerticalBarChart unit tests', () => {
   runTest('Get domain margins', () => {
@@ -44,8 +50,8 @@ runTest('VerticalBarChart unit tests', () => {
       instance._getMargins(margin);
       const margins = instance._getDomainMargins(width);
       expect(margins).toBeDefined();
-      expect(margins.left).toEqual(468);
-      expect(margins.right).toEqual(468);
+      expect(margins.left).toEqual(18);
+      expect(margins.right).toEqual(18);
       expect(margins.top).toEqual(10);
       expect(margins.bottom).toEqual(10);
     });
@@ -96,15 +102,14 @@ runTest('VerticalBarChart unit tests', () => {
       instance._getMargins(margin!);
       const containerHeight = 500;
       const containerWidth = 800;
-      const isNumericAxis = true;
-
-      const scales = instance._getScales(containerHeight, containerWidth, isNumericAxis);
+      instance._xAxisType = XAxisTypes.NumericAxis;
+      const scales = instance._getScales(containerHeight, containerWidth);
       expect(scales.xBarScale).toBeDefined();
       expect(scales.yBarScale).toBeDefined();
       expect(scales.xBarScale(-1000)).toBeLessThan(0);
       expect(scales.xBarScale(20000)).toBeLessThanOrEqual(containerWidth);
       expect(scales.xBarScale(40000)).toBeGreaterThan(containerWidth);
-      expect(Math.ceil(scales.xBarScale(27181))).toEqual(containerWidth);
+      expect(Math.ceil(scales.xBarScale(26581))).toEqual(containerWidth);
       expect(scales.yBarScale(-5000)).toBeLessThan(0);
       expect(scales.yBarScale(5000)).toBeLessThanOrEqual(containerHeight);
       expect(scales.yBarScale(60000)).toBeGreaterThan(containerHeight);
@@ -133,8 +138,8 @@ runTest('VerticalBarChart unit tests', () => {
       instance._getMargins(margin!);
       const containerHeight = 500;
       const containerWidth = 800;
-      const isNumericAxis = false;
-      const scales = instance._getScales(containerHeight, containerWidth, isNumericAxis);
+      instance._xAxisType = XAxisTypes.StringAxis;
+      const scales = instance._getScales(containerHeight, containerWidth);
 
       expect(scales.xBarScale).toBeDefined();
       expect(scales.yBarScale).toBeDefined();
@@ -145,19 +150,6 @@ runTest('VerticalBarChart unit tests', () => {
       expect(scales.yBarScale(6000)).toBeGreaterThan(containerHeight);
       expect(Math.ceil(scales.yBarScale(3645))).toEqual(containerHeight);
     });
-
-    testWithoutWait(
-      'Should render the vertical bar chart with numeric x-axis data - RTL',
-      VerticalBarChart,
-      { data: chartPointsVBC },
-      container => {
-        // Assert
-        expect(container).toMatchSnapshot();
-      },
-      () => {
-        jest.spyOn(utils, 'getRTL').mockImplementation(() => true);
-      },
-    );
 
     it('Should return scales for numeric axis - RTL', () => {
       jest.spyOn(utils, 'getRTL').mockImplementation(() => true);
@@ -182,15 +174,14 @@ runTest('VerticalBarChart unit tests', () => {
       instance._getMargins(margin!);
       const containerHeight = 500;
       const containerWidth = 800;
-      const isNumericAxis = true;
-
-      const scales = instance._getScales(containerHeight, containerWidth, isNumericAxis);
+      instance._xAxisType = XAxisTypes.NumericAxis;
+      const scales = instance._getScales(containerHeight, containerWidth);
 
       expect(scales.xBarScale).toBeDefined();
       expect(scales.yBarScale).toBeDefined();
       expect(scales.xBarScale(-2000)).toBeGreaterThan(containerWidth);
       expect(scales.xBarScale(20000)).toBeLessThanOrEqual(containerWidth);
-      expect(Math.ceil(scales.xBarScale(-1181))).toEqual(containerWidth);
+      expect(Math.ceil(scales.xBarScale(-581))).toEqual(containerWidth);
       expect(scales.xBarScale(40000)).toBeLessThan(0);
       expect(scales.yBarScale(-5000)).toBeLessThan(0);
       expect(scales.yBarScale(5000)).toBeLessThanOrEqual(containerHeight);
@@ -242,4 +233,45 @@ runTest('VerticalBarChart unit tests', () => {
       expect(result).toEqual('2020/04/30. First, 10%.');
     });
   });
+});
+
+const originalRAF = window.requestAnimationFrame;
+
+function updateChartWidthAndHeight() {
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
+  window.HTMLElement.prototype.getBoundingClientRect = () =>
+    ({
+      bottom: 44,
+      height: 50,
+      left: 10,
+      right: 35.67,
+      top: 20,
+      width: 650,
+    } as DOMRect);
+}
+function sharedAfterEach() {
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
+}
+
+describe('vertical bar chart with numeric x-axis data', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  testWithoutWait(
+    'Should render the vertical bar chart with numeric x-axis data - RTL',
+    VerticalBarChart,
+    { data: chartPointsVBC },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    () => {
+      jest.spyOn(utils, 'getRTL').mockImplementation(() => true);
+    },
+  );
 });

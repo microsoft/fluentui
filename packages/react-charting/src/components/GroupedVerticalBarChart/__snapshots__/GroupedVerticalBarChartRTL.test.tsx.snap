@@ -4,7 +4,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_GVBC_empty154"
+    id="_GVBC_empty2"
     role="alert"
     style="opacity: 0;"
   />
@@ -28,11 +28,10 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           overflow: hidden;
           width: 100%;
         }
-    id="chart_155"
-    role="presentation"
+    id="chart_3"
   >
     <div
-      id="defaultTabbableElement_156"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -43,14 +42,16 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone157"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
-        height="0"
+        height="292"
+        role="region"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -78,9 +79,73 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_155"
-          transform="translate(0, -35)"
-        />
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M252.83333333333331,6V0.5H418.1666666666667V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(269.22222222222223,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Metadata info multi lines text Completed
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Meta Data2
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(400.7777777777778,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Single line text 
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -106,12 +171,112 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_155"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              13k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              25k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              38k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              50k
+            </text>
+          </g>
+        </g>
         <g>
           <g
-            transform="translate(48, 0)"
+            transform="translate(252.33333333333331, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -122,13 +287,14 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="0"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="1.3000000000000043"
+              width="16"
+              x="0"
+              y="100.57999999999998"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -139,17 +305,48 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="208.56"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
-              y="13.399999999999999"
+              width="16"
+              x="17.77777777777778"
+              y="48.44"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="94.57999999999998"
+            >
+              33.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="42.44"
+            >
+              44.0k
+            </text>
           </g>
           <g
-            transform="translate(17.763440860215052, 0)"
+            transform="translate(318.1111111111111, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -160,13 +357,14 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="1.3000000000000043"
+              width="16"
+              x="0"
+              y="100.57999999999998"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -177,17 +375,48 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="14.219999999999999"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
-              y="0"
+              width="16"
+              x="17.77777777777778"
+              y="242.78"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="94.57999999999998"
+            >
+              33.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="236.78"
+            >
+              3.0k
+            </text>
           </g>
           <g
-            transform="translate(-12.473118279569892, 0)"
+            transform="translate(383.8888888888889, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -198,13 +427,14 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="66.36"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="0"
+              width="16"
+              x="0"
+              y="190.64"
             />
             <rect
               aria-label="2020/06/30. MetaData4, 50%."
@@ -215,14 +445,45 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="237"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="16"
+              x="17.77777777777778"
               y="20"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="184.64"
+            >
+              14.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="14"
+            >
+              50.0k
+            </text>
           </g>
         </g>
       </svg>
@@ -254,7 +515,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -264,7 +525,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone158"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -324,6 +585,20 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -410,6 +685,20 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -479,11 +768,10 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           overflow: hidden;
           width: 100%;
         }
-    id="chart_6"
-    role="presentation"
+    id="chart_3"
   >
     <div
-      id="defaultTabbableElement_7"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -494,14 +782,16 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone8"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
-        height="0"
+        height="292"
+        role="region"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -529,9 +819,73 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_6"
-          transform="translate(0, -35)"
-        />
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M252.83333333333331,6V0.5H418.1666666666667V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(269.22222222222223,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Metadata info multi lines text Completed
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Meta Data2
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(400.7777777777778,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Single line text 
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -557,12 +911,112 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_6"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              13k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              25k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              38k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              50k
+            </text>
+          </g>
+        </g>
         <g>
           <g
-            transform="translate(48, 0)"
+            transform="translate(252.33333333333331, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -573,13 +1027,14 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="0"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="1.3000000000000043"
+              width="16"
+              x="0"
+              y="100.57999999999998"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -590,17 +1045,48 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="208.56"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
-              y="13.399999999999999"
+              width="16"
+              x="17.77777777777778"
+              y="48.44"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="94.57999999999998"
+            >
+              33.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="42.44"
+            >
+              44.0k
+            </text>
           </g>
           <g
-            transform="translate(17.763440860215052, 0)"
+            transform="translate(318.1111111111111, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -611,13 +1097,14 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="1.3000000000000043"
+              width="16"
+              x="0"
+              y="100.57999999999998"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -628,17 +1115,48 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="14.219999999999999"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
-              y="0"
+              width="16"
+              x="17.77777777777778"
+              y="242.78"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="94.57999999999998"
+            >
+              33.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="236.78"
+            >
+              3.0k
+            </text>
           </g>
           <g
-            transform="translate(-12.473118279569892, 0)"
+            transform="translate(383.8888888888889, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -649,13 +1167,14 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="66.36"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="0"
+              width="16"
+              x="0"
+              y="190.64"
             />
             <rect
               aria-label="2020/06/30. MetaData4, 50%."
@@ -666,14 +1185,45 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="237"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="16"
+              x="17.77777777777778"
               y="20"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="184.64"
+            >
+              14.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="14"
+            >
+              50.0k
+            </text>
           </g>
         </g>
       </svg>
@@ -705,7 +1255,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -715,7 +1265,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone9"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -775,6 +1325,20 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -861,6 +1425,20 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -930,11 +1508,10 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           overflow: hidden;
           width: 100%;
         }
-    id="chart_13"
-    role="presentation"
+    id="chart_3"
   >
     <div
-      id="defaultTabbableElement_14"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -945,14 +1522,16 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone15"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
-        height="0"
+        height="292"
+        role="region"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -980,9 +1559,73 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_13"
-          transform="translate(0, -35)"
-        />
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M252.83333333333331,6V0.5H418.1666666666667V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(269.22222222222223,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Metadata info multi lines text Completed
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Meta Data2
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(400.7777777777778,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Single line text 
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -1008,12 +1651,112 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_13"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              13k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              25k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              38k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              50k
+            </text>
+          </g>
+        </g>
         <g>
           <g
-            transform="translate(48, 0)"
+            transform="translate(252.33333333333331, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -1024,13 +1767,14 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="0"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="1.3000000000000043"
+              width="16"
+              x="0"
+              y="100.57999999999998"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -1041,17 +1785,48 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="208.56"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
-              y="13.399999999999999"
+              width="16"
+              x="17.77777777777778"
+              y="48.44"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="94.57999999999998"
+            >
+              33.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="42.44"
+            >
+              44.0k
+            </text>
           </g>
           <g
-            transform="translate(17.763440860215052, 0)"
+            transform="translate(318.1111111111111, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -1062,13 +1837,14 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="1.3000000000000043"
+              width="16"
+              x="0"
+              y="100.57999999999998"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -1079,17 +1855,48 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="14.219999999999999"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
-              y="0"
+              width="16"
+              x="17.77777777777778"
+              y="242.78"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="94.57999999999998"
+            >
+              33.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="236.78"
+            >
+              3.0k
+            </text>
           </g>
           <g
-            transform="translate(-12.473118279569892, 0)"
+            transform="translate(383.8888888888889, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -1100,13 +1907,14 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="66.36"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="0"
+              width="16"
+              x="0"
+              y="190.64"
             />
             <rect
               aria-label="2020/06/30. MetaData4, 50%."
@@ -1117,14 +1925,45 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="237"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="16"
+              x="17.77777777777778"
               y="20"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="184.64"
+            >
+              14.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="14"
+            >
+              50.0k
+            </text>
           </g>
         </g>
       </svg>
@@ -1156,7 +1995,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -1166,7 +2005,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone16"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1226,6 +2065,20 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1312,6 +2165,20 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1381,11 +2248,10 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_131"
-    role="presentation"
+    id="chart_3"
   >
     <div
-      id="defaultTabbableElement_132"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -1396,14 +2262,16 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone133"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
-        height="0"
+        height="292"
+        role="region"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -1431,9 +2299,73 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_131"
-          transform="translate(0, -35)"
-        />
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M252.83333333333331,6V0.5H418.1666666666667V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(269.22222222222223,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Metadata info multi lines text Completed
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Meta Data2
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(400.7777777777778,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Single line text 
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -1459,12 +2391,112 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_131"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              13k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              25k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              38k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              50k
+            </text>
+          </g>
+        </g>
         <g>
           <g
-            transform="translate(48, 0)"
+            transform="translate(252.33333333333331, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -1475,13 +2507,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="0"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="1.3000000000000043"
+              width="16"
+              x="0"
+              y="100.57999999999998"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -1492,17 +2525,48 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="208.56"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
-              y="13.399999999999999"
+              width="16"
+              x="17.77777777777778"
+              y="48.44"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="94.57999999999998"
+            >
+              33.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="42.44"
+            >
+              44.0k
+            </text>
           </g>
           <g
-            transform="translate(17.763440860215052, 0)"
+            transform="translate(318.1111111111111, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -1513,13 +2577,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="1.3000000000000043"
+              width="16"
+              x="0"
+              y="100.57999999999998"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -1530,17 +2595,48 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="14.219999999999999"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
-              y="0"
+              width="16"
+              x="17.77777777777778"
+              y="242.78"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="94.57999999999998"
+            >
+              33.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="236.78"
+            >
+              3.0k
+            </text>
           </g>
           <g
-            transform="translate(-12.473118279569892, 0)"
+            transform="translate(383.8888888888889, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -1551,13 +2647,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="66.36"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="0"
+              width="16"
+              x="0"
+              y="190.64"
             />
             <rect
               aria-label="2020/06/30. MetaData4, 50%."
@@ -1568,14 +2665,45 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="237"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="16"
+              x="17.77777777777778"
               y="20"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="184.64"
+            >
+              14.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="14"
+            >
+              50.0k
+            </text>
           </g>
         </g>
       </svg>
@@ -1607,7 +2735,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -1617,7 +2745,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone134"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1677,6 +2805,20 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1763,6 +2905,20 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1832,11 +2988,10 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_138"
-    role="presentation"
+    id="chart_3"
   >
     <div
-      id="defaultTabbableElement_139"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -1847,14 +3002,16 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone140"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
-        height="0"
+        height="292"
+        role="region"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -1882,9 +3039,73 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_138"
-          transform="translate(0, -35)"
-        />
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M252.83333333333331,6V0.5H418.1666666666667V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(269.22222222222223,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Metadata info multi lines text Completed
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Meta Data2
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(400.7777777777778,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="11"
+            >
+              Single line text 
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -1910,12 +3131,112 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_138"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              13k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              25k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              38k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              50k
+            </text>
+          </g>
+        </g>
         <g>
           <g
-            transform="translate(48, 0)"
+            transform="translate(252.33333333333331, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -1926,13 +3247,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="0"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="1.3000000000000043"
+              width="16"
+              x="0"
+              y="100.57999999999998"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -1943,17 +3265,48 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="208.56"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
-              y="13.399999999999999"
+              width="16"
+              x="17.77777777777778"
+              y="48.44"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="94.57999999999998"
+            >
+              33.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="42.44"
+            >
+              44.0k
+            </text>
           </g>
           <g
-            transform="translate(17.763440860215052, 0)"
+            transform="translate(318.1111111111111, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -1964,13 +3317,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="1.3000000000000043"
+              width="16"
+              x="0"
+              y="100.57999999999998"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -1981,17 +3335,48 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="14.219999999999999"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
-              y="0"
+              width="16"
+              x="17.77777777777778"
+              y="242.78"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="94.57999999999998"
+            >
+              33.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="236.78"
+            >
+              3.0k
+            </text>
           </g>
           <g
-            transform="translate(-12.473118279569892, 0)"
+            transform="translate(383.8888888888889, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -2002,13 +3387,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="0"
+              height="66.36"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
-              y="0"
+              width="16"
+              x="0"
+              y="190.64"
             />
             <rect
               aria-label="2020/06/30. MetaData4, 50%."
@@ -2019,14 +3405,45 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="0"
+              height="237"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="16"
+              x="17.77777777777778"
               y="20"
             />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="8"
+              y="184.64"
+            >
+              14.0k
+            </text>
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="25.77777777777778"
+              y="14"
+            >
+              50.0k
+            </text>
           </g>
         </g>
       </svg>
@@ -2058,7 +3475,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -2068,7 +3485,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone141"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2128,6 +3545,20 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2214,6 +3645,20 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2284,7 +3729,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -2298,14 +3742,16 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
       height={310}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -2373,7 +3819,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
       <g>
         <g
           key="0"
-          transform="translate(48, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2385,7 +3831,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#0078d4"
             height={182.93478260869566}
-            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2393,7 +3838,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={92.06521739130434}
           />
@@ -2407,7 +3853,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00188f"
             height={36.03260869565217}
-            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2415,8 +3860,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={238.9673913043478}
           />
           <rect
@@ -2429,7 +3875,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00bcf2"
             height={94.23913043478261}
-            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2437,14 +3882,15 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(1, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -2456,7 +3902,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#0078d4"
             height={38.80434782608696}
-            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2464,7 +3909,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={236.19565217391303}
           />
@@ -2478,7 +3924,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00188f"
             height={249.45652173913044}
-            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2486,8 +3931,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={25.543478260869563}
           />
           <rect
@@ -2500,7 +3946,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00bcf2"
             height={91.46739130434783}
-            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2508,8 +3953,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={183.5326086956522}
           />
         </g>
@@ -2556,7 +4002,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone12"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2620,6 +4066,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -2713,6 +4173,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -2802,6 +4276,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -2968,7 +4456,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                       font-size: 12px;
                       font-weight: 400;
                       line-height: 16px;
-                      opacity: 0.8;
+                      opacity: 0.85;
                     }
               >
                  
@@ -2992,6 +4480,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                       margin-top: unset;
                       padding-left: 8px;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 <div
                   className=
@@ -3005,6 +4496,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                         font-weight: 400;
                         line-height: 16px;
                       }
+                      @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                        color: rgb(255, 255, 255);
+                      }
                 />
                 <div
                   className=
@@ -3017,6 +4511,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                         font-size: 28px;
                         font-weight: bold;
                         line-height: 36px;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                        color: rgb(255, 255, 255);
                       }
                 >
                   66
@@ -3049,7 +4546,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -3063,14 +4559,16 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
       height={310}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -3138,7 +4636,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
       <g>
         <g
           key="0"
-          transform="translate(48, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -3150,7 +4648,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#0078d4"
             height={182.93478260869566}
-            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3158,7 +4655,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={92.06521739130434}
           />
@@ -3172,7 +4670,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00188f"
             height={36.03260869565217}
-            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3180,8 +4677,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={238.9673913043478}
           />
           <rect
@@ -3194,7 +4692,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00bcf2"
             height={94.23913043478261}
-            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3202,14 +4699,15 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(1, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -3221,7 +4719,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#0078d4"
             height={38.80434782608696}
-            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3229,7 +4726,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={236.19565217391303}
           />
@@ -3243,7 +4741,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00188f"
             height={249.45652173913044}
-            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3251,8 +4748,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={25.543478260869563}
           />
           <rect
@@ -3265,7 +4763,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00bcf2"
             height={91.46739130434783}
-            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3273,8 +4770,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={183.5326086956522}
           />
         </g>
@@ -3321,7 +4819,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone12"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3385,6 +4883,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -3478,6 +4990,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -3567,6 +5093,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -4076,6 +5616,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4165,6 +5719,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -4258,6 +5826,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4329,7 +5911,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -4343,14 +5924,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
       height={310}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -4418,7 +6001,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       <g>
         <g
           key="0"
-          transform="translate(48, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -4430,7 +6013,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#0078d4"
             height={182.93478260869566}
-            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4438,7 +6020,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={92.06521739130434}
           />
@@ -4452,7 +6035,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00188f"
             height={36.03260869565217}
-            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4460,8 +6042,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={238.9673913043478}
           />
           <rect
@@ -4474,7 +6057,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00bcf2"
             height={94.23913043478261}
-            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4482,14 +6064,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(1, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -4501,7 +6084,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#0078d4"
             height={38.80434782608696}
-            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4509,7 +6091,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={236.19565217391303}
           />
@@ -4523,7 +6106,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00188f"
             height={249.45652173913044}
-            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4531,8 +6113,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={25.543478260869563}
           />
           <rect
@@ -4545,7 +6128,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00bcf2"
             height={91.46739130434783}
-            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4553,8 +6135,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={183.5326086956522}
           />
         </g>
@@ -4590,7 +6173,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone12"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -4654,6 +6237,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    outline-color: #605e5c;
+                  }
+                  :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                     outline-color: #605e5c;
                   }
               data-is-focusable={true}
@@ -4747,6 +6344,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     outline-color: #605e5c;
                   }
+                  :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    outline-color: #605e5c;
+                  }
               data-is-focusable={true}
               onBlur={[Function]}
               onClick={[Function]}
@@ -4838,6 +6449,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     outline-color: #605e5c;
                   }
+                  :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    outline-color: #605e5c;
+                  }
               data-is-focusable={true}
               onBlur={[Function]}
               onClick={[Function]}
@@ -4906,7 +6531,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -4920,14 +6544,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
       height={350}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -4995,7 +6621,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       <g>
         <g
           key="0"
-          transform="translate(48, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -5007,7 +6633,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#0078d4"
             height={211.6304347826087}
-            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -5015,7 +6640,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={103.36956521739131}
           />
@@ -5029,7 +6655,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00188f"
             height={41.68478260869565}
-            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -5037,8 +6662,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={273.3152173913044}
           />
           <rect
@@ -5051,7 +6677,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00bcf2"
             height={109.02173913043478}
-            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -5059,14 +6684,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={205.97826086956522}
           />
         </g>
         <g
           key="1"
-          transform="translate(1, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -5078,7 +6704,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#0078d4"
             height={44.89130434782609}
-            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -5086,7 +6711,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={270.1086956521739}
           />
@@ -5100,7 +6726,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00188f"
             height={288.5869565217391}
-            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -5108,8 +6733,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={26.413043478260875}
           />
           <rect
@@ -5122,7 +6748,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00bcf2"
             height={105.81521739130434}
-            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -5130,8 +6755,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={209.18478260869566}
           />
         </g>
@@ -5501,6 +7127,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -5592,6 +7232,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -5681,6 +7335,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -6096,6 +7764,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -6187,6 +7869,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -6276,6 +7972,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -6691,6 +8401,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -6782,6 +8506,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -6871,6 +8609,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -7286,6 +9038,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -7375,6 +9141,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -7468,6 +9248,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -7551,11 +9345,10 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_148"
-      role="presentation"
+      id="chart_6"
     >
       <div
-        id="defaultTabbableElement_149"
+        id="defaultTabbableElement_7"
       />
       <div
         class=
@@ -7566,14 +9359,16 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             {
               overflow: auto;
             }
-        data-focuszone-id="FocusZone150"
+        data-focuszone-id="FocusZone14"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
+          aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
           focusable="false"
-          height="0"
+          height="292"
+          role="region"
           style="display: block;"
-          width="0"
+          width="650"
         >
           <g
             class=
@@ -7601,9 +9396,73 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
-            id="xAxisGElementchart_148"
-            transform="translate(0, -35)"
-          />
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="xAxisGElementchart_6"
+            text-anchor="middle"
+            transform="translate(0, 257)"
+          >
+            <path
+              class="domain"
+              d="M252.83333333333331,6V0.5H418.1666666666667V6"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(269.22222222222223,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="11"
+              >
+                Metadata info multi lines text Completed
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(335,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="11"
+              >
+                Meta Data2
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(400.7777777777778,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="11"
+              >
+                Single line text 
+              </text>
+            </g>
+          </g>
           <g
             class=
 
@@ -7629,12 +9488,112 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-            id="yAxisGElementchart_148"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="yAxisGElementchart_6"
+            text-anchor="end"
             transform="translate(40, 0)"
-          />
+          >
+            <path
+              class="domain"
+              d="M-6,257.5H0.5V20.5H-6"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,257.5)"
+            >
+              <line
+                stroke="currentColor"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                0
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,198.25)"
+            >
+              <line
+                stroke="currentColor"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                13k
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,139)"
+            >
+              <line
+                stroke="currentColor"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                25k
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,79.75)"
+            >
+              <line
+                stroke="currentColor"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                38k
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,20.5)"
+            >
+              <line
+                stroke="currentColor"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                50k
+              </text>
+            </g>
+          </g>
           <g>
             <g
-              transform="translate(48, 0)"
+              transform="translate(252.33333333333331, 0)"
             >
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
@@ -7645,13 +9604,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 data-is-focusable="true"
                 fill="#00bcf2"
-                height="0"
+                height="156.42000000000002"
                 opacity=""
                 role="img"
+                rx="0"
                 tabindex="0"
-                width="-7.354838709677419"
-                x="-8.881784197001252e-16"
-                y="1.3000000000000043"
+                width="16"
+                x="0"
+                y="100.57999999999998"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
@@ -7662,17 +9622,48 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="0"
+                height="208.56"
                 opacity=""
                 role="img"
+                rx="0"
                 tabindex="-1"
-                width="-7.354838709677419"
-                x="-8.172043010752688"
-                y="13.399999999999999"
+                width="16"
+                x="17.77777777777778"
+                y="48.44"
               />
+              <text
+                aria-hidden="true"
+                class=
+
+                    {
+                      fill: #f3f2f1;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                text-anchor="middle"
+                x="8"
+                y="94.57999999999998"
+              >
+                33.0k
+              </text>
+              <text
+                aria-hidden="true"
+                class=
+
+                    {
+                      fill: #f3f2f1;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                text-anchor="middle"
+                x="25.77777777777778"
+                y="42.44"
+              >
+                44.0k
+              </text>
             </g>
             <g
-              transform="translate(17.763440860215052, 0)"
+              transform="translate(318.1111111111111, 0)"
             >
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
@@ -7683,13 +9674,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 data-is-focusable="true"
                 fill="#00bcf2"
-                height="0"
+                height="156.42000000000002"
                 opacity=""
                 role="img"
+                rx="0"
                 tabindex="-1"
-                width="-7.354838709677419"
-                x="-8.881784197001252e-16"
-                y="1.3000000000000043"
+                width="16"
+                x="0"
+                y="100.57999999999998"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
@@ -7700,17 +9692,48 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="0"
+                height="14.219999999999999"
                 opacity=""
                 role="img"
+                rx="0"
                 tabindex="-1"
-                width="-7.354838709677419"
-                x="-8.172043010752688"
-                y="0"
+                width="16"
+                x="17.77777777777778"
+                y="242.78"
               />
+              <text
+                aria-hidden="true"
+                class=
+
+                    {
+                      fill: #f3f2f1;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                text-anchor="middle"
+                x="8"
+                y="94.57999999999998"
+              >
+                33.0k
+              </text>
+              <text
+                aria-hidden="true"
+                class=
+
+                    {
+                      fill: #f3f2f1;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                text-anchor="middle"
+                x="25.77777777777778"
+                y="236.78"
+              >
+                3.0k
+              </text>
             </g>
             <g
-              transform="translate(-12.473118279569892, 0)"
+              transform="translate(383.8888888888889, 0)"
             >
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
@@ -7721,13 +9744,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 data-is-focusable="true"
                 fill="#00bcf2"
-                height="0"
+                height="66.36"
                 opacity=""
                 role="img"
+                rx="0"
                 tabindex="-1"
-                width="-7.354838709677419"
-                x="-8.881784197001252e-16"
-                y="0"
+                width="16"
+                x="0"
+                y="190.64"
               />
               <rect
                 aria-label="2020/06/30. MetaData4, 50%."
@@ -7738,14 +9762,45 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="0"
+                height="237"
                 opacity=""
                 role="img"
+                rx="0"
                 tabindex="-1"
-                width="-7.354838709677419"
-                x="-8.172043010752688"
+                width="16"
+                x="17.77777777777778"
                 y="20"
               />
+              <text
+                aria-hidden="true"
+                class=
+
+                    {
+                      fill: #f3f2f1;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                text-anchor="middle"
+                x="8"
+                y="184.64"
+              >
+                14.0k
+              </text>
+              <text
+                aria-hidden="true"
+                class=
+
+                    {
+                      fill: #f3f2f1;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                text-anchor="middle"
+                x="25.77777777777778"
+                y="14"
+              >
+                50.0k
+              </text>
             </g>
           </g>
         </svg>
@@ -7777,7 +9832,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             >
               <div
                 data-automation-id="visibleContent"
-                style="position: fixed; visibility: hidden;"
+                style=""
               >
                 <div
                   aria-label="Legends"
@@ -7787,7 +9842,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone151"
+                  data-focuszone-id="FocusZone15"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -7847,6 +9902,20 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                               z-index: 1;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -7933,6 +10002,20 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                               z-index: 1;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"

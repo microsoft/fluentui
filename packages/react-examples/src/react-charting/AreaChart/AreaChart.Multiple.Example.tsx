@@ -18,7 +18,7 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
   }
 
   public render(): JSX.Element {
-    return <div>{this._basicExample()}</div>;
+    return <div className="containerDiv">{this._basicExample()}</div>;
   }
 
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {

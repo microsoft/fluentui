@@ -1,71 +1,73 @@
-import { fluentAccordion } from './index';
+import { html, repeat } from '@microsoft/fast-element';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import type { Accordion as FluentAccordion } from './accordion.js';
+import { AccordionExpandMode } from './accordion.options.js';
 
-export default {
-  title: 'Components/Accordion',
-  component: fluentAccordion,
-  argTypes: {
-    expandMode: {
-      options: ['single', 'multi'],
-      control: { type: 'radio' },
-      defaultValue: 'multi',
-    },
-  },
-};
+type Story = StoryObj<FluentAccordion>;
 
-const AccordionTemplate = ({ expandMode }) => `
-  <fluent-accordion
-    ${expandMode ? `expand-mode="${expandMode}"` : ''}
-  >
-    <fluent-accordion-item expanded>
-      <div slot="start">
-        <button>1</button>
-      </div>
-      <div slot="end">
-        <button>1</button>
-      </div>
-      <span slot="heading">Panel one</span>
-      Panel one content
-    </fluent-accordion-item>
-    <fluent-accordion-item>
-      <span slot="heading">Panel two</span>
-      Panel two content
-    </fluent-accordion-item>
-    <fluent-accordion-item expanded>
-      <span slot="heading">Panel three</span>
-      Panel three content
-    </fluent-accordion-item>
+const storyTemplate = html<StoryArgs<FluentAccordion>>`
+  <fluent-accordion expand-mode="${story => story.expandmode}">
+    ${repeat(
+      [
+        {
+          headingLevel: 2,
+          headingSlottedContent: () => html` <span slot="heading">Accordion Header 1</span> `,
+          slottedContent: () => 'Accordion Panel 1',
+        },
+        {
+          headingLevel: 2,
+          headingSlottedContent: () => html` <span slot="heading">Accordion Header 2</span> `,
+          slottedContent: () => 'Accordion Panel 2',
+        },
+        {
+          headingLevel: 2,
+          headingSlottedContent: () => html` <span slot="heading">Accordion Header 3</span> `,
+          slottedContent: () => 'Accordion Panel 3',
+        },
+      ],
+      html`
+        <fluent-accordion-item heading-level="${story => story.headinglevel}" ?disabled="${story => story.disabled}">
+          ${story => story.headingSlottedContent?.()} ${story => story.slottedContent?.()}
+        </fluent-accordion-item>
+      `,
+    )}
   </fluent-accordion>
 `;
 
-export const Accordion = AccordionTemplate.bind({});
-
-const example = `
-<fluent-accordion>
-  <fluent-accordion-item expanded>
-    <div slot="start">
-      <button>1</button>
-    </div>
-    <div slot="end">
-      <button>1</button>
-    </div>
-    <span slot="heading">Panel one</span>
-    Panel one content
-  </fluent-accordion-item>
-  <fluent-accordion-item>
-    <span slot="heading">Panel two</span>
-    Panel two content
-  </fluent-accordion-item>
-  <fluent-accordion-item expanded>
-    <span slot="heading">Panel three</span>
-    Panel three content
-  </fluent-accordion-item>
-</fluent-accordion>
-`;
-
-Accordion.parameters = {
-  docs: {
-    source: {
-      code: example,
+export default {
+  title: 'Components/Accordion',
+  render: renderComponent(storyTemplate),
+  argTypes: {
+    expandmode: {
+      control: 'select',
+      description: 'Controls the expand mode of the Accordion, either allowing single or multiple item expansion.',
+      name: 'expand-mode',
+      options: ['', ...Object.values(AccordionExpandMode)],
+      table: {
+        category: 'attributes',
+        defaultValue: { summary: AccordionExpandMode.multi },
+        type: { summary: Object.values(AccordionExpandMode).join('|') },
+      },
     },
+    slottedContent: {
+      control: false,
+      description: 'The default slot',
+      name: '',
+      table: { category: 'slots', type: {} },
+    },
+    headingSlottedContent: {
+      control: false,
+      description: 'The slot for the heading content',
+      name: 'heading',
+      table: { category: 'slots', type: {} },
+    },
+  },
+} as Meta<FluentAccordion>;
+
+export const Default: Story = {};
+
+export const SingleMode: Story = {
+  args: {
+    expandmode: AccordionExpandMode.single,
   },
 };

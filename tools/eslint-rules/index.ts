@@ -1,3 +1,9 @@
+import { RULE_NAME as noRestrictedGlobalsName, rule as noRestrictedGlobals } from './rules/no-restricted-globals';
+import { RULE_NAME as noMissingJsxPragmaName, rule as noMissingJsxPragma } from './rules/no-missing-jsx-pragma';
+import {
+  RULE_NAME as consistentCallbackTypeName,
+  rule as consistentCallbackType,
+} from './rules/consistent-callback-type';
 /**
  * Import your custom workspace rules at the top of this file.
  *
@@ -23,5 +29,9 @@ module.exports = {
    *  [myCustomRuleName]: myCustomRule
    * }
    */
-  rules: {},
+  rules: {
+    [consistentCallbackTypeName]: consistentCallbackType,
+    [noRestrictedGlobalsName]: noRestrictedGlobals,
+    [noMissingJsxPragmaName]: noMissingJsxPragma,
+  },
 };

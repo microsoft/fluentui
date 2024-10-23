@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider } from '@fluentui/react';
+import { ThemeProvider, resetIds } from '@fluentui/react';
 import { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartWithAxisBase } from './HorizontalBarChartWithAxis.base';
@@ -20,7 +20,37 @@ const runTest = env === 'TEST' ? describe : describe.skip;
 
 expect.extend(toHaveNoViolations);
 
+beforeEach(() => {
+  resetIds();
+});
+
+const originalRAF = window.requestAnimationFrame;
+
+function updateChartWidthAndHeight() {
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
+  window.HTMLElement.prototype.getBoundingClientRect = () =>
+    ({
+      bottom: 44,
+      height: 50,
+      left: 10,
+      right: 35.67,
+      top: 20,
+      width: 650,
+    } as DOMRect);
+}
+function sharedAfterEach() {
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
+}
+
 describe('Horizontal bar chart with axis rendering', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   testWithoutWait(
     'Should render the Horizontal bar chart with axis with numaric yaxis data',
     HorizontalBarChartWithAxis,
@@ -336,18 +366,13 @@ runTest('Skip - Horizontal bar chart with axis - Subcomponent Labels', () => {
 
 describe('Horizontal bar chart with axis - Screen resolution', () => {
   beforeEach(() => {
+    updateChartWidthAndHeight();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
 
-  const originalInnerWidth = global.innerWidth;
-  const originalInnerHeight = global.innerHeight;
   afterEach(() => {
     jest.spyOn(global.Math, 'random').mockRestore();
-    global.innerWidth = originalInnerWidth;
-    global.innerHeight = originalInnerHeight;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
-    });
+    sharedAfterEach();
   });
 
   testWithWait(
@@ -382,6 +407,11 @@ describe('Horizontal bar chart with axis - Screen resolution', () => {
 });
 
 describe('Horizontal bar chart with axis - Theme', () => {
+  beforeEach(() => {
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
+
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
@@ -395,6 +425,11 @@ describe('Horizontal bar chart with axis - Theme', () => {
 });
 
 describe('HorizontalBarChartWithAxis - mouse events', () => {
+  beforeEach(() => {
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
+
   testWithWait(
     'Should render callout correctly on mouseover',
     HorizontalBarChartWithAxis,

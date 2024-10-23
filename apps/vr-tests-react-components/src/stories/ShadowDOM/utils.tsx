@@ -3,7 +3,6 @@ import { RendererProvider } from '@griffel/react';
 import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
 import { createProxy, Root } from 'react-shadow';
 import * as React from 'react';
-
 const ShadowRootProvider: React.FC<{
   children: React.ReactNode;
   root: ShadowRoot;

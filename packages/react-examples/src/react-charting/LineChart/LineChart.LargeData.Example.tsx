@@ -37,7 +37,9 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
     const data: ILineChartDataPoint[] = [];
     const startdate = new Date('2020-03-01T00:00:00.000Z');
     for (let i = 0; i < 10000; i++) {
-      data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: 500000 });
+      const newDate = new Date(startdate);
+      newDate.setUTCHours(startdate.getUTCHours() + i);
+      data.push({ x: newDate, y: 500000 });
     }
 
     return data;
@@ -47,7 +49,9 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
     const data: ILineChartDataPoint[] = [];
     const startdate = new Date('2020-03-01T00:00:00.000Z');
     for (let i = 1000; i < 9000; i++) {
-      data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: this._getY(i) });
+      const newDate = new Date(startdate);
+      newDate.setUTCHours(startdate.getUTCHours() + i);
+      data.push({ x: newDate, y: this._getY(i) });
     }
 
     return data;

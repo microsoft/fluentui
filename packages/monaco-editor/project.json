@@ -1,6 +1,7 @@
 {
-  "name": "@fluentui/monaco-editor",
+  "name": "monaco-editor",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
+  "tags": ["v8"],
   "implicitDependencies": []
 }

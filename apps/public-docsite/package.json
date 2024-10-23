@@ -12,10 +12,9 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "scripts": {
-    "build": "just-scripts build",
+    "prebundle": "just-scripts build",
     "bundle": "just-scripts bundle",
     "lint": "just-scripts lint",
-    "test": "just-scripts test",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",

@@ -4,7 +4,6 @@
     "pretty": true,
     "sourceMap": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
     "typeRoots": ["node_modules/@types", "./typings"],

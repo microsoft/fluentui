@@ -36,16 +36,18 @@ const points: IChartDataPoint[] = [
 const chartTitle = 'Stacked bar chart 2nd example';
 
 export const chartPoints: IChartProps = {
-  chartTitle: chartTitle,
+  chartTitle,
   chartData: points,
 };
 
 export const emptyChartPoints: IChartProps = {
-  chartTitle: chartTitle,
+  chartTitle,
   chartData: [],
 };
 
 describe('StackedBarChart snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
+
   it('renders StackedBarChart correctly', () => {
     const component = renderer.create(<StackedBarChart data={chartPoints} />);
     const tree = component.toJSON();
@@ -84,6 +86,18 @@ describe('StackedBarChart snapShot testing', () => {
 
   it('renders enabledLegendsWrapLines correctly', () => {
     const component = renderer.create(<StackedBarChart data={chartPoints} enabledLegendsWrapLines={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders enableGradient correctly', () => {
+    const component = renderer.create(<StackedBarChart data={chartPoints} enableGradient={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders roundCorners correctly', () => {
+    const component = renderer.create(<StackedBarChart data={chartPoints} roundCorners={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -154,6 +168,8 @@ describe('StackedBarChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(StackedBarChartBase.prototype, 'render');
     const props = {
@@ -223,6 +239,8 @@ describe('StackedBarChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No empty chart aria label div rendered', () => {
     wrapper = mount(<StackedBarChart data={chartPoints} />);
     const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');

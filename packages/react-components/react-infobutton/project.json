@@ -1,8 +1,0 @@
-{
-  "name": "@fluentui/react-infobutton",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "library",
-  "implicitDependencies": [],
-  "sourceRoot": "packages/react-components/react-infobutton/src",
-  "tags": ["vNext", "platform:web"]
-}

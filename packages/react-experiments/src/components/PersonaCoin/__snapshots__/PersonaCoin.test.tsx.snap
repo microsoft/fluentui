@@ -29,6 +29,7 @@ exports[`PersonaCoin renders a coin with a contact icon 1`] = `
           font-style: normal;
           font-weight: normal;
           speak: none;
+          text-decoration: inherit;
         }
     data-icon-name="Contact"
   >
@@ -66,6 +67,7 @@ exports[`PersonaCoin renders a coin with a contact icon for a Chinese name 1`] =
           font-style: normal;
           font-weight: normal;
           speak: none;
+          text-decoration: inherit;
         }
     data-icon-name="Contact"
   >
@@ -211,6 +213,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
           font-style: normal;
           font-weight: normal;
           speak: none;
+          text-decoration: inherit;
         }
     data-icon-name="Contact"
   >
@@ -262,6 +265,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
             font-weight: normal;
             line-height: 12px;
             speak: none;
+            text-decoration: inherit;
             vertical-align: top;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -310,6 +314,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
           font-style: normal;
           font-weight: normal;
           speak: none;
+          text-decoration: inherit;
         }
     data-icon-name="Contact"
   >
@@ -361,6 +366,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
             font-weight: normal;
             line-height: 12px;
             speak: none;
+            text-decoration: inherit;
             vertical-align: top;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {

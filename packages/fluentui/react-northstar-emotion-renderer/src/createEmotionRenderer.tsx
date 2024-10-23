@@ -1,7 +1,7 @@
 import createCache, { StylisPlugin } from '@emotion/cache';
 import { CSSObject, serializeStyles } from '@emotion/serialize';
 import { StyleSheet } from '@emotion/sheet';
-import { EmotionCache, insertStyles } from '@emotion/utils';
+import { insertStyles } from '@emotion/utils';
 import {
   CreateRenderer,
   Renderer,
@@ -41,7 +41,7 @@ export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}
 
       // TODO: make this configurable via perf flags
       speedy: true,
-    }) as EmotionCache & { insert: Function };
+    });
     const cacheRtl = createCache({
       container: target?.head,
       key: 'rfui',

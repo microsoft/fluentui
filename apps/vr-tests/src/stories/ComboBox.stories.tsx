@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecoratorTallFixedWidth } from '../utilities/index';
+import { Steps } from 'storywright';
+import {
+  getStoryVariant,
+  RTL,
+  StoryWrightDecorator,
+  TestWrapperDecoratorTallFixedWidth,
+} from '../utilities';
 import { ComboBox, SelectableOptionMenuItemType, ISelectableOption } from '@fluentui/react';
 
 const testOptions = [
@@ -37,67 +41,58 @@ const onRenderFontOption = (item: ISelectableOption) => {
   return <span style={{ fontFamily }}>{item.text}</span>;
 };
 
-storiesOf('ComboBox', module)
-  .addDecorator(TestWrapperDecoratorTallFixedWidth)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'ComboBox',
+
+  decorators: [
+    TestWrapperDecoratorTallFixedWidth,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-ComboBox-Input')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Button-flexContainer')
         .hover('.ms-Button-flexContainer')
         .snapshot('click', { cropTo: '.ms-Layer' }) // Dropdown extends beyond testWrapper
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory(
-    'Root',
-    () => (
-      <ComboBox
-        defaultSelectedKey="A"
-        label="Default with dividers"
-        autoComplete="on"
-        options={testOptions}
-      />
+        .end(),
     ),
-    {
-      includeRtl: true,
-    },
-  )
-  .addStory('Styled', () => (
-    <ComboBox
-      defaultSelectedKey="A"
-      label="Styled with dividers"
-      autoComplete="on"
-      options={testOptions}
-      onRenderOption={onRenderFontOption}
-    />
-  ))
-  .addStory('Disabled', () =>
-    // prettier-ignore
-    <ComboBox
-      defaultSelectedKey="A"
-      label="Disabled"
-      options={testOptions}
-      disabled
-    />,
-  )
-  .addStory('Error', () => (
-    <ComboBox
-      defaultSelectedKey="A"
-      label="Error"
-      errorMessage="Oh no! This ComboBox has an error!"
-      options={testOptions}
-    />
-  ))
-  .addStory('Placeholder', () =>
-    // prettier-ignore
-    <ComboBox
-      placeholder="Select an option"
-      label="With a placeholder"
-      options={testOptions}
-    />,
-  );
+  ],
+};
+
+export const Root = () => (
+  <ComboBox
+    defaultSelectedKey="A"
+    label="Default with dividers"
+    autoComplete="on"
+    options={testOptions}
+  />
+);
+
+export const RootRTL = getStoryVariant(Root, RTL);
+
+export const Styled = () => (
+  <ComboBox
+    defaultSelectedKey="A"
+    label="Styled with dividers"
+    autoComplete="on"
+    options={testOptions}
+    onRenderOption={onRenderFontOption}
+  />
+);
+
+export const Disabled = () => (
+  <ComboBox defaultSelectedKey="A" label="Disabled" options={testOptions} disabled />
+);
+
+export const Error = () => (
+  <ComboBox
+    defaultSelectedKey="A"
+    label="Error"
+    errorMessage="Oh no! This ComboBox has an error!"
+    options={testOptions}
+  />
+);
+
+export const Placeholder = () => (
+  <ComboBox placeholder="Select an option" label="With a placeholder" options={testOptions} />
+);

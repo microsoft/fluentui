@@ -43,7 +43,7 @@ export type UseStylesResult = {
   styles: ComponentSlotStylesResolved;
 };
 
-type InlineStyleProps<ComponentProps> = {
+type InlineStyleProps<ComponentProps extends {}> = {
   /** Additional CSS class name(s) to apply.  */
   className?: string;
 

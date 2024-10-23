@@ -304,6 +304,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           colorFillBars={colorFillBarData}
           allowMultipleShapesForPoints={this.state.allowMultipleShapes}
           enablePerfOptimization={true}
+          useUTC={false}
         />
       </div>
     );

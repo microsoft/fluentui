@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '@fluentui/react/lib/Utilities';
 import {
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisStyleProps,

@@ -102,6 +102,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       setComboBoxText(comboboxOption ? comboboxOption.text : formattedTimeString);
     } else {
       setSelectedKey(null);
+      setComboBoxText('');
     }
   }, [selectedTime, timePickerOptions, onFormatDate, showSeconds, useHour12]);
 

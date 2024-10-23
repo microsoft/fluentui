@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import {
   Accordion,
@@ -43,15 +43,15 @@ const useStyles = makeStyles({
     columnGap: tokens.spacingVerticalL,
   },
   colorPicker: {
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
-    ...shorthands.borderRadius('25px'),
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: '25px',
     height: '30px',
     width: '30px',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
   },
   color: {
-    ...shorthands.padding('0px'),
-    ...shorthands.border('0px'),
+    padding: '0px',
+    border: 'none',
     opacity: '0',
   },
   slider: {
@@ -69,7 +69,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     // Use 2px gap below the label (per the design system)
-    ...shorthands.gap('2px'),
+    gap: '2px',
     // Prevent the example from taking the full width of the page (optional)
     maxWidth: '400px',
   },

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
-import { classNamesFunction, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
-import { IArcProps, IArcStyles } from './index';
+import { IArcProps, IArcStyleProps, IArcStyles } from './index';
 import { format as d3Format } from 'd3-format';
 import { formatValueWithSIPrefix } from '../../../utilities/index';
 
@@ -32,36 +32,65 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
   public render(): JSX.Element {
     const { arc, href, focusedArcId } = this.props;
-    const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
-    const classNames = getClassNames(getStyles, {
-      color: this.props.color,
-      href: href!,
-      theme: this.props.theme!,
-    });
+    const getClassNames = classNamesFunction<IArcStyleProps, IArcStyles>();
     const id = this.props.uniqText! + this.props.data!.data.legend!.replace(/\s+/, '') + this.props.data!.data.data;
     const opacity: number =
       this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '' ? 1 : 0.1;
+
+    const startAngle = this.props.data?.startAngle ?? 0;
+    const endAngle = (this.props.data?.endAngle ?? 0) - startAngle;
+    const cornerRadius = this.props.roundCorners ? 3 : 0;
+
+    const classNames = getClassNames(getStyles, {
+      solidFill: this.props.enableGradient ? 'transparent' : this.props.color,
+      gradientFill: `conic-gradient(
+          from ${startAngle}rad,
+          ${this.props.color},
+          ${this.props.nextColor} ${endAngle}rad
+        )`,
+      href: href!,
+      theme: this.props.theme!,
+      opacity,
+    });
+
+    const clipId = getId('Arc_clip') + `${this.props.color}_${this.props.nextColor}`;
+
     return (
       <g ref={this.currentRef}>
         {!!focusedArcId && focusedArcId === id && (
-          <path id={id + 'focusRing'} d={arc(this.props.focusData)} className={classNames.focusRing} />
+          <path
+            id={id + 'focusRing'}
+            d={arc.cornerRadius(cornerRadius)(this.props.focusData)}
+            className={classNames.focusRing}
+          />
         )}
+
         <path
           id={id}
-          d={arc(this.props.data)}
+          d={arc.cornerRadius(cornerRadius)(this.props.data)}
           onFocus={this._onFocus.bind(this, this.props.data!.data, id)}
           className={classNames.root}
-          data-is-focusable={true}
+          data-is-focusable={this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === ''}
           onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseMove={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseLeave={this._hoverOff}
           onBlur={this._onBlur}
-          opacity={opacity}
           onClick={href ? this._redirectToUrl.bind(this, href) : this.props.data?.data.onClick}
           aria-label={this._getAriaLabel()}
           role="img"
         />
         {this._renderArcLabel(classNames.arcLabel)}
+
+        {this.props.enableGradient && (
+          <>
+            <clipPath id={clipId}>
+              <path d={arc.cornerRadius(cornerRadius)(this.props.data)} />
+            </clipPath>
+            <foreignObject x="-50%" y="-50%" width="100%" height="100%" clipPath={`url(#${clipId})`}>
+              <div className={classNames.gradientArc} />
+            </foreignObject>
+          </>
+        )}
       </g>
     );
   }

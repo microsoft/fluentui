@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme-sass",
-  "version": "9.0.0-alpha.20",
+  "version": "9.0.0-alpha.25",
   "description": "SASS variables referencing react-theme design tokens injected to DOM by react-provider.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -19,7 +19,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },

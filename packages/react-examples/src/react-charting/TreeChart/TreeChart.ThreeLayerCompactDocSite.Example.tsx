@@ -1,50 +1,58 @@
 import * as React from 'react';
-import { TreeChart, ITreeProps, TreeTraverse, NodesComposition, ITreeState } from '@fluentui/react-charting';
+import {
+  TreeChart,
+  ITreeProps,
+  TreeTraverse,
+  NodesComposition,
+  ITreeState,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 const threeLayerChart = {
   name: 'Root Node',
   subname: 'subtext',
-  fill: '#0099BC',
+  fill: getColorFromToken(DataVizPalette.color4),
   children: [
     {
       name: 'Child 1',
       subname: 'subtext',
       metric: '100%',
-      fill: '#4F6BED',
+      fill: getColorFromToken(DataVizPalette.color5),
       children: [
         {
           name: 'leaf1',
           subname: 'sub',
-          fill: '#4F6BED',
+          fill: getColorFromToken(DataVizPalette.color5),
         },
         {
           name: 'leaf2',
-          fill: '#4F6BED',
+          fill: getColorFromToken(DataVizPalette.color5),
         },
         {
           name: 'leaf3',
           subname: 'The subtext is as follows: sub',
-          fill: '#FF00FF',
+          fill: getColorFromToken(DataVizPalette.color6),
         },
         {
           name: 'leaf4',
           subname: 'sub',
-          fill: '#FF00FF',
+          fill: getColorFromToken(DataVizPalette.color6),
         },
       ],
     },
     {
       name: 'Child 2 is the child name',
-      fill: '#881798',
+      fill: getColorFromToken(DataVizPalette.color7),
       children: [
         {
           name: 'leaf5',
           subname: 'sub',
-          fill: '#AE8C00',
+          fill: getColorFromToken(DataVizPalette.color10),
         },
         {
           name: 'leaf6',
           subname: 'sub',
-          fill: '#AE8C00',
+          fill: getColorFromToken(DataVizPalette.color10),
         },
       ],
     },

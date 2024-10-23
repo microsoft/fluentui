@@ -189,7 +189,7 @@ export interface PriorityQueue<T> {
 export type ReactTouchOrMouseEvent = React_2.MouseEvent | React_2.TouchEvent;
 
 // @public
-export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
+export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T | null) => void);
 
 // @public
 export function resetIdsForTests(): void;
@@ -280,7 +280,7 @@ export type SlotClassNames<Slots> = {
 };
 
 // @public
-export type SlotComponentType<Props extends UnknownSlotProps> = Props & {
+export type SlotComponentType<Props> = Props & {
     (props: React_2.PropsWithChildren<{}>): React_2.ReactElement | null;
     [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
     [SLOT_ELEMENT_TYPE_SYMBOL]: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);

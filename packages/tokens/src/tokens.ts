@@ -116,10 +116,17 @@ export const tokens: Record<keyof Theme, string> = {
   colorBrandBackground2: 'var(--colorBrandBackground2)',
   colorBrandBackground2Hover: 'var(--colorBrandBackground2Hover)',
   colorBrandBackground2Pressed: 'var(--colorBrandBackground2Pressed)',
+  colorBrandBackground3Static: 'var(--colorBrandBackground3Static)',
+  colorBrandBackground4Static: 'var(--colorBrandBackground4Static)',
   colorBrandBackgroundInverted: 'var(--colorBrandBackgroundInverted)',
   colorBrandBackgroundInvertedHover: 'var(--colorBrandBackgroundInvertedHover)',
   colorBrandBackgroundInvertedPressed: 'var(--colorBrandBackgroundInvertedPressed)',
   colorBrandBackgroundInvertedSelected: 'var(--colorBrandBackgroundInvertedSelected)',
+  colorNeutralCardBackground: 'var(--colorNeutralCardBackground)',
+  colorNeutralCardBackgroundHover: 'var(--colorNeutralCardBackgroundHover)',
+  colorNeutralCardBackgroundPressed: 'var(--colorNeutralCardBackgroundPressed)',
+  colorNeutralCardBackgroundSelected: 'var(--colorNeutralCardBackgroundSelected)',
+  colorNeutralCardBackgroundDisabled: 'var(--colorNeutralCardBackgroundDisabled)',
   colorNeutralStrokeAccessible: 'var(--colorNeutralStrokeAccessible)',
   colorNeutralStrokeAccessibleHover: 'var(--colorNeutralStrokeAccessibleHover)',
   colorNeutralStrokeAccessiblePressed: 'var(--colorNeutralStrokeAccessiblePressed)',
@@ -412,6 +419,8 @@ export const tokens: Record<keyof Theme, string> = {
   colorStatusDangerBackground1: 'var(--colorStatusDangerBackground1)',
   colorStatusDangerBackground2: 'var(--colorStatusDangerBackground2)',
   colorStatusDangerBackground3: 'var(--colorStatusDangerBackground3)',
+  colorStatusDangerBackground3Hover: 'var(--colorStatusDangerBackground3Hover)',
+  colorStatusDangerBackground3Pressed: 'var(--colorStatusDangerBackground3Pressed)',
   colorStatusDangerForeground1: 'var(--colorStatusDangerForeground1)',
   colorStatusDangerForeground2: 'var(--colorStatusDangerForeground2)',
   colorStatusDangerForeground3: 'var(--colorStatusDangerForeground3)',
@@ -530,4 +539,58 @@ export const tokens: Record<keyof Theme, string> = {
   curveEasyEaseMax: 'var(--curveEasyEaseMax)',
   curveEasyEase: 'var(--curveEasyEase)',
   curveLinear: 'var(--curveLinear)',
+
+  /**
+   * ZIndexes
+   * Special case where the tokens contain default values
+   * ZIndexes are not mandatory, so they are not included in the theme, but can be used as tokens with default values
+   */
+
+  /**
+   * Elevation 0
+   * Can be used for background elements, like surfaces
+   */
+  zIndexBackground: 'var(--zIndexBackground, 0)',
+
+  /**
+   * Elevation 2
+   * Can be used content that is on top of the background, like cards
+   */
+  zIndexContent: 'var(--zIndexContent, 1)',
+
+  /**
+   * Elevation 4
+   * Can be used for overlays, like the backdrop of a modal
+   */
+  zIndexOverlay: 'var(--zIndexOverlay, 1000)',
+
+  /**
+   * Elevation 8
+   * Can be used for popups, like modals and drawers
+   */
+  zIndexPopup: 'var(--zIndexPopup, 2000)',
+
+  /**
+   * Elevation 16
+   * Can be used for messages, like snackbars and toasts
+   */
+  zIndexMessages: 'var(--zIndexMessages, 3000)',
+
+  /**
+   * Elevation 28
+   * Can be used for floating elements, like dropdowns
+   */
+  zIndexFloating: 'var(--zIndexFloating, 4000)',
+
+  /**
+   * Elevation 64
+   * Can be used for high priority floating elements, like tooltips
+   */
+  zIndexPriority: 'var(--zIndexPriority, 5000)',
+
+  /**
+   * Special elevation
+   * Can be used for elements that need to be above everything else, like debug overlays
+   */
+  zIndexDebug: 'var(--zIndexDebug, 6000)',
 };

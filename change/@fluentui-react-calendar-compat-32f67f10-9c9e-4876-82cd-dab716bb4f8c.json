@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Update year and month pickers to use the correct keyboard navigation type and apply requested focus indicator width from design for day picker.",
-  "packageName": "@fluentui/react-calendar-compat",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}

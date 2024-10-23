@@ -1,11 +1,13 @@
 // @ts-check
 
+import webpackBundler from 'monosize-bundler-webpack';
+
 import baseConfig from '../../monosize.config.mjs';
 
 /** @type {import('monosize').MonoSizeConfig} */
 const monosizeConfig = {
   ...baseConfig,
-  webpack: config => {
+  bundler: webpackBundler(config => {
     const normalizedTarget = /** @type {string[]}*/ (Array.isArray(config.target) ? config.target : [config.target]);
     config.target = [
       ...normalizedTarget,
@@ -20,7 +22,7 @@ const monosizeConfig = {
     ];
 
     return config;
-  },
+  }),
 };
 
 export default monosizeConfig;

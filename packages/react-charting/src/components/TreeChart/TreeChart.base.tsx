@@ -150,6 +150,7 @@ class StandardTree {
           dy={yCoordinate + rectangleHeight / 1.6}
           x={xCoordinate + rectangleWidth / 2}
           key={`${nodeId}${this.styleClassNames.rectText}`}
+          data-is-focusable={nodeId === 0}
         >
           {name}
         </text>,
@@ -162,6 +163,7 @@ class StandardTree {
           dy={metricName ? yCoordinate + rectangleHeight / 2.5 : yCoordinate + rectangleHeight / 2}
           x={xCoordinate + rectangleWidth / 2}
           key={`${nodeId}${this.styleClassNames.rectText}`}
+          data-is-focusable={nodeId === 0}
         >
           {name}
           {subValue}

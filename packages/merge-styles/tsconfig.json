@@ -10,7 +10,6 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "isolatedModules": true,

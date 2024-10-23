@@ -18,7 +18,7 @@ https://docs.github.com/en/actions/using-workflows/about-workflows
 >
 > Originally this was a json configuration which we converted to yml via this tool https://github.com/1ES-microsoft/GitOps.PullRequestIssueManagement/tree/main/src/Tools/GitOps.PullRequestIssueManagement.JsonToYmlConverter
 
-GitOps bot - docs https://github.com/microsoft/GitOps/blob/main/docs/policies/resource-management.md
+GitOps bot - docs https://eng.ms/docs/products/gitops/apps/resource-management
 
 ## `triage-bot.config.json`
 

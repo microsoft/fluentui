@@ -112,6 +112,7 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
                 },
               },
             }}
+            useUTC={false}
           />
         </div>
       </>

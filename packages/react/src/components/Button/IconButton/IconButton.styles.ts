@@ -22,11 +22,9 @@ export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonS
     rootHovered: {
       color: palette.themeDarkAlt,
       backgroundColor: palette.neutralLighter,
-      selectors: {
-        [HighContrastSelector]: {
-          borderColor: 'Highlight',
-          color: 'Highlight',
-        },
+      [HighContrastSelector]: {
+        borderColor: 'Highlight',
+        color: 'Highlight',
       },
     },
 

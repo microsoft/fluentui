@@ -12,17 +12,19 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #ffffff;
         border-radius: 2px;
         border: 1px solid #8a8886;
         box-sizing: border-box;
         color: #323130;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
-        height: 32px;
+        justify-content: center;
+        min-height: 32px;
         min-width: 80px;
         outline: transparent;
         padding-bottom: 0;
@@ -49,6 +51,24 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+        bottom: -2px;
+        left: -2px;
+        outline-color: ButtonText;
+        right: -2px;
+        top: -2px;
+      }
+      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+        border: 1px solid transparent;
+        bottom: 2px;
+        content: "";
+        left: 2px;
+        outline: 1px solid #605e5c;
+        position: absolute;
+        right: 2px;
+        top: 2px;
+        z-index: 1;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -100,6 +120,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
           ms-Button-menuIcon
           {
             display: inline-block;
+            text-decoration: inherit;
           }
           {
             -moz-osx-font-smoothing: grayscale;
@@ -288,7 +309,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                         min-width: 180px;
                       }
                   data-focuszone-id="FocusZone3"
-                  data-tabster="{\\"uncontrolled\\": {}}"
+                  data-tabster="{\\"uncontrolled\\": {}, \\"focusable\\": { \\"excludeFromMover\\": true }}"
                   onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseDownCapture={[Function]}
@@ -371,6 +392,17 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                               top: 1px;
                               z-index: 1;
                             }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid #ffffff;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #605e5c;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
                             &:hover {
                               background-color: #f3f2f1;
                               color: #201f1e;
@@ -396,7 +428,16 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                             .ms-Fabric--isFocusVisible &:focus:hover {
                               background-color: #ffffff;
                             }
+                            :host(.ms-Fabric--isFocusVisible) &:focus {
+                              background-color: #ffffff;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:hover {
+                              background-color: #ffffff;
+                            }
                             .ms-Fabric--isFocusVisible &:hover {
+                              background: inherit;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:hover {
                               background: inherit;
                             }
                         onClick={[Function]}
@@ -454,6 +495,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                                   line-height: 36px;
                                   speak: none;
                                   text-align: center;
+                                  text-decoration: inherit;
                                   vertical-align: middle;
                                 }
                                 &:hover {

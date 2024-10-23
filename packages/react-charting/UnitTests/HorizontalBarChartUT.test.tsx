@@ -5,6 +5,7 @@ import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { HorizontalBarChart } from '../src/components/HorizontalBarChart/HorizontalBarChart';
 import { HorizontalBarChartBase } from '../src/components/HorizontalBarChart/HorizontalBarChart.base';
 import { IAccessibilityProps, IChartDataPoint, IChartProps } from '../src/components/HorizontalBarChart/index';
+import { resetIds } from '@fluentui/react';
 
 const env = require('../config/tests');
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -31,7 +32,13 @@ const chartPointsWithBenchMark: IChartProps[] = [
   },
 ];
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 runTest('_getDefaultTextData', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper axis data without chartDataMode defined', () => {
     render(<HorizontalBarChart data={chartPoints} />);
     const instance = new HorizontalBarChartBase({
@@ -79,6 +86,8 @@ runTest('_getDefaultTextData', () => {
 });
 
 runTest('_getChartDataText', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper text data with default chat data', () => {
     const instance = new HorizontalBarChartBase({
       data: chartPoints,
@@ -107,6 +116,8 @@ runTest('_getChartDataText', () => {
 });
 
 runTest('_createBenchmark', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper benchmark data without any benachmark data in input', () => {
     const instance = new HorizontalBarChartBase({
       data: chartPoints,
@@ -129,6 +140,8 @@ runTest('_createBenchmark', () => {
 });
 
 runTest('_createBars', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return bar count properly', () => {
     const instance = new HorizontalBarChartBase({
       data: chartPoints,
@@ -169,6 +182,8 @@ runTest('_createBars', () => {
 });
 
 runTest('_getAriaLabel', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return bar aria-label as 0 when there is no chart data', () => {
     const instance = new HorizontalBarChartBase({
       data: chartPoints,

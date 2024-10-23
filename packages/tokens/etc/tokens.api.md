@@ -244,10 +244,17 @@ export type ColorTokens = {
     colorBrandBackground2: string;
     colorBrandBackground2Hover: string;
     colorBrandBackground2Pressed: string;
+    colorBrandBackground3Static: string;
+    colorBrandBackground4Static: string;
     colorBrandBackgroundInverted: string;
     colorBrandBackgroundInvertedHover: string;
     colorBrandBackgroundInvertedPressed: string;
     colorBrandBackgroundInvertedSelected: string;
+    colorNeutralCardBackground: string;
+    colorNeutralCardBackgroundHover: string;
+    colorNeutralCardBackgroundPressed: string;
+    colorNeutralCardBackgroundSelected: string;
+    colorNeutralCardBackgroundDisabled: string;
     colorNeutralStrokeAccessible: string;
     colorNeutralStrokeAccessibleHover: string;
     colorNeutralStrokeAccessiblePressed: string;
@@ -442,7 +449,7 @@ export const teamsHighContrastTheme: Theme;
 export const teamsLightTheme: Theme;
 
 // @public (undocumented)
-export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & HorizontalSpacingTokens & VerticalSpacingTokens & DurationTokens & CurveTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorStatusTokens & ColorTokens;
+export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & HorizontalSpacingTokens & VerticalSpacingTokens & DurationTokens & CurveTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorStatusTokens & ColorTokens & ZIndexTokens;
 
 // @public
 export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record<keyof TTheme, string>;
@@ -502,6 +509,18 @@ export const webDarkTheme: Theme;
 
 // @public (undocumented)
 export const webLightTheme: Theme;
+
+// @public
+export type ZIndexTokens = {
+    zIndexBackground?: string;
+    zIndexContent?: string;
+    zIndexOverlay?: string;
+    zIndexPopup?: string;
+    zIndexMessages?: string;
+    zIndexFloating?: string;
+    zIndexPriority?: string;
+    zIndexDebug?: string;
+};
 
 // (No @packageDocumentation comment for this package)
 

@@ -2,8 +2,11 @@ import { size } from '@floating-ui/dom';
 import type { Middleware } from '@floating-ui/dom';
 import type { NormalizedAutoSize, PositioningOptions } from '../types';
 import { getBoundary } from '../utils/getBoundary';
-export interface MaxSizeMiddlewareOptions extends Pick<PositioningOptions, 'overflowBoundary'> {
+import { toFloatingUIPadding } from '../utils';
+export interface MaxSizeMiddlewareOptions
+  extends Pick<PositioningOptions, 'overflowBoundary' | 'overflowBoundaryPadding'> {
   container: HTMLElement | null;
+  isRtl: boolean;
 }
 
 /**
@@ -38,8 +41,9 @@ export const resetMaxSize = (autoSize: NormalizedAutoSize): Middleware => ({
 });
 
 export function maxSize(autoSize: NormalizedAutoSize, options: MaxSizeMiddlewareOptions): Middleware {
-  const { container, overflowBoundary } = options;
+  const { container, overflowBoundary, overflowBoundaryPadding, isRtl } = options;
   return size({
+    ...(overflowBoundaryPadding && { padding: toFloatingUIPadding(overflowBoundaryPadding, isRtl) }),
     ...(overflowBoundary && { altBoundary: true, boundary: getBoundary(container, overflowBoundary) }),
     apply({ availableHeight, availableWidth, elements, rects }) {
       const applyMaxSizeStyles = (apply: boolean, dimension: 'width' | 'height', availableSize: number) => {

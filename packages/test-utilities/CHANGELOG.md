@@ -1,8 +1,17 @@
 # Change Log - @fluentui/test-utilities
 
-This log was last generated on Fri, 05 May 2023 18:14:00 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jul 2024 07:36:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.19](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.3.19)
+
+Tue, 09 Jul 2024 07:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/test-utilities_v8.3.6..@fluentui/test-utilities_v8.3.19)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
 
 ## [8.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.3.4)
 

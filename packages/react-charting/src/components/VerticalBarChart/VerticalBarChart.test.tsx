@@ -34,6 +34,8 @@ function sharedAfterEach() {
 }
 
 describe('VerticalBarChart snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
+
   it('renders VerticalBarChart correctly', () => {
     let component: any;
     renderer.act(() => {
@@ -101,6 +103,24 @@ describe('VerticalBarChart snapShot testing', () => {
     let component: any;
     rendererAct(() => {
       component = renderer.create(<VerticalBarChart data={chartPointsVBC} hideLabels={true} />);
+    });
+    const tree = component!.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render gradients on bars', () => {
+    let component: any;
+    rendererAct(() => {
+      component = renderer.create(<VerticalBarChart data={chartPointsVBC} enableGradient={false} />);
+    });
+    const tree = component!.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render rounded corners on bars', () => {
+    let component: any;
+    rendererAct(() => {
+      component = renderer.create(<VerticalBarChart data={chartPointsVBC} roundCorners={true} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -180,6 +200,8 @@ describe('VerticalBarChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
     const props = {
@@ -213,6 +235,8 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No empty chart aria label div rendered', () => {
     act(() => {
       wrapper = mount(
@@ -233,6 +257,8 @@ describe('Render empty chart aria label div when chart is empty', () => {
 });
 
 describe('Render empty chart calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
     const props = {

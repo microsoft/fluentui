@@ -1,6 +1,6 @@
 import { useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-bindings';
 import { Ref, isRefObject } from '@fluentui/react-component-ref';
-import * as PopperJs from '@popperjs/core';
+import type { Placement as PopperJsPlacement, VirtualElement as PopperJsVirtualElement } from '@popperjs/core';
 import * as React from 'react';
 
 import { getPlacement } from './positioningHelper';
@@ -16,8 +16,8 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
   const usesRenderProps: boolean = typeof props.children === 'function';
 
   const proposedPlacement = getPlacement(props.align, props.position, props.rtl);
-  const latestPlacement = React.useRef<PopperJs.Placement>(proposedPlacement);
-  const [computedPlacement, setComputedPlacement] = React.useState<PopperJs.Placement>(proposedPlacement);
+  const latestPlacement = React.useRef<PopperJsPlacement>(proposedPlacement);
+  const [computedPlacement, setComputedPlacement] = React.useState<PopperJsPlacement>(proposedPlacement);
 
   const popperRef = React.useRef<PopperRefHandle | null>(null);
   const { targetRef, containerRef, arrowRef } = usePopper({
@@ -43,7 +43,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     // Does not make anything worse as Popper component does not have proper handing for ref updates ¯\_(ツ)_/¯
     targetRef.current = isRefObject(props.targetRef)
       ? (props.targetRef as React.RefObject<Element>).current
-      : (props.targetRef as PopperJs.VirtualElement);
+      : (props.targetRef as PopperJsVirtualElement);
     arrowRef.current = props.pointerTargetRef?.current as HTMLElement;
   });
 

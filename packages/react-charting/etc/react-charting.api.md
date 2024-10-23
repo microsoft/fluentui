@@ -22,6 +22,8 @@ import { ITheme as ITheme_2 } from '@fluentui/react';
 import * as React_2 from 'react';
 import { SankeyLink } from 'd3-sankey';
 import { SankeyNode } from 'd3-sankey';
+import { ScaleBand } from 'd3-scale';
+import { ScaleLinear } from 'd3-scale';
 import { SVGProps } from 'react';
 import { TimeLocaleDefinition } from 'd3-time-format';
 
@@ -36,6 +38,36 @@ export type ChartDataMode = 'default' | 'fraction' | 'percentage';
 
 // @public (undocumented)
 export const ChartHoverCard: React_2.FunctionComponent<IChartHoverCardProps>;
+
+// @public (undocumented)
+export const DataVizGradientPalette: {
+    gradient1: string;
+    gradient2: string;
+    gradient3: string;
+    gradient4: string;
+    gradient5: string;
+    gradient6: string;
+    gradient7: string;
+    gradient8: string;
+    gradient9: string;
+    gradient10: string;
+    gradient1Ext: string;
+    gradient2Ext: string;
+    gradient3Ext: string;
+    gradient4Ext: string;
+    gradient5Ext: string;
+    gradient6Ext: string;
+    gradient7Ext: string;
+    gradient8Ext: string;
+    gradient9Ext: string;
+    gradient10Ext: string;
+    success: string;
+    highSuccess: string;
+    warning: string;
+    error: string;
+    highError: string;
+    disabled: string;
+};
 
 // @public (undocumented)
 export const DataVizPalette: {
@@ -95,6 +127,14 @@ export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 export const GaugeChart: React_2.FunctionComponent<IGaugeChartProps>;
 
 // @public (undocumented)
+export enum GaugeChartVariant {
+    // (undocumented)
+    MultipleSegments = "multiple-segments",
+    // (undocumented)
+    SingleSegment = "single-segment"
+}
+
+// @public (undocumented)
 export enum GaugeValueFormat {
     // (undocumented)
     Fraction = "fraction",
@@ -109,7 +149,13 @@ export const getChartHoverCardStyles: (props: IChartHoverCardStyleProps) => ICha
 export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
+export const getGradientFromToken: (token: string, isDarkTheme?: boolean) => [string, string];
+
+// @public (undocumented)
 export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolean) => string;
+
+// @public (undocumented)
+export const getNextGradient: (index: number, offset?: number, isDarkTheme?: boolean) => [string, string];
 
 // @public
 export const GroupedVerticalBarChart: React_2.FunctionComponent<IGroupedVerticalBarChartProps>;
@@ -142,6 +188,7 @@ export interface IAccessibilityProps {
 export interface IAreaChartProps extends ICartesianChartProps {
     culture?: string;
     data: IChartProps;
+    enableGradient?: boolean;
     enablePerfOptimization?: boolean;
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
     onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
@@ -244,6 +291,7 @@ export interface ICartesianChartProps {
     tickPadding?: number;
     tickValues?: number[] | Date[];
     timeFormatLocale?: TimeLocaleDefinition;
+    useUTC?: boolean;
     width?: number;
     wrapXAxisLables?: boolean;
     xAxisTickCount?: number;
@@ -300,6 +348,7 @@ export interface IChartDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
     data?: number;
+    gradient?: [string, string];
     horizontalBarChartdata?: IHorizontalDataPoint;
     legend?: string;
     onClick?: VoidFunction;
@@ -432,9 +481,11 @@ export interface IDonutChartProps extends ICartesianChartProps {
     calloutProps?: Partial<ICalloutProps>;
     culture?: string;
     data?: IChartProps;
+    enableGradient?: boolean;
     hideLabels?: boolean;
     innerRadius?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
+    roundCorners?: boolean;
     showLabelsInPercent?: boolean;
     styles?: IStyleFunctionOrObject<IDonutChartStyleProps, IDonutChartStyles>;
     valueInsideDonut?: string | number;
@@ -474,9 +525,10 @@ export interface IGaugeChartProps {
     calloutProps?: Partial<ICalloutProps>;
     chartTitle?: string;
     chartValue: number;
-    chartValueFormat?: GaugeValueFormat | ((sweepFraction: number[]) => string);
+    chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
     className?: string;
     culture?: string;
+    enableGradient?: boolean;
     height?: number;
     hideLegend?: boolean;
     hideMinMax?: boolean;
@@ -485,10 +537,12 @@ export interface IGaugeChartProps {
     legendProps?: Partial<ILegendsProps>;
     maxValue?: number;
     minValue?: number;
+    roundCorners?: boolean;
     segments: IGaugeChartSegment[];
     styles?: IStyleFunctionOrObject<IGaugeChartStyleProps, IGaugeChartStyles>;
     sublabel?: string;
     theme?: ITheme;
+    variant?: GaugeChartVariant;
     width?: number;
 }
 
@@ -496,6 +550,7 @@ export interface IGaugeChartProps {
 export interface IGaugeChartSegment {
     accessibilityData?: IAccessibilityProps;
     color?: string;
+    gradient?: [string, string];
     legend: string;
     size: number;
 }
@@ -506,7 +561,10 @@ export interface IGaugeChartStyleProps {
     chartValueSize?: number;
     chartWidth?: number;
     className?: string;
+    gradientFill?: string;
     lineColor?: string;
+    opacity?: number;
+    solidFill?: string;
     theme: ITheme;
     toDrawShape?: boolean;
 }
@@ -524,6 +582,7 @@ export interface IGaugeChartStyles {
     chartTitle?: IStyle;
     chartValue?: IStyle;
     descriptionMessage?: IStyle;
+    gradientSegment?: IStyle;
     legendsContainer?: IStyle;
     limits?: IStyle;
     needle?: IStyle;
@@ -542,15 +601,18 @@ export interface IGroupedVerticalBarChartData {
 
 // @public
 export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
-    barwidth?: number;
+    barwidth?: number | 'default' | 'auto';
     chartTitle?: string;
     culture?: string;
     data: IGroupedVerticalBarChartData[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
     // @deprecated
     legendColor?: string;
+    maxBarWidth?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IGVBarChartSeriesPoint>;
+    roundCorners?: boolean;
     // @deprecated
     showXAxisGridLines?: boolean;
     // @deprecated
@@ -560,6 +622,8 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     // @deprecated
     showYAxisPath?: boolean;
     styles?: IStyleFunctionOrObject<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>;
+    xAxisInnerPadding?: number;
+    xAxisOuterPadding?: number;
 }
 
 // @public
@@ -577,6 +641,7 @@ export interface IGVBarChartSeriesPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     color: string;
     data: number;
+    gradient?: [string, string];
     key: string;
     legend: string;
     onClick?: VoidFunction;
@@ -665,10 +730,12 @@ export interface IHorizontalBarChartProps {
     className?: string;
     culture?: string;
     data?: IChartProps[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     hideRatio?: boolean[];
     hideTooltip?: boolean;
     onRenderCalloutPerHorizontalBar?: IRenderFunction<IChartDataPoint>;
+    roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>;
     theme?: ITheme;
     variant?: HorizontalBarChartVariant;
@@ -707,6 +774,7 @@ export interface IHorizontalBarChartStyles {
 export interface IHorizontalBarChartWithAxisDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
+    gradient?: [string, string];
     legend?: string;
     onClick?: VoidFunction;
     x: number;
@@ -722,7 +790,9 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
     colors?: string[];
     culture?: string;
     data?: IHorizontalBarChartWithAxisDataPoint[];
+    enableGradient?: boolean;
     onRenderCalloutPerDataPoint?: IRenderFunction<IHorizontalBarChartWithAxisDataPoint>;
+    roundCorners?: boolean;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     styles?: IStyleFunctionOrObject<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>;
@@ -797,6 +867,7 @@ export interface ILegendsProps {
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
     overflowText?: string;
+    shape?: LegendShape;
     styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
     theme?: ITheme;
 }
@@ -961,6 +1032,10 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     // Warning: (ae-forgotten-export) The symbol "ChartTypes" needs to be exported by the entry point index.d.ts
     chartType: ChartTypes;
     children(props: IChildProps): React_2.ReactNode;
+    createStringYAxis: (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean, barWidth: number | undefined) => ScaleBand<string>;
+    // Warning: (ae-forgotten-export) The symbol "IYAxisParams" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "IAxisData" needs to be exported by the entry point index.d.ts
+    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, useSecondaryYScale?: boolean) => ScaleLinear<number, number, never>;
     culture?: string;
     customizedCallout?: any;
     datasetForXAxisDomain?: string[];
@@ -969,8 +1044,14 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     // (undocumented)
     getAxisData?: any;
     getDomainMargins?: (containerWidth: number) => IMargins;
+    // Warning: (ae-forgotten-export) The symbol "IDomainNRange" needs to be exported by the entry point index.d.ts
+    getDomainNRangeValues: (points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[] | IHorizontalBarChartWithAxisDataPoint[] | IGroupedVerticalBarChartData[] | IHeatMapChartDataPoint[], margins: IMargins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
+    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[], yAxisType: YAxisType | undefined) => {
+        startValue: number;
+        endValue: number;
+    };
     isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;
@@ -1001,6 +1082,7 @@ export interface IMultiStackedBarChartProps {
     className?: string;
     culture?: string;
     data?: IChartProps[];
+    enableGradient?: boolean;
     focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
     hideDenominator?: boolean[];
     hideLabels?: boolean;
@@ -1012,6 +1094,7 @@ export interface IMultiStackedBarChartProps {
     legendsOverflowProps?: Partial<IOverflowSetProps>;
     legendsOverflowText?: string;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
+    roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>;
     theme?: ITheme;
     variant?: MultiStackedBarChartVariant;
@@ -1085,6 +1168,13 @@ export interface IRefArrayData {
     refElement?: SVGGElement;
 }
 
+// @public
+export interface ISankeyChartAccessibilityProps {
+    emptyAriaLabel?: string;
+    linkAriaLabel?: string;
+    nodeAriaLabel?: string;
+}
+
 // @public (undocumented)
 export interface ISankeyChartData {
     // (undocumented)
@@ -1095,17 +1185,26 @@ export interface ISankeyChartData {
 
 // @public
 export interface ISankeyChartProps {
+    accessibility?: ISankeyChartAccessibilityProps;
     borderColorsForNodes?: string[];
     className?: string;
     colorsForNodes?: string[];
     data: IChartProps;
+    enableReflow?: boolean;
+    formatNumberOptions?: Intl.NumberFormatOptions;
     height?: number;
     parentRef?: HTMLElement | null;
     pathColor?: string;
     shouldResize?: number;
+    strings?: ISankeyChartStrings;
     styles?: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>;
     theme?: ITheme;
     width?: number;
+}
+
+// @public
+export interface ISankeyChartStrings {
+    linkFrom?: string;
 }
 
 // @public
@@ -1125,6 +1224,7 @@ export interface ISankeyChartStyleProps {
 // @public
 export interface ISankeyChartStyles {
     calloutContentRoot?: IStyle;
+    chartWrapper?: IStyle;
     links?: IStyle;
     nodes?: IStyle;
     nodeTextContainer?: IStyle;
@@ -1183,6 +1283,7 @@ export interface IStackedBarChartProps {
     culture?: string;
     data?: IChartProps;
     enabledLegendsWrapLines?: boolean;
+    enableGradient?: boolean;
     focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
     hideDenominator?: boolean;
     hideLegend?: boolean;
@@ -1194,6 +1295,7 @@ export interface IStackedBarChartProps {
     legendsOverflowProps?: Partial<IOverflowSetProps>;
     legendsOverflowText?: string;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
+    roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IStackedBarChartStyleProps, IStackedBarChartStyles>;
     targetData?: IChartDataPoint;
     theme?: ITheme;
@@ -1298,6 +1400,7 @@ export interface ITreeStyles {
 export interface IVerticalBarChartDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
+    gradient?: [string, string];
     legend?: string;
     lineData?: ILineDataInVerticalBarChart;
     onClick?: VoidFunction;
@@ -1309,18 +1412,23 @@ export interface IVerticalBarChartDataPoint {
 
 // @public
 export interface IVerticalBarChartProps extends ICartesianChartProps {
-    barWidth?: number;
+    barWidth?: number | 'default' | 'auto';
     chartTitle?: string;
     colors?: string[];
     culture?: string;
     data?: IVerticalBarChartDataPoint[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     lineLegendColor?: string;
     lineLegendText?: string;
     lineOptions?: ILineChartLineOptions;
+    maxBarWidth?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
+    roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
     useSingleColor?: boolean;
+    xAxisInnerPadding?: number;
+    xAxisOuterPadding?: number;
     xAxisPadding?: number;
 }
 
@@ -1355,20 +1463,25 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     barCornerRadius?: number;
     barGapMax?: number;
     barMinimumHeight?: number;
-    barWidth?: number;
+    barWidth?: number | 'default' | 'auto';
     calloutProps?: Partial<ICalloutProps>;
     chartTitle?: string;
     // @deprecated
     colors?: string[];
     culture?: string;
     data: IVerticalStackedChartProps[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
     lineOptions?: ILineChartLineOptions;
+    maxBarWidth?: number;
     onBarClick?: (event: React_2.MouseEvent<SVGElement>, data: IVerticalStackedChartProps | IVSChartDataPoint) => void;
     onRenderCalloutPerDataPoint?: IRenderFunction<IVSChartDataPoint>;
     onRenderCalloutPerStack?: IRenderFunction<IVerticalStackedChartProps>;
+    roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;
+    xAxisInnerPadding?: number;
+    xAxisOuterPadding?: number;
     xAxisPadding?: number;
     yMinValue?: undefined;
 }
@@ -1416,6 +1529,7 @@ export interface IVSChartDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
     data: number;
+    gradient?: [string, string];
     legend: string;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;

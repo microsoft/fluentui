@@ -5,7 +5,7 @@ import { Arc, IArcData } from '../Arc/index';
 import { IChartDataPoint } from '../index';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Pie.styles';
-import { wrapTextInsideDonut } from '../../../utilities/index';
+import { getNextGradient, wrapTextInsideDonut } from '../../../utilities/index';
 
 const getClassNames = classNamesFunction<IPieStyleProps, IPieStyles>();
 const TEXT_PADDING: number = 5;
@@ -34,7 +34,14 @@ export class Pie extends React.Component<IPieProps, {}> {
   }
 
   public arcGenerator = (d: IArcData, i: number, focusData: IArcData, href?: string): JSX.Element => {
-    const color = d && d.data && d.data.color;
+    let color = d && d.data && d.data.color;
+    let nextColor = color;
+
+    if (this.props.enableGradient) {
+      color = this.props.data[i].gradient?.[0] ?? getNextGradient(i, 0, this.props.theme!.isInverted)[0];
+      nextColor = this.props.data[i].gradient?.[1] ?? getNextGradient(i, 0, this.props.theme!.isInverted)[1];
+    }
+
     return (
       <Arc
         key={i}
@@ -43,6 +50,9 @@ export class Pie extends React.Component<IPieProps, {}> {
         innerRadius={this.props.innerRadius}
         outerRadius={this.props.outerRadius}
         color={color!}
+        nextColor={nextColor}
+        enableGradient={this.props.enableGradient}
+        roundCorners={this.props.roundCorners}
         onFocusCallback={this._focusCallback}
         hoverOnCallback={this._hoverCallback}
         onBlurCallback={this.props.onBlurCallback}
@@ -76,13 +86,7 @@ export class Pie extends React.Component<IPieProps, {}> {
       <g transform={translate}>
         {piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i, focusData[i], this.props.href))}
         {this.props.valueInsideDonut && (
-          <text
-            y={5}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            className={classNames.insideDonutString}
-            data-is-focusable={true}
-          >
+          <text y={5} textAnchor="middle" dominantBaseline="middle" className={classNames.insideDonutString}>
             {this.props.valueInsideDonut}
           </text>
         )}

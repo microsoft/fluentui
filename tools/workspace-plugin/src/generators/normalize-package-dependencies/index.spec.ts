@@ -16,11 +16,12 @@ import generator from './index';
 import { PackageJson } from '../../types';
 import { disableChalk } from '../../utils-testing';
 
-const graphMock: ProjectGraph = {
+let graphMock: ProjectGraph;
+const getBlankGraphMock = () => ({
   dependencies: {},
   nodes: {},
   externalNodes: {},
-};
+});
 
 jest.mock('@nx/devkit', () => {
   async function createProjectGraphAsyncMock(): Promise<ProjectGraph> {
@@ -43,39 +44,65 @@ describe('normalize-package-dependencies generator', () => {
   const infoLogSpy = jest.spyOn(console, 'info').mockImplementation(noop);
 
   beforeEach(() => {
+    graphMock = {
+      ...getBlankGraphMock(),
+    };
     tree = createTreeWithEmptyWorkspace();
     tree = createProject(tree, {
       projectName: 'react-one',
+      projectVersion: '1.0.0',
       deps: { dev: { '@proj/build-tool': '^1.0.0' }, prod: { react: '17.x.x' }, peer: {} },
       tags: ['platform:any'],
     });
     tree = createProject(tree, {
       projectName: 'react-two',
+      projectVersion: '1.0.0',
       deps: { dev: { '@proj/build-tool': '^1.0.0' }, prod: { react: '17.x.x', '@proj/react-one': '^1.0.0' }, peer: {} },
       tags: ['platform:any', 'scope:two'],
     });
     tree = createProject(tree, {
       projectName: 'react-three',
+      projectVersion: '0.1.0',
       deps: {
         dev: {},
-        prod: { react: '17.x.x', '@proj/react-two': '^1.0.0', '@proj/react-four': '1.0.0-beta.17' },
+        prod: {
+          react: '17.x.x',
+          '@proj/react-two': '^1.0.0',
+          '@proj/react-four': '1.0.0-beta.17',
+          '@proj/react-five': '9.0.0-alpha.17',
+        },
         peer: {},
       },
       tags: ['platform:any', 'scope:two'],
     });
     tree = createProject(tree, {
       projectName: 'react-four',
+      projectVersion: '1.0.0-beta.17',
       deps: { dev: {}, prod: { react: '17.x.x' }, peer: {} },
       tags: ['platform:any', 'scope:two'],
     });
     tree = createProject(tree, {
+      projectName: 'react-five',
+      projectVersion: '9.0.0-alpha.17',
+      deps: { dev: {}, prod: { react: '17.x.x' }, peer: {} },
+      tags: ['platform:any', 'scope:two'],
+    });
+    tree = createProject(tree, {
+      projectName: 'web-component-one',
+      projectVersion: '3.0.0-beta.17',
+      deps: { dev: {}, prod: { 'lit-element': '3.x.x' }, peer: {} },
+      tags: ['platform:web', 'scope:web-components'],
+    });
+    tree = createProject(tree, {
       projectName: 'build-tool',
+      projectVersion: '0.0.1',
       deps: { dev: {}, prod: { nx: '16.x.x' }, peer: {} },
       tags: ['platform:node', 'scope:tools'],
     });
     tree = createProject(tree, {
       projectName: 'react-app',
       projectType: 'application',
+      projectVersion: '0.0.1',
       deps: {
         dev: { '@proj/build-tool': '^1.0.0' },
         prod: {
@@ -83,6 +110,8 @@ describe('normalize-package-dependencies generator', () => {
           '@proj/react-one': '^1.0.0',
           '@proj/react-two': '^1.0.0',
           '@proj/react-four': '1.0.0-beta.17',
+          '@proj/react-five': '9.0.0-alpha.17',
+          '@proj/web-component-one': '3.0.0-beta.17',
         },
         peer: {},
       },
@@ -117,6 +146,8 @@ describe('normalize-package-dependencies generator', () => {
           '@proj/react-one': '^1.0.0',
           '@proj/react-two': '^1.0.0',
           '@proj/react-four': '1.0.0-beta.17',
+          '@proj/react-five': '9.0.0-alpha.17',
+          '@proj/web-component-one': '3.0.0-beta.17',
         });
         expect(reactApp.devDependencies).toEqual({
           '@proj/build-tool': '^1.0.0',
@@ -134,31 +165,35 @@ describe('normalize-package-dependencies generator', () => {
 
       expect(logLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`
         Array [
-          "@proj/react-one has following dependency version issues:",
+          "[react-one] project has following dependency version issues:",
           "  - @proj/build-tool@^1.0.0",
           "",
-          "@proj/react-two has following dependency version issues:",
+          "[react-two] project has following dependency version issues:",
           "  - @proj/build-tool@^1.0.0",
           "",
-          "@proj/react-app has following dependency version issues:",
+          "[react-app] project has following dependency version issues:",
           "  - @proj/build-tool@^1.0.0",
           "  - @proj/react-one@^1.0.0",
           "  - @proj/react-two@^1.0.0",
           "  - @proj/react-four@1.0.0-beta.17",
+          "  - @proj/react-five@9.0.0-alpha.17",
+          "  - @proj/web-component-one@3.0.0-beta.17",
           "",
         ]
       `);
       expect(infoLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`
         Array [
-          "All these dependencies version should be specified as '*' or '>=9.0.0-alpha' ",
-          "Fix this by running 'nx g @fluentui/workspace-plugin:normalize-package-dependencies'",
+          "All these dependencies version should be specified as '*' or '>={MAJOR}.0.0-alpha' (NOTE: 'MAJOR' equals to specified package major version)",
+          "🛠️ FIX: run 'nx g @fluentui/workspace-plugin:normalize-package-dependencies'",
         ]
       `);
     });
 
     it(`should report if prerelease package range changed to normal release version`, async () => {
+      // normalize versions
       await generator(tree, {});
 
+      // change version of pre-release package to zero based major standard release
       updateProject(tree, { projectName: 'react-four', version: '0.1.0' });
 
       await expect(generator(tree, { verify: true })).rejects.toThrowErrorMatchingInlineSnapshot(
@@ -167,8 +202,8 @@ describe('normalize-package-dependencies generator', () => {
 
       expect(logLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`
         Array [
-          "@proj/react-app has following dependency version issues:",
-          "  - @proj/react-four@>=9.0.0-alpha",
+          "[react-app] project has following dependency version issues:",
+          "  - @proj/react-four@>=1.0.0-alpha",
           "",
         ]
       `);
@@ -178,7 +213,7 @@ describe('normalize-package-dependencies generator', () => {
   describe(`application`, () => {
     it(`should update workspace devDependencies,dependencies,peerDependencies versions to "*"`, async () => {
       // this tests that dependency which has different major version (thus is installed from npm) will not be updated to '*'
-      addNonWorkspaceDependency(tree, '@proj/react-app', 'prod', {
+      addNonWorkspaceDependency(tree, 'react-app', 'prod', {
         pkgName: '@proj/react-three',
         pkgVersion: '^0.1.0',
       });
@@ -189,10 +224,15 @@ describe('normalize-package-dependencies generator', () => {
 
       expect(reactApp.dependencies).toEqual({
         react: '17.x.x',
+        // workspace dependencies
         '@proj/react-one': '*',
         '@proj/react-two': '*',
+        // non workspace dependency - different version of original workspace installed from npm
         '@proj/react-three': '^0.1.0',
-        '@proj/react-four': '>=9.0.0-alpha',
+        // workspace dependencies pre-releases
+        '@proj/react-five': '>=9.0.0-alpha',
+        '@proj/react-four': '>=1.0.0-alpha',
+        '@proj/web-component-one': '>=3.0.0-alpha',
       });
       expect(reactApp.devDependencies).toEqual({
         '@proj/build-tool': '*',
@@ -206,10 +246,13 @@ describe('normalize-package-dependencies generator', () => {
 
       expect(reactApp.dependencies).toEqual(
         expect.objectContaining({
-          '@proj/react-four': '>=9.0.0-alpha',
+          '@proj/react-four': '>=1.0.0-alpha',
+          '@proj/react-five': '>=9.0.0-alpha',
+          '@proj/web-component-one': '>=3.0.0-alpha',
         }),
       );
 
+      // change version of pre-release package to zero based major standard release
       updateProject(tree, { projectName: 'react-four', version: '0.1.0' });
 
       await generator(tree, {});
@@ -224,10 +267,12 @@ describe('normalize-package-dependencies generator', () => {
     });
 
     it(`should revert incorrect beachball bump change version on pre-release package`, async () => {
+      // simulate beachball bumping version of pre-release package to incorrect version
       updateProject(tree, {
         projectName: 'react-app',
         dependencies: {
-          '@proj/react-four': '1.0.0-beta.17 <9.0.0',
+          '@proj/web-component-one': '3.0.0-beta.18 <3.0.0',
+          '@proj/react-five': '9.0.0-alpha.18 <9.0.0',
         },
       });
 
@@ -237,7 +282,8 @@ describe('normalize-package-dependencies generator', () => {
 
       expect(reactApp.dependencies).toEqual(
         expect.objectContaining({
-          '@proj/react-four': '>=9.0.0-alpha',
+          '@proj/web-component-one': '>=3.0.0-alpha',
+          '@proj/react-five': '>=9.0.0-alpha',
         }),
       );
     });
@@ -246,11 +292,11 @@ describe('normalize-package-dependencies generator', () => {
   describe(`library`, () => {
     it(`should update workspace only devDependencies versions to "*"`, async () => {
       // this tests that dependency which has different major version (thus is installed from npm) will not be updated to '*'
-      addNonWorkspaceDependency(tree, '@proj/react-three', 'prod', {
+      addNonWorkspaceDependency(tree, 'react-three', 'prod', {
         pkgName: '@proj/react-one',
         pkgVersion: '^0.1.0',
       });
-      addNonWorkspaceDependency(tree, '@proj/react-three', 'dev', {
+      addNonWorkspaceDependency(tree, 'react-three', 'dev', {
         pkgName: '@proj/build-tool',
         pkgVersion: '^0.1.0',
       });
@@ -273,6 +319,7 @@ describe('normalize-package-dependencies generator', () => {
         '@proj/react-one': '^0.1.0',
         '@proj/react-two': '^1.0.0',
         '@proj/react-four': '1.0.0-beta.17',
+        '@proj/react-five': '9.0.0-alpha.17',
       });
       expect(reactThree.devDependencies).toEqual({ '@proj/build-tool': '^0.1.0' });
     });
@@ -282,10 +329,10 @@ describe('normalize-package-dependencies generator', () => {
 function getPackageJsonForAllProjects(tree: Tree) {
   const projects = getProjects(tree);
 
-  const reactOne = projects.get('@proj/react-one');
-  const reactTwo = projects.get('@proj/react-two');
-  const reactThree = projects.get('@proj/react-three');
-  const reactApp = projects.get('@proj/react-app');
+  const reactOne = projects.get('react-one');
+  const reactTwo = projects.get('react-two');
+  const reactThree = projects.get('react-three');
+  const reactApp = projects.get('react-app');
 
   return {
     reactOne: readJson<PackageJson>(tree, joinPathFragments(reactOne!.root, 'package.json')),
@@ -304,8 +351,8 @@ function updateProject(
   },
 ) {
   const { projectName, version, dependencies } = options;
-  const packageName = `@proj/${projectName}`;
-  const project = readProjectConfiguration(tree, packageName);
+
+  const project = readProjectConfiguration(tree, projectName);
   updateJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'), json => {
     if (version) {
       json.version = version;
@@ -327,23 +374,25 @@ function createProject(
   options: {
     projectName: string;
     projectType?: 'application' | 'library';
+    projectVersion: string;
     tags?: string[];
     deps: { prod: Record<string, string>; dev: Record<string, string>; peer: Record<string, string> };
   },
 ) {
-  const { projectName, deps, tags, projectType = 'library' } = options;
+  const { projectName, projectVersion, deps, tags, projectType = 'library' } = options;
   const packageName = `@proj/${projectName}`;
 
   const rootPath = `packages/${projectName}`;
 
   writeJson(tree, `packages/${projectName}/package.json`, {
     name: packageName,
+    version: projectVersion,
     dependencies: { ...deps.prod },
     devDependencies: { ...deps.dev },
     peerDependencies: { ...deps.peer },
   });
 
-  addProjectConfiguration(tree, packageName, {
+  addProjectConfiguration(tree, projectName, {
     root: rootPath,
     projectType,
     ...(tags ? { tags } : null),
@@ -351,13 +400,17 @@ function createProject(
 
   const depKeys = [...Object.keys(deps.prod), ...Object.keys(deps.dev), ...Object.keys(deps.peer)];
 
-  graphMock.dependencies[packageName] = depKeys.map(value => {
-    return { source: packageName, target: value, type: 'static' };
+  graphMock.dependencies[projectName] = depKeys.map(value => {
+    return {
+      source: projectName,
+      target: value.startsWith('@proj/') ? value.replace('@proj/', '') : `npm:${value}`,
+      type: 'static',
+    };
   });
-  graphMock.nodes[packageName] = {
-    name: packageName,
+  graphMock.nodes[projectName] = {
+    name: projectName,
     type: projectType === 'library' ? 'lib' : 'app',
-    data: { name: packageName, root: rootPath },
+    data: { name: projectName, root: rootPath },
   };
 
   return tree;

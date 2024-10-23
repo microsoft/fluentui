@@ -10,6 +10,11 @@ import {
 } from '../types/IDataPoint';
 import { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
+import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
+import * as vbcUtils from './vbc-utils';
+import { getGradientFromToken, getNextGradient } from './gradients';
+const { Timezone } = require('../../scripts/constants');
+const env = require('../../config/tests');
 
 // Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
 
@@ -17,7 +22,27 @@ describe('Unit test to convert data to localized string', () => {
   test('Should return undefined when data provided is undefined', () => {
     expect(utils.convertToLocaleString(undefined)).toBeUndefined();
   });
-
+  test('Should return NaN when data is NaN', () => {
+    expect(utils.convertToLocaleString(NaN)).toBeNaN();
+  });
+  test('Should return localized 0 when data is numeric 0', () => {
+    expect(utils.convertToLocaleString(0)).toBe('0');
+  });
+  test('Should return localized 123 when data is string 123', () => {
+    expect(utils.convertToLocaleString('123')).toBe('123');
+  });
+  test('Should return localized 1234 when data is string 1234', () => {
+    expect(utils.convertToLocaleString('1234')).toBe('1,234');
+  });
+  test('Should return localized Hello World when data is string Hello World', () => {
+    expect(utils.convertToLocaleString('Hello World')).toBe('Hello World');
+  });
+  test('Should return 0 as string when data is empty string', () => {
+    expect(utils.convertToLocaleString('')).toBe('0');
+  });
+  test('Should return 0 as string when data is single whitespace string', () => {
+    expect(utils.convertToLocaleString(' ')).toBe('0');
+  });
   test('Should return the localised data in the given culture when input data is a string', () => {
     expect(utils.convertToLocaleString('text', 'en-GB')).toBe('text');
     expect(utils.convertToLocaleString('text', 'ar-SY')).toBe('text');
@@ -106,7 +131,7 @@ interface ICreateXAxisParams extends Partial<Omit<utils.IXAxisParams, 'domainNRa
   domainNRangeValues?: Partial<utils.IDomainNRange>;
 }
 const createXAxisParams = (xAxisParams?: ICreateXAxisParams): utils.IXAxisParams => {
-  const xAxisElement = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  const xAxisElement = document.createElementNS('http://www.w3.org/2000/svg', 'g') as SVGSVGElement;
 
   return {
     xAxisElement,
@@ -179,8 +204,7 @@ describe('createNumericXAxis', () => {
   });
 });
 
-// FIXME - non deterministic snapshots causing master pipeline breaks
-describe.skip('createDateXAxis', () => {
+conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('createDateXAxis', () => {
   const domainNRangeValues: ICreateXAxisParams['domainNRangeValues'] = {
     dStartValue: new Date(2021, 6, 1),
     dEndValue: new Date(2022, 5, 30),
@@ -292,7 +316,7 @@ describe('prepareDatapoints', () => {
 });
 
 const createYAxisParams = (yAxisParams?: Partial<utils.IYAxisParams>): utils.IYAxisParams => {
-  const yAxisElement = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  const yAxisElement = document.createElementNS('http://www.w3.org/2000/svg', 'g') as SVGSVGElement;
 
   return {
     yMinMaxValues: {
@@ -314,56 +338,35 @@ const createYAxisParams = (yAxisParams?: Partial<utils.IYAxisParams>): utils.IYA
   };
 };
 
-describe('createYAxis', () => {
-  it('should render y-axis labels correctly for horizontal bar chart with axis', () => {
-    const yAxisParams = createYAxisParams();
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxis(yAxisParams, false, axisData, utils.ChartTypes.HorizontalBarChartWithAxis, 16, false);
-    expect(yAxisParams.yAxisElement).toMatchSnapshot();
-  });
-
-  it('should render y-axis labels correctly for other charts', () => {
-    const yAxisParams = createYAxisParams();
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxis(yAxisParams, false, axisData, utils.ChartTypes.VerticalBarChart, 16, false);
-    expect(yAxisParams.yAxisElement).toMatchSnapshot();
-  });
-});
-
 describe('createYAxisForHorizontalBarChartWithAxis', () => {
   it('should render y-axis labels correctly with specific min and max tick values', () => {
     const yAxisParams = createYAxisParams({ yMaxValue: 10, yMinValue: 1 });
     delete yAxisParams.yMinMaxValues;
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false, axisData, 16);
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with specific tick padding value', () => {
     const yAxisParams = createYAxisParams({ tickPadding: 5 });
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false, axisData, 16);
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a specific number of ticks', () => {
     const yAxisParams = createYAxisParams({ yAxisTickCount: 2 });
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false, axisData, 16);
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, true, axisData, 16);
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a custom tick format', () => {
     const yAxisParams = createYAxisParams({ yAxisTickFormat: (domainValue: number) => `₹${domainValue}` });
-    const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false, axisData, 16);
+    utils.createYAxisForHorizontalBarChartWithAxis(yAxisParams, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });
@@ -373,21 +376,21 @@ describe('createYAxisForOtherCharts', () => {
     const yAxisParams = createYAxisParams({ yMaxValue: 10, yMinValue: 1, maxOfYVal: 5 });
     delete yAxisParams.yMinMaxValues;
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false);
+    utils.createNumericYAxis(yAxisParams, false, axisData, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with specific tick padding value', () => {
     const yAxisParams = createYAxisParams({ tickPadding: 5 });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false);
+    utils.createNumericYAxis(yAxisParams, false, axisData, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a specific number of ticks', () => {
     const yAxisParams = createYAxisParams({ yAxisTickCount: 3 });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false);
+    utils.createNumericYAxis(yAxisParams, false, axisData, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
@@ -397,51 +400,35 @@ describe('createYAxisForOtherCharts', () => {
       eventLabelHeight: 20,
     });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false);
+    utils.createNumericYAxis(yAxisParams, false, axisData, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, true, axisData, false);
+    utils.createNumericYAxis(yAxisParams, true, axisData, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for secondary scale', () => {
     const yAxisParams = createYAxisParams();
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false, true);
+    utils.createNumericYAxis(yAxisParams, false, axisData, false, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for secondary scale when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, true, axisData, false, true);
+    utils.createNumericYAxis(yAxisParams, true, axisData, false, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a custom tick format', () => {
     const yAxisParams = createYAxisParams({ yAxisTickFormat: d3Format('$') });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false);
-    expect(yAxisParams.yAxisElement).toMatchSnapshot();
-  });
-});
-
-describe('createStringYAxis', () => {
-  const dataPoints: string[] = ['Y-axis label 1', 'Y-axis label 2', 'Y-axis label 3'];
-
-  it('should render y-axis labels correctly for horizontal bar chart with axis', () => {
-    const yAxisParams = createYAxisParams();
-    utils.createStringYAxis(yAxisParams, dataPoints, false, utils.ChartTypes.HorizontalBarChartWithAxis, 16);
-    expect(yAxisParams.yAxisElement).toMatchSnapshot();
-  });
-
-  it('should render y-axis labels correctly for other charts', () => {
-    const yAxisParams = createYAxisParams();
-    utils.createStringYAxis(yAxisParams, dataPoints, false, utils.ChartTypes.VerticalBarChart, undefined);
+    utils.createNumericYAxis(yAxisParams, false, axisData, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });
@@ -468,30 +455,30 @@ describe('createStringYAxisForHorizontalBarChartWithAxis', () => {
   });
 });
 
-describe('createStringYAxisForOtherCharts', () => {
+describe('createStringYAxis', () => {
   const dataPoints: string[] = ['label 1', 'label 2', 'label 3'];
 
   it('should render y-axis labels correctly with specific tick padding value', () => {
     const yAxisParams = createYAxisParams({ tickPadding: 5 });
-    utils.createStringYAxisForOtherCharts(yAxisParams, dataPoints, false);
+    utils.createStringYAxis(yAxisParams, dataPoints, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for specific padding values', () => {
     const yAxisParams = createYAxisParams({ yAxisPadding: 0.5 });
-    utils.createStringYAxisForOtherCharts(yAxisParams, dataPoints, false);
+    utils.createStringYAxis(yAxisParams, dataPoints, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
-    utils.createStringYAxisForOtherCharts(yAxisParams, dataPoints, true);
+    utils.createStringYAxis(yAxisParams, dataPoints, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a custom tick format', () => {
     const yAxisParams = createYAxisParams({ yAxisTickFormat: (value: string) => `Y-axis ${value}` });
-    utils.createStringYAxisForOtherCharts(yAxisParams, dataPoints, false);
+    utils.createStringYAxis(yAxisParams, dataPoints, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });
@@ -672,23 +659,23 @@ describe('createYAxisLabels', () => {
   });
 
   it('should terminate when no node is provided', () => {
-    expect(utils.createYAxisLabels(null, undefined, 20, false, 0, false)).toBeUndefined();
+    expect(utils.createYAxisLabels(null, undefined, 20, false, false)).toBeUndefined();
   });
 
   it('should retain full y-axis labels when truncateLabel is false', () => {
-    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, 0, false);
+    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it(`should truncate y-axis labels when their length exceeds noOfCharsToTruncate
   and truncateLabel is true`, () => {
-    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 10, true, 0, false);
+    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 10, true, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   // FIXME - non deterministic snapshots causing master pipeline breaks
   it.skip('should offset y-axis labels when layout direction is RTL', () => {
-    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, 15, true);
+    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });
@@ -947,180 +934,6 @@ describe('domainRageOfVerticalNumeric', () => {
   });
 });
 
-describe('getDomainNRangeValues', () => {
-  const margins: utils.IMargins = {
-    left: 5,
-    right: 10,
-    top: 0,
-    bottom: 0,
-  };
-
-  it('should return domain and range values correctly for line chart with numeric x-axis', () => {
-    const points: ILineChartPoints[] = [
-      {
-        legend: 'Line 1',
-        data: [
-          { x: 10, y: 20 },
-          { x: 30, y: 40 },
-        ],
-      },
-    ];
-    const result = utils.getDomainNRangeValues(
-      points,
-      margins,
-      100,
-      utils.ChartTypes.AreaChart,
-      false,
-      utils.XAxisTypes.NumericAxis,
-      16,
-      undefined,
-      1,
-    );
-    matchResult(result);
-  });
-
-  it('should return domain and range values correctly for vertical stacked bar chart with numeric x-axis', () => {
-    const points: IDataPoint[] = [
-      { x: 10, y: 20 },
-      { x: 30, y: 40 },
-    ];
-    const result = utils.getDomainNRangeValues(
-      points,
-      margins,
-      100,
-      utils.ChartTypes.VerticalStackedBarChart,
-      false,
-      utils.XAxisTypes.NumericAxis,
-      16,
-      undefined,
-      1,
-    );
-    matchResult(result);
-  });
-
-  it('should return domain and range values correctly for vertical bar chart with numeric x-axis', () => {
-    const points: IDataPoint[] = [
-      { x: 10, y: 20 },
-      { x: 30, y: 40 },
-    ];
-    const result = utils.getDomainNRangeValues(
-      points,
-      margins,
-      100,
-      utils.ChartTypes.VerticalBarChart,
-      false,
-      utils.XAxisTypes.NumericAxis,
-      16,
-      undefined,
-      1,
-    );
-    matchResult(result);
-  });
-
-  it('should return domain and range values correctly for horizontal bar chart with numeric x-axis', () => {
-    const points: IHorizontalBarChartWithAxisDataPoint[] = [
-      { x: 10, y: 20 },
-      { x: 30, y: 40 },
-    ];
-    const result = utils.getDomainNRangeValues(
-      points,
-      margins,
-      100,
-      utils.ChartTypes.HorizontalBarChartWithAxis,
-      false,
-      utils.XAxisTypes.NumericAxis,
-      16,
-      undefined,
-      1,
-    );
-    matchResult(result);
-  });
-
-  it("should return empty domain and range values for charts that don't support numeric x-axis", () => {
-    const result = utils.getDomainNRangeValues(
-      [],
-      margins,
-      100,
-      utils.ChartTypes.GroupedVerticalBarChart,
-      false,
-      utils.XAxisTypes.NumericAxis,
-      16,
-      undefined,
-      1,
-    );
-    matchResult(result);
-  });
-
-  it('should return domain and range values correctly for line chart with date x-axis', () => {
-    const points: ILineChartPoints[] = [
-      {
-        legend: 'Line 1',
-        data: [
-          { x: new Date(Date.UTC(2021, 0, 3)), y: 10 },
-          { x: new Date(Date.UTC(2021, 0, 2)), y: 20 },
-        ],
-      },
-    ];
-    const result = utils.getDomainNRangeValues(
-      points,
-      margins,
-      100,
-      utils.ChartTypes.AreaChart,
-      false,
-      utils.XAxisTypes.DateAxis,
-      16,
-      undefined,
-      1,
-    );
-    matchResult(result);
-  });
-
-  it("should return empty domain and range values for charts that don't support date x-axis", () => {
-    const result = utils.getDomainNRangeValues(
-      [],
-      margins,
-      100,
-      utils.ChartTypes.GroupedVerticalBarChart,
-      false,
-      utils.XAxisTypes.DateAxis,
-      16,
-      undefined,
-      1,
-    );
-    matchResult(result);
-  });
-
-  it('should return domain and range values correctly for charts with string x-axis', () => {
-    const result = utils.getDomainNRangeValues(
-      [],
-      margins,
-      100,
-      utils.ChartTypes.VerticalStackedBarChart,
-      false,
-      utils.XAxisTypes.StringAxis,
-      16,
-      undefined,
-      1,
-    );
-    matchResult(result);
-  });
-
-  it("should return empty domain and range values for charts that don't support string x-axis", () => {
-    const result = utils.getDomainNRangeValues(
-      [],
-      margins,
-      100,
-      utils.ChartTypes.LineChart,
-      false,
-      utils.XAxisTypes.StringAxis,
-      16,
-      undefined,
-      1,
-    );
-    matchResult(result);
-  });
-});
-
 test('findNumericMinMaxOfY should return minimum and maximum values for line chart with numeric y-axis', () => {
   const points: ILineChartPoints[] = [
     {
@@ -1180,54 +993,6 @@ describe('findHBCWANumericMinMaxOfY', () => {
       { x: 30, y: 40 },
     ];
     const result = utils.findHBCWANumericMinMaxOfY(points, utils.YAxisType.NumericAxis);
-    matchResult(result);
-  });
-});
-
-describe('getMinMaxOfYAxis', () => {
-  it('should return minimum and maximum values for line chart with numeric y-axis', () => {
-    const points: ILineChartPoints[] = [
-      {
-        legend: 'Line 1',
-        data: [
-          { x: 10, y: 20 },
-          { x: 30, y: 40 },
-        ],
-      },
-    ];
-    const result = utils.getMinMaxOfYAxis(points, utils.ChartTypes.AreaChart);
-    matchResult(result);
-  });
-
-  it('should return minimum and maximum values for vertical stacked bar chart with numeric y-axis', () => {
-    const points: IDataPoint[] = [
-      { x: 10, y: 20 },
-      { x: 30, y: 40 },
-    ];
-    const result = utils.getMinMaxOfYAxis(points, utils.ChartTypes.VerticalStackedBarChart);
-    matchResult(result);
-  });
-
-  it('should return minimum and maximum values for vertical bar chart with numeric y-axis', () => {
-    const points: IVerticalBarChartDataPoint[] = [
-      { x: 10, y: 20 },
-      { x: 30, y: 40 },
-    ];
-    const result = utils.getMinMaxOfYAxis(points, utils.ChartTypes.VerticalBarChart);
-    matchResult(result);
-  });
-
-  it('should return minimum and maximum values for horizontal bar chart with numeric y-axis', () => {
-    const points: IHorizontalBarChartWithAxisDataPoint[] = [
-      { x: 10, y: 20 },
-      { x: 30, y: 40 },
-    ];
-    const result = utils.getMinMaxOfYAxis(points, utils.ChartTypes.HorizontalBarChartWithAxis);
-    matchResult(result);
-  });
-
-  it('should return empty minimum and maximum values for other charts', () => {
-    const result = utils.getMinMaxOfYAxis([], utils.ChartTypes.HeatMapChart);
     matchResult(result);
   });
 });
@@ -1309,4 +1074,91 @@ test('formatValueWithSIPrefix should format a numeric value with appropriate SI 
   expect(utils.formatValueWithSIPrefix(983)).toBe('983');
   expect(utils.formatValueWithSIPrefix(9801)).toBe('9.8k');
   expect(utils.formatValueWithSIPrefix(100990000)).toBe('101.0M');
+});
+
+describe('getClosestPairDiffAndRange', () => {
+  it('should return undefined if data length is less than 2', () => {
+    const data: number[] = [1];
+    const result = vbcUtils.getClosestPairDiffAndRange(data);
+    expect(result).toBeUndefined();
+  });
+
+  it('should return the minimum difference and range for number data', () => {
+    const data: number[] = [1, 5, 3, 9, 2];
+    const result = vbcUtils.getClosestPairDiffAndRange(data);
+    expect(result).toEqual([1, 8]);
+  });
+
+  it('should return the minimum difference and range for date data', () => {
+    const data: Date[] = [new Date('2022-01-01'), new Date('2022-01-05'), new Date('2022-01-03')];
+    const result = vbcUtils.getClosestPairDiffAndRange(data);
+    expect(result).toEqual([2 * 24 * 60 * 60 * 1000, 4 * 24 * 60 * 60 * 1000]);
+  });
+});
+
+/** -------- dataviz gradient tests ------ */
+const mockGradients = {
+  // as per gradients.ts
+  default: [
+    [
+      ['#4760D5', '#637CEF'],
+      ['#4F6BED', '#637CEF'],
+    ],
+    [
+      ['#795AA6', '#9373C0'],
+      ['#8764B8', '#A083C9'],
+    ],
+    // Add more
+  ],
+  semantic: [
+    [
+      ['#0C5E0C', '#107C10'],
+      ['#218C21', '#359B35'],
+    ],
+    [
+      ['#107C10', '#359B35'],
+      ['#359B35', '#9FD89F'],
+    ],
+    // Add more
+  ],
+};
+
+describe('getNextGradient', () => {
+  it('should return the correct gradient based on index and offset in light theme', () => {
+    const result = getNextGradient(0, 0, false);
+    expect(result).toEqual(mockGradients.default[0][0]);
+  });
+
+  it('should return the correct gradient based on index and offset in dark theme', () => {
+    const result = getNextGradient(1, 0, true);
+    expect(result).toEqual(mockGradients.default[1][1]);
+  });
+
+  it('should wrap around when index + offset exceeds gradient length', () => {
+    const result = getNextGradient(10, 0, false); // 10 is outside the range of available gradients
+    expect(result).toEqual(mockGradients.default[0][0]);
+  });
+});
+
+describe('getGradientFromToken', () => {
+  it('should return the correct gradient for a valid token in light theme', () => {
+    const result = getGradientFromToken('default.1', false);
+    expect(result).toEqual(mockGradients.default[0][0]);
+  });
+
+  it('should return the correct gradient for a valid token in dark theme', () => {
+    const result = getGradientFromToken('semantic.success', true);
+    expect(result).toEqual(mockGradients.semantic[0][1]);
+  });
+
+  it('should return the token itself if the token does not match any gradient', () => {
+    const invalidToken = 'nonexistent.token';
+    const result = getGradientFromToken(invalidToken, false);
+    expect(result).toEqual([invalidToken, invalidToken]);
+  });
+
+  it('should handle invalid tokens with split error gracefully', () => {
+    const result = getGradientFromToken('invalidTokenWithoutDot', false);
+    expect(result).toEqual(['invalidTokenWithoutDot', 'invalidTokenWithoutDot']);
+  });
 });

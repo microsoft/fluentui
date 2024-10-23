@@ -4,15 +4,14 @@
   "private": true,
   "description": "Visual regression tests for Fluent UI React",
   "scripts": {
-    "build": "build-storybook --no-manager-cache -o dist/storybook",
+    "build-storybook": "storybook build -o dist/storybook",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "start-storybook -p 3000",
-    "type-check": "tsc",
-    "vr:build": "yarn build",
-    "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
+    "start": "storybook dev -p 3000",
+    "type-check": "tsc -p . --noEmit --baseUrl .",
+    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -28,6 +27,7 @@
     "@fluentui/react-icons-mdl2": "*",
     "@fluentui/storybook": "*",
     "@fluentui/react-charting": "*",
+    "@fluentui/theme-samples": "*",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tslib": "^2.1.0"

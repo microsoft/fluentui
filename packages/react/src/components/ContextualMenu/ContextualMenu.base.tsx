@@ -1247,6 +1247,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       direction: FocusZoneDirection.vertical,
       handleTabKey: FocusZoneTabbableElements.all,
       isCircularNavigation: true,
+      'data-tabster': '{"uncontrolled": {}, "focusable": { "excludeFromMover": true }}',
       ...focusZoneProps,
       className: css(classNames.root, props.focusZoneProps?.className),
     };

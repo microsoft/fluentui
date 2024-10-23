@@ -2,6 +2,44 @@
   "name": "@fluentui/react-portal-compat-context",
   "entries": [
     {
+      "date": "Mon, 15 Jul 2024 17:25:41 GMT",
+      "tag": "@fluentui/react-portal-compat-context_v9.0.12",
+      "version": "9.0.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Jun 2024 15:26:37 GMT",
+      "tag": "@fluentui/react-portal-compat-context_v9.0.11",
+      "version": "9.0.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "102dd05642082f6af41178470187b34bb8af3556",
+            "comment": "chore: use new performant 'type-check' for v9 libaries"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Jan 2024 09:26:43 GMT",
       "tag": "@fluentui/react-portal-compat-context_v9.0.11",
       "version": "9.0.11",

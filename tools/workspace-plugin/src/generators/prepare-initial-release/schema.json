@@ -16,6 +16,7 @@
     "phase": {
       "type": "string",
       "description": "Phase of npm release life cycle for fluent v9 core package",
+      "enum": ["compat", "preview", "stable"],
       "x-prompt": {
         "message": "Which initial phase of release life cycle you wanna trigger?",
         "type": "list",

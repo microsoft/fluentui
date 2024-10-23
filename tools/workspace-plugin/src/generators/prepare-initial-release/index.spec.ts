@@ -11,15 +11,18 @@ import {
   installPackagesTask,
 } from '@nrwl/devkit';
 import childProcess from 'child_process';
+import path from 'node:path';
+
+import type { PackageJson, TsConfig } from '../../types';
 
 import generator from './index';
-import { PackageJson, TsConfig } from '../../types';
+import { visitNotGitIgnoredFiles } from './lib/utils';
 
-const blankGraphMock = {
+const getBlankGraphMock = () => ({
   dependencies: {},
   nodes: {},
   externalNodes: {},
-};
+});
 let graphMock: ProjectGraph;
 const codeownersPath = joinPathFragments('.github', 'CODEOWNERS');
 
@@ -50,14 +53,30 @@ describe('prepare-initial-release generator', () => {
     );
     // installPackagesTaskSpy = jest.spyOn(devkit, 'installPackagesTask').mockImplementation(noop);
     graphMock = {
-      ...blankGraphMock,
+      ...getBlankGraphMock(),
     };
     tree = createTreeWithEmptyWorkspace();
-    tree.write(codeownersPath, `@proj/foo @org/all`);
+    tree.write(
+      '.nxignore',
+      stripIndents`
+      ; build output
+      **/dist/**
+
+      ; known directories to not incorporate into the workspace graph creation
+      **/fixtures/**
+      **/__fixtures__/**
+      **/bundle-size/**
+
+      ; scaffolding templates
+      **/generators/**/files/**
+    `,
+    );
+    tree.write(codeownersPath, `foo/bar @org/all\n`);
     writeJson<TsConfig>(tree, 'tsconfig.base.v8.json', { compilerOptions: { paths: {} } });
     writeJson<TsConfig>(tree, 'tsconfig.base.v0.json', { compilerOptions: { paths: {} } });
     writeJson<TsConfig>(tree, 'tsconfig.base.all.json', { compilerOptions: { paths: {} } });
   });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
@@ -71,10 +90,8 @@ describe('prepare-initial-release generator', () => {
         },
       });
 
-      await expect(
-        generator(tree, { project: '@proj/react-one-stable', phase: 'stable' }),
-      ).rejects.toMatchInlineSnapshot(
-        `[Error: @proj/react-one-stable is already prepared for stable release. Please trigger RELEASE pipeline.]`,
+      await expect(generator(tree, { project: 'react-one-stable', phase: 'stable' })).rejects.toMatchInlineSnapshot(
+        `[Error: react-one-stable is already prepared for stable release. Please trigger RELEASE pipeline.]`,
       );
 
       updateJson<PackageJson>(tree, 'packages/react-one-stable/package.json', json => {
@@ -82,9 +99,9 @@ describe('prepare-initial-release generator', () => {
         return json;
       });
 
-      await expect(
-        generator(tree, { project: '@proj/react-one-stable', phase: 'stable' }),
-      ).rejects.toMatchInlineSnapshot(`[Error: @proj/react-one-stable is already released as stable.]`);
+      await expect(generator(tree, { project: 'react-one-stable', phase: 'stable' })).rejects.toMatchInlineSnapshot(
+        `[Error: react-one-stable is already released as stable.]`,
+      );
     });
 
     it(`should throw error if executed with invalid 'phase' option`, async () => {
@@ -95,10 +112,8 @@ describe('prepare-initial-release generator', () => {
         },
       });
 
-      await expect(
-        generator(tree, { project: '@proj/react-one-preview', phase: 'compat' }),
-      ).rejects.toMatchInlineSnapshot(
-        `[Error: Invalid phase(compat) option provided. @proj/react-one-preview is a PREVIEW package thus phase needs to be one of 'preview'|'stable'.]`,
+      await expect(generator(tree, { project: 'react-one-preview', phase: 'compat' })).rejects.toMatchInlineSnapshot(
+        `[Error: Invalid phase(compat) option provided. react-one-preview is a PREVIEW package thus phase needs to be one of 'preview'|'stable'.]`,
       );
 
       createProject(tree, 'react-one-compat', {
@@ -109,15 +124,11 @@ describe('prepare-initial-release generator', () => {
         },
       });
 
-      await expect(
-        generator(tree, { project: '@proj/react-one-compat', phase: 'preview' }),
-      ).rejects.toMatchInlineSnapshot(
-        `[Error: Invalid phase(preview) option provided. @proj/react-one-compat is a COMPAT package thus phase needs to be 'compat'.]`,
+      await expect(generator(tree, { project: 'react-one-compat', phase: 'preview' })).rejects.toMatchInlineSnapshot(
+        `[Error: Invalid phase(preview) option provided. react-one-compat is a COMPAT package thus phase needs to be 'compat'.]`,
       );
-      await expect(
-        generator(tree, { project: '@proj/react-one-compat', phase: 'stable' }),
-      ).rejects.toMatchInlineSnapshot(
-        `[Error: Invalid phase(stable) option provided. @proj/react-one-compat is a COMPAT package thus phase needs to be 'compat'.]`,
+      await expect(generator(tree, { project: 'react-one-compat', phase: 'stable' })).rejects.toMatchInlineSnapshot(
+        `[Error: Invalid phase(stable) option provided. react-one-compat is a COMPAT package thus phase needs to be 'compat'.]`,
       );
     });
   });
@@ -141,7 +152,7 @@ describe('prepare-initial-release generator', () => {
           }),
         };
 
-        const sideEffects = await generator(tree, { project: '@proj/react-one-compat', phase: 'compat' });
+        const sideEffects = await generator(tree, { project: 'react-one-compat', phase: 'compat' });
 
         expect(utils.project.pkgJson()).toMatchInlineSnapshot(`
           Object {
@@ -177,6 +188,52 @@ describe('prepare-initial-release generator', () => {
       });
     });
 
+    describe(`compat - isSplit`, () => {
+      it(`should prepare compat package for initial release`, async () => {
+        const utils = {
+          project: createSplitProject(tree, 'react-one-compat', {
+            root: 'packages/react-one-compat',
+            pkgJson: {
+              version: '0.0.0',
+              private: true,
+            },
+            renameRoot: false,
+          }),
+          docsite: createProject(tree, 'public-docsite-v9', {
+            root: 'apps/public-docsite-v9',
+            pkgJson: { version: '9.0.123', private: true },
+            renameRoot: false,
+          }),
+        };
+
+        await generator(tree, { project: 'react-one-compat', phase: 'compat' });
+
+        expect(utils.project.library.pkgJson()).toMatchInlineSnapshot(`
+          Object {
+            "name": "@proj/react-one-compat",
+            "version": "0.0.0",
+          }
+        `);
+        expect(utils.project.stories.pkgJson()).toMatchInlineSnapshot(`
+          Object {
+            "devDependencies": Object {
+              "@proj/react-components": "*",
+              "@proj/react-one-compat": "*",
+            },
+            "name": "@proj/react-one-compat-stories",
+            "private": true,
+            "version": "0.0.0",
+          }
+        `);
+
+        expect(utils.docsite.pkgJson().dependencies).toEqual(
+          expect.objectContaining({
+            '@proj/react-one-compat': '*',
+          }),
+        );
+      });
+    });
+
     describe(`preview`, () => {
       it(`should prepare preview package for initial release`, async () => {
         const utils = {
@@ -195,7 +252,7 @@ describe('prepare-initial-release generator', () => {
           }),
         };
 
-        const sideEffects = await generator(tree, { project: '@proj/react-one-preview', phase: 'preview' });
+        const sideEffects = await generator(tree, { project: 'react-one-preview', phase: 'preview' });
 
         expect(utils.project.pkgJson()).toMatchInlineSnapshot(`
           Object {
@@ -231,8 +288,54 @@ describe('prepare-initial-release generator', () => {
       });
     });
 
+    describe(`preview - isSplit`, () => {
+      it(`should prepare preview package for initial release`, async () => {
+        const utils = {
+          project: createSplitProject(tree, 'react-one-preview', {
+            root: 'packages/react-one-preview',
+            pkgJson: {
+              version: '0.0.0',
+              private: true,
+            },
+            renameRoot: false,
+          }),
+          docsite: createProject(tree, 'public-docsite-v9', {
+            root: 'apps/public-docsite-v9',
+            pkgJson: { version: '9.0.123', private: true },
+            renameRoot: false,
+          }),
+        };
+
+        await generator(tree, { project: 'react-one-preview', phase: 'preview' });
+
+        expect(utils.project.library.pkgJson()).toMatchInlineSnapshot(`
+          Object {
+            "name": "@proj/react-one-preview",
+            "version": "0.0.0",
+          }
+        `);
+        expect(utils.project.stories.pkgJson()).toMatchInlineSnapshot(`
+          Object {
+            "devDependencies": Object {
+              "@proj/react-components": "*",
+              "@proj/react-one-preview": "*",
+            },
+            "name": "@proj/react-one-preview-stories",
+            "private": true,
+            "version": "0.0.0",
+          }
+        `);
+
+        expect(utils.docsite.pkgJson().dependencies).toEqual(
+          expect.objectContaining({
+            '@proj/react-one-preview': '*',
+          }),
+        );
+      });
+    });
+
     describe(`stable`, () => {
-      const projectName = '@proj/react-one-preview';
+      const projectName = 'react-one-preview';
       type Utils = ReturnType<typeof createProject>;
       const utils = { project: {} as Utils, suite: {} as Utils, docsite: {} as Utils, vrTest: {} as Utils };
 
@@ -254,6 +357,18 @@ describe('prepare-initial-release generator', () => {
           `,
             },
             {
+              filePath: 'packages/react-one-preview/bundle-size/index.fixture.js',
+              content: stripIndents`
+                import {One} from '@proj/react-one-preview';
+
+                console.log(One);
+
+                export default {
+                   name: 'react-one-preview - package',
+                }
+          `,
+            },
+            {
               filePath: 'packages/react-one-preview/stories/One.stories.tsx',
               content: stripIndents`
             import { One } from '@proj/react-one-preview';
@@ -266,7 +381,7 @@ describe('prepare-initial-release generator', () => {
               content: stripIndents`
               import { One } from '@proj/react-one-preview';
 
-              const metadata: ComponentMeta<typeof One> = {
+              const metadata: Meta<typeof One> = {
                 title: 'Preview Components/One',
                 component: One,
               }
@@ -287,7 +402,7 @@ describe('prepare-initial-release generator', () => {
             {
               filePath: 'apps/public-docsite-v9/src/example.stories.tsx',
               content: stripIndents`
-             import { One } from '${projectName}';
+             import { One } from '@proj/${projectName}';
              import * as suite from '@proj/react-components';
 
              export const Example = () => { return <suite.Root><One/></suite.Root>; }
@@ -302,7 +417,7 @@ describe('prepare-initial-release generator', () => {
             {
               filePath: 'apps/vr-tests-react-components/src/stories/One.stories.tsx',
               content: stripIndents`
-             import { One } from '${projectName}';
+             import { One } from '@proj/${projectName}';
              import * as suite from '@proj/react-components';
 
              export const VrTest = () => { return <suite.Root><One/></suite.Root>; }
@@ -323,11 +438,22 @@ describe('prepare-initial-release generator', () => {
         `);
         expect(utils.project.projectJson()).toEqual(
           expect.objectContaining({
-            name: '@proj/react-one',
+            name: 'react-one',
             sourceRoot: 'packages/react-one/src',
           }),
         );
         expect(utils.project.jest()).toEqual(expect.stringContaining(`displayName: 'react-one'`));
+        expect(utils.project.bundleSize()).toMatchInlineSnapshot(`
+          Object {
+            "packages/react-one/bundle-size/index.fixture.js": "import { One } from '@proj/react-one';
+
+          console.log(One);
+
+          export default {
+          name: 'react-one - package',
+          };",
+          }
+        `);
         expect(utils.project.md.readme()).toMatchInlineSnapshot(`
           "# @proj/react-one
 
@@ -355,7 +481,7 @@ describe('prepare-initial-release generator', () => {
         expect(tree.read('packages/react-one/stories/index.stories.tsx', 'utf-8')).toMatchInlineSnapshot(`
           "import { One } from '@proj/react-components';
 
-          const metadata: ComponentMeta<typeof One> = {
+          const metadata: Meta<typeof One> = {
             title: 'Components/One',
             component: One,
           };
@@ -364,6 +490,7 @@ describe('prepare-initial-release generator', () => {
           "
         `);
 
+        expect(tree.exists('packages/react-one-preview')).toEqual(false);
         expect(tree.children('packages/react-one-preview')).toEqual([]);
 
         expect(utils.project.global.codeowners()).toEqual(
@@ -396,7 +523,7 @@ describe('prepare-initial-release generator', () => {
         // v9 vr-tests
         const vrTestDeps = utils.vrTest.pkgJson().dependencies ?? {};
         expect(vrTestDeps).toEqual(expect.objectContaining({ '@proj/react-one': '>=9.0.0-alpha' }));
-        expect(vrTestDeps[projectName]).toEqual(undefined);
+        expect(vrTestDeps[`@proj/${projectName}`]).toEqual(undefined);
         expect(tree.read('apps/vr-tests-react-components/src/stories/One.stories.tsx', 'utf-8')).toEqual(
           expect.stringContaining(stripIndents`
             import { One } from '@proj/react-one';
@@ -447,7 +574,7 @@ describe('prepare-initial-release generator', () => {
         `,
         );
 
-        expect(execCalls[2].cmd).toMatchInlineSnapshot(`"yarn lage generate-api --to @proj/react-components"`);
+        expect(execCalls[2].cmd).toMatchInlineSnapshot(`"yarn nx run react-components:generate-api"`);
         expect(execCalls[2].args).toMatchInlineSnapshot(
           { cwd: expect.any(String) },
           `
@@ -480,7 +607,7 @@ describe('prepare-initial-release generator', () => {
         await generator(tree, { project: projectName, phase: 'stable' });
 
         const dependencies = utils.pkgJson().dependencies ?? {};
-        expect(dependencies[projectName]).toEqual(undefined);
+        expect(dependencies[`@proj/${projectName}`]).toEqual(undefined);
         expect(dependencies).toEqual(
           expect.objectContaining({
             '@proj/react-components': '*',
@@ -494,8 +621,319 @@ describe('prepare-initial-release generator', () => {
         );
       });
     });
+
+    describe(`stable - isSplit`, () => {
+      const projectName = 'react-one-preview';
+
+      type Utils = ReturnType<typeof createProject>;
+      const utils = {
+        project: { library: {} as Utils, stories: {} as Utils },
+        suite: {} as Utils,
+        docsite: {} as Utils,
+        vrTest: {} as Utils,
+      };
+
+      beforeEach(() => {
+        utils.project = createSplitProject(tree, 'react-one-preview', {
+          root: 'packages/react-one-preview',
+          pkgJson: {
+            version: '0.12.33',
+          },
+          files: {
+            library: [],
+            stories: [
+              {
+                filePath: 'packages/react-one-preview/library/bundle-size/index.fixture.js',
+                content: stripIndents`
+                import {One} from '@proj/react-one-preview';
+
+                console.log(One);
+
+                export default {
+                   name: 'react-one-preview - package',
+                }
+          `,
+              },
+              {
+                filePath: 'packages/react-one-preview/stories/src/One.stories.tsx',
+                content: stripIndents`
+            import { One } from '@proj/react-one-preview';
+
+            export const Default = () => <div><One/></div>
+          `,
+              },
+              {
+                filePath: 'packages/react-one-preview/stories/src/index.stories.tsx',
+                content: stripIndents`
+              import { One } from '@proj/react-one-preview';
+
+              const metadata: Meta<typeof One> = {
+                title: 'Preview Components/One',
+                component: One,
+              }
+
+              export default metadata;
+          `,
+              },
+            ],
+          },
+        });
+
+        utils.suite = createProject(tree, 'react-components', {
+          root: 'packages/react-components/react-components',
+          pkgJson: { version: '9.0.1' },
+        });
+        utils.docsite = createProject(tree, 'public-docsite-v9', {
+          root: 'apps/public-docsite-v9',
+          pkgJson: { version: '9.0.123', private: true },
+          files: [
+            {
+              filePath: 'apps/public-docsite-v9/src/example.stories.tsx',
+              content: stripIndents`
+             import { One } from '@proj/${projectName}';
+             import * as suite from '@proj/react-components';
+
+             export const Example = () => { return <suite.Root><One/></suite.Root>; }
+            `,
+            },
+          ],
+        });
+        utils.vrTest = createProject(tree, 'vr-tests-react-components', {
+          root: 'apps/vr-tests-react-components',
+          pkgJson: { version: '9.0.77', private: true },
+          files: [
+            {
+              filePath: 'apps/vr-tests-react-components/src/stories/One.stories.tsx',
+              content: stripIndents`
+             import { One } from '@proj/${projectName}';
+             import * as suite from '@proj/react-components';
+
+             export const VrTest = () => { return <suite.Root><One/></suite.Root>; }
+            `,
+            },
+          ],
+        });
+      });
+
+      it(`should prepare preview package for stable release`, async () => {
+        const treeStructureBefore = {
+          host: tree.children('packages/react-one-preview'),
+          library: tree.children('packages/react-one-preview/library'),
+          stories: tree.children('packages/react-one-preview/stories'),
+        };
+        expect(treeStructureBefore.host).toEqual(['library', 'stories']);
+
+        await generator(tree, { project: projectName, phase: 'stable' });
+
+        const treeStructureAfter = {
+          host: tree.children('packages/react-one'),
+          library: tree.children('packages/react-one/library'),
+          stories: tree.children('packages/react-one/stories'),
+        };
+
+        expect(treeStructureAfter).toEqual(treeStructureBefore);
+        expect(tree.children('packages/react-one-preview')).toEqual([]);
+
+        expect(tree.read('packages/react-one/library/src/index.ts', 'utf-8')).toMatchInlineSnapshot(`
+          "export { Hello } from './hello';
+          "
+        `);
+        expect(tree.read('packages/react-one/library/src/hello.ts', 'utf-8')).toMatchInlineSnapshot(`
+          "export function Hello() {
+            console.log('@proj/react-one: some debug message for user');
+            return;
+          }
+          "
+        `);
+
+        expect(utils.project.library.projectJson()).toEqual(
+          expect.objectContaining({
+            name: 'react-one',
+            sourceRoot: 'packages/react-one/library/src',
+          }),
+        );
+        expect(utils.project.library.pkgJson()).toEqual({
+          name: '@proj/react-one',
+          version: '9.0.0-alpha.0',
+        });
+
+        expect(utils.project.stories.projectJson()).toEqual(
+          expect.objectContaining({
+            name: 'react-one-stories',
+            sourceRoot: 'packages/react-one/stories/src',
+          }),
+        );
+        expect(utils.project.stories.pkgJson()).toEqual({
+          name: '@proj/react-one-stories',
+          version: expect.any(String),
+          devDependencies: {
+            '@proj/react-components': '*',
+          },
+        });
+
+        expect(utils.project.library.bundleSize()).toMatchInlineSnapshot(`
+          Object {
+            "packages/react-one/library/bundle-size/index.fixture.js": "import { One } from '@proj/react-one';
+
+          console.log(One);
+
+          export default {
+          name: 'react-one - package',
+          };",
+          }
+        `);
+
+        expect(utils.project.library.md.license()).toMatchInlineSnapshot(`
+          "# @proj/react-one
+
+          Copyright (c) CompanyName
+
+          All rights reserved.
+
+          MIT License"
+        `);
+        expect(utils.project.library.md.spec()).toMatchInlineSnapshot(`
+          "# @proj/react-one Spec
+
+          ## Background
+
+          A Foo is a component that displays a set of vertically stacked Moos.
+          "
+        `);
+        expect(utils.project.library.md.readme()).toMatchInlineSnapshot(`
+          "# @proj/react-one
+
+          **React Tags components for [Fluent UI React](https://react.fluentui.dev/)**
+
+          These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+          "
+        `);
+        expect(utils.project.stories.md.readme()).toMatchInlineSnapshot(`
+          "# @proj/react-one-stories
+
+          Storybook stories for packages/react-components/react-one
+
+          ## Usage
+
+          To include within storybook specify stories globs:
+
+          \\\\\`\\\\\`\\\\\`js
+          module.exports = {
+          stories: ['../packages/react-components/react-one/stories/src/**/*.stories.mdx', '../packages/react-components/react-one/stories/src/**/index.stories.@(ts|tsx)'],
+          }
+          \\\\\`\\\\\`\\\\\`
+          "
+        `);
+
+        expect(tree.read('packages/react-one/stories/src/One.stories.tsx', 'utf-8')).toMatchInlineSnapshot(`
+          "import { One } from '@proj/react-components';
+
+          export const Default = () => (
+            <div>
+              <One />
+            </div>
+          );
+          "
+        `);
+        expect(tree.read('packages/react-one/stories/src/index.stories.tsx', 'utf-8')).toMatchInlineSnapshot(`
+          "import { One } from '@proj/react-components';
+
+          const metadata: Meta<typeof One> = {
+            title: 'Components/One',
+            component: One,
+          };
+
+          export default metadata;
+          "
+        `);
+
+        expect(utils.project.library.global.codeowners()).toEqual(
+          expect.stringContaining(stripIndents`
+            packages/react-one/library @org/universe @johnwick
+            packages/react-one/stories @org/universe @johnwick
+          `),
+        );
+        expect(utils.project.library.global.tsBase().compilerOptions.paths).toEqual(
+          expect.objectContaining({
+            '@proj/react-one': ['packages/react-one/library/src/index.ts'],
+            '@proj/react-one-stories': ['packages/react-one/stories/src/index.ts'],
+          }),
+        );
+        expect(utils.project.library.global.tsBaseAll().compilerOptions.paths).toEqual(
+          expect.objectContaining({
+            '@proj/react-one': ['packages/react-one/library/src/index.ts'],
+            '@proj/react-one-stories': ['packages/react-one/stories/src/index.ts'],
+          }),
+        );
+      });
+    });
   });
 });
+
+function createSplitProject(
+  tree: Tree,
+  projectName: string,
+  options: {
+    root: string;
+    pkgJson: Partial<PackageJson>;
+    files?: {
+      library: Array<{ filePath: string; content: string }>;
+      stories: Array<{ filePath: string; content: string }>;
+    };
+    tags?: string[];
+    renameRoot?: boolean;
+  },
+) {
+  // library
+  const libraryProject = { root: options.root + '/library' };
+  const library = createProject(tree, projectName, {
+    ...options,
+    root: libraryProject.root,
+    files: options.files?.library,
+  });
+
+  // stories
+  const storiesProjectName = `${projectName}-stories`;
+  const storiesProject = { root: options.root + '/stories' };
+
+  const stories = createProject(tree, storiesProjectName, {
+    ...options,
+    pkgJson: {
+      ...options.pkgJson,
+      devDependencies: {
+        [`@proj/react-components`]: '*',
+        [`@proj/${projectName}`]: '*',
+      },
+    },
+    root: storiesProject.root,
+    files: [
+      ...(options.files?.stories ?? []),
+      {
+        filePath: joinPathFragments(storiesProject.root, 'README.md'),
+        content: stripIndents`
+        # @proj/${storiesProjectName}
+
+        Storybook stories for packages/react-components/${projectName}
+
+        ## Usage
+
+        To include within storybook specify stories globs:
+
+        \`\`\`js
+        module.exports = {
+        stories: ['../packages/react-components/${projectName}/stories/src/**/*.stories.mdx', '../packages/react-components/${projectName}/stories/src/**/index.stories.@(ts|tsx)'],
+        }
+        \`\`\`
+    `,
+      },
+    ],
+  });
+
+  return {
+    library,
+    stories,
+  };
+}
 
 function createProject(
   tree: Tree,
@@ -514,7 +952,9 @@ function createProject(
   const sourceRoot = joinPathFragments(options.root, 'src');
   const indexFile = joinPathFragments(sourceRoot, 'index.ts');
   const jestPath = joinPathFragments(options.root, 'jest.config.js');
+  const specPath = joinPathFragments(options.root, 'docs/Spec.md');
   const readmePath = joinPathFragments(options.root, 'README.md');
+  const licensePath = joinPathFragments(options.root, 'LICENSE');
   const apiMdPath = joinPathFragments(options.root, `etc/${projectName}.api.md`);
   const tsConfigBaseAllPath = 'tsconfig.base.all.json';
   const tsConfigBasePath = 'tsconfig.base.json';
@@ -524,15 +964,61 @@ function createProject(
     name: npmName,
   });
 
-  addProjectConfiguration(tree, npmName, { root: options.root, sourceRoot, tags: ['vNext', ...(options.tags ?? [])] });
+  addProjectConfiguration(tree, projectName, {
+    root: options.root,
+    sourceRoot,
+    tags: ['vNext', ...(options.tags ?? [])],
+  });
 
   tree.write(
     indexFile,
     stripIndents`
-    export {};
+    export { Hello } from './hello';
+  `,
+  );
+  tree.write(
+    joinPathFragments(sourceRoot, 'hello.ts'),
+    stripIndents`
+    export function Hello(){
+      console.log('${npmName}: some debug message for user')
+      return
+    };
   `,
   );
 
+  tree.write(
+    licensePath,
+    stripIndents`
+  # ${npmName}
+
+Copyright (c) CompanyName
+
+All rights reserved.
+
+MIT License
+  `,
+  );
+  tree.write(
+    specPath,
+    stripIndents`
+# ${npmName} Spec
+
+## Background
+
+A Foo is a component that displays a set of vertically stacked Moos.
+    `,
+  );
+  tree.write(
+    readmePath,
+    stripIndents`
+  # ${npmName}
+
+**React Tags components for [Fluent UI React](https://react.fluentui.dev/)**
+
+These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+
+  `,
+  );
   tree.write(
     readmePath,
     stripIndents`
@@ -573,15 +1059,18 @@ These are not production-ready components and **should never be used in product*
     return json;
   });
 
-  const depKeys = [...Object.keys(options.pkgJson.dependencies ?? {})];
+  const depKeys = [
+    ...Object.keys(options.pkgJson.dependencies ?? {}),
+    ...Object.keys(options.pkgJson.devDependencies ?? {}),
+  ];
 
-  graphMock.dependencies[npmName] = depKeys.map(value => {
-    return { source: npmName, target: value, type: 'static' };
+  graphMock.dependencies[projectName] = depKeys.map(value => {
+    return { source: projectName, target: value.replace('@proj/', ''), type: 'static' };
   });
-  graphMock.nodes[npmName] = {
-    name: npmName,
+  graphMock.nodes[projectName] = {
+    name: projectName,
     type: projectType === 'library' ? 'lib' : 'app',
-    data: { name: npmName, root: npmName },
+    data: { name: projectName, root: projectName },
   };
 
   if (options.files) {
@@ -603,8 +1092,21 @@ These are not production-ready components and **should never be used in product*
       return tree.read(joinPathFragments(newRoot, 'jest.config.js'), 'utf-8');
     },
     md: {
+      license: () => tree.read(joinPathFragments(newRoot, 'LICENSE'), 'utf-8'),
+      spec: () => tree.read(joinPathFragments(newRoot, 'docs/Spec.md'), 'utf-8'),
       readme: () => tree.read(joinPathFragments(newRoot, 'README.md'), 'utf-8'),
       api: () => tree.read(joinPathFragments(newRoot, `etc/${projectName.replace('-preview', '')}.api.md`), 'utf-8'),
+    },
+    bundleSize: () => {
+      const root = joinPathFragments(newRoot, 'bundle-size');
+      const contents: Record<string, string> = {};
+
+      visitNotGitIgnoredFiles(tree, root, file => {
+        // normalize path key to POSIX
+        contents[file.split(path.sep).join('/')] = stripIndents`${tree.read(file, 'utf-8')}` ?? '';
+      });
+
+      return contents;
     },
     global: {
       tsBase: () => readJson<TsConfig>(tree, tsConfigBasePath),

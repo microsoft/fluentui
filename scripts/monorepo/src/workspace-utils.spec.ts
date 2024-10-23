@@ -6,14 +6,14 @@ describe(`workspace-utils`, () => {
   describe(`#getWorkspaceProjects`, () => {
     it(`should return Map of all workspace valid/registered projects`, () => {
       const actual = getWorkspaceProjects();
-      expect(actual.has('@fluentui/noop')).toEqual(false);
+      expect(actual.has('noop')).toEqual(false);
 
-      expect(actual.has('@fluentui/react-text')).toBe(true);
-      expect(actual.get('@fluentui/react-text')).toEqual(
+      expect(actual.has('react-text')).toBe(true);
+      expect(actual.get('react-text')).toEqual(
         expect.objectContaining({
           $schema: expect.any(String),
           implicitDependencies: expect.any(Array),
-          name: '@fluentui/react-text',
+          name: 'react-text',
           projectType: 'library',
           root: expect.any(String),
           sourceRoot: expect.any(String),
@@ -38,7 +38,11 @@ describe(`workspace-utils`, () => {
     });
 
     it(`should exclude specified projects`, () => {
-      const actual = getWorkspaceProjectsAliases({ excludeProjects: ['@fluentui/react-components'] });
+      let actual = getWorkspaceProjectsAliases({ excludeProjects: ['react-components'] });
+
+      expect(actual['@fluentui/react-components']).toEqual(undefined);
+
+      actual = getWorkspaceProjectsAliases({ excludeProjects: ['@fluentui/react-components'] });
 
       expect(actual['@fluentui/react-components']).toEqual(undefined);
     });

@@ -91,9 +91,6 @@ describe('FocusZone', () => {
     elementRefName: 'elementRef',
     testOptions: {
       'consistent-callback-names': { ignoreProps: ['onActiveElementChanged'] },
-      'consistent-callback-args': {
-        ignoreProps: ['onActiveElementChanged', 'onBeforeFocus', 'onFocusNotification', 'onFocus'],
-      },
     },
   });
 
@@ -2140,7 +2137,7 @@ describe('FocusZone', () => {
     const innerFocusZone = focusZone.querySelector('.innerFocusZone') as HTMLElement;
     ReactTestUtils.Simulate.keyDown(innerFocusZone, { which: KeyCodes.del });
 
-    expect(keyDownHandler).toBeCalled();
+    expect(keyDownHandler).toHaveBeenCalled();
   });
 
   it('should not set an element outside its DOM as its active element', () => {

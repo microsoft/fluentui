@@ -9,6 +9,8 @@ const tsPathAliases = pathsToModuleNameMapper(tsConfig.compilerOptions.paths, {
   prefix: `<rootDir>/${path.relative(process.cwd(), __dirname)}/`,
 });
 
+const isCI = Boolean(process.env.TF_BUILD);
+
 /**
  * @type {import('@jest/types').Config.InitialOptions}
  */
@@ -29,6 +31,17 @@ const baseConfig = {
     escapeString: true,
     printBasicPrototype: true,
   },
+  /**
+   *  **Local Machine:**
+   *
+   * jest is resource greedy. on local machine it will spawn workers into all your CPU threads which will provide additional heat up of your machine and everything else will be blocked.
+   * Based on tests on local machine, 50% of CPU threads is the best value for local development ( also the fastest).
+   *
+   *  **CI:**
+   *
+   * based on testing not spawning additional workers and rely on task orchestrator (NX) parallelization is fastest on our CI env atm ( 8 Core machine, 16GB RAM)
+   */
+  maxWorkers: isCI ? 1 : '50%',
 };
 
 module.exports = {

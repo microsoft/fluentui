@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GaugeChart - event listeners testing should show a callout when the mouse moves over a segment and
+exports[`GaugeChart interaction and accessibility tests should show a callout when the mouse moves over a segment and
   hide it when the mouse leaves the chart 1`] = `
 <div>
   <div
@@ -22,11 +22,11 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone0"
+      data-focuszone-id="FocusZone3"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="This is a gauge chart with 3 section represented."
+        aria-label="Gauge chart with 3 segments. "
         class=
 
             {
@@ -35,6 +35,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
               width: 0px;
             }
         focusable="false"
+        role="region"
       >
         <g
           transform="translate(0, -40)"
@@ -72,49 +73,49 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
             100
           </text>
           <path
-            aria-label="Low Risk, 33 out of 100 or 33%"
+            aria-label="Low Risk, 0 to 33"
             class=
 
                 {
+                  fill-opacity: 1;
+                  fill: #107c10;
                   outline: none;
                   stroke: #605e5c;
                 }
             d="M0,0Z"
             data-is-focusable="true"
-            fill="#107c10"
-            fill-opacity="1"
             role="img"
             stroke-width="0"
             tabindex="0"
           />
           <path
-            aria-label="Medium Risk, 34 out of 100 or 34%"
+            aria-label="Medium Risk, 33 to 67"
             class=
 
                 {
+                  fill-opacity: 1;
+                  fill: #f7630c;
                   outline: none;
                   stroke: #605e5c;
                 }
             d="M0,0Z"
             data-is-focusable="true"
-            fill="#f7630c"
-            fill-opacity="1"
             role="img"
             stroke-width="0"
             tabindex="-1"
           />
           <path
-            aria-label="High Risk, 33 out of 100 or 33%"
+            aria-label="High Risk, 67 to 100"
             class=
 
                 {
+                  fill-opacity: 1;
+                  fill: #c50f1f;
                   outline: none;
                   stroke: #605e5c;
                 }
             d="M0,0Z"
             data-is-focusable="true"
-            fill="#c50f1f"
-            fill-opacity="1"
             role="img"
             stroke-width="0"
             tabindex="-1"
@@ -123,6 +124,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
             transform="rotate(45, 0, 0)"
           >
             <path
+              aria-label="Current value: 25%"
               class=
 
                   {
@@ -137,6 +139,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
+              role="img"
               stroke-width="2"
               tabindex="-1"
               transform="translate(72)"
@@ -144,7 +147,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
           </g>
           <g>
             <text
-              aria-label="Current value: 25 out of 100, or 25%"
+              aria-hidden="true"
               class=
 
                   {
@@ -153,8 +156,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                     font-weight: 600;
                   }
               data-is-focusable="true"
-              id="tooltip-host1"
-              role="img"
+              id="tooltip-host4"
               tabindex="-1"
               text-anchor="middle"
               x="0"
@@ -202,7 +204,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone2"
+                data-focuszone-id="FocusZone5"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -262,6 +264,20 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -350,6 +366,20 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -434,6 +464,20 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -564,7 +608,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                       font-size: 12px;
                       font-weight: 400;
                       line-height: 16px;
-                      opacity: 0.8;
+                      opacity: 0.85;
                     }
                 data-is-focusable="false"
                 role="text"
@@ -660,7 +704,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           forced-color-adjust: none;
                         }
-                    id="1_34 - 67"
+                    id="1_33 - 67"
                   >
                     <div>
                       <div
@@ -697,7 +741,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                               color: rgb(255, 255, 255);
                             }
                       >
-                        34 - 67
+                        33 - 67
                       </div>
                     </div>
                   </div>
@@ -725,7 +769,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           forced-color-adjust: none;
                         }
-                    id="2_68 - 100"
+                    id="2_67 - 100"
                   >
                     <div>
                       <div
@@ -762,7 +806,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
                               color: rgb(255, 255, 255);
                             }
                       >
-                        68 - 100
+                        67 - 100
                       </div>
                     </div>
                   </div>
@@ -777,7 +821,7 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should not render min and max values of the gauge when the hideMinMax prop is true 1`] = `
+exports[`GaugeChart snapshot tests should not render min and max values of the gauge when the hideMinMax prop is true 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -797,14 +841,14 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone3"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 3 section represented."
+      aria-label="Gauge chart with 3 segments. "
       className=
 
           {
@@ -813,23 +857,23 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
             width: 0px;
           }
       onMouseLeave={[Function]}
+      role="region"
     >
       <g
         transform="translate(0, -40)"
       >
         <path
-          aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-label="Low Risk, 0 to 33"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #107c10;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#107c10"
-          fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -838,18 +882,17 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
           strokeWidth={0}
         />
         <path
-          aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-label="Medium Risk, 33 to 67"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #f7630c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#f7630c"
-          fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -858,18 +901,17 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
           strokeWidth={0}
         />
         <path
-          aria-label="High Risk, 33 out of 100 or 33%"
+          aria-label="High Risk, 67 to 100"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #c50f1f;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#c50f1f"
-          fillOpacity={1}
-          key="2"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -881,6 +923,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
           transform="rotate(45, 0, 0)"
         >
           <path
+            aria-label="Current value: 25%"
             className=
 
                 {
@@ -899,6 +942,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseMove={[Function]}
+            role="img"
             strokeWidth={2}
             transform="translate(72)"
           />
@@ -908,7 +952,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-hidden="true"
             className=
 
                 {
@@ -917,13 +961,12 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
-            role="img"
             textAnchor="middle"
             x={0}
             y={0}
@@ -979,7 +1022,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1043,6 +1086,20 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -1136,6 +1193,20 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -1227,6 +1298,20 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -1280,7 +1365,7 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should not render the legends when the hideLegend prop is true 1`] = `
+exports[`GaugeChart snapshot tests should not render the legends when the hideLegend prop is true 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -1300,14 +1385,14 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone3"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 3 section represented."
+      aria-label="Gauge chart with 3 segments. "
       className=
 
           {
@@ -1316,6 +1401,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
             width: 0px;
           }
       onMouseLeave={[Function]}
+      role="region"
     >
       <g
         transform="translate(0, -16)"
@@ -1353,18 +1439,17 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           100
         </text>
         <path
-          aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-label="Low Risk, 0 to 33"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #107c10;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#107c10"
-          fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1373,18 +1458,17 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           strokeWidth={0}
         />
         <path
-          aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-label="Medium Risk, 33 to 67"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #f7630c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#f7630c"
-          fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1393,18 +1477,17 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           strokeWidth={0}
         />
         <path
-          aria-label="High Risk, 33 out of 100 or 33%"
+          aria-label="High Risk, 67 to 100"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #c50f1f;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#c50f1f"
-          fillOpacity={1}
-          key="2"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1416,6 +1499,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           transform="rotate(45, 0, 0)"
         >
           <path
+            aria-label="Current value: 25%"
             className=
 
                 {
@@ -1434,6 +1518,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseMove={[Function]}
+            role="img"
             strokeWidth={2}
             transform="translate(70)"
           />
@@ -1443,7 +1528,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-hidden="true"
             className=
 
                 {
@@ -1452,13 +1537,12 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
-            role="img"
             textAnchor="middle"
             x={0}
             y={0}
@@ -1472,7 +1556,7 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = `
+exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -1492,14 +1576,14 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone3"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 3 section represented."
+      aria-label="Gauge chart with 3 segments. "
       className=
 
           {
@@ -1508,6 +1592,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
             width: 0px;
           }
       onMouseLeave={[Function]}
+      role="region"
     >
       <g
         transform="translate(0, -40)"
@@ -1545,18 +1630,17 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           100
         </text>
         <path
-          aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-label="Low Risk, 0 to 33"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #107c10;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#107c10"
-          fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1565,18 +1649,17 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           strokeWidth={0}
         />
         <path
-          aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-label="Medium Risk, 33 to 67"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #f7630c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#f7630c"
-          fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1585,18 +1668,17 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           strokeWidth={0}
         />
         <path
-          aria-label="High Risk, 33 out of 100 or 33%"
+          aria-label="High Risk, 67 to 100"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #c50f1f;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#c50f1f"
-          fillOpacity={1}
-          key="2"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1608,6 +1690,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           transform="rotate(45, 0, 0)"
         >
           <path
+            aria-label="Current value: 25%"
             className=
 
                 {
@@ -1626,6 +1709,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseMove={[Function]}
+            role="img"
             strokeWidth={2}
             transform="translate(72)"
           />
@@ -1635,7 +1719,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-hidden="true"
             className=
 
                 {
@@ -1644,13 +1728,12 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
-            role="img"
             textAnchor="middle"
             x={0}
             y={0}
@@ -1706,7 +1789,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1770,6 +1853,20 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -1863,6 +1960,20 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -1954,6 +2065,20 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -2007,7 +2132,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dark theme 1`] = `
+exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark theme 1`] = `
 <div
   className=
 
@@ -2040,14 +2165,14 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone3"
+      data-focuszone-id="FocusZone6"
       data-tabster="{\\"uncontrolled\\": {}}"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
     >
       <svg
-        aria-label="This is a gauge chart with 3 section represented."
+        aria-label="Gauge chart with 3 segments. "
         className=
 
             {
@@ -2056,6 +2181,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
               width: 0px;
             }
         onMouseLeave={[Function]}
+        role="region"
       >
         <g
           transform="translate(0, -40)"
@@ -2093,18 +2219,17 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
             100
           </text>
           <path
-            aria-label="Low Risk, 33 out of 100 or 33%"
+            aria-label="Low Risk, 0 to 33"
             className=
 
                 {
+                  fill-opacity: 1;
+                  fill: #54b054;
                   outline: none;
                   stroke: #a19f9d;
                 }
             d="M0,0Z"
             data-is-focusable={true}
-            fill="#107c10"
-            fillOpacity={1}
-            key="0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
@@ -2113,18 +2238,17 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
             strokeWidth={0}
           />
           <path
-            aria-label="Medium Risk, 34 out of 100 or 34%"
+            aria-label="Medium Risk, 33 to 67"
             className=
 
                 {
+                  fill-opacity: 1;
+                  fill: #f87528;
                   outline: none;
                   stroke: #a19f9d;
                 }
             d="M0,0Z"
             data-is-focusable={true}
-            fill="#f7630c"
-            fillOpacity={1}
-            key="1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
@@ -2133,18 +2257,17 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
             strokeWidth={0}
           />
           <path
-            aria-label="High Risk, 33 out of 100 or 33%"
+            aria-label="High Risk, 67 to 100"
             className=
 
                 {
+                  fill-opacity: 1;
+                  fill: #dc626d;
                   outline: none;
                   stroke: #a19f9d;
                 }
             d="M0,0Z"
             data-is-focusable={true}
-            fill="#c50f1f"
-            fillOpacity={1}
-            key="2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
@@ -2156,6 +2279,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
             transform="rotate(45, 0, 0)"
           >
             <path
+              aria-label="Current value: 25%"
               className=
 
                   {
@@ -2174,6 +2298,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseMove={[Function]}
+              role="img"
               strokeWidth={2}
               transform="translate(72)"
             />
@@ -2183,7 +2308,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
             onMouseMove={[Function]}
           >
             <text
-              aria-label="Current value: 25 out of 100, or 25%"
+              aria-hidden="true"
               className=
 
                   {
@@ -2192,13 +2317,12 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                     font-weight: 600;
                   }
               data-is-focusable={false}
-              id="tooltip-host4"
+              id="tooltip-host7"
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
-              role="img"
               textAnchor="middle"
               x={0}
               y={0}
@@ -2254,7 +2378,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone5"
+                data-focuszone-id="FocusZone8"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
@@ -2320,6 +2444,20 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #a19f9d;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #a19f9d;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #a19f9d;
+                          }
                       data-is-focusable={true}
                       onBlur={[Function]}
                       onClick={[Function]}
@@ -2332,8 +2470,8 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                         className=
 
                             {
-                              background-color: #107c10;
-                              border-color: #107c10;
+                              background-color: #54b054;
+                              border-color: #54b054;
                               border: 1px solid;
                               content: ;
                               height: 12px;
@@ -2341,7 +2479,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                               width: 12px;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #107c10, #107c10);
+                              content: linear-gradient(to right, #54b054, #54b054);
                               opacity: ;
                             }
                       />
@@ -2411,6 +2549,20 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #a19f9d;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #a19f9d;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #a19f9d;
+                          }
                       data-is-focusable={true}
                       onBlur={[Function]}
                       onClick={[Function]}
@@ -2423,8 +2575,8 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                         className=
 
                             {
-                              background-color: #f7630c;
-                              border-color: #f7630c;
+                              background-color: #f87528;
+                              border-color: #f87528;
                               border: 1px solid;
                               content: ;
                               height: 12px;
@@ -2432,7 +2584,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                               width: 12px;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #f7630c, #f7630c);
+                              content: linear-gradient(to right, #f87528, #f87528);
                               opacity: ;
                             }
                       />
@@ -2502,6 +2654,20 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #a19f9d;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #a19f9d;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #a19f9d;
+                          }
                       data-is-focusable={true}
                       onBlur={[Function]}
                       onClick={[Function]}
@@ -2514,8 +2680,8 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                         className=
 
                             {
-                              background-color: #c50f1f;
-                              border-color: #c50f1f;
+                              background-color: #dc626d;
+                              border-color: #dc626d;
                               border: 1px solid;
                               content: ;
                               height: 12px;
@@ -2523,7 +2689,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
                               width: 12px;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #c50f1f, #c50f1f);
+                              content: linear-gradient(to right, #dc626d, #dc626d);
                               opacity: ;
                             }
                       />
@@ -2556,7 +2722,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render GaugeChart correctly when the layout direction is RTL 1`] = `
+exports[`GaugeChart snapshot tests should render GaugeChart correctly when the layout direction is RTL 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -2576,14 +2742,14 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone3"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 3 section represented."
+      aria-label="Gauge chart with 3 segments. "
       className=
 
           {
@@ -2592,6 +2758,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
             width: 0px;
           }
       onMouseLeave={[Function]}
+      role="region"
     >
       <g
         transform="translate(0, -40)"
@@ -2629,18 +2796,17 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           100
         </text>
         <path
-          aria-label="High Risk, 33 out of 100 or 33%"
+          aria-label="High Risk, 67 to 100"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #c50f1f;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#c50f1f"
-          fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -2649,18 +2815,17 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           strokeWidth={0}
         />
         <path
-          aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-label="Medium Risk, 33 to 67"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #f7630c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#f7630c"
-          fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -2669,18 +2834,17 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           strokeWidth={0}
         />
         <path
-          aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-label="Low Risk, 0 to 33"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #107c10;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#107c10"
-          fillOpacity={1}
-          key="2"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -2692,6 +2856,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           transform="rotate(135, 0, 0)"
         >
           <path
+            aria-label="Current value: 25%"
             className=
 
                 {
@@ -2710,6 +2875,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseMove={[Function]}
+            role="img"
             strokeWidth={2}
             transform="translate(72)"
           />
@@ -2719,7 +2885,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-hidden="true"
             className=
 
                 {
@@ -2728,13 +2894,12 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
-            role="img"
             textAnchor="middle"
             x={0}
             y={0}
@@ -2790,7 +2955,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2854,6 +3019,20 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -2947,6 +3126,20 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -3038,6 +3231,20 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -3091,7 +3298,7 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render a color from DataVizPalette for the segment with no color 1`] = `
+exports[`GaugeChart snapshot tests should render a color from DataVizPalette for the segment with no color 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -3111,14 +3318,14 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone2"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 2 section represented."
+      aria-label="Gauge chart with 2 segments. "
       className=
 
           {
@@ -3127,6 +3334,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
             width: 0px;
           }
       onMouseLeave={[Function]}
+      role="region"
     >
       <g
         transform="translate(0, -40)"
@@ -3164,18 +3372,17 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
           100
         </text>
         <path
-          aria-label="Used, 60 out of 100 or 60%"
+          aria-label="Used, 0 to 60"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #3a96dd;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#3a96dd"
-          fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -3184,18 +3391,17 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
           strokeWidth={0}
         />
         <path
-          aria-label="Available, 40 out of 100 or 40%"
+          aria-label="Available, 60 to 100"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #e3008c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#e3008c"
-          fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -3207,6 +3413,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
           transform="rotate(108, 0, 0)"
         >
           <path
+            aria-label="Current value: 60%"
             className=
 
                 {
@@ -3225,6 +3432,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseMove={[Function]}
+            role="img"
             strokeWidth={2}
             transform="translate(72)"
           />
@@ -3234,7 +3442,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 60 out of 100, or 60%"
+            aria-hidden="true"
             className=
 
                 {
@@ -3243,13 +3451,12 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host3"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
-            role="img"
             textAnchor="middle"
             x={0}
             y={0}
@@ -3305,7 +3512,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone4"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3369,6 +3576,20 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -3462,6 +3683,20 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -3515,7 +3750,7 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render a placeholder segment when the total size of the segments is less than
+exports[`GaugeChart snapshot tests should render a placeholder segment when the total size of the segments is less than
   the difference between maxValue and minValue props 1`] = `
 <div
   className=
@@ -3536,14 +3771,14 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone2"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 2 section represented."
+      aria-label="Gauge chart with 2 segments. "
       className=
 
           {
@@ -3552,6 +3787,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
             width: 0px;
           }
       onMouseLeave={[Function]}
+      role="region"
     >
       <g
         transform="translate(0, -40)"
@@ -3589,18 +3825,17 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
           100
         </text>
         <path
-          aria-label="Used, 60 out of 100 or 60%"
+          aria-label="Used, 0 to 60"
           className=
 
               {
+                fill-opacity: 1;
+                fill: blue;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="blue"
-          fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -3609,18 +3844,17 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
           strokeWidth={0}
         />
         <path
-          aria-label="Unknown, 40 out of 100 or 40%"
+          aria-label="Unknown, 60 to 100"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #edebe9;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#edebe9"
-          fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -3632,6 +3866,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
           transform="rotate(108, 0, 0)"
         >
           <path
+            aria-label="Current value: 60%"
             className=
 
                 {
@@ -3650,6 +3885,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseMove={[Function]}
+            role="img"
             strokeWidth={2}
             transform="translate(72)"
           />
@@ -3659,7 +3895,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 60 out of 100, or 60%"
+            aria-hidden="true"
             className=
 
                 {
@@ -3668,13 +3904,12 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host3"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
-            role="img"
             textAnchor="middle"
             x={0}
             y={0}
@@ -3730,7 +3965,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone4"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3794,6 +4029,20 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -3887,6 +4136,20 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -3940,7 +4203,7 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render the chart title correctly 1`] = `
+exports[`GaugeChart snapshot tests should render the chart title correctly 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -3960,14 +4223,14 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone3"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 3 section represented."
+      aria-label="Riskometer. Gauge chart with 3 segments. "
       className=
 
           {
@@ -3976,11 +4239,13 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
             width: 0px;
           }
       onMouseLeave={[Function]}
+      role="region"
     >
       <g
         transform="translate(0, -40)"
       >
         <text
+          aria-hidden={true}
           className=
 
               {
@@ -4026,18 +4291,17 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           100
         </text>
         <path
-          aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-label="Low Risk, 0 to 33"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #107c10;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#107c10"
-          fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4046,18 +4310,17 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           strokeWidth={0}
         />
         <path
-          aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-label="Medium Risk, 33 to 67"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #f7630c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#f7630c"
-          fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4066,18 +4329,17 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           strokeWidth={0}
         />
         <path
-          aria-label="High Risk, 33 out of 100 or 33%"
+          aria-label="High Risk, 67 to 100"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #c50f1f;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#c50f1f"
-          fillOpacity={1}
-          key="2"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4089,6 +4351,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           transform="rotate(45, 0, 0)"
         >
           <path
+            aria-label="Current value: 25%"
             className=
 
                 {
@@ -4107,6 +4370,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseMove={[Function]}
+            role="img"
             strokeWidth={2}
             transform="translate(97)"
           />
@@ -4116,7 +4380,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-hidden="true"
             className=
 
                 {
@@ -4125,13 +4389,12 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
-            role="img"
             textAnchor="middle"
             x={0}
             y={0}
@@ -4187,7 +4450,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4251,6 +4514,20 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -4344,6 +4621,20 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4435,6 +4726,20 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4488,7 +4793,7 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render the chart value in fraction format 1`] = `
+exports[`GaugeChart snapshot tests should render the chart value in fraction format 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -4508,14 +4813,14 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone3"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 3 section represented."
+      aria-label="Gauge chart with 3 segments. "
       className=
 
           {
@@ -4524,6 +4829,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
             width: 0px;
           }
       onMouseLeave={[Function]}
+      role="region"
     >
       <g
         transform="translate(0, -40)"
@@ -4561,18 +4867,17 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           100
         </text>
         <path
-          aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-label="Low Risk, 0 to 33"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #107c10;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#107c10"
-          fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4581,18 +4886,17 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           strokeWidth={0}
         />
         <path
-          aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-label="Medium Risk, 33 to 67"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #f7630c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#f7630c"
-          fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4601,18 +4905,17 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           strokeWidth={0}
         />
         <path
-          aria-label="High Risk, 33 out of 100 or 33%"
+          aria-label="High Risk, 67 to 100"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #c50f1f;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#c50f1f"
-          fillOpacity={1}
-          key="2"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4624,6 +4927,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           transform="rotate(45, 0, 0)"
         >
           <path
+            aria-label="Current value: 25/100"
             className=
 
                 {
@@ -4642,6 +4946,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseMove={[Function]}
+            role="img"
             strokeWidth={2}
             transform="translate(72)"
           />
@@ -4651,7 +4956,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-hidden="true"
             className=
 
                 {
@@ -4660,13 +4965,12 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
-            role="img"
             textAnchor="middle"
             x={0}
             y={0}
@@ -4722,7 +5026,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4786,6 +5090,20 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -4879,6 +5197,20 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4968,6 +5300,20 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -5023,7 +5369,7 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
 </div>
 `;
 
-exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] = `
+exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
 <div
   className=
       ms-GaugeChart
@@ -5043,14 +5389,14 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone3"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="This is a gauge chart with 3 section represented."
+      aria-label="Gauge chart with 3 segments. "
       className=
 
           {
@@ -5059,6 +5405,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
             width: 0px;
           }
       onMouseLeave={[Function]}
+      role="region"
     >
       <g
         transform="translate(0, -60)"
@@ -5096,18 +5443,17 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           100
         </text>
         <path
-          aria-label="Low Risk, 33 out of 100 or 33%"
+          aria-label="Low Risk, 0 to 33"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #107c10;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#107c10"
-          fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -5116,18 +5462,17 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           strokeWidth={0}
         />
         <path
-          aria-label="Medium Risk, 34 out of 100 or 34%"
+          aria-label="Medium Risk, 33 to 67"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #f7630c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#f7630c"
-          fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -5136,18 +5481,17 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           strokeWidth={0}
         />
         <path
-          aria-label="High Risk, 33 out of 100 or 33%"
+          aria-label="High Risk, 67 to 100"
           className=
 
               {
+                fill-opacity: 1;
+                fill: #c50f1f;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#c50f1f"
-          fillOpacity={1}
-          key="2"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -5159,6 +5503,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           transform="rotate(45, 0, 0)"
         >
           <path
+            aria-label="Current value: 25%"
             className=
 
                 {
@@ -5177,6 +5522,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseMove={[Function]}
+            role="img"
             strokeWidth={2}
             transform="translate(92)"
           />
@@ -5186,7 +5532,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           onMouseMove={[Function]}
         >
           <text
-            aria-label="Current value: 25 out of 100, or 25%"
+            aria-hidden="true"
             className=
 
                 {
@@ -5195,13 +5541,12 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
-            role="img"
             textAnchor="middle"
             x={0}
             y={0}
@@ -5210,7 +5555,6 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
           </text>
         </g>
         <text
-          aria-label="Low Risk"
           className=
 
               {
@@ -5220,13 +5564,12 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
               }
           data-is-focusable={false}
           dominantBaseline="hanging"
-          id="tooltip-host2"
+          id="tooltip-host5"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          role="img"
           textAnchor="middle"
           x={0}
           y={4}
@@ -5281,7 +5624,7 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -5345,6 +5688,20 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -5438,6 +5795,20 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -5527,6 +5898,20 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}

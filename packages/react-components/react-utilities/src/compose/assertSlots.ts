@@ -2,10 +2,10 @@ import * as React from 'react';
 import { SLOT_ELEMENT_TYPE_SYMBOL } from './constants';
 import { isSlot } from './isSlot';
 import { ComponentState, ExtractSlotProps, SlotComponentType, SlotPropsRecord } from './types';
-import { slot } from './index';
+import * as slot from './slot';
 
 type SlotComponents<Slots extends SlotPropsRecord> = {
-  [K in keyof Slots]: SlotComponentType<ExtractSlotProps<Slots[K]>>;
+  [K in keyof Slots]: SlotComponentType<ExtractSlotProps<Slots[K]>> | (null extends Slots[K] ? undefined : never);
 };
 
 /**

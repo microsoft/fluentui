@@ -18,7 +18,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -32,14 +31,16 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
       height={310}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -107,7 +108,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
       <g>
         <g
           key="0"
-          transform="translate(48, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -119,7 +120,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#0078d4"
             height={182.93478260869566}
-            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -127,7 +127,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={92.06521739130434}
           />
@@ -141,7 +142,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00188f"
             height={36.03260869565217}
-            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -149,8 +149,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={238.9673913043478}
           />
           <rect
@@ -163,7 +164,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00bcf2"
             height={94.23913043478261}
-            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -171,14 +171,15 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(1, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -190,7 +191,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#0078d4"
             height={38.80434782608696}
-            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -198,7 +198,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={236.19565217391303}
           />
@@ -212,7 +213,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00188f"
             height={249.45652173913044}
-            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -220,8 +220,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={25.543478260869563}
           />
           <rect
@@ -234,7 +235,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00bcf2"
             height={91.46739130434783}
-            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -242,8 +242,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={183.5326086956522}
           />
         </g>
@@ -290,7 +291,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone12"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -354,6 +355,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -447,6 +462,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -536,6 +565,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -702,7 +745,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                       font-size: 12px;
                       font-weight: 400;
                       line-height: 16px;
-                      opacity: 0.8;
+                      opacity: 0.85;
                     }
               >
                  
@@ -726,6 +769,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                       margin-top: unset;
                       padding-left: 8px;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 <div
                   className=
@@ -739,6 +785,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                         font-weight: 400;
                         line-height: 16px;
                       }
+                      @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                        color: rgb(255, 255, 255);
+                      }
                 />
                 <div
                   className=
@@ -751,6 +800,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                         font-size: 28px;
                         font-weight: bold;
                         line-height: 36px;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                        color: rgb(255, 255, 255);
                       }
                 >
                   66
@@ -783,7 +835,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -797,14 +848,16 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
       height={310}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -872,7 +925,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
       <g>
         <g
           key="0"
-          transform="translate(48, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -884,7 +937,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#0078d4"
             height={182.93478260869566}
-            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -892,7 +944,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={92.06521739130434}
           />
@@ -906,7 +959,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00188f"
             height={36.03260869565217}
-            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -914,8 +966,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={238.9673913043478}
           />
           <rect
@@ -928,7 +981,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00bcf2"
             height={94.23913043478261}
-            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -936,14 +988,15 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(1, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -955,7 +1008,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#0078d4"
             height={38.80434782608696}
-            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -963,7 +1015,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={236.19565217391303}
           />
@@ -977,7 +1030,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00188f"
             height={249.45652173913044}
-            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -985,8 +1037,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={25.543478260869563}
           />
           <rect
@@ -999,7 +1052,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00bcf2"
             height={91.46739130434783}
-            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -1007,8 +1059,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={183.5326086956522}
           />
         </g>
@@ -1055,7 +1108,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone12"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1119,6 +1172,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -1212,6 +1279,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -1301,6 +1382,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -1810,6 +1905,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -1899,6 +2008,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -1992,6 +2115,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -2063,7 +2200,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -2077,14 +2213,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
       height={310}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -2152,7 +2290,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       <g>
         <g
           key="0"
-          transform="translate(48, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2164,7 +2302,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#0078d4"
             height={182.93478260869566}
-            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2172,7 +2309,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={92.06521739130434}
           />
@@ -2186,7 +2324,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00188f"
             height={36.03260869565217}
-            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2194,8 +2331,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={238.9673913043478}
           />
           <rect
@@ -2208,7 +2346,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00bcf2"
             height={94.23913043478261}
-            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2216,14 +2353,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(1, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -2235,7 +2373,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#0078d4"
             height={38.80434782608696}
-            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2243,7 +2380,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={236.19565217391303}
           />
@@ -2257,7 +2395,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00188f"
             height={249.45652173913044}
-            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2265,8 +2402,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={25.543478260869563}
           />
           <rect
@@ -2279,7 +2417,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00bcf2"
             height={91.46739130434783}
-            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2287,8 +2424,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={183.5326086956522}
           />
         </g>
@@ -2324,7 +2462,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone12"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -2388,6 +2526,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    outline-color: #605e5c;
+                  }
+                  :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                     outline-color: #605e5c;
                   }
               data-is-focusable={true}
@@ -2481,6 +2633,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     outline-color: #605e5c;
                   }
+                  :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    outline-color: #605e5c;
+                  }
               data-is-focusable={true}
               onBlur={[Function]}
               onClick={[Function]}
@@ -2572,6 +2738,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     outline-color: #605e5c;
                   }
+                  :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    outline-color: #605e5c;
+                  }
               data-is-focusable={true}
               onBlur={[Function]}
               onClick={[Function]}
@@ -2640,7 +2820,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -2654,14 +2833,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
       height={350}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -2729,7 +2910,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       <g>
         <g
           key="0"
-          transform="translate(48, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2741,7 +2922,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#0078d4"
             height={211.6304347826087}
-            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2749,7 +2929,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={103.36956521739131}
           />
@@ -2763,7 +2944,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00188f"
             height={41.68478260869565}
-            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2771,8 +2951,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={273.3152173913044}
           />
           <rect
@@ -2785,7 +2966,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00bcf2"
             height={109.02173913043478}
-            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2793,14 +2973,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={205.97826086956522}
           />
         </g>
         <g
           key="1"
-          transform="translate(1, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -2812,7 +2993,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#0078d4"
             height={44.89130434782609}
-            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2820,7 +3000,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            rx={0}
+            width={9}
             x={0}
             y={270.1086956521739}
           />
@@ -2834,7 +3015,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00188f"
             height={288.5869565217391}
-            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2842,8 +3022,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            rx={0}
+            width={9}
+            x={10}
             y={26.413043478260875}
           />
           <rect
@@ -2856,7 +3037,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00bcf2"
             height={105.81521739130434}
-            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2864,8 +3044,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            rx={0}
+            width={9}
+            x={20}
             y={209.18478260869566}
           />
         </g>
@@ -3235,6 +3416,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -3326,6 +3521,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -3415,6 +3624,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -3830,6 +4053,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -3921,6 +4158,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4010,6 +4261,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -4425,6 +4690,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4516,6 +4795,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4605,6 +4898,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -5020,6 +5327,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -5111,6 +5432,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -5200,6 +5535,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}

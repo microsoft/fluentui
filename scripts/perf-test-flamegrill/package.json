@@ -3,18 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "main": "src/index.ts",
-  "scripts": {
-    "format": "prettier -w --ignore-path ../../.prettierignore .",
-    "format:check": "yarn format -c",
-    "lint": "eslint --ext .ts,.js .",
-    "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json"
-  },
+  "scripts": {},
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",
     "react": ">=16.8.0 <19.0.0",
     "react-dom": ">=16.8.0 <19.0.0",
     "webpack": "^5.75.0"
-  }
+  },
+  "devDependencies": {},
+  "dependencies": {}
 }

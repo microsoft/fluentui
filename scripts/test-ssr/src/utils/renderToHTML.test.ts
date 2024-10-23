@@ -42,7 +42,9 @@ exports.App = App;
     const htmlContent = await fs.promises.readFile(htmlOutfile, { encoding: 'utf8' });
 
     // <style> element with rehydration attribute
-    expect(htmlContent).toContain('<style data-make-styles-bucket="d" data-make-styles-rehydration="true">');
+    expect(htmlContent).toContain(
+      '<style data-make-styles-bucket="d" data-priority="0" data-make-styles-rehydration="true">',
+    );
     // <script> element with proper "src"
     expect(htmlContent).toContain('<script src="esm.js"></script>');
     // Contents of App component
@@ -50,9 +52,9 @@ exports.App = App;
   });
 
   it('throws an error on a non-existing file', async () => {
-    await expect(
-      renderToHTML({ cjsOutfile: 'foo.js', esmOutfile: 'foo.js', htmlOutfile: 'foo.html' }),
-    ).rejects.toThrowError('A file "foo.js" does not exist');
+    await expect(renderToHTML({ cjsOutfile: 'foo.js', esmOutfile: 'foo.js', htmlOutfile: 'foo.html' })).rejects.toThrow(
+      'A file "foo.js" does not exist',
+    );
   });
 
   it('throws an error on a missing export', async () => {
@@ -64,7 +66,7 @@ exports.App = App;
 
     await fs.promises.writeFile(cjsOutfile, `module.exports = false`);
 
-    await expect(renderToHTML({ cjsOutfile, esmOutfile, htmlOutfile })).rejects.toThrowError(
+    await expect(renderToHTML({ cjsOutfile, esmOutfile, htmlOutfile })).rejects.toThrow(
       /does not have an export named "App", please check the matching file/,
     );
   });
@@ -80,13 +82,13 @@ exports.App = App;
       cjsOutfile,
       `
 const React = ${REQUIRE_CALL('react')}
-    
+
 exports.App = function App() {
   return React.createElement(Foo);
 }
     `,
     );
 
-    await expect(renderToHTML({ cjsOutfile, esmOutfile, htmlOutfile })).rejects.toThrowError('Foo is not defined');
+    await expect(renderToHTML({ cjsOutfile, esmOutfile, htmlOutfile })).rejects.toThrow('Foo is not defined');
   });
 });

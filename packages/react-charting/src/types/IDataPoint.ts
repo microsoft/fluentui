@@ -1,6 +1,6 @@
+import { SankeyLink, SankeyNode } from 'd3-sankey';
 import { SVGProps } from 'react';
 import { LegendShape } from '../components/Legends/Legends.types';
-import { SankeyLink, SankeyNode } from 'd3-sankey';
 
 export interface IBasestate {
   _width?: number;
@@ -135,6 +135,12 @@ export interface IChartDataPoint {
   color?: string;
 
   /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
+
+  /**
    * placeholder data point
    */
   placeHolder?: boolean;
@@ -182,6 +188,12 @@ export interface IVerticalBarChartDataPoint {
    * color for the legend in the chart
    */
   color?: string;
+
+  /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
 
   /**
    * Callout data for x axis
@@ -236,6 +248,12 @@ export interface IHorizontalBarChartWithAxisDataPoint {
    * color for the legend in the chart
    */
   color?: string;
+
+  /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
 
   /**
    * Callout data for x axis
@@ -490,7 +508,13 @@ export interface ISankeyChartData {
 }
 
 interface ISNodeExtra {
+  /**
+   * A unique identifier for this node.
+   */
   nodeId: number | string;
+  /**
+   * The display name for this node in the UX.
+   */
   name: string;
   color?: string;
   borderColor?: string;
@@ -499,8 +523,17 @@ interface ISNodeExtra {
 }
 
 interface ISLinkExtra {
+  /**
+   * The index within `ISankeyChartData.nodes` of the source node.
+   */
   source: number;
+  /**
+   * The index within `ISankeyChartData.nodes` of the target node.
+   */
   target: number;
+  /**
+   * The weight of this link between the two nodes.
+   */
   value: number;
   unnormalizedValue?: number;
 }
@@ -546,6 +579,12 @@ export interface IVSChartDataPoint {
    * color for the legend in the chart
    */
   color?: string;
+
+  /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
 
   /**
    * Callout data for x axis
@@ -631,6 +670,12 @@ export interface IGVBarChartSeriesPoint {
    * Color for the legend in the chart
    */
   color: string;
+
+  /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
 
   /**
    * Legend text in the chart

@@ -27,12 +27,12 @@ describe('version-string-replace generator', () => {
 
   it('should bump alpha package to beta', async () => {
     tree = setupDummyPackage(tree, {
-      name: '@proj/make-styles',
+      name: 'make-styles',
       version: '9.0.0-alpha.0',
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
     });
 
-    await generator(tree, { name: '@proj/make-styles', bumpType: 'prerelease', prereleaseTag: 'beta' });
+    await generator(tree, { name: 'make-styles', bumpType: 'prerelease', prereleaseTag: 'beta' });
 
     const packageJson = readJson(tree, 'packages/make-styles/package.json');
     expect(packageJson.version).toMatchInlineSnapshot(`"9.0.0-beta.0"`);
@@ -40,20 +40,20 @@ describe('version-string-replace generator', () => {
 
   it('should remove prerelease tag', async () => {
     tree = setupDummyPackage(tree, {
-      name: '@proj/make-styles',
+      name: 'make-styles',
       version: '9.0.0-beta.69',
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
     });
 
-    await generator(tree, { name: '@proj/make-styles', bumpType: 'minor', prereleaseTag: '' });
+    await generator(tree, { name: 'make-styles', bumpType: 'minor', prereleaseTag: '' });
 
     const packageJson = readJson(tree, 'packages/make-styles/package.json');
     expect(packageJson.version).toMatchInlineSnapshot(`"9.0.0"`);
   });
 
-  it('should bump dependent depedencies', async () => {
+  it('should bump dependent dependencies', async () => {
     tree = setupDummyPackage(tree, {
-      name: '@proj/react-button',
+      name: 'react-button',
       version: '9.0.0-alpha.0',
       dependencies: {
         '@proj/make-styles': '9.0.0-alpha.1',
@@ -61,12 +61,12 @@ describe('version-string-replace generator', () => {
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-button/src' },
     });
     tree = setupDummyPackage(tree, {
-      name: '@proj/make-styles',
+      name: 'make-styles',
       version: '9.0.0-alpha.0',
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
     });
 
-    await generator(tree, { name: '@proj/make-styles', ...defaultTestOptions });
+    await generator(tree, { name: 'make-styles', ...defaultTestOptions });
 
     const packageJson = readJson(tree, 'packages/react-button/package.json');
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
@@ -78,7 +78,7 @@ describe('version-string-replace generator', () => {
 
   it('should bump dependent dev depedencies', async () => {
     tree = setupDummyPackage(tree, {
-      name: '@proj/react-button',
+      name: 'react-button',
       version: '9.0.0-alpha.0',
       dependencies: {},
       devDependencies: {
@@ -87,12 +87,12 @@ describe('version-string-replace generator', () => {
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-button/src' },
     });
     tree = setupDummyPackage(tree, {
-      name: '@proj/make-styles',
+      name: 'make-styles',
       version: '9.0.0-alpha.0',
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
     });
 
-    await generator(tree, { name: '@proj/make-styles', ...defaultTestOptions });
+    await generator(tree, { name: 'make-styles', ...defaultTestOptions });
 
     const packageJson = readJson(tree, 'packages/react-button/package.json');
     expect(packageJson.dependencies).toMatchInlineSnapshot(`Object {}`);
@@ -100,13 +100,13 @@ describe('version-string-replace generator', () => {
 
   it('should downgrade the version to 0.0.0 when `nightly` is selected as the bump type', async () => {
     tree = setupDummyPackage(tree, {
-      name: '@proj/make-styles',
+      name: 'make-styles',
       version: '9.0.0-alpha.0',
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
     });
 
     tree = setupDummyPackage(tree, {
-      name: '@proj/react-button',
+      name: 'react-button',
       version: '9.0.0-alpha.0',
       dependencies: {
         '@proj/make-styles': '^9.0.0',
@@ -117,7 +117,7 @@ describe('version-string-replace generator', () => {
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-button/src' },
     });
 
-    await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
+    await generator(tree, { name: 'make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
 
     const packageJson = readJson(tree, 'packages/react-button/package.json');
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
@@ -134,12 +134,12 @@ describe('version-string-replace generator', () => {
 
   it('should remove carets for dependents when `nightly` is selected as the bump type', async () => {
     tree = setupDummyPackage(tree, {
-      name: '@proj/make-styles',
+      name: 'make-styles',
       version: '^9.0.0',
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
     });
 
-    await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
+    await generator(tree, { name: 'make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
 
     const packageJson = readJson(tree, 'packages/make-styles/package.json');
     expect(packageJson.version).toMatchInlineSnapshot(`"0.0.0-nightly.0"`);
@@ -147,7 +147,7 @@ describe('version-string-replace generator', () => {
 
   it('should remove beachball disallowedChangeType config when bumping nightly', async () => {
     tree = setupDummyPackage(tree, {
-      name: '@proj/make-styles',
+      name: 'make-styles',
       version: '9.0.0-alpha.0',
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
       beachball: {
@@ -159,7 +159,7 @@ describe('version-string-replace generator', () => {
       readJson<PackageJsonWithBeachball>(tree, 'packages/make-styles/package.json').beachball?.disallowedChangeTypes,
     ).toEqual(['prerelease']);
 
-    await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
+    await generator(tree, { name: 'make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
 
     const packageJson = readJson<PackageJsonWithBeachball>(tree, 'packages/make-styles/package.json');
     expect(packageJson.version).toMatchInlineSnapshot(`"0.0.0-nightly.0"`);
@@ -169,7 +169,7 @@ describe('version-string-replace generator', () => {
   describe('--all', () => {
     beforeEach(() => {
       tree = setupDummyPackage(tree, {
-        name: '@proj/react-button',
+        name: 'react-button',
         version: '9.0.0-alpha.0',
         dependencies: {
           '@proj/make-styles': '^9.0.0-alpha.1',
@@ -178,7 +178,7 @@ describe('version-string-replace generator', () => {
         projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-button/src' },
       });
       tree = setupDummyPackage(tree, {
-        name: '@proj/make-styles',
+        name: 'make-styles',
         version: '9.0.0-alpha.0',
         dependencies: {},
         devDependencies: {
@@ -187,19 +187,19 @@ describe('version-string-replace generator', () => {
         projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
       });
       tree = setupDummyPackage(tree, {
-        name: '@proj/react-theme',
+        name: 'react-theme',
         version: '9.0.0-alpha.0',
         dependencies: {},
         devDependencies: {},
         projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
       });
       tree = setupDummyPackage(tree, {
-        name: '@proj/react-utilities',
+        name: 'react-utilities',
         version: '9.0.0-alpha.0',
         projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-utilities/src' },
       });
       tree = setupDummyPackage(tree, {
-        name: '@proj/babel-make-styles',
+        name: 'babel-make-styles',
         version: '1.0.0',
         dependencies: {
           '@proj/make-styles': '^9.0.0-alpha.1',
@@ -207,7 +207,7 @@ describe('version-string-replace generator', () => {
         projectConfiguration: { tags: ['platform:node'], sourceRoot: 'packages/babel-make-styles/src' },
       });
       tree = setupDummyPackage(tree, {
-        name: '@proj/tokens',
+        name: 'tokens',
         version: '1.0.0',
         dependencies: {
           '@proj/make-styles': '^9.0.0-alpha.1',
@@ -215,7 +215,7 @@ describe('version-string-replace generator', () => {
         projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/tokens/src' },
       });
       tree = setupDummyPackage(tree, {
-        name: '@proj/react-menu',
+        name: 'react-menu',
         version: '9.0.0-beta.11',
         dependencies: {
           '@proj/make-styles': '^9.0.0-alpha.1',
@@ -265,7 +265,7 @@ describe('version-string-replace generator', () => {
       await generator(tree, {
         all: true,
         ...defaultTestOptions,
-        exclude: '@proj/react-utilities,@proj/react-theme',
+        exclude: 'react-utilities,react-theme',
       });
 
       const reactThemePackageJson = readJson(tree, 'packages/react-theme/package.json');
@@ -315,15 +315,14 @@ function setupDummyPackage(
   };
 
   const normalizedOptions = { ...defaults, ...options };
-  const pkgName = normalizedOptions.name || '';
-  const normalizedPkgName = pkgName.replace(`@${workspaceConfig.npmScope}/`, '');
+  const projectName = normalizedOptions.name || '';
   const paths = {
-    root: `packages/${normalizedPkgName}`,
+    root: `packages/${projectName}`,
   };
 
   const templates = {
     packageJson: {
-      name: pkgName,
+      name: `@${workspaceConfig.npmScope}/${projectName}`,
       version: normalizedOptions.version,
       dependencies: normalizedOptions.dependencies,
       devDependencies: normalizedOptions.devDependencies,
@@ -333,7 +332,7 @@ function setupDummyPackage(
 
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
 
-  addProjectConfiguration(tree, pkgName, {
+  addProjectConfiguration(tree, projectName, {
     root: paths.root,
     projectType: 'library',
     targets: {},

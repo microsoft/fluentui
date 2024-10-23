@@ -9,7 +9,6 @@
     "importHelpers": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "isolatedModules": true,
     "types": ["jest"]

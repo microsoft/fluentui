@@ -1,46 +1,123 @@
-import { fluentSlider } from './index';
+import { html } from '@microsoft/fast-element';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { SliderOrientation as SliderSetOrientation, SliderSize as SliderSetSize } from './slider.options.js';
+import type { Slider as FluentSlider } from './slider.js';
+
+type Story = StoryObj<FluentSlider>;
+
+const storyTemplate = html<StoryArgs<FluentSlider>>`
+  <fluent-slider
+    ?disabled="${story => story.disabled}"
+    id="${story => story.id}"
+    step="${story => story.step}"
+    size="${story => story.size}"
+    min="${story => story.min}"
+    max="${story => story.max}"
+    orientation="${story => story.orientation}"
+    value="${story => story.value}"
+    slot="${story => story.slot}"
+  ></fluent-slider>
+`;
 
 export default {
   title: 'Components/Slider',
-  component: fluentSlider,
+  render: renderComponent(storyTemplate),
   argTypes: {
-    orientation: {
-      options: ['horizontal', 'vertical'],
-      control: { type: 'radio' },
+    disabled: {
+      control: 'boolean',
+      description: "The element's disabled state.",
+      table: { category: 'attributes', type: { summary: 'boolean' } },
     },
+    min: {
+      control: 'number',
+      description: 'The minimum value of the slider.',
+      table: { category: 'attributes', type: { summary: 'number' } },
+    },
+    max: {
+      control: 'number',
+      description: 'The maximum value of the slider.',
+      table: { category: 'attributes', type: { summary: 'number' } },
+    },
+    value: {
+      control: 'number',
+      description: 'The value of the slider.',
+      table: { category: 'attributes', type: { summary: 'number' } },
+    },
+    step: {
+      control: 'number',
+      description: 'The step value of the slider.',
+      table: { category: 'attributes', type: { summary: 'number' } },
+    },
+    size: {
+      control: 'select',
+      description: 'The size of the slider.',
+      options: ['', ...Object.values(SliderSetSize)],
+      mapping: { '': null, ...SliderSetSize },
+      table: {
+        category: 'attributes',
+        type: Object.values(SliderSetSize).join('|'),
+      },
+    },
+    orientation: {
+      control: 'select',
+      description: 'The orientation of the slider',
+      options: ['', ...Object.values(SliderSetOrientation)],
+      mapping: { '': null, ...SliderSetOrientation },
+      table: {
+        category: 'attributes',
+        type: Object.values(SliderSetOrientation).join('|'),
+      },
+    },
+  },
+} as Meta<FluentSlider>;
+
+export const Default: Story = {};
+
+export const SliderInField: Story = {
+  render: renderComponent(html`
+    <fluent-field label-position="before">
+      <label slot="label" for="slider-in-field">Slider</label>
+      <fluent-slider slot="input" id="slider-in-field"></fluent-slider>
+    </fluent-field>
+  `),
+};
+
+export const VerticalOrientation: Story = {
+  args: {
+    orientation: SliderSetOrientation.vertical,
   },
 };
 
-const SliderTemplate = ({ orientation }) => `
-  <fluent-slider
-    ${orientation ? `orientation="${orientation}"` : ''}
-    min="0" max="100" step="10" style="width:80%;"
-  >
-    <fluent-slider-label position="0"> 0&#8451; </fluent-slider-label>
-    <fluent-slider-label position="10"> 10&#8451; </fluent-slider-label>
-    <fluent-slider-label position="90"> 90&#8451; </fluent-slider-label>
-    <fluent-slider-label position="100"> 100&#8451; </fluent-slider-label>
-  </fluent-slider>`;
-
-export const Slider = SliderTemplate.bind({});
-
-Slider.args = {
-  orientation: 'horizontal',
+export const SmallSize: Story = {
+  args: {
+    size: SliderSetSize.small,
+  },
 };
 
-const example = `
-<fluent-slider min="0" max="100" step="10" orientation="horizontal" style="width:80%;">
-  <fluent-slider-label position="0"> 0&#8451; </fluent-slider-label>
-  <fluent-slider-label position="10"> 10&#8451; </fluent-slider-label>
-  <fluent-slider-label position="90"> 90&#8451; </fluent-slider-label>
-  <fluent-slider-label position="100"> 100&#8451; </fluent-slider-label>
-</fluent-slider>
-`;
+export const MediumSize: Story = {
+  args: {
+    size: SliderSetSize.medium,
+  },
+};
 
-Slider.parameters = {
-  docs: {
-    source: {
-      code: example,
-    },
+export const MinMax: Story = {
+  args: {
+    // @ts-expect-error Slider attrs are typed as strings??
+    min: 0,
+    // @ts-expect-error Slider attrs are typed as strings??
+    max: 100,
+  },
+};
+
+export const SliderSteps: Story = {
+  args: {
+    // @ts-expect-error Slider attrs are typed as strings??
+    step: 10,
+  },
+};
+
+export const SliderDisabled = {
+  args: {
+    disabled: true,
   },
 };

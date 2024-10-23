@@ -17,6 +17,11 @@
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+<!--------------------------------[ v0.66.5 ]------------------------------- -->
+## [v0.66.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.5) (2023-06-12)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.4..@fluentui/react-northstar_v0.66.5)
+
 ### Documentation
 - `Input`: Remove wrong recommendation - usage of role="search" #28168 @kolaps33 ([#28168](https://github.com/microsoft/fluentui/pull/28168))
 

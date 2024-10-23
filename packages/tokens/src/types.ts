@@ -123,10 +123,17 @@ export type ColorTokens = {
   colorBrandBackground2: string;
   colorBrandBackground2Hover: string;
   colorBrandBackground2Pressed: string;
+  colorBrandBackground3Static: string;
+  colorBrandBackground4Static: string;
   colorBrandBackgroundInverted: string;
   colorBrandBackgroundInvertedHover: string;
   colorBrandBackgroundInvertedPressed: string;
   colorBrandBackgroundInvertedSelected: string;
+  colorNeutralCardBackground: string;
+  colorNeutralCardBackgroundHover: string;
+  colorNeutralCardBackgroundPressed: string;
+  colorNeutralCardBackgroundSelected: string;
+  colorNeutralCardBackgroundDisabled: string;
   colorNeutralStrokeAccessible: string;
   colorNeutralStrokeAccessibleHover: string;
   colorNeutralStrokeAccessiblePressed: string;
@@ -198,6 +205,8 @@ export type ColorStatusDanger =
   | 'colorStatusDangerBackground1'
   | 'colorStatusDangerBackground2'
   | 'colorStatusDangerBackground3'
+  | 'colorStatusDangerBackground3Hover'
+  | 'colorStatusDangerBackground3Pressed'
   | 'colorStatusDangerForeground1'
   | 'colorStatusDangerForeground2'
   | 'colorStatusDangerForeground3'
@@ -675,6 +684,20 @@ export type CurveTokens = {
 };
 
 /**
+ * Design tokens for z-index groups and levels
+ */
+export type ZIndexTokens = {
+  zIndexBackground?: string;
+  zIndexContent?: string;
+  zIndexOverlay?: string;
+  zIndexPopup?: string;
+  zIndexMessages?: string;
+  zIndexFloating?: string;
+  zIndexPriority?: string;
+  zIndexDebug?: string;
+};
+
+/**
  * Design tokens for shadow levels
  */
 export type ShadowTokens = {
@@ -764,6 +787,7 @@ export type Theme = FontSizeTokens &
   FontWeightTokens &
   ColorPaletteTokens &
   ColorStatusTokens &
-  ColorTokens;
+  ColorTokens &
+  ZIndexTokens;
 
 export type PartialTheme = Partial<Theme>;

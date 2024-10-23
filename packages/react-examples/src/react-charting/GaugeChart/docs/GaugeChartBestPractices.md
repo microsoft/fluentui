@@ -18,11 +18,22 @@ The library recommends a few size width and height options for charts. Product t
 
 ### Customizing the chart
 
-- The diameter of the gauge depends upon the `width` and `height` props passed to the chart. If the props are omitted, a default diameter of `140px` will be used.
-- To render a title above the gauge, set the `chartTitle` prop.
-- The needle position depends upon the required `chartValue` prop.
-- Use the required `segments` prop to divide the gauge into colored sections. These sections can have fixed sizes, or the users can choose to create a sweeping effect by varying the segment size with the `chartValue`.
-- Set the `minValue` prop if the minimum value of the gauge is different than 0. A placeholder segment will be rendered if the `maxValue` prop is greater than the total size of the segments.
-- To render an additional text below the `chartValue`, set the `sublabel` prop.
-- To hide the minimum and maximum values of the gauge, set the `hideMinMax` prop.
-- The `chartValue` prop is rendered as a percentage by default. Set the `chartVaueFormat` prop to `fraction` or a formatter function.
+- `width` and `height`: These props determine the diameter of the gauge. If not provided, a default diameter of 140px is used.
+- `chartTitle`: Use this prop to render a title above the gauge.
+- `chartValue`: This required prop controls the rotation of the needle. If the chart value is less than the minimum, the needle points to the min value. Similarly, if it exceeds the maximum, the needle points to the max value.
+- `segments`: Use this required prop to divide the gauge into colored sections. The segments can have fixed sizes or vary with the chart value to create a sweeping effect. Negative segment sizes are treated as 0.
+- `minValue`: Use this prop if the minimum value of the gauge is different from 0.
+- `maxValue`: Use this prop to render a placeholder segment when the desired range for the gauge is more than the sum of all segments. If the maxValue is less than the sum of all segments, this property is ignored.
+- `sublabel`: Use this prop to render additional text below the chart value.
+- `hideMinMax`: Set this prop to true to hide the min and max labels of the gauge.
+- `chartValueFormat`: This prop controls how the chart value is displayed. Set it to one of the following options:
+
+  - A custom formatter function that returns a string representing the chart value.
+  - `GaugeValueFormat.Fraction`: Renders the chart value as a fraction.
+  - `GaugeValueFormat.Percentage`: Renders the chart value as a percentage. This is the default format.
+
+  Note: If the min value is non-zero and no formatter function is provided, the chart value will be rendered as a number.
+
+- `variant`: This prop determines the presentation style of the gauge chart. Set it to one of the following options:
+  - `GaugeChartVariant.SingleSegment`: This variant helps represent a single metric or key performance indicator (KPI) within a predefined range or target. In this variant, the segment sizes are rendered as percentages.
+  - `GaugeChartVariant.MultipleSegments`: This is the default variant that helps display the distribution of a single variable across different thresholds or categories. In this variant, the segment sizes are rendered as ranges.

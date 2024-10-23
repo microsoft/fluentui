@@ -96,4 +96,13 @@ export type {
   IStyleSet,
   IStyleSheetConfig,
   ITheme,
+  ShadowConfig,
 } from '@fluentui/style-utilities';
+
+import type { ShadowConfig } from '@fluentui/style-utilities';
+export interface IShadowDomStyle {
+  /**
+   * Optional configuration object when using shadow DOM.
+   */
+  __shadowConfig__?: ShadowConfig;
+}

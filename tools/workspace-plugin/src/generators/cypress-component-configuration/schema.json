@@ -13,7 +13,7 @@
         "$source": "argv",
         "index": 0
       },
-      "x-prompt": "What project should we add Cypress component testing to?"
+      "x-prompt": "For which project do you want to add Cypress component testing?"
     }
   },
   "required": ["project"]

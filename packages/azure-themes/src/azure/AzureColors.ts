@@ -215,7 +215,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
     icon: {
       success: BaseColors.GREEN_57A300,
-      error: BaseColors.RED_E00B1C,
+      error: BaseColors.RED_F1707B,
       warning: BaseColors.ORANGE_DB7500,
       information: BaseColors.BLUE_015CDA,
       upsell: BaseColors.PURPLE_8A2DA5,
@@ -305,6 +305,12 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     disabled: {
       border: BaseColors.GRAY_484644,
       background: BaseColors.GRAY_484644,
+    },
+    indeterminate: {
+      circle: {
+        background: BaseColors.BLUE_2899F5,
+        hoverBackground: BaseColors.BLUE_82C7FF,
+      },
     },
   },
   controlOutlines: {
@@ -602,6 +608,12 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
       border: BaseColors.GREEN_0AFF00,
       background: BaseColors.TRANSPARENT,
     },
+    indeterminate: {
+      circle: {
+        background: BaseColors.WHITE,
+        hoverBackground: BaseColors.WHITE,
+      },
+    },
   },
   controlOutlines: {
     rest: BaseColors.WHITE,
@@ -898,6 +910,12 @@ export const LightSemanticColors: IAzureSemanticColors = {
       border: BaseColors.GRAY_C8C6C4,
       background: BaseColors.GRAY_C8C6C4,
     },
+    indeterminate: {
+      circle: {
+        background: BaseColors.BLUE_0078D4,
+        hoverBackground: BaseColors.BLUE_005A9E,
+      },
+    },
   },
   controlOutlines: {
     rest: BaseColors.GRAY_323130,
@@ -1193,6 +1211,12 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     disabled: {
       border: BaseColors.GRAY_C8C6C4,
       background: BaseColors.GRAY_C8C6C4,
+    },
+    indeterminate: {
+      circle: {
+        background: BaseColors.BLUE_0078D4,
+        hoverBackground: BaseColors.BLUE_005A9E,
+      },
     },
   },
   controlOutlines: {

@@ -7,7 +7,8 @@ import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluen
 import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
-import { convertToLocaleString, getAccessibleDataObject, getColorFromToken, getNextColor } from '../../utilities/index';
+import { getAccessibleDataObject, getColorFromToken, getNextColor, getNextGradient } from '../../utilities/index';
+import { convertToLocaleString } from '../../utilities/locale-util';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 const LEGEND_CONTAINER_HEIGHT = 40;
@@ -108,8 +109,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const donutMarginVertical = this.props.hideLabels ? 0 : 40;
     const outerRadius =
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
-    const chartData = points.filter((d: IChartDataPoint) => d.data! > 0);
+    const chartData = this._elevateToMinimums(points.filter((d: IChartDataPoint) => d.data! >= 0));
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
+
     return !this._isChartEmpty() ? (
       <div
         className={this._classNames.root}
@@ -129,6 +131,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 outerRadius={outerRadius}
                 innerRadius={this.props.innerRadius!}
                 data={chartData!}
+                enableGradient={this.props.enableGradient}
+                roundCorners={this.props.roundCorners}
                 onFocusCallback={this._focusCallback}
                 hoverOnCallback={this._hoverCallback}
                 hoverLeaveCallback={this._hoverLeave}
@@ -190,6 +194,27 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     });
   };
 
+  private _elevateToMinimums(data: IChartDataPoint[]) {
+    let sumOfData = 0;
+    const minPercent = 0.01;
+    const elevatedData: IChartDataPoint[] = [];
+    data.forEach(item => {
+      sumOfData += item.data!;
+    });
+    data.forEach(item => {
+      elevatedData.push(
+        minPercent * sumOfData > item.data! && item.data! > 0
+          ? {
+              ...item,
+              data: minPercent * sumOfData,
+              yAxisCalloutData:
+                item.yAxisCalloutData === undefined ? item.data!.toLocaleString() : item.yAxisCalloutData,
+            }
+          : item,
+      );
+    });
+    return elevatedData;
+  }
   private _setViewBox(node: SVGElement | null): void {
     if (node === null) {
       return;
@@ -204,9 +229,13 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const viewbox = `0 0 ${widthVal!} ${heightVal!}`;
     node.setAttribute('viewBox', viewbox);
   }
+
   private _createLegends(chartData: IChartDataPoint[]): JSX.Element {
     const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
-      const color: string = point.color!;
+      const color: string = this.props.enableGradient
+        ? point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0]
+        : point.color!;
+
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
@@ -261,12 +290,19 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     if (this._calloutAnchorPoint !== data) {
       this._calloutAnchorPoint = data;
       this._currentHoverElement = e;
+      let color: string = data.color!;
+
+      if (this.props.enableGradient) {
+        const pointIndex = Math.max(this.props.data?.chartData?.findIndex(item => item.legend === data.legend) || 0, 0);
+        color = data.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
+      }
+
       this.setState({
         /** Show the callout if highlighted arc is hovered and Hide it if unhighlighted arc is hovered */
         showHover: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
         value: data.data!.toString(),
         legend: data.legend,
-        color: data.color!,
+        color,
         xCalloutValue: data.xAxisCalloutData!,
         yCalloutValue: data.yAxisCalloutData!,
         dataPointCalloutProps: data,

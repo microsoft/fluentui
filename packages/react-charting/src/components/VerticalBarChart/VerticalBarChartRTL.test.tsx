@@ -1,14 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { DefaultPalette } from '@fluentui/react';
+import { DefaultPalette, resetIds } from '@fluentui/react';
 import { VerticalBarChart } from './VerticalBarChart';
 import { VerticalBarChartBase } from './VerticalBarChart.base';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import {
+  forEachTimezone,
   getByClass,
   getById,
+  isTimezoneSet,
   testScreenResolutionChanges,
   testWithWait,
   testWithoutWait,
@@ -17,13 +19,17 @@ import { IVerticalBarChartProps } from './VerticalBarChart.types';
 import { IVerticalBarChartDataPoint } from '../../index';
 import { chartPointsVBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
+const { Timezone } = require('../../../scripts/constants');
+const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
 
-const beforeAll = () => {
-  jest.spyOn(Date.prototype, 'toLocaleString').mockReturnValue('08/25/2023');
-  jest.spyOn(Date.prototype, 'toLocaleTimeString').mockReturnValue('08/25/2023');
-};
+beforeEach(() => {
+  // When adding a new snapshot test, it's observed that other snapshots may fail due to
+  // components sharing a common global counter for IDs. To prevent this from happening,
+  // we should reset the IDs before each test execution.
+  resetIds();
+});
 
 const originalRAF = window.requestAnimationFrame;
 
@@ -271,6 +277,8 @@ const simpleDatePoints = [
   },
 ];
 
+const secondaryYScalePoints = [{ yMaxValue: 50000, yMinValue: 10000 }];
+
 describe('Vertical bar chart rendering', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
@@ -295,17 +303,20 @@ describe('Vertical bar chart rendering', () => {
     },
   );
 
-  testWithoutWait(
-    'Should render the vertical bar chart with Date x-axis data',
-    VerticalBarChart,
-    { data: simpleDatePoints },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-    undefined,
-    beforeAll,
-  );
+  forEachTimezone((tzName, tzIdentifier) => {
+    testWithoutWait(
+      `Should render the vertical bar chart with Date x-axis data in ${tzName} timezone`,
+      VerticalBarChart,
+      { data: simpleDatePoints },
+      container => {
+        // Assert
+        expect(container).toMatchSnapshot();
+      },
+      undefined,
+      undefined,
+      !(isTimezoneSet(tzIdentifier) && env === 'TEST'),
+    );
+  });
 
   testWithoutWait(
     'Should render the vertical bar chart with formatted Date x-axis data',
@@ -320,7 +331,8 @@ describe('Vertical bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
     undefined,
-    beforeAll,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
   );
 
   testWithoutWait(
@@ -335,7 +347,8 @@ describe('Vertical bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
     undefined,
-    beforeAll,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
   );
 
   testWithoutWait(
@@ -350,7 +363,8 @@ describe('Vertical bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
     undefined,
-    beforeAll,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
   );
 
   testWithoutWait(
@@ -364,7 +378,19 @@ describe('Vertical bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
     undefined,
-    beforeAll,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
+  );
+
+  testWithoutWait(
+    'Should render the vertical bar chart with secondary Y axis',
+    VerticalBarChart,
+    { data: chartPointsVBC, secondaryYScaleOptions: secondaryYScalePoints },
+    container => {
+      // Assert
+      expect(getById(container, /yAxisGElementSecondarychart_/i)).toBeDefined();
+      expect(container).toMatchSnapshot();
+    },
   );
 });
 
@@ -375,7 +401,7 @@ describe('Vertical bar chart - Subcomponent bar', () => {
   testWithWait(
     'Should render the bar with the given width',
     VerticalBarChart,
-    { data: chartPointsVBC, barWidth: 100 },
+    { data: chartPointsVBC, barWidth: 100, maxBarWidth: 200 },
     container => {
       // Assert
       const bars = getById(container, /_VBC_bar/i);
@@ -385,6 +411,29 @@ describe('Vertical bar chart - Subcomponent bar', () => {
       expect(bars[2].getAttribute('width')).toEqual('100');
     },
   );
+
+  test('Should render the bar with the given xAxisInnerPadding and check x attribute differences', async () => {
+    // Arrange
+    const { container, rerender } = render(
+      <VerticalBarChart data={simplePoints} xAxisInnerPadding={0.5} xAxisOuterPadding={0.5} />,
+    );
+
+    // Act
+    const bars = container.querySelectorAll('rect');
+    const x1Iteration1 = parseFloat(bars[0].getAttribute('x') || '0');
+    const x2Iteration1 = parseFloat(bars[1].getAttribute('x') || '0');
+    const iteration1Diff = x2Iteration1 - x1Iteration1;
+
+    // Re-render with different xAxisInnerPadding
+    rerender(<VerticalBarChart data={simplePoints} xAxisInnerPadding={0.75} xAxisOuterPadding={0.5} />);
+    const barsUpdated = container.querySelectorAll('rect');
+    const x1Iteration2 = parseFloat(barsUpdated[0].getAttribute('x') || '0');
+    const x2Iteration2 = parseFloat(barsUpdated[1].getAttribute('x') || '0');
+    const iteration2Diff = x2Iteration2 - x1Iteration2;
+
+    // Assert
+    expect(iteration1Diff).toBeLessThan(iteration2Diff);
+  });
 
   testWithWait(
     'Should render the bar with the given width with Date X-Axis',
@@ -494,6 +543,9 @@ describe('Vertical bar chart - Subcomponent line', () => {
 });
 
 describe('Vertical bar chart - Subcomponent Legends', () => {
+  beforeEach(() => {
+    resetIds();
+  });
   testWithoutWait(
     'Should not show any rendered legends when hideLegend is true',
     VerticalBarChart,
@@ -583,6 +635,10 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
 });
 
 describe('Vertical bar chart - Subcomponent callout', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   test('Should call the handler on mouse over bar and on mouse leave from bar', async () => {
     // Arrange
     const handleMouseOver = jest.spyOn(VerticalBarChartBase.prototype as any, '_onBarHover');
@@ -745,6 +801,10 @@ describe('Vertical bar chart re-rendering', () => {
 });
 
 describe('VerticalBarChart - mouse events', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   testWithWait(
     'Should render callout correctly on mouseover',
     VerticalBarChart,
@@ -780,11 +840,17 @@ describe('VerticalBarChart - mouse events', () => {
   );
 });
 
-test('Should pass accessibility tests', async () => {
-  const { container } = render(<VerticalBarChart data={chartPointsVBC} />);
-  let axeResults;
-  await act(async () => {
-    axeResults = await axe(container);
+describe('VerticalBarChart - accessibility', () => {
+  beforeEach(() => {
+    resetIds();
   });
-  expect(axeResults).toHaveNoViolations();
+
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
+  });
 });

@@ -82,6 +82,17 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                 top: 1px;
                 z-index: 1;
               }
+              :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 1px;
+                content: "";
+                left: 1px;
+                outline: 1px solid #605e5c;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 1;
+              }
               &:visited {
                 color: #323130;
               }
@@ -105,6 +116,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                   line-height: 44px;
                   position: absolute;
                   speak: none;
+                  text-decoration: inherit;
                   transform: rotate(-180deg);
                   transition: transform .1s linear;
                 }
@@ -176,6 +188,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        align-items: center;
                         background-color: transparent;
                         border-radius: 2px;
                         border: 1px solid transparent;
@@ -187,6 +200,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         font-size: 14px;
                         font-weight: 400;
                         height: 44px;
+                        justify-content: center;
                         line-height: 44px;
                         outline: transparent;
                         overflow: hidden;
@@ -217,6 +231,24 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        bottom: -2px;
+                        left: -2px;
+                        outline-color: ButtonText;
+                        right: -2px;
+                        top: -2px;
+                      }
+                      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -333,6 +365,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        align-items: center;
                         background-color: transparent;
                         border-radius: 2px;
                         border: 1px solid transparent;
@@ -344,6 +377,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         font-size: 14px;
                         font-weight: 400;
                         height: 44px;
+                        justify-content: center;
                         line-height: 44px;
                         outline: transparent;
                         overflow: hidden;
@@ -374,6 +408,24 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        bottom: -2px;
+                        left: -2px;
+                        outline-color: ButtonText;
+                        right: -2px;
+                        top: -2px;
+                      }
+                      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -553,6 +605,7 @@ exports[`Nav renders Nav correctly 1`] = `
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
+                      align-items: center;
                       background-color: transparent;
                       border-radius: 2px;
                       border: 1px solid transparent;
@@ -564,6 +617,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       height: 44px;
+                      justify-content: center;
                       line-height: 44px;
                       outline: transparent;
                       overflow: hidden;
@@ -594,6 +648,24 @@ exports[`Nav renders Nav correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      bottom: -2px;
+                      left: -2px;
+                      outline-color: ButtonText;
+                      right: -2px;
+                      top: -2px;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;

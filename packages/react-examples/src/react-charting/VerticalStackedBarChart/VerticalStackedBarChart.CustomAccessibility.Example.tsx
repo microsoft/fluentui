@@ -4,6 +4,8 @@ import {
   IVerticalStackedChartProps,
   VerticalStackedBarChart,
   ILineChartLineOptions,
+  DataVizPalette,
+  getColorFromToken,
 } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
@@ -46,10 +48,10 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata1',
         data: 40,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '61%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 1-1 of 4, 2020/04/30 40%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 1-1 of 4, 2020/04/30 Metadata1 61%' },
       },
       {
         legend: 'Metadata2',
@@ -57,15 +59,15 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '8%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 1-2 of 4, 2020/04/30 5%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 1-2 of 4, 2020/04/30 Metadata2 8%' },
       },
       {
         legend: 'Metadata3',
         data: 20,
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '31%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 1-3 of 4, 2020/04/30 20%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 1-3 of 4, 2020/04/30 Metadata3 31%' },
       },
     ];
 
@@ -73,10 +75,10 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata1',
         data: 30,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '33%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 2-1 of 4, 2020/04/30 30%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 2-1 of 4, 2020/04/30 Metadata1 33%' },
       },
       {
         legend: 'Metadata2',
@@ -84,15 +86,15 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '22%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 2-2 of 4, 2020/04/30 20%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 2-2 of 4, 2020/04/30 Metadata2 22%' },
       },
       {
         legend: 'Metadata3',
         data: 40,
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '45%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 2-3 of 4, 2020/04/30 40%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 2-3 of 4, 2020/04/30 Metadata3 45%' },
       },
     ];
 
@@ -100,10 +102,10 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata1',
         data: 44,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '43%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 3-1 of 4, 2020/04/30 44%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 3-1 of 4, 2020/04/30 Metadata1 43%' },
       },
       {
         legend: 'Metadata2',
@@ -111,15 +113,15 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '27%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 3-2 of 4, 2020/04/30 28%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 3-2 of 4, 2020/04/30 Metadata2 27%' },
       },
       {
         legend: 'Metadata3',
         data: 30,
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '30%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 3-3 of 4, 2020/04/30 30%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 3-3 of 4, 2020/04/30 Metadata3 30%' },
       },
     ];
 
@@ -134,7 +136,11 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
             { y: 10, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
-        stackCallOutAccessibilityData: { ariaLabel: 'Bar stack series 1 of 6' },
+        stackCallOutAccessibilityData: {
+          ariaLabel:
+            'Bar stack series 1 of 3, 0 MetaDate1 61% MetaData2 8% MetaDate3 31% ' +
+            'Recommended Builds 10 Supported Builds 42',
+        },
       },
       {
         chartData: secondChartPoints,
@@ -142,7 +148,9 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         ...(showLine && {
           lineData: [{ y: 33, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
         }),
-        stackCallOutAccessibilityData: { ariaLabel: 'Bar stack series 2 of 6' },
+        stackCallOutAccessibilityData: {
+          ariaLabel: 'Bar stack series 2 of 3, 20 MetaDate1 33% MetaData2 22% MetaDate3 45% ' + 'Supported Builds 33',
+        },
       },
       {
         chartData: thirdChartPoints,
@@ -153,7 +161,11 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
             { y: 20, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
-        stackCallOutAccessibilityData: { ariaLabel: 'Bar stack series 3 of 6' },
+        stackCallOutAccessibilityData: {
+          ariaLabel:
+            'Bar stack series 3 of 3, 40 MetaDate1 43% MetaData 27% MetaDate3 30% ' +
+            'Recommended Builds 20 Supported Builds 60',
+        },
       },
     ];
 

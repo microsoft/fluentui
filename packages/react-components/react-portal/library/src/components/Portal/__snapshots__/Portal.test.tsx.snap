@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Portal renders a default state 1`] = `
+<div
+  class=""
+  data-portal-node="true"
+  dir="ltr"
+>
+  test
+</div>
+`;

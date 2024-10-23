@@ -232,6 +232,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
           colorFillBars={colorFillBarData}
           allowMultipleShapesForPoints={this.state.allowMultipleShapes}
           enablePerfOptimization={true}
+          useUTC={false}
         />
       </div>
     );

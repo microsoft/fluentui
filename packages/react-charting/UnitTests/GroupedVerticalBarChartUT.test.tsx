@@ -11,6 +11,9 @@ import {
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { GroupedVerticalBarChartBase } from '../src/components/GroupedVerticalBarChart/GroupedVerticalBarChart.base';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
+import { resetIds } from '@fluentui/react';
+import { ChartTypes, XAxisTypes } from '../src/utilities/utilities';
+
 const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -238,7 +241,13 @@ const margins = {
   bottom: 10,
 };
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 runTest('_createDataSetOfGVBC', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should create grouped vertical bar chart data for multiple series', () => {
     render(<GroupedVerticalBarChart data={chartPoints} />);
     const instance = new GroupedVerticalBarChartBase({
@@ -286,6 +295,8 @@ runTest('_createDataSetOfGVBC', () => {
 });
 
 runTest('_createDataset', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should create bars data for multiple series', () => {
     const instance = new GroupedVerticalBarChartBase({
       data: [],
@@ -319,6 +330,8 @@ runTest('_createDataset', () => {
 });
 
 runTest('_getLegendData', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return legends data for multiple series', () => {
     const instance = new GroupedVerticalBarChartBase({
       data: [],
@@ -350,6 +363,8 @@ runTest('_getLegendData', () => {
 });
 
 runTest('_isChartEmpty', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return true when chart data is empty ', () => {
     const instance = new GroupedVerticalBarChartBase({
       data: [],
@@ -368,6 +383,8 @@ runTest('_isChartEmpty', () => {
 });
 
 runTest('_getAriaLabel', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return correct aria label for a point with xAxisCalloutData and yAxisCalloutData', () => {
     const instance = new GroupedVerticalBarChartBase({
       data: [],
@@ -410,6 +427,8 @@ runTest('_getAriaLabel', () => {
 });
 
 runTest('Get Domain Margins', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return the correct margins when total width is greater than required width', () => {
     const instance = new GroupedVerticalBarChartBase({
       data: chartPoints,
@@ -428,8 +447,8 @@ runTest('Get Domain Margins', () => {
     });
     var result = instance._getDomainMargins(1000);
     expect(result['bottom']).toEqual(10);
-    expect(result['left']).toEqual(384.44444444444446);
-    expect(result['right']).toEqual(384.44444444444446);
+    expect(result['left']).toEqual(18);
+    expect(result['right']).toEqual(18);
     expect(result['top']).toEqual(10);
   });
 
@@ -458,6 +477,8 @@ runTest('Get Domain Margins', () => {
 });
 
 runTest('Get Scales', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return correct x0Scale and x1Scale', () => {
     const instance = new GroupedVerticalBarChartBase({
       data: chartPoints,
@@ -486,6 +507,8 @@ runTest('Get Scales', () => {
 });
 
 runTest('_buildGraph', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return the correct graph data', () => {
     const instance = new GroupedVerticalBarChartBase({
       data: chartPoints,
@@ -520,5 +543,52 @@ runTest('_buildGraph', () => {
     expect(result['props']['children'][0][0]).not.toBeNull();
     const bar = result['props']['children'][0][0];
     expect(bar['props']['aria-label']).toEqual('2020/05/30. 2022, 29%.');
+  });
+
+  runTest('_getDomainNRangeValues', () => {
+    beforeEach(sharedBeforeEach);
+    test('Should return correct domain and range values for numeric axis type', () => {
+      const instance = new GroupedVerticalBarChartBase({
+        data: chartPoints,
+      });
+      expect(instance).toBeDefined();
+      const dataSet = instance._createDataSetOfGVBC(chartPoints);
+      expect(dataSet).toBeDefined();
+      const rangeValues = instance._getDomainNRangeValues(
+        dataSet.datasetForBars,
+        margins,
+        100,
+        ChartTypes.GroupedVerticalBarChart,
+        false,
+        XAxisTypes.NumericAxis,
+      );
+      expect(rangeValues).toBeDefined();
+      expect(rangeValues.dStartValue).toEqual(0);
+      expect(rangeValues.dEndValue).toEqual(0);
+      expect(rangeValues.rStartValue).toEqual(0);
+      expect(rangeValues.rEndValue).toEqual(0);
+    });
+
+    test('Should return correct domain and range values for date axis type', () => {
+      const instance = new GroupedVerticalBarChartBase({
+        data: chartPoints,
+      });
+      expect(instance).toBeDefined();
+      const dataSet = instance._createDataSetOfGVBC(chartPoints);
+      expect(dataSet).toBeDefined();
+      const rangeValues = instance._getDomainNRangeValues(
+        dataSet.datasetForBars,
+        margins,
+        100,
+        ChartTypes.GroupedVerticalBarChart,
+        false,
+        XAxisTypes.DateAxis,
+      );
+      expect(rangeValues).toBeDefined();
+      expect(rangeValues.dStartValue).toEqual(0);
+      expect(rangeValues.dEndValue).toEqual(0);
+      expect(rangeValues.rStartValue).toEqual(0);
+      expect(rangeValues.rEndValue).toEqual(0);
+    });
   });
 });

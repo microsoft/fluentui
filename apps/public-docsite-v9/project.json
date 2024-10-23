@@ -1,7 +1,14 @@
 {
-  "name": "@fluentui/public-docsite-v9",
+  "name": "public-docsite-v9",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "implicitDependencies": [],
-  "tags": ["platform:web", "vNext"]
+  "implicitDependencies": ["tag:type:stories"],
+  "tags": ["platform:web", "vNext"],
+  "targets": {
+    "build-storybook": {
+      "dependsOn": [
+        { "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox"], "target": "build" }
+      ]
+    }
+  }
 }

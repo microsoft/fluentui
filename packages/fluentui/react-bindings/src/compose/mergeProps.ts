@@ -7,9 +7,9 @@ import { resolveSlotProps } from './resolveSlotProps';
  * render; after resolving state and before rendering slots and slotProps.
  */
 export function mergeProps<
-  TProps,
-  TState = TProps,
-  TSlots = GenericDictionary,
+  TProps extends {},
+  TState extends {} = TProps,
+  TSlots extends {} = GenericDictionary,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   TSlotProps = { [key in keyof TSlots]: any },
 >(state: TState, options: ComposePreparedOptions<TProps, TState>): MergePropsResult<TState, TSlots, TSlotProps> {

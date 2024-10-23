@@ -156,6 +156,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
                   {...(hasInnerButton && accNameDescription)}
                   onContextMenu={this._onColumnContextMenu}
                   onClick={this._onColumnClick}
+                  onKeyDown={this._onColumnKeyDown}
                   aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown ? 'menu' : undefined}
                   aria-expanded={
                     column.columnActionsMode === ColumnActionsMode.hasDropdown ? !!column.isMenuOpen : undefined
@@ -273,6 +274,18 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
 
     if (onColumnClick) {
       onColumnClick(ev, column);
+    }
+  };
+
+  private _onColumnKeyDown = (ev: React.KeyboardEvent): void => {
+    const { onColumnKeyDown, column } = this.props;
+
+    if (column.onColumnKeyDown) {
+      column.onColumnKeyDown(ev, column);
+    }
+
+    if (onColumnKeyDown) {
+      onColumnKeyDown(ev, column);
     }
   };
 

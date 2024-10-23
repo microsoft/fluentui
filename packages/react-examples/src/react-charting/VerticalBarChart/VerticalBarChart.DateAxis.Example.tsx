@@ -62,6 +62,7 @@ export class VerticalBarChartDateAxisExample extends React.Component<{}, IVertic
             hideLegend={true}
             //rotateXAxisLables={true}
             enableReflow={true}
+            useUTC={false}
           />
         </div>
       </>

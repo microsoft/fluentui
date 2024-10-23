@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v8/Components/GroupedList Migration" />
+
+# GroupedList Migration
+
+Fluent UI v8 provides the `GroupedList` component for grouping hierarchical grid data (the component has a [`treegrid` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Treegrid_Role)).
+
+Fluent UI v9 does not have a one-to-one migration from v8's `GroupedList` so this guide will help you decide which v9 component makes the most sense for you to migrate to based on your usage of `GroupedList`.
+
+### I'm using `GroupedList` to display hierarchical data that expands and collapses
+
+In this case consider migrating to [Fluent UI v9's `Tree` component](?path=/docs/components-tree--default) which is a hierarchical list control for displaying expandable and collapsable data.
+
+### I'm using `GroupedList` to display a flat or nested list of items that does not expand or collapse
+
+For lists, look at migrating to [Fluent UI v9's `List` component](?path=/docs/preview-components-list--default) which renders vertically list elements that can be interactive or non-interactive.
+
+### I'm using `GroupedList` to display tabular data
+
+For tabular data (i.e., a grid), consider migrating to [Fluent UI v9's `Table` component](?path=/docs/components-table--default) or [`DataGrid` component](?path=/docs/components-datagrid--default).
+Both components are designed to render tabular data and support selection.
+
+### I'm using `GroupedList` in some other way
+
+Contact us on [Github](https://github.com/microsoft/fluentui) and we can talk about your situation.

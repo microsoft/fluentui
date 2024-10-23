@@ -30,6 +30,8 @@ import { POSITIONING_END_EVENT } from './constants';
  * @internal
  */
 export function usePositioning(options: PositioningProps & PositioningOptions): UsePositioningReturn {
+  'use no memo';
+
   const managerRef = React.useRef<PositionManager | null>(null);
   const targetRef = React.useRef<TargetElement | null>(null);
   const overrideTargetRef = React.useRef<TargetElement | null>(null);
@@ -65,7 +67,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     options.positioningRef,
     () => ({
       updatePosition: () => managerRef.current?.updatePosition(),
-      setTarget: (target: TargetElement) => {
+      setTarget: (target: TargetElement | null) => {
         if (options.target && process.env.NODE_ENV !== 'production') {
           const err = new Error();
           // eslint-disable-next-line no-console
@@ -158,6 +160,8 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
 }
 
 function usePositioningOptions(options: PositioningOptions) {
+  'use no memo';
+
   const {
     align,
     arrowPadding,
@@ -202,7 +206,7 @@ function usePositioningOptions(options: PositioningOptions) {
           overflowBoundaryPadding,
           isRtl,
         }),
-        autoSize && maxSizeMiddleware(autoSize, { container, overflowBoundary }),
+        autoSize && maxSizeMiddleware(autoSize, { container, overflowBoundary, overflowBoundaryPadding, isRtl }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),

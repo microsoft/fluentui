@@ -254,6 +254,7 @@ export class VerticalStackedBarChartDateAxisExample extends React.Component<{}, 
               'aria-label': 'Example chart with metadata per month',
             }}
             enableReflow={true}
+            useUTC={false}
           />
         </div>
       </>

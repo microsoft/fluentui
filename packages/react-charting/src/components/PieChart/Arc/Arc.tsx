@@ -3,8 +3,9 @@ import { arc as d3Arc } from 'd3-shape';
 import { IArcProps, IArcState, IArcStyles } from './Arc.types';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
-import { wrapContent, convertToLocaleString } from '../../../utilities/utilities';
+import { wrapContent } from '../../../utilities/utilities';
 import { SVGTooltipText } from '../../../utilities/SVGTooltipText';
+import { convertToLocaleString } from '../../../utilities/locale-util';
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {

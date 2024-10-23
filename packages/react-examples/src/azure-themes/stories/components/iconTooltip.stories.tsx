@@ -4,6 +4,10 @@ import { TooltipHost, ITooltipHostStyles } from '@fluentui/react/lib/Tooltip';
 import { IconButton } from '@fluentui/react/lib/Button';
 import { useId } from '@fluentui/react-hooks';
 
+export default {
+  title: 'Components/IconTooltip',
+};
+
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
   disabled?: boolean;

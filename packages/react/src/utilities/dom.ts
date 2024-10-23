@@ -17,7 +17,7 @@ import { useDocument, useWindow, WindowProviderProps } from '@fluentui/react-win
  */
 export const useDocumentEx = () => {
   // eslint-disable-next-line no-restricted-globals
-  return useDocument() ?? typeof document !== 'undefined' ? document : undefined;
+  return useDocument() ?? (typeof document !== 'undefined' ? document : undefined);
 };
 
 /**
@@ -27,7 +27,7 @@ export const useDocumentEx = () => {
  */
 export const useWindowEx = () => {
   // eslint-disable-next-line no-restricted-globals
-  return useWindow() ?? typeof window !== 'undefined' ? window : undefined;
+  return useWindow() ?? (typeof window !== 'undefined' ? window : undefined);
 };
 
 /**
@@ -39,7 +39,7 @@ export const useWindowEx = () => {
  */
 export const getDocumentEx = (ctx: Pick<WindowProviderProps, 'window'> | undefined) => {
   // eslint-disable-next-line no-restricted-globals
-  return ctx?.window?.document ?? typeof document !== 'undefined' ? document : undefined;
+  return ctx?.window?.document ?? (typeof document !== 'undefined' ? document : undefined);
 };
 
 /**
@@ -51,5 +51,5 @@ export const getDocumentEx = (ctx: Pick<WindowProviderProps, 'window'> | undefin
  */
 export const getWindowEx = (ctx: Pick<WindowProviderProps, 'window'> | undefined) => {
   // eslint-disable-next-line no-restricted-globals
-  return ctx?.window ?? typeof window !== 'undefined' ? window : undefined;
+  return ctx?.window ?? (typeof window !== 'undefined' ? window : undefined);
 };

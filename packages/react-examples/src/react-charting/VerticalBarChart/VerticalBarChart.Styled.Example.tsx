@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import {
+  VerticalBarChart,
+  IVerticalBarChartProps,
+  IVerticalBarChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
 interface IVerticalBarChartState {
@@ -34,7 +39,11 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
       { x: 'Thirteen', y: 33 },
     ];
 
-    const customColors = [DefaultPalette.greenLight, DefaultPalette.green, DefaultPalette.greenDark];
+    const customColors = [
+      getColorFromToken(DataVizPalette.color8),
+      getColorFromToken(DataVizPalette.color18),
+      getColorFromToken(DataVizPalette.color28),
+    ];
 
     return (
       <>
@@ -60,6 +69,7 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
             yAxisTickCount={6}
             colors={customColors}
             hideLegend={true}
+            lineLegendColor={getColorFromToken(DataVizPalette.color10)}
             enableReflow={true}
           />
         </div>

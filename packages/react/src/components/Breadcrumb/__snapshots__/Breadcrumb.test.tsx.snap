@@ -72,17 +72,19 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        align-items: center;
                         background-color: transparent;
                         border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
                         color: #605e5c;
                         cursor: pointer;
-                        display: inline-block;
+                        display: inline-flex;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        justify-content: center;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -112,6 +114,24 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        bottom: 1px;
+                        left: 1px;
+                        outline-color: ButtonText;
+                        right: 1px;
+                        top: 1px;
+                      }
+                      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         bottom: 1px;
                         left: 1px;
                         outline-color: ButtonText;
@@ -182,6 +202,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                             font-style: normal;
                             font-weight: normal;
                             speak: none;
+                            text-decoration: inherit;
                           }
                       data-icon-name="ChevronDown"
                     >
@@ -203,6 +224,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -299,6 +321,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -522,6 +545,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -618,6 +642,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -714,6 +739,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -1271,6 +1297,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -1308,17 +1335,19 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        align-items: center;
                         background-color: transparent;
                         border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
                         color: #605e5c;
                         cursor: pointer;
-                        display: inline-block;
+                        display: inline-flex;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        justify-content: center;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1348,6 +1377,24 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        bottom: 1px;
+                        left: 1px;
+                        outline-color: ButtonText;
+                        right: 1px;
+                        top: 1px;
+                      }
+                      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         bottom: 1px;
                         left: 1px;
                         outline-color: ButtonText;
@@ -1413,6 +1460,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                           ms-Button-icon
                           {
                             display: inline-block;
+                            text-decoration: inherit;
                           }
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1522,17 +1570,19 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        align-items: center;
                         background-color: transparent;
                         border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
                         color: #605e5c;
                         cursor: pointer;
-                        display: inline-block;
+                        display: inline-flex;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        justify-content: center;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1562,6 +1612,24 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        bottom: 1px;
+                        left: 1px;
+                        outline-color: ButtonText;
+                        right: 1px;
+                        top: 1px;
+                      }
+                      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         bottom: 1px;
                         left: 1px;
                         outline-color: ButtonText;
@@ -1627,6 +1695,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                           ms-Button-icon
                           {
                             display: inline-block;
+                            text-decoration: inherit;
                           }
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1736,17 +1805,19 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        align-items: center;
                         background-color: transparent;
                         border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
                         color: #605e5c;
                         cursor: pointer;
-                        display: inline-block;
+                        display: inline-flex;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        justify-content: center;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1776,6 +1847,24 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        bottom: 1px;
+                        left: 1px;
+                        outline-color: ButtonText;
+                        right: 1px;
+                        top: 1px;
+                      }
+                      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         bottom: 1px;
                         left: 1px;
                         outline-color: ButtonText;
@@ -1841,6 +1930,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                           ms-Button-icon
                           {
                             display: inline-block;
+                            text-decoration: inherit;
                           }
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1882,6 +1972,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -1978,6 +2069,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -2201,6 +2293,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -2238,17 +2331,19 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        align-items: center;
                         background-color: transparent;
                         border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
                         color: #605e5c;
                         cursor: pointer;
-                        display: inline-block;
+                        display: inline-flex;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        justify-content: center;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2278,6 +2373,24 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        bottom: 1px;
+                        left: 1px;
+                        outline-color: ButtonText;
+                        right: 1px;
+                        top: 1px;
+                      }
+                      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                         bottom: 1px;
                         left: 1px;
                         outline-color: ButtonText;
@@ -2343,6 +2456,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                           ms-Button-icon
                           {
                             display: inline-block;
+                            text-decoration: inherit;
                           }
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -2384,6 +2498,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;

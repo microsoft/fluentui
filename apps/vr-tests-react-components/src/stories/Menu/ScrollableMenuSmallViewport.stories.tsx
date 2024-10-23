@@ -1,9 +1,12 @@
 import * as React from 'react';
-
+import type { Meta } from '@storybook/react';
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuGroup, MenuDivider } from '@fluentui/react-menu';
 import { makeStyles, shorthands } from '@griffel/react';
 import { PositioningProps } from '@fluentui/react-positioning';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+
+import { withStoryWrightSteps } from '../../utilities';
+
 const useStyles = makeStyles({
   wrapper: { display: 'flex' },
   shortContainer: {
@@ -61,25 +64,24 @@ const Example = () => {
   const [longOverflowBoundary, setLongOverflowBoundary] = React.useState<HTMLElement | null>(null);
 
   return (
-    <StoryWright steps={steps}>
-      <div className={styles.wrapper}>
-        <div className={styles.shortContainer} ref={setShortOverflowBoundary}>
-          <div>Short viewport:</div>
-          <ScrollableMenu overflowBoundary={shortOverflowBoundary} />
-        </div>
-
-        <div className={styles.longContainer} ref={setLongOverflowBoundary}>
-          <div>Long viewport:</div>
-          <ScrollableMenu overflowBoundary={longOverflowBoundary} />
-        </div>
+    <div className={styles.wrapper}>
+      <div className={styles.shortContainer} ref={setShortOverflowBoundary}>
+        <div>Short viewport:</div>
+        <ScrollableMenu overflowBoundary={shortOverflowBoundary} />
       </div>
-    </StoryWright>
+
+      <div className={styles.longContainer} ref={setLongOverflowBoundary}>
+        <div>Long viewport:</div>
+        <ScrollableMenu overflowBoundary={longOverflowBoundary} />
+      </div>
+    </div>
   );
 };
 
-const steps = new Steps().snapshot('default').end();
-export const ScrollableMenuSmallViewport = () => (
-  <StoryWright steps={steps}>
-    <Example />
-  </StoryWright>
-);
+export default {
+  title: 'Menu',
+
+  decorators: [story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default').end() })],
+} satisfies Meta<typeof Menu>;
+
+export const ScrollableMenuSmallViewport = () => <Example />;

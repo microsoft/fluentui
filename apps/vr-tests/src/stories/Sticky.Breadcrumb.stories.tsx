@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -219,11 +218,13 @@ function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
 const getElement = "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0]";
 const cropTo = { cropTo: '.testWrapper' };
 
-storiesOf('Sticky breadcrumb and sticky details list header', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'Sticky breadcrumb and sticky details list header',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default', cropTo)
         .executeScript(`${getElement}.scrollTop = 5`)
         .snapshot(
@@ -240,11 +241,16 @@ storiesOf('Sticky breadcrumb and sticky details list header', module)
         .snapshot('scroll down when horizontal scroll is non-zero', cropTo)
         .executeScript(`${getElement}.scrollTop = 0`)
         .snapshot('scroll back to the top when horizontal scroll is non-zero', cropTo)
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory('ScrollablePane Sticky Breadcrumb Details List', () => (
-    <ScrollablePaneStickyBreadcrumbExample />
-  ));
+        .end(),
+    ),
+  ],
+
+  excludeStories: ['ScrollablePaneStickyBreadcrumbExample'],
+};
+
+export const ScrollablePaneStickyBreadcrumbDetailsList = () => (
+  <ScrollablePaneStickyBreadcrumbExample />
+);
+
+ScrollablePaneStickyBreadcrumbDetailsList.storyName =
+  'ScrollablePane Sticky Breadcrumb Details List';

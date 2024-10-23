@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/code-sandbox",
+  "name": "code-sandbox",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

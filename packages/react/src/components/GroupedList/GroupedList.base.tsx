@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { initializeComponentRef, classNamesFunction, KeyCodes, getRTLSafeKeyCode, css } from '../../Utilities';
+import {
+  initializeComponentRef,
+  classNamesFunction,
+  FocusRects,
+  KeyCodes,
+  getRTLSafeKeyCode,
+  css,
+} from '../../Utilities';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode } from '../../List';
 import { SelectionMode } from '../../Selection';
@@ -154,6 +161,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
         shouldEnterInnerZone={shouldEnterInnerZone}
         className={css(this._classNames.root, focusZoneProps.className)}
       >
+        <FocusRects />
         {!groups ? (
           this._renderGroup(undefined, 0)
         ) : (

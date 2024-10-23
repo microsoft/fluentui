@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Apply aria-disabled to DatePicker's contentAfter slot to avoid confusion when using screen readers.",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}

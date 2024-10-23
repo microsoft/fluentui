@@ -111,7 +111,7 @@ const webpackConfig: webpack.Configuration &
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
     __DEV__ &&
     // Disable ProgressPlugin in CI and multi-project build because the outdated lines can't be deleted and
-    // spam the log (note that build:docs is the resolved command used by lerna run build --stream)
+    // spam the log (note that build:docs is the resolved command used by nx run build --stream)
     !process.env.TF_BUILD &&
     !process.argv.includes('build:docs')
       ? new webpack.ProgressPlugin({

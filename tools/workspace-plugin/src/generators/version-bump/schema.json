@@ -26,7 +26,7 @@
     },
     "exclude": {
       "type": "string",
-      "description": "Comma-delimited list of packages that should not be bumped when using the --all flag"
+      "description": "Comma-delimited list of projects that should not be bumped when using the --all flag"
     }
   },
   "required": ["bumpType"]

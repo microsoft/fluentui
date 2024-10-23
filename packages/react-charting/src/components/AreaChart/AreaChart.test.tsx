@@ -301,6 +301,9 @@ describe('AreaChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(() => {
+    resetIds();
+  });
   it('No prop changes', () => {
     const renderMock = jest.spyOn(AreaChartBase.prototype, 'render');
     const props = {
