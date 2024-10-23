@@ -26,6 +26,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     containerSizeRef,
     scrollViewRef,
     enableScrollLoad,
+    updateScrollPosition,
   } = props;
 
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
@@ -33,9 +34,10 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   // We use this ref as a constant source to access the virtualizer's state imperatively
   const actualIndexRef = useRef<number>(_virtualizerContext.contextIndex);
-  const flaggedIndex = useRef<number | null>(null);
 
+  const flaggedIndex = useRef<number | null>(null);
   const actualIndex = _virtualizerContext.contextIndex;
+
   // Just in case our ref gets out of date vs the context during a re-render
   if (_virtualizerContext.contextIndex !== actualIndexRef.current) {
     actualIndexRef.current = _virtualizerContext.contextIndex;
@@ -49,10 +51,10 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   );
 
   // Store ref to before padding element
-  const beforeElementRef = useRef<Element | null>(null);
+  const beforeElementRef = useRef<HTMLElement | null>(null);
 
   // Store ref to before padding element
-  const afterElementRef = useRef<Element | null>(null);
+  const afterElementRef = useRef<HTMLElement | null>(null);
 
   // We need to store an array to track dynamic sizes, we can use this to incrementally update changes
   const childSizes = useRef<number[]>(new Array<number>(getItemSize ? numItems : 0));
@@ -306,18 +308,17 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
           return;
         }
 
-        // Grab latest entry that is intersecting
-        const latestEntry =
-          entries.length === 1
-            ? entries[0]
-            : entries
-                .sort((entry1, entry2) => entry2.time - entry1.time)
-                .find(entry => {
-                  return entry.intersectionRatio > 0;
-                });
+        if (entries.length === 0) {
+          // No entries found, return.
+          return;
+        }
+        // Find the latest entry that is intersecting
+        const sortedEntries = entries.sort((entry1, entry2) => entry2.time - entry1.time);
+        const latestEntry = sortedEntries.find(entry => {
+          return entry.isIntersecting;
+        });
 
-        if (!latestEntry || !latestEntry.isIntersecting) {
-          // If we don't find an intersecting area, ignore for now.
+        if (!latestEntry) {
           return;
         }
 
@@ -364,14 +365,19 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
           } else if (latestEntry.target === beforeElementRef.current) {
             // Get before buffers position
             measurementPos = calculateBefore();
+
+            // No IO Root - Account for offset of top of virtualizer
+            if (!scrollViewRef?.current) {
+              measurementPos += beforeElementRef?.current?.offsetTop;
+            }
             // Get exact intersection position based on overflow size (how far into window did we scroll IO?)
             const overflowAmount =
               axis === 'vertical' ? latestEntry.intersectionRect.height : latestEntry.intersectionRect.width;
+
             // Minus from original before position
             measurementPos -= overflowAmount;
             // Ignore buffer size (IO offset)
             measurementPos += bufferSize;
-
             // Calculate how far past the window bounds we are (this will be zero if IO is within window)
             const hOverflow = latestEntry.boundingClientRect.bottom - latestEntry.intersectionRect.bottom;
             const hOverflowReversed = latestEntry.boundingClientRect.top - latestEntry.intersectionRect.top;
@@ -400,30 +406,28 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
         // Safety limits
         const newStartIndex = Math.min(Math.max(startIndex, 0), maxIndex);
-
         flushSync(() => {
-          _virtualizerContext.setContextPosition(measurementPos);
+          // Callback to allow measure functions to check virtualizer length
+          if (newStartIndex + virtualizerLength >= numItems && actualIndex + virtualizerLength >= numItems) {
+            // We've already hit the end, no need to update state.
+            return;
+          }
+          updateScrollPosition?.(measurementPos);
           if (actualIndex !== newStartIndex) {
             batchUpdateNewIndex(newStartIndex);
           }
         });
       },
       [
-        _virtualizerContext,
+        updateScrollPosition,
         actualIndex,
-        axis,
-        batchUpdateNewIndex,
-        bufferItems,
-        bufferSize,
-        calculateAfter,
-        calculateBefore,
-        calculateTotalSize,
-        containerSizeRef,
-        getIndexFromScrollPosition,
-        numItems,
-        reversed,
-        updateCurrentItemSizes,
         virtualizerLength,
+        axis,
+        reversed,
+        numItems,
+        bufferSize,
+        bufferItems,
+        scrollViewRef,
       ],
     ),
     {

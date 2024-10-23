@@ -195,6 +195,12 @@ export type VirtualizerConfigProps = {
    * Virtualizer Measure hooks provide a suitable reference.
    */
   containerSizeRef: RefObject<number>;
+
+  /**
+   * A callback that enables updating scroll position for calculating required dynamic lengths,
+   * this should be passed in from useDynamicVirtualizerMeasure
+   */
+  updateScrollPosition?: (position: number) => void;
 };
 
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;
