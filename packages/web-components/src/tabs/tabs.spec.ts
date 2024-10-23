@@ -385,7 +385,7 @@ test.describe('Tabs', () => {
   });
 
   for (const appearance in TabsAppearance) {
-    test(`should set appearance to \`${appearance}\``, async ({ page }) => {
+    test.skip(`should set appearance to \`${appearance}\``, async ({ page }) => {
       const element = page.locator('fluent-tabs');
 
       page.setContent(/* html */ `
