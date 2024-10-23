@@ -23,6 +23,11 @@ export interface IChartDataPoint {
    * Color for the legend in the chart. If not provided, it will fallback on the default color palette.
    */
   color?: string;
+
+  /**
+   * imaginary bar as placeholder
+   */
+  placeholder?: boolean;
 }
 
 export interface IChartProps {

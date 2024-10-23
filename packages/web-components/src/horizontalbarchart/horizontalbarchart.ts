@@ -79,6 +79,9 @@ export class HorizontalBarChart extends FASTElement {
     // Iterate through all chart points and populate the map
     this.data.forEach(dataSeries => {
       dataSeries.chartData!.forEach(point => {
+        if (point.placeholder) {
+          return;
+        }
         // Check if the legend is already in the map
         if (!uniqueLegendsMap.has(point.legend)) {
           uniqueLegendsMap.set(point.legend, {
@@ -120,7 +123,6 @@ export class HorizontalBarChart extends FASTElement {
     const legendContainer = document.createElement('div');
     div.node()!.appendChild(legendContainer);
     legendContainer.classList.add('legendcontainer');
-
     this.uniqueLegends?.forEach((d, index) => {
       const button = document.createElement('button');
       legendContainer.appendChild(button);
@@ -340,6 +342,9 @@ export class HorizontalBarChart extends FASTElement {
       .append('g')
       .each(createBars)
       .on('mouseover', function (event, d) {
+        if (d.placeholder) {
+          return;
+        }
         const tooltipHTML = `
         <div class="tooltipline" style="border-left:4px solid ${d.color};">
             <div class="tooltiplegend">${d.legend}</div>

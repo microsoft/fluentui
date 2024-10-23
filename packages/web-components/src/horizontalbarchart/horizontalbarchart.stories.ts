@@ -95,6 +95,146 @@ const singleBarHBCData = [
   },
 ];
 
+const singleBarNMVariantData = [
+  {
+    chartTitle: 'one',
+    chartData: [
+      {
+        legend: 'one',
+        data: 1543,
+        y: 15000,
+        color: '#637cef',
+      },
+      {
+        legend: '',
+        data: 13457,
+        y: 15000,
+        color: '#edebe9',
+        placeholder: true,
+      },
+    ],
+  },
+  {
+    chartTitle: 'two',
+    chartData: [
+      {
+        legend: 'two',
+        data: 800,
+        y: 15000,
+        color: '#e3008c',
+      },
+      {
+        legend: '',
+        data: 14200,
+        y: 15000,
+        color: '#edebe9',
+        placeholder: true,
+      },
+    ],
+  },
+  {
+    chartTitle: 'three',
+    chartData: [
+      {
+        legend: 'three',
+        data: 8888,
+        y: 15000,
+        color: '#2aa0a4',
+      },
+      {
+        legend: '',
+        data: 6112,
+        y: 15000,
+        color: '#edebe9',
+        placeholder: true,
+      },
+    ],
+  },
+  {
+    chartTitle: 'four',
+    chartData: [
+      {
+        legend: 'four',
+        data: 15888,
+        y: 15000,
+        color: '#9373c0',
+      },
+    ],
+  },
+  {
+    chartTitle: 'five',
+    chartData: [
+      {
+        legend: 'five',
+        data: 11444,
+        y: 15000,
+        color: '#13a10e',
+      },
+      {
+        legend: '',
+        data: 3556,
+        y: 15000,
+        color: '#edebe9',
+        placeholder: true,
+      },
+    ],
+  },
+  {
+    chartTitle: 'six',
+    chartData: [
+      {
+        legend: 'six',
+        data: 14000,
+        y: 15000,
+        color: '#3a96dd',
+      },
+      {
+        legend: '',
+        data: 1000,
+        y: 15000,
+        color: '#edebe9',
+        placeholder: true,
+      },
+    ],
+  },
+  {
+    chartTitle: 'seven',
+    chartData: [
+      {
+        legend: 'seven',
+        data: 9855,
+        y: 15000,
+        color: '#ca5010',
+      },
+      {
+        legend: '',
+        data: 5145,
+        y: 15000,
+        color: '#edebe9',
+        placeholder: true,
+      },
+    ],
+  },
+  {
+    chartTitle: 'eight',
+    chartData: [
+      {
+        legend: 'eight',
+        data: 4250,
+        y: 15000,
+        color: '#57811b',
+      },
+      {
+        legend: '',
+        data: 10750,
+        y: 15000,
+        color: '#edebe9',
+        placeholder: true,
+      },
+    ],
+  },
+];
+
 const chartPoints1: IChartDataPoint[] = [
   {
     legend: 'Debit card numbers (EU and USA)',
@@ -196,11 +336,16 @@ export const singleBarHBC: Story<FluentHorizontalBarChart> = renderComponent(htm
   </div>
 `);
 
-export const HBCNMVariant: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
+export const singleBarNMVariant: Story<FluentHorizontalBarChart> = renderComponent(html<
+  StoryArgs<FluentHorizontalBarChart>
+>`
   <div>
-    <fluent-horizontalbarchart style="width: 100%" variant="part-to-whole" data="${JSON.stringify(singleBarHBCData)}">
+    <fluent-horizontalbarchart
+      style="width: 100%"
+      variant="part-to-whole"
+      data="${JSON.stringify(singleBarNMVariantData)}"
+    >
     </fluent-horizontalbarchart>
-
   </div>
 `);
 
