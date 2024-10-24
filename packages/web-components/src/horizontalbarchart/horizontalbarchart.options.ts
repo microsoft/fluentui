@@ -7,12 +7,12 @@ export interface ChartDataPoint {
   /**
    * Legend text for the datapoint in the chart
    */
-  legend?: string;
+  legend: string;
 
   /**
    * data the datapoint in the chart
    */
-  data?: number;
+  data: number;
 
   /**
    * onClick action for each datapoint in the chart
@@ -34,5 +34,5 @@ export interface ChartProps {
   /**
    * data for the points in the chart
    */
-  chartData?: ChartDataPoint[];
+  chartData: ChartDataPoint[];
 }

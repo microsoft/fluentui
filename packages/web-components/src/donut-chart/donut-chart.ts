@@ -3,9 +3,10 @@ import { arc as d3Arc, pie as d3Pie, PieArcDatum } from 'd3-shape';
 import { createTabster, getMover, getTabsterAttribute, MoverDirections, TABSTER_ATTRIBUTE_NAME } from 'tabster';
 import {
   getColorFromToken,
-  getDataConverter,
   getNextColor,
+  jsonConverter,
   SVG_NAMESPACE_URI,
+  validateChartProps,
   wrapText,
 } from '../utils/chart-helpers.js';
 import { ChartDataPoint, ChartProps } from './donut-chart.options.js';
@@ -26,7 +27,7 @@ export class DonutChart extends FASTElement {
   @attr({ attribute: 'hide-tooltip', mode: 'boolean' })
   public hideTooltip?: boolean;
 
-  @attr({ converter: getDataConverter('donut-chart') })
+  @attr({ converter: jsonConverter })
   public data!: ChartProps;
 
   @attr({ attribute: 'inner-radius', converter: nullableNumberConverter })
@@ -46,7 +47,9 @@ export class DonutChart extends FASTElement {
   connectedCallback() {
     super.connectedCallback();
 
-    this.data.chartData?.forEach((dataPoint, index) => {
+    validateChartProps(this.data, 'data');
+
+    this.data.chartData.forEach((dataPoint, index) => {
       if (dataPoint.color) {
         dataPoint.color = getColorFromToken(dataPoint.color);
       } else {
@@ -84,7 +87,7 @@ export class DonutChart extends FASTElement {
     group.setAttribute('transform', `translate(${this.width / 2}, ${this.height / 2})`);
 
     const pie = d3Pie<ChartDataPoint>()
-      .value(d => d.data!)
+      .value(d => d.data)
       .padAngle(0.02);
     const arc = d3Arc<PieArcDatum<ChartDataPoint>>()
       .innerRadius(this.innerRadius)
@@ -106,61 +109,60 @@ export class DonutChart extends FASTElement {
     tooltipBody.appendChild(yText);
     yText.classList.add('calloutContentY');
 
-    this.data.chartData &&
-      pie(this.data.chartData).forEach(arcDatum => {
-        const arcGroup = document.createElementNS(SVG_NAMESPACE_URI, 'g');
-        group.appendChild(arcGroup);
+    pie(this.data.chartData).forEach(arcDatum => {
+      const arcGroup = document.createElementNS(SVG_NAMESPACE_URI, 'g');
+      group.appendChild(arcGroup);
 
-        const pathOutline = document.createElementNS(SVG_NAMESPACE_URI, 'path');
-        arcGroup.appendChild(pathOutline);
-        pathOutline.classList.add('focusOutline');
-        pathOutline.setAttribute('d', arc(arcDatum)!);
+      const pathOutline = document.createElementNS(SVG_NAMESPACE_URI, 'path');
+      arcGroup.appendChild(pathOutline);
+      pathOutline.classList.add('focusOutline');
+      pathOutline.setAttribute('d', arc(arcDatum)!);
 
-        const path = document.createElementNS(SVG_NAMESPACE_URI, 'path');
-        arcGroup.appendChild(path);
-        path.classList.add('arc');
-        path.setAttribute('d', arc(arcDatum)!);
-        path.setAttribute('fill', arcDatum.data.color!);
-        path.setAttribute('data-id', arcDatum.data.legend!);
-        path.setAttribute('tabindex', '0');
-        path.setAttribute('aria-label', `${arcDatum.data.legend}, ${arcDatum.data.data}.`);
-        path.setAttribute('role', 'img');
+      const path = document.createElementNS(SVG_NAMESPACE_URI, 'path');
+      arcGroup.appendChild(path);
+      path.classList.add('arc');
+      path.setAttribute('d', arc(arcDatum)!);
+      path.setAttribute('fill', arcDatum.data.color!);
+      path.setAttribute('data-id', arcDatum.data.legend);
+      path.setAttribute('tabindex', '0');
+      path.setAttribute('aria-label', `${arcDatum.data.legend}, ${arcDatum.data.data}.`);
+      path.setAttribute('role', 'img');
 
-        path.addEventListener('mouseover', event => {
-          if (this._selectedLegend !== '' && this._selectedLegend !== arcDatum.data.legend) {
-            return;
-          }
+      path.addEventListener('mouseover', event => {
+        if (this._selectedLegend !== '' && this._selectedLegend !== arcDatum.data.legend) {
+          return;
+        }
 
-          tooltipBody.style['borderColor'] = arcDatum.data.color!;
-          legendText.textContent = arcDatum.data.legend!;
-          yText.textContent = `${arcDatum.data.data}`;
-          yText.style['color'] = arcDatum.data.color!;
-          tooltip.style['opacity'] = '1';
+        tooltipBody.style['borderColor'] = arcDatum.data.color!;
+        legendText.textContent = arcDatum.data.legend;
+        yText.textContent = `${arcDatum.data.data}`;
+        yText.style['color'] = arcDatum.data.color!;
+        tooltip.style['opacity'] = '1';
 
-          const bounds = rootDiv.getBoundingClientRect();
-          tooltip.style['left'] = `${event.clientX - bounds.left}px`;
-          tooltip.style['top'] = `${event.clientY - bounds.top - 85}px`;
-        });
-        path.addEventListener('focus', event => {
-          if (this._selectedLegend !== '' && this._selectedLegend !== arcDatum.data.legend) {
-            return;
-          }
-
-          tooltipBody.style['borderColor'] = arcDatum.data.color!;
-          legendText.textContent = arcDatum.data.legend!;
-          yText.textContent = `${arcDatum.data.data}`;
-          yText.style['color'] = arcDatum.data.color!;
-          tooltip.style['opacity'] = '1';
-
-          const rootBounds = rootDiv.getBoundingClientRect();
-          const arcBounds = path.getBoundingClientRect();
-          tooltip.style['left'] = `${arcBounds.left + arcBounds.width / 2 - rootBounds.left}px`;
-          tooltip.style['top'] = `${arcBounds.top - rootBounds.top - 85}px`;
-        });
-        path.addEventListener('blur', event => {
-          tooltip.style['opacity'] = '0';
-        });
+        const bounds = rootDiv.getBoundingClientRect();
+        tooltip.style['left'] = `${event.clientX - bounds.left}px`;
+        tooltip.style['top'] = `${event.clientY - bounds.top - 85}px`;
       });
+      path.addEventListener('focus', event => {
+        if (this._selectedLegend !== '' && this._selectedLegend !== arcDatum.data.legend) {
+          return;
+        }
+
+        tooltipBody.style['borderColor'] = arcDatum.data.color!;
+        legendText.textContent = arcDatum.data.legend;
+        yText.textContent = `${arcDatum.data.data}`;
+        yText.style['color'] = arcDatum.data.color!;
+        tooltip.style['opacity'] = '1';
+
+        const rootBounds = rootDiv.getBoundingClientRect();
+        const arcBounds = path.getBoundingClientRect();
+        tooltip.style['left'] = `${arcBounds.left + arcBounds.width / 2 - rootBounds.left}px`;
+        tooltip.style['top'] = `${arcBounds.top - rootBounds.top - 85}px`;
+      });
+      path.addEventListener('blur', event => {
+        tooltip.style['opacity'] = '0';
+      });
+    });
 
     rootDiv.addEventListener('mouseleave', () => {
       tooltip.style['opacity'] = '0';
@@ -184,7 +186,7 @@ export class DonutChart extends FASTElement {
       }
     }
 
-    const legends = this.data.chartData?.map(dataPoint => ({ title: dataPoint.legend!, color: dataPoint.color! }));
+    const legends = this.data.chartData.map(dataPoint => ({ title: dataPoint.legend, color: dataPoint.color! }));
 
     const legendContainer = document.createElement('div');
     rootDiv.appendChild(legendContainer);
@@ -192,7 +194,7 @@ export class DonutChart extends FASTElement {
     legendContainer.setAttribute('role', 'listbox');
     legendContainer.setAttribute('aria-label', 'Legends');
 
-    legends?.forEach((legendItem, index) => {
+    legends.forEach((legendItem, index) => {
       const button = document.createElement('button');
       legendContainer.appendChild(button);
       button.classList.add('legend');
@@ -237,7 +239,7 @@ export class DonutChart extends FASTElement {
             legendRect.style['backgroundColor'] = 'transparent';
             legendText.style['opacity'] = '0.67';
           } else {
-            legendRect.style['backgroundColor'] = legends![j].color;
+            legendRect.style['backgroundColor'] = legends[j].color;
             legendText.style['opacity'] = '1';
           }
         }
@@ -252,7 +254,7 @@ export class DonutChart extends FASTElement {
         }
         for (let j = 0; j < buttons.length; j++) {
           const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-          legendRect.style['backgroundColor'] = legends![j].color;
+          legendRect.style['backgroundColor'] = legends[j].color;
 
           const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
           legendText.style['opacity'] = '1';
@@ -278,7 +280,7 @@ export class DonutChart extends FASTElement {
             legendRect.style['backgroundColor'] = 'transparent';
             legendText.style['opacity'] = '0.67';
           } else {
-            legendRect.style['backgroundColor'] = legends![j].color;
+            legendRect.style['backgroundColor'] = legends[j].color;
             legendText.style['opacity'] = '1';
           }
         }
@@ -293,14 +295,14 @@ export class DonutChart extends FASTElement {
         }
         for (let j = 0; j < buttons.length; j++) {
           const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-          legendRect.style['backgroundColor'] = legends![j].color;
+          legendRect.style['backgroundColor'] = legends[j].color;
 
           const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
           legendText.style['opacity'] = '1';
         }
       });
       buttons[i].addEventListener('click', () => {
-        if (this._selectedLegend === legends![i].title) {
+        if (this._selectedLegend === legends[i].title) {
           this._selectedLegend = '';
 
           for (let j = 0; j < arcs.length; j++) {
@@ -308,13 +310,13 @@ export class DonutChart extends FASTElement {
           }
           for (let j = 0; j < buttons.length; j++) {
             const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-            legendRect.style['backgroundColor'] = legends![j].color;
+            legendRect.style['backgroundColor'] = legends[j].color;
 
             const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
             legendText.style['opacity'] = '1';
           }
         } else {
-          this._selectedLegend = legends![i].title;
+          this._selectedLegend = legends[i].title;
 
           for (let j = 0; j < arcs.length; j++) {
             if (arcs[j].getAttribute('data-id') !== buttons[i].textContent) {
@@ -331,7 +333,7 @@ export class DonutChart extends FASTElement {
               legendRect.style['backgroundColor'] = 'transparent';
               legendText.style['opacity'] = '0.67';
             } else {
-              legendRect.style['backgroundColor'] = legends![j].color;
+              legendRect.style['backgroundColor'] = legends[j].color;
               legendText.style['opacity'] = '1';
             }
           }
