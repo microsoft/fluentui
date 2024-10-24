@@ -79,11 +79,11 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             'aria-label': 'Legends',
             'aria-multiselectable': canSelectMultipleLegends,
           })}
-          style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}
           className={classes.root}
+          style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}
         >
           <Overflow>
-            <div className={classes.resizableArea}>
+            <div className={classes.resizableArea} style={{ textAlign: props.centerLegends ? 'center' : 'left' }}>
               {dataToRender.map((item, id) => (
                 <OverflowItem key={id} id={id.toString()}>
                   {_renderButton(item)}
@@ -106,10 +106,18 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             'aria-label': 'Legends',
             'aria-multiselectable': canSelectMultipleLegends,
           })}
-          style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}
           className={classes.root}
+          style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}
         >
-          <div className={classes.resizableArea} style={{ display: 'flex', flexWrap: 'wrap', overflow: 'auto' }}>
+          <div
+            className={classes.resizableArea}
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              overflow: 'auto',
+              textAlign: props.centerLegends ? 'center' : 'left',
+            }}
+          >
             {dataToRender.map((item, id) => (
               <div key={id} style={{ flex: '0 1 auto', margin: '4px' }}>
                 {_renderButton(item)}
