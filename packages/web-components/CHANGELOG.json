@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 24 Oct 2024 04:08:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.69",
+      "version": "3.0.0-beta.69",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "d0e28c6674287caeeef341f1f355e53d152fcf37",
+            "comment": "resolve eslint errors after upgrade to typescript-eslint v8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Oct 2024 04:07:48 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.69",
       "version": "3.0.0-beta.69",
