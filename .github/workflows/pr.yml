@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 
@@ -37,7 +37,8 @@ env:
 
 jobs:
   main:
-    runs-on: macos-14-xlarge
+    runs-on: ubuntu-latest
+    # runs-on: macos-14-xlarge
     permissions:
       contents: 'read'
       actions: 'read'
@@ -116,7 +117,8 @@ jobs:
           git diff-index --quiet HEAD -- || exit 1
 
   e2e-and-deploy:
-    runs-on: macos-14-xlarge
+    runs-on: ubuntu-latest
+    # runs-on: macos-14-xlarge
     permissions:
       contents: 'read'
       actions: 'read'
