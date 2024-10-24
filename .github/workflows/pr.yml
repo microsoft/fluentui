@@ -80,12 +80,12 @@ jobs:
         run: |
           yarn nx format:check --base origin/master
 
-      - name: v0,v8 jest test perf experiments worker 50%
-        run: |
-          yarn nx run-many -t build -p react,react-northstar
+      # - name: v0,v8 jest test perf experiments worker 50%
+      #   run: |
+      #     yarn nx run-many -t build -p react,react-northstar
 
-          FLUENT_WORKER=1 yarn workspace @fluentui/react test --no-cache
-          FLUENT_WORKER=1 yarn workspace @fluentui/react-northstar test --no-cache
+      #     FLUENT_WORKER=1 yarn workspace @fluentui/react test --no-cache
+      #     FLUENT_WORKER=1 yarn workspace @fluentui/react-northstar test --no-cache
 
       - name: v0,v8 jest test perf experiments worker 1
         run: |
