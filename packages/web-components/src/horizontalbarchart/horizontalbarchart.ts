@@ -373,7 +373,7 @@ export class HorizontalBarChart extends FASTElement {
       .append('g')
       .each(createBars)
       .on('mouseover', function (event, d) {
-        if ((d as any).placeholder === true) {
+        if (d && d.hasOwnProperty('placeholder') && (d as any).placeholder === true) {
           return;
         }
         const tooltipHTML = `
