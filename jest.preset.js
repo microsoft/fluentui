@@ -58,7 +58,7 @@ module.exports = {
 
 function isCI() {
   console.log({ ci: process.env.CI, gh: process.env.GITHUB_ACTIONS });
-  console.log({ env: JSON.stringify(process.env, null, 2) });
+
   return (
     (process.env.CI && process.env.CI !== 'false') ||
     (process.env.TF_BUILD && process.env.TF_BUILD.toLowerCase() === 'true') ||
