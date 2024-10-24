@@ -80,6 +80,21 @@ jobs:
         run: |
           yarn nx format:check --base origin/master
 
+      - name: v0,v8 jest test perf experiments worker 50%
+        run: |
+          yarn nx run-many -t build -p react,react-northstar
+
+          yarn nx run react:test
+          yarn nx run react-northstar:test
+
+      - name: v0,v8 jest test perf experiments worker 1
+        run: |
+          yarn nx reset
+          yarn nx run-many -t build -p react,react-northstar
+
+          FLUENT_WORKER=1 yarn nx run react:test
+          FLUENT_WORKER=1 yarn nx run react-northstar:test
+
       - name: build, test, lint, test-ssr (affected)
         run: |
           yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --nxBail

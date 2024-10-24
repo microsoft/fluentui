@@ -8,6 +8,8 @@
  *
  * based on testing spawning only 50% of available workers is fastest on both Local Machine and CI env atm ( 8 Core machine, 16GB RAM)
  */
-const workersConfig = { maxWorkers: '50%' };
+
+const workersConfig = { maxWorkers: process.env.FLUENT_WORKER || '50%' };
+console.log({ workerEnv: process.env.FLUENT_WORKER, workersConfig });
 
 exports.workersConfig = workersConfig;
