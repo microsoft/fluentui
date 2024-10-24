@@ -366,10 +366,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
             // Get before buffers position
             measurementPos = calculateBefore();
 
-            // No IO Root - Account for offset of top of virtualizer
-            if (!scrollViewRef?.current) {
-              measurementPos += beforeElementRef?.current?.offsetTop;
-            }
             // Get exact intersection position based on overflow size (how far into window did we scroll IO?)
             const overflowAmount =
               axis === 'vertical' ? latestEntry.intersectionRect.height : latestEntry.intersectionRect.width;
