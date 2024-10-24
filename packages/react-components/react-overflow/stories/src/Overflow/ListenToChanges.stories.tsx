@@ -53,7 +53,7 @@ export const ListenToChanges = () => {
   const styles = useStyles();
 
   const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
-  const [overflowState, setOverflowState] = React.useState<any>({});
+  const [overflowState, setOverflowState] = React.useState<object>({});
 
   return (
     <>
