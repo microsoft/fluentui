@@ -11,7 +11,7 @@ const singleBarHBCData = [
       {
         legend: 'one',
         data: 1543,
-        y: 15000,
+        total: 15000,
         color: '#637cef',
       },
     ],
@@ -22,7 +22,7 @@ const singleBarHBCData = [
       {
         legend: 'two',
         data: 800,
-        y: 15000,
+        total: 15000,
         color: '#e3008c',
       },
     ],
@@ -33,7 +33,7 @@ const singleBarHBCData = [
       {
         legend: 'three',
         data: 8888,
-        y: 15000,
+        total: 15000,
         color: '#2aa0a4',
       },
     ],
@@ -44,7 +44,7 @@ const singleBarHBCData = [
       {
         legend: 'four',
         data: 15888,
-        y: 15000,
+        total: 15000,
         color: '#9373c0',
       },
     ],
@@ -55,7 +55,7 @@ const singleBarHBCData = [
       {
         legend: 'five',
         data: 11444,
-        y: 15000,
+        total: 15000,
         color: '#13a10e',
       },
     ],
@@ -66,7 +66,7 @@ const singleBarHBCData = [
       {
         legend: 'six',
         data: 14000,
-        y: 15000,
+        total: 15000,
         color: '#3a96dd',
       },
     ],
@@ -77,7 +77,7 @@ const singleBarHBCData = [
       {
         legend: 'seven',
         data: 9855,
-        y: 15000,
+        total: 15000,
         color: '#ca5010',
       },
     ],
@@ -88,7 +88,98 @@ const singleBarHBCData = [
       {
         legend: 'eight',
         data: 4250,
-        y: 15000,
+        total: 15000,
+        color: '#57811b',
+      },
+    ],
+  },
+];
+
+const singleBarNMVariantData = [
+  {
+    chartTitle: 'one',
+    chartData: [
+      {
+        legend: 'one',
+        data: 1543,
+        total: 15000,
+        color: '#637cef',
+      },
+    ],
+  },
+  {
+    chartTitle: 'two',
+    chartData: [
+      {
+        legend: 'two',
+        data: 800,
+        total: 15000,
+        color: '#e3008c',
+      },
+    ],
+  },
+  {
+    chartTitle: 'three',
+    chartData: [
+      {
+        legend: 'three',
+        data: 8888,
+        total: 15000,
+        color: '#2aa0a4',
+      },
+    ],
+  },
+  {
+    chartTitle: 'four',
+    chartData: [
+      {
+        legend: 'four',
+        data: 15888,
+        total: 15000,
+        color: '#9373c0',
+      },
+    ],
+  },
+  {
+    chartTitle: 'five',
+    chartData: [
+      {
+        legend: 'five',
+        data: 11444,
+        total: 15000,
+        color: '#13a10e',
+      },
+    ],
+  },
+  {
+    chartTitle: 'six',
+    chartData: [
+      {
+        legend: 'six',
+        data: 14000,
+        total: 15000,
+        color: '#3a96dd',
+      },
+    ],
+  },
+  {
+    chartTitle: 'seven',
+    chartData: [
+      {
+        legend: 'seven',
+        data: 9855,
+        total: 15000,
+        color: '#ca5010',
+      },
+    ],
+  },
+  {
+    chartTitle: 'eight',
+    chartData: [
+      {
+        legend: 'eight',
+        data: 4250,
+        total: 15000,
         color: '#57811b',
       },
     ],
@@ -179,6 +270,20 @@ const data: IChartProps[] = [
   },
 ];
 
+const singlePointData = [
+  {
+    chartTitle: 'one',
+    chartData: [
+      {
+        legend: 'one',
+        data: 1543,
+        total: 15000,
+        color: '#637cef',
+      },
+    ],
+  },
+];
+
 const storyTemplate = html<StoryArgs<FluentHorizontalBarChart>>`
   <fluent-horizontalbarchart data="${JSON.stringify(data)}"> </fluent-horizontalbarchart>
 `;
@@ -196,11 +301,25 @@ export const singleBarHBC: Story<FluentHorizontalBarChart> = renderComponent(htm
   </div>
 `);
 
-export const HBCNMVariant: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
+export const singleBarNMVariant: Story<FluentHorizontalBarChart> = renderComponent(html<
+  StoryArgs<FluentHorizontalBarChart>
+>`
   <div>
-    <fluent-horizontalbarchart style="width: 100%" variant="part-to-whole" data="${JSON.stringify(singleBarHBCData)}">
+    <fluent-horizontalbarchart
+      style="width: 100%"
+      variant="single-bar"
+      data="${JSON.stringify(singleBarNMVariantData)}"
+    >
     </fluent-horizontalbarchart>
+  </div>
+`);
 
+export const singleDataPoint: Story<FluentHorizontalBarChart> = renderComponent(html<
+  StoryArgs<FluentHorizontalBarChart>
+>`
+  <div>
+    <fluent-horizontalbarchart style="width: 100%" variant="single-bar" data="${JSON.stringify(singlePointData)}">
+    </fluent-horizontalbarchart>
   </div>
 `);
 

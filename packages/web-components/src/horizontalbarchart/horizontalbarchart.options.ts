@@ -1,6 +1,7 @@
 export enum Variant {
   PartToWhole = 'part-to-whole',
   AbsoluteScale = 'absolute-scale',
+  SingleBar = 'single-bar',
 }
 
 export interface ChartDataPoint {
@@ -13,6 +14,11 @@ export interface ChartDataPoint {
    * data the datapoint in the chart
    */
   data?: number;
+
+  /**
+   * total length of bar
+   */
+  total?: number;
 
   /**
    * onClick action for each datapoint in the chart
