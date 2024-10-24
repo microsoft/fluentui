@@ -6,7 +6,7 @@ on:
   pull_request:
 
 env:
-  NX_PARALLEL: 8 # ubuntu-latest = 8-core CPU / 32 GB of RAM
+  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 
