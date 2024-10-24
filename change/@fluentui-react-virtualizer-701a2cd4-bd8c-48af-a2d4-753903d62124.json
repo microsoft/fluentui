@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Enable virtualizer to fall back to most recent IO event if none intersecting",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

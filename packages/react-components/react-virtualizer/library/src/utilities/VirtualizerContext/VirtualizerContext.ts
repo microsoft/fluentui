@@ -17,7 +17,6 @@ export const useVirtualizerContextState_unstable = (
 ): DynamicVirtualizerContextProps => {
   const virtualizerContext = useVirtualizerContext_unstable();
   const [_contextIndex, _setContextIndex] = useState<number>(-1);
-  const [_contextPosition, _setContextPosition] = useState<number>(0);
   const childProgressiveSizes = useRef<number[]>([]);
 
   /* We respect any wrapped providers while also ensuring defaults or passed through
@@ -27,12 +26,9 @@ export const useVirtualizerContextState_unstable = (
     () => ({
       contextIndex: passedContext?.contextIndex ?? virtualizerContext?.contextIndex ?? _contextIndex,
       setContextIndex: passedContext?.setContextIndex ?? virtualizerContext?.setContextIndex ?? _setContextIndex,
-      contextPosition: passedContext?.contextPosition ?? virtualizerContext?.contextPosition ?? _contextPosition,
-      setContextPosition:
-        passedContext?.setContextPosition ?? virtualizerContext?.setContextPosition ?? _setContextPosition,
       childProgressiveSizes,
     }),
-    [_contextIndex, _contextPosition, passedContext, virtualizerContext],
+    [_contextIndex, passedContext, virtualizerContext],
   );
 
   return context;

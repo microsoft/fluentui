@@ -2,7 +2,6 @@ import { useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilit
 import * as React from 'react';
 import { VirtualizerMeasureDynamicProps } from './hooks.types';
 import { useResizeObserverRef_unstable } from './useResizeObserverRef';
-import { useRef } from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
@@ -16,6 +15,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
   bufferSize: number;
   scrollRef: (instance: TElement | null) => void;
   containerSizeRef: React.RefObject<number>;
+  updateScrollPosition: (scrollPosition: number) => void;
 } => {
   const {
     defaultItemSize,
@@ -26,8 +26,6 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
     bufferSize,
     virtualizerContext,
   } = virtualizerProps;
-  const indexRef = useRef<number>(virtualizerContext.contextIndex);
-  indexRef.current = virtualizerContext.contextIndex;
 
   const [state, setState] = React.useState({
     virtualizerLength: 0,
@@ -36,6 +34,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
   });
 
   const containerSizeRef = React.useRef<number>(0);
+  const scrollPosition = React.useRef<number>(0);
   const { virtualizerLength, virtualizerBufferItems, virtualizerBufferSize } = state;
 
   const { targetDocument } = useFluent();
@@ -63,9 +62,11 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       let i = 0;
       let length = 0;
 
+      const startIndex = virtualizerContext.contextIndex;
       const sizeToBeat = containerSizeRef.current + virtualizerBufferSize * 2;
-      while (indexSizer <= sizeToBeat && i + virtualizerContext.contextIndex < numItems) {
-        const iItemSize = getItemSize(indexRef.current + i);
+
+      while (indexSizer <= sizeToBeat && i + startIndex < numItems) {
+        const iItemSize = getItemSize(startIndex + i);
         if (virtualizerContext.childProgressiveSizes.current.length < numItems) {
           /* We are in unknown territory, either an initial render or an update
             in virtualizer item length has occurred.
@@ -73,8 +74,8 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
           return virtualizerLength - virtualizerBufferSize * 2;
         }
 
-        const currentScrollPos = virtualizerContext.contextPosition;
-        const currentItemPos = virtualizerContext.childProgressiveSizes.current[indexRef.current + i] - iItemSize;
+        const currentScrollPos = scrollPosition.current;
+        const currentItemPos = virtualizerContext.childProgressiveSizes.current[startIndex + i] - iItemSize;
 
         if (currentScrollPos > currentItemPos + iItemSize) {
           // The item isn't in view, ignore for now.
@@ -102,8 +103,9 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       /*
        * This is how far we deviate into the bufferItems to detect a redraw.
        */
-      const newBufferSize = bufferSize ?? Math.max(defaultItemSize / 2.0, 1);
+      const newBufferSize = bufferSize ?? Math.max(defaultItemSize / 2, 1);
       const totalLength = length + newBufferItems * 2;
+
       setState({
         virtualizerLength: totalLength,
         virtualizerBufferSize: newBufferSize,
@@ -122,7 +124,6 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       virtualizerBufferSize,
       virtualizerContext.childProgressiveSizes,
       virtualizerContext.contextIndex,
-      virtualizerContext.contextPosition,
       virtualizerLength,
     ],
   );
@@ -151,11 +152,21 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
     }
   }, [handleScrollResize, numItems, virtualizerContext.contextIndex, virtualizerLength]);
 
+  const updateScrollPosition = React.useCallback(
+    (_scrollPosition: number) => {
+      scrollPosition.current = _scrollPosition;
+      // Check if our vLength's need recalculating
+      handleScrollResize(scrollRef);
+    },
+    [handleScrollResize, scrollRef],
+  );
+
   return {
     virtualizerLength,
     bufferItems: virtualizerBufferItems,
     bufferSize: virtualizerBufferSize,
     scrollRef,
     containerSizeRef,
+    updateScrollPosition,
   };
 };

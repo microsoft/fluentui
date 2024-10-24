@@ -43,7 +43,7 @@ export const AutoMeasure = () => {
       bufferSize={minHeight / 2.0}
     >
       {(index: number) => {
-        const backgroundColor = index % 2 ? '#FFFFFF' : '#ABABAB';
+        const backgroundColor = index % 2 ? '#CCCCCC' : '#ABABAB';
         return (
           <div
             role={'listitem'}
