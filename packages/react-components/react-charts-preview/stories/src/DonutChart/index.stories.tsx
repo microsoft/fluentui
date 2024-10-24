@@ -7,6 +7,7 @@ export { DonutChartBasic } from './DonutChartDefault.stories';
 export { DonutChartCustomAccessibility } from './DonutChartCustomAccessibility.stories';
 export { DonutChartDynamic } from './DonutChartDynamic.stories';
 export { DonutChartCustomCallout } from './DonutChartCustomCallout.stories';
+export { DonutChartStyled } from './DonutChartStyled.stories';
 
 export default {
   title: 'Compat Components/Charts/DonutChart',

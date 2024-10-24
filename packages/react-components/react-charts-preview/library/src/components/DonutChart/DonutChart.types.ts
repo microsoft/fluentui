@@ -1,6 +1,9 @@
+import * as React from 'react';
 import { CartesianChartProps, CartesianChartStyleProps } from '../CommonComponents/index';
 import { ChartProps, ChartDataPoint } from './index';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
+import { PieStylesOverrides } from './Pie/Pie.types';
+import { ArcStylesOverrides } from './Arc/Arc.types';
 
 /**
  * Donut Chart properties.
@@ -20,7 +23,7 @@ export interface DonutChartProps extends CartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: DonutChartStyles;
+  styles?: DonutChartStylesOverrides;
 
   /**
    * props for inside donut value
@@ -89,4 +92,36 @@ export interface DonutChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: string;
+}
+
+/**
+ * Donut Chart styles overrides
+ * {@docCategory DonutChart}
+ */
+export interface DonutChartStylesOverrides {
+  /**
+   *  Style for the root element.
+   */
+  root?: React.CSSProperties;
+
+  /**
+   * Style for the chart.
+   */
+  chart?: React.CSSProperties;
+  /**
+   * Style for the legend container.
+   */
+  legendContainer?: React.CSSProperties;
+
+  /**
+   * Styles for the chart wrapper div
+   */
+  chartWrapper?: React.CSSProperties;
+
+  /**
+   * Styles for the donut chart pie
+   */
+  pieStyles?: PieStylesOverrides;
+
+  arcStyles?: ArcStylesOverrides;
 }

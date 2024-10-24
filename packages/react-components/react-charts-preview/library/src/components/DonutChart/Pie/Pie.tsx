@@ -69,6 +69,7 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
           showLabelsInPercent={props.showLabelsInPercent}
           totalValue={_totalValue}
           hideLabels={props.hideLabels}
+          styles={props.styles?.arcStylesOverrides!}
         />
       );
     }
@@ -89,7 +90,13 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
       <g transform={translate}>
         {piechart.map((d: any, i: number) => arcGenerator(d, i, focusData[i], props.href))}
         {props.valueInsideDonut && (
-          <text y={5} textAnchor="middle" dominantBaseline="middle" className={classes.insideDonutString}>
+          <text
+            y={5}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className={classes.insideDonutString}
+            style={{ ...(typeof props.styles?.insideDonutString === 'object' ? props.styles.insideDonutString : {}) }}
+          >
             {props.valueInsideDonut}
           </text>
         )}

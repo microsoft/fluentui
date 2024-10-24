@@ -45,8 +45,8 @@ export const useArcStyles_unstable = (props: ArcProps): ArcStyles => {
   const baseStyles = useStyles();
 
   return {
-    root: mergeClasses(donutArcClassNames.root, baseStyles.root, className, props.styles?.root),
-    focusRing: mergeClasses(donutArcClassNames.focusRing, baseStyles.focusRing, props.styles?.focusRing),
-    arcLabel: mergeClasses(donutArcClassNames.arcLabel, baseStyles.arcLabel, props.styles?.arcLabel),
+    root: mergeClasses(donutArcClassNames.root, baseStyles.root, className /*props.styles?.root*/),
+    focusRing: mergeClasses(donutArcClassNames.focusRing, baseStyles.focusRing /*props.styles?.focusRing*/),
+    arcLabel: mergeClasses(donutArcClassNames.arcLabel, baseStyles.arcLabel /*props.styles?.arcLabel*/),
   };
 };

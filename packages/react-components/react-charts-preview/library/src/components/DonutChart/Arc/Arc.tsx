@@ -70,6 +70,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           textAnchor={angle > Math.PI !== _isRTL ? 'end' : 'start'}
           dominantBaseline={angle > Math.PI / 2 && angle < (3 * Math.PI) / 2 ? 'hanging' : 'auto'}
           className={className}
+          style={{ ...(typeof props.styles?.arcLabel === 'object' ? props.styles.arcLabel : {}) }}
           aria-hidden={true}
         >
           {showLabelsInPercent
@@ -98,6 +99,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
             id={id + 'focusRing'}
             d={arc({ ...props.focusData!, innerRadius: props.innerRadius, outerRadius: props.outerRadius })!}
             className={classes.focusRing}
+            style={{ ...(typeof props.styles?.focusRing === 'object' ? props.styles.focusRing : {}) }}
           />
         )}
         <path
@@ -105,7 +107,11 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           id={id}
           d={arc({ ...props.data!, innerRadius: props.innerRadius, outerRadius: props.outerRadius })!}
           className={classes.root}
-          style={{ fill: props.color, cursor: href ? 'pointer' : 'default' }}
+          style={{
+            fill: props.color,
+            cursor: href ? 'pointer' : 'default',
+            ...(typeof props.styles?.root === 'object' ? props.styles.root : {}),
+          }}
           onFocus={_onFocus.bind(this, props.data!.data, id)}
           data-is-focusable={props.activeArc === props.data!.data.legend || props.activeArc === ''}
           onMouseOver={_hoverOn.bind(this, props.data!.data)}

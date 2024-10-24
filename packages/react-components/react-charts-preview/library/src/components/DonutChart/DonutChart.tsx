@@ -251,7 +251,7 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
       //});
     }
 
-    const { data, hideLegend = false } = props;
+    const { data, hideLegend = false, styles } = props;
     const points = _addDefaultColors(data?.chartData);
 
     const classes = useDonutChartStyles_unstable(props);
@@ -266,11 +266,22 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
     return !_isChartEmpty() ? (
       <div
         className={classes.root}
+        style={{ ...(typeof styles?.root === 'object' ? styles.root : {}) }}
         ref={(rootElem: HTMLDivElement | null) => (_rootElem.current = rootElem)}
         onMouseLeave={_handleChartMouseLeave}
       >
-        <div className={classes.chartWrapper} {...focusAttributes}>
-          <svg className={classes.chart} aria-label={data?.chartTitle} width={_width} height={_height}>
+        <div
+          className={classes.chartWrapper}
+          {...focusAttributes}
+          style={{ ...(typeof styles?.chartWrapper === 'object' ? styles.chartWrapper : {}) }}
+        >
+          <svg
+            className={classes.chart}
+            style={{ ...(typeof styles?.chart === 'object' ? styles.chart : {}) }}
+            aria-label={data?.chartTitle}
+            width={_width}
+            height={_height}
+          >
             <Pie
               width={_width!}
               height={_height!}
@@ -288,6 +299,7 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
               valueInsideDonut={_toLocaleString(valueInsideDonut)}
               showLabelsInPercent={props.showLabelsInPercent}
               hideLabels={props.hideLabels}
+              styles={{ ...styles?.pieStyles, arcStylesOverrides: styles?.arcStyles }}
             />
           </svg>
         </div>
@@ -310,7 +322,11 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
           isCartesian={false}
         />
         {!hideLegend && (
-          <div ref={(e: HTMLDivElement) => (legendContainer.current = e)} className={classes.legendContainer}>
+          <div
+            ref={(e: HTMLDivElement) => (legendContainer.current = e)}
+            className={classes.legendContainer}
+            style={{ ...(typeof styles?.legendContainer === 'object' ? styles.legendContainer : {}) }}
+          >
             {legendBars}
           </div>
         )}

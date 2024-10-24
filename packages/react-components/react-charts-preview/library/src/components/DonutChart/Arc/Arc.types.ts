@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ChartDataPoint } from '../index';
 export interface ArcProps {
   /**
@@ -98,7 +99,7 @@ export interface ArcProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: ArcStyles;
+  styles?: ArcStylesOverrides;
 
   /**
    * Additional CSS class(es) to apply to the Chart.
@@ -148,4 +149,21 @@ export interface ArcStyles {
    * Style for the arc labels
    */
   arcLabel: string;
+}
+
+export interface ArcStylesOverrides {
+  /**
+   * Style set for the card header component root
+   */
+  root?: React.CSSProperties;
+
+  /**
+   * styles for the focus
+   */
+  focusRing?: React.CSSProperties;
+
+  /**
+   * Style for the arc labels
+   */
+  arcLabel?: React.CSSProperties;
 }

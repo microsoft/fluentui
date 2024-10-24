@@ -1,4 +1,6 @@
+import * as React from 'react';
 import { ChartDataPoint } from '../index';
+import { ArcStylesOverrides } from '../Arc/Arc.types';
 
 export interface PieProps {
   /**
@@ -87,7 +89,7 @@ export interface PieProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: PieStyles;
+  styles?: PieStylesOverrides;
 
   /**
    * Additional CSS class(es) to apply to the Chart.
@@ -105,4 +107,18 @@ export interface PieStyles {
    * Style set for the inside donut string
    */
   insideDonutString: string;
+}
+
+export interface PieStylesOverrides {
+  /**
+   * Style set for the card header component root
+   */
+  root?: React.CSSProperties;
+
+  /**
+   * Style set for the inside donut string
+   */
+  insideDonutString?: React.CSSProperties;
+
+  arcStylesOverrides?: ArcStylesOverrides;
 }
