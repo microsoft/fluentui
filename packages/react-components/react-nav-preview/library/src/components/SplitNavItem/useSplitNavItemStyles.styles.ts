@@ -34,6 +34,19 @@ const useSplitNaveItemStyles = makeStyles({
     backgroundColor: navItemTokens.backgroundColor,
     ...navItemTokens.transitionTokens,
 
+    ':focus-within': {
+      opacity: '1',
+    },
+    ':hover .fui-SplitNavItem__toggleButton': {
+      opacity: '1',
+    },
+    ':hover .fui-SplitNavItem__menuButton': {
+      opacity: '1',
+    },
+    ':hover .fui-SplitNavItem__menuButtonTooltip': {
+      opacity: '1',
+    },
+
     ':hover': {
       backgroundColor: navItemTokens.backgroundColorHover,
     },
@@ -58,6 +71,10 @@ const useSplitNaveItemStyles = makeStyles({
     paddingInlineStart: '5px',
     paddingBlockStart: '5px',
     alignItems: 'start',
+    opacity: '0',
+    ':focus': {
+      opacity: '1',
+    },
   },
   baseMedium: {
     paddingBlockStart: '9px',
