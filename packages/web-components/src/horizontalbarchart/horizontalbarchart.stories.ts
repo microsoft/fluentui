@@ -270,6 +270,20 @@ const data: IChartProps[] = [
   },
 ];
 
+const singlePointData = [
+  {
+    chartTitle: 'one',
+    chartData: [
+      {
+        legend: 'one',
+        data: 1543,
+        total: 15000,
+        color: '#637cef',
+      },
+    ],
+  },
+];
+
 const storyTemplate = html<StoryArgs<FluentHorizontalBarChart>>`
   <fluent-horizontalbarchart data="${JSON.stringify(data)}"> </fluent-horizontalbarchart>
 `;
@@ -296,6 +310,15 @@ export const singleBarNMVariant: Story<FluentHorizontalBarChart> = renderCompone
       variant="single-bar"
       data="${JSON.stringify(singleBarNMVariantData)}"
     >
+    </fluent-horizontalbarchart>
+  </div>
+`);
+
+export const singleDataPoint: Story<FluentHorizontalBarChart> = renderComponent(html<
+  StoryArgs<FluentHorizontalBarChart>
+>`
+  <div>
+    <fluent-horizontalbarchart style="width: 100%" variant="single-bar" data="${JSON.stringify(singlePointData)}">
     </fluent-horizontalbarchart>
   </div>
 `);
