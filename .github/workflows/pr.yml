@@ -80,15 +80,9 @@ jobs:
         run: |
           yarn nx format:check --base origin/master
 
-      - name: measure v8 test impact
-        run: yarn nx run react:test --nxBail
-
-      - name: measure v0 test impact
-        run: yarn nx run react-northstar:test --nxBail
-
       - name: build, test, lint, test-ssr (affected)
         run: |
-          yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --exclude react,react-northstar --nxBail
+          yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --nxBail
 
       - name: 'Check for unstaged changes'
         run: |
