@@ -51,18 +51,14 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
       itemVisibility[item.id] = true;
     });
     invisibleItems.forEach(x => (itemVisibility[x.id] = false));
+    const newState = {
+      hasOverflow: data.invisibleItems.length > 0,
+      itemVisibility,
+      groupVisibility,
+    };
+    onOverflowChange?.(null, { ...newState });
 
-    setOverflowState(() => {
-      const newState = {
-        hasOverflow: data.invisibleItems.length > 0,
-        itemVisibility,
-        groupVisibility,
-      };
-
-      onOverflowChange?.(null, { ...newState });
-
-      return newState;
-    });
+    setOverflowState(newState);
   };
 
   const { containerRef, registerItem, updateOverflow, registerOverflowMenu, registerDivider } = useOverflowContainer(
