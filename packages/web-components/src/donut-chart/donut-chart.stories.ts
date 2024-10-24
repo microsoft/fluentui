@@ -21,7 +21,7 @@ const data: ChartProps = {
 };
 
 const storyTemplate = html<StoryArgs<FluentDonutChart>>`
-  <fluent-donut-chart data="${JSON.stringify(data)}" value-inside-donut="35,000" inner-radius="55">
+  <fluent-donut-chart data="${JSON.stringify(data)}" value-inside-donut="39,000" inner-radius="55">
   </fluent-donut-chart>
 `;
 
@@ -33,7 +33,7 @@ export const Basic: Story<FluentDonutChart> = renderComponent(storyTemplate).bin
 
 export const RTL: Story<FluentDonutChart> = renderComponent(html<StoryArgs<FluentDonutChart>>`
   <div dir="rtl">
-    <fluent-donut-chart data="${JSON.stringify(data)}" value-inside-donut="35,000" inner-radius="55">
+    <fluent-donut-chart data="${JSON.stringify(data)}" value-inside-donut="39,000" inner-radius="55">
     </fluent-donut-chart>
   </div>
 `);
