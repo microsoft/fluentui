@@ -475,7 +475,7 @@ While there might be tearing, the final result will not contain _stale_ values:
 
 **Not really.** There will still be situations where we need to propagate the value within effects, particularly when some consumer components are memoized and skip re-renders. If we were to use `useEffect` instead of `useLayoutEffect`, we might encounter cases where the value isn’t propagated in time, making tearing **more** apparent. Additionally, using `useEffect` breaks unit tests in Fluent itself and products 😥
 
-## Options
+## Decision
 
 ### Option A: Do nothing (safe)
 
@@ -486,6 +486,8 @@ It works — it's not perfect, but it functions. The problem arises in a single 
 > We can also keep an eye on `unstable_useContextWithBailout` and look forward to its eventual implementation in React.
 >
 > _https://github.com/facebook/react/pull/30407_
+
+## Rejected options
 
 ### Option B: Use `useSyncExternalStore()` (probably safe)
 
