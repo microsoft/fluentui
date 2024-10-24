@@ -140,8 +140,7 @@ export type VirtualizerConfigProps = {
 
   /**
    * Enables users to override the intersectionObserverRoot.
-   * RECOMMEND: DO NOT PASS THIS IN, as it can cause side effects
-   * when overlapping with other scroll views
+   * We recommend passing this in for accurate distance assessment in IO
    */
   scrollViewRef?: React.MutableRefObject<HTMLElement | null>;
 

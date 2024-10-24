@@ -6,7 +6,7 @@ export type VirtualizerContextProps = {
   contextIndex: number;
   setContextIndex: (index: number) => void;
   /*
-   * These option props are used in dynamic virtualizer
+   * These optional props are used in dynamic virtualizer
    */
   childProgressiveSizes?: React.MutableRefObject<number[]>;
 };

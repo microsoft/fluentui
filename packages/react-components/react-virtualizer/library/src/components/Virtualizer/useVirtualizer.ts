@@ -422,7 +422,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         numItems,
         bufferSize,
         bufferItems,
-        scrollViewRef,
         containerSizeRef,
         updateScrollPosition,
         batchUpdateNewIndex,
