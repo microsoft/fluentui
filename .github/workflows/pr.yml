@@ -85,14 +85,21 @@ jobs:
           yarn nx run-many -t build -p react,react-northstar
 
           FLUENT_WORKER=1 yarn workspace @fluentui/react test --no-cache
-          FLUENT_WORKER=1 yarn workspace @fluentui/react-northstar:test --no-cache
+          FLUENT_WORKER=1 yarn workspace @fluentui/react-northstar test --no-cache
 
       - name: v0,v8 jest test perf experiments worker 1
         run: |
           yarn nx run-many -t build -p react,react-northstar
 
           FLUENT_WORKER=1 yarn workspace @fluentui/react test --no-cache
-          FLUENT_WORKER=1 yarn workspace @fluentui/react-northstar:test --no-cache
+          FLUENT_WORKER=1 yarn workspace @fluentui/react-northstar test --no-cache
+
+      - name: v0,v8 jest test perf experiments worker 2
+        run: |
+          yarn nx run-many -t build -p react,react-northstar
+
+          FLUENT_WORKER=2 yarn workspace @fluentui/react test --no-cache
+          FLUENT_WORKER=2 yarn workspace @fluentui/react-northstar test --no-cache
 
       - name: build, test, lint, test-ssr (affected)
         run: |
