@@ -2226,6 +2226,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border-color: Window;
+                  outline: 1px solid ButtonText;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
                   border-color: #605e5c;
