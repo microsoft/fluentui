@@ -16,9 +16,9 @@ export interface IChartDataPoint {
   data?: number;
 
   /**
-   * y value of datapoint
+   * total length of bar
    */
-  y?: number;
+  total?: number;
 
   /**
    * onClick action for each datapoint in the chart

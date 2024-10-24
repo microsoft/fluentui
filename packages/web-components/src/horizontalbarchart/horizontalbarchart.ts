@@ -79,7 +79,7 @@ export class HorizontalBarChart extends FASTElement {
     // Iterate through all chart points and populate the map
     for (const dataSeries of this.data) {
       for (const point of dataSeries.chartData!) {
-        if (point.color === '#edebe9') {
+        if ((point as any).placeholder === true) {
           continue;
         }
         // Check if the legend is already in the map
@@ -103,9 +103,10 @@ export class HorizontalBarChart extends FASTElement {
         const pointData = chartData![0];
         const newEntry = {
           legend: '',
-          data: pointData.y! - pointData.data!,
-          y: pointData.y!,
+          data: pointData.total! - pointData.data! > 0 ? pointData.total! - pointData.data! : 0,
+          y: pointData.total!,
           color: '#edebe9',
+          placeholder: true,
         };
         chartData!.push(newEntry);
       }
@@ -372,7 +373,7 @@ export class HorizontalBarChart extends FASTElement {
       .append('g')
       .each(createBars)
       .on('mouseover', function (event, d) {
-        if (d.color === '#edebe9') {
+        if ((d as any).placeholder === true) {
           return;
         }
         const tooltipHTML = `

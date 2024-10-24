@@ -11,7 +11,7 @@ const singleBarHBCData = [
       {
         legend: 'one',
         data: 1543,
-        y: 15000,
+        total: 15000,
         color: '#637cef',
       },
     ],
@@ -22,7 +22,7 @@ const singleBarHBCData = [
       {
         legend: 'two',
         data: 800,
-        y: 15000,
+        total: 15000,
         color: '#e3008c',
       },
     ],
@@ -33,7 +33,7 @@ const singleBarHBCData = [
       {
         legend: 'three',
         data: 8888,
-        y: 15000,
+        total: 15000,
         color: '#2aa0a4',
       },
     ],
@@ -44,7 +44,7 @@ const singleBarHBCData = [
       {
         legend: 'four',
         data: 15888,
-        y: 15000,
+        total: 15000,
         color: '#9373c0',
       },
     ],
@@ -55,7 +55,7 @@ const singleBarHBCData = [
       {
         legend: 'five',
         data: 11444,
-        y: 15000,
+        total: 15000,
         color: '#13a10e',
       },
     ],
@@ -66,7 +66,7 @@ const singleBarHBCData = [
       {
         legend: 'six',
         data: 14000,
-        y: 15000,
+        total: 15000,
         color: '#3a96dd',
       },
     ],
@@ -77,7 +77,7 @@ const singleBarHBCData = [
       {
         legend: 'seven',
         data: 9855,
-        y: 15000,
+        total: 15000,
         color: '#ca5010',
       },
     ],
@@ -88,7 +88,7 @@ const singleBarHBCData = [
       {
         legend: 'eight',
         data: 4250,
-        y: 15000,
+        total: 15000,
         color: '#57811b',
       },
     ],
@@ -102,7 +102,7 @@ const singleBarNMVariantData = [
       {
         legend: 'one',
         data: 1543,
-        y: 15000,
+        total: 15000,
         color: '#637cef',
       },
     ],
@@ -113,7 +113,7 @@ const singleBarNMVariantData = [
       {
         legend: 'two',
         data: 800,
-        y: 15000,
+        total: 15000,
         color: '#e3008c',
       },
     ],
@@ -124,7 +124,7 @@ const singleBarNMVariantData = [
       {
         legend: 'three',
         data: 8888,
-        y: 15000,
+        total: 15000,
         color: '#2aa0a4',
       },
     ],
@@ -135,7 +135,7 @@ const singleBarNMVariantData = [
       {
         legend: 'four',
         data: 15888,
-        y: 15000,
+        total: 15000,
         color: '#9373c0',
       },
     ],
@@ -146,7 +146,7 @@ const singleBarNMVariantData = [
       {
         legend: 'five',
         data: 11444,
-        y: 15000,
+        total: 15000,
         color: '#13a10e',
       },
     ],
@@ -157,7 +157,7 @@ const singleBarNMVariantData = [
       {
         legend: 'six',
         data: 14000,
-        y: 15000,
+        total: 15000,
         color: '#3a96dd',
       },
     ],
@@ -168,7 +168,7 @@ const singleBarNMVariantData = [
       {
         legend: 'seven',
         data: 9855,
-        y: 15000,
+        total: 15000,
         color: '#ca5010',
       },
     ],
@@ -179,7 +179,7 @@ const singleBarNMVariantData = [
       {
         legend: 'eight',
         data: 4250,
-        y: 15000,
+        total: 15000,
         color: '#57811b',
       },
     ],
