@@ -13,7 +13,7 @@ interface OverflowState {
   groupVisibility: Record<string, OverflowGroupState>;
 }
 
-export interface OnOverflowChangeData extends OverflowState {};
+export interface OnOverflowChangeData extends OverflowState {}
 
 /**
  * Overflow Props
