@@ -1,7 +1,14 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
 import { arc as d3Arc, pie as d3Pie } from 'd3-shape';
 import { createTabster, getMover, getTabsterAttribute, MoverDirections } from 'tabster';
-import { getColorFromToken, getDataConverter, getNextColor, getRTL } from '../utils/chart-helpers.js';
+import {
+  getColorFromToken,
+  getDataConverter,
+  getNextColor,
+  getRTL,
+  SVG_NAMESPACE_URI,
+  wrapText,
+} from '../utils/chart-helpers.js';
 import type { ChartProps } from './donut-chart.options.js';
 
 const tabsterCore = createTabster(window);
@@ -66,16 +73,14 @@ export class DonutChart extends FASTElement {
     });
     Object.keys(attributeObj).forEach(x => chartWrapper.setAttribute(x, attributeObj[x]));
 
-    const svgNS = 'http://www.w3.org/2000/svg';
-
-    const svg = document.createElementNS(svgNS, 'svg');
+    const svg = document.createElementNS(SVG_NAMESPACE_URI, 'svg');
     chartWrapper.appendChild(svg);
     svg.setAttribute('width', `${this.width}`);
     svg.setAttribute('height', `${this.height}`);
     svg.setAttribute('aria-label', this.data.chartTitle);
     svg.classList.add('chart');
 
-    const group = document.createElementNS(svgNS, 'g');
+    const group = document.createElementNS(SVG_NAMESPACE_URI, 'g');
     svg.appendChild(group);
     group.setAttribute('transform', `translate(${this.width / 2}, ${this.height / 2})`);
 
@@ -103,15 +108,15 @@ export class DonutChart extends FASTElement {
     yText.classList.add('calloutContentY');
 
     pie(this.data.chartData).forEach(d => {
-      const arcGroup = document.createElementNS(svgNS, 'g');
+      const arcGroup = document.createElementNS(SVG_NAMESPACE_URI, 'g');
       group.appendChild(arcGroup);
 
-      const pathOutline = document.createElementNS(svgNS, 'path');
+      const pathOutline = document.createElementNS(SVG_NAMESPACE_URI, 'path');
       arcGroup.appendChild(pathOutline);
       pathOutline.classList.add('focusOutline');
       pathOutline.setAttribute('d', arc(d));
 
-      const path = document.createElementNS(svgNS, 'path');
+      const path = document.createElementNS(SVG_NAMESPACE_URI, 'path');
       arcGroup.appendChild(path);
       path.classList.add('arc');
       path.setAttribute('d', arc(d));
@@ -161,13 +166,21 @@ export class DonutChart extends FASTElement {
       tooltip.style['opacity'] = '0';
     });
 
-    const text = document.createElementNS(svgNS, 'text');
+    const text = document.createElementNS(SVG_NAMESPACE_URI, 'text');
     group.appendChild(text);
     text.classList.add('insideDonutString');
-    text.setAttribute('y', '5');
+    text.setAttribute('x', '0');
+    text.setAttribute('y', '0');
     text.setAttribute('text-anchor', 'middle');
     text.setAttribute('dominant-baseline', 'middle');
     text.textContent = this.valueInsideDonut;
+    const lineHeight = text.getBoundingClientRect().height;
+    wrapText(text, 2 * this.innerRadius);
+    const lines = text.getElementsByTagName('tspan');
+    const start = -Math.trunc((lines.length - 1) / 2);
+    for (let i = 0; i < lines.length; i++) {
+      lines[i].setAttribute('dy', `${(start + i) * lineHeight}`);
+    }
 
     const legends = this.data.chartData?.map(d => ({ title: d.legend, color: d.color }));
 

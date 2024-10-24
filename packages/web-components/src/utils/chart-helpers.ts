@@ -168,3 +168,42 @@ export const getColorFromToken = (token: string, isDarkTheme: boolean = false): 
 export const getRTL = (rootNode: HTMLElement): boolean => {
   return getDirection(rootNode) === Direction.rtl;
 };
+
+export const SVG_NAMESPACE_URI = 'http://www.w3.org/2000/svg';
+
+export const wrapText = (text: SVGTextElement, width: number) => {
+  if (!text.textContent) {
+    return;
+  }
+
+  const words = text.textContent.split(/\s+/).reverse();
+  let word: string | undefined;
+  let line: string[] = [];
+  let lineNumber = 0;
+  const lineHeight = text.getBoundingClientRect().height;
+  const y = text.getAttribute('y') || '0';
+
+  text.textContent = null;
+
+  let tspan = document.createElementNS(SVG_NAMESPACE_URI, 'tspan');
+  text.appendChild(tspan);
+  tspan.setAttribute('x', '0');
+  tspan.setAttribute('y', y);
+  tspan.setAttribute('dy', `${lineNumber++ * lineHeight}`);
+
+  while ((word = words.pop())) {
+    line.push(word);
+    tspan.textContent = line.join(' ') + ' ';
+    if (tspan.getComputedTextLength() > width && line.length > 1) {
+      line.pop();
+      tspan.textContent = line.join(' ') + ' ';
+      line = [word];
+      tspan = document.createElementNS(SVG_NAMESPACE_URI, 'tspan');
+      text.appendChild(tspan);
+      tspan.setAttribute('x', '0');
+      tspan.setAttribute('y', y);
+      tspan.setAttribute('dy', `${lineNumber++ * lineHeight}`);
+      tspan.textContent = word;
+    }
+  }
+};
