@@ -1,4 +1,4 @@
-import { Collapse } from '@fluentui/react-motion-components-preview';
+import { DefaultCollapse as Collapse } from './Collapse.stories';
 import CollapseDescription from './CollapseDescription.md';
 
 export { Default } from './CollapseDefault.stories';
