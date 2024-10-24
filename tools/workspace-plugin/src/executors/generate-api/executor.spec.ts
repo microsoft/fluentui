@@ -148,8 +148,10 @@ describe('GenerateApi Executor', () => {
 
     const output = await executor(options, context);
 
+    const projectRootAbsolutePath = `${__dirname}/__fixtures__/proj`;
+
     expect(execSyncMock.mock.calls.flat()).toEqual([
-      `tsc -p ${__dirname}/__fixtures__/proj/tsconfig.lib.json --pretty --emitDeclarationOnly --baseUrl .`,
+      `tsc -p ${projectRootAbsolutePath}/tsconfig.lib.json --pretty --emitDeclarationOnly --baseUrl ${projectRootAbsolutePath}`,
       { stdio: 'inherit' },
     ]);
 

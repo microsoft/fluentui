@@ -5,7 +5,7 @@ let _window: Window | undefined = undefined;
 // Caching the window value at the file scope lets us minimize the impact.
 try {
   _window = window;
-} catch (e) {
+} catch {
   /* no-op */
 }
 

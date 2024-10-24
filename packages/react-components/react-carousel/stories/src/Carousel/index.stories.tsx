@@ -19,7 +19,7 @@ export { Controlled } from './CarouselControlled.stories';
 export { ImageSlideshow } from './CarouselImageBox.stories';
 export { AlignmentAndWhitespace } from './CarouselActionCards.stories';
 export { Autoplay } from './CarouselAutoplay.stories';
-export { CarouselFirstRunExperience } from './CarouselFirstRunExperience.stories';
+export { FirstRunExperience } from './CarouselFirstRunExperience.stories';
 
 export default {
   title: 'Components/Carousel',

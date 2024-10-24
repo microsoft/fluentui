@@ -136,32 +136,40 @@ describe(`workspace-plugin`, () => {
   describe(`v9 project nodes`, () => {
     it('should create default nodes for v9 library project', async () => {
       await tempFs.createFiles({
-        'proj/project.json': serializeJson({
+        'proj/library/project.json': serializeJson({
           root: 'proj',
+          name: 'proj',
           projectType: 'library',
           tags: ['vNext'],
         } satisfies ProjectConfiguration),
-        'proj/package.json': serializeJson({ name: '@proj/proj', private: true } satisfies Partial<PackageJson>),
+        'proj/library/package.json': serializeJson({
+          name: '@proj/proj',
+          private: true,
+        } satisfies Partial<PackageJson>),
+        'proj/stories/project.json': serializeJson({
+          root: 'proj/stories',
+          name: 'proj-stories',
+        } satisfies ProjectConfiguration),
       });
-      const results = await createNodesFunction(['proj/project.json'], {}, context);
+      const results = await createNodesFunction(['proj/library/project.json'], {}, context);
 
-      expect(getTargetsNames(results)).toEqual([
+      expect(getTargetsNames(results, 'proj/library')).toEqual([
         'clean',
         'format',
         'type-check',
         'generate-api',
         'build',
-        'start',
         'storybook',
+        'start',
       ]);
 
       expect(results).toMatchInlineSnapshot(`
         Array [
           Array [
-            "proj/project.json",
+            "proj/library/project.json",
             Object {
               "projects": Object {
-                "proj": Object {
+                "proj/library": Object {
                   "targets": Object {
                     "build": Object {
                       "cache": true,
@@ -189,7 +197,7 @@ describe(`workspace-plugin`, () => {
                       ],
                       "metadata": Object {
                         "help": Object {
-                          "command": "yarn nx run undefined:build --help",
+                          "command": "yarn nx run proj:build --help",
                           "example": Object {},
                         },
                         "technologies": Array [
@@ -217,7 +225,7 @@ describe(`workspace-plugin`, () => {
                         "{projectRoot}/lib-commonjs",
                         "{projectRoot}/dist",
                         "{projectRoot}/dist/index.d.ts",
-                        "{projectRoot}/etc/undefined.api.md",
+                        "{projectRoot}/etc/proj.api.md",
                       ],
                     },
                     "clean": Object {
@@ -266,7 +274,7 @@ describe(`workspace-plugin`, () => {
                       ],
                       "metadata": Object {
                         "help": Object {
-                          "command": "yarn nx run undefined:generate-api --help",
+                          "command": "yarn nx run proj:generate-api --help",
                           "example": Object {},
                         },
                         "technologies": Array [
@@ -276,26 +284,16 @@ describe(`workspace-plugin`, () => {
                       },
                       "outputs": Array [
                         "{projectRoot}/dist/index.d.ts",
-                        "{projectRoot}/etc/undefined.api.md",
+                        "{projectRoot}/etc/proj.api.md",
                       ],
                     },
                     "start": Object {
-                      "command": "yarn storybook",
-                      "options": Object {
-                        "cwd": "proj",
-                      },
+                      "cache": true,
+                      "command": "nx run proj-stories:storybook",
                     },
                     "storybook": Object {
                       "cache": true,
-                      "command": "yarn --cwd ../stories storybook",
-                      "metadata": Object {
-                        "technologies": Array [
-                          "storybook",
-                        ],
-                      },
-                      "options": Object {
-                        "cwd": "proj",
-                      },
+                      "command": "nx run proj-stories:storybook",
                     },
                     "type-check": Object {
                       "cache": true,
@@ -323,6 +321,7 @@ describe(`workspace-plugin`, () => {
 
     it('should create default nodes for v9 stories project', async () => {
       await tempFs.createFiles({
+        'proj/stories/.storybook/main.js': '',
         'proj/stories/project.json': serializeJson({
           root: 'proj/stories',
           projectType: 'library',
@@ -339,15 +338,16 @@ describe(`workspace-plugin`, () => {
         'clean',
         'format',
         'type-check',
+        'storybook',
         'test-ssr',
         'start',
-        'storybook',
       ]);
 
       const targets = getTargets(results, 'proj/stories');
 
       expect(targets?.storybook).toMatchInlineSnapshot(`
         Object {
+          "cache": true,
           "command": "yarn storybook dev",
           "inputs": Array [
             "production",
