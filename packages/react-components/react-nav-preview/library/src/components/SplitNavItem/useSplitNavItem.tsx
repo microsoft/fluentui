@@ -9,8 +9,6 @@ import { NavItem } from '../NavItem/index';
 import { NavSubItem } from '../NavSubItem/NavSubItem';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 
-// a random change to trigger a PR.
-
 /**
  * Create the state required to render SplitNavItem.
  *
