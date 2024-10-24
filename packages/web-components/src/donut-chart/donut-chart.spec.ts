@@ -1,28 +1,5 @@
 import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
-import { IChartDataPoint, IChartProps } from './donut-chart.options.js';
-
-
-
-const points: IChartDataPoint[] = [
-  {
-    legend: 'first',
-    data: 20000,
-    color: '#0099BC',
-  },
-  {
-    legend: 'second',
-    data: 39000,
-    color: '#77004D',
-  },
-];
-
-const data: IChartProps = {
-  chartTitle: 'Donut chart basic example',
-  chartData: points,
-};
-
-
 test.describe('Donut-chart - Basic', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(fixtureURL('components-donutchart--basic'));
