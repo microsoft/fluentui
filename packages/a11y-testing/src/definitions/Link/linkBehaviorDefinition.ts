@@ -5,8 +5,8 @@ export const linkBehaviorDefinition: Rule[] = [
   BehaviorRule.root()
     .forProps({ href: '#' })
     .doesNotHaveAttribute('role')
+    .doesNotHaveAttribute('tabindex')
     .hasAttribute('href', '#')
-    .hasAttribute('tabindex', '0')
     .description(`if element has href and is rendered as an 'anchor'.`),
   BehaviorRule.root()
     .doesNotHaveAttribute('tabindex')
@@ -19,7 +19,7 @@ export const linkBehaviorDefinition: Rule[] = [
     .description(`if element is forced to render as a 'button' even if it was passed an href.`),
   BehaviorRule.root()
     .forProps({ as: 'a' })
-    .doesNotHaveAttribute('role')
+    .hasAttribute('role', 'link')
     .hasAttribute('tabindex', '0')
     .description(`if element is forced to render as an 'anchor' event if it does not have an href.`),
   BehaviorRule.root()
