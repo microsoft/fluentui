@@ -37,12 +37,12 @@ export const usePieStyles_unstable = (props: PieProps): PieStyles => {
 
   const baseStyles = useStyles();
   return {
-    root: mergeClasses(donutPieClassNames.root, baseStyles.root, className, props.styles?.root),
+    root: mergeClasses(donutPieClassNames.root, baseStyles.root, className /*props.styles?.root*/),
     insideDonutString: mergeClasses(
       donutPieClassNames.insideDonutString,
       baseStyles.insideDonutString,
       className,
-      props.styles?.insideDonutString,
+      /*props.styles?.insideDonutString,*/
     ),
   };
 };
