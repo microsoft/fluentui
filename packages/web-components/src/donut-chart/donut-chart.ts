@@ -1,15 +1,14 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
-import { arc as d3Arc, pie as d3Pie } from 'd3-shape';
-import { createTabster, getMover, getTabsterAttribute, MoverDirections } from 'tabster';
+import { arc as d3Arc, pie as d3Pie, PieArcDatum } from 'd3-shape';
+import { createTabster, getMover, getTabsterAttribute, MoverDirections, TABSTER_ATTRIBUTE_NAME } from 'tabster';
 import {
   getColorFromToken,
   getDataConverter,
   getNextColor,
-  getRTL,
   SVG_NAMESPACE_URI,
   wrapText,
 } from '../utils/chart-helpers.js';
-import type { ChartProps } from './donut-chart.options.js';
+import { ChartDataPoint, ChartProps } from './donut-chart.options.js';
 
 const tabsterCore = createTabster(window);
 getMover(tabsterCore);
@@ -37,7 +36,6 @@ export class DonutChart extends FASTElement {
   public valueInsideDonut?: string;
 
   private _selectedLegend: string = '';
-  private _isRTL: boolean = false;
 
   constructor() {
     super();
@@ -48,15 +46,13 @@ export class DonutChart extends FASTElement {
   connectedCallback() {
     super.connectedCallback();
 
-    this.data.chartData?.forEach((d, i) => {
-      if (d.color) {
-        d.color = getColorFromToken(d.color);
+    this.data.chartData?.forEach((dataPoint, index) => {
+      if (dataPoint.color) {
+        dataPoint.color = getColorFromToken(dataPoint.color);
       } else {
-        d.color = getNextColor(i);
+        dataPoint.color = getNextColor(index);
       }
     });
-
-    this._isRTL = getRTL(this);
 
     this.render();
   }
@@ -68,26 +64,29 @@ export class DonutChart extends FASTElement {
 
     const chartWrapper = document.createElement('div');
     rootDiv.appendChild(chartWrapper);
-    const attributeObj = getTabsterAttribute({
+
+    const tabsterAttribute = getTabsterAttribute({
       mover: { direction: MoverDirections.Horizontal, tabbable: true },
     });
-    Object.keys(attributeObj).forEach(x => chartWrapper.setAttribute(x, attributeObj[x]));
+    if (tabsterAttribute[TABSTER_ATTRIBUTE_NAME]) {
+      chartWrapper.setAttribute(TABSTER_ATTRIBUTE_NAME, tabsterAttribute[TABSTER_ATTRIBUTE_NAME]);
+    }
 
     const svg = document.createElementNS(SVG_NAMESPACE_URI, 'svg');
     chartWrapper.appendChild(svg);
     svg.setAttribute('width', `${this.width}`);
     svg.setAttribute('height', `${this.height}`);
-    svg.setAttribute('aria-label', this.data.chartTitle);
+    this.data.chartTitle && svg.setAttribute('aria-label', this.data.chartTitle);
     svg.classList.add('chart');
 
     const group = document.createElementNS(SVG_NAMESPACE_URI, 'g');
     svg.appendChild(group);
     group.setAttribute('transform', `translate(${this.width / 2}, ${this.height / 2})`);
 
-    const pie = d3Pie()
-      .value((d: any) => d.data)
+    const pie = d3Pie<ChartDataPoint>()
+      .value(d => d.data!)
       .padAngle(0.02);
-    const arc = d3Arc()
+    const arc = d3Arc<PieArcDatum<ChartDataPoint>>()
       .innerRadius(this.innerRadius)
       .outerRadius((Math.min(this.height, this.width) - 20) / 2);
 
@@ -107,82 +106,85 @@ export class DonutChart extends FASTElement {
     tooltipBody.appendChild(yText);
     yText.classList.add('calloutContentY');
 
-    pie(this.data.chartData).forEach(d => {
-      const arcGroup = document.createElementNS(SVG_NAMESPACE_URI, 'g');
-      group.appendChild(arcGroup);
+    this.data.chartData &&
+      pie(this.data.chartData).forEach(arcDatum => {
+        const arcGroup = document.createElementNS(SVG_NAMESPACE_URI, 'g');
+        group.appendChild(arcGroup);
 
-      const pathOutline = document.createElementNS(SVG_NAMESPACE_URI, 'path');
-      arcGroup.appendChild(pathOutline);
-      pathOutline.classList.add('focusOutline');
-      pathOutline.setAttribute('d', arc(d));
+        const pathOutline = document.createElementNS(SVG_NAMESPACE_URI, 'path');
+        arcGroup.appendChild(pathOutline);
+        pathOutline.classList.add('focusOutline');
+        pathOutline.setAttribute('d', arc(arcDatum)!);
 
-      const path = document.createElementNS(SVG_NAMESPACE_URI, 'path');
-      arcGroup.appendChild(path);
-      path.classList.add('arc');
-      path.setAttribute('d', arc(d));
-      path.setAttribute('fill', d.data.color);
-      path.setAttribute('data-id', d.data.legend);
-      path.setAttribute('tabindex', '0');
-      path.setAttribute('aria-label', `${d.data.legend}, ${d.data.data}.`);
-      path.setAttribute('role', 'img');
+        const path = document.createElementNS(SVG_NAMESPACE_URI, 'path');
+        arcGroup.appendChild(path);
+        path.classList.add('arc');
+        path.setAttribute('d', arc(arcDatum)!);
+        path.setAttribute('fill', arcDatum.data.color!);
+        path.setAttribute('data-id', arcDatum.data.legend!);
+        path.setAttribute('tabindex', '0');
+        path.setAttribute('aria-label', `${arcDatum.data.legend}, ${arcDatum.data.data}.`);
+        path.setAttribute('role', 'img');
 
-      path.addEventListener('mouseover', event => {
-        if (this._selectedLegend !== '' && this._selectedLegend !== d.data.legend) {
-          return;
-        }
+        path.addEventListener('mouseover', event => {
+          if (this._selectedLegend !== '' && this._selectedLegend !== arcDatum.data.legend) {
+            return;
+          }
 
-        tooltipBody.style['borderColor'] = d.data.color;
-        legendText.textContent = d.data.legend;
-        yText.textContent = d.data.data;
-        yText.style['color'] = d.data.color;
-        tooltip.style['opacity'] = '1';
+          tooltipBody.style['borderColor'] = arcDatum.data.color!;
+          legendText.textContent = arcDatum.data.legend!;
+          yText.textContent = `${arcDatum.data.data}`;
+          yText.style['color'] = arcDatum.data.color!;
+          tooltip.style['opacity'] = '1';
 
-        const bounds = rootDiv.getBoundingClientRect();
-        tooltip.style['left'] = `${event.clientX - bounds.left}px`;
-        tooltip.style['top'] = `${event.clientY - bounds.top - 85}px`;
+          const bounds = rootDiv.getBoundingClientRect();
+          tooltip.style['left'] = `${event.clientX - bounds.left}px`;
+          tooltip.style['top'] = `${event.clientY - bounds.top - 85}px`;
+        });
+        path.addEventListener('focus', event => {
+          if (this._selectedLegend !== '' && this._selectedLegend !== arcDatum.data.legend) {
+            return;
+          }
+
+          tooltipBody.style['borderColor'] = arcDatum.data.color!;
+          legendText.textContent = arcDatum.data.legend!;
+          yText.textContent = `${arcDatum.data.data}`;
+          yText.style['color'] = arcDatum.data.color!;
+          tooltip.style['opacity'] = '1';
+
+          const rootBounds = rootDiv.getBoundingClientRect();
+          const arcBounds = path.getBoundingClientRect();
+          tooltip.style['left'] = `${arcBounds.left + arcBounds.width / 2 - rootBounds.left}px`;
+          tooltip.style['top'] = `${arcBounds.top - rootBounds.top - 85}px`;
+        });
+        path.addEventListener('blur', event => {
+          tooltip.style['opacity'] = '0';
+        });
       });
-      path.addEventListener('focus', event => {
-        if (this._selectedLegend !== '' && this._selectedLegend !== d.data.legend) {
-          return;
-        }
-
-        tooltipBody.style['borderColor'] = d.data.color;
-        legendText.textContent = d.data.legend;
-        yText.textContent = d.data.data;
-        yText.style['color'] = d.data.color;
-        tooltip.style['opacity'] = '1';
-
-        const rootBounds = rootDiv.getBoundingClientRect();
-        const arcBounds = path.getBoundingClientRect();
-        tooltip.style['left'] = `${arcBounds.left + arcBounds.width / 2 - rootBounds.left}px`;
-        tooltip.style['top'] = `${arcBounds.top - rootBounds.top - 85}px`;
-      });
-      path.addEventListener('blur', event => {
-        tooltip.style['opacity'] = '0';
-      });
-    });
 
     rootDiv.addEventListener('mouseleave', () => {
       tooltip.style['opacity'] = '0';
     });
 
-    const text = document.createElementNS(SVG_NAMESPACE_URI, 'text');
-    group.appendChild(text);
-    text.classList.add('insideDonutString');
-    text.setAttribute('x', '0');
-    text.setAttribute('y', '0');
-    text.setAttribute('text-anchor', 'middle');
-    text.setAttribute('dominant-baseline', 'middle');
-    text.textContent = this.valueInsideDonut;
-    const lineHeight = text.getBoundingClientRect().height;
-    wrapText(text, 2 * this.innerRadius);
-    const lines = text.getElementsByTagName('tspan');
-    const start = -Math.trunc((lines.length - 1) / 2);
-    for (let i = 0; i < lines.length; i++) {
-      lines[i].setAttribute('dy', `${(start + i) * lineHeight}`);
+    if (this.valueInsideDonut) {
+      const text = document.createElementNS(SVG_NAMESPACE_URI, 'text');
+      group.appendChild(text);
+      text.classList.add('insideDonutString');
+      text.setAttribute('x', '0');
+      text.setAttribute('y', '0');
+      text.setAttribute('text-anchor', 'middle');
+      text.setAttribute('dominant-baseline', 'middle');
+      text.textContent = this.valueInsideDonut;
+      const lineHeight = text.getBoundingClientRect().height;
+      wrapText(text, 2 * this.innerRadius);
+      const lines = text.getElementsByTagName('tspan');
+      const start = -Math.trunc((lines.length - 1) / 2);
+      for (let i = 0; i < lines.length; i++) {
+        lines[i].setAttribute('dy', `${(start + i) * lineHeight}`);
+      }
     }
 
-    const legends = this.data.chartData?.map(d => ({ title: d.legend, color: d.color }));
+    const legends = this.data.chartData?.map(dataPoint => ({ title: dataPoint.legend!, color: dataPoint.color! }));
 
     const legendContainer = document.createElement('div');
     rootDiv.appendChild(legendContainer);
@@ -190,24 +192,24 @@ export class DonutChart extends FASTElement {
     legendContainer.setAttribute('role', 'listbox');
     legendContainer.setAttribute('aria-label', 'Legends');
 
-    legends?.forEach((d, index) => {
+    legends?.forEach((legendItem, index) => {
       const button = document.createElement('button');
       legendContainer.appendChild(button);
       button.classList.add('legend');
       button.setAttribute('role', 'option');
       button.setAttribute('aria-setsize', `${legends.length}`);
       button.setAttribute('aria-posinset', `${index + 1}`);
-      button.setAttribute('aria-selected', `${this._selectedLegend === d.title}`);
+      // button.setAttribute('aria-selected', `${this._selectedLegend === legendItem.title}`);
 
       const legendRect = document.createElement('div');
       button.appendChild(legendRect);
       legendRect.classList.add('legendRect');
-      legendRect.style['backgroundColor'] = d.color;
-      legendRect.style['borderColor'] = d.color;
+      legendRect.style['backgroundColor'] = legendItem.color;
+      legendRect.style['borderColor'] = legendItem.color;
 
       const legendText = document.createElement('div');
       button.appendChild(legendText);
-      legendText.textContent = d.title;
+      legendText.textContent = legendItem.title;
       legendText.classList.add('legendText');
     });
 
@@ -228,17 +230,14 @@ export class DonutChart extends FASTElement {
           }
         }
         for (let j = 0; j < buttons.length; j++) {
-          if (j !== i) {
-            const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-            legendRect.style['backgroundColor'] = 'transparent';
+          const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
+          const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
 
-            const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
+          if (j !== i) {
+            legendRect.style['backgroundColor'] = 'transparent';
             legendText.style['opacity'] = '0.67';
           } else {
-            const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-            legendRect.style['backgroundColor'] = legends[j].color;
-
-            const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
+            legendRect.style['backgroundColor'] = legends![j].color;
             legendText.style['opacity'] = '1';
           }
         }
@@ -253,7 +252,7 @@ export class DonutChart extends FASTElement {
         }
         for (let j = 0; j < buttons.length; j++) {
           const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-          legendRect.style['backgroundColor'] = legends[j].color;
+          legendRect.style['backgroundColor'] = legends![j].color;
 
           const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
           legendText.style['opacity'] = '1';
@@ -272,17 +271,14 @@ export class DonutChart extends FASTElement {
           }
         }
         for (let j = 0; j < buttons.length; j++) {
-          if (j !== i) {
-            const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-            legendRect.style['backgroundColor'] = 'transparent';
+          const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
+          const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
 
-            const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
+          if (j !== i) {
+            legendRect.style['backgroundColor'] = 'transparent';
             legendText.style['opacity'] = '0.67';
           } else {
-            const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-            legendRect.style['backgroundColor'] = legends[j].color;
-
-            const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
+            legendRect.style['backgroundColor'] = legends![j].color;
             legendText.style['opacity'] = '1';
           }
         }
@@ -297,14 +293,14 @@ export class DonutChart extends FASTElement {
         }
         for (let j = 0; j < buttons.length; j++) {
           const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-          legendRect.style['backgroundColor'] = legends[j].color;
+          legendRect.style['backgroundColor'] = legends![j].color;
 
           const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
           legendText.style['opacity'] = '1';
         }
       });
       buttons[i].addEventListener('click', () => {
-        if (this._selectedLegend === legends[i].title) {
+        if (this._selectedLegend === legends![i].title) {
           this._selectedLegend = '';
 
           for (let j = 0; j < arcs.length; j++) {
@@ -312,13 +308,13 @@ export class DonutChart extends FASTElement {
           }
           for (let j = 0; j < buttons.length; j++) {
             const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-            legendRect.style['backgroundColor'] = legends[j].color;
+            legendRect.style['backgroundColor'] = legends![j].color;
 
             const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
             legendText.style['opacity'] = '1';
           }
         } else {
-          this._selectedLegend = legends[i].title;
+          this._selectedLegend = legends![i].title;
 
           for (let j = 0; j < arcs.length; j++) {
             if (arcs[j].getAttribute('data-id') !== buttons[i].textContent) {
@@ -328,25 +324,14 @@ export class DonutChart extends FASTElement {
             }
           }
           for (let j = 0; j < buttons.length; j++) {
-            if (j !== i) {
-              const legendRect = (
-                buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
-              )[0];
-              legendRect.style['backgroundColor'] = 'transparent';
+            const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
+            const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
 
-              const legendText = (
-                buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
-              )[0];
+            if (j !== i) {
+              legendRect.style['backgroundColor'] = 'transparent';
               legendText.style['opacity'] = '0.67';
             } else {
-              const legendRect = (
-                buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
-              )[0];
-              legendRect.style['backgroundColor'] = legends[j].color;
-
-              const legendText = (
-                buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
-              )[0];
+              legendRect.style['backgroundColor'] = legends![j].color;
               legendText.style['opacity'] = '1';
             }
           }
