@@ -46,7 +46,7 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
   const project = context.projectsConfigurations!.projects[context.projectName!];
 
   const resolveLocalFlag = Boolean(process.env.__FORCE_API_MD_UPDATE__) || isCI() ? false : resolvedSchema.local;
-  console.log({ resolveLocalFlag });
+  console.log({ resolveLocalFlag, isCi: isCI() });
   const projectAbsolutePath = join(context.root, project.root);
   const resolveConfig = getApiExtractorConfigPath(resolvedSchema, projectAbsolutePath);
   const tsConfigPathForCompilation = getTsConfigPathUsedForProduction(projectAbsolutePath);
