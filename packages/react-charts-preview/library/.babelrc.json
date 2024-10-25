@@ -1,0 +1,4 @@
+{
+  "extends": "../../../.babelrc-v9.json",
+  "plugins": ["annotate-pure-calls", "@babel/transform-react-pure-annotations"]
+}
