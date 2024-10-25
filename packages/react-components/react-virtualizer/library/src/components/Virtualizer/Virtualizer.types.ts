@@ -140,8 +140,7 @@ export type VirtualizerConfigProps = {
 
   /**
    * Enables users to override the intersectionObserverRoot.
-   * RECOMMEND: DO NOT PASS THIS IN, as it can cause side effects
-   * when overlapping with other scroll views
+   * We recommend passing this in for accurate distance assessment in IO
    */
   scrollViewRef?: React.MutableRefObject<HTMLElement | null>;
 
@@ -195,6 +194,12 @@ export type VirtualizerConfigProps = {
    * Virtualizer Measure hooks provide a suitable reference.
    */
   containerSizeRef: RefObject<number>;
+
+  /**
+   * A callback that enables updating scroll position for calculating required dynamic lengths,
+   * this should be passed in from useDynamicVirtualizerMeasure
+   */
+  updateScrollPosition?: (position: number) => void;
 };
 
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;
