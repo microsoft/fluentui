@@ -44,6 +44,7 @@ steps:
       DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
   - script: |
+      yarn nx run workspace-plugin:test --nxBail
       yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --nxBail $(sinceArg)
     displayName: build, test, lint, test-ssr (affected)
     condition: eq(variables.isPR, true)

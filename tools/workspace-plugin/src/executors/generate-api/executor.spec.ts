@@ -169,8 +169,11 @@ describe('GenerateApi Executor', () => {
       skipLibCheck: false,
     });
     expect(extractorConfig.skipLibCheck).toBe(false);
+
+    const actualLocalBuildValue = process.env.CI && process.env.CI !== 'false' ? false : true;
+
     expect(extractorArgs).toEqual({
-      localBuild: true,
+      localBuild: actualLocalBuildValue,
       showDiagnostics: false,
       showVerboseMessages: true,
     });

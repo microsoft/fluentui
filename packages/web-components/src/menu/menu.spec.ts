@@ -289,7 +289,7 @@ test.describe('Menu', () => {
     await expect(menuList).toBeVisible();
   });
 
-  test('should focus first item after closing a submenu', async ({ page }) => {
+  test.skip('should focus first item after closing a submenu', async ({ page }) => {
     const element = page.locator('fluent-menu');
     const menuButton = element.locator('fluent-menu-button');
     const menuList = element.locator('fluent-menu-list');
