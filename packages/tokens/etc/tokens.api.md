@@ -394,6 +394,12 @@ export type LineHeightTokens = {
 };
 
 // @public (undocumented)
+export const masonsDarkTheme: Theme;
+
+// @public (undocumented)
+export const masonsLightTheme: Theme;
+
+// @public (undocumented)
 export type PartialTheme = Partial<Theme>;
 
 // @public (undocumented)
