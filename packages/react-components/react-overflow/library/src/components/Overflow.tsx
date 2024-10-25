@@ -13,6 +13,8 @@ interface OverflowState {
   groupVisibility: Record<string, OverflowGroupState>;
 }
 
+export interface OnOverflowChangeData extends OverflowState {}
+
 /**
  * Overflow Props
  */
@@ -20,6 +22,10 @@ export type OverflowProps = Partial<
   Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'>
 > & {
   children: React.ReactElement;
+
+  // overflow is not caused by DOM event
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type
+  onOverflowChange?: (ev: null, data: OverflowState) => void;
 };
 
 /**
@@ -28,7 +34,7 @@ export type OverflowProps = Partial<
 export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
   const styles = useOverflowStyles();
 
-  const { children, minimumVisible, overflowAxis = 'horizontal', overflowDirection, padding } = props;
+  const { children, minimumVisible, overflowAxis = 'horizontal', overflowDirection, padding, onOverflowChange } = props;
 
   const [overflowState, setOverflowState] = React.useState<OverflowState>({
     hasOverflow: false,
@@ -45,14 +51,14 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
       itemVisibility[item.id] = true;
     });
     invisibleItems.forEach(x => (itemVisibility[x.id] = false));
+    const newState = {
+      hasOverflow: data.invisibleItems.length > 0,
+      itemVisibility,
+      groupVisibility,
+    };
+    onOverflowChange?.(null, { ...newState });
 
-    setOverflowState(() => {
-      return {
-        hasOverflow: data.invisibleItems.length > 0,
-        itemVisibility,
-        groupVisibility,
-      };
-    });
+    setOverflowState(newState);
   };
 
   const { containerRef, registerItem, updateOverflow, registerOverflowMenu, registerDivider } = useOverflowContainer(

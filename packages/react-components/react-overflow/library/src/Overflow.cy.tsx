@@ -9,6 +9,7 @@ import {
   useIsOverflowGroupVisible,
   useOverflowMenu,
   useOverflowContext,
+  type OnOverflowChangeData,
 } from '@fluentui/react-overflow';
 import { Portal } from '@fluentui/react-portal';
 import { OverflowAxis } from '@fluentui/priority-overflow';
@@ -1065,5 +1066,48 @@ describe('Overflow', () => {
 
       cy.get('#toggle').click();
     }
+  });
+
+  it('shoud call onOverflowChange', () => {
+    const itemCount = 10;
+    const mapHelper = new Array(itemCount).fill(0).map((_, i) => i);
+    let latestUpdate: OnOverflowChangeData | undefined;
+    mount(
+      <Container onOverflowChange={(e, data) => (latestUpdate = data)}>
+        {mapHelper.map(i => (
+          <Item key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+      </Container>,
+    );
+    const overflowCases = [
+      { containerSize: 450, overflowCount: 2 },
+      { containerSize: 400, overflowCount: 3 },
+      { containerSize: 350, overflowCount: 4 },
+      { containerSize: 300, overflowCount: 5 },
+      { containerSize: 250, overflowCount: 6 },
+      { containerSize: 200, overflowCount: 7 },
+      { containerSize: 150, overflowCount: 8 },
+      { containerSize: 100, overflowCount: 9 },
+      { containerSize: 50, overflowCount: 10 },
+    ];
+
+    overflowCases.forEach(({ overflowCount, containerSize }) => {
+      setContainerWidth(containerSize);
+      cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+      cy.then(() => {
+        expect(latestUpdate?.hasOverflow).to.equal(true);
+        const visibleBoundary = itemCount - overflowCount;
+        for (let i = 0; i < visibleBoundary; i++) {
+          expect(latestUpdate?.itemVisibility[i.toString()]).to.equal(true);
+        }
+
+        for (let i = visibleBoundary; i < itemCount; i++) {
+          expect(latestUpdate?.itemVisibility[i.toString()]).to.equal(false);
+        }
+      });
+    });
   });
 });
