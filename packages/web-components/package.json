@@ -78,7 +78,6 @@
     "clean": "node ./scripts/clean dist",
     "generate-api": "api-extractor run --local",
     "build": "yarn compile && yarn rollup -c && yarn generate-api",
-    "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier -w src/**/*.{ts,html} --ignore-path ../../.prettierignore",
     "format:check": "yarn format -c",
@@ -103,7 +102,11 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@microsoft/fast-element": "^2.0.0-beta.26 || ^2.0.0"
+    "@microsoft/fast-element": "^2.0.0-beta.26 || ^2.0.0",
+    "@types/d3-selection": "^3.0.0",
+    "@types/d3-shape": "^3.0.0",
+    "d3-selection": "^3.0.0",
+    "d3-shape": "^3.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
