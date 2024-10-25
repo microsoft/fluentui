@@ -1,7 +1,7 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
 import { create as d3Create, select as d3Select } from 'd3-selection';
 import { createTabster, getGroupper, getMover, getTabsterAttribute, TABSTER_ATTRIBUTE_NAME } from 'tabster';
-import { getDataConverter } from '../utils/chart-helpers.js';
+import { jsonConverter, validateChartPropsArray } from '../utils/chart-helpers.js';
 import { ChartDataPoint, ChartProps, Variant } from './horizontalbarchart.options.js';
 
 // During the page startup.
@@ -39,7 +39,7 @@ export class HorizontalBarChart extends FASTElement {
   @attr
   public _isRTL: boolean = false;
 
-  @attr({ converter: getDataConverter('horizontal-bar-chart') })
+  @attr({ converter: jsonConverter })
   public data!: ChartProps[];
 
   @attr
@@ -58,6 +58,9 @@ export class HorizontalBarChart extends FASTElement {
 
   connectedCallback() {
     super.connectedCallback();
+
+    validateChartPropsArray(this.data, 'data');
+
     this.render();
   }
 

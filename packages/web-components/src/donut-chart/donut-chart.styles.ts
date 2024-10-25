@@ -6,6 +6,8 @@ import {
   colorNeutralForeground1,
   colorNeutralShadowAmbient,
   colorNeutralShadowKey,
+  colorStrokeFocus1,
+  colorStrokeFocus2,
   colorTransparentStroke,
   spacingHorizontalL,
   spacingHorizontalS,
@@ -45,6 +47,26 @@ export const styles = css`
     display: block;
   }
 
+  .arc:focus {
+    outline: none;
+    stroke-width: 1px;
+    stroke: ${colorStrokeFocus1};
+  }
+
+  .focusOutline {
+    fill: none;
+  }
+
+  .focusOutline:has(+ .arc:focus) {
+    stroke-width: 4px;
+    stroke: ${colorStrokeFocus2};
+  }
+
+  .insideDonutString {
+    ${typographyTitle3Styles}
+    fill: ${colorNeutralForeground1};
+  }
+
   .legendContainer {
     padding-top: ${spacingVerticalL};
 
@@ -55,11 +77,6 @@ export const styles = css`
 
     flex-wrap: wrap;
     display: flex;
-  }
-
-  .insideDonutString {
-    ${typographyTitle3Styles}
-    fill: ${colorNeutralForeground1};
   }
 
   .legend {

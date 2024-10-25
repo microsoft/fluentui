@@ -8,12 +8,12 @@ export interface ChartDataPoint {
   /**
    * Legend text for the datapoint in the chart
    */
-  legend?: string;
+  legend: string;
 
   /**
    * data the datapoint in the chart
    */
-  data?: number;
+  data: number;
 
   /**
    * total length of bar
@@ -40,5 +40,5 @@ export interface ChartProps {
   /**
    * data for the points in the chart
    */
-  chartData?: ChartDataPoint[];
+  chartData: ChartDataPoint[];
 }

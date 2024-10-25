@@ -2,65 +2,49 @@ import type { ValueConverter } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { getDirection } from './direction.js';
 
-export const getDataConverter = (chartType: string): ValueConverter => {
-  let validate: (obj: any) => void;
-  switch (chartType) {
-    case 'horizontal-bar-chart':
-      validate = validateChartPropsArray;
-      break;
-    case 'donut-chart':
-    default:
-      validate = validateChartProps;
-  }
-
-  return {
-    toView(value: any): string {
-      return JSON.stringify(value);
-    },
-    fromView(value: string): any {
-      const obj = JSON.parse(value);
-      validate(obj);
-      return obj;
-    },
-  };
+export const jsonConverter: ValueConverter = {
+  toView(value: any): string {
+    return JSON.stringify(value);
+  },
+  fromView(value: string): any {
+    return JSON.parse(value);
+  },
 };
 
 type Dict = { [key: string]: any };
 
-const validateChartPropsArray = (obj: any) => {
-  if (obj === null || typeof obj !== 'object' || !Array.isArray(obj)) {
-    throw TypeError('Invalid data: Expected an object.');
+export const validateChartPropsArray = (obj: any, objName: string) => {
+  if (!Array.isArray(obj)) {
+    throw TypeError(`Invalid ${objName}: Expected an array.`);
   }
 
   obj.forEach((item, idx) => {
-    validateChartProps(item);
+    validateChartProps(item, `${objName}[${idx}]`);
   });
 };
 
-const validateChartProps = (obj: any) => {
+export const validateChartProps = (obj: any, objName: string) => {
   if (obj === null || typeof obj !== 'object' || Array.isArray(obj)) {
-    throw TypeError('Invalid data: Expected an object.');
+    throw TypeError(`Invalid ${objName}: Expected an object.`);
   }
 
-  if ((obj as Dict).hasOwnProperty('chartData')) {
-    if (!Array.isArray(obj.chartData)) {
-      throw TypeError('Invalid data.chartData: Expected an array.');
+  if (!Array.isArray(obj.chartData)) {
+    throw TypeError(`Invalid ${objName}.chartData: Expected an array.`);
+  }
+
+  (obj.chartData as any[]).forEach((item, idx) => {
+    if (item === null || typeof item !== 'object' || Array.isArray(item)) {
+      throw TypeError(`Invalid ${objName}.chartData[${idx}]: Expected an object.`);
     }
 
-    (obj.chartData as any[]).forEach((item, idx) => {
-      if (typeof item !== 'object' || Array.isArray(item) || item === null) {
-        throw TypeError(`Invalid data.chartData[${idx}]: Expected an object.`);
-      }
+    if (typeof item.legend !== 'string') {
+      throw TypeError(`Invalid ${objName}.chartData[${idx}].legend: Expected a string.`);
+    }
 
-      if ((item as Dict).hasOwnProperty('legend') && typeof item.legend !== 'string') {
-        throw TypeError(`Invalid data.chartData[${idx}].legend: Expected a string.`);
-      }
-
-      if ((item as Dict).hasOwnProperty('data') && typeof item.data !== 'number') {
-        throw TypeError(`Invalid data.chartData[${idx}].data: Expected a number.`);
-      }
-    });
-  }
+    if (typeof item.data !== 'number') {
+      throw TypeError(`Invalid ${objName}.chartData[${idx}].data: Expected a number.`);
+    }
+  });
 };
 
 export const DataVizPalette = {
@@ -167,4 +151,43 @@ export const getColorFromToken = (token: string, isDarkTheme: boolean = false): 
 
 export const getRTL = (rootNode: HTMLElement): boolean => {
   return getDirection(rootNode) === Direction.rtl;
+};
+
+export const SVG_NAMESPACE_URI = 'http://www.w3.org/2000/svg';
+
+export const wrapText = (text: SVGTextElement, width: number) => {
+  if (!text.textContent) {
+    return;
+  }
+
+  const words = text.textContent.split(/\s+/).reverse();
+  let word: string | undefined;
+  let line: string[] = [];
+  let lineNumber = 0;
+  const lineHeight = text.getBoundingClientRect().height;
+  const y = text.getAttribute('y') || '0';
+
+  text.textContent = null;
+
+  let tspan = document.createElementNS(SVG_NAMESPACE_URI, 'tspan');
+  text.appendChild(tspan);
+  tspan.setAttribute('x', '0');
+  tspan.setAttribute('y', y);
+  tspan.setAttribute('dy', `${lineNumber++ * lineHeight}`);
+
+  while ((word = words.pop())) {
+    line.push(word);
+    tspan.textContent = line.join(' ') + ' ';
+    if (tspan.getComputedTextLength() > width && line.length > 1) {
+      line.pop();
+      tspan.textContent = line.join(' ') + ' ';
+      line = [word];
+      tspan = document.createElementNS(SVG_NAMESPACE_URI, 'tspan');
+      text.appendChild(tspan);
+      tspan.setAttribute('x', '0');
+      tspan.setAttribute('y', y);
+      tspan.setAttribute('dy', `${lineNumber++ * lineHeight}`);
+      tspan.textContent = word;
+    }
+  }
 };
