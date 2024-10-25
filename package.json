@@ -377,7 +377,8 @@
     "eslint": "8.57.0",
     "swc-loader": "^0.2.6",
     "prettier": "2.8.8",
-    "puppeteer": "19.6.0"
+    "puppeteer": "19.6.0",
+    "@microsoft/api-extractor/typescript": "5.2.2"
   },
   "nx": {
     "includedScripts": []
