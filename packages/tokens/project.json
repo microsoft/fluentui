@@ -8,6 +8,12 @@
   "targets": {
     "e2e": {
       "dependsOn": ["build"]
+    },
+    "token-pipeline": {
+      "command": "node -r ../../scripts/ts-node/src/register ../../scripts/generators/src/token-pipeline.ts",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
     }
   }
 }

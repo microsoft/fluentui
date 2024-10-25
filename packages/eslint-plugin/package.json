@@ -8,11 +8,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "scripts": {
-    "type-check": "tsc --noEmit",
-    "lint": "eslint --ext .js,.ts --cache ./src",
-    "test": "yarn jest --passWithNoTests"
-  },
   "dependencies": {
     "@griffel/eslint-plugin": "^1.6.4",
     "@rnx-kit/eslint-plugin": "^0.8.2",

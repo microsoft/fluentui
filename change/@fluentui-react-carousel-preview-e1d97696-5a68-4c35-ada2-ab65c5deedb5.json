@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Breaking Preview Change: Set Announcer to drive inner text directly from event, remove state causing unnecessary updates",
-  "packageName": "@fluentui/react-carousel-preview",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

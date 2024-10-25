@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Handle LTR for CarouselButton icons",
-  "packageName": "@fluentui/react-carousel-preview",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

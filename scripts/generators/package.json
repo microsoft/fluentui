@@ -3,10 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "main": "index.js",
-  "scripts": {
-    "lint": "eslint --ext .ts,.js ./src",
-    "test": "jest --passWithNoTests"
-  },
   "dependencies": {
     "@fluentui/scripts-monorepo": "*",
     "@fluentui/scripts-projects-test": "*"
