@@ -1,5 +1,4 @@
-import { Observable } from '@microsoft/fast-element';
-import { attr, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, observable, Observable, Updates } from '@microsoft/fast-element';
 import { BaseAccordionItem } from '../accordion-item/accordion-item.js';
 import { AccordionExpandMode } from './accordion.options.js';
 
@@ -198,4 +197,18 @@ export class Accordion extends FASTElement {
       this.$emit('change');
     }
   };
+
+  /**
+   * Updates the collection of child accordion items when the slot changes.
+   *
+   * @param event - The slotchange event
+   * @internal
+   */
+  public slotchangeHandler(event: Event): void {
+    Updates.enqueue(() => {
+      this.slottedAccordionItems = [...this.querySelectorAll('*')].filter(
+        x => x instanceof BaseAccordionItem,
+      ) as BaseAccordionItem[];
+    });
+  }
 }
