@@ -21,8 +21,6 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
   const itemHeight = 34;
   const numberOfItems = 10000;
 
-  const [open, setOpen] = React.useState(false);
-
   const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: itemHeight,
     direction: 'vertical',
@@ -43,10 +41,6 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
           placeholder="Select a number"
           positioning={{ autoSize: 'width' }}
           listbox={{ ref: scrollRef, className: styles.listbox }}
-          open={open}
-          onOpenChange={(e, data) => {
-            setOpen(data.open);
-          }}
         >
           <Virtualizer
             numItems={numberOfItems}
