@@ -22,6 +22,10 @@ export const styles = css`
     z-index: 1;
   }
 
+  :host([split]) ::slotted([popover]) {
+    position-area: block-end span-inline-start;
+  }
+
   ::slotted([popover]:popover-open) {
     inset: unset;
   }

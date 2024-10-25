@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: move proper menu positioning for split button into component css",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}
