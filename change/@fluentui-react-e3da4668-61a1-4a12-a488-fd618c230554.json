@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(v8 ColorSwatchPicker): Add border to white color in high contrast mode",
-  "packageName": "@fluentui/react",
-  "email": "jiangemma@microsoft.com",
-  "dependentChangeType": "patch"
-}
