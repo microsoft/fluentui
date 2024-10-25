@@ -13,6 +13,7 @@ import { defaultTheme, ThemeIds } from '../theme';
 import { DIR_ID, THEME_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
+import { masonsDarkTheme, masonsLightTheme } from '../../../../tokens/src/themes/index';
 
 const themes: Record<ThemeIds, Theme> = {
   'web-light': webLightTheme,
@@ -20,6 +21,8 @@ const themes: Record<ThemeIds, Theme> = {
   'teams-light': teamsLightTheme,
   'teams-dark': teamsDarkTheme,
   'teams-high-contrast': teamsHighContrastTheme,
+  'masons-light': masonsLightTheme,
+  'masons-dark': masonsDarkTheme,
 } as const;
 
 const findTheme = (themeId?: ThemeIds) => {

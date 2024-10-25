@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adding Masons Theme",
+  "packageName": "@fluentui/tokens",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}
