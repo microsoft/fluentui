@@ -2,6 +2,51 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 25 Oct 2024 07:22:06 GMT",
+      "tag": "@fluentui/react_v8.121.7",
+      "version": "8.121.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "62e24ae1ca536ba1e4d3ba752bc4dfdcfd3d1584",
+            "comment": "fix(v8 ColorSwatchPicker): Add border to white color in high contrast mode"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Oct 2024 07:23:06 GMT",
+      "tag": "@fluentui/react_v8.121.6",
+      "version": "8.121.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "263ead68a05ac23499be137b41e02a5579522c08",
+            "comment": "fix: make button children rendering equal for both button and button as anchor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Oct 2024 07:22:38 GMT",
+      "tag": "@fluentui/react_v8.121.5",
+      "version": "8.121.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1696fc2aa330058faefe4daa299ad6c936d3a6e1",
+            "comment": "fix: Keytip passes through describedBy id if passed in"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Oct 2024 16:51:54 GMT",
       "tag": "@fluentui/react_v8.121.4",
       "version": "8.121.4",

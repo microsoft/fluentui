@@ -2,6 +2,42 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 24 Oct 2024 04:08:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.69",
+      "version": "3.0.0-beta.69",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "d0e28c6674287caeeef341f1f355e53d152fcf37",
+            "comment": "resolve eslint errors after upgrade to typescript-eslint v8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Oct 2024 04:07:48 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.69",
+      "version": "3.0.0-beta.69",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bc620a1b40700bb9f0d770eac37f288513002970",
+            "comment": "Fix: menu-item emit current state when checked change event fires"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "eaccd58b7bfad6eb22ca2df482c1638910cdd6a4",
+            "comment": "fix prefers-reduced-motion media query in button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Oct 2024 04:08:32 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.68",
       "version": "3.0.0-beta.68",

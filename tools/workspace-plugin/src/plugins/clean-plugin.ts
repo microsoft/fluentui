@@ -8,7 +8,7 @@ import {
 } from '@nx/devkit';
 import { dirname } from 'node:path';
 
-import { assertProjectExists, projectConfigGlob } from './shared';
+import { type TaskBuilderConfig, assertProjectExists, projectConfigGlob } from './shared';
 
 interface CleanPluginOptions {
   targetName?: string;
@@ -49,9 +49,7 @@ function createNodesInternal(
 
   const normalizedOptions = normalizeOptions(options);
 
-  const targetConfig: TargetConfiguration = {
-    executor: '@fluentui/workspace-plugin:clean',
-  };
+  const targetConfig = buildCleanTarget(options, context, {});
 
   return {
     projects: {
@@ -62,4 +60,16 @@ function createNodesInternal(
       },
     },
   };
+}
+
+export function buildCleanTarget(
+  _options: CleanPluginOptions,
+  _context: CreateNodesContextV2,
+  _config: TaskBuilderConfig,
+) {
+  const targetConfig: TargetConfiguration = {
+    executor: '@fluentui/workspace-plugin:clean',
+  };
+
+  return targetConfig;
 }

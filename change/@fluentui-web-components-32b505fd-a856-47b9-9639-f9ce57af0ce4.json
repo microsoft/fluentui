@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix: menu-item emit current state when checked change event fires",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}

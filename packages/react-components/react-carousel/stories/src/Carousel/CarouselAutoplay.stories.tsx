@@ -42,7 +42,6 @@ const useClasses = makeStyles({
     display: 'grid',
     gridTemplateColumns: '1fr',
     gridTemplateRows: 'auto 1fr',
-    paddingBottom: '24px',
     boxShadow: tokens.shadow16,
   },
   card: {
@@ -146,23 +145,25 @@ export const Autoplay = () => {
           <Switch checked={autoplayEnabled} onChange={() => setAutoplayEnabled(!autoplayEnabled)} />
         </Field>
       </div>
-      <Carousel groupSize={1} circular announcement={getAnnouncement}>
-        <CarouselSlider>
-          {IMAGES.map((imageSrc, index) => (
-            <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>
-              Card {index + 1}
-            </BannerCard>
-          ))}
-        </CarouselSlider>
-        <CarouselNavContainer
-          layout="inline"
-          autoplay={autoplayProps}
-          next={{ 'aria-label': 'go to next' }}
-          prev={{ 'aria-label': 'go to prev' }}
-        >
-          <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
-        </CarouselNavContainer>
-      </Carousel>
+      <div className={classes.card}>
+        <Carousel groupSize={1} circular announcement={getAnnouncement}>
+          <CarouselSlider>
+            {IMAGES.map((imageSrc, index) => (
+              <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>
+                Card {index + 1}
+              </BannerCard>
+            ))}
+          </CarouselSlider>
+          <CarouselNavContainer
+            layout="inline"
+            autoplay={autoplayProps}
+            next={{ 'aria-label': 'go to next' }}
+            prev={{ 'aria-label': 'go to prev' }}
+          >
+            <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
+          </CarouselNavContainer>
+        </Carousel>
+      </div>
     </div>
   );
 };

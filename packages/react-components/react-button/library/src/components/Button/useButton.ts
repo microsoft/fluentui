@@ -39,7 +39,7 @@ export const useButton_unstable = (
       elementType: 'button',
       defaultProps: {
         ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
-        type: 'button',
+        type: as === 'button' ? 'button' : undefined,
       },
     }),
     icon: iconShorthand,

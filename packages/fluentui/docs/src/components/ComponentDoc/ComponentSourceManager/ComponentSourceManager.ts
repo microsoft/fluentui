@@ -121,9 +121,8 @@ export default class ComponentSourceManager extends React.Component<
 
     try {
       const formattedCode = prettifyCode(currentCode, prettierParser);
-
       this.setState({ currentCode: formattedCode, formattedCode });
-    } catch (e) {}
+    } catch {}
   };
 
   handleCodeReset = (): void => {
