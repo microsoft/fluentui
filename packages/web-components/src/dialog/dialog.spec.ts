@@ -1,7 +1,9 @@
-import { expect, test } from '@playwright/test';
+import { test } from '@playwright/test';
 import type { Locator } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
-import { Dialog } from './dialog.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
+import type { Dialog } from './dialog.js';
+
+const storybookDocId = 'components-dialog-dialog--docs';
 
 async function getPointOutside(element: Locator) {
   // Get the bounding box of the element
@@ -16,7 +18,7 @@ async function getPointOutside(element: Locator) {
 
 test.describe('Dialog', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-dialog-dialog--default'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() =>
       Promise.all([
@@ -236,4 +238,21 @@ test.describe('Dialog', () => {
       await expect(dialog).toHaveAttribute('aria-describedby', 'elementID');
     });
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() =>
+    Promise.all([
+      customElements.whenDefined('fluent-button'),
+      customElements.whenDefined('fluent-dialog'),
+      customElements.whenDefined('fluent-dialog-body'),
+    ]),
+  );
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });
