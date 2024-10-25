@@ -844,6 +844,7 @@ export type {
   ITagItemSuggestionProps,
   ITagItemSuggestionStyleProps,
   ITagItemSuggestionStyles,
+  ITagItemRemoveButtonProps,
   ITagPickerProps,
 } from './Pickers';
 export {
