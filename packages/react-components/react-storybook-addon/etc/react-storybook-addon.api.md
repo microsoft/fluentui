@@ -75,6 +75,12 @@ export const themes: readonly [{
 }, {
     readonly id: "teams-high-contrast";
     readonly label: "Teams High Contrast";
+}, {
+    readonly id: "masons-light";
+    readonly label: "Masons Light";
+}, {
+    readonly id: "masons-dark";
+    readonly label: "Masons Dark";
 }];
 
 // (No @packageDocumentation comment for this package)
