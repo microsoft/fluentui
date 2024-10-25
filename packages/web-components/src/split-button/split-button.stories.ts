@@ -6,7 +6,7 @@ import type { Menu as FluentMenu } from '../menu/menu.js';
 type Story = StoryObj<FluentMenu>;
 
 const defaultSlottedContent = html`
-  <fluent-menu-list style="position-area: block-end span-inline-start;">
+  <fluent-menu-list>
     <fluent-menu-item>Menu item 1</fluent-menu-item>
     <fluent-menu-item>Menu item 2</fluent-menu-item>
     <fluent-menu-item>Menu item 3</fluent-menu-item>
