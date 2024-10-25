@@ -77,7 +77,16 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
 };
 
 export const Default = () => (
-  <Carousel groupSize={1} circular announcement={getAnnouncement}>
+  <Carousel
+    draggable
+    groupSize={1}
+    circular
+    announcement={getAnnouncement}
+    onActiveIndexChange={(ev, data) => {
+      console.log('Event type:', data.type);
+      console.log('Change:', data.index);
+    }}
+  >
     <CarouselSlider>
       {IMAGES.map((imageSrc, index) => (
         <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>

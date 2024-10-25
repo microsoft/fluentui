@@ -1,4 +1,4 @@
-import { useControllableState } from '@fluentui/react-utilities';
+import { type EventHandler, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import EmblaCarousel, { EmblaPluginType, type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
 import * as React from 'react';
 
@@ -7,6 +7,8 @@ import { carouselSliderClassNames } from './CarouselSlider/useCarouselSliderStyl
 import { CarouselMotion, CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import Fade from 'embla-carousel-fade';
+import { pointerEventPlugin } from './pointerEvents';
+import type { CarouselIndexChangeData } from './CarouselContext.types';
 
 const sliderClassname = `.${carouselSliderClassNames.root}`;
 
@@ -40,13 +42,18 @@ export function useEmblaCarousel(
     defaultActiveIndex: number | undefined;
     activeIndex: number | undefined;
     motion?: CarouselMotion;
+    onDragIndexChange?: EventHandler<CarouselIndexChangeData>;
   },
 ) {
-  const { align, direction, loop, slidesToScroll, watchDrag, containScroll, motion } = options;
+  const { align, direction, loop, slidesToScroll, watchDrag, containScroll, motion, onDragIndexChange } = options;
   const [activeIndex, setActiveIndex] = useControllableState({
     defaultState: options.defaultActiveIndex,
     state: options.activeIndex,
     initialState: 0,
+  });
+
+  const onDragEvent = useEventCallback((event: PointerEvent | MouseEvent, index: number) => {
+    onDragIndexChange?.(event, { event, type: 'drag', index });
   });
 
   const emblaOptions = React.useRef<EmblaOptionsType>({
@@ -99,8 +106,16 @@ export function useEmblaCarousel(
       plugins.push(Fade());
     }
 
+    if (watchDrag) {
+      plugins.push(
+        pointerEventPlugin({
+          onSelectViaDrag: onDragEvent,
+        }),
+      );
+    }
+
     return plugins;
-  }, [motion]);
+  }, [motion, onDragEvent, watchDrag]);
 
   // Listeners contains callbacks for UI elements that may require state update based on embla changes
   const listeners = React.useRef(new Set<(data: CarouselUpdateData) => void>());
@@ -119,6 +134,7 @@ export function useEmblaCarousel(
       const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
       const slides = emblaApi.current?.slideNodes();
       const actualIndex = emblaApi.current?.internalEngine().slideRegistry[newIndex][0] ?? 0;
+
       // We set the active or first index of group on-screen as the selected tabster index
       slides?.forEach((slide, slideIndex) => {
         setTabsterDefault(slide, slideIndex === actualIndex);
@@ -216,8 +232,9 @@ export function useEmblaCarousel(
   );
 
   React.useEffect(() => {
+    // Scroll to controlled values on update
     const currentActiveIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
-
+    emblaOptions.current.startIndex = activeIndex;
     if (activeIndex !== currentActiveIndex) {
       emblaApi.current?.scrollTo(activeIndex);
     }
@@ -226,7 +243,15 @@ export function useEmblaCarousel(
   React.useEffect(() => {
     const plugins = getPlugins();
 
-    emblaOptions.current = { align, direction, loop, slidesToScroll, watchDrag, containScroll };
+    emblaOptions.current = {
+      startIndex: emblaOptions.current.startIndex,
+      align,
+      direction,
+      loop,
+      slidesToScroll,
+      watchDrag,
+      containScroll,
+    };
     emblaApi.current?.reInit(
       {
         ...DEFAULT_EMBLA_OPTIONS,
