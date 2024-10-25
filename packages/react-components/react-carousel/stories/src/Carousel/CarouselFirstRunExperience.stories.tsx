@@ -16,7 +16,6 @@ import {
   tokens,
   typographyStyles,
 } from '@fluentui/react-components';
-import { useEffect } from 'react';
 
 const useStyles = makeStyles({
   surface: {
@@ -67,7 +66,7 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
   return `Carousel slide ${index + 1} of ${totalSlides}, ${PAGES[index].header}`;
 };
 
-export const CarouselFirstRunExperience = () => {
+export const FirstRunExperience = () => {
   const styles = useStyles();
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [open, setModalOpen] = React.useState(false);
@@ -80,19 +79,9 @@ export const CarouselFirstRunExperience = () => {
     }
     setActiveIndex(page);
   };
-  // NearButton and FarButton are function components that handle navigation and focus management
-  const NearButton = () => (
-    <Button onClick={() => setPage(activeIndex - 1)}>{activeIndex <= 0 ? 'Not Now' : 'Previous'}</Button>
-  );
 
-  const FarButton = () => (
-    <Button appearance="primary" onClick={() => setPage(activeIndex + 1)}>
-      {activeIndex === totalPages - 1 ? 'Try Copilot' : 'Next'}
-    </Button>
-  );
-
-  useEffect(() => {
-    // Reset or initialize page on open if nessecary
+  React.useEffect(() => {
+    // Reset or initialize page on open if necessary
     if (open) {
       setActiveIndex(0);
     }
@@ -114,7 +103,7 @@ export const CarouselFirstRunExperience = () => {
           onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
         >
           <CarouselSlider>
-            {PAGES.map((page, index) => (
+            {PAGES.map(page => (
               <CarouselCard className={styles.card} key={page.id}>
                 <Image src={page.imgSrc} width={600} height={324} alt={page.imgSrc} />
                 <h1 tabIndex={-1} className={styles.header}>
@@ -125,14 +114,26 @@ export const CarouselFirstRunExperience = () => {
             ))}
           </CarouselSlider>
           <div className={styles.footer}>
-            {NearButton()}
+            <Button onClick={() => setPage(activeIndex - 1)}>{activeIndex <= 0 ? 'Not Now' : 'Previous'}</Button>
+
             <CarouselNav appearance="brand">
               {index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}
             </CarouselNav>
-            {FarButton()}
+
+            <Button appearance="primary" onClick={() => setPage(activeIndex + 1)}>
+              {activeIndex === totalPages - 1 ? 'Try Copilot' : 'Next'}
+            </Button>
           </div>
         </Carousel>
       </DialogSurface>
     </Dialog>
   );
+};
+
+FirstRunExperience.parameters = {
+  docs: {
+    description: {
+      story: 'Carousel can be used in a Dialog to create a _first-run_ experience.',
+    },
+  },
 };
