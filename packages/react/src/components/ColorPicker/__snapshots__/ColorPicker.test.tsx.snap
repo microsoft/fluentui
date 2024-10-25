@@ -390,6 +390,7 @@ exports[`ColorPicker renders correctly 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
@@ -556,6 +557,7 @@ exports[`ColorPicker renders correctly 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
@@ -722,6 +724,7 @@ exports[`ColorPicker renders correctly 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
@@ -888,6 +891,7 @@ exports[`ColorPicker renders correctly 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
@@ -1054,6 +1058,7 @@ exports[`ColorPicker renders correctly 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
@@ -1575,6 +1580,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
@@ -1741,6 +1747,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
@@ -1907,6 +1914,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
@@ -2073,6 +2081,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
@@ -2239,6 +2248,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
@@ -2740,6 +2750,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
@@ -2906,6 +2917,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
@@ -3072,6 +3084,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
@@ -3238,6 +3251,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
@@ -3404,6 +3418,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
+                            overflow: hidden;
                             padding-bottom: 0px;
                             padding-left: 0px;
                             padding-right: 0px;
