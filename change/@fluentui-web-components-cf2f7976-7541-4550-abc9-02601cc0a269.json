@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: migrate from inset-area to position-area",
+  "packageName": "@fluentui/web-components",
+  "email": "hello@mohamedmansour.com",
+  "dependentChangeType": "patch"
+}
