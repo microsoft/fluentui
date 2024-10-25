@@ -38,5 +38,3 @@ jobs:
           npm deprecate ${{ parameters.packageSpec }} "${{ parameters.message }}" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=$(npmToken)
 
         displayName: 'Deprecate package'
-
-      - template: .devops/templates/cleanup.yml@self

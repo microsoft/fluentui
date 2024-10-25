@@ -153,7 +153,7 @@ export function isConformant(
           const component = getComponent(wrapper);
           try {
             expect(component.is(tag)).toEqual(true);
-          } catch (err) {
+          } catch {
             expect(component.type()).not.toEqual(Component);
             expect(component.prop('as')).toEqual(tag);
           }
@@ -169,7 +169,7 @@ export function isConformant(
 
           try {
             expect(component.type()).toEqual(MyComponent);
-          } catch (err) {
+          } catch {
             expect(component.type()).not.toEqual(Component);
             expect(component.find('[as]').last().prop('as')).toEqual(MyComponent);
           }
@@ -187,7 +187,7 @@ export function isConformant(
 
           try {
             expect(component.type()).toEqual(MyComponent);
-          } catch (err) {
+          } catch {
             expect(component.type()).not.toEqual(Component);
             expect(component.prop('as')).toEqual(MyComponent);
           }
@@ -390,7 +390,7 @@ export function isConformant(
 
         try {
           expect(handlerSpy).toHaveBeenCalled();
-        } catch (err) {
+        } catch {
           throw new Error(
             [
               `<${constructorName} ${listenerName}={${handlerName}} />\n`,
@@ -422,7 +422,7 @@ export function isConformant(
           expectedArgs.forEach((expectedArg, argI) => {
             expect(lastHandlerCall[argI]).toEqual(expectedArg);
           });
-        } catch (err) {
+        } catch {
           throw new Error(
             [
               `<${constructorName} ${listenerName}={${handlerName}} />\n`,

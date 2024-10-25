@@ -92,13 +92,13 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
   // Hide the popover when focus moves out of the button and popover
   const onBlurButtonOrInfo = (e: React.FocusEvent) => {
     const nextFocused = e.relatedTarget;
-    if (rootRef.current !== nextFocused && !elementContains(infoRef.current, nextFocused)) {
+
+    if (nextFocused && rootRef.current !== nextFocused && !elementContains(infoRef.current, nextFocused)) {
       setPopoverOpen(false);
     }
   };
 
   state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlurButtonOrInfo));
   state.info.onBlurCapture = useEventCallback(mergeCallbacks(state.info.onBlurCapture, onBlurButtonOrInfo));
-
   return state;
 };

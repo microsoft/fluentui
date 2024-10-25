@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Mon, 23 Sep 2024 12:40:17 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2024 17:17:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.5.1)
+
+Tue, 15 Oct 2024 17:17:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.5.0..@fluentui/react-spinner_v9.5.1)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.45 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-label to v9.1.77 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.2 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-theme to v9.1.21 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-utilities to v9.18.16 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.5.0)
+
+Tue, 08 Oct 2024 22:05:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.4.14..@fluentui/react-spinner_v9.5.0)
+
+### Minor changes
+
+- feat: spinner root slot as span ([PR #32989](https://github.com/microsoft/fluentui/pull/32989) by kirpadv@gmail.com)
 
 ## [9.4.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.4.14)
 

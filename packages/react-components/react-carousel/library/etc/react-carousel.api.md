@@ -212,6 +212,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     groupSize?: number | 'auto';
     draggable?: boolean;
     whitespace?: boolean;
+    motion?: CarouselMotion;
     announcement?: CarouselAnnouncerFunction;
 };
 
@@ -235,7 +236,7 @@ export type CarouselSliderSlots = {
 };
 
 // @public
-export type CarouselSliderState = ComponentState<CarouselSliderSlots> & Pick<CarouselSliderProps, 'cardFocus'>;
+export type CarouselSliderState = ComponentState<CarouselSliderSlots> & CarouselSliderContextValue;
 
 // @public (undocumented)
 export type CarouselSlots = {

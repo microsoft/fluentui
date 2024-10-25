@@ -134,6 +134,11 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
           // fake a border for white
           backgroundColor: buttonBorderIsWhite,
           padding: 1,
+          selectors: {
+            [HighContrastSelector]: {
+              outline: `1px solid ButtonText`,
+            },
+          },
         },
     ],
     // the <svg> that holds the color

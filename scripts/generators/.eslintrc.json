@@ -1,5 +1,6 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/node", "plugin:@fluentui/eslint-plugin/imports"],
+  "ignorePatterns": ["plop-templates-*"],
   "rules": {
     "@fluentui/max-len": "off",
     "import/no-extraneous-dependencies": [

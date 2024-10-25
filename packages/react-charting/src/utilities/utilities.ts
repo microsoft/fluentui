@@ -817,7 +817,7 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
       .on('mouseover', (event: any, d) => {
         div.style('opacity', 0.9);
         div
-          .html(originalDataArray[i])
+          .text(originalDataArray[i])
           .style('left', event.pageX + 'px')
           .style('top', event.pageY - 28 + 'px');
       })

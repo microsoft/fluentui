@@ -2,6 +2,35 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Tue, 15 Oct 2024 17:17:49 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "82c0e8447787f5e6530d4ec7fa867e02ef861ddf",
+            "comment": "refactor: simplify motion component variant creation"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "46cdc69c21ecfe816511bec739f2fd11d4892e59",
+            "comment": "feat: add Collapse orientation parameter & horizontal implementation"
+          }
+        ],
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "1907e859fbe89f001cf92eda8e3674d961cab6ac",
+            "comment": "fix: Collapse should only effect opacity when animateOpacity is true"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 20:13:12 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.1.1",
       "version": "0.1.1",

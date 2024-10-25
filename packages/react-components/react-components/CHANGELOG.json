@@ -2,6 +2,190 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 15 Oct 2024 17:17:49 GMT",
+      "tag": "@fluentui/react-components_v9.55.1",
+      "version": "9.55.1",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "82c0e8447787f5e6530d4ec7fa867e02ef861ddf",
+            "comment": "refactor: simplify motion component variant creation"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "46cdc69c21ecfe816511bec739f2fd11d4892e59",
+            "comment": "feat: add Collapse orientation parameter & horizontal implementation"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "95ec5c9a269081fdfa6612cdc2b99a3d2c24572a",
+            "comment": "feature: add rounded tab variant"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "99e85d19ebc5f093fb0a87d2fc23306971a27a6b",
+            "comment": "feat: Add fade motion to carousel as an optional prop"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "3fd4e118721b2cbd1ce07e4918cf83e7653e0dcf",
+            "comment": "feat: Enable circular focus if circular, and enable animations on focus index change"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "82c0e8447787f5e6530d4ec7fa867e02ef861ddf",
+            "comment": "feat: export MotionParam type"
+          }
+        ],
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "1907e859fbe89f001cf92eda8e3674d961cab6ac",
+            "comment": "fix: Collapse should only effect opacity when animateOpacity is true"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b474188d1a98e1ee24c864d324278c6003e834c9",
+            "comment": "fix: useMergedTabsterAttributes should accept null/undefined values"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "511f956bfba95ac9dde686f1812e45abc8f0af92",
+            "comment": "style: replace no-restricted-globals with type aware @nx/workspace-no-restricted-globals in v9"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "511f956bfba95ac9dde686f1812e45abc8f0af92",
+            "comment": "style: replace no-restricted-globals with type aware @nx/workspace-no-restricted-globals in v9"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "511f956bfba95ac9dde686f1812e45abc8f0af92",
+            "comment": "style: replace no-restricted-globals with type aware @nx/workspace-no-restricted-globals in v9"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "511f956bfba95ac9dde686f1812e45abc8f0af92",
+            "comment": "style: replace no-restricted-globals with type aware @nx/workspace-no-restricted-globals in v9"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "511f956bfba95ac9dde686f1812e45abc8f0af92",
+            "comment": "style: replace no-restricted-globals with type aware @nx/workspace-no-restricted-globals in v9"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "e4022e259c27c90158ed0dbb5278df5aa714118f",
+            "comment": "feat: add explicit .js file extensions to all relative import/export statement within built output to support native ESM within browser"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Oct 2024 22:05:56 GMT",
+      "tag": "@fluentui/react-components_v9.55.0",
+      "version": "9.55.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "4da01b963c51875c9b85c1694d1cc6ece0460fa5",
+            "comment": "feat: Stable release react-carousel"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "4da01b963c51875c9b85c1694d1cc6ece0460fa5",
+            "comment": "feat: Stable release of react-carousel"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "4fb4983aa51d7f065271c72ccbcfac4d6d904463",
+            "comment": "feat: add LinkContextProvider"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "cc8588157713850ca41b5510d1336998bacda5c0",
+            "comment": "feat: Build out SplitNavItem"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "7e810aec922a99bcc0e3524ca5d6510da3cc5a8c",
+            "comment": "feat: Add props for SplitSubNavItems and Tooltips. Other pixel pushing on SplitNavItem"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "0776fdb478a64a51ffb8b8e6f1092342d21fac9c",
+            "comment": "feat: spinner root slot as span"
+          }
+        ],
+        "none": [
+          {
+            "author": "viktorgenaev@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "7ef0d028b9f061ff06665d467b2e17a4df6755ae",
+            "comment": "docs: add link to motion docs page"
+          },
+          {
+            "author": "viktorgenaev@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "7ef0d028b9f061ff06665d467b2e17a4df6755ae",
+            "comment": "docs: add link to motion docs page"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "22fbb428ace328b43839f81038758740bf8c1a9f",
+            "comment": "fix: List V9 - update stories to work with dark themes"
+          }
+        ],
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "cb45ddc4221507d78b6bd739366d4ec2c1c46a2c",
+            "comment": "fix: add null check in ResizeObserver callback"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "4fb4983aa51d7f065271c72ccbcfac4d6d904463",
+            "comment": "fix: use LinkContextProvider to force all links inside MessageBody to be underlined"
+          },
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "dd7d8bd7550cefefcdf18db14b6cb0da44ac9fbf",
+            "comment": "Bump tabster to 8.2.0 to fix trapped Modalizer logic"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Sep 2024 14:15:26 GMT",
       "tag": "@fluentui/react-components_v9.54.17",
       "version": "9.54.17",
