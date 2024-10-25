@@ -24,6 +24,10 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
   const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: itemHeight,
     direction: 'vertical',
+    // We want at least 10 additional items on each side of visible items for page up/down (+ 1 buffer)
+    bufferItems: 11,
+    // We need to recalculate index when at least 10 items (+1px) from the bottom or top for page up/down
+    bufferSize: itemHeight * 10 + 1,
   });
 
   const styles = useStyles();
