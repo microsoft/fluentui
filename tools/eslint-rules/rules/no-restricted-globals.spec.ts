@@ -18,7 +18,9 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: 'event',
       options: ['foo'],
-      globals: globals.browser,
+      languageOptions: {
+        globals: globals.browser,
+      },
     },
     { options: ['KeyboardEvent'], code: `let ev: KeyboardEvent;` },
     {
@@ -44,7 +46,9 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: 'event',
       options: ['foo', 'event'],
-      globals: globals.browser,
+      languageOptions: {
+        globals: globals.browser,
+      },
       errors: [
         {
           messageId: 'defaultMessage',

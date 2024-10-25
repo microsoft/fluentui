@@ -111,7 +111,7 @@ export class MenuItem extends FASTElement {
     toggleState(this.elementInternals, 'checked', checkableMenuItem ? next : false);
 
     if (this.$fastController.isConnected) {
-      this.$emit('change');
+      this.$emit('change', next, { bubbles: true });
     }
   }
 

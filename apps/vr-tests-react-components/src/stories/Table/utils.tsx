@@ -639,6 +639,41 @@ export const SubtleSelection: React.FC<SharedVrTestArgs> = ({ noNativeElements }
   </Table>
 );
 
+export const SubtleSelectionEmpty: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
+  <Table noNativeElements={noNativeElements}>
+    <TableHeader>
+      <TableRow>
+        <TableSelectionCell type="checkbox" hidden />
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map((item, i) => (
+        <TableRow key={item.file.label}>
+          <TableSelectionCell subtle type="checkbox" className="not-selected" />
+          <TableCell>
+            <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+          </TableCell>
+
+          <TableCell>
+            <TableCellLayout
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>{item.lastUpdated.label}</TableCell>
+          <TableCell>
+            <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
 export const Truncate: React.FC<SharedVrTestArgs & { truncate?: boolean }> = ({ noNativeElements, truncate }) => (
   <Table noNativeElements={noNativeElements} style={{ width: '400px' }}>
     <TableHeader>

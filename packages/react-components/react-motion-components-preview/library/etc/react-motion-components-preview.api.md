@@ -6,10 +6,14 @@
 
 import type { MotionParam } from '@fluentui/react-motion';
 import { PresenceComponent } from '@fluentui/react-motion';
+import type { PresenceMotion } from '@fluentui/react-motion';
 import type { PresenceMotionFn } from '@fluentui/react-motion';
 
 // @public
 export const Collapse: PresenceComponent<CollapseRuntimeParams>;
+
+// @public (undocumented)
+export const CollapseDelayed: PresenceComponent<CollapseRuntimeParams>;
 
 // @public (undocumented)
 export const CollapseExaggerated: PresenceComponent<CollapseRuntimeParams>;
@@ -18,7 +22,13 @@ export const CollapseExaggerated: PresenceComponent<CollapseRuntimeParams>;
 export const CollapseSnappy: PresenceComponent<CollapseRuntimeParams>;
 
 // @public
+export const createCollapseDelayedPresence: PresenceMotionFnCreator<CollapseDelayedVariantParams, CollapseRuntimeParams>;
+
+// @public
 export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantParams, CollapseRuntimeParams>;
+
+// @public
+export const createFadePresence: PresenceMotionCreator<FadeVariantParams>;
 
 // @public
 export const Fade: PresenceComponent<    {}>;

@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 08 Oct 2024 22:05:56 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2024 17:17:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.55.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.55.1)
+
+Tue, 15 Oct 2024 17:17:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.55.0..@fluentui/react-components_v9.55.1)
+
+### Minor changes
+
+- `@fluentui/react-motion-components-preview`
+  - refactor: simplify motion component variant creation ([PR #32939](https://github.com/microsoft/fluentui/pull/32939) by robertpenner@microsoft.com)
+  - feat: add Collapse orientation parameter & horizontal implementation ([PR #32998](https://github.com/microsoft/fluentui/pull/32998) by robertpenner@microsoft.com)
+- `@fluentui/react-tabs`
+  - feature: add rounded tab variant ([PR #32944](https://github.com/microsoft/fluentui/pull/32944) by kirpadv@gmail.com)
+- `@fluentui/react-carousel`
+  - feat: Add fade motion to carousel as an optional prop ([PR #33000](https://github.com/microsoft/fluentui/pull/33000) by mifraser@microsoft.com)
+  - feat: Enable circular focus if circular, and enable animations on focus index change ([PR #33015](https://github.com/microsoft/fluentui/pull/33015) by mifraser@microsoft.com)
+- `@fluentui/react-motion`
+  - feat: export MotionParam type ([PR #32939](https://github.com/microsoft/fluentui/pull/32939) by robertpenner@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-motion-components-preview`
+  - fix: Collapse should only effect opacity when animateOpacity is true ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by robertpenner@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: useMergedTabsterAttributes should accept null/undefined values ([PR #32983](https://github.com/microsoft/fluentui/pull/32983) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/tokens`
+  - feat: add explicit .js file extensions to all relative import/export statement within built output to support native ESM within browser ([PR #30770](https://github.com/microsoft/fluentui/pull/30770) by martinhochel@microsoft.com)
 
 ## [9.55.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.55.0)
 

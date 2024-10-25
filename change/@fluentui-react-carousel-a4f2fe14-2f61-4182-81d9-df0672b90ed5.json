@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Enable circular focus if circular, and enable animations on focus index change",
-  "packageName": "@fluentui/react-carousel",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}
