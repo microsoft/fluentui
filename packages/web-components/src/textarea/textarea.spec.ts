@@ -1,52 +1,42 @@
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
-import { LabelSize } from '../label/label.options.js';
+import { expect, test } from '../../test/playwright/index.js';
 import { TextAreaAppearance, TextAreaResize, TextAreaSize } from './textarea.options.js';
 import type { TextArea } from './textarea.js';
 
 test.describe('TextArea', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-textarea--text-area'));
-    await page.waitForFunction(() => customElements.whenDefined('fluent-textarea'));
+  test.use({
+    tagName: 'fluent-textarea',
+    waitFor: ['fluent-label'],
   });
 
   // TODO: This should test 'elementInternals.role' as 'textbox' when Reference Target is widely supported.
-  test('should not have a role on element internals', async ({ page }) => {
-    const element = page.locator('fluent-textarea');
-
-    await page.setContent(/* html */ `
-      <fluent-textarea></fluent-textarea>
-    `);
+  test('should not have a role on element internals', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('elementInternals.role', null);
   });
 
-  test("should always return 'textarea' for the `type` prop", async ({ page }) => {
-    const element = page.locator('fluent-textarea');
-
-    await page.setContent(/* html */ `
-      <fluent-textarea></fluent-textarea>
-    `);
+  test("should always return 'textarea' for the `type` prop", async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('type', 'textarea');
   });
 
-  test('should pass down attributes to the internal control', async ({ page }) => {
-    const element = page.locator('fluent-textarea');
+  test('should pass down attributes to the internal control', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('textarea');
 
-    await page.setContent(/* html */ `
-      <fluent-textarea
-        required
-        disabled
-        readonly
-        spellcheck
-        autocomplete="on"
-        maxlength="100"
-        minlength="10"
-        placeholder="Placeholder"
-      ></fluent-textarea>
-    `);
+    await fastPage.setTemplate({
+      attributes: {
+        required: true,
+        disabled: true,
+        readonly: true,
+        spellcheck: true,
+        autocomplete: 'on',
+        maxlength: '100',
+        minlength: '10',
+        placeholder: 'Placeholder',
+      },
+    });
 
     await expect(control).toHaveJSProperty('required', true);
     await expect(control).toHaveJSProperty('disabled', true);
@@ -58,10 +48,10 @@ test.describe('TextArea', () => {
     await expect(control).toHaveJSProperty('placeholder', 'Placeholder');
   });
 
-  test('should be associated with the given external labels', async ({ page }) => {
-    const element = page.locator('fluent-textarea');
+  test('should be associated with the given external labels', async ({ fastPage, page }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <label for="textarea" data-testid="label1">Text area</label>
       <fluent-textarea id="textarea"></fluent-textarea>
       <label for="textarea" data-testid="label2">Text area</lable>
@@ -74,11 +64,11 @@ test.describe('TextArea', () => {
     expect(labelsValue).toStrictEqual([label1El, label2El]);
   });
 
-  test('should be focused when associated external label is clicked', async ({ page }) => {
-    const element = page.locator('fluent-textarea');
+  test('should be focused when associated external label is clicked', async ({ fastPage, page }) => {
+    const { element } = fastPage;
     const control = element.locator('textarea');
 
-    await page.setContent(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <label for="textarea" data-testid="label">Text area</label>
       <fluent-textarea id="textarea"></fluent-textarea>
     `);
@@ -90,13 +80,11 @@ test.describe('TextArea', () => {
     await expect(control).toBeFocused();
   });
 
-  test('should have the control focused when `focus()` is called', async ({ page }) => {
-    const element = page.locator('fluent-textarea');
+  test('should have the control focused when `focus()` is called', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('textarea');
 
-    await page.setContent(/* html */ `
-      <fluent-textarea id="textarea"></fluent-textarea>
-    `);
+    await fastPage.setTemplate({ attributes: { id: 'textarea' } });
 
     await element.evaluate((el: TextArea) => {
       el.focus();
@@ -106,12 +94,8 @@ test.describe('TextArea', () => {
   });
 
   test.describe('visual styles', () => {
-    test('should have default custom states', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
-
-      await page.setContent(/* html */ `
-        <fluent-textarea></fluent-textarea>
-      `);
+    test('should have default custom states', async ({ fastPage }) => {
+      const { element } = fastPage;
 
       await expect(element).toHaveCustomState('outline');
       await expect(element).not.toHaveCustomState('auto-resize');
@@ -120,40 +104,28 @@ test.describe('TextArea', () => {
       await expect(element).not.toHaveCustomState('resize');
     });
 
-    test('should toggle appearance states', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-textarea appearance="filled-darker"></fluent-textarea>
-      `);
+      for (const appearance of Object.values(TextAreaAppearance)) {
+        await test.step(appearance, async () => {
+          await fastPage.setTemplate({ attributes: { appearance } });
 
-      await expect(element).toHaveCustomState('filled-darker');
-      await expect(element).not.toHaveCustomState('filled-lighter');
-      await expect(element).not.toHaveCustomState('outline');
+          await expect(element).toHaveJSProperty('appearance', appearance);
 
-      await element.evaluate((node: TextArea) => {
-        node.appearance = 'filled-lighter';
-      });
+          await expect(element).toHaveAttribute('appearance', appearance);
 
-      await expect(element).toHaveCustomState('filled-lighter');
-      await expect(element).not.toHaveCustomState('filled-darker');
-      await expect(element).not.toHaveCustomState('outline');
-
-      await element.evaluate((node: TextArea) => {
-        node.removeAttribute('appearance');
-      });
-
-      await expect(element).toHaveCustomState('outline');
-      await expect(element).not.toHaveCustomState('filled-lighter');
-      await expect(element).not.toHaveCustomState('filled-darker');
+          await expect(element).toHaveCustomState(appearance);
+        });
+      }
     });
 
-    test('should toggle auto-resize state', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should toggle auto-resize state', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-textarea auto-resize></fluent-textarea>
-      `);
+      await fastPage.setTemplate({ attributes: { 'auto-resize': true } });
+
+      await expect(element).toHaveJSProperty('autoResize', true);
 
       await expect(element).toHaveCustomState('auto-resize');
 
@@ -161,15 +133,17 @@ test.describe('TextArea', () => {
         node.autoResize = false;
       });
 
+      await expect(element).not.toHaveAttribute('auto-resize');
+
       await expect(element).not.toHaveCustomState('auto-resize');
     });
 
-    test('should toggle block state', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should toggle block state', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-textarea block></fluent-textarea>
-      `);
+      await fastPage.setTemplate({ attributes: { block: true } });
+
+      await expect(element).toHaveJSProperty('block', true);
 
       await expect(element).toHaveCustomState('block');
 
@@ -177,21 +151,21 @@ test.describe('TextArea', () => {
         node.block = false;
       });
 
+      await expect(element).not.toHaveAttribute('block');
+
       await expect(element).not.toHaveCustomState('block');
     });
 
-    test('should toggle display-shadow state', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should toggle display-shadow state', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-textarea display-shadow></fluent-textarea>
-      `);
+      await fastPage.setTemplate({ attributes: { 'display-shadow': true } });
 
       // Expecting `false` because the default appearance, outline, shouldn’t have shadow
       await expect(element).not.toHaveCustomState('display-shadow');
 
-      await element.evaluate((el: TextArea, apperance: TextAreaAppearance) => {
-        el.appearance = apperance;
+      await element.evaluate((el: TextArea, appearance) => {
+        el.appearance = appearance;
       }, TextAreaAppearance.filledDarker);
 
       await expect(element).toHaveCustomState('display-shadow');
@@ -202,85 +176,51 @@ test.describe('TextArea', () => {
 
       await expect(element).not.toHaveCustomState('display-shadow');
 
-      await element.evaluate((el: TextArea, apperance: TextAreaAppearance) => {
+      await element.evaluate((el: TextArea, appearance: TextAreaAppearance) => {
         el.displayShadow = true;
-        el.appearance = apperance;
+        el.appearance = appearance;
       }, TextAreaAppearance.filledLighter);
 
       await expect(element).toHaveCustomState('display-shadow');
     });
 
-    test('should toggle resize states', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should set the `resize` property to match the `resize` attribute', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-textarea resize="both"></fluent-textarea>
-      `);
+      for (const resize of Object.values(TextAreaResize)) {
+        await test.step(resize, async () => {
+          await fastPage.setTemplate({ attributes: { resize } });
 
-      await expect(element).toHaveCustomState('resize');
-      await expect(element).toHaveCustomState('resize-both');
-      await expect(element).not.toHaveCustomState('resize-vertical');
-      await expect(element).not.toHaveCustomState('resize-horizontal');
+          await expect(element).toHaveJSProperty('resize', resize);
 
-      await element.evaluate((node: TextArea, resize: TextAreaResize) => {
-        node.resize = resize;
-      }, TextAreaResize.horizontal);
+          await expect(element).toHaveAttribute('resize', resize);
 
-      await expect(element).toHaveCustomState('resize');
-      await expect(element).toHaveCustomState('resize-horizontal');
-      await expect(element).not.toHaveCustomState('resize-vertical');
-      await expect(element).not.toHaveCustomState('resize-both');
-
-      await element.evaluate((node: TextArea, resize: TextAreaResize) => {
-        node.resize = resize;
-      }, TextAreaResize.vertical);
-
-      await expect(element).toHaveCustomState('resize');
-      await expect(element).toHaveCustomState('resize-vertical');
-      await expect(element).not.toHaveCustomState('resize-horizontal');
-      await expect(element).not.toHaveCustomState('resize-both');
-
-      await element.evaluate((node: TextArea, resize: TextAreaResize) => {
-        node.resize = resize;
-      }, TextAreaResize.none);
-
-      await expect(element).not.toHaveCustomState('resize');
-      await expect(element).not.toHaveCustomState('resize-horizontal');
-      await expect(element).not.toHaveCustomState('resize-vertical');
+          await expect(element).toHaveCustomState(`resize-${resize}`);
+        });
+      }
     });
 
-    test('should toggle size states', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-textarea size="small"></fluent-textarea>
-      `);
+      for (const size of Object.values(TextAreaSize)) {
+        await test.step(size, async () => {
+          await fastPage.setTemplate({ attributes: { size } });
 
-      await expect(element).toHaveCustomState('small');
-      await expect(element).not.toHaveCustomState('large');
+          await expect(element).toHaveJSProperty('size', size);
 
-      await element.evaluate((node: TextArea, size: TextAreaSize) => {
-        node.size = size;
-      }, TextAreaSize.large);
+          await expect(element).toHaveAttribute('size', size);
 
-      await expect(element).toHaveCustomState('large');
-      await expect(element).not.toHaveCustomState('small');
-
-      await element.evaluate((node: TextArea) => {
-        node.removeAttribute('size');
-      });
-
-      await expect(element).not.toHaveCustomState('small');
-      await expect(element).not.toHaveCustomState('large');
+          await expect(element).toHaveCustomState(size);
+        });
+      }
     });
 
-    test('should toggle user-invalid state', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should toggle user-invalid state', async ({ fastPage }) => {
+      const { element } = fastPage;
       const control = element.locator('textarea');
 
-      await page.setContent(/* html */ `
-        <fluent-textarea required></fluent-textarea>
-      `);
+      await fastPage.setTemplate({ attributes: { required: true } });
 
       await expect(element).not.toHaveCustomState('user-valid');
       await expect(element).not.toHaveCustomState('user-invalid');
@@ -300,54 +240,51 @@ test.describe('TextArea', () => {
   });
 
   test.describe('internal label', () => {
-    test('should not display label if no elements assigned to the `label` slot', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should not display label if no elements assigned to the `label` slot', async ({ fastPage }) => {
+      const { element } = fastPage;
       const label = element.locator('label');
-
-      await page.setContent(/* html */ `
-        <fluent-textarea></fluent-textarea>
-      `);
 
       await expect(label).toBeHidden();
     });
 
-    test('should display label when defined and associate to the internal textarea', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should display label when defined and associate to the internal textarea', async ({ fastPage }) => {
+      const { element } = fastPage;
       const label = element.locator('label');
       const control = element.locator('textarea');
 
-      await page.setContent(/* html */ `
-        <fluent-textarea>
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
           <fluent-label slot="label">Details</fluent-label>
-        </fluent-textarea>
-      `);
+        `,
+      });
 
       await expect(label).toBeVisible();
       await expect(control).toHaveAccessibleName('Details');
     });
 
-    test('should not include `label` slotted elements in its value', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should not include `label` slotted elements in its value', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-textarea>
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
           <fluent-label slot="label">Details</fluent-label>
           Some text
-        </fluent-textarea>
-      `);
+        `,
+      });
 
       await expect(element).toHaveJSProperty('value', 'Some text');
     });
 
-    test('should downstream `required` to the label', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should downstream `required` to the label', async ({ fastPage }) => {
+      const { element } = fastPage;
       const label = element.locator('fluent-label');
 
-      await page.setContent(/* html */ `
-        <fluent-textarea required>
+      await fastPage.setTemplate({
+        attributes: { required: true },
+        innerHTML: /* html */ `
           <fluent-label slot="label">Details</fluent-label>
-        </fluent-textarea>
-      `);
+        `,
+      });
 
       await expect(label).toHaveJSProperty('required', true);
 
@@ -358,15 +295,16 @@ test.describe('TextArea', () => {
       await expect(label).toHaveJSProperty('required', false);
     });
 
-    test('should downstream `disabled` to the label', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should downstream `disabled` to the label', async ({ fastPage }) => {
+      const { element } = fastPage;
       const label = element.locator('fluent-label');
 
-      await page.setContent(/* html */ `
-        <fluent-textarea disabled>
+      await fastPage.setTemplate({
+        attributes: { disabled: true },
+        innerHTML: /* html */ `
           <fluent-label slot="label">Details</fluent-label>
-        </fluent-textarea>
-      `);
+        `,
+      });
 
       await expect(label).toHaveJSProperty('disabled', true);
 
@@ -377,81 +315,55 @@ test.describe('TextArea', () => {
       await expect(label).toHaveJSProperty('disabled', false);
     });
 
-    test('should downstream `size` to the label', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
-      const label = element.locator('fluent-label');
+    for (const size of Object.values(TextAreaSize)) {
+      test(`should downstream \`${size}\` size to the label`, async ({ fastPage }) => {
+        const { element } = fastPage;
+        const label = element.locator('fluent-label');
 
-      await page.setContent(/* html */ `
-        <fluent-textarea size="${TextAreaSize.small}">
-          <fluent-label slot="label">Details</fluent-label>
-        </fluent-textarea>
-      `);
+        await fastPage.setTemplate({
+          attributes: { size },
+          innerHTML: /* html */ `
+            <fluent-label slot="label">Details</fluent-label>
+          `,
+        });
 
-      await expect(label).toHaveJSProperty('size', LabelSize.small);
-
-      await element.evaluate((el: TextArea, size: TextAreaSize) => {
-        el.size = size;
-      }, TextAreaSize.medium);
-
-      await expect(label).toHaveJSProperty('size', LabelSize.medium);
-
-      await element.evaluate((el: TextArea, size: TextAreaSize) => {
-        el.size = size;
-      }, TextAreaSize.large);
-
-      await expect(label).toHaveJSProperty('size', LabelSize.large);
-
-      await element.evaluate((el: TextArea) => {
-        el.size = undefined;
+        await expect(label).toHaveJSProperty('size', size);
       });
-
-      await expect(label).toHaveJSProperty('size', undefined);
-    });
+    }
   });
 
   test.describe('`value` and `defaultValue` props', () => {
-    test('should have `defaultValue` as empty string if no children', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
-
-      await page.setContent(/* html */ `
-        <fluent-textarea></fluent-textarea>
-      `);
+    test('should have `defaultValue` as empty string if no children', async ({ fastPage }) => {
+      const { element } = fastPage;
 
       await expect(element).toHaveJSProperty('defaultValue', '');
       await expect(element).toHaveJSProperty('value', '');
     });
 
-    test('should have `defaultValue` as its inner text if has text content', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should have `defaultValue` as its inner text if has text content', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-textarea>
-          some text
-        </fluent-textarea>
-      `);
+      await fastPage.setTemplate({
+        innerHTML: 'some text',
+      });
 
       await expect(element).toHaveJSProperty('defaultValue', 'some text');
       await expect(element).toHaveJSProperty('value', 'some text');
     });
 
-    test('should have `defaultValue` as its inner HTML if has HTML content', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
-
-      await page.setContent(
-        ['<fluent-textarea>', '  <div>some text</div>', '  <p>more text</p>', '</fluent-textarea>'].join('\n'),
-      );
+    test('should have `defaultValue` as its inner HTML if has HTML content', async ({ fastPage, page }) => {
+      const { element } = fastPage;
 
       const expectedValue = '<div>some text</div><p>more text</p>';
+
+      await fastPage.setTemplate({ innerHTML: expectedValue });
+
       await expect(element).toHaveJSProperty('defaultValue', expectedValue);
       await expect(element).toHaveJSProperty('value', expectedValue);
     });
 
-    test('should have `defaultValue` as set to `defaultValue` prop', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
-
-      await page.setContent(/* html */ `
-        <fluent-textarea></fluent-textarea>
-      `);
+    test('should have `defaultValue` as set to `defaultValue` prop', async ({ fastPage }) => {
+      const { element } = fastPage;
 
       await element.evaluate((el: TextArea) => {
         el.defaultValue = 'some text';
@@ -461,12 +373,8 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('value', 'some text');
     });
 
-    test('should not have `defaultValue` as set to `value` prop', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
-
-      await page.setContent(/* html */ `
-        <fluent-textarea></fluent-textarea>
-      `);
+    test('should not have `defaultValue` as set to `value` prop', async ({ fastPage }) => {
+      const { element } = fastPage;
 
       await element.evaluate((el: TextArea) => {
         el.value = 'some text';
@@ -476,12 +384,8 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('value', 'some text');
     });
 
-    test('should have `defaultValue` as set to `innerText`', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
-
-      await page.setContent(/* html */ `
-        <fluent-textarea></fluent-textarea>
-      `);
+    test('should have `defaultValue` as set to `innerText`', async ({ fastPage }) => {
+      const { element } = fastPage;
 
       await element.evaluate((el: TextArea) => {
         el.innerText = '  some\ntext  ';
@@ -491,12 +395,8 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('value', 'some<br>text');
     });
 
-    test('should have `defaultValue` as set to `textContent`', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
-
-      await page.setContent(/* html */ `
-        <fluent-textarea></fluent-textarea>
-      `);
+    test('should have `defaultValue` as set to `textContent`', async ({ fastPage }) => {
+      const { element } = fastPage;
 
       await element.evaluate((el: TextArea) => {
         el.textContent = '  some\ntext  ';
@@ -506,10 +406,13 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('value', 'some\ntext');
     });
 
-    test('should have `defaultValue` as set to the `defaultValue` prop before connected', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should have `defaultValue` as set to the `defaultValue` prop before connected', async ({
+      fastPage,
+      page,
+    }) => {
+      const { element } = fastPage;
 
-      await page.setContent('');
+      await fastPage.setTemplate('');
       await page.evaluate(() => {
         const textarea = document.createElement('fluent-textarea') as TextArea;
         textarea.defaultValue = 'some text';
@@ -520,11 +423,11 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('value', 'some text');
     });
 
-    test('should set `value` before connected', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should set `value` before connected', async ({ fastPage, page }) => {
+      const { element } = fastPage;
       const control = element.locator('textarea');
 
-      await page.setContent('');
+      await fastPage.setTemplate('');
       await page.evaluate(() => {
         const textarea = document.createElement('fluent-textarea') as TextArea;
         textarea.value = 'some text';
@@ -537,13 +440,11 @@ test.describe('TextArea', () => {
     });
 
     // This behavior is consistent with the built-in `<textarea>` element
-    test('should only downstream to the `value` prop before user interaction', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should only downstream to the `value` prop before user interaction', async ({ fastPage }) => {
+      const { element } = fastPage;
       const control = element.locator('textarea');
 
-      await page.setContent(/* html */ `
-        <fluent-textarea>1</fluent-textarea>
-      `);
+      await fastPage.setTemplate({ innerHTML: '1' });
 
       await element.evaluate((el: TextArea) => {
         el.defaultValue = '2';
@@ -572,12 +473,10 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('defaultValue', '4');
     });
 
-    test('should never be upstreamed by the `value` prop', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should never be upstreamed by the `value` prop', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-textarea>1</fluent-textarea>
-      `);
+      await fastPage.setTemplate({ innerHTML: '1' });
 
       await element.evaluate((el: TextArea) => {
         el.value = '2';
@@ -587,13 +486,9 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('defaultValue', '1');
     });
 
-    test('should return the text length of the value with `textLength` prop', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should return the text length of the value with `textLength` prop', async ({ fastPage }) => {
+      const { element } = fastPage;
       const control = element.locator('textarea');
-
-      await page.setContent(/* html */ `
-        <fluent-textarea></fluent-textarea>
-      `);
 
       await control.fill('123456\n7890 ');
 
@@ -602,13 +497,11 @@ test.describe('TextArea', () => {
   });
 
   test.describe('validity and validation message', () => {
-    test('should set `valueMissing` flag if required and value is empty', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should set `valueMissing` flag if required and value is empty', async ({ fastPage }) => {
+      const { element } = fastPage;
       const control = element.locator('textarea');
 
-      await page.setContent(/* html */ `
-        <fluent-textarea required></fluent-textarea>
-      `);
+      await fastPage.setTemplate({ attributes: { required: true } });
 
       await expect(element).toHaveJSProperty('validity.valueMissing', true);
 
@@ -630,12 +523,10 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('validity.valid', true);
     });
 
-    test('should set `tooShort` flag if value is shorter than `minlength`', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should set `tooShort` flag if value is shorter than `minlength`', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-textarea minlength="10"></fluent-textarea>
-      `);
+      await fastPage.setTemplate({ attributes: { minlength: '10' } });
 
       // `tooShort` is not set until user interacted.
       await expect(element).toHaveJSProperty('validity.tooShort', false);
@@ -653,13 +544,11 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('validity.valid', true);
     });
 
-    test('should set `tooLong` flag if value is longer than `maxlength`', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should set `tooLong` flag if value is longer than `maxlength`', async ({ fastPage }) => {
+      const { element } = fastPage;
       const control = element.locator('textarea');
 
-      await page.setContent(/* html */ `
-        <fluent-textarea maxlength="3">12345</fluent-textarea>
-      `);
+      await fastPage.setTemplate({ attributes: { maxlength: '3' }, innerHTML: '12345' });
 
       // `tooLong` is not set until user interacted.
       await expect(element).toHaveJSProperty('validity.tooLong', false);
@@ -694,12 +583,10 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('validity.valid', true);
     });
 
-    test('should always be valid if disabled', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should always be valid if disabled', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-textarea required disabled></fluent-textarea>
-      `);
+      await fastPage.setTemplate({ attributes: { disabled: true, required: true } });
 
       await expect(element).toHaveJSProperty('validity.valid', true);
 
@@ -711,10 +598,10 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('validity.valid', false);
     });
 
-    test('should always be valid if read-only', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should always be valid if read-only', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
+      await fastPage.setTemplate(/* html */ `
         <fluent-textarea required readonly></fluent-textarea>
       `);
 
@@ -728,58 +615,93 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('validity.valid', false);
     });
 
-    // TODO: Update validation messages for other browsers.
-    test('should set the correct validation messages', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should set the correct validation message for `valueMissing` validity state', async ({
+      fastPage,
+      browserName,
+    }) => {
+      const { element } = fastPage;
       const control = element.locator('textarea');
 
-      await page.setContent(/* html */ `
-        <fluent-textarea required></fluent-textarea>
-      `);
+      const messages: Record<string, string> = {
+        chromium: 'Please fill out this field.',
+        edge: 'Please fill out this field.',
+        firefox: 'Please fill out this field.',
+        webkit: 'Fill out this field',
+      };
 
-      await expect(element).toHaveJSProperty('validationMessage', 'Please fill out this field.');
+      await fastPage.setTemplate({ attributes: { required: true } });
+
+      await expect.soft(element).toHaveJSProperty('validationMessage', messages[browserName]);
 
       await control.fill('12345');
 
       await expect(element).toHaveJSProperty('validationMessage', '');
+    });
 
-      await element.evaluate((el: TextArea) => {
-        el.setAttribute('minlength', '6');
-      });
+    test('should set the correct validation message for `tooShort` validity state', async ({
+      fastPage,
+      browserName,
+    }) => {
+      const { element } = fastPage;
 
-      await expect(element).toHaveJSProperty(
-        'validationMessage',
-        'Please lengthen this text to 6 characters or more (you are currently using 5 characters).',
-      );
+      const messages: Record<string, string> = {
+        chromium: 'Please lengthen this text to 6 characters or more (you are currently using 5 characters).',
+        firefox: 'Please use at least 6 characters (you are currently using 5 characters).',
+        webkit: 'Use at least 6 characters',
+      };
+
+      await fastPage.setTemplate({ attributes: { minlength: '6' } });
+
+      await element.pressSequentially('12345');
+
+      await expect.soft(element).toHaveJSProperty('validationMessage', messages[browserName]);
 
       await element.press('6');
 
       await expect(element).toHaveJSProperty('validationMessage', '');
+    });
 
-      await element.pressSequentially('78');
+    test('should set the correct validation message for `tooLong` validity state', async ({
+      fastPage,
+      browserName,
+    }) => {
+      const { element } = fastPage;
+      const control = element.locator('textarea');
 
-      await element.evaluate((el: TextArea) => {
-        el.setAttribute('maxlength', '7');
+      const messages: Record<string, string> = {
+        chromium: 'Please shorten this text to 7 characters or less (you are currently using 8 characters).',
+        edge: 'Please shorten this text to 7 characters or less (you are currently using 8 characters).',
+        firefox: 'Please shorten this text to 7 characters or less (you are currently using 8 characters).',
+        webkit: 'Use no more than 7 characters',
+      };
+
+      await control.fill('12345678');
+
+      await element.evaluate((node: TextArea) => {
+        node.setAttribute('maxlength', '7');
       });
 
-      await expect(element).toHaveJSProperty(
-        'validationMessage',
-        'Please shorten this text to 7 characters or less (you are currently using 8 characters).',
-      );
+      await expect(element).toHaveJSProperty('validationMessage', messages[browserName]);
 
-      await element.evaluate((el: TextArea) => {
-        el.setAttribute('disabled', '');
-      });
+      await element.press('Backspace');
+
+      await expect(element).toHaveJSProperty('validationMessage', '');
+    });
+
+    test('should NOT show validation message when disabled', async ({ fastPage }) => {
+      const { element } = fastPage;
+
+      await fastPage.setTemplate({ attributes: { required: true, disabled: true } });
 
       await expect(element).toHaveJSProperty('validationMessage', '');
     });
   });
 
   test.describe('with form', () => {
-    test('should connect to the given `<form>` element', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should connect to the given `<form>` element', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
+      await fastPage.setTemplate(/* html */ `
         <form id="form1">
           <fluent-textarea></fluent-textarea>
         </form>
@@ -795,11 +717,11 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('form.id', 'form2');
     });
 
-    test('should be disabled when the parent `<fieldset>` is disabled', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should be disabled when the parent `<fieldset>` is disabled', async ({ fastPage, page }) => {
+      const { element } = fastPage;
       const control = element.locator('textarea');
 
-      await page.setContent(/* html */ `
+      await fastPage.setTemplate(/* html */ `
         <form>
           <fieldset>
             <fluent-textarea></fluent-textarea>
@@ -833,13 +755,13 @@ test.describe('TextArea', () => {
     });
 
     test.describe('form reset', () => {
-      test('should reset value to empty if no `defaultValue`', async ({ page }) => {
-        const element = page.locator('fluent-textarea');
+      test('should reset value to empty if no `defaultValue`', async ({ fastPage, page }) => {
+        const { element } = fastPage;
         const control = element.locator('textarea');
         const form = page.locator('form');
         const reset = form.locator('button[type=reset]');
 
-        await page.setContent(/* html */ `
+        await fastPage.setTemplate(/* html */ `
           <form>
             <fluent-textarea></fluent-textarea>
             <button type="reset"></button>
@@ -855,12 +777,12 @@ test.describe('TextArea', () => {
         await expect(element).toHaveJSProperty('value', '');
       });
 
-      test('should reset value to `defaultvalue`', async ({ page }) => {
-        const element = page.locator('fluent-textarea');
+      test('should reset value to `defaultvalue`', async ({ fastPage, page }) => {
+        const { element } = fastPage;
         const control = element.locator('textarea');
         const reset = page.locator('button[type="reset"]');
 
-        await page.setContent(/* html */ `
+        await fastPage.setTemplate(/* html */ `
           <form>
             <fluent-textarea>1234</fluent-textarea>
             <button type="reset"></button>
@@ -878,12 +800,12 @@ test.describe('TextArea', () => {
         await expect(element).toHaveJSProperty('value', '1234');
       });
 
-      test('should reset value to updated `defaultValue`', async ({ page }) => {
-        const element = page.locator('fluent-textarea');
+      test('should reset value to updated `defaultValue`', async ({ fastPage, page }) => {
+        const { element } = fastPage;
         const control = element.locator('textarea');
         const reset = page.locator('button[type="reset"]');
 
-        await page.setContent(/* html */ `
+        await fastPage.setTemplate(/* html */ `
           <form>
             <fluent-textarea>1234</fluent-textarea>
             <button type="reset"></button>
@@ -904,12 +826,12 @@ test.describe('TextArea', () => {
       });
     });
 
-    test('should set form value', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should set form value', async ({ fastPage, page }) => {
+      const { element } = fastPage;
       const control = element.locator('textarea');
       const form = page.locator('form');
 
-      await page.setContent(/* html */ `
+      await fastPage.setTemplate(/* html */ `
         <form>
           <fluent-textarea name="content"></fluent-textarea>
         </form>
@@ -931,13 +853,11 @@ test.describe('TextArea', () => {
   });
 
   test.describe('`select` events', () => {
-    test('should emit when text is selected', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should emit when text is selected', async ({ fastPage }) => {
+      const { element } = fastPage;
       const control = element.locator('textarea');
 
-      await page.setContent(/* html */ `
-        <fluent-textarea>12345</fluent-textarea>
-      `);
+      await fastPage.setTemplate({ innerHTML: '12345' });
 
       const [wasSelected] = await Promise.all([
         element.evaluate(
@@ -949,12 +869,10 @@ test.describe('TextArea', () => {
       expect(wasSelected).toBe(true);
     });
 
-    test('should emit when `select()` is called', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should emit when `select()` is called', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-textarea>12345</fluent-textarea>
-      `);
+      await fastPage.setTemplate({ innerHTML: '12345' });
 
       const [wasSelected] = await Promise.all([
         element.evaluate(
@@ -970,12 +888,10 @@ test.describe('TextArea', () => {
   });
 
   test.describe('`change` events', () => {
-    test('should emit if value changed before blur', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should emit a `change` event when value changes and the control loses focus', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-textarea>12345</fluent-textarea>
-      `);
+      await fastPage.setTemplate({ innerHTML: '12345' });
 
       const [wasChanged] = await Promise.all([
         element.evaluate(
@@ -990,40 +906,25 @@ test.describe('TextArea', () => {
       expect(wasChanged).toBe(true);
     });
 
-    test('should not emit if value didn’t change before blur', async ({ page }) => {
-      const element = page.locator('fluent-textarea');
+    test('should NOT emit a `change` event when the value is the same and the control loses focus', async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-textarea>12345</fluent-textarea>
-      `);
+      await fastPage.setTemplate({ innerHTML: '12345' });
 
-      const [wasChanged] = await Promise.all([
-        element.evaluate(el => {
-          return new Promise(resolve => {
-            // If, after 1 second, the promise hasn’t fulfilled, consider the
-            // event didn’t fire.
-            const timeout = setTimeout(() => {
-              resolve(false);
-            }, 1000);
+      const wasChanged = element.evaluate(node =>
+        Promise.race([
+          new Promise(resolve => node.addEventListener('change', () => resolve(true))),
+          new Promise(resolve => setTimeout(() => resolve(false), 100)),
+        ]),
+      );
 
-            el.addEventListener(
-              'change',
-              () => {
-                clearTimeout(timeout);
-                resolve(true);
-              },
-              { once: true },
-            );
-          });
-        }),
-        (async () => {
-          await element.press('0');
-          await element.press('Backspace');
-          await element.blur();
-        })(),
-      ]);
+      await element.press('0');
+      await element.press('Backspace');
+      await element.blur();
 
-      expect(wasChanged).toBe(false);
+      await expect(wasChanged).resolves.toBe(false);
     });
   });
 });

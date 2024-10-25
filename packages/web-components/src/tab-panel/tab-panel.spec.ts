@@ -1,30 +1,17 @@
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 
 test.describe('TabPanel', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-tabs--tabs-default'));
+  test.use({ tagName: 'fluent-tab-panel' });
 
-    await page.waitForFunction(() => customElements.whenDefined('fluent-tab-panel'));
-  });
+  test('should set defaults', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-  test('should have a role of `tabpanel`', async ({ page }) => {
-    const element = page.locator('fluent-tab-panel');
+    await test.step('should have a role of `tabpanel`', async () => {
+      await expect(element).toHaveAttribute('role', 'tabpanel');
+    });
 
-    await page.setContent(/* html */ `
-        <fluent-tab-panel></fluent-tab-panel>
-    `);
-
-    await expect(element).toHaveAttribute('role', 'tabpanel');
-  });
-
-  test('should have a slot attribute of `tabpanel`', async ({ page }) => {
-    const element = page.locator('fluent-tab-panel');
-
-    await page.setContent(/* html */ `
-        <fluent-tab-panel></fluent-tab-panel>
-    `);
-
-    await expect(element).toHaveAttribute('slot', 'tabpanel');
+    await test.step('should have a slot attribute of `tabpanel`', async () => {
+      await expect(element).toHaveAttribute('slot', 'tabpanel');
+    });
   });
 });
