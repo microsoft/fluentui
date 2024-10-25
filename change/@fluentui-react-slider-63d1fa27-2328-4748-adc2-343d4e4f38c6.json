@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: adjust slider thumb position",
+  "packageName": "@fluentui/react-slider",
+  "email": "kirpadv@gmail.com",
+  "dependentChangeType": "minor"
+}
