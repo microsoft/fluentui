@@ -56,6 +56,10 @@ describe(`cypress-component-configuration`, () => {
             "ES2019",
             "dom",
           ],
+          "typeRoots": Array [
+            "../node_modules",
+            "../node_modules/@types",
+          ],
           "types": Array [
             "node",
             "cypress",
