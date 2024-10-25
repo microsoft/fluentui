@@ -18,14 +18,7 @@ import {
   spacingHorizontalSNudge,
   spacingHorizontalXS,
 } from '../theme/design-tokens.js';
-import {
-  iconOnlyState,
-  largeState,
-  primaryState,
-  smallState,
-  subtleState,
-  transparentState,
-} from '../styles/states/index.js';
+import { state } from '../utils/states.js';
 
 // Need to support icon hover styles
 export const styles = css`
@@ -56,7 +49,7 @@ export const styles = css`
   }
 
   ::slotted(svg),
-  :host(${largeState}) ::slotted(svg) {
+  :host(${state('large')}) ::slotted(svg) {
     font-size: 40px;
     height: 40px;
     width: 40px;
@@ -70,20 +63,21 @@ export const styles = css`
     color: ${colorNeutralForeground2Pressed};
   }
 
-  :host(:is(${primaryState}, ${primaryState}:hover, ${primaryState}:active)) ::slotted([slot='description']) {
+  :host(:is(${state('primary')}, ${state('primary')}:hover, ${state('primary')}:active))
+    ::slotted([slot='description']) {
     color: ${colorNeutralForegroundOnBrand};
   }
 
-  :host(:is(${subtleState}, ${subtleState}:hover, ${subtleState}:active)) ::slotted([slot='description']),
-  :host(${transparentState}) ::slotted([slot='description']) {
+  :host(:is(${state('subtle')}, ${state('subtle')}:hover, ${state('subtle')}:active)) ::slotted([slot='description']),
+  :host(${state('transparent')}) ::slotted([slot='description']) {
     color: ${colorNeutralForeground2};
   }
 
-  :host(${transparentState}:hover) ::slotted([slot='description']) {
+  :host(${state('transparent')}:hover) ::slotted([slot='description']) {
     color: ${colorNeutralForeground2BrandHover};
   }
 
-  :host(${transparentState}:active) ::slotted([slot='description']) {
+  :host(${state('transparent')}:active) ::slotted([slot='description']) {
     color: ${colorNeutralForeground2BrandPressed};
   }
 
@@ -92,37 +86,37 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host(${smallState}) {
+  :host(${state('small')}) {
     padding: 8px;
     padding-bottom: 10px;
   }
 
-  :host(${iconOnlyState}) {
+  :host(${state('icon')}) {
     min-width: 52px;
     max-width: 52px;
     padding: ${spacingHorizontalSNudge};
   }
 
-  :host(${iconOnlyState}${smallState}) {
+  :host(${state('icon')}${state('small')}) {
     min-width: 48px;
     max-width: 48px;
     padding: ${spacingHorizontalXS};
   }
 
-  :host(${iconOnlyState}${largeState}) {
+  :host(${state('icon')}${state('large')}) {
     min-width: 56px;
     max-width: 56px;
     padding: ${spacingHorizontalS};
   }
 
-  :host(${largeState}) {
+  :host(${state('large')}) {
     padding-top: 18px;
     padding-inline: 16px;
     padding-bottom: 20px;
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
-  :host(${largeState}) ::slotted([slot='description']) {
+  :host(${state('large')}) ::slotted([slot='description']) {
     font-size: ${fontSizeBase300};
   }
 `;

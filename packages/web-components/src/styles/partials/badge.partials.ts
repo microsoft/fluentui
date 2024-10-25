@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../../utils/index.js';
 import {
   borderRadiusCircular,
   colorBrandBackground,
@@ -50,23 +49,8 @@ import {
   spacingHorizontalXXS,
   strokeWidthThin,
 } from '../../theme/design-tokens.js';
-import {
-  dangerState,
-  extraLargeState,
-  extraSmallState,
-  ghostState,
-  importantState,
-  informativeState,
-  largeState,
-  outlineState,
-  severeState,
-  smallState,
-  subtleState,
-  successState,
-  tintState,
-  tinyState,
-  warningState,
-} from '../states/index.js';
+import { display } from '../../utils/display.js';
+import { state } from '../../utils/states.js';
 
 export const badgeBaseStyles = css.partial`
   ${display('inline-flex')} :host {
@@ -92,7 +76,7 @@ export const badgeBaseStyles = css.partial`
     font-size: 12px;
   }
 
-  :host(:not(${ghostState}))::after {
+  :host(:not(${state('ghost')}))::after {
     position: absolute;
     content: '';
     top: 0;
@@ -111,7 +95,7 @@ export const badgeBaseStyles = css.partial`
  * The badge's size styles
  */
 export const badgeSizeStyles = css.partial`
-  :host(${tinyState}) {
+  :host(${state('tiny')}) {
     width: 6px;
     height: 6px;
     font-size: 4px;
@@ -119,10 +103,10 @@ export const badgeSizeStyles = css.partial`
     padding-inline: 0;
     min-width: unset;
   }
-  :host(${tinyState}) ::slotted(svg) {
+  :host(${state('tiny')}) ::slotted(svg) {
     font-size: 6px;
   }
-  :host(${extraSmallState}) {
+  :host(${state('extra-small')}) {
     width: 10px;
     height: 10px;
     font-size: 6px;
@@ -130,37 +114,37 @@ export const badgeSizeStyles = css.partial`
     padding-inline: 0;
     min-width: unset;
   }
-  :host(${extraSmallState}) ::slotted(svg) {
+  :host(${state('extra-small')}) ::slotted(svg) {
     font-size: 10px;
   }
-  :host(${smallState}) {
+  :host(${state('small')}) {
     min-width: 16px;
     height: 16px;
     font-size: ${fontSizeBase100};
     line-height: ${lineHeightBase100};
     padding-inline: calc(${spacingHorizontalXXS} + ${spacingHorizontalXXS});
   }
-  :host(${smallState}) ::slotted(svg) {
+  :host(${state('small')}) ::slotted(svg) {
     font-size: 12px;
   }
-  :host(${largeState}) {
+  :host(${state('large')}) {
     min-width: 24px;
     height: 24px;
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
     padding-inline: calc(${spacingHorizontalXS} + ${spacingHorizontalXXS});
   }
-  :host(${largeState}) ::slotted(svg) {
+  :host(${state('large')}) ::slotted(svg) {
     font-size: 16px;
   }
-  :host(${extraLargeState}) {
+  :host(${state('extra-large')}) {
     min-width: 32px;
     height: 32px;
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
     padding-inline: calc(${spacingHorizontalSNudge} + ${spacingHorizontalXXS});
   }
-  :host(${extraLargeState}) ::slotted(svg) {
+  :host(${state('extra-large')}) ::slotted(svg) {
     font-size: 20px;
   }
 `;
@@ -172,37 +156,37 @@ export const badgeSizeStyles = css.partial`
  * @public
  */
 export const badgeFilledStyles = css.partial`
-  :host(${dangerState}) {
+  :host(${state('danger')}) {
     background-color: ${colorPaletteRedBackground3};
     color: ${colorNeutralForegroundOnBrand};
   }
 
-  :host(${importantState}) {
+  :host(${state('important')}) {
     background-color: ${colorNeutralForeground1};
     color: ${colorNeutralBackground1};
   }
 
-  :host(${informativeState}) {
+  :host(${state('informative')}) {
     background-color: ${colorNeutralBackground5};
     color: ${colorNeutralForeground3};
   }
 
-  :host(${severeState}) {
+  :host(${state('severe')}) {
     background-color: ${colorPaletteDarkOrangeBackground3};
     color: ${colorNeutralForegroundOnBrand};
   }
 
-  :host(${subtleState}) {
+  :host(${state('subtle')}) {
     background-color: ${colorNeutralBackground1};
     color: ${colorNeutralForeground1};
   }
 
-  :host(${successState}) {
+  :host(${state('success')}) {
     background-color: ${colorPaletteGreenBackground3};
     color: ${colorNeutralForegroundOnBrand};
   }
 
-  :host(${warningState}) {
+  :host(${state('warning')}) {
     background-color: ${colorPaletteYellowBackground3};
     color: ${colorNeutralForeground1Static};
   }
@@ -213,36 +197,36 @@ export const badgeFilledStyles = css.partial`
  * @public
  */
 export const badgeGhostStyles = css.partial`
-  :host(${ghostState}) {
+  :host(${state('ghost')}) {
     color: ${colorBrandForeground1};
     background-color: initial;
   }
 
-  :host(${ghostState}${dangerState}) {
+  :host(${state('ghost')}${state('danger')}) {
     color: ${colorPaletteRedForeground3};
   }
 
-  :host(${ghostState}${importantState}) {
+  :host(${state('ghost')}${state('important')}) {
     color: ${colorNeutralForeground1};
   }
 
-  :host(${ghostState}${informativeState}) {
+  :host(${state('ghost')}${state('informative')}) {
     color: ${colorNeutralForeground3};
   }
 
-  :host(${ghostState}${severeState}) {
+  :host(${state('ghost')}${state('severe')}) {
     color: ${colorPaletteDarkOrangeForeground3};
   }
 
-  :host(${ghostState}${subtleState}) {
+  :host(${state('ghost')}${state('subtle')}) {
     color: ${colorNeutralForegroundInverted};
   }
 
-  :host(${ghostState}${successState}) {
+  :host(${state('ghost')}${state('success')}) {
     color: ${colorPaletteGreenForeground3};
   }
 
-  :host(${ghostState}${warningState}) {
+  :host(${state('ghost')}${state('warning')}) {
     color: ${colorPaletteYellowForeground2};
   }
 `;
@@ -252,39 +236,39 @@ export const badgeGhostStyles = css.partial`
  * @public
  */
 export const badgeOutlineStyles = css.partial`
-  :host(${outlineState}) {
+  :host(${state('outline')}) {
     border-color: currentColor;
     color: ${colorBrandForeground1};
     background-color: initial;
   }
 
-  :host(${outlineState}${dangerState}) {
+  :host(${state('outline')}${state('danger')}) {
     color: ${colorPaletteRedForeground3};
   }
 
-  :host(${outlineState}${importantState}) {
+  :host(${state('outline')}${state('important')}) {
     color: ${colorNeutralForeground3};
     border-color: ${colorNeutralStrokeAccessible};
   }
 
-  :host(${outlineState}${informativeState}) {
+  :host(${state('outline')}${state('informative')}) {
     color: ${colorNeutralForeground3};
     border-color: ${colorNeutralStroke2};
   }
 
-  :host(${outlineState}${severeState}) {
+  :host(${state('outline')}${state('severe')}) {
     color: ${colorPaletteDarkOrangeForeground3};
   }
 
-  :host(${outlineState}${subtleState}) {
+  :host(${state('outline')}${state('subtle')}) {
     color: ${colorNeutralForegroundStaticInverted};
   }
 
-  :host(${outlineState}${successState}) {
+  :host(${state('outline')}${state('success')}) {
     color: ${colorPaletteGreenForeground2};
   }
 
-  :host(${outlineState}${warningState}) {
+  :host(${state('outline')}${state('warning')}) {
     color: ${colorPaletteYellowForeground2};
   }
 `;
@@ -294,49 +278,49 @@ export const badgeOutlineStyles = css.partial`
  * @public
  */
 export const badgeTintStyles = css.partial`
-  :host(${tintState}) {
+  :host(${state('tint')}) {
     background-color: ${colorBrandBackground2};
     color: ${colorBrandForeground2};
     border-color: ${colorBrandStroke2};
   }
 
-  :host(${tintState}${dangerState}) {
+  :host(${state('tint')}${state('danger')}) {
     background-color: ${colorPaletteRedBackground1};
     color: ${colorPaletteRedForeground1};
     border-color: ${colorPaletteRedBorder1};
   }
 
-  :host(${tintState}${importantState}) {
+  :host(${state('tint')}${state('important')}) {
     background-color: ${colorNeutralForeground3};
     color: ${colorNeutralBackground1};
     border-color: ${colorTransparentStroke};
   }
 
-  :host(${tintState}${informativeState}) {
+  :host(${state('tint')}${state('informative')}) {
     background-color: ${colorNeutralBackground4};
     color: ${colorNeutralForeground3};
     border-color: ${colorNeutralStroke2};
   }
 
-  :host(${tintState}${severeState}) {
+  :host(${state('tint')}${state('severe')}) {
     background-color: ${colorPaletteDarkOrangeBackground1};
     color: ${colorPaletteDarkOrangeForeground1};
     border-color: ${colorPaletteDarkOrangeBorder1};
   }
 
-  :host(${tintState}${subtleState}) {
+  :host(${state('tint')}${state('subtle')}) {
     background-color: ${colorNeutralBackground1};
     color: ${colorNeutralForeground3};
     border-color: ${colorNeutralStroke2};
   }
 
-  :host(${tintState}${successState}) {
+  :host(${state('tint')}${state('success')}) {
     background-color: ${colorPaletteGreenBackground1};
     color: ${colorPaletteGreenForeground1};
     border-color: ${colorPaletteGreenBorder2};
   }
 
-  :host(${tintState}${warningState}) {
+  :host(${state('tint')}${state('warning')}) {
     background-color: ${colorPaletteYellowBackground1};
     color: ${colorPaletteYellowForeground2};
     border-color: ${colorPaletteYellowBorder1};

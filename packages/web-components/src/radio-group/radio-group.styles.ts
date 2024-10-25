@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { checkedState, disabledState } from '../styles/states/index.js';
 import {
   colorNeutralForeground1,
   colorNeutralForeground2,
@@ -7,7 +6,8 @@ import {
   colorNeutralForegroundDisabled,
   spacingVerticalL,
 } from '../theme/design-tokens.js';
-import { display } from '../utils/index.js';
+import { display } from '../utils/display.js';
+import { state } from '../utils/states.js';
 
 /** RadioGroup styles
  * @public
@@ -21,7 +21,6 @@ export const styles = css`
     gap: ${spacingVerticalL};
   }
 
-  :host(${disabledState}),
   :host([orientation='vertical']) {
     flex-direction: column;
     justify-content: flex-start;
@@ -43,11 +42,11 @@ export const styles = css`
     color: ${colorNeutralForeground1};
   }
 
-  ::slotted(${disabledState}) {
+  ::slotted(${state('disabled')}) {
     color: ${colorNeutralForegroundDisabled};
   }
 
-  ::slotted(${checkedState}) {
+  ::slotted(${state('checked')}) {
     color: ${colorNeutralForeground1};
   }
 `;

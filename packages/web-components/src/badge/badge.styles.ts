@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   badgeBaseStyles,
   badgeFilledStyles,
@@ -9,23 +8,24 @@ import {
   badgeTintStyles,
 } from '../styles/index.js';
 import { borderRadiusMedium, borderRadiusNone, borderRadiusSmall } from '../theme/design-tokens.js';
-import { extraSmallState, roundedState, smallState, squareState, tinyState } from '../styles/states/index.js';
-// why is the border not showing up?
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
+import { state } from '../utils/states.js';
+
 /** Badge styles
  * @public
  */
 export const styles = css`
-  :host(${squareState}) {
+  :host(${state('square')}) {
     border-radius: ${borderRadiusNone};
   }
 
-  :host(${roundedState}) {
+  :host(${state('rounded')}) {
     border-radius: ${borderRadiusMedium};
   }
 
-  :host(${roundedState}${tinyState}),
-  :host(${roundedState}${extraSmallState}),
-  :host(${roundedState}${smallState}) {
+  :host(${state('rounded')}${state('tiny')}),
+  :host(${state('rounded')}${state('extra-small')}),
+  :host(${state('rounded')}${state('small')}) {
     border-radius: ${borderRadiusSmall};
   }
 

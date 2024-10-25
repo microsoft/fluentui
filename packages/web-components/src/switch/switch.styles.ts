@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { checkedState } from '../styles/states/index.js';
 import {
   borderRadiusCircular,
   colorCompoundBrandBackground,
@@ -28,6 +27,7 @@ import {
 } from '../theme/design-tokens.js';
 import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
+import { state } from '../utils/states.js';
 
 export const styles = css`
   ${display('inline-flex')}
@@ -61,19 +61,19 @@ export const styles = css`
     background-color: none;
     pointer: default;
   }
-  :host(${checkedState}) {
+  :host(${state('checked')}) {
     background: ${colorCompoundBrandBackground};
     border-color: ${colorCompoundBrandBackground};
   }
-  :host(${checkedState}:hover) {
+  :host(${state('checked')}:hover) {
     background: ${colorCompoundBrandBackgroundHover};
     border-color: ${colorCompoundBrandBackgroundHover};
   }
-  :host(${checkedState}:active) {
+  :host(${state('checked')}:active) {
     background: ${colorCompoundBrandBackgroundPressed};
     border-color: ${colorCompoundBrandBackgroundPressed};
   }
-  :host(${checkedState}:disabled) {
+  :host(${state('checked')}:disabled) {
     background: ${colorNeutralBackgroundDisabled};
     border-color: ${colorNeutralStrokeDisabled};
   }
@@ -87,14 +87,14 @@ export const styles = css`
     transition-timing-function: ${curveEasyEase};
     transition-property: margin-inline-start;
   }
-  :host(${checkedState}) .checked-indicator {
+  :host(${state('checked')}) .checked-indicator {
     background-color: ${colorNeutralForegroundInverted};
     margin-inline-start: calc(100% - 14px);
   }
-  :host(${checkedState}:hover) .checked-indicator {
+  :host(${state('checked')}:hover) .checked-indicator {
     background: ${colorNeutralForegroundInvertedHover};
   }
-  :host(${checkedState}:active) .checked-indicator {
+  :host(${state('checked')}:active) .checked-indicator {
     background: ${colorNeutralForegroundInvertedPressed};
   }
   :host(:hover) .checked-indicator {
@@ -107,7 +107,7 @@ export const styles = css`
   :host([readonly]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
-  :host(${checkedState}:disabled) .checked-indicator {
+  :host(${state('checked')}:disabled) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
 
@@ -125,9 +125,9 @@ export const styles = css`
     :host {
       border-color: InactiveBorder;
     }
-    :host(${checkedState}),
-    :host(${checkedState}:active),
-    :host(${checkedState}:hover) {
+    :host(${state('checked')}),
+    :host(${state('checked')}:active),
+    :host(${state('checked')}:hover) {
       background: Highlight;
       border-color: Highlight;
     }
@@ -136,9 +136,9 @@ export const styles = css`
     :host(:active) .checked-indicator {
       background-color: ActiveCaption;
     }
-    :host(${checkedState}) .checked-indicator,
-    :host(${checkedState}:hover) .checked-indicator,
-    :host(${checkedState}:active) .checked-indicator {
+    :host(${state('checked')}) .checked-indicator,
+    :host(${state('checked')}:hover) .checked-indicator,
+    :host(${state('checked')}:active) .checked-indicator {
       background-color: ButtonFace;
     }
   `),

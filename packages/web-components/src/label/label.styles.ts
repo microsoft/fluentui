@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
 import {
   colorNeutralForeground1,
   colorNeutralForegroundDisabled,
@@ -15,7 +14,8 @@ import {
   lineHeightBase400,
   spacingHorizontalXS,
 } from '../theme/design-tokens.js';
-import { largeState, smallState } from '../styles/states/index.js';
+import { display } from '../utils/display.js';
+import { state } from '../utils/states.js';
 
 /** Label styles
  * @public
@@ -38,23 +38,22 @@ export const styles = css`
     margin-inline-start: ${spacingHorizontalXS};
   }
 
-  :host(${smallState}) {
+  :host(${state('small')}) {
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
 
-  :host(${largeState}) {
+  :host(${state('large')}) {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
 
-  :host(${largeState}),
-  :host(:is([state--semibold], :state(semibold))) {
+  :host(:is(${state('large')}, ${state('semibold')})) {
     font-weight: ${fontWeightSemibold};
   }
 
-  :host(:is([state--disabled], :state(disabled))),
-  :host(:is([state--disabled], :state(disabled))) .asterisk {
+  :host(${state('disabled')}),
+  :host(${state('disabled')}) .asterisk {
     color: ${colorNeutralForegroundDisabled};
   }
 `;

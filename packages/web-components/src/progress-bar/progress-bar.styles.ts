@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   borderRadiusMedium,
   borderRadiusNone,
@@ -10,7 +9,9 @@ import {
   colorPaletteRedBackground3,
   colorTransparentBackground,
 } from '../theme/design-tokens.js';
-import { errorState, largeState, squareState, successState, warningState } from '../styles/states/index.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
+import { display } from '../utils/display.js';
+import { state } from '../utils/states.js';
 
 /** ProgressBar styles
  * @public
@@ -27,11 +28,11 @@ export const styles = css`
     contain: content;
   }
 
-  :host(${largeState}) {
+  :host(${state('large')}) {
     height: 4px;
   }
 
-  :host(${squareState}) {
+  :host(${state('square')}) {
     border-radius: ${borderRadiusNone};
   }
 
@@ -60,15 +61,15 @@ export const styles = css`
     animation-iteration-count: infinite;
   }
 
-  :host(${errorState}) .indicator {
+  :host(${state('error')}) .indicator {
     background-color: ${colorPaletteRedBackground3};
   }
 
-  :host(${warningState}) .indicator {
+  :host(${state('warning')}) .indicator {
     background-color: ${colorPaletteDarkOrangeBackground3};
   }
 
-  :host(${successState}) .indicator {
+  :host(${state('success')}) .indicator {
     background-color: ${colorPaletteGreenBackground3};
   }
 
@@ -99,7 +100,7 @@ export const styles = css`
       background-color: CanvasText;
     }
     .indicator,
-    :host(:is(${successState}, ${warningState}, ${errorState})) .indicator {
+    :host(:is(${state('success')}, ${state('warning')}, ${state('error')})) .indicator {
       background-color: Highlight;
     }
   `),

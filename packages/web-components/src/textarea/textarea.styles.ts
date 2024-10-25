@@ -44,19 +44,7 @@ import {
 } from '../theme/design-tokens.js';
 import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
-import {
-  autoResizeState,
-  blockState,
-  displayShadowState,
-  filledDarkerState,
-  filledLighterState,
-  largeState,
-  resizeBothState,
-  resizeHorizontalState,
-  resizeVerticalState,
-  smallState,
-  userInvalidState,
-} from '../styles/states/index.js';
+import { state } from '../utils/states.js';
 
 /**
  * Styles for the TextArea component.
@@ -117,11 +105,11 @@ export const styles: ElementStyles = css`
     outline: none;
   }
 
-  :host(${blockState}:not([hidden])) {
+  :host(${state('block')}:not([hidden])) {
     display: block;
   }
 
-  :host(${smallState}) {
+  :host(${state('small')}) {
     --font-size: ${fontSizeBase200};
     --line-height: ${lineHeightBase200};
     --min-block-size: 40px;
@@ -130,7 +118,7 @@ export const styles: ElementStyles = css`
     --control-padding-inline: ${spacingHorizontalXXS};
   }
 
-  :host(${largeState}) {
+  :host(${state('large')}) {
     --font-size: ${fontSizeBase400};
     --line-height: ${lineHeightBase400};
     --min-block-size: 64px;
@@ -139,40 +127,40 @@ export const styles: ElementStyles = css`
     --control-padding-inline: ${spacingHorizontalSNudge};
   }
 
-  :host(${resizeBothState}:not(:disabled)) {
+  :host(${state('resize-both')}:not(:disabled)) {
     --resize: both;
   }
 
-  :host(${resizeHorizontalState}:not(:disabled)) {
+  :host(${state('resize-horizontal')}:not(:disabled)) {
     --resize: horizontal;
   }
 
-  :host(${resizeVerticalState}:not(:disabled)) {
+  :host(${state('resize-vertical')}:not(:disabled)) {
     --resize: vertical;
   }
 
-  :host(${autoResizeState}) {
+  :host(${state('auto-resize')}) {
     --block-size: auto;
     --contain-size: inline-size;
   }
 
-  :host(${filledDarkerState}) {
+  :host(${state('filled-darker')}) {
     --background-color: ${colorNeutralBackground3};
     --border-color: var(--background-color);
     --border-block-end-color: var(--border-color);
   }
 
-  :host(${filledLighterState}) {
+  :host(${state('filled-lighter')}) {
     --border-color: var(--background-color);
     --border-block-end-color: var(--border-color);
   }
 
-  :host(${filledDarkerState}${displayShadowState}),
-  :host(${filledLighterState}${displayShadowState}) {
+  :host(${state('filled-darker')}${state('display-shadow')}),
+  :host(${state('filled-lighter')}${state('display-shadow')}) {
     --box-shadow: ${shadow2};
   }
 
-  :host(${userInvalidState}) {
+  :host(${state('user-invalid')}) {
     --border-color: ${colorPaletteRedBorder2};
     --border-block-end-color: ${colorPaletteRedBorder2};
   }
@@ -208,7 +196,7 @@ export const styles: ElementStyles = css`
     resize: var(--resize);
   }
 
-  :host(${blockState}) .root {
+  :host(${state('block')}) .root {
     inline-size: auto;
   }
 
@@ -270,7 +258,7 @@ export const styles: ElementStyles = css`
     white-space: pre-wrap;
   }
 
-  :host(${autoResizeState}) .auto-sizer {
+  :host(${state('auto-resize')}) .auto-sizer {
     display: block;
   }
 

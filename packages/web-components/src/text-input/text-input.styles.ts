@@ -1,4 +1,3 @@
-import type { ElementStyles } from '@microsoft/fast-element';
 import { css } from '@microsoft/fast-element';
 import {
   borderRadiusMedium,
@@ -48,21 +47,14 @@ import {
   strokeWidthThin,
 } from '../theme/design-tokens.js';
 import { display } from '../utils/display.js';
-import {
-  filledDarkerState,
-  filledLighterState,
-  largeState,
-  outlineState,
-  smallState,
-  underlineState,
-} from '../styles/states/index.js';
+import { state } from '../utils/states.js';
 
 /**
  * Styles for the TextInput component.
  *
  * @public
  */
-export const styles: ElementStyles = css`
+export const styles = css`
   ${display('block')}
 
   :host {
@@ -176,7 +168,7 @@ export const styles: ElementStyles = css`
   :host(:focus-within:active) .root:after {
     border-bottom-color: ${colorCompoundBrandStrokePressed};
   }
-  :host(${outlineState}:focus-within) .root {
+  :host(${state('outline')}:focus-within) .root {
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
   }
   :host(:focus-within) .control {
@@ -195,70 +187,70 @@ export const styles: ElementStyles = css`
     color: ${colorNeutralForegroundInverted};
     background-color: ${colorNeutralBackgroundInverted};
   }
-  :host(${smallState}) .control {
+  :host(${state('small')}) .control {
     font-size: ${fontSizeBase200};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase200};
   }
-  :host(${smallState}) .root {
+  :host(${state('small')}) .root {
     height: 24px;
     gap: ${spacingHorizontalXXS};
     padding: 0 ${spacingHorizontalSNudge};
   }
-  :host(${smallState}) ::slotted([slot='start']),
-  :host(${smallState}) ::slotted([slot='end']) {
+  :host(${state('small')}) ::slotted([slot='start']),
+  :host(${state('small')}) ::slotted([slot='end']) {
     font-size: ${fontSizeBase400};
   }
-  :host(${largeState}) .control {
+  :host(${state('large')}) .control {
     font-size: ${fontSizeBase400};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase400};
   }
-  :host(${largeState}) .root {
+  :host(${state('large')}) .root {
     height: 40px;
     gap: ${spacingHorizontalS};
     padding: 0 ${spacingHorizontalM};
   }
-  :host(${largeState}) ::slotted([slot='start']),
-  :host(${largeState}) ::slotted([slot='end']) {
+  :host(${state('large')}) ::slotted([slot='start']),
+  :host(${state('large')}) ::slotted([slot='end']) {
     font-size: ${fontSizeBase600};
   }
-  :host(${underlineState}) .root {
+  :host(${state('underline')}) .root {
     background: ${colorTransparentBackground};
     border: 0;
     border-radius: 0;
     border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessible};
   }
-  :host(${underlineState}:hover) .root {
+  :host(${state('underline')}:hover) .root {
     border-bottom-color: ${colorNeutralStrokeAccessibleHover};
   }
-  :host(${underlineState}:active) .root {
+  :host(${state('underline')}:active) .root {
     border-bottom-color: ${colorNeutralStrokeAccessiblePressed};
   }
-  :host(${underlineState}:focus-within) .root {
+  :host(${state('underline')}:focus-within) .root {
     border: 0;
     border-bottom-color: ${colorNeutralStrokeAccessiblePressed};
   }
-  :host(${underlineState}[disabled]) .root {
+  :host(${state('underline')}[disabled]) .root {
     border-bottom-color: ${colorNeutralStrokeDisabled};
   }
-  :host(${filledLighterState}) .root,
-  :host(${filledDarkerState}) .root {
+  :host(${state('filled-lighter')}) .root,
+  :host(${state('filled-darker')}) .root {
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
     box-shadow: ${shadow2};
   }
-  :host(${filledLighterState}) .root {
+  :host(${state('filled-lighter')}) .root {
     background: ${colorNeutralBackground1};
   }
-  :host(${filledDarkerState}) .root {
+  :host(${state('filled-darker')}) .root {
     background: ${colorNeutralBackground3};
   }
-  :host(${filledLighterState}:hover) .root,
-  :host(${filledDarkerState}:hover) .root {
+  :host(${state('filled-lighter')}:hover) .root,
+  :host(${state('filled-darker')}:hover) .root {
     border-color: ${colorTransparentStrokeInteractive};
   }
-  :host(${filledLighterState}:active) .root,
-  :host(${filledDarkerState}:active) .root {
+  :host(${state('filled-lighter')}:active) .root,
+  :host(${state('filled-darker')}:active) .root {
     border-color: ${colorTransparentStrokeInteractive};
     background: ${colorNeutralBackground3};
   }
