@@ -34,10 +34,8 @@ export interface CreateFocusOutlineStyleOptions extends Omit<CreateCustomFocusIn
  * @param position - The position of the focus outline
  * @returns CSS value for the position of the focus outline
  */
-function getOutlinePosition(
-  { outlineWidth, outlineOffset }: FocusOutlineStyleOptions,
-  position: 'top' | 'bottom' | 'left' | 'right',
-) {
+function getOutlinePosition(options: FocusOutlineStyleOptions, position: 'top' | 'bottom' | 'left' | 'right') {
+  const { outlineWidth, outlineOffset = '-2px' } = options;
   const offsetValue = (outlineOffset as FocusOutlineOffset)?.[position] || outlineOffset;
 
   if (!outlineOffset) {
