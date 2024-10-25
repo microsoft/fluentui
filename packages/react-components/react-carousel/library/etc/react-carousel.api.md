@@ -114,7 +114,7 @@ export type CarouselContextValues = {
 };
 
 // @public (undocumented)
-export type CarouselIndexChangeData = EventData<'click' | 'focus', React_2.FocusEvent | React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
+export type CarouselIndexChangeData = EventData<'click' | 'focus' | 'drag', TouchEvent | MouseEvent | React_2.FocusEvent | React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
     index: number;
 };
 
