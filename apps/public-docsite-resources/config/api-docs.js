@@ -14,6 +14,7 @@ module.exports = {
     ...findRepoDeps({ cwd: path.join(gitRoot, 'packages/react'), dev: false }).map(dep => dep.packagePath),
   ]
     .map(packagePath => path.join(gitRoot, packagePath, 'dist', path.basename(packagePath) + '.api.json'))
+    // Accomodating structure of react charting v8 package
     .concat(path.join(gitRoot, 'packages/react-charting/v8', 'dist', 'react-charting.api.json'))
     .filter(apiJsonPath => fs.existsSync(apiJsonPath)),
   min: process.argv.includes('--production'),
