@@ -365,7 +365,7 @@
       "packages/fluentui/*",
       "packages/react-components/*",
       "packages/react-components/*/*",
-      "packages/react-charting/*",
+      "packages/charts/*",
       "scripts/*",
       "tools/*",
       "typings"
