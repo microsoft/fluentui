@@ -49,15 +49,16 @@ export function useVirtualizerScrollViewDynamic_unstable(
     [sizeTrackingArray, props.itemSize, sizeUpdateCount],
   );
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useDynamicVirtualizerMeasure({
-    defaultItemSize: props.itemSize,
-    direction: props.axis ?? 'vertical',
-    getItemSize: props.getItemSize ?? getChildSizeAuto,
-    virtualizerContext: contextState,
-    numItems: props.numItems,
-    bufferItems: _bufferItems,
-    bufferSize: _bufferSize,
-  });
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef, updateScrollPosition } =
+    useDynamicVirtualizerMeasure({
+      defaultItemSize: props.itemSize,
+      direction: props.axis ?? 'vertical',
+      getItemSize: props.getItemSize ?? getChildSizeAuto,
+      virtualizerContext: contextState,
+      numItems: props.numItems,
+      bufferItems: _bufferItems,
+      bufferSize: _bufferSize,
+    });
 
   const _imperativeVirtualizerRef = useMergedRefs(React.useRef<VirtualizerDataRef>(null), imperativeVirtualizerRef);
 
@@ -76,7 +77,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
   if (virtualizerLengthRef.current !== virtualizerLength) {
     virtualizerLengthRef.current = virtualizerLength;
   }
-  const scrollViewRef = useMergedRefs(props.scrollViewRef, scrollRef, paginationRef) as React.RefObject<HTMLDivElement>;
+  const scrollViewRef = useMergedRefs(props.scrollViewRef, scrollRef, paginationRef);
   const scrollCallbackRef = React.useRef<null | ((index: number) => void)>(null);
 
   useImperativeHandle(
@@ -97,7 +98,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
               index,
               itemSizes: _imperativeVirtualizerRef.current?.nodeSizes,
               totalSize,
-              scrollViewRef,
+              scrollViewRef: scrollViewRef as React.RefObject<HTMLDivElement>,
               axis,
               reversed,
               behavior,
@@ -127,6 +128,8 @@ export function useVirtualizerScrollViewDynamic_unstable(
     imperativeVirtualizerRef: _imperativeVirtualizerRef,
     onRenderedFlaggedIndex: handleRenderedIndex,
     containerSizeRef,
+    scrollViewRef,
+    updateScrollPosition,
   });
 
   const measureObject = useMeasureList(

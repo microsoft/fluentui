@@ -31,7 +31,6 @@ const useStyles = makeStyles({
 
 export const Dynamic = () => {
   const [currentIndex, setCurrentIndex] = React.useState(-1);
-  const [currentPosition, setCurrentPosition] = React.useState(0);
   const childProgressiveSizes = React.useRef<number[]>([]);
   const [flag, toggleFlag] = React.useState(false);
   const styles = useStyles();
@@ -65,17 +64,16 @@ export const Dynamic = () => {
   const contextState: DynamicVirtualizerContextProps = {
     contextIndex: currentIndex,
     setContextIndex: setCurrentIndex,
-    contextPosition: currentPosition,
-    setContextPosition: setCurrentPosition,
     childProgressiveSizes,
   };
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useDynamicVirtualizerMeasure({
-    defaultItemSize: 100,
-    getItemSize: getSizeForIndex,
-    numItems: childLength,
-    virtualizerContext: contextState,
-  });
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef, updateScrollPosition } =
+    useDynamicVirtualizerMeasure({
+      defaultItemSize: 100,
+      getItemSize: getSizeForIndex,
+      numItems: childLength,
+      virtualizerContext: contextState,
+    });
 
   return (
     <VirtualizerContextProvider value={contextState}>
@@ -89,6 +87,7 @@ export const Dynamic = () => {
           itemSize={100}
           containerSizeRef={containerSizeRef}
           virtualizerContext={contextState}
+          updateScrollPosition={updateScrollPosition}
         >
           {useCallback(
             (index: number) => {

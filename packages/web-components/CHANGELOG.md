@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 15 Oct 2024 04:07:48 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Oct 2024 20:54:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.70](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.70)
+
+Fri, 25 Oct 2024 20:54:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.69..@fluentui/web-components_v3.0.0-beta.70)
+
+### Changes
+
+- fix: move proper menu positioning for split button into component css ([PR #33140](https://github.com/microsoft/fluentui/pull/33140) by machi@microsoft.com)
+- fix: change to new css anchor positioning properties ([PR #33139](https://github.com/microsoft/fluentui/pull/33139) by machi@microsoft.com)
 
 ## [3.0.0-beta.69](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.69)
 
