@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {
   DonutChart,
-  IChartProps,
-  IChartDataPoint,
+  ChartProps,
+  ChartDataPoint,
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts-preview';
 
 export const DonutChartCustomAccessibility = () => {
-  const points: IChartDataPoint[] = [
+  const points: ChartDataPoint[] = [
     {
       legend: 'first',
       data: 20000,
@@ -24,7 +24,7 @@ export const DonutChartCustomAccessibility = () => {
       callOutAccessibilityData: { ariaLabel: 'Pia chart 2 of 2 2020/04/20' },
     },
   ];
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Donut chart custom accessibility example',
     chartData: points,
     chartTitleAccessibilityData: { ariaLabel: 'Bar chart depicting about Donut chart' },

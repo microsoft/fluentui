@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   VerticalBarChart,
-  IVerticalBarChartDataPoint,
+  VerticalBarChartDataPoint,
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts-preview';
@@ -125,7 +125,7 @@ export const VerticalBarDynamic = () => {
   };
 
   const _getData = (dataSize: number, xAxisType: string) => {
-    const data: IVerticalBarChartDataPoint[] = [];
+    const data: VerticalBarChartDataPoint[] = [];
     if (xAxisType === 'string') {
       for (let i = 0; i < dataSize; i++) {
         data.push({ x: `Label ${i + 1}`, y: _randomY() });
@@ -146,7 +146,7 @@ export const VerticalBarDynamic = () => {
     return data;
   };
 
-  const [dynamicData, setDynamicData] = React.useState<IVerticalBarChartDataPoint[]>(
+  const [dynamicData, setDynamicData] = React.useState<VerticalBarChartDataPoint[]>(
     _getData(initialDataSize, initialXAxisType),
   );
   const [colors, setColors] = React.useState<string[]>(_colors[0]);

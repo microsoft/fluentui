@@ -2,62 +2,47 @@
 
 ## Background
 
-_Description and use cases of this component_
+Fluent UI React charts is a set of modern, accessible, interactive, lightweight and highly customizable visualization library representing the Microsoft design system. The charts are used across 100+ projects inside Microsoft including Microsoft 365 and Azure.
 
-## Prior Art
-
-_Include background research done for this component_
-
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+The library is built using D3 (Data Driven Documents) and other fluent UI controls.
 
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
-
-## Variants
-
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
-
-## API
-
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
-
-## Structure
-
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+Refer to the docsite for usage examples for each chart.
 
 ## Migration
 
-_Describe what will need to be done to upgrade from the existing implementations:_
+The v9 charts maintain feature parity with their v8 equivalent.
 
-- _Migration from v8_
-- _Migration from v0_
+The following controls have been ported over to v9.
+For the remaining controls, refer to the migration guide to consume them in v9. https://react.fluentui.dev/?path=/docs/concepts-migration-from-v8-components-charts-migration--docs
+
+| v8 control                          | v9 control           |
+| ----------------------------------- | -------------------- |
+| Area Chart                          | Planned              |
+| Donut Chart                         | Donut Chart          |
+| Gauge Chart                         |                      |
+| Heatmap Chart                       |                      |
+| Horizontal Bar Chart                | Horizontal Bar Chart |
+| Horizontal Bar Chart with Axis      | Planned              |
+| Horizontal Bar Chart - Stacked      |                      |
+| Horizontal Bar Chart - MultiStacked |                      |
+| Legends                             | Legends              |
+| Line Chart                          | Line Chart           |
+| Pie Chart                           |                      |
+| Sankey Chart                        |                      |
+| Sparkline Chart                     | Sparkline Chart      |
+| Tree Chart                          |                      |
+| Vertical Bar Chart                  | Vertical Bar Chart   |
+| Vertical Bar Chart - Grouped        |                      |
+| Vertical Bar Chart - Stacked        | Planned              |
 
 ## Behaviors
 
-_Explain how the component will behave in use, including:_
-
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+Refer to our technical documentation for detailed information about behavior of chart controls.
+https://microsoft.github.io/fluentui-charting-contrib/docs/Technical%20Details
 
 ## Accessibility
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
-
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+Refer this document for details about Accessibility aspects for chart controls.
+https://microsoft.github.io/fluentui-charting-contrib/docs/Accessibility

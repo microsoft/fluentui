@@ -2,11 +2,11 @@ import * as React from 'react';
 import { ScaleTime } from 'd3-scale';
 import { tokens } from '@fluentui/react-theme';
 import { findIndex } from '../../../utilities/index';
-import { ILineDef, LabelLink, ILabelDef } from './LabelLink';
-import { IEventsAnnotationProps } from '../LineChart.types';
+import { LineDef, LabelLink, LabelDef } from './LabelLink';
+import { EventsAnnotationProps } from '../LineChart.types';
 import { getColorFromToken } from '../../../utilities/colors';
 
-interface IEventsAnnotationExtendProps extends IEventsAnnotationProps {
+interface IEventsAnnotationExtendProps extends EventsAnnotationProps {
   scale: ScaleTime<number, number>;
   chartYBottom: number;
   chartYTop: number;
@@ -21,7 +21,7 @@ export const EventsAnnotation: React.FunctionComponent<IEventsAnnotationExtendPr
   const fontSize = '10pt';
   const axisRange = props.scale.range();
 
-  const lineDefs: ILineDef[] = props.events.map(e => ({ ...e, x: props.scale(e.date) }));
+  const lineDefs: LineDef[] = props.events.map(e => ({ ...e, x: props.scale(e.date) }));
 
   lineDefs.sort((e1, e2) => +e1.date - +e2.date);
 
@@ -57,8 +57,8 @@ export const EventsAnnotation: React.FunctionComponent<IEventsAnnotationExtendPr
   );
 };
 
-function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, minX: number): ILabelDef[] {
-  const calculateLabel = (lastX: number, currentIdx: number): ILabelDef[] => {
+function calculateLabels(lineDefs: LineDef[], textWidth: number, maxX: number, minX: number): LabelDef[] {
+  const calculateLabel = (lastX: number, currentIdx: number): LabelDef[] => {
     // base case 1
     if (currentIdx === lineDefs.length) {
       return [];
@@ -92,7 +92,7 @@ function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, 
     }
   };
 
-  const backtrack = (currentIdx: number, anchor: 'start' | 'end'): ILabelDef[] => {
+  const backtrack = (currentIdx: number, anchor: 'start' | 'end'): LabelDef[] => {
     const bd = anchor === 'end' ? lineDefs[currentIdx].x : lineDefs[currentIdx].x + textWidth;
 
     let idx = findIndex(

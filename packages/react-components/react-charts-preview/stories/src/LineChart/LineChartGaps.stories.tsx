@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
-  ILineChartProps,
+  LineChartProps,
   LineChart,
-  IChartProps,
-  ICustomizedCalloutData,
+  ChartProps,
+  CustomizedCalloutData,
   DataVizPalette,
 } from '@fluentui/react-charts-preview';
 
-export const LineChartGaps = (props: ILineChartProps) => {
+export const LineChartGaps = (props: LineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(400);
 
@@ -19,7 +19,7 @@ export const LineChartGaps = (props: ILineChartProps) => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _calculateCalloutDescription = (calloutDataProps: ICustomizedCalloutData): string | undefined => {
+  const _calculateCalloutDescription = (calloutDataProps: CustomizedCalloutData): string | undefined => {
     if (calloutDataProps.values.filter(value => value.legend === 'Low Confidence Data*').length > 0) {
       return '* This data was below our confidence threshold.';
     }
@@ -29,7 +29,7 @@ export const LineChartGaps = (props: ILineChartProps) => {
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   const margins = { left: 35, top: 20, bottom: 35, right: 20 };
 
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Line Chart',
     lineChartData: [
       {

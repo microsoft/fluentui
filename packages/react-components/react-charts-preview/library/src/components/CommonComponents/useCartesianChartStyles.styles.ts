@@ -1,14 +1,14 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { ICartesianChartProps, ICartesianChartStyles } from './CartesianChart.types';
+import { CartesianChartProps, CartesianChartStyles } from './CartesianChart.types';
 import { HighContrastSelectorBlack, HighContrastSelector } from '../../utilities/index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { isRtl } from '../../utilities/utilities';
+import { useRtl } from '../../utilities/utilities';
 
 /**
  * @internal
  */
-export const cartesianchartClassNames: SlotClassNames<ICartesianChartStyles> = {
+export const cartesianchartClassNames: SlotClassNames<CartesianChartStyles> = {
   root: 'fui-cart__root',
   chartWrapper: 'fui-cart__chartWrapper',
   axisTitle: 'fui-cart__axisTitle',
@@ -114,8 +114,8 @@ const useStyles = makeStyles({
     cursor: 'default', //supports custom cursor ??
   },
   legendContainer: {
-    marginTop: '8px',
-    marginLeft: '20px',
+    marginTop: tokens.spacingVerticalS,
+    marginLeft: tokens.spacingHorizontalXL,
   },
   calloutContentRoot: {
     display: 'grid',
@@ -146,13 +146,13 @@ const useStyles = makeStyles({
       },
     },
     ...shorthands.borderLeft('4px solid'),
-    paddingLeft: '8px',
+    paddingLeft: tokens.spacingHorizontalS,
   },
   calloutBlockContainertoDrawShapetrue: {
     display: 'flex',
   },
   shapeStyles: {
-    marginRight: '8px',
+    marginRight: tokens.spacingHorizontalS,
   },
   calloutLegendText: {
     ...typographyStyles.caption1,
@@ -174,16 +174,16 @@ const useStyles = makeStyles({
   descriptionMessage: {
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
-    marginTop: '10px',
-    paddingTop: '10px',
+    marginTop: tokens.spacingVerticalMNudge,
+    paddingTop: tokens.spacingVerticalMNudge,
     ...shorthands.borderTop(`1px solid ${tokens.colorNeutralStroke2}`),
   },
 });
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useCartesianChartStyles_unstable = (props: ICartesianChartProps): ICartesianChartStyles => {
-  const _isRtl = isRtl();
+export const useCartesianChartStyles_unstable = (props: CartesianChartProps): CartesianChartStyles => {
+  const _useRtl = useRtl();
   const baseStyles = useStyles();
   return {
     root: mergeClasses(cartesianchartClassNames.root, baseStyles.root /*props.styles?.root*/),
@@ -196,7 +196,7 @@ export const useCartesianChartStyles_unstable = (props: ICartesianChartProps): I
     yAxis: mergeClasses(
       cartesianchartClassNames.yAxis,
       baseStyles.yAxis,
-      _isRtl ? baseStyles.rtl : baseStyles.ltr /*props.styles?.yAxis*/,
+      _useRtl ? baseStyles.rtl : baseStyles.ltr /*props.styles?.yAxis*/,
     ),
     opacityChangeOnHover: mergeClasses(
       cartesianchartClassNames.opacityChangeOnHover,

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {
   DonutChart,
-  IChartProps,
-  IChartDataPoint,
+  ChartProps,
+  ChartDataPoint,
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts-preview';
@@ -29,7 +29,7 @@ export const DonutChartDynamic = () => {
     [DataVizPalette.color16, DataVizPalette.color17, DataVizPalette.color18],
   ];
 
-  const [dynamicData, setDynamicData] = React.useState<IChartDataPoint[]>([
+  const [dynamicData, setDynamicData] = React.useState<ChartDataPoint[]>([
     { legend: 'first', data: 40, color: getColorFromToken(DataVizPalette.color1) },
     { legend: 'second', data: 20, color: getColorFromToken(DataVizPalette.color2) },
     { legend: 'third', data: 30, color: getColorFromToken(DataVizPalette.color3) },
@@ -86,7 +86,7 @@ export const DonutChartDynamic = () => {
     setShowLabelsInPercent(checked.checked as boolean);
   };
 
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Donut chart dynamic example',
     chartData: dynamicData,
   };

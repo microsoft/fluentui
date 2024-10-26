@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
-import { IChartProps, HorizontalBarChart, HorizontalBarChartVariant } from '@fluentui/react-charts-preview';
+import { ChartProps, HorizontalBarChart, HorizontalBarChartVariant } from '@fluentui/react-charts-preview';
 
 export default {
   title: 'Charts/HorizontalBarChart',
@@ -28,7 +28,7 @@ export default {
 
 export const Basic = () => {
   const hideRatio: boolean[] = [true, false];
-  const data: IChartProps[] = [
+  const data: ChartProps[] = [
     {
       chartTitle: 'one',
       chartData: [
@@ -141,7 +141,7 @@ export const BasicRTL = getStoryVariant(Basic, RTL);
 export const WithBenchmark = () => {
   const hideRatio: boolean[] = [true, false];
 
-  const data: IChartProps[] = [
+  const data: ChartProps[] = [
     {
       chartTitle: 'one',
       chartData: [
@@ -191,7 +191,7 @@ export const WithBenchmarkDarkMode = getStoryVariant(WithBenchmark, DARK_MODE);
 export const WithBenchmarkRTL = getStoryVariant(WithBenchmark, RTL);
 
 export const Variant = () => {
-  const data: IChartProps[] = [
+  const data: ChartProps[] = [
     {
       chartTitle: 'one',
       chartData: [

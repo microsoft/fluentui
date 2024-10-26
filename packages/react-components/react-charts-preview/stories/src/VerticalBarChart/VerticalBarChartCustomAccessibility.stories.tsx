@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
+import { VerticalBarChart, VerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
 import { Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
 export const VerticalBarCustomAccessibility = () => {
@@ -13,7 +13,7 @@ export const VerticalBarCustomAccessibility = () => {
     setUseSingleColor(checked.checked as boolean);
   };
 
-  const points: IVerticalBarChartDataPoint[] = [
+  const points: VerticalBarChartDataPoint[] = [
     {
       x: 'One',
       y: 20,

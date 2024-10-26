@@ -2,7 +2,7 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
-import { ILineChartPoints, LineChart } from './index';
+import { LineChartPoints, LineChart } from './index';
 import '@testing-library/jest-dom';
 
 import {
@@ -42,7 +42,7 @@ function sharedAfterEach() {
   window.requestAnimationFrame = originalRAF;
 }
 
-const basicPoints: ILineChartPoints[] = [
+const basicPoints: LineChartPoints[] = [
   {
     legend: 'metaData1',
     data: [
@@ -74,7 +74,7 @@ const basicChartPoints = {
   lineChartData: basicPoints,
 };
 
-const datePoints: ILineChartPoints[] = [
+const datePoints: LineChartPoints[] = [
   {
     data: [
       { x: new Date('2020-01-01T00:00:00.000Z'), y: 30 },
@@ -120,7 +120,7 @@ const colorFillBarData = [
   },
 ];
 
-const pointsWithGaps: ILineChartPoints[] = [
+const pointsWithGaps: LineChartPoints[] = [
   {
     legend: 'Normal Data',
     hideNonActiveDots: true,

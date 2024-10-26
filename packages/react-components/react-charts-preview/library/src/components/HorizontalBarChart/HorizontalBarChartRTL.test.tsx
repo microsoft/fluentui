@@ -3,12 +3,12 @@ import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { HorizontalBarChart } from './HorizontalBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-import { HorizontalBarChartVariant, IChartProps } from './index';
+import { HorizontalBarChartVariant, ChartProps } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
-const chartPoints: IChartProps[] = [
+const chartPoints: ChartProps[] = [
   {
     chartTitle: 'one',
     chartData: [
@@ -47,7 +47,7 @@ const chartPoints: IChartProps[] = [
   },
 ];
 
-const chartPointsWithBenchMark: IChartProps[] = [
+const chartPointsWithBenchMark: ChartProps[] = [
   {
     chartTitle: 'one',
     chartData: [{ legend: 'one', data: 50, horizontalBarChartdata: { x: 10, y: 100 }, gradient: ['#004b50', ''] }],
@@ -184,7 +184,7 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
     HorizontalBarChart,
     {
       data: chartPoints,
-      barChartCustomData: (props: IChartProps) =>
+      barChartCustomData: (props: ChartProps) =>
         props ? (
           <div className="barChartCustomData">
             <p>Bar Custom Data</p>
@@ -247,7 +247,7 @@ describe('Horizontal bar chart - Subcomponent callout', () => {
     {
       data: chartPoints,
       calloutProps: { doNotLayer: true },
-      onRenderCalloutPerDataPoint: (props: IChartProps) =>
+      onRenderCalloutPerDataPoint: (props: ChartProps) =>
         props ? (
           <div className="onRenderCalloutPerDataPoint">
             <p>Custom Callout Content</p>

@@ -1,14 +1,14 @@
-import { IChartDataPoint } from '../index';
-export interface IArcProps {
+import { ChartDataPoint } from '../index';
+export interface ArcProps {
   /**
    * Data to render in the Arc.
    */
-  data?: IArcData;
+  data?: ArcData;
 
   /**
    * Data to render focused Arc
    */
-  focusData?: IArcData;
+  focusData?: ArcData;
 
   /**
    * id of the focused arc
@@ -98,7 +98,7 @@ export interface IArcProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IArcStyles;
+  styles?: ArcStyles;
 
   /**
    * Additional CSS class(es) to apply to the Chart.
@@ -106,11 +106,11 @@ export interface IArcProps {
   className?: string;
 }
 
-export interface IArcData {
+export interface ArcData {
   /**
    * Data to render in the chart for individual arc.
    */
-  data: IChartDataPoint;
+  data: ChartDataPoint;
   /**
    * endAngle of the Arc
    */
@@ -133,7 +133,7 @@ export interface IArcData {
   value: number;
 }
 
-export interface IArcStyles {
+export interface ArcStyles {
   /**
    * Style set for the card header component root
    */

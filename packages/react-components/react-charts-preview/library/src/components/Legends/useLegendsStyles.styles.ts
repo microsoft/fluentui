@@ -1,12 +1,12 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { ILegendsProps, ILegendsStyles } from './Legends.types';
+import { LegendsProps, LegendsStyles } from './Legends.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 /**
  * @internal
  */
-export const legendClassNames: SlotClassNames<ILegendsStyles> = {
+export const legendClassNames: SlotClassNames<LegendsStyles> = {
   root: 'fui-legend__root',
   legend: 'fui-legend__legend',
   rect: 'fui-legend__rect',
@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     justifyContent: 'left',
     cursor: 'pointer',
     ...shorthands.border('none'),
-    ...shorthands.padding('8px'),
+    ...shorthands.padding(tokens.spacingHorizontalS),
     textTransform: 'capitalize',
   },
   rect: {
@@ -43,10 +43,10 @@ const useStyles = makeStyles({
     // },
     width: '12px',
     border: '1px solid',
-    marginRight: '8px',
+    marginRight: tokens.spacingHorizontalS,
   },
   shape: {
-    marginRight: '8px',
+    marginRight: tokens.spacingHorizontalS,
   },
   // TO DO Add props when these styles are used in the component
   triangle: {
@@ -55,7 +55,7 @@ const useStyles = makeStyles({
     ...shorthands.borderLeft('6px solid transparent'),
     ...shorthands.borderRight('6px solid transparent'),
     ...shorthands.borderTop('10.4px solid'),
-    marginRight: '8px',
+    marginRight: tokens.spacingHorizontalS,
   },
   // TO DO Add props when these styles are used in the component
   text: {
@@ -66,12 +66,12 @@ const useStyles = makeStyles({
   hoverChange: {
     width: '12px',
     height: '12px',
-    marginRight: '8px',
+    marginRight: tokens.spacingHorizontalS,
     ...shorthands.border('1px solid'),
   },
   resizableArea: {
     position: 'relative',
-    textAlign: 'center',
+    textAlign: 'left',
     transform: 'translate(-50%, 0)',
     top: 'auto',
     left: '50%',
@@ -85,7 +85,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useLegendStyles_unstable = (props: ILegendsProps): ILegendsStyles => {
+export const useLegendStyles_unstable = (props: LegendsProps): LegendsStyles => {
   const { className } = props; // ToDo - width, barHeight is non enumerable. Need to be used inline.
   const baseStyles = useStyles();
 

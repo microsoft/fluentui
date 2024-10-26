@@ -1,18 +1,18 @@
 import * as React from 'react';
 import {
   DonutChart,
-  IChartProps,
-  IChartDataPoint,
+  ChartProps,
+  ChartDataPoint,
   DataVizPalette,
   getColorFromToken,
-  IPopoverComponentProps,
+  ChartPopoverProps,
 } from '@fluentui/react-charts-preview';
-import { Switch } from '@fluentui/react-components';
+import { Switch, tokens } from '@fluentui/react-components';
 
 export const DonutChartCustomCallout = () => {
   const [useCustomPopover, setUseCustomPopover] = React.useState(false);
 
-  const points: IChartDataPoint[] = [
+  const points: ChartDataPoint[] = [
     {
       legend: 'first',
       data: 20000,
@@ -33,12 +33,12 @@ export const DonutChartCustomCallout = () => {
     setUseCustomPopover(ev.currentTarget.checked);
   }, []);
 
-  const data: IChartProps = {
+  const data: ChartProps = {
     chartTitle: 'Donut chart custom callout example',
     chartData: points,
   };
 
-  const customPopoverProps = (props: IChartDataPoint): IPopoverComponentProps => {
+  const customPopoverProps = (props: ChartDataPoint): ChartPopoverProps => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : '';
     return {
       XValue: 'Custom XVal',
@@ -48,15 +48,39 @@ export const DonutChartCustomCallout = () => {
     };
   };
 
-  const customPopover = (props: IChartDataPoint): JSX.Element | undefined => {
+  const customPopover = (props: ChartDataPoint): JSX.Element | undefined => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : 'Y Value';
     const xValue = props ? props.xAxisCalloutData! : 'X Value';
     const legend = props ? props.legend : 'Legend';
     return useCustomPopover ? (
-      <div style={{ border: '1.5px dotted black' }}>
-        <div style={{ color: getColorFromToken(DataVizPalette.color5), border: '1px black' }}>{xValue}</div>
-        <div style={{ color: getColorFromToken(DataVizPalette.color6), border: '1px black' }}>{legend}</div>
-        <div style={{ color: getColorFromToken(DataVizPalette.color7) }}>{yValue}</div>
+      <div style={{ border: `1.5px dotted ${getColorFromToken(DataVizPalette.color10)}`, padding: '10px' }}>
+        <div
+          style={{
+            color: getColorFromToken(DataVizPalette.warning),
+            fontSize: tokens.fontSizeBase400,
+            fontWeight: tokens.fontWeightBold,
+          }}
+        >
+          {xValue}
+        </div>
+        <div
+          style={{
+            color: getColorFromToken(DataVizPalette.color3),
+            fontSize: tokens.fontSizeBase400,
+            fontWeight: tokens.fontWeightBold,
+          }}
+        >
+          {legend}
+        </div>
+        <div
+          style={{
+            color: getColorFromToken(DataVizPalette.color2),
+            fontSize: tokens.fontSizeBase400,
+            fontWeight: tokens.fontWeightBold,
+          }}
+        >
+          {yValue}
+        </div>
       </div>
     ) : undefined;
   };
@@ -72,8 +96,8 @@ export const DonutChartCustomCallout = () => {
         hideLegend={false}
         height={220}
         valueInsideDonut={39000}
-        customProps={(props: IChartDataPoint) => customPopoverProps(props)}
-        onRenderCalloutPerDataPoint={(props: IChartDataPoint) => customPopover(props)}
+        customProps={(props: ChartDataPoint) => customPopoverProps(props)}
+        onRenderCalloutPerDataPoint={(props: ChartDataPoint) => customPopover(props)}
       />
     </>
   );

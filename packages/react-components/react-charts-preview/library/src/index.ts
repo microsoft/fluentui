@@ -9,5 +9,3 @@ export * from './Sparkline';
 export * from './utilities/colors';
 export * from './utilities/gradients';
 export * from './Popover';
-
-//import './version';

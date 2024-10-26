@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
 import { useArcStyles_unstable } from './useArcStyles.styles';
-import { IChartDataPoint } from '../index';
-import { IArcProps } from './index';
+import { ChartDataPoint } from '../index';
+import { ArcProps } from './index';
 import { format as d3Format } from 'd3-format';
-import { formatValueWithSIPrefix, isRtl } from '../../../utilities/index';
+import { formatValueWithSIPrefix, useRtl } from '../../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 
 // Create a Arc within Donut Chart variant which uses these default styles and this styled subcomponent.
@@ -12,22 +12,22 @@ import { useId } from '@fluentui/react-utilities';
  * Arc component within Donut Chart.
  * {@docCategory ArcDonutChart}
  */
-export const Arc: React.FunctionComponent<IArcProps> = React.forwardRef<HTMLDivElement, IArcProps>(
+export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivElement, ArcProps>(
   (props, forwardedRef) => {
     const arc = d3Arc().cornerRadius(5);
     const currentRef = React.createRef<SVGPathElement>();
-    const _isRTL: boolean = isRtl();
+    const _isRTL: boolean = useRtl();
     const classes = useArcStyles_unstable(props);
 
     React.useEffect(() => {
       _updateChart(props);
     }, [props]);
 
-    function _onFocus(data: IChartDataPoint, id: string): void {
+    function _onFocus(data: ChartDataPoint, id: string): void {
       props.onFocusCallback!(data, id, currentRef.current);
     }
 
-    function _hoverOn(data: IChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {
+    function _hoverOn(data: ChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {
       mouseEvent.persist();
       props.hoverOnCallback!(data, mouseEvent);
     }
@@ -38,10 +38,6 @@ export const Arc: React.FunctionComponent<IArcProps> = React.forwardRef<HTMLDivE
 
     function _onBlur(): void {
       props.onBlurCallback!();
-    }
-
-    function _redirectToUrl(href: string | undefined): void {
-      // href ? (window.location.href = href) : '';
     }
 
     function _getAriaLabel(): string {
@@ -84,7 +80,7 @@ export const Arc: React.FunctionComponent<IArcProps> = React.forwardRef<HTMLDivE
       );
     }
 
-    function _updateChart(newProps: IArcProps): void {
+    function _updateChart(newProps: ArcProps): void {
       if (newProps.arc && newProps.innerRadius && newProps.outerRadius) {
         newProps.arc.innerRadius(newProps.innerRadius);
         newProps.arc.outerRadius(newProps.outerRadius);
@@ -121,7 +117,8 @@ export const Arc: React.FunctionComponent<IArcProps> = React.forwardRef<HTMLDivE
           onMouseMove={_hoverOn.bind(this, props.data!.data)}
           onMouseLeave={_hoverOff}
           onBlur={_onBlur}
-          onClick={href ? _redirectToUrl.bind(this, href) : props.data?.data.onClick}
+          opacity={opacity}
+          onClick={props.data?.data.onClick}
           aria-label={_getAriaLabel()}
           role="img"
         />

@@ -1,6 +1,6 @@
-import { IYValueHover } from '../../index';
+import { YValueHover } from '../../index';
 
-export interface IPopoverComponentProps {
+export interface ChartPopoverProps {
   clickPosition?: { x: number; y: number };
   isPopoverOpen?: boolean;
   xCalloutValue?: string;
@@ -12,18 +12,18 @@ export interface IPopoverComponentProps {
   culture?: string;
   customCallout?: {
     customizedCallout?: JSX.Element;
-    customCalloutProps?: IPopoverComponentProps;
+    customCalloutProps?: ChartPopoverProps;
   };
   isCalloutForStack?: boolean;
   xAxisCalloutAccessibilityData?: { ariaLabel?: string; data?: string };
   hoverXValue?: string | number;
-  YValueHover?: IYValueHover[];
+  YValueHover?: YValueHover[];
   descriptionMessage?: string;
   ratio?: [number, number];
   isCartesian?: boolean;
 }
 
-export interface IPopoverComponentStyles {
+export interface PopoverComponentStyles {
   calloutContentRoot: string;
   calloutDateTimeContainer: string;
   calloutContentX: string;

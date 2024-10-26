@@ -1,6 +1,6 @@
-import { IChartDataPoint } from '../index';
+import { ChartDataPoint } from '../index';
 
-export interface IPieProps {
+export interface PieProps {
   /**
    * Width of the Pie.
    */
@@ -20,7 +20,7 @@ export interface IPieProps {
   /**
    * Data to render in the Pie.
    */
-  data: IChartDataPoint[];
+  data: ChartDataPoint[];
   /**
    * shape for pie.
    */
@@ -87,7 +87,7 @@ export interface IPieProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IPieStyles;
+  styles?: PieStyles;
 
   /**
    * Additional CSS class(es) to apply to the Chart.
@@ -95,7 +95,7 @@ export interface IPieProps {
   className?: string;
 }
 
-export interface IPieStyles {
+export interface PieStyles {
   /**
    * Style set for the card header component root
    */

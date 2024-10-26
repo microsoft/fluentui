@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-charts-preview",
   "version": "0.0.0",
-  "description": "New fluentui react package",
+  "description": "React web chart controls for Microsoft fluentui v9 system.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",

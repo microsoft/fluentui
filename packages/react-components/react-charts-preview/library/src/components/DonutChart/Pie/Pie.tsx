@@ -3,9 +3,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { pie as d3Pie, PieArcDatum } from 'd3-shape';
-import { IPieProps } from './index';
+import { PieProps } from './index';
 import { Arc } from '../Arc/index';
-import { IChartDataPoint } from '../index';
+import { ChartDataPoint } from '../index';
 import { usePieStyles_unstable } from './usePieStyles.styles';
 import { getNextGradient, wrapTextInsideDonut } from '../../../utilities/index';
 const TEXT_PADDING: number = 5;
@@ -15,7 +15,7 @@ const TEXT_PADDING: number = 5;
  * Pie component within Donut Chart.
  * {@docCategory PieDonutChart}
  */
-export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivElement, IPieProps>(
+export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivElement, PieProps>(
   (props, forwardedRef) => {
     React.useEffect(() => {
       wrapTextInsideDonut(classes.insideDonutString, props.innerRadius! * 2 - TEXT_PADDING);
@@ -29,24 +29,24 @@ export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivE
       .value((d: any) => d.data)
       .padAngle(0);
 
-    function _focusCallback(data: IChartDataPoint, id: string, e: SVGPathElement): void {
+    function _focusCallback(data: ChartDataPoint, id: string, e: SVGPathElement): void {
       props.onFocusCallback!(data, id, e);
     }
 
-    function _hoverCallback(data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
+    function _hoverCallback(data: ChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
       props.hoverOnCallback!(data, e);
     }
 
     function _computeTotalValue() {
       let totalValue = 0;
-      props.data.forEach((arc: IChartDataPoint) => {
+      props.data.forEach((arc: ChartDataPoint) => {
         totalValue += arc.data!;
       });
       return totalValue;
     }
 
 
-    function arcGenerator(d: PieArcDatum<IChartDataPoint>, i: number, focusData: any, href?: string): JSX.Element {
+    function arcGenerator(d: PieArcDatum<ChartDataPoint>, i: number, focusData: any, href?: string): JSX.Element {
       const gradient = d.data.gradient ?? getNextGradient(i, 0);
 
       return (
@@ -77,8 +77,7 @@ export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivE
     const { data } = props;
     const focusData = pieForFocusRing(data.map(d => d.data!));
 
-    // const piechart = d3Pie<DataItem>().value(d => d.value)(data1);
-    const piechart = d3Pie<IChartDataPoint>()
+    const piechart = d3Pie<ChartDataPoint>()
       .sort(null)
 
       .value((d: any) => d.data)
@@ -89,7 +88,7 @@ export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivE
 
     return (
       <g transform={translate}>
-        {piechart.map((d: PieArcDatum<IChartDataPoint>, i: number) => arcGenerator(d, i, focusData[i], props.href))}
+        {piechart.map((d: PieArcDatum<ChartDataPoint>, i: number) => arcGenerator(d, i, focusData[i], props.href))}
         {props.valueInsideDonut && (
           <text y={5} textAnchor="middle" dominantBaseline="middle" className={classes.insideDonutString}>
             {props.valueInsideDonut}

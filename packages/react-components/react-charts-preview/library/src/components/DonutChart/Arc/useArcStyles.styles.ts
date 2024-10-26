@@ -1,4 +1,4 @@
-import { IArcProps, IArcStyles } from './Arc.types';
+import { ArcProps, ArcStyles } from './Arc.types';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -6,7 +6,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 /**
  * @internal
  */
-export const donutArcClassNames: SlotClassNames<IArcStyles> = {
+export const donutArcClassNames: SlotClassNames<ArcStyles> = {
   root: 'fui-donut-arc__root',
   focusRing: 'fui-donut-arc__focusRing',
   arcLabel: 'fui-donut-arc__arcLabel',
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   },
   focusRing: {
     stroke: tokens.colorStrokeFocus2,
-    strokeWidth: '4px',
+    strokeWidth: tokens.strokeWidthThickest,
     fill: 'transparent',
   },
   arcLabel: {
@@ -40,7 +40,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Arc components
  */
-export const useArcStyles_unstable = (props: IArcProps): IArcStyles => {
+export const useArcStyles_unstable = (props: ArcProps): ArcStyles => {
   const { className } = props;
   const baseStyles = useStyles();
 

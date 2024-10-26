@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { ILegendsProps } from '../Legends/index';
-import { IAccessibilityProps, IMargins } from '../../types/index';
+import { LegendsProps } from '../Legends/index';
+import { AccessibilityProps, Margins } from '../../types/index';
 import { ChartTypes, XAxisTypes, YAxisType } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
-import { IPopoverComponentProps } from './Popover.types';
+import { ChartPopoverProps } from './ChartPopover.types';
 /**
  * Cartesian Chart style properties
  * {@docCategory CartesianChart}
  */
-export interface ICartesianChartStyleProps {
+export interface CartesianChartStyleProps {
   /**
    * Additional CSS class(es) to apply to the Chart.
    */
@@ -42,7 +42,7 @@ export interface ICartesianChartStyleProps {
   /**
    * prop to check if the Page is in Rtl
    */
-  isRtl?: boolean;
+  useRtl?: boolean;
 
   /**
    * color of the line
@@ -59,7 +59,7 @@ export interface ICartesianChartStyleProps {
  * Cartesian Chart styles
  * {@docCategory CartesianChart}
  */
-export interface ICartesianChartStyles {
+export interface CartesianChartStyles {
   /**
    *  Style for the root element.
    */
@@ -170,7 +170,7 @@ export interface ICartesianChartStyles {
  * Cartesian Chart properties
  * {@docCategory CartesianChart}
  */
-export interface ICartesianChartProps {
+export interface CartesianChartProps {
   /**
    * Below height used for resizing of the chart
    * Wrap chart in your container and send the updated height and width to these props.
@@ -200,7 +200,7 @@ export interface ICartesianChartProps {
    * @default `{ top: 20, bottom: 35, left: 40, right: 20 }`
    * To avoid edge cuttings to the chart, we recommend you use default values or greater then default values
    */
-  margins?: IMargins;
+  margins?: Margins;
 
   /** decides wether to show/hide legends
    * @defaultvalue false
@@ -320,7 +320,7 @@ export interface ICartesianChartProps {
   /*
    * props for the legends in the chart
    */
-  legendProps?: Partial<ILegendsProps>;
+  legendProps?: Partial<LegendsProps>;
 
   /**
    *@default false
@@ -365,12 +365,12 @@ export interface ICartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: ICartesianChartStyles;
+  styles?: CartesianChartStyles;
 
   /**
    * Callout customization props
    */
-  calloutProps?: Partial<IPopoverComponentProps>;
+  calloutProps?: Partial<ChartPopoverProps>;
 
   /**
    * props for the svg; use this to include aria-* or other attributes on the tag
@@ -436,10 +436,10 @@ export interface ICartesianChartProps {
    * Define a custom callout props override
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customProps?: (dataPointCalloutProps: any) => IPopoverComponentProps;
+  customProps?: (dataPointCalloutProps: any) => ChartPopoverProps;
 }
 
-export interface IYValueHover {
+export interface YValueHover {
   legend?: string;
   y?: number;
   color?: string;
@@ -447,10 +447,10 @@ export interface IYValueHover {
   shouldDrawBorderBottom?: boolean;
   yAxisCalloutData?: string | { [id: string]: number };
   index?: number;
-  callOutAccessibilityData?: IAccessibilityProps;
+  callOutAccessibilityData?: AccessibilityProps;
 }
 
-export interface IChildProps {
+export interface ChildProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   xScale?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -463,7 +463,7 @@ export interface IChildProps {
 }
 
 // Only used for Cartesian chart base
-export interface IModifiedCartesianChartProps extends ICartesianChartProps {
+export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /**
    * Define the chart title
    */
@@ -500,12 +500,12 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Callout props
    */
-  calloutProps?: IPopoverComponentProps;
+  calloutProps?: ChartPopoverProps;
 
   /**
    * Callback method used for to get margins to the chart.
    */
-  getmargins?: (margins: IMargins) => void;
+  getmargins?: (margins: Margins) => void;
 
   /**
    * This is a call back method to the chart from cartesian chart.
@@ -544,7 +544,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Children elements specific to derived chart types.
    */
-  children(props: IChildProps): React.ReactNode;
+  children(props: ChildProps): React.ReactNode;
 
   /** dataset values to find out domain of the String axis
    * Present using for only vertical stacked bar chart and grouped vertical bar chart
@@ -571,7 +571,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   onChartMouseLeave?: () => void;
 
   /** Callback method to get extra margins for domain */
-  getDomainMargins?: (containerWidth: number) => IMargins;
+  getDomainMargins?: (containerWidth: number) => Margins;
 
   /** Padding between each bar/line-point */
   xAxisInnerPadding?: number;

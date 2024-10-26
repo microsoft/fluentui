@@ -1,12 +1,12 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { ISparklineProps, ISparklineStyles } from './Sparkline.types';
+import { SparklineProps, SparklineStyles } from './Sparkline.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 /**
  * @internal
  */
-export const sparklineClassNames: SlotClassNames<ISparklineStyles> = {
+export const sparklineClassNames: SlotClassNames<SparklineStyles> = {
   inlineBlock: 'fui-sprk__inlineBlock',
   valueText: 'fui-sprk__valueText',
 };
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useSparklineStyles_unstable = (props: ISparklineProps): ISparklineStyles => {
+export const useSparklineStyles_unstable = (props: SparklineProps): SparklineStyles => {
   const baseStyles = useStyles();
 
   return {

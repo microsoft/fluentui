@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
+import { VerticalBarChart, VerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
 
 export const VerticalBarDateAxis = () => {
-  const points: IVerticalBarChartDataPoint[] = [
+  const points: VerticalBarChartDataPoint[] = [
     {
       x: new Date('2018/01/01'),
       y: 3500,

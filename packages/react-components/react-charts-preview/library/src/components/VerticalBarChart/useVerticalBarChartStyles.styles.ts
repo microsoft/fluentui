@@ -1,9 +1,9 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { IVerticalBarChartProps, IVerticalBarChartStyles } from '../../index';
+import { VerticalBarChartProps, VerticalBarChartStyles } from '../../index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 
-export const verticalbarchartClassNames: SlotClassNames<IVerticalBarChartStyles> = {
+export const verticalbarchartClassNames: SlotClassNames<VerticalBarChartStyles> = {
   opacityChangeOnHover: 'fui-vbc__opacityChangeOnHover',
   xAxisTicks: 'fui-vbc__xAxisTicks',
   yAxisTicks: 'fui-vbc__yAxisTicks',
@@ -43,12 +43,12 @@ const useStyles = makeStyles({
     ...typographyStyles.body1,
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.padding('8px'),
+    ...shorthands.padding(tokens.spacingHorizontalS),
     position: 'absolute',
     textAlign: 'center',
-    top: '0px',
+    top: tokens.spacingVerticalNone,
     fill: tokens.colorNeutralBackground1,
-    borderRadius: '2px',
+    borderRadius: tokens.borderRadiusSmall,
     pointerEvents: 'none',
   },
   barLabel: {
@@ -60,7 +60,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useVerticalBarChartStyles_unstable = (props: IVerticalBarChartProps): IVerticalBarChartStyles => {
+export const useVerticalBarChartStyles_unstable = (props: VerticalBarChartProps): VerticalBarChartStyles => {
   const baseStyles = useStyles();
 
   return {
@@ -69,21 +69,9 @@ export const useVerticalBarChartStyles_unstable = (props: IVerticalBarChartProps
       // baseStyles.opacityChangeOnHover /*
       props.styles?.opacityChangeOnHover,
     ),
-    xAxisTicks: mergeClasses(
-      // eslint-disable-next-line deprecation/deprecation
-      verticalbarchartClassNames.xAxisTicks,
-      baseStyles.xAxisTicks /*props.styles?.xAxisTicks*/,
-    ),
-    yAxisTicks: mergeClasses(
-      // eslint-disable-next-line deprecation/deprecation
-      verticalbarchartClassNames.yAxisTicks,
-      baseStyles.yAxisTicks /*props.styles?.yAxisTicks*/,
-    ),
-    yAxisDomain: mergeClasses(
-      // eslint-disable-next-line deprecation/deprecation
-      verticalbarchartClassNames.yAxisDomain,
-      baseStyles.yAxisDomain /*props.styles?.yAxisDomain*/,
-    ),
+    xAxisTicks: mergeClasses(baseStyles.xAxisTicks /*props.styles?.xAxisTicks*/),
+    yAxisTicks: mergeClasses(baseStyles.yAxisTicks /*props.styles?.yAxisTicks*/),
+    yAxisDomain: mergeClasses(baseStyles.yAxisDomain /*props.styles?.yAxisDomain*/),
     tooltip: mergeClasses(verticalbarchartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
     barLabel: mergeClasses(verticalbarchartClassNames.barLabel, baseStyles.barLabel /*props.styles?.barLabel*/),
   };

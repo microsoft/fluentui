@@ -13,8 +13,8 @@ import {
   testWithWait,
   testWithoutWait,
 } from '../../utilities/TestUtility.test';
-import { IVerticalBarChartProps } from './VerticalBarChart.types';
-import { IVerticalBarChartDataPoint } from '../../index';
+import { VerticalBarChartProps } from './VerticalBarChart.types';
+import { VerticalBarChartDataPoint } from '../../index';
 import { chartPointsVBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
 const { Timezone } = require('../../../scripts/constants');
@@ -683,7 +683,7 @@ describe('Vertical bar chart - Subcomponent callout', () => {
     {
       data: pointsWithLine,
       calloutProps: { doNotLayer: true },
-      onRenderCalloutPerDataPoint: (props: IVerticalBarChartProps) =>
+      onRenderCalloutPerDataPoint: (props: VerticalBarChartProps) =>
         props ? (
           <div className="onRenderCalloutPerDataPoint">
             <p>Custom Callout Content</p>
@@ -706,7 +706,7 @@ describe('Vertical bar chart - Subcomponent callout', () => {
     {
       data: pointsWithLine,
       calloutProps: { doNotLayer: true },
-      onRenderCalloutPerDataPoint: (props: IVerticalBarChartProps) =>
+      onRenderCalloutPerDataPoint: (props: VerticalBarChartProps) =>
         props ? (
           <div className="onRenderCalloutPerDataPoint">
             <p>Custom Callout Content</p>
@@ -817,7 +817,7 @@ describe('VerticalBarChart - mouse events', () => {
       data: chartPointsVBC,
       calloutProps: { doNotLayer: true },
       enabledLegendsWrapLines: true,
-      onRenderCalloutPerDataPoint: (props: IVerticalBarChartDataPoint) =>
+      onRenderCalloutPerDataPoint: (props: VerticalBarChartDataPoint) =>
         props ? (
           <div>
             <pre>{JSON.stringify(props, null, 2)}</pre>

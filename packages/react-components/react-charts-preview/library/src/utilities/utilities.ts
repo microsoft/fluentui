@@ -33,14 +33,14 @@ import {
   utcYear as d3UtcYear,
 } from 'd3-time';
 import {
-  IAccessibilityProps,
-  IEventsAnnotationProps,
-  ILineChartPoints,
-  ILineChartDataPoint,
-  IDataPoint,
-  IVerticalStackedBarDataPoint,
-  IVerticalBarChartDataPoint,
-  IHorizontalBarChartWithAxisDataPoint,
+  AccessibilityProps,
+  EventsAnnotationProps,
+  LineChartPoints,
+  LineChartDataPoint,
+  DataPoint,
+  VerticalStackedBarDataPoint,
+  VerticalBarChartDataPoint,
+  HorizontalBarChartWithAxisDataPoint,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -152,7 +152,7 @@ export interface IYAxisParams {
   yMaxValue?: number;
   yMinValue?: number;
   tickPadding?: number;
-  eventAnnotationProps?: IEventsAnnotationProps;
+  eventAnnotationProps?: EventsAnnotationProps;
   eventLabelHeight?: number;
   yAxisPadding?: number;
 }
@@ -405,7 +405,7 @@ export function createStringXAxis(
   return { xScale: xAxisScale, tickValues: tickValues.map(xAxis.tickFormat()!) };
 }
 
-export function isRtl() {
+export function useRtl() {
   const { dir } = useFluent(); // "dir" returns "ltr" or "rtl"
   return dir === 'rtl';
 }
@@ -620,17 +620,17 @@ export const createStringYAxisForOtherCharts = (yAxisParams: IYAxisParams, dataP
  * @param values
  */
 
-export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
-  let combinedResult: (ILineChartDataPoint & {
+export function calloutData(values: (LineChartPoints & { index?: number })[]) {
+  let combinedResult: (LineChartDataPoint & {
     legend: string;
     color?: string;
     index?: number;
   })[] = [];
 
-  values.forEach((line: ILineChartPoints & { index?: number }) => {
+  values.forEach((line: LineChartPoints & { index?: number }) => {
     const elements = line.data
-      .filter((point: ILineChartDataPoint) => !point.hideCallout)
-      .map((point: ILineChartDataPoint) => {
+      .filter((point: LineChartDataPoint) => !point.hideCallout)
+      .map((point: LineChartDataPoint) => {
         return { ...point, legend: line.legend, color: line.color, index: line.index };
       });
     combinedResult = combinedResult.concat(elements);
@@ -643,7 +643,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
       color: string;
       xAxisCalloutData?: string;
       yAxisCalloutData?: string | { [id: string]: number };
-      callOutAccessibilityData?: IAccessibilityProps;
+      callOutAccessibilityData?: AccessibilityProps;
       index?: number;
     }[];
     [key: string]: {
@@ -652,7 +652,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
       color: string;
       xAxisCalloutData?: string;
       yAxisCalloutData?: string | { [id: string]: number };
-      callOutAccessibilityData?: IAccessibilityProps;
+      callOutAccessibilityData?: AccessibilityProps;
       index?: number;
     }[];
   } = {};
@@ -973,10 +973,10 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any): any {
  * Find the axis type of line chart and area chart from given data
  * @param points
  */
-export function getXAxisType(points: ILineChartPoints[]): boolean {
+export function getXAxisType(points: LineChartPoints[]): boolean {
   let isXAxisDateType: boolean = false;
   if (points && points.length > 0) {
-    points.forEach((chartData: ILineChartPoints) => {
+    points.forEach((chartData: LineChartPoints) => {
       if (chartData.data.length > 0) {
         isXAxisDateType = chartData.data[0].x instanceof Date;
         return;
@@ -990,24 +990,24 @@ export function getXAxisType(points: ILineChartPoints[]): boolean {
  * Calculates Domain and range values for Numeric X axis.
  * This method calculates Area cart and line chart.
  * @export
- * @param {ILineChartPoints[]} points
+ * @param {LineChartPoints[]} points
  * @param {IMargins} margins
  * @param {number} width
  * @param {boolean} isRTL
  * @returns {IDomainNRange}
  */
 export function domainRangeOfNumericForAreaChart(
-  points: ILineChartPoints[],
+  points: LineChartPoints[],
   margins: IMargins,
   width: number,
   isRTL: boolean,
 ): IDomainNRange {
-  const xMin = d3Min(points, (point: ILineChartPoints) => {
-    return d3Min(point.data, (item: ILineChartDataPoint) => item.x as number)!;
+  const xMin = d3Min(points, (point: LineChartPoints) => {
+    return d3Min(point.data, (item: LineChartDataPoint) => item.x as number)!;
   })!;
 
-  const xMax = d3Max(points, (point: ILineChartPoints) => {
-    return d3Max(point.data, (item: ILineChartDataPoint) => {
+  const xMax = d3Max(points, (point: LineChartPoints) => {
+    return d3Max(point.data, (item: LineChartDataPoint) => {
       return item.x as number;
     });
   })!;
@@ -1024,20 +1024,20 @@ export function domainRangeOfNumericForAreaChart(
  * Calculates Domain and range values for Numeric X axis.
  * This method calculates Horizontal Chart with Axis
  * @export
- * @param {ILineChartPoints[]} points
+ * @param {LineChartPoints[]} points
  * @param {IMargins} margins
  * @param {number} width
  * @param {boolean} isRTL
  * @returns {IDomainNRange}
  */
 export function domainRangeOfNumericForHorizontalBarChartWithAxis(
-  points: IHorizontalBarChartWithAxisDataPoint[],
+  points: HorizontalBarChartWithAxisDataPoint[],
   margins: IMargins,
   containerWidth: number,
   isRTL: boolean,
   shiftX: number,
 ): IDomainNRange {
-  const xMax = d3Max(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
+  const xMax = d3Max(points, (point: HorizontalBarChartWithAxisDataPoint) => point.x as number)!;
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;
   const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 
@@ -1068,7 +1068,7 @@ export function domainRangeOfXStringAxis(margins: IMargins, width: number, isRTL
 /**
  * Calculate domain and range values to the Vertical stacked bar chart - For Numeric axis
  * @export
- * @param {IDataPoint[]} points
+ * @param {DataPoint[]} points
  * @param {IMargins} margins
  * @param {number} width
  * @param {boolean} isRTL
@@ -1076,14 +1076,14 @@ export function domainRangeOfXStringAxis(margins: IMargins, width: number, isRTL
  * @returns {IDomainNRange}
  */
 export function domainRangeOfVSBCNumeric(
-  points: IDataPoint[],
+  points: DataPoint[],
   margins: IMargins,
   width: number,
   isRTL: boolean,
   barWidth: number,
 ): IDomainNRange {
-  const xMin = d3Min(points, (point: IDataPoint) => point.x as number)!;
-  const xMax = d3Max(points, (point: IDataPoint) => point.x as number)!;
+  const xMin = d3Min(points, (point: DataPoint) => point.x as number)!;
+  const xMax = d3Max(points, (point: DataPoint) => point.x as number)!;
   const rMax = margins.left!;
   const rMin = width - margins.right!;
   return isRTL
@@ -1095,7 +1095,7 @@ export function domainRangeOfVSBCNumeric(
  * Calculates Domain and range values for Date X axis.
  * This method calculates Bar chart.
  * @export
- * @param {IVerticalBarChartDataPoint[]} points
+ * @param {VerticalBarChartDataPoint[]} points
  * @param {IMargins} margins
  * @param {number} width
  * @param {boolean} isRTL
@@ -1103,7 +1103,7 @@ export function domainRangeOfVSBCNumeric(
  * @returns {IDomainNRange}
  */
 export function domainRangeOfDateForAreaLineVerticalBarChart(
-  points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[],
+  points: LineChartPoints[] | VerticalBarChartDataPoint[] | VerticalStackedBarDataPoint[],
   margins: IMargins,
   width: number,
   isRTL: boolean,
@@ -1116,13 +1116,13 @@ export function domainRangeOfDateForAreaLineVerticalBarChart(
   if (chartType === ChartTypes.AreaChart || chartType === ChartTypes.LineChart) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     sDate = d3Min(points, (point: any) => {
-      return d3Min(point.data, (item: ILineChartDataPoint) => {
+      return d3Min(point.data, (item: LineChartDataPoint) => {
         return item.x as Date;
       });
     })!;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     lDate = d3Max(points, (point: any) => {
-      return d3Max(point.data, (item: ILineChartDataPoint) => {
+      return d3Max(point.data, (item: LineChartDataPoint) => {
         return item.x as Date;
       });
     })!;
@@ -1149,7 +1149,7 @@ export function domainRangeOfDateForAreaLineVerticalBarChart(
 /**
  * Calculate domain and range values to the Vertical bar chart - For Numeric axis
  * @export
- * @param {IDataPoint[]} points
+ * @param {DataPoint[]} points
  * @param {IMargins} margins
  * @param {number} containerWidth
  * @param {boolean} isRTL
@@ -1157,14 +1157,14 @@ export function domainRangeOfDateForAreaLineVerticalBarChart(
  * @returns {IDomainNRange}
  */
 export function domainRageOfVerticalNumeric(
-  points: IDataPoint[],
+  points: DataPoint[],
   margins: IMargins,
   containerWidth: number,
   isRTL: boolean,
   barWidth: number,
 ): IDomainNRange {
-  const xMax = d3Max(points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
-  const xMin = d3Min(points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
+  const xMax = d3Max(points, (point: VerticalBarChartDataPoint) => point.x as number)!;
+  const xMin = d3Min(points, (point: VerticalBarChartDataPoint) => point.x as number)!;
   const rMin = margins.left!;
   const rMax = containerWidth - margins.right!;
 
@@ -1256,15 +1256,15 @@ export function getDomainNRangeValues(
 /**
  * Calculating start and ending values of the Area chart and LineChart
  * @export
- * @param {ILineChartPoints[]} points
+ * @param {LineChartPoints[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findNumericMinMaxOfY(points: ILineChartPoints[]): { startValue: number; endValue: number } {
-  const yMax = d3Max(points, (point: ILineChartPoints) => {
-    return d3Max(point.data, (item: ILineChartDataPoint) => item.y)!;
+export function findNumericMinMaxOfY(points: LineChartPoints[]): { startValue: number; endValue: number } {
+  const yMax = d3Max(points, (point: LineChartPoints) => {
+    return d3Max(point.data, (item: LineChartDataPoint) => item.y)!;
   })!;
-  const yMin = d3Min(points, (point: ILineChartPoints) => {
-    return d3Min(point.data, (item: ILineChartDataPoint) => item.y)!;
+  const yMin = d3Min(points, (point: LineChartPoints) => {
+    return d3Min(point.data, (item: LineChartDataPoint) => item.y)!;
   })!;
 
   return {
@@ -1276,12 +1276,12 @@ export function findNumericMinMaxOfY(points: ILineChartPoints[]): { startValue: 
 /**
  * Find the minimum and maximum values of the vertical stacked bar chart y axis data point. Used for create y axis.
  * @export
- * @param {IDataPoint[]} dataset
+ * @param {DataPoint[]} dataset
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findVSBCNumericMinMaxOfY(dataset: IDataPoint[]): { startValue: number; endValue: number } {
-  const yMax = d3Max(dataset, (point: IDataPoint) => point.y)!;
-  const yMin = d3Min(dataset, (point: IDataPoint) => point.y)!;
+export function findVSBCNumericMinMaxOfY(dataset: DataPoint[]): { startValue: number; endValue: number } {
+  const yMax = d3Max(dataset, (point: DataPoint) => point.y)!;
+  const yMin = d3Min(dataset, (point: DataPoint) => point.y)!;
 
   return { startValue: yMin, endValue: yMax };
 }
@@ -1289,14 +1289,14 @@ export function findVSBCNumericMinMaxOfY(dataset: IDataPoint[]): { startValue: n
 /**
  * Fins the min and max values of the vertical bar chart y axis data point.
  * @export
- * @param {IVerticalBarChartDataPoint[]} points
+ * @param {VerticalBarChartDataPoint[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findVerticalNumericMinMaxOfY(points: IVerticalBarChartDataPoint[]): {
+export function findVerticalNumericMinMaxOfY(points: VerticalBarChartDataPoint[]): {
   startValue: number;
   endValue: number;
 } {
-  const yMax = d3Max(points, (point: IVerticalBarChartDataPoint) => {
+  const yMax = d3Max(points, (point: VerticalBarChartDataPoint) => {
     if (point.lineData !== undefined) {
       if (point.y > point.lineData!.y) {
         return point.y;
@@ -1307,7 +1307,7 @@ export function findVerticalNumericMinMaxOfY(points: IVerticalBarChartDataPoint[
       return point.y;
     }
   })!;
-  const yMin = d3Min(points, (point: IVerticalBarChartDataPoint) => {
+  const yMin = d3Min(points, (point: VerticalBarChartDataPoint) => {
     if (point.lineData !== undefined) {
       if (point.y < point.lineData!.y) {
         return point.y;
@@ -1324,16 +1324,16 @@ export function findVerticalNumericMinMaxOfY(points: IVerticalBarChartDataPoint[
 /**
  * Fins the min and max values of the vertical bar chart y axis data point.
  * @export
- * @param {IVerticalBarChartDataPoint[]} points
+ * @param {VerticalBarChartDataPoint[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
 export function findHBCWANumericMinMaxOfY(
-  points: IHorizontalBarChartWithAxisDataPoint[],
+  points: HorizontalBarChartWithAxisDataPoint[],
   yAxisType: YAxisType | undefined,
 ): { startValue: number; endValue: number } {
   if (yAxisType !== undefined && yAxisType === YAxisType.NumericAxis) {
-    const yMax = d3Max(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
-    const yMin = d3Min(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+    const yMax = d3Max(points, (point: HorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+    const yMin = d3Min(points, (point: HorizontalBarChartWithAxisDataPoint) => point.y as number)!;
 
     return { startValue: yMin, endValue: yMax };
   }
@@ -1480,7 +1480,7 @@ export const pointTypes: PointTypes = {
  * function returns the accessibility data object
  */
 export const getAccessibleDataObject = (
-  accessibleData?: IAccessibilityProps,
+  accessibleData?: AccessibilityProps,
   role: string = 'text',
   isDataFocusable: boolean = true,
 ) => {
@@ -1691,7 +1691,7 @@ export const HighContrastSelectorBlack =
  *
  * @public
  */
-export interface IRenderFunction<P> {
+export interface RenderFunction<P> {
   (props?: P, defaultRender?: (props?: P) => JSX.Element | null): JSX.Element | null;
 }
 

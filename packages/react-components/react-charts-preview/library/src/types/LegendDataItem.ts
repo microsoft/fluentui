@@ -1,4 +1,4 @@
-export interface ILegendDataItem {
+export interface LegendDataItem {
   /**
    * Text to be displayed for legend item.
    */

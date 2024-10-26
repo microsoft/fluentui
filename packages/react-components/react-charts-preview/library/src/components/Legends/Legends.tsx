@@ -1,17 +1,16 @@
 import * as React from 'react';
 
 import { Button } from '@fluentui/react-button';
-import { ILegend, ILegendsProps, LegendShape } from './Legends.types';
+import { Legend, LegendsProps, LegendShape } from './Legends.types';
 import { Shape } from './shape';
 import { useLegendStyles_unstable } from './useLegendsStyles.styles';
-/* import { buttonProperties } from '@fluentui/react-components'; */
 import { Overflow, OverflowItem } from '@fluentui/react-overflow';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { OverflowMenu } from './OverflowMenu';
 import { tokens } from '@fluentui/react-theme';
 
 // This is an internal interface used for rendering the legends with unique key
-interface ILegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface LegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   name?: string;
   title: string;
   action: VoidFunction;
@@ -29,12 +28,12 @@ interface LegendMap {
   [key: string]: boolean;
 }
 
-export interface ILegendState {
+export interface LegendState {
   activeLegend: string;
   /** Set of legends selected, both for multiple selection and single selection */
   selectedLegends: LegendMap;
 }
-export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<HTMLDivElement, ILegendsProps>(
+export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<HTMLDivElement, LegendsProps>(
   (props, forwardedRef) => {
     /** Boolean variable to check if one or more legends are selected */
     let _isLegendSelected = false;
@@ -121,9 +120,9 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       );
     }
 
-    function _generateData(): ILegendItem[] {
+    function _generateData(): LegendItem[] {
       const { /*allowFocusOnLegends = true,*/ shape } = props;
-      const dataItems: ILegendItem[] = props.legends.map((legend: ILegend, index: number) => {
+      const dataItems: LegendItem[] = props.legends.map((legend: Legend, index: number) => {
         return {
           /* ...(allowFocusOnLegends && {
             nativeButtonProps: getIntrinsicElementProps(
@@ -157,7 +156,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
      * select  multiple legends
      * @param legend ILegend
      */
-    function _canSelectMultipleLegends(legend: ILegend): { [key: string]: boolean } {
+    function _canSelectMultipleLegends(legend: Legend): { [key: string]: boolean } {
       let legendsSelected = { ...selectedLegends };
       if (legendsSelected[legend.title]) {
         // Delete entry for the deselected legend to make
@@ -180,7 +179,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
      * @param legend ILegend
      */
 
-    function _canSelectOnlySingleLegend(legend: ILegend): boolean {
+    function _canSelectOnlySingleLegend(legend: Legend): boolean {
       if (selectedLegends[legend.title]) {
         setSelectedLegends({});
         return false;
@@ -190,7 +189,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       }
     }
 
-    function _onClick(legend: ILegend, event: React.MouseEvent<HTMLButtonElement>): void {
+    function _onClick(legend: Legend, event: React.MouseEvent<HTMLButtonElement>): void {
       const { canSelectMultipleLegends = false } = props;
       let selectedLegends: string[] = [];
       if (canSelectMultipleLegends) {
@@ -204,14 +203,14 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       legend.action?.();
     }
 
-    function _onHoverOverLegend(legend: ILegend) {
+    function _onHoverOverLegend(legend: Legend) {
       if (legend.hoverAction) {
         setActiveLegend(legend.title);
         legend.hoverAction();
       }
     }
 
-    function _onLeave(legend: ILegend) {
+    function _onLeave(legend: Legend) {
       if (legend.onMouseOutAction) {
         setActiveLegend('');
         legend.onMouseOutAction();
@@ -221,7 +220,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function _renderButton(data: any, index?: number) {
       const { allowFocusOnLegends = true } = props;
-      const legend: ILegend = {
+      const legend: Legend = {
         title: data.title,
         color: data.color,
         shape: data.shape,
@@ -280,7 +279,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       );
     }
 
-    function _getShape(legend: ILegend, color: string): React.ReactNode | string {
+    function _getShape(legend: Legend, color: string): React.ReactNode | string {
       const svgParentProps: React.SVGAttributes<SVGElement> = {
         className: classes.shape,
       };
