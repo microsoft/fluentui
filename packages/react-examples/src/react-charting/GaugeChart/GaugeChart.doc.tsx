@@ -14,7 +14,7 @@ export const GaugeChartPageProps: IDocPageProps = {
   title: 'GaugeChart',
   componentName: 'GaugeChart',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/v8/src/components/GaugeChart',
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/GaugeChart',
   examples: [
     {
       title: 'GaugeChart basic',

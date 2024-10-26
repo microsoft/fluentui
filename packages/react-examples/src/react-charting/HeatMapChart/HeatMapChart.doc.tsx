@@ -12,7 +12,7 @@ export const HeatMapChartPageProps: IDocPageProps = {
   title: 'HeatMapChart',
   componentName: 'HeatMapChart',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/v8/src/components/HeatMapChart',
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/HeatMapChart',
   examples: [
     {
       title: 'HeatMapChart basic',

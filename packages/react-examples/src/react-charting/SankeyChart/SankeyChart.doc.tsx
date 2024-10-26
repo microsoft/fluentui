@@ -14,7 +14,7 @@ export const SankeyChartPageProps: IDocPageProps = {
   title: 'SankeyChart',
   componentName: 'SankeyChart',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/v8/src/components/SankeyChart',
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/SankeyChart',
   examples: [
     {
       title: 'SankeyChart basic',
