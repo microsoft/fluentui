@@ -10,7 +10,7 @@ const rootClass = mergeStyles({
 export const GettingStartedPage: React.FunctionComponent = () => {
   return (
     <div className={rootClass}>
-      <Markdown>{require<string>('!raw-loader?esModule=false!@fluentui/react-charting/README.md')}</Markdown>
+      <Markdown>{require<string>('!raw-loader?esModule=false!@fluentui/react-charting/v8/README.md')}</Markdown>
     </div>
   );
 };

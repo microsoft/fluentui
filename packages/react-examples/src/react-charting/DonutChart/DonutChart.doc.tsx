@@ -19,7 +19,8 @@ const DonutChartCustomAccessibilityExampleCode =
 export const DonutChartPageProps: IDocPageProps = {
   title: 'DonutChart',
   componentName: 'DonutChart',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/DonutChart',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/v8/src/components/DonutChart',
   examples: [
     {
       title: 'DonutChart basic',

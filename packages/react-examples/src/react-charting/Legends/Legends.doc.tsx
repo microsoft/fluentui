@@ -19,7 +19,7 @@ const LegendsStyledExampleCode =
 export const LegendsPageProps: IDocPageProps = {
   title: 'Legends',
   componentName: 'Legends',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/Legends',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/v8/src/components/Legends',
   examples: [
     {
       title: 'Legends basic',

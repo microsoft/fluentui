@@ -12,9 +12,9 @@ module.exports = {
   apiJsonPaths: [
     'packages/react',
     ...findRepoDeps({ cwd: path.join(gitRoot, 'packages/react'), dev: false }).map(dep => dep.packagePath),
-    'packages/react-charting',
   ]
     .map(packagePath => path.join(gitRoot, packagePath, 'dist', path.basename(packagePath) + '.api.json'))
+    .concat(path.join(gitRoot, 'packages/react-charting/v8', 'dist', 'react-charting.api.json'))
     .filter(apiJsonPath => fs.existsSync(apiJsonPath)),
   min: process.argv.includes('--production'),
   outputRoot: path.resolve(__dirname, '../dist/api'),
