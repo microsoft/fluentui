@@ -48,6 +48,9 @@ repoDeps.forEach(dep => {
         ...copyInstructions.copyFilesInDirectory(packageDist, path.join('dist', 'perf-test-northstar')),
       );
       deployedPackages.add(dep.packageJson.name);
+    } else if (dep.packageJson.name === '@fluentui/react-charting') {
+      instructions.push(...copyInstructions.copyFilesInDirectory(packageDist, path.join('dist', 'react-charting')));
+      deployedPackages.add(dep.packageJson.name);
     } else {
       instructions.push(
         ...copyInstructions.copyFilesInDirectory(packageDist, path.join('dist', path.basename(dep.packagePath))),
