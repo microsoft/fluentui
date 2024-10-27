@@ -2,7 +2,7 @@ import { html } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import { HorizontalBarChart as FluentHorizontalBarChart } from './horizontalbarchart.js';
-import { IChartDataPoint, IChartProps } from './horizontalbarchart.options.js';
+import { ChartDataPoint, ChartProps } from './horizontalbarchart.options.js';
 
 const singleBarHBCData = [
   {
@@ -186,7 +186,7 @@ const singleBarNMVariantData = [
   },
 ];
 
-const chartPoints1: IChartDataPoint[] = [
+const chartPoints1: ChartDataPoint[] = [
   {
     legend: 'Debit card numbers (EU and USA)',
     data: 40,
@@ -214,7 +214,7 @@ const chartPoints1: IChartDataPoint[] = [
   },
 ];
 
-const chartPoints2: IChartDataPoint[] = [
+const chartPoints2: ChartDataPoint[] = [
   {
     legend: 'Debit card numbers (EU and USA)',
     data: 40,
@@ -242,7 +242,7 @@ const chartPoints2: IChartDataPoint[] = [
   },
 ];
 
-const chartPoints3: IChartDataPoint[] = [
+const chartPoints3: ChartDataPoint[] = [
   {
     legend: 'Phone Numbers',
     data: 40,
@@ -255,7 +255,7 @@ const chartPoints3: IChartDataPoint[] = [
   },
 ];
 
-const data: IChartProps[] = [
+const data: ChartProps[] = [
   {
     chartTitle: 'Monitored First',
     chartData: chartPoints1,
