@@ -74,7 +74,7 @@ const _getPointPath = (x: number, y: number, w: number, index: number): string =
      A ${w / 2} ${w / 2} 0 1 1 ${x + w / 2} ${y}
      `,
     //square
-    `M${x - w / 2} ${y - w / 2}
+    `M${x - w / 2} ${y - w / 2.1}
      L${x + w / 2} ${y - w / 2}
      L${x + w / 2} ${y + w / 2}
      L${x - w / 2} ${y + w / 2}
@@ -556,7 +556,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     let w = this._getBoxWidthOfShape(pointId, pointIndex, isLastPoint);
     const index: number = allowMultipleShapesForPoints ? pointOftheLine % Object.keys(pointTypes).length : 0;
     const widthRatio = pointTypes[index].widthRatio;
-    w = widthRatio > 1 ? w / widthRatio : w;
+    w = widthRatio > 1 ? w / widthRatio : w * 2;
 
     return _getPointPath(xPos, yPos, w, index);
   };
