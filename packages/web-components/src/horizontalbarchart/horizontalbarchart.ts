@@ -32,6 +32,9 @@ export class HorizontalBarChart extends FASTElement {
   @attr
   public variant: Variant = Variant.AbsoluteScale;
 
+  public chartContainer!: HTMLDivElement;
+
+  public legendContainer!: HTMLDivElement;
   /**
    * @public
    * The type of the dialog modal
@@ -60,8 +63,105 @@ export class HorizontalBarChart extends FASTElement {
     super.connectedCallback();
 
     validateChartPropsArray(this.data, 'data');
+  }
 
-    this.render();
+  private initializeData() {
+    if (this.variant === Variant.SingleBar) {
+      this._hydrateData();
+    }
+    this.hydrateLegends();
+  }
+
+  public renderChart() {
+    this.initializeData();
+
+    const chartContainerDiv = d3Select(this.chartContainer);
+    chartContainerDiv
+      .selectAll('div')
+      .data(this.data!)
+      .enter()
+      .append('div')
+      .each((d, i, nodes) => {
+        this.createSingleChartBars(d, i, nodes);
+
+        //Get the tabster attributes
+        const attributes = getTabsterAttribute({ root: {} });
+
+        //Apply attributes directly to the current node
+        if (attributes[TABSTER_ATTRIBUTE_NAME] !== undefined) {
+          nodes[i].setAttribute(TABSTER_ATTRIBUTE_NAME, attributes[TABSTER_ATTRIBUTE_NAME]);
+        }
+      });
+  }
+
+  public renderLegends() {
+    const legendButtonRefs: any = [];
+    this.uniqueLegends?.forEach((d, index) => {
+      const button = document.createElement('button');
+      this.legendContainer.appendChild(button);
+      button.classList.add('legend');
+      // Store a reference to the button
+      legendButtonRefs[index] = button;
+
+      const legendRect = document.createElement('div');
+      button.appendChild(legendRect);
+      legendRect.classList.add('legendRect');
+      legendRect.style['backgroundColor'] = d.color!;
+      legendRect.style['borderColor'] = d.color!;
+
+      const legendText = document.createElement('div');
+      button.appendChild(legendText);
+      legendText.textContent = d.legend!;
+      legendText.classList.add('legendText');
+    });
+
+    const bars = this.chartContainer.querySelectorAll<HTMLElement>('.bar');
+
+    for (let i = 0; i < legendButtonRefs.length; i++) {
+      legendButtonRefs[i].addEventListener('mouseover', () => {
+        for (let j = 0; j < bars!.length; j++) {
+          if (bars![j].getAttribute('barinfo') !== legendButtonRefs[i].textContent) {
+            bars![j].style['opacity'] = '0.1';
+          }
+        }
+        for (let j = 0; j < legendButtonRefs.length; j++) {
+          if (j !== i) {
+            const legendRect = legendButtonRefs[j].getElementsByClassName('legendRect')[0];
+            if (legendRect) {
+              legendRect.style['backgroundColor'] = 'transparent';
+            } else {
+              console.warn(`legendRect not found for button index ${j}`);
+            }
+            const legendText = legendButtonRefs[j].getElementsByClassName('legendText')[0];
+            if (legendText) {
+              legendText.style['opacity'] = '0.67';
+            } else {
+              console.warn(`legendText not found for button index ${j}`);
+            }
+          }
+        }
+      });
+      legendButtonRefs[i].addEventListener('mouseout', () => {
+        for (let j = 0; j < bars!.length; j++) {
+          bars![j].style['opacity'] = '1';
+        }
+        for (let j = 0; j < legendButtonRefs.length; j++) {
+          const legendRect = legendButtonRefs[j].getElementsByClassName('legendRect')[0];
+          if (legendRect) {
+            legendRect.style['backgroundColor'] = this.uniqueLegends[j].color;
+          } else {
+            console.warn(`legendRect not found for button index ${j}`);
+          }
+
+          const legendText = legendButtonRefs[j].getElementsByClassName('legendText')[0];
+          if (legendText) {
+            legendText.style['opacity'] = '1';
+          } else {
+            console.warn(`legendText not found for button index ${j}`);
+          }
+        }
+      });
+    }
   }
 
   private createSingleChartBars(singleChartData: ChartProps, index: number, nodes: any) {
@@ -126,103 +226,6 @@ export class HorizontalBarChart extends FASTElement {
       barSpacing = currentBarSpacing;
     }
     return barSpacing;
-  }
-
-  render() {
-    // Array to hold references to the buttons
-    if (this.variant === Variant.SingleBar) {
-      this._hydrateData();
-    }
-    const legendButtonRefs: any = [];
-    const div = d3Select(this.shadowRoot as any).append('div');
-    div
-      .append('div')
-      .selectAll('div')
-      .data(this.data!)
-      .enter()
-      .append('div')
-      .each((d, i, nodes) => {
-        this.createSingleChartBars(d, i, nodes);
-
-        //Get the tabster attributes
-        const attributes = getTabsterAttribute({ root: {} });
-
-        //Apply attributes directly to the current node
-        if (attributes[TABSTER_ATTRIBUTE_NAME] !== undefined) {
-          nodes[i].setAttribute(TABSTER_ATTRIBUTE_NAME, attributes[TABSTER_ATTRIBUTE_NAME]);
-        }
-      });
-
-    this.hydrateLegends();
-    const legendContainer = document.createElement('div');
-    div.node()!.appendChild(legendContainer);
-    legendContainer.classList.add('legendcontainer');
-    this.uniqueLegends?.forEach((d, index) => {
-      const button = document.createElement('button');
-      legendContainer.appendChild(button);
-      button.classList.add('legend');
-      // Store a reference to the button
-      legendButtonRefs[index] = button;
-
-      const legendRect = document.createElement('div');
-      button.appendChild(legendRect);
-      legendRect.classList.add('legendRect');
-      legendRect.style['backgroundColor'] = d.color!;
-      legendRect.style['borderColor'] = d.color!;
-
-      const legendText = document.createElement('div');
-      button.appendChild(legendText);
-      legendText.textContent = d.legend!;
-      legendText.classList.add('legendText');
-    });
-
-    const bars = this.shadowRoot?.querySelectorAll<HTMLElement>('.bar');
-
-    for (let i = 0; i < legendButtonRefs.length; i++) {
-      legendButtonRefs[i].addEventListener('mouseover', () => {
-        for (let j = 0; j < bars!.length; j++) {
-          if (bars![j].getAttribute('barinfo') !== legendButtonRefs[i].textContent) {
-            bars![j].style['opacity'] = '0.1';
-          }
-        }
-        for (let j = 0; j < legendButtonRefs.length; j++) {
-          if (j !== i) {
-            const legendRect = legendButtonRefs[j].getElementsByClassName('legendRect')[0];
-            if (legendRect) {
-              legendRect.style['backgroundColor'] = 'transparent';
-            } else {
-              console.warn(`legendRect not found for button index ${j}`);
-            }
-            const legendText = legendButtonRefs[j].getElementsByClassName('legendText')[0];
-            if (legendText) {
-              legendText.style['opacity'] = '0.67';
-            } else {
-              console.warn(`legendText not found for button index ${j}`);
-            }
-          }
-        }
-      });
-      legendButtonRefs[i].addEventListener('mouseout', () => {
-        for (let j = 0; j < bars!.length; j++) {
-          bars![j].style['opacity'] = '1';
-        }
-        for (let j = 0; j < legendButtonRefs.length; j++) {
-          const legendRect = legendButtonRefs[j].getElementsByClassName('legendRect')[0];
-          if (legendRect) {
-            legendRect.style['backgroundColor'] = this.uniqueLegends[j].color;
-          } else {
-            console.warn(`legendRect not found for button index ${j}`);
-          }
-
-          const legendText = legendButtonRefs[j].getElementsByClassName('legendText')[0];
-          if (legendText) {
-            legendText.style['opacity'] = '1';
-          } else {
-            console.warn(`legendText not found for button index ${j}`);
-          }
-        }
-      });
-    }
   }
 
   public _createBarsAndLegends(data: ChartProps, barNo?: number) {
