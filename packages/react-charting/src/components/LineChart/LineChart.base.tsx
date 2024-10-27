@@ -80,7 +80,7 @@ const _getPointPath = (x: number, y: number, w: number, index: number): string =
      L${x - w / 2} ${y + w / 2}
      Z`,
     //triangle
-    `M${x - w / 2} ${y - 0.2886 * w}
+    `M${x - w / 2} ${y - 0.28 * w}
      H ${x + w / 2}
      L${x} ${y + 0.5774 * w} Z`,
     //diamond
@@ -1082,7 +1082,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _getStripePattern = (color: string, id: number) => {
     // This describes a tile pattern that resembles diagonal stripes
     // For more information: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
-    const stripePath = 'M-4,4 l8,-8 M0,16 l16,-16 M12,20 l8,-8';
+    const stripePath = 'M-4,4 l8,-8 M0,16 l16,-16 M12,20 22,-8';
     return (
       <pattern
         id={`${this._colorFillBarPatternId}_${id}`}
