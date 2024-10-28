@@ -59,4 +59,53 @@ test.describe('Donut-chart - Basic', () => {
     await expect(firstPath).toHaveCSS('opacity', '1');
     await expect(secondPath).toHaveCSS('opacity', '1');
   });
+
+  test('Should update path css values with mouse hover event on legend', async ({ page }) => {
+    const element = page.locator('fluent-donut-chart');
+    const firstPath = element.getByLabel('first,');
+    const secondPath = element.getByLabel('second,');
+    const firstLegend = element.getByRole('button', { name: 'First' });
+    //mouse events
+    await firstLegend.dispatchEvent('mouseover');
+    await expect(firstPath).toHaveCSS('opacity', '1');
+    await expect(secondPath).toHaveCSS('opacity', '0.1');
+    await firstLegend.dispatchEvent('mouseout');
+    await expect(firstPath).toHaveCSS('opacity', '1');
+    await expect(secondPath).toHaveCSS('opacity', '1');
+  });
+
+  test('Should show callout with mouse hover event on path', async ({ page }) => {
+    const element = page.locator('fluent-donut-chart');
+    const firstPath = element.getByLabel('first,');
+    const calloutRoot = element.locator('.calloutContentRoot')
+    await expect(calloutRoot).toHaveCount(1);
+    await expect(calloutRoot).not.toHaveCSS('opacity', '1');
+    await firstPath.dispatchEvent('mouseover');
+    await expect(calloutRoot).toHaveCSS('opacity', '1');
+    const calloutLegendText = await element.locator('.calloutLegendText');
+    await expect(calloutLegendText).toHaveText('first');
+    const calloutContentY = await element.locator('.calloutContentY');
+    await expect(calloutContentY).toHaveText('20000');
+    await firstPath.dispatchEvent('mouseout');
+    await expect(calloutRoot).not.toHaveCSS('opacity', '0');
+  });
+
+  test('Should update callout data when mouse moved from one path to another path', async ({ page }) => {
+    const element = page.locator('fluent-donut-chart');
+    const firstPath = element.getByLabel('first,');
+    const calloutRoot = element.locator('.calloutContentRoot')
+    await expect(calloutRoot).toHaveCount(1);
+    await expect(calloutRoot).not.toHaveCSS('opacity', '1');
+    await firstPath.dispatchEvent('mouseover');
+    await expect(calloutRoot).toHaveCSS('opacity', '1');
+    const calloutLegendText = await element.locator('.calloutLegendText');
+    await expect(calloutLegendText).toHaveText('first');
+    const calloutContentY = await element.locator('.calloutContentY');
+    await expect(calloutContentY).toHaveText('20000');
+    const secondPath = element.getByLabel('second,');
+    await secondPath.dispatchEvent('mouseover');
+    await expect(calloutRoot).not.toHaveCSS('opacity', '0');
+    await expect(calloutLegendText).toHaveText('second');
+    await expect(calloutContentY).toHaveText('39000');
+  });
 })
