@@ -1,0 +1,385 @@
+{
+  "kind": "SourceFile",
+  "text": "import { shorthands, makeStyles, mergeClasses } from '@griffel/react';\nimport { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';\nimport { tokens } from '@fluentui/react-theme';\nimport type { LinkSlots, LinkState } from './Link.types';\nimport type { SlotClassNames } from '@fluentui/react-utilities';\n\nexport const linkClassNames: SlotClassNames<LinkSlots> = {\n  root: 'fui-Link',\n};\n\nconst useStyles = makeStyles({\n  focusIndicator: createCustomFocusIndicatorStyle({\n    textDecorationColor: tokens.colorStrokeFocus2,\n    textDecorationLine: 'underline',\n    textDecorationStyle: 'double',\n    outlineStyle: 'none',\n  }),\n  // Common styles.\n  root: {\n    ':focus-visible': {\n      outlineStyle: 'none',\n    },\n    backgroundColor: 'transparent',\n    boxSizing: 'border-box',\n    color: tokens.colorBrandForegroundLink,\n    cursor: 'pointer',\n    display: 'inline',\n    fontFamily: tokens.fontFamilyBase,\n    fontSize: tokens.fontSizeBase300,\n    fontWeight: tokens.fontWeightRegular,\n    margin: '0',\n    padding: '0',\n    overflow: 'inherit',\n    textAlign: 'left',\n    textDecorationLine: 'none',\n    textDecorationThickness: tokens.strokeWidthThin,\n    textOverflow: 'inherit',\n    userSelect: 'text',\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkHover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkPressed,\n    },\n  },\n  // Overrides when the Link renders as a button.\n  button: {\n    ...shorthands.borderStyle('none'),\n  },\n  // Overrides when an href is present so the Link renders as an anchor.\n  href: {\n    fontSize: 'inherit',\n  },\n  // Overrides when the Link appears subtle.\n  subtle: {\n    color: tokens.colorNeutralForeground2,\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Hover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Pressed,\n    },\n  },\n  // Overrides when the Link is rendered inline within text.\n  inline: {\n    textDecorationLine: 'underline',\n  },\n  // Overrides when the Link is disabled.\n  disabled: {\n    textDecorationLine: 'none',\n    color: tokens.colorNeutralForegroundDisabled,\n    cursor: 'not-allowed',\n\n    ':hover': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n\n    ':active': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n  },\n\n  inverted: {\n    color: tokens.colorBrandForegroundInverted,\n    ':hover': {\n      color: tokens.colorBrandForegroundInvertedHover,\n    },\n    ':active': {\n      color: tokens.colorBrandForegroundInvertedPressed,\n    },\n  },\n});\n\nexport const useLinkStyles_unstable = (state: LinkState): LinkState => {\n  'use no memo';\n\n  const styles = useStyles();\n  const { appearance, disabled, inline, root, backgroundAppearance } = state;\n\n  state.root.className = mergeClasses(\n    linkClassNames.root,\n    styles.root,\n    styles.focusIndicator,\n    root.as === 'a' && root.href && styles.href,\n    root.as === 'button' && styles.button,\n    appearance === 'subtle' && styles.subtle,\n    backgroundAppearance === 'inverted' && styles.inverted,\n    inline && styles.inline,\n    disabled && styles.disabled,\n    state.root.className,\n  );\n\n  return state;\n};\n",
+  "children": [
+    {
+      "kind": "FirstStatement",
+      "text": "const useStyles = makeStyles({\n  focusIndicator: createCustomFocusIndicatorStyle({\n    textDecorationColor: tokens.colorStrokeFocus2,\n    textDecorationLine: 'underline',\n    textDecorationStyle: 'double',\n    outlineStyle: 'none',\n  }),\n  // Common styles.\n  root: {\n    ':focus-visible': {\n      outlineStyle: 'none',\n    },\n    backgroundColor: 'transparent',\n    boxSizing: 'border-box',\n    color: tokens.colorBrandForegroundLink,\n    cursor: 'pointer',\n    display: 'inline',\n    fontFamily: tokens.fontFamilyBase,\n    fontSize: tokens.fontSizeBase300,\n    fontWeight: tokens.fontWeightRegular,\n    margin: '0',\n    padding: '0',\n    overflow: 'inherit',\n    textAlign: 'left',\n    textDecorationLine: 'none',\n    textDecorationThickness: tokens.strokeWidthThin,\n    textOverflow: 'inherit',\n    userSelect: 'text',\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkHover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkPressed,\n    },\n  },\n  // Overrides when the Link renders as a button.\n  button: {\n    ...shorthands.borderStyle('none'),\n  },\n  // Overrides when an href is present so the Link renders as an anchor.\n  href: {\n    fontSize: 'inherit',\n  },\n  // Overrides when the Link appears subtle.\n  subtle: {\n    color: tokens.colorNeutralForeground2,\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Hover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Pressed,\n    },\n  },\n  // Overrides when the Link is rendered inline within text.\n  inline: {\n    textDecorationLine: 'underline',\n  },\n  // Overrides when the Link is disabled.\n  disabled: {\n    textDecorationLine: 'none',\n    color: tokens.colorNeutralForegroundDisabled,\n    cursor: 'not-allowed',\n\n    ':hover': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n\n    ':active': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n  },\n\n  inverted: {\n    color: tokens.colorBrandForegroundInverted,\n    ':hover': {\n      color: tokens.colorBrandForegroundInvertedHover,\n    },\n    ':active': {\n      color: tokens.colorBrandForegroundInvertedPressed,\n    },\n  },\n});",
+      "children": [
+        {
+          "kind": "VariableDeclarationList",
+          "text": "const useStyles = makeStyles({\n  focusIndicator: createCustomFocusIndicatorStyle({\n    textDecorationColor: tokens.colorStrokeFocus2,\n    textDecorationLine: 'underline',\n    textDecorationStyle: 'double',\n    outlineStyle: 'none',\n  }),\n  // Common styles.\n  root: {\n    ':focus-visible': {\n      outlineStyle: 'none',\n    },\n    backgroundColor: 'transparent',\n    boxSizing: 'border-box',\n    color: tokens.colorBrandForegroundLink,\n    cursor: 'pointer',\n    display: 'inline',\n    fontFamily: tokens.fontFamilyBase,\n    fontSize: tokens.fontSizeBase300,\n    fontWeight: tokens.fontWeightRegular,\n    margin: '0',\n    padding: '0',\n    overflow: 'inherit',\n    textAlign: 'left',\n    textDecorationLine: 'none',\n    textDecorationThickness: tokens.strokeWidthThin,\n    textOverflow: 'inherit',\n    userSelect: 'text',\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkHover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkPressed,\n    },\n  },\n  // Overrides when the Link renders as a button.\n  button: {\n    ...shorthands.borderStyle('none'),\n  },\n  // Overrides when an href is present so the Link renders as an anchor.\n  href: {\n    fontSize: 'inherit',\n  },\n  // Overrides when the Link appears subtle.\n  subtle: {\n    color: tokens.colorNeutralForeground2,\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Hover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Pressed,\n    },\n  },\n  // Overrides when the Link is rendered inline within text.\n  inline: {\n    textDecorationLine: 'underline',\n  },\n  // Overrides when the Link is disabled.\n  disabled: {\n    textDecorationLine: 'none',\n    color: tokens.colorNeutralForegroundDisabled,\n    cursor: 'not-allowed',\n\n    ':hover': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n\n    ':active': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n  },\n\n  inverted: {\n    color: tokens.colorBrandForegroundInverted,\n    ':hover': {\n      color: tokens.colorBrandForegroundInvertedHover,\n    },\n    ':active': {\n      color: tokens.colorBrandForegroundInvertedPressed,\n    },\n  },\n})",
+          "children": [
+            {
+              "kind": "VariableDeclaration",
+              "text": "useStyles = makeStyles({\n  focusIndicator: createCustomFocusIndicatorStyle({\n    textDecorationColor: tokens.colorStrokeFocus2,\n    textDecorationLine: 'underline',\n    textDecorationStyle: 'double',\n    outlineStyle: 'none',\n  }),\n  // Common styles.\n  root: {\n    ':focus-visible': {\n      outlineStyle: 'none',\n    },\n    backgroundColor: 'transparent',\n    boxSizing: 'border-box',\n    color: tokens.colorBrandForegroundLink,\n    cursor: 'pointer',\n    display: 'inline',\n    fontFamily: tokens.fontFamilyBase,\n    fontSize: tokens.fontSizeBase300,\n    fontWeight: tokens.fontWeightRegular,\n    margin: '0',\n    padding: '0',\n    overflow: 'inherit',\n    textAlign: 'left',\n    textDecorationLine: 'none',\n    textDecorationThickness: tokens.strokeWidthThin,\n    textOverflow: 'inherit',\n    userSelect: 'text',\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkHover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkPressed,\n    },\n  },\n  // Overrides when the Link renders as a button.\n  button: {\n    ...shorthands.borderStyle('none'),\n  },\n  // Overrides when an href is present so the Link renders as an anchor.\n  href: {\n    fontSize: 'inherit',\n  },\n  // Overrides when the Link appears subtle.\n  subtle: {\n    color: tokens.colorNeutralForeground2,\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Hover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Pressed,\n    },\n  },\n  // Overrides when the Link is rendered inline within text.\n  inline: {\n    textDecorationLine: 'underline',\n  },\n  // Overrides when the Link is disabled.\n  disabled: {\n    textDecorationLine: 'none',\n    color: tokens.colorNeutralForegroundDisabled,\n    cursor: 'not-allowed',\n\n    ':hover': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n\n    ':active': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n  },\n\n  inverted: {\n    color: tokens.colorBrandForegroundInverted,\n    ':hover': {\n      color: tokens.colorBrandForegroundInvertedHover,\n    },\n    ':active': {\n      color: tokens.colorBrandForegroundInvertedPressed,\n    },\n  },\n})",
+              "children": [
+                {
+                  "kind": "CallExpression",
+                  "text": "makeStyles({\n  focusIndicator: createCustomFocusIndicatorStyle({\n    textDecorationColor: tokens.colorStrokeFocus2,\n    textDecorationLine: 'underline',\n    textDecorationStyle: 'double',\n    outlineStyle: 'none',\n  }),\n  // Common styles.\n  root: {\n    ':focus-visible': {\n      outlineStyle: 'none',\n    },\n    backgroundColor: 'transparent',\n    boxSizing: 'border-box',\n    color: tokens.colorBrandForegroundLink,\n    cursor: 'pointer',\n    display: 'inline',\n    fontFamily: tokens.fontFamilyBase,\n    fontSize: tokens.fontSizeBase300,\n    fontWeight: tokens.fontWeightRegular,\n    margin: '0',\n    padding: '0',\n    overflow: 'inherit',\n    textAlign: 'left',\n    textDecorationLine: 'none',\n    textDecorationThickness: tokens.strokeWidthThin,\n    textOverflow: 'inherit',\n    userSelect: 'text',\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkHover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkPressed,\n    },\n  },\n  // Overrides when the Link renders as a button.\n  button: {\n    ...shorthands.borderStyle('none'),\n  },\n  // Overrides when an href is present so the Link renders as an anchor.\n  href: {\n    fontSize: 'inherit',\n  },\n  // Overrides when the Link appears subtle.\n  subtle: {\n    color: tokens.colorNeutralForeground2,\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Hover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Pressed,\n    },\n  },\n  // Overrides when the Link is rendered inline within text.\n  inline: {\n    textDecorationLine: 'underline',\n  },\n  // Overrides when the Link is disabled.\n  disabled: {\n    textDecorationLine: 'none',\n    color: tokens.colorNeutralForegroundDisabled,\n    cursor: 'not-allowed',\n\n    ':hover': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n\n    ':active': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n  },\n\n  inverted: {\n    color: tokens.colorBrandForegroundInverted,\n    ':hover': {\n      color: tokens.colorBrandForegroundInvertedHover,\n    },\n    ':active': {\n      color: tokens.colorBrandForegroundInvertedPressed,\n    },\n  },\n})",
+                  "children": [
+                    {
+                      "kind": "ObjectLiteralExpression",
+                      "text": "{\n  focusIndicator: createCustomFocusIndicatorStyle({\n    textDecorationColor: tokens.colorStrokeFocus2,\n    textDecorationLine: 'underline',\n    textDecorationStyle: 'double',\n    outlineStyle: 'none',\n  }),\n  // Common styles.\n  root: {\n    ':focus-visible': {\n      outlineStyle: 'none',\n    },\n    backgroundColor: 'transparent',\n    boxSizing: 'border-box',\n    color: tokens.colorBrandForegroundLink,\n    cursor: 'pointer',\n    display: 'inline',\n    fontFamily: tokens.fontFamilyBase,\n    fontSize: tokens.fontSizeBase300,\n    fontWeight: tokens.fontWeightRegular,\n    margin: '0',\n    padding: '0',\n    overflow: 'inherit',\n    textAlign: 'left',\n    textDecorationLine: 'none',\n    textDecorationThickness: tokens.strokeWidthThin,\n    textOverflow: 'inherit',\n    userSelect: 'text',\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkHover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkPressed,\n    },\n  },\n  // Overrides when the Link renders as a button.\n  button: {\n    ...shorthands.borderStyle('none'),\n  },\n  // Overrides when an href is present so the Link renders as an anchor.\n  href: {\n    fontSize: 'inherit',\n  },\n  // Overrides when the Link appears subtle.\n  subtle: {\n    color: tokens.colorNeutralForeground2,\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Hover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Pressed,\n    },\n  },\n  // Overrides when the Link is rendered inline within text.\n  inline: {\n    textDecorationLine: 'underline',\n  },\n  // Overrides when the Link is disabled.\n  disabled: {\n    textDecorationLine: 'none',\n    color: tokens.colorNeutralForegroundDisabled,\n    cursor: 'not-allowed',\n\n    ':hover': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n\n    ':active': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n  },\n\n  inverted: {\n    color: tokens.colorBrandForegroundInverted,\n    ':hover': {\n      color: tokens.colorBrandForegroundInvertedHover,\n    },\n    ':active': {\n      color: tokens.colorBrandForegroundInvertedPressed,\n    },\n  },\n}",
+                      "children": [
+                        {
+                          "kind": "PropertyAssignment",
+                          "text": "focusIndicator: createCustomFocusIndicatorStyle({\n    textDecorationColor: tokens.colorStrokeFocus2,\n    textDecorationLine: 'underline',\n    textDecorationStyle: 'double',\n    outlineStyle: 'none',\n  })",
+                          "children": [
+                            {
+                              "kind": "CallExpression",
+                              "text": "createCustomFocusIndicatorStyle({\n    textDecorationColor: tokens.colorStrokeFocus2,\n    textDecorationLine: 'underline',\n    textDecorationStyle: 'double',\n    outlineStyle: 'none',\n  })",
+                              "children": [
+                                {
+                                  "kind": "ObjectLiteralExpression",
+                                  "text": "{\n    textDecorationColor: tokens.colorStrokeFocus2,\n    textDecorationLine: 'underline',\n    textDecorationStyle: 'double',\n    outlineStyle: 'none',\n  }",
+                                  "children": [
+                                    {
+                                      "kind": "PropertyAssignment",
+                                      "text": "textDecorationColor: tokens.colorStrokeFocus2",
+                                      "children": [
+                                        {
+                                          "kind": "PropertyAccessExpression",
+                                          "text": "tokens.colorStrokeFocus2",
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "PropertyAssignment",
+                          "text": "root: {\n    ':focus-visible': {\n      outlineStyle: 'none',\n    },\n    backgroundColor: 'transparent',\n    boxSizing: 'border-box',\n    color: tokens.colorBrandForegroundLink,\n    cursor: 'pointer',\n    display: 'inline',\n    fontFamily: tokens.fontFamilyBase,\n    fontSize: tokens.fontSizeBase300,\n    fontWeight: tokens.fontWeightRegular,\n    margin: '0',\n    padding: '0',\n    overflow: 'inherit',\n    textAlign: 'left',\n    textDecorationLine: 'none',\n    textDecorationThickness: tokens.strokeWidthThin,\n    textOverflow: 'inherit',\n    userSelect: 'text',\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkHover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkPressed,\n    },\n  }",
+                          "children": [
+                            {
+                              "kind": "ObjectLiteralExpression",
+                              "text": "{\n    ':focus-visible': {\n      outlineStyle: 'none',\n    },\n    backgroundColor: 'transparent',\n    boxSizing: 'border-box',\n    color: tokens.colorBrandForegroundLink,\n    cursor: 'pointer',\n    display: 'inline',\n    fontFamily: tokens.fontFamilyBase,\n    fontSize: tokens.fontSizeBase300,\n    fontWeight: tokens.fontWeightRegular,\n    margin: '0',\n    padding: '0',\n    overflow: 'inherit',\n    textAlign: 'left',\n    textDecorationLine: 'none',\n    textDecorationThickness: tokens.strokeWidthThin,\n    textOverflow: 'inherit',\n    userSelect: 'text',\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkHover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkPressed,\n    },\n  }",
+                              "children": [
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "color: tokens.colorBrandForegroundLink",
+                                  "children": [
+                                    {
+                                      "kind": "PropertyAccessExpression",
+                                      "text": "tokens.colorBrandForegroundLink",
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "fontFamily: tokens.fontFamilyBase",
+                                  "children": [
+                                    {
+                                      "kind": "PropertyAccessExpression",
+                                      "text": "tokens.fontFamilyBase",
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "fontSize: tokens.fontSizeBase300",
+                                  "children": [
+                                    {
+                                      "kind": "PropertyAccessExpression",
+                                      "text": "tokens.fontSizeBase300",
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "fontWeight: tokens.fontWeightRegular",
+                                  "children": [
+                                    {
+                                      "kind": "PropertyAccessExpression",
+                                      "text": "tokens.fontWeightRegular",
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "textDecorationThickness: tokens.strokeWidthThin",
+                                  "children": [
+                                    {
+                                      "kind": "PropertyAccessExpression",
+                                      "text": "tokens.strokeWidthThin",
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkHover,\n    }",
+                                  "children": [
+                                    {
+                                      "kind": "ObjectLiteralExpression",
+                                      "text": "{\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkHover,\n    }",
+                                      "children": [
+                                        {
+                                          "kind": "PropertyAssignment",
+                                          "text": "color: tokens.colorBrandForegroundLinkHover",
+                                          "children": [
+                                            {
+                                              "kind": "PropertyAccessExpression",
+                                              "text": "tokens.colorBrandForegroundLinkHover",
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkPressed,\n    }",
+                                  "children": [
+                                    {
+                                      "kind": "ObjectLiteralExpression",
+                                      "text": "{\n      textDecorationLine: 'underline',\n      color: tokens.colorBrandForegroundLinkPressed,\n    }",
+                                      "children": [
+                                        {
+                                          "kind": "PropertyAssignment",
+                                          "text": "color: tokens.colorBrandForegroundLinkPressed",
+                                          "children": [
+                                            {
+                                              "kind": "PropertyAccessExpression",
+                                              "text": "tokens.colorBrandForegroundLinkPressed",
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "PropertyAssignment",
+                          "text": "subtle: {\n    color: tokens.colorNeutralForeground2,\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Hover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Pressed,\n    },\n  }",
+                          "children": [
+                            {
+                              "kind": "ObjectLiteralExpression",
+                              "text": "{\n    color: tokens.colorNeutralForeground2,\n\n    ':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Hover,\n    },\n\n    ':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Pressed,\n    },\n  }",
+                              "children": [
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "color: tokens.colorNeutralForeground2",
+                                  "children": [
+                                    {
+                                      "kind": "PropertyAccessExpression",
+                                      "text": "tokens.colorNeutralForeground2",
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "':hover': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Hover,\n    }",
+                                  "children": [
+                                    {
+                                      "kind": "ObjectLiteralExpression",
+                                      "text": "{\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Hover,\n    }",
+                                      "children": [
+                                        {
+                                          "kind": "PropertyAssignment",
+                                          "text": "color: tokens.colorNeutralForeground2Hover",
+                                          "children": [
+                                            {
+                                              "kind": "PropertyAccessExpression",
+                                              "text": "tokens.colorNeutralForeground2Hover",
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "':active': {\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Pressed,\n    }",
+                                  "children": [
+                                    {
+                                      "kind": "ObjectLiteralExpression",
+                                      "text": "{\n      textDecorationLine: 'underline',\n      color: tokens.colorNeutralForeground2Pressed,\n    }",
+                                      "children": [
+                                        {
+                                          "kind": "PropertyAssignment",
+                                          "text": "color: tokens.colorNeutralForeground2Pressed",
+                                          "children": [
+                                            {
+                                              "kind": "PropertyAccessExpression",
+                                              "text": "tokens.colorNeutralForeground2Pressed",
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "PropertyAssignment",
+                          "text": "disabled: {\n    textDecorationLine: 'none',\n    color: tokens.colorNeutralForegroundDisabled,\n    cursor: 'not-allowed',\n\n    ':hover': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n\n    ':active': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n  }",
+                          "children": [
+                            {
+                              "kind": "ObjectLiteralExpression",
+                              "text": "{\n    textDecorationLine: 'none',\n    color: tokens.colorNeutralForegroundDisabled,\n    cursor: 'not-allowed',\n\n    ':hover': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n\n    ':active': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    },\n  }",
+                              "children": [
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "color: tokens.colorNeutralForegroundDisabled",
+                                  "children": [
+                                    {
+                                      "kind": "PropertyAccessExpression",
+                                      "text": "tokens.colorNeutralForegroundDisabled",
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "':hover': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    }",
+                                  "children": [
+                                    {
+                                      "kind": "ObjectLiteralExpression",
+                                      "text": "{\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    }",
+                                      "children": [
+                                        {
+                                          "kind": "PropertyAssignment",
+                                          "text": "color: tokens.colorNeutralForegroundDisabled",
+                                          "children": [
+                                            {
+                                              "kind": "PropertyAccessExpression",
+                                              "text": "tokens.colorNeutralForegroundDisabled",
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "':active': {\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    }",
+                                  "children": [
+                                    {
+                                      "kind": "ObjectLiteralExpression",
+                                      "text": "{\n      textDecorationLine: 'none',\n      color: tokens.colorNeutralForegroundDisabled,\n    }",
+                                      "children": [
+                                        {
+                                          "kind": "PropertyAssignment",
+                                          "text": "color: tokens.colorNeutralForegroundDisabled",
+                                          "children": [
+                                            {
+                                              "kind": "PropertyAccessExpression",
+                                              "text": "tokens.colorNeutralForegroundDisabled",
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "PropertyAssignment",
+                          "text": "inverted: {\n    color: tokens.colorBrandForegroundInverted,\n    ':hover': {\n      color: tokens.colorBrandForegroundInvertedHover,\n    },\n    ':active': {\n      color: tokens.colorBrandForegroundInvertedPressed,\n    },\n  }",
+                          "children": [
+                            {
+                              "kind": "ObjectLiteralExpression",
+                              "text": "{\n    color: tokens.colorBrandForegroundInverted,\n    ':hover': {\n      color: tokens.colorBrandForegroundInvertedHover,\n    },\n    ':active': {\n      color: tokens.colorBrandForegroundInvertedPressed,\n    },\n  }",
+                              "children": [
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "color: tokens.colorBrandForegroundInverted",
+                                  "children": [
+                                    {
+                                      "kind": "PropertyAccessExpression",
+                                      "text": "tokens.colorBrandForegroundInverted",
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "':hover': {\n      color: tokens.colorBrandForegroundInvertedHover,\n    }",
+                                  "children": [
+                                    {
+                                      "kind": "ObjectLiteralExpression",
+                                      "text": "{\n      color: tokens.colorBrandForegroundInvertedHover,\n    }",
+                                      "children": [
+                                        {
+                                          "kind": "PropertyAssignment",
+                                          "text": "color: tokens.colorBrandForegroundInvertedHover",
+                                          "children": [
+                                            {
+                                              "kind": "PropertyAccessExpression",
+                                              "text": "tokens.colorBrandForegroundInvertedHover",
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "kind": "PropertyAssignment",
+                                  "text": "':active': {\n      color: tokens.colorBrandForegroundInvertedPressed,\n    }",
+                                  "children": [
+                                    {
+                                      "kind": "ObjectLiteralExpression",
+                                      "text": "{\n      color: tokens.colorBrandForegroundInvertedPressed,\n    }",
+                                      "children": [
+                                        {
+                                          "kind": "PropertyAssignment",
+                                          "text": "color: tokens.colorBrandForegroundInvertedPressed",
+                                          "children": [
+                                            {
+                                              "kind": "PropertyAccessExpression",
+                                              "text": "tokens.colorBrandForegroundInvertedPressed",
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
