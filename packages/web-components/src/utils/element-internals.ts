@@ -46,7 +46,11 @@ export function stateSelector<S extends string>(state: S): StateSelector<S> {
  * @param force - force the state to be toggled on or off
  * @internal
  */
-export function toggleState(elementInternals: ElementInternals, state: string, force?: boolean): void {
+export function toggleState(elementInternals: ElementInternals, state: string | undefined, force?: boolean): void {
+  if (!state) {
+    return;
+  }
+
   if (!CustomStatesSetSupported) {
     elementInternals.shadowRoot!.host.toggleAttribute(`state--${state}`, force);
     return;
