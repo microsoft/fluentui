@@ -104,7 +104,7 @@ test.describe('Donut-chart - Basic', () => {
     await expect(calloutContentY).toHaveText('20000');
     const secondPath = element.getByLabel('second,');
     await secondPath.dispatchEvent('mouseover');
-    await expect(calloutRoot).not.toHaveCSS('opacity', '0');
+    await expect(calloutRoot).toHaveCSS('opacity', '1');
     await expect(calloutLegendText).toHaveText('second');
     await expect(calloutContentY).toHaveText('39000');
   });
