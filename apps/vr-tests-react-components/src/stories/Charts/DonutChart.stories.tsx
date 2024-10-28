@@ -32,7 +32,7 @@ export const Basic = () => {
         culture={window.navigator.language}
         data={data}
         innerRadius={55}
-        href={'https://developer.microsoft.com/en-us/'}
+        href="https://developer.microsoft.com/en-us/"
         legendsOverflowText={'overflow Items'}
         hideLegend={false}
         height={220}

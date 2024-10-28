@@ -4,7 +4,8 @@
 
 Fluent UI React charts is a set of modern, accessible, interactive, lightweight and highly customizable visualization library representing the Microsoft design system. The charts are used across 100+ projects inside Microsoft including Microsoft 365 and Azure.
 
-The library is built using D3 (Data Driven Documents) and other fluent UI controls.
+The library is built using D3 (Data Driven Documents) and fluent v9 design system.
+
 
 ## Sample Code
 
