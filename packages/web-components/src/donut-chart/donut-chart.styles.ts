@@ -69,12 +69,10 @@ export const styles = css`
 
   .legendContainer {
     padding-top: ${spacingVerticalL};
-
     white-space: nowrap;
     width: 100%;
     align-items: center;
     margin: -8px 0 0 -8px;
-
     flex-wrap: wrap;
     display: flex;
   }
@@ -107,11 +105,9 @@ export const styles = css`
     padding: ${spacingVerticalMNudge} ${spacingHorizontalL};
     background-color: ${colorNeutralBackground1};
     background-blend-mode: normal, luminosity;
-
     border-radius: ${borderRadiusMedium};
     border: 1px solid ${colorTransparentStroke};
     filter: drop-shadow(0 0 2px ${colorNeutralShadowAmbient}) drop-shadow(0 8px 16px ${colorNeutralShadowKey});
-
     position: absolute;
     opacity: 0;
     z-index: 1;

@@ -41,7 +41,7 @@ export const styles: ElementStyles = css`
     overflow: hidden;
     padding: ${spacingVerticalMNudge} ${spacingHorizontalL};
     backgroundcolor: ${colorNeutralBackground1};
-    backgroundblendmode: normal, luminosity;
+    background-blend-mode: normal, luminosity;
     text-align: center;
     background: ${colorNeutralBackground1};
     box-shadow: ${shadow4};
