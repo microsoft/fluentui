@@ -278,7 +278,7 @@ const singlePointData = [
         legend: 'one',
         data: 1543,
         total: 15000,
-        color: '#637cef',
+        gradient: ['#637cef', '#e3008c'],
       },
     ],
   },
