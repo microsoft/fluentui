@@ -35,6 +35,8 @@ export class HorizontalBarChart extends FASTElement {
   public chartContainer!: HTMLDivElement;
 
   public legendContainer!: HTMLDivElement;
+
+  svgContainers = [];
   /**
    * @public
    * The type of the dialog modal
@@ -63,6 +65,10 @@ export class HorizontalBarChart extends FASTElement {
     super.connectedCallback();
 
     validateChartPropsArray(this.data, 'data');
+
+    this.initializeData();
+    //this.renderChart();
+    this.renderLegends();
   }
 
   private initializeData() {
@@ -73,8 +79,6 @@ export class HorizontalBarChart extends FASTElement {
   }
 
   public renderChart() {
-    this.initializeData();
-
     const chartContainerDiv = d3Select(this.chartContainer);
     chartContainerDiv
       .selectAll('div')
@@ -92,6 +96,16 @@ export class HorizontalBarChart extends FASTElement {
           nodes[i].setAttribute(TABSTER_ATTRIBUTE_NAME, attributes[TABSTER_ATTRIBUTE_NAME]);
         }
       });
+  }
+
+  public getChartTabsterAttribute() {
+    const attributes = getTabsterAttribute({ root: {} });
+
+    if (attributes[TABSTER_ATTRIBUTE_NAME] !== undefined) {
+      return attributes[TABSTER_ATTRIBUTE_NAME];
+    }
+
+    return {};
   }
 
   public renderLegends() {
@@ -226,6 +240,14 @@ export class HorizontalBarChart extends FASTElement {
       barSpacing = currentBarSpacing;
     }
     return barSpacing;
+  }
+
+  public showRatio(chartData: ChartProps): boolean {
+    const hideNumber = this.hideRatio === undefined ? false : this.hideRatio;
+
+    const showRatio = this.variant === Variant.PartToWhole && !hideNumber && chartData!.chartData!.length === 2;
+
+    return showRatio;
   }
 
   public _createBarsAndLegends(data: ChartProps, barNo?: number) {
@@ -433,4 +455,153 @@ export class HorizontalBarChart extends FASTElement {
     }
     return containerDiv;
   }
+
+  public createSvgView() {
+    ${x =>
+      x.chartData.map(
+        (chartPoint, index) => html<HorizontalBarDataViewModel>`<g
+        key="${(x, c) => c.index}"
+        role="img"
+        aria-label="${point => point.data}"
+      >
+        <rect
+          key="${(x, c) => c.index}"
+          id="${(x, c) => `${c.parentContext.index}-${c.index}`}"
+          barinfo="${point => point.legend}"
+          class="bar"
+          style="fill:${point => point.color}"
+          x="${point => point.x}%"
+          y="0"
+          width="${point => point.width}%"
+          height="12"
+          tabindex="0"
+          data-tabster="{"groupper": {}, "mover": {}}"
+        >
+        </rect>
+      </g>`,
+        {
+          positioning: true,
+        },
+      )}
+  }
+
+  public createChartPropsViewModel(data: ChartProps): ChartPropsViewModel[] {
+
+  }
+
+  public createViewModel(data: ChartProps): HorizontalBarDataViewModel[] {
+    const _isRTL = this._isRTL;
+    const _computeLongestBarTotalValue = () => {
+      let longestBarTotalValue = 0;
+      this.data!.forEach(({ chartData }) => {
+        const barTotalValue = chartData!.reduce(
+          (acc: number, point: ChartDataPoint) => acc + (point.data ? point.data : 0),
+          0,
+        );
+        longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue);
+      });
+      return longestBarTotalValue;
+    };
+    const longestBarTotalValue = _computeLongestBarTotalValue();
+    const noOfBars =
+      data.chartData?.reduce((count: number, point: ChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
+      1;
+    const barSpacingInPercent = this.calculateBarSpacing();
+    const totalMarginPercent = barSpacingInPercent * (noOfBars - 1);
+    // calculating starting point of each bar and it's range
+    const startingPoint: number[] = [];
+    const barTotalValue = data.chartData!.reduce(
+      (acc: number, point: ChartDataPoint) => acc + (point.data ? point.data : 0),
+      0,
+    );
+    const total = this.variant === Variant.AbsoluteScale ? longestBarTotalValue : barTotalValue;
+
+    let sumOfPercent = 0;
+    data.chartData!.map((point: ChartDataPoint, index: number) => {
+      const pointData = point.data ? point.data : 0;
+      const currValue = (pointData / total) * 100;
+      let value = currValue ? currValue : 0;
+
+      if (value < 1 && value !== 0) {
+        value = 1;
+      } else if (value > 99 && value !== 100) {
+        value = 99;
+      }
+      sumOfPercent += value;
+
+      return sumOfPercent;
+    });
+
+    // Include an imaginary placeholder bar with value equal to
+    // the difference between longestBarTotalValue and barTotalValue
+    // while calculating sumOfPercent to get correct scalingRatio for absolute-scale variant
+    if (this.variant === Variant.AbsoluteScale) {
+      let value = total === 0 ? 0 : ((total - barTotalValue) / total) * 100;
+      if (value < 1 && value !== 0) {
+        value = 1;
+      } else if (value > 99 && value !== 100) {
+        value = 99;
+      }
+      sumOfPercent += value;
+    }
+
+    /**
+     * The %age of the space occupied by the margin needs to subtracted
+     * while computing the scaling ratio, since the margins are not being
+     * scaled down, only the data is being scaled down from a higher percentage to lower percentage
+     * Eg: 95% of the space is taken by the bars, 5% by the margins
+     * Now if the sumOfPercent is 120% -> This needs to be scaled down to 95%, not 100%
+     * since that's only space available to the bars
+     */
+
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / (100 - totalMarginPercent) : 1;
+
+    let prevPosition = 0;
+    let value = 0;
+
+    const viewModel: HorizontalBarDataViewModel[] = data.chartData!.map((point: ChartDataPoint, index: number) => {
+      const pointData = point.data ? point.data : 0;
+      if (index > 0) {
+        prevPosition += value;
+      }
+      value = (pointData / total) * 100 ? (pointData / total) * 100 : 0;
+      if (value < 1 && value !== 0) {
+        value = 1 / scalingRatio;
+      } else if (value > 99 && value !== 100) {
+        value = 99 / scalingRatio;
+      } else {
+        value = value / scalingRatio;
+      }
+
+      startingPoint.push(prevPosition);
+
+      return {
+        legend: point.legend,
+        x: _isRTL
+          ? 100 - startingPoint[index] - value - barSpacingInPercent * index
+          : startingPoint[index] + barSpacingInPercent * index,
+        data: point.data,
+        total: point.total ? point.total : point.data,
+        width: value,
+        color: point.color ? point.color : '#637cef',
+      };
+    });
+
+    return viewModel;
+  }
+}
+
+export interface HorizontalBarDataViewModel {
+  legend: string;
+  x: number;
+  data: number;
+  total: number;
+  width: number;
+  color: string;
+}
+
+export interface ChartPropsViewModel {
+  chartData: ChartDataPoint[];
+  chartTitle?: string;
+  svgRefs: SVGElement;
 }
