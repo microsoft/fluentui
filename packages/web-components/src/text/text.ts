@@ -1,6 +1,6 @@
 import { attr, FASTElement, Observable } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
-import type { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
+import { hasMatchingState, swapStates, toggleState } from '../utils/element-internals.js';
+import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 
 /**
  * The base class used for constructing a fluent-text custom element
@@ -93,10 +93,9 @@ export class Text extends FASTElement {
    * @param next - the next state
    */
   public sizeChanged(prev: TextSize | undefined, next: TextSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `size-${prev}`, false);
-    }
-    if (next) {
+    toggleState(this.elementInternals, `size-${prev}`, false);
+
+    if (hasMatchingState(TextSize, `_${next}`)) {
       toggleState(this.elementInternals, `size-${next}`, true);
     }
   }
@@ -117,12 +116,7 @@ export class Text extends FASTElement {
    * @param next - the next state
    */
   public fontChanged(prev: TextFont | undefined, next: TextFont | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
+    swapStates(this.elementInternals, prev, next, TextFont);
   }
 
   /**
@@ -141,12 +135,7 @@ export class Text extends FASTElement {
    * @param next - the next state
    */
   public weightChanged(prev: TextWeight | undefined, next: TextWeight | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
+    swapStates(this.elementInternals, prev, next, TextWeight);
   }
 
   /**
@@ -165,12 +154,7 @@ export class Text extends FASTElement {
    * @param next - the next state
    */
   public alignChanged(prev: TextAlign | undefined, next: TextAlign | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
+    swapStates(this.elementInternals, prev, next, TextAlign);
   }
 
   public connectedCallback(): void {
