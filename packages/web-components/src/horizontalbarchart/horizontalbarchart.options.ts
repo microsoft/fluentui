@@ -29,6 +29,8 @@ export interface ChartDataPoint {
    * Color for the legend in the chart. If not provided, it will fallback on the default color palette.
    */
   color?: string;
+
+  gradient?: [string, string];
 }
 
 export interface ChartProps {

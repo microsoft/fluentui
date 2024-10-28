@@ -1,7 +1,7 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
 import { create as d3Create, select as d3Select } from 'd3-selection';
 import { createTabster, getGroupper, getMover, getTabsterAttribute, TABSTER_ATTRIBUTE_NAME } from 'tabster';
-import { jsonConverter, validateChartPropsArray } from '../utils/chart-helpers.js';
+import { jsonConverter, SVG_NAMESPACE_URI, validateChartPropsArray } from '../utils/chart-helpers.js';
 import { ChartDataPoint, ChartProps, Variant } from './horizontalbarchart.options.js';
 
 // During the page startup.
@@ -192,7 +192,7 @@ export class HorizontalBarChart extends FASTElement {
           uniqueLegendsMap.set(point.legend, {
             legend: point.legend,
             data: point.data,
-            color: point.color,
+            color: point.gradient ? point.gradient[0] : point.color,
           });
         }
       }
@@ -322,13 +322,34 @@ export class HorizontalBarChart extends FASTElement {
         .attr('role', 'img')
         .attr('aria-label', pointData);
 
+      let gradientId = '';
+      if (point.gradient) {
+        const defs = document.createElementNS(SVG_NAMESPACE_URI, 'defs');
+        gEle.node()!.appendChild(defs);
+
+        const linearGradient = document.createElementNS(SVG_NAMESPACE_URI, 'linearGradient');
+        defs.appendChild(linearGradient);
+        gradientId = `gradient-${barNo}-${index}`;
+        linearGradient.setAttribute('id', gradientId);
+
+        const stop1 = document.createElementNS(SVG_NAMESPACE_URI, 'stop');
+        linearGradient.appendChild(stop1);
+        stop1.setAttribute('offset', '0%');
+        stop1.setAttribute('stop-color', point.gradient[0]);
+
+        const stop2 = document.createElementNS(SVG_NAMESPACE_URI, 'stop');
+        linearGradient.appendChild(stop2);
+        stop2.setAttribute('offset', '100%');
+        stop2.setAttribute('stop-color', point.gradient[1]);
+      }
+
       gEle
         .append('rect')
         .attr('key', index)
         .attr('id', `${barNo}-${index}`)
         .attr('barinfo', `${point.legend}`)
         .attr('class', 'bar')
-        .attr('style', `fill:${point.color!}`)
+        .attr('style', point.gradient ? `fill:url(#${gradientId})` : `fill:${point.color!}`)
         .attr(
           'x',
           `${
@@ -387,7 +408,7 @@ export class HorizontalBarChart extends FASTElement {
         const tooltipHTML = `
         <div class="tooltipline" style="border-left:4px solid ${d.color};">
             <div class="tooltiplegend">${d.legend}</div>
-            <div class="tooltipdata" style="color: ${d.color};">${d.data}</div>
+            <div class="tooltipdata" style="color: ${d.gradient ? d.gradient[0] : d.color};">${d.data}</div>
         </div>
        `;
         tooltip = containerDiv
