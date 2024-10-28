@@ -63,6 +63,10 @@ export class HorizontalBarChart extends FASTElement {
     super.connectedCallback();
 
     validateChartPropsArray(this.data, 'data');
+
+    this.initializeData();
+    this.renderChart();
+    this.renderLegends();
   }
 
   private initializeData() {
@@ -73,8 +77,6 @@ export class HorizontalBarChart extends FASTElement {
   }
 
   public renderChart() {
-    this.initializeData();
-
     const chartContainerDiv = d3Select(this.chartContainer);
     chartContainerDiv
       .selectAll('div')

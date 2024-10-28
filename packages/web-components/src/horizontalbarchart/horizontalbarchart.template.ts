@@ -15,8 +15,8 @@ getGroupper(tabsterCore);
 export function horizontalbarchartTemplate<T extends HorizontalBarChart>(): ElementViewTemplate<T> {
   return html<T>` <template>
     <div>
-      <div ${ref('chartContainer')}>${x => x.renderChart()}</div>
-      <div class="legendcontainer" ${ref('legendContainer')}>${x => x.renderLegends()}</div>
+      <div ${ref('chartContainer')}></div>
+      <div class="legendcontainer" ${ref('legendContainer')}></div>
     </div>
   </template>`;
 }
