@@ -52,6 +52,7 @@ export class HorizontalBarChart extends FASTElement {
   public hideRatio = false;
 
   private barHeight: number = 12;
+  private _selectedLegend: string = '';
 
   constructor() {
     super();
@@ -121,45 +122,146 @@ export class HorizontalBarChart extends FASTElement {
 
     for (let i = 0; i < legendButtonRefs.length; i++) {
       legendButtonRefs[i].addEventListener('mouseover', () => {
-        for (let j = 0; j < bars!.length; j++) {
-          if (bars![j].getAttribute('barinfo') !== legendButtonRefs[i].textContent) {
-            bars![j].style['opacity'] = '0.1';
+        if (this._selectedLegend !== '') {
+          return;
+        }
+
+        for (let j = 0; j < bars.length; j++) {
+          if (bars[j].getAttribute('barinfo') !== this.uniqueLegends[i].legend) {
+            bars[j].style['opacity'] = '0.1';
+          } else {
+            bars[j].style['opacity'] = '1';
           }
         }
         for (let j = 0; j < legendButtonRefs.length; j++) {
+          const legendRect = (
+            legendButtonRefs[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
+          )[0];
+          const legendText = (
+            legendButtonRefs[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
+          )[0];
+
           if (j !== i) {
-            const legendRect = legendButtonRefs[j].getElementsByClassName('legendRect')[0];
-            if (legendRect) {
-              legendRect.style['backgroundColor'] = 'transparent';
-            } else {
-              console.warn(`legendRect not found for button index ${j}`);
-            }
-            const legendText = legendButtonRefs[j].getElementsByClassName('legendText')[0];
-            if (legendText) {
-              legendText.style['opacity'] = '0.67';
-            } else {
-              console.warn(`legendText not found for button index ${j}`);
-            }
+            legendRect.style['backgroundColor'] = 'transparent';
+            legendText.style['opacity'] = '0.67';
+          } else {
+            legendRect.style['backgroundColor'] = this.uniqueLegends[j].color!;
+            legendText.style['opacity'] = '1';
           }
         }
       });
       legendButtonRefs[i].addEventListener('mouseout', () => {
-        for (let j = 0; j < bars!.length; j++) {
-          bars![j].style['opacity'] = '1';
+        if (this._selectedLegend !== '') {
+          return;
+        }
+
+        for (let j = 0; j < bars.length; j++) {
+          bars[j].style['opacity'] = '1';
         }
         for (let j = 0; j < legendButtonRefs.length; j++) {
-          const legendRect = legendButtonRefs[j].getElementsByClassName('legendRect')[0];
-          if (legendRect) {
-            legendRect.style['backgroundColor'] = this.uniqueLegends[j].color;
-          } else {
-            console.warn(`legendRect not found for button index ${j}`);
-          }
+          const legendRect = (
+            legendButtonRefs[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
+          )[0];
+          legendRect.style['backgroundColor'] = this.uniqueLegends[j].color!;
 
-          const legendText = legendButtonRefs[j].getElementsByClassName('legendText')[0];
-          if (legendText) {
-            legendText.style['opacity'] = '1';
+          const legendText = (
+            legendButtonRefs[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
+          )[0];
+          legendText.style['opacity'] = '1';
+        }
+      });
+      legendButtonRefs[i].addEventListener('focus', () => {
+        if (this._selectedLegend !== '') {
+          return;
+        }
+
+        for (let j = 0; j < bars.length; j++) {
+          if (bars[j].getAttribute('barinfo') !== this.uniqueLegends[i].legend) {
+            bars[j].style['opacity'] = '0.1';
           } else {
-            console.warn(`legendText not found for button index ${j}`);
+            bars[j].style['opacity'] = '1';
+          }
+        }
+        for (let j = 0; j < legendButtonRefs.length; j++) {
+          const legendRect = (
+            legendButtonRefs[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
+          )[0];
+          const legendText = (
+            legendButtonRefs[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
+          )[0];
+
+          if (j !== i) {
+            legendRect.style['backgroundColor'] = 'transparent';
+            legendText.style['opacity'] = '0.67';
+          } else {
+            legendRect.style['backgroundColor'] = this.uniqueLegends[j].color!;
+            legendText.style['opacity'] = '1';
+          }
+        }
+      });
+      legendButtonRefs[i].addEventListener('blur', () => {
+        if (this._selectedLegend !== '') {
+          return;
+        }
+
+        for (let j = 0; j < bars.length; j++) {
+          bars[j].style['opacity'] = '1';
+        }
+        for (let j = 0; j < legendButtonRefs.length; j++) {
+          const legendRect = (
+            legendButtonRefs[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
+          )[0];
+          legendRect.style['backgroundColor'] = this.uniqueLegends[j].color!;
+
+          const legendText = (
+            legendButtonRefs[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
+          )[0];
+          legendText.style['opacity'] = '1';
+        }
+      });
+      legendButtonRefs[i].addEventListener('click', () => {
+        if (this._selectedLegend === this.uniqueLegends[i].legend) {
+          this._selectedLegend = '';
+
+          for (let j = 0; j < bars.length; j++) {
+            bars[j].style['opacity'] = '1';
+          }
+          for (let j = 0; j < legendButtonRefs.length; j++) {
+            const legendRect = (
+              legendButtonRefs[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
+            )[0];
+            legendRect.style['backgroundColor'] = this.uniqueLegends[j].color!;
+
+            const legendText = (
+              legendButtonRefs[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
+            )[0];
+            legendText.style['opacity'] = '1';
+          }
+        } else {
+          this._selectedLegend = this.uniqueLegends[i].legend;
+
+          for (let j = 0; j < bars.length; j++) {
+            if (bars[j].getAttribute('barinfo') !== this.uniqueLegends[i].legend) {
+              bars[j].style['opacity'] = '0.1';
+            } else {
+              bars[j].style['opacity'] = '1';
+            }
+          }
+          for (let j = 0; j < legendButtonRefs.length; j++) {
+            const legendRect = (
+              legendButtonRefs[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
+            )[0];
+            const legendText = (
+              legendButtonRefs[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
+            )[0];
+
+            if (j !== i) {
+              legendRect.style['backgroundColor'] = 'transparent';
+              legendText.style['opacity'] = '0.67';
+            } else {
+              legendRect.style['backgroundColor'] = this.uniqueLegends[j].color!;
+              legendText.style['opacity'] = '1';
+            }
           }
         }
       });
