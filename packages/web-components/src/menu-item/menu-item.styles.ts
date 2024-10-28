@@ -20,13 +20,7 @@ import {
   lineHeightBase200,
   lineHeightBase300,
 } from '../theme/design-tokens.js';
-import { checkedState, disabledState } from '../styles/states/index.js';
-
-/**
- * Selector for the `submenu` state.
- * @public
- */
-export const submenuState = css.partial`:is([state--submenu], :state(submenu))`;
+import { checkedState, disabledState, submenuState } from '../styles/states/index.js';
 
 /** MenuItem styles
  * @public
