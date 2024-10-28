@@ -21,37 +21,43 @@ import {
 import * as React from 'react';
 
 const useClasses = makeStyles({
-  slider: {},
-
   container: {
     display: 'flex',
-    flexDirection: 'row',
-
+    gap: '20px',
+  },
+  carousel: {
+    border: `2px solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
+    padding: '20px 0',
+    marginTop: '24px',
   },
   card: {
     margin: '10px',
   },
   logLabel: {
+    alignSelf: 'end',
     color: tokens.colorNeutralForegroundOnBrand,
     backgroundColor: tokens.colorBrandBackground,
     width: 'fit-content',
     fontWeight: tokens.fontWeightBold,
     padding: '2px 12px',
+    borderRadius: `${tokens.borderRadiusMedium} ${tokens.borderRadiusMedium} 0 0`,
   },
   log: {
     overflowY: 'auto',
     boxShadow: tokens.shadow16,
-    position: 'relative',
-    minWidth: '200px',
-    height: '300px',
+    minWidth: '240px',
+    flex: 1,
     border: `2px solid ${tokens.colorBrandBackground}`,
+    borderRadius: `${tokens.borderRadiusMedium} 0 ${tokens.borderRadiusMedium} ${tokens.borderRadiusMedium}`,
     padding: '12px',
   },
   logContainer: {
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
+    filter: `drop-shadow(0 0 4px ${tokens.colorNeutralStroke1})`,
   },
   wireframe: {
     backgroundColor: tokens.colorNeutralBackground3,
@@ -63,7 +69,7 @@ const useClasses = makeStyles({
     placeContent: 'center',
 
     padding: '40px',
-    height: '200px',
+    height: '100px',
 
     position: 'relative',
   },
@@ -128,37 +134,27 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
 export const Eventing = () => {
   const classes = useClasses();
   const labelId = useId();
+
+  const [activeIndex, setActiveIndex] = React.useState(0);
   const [statusLog, setStatusLog] = React.useState<
     [number, { type: 'click' | 'focus' | 'drag' | undefined; index: number }][]
   >([]);
 
   return (
     <div className={classes.container}>
-      <div className={classes.logContainer}>
-        <div className={classes.logLabel} id={labelId}>
-          Status log
-        </div>
-        <div role="log" aria-labelledby={labelId} className={classes.log}>
-          {statusLog.map(([time, status], i) => {
-            const date = new Date(time);
-            return (
-              <div key={i}>
-                {date.toLocaleTimeString()} <Text weight="bold">{`Index: ${status.index} Type: ${status.type}`}</Text>
-              </div>
-            );
-          })}
-        </div>
-      </div>
       <Carousel
+        className={classes.carousel}
         groupSize={1}
         circular
         draggable
         announcement={getAnnouncement}
+        activeIndex={activeIndex}
         onActiveIndexChange={(ev, data) => {
+          setActiveIndex(data.index);
           setStatusLog(prev => [[Date.now(), { type: data.type, index: data.index }], ...prev]);
         }}
       >
-        <CarouselSlider cardFocus className={classes.slider}>
+        <CarouselSlider cardFocus>
           <CarouselCard className={classes.card} autoSize aria-label="1 of 7">
             <WireframeContent appearance="odd">
               <Title1 align="center">Lorem Ipsum</Title1>
@@ -213,6 +209,26 @@ export const Eventing = () => {
           <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
         </CarouselNavContainer>
       </Carousel>
+
+      <div className={classes.logContainer}>
+        <div className={classes.logLabel} id={labelId}>
+          Events log
+        </div>
+        <div role="log" aria-labelledby={labelId} className={classes.log}>
+          {statusLog.map(([time, status], i) => {
+            const date = new Date(time);
+
+            return (
+              <div key={i}>
+                {date.toLocaleTimeString()}{' '}
+                <Text weight="bold">
+                  {'{'} type: {status.type}, index: {status.index} {'}'}
+                </Text>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };
