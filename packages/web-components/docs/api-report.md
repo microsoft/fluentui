@@ -55,9 +55,9 @@ export class AccordionItem extends BaseAccordionItem {
     block: boolean;
     blockChanged(prev: boolean, next: boolean): void;
     markerPosition?: AccordionItemMarkerPosition;
-    markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
+    markerPositionChanged(prev: AccordionItemMarkerPosition | undefined, next: AccordionItemMarkerPosition | undefined): void;
     size?: AccordionItemSize;
-    sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
+    sizeChanged(prev: AccordionItemSize | undefined, next: AccordionItemSize | undefined): void;
 }
 
 // @internal
@@ -583,7 +583,7 @@ export class BaseDivider extends FASTElement {
     elementInternals: ElementInternals;
     orientation?: DividerOrientation;
     // @internal
-    orientationChanged(previous: string | null, next: string | null): void;
+    orientationChanged(previous: DividerRole | undefined, next: DividerRole | undefined): void;
     role: DividerRole;
     // @internal
     roleChanged(previous: string | null, next: string | null): void;
@@ -3268,7 +3268,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     mode: SliderMode;
     orientation?: Orientation;
     // (undocumented)
-    protected orientationChanged(prev: string | undefined, next: string | undefined): void;
+    protected orientationChanged(prev: Orientation | undefined, next: Orientation | undefined): void;
     // @internal (undocumented)
     position: string;
     reportValidity(): boolean;
@@ -3279,7 +3279,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     size?: SliderSize;
     // (undocumented)
-    protected sizeChanged(prev: string, next: string): void;
+    protected sizeChanged(prev: SliderSize | undefined, next: SliderSize | undefined): void;
     step: string;
     // (undocumented)
     protected stepChanged(): void;
