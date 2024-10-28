@@ -64,3 +64,46 @@ export function toggleState(elementInternals: ElementInternals, state: string | 
   // @ts-expect-error - Baseline 2024
   elementInternals.states.delete(state);
 }
+
+/**
+ * Check if a given attribute value is a valid state. Attribute values are often kebab-cased, so this function converts
+ * the kebab-cased `state` to camelCase and checks if it exists in as a key in the `States` object.
+ *
+ * @param States  - the object containing valid states for the attribute
+ * @param state - the state to check
+ * @returns true if the state is in the States object
+ * @internal
+ */
+export function hasMatchingState(States: Record<string, string> | undefined, state: string | undefined): boolean {
+  if (!States || !state) {
+    return false;
+  }
+
+  const camelState = state.replace(/-([a-z])/g, g => g[1].toUpperCase());
+  return Object.hasOwn(States, camelState);
+}
+
+/**
+ * Swap an old state for a new state.
+ *
+ * @param elementInternals - the `ElementInternals` instance for the component
+ * @param prev - the previous state to remove
+ * @param next - the new state to add
+ * @param States - the object containing valid states for the attribute
+ * @param prefix - an optional prefix to add to the state
+ *
+ * @internal
+ */
+export function swapStates(
+  elementInternals: ElementInternals,
+  prev: string | undefined = '',
+  next: string | undefined = '',
+  States?: Record<string, string>,
+  prefix: string = '',
+): void {
+  toggleState(elementInternals, `${prefix}${prev}`, false);
+
+  if (!States || hasMatchingState(States, next)) {
+    toggleState(elementInternals, `${prefix}${next}`, true);
+  }
+}
