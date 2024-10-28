@@ -147,7 +147,7 @@ packages/react-components/react-aria @microsoft/teams-prg
 packages/react-components/react-aria/library @microsoft/teams-prg
 packages/react-components/react-aria/stories @microsoft/teams-prg
 packages/react-cards @microsoft/cxe-red @khmakoto
-packages/react-charting @microsoft/charting-team
+packages/charts @microsoft/charting-team
 packages/react-components/react-conformance-griffel @microsoft/teams-prg
 packages/react-components/react-context-selector @microsoft/teams-prg
 packages/react-date-time @microsoft/cxe-red
