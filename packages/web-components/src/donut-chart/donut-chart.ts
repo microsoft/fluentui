@@ -36,6 +36,12 @@ export class DonutChart extends FASTElement {
   @attr({ attribute: 'value-inside-donut' })
   public valueInsideDonut?: string;
 
+  public rootDiv!: HTMLDivElement;
+  public chartWrapper!: HTMLDivElement;
+  public group!: SVGGElement;
+  public legendContainer!: HTMLDivElement;
+  public tooltip!: HTMLDivElement;
+
   private _selectedLegend: string = '';
 
   constructor() {
@@ -61,30 +67,12 @@ export class DonutChart extends FASTElement {
   }
 
   render() {
-    const rootDiv = document.createElement('div');
-    this.shadowRoot?.appendChild(rootDiv);
-    rootDiv.classList.add('root');
-
-    const chartWrapper = document.createElement('div');
-    rootDiv.appendChild(chartWrapper);
-
-    const tabsterAttribute = getTabsterAttribute({
-      mover: { direction: MoverDirections.Horizontal, tabbable: true },
-    });
-    if (tabsterAttribute[TABSTER_ATTRIBUTE_NAME]) {
-      chartWrapper.setAttribute(TABSTER_ATTRIBUTE_NAME, tabsterAttribute[TABSTER_ATTRIBUTE_NAME]);
-    }
-
-    const svg = document.createElementNS(SVG_NAMESPACE_URI, 'svg');
-    chartWrapper.appendChild(svg);
-    svg.setAttribute('width', `${this.width}`);
-    svg.setAttribute('height', `${this.height}`);
-    this.data.chartTitle && svg.setAttribute('aria-label', this.data.chartTitle);
-    svg.classList.add('chart');
-
-    const group = document.createElementNS(SVG_NAMESPACE_URI, 'g');
-    svg.appendChild(group);
-    group.setAttribute('transform', `translate(${this.width / 2}, ${this.height / 2})`);
+    // const tabsterAttribute = getTabsterAttribute({
+    //   mover: { direction: MoverDirections.Horizontal, tabbable: true },
+    // });
+    // if (tabsterAttribute[TABSTER_ATTRIBUTE_NAME]) {
+    //   this.chartWrapper.setAttribute(TABSTER_ATTRIBUTE_NAME, tabsterAttribute[TABSTER_ATTRIBUTE_NAME]);
+    // }
 
     const pie = d3Pie<ChartDataPoint>()
       .value(d => d.data)
@@ -93,12 +81,8 @@ export class DonutChart extends FASTElement {
       .innerRadius(this.innerRadius)
       .outerRadius((Math.min(this.height, this.width) - 20) / 2);
 
-    const tooltip = document.createElement('div');
-    rootDiv.appendChild(tooltip);
-    tooltip.classList.add('calloutContentRoot');
-
     const tooltipBody = document.createElement('div');
-    tooltip.appendChild(tooltipBody);
+    this.tooltip.appendChild(tooltipBody);
     tooltipBody.classList.add('calloutBlockContainer');
 
     const legendText = document.createElement('div');
@@ -111,7 +95,7 @@ export class DonutChart extends FASTElement {
 
     pie(this.data.chartData).forEach(arcDatum => {
       const arcGroup = document.createElementNS(SVG_NAMESPACE_URI, 'g');
-      group.appendChild(arcGroup);
+      this.group.appendChild(arcGroup);
 
       const pathOutline = document.createElementNS(SVG_NAMESPACE_URI, 'path');
       arcGroup.appendChild(pathOutline);
@@ -137,11 +121,11 @@ export class DonutChart extends FASTElement {
         legendText.textContent = arcDatum.data.legend;
         yText.textContent = `${arcDatum.data.data}`;
         yText.style['color'] = arcDatum.data.color!;
-        tooltip.style['opacity'] = '1';
+        this.tooltip.style['opacity'] = '1';
 
-        const bounds = rootDiv.getBoundingClientRect();
-        tooltip.style['left'] = `${event.clientX - bounds.left}px`;
-        tooltip.style['top'] = `${event.clientY - bounds.top - 85}px`;
+        const bounds = this.rootDiv.getBoundingClientRect();
+        this.tooltip.style['left'] = `${event.clientX - bounds.left}px`;
+        this.tooltip.style['top'] = `${event.clientY - bounds.top - 85}px`;
       });
       path.addEventListener('focus', event => {
         if (this._selectedLegend !== '' && this._selectedLegend !== arcDatum.data.legend) {
@@ -152,25 +136,25 @@ export class DonutChart extends FASTElement {
         legendText.textContent = arcDatum.data.legend;
         yText.textContent = `${arcDatum.data.data}`;
         yText.style['color'] = arcDatum.data.color!;
-        tooltip.style['opacity'] = '1';
+        this.tooltip.style['opacity'] = '1';
 
-        const rootBounds = rootDiv.getBoundingClientRect();
+        const rootBounds = this.rootDiv.getBoundingClientRect();
         const arcBounds = path.getBoundingClientRect();
-        tooltip.style['left'] = `${arcBounds.left + arcBounds.width / 2 - rootBounds.left}px`;
-        tooltip.style['top'] = `${arcBounds.top - rootBounds.top - 85}px`;
+        this.tooltip.style['left'] = `${arcBounds.left + arcBounds.width / 2 - rootBounds.left}px`;
+        this.tooltip.style['top'] = `${arcBounds.top - rootBounds.top - 85}px`;
       });
       path.addEventListener('blur', event => {
-        tooltip.style['opacity'] = '0';
+        this.tooltip.style['opacity'] = '0';
       });
     });
 
-    rootDiv.addEventListener('mouseleave', () => {
-      tooltip.style['opacity'] = '0';
+    this.rootDiv.addEventListener('mouseleave', () => {
+      this.tooltip.style['opacity'] = '0';
     });
 
     if (this.valueInsideDonut) {
       const text = document.createElementNS(SVG_NAMESPACE_URI, 'text');
-      group.appendChild(text);
+      this.group.appendChild(text);
       text.classList.add('insideDonutString');
       text.setAttribute('x', '0');
       text.setAttribute('y', '0');
@@ -188,15 +172,9 @@ export class DonutChart extends FASTElement {
 
     const legends = this.data.chartData.map(dataPoint => ({ title: dataPoint.legend, color: dataPoint.color! }));
 
-    const legendContainer = document.createElement('div');
-    rootDiv.appendChild(legendContainer);
-    legendContainer.classList.add('legendContainer');
-    legendContainer.setAttribute('role', 'listbox');
-    legendContainer.setAttribute('aria-label', 'Legends');
-
     legends.forEach((legendItem, index) => {
       const button = document.createElement('button');
-      legendContainer.appendChild(button);
+      this.legendContainer.appendChild(button);
       button.classList.add('legend');
       button.setAttribute('role', 'option');
       button.setAttribute('aria-setsize', `${legends.length}`);
@@ -215,8 +193,8 @@ export class DonutChart extends FASTElement {
       legendText.classList.add('legendText');
     });
 
-    const buttons = legendContainer.getElementsByClassName('legend') as HTMLCollectionOf<HTMLButtonElement>;
-    const arcs = group.getElementsByClassName('arc') as HTMLCollectionOf<SVGPathElement>;
+    const buttons = this.legendContainer.getElementsByClassName('legend') as HTMLCollectionOf<HTMLButtonElement>;
+    const arcs = this.group.getElementsByClassName('arc') as HTMLCollectionOf<SVGPathElement>;
 
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].addEventListener('mouseover', () => {
@@ -341,4 +319,8 @@ export class DonutChart extends FASTElement {
       });
     }
   }
+
+  public getLegends = () => {
+    return this.data.chartData?.map(d => ({ title: d.legend, color: d.color })) || [];
+  };
 }
