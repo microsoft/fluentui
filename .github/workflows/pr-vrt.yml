@@ -1,0 +1,103 @@
+name: VRT CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+concurrency:
+  # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PREFER_TS_NODE: true
+  NX_VERBOSE_LOGGING: true
+
+  # GitHub Secrets for Azure access
+  # This service principal ("subscription" is a misleading name) only has access to the fluentuipr storage account
+  AZURE_SUBSCRIPTION: Azure PR deploy - NEW
+  AZURE_STORAGE: fluentuipr
+
+permissions:
+  contents: 'read'
+  actions: 'read'
+
+jobs:
+  VisualRegressionTest_WebComponents:
+    runs-on: ubuntu-latest
+    env:
+      pipelineId: '315'
+      pipelineName: 'fluent-ui_VRT_Pipeline_web-components'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run and publish VR screenshot
+        uses: ./.github/actions/run-publish-vr-screenshot
+        with:
+          fluentVersion: webcomponents
+          vrTestPackageName: 'vr-tests-web-components'
+          vrTestPackagePath: 'apps/vr-tests-web-components'
+          locationPrefix: 'FluentUI-web-components'
+          locationPostfix: 'vrscreenshotwebcomponents'
+          clientName: 'fluentui-web-components-v3'
+
+  VisualRegressionTest_V9:
+    runs-on: ubuntu-latest
+    env:
+      pipelineId: '311'
+      pipelineName: 'fluent-ui_VRT_Pipeline_v9'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run and publish VR screenshot
+        uses: ./.github/actions/run-publish-vr-screenshot
+        with:
+          fluentVersion: v9
+          vrTestPackageName: 'vr-tests-react-components'
+          vrTestPackagePath: 'apps/vr-tests-react-components'
+          locationPrefix: 'fluentuiv9'
+          locationPostfix: 'vrscreenshotv9'
+          clientName: 'fluentuiv9'
+
+  VisualRegressionTest_V8:
+    runs-on: ubuntu-latest
+    env:
+      pipelineId: '312'
+      pipelineName: 'fluent-ui_VRT_Pipeline_v8'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run and publish VR screenshot
+        uses: ./.github/actions/run-publish-vr-screenshot
+        with:
+          fluentVersion: v8
+          vrTestPackageName: 'vr-tests'
+          vrTestPackagePath: 'apps/vr-tests'
+          locationPrefix: 'fluentuiv8'
+          locationPostfix: 'vrscreenshotv8'
+          clientName: 'fluentuiv8'
+
+  VisualRegressionTest_V0:
+    runs-on: ubuntu-latest
+    env:
+      pipelineId: '313'
+      pipelineName: 'fluent-ui_VRT_Pipeline_v0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run and publish VR screenshot
+        uses: ./.github/actions/run-publish-vr-screenshot
+        with:
+          fluentVersion: v0
+          vrTestPackageName: 'docs'
+          vrTestPackagePath: 'packages/fluentui/docs'
+          locationPrefix: 'FluentUI-v0'
+          locationPostfix: 'vrscreenshotv0'
+          clientName: 'FluentUIV0'
