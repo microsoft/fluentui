@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 29 Oct 2024 04:06:49 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.71",
+      "version": "3.0.0-beta.71",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "62d8aaa93842818bb51626606f8e93a8358924d4",
+            "comment": "replace state partials with stateSelector function"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Oct 2024 20:54:39 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.70",
       "version": "3.0.0-beta.70",

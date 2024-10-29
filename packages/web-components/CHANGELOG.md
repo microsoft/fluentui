@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 25 Oct 2024 20:54:39 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Oct 2024 04:06:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.71](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.71)
+
+Tue, 29 Oct 2024 04:06:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.70..@fluentui/web-components_v3.0.0-beta.71)
+
+### Changes
+
+- replace state partials with stateSelector function ([PR #33037](https://github.com/microsoft/fluentui/pull/33037) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.70](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.70)
 
