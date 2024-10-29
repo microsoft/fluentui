@@ -1,6 +1,7 @@
 import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
 import type { Tooltip } from './tooltip.js';
+import type { TooltipPositioningOption } from './tooltip.options.js';
 
 test.describe('Tooltip', () => {
   test.beforeEach(async ({ page }) => {
@@ -86,7 +87,7 @@ test.describe('Tooltip', () => {
     const button = page.locator('button');
 
     await element.evaluate((node: Tooltip) => {
-      node.positioning = 'above';
+      node.positioning = 'above' as TooltipPositioningOption;
     });
     await expect(element).toHaveAttribute('positioning', 'above');
 
@@ -104,7 +105,7 @@ test.describe('Tooltip', () => {
     const button = page.locator('button');
 
     await element.evaluate((node: Tooltip) => {
-      node.positioning = 'below';
+      node.positioning = 'below' as TooltipPositioningOption;
     });
     await expect(element).toHaveAttribute('positioning', 'below');
 
@@ -122,7 +123,7 @@ test.describe('Tooltip', () => {
     const button = page.locator('button');
 
     await element.evaluate((node: Tooltip) => {
-      node.positioning = 'before';
+      node.positioning = 'before' as TooltipPositioningOption;
     });
     await expect(element).toHaveAttribute('positioning', 'before');
 
@@ -140,7 +141,7 @@ test.describe('Tooltip', () => {
     const button = page.locator('button');
 
     await element.evaluate((node: Tooltip) => {
-      node.positioning = 'after';
+      node.positioning = 'after' as TooltipPositioningOption;
     });
     await expect(element).toHaveAttribute('positioning', 'after');
 
