@@ -14,7 +14,7 @@ import {
 import { numberLikeStringConverter } from '../utils/converters.js';
 import { getDirection } from '../utils/direction.js';
 import { toggleState } from '../utils/element-internals.js';
-import { SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
+import { type SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
 import { convertPixelToPercent } from './slider-utilities.js';
 
 /**

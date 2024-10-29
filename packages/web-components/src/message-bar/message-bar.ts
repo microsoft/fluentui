@@ -1,6 +1,6 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
-import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-bar.options.js';
+import type { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-bar.options.js';
 
 /**
  * A Message Bar Custom HTML Element.

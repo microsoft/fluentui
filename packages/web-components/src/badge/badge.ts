@@ -3,7 +3,7 @@ import { attr, FASTElement } from '@microsoft/fast-element';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { StartEnd } from '../patterns/index.js';
 import { toggleState } from '../utils/element-internals.js';
-import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
+import { BadgeAppearance, BadgeColor, type BadgeShape, type BadgeSize } from './badge.options.js';
 
 /**
  * The base class used for constructing a fluent-badge custom element

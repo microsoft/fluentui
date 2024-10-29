@@ -3,7 +3,7 @@ import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-elem
 import { applyMixins } from '../utils/apply-mixins.js';
 import { StartEnd } from '../patterns/index.js';
 import { toggleState } from '../utils/element-internals.js';
-import {
+import type {
   CounterBadgeAppearance,
   CounterBadgeColor,
   CounterBadgeShape,

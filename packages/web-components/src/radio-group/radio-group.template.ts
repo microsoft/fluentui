@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html } from '@microsoft/fast-element';
 import type { RadioGroup } from './radio-group.js';
 
 export function radioGroupTemplate<T extends RadioGroup>(): ElementViewTemplate<T> {

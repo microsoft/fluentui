@@ -15,7 +15,7 @@ import type { HostBehavior } from '@microsoft/fast-element';
 import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
-import type { SyntheticViewTemplate } from '@microsoft/fast-element';
+import { SyntheticViewTemplate } from '@microsoft/fast-element';
 import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
