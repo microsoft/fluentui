@@ -1,5 +1,4 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { wrapInBounds } from '@microsoft/fast-web-utilities';
 import {
   keyArrowDown,
   keyArrowLeft,
@@ -8,12 +7,13 @@ import {
   keyEnd,
   keyHome,
   uniqueId,
+  wrapInBounds,
 } from '@microsoft/fast-web-utilities';
 import { getDirection } from '../utils/index.js';
 import { toggleState } from '../utils/element-internals.js';
 import { isFocusableElement } from '../utils/focusable-element.js';
-import { Tab } from '../index.js';
-import { TablistAppearance, TablistOrientation, TablistSize } from './tablist.options.js';
+import type { Tab } from '../tab/tab.js';
+import { TablistAppearance, TablistOrientation, type TablistSize } from './tablist.options.js';
 
 type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
 

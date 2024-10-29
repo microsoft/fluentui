@@ -1,7 +1,7 @@
 import { attr } from '@microsoft/fast-element';
 import { BaseAnchor } from '../anchor-button/anchor-button.js';
 import { toggleState } from '../utils/element-internals.js';
-import { type LinkAppearance } from './link.options.js';
+import type { LinkAppearance } from './link.options.js';
 
 /**
  * An Anchor Custom HTML Element.

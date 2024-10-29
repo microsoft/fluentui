@@ -1,6 +1,6 @@
 import { attr, FASTElement, nullableNumberConverter, volatile } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
-import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
+import type { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
 
 /**
  * A Progress HTML Element.

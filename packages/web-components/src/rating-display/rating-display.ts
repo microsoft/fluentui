@@ -1,6 +1,6 @@
 import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
-import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
+import type { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
 /**
  * The base class used for constructing a fluent-rating-display custom element

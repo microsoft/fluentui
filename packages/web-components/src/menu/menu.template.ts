@@ -1,4 +1,4 @@
-import { elements, ElementViewTemplate, html, ref, slotted } from '@microsoft/fast-element';
+import { elements, type ElementViewTemplate, html, ref, slotted } from '@microsoft/fast-element';
 import type { Menu } from './menu.js';
 
 export function menuTemplate<T extends Menu>(): ElementViewTemplate<T> {

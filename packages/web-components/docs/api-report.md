@@ -15,7 +15,7 @@ import type { HostBehavior } from '@microsoft/fast-element';
 import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
-import type { SyntheticViewTemplate } from '@microsoft/fast-element';
+import { SyntheticViewTemplate } from '@microsoft/fast-element';
 import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
@@ -187,7 +187,7 @@ export class Avatar extends BaseAvatar {
     appearance?: AvatarAppearance | undefined;
     color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
-    static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
+    static colors: ("anchor" | "beige" | "blue" | "brass" | "brown" | "cornflower" | "cranberry" | "dark-green" | "dark-red" | "forest" | "gold" | "grape" | "lavender" | "light-teal" | "lilac" | "magenta" | "marigold" | "mink" | "navy" | "peach" | "pink" | "platinum" | "plum" | "pumpkin" | "purple" | "red" | "royal-blue" | "seafoam" | "steel" | "teal")[];
     // (undocumented)
     connectedCallback(): void;
     // (undocumented)

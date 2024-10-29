@@ -5,7 +5,7 @@ import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { toggleState } from '../utils/element-internals.js';
-import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
+import type { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
 
 /**
  * Accordion Item configuration options
