@@ -36,7 +36,7 @@ const env = process.env.NODE_ENV || 'development';
 const __DEV__ = env === 'development';
 const __PERF__ = !!process.env.PERF;
 const __PROD__ = env === 'production';
-const deployUrl = process.env.DEPLOYURL ? new URL(process.env.DEPLOYURL) : undefined;
+const deployUrl = process.env.DEPLOY_URL ? new URL(process.env.DEPLOY_URL) : undefined;
 const deployBasePath = deployUrl ? deployUrl.pathname : undefined;
 let __BASENAME__ = deployBasePath
   ? // This needs a trailing slash or images won't work.

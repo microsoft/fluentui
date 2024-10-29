@@ -1,0 +1,48 @@
+name: PR Website Deploy | Comment on PR
+on:
+  workflow_run:
+    workflows: ['PR Website Deploy']
+    types:
+      - completed
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
+    permissions:
+      pull-requests: write
+    steps:
+      - name: 'Download artifact'
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: pr-website-deploy-url
+          path: ./results
+          run_id: ${{ github.event.workflow_run.id }}
+          workflow: ${{ github.event.workflow.id }}
+          workflow_conclusion: success
+
+      - name: Load PR number
+        id: pr_number
+        run: echo "::set-output name=id::$(cat pr.txt)"
+        working-directory: ./results
+
+      - name: Load URL
+        id: website_url
+        run: echo "::set-output name=id::$(cat website-deploy-url.txt)"
+        working-directory: ./results
+
+      - name: 'Comment on PR'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ steps.pr_number.outputs.id }}
+          message: |
+            Pull request demo site: [URL](${{steps.pr_number.outputs.id}})
+
+      - name: Update PR deploy site GitHub status
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const run = require('./.github/deploy-pr-site-status');
+            const config = { websiteUrl: '${{steps.website_url.outputs.id}}', prId: '${{steps.pr_number.outputs.id}}'};
+            await run({github,context,core,config});
