@@ -66,6 +66,12 @@ export function toggleState(elementInternals: ElementInternals, state: string | 
 }
 
 /**
+ * A weak map to store the valid states for attributes.
+ * @internal
+ */
+const matchingStateMap = new WeakMap<Record<string, string>, Set<string>>();
+
+/**
  * Check if a given attribute value is a valid state. Attribute values are often kebab-cased, so this function converts
  * the kebab-cased `state` to camelCase and checks if it exists in as a key in the `States` object.
  *
@@ -79,8 +85,13 @@ export function hasMatchingState(States: Record<string, string> | undefined, sta
     return false;
   }
 
-  const camelState = state.replace(/-([a-z])/g, g => g[1].toUpperCase());
-  return Object.hasOwn(States, camelState);
+  if (matchingStateMap.has(States)) {
+    return matchingStateMap.get(States)!.has(state);
+  }
+
+  const stateSet = new Set(Object.values(States));
+  matchingStateMap.set(States, stateSet);
+  return stateSet.has(state);
 }
 
 /**
