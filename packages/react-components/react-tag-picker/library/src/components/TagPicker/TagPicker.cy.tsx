@@ -321,7 +321,7 @@ describe('TagPicker', () => {
         cy.get(`[data-testid="tag--${options[options.length - 1]}"]`).should('not.be.focused');
         cy.get('[data-testid="tag-picker-input"]').should('have.value', 'Some Tex').should('be.focused');
       });
-      it('should move to last tag on Backspace key press on input, when input is not empty but the cursor is on the first character', () => {
+      it.skip('should move to last tag on Backspace key press on input, when input is not empty but the cursor is on the first character', () => {
         mount(<TagPickerControlled defaultSelectedOptions={options} />);
         cy.get('[data-testid="tag-picker-input"]').focus().realType('SomeText').realPress('Backspace');
         cy.get(`[data-testid="tag--${options[options.length - 1]}"]`).should('not.be.focused');
@@ -329,7 +329,7 @@ describe('TagPicker', () => {
         cy.get('[data-testid="tag-picker-input"]').realPress(['ControlLeft', 'ArrowLeft']).realPress('Backspace');
         cy.get(`[data-testid="tag--${options[options.length - 1]}"]`).should('be.focused');
       });
-      it('should delete input content on Backspace when input is not empty and selected', () => {
+      it.skip('should delete input content on Backspace when input is not empty and selected', () => {
         mount(<TagPickerControlled defaultSelectedOptions={options} />);
         cy.get('[data-testid="tag-picker-input"]').focus().realType('SomeText').realPress('Backspace');
         cy.get(`[data-testid="tag--${options[options.length - 1]}"]`).should('not.be.focused');

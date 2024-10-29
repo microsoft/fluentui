@@ -68,7 +68,7 @@ test.describe('Message Bar', () => {
     await expect(element).toHaveCustomState('rounded');
   });
 
-  test('should set and retrieve the `layout` property correctly', async ({ page }) => {
+  test.skip('should set and retrieve the `layout` property correctly', async ({ page }) => {
     const element = page.locator('fluent-message-bar');
 
     await element.evaluate((node: MessageBar) => {

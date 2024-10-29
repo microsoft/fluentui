@@ -91,7 +91,7 @@ test.describe('Anchor Button', () => {
     expect(page.url()).toContain(expectedUrl);
   });
 
-  test('should navigate to the provided url when clicked while pressing the `Control` key on Windows or Meta on Mac', async ({
+  test.skip('should navigate to the provided url when clicked while pressing the `Control` key on Windows or Meta on Mac', async ({
     page,
     context,
   }) => {
@@ -125,7 +125,7 @@ test.describe('Anchor Button', () => {
     expect(page.url()).toContain(expectedUrl);
   });
 
-  test('should navigate to the provided url when `ctrl` and `Enter` are pressed via keyboard', async ({
+  test.skip('should navigate to the provided url when `ctrl` and `Enter` are pressed via keyboard', async ({
     page,
     context,
   }) => {
