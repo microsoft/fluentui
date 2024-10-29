@@ -93,11 +93,7 @@ export class Text extends FASTElement {
    * @param next - the next state
    */
   public sizeChanged(prev: TextSize | undefined, next: TextSize | undefined) {
-    toggleState(this.elementInternals, `size-${prev}`, false);
-
-    if (hasMatchingState(TextSize, `_${next}`)) {
-      toggleState(this.elementInternals, `size-${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, TextSize, 'size-');
   }
 
   /**
