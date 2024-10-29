@@ -143,8 +143,9 @@ export class Tooltip extends FASTElement {
           }
         `;
 
-      // Dispatch a ready event for the anchor polyfill
-      document.dispatchEvent(new CustomEvent('anchor-polyfill'));
+      if (window.CSS_ANCHOR_POLYFILL) {
+        window.CSS_ANCHOR_POLYFILL.call({ element: this.anchorPositioningStyleElement });
+      }
     }
 
     this.anchorElement.addEventListener('focus', this.focusAnchorHandler);
@@ -209,4 +210,12 @@ export class Tooltip extends FASTElement {
    * Hide the tooltip on blur
    */
   public blurAnchorHandler = () => this.hideTooltip(0);
+}
+
+declare global {
+  interface Window {
+    CSS_ANCHOR_POLYFILL?: {
+      call: (options: { element: HTMLStyleElement }) => void;
+    };
+  }
 }
