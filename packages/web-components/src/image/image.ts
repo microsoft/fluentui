@@ -1,6 +1,6 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
-import { ImageFit, ImageShape } from './image.options.js';
+import type { ImageFit, ImageShape } from './image.options.js';
 
 /**
  * The base class used for constucting a fluent image custom element

@@ -12,6 +12,7 @@ import { type TsConfig } from '../../types';
 
 import { type GenerateApiExecutorSchema } from './schema';
 import executor from './executor';
+import { isCI } from './lib/shared';
 
 // =========== mocks START
 import { execSync } from 'node:child_process';
@@ -169,8 +170,11 @@ describe('GenerateApi Executor', () => {
       skipLibCheck: false,
     });
     expect(extractorConfig.skipLibCheck).toBe(false);
+
+    const actualLocalBuildValue = isCI() ? false : true;
+
     expect(extractorArgs).toEqual({
-      localBuild: true,
+      localBuild: actualLocalBuildValue,
       showDiagnostics: false,
       showVerboseMessages: true,
     });

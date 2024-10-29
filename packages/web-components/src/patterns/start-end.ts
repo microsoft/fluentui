@@ -1,6 +1,6 @@
 //Copied from @microsoft/fast-foundation
 
-import { CaptureType, html, ref } from '@microsoft/fast-element';
+import { type CaptureType, html, ref } from '@microsoft/fast-element';
 import type { StaticallyComposableHTML } from '../utils/index.js';
 import { staticallyCompose } from '../utils/index.js';
 

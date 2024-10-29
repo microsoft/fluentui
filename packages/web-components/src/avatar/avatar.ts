@@ -1,13 +1,13 @@
-import { attr, FASTElement, nullableNumberConverter, observable, Observable, Updates } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, Observable } from '@microsoft/fast-element';
 import { getInitials } from '../utils/get-initials.js';
 import { toggleState } from '../utils/element-internals.js';
 import {
-  AvatarActive,
-  AvatarAppearance,
+  type AvatarActive,
+  type AvatarAppearance,
   AvatarColor,
   AvatarNamedColor,
-  AvatarShape,
-  AvatarSize,
+  type AvatarShape,
+  type AvatarSize,
 } from './avatar.options.js';
 
 /**

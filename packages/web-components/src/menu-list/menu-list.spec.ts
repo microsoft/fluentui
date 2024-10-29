@@ -1,8 +1,7 @@
-import { once } from 'events';
 import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
+import type { MenuItem } from '../menu-item/menu-item.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
-import { MenuItem } from '../menu-item/menu-item.js';
 
 test.describe('Menu', () => {
   test.beforeEach(async ({ page }) => {

@@ -1,6 +1,6 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
-import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
+import type { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
 /**
  * The base class for a component with a toggleable checked state.
