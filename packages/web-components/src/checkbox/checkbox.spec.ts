@@ -1,16 +1,22 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Checkbox } from './checkbox.js';
+
+const storybookDocId = 'components-checkbox--docs';
 
 test.describe('Checkbox', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-checkbox--checkbox'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-checkbox'));
   });
 
   test('should set and retrieve the `shape` property correctly', async ({ page }) => {
     const element = page.locator('fluent-checkbox');
+
+    await page.setContent(/* html */ `
+        <fluent-checkbox></fluent-checkbox>
+    `);
 
     await expect(element).toHaveCount(1);
 
@@ -69,6 +75,10 @@ test.describe('Checkbox', () => {
 
   test('should set and retrieve the `size` property correctly', async ({ page }) => {
     const element = page.locator('fluent-checkbox');
+
+    await page.setContent(/* html */ `
+      <fluent-checkbox></fluent-checkbox>
+  `);
 
     await element.evaluate((node: Checkbox) => {
       node.size = 'medium';
@@ -479,4 +489,15 @@ test.describe('Checkbox', () => {
 
     expect(page.url()).toContain('?checkbox=foo&checkbox=bar');
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-checkbox'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

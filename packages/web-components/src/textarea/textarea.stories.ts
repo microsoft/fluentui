@@ -187,7 +187,12 @@ export default {
   },
 } as Meta<FluentTextArea>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    labelSlottedContent: () =>
+      html`<fluent-label slot="label" ?required="${x => x.required}">Sample textarea</fluent-label>`,
+  },
+};
 
 export const TextArea: Story = {
   args: {
@@ -199,6 +204,8 @@ export const TextArea: Story = {
 export const Placeholder: Story = {
   args: {
     placeholder: 'This is a placeholder',
+    labelSlottedContent: () =>
+      html`<fluent-label slot="label" ?required="${x => x.required}">Sample textarea</fluent-label>`,
   },
 };
 
@@ -276,6 +283,8 @@ export const Size: Story = {
 export const AutoResize: Story = {
   args: {
     autoResize: true,
+    labelSlottedContent: () =>
+      html`<fluent-label slot="label" ?required="${x => x.required}">Sample textarea</fluent-label>`,
   },
 };
 
@@ -338,6 +347,8 @@ export const Disabled: Story = {
     disabled: true,
     resize: TextAreaResize.both,
     slottedContent: () => 'This textarea is disabled',
+    labelSlottedContent: () =>
+      html`<fluent-label slot="label" ?required="${x => x.required}">Sample textarea</fluent-label>`,
   },
 };
 
@@ -357,12 +368,15 @@ export const ReadOnly: Story = {
     readOnly: true,
     resize: TextAreaResize.both,
     slottedContent: () => 'Some content',
+    labelSlottedContent: () =>
+      html`<fluent-label slot="label" ?required="${x => x.required}">Sample textarea</fluent-label>`,
   },
 };
 
 export const WithHTMLCode: Story = {
   render: renderComponent(html<StoryArgs<FluentTextArea>>`
     <fluent-textarea auto-resize resize="both" size="large">
+      <fluent-label slot="label">Sample textarea</fluent-label>
       <p>This text should show up as plain text.</p>
       <img src="logo.svg" alt="" />
       <script>

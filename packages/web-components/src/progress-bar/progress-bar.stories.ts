@@ -13,6 +13,7 @@ const storyTemplate = html<StoryArgs<FluentProgressBar>>`
     min="${story => story.min}"
     value="${story => story.value}"
     validation-state="${story => story.validationState}"
+    aria-label="Example progress"
   ></fluent-progress-bar>
 `;
 

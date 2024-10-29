@@ -1,11 +1,13 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Text } from './text.js';
 import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 
+const storybookDocId = 'components-text--docs';
+
 test.describe('Text Component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-text--text'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-text'));
   });
@@ -74,9 +76,9 @@ test.describe('Text Component', () => {
     test(`should set and reflect the align attribute to \`${value}\` when provided`, async ({ page }) => {
       const element = page.locator('fluent-text');
 
-      await element.evaluate((node: Text, alignValue: string) => {
-        node.align = alignValue as TextAlign;
-      }, value as string);
+      await page.setContent(/* html */ `
+        <fluent-text align="${value}">Text</fluent-text>
+      `);
 
       await expect(element).toHaveJSProperty('align', value);
 
@@ -90,9 +92,9 @@ test.describe('Text Component', () => {
     test(`should set and reflect the font attribute to \`${value}\` when provided`, async ({ page }) => {
       const element = page.locator('fluent-text');
 
-      await element.evaluate((node: Text, fontValue: string) => {
-        node.font = fontValue as TextFont;
-      }, value as string);
+      await page.setContent(/* html */ `
+        <fluent-text font="${value}">Text</fluent-text>
+      `);
 
       await expect(element).toHaveJSProperty('font', value);
 
@@ -101,4 +103,15 @@ test.describe('Text Component', () => {
       await expect(element).toHaveCustomState(value);
     });
   }
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-text'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

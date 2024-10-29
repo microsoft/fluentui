@@ -1,14 +1,18 @@
 import { once } from 'events';
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
 import { MenuItem } from '../menu-item/menu-item.js';
 
-test.describe('Menu', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-menulist--menu-list'));
+const storybookDocId = 'components-menulist--docs';
 
-    await page.waitForFunction(() => customElements.whenDefined('fluent-menu-list'));
+test.describe('MenuList', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(fixtureURL(storybookDocId));
+
+    await page.waitForFunction(() =>
+      Promise.all([customElements.whenDefined('fluent-menu-list'), customElements.whenDefined('fluent-menu-item')]),
+    );
   });
 
   test('should have a role of `menu`', async ({ page }) => {
@@ -588,4 +592,17 @@ test.describe('Menu', () => {
       await expect(wasChanged).resolves.toBeFalsy();
     });
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() =>
+    Promise.all([customElements.whenDefined('fluent-menu-list'), customElements.whenDefined('fluent-menu-item')]),
+  );
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

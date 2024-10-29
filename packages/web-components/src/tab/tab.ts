@@ -13,6 +13,13 @@ export type TabOptions = StartEndOptions<Tab>;
  */
 export class Tab extends FASTElement {
   /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
+  /**
    * When true, the control will be immutable by user interaction. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled | disabled HTML attribute} for more information.
    * @public
    * @remarks
@@ -20,6 +27,9 @@ export class Tab extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public disabled!: boolean;
+  protected disabledChanged() {
+    this.elementInternals.ariaDisabled = this.disabled.toString();
+  }
 
   private styles: ElementStyles | undefined;
 

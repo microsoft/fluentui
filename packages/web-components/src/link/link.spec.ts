@@ -1,7 +1,9 @@
 import { spinalCase } from '@microsoft/fast-web-utilities';
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
-import { Link } from './link.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
+import type { Link } from './link.js';
+
+const storybookDocId = 'components-link--docs';
 
 const proxyAttributes = {
   href: 'href',
@@ -21,7 +23,7 @@ const attributes = {
 
 test.describe('Link', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-link--appearance'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-link'));
   });
@@ -60,6 +62,10 @@ test.describe('Link', () => {
   test('should add a custom state matching the `appearance` attribute when provided', async ({ page }) => {
     const element = page.locator('fluent-link');
 
+    await page.setContent(/* html */ `
+      <fluent-link></fluent-link>
+    `);
+
     await element.evaluate((node: Link) => {
       node.appearance = 'subtle';
     });
@@ -76,6 +82,10 @@ test.describe('Link', () => {
   test('should add a custom state of `inline` when true', async ({ page }) => {
     const element = page.locator('fluent-link');
 
+    await page.setContent(/* html */ `
+      <fluent-link></fluent-link>
+    `);
+
     await element.evaluate((node: Link) => {
       node.inline = true;
     });
@@ -88,4 +98,15 @@ test.describe('Link', () => {
 
     await expect(element).not.toHaveCustomState('inline');
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-link'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

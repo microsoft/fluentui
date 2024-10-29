@@ -1,10 +1,12 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
-import { Divider } from './divider.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
+import type { Divider } from './divider.js';
+
+const storybookDocId = 'components-divider--docs';
 
 test.describe('Divider', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-divider--divider'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-divider'));
   });
@@ -72,6 +74,10 @@ test.describe('Divider', () => {
 
   test('should add a custom state matching the `orientation` attribute when provided', async ({ page }) => {
     const element = page.locator('fluent-divider');
+
+    await page.setContent(/* html */ `
+      <fluent-divider></fluent-divider>
+    `);
 
     await element.evaluate((node: Divider) => {
       node.orientation = 'vertical';
@@ -146,6 +152,10 @@ test.describe('Divider', () => {
   test('should add a custom state matching the `appearance` attribute when provided', async ({ page }) => {
     const element = page.locator('fluent-divider');
 
+    await page.setContent(/* html */ `
+      <fluent-divider></fluent-divider>
+    `);
+
     await element.evaluate((node: Divider) => {
       node.appearance = 'strong';
     });
@@ -172,6 +182,10 @@ test.describe('Divider', () => {
   test('should add a custom state of `inset` when the value is true', async ({ page }) => {
     const element = page.locator('fluent-divider');
 
+    await page.setContent(/* html */ `
+      <fluent-divider></fluent-divider>
+    `);
+
     await element.evaluate((node: Divider) => {
       node.inset = true;
     });
@@ -187,6 +201,10 @@ test.describe('Divider', () => {
 
   test('should add a custom state matching the `align-content` attribute value when provided', async ({ page }) => {
     const element = page.locator('fluent-divider');
+
+    await page.setContent(/* html */ `
+      <fluent-divider></fluent-divider>
+    `);
 
     await element.evaluate((node: Divider) => {
       node.alignContent = 'start';
@@ -210,4 +228,15 @@ test.describe('Divider', () => {
 
     await expect(element).not.toHaveCustomState('align-end');
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-divider'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });

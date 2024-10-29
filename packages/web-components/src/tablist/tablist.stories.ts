@@ -1,4 +1,5 @@
 import { html, ref } from '@microsoft/fast-element';
+import { uniqueId } from '@microsoft/fast-web-utilities';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Tablist as FluentTablist } from './tablist.js';
 import { TablistAppearance as TablistAppearanceValues, TablistOrientation, TablistSize } from './tablist.options.js';
@@ -18,12 +19,12 @@ const storyTemplate = html<StoryArgs<FluentTablist>>`
       }}"
       ${ref('tablist')}
     >
-      <fluent-tab id="first-tab">First Tab</fluent-tab>
-      <fluent-tab id="second-tab">Second Tab</fluent-tab>
-      <fluent-tab id="third-tab">Third Tab</fluent-tab>
-      <fluent-tab id="fourth-tab">Fourth Tab</fluent-tab>
+      <fluent-tab aria-controls="${story => story.panelId}" id="first-tab">First Tab</fluent-tab>
+      <fluent-tab aria-controls="${story => story.panelId}" id="second-tab">Second Tab</fluent-tab>
+      <fluent-tab aria-controls="${story => story.panelId}" id="third-tab">Third Tab</fluent-tab>
+      <fluent-tab aria-controls="${story => story.panelId}" id="fourth-tab">Fourth Tab</fluent-tab>
     </fluent-tablist>
-    <div ${ref('panel')}></div>
+    <div ${ref('panel')} role="tabpanel" id="${story => story.panelId}"></div>
   </div>
 `;
 
@@ -73,14 +74,20 @@ export default {
         type: { summary: Object.values(TablistSize).join('|') },
       },
     },
+    panelId: { table: { disalbe: true } },
   },
 } as Meta<FluentTablist>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    panelId: uniqueId('tabpanel-'),
+  },
+};
 
 export const VerticalOrientation: Story = {
   args: {
     orientation: TablistOrientation.vertical,
+    panelId: uniqueId('tabpanel-'),
   },
   decorators: [
     Story => {
@@ -94,30 +101,35 @@ export const VerticalOrientation: Story = {
 export const Disabled: Story = {
   args: {
     disabled: true,
+    panelId: uniqueId('tabpanel-'),
   },
 };
 
 export const ActiveId: Story = {
   args: {
     activeid: 'third-tab',
+    panelId: uniqueId('tabpanel-'),
   },
 };
 
 export const SubtleAppearance: Story = {
   args: {
     appearance: 'subtle',
+    panelId: uniqueId('tabpanel-'),
   },
 };
 
 export const SmallSize: Story = {
   args: {
     size: 'small',
+    panelId: uniqueId('tabpanel-'),
   },
 };
 
 export const LargeSize: Story = {
   args: {
     size: 'small',
+    panelId: uniqueId('tabpanel-'),
   },
 };
 
@@ -125,6 +137,7 @@ export const SmallSizeVerticalOrientation: Story = {
   args: {
     orientation: TablistOrientation.vertical,
     size: 'small',
+    panelId: uniqueId('tabpanel-'),
   },
   decorators: [
     Story => {
@@ -139,6 +152,7 @@ export const LargeSizeVerticalOrientation: Story = {
   args: {
     orientation: TablistOrientation.vertical,
     size: 'large',
+    panelId: uniqueId('tabpanel-'),
   },
   decorators: [
     Story => {

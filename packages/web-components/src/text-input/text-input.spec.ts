@@ -1,11 +1,13 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { TextInput } from './text-input.js';
 import { ImplicitSubmissionBlockingTypes } from './text-input.options.js';
 
+const storybookDocId = 'components-textinput--docs';
+
 test.describe('TextInput', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-textinput--default'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-text-input'));
   });
@@ -198,6 +200,10 @@ test.describe('TextInput', () => {
 
   test('should reflect `appearance` attribute values', async ({ page }) => {
     const element = page.locator('fluent-text-input');
+
+    await page.setContent(/* html */ `
+      <fluent-text-input></fluent-text-input>
+    `);
 
     await element.evaluate((node: TextInput) => {
       node.appearance = 'outline';
@@ -833,4 +839,17 @@ test.describe('TextInput', () => {
       await expect(control).toBeFocused();
     });
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-text-input'));
+
+  const results = await analyzePageWithAxe(page, {
+    exclude: ['#story--components-textinput--without-label-inner'],
+  });
+
+  expect(results.violations).toEqual([]);
 });

@@ -1,10 +1,12 @@
 import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { analyzePageWithAxe, createElementInternalsTrapsForAxe, expect, fixtureURL } from '../helpers.tests.js';
 import type { Image } from './image.js';
+
+const storybookDocId = 'components-image--docs';
 
 test.describe('Image', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-image--image'));
+    await page.goto(fixtureURL(storybookDocId));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-image'));
   });
@@ -29,6 +31,12 @@ test.describe('Image', () => {
 
   test('should add a custom state of `block` when a value of true is provided', async ({ page }) => {
     const element = page.locator('fluent-image');
+
+    await page.setContent(/* html */ `
+      <fluent-image block>
+        <img alt="Short image description" src="300x100.png" />
+      </fluent-image>
+    `);
 
     await element.evaluate((node: Image) => {
       node.block = true;
@@ -64,6 +72,12 @@ test.describe('Image', () => {
   test('should add a custom state of `bordered` when a value of true is provided', async ({ page }) => {
     const element = page.locator('fluent-image');
 
+    await page.setContent(/* html */ `
+      <fluent-image block>
+        <img alt="Short image description" src="300x100.png" />
+      </fluent-image>
+    `);
+
     await element.evaluate((node: Image) => {
       node.bordered = true;
     });
@@ -97,6 +111,12 @@ test.describe('Image', () => {
 
   test('should add a custom state of `shadow` when a value of true is provided', async ({ page }) => {
     const element = page.locator('fluent-image');
+
+    await page.setContent(/* html */ `
+      <fluent-image block>
+        <img alt="Short image description" src="300x100.png" />
+      </fluent-image>
+    `);
 
     await element.evaluate((node: Image) => {
       node.shadow = true;
@@ -150,6 +170,12 @@ test.describe('Image', () => {
   test('should add a custom state matching the `fit` attribute when provided', async ({ page }) => {
     const element = page.locator('fluent-image');
 
+    await page.setContent(/* html */ `
+      <fluent-image block>
+        <img alt="Short image description" src="300x100.png" />
+      </fluent-image>
+    `);
+
     await element.evaluate((node: Image) => {
       node.fit = 'contain';
     });
@@ -200,6 +226,12 @@ test.describe('Image', () => {
   test('should add a custom state matching the `shape` attribute when provided', async ({ page }) => {
     const element = page.locator('fluent-image');
 
+    await page.setContent(/* html */ `
+      <fluent-image block>
+        <img alt="Short image description" src="300x100.png" />
+      </fluent-image>
+    `);
+
     await element.evaluate((node: Image) => {
       node.shape = 'circular';
     });
@@ -232,4 +264,15 @@ test.describe('Image', () => {
 
     await expect(element).not.toHaveCustomState('circular');
   });
+});
+
+test('should not have auto detectable accessibility issues', async ({ page }) => {
+  await createElementInternalsTrapsForAxe(page);
+
+  await page.goto(fixtureURL(storybookDocId));
+  await page.waitForFunction(() => customElements.whenDefined('fluent-image'));
+
+  const results = await analyzePageWithAxe(page);
+
+  expect(results.violations).toEqual([]);
 });
