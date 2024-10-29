@@ -42,7 +42,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
   },
   refs: {
     contrib: {
-      title: 'Fluent UI Contributors Packages',
+      title: 'Contributors Packages',
       url: 'https://microsoft.github.io/fluentui-contrib/docsite/',
       expanded: false,
       sourceUrl: 'https://github.com/microsoft/fluentui-contrib',
