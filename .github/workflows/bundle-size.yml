@@ -2,7 +2,7 @@ name: Bundle size
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
 
 concurrency:
@@ -70,7 +70,7 @@ jobs:
       - name: Save PR number
         run: echo ${{ github.event.number }} > pr.txt
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: ${{ github.event_name == 'pull_request' }}
         with:
           name: monosize-report
@@ -83,17 +83,18 @@ jobs:
         if: github.event_name != 'pull_request'
         run: yarn nx run-many -t bundle-size --nxBail
 
-      - name: Upload a report (base only)
-        continue-on-error: true
+      - name: Upload a report (non-PR)
         if: github.event_name != 'pull_request'
         uses: azure/cli@v2
         with:
           azcliversion: latest
+          # TODO: how to set subcription? monosize has no flag for it and gha    az cli doesn't support this parameter
+          # azureSubscription: 'Bundlesize Testing'
           inlineScript: |
             yarn monosize upload-report --branch=${{ github.ref }} --commit-sha ${{ github.sha }}
         env:
-          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          AZURE_SERVICE_CONNECTION_ID: ${{ secrets.AZURE_SERVICE_CONNECTION_ID }}
-          BUNDLESIZE_ACCOUNT_NAME: ${{ secrets.BUNDLESIZE_ACCOUNT_NAME }}
+          # AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          # AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          # AZURE_SERVICE_CONNECTION_ID: ${{ secrets.AZURE_SERVICE_CONNECTION_ID }}
+          # BUNDLESIZE_ACCOUNT_NAME: ${{ secrets.BUNDLESIZE_ACCOUNT_NAME }}
           SYSTEM_ACCESSTOKEN: ${{ secrets.GITHUB_TOKEN }}

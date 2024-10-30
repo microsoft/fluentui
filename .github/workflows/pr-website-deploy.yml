@@ -56,20 +56,16 @@ jobs:
       - run: yarn install --frozen-lockfile
 
       - name: Bundle
-        if: github.event_name == 'pull_request'
         run: yarn nx affected -t bundle --nxBail
 
       - name: Build Storybooks
-        if: github.event_name == 'pull_request'
         run: yarn nx affected -t build-storybook --nxBail
 
       - name: Generate PR Deploy Site
-        if: github.event_name == 'pull_request'
         run: yarn nx run pr-deploy-site:generate:site
 
       - name: Upload WebSite artifacts
-        uses: actions/upload-artifact@v3
-        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/upload-artifact@v4
         with:
           name: pr-website-artifacts
           if-no-files-found: error
@@ -81,13 +77,12 @@ jobs:
     needs: ['bundle']
     steps:
       - name: Download WebSite artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: pr-website-artifacts
           path: ./pr-deploy-site/
 
       - name: Upload PR WebSite
-        if: github.event_name == 'pull_request'
         uses: azure/cli@v2
         with:
           azcliversion: latest
@@ -102,13 +97,12 @@ jobs:
               --overwrite
 
       - name: Save WebSite DEPLOY url
-        run: echo ${{env.DEPLOY_HOST}}/${{ env.DEPLOY_BASE_PATH }} > website-deploy-url.txt
+        run: echo https://${{ env.DEPLOY_HOST }}/${{ env.DEPLOY_BASE_PATH }} > website-deploy-url.txt
 
       - name: Save PR number
         run: echo ${{ github.event.number }} > pr.txt
 
-      - uses: actions/upload-artifact@v3
-        if: ${{ github.event_name == 'pull_request' }}
+      - uses: actions/upload-artifact@v4
         with:
           name: pr-website-deploy-url
           if-no-files-found: error
