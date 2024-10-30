@@ -24,6 +24,9 @@ const options = [
 const Example = ({ size }: Pick<TagPickerProps, 'size'>) => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([options[0]]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
+    if (data.value === 'no-options') {
+      return;
+    }
     setSelectedOptions(data.selectedOptions);
   };
   const tagPickerOptions = options.filter(option => !selectedOptions.includes(option));
@@ -47,18 +50,20 @@ const Example = ({ size }: Pick<TagPickerProps, 'size'>) => {
           <TagPickerInput aria-label="Select Employees" />
         </TagPickerControl>
         <TagPickerList>
-          {tagPickerOptions.length > 0
-            ? tagPickerOptions.map(option => (
-                <TagPickerOption
-                  secondaryContent="Microsoft FTE"
-                  media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
-                  value={option}
-                  key={option}
-                >
-                  {option}
-                </TagPickerOption>
-              ))
-            : 'No options available'}
+          {tagPickerOptions.length > 0 ? (
+            tagPickerOptions.map(option => (
+              <TagPickerOption
+                secondaryContent="Microsoft FTE"
+                media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption value="no-options">No options available</TagPickerOption>
+          )}
         </TagPickerList>
       </TagPicker>
     </Field>
