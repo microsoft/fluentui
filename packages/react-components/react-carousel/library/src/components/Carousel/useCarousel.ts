@@ -118,7 +118,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: containerRef,
+        ref: mergedContainerRef,
         role: 'region',
         ...props,
       }),
