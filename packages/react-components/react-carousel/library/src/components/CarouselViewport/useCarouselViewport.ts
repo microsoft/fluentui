@@ -29,7 +29,6 @@ export const useCarouselViewport_unstable = (
   });
 
   const focusProps = cardFocus ? focusableGroupAttr : {};
-  console.log('Focus props:', focusProps);
 
   const slider: CarouselViewportState['slider'] = slot.always(props.slider, {
     defaultProps: {
