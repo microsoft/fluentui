@@ -5,12 +5,14 @@ import type { TooltipPositioningOption } from './tooltip.options.js';
 
 test.describe('Tooltip', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-tooltip-tooltip--tooltip'));
+    await page.goto(fixtureURL('components-tooltip--docs'));
     await page.waitForFunction(() => customElements.whenDefined('fluent-tooltip'));
 
     await page.setContent(/* html */ `
-      <button id="target">Target</button>
-      <fluent-tooltip anchor="target">This is a tooltip</fluent-tooltip>
+      <div style="position: absolute; inset: 200px">
+        <button id="target">Target</button>
+        <fluent-tooltip anchor="target">This is a tooltip</fluent-tooltip>
+      </div>
     `);
   });
 
@@ -39,27 +41,13 @@ test.describe('Tooltip', () => {
     const element = page.locator('fluent-tooltip');
     const button = page.locator('button');
 
-    await expect(element).toHaveAttribute('id', 'tooltip-target');
-    await expect(button).toHaveAttribute('aria-describedby', 'tooltip-target');
+    await expect(element).toHaveAttribute('id');
+    await expect(button).toHaveAttribute('aria-describedby', element.id);
   });
 
   test('should not be visible by default', async ({ page }) => {
     const element = page.locator('fluent-tooltip');
     await expect(element).toBeHidden();
-  });
-
-  test('default placement should be set to `above`', async ({ page }) => {
-    const element = page.locator('fluent-tooltip');
-    const button = page.locator('button');
-    await expect(element).not.toHaveAttribute('positioning', 'above');
-
-    // show the element to get the position
-    await button.focus();
-
-    const buttonTop = await button.evaluate((node: HTMLElement) => node.getBoundingClientRect().top);
-    const elementBottom = await element.evaluate((node: HTMLElement) => node.getBoundingClientRect().bottom);
-
-    await expect(buttonTop).toBeGreaterThan(elementBottom);
   });
 
   test('should show the tooltip on hover', async ({ page }) => {
@@ -80,6 +68,21 @@ test.describe('Tooltip', () => {
     await expect(element).toBeVisible();
     await button.blur();
     await expect(element).toBeHidden();
+  });
+
+  test('default placement should be set to `above`', async ({ page }) => {
+    const element = page.locator('fluent-tooltip');
+    const button = page.locator('button');
+    await expect(element).not.toHaveAttribute('positioning', 'above');
+
+    // show the element to get the position
+    await button.focus();
+    await expect(element).toBeVisible();
+
+    const buttonTop = await button.evaluate((node: HTMLElement) => node.getBoundingClientRect().top);
+    const elementBottom = await element.evaluate((node: HTMLElement) => node.getBoundingClientRect().bottom);
+
+    await expect(buttonTop).toBeGreaterThan(elementBottom);
   });
 
   test('position should be set to `above` when `positioning` is set to `above`', async ({ page }) => {

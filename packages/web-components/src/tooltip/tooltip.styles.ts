@@ -28,8 +28,10 @@ export const styles = css`
   }
 
   :host {
-    --blockOffset: ${spacingVerticalXS};
-    --inlineOffset: ${spacingHorizontalXS};
+    --position-area: block-start;
+    --position-try-options: flip-block;
+    --block-offset: ${spacingVerticalXS};
+    --inline-offset: ${spacingHorizontalXS};
     background: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
     border: 1px solid ${colorTransparentStroke};
@@ -45,54 +47,62 @@ export const styles = css`
     max-width: 240px;
     padding: 4px ${spacingHorizontalMNudge} 6px;
     position: absolute;
-    position-area: block-start;
+    position-area: var(--position-area);
+    position-try-options: var(--position-try-options);
     width: auto;
     z-index: 1;
   }
 
-  :host(:is([positioning^='above'], [positioning^='below'], :not([positioning]))) {
-    margin-block: var(--blockOffset);
-    position-try-fallbacks: flip-block;
+  @supports (inset-area: block-start) {
+    :host {
+      inset-area: var(--position-area);
+      position-try-fallbacks: var(--position-try-options);
+    }
   }
+
+  :host(:is([positioning^='above'], [positioning^='below'], :not([positioning]))) {
+    margin-block: var(--block-offset);
+  }
+
   :host(:is([positioning^='before'], [positioning^='after'])) {
-    margin-inline: var(--inlineOffset);
-    position-try-fallbacks: flip-inline;
+    margin-inline: var(--inline-offset);
+    --position-try-options: flip-inline;
   }
 
   :host([positioning='above-start']) {
-    position-area: ${TooltipPositioningOption['above-start']};
+    --position-area: ${TooltipPositioningOption['above-start']};
   }
   :host([positioning='above']) {
-    position-area: ${TooltipPositioningOption.above};
+    --position-area: ${TooltipPositioningOption.above};
   }
   :host([positioning='above-end']) {
-    position-area: ${TooltipPositioningOption['above-end']};
+    --position-area: ${TooltipPositioningOption['above-end']};
   }
   :host([positioning='below-start']) {
-    position-area: ${TooltipPositioningOption['below-start']};
+    --position-area: ${TooltipPositioningOption['below-start']};
   }
   :host([positioning='below']) {
-    position-area: ${TooltipPositioningOption.below};
+    --position-area: ${TooltipPositioningOption.below};
   }
   :host([positioning='below-end']) {
-    position-area: ${TooltipPositioningOption['below-end']};
+    --position-area: ${TooltipPositioningOption.below};
   }
   :host([positioning='before-top']) {
-    position-area: ${TooltipPositioningOption['before-top']};
+    --position-area: ${TooltipPositioningOption['before-top']};
   }
   :host([positioning='before']) {
-    position-area: ${TooltipPositioningOption.before};
+    --position-area: ${TooltipPositioningOption.before};
   }
   :host([positioning='before-bottom']) {
-    position-area: ${TooltipPositioningOption['before-bottom']};
+    --position-area: ${TooltipPositioningOption['before-bottom']};
   }
   :host([positioning='after-top']) {
-    position-area: ${TooltipPositioningOption['after-top']};
+    --position-area: ${TooltipPositioningOption['after-top']};
   }
   :host([positioning='after']) {
-    position-area: ${TooltipPositioningOption.after};
+    --position-area: ${TooltipPositioningOption.after};
   }
   :host([positioning='after-bottom']) {
-    position-area: ${TooltipPositioningOption['after-bottom']};
+    --position-area: ${TooltipPositioningOption['after-bottom']};
   }
 `;
