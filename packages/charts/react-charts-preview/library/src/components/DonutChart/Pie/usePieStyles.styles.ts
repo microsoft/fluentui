@@ -21,10 +21,8 @@ const useStyles = makeStyles({
   insideDonutString: {
     ...typographyStyles.title2,
     fill: tokens.colorNeutralForeground1,
-    '& selectors': {
-      [HighContrastSelectorBlack]: {
-        fill: 'rgb(179, 179, 179)',
-      },
+    [HighContrastSelectorBlack]: {
+      fill: 'rgb(179, 179, 179)',
     },
   },
 });
