@@ -1,4 +1,4 @@
-import { Fade } from '@fluentui/react-motion-components-preview';
+import { DefaultFade as Fade } from './Fade.stories';
 import FadeDescription from './FadeDescription.md';
 
 export { Default } from './FadeDefault.stories';
