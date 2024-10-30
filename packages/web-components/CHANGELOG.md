@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 29 Oct 2024 04:06:49 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Oct 2024 04:06:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.72](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.72)
+
+Wed, 30 Oct 2024 04:06:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.71..@fluentui/web-components_v3.0.0-beta.72)
+
+### Changes
+
+- add swapStates function for attribute-driven internal states ([PR #33156](https://github.com/microsoft/fluentui/pull/33156) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.71](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.71)
 
