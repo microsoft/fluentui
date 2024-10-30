@@ -25,4 +25,5 @@ export const CarouselSlider: ForwardRefComponent<CarouselSliderProps> = React.fo
   return renderCarouselSlider_unstable(state, context);
 });
 
+// eslint-disable-next-line deprecation/deprecation
 CarouselSlider.displayName = 'CarouselSlider';

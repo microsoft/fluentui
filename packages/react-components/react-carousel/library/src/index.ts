@@ -63,6 +63,7 @@ export {
   useCarouselNavImageButton_unstable,
 } from './CarouselNavImageButton';
 export {
+  // eslint-disable-next-line deprecation/deprecation
   CarouselSlider,
   carouselSliderClassNames,
   renderCarouselSlider_unstable,
@@ -85,4 +86,10 @@ export {
 export { carouselContextDefaultValue, CarouselProvider, useCarouselContext_unstable } from './CarouselContext';
 export type { CarouselIndexChangeData, CarouselContextValue, CarouselContextValues } from './CarouselContext';
 export type { CarouselViewportProps, CarouselViewportSlots, CarouselViewportState } from './CarouselViewport';
-export { CarouselViewport, carouselViewportClassNames, renderCarouselViewport_unstable, useCarouselViewportStyles_unstable, useCarouselViewport_unstable } from './CarouselViewport';
+export {
+  CarouselViewport,
+  carouselViewportClassNames,
+  renderCarouselViewport_unstable,
+  useCarouselViewportStyles_unstable,
+  useCarouselViewport_unstable,
+} from './CarouselViewport';
