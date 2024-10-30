@@ -77,7 +77,7 @@ runs:
 
     - name: Upload VR screenshots
       if: ${{ env.vrTestSkip == 'no' }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: vrscreenshot${{ inputs.fluentVersion }}
         path: screenshots
