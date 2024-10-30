@@ -1,7 +1,7 @@
 import { html, repeat } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
-import { Spinner as FluentSpinner } from './spinner.js';
+import type { Spinner as FluentSpinner } from './spinner.js';
 
 type Story = StoryObj<FluentSpinner>;
 

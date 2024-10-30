@@ -1,6 +1,6 @@
 import { attr, FASTElement, nullableNumberConverter, observable, Observable } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
 import type { Label } from '../label/label.js';
+import { hasMatchingState, swapStates, toggleState } from '../utils/element-internals.js';
 import {
   TextAreaAppearance,
   TextAreaAppearancesForDisplayShadow,
@@ -266,20 +266,12 @@ export class BaseTextArea extends FASTElement {
   @attr({ mode: 'fromView' })
   public resize: TextAreaResize = TextAreaResize.none;
   protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void {
-    if (prev) {
-      toggleState(this.elementInternals, `resize-${prev}`, false);
-    }
-
-    if (next) {
-      toggleState(this.elementInternals, `resize-${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, TextAreaResize, 'resize-');
 
     toggleState(
       this.elementInternals,
-      `resize`,
-      ([TextAreaResize.both, TextAreaResize.horizontal, TextAreaResize.vertical] as Partial<TextAreaResize[]>).includes(
-        this.resize,
-      ),
+      'resize',
+      hasMatchingState(TextAreaResize, next) && next !== TextAreaResize.none,
     );
   }
 
@@ -661,14 +653,12 @@ export class TextArea extends BaseTextArea {
   @attr({ mode: 'fromView' })
   public appearance: TextAreaAppearance = TextAreaAppearance.outline;
   protected appearanceChanged(prev: TextAreaAppearance | undefined, next: TextAreaAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
+    toggleState(this.elementInternals, prev, false);
 
-    if (!next || !Array.from(Object.values(TextAreaAppearance)).includes(next)) {
-      toggleState(this.elementInternals, TextAreaAppearance.outline, true);
+    if (hasMatchingState(TextAreaAppearance, next)) {
+      toggleState(this.elementInternals, next, true);
     } else {
-      toggleState(this.elementInternals, `${next}`, true);
+      this.appearance = TextAreaAppearance.outline;
     }
   }
 
@@ -695,12 +685,7 @@ export class TextArea extends BaseTextArea {
   @attr
   public size?: TextAreaSize;
   protected sizeChanged(prev: TextAreaSize | undefined, next: TextAreaSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, TextAreaSize);
   }
 
   /**
