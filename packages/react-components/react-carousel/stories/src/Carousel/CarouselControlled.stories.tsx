@@ -31,7 +31,9 @@ const useClasses = makeStyles({
     flexDirection: 'column',
     gap: '20px',
   },
-
+  viewport: {
+    overflow: 'hidden',
+  },
   footer: {
     display: 'flex',
     gap: '10px',
@@ -131,7 +133,7 @@ export const Controlled = () => {
           <CarouselButton navType="prev" aria-label="Previous Carousel Page Button" />
         </Tooltip>
 
-        <CarouselViewport>
+        <CarouselViewport className={classes.viewport}>
           <CarouselCard aria-label="1 of 5">
             <WireframeContent index={0} />
           </CarouselCard>

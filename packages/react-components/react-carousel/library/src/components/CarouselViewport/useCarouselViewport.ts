@@ -29,19 +29,22 @@ export const useCarouselViewport_unstable = (
   });
 
   const focusProps = cardFocus ? focusableGroupAttr : {};
+  console.log('Focus props:', focusProps);
 
-  const slider: CarouselViewportState['slider'] = slot.always(
-    getIntrinsicElementProps('div', {
+  const slider: CarouselViewportState['slider'] = slot.always(props.slider, {
+    defaultProps: {
       role: 'group',
       children: props.children,
       ...focusProps,
-    }),
-    { elementType: 'div' },
-  );
+    },
+    elementType: 'div',
+  });
 
   const mergedViewportRef = useMergedRefs(ref, viewportRef);
 
   return {
+    slider,
+    cardFocus,
     components: {
       root: 'div',
       slider: 'div',
@@ -57,6 +60,5 @@ export const useCarouselViewport_unstable = (
       }),
       { elementType: 'div' },
     ),
-    slider,
   };
 };

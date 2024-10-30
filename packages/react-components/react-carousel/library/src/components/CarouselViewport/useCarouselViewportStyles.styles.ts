@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselViewportSlots, CarouselViewportState } from './CarouselViewport.types';
+import { tokens } from '@fluentui/react-theme';
 
 export const carouselViewportClassNames: SlotClassNames<CarouselViewportSlots> = {
   root: 'fui-CarouselViewport',
@@ -11,10 +12,17 @@ export const carouselViewportClassNames: SlotClassNames<CarouselViewportSlots> =
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {},
+  root: {
+    maxWidth: '100%',
+    width: 'auto',
+  },
   slider: {
     display: 'flex',
     overflowAnchor: 'none',
+  },
+  cardFocus: {
+    // Ensure room for focus border inside overflow:hidden container
+    paddingTop: tokens.strokeWidthThick,
   },
 });
 
@@ -23,9 +31,15 @@ const useStyles = makeStyles({
  */
 export const useCarouselViewportStyles_unstable = (state: CarouselViewportState): CarouselViewportState => {
   'use no memo';
+  const { cardFocus } = state;
 
   const styles = useStyles();
-  state.root.className = mergeClasses(carouselViewportClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    carouselViewportClassNames.root,
+    styles.root,
+    cardFocus && styles.cardFocus,
+    state.root.className,
+  );
   state.slider.className = mergeClasses(carouselViewportClassNames.slider, styles.slider, state.slider.className);
 
   return state;
