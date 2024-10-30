@@ -6,14 +6,11 @@ import * as React from 'react';
 import { Portal } from './Portal';
 
 describe('Portal', () => {
-  /**
-   * Note: see more visual regression tests for Portal in /apps/vr-tests.
-   */
-  it('renders a default state', () => {
-    const children = 'test';
-    const { getByText } = render(<Portal>{children}</Portal>);
+  it('creates an element and attaches it to "document.body"', () => {
+    const { getByText } = render(<Portal>Test</Portal>);
+    const element = getByText('Test');
 
-    expect(getByText(children)).toMatchSnapshot();
+    expect(document.body.children).toContain(element);
   });
 
   it('applies "dir" attribute based on a context value', () => {
@@ -33,13 +30,16 @@ describe('Portal', () => {
     expect(getByText('RTL')).toHaveAttribute('dir', 'rtl');
   });
 
+  it('applies "className"', () => {
+    const { getByText } = render(<Portal mountNode={{ className: 'foo' }}>Test</Portal>);
+
+    expect(getByText('Test')).toHaveClass('foo');
+  });
+
   it('applies "zIndex" style', () => {
     const { getByText } = render(<Portal>Test</Portal>);
-    const element = getByText('Test');
 
-    expect(element).toHaveStyle({
-      zIndex: 1000000,
-    });
+    expect(getByText('Test')).toHaveStyle({ zIndex: 1000000 });
   });
 
   it('should not set virtual parent if mount node contains virtual parent', () => {
@@ -58,5 +58,47 @@ describe('Portal', () => {
 
     const mountNode = container.querySelector<HTMLSpanElement>('#container');
     expect((getParent(mountNode) as HTMLElement).id).toBe('parent');
+  });
+
+  describe('mountNode', () => {
+    it('renders portal content into the specified mount node', () => {
+      const mountNode = document.createElement('div');
+
+      mountNode.id = 'mount-node';
+      document.body.appendChild(mountNode);
+
+      const { getByText } = render(
+        <Portal mountNode={mountNode}>
+          <span>Test</span>
+        </Portal>,
+      );
+      const portalEl = getByText('Test');
+
+      expect(portalEl).toBeInstanceOf(HTMLSpanElement);
+      expect(portalEl.parentElement).toBe(mountNode);
+    });
+
+    it('does not add attributes to a mount node', () => {
+      const mountNode = document.createElement('div');
+
+      mountNode.id = 'mount-node';
+      document.body.appendChild(mountNode);
+
+      render(
+        <Portal mountNode={mountNode}>
+          <span>Test</span>
+        </Portal>,
+      );
+
+      expect(mountNode).toMatchInlineSnapshot(`
+        <div
+          id="mount-node"
+        >
+          <span>
+            Test
+          </span>
+        </div>
+      `);
+    });
   });
 });

@@ -4,9 +4,11 @@
 
 ```ts
 
+import type { ComponentState } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { setVirtualParent } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-utilities';
 
 export { elementContains }
 
@@ -23,7 +25,7 @@ export type PortalProps = {
 };
 
 // @public (undocumented)
-export type PortalState = Pick<PortalProps, 'children'> & {
+export type PortalState = ComponentState<PortalInternalSlots> & Pick<PortalProps, 'children'> & {
     mountNode: HTMLElement | null | undefined;
     virtualParentRootRef: React_2.MutableRefObject<HTMLSpanElement | null>;
 };

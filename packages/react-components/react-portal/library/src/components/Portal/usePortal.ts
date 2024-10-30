@@ -1,9 +1,15 @@
-import { setVirtualParent } from '@fluentui/react-utilities';
+import { mergeClasses } from '@griffel/react';
+import {
+  useFluent_unstable as useFluent,
+  useThemeClassName_unstable as useThemeClassName,
+} from '@fluentui/react-shared-contexts';
+import { useFocusVisible } from '@fluentui/react-tabster';
+import { setVirtualParent, slot, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { toMountNodeProps } from '../../utils/toMountNodeProps';
-import { usePortalMountNode } from './usePortalMountNode';
 import type { PortalProps, PortalState } from './Portal.types';
+import { usePortalMountNodeStylesStyles } from './usePortalMountNodeStyles.styles';
 
 /**
  * Create the state required to render Portal.
@@ -15,17 +21,42 @@ import type { PortalProps, PortalState } from './Portal.types';
 export const usePortal_unstable = (props: PortalProps): PortalState => {
   const { element, className } = toMountNodeProps(props.mountNode);
 
+  const { dir, targetDocument } = useFluent();
   const virtualParentRootRef = React.useRef<HTMLSpanElement>(null);
-  const fallbackElement = usePortalMountNode({ disabled: !!element, className });
 
-  const mountNode = element ?? fallbackElement;
+  const classes = usePortalMountNodeStylesStyles();
+  const themeClassName = useThemeClassName();
+
+  const ref = useMergedRefs(useFocusVisible<HTMLDivElement>());
   const state: PortalState = {
+    components: {
+      root: 'div',
+    },
+
     children: props.children,
-    mountNode,
+    root: slot.optional(
+      {
+        className: mergeClasses(themeClassName, classes.root, className),
+        dir,
+        ref,
+
+        'data-portal-node': true,
+      },
+      { elementType: 'div' },
+    ),
+
+    mountNode: targetDocument?.body,
     virtualParentRootRef,
   };
 
+  if (element) {
+    state.mountNode = element;
+    state.root = undefined;
+  }
+
   React.useEffect(() => {
+    const mountNode = element ?? ref.current;
+
     if (!mountNode) {
       return;
     }
@@ -80,7 +111,7 @@ export const usePortal_unstable = (props: PortalProps): PortalState => {
         setVirtualParent(mountNode, undefined);
       };
     }
-  }, [virtualParentRootRef, mountNode]);
+  }, [virtualParentRootRef, element, ref]);
 
   return state;
 };
