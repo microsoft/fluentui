@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useId, slot, getPartitionedNativeProps, useMergedRefs, mergeCallbacks } from '@fluentui/react-utilities';
-import type { ColorAreaProps, ColorAreaState } from './ColorArea.types';
+import type { ColorAreaProps, ColorAreaState, HsvColor, ColorAreaOnColorChangeData } from './ColorArea.types';
 import { colorAreaCSSVars } from './useColorAreaStyles.styles';
 import { clamp, useEventCallback, useControllableState } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -19,6 +19,7 @@ import { MIN, MAX, INITIAL_COLOR } from '../../utils/constants';
  */
 export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLInputElement>): ColorAreaState => {
   const { targetDocument } = useFluent();
+  const yRef = React.useRef<HTMLInputElement>(null);
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const nativeProps = getPartitionedNativeProps({
     props,
@@ -35,12 +36,21 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     thumb,
   } = props;
 
-  const hsvColor = React.useMemo(() => tinycolor(props.color || INITIAL_COLOR).toHsv(), [props.color]);
-  const [color, setColor] = React.useState(hsvColor);
+  const hsvColor = React.useMemo(() => (props.color ? getHsvColor(props.color) : undefined), [props.color]);
+  const defaultHsv = React.useMemo(
+    () => (props.defaultColor ? getHsvColor(props.defaultColor) : undefined),
+    [props.defaultColor],
+  );
 
-  const saturation = Math.round(color.s * 100);
-  const value = Math.round(color.v * 100);
-  const coordinates = { x: saturation, y: value };
+  // const [color, setColor] = React.useState(hsvColor || getHsvColor(INITIAL_COLOR));
+
+  const [color, setColor] = useControllableState<HsvColor>({
+    defaultState: defaultHsv,
+    state: hsvColor,
+    initialState: getHsvColor(INITIAL_COLOR),
+  });
+
+  const coordinates = { x: color.s, y: color.v };
 
   function getCoordinates(event: MouseEvent) {
     const rect = rootRef.current?.getBoundingClientRect();
@@ -58,7 +68,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
   const requestColorChange = useEventCallback((event: MouseEvent) => {
     const _coordinates = getCoordinates(event);
-    const newColor = { h: color.h, s: _coordinates.x / 100, v: _coordinates.y / 100, a: 1 };
+    const newColor = { h: color.h, s: _coordinates.x, v: _coordinates.y, a: 1 };
     setColor(newColor);
     onChange?.(event, {
       type: 'mousemove',
@@ -90,7 +100,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
     const newValue = Number(event.target.value);
-    const newColor = { h: color.h, s: newValue / 100, v: coordinates.y / 100, a: 1 };
+    const newColor = { h: color.h, s: newValue, v: y, a: 1 };
     setColor(newColor);
     onChange?.(event, {
       type: 'change',
@@ -103,7 +113,8 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
       event.preventDefault();
       const newY = event.key === 'ArrowUp' ? clamp(coordinates.y + 1, MIN, MAX) : clamp(coordinates.y - 1, MIN, MAX);
-      const newColor = { h: color.h, s: coordinates.x / 100, v: newY / 100, a: 1 };
+      const newColor = { h: color.h, s: coordinates.x, v: newY, a: 1 };
+
       setColor(newColor);
       onChange?.(event, {
         type: 'change',
@@ -117,7 +128,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     [colorAreaCSSVars.areaXProgressVar]: `${coordinates.x}%`,
     [colorAreaCSSVars.areaYProgressVar]: `${coordinates.y}%`,
     [colorAreaCSSVars.thumbColorVar]: 'transparent',
-    [colorAreaCSSVars.mainColorVar]: `hsl(${color.h}, 100%, 50%)` || '#fff',
+    [colorAreaCSSVars.mainColorVar]: `hsl(${color.h}, 100%, 50%)` || INITIAL_COLOR,
   };
 
   const state: ColorAreaState = {
@@ -144,6 +155,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
       defaultProps: {
         id: useId('sliderY-', props.id),
         type: 'range',
+        ref: yRef,
       },
       elementType: 'input',
     }),
@@ -159,6 +171,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
   state.root.onMouseDown = useEventCallback(mergeCallbacks(state.root.onMouseDown, _onMouseDown));
   state.inputX.onChange = _onChange;
+  state.inputY.onChange = _onChange;
   state.inputX.onKeyDown = _onKeyDown;
   state.inputX.value = coordinates.x;
   state.inputY.value = coordinates.y;
@@ -167,5 +180,15 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 };
 
 function parseColor(color: Numberify<HSVA>) {
-  return tinycolor(color).toRgbString();
+  return tinycolor(color).toHexString();
+}
+
+function getHsvColor(color: string): HsvColor {
+  const _color = tinycolor(color).toHsv();
+  return {
+    h: Math.round(_color.h),
+    s: Math.round(_color.s * 100),
+    v: Math.round(_color.v * 100),
+    a: Math.round(_color.a),
+  };
 }

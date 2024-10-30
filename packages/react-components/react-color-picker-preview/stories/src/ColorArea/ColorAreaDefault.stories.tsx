@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-const DEFAULT_COLOR = '#ff0000';
+const DEFAULT_COLOR = '#804066';
 
 export const Default = () => {
   const styles = useStyles();
