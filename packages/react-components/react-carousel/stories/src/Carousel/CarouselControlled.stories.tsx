@@ -14,7 +14,7 @@ import {
   CarouselAnnouncerFunction,
   CarouselButton,
   CarouselCard,
-  CarouselSlider,
+  CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
@@ -30,10 +30,6 @@ const useClasses = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     gap: '20px',
-  },
-  carouselSlider: {
-    display: 'flex',
-    overflow: 'hidden',
   },
 
   footer: {
@@ -135,25 +131,23 @@ export const Controlled = () => {
           <CarouselButton navType="prev" aria-label="Previous Carousel Page Button" />
         </Tooltip>
 
-        <div className={classes.carouselSlider}>
-          <CarouselSlider>
-            <CarouselCard aria-label="1 of 5">
-              <WireframeContent index={0} />
-            </CarouselCard>
-            <CarouselCard aria-label="2 of 5">
-              <WireframeContent index={1} />
-            </CarouselCard>
-            <CarouselCard aria-label="3 of 5">
-              <WireframeContent index={2} />
-            </CarouselCard>
-            <CarouselCard aria-label="4 of 5">
-              <WireframeContent index={3} />
-            </CarouselCard>
-            <CarouselCard aria-label="5 of 5">
-              <WireframeContent index={4} />
-            </CarouselCard>
-          </CarouselSlider>
-        </div>
+        <CarouselViewport>
+          <CarouselCard aria-label="1 of 5">
+            <WireframeContent index={0} />
+          </CarouselCard>
+          <CarouselCard aria-label="2 of 5">
+            <WireframeContent index={1} />
+          </CarouselCard>
+          <CarouselCard aria-label="3 of 5">
+            <WireframeContent index={2} />
+          </CarouselCard>
+          <CarouselCard aria-label="4 of 5">
+            <WireframeContent index={3} />
+          </CarouselCard>
+          <CarouselCard aria-label="5 of 5">
+            <WireframeContent index={4} />
+          </CarouselCard>
+        </CarouselViewport>
 
         <Tooltip content="Go To Next Page" relationship="label">
           <CarouselButton navType="next" aria-label="Next Carousel Page Button" />

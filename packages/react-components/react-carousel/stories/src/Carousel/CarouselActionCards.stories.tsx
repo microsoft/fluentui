@@ -18,7 +18,7 @@ import {
   CarouselNavButton,
   CarouselNavContainer,
   CarouselProps,
-  CarouselSlider,
+  CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
@@ -199,11 +199,11 @@ export const AlignmentAndWhitespace = () => {
 
       <div className={classes.card}>
         <Carousel align={alignment} className={classes.carousel} whitespace={whitespace} announcement={getAnnouncement}>
-          <CarouselSlider cardFocus={true}>
+          <CarouselViewport cardFocus={true}>
             {POSTS.map((post, index) => (
               <ActionCard {...post} key={post.name} index={index} />
             ))}
-          </CarouselSlider>
+          </CarouselViewport>
           <CarouselNavContainer
             layout="inline"
             next={{ 'aria-label': 'go to next' }}

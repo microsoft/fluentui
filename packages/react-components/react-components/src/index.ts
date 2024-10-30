@@ -1922,6 +1922,8 @@ export {
   renderCarouselNavImageButton_unstable,
   useCarouselNavImageButtonStyles_unstable,
   useCarouselNavImageButton_unstable,
+  // CarouselSlider is deprecated, instead use CarouselViewport
+  // eslint-disable-next-line deprecation/deprecation
   CarouselSlider,
   carouselSliderClassNames,
   renderCarouselSlider_unstable,
@@ -1935,6 +1937,11 @@ export {
   carouselContextDefaultValue,
   CarouselProvider,
   useCarouselContext_unstable,
+  CarouselViewport,
+  carouselViewportClassNames,
+  renderCarouselViewport_unstable,
+  useCarouselViewportStyles_unstable,
+  useCarouselViewport_unstable,
 } from '@fluentui/react-carousel';
 export type {
   CarouselButtonProps,
@@ -1969,4 +1976,7 @@ export type {
   CarouselIndexChangeData,
   CarouselContextValue,
   CarouselContextValues,
+  CarouselViewportProps,
+  CarouselViewportSlots,
+  CarouselViewportState,
 } from '@fluentui/react-carousel';

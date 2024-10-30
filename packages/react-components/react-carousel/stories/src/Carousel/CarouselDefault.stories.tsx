@@ -5,7 +5,7 @@ import {
   CarouselNav,
   CarouselNavButton,
   CarouselNavContainer,
-  CarouselSlider,
+  CarouselViewport,
   CarouselAnnouncerFunction,
 } from '@fluentui/react-components';
 import * as React from 'react';
@@ -78,13 +78,13 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
 
 export const Default = () => (
   <Carousel groupSize={1} circular announcement={getAnnouncement}>
-    <CarouselSlider>
+    <CarouselViewport>
       {IMAGES.map((imageSrc, index) => (
         <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>
           Card {index + 1}
         </BannerCard>
       ))}
-    </CarouselSlider>
+    </CarouselViewport>
     <CarouselNavContainer
       layout="inline"
       autoplay={{

@@ -3,7 +3,7 @@
 ### Do
 
 - Limit cards to a max width of 100% of screen size.
-- Use 'gap' css on CarouselSlider to provide easy spacing between cards, use margin if circular is enabled.
+- Use 'gap' css on CarouselViewport's slider to provide easy spacing between cards, use margin if circular is enabled.
 - Keep cards a uniform size where possible.
 - Set CarouselCards to focusMode='tab-exit' when there is multiple cards in view
 - Avoid focus on CarouselCards if they are a full size banner, out of view cards will be set to 'inert'.

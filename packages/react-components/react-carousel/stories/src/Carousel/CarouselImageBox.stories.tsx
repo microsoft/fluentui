@@ -6,7 +6,7 @@ import {
   CarouselNav,
   CarouselNavContainer,
   CarouselNavImageButton,
-  CarouselSlider,
+  CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
@@ -71,13 +71,13 @@ export const ImageSlideshow = () => {
 
   return (
     <Carousel groupSize={1} align="center" announcement={getAnnouncement}>
-      <CarouselSlider className={classes.slider}>
+      <CarouselViewport className={classes.slider}>
         {IMAGES.map((image, index) => (
           <CarouselCard key={image.url} className={classes.card} aria-label={`${index + 1} of ${IMAGES.length}`}>
             <ImageCard {...image} />
           </CarouselCard>
         ))}
-      </CarouselSlider>
+      </CarouselViewport>
 
       <CarouselNavContainer
         layout="overlay-expanded"

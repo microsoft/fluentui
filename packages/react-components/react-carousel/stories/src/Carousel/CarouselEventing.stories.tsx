@@ -15,7 +15,7 @@ import {
   CarouselNav,
   CarouselNavButton,
   CarouselNavContainer,
-  CarouselSlider,
+  CarouselViewport,
   Text,
 } from '@fluentui/react-components';
 import * as React from 'react';
@@ -52,6 +52,7 @@ const useClasses = makeStyles({
     border: `2px solid ${tokens.colorBrandBackground}`,
     borderRadius: `${tokens.borderRadiusMedium} 0 ${tokens.borderRadiusMedium} ${tokens.borderRadiusMedium}`,
     padding: '12px',
+    maxHeight: '250px',
   },
   logContainer: {
     display: 'flex',
@@ -154,7 +155,7 @@ export const Eventing = () => {
           setStatusLog(prev => [[Date.now(), { type: data.type, index: data.index }], ...prev]);
         }}
       >
-        <CarouselSlider cardFocus>
+        <CarouselViewport cardFocus>
           <CarouselCard className={classes.card} autoSize aria-label="1 of 7">
             <WireframeContent appearance="odd">
               <Title1 align="center">Lorem Ipsum</Title1>
@@ -199,7 +200,7 @@ export const Eventing = () => {
               <Caption1 align="center">Lorem ipsum...</Caption1>
             </WireframeContent>
           </CarouselCard>
-        </CarouselSlider>
+        </CarouselViewport>
 
         <CarouselNavContainer
           layout="inline"

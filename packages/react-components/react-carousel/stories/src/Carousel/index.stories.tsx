@@ -8,6 +8,7 @@ import {
   CarouselNavContainer,
   CarouselNavImageButton,
   CarouselSlider,
+  CarouselViewport,
 } from '@fluentui/react-components';
 
 import descriptionMd from './CarouselDescription.md';
@@ -33,7 +34,7 @@ export default {
     CarouselNavButton,
     CarouselNavContainer,
     CarouselNavImageButton,
-    CarouselSlider,
+    CarouselViewport,
   },
   parameters: {
     docs: {

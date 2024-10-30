@@ -6,7 +6,7 @@ import {
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
-  CarouselSlider,
+  CarouselViewport,
   Dialog,
   DialogSurface,
   DialogTrigger,
@@ -102,7 +102,7 @@ export const FirstRunExperience = () => {
           motion="fade"
           onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
         >
-          <CarouselSlider>
+          <CarouselViewport>
             {PAGES.map(page => (
               <CarouselCard className={styles.card} key={page.id}>
                 <Image src={page.imgSrc} width={600} height={324} alt={page.imgSrc} />
@@ -112,7 +112,7 @@ export const FirstRunExperience = () => {
                 <span className={styles.text}>{page.text}</span>
               </CarouselCard>
             ))}
-          </CarouselSlider>
+          </CarouselViewport>
           <div className={styles.footer}>
             <Button onClick={() => setPage(activeIndex - 1)}>{activeIndex <= 0 ? 'Not Now' : 'Previous'}</Button>
 

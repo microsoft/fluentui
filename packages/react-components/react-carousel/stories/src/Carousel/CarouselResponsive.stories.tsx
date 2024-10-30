@@ -6,7 +6,7 @@ import {
   CarouselNav,
   CarouselNavButton,
   CarouselNavContainer,
-  CarouselSlider,
+  CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
@@ -90,7 +90,7 @@ export const Responsive = () => {
 
   return (
     <Carousel draggable announcement={getAnnouncement}>
-      <CarouselSlider className={classes.slider}>
+      <CarouselViewport slider={{ className: classes.slider }}>
         <CarouselCard autoSize aria-label="1 of 7">
           <WireframeContent appearance="odd">
             <Title1 align="center">Lorem Ipsum</Title1>
@@ -135,7 +135,7 @@ export const Responsive = () => {
             <Caption1 align="center">Lorem ipsum...</Caption1>
           </WireframeContent>
         </CarouselCard>
-      </CarouselSlider>
+      </CarouselViewport>
 
       <CarouselNavContainer layout="inline" next={{ 'aria-label': 'go to next' }} prev={{ 'aria-label': 'go to prev' }}>
         <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>

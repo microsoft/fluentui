@@ -9,6 +9,9 @@ import { useCarouselSliderContextValues_unstable } from './CarouselSliderContext
 
 /**
  * CarouselSlider component - The viewport window that CarouselCards are contained within.
+ *
+ * @deprecated use CarouselViewport instead
+ * @see CarouselViewport
  */
 export const CarouselSlider: ForwardRefComponent<CarouselSliderProps> = React.forwardRef((props, ref) => {
   const state = useCarouselSlider_unstable(props, ref);
