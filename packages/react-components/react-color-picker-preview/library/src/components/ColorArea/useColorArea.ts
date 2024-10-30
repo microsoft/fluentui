@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId, slot, getPartitionedNativeProps, useMergedRefs, mergeCallbacks } from '@fluentui/react-utilities';
+import { useId, slot, useMergedRefs, mergeCallbacks, getIntrinsicElementProps } from '@fluentui/react-utilities';
 import type { ColorAreaProps, ColorAreaState, HsvColor } from './ColorArea.types';
 import { colorAreaCSSVars } from './useColorAreaStyles.styles';
 import { clamp, useEventCallback, useControllableState } from '@fluentui/react-utilities';
@@ -19,25 +19,22 @@ const INITIAL_COLOR_HSV = parseColor(INITIAL_COLOR);
  * @param props - props from this instance of ColorArea
  * @param ref - reference to root HTMLInputElement of ColorArea
  */
-export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLInputElement>): ColorAreaState => {
+export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLDivElement>): ColorAreaState => {
   const { targetDocument } = useFluent();
   const targetWindow = targetDocument?.defaultView!;
+  const rootRef = React.useRef<HTMLDivElement>(null);
   const xRef = React.useRef<HTMLInputElement>(null);
   const yRef = React.useRef<HTMLInputElement>(null);
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['onChange'],
-  });
 
   const {
     onChange = onChangeFromContext,
     // Slots
-    root,
     inputX,
     inputY,
     thumb,
+
+    ...rest
   } = props;
 
   const hsvColor = React.useMemo(() => (props.color ? parseColor(props.color) : undefined), [props.color]);
@@ -104,7 +101,6 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   );
   const handleDocumentMouseUp = useEventCallback(() => {
     targetDocument?.removeEventListener('mousemove', handleDocumentMouseMove);
-    // targetDocument?.removeEventListener('mouseup', handleDocumentMouseUp);
   });
 
   const _onMouseDown: React.MouseEventHandler<HTMLDivElement> = useEventCallback(event => {
@@ -152,16 +148,12 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
       root: 'div',
       thumb: 'div',
     },
-    root: slot.always(root, {
-      defaultProps: { ...nativeProps.root },
-      elementType: 'div',
-    }),
+    root: slot.always(getIntrinsicElementProps('div', { ...rest, ref }), { elementType: 'div' }),
     inputX: slot.always(inputX, {
       defaultProps: {
         id: useId('sliderX-', props.id),
         type: 'range',
         ref: xRef,
-        ...nativeProps.primary,
       },
       elementType: 'input',
     }),
@@ -176,8 +168,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     thumb: slot.always(thumb, { elementType: 'div' }),
   };
 
-  const rootRef = useMergedRefs(state.root.ref);
-  state.root.ref = rootRef;
+  state.root.ref = useMergedRefs(state.root.ref, rootRef);
   state.root.style = {
     ...rootVariables,
     ...state.root.style,
