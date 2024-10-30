@@ -37,7 +37,7 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
       onResizeRef.current?.(containerWidth, containerHeight);
     };
 
-    if (_window && _window.ResizeObserver) {
+    if (_window?.ResizeObserver) {
       resizeObserver = new _window.ResizeObserver(resizeCallback);
       if (containerRef.current) {
         resizeObserver.observe(containerRef.current);
