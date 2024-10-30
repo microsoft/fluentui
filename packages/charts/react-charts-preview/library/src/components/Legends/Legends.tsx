@@ -294,15 +294,19 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           pathProps={svgChildProps}
           shape={legend.shape as LegendShape}
           classNameForNonSvg={classes.rect}
-          style={{
-            height: legend.isLineLegendInBarChart ? '4px' : '12px',
-            backgroundColor: legend.stripePattern ? '' : color,
-            borderColor: legend.color ? legend.color : tokens.colorNeutralStroke1,
-            content: legend.stripePattern
-              ? // eslint-disable-next-line @fluentui/max-len
-                `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
-              : '',
-          }}
+          style={
+            {
+              height: legend.isLineLegendInBarChart ? '4px' : '12px',
+              backgroundColor: legend.stripePattern ? '' : color,
+              borderColor: legend.color ? legend.color : tokens.colorNeutralStroke1,
+              content: legend.stripePattern
+                ? // eslint-disable-next-line @fluentui/max-len
+                  `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
+                : '',
+              '--rect-content-high-contrast': `linear-gradient(to right, ${color}, ${color})`,
+              '--rect-opacity-high-contrast': color === tokens.colorNeutralBackground1 ? '0.6' : '',
+            } as React.CSSProperties
+          }
         />
       );
     }
