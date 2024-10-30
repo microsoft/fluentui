@@ -1,6 +1,6 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
-import type { LabelSize, LabelWeight } from './label.options.js';
+import { swapStates, toggleState } from '../utils/element-internals.js';
+import { LabelSize, LabelWeight } from './label.options.js';
 
 /**
  * The base class used for constructing a fluent-label custom element
@@ -30,12 +30,7 @@ export class Label extends FASTElement {
    * @param next - the next state
    */
   public sizeChanged(prev: LabelSize | undefined, next: LabelSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, LabelSize);
   }
 
   /**
@@ -54,12 +49,7 @@ export class Label extends FASTElement {
    * @param next - the next state
    */
   public weightChanged(prev: LabelWeight | undefined, next: LabelWeight | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, LabelWeight);
   }
 
   /**

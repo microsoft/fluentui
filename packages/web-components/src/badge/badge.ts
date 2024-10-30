@@ -1,9 +1,8 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-// TODO: Remove with https://github.com/microsoft/fast/pull/6797
 import { applyMixins } from '../utils/apply-mixins.js';
 import { StartEnd } from '../patterns/index.js';
-import { toggleState } from '../utils/element-internals.js';
-import { BadgeAppearance, BadgeColor, type BadgeShape, type BadgeSize } from './badge.options.js';
+import { swapStates } from '../utils/element-internals.js';
+import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
 
 /**
  * The base class used for constructing a fluent-badge custom element
@@ -33,12 +32,7 @@ export class Badge extends FASTElement {
    * @param next - the next state
    */
   public appearanceChanged(prev: BadgeAppearance | undefined, next: BadgeAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, BadgeAppearance);
   }
 
   /**
@@ -57,12 +51,7 @@ export class Badge extends FASTElement {
    * @param next - the next state
    */
   public colorChanged(prev: BadgeColor | undefined, next: BadgeColor | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, BadgeColor);
   }
 
   /**
@@ -81,12 +70,7 @@ export class Badge extends FASTElement {
    * @param next - the next state
    */
   public shapeChanged(prev: BadgeShape | undefined, next: BadgeShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, BadgeShape);
   }
 
   /**
@@ -105,12 +89,7 @@ export class Badge extends FASTElement {
    * @param next - the next state
    */
   public sizeChanged(prev: BadgeSize | undefined, next: BadgeSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, BadgeSize);
   }
 }
 

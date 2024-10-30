@@ -1,9 +1,13 @@
 import { attr, FASTElement, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
 import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { toggleState } from '../utils/element-internals.js';
-import type { TextInputControlSize } from './text-input.options.js';
-import { ImplicitSubmissionBlockingTypes, TextInputAppearance, TextInputType } from './text-input.options.js';
+import { swapStates } from '../utils/element-internals.js';
+import {
+  ImplicitSubmissionBlockingTypes,
+  TextInputAppearance,
+  TextInputControlSize,
+  TextInputType,
+} from './text-input.options.js';
 
 /**
  * A Text Input Custom HTML Element.
@@ -618,12 +622,7 @@ export class TextInput extends BaseTextInput {
    * @param next - the next state
    */
   public appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, TextInputAppearance);
   }
 
   /**
@@ -642,12 +641,7 @@ export class TextInput extends BaseTextInput {
    * @param next - the next state
    */
   public controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, TextInputControlSize);
   }
 }
 
