@@ -75,7 +75,8 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     state: baseState,
     defaultProps: {
       type: 'button',
-      tabIndex: 0,
+      // tabster navigation breaks if the button is disabled and tabIndex is 0
+      tabIndex: triggerNativeProps.disabled ? undefined : 0,
       children: baseState.value || props.placeholder,
       'aria-controls': open ? listbox?.id : undefined,
       ...triggerNativeProps,
@@ -104,7 +105,8 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
         'aria-label': 'Clear selection',
         children: <DismissIcon />,
         // Safari doesn't allow to focus an element with this
-        tabIndex: 0,
+        // when the element is not visible (display: none) we need to remove it to avoid tabster issues
+        tabIndex: showClearButton ? 0 : undefined,
         type: 'button',
       },
       elementType: 'button',

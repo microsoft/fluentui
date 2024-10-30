@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Mon, 23 Sep 2024 12:40:12 GMT",
+      "tag": "@fluentui/react-conformance_v0.19.1",
+      "version": "0.19.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "chore: reflect package.json dependencies to match actual dep graph"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Jul 2024 17:25:26 GMT",
       "tag": "@fluentui/react-conformance_v0.19.1",
       "version": "0.19.1",

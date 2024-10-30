@@ -1,6 +1,6 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { keyEnter, keyEscape, keySpace, keyTab } from '@microsoft/fast-web-utilities';
-import { MenuList } from '../menu-list/menu-list.js';
+import type { MenuList } from '../menu-list/menu-list.js';
 import { MenuItem } from '../menu-item/menu-item.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
@@ -13,9 +13,11 @@ import { MenuItemRole } from '../menu-item/menu-item.options.js';
  * @attr open-on-context - Determines if the menu should open on right click.
  * @attr close-on-scroll - Determines if the menu should close on scroll.
  * @attr persist-on-item-click - Determines if the menu open state should persist on click of menu item.
+ * @attr split - Determines if the menu is in split state.
  *
  * @cssproperty --menu-max-height - The max-height of the menu.
  *
+ * @slot primary-action - Slot for the primary action elements. Used when in `split` state.
  * @slot trigger - Slot for the trigger elements.
  * @slot - Default slot for the menu list.
  *
@@ -49,28 +51,35 @@ export class Menu extends FASTElement {
    * @public
    */
   @attr({ attribute: 'open-on-hover', mode: 'boolean' })
-  public openOnHover?: boolean = false;
+  public openOnHover?: boolean;
 
   /**
    * Determines if the menu should open on right click.
    * @public
    */
   @attr({ attribute: 'open-on-context', mode: 'boolean' })
-  public openOnContext?: boolean = false;
+  public openOnContext?: boolean;
 
   /**
    * Determines if the menu should close on scroll.
    * @public
    */
   @attr({ attribute: 'close-on-scroll', mode: 'boolean' })
-  public closeOnScroll?: boolean = false;
+  public closeOnScroll?: boolean;
 
   /**
    * Determines if the menu open state should persis on click of menu item
    * @public
    */
   @attr({ attribute: 'persist-on-item-click', mode: 'boolean' })
-  public persistOnItemClick?: boolean = false;
+  public persistOnItemClick?: boolean;
+
+  /**
+   * Determines if the menu is in split state.
+   * @public
+   */
+  @attr({ mode: 'boolean' })
+  public split?: boolean;
 
   /**
    * Holds the slotted menu list.
@@ -85,6 +94,13 @@ export class Menu extends FASTElement {
    */
   @observable
   public slottedTriggers: HTMLElement[] = [];
+
+  /**
+   * Holds the primary slot element.
+   * @public
+   */
+  @observable
+  public primaryAction!: HTMLSlotElement;
 
   /**
    * Defines whether the menu is open or not.
@@ -145,6 +161,7 @@ export class Menu extends FASTElement {
    * @public
    */
   public toggleMenu = () => {
+    // @ts-expect-error - Baseline 2024
     this._menuList?.togglePopover(!this._open);
   };
 
@@ -161,7 +178,7 @@ export class Menu extends FASTElement {
     ) {
       return;
     }
-
+    // @ts-expect-error - Baseline 2024
     this._menuList?.togglePopover(false);
 
     if (this.closeOnScroll) {
@@ -174,6 +191,7 @@ export class Menu extends FASTElement {
    * @public
    */
   public openMenu = (e?: Event) => {
+    // @ts-expect-error - Baseline 2024
     this._menuList?.togglePopover(true);
 
     if (e && this.openOnContext) {
@@ -211,8 +229,10 @@ export class Menu extends FASTElement {
    * @param e - the event
    * @returns void
    */
-  public toggleHandler = (e: Event | ToggleEvent): void => {
-    if (e instanceof ToggleEvent) {
+  public toggleHandler = (e: Event): void => {
+    // @ts-expect-error - Baseline 2024
+    if (e.type === 'toggle' && e.newState) {
+      // @ts-expect-error - Baseline 2024
       const newState = e.newState === 'open' ? true : false;
       this._trigger?.setAttribute('aria-expanded', `${newState}`);
       this._open = newState;
@@ -356,7 +376,11 @@ export class Menu extends FASTElement {
         break;
       case keyTab:
         if (this._open) this.closeMenu();
-        if (e.shiftKey && e.composedPath()[0] !== this._trigger) {
+        if (
+          e.shiftKey &&
+          e.composedPath()[0] !== this._trigger &&
+          (e.composedPath()[0] as HTMLElement).assignedSlot !== this.primaryAction
+        ) {
           this.focusTrigger();
         } else if (e.shiftKey) {
           return true;

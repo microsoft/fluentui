@@ -70,16 +70,20 @@ extends:
                 displayName: yarn
 
               - script: |
-                  yarn nx run-many -t build -p tag:vNext --exclude 'tag:tools,apps/**' --nxBail --production
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t build -p tag:vNext --exclude 'tag:tools,tag:type:stories,apps/**' --nxBail
                 displayName: build
 
               - script: |
-                  yarn nx run-many -t test -p tag:vNext --exclude 'tag:tools,apps/**' --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t test -p tag:vNext --exclude 'tag:tools,tag:type:stories,apps/**' --nxBail
                 displayName: test
 
               - script: |
-                  yarn nx run-many -t lint -p tag:vNext --exclude 'tag:tools,apps/**' --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p tag:vNext --exclude 'tag:tools,tag:type:stories,apps/**' --nxBail
                 displayName: lint
+
+              - script: |
+                  node -r ./scripts/ts-node/src/register ./scripts/executors/src/deprecate-react-components-preview-packages.ts --token $(npmToken)
+                displayName: 'Deprecate preview packages'
 
               - script: |
                   yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-vNext.config.js --message 'release: applying package updates - react-components'

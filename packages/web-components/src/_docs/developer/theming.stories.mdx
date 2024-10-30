@@ -14,7 +14,7 @@ const exampleTheme = {
 };
 ```
 
-You can browse all the available tokens in **[Theme](/docs/theme-color--page)** section of the docs.
+You can browse all the available tokens in **[Theme](/docs/theme-tokens--docs)** section of the docs.
 
 ## How theme is applied
 
@@ -29,15 +29,15 @@ import { webLightTheme } from '@fluentui/tokens';
 setTheme(webLightTheme);
 ```
 
-If you need to set token values for an element which is not the document body, you can use `setThemeFor` and pass an element followed by the theme.
+If you need to set token values for an element which is not the document body, you can pass in the element as the second argument in `setTheme`.
 
 ```js
-import { setThemeFor } from '@fluentui/web-components';
-import { webLightTheme } from '@fluentui/tokens';
+import { setTheme } from '@fluentui/web-components';
+import { webDarkTheme } from '@fluentui/tokens';
 
 const el = document.getElementById('my-element');
 
-setThemeFor(el, webLightTheme);
+setTheme(webDarkTheme, el);
 ```
 
 ### Do not use CSS variables directly

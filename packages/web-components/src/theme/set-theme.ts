@@ -1,3 +1,5 @@
+import { uniqueId } from '@microsoft/fast-web-utilities';
+
 /**
  * Not using the `Theme` type from `@fluentui/tokens` package to allow custom
  * tokens to be added.
@@ -5,10 +7,28 @@
  */
 export type Theme = Record<string, string | number>;
 
-const SUPPORTS_REGISTER_PROPERTY = 'registerProperty' in CSS;
 const SUPPORTS_ADOPTED_STYLE_SHEETS = 'adoptedStyleSheets' in document;
-const themeStyleSheet = new CSSStyleSheet();
+const SUPPORTS_CSS_SCOPE = 'CSSScopeRule' in window;
+
+// A map from a theme to Custom Property declarations for the theme as a string.
+// Each value should be a list of CSS Custom Property declarations, and should
+// NOT include any selector, `{`, or `}`.
 const themeStyleTextMap = new Map<Theme, string>();
+
+// A map from a theme to a unique string used to identity a theme. The string
+// will be used as the value of the `data-fluent-theme` attribute on a
+// differently themed element.
+const scopedThemeKeyMap = new Map<Theme, string>();
+
+// A map from an element with shadow root to a `CSSStyleSheet` object that
+// references its local theme style sheet.
+const shadowAdoptedStyleSheetMap = new Map<HTMLElement, CSSStyleSheet>();
+
+// A map from an element to its set theme. This is used only when
+// `document.adoptedStyleSheets` or CSS Scope is not supported.
+const elementThemeMap = new Map<HTMLElement, Theme>();
+
+const globalThemeStyleSheet = new CSSStyleSheet();
 
 /**
  * Sets the theme tokens as CSS Custom Properties. The Custom Properties are
@@ -23,57 +43,180 @@ const themeStyleTextMap = new Map<Theme, string>();
  *     Note that this argument is not limited to existing theme objects (from
  *     `@fluentui/tokens`), you can pass in an arbitrary theme object as long
  *     as each entry’s value is either a string or a number.
+ * @param node - The node to set the theme on, defaults to `document` for
+ *     setting global theme.
  * @internal
  */
-export const setTheme = (theme: Theme) => {
-  // Fallback to setting token custom properties on `<html>` element’s `style`
-  // attribute, only checking the support of  `document.adoptedStyleSheets`
-  // here because it has broader support than `CSS.registerProperty()`, which
-  // is checked later.
-  if (!SUPPORTS_ADOPTED_STYLE_SHEETS) {
-    setThemeFor(document.documentElement, theme);
+export function setTheme(theme: Theme | null, node: Document | HTMLElement = document) {
+  if (!node || !isThemeableNode(node)) {
     return;
   }
 
+  // Fallback to setting token custom properties on `<html>` element’s `style`
+  // attribute.
+  if (!SUPPORTS_ADOPTED_STYLE_SHEETS || (node instanceof HTMLElement && !node.shadowRoot && !SUPPORTS_CSS_SCOPE)) {
+    const target: HTMLElement = node === document ? document.documentElement : (node as HTMLElement);
+    setThemePropertiesOnElement(theme, target);
+    return;
+  }
+
+  if ([document, document.documentElement, document.body].includes(node)) {
+    setGlobalTheme(theme);
+  } else {
+    setLocalTheme(theme, node as HTMLElement);
+  }
+}
+
+function getThemeStyleText(theme: Theme): string {
   if (!themeStyleTextMap.has(theme)) {
     const tokenDeclarations: string[] = [];
 
     for (const [tokenName, tokenValue] of Object.entries(theme)) {
-      if (typeof tokenValue !== 'string' && Number.isNaN(tokenValue)) {
-        throw new Error(`"${tokenName}" must be a string or a number.`);
-      }
-
-      const name = `--${tokenName}`;
-      const initialValue = tokenValue.toString();
-      if (SUPPORTS_REGISTER_PROPERTY) {
-        try {
-          CSS.registerProperty({
-            name,
-            initialValue,
-            inherits: true,
-          });
-        } catch {}
-      }
-      tokenDeclarations.push(`${name}:${initialValue};`);
+      tokenDeclarations.push(`--${tokenName}:${tokenValue.toString()};`);
     }
 
-    themeStyleTextMap.set(theme, `html{${tokenDeclarations.join('')}}`);
+    themeStyleTextMap.set(theme, tokenDeclarations.join(''));
+  }
+
+  return themeStyleTextMap.get(theme)!;
+}
+
+/**
+ * A themeable node should either be one of the following:
+ * - `document`
+ * - `html`
+ * - `body`
+ * - Any HTML element inside `body`
+ */
+function isThemeableNode(node: Document | HTMLElement) {
+  return [document, document.documentElement].includes(node) || (node instanceof HTMLElement && !!node.closest('body'));
+}
+
+function setGlobalTheme(theme: Theme | null) {
+  if (theme === null) {
+    if (document.adoptedStyleSheets.includes(globalThemeStyleSheet)) {
+      globalThemeStyleSheet.replaceSync('');
+    }
+    return;
   }
 
   // Update the CSSStyleSheet with the new theme
-  themeStyleSheet.replaceSync(themeStyleTextMap.get(theme)!);
+  globalThemeStyleSheet.replaceSync(`
+    html {
+      ${getThemeStyleText(theme)}
+    }
+  `);
 
   // Adopt the updated CSSStyleSheet if it hasn't been adopted yet
-  if (!document.adoptedStyleSheets.includes(themeStyleSheet)) {
-    document.adoptedStyleSheets.push(themeStyleSheet);
+  if (!document.adoptedStyleSheets.includes(globalThemeStyleSheet)) {
+    document.adoptedStyleSheets.push(globalThemeStyleSheet);
   }
-};
+}
+
+function setLocalTheme(theme: Theme | null, element: HTMLElement) {
+  if (theme === null) {
+    if (element.shadowRoot && shadowAdoptedStyleSheetMap.has(element)) {
+      shadowAdoptedStyleSheetMap.get(element)!.replaceSync('');
+    } else {
+      delete element.dataset.fluentTheme;
+      forceRepaint(element);
+    }
+    return;
+  }
+
+  if (element.shadowRoot) {
+    getShadowAdoptedStyleSheet(element).replaceSync(`
+      :host {
+        ${getThemeStyleText(theme)}
+      }
+    `);
+  } else {
+    element.dataset.fluentTheme = getScopedThemeKey(theme);
+    forceRepaint(element);
+  }
+}
+
+function getShadowAdoptedStyleSheet(element: HTMLElement): CSSStyleSheet {
+  if (!shadowAdoptedStyleSheetMap.has(element)) {
+    const shadowAdoptedStyleSheet = new CSSStyleSheet();
+    shadowAdoptedStyleSheetMap.set(element, shadowAdoptedStyleSheet);
+    element.shadowRoot?.adoptedStyleSheets.push(shadowAdoptedStyleSheet);
+  }
+
+  return shadowAdoptedStyleSheetMap.get(element)!;
+}
+
+function getScopedThemeKey(theme: Theme): string {
+  if (!scopedThemeKeyMap.has(theme)) {
+    const themeKey = uniqueId('fluent-theme-');
+    const scopedThemeStyleSheet = new CSSStyleSheet();
+
+    scopedThemeKeyMap.set(theme, themeKey);
+    scopedThemeStyleSheet.replaceSync(`
+      @scope ([data-fluent-theme="${themeKey}"]) {
+        :scope {
+          ${getThemeStyleText(theme)}
+        }
+      }
+    `);
+    document.adoptedStyleSheets.push(scopedThemeStyleSheet);
+  }
+
+  return scopedThemeKeyMap.get(theme)!;
+}
+
+function setThemePropertiesOnElement(theme: Theme | null, element: HTMLElement) {
+  let tokens: Theme;
+
+  if (theme === null) {
+    if (!elementThemeMap.has(element)) {
+      return;
+    }
+    tokens = elementThemeMap.get(element)!;
+  } else {
+    elementThemeMap.set(element, theme);
+    tokens = theme;
+  }
+
+  for (const [tokenName, tokenValue] of Object.entries(tokens)) {
+    if (theme === null) {
+      element.style.removeProperty(`--${tokenName}`);
+    } else {
+      element.style.setProperty(`--${tokenName}`, tokenValue.toString());
+    }
+  }
+}
+
+/**
+ * This function fixes a Safari bug: when an element should no longer be
+ * selected by an `@scope` rule, the styles defined in the `:scope` selector
+ * persist.
+ * @see https://bugs.webkit.org/show_bug.cgi?id=276454
+ *
+ * UA sniff regular expression is based on
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent#rendering_engine | the MDN documentation}.
+ */
+const { userAgent: UA } = navigator;
+const isWebkit = /\bAppleWebKit\/[\d+\.]+\b/.test(UA);
+function forceRepaint(element: HTMLElement) {
+  if (!isWebkit) {
+    return;
+  }
+
+  const name = 'visibility';
+  const tempValue = 'hidden';
+  const currentValue = element.style.getPropertyValue(name);
+
+  element.style.setProperty(name, tempValue);
+  requestAnimationFrame(() => {
+    element.style.setProperty(name, currentValue);
+  });
+}
 
 /**
  * @internal
+ * @deprecated Use `setTheme(theme, element)` instead.
  */
-export const setThemeFor = (element: HTMLElement, theme: Theme) => {
-  for (const [tokenName, tokenValue] of Object.entries(theme)) {
-    element.style.setProperty(`--${tokenName}`, tokenValue.toString());
-  }
-};
+export function setThemeFor(element: HTMLElement, theme: Theme | null) {
+  setThemePropertiesOnElement(theme, element);
+}

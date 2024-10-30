@@ -1,8 +1,91 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Wed, 07 Aug 2024 12:31:57 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2024 17:17:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.35)
+
+Tue, 15 Oct 2024 17:17:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.34..@fluentui/react-migration-v8-v9_v9.6.35)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.55.1 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+
+## [9.6.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.34)
+
+Tue, 08 Oct 2024 22:05:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.33..@fluentui/react-migration-v8-v9_v9.6.34)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.55.0 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+
+## [9.6.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.33)
+
+Thu, 26 Sep 2024 14:15:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.32..@fluentui/react-migration-v8-v9_v9.6.33)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.54.17 ([PR #32924](https://github.com/microsoft/fluentui/pull/32924) by beachball)
+
+## [9.6.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.32)
+
+Mon, 23 Sep 2024 12:40:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.31..@fluentui/react-migration-v8-v9_v9.6.32)
+
+### Patches
+
+- fix: cleanup production dependencies and fix forbidden sub-package import within Menu ([PR #32359](https://github.com/microsoft/fluentui/pull/32359) by martinhochel@microsoft.com)
+- Bump @fluentui/react-components to v9.54.16 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+
+## [9.6.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.31)
+
+Fri, 13 Sep 2024 00:49:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.30..@fluentui/react-migration-v8-v9_v9.6.31)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.54.15 ([PR #32371](https://github.com/microsoft/fluentui/pull/32371) by beachball)
+
+## [9.6.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.30)
+
+Tue, 10 Sep 2024 10:19:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.29..@fluentui/react-migration-v8-v9_v9.6.30)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.54.14 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-utilities to v9.18.14 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+
+## [9.6.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.29)
+
+Fri, 16 Aug 2024 10:24:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.28..@fluentui/react-migration-v8-v9_v9.6.29)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.54.13 ([PR #32316](https://github.com/microsoft/fluentui/pull/32316) by beachball)
+
+## [9.6.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.28)
+
+Thu, 15 Aug 2024 13:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.27..@fluentui/react-migration-v8-v9_v9.6.28)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.54.12 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+
+## [9.6.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.27)
+
+Thu, 15 Aug 2024 08:22:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.26..@fluentui/react-migration-v8-v9_v9.6.27)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.54.11 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
 
 ## [9.6.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.26)
 

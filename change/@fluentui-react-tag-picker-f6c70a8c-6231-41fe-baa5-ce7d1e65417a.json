@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feature: introduces noPopover property to TagPicker",
-  "packageName": "@fluentui/react-tag-picker",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

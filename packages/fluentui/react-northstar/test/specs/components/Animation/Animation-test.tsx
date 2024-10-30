@@ -16,10 +16,10 @@ describe('Animation', () => {
   });
 
   test('does not throw if children is not passed', () => {
-    expect(() => mountWithProvider(<Animation />)).not.toThrowError();
+    expect(() => mountWithProvider(<Animation />)).not.toThrow();
   });
 
   test('does not throw if children function returns undefined', () => {
-    expect(() => mountWithProvider(<Animation children={() => undefined} />)).not.toThrowError();
+    expect(() => mountWithProvider(<Animation children={() => undefined} />)).not.toThrow();
   });
 });

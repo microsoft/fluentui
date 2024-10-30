@@ -3,14 +3,10 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "tools/eslint-rules",
   "projectType": "library",
+  "tags": ["platform:node", "tools"],
   "targets": {
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "tools/eslint-rules/jest.config.ts"
-      }
+    "type-check": {
+      "executor": "@fluentui/workspace-plugin:type-check"
     }
-  },
-  "tags": ["platform:node", "tools"]
+  }
 }

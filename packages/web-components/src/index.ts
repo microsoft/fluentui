@@ -15,7 +15,7 @@ export {
   accordionStyles,
   accordionTemplate,
 } from './accordion/index.js';
-export { Link, LinkAppearance, LinkDefinition, LinkTemplate, LinkTarget } from './link/index.js';
+export { Link, LinkAppearance, LinkDefinition, LinkTemplate, LinkStyles, LinkTarget } from './link/index.js';
 export {
   Avatar,
   AvatarActive,
@@ -53,6 +53,7 @@ export {
 } from './button/index.js';
 export type { ButtonOptions } from './button/index.js';
 export {
+  BaseCheckbox,
   Checkbox,
   CheckboxDefinition,
   CheckboxShape,
@@ -117,6 +118,7 @@ export { FluentDesignSystem } from './fluent-design-system.js';
 export { Image, ImageDefinition, ImageFit, ImageShape, ImageStyles, ImageTemplate } from './image/index.js';
 export { Label, LabelDefinition, LabelSize, LabelStyles, LabelTemplate, LabelWeight } from './label/index.js';
 export {
+  BaseAnchor,
   AnchorButton,
   AnchorButtonAppearance,
   AnchorButtonDefinition,
@@ -125,6 +127,15 @@ export {
   AnchorButtonTemplate,
   AnchorTarget,
 } from './anchor-button/index.js';
+export {
+  MessageBar,
+  MessageBarDefinition,
+  MessageBarIntent,
+  MessageBarLayout,
+  MessageBarShape,
+  MessageBarStyles,
+  MessageBarTemplate,
+} from './message-bar/index.js';
 export {
   MenuButton,
   MenuButtonAppearance,
@@ -239,6 +250,18 @@ export {
   TablistTemplate,
 } from './tablist/index.js';
 export type { TabsOptions } from './tabs/index.js';
+export {
+  BaseTextArea,
+  TextArea,
+  TextAreaAppearance,
+  TextAreaAppearancesForDisplayShadow,
+  TextAreaAutocomplete,
+  TextAreaDefinition,
+  TextAreaResize,
+  TextAreaSize,
+  TextAreaStyles,
+  TextAreaTemplate,
+} from './textarea/index.js';
 export {
   BaseTextInput,
   TextInput,

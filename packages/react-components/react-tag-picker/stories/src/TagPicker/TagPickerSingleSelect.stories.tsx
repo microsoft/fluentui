@@ -33,7 +33,7 @@ export const SingleSelect = () => {
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
           {selectedOption && (
-            <TagPickerGroup>
+            <TagPickerGroup aria-label="Selected Employees">
               <Tag
                 key={selectedOption}
                 shape="rounded"

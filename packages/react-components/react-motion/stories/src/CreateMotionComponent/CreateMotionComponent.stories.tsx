@@ -1,4 +1,4 @@
-import { createMotionComponent, makeStyles, tokens } from '@fluentui/react-components';
+import { createMotionComponent, MotionComponentProps, makeStyles, tokens } from '@fluentui/react-components';
 import * as React from 'react';
 
 import description from './CreateMotionComponent.stories.md';
@@ -47,7 +47,7 @@ const DropIn = createMotionComponent({
   iterations: Infinity,
 });
 
-export const CreateMotionComponent = () => {
+export const CreateMotionComponent = (props: MotionComponentProps) => {
   const classes = useClasses();
 
   return (

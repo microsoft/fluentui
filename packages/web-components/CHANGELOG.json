@@ -2,6 +2,339 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 30 Oct 2024 04:06:53 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.72",
+      "version": "3.0.0-beta.72",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "36474e58a4a9721954c6badad419c9e93df1fc6f",
+            "comment": "add swapStates function for attribute-driven internal states"
+          }
+        ],
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "8614d041a6a8b329099c40009cff9c9ae63aceac",
+            "comment": "identify type-only imports and exports"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Oct 2024 04:06:49 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.71",
+      "version": "3.0.0-beta.71",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "62d8aaa93842818bb51626606f8e93a8358924d4",
+            "comment": "replace state partials with stateSelector function"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Oct 2024 20:54:39 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.70",
+      "version": "3.0.0-beta.70",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "6bc347d526db66916be4979bab99bc30ade183cb",
+            "comment": "fix: move proper menu positioning for split button into component css"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c547276bf1595578c67a50511bdc832973d7241d",
+            "comment": "fix: change to new css anchor positioning properties"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Oct 2024 04:08:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.69",
+      "version": "3.0.0-beta.69",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "d0e28c6674287caeeef341f1f355e53d152fcf37",
+            "comment": "resolve eslint errors after upgrade to typescript-eslint v8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Oct 2024 04:07:48 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.69",
+      "version": "3.0.0-beta.69",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bc620a1b40700bb9f0d770eac37f288513002970",
+            "comment": "Fix: menu-item emit current state when checked change event fires"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "eaccd58b7bfad6eb22ca2df482c1638910cdd6a4",
+            "comment": "fix prefers-reduced-motion media query in button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Oct 2024 04:08:32 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.68",
+      "version": "3.0.0-beta.68",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e3983599ad7d12a6354f9fcd614cd71e742a3d5a",
+            "comment": "feat: adds split-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Oct 2024 04:09:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.67",
+      "version": "3.0.0-beta.67",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "4e32dbf10f0cd1ddfa2d51bef2de83fba7cc865a",
+            "comment": "fix: removes display inheritance so all html elements can render"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Sep 2024 04:07:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.66",
+      "version": "3.0.0-beta.66",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mlijanto@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "4834ec2f553c8fd973148cd5dcf6d60aa57de29c",
+            "comment": "feat: add support for custom icons and colors to rating-display"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Sep 2024 04:07:20 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.65",
+      "version": "3.0.0-beta.65",
+      "comments": {
+        "none": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "35bd7a4710b303d9042bba78df2fecf9ee77a1d3",
+            "comment": "Fix: cleans up stories Accordion - Checkbox"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Sep 2024 04:08:18 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.65",
+      "version": "3.0.0-beta.65",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "269f109440bd3b66abf86b1f70aedb1b7999e142",
+            "comment": "docs: reflect setTheme change"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Sep 2024 04:07:18 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.64",
+      "version": "3.0.0-beta.64",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "416d7ddb3bd0ef5187c151807f10a0cfa721e0c1",
+            "comment": "chore: add missing export for textarea"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2024 04:08:17 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.63",
+      "version": "3.0.0-beta.63",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "dcc17c95874e52e5e74e6e9e6e1ec24027cc144d",
+            "comment": "normalize export paths"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "207969ccc26df63fc0400d2a1c78b31b4b6c6f72",
+            "comment": "restore define modules as default exports"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Aug 2024 04:07:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.62",
+      "version": "3.0.0-beta.62",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "6f53f9702d46ac50562ba861b7a70baca6a3dcb3",
+            "comment": "fix: add primary button state and improved button disabled state in forced-colors mode"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Aug 2024 04:07:09 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.61",
+      "version": "3.0.0-beta.61",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e15398ac2b81b40f92171d4966e57c0734377355",
+            "comment": "chore: add missing exports for LinkStyles and MessageBar and remove default option from DividerApperance and ImageFit"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Aug 2024 04:06:49 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.60",
+      "version": "3.0.0-beta.60",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bfa731b32f26991c1ff4335d3e6e0472ffb7868a",
+            "comment": "feat: adjust slider sliding range"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Aug 2024 04:07:11 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.59",
+      "version": "3.0.0-beta.59",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7f1015092b1d1fe1aa9a421a2725af3c82dc392d",
+            "comment": "feat: update fast-element to latest stable version"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Aug 2024 04:06:57 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.58",
+      "version": "3.0.0-beta.58",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "07f70bdc0c1d0718ff35b3aef8f7ac87635520e3",
+            "comment": "feat: enabling setting theme on an individual element and unsetting themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Aug 2024 04:08:15 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.57",
+      "version": "3.0.0-beta.57",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "8492a7ebd12270b49dd3083671a859ada31b395b",
+            "comment": "remove web types package and configuration"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "3d0b2597d3b41868bf15d2c14b15fe6873b0b5c2",
+            "comment": "export BaseCheckbox class"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Aug 2024 04:07:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.56",
+      "version": "3.0.0-beta.56",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "4aae6edaf04c16be98d5ee2121ea366a2a9ceb98",
+            "comment": "update tests to be async"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bf96935c37fddfdc7274787e72ea6566bda01458",
+            "comment": "feat(web-components): add fluent-textarea component"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "dbea17157bcc0a705ddca4264fec4d18d5fa13a6",
+            "comment": "export BaseAnchor class"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2024 04:07:16 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.55",
       "version": "3.0.0-beta.55",

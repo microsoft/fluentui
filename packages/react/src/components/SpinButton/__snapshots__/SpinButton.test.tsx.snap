@@ -97,7 +97,6 @@ exports[`SpinButton snapshots renders correctly 1`] = `
       aria-labelledby="Label1"
       aria-valuemax={100}
       aria-valuemin={0}
-      aria-valuenow={0}
       autoComplete="off"
       className=
           ms-spinButton-input
@@ -169,6 +168,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
@@ -180,6 +180,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              justify-content: center;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -287,6 +288,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -326,6 +328,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
@@ -337,6 +340,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              justify-content: center;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -444,6 +448,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -578,7 +583,6 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
       aria-labelledby="Label1"
       aria-valuemax={100}
       aria-valuemin={0}
-      aria-valuenow={0}
       aria-valuetext="0 pt"
       autoComplete="off"
       className=
@@ -651,6 +655,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
@@ -662,6 +667,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              justify-content: center;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -769,6 +775,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -808,6 +815,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
@@ -819,6 +827,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              justify-content: center;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -926,6 +935,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;

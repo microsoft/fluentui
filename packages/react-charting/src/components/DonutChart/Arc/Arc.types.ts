@@ -99,6 +99,24 @@ export interface IArcProps {
    * Prop to hide the arc labels
    */
   hideLabels?: boolean;
+
+  /**
+   * Prop to enable the gradient in the arc
+   * @default false
+   */
+  enableGradient?: boolean;
+
+  /**
+   * Prop to enable the round corners in the chart
+   * @default false
+   */
+  roundCorners?: boolean;
+
+  /**
+   * Next color stop for the gradient
+   * [Only used when enableGradient is True].
+   */
+  nextColor: string;
 }
 
 export interface IArcData {
@@ -128,11 +146,43 @@ export interface IArcData {
   value: number;
 }
 
+export interface IArcStyleProps {
+  /**
+   * Theme
+   */
+  theme: ITheme;
+
+  /**
+   * internal prop for href
+   */
+  href: string;
+
+  /**
+   * solid color for the arc (when enableGradient is false)
+   */
+  solidFill: string;
+
+  /**
+   * gradient for the arc (when enableGradient is true)
+   */
+  gradientFill: string;
+
+  /**
+   * wether gradients are enabled for the arc
+   */
+  opacity: number;
+}
+
 export interface IArcStyles {
   /**
    * Style set for the card header component root
    */
   root: IStyle;
+
+  /**
+   * Style set for the gradient arc
+   */
+  gradientArc: IStyle;
 
   /**
    * styles for the focus

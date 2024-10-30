@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html } from '@microsoft/fast-element';
 import type { Avatar } from './avatar.js';
 
 const defaultIconTemplate = html`<svg

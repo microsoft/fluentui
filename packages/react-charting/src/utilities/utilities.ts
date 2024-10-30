@@ -69,14 +69,14 @@ export enum YAxisType {
 }
 
 export interface IWrapLabelProps {
-  node: SVGElement | null;
+  node: SVGSVGElement | null;
   xAxis: NumericAxis | StringAxis;
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
 }
 
 export interface IRotateLabelProps {
-  node: SVGElement | null;
+  node: SVGSVGElement | null;
   xAxis: NumericAxis | StringAxis;
 }
 
@@ -116,7 +116,7 @@ export interface IDomainNRange {
 
 export interface IXAxisParams {
   domainNRangeValues: IDomainNRange;
-  xAxisElement?: SVGElement | null;
+  xAxisElement?: SVGSVGElement | null;
   xAxisCount?: number;
   showRoundOffXTickValues?: boolean;
   xAxistickSize?: number;
@@ -141,7 +141,7 @@ export interface IYAxisParams {
   margins: IMargins;
   containerWidth: number;
   containerHeight: number;
-  yAxisElement?: SVGElement | null;
+  yAxisElement?: SVGSVGElement | null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yAxisTickFormat?: any;
   yAxisTickCount: number;
@@ -817,7 +817,7 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
       .on('mouseover', (event: any, d) => {
         div.style('opacity', 0.9);
         div
-          .html(originalDataArray[i])
+          .text(originalDataArray[i])
           .style('left', event.pageX + 'px')
           .style('top', event.pageY - 28 + 'px');
       })

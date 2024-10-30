@@ -287,19 +287,25 @@ function createTargetDescription(
   if (targetName === 'e2e') {
     const scriptContent = nxTargetConfiguration.metadata?.scriptContent;
     const runnerType = getRunnerType(scriptContent);
+
+    if (!runnerType) {
+      return scriptContent;
+    }
+
     return description + ` (using ${runnerType})`;
   }
 
   return description ?? nxTargetConfiguration.metadata?.scriptContent;
 
-  function getRunnerType(scriptContent: string): 'cypress' | 'playwright' {
+  function getRunnerType(scriptContent: string): 'cypress' | 'playwright' | null {
     if (scriptContent.includes('cypress')) {
       return 'cypress';
     }
     if (scriptContent.includes('playwright')) {
       return 'playwright';
     }
-    throw new Error('invalid runner type');
+
+    return null;
   }
 }
 

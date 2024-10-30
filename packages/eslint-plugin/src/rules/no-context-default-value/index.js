@@ -43,7 +43,7 @@ module.exports = createRule({
     const createContextParentIdentifiers = [];
 
     /**
-     * @param {import("@typescript-eslint/utils").TSESTree.LeftHandSideExpression} callee
+     * @param {import("@typescript-eslint/utils").TSESTree.Expression} callee
      */
     function isCalleeCreateContext(callee) {
       if (
