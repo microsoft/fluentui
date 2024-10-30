@@ -20,6 +20,7 @@ export { ImageSlideshow } from './CarouselImageBox.stories';
 export { AlignmentAndWhitespace } from './CarouselActionCards.stories';
 export { Autoplay } from './CarouselAutoplay.stories';
 export { FirstRunExperience } from './CarouselFirstRunExperience.stories';
+export { Eventing } from './CarouselEventing.stories';
 
 export default {
   title: 'Components/Carousel',

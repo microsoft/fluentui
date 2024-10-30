@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
-import { Divider } from './divider.js';
+import type { Divider } from './divider.js';
 
 test.describe('Divider', () => {
   test.beforeEach(async ({ page }) => {
