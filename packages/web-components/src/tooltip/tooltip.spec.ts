@@ -42,7 +42,8 @@ test.describe('Tooltip', () => {
     const button = page.locator('button');
 
     await expect(element).toHaveAttribute('id');
-    await expect(button).toHaveAttribute('aria-describedby', element.id);
+    const id = await element.evaluate((node: Tooltip) => node.id);
+    await expect(button).toHaveAttribute('aria-describedby', id);
   });
 
   test('should not be visible by default', async ({ page }) => {
