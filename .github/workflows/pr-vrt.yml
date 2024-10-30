@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 
@@ -26,7 +26,7 @@ permissions:
   actions: 'read'
 
 jobs:
-  VisualRegressionTest_WebComponents:
+  web_components:
     runs-on: ubuntu-latest
     env:
       pipelineId: '315'
@@ -45,7 +45,7 @@ jobs:
           locationPostfix: 'vrscreenshotwebcomponents'
           clientName: 'fluentui-web-components-v3'
 
-  VisualRegressionTest_V9:
+  react_components:
     runs-on: ubuntu-latest
     env:
       pipelineId: '311'
@@ -64,7 +64,7 @@ jobs:
           locationPostfix: 'vrscreenshotv9'
           clientName: 'fluentuiv9'
 
-  VisualRegressionTest_V8:
+  react:
     runs-on: ubuntu-latest
     env:
       pipelineId: '312'
@@ -83,7 +83,7 @@ jobs:
           locationPostfix: 'vrscreenshotv8'
           clientName: 'fluentuiv8'
 
-  VisualRegressionTest_V0:
+  react_northstar:
     runs-on: ubuntu-latest
     env:
       pipelineId: '313'
