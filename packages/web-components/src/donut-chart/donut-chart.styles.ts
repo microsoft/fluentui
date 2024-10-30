@@ -47,6 +47,10 @@ export const styles = css`
     display: block;
   }
 
+  .arc.inactive {
+    opacity: 0.1;
+  }
+
   .arc:focus {
     outline: none;
     stroke-width: 1px;
@@ -99,6 +103,14 @@ export const styles = css`
     color: ${colorNeutralForeground1};
   }
 
+  .legend.inactive .legendRect {
+    background-color: transparent !important;
+  }
+
+  .legend.inactive .legendText {
+    opacity: 0.67;
+  }
+
   .calloutContentRoot {
     display: grid;
     overflow: hidden;
@@ -109,7 +121,6 @@ export const styles = css`
     border: 1px solid ${colorTransparentStroke};
     filter: drop-shadow(0 0 2px ${colorNeutralShadowAmbient}) drop-shadow(0 8px 16px ${colorNeutralShadowKey});
     position: absolute;
-    opacity: 0;
     z-index: 1;
     pointer-events: none;
   }
