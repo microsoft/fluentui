@@ -39,7 +39,6 @@ export const useCarouselViewport_unstable = (
     { elementType: 'div' },
   );
 
-  console.log('Viewport:', viewportRef);
   const mergedViewportRef = useMergedRefs(ref, viewportRef);
 
   return {
