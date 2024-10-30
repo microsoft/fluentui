@@ -2,9 +2,191 @@ import { html } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import { HorizontalBarChart as FluentHorizontalBarChart } from './horizontalbarchart.js';
-import { IChartDataPoint, IChartProps } from './horizontalbarchart.options.js';
+import { ChartDataPoint, ChartProps } from './horizontalbarchart.options.js';
 
-const chartPoints1: IChartDataPoint[] = [
+const singleBarHBCData = [
+  {
+    chartTitle: 'one',
+    chartData: [
+      {
+        legend: 'one',
+        data: 1543,
+        total: 15000,
+        color: '#637cef',
+      },
+    ],
+  },
+  {
+    chartTitle: 'two',
+    chartData: [
+      {
+        legend: 'two',
+        data: 800,
+        total: 15000,
+        color: '#e3008c',
+      },
+    ],
+  },
+  {
+    chartTitle: 'three',
+    chartData: [
+      {
+        legend: 'three',
+        data: 8888,
+        total: 15000,
+        color: '#2aa0a4',
+      },
+    ],
+  },
+  {
+    chartTitle: 'four',
+    chartData: [
+      {
+        legend: 'four',
+        data: 15888,
+        total: 15000,
+        color: '#9373c0',
+      },
+    ],
+  },
+  {
+    chartTitle: 'five',
+    chartData: [
+      {
+        legend: 'five',
+        data: 11444,
+        total: 15000,
+        color: '#13a10e',
+      },
+    ],
+  },
+  {
+    chartTitle: 'six',
+    chartData: [
+      {
+        legend: 'six',
+        data: 14000,
+        total: 15000,
+        color: '#3a96dd',
+      },
+    ],
+  },
+  {
+    chartTitle: 'seven',
+    chartData: [
+      {
+        legend: 'seven',
+        data: 9855,
+        total: 15000,
+        color: '#ca5010',
+      },
+    ],
+  },
+  {
+    chartTitle: 'eight',
+    chartData: [
+      {
+        legend: 'eight',
+        data: 4250,
+        total: 15000,
+        color: '#57811b',
+      },
+    ],
+  },
+];
+
+const singleBarNMVariantData = [
+  {
+    chartTitle: 'one',
+    chartData: [
+      {
+        legend: 'one',
+        data: 1543,
+        total: 15000,
+        color: '#637cef',
+      },
+    ],
+  },
+  {
+    chartTitle: 'two',
+    chartData: [
+      {
+        legend: 'two',
+        data: 800,
+        total: 15000,
+        color: '#e3008c',
+      },
+    ],
+  },
+  {
+    chartTitle: 'three',
+    chartData: [
+      {
+        legend: 'three',
+        data: 8888,
+        total: 15000,
+        color: '#2aa0a4',
+      },
+    ],
+  },
+  {
+    chartTitle: 'four',
+    chartData: [
+      {
+        legend: 'four',
+        data: 15888,
+        total: 15000,
+        color: '#9373c0',
+      },
+    ],
+  },
+  {
+    chartTitle: 'five',
+    chartData: [
+      {
+        legend: 'five',
+        data: 11444,
+        total: 15000,
+        color: '#13a10e',
+      },
+    ],
+  },
+  {
+    chartTitle: 'six',
+    chartData: [
+      {
+        legend: 'six',
+        data: 14000,
+        total: 15000,
+        color: '#3a96dd',
+      },
+    ],
+  },
+  {
+    chartTitle: 'seven',
+    chartData: [
+      {
+        legend: 'seven',
+        data: 9855,
+        total: 15000,
+        color: '#ca5010',
+      },
+    ],
+  },
+  {
+    chartTitle: 'eight',
+    chartData: [
+      {
+        legend: 'eight',
+        data: 4250,
+        total: 15000,
+        color: '#57811b',
+      },
+    ],
+  },
+];
+
+const chartPoints1: ChartDataPoint[] = [
   {
     legend: 'Debit card numbers (EU and USA)',
     data: 40,
@@ -32,7 +214,7 @@ const chartPoints1: IChartDataPoint[] = [
   },
 ];
 
-const chartPoints2: IChartDataPoint[] = [
+const chartPoints2: ChartDataPoint[] = [
   {
     legend: 'Debit card numbers (EU and USA)',
     data: 40,
@@ -60,7 +242,7 @@ const chartPoints2: IChartDataPoint[] = [
   },
 ];
 
-const chartPoints3: IChartDataPoint[] = [
+const chartPoints3: ChartDataPoint[] = [
   {
     legend: 'Phone Numbers',
     data: 40,
@@ -73,7 +255,7 @@ const chartPoints3: IChartDataPoint[] = [
   },
 ];
 
-const data: IChartProps[] = [
+const data: ChartProps[] = [
   {
     chartTitle: 'Monitored First',
     chartData: chartPoints1,
@@ -88,6 +270,20 @@ const data: IChartProps[] = [
   },
 ];
 
+const singlePointData = [
+  {
+    chartTitle: 'one',
+    chartData: [
+      {
+        legend: 'one',
+        data: 1543,
+        total: 15000,
+        gradient: ['#637cef', '#e3008c'],
+      },
+    ],
+  },
+];
+
 const storyTemplate = html<StoryArgs<FluentHorizontalBarChart>>`
   <fluent-horizontalbarchart data="${JSON.stringify(data)}"> </fluent-horizontalbarchart>
 `;
@@ -98,16 +294,39 @@ export default {
 
 export const Basic: Story<FluentHorizontalBarChart> = renderComponent(storyTemplate).bind({});
 
-export const NMVariant: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
+export const singleBarHBC: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
   <div>
-    <fluent-horizontalbarchart data="${JSON.stringify(data)}" variant="part-to-whole"> </fluent-horizontalbarchart>
+    <fluent-horizontalbarchart style="width: 100%" data="${JSON.stringify(singleBarHBCData)}">
+    </fluent-horizontalbarchart>
+  </div>
+`);
+
+export const singleBarNMVariant: Story<FluentHorizontalBarChart> = renderComponent(html<
+  StoryArgs<FluentHorizontalBarChart>
+>`
+  <div>
+    <fluent-horizontalbarchart
+      style="width: 100%"
+      variant="single-bar"
+      data="${JSON.stringify(singleBarNMVariantData)}"
+    >
+    </fluent-horizontalbarchart>
+  </div>
+`);
+
+export const singleDataPoint: Story<FluentHorizontalBarChart> = renderComponent(html<
+  StoryArgs<FluentHorizontalBarChart>
+>`
+  <div>
+    <fluent-horizontalbarchart style="width: 100%" variant="single-bar" data="${JSON.stringify(singlePointData)}">
+    </fluent-horizontalbarchart>
   </div>
 `);
 
 export const RTL: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
-  <div style="display: flex; flex-direction: column; gap: 1rem;" dir="rtl">
+  <div dir="rtl">
     <div>
-      <fluent-horizontalbarchart data="${JSON.stringify(data)}"> </fluent-horizontalbarchart>
+      <fluent-horizontalbarchart _isRTL="true" data="${JSON.stringify(data)}"> </fluent-horizontalbarchart>
     </div>
   </div>
 `);
