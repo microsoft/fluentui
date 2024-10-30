@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { LegendsProps, LegendsStyles } from './Legends.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { HighContrastSelector } from '../../utilities/index';
 
 /**
  * @internal
@@ -35,12 +36,10 @@ const useStyles = makeStyles({
     textTransform: 'capitalize',
   },
   rect: {
-    // selectors: {
-    //   [HighContrastSelector]: {
-    //     content: `linear-gradient(to right, ${props.colorOnSelectedState}, ${props.colorOnSelectedState})`,
-    //     opacity: props.colorOnSelectedState === theme!.semanticColors.buttonBackground ? '0.6' : '',
-    //   },
-    // },
+    [HighContrastSelector]: {
+      content: 'var(--rect-content-high-contrast)',
+      opacity: 'var(--rect-opacity-high-contrast)',
+    },
     width: '12px',
     border: '1px solid',
     marginRight: tokens.spacingHorizontalS,
