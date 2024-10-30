@@ -25,6 +25,9 @@ import {
 export const styles: ElementStyles = css`
   ${display('inline-block')}
 
+  .rootDiv {
+    position: relative;
+  }
   .root {
     background-color: ${colorNeutralBackground1};
     width: 100vw;
@@ -47,7 +50,6 @@ export const styles: ElementStyles = css`
     box-shadow: ${shadow4};
     border: 2px;
     pointer-events: none;
-    opacity: 0;
   }
   .tooltipline {
     padding-left: 8px;
@@ -67,6 +69,9 @@ export const styles: ElementStyles = css`
   }
   .bar {
     opacity: 1;
+  }
+  .bar.inactive {
+    opacity: 0.1;
   }
   .chartTitle {
     ${typographyBody1Styles}
@@ -106,6 +111,12 @@ export const styles: ElementStyles = css`
   .legendText {
     ${typographyCaption1Styles}
     color: ${colorNeutralForeground1};
+  }
+  .legend.inactive .legendRect {
+    background-color: transparent !important;
+  }
+  .legend.inactive .legendText {
+    opacity: 0.67;
   }
   .barLabel {
     ${typographyBody1StrongStyles}
