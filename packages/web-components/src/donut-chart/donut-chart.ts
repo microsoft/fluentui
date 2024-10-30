@@ -1,4 +1,4 @@
-import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
 import { arc as d3Arc, pie as d3Pie, PieArcDatum } from 'd3-shape';
 import { createTabster, getMover, getTabsterAttribute, MoverDirections, TABSTER_ATTRIBUTE_NAME } from 'tabster';
 import {
@@ -9,7 +9,7 @@ import {
   validateChartProps,
   wrapText,
 } from '../utils/chart-helpers.js';
-import { ChartDataPoint, ChartProps } from './donut-chart.options.js';
+import { ChartDataPoint, ChartProps, Legend } from './donut-chart.options.js';
 
 const tabsterCore = createTabster(window);
 getMover(tabsterCore);
@@ -36,19 +36,30 @@ export class DonutChart extends FASTElement {
   @attr({ attribute: 'value-inside-donut' })
   public valueInsideDonut?: string;
 
+  @observable
+  public legends: Legend[] = [];
+
+  @observable
+  public activeLegend: string = '';
+
+  @observable
+  public isLegendSelected: boolean = false;
+
+  @observable
+  public tooltipProps = {
+    isVisible: false,
+    legend: '',
+    yValue: '',
+    color: '',
+    xPos: 0,
+    yPos: 0,
+  };
+
   public rootDiv!: HTMLDivElement;
   public chartWrapper!: HTMLDivElement;
   public group!: SVGGElement;
-  public legendContainer!: HTMLDivElement;
-  public tooltip!: HTMLDivElement;
 
-  private _selectedLegend: string = '';
-
-  constructor() {
-    super();
-  }
-
-  private bindEvents() {}
+  private _arcs: SVGPathElement[] = [];
 
   connectedCallback() {
     super.connectedCallback();
@@ -63,16 +74,18 @@ export class DonutChart extends FASTElement {
       }
     });
 
-    this.render();
+    this.legends = this.getLegends();
+
+    this._render();
   }
 
-  render() {
-    // const tabsterAttribute = getTabsterAttribute({
-    //   mover: { direction: MoverDirections.Horizontal, tabbable: true },
-    // });
-    // if (tabsterAttribute[TABSTER_ATTRIBUTE_NAME]) {
-    //   this.chartWrapper.setAttribute(TABSTER_ATTRIBUTE_NAME, tabsterAttribute[TABSTER_ATTRIBUTE_NAME]);
-    // }
+  private _render = () => {
+    const tabsterAttribute = getTabsterAttribute({
+      mover: { direction: MoverDirections.Horizontal, tabbable: true },
+    });
+    if (tabsterAttribute[TABSTER_ATTRIBUTE_NAME]) {
+      this.chartWrapper.setAttribute(TABSTER_ATTRIBUTE_NAME, tabsterAttribute[TABSTER_ATTRIBUTE_NAME]);
+    }
 
     const pie = d3Pie<ChartDataPoint>()
       .value(d => d.data)
@@ -80,18 +93,6 @@ export class DonutChart extends FASTElement {
     const arc = d3Arc<PieArcDatum<ChartDataPoint>>()
       .innerRadius(this.innerRadius)
       .outerRadius((Math.min(this.height, this.width) - 20) / 2);
-
-    const tooltipBody = document.createElement('div');
-    this.tooltip.appendChild(tooltipBody);
-    tooltipBody.classList.add('calloutBlockContainer');
-
-    const legendText = document.createElement('div');
-    tooltipBody.appendChild(legendText);
-    legendText.classList.add('calloutLegendText');
-
-    const yText = document.createElement('div');
-    tooltipBody.appendChild(yText);
-    yText.classList.add('calloutContentY');
 
     pie(this.data.chartData).forEach(arcDatum => {
       const arcGroup = document.createElementNS(SVG_NAMESPACE_URI, 'g');
@@ -104,6 +105,7 @@ export class DonutChart extends FASTElement {
 
       const path = document.createElementNS(SVG_NAMESPACE_URI, 'path');
       arcGroup.appendChild(path);
+      this._arcs.push(path);
       path.classList.add('arc');
       path.setAttribute('d', arc(arcDatum)!);
       path.setAttribute('fill', arcDatum.data.color!);
@@ -113,43 +115,45 @@ export class DonutChart extends FASTElement {
       path.setAttribute('role', 'img');
 
       path.addEventListener('mouseover', event => {
-        if (this._selectedLegend !== '' && this._selectedLegend !== arcDatum.data.legend) {
+        if (this.activeLegend !== '' && this.activeLegend !== arcDatum.data.legend) {
           return;
         }
-
-        tooltipBody.style['borderColor'] = arcDatum.data.color!;
-        legendText.textContent = arcDatum.data.legend;
-        yText.textContent = `${arcDatum.data.data}`;
-        yText.style['color'] = arcDatum.data.color!;
-        this.tooltip.style['opacity'] = '1';
 
         const bounds = this.rootDiv.getBoundingClientRect();
-        this.tooltip.style['left'] = `${event.clientX - bounds.left}px`;
-        this.tooltip.style['top'] = `${event.clientY - bounds.top - 85}px`;
+
+        this.tooltipProps = {
+          isVisible: true,
+          legend: arcDatum.data.legend,
+          yValue: `${arcDatum.data.data}`,
+          color: arcDatum.data.color!,
+          xPos: event.clientX - bounds.left,
+          yPos: event.clientY - bounds.top - 85,
+        };
       });
       path.addEventListener('focus', event => {
-        if (this._selectedLegend !== '' && this._selectedLegend !== arcDatum.data.legend) {
+        if (this.activeLegend !== '' && this.activeLegend !== arcDatum.data.legend) {
           return;
         }
-
-        tooltipBody.style['borderColor'] = arcDatum.data.color!;
-        legendText.textContent = arcDatum.data.legend;
-        yText.textContent = `${arcDatum.data.data}`;
-        yText.style['color'] = arcDatum.data.color!;
-        this.tooltip.style['opacity'] = '1';
 
         const rootBounds = this.rootDiv.getBoundingClientRect();
         const arcBounds = path.getBoundingClientRect();
-        this.tooltip.style['left'] = `${arcBounds.left + arcBounds.width / 2 - rootBounds.left}px`;
-        this.tooltip.style['top'] = `${arcBounds.top - rootBounds.top - 85}px`;
+
+        this.tooltipProps = {
+          isVisible: true,
+          legend: arcDatum.data.legend,
+          yValue: `${arcDatum.data.data}`,
+          color: arcDatum.data.color!,
+          xPos: arcBounds.left + arcBounds.width / 2 - rootBounds.left,
+          yPos: arcBounds.top - rootBounds.top - 85,
+        };
       });
       path.addEventListener('blur', event => {
-        this.tooltip.style['opacity'] = '0';
+        this.tooltipProps = { isVisible: false, legend: '', yValue: '', color: '', xPos: 0, yPos: 0 };
       });
     });
 
     this.rootDiv.addEventListener('mouseleave', () => {
-      this.tooltip.style['opacity'] = '0';
+      this.tooltipProps = { isVisible: false, legend: '', yValue: '', color: '', xPos: 0, yPos: 0 };
     });
 
     if (this.valueInsideDonut) {
@@ -169,158 +173,52 @@ export class DonutChart extends FASTElement {
         lines[i].setAttribute('dy', `${(start + i) * lineHeight}`);
       }
     }
+  };
 
-    const legends = this.data.chartData.map(dataPoint => ({ title: dataPoint.legend, color: dataPoint.color! }));
+  public getLegends = (): Legend[] => {
+    return this.data.chartData.map((d, index) => ({
+      title: d.legend,
+      color: d.color!,
+    }));
+  };
 
-    legends.forEach((legendItem, index) => {
-      const button = document.createElement('button');
-      this.legendContainer.appendChild(button);
-      button.classList.add('legend');
-      button.setAttribute('role', 'option');
-      button.setAttribute('aria-setsize', `${legends.length}`);
-      button.setAttribute('aria-posinset', `${index + 1}`);
-      // button.setAttribute('aria-selected', `${this._selectedLegend === legendItem.title}`);
+  public handleLegendMouseoverAndFocus = (legendTitle: string) => {
+    if (this.isLegendSelected) {
+      return;
+    }
 
-      const legendRect = document.createElement('div');
-      button.appendChild(legendRect);
-      legendRect.classList.add('legendRect');
-      legendRect.style['backgroundColor'] = legendItem.color;
-      legendRect.style['borderColor'] = legendItem.color;
+    this.activeLegend = legendTitle;
+  };
 
-      const legendText = document.createElement('div');
-      button.appendChild(legendText);
-      legendText.textContent = legendItem.title;
-      legendText.classList.add('legendText');
-    });
+  public handleLegendMouseoutAndBlur = () => {
+    if (this.isLegendSelected) {
+      return;
+    }
 
-    const buttons = this.legendContainer.getElementsByClassName('legend') as HTMLCollectionOf<HTMLButtonElement>;
-    const arcs = this.group.getElementsByClassName('arc') as HTMLCollectionOf<SVGPathElement>;
+    this.activeLegend = '';
+  };
 
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].addEventListener('mouseover', () => {
-        if (this._selectedLegend !== '') {
-          return;
-        }
+  public handleLegendClick = (legendTitle: string) => {
+    if (this.isLegendSelected && this.activeLegend === legendTitle) {
+      this.activeLegend = '';
+      this.isLegendSelected = false;
+    } else {
+      this.activeLegend = legendTitle;
+      this.isLegendSelected = true;
+    }
+  };
 
-        for (let j = 0; j < arcs.length; j++) {
-          if (arcs[j].getAttribute('data-id') !== buttons[i].textContent) {
-            arcs[j].style['opacity'] = '0.1';
-          } else {
-            arcs[j].style['opacity'] = '1';
-          }
-        }
-        for (let j = 0; j < buttons.length; j++) {
-          const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-          const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
-
-          if (j !== i) {
-            legendRect.style['backgroundColor'] = 'transparent';
-            legendText.style['opacity'] = '0.67';
-          } else {
-            legendRect.style['backgroundColor'] = legends[j].color;
-            legendText.style['opacity'] = '1';
-          }
-        }
-      });
-      buttons[i].addEventListener('mouseout', () => {
-        if (this._selectedLegend !== '') {
-          return;
-        }
-
-        for (let j = 0; j < arcs.length; j++) {
-          arcs[j].style['opacity'] = '1';
-        }
-        for (let j = 0; j < buttons.length; j++) {
-          const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-          legendRect.style['backgroundColor'] = legends[j].color;
-
-          const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
-          legendText.style['opacity'] = '1';
-        }
-      });
-      buttons[i].addEventListener('focus', () => {
-        if (this._selectedLegend !== '') {
-          return;
-        }
-
-        for (let j = 0; j < arcs.length; j++) {
-          if (arcs[j].getAttribute('data-id') !== buttons[i].textContent) {
-            arcs[j].style['opacity'] = '0.1';
-          } else {
-            arcs[j].style['opacity'] = '1';
-          }
-        }
-        for (let j = 0; j < buttons.length; j++) {
-          const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-          const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
-
-          if (j !== i) {
-            legendRect.style['backgroundColor'] = 'transparent';
-            legendText.style['opacity'] = '0.67';
-          } else {
-            legendRect.style['backgroundColor'] = legends[j].color;
-            legendText.style['opacity'] = '1';
-          }
-        }
-      });
-      buttons[i].addEventListener('blur', () => {
-        if (this._selectedLegend !== '') {
-          return;
-        }
-
-        for (let j = 0; j < arcs.length; j++) {
-          arcs[j].style['opacity'] = '1';
-        }
-        for (let j = 0; j < buttons.length; j++) {
-          const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-          legendRect.style['backgroundColor'] = legends[j].color;
-
-          const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
-          legendText.style['opacity'] = '1';
-        }
-      });
-      buttons[i].addEventListener('click', () => {
-        if (this._selectedLegend === legends[i].title) {
-          this._selectedLegend = '';
-
-          for (let j = 0; j < arcs.length; j++) {
-            arcs[j].style['opacity'] = '1';
-          }
-          for (let j = 0; j < buttons.length; j++) {
-            const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-            legendRect.style['backgroundColor'] = legends[j].color;
-
-            const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
-            legendText.style['opacity'] = '1';
-          }
+  public activeLegendChanged = (oldValue: string, newValue: string) => {
+    if (newValue === '') {
+      this._arcs?.forEach(arc => arc.classList.remove('inactive'));
+    } else {
+      this._arcs?.forEach(arc => {
+        if (arc.getAttribute('data-id') === newValue) {
+          arc.classList.remove('inactive');
         } else {
-          this._selectedLegend = legends[i].title;
-
-          for (let j = 0; j < arcs.length; j++) {
-            if (arcs[j].getAttribute('data-id') !== buttons[i].textContent) {
-              arcs[j].style['opacity'] = '0.1';
-            } else {
-              arcs[j].style['opacity'] = '1';
-            }
-          }
-          for (let j = 0; j < buttons.length; j++) {
-            const legendRect = (buttons[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>)[0];
-            const legendText = (buttons[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>)[0];
-
-            if (j !== i) {
-              legendRect.style['backgroundColor'] = 'transparent';
-              legendText.style['opacity'] = '0.67';
-            } else {
-              legendRect.style['backgroundColor'] = legends[j].color;
-              legendText.style['opacity'] = '1';
-            }
-          }
+          arc.classList.add('inactive');
         }
       });
     }
-  }
-
-  public getLegends = () => {
-    return this.data.chartData?.map(d => ({ title: d.legend, color: d.color })) || [];
   };
 }
