@@ -2,7 +2,6 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 import type { CarouselSliderSlots, CarouselSliderState } from './CarouselSlider.types';
-import { tokens } from '@fluentui/react-theme';
 
 export const carouselSliderClassNames: SlotClassNames<CarouselSliderSlots> = {
   root: 'fui-CarouselSlider',
@@ -16,10 +15,6 @@ const useStyles = makeStyles({
     display: 'flex',
     overflowAnchor: 'none',
   },
-  cardFocus: {
-    // Ensure room for focus border inside overflow:hidden container
-    paddingTop: tokens.strokeWidthThick,
-  },
 });
 
 /**
@@ -31,12 +26,7 @@ export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): Ca
 
   const styles = useStyles();
 
-  state.root.className = mergeClasses(
-    carouselSliderClassNames.root,
-    styles.root,
-    cardFocus && styles.cardFocus,
-    state.root.className,
-  );
+  state.root.className = mergeClasses(carouselSliderClassNames.root, styles.root, state.root.className);
 
   return state;
 };
