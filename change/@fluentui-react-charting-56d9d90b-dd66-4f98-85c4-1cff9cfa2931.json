@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Restructure charting package code to make space for v9 controls",
+  "packageName": "@fluentui/react-charting",
+  "email": "98592573+AtishayMsft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
