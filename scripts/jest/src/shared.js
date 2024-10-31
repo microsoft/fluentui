@@ -9,10 +9,14 @@
  * based on testing spawning only 50% of available workers is fastest on both Local Machine and CI env atm ( 8 Core machine, 16GB RAM)
  */
 
-const workersConfig = { maxWorkers: process.env.FLUENT_WORKER || (isCI() ? 2 : '50%') };
+// - for macos large runner on GHA we need to set it to 2 {@link file://./../../../.github/workflows/pr.yml#77}
+// - for ADO runners it's 50%
+// - temporary adding FLUENT_JEST_WORKER var in order to make it pass on both GHA and ADO
+const workersConfig = { maxWorkers: process.env.FLUENT_JEST_WORKER || '50%' };
 
 exports.workersConfig = workersConfig;
 
+// eslint-disable-next-line no-unused-vars -- this will be used after gha testing
 function isCI() {
   return (
     (process.env.CI && process.env.CI !== 'false') ||

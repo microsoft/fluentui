@@ -17,8 +17,6 @@ async function main(options) {
   });
 
   await github.rest.repos.createCommitStatus({
-    // owner: 'microsoft',
-    // repo: 'fluentui',
     owner,
     repo,
     sha: pull_request.data.head.sha,
