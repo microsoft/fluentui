@@ -12,7 +12,8 @@ export const carouselClassNames: SlotClassNames<CarouselSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    overflow: 'hidden',
+    // Only hide horizontal overflow to enable focus border to bleed bounds vertically
+    overflowX: 'hidden',
     overflowAnchor: 'none',
     position: 'relative',
   },
