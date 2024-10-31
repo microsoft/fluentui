@@ -17,20 +17,10 @@ env:
 
   BROWSERSLIST_IGNORE_OLD_DATA: true
 
-  # Deploy host and URL
-  # DEPLOY_BASE_PATH: ''
   DEPLOY_HOST: fluentuipr.z22.web.core.windows.net
   DEPLOY_URL: https://fluentuipr.z22.web.core.windows.net/${{ github.event.pull_request.number || github.ref_name }}
   # DEPLOY_BASE_PATH: pull/${{github.event.pull_request.number}}
   DEPLOY_BASE_PATH: ${{ github.event.pull_request.number != '' && format('pull/{0}', github.event.pull_request.number) || format('heads/{0}', github.ref_name) }}
-
-  IS_PR: ${{ github.event_name == 'pull_request' }}
-  TARGET_BRANCH: ${{ github.event.pull_request.base.ref || '' }}
-
-  # GitHub Secrets for Azure access
-  # This service principal ("subscription" is a misleading name) only has access to the fluentuipr storage account
-  AZURE_SUBSCRIPTION: Azure PR deploy - NEW
-  AZURE_STORAGE: fluentuipr
 
 jobs:
   main:
@@ -81,27 +71,6 @@ jobs:
       - name: check formatting
         run: |
           yarn nx format:check --base origin/master
-
-      # - name: v0,v8 jest test perf experiments worker 50%
-      #   run: |
-      #     yarn nx run-many -t build -p react,react-northstar
-
-      #     FLUENT_WORKER=1 yarn workspace @fluentui/react test --no-cache
-      #     FLUENT_WORKER=1 yarn workspace @fluentui/react-northstar test --no-cache
-
-      # - name: v0,v8 jest test perf experiments worker 1
-      #   run: |
-      #     yarn nx run-many -t build -p react,react-northstar
-
-      #     FLUENT_WORKER=1 yarn workspace @fluentui/react test --no-cache
-      #     FLUENT_WORKER=2 yarn workspace @fluentui/react-northstar test --no-cache
-
-      # - name: v0,v8 jest test perf experiments worker 2
-      #   run: |
-      #     yarn nx run-many -t build -p react,react-northstar
-
-      #     FLUENT_WORKER=2 yarn workspace @fluentui/react test --no-cache
-      #     FLUENT_WORKER=2 yarn workspace @fluentui/react-northstar test --no-cache
 
       - name: build, test, lint, test-ssr (affected)
         run: |

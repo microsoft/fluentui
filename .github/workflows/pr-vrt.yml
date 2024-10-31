@@ -16,11 +16,6 @@ env:
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 
-  # GitHub Secrets for Azure access
-  # This service principal ("subscription" is a misleading name) only has access to the fluentuipr storage account
-  AZURE_SUBSCRIPTION: Azure PR deploy - NEW
-  AZURE_STORAGE: fluentuipr
-
 permissions:
   contents: 'read'
   actions: 'read'

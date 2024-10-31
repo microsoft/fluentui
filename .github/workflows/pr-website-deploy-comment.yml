@@ -12,10 +12,6 @@ concurrency:
 
 env:
   DEPLOY_HOST_URL: https://fluentuipr.z22.web.core.windows.net/
-
-  # GitHub Secrets for Azure access
-  # This service principal ("subscription" is a misleading name) only has access to the fluentuipr storage account
-  AZURE_SUBSCRIPTION: Azure PR deploy - NEW
   AZURE_STORAGE: fluentuipr
 
 jobs:
@@ -46,7 +42,7 @@ jobs:
         run: echo "::set-output name=id::$(cat pr.txt)"
         working-directory: ./results
 
-      - name: Load URL
+      - name: Load WEBSITE URL
         id: website_url
         run: echo "::set-output name=id::${{env.DEPLOY_HOST_URL}}pull/${{steps.pr_number.outputs.id}}"
 

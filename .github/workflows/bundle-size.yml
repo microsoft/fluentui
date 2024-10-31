@@ -18,21 +18,6 @@ env:
 
   BROWSERSLIST_IGNORE_OLD_DATA: true
 
-  # Deploy host and URL
-  # DEPLOY_BASE_PATH: ''
-  DEPLOY_HOST: fluentuipr.z22.web.core.windows.net
-  DEPLOY_URL: https://fluentuipr.z22.web.core.windows.net/${{ github.event.pull_request.number || github.ref_name }}
-  # DEPLOY_BASE_PATH: pull/${{github.event.pull_request.number}}
-  DEPLOY_BASE_PATH: ${{ github.event.pull_request.number != '' && format('pull/{0}', github.event.pull_request.number) || format('heads/{0}', github.ref_name) }}
-
-  IS_PR: ${{ github.event_name == 'pull_request' }}
-  TARGET_BRANCH: ${{ github.event.pull_request.base.ref || '' }}
-
-  # GitHub Secrets for Azure access
-  # This service principal ("subscription" is a misleading name) only has access to the fluentuipr storage account
-  AZURE_SUBSCRIPTION: Azure PR deploy - NEW
-  AZURE_STORAGE: fluentuipr
-
 jobs:
   bundle-size:
     runs-on: macos-14-xlarge
@@ -100,14 +85,9 @@ jobs:
         uses: azure/cli@v2
         with:
           azcliversion: latest
-          # TODO: how to set subcription? monosize has no flag for it and gha az cli doesn't support this parameter
-          # azureSubscription: 'Bundlesize Testing'
           inlineScript: |
             yarn monosize upload-report --branch=${{ github.ref }} --commit-sha ${{ github.sha }}
         env:
           AZCOPY_AUTO_LOGIN_TYPE: 'AZCLI'
           SYSTEM_ACCESSTOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-          # AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          # AZURE_SERVICE_CONNECTION_ID: ${{ secrets.AZURE_SERVICE_CONNECTION_ID }}
-          # BUNDLESIZE_ACCOUNT_NAME: ${{ secrets.BUNDLESIZE_ACCOUNT_NAME }}
+          BUNDLESIZE_ACCOUNT_NAME: ${{ secrets.BUNDLESIZE_ACCOUNT_NAME }}
