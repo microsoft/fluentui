@@ -10,6 +10,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   archive: {
     extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z'],
   },
+  album: {},
   audio: {
     extensions: [
       'aif',
