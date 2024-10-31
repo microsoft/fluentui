@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Fade, FadeExaggerated, FadeSnappy } from './Fade';
+import { Fade, FadeRelaxed, FadeSnappy } from './Fade';
 import { render } from '@testing-library/react';
 import { motionTokens } from '@fluentui/react-motion';
 import { mockAnimation } from '../../testing/testUtils';
@@ -56,10 +56,10 @@ describe('Fade motion component', () => {
     );
   });
 
-  it('should render Exaggerated variant of Fade component with correct opacity keyframes, duration and easing', () => {
-    const { rerender } = render(<FadeExaggerated visible={false}>{testElement}</FadeExaggerated>);
+  it('should render Relaxed variant of Fade component with correct opacity keyframes, duration and easing', () => {
+    const { rerender } = render(<FadeRelaxed visible={false}>{testElement}</FadeRelaxed>);
 
-    rerender(<FadeExaggerated visible={true}>{testElement}</FadeExaggerated>);
+    rerender(<FadeRelaxed visible={true}>{testElement}</FadeRelaxed>);
 
     expect(animateSpy).toHaveBeenCalledWith(
       [{ opacity: 0 }, { opacity: 1 }],
