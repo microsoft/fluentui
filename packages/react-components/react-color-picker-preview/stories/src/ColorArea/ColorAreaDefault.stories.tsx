@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button, makeStyles, tokens } from '@fluentui/react-components';
 import { ColorArea, ColorAreaProps } from '@fluentui/react-color-picker-preview';
+import { tinycolor } from '@ctrl/tinycolor';
 
 const useStyles = makeStyles({
   example: {
@@ -17,19 +18,19 @@ const useStyles = makeStyles({
   },
 });
 
-const DEFAULT_COLOR = '#804066';
+const DEFAULT_COLOR_HSV = tinycolor('#804066').toHsv();
 
 export const Default = () => {
   const styles = useStyles();
 
-  const [color, setColor] = React.useState(DEFAULT_COLOR);
+  const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
   const onChange: ColorAreaProps['onChange'] = (_, data) => setColor(data.color);
-  const resetSlider = () => setColor(DEFAULT_COLOR);
+  const resetSlider = () => setColor(DEFAULT_COLOR_HSV);
 
   return (
     <div className={styles.example}>
       <ColorArea color={color} onChange={onChange} />
-      <div className={styles.previewColor} style={{ backgroundColor: color }} />
+      <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toHexString() }} />
       <Button onClick={resetSlider}>Reset</Button>
     </div>
   );

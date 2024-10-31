@@ -1,8 +1,9 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
+import type { Numberify, HSVA } from '@ctrl/tinycolor';
 
 export type ColorAreaOnColorChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
-  color: string;
+  color: Numberify<HSVA>;
 };
 
 export type ColorAreaSlots = {
@@ -26,12 +27,12 @@ export type ColorAreaProps = Omit<ComponentProps<Partial<ColorAreaSlots>>, 'onCh
   /**
    * The current color of the ColorArea.
    */
-  color?: string;
+  color?: Numberify<HSVA>;
 
   /**
    * The starting value for an uncontrolled ColorArea.
    */
-  defaultColor?: string;
+  defaultColor?: Numberify<HSVA>;
 
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.

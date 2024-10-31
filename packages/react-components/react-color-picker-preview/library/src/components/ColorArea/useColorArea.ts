@@ -5,10 +5,9 @@ import { colorAreaCSSVars } from './useColorAreaStyles.styles';
 import { clamp, useEventCallback, useControllableState } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { tinycolor } from '@ctrl/tinycolor';
-import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
 import { MIN, MAX, INITIAL_COLOR } from '../../utils/constants';
 
-const INITIAL_COLOR_HSV = parseColor(INITIAL_COLOR);
+const INITIAL_COLOR_HSV = tinycolor(INITIAL_COLOR).toHsv();
 
 /**
  * Create the state required to render ColorArea.
@@ -25,10 +24,9 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   const rootRef = React.useRef<HTMLDivElement>(null);
   const xRef = React.useRef<HTMLInputElement>(null);
   const yRef = React.useRef<HTMLInputElement>(null);
-  const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
 
   const {
-    onChange = onChangeFromContext,
+    onChange,
     // Slots
     inputX,
     inputY,
@@ -37,19 +35,18 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     ...rest
   } = props;
 
-  const hsvColor = React.useMemo(() => (props.color ? parseColor(props.color) : undefined), [props.color]);
-  const defaultHsv = React.useMemo(
-    () => (props.defaultColor ? parseColor(props.defaultColor) : undefined),
-    [props.defaultColor],
-  );
-
+  const hsvColor = React.useMemo(() => props.color || undefined, [props.color]);
+  const defaultHsv = React.useMemo(() => props.defaultColor || undefined, [props.defaultColor]);
   const [color, setColor] = useControllableState<HsvColor>({
     defaultState: defaultHsv,
     state: hsvColor,
     initialState: INITIAL_COLOR_HSV,
   });
 
-  const coordinates = { x: color.s, y: color.v };
+  const saturation = color.s < 1 ? color.s * 100 : color.s;
+  const value = color.v < 1 ? color.v * 100 : color.v;
+
+  const coordinates = { x: saturation, y: value };
 
   function getCoordinates(event: MouseEvent) {
     const rect = rootRef.current?.getBoundingClientRect();
@@ -83,6 +80,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
     const event = new Event('change', { bubbles: true });
 
+    xRef.current?.dispatchEvent(event);
     yRef.current?.dispatchEvent(event);
   };
 
@@ -119,7 +117,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     onChange?.(event, {
       type: 'change',
       event,
-      color: stringifyColor(newColor),
+      color: newColor,
     });
   });
 
@@ -131,7 +129,6 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
       dispatchCustomInputChangeEvent(newColor);
     }
-    // TODO: Add support for ArrowLeft and ArrowRight
   });
 
   const rootVariables = {
@@ -183,17 +180,3 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
   return state;
 };
-
-function stringifyColor(color: HsvColor) {
-  return tinycolor(color).toHexString();
-}
-
-function parseColor(color: string): HsvColor {
-  const _color = tinycolor(color).toHsv();
-  return {
-    h: Math.round(_color.h),
-    s: Math.round(_color.s * 100),
-    v: Math.round(_color.v * 100),
-    a: Math.round(_color.a),
-  };
-}
