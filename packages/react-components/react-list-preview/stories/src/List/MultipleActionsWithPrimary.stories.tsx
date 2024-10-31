@@ -74,6 +74,7 @@ const CustomListItem = (props: { title: string; value: string }) => {
 
   return (
     <ListItem
+      as="div"
       value={props.value}
       className={mergeClasses(listItemStyles, styles.listItem)}
       aria-label={value}
@@ -152,7 +153,7 @@ export const MultipleActionsWithPrimary = () => {
   const classes = useStyles();
 
   return (
-    <List navigationMode="composite" className={classes.list}>
+    <List navigationMode="composite" className={classes.list} as="div">
       <CustomListItem title="Example List Item" value="card-1" />
       <CustomListItem title="Example List Item" value="card-2" />
       <CustomListItem title="Example List Item" value="card-3" />
