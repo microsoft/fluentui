@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 25 Oct 2024 07:22:06 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Oct 2024 07:23:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.11)
+
+Thu, 31 Oct 2024 07:23:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.10..@fluentui/react-charting_v5.23.11)
+
+### Patches
+
+- Restructure charting package code to make space for v9 controls ([PR #33145](https://github.com/microsoft/fluentui/pull/33145) by 98592573+AtishayMsft@users.noreply.github.com)
 
 ## [5.23.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.10)
 
