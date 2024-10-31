@@ -14,10 +14,6 @@ const useStyles = makeStyles({
     maxWidth: '100%',
     width: 'auto',
   },
-  slider: {
-    display: 'flex',
-    overflowAnchor: 'none',
-  },
 });
 
 /**

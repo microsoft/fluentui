@@ -7,12 +7,7 @@ exports[`CarouselViewport renders a default state 1`] = `
     draggable="true"
     role="presentation"
   >
-    <div
-      class="fui-CarouselViewport__slider"
-      role="group"
-    >
-      Default CarouselViewport
-    </div>
+    Default CarouselViewport
   </div>
 </div>
 `;
