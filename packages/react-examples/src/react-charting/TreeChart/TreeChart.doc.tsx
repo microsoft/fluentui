@@ -13,7 +13,8 @@ const TreeChartThreeLayerCompactDocSiteExampleCode =
 export const TreeChartPageProps: IDocPageProps = {
   title: 'TreeChart',
   componentName: 'TreeChart',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/TreeChart',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/TreeChart',
   examples: [
     {
       title: 'TreeChart three layer',

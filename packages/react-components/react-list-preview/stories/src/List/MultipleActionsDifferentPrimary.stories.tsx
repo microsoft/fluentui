@@ -80,9 +80,10 @@ const CustomListItem = (props: { title: string; value: string }) => {
 
   return (
     <ListItem
+      as="div"
       value={props.value}
       className={mergeClasses(listItemStyles, styles.listItem)}
-      checkmark={{ className: styles.checkmark }}
+      checkmark={{ root: { role: 'gridcell' }, className: styles.checkmark, 'aria-label': value }}
       aria-label={value}
       onAction={onAction}
     >
@@ -164,6 +165,7 @@ export const MultipleActionsDifferentPrimary = () => {
 
   return (
     <List
+      as="div"
       className={classes.list}
       navigationMode="composite"
       selectionMode="multiselect"
