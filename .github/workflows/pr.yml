@@ -82,7 +82,10 @@ jobs:
           git diff-index --quiet HEAD -- || exit 1
 
   e2e:
-    runs-on: macos-14-xlarge
+    # TODO: switch to macos once problematic tests are fixed
+    # https://github.com/microsoft/fluentui/issues/33173
+    # https://github.com/microsoft/fluentui/issues/33172
+    runs-on: ubuntu-latest
     permissions:
       contents: 'read'
       actions: 'read'

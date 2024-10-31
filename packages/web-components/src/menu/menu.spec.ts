@@ -289,7 +289,8 @@ test.describe('Menu', () => {
     await expect(menuList).toBeVisible();
   });
 
-  test.skip('should focus first item after closing a submenu', async ({ page }) => {
+  // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
+  test('should focus first item after closing a submenu', async ({ page }) => {
     const element = page.locator('fluent-menu');
     const menuButton = element.locator('fluent-menu-button');
     const menuList = element.locator('fluent-menu-list');
