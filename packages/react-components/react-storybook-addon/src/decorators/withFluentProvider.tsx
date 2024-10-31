@@ -15,6 +15,8 @@ import { defaultTheme, ThemeIds } from '../theme';
 import { DIR_ID, THEME_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
+import { CustomStyleHooksContext } from '../../../react-shared-contexts/library/src/CustomStyleHooksContext';
+import { MasonsCustomStyleHooks } from './CustomStyleHooks/useCustomStyles.styles';
 
 const themes: Record<ThemeIds, Theme> = {
   'web-light': webLightTheme,
@@ -46,7 +48,9 @@ export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentSt
 
   return (
     <FluentProvider theme={theme} dir={dir}>
-      {isVrTest ? StoryFn() : <FluentExampleContainer theme={theme}>{StoryFn()}</FluentExampleContainer>}
+      <CustomStyleHooksContext.Provider value={MasonsCustomStyleHooks}>
+        {isVrTest ? StoryFn() : <FluentExampleContainer theme={theme}>{StoryFn()}</FluentExampleContainer>}
+      </CustomStyleHooksContext.Provider>
     </FluentProvider>
   );
 };
