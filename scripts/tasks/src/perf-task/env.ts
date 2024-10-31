@@ -3,8 +3,8 @@
  */
 const DEPLOY_URL = 'fluentuipr.z22.web.core.windows.net';
 
-export const DEPLOYHOST = process.env.DEPLOY_HOST ?? DEPLOY_URL;
-export const DEPLOYURL = process.env.DEPLOY_URL;
+export const DEPLOYHOST = process.env.DEPLOYHOST ?? DEPLOY_URL;
+export const DEPLOYURL = process.env.DEPLOYURL;
 export const SYSTEM_PULLREQUEST_TARGETBRANCH = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH;
 
 const envPrefix = { filePath: 'PerfCommentFilePath', status: 'PerfCommentStatus' };
