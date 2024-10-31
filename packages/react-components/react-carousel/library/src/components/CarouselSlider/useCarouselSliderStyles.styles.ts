@@ -22,7 +22,6 @@ const useStyles = makeStyles({
  */
 export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): CarouselSliderState => {
   'use no memo';
-  const { cardFocus } = state;
 
   const styles = useStyles();
 

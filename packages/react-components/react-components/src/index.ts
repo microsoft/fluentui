@@ -1922,8 +1922,6 @@ export {
   renderCarouselNavImageButton_unstable,
   useCarouselNavImageButtonStyles_unstable,
   useCarouselNavImageButton_unstable,
-  // CarouselSlider is deprecated, instead use CarouselViewport
-  // eslint-disable-next-line deprecation/deprecation
   CarouselSlider,
   carouselSliderClassNames,
   renderCarouselSlider_unstable,

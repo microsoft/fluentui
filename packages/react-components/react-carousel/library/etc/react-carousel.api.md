@@ -220,7 +220,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
 // @public (undocumented)
 export const CarouselProvider: Provider<CarouselContextValue | undefined> & FC<ProviderProps<CarouselContextValue | undefined>>;
 
-// @public @deprecated
+// @public
 export const CarouselSlider: ForwardRefComponent<CarouselSliderProps>;
 
 // @public (undocumented)
@@ -254,14 +254,11 @@ export const CarouselViewport: ForwardRefComponent<CarouselViewportProps>;
 export const carouselViewportClassNames: SlotClassNames<CarouselViewportSlots>;
 
 // @public
-export type CarouselViewportProps = ComponentProps<CarouselViewportSlots> & {
-    cardFocus?: boolean;
-};
+export type CarouselViewportProps = ComponentProps<CarouselViewportSlots>;
 
 // @public (undocumented)
 export type CarouselViewportSlots = {
     root: Slot<'div'>;
-    slider?: NonNullable<Slot<'div'>>;
 };
 
 // @public

@@ -4,7 +4,6 @@ import type { CarouselViewportSlots, CarouselViewportState } from './CarouselVie
 
 export const carouselViewportClassNames: SlotClassNames<CarouselViewportSlots> = {
   root: 'fui-CarouselViewport',
-  slider: 'fui-CarouselViewport__slider',
 };
 
 /**
@@ -29,7 +28,6 @@ export const useCarouselViewportStyles_unstable = (state: CarouselViewportState)
 
   const styles = useStyles();
   state.root.className = mergeClasses(carouselViewportClassNames.root, styles.root, state.root.className);
-  state.slider.className = mergeClasses(carouselViewportClassNames.slider, styles.slider, state.slider.className);
 
   return state;
 };

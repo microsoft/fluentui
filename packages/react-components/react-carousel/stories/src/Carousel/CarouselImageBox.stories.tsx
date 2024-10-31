@@ -1,4 +1,4 @@
-import { makeStyles, Image } from '@fluentui/react-components';
+import { makeStyles, Image, CarouselSlider } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselAnnouncerFunction,
@@ -72,11 +72,13 @@ export const ImageSlideshow = () => {
   return (
     <Carousel groupSize={1} align="center" announcement={getAnnouncement}>
       <CarouselViewport className={classes.slider}>
-        {IMAGES.map((image, index) => (
-          <CarouselCard key={image.url} className={classes.card} aria-label={`${index + 1} of ${IMAGES.length}`}>
-            <ImageCard {...image} />
-          </CarouselCard>
-        ))}
+        <CarouselSlider>
+          {IMAGES.map((image, index) => (
+            <CarouselCard key={image.url} className={classes.card} aria-label={`${index + 1} of ${IMAGES.length}`}>
+              <ImageCard {...image} />
+            </CarouselCard>
+          ))}
+        </CarouselSlider>
       </CarouselViewport>
 
       <CarouselNavContainer

@@ -16,9 +16,7 @@ export const renderCarouselViewport_unstable = (
 
   return (
     <CarouselSliderContextProvider value={contextValues.carouselSlider}>
-      <state.root>
-        <state.slider />
-      </state.root>
+      <state.root />
     </CarouselSliderContextProvider>
   );
 };

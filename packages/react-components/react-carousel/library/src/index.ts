@@ -63,7 +63,6 @@ export {
   useCarouselNavImageButton_unstable,
 } from './CarouselNavImageButton';
 export {
-  // eslint-disable-next-line deprecation/deprecation
   CarouselSlider,
   carouselSliderClassNames,
   renderCarouselSlider_unstable,

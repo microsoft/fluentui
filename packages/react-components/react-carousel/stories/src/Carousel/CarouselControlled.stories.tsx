@@ -8,6 +8,7 @@ import {
   Tooltip,
   Toolbar,
   ToolbarButton,
+  CarouselSlider,
 } from '@fluentui/react-components';
 import {
   Carousel,
@@ -134,21 +135,23 @@ export const Controlled = () => {
         </Tooltip>
 
         <CarouselViewport className={classes.viewport}>
-          <CarouselCard aria-label="1 of 5">
-            <WireframeContent index={0} />
-          </CarouselCard>
-          <CarouselCard aria-label="2 of 5">
-            <WireframeContent index={1} />
-          </CarouselCard>
-          <CarouselCard aria-label="3 of 5">
-            <WireframeContent index={2} />
-          </CarouselCard>
-          <CarouselCard aria-label="4 of 5">
-            <WireframeContent index={3} />
-          </CarouselCard>
-          <CarouselCard aria-label="5 of 5">
-            <WireframeContent index={4} />
-          </CarouselCard>
+          <CarouselSlider>
+            <CarouselCard aria-label="1 of 5">
+              <WireframeContent index={0} />
+            </CarouselCard>
+            <CarouselCard aria-label="2 of 5">
+              <WireframeContent index={1} />
+            </CarouselCard>
+            <CarouselCard aria-label="3 of 5">
+              <WireframeContent index={2} />
+            </CarouselCard>
+            <CarouselCard aria-label="4 of 5">
+              <WireframeContent index={3} />
+            </CarouselCard>
+            <CarouselCard aria-label="5 of 5">
+              <WireframeContent index={4} />
+            </CarouselCard>
+          </CarouselSlider>
         </CarouselViewport>
 
         <Tooltip content="Go To Next Page" relationship="label">
