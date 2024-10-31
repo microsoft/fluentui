@@ -79,22 +79,35 @@ jobs:
             monosize-report.md
             pr.txt
 
+      # ===================================
+      #   NON PR (MASTER) WORKFLOW STEPS
+      # ===================================
+
       - name: Build all packages & create reports (non-PR)
         if: github.event_name != 'pull_request'
         run: yarn nx run-many -t bundle-size --nxBail
+
+      - name: Login via Azure CLI (non-PR)
+        if: github.event_name != 'pull_request'
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Upload a report (non-PR)
         if: github.event_name != 'pull_request'
         uses: azure/cli@v2
         with:
           azcliversion: latest
-          # TODO: how to set subcription? monosize has no flag for it and gha    az cli doesn't support this parameter
+          # TODO: how to set subcription? monosize has no flag for it and gha az cli doesn't support this parameter
           # azureSubscription: 'Bundlesize Testing'
           inlineScript: |
             yarn monosize upload-report --branch=${{ github.ref }} --commit-sha ${{ github.sha }}
         env:
+          AZCOPY_AUTO_LOGIN_TYPE: 'AZCLI'
+          SYSTEM_ACCESSTOKEN: ${{ secrets.GITHUB_TOKEN }}
           # AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           # AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           # AZURE_SERVICE_CONNECTION_ID: ${{ secrets.AZURE_SERVICE_CONNECTION_ID }}
           # BUNDLESIZE_ACCOUNT_NAME: ${{ secrets.BUNDLESIZE_ACCOUNT_NAME }}
-          SYSTEM_ACCESSTOKEN: ${{ secrets.GITHUB_TOKEN }}

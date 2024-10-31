@@ -5,29 +5,41 @@ on:
     types:
       - completed
 
+concurrency:
+  # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+  group: ${{github.event.workflow_run.id }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DEPLOY_HOST_URL: https://fluentuipr.z22.web.core.windows.net/
+
+  # GitHub Secrets for Azure access
+  # This service principal ("subscription" is a misleading name) only has access to the fluentuipr storage account
+  AZURE_SUBSCRIPTION: Azure PR deploy - NEW
+  AZURE_STORAGE: fluentuipr
+
 jobs:
-  comment:
+  deploy:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
-    permissions:
-      pull-requests: write
+    outputs:
+      pr_number: ${{ steps.pr_number.outputs.id }}
+      website_url: ${{ steps.website_url.outputs.id }}
     steps:
-      - name: Download artifact
+      - name: Download WebSite artifacts
         uses: actions/download-artifact@v4
         with:
-          name: monosize-report
-          path: ./results
+          name: pr-website-artifacts
+          path: ./website
           run_id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: 'Download artifact'
-      #   uses: dawidd6/action-download-artifact@v2
-      #   with:
-      #     name: pr-website-deploy-url
-      #     path: ./results
-      #     run_id: ${{ github.event.workflow_run.id }}
-      #     workflow: ${{ github.event.workflow.id }}
-      #     workflow_conclusion: success
+      - uses: actions/download-artifact@v4
+        with:
+          name: pr-number
+          path: ./results
+          run_id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Load PR number
         id: pr_number
@@ -36,15 +48,43 @@ jobs:
 
       - name: Load URL
         id: website_url
-        run: echo "::set-output name=id::$(cat website-deploy-url.txt)"
-        working-directory: ./results
+        run: echo "::set-output name=id::${{env.DEPLOY_HOST_URL}}pull/${{steps.pr_number.outputs.id}}"
 
+      - name: Login via Azure CLI
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Upload PR WebSite
+        uses: azure/cli@v2
+        env:
+          AZCOPY_AUTO_LOGIN_TYPE: 'AZCLI'
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az storage blob upload-batch \
+              --destination '$web' \
+              --source ./website \
+              --account-name ${{ env.AZURE_STORAGE }} \
+              --destination-path pull/${{steps.pr_number.outputs.id}} \
+              --auth-mode login \
+              --overwrite
+
+  comment:
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
+    permissions:
+      pull-requests: write
+    steps:
       - name: 'Comment on PR'
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          number: ${{ steps.pr_number.outputs.id }}
+          number: ${{ needs.deploy.outputs.pr_number }}
           message: |
-            Pull request demo site: [URL](${{steps.pr_number.outputs.id}})
+            Pull request demo site: [URL](${{needs.deploy.outputs.website_url}})
 
       - name: Update PR deploy site GitHub status
         if: github.event_name == 'pull_request'
@@ -52,5 +92,5 @@ jobs:
         with:
           script: |
             const run = require('./.github/deploy-pr-site-status');
-            const config = { websiteUrl: '${{steps.website_url.outputs.id}}', prId: '${{steps.pr_number.outputs.id}}'};
+            const config = { websiteUrl: '${{ needs.deploy.outputs.website_url }}', prId: '${{ needs.deploy.outputs.pr_number }}'};
             await run({github,context,core,config});
