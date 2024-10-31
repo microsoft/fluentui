@@ -87,6 +87,6 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const run = require('./.github/deploy-pr-site-status');
+            const run = require('./.github/scripts/deploy-pr-site-status');
             const config = { websiteUrl: '${{ needs.deploy.outputs.website_url }}', prId: '${{ needs.deploy.outputs.pr_number }}'};
             await run({github,context,core,config});

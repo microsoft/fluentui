@@ -20,15 +20,6 @@ jobs:
           run_id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: 'Download artifact'
-      #   uses: dawidd6/action-download-artifact@v2
-      #   with:
-      #     name: monosize-report
-      #     path: ./results
-      #     run_id: ${{ github.event.workflow_run.id }}
-      #     workflow: ${{ github.event.workflow.id }}
-      #     workflow_conclusion: success
-
       - name: Load PR number
         id: pr_number
         run: echo "::set-output name=id::$(cat pr.txt)"

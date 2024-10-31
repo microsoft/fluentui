@@ -2,7 +2,7 @@
 
 /**
  *
- * @param {import('../scripts/triage-bot/src/types.ts').GithubScriptsParams} options
+ * @param {import('../../../scripts/triage-bot/src/types.ts').GithubScriptsParams} options
  * @returns
  */
 async function main(options) {
@@ -25,7 +25,6 @@ async function main(options) {
       issue_number: Number(context.payload.pull_request?.number),
     });
 
-    // const existingComment = comments.find(comment => comment.body.includes('bundleSizeComment6721'));
     const existingComment = comments.find(comment => comment.body?.includes('## Bundle Size Report'));
 
     if (existingComment) {
