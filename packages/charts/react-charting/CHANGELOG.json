@@ -2,6 +2,42 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 31 Oct 2024 07:23:15 GMT",
+      "tag": "@fluentui/react-charting_v5.23.11",
+      "version": "5.23.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "a6cadb21a1dc5bfab1d20e9584a3636ee297e4d1",
+            "comment": "Restructure charting package code to make space for v9 controls"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Oct 2024 07:22:06 GMT",
+      "tag": "@fluentui/react-charting_v5.23.10",
+      "version": "5.23.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.182",
+            "commit": "62e24ae1ca536ba1e4d3ba752bc4dfdcfd3d1584"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.121.7",
+            "commit": "62e24ae1ca536ba1e4d3ba752bc4dfdcfd3d1584"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Oct 2024 07:23:06 GMT",
       "tag": "@fluentui/react-charting_v5.23.9",
       "version": "5.23.9",
