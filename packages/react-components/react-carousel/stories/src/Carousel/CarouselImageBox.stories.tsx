@@ -11,7 +11,7 @@ import {
 import * as React from 'react';
 
 const useClasses = makeStyles({
-  slider: {
+  viewport: {
     /* Optional: Prevent image from overlapping the 'overlay-expanded' controls */
     marginBottom: '72px',
   },
@@ -71,7 +71,7 @@ export const ImageSlideshow = () => {
 
   return (
     <Carousel groupSize={1} align="center" announcement={getAnnouncement}>
-      <CarouselViewport className={classes.slider}>
+      <CarouselViewport className={classes.viewport}>
         <CarouselSlider>
           {IMAGES.map((image, index) => (
             <CarouselCard key={image.url} className={classes.card} aria-label={`${index + 1} of ${IMAGES.length}`}>

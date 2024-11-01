@@ -34,6 +34,7 @@ export default {
     CarouselNavButton,
     CarouselNavContainer,
     CarouselNavImageButton,
+    CarouselSlider,
     CarouselViewport,
   },
   parameters: {
