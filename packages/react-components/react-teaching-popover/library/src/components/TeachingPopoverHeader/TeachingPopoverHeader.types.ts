@@ -3,10 +3,11 @@ import { PopoverContextValue } from '@fluentui/react-popover';
 
 export type TeachingPopoverHeaderSlots = {
   /**
-   * The element wrapping the text and close button. By default this is an h3, but can be a div.
+   * The element wrapping the text and close button. By default this is an div; although it can be a heading, this should not be done.
+   * Instead, wrap the child text in a heading tag if one is needed.
    * Be sure to include role and aria heading level if div is used.
    */
-  root: Slot<'h3', 'h1' | 'h2' | 'h4' | 'h5' | 'h6' | 'div'>;
+  root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
   /**
    * The component to be used as close button in heading
    */
