@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Fri, 11 Oct 2024 16:51:54 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Nov 2024 07:23:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.11.4](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.11.4)
+
+Fri, 01 Nov 2024 07:23:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.11.3..@fluentui/style-utilities_v8.11.4)
+
+### Patches
+
+- adding support for placeholder "album" filetype icon ([PR #33167](https://github.com/microsoft/fluentui/pull/33167) by caperez@microsoft.com)
 
 ## [8.11.3](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.11.3)
 
