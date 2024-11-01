@@ -103,11 +103,17 @@ export const Inline = () => {
               {...restoreFocusTargetAttributes}
               appearance="primary"
               onClick={() => setStartOpen(!startOpen)}
+              checked={startOpen}
             >
               Toggle start
             </ToggleButton>
 
-            <ToggleButton {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setEndOpen(!endOpen)}>
+            <ToggleButton
+              {...restoreFocusTargetAttributes}
+              appearance="primary"
+              onClick={() => setEndOpen(!endOpen)}
+              checked={endOpen}
+            >
               Toggle end
             </ToggleButton>
 
@@ -115,6 +121,7 @@ export const Inline = () => {
               {...restoreFocusTargetAttributes}
               appearance="primary"
               onClick={() => setBottomOpen(!bottomOpen)}
+              checked={bottomOpen}
             >
               Toggle bottom
             </ToggleButton>

@@ -89,7 +89,12 @@ export const Default = () => {
 
       <div className={styles.content}>
         {type === 'inline' ? (
-          <ToggleButton {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setIsOpen(!isOpen)}>
+          <ToggleButton
+            {...restoreFocusTargetAttributes}
+            appearance="primary"
+            onClick={() => setIsOpen(!isOpen)}
+            checked={isOpen}
+          >
             Toggle
           </ToggleButton>
         ) : (
