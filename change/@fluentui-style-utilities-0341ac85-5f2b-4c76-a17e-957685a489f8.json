@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "adding support for placeholder \"album\" filetype icon",
-  "packageName": "@fluentui/style-utilities",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}
