@@ -2,7 +2,7 @@
 
 /**
  *
- * @param {import('../../../scripts/triage-bot/src/types.ts').GithubScriptsParams & {config:{websiteUrl:string;prId:string}} } options
+ * @param {import('../../scripts/triage-bot/src/types.ts').GithubScriptsParams & {config:{websiteUrl:string;prId:string}} } options
  * @returns
  */
 async function main(options) {
