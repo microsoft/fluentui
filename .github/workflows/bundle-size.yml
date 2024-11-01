@@ -1,0 +1,93 @@
+name: Bundle size
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+concurrency:
+  # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  env:
+  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PREFER_TS_NODE: true
+  NX_VERBOSE_LOGGING: true
+
+  BROWSERSLIST_IGNORE_OLD_DATA: true
+
+jobs:
+  bundle-size:
+    runs-on: macos-14-xlarge
+    permissions:
+      contents: 'read'
+      actions: 'read'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
+
+      - run: yarn install --frozen-lockfile
+
+      - name: Build packages & create reports (PR only)
+        if: github.event_name == 'pull_request'
+        run: yarn nx affected -t bundle-size --nxBail
+
+      - name: Compare bundle size with base (PR only)
+        if: github.event_name == 'pull_request'
+        run: npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }} --output=markdown --quiet > ./monosize-report.md
+
+      - name: Save PR number
+        run: echo ${{ github.event.number }} > pr.txt
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ github.event_name == 'pull_request' }}
+        with:
+          name: monosize-report
+          if-no-files-found: error
+          path: |
+            monosize-report.md
+            pr.txt
+
+      # ===================================
+      #   NON PR (MASTER) WORKFLOW STEPS
+      # ===================================
+
+      - name: Build all packages & create reports (non-PR)
+        if: github.event_name != 'pull_request'
+        run: yarn nx run-many -t bundle-size --nxBail
+
+      - name: Login via Azure CLI (non-PR)
+        if: github.event_name != 'pull_request'
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Upload a report (non-PR)
+        if: github.event_name != 'pull_request'
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            yarn monosize upload-report --branch=${{ github.ref }} --commit-sha ${{ github.sha }}
+        env:
+          AZCOPY_AUTO_LOGIN_TYPE: 'AZCLI'
+          SYSTEM_ACCESSTOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BUNDLESIZE_ACCOUNT_NAME: ${{ secrets.BUNDLESIZE_ACCOUNT_NAME }}

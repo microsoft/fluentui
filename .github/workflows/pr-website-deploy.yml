@@ -1,0 +1,80 @@
+name: PR Website Deploy
+on:
+  pull_request:
+
+concurrency:
+  # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PREFER_TS_NODE: true
+  NX_VERBOSE_LOGGING: true
+
+  BROWSERSLIST_IGNORE_OLD_DATA: true
+
+  # Deploy host and URL
+  # DEPLOY_BASE_PATH: ''
+  DEPLOY_HOST: fluentuipr.z22.web.core.windows.net
+  DEPLOY_URL: https://fluentuipr.z22.web.core.windows.net/${{ github.event.pull_request.number || github.ref_name }}
+  # DEPLOY_BASE_PATH: pull/${{github.event.pull_request.number}}
+  DEPLOY_BASE_PATH: ${{ github.event.pull_request.number != '' && format('pull/{0}', github.event.pull_request.number) || format('heads/{0}', github.ref_name) }}
+
+  IS_PR: ${{ github.event_name == 'pull_request' }}
+  TARGET_BRANCH: ${{ github.event.pull_request.base.ref || '' }}
+
+  # GitHub Secrets for Azure access
+  # This service principal ("subscription" is a misleading name) only has access to the fluentuipr storage account
+  AZURE_SUBSCRIPTION: Azure PR deploy - NEW
+  AZURE_STORAGE: fluentuipr
+
+jobs:
+  bundle:
+    runs-on: macos-14-xlarge
+    permissions:
+      contents: 'read'
+      actions: 'read'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
+
+      - run: yarn install --frozen-lockfile
+
+      - name: Bundle
+        run: yarn nx affected -t bundle --nxBail
+
+      - name: Build Storybooks
+        run: yarn nx affected -t build-storybook --nxBail
+
+      - name: Generate PR Deploy Site
+        run: yarn nx run pr-deploy-site:generate:site
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr-website-artifacts
+          if-no-files-found: error
+          path: |
+            apps/pr-deploy-site/dist/
+
+      - name: Save PR number
+        run: echo ${{ github.event.number }} > pr.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr-number
+          if-no-files-found: error
+          path: |
+            pr.txt
