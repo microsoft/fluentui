@@ -1,4 +1,4 @@
-import { BadgeOptions } from '../badge/badge.options.js';
+import type { BadgeOptions } from '../badge/badge.options.js';
 import type { ValuesOf } from '../utils/index.js';
 
 /**

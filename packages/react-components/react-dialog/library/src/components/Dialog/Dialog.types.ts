@@ -6,11 +6,14 @@ import type { DialogContextValue, DialogSurfaceContextValue } from '../../contex
 import type { DialogSurfaceElement } from '../DialogSurface/DialogSurface.types';
 
 export type DialogSlots = {
+  /**
+   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
+   *
+   */
   surfaceMotion: Slot<PresenceMotionSlotProps>;
 };
 
 export type InternalDialogSlots = {
-  // motion slots cannot be nullable
   surfaceMotion: NonNullable<Slot<PresenceMotionSlotProps>>;
 };
 

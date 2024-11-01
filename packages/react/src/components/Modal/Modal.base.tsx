@@ -411,6 +411,10 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
     useUnmount(() => {
       internalState.events.dispose();
+      if (internalState.onModalCloseTimer) {
+        clearTimeout(internalState.onModalCloseTimer);
+        internalState.onModalCloseTimer = 0;
+      }
     });
 
     useComponentRef(props, focusTrapZone);

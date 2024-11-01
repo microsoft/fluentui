@@ -1,4 +1,5 @@
-import { ElementViewTemplate, html } from '@microsoft/fast-element';
+import { elements, type ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
+import { staticallyCompose } from '../utils/template-helpers.js';
 import type { RatingDisplay } from './rating-display.js';
 
 /**
@@ -6,9 +7,9 @@ import type { RatingDisplay } from './rating-display.js';
  */
 const star = html`
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
-    <symbol id="star" viewBox="0 0 12 12">
+    <symbol id="star">
       <path
-        d="M5.28347 1.54556C5.57692 0.95096 6.42479 0.950961 6.71825 1.54556L7.82997 3.79817L10.3159 4.15939C10.9721 4.25474 11.2341 5.06112 10.7592 5.52394L8.96043 7.27736L9.38507 9.75321C9.49716 10.4067 8.81122 10.9051 8.22431 10.5966L6.00086 9.42761L3.7774 10.5966C3.19049 10.9051 2.50455 10.4067 2.61664 9.75321L3.04128 7.27736L1.24246 5.52394C0.767651 5.06111 1.02966 4.25474 1.68584 4.15939L4.17174 3.79817L5.28347 1.54556Z"
+        d="M9.10433 2.89874C9.47114 2.15549 10.531 2.1555 10.8978 2.89874L12.8282 6.81024L17.1448 7.43748C17.9651 7.55666 18.2926 8.56464 17.699 9.14317L14.5755 12.1878L15.3129 16.487C15.453 17.3039 14.5956 17.9269 13.8619 17.5412L10.0011 15.5114L6.14018 17.5412C5.40655 17.9269 4.54913 17.3039 4.68924 16.487L5.4266 12.1878L2.30308 9.14317C1.70956 8.56463 2.03708 7.55666 2.8573 7.43748L7.17389 6.81024L9.10433 2.89874Z"
       />
     </symbol>
   </svg>
@@ -21,7 +22,8 @@ const star = html`
  */
 export function ratingDisplayTemplate<T extends RatingDisplay>(): ElementViewTemplate<T> {
   return html<T>`
-    ${star} ${x => html`${html.partial(x.generateIcons())}`}
+    ${x => html`${staticallyCompose(x.generateIcons())}`}
+    <slot name="icon" ${slotted({ property: 'slottedIcon', filter: elements('svg') })}>${star}</slot>
     <slot name="value"><span class="value-label" aria-hidden="true">${x => x.value}</span></slot>
     <slot name="count"><span class="count-label" aria-hidden="true">${x => x.formattedCount}</span></slot>
   `;

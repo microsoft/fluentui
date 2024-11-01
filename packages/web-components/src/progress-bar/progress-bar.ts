@@ -1,5 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter, volatile } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { swapStates } from '../utils/element-internals.js';
 import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
 
 /**
@@ -33,12 +33,7 @@ export class BaseProgressBar extends FASTElement {
     prev: ProgressBarValidationState | undefined,
     next: ProgressBarValidationState | undefined,
   ) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, ProgressBarValidationState);
   }
 
   /**
@@ -138,12 +133,7 @@ export class ProgressBar extends BaseProgressBar {
    * @param next - the next state
    */
   public thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, ProgressBarThickness);
   }
 
   /**
@@ -160,11 +150,6 @@ export class ProgressBar extends BaseProgressBar {
    * @param next - the next state
    */
   public shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, ProgressBarShape);
   }
 }

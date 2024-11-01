@@ -1,5 +1,5 @@
-import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
-import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
+import { type ElementViewTemplate, html, ref } from '@microsoft/fast-element';
+import { startSlotTemplate } from '../patterns/index.js';
 import { staticallyCompose } from '../utils/index.js';
 import type { AccordionItem, AccordionItemOptions } from './accordion-item.js';
 

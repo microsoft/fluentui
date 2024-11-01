@@ -1,128 +1,210 @@
-import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
+import { html, repeat } from '@microsoft/fast-element';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { ToggleButton as FluentToggleButton } from './toggle-button.js';
 import { ToggleButtonAppearance, ToggleButtonShape, ToggleButtonSize } from './toggle-button.options.js';
 
-type ToggleButtonStoryArgs = Args & FluentToggleButton;
-type ToggleButtonStoryMeta = Meta<ToggleButtonStoryArgs>;
+type Story = StoryObj<FluentToggleButton>;
 
-const storyTemplate = html<ToggleButtonStoryArgs>`
+const storyTemplate = html<StoryArgs<FluentToggleButton>>`
   <fluent-toggle-button
-    appearance="${x => x.appearance}"
-    shape="${x => x.shape}"
-    size="${x => x.size}"
+    ?autofocus="${story => story.autofocus}"
+    ?disabled-focusable="${story => story.disabledFocusable}"
+    ?disabled="${story => story.disabled}"
+    ?formnovalidate="${story => story.formnovalidate}"
+    ?icon-only="${story => story.iconOnly}"
+    appearance="${story => story.appearance}"
+    form="${story => story.form}"
+    formaction="${story => story.formaction}"
+    formenctype="${story => story.formenctype}"
+    formmethod="${story => story.formmethod}"
+    formtarget="${story => story.formtarget}"
+    name="${story => story.name}"
+    shape="${story => story.shape}"
+    size="${story => story.size}"
+    type="${story => story.type}"
+    value="${story => story.value}"
     ?pressed="${x => x.pressed}"
     ?mixed="${x => x.mixed}"
-    ?disabled="${x => x.disabled}"
-    ?disabled-focusable="${x => x.disabledFocusable}"
-    ?icon-only="${x => x.iconOnly}"
   >
-    ${x => x.content}
+    ${story => story.startSlottedContent?.()} ${story => story.slottedContent?.()}
+    ${story => story.endSlottedContent?.()}
   </fluent-toggle-button>
 `;
 
 export default {
   title: 'Components/Button/Toggle Button',
+  render: renderComponent(storyTemplate),
   args: {
-    content: 'Button',
-    disabled: false,
-    disabledFocusable: false,
+    slottedContent: () => 'Button',
   },
   argTypes: {
     appearance: {
-      options: Object.values(ToggleButtonAppearance),
-      control: {
-        type: 'select',
-      },
-    },
-    shape: {
-      options: Object.values(ToggleButtonShape),
-      control: {
-        type: 'select',
-      },
-    },
-    size: {
-      options: Object.values(ToggleButtonSize),
-      control: {
-        type: 'select',
-      },
-    },
-    mixed: {
-      control: 'boolean',
+      control: 'select',
+      description: 'Indicates the styled appearance of the button.',
+      options: ['', ...Object.values(ToggleButtonAppearance)],
+      mapping: { '': null, ...ToggleButtonAppearance },
       table: {
-        type: {
-          summary: 'Sets the mixed state of the component',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
-      },
-    },
-    pressed: {
-      control: 'boolean',
-      table: {
-        type: {
-          summary: 'Sets the pressed state of the component',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
+        category: 'attributes',
+        type: { summary: Object.values(ToggleButtonAppearance).join('|') },
       },
     },
     disabled: {
       control: 'boolean',
-      table: {
-        type: {
-          summary: 'Sets the disabled state of the component',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
-      },
+      description: "Sets the button's disabled state.",
+      table: { category: 'attributes', type: { summary: 'boolean' } },
     },
     disabledFocusable: {
       control: 'boolean',
+      description: 'Indicates the button is focusable while disabled.',
+      name: 'disabled-focusable',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    formAction: {
+      control: 'text',
+      description: 'The URL that processes the form submission.',
+      name: 'formaction',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    formAttribute: {
+      control: 'text',
+      description: 'The id of a form to associate the element to.',
+      name: 'form',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    formEnctype: {
+      control: 'text',
+      description: 'The encoding type for the form submission.',
+      name: 'formenctype',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    formMethod: {
+      control: 'text',
+      description: 'The HTTP method that the browser uses to submit the form.',
+      name: 'formmethod',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    formNoValidate: {
+      control: 'boolean',
+      description: 'Indicates that the form will not be validated when submitted.',
+      name: 'formnovalidate',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    formTarget: {
+      control: 'text',
+      description: 'The target frame or window to open the form submission in.',
+      name: 'formtarget',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    iconOnly: {
+      control: 'boolean',
+      description: 'Indicates the button should only display as an icon.',
+      name: 'icon-only',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    mixed: {
+      control: 'boolean',
+      description: 'Sets the mixed state of the component',
+      name: 'mixed',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    name: {
+      control: 'text',
+      description:
+        "The name of the element. This element's value will be surfaced during form submission under the provided name.",
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    pressed: {
+      control: 'boolean',
+      description: 'Sets the pressed state of the component',
+      name: 'pressed',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    size: {
+      control: 'select',
+      description: 'The size of the button.',
+      options: ['', ...Object.values(ToggleButtonSize)],
+      mapping: { '': null, ...ToggleButtonSize },
       table: {
-        type: {
-          summary: 'The component is disabled but still focusable',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
+        category: 'attributes',
+        type: { summary: Object.values(ToggleButtonSize).join('|') },
       },
     },
-    content: {
-      control: 'Button text',
+    shape: {
+      control: 'select',
+      description: 'The shape of the button.',
+      options: ['', ...Object.values(ToggleButtonShape)],
+      mapping: { '': null, ...ToggleButtonShape },
+      table: {
+        category: 'attributes',
+        type: { summary: Object.values(ToggleButtonShape).join('|') },
+      },
+    },
+    value: {
+      control: 'text',
+      description: 'The initial value of the button.',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    slottedContent: {
+      control: false,
+      description: 'The default slot',
+      name: '',
+      table: { category: 'slots', type: {} },
+    },
+    startSlottedContent: {
+      control: false,
+      description: 'Slot for start icons',
+      name: 'start',
+      table: { category: 'slots', type: {} },
+    },
+    endSlottedContent: {
+      control: false,
+      description: 'Slot for end icons',
+      name: 'end',
+      table: { category: 'slots', type: {} },
     },
   },
-} as ToggleButtonStoryMeta;
+} as Meta<FluentToggleButton>;
 
-export const Button = renderComponent(storyTemplate).bind({});
+export const Default: Story = {};
 
-export const Appearance = renderComponent(html<ToggleButtonStoryArgs>`
-  <fluent-toggle-button>Default</fluent-toggle-button>
-  <fluent-toggle-button appearance="primary">Primary</fluent-toggle-button>
-  <fluent-toggle-button appearance="outline">Outline</fluent-toggle-button>
-  <fluent-toggle-button appearance="subtle">Subtle</fluent-toggle-button>
-  <fluent-toggle-button appearance="transparent">Transparent</fluent-toggle-button>
-`);
+export const Appearance: Story = {
+  render: renderComponent(html`<div>${repeat(story => story.storyItems, storyTemplate)}</div> `),
+  args: {
+    storyItems: [
+      { slottedContent: () => 'Default' },
+      { slottedContent: () => 'Primary', appearance: ToggleButtonAppearance.primary },
+      { slottedContent: () => 'Outline', appearance: ToggleButtonAppearance.outline },
+      { slottedContent: () => 'Subtle', appearance: ToggleButtonAppearance.subtle },
+      { slottedContent: () => 'Transparent', appearance: ToggleButtonAppearance.transparent },
+    ],
+  },
+};
 
-export const Pressed = renderComponent(html<ToggleButtonStoryArgs>`
-  <fluent-toggle-button pressed>Default pressed</fluent-toggle-button>
-  <fluent-toggle-button pressed appearance="primary">Primary pressed</fluent-toggle-button>
-  <fluent-toggle-button pressed appearance="outline">Outline pressed</fluent-toggle-button>
-  <fluent-toggle-button pressed appearance="subtle">Subtle pressed</fluent-toggle-button>
-  <fluent-toggle-button pressed appearance="transparent">Transparent pressed</fluent-toggle-button>
-`);
+export const Pressed: Story = {
+  render: renderComponent(html`<div>${repeat(story => story.storyItems, storyTemplate)}</div> `),
+  args: {
+    storyItems: [
+      { slottedContent: () => 'Default Pressed', pressed: true },
+      { slottedContent: () => 'Primary Pressed', appearance: ToggleButtonAppearance.primary, pressed: true },
+      { slottedContent: () => 'Outline Pressed', appearance: ToggleButtonAppearance.outline, pressed: true },
+      { slottedContent: () => 'Subtle Pressed', appearance: ToggleButtonAppearance.subtle, pressed: true },
+      { slottedContent: () => 'Transparent Pressed', appearance: ToggleButtonAppearance.transparent, pressed: true },
+    ],
+  },
+};
 
-export const Shape = renderComponent(html<ToggleButtonStoryArgs>`
-  <fluent-toggle-button shape="rounded">Rounded</fluent-toggle-button>
-  <fluent-toggle-button shape="circular">Circular</fluent-toggle-button>
-  <fluent-toggle-button shape="square">Square</fluent-toggle-button>
-`);
+export const Shape: Story = {
+  render: renderComponent(html`<div>${repeat(story => story.storyItems, storyTemplate)}</div> `),
+  args: {
+    storyItems: [
+      { slottedContent: () => 'Rounded', shape: ToggleButtonShape.rounded },
+      { slottedContent: () => 'Circular', shape: ToggleButtonShape.circular },
+      { slottedContent: () => 'Square', shape: ToggleButtonShape.square },
+    ],
+  },
+};
 
-export const Size = renderComponent(html<ToggleButtonStoryArgs>`
+export const Size = renderComponent(html<StoryArgs<FluentToggleButton>>`
   <fluent-toggle-button size="small">Small</fluent-toggle-button>
   <fluent-toggle-button size="small">
     <svg
@@ -224,7 +306,7 @@ export const Size = renderComponent(html<ToggleButtonStoryArgs>`
   </fluent-toggle-button>
 `);
 
-export const Disabled = renderComponent(html<ToggleButtonStoryArgs>`
+export const Disabled = renderComponent(html<StoryArgs<FluentToggleButton>>`
   <fluent-toggle-button>Enabled state</fluent-toggle-button>
   <fluent-toggle-button disabled>Disabled state</fluent-toggle-button>
   <fluent-toggle-button disabled-focusable>Disabled focusable state</fluent-toggle-button>
@@ -233,7 +315,7 @@ export const Disabled = renderComponent(html<ToggleButtonStoryArgs>`
   <fluent-toggle-button appearance="primary" disabled-focusable>Disabled focusable state</fluent-toggle-button>
 `);
 
-export const WithLongText = renderComponent(html<ToggleButtonStoryArgs>`
+export const WithLongText = renderComponent(html<StoryArgs<FluentToggleButton>>`
   <style>
     .max-width {
       width: 280px;

@@ -20,7 +20,7 @@ export const GroupedVerticalBarChartPageProps: IDocPageProps = {
   title: 'GroupedVerticalBarChart',
   componentName: 'GroupedVerticalBarChart',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/GroupedVerticalBarChart',
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/GroupedVerticalBarChart',
   examples: [
     {
       title: 'GroupedVerticalBarChart basic',

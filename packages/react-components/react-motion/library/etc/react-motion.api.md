@@ -70,6 +70,9 @@ export type MotionImperativeRef = {
     setPlayState: (state: 'running' | 'paused') => void;
 };
 
+// @public
+export type MotionParam = boolean | number | string;
+
 // @public (undocumented)
 export const motionTokens: {
     curveAccelerateMax: "cubic-bezier(0.9,0.1,1,0.2)";

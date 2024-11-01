@@ -1,0 +1,50 @@
+parameters:
+  - name: version
+    type: string
+    default: 8
+
+steps:
+  - task: AzureCLI@2
+    displayName: 'Copy website drop to Azure'
+    inputs:
+      azureSubscription: 'Azure - fabricweb storage - NEW'
+      scriptType: 'bash'
+      scriptLocation: inlineScript
+      inlineScript: |
+        az storage blob upload-batch \
+        --destination 'fabric-website' \
+        --source $(System.DefaultWorkingDirectory)/apps/public-docsite/dist \
+        --account-name fabricweb \
+        --destination-path v${{ parameters.version }}/$(Build.BuildNumber)/ \
+        --auth-mode login \
+        --overwrite
+
+  - task: AzureCLI@2
+    displayName: 'Update dogfood manifest in Azure blob'
+    inputs:
+      azureSubscription: 'Azure - fabricweb storage - NEW'
+      scriptType: 'bash'
+      scriptLocation: inlineScript
+      inlineScript: |
+        az storage blob upload \
+        --account-name fabricweb \
+        --container-name fabric-website \
+        --name manifests/v${{ parameters.version }}-df.js \
+        --file $(System.DefaultWorkingDirectory)/site-manifests/v${{ parameters.version }}-df.js \
+        --auth-mode login \
+        --overwrite
+
+  - task: AzureCLI@2
+    displayName: 'Update prod manifest in Azure blob'
+    inputs:
+      azureSubscription: 'Azure - fabricweb storage - NEW'
+      scriptType: 'bash'
+      scriptLocation: inlineScript
+      inlineScript: |
+        az storage blob upload \
+        --account-name fabricweb \
+        --container-name fabric-website \
+        --name manifests/v${{ parameters.version }}-prod.js \
+        --file $(System.DefaultWorkingDirectory)/site-manifests/v${{ parameters.version }}-prod.js \
+        --auth-mode login \
+        --overwrite

@@ -29,6 +29,8 @@ export const styles = css`
 
   :host {
     --icon-size: 16px;
+    --icon-color-filled: ${colorPaletteMarigoldBackground3};
+    --icon-color-empty: ${colorPaletteMarigoldBackground2};
     align-items: center;
     color: ${colorNeutralForeground1};
     font-family: ${fontFamilyBase};
@@ -48,42 +50,46 @@ export const styles = css`
     line-height: ${lineHeightBase300};
   }
 
+  ::slotted([slot='icon']) {
+    display: none;
+  }
+
   svg {
     width: var(--icon-size);
     height: var(--icon-size);
-    fill: ${colorPaletteMarigoldBackground3};
+    fill: var(--icon-color-filled);
     margin-inline-end: ${spacingHorizontalXXS};
   }
 
-  svg:nth-child(even) {
+  svg:nth-child(odd) {
     clip-path: inset(0 50% 0 0);
     margin-inline-end: calc(0px - var(--icon-size));
   }
 
   :host(${neutralState}) svg {
-    fill: ${colorNeutralForeground1};
+    --icon-color-filled: ${colorNeutralForeground1};
   }
 
   :host(${brandState}) svg {
-    fill: ${colorBrandBackground};
+    --icon-color-filled: ${colorBrandBackground};
   }
 
   :host(:is([value^='-'], [value='0'])) svg,
   :host(:not([value])) svg,
   svg[selected] ~ svg {
-    fill: ${colorPaletteMarigoldBackground2};
+    fill: var(--icon-color-empty);
   }
 
   :host(${neutralState}:is([value^='-'], [value='0'])) svg,
   :host(${neutralState}:not([value])) svg,
   :host(${neutralState}) svg[selected] ~ svg {
-    fill: ${colorNeutralBackground1Pressed};
+    --icon-color-empty: ${colorNeutralBackground1Pressed};
   }
 
   :host(${brandState}:is([value^='-'], [value='0'])) svg,
   :host(${brandState}:not([value])) svg,
   :host(${brandState}) svg[selected] ~ svg {
-    fill: ${colorBrandStroke2};
+    --icon-color-empty: ${colorBrandStroke2};
   }
 
   .value-label,
