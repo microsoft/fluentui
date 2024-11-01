@@ -1,23 +1,22 @@
 {
-  "name": "@fluentui/web-components",
-  "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.72",
+  "name": "@fluentui/chart-web-components",
+  "description": "A library of Fluent Chart Web Components",
+  "version": "0.0.0-alpha.1",
   "author": {
-    "name": "Microsoft",
-    "url": "https://discord.gg/FcSNfg4"
+    "name": "Microsoft"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/microsoft/fluentui/tree/master/packages/web-components"
+    "url": "https://github.com/microsoft/fluentui/tree/master/packages/charts/chart-web-components"
   },
   "bugs": {
     "url": "https://github.com/Microsoft/fluentui/issues/new/choose"
   },
   "type": "module",
   "main": "dist/esm/index.js",
-  "types": "dist/web-components.d.ts",
-  "unpkg": "dist/web-components.min.js",
+  "types": "dist/chart-web-components.d.ts",
+  "unpkg": "dist/chart-web-components.min.js",
   "files": [
     "*.md",
     "dist/dts/",
@@ -66,8 +65,8 @@
   },
   "sideEffects": [
     "./dist/esm/**/define.js",
-    "./dist/web-components.js",
-    "./dist/web-components.min.js"
+    "./dist/chart-web-components.js",
+    "./dist/chart-web-components.min.js"
   ],
   "scripts": {
     "verify-packaging": "node ./scripts/verify-packaging",
@@ -99,6 +98,11 @@
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "1.0.0-alpha.18",
+    "@fluentui/web-components": "3.0.0-beta.72",
+    "@types/d3-selection": "^3.0.0",
+    "@types/d3-shape": "^3.0.0",
+    "d3-selection": "^3.0.0",
+    "d3-shape": "^3.0.0",
     "tabbable": "^6.2.0",
     "tslib": "^2.1.0"
   },

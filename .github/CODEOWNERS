@@ -134,6 +134,7 @@ apps/react-18-tests-v9 @microsoft/fluentui-react-build
 packages/azure-themes @Jacqueline-ms @robtaft-ms
 packages/react-conformance @microsoft/fluentui-react-build
 packages/charts/react-charting @microsoft/charting-team
+packages/charts/chart-web-components @microsoft/charting-team
 packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
 packages/foundation-legacy @microsoft/cxe-red @khmakoto
