@@ -21,6 +21,9 @@ jobs:
     outputs:
       pr_number: ${{ steps.pr_number.outputs.id }}
       website_url: ${{ steps.website_url.outputs.id }}
+    permissions:
+      id-token: write
+
     steps:
       - name: Download WebSite artifacts
         uses: actions/download-artifact@v4
