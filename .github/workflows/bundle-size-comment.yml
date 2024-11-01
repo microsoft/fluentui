@@ -28,5 +28,6 @@ jobs:
       - name: 'Comment on PR'
         uses: marocchino/sticky-pull-request-comment@v2
         with:
+          header: bundle-size-report
           number: ${{ steps.pr_number.outputs.id }}
           path: ./results/monosize-report.md

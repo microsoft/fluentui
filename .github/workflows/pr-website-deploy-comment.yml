@@ -78,9 +78,12 @@ jobs:
     permissions:
       pull-requests: write
     steps:
+      - uses: actions/checkout@v4
+
       - name: 'Comment on PR'
         uses: marocchino/sticky-pull-request-comment@v2
         with:
+          header: deploy-pr-site
           number: ${{ needs.deploy.outputs.pr_number }}
           message: |
             Pull request demo site: [URL](${{needs.deploy.outputs.website_url}})
