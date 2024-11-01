@@ -17,7 +17,7 @@ jobs:
         with:
           name: monosize-report
           path: ./results
-          run_id: ${{ github.event.workflow_run.id }}
+          run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Load PR number
