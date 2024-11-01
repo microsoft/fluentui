@@ -12,7 +12,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
   archive: {
     extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z'],
   },
-  album: {},
+  album: {
+    types: [FileIconType.album],
+  },
   audio: {
     extensions: [
       'aif',
