@@ -42,12 +42,12 @@ jobs:
 
       - name: Load PR number
         id: pr_number
-        run: echo "::set-output name=id::$(cat pr.txt)"
+        run: echo "id=$(cat pr.txt)" >> $GITHUB_OUTPUT
         working-directory: ./results
 
       - name: Load WEBSITE URL
         id: website_url
-        run: echo "::set-output name=id::${{env.DEPLOY_HOST_URL}}pull/${{steps.pr_number.outputs.id}}"
+        run: echo "id=${{env.DEPLOY_HOST_URL}}pull/${{steps.pr_number.outputs.id}}"
 
       - name: Login via Azure CLI
         uses: azure/login@v2
@@ -86,7 +86,6 @@ jobs:
             Pull request demo site: [URL](${{needs.deploy.outputs.website_url}})
 
       - name: Update PR deploy site GitHub status
-        if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
           script: |

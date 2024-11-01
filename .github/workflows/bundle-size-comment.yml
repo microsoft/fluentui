@@ -22,7 +22,7 @@ jobs:
 
       - name: Load PR number
         id: pr_number
-        run: echo "::set-output name=id::$(cat pr.txt)"
+        run: echo "id=$(cat pr.txt)" >> $GITHUB_OUTPUT
         working-directory: ./results
 
       - name: 'Comment on PR'
