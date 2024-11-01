@@ -16,7 +16,8 @@ const workersConfig = { maxWorkers: process.env.FLUENT_JEST_WORKER || '50%' };
 
 exports.workersConfig = workersConfig;
 
-// eslint-disable-next-line no-unused-vars -- this will be used after gha testing
+// @ts-expect-error -- unused var
+// eslint-disable-next-line no-unused-vars
 function isCI() {
   return (
     (process.env.CI && process.env.CI !== 'false') ||
