@@ -78,6 +78,8 @@ jobs:
     permissions:
       pull-requests: write
     steps:
+      - uses: actions/checkout@v4
+
       - name: 'Comment on PR'
         uses: marocchino/sticky-pull-request-comment@v2
         with:
