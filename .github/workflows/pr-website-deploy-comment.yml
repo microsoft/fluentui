@@ -47,7 +47,7 @@ jobs:
 
       - name: Load WEBSITE URL
         id: website_url
-        run: echo "id=${{env.DEPLOY_HOST_URL}}pull/${{steps.pr_number.outputs.id}}/"  >> $GITHUB_OUTPUT
+        run: echo "id=${{env.DEPLOY_HOST_URL}}pull/${{steps.pr_number.outputs.id}}/" >> $GITHUB_OUTPUT
 
       - name: Login via Azure CLI
         uses: azure/login@v2
