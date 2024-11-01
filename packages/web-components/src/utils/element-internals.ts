@@ -46,7 +46,11 @@ export function stateSelector<S extends string>(state: S): StateSelector<S> {
  * @param force - force the state to be toggled on or off
  * @internal
  */
-export function toggleState(elementInternals: ElementInternals, state: string, force?: boolean): void {
+export function toggleState(elementInternals: ElementInternals, state: string | undefined, force?: boolean): void {
+  if (!state) {
+    return;
+  }
+
   if (!CustomStatesSetSupported) {
     elementInternals.shadowRoot!.host.toggleAttribute(`state--${state}`, force);
     return;
@@ -59,4 +63,58 @@ export function toggleState(elementInternals: ElementInternals, state: string, f
   }
   // @ts-expect-error - Baseline 2024
   elementInternals.states.delete(state);
+}
+
+/**
+ * A weak map to store the valid states for attributes.
+ * @internal
+ */
+const matchingStateMap = new WeakMap<Record<string, string>, Set<string>>();
+
+/**
+ * Check if a given attribute value is a valid state. Attribute values are often kebab-cased, so this function converts
+ * the kebab-cased `state` to camelCase and checks if it exists in as a key in the `States` object.
+ *
+ * @param States  - the object containing valid states for the attribute
+ * @param state - the state to check
+ * @returns true if the state is in the States object
+ * @internal
+ */
+export function hasMatchingState(States: Record<string, string> | undefined, state: string | undefined): boolean {
+  if (!States || !state) {
+    return false;
+  }
+
+  if (matchingStateMap.has(States)) {
+    return matchingStateMap.get(States)!.has(state);
+  }
+
+  const stateSet = new Set(Object.values(States));
+  matchingStateMap.set(States, stateSet);
+  return stateSet.has(state);
+}
+
+/**
+ * Swap an old state for a new state.
+ *
+ * @param elementInternals - the `ElementInternals` instance for the component
+ * @param prev - the previous state to remove
+ * @param next - the new state to add
+ * @param States - the object containing valid states for the attribute
+ * @param prefix - an optional prefix to add to the state
+ *
+ * @internal
+ */
+export function swapStates(
+  elementInternals: ElementInternals,
+  prev: string | undefined = '',
+  next: string | undefined = '',
+  States?: Record<string, string>,
+  prefix: string = '',
+): void {
+  toggleState(elementInternals, `${prefix}${prev}`, false);
+
+  if (!States || hasMatchingState(States, next)) {
+    toggleState(elementInternals, `${prefix}${next}`, true);
+  }
 }

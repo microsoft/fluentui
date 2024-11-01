@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 30 Oct 2024 04:06:53 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.72",
+      "version": "3.0.0-beta.72",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "36474e58a4a9721954c6badad419c9e93df1fc6f",
+            "comment": "add swapStates function for attribute-driven internal states"
+          }
+        ],
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "8614d041a6a8b329099c40009cff9c9ae63aceac",
+            "comment": "identify type-only imports and exports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 29 Oct 2024 04:06:49 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.71",
       "version": "3.0.0-beta.71",

@@ -19,6 +19,12 @@ export const CollapseDelayed: PresenceComponent<CollapseRuntimeParams>;
 export const CollapseExaggerated: PresenceComponent<CollapseRuntimeParams>;
 
 // @public (undocumented)
+export type CollapseRuntimeParams = {
+    animateOpacity?: boolean;
+    orientation?: CollapseOrientation;
+};
+
+// @public (undocumented)
 export const CollapseSnappy: PresenceComponent<CollapseRuntimeParams>;
 
 // @public

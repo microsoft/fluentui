@@ -91,6 +91,7 @@ test.describe('Anchor Button', () => {
     expect(page.url()).toContain(expectedUrl);
   });
 
+  // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
   test('should navigate to the provided url when clicked while pressing the `Control` key on Windows or Meta on Mac', async ({
     page,
     context,
@@ -125,6 +126,7 @@ test.describe('Anchor Button', () => {
     expect(page.url()).toContain(expectedUrl);
   });
 
+  // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
   test('should navigate to the provided url when `ctrl` and `Enter` are pressed via keyboard', async ({
     page,
     context,
