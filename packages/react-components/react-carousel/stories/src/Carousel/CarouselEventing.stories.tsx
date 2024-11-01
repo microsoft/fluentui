@@ -7,6 +7,7 @@ import {
   Title1,
   Subtitle2,
   useId,
+  CarouselSlider,
 } from '@fluentui/react-components';
 import {
   Carousel,
@@ -15,7 +16,7 @@ import {
   CarouselNav,
   CarouselNavButton,
   CarouselNavContainer,
-  CarouselSlider,
+  CarouselViewport,
   Text,
 } from '@fluentui/react-components';
 import * as React from 'react';
@@ -52,6 +53,7 @@ const useClasses = makeStyles({
     border: `2px solid ${tokens.colorBrandBackground}`,
     borderRadius: `${tokens.borderRadiusMedium} 0 ${tokens.borderRadiusMedium} ${tokens.borderRadiusMedium}`,
     padding: '12px',
+    maxHeight: '250px',
   },
   logContainer: {
     display: 'flex',
@@ -154,52 +156,54 @@ export const Eventing = () => {
           setStatusLog(prev => [[Date.now(), { type: data.type, index: data.index }], ...prev]);
         }}
       >
-        <CarouselSlider cardFocus>
-          <CarouselCard className={classes.card} autoSize aria-label="1 of 7">
-            <WireframeContent appearance="odd">
-              <Title1 align="center">Lorem Ipsum</Title1>
-              <Body1 align="center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...
-              </Body1>
-            </WireframeContent>
-          </CarouselCard>
-          <CarouselCard className={classes.card} autoSize aria-label="2 of 7">
-            <WireframeContent appearance="even" size="small">
-              <Subtitle2 align="center">Lorem Ipsum</Subtitle2>
-              <Caption1 align="center">Lorem ipsum...</Caption1>
-            </WireframeContent>
-          </CarouselCard>
-          <CarouselCard className={classes.card} autoSize aria-label="3 of 7">
-            <WireframeContent appearance="odd" size="medium">
-              <Title1 align="center">Lorem Ipsum</Title1>
-              <Caption1 align="center">Lorem ipsum dolor sit amet...</Caption1>
-            </WireframeContent>
-          </CarouselCard>
-          <CarouselCard className={classes.card} autoSize aria-label="4 of 7">
-            <WireframeContent appearance="even" size="large">
-              <Title1 align="center">Lorem Ipsum</Title1>
-              <Body1 align="center">Lorem ipsum dolor sit amet...</Body1>
-            </WireframeContent>
-          </CarouselCard>
-          <CarouselCard className={classes.card} autoSize aria-label="5 of 7">
-            <WireframeContent appearance="odd" size="medium">
-              <Title1 align="center">Lorem Ipsum</Title1>
-              <Caption1 align="center">Lorem ipsum dolor sit amet...</Caption1>
-            </WireframeContent>
-          </CarouselCard>
-          <CarouselCard className={classes.card} autoSize aria-label="6 of 7">
-            <WireframeContent appearance="even" size="large">
-              <Title1 align="center">Lorem Ipsum</Title1>
-              <Body1 align="center">Lorem ipsum dolor sit amet...</Body1>
-            </WireframeContent>
-          </CarouselCard>
-          <CarouselCard className={classes.card} autoSize aria-label="7 of 7">
-            <WireframeContent appearance="odd" size="small">
-              <Subtitle2 align="center">Lorem Ipsum</Subtitle2>
-              <Caption1 align="center">Lorem ipsum...</Caption1>
-            </WireframeContent>
-          </CarouselCard>
-        </CarouselSlider>
+        <CarouselViewport>
+          <CarouselSlider cardFocus>
+            <CarouselCard className={classes.card} autoSize aria-label="1 of 7">
+              <WireframeContent appearance="odd">
+                <Title1 align="center">Lorem Ipsum</Title1>
+                <Body1 align="center">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...
+                </Body1>
+              </WireframeContent>
+            </CarouselCard>
+            <CarouselCard className={classes.card} autoSize aria-label="2 of 7">
+              <WireframeContent appearance="even" size="small">
+                <Subtitle2 align="center">Lorem Ipsum</Subtitle2>
+                <Caption1 align="center">Lorem ipsum...</Caption1>
+              </WireframeContent>
+            </CarouselCard>
+            <CarouselCard className={classes.card} autoSize aria-label="3 of 7">
+              <WireframeContent appearance="odd" size="medium">
+                <Title1 align="center">Lorem Ipsum</Title1>
+                <Caption1 align="center">Lorem ipsum dolor sit amet...</Caption1>
+              </WireframeContent>
+            </CarouselCard>
+            <CarouselCard className={classes.card} autoSize aria-label="4 of 7">
+              <WireframeContent appearance="even" size="large">
+                <Title1 align="center">Lorem Ipsum</Title1>
+                <Body1 align="center">Lorem ipsum dolor sit amet...</Body1>
+              </WireframeContent>
+            </CarouselCard>
+            <CarouselCard className={classes.card} autoSize aria-label="5 of 7">
+              <WireframeContent appearance="odd" size="medium">
+                <Title1 align="center">Lorem Ipsum</Title1>
+                <Caption1 align="center">Lorem ipsum dolor sit amet...</Caption1>
+              </WireframeContent>
+            </CarouselCard>
+            <CarouselCard className={classes.card} autoSize aria-label="6 of 7">
+              <WireframeContent appearance="even" size="large">
+                <Title1 align="center">Lorem Ipsum</Title1>
+                <Body1 align="center">Lorem ipsum dolor sit amet...</Body1>
+              </WireframeContent>
+            </CarouselCard>
+            <CarouselCard className={classes.card} autoSize aria-label="7 of 7">
+              <WireframeContent appearance="odd" size="small">
+                <Subtitle2 align="center">Lorem Ipsum</Subtitle2>
+                <Caption1 align="center">Lorem ipsum...</Caption1>
+              </WireframeContent>
+            </CarouselCard>
+          </CarouselSlider>
+        </CarouselViewport>
 
         <CarouselNavContainer
           layout="inline"

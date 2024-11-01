@@ -66,7 +66,7 @@ export const useCarouselCard_unstable = (
     }
   }, [cardFocus]);
 
-  const handleFocusCapture = React.useCallback(
+  const handleFocus = React.useCallback(
     (e: React.FocusEvent) => {
       if (!e.defaultPrevented && isHTMLElement(e.currentTarget) && !isMouseEvent.current) {
         // We want to prevent any browser scroll intervention for 'offscreen' focus
@@ -88,7 +88,7 @@ export const useCarouselCard_unstable = (
     }
   };
 
-  const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocusCapture);
+  const onFocus = mergeCallbacks(props.onFocus, handleFocus);
   const onMouseUp = mergeCallbacks(props.onMouseUp, handleMouseUp);
   const onMouseDown = mergeCallbacks(props.onMouseDown, handleMouseDown);
   const state: CarouselCardState = {
@@ -103,7 +103,7 @@ export const useCarouselCard_unstable = (
         tabIndex: cardFocus ? 0 : undefined,
         ...props,
         id,
-        onFocusCapture,
+        onFocus,
         onMouseDown,
         onMouseUp,
         ...focusAttrProps,

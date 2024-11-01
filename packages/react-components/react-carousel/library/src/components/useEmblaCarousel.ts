@@ -95,9 +95,6 @@ export function useEmblaCarousel(
         stopOnInteraction: !autoplayRef.current,
         stopOnMouseEnter: true,
         stopOnFocusIn: true,
-        rootNode: (emblaRoot: HTMLElement) => {
-          return emblaRoot.querySelector(sliderClassname) ?? emblaRoot;
-        },
       }),
     ];
 
@@ -127,6 +124,7 @@ export function useEmblaCarousel(
     };
   }, []);
 
+  const viewportRef: React.RefObject<HTMLDivElement> = React.useRef(null);
   const containerRef: React.RefObject<HTMLDivElement> = React.useMemo(() => {
     let currentElement: HTMLDivElement | null = null;
 
@@ -182,10 +180,12 @@ export function useEmblaCarousel(
           emblaApi.current?.destroy();
         }
 
-        if (newElement) {
-          currentElement = newElement;
+        // Use direct viewport if available, else fallback to container (includes Carousel controls).
+        const wrapperElement = viewportRef.current ?? newElement;
+        if (wrapperElement) {
+          currentElement = wrapperElement;
           emblaApi.current = EmblaCarousel(
-            newElement,
+            wrapperElement,
             {
               ...DEFAULT_EMBLA_OPTIONS,
               ...emblaOptions.current,
@@ -264,6 +264,7 @@ export function useEmblaCarousel(
   return {
     activeIndex,
     carouselApi,
+    viewportRef,
     containerRef,
     subscribeForValues,
     enableAutoplay,

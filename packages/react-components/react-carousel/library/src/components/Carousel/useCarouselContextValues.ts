@@ -14,6 +14,7 @@ export function useCarouselContextValues_unstable(state: CarouselState): Carouse
     resetAutoplay,
     circular,
     containerRef,
+    viewportRef,
   } = state;
 
   const carousel = React.useMemo(
@@ -27,6 +28,7 @@ export function useCarouselContextValues_unstable(state: CarouselState): Carouse
       resetAutoplay,
       circular,
       containerRef,
+      viewportRef,
     }),
     [
       activeIndex,
@@ -38,6 +40,7 @@ export function useCarouselContextValues_unstable(state: CarouselState): Carouse
       resetAutoplay,
       circular,
       containerRef,
+      viewportRef,
     ],
   );
 
