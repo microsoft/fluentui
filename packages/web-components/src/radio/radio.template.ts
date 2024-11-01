@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html } from '@microsoft/fast-element';
 import { staticallyCompose } from '../utils/index.js';
 import type { Radio } from './radio.js';
 import type { RadioOptions } from './radio.options.js';

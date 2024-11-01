@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import { DialogType } from '../dialog/dialog.options.js';
 
 const dismissed16Regular = html.partial(`

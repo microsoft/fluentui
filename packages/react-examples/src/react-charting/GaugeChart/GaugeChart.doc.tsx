@@ -13,7 +13,8 @@ const GaugeChartSingleSegmentExampleCode =
 export const GaugeChartPageProps: IDocPageProps = {
   title: 'GaugeChart',
   componentName: 'GaugeChart',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/GaugeChart',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/GaugeChart',
   examples: [
     {
       title: 'GaugeChart basic',

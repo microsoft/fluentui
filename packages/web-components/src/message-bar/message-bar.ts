@@ -1,5 +1,5 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { swapStates } from '../utils/element-internals.js';
 import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-bar.options.js';
 
 /**
@@ -39,12 +39,7 @@ export class MessageBar extends FASTElement {
    * @param next - the next state
    */
   public shapeChanged(prev: MessageBarShape | undefined, next: MessageBarShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
+    swapStates(this.elementInternals, prev, next, MessageBarShape);
   }
 
   /**
@@ -63,12 +58,7 @@ export class MessageBar extends FASTElement {
    * @param next - the next state
    */
   public layoutChanged(prev: MessageBarLayout | undefined, next: MessageBarLayout | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
+    swapStates(this.elementInternals, prev, next, MessageBarLayout);
   }
 
   /**
@@ -87,12 +77,7 @@ export class MessageBar extends FASTElement {
    * @param next - the next state
    */
   public intentChanged(prev: MessageBarIntent | undefined, next: MessageBarIntent | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
+    swapStates(this.elementInternals, prev, next, MessageBarIntent);
   }
 
   /**

@@ -26,4 +26,5 @@ export enum FileIconType {
   planner,
   todoItem,
   portfolio,
+  album,
 }

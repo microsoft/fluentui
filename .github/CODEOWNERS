@@ -133,6 +133,7 @@ apps/react-18-tests-v9 @microsoft/fluentui-react-build
 #### Packages
 packages/azure-themes @Jacqueline-ms @robtaft-ms
 packages/react-conformance @microsoft/fluentui-react-build
+packages/charts/react-charting @microsoft/charting-team
 packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
 packages/foundation-legacy @microsoft/cxe-red @khmakoto
@@ -147,7 +148,6 @@ packages/react-components/react-aria @microsoft/teams-prg
 packages/react-components/react-aria/library @microsoft/teams-prg
 packages/react-components/react-aria/stories @microsoft/teams-prg
 packages/react-cards @microsoft/cxe-red @khmakoto
-packages/react-charting @microsoft/charting-team
 packages/react-components/react-conformance-griffel @microsoft/teams-prg
 packages/react-components/react-context-selector @microsoft/teams-prg
 packages/react-date-time @microsoft/cxe-red
@@ -374,8 +374,6 @@ packages/react-components/react-utilities-compat/library @microsoft/cxe-prg
 packages/react-components/react-utilities-compat/stories @microsoft/cxe-prg
 packages/react-components/react-color-picker-preview/library @microsoft/cxe-prg
 packages/react-components/react-color-picker-preview/stories @microsoft/cxe-prg
-packages/react-components/react-keytips-preview/library @microsoft/cxe-prg
-packages/react-components/react-keytips-preview/stories @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components

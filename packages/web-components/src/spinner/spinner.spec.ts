@@ -10,7 +10,7 @@ test.describe('Spinner', () => {
     await page.waitForFunction(() => customElements.whenDefined('fluent-spinner'));
   });
 
-  for (const thisAppearance in SpinnerAppearance) {
+  for (const thisAppearance of Object.values(SpinnerAppearance)) {
     test(`should set and retrieve the \`appearance\` property correctly to ${thisAppearance}`, async ({ page }) => {
       const element = page.locator('fluent-spinner');
 
@@ -21,7 +21,7 @@ test.describe('Spinner', () => {
       await expect(element).toHaveJSProperty('appearance', thisAppearance);
 
       await test.step('should add a custom state matching the `appearance` attribute when provided', async () => {
-        for (const appearance in SpinnerAppearance) {
+        for (const appearance of Object.values(SpinnerAppearance)) {
           // eslint-disable-next-line playwright/no-conditional-in-test
           if (appearance === thisAppearance) {
             await expect(element).toHaveCustomState(appearance);
@@ -33,7 +33,7 @@ test.describe('Spinner', () => {
     });
   }
 
-  for (const thisSize in SpinnerSize) {
+  for (const thisSize of Object.values(SpinnerSize)) {
     test(`should set and retrieve the \`size\` property correctly to ${thisSize}`, async ({ page }) => {
       const element = page.locator('fluent-spinner');
 
@@ -44,7 +44,7 @@ test.describe('Spinner', () => {
       await expect(element).toHaveJSProperty('size', thisSize);
 
       await test.step('should add a custom state matching the `appearance` attribute when provided', async () => {
-        for (const size in SpinnerSize) {
+        for (const size of Object.values(SpinnerSize)) {
           // eslint-disable-next-line playwright/no-conditional-in-test
           if (size === thisSize) {
             await expect(element).toHaveCustomState(size);
