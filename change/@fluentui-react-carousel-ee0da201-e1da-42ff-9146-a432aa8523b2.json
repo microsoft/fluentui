@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add CarouselViewport to correctly define CarouselSlider within a static container",
+  "packageName": "@fluentui/react-carousel",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

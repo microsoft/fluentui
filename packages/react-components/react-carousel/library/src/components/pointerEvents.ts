@@ -34,6 +34,7 @@ export function pointerEventPlugin(options: PointerEventPluginOptions): PointerE
 
   function clearPointerEvent() {
     pointerEvent = undefined;
+    pointerUpListener();
   }
 
   function selectListener() {
@@ -41,8 +42,8 @@ export function pointerEventPlugin(options: PointerEventPluginOptions): PointerE
       const newIndex = emblaApi.selectedScrollSnap() ?? 0;
 
       options.onSelectViaDrag(pointerEvent, newIndex);
-      clearPointerEvent();
     }
+    clearPointerEvent();
   }
 
   function init(emblaApiInstance: EmblaCarouselType, optionsHandler: OptionsHandlerType): void {
