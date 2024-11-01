@@ -27,6 +27,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     scrollViewRef,
     enableScrollLoad,
     updateScrollPosition,
+    gap,
   } = props;
 
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
@@ -87,7 +88,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     }
 
     for (let index = 0; index < numItems; index++) {
-      childSizes.current[index] = getItemSize(index);
+      const _gap = index < numItems - 1 ? gap : 0;
+      childSizes.current[index] = getItemSize(index) + _gap;
       if (index === 0) {
         childProgressiveSizes.current[index] = childSizes.current[index];
       } else {
@@ -163,7 +165,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
       let didUpdate = false;
       for (let i = startIndex; i < endIndex; i++) {
-        const newSize = getItemSize(i);
+        const _gap = i < numItems - 1 ? gap : 0;
+        const newSize = getItemSize(i) + _gap;
         if (newSize !== childSizes.current[i]) {
           childSizes.current[i] = newSize;
           didUpdate = true;
@@ -178,7 +181,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         }
       }
     },
-    [getItemSize, numItems, virtualizerLength],
+    [getItemSize, numItems, virtualizerLength, gap],
   );
 
   const batchUpdateNewIndex = useCallback(
@@ -244,12 +247,12 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   const getIndexFromScrollPosition = useCallback(
     (scrollPos: number) => {
       if (!getItemSize) {
-        return Math.round(scrollPos / itemSize);
+        return Math.round(scrollPos / (itemSize + gap));
       }
 
       return getIndexFromSizeArray(scrollPos);
     },
-    [getIndexFromSizeArray, getItemSize, itemSize],
+    [getIndexFromSizeArray, getItemSize, itemSize, gap],
   );
 
   const calculateTotalSize = useCallback(() => {
@@ -533,7 +536,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     // We only run this effect on getItemSize change (recalc dynamic sizes)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getItemSize]);
+  }, [getItemSize, gap]);
 
   // Effect to check flag index on updates
   useEffect(() => {
