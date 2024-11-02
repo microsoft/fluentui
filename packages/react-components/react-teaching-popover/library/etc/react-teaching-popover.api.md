@@ -273,7 +273,7 @@ export type TeachingPopoverHeaderProps = ComponentProps<TeachingPopoverHeaderSlo
 
 // @public (undocumented)
 export type TeachingPopoverHeaderSlots = {
-    root: Slot<'h3', 'h1' | 'h2' | 'h4' | 'h5' | 'h6' | 'div'>;
+    root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
     dismissButton?: Slot<'button'>;
     icon?: Slot<'div'>;
 };
