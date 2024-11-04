@@ -5,10 +5,13 @@ import { PackageJson, TsConfig } from '../../../types';
 import { getProjectConfig } from '../../../utils';
 import { uniqueArray } from './utils';
 
-type Options = ReturnType<typeof getProjectConfig>;
+type Options = ReturnType<typeof getProjectConfig> & { rootOffset: string };
 
 export function addFiles(tree: Tree, options: Options) {
-  generateFiles(tree, joinPathFragments(__dirname, '../files'), options.projectConfig.root, { tmpl: '' });
+  generateFiles(tree, joinPathFragments(__dirname, '../files'), options.projectConfig.root, {
+    tmpl: '',
+    options,
+  });
 
   updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
     json.references?.push({
