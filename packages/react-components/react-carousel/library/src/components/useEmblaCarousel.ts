@@ -136,7 +136,6 @@ export function useEmblaCarousel(
       slideNodes: nodes,
     };
 
-    console.log('activeIndex:', activeIndex);
     emblaApi.current?.scrollTo(activeIndex, false);
     for (const listener of listeners.current) {
       listener(data);
@@ -203,7 +202,7 @@ export function useEmblaCarousel(
         }
       },
     };
-  }, [getPlugins, setActiveIndex]);
+  }, [getPlugins, setActiveIndex, handleReinit]);
 
   const carouselApi = React.useMemo(
     () => ({
