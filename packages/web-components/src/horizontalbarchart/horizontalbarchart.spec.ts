@@ -128,3 +128,22 @@ test.describe('horizontalbarchart - Basic', () => {
     await expect(tooltip.nth(1).locator('div').first()).toHaveText('Passport numbers (USA) 23');
   });
 });
+
+test.describe('horizontalbarchart - RTL', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(fixtureURL('components-horizontalbarchart--basic'));
+    await page.waitForFunction(() => customElements.whenDefined('fluent-horizontalbarchart'));
+  });
+
+  test('Should render chart properly in RTL mode', async ({ page }) => {
+    const element = page.locator('fluent-horizontalbarchart');
+    await page.setContent(/* html */ `
+      <div dir="rtl">
+        <div>
+             <fluent-horizontalbarchart _isrtl="true" data="[{&quot;chartTitle&quot;:&quot;Monitored First&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Debit card numbers (EU and USA)&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#0099BC&quot;},{&quot;legend&quot;:&quot;Passport numbers (USA)&quot;,&quot;data&quot;:23,&quot;color&quot;:&quot;#77004D&quot;},{&quot;legend&quot;:&quot;Social security numbers&quot;,&quot;data&quot;:35,&quot;color&quot;:&quot;#4F68ED&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#AE8C00&quot;},{&quot;legend&quot;:&quot;Tax identification numbers (USA)&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#004E8C&quot;}]},{&quot;chartTitle&quot;:&quot;Monitored Second&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Debit card numbers (EU and USA)&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#0099BC&quot;},{&quot;legend&quot;:&quot;Passport numbers (USA)&quot;,&quot;data&quot;:56,&quot;color&quot;:&quot;#77004D&quot;},{&quot;legend&quot;:&quot;Social security numbers&quot;,&quot;data&quot;:35,&quot;color&quot;:&quot;#4F68ED&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:92,&quot;color&quot;:&quot;#AE8C00&quot;},{&quot;legend&quot;:&quot;Tax identification numbers (USA)&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#004E8C&quot;}]},{&quot;chartTitle&quot;:&quot;Unmonitored&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Phone Numbers&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#881798&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:23,&quot;color&quot;:&quot;#AE8C00&quot;}]}]"> </fluent-horizontalbarchart>
+        </div>
+      </div>
+    `);
+    await expect(element).toHaveScreenshot();
+  });
+});

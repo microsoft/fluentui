@@ -1,5 +1,9 @@
 import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
+import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
+import { setTheme } from '../theme/set-theme.js';
+
+
 test.describe('Donut-chart - Basic', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(fixtureURL('components-donutchart--basic'));
@@ -9,10 +13,14 @@ test.describe('Donut-chart - Basic', () => {
 
   test('Should render chart properly', async ({ page }) => {
     const element = page.locator('fluent-donut-chart');
-    //chart attributes
-    await expect(element.getByRole('button', { name: 'First' })).toBeVisible();
-    await expect(element.getByRole('button', { name: 'Second' })).toBeVisible();
-    await expect(page.getByText('35,000')).toBeVisible();
+    const legends = element.locator('.legendText');
+    await page.setContent(/* html */ `
+      <fluent-donut-chart value-inside-donut="39,000" inner-radius="55" data="{&quot;chartTitle&quot;:&quot;Donut chart basic example&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;first&quot;,&quot;data&quot;:20000},{&quot;legend&quot;:&quot;second&quot;,&quot;data&quot;:39000}]}">
+  </fluent-donut-chart>
+    `);
+    await expect(legends.nth(0).getByText('first')).toBeVisible();
+    await expect(legends.nth(1).getByText('second')).toBeVisible();
+    await expect(element.getByText('39,000')).toBeVisible();
   });
 
   test('Should render path with proper attributes and css', async ({ page }) => {
@@ -109,3 +117,21 @@ test.describe('Donut-chart - Basic', () => {
     await expect(calloutContentY).toHaveText('39000');
   });
 })
+
+test.describe('Donut-chart - RTL', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(fixtureURL('components-donutchart--basic'));
+    await page.waitForFunction(() => customElements.whenDefined('fluent-donut-chart'));
+  });
+
+  test('Should render chart properly in RTL mode', async ({ page }) => {
+    const element = page.locator('fluent-donut-chart');
+    await page.setContent(/* html */ `
+      <div dir="rtl">
+          <fluent-donut-chart value-inside-donut="39,000" inner-radius="55" data="{&quot;chartTitle&quot;:&quot;Donut chart basic example&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;first&quot;,&quot;data&quot;:20000},{&quot;legend&quot;:&quot;second&quot;,&quot;data&quot;:39000}]}">
+          </fluent-donut-chart>
+      </div>
+    `);
+    await expect(element).toHaveScreenshot();
+  });
+});
