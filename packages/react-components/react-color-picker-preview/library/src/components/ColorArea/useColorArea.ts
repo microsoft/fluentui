@@ -5,7 +5,9 @@ import { colorAreaCSSVars } from './useColorAreaStyles.styles';
 import { clamp, useEventCallback, useControllableState } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { tinycolor } from '@ctrl/tinycolor';
+import { useFocusWithin } from '@fluentui/react-tabster';
 import { MIN, MAX, INITIAL_COLOR } from '../../utils/constants';
+import { getCoordinates } from '../../utils/getCoordinates';
 
 const INITIAL_COLOR_HSV = tinycolor(INITIAL_COLOR).toHsv();
 
@@ -20,10 +22,10 @@ const INITIAL_COLOR_HSV = tinycolor(INITIAL_COLOR).toHsv();
  */
 export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLDivElement>): ColorAreaState => {
   const { targetDocument } = useFluent();
-  const targetWindow = targetDocument?.defaultView!;
   const rootRef = React.useRef<HTMLDivElement>(null);
   const xRef = React.useRef<HTMLInputElement>(null);
   const yRef = React.useRef<HTMLInputElement>(null);
+  const focusWithinRef = useFocusWithin();
 
   const {
     onChange,
@@ -35,60 +37,28 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     ...rest
   } = props;
 
-  const hsvColor = React.useMemo(() => props.color || undefined, [props.color]);
-  const defaultHsv = React.useMemo(() => props.defaultColor || undefined, [props.defaultColor]);
   const [color, setColor] = useControllableState<HsvColor>({
-    defaultState: defaultHsv,
-    state: hsvColor,
+    defaultState: props.defaultColor,
+    state: props.color,
     initialState: INITIAL_COLOR_HSV,
   });
 
-  const saturation = color.s < 1 ? color.s * 100 : color.s;
-  const value = color.v < 1 ? color.v * 100 : color.v;
-
-  const coordinates = { x: saturation, y: value };
-
-  function getCoordinates(event: MouseEvent) {
-    const rect = rootRef.current?.getBoundingClientRect();
-    if (!rect) {
-      return coordinates;
-    }
-    const newX = Math.round(((event.clientX - rect.left) / rect.width) * 100);
-    const newY = 100 - Math.round(((event.clientY - rect.top) / rect.height) * 100);
-
-    return {
-      x: clamp(newX, MIN, MAX),
-      y: clamp(newY, MIN, MAX),
-    };
-  }
-
-  const abortController = React.useRef(new AbortController()).current;
-
-  React.useEffect(() => {
-    return () => {
-      abortController.abort();
-    };
-  }, [abortController]);
-
-  const dispatchCustomInputChangeEvent = (newColor: HsvColor) => {
-    const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
-      targetWindow.HTMLInputElement.prototype,
-      'value',
-    )!.set;
-    nativeInputValueSetter?.call(yRef.current!, newColor.v.toString());
-    nativeInputValueSetter?.call(xRef.current!, newColor.s.toString());
-
-    const event = new Event('change', { bubbles: true });
-
-    xRef.current?.dispatchEvent(event);
-    yRef.current?.dispatchEvent(event);
-  };
+  const saturation = Math.round(color.s * 100);
+  const value = Math.round(color.v * 100);
 
   const requestColorChange = useEventCallback((event: MouseEvent) => {
-    const _coordinates = getCoordinates(event);
-    const newColor = { h: color.h, s: _coordinates.x, v: _coordinates.y, a: 1 };
+    if (!rootRef.current) {
+      return;
+    }
+    const coordinates = getCoordinates(rootRef.current, event);
+    const newColor: HsvColor = {
+      ...color,
+      s: coordinates.x,
+      v: coordinates.y,
+    };
 
-    dispatchCustomInputChangeEvent(newColor);
+    setColor(newColor);
+    onChange?.(event, { type: 'change', event, color: newColor });
   });
 
   const handleDocumentMouseMove = React.useCallback(
@@ -107,12 +77,13 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
     requestColorChange(event.nativeEvent);
 
-    targetDocument?.addEventListener('mousemove', handleDocumentMouseMove, { signal: abortController.signal });
-    targetDocument?.addEventListener('mouseup', handleDocumentMouseUp, { once: true, signal: abortController.signal });
+    targetDocument?.addEventListener('mousemove', handleDocumentMouseMove);
+    targetDocument?.addEventListener('mouseup', handleDocumentMouseUp, { once: true });
   });
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
-    const newColor = { h: color.h, s: Number(xRef.current!.value), v: Number(yRef.current?.value), a: 1 };
+    const newColor = { h: color.h, s: Number(xRef.current!.value) / 100, v: Number(yRef.current?.value) / 100, a: 1 };
+
     setColor(newColor);
     onChange?.(event, {
       type: 'change',
@@ -124,18 +95,23 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   const _onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
       event.preventDefault();
-      const newY = event.key === 'ArrowUp' ? clamp(coordinates.y + 1, MIN, MAX) : clamp(coordinates.y - 1, MIN, MAX);
-      const newColor = { h: color.h, s: coordinates.x, v: newY, a: 1 };
 
-      dispatchCustomInputChangeEvent(newColor);
+      const newY = event.key === 'ArrowUp' ? clamp(value + 1, MIN, MAX) : clamp(value - 1, MIN, MAX);
+      const newColor: HsvColor = {
+        ...color,
+        s: color.s,
+        v: newY / 100,
+      };
+      setColor(newColor);
+      onChange?.(event, { type: 'change', event, color: newColor });
     }
   });
 
   const rootVariables = {
-    [colorAreaCSSVars.areaXProgressVar]: `${coordinates.x}%`,
-    [colorAreaCSSVars.areaYProgressVar]: `${coordinates.y}%`,
+    [colorAreaCSSVars.areaXProgressVar]: `${saturation}%`,
+    [colorAreaCSSVars.areaYProgressVar]: `${value}%`,
     [colorAreaCSSVars.thumbColorVar]: 'transparent',
-    [colorAreaCSSVars.mainColorVar]: `hsl(${color.h}, 100%, 50%)` || INITIAL_COLOR,
+    [colorAreaCSSVars.mainColorVar]: `hsl(${color.h}, 100%, 50%)`,
   };
 
   const state: ColorAreaState = {
@@ -166,17 +142,19 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   };
 
   state.root.ref = useMergedRefs(state.root.ref, rootRef);
+  state.thumb.ref = useMergedRefs(state.thumb.ref, focusWithinRef);
+
   state.root.style = {
     ...rootVariables,
     ...state.root.style,
   };
 
   state.root.onMouseDown = useEventCallback(mergeCallbacks(state.root.onMouseDown, _onMouseDown));
-  state.inputX.onChange = _onChange;
-  state.inputY.onChange = _onChange;
-  state.inputX.onKeyDown = _onKeyDown;
-  state.inputX.value = coordinates.x;
-  state.inputY.value = coordinates.y;
+  state.inputX.onChange = useEventCallback(mergeCallbacks(state.inputX.onChange, _onChange));
+  state.inputY.onChange = useEventCallback(mergeCallbacks(state.inputY.onChange, _onChange));
+  state.inputX.onKeyDown = useEventCallback(mergeCallbacks(state.inputX.onKeyDown, _onKeyDown));
+  state.inputX.value = saturation;
+  state.inputY.value = value;
 
   return state;
 };

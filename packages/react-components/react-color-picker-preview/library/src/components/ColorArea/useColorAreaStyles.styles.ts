@@ -1,6 +1,7 @@
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { ColorAreaSlots, ColorAreaState } from './ColorArea.types';
 
 export const colorAreaClassNames: SlotClassNames<ColorAreaSlots> = {
@@ -13,7 +14,6 @@ export const colorAreaClassNames: SlotClassNames<ColorAreaSlots> = {
 export const colorAreaCSSVars = {
   areaXProgressVar: `--fui-AreaX--progress`,
   areaYProgressVar: `--fui-AreaY--progress`,
-  areaStepsPercentVar: `--fui-Area--steps-percent`,
   thumbColorVar: `--fui-Area__thumb--color`,
   mainColorVar: `--fui-Area--main-color`,
 };
@@ -67,6 +67,14 @@ const useThumbStyles = makeStyles({
       border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1}`,
     },
   },
+  focusIndicator: createFocusOutlineStyle({
+    selector: 'focus-within',
+    style: {
+      outlineWidth: tokens.strokeWidthThick,
+      ...shorthands.borderWidth(tokens.strokeWidthThick),
+      outlineRadius: tokens.borderRadiusCircular,
+    },
+  }),
 });
 
 /**
@@ -84,11 +92,6 @@ const useInputStyles = makeStyles({
     margin: '0',
     width: '100%',
     height: '100%',
-    [`:focus-visible ~ .${colorAreaClassNames.thumb}`]: {
-      border: `2px solid ${tokens.colorStrokeFocus2}`,
-      outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
-      borderRadius: tokens.borderRadiusCircular,
-    },
   },
 });
 
@@ -104,7 +107,12 @@ export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaSta
 
   state.root.className = mergeClasses(colorAreaClassNames.root, rootStyles, state.root.className);
 
-  state.thumb.className = mergeClasses(colorAreaClassNames.thumb, thumbStyles.thumb, state.thumb.className);
+  state.thumb.className = mergeClasses(
+    colorAreaClassNames.thumb,
+    thumbStyles.thumb,
+    thumbStyles.focusIndicator,
+    state.thumb.className,
+  );
 
   state.inputX.className = mergeClasses(colorAreaClassNames.inputX, inputStyles.input, state.inputX.className);
 

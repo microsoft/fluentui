@@ -12,9 +12,10 @@ export const renderColorArea_unstable = (state: ColorAreaState) => {
 
   return (
     <state.root>
-      <state.inputX />
-      <state.inputY />
-      <state.thumb />
+      <state.thumb>
+        <state.inputX />
+        <state.inputY />
+      </state.thumb>
     </state.root>
   );
 };
