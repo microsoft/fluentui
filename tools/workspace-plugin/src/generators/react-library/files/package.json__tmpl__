@@ -18,23 +18,11 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "generate-api": "just-scripts generate-api",
-    "lint": "just-scripts lint",
-    "start": "yarn storybook",
-    "storybook": "storybook dev",
-    "test": "jest --passWithNoTests",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
-    "type-check": "tsc -b tsconfig.json"
-  },
   "devDependencies": {
     "@<%= npmScope %>/eslint-plugin": "*",
     "@<%= npmScope %>/react-conformance": "*",
     "@<%= npmScope %>/react-conformance-griffel": "*",
-    "@<%= npmScope %>/scripts-api-extractor": "*",
-    "@<%= npmScope %>/scripts-tasks": "*"
+    "@<%= npmScope %>/scripts-api-extractor": "*"
   },
   "dependencies": {
     "@<%= npmScope %>/react-jsx-runtime": "",

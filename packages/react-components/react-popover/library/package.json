@@ -11,21 +11,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "just-scripts build",
-    "bundle-size": "monosize measure",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "start": "yarn storybook",
-    "e2e": "cypress run --component",
-    "e2e:local": "cypress open --component",
-    "storybook": "yarn --cwd ../stories storybook",
-    "test": "jest --passWithNoTests",
-    "type-check": "just-scripts type-check",
-    "generate-api": "just-scripts generate-api"
-  },
   "devDependencies": {
     "@fluentui/react-provider": "*",
     "@fluentui/react-menu": "*",
@@ -33,8 +18,7 @@
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-cypress": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.7",
