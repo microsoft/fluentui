@@ -100,7 +100,7 @@ export class DonutChart extends FASTElement {
 
       const pathOutline = document.createElementNS(SVG_NAMESPACE_URI, 'path');
       arcGroup.appendChild(pathOutline);
-      pathOutline.classList.add('focusOutline');
+      pathOutline.classList.add('arc-outline');
       pathOutline.setAttribute('d', arc(arcDatum)!);
 
       const path = document.createElementNS(SVG_NAMESPACE_URI, 'path');
@@ -159,7 +159,7 @@ export class DonutChart extends FASTElement {
     if (this.valueInsideDonut) {
       const text = document.createElementNS(SVG_NAMESPACE_URI, 'text');
       this.group.appendChild(text);
-      text.classList.add('insideDonutString');
+      text.classList.add('text-inside-donut');
       text.setAttribute('x', '0');
       text.setAttribute('y', '0');
       text.setAttribute('text-anchor', 'middle');
