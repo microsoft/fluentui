@@ -124,6 +124,25 @@ export function useEmblaCarousel(
     };
   }, []);
 
+  const handleReinit = useEventCallback(() => {
+    const nodes: HTMLElement[] = emblaApi.current?.slideNodes() ?? [];
+    const groupIndexList: number[][] = emblaApi.current?.internalEngine().slideRegistry ?? [];
+    const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
+
+    const data: CarouselUpdateData = {
+      navItemsCount,
+      activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
+      groupIndexList,
+      slideNodes: nodes,
+    };
+
+    console.log('activeIndex:', activeIndex);
+    emblaApi.current?.scrollTo(activeIndex, false);
+    for (const listener of listeners.current) {
+      listener(data);
+    }
+  });
+
   const viewportRef: React.RefObject<HTMLDivElement> = React.useRef(null);
   const containerRef: React.RefObject<HTMLDivElement> = React.useMemo(() => {
     let currentElement: HTMLDivElement | null = null;
@@ -139,22 +158,7 @@ export function useEmblaCarousel(
       });
       setActiveIndex(newIndex);
     };
-    const handleReinit = () => {
-      const nodes: HTMLElement[] = emblaApi.current?.slideNodes() ?? [];
-      const groupIndexList: number[][] = emblaApi.current?.internalEngine().slideRegistry ?? [];
-      const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
 
-      const data: CarouselUpdateData = {
-        navItemsCount,
-        activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
-        groupIndexList,
-        slideNodes: nodes,
-      };
-
-      for (const listener of listeners.current) {
-        listener(data);
-      }
-    };
     const handleVisibilityChange = () => {
       const cardElements = emblaApi.current?.slideNodes();
       const visibleIndexes = emblaApi.current?.slidesInView() ?? [];
@@ -233,9 +237,11 @@ export function useEmblaCarousel(
 
   React.useEffect(() => {
     // Scroll to controlled values on update
+    // If active index is out of bounds, re-init will handle instead
     const currentActiveIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
+    const slideLength = emblaApi.current?.slideNodes().length ?? 0;
     emblaOptions.current.startIndex = activeIndex;
-    if (activeIndex !== currentActiveIndex) {
+    if (activeIndex < slideLength && activeIndex !== currentActiveIndex) {
       emblaApi.current?.scrollTo(activeIndex);
     }
   }, [activeIndex]);
