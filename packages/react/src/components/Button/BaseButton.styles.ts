@@ -26,7 +26,7 @@ const iconStyle = (fontSize?: string | number): IRawStyle => {
 export const getStyles = memoizeFunction((theme: ITheme): IButtonStyles => {
   const { semanticColors, effects, fonts } = theme;
 
-  const border = semanticColors.buttonBorder;
+  // const border = semanticColors.buttonBorder;
   const disabledBackground = semanticColors.disabledBackground;
   const disabledText = semanticColors.disabledText;
   const buttonHighContrastFocus = {
@@ -42,7 +42,7 @@ export const getStyles = memoizeFunction((theme: ITheme): IButtonStyles => {
       getFocusStyle(theme, { inset: 1, highContrastStyle: buttonHighContrastFocus, borderColor: 'transparent' }),
       theme.fonts.medium,
       {
-        border: '1px solid ' + border,
+        border: '1px solid black',
         borderRadius: effects.roundedCorner2,
         boxSizing: 'border-box',
         cursor: 'pointer',
