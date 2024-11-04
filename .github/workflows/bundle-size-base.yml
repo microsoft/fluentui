@@ -21,19 +21,10 @@ jobs:
     # TODO: use macos-14-xlarge (arm) for faster builds once https://github.com/Azure/cli/issues/172 will be fixed
     runs-on: ubuntu-latest
     permissions:
-      contents: 'read'
-      actions: 'read'
       id-token: 'write'
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v4
-        with:
-          main-branch-name: 'master'
 
       - uses: actions/setup-node@v4
         with:
