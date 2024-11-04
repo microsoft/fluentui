@@ -210,8 +210,19 @@ async function getSelectedTarget(
     .filter(targetName => {
       return omitTargets.includes(targetName) ? false : true;
     })
+    .map(targetName => {
+      const targetConfigurations = Object.keys(projectTargets[targetName].configurations || {});
+
+      if (targetConfigurations) {
+        return [targetName, ...targetConfigurations.map(target => `${targetName}:${target}`)];
+      }
+
+      return targetName;
+    })
+    .flat()
     .sort()
     .concat('help');
+
   const preselectedTargetChoice =
     preselectedTarget && availableTargets.indexOf(preselectedTarget) !== -1
       ? availableTargets.indexOf(preselectedTarget)
