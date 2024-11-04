@@ -119,7 +119,7 @@ const useBoxSizingContainerStyles = makeStyles({
   },
 });
 
-// Make sure the icon measurements are correct when parent has `box-sizing: border-box`
+// Make sure the icon measurements are correct when `box-sizing` default value is `border-box`
 // https://github.com/microsoft/fluentui/issues/32952
 export const WithIconBoxSizing = () => {
   const styles = useBoxSizingContainerStyles();
