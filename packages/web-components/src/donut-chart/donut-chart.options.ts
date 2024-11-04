@@ -38,3 +38,8 @@ export interface ChartProps {
    */
   chartData: ChartDataPoint[];
 }
+
+export type Legend = {
+  title: string;
+  color: string;
+};

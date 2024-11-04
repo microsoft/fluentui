@@ -1,4 +1,4 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { create as d3Create, select as d3Select } from 'd3-selection';
 import { createTabster, getGroupper, getMover, getTabsterAttribute, TABSTER_ATTRIBUTE_NAME } from 'tabster';
 import { jsonConverter, SVG_NAMESPACE_URI, validateChartPropsArray } from '../utils/chart-helpers.js';
@@ -34,7 +34,6 @@ export class HorizontalBarChart extends FASTElement {
 
   public chartContainer!: HTMLDivElement;
 
-  public legendContainer!: HTMLDivElement;
   /**
    * @public
    * The type of the dialog modal
@@ -45,14 +44,38 @@ export class HorizontalBarChart extends FASTElement {
   @attr({ converter: jsonConverter })
   public data!: ChartProps[];
 
-  @attr
+  @observable
   public uniqueLegends: ChartDataPoint[] = [];
 
   @attr
   public hideRatio = false;
 
+  @attr({ attribute: 'hide-legends', mode: 'boolean' })
+  public hideLegends?: boolean;
+
+  @attr({ attribute: 'hide-tooltip', mode: 'boolean' })
+  public hideTooltip?: boolean;
+
+  @observable
+  public activeLegend: string = '';
+
+  @observable
+  public isLegendSelected: boolean = false;
+
+  @observable
+  public tooltipProps = {
+    isVisible: false,
+    legend: '',
+    yValue: '',
+    color: '',
+    xPos: 0,
+    yPos: 0,
+  };
+
+  public rootDiv!: HTMLDivElement;
+
   private barHeight: number = 12;
-  private _selectedLegend: string = '';
+  private _bars: SVGRectElement[] = [];
 
   constructor() {
     super();
@@ -95,177 +118,6 @@ export class HorizontalBarChart extends FASTElement {
           nodes[i].setAttribute(TABSTER_ATTRIBUTE_NAME, attributes[TABSTER_ATTRIBUTE_NAME]);
         }
       });
-  }
-
-  public renderLegends() {
-    const legendButtonRefs: any = [];
-    this.uniqueLegends?.forEach((d, index) => {
-      const button = document.createElement('button');
-      this.legendContainer.appendChild(button);
-      button.classList.add('legend');
-      // Store a reference to the button
-      legendButtonRefs[index] = button;
-
-      const legendRect = document.createElement('div');
-      button.appendChild(legendRect);
-      legendRect.classList.add('legendRect');
-      legendRect.style['backgroundColor'] = d.color!;
-      legendRect.style['borderColor'] = d.color!;
-
-      const legendText = document.createElement('div');
-      button.appendChild(legendText);
-      legendText.textContent = d.legend!;
-      legendText.classList.add('legendText');
-    });
-
-    const bars = this.chartContainer.querySelectorAll<HTMLElement>('.bar');
-
-    for (let i = 0; i < legendButtonRefs.length; i++) {
-      legendButtonRefs[i].addEventListener('mouseover', () => {
-        if (this._selectedLegend !== '') {
-          return;
-        }
-
-        for (let j = 0; j < bars.length; j++) {
-          if (bars[j].getAttribute('barinfo') !== this.uniqueLegends[i].legend) {
-            bars[j].style['opacity'] = '0.1';
-          } else {
-            bars[j].style['opacity'] = '1';
-          }
-        }
-        for (let j = 0; j < legendButtonRefs.length; j++) {
-          const legendRect = (
-            legendButtonRefs[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
-          )[0];
-          const legendText = (
-            legendButtonRefs[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
-          )[0];
-
-          if (j !== i) {
-            legendRect.style['backgroundColor'] = 'transparent';
-            legendText.style['opacity'] = '0.67';
-          } else {
-            legendRect.style['backgroundColor'] = this.uniqueLegends[j].color!;
-            legendText.style['opacity'] = '1';
-          }
-        }
-      });
-      legendButtonRefs[i].addEventListener('mouseout', () => {
-        if (this._selectedLegend !== '') {
-          return;
-        }
-
-        for (let j = 0; j < bars.length; j++) {
-          bars[j].style['opacity'] = '1';
-        }
-        for (let j = 0; j < legendButtonRefs.length; j++) {
-          const legendRect = (
-            legendButtonRefs[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
-          )[0];
-          legendRect.style['backgroundColor'] = this.uniqueLegends[j].color!;
-
-          const legendText = (
-            legendButtonRefs[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
-          )[0];
-          legendText.style['opacity'] = '1';
-        }
-      });
-      legendButtonRefs[i].addEventListener('focus', () => {
-        if (this._selectedLegend !== '') {
-          return;
-        }
-
-        for (let j = 0; j < bars.length; j++) {
-          if (bars[j].getAttribute('barinfo') !== this.uniqueLegends[i].legend) {
-            bars[j].style['opacity'] = '0.1';
-          } else {
-            bars[j].style['opacity'] = '1';
-          }
-        }
-        for (let j = 0; j < legendButtonRefs.length; j++) {
-          const legendRect = (
-            legendButtonRefs[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
-          )[0];
-          const legendText = (
-            legendButtonRefs[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
-          )[0];
-
-          if (j !== i) {
-            legendRect.style['backgroundColor'] = 'transparent';
-            legendText.style['opacity'] = '0.67';
-          } else {
-            legendRect.style['backgroundColor'] = this.uniqueLegends[j].color!;
-            legendText.style['opacity'] = '1';
-          }
-        }
-      });
-      legendButtonRefs[i].addEventListener('blur', () => {
-        if (this._selectedLegend !== '') {
-          return;
-        }
-
-        for (let j = 0; j < bars.length; j++) {
-          bars[j].style['opacity'] = '1';
-        }
-        for (let j = 0; j < legendButtonRefs.length; j++) {
-          const legendRect = (
-            legendButtonRefs[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
-          )[0];
-          legendRect.style['backgroundColor'] = this.uniqueLegends[j].color!;
-
-          const legendText = (
-            legendButtonRefs[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
-          )[0];
-          legendText.style['opacity'] = '1';
-        }
-      });
-      legendButtonRefs[i].addEventListener('click', () => {
-        if (this._selectedLegend === this.uniqueLegends[i].legend) {
-          this._selectedLegend = '';
-
-          for (let j = 0; j < bars.length; j++) {
-            bars[j].style['opacity'] = '1';
-          }
-          for (let j = 0; j < legendButtonRefs.length; j++) {
-            const legendRect = (
-              legendButtonRefs[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
-            )[0];
-            legendRect.style['backgroundColor'] = this.uniqueLegends[j].color!;
-
-            const legendText = (
-              legendButtonRefs[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
-            )[0];
-            legendText.style['opacity'] = '1';
-          }
-        } else {
-          this._selectedLegend = this.uniqueLegends[i].legend;
-
-          for (let j = 0; j < bars.length; j++) {
-            if (bars[j].getAttribute('barinfo') !== this.uniqueLegends[i].legend) {
-              bars[j].style['opacity'] = '0.1';
-            } else {
-              bars[j].style['opacity'] = '1';
-            }
-          }
-          for (let j = 0; j < legendButtonRefs.length; j++) {
-            const legendRect = (
-              legendButtonRefs[j].getElementsByClassName('legendRect') as HTMLCollectionOf<HTMLDivElement>
-            )[0];
-            const legendText = (
-              legendButtonRefs[j].getElementsByClassName('legendText') as HTMLCollectionOf<HTMLDivElement>
-            )[0];
-
-            if (j !== i) {
-              legendRect.style['backgroundColor'] = 'transparent';
-              legendText.style['opacity'] = '0.67';
-            } else {
-              legendRect.style['backgroundColor'] = this.uniqueLegends[j].color!;
-              legendText.style['opacity'] = '1';
-            }
-          }
-        }
-      });
-    }
   }
 
   private createSingleChartBars(singleChartData: ChartProps, index: number, nodes: any) {
@@ -402,7 +254,7 @@ export class HorizontalBarChart extends FASTElement {
     let prevPosition = 0;
     let value = 0;
 
-    function createBars(this: SVGGElement, point: ChartDataPoint, index: number) {
+    const createBars = (g: SVGGElement, point: ChartDataPoint, index: number) => {
       const barHeight = 12;
       const pointData = point.data ? point.data : 0;
       if (index > 0) {
@@ -419,7 +271,7 @@ export class HorizontalBarChart extends FASTElement {
 
       startingPoint.push(prevPosition);
 
-      const gEle = d3Select(this) // 'this' refers to the current 'g' element
+      const gEle = d3Select(g) // 'this' refers to the current 'g' element
         .attr('key', index)
         .attr('role', 'img')
         .attr('aria-label', pointData);
@@ -445,7 +297,8 @@ export class HorizontalBarChart extends FASTElement {
         stop2.setAttribute('stop-color', point.gradient[1]);
       }
 
-      gEle
+      gEle;
+      const rect = gEle
         .append('rect')
         .attr('key', index)
         .attr('id', `${barNo}-${index}`)
@@ -466,11 +319,10 @@ export class HorizontalBarChart extends FASTElement {
         .attr('tabindex', 0)
         .attr('data-tabster', '{"groupper": {...}}"')
         .attr('data-tabster', '{"mover": {...}}"');
-    }
+      this._bars.push(rect.node()!);
+    };
 
     const containerDiv = d3Create('div').attr('style', 'position: relative');
-
-    let tooltip: any;
 
     const chartTitleDiv = containerDiv.append('div').attr('class', 'chartTitleDiv');
     chartTitleDiv
@@ -502,32 +354,27 @@ export class HorizontalBarChart extends FASTElement {
       .data(data.chartData!)
       .enter()
       .append('g')
-      .each(createBars)
-      .on('mouseover', function (event, d) {
+      .each(function (this, d, i) {
+        createBars(this, d, i);
+      })
+      .on('mouseover', (event, d) => {
         if (d && d.hasOwnProperty('placeholder') && (d as any).placeholder === true) {
           return;
         }
-        const tooltipHTML = `
-        <div class="tooltipline" style="border-left:4px solid ${d.color};">
-            <div class="tooltiplegend">${d.legend}</div>
-            <div class="tooltipdata" style="color: ${d.gradient ? d.gradient[0] : d.color};">${d.data}</div>
-        </div>
-       `;
-        tooltip = containerDiv
-          .append('div')
-          .attr('class', 'tooltip')
-          .attr(
-            'style',
-            'opacity: 1; left: ' +
-              (event.pageX - containerDiv.node()!.getBoundingClientRect().left + window.scrollX) +
-              'px; top: ' +
-              (event.pageY - (containerDiv.node()!.getBoundingClientRect().top + window.scrollY) - 40) +
-              'px;',
-          );
-        tooltip.html(tooltipHTML);
+
+        const bounds = this.rootDiv.getBoundingClientRect();
+
+        this.tooltipProps = {
+          isVisible: true,
+          legend: d.legend,
+          yValue: `${d.data}`,
+          color: d.color!,
+          xPos: event.clientX - bounds.left,
+          yPos: event.clientY - bounds.top - 40,
+        };
       })
-      .on('mouseout', function () {
-        tooltip.attr('style', 'position: absolute; opacity:0');
+      .on('mouseout', () => {
+        this.tooltipProps = { isVisible: false, legend: '', yValue: '', color: '', xPos: 0, yPos: 0 };
       });
 
     if (this.variant === Variant.AbsoluteScale) {
@@ -558,4 +405,44 @@ export class HorizontalBarChart extends FASTElement {
     }
     return containerDiv;
   }
+
+  public handleLegendMouseoverAndFocus = (legendTitle: string) => {
+    if (this.isLegendSelected) {
+      return;
+    }
+
+    this.activeLegend = legendTitle;
+  };
+
+  public handleLegendMouseoutAndBlur = () => {
+    if (this.isLegendSelected) {
+      return;
+    }
+
+    this.activeLegend = '';
+  };
+
+  public handleLegendClick = (legendTitle: string) => {
+    if (this.isLegendSelected && this.activeLegend === legendTitle) {
+      this.activeLegend = '';
+      this.isLegendSelected = false;
+    } else {
+      this.activeLegend = legendTitle;
+      this.isLegendSelected = true;
+    }
+  };
+
+  public activeLegendChanged = (oldValue: string, newValue: string) => {
+    if (newValue === '') {
+      this._bars?.forEach(bar => bar.classList.remove('inactive'));
+    } else {
+      this._bars?.forEach(bar => {
+        if (bar.getAttribute('barinfo') === newValue) {
+          bar.classList.remove('inactive');
+        } else {
+          bar.classList.add('inactive');
+        }
+      });
+    }
+  };
 }
