@@ -239,7 +239,7 @@ export function useEmblaCarousel(
     // Scroll to controlled values on update
     // If active index is out of bounds, re-init will handle instead
     const currentActiveIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
-    const slideLength = emblaApi.current?.slideNodes().length ?? 0;
+    const slideLength = emblaApi.current?.slideNodes()?.length ?? 0;
     emblaOptions.current.startIndex = activeIndex;
     if (activeIndex < slideLength && activeIndex !== currentActiveIndex) {
       emblaApi.current?.scrollTo(activeIndex);
