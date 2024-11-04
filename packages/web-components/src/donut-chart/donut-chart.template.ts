@@ -1,4 +1,4 @@
-import { children, ElementViewTemplate, html, ref, repeat, when } from '@microsoft/fast-element';
+import { ElementViewTemplate, html, ref, repeat, when } from '@microsoft/fast-element';
 import type { DonutChart } from './donut-chart.js';
 import { Legend } from './donut-chart.options.js';
 
@@ -18,12 +18,12 @@ export function donutChartTemplate<T extends DonutChart>(): ElementViewTemplate<
       ${when(
         x => !x.hideLegends,
         html<T>`
-          <div class="legendContainer" role="listbox" aria-label="Legends">
+          <div class="legendContainer" role="listbox">
             ${repeat(
               x => x.legends,
               html<Legend, T>` <button
-                class="legend${(x, c) =>
-                  c.parent.activeLegend === '' || c.parent.activeLegend === x.title ? '' : ' inactive'}"
+                class="legend ${(x, c) =>
+                  c.parent.activeLegend === '' || c.parent.activeLegend === x.title ? '' : 'inactive'}"
                 role="option"
                 aria-setsize="${(x, c) => c.length}"
                 aria-posinset="${(x, c) => c.index + 1}"

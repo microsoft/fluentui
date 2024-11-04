@@ -22,10 +22,10 @@ export class DonutChart extends FASTElement {
   public width: number = 200;
 
   @attr({ attribute: 'hide-legends', mode: 'boolean' })
-  public hideLegends?: boolean;
+  public hideLegends: boolean = false;
 
   @attr({ attribute: 'hide-tooltip', mode: 'boolean' })
-  public hideTooltip?: boolean;
+  public hideTooltip: boolean = false;
 
   @attr({ converter: jsonConverter })
   public data!: ChartProps;

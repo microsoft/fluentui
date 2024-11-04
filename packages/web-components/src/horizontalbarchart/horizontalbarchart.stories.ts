@@ -326,7 +326,7 @@ export const singleDataPoint: Story<FluentHorizontalBarChart> = renderComponent(
 export const RTL: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
   <div dir="rtl">
     <div>
-      <fluent-horizontalbarchart _isRTL="true" data="${JSON.stringify(data)}"> </fluent-horizontalbarchart>
+      <fluent-horizontalbarchart data="${JSON.stringify(data)}"> </fluent-horizontalbarchart>
     </div>
   </div>
 `);
