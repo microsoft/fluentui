@@ -31,7 +31,7 @@ const useRootStyles = makeResetStyles({
   border: `1px solid ${tokens.colorNeutralStroke1}`,
   borderRadius: tokens.borderRadiusMedium,
   background: `linear-gradient(to bottom, transparent, #000), linear-gradient(to right, #fff, transparent), var(${mainColorVar})`,
-  'forced-color-adjust': 'none',
+  forcedColorAdjust: 'none',
   display: 'inline-grid',
   touchAction: 'none',
   alignItems: 'start',
