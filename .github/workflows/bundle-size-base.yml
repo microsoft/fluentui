@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 
@@ -18,7 +18,8 @@ env:
 
 jobs:
   bundle-size-base:
-    runs-on: macos-14-xlarge
+    # TODO: use macos-14-xlarge (arm) for faster builds once https://github.com/Azure/cli/issues/172 will be fixed
+    runs-on: ubuntu-latest
     permissions:
       contents: 'read'
       actions: 'read'
