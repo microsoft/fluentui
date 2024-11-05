@@ -21,6 +21,11 @@ const useStyles = makeStyles({
   valueText: {
     ...typographyStyles.caption1,
     fill: tokens.colorNeutralForeground1,
+    '@media (forced-colors: active)': {
+      opacity: 0.1,
+      stroke: 'rgb(179, 179, 179)', 
+      forcedColorAdjust: 'none',
+    },
   },
 });
 
