@@ -40,7 +40,7 @@ export const ScaleSnappy = createPresenceComponentVariant(Scale, {
   exit: { duration: motionTokens.durationFast, easing: motionTokens.curveAccelerateMax },
 });
 
-export const ScaleExaggerated = createPresenceComponentVariant(Scale, {
+export const ScaleRelaxed = createPresenceComponentVariant(Scale, {
   enter: { duration: motionTokens.durationSlow, easing: motionTokens.curveDecelerateMax },
   exit: { duration: motionTokens.durationGentle, easing: motionTokens.curveAccelerateMax },
 });

@@ -31,6 +31,4 @@ export const Fade = createPresenceComponent(createFadePresence());
 
 export const FadeSnappy = createPresenceComponent(createFadePresence({ enterDuration: motionTokens.durationFast }));
 
-export const FadeExaggerated = createPresenceComponent(
-  createFadePresence({ enterDuration: motionTokens.durationGentle }),
-);
+export const FadeRelaxed = createPresenceComponent(createFadePresence({ enterDuration: motionTokens.durationGentle }));
