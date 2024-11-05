@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 10 Sep 2024 10:19:12 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2024 17:17:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.22.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.22.9)
+
+Tue, 15 Oct 2024 17:17:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.22.8..@fluentui/react-tabster_v9.22.9)
+
+### Patches
+
+- fix: useMergedTabsterAttributes should accept null/undefined values ([PR #32983](https://github.com/microsoft/fluentui/pull/32983) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.20.2 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-theme to v9.1.21 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-utilities to v9.18.16 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+
+## [9.22.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.22.8)
+
+Tue, 08 Oct 2024 22:05:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.22.7..@fluentui/react-tabster_v9.22.8)
+
+### Patches
+
+- Bump tabster to 8.2.0 to fix trapped Modalizer logic ([PR #32963](https://github.com/microsoft/fluentui/pull/32963) by jiangemma@microsoft.com)
+
+## [9.22.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.22.7)
+
+Mon, 23 Sep 2024 12:40:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.22.6..@fluentui/react-tabster_v9.22.7)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.20.1 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-theme to v9.1.20 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-utilities to v9.18.15 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
 
 ## [9.22.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.22.6)
 

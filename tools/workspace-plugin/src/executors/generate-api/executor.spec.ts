@@ -12,6 +12,7 @@ import { type TsConfig } from '../../types';
 
 import { type GenerateApiExecutorSchema } from './schema';
 import executor from './executor';
+import { isCI } from './lib/shared';
 
 // =========== mocks START
 import { execSync } from 'node:child_process';
@@ -148,8 +149,10 @@ describe('GenerateApi Executor', () => {
 
     const output = await executor(options, context);
 
+    const projectRootAbsolutePath = `${__dirname}/__fixtures__/proj`;
+
     expect(execSyncMock.mock.calls.flat()).toEqual([
-      `tsc -p ${__dirname}/__fixtures__/proj/tsconfig.lib.json --pretty --emitDeclarationOnly --baseUrl .`,
+      `tsc -p ${projectRootAbsolutePath}/tsconfig.lib.json --pretty --emitDeclarationOnly --baseUrl ${projectRootAbsolutePath}`,
       { stdio: 'inherit' },
     ]);
 
@@ -167,8 +170,11 @@ describe('GenerateApi Executor', () => {
       skipLibCheck: false,
     });
     expect(extractorConfig.skipLibCheck).toBe(false);
+
+    const actualLocalBuildValue = isCI() ? false : true;
+
     expect(extractorArgs).toEqual({
-      localBuild: true,
+      localBuild: actualLocalBuildValue,
       showDiagnostics: false,
       showVerboseMessages: true,
     });

@@ -1,4 +1,4 @@
-import { VirtualizerScrollViewDynamic } from '@fluentui/react-components/unstable';
+import { VirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
 import descriptionMd from './VirtualizerScrollViewDynamicDescription.md';
 
 export { AutoMeasure } from './AutoMeasure.stories';

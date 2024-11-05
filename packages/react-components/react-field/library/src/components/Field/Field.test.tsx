@@ -251,7 +251,7 @@ describe('Field', () => {
   it.each([
     [undefined, 'alert'], // defaults to error
     ['error', 'alert'],
-    ['warning', null],
+    ['warning', 'alert'],
     ['success', null],
     ['none', null],
   ] as const)('if validationState is %s, sets role to %s on the validationMessage', (validationState, role) => {

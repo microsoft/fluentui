@@ -86,7 +86,7 @@ const MotionDurationCard: React.FC<{ animationEnabled: boolean; tokenName: strin
 function useAnimationEnabled() {
   const [animationEnabled, setAnimationEnabled] = React.useState(() => {
     // Heads up/ Not the best way to detect reduced motion as it breaks SSR, but it's good enough for Storybook
-    // eslint-disable-next-line no-restricted-globals
+    // eslint-disable-next-line @nx/workspace-no-restricted-globals
     const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     return !isReducedMotion;

@@ -2,6 +2,36 @@
   "name": "@fluentui/dom-utilities",
   "entries": [
     {
+      "date": "Fri, 11 Oct 2024 16:51:53 GMT",
+      "tag": "@fluentui/dom-utilities_v2.3.9",
+      "version": "2.3.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "miclo@microsoft.com",
+            "package": "@fluentui/dom-utilities",
+            "commit": "3fec026661e874b8e458bb4f2deab1b3a9e73cd1",
+            "comment": "Fix regression caused by #32996"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Oct 2024 07:23:46 GMT",
+      "tag": "@fluentui/dom-utilities_v2.3.8",
+      "version": "2.3.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "miclo@microsoft.com",
+            "package": "@fluentui/dom-utilities",
+            "commit": "65d3fdc217bcd5dff76dd3fd9ebb9d9f032f097a",
+            "comment": "Fix TypeError in portalContainsElement when element is Document or similar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Aug 2024 07:24:43 GMT",
       "tag": "@fluentui/dom-utilities_v2.3.7",
       "version": "2.3.7",

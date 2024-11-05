@@ -125,7 +125,7 @@ export const AppDefinition: IAppDefinition = {
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting',
+      url: 'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting',
     },
   ],
 };

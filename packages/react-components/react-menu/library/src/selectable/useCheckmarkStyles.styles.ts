@@ -7,9 +7,11 @@ const useStyles = makeStyles({
     width: '16px',
     height: '16px',
     visibility: 'hidden',
+    flexShrink: 0,
   },
   rootChecked: {
     visibility: 'visible',
+    flexShrink: 0,
   },
 });
 

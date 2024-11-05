@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: Drag events now trigger onActiveIndexChange with drag/touch event attached",
+  "packageName": "@fluentui/react-carousel",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

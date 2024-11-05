@@ -22,7 +22,8 @@ const AreaChartLargeDataExampleCode =
 export const AreaChartPageProps: IDocPageProps = {
   title: 'AreaChart',
   componentName: 'AreaChart',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/AreaChart',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/AreaChart',
   examples: [
     {
       title: 'AreaChart basic',

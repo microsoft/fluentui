@@ -4,7 +4,7 @@
 >
 > ```jsx
 >
-> import { VirtualizerScrollView } from '@fluentui/react-components/unstable';
+> import { VirtualizerScrollView } from '@fluentui/react-virtualizer';
 >
 > ```
 >
