@@ -88,6 +88,10 @@ const useStyles = makeStyles({
   barLabel: {
     ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
+    '@media (forced-colors: active)': {
+      fill: 'WindowText', // Ensure visibility in high contrast mode
+      forcedColorAdjust: 'none',
+    },
   },
   chartWrapper40ppadding: {
     paddingRight: '40p',
