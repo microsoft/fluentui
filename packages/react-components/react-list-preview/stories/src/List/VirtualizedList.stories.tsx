@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FixedSizeList } from 'react-window';
 import { List, ListItem } from '@fluentui/react-list-preview';
+import { tokens, Text, makeResetStyles } from '@fluentui/react-components';
 
 const countries = [
   'Afghanistan',
@@ -201,11 +202,16 @@ const countries = [
   'Zimbabwe',
 ];
 
+const useTextStyle = makeResetStyles({
+  color: tokens.colorNeutralForeground1,
+});
+
 const CountriesList = React.forwardRef<HTMLUListElement>((props: React.ComponentProps<typeof List>, ref) => (
   <List aria-label="Countries" tabIndex={0} {...props} ref={ref} />
 ));
 
 export const VirtualizedList = () => {
+  const textStyle = useTextStyle();
   return (
     <FixedSizeList
       height={400}
@@ -217,7 +223,7 @@ export const VirtualizedList = () => {
     >
       {({ index, style, data }) => (
         <ListItem style={style} aria-setsize={countries.length} aria-posinset={index + 1}>
-          {data[index]}
+          <Text className={textStyle}>{data[index]}</Text>
         </ListItem>
       )}
     </FixedSizeList>

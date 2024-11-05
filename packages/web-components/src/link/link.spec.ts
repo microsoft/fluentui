@@ -1,7 +1,7 @@
 import { spinalCase } from '@microsoft/fast-web-utilities';
 import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
-import { Link } from './link.js';
+import type { Link } from './link.js';
 
 const proxyAttributes = {
   href: 'href',
@@ -21,7 +21,7 @@ const attributes = {
 
 test.describe('Link', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-link--link'));
+    await page.goto(fixtureURL('components-link--appearance'));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-link'));
   });

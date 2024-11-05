@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
+import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { makeStyles } from '@fluentui/react-components';
 
 import { useFluent } from '@fluentui/react-components';
@@ -20,7 +20,6 @@ const useStyles = makeStyles({
   },
   child: {
     display: 'flex',
-    height: '100px',
     lineHeight: '100px',
     width: '100%',
   },
@@ -30,13 +29,14 @@ const useStyles = makeStyles({
     paddingBottom: '100px',
     fontSize: '36px',
     textAlign: 'center',
+    minHeight: '100px',
   },
 });
 
 export const DefaultUnbounded = () => {
   const styles = useStyles();
   const childLength = 1000;
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: 100,
   });
 
@@ -54,6 +54,7 @@ export const DefaultUnbounded = () => {
         bufferItems={bufferItems}
         bufferSize={bufferSize}
         itemSize={100}
+        containerSizeRef={containerSizeRef}
       >
         {(index, isScrolling) => {
           return (

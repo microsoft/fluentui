@@ -10,6 +10,7 @@ export default {
       description: {
         component: PresenceGroupDescription,
       },
+      hideArgsTable: true,
     },
   },
 } satisfies Meta;

@@ -25,11 +25,11 @@ describe('useSetInterval', () => {
 
     jest.advanceTimersByTime(100);
 
-    expect(callback).toBeCalledTimes(1);
+    expect(callback).toHaveBeenCalledTimes(1);
 
     jest.advanceTimersByTime(100);
 
-    expect(callback).toBeCalledTimes(2);
+    expect(callback).toHaveBeenCalledTimes(2);
   });
 
   it('does not execute the interval when unmounted', () => {
@@ -53,11 +53,11 @@ describe('useSetInterval', () => {
 
     jest.advanceTimersByTime(100);
 
-    expect(callback).toBeCalledTimes(1);
+    expect(callback).toHaveBeenCalledTimes(1);
 
     result.current.clearInterval(id);
     jest.advanceTimersByTime(100);
 
-    expect(callback).toBeCalledTimes(1);
+    expect(callback).toHaveBeenCalledTimes(1);
   });
 });

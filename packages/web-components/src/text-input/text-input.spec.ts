@@ -5,7 +5,7 @@ import { ImplicitSubmissionBlockingTypes } from './text-input.options.js';
 
 test.describe('TextInput', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-textinput--text-input'));
+    await page.goto(fixtureURL('components-textinput--default'));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-text-input'));
   });

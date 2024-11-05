@@ -1,5 +1,5 @@
-import { ElementViewTemplate, html } from '@microsoft/fast-element';
-import { TabPanel } from './tab-panel.js';
+import { type ElementViewTemplate, html } from '@microsoft/fast-element';
+import type { TabPanel } from './tab-panel.js';
 
 export function tabPanelTemplate<T extends TabPanel>(): ElementViewTemplate<T> {
   return html<T>`

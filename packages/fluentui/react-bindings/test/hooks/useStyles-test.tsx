@@ -67,7 +67,7 @@ describe('useStyles', () => {
         wrappingComponentProps: { value: { performance: {}, theme: createTheme(styles) } },
       });
 
-      expect(styles).not.toBeCalled();
+      expect(styles).not.toHaveBeenCalled();
     });
   });
 
@@ -79,7 +79,7 @@ describe('useStyles', () => {
         wrappingComponentProps: { value: { performance: {}, theme: createTheme(styles) } },
       });
 
-      expect(styles).toBeCalledWith(
+      expect(styles).toHaveBeenCalledWith(
         expect.objectContaining({
           props: { color: 'green' },
         }),

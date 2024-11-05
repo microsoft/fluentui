@@ -204,13 +204,13 @@ describe('epic-generator', () => {
       });
       effectsCall();
 
-      expect(execSyncMock).nthCalledWith(
+      expect(execSyncMock).toHaveBeenNthCalledWith(
         1,
         stripIndents`gh issue create --repo "cool-company/repository" --title "test title" --body "*Description to be added*"`,
       );
 
       // @microsoft/cxe-red issue creation
-      expect(execSyncMock).nthCalledWith(
+      expect(execSyncMock).toHaveBeenNthCalledWith(
         2,
         stripIndents`gh issue create --repo "cool-company/repository" --title "test title - @microsoft/cxe-red" --body "🚧 This is an auto-generated issue to individually track migration progress.
 
@@ -219,7 +219,7 @@ describe('epic-generator', () => {
         - react-button"`,
       );
       // @microsoft/cxe-prg issue creation
-      expect(execSyncMock).nthCalledWith(
+      expect(execSyncMock).toHaveBeenNthCalledWith(
         3,
         stripIndents`gh issue create --repo "cool-company/repository" --title "test title - @microsoft/cxe-prg" --body "🚧 This is an auto-generated issue to individually track migration progress.
 
@@ -227,7 +227,7 @@ describe('epic-generator', () => {
         - react-card"`,
       );
       // @microsoft/teams-prg issue creation
-      expect(execSyncMock).nthCalledWith(
+      expect(execSyncMock).toHaveBeenNthCalledWith(
         4,
         stripIndents`gh issue create --repo "cool-company/repository" --title "test title - @microsoft/teams-prg" --body "🚧 This is an auto-generated issue to individually track migration progress.
 
@@ -236,7 +236,7 @@ describe('epic-generator', () => {
         - react-accordion"`,
       );
       // no owner issue creation
-      expect(execSyncMock).nthCalledWith(
+      expect(execSyncMock).toHaveBeenNthCalledWith(
         5,
         stripIndents`gh issue create --repo "cool-company/repository" --title "test title - ownerless" --body "🚧 This is an auto-generated issue to individually track migration progress.
 
@@ -244,7 +244,7 @@ describe('epic-generator', () => {
         - misterious-unowned-package"`,
       );
       // @microsoft/cxe-coastal issue creation
-      expect(execSyncMock).nthCalledWith(
+      expect(execSyncMock).toHaveBeenNthCalledWith(
         6,
         stripIndents`gh issue create --repo "cool-company/repository" --title "test title - @microsoft/cxe-coastal" --body "🚧 This is an auto-generated issue to individually track migration progress.
 
@@ -253,7 +253,7 @@ describe('epic-generator', () => {
       );
 
       // epic edit to add sub-issues
-      expect(execSyncMock).nthCalledWith(
+      expect(execSyncMock).toHaveBeenNthCalledWith(
         7,
         stripIndents`gh issue edit epicUrl --body "*Description to be added*
 

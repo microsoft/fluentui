@@ -8,6 +8,7 @@ import { Extractor, ExtractorConfig, type IConfigFile } from '@microsoft/api-ext
 import type { GenerateApiExecutorSchema } from './schema';
 import type { PackageJson, TsConfig } from '../../types';
 import { measureEnd, measureStart } from '../../utils';
+import { isCI } from './lib/shared';
 
 const runExecutor: PromiseExecutor<GenerateApiExecutorSchema> = async (schema, context) => {
   measureStart('GenerateApiExecutor');
@@ -67,14 +68,6 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
     tsConfigPathForCompilation: tsConfigPathForCompilation.result!,
     packageJsonPath,
   };
-
-  function isCI() {
-    return (
-      (process.env.CI && process.env.CI !== 'false') ||
-      process.env.TF_BUILD === 'true' ||
-      process.env.GITHUB_ACTIONS === 'true'
-    );
-  }
 }
 
 function generateTypeDeclarations(options: NormalizedOptions) {
@@ -84,7 +77,7 @@ function generateTypeDeclarations(options: NormalizedOptions) {
     '--pretty',
     '--emitDeclarationOnly',
     // turn off path aliases.
-    '--baseUrl .',
+    `--baseUrl ${options.projectAbsolutePath}`,
   ].join(' ');
 
   verboseLog(`Emitting '.d.ts' files via: "${cmd}"`);

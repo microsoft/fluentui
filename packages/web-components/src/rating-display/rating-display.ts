@@ -1,9 +1,12 @@
-import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
+import { swapStates } from '../utils/element-internals.js';
 import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
 /**
  * The base class used for constructing a fluent-rating-display custom element
+ *
+ * @slot icon - SVG element used as the rating icon
+ *
  * @public
  */
 export class BaseRatingDisplay extends FASTElement {
@@ -23,6 +26,17 @@ export class BaseRatingDisplay extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public count?: number;
+
+  /**
+   * The `viewBox` attribute of the icon <svg> element.
+   *
+   * @public
+   * @default `0 0 20 20`
+   * @remarks
+   * HTML Attribute: `icon-view-box`
+   */
+  @attr({ attribute: 'icon-view-box' })
+  iconViewBox?: string;
 
   /**
    * The maximum possible value of the rating.
@@ -45,6 +59,27 @@ export class BaseRatingDisplay extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public value?: number;
+
+  /**
+   * @internal
+   */
+  @observable
+  public slottedIcon!: HTMLElement[];
+
+  /**
+   * @internal
+   */
+  public slottedIconChanged(): void {
+    if (this.$fastController.isConnected) {
+      this.customIcon = this.slottedIcon[0]?.outerHTML;
+    }
+  }
+
+  /**
+   * @internal
+   */
+  @observable
+  private customIcon?: string;
 
   private intlNumberFormatter = new Intl.NumberFormat();
 
@@ -88,6 +123,12 @@ export class BaseRatingDisplay extends FASTElement {
    */
   public generateIcons(): string {
     let htmlString: string = '';
+    let customIcon: string | undefined;
+
+    if (this.customIcon) {
+      // Extract the SVG element content
+      customIcon = /<svg[^>]*>([\s\S]*?)<\/svg>/.exec(this.customIcon)?.[1] ?? '';
+    }
 
     // The value of the selected icon. Based on the "value" attribute, rounded to the nearest half.
     const selectedValue: number = this.getSelectedValue();
@@ -96,9 +137,9 @@ export class BaseRatingDisplay extends FASTElement {
     for (let i: number = 0; i < this.getMaxIcons(); i++) {
       const iconValue: number = (i + 1) / 2;
 
-      htmlString += `<svg aria-hidden="true" ${
+      htmlString += `<svg aria-hidden="true" viewBox="${this.iconViewBox ?? '0 0 20 20'}" ${
         iconValue === selectedValue ? 'selected' : ''
-      }><use href="#star"></use></svg>`;
+      }>${customIcon ?? '<use href="#star"></use>'}</svg>`;
     }
 
     return htmlString;
@@ -106,7 +147,7 @@ export class BaseRatingDisplay extends FASTElement {
 }
 
 /**
- * A Rating Dislpay Custom HTML Element.
+ * A Rating Display Custom HTML Element.
  * Based on BaseRatingDisplay and includes style and layout specific attributes
  *
  * @public
@@ -130,8 +171,7 @@ export class RatingDisplay extends BaseRatingDisplay {
    * @param next - The next state
    */
   public colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void {
-    if (prev) toggleState(this.elementInternals, prev, false);
-    if (next) toggleState(this.elementInternals, next, true);
+    swapStates(this.elementInternals, prev, next, RatingDisplayColor);
   }
 
   /**
@@ -151,9 +191,8 @@ export class RatingDisplay extends BaseRatingDisplay {
    * @param prev - The previous state
    * @param next - The next state
    */
-  public sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void {
-    if (prev) toggleState(this.elementInternals, prev, false);
-    if (next) toggleState(this.elementInternals, next, true);
+  public sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined) {
+    swapStates(this.elementInternals, prev, next, RatingDisplaySize);
   }
 
   /**

@@ -1,4 +1,4 @@
-import { Scale } from '@fluentui/react-motion-components-preview';
+import { DefaultScale as Scale } from './Scale.stories';
 import ScaleDescription from './ScaleDescription.md';
 
 export { Default } from './ScaleDefault.stories';

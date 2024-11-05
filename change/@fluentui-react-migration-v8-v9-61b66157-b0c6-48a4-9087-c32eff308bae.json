@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: cleanup production dependencies and fix forbidden sub-package import within Menu",
-  "packageName": "@fluentui/react-migration-v8-v9",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

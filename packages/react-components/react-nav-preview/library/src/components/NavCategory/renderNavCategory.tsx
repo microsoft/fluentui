@@ -1,6 +1,4 @@
-/** @jsxRuntime automatic */
-/** @jsxImportSource @fluentui/react-jsx-runtime */
-
+import * as React from 'react';
 import { NavCategoryContextValues, NavCategoryProvider } from '../NavCategoryContext';
 
 import type { NavCategoryState } from './NavCategory.types';

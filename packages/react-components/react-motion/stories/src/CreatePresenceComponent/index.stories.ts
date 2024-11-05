@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/react';
 import CreatePresenceComponentDescription from './CreatePresenceComponentDescription.md';
+import { CreatePresenceComponent } from './CreatePresenceComponent.stories';
 
 export { CreatePresenceComponentDefault as Default } from './CreatePresenceComponentDefault.stories';
 
@@ -15,6 +16,7 @@ export { PresenceMotionFunctionParams as functionParams } from './PresenceMotion
 
 export default {
   title: 'Motion/APIs/createPresenceComponent',
+  component: CreatePresenceComponent,
   parameters: {
     docs: {
       description: {
