@@ -5,7 +5,7 @@ import {
   useFluent_unstable as useFluent,
 } from '@fluentui/react-shared-contexts';
 import type { KeyborgFocusInEvent } from '@fluentui/react-tabster';
-import { KEYBORG_FOCUSIN, useGetKeyboardNavigation } from '@fluentui/react-tabster';
+import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-tabster';
 import {
   applyTriggerPropsToChildren,
   useControllableState,
@@ -177,7 +177,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     [setDelayTimeout, setVisible, state.showDelay, context],
   );
 
-  const getKeyboardNavigation = useGetKeyboardNavigation();
+  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard()();
 
   // Callback ref that attaches a keyborg:focusin event listener.
   const [keyborgListenerCallbackRef] = React.useState(() => {
@@ -186,7 +186,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
       // For example, we don't want to show the tooltip when a dialog is closed
       // and Tabster programmatically restores focus to the trigger button.
       // See https://github.com/microsoft/fluentui/issues/27576
-      if (ev.detail?.isFocusedProgrammatically && !getKeyboardNavigation()) {
+      if (ev.detail?.isFocusedProgrammatically && !isNavigatingWithKeyboard) {
         ignoreNextFocusEventRef.current = true;
       }
     }) as EventListener;

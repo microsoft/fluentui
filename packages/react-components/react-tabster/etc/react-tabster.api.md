@@ -1483,7 +1483,7 @@ export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(opti
 export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
 
 // @public
-export function useGetKeyboardNavigation(): () => boolean | undefined;
+export function useIsNavigatingWithKeyboard(): () => boolean;
 
 // @public
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;

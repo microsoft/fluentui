@@ -12,6 +12,6 @@ export * from './useMergeTabsterAttributes';
 export * from './useFocusObserved';
 export * from './useRestoreFocus';
 export * from './useUncontrolledFocus';
-export * from './useGetKeyboardNavigation';
+export * from './useIsNavigatingWithKeyboard';
 export * from './useSetKeyboardNavigation';
 export * from './useFocusedElementChange';

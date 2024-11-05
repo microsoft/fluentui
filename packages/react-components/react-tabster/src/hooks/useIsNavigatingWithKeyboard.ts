@@ -5,10 +5,10 @@ import { useKeyborgRef } from './useKeyborgRef';
  * Instantiates [keyborg](https://github.com/microsoft/keyborg) and checks if the user is navigating with the keyboard.
  * @returns {() => boolean}
  */
-export function useGetKeyboardNavigation() {
+export function useIsNavigatingWithKeyboard(): () => boolean {
   const keyborgRef = useKeyborgRef();
 
   return React.useCallback(() => {
-    return keyborgRef.current?.isNavigatingWithKeyboard();
+    return keyborgRef.current?.isNavigatingWithKeyboard() ?? false;
   }, [keyborgRef]);
 }
