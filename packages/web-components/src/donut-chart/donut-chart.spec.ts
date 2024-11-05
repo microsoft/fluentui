@@ -7,17 +7,16 @@ import { setTheme } from '../theme/set-theme.js';
 test.describe('Donut-chart - Basic', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(fixtureURL('components-donutchart--basic'));
-
+    await page.setContent(/* html */ `
+      <fluent-donut-chart value-inside-donut="39,000" inner-radius="55" data="{&quot;chartTitle&quot;:&quot;Donut chart basic example&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;first&quot;,&quot;data&quot;:20000},{&quot;legend&quot;:&quot;second&quot;,&quot;data&quot;:39000}]}">
+      </fluent-donut-chart>
+    `);
     await page.waitForFunction(() => customElements.whenDefined('fluent-donut-chart'));
   });
 
   test('Should render chart properly', async ({ page }) => {
     const element = page.locator('fluent-donut-chart');
-    const legends = element.locator('.legendText');
-    await page.setContent(/* html */ `
-      <fluent-donut-chart value-inside-donut="39,000" inner-radius="55" data="{&quot;chartTitle&quot;:&quot;Donut chart basic example&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;first&quot;,&quot;data&quot;:20000},{&quot;legend&quot;:&quot;second&quot;,&quot;data&quot;:39000}]}">
-  </fluent-donut-chart>
-    `);
+    const legends = element.locator('.legend-text');
     await expect(legends.nth(0).getByText('first')).toBeVisible();
     await expect(legends.nth(1).getByText('second')).toBeVisible();
     await expect(element.getByText('39,000')).toBeVisible();
@@ -25,27 +24,30 @@ test.describe('Donut-chart - Basic', () => {
 
   test('Should render path with proper attributes and css', async ({ page }) => {
     const element = page.locator('fluent-donut-chart');
-    const firstPath = element.getByLabel('first,');
-    await expect(firstPath).toHaveAttribute('fill', '#0099BC');
-    await expect(firstPath).toHaveAttribute('aria-label', 'first, 20000.');
-    await expect(firstPath).
+    const arcList = element.locator('.arc');
+    await expect(arcList).toHaveCount(2);
+    await expect(arcList.nth(0)).toHaveAttribute('fill', '#637cef');
+    await expect(arcList.nth(0)).toHaveAttribute('aria-label', 'first, 20000.');
+    await expect(arcList.nth(0)).
     toHaveAttribute('d', 'M-76.547,47.334A90,90,0,0,1,-1.055,-89.994L-1.055,-54.99A55,55,0,0,0,-46.993,28.577Z');
-    await expect(firstPath).toHaveCSS('fill', 'rgb(0, 153, 188)');
-    await expect(firstPath).toHaveCSS('--borderRadiusMedium', '4px');
+    await expect(arcList.nth(0)).toHaveCSS('fill', 'rgb(99, 124, 239)');
+    await expect(arcList.nth(0)).toHaveCSS('--borderRadiusMedium', '4px');
 
-    const secondPath = element.getByLabel('second,');
-    await expect(secondPath).toHaveAttribute('fill', '#77004D');
-    await expect(secondPath).toHaveAttribute('aria-label', 'second, 39000.');
-    await expect(secondPath).
+    await expect(arcList.nth(1)).toHaveAttribute('fill', '#e3008c');
+    await expect(arcList.nth(1)).toHaveAttribute('aria-label', 'second, 39000.');
+    await expect(arcList.nth(1)).
     toHaveAttribute('d', 'M1.055,-89.994A90,90,0,1,1,-75.417,49.115L-45.863,30.358A55,55,0,1,0,1.055,-54.99Z');
+    await expect(arcList.nth(1)).toHaveCSS('fill', 'rgb(227, 0, 140)');
+    await expect(arcList.nth(1)).toHaveCSS('--borderRadiusMedium', '4px');
+
   });
 
   test('Should render legends data properly', async ({ page }) => {
     const element = page.locator('fluent-donut-chart');
-    const legends = element.getByRole('button');
+    const legends = element.getByRole('option');
     await expect(legends).toHaveCount(2);
-    const firstLegend = element.getByRole('button', { name: 'First' });
-    const secondLegend = element.getByRole('button', { name: 'Second' });
+    const firstLegend = element.getByRole('option', { name: 'First' });
+    const secondLegend = element.getByRole('option', { name: 'Second' });
     await expect(firstLegend).toBeVisible();
     await expect(firstLegend).toHaveText('first');
     await expect(firstLegend).toHaveCSS('--borderRadiusMedium', '4px');
@@ -58,7 +60,7 @@ test.describe('Donut-chart - Basic', () => {
     const element = page.locator('fluent-donut-chart');
     const firstPath = element.getByLabel('first,');
     const secondPath = element.getByLabel('second,');
-    const firstLegend = element.getByRole('button', { name: 'First' });
+    const firstLegend = element.getByRole('option', { name: 'First' });
     //mouse events
     await firstLegend.click();
     await expect(firstPath).toHaveCSS('opacity', '1');
@@ -72,7 +74,7 @@ test.describe('Donut-chart - Basic', () => {
     const element = page.locator('fluent-donut-chart');
     const firstPath = element.getByLabel('first,');
     const secondPath = element.getByLabel('second,');
-    const firstLegend = element.getByRole('button', { name: 'First' });
+    const firstLegend = element.getByRole('option', { name: 'First' });
     //mouse events
     await firstLegend.dispatchEvent('mouseover');
     await expect(firstPath).toHaveCSS('opacity', '1');
@@ -85,14 +87,14 @@ test.describe('Donut-chart - Basic', () => {
   test('Should show callout with mouse hover event on path', async ({ page }) => {
     const element = page.locator('fluent-donut-chart');
     const firstPath = element.getByLabel('first,');
-    const calloutRoot = element.locator('.calloutContentRoot')
-    await expect(calloutRoot).toHaveCount(1);
-    await expect(calloutRoot).not.toHaveCSS('opacity', '1');
+    const calloutRoot = element.locator('.tooltip')
+    await expect(calloutRoot).toHaveCount(0);
     await firstPath.dispatchEvent('mouseover');
+    await expect(calloutRoot).toHaveCount(1);
     await expect(calloutRoot).toHaveCSS('opacity', '1');
-    const calloutLegendText = await element.locator('.calloutLegendText');
+    const calloutLegendText = await element.locator('.tooltip-legend-text');
     await expect(calloutLegendText).toHaveText('first');
-    const calloutContentY = await element.locator('.calloutContentY');
+    const calloutContentY = await element.locator('.tooltip-content-y');
     await expect(calloutContentY).toHaveText('20000');
     await firstPath.dispatchEvent('mouseout');
     await expect(calloutRoot).not.toHaveCSS('opacity', '0');
@@ -101,14 +103,13 @@ test.describe('Donut-chart - Basic', () => {
   test('Should update callout data when mouse moved from one path to another path', async ({ page }) => {
     const element = page.locator('fluent-donut-chart');
     const firstPath = element.getByLabel('first,');
-    const calloutRoot = element.locator('.calloutContentRoot')
-    await expect(calloutRoot).toHaveCount(1);
-    await expect(calloutRoot).not.toHaveCSS('opacity', '1');
+    const calloutRoot = element.locator('.tooltip')
+    await expect(calloutRoot).toHaveCount(0);
     await firstPath.dispatchEvent('mouseover');
     await expect(calloutRoot).toHaveCSS('opacity', '1');
-    const calloutLegendText = await element.locator('.calloutLegendText');
+    const calloutLegendText = await element.locator('.tooltip-legend-text');
     await expect(calloutLegendText).toHaveText('first');
-    const calloutContentY = await element.locator('.calloutContentY');
+    const calloutContentY = await element.locator('.tooltip-content-y');
     await expect(calloutContentY).toHaveText('20000');
     const secondPath = element.getByLabel('second,');
     await secondPath.dispatchEvent('mouseover');
@@ -120,7 +121,7 @@ test.describe('Donut-chart - Basic', () => {
 
 test.describe('Donut-chart - RTL', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-donutchart--basic'));
+    await page.goto(fixtureURL('components-donutchart--rtl'));
     await page.waitForFunction(() => customElements.whenDefined('fluent-donut-chart'));
   });
 

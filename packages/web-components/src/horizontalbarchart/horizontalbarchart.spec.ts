@@ -5,16 +5,19 @@ import { expect, fixtureURL } from '../helpers.tests.js';
 test.describe('horizontalbarchart - Basic', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(fixtureURL('components-horizontalbarchart--basic'));
+    await page.setContent(/* html */ `
+      <fluent-horizontalbarchart data="[{&quot;chartTitle&quot;:&quot;Monitored First&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Debit card numbers (EU and USA)&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#0099BC&quot;},{&quot;legend&quot;:&quot;Passport numbers (USA)&quot;,&quot;data&quot;:23,&quot;color&quot;:&quot;#77004D&quot;},{&quot;legend&quot;:&quot;Social security numbers&quot;,&quot;data&quot;:35,&quot;color&quot;:&quot;#4F68ED&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#AE8C00&quot;},{&quot;legend&quot;:&quot;Tax identification numbers (USA)&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#004E8C&quot;}]},{&quot;chartTitle&quot;:&quot;Monitored Second&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Debit card numbers (EU and USA)&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#0099BC&quot;},{&quot;legend&quot;:&quot;Passport numbers (USA)&quot;,&quot;data&quot;:56,&quot;color&quot;:&quot;#77004D&quot;},{&quot;legend&quot;:&quot;Social security numbers&quot;,&quot;data&quot;:35,&quot;color&quot;:&quot;#4F68ED&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:92,&quot;color&quot;:&quot;#AE8C00&quot;},{&quot;legend&quot;:&quot;Tax identification numbers (USA)&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#004E8C&quot;}]},{&quot;chartTitle&quot;:&quot;Unmonitored&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Phone Numbers&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#881798&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:23,&quot;color&quot;:&quot;#AE8C00&quot;}]}]"> </fluent-horizontalbarchart>
+    `);
     await page.waitForFunction(() => customElements.whenDefined('fluent-horizontalbarchart'));
   });
 
   test('Should render horizontalbarchart properly', async ({ page }) => {
     const element = page.locator('fluent-horizontalbarchart');
-    await expect(element.getByRole('button', { name: 'Debit card numbers (EU and USA)' })).toBeVisible();
-    await expect(element.getByRole('button', { name: 'Passport numbers (USA)' })).toBeVisible();
-    await expect(element.getByRole('button', { name: 'Social security numbers' })).toBeVisible();
-    await expect(element.getByRole('button', { name: 'Credit card Numbers' })).toBeVisible();
-    await expect(element.getByRole('button', { name: 'Phone Numbers' })).toBeVisible();
+    await expect(element.getByRole('option', { name: 'Debit card numbers (EU and USA)' })).toBeVisible();
+    await expect(element.getByRole('option', { name: 'Passport numbers (USA)' })).toBeVisible();
+    await expect(element.getByRole('option', { name: 'Social security numbers' })).toBeVisible();
+    await expect(element.getByRole('option', { name: 'Credit card Numbers' })).toBeVisible();
+    await expect(element.getByRole('option', { name: 'Phone Numbers' })).toBeVisible();
     await expect(page.getByText('Monitored First')).toBeVisible();
     await expect(page.getByText('Monitored Second')).toBeVisible();
     await expect(page.getByText('Unmonitored')).toBeVisible();
@@ -28,7 +31,7 @@ test.describe('horizontalbarchart - Basic', () => {
     await expect(firstBar).toHaveCSS('fill', 'rgb(0, 153, 188)');
     await expect(firstBar).toHaveCSS('opacity', '1');
     await expect(firstBar).toHaveAttribute(`height`, '12');
-    const barLabels = element.locator('.barLabel')
+    const barLabels = element.locator('.bar-label')
     await expect(barLabels).toHaveCount(12);
     const firstBarLabel = barLabels.first();
     await expect(firstBarLabel).toHaveText('272');
@@ -123,9 +126,8 @@ test.describe('horizontalbarchart - Basic', () => {
     await expect(tooltip.nth(0).locator('div').first()).toHaveText('Debit card numbers (EU and USA) 40');
     await bars.nth(0).dispatchEvent('mouseout');
     await bars.nth(1).dispatchEvent('mouseover');
-    await expect(tooltip).toHaveCount(2);
-    await expect(tooltip.nth(1)).toHaveCSS('opacity', '1');
-    await expect(tooltip.nth(1).locator('div').first()).toHaveText('Passport numbers (USA) 23');
+    await expect(tooltip.nth(0)).toHaveCSS('opacity', '1');
+    await expect(tooltip.nth(0).locator('div').first()).toHaveText('Passport numbers (USA) 23');
   });
 });
 
