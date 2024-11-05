@@ -73,24 +73,28 @@ export const useCarouselCard_unstable = (
         containerRef?.current?.scrollTo(0, 0);
         selectPageByElement(e, e.currentTarget, false);
       }
+      // Mouse focus event has been consumed
+      isMouseEvent.current = false;
     },
     [selectPageByElement, containerRef],
   );
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handlePointerDown = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!e.defaultPrevented) {
       isMouseEvent.current = true;
     }
   };
-  const handleMouseUp = (e: React.MouseEvent<HTMLDivElement>) => {
+
+  const handlePointerUp = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!e.defaultPrevented) {
       isMouseEvent.current = false;
     }
   };
 
-  const onFocus = mergeCallbacks(props.onFocus, handleFocus);
-  const onMouseUp = mergeCallbacks(props.onMouseUp, handleMouseUp);
-  const onMouseDown = mergeCallbacks(props.onMouseDown, handleMouseDown);
+  const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocus);
+  const onPointerUp = mergeCallbacks(props.onPointerUp, handlePointerUp);
+  const onPointerDown = mergeCallbacks(props.onPointerDown, handlePointerDown);
+
   const state: CarouselCardState = {
     autoSize,
     components: {
@@ -103,9 +107,9 @@ export const useCarouselCard_unstable = (
         tabIndex: cardFocus ? 0 : undefined,
         ...props,
         id,
-        onFocus,
-        onMouseDown,
-        onMouseUp,
+        onFocusCapture,
+        onPointerUp,
+        onPointerDown,
         ...focusAttrProps,
       }),
       { elementType: 'div' },
