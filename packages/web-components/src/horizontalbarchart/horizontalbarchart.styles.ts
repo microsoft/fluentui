@@ -3,6 +3,7 @@ import { css } from '@microsoft/fast-element';
 import {
   colorNeutralBackground1,
   colorNeutralForeground1,
+  colorNeutralStrokeAccessible,
   shadow4,
   spacingHorizontalL,
   spacingHorizontalS,
@@ -135,5 +136,20 @@ export const styles: ElementStyles = css`
     ${typographyBody1StrongStyles}
     color: ${colorNeutralForeground1};
     font-weight: bold;
+  }
+  .benchmark-container {
+    position: relative;
+    height: 7px;
+    margin-top: -3px;
+  }
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 7px solid;
+    border-bottom-color: ${colorNeutralStrokeAccessible};
+    margin-bottom: 4px;
+    position: absolute;
   }
 `;
