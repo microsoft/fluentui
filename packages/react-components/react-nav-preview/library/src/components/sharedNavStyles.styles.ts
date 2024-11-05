@@ -16,6 +16,11 @@ export const navItemTokens = {
     animationFillMode: 'both',
     animationTimingFunction: tokens.curveAccelerateMid,
   },
+  transitionTokens: {
+    transitionDuration: tokens.durationFast,
+    transitionTimingFunction: tokens.curveAccelerateMid,
+    transitionProperty: 'background',
+  },
 };
 
 /**
@@ -27,6 +32,8 @@ export const useRootDefaultClassName = makeResetStyles({
   textTransform: 'none',
   position: 'relative',
   justifyContent: 'start',
+  alignItems: 'flex-start',
+  textAlign: 'left',
   gap: tokens.spacingVerticalL,
   padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalS} ${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
   backgroundColor: navItemTokens.backgroundColor,

@@ -86,6 +86,25 @@ describe('ContextualMenuButton', () => {
 
       renderMock.mockRestore();
     });
+
+    it('renders a description when ariaDescription is passed in', () => {
+      const component = mount(
+        <ContextualMenuButton
+          item={{ ...menuItem, ariaDescription: 'test' }}
+          classNames={menuClassNames}
+          index={0}
+          focusableElementIndex={0}
+          totalItemCount={1}
+          hasCheckmarks={true}
+        />,
+      );
+
+      const descriptionId = component.find('button').at(0).getDOMNode().getAttribute('aria-describedby');
+      expect(descriptionId).toBeTruthy();
+
+      const descriptionEl = component.find(`#${descriptionId}`).at(0);
+      expect(descriptionEl.text()).toEqual('test');
+    });
   });
 });
 

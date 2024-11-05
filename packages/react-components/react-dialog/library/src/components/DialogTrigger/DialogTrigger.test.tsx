@@ -104,7 +104,7 @@ describe('DialogTrigger', () => {
     );
     fireEvent.click(getByRole('button'));
 
-    expect(requestOpenChange).toBeCalledTimes(1);
+    expect(requestOpenChange).toHaveBeenCalledTimes(1);
     expect(requestOpenChange).toHaveBeenCalledWith(expect.objectContaining({ open: true }));
   });
 
@@ -119,7 +119,7 @@ describe('DialogTrigger', () => {
     );
     fireEvent.click(getByRole('button'));
 
-    expect(requestOpenChange).toBeCalledTimes(0);
+    expect(requestOpenChange).toHaveBeenCalledTimes(0);
   });
 
   it('should not keyboard click when event is default prevented', () => {
@@ -135,6 +135,6 @@ describe('DialogTrigger', () => {
     event.preventDefault();
     fireEvent(getByRole('button'), event);
 
-    expect(onClick).toBeCalledTimes(0);
+    expect(onClick).toHaveBeenCalledTimes(0);
   });
 });

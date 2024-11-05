@@ -163,7 +163,7 @@ export const renderMessageBar_unstable: (state: MessageBarState, contexts: Messa
 export const renderMessageBarActions_unstable: (state: MessageBarActionsState, contexts: MessageBarActionsContextValues) => JSX.Element;
 
 // @public
-export const renderMessageBarBody_unstable: (state: MessageBarBodyState) => JSX.Element;
+export const renderMessageBarBody_unstable: (state: MessageBarBodyState, contextValues: MessageBarBodyContextValues) => JSX.Element;
 
 // @public
 export const renderMessageBarGroup_unstable: (state: MessageBarGroupState) => JSX.Element;

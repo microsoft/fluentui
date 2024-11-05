@@ -4,7 +4,6 @@ const createRule = require('../../utils/createRule');
 
 /**
  * @typedef {import('./types').HTMLElementConstructorName} HTMLElementConstructorName
- *
  */
 
 module.exports = createRule({
@@ -13,7 +12,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Ban usage of instanceof HTMLElement comparison',
-      recommended: 'recommended',
     },
     messages: {
       invalidBinaryExpression: 'instanceof {{right}} should be avoided, use isHTMLElement instead.',

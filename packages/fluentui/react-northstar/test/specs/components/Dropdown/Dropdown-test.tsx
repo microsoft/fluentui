@@ -63,7 +63,7 @@ describe('Dropdown', () => {
 
       clickOnClearIndicator();
 
-      expect(onChange).toBeCalledTimes(1);
+      expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange).toHaveBeenCalledWith(
         expect.objectContaining({ type: 'click' }),
         expect.objectContaining({
@@ -164,7 +164,7 @@ describe('Dropdown', () => {
 
       clickOnTriggerButton();
 
-      expect(onOpenChange).toBeCalledTimes(1);
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
       expect(onOpenChange).toHaveBeenLastCalledWith(
         null,
         expect.objectContaining({
@@ -174,7 +174,7 @@ describe('Dropdown', () => {
 
       clickOnTriggerButton();
 
-      expect(onOpenChange).toBeCalledTimes(2);
+      expect(onOpenChange).toHaveBeenCalledTimes(2);
       expect(onOpenChange).toHaveBeenLastCalledWith(
         null,
         expect.objectContaining({
@@ -1755,7 +1755,7 @@ describe('Dropdown', () => {
 
       keyDownOnItemsList('Tab', { preventDefault });
 
-      expect(preventDefault).toBeCalled();
+      expect(preventDefault).toHaveBeenCalled();
     });
 
     it('keeps focus on input when not passed', () => {
@@ -1767,7 +1767,7 @@ describe('Dropdown', () => {
       });
 
       keyDownOnSearchInput('Tab', { preventDefault });
-      expect(preventDefault).toBeCalled();
+      expect(preventDefault).toHaveBeenCalled();
     });
 
     it('allows focus to move to next item from search input when passed', () => {
@@ -1781,7 +1781,7 @@ describe('Dropdown', () => {
 
       keyDownOnSearchInput('Tab', { preventDefault });
 
-      expect(preventDefault).not.toBeCalled();
+      expect(preventDefault).not.toHaveBeenCalled();
     });
 
     it('allows focus to move to next item from items list when passed', () => {
@@ -1794,7 +1794,7 @@ describe('Dropdown', () => {
 
       keyDownOnItemsList('Tab', { preventDefault });
 
-      expect(preventDefault).not.toBeCalled();
+      expect(preventDefault).not.toHaveBeenCalled();
     });
   });
 
@@ -1893,14 +1893,14 @@ describe('Dropdown', () => {
 
       clickOnItemAtIndex(0, mockedEvent);
 
-      expect(onClick).toBeCalledTimes(1);
+      expect(onClick).toHaveBeenCalledTimes(1);
       expect(onClick).toHaveBeenCalledWith(
         expect.objectContaining(mockedEvent),
         expect.objectContaining({
           header: 'Venom',
         }),
       );
-      expect(stopPropagation).toBeCalledTimes(1);
+      expect(stopPropagation).toHaveBeenCalledTimes(1);
     });
 
     it('when selected have onClick called when passed stop event from being propagated', () => {
@@ -1917,14 +1917,14 @@ describe('Dropdown', () => {
 
       clickOnSelectedItemAtIndex(0, mockedEvent);
 
-      expect(onClick).toBeCalledTimes(1);
+      expect(onClick).toHaveBeenCalledTimes(1);
       expect(onClick).toHaveBeenCalledWith(
         expect.objectContaining(mockedEvent),
         expect.objectContaining({
           header: 'Venom',
         }),
       );
-      expect(stopPropagation).toBeCalledTimes(1);
+      expect(stopPropagation).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -1935,7 +1935,7 @@ describe('Dropdown', () => {
 
       renderDropdown({ renderSelectedItem, multiple: true, value });
 
-      expect(renderSelectedItem).toBeCalledTimes(value.length);
+      expect(renderSelectedItem).toHaveBeenCalledTimes(value.length);
     });
   });
 

@@ -174,7 +174,7 @@ test.describe('CounterBadge component', () => {
     await expect(element).toHaveJSProperty('dot', false);
   });
 
-  for (const shape in CounterBadgeShape) {
+  for (const shape of Object.values(CounterBadgeShape)) {
     test(`should set the \`shape\` property to "${shape}" when the attribute is set to "${shape}"`, async ({
       page,
     }) => {
@@ -192,7 +192,7 @@ test.describe('CounterBadge component', () => {
     });
   }
 
-  for (const color in CounterBadgeColor) {
+  for (const color of Object.values(CounterBadgeColor)) {
     test(`should set the \`color\` property to "${color}" when the attribute is set to "${color}"`, async ({
       page,
     }) => {
@@ -210,7 +210,7 @@ test.describe('CounterBadge component', () => {
     });
   }
 
-  for (const size in CounterBadgeSize) {
+  for (const size of Object.values(CounterBadgeSize)) {
     test(`should set the \`size\` property to "${size}" when the attribute is set to "${size}"`, async ({ page }) => {
       const element = page.locator('fluent-counter-badge');
 
@@ -226,7 +226,7 @@ test.describe('CounterBadge component', () => {
     });
   }
 
-  for (const appearance in CounterBadgeAppearance) {
+  for (const appearance of Object.values(CounterBadgeAppearance)) {
     test(`should set the \`appearance\` property to "${appearance}" when the attribute is set to "${appearance}"`, async ({
       page,
     }) => {

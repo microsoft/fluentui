@@ -31,9 +31,12 @@ import type { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InlineDrawerSlots } from '@fluentui/react-drawer';
+import { MenuButtonProps } from '@fluentui/react-button';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import { ToggleButtonProps } from '@fluentui/react-button';
+import type { TooltipProps } from '@fluentui/react-tooltip';
 
 // @public
 export const AppItem: ForwardRefComponent<AppItemProps>;
@@ -130,7 +133,7 @@ export type NavCategoryState = NavCategoryContextValue & Required<NavCategoryPro
 export const navClassNames: SlotClassNames<NavSlots>;
 
 // @public (undocumented)
-export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'reserveSelectedNavItemSpace' | 'size'> & {
+export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'size'> & {
     onRegister: RegisterNavItemEventHandler;
     onUnregister: RegisterNavItemEventHandler;
     onSelect: EventHandler<OnNavItemSelectData>;
@@ -253,13 +256,14 @@ export type NavItemState = ComponentState<NavItemSlots> & Pick<NavItemProps, 'va
 };
 
 // @public
-export type NavItemValue = unknown;
+export type NavItemValue = string;
 
 // @public
 export type NavProps = ComponentProps<NavSlots> & {
-    reserveSelectedNavItemSpace?: boolean;
     defaultSelectedValue?: NavItemValue;
     defaultSelectedCategoryValue?: NavItemValue;
+    defaultOpenCategories?: NavItemValue[];
+    openCategories?: NavItemValue[];
     onNavItemSelect?: EventHandler<OnNavItemSelectData>;
     selectedValue?: NavItemValue;
     selectedCategoryValue?: NavItemValue;
@@ -288,7 +292,7 @@ export type NavSectionHeaderSlots = {
 // @public
 export type NavSectionHeaderState = ComponentState<NavSectionHeaderSlots>;
 
-// @public (undocumented)
+// @public
 export type NavSize = 'small' | 'medium';
 
 // @public (undocumented)
@@ -342,6 +346,12 @@ export type NavSubItemState = ComponentState<NavSubItemSlots> & Pick<NavSubItemP
 };
 
 // @public (undocumented)
+export type OnNavItemSelectData = EventData<'click', React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
+    value: NavItemValue;
+    categoryValue?: NavItemValue;
+};
+
+// @public (undocumented)
 export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;
 
 // @public
@@ -373,6 +383,36 @@ export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
 
 // @public
 export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element | null;
+
+// @public
+export const renderSplitNavItem_unstable: (state: SplitNavItemState) => JSX.Element;
+
+// @public
+export const SplitNavItem: ForwardRefComponent<SplitNavItemProps>;
+
+// @public (undocumented)
+export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots>;
+
+// @public
+export type SplitNavItemProps = ComponentProps<SplitNavItemSlots>;
+
+// @public (undocumented)
+export type SplitNavItemSlots = {
+    root: Slot<'div'>;
+    navItem?: NonNullable<Slot<NavItemProps & NavSubItemProps>>;
+    actionButton?: Slot<ButtonProps>;
+    toggleButton?: Slot<ToggleButtonProps>;
+    menuButton?: Slot<MenuButtonProps>;
+    actionButtonTooltip?: Slot<TooltipProps>;
+    toggleButtonTooltip?: Slot<TooltipProps>;
+    menuButtonTooltip?: Slot<TooltipProps>;
+};
+
+// @public
+export type SplitNavItemState = ComponentState<SplitNavItemSlots> & {
+    size: NavSize;
+    isSubNav: boolean;
+};
 
 // @public
 export const useAppItem_unstable: (props: AppItemProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => AppItemState;
@@ -463,6 +503,12 @@ export const useNavSubItemGroupStyles_unstable: (state: NavSubItemGroupState) =>
 
 // @public
 export const useNavSubItemStyles_unstable: (state: NavSubItemState) => NavSubItemState;
+
+// @public
+export const useSplitNavItem_unstable: (props: SplitNavItemProps, ref: React_2.Ref<HTMLDivElement>) => SplitNavItemState;
+
+// @public
+export const useSplitNavItemStyles_unstable: (state: SplitNavItemState) => SplitNavItemState;
 
 // (No @packageDocumentation comment for this package)
 

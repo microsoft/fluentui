@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.65",
+  "version": "3.0.0-beta.72",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -78,6 +78,7 @@
     "clean": "node ./scripts/clean dist",
     "generate-api": "api-extractor run --local",
     "build": "yarn compile && yarn rollup -c && yarn generate-api",
+    "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier -w src/**/*.{ts,html} --ignore-path ../../.prettierignore",
     "format:check": "yarn format -c",
@@ -97,16 +98,12 @@
   },
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
-    "@fluentui/tokens": "1.0.0-alpha.16",
+    "@fluentui/tokens": "1.0.0-alpha.18",
     "tabbable": "^6.2.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@microsoft/fast-element": "^2.0.0-beta.26 || ^2.0.0",
-    "@types/d3-selection": "^3.0.0",
-    "@types/d3-shape": "^3.0.0",
-    "d3-selection": "^3.0.0",
-    "d3-shape": "^3.0.0"
+    "@microsoft/fast-element": "^2.0.0-beta.26 || ^2.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

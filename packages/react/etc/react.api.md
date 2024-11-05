@@ -7026,6 +7026,7 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     // @deprecated
     overflowButtonAriaLabel?: string;
     role?: 'alert' | 'status' | 'none';
+    showExpandButton?: boolean;
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
     theme?: ITheme;
     truncated?: boolean;

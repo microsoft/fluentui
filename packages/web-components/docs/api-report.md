@@ -15,7 +15,7 @@ import type { HostBehavior } from '@microsoft/fast-element';
 import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
-import type { SyntheticViewTemplate } from '@microsoft/fast-element';
+import { SyntheticViewTemplate } from '@microsoft/fast-element';
 import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
@@ -55,9 +55,9 @@ export class AccordionItem extends BaseAccordionItem {
     block: boolean;
     blockChanged(prev: boolean, next: boolean): void;
     markerPosition?: AccordionItemMarkerPosition;
-    markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
+    markerPositionChanged(prev: AccordionItemMarkerPosition | undefined, next: AccordionItemMarkerPosition | undefined): void;
     size?: AccordionItemSize;
-    sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
+    sizeChanged(prev: AccordionItemSize | undefined, next: AccordionItemSize | undefined): void;
 }
 
 // @internal
@@ -187,7 +187,7 @@ export class Avatar extends BaseAvatar {
     appearance?: AvatarAppearance | undefined;
     color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
-    static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
+    static colors: ("anchor" | "beige" | "blue" | "brass" | "brown" | "cornflower" | "cranberry" | "dark-green" | "dark-red" | "forest" | "gold" | "grape" | "lavender" | "light-teal" | "lilac" | "magenta" | "marigold" | "mink" | "navy" | "peach" | "pink" | "platinum" | "plum" | "pumpkin" | "purple" | "red" | "royal-blue" | "seafoam" | "steel" | "teal")[];
     // (undocumented)
     connectedCallback(): void;
     // (undocumented)
@@ -583,7 +583,7 @@ export class BaseDivider extends FASTElement {
     elementInternals: ElementInternals;
     orientation?: DividerOrientation;
     // @internal
-    orientationChanged(previous: string | null, next: string | null): void;
+    orientationChanged(previous: DividerRole | undefined, next: DividerRole | undefined): void;
     role: DividerRole;
     // @internal
     roleChanged(previous: string | null, next: string | null): void;
@@ -657,7 +657,12 @@ export class BaseRatingDisplay extends FASTElement {
     generateIcons(): string;
     protected getMaxIcons(): number;
     protected getSelectedValue(): number;
+    iconViewBox?: string;
     max?: number;
+    // @internal (undocumented)
+    slottedIcon: HTMLElement[];
+    // @internal (undocumented)
+    slottedIconChanged(): void;
     value?: number;
 }
 
@@ -2724,9 +2729,11 @@ export class Menu extends FASTElement {
     openOnHoverChanged(oldValue: boolean, newValue: boolean): void;
     persistOnItemClick?: boolean;
     persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
+    primaryAction: HTMLSlotElement;
     setComponent(): void;
     slottedMenuList: MenuList[];
     slottedTriggers: HTMLElement[];
+    split?: boolean;
     toggleHandler: (e: Event) => void;
     toggleMenu: () => void;
     triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
@@ -3261,7 +3268,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     mode: SliderMode;
     orientation?: Orientation;
     // (undocumented)
-    protected orientationChanged(prev: string | undefined, next: string | undefined): void;
+    protected orientationChanged(prev: Orientation | undefined, next: Orientation | undefined): void;
     // @internal (undocumented)
     position: string;
     reportValidity(): boolean;
@@ -3272,7 +3279,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     size?: SliderSize;
     // (undocumented)
-    protected sizeChanged(prev: string, next: string): void;
+    protected sizeChanged(prev: SliderSize | undefined, next: SliderSize | undefined): void;
     step: string;
     // (undocumented)
     protected stepChanged(): void;
@@ -3802,9 +3809,7 @@ export const TextAreaAppearance: {
 // @public (undocumented)
 export type TextAreaAppearance = ValuesOf<typeof TextAreaAppearance>;
 
-// Warning: (ae-missing-release-tag) "TextAreaAppearancesForDisplayShadow" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export const TextAreaAppearancesForDisplayShadow: Partial<TextAreaAppearance[]>;
 
 // Warning: (ae-missing-release-tag) "TextAreaAutocomplete" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -4133,6 +4138,30 @@ export const ValidationFlags: {
 
 // @public (undocumented)
 export type ValidationFlags = ValuesOf<typeof ValidationFlags>;
+
+// @public
+export const zIndexBackground = "var(--zIndexBackground)";
+
+// @public
+export const zIndexContent = "var(--zIndexContent)";
+
+// @public
+export const zIndexDebug = "var(--zIndexDebug)";
+
+// @public
+export const zIndexFloating = "var(--zIndexFloating)";
+
+// @public
+export const zIndexMessages = "var(--zIndexMessages)";
+
+// @public
+export const zIndexOverlay = "var(--zIndexOverlay)";
+
+// @public
+export const zIndexPopup = "var(--zIndexPopup)";
+
+// @public
+export const zIndexPriority = "var(--zIndexPriority)";
 
 // Warnings were encountered during analysis:
 //

@@ -1,8 +1,44 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Thu, 08 Aug 2024 07:24:18 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Oct 2024 16:51:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.19](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.19)
+
+Fri, 11 Oct 2024 16:51:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.18..@fluentui/utilities_v8.15.19)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.3.9 ([PR #33024](https://github.com/microsoft/fluentui/pull/33024) by beachball)
+
+## [8.15.18](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.18)
+
+Tue, 08 Oct 2024 07:23:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.17..@fluentui/utilities_v8.15.18)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.3.8 ([PR #32971](https://github.com/microsoft/fluentui/pull/32971) by beachball)
+
+## [8.15.17](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.17)
+
+Wed, 02 Oct 2024 07:23:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.16..@fluentui/utilities_v8.15.17)
+
+### Patches
+
+- fix: remove circular dependency to better support AMD loaders ([PR #32920](https://github.com/microsoft/fluentui/pull/32920) by seanmonahan@microsoft.com)
+
+## [8.15.16](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.16)
+
+Mon, 30 Sep 2024 07:23:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.15..@fluentui/utilities_v8.15.16)
+
+### Patches
+
+- fix: correctly handle style function in customizer ([PR #32940](https://github.com/microsoft/fluentui/pull/32940) by seanmonahan@microsoft.com)
 
 ## [8.15.15](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.15)
 

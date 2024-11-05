@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  createPresenceComponentVariant,
+  createPresenceComponent,
   Field,
   makeStyles,
   mergeClasses,
@@ -10,7 +10,7 @@ import {
   Switch,
   tokens,
 } from '@fluentui/react-components';
-import { Fade } from '@fluentui/react-motion-components-preview';
+import { createFadePresence } from '@fluentui/react-motion-components-preview';
 
 import description from './FadeCustomization.stories.md';
 
@@ -54,10 +54,13 @@ const useClasses = makeStyles({
   },
 });
 
-const CustomFadeVariant = createPresenceComponentVariant(Fade, {
-  enter: { duration: motionTokens.durationSlow, easing: motionTokens.curveEasyEaseMax },
-  exit: { duration: motionTokens.durationNormal, easing: motionTokens.curveEasyEaseMax },
-});
+const CustomFadeVariant = createPresenceComponent(
+  createFadePresence({
+    enterDuration: motionTokens.durationSlow,
+    enterEasing: motionTokens.curveEasyEaseMax,
+    exitDuration: motionTokens.durationNormal,
+  }),
+);
 
 const LoremIpsum = () => (
   <>

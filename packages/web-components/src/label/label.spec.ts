@@ -4,7 +4,7 @@ import type { Label } from './label.js';
 
 test.describe('Label', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-label--label'));
+    await page.goto(fixtureURL('components-label--default'));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-label'));
   });
