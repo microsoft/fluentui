@@ -51,6 +51,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: pr-website-artifacts
+          retention-days: 1
           if-no-files-found: error
           path: |
             apps/pr-deploy-site/dist/
@@ -60,6 +61,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: pr-number
+          retention-days: 1
           if-no-files-found: error
           path: |
             pr.txt
