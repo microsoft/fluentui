@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Enable controlled index to be set to a new card when added",
+  "packageName": "@fluentui/react-carousel",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
