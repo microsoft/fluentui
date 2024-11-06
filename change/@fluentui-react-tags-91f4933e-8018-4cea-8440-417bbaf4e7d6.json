@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "add explicit typeRoot to tsconfig.json",
+  "packageName": "@fluentui/react-tags",
+  "email": "viktorgenaev@microsoft.com",
+  "dependentChangeType": "none"
+}

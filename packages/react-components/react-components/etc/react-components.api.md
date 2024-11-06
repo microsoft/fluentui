@@ -203,6 +203,11 @@ import { CarouselSliderSlots } from '@fluentui/react-carousel';
 import { CarouselSliderState } from '@fluentui/react-carousel';
 import { CarouselSlots } from '@fluentui/react-carousel';
 import { CarouselState } from '@fluentui/react-carousel';
+import { CarouselViewport } from '@fluentui/react-carousel';
+import { carouselViewportClassNames } from '@fluentui/react-carousel';
+import { CarouselViewportProps } from '@fluentui/react-carousel';
+import { CarouselViewportSlots } from '@fluentui/react-carousel';
+import { CarouselViewportState } from '@fluentui/react-carousel';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { checkboxClassNames } from '@fluentui/react-checkbox';
 import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
@@ -769,6 +774,7 @@ import { renderCarouselNavButton_unstable } from '@fluentui/react-carousel';
 import { renderCarouselNavContainer_unstable } from '@fluentui/react-carousel';
 import { renderCarouselNavImageButton_unstable } from '@fluentui/react-carousel';
 import { renderCarouselSlider_unstable } from '@fluentui/react-carousel';
+import { renderCarouselViewport_unstable } from '@fluentui/react-carousel';
 import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
 import { renderColorSwatch_unstable } from '@fluentui/react-swatch-picker';
 import { renderCombobox_unstable } from '@fluentui/react-combobox';
@@ -1429,6 +1435,8 @@ import { useCarouselNavStyles_unstable } from '@fluentui/react-carousel';
 import { useCarouselSlider_unstable } from '@fluentui/react-carousel';
 import { useCarouselSliderStyles_unstable } from '@fluentui/react-carousel';
 import { useCarouselStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselViewport_unstable } from '@fluentui/react-carousel';
+import { useCarouselViewportStyles_unstable } from '@fluentui/react-carousel';
 import { useCheckbox_unstable } from '@fluentui/react-checkbox';
 import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
@@ -2196,6 +2204,16 @@ export { CarouselSliderState }
 export { CarouselSlots }
 
 export { CarouselState }
+
+export { CarouselViewport }
+
+export { carouselViewportClassNames }
+
+export { CarouselViewportProps }
+
+export { CarouselViewportSlots }
+
+export { CarouselViewportState }
 
 export { Checkbox }
 
@@ -3328,6 +3346,8 @@ export { renderCarouselNavContainer_unstable }
 export { renderCarouselNavImageButton_unstable }
 
 export { renderCarouselSlider_unstable }
+
+export { renderCarouselViewport_unstable }
 
 export { renderCheckbox_unstable }
 
@@ -4648,6 +4668,10 @@ export { useCarouselSlider_unstable }
 export { useCarouselSliderStyles_unstable }
 
 export { useCarouselStyles_unstable }
+
+export { useCarouselViewport_unstable }
+
+export { useCarouselViewportStyles_unstable }
 
 export { useCheckbox_unstable }
 

@@ -161,6 +161,16 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useEmptySwatchStyles_unstable: (state: unknown) => void;
         useSwatchPickerRowStyles_unstable: (state: unknown) => void;
         useSwatchPickerStyles_unstable: (state: unknown) => void;
+        useCarouselViewportStyles_unstable: (state: unknown) => void;
+        useCarouselSliderStyles_unstable: (state: unknown) => void;
+        useCarouselStyles_unstable: (state: unknown) => void;
+        useCarouselAutoplayButtonStyles_unstable: (state: unknown) => void;
+        useCarouselButtonStyles_unstable: (state: unknown) => void;
+        useCarouselCardStyles_unstable: (state: unknown) => void;
+        useCarouselNavStyles_unstable: (state: unknown) => void;
+        useCarouselNavButtonStyles_unstable: (state: unknown) => void;
+        useCarouselNavContainerStyles_unstable: (state: unknown) => void;
+        useCarouselNavImageButtonStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;

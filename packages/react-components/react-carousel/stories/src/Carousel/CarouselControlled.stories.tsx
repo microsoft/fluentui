@@ -8,13 +8,14 @@ import {
   Tooltip,
   Toolbar,
   ToolbarButton,
+  CarouselSlider,
 } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselAnnouncerFunction,
   CarouselButton,
   CarouselCard,
-  CarouselSlider,
+  CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
@@ -31,11 +32,9 @@ const useClasses = makeStyles({
     flexDirection: 'column',
     gap: '20px',
   },
-  carouselSlider: {
-    display: 'flex',
+  viewport: {
     overflow: 'hidden',
   },
-
   footer: {
     display: 'flex',
     gap: '10px',
@@ -135,7 +134,7 @@ export const Controlled = () => {
           <CarouselButton navType="prev" aria-label="Previous Carousel Page Button" />
         </Tooltip>
 
-        <div className={classes.carouselSlider}>
+        <CarouselViewport className={classes.viewport}>
           <CarouselSlider>
             <CarouselCard aria-label="1 of 5">
               <WireframeContent index={0} />
@@ -153,7 +152,7 @@ export const Controlled = () => {
               <WireframeContent index={4} />
             </CarouselCard>
           </CarouselSlider>
-        </div>
+        </CarouselViewport>
 
         <Tooltip content="Go To Next Page" relationship="label">
           <CarouselButton navType="next" aria-label="Next Carousel Page Button" />

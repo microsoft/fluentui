@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "add explicit typeRoot to tsconfig.json",
+  "packageName": "@fluentui/react-utilities",
+  "email": "viktorgenaev@microsoft.com",
+  "dependentChangeType": "none"
+}

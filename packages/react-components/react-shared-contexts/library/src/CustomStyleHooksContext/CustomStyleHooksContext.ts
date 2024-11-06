@@ -148,6 +148,16 @@ export type CustomStyleHooksContextValue = Partial<{
   useEmptySwatchStyles_unstable: CustomStyleHook;
   useSwatchPickerRowStyles_unstable: CustomStyleHook;
   useSwatchPickerStyles_unstable: CustomStyleHook;
+  useCarouselViewportStyles_unstable: CustomStyleHook;
+  useCarouselSliderStyles_unstable: CustomStyleHook;
+  useCarouselStyles_unstable: CustomStyleHook;
+  useCarouselAutoplayButtonStyles_unstable: CustomStyleHook;
+  useCarouselButtonStyles_unstable: CustomStyleHook;
+  useCarouselCardStyles_unstable: CustomStyleHook;
+  useCarouselNavStyles_unstable: CustomStyleHook;
+  useCarouselNavButtonStyles_unstable: CustomStyleHook;
+  useCarouselNavContainerStyles_unstable: CustomStyleHook;
+  useCarouselNavImageButtonStyles_unstable: CustomStyleHook;
 }>;
 
 /**

@@ -16,7 +16,7 @@ jobs:
       status: ${{ steps.verify-react-components-changed.outputs.any_changed == 'true' || github.event_name == 'workflow_dispatch' }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         name: Checkout [master]
 
       - name: Verify react-compoenents has changed
@@ -31,11 +31,11 @@ jobs:
     if: needs.check.outputs.status == 'true'
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20.x
           cache: 'yarn'

@@ -11,20 +11,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "just-scripts build --module esm,cjs,amd",
-    "bundle-size": "monosize measure",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "e2e": "cypress run --component",
-    "e2e:local": "cypress open --component",
-    "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "test": "jest --passWithNoTests",
-    "type-check": "just-scripts type-check",
-    "generate-api": "just-scripts generate-api",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
-  },
   "devDependencies": {
     "@fluentui/react-provider": "*",
     "@fluentui/react-theme": "*",
@@ -33,8 +19,7 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-components": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-cypress": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
     "@fluentui/react-portal-compat-context": "^9.0.12",
