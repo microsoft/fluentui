@@ -73,7 +73,6 @@ const CustomListItem = (props: { title: string; value: string }) => {
 
   return (
     <ListItem
-      as="div"
       value={value}
       className={mergeClasses(listItemStyles, styles.listItem)}
       checkmark={{ root: { role: 'gridcell' }, className: styles.checkmark, 'aria-label': value }}
@@ -157,7 +156,6 @@ export const MultipleActionsSelection = () => {
 
   return (
     <List
-      as="div"
       className={classes.list}
       navigationMode="composite"
       selectionMode="multiselect"

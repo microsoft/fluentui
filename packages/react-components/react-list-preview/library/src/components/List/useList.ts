@@ -32,14 +32,9 @@ export const useList_unstable = (
   props: ListProps,
   ref: React.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>,
 ): ListState => {
-  const {
-    navigationMode,
-    selectionMode,
-    selectedItems,
-    defaultSelectedItems,
-    as = DEFAULT_ROOT_EL_TYPE,
-    onSelectionChange,
-  } = props;
+  const { navigationMode, selectionMode, selectedItems, defaultSelectedItems, onSelectionChange } = props;
+
+  const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: 'vertical',
@@ -82,10 +77,10 @@ export const useList_unstable = (
 
   return {
     components: {
-      root: DEFAULT_ROOT_EL_TYPE,
+      root: as,
     },
     root: slot.always(
-      getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
+      getIntrinsicElementProps(as, {
         ref,
         role: listRole,
         ...(selectionMode && {
@@ -94,7 +89,7 @@ export const useList_unstable = (
         ...arrowNavigationAttributes,
         ...props,
       }),
-      { elementType: DEFAULT_ROOT_EL_TYPE },
+      { elementType: as },
     ),
     listItemRole,
     validateListItem,
