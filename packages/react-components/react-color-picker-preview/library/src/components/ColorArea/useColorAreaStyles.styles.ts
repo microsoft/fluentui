@@ -21,8 +21,6 @@ export const colorAreaCSSVars = {
 // Internal CSS variables
 const thumbSizeVar = `--fui-Slider__thumb--size`;
 
-const { areaXProgressVar, areaYProgressVar, thumbColorVar, mainColorVar } = colorAreaCSSVars;
-
 /**
  * Styles for the root slot
  */
@@ -30,7 +28,7 @@ const useRootStyles = makeResetStyles({
   position: 'relative',
   border: `1px solid ${tokens.colorNeutralStroke1}`,
   borderRadius: tokens.borderRadiusMedium,
-  background: `linear-gradient(to bottom, transparent, #000), linear-gradient(to right, #fff, transparent), var(${mainColorVar})`,
+  background: `linear-gradient(to bottom, transparent, #000), linear-gradient(to right, #fff, transparent), var(${colorAreaCSSVars.mainColorVar})`,
   forcedColorAdjust: 'none',
   display: 'inline-grid',
   touchAction: 'none',
@@ -54,10 +52,10 @@ const useThumbStyles = makeStyles({
     forcedColorAdjust: 'none',
     borderRadius: tokens.borderRadiusCircular,
     boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
-    backgroundColor: `var(${thumbColorVar})`,
+    backgroundColor: `var(${colorAreaCSSVars.thumbColorVar})`,
     transform: 'translate(-50%, 50%)',
-    left: `var(${areaXProgressVar})`,
-    bottom: `var(${areaYProgressVar})`,
+    left: `var(${colorAreaCSSVars.areaXProgressVar})`,
+    bottom: `var(${colorAreaCSSVars.areaYProgressVar})`,
     '::before': {
       position: 'absolute',
       inset: '0px',

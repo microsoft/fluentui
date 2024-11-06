@@ -71,7 +71,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     targetDocument?.removeEventListener('mousemove', handleDocumentMouseMove);
   });
 
-  const _onMouseDown: React.MouseEventHandler<HTMLDivElement> = useEventCallback(event => {
+  const handleOnMouseDown: React.MouseEventHandler<HTMLDivElement> = useEventCallback(event => {
     event.stopPropagation();
     event.preventDefault();
 
@@ -81,7 +81,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     targetDocument?.addEventListener('mouseup', handleDocumentMouseUp, { once: true });
   });
 
-  const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
+  const handleOnChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
     const newColor = { h: color.h, s: Number(xRef.current!.value) / 100, v: Number(yRef.current?.value) / 100, a: 1 };
 
     setColor(newColor);
@@ -92,7 +92,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     });
   });
 
-  const _onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleOnKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
       event.preventDefault();
 
