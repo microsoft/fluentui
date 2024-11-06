@@ -134,4 +134,8 @@ export const styles: ElementStyles = css`
     color: ${colorNeutralForeground1};
     font-weight: bold;
   }
+  .chart-data-text {
+    ${typographyBody1StrongStyles}
+    color: ${colorNeutralForeground1};
+  }
 `;
