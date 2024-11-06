@@ -4,6 +4,7 @@ import { createTabster, getMover, getTabsterAttribute, MoverDirections, TABSTER_
 import {
   getColorFromToken,
   getNextColor,
+  getRTL,
   jsonConverter,
   SVG_NAMESPACE_URI,
   validateChartProps,
@@ -60,6 +61,7 @@ export class DonutChart extends FASTElement {
   public group!: SVGGElement;
 
   private _arcs: SVGPathElement[] = [];
+  private _isRTL: boolean = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -75,6 +77,7 @@ export class DonutChart extends FASTElement {
     });
 
     this.legends = this.getLegends();
+    this._isRTL = getRTL(this);
 
     this._render();
   }
@@ -126,7 +129,7 @@ export class DonutChart extends FASTElement {
           legend: arcDatum.data.legend,
           yValue: `${arcDatum.data.data}`,
           color: arcDatum.data.color!,
-          xPos: event.clientX - bounds.left,
+          xPos: this._isRTL ? bounds.right - event.clientX : event.clientX - bounds.left,
           yPos: event.clientY - bounds.top - 85,
         };
       });
@@ -143,7 +146,9 @@ export class DonutChart extends FASTElement {
           legend: arcDatum.data.legend,
           yValue: `${arcDatum.data.data}`,
           color: arcDatum.data.color!,
-          xPos: arcBounds.left + arcBounds.width / 2 - rootBounds.left,
+          xPos: this._isRTL
+            ? rootBounds.right - arcBounds.left - arcBounds.width / 2
+            : arcBounds.left + arcBounds.width / 2 - rootBounds.left,
           yPos: arcBounds.top - rootBounds.top - 85,
         };
       });

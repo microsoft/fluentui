@@ -23,7 +23,7 @@ import {
 export const styles: ElementStyles = css`
   ${display('inline-block')}
 
-  .rootDiv {
+  :host {
     position: relative;
   }
   .root {
@@ -50,18 +50,19 @@ export const styles: ElementStyles = css`
     pointer-events: none;
   }
   .tooltipline {
-    padding-left: 8px;
+    padding-inline-start: 8px;
     height: 50px;
+    border-inline-start: 4px solid;
   }
   .tooltiplegend {
     font-size: 13px;
     color: theme.semanticColors.bodyText;
-    text-align: left;
+    text-align: start;
   }
   .tooltipdata {
     font-weight: bold;
     font-size: 30px;
-    text-align: left;
+    text-align: start;
     lineheight: 36px;
     margin-top: 12px;
   }
@@ -103,7 +104,7 @@ export const styles: ElementStyles = css`
   .legendRect {
     width: 12px;
     height: 12px;
-    margin-right: ${spacingHorizontalS};
+    margin-inline-end: ${spacingHorizontalS};
     border: 1px solid;
   }
   .legendText {

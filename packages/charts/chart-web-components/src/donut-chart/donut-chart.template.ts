@@ -9,7 +9,7 @@ import { Legend } from './donut-chart.options.js';
  */
 export function donutChartTemplate<T extends DonutChart>(): ElementViewTemplate<T> {
   return html<T>`
-    <div ${ref('rootDiv')} class="root">
+    <template ${ref('rootDiv')}>
       <div ${ref('chartWrapper')}>
         <svg class="chart" width="${x => x.width}" height="${x => x.height}" aria-label="${x => x.data.chartTitle}">
           <g ${ref('group')} transform="translate(${x => x.width / 2}, ${x => x.height / 2})"></g>
@@ -46,7 +46,7 @@ export function donutChartTemplate<T extends DonutChart>(): ElementViewTemplate<
         html<T>`
           <div
             class="calloutContentRoot"
-            style="left: ${x => x.tooltipProps.xPos}px; top: ${x => x.tooltipProps.yPos}px"
+            style="inset-inline-start: ${x => x.tooltipProps.xPos}px; top: ${x => x.tooltipProps.yPos}px"
           >
             <div class="calloutBlockContainer" style="border-color: ${x => x.tooltipProps.color};">
               <div class="calloutLegendText">${x => x.tooltipProps.legend}</div>
@@ -57,7 +57,7 @@ export function donutChartTemplate<T extends DonutChart>(): ElementViewTemplate<
           </div>
         `,
       )}
-    </div>
+    </template>
   `;
 }
 

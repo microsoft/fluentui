@@ -28,10 +28,10 @@ import {
 export const styles = css`
   ${display('inline-block')}
 
-  .root {
+  :host {
     ${typographyBody1Styles}
     align-items: center;
-    display: flex;
+    // display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
