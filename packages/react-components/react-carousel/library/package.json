@@ -21,7 +21,8 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
-    "@fluentui/scripts-api-extractor": "*"
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
     "@fluentui/react-aria": "^9.13.8",
