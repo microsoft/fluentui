@@ -18,12 +18,12 @@ export function donutChartTemplate<T extends DonutChart>(): ElementViewTemplate<
       ${when(
         x => !x.hideLegends,
         html<T>`
-          <div class="legendContainer" role="listbox">
+          <div class="legendContainer" role="listbox" aria-label="Legends">
             ${repeat(
               x => x.legends,
               html<Legend, T>` <button
-                class="legend ${(x, c) =>
-                  c.parent.activeLegend === '' || c.parent.activeLegend === x.title ? '' : 'inactive'}"
+                class="legend${(x, c) =>
+                  c.parent.activeLegend === '' || c.parent.activeLegend === x.title ? '' : ' inactive'}"
                 role="option"
                 aria-setsize="${(x, c) => c.length}"
                 aria-posinset="${(x, c) => c.index + 1}"
