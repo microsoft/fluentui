@@ -1,8 +1,7 @@
 import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
-import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
-import { setTheme } from '../theme/set-theme.js';
-
+import { teamsDarkTheme } from '@fluentui/tokens';
+import { colorNeutralBackground1 } from '../theme/design-tokens.js';
 
 test.describe('Donut-chart - Basic', () => {
   test.beforeEach(async ({ page }) => {
@@ -133,6 +132,31 @@ test.describe('Donut-chart - RTL', () => {
           </fluent-donut-chart>
       </div>
     `);
+    await expect(element).toHaveScreenshot();
+  });
+});
+
+test.describe('Donut-chart - Theme', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(fixtureURL('components-donutchart--basic'));
+    await page.waitForFunction(() => customElements.whenDefined('fluent-donut-chart'));
+  });
+
+  test('Should render chart properly in teamsDarkTheme mode', async ({ page }) => {
+    const element = page.locator('fluent-donut-chart');
+    await page.setContent(/* html */ `
+      <style>
+        body {
+          background-color: ${colorNeutralBackground1};
+       }
+      </style>
+      <fluent-donut-chart value-inside-donut="39,000" inner-radius="55" data="{&quot;chartTitle&quot;:&quot;Donut chart basic example&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;first&quot;,&quot;data&quot;:20000},{&quot;legend&quot;:&quot;second&quot;,&quot;data&quot;:39000}]}">
+      </fluent-donut-chart>
+    `);
+    await page.waitForFunction(() => customElements.whenDefined('fluent-donut-chart'));
+    await page.evaluate( theme => {
+       window.setTheme(theme);
+    }, teamsDarkTheme);
     await expect(element).toHaveScreenshot();
   });
 });
