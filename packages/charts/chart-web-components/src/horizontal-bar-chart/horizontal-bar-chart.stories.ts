@@ -284,6 +284,45 @@ const singlePointData = [
   },
 ];
 
+const benchmarkData: ChartProps[] = [
+  {
+    chartTitle: 'one',
+    chartData: [
+      {
+        legend: 'one',
+        data: 10,
+        total: 100,
+        color: '#637cef',
+      },
+    ],
+    benchmarkData: 50,
+  },
+  {
+    chartTitle: 'two',
+    chartData: [
+      {
+        legend: 'two',
+        data: 30,
+        total: 200,
+        color: '#e3008c',
+      },
+    ],
+    benchmarkData: 30,
+  },
+  {
+    chartTitle: 'three',
+    chartData: [
+      {
+        legend: 'three',
+        data: 15,
+        total: 50,
+        color: '#2aa0a4',
+      },
+    ],
+    benchmarkData: 5,
+  },
+];
+
 const storyTemplate = html<StoryArgs<FluentHorizontalBarChart>>`
   <fluent-horizontal-bar-chart data="${JSON.stringify(data)}"> </fluent-horizontal-bar-chart>
 `;
@@ -312,6 +351,11 @@ export const singleBarNMVariant: Story<FluentHorizontalBarChart> = renderCompone
     >
     </fluent-horizontal-bar-chart>
   </div>
+`);
+
+export const Benchmark: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
+  <fluent-horizontal-bar-chart style="width: 100%" variant="single-bar" data="${JSON.stringify(benchmarkData)}">
+  </fluent-horizontal-bar-chart>
 `);
 
 export const singleDataPoint: Story<FluentHorizontalBarChart> = renderComponent(html<
