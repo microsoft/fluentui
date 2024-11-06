@@ -18,7 +18,7 @@ const INITIAL_COLOR_HSV = tinycolor(INITIAL_COLOR).toHsv();
  * before being passed to renderColorArea_unstable.
  *
  * @param props - props from this instance of ColorArea
- * @param ref - reference to root HTMLInputElement of ColorArea
+ * @param ref - reference to root HTMLDivElement of ColorArea
  */
 export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLDivElement>): ColorAreaState => {
   const { targetDocument } = useFluent();
