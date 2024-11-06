@@ -30,4 +30,5 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
+  testEnvironment: 'node',
 };

@@ -7,8 +7,14 @@
 // @public (undocumented)
 const plugin: {
     meta: {
-        name: any;
-        version: any;
+        name: string;
+        version: string;
+    };
+    configs: {
+        recommended: {
+            plugins: string[];
+            rules: {};
+        };
     };
     rules: {};
 };

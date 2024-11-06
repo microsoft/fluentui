@@ -1,16 +1,36 @@
-import * as fs from 'node:fs';
-import * as path from 'node:path';
+import { name, version } from '../package.json';
 
-const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'), 'utf8'));
+const allRules = {
+  // add all rules here
+};
 
-const plugin = {
-  meta: {
-    name: pkg.name,
-    version: pkg.version,
-  },
-  rules: {
-    // add rules here
+const configs = {
+  recommended: {
+    plugins: [name],
+    rules: {
+      // add all recommended rules here
+    },
   },
 };
+
+// Plugin definition
+const plugin = {
+  meta: {
+    name,
+    version,
+  },
+  configs,
+  rules: allRules,
+};
+
+// Flat config for eslint v9
+Object.assign(configs, {
+  flat: {
+    recommended: {
+      plugins: { [name]: plugin },
+      rules: configs.recommended.rules,
+    },
+  },
+});
 
 export default plugin;
