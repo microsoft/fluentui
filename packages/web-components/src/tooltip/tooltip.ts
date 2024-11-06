@@ -170,7 +170,7 @@ export class Tooltip extends FASTElement {
   public showTooltip(delay: number = this.defaultDelay): void {
     setTimeout(() => {
       this.setAttribute('aria-hidden', 'false');
-      // @ts-expect-error - Baseline 2024
+      //// @ts-expect-error - Baseline 2024
       this.showPopover();
     }, delay);
   }
@@ -189,7 +189,7 @@ export class Tooltip extends FASTElement {
       }
 
       this.setAttribute('aria-hidden', 'true');
-      // @ts-expect-error - Baseline 2024
+      //// @ts-expect-error - Baseline 2024
       this.hidePopover();
     }, delay);
   }

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: resolve TS errors within web-components build",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

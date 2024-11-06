@@ -16,7 +16,7 @@ export const Collapse: PresenceComponent<CollapseRuntimeParams>;
 export const CollapseDelayed: PresenceComponent<CollapseRuntimeParams>;
 
 // @public (undocumented)
-export const CollapseExaggerated: PresenceComponent<CollapseRuntimeParams>;
+export const CollapseRelaxed: PresenceComponent<CollapseRuntimeParams>;
 
 // @public (undocumented)
 export type CollapseRuntimeParams = {
@@ -40,7 +40,7 @@ export const createFadePresence: PresenceMotionCreator<FadeVariantParams>;
 export const Fade: PresenceComponent<    {}>;
 
 // @public (undocumented)
-export const FadeExaggerated: PresenceComponent<    {}>;
+export const FadeRelaxed: PresenceComponent<    {}>;
 
 // @public (undocumented)
 export const FadeSnappy: PresenceComponent<    {}>;
@@ -51,7 +51,7 @@ animateOpacity?: boolean | undefined;
 }>;
 
 // @public (undocumented)
-export const ScaleExaggerated: PresenceComponent<    {
+export const ScaleRelaxed: PresenceComponent<    {
 animateOpacity?: boolean | undefined;
 }>;
 

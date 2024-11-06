@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
-import { FadeExaggerated } from '@fluentui/react-motion-components-preview';
+import { FadeRelaxed } from '@fluentui/react-motion-components-preview';
 
-import description from './FadeExaggerated.stories.md';
+import description from './FadeRelaxed.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -37,7 +37,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Exaggerated = () => {
+export const Relaxed = () => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
 
@@ -49,16 +49,16 @@ export const Exaggerated = () => {
         </Field>
       </div>
 
-      <FadeExaggerated visible={visible}>
+      <FadeRelaxed visible={visible}>
         <div className={classes.card}>
           <LoremIpsum />
         </div>
-      </FadeExaggerated>
+      </FadeRelaxed>
     </div>
   );
 };
 
-Exaggerated.parameters = {
+Relaxed.parameters = {
   docs: {
     description: {
       story: description,
