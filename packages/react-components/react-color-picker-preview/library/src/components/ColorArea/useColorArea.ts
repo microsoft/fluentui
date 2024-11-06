@@ -149,10 +149,10 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     ...state.root.style,
   };
 
-  state.root.onMouseDown = useEventCallback(mergeCallbacks(state.root.onMouseDown, _onMouseDown));
-  state.inputX.onChange = useEventCallback(mergeCallbacks(state.inputX.onChange, _onChange));
-  state.inputY.onChange = useEventCallback(mergeCallbacks(state.inputY.onChange, _onChange));
-  state.inputX.onKeyDown = useEventCallback(mergeCallbacks(state.inputX.onKeyDown, _onKeyDown));
+  state.root.onMouseDown = useEventCallback(mergeCallbacks(state.root.onMouseDown, handleOnMouseDown));
+  state.inputX.onChange = useEventCallback(mergeCallbacks(state.inputX.onChange, handleOnChange));
+  state.inputY.onChange = useEventCallback(mergeCallbacks(state.inputY.onChange, handleOnChange));
+  state.inputX.onKeyDown = useEventCallback(mergeCallbacks(state.inputX.onKeyDown, handleOnKeyDown));
   state.inputX.value = saturation;
   state.inputY.value = value;
 
