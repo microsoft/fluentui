@@ -38,4 +38,5 @@ export interface PopoverComponentStyles {
   numerator: string;
   denominator: string;
   calloutInfoContainer: string;
+  calloutContainer: string;
 }

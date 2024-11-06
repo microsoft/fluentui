@@ -35,7 +35,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
   const legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
   const YValue = props.yCalloutValue ? props.yCalloutValue : props.YValue;
   return (
-    <div id={useId('callout')} ref={forwardedRef}>
+    <div id={useId('callout')} ref={forwardedRef} className={classes.calloutContainer}>
       <Popover
         positioning={{ target: virtualElement, autoSize: 'always', offset: 20, coverTarget: false }}
         open={props.isPopoverOpen}

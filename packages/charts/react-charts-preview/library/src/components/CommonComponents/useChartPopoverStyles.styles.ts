@@ -22,6 +22,7 @@ export const popoverClassNames: SlotClassNames<PopoverComponentStyles> = {
   numerator: 'fui-cart__numerator',
   denominator: 'fui-cart__denominator',
   calloutInfoContainer: 'fui-cart__calloutInfoContainer',
+  calloutContainer: 'fui-cart__calloutContainer',
 };
 
 /**
@@ -116,6 +117,12 @@ const useStyles = makeStyles({
   calloutInfoContainer: {
     paddingLeft: tokens.spacingHorizontalS,
   },
+  calloutContainer: {
+    '@media (forced-colors: active)': {
+      fill: 'WindowText', // Ensure visibility in high contrast mode
+      forcedColorAdjust: 'none',
+    },
+  },
 });
 /**
  * Apply styling to the Carousel slots based on the state
@@ -167,5 +174,6 @@ export const usePopoverStyles_unstable = (props: ChartPopoverProps): PopoverComp
     numerator: mergeClasses(popoverClassNames.numerator, baseStyles.numerator /*props.styles?.numerator*/),
     denominator: mergeClasses(popoverClassNames.denominator, baseStyles.denominator /*props.styles?.denominator*/),
     calloutInfoContainer: mergeClasses(popoverClassNames.calloutInfoContainer, baseStyles.calloutInfoContainer),
+    calloutContainer: mergeClasses(popoverClassNames.calloutContainer, baseStyles.calloutContainer),
   };
 };
