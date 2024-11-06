@@ -37,7 +37,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   } = props;
 
   const { dir } = useFluent();
-  const { activeIndex, carouselApi, containerRef, subscribeForValues, enableAutoplay, resetAutoplay } =
+  const { activeIndex, carouselApi, containerRef, viewportRef, subscribeForValues, enableAutoplay, resetAutoplay } =
     useEmblaCarousel({
       align,
       direction: dir,
@@ -48,6 +48,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       watchDrag: draggable,
       containScroll: whitespace ? false : 'keepSnaps',
       motion,
+      onDragIndexChange: onActiveIndexChange,
     });
 
   const selectPageByElement: CarouselContextValue['selectPageByElement'] = useEventCallback((event, element, jump) => {
@@ -70,7 +71,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     return nextPageIndex;
   });
 
-  const mergedRefs = useMergedRefs(ref, containerRef);
+  const mergedContainerRef = useMergedRefs(ref, containerRef);
 
   // Announce carousel updates
   const announcementTextRef = React.useRef<string>('');
@@ -117,7 +118,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: mergedRefs,
+        ref: mergedContainerRef,
         role: 'region',
         ...props,
       }),
@@ -126,7 +127,8 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
     activeIndex,
     circular,
-    containerRef: mergedRefs,
+    containerRef: mergedContainerRef,
+    viewportRef,
     selectPageByElement,
     selectPageByDirection,
     selectPageByIndex,

@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
 import type { Avatar } from './avatar.js';
-import { AvatarAppearance, AvatarColor, AvatarSize } from './avatar.options.js';
+import type { AvatarAppearance, AvatarColor, AvatarSize } from './avatar.options.js';
 
 test.describe('Avatar Component', () => {
   test.beforeEach(async ({ page }) => {

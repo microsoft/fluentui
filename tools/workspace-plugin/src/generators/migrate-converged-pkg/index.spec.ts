@@ -781,17 +781,12 @@ describe('migrate-converged-pkg generator', () => {
           isolatedModules: false,
           lib: ['ES2019', 'dom'],
           types: ['node', 'cypress', 'cypress-real-events'],
+          typeRoots: ['../node_modules', '../node_modules/@types'],
         },
         include: ['**/*.cy.ts', '**/*.cy.tsx'],
       });
       expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './tsconfig.cy.json' }]));
       expect(libTsConfig.exclude).toEqual(expect.arrayContaining(['**/*.cy.ts', '**/*.cy.tsx']));
-
-      // package.json updates
-      const packageJson: PackageJson = readJson(tree, paths.packageJson);
-      expect(packageJson.scripts).toEqual(
-        expect.objectContaining({ e2e: 'cypress run --component', 'e2e:local': 'cypress open --component' }),
-      );
     });
   });
 

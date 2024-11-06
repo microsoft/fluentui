@@ -1,5 +1,5 @@
-import { ElementViewTemplate, html } from '@microsoft/fast-element';
-import { Label } from './label.js';
+import { type ElementViewTemplate, html } from '@microsoft/fast-element';
+import type { Label } from './label.js';
 
 /**
  * The template for the Fluent label web-component.

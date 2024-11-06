@@ -15,4 +15,5 @@ export default {
   watchPathIgnorePatterns: ['/node_modules/', '/__fixtures__/'],
   coverageDirectory: '../../coverage/tools/workspace-plugin',
   setupFiles: ['<rootDir>/jest-setup.js'],
+  testEnvironment: 'node',
 } as import('@jest/types').Config.InitialOptions;

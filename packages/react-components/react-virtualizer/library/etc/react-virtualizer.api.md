@@ -81,6 +81,7 @@ export const useDynamicVirtualizerMeasure: <TElement extends HTMLElement>(virtua
     bufferSize: number;
     scrollRef: (instance: TElement | null) => void;
     containerSizeRef: React_2.RefObject<number>;
+    updateScrollPosition: (scrollPosition: number) => void;
 };
 
 // @public
@@ -145,8 +146,6 @@ export const virtualizerClassNames: SlotClassNames<VirtualizerSlots>;
 export type VirtualizerContextProps = {
     contextIndex: number;
     setContextIndex: (index: number) => void;
-    contextPosition?: number;
-    setContextPosition?: (index: number) => void;
     childProgressiveSizes?: React_2.MutableRefObject<number[]>;
 };
 

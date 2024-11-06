@@ -69,13 +69,13 @@ const useStyles = makeStyles({
 const CustomListItem = (props: { title: string; value: string }) => {
   const listItemStyles = useListItemRootStyles();
   const styles = useStyles();
-  const { value } = props;
+  const { value, title } = props;
 
   return (
     <ListItem
-      value={props.value}
+      value={value}
       className={mergeClasses(listItemStyles, styles.listItem)}
-      checkmark={{ className: styles.checkmark }}
+      checkmark={{ root: { role: 'gridcell' }, className: styles.checkmark, 'aria-label': value }}
       aria-label={value}
     >
       <div role="gridcell" className={styles.preview}>
@@ -87,7 +87,7 @@ const CustomListItem = (props: { title: string; value: string }) => {
         />
       </div>
       <div role="gridcell" className={styles.header}>
-        <Text className={styles.title}>{props.title}</Text>
+        <Text className={styles.title}>{title}</Text>
         <Caption1 className={styles.caption}>You created 53m ago</Caption1>
       </div>
       <div role="gridcell" className={styles.action}>

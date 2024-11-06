@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html, ViewTemplate } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html, type ViewTemplate } from '@microsoft/fast-element';
 import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
 import type { AnchorButton, AnchorOptions } from './anchor-button.js';
 

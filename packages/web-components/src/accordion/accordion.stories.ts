@@ -35,7 +35,7 @@ const storyTemplate = html<StoryArgs<FluentAccordion>>`
 `;
 
 export default {
-  title: 'Components/Accordion',
+  title: 'Components/Accordion/Accordion',
   render: renderComponent(storyTemplate),
   argTypes: {
     expandmode: {

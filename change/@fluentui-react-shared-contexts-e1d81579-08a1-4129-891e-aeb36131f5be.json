@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add custom style hooks for Carousel components",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

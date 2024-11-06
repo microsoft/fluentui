@@ -384,7 +384,7 @@ test.describe('Tabs', () => {
     });
   });
 
-  for (const appearance in TabsAppearance) {
+  for (const appearance of Object.values(TabsAppearance)) {
     test(`should set appearance to \`${appearance}\``, async ({ page }) => {
       const element = page.locator('fluent-tabs');
 
@@ -396,7 +396,7 @@ test.describe('Tabs', () => {
     });
   }
 
-  for (const size in TabsSize) {
+  for (const size of Object.values(TabsSize)) {
     test(`should set size to \`${size}\``, async ({ page }) => {
       const element = page.locator('fluent-tabs');
 

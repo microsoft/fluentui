@@ -2,7 +2,6 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 import type { CarouselSlots, CarouselState } from './Carousel.types';
-import { tokens } from '@fluentui/react-theme';
 
 export const carouselClassNames: SlotClassNames<CarouselSlots> = {
   root: 'fui-Carousel',
@@ -13,8 +12,8 @@ export const carouselClassNames: SlotClassNames<CarouselSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    paddingTop: tokens.strokeWidthThick, // Leave room for focus border & overflow hidden
-    overflow: 'hidden',
+    // Only hide horizontal overflow to enable focus border to bleed bounds vertically
+    overflowX: 'hidden',
     overflowAnchor: 'none',
     position: 'relative',
   },

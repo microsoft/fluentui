@@ -11,29 +11,16 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "test": "jest --passWithNoTests",
-    "type-check": "just-scripts type-check",
-    "generate-api": "just-scripts generate-api",
-    "storybook": "yarn --cwd ../stories storybook",
-    "start": "yarn storybook"
-  },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
     "@ctrl/tinycolor": "3.3.4",
-    "@fluentui/fluent2-theme": "^8.107.109",
-    "@fluentui/react": "^8.121.6",
+    "@fluentui/fluent2-theme": "^8.107.111",
+    "@fluentui/react": "^8.121.8",
     "@fluentui/react-components": "^9.55.1",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-hooks": "^8.8.16",

@@ -1,7 +1,7 @@
-import { Locator, test } from '@playwright/test';
+import { type Locator, test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
 import { RatingDisplaySize } from './rating-display.options.js';
-import { RatingDisplay } from './rating-display.js';
+import type { RatingDisplay } from './rating-display.js';
 
 test.describe('Rating Display', () => {
   let element: Locator;

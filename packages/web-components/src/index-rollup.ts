@@ -36,3 +36,4 @@ import './textarea/define.js';
 import './text-input/define.js';
 import './text/define.js';
 import './toggle-button/define.js';
+import './tooltip/define.js';
