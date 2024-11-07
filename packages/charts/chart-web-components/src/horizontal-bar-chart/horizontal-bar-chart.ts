@@ -1,7 +1,7 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { create as d3Create, select as d3Select } from 'd3-selection';
 import { createTabster, getGroupper, getMover, getTabsterAttribute, TABSTER_ATTRIBUTE_NAME } from 'tabster';
-import { jsonConverter, SVG_NAMESPACE_URI, validateChartPropsArray } from '../utils/chart-helpers.js';
+import { getRTL, jsonConverter, SVG_NAMESPACE_URI, validateChartPropsArray } from '../utils/chart-helpers.js';
 import { ChartDataPoint, ChartProps, Variant } from './horizontal-bar-chart.options.js';
 
 // During the page startup.
@@ -15,46 +15,23 @@ getGroupper(tabsterCore);
  * @public
  */
 export class HorizontalBarChart extends FASTElement {
-  /**
-   * The type of the element, which is always "horizontalbarchart".
-   * @see The {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/type | `type`} property
-   *
-   * @public
-   */
-  public get type(): 'horizontalbarchart' {
-    return 'horizontalbarchart';
-  }
-
-  /**
-   * @public
-   * The type of the dialog modal
-   */
   @attr
   public variant: Variant = Variant.AbsoluteScale;
-
-  public chartContainer!: HTMLDivElement;
-
-  /**
-   * @public
-   * The type of the dialog modal
-   */
-  @attr
-  public _isRTL: boolean = false;
 
   @attr({ converter: jsonConverter })
   public data!: ChartProps[];
 
-  @observable
-  public uniqueLegends: ChartDataPoint[] = [];
-
-  @attr
-  public hideRatio = false;
+  @attr({ attribute: 'hide-ratio', mode: 'boolean' })
+  public hideRatio: boolean  = false;
 
   @attr({ attribute: 'hide-legends', mode: 'boolean' })
-  public hideLegends?: boolean;
+  public hideLegends: boolean = false;
 
   @attr({ attribute: 'hide-tooltip', mode: 'boolean' })
-  public hideTooltip?: boolean;
+  public hideTooltip: boolean = false;
+
+  @observable
+  public uniqueLegends: ChartDataPoint[] = [];
 
   @observable
   public activeLegend: string = '';
@@ -73,20 +50,18 @@ export class HorizontalBarChart extends FASTElement {
   };
 
   public rootDiv!: HTMLDivElement;
+  public chartContainer!: HTMLDivElement;
 
+  private _isRTL: boolean = false;
   private barHeight: number = 12;
   private _bars: SVGRectElement[] = [];
-
-  constructor() {
-    super();
-  }
-
-  private bindEvents() {}
 
   connectedCallback() {
     super.connectedCallback();
 
     validateChartPropsArray(this.data, 'data');
+
+    this._isRTL = getRTL(this);
 
     this.initializeData();
     this.renderChart();
