@@ -204,8 +204,6 @@ export const Controlled = (props: Partial<NavDrawerProps>) => {
 
   // you can override the default keyboard behavior this way:
   const tabsterDomAttribute = useArrowNavigationGroup({
-    axis: 'vertical', // default
-    circular: true, // default
     tabbable: true, // new value
   });
 

@@ -17,7 +17,6 @@ export type NavDrawerProps = ComponentProps<NavDrawerSlots> &
   NavProps & {
     /**
      * An optional tabster attribute to let consumers override keyboard navigation behavior.
-     * Note that passing this in will override the default behavior of the component.
      * @default axis: 'vertical', circular: true
      */
     tabsterDomAttribute?: TabsterDOMAttribute;
