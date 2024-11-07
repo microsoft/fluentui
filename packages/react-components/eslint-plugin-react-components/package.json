@@ -15,7 +15,7 @@
     "eslint-plugin-eslint-plugin": "6.3.1"
   },
   "dependencies": {
-    "@typescript-eslint/utils": "8.8.1",
+    "@typescript-eslint/utils": "^8.8.1",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
