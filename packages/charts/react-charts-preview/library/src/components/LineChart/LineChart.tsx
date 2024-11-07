@@ -184,7 +184,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     }, [props.height, props.width, props.data]);
 
     function _injectIndexPropertyInLineChartData(lineChartData?: LineChartPoints[]): LineChartDataWithIndex[] | [] {
-      const { allowMultipleShapesForPoints = false } = props;
       return lineChartData
         ? lineChartData.map((item: LineChartPoints, index: number) => {
             let color: string;
@@ -195,7 +194,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             }
             return {
               ...item,
-              index: allowMultipleShapesForPoints ? index : -1,
+              index: index,
               color,
             };
           })
