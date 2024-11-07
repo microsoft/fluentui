@@ -124,7 +124,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     root: slot.always(getIntrinsicElementProps('div', { ...rest, ref }), { elementType: 'div' }),
     inputX: slot.always(inputX, {
       defaultProps: {
-        id: useId('sliderX-', props.id),
+        id: useId('sliderX-'),
         type: 'range',
         ref: xRef,
       },
@@ -132,7 +132,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     }),
     inputY: slot.always(inputY, {
       defaultProps: {
-        id: useId('sliderY-', props.id),
+        id: useId('sliderY-'),
         type: 'range',
         ref: yRef,
       },
