@@ -175,10 +175,6 @@ export { HorizontalSpacingTokens }
 
 export { LineHeightTokens }
 
-export { masonsDarkTheme }
-
-export { masonsLightTheme }
-
 export { PartialTheme }
 
 export { ShadowBrandTokens }
