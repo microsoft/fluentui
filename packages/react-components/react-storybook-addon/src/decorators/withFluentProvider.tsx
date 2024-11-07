@@ -1,29 +1,16 @@
 import * as React from 'react';
 
 import { FluentProvider } from '@fluentui/react-provider';
-import {
-  Theme,
-  teamsDarkTheme,
-  teamsHighContrastTheme,
-  teamsLightTheme,
-  webDarkTheme,
-  webLightTheme,
-  masonsDarkTheme,
-  masonsLightTheme,
-} from '@fluentui/react-theme';
-import { defaultTheme, ThemeIds } from '../theme';
+import { defaultTheme, Theme, ThemeIds } from '../theme';
 import { DIR_ID, THEME_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
 import { CustomStyleHooksContext } from '../../../react-shared-contexts/library/src/CustomStyleHooksContext';
-import { MasonsCustomStyleHooks } from './CustomStyleHooks/useCustomStyles.styles';
+import { MasonsCustomStyleHooks } from '../../../masons-theme-preview/library/src/masonsTheme/useCustomStyles.styles';
+import { masonsLightTheme } from '../../../masons-theme-preview/library/src/masonsTheme/lightTheme';
+import { masonsDarkTheme } from '../../../masons-theme-preview/library/src/masonsTheme/index';
 
 const themes: Record<ThemeIds, Theme> = {
-  'web-light': webLightTheme,
-  'web-dark': webDarkTheme,
-  'teams-light': teamsLightTheme,
-  'teams-dark': teamsDarkTheme,
-  'teams-high-contrast': teamsHighContrastTheme,
   'masons-light': masonsLightTheme,
   'masons-dark': masonsDarkTheme,
 } as const;

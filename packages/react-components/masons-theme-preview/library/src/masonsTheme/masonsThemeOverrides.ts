@@ -1,4 +1,4 @@
-import { BorderRadiusTokens } from '../../types';
+import { BorderRadiusTokens } from '../../../../../tokens/src/types';
 
 export const masonsBorderRadius: BorderRadiusTokens = {
   borderRadiusNone: '0',
