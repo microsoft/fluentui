@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "docs: removed the mention of non-existent useContextSelectors and fixed the example",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "gk.joker@gmail.com",
+  "dependentChangeType": "patch"
+}

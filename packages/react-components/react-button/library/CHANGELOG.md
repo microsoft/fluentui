@@ -1,8 +1,101 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 15 Jul 2024 17:25:53 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2024 17:17:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.94)
+
+Tue, 15 Oct 2024 17:17:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.93..@fluentui/react-button_v9.3.94)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.8 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.45 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.2 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-tabster to v9.22.9 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-theme to v9.1.21 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-utilities to v9.18.16 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+
+## [9.3.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.93)
+
+Tue, 08 Oct 2024 22:05:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.92..@fluentui/react-button_v9.3.93)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.7 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-tabster to v9.22.8 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+
+## [9.3.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.92)
+
+Thu, 26 Sep 2024 14:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.91..@fluentui/react-button_v9.3.92)
+
+### Patches
+
+- fix: hovered menubutton icon does not disappear ([PR #32917](https://github.com/microsoft/fluentui/pull/32917) by sarah.higley@microsoft.com)
+
+## [9.3.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.91)
+
+Mon, 23 Sep 2024 12:40:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.90..@fluentui/react-button_v9.3.91)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.6 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.44 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.1 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-tabster to v9.22.7 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-theme to v9.1.20 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-utilities to v9.18.15 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+
+## [9.3.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.90)
+
+Tue, 10 Sep 2024 10:19:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.89..@fluentui/react-button_v9.3.90)
+
+### Patches
+
+- fix: medium and large SplitButton menuButton is at least 24px wide ([PR #32309](https://github.com/microsoft/fluentui/pull/32309) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.5 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.43 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-tabster to v9.22.6 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-utilities to v9.18.14 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+
+## [9.3.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.89)
+
+Thu, 15 Aug 2024 13:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.88..@fluentui/react-button_v9.3.89)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.4 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+- Bump @fluentui/react-tabster to v9.22.5 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+
+## [9.3.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.88)
+
+Thu, 15 Aug 2024 08:22:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.87..@fluentui/react-button_v9.3.88)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.3 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-tabster to v9.22.4 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+
+## [9.3.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.87)
+
+Tue, 23 Jul 2024 20:13:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.86..@fluentui/react-button_v9.3.87)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.2 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.42 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.0 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-tabster to v9.22.3 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-utilities to v9.18.13 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
 
 ## [9.3.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.86)
 

@@ -1,8 +1,181 @@
 # Change Log - @fluentui/react-nav-preview
 
-This log was last generated on Mon, 15 Jul 2024 17:25:37 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2024 17:17:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.9.1)
+
+Tue, 15 Oct 2024 17:17:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.9.0..@fluentui/react-nav-preview_v0.9.1)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.8 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-button to v9.3.94 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-tooltip to v9.4.41 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.68 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-divider to v9.2.76 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-drawer to v9.5.18 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.45 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.2 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-tabster to v9.22.9 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-theme to v9.1.21 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-utilities to v9.18.16 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.9.0)
+
+Tue, 08 Oct 2024 22:05:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.8.1..@fluentui/react-nav-preview_v0.9.0)
+
+### Minor changes
+
+- feat: Build out SplitNavItem ([PR #32873](https://github.com/microsoft/fluentui/pull/32873) by matejera@microsoft.com)
+- feat: Add props for SplitSubNavItems and Tooltips. Other pixel pushing on SplitNavItem ([PR #32964](https://github.com/microsoft/fluentui/pull/32964) by matejera@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.7 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-button to v9.3.93 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-tooltip to v9.4.40 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-drawer to v9.5.17 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+- Bump @fluentui/react-tabster to v9.22.8 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+
+## [0.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.8.1)
+
+Thu, 26 Sep 2024 14:15:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.8.0..@fluentui/react-nav-preview_v0.8.1)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.92 ([PR #32924](https://github.com/microsoft/fluentui/pull/32924) by beachball)
+- Bump @fluentui/react-drawer to v9.5.16 ([PR #32924](https://github.com/microsoft/fluentui/pull/32924) by beachball)
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.8.0)
+
+Mon, 23 Sep 2024 12:40:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.6..@fluentui/react-nav-preview_v0.8.0)
+
+### Minor changes
+
+- Scaffolds SplitNavItem ([PR #32870](https://github.com/microsoft/fluentui/pull/32870) by matejera@microsoft.com)
+-  [BREAKING] Removed non functional reserveSelectedNavItemSpace prop. Added defaultOpenCategories and openCategories prop and example. Updated icon selection logic for NavCategoryItem. Exports OnNavItemSelectData. ([PR #32489](https://github.com/microsoft/fluentui/pull/32489) by matejera@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.6 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-button to v9.3.91 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.67 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-divider to v9.2.75 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-drawer to v9.5.15 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.44 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.1 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-tabster to v9.22.7 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-theme to v9.1.20 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-utilities to v9.18.15 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+
+## [0.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.6)
+
+Fri, 13 Sep 2024 00:49:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.5..@fluentui/react-nav-preview_v0.7.6)
+
+### Patches
+
+- Bump @fluentui/react-drawer to v9.5.14 ([PR #32371](https://github.com/microsoft/fluentui/pull/32371) by beachball)
+
+## [0.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.5)
+
+Tue, 10 Sep 2024 10:19:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.4..@fluentui/react-nav-preview_v0.7.5)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.5 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-button to v9.3.90 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.66 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-divider to v9.2.74 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-drawer to v9.5.13 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.43 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-tabster to v9.22.6 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-utilities to v9.18.14 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+
+## [0.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.4)
+
+Fri, 16 Aug 2024 10:24:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.3..@fluentui/react-nav-preview_v0.7.4)
+
+### Patches
+
+- Bump @fluentui/react-drawer to v9.5.12 ([PR #32316](https://github.com/microsoft/fluentui/pull/32316) by beachball)
+
+## [0.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.3)
+
+Thu, 15 Aug 2024 13:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.2..@fluentui/react-nav-preview_v0.7.3)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.4 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+- Bump @fluentui/react-button to v9.3.89 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+- Bump @fluentui/react-drawer to v9.5.11 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+- Bump @fluentui/react-tabster to v9.22.5 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+
+## [0.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.2)
+
+Thu, 15 Aug 2024 08:22:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.1..@fluentui/react-nav-preview_v0.7.2)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.3 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-button to v9.3.88 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-drawer to v9.5.10 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-tabster to v9.22.4 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+
+## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.1)
+
+Tue, 06 Aug 2024 21:40:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.0..@fluentui/react-nav-preview_v0.7.1)
+
+### Patches
+
+- Bump @fluentui/react-drawer to v9.5.9 ([PR #32200](https://github.com/microsoft/fluentui/pull/32200) by beachball)
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.0)
+
+Mon, 05 Aug 2024 22:33:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.6.0..@fluentui/react-nav-preview_v0.7.0)
+
+### Minor changes
+
+- feat: Builds out and styles AppItemStatic ([PR #32161](https://github.com/microsoft/fluentui/pull/32161) by matejera@microsoft.com)
+- Bump @fluentui/react-drawer to v9.5.8 ([PR #32077](https://github.com/microsoft/fluentui/pull/32077) by beachball)
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.6.0)
+
+Tue, 30 Jul 2024 18:47:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.5.3..@fluentui/react-nav-preview_v0.6.0)
+
+### Minor changes
+
+- Adds AppItem and AppItemStatic, removes AppNode ([PR #32088](https://github.com/microsoft/fluentui/pull/32088) by matejera@microsoft.com)
+- feat: Adds slots & styling for AppItem. ([PR #32103](https://github.com/microsoft/fluentui/pull/32103) by matejera@microsoft.com)
+- Bump @fluentui/react-drawer to v9.5.7 ([PR #32157](https://github.com/microsoft/fluentui/pull/32157) by beachball)
+
+### Patches
+
+- chore: update types for navDrawerClassNames ([PR #31668](https://github.com/microsoft/fluentui/pull/31668) by olfedias@microsoft.com)
+
+## [0.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.5.3)
+
+Tue, 23 Jul 2024 20:13:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.5.2..@fluentui/react-nav-preview_v0.5.3)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.2 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-button to v9.3.87 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.65 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-divider to v9.2.73 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-drawer to v9.5.6 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.42 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.0 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-tabster to v9.22.3 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-utilities to v9.18.13 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
 
 ## [0.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.5.2)
 

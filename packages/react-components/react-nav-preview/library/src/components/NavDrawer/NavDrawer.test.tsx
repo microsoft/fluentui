@@ -1,5 +1,6 @@
 import { isConformant } from '../../testing/isConformant';
 import { NavDrawer } from './NavDrawer';
+import type { NavDrawerProps } from './NavDrawer.types';
 
 /**
  * Why these tests are disabled:
@@ -9,7 +10,7 @@ import { NavDrawer } from './NavDrawer';
  */
 
 describe('NavDrawer', () => {
-  isConformant({
+  isConformant<NavDrawerProps>({
     Component: NavDrawer,
     displayName: 'NavDrawer',
     disabledTests: [

@@ -10,6 +10,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   archive: {
     extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z'],
   },
+  album: {},
   audio: {
     extensions: [
       'aif',
@@ -258,6 +259,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   contact: {
     extensions: ['vcf'],
   },
+  copilot: {
+    extensions: ['copilot'],
+  },
   /*  css: {},  not broken out yet, snapping to 'code' for now */
   csv: {
     extensions: ['csv'],
@@ -407,6 +411,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   photo360: {},
   picturesfolder: {},
   planner: {},
+  portfolio: {},
   potx: {
     extensions: ['pot', 'potm', 'potx'],
   },

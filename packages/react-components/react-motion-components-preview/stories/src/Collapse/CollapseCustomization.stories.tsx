@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  createPresenceComponentVariant,
+  createPresenceComponent,
   Field,
   makeStyles,
   mergeClasses,
@@ -10,7 +10,7 @@ import {
   Switch,
   tokens,
 } from '@fluentui/react-components';
-import { Collapse } from '@fluentui/react-motion-components-preview';
+import { createCollapsePresence } from '@fluentui/react-motion-components-preview';
 
 import description from './CollapseCustomization.stories.md';
 
@@ -54,10 +54,14 @@ const useClasses = makeStyles({
   },
 });
 
-const CustomCollapseVariant = createPresenceComponentVariant(Collapse, {
-  enter: { duration: motionTokens.durationSlow, easing: motionTokens.curveEasyEaseMax },
-  exit: { duration: motionTokens.durationNormal, easing: motionTokens.curveEasyEaseMax },
-});
+const CustomCollapseVariant = createPresenceComponent(
+  createCollapsePresence({
+    enterDuration: motionTokens.durationSlow,
+    enterEasing: motionTokens.curveEasyEaseMax,
+    exitDuration: motionTokens.durationNormal,
+    exitEasing: motionTokens.curveEasyEaseMax,
+  }),
+);
 
 const LoremIpsum = () => (
   <>

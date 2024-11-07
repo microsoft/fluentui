@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(TimePicker): Clear text when date value changes to null",
-  "packageName": "@fluentui/react",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

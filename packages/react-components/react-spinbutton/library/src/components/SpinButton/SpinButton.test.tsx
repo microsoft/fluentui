@@ -27,7 +27,6 @@ describe('SpinButton', () => {
 
     const spinButton = getSpinButtonInput();
     expect(spinButton.value).toEqual('10');
-    expect(spinButton.getAttribute('aria-valuenow')).toEqual('10');
     expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
@@ -42,7 +41,6 @@ describe('SpinButton', () => {
 
     const spinButton = getSpinButtonInput();
     expect(spinButton.value).toEqual('1');
-    expect(spinButton.getAttribute('aria-valuenow')).toEqual('1');
     expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
@@ -67,7 +65,6 @@ describe('SpinButton', () => {
 
       const spinButton = getSpinButtonInput();
       expect(spinButton.value).toEqual('1');
-      expect(spinButton.getAttribute('aria-valuenow')).toEqual('1');
       expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
       expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
       expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
@@ -78,7 +75,6 @@ describe('SpinButton', () => {
 
       const spinButton = getSpinButtonInput();
       expect(spinButton.value).toEqual('$1.00');
-      expect(spinButton.getAttribute('aria-valuenow')).toEqual('1');
       expect(spinButton.getAttribute('aria-valuetext')).toEqual('$1.00');
       expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
       expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
@@ -89,7 +85,6 @@ describe('SpinButton', () => {
 
       const spinButton = getSpinButtonInput();
       expect(spinButton.value).toEqual('$1.00');
-      expect(spinButton.getAttribute('aria-valuenow')).toEqual('1');
       expect(spinButton.getAttribute('aria-valuetext')).toEqual('Custom value text');
       expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
       expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
@@ -102,7 +97,6 @@ describe('SpinButton', () => {
 
       const spinButton = getSpinButtonInput();
       expect(spinButton.value).toBe('');
-      expect(spinButton.getAttribute('aria-valuenow')).toBeNull();
       expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
     });
 
@@ -111,7 +105,6 @@ describe('SpinButton', () => {
 
       const spinButton = getSpinButtonInput();
       expect(spinButton.value).toBe('');
-      expect(spinButton.getAttribute('aria-valuenow')).toBeNull();
       expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
     });
   });

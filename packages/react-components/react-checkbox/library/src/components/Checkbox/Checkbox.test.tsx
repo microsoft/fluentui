@@ -147,13 +147,13 @@ describe('Checkbox', () => {
     const renderedComponent = render(<Checkbox onChange={onChange} />);
     const input = renderedComponent.getByRole('checkbox') as HTMLInputElement;
 
-    expect(onChange).toBeCalledTimes(0);
+    expect(onChange).toHaveBeenCalledTimes(0);
 
     fireEvent.click(input);
     fireEvent.click(input);
     fireEvent.click(input);
 
-    expect(onChange).toBeCalledTimes(3);
+    expect(onChange).toHaveBeenCalledTimes(3);
     expect(onChange.mock.calls[0][1]).toEqual({ checked: true });
     expect(onChange.mock.calls[1][1]).toEqual({ checked: false });
     expect(onChange.mock.calls[2][1]).toEqual({ checked: true });

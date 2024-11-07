@@ -4,13 +4,9 @@
   "private": true,
   "type": "commonjs",
   "generators": "./generators.json",
-  "scripts": {
-    "test": "nx run workspace-plugin:test",
-    "type-check": "node  ./scripts/type-check.mjs",
-    "lint": "eslint --ext .ts,.js,.json ."
-  },
+  "executors": "./executors.json",
   "dependencies": {
-    "@nx/devkit": "~19.3.2"
+    "@nx/devkit": "~19.5.7"
   },
   "devDependencies": {}
 }

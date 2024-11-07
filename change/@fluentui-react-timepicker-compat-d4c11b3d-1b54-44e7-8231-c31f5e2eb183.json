@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "add explicit typeRoot to tsconfig.json",
+  "packageName": "@fluentui/react-timepicker-compat",
+  "email": "viktorgenaev@microsoft.com",
+  "dependentChangeType": "none"
+}

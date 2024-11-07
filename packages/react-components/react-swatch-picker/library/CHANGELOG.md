@@ -1,8 +1,89 @@
 # Change Log - @fluentui/react-swatch-picker
 
-This log was last generated on Mon, 15 Jul 2024 17:25:48 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2024 17:17:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker_v9.1.12)
+
+Tue, 15 Oct 2024 17:17:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker_v9.1.11..@fluentui/react-swatch-picker_v9.1.12)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.68 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.45 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.2 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-tabster to v9.22.9 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-theme to v9.1.21 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-utilities to v9.18.16 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+
+## [9.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker_v9.1.11)
+
+Tue, 08 Oct 2024 22:05:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker_v9.1.10..@fluentui/react-swatch-picker_v9.1.11)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.22.8 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+
+## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker_v9.1.10)
+
+Mon, 23 Sep 2024 12:40:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker_v9.1.9..@fluentui/react-swatch-picker_v9.1.10)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.67 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.44 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.1 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-tabster to v9.22.7 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-theme to v9.1.20 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-utilities to v9.18.15 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+
+## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker_v9.1.9)
+
+Tue, 10 Sep 2024 10:19:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker_v9.1.8..@fluentui/react-swatch-picker_v9.1.9)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.66 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.43 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-tabster to v9.22.6 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-utilities to v9.18.14 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker_v9.1.8)
+
+Thu, 15 Aug 2024 13:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker_v9.1.7..@fluentui/react-swatch-picker_v9.1.8)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.22.5 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+
+## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker_v9.1.7)
+
+Thu, 15 Aug 2024 08:22:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker_v9.1.6..@fluentui/react-swatch-picker_v9.1.7)
+
+### Patches
+
+- (react-swatch-picker): fixed documentation ([PR #32279](https://github.com/microsoft/fluentui/pull/32279) by vkozlova@microsoft.com)
+- Bump @fluentui/react-tabster to v9.22.4 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+
+## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker_v9.1.6)
+
+Tue, 23 Jul 2024 20:13:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker_v9.1.5..@fluentui/react-swatch-picker_v9.1.6)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.65 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.42 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.0 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-tabster to v9.22.3 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-utilities to v9.18.13 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
 
 ## [9.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker_v9.1.5)
 

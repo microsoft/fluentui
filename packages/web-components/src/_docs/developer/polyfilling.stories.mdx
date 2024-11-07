@@ -10,10 +10,29 @@ Fluent UI Web Components takes a "bring your own polyfill" approach so that proj
 
 Here's a list of features we're leveraging and their current [Baseline](https://web.dev/baseline) browser support.
 
-|                        | Chrome | Edge | Firefox | Safari |
-| ---------------------- | ------ | ---- | ------- | ------ |
-| HTML Popover Attribute | 114    | 114  | 125     | 17     |
-| CSS Anchor Positioning | 125    | 125  | ❌      | ❌     |
+<table>
+  <tr>
+    <th></th>
+    <th>Chrome</th>
+    <th>Edge</th>
+    <th>Firefox</th>
+    <th>Safari</th>
+  </tr>
+  <tr>
+    <td>HTML Popover Attribute</td>
+    <td>114</td>
+    <td>114</td>
+    <td>125</td>
+    <td>17</td>
+  </tr>
+  <tr>
+    <td>CSS Anchor Positioning</td>
+    <td>125</td>
+    <td>125</td>
+    <td>❌</td>
+    <td>❌</td>
+  </tr>
+</table>
 
 ## HTML Popover
 
@@ -48,4 +67,26 @@ Two lines of global CSS are needed to cleanup a potential positioning side effec
 
 ## CSS Anchor Positioning
 
-All [CSS anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning) fallbacks are handled minimally in script and CSS. In the near future, we may recommend the [anchor positioning polyfill](https://github.com/oddbird/css-anchor-positioning) but it doesn't cover all of our use cases at this time.
+Menu anchor positioning is handled minimally in a fallback script but for more complex anchor positioned components (Tooltip, Dropdown, Combobox), you will need to implement your own polyfill.
+
+```js
+/**
+ * Client-side Import example with conditional polyfill import for older browsers.
+ * This MUST be included before Fluent UI.
+ */
+if (!CSS.supports('anchor-name: --foo')) {
+  const { default: applyPolyfill } = await import(
+    'https://unpkg.com/@oddbird/css-anchor-positioning/dist/css-anchor-positioning-fn.js'
+  );
+  window.CSS_ANCHOR_POLYFILL = applyPolyfill;
+}
+```
+
+```js
+/**
+ * NPM Import example where polyfill is bundled into main bundle
+ * This MUST be included before Fluent UI.
+ */
+import { default as applyPolyfill } from '@oddbird/css-anchor-positioning/fn';
+window.CSS_ANCHOR_POLYFILL = applyPolyfill;
+```

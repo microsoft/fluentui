@@ -1,8 +1,62 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Mon, 15 Jul 2024 17:25:35 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2024 17:17:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.0)
+
+Tue, 15 Oct 2024 17:17:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.5.2..@fluentui/react-motion_v9.6.0)
+
+### Minor changes
+
+- feat: export MotionParam type ([PR #32939](https://github.com/microsoft/fluentui/pull/32939) by robertpenner@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.20.2 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-utilities to v9.18.16 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+
+## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.5.2)
+
+Mon, 23 Sep 2024 12:40:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.5.1..@fluentui/react-motion_v9.5.2)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.20.1 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-utilities to v9.18.15 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.5.1)
+
+Tue, 10 Sep 2024 10:19:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.5.0..@fluentui/react-motion_v9.5.1)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.14 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.5.0)
+
+Fri, 16 Aug 2024 10:24:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.4.0..@fluentui/react-motion_v9.5.0)
+
+### Minor changes
+
+- feat: Add context to configure motion behaviour ([PR #32316](https://github.com/microsoft/fluentui/pull/32316) by lingfangao@hotmail.com)
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.4.0)
+
+Tue, 23 Jul 2024 20:13:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.3.0..@fluentui/react-motion_v9.4.0)
+
+### Minor changes
+
+- feat: add presenceMotionSlot() API ([PR #31984](https://github.com/microsoft/fluentui/pull/31984) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.20.0 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-utilities to v9.18.13 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+
+### Patches
+
+- fix: improve Web Animations API detection in tests ([PR #32029](https://github.com/microsoft/fluentui/pull/32029) by olfedias@microsoft.com)
 
 ## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.3.0)
 

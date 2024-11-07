@@ -1483,10 +1483,13 @@ export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(opti
 export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
 
 // @public
+export function useIsNavigatingWithKeyboard(): () => boolean;
+
+// @public
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
 
 // @internal
-export const useMergedTabsterAttributes_unstable: (...attributes: Types.TabsterDOMAttribute[]) => Types.TabsterDOMAttribute;
+export const useMergedTabsterAttributes_unstable: (...attributes: (Partial<Types.TabsterDOMAttribute> | null | undefined)[]) => Types.TabsterDOMAttribute;
 
 // @public
 export const useModalAttributes: (options?: UseModalAttributesOptions) => {

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: introduce bundle aware build:react task for v8 packages that ship UMD to production(npm registry)",
-  "packageName": "@fluentui/example-data",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

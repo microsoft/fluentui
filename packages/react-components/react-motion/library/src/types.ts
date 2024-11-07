@@ -5,8 +5,6 @@ export type PresenceDirection = 'enter' | 'exit';
 export type PresenceMotion = Record<PresenceDirection, AtomMotion | AtomMotion[]>;
 
 /**
- * @internal
- *
  * A motion param should be a primitive value that can be serialized to JSON and could be potentially used a plain
  * dependency for React hooks.
  */

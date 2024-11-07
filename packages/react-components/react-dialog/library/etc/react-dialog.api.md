@@ -143,7 +143,7 @@ export type DialogSlots = {
 };
 
 // @public (undocumented)
-export type DialogState = ComponentState<DialogSlots> & DialogContextValue & {
+export type DialogState = ComponentState<InternalDialogSlots> & DialogContextValue & {
     content: React_2.ReactNode;
     trigger: React_2.ReactNode;
 };

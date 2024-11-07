@@ -1,7 +1,7 @@
 import { spinalCase } from '@microsoft/fast-web-utilities';
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
-import { Link } from './link.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
+import type { Link } from './link.js';
 
 const proxyAttributes = {
   href: 'href',
@@ -21,7 +21,7 @@ const attributes = {
 
 test.describe('Link', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-link--link'));
+    await page.goto(fixtureURL('components-link--appearance'));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-link'));
   });
@@ -64,13 +64,13 @@ test.describe('Link', () => {
       node.appearance = 'subtle';
     });
 
-    expect(await element.evaluate((node: Link) => node.elementInternals.states.has('subtle'))).toBe(true);
+    await expect(element).toHaveCustomState('subtle');
 
     await element.evaluate((node: Link) => {
       node.appearance = undefined;
     });
 
-    expect(await element.evaluate((node: Link) => node.elementInternals.states.has('subtle'))).toBe(false);
+    await expect(element).not.toHaveCustomState('subtle');
   });
 
   test('should add a custom state of `inline` when true', async ({ page }) => {
@@ -80,12 +80,12 @@ test.describe('Link', () => {
       node.inline = true;
     });
 
-    expect(await element.evaluate((node: Link) => node.elementInternals.states.has('inline'))).toBe(true);
+    await expect(element).toHaveCustomState('inline');
 
     await element.evaluate((node: Link) => {
       node.inline = false;
     });
 
-    expect(await element.evaluate((node: Link) => node.elementInternals.states.has('inline'))).toBe(false);
+    await expect(element).not.toHaveCustomState('inline');
   });
 });

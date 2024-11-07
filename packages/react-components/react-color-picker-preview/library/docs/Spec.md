@@ -2,62 +2,452 @@
 
 ## Background
 
-_Description and use cases of this component_
+The ColorPicker is used to browse through and select colors.
+By default, it lets people navigate through colors on a color spectrum; or specify a color in either Red-Green-Blue (RGB); or alpha color code; or Hexadecimal textboxes.
 
 ## Prior Art
 
-_Include background research done for this component_
+[Convergence epic](https://github.com/microsoft/fluentui/issues/31778)
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+### Fabric (v8)
 
-## Sample Code
+```jsx
+import * as React from 'react';
+import {
+  ColorPicker,
+  ChoiceGroup,
+  IChoiceGroupOption,
+  getColorFromString,
+  IColor,
+  IColorPickerStyles,
+  IColorPickerProps,
+} from '@fluentui/react';
 
-_Provide some representative example code that uses the proposed API for the component_
+const white = getColorFromString('#ffffff')!;
+
+const ColorPickerBasicExample: React.FunctionComponent = () => {
+  const [color, setColor] = React.useState(white);
+  const [showPreview, setShowPreview] = React.useState(true);
+  const [alphaType, setAlphaType] = React.useState<IColorPickerProps['alphaType']>('alpha');
+
+  const updateColor = React.useCallback((ev: any, colorObj: IColor) => setColor(colorObj), []);
+
+  return (
+    <>
+      <ColorPicker
+        color={color}
+        onChange={updateColor}
+        alphaType={alphaType}
+        showPreview={showPreview}
+        styles={colorPickerStyles}
+        strings={{
+          hueAriaLabel: 'Hue',
+        }}
+      />
+    </>
+  );
+};
+```
+
+### 3rd party Design Systems
+
+- Adobe Spectrum
+  - [ColorPicker](https://react-spectrum.adobe.com/react-spectrum/ColorPicker.html)
+  - [ColorArea](https://react-spectrum.adobe.com/react-spectrum/ColorArea.html)
+  - [ColorSlider](https://react-spectrum.adobe.com/react-spectrum/ColorSlider.html)
+
+### Components
+
+| Purpose                                                                  | Fabric (V8)    | Spectrum    | V9                 | Matching? |
+| ------------------------------------------------------------------------ | -------------- | ----------- | ------------------ | --------- |
+| Component responsible for color editing using ColorArea and ColorSliders | ColorPicker    | ColorPicker | ColorPickerPalette | ⚠️        |
+| ColorArea allows user to pick a color using two channels                 | ColorRectangle | ColorArea   | ColorArea          | ⚠️        |
+| ColorSlider allows user to pick a color using individual channel         | ColorSlider    | ColorSlider | ColorSlider        | ⚠️        |
+| AlphaSlider allows user to pick a color using alpha channel              |                |             | AlphaSlider        | ❌        |
+
+## Sample Code of proposed API below
+
+```jsx
+import {
+  ColorPickerPalette,
+  ColorArea,
+  ColorSliderProps,
+  AlphaSlider,
+  HueSlider,
+  ColorPickerOnSelectEventHandler,
+} from '@fluentui/react-color-picker-preview';
+
+export const Default = () => {
+  const [selectedColor, setSelectedColor] = React.useState('rgba(0, 255, 170, 1)');
+  const handleChange: ColorPickerProps['onChange'] = (_, data) => {
+    setSelectedColor(data.selectedColorHex);
+  };
+
+  return (
+    <>
+      <ColorPickerPalette color={selectedColor} onChange={handleChange}>
+        <ColorArea />
+        <AlphaSlider />
+        <HueSlider />
+      </ColorPickerPalette>
+      <div style={{ backgroundColor: `${selectedColor}` }} />
+    </>
+  );
+};
+```
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+### Layouts
+
+- horizontal (default)
+- vertical
+
+ColorSliders might represent different color channels.
+
+### Shapes
+
+- `square` (default)
+- `rounded`
+
+### Size
+
+Size will be the same as in Office products.
+For custom sizes users might want to customize it via CSS.
+
+### States
+
+- `rest`
+- `focused`
+
+### Color support
+
+- RGB(A)
+- Hex
+- HSL(A)
+- HSV/HSB
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+### ColorPicker
+
+| Property   | Values              | Default   | Purpose                                |
+| ---------- | ------------------- | --------- | -------------------------------------- |
+| color      | `string`            |           | Sets color value                       |
+| onChange   | `function`          | undefined | Callback called when color is selected |
+| shape      | `square`, `rounded` | `square`  | Sets shape                             |
+| step       | `number`            | 1         | Step for arrow navigation              |
+| customStep | `number`            | 3         | Fast navigation                        |
+
+Color has `string` type because all the color manipulations will be done inside of the ColorPicker component. It'll transform any color to HSL or RGB format.
+
+`onChange` event returns data which contains a new color and values of color channels.
+
+Input fields with color values will be in `renderUtils`. It will contain default ColorPicker which has all colors represented and a preview swatch. This functionality is similar to V8.
+
+```tsx
+import { ColorPicker } from '@fluentui/react-color-picker-preview';
+
+export const Default = () => {
+  const COLOR = 'rgba(0, 255, 170, 1)';
+  const [selectedColor, setSelectedColor] = React.useState(COLOR);
+  const handleChange: ColorPickerOnSelectEventHandler = (_, data) => {
+    setSelectedColor(data.selectedColorHex);
+  };
+
+  return (
+    <>
+      <ColorPicker
+        color={selectedColor}
+        onChange={handleChange}
+        showAlphaSlider={true}
+        showPreview={true}
+        channels={['hex', 'rgb']}
+      />
+      <div style={{ backgroundColor: `${selectedColor}` }} />
+    </>
+  );
+};
+```
+
+![ColorPickerPalette](./assets/color-picker-layout.jpg)
+
+Validation of color fields will be in `utils`. Validation should not allow entering incorrect values to the input fields.
+
+For color manipulation and conversion [tinycolor](https://www.npmjs.com/package/@ctrl/tinycolor) library will be used.
+
+| Slots | Values | Default | Description                 |
+| ----- | ------ | ------- | --------------------------- |
+| root  | `div`  | `div`   | The root of the ColorPicker |
+
+### ColorArea
+
+| Property   | Values              | Default   | Purpose                                |
+| ---------- | ------------------- | --------- | -------------------------------------- |
+| customStep | `number`            | 3         | Fast step for the slider               |
+| onChange   | `function`          | undefined | Callback called when color is selected |
+| shape      | `square`, `rounded` | `square`  | Sets shape                             |
+| step       | `number`            | 1         | Step for the slider                    |
+| valueX     | `string`            |           | Value of the slider on X axis          |
+| valueY     | `string`            |           | Value of the slider on Y axis          |
+
+| Slots   | Values  | Default | Description                                                         |
+| ------- | ------- | ------- | ------------------------------------------------------------------- |
+| root    | `div`   | `div`   | The root of the ColorArea element                                   |
+| thumb   | `div`   | `div`   | The draggable icon used to select a given value from the ColorArea. |
+| sliderX | `input` | `input` | Input for X axis                                                    |
+| sliderY | `input` | `input` | Input for Y axis                                                    |
+
+### ColorSlider
+
+| Property   | Values                   | Default      | Purpose                                |
+| ---------- | ------------------------ | ------------ | -------------------------------------- |
+| customStep | `number`                 | 3            | Fast step for the slider               |
+| max        | `number`                 | 360          | The max value of the Slider.           |
+| min        | `number`                 | 0            | The min value of the Slider.           |
+| onChange   | `function`               | undefined    | Callback called when color is selected |
+| orient     | `horizontal`, `vertical` | `horizontal` | Orientation of a slider                |
+| shape      | `square`, `rounded`      | `square`     | Sets shape                             |
+| step       | `number`                 | 1            | Step for the slider                    |
+| value      | `string`                 |              | Value of the slider                    |
+
+| Slots  | Values  | Default | Description                                                      |
+| ------ | ------- | ------- | ---------------------------------------------------------------- |
+| root   | `div`   | `div`   | The root of the ColorSlider element                              |
+| thumb  | `div`   | `div`   | The draggable icon used to select a given value from the Slider. |
+| slider | `input` | `input` | Input for slider                                                 |
+| rail   | `div`   | `div`   | It is used to visibly display the min and max selectable values. |
+
+### AlphaSlider
+
+| Property     | Values                   | Default      | Purpose                                |
+| ------------ | ------------------------ | ------------ | -------------------------------------- |
+| customStep   | `number`                 | 3            | Fast step for the slider               |
+| max          | `number`                 | 100          | The max value of the Slider.           |
+| min          | `number`                 | 0            | The min value of the Slider.           |
+| onChange     | `function`               | undefined    | Callback called when color is selected |
+| orient       | `horizontal`, `vertical` | `horizontal` | Orientation of a slider                |
+| overlayColor | `string`                 | undefined    | Overlay color                          |
+| shape        | `square`, `rounded`      | `square`     | Sets shape                             |
+| step         | `number`                 | 1            | Step for the slider                    |
+| value        | `string`                 |              | value of the slider                    |
+
+| Slots  | Values  | Default | Description                                                      |
+| ------ | ------- | ------- | ---------------------------------------------------------------- |
+| root   | `div`   | `div`   | The root of the AlphaSlider element                              |
+| thumb  | `div`   | `div`   | The draggable icon used to select a given value from the Slider. |
+| slider | `input` | `input` | Input for slider                                                 |
+| rail   | `div`   | `div`   | It is used to visibly display the min and max selectable values. |
 
 ## Structure
 
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+### Components
+
+| Component          | Purpose                                      |
+| ------------------ | -------------------------------------------- |
+| ColorPickerPalette | Renders ColorPicker                          |
+| ColorArea          | Renders two-dimensional gradient background. |
+| ColorSlider        | Renders individual color channel             |
+| AlphaSlider        | Renders slider with alpha channel            |
+
+#### ColorPickerPalette component
+
+![ColorPickerPalette Anatomy](./assets/color-picker-anatomy.jpg)
+
+#### DOM
+
+```HTML
+<div role="group" class="fui-ColorPickerPalette" arial-label="ColorPicker">
+  <!-- Content rendered here -->
+</div>
+```
+
+#### ColorArea component
+
+![ColorArea Anatomy](./assets/color-area-anatomy.jpg)
+
+#### DOM
+
+```HTML
+<div role="group" class="fui-ColorArea" aria-label="Gradient area">
+  <input id="sliderX" type="range" class="fui-ColorArea__inputX" value="96" aria-label="saturation">
+  <input id="sliderY" type="range" class="fui-ColorArea__inputY" value="0" aria-label="brightness">
+  <div class="fui-ColorArea__thumb"></div>
+</div>
+```
+
+#### ColorSlider component
+
+##### Horizontal
+
+![ColorSlider horizontal Anatomy](./assets/color-slider-horizontal.jpg)
+
+##### Vertical
+
+![ColorSlider vertical Anatomy](./assets/color-slider-vertical.jpg)
+
+#### DOM
+
+```HTML
+<div class="fui-ColorSlider" role="group">
+  <input id="slider" type="range" value="100" aria-label="red" max="360">
+  <div class="fui-ColorSlider__rail" ></div>
+  <div class="fui-ColorSlider__thumb"></div>
+</div>
+```
+
+#### AlphaSlider component
+
+![AlphaSlider Anatomy](./assets/alpha-slider-anatomy.jpg)
+
+#### DOM
+
+```HTML
+<div class="fui-AlphaSlider" role="group">
+  <input id="slider" type="range"  value="100" aria-label="red">
+  <div class="fui-AlphaSlider__rail" ></div>
+  <div class="fui-AlphaSlider__thumb"></div>
+</div>
+```
 
 ## Migration
 
-_Describe what will need to be done to upgrade from the existing implementations:_
+### Fabric (v8) property mapping
 
-- _Migration from v8_
-- _Migration from v0_
+#### New props
+
+- `customStep`
+- `shape`
+- `step`
+
+#### Supported Props
+
+- `color`
+- `onChange`
+
+#### Props no longer supported with an equivalent functionality in ColorPicker V9:
+
+- `className` => Slot system supports it by default. We don't need to provide it explicitly.
+- `styles` => Use style customization through `className` instead.
+- `theme`
+
+#### Props no longer supported
+
+- `alphaType`
+- `componentRef`
+- `showPreview`
+- `strings`
+- `tooltipProps`
+
+#### ColorArea component
+
+#### New props
+
+- `customStep`
+- `shape`
+- `step`
+- `valueX`
+- `valueY`
+
+#### Props supported
+
+- `color`
+
+#### ColorSlider component
+
+#### New props
+
+- `customStep`
+- `shape`
+- `orient`
+- `step`
+
+#### Props supported
+
+- `value`
+- `onChange`
+
+#### Props no longer supported with an equivalent functionality in ColorPicker V9:
+
+- `minValue` => Use `min` instead
+- `maxValue` => Use `max` instead
+- `type` => in case of support channels it'll be `channel` instead
+- `isAlpha` => use `AlphaSlider` component instead
+- `overlayColor` => part of `AlphaSlider` component
+- `thumbColor` => is calculated automatically or can be customized via CSS
+
+#### Property Mapping
+
+| v8 `ColorPicker` | v9 `ColorPicker`           |
+| ---------------- | -------------------------- |
+| `value`          | `value`                    |
+| `onChange`       | `onChange`                 |
+| `maxValue`       | `max`                      |
+| `minValue`       | `min`                      |
+| `shape `         |                            |
+| `type`           | `channel`                  |
+| `isAlpha`        | `AlphaSlider` component    |
+| `overlayColor`   | In `AlphaSlider` component |
+| `thumbColor`     |                            |
+|                  | `customStep`               |
+|                  | `shape`                    |
+|                  | `orient`                   |
+|                  | `step`                     |
 
 ## Behaviors
 
-_Explain how the component will behave in use, including:_
+### Mouse
 
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+On `click` color is selected and color thumb is moved to the selected position. Color thumb should represent selected color.
+
+States:
+
+1. Rest
+2. Focus
+3. OnClick
+
+   Color is selected.
+
+### Keyboard Navigation
+
+In a `horizontal` orientation top/right arrows move to the right, bottom/left arrows move to the left.
+
+| Key                  | Result                                                         |
+| -------------------- | -------------------------------------------------------------- |
+| Arrows               | Color thumb is focused. Color is selected                      |
+| `Home/End/PgUp/PgDn` | Can be used another configuration for the step to move faster. |
+| `Tab`                | Navigation between color sliders and Color Area                |
+
+##### Color/Alpha Slider
+
+![Slider navigation](./assets/color-slider-navigation.jpg)
+
+##### ColorArea
+
+![ColorArea  navigation](./assets/color-area-navigation.jpg)
+
+### Screen readers
+
+On navigation and color select the screen reader should read the following:
+
+1. `aria-labelledby` of the root component, e.g. "ColorPicker, 2D slider"
+2. `aria-label` of the input element with the color description.
+
+**Example**: "ColorPicker, 2D slider, Red 10, Green 132, Blue 228, Azure Radiance"
 
 ## Accessibility
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
+Use `tab` key to navigate between ColorArea and Color sliders. Use arrows keys to select a color.
 
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+**Root element of ColorSlider and ColorArea:**
+
+- role `group`
+- `aria-labelledby`
+
+For vertical Slider `aria-orientation="vertical"`
+
+**ColorArea X/Y inputs and Color/AlphaSlider:**
+
+- `aria-label`
+
+![ColorPicker Accessibility](./assets/color-picker-a11y.jpg)

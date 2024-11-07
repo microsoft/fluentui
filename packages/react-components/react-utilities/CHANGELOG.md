@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 15 Jul 2024 17:25:23 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2024 17:17:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.16)
+
+Tue, 15 Oct 2024 17:17:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.15..@fluentui/react-utilities_v9.18.16)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.20.2 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+
+## [9.18.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.15)
+
+Mon, 23 Sep 2024 12:40:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.14..@fluentui/react-utilities_v9.18.15)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.20.1 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+
+## [9.18.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.14)
+
+Tue, 10 Sep 2024 10:19:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.13..@fluentui/react-utilities_v9.18.14)
+
+### Patches
+
+- chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
+
+## [9.18.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.13)
+
+Tue, 23 Jul 2024 20:13:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.12..@fluentui/react-utilities_v9.18.13)
+
+### Patches
+
+- chore: stops leaking HTMLElementConstructorName type ([PR #32072](https://github.com/microsoft/fluentui/pull/32072) by bernardo.sunderhus@gmail.com)
+- chore: simplify SlotComponentType type ([PR #31984](https://github.com/microsoft/fluentui/pull/31984) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.20.0 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
 
 ## [9.18.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.12)
 

@@ -1,11 +1,11 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import type { TextInput } from './text-input.js';
 import { ImplicitSubmissionBlockingTypes } from './text-input.options.js';
 
 test.describe('TextInput', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-textinput--text-input'));
+    await page.goto(fixtureURL('components-textinput--default'));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-text-input'));
   });
@@ -171,29 +171,29 @@ test.describe('TextInput', () => {
       node.controlSize = 'small';
     });
 
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('small'))).toBe(true);
+    await expect(element).toHaveCustomState('small');
 
     await element.evaluate((node: TextInput) => {
       node.controlSize = 'medium';
     });
 
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('small'))).toBe(false);
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('medium'))).toBe(true);
+    await expect(element).not.toHaveCustomState('small');
+    await expect(element).toHaveCustomState('medium');
 
     await element.evaluate((node: TextInput) => {
       node.controlSize = 'large';
     });
 
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('medium'))).toBe(false);
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('large'))).toBe(true);
+    await expect(element).not.toHaveCustomState('medium');
+    await expect(element).toHaveCustomState('large');
 
     await element.evaluate((node: TextInput) => {
       node.controlSize = undefined;
     });
 
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('small'))).toBe(false);
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('medium'))).toBe(false);
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('large'))).toBe(false);
+    await expect(element).not.toHaveCustomState('small');
+    await expect(element).not.toHaveCustomState('medium');
+    await expect(element).not.toHaveCustomState('large');
   });
 
   test('should reflect `appearance` attribute values', async ({ page }) => {
@@ -237,36 +237,36 @@ test.describe('TextInput', () => {
       node.appearance = 'outline';
     });
 
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('outline'))).toBe(true);
+    await expect(element).toHaveCustomState('outline');
 
     await element.evaluate((node: TextInput) => {
       node.appearance = 'underline';
     });
 
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('outline'))).toBe(false);
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('underline'))).toBe(true);
+    await expect(element).not.toHaveCustomState('outline');
+    await expect(element).toHaveCustomState('underline');
 
     await element.evaluate((node: TextInput) => {
       node.appearance = 'filled-lighter';
     });
 
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('underline'))).toBe(false);
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('filled-lighter'))).toBe(true);
+    await expect(element).not.toHaveCustomState('underline');
+    await expect(element).toHaveCustomState('filled-lighter');
 
     await element.evaluate((node: TextInput) => {
       node.appearance = 'filled-darker';
     });
 
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('filled-lighter'))).toBe(false);
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('filled-darker'))).toBe(true);
+    await expect(element).not.toHaveCustomState('filled-lighter');
+    await expect(element).toHaveCustomState('filled-darker');
 
     await element.evaluate((node: TextInput) => {
       node.appearance = undefined;
     });
 
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('outline'))).toBe(false);
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('underline'))).toBe(false);
-    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('filled-lighter'))).toBe(false);
+    await expect(element).not.toHaveCustomState('outline');
+    await expect(element).not.toHaveCustomState('underline');
+    await expect(element).not.toHaveCustomState('filled-lighter');
   });
 
   test('should have an undefined `value` property when no `value` attribute is set', async ({ page }) => {

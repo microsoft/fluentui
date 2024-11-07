@@ -4,7 +4,7 @@ import type { StaticallyComposableHTML } from '../utils/index.js';
 import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { toggleState } from '../utils/element-internals.js';
+import { swapStates, toggleState } from '../utils/element-internals.js';
 import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
 
 /**
@@ -29,7 +29,7 @@ export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
  *
  * @public
  */
-export class AccordionItem extends FASTElement {
+export class BaseAccordionItem extends FASTElement {
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
@@ -101,6 +101,19 @@ export class AccordionItem extends FASTElement {
   public id: string = uniqueId('accordion-');
 
   /**
+   * @internal
+   */
+  public expandbutton!: HTMLElement;
+}
+
+/**
+ * An Accordion Item Custom HTML Element.
+ * Based on BaseAccordionItem and includes style and layout specific attributes
+ *
+ * @public
+ */
+export class AccordionItem extends BaseAccordionItem {
+  /**
    * Defines accordion header font size.
    *
    * @public
@@ -115,13 +128,30 @@ export class AccordionItem extends FASTElement {
    * @param prev - previous value
    * @param next - next value
    */
-  public sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
+  public sizeChanged(prev: AccordionItemSize | undefined, next: AccordionItemSize | undefined) {
+    swapStates(this.elementInternals, prev, next, AccordionItemSize);
+  }
+
+  /**
+   * Sets expand and collapsed icon position.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: marker-position
+   */
+  @attr({ attribute: 'marker-position' })
+  public markerPosition?: AccordionItemMarkerPosition;
+
+  /**
+   * Handles changes to marker-position attribute
+   * @param prev - previous value
+   * @param next - next value
+   */
+  public markerPositionChanged(
+    prev: AccordionItemMarkerPosition | undefined,
+    next: AccordionItemMarkerPosition | undefined,
+  ) {
+    swapStates(this.elementInternals, prev, next, AccordionItemMarkerPosition, 'align-');
   }
 
   /**
@@ -142,35 +172,6 @@ export class AccordionItem extends FASTElement {
   public blockChanged(prev: boolean, next: boolean): void {
     toggleState(this.elementInternals, 'block', next);
   }
-
-  /**
-   * Sets expand and collapsed icon position.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: marker-position
-   */
-  @attr({ attribute: 'marker-position' })
-  public markerPosition?: AccordionItemMarkerPosition;
-
-  /**
-   * Handles changes to marker-position attribute
-   * @param prev - previous value
-   * @param next - next value
-   */
-  public markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void {
-    if (prev) {
-      toggleState(this.elementInternals, `align-${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `align-${next}`, true);
-    }
-  }
-
-  /**
-   * @internal
-   */
-  public expandbutton!: HTMLElement;
 }
 
 /**

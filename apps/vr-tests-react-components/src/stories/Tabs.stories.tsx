@@ -206,3 +206,31 @@ export const WithIconOnlyAndVertical = () => (
 );
 
 WithIconOnlyAndVertical.storyName = 'With icon only and vertical';
+
+export const SubtleCircularAppearance = () => (
+  <TabList appearance="subtle-circular" defaultSelectedValue="1">
+    <Tab value="1">First</Tab>
+    <Tab className="mouse-target" value="2">
+      Second
+    </Tab>
+    <Tab value="3">Third</Tab>
+  </TabList>
+);
+
+export const SubtleCircularAppearanceDarkMode = getStoryVariant(SubtleCircularAppearance, DARK_MODE);
+
+export const SubtleCircularAppearanceHighContrast = getStoryVariant(SubtleCircularAppearance, HIGH_CONTRAST);
+
+export const FilledCircularAppearance = () => (
+  <TabList appearance="filled-circular" defaultSelectedValue="1">
+    <Tab value="1">First</Tab>
+    <Tab className="mouse-target" value="2">
+      Second
+    </Tab>
+    <Tab value="3">Third</Tab>
+  </TabList>
+);
+
+export const FilledCircularAppearanceDarkMode = getStoryVariant(FilledCircularAppearance, DARK_MODE);
+
+export const FilledCircularAppearanceHighContrast = getStoryVariant(FilledCircularAppearance, HIGH_CONTRAST);

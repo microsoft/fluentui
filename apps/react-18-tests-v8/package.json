@@ -18,7 +18,8 @@
     "@fluentui/scripts-cypress": "*",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "@fluentui/scripts-webpack": "*",
+    "@fluentui/scripts-storybook": "*"
   },
   "dependencies": {
     "@fluentui/react": "*",

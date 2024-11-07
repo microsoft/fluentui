@@ -1,13 +1,13 @@
-import { Scale } from '@fluentui/react-motion-components-preview';
+import { DefaultScale as Scale } from './Scale.stories';
 import ScaleDescription from './ScaleDescription.md';
 
 export { Default } from './ScaleDefault.stories';
 export { Snappy } from './ScaleSnappy.stories';
-export { Exaggerated } from './ScaleExaggerated.stories';
+export { Relaxed } from './ScaleRelaxed.stories';
 export { Customization } from './ScaleCustomization.stories';
 
 export default {
-  title: 'Utilities/Motion/Components (preview)/Scale',
+  title: 'Motion/Components (preview)/Scale',
   component: Scale,
   parameters: {
     docs: {

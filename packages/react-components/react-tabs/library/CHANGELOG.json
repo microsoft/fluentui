@@ -2,6 +2,248 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Tue, 15 Oct 2024 17:17:51 GMT",
+      "tag": "@fluentui/react-tabs_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "95ec5c9a269081fdfa6612cdc2b99a3d2c24572a",
+            "comment": "feature: add rounded tab variant"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.68",
+            "commit": "1907e859fbe89f001cf92eda8e3674d961cab6ac"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.45",
+            "commit": "1907e859fbe89f001cf92eda8e3674d961cab6ac"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.20.2",
+            "commit": "1907e859fbe89f001cf92eda8e3674d961cab6ac"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.22.9",
+            "commit": "1907e859fbe89f001cf92eda8e3674d961cab6ac"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-theme to v9.1.21",
+            "commit": "1907e859fbe89f001cf92eda8e3674d961cab6ac"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-utilities to v9.18.16",
+            "commit": "1907e859fbe89f001cf92eda8e3674d961cab6ac"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Oct 2024 22:05:59 GMT",
+      "tag": "@fluentui/react-tabs_v9.5.2",
+      "version": "9.5.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.22.8",
+            "commit": "2b9483934958dd8abcbe8181c68286f4711b9aac"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Sep 2024 12:40:17 GMT",
+      "tag": "@fluentui/react-tabs_v9.5.1",
+      "version": "9.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.67",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.44",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.20.1",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.22.7",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-theme to v9.1.20",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-utilities to v9.18.15",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Sep 2024 10:19:08 GMT",
+      "tag": "@fluentui/react-tabs_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "b044f714a9c16ac165e1b5829bdb04902f16aaf8",
+            "comment": "fix: Improve animation for active tab indicator on tabs with falsy values"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "2157a9ec51b1d4833f9a9ff7b495155c26154854",
+            "comment": "export Tab component style hooks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.66",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.43",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.22.6",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-utilities to v9.18.14",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Aug 2024 13:49:46 GMT",
+      "tag": "@fluentui/react-tabs_v9.4.30",
+      "version": "9.4.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.22.5",
+            "commit": "03878b1df8b8a004fb5ed36069ff838610896d21"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Aug 2024 08:22:17 GMT",
+      "tag": "@fluentui/react-tabs_v9.4.29",
+      "version": "9.4.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.22.4",
+            "commit": "e458baf8c47a8786b8616e2a0fbf12b8602ccd10"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Aug 2024 21:40:44 GMT",
+      "tag": "@fluentui/react-tabs_v9.4.28",
+      "version": "9.4.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "ba1dcc42dad00aad42b5942718da22bfb7d9fcac",
+            "comment": "ignore ref for tab reserved space content slot"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jul 2024 20:13:14 GMT",
+      "tag": "@fluentui/react-tabs_v9.4.27",
+      "version": "9.4.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.65",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.42",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.20.0",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.22.3",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-utilities to v9.18.13",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Jul 2024 17:25:15 GMT",
       "tag": "@fluentui/react-tabs_v9.4.26",
       "version": "9.4.26",

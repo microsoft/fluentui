@@ -18,17 +18,16 @@
     "owner": {
       "type": "string",
       "description": "Team owning the library. Will be written in CODEOWNERS",
+      "enum": [
+        "@microsoft/cxe-red",
+        "@microsoft/cxe-prg",
+        "@microsoft/fluentui-react-build",
+        "@microsoft/teams-prg",
+        "@microsoft/xc-uxe"
+      ],
       "x-priority": "important",
       "x-prompt": {
-        "message": "Which team will own this library",
-        "type": "list",
-        "items": [
-          "@microsoft/cxe-red",
-          "@microsoft/cxe-prg",
-          "@microsoft/fluentui-react-build",
-          "@microsoft/teams-prg",
-          "@microsoft/xc-uxe"
-        ]
+        "message": "Which team will own this library"
       }
     },
     "kind": {

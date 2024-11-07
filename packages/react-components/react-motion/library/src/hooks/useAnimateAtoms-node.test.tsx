@@ -4,13 +4,14 @@
 
 // 👆 this is intentionally to test in SSR like environment
 
+import { renderHook } from '@testing-library/react-hooks';
+import { useAnimateAtoms } from './useAnimateAtoms';
+
 describe('useAnimateAtoms (node)', () => {
   it('handles node/server environments', () => {
-    const win = typeof document === 'object' ? document.defaultView?.window : undefined;
-    const SUPPORTS_WEB_ANIMATIONS = win && typeof win.Element.prototype.animate === 'function';
+    const { result } = renderHook(() => useAnimateAtoms());
 
-    expect(win).toBe(undefined);
-    expect(SUPPORTS_WEB_ANIMATIONS).toBeFalsy();
+    expect(result.current).toBeInstanceOf(Function);
   });
 });
 

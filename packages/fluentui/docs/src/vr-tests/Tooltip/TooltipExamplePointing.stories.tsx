@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Keys, StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Tooltip, buttonClassName } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import TooltipExamplePointing from '../../examples/components/Tooltip/Types/TooltipExamplePointing.shorthand';
@@ -27,7 +27,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Tooltip>;
+} as Meta<typeof Tooltip>;
 
 const TooltipExamplePointingTeams = getThemeStoryVariant(TooltipExamplePointing, 'teamsV2');
 

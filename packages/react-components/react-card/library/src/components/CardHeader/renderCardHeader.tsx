@@ -13,7 +13,7 @@ export const renderCardHeader_unstable = (state: CardHeaderState) => {
   return (
     <state.root>
       {state.image && <state.image />}
-      <state.header />
+      {state.header && <state.header />}
       {state.description && <state.description />}
       {state.action && <state.action />}
     </state.root>

@@ -19,6 +19,8 @@ interface IVerticalStackedBarState {
   hideLabels: boolean;
   showAxisTitles: boolean;
   margins: {};
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -37,6 +39,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         right: 40,
         left: 60,
       },
+      enableGradient: false,
+      roundCorners: false,
     };
   }
 
@@ -80,6 +84,14 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         },
       });
     }
+  };
+
+  private _onEnableGradientChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onRoundCornersChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -283,14 +295,19 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
           onChange={this._onHideLabelsCheckChange}
           styles={{ root: { marginTop: '10px' } }}
         />
-        <Toggle
-          label="Toggle Axis titles"
-          onText="Show axis titles"
-          offText="Hide axis titles"
-          checked={this.state.showAxisTitles}
-          onChange={this._onToggleAxisTitlesCheckChange}
-          styles={{ root: { marginTop: '10px' } }}
-        />
+        <div style={{ display: 'flex' }}>
+          <Toggle
+            label="Toggle Axis titles"
+            onText="Show axis titles"
+            offText="Hide axis titles"
+            checked={this.state.showAxisTitles}
+            onChange={this._onToggleAxisTitlesCheckChange}
+          />
+          &nbsp;&nbsp;
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onEnableGradientChange} />
+          &nbsp;&nbsp;
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onRoundCornersChange} />
+        </div>
         {this.state.showAxisTitles && (
           <div style={rootStyle}>
             <VerticalStackedBarChart
@@ -309,6 +326,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               enableReflow={true}
               yAxisTitle={this.state.showAxisTitles ? 'Variation of number of sales' : undefined}
               xAxisTitle={this.state.showAxisTitles ? 'Number of days' : undefined}
+              enableGradient={this.state.enableGradient}
+              roundCorners={this.state.roundCorners}
             />
           </div>
         )}
@@ -328,6 +347,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               }}
               hideLabels={this.state.hideLabels}
               enableReflow={true}
+              enableGradient={this.state.enableGradient}
+              roundCorners={this.state.roundCorners}
             />
           </div>
         )}

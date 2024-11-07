@@ -13,15 +13,6 @@ export function useRovingTabIndex() {
   const walkerRef = React.useRef<HTMLElementWalker | null>(null);
   const { targetDocument } = useFluent();
 
-  React.useEffect(() => {
-    if (
-      (currentElementRef.current === null || !targetDocument?.body.contains(currentElementRef.current)) &&
-      walkerRef.current
-    ) {
-      initialize(walkerRef.current);
-    }
-  });
-
   useFocusedElementChange(element => {
     if (
       element?.getAttribute('role') === 'treeitem' &&
@@ -60,8 +51,18 @@ export function useRovingTabIndex() {
     currentElementRef.current = nextElement;
   }, []);
 
+  const forceUpdate = React.useCallback(() => {
+    if (
+      (currentElementRef.current === null || !targetDocument?.body.contains(currentElementRef.current)) &&
+      walkerRef.current
+    ) {
+      initialize(walkerRef.current);
+    }
+  }, [targetDocument, initialize]);
+
   return {
     rove,
     initialize,
+    forceUpdate,
   };
 }

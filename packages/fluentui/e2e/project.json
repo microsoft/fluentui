@@ -3,5 +3,10 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "implicitDependencies": [],
-  "tags": ["react-northstar"]
+  "tags": ["react-northstar"],
+  "targets": {
+    "e2e": {
+      "dependsOn": [{ "target": "build", "projects": "react" }]
+    }
+  }
 }

@@ -69,28 +69,8 @@ describe(`#getDependencies`, () => {
         },
         Object {
           "dependencyType": "devDependencies",
-          "isTopLevel": true,
-          "name": "scripts-tasks",
-        },
-        Object {
-          "dependencyType": "devDependencies",
           "isTopLevel": false,
-          "name": "scripts-jest",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": false,
-          "name": "scripts-monorepo",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": false,
-          "name": "scripts-utils",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": false,
-          "name": "scripts-prettier",
+          "name": "scripts-cypress",
         },
       ]
     `);

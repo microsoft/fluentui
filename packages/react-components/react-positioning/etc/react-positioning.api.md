@@ -17,10 +17,7 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 export type Boundary = HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 
 // @internal
-export function createArrowHeightStyles(arrowHeight: number): {
-    width: string;
-    height: string;
-};
+export function createArrowHeightStyles(arrowHeight: number): GriffelStyle;
 
 // @internal
 export function createArrowStyles(options: CreateArrowStylesOptions): GriffelStyle;

@@ -9,11 +9,8 @@ const tsPaths = new TsconfigPathsPlugin({
   configFile: tsConfigPath,
 });
 
-module.exports = /** @type {import('../../../.storybook/types').StorybookBaseConfig} */ ({
+module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig} */ ({
   addons: [
-    {
-      name: '@storybook/addon-docs',
-    },
     {
       name: '@storybook/addon-essentials',
       options: {
@@ -27,8 +24,15 @@ module.exports = /** @type {import('../../../.storybook/types').StorybookBaseCon
 
   stories: ['../src/**/*.stories.tsx'],
   core: {
-    builder: 'webpack5',
     disableTelemetry: true,
+  },
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {
+      builder: {
+        lazyCompilation: false,
+      },
+    },
   },
   typescript: {
     // disable react-docgen-typescript (totally not needed here, slows things down a lot)
@@ -75,7 +79,7 @@ module.exports = /** @type {import('../../../.storybook/types').StorybookBaseCon
     );
 
     // Disable ProgressPlugin which logs verbose webpack build progress. Warnings and Errors are still logged.
-    if (process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) {
+    if (process.env.TF_BUILD) {
       config.plugins = config.plugins.filter(({ constructor }) => constructor.name !== 'ProgressPlugin');
     }
 

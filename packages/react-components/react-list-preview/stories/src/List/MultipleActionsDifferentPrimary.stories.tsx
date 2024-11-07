@@ -50,6 +50,7 @@ const useStyles = makeStyles({
     borderRadius: '5px',
   },
   title: {
+    color: tokens.colorNeutralForeground1,
     fontWeight: 600,
     display: 'block',
   },
@@ -81,7 +82,7 @@ const CustomListItem = (props: { title: string; value: string }) => {
     <ListItem
       value={props.value}
       className={mergeClasses(listItemStyles, styles.listItem)}
-      checkmark={{ className: styles.checkmark }}
+      checkmark={{ root: { role: 'gridcell' }, className: styles.checkmark, 'aria-label': value }}
       aria-label={value}
       onAction={onAction}
     >

@@ -24,15 +24,25 @@ const options = [
 const Example = ({ appearance }: Pick<TagPickerProps, 'appearance'>) => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([options[0]]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
+    if (data.value === 'no-options') {
+      return;
+    }
     setSelectedOptions(data.selectedOptions);
   };
   const tagPickerOptions = options.filter(option => !selectedOptions.includes(option));
 
+  const labelColor =
+    appearance === 'filled-lighter' || appearance === 'filled-darker'
+      ? tokens.colorNeutralForegroundInverted2
+      : tokens.colorNeutralForeground1;
+
+  const label = <span style={{ color: labelColor }}>Select Employees</span>;
+
   return (
-    <Field label="Select Employees" style={{ maxWidth: 400 }}>
+    <Field label={label} style={{ maxWidth: 400 }}>
       <TagPicker appearance={appearance} onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
-          <TagPickerGroup>
+          <TagPickerGroup aria-label="Selected Employees">
             {selectedOptions.map(option => (
               <Tag
                 key={option}
@@ -47,18 +57,20 @@ const Example = ({ appearance }: Pick<TagPickerProps, 'appearance'>) => {
           <TagPickerInput aria-label="Select Employees" />
         </TagPickerControl>
         <TagPickerList>
-          {tagPickerOptions.length > 0
-            ? tagPickerOptions.map(option => (
-                <TagPickerOption
-                  secondaryContent="Microsoft FTE"
-                  media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
-                  value={option}
-                  key={option}
-                >
-                  {option}
-                </TagPickerOption>
-              ))
-            : 'No options available'}
+          {tagPickerOptions.length > 0 ? (
+            tagPickerOptions.map(option => (
+              <TagPickerOption
+                secondaryContent="Microsoft FTE"
+                media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption value="no-options">No options available</TagPickerOption>
+          )}
         </TagPickerList>
       </TagPicker>
     </Field>

@@ -86,7 +86,7 @@ const colorSet2 = [
     color:
       'linear-gradient(0deg, #FF1921 0%, #FFC12E 10%, #FEFF37 20%, #90D057 30%, #00B053 40%, #00AFED 50%, #006EBD 60%, #011F5E 70%, #712F9E 80%)',
     value: 'gradient',
-    'aria-label': 'gradient',
+    'aria-label': 'gradient rainbow',
   },
 ];
 
@@ -109,7 +109,7 @@ export const SwatchPickerPopup = () => {
     <>
       <Popover open={popoverOpen} trapFocus onOpenChange={(_, data) => setPopoverOpen(data.open)}>
         <PopoverTrigger disableButtonEnhancement>
-          <Button aria-label="Choose color">Choose color</Button>
+          <Button>Choose color</Button>
         </PopoverTrigger>
 
         <PopoverSurface>

@@ -1,0 +1,15 @@
+{
+  "name": "@fluentui/react-migration-v0-v9-stories",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@fluentui/react-migration-v0-v9": "*",
+    "@fluentui/react-northstar": "*",
+    "@fluentui/react-components": "*",
+    "@fluentui/react-icons-northstar": "*",
+    "@fluentui/react-storybook-addon": "*",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "*",
+    "@fluentui/scripts-storybook": "*",
+    "@fluentui/eslint-plugin": "*"
+  }
+}

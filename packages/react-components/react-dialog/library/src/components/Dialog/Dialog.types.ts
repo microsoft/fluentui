@@ -6,7 +6,15 @@ import type { DialogContextValue, DialogSurfaceContextValue } from '../../contex
 import type { DialogSurfaceElement } from '../DialogSurface/DialogSurface.types';
 
 export type DialogSlots = {
+  /**
+   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
+   *
+   */
   surfaceMotion: Slot<PresenceMotionSlotProps>;
+};
+
+export type InternalDialogSlots = {
+  surfaceMotion: NonNullable<Slot<PresenceMotionSlotProps>>;
 };
 
 export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
@@ -101,7 +109,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
   inertTrapFocus?: boolean;
 };
 
-export type DialogState = ComponentState<DialogSlots> &
+export type DialogState = ComponentState<InternalDialogSlots> &
   DialogContextValue & {
     content: React.ReactNode;
     trigger: React.ReactNode;

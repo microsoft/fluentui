@@ -1,8 +1,17 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Tue, 25 Jun 2024 07:32:52 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2024 07:24:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.13](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.13)
+
+Thu, 08 Aug 2024 07:24:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.12..@fluentui/merge-styles_v8.6.13)
+
+### Patches
+
+- fix: ship bundled and umd code to registry ([PR #32212](https://github.com/microsoft/fluentui/pull/32212) by martinhochel@microsoft.com)
 
 ## [8.6.12](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.12)
 

@@ -1,4 +1,6 @@
+import type { Meta } from '@storybook/react';
 import CreatePresenceComponentDescription from './CreatePresenceComponentDescription.md';
+import { CreatePresenceComponent } from './CreatePresenceComponent.stories';
 
 export { CreatePresenceComponentDefault as Default } from './CreatePresenceComponentDefault.stories';
 
@@ -13,8 +15,8 @@ export { PresenceMotionFunctions as functions } from './PresenceMotionFunctions.
 export { PresenceMotionFunctionParams as functionParams } from './PresenceMotionFunctionParams.stories';
 
 export default {
-  title: 'Utilities/Motion/createPresenceComponent',
-  component: null,
+  title: 'Motion/APIs/createPresenceComponent',
+  component: CreatePresenceComponent,
   parameters: {
     docs: {
       description: {
@@ -22,4 +24,4 @@ export default {
       },
     },
   },
-};
+} satisfies Meta;

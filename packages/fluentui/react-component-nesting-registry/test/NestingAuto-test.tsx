@@ -17,7 +17,7 @@ describe('NestingAuto', () => {
       mount(<NestingAuto>{children}</NestingAuto>);
       const getRefs = children.mock.calls[0][0];
 
-      expect(children).toBeCalledWith(
+      expect(children).toHaveBeenCalledWith(
         expect.any(Function),
         expect.objectContaining({ current: expect.objectContaining({ tagName: 'DIV' }) }),
       );

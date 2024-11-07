@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Breaking: Render List/ListItem as \"div\" when in composite nav mode",
+  "packageName": "@fluentui/react-list-preview",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}

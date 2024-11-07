@@ -21,6 +21,13 @@ export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onDismiss?: TagDismissHandler<Value>;
 
+  /**
+   * A TagGroup can show that it cannot be interacted with.
+   *
+   * @default false
+   */
+  disabled?: boolean;
+
   size?: TagSize;
   appearance?: TagAppearance;
   dismissible?: boolean;
@@ -30,7 +37,7 @@ export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
  * State used in rendering TagGroup
  */
 export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> &
-  Required<Pick<TagGroupProps, 'size' | 'appearance' | 'dismissible'>> & {
+  Required<Pick<TagGroupProps, 'disabled' | 'size' | 'appearance' | 'dismissible'>> & {
     handleTagDismiss: TagDismissHandler<Value>;
     role?: React.AriaRole;
   };

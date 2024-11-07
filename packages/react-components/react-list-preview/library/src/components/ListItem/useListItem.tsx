@@ -4,7 +4,6 @@ import {
   MoverMoveFocusEvent,
   GroupperMoveFocusActions,
   MoverKeys,
-  TabsterDOMAttribute,
   useArrowNavigationGroup,
   useFocusableGroup,
   useMergedTabsterAttributes_unstable,
@@ -52,6 +51,8 @@ export const useListItem_unstable = (
   const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
   const listItemRole = useListContext_unstable(ctx => ctx.listItemRole);
   const validateListItem = useListContext_unstable(ctx => ctx.validateListItem);
+
+  const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
 
   const finalListItemRole = role || listItemRole;
 
@@ -176,12 +177,12 @@ export const useListItem_unstable = (
   });
 
   const tabsterAttributes = useMergedTabsterAttributes_unstable(
-    focusableItems ? arrowNavigationAttributes : ({} as TabsterDOMAttribute),
+    focusableItems ? arrowNavigationAttributes : {},
     focusableGroupAttrs,
   );
 
   const root = slot.always(
-    getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
+    getIntrinsicElementProps(as, {
       ref: useMergedRefs(rootRef, ref) as React.Ref<HTMLLIElement & HTMLDivElement>,
       tabIndex: focusableItems ? 0 : undefined,
       role: finalListItemRole,
@@ -194,7 +195,7 @@ export const useListItem_unstable = (
       onKeyDown: handleKeyDown,
       onClick: isSelectionEnabled || onClick || onAction ? handleClick : undefined,
     }),
-    { elementType: DEFAULT_ROOT_EL_TYPE },
+    { elementType: as },
   );
 
   const checkmark = slot.optional(props.checkmark, {
@@ -214,7 +215,7 @@ export const useListItem_unstable = (
 
   const state: ListItemState = {
     components: {
-      root: DEFAULT_ROOT_EL_TYPE,
+      root: as,
       checkmark: Checkbox,
     },
     root,

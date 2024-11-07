@@ -60,7 +60,7 @@ export function copyCompiledFactory(metadata: ReturnType<typeof import('./metada
     }
 
     if (!metadata.project.sourceRoot) {
-      throw new Error(`${packageJson.name} is missing 'sourceRoot' in project.json`);
+      throw new Error(`"${metadata.project.name}" is missing 'sourceRoot' in project.json`);
     }
 
     const paths = {

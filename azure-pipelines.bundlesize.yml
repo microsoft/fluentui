@@ -7,7 +7,7 @@ trigger:
 variables:
   - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
       - name: sinceArg
-        value: --since $(targetBranch)
+        value: --base $(targetBranch)
 
   - template: .devops/templates/variables.yml
 
@@ -25,8 +25,9 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn lage bundle-size --verbose $(sinceArg)
+          yarn nx affected -t bundle-size --nxBail $(sinceArg)
         displayName: build packages & create reports
+        condition: eq(variables.isPR, true)
 
       - script: |
           npx monosize compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --quiet > ./monosize-report.md
@@ -44,12 +45,24 @@ jobs:
           uniqueId: 'bundleSizeComment9423'
 
       - script: |
-          yarn monosize upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
+          yarn nx run-many -t bundle-size --nxBail
+        displayName: build all packages & create reports
+        condition: eq(variables.isPR, false)
+
+      - task: AzureCLI@2
         displayName: upload a report (base only)
         condition: eq(variables.isPR, false)
         env:
-          # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#secret-variables
-          BUNDLESIZE_ACCOUNT_KEY: $(bundlesize-account-key)
-          BUNDLESIZE_ACCOUNT_NAME: fluentbundlesize
+          AZURE_TENANT_ID: $(AzureTenantId)
+          AZURE_CLIENT_ID: $(AzureClientId)
+          AZURE_SERVICE_CONNECTION_ID: $(AzureServiceConnectionId)
+          BUNDLESIZE_ACCOUNT_NAME: $(StorageAccount)
+          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+        inputs:
+          azureSubscription: 'Bundlesize Testing'
+          scriptType: bash
+          scriptLocation: 'inlineScript'
+          inlineScript: |
+            yarn monosize upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
 
       - template: .devops/templates/cleanup.yml

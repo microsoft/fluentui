@@ -126,7 +126,7 @@ export const useComboboxBaseState = (
     // we do not want to accidentally override defaultValue on a second render
     // unless another value is intentionally set
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [controllableValue, editable, getOptionsMatchingValue, multiselect, props.defaultValue, selectedOptions]);
+  }, [controllableValue, editable, getOptionsMatchingValue, multiselect, selectedOptions]);
 
   // Handle open state, which is shared with options in context
   const [open, setOpenState] = useControllableState({
@@ -150,6 +150,23 @@ export const useComboboxBaseState = (
     },
     [onOpenChange, setOpenState, setValue, freeform, disabled],
   );
+
+  // update active option based on change in open state
+  React.useEffect(() => {
+    if (open) {
+      // if it is single-select and there is a selected option, start at the selected option
+      if (!multiselect && selectedOptions.length > 0) {
+        const selectedOption = getOptionsMatchingValue(v => v === selectedOptions[0]).pop();
+        if (selectedOption?.id) {
+          activeDescendantController.focus(selectedOption.id);
+        }
+      }
+    } else {
+      activeDescendantController.blur();
+    }
+    // this should only be run in response to changes in the open state
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, activeDescendantController]);
 
   // Fallback focus when children are updated in an open popover results in no item being focused
   React.useEffect(() => {

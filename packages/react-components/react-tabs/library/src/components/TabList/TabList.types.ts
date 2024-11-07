@@ -42,10 +42,13 @@ export type TabListProps = ComponentProps<TabListSlots> & {
    * A tab list can supports 'transparent' and 'subtle' appearance.
    *- 'subtle': Minimizes emphasis to blend into the background until hovered or focused.
    *- 'transparent': No background and border styling
+   *- 'subtle-circular': Adds background and border styling
+   *- 'filled-circular': Adds background styling
+   *
    * The appearance affects each of the contained tabs.
    * @default 'transparent'
    */
-  appearance?: 'transparent' | 'subtle';
+  appearance?: 'transparent' | 'subtle' | 'subtle-circular' | 'filled-circular';
 
   /**
    * Tab size may change between unselected and selected states.

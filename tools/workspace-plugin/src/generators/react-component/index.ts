@@ -22,23 +22,23 @@ export default async function (tree: Tree, schema: ReactComponentGeneratorSchema
 
   return () => {
     const root = workspaceRoot;
-    const { npmPackageName, componentName } = options;
+    const { project, componentName } = options;
 
-    execSync(`yarn lage generate-api --to ${npmPackageName}`, {
+    execSync(`yarn nx run ${project}:generate-api`, {
       cwd: root,
       stdio: 'inherit',
     });
 
     // This is used only for integration testing purposes on CI as jest disables snapshot updates by default
     const forceSnapshotUpdate = Boolean(process.env.__FORCE_SNAPSHOT_UPDATE__);
-    const testCmd = `yarn workspace ${npmPackageName} test -t ${componentName}` + (forceSnapshotUpdate ? ' -u' : '');
+    const testCmd = `yarn nx run ${project}:test -t ${componentName}` + (forceSnapshotUpdate ? ' -u' : '');
 
     execSync(testCmd, {
       cwd: root,
       stdio: 'inherit',
     });
 
-    execSync(`yarn workspace ${npmPackageName} lint --fix`, {
+    execSync(`yarn nx run ${project}:lint --fix`, {
       cwd: root,
       stdio: 'inherit',
     });

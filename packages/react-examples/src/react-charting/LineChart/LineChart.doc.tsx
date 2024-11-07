@@ -28,7 +28,8 @@ const LineChartCustomLocaleDateAxisExampleCode =
 export const LineChartPageProps: IDocPageProps = {
   title: 'LineChart',
   componentName: 'LineChart',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/LineChart',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/LineChart',
   examples: [
     {
       title: 'LineChart basic',
