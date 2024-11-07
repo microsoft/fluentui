@@ -16,16 +16,7 @@ import {
   NavSubItemGroup,
   OnNavItemSelectData,
 } from '@fluentui/react-nav-preview';
-import {
-  Button,
-  Label,
-  Switch,
-  Tooltip,
-  makeStyles,
-  tokens,
-  useArrowNavigationGroup,
-  useId,
-} from '@fluentui/react-components';
+import { Button, Label, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
