@@ -16,7 +16,16 @@ import {
   NavSubItemGroup,
   OnNavItemSelectData,
 } from '@fluentui/react-nav-preview';
-import { Button, Label, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
+import {
+  Button,
+  Label,
+  Switch,
+  Tooltip,
+  makeStyles,
+  tokens,
+  useArrowNavigationGroup,
+  useId,
+} from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -193,6 +202,13 @@ export const Controlled = (props: Partial<NavDrawerProps>) => {
     }
   };
 
+  // you can override the default keyboard behavior this way:
+  const tabsterDomAttribute = useArrowNavigationGroup({
+    axis: 'vertical', // default
+    circular: true, // default
+    tabbable: true, // new value
+  });
+
   return (
     <div className={styles.root}>
       <NavDrawer
@@ -204,6 +220,7 @@ export const Controlled = (props: Partial<NavDrawerProps>) => {
         // multiple={isMultiple}
         onNavCategoryItemToggle={handleCategoryToggle}
         onNavItemSelect={handleItemSelect}
+        tabsterDomAttribute={tabsterDomAttribute}
         openCategories={openCategories}
         selectedValue={selectedValue}
         selectedCategoryValue={selectedCategoryValue}
