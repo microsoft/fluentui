@@ -321,7 +321,7 @@ export class HorizontalBarChart extends FASTElement {
 
     const svgEle = containerDiv
       .append('svg')
-      .attr('height', 20)
+      .attr('height', 12)
       .attr('width', 100 + '%')
       .attr('aria-label', data?.chartTitle ? data?.chartTitle : '')
       .selectAll('g')
@@ -377,6 +377,20 @@ export class HorizontalBarChart extends FASTElement {
           .text(barLabel);
       }
     }
+
+    if (data.benchmarkData) {
+      const benchmarkContainer = document.createElement('div');
+      containerDiv.node()!.appendChild(benchmarkContainer);
+      benchmarkContainer.classList.add('benchmark-container');
+
+      const triangle = document.createElement('div');
+      benchmarkContainer.appendChild(triangle);
+      triangle.classList.add('triangle');
+
+      const benchmarkRatio = (data.benchmarkData / total) * 100;
+      triangle.style['insetInlineStart'] = `calc(${benchmarkRatio}% - 4px)`;
+    }
+
     return containerDiv;
   }
 
