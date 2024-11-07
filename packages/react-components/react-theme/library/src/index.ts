@@ -4,8 +4,6 @@ export {
   teamsLightTheme,
   webDarkTheme,
   webLightTheme,
-  masonsDarkTheme,
-  masonsLightTheme,
   createDarkTheme,
   createHighContrastTheme,
   createLightTheme,

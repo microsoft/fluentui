@@ -55,8 +55,6 @@ import { FontSizeTokens } from '@fluentui/tokens';
 import { FontWeightTokens } from '@fluentui/tokens';
 import { HorizontalSpacingTokens } from '@fluentui/tokens';
 import { LineHeightTokens } from '@fluentui/tokens';
-import { masonsDarkTheme } from '@fluentui/tokens';
-import { masonsLightTheme } from '@fluentui/tokens';
 import { PartialTheme } from '@fluentui/tokens';
 import { ShadowBrandTokens } from '@fluentui/tokens';
 import { ShadowTokens } from '@fluentui/tokens';
