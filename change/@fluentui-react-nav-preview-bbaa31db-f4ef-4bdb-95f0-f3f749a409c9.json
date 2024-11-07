@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Exposing tabster dom attributes so consumers can disagree with the default behavior.",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}
