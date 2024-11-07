@@ -2,11 +2,11 @@ import * as React from 'react';
 import { useId, slot, useMergedRefs, mergeCallbacks, getIntrinsicElementProps } from '@fluentui/react-utilities';
 import type { ColorAreaProps, ColorAreaState, HsvColor } from './ColorArea.types';
 import { colorAreaCSSVars } from './useColorAreaStyles.styles';
-import { clamp, useEventCallback, useControllableState } from '@fluentui/react-utilities';
+import { useEventCallback, useControllableState } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { tinycolor } from '@ctrl/tinycolor';
 import { useFocusWithin } from '@fluentui/react-tabster';
-import { MIN, MAX, INITIAL_COLOR } from '../../utils/constants';
+import { INITIAL_COLOR } from '../../utils/constants';
 import { getCoordinates } from '../../utils/getCoordinates';
 
 const INITIAL_COLOR_HSV = tinycolor(INITIAL_COLOR).toHsv();
@@ -81,8 +81,11 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     targetDocument?.addEventListener('mouseup', handleDocumentMouseUp, { once: true });
   });
 
-  const handleOnChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
-    const newColor = { h: color.h, s: Number(xRef.current!.value) / 100, v: Number(yRef.current?.value) / 100, a: 1 };
+  const handleXOnChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
+    const newColor: HsvColor = {
+      ...color,
+      s: Number(event.target.value) / 100,
+    };
 
     setColor(newColor);
     onChange?.(event, {
@@ -92,18 +95,26 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     });
   });
 
-  const handleOnKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
-      event.preventDefault();
+  const handleYOnChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
+    const newColor: HsvColor = {
+      ...color,
+      v: Number(event.target.value) / 100,
+    };
+    setColor(newColor);
+    onChange?.(event, {
+      type: 'change',
+      event,
+      color: newColor,
+    });
+  });
 
-      const newY = event.key === 'ArrowUp' ? clamp(value + 1, MIN, MAX) : clamp(value - 1, MIN, MAX);
-      const newColor: HsvColor = {
-        ...color,
-        s: color.s,
-        v: newY / 100,
-      };
-      setColor(newColor);
-      onChange?.(event, { type: 'change', event, color: newColor });
+  const handleOnKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (xRef.current && yRef.current) {
+      if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+        setTabIndexAndFocus(xRef.current, yRef.current);
+      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        setTabIndexAndFocus(yRef.current, xRef.current);
+      }
     }
   });
 
@@ -121,12 +132,11 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
       root: 'div',
       thumb: 'div',
     },
-    root: slot.always(getIntrinsicElementProps('div', { ...rest, ref }), { elementType: 'div' }),
+    root: slot.always(getIntrinsicElementProps('div', rest), { elementType: 'div' }),
     inputX: slot.always(inputX, {
       defaultProps: {
         id: useId('sliderX-'),
         type: 'range',
-        ref: xRef,
       },
       elementType: 'input',
     }),
@@ -134,7 +144,6 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
       defaultProps: {
         id: useId('sliderY-'),
         type: 'range',
-        ref: yRef,
       },
       elementType: 'input',
     }),
@@ -143,18 +152,27 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
   state.root.ref = useMergedRefs(state.root.ref, rootRef);
   state.thumb.ref = useMergedRefs(state.thumb.ref, focusWithinRef);
+  state.inputX.ref = useMergedRefs(state.inputX.ref, xRef);
+  state.inputY.ref = useMergedRefs(state.inputY.ref, yRef);
 
   state.root.style = {
     ...rootVariables,
     ...state.root.style,
   };
 
+  rootRef?.current?.addEventListener('keydown', handleOnKeyDown, { useCapture: true });
+
   state.root.onMouseDown = useEventCallback(mergeCallbacks(state.root.onMouseDown, handleOnMouseDown));
-  state.inputX.onChange = useEventCallback(mergeCallbacks(state.inputX.onChange, handleOnChange));
-  state.inputY.onChange = useEventCallback(mergeCallbacks(state.inputY.onChange, handleOnChange));
-  state.inputX.onKeyDown = useEventCallback(mergeCallbacks(state.inputX.onKeyDown, handleOnKeyDown));
+  state.inputX.onChange = useEventCallback(mergeCallbacks(state.inputX.onChange, handleXOnChange));
+  state.inputY.onChange = useEventCallback(mergeCallbacks(state.inputY.onChange, handleYOnChange));
   state.inputX.value = saturation;
   state.inputY.value = value;
 
   return state;
 };
+
+function setTabIndexAndFocus(prevEl: HTMLInputElement, nextEl: HTMLInputElement) {
+  prevEl?.setAttribute('tabindex', '-1');
+  nextEl?.setAttribute('tabindex', 'undefined');
+  nextEl?.focus();
+}
