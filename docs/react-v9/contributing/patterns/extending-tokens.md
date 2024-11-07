@@ -1,4 +1,6 @@
-It's often useful to extend the base set of tokens from Fluent UI.
+It's often useful for an app to extend the base set of tokens from Fluent UI.
+
+⚠ Components in this repo should _not_ do this.
 
 ⚠ Warning that adding more tokens adds more CSS variables which can effect run time performance as each DOM Node carries all the tokens.
 
