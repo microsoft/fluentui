@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Masons Theme",
-  "packageName": "@fluentui/react-theme",
-  "email": "matejera@microsoft.com",
-  "dependentChangeType": "patch"
-}

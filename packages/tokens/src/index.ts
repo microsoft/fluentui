@@ -1,5 +1,5 @@
-export { createDarkTheme, createHighContrastTheme, createLightTheme, createTeamsDarkTheme } from './utils';
-export { masonsDarkTheme, masonsLightTheme } from './themes/index';
+export { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme, webLightTheme } from './themes/index';
+export { createDarkTheme, createHighContrastTheme, createLightTheme, createTeamsDarkTheme } from './utils/index';
 
 export { themeToTokensObject } from './themeToTokensObject';
 export { tokens } from './tokens';
