@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: Exposing tabster dom attributes so consumers can disagree with the default behavior.",
+  "comment": "feat: Exposed 'tabbable' prop on NavDrawer to let consumers disagree with default arrowing opinion.",
   "packageName": "@fluentui/react-nav-preview",
   "email": "matejera@microsoft.com",
   "dependentChangeType": "patch"
