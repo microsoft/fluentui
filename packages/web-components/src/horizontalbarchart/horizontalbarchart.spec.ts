@@ -246,6 +246,26 @@ test.describe('horizontalbarchart - Single Bar HBC', () => {
     }
   });
 
+  test('Should update bar css/opaity when mouse click on legend', async ({ page }) => {
+    const element = page.locator('fluent-horizontalbarchart');
+    const legends = element.locator('.legend')
+    await expect(legends).toHaveCount(8);
+    await legends.nth(0).click();
+    const bars = element.locator('.bar')
+    await expect(bars.nth(0)).toHaveCSS('opacity', '1');
+    for (let i = 1; i < await bars.count(); i++) {
+      if (i == 0) {
+        await expect(bars.nth(i)).toHaveCSS('opacity', '1');
+      } else {
+      await expect(bars.nth(i)).toHaveCSS('opacity', '0.1');
+      }
+    }
+    await legends.nth(0).click();
+    for (let i = 1; i < await bars.count(); i++) {
+      await expect(bars.nth(i)).toHaveCSS('opacity', '1');
+    }
+  });
+
   test('Should show callout when mouse hover on bar', async ({ page }) => {
     const element = page.locator('fluent-horizontalbarchart');
     const bars = element.locator('.bar')
@@ -447,5 +467,89 @@ test.describe('horizontalbarchart - Theme', () => {
        window.setTheme(theme);
     }, teamsDarkTheme);
     await expect(element).toHaveScreenshot();
+  });
+});
+
+test.describe('horizontalbarchart - Single Data Point', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(fixtureURL('components-horizontalbarchart--single-data-point'));
+    await page.setContent(/* html */ `
+    <div>
+        <fluent-horizontalbarchart style="width: 100%" variant="single-bar" data="[{&quot;chartTitle&quot;:&quot;one&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;one&quot;,&quot;data&quot;:1543,&quot;total&quot;:15000,&quot;gradient&quot;:[&quot;#637cef&quot;,&quot;#e3008c&quot;]}]}]">
+        </fluent-horizontalbarchart>
+    </div>
+    `);
+    await page.waitForFunction(() => customElements.whenDefined('fluent-horizontalbarchart'));
+  });
+
+  test('Should render Single Bar HBC  properly', async ({ page }) => {
+    const element = page.locator('fluent-horizontalbarchart');
+    await expect(element.getByRole('option', { name: 'one' })).toBeVisible();
+    const barsTitles = element.locator('.chart-title')
+    await expect(barsTitles).toHaveCount(1);
+    await expect(barsTitles.nth(0)).toHaveText('one');
+    await expect(barsTitles.nth(0)).toBeVisible();
+   });
+
+   test('Should render bars and bar labels properly', async ({ page }) => {
+    const element = page.locator('fluent-horizontalbarchart');
+    const bars = element.locator('.bar')
+    await expect(bars).toHaveCount(2);
+    await expect(bars.nth(0)).toHaveCSS('fill', 'url(\"#gradient-0-0\")');
+    await expect(bars.nth(0)).toHaveCSS('opacity', '1');
+    await expect(bars.nth(0)).toHaveAttribute(`height`, '12');
+    let firstBarWidth = await  bars.nth(0).getAttribute('width');
+    let firstBarWidthEmptySpace = await  bars.nth(1).getAttribute('width');
+    expect(parseFloat(firstBarWidth)).toBeLessThan(parseFloat(firstBarWidthEmptySpace));
+    expect(parseFloat(firstBarWidth) + parseFloat(firstBarWidthEmptySpace)).toBeGreaterThan(99);
+  });
+
+  test('Should update bar css/opaity when mouse hover on legend', async ({ page }) => {
+    const element = page.locator('fluent-horizontalbarchart');
+    const legends = element.locator('.legend')
+    await expect(legends).toHaveCount(1);
+    //mouse events
+    await legends.nth(0).dispatchEvent('mouseover');
+    const bars = element.locator('.bar')
+    await expect(bars).toHaveCount(2);
+    await expect(bars.nth(0)).toHaveCSS('opacity', '1');
+    await expect(bars.nth(1)).toHaveCSS('opacity', '0.1');
+  });
+
+  test('Should update bar css/opaity when mouse click on legend', async ({ page }) => {
+    const element = page.locator('fluent-horizontalbarchart');
+    const legends = element.locator('.legend')
+    await legends.nth(0).click();
+    const bars = element.locator('.bar')
+    await expect(bars.nth(0)).toHaveCSS('opacity', '1');
+    await expect(bars.nth(1)).toHaveCSS('opacity', '0.1');
+    await legends.nth(0).click();
+    await expect(bars.nth(0)).toHaveCSS('opacity', '1');
+    await expect(bars.nth(1)).toHaveCSS('opacity', '1');
+  });
+
+  test('Should show callout when mouse hover on bar', async ({ page }) => {
+    const element = page.locator('fluent-horizontalbarchart');
+    const bars = element.locator('.bar')
+    const tooltip = element.locator('.tooltip')
+    await expect(tooltip).toHaveCount(0);
+    await bars.nth(0).dispatchEvent('mouseover');
+    await expect(tooltip).toHaveCount(1);
+    await expect(tooltip.nth(0)).toHaveCSS('opacity', '1');
+    await expect(tooltip.nth(0).locator('div').first()).toHaveText('one 1543');
+  });
+
+  test('Should hide callout when mouve moved to bar offset', async ({ page }) => {
+    const element = page.locator('fluent-horizontalbarchart');
+    const bars = element.locator('.bar')
+    const tooltip = element.locator('.tooltip')
+    await expect(tooltip).toHaveCount(0);
+    await bars.nth(0).dispatchEvent('mouseover');
+    await expect(tooltip).toHaveCount(1);
+    await expect(tooltip.nth(0)).toHaveCSS('opacity', '1');
+    await expect(tooltip.nth(0).locator('div').first()).toHaveText('one 1543');
+    await bars.nth(0).dispatchEvent('mouseout');
+    await bars.nth(1).dispatchEvent('mouseover');
+    await expect(tooltip).toHaveCount(0);
   });
 });
