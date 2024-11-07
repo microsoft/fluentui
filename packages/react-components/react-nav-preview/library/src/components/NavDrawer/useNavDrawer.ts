@@ -16,11 +16,12 @@ import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
  * @param ref - reference to root HTMLDivElement of NavDrawer
  */
 export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTMLDivElement>): NavDrawerState => {
-  const { tabsterDomAttribute: tabsterDomAttributeFromProps } = props;
+  const { tabbable = false } = props;
 
   const defaultFocusAttributes = useArrowNavigationGroup({
     axis: 'vertical',
     circular: true,
+    tabbable,
   });
 
   const navState = useNav_unstable(
@@ -42,7 +43,7 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
     },
 
     root: slot.always(
-      { ref, ...props, ...{ ...defaultFocusAttributes, ...tabsterDomAttributeFromProps } },
+      { ref, ...props, ...{ ...defaultFocusAttributes } },
       {
         // TODO: remove once React v18 slot API is modified
         // this is a problem with the lack of support for union types on React v18

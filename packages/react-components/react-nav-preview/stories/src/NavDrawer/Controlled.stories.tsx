@@ -202,11 +202,6 @@ export const Controlled = (props: Partial<NavDrawerProps>) => {
     }
   };
 
-  // you can override the default keyboard behavior this way:
-  const tabsterDomAttribute = useArrowNavigationGroup({
-    tabbable: true, // new value
-  });
-
   return (
     <div className={styles.root}>
       <NavDrawer
@@ -218,7 +213,7 @@ export const Controlled = (props: Partial<NavDrawerProps>) => {
         // multiple={isMultiple}
         onNavCategoryItemToggle={handleCategoryToggle}
         onNavItemSelect={handleItemSelect}
-        tabsterDomAttribute={tabsterDomAttribute}
+        tabbable={true} // enables keyboard tabbing
         openCategories={openCategories}
         selectedValue={selectedValue}
         selectedCategoryValue={selectedCategoryValue}
