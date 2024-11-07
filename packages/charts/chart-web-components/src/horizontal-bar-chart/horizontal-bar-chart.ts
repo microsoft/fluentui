@@ -323,11 +323,11 @@ export class HorizontalBarChart extends FASTElement {
 
     const containerDiv = d3Create('div').attr('style', 'position: relative');
 
-    const chartTitleDiv = containerDiv.append('div').attr('class', 'chartTitleDiv');
+    const chartTitleDiv = containerDiv.append('div').attr('class', 'chart-title-div');
     chartTitleDiv
       .append('div')
       .append('span')
-      .attr('class', 'chartTitle')
+      .attr('class', 'chart-title')
       .text(data?.chartTitle ? data?.chartTitle : '');
 
     const hideNumber = this.hideRatio === undefined ? false : this.hideRatio;
@@ -340,8 +340,8 @@ export class HorizontalBarChart extends FASTElement {
       const numData = data!.chartData![0].data;
       const denomData = data!.chartData![1].data;
       const total = numData! + denomData!;
-      ratioDiv.append('span').attr('class', 'ratioNumerator').text(numData!);
-      ratioDiv.append('span').attr('class', 'ratioDenominator').text(`/${total!}`);
+      ratioDiv.append('span').attr('class', 'ratio-numerator').text(numData!);
+      ratioDiv.append('span').attr('class', 'ratio-denominator').text(`/${total!}`);
     }
 
     const svgEle = containerDiv
@@ -384,7 +384,7 @@ export class HorizontalBarChart extends FASTElement {
         svgEle
           .append('text')
           .attr('key', 'text')
-          .attr('class', 'barLabel')
+          .attr('class', 'bar-label')
           .attr(
             'x',
             `${
