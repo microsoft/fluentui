@@ -79,11 +79,10 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             'aria-label': 'Legends',
             'aria-multiselectable': canSelectMultipleLegends,
           })}
-          style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}
           className={classes.root}
         >
           <Overflow>
-            <div className={classes.resizableArea}>
+            <div className={classes.resizableArea} style={{ textAlign: props.centerLegends ? 'center' : 'unset' }}>
               {dataToRender.map((item, id) => (
                 <OverflowItem key={id} id={id.toString()}>
                   {_renderButton(item)}
