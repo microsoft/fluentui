@@ -43,6 +43,7 @@ const tagStyles: Partial<ITagItemSuggestionStyles> = {
   suggestionTextOverflow: {
     height: 'auto',
     whiteSpace: 'normal',
+    maxWidth: 500,
   },
 };
 
