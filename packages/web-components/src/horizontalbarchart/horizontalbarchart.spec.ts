@@ -4,6 +4,14 @@ import { expect, fixtureURL } from '../helpers.tests.js';
 import { teamsDarkTheme } from '@fluentui/tokens';
 import { colorNeutralBackground1 } from '../theme/design-tokens.js';
 
+async function expectOptionsToBeVisible(element:
+  { getByRole: (arg0: string, arg1: { name: any; }) => any; },  options: string | any[])
+  {
+  for (let i = 0; i < options.length; i++) {
+    await expect(element.getByRole('option', { name: options[i] })).toBeVisible();
+  }
+}
+
 test.describe('horizontalbarchart - Basic', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(fixtureURL('components-horizontalbarchart--basic'));
@@ -15,11 +23,9 @@ test.describe('horizontalbarchart - Basic', () => {
 
   test('Should render horizontalbarchart properly', async ({ page }) => {
     const element = page.locator('fluent-horizontalbarchart');
-    await expect(element.getByRole('option', { name: 'Debit card numbers (EU and USA)' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'Passport numbers (USA)' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'Social security numbers' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'Credit card Numbers' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'Phone Numbers' })).toBeVisible();
+    await expectOptionsToBeVisible(element, [
+      'Debit card numbers (EU and USA)', 'Passport numbers (USA)', 'Social security numbers', 'Credit card Numbers', 'Phone Numbers'
+    ]);
     await expect(page.getByText('Monitored First')).toBeVisible();
     await expect(page.getByText('Monitored Second')).toBeVisible();
     await expect(page.getByText('Unmonitored')).toBeVisible();
@@ -151,14 +157,9 @@ test.describe('horizontalbarchart - Single Bar HBC', () => {
 
   test('Should render Single Bar HBC  properly', async ({ page }) => {
     const element = page.locator('fluent-horizontalbarchart');
-    await expect(element.getByRole('option', { name: 'one' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'two' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'three' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'four' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'five' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'six' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'seven' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'eight' })).toBeVisible();
+    await expectOptionsToBeVisible(element, [
+      'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'
+    ]);
     const barsTitles = element.locator('.chart-title')
     await expect(barsTitles).toHaveCount(8);
     await expect(barsTitles.nth(0)).toHaveText('one');
@@ -307,27 +308,9 @@ test.describe('horizontalbarchart - Single Bar NM Variant', () => {
 
   test('Should render Single Bar HBC  properly', async ({ page }) => {
     const element = page.locator('fluent-horizontalbarchart');
-    await expect(element.getByRole('option', { name: 'one' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'two' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'three' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'four' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'five' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'six' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'seven' })).toBeVisible();
-    await expect(element.getByRole('option', { name: 'eight' })).toBeVisible();
-    const barsTitles = element.locator('.chart-title')
-    await expect(barsTitles).toHaveCount(8);
-    await expect(barsTitles.nth(0)).toHaveText('one');
-    await expect(barsTitles.nth(1)).toHaveText('two');
-    await expect(barsTitles.nth(2)).toHaveText('three');
-    await expect(barsTitles.nth(3)).toHaveText('four');
-    await expect(barsTitles.nth(4)).toHaveText('five');
-    await expect(barsTitles.nth(5)).toHaveText('six');
-    await expect(barsTitles.nth(6)).toHaveText('seven');
-    await expect(barsTitles.nth(7)).toHaveText('eight');
-    for (let i = 0; i < await barsTitles.count(); i++) {
-      await expect(barsTitles.nth(i)).toBeVisible();
-    }
+    await expectOptionsToBeVisible(element, [
+      'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'
+    ]);
    });
 
    test('Should render bars and bar labels properly', async ({ page }) => {
