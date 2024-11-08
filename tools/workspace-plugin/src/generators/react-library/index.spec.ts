@@ -63,7 +63,6 @@ describe('react-library generator', () => {
         "docs",
         "etc",
         "jest.config.js",
-        "just.config.ts",
         "package.json",
         "src",
         "tsconfig.json",
@@ -99,7 +98,7 @@ describe('react-library generator', () => {
         '<projectRoot>/../../../../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/library/src/index.d.ts',
     });
     const libPackageJson = readJson(tree, `${library.root}/package.json`);
-    expect(libPackageJson.scripts['test-ssr']).toEqual(undefined);
+    expect(libPackageJson.scripts).toEqual(undefined);
     expect(libPackageJson).toEqual(
       expect.objectContaining({
         name: '@proj/react-one-preview',
@@ -174,7 +173,6 @@ describe('react-library generator', () => {
         "src",
         ".storybook",
         "README.md",
-        "just.config.ts",
         ".eslintrc.json",
         "tsconfig.json",
         "tsconfig.lib.json",
@@ -192,15 +190,6 @@ describe('react-library generator', () => {
         '@proj/react-storybook-addon': '*',
         '@proj/react-storybook-addon-export-to-sandbox': '*',
         '@proj/scripts-storybook': '*',
-        '@proj/scripts-tasks': '*',
-      },
-      scripts: {
-        format: 'just-scripts prettier',
-        lint: 'eslint src/',
-        start: 'yarn storybook',
-        storybook: 'storybook dev',
-        'type-check': 'just-scripts type-check',
-        'test-ssr': 'test-ssr "./src/**/*.stories.tsx"',
       },
     });
 
@@ -284,7 +273,6 @@ describe('react-library generator', () => {
         "docs",
         "etc",
         "jest.config.js",
-        "just.config.ts",
         "package.json",
         "src",
         "tsconfig.json",
@@ -307,7 +295,6 @@ describe('react-library generator', () => {
         "src",
         ".storybook",
         "README.md",
-        "just.config.ts",
         ".eslintrc.json",
         "tsconfig.json",
         "tsconfig.lib.json",

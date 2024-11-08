@@ -19,14 +19,18 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
     outputs:
-      pr_number: ${{ steps.pr_number.outputs.id }}
+      pr_number: ${{ steps.pr_number.outputs.result }}
       website_url: ${{ steps.website_url.outputs.id }}
     permissions:
       id-token: write
 
     steps:
-      - name: Download WebSite artifacts
-        uses: actions/download-artifact@v4
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github
+
+      - uses: actions/download-artifact@v4
         with:
           name: pr-website-artifacts
           path: ./website
@@ -41,13 +45,18 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Load PR number
+        uses: actions/github-script@v7
         id: pr_number
-        run: echo "id=$(cat pr.txt)" >> $GITHUB_OUTPUT
-        working-directory: ./results
+        with:
+          script: |
+            const run = require('./.github/scripts/validate-pr-number');
+            const result = run({filePath:'results/pr.txt'});
+            return result;
+          result-encoding: string
 
       - name: Load WEBSITE URL
         id: website_url
-        run: echo "id=${{env.DEPLOY_HOST_URL}}pull/${{steps.pr_number.outputs.id}}/" >> $GITHUB_OUTPUT
+        run: echo "id=${{env.DEPLOY_HOST_URL}}pull/${{steps.pr_number.outputs.result}}/" >> $GITHUB_OUTPUT
 
       - name: Login via Azure CLI
         uses: azure/login@v2
@@ -67,7 +76,7 @@ jobs:
               --destination '$web' \
               --source ./website \
               --account-name ${{ env.AZURE_STORAGE }} \
-              --destination-path pull/${{steps.pr_number.outputs.id}} \
+              --destination-path pull/${{steps.pr_number.outputs.result}} \
               --auth-mode login \
               --overwrite
 
@@ -77,6 +86,7 @@ jobs:
     if: ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
     permissions:
       pull-requests: write
+      statuses: write
     steps:
       - uses: actions/checkout@v4
 

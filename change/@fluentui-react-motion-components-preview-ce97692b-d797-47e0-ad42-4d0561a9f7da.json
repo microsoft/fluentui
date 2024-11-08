@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Rename motion component variants ...Exaggerated to ...Relaxed",
+  "packageName": "@fluentui/react-motion-components-preview",
+  "email": "olkatruk@microsoft.com",
+  "dependentChangeType": "patch"
+}

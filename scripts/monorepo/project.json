@@ -3,11 +3,5 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/monorepo/src",
   "projectType": "library",
-  "tags": ["tools"],
-  "targets": {
-    "type-check": {
-      "executor": "@fluentui/workspace-plugin:type-check"
-    },
-    "format": {}
-  }
+  "tags": ["tools"]
 }
