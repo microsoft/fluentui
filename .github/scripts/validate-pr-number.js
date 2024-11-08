@@ -7,7 +7,7 @@ module.exports = main;
 /**
  *
  * @param {{filePath:string}} options
- * @returns
+ * @returns {number}
  */
 function main(options) {
   return validatePrNumber(options.filePath);
