@@ -11,6 +11,8 @@ import { CarouselSlider } from '../CarouselSlider/CarouselSlider';
 import { CarouselViewport } from '../CarouselViewport/CarouselViewport';
 import { Carousel } from './Carousel';
 import { CarouselCard, carouselCardClassNames } from '../CarouselCard/index';
+import { CarouselIndexChangeData } from '../CarouselContext.types';
+import { EventHandler } from '@fluentui/react-utilities';
 
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
@@ -52,7 +54,7 @@ describe('CarouselControlledIndexTest', () => {
   it('Should callback new index value', () => {
     const controlledActiveIndex = 1;
     let callbackIndex = controlledActiveIndex;
-    const callback = (ev, data) => {
+    const callback: EventHandler<CarouselIndexChangeData> = (ev, data) => {
       callbackIndex = data.index;
     };
     mount(<CarouselTest defaultActiveIndex={controlledActiveIndex} onActiveIndexChange={callback} />);
