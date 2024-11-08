@@ -55,5 +55,5 @@ export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> &
 export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> &
   Required<DrawerBaseState> &
   Pick<OverlayDrawerProps, 'mountNode'> & {
-    hasMountNodeElement?: boolean;
+    hasMountNodeElement: boolean;
   };
