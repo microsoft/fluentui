@@ -28,9 +28,9 @@ const pickerSuggestionsProps: IBasePickerSuggestionsProps = {
 
 const testTags: ITag[] = [
   'A short tag',
-  'A very long tag that spans more than the entire width of the picker',
-  'A second very long tag that spans more than the entire width of the picker',
-  'A third very long tag that spans more than the entire width of the picker',
+  'A very long tag that spans more than the entire width of the picker and forces the text to wrap',
+  'A second very long tag that spans more than the entire width of the picker and forces the text to wrap',
+  'A third very long tag that spans more than the entire width of the picker and forces the text to wrap',
 ].map(item => ({ key: item, name: item }));
 
 const filterSelectedTags = (filterText: string, tagList: ITag[]): ITag[] => {
