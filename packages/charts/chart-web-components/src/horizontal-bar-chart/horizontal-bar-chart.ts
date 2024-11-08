@@ -172,8 +172,7 @@ export class HorizontalBarChart extends FASTElement {
   }
 
   private calculateBarSpacing(): number {
-    //todo: replace 650 with width of svg or div.
-    const svgWidth = 650;
+    const svgWidth = this.rootDiv.getBoundingClientRect().width;
     let barSpacing = 0;
     const MARGIN_WIDTH_IN_PX = 3;
     if (svgWidth) {
@@ -295,7 +294,6 @@ export class HorizontalBarChart extends FASTElement {
         stop2.setAttribute('offset', '100%');
         stop2.setAttribute('stop-color', point.gradient[1]);
       }
-
       gEle;
       const rect = gEle
         .append('rect')
@@ -329,7 +327,6 @@ export class HorizontalBarChart extends FASTElement {
       .append('span')
       .attr('class', 'chartTitle')
       .text(data?.chartTitle ? data?.chartTitle : '');
-
     const hideNumber = this.hideRatio === undefined ? false : this.hideRatio;
 
     const showRatio = this.variant === Variant.PartToWhole && !hideNumber && data!.chartData!.length === 2;
@@ -344,7 +341,8 @@ export class HorizontalBarChart extends FASTElement {
       ratioDiv.append('span').attr('class', 'ratioDenominator').text(`/${total!}`);
     }
 
-    const svgEle = containerDiv
+    const svgDiv = containerDiv.append('div').attr('style', 'display: flex;');
+    const svgEle = svgDiv
       .append('svg')
       .attr('height', 20)
       .attr('width', 100 + '%')
@@ -362,13 +360,15 @@ export class HorizontalBarChart extends FASTElement {
         }
 
         const bounds = this.rootDiv.getBoundingClientRect();
+        const centerX = window.innerWidth / 2;
+        const xPos = Math.max(0, Math.min(centerX, window.innerWidth));
 
         this.tooltipProps = {
           isVisible: true,
           legend: d.legend,
           yValue: `${d.data}`,
           color: d.color!,
-          xPos: event.clientX - bounds.left,
+          xPos: Math.min(event.clientX - bounds.left, xPos),
           yPos: event.clientY - bounds.top - 40,
         };
       })
@@ -379,27 +379,49 @@ export class HorizontalBarChart extends FASTElement {
     if (this.variant === Variant.AbsoluteScale) {
       const showLabel = true;
       const barLabel = barTotalValue;
-
       if (showLabel) {
-        svgEle
-          .append('text')
-          .attr('key', 'text')
-          .attr('class', 'barLabel')
-          .attr(
-            'x',
-            `${
-              this._isRTL
-                ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value - totalMarginPercent
-                : (startingPoint[startingPoint.length - 1] || 0) + value + totalMarginPercent
-            }%`,
-          )
-          .attr('textAnchor', 'start')
-          .attr('y', this.barHeight / 2 + 6)
-          .attr('dominantBaseline', 'central')
-          .attr('transform', `translate(${this._isRTL ? -4 : 4})`)
-          .attr('aria-label', `Total: ${barLabel}`)
-          .attr('role', 'img')
-          .text(barLabel);
+        if (Math.round((startingPoint[startingPoint.length - 1] || 0) + value + totalMarginPercent) === 100) {
+          svgDiv
+            .append('text')
+            .attr('key', 'text')
+            .attr('style', 'margin-top: -4.5px; margin-left: 2px;')
+            .attr('class', 'barLabel')
+            .attr(
+              'x',
+              `${
+                this._isRTL
+                  ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value - totalMarginPercent
+                  : (startingPoint[startingPoint.length - 1] || 0) + value + totalMarginPercent
+              }%`,
+            )
+            .attr('textAnchor', 'start')
+            .attr('y', this.barHeight / 2 + 6)
+            .attr('dominantBaseline', 'central')
+            .attr('transform', `translate(${this._isRTL ? -4 : 4})`)
+            .attr('aria-label', `Total: ${barLabel}`)
+            .attr('role', 'img')
+            .text(barLabel);
+        } else {
+          svgEle
+            .append('text')
+            .attr('key', 'text')
+            .attr('class', 'barLabel')
+            .attr(
+              'x',
+              `${
+                this._isRTL
+                  ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value - totalMarginPercent
+                  : (startingPoint[startingPoint.length - 1] || 0) + value + totalMarginPercent
+              }%`,
+            )
+            .attr('textAnchor', 'start')
+            .attr('y', this.barHeight / 2 + 6)
+            .attr('dominantBaseline', 'central')
+            .attr('transform', `translate(${this._isRTL ? -4 : 4})`)
+            .attr('aria-label', `Total: ${barLabel}`)
+            .attr('role', 'img')
+            .text(barLabel);
+        }
       }
     }
     return containerDiv;
