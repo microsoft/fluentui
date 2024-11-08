@@ -35,7 +35,6 @@ import { MenuButtonProps } from '@fluentui/react-button';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { TabsterDOMAttribute } from '@fluentui/react-tabster/src/index';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import type { TooltipProps } from '@fluentui/react-tooltip';
 
@@ -219,7 +218,7 @@ export type NavDrawerHeaderState = DrawerHeaderState;
 
 // @public
 export type NavDrawerProps = ComponentProps<NavDrawerSlots> & DrawerProps & NavProps & {
-    tabsterDomAttribute?: TabsterDOMAttribute;
+    tabbable?: boolean;
 };
 
 // @public
