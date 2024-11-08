@@ -80,6 +80,7 @@ runs:
       uses: actions/upload-artifact@v4
       with:
         name: vrscreenshot${{ inputs.fluentVersion }}
+        retention-days: 1
         path: screenshots
 
     # ==========================================================

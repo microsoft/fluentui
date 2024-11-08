@@ -11,7 +11,16 @@ export type NavDrawerSlots = DrawerSlots;
 /**
  * NavDrawer Props
  */
-export type NavDrawerProps = ComponentProps<NavDrawerSlots> & DrawerProps & NavProps;
+export type NavDrawerProps = ComponentProps<NavDrawerSlots> &
+  DrawerProps &
+  NavProps & {
+    /**
+     * The component uses arrow navigation by default.
+     * Setting this to true enables tab AND arrow navigation.
+     * @default false
+     */
+    tabbable?: boolean;
+  };
 
 /**
  * State used in rendering NavDrawer
