@@ -19,6 +19,7 @@ import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { ValidationState } from './BasePicker.types';
 import { Autofill } from '../Autofill/index';
 import * as stylesImport from './BasePicker.scss';
+import { Label } from '../../Label';
 import type { IProcessedStyleSet } from '../../Styling';
 import type {
   ISuggestions,
@@ -49,6 +50,7 @@ export interface IBasePickerState<T> {
   isResultsFooterVisible?: boolean;
   selectedIndices?: number[];
   selectionRemoved?: T;
+  errorMessage?: string | JSX.Element;
 }
 
 /**
@@ -115,6 +117,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
   private _id: string;
   private _async: Async;
+  private _isMounted: boolean = false;
   private _onResolveSuggestionsDebounced: (updatedValue: string) => void;
   private _overrideScrollDismiss = false;
   private _overrideScrollDimissTimeout: number;
@@ -160,7 +163,9 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   }
 
   public componentDidMount(): void {
+    this._isMounted = true;
     this._async = new Async(this);
+    this._updateErrorMessage(this.state.items);
     this.selection.setItems(this.state.items);
     this._onResolveSuggestionsDebounced = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
@@ -183,6 +188,10 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
       }
     }
 
+    if (!!oldProps.required !== !!this.props.required) {
+      this._updateErrorMessage(this.state.items);
+    }
+
     // handle dismiss buffer after suggestions are opened
     if (this.state.suggestionsVisible && !oldState.suggestionsVisible) {
       this._overrideScrollDismiss = true;
@@ -194,6 +203,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   }
 
   public componentWillUnmount(): void {
+    this._isMounted = false;
     if (this.currentPromise) {
       this.currentPromise = undefined;
     }
@@ -269,6 +279,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
 
     const suggestionsVisible = !!this.state.suggestionsVisible;
     const suggestionsAvailable = suggestionsVisible ? this._ariaMap.suggestionList : undefined;
+    const hasError = typeof (this.state.errorMessage || this.props.errorMessage) !== 'undefined';
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
@@ -284,17 +295,20 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
           className,
           isFocused,
           disabled,
+          hasErrorMessage: hasError,
           inputClassName: inputProps && inputProps.className,
         })
       : {
           root: css('ms-BasePicker', className ? className : ''),
+          error: css('ms-BasePicker-error', ''),
           text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
           itemsWrapper: legacyStyles.pickerItems,
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
           screenReaderText: legacyStyles.screenReaderOnly,
         };
 
-    const comboLabel = this.props['aria-label'] || inputProps?.['aria-label'];
+    const comboLabel = this.props.ariaLabel || this.props['aria-label'] || inputProps?.['aria-label'];
+    const inputId = inputProps?.id ? inputProps.id : this._ariaMap.combobox;
 
     // selectionAriaLabel is contained in a separate <span> rather than an aria-label on the items list
     // because if the items list has an aria-label, the aria-describedby on the input will only read
@@ -309,6 +323,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
         onBlur={this.onBlur}
         onClick={this.onWrapperClick}
       >
+        {this.renderLabel(inputId)}
         {this.renderCustomAlert(classNames.screenReaderText)}
         <span id={`${this._ariaMap.selectedItems}-label`} hidden>
           {selectionAriaLabel || comboLabel}
@@ -331,7 +346,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
                 {...(inputProps as any)}
                 className={classNames.input}
                 componentRef={this.input}
-                id={inputProps?.id ? inputProps.id : this._ariaMap.combobox}
+                id={inputId}
                 onClick={this.onClick}
                 onFocus={this.onInputFocus}
                 onBlur={this.onInputBlur}
@@ -350,6 +365,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
             )}
           </div>
         </SelectionZone>
+        {this.renderError(classNames.error)}
         {this.renderSuggestions()}
       </div>
     );
@@ -359,6 +375,30 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     const { items } = this.state;
     const { itemLimit } = this.props;
     return itemLimit === undefined || items.length < itemLimit;
+  }
+
+  protected renderLabel(inputId: string): JSX.Element | null {
+    const { label, disabled, required } = this.props;
+    if (!label) {
+      return null;
+    }
+    return (
+      <Label id={this._id + '-label'} disabled={disabled} required={required} htmlFor={inputId}>
+        {label}
+      </Label>
+    );
+  }
+
+  protected renderError(className?: string): JSX.Element | null {
+    const errorMessage = this.props.errorMessage || this.state.errorMessage;
+    if (!errorMessage) {
+      return null;
+    }
+    return (
+      <div role="alert" id={this._id + '-error'} className={className}>
+        {errorMessage}
+      </div>
+    );
   }
 
   protected renderSuggestions(): JSX.Element | null {
@@ -1010,6 +1050,52 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     }
   }
 
+  private _getRequiredFieldErrorMessage(items: T[]): string | JSX.Element | undefined {
+    if (!this.props.required || (items && items.length > 0)) {
+      return;
+    }
+    return 'Please fill out this field.';
+  }
+
+  private async _getErrorMessage(items: T[]): Promise<string | JSX.Element | undefined> {
+      if (this.props.errorMessage) {
+        return this.props.errorMessage;
+      }
+      if (this.props.onGetErrorMessage) {
+        try {
+          const errorMessage = this.props.onGetErrorMessage(items);
+          if (errorMessage) {
+            if ((errorMessage as PromiseLike<string | JSX.Element>).then) {
+              return  await (errorMessage as PromiseLike<string | JSX.Element>);
+            } else {
+              return errorMessage as string | JSX.Element;
+            }
+          } else {
+            return undefined;
+          }
+        } catch (err) {
+          return this._getRequiredFieldErrorMessage(items);
+        }
+      }
+      return this._getRequiredFieldErrorMessage(items);
+    }
+
+    private _updateErrorMessage(items: T[]): void {
+      let newErrorMessage: string | JSX.Element | undefined;
+      this._getErrorMessage(items)
+        .then(errorMessage => {
+          newErrorMessage = errorMessage;
+        })
+        .catch(() => {
+          /* NO-OP */
+        })
+        .finally(() => {
+          if (this._isMounted) {
+            this.setState({ errorMessage: newErrorMessage });
+          }
+        });
+    }
+
   /**
    * Controls what happens whenever there is an action that impacts the selected items.
    * If `selectedItems` is provided, this will act as a controlled component and it will not update its own state.
@@ -1020,6 +1106,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
       this.onChange(items);
     } else {
       this.setState({ items }, () => {
+        this._updateErrorMessage(items);
         this._onSelectedItemsUpdated(items);
       });
     }
@@ -1107,6 +1194,7 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
     const suggestionsVisible = !!this.state.suggestionsVisible;
 
     const suggestionsAvailable: string | undefined = suggestionsVisible ? this._ariaMap.suggestionList : undefined;
+    const hasError = !!(this.state.errorMessage || this.props.errorMessage);
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
@@ -1121,10 +1209,13 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
           theme,
           className,
           isFocused,
+          disabled,
+          hasErrorMessage: hasError,
           inputClassName: inputProps && inputProps.className,
         })
       : {
           root: css('ms-BasePicker', legacyStyles.picker, className ? className : ''),
+          error: css('ms-BasePicker-error', ''),
           text: css(
             'ms-BasePicker-text',
             legacyStyles.pickerText,
@@ -1137,9 +1228,11 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
         };
 
     const comboLabel = this.props['aria-label'] || inputProps?.['aria-label'];
+    const inputId = inputProps?.id ? inputProps.id : this._ariaMap.combobox;
 
     return (
       <div ref={this.root} onBlur={this.onBlur} onFocus={this.onFocus}>
+        {this.renderLabel(inputId)}
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.renderCustomAlert(classNames.screenReaderText)}
           <span id={`${this._ariaMap.selectedItems}-label`} hidden>
@@ -1162,7 +1255,7 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
               aria-label={comboLabel}
               aria-describedby={this.state.items.length > 0 ? this._ariaMap.selectedItems : undefined}
               role="combobox"
-              id={inputProps?.id ? inputProps.id : this._ariaMap.combobox}
+              id={inputId}
               disabled={disabled}
               onInputChange={this.props.onInputChange}
             />
@@ -1179,6 +1272,7 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
             {this.renderItems()}
           </div>
         </SelectionZone>
+        {this.renderError(classNames.error)}
       </div>
     );
   }
