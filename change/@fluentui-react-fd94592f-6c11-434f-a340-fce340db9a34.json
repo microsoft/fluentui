@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added properties: label, required, and error.",
+  "packageName": "@fluentui/react",
+  "email": "tpalacino@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
