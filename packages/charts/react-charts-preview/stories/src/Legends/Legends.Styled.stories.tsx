@@ -1,5 +1,12 @@
 import * as React from 'react';
 import { Legend, Legends, getColorFromToken, DataVizPalette } from '@fluentui/react-charts-preview';
+import { makeStyles } from '@griffel/react';
+
+const OverrideLegendStyles = makeStyles({
+  root: {
+    border: `1px solid ${getColorFromToken(DataVizPalette.color25)}`,
+  },
+});
 
 export const LegendsStyled = () => {
   const legends: Legend[] = [
@@ -79,6 +86,7 @@ export const LegendsStyled = () => {
       overflowText={'Overflow Items'}
       allowFocusOnLegends={true}
       canSelectMultipleLegends={false}
+      className={{ legend: OverrideLegendStyles().root }}
     />
   );
 };

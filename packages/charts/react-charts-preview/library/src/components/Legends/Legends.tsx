@@ -8,6 +8,7 @@ import { Overflow, OverflowItem } from '@fluentui/react-overflow';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { OverflowMenu } from './OverflowMenu';
 import { tokens } from '@fluentui/react-theme';
+import { mergeClasses } from '@griffel/react';
 
 // This is an internal interface used for rendering the legends with unique key
 interface LegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -80,10 +81,10 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             'aria-multiselectable': canSelectMultipleLegends,
           })}
           style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}
-          className={classes.root}
+          className={mergeClasses(classes.root, props.className?.root)}
         >
           <Overflow>
-            <div className={classes.resizableArea}>
+            <div className={mergeClasses(classes.resizableArea, props.className?.resizableArea)}>
               {dataToRender.map((item, id) => (
                 <OverflowItem key={id} id={id.toString()}>
                   {_renderButton(item)}
@@ -107,9 +108,12 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             'aria-multiselectable': canSelectMultipleLegends,
           })}
           style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}
-          className={classes.root}
+          className={mergeClasses(classes.root, props.className?.root)}
         >
-          <div className={classes.resizableArea} style={{ display: 'flex', flexWrap: 'wrap', overflow: 'auto' }}>
+          <div
+            className={mergeClasses(classes.resizableArea, props.className?.resizableArea)}
+            style={{ display: 'flex', flexWrap: 'wrap', overflow: 'auto' }}
+          >
             {dataToRender.map((item, id) => (
               <div key={id} style={{ flex: '0 1 auto', margin: '4px' }}>
                 {_renderButton(item)}
@@ -253,7 +257,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           })}
           {...(data.nativeButtonProps && { ...data.nativeButtonProps })}
           key={index}
-          className={classes.legend}
+          className={mergeClasses(classes.legend, props.className?.legend)}
           onClick={onClickHandler}
           onMouseOver={onHoverHandler}
           onMouseOut={onMouseOut}
@@ -272,7 +276,10 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           }} /* eslint-enable react/jsx-no-bind */
         >
           {shape}
-          <div className={classes.text} style={{ opacity: color === tokens.colorNeutralBackground1 ? '0.67' : '' }}>
+          <div
+            className={mergeClasses(classes.text, props.className?.text)}
+            style={{ opacity: color === tokens.colorNeutralBackground1 ? '0.67' : '' }}
+          >
             {legend.title}
           </div>
         </Button>
