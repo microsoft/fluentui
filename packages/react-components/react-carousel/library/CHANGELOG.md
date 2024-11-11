@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-carousel
 
-This log was last generated on Tue, 15 Oct 2024 17:17:52 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Nov 2024 10:01:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.3.0)
+
+Mon, 11 Nov 2024 10:01:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.2.0..@fluentui/react-carousel_v9.3.0)
+
+### Minor changes
+
+- fix: Drag events now trigger onActiveIndexChange with drag/touch event attached ([PR #33092](https://github.com/microsoft/fluentui/pull/33092) by mifraser@microsoft.com)
+- feat: Add CarouselViewport to correctly define CarouselSlider within a static container ([PR #33155](https://github.com/microsoft/fluentui/pull/33155) by mifraser@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.9 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-button to v9.3.95 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.69 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.46 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.21.0 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-tabster to v9.23.0 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-theme to v9.1.22 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-utilities to v9.18.17 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+
+### Patches
+
+- fix: Ensure pointer events do not block future focus index changes ([PR #33204](https://github.com/microsoft/fluentui/pull/33204) by mifraser@microsoft.com)
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- style: resolve exposed jsx pragma lint issues within monorepo ([PR #32975](https://github.com/microsoft/fluentui/pull/32975) by martinhochel@microsoft.com)
 
 ## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.2.0)
 

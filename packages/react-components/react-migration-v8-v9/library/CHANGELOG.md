@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Tue, 15 Oct 2024 17:17:53 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Nov 2024 10:00:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.36)
+
+Mon, 11 Nov 2024 10:00:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.35..@fluentui/react-migration-v8-v9_v9.6.36)
+
+### Patches
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- Bump @fluentui/react-components to v9.56.0 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
 
 ## [9.6.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.35)
 
