@@ -81,7 +81,9 @@ async function processPropertyAssignment(
   const propertyName = node.getName();
   const initializer = node.getInitializer();
 
-  if (!initializer) return tokens;
+  if (!initializer) {
+    return tokens;
+  }
 
   if (Node.isExpression(initializer)) {
     const text = initializer.getText();

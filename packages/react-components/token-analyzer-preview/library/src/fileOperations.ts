@@ -50,7 +50,9 @@ export async function resolveImportPath(importPath: string, currentFilePath: str
   // Try original path
   try {
     const stats = await fs.stat(absolutePath);
-    if (stats.isFile()) return absolutePath;
+    if (stats.isFile()) {
+      return absolutePath;
+    }
   } catch {} // Ignore errors and try extensions
 
   // Try with extensions
@@ -58,7 +60,9 @@ export async function resolveImportPath(importPath: string, currentFilePath: str
     const pathWithExt = absolutePath + ext;
     try {
       const stats = await fs.stat(pathWithExt);
-      if (stats.isFile()) return pathWithExt;
+      if (stats.isFile()) {
+        return pathWithExt;
+      }
     } catch {} // Ignore errors and continue trying
   }
 

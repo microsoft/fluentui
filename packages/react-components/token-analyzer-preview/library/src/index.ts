@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Project } from 'ts-morph';
 import { promises as fs } from 'fs';
 import { relative } from 'path';
@@ -8,7 +9,6 @@ import { StyleAnalysis, AnalysisResults } from './types.js';
 
 async function analyzeProjectStyles(rootDir: string, outputFile?: string): Promise<AnalysisResults> {
   console.log(`Starting analysis of ${rootDir}`);
-  process.stdout.write(`Starting analysis of ${rootDir}`);
   try {
     const styleFiles = await findStyleFiles(rootDir);
     console.log(`Found ${styleFiles.length} style files to analyze`);
