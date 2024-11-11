@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(v8 DatePicker): Add aria-required to required DatePickers",
+  "packageName": "@fluentui/react",
+  "email": "jiangemma@microsoft.com",
+  "dependentChangeType": "patch"
+}
