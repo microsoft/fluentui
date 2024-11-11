@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
+import type { ComponentState, Slot, EventHandler, EventData, ComponentProps } from '@fluentui/react-utilities';
 
 export type ColorAreaOnColorChangeData = EventData<'change', React.SyntheticEvent | MouseEvent> & {
   color: HsvColor;
@@ -22,7 +22,7 @@ export type HsvColor = {
 /**
  * ColorArea Props
  */
-export type ColorAreaProps = Partial<ColorAreaSlots> & {
+export type ColorAreaProps = ComponentProps<Partial<ColorAreaSlots>> & {
   /**
    * The current color of the ColorArea.
    */
