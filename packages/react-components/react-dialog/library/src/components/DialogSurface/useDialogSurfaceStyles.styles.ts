@@ -42,8 +42,6 @@ const useRootBaseStyle = makeResetStyles({
   // Same styles as DialogSurfaceMotion last keyframe,
   // to ensure dialog will be properly styled when surfaceMotion is opted-out
   boxShadow: tokens.shadow64,
-  transform: 'scale(1) translateZ(0)',
-  opacity: 1,
 
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
