@@ -1,6 +1,3 @@
-/** @jsxRuntime automatic */
-/** @jsxImportSource @fluentui/react-jsx-runtime */
-
 import { assertSlots } from '@fluentui/react-utilities';
 import type { CarouselButtonState, CarouselButtonSlots } from './CarouselButton.types';
 import { renderButton_unstable } from '@fluentui/react-button';

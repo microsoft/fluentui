@@ -15,7 +15,7 @@ import type { HostBehavior } from '@microsoft/fast-element';
 import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
-import type { SyntheticViewTemplate } from '@microsoft/fast-element';
+import { SyntheticViewTemplate } from '@microsoft/fast-element';
 import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
@@ -55,9 +55,9 @@ export class AccordionItem extends BaseAccordionItem {
     block: boolean;
     blockChanged(prev: boolean, next: boolean): void;
     markerPosition?: AccordionItemMarkerPosition;
-    markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
+    markerPositionChanged(prev: AccordionItemMarkerPosition | undefined, next: AccordionItemMarkerPosition | undefined): void;
     size?: AccordionItemSize;
-    sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
+    sizeChanged(prev: AccordionItemSize | undefined, next: AccordionItemSize | undefined): void;
 }
 
 // @internal
@@ -187,7 +187,7 @@ export class Avatar extends BaseAvatar {
     appearance?: AvatarAppearance | undefined;
     color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
-    static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
+    static colors: ("anchor" | "beige" | "blue" | "brass" | "brown" | "cornflower" | "cranberry" | "dark-green" | "dark-red" | "forest" | "gold" | "grape" | "lavender" | "light-teal" | "lilac" | "magenta" | "marigold" | "mink" | "navy" | "peach" | "pink" | "platinum" | "plum" | "pumpkin" | "purple" | "red" | "royal-blue" | "seafoam" | "steel" | "teal")[];
     // (undocumented)
     connectedCallback(): void;
     // (undocumented)
@@ -583,7 +583,7 @@ export class BaseDivider extends FASTElement {
     elementInternals: ElementInternals;
     orientation?: DividerOrientation;
     // @internal
-    orientationChanged(previous: string | null, next: string | null): void;
+    orientationChanged(previous: DividerRole | undefined, next: DividerRole | undefined): void;
     role: DividerRole;
     // @internal
     roleChanged(previous: string | null, next: string | null): void;
@@ -3268,7 +3268,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     mode: SliderMode;
     orientation?: Orientation;
     // (undocumented)
-    protected orientationChanged(prev: string | undefined, next: string | undefined): void;
+    protected orientationChanged(prev: Orientation | undefined, next: Orientation | undefined): void;
     // @internal (undocumented)
     position: string;
     reportValidity(): boolean;
@@ -3279,7 +3279,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     size?: SliderSize;
     // (undocumented)
-    protected sizeChanged(prev: string, next: string): void;
+    protected sizeChanged(prev: SliderSize | undefined, next: SliderSize | undefined): void;
     step: string;
     // (undocumented)
     protected stepChanged(): void;
@@ -4035,6 +4035,58 @@ export const ToggleButtonStyles: ElementStyles;
 
 // @public
 export const ToggleButtonTemplate: ElementViewTemplate<ToggleButton>;
+
+// @public
+export class Tooltip extends FASTElement {
+    constructor();
+    anchor: string;
+    // @internal
+    protected anchorPositioningStyleElement: HTMLStyleElement | null;
+    blurAnchorHandler: () => void;
+    // (undocumented)
+    connectedCallback(): void;
+    delay?: number;
+    // (undocumented)
+    disconnectedCallback(): void;
+    elementInternals: ElementInternals;
+    focusAnchorHandler: () => void;
+    // @internal
+    hideTooltip(delay?: number): void;
+    id: string;
+    mouseenterAnchorHandler: () => void;
+    mouseleaveAnchorHandler: () => void;
+    positioning?: TooltipPositioningOption;
+    // @internal
+    showTooltip(delay?: number): void;
+}
+
+// @public
+export const TooltipDefinition: FASTElementDefinition<typeof Tooltip>;
+
+// @public
+export const TooltipPositioningOption: {
+    readonly 'above-start': "block-start span-inline-end";
+    readonly above: "block-start";
+    readonly 'above-end': "block-start span-inline-start";
+    readonly 'below-start': "block-end span-inline-end";
+    readonly below: "block-end";
+    readonly 'below-end': "block-end span-inline-start";
+    readonly 'before-top': "inline-start span-block-end";
+    readonly before: "inline-start";
+    readonly 'before-bottom': "inline-start span-block-start";
+    readonly 'after-top': "inline-end span-block-end";
+    readonly after: "inline-end";
+    readonly 'after-bottom': "inline-end span-block-start";
+};
+
+// @public
+export type TooltipPositioningOption = ValuesOf<typeof TooltipPositioningOption>;
+
+// @public
+export const TooltipStyles: ElementStyles;
+
+// @public
+export const TooltipTemplate: ViewTemplate<Tooltip, any>;
 
 // Warning: (ae-missing-release-tag) "typographyBody1StrongerStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //

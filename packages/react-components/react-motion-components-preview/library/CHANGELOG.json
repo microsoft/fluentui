@@ -2,6 +2,84 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Mon, 11 Nov 2024 10:00:46 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "none": [
+          {
+            "author": "olkatruk@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "b09b45caec14e99f8ae30b10872f72813dae2d63",
+            "comment": "fix(docs): Collapse storybook updates"
+          }
+        ],
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "39269bafaa1cf19799aeb912d84111ce603834fe",
+            "comment": "refactor: migrate Fade motion component to new variant structure"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "9d54f9ff8b284f45b7bf03f83433c307f9ac0934",
+            "comment": "fix: handle content padding in Collapse"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "2558ddce7329d2a1c1f76fa1e5f614918fe6dcd9",
+            "comment": "chore: replace npm-scripts and just-scrtips with nx inferred tasks"
+          }
+        ],
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "ed7c93c5724087f9d2466ee2f4a01b0532d0036d",
+            "comment": "feat: add CollapseDelayed motion component variant"
+          },
+          {
+            "author": "olkatruk@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "c16cd22a1b88badb821f7e65cf29fcc42bab0086",
+            "comment": "Rename motion component variants ...Exaggerated to ...Relaxed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Oct 2024 17:17:49 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "82c0e8447787f5e6530d4ec7fa867e02ef861ddf",
+            "comment": "refactor: simplify motion component variant creation"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "46cdc69c21ecfe816511bec739f2fd11d4892e59",
+            "comment": "feat: add Collapse orientation parameter & horizontal implementation"
+          }
+        ],
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "1907e859fbe89f001cf92eda8e3674d961cab6ac",
+            "comment": "fix: Collapse should only effect opacity when animateOpacity is true"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 20:13:12 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.1.1",
       "version": "0.1.1",

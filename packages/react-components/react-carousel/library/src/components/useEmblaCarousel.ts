@@ -1,11 +1,14 @@
-import { useControllableState } from '@fluentui/react-utilities';
-import EmblaCarousel, { type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
+import { type EventHandler, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import EmblaCarousel, { EmblaPluginType, type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
 import * as React from 'react';
 
 import { carouselCardClassNames } from './CarouselCard/useCarouselCardStyles.styles';
 import { carouselSliderClassNames } from './CarouselSlider/useCarouselSliderStyles.styles';
-import { CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
+import { CarouselMotion, CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
 import Autoplay from 'embla-carousel-autoplay';
+import Fade from 'embla-carousel-fade';
+import { pointerEventPlugin } from './pointerEvents';
+import type { CarouselIndexChangeData } from './CarouselContext.types';
 
 const sliderClassname = `.${carouselSliderClassNames.root}`;
 
@@ -38,13 +41,19 @@ export function useEmblaCarousel(
   options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'watchDrag' | 'containScroll'> & {
     defaultActiveIndex: number | undefined;
     activeIndex: number | undefined;
+    motion?: CarouselMotion;
+    onDragIndexChange?: EventHandler<CarouselIndexChangeData>;
   },
 ) {
-  const { align, direction, loop, slidesToScroll, watchDrag, containScroll } = options;
+  const { align, direction, loop, slidesToScroll, watchDrag, containScroll, motion, onDragIndexChange } = options;
   const [activeIndex, setActiveIndex] = useControllableState({
     defaultState: options.defaultActiveIndex,
     state: options.activeIndex,
     initialState: 0,
+  });
+
+  const onDragEvent = useEventCallback((event: PointerEvent | MouseEvent, index: number) => {
+    onDragIndexChange?.(event, { event, type: 'drag', index });
   });
 
   const emblaOptions = React.useRef<EmblaOptionsType>({
@@ -79,6 +88,32 @@ export function useEmblaCarousel(
     [resetAutoplay],
   );
 
+  const getPlugins = React.useCallback(() => {
+    const plugins: EmblaPluginType[] = [
+      Autoplay({
+        playOnInit: autoplayRef.current,
+        stopOnInteraction: !autoplayRef.current,
+        stopOnMouseEnter: true,
+        stopOnFocusIn: true,
+      }),
+    ];
+
+    // Optionally add Fade plugin
+    if (motion === 'fade') {
+      plugins.push(Fade());
+    }
+
+    if (watchDrag) {
+      plugins.push(
+        pointerEventPlugin({
+          onSelectViaDrag: onDragEvent,
+        }),
+      );
+    }
+
+    return plugins;
+  }, [motion, onDragEvent, watchDrag]);
+
   // Listeners contains callbacks for UI elements that may require state update based on embla changes
   const listeners = React.useRef(new Set<(data: CarouselUpdateData) => void>());
   const subscribeForValues = React.useCallback((listener: (data: CarouselUpdateData) => void) => {
@@ -89,6 +124,25 @@ export function useEmblaCarousel(
     };
   }, []);
 
+  const handleReinit = useEventCallback(() => {
+    const nodes: HTMLElement[] = emblaApi.current?.slideNodes() ?? [];
+    const groupIndexList: number[][] = emblaApi.current?.internalEngine().slideRegistry ?? [];
+    const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
+
+    const data: CarouselUpdateData = {
+      navItemsCount,
+      activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
+      groupIndexList,
+      slideNodes: nodes,
+    };
+
+    emblaApi.current?.scrollTo(activeIndex, false);
+    for (const listener of listeners.current) {
+      listener(data);
+    }
+  });
+
+  const viewportRef: React.RefObject<HTMLDivElement> = React.useRef(null);
   const containerRef: React.RefObject<HTMLDivElement> = React.useMemo(() => {
     let currentElement: HTMLDivElement | null = null;
 
@@ -96,28 +150,14 @@ export function useEmblaCarousel(
       const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
       const slides = emblaApi.current?.slideNodes();
       const actualIndex = emblaApi.current?.internalEngine().slideRegistry[newIndex][0] ?? 0;
+
       // We set the active or first index of group on-screen as the selected tabster index
       slides?.forEach((slide, slideIndex) => {
         setTabsterDefault(slide, slideIndex === actualIndex);
       });
       setActiveIndex(newIndex);
     };
-    const handleReinit = () => {
-      const nodes: HTMLElement[] = emblaApi.current?.slideNodes() ?? [];
-      const groupIndexList: number[][] = emblaApi.current?.internalEngine().slideRegistry ?? [];
-      const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
 
-      const data: CarouselUpdateData = {
-        navItemsCount,
-        activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
-        groupIndexList,
-        slideNodes: nodes,
-      };
-
-      for (const listener of listeners.current) {
-        listener(data);
-      }
-    };
     const handleVisibilityChange = () => {
       const cardElements = emblaApi.current?.slideNodes();
       const visibleIndexes = emblaApi.current?.slidesInView() ?? [];
@@ -132,6 +172,8 @@ export function useEmblaCarousel(
       });
     };
 
+    const plugins = getPlugins();
+
     return {
       set current(newElement: HTMLDivElement | null) {
         if (currentElement) {
@@ -141,25 +183,17 @@ export function useEmblaCarousel(
           emblaApi.current?.destroy();
         }
 
-        if (newElement) {
-          currentElement = newElement;
+        // Use direct viewport if available, else fallback to container (includes Carousel controls).
+        const wrapperElement = viewportRef.current ?? newElement;
+        if (wrapperElement) {
+          currentElement = wrapperElement;
           emblaApi.current = EmblaCarousel(
-            newElement,
+            wrapperElement,
             {
               ...DEFAULT_EMBLA_OPTIONS,
               ...emblaOptions.current,
             },
-            [
-              Autoplay({
-                playOnInit: autoplayRef.current,
-                stopOnInteraction: !autoplayRef.current,
-                stopOnMouseEnter: true,
-                stopOnFocusIn: true,
-                rootNode: (emblaRoot: HTMLElement) => {
-                  return emblaRoot.querySelector(sliderClassname) ?? emblaRoot;
-                },
-              }),
-            ],
+            plugins,
           );
 
           emblaApi.current?.on('reInit', handleReinit);
@@ -168,7 +202,7 @@ export function useEmblaCarousel(
         }
       },
     };
-  }, [setActiveIndex]);
+  }, [getPlugins, setActiveIndex, handleReinit]);
 
   const carouselApi = React.useMemo(
     () => ({
@@ -201,37 +235,41 @@ export function useEmblaCarousel(
   );
 
   React.useEffect(() => {
+    // Scroll to controlled values on update
+    // If active index is out of bounds, re-init will handle instead
     const currentActiveIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
-
-    if (activeIndex !== currentActiveIndex) {
+    const slideLength = emblaApi.current?.slideNodes()?.length ?? 0;
+    emblaOptions.current.startIndex = activeIndex;
+    if (activeIndex < slideLength && activeIndex !== currentActiveIndex) {
       emblaApi.current?.scrollTo(activeIndex);
     }
   }, [activeIndex]);
 
   React.useEffect(() => {
-    emblaOptions.current = { align, direction, loop, slidesToScroll, watchDrag, containScroll };
+    const plugins = getPlugins();
+
+    emblaOptions.current = {
+      startIndex: emblaOptions.current.startIndex,
+      align,
+      direction,
+      loop,
+      slidesToScroll,
+      watchDrag,
+      containScroll,
+    };
     emblaApi.current?.reInit(
       {
         ...DEFAULT_EMBLA_OPTIONS,
         ...emblaOptions.current,
       },
-      [
-        Autoplay({
-          playOnInit: autoplayRef.current,
-          stopOnInteraction: !autoplayRef.current,
-          stopOnMouseEnter: true,
-          stopOnFocusIn: true,
-          rootNode: (emblaRoot: HTMLElement) => {
-            return emblaRoot.querySelector(sliderClassname) ?? emblaRoot;
-          },
-        }),
-      ],
+      plugins,
     );
-  }, [align, direction, loop, slidesToScroll, watchDrag, containScroll]);
+  }, [align, direction, loop, slidesToScroll, watchDrag, containScroll, getPlugins]);
 
   return {
     activeIndex,
     carouselApi,
+    viewportRef,
     containerRef,
     subscribeForValues,
     enableAutoplay,

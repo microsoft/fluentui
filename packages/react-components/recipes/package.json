@@ -18,28 +18,19 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "generate-api": "just-scripts generate-api",
-    "lint": "just-scripts lint",
-    "test": "jest --passWithNoTests",
-    "type-check": "just-scripts type-check"
-  },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*"
   },
   "dependencies": {
-    "@fluentui/react-provider": "^9.17.5",
-    "@fluentui/react-theme": "^9.1.20",
-    "@fluentui/react-text": "^9.4.25",
-    "@fluentui/react-utilities": "^9.18.15",
+    "@fluentui/react-provider": "^9.18.0",
+    "@fluentui/react-theme": "^9.1.22",
+    "@fluentui/react-text": "^9.4.27",
+    "@fluentui/react-utilities": "^9.18.17",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",
     "@fluentui/react-icons": "^2.0.245"

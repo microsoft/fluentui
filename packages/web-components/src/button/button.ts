@@ -2,9 +2,8 @@ import { attr, FASTElement, nullableNumberConverter, observable } from '@microso
 import { keyEnter, keySpace } from '@microsoft/fast-web-utilities';
 import { StartEnd } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { toggleState } from '../utils/element-internals.js';
-import type { ButtonAppearance, ButtonFormTarget, ButtonShape, ButtonSize } from './button.options.js';
-import { ButtonType } from './button.options.js';
+import { swapStates, toggleState } from '../utils/element-internals.js';
+import { ButtonAppearance, ButtonFormTarget, ButtonShape, ButtonSize, ButtonType } from './button.options.js';
 
 /**
  * A Button Custom HTML Element.
@@ -447,12 +446,7 @@ export class Button extends BaseButton {
    * @param next - the next state
    */
   public appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, ButtonAppearance);
   }
 
   /**
@@ -471,12 +465,7 @@ export class Button extends BaseButton {
    * @param next - the next state
    */
   public shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, ButtonShape);
   }
 
   /**
@@ -495,12 +484,7 @@ export class Button extends BaseButton {
    * @param next - the next state
    */
   public sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, ButtonSize);
   }
 
   /**

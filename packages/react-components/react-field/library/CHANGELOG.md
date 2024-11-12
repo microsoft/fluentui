@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Mon, 23 Sep 2024 12:40:17 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Nov 2024 10:00:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.79)
+
+Mon, 11 Nov 2024 10:00:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.78..@fluentui/react-field_v9.1.79)
+
+### Patches
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- fix(react-field): Add screenreader announcement for validationMessage if validationState="warning" ([PR #33175](https://github.com/microsoft/fluentui/pull/33175) by jiangemma@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.69 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.46 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-label to v9.1.78 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-theme to v9.1.22 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-utilities to v9.18.17 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+
+## [9.1.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.78)
+
+Tue, 15 Oct 2024 17:17:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.76..@fluentui/react-field_v9.1.78)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.68 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.45 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-label to v9.1.77 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-theme to v9.1.21 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-utilities to v9.18.16 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
 
 ## [9.1.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.76)
 

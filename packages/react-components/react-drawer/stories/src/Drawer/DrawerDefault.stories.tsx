@@ -14,6 +14,7 @@ import {
   useId,
   useRestoreFocusSource,
   useRestoreFocusTarget,
+  ToggleButton,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -87,9 +88,20 @@ export const Default = () => {
       </Drawer>
 
       <div className={styles.content}>
-        <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setIsOpen(!isOpen)}>
-          {type === 'inline' ? 'Toggle' : 'Open'}
-        </Button>
+        {type === 'inline' ? (
+          <ToggleButton
+            {...restoreFocusTargetAttributes}
+            appearance="primary"
+            onClick={() => setIsOpen(!isOpen)}
+            checked={isOpen}
+          >
+            Toggle
+          </ToggleButton>
+        ) : (
+          <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setIsOpen(!isOpen)}>
+            Open
+          </Button>
+        )}
 
         <div className={styles.field}>
           <Label id={labelId}>Type</Label>

@@ -38,7 +38,7 @@ test.describe('Text Component', () => {
     });
   }
 
-  for (const value in Object.values(TextSize)) {
+  for (const value of Object.values(TextSize)) {
     test(`should set and reflect the size attribute to \`${value}\` when provided`, async ({ page }) => {
       const element = page.locator('fluent-text');
 
@@ -54,7 +54,7 @@ test.describe('Text Component', () => {
     });
   }
 
-  for (const value in TextWeight) {
+  for (const value of Object.values(TextWeight)) {
     test(`should set and reflect the weight attribute to the \`${value}\` when provided`, async ({ page }) => {
       const element = page.locator('fluent-text');
 
@@ -70,7 +70,7 @@ test.describe('Text Component', () => {
     });
   }
 
-  for (const value in TextAlign) {
+  for (const value of Object.values(TextAlign)) {
     test(`should set and reflect the align attribute to \`${value}\` when provided`, async ({ page }) => {
       const element = page.locator('fluent-text');
 
@@ -86,7 +86,7 @@ test.describe('Text Component', () => {
     });
   }
 
-  for (const value in TextFont) {
+  for (const value of Object.values(TextFont)) {
     test(`should set and reflect the font attribute to \`${value}\` when provided`, async ({ page }) => {
       const element = page.locator('fluent-text');
 

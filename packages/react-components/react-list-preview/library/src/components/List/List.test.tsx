@@ -113,6 +113,16 @@ describe('List', () => {
         );
         expect(result.container).toMatchSnapshot();
       });
+
+      it("div by default when navigationMode is 'composite'", () => {
+        const result = render(
+          <List navigationMode="composite">
+            <ListItem value="test-value-1">First ListItem</ListItem>
+            <ListItem value="test-value-2">Second ListItem</ListItem>
+          </List>,
+        );
+        expect(result.container).toMatchSnapshot();
+      });
     });
   });
 

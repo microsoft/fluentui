@@ -182,6 +182,7 @@ export const useIconStyles = makeStyles({
   base: {
     gridArea: 'media',
     display: 'flex',
+    boxSizing: 'content-box',
   },
   medium: {
     paddingLeft: tagSpacingMedium,

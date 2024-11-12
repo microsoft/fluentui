@@ -1,4 +1,13 @@
-import { Button, Field, Image, makeStyles, Switch, tokens, typographyStyles } from '@fluentui/react-components';
+import {
+  Button,
+  CarouselSlider,
+  Field,
+  Image,
+  makeStyles,
+  Switch,
+  tokens,
+  typographyStyles,
+} from '@fluentui/react-components';
 import {
   Carousel,
   CarouselAnnouncerFunction,
@@ -7,7 +16,7 @@ import {
   CarouselNav,
   CarouselNavButton,
   CarouselNavContainer,
-  CarouselSlider,
+  CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
@@ -42,7 +51,6 @@ const useClasses = makeStyles({
     display: 'grid',
     gridTemplateColumns: '1fr',
     gridTemplateRows: 'auto 1fr',
-    paddingBottom: '24px',
     boxShadow: tokens.shadow16,
   },
   card: {
@@ -146,23 +154,27 @@ export const Autoplay = () => {
           <Switch checked={autoplayEnabled} onChange={() => setAutoplayEnabled(!autoplayEnabled)} />
         </Field>
       </div>
-      <Carousel groupSize={1} circular announcement={getAnnouncement}>
-        <CarouselSlider>
-          {IMAGES.map((imageSrc, index) => (
-            <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>
-              Card {index + 1}
-            </BannerCard>
-          ))}
-        </CarouselSlider>
-        <CarouselNavContainer
-          layout="inline"
-          autoplay={autoplayProps}
-          next={{ 'aria-label': 'go to next' }}
-          prev={{ 'aria-label': 'go to prev' }}
-        >
-          <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
-        </CarouselNavContainer>
-      </Carousel>
+      <div className={classes.card}>
+        <Carousel groupSize={1} circular announcement={getAnnouncement}>
+          <CarouselViewport>
+            <CarouselSlider>
+              {IMAGES.map((imageSrc, index) => (
+                <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>
+                  Card {index + 1}
+                </BannerCard>
+              ))}
+            </CarouselSlider>
+          </CarouselViewport>
+          <CarouselNavContainer
+            layout="inline"
+            autoplay={autoplayProps}
+            next={{ 'aria-label': 'go to next' }}
+            prev={{ 'aria-label': 'go to prev' }}
+          >
+            <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
+          </CarouselNavContainer>
+        </Carousel>
+      </div>
     </div>
   );
 };

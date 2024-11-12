@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/priority-overflow",
-  "version": "9.1.13",
+  "version": "9.1.14",
   "description": "Vanilla JS utilities to implement overflow menus",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -11,22 +11,9 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "just-scripts build",
-    "bundle-size": "monosize measure",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "test": "jest --passWithNoTests",
-    "type-check": "just-scripts type-check",
-    "generate-api": "just-scripts generate-api",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
-  },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
     "@swc/helpers": "^0.5.1"

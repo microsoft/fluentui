@@ -13,8 +13,8 @@ import {
 } from '@microsoft/fast-web-utilities';
 import { numberLikeStringConverter } from '../utils/converters.js';
 import { getDirection } from '../utils/direction.js';
-import { toggleState } from '../utils/element-internals.js';
-import { SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
+import { swapStates } from '../utils/element-internals.js';
+import { type SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
 import { convertPixelToPercent } from './slider-utilities.js';
 
 /**
@@ -60,13 +60,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   @attr
   public size?: SliderSize;
-  protected sizeChanged(prev: string, next: string): void {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+  protected sizeChanged(prev: SliderSize | undefined, next: SliderSize | undefined) {
+    swapStates(this.elementInternals, prev, next, SliderSize);
   }
 
   public handleChange(_: any, propertyName: string): void {
@@ -501,15 +496,10 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   @attr
   public orientation?: Orientation;
-  protected orientationChanged(prev: string | undefined, next: string | undefined): void {
+  protected orientationChanged(prev: Orientation | undefined, next: Orientation | undefined) {
     this.elementInternals.ariaOrientation = next ?? Orientation.horizontal;
 
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, Orientation);
 
     if (this.$fastController.isConnected) {
       this.setSliderPosition(this.direction);

@@ -1,7 +1,7 @@
 import { attr } from '@microsoft/fast-element';
 import { BaseAnchor } from '../anchor-button/anchor-button.js';
-import { toggleState } from '../utils/element-internals.js';
-import { type LinkAppearance } from './link.options.js';
+import { swapStates, toggleState } from '../utils/element-internals.js';
+import { LinkAppearance } from './link.options.js';
 
 /**
  * An Anchor Custom HTML Element.
@@ -30,12 +30,7 @@ export class Link extends BaseAnchor {
    * @param next - the next state
    */
   public appearanceChanged(prev: LinkAppearance | undefined, next: LinkAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, LinkAppearance);
   }
 
   /**

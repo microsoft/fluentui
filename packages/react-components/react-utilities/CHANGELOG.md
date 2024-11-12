@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 23 Sep 2024 12:40:16 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Nov 2024 10:00:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.17)
+
+Mon, 11 Nov 2024 10:00:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.16..@fluentui/react-utilities_v9.18.17)
+
+### Patches
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.8 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.21.0 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+
+## [9.18.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.16)
+
+Tue, 15 Oct 2024 17:17:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.15..@fluentui/react-utilities_v9.18.16)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.20.2 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
 
 ## [9.18.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.15)
 

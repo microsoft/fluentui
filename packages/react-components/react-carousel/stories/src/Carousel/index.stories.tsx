@@ -8,6 +8,7 @@ import {
   CarouselNavContainer,
   CarouselNavImageButton,
   CarouselSlider,
+  CarouselViewport,
 } from '@fluentui/react-components';
 
 import descriptionMd from './CarouselDescription.md';
@@ -19,6 +20,8 @@ export { Controlled } from './CarouselControlled.stories';
 export { ImageSlideshow } from './CarouselImageBox.stories';
 export { AlignmentAndWhitespace } from './CarouselActionCards.stories';
 export { Autoplay } from './CarouselAutoplay.stories';
+export { FirstRunExperience } from './CarouselFirstRunExperience.stories';
+export { Eventing } from './CarouselEventing.stories';
 
 export default {
   title: 'Components/Carousel',
@@ -32,6 +35,7 @@ export default {
     CarouselNavContainer,
     CarouselNavImageButton,
     CarouselSlider,
+    CarouselViewport,
   },
   parameters: {
     docs: {

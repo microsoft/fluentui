@@ -1,5 +1,5 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { swapStates, toggleState } from '../utils/element-internals.js';
 import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
 /**
@@ -515,12 +515,7 @@ export class Checkbox extends BaseCheckbox {
    * @internal
    */
   protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
+    swapStates(this.elementInternals, prev, next, CheckboxShape);
   }
 
   /**
@@ -541,12 +536,7 @@ export class Checkbox extends BaseCheckbox {
    * @internal
    */
   protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
+    swapStates(this.elementInternals, prev, next, CheckboxSize);
   }
 
   constructor() {

@@ -4,6 +4,7 @@ import { useCarouselButton_unstable } from './useCarouselButton';
 import { renderCarouselButton_unstable } from './renderCarouselButton';
 import { useCarouselButtonStyles_unstable } from './useCarouselButtonStyles.styles';
 import type { CarouselButtonProps } from './CarouselButton.types';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * A default navigation button that will set value to the next/previous page,
@@ -13,9 +14,7 @@ export const CarouselButton: ForwardRefComponent<CarouselButtonProps> = React.fo
   const state = useCarouselButton_unstable(props, ref);
 
   useCarouselButtonStyles_unstable(state);
-  // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
-  // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
-  // useCustomStyleHook_unstable('useCarouselButtonStyles_unstable')(state);
+  useCustomStyleHook_unstable('useCarouselButtonStyles_unstable')(state);
 
   return renderCarouselButton_unstable(state);
 });
