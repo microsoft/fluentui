@@ -189,7 +189,7 @@ const useThumbStyles = makeStyles({
     // Ensure the thumb stays within the track boundaries.
     // When the value is at 0% or 100%, the distance from the track edge
     // to the thumb center equals the inner thumb radius.
-    [`${thumbPositionVar}`]: `min(max(var(${sliderProgressVar}), var(${innerThumbRadiusVar})), calc(100% - var(${innerThumbRadiusVar})))`,
+    [`${thumbPositionVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${sliderProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
     gridRowStart: '2',
     gridRowEnd: '2',
     gridColumnStart: '2',
