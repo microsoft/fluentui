@@ -332,7 +332,7 @@ const benchmarkData: ChartProps[] = [
 ];
 
 const storyTemplate = html<StoryArgs<FluentHorizontalBarChart>>`
-  <fluent-horizontal-bar-chart data="${JSON.stringify(data)}"> </fluent-horizontal-bar-chart>
+  <fluent-horizontal-bar-chart style="width: 100%" data="${JSON.stringify(data)}"> </fluent-horizontal-bar-chart>
 `;
 
 export default {
@@ -378,7 +378,8 @@ export const singleDataPoint: Story<FluentHorizontalBarChart> = renderComponent(
 export const RTL: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
   <div dir="rtl">
     <div>
-      <fluent-horizontal-bar-chart data="${JSON.stringify(data)}"> </fluent-horizontal-bar-chart>
+      <fluent-horizontal-bar-chart style="width: 100%" data="${JSON.stringify(data)}">
+      </fluent-horizontal-bar-chart>
     </div>
   </div>
 `);
