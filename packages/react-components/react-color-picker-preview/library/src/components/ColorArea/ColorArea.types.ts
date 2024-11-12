@@ -1,11 +1,18 @@
 import * as React from 'react';
-import type { ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
+import type { ComponentState, Slot, EventHandler, EventData, ComponentProps } from '@fluentui/react-utilities';
 
 export type ColorAreaOnColorChangeData = EventData<'change', React.SyntheticEvent | MouseEvent> & {
   color: HsvColor;
 };
 
 export type ColorAreaSlots = {
+  root: NonNullable<Slot<'div'>>;
+  thumb?: NonNullable<Slot<'div'>>;
+  inputX?: NonNullable<Slot<'input'>>;
+  inputY?: NonNullable<Slot<'input'>>;
+};
+
+type ColorAreaInternalSlots = {
   root: NonNullable<Slot<'div'>>;
   thumb: NonNullable<Slot<'div'>>;
   inputX: NonNullable<Slot<'input'>>;
@@ -22,7 +29,7 @@ export type HsvColor = {
 /**
  * ColorArea Props
  */
-export type ColorAreaProps = Partial<ColorAreaSlots> & {
+export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {
   /**
    * The current color of the ColorArea.
    */
@@ -42,4 +49,4 @@ export type ColorAreaProps = Partial<ColorAreaSlots> & {
 /**
  * State used in rendering ColorArea
  */
-export type ColorAreaState = ComponentState<ColorAreaSlots> & Pick<ColorAreaProps, 'color'>;
+export type ColorAreaState = ComponentState<ColorAreaInternalSlots> & Pick<ColorAreaProps, 'color'>;

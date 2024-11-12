@@ -29,12 +29,11 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
   const {
     onChange,
+
     // Slots
     inputX,
     inputY,
     thumb,
-
-    ...rest
   } = props;
 
   const [color, setColor] = useControllableState<HsvColor>({
@@ -42,14 +41,16 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     state: props.color,
     initialState: INITIAL_COLOR_HSV,
   });
-
   const saturation = Math.round(color.s * 100);
   const value = Math.round(color.v * 100);
+
+  const [activeAxis, setActiveAxis] = React.useState<'x' | 'y'>('x');
 
   const requestColorChange = useEventCallback((event: MouseEvent) => {
     if (!rootRef.current) {
       return;
     }
+
     const coordinates = getCoordinates(rootRef.current, event);
     const newColor: HsvColor = {
       ...color,
@@ -71,7 +72,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     targetDocument?.removeEventListener('mousemove', handleDocumentMouseMove);
   });
 
-  const handleOnMouseDown: React.MouseEventHandler<HTMLDivElement> = useEventCallback(event => {
+  const handleRootOnMouseDown: React.MouseEventHandler<HTMLDivElement> = useEventCallback(event => {
     event.stopPropagation();
     event.preventDefault();
 
@@ -81,41 +82,68 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     targetDocument?.addEventListener('mouseup', handleDocumentMouseUp, { once: true });
   });
 
-  const handleXOnChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
+  const handleInputOnChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
+    const value = Number(event.target.value) / 100;
     const newColor: HsvColor = {
       ...color,
-      s: Number(event.target.value) / 100,
+      ...(event.target === xRef.current && { s: value }),
+      ...(event.target === yRef.current && { v: value }),
     };
 
     setColor(newColor);
-    onChange?.(event, {
-      type: 'change',
-      event,
-      color: newColor,
-    });
+    onChange?.(event, { type: 'change', event, color: newColor });
   });
 
-  const handleYOnChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
-    const newColor: HsvColor = {
-      ...color,
-      v: Number(event.target.value) / 100,
-    };
-    setColor(newColor);
-    onChange?.(event, {
-      type: 'change',
-      event,
-      color: newColor,
-    });
-  });
+  const handleRootOnKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
+    let deltaX = 0;
+    let deltaY = 0;
+    let axis: 'x' | 'y' = 'x';
 
-  const handleOnKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (xRef.current && yRef.current) {
-      if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
-        setTabIndexAndFocus(xRef.current, yRef.current);
-      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-        setTabIndexAndFocus(yRef.current, xRef.current);
-      }
+    switch (event.key) {
+      case 'ArrowUp':
+        event.preventDefault();
+
+        axis = 'y';
+        deltaY = 1;
+
+        break;
+      case 'ArrowDown':
+        event.preventDefault();
+
+        axis = 'y';
+        deltaY = -1;
+
+        break;
+      case 'ArrowLeft':
+        event.preventDefault();
+
+        axis = 'x';
+        deltaX = -1;
+
+        break;
+      case 'ArrowRight':
+        event.preventDefault();
+
+        axis = 'x';
+        deltaX = 1;
+
+        break;
     }
+
+    if (deltaX === 0 && deltaY === 0) {
+      return;
+    }
+
+    const newColor: HsvColor = {
+      ...color,
+      s: Math.min(Math.max(color.s + deltaX / 100, 0), 1),
+      v: Math.min(Math.max(color.v + deltaY / 100, 0), 1),
+    };
+
+    setColor(newColor);
+    setActiveAxis(axis);
+
+    onChange?.(event, { type: 'change', event, color: newColor });
   });
 
   const rootVariables = {
@@ -124,7 +152,6 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     [colorAreaCSSVars.thumbColorVar]: 'transparent',
     [colorAreaCSSVars.mainColorVar]: `hsl(${color.h}, 100%, 50%)`,
   };
-
   const state: ColorAreaState = {
     components: {
       inputX: 'input',
@@ -132,11 +159,18 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
       root: 'div',
       thumb: 'div',
     },
-    root: slot.always(getIntrinsicElementProps('div', rest), { elementType: 'div' }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
     inputX: slot.always(inputX, {
       defaultProps: {
         id: useId('sliderX-'),
         type: 'range',
+        ...(activeAxis === 'x' && { tabIndex: 0 }),
       },
       elementType: 'input',
     }),
@@ -144,6 +178,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
       defaultProps: {
         id: useId('sliderY-'),
         type: 'range',
+        ...(activeAxis === 'y' && { tabIndex: 0 }),
       },
       elementType: 'input',
     }),
@@ -156,23 +191,29 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   state.inputY.ref = useMergedRefs(state.inputY.ref, yRef);
 
   state.root.style = {
-    ...rootVariables,
     ...state.root.style,
+    ...rootVariables,
   };
 
-  rootRef?.current?.addEventListener('keydown', handleOnKeyDown, { useCapture: true });
+  state.root.onMouseDown = useEventCallback(mergeCallbacks(state.root.onMouseDown, handleRootOnMouseDown));
+  state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, handleRootOnKeyDown));
+  state.inputX.onChange = useEventCallback(mergeCallbacks(state.inputX.onChange, handleInputOnChange));
+  state.inputY.onChange = useEventCallback(mergeCallbacks(state.inputY.onChange, handleInputOnChange));
 
-  state.root.onMouseDown = useEventCallback(mergeCallbacks(state.root.onMouseDown, handleOnMouseDown));
-  state.inputX.onChange = useEventCallback(mergeCallbacks(state.inputX.onChange, handleXOnChange));
-  state.inputY.onChange = useEventCallback(mergeCallbacks(state.inputY.onChange, handleYOnChange));
   state.inputX.value = saturation;
   state.inputY.value = value;
 
+  React.useEffect(() => {
+    // Focus the active axis input only when the active axis changes
+
+    if (activeAxis === 'x' && targetDocument?.activeElement !== xRef.current) {
+      xRef.current?.focus();
+    }
+
+    if (activeAxis === 'y' && targetDocument?.activeElement !== yRef.current) {
+      yRef.current?.focus();
+    }
+  }, [activeAxis]);
+
   return state;
 };
-
-function setTabIndexAndFocus(prevEl: HTMLInputElement, nextEl: HTMLInputElement) {
-  prevEl?.setAttribute('tabindex', '-1');
-  nextEl?.setAttribute('tabindex', 'undefined');
-  nextEl?.focus();
-}
