@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DonutChart, ChartProps, getColorFromToken, DataVizPalette } from '@fluentui/react-charts-preview';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   customDonutChart: {
