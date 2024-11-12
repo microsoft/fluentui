@@ -2,13 +2,32 @@ import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
 import { teamsDarkTheme } from '@fluentui/tokens';
 import { colorNeutralBackground1 } from '../theme/design-tokens.js';
+import { ChartDataPoint, ChartProps } from './donut-chart.options.js';
+
+const points: ChartDataPoint[] = [
+  {
+    legend: 'first',
+    data: 20000,
+  },
+  {
+    legend: 'second',
+    data: 39000,
+  },
+];
+
+const data: ChartProps = {
+  chartTitle: 'Donut chart basic example',
+  chartData: points,
+};
 
 test.describe('Donut-chart - Basic', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(fixtureURL('components-donutchart--basic'));
     await page.setContent(/* html */ `
-      <fluent-donut-chart value-inside-donut="39,000" inner-radius="55" data="{&quot;chartTitle&quot;:&quot;Donut chart basic example&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;first&quot;,&quot;data&quot;:20000},{&quot;legend&quot;:&quot;second&quot;,&quot;data&quot;:39000}]}">
-      </fluent-donut-chart>
+      <div>
+        <fluent-donut-chart value-inside-donut="39,000" inner-radius="55" data='${JSON.stringify(data)}'>
+        </fluent-donut-chart>
+      </div>
     `);
     await page.waitForFunction(() => customElements.whenDefined('fluent-donut-chart'));
   });
@@ -120,7 +139,7 @@ test.describe('Donut-chart - Basic', () => {
 
 test.describe('Donut-chart - RTL', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-donutchart--rtl'));
+    await page.goto(fixtureURL('components-donutchart--basic'));
     await page.waitForFunction(() => customElements.whenDefined('fluent-donut-chart'));
   });
 
@@ -128,8 +147,10 @@ test.describe('Donut-chart - RTL', () => {
     const element = page.locator('fluent-donut-chart');
     await page.setContent(/* html */ `
       <div dir="rtl">
-          <fluent-donut-chart value-inside-donut="39,000" inner-radius="55" data="{&quot;chartTitle&quot;:&quot;Donut chart basic example&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;first&quot;,&quot;data&quot;:20000},{&quot;legend&quot;:&quot;second&quot;,&quot;data&quot;:39000}]}">
-          </fluent-donut-chart>
+              <div>
+                <fluent-donut-chart value-inside-donut="39,000" inner-radius="55" data='${JSON.stringify(data)}'>
+                </fluent-donut-chart>
+              </div>
       </div>
     `);
     await expect(element).toHaveScreenshot();
@@ -144,14 +165,17 @@ test.describe('Donut-chart - Theme', () => {
 
   test('Should render chart properly in teamsDarkTheme mode', async ({ page }) => {
     const element = page.locator('fluent-donut-chart');
+    //Applying background color to body to avoid transparent background in screenshot also to make labels visible
     await page.setContent(/* html */ `
       <style>
         body {
           background-color: ${colorNeutralBackground1};
        }
       </style>
-      <fluent-donut-chart value-inside-donut="39,000" inner-radius="55" data="{&quot;chartTitle&quot;:&quot;Donut chart basic example&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;first&quot;,&quot;data&quot;:20000},{&quot;legend&quot;:&quot;second&quot;,&quot;data&quot;:39000}]}">
-      </fluent-donut-chart>
+      <div>
+        <fluent-donut-chart value-inside-donut="39,000" inner-radius="55" data='${JSON.stringify(data)}'>
+        </fluent-donut-chart>
+      </div>
     `);
     await page.waitForFunction(() => customElements.whenDefined('fluent-donut-chart'));
     await page.evaluate( theme => {

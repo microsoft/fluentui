@@ -3,6 +3,288 @@ import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
 import { teamsDarkTheme } from '@fluentui/tokens';
 import { colorNeutralBackground1 } from '../theme/design-tokens.js';
+import { ChartDataPoint, ChartProps } from './horizontalbarchart.options.js';
+
+
+const chartPoints1: ChartDataPoint[] = [
+  {
+    legend: 'Debit card numbers (EU and USA)',
+    data: 40,
+    color: '#0099BC',
+  },
+  {
+    legend: 'Passport numbers (USA)',
+    data: 23,
+    color: '#77004D',
+  },
+  {
+    legend: 'Social security numbers',
+    data: 35,
+    color: '#4F68ED',
+  },
+  {
+    legend: 'Credit card Numbers',
+    data: 87,
+    color: '#AE8C00',
+  },
+  {
+    legend: 'Tax identification numbers (USA)',
+    data: 87,
+    color: '#004E8C',
+  },
+];
+
+const chartPoints2: ChartDataPoint[] = [
+  {
+    legend: 'Debit card numbers (EU and USA)',
+    data: 40,
+    color: '#0099BC',
+  },
+  {
+    legend: 'Passport numbers (USA)',
+    data: 56,
+    color: '#77004D',
+  },
+  {
+    legend: 'Social security numbers',
+    data: 35,
+    color: '#4F68ED',
+  },
+  {
+    legend: 'Credit card Numbers',
+    data: 92,
+    color: '#AE8C00',
+  },
+  {
+    legend: 'Tax identification numbers (USA)',
+    data: 87,
+    color: '#004E8C',
+  },
+];
+
+const chartPoints3: ChartDataPoint[] = [
+  {
+    legend: 'Phone Numbers',
+    data: 40,
+    color: '#881798',
+  },
+  {
+    legend: 'Credit card Numbers',
+    data: 23,
+    color: '#AE8C00',
+  },
+];
+
+const basicChartTestData: ChartProps[] = [
+  {
+    chartTitle: 'Monitored First',
+    chartData: chartPoints1,
+  },
+  {
+    chartTitle: 'Monitored Second',
+    chartData: chartPoints2,
+  },
+  {
+    chartTitle: 'Unmonitored',
+    chartData: chartPoints3,
+  },
+];
+
+const singleBarHBCData = [
+  {
+    chartTitle: 'one',
+    chartData: [
+      {
+        legend: 'one',
+        data: 1543,
+        total: 15000,
+        color: '#637cef',
+      },
+    ],
+  },
+  {
+    chartTitle: 'two',
+    chartData: [
+      {
+        legend: 'two',
+        data: 800,
+        total: 15000,
+        color: '#e3008c',
+      },
+    ],
+  },
+  {
+    chartTitle: 'three',
+    chartData: [
+      {
+        legend: 'three',
+        data: 8888,
+        total: 15000,
+        color: '#2aa0a4',
+      },
+    ],
+  },
+  {
+    chartTitle: 'four',
+    chartData: [
+      {
+        legend: 'four',
+        data: 15888,
+        total: 15000,
+        color: '#9373c0',
+      },
+    ],
+  },
+  {
+    chartTitle: 'five',
+    chartData: [
+      {
+        legend: 'five',
+        data: 11444,
+        total: 15000,
+        color: '#13a10e',
+      },
+    ],
+  },
+  {
+    chartTitle: 'six',
+    chartData: [
+      {
+        legend: 'six',
+        data: 14000,
+        total: 15000,
+        color: '#3a96dd',
+      },
+    ],
+  },
+  {
+    chartTitle: 'seven',
+    chartData: [
+      {
+        legend: 'seven',
+        data: 9855,
+        total: 15000,
+        color: '#ca5010',
+      },
+    ],
+  },
+  {
+    chartTitle: 'eight',
+    chartData: [
+      {
+        legend: 'eight',
+        data: 4250,
+        total: 15000,
+        color: '#57811b',
+      },
+    ],
+  },
+];
+
+const singleBarNMVariantData = [
+  {
+    chartTitle: 'one',
+    chartData: [
+      {
+        legend: 'one',
+        data: 1543,
+        total: 15000,
+        color: '#637cef',
+      },
+    ],
+  },
+  {
+    chartTitle: 'two',
+    chartData: [
+      {
+        legend: 'two',
+        data: 800,
+        total: 15000,
+        color: '#e3008c',
+      },
+    ],
+  },
+  {
+    chartTitle: 'three',
+    chartData: [
+      {
+        legend: 'three',
+        data: 8888,
+        total: 15000,
+        color: '#2aa0a4',
+      },
+    ],
+  },
+  {
+    chartTitle: 'four',
+    chartData: [
+      {
+        legend: 'four',
+        data: 15888,
+        total: 15000,
+        color: '#9373c0',
+      },
+    ],
+  },
+  {
+    chartTitle: 'five',
+    chartData: [
+      {
+        legend: 'five',
+        data: 11444,
+        total: 15000,
+        color: '#13a10e',
+      },
+    ],
+  },
+  {
+    chartTitle: 'six',
+    chartData: [
+      {
+        legend: 'six',
+        data: 14000,
+        total: 15000,
+        color: '#3a96dd',
+      },
+    ],
+  },
+  {
+    chartTitle: 'seven',
+    chartData: [
+      {
+        legend: 'seven',
+        data: 9855,
+        total: 15000,
+        color: '#ca5010',
+      },
+    ],
+  },
+  {
+    chartTitle: 'eight',
+    chartData: [
+      {
+        legend: 'eight',
+        data: 4250,
+        total: 15000,
+        color: '#57811b',
+      },
+    ],
+  },
+];
+
+const singlePointData = [
+  {
+    chartTitle: 'one',
+    chartData: [
+      {
+        legend: 'one',
+        data: 1543,
+        total: 15000,
+        gradient: ['#637cef', '#e3008c'],
+      },
+    ],
+  },
+];
 
 async function expectOptionsToBeVisible(element:
   { getByRole: (arg0: string, arg1: { name: any; }) => any; },  options: string | any[])
@@ -16,7 +298,10 @@ test.describe('horizontalbarchart - Basic', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(fixtureURL('components-horizontalbarchart--basic'));
     await page.setContent(/* html */ `
-      <fluent-horizontalbarchart data="[{&quot;chartTitle&quot;:&quot;Monitored First&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Debit card numbers (EU and USA)&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#0099BC&quot;},{&quot;legend&quot;:&quot;Passport numbers (USA)&quot;,&quot;data&quot;:23,&quot;color&quot;:&quot;#77004D&quot;},{&quot;legend&quot;:&quot;Social security numbers&quot;,&quot;data&quot;:35,&quot;color&quot;:&quot;#4F68ED&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#AE8C00&quot;},{&quot;legend&quot;:&quot;Tax identification numbers (USA)&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#004E8C&quot;}]},{&quot;chartTitle&quot;:&quot;Monitored Second&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Debit card numbers (EU and USA)&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#0099BC&quot;},{&quot;legend&quot;:&quot;Passport numbers (USA)&quot;,&quot;data&quot;:56,&quot;color&quot;:&quot;#77004D&quot;},{&quot;legend&quot;:&quot;Social security numbers&quot;,&quot;data&quot;:35,&quot;color&quot;:&quot;#4F68ED&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:92,&quot;color&quot;:&quot;#AE8C00&quot;},{&quot;legend&quot;:&quot;Tax identification numbers (USA)&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#004E8C&quot;}]},{&quot;chartTitle&quot;:&quot;Unmonitored&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Phone Numbers&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#881798&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:23,&quot;color&quot;:&quot;#AE8C00&quot;}]}]"> </fluent-horizontalbarchart>
+      <div>
+        <fluent-horizontalbarchart data='${JSON.stringify(basicChartTestData)}'>
+        </fluent-horizontalbarchart>
+      </div>
     `);
     await page.waitForFunction(() => customElements.whenDefined('fluent-horizontalbarchart'));
   });
@@ -132,10 +417,12 @@ test.describe('horizontalbarchart - RTL', () => {
 
   test('Should render chart properly in RTL mode', async ({ page }) => {
     const element = page.locator('fluent-horizontalbarchart');
+    //Applying background color to body to avoid transparent background in screenshot also to make labels visible
     await page.setContent(/* html */ `
       <div dir="rtl">
         <div>
-             <fluent-horizontalbarchart _isrtl="true" data="[{&quot;chartTitle&quot;:&quot;Monitored First&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Debit card numbers (EU and USA)&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#0099BC&quot;},{&quot;legend&quot;:&quot;Passport numbers (USA)&quot;,&quot;data&quot;:23,&quot;color&quot;:&quot;#77004D&quot;},{&quot;legend&quot;:&quot;Social security numbers&quot;,&quot;data&quot;:35,&quot;color&quot;:&quot;#4F68ED&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#AE8C00&quot;},{&quot;legend&quot;:&quot;Tax identification numbers (USA)&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#004E8C&quot;}]},{&quot;chartTitle&quot;:&quot;Monitored Second&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Debit card numbers (EU and USA)&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#0099BC&quot;},{&quot;legend&quot;:&quot;Passport numbers (USA)&quot;,&quot;data&quot;:56,&quot;color&quot;:&quot;#77004D&quot;},{&quot;legend&quot;:&quot;Social security numbers&quot;,&quot;data&quot;:35,&quot;color&quot;:&quot;#4F68ED&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:92,&quot;color&quot;:&quot;#AE8C00&quot;},{&quot;legend&quot;:&quot;Tax identification numbers (USA)&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#004E8C&quot;}]},{&quot;chartTitle&quot;:&quot;Unmonitored&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Phone Numbers&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#881798&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:23,&quot;color&quot;:&quot;#AE8C00&quot;}]}]"> </fluent-horizontalbarchart>
+            <fluent-horizontalbarchart data='${JSON.stringify(basicChartTestData)}' _isrtl="true">
+            </fluent-horizontalbarchart>
         </div>
       </div>
     `);
@@ -148,7 +435,7 @@ test.describe('horizontalbarchart - Single Bar HBC', () => {
     await page.goto(fixtureURL('components-horizontalbarchart--single-bar-hbc'));
     await page.setContent(/* html */ `
     <div>
-        <fluent-horizontalbarchart style="width: 100%" data="[{&quot;chartTitle&quot;:&quot;one&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;one&quot;,&quot;data&quot;:1543,&quot;total&quot;:15000,&quot;color&quot;:&quot;#637cef&quot;}]},{&quot;chartTitle&quot;:&quot;two&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;two&quot;,&quot;data&quot;:800,&quot;total&quot;:15000,&quot;color&quot;:&quot;#e3008c&quot;}]},{&quot;chartTitle&quot;:&quot;three&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;three&quot;,&quot;data&quot;:8888,&quot;total&quot;:15000,&quot;color&quot;:&quot;#2aa0a4&quot;}]},{&quot;chartTitle&quot;:&quot;four&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;four&quot;,&quot;data&quot;:15888,&quot;total&quot;:15000,&quot;color&quot;:&quot;#9373c0&quot;}]},{&quot;chartTitle&quot;:&quot;five&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;five&quot;,&quot;data&quot;:11444,&quot;total&quot;:15000,&quot;color&quot;:&quot;#13a10e&quot;}]},{&quot;chartTitle&quot;:&quot;six&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;six&quot;,&quot;data&quot;:14000,&quot;total&quot;:15000,&quot;color&quot;:&quot;#3a96dd&quot;}]},{&quot;chartTitle&quot;:&quot;seven&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;seven&quot;,&quot;data&quot;:9855,&quot;total&quot;:15000,&quot;color&quot;:&quot;#ca5010&quot;}]},{&quot;chartTitle&quot;:&quot;eight&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;eight&quot;,&quot;data&quot;:4250,&quot;total&quot;:15000,&quot;color&quot;:&quot;#57811b&quot;}]}]">
+        <fluent-horizontalbarchart data='${JSON.stringify(singleBarHBCData)}'>
         </fluent-horizontalbarchart>
     </div>
     `);
@@ -299,7 +586,7 @@ test.describe('horizontalbarchart - Single Bar NM Variant', () => {
     await page.goto(fixtureURL('components-horizontalbarchart--single-bar-nm-variant'));
     await page.setContent(/* html */ `
     <div>
-        <fluent-horizontalbarchart style="width: 100%" variant="single-bar" data="[{&quot;chartTitle&quot;:&quot;one&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;one&quot;,&quot;data&quot;:1543,&quot;total&quot;:15000,&quot;color&quot;:&quot;#637cef&quot;}]},{&quot;chartTitle&quot;:&quot;two&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;two&quot;,&quot;data&quot;:800,&quot;total&quot;:15000,&quot;color&quot;:&quot;#e3008c&quot;}]},{&quot;chartTitle&quot;:&quot;three&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;three&quot;,&quot;data&quot;:8888,&quot;total&quot;:15000,&quot;color&quot;:&quot;#2aa0a4&quot;}]},{&quot;chartTitle&quot;:&quot;four&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;four&quot;,&quot;data&quot;:15888,&quot;total&quot;:15000,&quot;color&quot;:&quot;#9373c0&quot;}]},{&quot;chartTitle&quot;:&quot;five&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;five&quot;,&quot;data&quot;:11444,&quot;total&quot;:15000,&quot;color&quot;:&quot;#13a10e&quot;}]},{&quot;chartTitle&quot;:&quot;six&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;six&quot;,&quot;data&quot;:14000,&quot;total&quot;:15000,&quot;color&quot;:&quot;#3a96dd&quot;}]},{&quot;chartTitle&quot;:&quot;seven&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;seven&quot;,&quot;data&quot;:9855,&quot;total&quot;:15000,&quot;color&quot;:&quot;#ca5010&quot;}]},{&quot;chartTitle&quot;:&quot;eight&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;eight&quot;,&quot;data&quot;:4250,&quot;total&quot;:15000,&quot;color&quot;:&quot;#57811b&quot;}]}]">
+        <fluent-horizontalbarchart data='${JSON.stringify(singleBarNMVariantData)}' variant="single-bar">
         </fluent-horizontalbarchart>
     </div>
     `);
@@ -444,7 +731,10 @@ test.describe('horizontalbarchart - Theme', () => {
           background-color: ${colorNeutralBackground1};
        }
       </style>
-      <fluent-horizontalbarchart data="[{&quot;chartTitle&quot;:&quot;Monitored First&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Debit card numbers (EU and USA)&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#0099BC&quot;},{&quot;legend&quot;:&quot;Passport numbers (USA)&quot;,&quot;data&quot;:23,&quot;color&quot;:&quot;#77004D&quot;},{&quot;legend&quot;:&quot;Social security numbers&quot;,&quot;data&quot;:35,&quot;color&quot;:&quot;#4F68ED&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#AE8C00&quot;},{&quot;legend&quot;:&quot;Tax identification numbers (USA)&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#004E8C&quot;}]},{&quot;chartTitle&quot;:&quot;Monitored Second&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Debit card numbers (EU and USA)&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#0099BC&quot;},{&quot;legend&quot;:&quot;Passport numbers (USA)&quot;,&quot;data&quot;:56,&quot;color&quot;:&quot;#77004D&quot;},{&quot;legend&quot;:&quot;Social security numbers&quot;,&quot;data&quot;:35,&quot;color&quot;:&quot;#4F68ED&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:92,&quot;color&quot;:&quot;#AE8C00&quot;},{&quot;legend&quot;:&quot;Tax identification numbers (USA)&quot;,&quot;data&quot;:87,&quot;color&quot;:&quot;#004E8C&quot;}]},{&quot;chartTitle&quot;:&quot;Unmonitored&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;Phone Numbers&quot;,&quot;data&quot;:40,&quot;color&quot;:&quot;#881798&quot;},{&quot;legend&quot;:&quot;Credit card Numbers&quot;,&quot;data&quot;:23,&quot;color&quot;:&quot;#AE8C00&quot;}]}]"> </fluent-horizontalbarchart>
+      <div>
+        <fluent-horizontalbarchart data='${JSON.stringify(basicChartTestData)}'>
+        </fluent-horizontalbarchart>
+      </div>
     `)
     await page.evaluate( theme => {
        window.setTheme(theme);
@@ -458,7 +748,7 @@ test.describe('horizontalbarchart - Single Data Point', () => {
     await page.goto(fixtureURL('components-horizontalbarchart--single-data-point'));
     await page.setContent(/* html */ `
     <div>
-        <fluent-horizontalbarchart style="width: 100%" variant="single-bar" data="[{&quot;chartTitle&quot;:&quot;one&quot;,&quot;chartData&quot;:[{&quot;legend&quot;:&quot;one&quot;,&quot;data&quot;:1543,&quot;total&quot;:15000,&quot;gradient&quot;:[&quot;#637cef&quot;,&quot;#e3008c&quot;]}]}]">
+        <fluent-horizontalbarchart data='${JSON.stringify(singlePointData)}' variant="single-bar">
         </fluent-horizontalbarchart>
     </div>
     `);
