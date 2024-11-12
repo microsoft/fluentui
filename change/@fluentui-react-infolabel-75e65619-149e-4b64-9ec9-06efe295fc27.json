@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: Adding maxWidth to InfoButton's popover to match Tooltip.",
+  "comment": "chore: Adding maxWidth to InfoButton's popover to match figma spec.",
   "packageName": "@fluentui/react-infolabel",
   "email": "Humberto.Morimoto@microsoft.com",
   "dependentChangeType": "patch"

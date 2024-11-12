@@ -96,7 +96,7 @@ const useButtonStyles = makeStyles({
 
 const usePopoverSurfaceStyles = makeStyles({
   base: {
-    maxWidth: '240px',
+    maxWidth: '264px',
   },
   smallMedium: typographyStyles.caption1,
   large: typographyStyles.body1,
