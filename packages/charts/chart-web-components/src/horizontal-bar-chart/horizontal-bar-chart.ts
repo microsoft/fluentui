@@ -22,7 +22,7 @@ export class HorizontalBarChart extends FASTElement {
   public data!: ChartProps[];
 
   @attr({ attribute: 'hide-ratio', mode: 'boolean' })
-  public hideRatio: boolean  = false;
+  public hideRatio: boolean = false;
 
   @attr({ attribute: 'hide-legends', mode: 'boolean' })
   public hideLegends: boolean = false;
@@ -305,18 +305,25 @@ export class HorizontalBarChart extends FASTElement {
       .attr('class', 'chart-title')
       .text(data?.chartTitle ? data?.chartTitle : '');
 
-    const hideNumber = this.hideRatio === undefined ? false : this.hideRatio;
-
-    const showRatio = this.variant === Variant.PartToWhole && !hideNumber && data!.chartData!.length === 2;
+    const showChartDataText = this.variant !== Variant.AbsoluteScale && !this.hideRatio;
+    const showRatio =
+      (this.variant === Variant.PartToWhole && data!.chartData!.length === 2) || this.variant === Variant.SingleBar;
     const getChartData = () => (data!.chartData![0].data ? data!.chartData![0].data : 0);
 
-    if (showRatio) {
-      const ratioDiv = chartTitleDiv.append('div').attr('role', 'text');
-      const numData = data!.chartData![0].data;
-      const denomData = data!.chartData![1].data;
-      const total = numData! + denomData!;
-      ratioDiv.append('span').attr('class', 'ratio-numerator').text(numData!);
-      ratioDiv.append('span').attr('class', 'ratio-denominator').text(`/${total!}`);
+    if (showChartDataText) {
+      if (data.chartDataText) {
+        const chartTitleRight = document.createElement('div');
+        chartTitleDiv.node()!.appendChild(chartTitleRight);
+        chartTitleRight.classList.add('chart-data-text');
+        chartTitleRight.textContent = data.chartDataText;
+      } else if (showRatio) {
+        const ratioDiv = chartTitleDiv.append('div').attr('role', 'text');
+        const numData = data!.chartData![0].data;
+        const denomData = data!.chartData![1].data;
+        const total = numData! + denomData!;
+        ratioDiv.append('span').attr('class', 'ratio-numerator').text(numData!);
+        ratioDiv.append('span').attr('class', 'ratio-denominator').text(`/${total!}`);
+      }
     }
 
     const svgEle = containerDiv

@@ -150,4 +150,8 @@ export const styles: ElementStyles = css`
     margin-bottom: 4px;
     position: absolute;
   }
+  .chart-data-text {
+    ${typographyBody1StrongStyles}
+    color: ${colorNeutralForeground1};
+  }
 `;

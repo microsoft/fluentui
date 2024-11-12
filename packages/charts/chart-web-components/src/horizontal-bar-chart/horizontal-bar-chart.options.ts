@@ -45,4 +45,6 @@ export interface ChartProps {
   chartData: ChartDataPoint[];
 
   benchmarkData?: number;
+
+  chartDataText?: string;
 }
