@@ -23,6 +23,7 @@ import {
   Button,
   TableColumnId,
   DataGridCellFocusMode,
+  ButtonProps,
 } from '@fluentui/react-components';
 
 type FileCell = {
@@ -69,6 +70,10 @@ const items: Item[] = [
   },
 ];
 
+const onButtonClick = (ev: React.MouseEvent<HTMLButtonElement>) => {
+  ev.stopPropagation();
+};
+
 const columns: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'file',
@@ -108,7 +113,11 @@ const columns: TableColumnDefinition<Item>[] = [
       return 'Single action';
     },
     renderCell: () => {
-      return <Button icon={<OpenRegular />}>Open</Button>;
+      return (
+        <Button icon={<OpenRegular />} onClick={onButtonClick}>
+          Open
+        </Button>
+      );
     },
   }),
   createTableColumn<Item>({
@@ -119,8 +128,8 @@ const columns: TableColumnDefinition<Item>[] = [
     renderCell: () => {
       return (
         <>
-          <Button aria-label="Edit" icon={<EditRegular />} />
-          <Button aria-label="Delete" icon={<DeleteRegular />} />
+          <Button aria-label="Edit" icon={<EditRegular />} onClick={onButtonClick} />
+          <Button aria-label="Delete" icon={<DeleteRegular />} onClick={onButtonClick} />
         </>
       );
     },
