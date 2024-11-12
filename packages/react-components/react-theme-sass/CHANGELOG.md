@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-sass
 
-This log was last generated on Thu, 07 Mar 2024 19:33:26 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Nov 2024 10:01:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.26)
+
+Mon, 11 Nov 2024 10:01:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-sass_v9.0.0-alpha.23..@fluentui/react-theme-sass_v9.0.0-alpha.26)
+
+### Changes
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
 
 ## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.21)
 

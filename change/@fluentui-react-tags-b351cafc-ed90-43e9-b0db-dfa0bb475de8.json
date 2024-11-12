@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: explicitly set box-sizing for tag icon",
-  "packageName": "@fluentui/react-tags",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
