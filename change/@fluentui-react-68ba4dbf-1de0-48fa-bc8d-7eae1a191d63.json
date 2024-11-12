@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Left-aligning SuggestionItem's contents so they do not move and shift on hover.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
