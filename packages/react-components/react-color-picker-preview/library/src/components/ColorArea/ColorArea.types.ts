@@ -7,6 +7,13 @@ export type ColorAreaOnColorChangeData = EventData<'change', React.SyntheticEven
 
 export type ColorAreaSlots = {
   root: NonNullable<Slot<'div'>>;
+  thumb?: NonNullable<Slot<'div'>>;
+  inputX?: NonNullable<Slot<'input'>>;
+  inputY?: NonNullable<Slot<'input'>>;
+};
+
+type ColorAreaInternalSlots = {
+  root: NonNullable<Slot<'div'>>;
   thumb: NonNullable<Slot<'div'>>;
   inputX: NonNullable<Slot<'input'>>;
   inputY: NonNullable<Slot<'input'>>;
@@ -22,7 +29,7 @@ export type HsvColor = {
 /**
  * ColorArea Props
  */
-export type ColorAreaProps = ComponentProps<Partial<ColorAreaSlots>> & {
+export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {
   /**
    * The current color of the ColorArea.
    */
@@ -42,4 +49,4 @@ export type ColorAreaProps = ComponentProps<Partial<ColorAreaSlots>> & {
 /**
  * State used in rendering ColorArea
  */
-export type ColorAreaState = ComponentState<ColorAreaSlots> & Pick<ColorAreaProps, 'color'>;
+export type ColorAreaState = ComponentState<ColorAreaInternalSlots> & Pick<ColorAreaProps, 'color'>;
