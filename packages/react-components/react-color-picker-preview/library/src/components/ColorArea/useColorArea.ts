@@ -4,12 +4,9 @@ import type { ColorAreaProps, ColorAreaState, HsvColor } from './ColorArea.types
 import { colorAreaCSSVars } from './useColorAreaStyles.styles';
 import { useEventCallback, useControllableState } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { tinycolor } from '@ctrl/tinycolor';
 import { useFocusWithin } from '@fluentui/react-tabster';
-import { INITIAL_COLOR } from '../../utils/constants';
+import { INITIAL_COLOR_HSV } from '../../utils/constants';
 import { getCoordinates } from '../../utils/getCoordinates';
-
-const INITIAL_COLOR_HSV = tinycolor(INITIAL_COLOR).toHsv();
 
 /**
  * Create the state required to render ColorArea.
