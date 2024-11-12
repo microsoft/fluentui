@@ -190,6 +190,8 @@ FocusableElementsInCells.parameters = {
         '',
         'Use `none` when there is one single focusable element in cell,',
         '`none` will make the cell non-focusable',
+        '',
+        'Stop propagation of events on focusable elements to prevent cell selection from changing.',
       ].join('\n'),
     },
   },
