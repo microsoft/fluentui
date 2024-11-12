@@ -37,7 +37,7 @@ export const ColorArea: ForwardRefComponent<ColorAreaProps>;
 export const colorAreaClassNames: SlotClassNames<ColorAreaSlots>;
 
 // @public
-export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {
+export type ColorAreaProps = Omit<ComponentProps<ColorAreaSlots>, 'color' | 'onChange'> & {
     color?: HsvColor;
     defaultColor?: HsvColor;
     onChange?: EventHandler<ColorAreaOnColorChangeData>;

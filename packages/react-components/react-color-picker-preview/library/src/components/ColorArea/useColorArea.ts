@@ -34,15 +34,17 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     inputX,
     inputY,
     thumb,
+    color,
+    ...rest
   } = props;
 
-  const [color, setColor] = useControllableState<HsvColor>({
+  const [hsvColor, setColor] = useControllableState<HsvColor>({
     defaultState: props.defaultColor,
-    state: props.color,
+    state: color,
     initialState: INITIAL_COLOR_HSV,
   });
-  const saturation = Math.round(color.s * 100);
-  const value = Math.round(color.v * 100);
+  const saturation = Math.round(hsvColor.s * 100);
+  const value = Math.round(hsvColor.v * 100);
 
   const [activeAxis, setActiveAxis] = React.useState<'x' | 'y'>('x');
 
@@ -53,7 +55,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
     const coordinates = getCoordinates(rootRef.current, event);
     const newColor: HsvColor = {
-      ...color,
+      ...hsvColor,
       s: coordinates.x,
       v: coordinates.y,
     };
@@ -85,7 +87,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   const handleInputOnChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
     const value = Number(event.target.value) / 100;
     const newColor: HsvColor = {
-      ...color,
+      ...hsvColor,
       ...(event.target === xRef.current && { s: value }),
       ...(event.target === yRef.current && { v: value }),
     };
@@ -135,9 +137,9 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     }
 
     const newColor: HsvColor = {
-      ...color,
-      s: Math.min(Math.max(color.s + deltaX / 100, 0), 1),
-      v: Math.min(Math.max(color.v + deltaY / 100, 0), 1),
+      ...hsvColor,
+      s: Math.min(Math.max(hsvColor.s + deltaX / 100, 0), 1),
+      v: Math.min(Math.max(hsvColor.v + deltaY / 100, 0), 1),
     };
 
     setColor(newColor);
@@ -150,7 +152,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     [colorAreaCSSVars.areaXProgressVar]: `${saturation}%`,
     [colorAreaCSSVars.areaYProgressVar]: `${value}%`,
     [colorAreaCSSVars.thumbColorVar]: 'transparent',
-    [colorAreaCSSVars.mainColorVar]: `hsl(${color.h}, 100%, 50%)`,
+    [colorAreaCSSVars.mainColorVar]: `hsl(${hsvColor.h}, 100%, 50%)`,
   };
   const state: ColorAreaState = {
     components: {
@@ -162,7 +164,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
-        ...props,
+        ...rest,
       }),
       { elementType: 'div' },
     ),

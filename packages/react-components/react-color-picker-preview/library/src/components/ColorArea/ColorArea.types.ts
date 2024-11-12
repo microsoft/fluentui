@@ -29,7 +29,7 @@ export type HsvColor = {
 /**
  * ColorArea Props
  */
-export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {
+export type ColorAreaProps = Omit<ComponentProps<ColorAreaSlots>, 'color' | 'onChange'> & {
   /**
    * The current color of the ColorArea.
    */
