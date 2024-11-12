@@ -1,1 +1,1 @@
-export { opacityAtom } from './Atoms';
+export { opacityAtom, scaleAtom } from './Atoms';

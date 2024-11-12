@@ -19,3 +19,16 @@ export const opacityAtom = ({
     keyframes: [{ opacity: fromOpacity }, { opacity: toOpacity }],
     ...props,
   });
+
+export const scaleAtom = ({
+  fromScale = 0.9,
+  toScale = 1,
+  ...props
+}: { fromScale?: number; toScale?: number } & MotionAtomProps): AtomMotion =>
+  motionAtom({
+    keyframes: [
+      { transform: `scale3d(${fromScale}, ${fromScale}, 1)`, visibility: 'visible' },
+      { transform: `scale3d(${toScale}, ${toScale}, 1)` },
+    ],
+    ...props,
+  });
