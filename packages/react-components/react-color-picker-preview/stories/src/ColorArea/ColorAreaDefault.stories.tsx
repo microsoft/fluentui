@@ -24,7 +24,7 @@ export const Default = () => {
   const styles = useStyles();
 
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
-  const onChange: ColorAreaProps['onChange'] = (_, data) => setColor(data.color);
+  const onChange: ColorAreaProps['onChange'] = (_, data) => setColor({ ...data.color, a: data.color.a ?? 1 });
   const resetSlider = () => setColor(DEFAULT_COLOR_HSV);
 
   return (

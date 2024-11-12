@@ -85,11 +85,11 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   });
 
   const handleInputOnChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
-    const value = Number(event.target.value) / 100;
+    const targetValue = Number(event.target.value) / 100;
     const newColor: HsvColor = {
       ...hsvColor,
-      ...(event.target === xRef.current && { s: value }),
-      ...(event.target === yRef.current && { v: value }),
+      ...(event.target === xRef.current && { s: targetValue }),
+      ...(event.target === yRef.current && { v: targetValue }),
     };
 
     setColor(newColor);
@@ -215,7 +215,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     if (activeAxis === 'y' && targetDocument?.activeElement !== yRef.current) {
       yRef.current?.focus();
     }
-  }, [activeAxis]);
+  }, [activeAxis, targetDocument?.activeElement]);
 
   return state;
 };
