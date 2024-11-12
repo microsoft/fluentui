@@ -96,7 +96,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     onChange?.(event, { type: 'change', event, color: newColor });
   });
 
-  const handleRootOnKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleRootOnKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     let deltaX = 0;
     let deltaY = 0;
     let axis: 'x' | 'y' = 'x';
