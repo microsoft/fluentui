@@ -41,6 +41,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FF0000, #FF0000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FF0000",
             "borderColor": "#FF0000",
             "content": "",
@@ -83,6 +85,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #000000, #000000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#000000",
             "borderColor": "#000000",
             "content": "",
@@ -125,6 +129,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008000, #008000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#008000",
             "borderColor": "#008000",
             "content": "",
@@ -167,6 +173,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #0000ff, #0000ff)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#0000ff",
             "borderColor": "#0000ff",
             "content": "",
@@ -209,6 +217,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #191970, #191970)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#191970",
             "borderColor": "#191970",
             "content": "",
@@ -251,6 +261,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #E4E3E9, #E4E3E9)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#E4E3E9",
             "borderColor": "#E4E3E9",
             "content": "",
@@ -293,6 +305,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #013220, #013220)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#013220",
             "borderColor": "#013220",
             "content": "",
@@ -335,6 +349,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #00008B, #00008B)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#00008B",
             "borderColor": "#00008B",
             "content": "",
@@ -377,6 +393,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FFA500",
             "borderColor": "#FFA500",
             "content": "",
@@ -419,6 +437,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #301934, #301934)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#301934",
             "borderColor": "#301934",
             "content": "",
@@ -461,6 +481,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #Ffffed, #Ffffed)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#Ffffed",
             "borderColor": "#Ffffed",
             "content": "",
@@ -503,6 +525,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #90ee90, #90ee90)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#90ee90",
             "borderColor": "#90ee90",
             "content": "",
@@ -545,6 +569,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FFA500",
             "borderColor": "#FFA500",
             "content": "",
@@ -587,6 +613,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#008080",
             "borderColor": "#008080",
             "content": "",
@@ -629,6 +657,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#008080",
             "borderColor": "#008080",
             "content": "",
@@ -671,6 +701,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, FF0000, FF0000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "FF0000",
             "borderColor": "FF0000",
             "content": "",
@@ -713,6 +745,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFFFFF, #FFFFFF)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FFFFFF",
             "borderColor": "#FFFFFF",
             "content": "",
@@ -776,6 +810,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FF0000, #FF0000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FF0000",
             "borderColor": "#FF0000",
             "content": "",
@@ -818,6 +854,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #000000, #000000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#000000",
             "borderColor": "#000000",
             "content": "",
@@ -860,6 +898,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008000, #008000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#008000",
             "borderColor": "#008000",
             "content": "",
@@ -902,6 +942,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #0000ff, #0000ff)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#0000ff",
             "borderColor": "#0000ff",
             "content": "",
@@ -944,6 +986,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #191970, #191970)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#191970",
             "borderColor": "#191970",
             "content": "",
@@ -986,6 +1030,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #E4E3E9, #E4E3E9)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#E4E3E9",
             "borderColor": "#E4E3E9",
             "content": "",
@@ -1028,6 +1074,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #013220, #013220)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#013220",
             "borderColor": "#013220",
             "content": "",
@@ -1070,6 +1118,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #00008B, #00008B)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#00008B",
             "borderColor": "#00008B",
             "content": "",
@@ -1112,6 +1162,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FFA500",
             "borderColor": "#FFA500",
             "content": "",
@@ -1154,6 +1206,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #301934, #301934)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#301934",
             "borderColor": "#301934",
             "content": "",
@@ -1196,6 +1250,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #Ffffed, #Ffffed)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#Ffffed",
             "borderColor": "#Ffffed",
             "content": "",
@@ -1238,6 +1294,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #90ee90, #90ee90)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#90ee90",
             "borderColor": "#90ee90",
             "content": "",
@@ -1280,6 +1338,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FFA500",
             "borderColor": "#FFA500",
             "content": "",
@@ -1322,6 +1382,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#008080",
             "borderColor": "#008080",
             "content": "",
@@ -1364,6 +1426,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#008080",
             "borderColor": "#008080",
             "content": "",
@@ -1406,6 +1470,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, FF0000, FF0000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "FF0000",
             "borderColor": "FF0000",
             "content": "",
@@ -1448,6 +1514,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFFFFF, #FFFFFF)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FFFFFF",
             "borderColor": "#FFFFFF",
             "content": "",
@@ -1511,6 +1579,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FF0000, #FF0000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FF0000",
             "borderColor": "#FF0000",
             "content": "",
@@ -1553,6 +1623,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #000000, #000000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#000000",
             "borderColor": "#000000",
             "content": "",
@@ -1595,6 +1667,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008000, #008000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#008000",
             "borderColor": "#008000",
             "content": "",
@@ -1637,6 +1711,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #0000ff, #0000ff)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#0000ff",
             "borderColor": "#0000ff",
             "content": "",
@@ -1679,6 +1755,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #191970, #191970)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#191970",
             "borderColor": "#191970",
             "content": "",
@@ -1721,6 +1799,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #E4E3E9, #E4E3E9)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#E4E3E9",
             "borderColor": "#E4E3E9",
             "content": "",
@@ -1763,6 +1843,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #013220, #013220)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#013220",
             "borderColor": "#013220",
             "content": "",
@@ -1805,6 +1887,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #00008B, #00008B)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#00008B",
             "borderColor": "#00008B",
             "content": "",
@@ -1847,6 +1931,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FFA500",
             "borderColor": "#FFA500",
             "content": "",
@@ -1889,6 +1975,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #301934, #301934)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#301934",
             "borderColor": "#301934",
             "content": "",
@@ -1931,6 +2019,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #Ffffed, #Ffffed)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#Ffffed",
             "borderColor": "#Ffffed",
             "content": "",
@@ -1973,6 +2063,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #90ee90, #90ee90)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#90ee90",
             "borderColor": "#90ee90",
             "content": "",
@@ -2015,6 +2107,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FFA500",
             "borderColor": "#FFA500",
             "content": "",
@@ -2057,6 +2151,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#008080",
             "borderColor": "#008080",
             "content": "",
@@ -2099,6 +2195,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#008080",
             "borderColor": "#008080",
             "content": "",
@@ -2141,6 +2239,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, FF0000, FF0000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "FF0000",
             "borderColor": "FF0000",
             "content": "",
@@ -2183,6 +2283,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFFFFF, #FFFFFF)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FFFFFF",
             "borderColor": "#FFFFFF",
             "content": "",
@@ -2246,6 +2348,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FF0000, #FF0000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FF0000",
             "borderColor": "#FF0000",
             "content": "",
@@ -2288,6 +2392,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #000000, #000000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#000000",
             "borderColor": "#000000",
             "content": "",
@@ -2330,6 +2436,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008000, #008000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#008000",
             "borderColor": "#008000",
             "content": "",
@@ -2372,6 +2480,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #0000ff, #0000ff)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#0000ff",
             "borderColor": "#0000ff",
             "content": "",
@@ -2414,6 +2524,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #191970, #191970)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#191970",
             "borderColor": "#191970",
             "content": "",
@@ -2456,6 +2568,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #E4E3E9, #E4E3E9)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#E4E3E9",
             "borderColor": "#E4E3E9",
             "content": "",
@@ -2498,6 +2612,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #013220, #013220)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#013220",
             "borderColor": "#013220",
             "content": "",
@@ -2540,6 +2656,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #00008B, #00008B)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#00008B",
             "borderColor": "#00008B",
             "content": "",
@@ -2582,6 +2700,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FFA500",
             "borderColor": "#FFA500",
             "content": "",
@@ -2624,6 +2744,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #301934, #301934)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#301934",
             "borderColor": "#301934",
             "content": "",
@@ -2666,6 +2788,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #Ffffed, #Ffffed)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#Ffffed",
             "borderColor": "#Ffffed",
             "content": "",
@@ -2708,6 +2832,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #90ee90, #90ee90)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#90ee90",
             "borderColor": "#90ee90",
             "content": "",
@@ -2750,6 +2876,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FFA500",
             "borderColor": "#FFA500",
             "content": "",
@@ -2792,6 +2920,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#008080",
             "borderColor": "#008080",
             "content": "",
@@ -2834,6 +2964,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#008080",
             "borderColor": "#008080",
             "content": "",
@@ -2876,6 +3008,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, FF0000, FF0000)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "FF0000",
             "borderColor": "FF0000",
             "content": "",
@@ -2918,6 +3052,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
         className="fui-legend__rect"
         style={
           Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFFFFF, #FFFFFF)",
+            "--rect-opacity-high-contrast": "",
             "backgroundColor": "#FFFFFF",
             "borderColor": "#FFFFFF",
             "content": "",

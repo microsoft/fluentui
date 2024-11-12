@@ -4345,7 +4345,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: red; border-color: red;"
+                style="height: 12px; background-color: red; border-color: red; --rect-content-high-contrast: linear-gradient(to right, red, red);"
               />
               <div
                 class="fui-legend__text"
@@ -4364,7 +4364,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: green; border-color: green;"
+                style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
               />
               <div
                 class="fui-legend__text"
@@ -4383,7 +4383,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: yellow; border-color: yellow;"
+                style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
               />
               <div
                 class="fui-legend__text"
@@ -5409,7 +5409,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: red; border-color: red;"
+                style="height: 12px; background-color: red; border-color: red; --rect-content-high-contrast: linear-gradient(to right, red, red);"
               />
               <div
                 class="fui-legend__text"
@@ -5428,7 +5428,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: green; border-color: green;"
+                style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
               />
               <div
                 class="fui-legend__text"
@@ -5447,7 +5447,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: yellow; border-color: yellow;"
+                style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
               />
               <div
                 class="fui-legend__text"
@@ -5927,7 +5927,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: red; border-color: red;"
+                style="height: 12px; background-color: red; border-color: red; --rect-content-high-contrast: linear-gradient(to right, red, red);"
               />
               <div
                 class="fui-legend__text"
@@ -5946,7 +5946,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: green; border-color: green;"
+                style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
               />
               <div
                 class="fui-legend__text"
@@ -5965,7 +5965,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: yellow; border-color: yellow;"
+                style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
               />
               <div
                 class="fui-legend__text"
@@ -6448,7 +6448,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: red; border-color: red;"
+                  style="height: 12px; background-color: red; border-color: red; --rect-content-high-contrast: linear-gradient(to right, red, red);"
                 />
                 <div
                   class="fui-legend__text"
@@ -6467,7 +6467,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: green; border-color: green;"
+                  style="height: 12px; background-color: green; border-color: green; --rect-content-high-contrast: linear-gradient(to right, green, green);"
                 />
                 <div
                   class="fui-legend__text"
@@ -6486,7 +6486,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: yellow; border-color: yellow;"
+                  style="height: 12px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
                 />
                 <div
                   class="fui-legend__text"

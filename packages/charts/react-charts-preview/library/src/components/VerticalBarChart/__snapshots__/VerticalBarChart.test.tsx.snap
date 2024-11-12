@@ -95,6 +95,8 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "aqua",
                   "borderColor": "aqua",
                   "content": "",
@@ -137,6 +139,8 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, blue, blue)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "blue",
                   "borderColor": "blue",
                   "content": "",
@@ -179,6 +183,8 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "navy",
                   "borderColor": "navy",
                   "content": "",
@@ -293,6 +299,8 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "aqua",
                   "borderColor": "aqua",
                   "content": "",
@@ -335,6 +343,8 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, blue, blue)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "blue",
                   "borderColor": "blue",
                   "content": "",
@@ -377,6 +387,8 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "navy",
                   "borderColor": "navy",
                   "content": "",
@@ -506,6 +518,8 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                 className="fui-legend__rect"
                 style={
                   Object {
+                    "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                    "--rect-opacity-high-contrast": "",
                     "backgroundColor": "aqua",
                     "borderColor": "aqua",
                     "content": "",
@@ -557,6 +571,8 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                 className="fui-legend__rect"
                 style={
                   Object {
+                    "--rect-content-high-contrast": "linear-gradient(to right, blue, blue)",
+                    "--rect-opacity-high-contrast": "",
                     "backgroundColor": "blue",
                     "borderColor": "blue",
                     "content": "",
@@ -608,6 +624,8 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                 className="fui-legend__rect"
                 style={
                   Object {
+                    "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                    "--rect-opacity-high-contrast": "",
                     "backgroundColor": "navy",
                     "borderColor": "navy",
                     "content": "",
@@ -773,6 +791,8 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "aqua",
                   "borderColor": "aqua",
                   "content": "",
@@ -815,6 +835,8 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, blue, blue)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "blue",
                   "borderColor": "blue",
                   "content": "",
@@ -857,6 +879,8 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "navy",
                   "borderColor": "navy",
                   "content": "",
@@ -1025,6 +1049,8 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "aqua",
                   "borderColor": "aqua",
                   "content": "",
@@ -1067,6 +1093,8 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, blue, blue)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "blue",
                   "borderColor": "blue",
                   "content": "",
@@ -1109,6 +1137,8 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "navy",
                   "borderColor": "navy",
                   "content": "",
@@ -1277,6 +1307,8 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "aqua",
                   "borderColor": "aqua",
                   "content": "",
@@ -1319,6 +1351,8 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, blue, blue)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "blue",
                   "borderColor": "blue",
                   "content": "",
@@ -1361,6 +1395,8 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "navy",
                   "borderColor": "navy",
                   "content": "",
@@ -1475,6 +1511,8 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "aqua",
                   "borderColor": "aqua",
                   "content": "",
@@ -1517,6 +1555,8 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, blue, blue)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "blue",
                   "borderColor": "blue",
                   "content": "",
@@ -1559,6 +1599,8 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "navy",
                   "borderColor": "navy",
                   "content": "",

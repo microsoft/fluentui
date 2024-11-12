@@ -193,6 +193,8 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #E5E5E5, #E5E5E5)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#E5E5E5",
                   "borderColor": "#E5E5E5",
                   "content": "",
@@ -235,6 +237,8 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #0078D4, #0078D4)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#0078D4",
                   "borderColor": "#0078D4",
                   "content": "",
@@ -277,6 +281,8 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #DADADA, #DADADA)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#DADADA",
                   "borderColor": "#DADADA",
                   "content": "",
@@ -495,6 +501,8 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #E5E5E5, #E5E5E5)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#E5E5E5",
                   "borderColor": "#E5E5E5",
                   "content": "",
@@ -537,6 +545,8 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #0078D4, #0078D4)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#0078D4",
                   "borderColor": "#0078D4",
                   "content": "",
@@ -579,6 +589,8 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #DADADA, #DADADA)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#DADADA",
                   "borderColor": "#DADADA",
                   "content": "",
@@ -746,6 +758,8 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #E5E5E5, #E5E5E5)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#E5E5E5",
                   "borderColor": "#E5E5E5",
                   "content": "",
@@ -788,6 +802,8 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #0078D4, #0078D4)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#0078D4",
                   "borderColor": "#0078D4",
                   "content": "",
@@ -830,6 +846,8 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #DADADA, #DADADA)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#DADADA",
                   "borderColor": "#DADADA",
                   "content": "",
@@ -1027,6 +1045,8 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #E5E5E5, #E5E5E5)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#E5E5E5",
                   "borderColor": "#E5E5E5",
                   "content": "",
@@ -1069,6 +1089,8 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #0078D4, #0078D4)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#0078D4",
                   "borderColor": "#0078D4",
                   "content": "",
@@ -1111,6 +1133,8 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #DADADA, #DADADA)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#DADADA",
                   "borderColor": "#DADADA",
                   "content": "",
@@ -1308,6 +1332,8 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #E5E5E5, #E5E5E5)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#E5E5E5",
                   "borderColor": "#E5E5E5",
                   "content": "",
@@ -1350,6 +1376,8 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #0078D4, #0078D4)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#0078D4",
                   "borderColor": "#0078D4",
                   "content": "",
@@ -1392,6 +1420,8 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #DADADA, #DADADA)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#DADADA",
                   "borderColor": "#DADADA",
                   "content": "",
@@ -1559,6 +1589,8 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #E5E5E5, #E5E5E5)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#E5E5E5",
                   "borderColor": "#E5E5E5",
                   "content": "",
@@ -1601,6 +1633,8 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #0078D4, #0078D4)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#0078D4",
                   "borderColor": "#0078D4",
                   "content": "",
@@ -1643,6 +1677,8 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #DADADA, #DADADA)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#DADADA",
                   "borderColor": "#DADADA",
                   "content": "",
@@ -1810,6 +1846,8 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, undefined, undefined)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": undefined,
                   "borderColor": "var(--colorNeutralStroke1)",
                   "content": "",
@@ -1852,6 +1890,8 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, undefined, undefined)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": undefined,
                   "borderColor": "var(--colorNeutralStroke1)",
                   "content": "",
@@ -1894,6 +1934,8 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, undefined, undefined)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": undefined,
                   "borderColor": "var(--colorNeutralStroke1)",
                   "content": "",
@@ -2061,6 +2103,8 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #E5E5E5, #E5E5E5)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#E5E5E5",
                   "borderColor": "#E5E5E5",
                   "content": "",
@@ -2103,6 +2147,8 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #0078D4, #0078D4)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#0078D4",
                   "borderColor": "#0078D4",
                   "content": "",
@@ -2145,6 +2191,8 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #DADADA, #DADADA)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#DADADA",
                   "borderColor": "#DADADA",
                   "content": "",
@@ -2415,6 +2463,8 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #E5E5E5, #E5E5E5)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#E5E5E5",
                   "borderColor": "#E5E5E5",
                   "content": "",
@@ -2457,6 +2507,8 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #0078D4, #0078D4)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#0078D4",
                   "borderColor": "#0078D4",
                   "content": "",
@@ -2499,6 +2551,8 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #DADADA, #DADADA)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#DADADA",
                   "borderColor": "#DADADA",
                   "content": "",
@@ -2674,6 +2728,8 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #E5E5E5, #E5E5E5)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#E5E5E5",
                   "borderColor": "#E5E5E5",
                   "content": "",
@@ -2716,6 +2772,8 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #0078D4, #0078D4)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#0078D4",
                   "borderColor": "#0078D4",
                   "content": "",
@@ -2758,6 +2816,8 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               className="fui-legend__rect"
               style={
                 Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, #DADADA, #DADADA)",
+                  "--rect-opacity-high-contrast": "",
                   "backgroundColor": "#DADADA",
                   "borderColor": "#DADADA",
                   "content": "",

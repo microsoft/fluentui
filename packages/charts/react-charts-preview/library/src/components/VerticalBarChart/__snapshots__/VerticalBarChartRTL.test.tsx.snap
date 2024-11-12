@@ -349,7 +349,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: aqua; border-color: aqua;"
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
               />
               <div
                 class="fui-legend__text"
@@ -368,7 +368,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: blue; border-color: blue;"
+                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
                 class="fui-legend__text"
@@ -387,7 +387,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: navy; border-color: navy;"
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
               />
               <div
                 class="fui-legend__text"
@@ -752,7 +752,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: aqua; border-color: aqua;"
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
               />
               <div
                 class="fui-legend__text"
@@ -771,7 +771,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: blue; border-color: blue;"
+                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
                 class="fui-legend__text"
@@ -790,7 +790,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: navy; border-color: navy;"
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
               />
               <div
                 class="fui-legend__text"
@@ -1158,7 +1158,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: aqua; border-color: aqua;"
+                  style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
                 />
                 <div
                   class="fui-legend__text"
@@ -1177,7 +1177,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: blue; border-color: blue;"
+                  style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                 />
                 <div
                   class="fui-legend__text"
@@ -1196,7 +1196,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: navy; border-color: navy;"
+                  style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
                 />
                 <div
                   class="fui-legend__text"
@@ -1572,7 +1572,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: aqua; border-color: aqua;"
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
               />
               <div
                 class="fui-legend__text"
@@ -1591,7 +1591,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: blue; border-color: blue;"
+                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
                 class="fui-legend__text"
@@ -1610,7 +1610,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: navy; border-color: navy;"
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
               />
               <div
                 class="fui-legend__text"
@@ -10254,7 +10254,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: aqua; border-color: aqua;"
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
               />
               <div
                 class="fui-legend__text"
@@ -10273,7 +10273,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: blue; border-color: blue;"
+                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
               />
               <div
                 class="fui-legend__text"
@@ -10292,7 +10292,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: navy; border-color: navy;"
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
               />
               <div
                 class="fui-legend__text"
@@ -10612,7 +10612,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(98, 124, 239); border-color: #627cef;"
+                style="height: 12px; background-color: rgb(98, 124, 239); border-color: #627cef; --rect-content-high-contrast: linear-gradient(to right, #627CEF, #627CEF);"
               />
               <div
                 class="fui-legend__text"
@@ -10629,7 +10629,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(193, 156, 0); border-color: #c19c00;"
+                style="height: 12px; background-color: rgb(193, 156, 0); border-color: #c19c00; --rect-content-high-contrast: linear-gradient(to right, #C19C00, #C19C00);"
               />
               <div
                 class="fui-legend__text"
@@ -10646,7 +10646,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(230, 80, 175); border-color: #e650af;"
+                style="height: 12px; background-color: rgb(230, 80, 175); border-color: #e650af; --rect-content-high-contrast: linear-gradient(to right, #E650AF, #E650AF);"
               />
               <div
                 class="fui-legend__text"
@@ -10663,7 +10663,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(14, 120, 120); border-color: #0e7878;"
+                style="height: 12px; background-color: rgb(14, 120, 120); border-color: #0e7878; --rect-content-high-contrast: linear-gradient(to right, #0E7878, #0E7878);"
               />
               <div
                 class="fui-legend__text"
@@ -11028,7 +11028,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: aqua; border-color: aqua;"
+                  style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
                 />
                 <div
                   class="fui-legend__text"
@@ -11050,7 +11050,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: blue; border-color: blue;"
+                  style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                 />
                 <div
                   class="fui-legend__text"
@@ -11072,7 +11072,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: navy; border-color: navy;"
+                  style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
                 />
                 <div
                   class="fui-legend__text"
@@ -11440,7 +11440,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: aqua; border-color: aqua;"
+                  style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
                 />
                 <div
                   class="fui-legend__text"
@@ -11462,7 +11462,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: blue; border-color: blue;"
+                  style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
                 />
                 <div
                   class="fui-legend__text"
@@ -11484,7 +11484,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: navy; border-color: navy;"
+                  style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
                 />
                 <div
                   class="fui-legend__text"
