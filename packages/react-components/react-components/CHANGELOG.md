@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 11 Nov 2024 10:00:34 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Nov 2024 09:31:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.56.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.1)
+
+Tue, 12 Nov 2024 09:31:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.0..@fluentui/react-components_v9.56.1)
+
+### Minor changes
+
+- `@fluentui/react-drawer`
+  - add support for mountNode with className ([PR #33226](https://github.com/microsoft/fluentui/pull/33226) by marcosvmmoura@gmail.com)
+- `@fluentui/react-nav-preview`
+  - feat: Exposed 'tabbable' prop on NavDrawer to let consumers disagree with default arrowing opinion. ([PR #33232](https://github.com/microsoft/fluentui/pull/33232) by matejera@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-carousel`
+  - fix: Enable controlled index to be set to a new card when added ([PR #33177](https://github.com/microsoft/fluentui/pull/33177) by mifraser@microsoft.com)
+- `@fluentui/react-dialog`
+  - bugfix: ensures dialog surface style without surfaceMotion ([PR #33247](https://github.com/microsoft/fluentui/pull/33247) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tags`
+  - fix: explicitly set box-sizing for tag icon ([PR #33203](https://github.com/microsoft/fluentui/pull/33203) by dmytrokirpa@microsoft.com)
 
 ## [9.56.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.0)
 

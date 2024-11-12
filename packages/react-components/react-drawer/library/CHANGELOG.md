@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Mon, 11 Nov 2024 10:01:13 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Nov 2024 09:31:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.6.0)
+
+Tue, 12 Nov 2024 09:31:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.5.19..@fluentui/react-drawer_v9.6.0)
+
+### Minor changes
+
+- add support for mountNode with className ([PR #33226](https://github.com/microsoft/fluentui/pull/33226) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-dialog to v9.11.20 ([commit](https://github.com/microsoft/fluentui/commit/fc7240b48f7441d9fbf62d600c41c25c57ebac3b) by beachball)
 
 ## [9.5.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.5.19)
 

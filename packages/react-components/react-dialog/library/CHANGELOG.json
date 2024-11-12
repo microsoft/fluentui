@@ -2,6 +2,21 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Tue, 12 Nov 2024 09:31:25 GMT",
+      "tag": "@fluentui/react-dialog_v9.11.20",
+      "version": "9.11.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "0b6257a9a6e27ad62235268816ac03d3b9a98eff",
+            "comment": "bugfix: ensures dialog surface style without surfaceMotion"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:01:13 GMT",
       "tag": "@fluentui/react-dialog_v9.11.19",
       "version": "9.11.19",

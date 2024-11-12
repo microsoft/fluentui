@@ -2,6 +2,27 @@
   "name": "@fluentui/react-drawer",
   "entries": [
     {
+      "date": "Tue, 12 Nov 2024 09:31:26 GMT",
+      "tag": "@fluentui/react-drawer_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "f429fc5166495dddf41726526bc44d7314aa5e0a",
+            "comment": "add support for mountNode with className"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.11.20",
+            "commit": "fc7240b48f7441d9fbf62d600c41c25c57ebac3b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:01:13 GMT",
       "tag": "@fluentui/react-drawer_v9.5.19",
       "version": "9.5.19",

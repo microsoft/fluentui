@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: ensures dialog surface style without surfaceMotion",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

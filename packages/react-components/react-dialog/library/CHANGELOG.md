@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Mon, 11 Nov 2024 10:01:13 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Nov 2024 09:31:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.11.20)
+
+Tue, 12 Nov 2024 09:31:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.11.19..@fluentui/react-dialog_v9.11.20)
+
+### Patches
+
+- bugfix: ensures dialog surface style without surfaceMotion ([PR #33247](https://github.com/microsoft/fluentui/pull/33247) by bernardo.sunderhus@gmail.com)
 
 ## [9.11.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.11.19)
 

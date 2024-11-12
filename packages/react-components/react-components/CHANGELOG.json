@@ -2,6 +2,47 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 12 Nov 2024 09:31:25 GMT",
+      "tag": "@fluentui/react-components_v9.56.1",
+      "version": "9.56.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "f3577a7220dcd4935335b1818ecd53d0ab598eea",
+            "comment": "fix: Enable controlled index to be set to a new card when added"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "0b6257a9a6e27ad62235268816ac03d3b9a98eff",
+            "comment": "bugfix: ensures dialog surface style without surfaceMotion"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "18f41fc58e2a5280d9e5291063f6be7cc4d9c0eb",
+            "comment": "fix: explicitly set box-sizing for tag icon"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "f429fc5166495dddf41726526bc44d7314aa5e0a",
+            "comment": "add support for mountNode with className"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "424835a9e7ceb42bb7f76e4749a78fe163847e16",
+            "comment": "feat: Exposed 'tabbable' prop on NavDrawer to let consumers disagree with default arrowing opinion."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:00:34 GMT",
       "tag": "@fluentui/react-components_v9.56.0",
       "version": "9.56.0",

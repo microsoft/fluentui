@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tags
 
-This log was last generated on Mon, 11 Nov 2024 10:00:59 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Nov 2024 09:31:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.3.22)
+
+Tue, 12 Nov 2024 09:31:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.3.21..@fluentui/react-tags_v9.3.22)
+
+### Patches
+
+- fix: explicitly set box-sizing for tag icon ([PR #33203](https://github.com/microsoft/fluentui/pull/33203) by dmytrokirpa@microsoft.com)
 
 ## [9.3.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.3.21)
 
