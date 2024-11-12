@@ -71,6 +71,15 @@ export const styles: ElementStyles = css`
   .bar.inactive {
     opacity: 0.1;
   }
+  .bar:focus {
+    outline: none;
+    stroke-width: 2px;
+    stroke: black;
+  }
+  .svgChart {
+    display: block;
+    overflow: visible;
+  }
   .chartTitle {
     ${typographyBody1Styles}
     display: flex;

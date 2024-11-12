@@ -346,6 +346,7 @@ export class HorizontalBarChart extends FASTElement {
       .append('svg')
       .attr('height', 20)
       .attr('width', 100 + '%')
+      .attr('class', 'svgChart')
       .attr('aria-label', data?.chartTitle ? data?.chartTitle : '')
       .selectAll('g')
       .data(data.chartData!)
