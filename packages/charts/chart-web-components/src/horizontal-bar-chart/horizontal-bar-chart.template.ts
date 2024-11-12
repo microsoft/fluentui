@@ -36,8 +36,11 @@ export function horizontalbarchartTemplate<T extends HorizontalBarChart>(): Elem
                 @blur="${(x, c) => c.parent.handleLegendMouseoutAndBlur()}"
                 @click="${(x, c) => c.parent.handleLegendClick(x.legend)}"
               >
-                <div class="legendRect" style="background-color: ${x => x.color}; border-color: ${x => x.color};"></div>
-                <div class="legendText">${x => x.legend}</div>
+                <div
+                  class="legend-rect"
+                  style="background-color: ${x => x.color}; border-color: ${x => x.color};"
+                ></div>
+                <div class="legend-text">${x => x.legend}</div>
               </button>`,
             )}
           </div>

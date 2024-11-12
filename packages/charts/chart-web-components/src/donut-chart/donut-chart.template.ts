@@ -18,7 +18,7 @@ export function donutChartTemplate<T extends DonutChart>(): ElementViewTemplate<
       ${when(
         x => !x.hideLegends,
         html<T>`
-          <div class="legendContainer" role="listbox" aria-label="Legends">
+          <div class="legend-container" role="listbox" aria-label="Legends">
             ${repeat(
               x => x.legends,
               html<Legend, T>` <button
@@ -34,8 +34,11 @@ export function donutChartTemplate<T extends DonutChart>(): ElementViewTemplate<
                 @blur="${(x, c) => c.parent.handleLegendMouseoutAndBlur()}"
                 @click="${(x, c) => c.parent.handleLegendClick(x.title)}"
               >
-                <div class="legendRect" style="background-color: ${x => x.color}; border-color: ${x => x.color};"></div>
-                <div class="legendText">${x => x.title}</div>
+                <div
+                  class="legend-rect"
+                  style="background-color: ${x => x.color}; border-color: ${x => x.color};"
+                ></div>
+                <div class="legend-text">${x => x.title}</div>
               </button>`,
             )}
           </div>
@@ -45,12 +48,12 @@ export function donutChartTemplate<T extends DonutChart>(): ElementViewTemplate<
         x => !x.hideTooltip && x.tooltipProps.isVisible,
         html<T>`
           <div
-            class="calloutContentRoot"
+            class="tooltip"
             style="inset-inline-start: ${x => x.tooltipProps.xPos}px; top: ${x => x.tooltipProps.yPos}px"
           >
-            <div class="calloutBlockContainer" style="border-color: ${x => x.tooltipProps.color};">
-              <div class="calloutLegendText">${x => x.tooltipProps.legend}</div>
-              <div class="calloutContentY" style="color: ${x => x.tooltipProps.color};">
+            <div class="tooltip-body" style="border-color: ${x => x.tooltipProps.color};">
+              <div class="tooltip-legend-text">${x => x.tooltipProps.legend}</div>
+              <div class="tooltip-content-y" style="color: ${x => x.tooltipProps.color};">
                 ${x => x.tooltipProps.yValue}
               </div>
             </div>

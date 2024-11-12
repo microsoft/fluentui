@@ -43,4 +43,8 @@ export interface ChartProps {
    * data for the points in the chart
    */
   chartData: ChartDataPoint[];
+
+  benchmarkData?: number;
+
+  chartDataText?: string;
 }

@@ -55,21 +55,21 @@ export const styles = css`
     stroke: ${colorStrokeFocus1};
   }
 
-  .focusOutline {
+  .arc-outline {
     fill: none;
   }
 
-  .focusOutline:has(+ .arc:focus) {
+  .arc-outline:has(+ .arc:focus) {
     stroke-width: 4px;
     stroke: ${colorStrokeFocus2};
   }
 
-  .insideDonutString {
+  .text-inside-donut {
     ${typographyTitle3Styles}
     fill: ${colorNeutralForeground1};
   }
 
-  .legendContainer {
+  .legend-container {
     padding-top: ${spacingVerticalL};
     white-space: nowrap;
     width: 100%;
@@ -89,27 +89,27 @@ export const styles = css`
     text-transform: capitalize;
   }
 
-  .legendRect {
+  .legend-rect {
     width: 12px;
     height: 12px;
     margin-inline-end: ${spacingHorizontalS};
     border: 1px solid;
   }
 
-  .legendText {
+  .legend-text {
     ${typographyCaption1Styles}
     color: ${colorNeutralForeground1};
   }
 
-  .legend.inactive .legendRect {
+  .legend.inactive .legend-rect {
     background-color: transparent !important;
   }
 
-  .legend.inactive .legendText {
+  .legend.inactive .legend-text {
     opacity: 0.67;
   }
 
-  .calloutContentRoot {
+  .tooltip {
     display: grid;
     overflow: hidden;
     padding: ${spacingVerticalMNudge} ${spacingHorizontalL};
@@ -123,32 +123,32 @@ export const styles = css`
     pointer-events: none;
   }
 
-  .calloutBlockContainer {
+  .tooltip-body {
     padding-inline-start: ${spacingHorizontalS};
     color: ${colorNeutralForeground1};
     border-inline-start: 4px solid;
   }
 
-  .calloutLegendText {
+  .tooltip-legend-text {
     ${typographyCaption1Styles}
   }
 
-  .calloutContentY {
+  .tooltip-content-y {
     ${typographyTitle2Styles}
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
-    .insideDonutString {
+    .text-inside-donut {
       fill: rgb(179, 179, 179);
     }
 
-    .legendRect,
-    .calloutBlockContainer {
+    .legend-rect,
+    .tooltip-body {
       forced-color-adjust: none;
     }
 
-    .calloutLegendText,
-    .calloutContentY {
+    .tooltip-legend-text,
+    .tooltip-content-y {
       forced-color-adjust: auto;
       color: rgb(255, 255, 255);
     }
