@@ -3,6 +3,7 @@ import { css } from '@microsoft/fast-element';
 import {
   colorNeutralBackground1,
   colorNeutralForeground1,
+  colorNeutralStrokeAccessible,
   display,
   shadow4,
   spacingHorizontalL,
@@ -23,7 +24,7 @@ import {
 export const styles: ElementStyles = css`
   ${display('inline-block')}
 
-  .rootDiv {
+  .root-div {
     position: relative;
   }
   .root {
@@ -71,7 +72,7 @@ export const styles: ElementStyles = css`
   .bar.inactive {
     opacity: 0.1;
   }
-  .chartTitle {
+  .chart-title {
     ${typographyBody1Styles}
     display: flex;
     justify-content: space-between;
@@ -100,39 +101,54 @@ export const styles: ElementStyles = css`
     background: none;
     text-transform: capitalize;
   }
-  .legendRect {
+  .legend-rect {
     width: 12px;
     height: 12px;
     margin-right: ${spacingHorizontalS};
     border: 1px solid;
   }
-  .legendText {
+  .legend-text {
     ${typographyCaption1Styles}
     color: ${colorNeutralForeground1};
   }
-  .legend.inactive .legendRect {
+  .legend.inactive .legend-rect {
     background-color: transparent !important;
   }
-  .legend.inactive .legendText {
+  .legend.inactive .legend-text {
     opacity: 0.67;
   }
-  .barLabel {
+  .bar-label {
     ${typographyBody1StrongStyles}
     fill: ${colorNeutralForeground1};
   }
-  .chartTitleDiv {
+  .chart-title-div {
     width: 100%;
     display: flex;
     justify-content: space-between;
   }
-  .ratioNumerator {
+  .ratio-numerator {
     ${typographyBody1StrongStyles}
     color: ${colorNeutralForeground1};
   }
-  .ratioDenominator {
+  .ratio-denominator {
     ${typographyBody1StrongStyles}
     color: ${colorNeutralForeground1};
     font-weight: bold;
+  }
+  .benchmark-container {
+    position: relative;
+    height: 7px;
+    margin-top: -3px;
+  }
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 7px solid;
+    border-bottom-color: ${colorNeutralStrokeAccessible};
+    margin-bottom: 4px;
+    position: absolute;
   }
   .chart-data-text {
     ${typographyBody1StrongStyles}
