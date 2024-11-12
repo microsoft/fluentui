@@ -6,7 +6,6 @@ Fluent UI React charts is a set of modern, accessible, interactive, lightweight 
 
 The library is built using D3 (Data Driven Documents) and fluent v9 design system.
 
-
 ## Sample Code
 
 Refer to the docsite for usage examples for each chart.
