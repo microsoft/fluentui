@@ -2,6 +2,7 @@
 import { Project, Node, SourceFile, PropertyAssignment, ObjectLiteralExpression } from 'ts-morph';
 import { resolveImportPath } from './fileOperations.js';
 import { TokenMap, TokenReference, StyleAnalysis, TOKEN_REGEX } from './types.js';
+import { log, error, measure, measureAsync } from './debugUtils.js';
 
 /**
  * Extracts token reference from a variable declaration's initializer
@@ -143,72 +144,77 @@ async function processPropertyAssignment(
  * Analyzes a single file for token usage
  */
 async function analyzeFile(filePath: string, project: Project, processedFiles: Set<string>): Promise<StyleAnalysis> {
-  console.log(`DEBUG: Starting analysis of ${filePath}`);
-  const analysis: StyleAnalysis = {};
-  const sourceFile = project.addSourceFileAtPath(filePath);
-  const localTokens = findLocalTokenVariables(sourceFile);
+  return measureAsync(`analyze ${filePath}`, async () => {
+    log(`Starting analysis of ${filePath}`);
+    const analysis: StyleAnalysis = {};
 
-  console.log(`DEBUG: Found ${localTokens.size} local token variables`);
+    const sourceFile = project.addSourceFileAtPath(filePath);
+    const localTokens = measure('find local tokens', () => findLocalTokenVariables(sourceFile));
 
-  // Find all object literal expressions in the file
-  const objectLiterals = sourceFile
-    .getDescendants()
-    .filter((node): node is ObjectLiteralExpression => Node.isObjectLiteralExpression(node));
+    log(`Found ${localTokens.size} local token variables`);
 
-  console.log(`DEBUG: Found ${objectLiterals.length} object literals`);
+    const objectLiterals = measure('find object literals', () =>
+      sourceFile
+        .getDescendants()
+        .filter((node): node is ObjectLiteralExpression => Node.isObjectLiteralExpression(node)),
+    );
 
-  for (const objLiteral of objectLiterals) {
-    const properties = objLiteral.getProperties();
-    console.log(`DEBUG: Processing object literal with ${properties.length} properties`);
+    log(`Found ${objectLiterals.length} object literals`);
 
-    // Process properties sequentially instead of with Promise.all
-    for (const prop of properties) {
-      if (Node.isPropertyAssignment(prop)) {
-        const styleName = prop.getName();
-        console.log(`DEBUG: Processing property ${styleName}`);
+    for (const objLiteral of objectLiterals) {
+      const properties = objLiteral.getProperties();
+      log(`Processing object literal with ${properties.length} properties`);
 
-        try {
-          const tokens = await processPropertyAssignment(prop, [], localTokens, project, processedFiles);
-          console.log(`DEBUG: Found ${tokens.length} tokens for ${styleName}`);
+      for (const prop of properties) {
+        if (Node.isPropertyAssignment(prop)) {
+          const styleName = prop.getName();
+          log(`Processing property ${styleName}`);
 
-          if (tokens.length > 0) {
-            const directTokens = tokens.filter(t => t.path.length === 0);
-            const nestedTokens = tokens.filter(t => t.path.length > 0);
+          try {
+            const tokens = await measureAsync(`process property ${styleName}`, () =>
+              processPropertyAssignment(prop, [], localTokens, project, processedFiles),
+            );
 
-            if (!analysis[styleName]) {
-              analysis[styleName] = {
-                tokens: [],
-              };
-            }
+            log(`Found ${tokens.length} tokens for ${styleName}`);
 
-            analysis[styleName].tokens.push(...directTokens);
+            if (tokens.length > 0) {
+              const directTokens = tokens.filter(t => t.path.length === 0);
+              const nestedTokens = tokens.filter(t => t.path.length > 0);
 
-            if (nestedTokens.length > 0) {
-              if (!analysis[styleName].nested) {
-                analysis[styleName].nested = {};
+              if (!analysis[styleName]) {
+                analysis[styleName] = {
+                  tokens: [],
+                };
               }
 
-              for (const token of nestedTokens) {
-                const path = token.path.join('.');
-                if (!analysis[styleName].nested![path]) {
-                  analysis[styleName].nested![path] = { tokens: [] };
+              analysis[styleName].tokens.push(...directTokens);
+
+              if (nestedTokens.length > 0) {
+                if (!analysis[styleName].nested) {
+                  analysis[styleName].nested = {};
                 }
-                analysis[styleName].nested![path].tokens.push(token);
+
+                for (const token of nestedTokens) {
+                  const path = token.path.join('.');
+                  if (!analysis[styleName].nested![path]) {
+                    analysis[styleName].nested![path] = { tokens: [] };
+                  }
+                  analysis[styleName].nested![path].tokens.push(token);
+                }
               }
             }
+          } catch (err) {
+            error(`Error processing property ${styleName}:`, err);
           }
-        } catch (err) {
-          console.error(`Error processing property ${styleName}:`, err);
-          // Continue with next property instead of failing entire analysis
         }
       }
     }
-  }
 
-  console.log(`DEBUG: Analysis complete for ${filePath}`);
-  console.log(`DEBUG: Found tokens for ${Object.keys(analysis).length} style properties`);
+    log(`Analysis complete for ${filePath}`);
+    log(`Found tokens for ${Object.keys(analysis).length} style properties`);
 
-  return analysis;
+    return analysis;
+  });
 }
 
 export {
