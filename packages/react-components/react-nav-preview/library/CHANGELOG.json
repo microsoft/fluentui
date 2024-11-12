@@ -2,6 +2,27 @@
   "name": "@fluentui/react-nav-preview",
   "entries": [
     {
+      "date": "Tue, 12 Nov 2024 09:31:26 GMT",
+      "tag": "@fluentui/react-nav-preview_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "424835a9e7ceb42bb7f76e4749a78fe163847e16",
+            "comment": "feat: Exposed 'tabbable' prop on NavDrawer to let consumers disagree with default arrowing opinion."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-drawer to v9.6.0",
+            "commit": "fc7240b48f7441d9fbf62d600c41c25c57ebac3b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:00:48 GMT",
       "tag": "@fluentui/react-nav-preview_v0.9.2",
       "version": "0.9.2",

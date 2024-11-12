@@ -2,6 +2,21 @@
   "name": "@fluentui/react-carousel",
   "entries": [
     {
+      "date": "Tue, 12 Nov 2024 09:31:25 GMT",
+      "tag": "@fluentui/react-carousel_v9.3.1",
+      "version": "9.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "f3577a7220dcd4935335b1818ecd53d0ab598eea",
+            "comment": "fix: Enable controlled index to be set to a new card when added"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:01:08 GMT",
       "tag": "@fluentui/react-carousel_v9.3.0",
       "version": "9.3.0",

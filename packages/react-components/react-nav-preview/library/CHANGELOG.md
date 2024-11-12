@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-nav-preview
 
-This log was last generated on Mon, 11 Nov 2024 10:00:48 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Nov 2024 09:31:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.10.0)
+
+Tue, 12 Nov 2024 09:31:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.9.2..@fluentui/react-nav-preview_v0.10.0)
+
+### Minor changes
+
+- feat: Exposed 'tabbable' prop on NavDrawer to let consumers disagree with default arrowing opinion. ([PR #33232](https://github.com/microsoft/fluentui/pull/33232) by matejera@microsoft.com)
+- Bump @fluentui/react-drawer to v9.6.0 ([commit](https://github.com/microsoft/fluentui/commit/fc7240b48f7441d9fbf62d600c41c25c57ebac3b) by beachball)
 
 ## [0.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.9.2)
 

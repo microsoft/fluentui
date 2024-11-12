@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-carousel
 
-This log was last generated on Mon, 11 Nov 2024 10:01:08 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Nov 2024 09:31:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.3.1)
+
+Tue, 12 Nov 2024 09:31:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.3.0..@fluentui/react-carousel_v9.3.1)
+
+### Patches
+
+- fix: Enable controlled index to be set to a new card when added ([PR #33177](https://github.com/microsoft/fluentui/pull/33177) by mifraser@microsoft.com)
 
 ## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.3.0)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tags",
   "entries": [
     {
+      "date": "Tue, 12 Nov 2024 09:31:26 GMT",
+      "tag": "@fluentui/react-tags_v9.3.22",
+      "version": "9.3.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "18f41fc58e2a5280d9e5291063f6be7cc4d9c0eb",
+            "comment": "fix: explicitly set box-sizing for tag icon"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:00:59 GMT",
       "tag": "@fluentui/react-tags_v9.3.21",
       "version": "9.3.21",
