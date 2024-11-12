@@ -1,4 +1,5 @@
-import { Project, Node, SourceFile, PropertyAssignment, VariableDeclaration } from 'ts-morph';
+/* eslint-disable no-console */
+import { Project, Node, SourceFile, PropertyAssignment, ObjectLiteralExpression } from 'ts-morph';
 import { resolveImportPath } from './fileOperations.js';
 import { TokenMap, TokenReference, StyleAnalysis, TOKEN_REGEX } from './types.js';
 
@@ -142,51 +143,70 @@ async function processPropertyAssignment(
  * Analyzes a single file for token usage
  */
 async function analyzeFile(filePath: string, project: Project, processedFiles: Set<string>): Promise<StyleAnalysis> {
+  console.log(`DEBUG: Starting analysis of ${filePath}`);
   const analysis: StyleAnalysis = {};
   const sourceFile = project.addSourceFileAtPath(filePath);
   const localTokens = findLocalTokenVariables(sourceFile);
 
-  const styleNodes = sourceFile
-    .getDescendants()
-    .filter(
-      (node): node is VariableDeclaration =>
-        Node.isVariableDeclaration(node) && (node.getName() === 'styles' || node.getName() === 'style'),
-    );
+  console.log(`DEBUG: Found ${localTokens.size} local token variables`);
 
-  for (const node of styleNodes) {
-    const initializer = node.getInitializer();
-    if (initializer && Node.isObjectLiteralExpression(initializer)) {
-      const propertyPromises = initializer.getProperties().map(async prop => {
-        if (Node.isPropertyAssignment(prop)) {
-          const styleName = prop.getName();
+  // Find all object literal expressions in the file
+  const objectLiterals = sourceFile
+    .getDescendants()
+    .filter((node): node is ObjectLiteralExpression => Node.isObjectLiteralExpression(node));
+
+  console.log(`DEBUG: Found ${objectLiterals.length} object literals`);
+
+  for (const objLiteral of objectLiterals) {
+    const properties = objLiteral.getProperties();
+    console.log(`DEBUG: Processing object literal with ${properties.length} properties`);
+
+    // Process properties sequentially instead of with Promise.all
+    for (const prop of properties) {
+      if (Node.isPropertyAssignment(prop)) {
+        const styleName = prop.getName();
+        console.log(`DEBUG: Processing property ${styleName}`);
+
+        try {
           const tokens = await processPropertyAssignment(prop, [], localTokens, project, processedFiles);
+          console.log(`DEBUG: Found ${tokens.length} tokens for ${styleName}`);
 
           if (tokens.length > 0) {
-            analysis[styleName] = {
-              tokens: tokens.filter(t => t.path.length === 0),
-              nested: tokens
-                .filter(t => t.path.length > 0)
-                .reduce((acc, token) => {
-                  const path = token.path.join('.');
-                  if (!acc[path]) {
-                    acc[path] = { tokens: [] };
-                  }
-                  acc[path].tokens.push(token);
-                  return acc;
-                }, {} as StyleAnalysis),
-            };
+            const directTokens = tokens.filter(t => t.path.length === 0);
+            const nestedTokens = tokens.filter(t => t.path.length > 0);
 
-            // Clean up empty nested objects
-            if (Object.keys(analysis[styleName].nested || {}).length === 0) {
-              delete analysis[styleName].nested;
+            if (!analysis[styleName]) {
+              analysis[styleName] = {
+                tokens: [],
+              };
+            }
+
+            analysis[styleName].tokens.push(...directTokens);
+
+            if (nestedTokens.length > 0) {
+              if (!analysis[styleName].nested) {
+                analysis[styleName].nested = {};
+              }
+
+              for (const token of nestedTokens) {
+                const path = token.path.join('.');
+                if (!analysis[styleName].nested![path]) {
+                  analysis[styleName].nested![path] = { tokens: [] };
+                }
+                analysis[styleName].nested![path].tokens.push(token);
+              }
             }
           }
+        } catch (err) {
+          console.error(`Error processing property ${styleName}:`, err);
+          // Continue with next property instead of failing entire analysis
         }
-      });
-
-      await Promise.all(propertyPromises);
+      }
     }
   }
+
+  console.log(`DEBUG: Analysis complete for ${filePath}`);
+  console.log(`DEBUG: Found tokens for ${Object.keys(analysis).length} style properties`);
 
   return analysis;
 }

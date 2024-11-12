@@ -9,6 +9,8 @@ import { StyleAnalysis, AnalysisResults } from './types.js';
 
 async function analyzeProjectStyles(rootDir: string, outputFile?: string): Promise<AnalysisResults> {
   console.log(`Starting analysis of ${rootDir}`);
+  const results: AnalysisResults = {};
+
   try {
     const styleFiles = await findStyleFiles(rootDir);
     console.log(`Found ${styleFiles.length} style files to analyze`);
@@ -19,7 +21,6 @@ async function analyzeProjectStyles(rootDir: string, outputFile?: string): Promi
     });
 
     const processedFiles = new Set<string>();
-    const results: AnalysisResults = {};
 
     for (const file of styleFiles) {
       const relativePath = relative(rootDir, file);
@@ -36,13 +37,17 @@ async function analyzeProjectStyles(rootDir: string, outputFile?: string): Promi
     }
 
     if (outputFile) {
-      const formattedResults = Object.entries(results).reduce((acc, [file, analysis]) => {
-        acc[file] = formatAnalysis(analysis);
-        return acc;
-      }, {} as Record<string, object>);
+      try {
+        const formattedResults = Object.entries(results).reduce((acc, [file, analysis]) => {
+          acc[file] = formatAnalysis(analysis);
+          return acc;
+        }, {} as Record<string, object>);
 
-      await fs.writeFile(outputFile, JSON.stringify(formattedResults, null, 2), 'utf8');
-      console.log(`Analysis written to ${outputFile}`);
+        await fs.writeFile(outputFile, JSON.stringify(formattedResults, null, 2), 'utf8');
+        console.log(`Analysis written to ${outputFile}`);
+      } catch (err) {
+        console.error('Error writing output file:', err);
+      }
     }
 
     return results;
