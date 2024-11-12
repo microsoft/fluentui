@@ -1,14 +1,8 @@
 import { motionTokens, createPresenceComponent, AtomMotion } from '@fluentui/react-motion';
 import type { PresenceMotionFnCreator } from '../../types';
 import type { CollapseDelayedVariantParams, CollapseRuntimeParams, CollapseVariantParams } from './collapse-types';
-import {
-  sizeEnterAtom,
-  whitespaceEnterAtom,
-  opacityEnterAtom,
-  opacityExitAtom,
-  sizeExitAtom,
-  whitespaceExitAtom,
-} from './collapse-atoms';
+import { sizeEnterAtom, whitespaceEnterAtom, sizeExitAtom, whitespaceExitAtom } from './collapse-atoms';
+import { opacityAtom } from '../Atoms';
 
 /** Define a presence motion for collapse/expand that can stagger the size and opacity motions by a given delay. */
 export const createCollapseDelayedPresence: PresenceMotionFnCreator<
@@ -47,7 +41,7 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<
     // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
     if (animateOpacity) {
       enterAtoms.push(
-        opacityEnterAtom({
+        opacityAtom({
           duration: enterOpacityDuration,
           easing: enterEasing,
           delay: enterDelay,
@@ -61,9 +55,10 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<
     // Fade out only if animateOpacity is true. Otherwise, leave opacity unaffected.
     if (animateOpacity) {
       exitAtoms.push(
-        opacityExitAtom({
+        opacityAtom({
           duration: exitOpacityDuration,
           easing: exitEasing,
+          direction: 'reverse',
         }),
       );
     }
