@@ -122,8 +122,8 @@ type LineChartDataWithIndex = LineChartPoints & { index: number };
  * Linechart component
  * {@docCategory LineChart}
  */
-export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardRef<HTMLDivElement, LineChartProps>(
-  (props, forwardedRef) => {
+export const LineChart: React.FunctionComponent<LineChartProps> = React.memo(
+  React.forwardRef<HTMLDivElement, LineChartProps>((props, forwardedRef) => {
     let _points: LineChartDataWithIndex[] = _injectIndexPropertyInLineChartData(props.data.lineChartData);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _calloutPoints: any[] = calloutData(_points) || [];
@@ -136,7 +136,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     let _borderId: string = useId('borderID');
     let _verticalLine: string = useId('verticalLine');
     let _colorFillBarPatternId: string = useId('colorFillBarPattern');
-    let _uniqueCallOutID: string | null = '';
     let _refArray: RefArrayData[] = [];
     let margins: Margins;
     let eventLabelHeight: number = 36;
@@ -169,9 +168,16 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+    const [uniqueCallOutID, setUniqueCallOutID] = React.useState<string | null>(null);
 
     const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
     const calloutPointsRef = React.useRef<any[]>([]);
+    const prevUniqueCalloutID = React.useRef('');
+
+    React.useEffect(() => {
+      prevUniqueCalloutID.current = uniqueCallOutID!;
+    }, [uniqueCallOutID]);
+
     React.useEffect(() => {
       /** note that height and width are not used to resize or set as dimesions of the chart,
        * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
@@ -202,17 +208,20 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         : [];
     }
 
-    function updatePosition(newX: number, newY: number) {
-      const threshold = 1; // Set a threshold for movement
-      const { x, y } = clickPosition;
-      // Calculate the distance moved
-      const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
-      // Update the position only if the distance moved is greater than the threshold
-      if (distance > threshold) {
-        setClickPosition({ x: newX, y: newY });
-        setPopoverOpen(true);
-      }
-    }
+    const updatePosition = React.useCallback(
+      (newX: number, newY: number) => {
+        const threshold = 1; // Set a threshold for movement
+        const { x, y } = clickPosition;
+        // Calculate the distance moved
+        const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
+        // Update the position only if the distance moved is greater than the threshold
+        if (distance > threshold) {
+          setClickPosition({ x: newX, y: newY });
+          setPopoverOpen(true);
+        }
+      },
+      [clickPosition],
+    );
 
     function _getCustomizedCallout() {
       return props.onRenderCalloutPerStack
@@ -983,7 +992,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           (nearestCircleToHighlight.x !== pointToHighlight.x || nearestCircleToHighlight.y !== pointToHighlight.y));
       // if no points need to be called out then don't show vertical line and callout card
       if (found && pointToHighlightUpdated) {
-        _uniqueCallOutID = `#${_staticHighlightCircle}_${linenumber}`;
+        setUniqueCallOutID(`#${_staticHighlightCircle}_${linenumber}`);
 
         d3Select(`#${_staticHighlightCircle}_${linenumber}`)
           .attr('cx', `${_xAxisScale(pointToHighlight.x)}`)
@@ -1019,7 +1028,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       circleId: string,
       xAxisCalloutAccessibilityData?: AccessibilityProps,
     ) {
-      _uniqueCallOutID = circleId;
+      setUniqueCallOutID(circleId);
       const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
       const xVal = x instanceof Date ? x.getTime() : x;
       const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
@@ -1065,8 +1074,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           .attr('visibility', 'visibility')
           .attr('y2', `${lineHeight - _yAxisScale(y)}`);
 
-        if (_uniqueCallOutID !== circleId) {
-          _uniqueCallOutID = circleId;
+        if (prevUniqueCalloutID.current !== circleId) {
+          setUniqueCallOutID(circleId);
           updatePosition(mouseEvent.clientX, mouseEvent.clientY);
           xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
           setYValueHover(found.values);
@@ -1100,7 +1109,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     }
 
     function _handleChartMouseLeave() {
-      _uniqueCallOutID = null;
+      setUniqueCallOutID(null);
       setActivePoint('');
       if (isPopoverOpen) {
         setPopoverOpen(false);
@@ -1253,30 +1262,47 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     if (!props.hideLegend) {
       legendBars = _createLegends(_points!); // ToDo: Memoize legends to improve performance.
     }
-    const calloutProps = {
-      YValueHover: YValueHover,
-      hoverXValue: hoverXValue,
-      descriptionMessage:
-        props.getCalloutDescriptionMessage && stackCalloutProps
-          ? props.getCalloutDescriptionMessage(stackCalloutProps)
-          : undefined,
-      'data-is-focusable': true,
-      xAxisCalloutAccessibilityData: xAxisCalloutAccessibilityData,
-      ...props.calloutProps,
-      clickPosition: clickPosition,
-      isPopoverOpen: isPopoverOpen,
-      isCalloutForStack: true,
-      culture: props.culture ?? 'en-us',
-      isCartesian: true,
-      customCallout: {
-        customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,
-        customCalloutProps: props.customProps ? props.customProps(dataPointCalloutProps!) : undefined,
-      },
-    };
-    const tickParams = {
-      tickValues,
-      tickFormat,
-    };
+    const calloutProps = React.useMemo(
+      () => ({
+        YValueHover: YValueHover,
+        hoverXValue: hoverXValue,
+        descriptionMessage:
+          props.getCalloutDescriptionMessage && stackCalloutProps
+            ? props.getCalloutDescriptionMessage(stackCalloutProps)
+            : undefined,
+        'data-is-focusable': true,
+        xAxisCalloutAccessibilityData: xAxisCalloutAccessibilityData,
+        ...props.calloutProps,
+        clickPosition: clickPosition,
+        isPopoverOpen: isPopoverOpen,
+        isCalloutForStack: true,
+        culture: props.culture ?? 'en-us',
+        isCartesian: true,
+        customCallout: {
+          customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,
+          customCalloutProps: props.customProps ? props.customProps(dataPointCalloutProps!) : undefined,
+        },
+      }),
+      [
+        YValueHover,
+        hoverXValue,
+        stackCalloutProps,
+        xAxisCalloutAccessibilityData,
+        props.calloutProps,
+        clickPosition,
+        isPopoverOpen,
+        props.culture,
+        dataPointCalloutProps,
+      ],
+    );
+
+    const tickParams = React.useMemo(
+      () => ({
+        tickValues,
+        tickFormat,
+      }),
+      [tickValues, tickFormat],
+    );
 
     return !_isChartEmpty() ? (
       <CartesianChart
@@ -1335,6 +1361,33 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     ) : (
       <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
     );
-  },
+  }),
+  areEqual,
 );
 LineChart.displayName = 'LineChart';
+
+/**
+ * Compare only the props that should trigger a re-render
+ */
+function areEqual(prevProps: LineChartProps, nextProps: LineChartProps) {
+  return (
+    prevProps.data === nextProps.data &&
+    prevProps.height === nextProps.height &&
+    prevProps.width === nextProps.width &&
+    prevProps.hideLegend === nextProps.hideLegend &&
+    prevProps.enablePerfOptimization === nextProps.enablePerfOptimization &&
+    prevProps.legendProps === nextProps.legendProps &&
+    prevProps.tickValues === nextProps.tickValues &&
+    prevProps.tickFormat === nextProps.tickFormat &&
+    prevProps.eventAnnotationProps === nextProps.eventAnnotationProps &&
+    prevProps.colorFillBars === nextProps.colorFillBars &&
+    prevProps.getCalloutDescriptionMessage === nextProps.getCalloutDescriptionMessage &&
+    prevProps.calloutProps === nextProps.calloutProps &&
+    prevProps.customProps === nextProps.customProps &&
+    prevProps.useUTC === nextProps.useUTC &&
+    prevProps.wrapXAxisLables === nextProps.wrapXAxisLables &&
+    prevProps.showXAxisLablesTooltip === nextProps.showXAxisLablesTooltip &&
+    prevProps.enabledLegendsWrapLines === nextProps.enabledLegendsWrapLines &&
+    prevProps.legendsOverflowText === nextProps.legendsOverflowText
+  );
+}
