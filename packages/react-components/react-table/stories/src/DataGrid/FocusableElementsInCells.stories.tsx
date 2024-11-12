@@ -23,7 +23,6 @@ import {
   Button,
   TableColumnId,
   DataGridCellFocusMode,
-  ButtonProps,
 } from '@fluentui/react-components';
 
 type FileCell = {
