@@ -16,12 +16,9 @@ export const alphaSliderClassNames: SlotClassNames<AlphaSliderSlots> = {
 export const alphaSliderCSSVars = {
   sliderDirectionVar: `--fui-AlphaSlider--direction`,
   sliderProgressVar: `--fui-AlphaSlider--progress`,
-  sliderStepsPercentVar: `--fui-AlphaSlider--steps-percent`,
   thumbColorVar: `--fui-AlphaSlider__thumb--color`,
   railColorVar: `--fui-AlphaSlider__rail--color`,
 };
-
-const { sliderDirectionVar, railColorVar, sliderProgressVar, thumbColorVar } = alphaSliderCSSVars;
 
 /**
  * Styles for the root slot
@@ -29,7 +26,7 @@ const { sliderDirectionVar, railColorVar, sliderProgressVar, thumbColorVar } = a
 const useStyles = makeStyles({
   rail: {
     border: `1px solid ${tokens.colorNeutralStroke1}`,
-    backgroundImage: `linear-gradient(var(${sliderDirectionVar}), transparent, var(${railColorVar})), url(${TRANSPARENT_IMAGE_URL})`,
+    backgroundImage: `linear-gradient(var(${alphaSliderCSSVars.sliderDirectionVar}), transparent, var(${alphaSliderCSSVars.railColorVar})), url(${TRANSPARENT_IMAGE_URL})`,
   },
 });
 
@@ -38,15 +35,15 @@ const useStyles = makeStyles({
  */
 const useThumbStyles = makeStyles({
   thumb: {
-    backgroundColor: `var(${thumbColorVar})`,
+    backgroundColor: `var(${alphaSliderCSSVars.thumbColorVar})`,
   },
   horizontal: {
     transform: 'translateX(-50%)',
-    left: `var(${sliderProgressVar})`,
+    left: `var(${alphaSliderCSSVars.sliderProgressVar})`,
   },
   vertical: {
     transform: 'translateY(50%)',
-    bottom: `var(${sliderProgressVar})`,
+    bottom: `var(${alphaSliderCSSVars.sliderProgressVar})`,
   },
 });
 

@@ -13,7 +13,6 @@ export const colorSliderClassNames: SlotClassNames<ColorSliderSlots> = {
 export const colorSliderCSSVars = {
   sliderDirectionVar: `--fui-Slider--direction`,
   sliderProgressVar: `--fui-Slider--progress`,
-  sliderStepsPercentVar: `--fui-Slider--steps-percent`,
   thumbColorVar: `--fui-Slider__thumb--color`,
 };
 
@@ -21,10 +20,8 @@ export const colorSliderCSSVars = {
 const thumbSizeVar = `--fui-Slider__thumb--size`;
 const railSizeVar = `--fui-Slider__rail--size`;
 
-const { sliderDirectionVar, sliderProgressVar, thumbColorVar } = colorSliderCSSVars;
-
 const hueBackground = `linear-gradient(${[
-  `var(${sliderDirectionVar})`,
+  `var(${colorSliderCSSVars.sliderDirectionVar})`,
   'red 0',
   '#f09 10%',
   '#cd00ff 20%',
@@ -131,7 +128,7 @@ const useThumbStyles = makeStyles({
     forcedColorAdjust: 'none',
     borderRadius: tokens.borderRadiusCircular,
     boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
-    backgroundColor: `var(${thumbColorVar})`,
+    backgroundColor: `var(${colorSliderCSSVars.thumbColorVar})`,
     '::before': {
       position: 'absolute',
       top: '0px',
@@ -146,11 +143,11 @@ const useThumbStyles = makeStyles({
   },
   horizontal: {
     transform: 'translateX(-50%)',
-    left: `var(${sliderProgressVar})`,
+    left: `var(${colorSliderCSSVars.sliderProgressVar})`,
   },
   vertical: {
     transform: 'translateY(50%)',
-    bottom: `var(${sliderProgressVar})`,
+    bottom: `var(${colorSliderCSSVars.sliderProgressVar})`,
   },
 });
 

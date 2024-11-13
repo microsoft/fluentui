@@ -4,16 +4,9 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { colorSliderCSSVars } from './useColorSliderStyles.styles';
 import type { ColorSliderState, ColorSliderProps } from './ColorSlider.types';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
+import { MIN, HUE_MAX as MAX } from '../../utils/constants';
+import { getPercent } from '../../utils/getPercent';
 import { tinycolor } from '@ctrl/tinycolor';
-
-const { sliderProgressVar, sliderDirectionVar, thumbColorVar } = colorSliderCSSVars;
-
-const MAX = 360;
-const MIN = 0;
-
-const getPercent = (value: number, min: number, max: number) => {
-  return max === min ? 0 : ((value - min) / (max - min)) * 100;
-};
 
 export const useColorSliderState_unstable = (state: ColorSliderState, props: ColorSliderProps) => {
   'use no memo';
@@ -46,9 +39,9 @@ export const useColorSliderState_unstable = (state: ColorSliderState, props: Col
   });
 
   const rootVariables = {
-    [sliderDirectionVar]: state.vertical ? '180deg' : dir === 'ltr' ? '-90deg' : '90deg',
-    [sliderProgressVar]: `${valuePercent}%`,
-    [thumbColorVar]: `hsl(${clampedValue}, 100%, 50%)`,
+    [colorSliderCSSVars.sliderDirectionVar]: state.vertical ? '180deg' : dir === 'ltr' ? '-90deg' : '90deg',
+    [colorSliderCSSVars.sliderProgressVar]: `${valuePercent}%`,
+    [colorSliderCSSVars.thumbColorVar]: `hsl(${clampedValue}, 100%, 50%)`,
   };
 
   // Root props
