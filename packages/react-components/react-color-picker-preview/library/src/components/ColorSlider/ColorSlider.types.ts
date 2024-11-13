@@ -1,8 +1,9 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
+import type { HsvColor } from '../ColorPicker/ColorPicker.types';
 
 export type SliderOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
-  color: string;
+  color: HsvColor;
 };
 
 export type ColorSliderSlots = {
@@ -35,7 +36,7 @@ export type ColorSliderProps = Omit<
   /**
    * Color of the COlorPicker
    */
-  color?: string;
+  color?: HsvColor;
 };
 
 /**

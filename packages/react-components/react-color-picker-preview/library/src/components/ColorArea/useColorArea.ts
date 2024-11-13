@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { useId, slot, useMergedRefs, mergeCallbacks, getIntrinsicElementProps } from '@fluentui/react-utilities';
-import type { ColorAreaProps, ColorAreaState, HsvColor } from './ColorArea.types';
+import type { ColorAreaProps, ColorAreaState } from './ColorArea.types';
+import type { HsvColor } from '../ColorPicker/ColorPicker.types';
 import { colorAreaCSSVars } from './useColorAreaStyles.styles';
 import { useEventCallback, useControllableState } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { INITIAL_COLOR_HSV } from '../../utils/constants';
 import { getCoordinates } from '../../utils/getCoordinates';
+import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
 
 /**
  * Create the state required to render ColorArea.
@@ -23,10 +25,11 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   const xRef = React.useRef<HTMLInputElement>(null);
   const yRef = React.useRef<HTMLInputElement>(null);
   const focusWithinRef = useFocusWithin();
+  const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
+  const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
 
   const {
-    onChange,
-
+    onChange = onChangeFromContext,
     // Slots
     inputX,
     inputY,
@@ -37,7 +40,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
   const [hsvColor, setColor] = useControllableState<HsvColor>({
     defaultState: props.defaultColor,
-    state: color,
+    state: colorFromContext || color,
     initialState: INITIAL_COLOR_HSV,
   });
   const saturation = Math.round(hsvColor.s * 100);

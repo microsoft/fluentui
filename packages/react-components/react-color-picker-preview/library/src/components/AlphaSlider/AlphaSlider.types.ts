@@ -1,5 +1,6 @@
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type { ColorSliderSlots, ColorSliderProps, ColorSliderState } from '../ColorSlider/ColorSlider.types';
+import type { HsvColor } from '../ColorPicker/ColorPicker.types';
 
 export type AlphaSliderSlots = ColorSliderSlots;
 
@@ -14,7 +15,7 @@ export type AlphaSliderProps = Omit<
     /**
      * The color to overlay on the alpha slider.
      */
-    overlayColor?: string;
+    overlayColor?: HsvColor;
   };
 
 /**

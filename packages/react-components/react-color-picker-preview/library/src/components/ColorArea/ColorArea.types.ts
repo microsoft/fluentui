@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { ComponentState, Slot, EventHandler, EventData, ComponentProps } from '@fluentui/react-utilities';
+import type { HsvColor } from '../ColorPicker/ColorPicker.types';
 
 export type ColorAreaOnColorChangeData = EventData<'change', React.SyntheticEvent | MouseEvent> & {
   color: HsvColor;
@@ -10,13 +11,6 @@ export type ColorAreaSlots = {
   thumb?: NonNullable<Slot<'div'>>;
   inputX?: NonNullable<Slot<'input'>>;
   inputY?: NonNullable<Slot<'input'>>;
-};
-
-export type HsvColor = {
-  h: number;
-  s: number;
-  v: number;
-  a?: number;
 };
 
 /**

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { tinycolor } from '@ctrl/tinycolor';
 import {
   getPartitionedNativeProps,
   useId,
@@ -50,8 +49,7 @@ export const useColorSlider_unstable = (
     thumb,
   } = props;
 
-  const _color = colorFromContext || color;
-  const hsvColor = tinycolor(_color).toHsv();
+  const hsvColor = colorFromContext || color;
 
   const [currentValue, setCurrentValue] = useControllableState({
     state: hsvColor.h,
@@ -64,8 +62,8 @@ export const useColorSlider_unstable = (
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
     const newValue = Number(event.target.value);
-    const newColor = tinycolor({ ...hsvColor, h: newValue }).toRgbString();
-    setCurrentValue(clamp(newValue, MIN, MAX));
+    const newColor = { ...hsvColor, h: newValue };
+    setCurrentValue(newValue);
     inputOnChange?.(event);
     onChange?.(event, { type: 'change', event, color: newColor });
     onChangeFromContext(event, {
