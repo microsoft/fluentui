@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Button with as=a should present as a semantic link",
-  "packageName": "@fluentui/react-button",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,35 @@
   "name": "@fluentui/babel-preset-global-context",
   "entries": [
     {
+      "date": "Mon, 11 Nov 2024 10:01:02 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.76",
+      "version": "9.0.0-beta.76",
+      "comments": {
+        "none": [
+          {
+            "author": "viktorgenaev@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "d6af8e30ddd353c900441eea489b4a5aea0db088",
+            "comment": "added explicit typeRoot to tsconfig.json"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "2558ddce7329d2a1c1f76fa1e5f614918fe6dcd9",
+            "comment": "chore: replace npm-scripts and just-scrtips with nx inferred tasks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.76",
+            "commit": "027ab04e8d35e90f7d3cecf78c12d86b600e9716"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Oct 2024 17:17:53 GMT",
       "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.75",
       "version": "9.0.0-beta.75",
