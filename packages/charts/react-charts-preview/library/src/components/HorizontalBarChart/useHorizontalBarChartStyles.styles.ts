@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-components
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HorizontalBarChartProps, HorizontalBarChartStyles, HorizontalBarChartVariant } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { HighContrastSelector } from '../../utilities/index';
 
 /**
  * @internal
@@ -88,6 +89,10 @@ const useStyles = makeStyles({
   barLabel: {
     ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
+    [HighContrastSelector]: {
+      fill: 'WindowText', // Ensure visibility in high contrast mode
+      forcedColorAdjust: 'none',
+    },
   },
   chartWrapper40ppadding: {
     paddingRight: '40p',

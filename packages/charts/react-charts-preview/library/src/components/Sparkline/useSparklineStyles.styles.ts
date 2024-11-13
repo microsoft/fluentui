@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import { SparklineProps, SparklineStyles } from './Sparkline.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { HighContrastSelector } from '../../utilities/index';
 
 /**
  * @internal
@@ -21,6 +22,11 @@ const useStyles = makeStyles({
   valueText: {
     ...typographyStyles.caption1,
     fill: tokens.colorNeutralForeground1,
+    [HighContrastSelector]: {
+      opacity: 0.1,
+      stroke: 'rgb(179, 179, 179)',
+      forcedColorAdjust: 'none',
+    },
   },
 });
 

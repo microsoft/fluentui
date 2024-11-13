@@ -34,6 +34,16 @@ const useStyles = makeStyles({
     ...shorthands.border('none'),
     ...shorthands.padding(tokens.spacingHorizontalS),
     textTransform: 'capitalize',
+    [HighContrastSelector]: {
+      color: 'WindowText',
+      forcedColorAdjust: 'none',
+    },
+    '&:hover': {
+      [HighContrastSelector]: {
+        color: 'HighlightText',
+        forcedColorAdjust: 'none',
+      },
+    },
   },
   rect: {
     [HighContrastSelector]: {
@@ -60,6 +70,10 @@ const useStyles = makeStyles({
   text: {
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground1,
+    [HighContrastSelector]: {
+      color: 'WindowText',
+      forcedColorAdjust: 'none',
+    },
   },
   // TO DO Add props when these styles are used in the component
   hoverChange: {

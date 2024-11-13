@@ -58,21 +58,19 @@ const useStyles = makeStyles({
     '& text': {
       fill: tokens.colorNeutralForeground1,
       ...typographyStyles.caption2Strong,
-      '& selectors': {
-        [HighContrastSelectorBlack]: {
-          fill: 'rgb(179, 179, 179)',
-        },
+      [HighContrastSelectorBlack]: {
+        fill: 'rgb(179, 179, 179)',
+        forcedColorAdjust: 'none',
       },
     },
     '& line': {
       opacity: 0.2,
       stroke: tokens.colorNeutralForeground1,
       width: '1px',
-      '& selectors': {
-        [HighContrastSelectorBlack]: {
-          opacity: 0.1,
-          stroke: 'rgb(179, 179, 179)',
-        },
+      [HighContrastSelectorBlack]: {
+        opacity: 0.1,
+        stroke: 'rgb(179, 179, 179)',
+        forcedColorAdjust: 'none',
       },
     },
     '& path': {
@@ -83,20 +81,18 @@ const useStyles = makeStyles({
     '& text': {
       ...typographyStyles.caption2Strong,
       fill: tokens.colorNeutralForeground1,
-      '& selectors': {
-        [HighContrastSelectorBlack]: {
-          fill: 'rgb(179, 179, 179)',
-        },
+      [HighContrastSelectorBlack]: {
+        fill: 'rgb(179, 179, 179)',
+        forcedColorAdjust: 'none',
       },
     },
     '& line': {
       opacity: 0.2,
       stroke: tokens.colorNeutralForeground1,
-      '& selectors': {
-        [HighContrastSelectorBlack]: {
-          opacity: 0.1,
-          stroke: 'rgb(179, 179, 179)',
-        },
+      [HighContrastSelectorBlack]: {
+        opacity: 0.1,
+        stroke: 'rgb(179, 179, 179)',
+        forcedColorAdjust: 'none',
       },
     },
     '& path': {
@@ -140,10 +136,8 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
   },
   calloutBlockContainertoDrawShapefalse: {
-    '& selectors': {
-      [HighContrastSelector]: {
-        forcedColorAdjust: 'none',
-      },
+    [HighContrastSelector]: {
+      forcedColorAdjust: 'none',
     },
     ...shorthands.borderLeft('4px solid'),
     paddingLeft: tokens.spacingHorizontalS,
@@ -157,18 +151,16 @@ const useStyles = makeStyles({
   calloutLegendText: {
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
-    '& selectors': {
-      [HighContrastSelectorBlack]: {
-        color: 'rgb(255, 255, 255)',
-      },
+    [HighContrastSelectorBlack]: {
+      color: 'rgb(255, 255, 255)',
+      forcedColorAdjust: 'none',
     },
   },
   calloutContentY: {
     ...typographyStyles.subtitle2Stronger,
-    '& selectors': {
-      [HighContrastSelectorBlack]: {
-        color: 'rgb(255, 255, 255)',
-      },
+    [HighContrastSelectorBlack]: {
+      color: 'rgb(255, 255, 255)',
+      forcedColorAdjust: 'none',
     },
   },
   descriptionMessage: {
