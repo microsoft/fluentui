@@ -14,7 +14,5 @@ export function writeArrowUpdates(options: { arrow: HTMLElement | null; middlewa
   Object.assign(arrow.style, {
     left: arrowX !== null && arrowX !== undefined ? `${arrowX}px` : '',
     top: arrowY !== null && arrowY !== undefined ? `${arrowY}px` : '',
-    right: '',
-    bottom: '',
   });
 }
