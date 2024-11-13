@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { Tooltip, TooltipProps } from '@fluentui/react-tooltip';
+import { Tooltip } from '@fluentui/react-tooltip';
 import type { PositioningProps } from '@fluentui/react-positioning';
 import { useStyles } from './utils';
 import { getStoryVariant, withStoryWrightSteps, TestWrapperDecorator, RTL, HIGH_CONTRAST } from '../../utilities';
