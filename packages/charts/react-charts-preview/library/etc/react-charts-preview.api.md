@@ -733,6 +733,8 @@ export interface PopoverComponentStyles {
     // (undocumented)
     calloutBlockContainertoDrawShapetrue: string;
     // (undocumented)
+    calloutContainer: string;
+    // (undocumented)
     calloutContentRoot: string;
     // (undocumented)
     calloutContentX: string;
