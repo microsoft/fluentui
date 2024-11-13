@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 12 Nov 2024 07:21:46 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Nov 2024 07:08:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.121.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.10)
+
+Wed, 13 Nov 2024 07:08:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.121.9..@fluentui/react_v8.121.10)
+
+### Patches
+
+- fix: Left-aligning SuggestionItem's contents so they do not move and shift on hover. ([PR #33263](https://github.com/microsoft/fluentui/pull/33263) by Humberto.Morimoto@microsoft.com)
 
 ## [8.121.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.9)
 
