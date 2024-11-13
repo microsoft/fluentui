@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 15 Oct 2024 17:17:51 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Nov 2024 10:00:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.23.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.23.0)
+
+Mon, 11 Nov 2024 10:00:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.22.9..@fluentui/react-tabster_v9.23.0)
+
+### Minor changes
+
+- feat: expose keyboard navigation state getter ([PR #31887](https://github.com/microsoft/fluentui/pull/31887) by jukapsia@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.21.0 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-theme to v9.1.22 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-utilities to v9.18.17 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+
+### Patches
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
 
 ## [9.22.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.22.9)
 

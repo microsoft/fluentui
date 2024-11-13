@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/github-script@v6
+      - uses: actions/github-script@v7
         with:
           script: |
             const config = require('./.github/triage-bot.config.json');

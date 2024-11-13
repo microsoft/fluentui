@@ -2,6 +2,36 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 13 Nov 2024 07:08:32 GMT",
+      "tag": "@fluentui/react_v8.121.10",
+      "version": "8.121.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a8ed90c7c3cd0005ff40e6cde8b06f7f54124870",
+            "comment": "fix: Left-aligning SuggestionItem's contents so they do not move and shift on hover."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Nov 2024 07:21:46 GMT",
+      "tag": "@fluentui/react_v8.121.9",
+      "version": "8.121.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "2878503f1381bfa2aaf6900fba4170d9db1b74a6",
+            "comment": "fix(v8 DatePicker): Add aria-required to required DatePickers"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 Nov 2024 07:23:21 GMT",
       "tag": "@fluentui/react_v8.121.8",
       "version": "8.121.8",

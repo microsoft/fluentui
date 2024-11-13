@@ -14,6 +14,7 @@ export {
   useRestoreFocusTarget,
   useUncontrolledFocus,
   useOnKeyboardNavigationChange,
+  useIsNavigatingWithKeyboard,
   useSetKeyboardNavigation,
   useFocusedElementChange,
 } from './hooks/index';

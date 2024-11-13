@@ -16,9 +16,12 @@ import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
  * @param ref - reference to root HTMLDivElement of NavDrawer
  */
 export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTMLDivElement>): NavDrawerState => {
+  const { tabbable = false } = props;
+
   const focusAttributes = useArrowNavigationGroup({
     axis: 'vertical',
     circular: true,
+    tabbable,
   });
 
   const navState = useNav_unstable(

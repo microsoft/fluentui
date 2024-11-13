@@ -23,7 +23,7 @@ const mount = (element: JSX.Element) => {
  * ])
  */
 const testSequence = (sequence: Array<string>) => {
-  cy.get('li:first-of-type').focus();
+  cy.get('[data-test^=list-item-]').first().focus();
   for (const command of sequence) {
     if (command.startsWith('focused:')) {
       const tid = command.split(':')[1];
@@ -342,8 +342,8 @@ describe('List', () => {
     describe('without focusable children', () => {
       it('default list is list/listitem', () => {
         mountSimpleList();
-        cy.get('ul').should('have.attr', 'role', 'list');
-        cy.get('li').should('have.attr', 'role', 'listitem');
+        cy.get('.fui-List').should('have.attr', 'role', 'list');
+        cy.get('[data-test=list-item-1]').should('have.attr', 'role', 'listitem');
       });
 
       it("single select list is listbox/option and doesn't have multiselectable aria prop", () => {
@@ -354,8 +354,8 @@ describe('List', () => {
             <ListItem data-test="list-item-3">List Item 3</ListItem>
           </List>,
         );
-        cy.get('ul').should('have.attr', 'role', 'listbox');
-        cy.get('li').should('have.attr', 'role', 'option');
+        cy.get('.fui-List').should('have.attr', 'role', 'listbox');
+        cy.get('[data-test=list-item-1]').should('have.attr', 'role', 'option');
       });
 
       it('multiple select list is listbox/option and has multiselectable aria prop', () => {
@@ -366,9 +366,9 @@ describe('List', () => {
             <ListItem data-test="list-item-3">List Item 3</ListItem>
           </List>,
         );
-        cy.get('ul').should('have.attr', 'aria-multiselectable', 'true');
-        cy.get('ul').should('have.attr', 'role', 'listbox');
-        cy.get('li').should('have.attr', 'role', 'option');
+        cy.get('.fui-List').should('have.attr', 'aria-multiselectable', 'true');
+        cy.get('.fui-List').should('have.attr', 'role', 'listbox');
+        cy.get('[data-test=list-item-1]').should('have.attr', 'role', 'option');
       });
 
       it('custom roles work', () => {
@@ -405,8 +405,8 @@ describe('List', () => {
             </ListItem>
           </List>,
         );
-        cy.get('ul').should('have.attr', 'role', 'grid');
-        cy.get('li').should('have.attr', 'role', 'row');
+        cy.get('.fui-List').should('have.attr', 'role', 'grid');
+        cy.get('[data-test=list-item-1]').should('have.attr', 'role', 'row');
       });
 
       it("single select list is grid/row and doesn't have multiselectable aria prop", () => {
@@ -423,8 +423,8 @@ describe('List', () => {
             </ListItem>
           </List>,
         );
-        cy.get('ul').should('have.attr', 'role', 'grid');
-        cy.get('li').should('have.attr', 'role', 'row');
+        cy.get('.fui-List').should('have.attr', 'role', 'grid');
+        cy.get('[data-test=list-item-1]').should('have.attr', 'role', 'row');
       });
 
       it('multiple select list is grid/row and has multiselectable aria prop', () => {
@@ -441,9 +441,9 @@ describe('List', () => {
             </ListItem>
           </List>,
         );
-        cy.get('ul').should('have.attr', 'aria-multiselectable', 'true');
-        cy.get('ul').should('have.attr', 'role', 'grid');
-        cy.get('li').should('have.attr', 'role', 'row');
+        cy.get('.fui-List').should('have.attr', 'aria-multiselectable', 'true');
+        cy.get('.fui-List').should('have.attr', 'role', 'grid');
+        cy.get('[data-test=list-item-1]').should('have.attr', 'role', 'row');
       });
     });
   });

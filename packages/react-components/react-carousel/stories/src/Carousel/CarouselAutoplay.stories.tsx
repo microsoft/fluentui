@@ -1,4 +1,13 @@
-import { Button, Field, Image, makeStyles, Switch, tokens, typographyStyles } from '@fluentui/react-components';
+import {
+  Button,
+  CarouselSlider,
+  Field,
+  Image,
+  makeStyles,
+  Switch,
+  tokens,
+  typographyStyles,
+} from '@fluentui/react-components';
 import {
   Carousel,
   CarouselAnnouncerFunction,
@@ -7,7 +16,7 @@ import {
   CarouselNav,
   CarouselNavButton,
   CarouselNavContainer,
-  CarouselSlider,
+  CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
@@ -147,13 +156,15 @@ export const Autoplay = () => {
       </div>
       <div className={classes.card}>
         <Carousel groupSize={1} circular announcement={getAnnouncement}>
-          <CarouselSlider>
-            {IMAGES.map((imageSrc, index) => (
-              <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>
-                Card {index + 1}
-              </BannerCard>
-            ))}
-          </CarouselSlider>
+          <CarouselViewport>
+            <CarouselSlider>
+              {IMAGES.map((imageSrc, index) => (
+                <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>
+                  Card {index + 1}
+                </BannerCard>
+              ))}
+            </CarouselSlider>
+          </CarouselViewport>
           <CarouselNavContainer
             layout="inline"
             autoplay={autoplayProps}

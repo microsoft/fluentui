@@ -4,7 +4,7 @@ import CollapseDescription from './CollapseDescription.md';
 export { Default } from './CollapseDefault.stories';
 export { Horizontal } from './CollapseHorizontal.stories';
 export { Snappy } from './CollapseSnappy.stories';
-export { Exaggerated } from './CollapseExaggerated.stories';
+export { Relaxed } from './CollapseRelaxed.stories';
 export { Customization } from './CollapseCustomization.stories';
 export { Delayed } from './CollapseDelayed.stories';
 
