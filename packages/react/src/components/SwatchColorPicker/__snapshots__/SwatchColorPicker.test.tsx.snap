@@ -76,6 +76,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
                   justify-content: center;
                   outline: transparent;
@@ -284,6 +285,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
                   justify-content: center;
                   outline: transparent;
@@ -492,6 +494,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
                   justify-content: center;
                   outline: transparent;
@@ -700,6 +703,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
                   justify-content: center;
                   outline: transparent;
@@ -912,6 +916,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
                   justify-content: center;
                   outline: transparent;
@@ -1120,6 +1125,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
                   justify-content: center;
                   outline: transparent;
@@ -1328,6 +1334,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
                   justify-content: center;
                   outline: transparent;
@@ -1536,6 +1543,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
                   justify-content: center;
                   outline: transparent;
@@ -1748,6 +1756,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
                   justify-content: center;
                   outline: transparent;
@@ -1956,6 +1965,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
                   justify-content: center;
                   outline: transparent;
@@ -2164,6 +2174,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
                   justify-content: center;
                   outline: transparent;
@@ -2373,6 +2384,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
                   justify-content: center;
                   outline: transparent;
