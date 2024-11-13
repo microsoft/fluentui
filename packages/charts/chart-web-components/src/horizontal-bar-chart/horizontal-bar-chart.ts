@@ -329,7 +329,7 @@ export class HorizontalBarChart extends FASTElement {
       .append('svg')
       .attr('height', 12)
       .attr('width', 100 + '%')
-      .attr('class', 'svgChart')
+      .attr('class', 'svg-chart')
       .attr('aria-label', data?.chartTitle ? data?.chartTitle : '')
       .selectAll('g')
       .data(data.chartData!)
@@ -369,7 +369,7 @@ export class HorizontalBarChart extends FASTElement {
             .append('text')
             .attr('key', 'text')
             .attr('style', 'margin-top: -4.5px; margin-left: 2px;')
-            .attr('class', 'barLabel')
+            .attr('class', 'bar-label')
             .attr(
               'x',
               `${
@@ -389,7 +389,7 @@ export class HorizontalBarChart extends FASTElement {
           svgEle
             .append('text')
             .attr('key', 'text')
-            .attr('class', 'barLabel')
+            .attr('class', 'bar-label')
             .attr(
               'x',
               `${

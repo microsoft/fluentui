@@ -1,8 +1,7 @@
 import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
-import { teamsDarkTheme } from '@fluentui/tokens';
-import { colorNeutralBackground1 } from '../theme/design-tokens.js';
 import { ChartDataPoint, ChartProps } from './donut-chart.options.js';
+import { teamsDarkTheme } from '@fluentui/tokens';
 
 const points: ChartDataPoint[] = [
   {
@@ -169,7 +168,7 @@ test.describe('Donut-chart - Theme', () => {
     await page.setContent(/* html */ `
       <style>
         body {
-          background-color: ${colorNeutralBackground1};
+          background-color: #292929;
        }
       </style>
       <div>
