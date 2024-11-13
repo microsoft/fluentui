@@ -61,7 +61,6 @@
       "@fluentui/theme": ["packages/theme/src/index.ts"],
       "@fluentui/react-cards": ["packages/react-cards/src/index.ts"],
       "@fluentui/react-charting": ["packages/charts/react-charting/src/index.ts"],
-      "@fluentui/chart-web-components": ["packages/charts/chart-web-components/src/index.ts"],
       "@fluentui/react-window-provider": ["packages/react-window-provider/src/index.ts"],
       "@fluentui/react-icons-mdl2": ["packages/react-icons-mdl2/src/index.ts"],
       "@fluentui/react-icons-mdl2-branded": ["packages/react-icons-mdl2-branded/src/index.ts"],
@@ -105,6 +104,8 @@
       ],
       "@fluentui/react-card": ["packages/react-components/react-card/library/src/index.ts"],
       "@fluentui/react-card-stories": ["packages/react-components/react-card/stories/src/index.ts"],
+      "@fluentui/react-carousel": ["packages/react-components/react-carousel/library/src/index.ts"],
+      "@fluentui/react-carousel-stories": ["packages/react-components/react-carousel/stories/src/index.ts"],
       "@fluentui/react-checkbox": ["packages/react-components/react-checkbox/library/src/index.ts"],
       "@fluentui/react-checkbox-stories": ["packages/react-components/react-checkbox/stories/src/index.ts"],
       "@fluentui/react-color-picker-preview": [
@@ -259,9 +260,7 @@
       "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-carousel-stories": ["packages/react-components/react-carousel/stories/src/index.ts"],
-      "@fluentui/react-carousel": ["packages/react-components/react-carousel/library/src/index.ts"]
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
     }
   }
 }
