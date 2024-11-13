@@ -16,7 +16,7 @@ getGroupper(tabsterCore);
  */
 export class HorizontalBarChart extends FASTElement {
   @attr
-  public variant: Variant = Variant.AbsoluteScale;
+  public variant?: Variant;
 
   @attr({ converter: jsonConverter })
   public data!: ChartProps[];
@@ -29,6 +29,9 @@ export class HorizontalBarChart extends FASTElement {
 
   @attr({ attribute: 'hide-tooltip', mode: 'boolean' })
   public hideTooltip: boolean = false;
+
+  @attr({ attribute: 'legend-list-label' })
+  public legendListLabel?: string;
 
   @observable
   public uniqueLegends: ChartDataPoint[] = [];
@@ -303,9 +306,9 @@ export class HorizontalBarChart extends FASTElement {
       .attr('class', 'chart-title')
       .text(data?.chartTitle ? data?.chartTitle : '');
 
-    const showChartDataText = this.variant !== Variant.AbsoluteScale && !this.hideRatio;
-    const showRatio =
-      (this.variant === Variant.PartToWhole && data!.chartData!.length === 2) || this.variant === Variant.SingleBar;
+    const showChartDataText = this.variant !== Variant.AbsoluteScale;
+    // chartData length is always 2 in single-bar variant
+    const showRatio = !this.hideRatio && data!.chartData!.length === 2;
     const getChartData = () => (data!.chartData![0].data ? data!.chartData![0].data : 0);
 
     if (showChartDataText) {

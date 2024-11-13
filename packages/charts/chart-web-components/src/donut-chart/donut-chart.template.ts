@@ -18,7 +18,7 @@ export function donutChartTemplate<T extends DonutChart>(): ElementViewTemplate<
       ${when(
         x => !x.hideLegends,
         html<T>`
-          <div class="legend-container" role="listbox" aria-label="Legends">
+          <div class="legend-container" role="listbox" aria-label="${x => x.legendListLabel || 'Legends'}">
             ${repeat(
               x => x.legends,
               html<Legend, T>` <button
