@@ -2,7 +2,7 @@ import { html } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import { HorizontalBarChart as FluentHorizontalBarChart } from './horizontal-bar-chart.js';
-import { ChartDataPoint, ChartProps } from './horizontal-bar-chart.options.js';
+import { ChartDataPoint, ChartProps, Variant } from './horizontal-bar-chart.options.js';
 
 const singleBarHBCData = [
   {
@@ -343,7 +343,11 @@ export const Basic: Story<FluentHorizontalBarChart> = renderComponent(storyTempl
 
 export const singleBarHBC: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
   <div>
-    <fluent-horizontal-bar-chart style="width: 100%" data="${JSON.stringify(singleBarHBCData)}">
+    <fluent-horizontal-bar-chart
+      style="width: 100%"
+      data="${JSON.stringify(singleBarHBCData)}"
+      variant="${Variant.AbsoluteScale}"
+    >
     </fluent-horizontal-bar-chart>
   </div>
 `);
@@ -378,8 +382,7 @@ export const singleDataPoint: Story<FluentHorizontalBarChart> = renderComponent(
 export const RTL: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
   <div dir="rtl">
     <div>
-      <fluent-horizontal-bar-chart style="width: 100%" data="${JSON.stringify(data)}">
-      </fluent-horizontal-bar-chart>
+      <fluent-horizontal-bar-chart style="width: 100%" data="${JSON.stringify(data)}"> </fluent-horizontal-bar-chart>
     </div>
   </div>
 `);
