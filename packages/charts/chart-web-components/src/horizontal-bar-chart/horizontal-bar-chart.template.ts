@@ -14,8 +14,8 @@ getGroupper(tabsterCore);
  * @public
  */
 export function horizontalbarchartTemplate<T extends HorizontalBarChart>(): ElementViewTemplate<T> {
-  return html<T>` <template>
-    <div ${ref('rootDiv')} class="root-div">
+  return html<T>`
+    <template ${ref('rootDiv')}>
       <div ${ref('chartContainer')}></div>
       ${when(
         x => !x.hideLegends,
@@ -49,16 +49,19 @@ export function horizontalbarchartTemplate<T extends HorizontalBarChart>(): Elem
       ${when(
         x => !x.hideTooltip && x.tooltipProps.isVisible,
         html<T>`
-          <div class="tooltip" style="left: ${x => x.tooltipProps.xPos}px; top: ${x => x.tooltipProps.yPos}px">
-            <div class="tooltipline" style="border-left:4px solid ${x => x.tooltipProps.color};">
+          <div
+            class="tooltip"
+            style="inset-inline-start: ${x => x.tooltipProps.xPos}px; top: ${x => x.tooltipProps.yPos}px"
+          >
+            <div class="tooltipline" style="border-color: ${x => x.tooltipProps.color};">
               <div class="tooltiplegend">${x => x.tooltipProps.legend}</div>
-              <div class="tooltipdata" style="color:  ${x => x.tooltipProps.color};">${x => x.tooltipProps.yValue}</div>
+              <div class="tooltipdata" style="color: ${x => x.tooltipProps.color};">${x => x.tooltipProps.yValue}</div>
             </div>
           </div>
         `,
       )}
-    </div>
-  </template>`;
+    </template>
+  `;
 }
 
 /**

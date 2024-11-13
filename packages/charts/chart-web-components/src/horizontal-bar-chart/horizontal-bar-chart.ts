@@ -351,8 +351,8 @@ export class HorizontalBarChart extends FASTElement {
           isVisible: true,
           legend: d.legend,
           yValue: `${d.data}`,
-          color: d.color!,
-          xPos: Math.min(event.clientX - bounds.left, xPos),
+          color: d.gradient ? d.gradient[0] : d.color!,
+          xPos: this._isRTL ? bounds.right - event.clientX : Math.min(event.clientX - bounds.left, xPos),
           yPos: event.clientY - bounds.top - 40,
         };
       })
