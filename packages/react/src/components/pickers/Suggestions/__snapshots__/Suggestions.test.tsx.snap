@@ -77,7 +77,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -236,7 +236,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -391,7 +391,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -546,7 +546,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -701,7 +701,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -856,7 +856,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1011,7 +1011,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1166,7 +1166,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1321,7 +1321,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1476,7 +1476,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1631,7 +1631,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1786,7 +1786,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -1941,7 +1941,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -2096,7 +2096,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -2251,7 +2251,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -2455,7 +2455,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -2614,7 +2614,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -2769,7 +2769,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -2924,7 +2924,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -3079,7 +3079,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -3234,7 +3234,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -3389,7 +3389,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -3544,7 +3544,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -3699,7 +3699,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -3854,7 +3854,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -4009,7 +4009,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -4164,7 +4164,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -4319,7 +4319,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -4474,7 +4474,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -4629,7 +4629,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -4802,7 +4802,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -4957,7 +4957,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -5112,7 +5112,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -5267,7 +5267,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -5422,7 +5422,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -5577,7 +5577,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -5732,7 +5732,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -5887,7 +5887,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -6062,7 +6062,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -6221,7 +6221,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -6376,7 +6376,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -6531,7 +6531,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -6686,7 +6686,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -6841,7 +6841,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
@@ -6996,7 +6996,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
-                justify-content: center;
+                justify-content: flex-start;
                 min-width: 0px;
                 outline: transparent;
                 overflow: hidden;
