@@ -118,7 +118,7 @@ const useStyles = makeStyles({
     paddingLeft: tokens.spacingHorizontalS,
   },
   calloutContainer: {
-    '@media (forced-colors: active)': {
+    [HighContrastSelector]: {
       fill: 'WindowText', // Ensure visibility in high contrast mode
       forcedColorAdjust: 'none',
     },

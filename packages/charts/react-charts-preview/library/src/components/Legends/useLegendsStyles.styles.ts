@@ -34,12 +34,12 @@ const useStyles = makeStyles({
     ...shorthands.border('none'),
     ...shorthands.padding(tokens.spacingHorizontalS),
     textTransform: 'capitalize',
-    '@media (forced-colors: active)': {
+    [HighContrastSelector]: {
       color: 'WindowText',
       forcedColorAdjust: 'none',
     },
     '&:hover': {
-      '@media (forced-colors: active)': {
+      [HighContrastSelector]: {
         color: 'HighlightText',
         forcedColorAdjust: 'none',
       },
@@ -70,7 +70,7 @@ const useStyles = makeStyles({
   text: {
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground1,
-    '@media (forced-colors: active)': {
+    [HighContrastSelector]: {
       color: 'WindowText',
       forcedColorAdjust: 'none',
     },

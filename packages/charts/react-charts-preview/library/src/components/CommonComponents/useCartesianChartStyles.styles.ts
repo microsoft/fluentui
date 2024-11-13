@@ -58,7 +58,7 @@ const useStyles = makeStyles({
     '& text': {
       fill: tokens.colorNeutralForeground1,
       ...typographyStyles.caption2Strong,
-      '@media (forced-colors: active)': {
+      [HighContrastSelectorBlack]: {
         fill: 'rgb(179, 179, 179)',
         forcedColorAdjust: 'none',
       },
@@ -67,7 +67,7 @@ const useStyles = makeStyles({
       opacity: 0.2,
       stroke: tokens.colorNeutralForeground1,
       width: '1px',
-      '@media (forced-colors: active)': {
+      [HighContrastSelectorBlack]: {
         opacity: 0.1,
         stroke: 'rgb(179, 179, 179)',
         forcedColorAdjust: 'none',
@@ -81,7 +81,7 @@ const useStyles = makeStyles({
     '& text': {
       ...typographyStyles.caption2Strong,
       fill: tokens.colorNeutralForeground1,
-      '@media (forced-colors: active)': {
+      [HighContrastSelectorBlack]: {
         fill: 'rgb(179, 179, 179)',
         forcedColorAdjust: 'none',
       },
@@ -89,7 +89,7 @@ const useStyles = makeStyles({
     '& line': {
       opacity: 0.2,
       stroke: tokens.colorNeutralForeground1,
-      '@media (forced-colors: active)': {
+      [HighContrastSelectorBlack]: {
         opacity: 0.1,
         stroke: 'rgb(179, 179, 179)',
         forcedColorAdjust: 'none',
@@ -136,7 +136,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
   },
   calloutBlockContainertoDrawShapefalse: {
-    '@media (forced-colors: active)': {
+    [HighContrastSelector]: {
       forcedColorAdjust: 'none',
     },
     ...shorthands.borderLeft('4px solid'),
@@ -151,14 +151,14 @@ const useStyles = makeStyles({
   calloutLegendText: {
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
-    '@media (forced-colors: active)': {
+    [HighContrastSelectorBlack]: {
       color: 'rgb(255, 255, 255)',
       forcedColorAdjust: 'none',
     },
   },
   calloutContentY: {
     ...typographyStyles.subtitle2Stronger,
-    '@media (forced-colors: active)': {
+    [HighContrastSelectorBlack]: {
       color: 'rgb(255, 255, 255)',
       forcedColorAdjust: 'none',
     },
