@@ -12,13 +12,6 @@ export type ColorAreaSlots = {
   inputY?: NonNullable<Slot<'input'>>;
 };
 
-type ColorAreaInternalSlots = {
-  root: NonNullable<Slot<'div'>>;
-  thumb: NonNullable<Slot<'div'>>;
-  inputX: NonNullable<Slot<'input'>>;
-  inputY: NonNullable<Slot<'input'>>;
-};
-
 export type HsvColor = {
   h: number;
   s: number;
@@ -29,7 +22,7 @@ export type HsvColor = {
 /**
  * ColorArea Props
  */
-export type ColorAreaProps = Omit<ComponentProps<ColorAreaSlots>, 'color' | 'onChange'> & {
+export type ColorAreaProps = Omit<ComponentProps<Partial<ColorAreaSlots>>, 'color' | 'onChange'> & {
   /**
    * The current color of the ColorArea.
    */
@@ -49,4 +42,4 @@ export type ColorAreaProps = Omit<ComponentProps<ColorAreaSlots>, 'color' | 'onC
 /**
  * State used in rendering ColorArea
  */
-export type ColorAreaState = ComponentState<ColorAreaInternalSlots> & Pick<ColorAreaProps, 'color'>;
+export type ColorAreaState = ComponentState<Required<ColorAreaSlots>> & Pick<ColorAreaProps, 'color'>;
