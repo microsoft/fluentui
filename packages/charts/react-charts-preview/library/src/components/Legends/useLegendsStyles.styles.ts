@@ -99,17 +99,21 @@ const useStyles = makeStyles({
 });
 
 export const useLegendStyles_unstable = (props: LegendsProps): LegendsStyles => {
-  const { className } = props; // ToDo - width, barHeight is non enumerable. Need to be used inline.
+  // ToDo - width, barHeight is non enumerable. Need to be used inline.
   const baseStyles = useStyles();
 
   return {
-    root: mergeClasses(legendClassNames.root, baseStyles.root, className, props.styles?.root),
-    legend: mergeClasses(legendClassNames.legend, baseStyles.legend, props.styles?.legend),
-    rect: mergeClasses(legendClassNames.rect, baseStyles.rect, props.styles?.rect),
-    shape: mergeClasses(legendClassNames.shape, baseStyles.shape, props.styles?.shape),
-    triangle: mergeClasses(legendClassNames.triangle, baseStyles.triangle, props.styles?.triangle),
-    text: mergeClasses(legendClassNames.text, baseStyles.text, props.styles?.text),
-    hoverChange: mergeClasses(legendClassNames.hoverChange, baseStyles.hoverChange, props.styles?.hoverChange),
-    resizableArea: mergeClasses(legendClassNames.resizableArea, baseStyles.resizableArea, props.styles?.resizableArea),
+    root: mergeClasses(legendClassNames.root, baseStyles.root, props.className?.root),
+    legend: mergeClasses(legendClassNames.legend, baseStyles.legend, props.className?.legend),
+    rect: mergeClasses(legendClassNames.rect, baseStyles.rect, props.className?.rect),
+    shape: mergeClasses(legendClassNames.shape, baseStyles.shape, props.className?.shape),
+    triangle: mergeClasses(legendClassNames.triangle, baseStyles.triangle, props.className?.triangle),
+    text: mergeClasses(legendClassNames.text, baseStyles.text, props.className?.text),
+    hoverChange: mergeClasses(legendClassNames.hoverChange, baseStyles.hoverChange, props.className?.hoverChange),
+    resizableArea: mergeClasses(
+      legendClassNames.resizableArea,
+      baseStyles.resizableArea,
+      props.className?.resizableArea,
+    ),
   };
 };

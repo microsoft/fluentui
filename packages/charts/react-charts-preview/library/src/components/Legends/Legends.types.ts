@@ -132,9 +132,9 @@ export interface LegendsProps {
   legends: Legend[];
 
   /**
-   * Additional CSS class(es) to apply to the legneds component.
+   * Additional CSS class(es) to apply to the legends component.
    */
-  className?: string;
+  className?: LegendsStyles;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
