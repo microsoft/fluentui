@@ -170,6 +170,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
     </div>
   </div>
   <div
+    className="fui-cart__calloutContainer"
     id="callout36"
   />
 </div>
@@ -345,6 +346,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
     </div>
   </div>
   <div
+    className="fui-cart__calloutContainer"
     id="callout40"
   />
 </div>
@@ -468,6 +470,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
     </div>
   </div>
   <div
+    className="fui-cart__calloutContainer"
     id="callout8"
   />
 </div>
@@ -609,6 +612,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
     </div>
   </div>
   <div
+    className="fui-cart__calloutContainer"
     id="callout4"
   />
 </div>

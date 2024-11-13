@@ -7,15 +7,14 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
   className="fui-legend__root"
   data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   role="listbox"
-  style={
-    Object {
-      "flexWrap": "wrap",
-      "justifyContent": "unset",
-    }
-  }
 >
   <div
     className="fui-Overflow fui-legend__resizableArea"
+    style={
+      Object {
+        "textAlign": "unset",
+      }
+    }
   >
     <button
       aria-label="Legend 1"
@@ -776,15 +775,14 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
   className="fui-legend__root"
   data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   role="listbox"
-  style={
-    Object {
-      "flexWrap": "wrap",
-      "justifyContent": "unset",
-    }
-  }
 >
   <div
     className="fui-Overflow fui-legend__resizableArea"
+    style={
+      Object {
+        "textAlign": "unset",
+      }
+    }
   >
     <button
       aria-label="Legend 1"
@@ -1545,15 +1543,14 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
   className="fui-legend__root"
   data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   role="listbox"
-  style={
-    Object {
-      "flexWrap": "wrap",
-      "justifyContent": "unset",
-    }
-  }
 >
   <div
     className="fui-Overflow fui-legend__resizableArea"
+    style={
+      Object {
+        "textAlign": "unset",
+      }
+    }
   >
     <button
       aria-label="Legend 1"
@@ -2314,15 +2311,14 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
   className="fui-legend__root"
   data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   role="listbox"
-  style={
-    Object {
-      "flexWrap": "wrap",
-      "justifyContent": "unset",
-    }
-  }
 >
   <div
     className="fui-Overflow fui-legend__resizableArea"
+    style={
+      Object {
+        "textAlign": "unset",
+      }
+    }
   >
     <button
       aria-label="Legend 1"

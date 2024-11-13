@@ -97,6 +97,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
       </svg>
     </div>
     <div
+      className="fui-cart__calloutContainer"
       id="callout43"
     >
       <div
@@ -159,15 +160,14 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "center",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
         >
           <button
             aria-label="first"
@@ -405,6 +405,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
       </svg>
     </div>
     <div
+      className="fui-cart__calloutContainer"
       id="callout51"
     >
       <div
@@ -467,15 +468,14 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "center",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
         >
           <button
             aria-label="first"
@@ -713,6 +713,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
       </svg>
     </div>
     <div
+      className="fui-cart__calloutContainer"
       id="callout25"
     />
     <div
@@ -724,15 +725,14 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "center",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
         >
           <button
             aria-label="first"
@@ -1000,6 +1000,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
       </svg>
     </div>
     <div
+      className="fui-cart__calloutContainer"
       id="callout19"
     />
     <div
@@ -1011,15 +1012,14 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "center",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
         >
           <button
             aria-label="first"
@@ -1287,6 +1287,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
       </svg>
     </div>
     <div
+      className="fui-cart__calloutContainer"
       id="callout22"
     />
     <div
@@ -1298,15 +1299,14 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "center",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
         >
           <button
             aria-label="first"
@@ -1544,6 +1544,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
       </svg>
     </div>
     <div
+      className="fui-cart__calloutContainer"
       id="callout2"
     />
     <div
@@ -1555,15 +1556,14 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "center",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
         >
           <button
             aria-label="first"
@@ -1801,6 +1801,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
       </svg>
     </div>
     <div
+      className="fui-cart__calloutContainer"
       id="callout5"
     />
     <div
@@ -1812,15 +1813,14 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "center",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
         >
           <button
             aria-label="first"
@@ -2058,6 +2058,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
       </svg>
     </div>
     <div
+      className="fui-cart__calloutContainer"
       id="callout13"
     />
     <div
@@ -2069,15 +2070,14 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "center",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
         >
           <button
             aria-label="first"
@@ -2315,6 +2315,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
       </svg>
     </div>
     <div
+      className="fui-cart__calloutContainer"
       id="callout8"
     />
   </div>
@@ -2418,6 +2419,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
       </svg>
     </div>
     <div
+      className="fui-cart__calloutContainer"
       id="callout10"
     />
     <div
@@ -2429,15 +2431,14 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "center",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
         >
           <button
             aria-label="first"
@@ -2683,6 +2684,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
       </svg>
     </div>
     <div
+      className="fui-cart__calloutContainer"
       id="callout16"
     />
     <div
@@ -2694,15 +2696,14 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "center",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
         >
           <button
             aria-label="first"

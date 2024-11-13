@@ -61,6 +61,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
         </svg>
       </div>
       <div
+        class="fui-cart__calloutContainer"
         id="callout2"
       />
       <div
@@ -72,10 +73,10 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
-          style="justify-content: center; flex-wrap: wrap;"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: center;"
           >
             <button
               aria-label="first"
@@ -207,6 +208,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
           </svg>
         </div>
         <div
+          class="fui-cart__calloutContainer"
           id="callout34"
         />
         <div
@@ -218,10 +220,10 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
-            style="justify-content: center; flex-wrap: wrap;"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: center;"
             >
               <button
                 aria-label="first"

@@ -4329,10 +4329,10 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
-          style="justify-content: unset; flex-wrap: wrap;"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: unset;"
           >
             <button
               aria-label="metaData1"
@@ -4842,10 +4842,10 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
-          style="justify-content: unset; flex-wrap: wrap;"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: unset;"
           >
             <button
               aria-label="metaData1"
@@ -5393,10 +5393,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
-          style="justify-content: unset; flex-wrap: wrap;"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: unset;"
           >
             <button
               aria-label="metaData1"
@@ -5911,10 +5911,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
-          style="justify-content: unset; flex-wrap: wrap;"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: unset;"
           >
             <button
               aria-label="metaData1"
@@ -6432,10 +6432,10 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
-            style="justify-content: unset; flex-wrap: wrap;"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
             >
               <button
                 aria-label="metaData1"

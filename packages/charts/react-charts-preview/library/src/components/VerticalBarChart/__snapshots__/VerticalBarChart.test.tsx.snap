@@ -61,15 +61,14 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "unset",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "unset",
+            }
+          }
         >
           <button
             aria-label="First"
@@ -265,15 +264,14 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "unset",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "unset",
+            }
+          }
         >
           <button
             aria-label="First"
@@ -757,15 +755,14 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "unset",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "unset",
+            }
+          }
         >
           <button
             aria-label="First"
@@ -1015,15 +1012,14 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "unset",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "unset",
+            }
+          }
         >
           <button
             aria-label="First"
@@ -1273,15 +1269,14 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "unset",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "unset",
+            }
+          }
         >
           <button
             aria-label="First"
@@ -1477,15 +1472,14 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         className="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
-        style={
-          Object {
-            "flexWrap": "wrap",
-            "justifyContent": "unset",
-          }
-        }
       >
         <div
           className="fui-Overflow fui-legend__resizableArea"
+          style={
+            Object {
+              "textAlign": "unset",
+            }
+          }
         >
           <button
             aria-label="First"

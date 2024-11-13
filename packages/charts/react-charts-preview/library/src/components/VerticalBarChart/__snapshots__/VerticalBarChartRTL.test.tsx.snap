@@ -333,10 +333,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
-          style="justify-content: unset; flex-wrap: wrap;"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: unset;"
           >
             <button
               aria-label="First"
@@ -736,10 +736,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
-          style="justify-content: unset; flex-wrap: wrap;"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: unset;"
           >
             <button
               aria-label="First"
@@ -1142,10 +1142,10 @@ exports[`Theme Change Should reflect theme change 1`] = `
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
             role="listbox"
-            style="justify-content: unset; flex-wrap: wrap;"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
             >
               <button
                 aria-label="First"
@@ -1556,10 +1556,10 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
-          style="justify-content: unset; flex-wrap: wrap;"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: unset;"
           >
             <button
               aria-label="First"
@@ -10238,10 +10238,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
-          style="justify-content: unset; flex-wrap: wrap;"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: unset;"
           >
             <button
               aria-label="First"
@@ -10596,10 +10596,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
-          style="justify-content: unset; flex-wrap: wrap;"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
+            style="text-align: unset;"
           >
             <button
               aria-label="undefined"

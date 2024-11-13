@@ -198,6 +198,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
       </div>
     </div>
     <div
+      class="fui-cart__calloutContainer"
       id="callout70"
     />
   </div>
@@ -402,6 +403,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
       </div>
     </div>
     <div
+      class="fui-cart__calloutContainer"
       id="callout75"
     />
   </div>
@@ -610,6 +612,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
         </div>
       </div>
       <div
+        class="fui-cart__calloutContainer"
         id="callout81"
       />
     </div>
@@ -827,6 +830,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
       </div>
     </div>
     <div
+      class="fui-cart__calloutContainer"
       id="callout86"
     />
   </div>
@@ -1031,6 +1035,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
       </div>
     </div>
     <div
+      class="fui-cart__calloutContainer"
       id="callout5"
     />
   </div>
