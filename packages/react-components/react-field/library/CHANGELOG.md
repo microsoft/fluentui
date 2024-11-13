@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Tue, 10 Sep 2024 10:19:12 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Oct 2024 17:17:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.78)
+
+Tue, 15 Oct 2024 17:17:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.76..@fluentui/react-field_v9.1.78)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.68 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.45 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-label to v9.1.77 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-theme to v9.1.21 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-utilities to v9.18.16 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+
+## [9.1.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.76)
+
+Mon, 23 Sep 2024 12:40:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.75..@fluentui/react-field_v9.1.76)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.67 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.44 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-label to v9.1.76 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-theme to v9.1.20 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-utilities to v9.18.15 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
 
 ## [9.1.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.75)
 

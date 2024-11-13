@@ -3,8 +3,7 @@ import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } fr
 import { ColorPickerContextValue } from '../../contexts/colorPicker';
 
 export type ColorPickerOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
-  value?: number;
-  channel?: string;
+  color: string;
 };
 
 export type ColorPickerSlots = {
@@ -18,7 +17,7 @@ export type ColorPickerProps = ComponentProps<ColorPickerSlots> & {
   /**
    * Selected color.
    */
-  color?: string;
+  color: string;
 
   /**
    * Callback for when the user changes the color.

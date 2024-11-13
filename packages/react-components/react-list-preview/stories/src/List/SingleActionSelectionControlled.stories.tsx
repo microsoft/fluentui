@@ -46,9 +46,10 @@ export const SingleActionSelectionControlled = () => {
         selectionMode="multiselect"
         selectedItems={selectedItems}
         onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
+        aria-label="People example"
       >
         {items.map(({ name, avatar }) => (
-          <ListItem key={name} value={name} aria-label={name}>
+          <ListItem key={name} value={name} aria-label={name} checkmark={{ 'aria-label': name }}>
             <Persona
               name={name}
               secondaryText="Available"

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(react-message-bar): Use useAnnounce() instead of the deprecated useAnnounce_unstable()",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "jiangemma@microsoft.com",
+  "dependentChangeType": "none"
+}

@@ -82,7 +82,7 @@ describe('List', () => {
               <ListItem value="test-value-2">Second ListItem</ListItem>
             </List>,
           ),
-        ).toThrowError('ListItem cannot be rendered as a li when its parent is a div.');
+        ).toThrow('ListItem cannot be rendered as a li when its parent is a div.');
       });
 
       it('ul and div throws', () => {
@@ -97,7 +97,7 @@ describe('List', () => {
               </ListItem>
             </List>,
           ),
-        ).toThrowError('ListItem cannot be rendered as a div when its parent is not a div.');
+        ).toThrow('ListItem cannot be rendered as a div when its parent is not a div.');
       });
 
       it("div and div doesn't throw", () => {

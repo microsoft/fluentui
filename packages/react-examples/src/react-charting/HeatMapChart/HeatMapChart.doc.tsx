@@ -11,7 +11,8 @@ const HeatMapChartCustomAccessibilityExampleCode = require('!raw-loader?esModule
 export const HeatMapChartPageProps: IDocPageProps = {
   title: 'HeatMapChart',
   componentName: 'HeatMapChart',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/HeatMapChart',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/HeatMapChart',
   examples: [
     {
       title: 'HeatMapChart basic',

@@ -226,7 +226,7 @@ test.describe('Tablist', () => {
     });
   });
 
-  for (const appearance in TablistAppearance) {
+  for (const appearance of Object.values(TablistAppearance)) {
     test(`should set appearance to \`${appearance}\``, async ({ page }) => {
       const element = page.locator('fluent-tablist');
 
@@ -244,7 +244,7 @@ test.describe('Tablist', () => {
     });
   }
 
-  for (const size in TablistSize) {
+  for (const size of Object.values(TablistSize)) {
     test(`should set size to \`${size}\``, async ({ page }) => {
       const element = page.locator('fluent-tablist');
 

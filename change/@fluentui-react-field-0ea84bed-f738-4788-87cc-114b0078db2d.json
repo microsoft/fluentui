@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-field): Add screenreader announcement for validationMessage if validationState=\"warning\"",
+  "packageName": "@fluentui/react-field",
+  "email": "jiangemma@microsoft.com",
+  "dependentChangeType": "patch"
+}

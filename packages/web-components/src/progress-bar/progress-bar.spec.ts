@@ -4,7 +4,7 @@ import type { ProgressBar } from './progress-bar.js';
 
 test.describe('Progress Bar', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-progressbar--progress'));
+    await page.goto(fixtureURL('components-progressbar--default'));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-progress-bar'));
   });

@@ -2,7 +2,7 @@
 
 ## Generators
 
-Generators should live in the `tools/generators` folder. [Learn more about Nx generators](https://nx.dev/generators/workspace-generators).
+Generators live in the `tools/workspace-plugin/src/generators` folder. [Learn more about Nx generators](https://nx.dev/generators/workspace-generators).
 
 ### Scaffolding
 
@@ -52,7 +52,7 @@ Integration tests for the generator as a whole.
 
 TypeScript interface that matches `schema.json`. You can generate this from the json file by running:
 
-- `npx json-schema-to-typescript -i tools/generators/<generator-name>/schema.json -o tools/generators/<generator-name>/schema.ts --additionalProperties false`
+- `npx json-schema-to-typescript@latest -i tools/workspace-plugin/src/generators/<name>/schema.json -o tools/workspace-plugin/src/generators/<name>/schema.d.ts --additionalProperties false`
 
 **`schema.json`**
 
@@ -95,12 +95,20 @@ Migrations follow same rules as [Generators](#Generators) as they behave the sam
 
 ## Executors
 
-Executors should live in the `tools/executors` folder. [Learn more about Nx executors](https://nx.dev/executors/using-builders).
+Executors live in the `tools/workspace-plugin/src/executors` folder. [Learn more about Nx executors](https://nx.dev/executors/using-builders).
 
 ### Scaffolding
 
-TBA
+**`schema.d.ts`**
+
+TypeScript interface that matches `schema.json`. You can generate this from the json file by running:
+
+- `npx json-schema-to-typescript@latest -i tools/workspace-plugin/src/executors/<name>/schema.json -o tools/workspace-plugin/src/executors/<name>/schema.d.ts --additionalProperties false`
+
+**`schema.json`**
+
+Provides a description of the generator, available options, validation information, and default values. This is processed by nx cli when invoking generator to provide argument validations/processing/prompts.
 
 ### Bootstrap new executor
 
-TBA
+`yarn nx g @nx/plugin:executor --directory tools/workspace-plugin/src/executors/<name-of-executor>`

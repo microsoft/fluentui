@@ -78,17 +78,19 @@ exports[`CommandBar renders commands correctly 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    align-items: center;
                     background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
                     color: #323130;
                     cursor: pointer;
-                    display: inline-block;
+                    display: inline-flex;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 100%;
+                    justify-content: center;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -241,17 +243,19 @@ exports[`CommandBar renders commands correctly 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    align-items: center;
                     background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
                     color: #323130;
                     cursor: pointer;
-                    display: inline-block;
+                    display: inline-flex;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 100%;
+                    justify-content: center;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;

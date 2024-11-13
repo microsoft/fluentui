@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
-import { TextInput } from '../index.js';
+import type { TextInput } from '../index.js';
 import type { Field } from './field.js';
 
 test.describe('Field', () => {

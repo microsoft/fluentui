@@ -62,6 +62,7 @@ export const ListActiveElement = () => {
   return (
     <div>
       <List
+        as="div"
         selectionMode="single"
         navigationMode="composite"
         selectedItems={selectedItems}
@@ -69,6 +70,7 @@ export const ListActiveElement = () => {
       >
         {items.map(({ name, avatar }) => (
           <ListItem
+            as="div"
             key={name}
             value={name}
             className={mergeClasses(classes.item, selectedItems.includes(name) && classes.itemSelected)}

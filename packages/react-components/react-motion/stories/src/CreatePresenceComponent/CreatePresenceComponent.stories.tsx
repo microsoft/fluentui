@@ -3,6 +3,7 @@ import {
   Field,
   makeStyles,
   type MotionImperativeRef,
+  PresenceComponentProps,
   tokens,
   Switch,
 } from '@fluentui/react-components';
@@ -67,7 +68,7 @@ const DropIn = createPresenceComponent({
   },
 });
 
-export const CreatePresenceComponent = () => {
+export const CreatePresenceComponent = (props: PresenceComponentProps) => {
   const classes = useClasses();
 
   const motionRef = React.useRef<MotionImperativeRef>();
