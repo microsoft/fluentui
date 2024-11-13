@@ -1,7 +1,7 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { create as d3Create, select as d3Select } from 'd3-selection';
 import { createTabster, getGroupper, getMover, getTabsterAttribute, TABSTER_ATTRIBUTE_NAME } from 'tabster';
-import { jsonConverter, SVG_NAMESPACE_URI, validateChartPropsArray } from '../utils/chart-helpers.js';
+import { getRTL, jsonConverter, SVG_NAMESPACE_URI, validateChartPropsArray } from '../utils/chart-helpers.js';
 import { ChartDataPoint, ChartProps, Variant } from './horizontal-bar-chart.options.js';
 
 // During the page startup.
@@ -15,46 +15,23 @@ getGroupper(tabsterCore);
  * @public
  */
 export class HorizontalBarChart extends FASTElement {
-  /**
-   * The type of the element, which is always "horizontalbarchart".
-   * @see The {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/type | `type`} property
-   *
-   * @public
-   */
-  public get type(): 'horizontalbarchart' {
-    return 'horizontalbarchart';
-  }
-
-  /**
-   * @public
-   * The type of the dialog modal
-   */
   @attr
   public variant: Variant = Variant.AbsoluteScale;
-
-  public chartContainer!: HTMLDivElement;
-
-  /**
-   * @public
-   * The type of the dialog modal
-   */
-  @attr
-  public _isRTL: boolean = false;
 
   @attr({ converter: jsonConverter })
   public data!: ChartProps[];
 
-  @observable
-  public uniqueLegends: ChartDataPoint[] = [];
-
-  @attr
-  public hideRatio = false;
+  @attr({ attribute: 'hide-ratio', mode: 'boolean' })
+  public hideRatio: boolean = false;
 
   @attr({ attribute: 'hide-legends', mode: 'boolean' })
-  public hideLegends?: boolean;
+  public hideLegends: boolean = false;
 
   @attr({ attribute: 'hide-tooltip', mode: 'boolean' })
-  public hideTooltip?: boolean;
+  public hideTooltip: boolean = false;
+
+  @observable
+  public uniqueLegends: ChartDataPoint[] = [];
 
   @observable
   public activeLegend: string = '';
@@ -73,20 +50,18 @@ export class HorizontalBarChart extends FASTElement {
   };
 
   public rootDiv!: HTMLDivElement;
+  public chartContainer!: HTMLDivElement;
 
+  private _isRTL: boolean = false;
   private barHeight: number = 12;
   private _bars: SVGRectElement[] = [];
-
-  constructor() {
-    super();
-  }
-
-  private bindEvents() {}
 
   connectedCallback() {
     super.connectedCallback();
 
     validateChartPropsArray(this.data, 'data');
+
+    this._isRTL = getRTL(this);
 
     this.initializeData();
     this.renderChart();
@@ -172,8 +147,7 @@ export class HorizontalBarChart extends FASTElement {
   }
 
   private calculateBarSpacing(): number {
-    //todo: replace 650 with width of svg or div.
-    const svgWidth = 650;
+    const svgWidth = this.rootDiv.getBoundingClientRect().width;
     let barSpacing = 0;
     const MARGIN_WIDTH_IN_PX = 3;
     if (svgWidth) {
@@ -295,7 +269,6 @@ export class HorizontalBarChart extends FASTElement {
         stop2.setAttribute('offset', '100%');
         stop2.setAttribute('stop-color', point.gradient[1]);
       }
-
       gEle;
       const rect = gEle
         .append('rect')
@@ -323,31 +296,40 @@ export class HorizontalBarChart extends FASTElement {
 
     const containerDiv = d3Create('div').attr('style', 'position: relative');
 
-    const chartTitleDiv = containerDiv.append('div').attr('class', 'chartTitleDiv');
+    const chartTitleDiv = containerDiv.append('div').attr('class', 'chart-title-div');
     chartTitleDiv
       .append('div')
       .append('span')
-      .attr('class', 'chartTitle')
+      .attr('class', 'chart-title')
       .text(data?.chartTitle ? data?.chartTitle : '');
 
-    const hideNumber = this.hideRatio === undefined ? false : this.hideRatio;
-
-    const showRatio = this.variant === Variant.PartToWhole && !hideNumber && data!.chartData!.length === 2;
+    const showChartDataText = this.variant !== Variant.AbsoluteScale && !this.hideRatio;
+    const showRatio =
+      (this.variant === Variant.PartToWhole && data!.chartData!.length === 2) || this.variant === Variant.SingleBar;
     const getChartData = () => (data!.chartData![0].data ? data!.chartData![0].data : 0);
 
-    if (showRatio) {
-      const ratioDiv = chartTitleDiv.append('div').attr('role', 'text');
-      const numData = data!.chartData![0].data;
-      const denomData = data!.chartData![1].data;
-      const total = numData! + denomData!;
-      ratioDiv.append('span').attr('class', 'ratioNumerator').text(numData!);
-      ratioDiv.append('span').attr('class', 'ratioDenominator').text(`/${total!}`);
+    if (showChartDataText) {
+      if (data.chartDataText) {
+        const chartTitleRight = document.createElement('div');
+        chartTitleDiv.node()!.appendChild(chartTitleRight);
+        chartTitleRight.classList.add('chart-data-text');
+        chartTitleRight.textContent = data.chartDataText;
+      } else if (showRatio) {
+        const ratioDiv = chartTitleDiv.append('div').attr('role', 'text');
+        const numData = data!.chartData![0].data;
+        const denomData = data!.chartData![1].data;
+        const total = numData! + denomData!;
+        ratioDiv.append('span').attr('class', 'ratio-numerator').text(numData!);
+        ratioDiv.append('span').attr('class', 'ratio-denominator').text(`/${total!}`);
+      }
     }
 
-    const svgEle = containerDiv
+    const svgDiv = containerDiv.append('div').attr('style', 'display: flex;');
+    const svgEle = svgDiv
       .append('svg')
-      .attr('height', 20)
+      .attr('height', 12)
       .attr('width', 100 + '%')
+      .attr('class', 'svgChart')
       .attr('aria-label', data?.chartTitle ? data?.chartTitle : '')
       .selectAll('g')
       .data(data.chartData!)
@@ -362,13 +344,15 @@ export class HorizontalBarChart extends FASTElement {
         }
 
         const bounds = this.rootDiv.getBoundingClientRect();
+        const centerX = window.innerWidth / 2;
+        const xPos = Math.max(0, Math.min(centerX, window.innerWidth));
 
         this.tooltipProps = {
           isVisible: true,
           legend: d.legend,
           yValue: `${d.data}`,
           color: d.color!,
-          xPos: event.clientX - bounds.left,
+          xPos: Math.min(event.clientX - bounds.left, xPos),
           yPos: event.clientY - bounds.top - 40,
         };
       })
@@ -379,29 +363,65 @@ export class HorizontalBarChart extends FASTElement {
     if (this.variant === Variant.AbsoluteScale) {
       const showLabel = true;
       const barLabel = barTotalValue;
-
       if (showLabel) {
-        svgEle
-          .append('text')
-          .attr('key', 'text')
-          .attr('class', 'barLabel')
-          .attr(
-            'x',
-            `${
-              this._isRTL
-                ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value - totalMarginPercent
-                : (startingPoint[startingPoint.length - 1] || 0) + value + totalMarginPercent
-            }%`,
-          )
-          .attr('textAnchor', 'start')
-          .attr('y', this.barHeight / 2 + 6)
-          .attr('dominantBaseline', 'central')
-          .attr('transform', `translate(${this._isRTL ? -4 : 4})`)
-          .attr('aria-label', `Total: ${barLabel}`)
-          .attr('role', 'img')
-          .text(barLabel);
+        if (Math.round((startingPoint[startingPoint.length - 1] || 0) + value + totalMarginPercent) === 100) {
+          svgDiv
+            .append('text')
+            .attr('key', 'text')
+            .attr('style', 'margin-top: -4.5px; margin-left: 2px;')
+            .attr('class', 'barLabel')
+            .attr(
+              'x',
+              `${
+                this._isRTL
+                  ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value - totalMarginPercent
+                  : (startingPoint[startingPoint.length - 1] || 0) + value + totalMarginPercent
+              }%`,
+            )
+            .attr('textAnchor', 'start')
+            .attr('y', this.barHeight / 2 + 6)
+            .attr('dominantBaseline', 'central')
+            .attr('transform', `translate(${this._isRTL ? -4 : 4})`)
+            .attr('aria-label', `Total: ${barLabel}`)
+            .attr('role', 'img')
+            .text(barLabel);
+        } else {
+          svgEle
+            .append('text')
+            .attr('key', 'text')
+            .attr('class', 'barLabel')
+            .attr(
+              'x',
+              `${
+                this._isRTL
+                  ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value - totalMarginPercent
+                  : (startingPoint[startingPoint.length - 1] || 0) + value + totalMarginPercent
+              }%`,
+            )
+            .attr('textAnchor', 'start')
+            .attr('y', this.barHeight / 2 + 6)
+            .attr('dominantBaseline', 'central')
+            .attr('transform', `translate(${this._isRTL ? -4 : 4})`)
+            .attr('aria-label', `Total: ${barLabel}`)
+            .attr('role', 'img')
+            .text(barLabel);
+        }
       }
     }
+
+    if (data.benchmarkData) {
+      const benchmarkContainer = document.createElement('div');
+      containerDiv.node()!.appendChild(benchmarkContainer);
+      benchmarkContainer.classList.add('benchmark-container');
+
+      const triangle = document.createElement('div');
+      benchmarkContainer.appendChild(triangle);
+      triangle.classList.add('triangle');
+
+      const benchmarkRatio = (data.benchmarkData / total) * 100;
+      triangle.style['insetInlineStart'] = `calc(${benchmarkRatio}% - 4px)`;
+    }
+
     return containerDiv;
   }
 
