@@ -37,6 +37,9 @@ export class DonutChart extends FASTElement {
   @attr({ attribute: 'value-inside-donut' })
   public valueInsideDonut?: string;
 
+  @attr({ attribute: 'legend-list-label' })
+  public legendListLabel?: string;
+
   @observable
   public legends: Legend[] = [];
 

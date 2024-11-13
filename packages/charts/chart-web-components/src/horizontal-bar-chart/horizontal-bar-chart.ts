@@ -30,6 +30,9 @@ export class HorizontalBarChart extends FASTElement {
   @attr({ attribute: 'hide-tooltip', mode: 'boolean' })
   public hideTooltip: boolean = false;
 
+  @attr({ attribute: 'legend-list-label' })
+  public legendListLabel?: string;
+
   @observable
   public uniqueLegends: ChartDataPoint[] = [];
 
