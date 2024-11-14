@@ -325,7 +325,7 @@ test.describe('horizontalbarchart - Basic', () => {
     await expect(firstBar).toHaveCSS('fill', 'rgb(0, 153, 188)');
     await expect(firstBar).toHaveCSS('opacity', '1');
     await expect(firstBar).toHaveAttribute(`height`, '12');
-    const barLabels = element.locator('.barLabel');
+    const barLabels = element.locator('.bar-label');
     await expect(barLabels).toHaveCount(8);
     const firstBarLabel = barLabels.first();
     await expect(firstBarLabel).toHaveText('272');
@@ -463,7 +463,7 @@ test.describe('horizontalbarchart - Single Bar HBC', () => {
     expect(parseFloat(seventhBarWidth)).toBeLessThan(63);
     let eithBarWidth = await bars.nth(7).getAttribute('width');
     expect(parseFloat(eithBarWidth)).toBeLessThan(27);
-    const barLabels = element.locator('.barLabel');
+    const barLabels = element.locator('.bar-label');
     await expect(barLabels).toHaveCount(8);
     const firstBarLabel = barLabels.first();
     await expect(firstBarLabel).toHaveText('1543');
