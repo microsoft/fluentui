@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(v8 SwatchColorPicker): Add forced-color-adjust to gradients",
-  "packageName": "@fluentui/react",
-  "email": "jiangemma@microsoft.com",
-  "dependentChangeType": "patch"
-}
