@@ -78,7 +78,7 @@ export const styles: ElementStyles = css`
     stroke-width: 2px;
     stroke: black;
   }
-  .svgChart {
+  .svg-chart {
     display: block;
     overflow: visible;
   }
