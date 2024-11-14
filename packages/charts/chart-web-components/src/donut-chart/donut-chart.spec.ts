@@ -45,18 +45,21 @@ test.describe('Donut-chart - Basic', () => {
     await expect(arcList).toHaveCount(2);
     await expect(arcList.nth(0)).toHaveAttribute('fill', '#637cef');
     await expect(arcList.nth(0)).toHaveAttribute('aria-label', 'first, 20000.');
-    await expect(arcList.nth(0)).
-    toHaveAttribute('d', 'M-76.547,47.334A90,90,0,0,1,-1.055,-89.994L-1.055,-54.99A55,55,0,0,0,-46.993,28.577Z');
+    await expect(arcList.nth(0)).toHaveAttribute(
+      'd',
+      'M-76.547,47.334A90,90,0,0,1,-1.055,-89.994L-1.055,-54.99A55,55,0,0,0,-46.993,28.577Z',
+    );
     await expect(arcList.nth(0)).toHaveCSS('fill', 'rgb(99, 124, 239)');
     await expect(arcList.nth(0)).toHaveCSS('--borderRadiusMedium', '4px');
 
     await expect(arcList.nth(1)).toHaveAttribute('fill', '#e3008c');
     await expect(arcList.nth(1)).toHaveAttribute('aria-label', 'second, 39000.');
-    await expect(arcList.nth(1)).
-    toHaveAttribute('d', 'M1.055,-89.994A90,90,0,1,1,-75.417,49.115L-45.863,30.358A55,55,0,1,0,1.055,-54.99Z');
+    await expect(arcList.nth(1)).toHaveAttribute(
+      'd',
+      'M1.055,-89.994A90,90,0,1,1,-75.417,49.115L-45.863,30.358A55,55,0,1,0,1.055,-54.99Z',
+    );
     await expect(arcList.nth(1)).toHaveCSS('fill', 'rgb(227, 0, 140)');
     await expect(arcList.nth(1)).toHaveCSS('--borderRadiusMedium', '4px');
-
   });
 
   test('Should render legends data properly', async ({ page }) => {
@@ -104,7 +107,7 @@ test.describe('Donut-chart - Basic', () => {
   test('Should show callout with mouse hover event on path', async ({ page }) => {
     const element = page.locator('fluent-donut-chart');
     const firstPath = element.getByLabel('first,');
-    const calloutRoot = element.locator('.tooltip')
+    const calloutRoot = element.locator('.tooltip');
     await expect(calloutRoot).toHaveCount(0);
     await firstPath.dispatchEvent('mouseover');
     await expect(calloutRoot).toHaveCount(1);
@@ -120,7 +123,7 @@ test.describe('Donut-chart - Basic', () => {
   test('Should update callout data when mouse moved from one path to another path', async ({ page }) => {
     const element = page.locator('fluent-donut-chart');
     const firstPath = element.getByLabel('first,');
-    const calloutRoot = element.locator('.tooltip')
+    const calloutRoot = element.locator('.tooltip');
     await expect(calloutRoot).toHaveCount(0);
     await firstPath.dispatchEvent('mouseover');
     await expect(calloutRoot).toHaveCSS('opacity', '1');
@@ -134,7 +137,7 @@ test.describe('Donut-chart - Basic', () => {
     await expect(calloutLegendText).toHaveText('second');
     await expect(calloutContentY).toHaveText('39000');
   });
-})
+});
 
 test.describe('Donut-chart - RTL', () => {
   test.beforeEach(async ({ page }) => {
@@ -177,8 +180,8 @@ test.describe('Donut-chart - Theme', () => {
       </div>
     `);
     await page.waitForFunction(() => customElements.whenDefined('fluent-donut-chart'));
-    await page.evaluate( theme => {
-       window.setTheme(theme);
+    await page.evaluate(theme => {
+      window.setTheme(theme);
     }, teamsDarkTheme);
     await expect(element).toHaveScreenshot();
   });
