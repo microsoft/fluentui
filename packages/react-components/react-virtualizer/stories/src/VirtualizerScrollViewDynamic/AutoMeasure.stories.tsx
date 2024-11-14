@@ -38,9 +38,10 @@ export const AutoMeasure = () => {
       numItems={childLength}
       // We can use itemSize to set average height and reduce unknown whitespace
       itemSize={minHeight + maxHeightIncrease / 2.0 + 100}
-      container={{ role: 'list', style: { maxHeight: '80vh' } }}
+      container={{ role: 'list', style: { maxHeight: '80vh', gap: '20px' } }}
       bufferItems={1}
       bufferSize={minHeight / 2.0}
+      gap={20}
     >
       {(index: number) => {
         const backgroundColor = index % 2 ? '#CCCCCC' : '#ABABAB';

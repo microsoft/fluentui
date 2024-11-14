@@ -204,7 +204,7 @@ export type VirtualizerConfigProps = {
   /**
    * Spacing between rendered children for calculation, should match the container's gap CSS value.
    */
-  gap: number;
+  gap?: number;
 };
 
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;

@@ -27,7 +27,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     scrollViewRef,
     enableScrollLoad,
     updateScrollPosition,
-    gap,
+    gap = 0,
   } = props;
 
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
@@ -257,7 +257,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   const calculateTotalSize = useCallback(() => {
     if (!getItemSize) {
-      return itemSize * numItems;
+      return (itemSize + gap) * numItems;
     }
 
     // Time for custom size calcs
@@ -269,7 +269,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     if (!getItemSize) {
       // The missing items from before virtualization starts height
-      return currentIndex * itemSize;
+      return currentIndex * (itemSize + gap);
     }
 
     if (currentIndex <= 0) {
@@ -289,7 +289,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     if (!getItemSize) {
       // The missing items from after virtualization ends height
       const remainingItems = numItems - lastItemIndex;
-      return remainingItems * itemSize;
+      return remainingItems * (itemSize + gap) - gap;
     }
 
     // Time for custom size calcs
@@ -399,9 +399,14 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         // Get exact relative 'scrollTop' via IO values
         const measurementPos = calculateOverBuffer();
 
+        console.log('Measurementpos:', measurementPos);
+        console.log('Actual pos:', scrollViewRef?.current?.scrollTop);
+
         const maxIndex = Math.max(numItems - virtualizerLength, 0);
 
         const startIndex = getIndexFromScrollPosition(measurementPos) - bufferItems;
+
+        console.log('startIndex:', startIndex);
 
         // Safety limits
         const newStartIndex = Math.min(Math.max(startIndex, 0), maxIndex);
