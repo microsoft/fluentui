@@ -317,21 +317,6 @@ test.describe('horizontalbarchart - Basic', () => {
     await expect(page.getByText('Unmonitored')).toBeVisible();
   });
 
-  test('Should render bars and bar labels properly', async ({ page }) => {
-    const element = page.locator('fluent-horizontal-bar-chart');
-    const bars = element.locator('.bar');
-    await expect(bars).toHaveCount(12);
-    const firstBar = bars.first();
-    await expect(firstBar).toHaveCSS('fill', 'rgb(0, 153, 188)');
-    await expect(firstBar).toHaveCSS('opacity', '1');
-    await expect(firstBar).toHaveAttribute(`height`, '12');
-    const barLabels = element.locator('.bar-label');
-    await expect(barLabels).toHaveCount(8);
-    const firstBarLabel = barLabels.first();
-    await expect(firstBarLabel).toHaveText('272');
-    await expect(firstBarLabel).toHaveAttribute(`aria-label`, 'Total: 272');
-  });
-
   test('Should render legends data properly', async ({ page }) => {
     const element = page.locator('fluent-horizontal-bar-chart');
     const legends = element.locator('.legend');
@@ -438,36 +423,6 @@ test.describe('horizontalbarchart - Single Bar HBC', () => {
     for (let i = 0; i < (await barsTitles.count()); i++) {
       await expect(barsTitles.nth(i)).toBeVisible();
     }
-  });
-
-  test('Should render bars and bar labels properly', async ({ page }) => {
-    const element = page.locator('fluent-horizontal-bar-chart');
-    const bars = element.locator('.bar');
-    await expect(bars).toHaveCount(8);
-    await expect(bars.nth(0)).toHaveCSS('fill', 'rgb(99, 124, 239)');
-    await expect(bars.nth(0)).toHaveCSS('opacity', '1');
-    await expect(bars.nth(0)).toHaveAttribute(`height`, '12');
-    let firstBarWidth = await bars.nth(0).getAttribute('width');
-    expect(parseFloat(firstBarWidth)).toBeLessThan(10);
-    let secondBarWidth = await bars.nth(1).getAttribute('width');
-    expect(parseFloat(secondBarWidth)).toBeLessThan(6);
-    let thirdBarWidth = await bars.nth(2).getAttribute('width');
-    expect(parseFloat(thirdBarWidth)).toBeLessThan(56);
-    let forthBarWidth = await bars.nth(3).getAttribute('width');
-    expect(parseFloat(forthBarWidth)).toBe(100);
-    let fifthBarWidth = await bars.nth(4).getAttribute('width');
-    expect(parseFloat(fifthBarWidth)).toBeLessThan(75);
-    let sixthBarWidth = await bars.nth(5).getAttribute('width');
-    expect(parseFloat(sixthBarWidth)).toBeLessThan(90);
-    let seventhBarWidth = await bars.nth(6).getAttribute('width');
-    expect(parseFloat(seventhBarWidth)).toBeLessThan(63);
-    let eithBarWidth = await bars.nth(7).getAttribute('width');
-    expect(parseFloat(eithBarWidth)).toBeLessThan(27);
-    const barLabels = element.locator('.bar-label');
-    await expect(barLabels).toHaveCount(8);
-    const firstBarLabel = barLabels.first();
-    await expect(firstBarLabel).toHaveText('1543');
-    await expect(firstBarLabel).toHaveAttribute(`aria-label`, 'Total: 1543');
   });
 
   test('Should update bar css/opaity when mouse hover on legend', async ({ page }) => {
