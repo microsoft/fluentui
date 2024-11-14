@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update writeArrowUpdates to correctly resolve arrow position",
+  "packageName": "@fluentui/react-positioning",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

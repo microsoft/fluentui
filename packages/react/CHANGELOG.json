@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 14 Nov 2024 01:04:05 GMT",
+      "tag": "@fluentui/react_v8.121.11",
+      "version": "8.121.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "dcd2cedb00e2fc7388b654c2fe9b6ae73b9e9a7b",
+            "comment": "fix(v8 SwatchColorPicker): Add forced-color-adjust to gradients"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 13 Nov 2024 07:08:32 GMT",
       "tag": "@fluentui/react_v8.121.10",
       "version": "8.121.10",

@@ -1553,6 +1553,7 @@ import { useLink_unstable } from '@fluentui/react-link';
 import { useLinkState_unstable } from '@fluentui/react-link';
 import { useLinkStyles_unstable } from '@fluentui/react-link';
 import { useListbox_unstable } from '@fluentui/react-combobox';
+import { useListboxContext_unstable } from '@fluentui/react-combobox';
 import { useListboxContextValues } from '@fluentui/react-combobox';
 import { useListboxStyles_unstable } from '@fluentui/react-combobox';
 import { useMenu_unstable } from '@fluentui/react-menu';
@@ -4904,6 +4905,8 @@ export { useLinkState_unstable }
 export { useLinkStyles_unstable }
 
 export { useListbox_unstable }
+
+export { useListboxContext_unstable }
 
 export { useListboxContextValues }
 
