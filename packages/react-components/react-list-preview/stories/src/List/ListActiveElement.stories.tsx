@@ -39,6 +39,15 @@ const useStyles = makeStyles({
   },
   itemSelected: {
     backgroundColor: tokens.colorSubtleBackgroundSelected,
+    '@media (forced-colors:active)': {
+      background: 'Highlight',
+    },
+  },
+  personaSelected: {
+    '@media (forced-colors:active)': {
+      'forced-color-adjust': 'none',
+      color: 'HighlightText',
+    },
   },
 });
 
@@ -82,6 +91,7 @@ export const ListActiveElement = () => {
               role="gridcell"
               secondaryText="Available"
               presence={{ status: 'available' }}
+              className={mergeClasses(selectedItems.includes(name) && classes.personaSelected)}
               avatar={{
                 image: {
                   src: avatar,
