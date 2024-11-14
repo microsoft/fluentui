@@ -207,7 +207,7 @@ const useTextStyle = makeResetStyles({
 });
 
 const CountriesList = React.forwardRef<HTMLUListElement>((props: React.ComponentProps<typeof List>, ref) => (
-  <List aria-label="Countries" tabIndex={0} {...props} ref={ref} />
+  <List aria-label="Countries" data-tabster={undefined} tabIndex={0} {...props} ref={ref} />
 ));
 
 export const VirtualizedList = () => {
@@ -241,7 +241,12 @@ VirtualizedList.parameters = {
         'by using the `tabIndex={0}` property on the List.',
         '',
         '> ⚠️ _It is important to manually set `aria-setsize` and `aria-posinset` attributes on the list items, since_',
-        '_the virualization will only render the visible items. Relying on the DOM state for these attributes will not work._',
+        '_the virtualization will only render the visible items. Relying on the DOM state for these attributes will not work._',
+        '',
+        '> ⚠️ _There is a weird issue when using `react-window` with `tabster` where adding `tab-index={0}` to the `List` while',
+        'having a mover for arrow navigation causes the tab key to skip the list when moving forward, but not backwards.',
+        'Since we do not need to support arrow navigation with non-interactive list items, we can set `data-tabster={undefined}`',
+        'to prevent this issue._',
       ].join('\n'),
     },
   },
