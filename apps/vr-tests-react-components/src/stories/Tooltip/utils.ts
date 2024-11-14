@@ -14,4 +14,11 @@ export const useStyles = makeStyles({
       ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
     },
   },
+  wrapperBordered: {
+    position: 'relative',
+    height: '400px',
+    width: '400px',
+    padding: '10px',
+    ...shorthands.border('1px', 'dashed', 'red'),
+  },
 });
