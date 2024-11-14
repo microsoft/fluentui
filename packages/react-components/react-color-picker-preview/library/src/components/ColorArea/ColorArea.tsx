@@ -6,7 +6,7 @@ import { useColorAreaStyles_unstable } from './useColorAreaStyles.styles';
 import type { ColorAreaProps } from './ColorArea.types';
 
 /**
- * ColorArea component - TODO: add more docs
+ * ColorArea component
  */
 export const ColorArea: ForwardRefComponent<ColorAreaProps> = React.forwardRef((props, ref) => {
   const state = useColorArea_unstable(props, ref);

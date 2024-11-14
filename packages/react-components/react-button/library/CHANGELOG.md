@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 15 Oct 2024 17:17:53 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Nov 2024 10:01:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.95](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.95)
+
+Mon, 11 Nov 2024 10:01:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.94..@fluentui/react-button_v9.3.95)
+
+### Patches
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- fix: Button with as=a should present as a semantic link ([PR #33050](https://github.com/microsoft/fluentui/pull/33050) by sarah.higley@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.8 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-aria to v9.13.9 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.46 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.21.0 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-tabster to v9.23.0 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-theme to v9.1.22 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-utilities to v9.18.17 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
 
 ## [9.3.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.94)
 

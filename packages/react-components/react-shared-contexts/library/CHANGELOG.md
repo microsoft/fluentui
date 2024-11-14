@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Tue, 15 Oct 2024 17:17:50 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Nov 2024 10:00:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.21.0)
+
+Mon, 11 Nov 2024 10:00:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.20.2..@fluentui/react-shared-contexts_v9.21.0)
+
+### Minor changes
+
+- feat: Add custom style hooks for Carousel components ([PR #33155](https://github.com/microsoft/fluentui/pull/33155) by mifraser@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.22 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+
+### Patches
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
 
 ## [9.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.20.2)
 

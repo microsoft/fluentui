@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add `onOverflowChange` callback",
-  "packageName": "@fluentui/react-overflow",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

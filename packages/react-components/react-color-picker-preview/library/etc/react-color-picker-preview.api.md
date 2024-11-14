@@ -37,15 +37,22 @@ export const ColorArea: ForwardRefComponent<ColorAreaProps>;
 export const colorAreaClassNames: SlotClassNames<ColorAreaSlots>;
 
 // @public
-export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {};
+export type ColorAreaProps = Omit<ComponentProps<Partial<ColorAreaSlots>>, 'color' | 'onChange'> & {
+    color?: HsvColor;
+    defaultColor?: HsvColor;
+    onChange?: EventHandler<ColorAreaOnColorChangeData>;
+};
 
 // @public (undocumented)
 export type ColorAreaSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
+    thumb?: NonNullable<Slot<'div'>>;
+    inputX?: NonNullable<Slot<'input'>>;
+    inputY?: NonNullable<Slot<'input'>>;
 };
 
 // @public
-export type ColorAreaState = ComponentState<ColorAreaSlots>;
+export type ColorAreaState = ComponentState<Required<ColorAreaSlots>> & Pick<ColorAreaProps, 'color'>;
 
 // @public
 export const ColorPicker: ForwardRefComponent<ColorPickerProps>;
