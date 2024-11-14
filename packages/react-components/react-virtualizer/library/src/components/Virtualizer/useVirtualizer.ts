@@ -262,7 +262,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     // Time for custom size calcs
     return childProgressiveSizes.current[numItems - 1];
-  }, [getItemSize, itemSize, numItems]);
+  }, [getItemSize, itemSize, numItems, gap]);
 
   const calculateBefore = useCallback(() => {
     const currentIndex = Math.min(actualIndex, numItems - 1);
@@ -278,7 +278,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     // Time for custom size calcs
     return childProgressiveSizes.current[currentIndex - 1];
-  }, [actualIndex, getItemSize, itemSize, numItems]);
+  }, [actualIndex, getItemSize, itemSize, numItems, gap]);
 
   const calculateAfter = useCallback(() => {
     if (numItems === 0 || actualIndex + virtualizerLength >= numItems) {
@@ -294,7 +294,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     // Time for custom size calcs
     return childProgressiveSizes.current[numItems - 1] - childProgressiveSizes.current[lastItemIndex - 1];
-  }, [actualIndex, getItemSize, itemSize, numItems, virtualizerLength]);
+  }, [actualIndex, getItemSize, itemSize, numItems, virtualizerLength, gap]);
 
   // Observe intersections of virtualized components
   const { setObserverList } = useIntersectionObserver(
@@ -399,14 +399,9 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         // Get exact relative 'scrollTop' via IO values
         const measurementPos = calculateOverBuffer();
 
-        console.log('Measurementpos:', measurementPos);
-        console.log('Actual pos:', scrollViewRef?.current?.scrollTop);
-
         const maxIndex = Math.max(numItems - virtualizerLength, 0);
 
         const startIndex = getIndexFromScrollPosition(measurementPos) - bufferItems;
-
-        console.log('startIndex:', startIndex);
 
         // Safety limits
         const newStartIndex = Math.min(Math.max(startIndex, 0), maxIndex);
