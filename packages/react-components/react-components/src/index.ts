@@ -378,6 +378,7 @@ export {
   ComboboxProvider,
   useComboboxContextValues,
   ListboxProvider,
+  useListboxContext_unstable,
   useListboxContextValues,
   useComboboxFilter,
 } from '@fluentui/react-combobox';
