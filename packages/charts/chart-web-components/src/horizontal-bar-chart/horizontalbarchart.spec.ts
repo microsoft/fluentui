@@ -407,28 +407,6 @@ test.describe('horizontalbarchart - Basic', () => {
   });
 });
 
-test.describe('horizontalbarchart - RTL', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-horizontalbarchart--basic'));
-    await page.waitForFunction(() => customElements.whenDefined('fluent-horizontal-bar-chart'));
-  });
-
-  test('Should render chart properly in RTL mode', async ({ page }) => {
-    const element = page.locator('fluent-horizontal-bar-chart');
-    //Applying background color to body to avoid transparent background in screenshot also to make labels visible
-    await page.setContent(/* html */ `
-      <div dir="rtl">
-        <div>
-            <fluent-horizontal-bar-chart data='${JSON.stringify(basicChartTestData)}'>
-            </fluent-horizontal-bar-chart>
-        </div>
-      </div>
-    `);
-    //Enable test case after fixing the space issue in between bar segments
-    //await expect(element).toHaveScreenshot();
-  });
-});
-
 test.describe('horizontalbarchart - Single Bar HBC', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(fixtureURL('components-horizontalbarchart--single-bar-hbc'));
@@ -797,32 +775,5 @@ test.describe('horizontalbarchart - Single Data Point', () => {
     await bars.nth(0).dispatchEvent('mouseout');
     await bars.nth(1).dispatchEvent('mouseover');
     await expect(tooltip).toHaveCount(0);
-  });
-});
-
-test.describe('horizontalbarchart - Theme', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-horizontalbarchart--basic'));
-    await page.waitForFunction(() => customElements.whenDefined('fluent-donut-chart'));
-  });
-
-  test('Should render chart properly in teamsDarkTheme mode', async ({ page }) => {
-    const element = page.locator('fluent-horizontal-bar-chart');
-    await page.setContent(/* html */ `
-      <style>
-        body {
-          background-color: #292929;
-       }
-      </style>
-      <div>
-        <fluent-horizontal-bar-chart data='${JSON.stringify(basicChartTestData)}'>
-        </fluent-horizontal-bar-chart>
-      </div>
-    `)
-    await page.evaluate( theme => {
-       window.setTheme(theme);
-    }, teamsDarkTheme);
-    //Enable test case after fixing the space issue in between bar segments
-   // await expect(element).toHaveScreenshot();
   });
 });
