@@ -29,7 +29,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
 
   const {
-    onChange = onChangeFromContext,
+    onChange = onChangeFromContext as unknown as ColorAreaProps['onChange'],
     // Slots
     inputX,
     inputY,
@@ -40,7 +40,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
   const [hsvColor, setColor] = useControllableState<HsvColor>({
     defaultState: props.defaultColor,
-    state: colorFromContext || color,
+    state: color || colorFromContext,
     initialState: INITIAL_COLOR_HSV,
   });
   const saturation = Math.round(hsvColor.s * 100);

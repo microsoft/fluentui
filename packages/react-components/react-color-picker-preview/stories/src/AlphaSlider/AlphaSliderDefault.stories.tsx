@@ -29,8 +29,8 @@ export const Default = (props: Partial<AlphaSliderProps>) => {
 
   return (
     <div className={styles.example}>
-      <AlphaSlider overlayColor={COLOR} color={color} onChange={onSliderChange} {...props} />
-      <AlphaSlider overlayColor={COLOR} color={color} onChange={onSliderChange} vertical {...props} />
+      <AlphaSlider color={color} onChange={onSliderChange} {...props} />
+      <AlphaSlider color={color} onChange={onSliderChange} vertical {...props} />
       <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toRgbString() }} />
       <Button onClick={resetSlider}>Reset</Button>
     </div>

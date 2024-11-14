@@ -7,6 +7,7 @@ import type { AlphaSliderState, AlphaSliderProps } from './AlphaSlider.types';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
 import { MIN, MAX } from '../../utils/constants';
 import { getPercent } from '../../utils/getPercent';
+import type { HsvColor } from '../ColorPicker/ColorPicker.types';
 
 export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: AlphaSliderProps) => {
   'use no memo';
@@ -15,7 +16,7 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
   const { color, onChange = onChangeFromContext } = props;
-  const hsvColor = colorFromContext || color;
+  const hsvColor = color || colorFromContext;
   const hslColor = tinycolor(hsvColor).toHsl();
 
   const [currentValue, setCurrentValue] = useControllableState({
@@ -30,7 +31,7 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
     const newValue = Number(event.target.value);
-    const newColor = { ...hsvColor, a: newValue / 100 };
+    const newColor: HsvColor = { ...hsvColor, a: newValue / 100 };
     setCurrentValue(newValue);
     inputOnChange?.(event);
     onChange?.(event, { type: 'change', event, color: newColor });

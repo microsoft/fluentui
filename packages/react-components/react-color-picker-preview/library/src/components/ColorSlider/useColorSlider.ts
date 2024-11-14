@@ -35,7 +35,7 @@ export const useColorSlider_unstable = (
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['onChange'],
+    excludedPropNames: ['onChange', 'color'],
   });
 
   const {
@@ -49,7 +49,7 @@ export const useColorSlider_unstable = (
     thumb,
   } = props;
 
-  const hsvColor = colorFromContext || color;
+  const hsvColor = color || colorFromContext;
 
   const [currentValue, setCurrentValue] = useControllableState({
     defaultState: props.defaultColor?.h,
