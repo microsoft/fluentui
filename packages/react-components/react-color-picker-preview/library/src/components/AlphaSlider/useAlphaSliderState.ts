@@ -10,6 +10,7 @@ import { getPercent } from '../../utils/getPercent';
 
 export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: AlphaSliderProps) => {
   'use no memo';
+
   const { dir } = useFluent();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
@@ -18,8 +19,9 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const hslColor = tinycolor(hsvColor).toHsl();
 
   const [currentValue, setCurrentValue] = useControllableState({
-    state: hsvColor.a * 100,
-    initialState: 0,
+    defaultState: props.defaultColor?.a ? props.defaultColor.a * 100 : undefined,
+    state: hsvColor?.a ? hsvColor.a * 100 : undefined,
+    initialState: 100,
   });
   const clampedValue = clamp(currentValue, MIN, MAX);
   const valuePercent = getPercent(clampedValue, MIN, MAX);

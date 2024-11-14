@@ -52,7 +52,8 @@ export const useColorSlider_unstable = (
   const hsvColor = colorFromContext || color;
 
   const [currentValue, setCurrentValue] = useControllableState({
-    state: hsvColor.h,
+    defaultState: props.defaultColor?.h,
+    state: hsvColor?.h,
     initialState: 0,
   });
   const clampedValue = clamp(currentValue, MIN, MAX);

@@ -37,6 +37,11 @@ export type ColorSliderProps = Omit<
    * Color of the COlorPicker
    */
   color?: HsvColor;
+
+  /**
+   * The starting color for an uncontrolled ColorSlider.
+   */
+  defaultColor?: HsvColor;
 };
 
 /**
