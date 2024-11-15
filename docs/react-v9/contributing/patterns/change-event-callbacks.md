@@ -2,122 +2,87 @@
 
 Fluent UI React V9 implements event callbacks to expose internal state changes to consumers. These callbacks pass both the event data and the underlying React or DOM event for consumption.
 
-An example of this is the boolean change on Dialog to open or close via internal interactions, surfacing these events ensures that controlled implementations can update based on internal state.
+An example of this is the boolean change on TagPicker to open or close via internal interactions as well as provide updates on internal selection state, surfacing these events ensures that controlled implementations can both access and modify internal changes, or respond to specific event types.
 
 ```
-// Dialog.types..ts
-  export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
+// TagPicker.types.ts
 
-  export type DialogOpenChangeData =
-  | {
-      type: 'escapeKeyDown';
-      open: boolean;
-      event: React.KeyboardEvent<DialogSurfaceElement>;
-    }
-  | {
-      type: 'backdropClick';
-      open: boolean;
-      event: React.MouseEvent<DialogSurfaceElement>;
-    }
-  | {
-      type: 'triggerClick';
-      open: boolean;
-      event: React.MouseEvent<DialogSurfaceElement>;
-  };
-  /**
-  * Callback fired when the component changes value from open state.
-  *
-  * @param event - a React's Synthetic event or a KeyboardEvent in case of `documentEscapeKeyDown`
-  * @param data - A data object with relevant information,
-  * such as open value and type of interaction that created the event
-  */
-  export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
+  // Source event type is defined by string to handle varying event source types i.e. 'click' vs 'keydown'
+  export type TagPickerOnOptionSelectData = {
+    value: string;
+    selectedOptions: string[];
+  } & (EventData<'click', React.MouseEvent<HTMLDivElement>> | EventData<'keydown', React.KeyboardEvent<HTMLDivElement>>);
 
-  /**
-   * Callback fired when the component changes value from open state.
-   *
-   * @param event - a React's Synthetic event or a KeyboardEvent in case of `documentEscapeKeyDown`
-   * @param data - A data object with relevant information,
-   * such as open value and type of interaction that created the event
-   */
-  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
-  onOpenChange?: DialogOpenChangeEventHandler;
-```
+  // Unique event data type is provided for each component action
+  export type TagPickerOnOpenChangeData = { open: boolean } & (
+    | EventData<'click', React.MouseEvent<HTMLDivElement>>
+    | EventData<'keydown', React.KeyboardEvent<HTMLDivElement>>
+  );
 
-When implementing the change callback event, dialog wraps the function in a helper function for it's trigger component:
+  // Event callbacks are then defined as EventHandler with data type in TagPickerProps
+  onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
+  onOptionSelect?: EventHandler<TagPickerOnOptionSelectData>;
 
 ```
-// useDialog.ts
-const requestOpenChange = useEventCallback((data: DialogOpenChangeData) => {
-    onOpenChange?.(data.event, data);
 
-    // if user prevents default then do not change state value
-    // otherwise updates state value and trigger reference to the element that caused the opening
-    if (!data.event.isDefaultPrevented()) {
-      setOpen(data.open);
-    }
+TagPicker then passes the wrapped event callback into it's underlying ComboBox hook (useEventCallback ensures memoization with latest updated state) - the wrapped event callback could also be provided directly to a local onClick or onKeyDown slot property:
+
+```
+// useTagPicker.ts
+
+  // Note: ComboBox uses a previous legacy event data type that remains backwards compatible
+  const comboboxState = useComboboxBaseState({
+    ...props,
+    onOptionSelect: useEventCallback((event, data) =>
+      props.onOptionSelect?.(event, {
+        selectedOptions: data.selectedOptions,
+        value: data.optionValue,
+        type: event.type,
+        event,
+      } as TagPickerOnOptionSelectData),
+    ),
+    onOpenChange: useEventCallback((event, data) =>
+      props.onOpenChange?.(event, {
+        ...data,
+        type: event.type,
+        event,
+      } as TagPickerOnOpenChangeData),
+    ),
+    activeDescendantController,
+    editable: true,
+    multiselect: true,
+    size: 'medium',
   });
 ```
 
-This function is then consumed in the triggers onClick to bubble up event:
+Consumer interface:
 
 ```
-// useDialogTrigger.ts
-  const handleClick = useEventCallback(
-    (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-      child?.props.onClick?.(event);
-      if (!event.isDefaultPrevented()) {
-        requestOpenChange({
-          event,
-          type: 'triggerClick',
-          open: action === 'open',
-        });
-      }
-    },
+  const [open, setOpen] = React.useState(false);
+  const handleOpenChange: TagPickerProps['onOpenChange'] = (e, data) => setOpen(data.open);
+
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
+    if (data.value === 'no-options') {
+      return;
+    }
+    setSelectedOptions(data.selectedOptions);
+  };
+
+  return (
+    <TagPicker
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+        onOpenChange={handleOpenChange}
+        open
+      >
+      {...}
+    </TagPicker>
   );
 ```
 
-Users can then access the Event and data via Dialog api:
+When implementing event callbacks be mindful of:
 
-```
-// DialogControllingOpenAndClose.stories.tsx
-    <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
-```
-
-Alternatively, you can use the callback directly in an event, or wrap for multiple types of events provided in context similar to react-carousel:
-
-````
-
-// useCarousel.ts
-const selectPageByElement: CarouselContextValue['selectPageByElement'] = useEventCallback((event, element, jump) => {
-const foundIndex = carouselApi.scrollToElement(element, jump);
-onActiveIndexChange?.(event, { event, type: 'focus', index: foundIndex });
-
-    return foundIndex;
-
-});
-
-const selectPageByIndex: CarouselContextValue['selectPageByIndex'] = useEventCallback((event, index, jump) => {
-carouselApi.scrollToIndex(index, jump);
-
-    onActiveIndexChange?.(event, { event, type: 'click', index });
-
-});
-
-const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
-const nextPageIndex = carouselApi.scrollInDirection(direction);
-onActiveIndexChange?.(event, { event, type: 'click', index: nextPageIndex });
-
-    return nextPageIndex;
-
-});
-
-```
-
-When implementing callback events be mindful of:
-
-1.) All events for a state change must be supported, take care to leave flexibility in data and event types to prevent breaking changes if new functionality is added.
+1.) All events for a state change must be supported to ensure external user state is always updated, take care to leave flexibility in data and event types to prevent breaking changes if new functionality is added.
 
 2.) Some callbacks may not have an underlying DOM or React event to bubble if not driven by user interaction, such as a timer based interactions. If non-event callbacks may be required in the future, it is important to set event types as optionally null to prevent breaking changes when not present.
-```
-````
