@@ -93,8 +93,8 @@ function countTokens(analysis: StyleAnalysis): number {
  */
 const isRunningDirectly = process.argv[1].endsWith('index.ts');
 if (isRunningDirectly) {
-  const rootDir = process.argv[2] || './src';
-  const outputFile = process.argv[3] || './token-analysis.json';
+  const rootDir = process.argv[2] || '../../';
+  const outputFile = process.argv[3] || './output.json';
   const debug = process.argv.includes('--debug');
   const perf = process.argv.includes('--perf');
 

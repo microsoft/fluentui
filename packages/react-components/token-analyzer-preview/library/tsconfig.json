@@ -8,10 +8,13 @@
     "noUnusedLocals": true,
     "preserveConstEnums": true,
     "module": "ESNext",
-    "moduleResolution": "bundler", // or "Node16"/"NodeNext"
     "target": "ESNext",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "sourceMap": false,
+    "moduleResolution": "node"
   },
   "include": [],
   "files": [],

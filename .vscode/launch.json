@@ -193,6 +193,35 @@
       "command": "yarn create-component",
       "cwd": "${workspaceFolder}",
       "outputCapture": "std"
+    },
+    {
+      "name": "Debug Token Analyzer",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "node",
+      "args": [
+        "--loader",
+        "ts-node/esm",
+        "--experimental-specifier-resolution=node",
+        "${workspaceFolder}/packages/react-components/token-analyzer-preview/library/src/index.ts"
+      ],
+      "cwd": "${workspaceFolder}/packages/react-components/token-analyzer-preview/library",
+      "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/packages/react-components/token-analyzer-preview/library/**",
+        "!**/node_modules/**"
+      ],
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/packages/react-components/token-analyzer-preview/library/**/*.js"],
+      "env": {
+        "TS_NODE_PROJECT": "${workspaceFolder}/packages/react-components/token-analyzer-preview/library/tsconfig.json",
+        "NODE_OPTIONS": "--enable-source-maps"
+      },
+      "outputCapture": "std",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
     }
   ]
 }
+
+// "program": "${workspaceFolder}/packages/react-components/token-analyzer-preview/library/src/index.ts"
