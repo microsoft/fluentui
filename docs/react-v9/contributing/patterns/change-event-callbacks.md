@@ -2,7 +2,7 @@
 
 Fluent UI React V9 implements event callbacks to expose internal state changes to consumers. These callbacks pass both the event data and the underlying React or DOM event for consumption.
 
-An example of this is the boolean change on TagPicker to open or close via internal interactions as well as provide updates on internal selection state, surfacing these events ensures that controlled implementations can both access and modify internal changes, or respond to specific event types.
+An example of this is the boolean change on TagPicker to open or close via internal interactions and provide updates on selection state, surfacing these events ensures that controlled implementations can both access and modify internal changes, or respond to specific event types.
 
 ```
 // TagPicker.types.ts
