@@ -123,9 +123,7 @@ export const customLightTheme: Theme = {
 
 ### Extending theme with new tokens
 
-It's often useful for an app to extend the base set of tokens from Fluent UI.
-
-⚠ Components in this repo should _not_ do this.
+It's often useful for an app to extend the base set of tokens from Fluent UI. This process will help consuming teams or libraries add more tokens, but sharing them is outside the scope of this doc.
 
 ⚠ Warning that adding more tokens adds more CSS variables which can effect run time performance as each DOM Node carries all the tokens.
 
@@ -165,12 +163,4 @@ const useStyles = makeStyles({
     outlineColor: customTokens.tokenC,
   },
 });
-```
-
-```
-
-```
-
-```
-
 ```
