@@ -36,6 +36,27 @@ function createElementMock() {
 }
 
 describe('createMotionComponent', () => {
+  let hasAnimation: boolean;
+  beforeEach(() => {
+    if (!global.Animation) {
+      hasAnimation = false;
+      global.Animation = {
+        // @ts-expect-error mock
+        prototype: {
+          persist: jest.fn(),
+        },
+      };
+    } else {
+      hasAnimation = true;
+    }
+  });
+
+  afterEach(() => {
+    if (!hasAnimation) {
+      // @ts-expect-error mock
+      delete global.Animation;
+    }
+  });
   it('creates a motion and plays it', () => {
     const TestAtom = createMotionComponent(motion);
     const { animateMock, ElementMock } = createElementMock();
@@ -48,6 +69,24 @@ describe('createMotionComponent', () => {
 
     expect(animateMock).toHaveBeenCalledWith(motion.keyframes, {
       duration: motion.duration,
+      fill: 'forwards',
+    });
+  });
+
+  it('creates a motion and plays it (without .persist())', () => {
+    // @ts-expect-error mock
+    delete global.Animation.prototype.persist;
+    const TestAtom = createMotionComponent(motion);
+    const { animateMock, ElementMock } = createElementMock();
+
+    render(
+      <TestAtom>
+        <ElementMock />
+      </TestAtom>,
+    );
+
+    expect(animateMock).toHaveBeenCalledWith(motion.keyframes, {
+      duration: 1,
       fill: 'forwards',
     });
   });
