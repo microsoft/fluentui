@@ -366,6 +366,7 @@
       "packages/react-components/*",
       "packages/react-components/*/*",
       "packages/charts/*",
+      "packages/charts/*/*",
       "scripts/*",
       "tools/*",
       "typings"
