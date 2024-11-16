@@ -1,16 +1,21 @@
 import type { Preview } from '@storybook/react';
 
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import rootPreview from '../../../.storybook/preview';
+import * as rootPreview from '../../../.storybook/preview';
+
+import { FluentDocsContainer } from '../../public-docsite-v9/src/DocsComponents/FluentDocsContainer.stories';
 
 const preview: Preview = {
   ...rootPreview,
   parameters: {
     ...rootPreview.parameters,
+    docs: {
+      ...rootPreview.parameters.docs,
+      container: FluentDocsContainer,
+    },
     options: {
       storySort: {
         method: 'alphabetical',
-        order: ['Welcome', 'Packages'],
+        order: ['Introduction', 'Packages'],
       },
     },
   },

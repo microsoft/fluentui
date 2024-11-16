@@ -34,8 +34,8 @@ const theme = create({
   inputBorderRadius: 4,
 
   // Use the fluent branding for the upper left image
-  brandTitle: 'Fluent UI Contributors Packages',
-  brandUrl: 'https://github.com/microsoft/fluentui-contrib',
+  brandTitle: 'Fluent UI Charts Packages',
+  brandUrl: 'https://github.com/microsoft/fluentui/charts',
   brandImage: logo,
 });
 
