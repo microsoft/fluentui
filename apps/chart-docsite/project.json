@@ -1,0 +1,39 @@
+{
+  "name": "chart-docsite",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/docsite/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "storybook": {
+      "executor": "@nx/storybook:storybook",
+      "options": {
+        "port": 3000,
+        "configDir": "apps/docsite/.storybook",
+        "docsMode": true
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nx/storybook:build",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/docsite",
+        "configDir": "apps/docsite/.storybook",
+        "docsMode": true
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    }
+  }
+}
