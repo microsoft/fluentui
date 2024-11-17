@@ -115,7 +115,7 @@ export const WithAction = () => {
                 <b>App Name</b>
               </Body1>
             }
-            description={<Caption1>Developer</Caption1>}
+            description={<Caption1>Developer options</Caption1>}
             action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
           />
 
