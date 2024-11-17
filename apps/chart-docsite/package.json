@@ -4,7 +4,7 @@
   "private": true,
   "description": "Fluent UI React v9 documentation",
   "scripts": {
-    "build-storybook": "storybook build -o ./dist/storybook --docs && node ./.storybook/fix-title.js 'Fluent UI React v9' ../dist",
+    "build-storybook": "storybook build -o ./dist/storybook --docs && node ./.storybook/fix-title.js 'Fluent UI Charts v9' ../dist",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
