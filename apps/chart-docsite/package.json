@@ -8,7 +8,6 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
-    "lint": "just-scripts lint",
     "type-check": "just-scripts type-check",
     "start": "yarn storybook:docs",
     "storybook": "storybook dev --port 3000",
