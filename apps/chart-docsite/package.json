@@ -21,29 +21,14 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-charts-compat": "*",
-    "@fluentui/react-datepicker-compat": "*",
-    "@fluentui/react-migration-v8-v9": "*",
-    "@fluentui/react-migration-v0-v9": "*",
-    "@fluentui/react": "*",
-    "@fluentui/react-northstar": "*",
-    "@fluentui/react-icons-northstar": "*",
+    "@fluentui/react-charts-preview": "*",
     "@fluentui/react-components": "*",
-    "@fluentui/react-list-preview": "*",
-    "@fluentui/react-storybook-addon": "*",
-    "@fluentui/react-storybook-addon-export-to-sandbox": "*",
-    "@fluentui/theme-designer": "*",
-    "@fluentui/recipes": "*",
-    "@fluentui/react-timepicker-compat": "*",
     "@griffel/react": "^1.5.22",
     "@microsoft/applicationinsights-web": "^3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-window": "^1.8.6",
     "tslib": "^2.1.0",
-    "react-hook-form": "^5.7.2",
-    "@fluentui/react-nav-preview": "*",
-    "@fluentui/react-motion-components-preview": "*",
-    "@fluentui/react-icons-compat": "*"
+    "react-hook-form": "^5.7.2"
   }
 }
