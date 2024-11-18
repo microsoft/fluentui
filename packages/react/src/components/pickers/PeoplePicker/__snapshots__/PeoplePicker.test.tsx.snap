@@ -29,12 +29,13 @@ exports[`PeoplePicker renders correctly 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
+          top: 0px;
           white-space: nowrap;
           width: 1px;
         }
     id="selected-suggestion-alert-id__0"
   >
-
+    
   </div>
   <span
     hidden={true}
@@ -193,12 +194,13 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
+          top: 0px;
           white-space: nowrap;
           width: 1px;
         }
     id="selected-suggestion-alert-id__0"
   >
-
+    
   </div>
   <span
     hidden={true}

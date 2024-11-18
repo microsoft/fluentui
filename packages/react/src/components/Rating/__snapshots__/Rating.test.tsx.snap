@@ -171,6 +171,7 @@ exports[`Rating renders correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              top: 0px;
               white-space: nowrap;
               width: 1px;
             }
@@ -341,6 +342,7 @@ exports[`Rating renders correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              top: 0px;
               white-space: nowrap;
               width: 1px;
             }
@@ -511,6 +513,7 @@ exports[`Rating renders correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              top: 0px;
               white-space: nowrap;
               width: 1px;
             }
@@ -681,6 +684,7 @@ exports[`Rating renders correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              top: 0px;
               white-space: nowrap;
               width: 1px;
             }
@@ -851,6 +855,7 @@ exports[`Rating renders correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              top: 0px;
               white-space: nowrap;
               width: 1px;
             }
@@ -1097,6 +1102,7 @@ exports[`Rating renders correctly with half star 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              top: 0px;
               white-space: nowrap;
               width: 1px;
             }
@@ -1267,6 +1273,7 @@ exports[`Rating renders correctly with half star 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              top: 0px;
               white-space: nowrap;
               width: 1px;
             }
@@ -1438,6 +1445,7 @@ exports[`Rating renders correctly with half star 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              top: 0px;
               white-space: nowrap;
               width: 1px;
             }
@@ -1608,6 +1616,7 @@ exports[`Rating renders correctly with half star 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              top: 0px;
               white-space: nowrap;
               width: 1px;
             }
@@ -1778,6 +1787,7 @@ exports[`Rating renders correctly with half star 1`] = `
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
+              top: 0px;
               white-space: nowrap;
               width: 1px;
             }
