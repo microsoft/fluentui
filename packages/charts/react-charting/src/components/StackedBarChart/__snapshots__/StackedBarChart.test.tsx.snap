@@ -310,7 +310,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
                           opacity: 0.85;
                         }
                   >
-
+                     
                   </div>
                 </div>
                 <div

@@ -447,7 +447,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                     opacity: 0.85;
                   }
             >
-
+               
             </div>
           </div>
           <div

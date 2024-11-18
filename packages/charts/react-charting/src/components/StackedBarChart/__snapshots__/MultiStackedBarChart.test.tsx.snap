@@ -612,7 +612,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                     opacity: 0.85;
                   }
             >
-
+               
             </div>
           </div>
           <div
