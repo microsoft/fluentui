@@ -40,4 +40,12 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
 
     return localConfig;
   },
+  refs: {
+    contrib: {
+      title: 'Contributors Packages',
+      url: 'https://microsoft.github.io/fluentui-contrib/docsite/',
+      expanded: false,
+      sourceUrl: 'https://github.com/microsoft/fluentui-contrib',
+    },
+  },
 });

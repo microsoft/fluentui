@@ -1954,6 +1954,23 @@
     "@griffel/react" "^1.5.14"
     "@swc/helpers" "^0.5.1"
 
+"@fluentui/tokens@1.0.0-alpha.18":
+  version "1.0.0-alpha.18"
+  resolved "https://registry.yarnpkg.com/@fluentui/tokens/-/tokens-1.0.0-alpha.18.tgz#9a6ca03c26c9223573535beb198a7ff9a58ed8a7"
+  integrity sha512-d7CpB7RJhPlv8r6OjKRsL4mu8dvSiwrGdQuZyRhDjhCa/5u0xSdCxLmwGu4HOTlr9sg9Gf7LbQe2shAlq2J21w==
+  dependencies:
+    "@swc/helpers" "^0.5.1"
+
+"@fluentui/web-components@3.0.0-beta.72":
+  version "3.0.0-beta.72"
+  resolved "https://registry.yarnpkg.com/@fluentui/web-components/-/web-components-3.0.0-beta.72.tgz#d83a2cc377b7376d4e240b8c8c2352c9538e9a90"
+  integrity sha512-JB/JQ1Nqj/rg6yML40qv/n/S5FX49Ep8ybAAe11yBPkcKmWhC29xkkTcOzBfXlc+1d3a5rndcdXS9vYg/cfleA==
+  dependencies:
+    "@fluentui/tokens" "1.0.0-alpha.18"
+    "@microsoft/fast-web-utilities" "^6.0.0"
+    tabbable "^6.2.0"
+    tslib "^2.1.0"
+
 "@griffel/babel-preset@1.5.8", "@griffel/babel-preset@^1.5.8":
   version "1.5.8"
   resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.5.8.tgz#2ee5e404b34350fcb40a2506d73b0467f1a66be0"
@@ -22742,10 +22759,10 @@ typescript-eslint@^8.0.0:
     "@typescript-eslint/parser" "8.8.1"
     "@typescript-eslint/utils" "8.8.1"
 
-typescript@5.0.4, typescript@~5.0.4:
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.4.tgz#b217fd20119bd61a94d4011274e0ab369058da3b"
-  integrity sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==
+typescript@5.2.2, typescript@~5.0.4:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.2.tgz#5ebb5e5a5b75f085f22bc3f8460fba308310fa78"
+  integrity sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==
 
 typescript@~5.4.2:
   version "5.4.5"

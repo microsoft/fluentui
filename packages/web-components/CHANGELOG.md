@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 30 Oct 2024 04:06:53 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Nov 2024 04:07:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.73](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.73)
+
+Thu, 07 Nov 2024 04:07:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.72..@fluentui/web-components_v3.0.0-beta.73)
+
+### Changes
+
+- feat: add Tooltip component ([PR #32852](https://github.com/microsoft/fluentui/pull/32852) by rupertdavid@microsoft.com)
 
 ## [3.0.0-beta.72](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.72)
 

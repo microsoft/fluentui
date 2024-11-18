@@ -2,6 +2,21 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Tue, 05 Nov 2024 00:59:52 GMT",
+      "tag": "@fluentui/theme_v2.6.63",
+      "version": "2.6.63",
+      "comments": {
+        "none": [
+          {
+            "author": "viktorgenaev@microsoft.com",
+            "package": "@fluentui/theme",
+            "commit": "d6af8e30ddd353c900441eea489b4a5aea0db088",
+            "comment": "update api.md"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Oct 2024 16:51:54 GMT",
       "tag": "@fluentui/theme_v2.6.63",
       "version": "2.6.63",

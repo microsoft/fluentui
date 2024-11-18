@@ -3,7 +3,7 @@ import FadeDescription from './FadeDescription.md';
 
 export { Default } from './FadeDefault.stories';
 export { Snappy } from './FadeSnappy.stories';
-export { Exaggerated } from './FadeExaggerated.stories';
+export { Relaxed } from './FadeRelaxed.stories';
 export { Customization } from './FadeCustomization.stories';
 
 export default {

@@ -204,6 +204,7 @@ export const Controlled = (props: Partial<NavDrawerProps>) => {
         // multiple={isMultiple}
         onNavCategoryItemToggle={handleCategoryToggle}
         onNavItemSelect={handleItemSelect}
+        tabbable={true} // enables keyboard tabbing
         openCategories={openCategories}
         selectedValue={selectedValue}
         selectedCategoryValue={selectedCategoryValue}

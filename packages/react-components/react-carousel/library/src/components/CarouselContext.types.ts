@@ -30,7 +30,10 @@ export type CarouselContextValue = {
   subscribeForValues: (listener: (data: CarouselUpdateData) => void) => () => void;
   enableAutoplay: (autoplay: boolean) => void;
   resetAutoplay: () => void;
+  // Container with controls passed to carousel engine
   containerRef?: React.RefObject<HTMLDivElement>;
+  // Viewport without controls used for interactive functionality (draggable, pause autoplay etc.)
+  viewportRef?: React.RefObject<HTMLDivElement>;
 };
 
 /**

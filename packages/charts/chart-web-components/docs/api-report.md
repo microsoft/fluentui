@@ -39,13 +39,15 @@ export class DonutChart extends FASTElement {
     // (undocumented)
     height: number;
     // (undocumented)
-    hideLegends?: boolean;
+    hideLegends: boolean;
     // (undocumented)
-    hideTooltip?: boolean;
+    hideTooltip: boolean;
     // (undocumented)
     innerRadius: number;
     // (undocumented)
     isLegendSelected: boolean;
+    // (undocumented)
+    legendListLabel?: string;
     // Warning: (ae-forgotten-export) The symbol "Legend" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
@@ -80,7 +82,6 @@ export const DonutChartTemplate: ElementViewTemplate<DonutChart>;
 
 // @public
 export class HorizontalBarChart extends FASTElement {
-    constructor();
     // (undocumented)
     activeLegend: string;
     // (undocumented)
@@ -102,14 +103,15 @@ export class HorizontalBarChart extends FASTElement {
     // (undocumented)
     handleLegendMouseoverAndFocus: (legendTitle: string) => void;
     // (undocumented)
-    hideLegends?: boolean;
+    hideLegends: boolean;
     // (undocumented)
     hideRatio: boolean;
     // (undocumented)
-    hideTooltip?: boolean;
+    hideTooltip: boolean;
     // (undocumented)
     isLegendSelected: boolean;
-    _isRTL: boolean;
+    // (undocumented)
+    legendListLabel?: string;
     // (undocumented)
     renderChart(): void;
     // (undocumented)
@@ -123,13 +125,14 @@ export class HorizontalBarChart extends FASTElement {
         xPos: number;
         yPos: number;
     };
-    get type(): 'horizontalbarchart';
     // Warning: (ae-forgotten-export) The symbol "ChartDataPoint" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
     uniqueLegends: ChartDataPoint[];
     // Warning: (ae-forgotten-export) The symbol "Variant" needs to be exported by the entry point index.d.ts
-    variant: Variant;
+    //
+    // (undocumented)
+    variant?: Variant;
 }
 
 // @public

@@ -520,19 +520,19 @@ export interface ITheme extends Theme {
 // @public (undocumented)
 export namespace LocalizedFontFamilies {
     const // (undocumented)
-    Arabic: string;
+    Arabic = "'Segoe UI Web (Arabic)'";
     const // (undocumented)
     ChineseSimplified = "'Microsoft Yahei UI', Verdana, Simsun";
     const // (undocumented)
     ChineseTraditional = "'Microsoft Jhenghei UI', Pmingliu";
     const // (undocumented)
-    Cyrillic: string;
+    Cyrillic = "'Segoe UI Web (Cyrillic)'";
     const // (undocumented)
-    EastEuropean: string;
+    EastEuropean = "'Segoe UI Web (East European)'";
     const // (undocumented)
-    Greek: string;
+    Greek = "'Segoe UI Web (Greek)'";
     const // (undocumented)
-    Hebrew: string;
+    Hebrew = "'Segoe UI Web (Hebrew)'";
     const // (undocumented)
     Hindi = "'Nirmala UI'";
     const // (undocumented)
@@ -540,17 +540,17 @@ export namespace LocalizedFontFamilies {
     const // (undocumented)
     Korean = "'Malgun Gothic', Gulim";
     const // (undocumented)
-    Selawik: string;
+    Selawik = "'Selawik Web'";
     const // (undocumented)
     Thai = "'Leelawadee UI Web', 'Kmer UI'";
     const // (undocumented)
-    Vietnamese: string;
+    Vietnamese = "'Segoe UI Web (Vietnamese)'";
     const // (undocumented)
-    WestEuropean: string;
+    WestEuropean = "'Segoe UI Web (West European)'";
     const // (undocumented)
-    Armenian: string;
+    Armenian = "'Segoe UI Web (Armenian)'";
     const // (undocumented)
-    Georgian: string;
+    Georgian = "'Segoe UI Web (Georgian)'";
 }
 
 // @public (undocumented)

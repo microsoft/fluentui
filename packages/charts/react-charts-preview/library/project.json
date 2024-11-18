@@ -1,0 +1,8 @@
+{
+  "name": "react-charts-preview",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/charts/react-charts-preview/library/src",
+  "tags": ["platform:web", "vNext"],
+  "implicitDependencies": []
+}

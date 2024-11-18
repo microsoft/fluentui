@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-sass",
   "entries": [
     {
+      "date": "Mon, 11 Nov 2024 10:01:01 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.26",
+      "version": "9.0.0-alpha.26",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "2558ddce7329d2a1c1f76fa1e5f614918fe6dcd9",
+            "comment": "chore: replace npm-scripts and just-scrtips with nx inferred tasks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Jul 2024 17:25:20 GMT",
       "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.23",
       "version": "9.0.0-alpha.23",

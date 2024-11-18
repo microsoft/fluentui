@@ -1,8 +1,17 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Tue, 15 Oct 2024 17:17:52 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Nov 2024 10:00:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.19)
+
+Mon, 11 Nov 2024 10:00:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.18..@fluentui/tokens_v1.0.0-alpha.19)
+
+### Changes
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
 
 ## [1.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.18)
 

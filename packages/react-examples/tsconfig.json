@@ -16,7 +16,7 @@
     "preserveConstEnums": true,
     "skipLibCheck": true,
     "lib": ["es5", "dom", "es2015.promise"],
-    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "typeRoots": ["../../node_modules", "../../node_modules/@types", "../../typings"],
     "types": ["webpack-env", "custom-global", "node", "cypress", "cypress-real-events"],
     "isolatedModules": true,
     "paths": {

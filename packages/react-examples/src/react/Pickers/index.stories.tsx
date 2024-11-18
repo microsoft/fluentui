@@ -6,6 +6,8 @@ export { TagPickerCustomRemoveIconExample as TagPickerCustomRemoveIcon } from '.
 
 export { TagPickerInlineExample as TagPickerInline } from './TagPicker.Inline.Example';
 
+export { TagPickerWrappedExample as TagPickerWrapped } from './TagPicker.Wrapped.Example';
+
 export default {
   title: 'Components/Pickers',
 };
