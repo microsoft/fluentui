@@ -2,6 +2,27 @@
   "name": "@fluentui/react-infolabel",
   "entries": [
     {
+      "date": "Mon, 18 Nov 2024 09:44:39 GMT",
+      "tag": "@fluentui/react-infolabel_v9.0.50",
+      "version": "9.0.50",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "72ede6a929015e7111c2833624cce7c571b1936c",
+            "comment": "chore: Adding maxWidth to InfoButton's popover to match figma spec."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-popover to v9.9.25",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:00:40 GMT",
       "tag": "@fluentui/react-infolabel_v9.0.49",
       "version": "9.0.49",

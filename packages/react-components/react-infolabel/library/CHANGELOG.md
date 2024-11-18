@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-infolabel
 
-This log was last generated on Mon, 11 Nov 2024 10:00:40 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Nov 2024 09:44:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-infolabel_v9.0.50)
+
+Mon, 18 Nov 2024 09:44:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infolabel_v9.0.49..@fluentui/react-infolabel_v9.0.50)
+
+### Patches
+
+- chore: Adding maxWidth to InfoButton's popover to match figma spec. ([PR #33253](https://github.com/microsoft/fluentui/pull/33253) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-popover to v9.9.25 ([PR #33229](https://github.com/microsoft/fluentui/pull/33229) by beachball)
 
 ## [9.0.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-infolabel_v9.0.49)
 

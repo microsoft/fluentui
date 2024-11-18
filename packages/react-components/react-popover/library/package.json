@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-popover",
-  "version": "9.9.24",
+  "version": "9.9.25",
   "description": "Popover component for Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,7 +25,7 @@
     "@fluentui/react-aria": "^9.13.9",
     "@fluentui/react-context-selector": "^9.1.69",
     "@fluentui/react-portal": "^9.4.38",
-    "@fluentui/react-positioning": "^9.15.11",
+    "@fluentui/react-positioning": "^9.15.12",
     "@fluentui/react-shared-contexts": "^9.21.0",
     "@fluentui/react-tabster": "^9.23.0",
     "@fluentui/react-theme": "^9.1.22",

@@ -1,0 +1,74 @@
+{
+  "name": "@fluentui/react-charts-preview",
+  "entries": [
+    {
+      "date": "Mon, 18 Nov 2024 09:44:38 GMT",
+      "tag": "@fluentui/react-charts-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts-preview",
+            "commit": "b79227adaeee478533c01c2e26b9cfdd205e18ce",
+            "comment": "feat: Create charts components as native v9 controls."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.95",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.46",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts-preview",
+            "comment": "Bump @fluentui/react-overflow to v9.2.1",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts-preview",
+            "comment": "Bump @fluentui/react-popover to v9.9.25",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.0",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.23.0",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts-preview",
+            "comment": "Bump @fluentui/react-theme to v9.1.22",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts-preview",
+            "comment": "Bump @fluentui/react-tooltip to v9.4.43",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.17",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          }
+        ]
+      }
+    }
+  ]
+}

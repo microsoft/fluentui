@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Export useListboxContext_unstable.",
-  "packageName": "@fluentui/react-components",
-  "email": "owcampbe@microsoft.com",
-  "dependentChangeType": "patch"
-}

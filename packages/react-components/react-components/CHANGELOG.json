@@ -2,6 +2,73 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 18 Nov 2024 09:44:38 GMT",
+      "tag": "@fluentui/react-components_v9.56.2",
+      "version": "9.56.2",
+      "comments": {
+        "none": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "ceafd5f9d5cc3539111af0d741a0d1bfcc4926cf",
+            "comment": "docs: Add cypress component testing"
+          }
+        ],
+        "minor": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts-preview",
+            "commit": "b79227adaeee478533c01c2e26b9cfdd205e18ce",
+            "comment": "feat: Create charts components as native v9 controls."
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "bb568eb5192c86b0dd93fe43508528ed59f95b3a",
+            "comment": "feat: adjust thumb positioning"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "c70e793c424397ceac94b4df07be4ca9a5b5bbc3",
+            "comment": "fix: Clearable Dropdowns and Comboboxes do not show clear button if they are disabled."
+          },
+          {
+            "author": "owcampbe@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "cc7cfbd0a3187c4dab786840017a610d1d6c9b93",
+            "comment": "chore: Export useListboxContext_unstable."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "72ede6a929015e7111c2833624cce7c571b1936c",
+            "comment": "chore: Adding maxWidth to InfoButton's popover to match figma spec."
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "072ad5a3be7e47d6ccc19ac5addb0f633f403094",
+            "comment": "fix: update writeArrowUpdates to correctly resolve arrow position"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "4046b33a9251b5e1c90b052f633a0b4fad46b7c6",
+            "comment": "fix: focus selected tab by default"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "d766af99e4588ae0e2710696fce427e905175e89",
+            "comment": "chore: ensure TreeItem role can be overridden by props"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Nov 2024 09:31:25 GMT",
       "tag": "@fluentui/react-components_v9.56.1",
       "version": "9.56.1",

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: adjust thumb positioning",
-  "packageName": "@fluentui/react-slider",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
