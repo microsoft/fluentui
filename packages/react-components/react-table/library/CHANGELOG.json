@@ -2,6 +2,33 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Mon, 18 Nov 2024 09:44:40 GMT",
+      "tag": "@fluentui/react-table_v9.15.22",
+      "version": "9.15.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.6.43",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.2.41",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.2.36",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:00:56 GMT",
       "tag": "@fluentui/react-table_v9.15.21",
       "version": "9.15.21",

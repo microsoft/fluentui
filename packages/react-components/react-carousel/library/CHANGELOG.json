@@ -2,6 +2,21 @@
   "name": "@fluentui/react-carousel",
   "entries": [
     {
+      "date": "Mon, 18 Nov 2024 09:44:38 GMT",
+      "tag": "@fluentui/react-carousel_v9.3.1",
+      "version": "9.3.1",
+      "comments": {
+        "none": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "ceafd5f9d5cc3539111af0d741a0d1bfcc4926cf",
+            "comment": "docs: Add cypress component testing"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Nov 2024 09:31:25 GMT",
       "tag": "@fluentui/react-carousel_v9.3.1",
       "version": "9.3.1",

@@ -2,6 +2,39 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Mon, 18 Nov 2024 09:44:40 GMT",
+      "tag": "@fluentui/react-tree_v9.8.6",
+      "version": "9.8.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "d766af99e4588ae0e2710696fce427e905175e89",
+            "comment": "chore: ensure TreeItem role can be overridden by props"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-avatar to v9.6.43",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-checkbox to v9.2.41",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-radio to v9.2.36",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:00:37 GMT",
       "tag": "@fluentui/react-tree_v9.8.5",
       "version": "9.8.5",

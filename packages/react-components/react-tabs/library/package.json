@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tabs",
-  "version": "9.6.1",
+  "version": "9.6.2",
   "description": "Fluent UI React tabs components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

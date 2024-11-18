@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Clearable Dropdowns and Comboboxes do not show clear button if they are disabled.",
-  "packageName": "@fluentui/react-combobox",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
