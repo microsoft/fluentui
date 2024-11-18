@@ -7790,7 +7790,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     padding-right: 0px;
                     padding-top: 0px;
                     position: absolute;
-                    top: 0;
+                    top: 0px;
                     white-space: nowrap;
                     width: 1px;
                   }

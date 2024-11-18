@@ -2242,7 +2242,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
-          top: 0;
+          top: 0px;
           white-space: nowrap;
           width: 1px;
         }
@@ -2670,7 +2670,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
-          top: 0;
+          top: 0px;
           white-space: nowrap;
           width: 1px;
         }
@@ -3006,7 +3006,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
-          top: 0;
+          top: 0px;
           white-space: nowrap;
           width: 1px;
         }
