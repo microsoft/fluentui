@@ -485,7 +485,7 @@ exports[`ColorPicker renders correctly 1`] = `
                 <div
                   hidden=""
                   id="tooltip1"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
@@ -651,7 +651,7 @@ exports[`ColorPicker renders correctly 1`] = `
                 <div
                   hidden=""
                   id="tooltip7"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
@@ -817,7 +817,7 @@ exports[`ColorPicker renders correctly 1`] = `
                 <div
                   hidden=""
                   id="tooltip13"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
@@ -983,7 +983,7 @@ exports[`ColorPicker renders correctly 1`] = `
                 <div
                   hidden=""
                   id="tooltip19"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
@@ -1149,7 +1149,7 @@ exports[`ColorPicker renders correctly 1`] = `
                 <div
                   hidden=""
                   id="tooltip25"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
@@ -1670,7 +1670,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                 <div
                   hidden=""
                   id="tooltip1"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
@@ -1836,7 +1836,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                 <div
                   hidden=""
                   id="tooltip7"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
@@ -2002,7 +2002,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                 <div
                   hidden=""
                   id="tooltip13"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
@@ -2168,7 +2168,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                 <div
                   hidden=""
                   id="tooltip19"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
@@ -2334,7 +2334,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                 <div
                   hidden=""
                   id="tooltip25"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
@@ -2835,7 +2835,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                 <div
                   hidden=""
                   id="tooltip1"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
@@ -3001,7 +3001,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                 <div
                   hidden=""
                   id="tooltip7"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
@@ -3167,7 +3167,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                 <div
                   hidden=""
                   id="tooltip13"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
@@ -3333,7 +3333,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                 <div
                   hidden=""
                   id="tooltip19"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
@@ -3499,7 +3499,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                 <div
                   hidden=""
                   id="tooltip25"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 />
               </div>
             </td>
