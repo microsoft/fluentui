@@ -1,10 +1,4 @@
-import {
-  type EventHandler,
-  useAnimationFrame,
-  useControllableState,
-  useEventCallback,
-  useTimeout,
-} from '@fluentui/react-utilities';
+import { type EventHandler, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import EmblaCarousel, { EmblaPluginType, type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
 import * as React from 'react';
 

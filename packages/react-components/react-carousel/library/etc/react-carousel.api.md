@@ -209,6 +209,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     align?: 'center' | 'start' | 'end';
     activeIndex?: number;
     onActiveIndexChange?: EventHandler<CarouselIndexChangeData>;
+    onAutoplayIndexChange?: (ev: null, data: CarouselAutoplayIndexChangeData) => void;
     circular?: boolean;
     groupSize?: number | 'auto';
     draggable?: boolean;

@@ -1,13 +1,7 @@
 import type { ARIAButtonElement } from '@fluentui/react-aria';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { PlayCircleRegular, PauseCircleRegular } from '@fluentui/react-icons';
-import {
-  mergeCallbacks,
-  slot,
-  useControllableState,
-  useEventCallback,
-  useIsomorphicLayoutEffect,
-} from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import type { CarouselAutoplayButtonProps, CarouselAutoplayButtonState } from './CarouselAutoplayButton.types';
