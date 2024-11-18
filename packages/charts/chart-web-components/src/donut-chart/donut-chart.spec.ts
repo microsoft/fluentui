@@ -1,4 +1,4 @@
-import test from '@playwright/test';
+import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
 import { ChartDataPoint, ChartProps } from './donut-chart.options.js';
 
