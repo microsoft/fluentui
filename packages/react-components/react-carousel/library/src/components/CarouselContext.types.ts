@@ -14,6 +14,13 @@ export type CarouselIndexChangeData = (
   index: number;
 };
 
+export type CarouselAutoplayIndexChangeData = EventData<'autoplay', null> & {
+  /**
+   * The index to be set after event has occurred.
+   */
+  index: number;
+};
+
 export type CarouselContextValue = {
   activeIndex: number;
   circular: boolean;

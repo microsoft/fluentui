@@ -1,5 +1,9 @@
 import type { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
-import type { CarouselContextValue, CarouselIndexChangeData } from '../CarouselContext.types';
+import type {
+  CarouselAutoplayIndexChangeData,
+  CarouselContextValue,
+  CarouselIndexChangeData,
+} from '../CarouselContext.types';
 
 export type CarouselSlots = {
   root: Slot<'div'>;
@@ -38,6 +42,12 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Callback to notify a page change.
    */
   onActiveIndexChange?: EventHandler<CarouselIndexChangeData>;
+
+  /**
+   * Callback to notify a page change.
+   */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
+  onAutoplayIndexChange?: (ev: null, data: CarouselAutoplayIndexChangeData) => void;
 
   /**
    * Circular enables the carousel to loop back around on navigation past trailing index.

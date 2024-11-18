@@ -9,6 +9,7 @@ import {
   Toolbar,
   ToolbarButton,
   CarouselSlider,
+  CarouselAutoplayButton,
 } from '@fluentui/react-components';
 import {
   Carousel,
@@ -40,6 +41,7 @@ const useClasses = makeStyles({
     gap: '10px',
 
     alignSelf: 'center',
+    justifySelf: 'center',
     width: 'max-content',
 
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
@@ -125,58 +127,62 @@ export const Controlled = () => {
     <div className={classes.container}>
       <Carousel
         activeIndex={activeIndex}
-        className={classes.carousel}
         groupSize={1}
         onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
+        onAutoplayIndexChange={(e, data) => setActiveIndex(data.index)}
         announcement={getAnnouncement}
       >
-        <Tooltip content="Go To Previous Page" relationship="label">
-          <CarouselButton navType="prev" aria-label="Previous Carousel Page Button" />
-        </Tooltip>
+        <div className={classes.carousel}>
+          <Tooltip content="Go To Previous Page" relationship="label">
+            <CarouselButton navType="prev" aria-label="Previous Carousel Page Button" />
+          </Tooltip>
 
-        <CarouselViewport className={classes.viewport}>
-          <CarouselSlider>
-            <CarouselCard aria-label="1 of 5">
-              <WireframeContent index={0} />
-            </CarouselCard>
-            <CarouselCard aria-label="2 of 5">
-              <WireframeContent index={1} />
-            </CarouselCard>
-            <CarouselCard aria-label="3 of 5">
-              <WireframeContent index={2} />
-            </CarouselCard>
-            <CarouselCard aria-label="4 of 5">
-              <WireframeContent index={3} />
-            </CarouselCard>
-            <CarouselCard aria-label="5 of 5">
-              <WireframeContent index={4} />
-            </CarouselCard>
-          </CarouselSlider>
-        </CarouselViewport>
+          <CarouselViewport className={classes.viewport}>
+            <CarouselSlider>
+              <CarouselCard aria-label="1 of 5">
+                <WireframeContent index={0} />
+              </CarouselCard>
+              <CarouselCard aria-label="2 of 5">
+                <WireframeContent index={1} />
+              </CarouselCard>
+              <CarouselCard aria-label="3 of 5">
+                <WireframeContent index={2} />
+              </CarouselCard>
+              <CarouselCard aria-label="4 of 5">
+                <WireframeContent index={3} />
+              </CarouselCard>
+              <CarouselCard aria-label="5 of 5">
+                <WireframeContent index={4} />
+              </CarouselCard>
+            </CarouselSlider>
+          </CarouselViewport>
 
-        <Tooltip content="Go To Next Page" relationship="label">
-          <CarouselButton navType="next" aria-label="Next Carousel Page Button" />
-        </Tooltip>
+          <Tooltip content="Go To Next Page" relationship="label">
+            <CarouselButton navType="next" aria-label="Next Carousel Page Button" />
+          </Tooltip>
+        </div>
+
+        <div className={classes.footer}>
+          <CarouselAutoplayButton />
+          <Divider vertical />
+          <code className={classes.code}>{JSON.stringify({ activeIndex }, null, 2)}</code>
+          <Divider vertical />
+          <Toolbar className={classes.controls}>
+            {new Array(5).fill(null).map((_, index) => (
+              <ToolbarButton
+                key={`toolbar-button-${index}`}
+                aria-label={`Carousel Nav Button ${index} `}
+                className={classes.controlButton}
+                appearance="subtle"
+                disabled={index === activeIndex}
+                onClick={() => setActiveIndex(index)}
+              >
+                {index}
+              </ToolbarButton>
+            ))}
+          </Toolbar>
+        </div>
       </Carousel>
-
-      <div className={classes.footer}>
-        <code className={classes.code}>{JSON.stringify({ activeIndex }, null, 2)}</code>
-        <Divider vertical />
-        <Toolbar className={classes.controls}>
-          {new Array(5).fill(null).map((_, index) => (
-            <ToolbarButton
-              key={`toolbar-button-${index}`}
-              aria-label={`Carousel Nav Button ${index} `}
-              className={classes.controlButton}
-              appearance="subtle"
-              disabled={index === activeIndex}
-              onClick={() => setActiveIndex(index)}
-            >
-              {index}
-            </ToolbarButton>
-          ))}
-        </Toolbar>
-      </div>
     </div>
   );
 };
