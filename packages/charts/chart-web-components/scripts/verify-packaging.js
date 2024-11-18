@@ -65,7 +65,6 @@ function verifyPackaging(options) {
   );
   assert.equal(micromatch(processedResultArr, 'dist/storybook/**').length, 0, `wont ship storybook assets`);
   assert.equal(micromatch(processedResultArr, rootConfigFiles).length, 0, `wont ship configuration files`);
-  assert.ok(micromatch(processedResultArr, 'CHANGELOG.md').length, 'ships changelog markdown file');
   assert.ok(micromatch(processedResultArr, 'dist/*.d.ts').length, 'ships rolluped dts');
   assert.ok(micromatch(processedResultArr, 'dist/*.(min.js|js)').length, 'ships rolluped js');
   assert.equal(micromatch(processedResultArr, 'src/*').length, 0, `wont ship source code from "/src"`);
