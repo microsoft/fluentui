@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import test from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
 import { ChartDataPoint, ChartProps } from './horizontal-bar-chart.options.js';
 
@@ -539,43 +539,43 @@ test.describe('horizontalbarchart - Single Bar NM Variant', () => {
     await expect(bars.nth(0)).toHaveCSS('opacity', '1');
     await expect(bars.nth(0)).toHaveAttribute(`height`, '12');
 
-    let firstBarWidth = await bars.nth(0).getAttribute('width');
-    let firstBarWidthEmptySpace = await bars.nth(1).getAttribute('width');
+    const firstBarWidth = await bars.nth(0).getAttribute('width');
+    const firstBarWidthEmptySpace = await bars.nth(1).getAttribute('width');
     expect(parseFloat(firstBarWidth)).toBeLessThan(parseFloat(firstBarWidthEmptySpace));
     expect(parseFloat(firstBarWidth) + parseFloat(firstBarWidthEmptySpace)).toBeGreaterThanOrEqual(99);
 
-    let secondBarWidth = await bars.nth(2).getAttribute('width');
-    let secondBarWidthEmptySpace = await bars.nth(3).getAttribute('width');
+    const secondBarWidth = await bars.nth(2).getAttribute('width');
+    const secondBarWidthEmptySpace = await bars.nth(3).getAttribute('width');
     expect(parseFloat(secondBarWidth)).toBeLessThan(parseFloat(secondBarWidthEmptySpace));
     expect(parseFloat(secondBarWidth) + parseFloat(secondBarWidthEmptySpace)).toBeGreaterThanOrEqual(99);
 
-    let thirdBarWidth = await bars.nth(4).getAttribute('width');
-    let thirdBarWidthEmptySpace = await bars.nth(5).getAttribute('width');
+    const thirdBarWidth = await bars.nth(4).getAttribute('width');
+    const thirdBarWidthEmptySpace = await bars.nth(5).getAttribute('width');
     expect(parseFloat(thirdBarWidth)).toBeGreaterThan(parseFloat(thirdBarWidthEmptySpace));
     expect(parseFloat(thirdBarWidth) + parseFloat(thirdBarWidthEmptySpace)).toBeGreaterThanOrEqual(99);
 
-    let fourthBarWidth = await bars.nth(6).getAttribute('width');
-    let fourthBarWidthEmptySpace = await bars.nth(7).getAttribute('width');
+    const fourthBarWidth = await bars.nth(6).getAttribute('width');
+    const fourthBarWidthEmptySpace = await bars.nth(7).getAttribute('width');
     expect(parseFloat(fourthBarWidth)).toBeGreaterThan(parseFloat(fourthBarWidthEmptySpace));
     expect(parseFloat(fourthBarWidth) + parseFloat(fourthBarWidthEmptySpace)).toBeGreaterThanOrEqual(99);
 
-    let fifthBarWidth = await bars.nth(8).getAttribute('width');
-    let fifthBarWidthEmptySpace = await bars.nth(9).getAttribute('width');
+    const fifthBarWidth = await bars.nth(8).getAttribute('width');
+    const fifthBarWidthEmptySpace = await bars.nth(9).getAttribute('width');
     expect(parseFloat(fifthBarWidth)).toBeGreaterThan(parseFloat(fifthBarWidthEmptySpace));
     expect(parseFloat(fifthBarWidth) + parseFloat(fifthBarWidthEmptySpace)).toBeGreaterThanOrEqual(99);
 
-    let sixthBarWidth = await bars.nth(10).getAttribute('width');
-    let sixthBarWidthEmptySpace = await bars.nth(11).getAttribute('width');
+    const sixthBarWidth = await bars.nth(10).getAttribute('width');
+    const sixthBarWidthEmptySpace = await bars.nth(11).getAttribute('width');
     expect(parseFloat(sixthBarWidth)).toBeGreaterThan(parseFloat(sixthBarWidthEmptySpace));
     expect(parseFloat(sixthBarWidth) + parseFloat(sixthBarWidthEmptySpace)).toBeGreaterThanOrEqual(98);
 
-    let seventhBarWidth = await bars.nth(12).getAttribute('width');
-    let seventhBarWidthEmptySpace = await bars.nth(13).getAttribute('width');
+    const seventhBarWidth = await bars.nth(12).getAttribute('width');
+    const seventhBarWidthEmptySpace = await bars.nth(13).getAttribute('width');
     expect(parseFloat(seventhBarWidth)).toBeGreaterThan(parseFloat(seventhBarWidthEmptySpace));
     expect(parseFloat(seventhBarWidth) + parseFloat(seventhBarWidthEmptySpace)).toBeGreaterThanOrEqual(99);
 
-    let eigthBarWidth = await bars.nth(14).getAttribute('width');
-    let eigthBarWidthEmptySpace = await bars.nth(15).getAttribute('width');
+    const eigthBarWidth = await bars.nth(14).getAttribute('width');
+    const eigthBarWidthEmptySpace = await bars.nth(15).getAttribute('width');
     expect(parseFloat(eigthBarWidth)).toBeLessThan(parseFloat(eigthBarWidthEmptySpace));
     expect(parseFloat(eigthBarWidth) + parseFloat(eigthBarWidthEmptySpace)).toBeGreaterThanOrEqual(99);
   });
@@ -676,8 +676,8 @@ test.describe('horizontalbarchart - Single Data Point', () => {
     await expect(bars.nth(0)).toHaveCSS('fill', 'url("#gradient-0-0")');
     await expect(bars.nth(0)).toHaveCSS('opacity', '1');
     await expect(bars.nth(0)).toHaveAttribute(`height`, '12');
-    let firstBarWidth = await bars.nth(0).getAttribute('width');
-    let firstBarWidthEmptySpace = await bars.nth(1).getAttribute('width');
+    const firstBarWidth = await bars.nth(0).getAttribute('width');
+    const firstBarWidthEmptySpace = await bars.nth(1).getAttribute('width');
     expect(parseFloat(firstBarWidth)).toBeLessThan(parseFloat(firstBarWidthEmptySpace));
     expect(parseFloat(firstBarWidth) + parseFloat(firstBarWidthEmptySpace)).toBeGreaterThan(99);
   });

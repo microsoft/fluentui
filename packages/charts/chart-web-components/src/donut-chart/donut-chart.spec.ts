@@ -1,7 +1,6 @@
-import { test } from '@playwright/test';
+import test from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
 import { ChartDataPoint, ChartProps } from './donut-chart.options.js';
-import { teamsDarkTheme } from '@fluentui/tokens';
 
 const points: ChartDataPoint[] = [
   {
@@ -112,9 +111,9 @@ test.describe('Donut-chart - Basic', () => {
     await firstPath.dispatchEvent('mouseover');
     await expect(calloutRoot).toHaveCount(1);
     await expect(calloutRoot).toHaveCSS('opacity', '1');
-    const calloutLegendText = await element.locator('.tooltip-legend-text');
+    const calloutLegendText = element.locator('.tooltip-legend-text');
     await expect(calloutLegendText).toHaveText('first');
-    const calloutContentY = await element.locator('.tooltip-content-y');
+    const calloutContentY = element.locator('.tooltip-content-y');
     await expect(calloutContentY).toHaveText('20000');
     await firstPath.dispatchEvent('mouseout');
     await expect(calloutRoot).not.toHaveCSS('opacity', '0');
@@ -127,9 +126,9 @@ test.describe('Donut-chart - Basic', () => {
     await expect(calloutRoot).toHaveCount(0);
     await firstPath.dispatchEvent('mouseover');
     await expect(calloutRoot).toHaveCSS('opacity', '1');
-    const calloutLegendText = await element.locator('.tooltip-legend-text');
+    const calloutLegendText = element.locator('.tooltip-legend-text');
     await expect(calloutLegendText).toHaveText('first');
-    const calloutContentY = await element.locator('.tooltip-content-y');
+    const calloutContentY = element.locator('.tooltip-content-y');
     await expect(calloutContentY).toHaveText('20000');
     const secondPath = element.getByLabel('second,');
     await secondPath.dispatchEvent('mouseover');
