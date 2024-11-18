@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat(motion): update DialogBackdropMotion to use createFadePresence API",
+  "packageName": "@fluentui/react-dialog",
+  "email": "olkatruk@microsoft.com",
+  "dependentChangeType": "patch"
+}
