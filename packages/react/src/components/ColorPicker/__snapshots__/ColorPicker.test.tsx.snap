@@ -82,6 +82,7 @@ exports[`ColorPicker renders correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                top: 0;
                 white-space: nowrap;
                 width: 1px;
               }
@@ -1243,6 +1244,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                top: 0;
                 white-space: nowrap;
                 width: 1px;
               }
@@ -2428,6 +2430,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                top: 0;
                 white-space: nowrap;
                 width: 1px;
               }
