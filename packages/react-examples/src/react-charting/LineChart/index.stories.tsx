@@ -8,6 +8,7 @@ import { LineChartGapsExample } from './LineChart.Gaps.Example';
 import { LineChartLargeDataExample } from './LineChart.LargeData.Example';
 import { LineChartMultipleExample } from './LineChart.Multiple.Example';
 import { LineChartStyledExample } from './LineChart.Styled.Example';
+import { LineChartPlotlyExample } from './LineChart.Plotly.Example';
 
 export const Basic = () => <LineChartBasicExample />;
 
@@ -24,6 +25,8 @@ export const LargeData = () => <LineChartLargeDataExample />;
 export const Multiple = () => <LineChartMultipleExample />;
 
 export const Styled = () => <LineChartStyledExample />;
+
+export const Plotly = () => <LineChartPlotlyExample />;
 
 export default {
   title: 'Components/LineChart',
