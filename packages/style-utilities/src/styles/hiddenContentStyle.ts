@@ -2,6 +2,7 @@ import type { IRawStyle } from '@fluentui/merge-styles';
 
 export const hiddenContentStyle: IRawStyle = {
   position: 'absolute',
+  top: 0;
   width: 1,
   height: 1,
   margin: -1,
