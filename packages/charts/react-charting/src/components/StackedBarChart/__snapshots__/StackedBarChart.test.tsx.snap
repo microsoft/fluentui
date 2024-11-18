@@ -76,6 +76,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
               "overflow": "hidden",
               "padding": 0,
               "position": "absolute",
+              "top": 0,
               "whiteSpace": "nowrap",
               "width": 1,
             }
@@ -309,7 +310,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
                           opacity: 0.85;
                         }
                   >
-                     
+
                   </div>
                 </div>
                 <div
@@ -458,6 +459,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
               "overflow": "hidden",
               "padding": 0,
               "position": "absolute",
+              "top": 0,
               "whiteSpace": "nowrap",
               "width": 1,
             }
@@ -748,6 +750,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
               "overflow": "hidden",
               "padding": 0,
               "position": "absolute",
+              "top": 0,
               "whiteSpace": "nowrap",
               "width": 1,
             }
@@ -958,6 +961,7 @@ exports[`StackedBarChart snapShot testing renders enableGradient correctly 1`] =
               "overflow": "hidden",
               "padding": 0,
               "position": "absolute",
+              "top": 0,
               "whiteSpace": "nowrap",
               "width": 1,
             }
@@ -1196,6 +1200,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
               "overflow": "hidden",
               "padding": 0,
               "position": "absolute",
+              "top": 0,
               "whiteSpace": "nowrap",
               "width": 1,
             }
@@ -1406,6 +1411,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
               "overflow": "hidden",
               "padding": 0,
               "position": "absolute",
+              "top": 0,
               "whiteSpace": "nowrap",
               "width": 1,
             }
@@ -1606,6 +1612,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
               "overflow": "hidden",
               "padding": 0,
               "position": "absolute",
+              "top": 0,
               "whiteSpace": "nowrap",
               "width": 1,
             }
@@ -1816,6 +1823,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
               "overflow": "hidden",
               "padding": 0,
               "position": "absolute",
+              "top": 0,
               "whiteSpace": "nowrap",
               "width": 1,
             }
@@ -2000,6 +2008,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
               "overflow": "hidden",
               "padding": 0,
               "position": "absolute",
+              "top": 0,
               "whiteSpace": "nowrap",
               "width": 1,
             }
@@ -2210,6 +2219,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
               "overflow": "hidden",
               "padding": 0,
               "position": "absolute",
+              "top": 0,
               "whiteSpace": "nowrap",
               "width": 1,
             }
@@ -2675,6 +2685,7 @@ exports[`StackedBarChart snapShot testing renders roundCorners correctly 1`] = `
               "overflow": "hidden",
               "padding": 0,
               "position": "absolute",
+              "top": 0,
               "whiteSpace": "nowrap",
               "width": 1,
             }

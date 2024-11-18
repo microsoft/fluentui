@@ -81,6 +81,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -246,6 +247,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -445,7 +447,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                     opacity: 0.85;
                   }
             >
-               
+
             </div>
           </div>
           <div
@@ -596,6 +598,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -761,6 +764,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -1022,6 +1026,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -1154,6 +1159,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -1303,6 +1309,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -1453,6 +1460,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -1620,6 +1628,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -1808,6 +1817,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -2013,6 +2023,7 @@ exports[`HorizontalBarChart snapShot testing Should render rounded corners on ba
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -2173,6 +2184,7 @@ exports[`HorizontalBarChart snapShot testing Should render rounded corners on ba
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }

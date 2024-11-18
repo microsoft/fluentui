@@ -90,6 +90,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -299,6 +300,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -610,7 +612,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                     opacity: 0.85;
                   }
             >
-               
+
             </div>
           </div>
           <div
@@ -770,6 +772,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -979,6 +982,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -1359,6 +1363,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -1537,6 +1542,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -1809,6 +1815,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -2005,6 +2012,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -2295,6 +2303,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -2499,6 +2508,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -2797,6 +2807,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -2991,6 +3002,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -3279,6 +3291,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -3483,6 +3496,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -3709,6 +3723,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -3887,6 +3902,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -4394,6 +4410,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
@@ -4598,6 +4615,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   "overflow": "hidden",
                   "padding": 0,
                   "position": "absolute",
+                  "top": 0,
                   "whiteSpace": "nowrap",
                   "width": 1,
                 }
