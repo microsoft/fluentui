@@ -88,7 +88,7 @@ module.exports =
     refs: {
       charts: {
         title: 'Charts web components',
-        url: 'https://fluentuipr.z22.web.core.windows.net/pull/33084/chart-web-components/storybook',
+        url: 'https://fluentuipr.z22.web.core.windows.net/pull/33084/chart-web-components',
         expanded: false,
         sourceUrl: 'https://github.com/microsoft/fluentui/charts/chart-web-components',
       },
