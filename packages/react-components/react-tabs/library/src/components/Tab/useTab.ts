@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 import {
   getIntrinsicElementProps,
   mergeCallbacks,
@@ -40,6 +41,10 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
   const onTabClick = useEventCallback(mergeCallbacks(onClick, onSelectCallback));
   const onTabFocus = useEventCallback(mergeCallbacks(onFocus, onSelectCallback));
 
+  const focusProps = useTabsterAttributes({
+    focusable: { isDefault: selected },
+  });
+
   React.useEffect(() => {
     onRegister({
       value,
@@ -72,6 +77,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
         // aria-selected undefined indicates it is not selectable
         // according to https://www.w3.org/TR/wai-aria-1.1/#aria-selected
         'aria-selected': disabled ? undefined : (`${selected}` as 'true' | 'false'),
+        ...focusProps,
         ...props,
         disabled,
         onClick: onTabClick,

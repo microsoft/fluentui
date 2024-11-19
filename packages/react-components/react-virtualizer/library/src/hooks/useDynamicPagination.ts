@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { VirtualizerDynamicPaginationProps } from './hooks.types';
-import { useRef } from 'react';
 import { useTimeout } from '@fluentui/react-utilities';
 
 /**
@@ -18,8 +17,8 @@ export const useDynamicVirtualizerPagination = (
   const { axis = 'vertical', currentIndex, progressiveItemSizes, virtualizerLength } = virtualizerProps;
 
   const [setScrollTimer, clearScrollTimer] = useTimeout();
-  const lastScrollPos = useRef<number>(-1);
-  const lastIndexScrolled = useRef<number>(-1);
+  const lastScrollPos = React.useRef<number>(-1);
+  const lastIndexScrolled = React.useRef<number>(-1);
 
   const scrollContainer = React.useRef<HTMLElement | null>(null);
 

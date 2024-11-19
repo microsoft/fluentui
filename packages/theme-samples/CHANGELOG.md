@@ -1,8 +1,44 @@
 # Change Log - @fluentui/theme-samples
 
-This log was last generated on Fri, 01 Nov 2024 07:23:21 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Nov 2024 07:22:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.187](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.187)
+
+Tue, 19 Nov 2024 07:22:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.186..@fluentui/theme-samples_v8.7.187)
+
+### Patches
+
+- Bump @fluentui/react to v8.121.12 ([PR #33290](https://github.com/microsoft/fluentui/pull/33290) by beachball)
+
+## [8.7.186](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.186)
+
+Thu, 14 Nov 2024 01:04:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.185..@fluentui/theme-samples_v8.7.186)
+
+### Patches
+
+- Bump @fluentui/react to v8.121.11 ([PR #33268](https://github.com/microsoft/fluentui/pull/33268) by beachball)
+
+## [8.7.185](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.185)
+
+Wed, 13 Nov 2024 07:08:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.184..@fluentui/theme-samples_v8.7.185)
+
+### Patches
+
+- Bump @fluentui/react to v8.121.10 ([PR #33263](https://github.com/microsoft/fluentui/pull/33263) by beachball)
+
+## [8.7.184](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.184)
+
+Tue, 12 Nov 2024 07:21:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.183..@fluentui/theme-samples_v8.7.184)
+
+### Patches
+
+- Bump @fluentui/react to v8.121.9 ([PR #33239](https://github.com/microsoft/fluentui/pull/33239) by beachball)
 
 ## [8.7.183](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.183)
 

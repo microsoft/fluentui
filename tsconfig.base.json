@@ -43,6 +43,8 @@
       "@fluentui/react-card-stories": ["packages/react-components/react-card/stories/src/index.ts"],
       "@fluentui/react-carousel": ["packages/react-components/react-carousel/library/src/index.ts"],
       "@fluentui/react-carousel-stories": ["packages/react-components/react-carousel/stories/src/index.ts"],
+      "@fluentui/react-charts-preview": ["packages/charts/react-charts-preview/library/src/index.ts"],
+      "@fluentui/react-charts-preview-stories": ["packages/charts/react-charts-preview/stories/src/index.ts"],
       "@fluentui/react-checkbox": ["packages/react-components/react-checkbox/library/src/index.ts"],
       "@fluentui/react-checkbox-stories": ["packages/react-components/react-checkbox/stories/src/index.ts"],
       "@fluentui/react-color-picker-preview": [

@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Tooltip } from '@fluentui/react-tooltip';
-
+import type { PositioningProps } from '@fluentui/react-positioning';
 import { useStyles } from './utils';
 import { getStoryVariant, withStoryWrightSteps, TestWrapperDecorator, RTL, HIGH_CONTRAST } from '../../utilities';
 
@@ -47,6 +47,86 @@ const TooltipPositioning: React.FC = () => {
   );
 };
 
+const TooltipPositioningWithFallbacks: React.FC = () => {
+  const [boundaryRef, setBoundaryRef] = React.useState<HTMLDivElement | null>(null);
+
+  const wrapWithTooltip = (content: string, element: JSX.Element, fallback: PositioningProps['fallbackPositions']) => (
+    <Tooltip
+      content={content}
+      relationship="label"
+      withArrow
+      visible
+      positioning={{
+        fallbackPositions: fallback,
+        flipBoundary: boundaryRef,
+      }}
+    >
+      {element}
+    </Tooltip>
+  );
+
+  const positions = [
+    {
+      fallback: ['below-start'],
+      style: { position: 'absolute', top: '0', left: '0' },
+      content: 'top left',
+    },
+    {
+      fallback: ['below'],
+      style: { position: 'absolute', top: '0', left: '50%', transform: 'translateX(-50%)' },
+      content: 'top center',
+    },
+    {
+      fallback: ['below-end'],
+      style: { position: 'absolute', top: '0', right: '0' },
+      content: 'top right',
+    },
+    {
+      fallback: ['after'],
+      style: { position: 'absolute', top: '50%', left: '0', transform: 'translateY(-50%)' },
+      content: 'middle left',
+    },
+    {
+      fallback: ['below', 'before'],
+      style: { position: 'absolute', top: '50%', right: '0', transform: 'translateY(-50%)' },
+      content: 'middle right',
+    },
+    {
+      fallback: ['above-start'],
+      style: { position: 'absolute', bottom: '0', left: '0' },
+      content: 'below left',
+    },
+    {
+      fallback: ['above'],
+      style: { position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)' },
+      content: 'below center',
+    },
+    {
+      fallback: ['above-end'],
+      style: { position: 'absolute', bottom: '0', right: '0' },
+      content: 'below right',
+    },
+  ] satisfies {
+    fallback: PositioningProps['fallbackPositions'];
+    style: React.CSSProperties;
+    content: string;
+  }[];
+
+  return (
+    <div className={useStyles().wrapperBordered} ref={setBoundaryRef}>
+      {positions.map(({ content, fallback, style }, index) =>
+        wrapWithTooltip(
+          content,
+          <div key={index} style={style as React.CSSProperties}>
+            {content}
+          </div>,
+          fallback,
+        ),
+      )}
+    </div>
+  );
+};
+
 export default {
   title: 'Tooltip Converged',
 
@@ -61,7 +141,12 @@ export default {
 } satisfies Meta<typeof Tooltip>;
 
 export const Positioning = () => <TooltipPositioning />;
+
 Positioning.storyName = 'positioning';
+
+export const PositioningwithFallbacks = () => <TooltipPositioningWithFallbacks />;
+
+PositioningwithFallbacks.storyName = 'positioning with fallbacks';
 
 export const PositioningRTL = getStoryVariant(Positioning, RTL);
 

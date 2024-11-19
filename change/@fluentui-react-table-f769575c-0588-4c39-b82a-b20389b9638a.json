@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: subtle selection should apply correctly to header rows",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: Correctly integrating SwatchPicker with Field component.",
+  "packageName": "@fluentui/react-swatch-picker",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
