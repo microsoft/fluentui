@@ -55,6 +55,12 @@ var siteInfo = [
     title: 'Charting',
   },
   {
+    package: '@fluentui/chart-web-components',
+    link: './chart-web-components/storybook/index.html',
+    icon: 'BarChart4',
+    title: 'Chart web components',
+  },
+  {
     package: '@fluentui/theming-designer',
     link: './theming-designer/index.html',
     icon: 'CheckMark',

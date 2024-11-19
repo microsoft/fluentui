@@ -1,6 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
 import { arc as d3Arc, pie as d3Pie, PieArcDatum } from 'd3-shape';
-import { createTabster, getMover, getTabsterAttribute, MoverDirections, TABSTER_ATTRIBUTE_NAME } from 'tabster';
 import {
   getColorFromToken,
   getNextColor,
@@ -11,9 +10,6 @@ import {
   wrapText,
 } from '../utils/chart-helpers.js';
 import { ChartDataPoint, ChartProps, Legend } from './donut-chart.options.js';
-
-const tabsterCore = createTabster(window);
-getMover(tabsterCore);
 
 export class DonutChart extends FASTElement {
   @attr({ converter: nullableNumberConverter })
@@ -86,13 +82,6 @@ export class DonutChart extends FASTElement {
   }
 
   private _render = () => {
-    const tabsterAttribute = getTabsterAttribute({
-      mover: { direction: MoverDirections.Horizontal, tabbable: true },
-    });
-    if (tabsterAttribute[TABSTER_ATTRIBUTE_NAME]) {
-      this.chartWrapper.setAttribute(TABSTER_ATTRIBUTE_NAME, tabsterAttribute[TABSTER_ATTRIBUTE_NAME]);
-    }
-
     const pie = d3Pie<ChartDataPoint>()
       .value(d => d.data)
       .padAngle(0.02);

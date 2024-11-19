@@ -1,12 +1,6 @@
 import { ElementViewTemplate, html, ref, repeat, when } from '@microsoft/fast-element';
-import { createTabster, getGroupper, getMover } from 'tabster';
 import type { HorizontalBarChart } from './horizontal-bar-chart.js';
 import { ChartDataPoint } from './horizontal-bar-chart.options.js';
-
-// During the page startup.
-const tabsterCore = createTabster(window);
-getMover(tabsterCore);
-getGroupper(tabsterCore);
 
 /**
  * Generates a template for the HorizontalBarChart component.

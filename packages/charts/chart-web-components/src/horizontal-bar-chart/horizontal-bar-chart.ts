@@ -1,13 +1,9 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { create as d3Create, select as d3Select } from 'd3-selection';
-import { createTabster, getGroupper, getMover, getTabsterAttribute, TABSTER_ATTRIBUTE_NAME } from 'tabster';
 import * as tabbable from 'tabbable';
 import { getRTL, jsonConverter, SVG_NAMESPACE_URI, validateChartPropsArray } from '../utils/chart-helpers.js';
 import { ChartDataPoint, ChartProps, Variant } from './horizontal-bar-chart.options.js';
-// During the page startup.
-const tabsterCore = createTabster(window);
-getMover(tabsterCore);
-getGroupper(tabsterCore);
+
 /**
  * A Horizontal Bar Chart HTML Element.
  *
@@ -146,13 +142,6 @@ export class HorizontalBarChart extends FASTElement {
       .append('div')
       .each((d, i, nodes) => {
         this.createSingleChartBars(d, i, nodes);
-        //Get the tabster attributes
-        const attributes = getTabsterAttribute({ root: {} });
-
-        //Apply attributes directly to the current node
-        if (attributes[TABSTER_ATTRIBUTE_NAME] !== undefined) {
-          nodes[i].setAttribute(TABSTER_ATTRIBUTE_NAME, attributes[TABSTER_ATTRIBUTE_NAME]);
-        }
       });
   }
 
@@ -350,9 +339,7 @@ export class HorizontalBarChart extends FASTElement {
         .attr('y', 0)
         .attr('width', value + '%')
         .attr('height', barHeight)
-        .attr('tabindex', 0)
-        .attr('data-tabster', '{"groupper": {...}}"')
-        .attr('data-tabster', '{"mover": {...}}"');
+        .attr('tabindex', 0);
       this._bars.push(rect.node()!);
     };
 
