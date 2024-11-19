@@ -1051,13 +1051,6 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     }
   }
 
-  private _getRequiredFieldErrorMessage(items: T[]): string | JSX.Element | undefined {
-    if (!this.props.required || (items && items.length > 0)) {
-      return;
-    }
-    return 'Please fill out this field.';
-  }
-
   private async _getErrorMessage(items: T[]): Promise<string | JSX.Element | undefined> {
     if (this.props.errorMessage) {
       return this.props.errorMessage;
@@ -1075,10 +1068,9 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
           return undefined;
         }
       } catch (err) {
-        return this._getRequiredFieldErrorMessage(items);
+        /* NO-OP */
       }
     }
-    return this._getRequiredFieldErrorMessage(items);
   }
 
   private _updateErrorMessage(items: T[]): void {
