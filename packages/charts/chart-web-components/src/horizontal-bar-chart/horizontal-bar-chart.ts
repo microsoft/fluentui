@@ -134,7 +134,7 @@ export class HorizontalBarChart extends FASTElement {
     return nextIndex;
   }
   public renderChart() {
-    const chartContainerDiv = d3Select(this.chartContainer);
+    const chartContainerDiv = d3Select(this.chartContainer).attr('id', 'root-div');
     chartContainerDiv
       .selectAll('div')
       .data(this.data!)
