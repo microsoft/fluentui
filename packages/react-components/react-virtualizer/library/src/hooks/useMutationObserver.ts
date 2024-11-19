@@ -1,4 +1,3 @@
-import type { MutableRefObject } from 'react';
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -9,7 +8,7 @@ export const useMutationObserver = (
   callback: MutationCallback,
   options?: MutationObserverInit,
 ): {
-  observer: MutableRefObject<MutationObserver | undefined>; // eslint-disable-line no-restricted-globals
+  observer: React.MutableRefObject<MutationObserver | undefined>; // eslint-disable-line no-restricted-globals
 } => {
   'use no memo';
 

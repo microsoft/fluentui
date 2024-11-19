@@ -1,4 +1,4 @@
-import { MutableRefObject, RefObject } from 'react';
+import * as React from 'react';
 import { DynamicVirtualizerContextProps } from '../Utilities';
 
 export type VirtualizerMeasureProps = {
@@ -47,7 +47,7 @@ export type VirtualizerDynamicPaginationProps = {
   /**
    * An array that tracks the sizing of each item in virtualizer cumulatively
    */
-  progressiveItemSizes: RefObject<number[]> | undefined;
+  progressiveItemSizes: React.RefObject<number[]> | undefined;
   /**
    * The current starting index of the virtualizer's DOM elements
    */
@@ -72,6 +72,6 @@ export interface ResizeCallbackWithRef {
     // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
     // eslint-disable-next-line no-restricted-globals
     observer: ResizeObserver,
-    scrollRef?: MutableRefObject<HTMLElement | null>,
+    scrollRef?: React.MutableRefObject<HTMLElement | null>,
   ): void;
 }

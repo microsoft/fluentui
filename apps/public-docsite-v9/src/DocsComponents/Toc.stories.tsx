@@ -2,7 +2,6 @@ import * as React from 'react';
 import { addons } from '@storybook/preview-api';
 import { NAVIGATE_URL } from '@storybook/core-events';
 import { makeStyles, shorthands } from '@fluentui/react-components';
-import { useRef } from 'react';
 
 const useTocStyles = makeStyles({
   root: {
@@ -76,7 +75,7 @@ export const nameToHash = (id: string): string => id.toLowerCase().replace(/[^a-
 
 export const Toc = ({ stories }: { stories: TocItem[] }) => {
   const [selected, setSelected] = React.useState('');
-  const isNavigating = useRef<boolean>(false);
+  const isNavigating = React.useRef<boolean>(false);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
