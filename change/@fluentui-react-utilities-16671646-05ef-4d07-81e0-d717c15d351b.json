@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "chore: use consistent react imports\"",
+  "comment": "chore: use consistent react imports",
   "packageName": "@fluentui/react-utilities",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "none"
