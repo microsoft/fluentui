@@ -24,6 +24,7 @@ const dependencies = [
   '@fluentui/public-docsite',
   '@fluentui/react',
   '@fluentui/react-charting',
+  '@fluentui/chart-web-components',
   '@fluentui/public-docsite-v9',
   '@fluentui/react-experiments',
   '@fluentui/web-components',
