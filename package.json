@@ -104,6 +104,7 @@
     "@storybook/react": "7.6.20",
     "@storybook/react-webpack5": "7.6.20",
     "@storybook/theming": "7.6.20",
+    "@storybook/html-vite": "7.6.20",
     "@swc/cli": "0.3.14",
     "@swc/core": "1.5.7",
     "@swc/helpers": "0.5.1",
