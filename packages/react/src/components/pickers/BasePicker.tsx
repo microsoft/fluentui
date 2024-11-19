@@ -188,9 +188,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
       }
     }
 
-    if (!!oldProps.required !== !!this.props.required) {
-      this._updateErrorMessage(this.state.items);
-    }
+    this._updateErrorMessage(this.state.items);
 
     // handle dismiss buffer after suggestions are opened
     if (this.state.suggestionsVisible && !oldState.suggestionsVisible) {
@@ -1083,7 +1081,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
         /* NO-OP */
       })
       .finally(() => {
-        if (this._isMounted) {
+        if (this._isMounted && newErrorMessage !== this.state.errorMessage) {
           this.setState({ errorMessage: newErrorMessage });
         }
       });
