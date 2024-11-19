@@ -1,8 +1,9 @@
 import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
+import type { StoryContext } from '@storybook/html';
 import * as prettier from 'prettier';
 import prettierPluginHTML from 'prettier/parser-html.js';
 import { setTheme } from '../src/theme/set-theme.js';
-import webcomponentsTheme from './theme.mjs';
+import webcomponentsTheme from './theme.js';
 
 import '../src/index-rollup.js';
 import './docs-root.css';
@@ -16,8 +17,8 @@ const themes = {
   'teams-dark': teamsDarkTheme,
 };
 
-function changeTheme(/** @type {Event} */ e) {
-  setTheme(themes[/** @type {keyof themes} */ (/** @type {HTMLInputElement}*/ (e.target).value)]);
+function changeTheme(e: Event) {
+  setTheme(themes[(e.target as HTMLSelectElement).value as keyof typeof themes]);
 }
 
 // This is needed in Playwright.
@@ -43,7 +44,7 @@ export const parameters = {
     source: {
       // To get around the inability to change Prettier options in the source addon, this transform function
       // imports the standalone Prettier and uses it to format the source with the desired options.
-      transform(/** @type {string} */ src, /** @type {import('@storybook/html').StoryContext} */ storyContext) {
+      transform(src: string, storyContext: StoryContext) {
         if (!src) {
           const fragment = storyContext.originalStoryFn(storyContext.allArgs, storyContext);
           if (!(fragment instanceof DocumentFragment) && !(fragment instanceof HTMLElement)) {
