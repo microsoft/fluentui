@@ -172,7 +172,7 @@ export type OverlayDrawerSlots = {
 
 // @public
 export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> & Required<DrawerBaseState> & Pick<OverlayDrawerProps, 'mountNode'> & {
-    hasMountNodeElement?: boolean;
+    hasMountNodeElement: boolean;
 };
 
 // @public

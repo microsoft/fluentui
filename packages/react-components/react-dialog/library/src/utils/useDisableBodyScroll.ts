@@ -1,5 +1,5 @@
+import * as React from 'react';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { useCallback } from 'react';
 
 import { useBodyNoScrollStyles, useHTMLNoScrollStyles } from './useDisableBodyScroll.styles';
 
@@ -15,7 +15,7 @@ export function useDisableBodyScroll(): {
   const bodyNoScrollStyles = useBodyNoScrollStyles();
   const { targetDocument } = useFluent_unstable();
 
-  const disableBodyScroll = useCallback(() => {
+  const disableBodyScroll = React.useCallback(() => {
     if (!targetDocument) {
       return;
     }
@@ -31,7 +31,7 @@ export function useDisableBodyScroll(): {
     return;
   }, [targetDocument, htmlNoScrollStyles, bodyNoScrollStyles]);
 
-  const enableBodyScroll = useCallback(() => {
+  const enableBodyScroll = React.useCallback(() => {
     if (!targetDocument) {
       return;
     }

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 11 Nov 2024 10:00:51 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Nov 2024 09:44:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.12)
+
+Mon, 18 Nov 2024 09:44:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.11..@fluentui/react-positioning_v9.15.12)
+
+### Patches
+
+- fix: update writeArrowUpdates to correctly resolve arrow position ([PR #33260](https://github.com/microsoft/fluentui/pull/33260) by vgenaev@gmail.com)
 
 ## [9.15.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.11)
 

@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 12 Nov 2024 09:31:25 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Nov 2024 09:44:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.56.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.2)
+
+Mon, 18 Nov 2024 09:44:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.1..@fluentui/react-components_v9.56.2)
+
+### Minor changes
+
+- `@fluentui/react-charts-preview`
+  - feat: Create charts components as native v9 controls. ([PR #32966](https://github.com/microsoft/fluentui/pull/32966) by 98592573+AtishayMsft@users.noreply.github.com)
+- `@fluentui/react-slider`
+  - feat: adjust thumb positioning ([PR #32424](https://github.com/microsoft/fluentui/pull/32424) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-combobox`
+  - fix: Clearable Dropdowns and Comboboxes do not show clear button if they are disabled. ([PR #33251](https://github.com/microsoft/fluentui/pull/33251) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-components`
+  - chore: Export useListboxContext_unstable. ([PR #33268](https://github.com/microsoft/fluentui/pull/33268) by owcampbe@microsoft.com)
+- `@fluentui/react-infolabel`
+  - chore: Adding maxWidth to InfoButton's popover to match figma spec. ([PR #33253](https://github.com/microsoft/fluentui/pull/33253) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: update writeArrowUpdates to correctly resolve arrow position ([PR #33260](https://github.com/microsoft/fluentui/pull/33260) by vgenaev@gmail.com)
+- `@fluentui/react-tabs`
+  - fix: focus selected tab by default ([PR #33236](https://github.com/microsoft/fluentui/pull/33236) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: ensure TreeItem role can be overridden by props ([PR #33277](https://github.com/microsoft/fluentui/pull/33277) by bernardo.sunderhus@gmail.com)
 
 ## [9.56.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.1)
 

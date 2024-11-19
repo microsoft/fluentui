@@ -3,7 +3,6 @@ import { slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useVirtualizer_unstable } from '../Virtualizer/useVirtualizer';
 import type { VirtualizerScrollViewProps, VirtualizerScrollViewState } from './VirtualizerScrollView.types';
 import { useStaticVirtualizerMeasure } from '../../Hooks';
-import { useImperativeHandle } from 'react';
 import { scrollToItemStatic } from '../../Utilities';
 import type { VirtualizerDataRef } from '../Virtualizer/Virtualizer.types';
 import { useStaticVirtualizerPagination } from '../../hooks/useStaticPagination';
@@ -26,7 +25,7 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
   const imperativeVirtualizerRef = React.useRef<VirtualizerDataRef | null>(null);
   const scrollCallbackRef = React.useRef<null | ((index: number) => void)>(null);
 
-  useImperativeHandle(
+  React.useImperativeHandle(
     imperativeRef,
     () => {
       return {

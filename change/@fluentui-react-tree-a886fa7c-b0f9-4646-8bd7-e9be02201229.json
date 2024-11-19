@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: ensure TreeItem role can be overridden by props",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

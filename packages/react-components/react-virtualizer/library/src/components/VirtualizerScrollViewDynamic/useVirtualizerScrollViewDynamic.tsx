@@ -8,7 +8,6 @@ import type {
 import { useDynamicVirtualizerMeasure } from '../../Hooks';
 import { useVirtualizerContextState_unstable, scrollToItemDynamic } from '../../Utilities';
 import type { VirtualizerDataRef } from '../Virtualizer/Virtualizer.types';
-import { useImperativeHandle, useState } from 'react';
 import { useMeasureList } from '../../hooks/useMeasureList';
 import type { IndexedResizeCallbackElement } from '../../hooks/useMeasureList';
 import { useDynamicVirtualizerPagination } from '../../hooks/useDynamicPagination';
@@ -32,7 +31,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
   let sizeTrackingArray = React.useRef<number[]>(new Array(props.numItems).fill(props.itemSize));
 
   // This lets us trigger updates when a size change occurs.
-  const [sizeUpdateCount, setSizeUpdateCount] = useState(0);
+  const [sizeUpdateCount, setSizeUpdateCount] = React.useState(0);
 
   const getChildSizeAuto = React.useCallback(
     (index: number) => {
@@ -80,7 +79,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
   const scrollViewRef = useMergedRefs(props.scrollViewRef, scrollRef, paginationRef);
   const scrollCallbackRef = React.useRef<null | ((index: number) => void)>(null);
 
-  useImperativeHandle(
+  React.useImperativeHandle(
     imperativeRef,
     () => {
       return {
