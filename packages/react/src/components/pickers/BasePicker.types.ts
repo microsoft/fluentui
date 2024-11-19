@@ -50,11 +50,6 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
   label?: string;
 
   /**
-   * Aria Label for the field for screen reader users.
-   */
-  ariaLabel?: string;
-
-  /**
    * Function that specifies how the selected item will appear.
    */
   onRenderItem?: (props: IPickerItemProps<T>) => JSX.Element;

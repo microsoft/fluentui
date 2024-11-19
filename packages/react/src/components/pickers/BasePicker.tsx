@@ -307,7 +307,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
           screenReaderText: legacyStyles.screenReaderOnly,
         };
 
-    const comboLabel = this.props.ariaLabel || this.props['aria-label'] || inputProps?.['aria-label'];
+    const comboLabel = this.props['aria-label'] || inputProps?.['aria-label'];
     const inputId = inputProps?.id ? inputProps.id : this._ariaMap.combobox;
 
     // selectionAriaLabel is contained in a separate <span> rather than an aria-label on the items list
@@ -1058,43 +1058,43 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   }
 
   private async _getErrorMessage(items: T[]): Promise<string | JSX.Element | undefined> {
-      if (this.props.errorMessage) {
-        return this.props.errorMessage;
-      }
-      if (this.props.onGetErrorMessage) {
-        try {
-          const errorMessage = this.props.onGetErrorMessage(items);
-          if (errorMessage) {
-            if ((errorMessage as PromiseLike<string | JSX.Element>).then) {
-              return  await (errorMessage as PromiseLike<string | JSX.Element>);
-            } else {
-              return errorMessage as string | JSX.Element;
-            }
+    if (this.props.errorMessage) {
+      return this.props.errorMessage;
+    }
+    if (this.props.onGetErrorMessage) {
+      try {
+        const errorMessage = this.props.onGetErrorMessage(items);
+        if (errorMessage) {
+          if ((errorMessage as PromiseLike<string | JSX.Element>).then) {
+            return await (errorMessage as PromiseLike<string | JSX.Element>);
           } else {
-            return undefined;
+            return errorMessage as string | JSX.Element;
           }
-        } catch (err) {
-          return this._getRequiredFieldErrorMessage(items);
+        } else {
+          return undefined;
         }
+      } catch (err) {
+        return this._getRequiredFieldErrorMessage(items);
       }
-      return this._getRequiredFieldErrorMessage(items);
     }
+    return this._getRequiredFieldErrorMessage(items);
+  }
 
-    private _updateErrorMessage(items: T[]): void {
-      let newErrorMessage: string | JSX.Element | undefined;
-      this._getErrorMessage(items)
-        .then(errorMessage => {
-          newErrorMessage = errorMessage;
-        })
-        .catch(() => {
-          /* NO-OP */
-        })
-        .finally(() => {
-          if (this._isMounted) {
-            this.setState({ errorMessage: newErrorMessage });
-          }
-        });
-    }
+  private _updateErrorMessage(items: T[]): void {
+    let newErrorMessage: string | JSX.Element | undefined;
+    this._getErrorMessage(items)
+      .then(errorMessage => {
+        newErrorMessage = errorMessage;
+      })
+      .catch(() => {
+        /* NO-OP */
+      })
+      .finally(() => {
+        if (this._isMounted) {
+          this.setState({ errorMessage: newErrorMessage });
+        }
+      });
+  }
 
   /**
    * Controls what happens whenever there is an action that impacts the selected items.
