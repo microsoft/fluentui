@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Adding high contrast selector to SplitButton's menu button styles so that the styles do not bleed when high contrast mode is not active.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
