@@ -20,7 +20,12 @@ export function horizontalbarchartTemplate<T extends HorizontalBarChart>(): Elem
       ${when(
         x => !x.hideLegends,
         html<T>`
-          <div class="legendcontainer" role="listbox" aria-label="${x => x.legendListLabel || 'Legends'}">
+          <div
+            id="legend-div"
+            class="legendcontainer"
+            role="listbox"
+            aria-label="${x => x.legendListLabel || 'Legends'}"
+          >
             ${repeat(
               x => x.uniqueLegends,
               html<ChartDataPoint, T>` <button

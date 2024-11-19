@@ -1,14 +1,13 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { create as d3Create, select as d3Select } from 'd3-selection';
 import { createTabster, getGroupper, getMover, getTabsterAttribute, TABSTER_ATTRIBUTE_NAME } from 'tabster';
+import * as tabbable from 'tabbable';
 import { getRTL, jsonConverter, SVG_NAMESPACE_URI, validateChartPropsArray } from '../utils/chart-helpers.js';
 import { ChartDataPoint, ChartProps, Variant } from './horizontal-bar-chart.options.js';
-
 // During the page startup.
 const tabsterCore = createTabster(window);
 getMover(tabsterCore);
 getGroupper(tabsterCore);
-
 /**
  * A Horizontal Bar Chart HTML Element.
  *
@@ -54,7 +53,6 @@ export class HorizontalBarChart extends FASTElement {
 
   public rootDiv!: HTMLDivElement;
   public chartContainer!: HTMLDivElement;
-
   private _isRTL: boolean = false;
   private barHeight: number = 12;
   private _bars: SVGRectElement[] = [];
@@ -68,6 +66,8 @@ export class HorizontalBarChart extends FASTElement {
 
     this.initializeData();
     this.renderChart();
+
+    this.enableTabbability();
   }
 
   private initializeData() {
@@ -77,8 +77,68 @@ export class HorizontalBarChart extends FASTElement {
     this.hydrateLegends();
   }
 
+  public enableTabbability() {
+    requestAnimationFrame(() => {
+      const legendContainer = this.shadowRoot?.getElementById('legend-div') as HTMLElement;
+      if (legendContainer) {
+        const legendButtons = tabbable.tabbable(legendContainer);
+        let currentLegendIndex = 0;
+
+        legendContainer.addEventListener('keydown', (event: KeyboardEvent) => {
+          // Only handle Arrow keys for legend buttons
+          if (legendButtons.length > 0) {
+            currentLegendIndex = this.handleArrowNavigation(event, legendButtons, currentLegendIndex, this._isRTL);
+          }
+        });
+      }
+      // Handle navigation for tabbable elements inside root div
+      const rootDiv = this.shadowRoot?.getElementById('root-div');
+      if (rootDiv) {
+        const tabbableElements = tabbable.tabbable(rootDiv);
+        let currentIndex = 0;
+
+        rootDiv.addEventListener('keydown', (event: KeyboardEvent) => {
+          if (tabbableElements.length > 0 && event.target && tabbableElements.includes(event.target as HTMLElement)) {
+            currentIndex = this.handleArrowNavigation(event, tabbableElements, currentIndex, this._isRTL);
+          }
+        });
+      }
+    });
+  }
+  private handleArrowNavigation(
+    event: KeyboardEvent,
+    elements: tabbable.FocusableElement[],
+    currentIndex: number,
+    isRTL: boolean,
+  ): number {
+    let nextIndex = currentIndex;
+
+    // Handle ArrowRight and ArrowLeft
+    switch (event.key) {
+      case 'ArrowRight':
+        event.preventDefault();
+        nextIndex = isRTL
+          ? (currentIndex - 1 + elements.length) % elements.length
+          : (currentIndex + 1) % elements.length;
+        break;
+
+      case 'ArrowLeft':
+        event.preventDefault();
+        nextIndex = isRTL
+          ? (currentIndex + 1) % elements.length
+          : (currentIndex - 1 + elements.length) % elements.length;
+        break;
+
+      default:
+        return currentIndex;
+    }
+
+    // Focus the next element
+    elements[nextIndex]?.focus();
+    return nextIndex;
+  }
   public renderChart() {
-    const chartContainerDiv = d3Select(this.chartContainer);
+    const chartContainerDiv = d3Select(this.chartContainer).attr('id', 'root-div');
     chartContainerDiv
       .selectAll('div')
       .data(this.data!)
@@ -86,7 +146,6 @@ export class HorizontalBarChart extends FASTElement {
       .append('div')
       .each((d, i, nodes) => {
         this.createSingleChartBars(d, i, nodes);
-
         //Get the tabster attributes
         const attributes = getTabsterAttribute({ root: {} });
 
