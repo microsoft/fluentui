@@ -74,6 +74,10 @@ export type IPickerAriaIds = {
    * Aria id for element with role=combobox
    */
   combobox: string;
+  /**
+   * Aria id for error message component
+   */
+  error: string;
 };
 
 const getClassNames = classNamesFunction<IBasePickerStyleProps, IBasePickerStyles>();
@@ -142,6 +146,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
       selectedSuggestionAlert: `selected-suggestion-alert-${this._id}`,
       suggestionList: `suggestion-list-${this._id}`,
       combobox: `combobox-${this._id}`,
+      error: `error-${this._id}`,
     };
     this.suggestionStore = new SuggestionsController<T>();
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
@@ -353,7 +358,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
                 suggestedDisplayValue={suggestedDisplayValue}
                 aria-activedescendant={suggestionsVisible ? this.getActiveDescendant() : undefined}
                 aria-controls={suggestionsAvailable}
-                aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
+                aria-describedby={this._getDescribedBy(items, hasError)}
                 aria-expanded={suggestionsVisible}
                 aria-haspopup="listbox"
                 aria-label={comboLabel}
@@ -369,6 +374,17 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
       </div>
     );
   }
+
+  protected _getDescribedBy = (items: T[], hasError: boolean): string => {
+    const describedBy = [];
+    if (items.length > 0) {
+      describedBy.push(this._ariaMap.selectedItems);
+    }
+    if (hasError) {
+      describedBy.push(this._ariaMap.error);
+    }
+    return describedBy.join(' ');
+  };
 
   protected canAddItems(): boolean {
     const { items } = this.state;
@@ -394,7 +410,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
       return null;
     }
     return (
-      <div role="alert" id={this._id + '-error'} className={className}>
+      <div role="alert" id={this._ariaMap.error} className={className}>
         {errorMessage}
       </div>
     );
@@ -1179,7 +1195,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
 
 export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
   public render(): JSX.Element {
-    const { suggestedDisplayValue, isFocused } = this.state;
+    const { suggestedDisplayValue, isFocused, items } = this.state;
     const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;
 
     const suggestionsVisible = !!this.state.suggestionsVisible;
@@ -1245,7 +1261,7 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
               aria-expanded={suggestionsVisible}
               aria-haspopup="listbox"
               aria-label={comboLabel}
-              aria-describedby={this.state.items.length > 0 ? this._ariaMap.selectedItems : undefined}
+              aria-describedby={this._getDescribedBy(items, hasError)}
               role="combobox"
               id={inputId}
               disabled={disabled}
