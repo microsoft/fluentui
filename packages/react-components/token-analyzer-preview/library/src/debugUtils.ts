@@ -15,16 +15,18 @@ export const configure = (options: Partial<DebugConfig>): void => {
   config = { ...config, ...options };
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const log = (message: string, ...args: any[]): void => {
   if (config.debug) {
     console.log(`DEBUG: ${message}`, ...args);
   }
 };
 
-export const error = (message: string, error: any): void => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const error = (message: string, errorArg: any): void => {
   // Always log errors, but with debug info if enabled
   const prefix = config.debug ? 'DEBUG ERROR: ' : 'ERROR: ';
-  console.error(`${prefix}${message}`, error);
+  console.error(`${prefix}${message}`, errorArg);
 };
 
 export const measureAsync = async <T>(name: string, fn: () => Promise<T>): Promise<T> => {
