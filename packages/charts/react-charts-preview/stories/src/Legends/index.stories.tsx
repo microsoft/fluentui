@@ -8,7 +8,7 @@ export { LegendsStyled } from './Legends.Styled.stories';
 export { LegendsWrapLines } from './Legends.WrapLines.stories';
 
 export default {
-  title: 'Compat Components/Charts/Legends',
+  title: 'Charts/Legends',
   component: Legends,
   parameters: {
     docs: {

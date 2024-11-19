@@ -10,7 +10,7 @@ export { HorizontalBarCustomAccessibility } from './HorizontalBarChartCustomAcce
 export { HorizontalBarCustomCallout } from './HorizontalBarChartCustomCallout.stories';
 
 export default {
-  title: 'Compat Components/Charts/HorizontalBarChart',
+  title: 'Charts/HorizontalBarChart',
   component: HorizontalBarChart,
   parameters: {
     docs: {

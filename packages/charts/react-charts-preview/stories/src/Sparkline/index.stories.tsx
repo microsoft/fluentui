@@ -6,7 +6,7 @@ import bestPracticesMd from './SparklineBestPractices.md';
 export { SparklineBasic } from './SparklineDefault.stories';
 
 export default {
-  title: 'Compat Components/Charts/Sparkline',
+  title: 'Charts/Sparkline',
   component: Sparkline,
   parameters: {
     docs: {

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { VirtualizerContextProps } from '../../Utilities';
-import type { RefObject, MutableRefObject } from 'react';
 
 export type VirtualizerSlots = {
   /**
@@ -81,10 +80,10 @@ export type VirtualizerState = ComponentState<VirtualizerSlots> & VirtualizerCon
 export type VirtualizerChildRenderFunction = (index: number, isScrolling: boolean) => React.ReactNode;
 
 export type VirtualizerDataRef = {
-  progressiveSizes: RefObject<number[]>;
-  nodeSizes: RefObject<number[]>;
+  progressiveSizes: React.RefObject<number[]>;
+  nodeSizes: React.RefObject<number[]>;
   setFlaggedIndex: (index: number | null) => void;
-  currentIndex: RefObject<number>;
+  currentIndex: React.RefObject<number>;
 };
 
 export type VirtualizerConfigProps = {
@@ -182,18 +181,18 @@ export type VirtualizerConfigProps = {
   /*
    * Callback for notifying when a flagged index has been rendered
    */
-  flaggedIndex?: MutableRefObject<number | null>;
+  flaggedIndex?: React.MutableRefObject<number | null>;
 
   /**
    * Imperative ref contains our scrollTo index functionality for user control.
    */
-  imperativeVirtualizerRef?: RefObject<VirtualizerDataRef>;
+  imperativeVirtualizerRef?: React.RefObject<VirtualizerDataRef>;
 
   /**
    * A ref that provides the size of container (vertical - height, horizontal - width), set by a resize observer.
    * Virtualizer Measure hooks provide a suitable reference.
    */
-  containerSizeRef: RefObject<number>;
+  containerSizeRef: React.RefObject<number>;
 
   /**
    * A callback that enables updating scroll position for calculating required dynamic lengths,

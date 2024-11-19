@@ -26,7 +26,6 @@ import { PopoverTriggerProps } from '@fluentui/react-popover';
 import { PopoverTriggerState } from '@fluentui/react-popover';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
-import { ReactNode } from 'react';
 import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -132,7 +131,7 @@ export const teachingPopoverCarouselFooterButtonClassNames: SlotClassNames<Teach
 // @public
 export type TeachingPopoverCarouselFooterButtonProps = ComponentProps<TeachingPopoverCarouselFooterButtonSlots> & ButtonProps & {
     navType: 'next' | 'prev';
-    altText: ReactNode;
+    altText: React_2.ReactNode;
 };
 
 // @public (undocumented)

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type {
   VirtualizerSlots,
@@ -6,7 +7,6 @@ import type {
   VirtualizerChildRenderFunction,
 } from '../Virtualizer/Virtualizer.types';
 import type { ScrollToInterface } from '../../Utilities';
-import type { RefObject } from 'react';
 
 export type VirtualizerScrollViewSlots = VirtualizerSlots & {
   /**
@@ -41,7 +41,7 @@ export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrol
     /**
      * Imperative ref contains our scrollTo index functionality for user control.
      */
-    imperativeRef?: RefObject<ScrollToInterface>;
+    imperativeRef?: React.RefObject<ScrollToInterface>;
     /**
      * Imperative ref contains our scrollTo index functionality for user control.
      */

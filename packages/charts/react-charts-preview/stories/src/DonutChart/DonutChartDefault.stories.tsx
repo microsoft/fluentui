@@ -6,7 +6,7 @@ export const DonutChartBasic = () => {
     { legend: 'first', data: 20000, color: getColorFromToken(DataVizPalette.color1), xAxisCalloutData: '2020/04/30' },
     {
       legend: 'second',
-      data: 39000,
+      data: 35000,
       color: getColorFromToken(DataVizPalette.color2),
       xAxisCalloutData: '2020/04/20',
     },
@@ -25,7 +25,7 @@ export const DonutChartBasic = () => {
       legendsOverflowText={'overflow Items'}
       hideLegend={false}
       height={220}
-      valueInsideDonut={39000}
+      valueInsideDonut={35000}
     />
   );
 };

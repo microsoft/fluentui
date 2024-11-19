@@ -12,7 +12,7 @@ export { VerticalBarStyled } from './VerticalBarChartStyled.stories';
 export { VerticalBarDynamic } from './VerticalBarChartDynamic.stories';
 
 export default {
-  title: 'Compat Components/Charts/VerticalBarChart',
+  title: 'Charts/VerticalBarChart',
   component: VerticalBarChart,
   parameters: {
     docs: {
