@@ -1,12 +1,19 @@
+/// <reference types="vite/client" />
+
 import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 import type { StoryContext } from '@storybook/html';
 import * as prettier from 'prettier';
 import prettierPluginHTML from 'prettier/parser-html.js';
 import { setTheme } from '../src/theme/set-theme.js';
+import './docs-root.css';
 import webcomponentsTheme from './theme.js';
 
-import '../src/index-rollup.js';
-import './docs-root.css';
+// Import all component definitions. This is a vite-specific feature:
+// https://vitejs.dev/guide/features.html#glob-import
+const modules = import.meta.glob(['../src/**/define.ts']);
+for (const path in modules) {
+  modules[path]();
+}
 
 const FAST_EXPRESSION_COMMENTS = /<!--((fast-\w+)\{.*\}\2)?-->/g; // Matches comments that contain FAST expressions
 
