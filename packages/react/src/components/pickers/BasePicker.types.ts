@@ -377,6 +377,9 @@ export interface IBasePickerStyles {
    */
   text: IStyle;
 
+  /** Refers to the label element (if specified). */
+  label: IStyle;
+
   /** Refers to the items already selected (picked). */
   itemsWrapper: IStyle;
 

@@ -301,6 +301,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
       : {
           root: css('ms-BasePicker', className ? className : ''),
           error: css('ms-BasePicker-error', ''),
+          label: css('ms-BasePicker-label', ''),
           text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
           itemsWrapper: legacyStyles.pickerItems,
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
@@ -323,7 +324,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
         onBlur={this.onBlur}
         onClick={this.onWrapperClick}
       >
-        {this.renderLabel(inputId)}
+        {this.renderLabel(inputId, classNames.label)}
         {this.renderCustomAlert(classNames.screenReaderText)}
         <span id={`${this._ariaMap.selectedItems}-label`} hidden>
           {selectionAriaLabel || comboLabel}
@@ -377,13 +378,13 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     return itemLimit === undefined || items.length < itemLimit;
   }
 
-  protected renderLabel(inputId: string): JSX.Element | null {
+  protected renderLabel(inputId: string, className?: string): JSX.Element | null {
     const { label, disabled, required } = this.props;
     if (!label) {
       return null;
     }
     return (
-      <Label id={this._id + '-label'} disabled={disabled} required={required} htmlFor={inputId}>
+      <Label className={className} disabled={disabled} required={required} htmlFor={inputId}>
         {label}
       </Label>
     );
@@ -1216,6 +1217,7 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
       : {
           root: css('ms-BasePicker', legacyStyles.picker, className ? className : ''),
           error: css('ms-BasePicker-error', ''),
+          label: css('ms-BasePicker-label', ''),
           text: css(
             'ms-BasePicker-text',
             legacyStyles.pickerText,
@@ -1232,7 +1234,7 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
 
     return (
       <div ref={this.root} onBlur={this.onBlur} onFocus={this.onFocus}>
-        {this.renderLabel(inputId)}
+        {this.renderLabel(inputId, classNames.label)}
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.renderCustomAlert(classNames.screenReaderText)}
           <span id={`${this._ariaMap.selectedItems}-label`} hidden>
