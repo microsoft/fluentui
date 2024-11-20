@@ -69,7 +69,7 @@ export class HorizontalBarChart extends FASTElement {
     validateChartPropsArray(this.data, 'data');
 
     this._isRTL = getRTL(this);
-    this.elementInternals.ariaLabel = this.chartTitle || `Horizontal bar chart with ${this.data.length} bars.`;
+    this.elementInternals.ariaLabel = this.chartTitle || `Horizontal bar chart with ${this.data.length} categories.`;
 
     this.initializeData();
     this.renderChart();
@@ -299,7 +299,7 @@ export class HorizontalBarChart extends FASTElement {
       .append('div')
       .append('span')
       .attr('class', 'chart-title')
-      .text(data?.barTitle ? data?.barTitle : '');
+      .text(data?.chartSeriesTitle ? data?.chartSeriesTitle : '');
 
     const showChartDataText = this.variant !== Variant.AbsoluteScale;
     // chartData length is always 2 in single-bar variant
@@ -328,7 +328,12 @@ export class HorizontalBarChart extends FASTElement {
       .attr('height', 12)
       .attr('width', 100 + '%')
       .attr('class', 'svg-chart')
-      .attr('aria-label', data?.barTitle ? data?.barTitle : '')
+      .attr(
+        'aria-label',
+        data?.chartSeriesTitle
+          ? data?.chartSeriesTitle
+          : `Series with ${data.chartData.length}${data.chartData.length > 1 ? ' stacked' : ''} bars.`,
+      )
       .selectAll('g')
       .data(data.chartData!)
       .enter()

@@ -35,9 +35,9 @@ export interface ChartDataPoint {
 
 export interface ChartProps {
   /**
-   * title for the bar
+   * title for the data series
    */
-  barTitle?: string;
+  chartSeriesTitle?: string;
 
   /**
    * data for the points in the chart
