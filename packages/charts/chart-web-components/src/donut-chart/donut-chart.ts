@@ -84,7 +84,8 @@ export class DonutChart extends FASTElement {
 
     this.legends = this.getLegends();
     this._isRTL = getRTL(this);
-    this.elementInternals.ariaLabel = this.data.chartTitle || `Donut chart with ${this.data.chartData.length} slices.`;
+    this.elementInternals.ariaLabel =
+      this.data.chartTitle || `Donut chart with ${this.data.chartData.length} segments.`;
 
     this._render();
   }
