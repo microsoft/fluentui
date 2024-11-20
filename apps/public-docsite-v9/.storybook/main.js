@@ -50,7 +50,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     charts: {
       title: 'Charts v9',
       // Workaround to enable docsite using PR workflow till master workflow is enabled
-      url: 'https://fluentuipr.z22.web.core.windows.net/pull/33283/chart-docsite/storybook',
+      url: 'https://fluentuipr.z22.web.core.windows.net/pull/33270/chart-docsite/storybook',
       expanded: false,
       sourceUrl: 'https://github.com/microsoft/fluentui/charts/react-charts-preview',
     },
