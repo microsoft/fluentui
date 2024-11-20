@@ -168,7 +168,8 @@ export const styles: ElementStyles = css`
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
     .legend-rect,
-    .tooltip-line {
+    .tooltip-line,
+    .triangle {
       forced-color-adjust: none;
     }
 
