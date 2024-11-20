@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 20 Nov 2024 07:21:53 GMT",
+      "tag": "@fluentui/react-charting_v5.23.16",
+      "version": "5.23.16",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Nov 2024 07:22:07 GMT",
       "tag": "@fluentui/react-charting_v5.23.16",
       "version": "5.23.16",
