@@ -49,7 +49,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     },
     charts: {
       title: 'Charts v9',
-      url: 'https://fluentuipr.z22.web.core.windows.net/heads/master/chart-docsite/storybook',
+      url: 'https://chartsdocs.z19.web.core.windows.net',
       expanded: false,
       sourceUrl: 'https://github.com/microsoft/fluentui/charts/react-charts-preview',
     },
