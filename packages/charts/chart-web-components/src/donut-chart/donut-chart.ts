@@ -163,8 +163,8 @@ export class DonutChart extends FASTElement {
       this._textInsideDonut.setAttribute('text-anchor', 'middle');
       this._textInsideDonut.setAttribute('dominant-baseline', 'middle');
       this._updateTextInsideDonut();
-      }
     }
+  }
 
   public getLegends(): Legend[] {
     return this.data.chartData.map((d, index) => ({
@@ -241,7 +241,7 @@ export class DonutChart extends FASTElement {
     const lineHeight = this._textInsideDonut.getBoundingClientRect().height;
     wrapText(this._textInsideDonut, 2 * this.innerRadius);
     const lines = this._textInsideDonut.getElementsByTagName('tspan');
-    const start = -Math.trunc((lines.length - 1) / 2);
+    const start = -1 * Math.trunc((lines.length - 1) / 2);
     for (let i = 0; i < lines.length; i++) {
       lines[i].setAttribute('dy', `${(start + i) * lineHeight}`);
     }
