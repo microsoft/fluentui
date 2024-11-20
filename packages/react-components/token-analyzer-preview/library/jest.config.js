@@ -1,8 +1,11 @@
 // @ts-check
 /* eslint-disable */
 
-const { readFileSync } = require('node:fs');
-const { join } = require('node:path');
+import { readFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
@@ -22,7 +25,7 @@ if (swcJestConfig.swcrc === undefined) {
 /**
  * @type {import('@jest/types').Config.InitialOptions}
  */
-module.exports = {
+export default {
   displayName: 'token-analyzer-preview',
   preset: '../../../../jest.preset.js',
   transform: {
@@ -31,4 +34,7 @@ module.exports = {
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
   snapshotSerializers: ['@griffel/jest-serializer'],
+  moduleNameMapper: {
+    '^(\\.{1,2}/.*)\\.js$': '$1',
+  },
 };

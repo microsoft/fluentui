@@ -56,6 +56,8 @@
   },
   "type": "module",
   "scripts": {
-    "analyze-tokens": "NODE_OPTIONS=\"--loader ts-node/esm\" ts-node-esm src/index.ts"
+    "analyze-tokens": "NODE_OPTIONS=\"--loader ts-node/esm\" ts-node-esm src/index.ts",
+    "test": "jest",
+    "test:debug": "node --loader ts-node/esm --inspect-brk node_modules/.bin/jest --runInBand"
   }
 }

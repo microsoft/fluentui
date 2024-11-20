@@ -220,8 +220,30 @@
       "outputCapture": "std",
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
+    },
+
+    {
+      "name": "Debug Tests",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": ["--loader", "ts-node/esm", "--experimental-specifier-resolution=node"],
+      "args": [
+        "--inspect-brk",
+        "${workspaceFolder}/node_modules/.bin/jest",
+        "--runInBand",
+        "--coverage",
+        "false",
+        "--testPathPattern",
+        "${fileBasenameNoExtension}"
+      ],
+      "cwd": "${workspaceFolder}/packages/react-components/token-analyzer-preview/library",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {
+        "TS_NODE_PROJECT": "${workspaceFolder}/packages/react-components/token-analyzer-preview/library/tsconfig.json",
+        "NODE_OPTIONS": "--enable-source-maps"
+      }
     }
   ]
 }
-
-// "program": "${workspaceFolder}/packages/react-components/token-analyzer-preview/library/src/index.ts"
