@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-drawer",
-  "version": "9.6.0",
+  "version": "9.6.1",
   "description": "Drawer components for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -20,7 +20,7 @@
     "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
-    "@fluentui/react-dialog": "^9.11.20",
+    "@fluentui/react-dialog": "^9.11.21",
     "@fluentui/react-jsx-runtime": "^9.0.46",
     "@fluentui/react-motion": "^9.6.1",
     "@fluentui/react-portal": "^9.4.38",

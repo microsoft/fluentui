@@ -2,6 +2,27 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Mon, 18 Nov 2024 09:44:40 GMT",
+      "tag": "@fluentui/react-slider_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "bb568eb5192c86b0dd93fe43508528ed59f95b3a",
+            "comment": "feat: adjust thumb positioning"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-field to v9.1.80",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:00:55 GMT",
       "tag": "@fluentui/react-slider_v9.1.97",
       "version": "9.1.97",

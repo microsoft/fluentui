@@ -49,6 +49,12 @@ var siteInfo = [
     title: 'Experiments',
   },
   {
+    package: '@fluentui/chart-docsite',
+    link: './chart-docsite/storybook/index.html',
+    icon: 'BarChart4',
+    title: 'Charts v9',
+  },
+  {
     package: '@fluentui/react-charting',
     link: './react-charting/demo/index.html',
     icon: 'BarChart4',

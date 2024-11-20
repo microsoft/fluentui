@@ -2,6 +2,21 @@
   "name": "@fluentui/react-list-preview",
   "entries": [
     {
+      "date": "Mon, 18 Nov 2024 09:44:40 GMT",
+      "tag": "@fluentui/react-list-preview_v0.4.1",
+      "version": "0.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list-preview",
+            "comment": "Bump @fluentui/react-checkbox to v9.2.41",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:00:42 GMT",
       "tag": "@fluentui/react-list-preview_v0.4.0",
       "version": "0.4.0",

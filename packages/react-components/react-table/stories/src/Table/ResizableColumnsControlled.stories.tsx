@@ -36,7 +36,6 @@ import {
   PeopleRegular,
 } from '@fluentui/react-icons';
 import * as React from 'react';
-import { useState } from 'react';
 
 const columnNames: { [key: TableColumnId]: string } = {
   file: 'File',
@@ -162,8 +161,8 @@ const items: Item[] = [
 ];
 
 export const ResizableColumnsControlled = () => {
-  const [columns, setColumns] = useState<TableColumnDefinition<Item>[]>(columnsDef);
-  const [columnSizingOptions, setColumnSizingOptions] = useState<TableColumnSizingOptions>({
+  const [columns, setColumns] = React.useState<TableColumnDefinition<Item>[]>(columnsDef);
+  const [columnSizingOptions, setColumnSizingOptions] = React.useState<TableColumnSizingOptions>({
     file: {
       idealWidth: 300,
       minWidth: 190,

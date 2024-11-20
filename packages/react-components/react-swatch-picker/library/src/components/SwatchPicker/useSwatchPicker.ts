@@ -1,7 +1,10 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
-import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
+
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
+
+import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
 
 /**
  * Create the state required to render SwatchPicker.
@@ -16,6 +19,9 @@ export const useSwatchPicker_unstable = (
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props);
+
   const { layout, onSelectionChange, size = 'medium', shape, spacing = 'medium', style, ...rest } = props;
 
   const isGrid = layout === 'grid';

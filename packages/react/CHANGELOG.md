@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 14 Nov 2024 01:04:05 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Nov 2024 07:22:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.121.12](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.12)
+
+Tue, 19 Nov 2024 07:22:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.121.11..@fluentui/react_v8.121.12)
+
+### Patches
+
+- fix: Adding high contrast selector to SplitButton's menu button styles so that the styles do not bleed when high contrast mode is not active. ([PR #33290](https://github.com/microsoft/fluentui/pull/33290) by Humberto.Morimoto@microsoft.com)
 
 ## [8.121.11](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.11)
 

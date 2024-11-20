@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useRef } from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 export interface IndexedResizeCallbackElement {
@@ -22,7 +21,7 @@ export function useMeasureList<
   const { targetDocument } = useFluent();
 
   // This lets us trigger updates when a size change occurs.
-  const sizeUpdateCount = useRef(0);
+  const sizeUpdateCount = React.useRef(0);
 
   // the handler for resize observer
   const handleIndexUpdate = React.useCallback(

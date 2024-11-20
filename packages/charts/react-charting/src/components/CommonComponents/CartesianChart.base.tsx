@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { lazy } from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { Callout } from '@fluentui/react/lib/Callout';
@@ -34,7 +33,7 @@ import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
-const ChartHoverCard = lazy(() =>
+const ChartHoverCard = React.lazy(() =>
   import('../../utilities/ChartHoverCard/ChartHoverCard').then(module => ({ default: module.ChartHoverCard })),
 );
 

@@ -2,6 +2,36 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Wed, 20 Nov 2024 07:21:53 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.184",
+      "version": "8.14.184",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Nov 2024 07:22:07 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.184",
+      "version": "8.14.184",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.121.12",
+            "commit": "895e9a6459cdd42e4acc1ef5c82f8b3223ea1a92"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Nov 2024 01:04:05 GMT",
       "tag": "@fluentui/react-experiments_v8.14.183",
       "version": "8.14.183",

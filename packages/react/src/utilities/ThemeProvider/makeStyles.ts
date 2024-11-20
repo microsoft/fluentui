@@ -1,10 +1,10 @@
+import * as React from 'react';
 import { useTheme } from './useTheme';
 import { getId } from '@fluentui/utilities';
 import { useWindow } from '@fluentui/react-window-provider';
 import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
 import type { IStyle } from '@fluentui/style-utilities';
 import type { Theme } from '@fluentui/theme';
-import { useEffect } from 'react';
 
 type GraphPath = readonly [windowId: string | undefined, id: number, theme: Theme | undefined];
 export type StylesClassMapping<TStyleSet extends { [key in keyof TStyleSet]: IStyle }> = {
@@ -137,7 +137,7 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
     let value = graphGet(graph, path);
 
     // Don't keep around unused styles
-    useEffect(() => {
+    React.useEffect(() => {
       graphRef(graph, [winId, id, theme]);
 
       return () => graphDeref(graph, [winId, id, theme]);
