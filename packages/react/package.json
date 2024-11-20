@@ -28,7 +28,7 @@
     "start": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts dev:storybook",
     "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
     "start-test": "just-scripts jest-watch",
-    "test": "cross-env NODE_OPTIONS=--max-old-space-size=8192 just-scripts test",
+    "test": "just-scripts test",
     "update-snapshots": "just-scripts jest -u",
     "mf": "just-scripts mf",
     "verify-packaging": "just-scripts verify-packaging"
