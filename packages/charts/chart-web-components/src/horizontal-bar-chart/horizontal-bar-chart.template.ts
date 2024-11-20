@@ -7,18 +7,20 @@ import { ChartDataPoint } from './horizontal-bar-chart.options.js';
  *
  * @public
  */
-export function horizontalbarchartTemplate<T extends HorizontalBarChart>(): ElementViewTemplate<T> {
+export function horizontalbarchartTemplate<T extends HorizontalBarChart>(this: any): ElementViewTemplate<T> {
   return html<T>`
     <template ${ref('rootDiv')}>
-      <div ${ref('chartContainer')}></div>
+      <div ${ref('chartContainer')} @keydown="${(x, c) => x.handleRootDivKeydown(c.event as KeyboardEvent)}"></div>
       ${when(
         x => !x.hideLegends,
         html<T>`
           <div
+            ${ref('legendContainer')}
             id="legend-div"
             class="legendcontainer"
             role="listbox"
             aria-label="${x => x.legendListLabel || 'Legends'}"
+            @keydown="${(x, c) => x.handleLegendKeydown(c.event as KeyboardEvent)}"
           >
             ${repeat(
               x => x.uniqueLegends,

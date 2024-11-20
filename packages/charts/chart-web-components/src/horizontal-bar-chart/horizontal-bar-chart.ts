@@ -49,9 +49,12 @@ export class HorizontalBarChart extends FASTElement {
 
   public rootDiv!: HTMLDivElement;
   public chartContainer!: HTMLDivElement;
+  public legendContainer!: HTMLDivElement;
   private _isRTL: boolean = false;
   private barHeight: number = 12;
   private _bars: SVGRectElement[] = [];
+  public currentLegendIndex: number = 0;
+  public currentRootdivIndex: number = 0;
 
   connectedCallback() {
     super.connectedCallback();
@@ -62,8 +65,6 @@ export class HorizontalBarChart extends FASTElement {
 
     this.initializeData();
     this.renderChart();
-
-    this.enableTabbability();
   }
 
   private initializeData() {
@@ -71,35 +72,6 @@ export class HorizontalBarChart extends FASTElement {
       this._hydrateData();
     }
     this.hydrateLegends();
-  }
-
-  public enableTabbability() {
-    requestAnimationFrame(() => {
-      const legendContainer = this.shadowRoot?.getElementById('legend-div') as HTMLElement;
-      if (legendContainer) {
-        const legendButtons = tabbable.tabbable(legendContainer);
-        let currentLegendIndex = 0;
-
-        legendContainer.addEventListener('keydown', (event: KeyboardEvent) => {
-          // Only handle Arrow keys for legend buttons
-          if (legendButtons.length > 0) {
-            currentLegendIndex = this.handleArrowNavigation(event, legendButtons, currentLegendIndex, this._isRTL);
-          }
-        });
-      }
-      // Handle navigation for tabbable elements inside root div
-      const rootDiv = this.shadowRoot?.getElementById('root-div');
-      if (rootDiv) {
-        const tabbableElements = tabbable.tabbable(rootDiv);
-        let currentIndex = 0;
-
-        rootDiv.addEventListener('keydown', (event: KeyboardEvent) => {
-          if (tabbableElements.length > 0 && event.target && tabbableElements.includes(event.target as HTMLElement)) {
-            currentIndex = this.handleArrowNavigation(event, tabbableElements, currentIndex, this._isRTL);
-          }
-        });
-      }
-    });
   }
   private handleArrowNavigation(
     event: KeyboardEvent,
@@ -513,4 +485,25 @@ export class HorizontalBarChart extends FASTElement {
       });
     }
   };
+
+  // Legend keydown event handler
+  public handleLegendKeydown(event: KeyboardEvent): void {
+    const legendButtons = tabbable.tabbable(this.legendContainer);
+    if (legendButtons.length > 0) {
+      this.currentLegendIndex = this.handleArrowNavigation(event, legendButtons, this.currentLegendIndex, this._isRTL);
+    }
+  }
+
+  // Root div keydown event handler
+  public handleRootDivKeydown(event: KeyboardEvent): void {
+    const tabbableElements = tabbable.tabbable(this.chartContainer);
+    if (tabbableElements.length > 0 && event.target && tabbableElements.includes(event.target as HTMLElement)) {
+      this.currentRootdivIndex = this.handleArrowNavigation(
+        event,
+        tabbableElements,
+        this.currentRootdivIndex,
+        this._isRTL,
+      );
+    }
+  }
 }
