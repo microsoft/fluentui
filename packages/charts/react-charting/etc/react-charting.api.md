@@ -39,6 +39,11 @@ export type ChartDataMode = 'default' | 'fraction' | 'percentage';
 // @public (undocumented)
 export const ChartHoverCard: React_2.FunctionComponent<IChartHoverCardProps>;
 
+// Warning: (ae-forgotten-export) The symbol "IPlotlySchema" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export function convertPlotlyToILineChartProps(plotlySchema: IPlotlySchema): ILineChartProps;
+
 // @public (undocumented)
 export const DataVizGradientPalette: {
     gradient1: string;

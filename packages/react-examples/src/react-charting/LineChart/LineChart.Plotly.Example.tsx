@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { LineChart, DataVizPalette, ILineChartProps } from '@fluentui/react-charting';
+import { LineChart, DataVizPalette, ILineChartProps, convertPlotlyToILineChartProps } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
-import { convertPlotlyToILineChartProps } from './plotly-utils';
 
 interface ILineChartBasicState {
   width: number;

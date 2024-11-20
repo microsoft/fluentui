@@ -1,4 +1,4 @@
-import { ILineChartProps } from '@fluentui/react-charting';
+import { ILineChartProps } from './LineChart';
 
 interface IPlotlySchema {
   data: Array<{
