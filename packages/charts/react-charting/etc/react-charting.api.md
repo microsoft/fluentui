@@ -39,6 +39,10 @@ export type ChartDataMode = 'default' | 'fraction' | 'percentage';
 // @public (undocumented)
 export const ChartHoverCard: React_2.FunctionComponent<IChartHoverCardProps>;
 
+// Warning: (ae-forgotten-export) The symbol "IPlotlySchemaHBC" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export function convertPlotlyToHorizontalBarChartProps(plotlyData: IPlotlySchemaHBC): IChartProps[];
 // Warning: (ae-forgotten-export) The symbol "IPlotlySchema" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
