@@ -9,6 +9,7 @@ import { LineChartEventsExample } from './LineChart.Events.Example';
 import { LineChartCustomAccessibilityExample } from './LineChart.CustomAccessibility.Example';
 import { LineChartGapsExample } from './LineChart.Gaps.Example';
 import { LineChartCustomLocaleDateAxisExample } from './LineChart.CustomLocaleDateAxis.Example';
+import { LineChartPlotlyExample } from './LineChart.Plotly.Example';
 
 const LineChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
@@ -24,6 +25,8 @@ const LineChartGapsExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Gaps.Example.tsx') as string;
 const LineChartCustomLocaleDateAxisExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.CustomLocaleDateAxis.Example.tsx') as string;
+const LineChartPlotlyExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Plotly.Example.tsx') as string;
 
 export const LineChartPageProps: IDocPageProps = {
   title: 'LineChart',
@@ -65,6 +68,11 @@ export const LineChartPageProps: IDocPageProps = {
       title: 'LineChart custom date axis locale',
       code: LineChartCustomLocaleDateAxisExampleCode,
       view: <LineChartCustomLocaleDateAxisExample />,
+    },
+    {
+      title: 'LineChart plotly',
+      code: LineChartPlotlyExampleCode,
+      view: <LineChartPlotlyExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/docs/LineChartOverview.md'),
