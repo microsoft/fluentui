@@ -58,10 +58,17 @@ export class DonutChart extends FASTElement {
   public rootDiv!: HTMLDivElement;
   public chartWrapper!: HTMLDivElement;
   public group!: SVGGElement;
+  public elementInternals: ElementInternals = this.attachInternals();
 
   private _arcs: SVGPathElement[] = [];
   private _isRTL: boolean = false;
   private _textInsideDonut?: SVGTextElement;
+
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'region';
+  }
 
   connectedCallback() {
     super.connectedCallback();
@@ -78,6 +85,8 @@ export class DonutChart extends FASTElement {
 
     this.legends = this.getLegends();
     this._isRTL = getRTL(this);
+    this.elementInternals.ariaLabel =
+      this.data.chartTitle || `Donut chart with ${this.data.chartData.length} segments.`;
 
     this._render();
   }

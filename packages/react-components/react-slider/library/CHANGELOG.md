@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Mon, 11 Nov 2024 10:00:55 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Nov 2024 09:44:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.2.0)
+
+Mon, 18 Nov 2024 09:44:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.97..@fluentui/react-slider_v9.2.0)
+
+### Minor changes
+
+- feat: adjust thumb positioning ([PR #32424](https://github.com/microsoft/fluentui/pull/32424) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-field to v9.1.80 ([PR #33229](https://github.com/microsoft/fluentui/pull/33229) by beachball)
 
 ## [9.1.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.97)
 

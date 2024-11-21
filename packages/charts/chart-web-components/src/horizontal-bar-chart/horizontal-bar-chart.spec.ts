@@ -73,22 +73,22 @@ const chartPoints3: ChartDataPoint[] = [
 
 const basicChartTestData: ChartProps[] = [
   {
-    chartTitle: 'Monitored First',
+    chartSeriesTitle: 'Monitored First',
     chartData: chartPoints1,
   },
   {
-    chartTitle: 'Monitored Second',
+    chartSeriesTitle: 'Monitored Second',
     chartData: chartPoints2,
   },
   {
-    chartTitle: 'Unmonitored',
+    chartSeriesTitle: 'Unmonitored',
     chartData: chartPoints3,
   },
 ];
 
 const singleBarHBCData = [
   {
-    chartTitle: 'one',
+    chartSeriesTitle: 'one',
     chartData: [
       {
         legend: 'one',
@@ -99,7 +99,7 @@ const singleBarHBCData = [
     ],
   },
   {
-    chartTitle: 'two',
+    chartSeriesTitle: 'two',
     chartData: [
       {
         legend: 'two',
@@ -110,7 +110,7 @@ const singleBarHBCData = [
     ],
   },
   {
-    chartTitle: 'three',
+    chartSeriesTitle: 'three',
     chartData: [
       {
         legend: 'three',
@@ -121,7 +121,7 @@ const singleBarHBCData = [
     ],
   },
   {
-    chartTitle: 'four',
+    chartSeriesTitle: 'four',
     chartData: [
       {
         legend: 'four',
@@ -132,7 +132,7 @@ const singleBarHBCData = [
     ],
   },
   {
-    chartTitle: 'five',
+    chartSeriesTitle: 'five',
     chartData: [
       {
         legend: 'five',
@@ -143,7 +143,7 @@ const singleBarHBCData = [
     ],
   },
   {
-    chartTitle: 'six',
+    chartSeriesTitle: 'six',
     chartData: [
       {
         legend: 'six',
@@ -154,7 +154,7 @@ const singleBarHBCData = [
     ],
   },
   {
-    chartTitle: 'seven',
+    chartSeriesTitle: 'seven',
     chartData: [
       {
         legend: 'seven',
@@ -165,7 +165,7 @@ const singleBarHBCData = [
     ],
   },
   {
-    chartTitle: 'eight',
+    chartSeriesTitle: 'eight',
     chartData: [
       {
         legend: 'eight',
@@ -179,7 +179,7 @@ const singleBarHBCData = [
 
 const singleBarNMVariantData = [
   {
-    chartTitle: 'one',
+    chartSeriesTitle: 'one',
     chartData: [
       {
         legend: 'one',
@@ -190,7 +190,7 @@ const singleBarNMVariantData = [
     ],
   },
   {
-    chartTitle: 'two',
+    chartSeriesTitle: 'two',
     chartData: [
       {
         legend: 'two',
@@ -201,7 +201,7 @@ const singleBarNMVariantData = [
     ],
   },
   {
-    chartTitle: 'three',
+    chartSeriesTitle: 'three',
     chartData: [
       {
         legend: 'three',
@@ -212,7 +212,7 @@ const singleBarNMVariantData = [
     ],
   },
   {
-    chartTitle: 'four',
+    chartSeriesTitle: 'four',
     chartData: [
       {
         legend: 'four',
@@ -223,7 +223,7 @@ const singleBarNMVariantData = [
     ],
   },
   {
-    chartTitle: 'five',
+    chartSeriesTitle: 'five',
     chartData: [
       {
         legend: 'five',
@@ -234,7 +234,7 @@ const singleBarNMVariantData = [
     ],
   },
   {
-    chartTitle: 'six',
+    chartSeriesTitle: 'six',
     chartData: [
       {
         legend: 'six',
@@ -245,7 +245,7 @@ const singleBarNMVariantData = [
     ],
   },
   {
-    chartTitle: 'seven',
+    chartSeriesTitle: 'seven',
     chartData: [
       {
         legend: 'seven',
@@ -256,7 +256,7 @@ const singleBarNMVariantData = [
     ],
   },
   {
-    chartTitle: 'eight',
+    chartSeriesTitle: 'eight',
     chartData: [
       {
         legend: 'eight',
@@ -270,7 +270,7 @@ const singleBarNMVariantData = [
 
 const singlePointData = [
   {
-    chartTitle: 'one',
+    chartSeriesTitle: 'one',
     chartData: [
       {
         legend: 'one',

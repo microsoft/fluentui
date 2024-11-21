@@ -2,6 +2,36 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 20 Nov 2024 07:21:52 GMT",
+      "tag": "@fluentui/react_v8.121.12",
+      "version": "8.121.12",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Nov 2024 07:22:07 GMT",
+      "tag": "@fluentui/react_v8.121.12",
+      "version": "8.121.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "895e9a6459cdd42e4acc1ef5c82f8b3223ea1a92",
+            "comment": "fix: Adding high contrast selector to SplitButton's menu button styles so that the styles do not bleed when high contrast mode is not active."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Nov 2024 01:04:05 GMT",
       "tag": "@fluentui/react_v8.121.11",
       "version": "8.121.11",

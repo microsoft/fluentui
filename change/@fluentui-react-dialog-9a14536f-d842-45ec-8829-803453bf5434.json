@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: use consistent react imports",
+  "packageName": "@fluentui/react-dialog",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}

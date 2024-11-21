@@ -70,7 +70,7 @@
     "clean": "gulp clean:component-info bundle:package:clean",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
-    "test": "cross-env NODE_OPTIONS=--max-old-space-size=8192 gulp test",
+    "test": "gulp test",
     "test:watch": "gulp test:watch"
   },
   "sideEffects": false,

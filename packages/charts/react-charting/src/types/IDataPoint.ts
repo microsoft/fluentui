@@ -1,5 +1,5 @@
+import * as React from 'react';
 import { SankeyLink, SankeyNode } from 'd3-sankey';
-import { SVGProps } from 'react';
 import { LegendShape } from '../components/Legends/Legends.types';
 
 export interface IBasestate {
@@ -361,7 +361,7 @@ export interface ILineChartGap {
 /**
  * {@docCategory IChartProps}
  */
-export interface ILineChartLineOptions extends SVGProps<SVGPathElement> {
+export interface ILineChartLineOptions extends React.SVGProps<SVGPathElement> {
   /**
    * Width of the line/stroke.
    * Overrides the strokeWidth set on ICartesianChartProps level.
@@ -491,12 +491,12 @@ export interface IChartProps {
   /**
    * data for the points in the line chart
    */
-  pointOptions?: SVGProps<SVGCircleElement>;
+  pointOptions?: React.SVGProps<SVGCircleElement>;
 
   /**
    * data for the dotted line on hovering the point
    */
-  pointLineOptions?: SVGProps<SVGLineElement>;
+  pointLineOptions?: React.SVGProps<SVGLineElement>;
 }
 
 /**

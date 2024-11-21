@@ -11,7 +11,7 @@ export function donutChartTemplate<T extends DonutChart>(): ElementViewTemplate<
   return html<T>`
     <template ${ref('rootDiv')}>
       <div ${ref('chartWrapper')}>
-        <svg class="chart" width="${x => x.width}" height="${x => x.height}" aria-label="${x => x.data.chartTitle}">
+        <svg class="chart" width="${x => x.width}" height="${x => x.height}">
           <g ${ref('group')} transform="translate(${x => x.width / 2}, ${x => x.height / 2})"></g>
         </svg>
       </div>

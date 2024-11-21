@@ -2,6 +2,21 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Mon, 18 Nov 2024 09:44:40 GMT",
+      "tag": "@fluentui/react-textarea_v9.3.92",
+      "version": "9.3.92",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-field to v9.1.80",
+            "commit": "e8a616ecbb0694dabcc04c5202583939facf8446"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:01:01 GMT",
       "tag": "@fluentui/react-textarea_v9.3.91",
       "version": "9.3.91",
