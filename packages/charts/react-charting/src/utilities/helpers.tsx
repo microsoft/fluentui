@@ -12,21 +12,21 @@ const transformPlotlyJsonToDonutProps = (obj: any): IDonutChartProps => {
       return {
         legend: label,
         data: obj.data[0].values[index],
-        color: obj.data[0].marker?.color || getNextColor(index),
+        color: getNextColor(index),
       };
     }),
   };
 
-  // const width: number = obj.layout.width;
-  // const height: number = obj.layout.height;
-  // const innerRadius: number = (Math.min(width, height) * obj.data[0].hole) / 2;
+  const width: number = obj.layout.width || 440;
+  const height: number = obj.layout.height || 220;
+  const innerRadius: number = (Math.min(width, height - 40) * (obj.data[0].hole || 0.5)) / 2;
 
   return {
     data: donutData,
     hideLegend: !obj.layout.showlegend,
-    // width,
-    // height,
-    // innerRadius,
+    width,
+    height,
+    innerRadius,
   };
 };
 
