@@ -12,7 +12,7 @@ const transformPlotlyJsonToDonutProps = (obj: any): IDonutChartProps => {
       return {
         legend: label,
         data: obj.data[0].values[index],
-        color: getNextColor(index),
+        color: obj.data[0].marker?.color || getNextColor(index),
       };
     }),
   };
@@ -32,6 +32,7 @@ const transformPlotlyJsonToDonutProps = (obj: any): IDonutChartProps => {
 
 const transformPlotlyJsonToColumnProps = (obj: any): IVerticalStackedBarChartProps => {
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
+  let yMaxValue = 0;
 
   obj.data.forEach((series: any, index1: number) => {
     series.x.forEach((x: string | number, index2: number) => {
@@ -42,15 +43,16 @@ const transformPlotlyJsonToColumnProps = (obj: any): IVerticalStackedBarChartPro
         mapXToDataPoints[x].chartData.push({
           legend: series.name,
           data: series.y[index2],
-          color: getNextColor(index1),
+          color: series.marker?.color || getNextColor(index1),
         });
       } else if (series.type === 'line') {
         mapXToDataPoints[x].lineData!.push({
           legend: series.name,
           y: series.y[index2],
-          color: getNextColor(index1),
+          color: series.marker?.color || getNextColor(index1),
         });
       }
+      yMaxValue = Math.max(yMaxValue, series.y[index2]);
     });
   });
 
@@ -60,6 +62,7 @@ const transformPlotlyJsonToColumnProps = (obj: any): IVerticalStackedBarChartPro
     // width: obj.layout.width,
     // height: obj.layout.height,
     barWidth: 'auto',
+    yMaxValue,
   };
 };
 
