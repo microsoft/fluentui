@@ -24,6 +24,7 @@
     "start": "yarn storybook",
     "storybook": "yarn --cwd ../stories storybook",
     "test": "jest --passWithNoTests",
+    "update-snapshots": "jest -u",
     "type-check": "just-scripts type-check"
   },
   "syncpack": {
