@@ -17,7 +17,7 @@ export class DonutChart extends FASTElement {
     // (undocumented)
     activeLegend: string;
     // (undocumented)
-    activeLegendChanged: (oldValue: string, newValue: string) => void;
+    activeLegendChanged(oldValue: string, newValue: string): void;
     // (undocumented)
     chartWrapper: HTMLDivElement;
     // (undocumented)
@@ -27,15 +27,15 @@ export class DonutChart extends FASTElement {
     // (undocumented)
     data: ChartProps_2;
     // (undocumented)
-    getLegends: () => Legend[];
+    getLegends(): Legend[];
     // (undocumented)
     group: SVGGElement;
     // (undocumented)
-    handleLegendClick: (legendTitle: string) => void;
+    handleLegendClick(legendTitle: string): void;
     // (undocumented)
-    handleLegendMouseoutAndBlur: () => void;
+    handleLegendMouseoutAndBlur(): void;
     // (undocumented)
-    handleLegendMouseoverAndFocus: (legendTitle: string) => void;
+    handleLegendMouseoverAndFocus(legendTitle: string): void;
     // (undocumented)
     height: number;
     // (undocumented)
@@ -63,6 +63,8 @@ export class DonutChart extends FASTElement {
         xPos: number;
         yPos: number;
     };
+    // (undocumented)
+    tooltipPropsChanged(oldValue: any, newValue: any): void;
     // (undocumented)
     valueInsideDonut?: string;
     // (undocumented)
