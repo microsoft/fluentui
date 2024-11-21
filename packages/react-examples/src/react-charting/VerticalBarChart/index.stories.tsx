@@ -7,6 +7,7 @@ import { VerticalBarChartDateAxisExample } from './VerticalBarChart.DateAxis.Exa
 import { VerticalBarChartDynamicExample } from './VerticalBarChart.Dynamic.Example';
 import { VerticalBarChartRotatedLabelExample } from './VerticalBarChart.RotateLabels.Example';
 import { VerticalBarChartStyledExample } from './VerticalBarChart.Styled.Example';
+import { VerticalBarChartPlotlyExample } from './VerticalBarChart.Plotly.Example';
 
 export const Basic = () => <VerticalBarChartBasicExample />;
 
@@ -21,6 +22,8 @@ export const Styled = () => <VerticalBarChartStyledExample />;
 export const RotatedLabel = () => <VerticalBarChartRotatedLabelExample />;
 
 export const Tooltip = () => <VerticalBarChartTooltipExample />;
+
+export const Plotly = () => <VerticalBarChartPlotlyExample />;
 
 export default {
   title: 'Components/VerticalBarChart',
