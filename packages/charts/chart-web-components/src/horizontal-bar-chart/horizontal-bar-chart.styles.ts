@@ -5,6 +5,7 @@ import {
   colorNeutralForeground1,
   colorNeutralStrokeAccessible,
   display,
+  forcedColorsStylesheetBehavior,
   shadow4,
   spacingHorizontalL,
   spacingHorizontalS,
@@ -50,17 +51,17 @@ export const styles: ElementStyles = css`
     border: 2px;
     pointer-events: none;
   }
-  .tooltipline {
+  .tooltip-line {
     padding-inline-start: 8px;
     height: 50px;
     border-inline-start: 4px solid;
   }
-  .tooltiplegend {
+  .tooltip-legend-text {
     font-size: 13px;
     color: theme.semanticColors.bodyText;
     text-align: start;
   }
-  .tooltipdata {
+  .tooltip-data-y {
     font-weight: bold;
     font-size: 30px;
     text-align: start;
@@ -164,4 +165,22 @@ export const styles: ElementStyles = css`
     ${typographyBody1StrongStyles}
     color: ${colorNeutralForeground1};
   }
-`;
+  @media (forced-colors: active) {
+    .bar-label {
+      fill: white !important;
+    }
+  }
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    .legend-rect,
+    .tooltip-line,
+    .triangle {
+      forced-color-adjust: none;
+    }
+    .tooltip-legend-text,
+    .tooltip-content-y {
+      forced-color-adjust: auto;
+      color: rgb(255, 255, 255);
+    }
+  `),
+);

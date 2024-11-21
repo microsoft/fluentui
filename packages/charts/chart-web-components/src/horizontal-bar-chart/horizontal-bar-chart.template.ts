@@ -47,9 +47,11 @@ export function horizontalbarchartTemplate<T extends HorizontalBarChart>(): Elem
             class="tooltip"
             style="inset-inline-start: ${x => x.tooltipProps.xPos}px; top: ${x => x.tooltipProps.yPos}px"
           >
-            <div class="tooltipline" style="border-color: ${x => x.tooltipProps.color};">
-              <div class="tooltiplegend">${x => x.tooltipProps.legend}</div>
-              <div class="tooltipdata" style="color: ${x => x.tooltipProps.color};">${x => x.tooltipProps.yValue}</div>
+            <div class="tooltip-line" style="border-color: ${x => x.tooltipProps.color};">
+              <div class="tooltip-legend-text">${x => x.tooltipProps.legend}</div>
+              <div class="tooltip-data-y" style="color: ${x => x.tooltipProps.color};">
+                ${x => x.tooltipProps.yValue}
+              </div>
             </div>
           </div>
         `,
