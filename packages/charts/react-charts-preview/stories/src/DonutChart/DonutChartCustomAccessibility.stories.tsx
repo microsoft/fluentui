@@ -3,8 +3,8 @@ import {
   DonutChart,
   ChartProps,
   ChartDataPoint,
-  DataVizPalette,
-  getColorFromToken,
+  getGradientFromToken,
+  DataVizGradientPalette,
 } from '@fluentui/react-charts-preview';
 
 export const DonutChartCustomAccessibility = () => {
@@ -12,14 +12,14 @@ export const DonutChartCustomAccessibility = () => {
     {
       legend: 'first',
       data: 20000,
-      color: getColorFromToken(DataVizPalette.color16),
+      gradient: getGradientFromToken(DataVizGradientPalette.gradient6Ext),
       xAxisCalloutData: '2020/04/30',
       callOutAccessibilityData: { ariaLabel: 'Pia chart 1 of 2 2020/04/30' },
     },
     {
       legend: 'second',
       data: 39000,
-      color: getColorFromToken(DataVizPalette.color3),
+      gradient: getGradientFromToken(DataVizGradientPalette.gradient3),
       xAxisCalloutData: '2020/04/20',
       callOutAccessibilityData: { ariaLabel: 'Pia chart 2 of 2 2020/04/20' },
     },
