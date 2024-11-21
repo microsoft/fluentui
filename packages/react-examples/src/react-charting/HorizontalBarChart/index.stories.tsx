@@ -5,6 +5,7 @@ import { HorizontalBarChartBenchmarkExample } from './HorizontalBarChart.Benchma
 import { HorizontalBarChartCustomAccessibilityExample } from './HorizontalBarChart.CustomAccessibility.Example';
 import { HorizontalBarChartCustomCalloutExample } from './HorizontalBarChart.CustomCallout.Example';
 import { HorizontalBarChartVariantExample } from './HorizontalBarChart.Variant.Example';
+import { HorizontalBarChartPlotlyExample } from './HorizontalBarChart.Plotly.Example';
 
 export const Basic = () => <HorizontalBarChartBasicExample />;
 
@@ -15,6 +16,8 @@ export const CustomAccessibility = () => <HorizontalBarChartCustomAccessibilityE
 export const CustomCallout = () => <HorizontalBarChartCustomCalloutExample />;
 
 export const Variant = () => <HorizontalBarChartVariantExample />;
+
+export const Plotly = () => <HorizontalBarChartPlotlyExample />;
 
 export default {
   title: 'Components/HorizontalBarChart',
