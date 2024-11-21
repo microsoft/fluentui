@@ -2,9 +2,15 @@ import * as React from 'react';
 import { useHorizontalBarChartStyles_unstable } from './useHorizontalBarChartStyles.styles';
 import { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData, HorizontalBarChartVariant } from './index';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { formatValueWithSIPrefix, getAccessibleDataObject, useRtl } from '../../utilities/index';
+import {
+  DataVizGradientPalette,
+  formatValueWithSIPrefix,
+  getAccessibleDataObject,
+  getGradientFromToken,
+  getNextGradient,
+  useRtl,
+} from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
@@ -27,6 +33,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   const _isRTL: boolean = useRtl();
   const barChartSvgRef: React.RefObject<SVGSVGElement> = React.createRef<SVGSVGElement>();
   const _emptyChartId: string = useId('_HBC_empty');
+  const _gradientId = useId('HBC_Gradient');
 
   const [hoverValue, setHoverValue] = React.useState<string | number | Date | null>('');
   const [lineColor, setLineColor] = React.useState<string>('');
@@ -51,7 +58,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       _calloutAnchorPoint = point;
       updatePosition(event.clientX, event.clientY);
       setHoverValue(hoverVal);
-      setLineColor(point.color!);
+      setLineColor(point.gradient![0]);
       setLegend(point.legend!);
       setXCalloutValue(point.xAxisCalloutData!);
       setYCalloutValue(point.yAxisCalloutData!);
@@ -141,18 +148,12 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
    * Extra margin is also provided, in the x value to provide some spacing in between the bars
    */
 
-  function _createBars(data: ChartProps): JSX.Element[] {
+  function _createBars(data: ChartProps, dataPointIndex: number): JSX.Element[] {
     const noOfBars =
       data.chartData?.reduce((count: number, point: ChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
     const totalMarginPercent = barSpacingInPercent * (noOfBars - 1);
-    const defaultColors: string[] = [
-      tokens.colorPaletteBlueForeground2,
-      tokens.colorPaletteCornflowerForeground2,
-      tokens.colorPaletteDarkGreenForeground2,
-      tokens.colorPaletteNavyForeground2,
-      tokens.colorPaletteDarkOrangeForeground2,
-    ];
+
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
     const total = data.chartData!.reduce(
@@ -188,7 +189,6 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     const scalingRatio = sumOfPercent !== 0 ? (sumOfPercent - totalMarginPercent) / 100 : 1;
 
     const bars = data.chartData!.map((point: ChartDataPoint, index: number) => {
-      const color: string = point.color ? point.color : defaultColors[Math.floor(Math.random() * 4 + 1)];
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       if (index > 0) {
         prevPosition += value;
@@ -229,39 +229,58 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         );
       }
 
+      const gradientId = _gradientId + `_${dataPointIndex}_${index}`;
+
       return (
-        <rect
-          key={index}
-          x={`${
-            _isRTL
-              ? 100 - startingPoint[index] - value - index * barSpacingInPercent
-              : startingPoint[index] + index * barSpacingInPercent
-          }%`}
-          y={0}
-          data-is-focusable={point.legend !== '' ? true : false}
-          width={value + '%'}
-          height={_barHeight}
-          fill={color}
-          onMouseOver={point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
-          onFocus={point.legend !== '' ? event => _hoverOn.bind(event, xValue, point) : undefined}
-          role="img"
-          aria-label={_getAriaLabel(point)}
-          onBlur={_hoverOff}
-          onMouseLeave={_hoverOff}
-          className={classes.barWrapper}
-          tabIndex={point.legend !== '' ? 0 : undefined}
-        />
+        <>
+          <defs>
+            <linearGradient id={gradientId}>
+              <stop offset="0" stopColor={point.gradient?.[0]} />
+              <stop offset="100%" stopColor={point.gradient?.[1]} />
+            </linearGradient>
+          </defs>
+          <rect
+            key={index}
+            x={`${
+              _isRTL
+                ? 100 - startingPoint[index] - value - index * barSpacingInPercent
+                : startingPoint[index] + index * barSpacingInPercent
+            }%`}
+            y={0}
+            rx={4}
+            data-is-focusable={point.legend !== '' ? true : false}
+            width={value + '%'}
+            height={_barHeight}
+            fill={`url(#${gradientId})`}
+            onMouseOver={point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
+            onFocus={point.legend !== '' ? event => _hoverOn.bind(event, xValue, point) : undefined}
+            role="img"
+            aria-label={_getAriaLabel(point)}
+            onBlur={_hoverOff}
+            onMouseLeave={_hoverOff}
+            className={classes.barWrapper}
+            tabIndex={point.legend !== '' ? 0 : undefined}
+          />
+        </>
       );
     });
     return bars;
   }
 
+  function _addDefaultGradients(dataPoints: ChartDataPoint[], chartDataIndex: number): ChartDataPoint[] {
+    return dataPoints
+      ? dataPoints.map((item, index) => {
+          return { ...item, gradient: item.gradient ?? getNextGradient(chartDataIndex, 0) };
+        })
+      : [];
+  }
+
   const _getAriaLabel = (point: ChartDataPoint): string => {
-    const legend = point.xAxisCalloutData || point.legend;
+    const pointLegend = point.xAxisCalloutData || point.legend;
     const yValue =
       point.yAxisCalloutData ||
       (point.horizontalBarChartdata ? `${point.horizontalBarChartdata.x}/${point.horizontalBarChartdata.y}` : 0);
-    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
+    return point.callOutAccessibilityData?.ariaLabel || (pointLegend ? `${pointLegend}, ` : '') + `${yValue}.`;
   };
 
   function _isChartEmpty(): boolean {
@@ -296,9 +315,13 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   const focusAttributes = useFocusableGroup();
 
   let datapoint: number | undefined = 0;
+
   return !_isChartEmpty() ? (
     <div className={classes.root} onMouseLeave={_handleChartMouseLeave}>
       {data!.map((points: ChartProps, index: number) => {
+        // Add default gradients if not present
+        points = { ...points, chartData: _addDefaultGradients(points.chartData!, index) };
+
         if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
           datapoint = points.chartData![0].horizontalBarChartdata!.x;
         } else {
@@ -310,13 +333,13 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
             x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
             y: points.chartData![0].horizontalBarChartdata!.y,
           },
-          color: tokens.colorBackgroundOverlay,
+          gradient: getGradientFromToken(DataVizGradientPalette.disabled),
         };
 
         // Hide right side text of chart title for absolute-scale variant
         const chartDataText =
           props.variant === HorizontalBarChartVariant.AbsoluteScale ? null : _getChartDataText(points!);
-        const bars = _createBars(points!);
+        const bars = _createBars(points!, index);
         const keyVal = _uniqLineText + '_' + index;
         // ToDo - Showtriangle property is per data series. How to account for it in the new stylesheet
         /*         const classes = useHorizontalBarChartStyles_unstable(props.styles!, {
