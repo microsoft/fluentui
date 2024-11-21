@@ -136,5 +136,6 @@ export { DataVizGradientPalette, getGradientFromToken, getNextGradient } from '.
 export type { IGaugeChartProps, IGaugeChartSegment, IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart';
 export { GaugeChart, GaugeChartVariant, GaugeValueFormat } from './GaugeChart';
 export { convertPlotlyToHorizontalBarChartProps } from './plotly-utils';
+export { renderChartFromPlotlyJson } from './utilities/helpers';
 
 import './version';
