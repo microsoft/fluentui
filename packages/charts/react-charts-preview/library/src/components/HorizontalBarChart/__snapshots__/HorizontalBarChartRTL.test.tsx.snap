@@ -44,6 +44,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           >
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient80_0_0"
               >
                 <stop
@@ -71,6 +72,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient80_0_1"
               >
                 <stop
@@ -138,6 +140,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           >
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient80_1_0"
               >
                 <stop
@@ -165,6 +168,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient80_1_1"
               >
                 <stop
@@ -232,6 +236,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           >
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient80_2_0"
               >
                 <stop
@@ -259,6 +264,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient80_2_1"
               >
                 <stop
@@ -339,6 +345,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           >
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient86_0_0"
               >
                 <stop
@@ -366,6 +373,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient86_0_1"
               >
                 <stop
@@ -433,6 +441,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           >
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient86_1_0"
               >
                 <stop
@@ -460,6 +469,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient86_1_1"
               >
                 <stop
@@ -527,6 +537,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           >
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient86_2_0"
               >
                 <stop
@@ -554,6 +565,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             />
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient86_2_1"
               >
                 <stop
@@ -638,6 +650,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             >
               <defs>
                 <lineargradient
+                  class="HBC_gradient"
                   id="HBC_Gradient93_0_0"
                 >
                   <stop
@@ -665,6 +678,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               />
               <defs>
                 <lineargradient
+                  class="HBC_gradient"
                   id="HBC_Gradient93_0_1"
                 >
                   <stop
@@ -732,6 +746,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             >
               <defs>
                 <lineargradient
+                  class="HBC_gradient"
                   id="HBC_Gradient93_1_0"
                 >
                   <stop
@@ -759,6 +774,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               />
               <defs>
                 <lineargradient
+                  class="HBC_gradient"
                   id="HBC_Gradient93_1_1"
                 >
                   <stop
@@ -826,6 +842,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             >
               <defs>
                 <lineargradient
+                  class="HBC_gradient"
                   id="HBC_Gradient93_2_0"
                 >
                   <stop
@@ -853,6 +870,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               />
               <defs>
                 <lineargradient
+                  class="HBC_gradient"
                   id="HBC_Gradient93_2_1"
                 >
                   <stop
@@ -946,6 +964,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           >
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient99_0_0"
               >
                 <stop
@@ -973,6 +992,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             />
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient99_0_1"
               >
                 <stop
@@ -1040,6 +1060,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           >
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient99_1_0"
               >
                 <stop
@@ -1067,6 +1088,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             />
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient99_1_1"
               >
                 <stop
@@ -1134,6 +1156,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           >
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient99_2_0"
               >
                 <stop
@@ -1161,6 +1184,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             />
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient99_2_1"
               >
                 <stop
@@ -1241,6 +1265,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           >
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient2_0_0"
               >
                 <stop
@@ -1268,6 +1293,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             />
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient2_0_1"
               >
                 <stop
@@ -1335,6 +1361,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           >
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient2_1_0"
               >
                 <stop
@@ -1362,6 +1389,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             />
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient2_1_1"
               >
                 <stop
@@ -1429,6 +1457,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           >
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient2_2_0"
               >
                 <stop
@@ -1456,6 +1485,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             />
             <defs>
               <lineargradient
+                class="HBC_gradient"
                 id="HBC_Gradient2_2_1"
               >
                 <stop

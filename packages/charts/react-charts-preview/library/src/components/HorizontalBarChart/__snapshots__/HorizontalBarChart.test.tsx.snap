@@ -54,6 +54,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
         >
           <defs>
             <linearGradient
+              className="HBC_gradient"
               id="HBC_Gradient42_0_0"
             >
               <stop
@@ -86,6 +87,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
           />
           <defs>
             <linearGradient
+              className="HBC_gradient"
               id="HBC_Gradient42_0_1"
             >
               <stop
@@ -166,6 +168,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
         >
           <defs>
             <linearGradient
+              className="HBC_gradient"
               id="HBC_Gradient42_1_0"
             >
               <stop
@@ -198,6 +201,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
           />
           <defs>
             <linearGradient
+              className="HBC_gradient"
               id="HBC_Gradient42_1_1"
             >
               <stop
@@ -290,6 +294,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
         >
           <defs>
             <linearGradient
+              className="HBC_gradient"
               id="HBC_Gradient47_0_0"
             >
               <stop
@@ -322,6 +327,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
           />
           <defs>
             <linearGradient
+              className="HBC_gradient"
               id="HBC_Gradient47_0_1"
             >
               <stop
@@ -402,6 +408,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
         >
           <defs>
             <linearGradient
+              className="HBC_gradient"
               id="HBC_Gradient47_1_0"
             >
               <stop
@@ -434,6 +441,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
           />
           <defs>
             <linearGradient
+              className="HBC_gradient"
               id="HBC_Gradient47_1_1"
             >
               <stop
@@ -514,6 +522,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
         >
           <defs>
             <linearGradient
+              className="HBC_gradient"
               id="HBC_Gradient7_0_0"
             >
               <stop
@@ -585,6 +594,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
         >
           <defs>
             <linearGradient
+              className="HBC_gradient"
               id="HBC_Gradient7_1_0"
             >
               <stop
@@ -668,6 +678,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
         >
           <defs>
             <linearGradient
+              className="HBC_gradient"
               id="HBC_Gradient2_0_0"
             >
               <stop
@@ -748,6 +759,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
         >
           <defs>
             <linearGradient
+              className="HBC_gradient"
               id="HBC_Gradient2_1_0"
             >
               <stop
