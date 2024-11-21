@@ -165,6 +165,11 @@ export const styles: ElementStyles = css`
     ${typographyBody1StrongStyles}
     color: ${colorNeutralForeground1};
   }
+  @media (forced-colors: active) {
+    .bar-label {
+      fill: white !important;
+    }
+  }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
     .legend-rect,
