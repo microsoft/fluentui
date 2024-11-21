@@ -3,8 +3,8 @@ import {
   HorizontalBarChart,
   HorizontalBarChartVariant,
   ChartProps,
-  DataVizPalette,
-  getColorFromToken,
+  DataVizGradientPalette,
+  getGradientFromToken,
 } from '@fluentui/react-charts-preview';
 import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
 
@@ -20,7 +20,7 @@ export const HorizontalBarAbsoluteScale = () => {
         {
           legend: 'one',
           horizontalBarChartdata: { x: 1543, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color17),
+          gradient: getGradientFromToken(DataVizGradientPalette.gradient1),
         },
       ],
     },
@@ -30,7 +30,7 @@ export const HorizontalBarAbsoluteScale = () => {
         {
           legend: 'two',
           horizontalBarChartdata: { x: 800, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color18),
+          gradient: getGradientFromToken(DataVizGradientPalette.gradient2),
         },
       ],
     },
@@ -40,7 +40,7 @@ export const HorizontalBarAbsoluteScale = () => {
         {
           legend: 'three',
           horizontalBarChartdata: { x: 8888, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color19),
+          gradient: getGradientFromToken(DataVizGradientPalette.gradient3),
         },
       ],
     },
@@ -50,7 +50,7 @@ export const HorizontalBarAbsoluteScale = () => {
         {
           legend: 'four',
           horizontalBarChartdata: { x: 15888, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color20),
+          gradient: getGradientFromToken(DataVizGradientPalette.gradient4),
         },
       ],
     },
@@ -60,7 +60,7 @@ export const HorizontalBarAbsoluteScale = () => {
         {
           legend: 'five',
           horizontalBarChartdata: { x: 11444, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color21),
+          gradient: getGradientFromToken(DataVizGradientPalette.gradient5),
         },
       ],
     },
@@ -70,7 +70,7 @@ export const HorizontalBarAbsoluteScale = () => {
         {
           legend: 'six',
           horizontalBarChartdata: { x: 14000, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color22),
+          gradient: getGradientFromToken(DataVizGradientPalette.gradient6),
         },
       ],
     },
@@ -80,7 +80,7 @@ export const HorizontalBarAbsoluteScale = () => {
         {
           legend: 'seven',
           horizontalBarChartdata: { x: 9855, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color23),
+          gradient: getGradientFromToken(DataVizGradientPalette.gradient7),
         },
       ],
     },
@@ -90,11 +90,12 @@ export const HorizontalBarAbsoluteScale = () => {
         {
           legend: 'eight',
           horizontalBarChartdata: { x: 4250, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color24),
+          gradient: getGradientFromToken(DataVizGradientPalette.gradient8),
         },
       ],
     },
   ];
+
   return (
     <>
       <div style={{ marginBottom: '20px' }}>
