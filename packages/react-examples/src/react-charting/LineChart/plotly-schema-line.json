@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "type": "scatter",
+      "mode": "lines+markers",
+      "name": "string",
+      "x": "array",
+      "y": "array",
+      "line": {
+        "color": "string",
+        "width": "number",
+        "dash": "string"
+      },
+      "marker": {
+        "opacity": "number"
+      },
+      "connectgaps": "boolean"
+    }
+  ],
+  "layout": {
+    "title": "string",
+    "xaxis": {
+      "title": "string"
+    },
+    "yaxis": {
+      "title": "string"
+    }
+  }
+}
