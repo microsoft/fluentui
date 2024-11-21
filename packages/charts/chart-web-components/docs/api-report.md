@@ -14,6 +14,7 @@ import { Selection as Selection_2 } from 'd3-selection';
 //
 // @public (undocumented)
 export class DonutChart extends FASTElement {
+    constructor();
     // (undocumented)
     activeLegend: string;
     // (undocumented)
@@ -26,6 +27,8 @@ export class DonutChart extends FASTElement {
     //
     // (undocumented)
     data: ChartProps_2;
+    // (undocumented)
+    elementInternals: ElementInternals;
     // (undocumented)
     getLegends: () => Legend[];
     // (undocumented)
@@ -82,12 +85,15 @@ export const DonutChartTemplate: ElementViewTemplate<DonutChart>;
 
 // @public
 export class HorizontalBarChart extends FASTElement {
+    constructor();
     // (undocumented)
     activeLegend: string;
     // (undocumented)
     activeLegendChanged: (oldValue: string, newValue: string) => void;
     // (undocumented)
     chartContainer: HTMLDivElement;
+    // (undocumented)
+    chartTitle?: string;
     // (undocumented)
     connectedCallback(): void;
     // (undocumented)
@@ -96,6 +102,8 @@ export class HorizontalBarChart extends FASTElement {
     //
     // (undocumented)
     data: ChartProps[];
+    // (undocumented)
+    elementInternals: ElementInternals;
     // (undocumented)
     handleLegendClick: (legendTitle: string) => void;
     // (undocumented)
