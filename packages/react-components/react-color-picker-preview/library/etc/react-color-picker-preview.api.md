@@ -20,7 +20,7 @@ export const AlphaSlider: ForwardRefComponent<AlphaSliderProps>;
 export const alphaSliderClassNames: SlotClassNames<AlphaSliderSlots>;
 
 // @public
-export type AlphaSliderProps = Omit<ComponentProps<Partial<AlphaSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value' | ' color'> & ColorSliderProps;
+export type AlphaSliderProps = ColorSliderProps;
 
 // @public (undocumented)
 export type AlphaSliderSlots = ColorSliderSlots;
@@ -59,7 +59,7 @@ export const ColorPicker: ForwardRefComponent<ColorPickerProps>;
 export const colorPickerClassNames: SlotClassNames<ColorPickerSlots>;
 
 // @public
-export type ColorPickerProps = ComponentProps<Omit<ColorPickerSlots, 'color'>> & {
+export type ColorPickerProps = Omit<ComponentProps<Partial<ColorPickerSlots>>, 'color'> & {
     color: HsvColor;
     onColorChange?: EventHandler<ColorPickerOnChangeData>;
 };

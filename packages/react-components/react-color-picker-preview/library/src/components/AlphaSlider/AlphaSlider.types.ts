@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ColorSliderSlots, ColorSliderProps, ColorSliderState } from '../ColorSlider/ColorSlider.types';
 
 export type AlphaSliderSlots = ColorSliderSlots;
@@ -6,11 +6,7 @@ export type AlphaSliderSlots = ColorSliderSlots;
 /**
  * AlphaSlider Props
  */
-export type AlphaSliderProps = Omit<
-  ComponentProps<Partial<AlphaSliderSlots>, 'input'>,
-  'defaultValue' | 'onChange' | 'value' | ' color'
-> &
-  ColorSliderProps;
+export type AlphaSliderProps = ColorSliderProps;
 
 /**
  * State used in rendering AlphaSlider

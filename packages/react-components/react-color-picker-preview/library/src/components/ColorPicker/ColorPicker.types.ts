@@ -20,7 +20,7 @@ export type HsvColor = {
 /**
  * ColorPicker Props
  */
-export type ColorPickerProps = ComponentProps<Omit<ColorPickerSlots, 'color'>> & {
+export type ColorPickerProps = Omit<ComponentProps<Partial<ColorPickerSlots>>, 'color'> & {
   /**
    * Selected color.
    */
