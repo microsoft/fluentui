@@ -58,9 +58,17 @@ export class DonutChart extends FASTElement {
   public rootDiv!: HTMLDivElement;
   public chartWrapper!: HTMLDivElement;
   public group!: SVGGElement;
+  public elementInternals: ElementInternals = this.attachInternals();
 
   private _arcs: SVGPathElement[] = [];
   private _isRTL: boolean = false;
+  private _textInsideDonut?: SVGTextElement;
+
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'region';
+  }
 
   connectedCallback() {
     super.connectedCallback();
@@ -77,11 +85,13 @@ export class DonutChart extends FASTElement {
 
     this.legends = this.getLegends();
     this._isRTL = getRTL(this);
+    this.elementInternals.ariaLabel =
+      this.data.chartTitle || `Donut chart with ${this.data.chartData.length} segments.`;
 
     this._render();
   }
 
-  private _render = () => {
+  private _render() {
     const pie = d3Pie<ChartDataPoint>()
       .value(d => d.data)
       .padAngle(0.02);
@@ -154,48 +164,41 @@ export class DonutChart extends FASTElement {
     });
 
     if (this.valueInsideDonut) {
-      const text = document.createElementNS(SVG_NAMESPACE_URI, 'text');
-      this.group.appendChild(text);
-      text.classList.add('text-inside-donut');
-      text.setAttribute('x', '0');
-      text.setAttribute('y', '0');
-      text.setAttribute('text-anchor', 'middle');
-      text.setAttribute('dominant-baseline', 'middle');
-      text.textContent = this.valueInsideDonut;
-      const lineHeight = text.getBoundingClientRect().height;
-      wrapText(text, 2 * this.innerRadius);
-      const lines = text.getElementsByTagName('tspan');
-      const start = -Math.trunc((lines.length - 1) / 2);
-      for (let i = 0; i < lines.length; i++) {
-        lines[i].setAttribute('dy', `${(start + i) * lineHeight}`);
-      }
+      this._textInsideDonut = document.createElementNS(SVG_NAMESPACE_URI, 'text');
+      this.group.appendChild(this._textInsideDonut);
+      this._textInsideDonut.classList.add('text-inside-donut');
+      this._textInsideDonut.setAttribute('x', '0');
+      this._textInsideDonut.setAttribute('y', '0');
+      this._textInsideDonut.setAttribute('text-anchor', 'middle');
+      this._textInsideDonut.setAttribute('dominant-baseline', 'middle');
+      this._updateTextInsideDonut();
     }
-  };
+  }
 
-  public getLegends = (): Legend[] => {
+  public getLegends(): Legend[] {
     return this.data.chartData.map((d, index) => ({
       title: d.legend,
       color: d.color!,
     }));
-  };
+  }
 
-  public handleLegendMouseoverAndFocus = (legendTitle: string) => {
+  public handleLegendMouseoverAndFocus(legendTitle: string) {
     if (this.isLegendSelected) {
       return;
     }
 
     this.activeLegend = legendTitle;
-  };
+  }
 
-  public handleLegendMouseoutAndBlur = () => {
+  public handleLegendMouseoutAndBlur() {
     if (this.isLegendSelected) {
       return;
     }
 
     this.activeLegend = '';
-  };
+  }
 
-  public handleLegendClick = (legendTitle: string) => {
+  public handleLegendClick(legendTitle: string) {
     if (this.isLegendSelected && this.activeLegend === legendTitle) {
       this.activeLegend = '';
       this.isLegendSelected = false;
@@ -203,9 +206,9 @@ export class DonutChart extends FASTElement {
       this.activeLegend = legendTitle;
       this.isLegendSelected = true;
     }
-  };
+  }
 
-  public activeLegendChanged = (oldValue: string, newValue: string) => {
+  public activeLegendChanged(oldValue: string, newValue: string) {
     if (newValue === '') {
       this._arcs?.forEach(arc => arc.classList.remove('inactive'));
     } else {
@@ -217,5 +220,43 @@ export class DonutChart extends FASTElement {
         }
       });
     }
-  };
+
+    this._updateTextInsideDonut();
+  }
+
+  private _getTextInsideDonut(valueInsideDonut: string) {
+    let textInsideDonut = valueInsideDonut;
+
+    if (valueInsideDonut && (this.activeLegend !== '' || this.tooltipProps.isVisible)) {
+      const highlightedDataPoint = this.data.chartData.find(
+        dataPoint =>
+          dataPoint.legend === this.activeLegend ||
+          (this.tooltipProps.isVisible && dataPoint.legend === this.tooltipProps.legend),
+      );
+      textInsideDonut = highlightedDataPoint!.yAxisCalloutData
+        ? highlightedDataPoint!.yAxisCalloutData
+        : highlightedDataPoint!.data.toLocaleString();
+    }
+
+    return textInsideDonut;
+  }
+
+  private _updateTextInsideDonut() {
+    if (!this._textInsideDonut || !this.valueInsideDonut) {
+      return;
+    }
+
+    this._textInsideDonut.textContent = this._getTextInsideDonut(this.valueInsideDonut);
+    const lineHeight = this._textInsideDonut.getBoundingClientRect().height;
+    wrapText(this._textInsideDonut, 2 * this.innerRadius);
+    const lines = this._textInsideDonut.getElementsByTagName('tspan');
+    const start = -1 * Math.trunc((lines.length - 1) / 2);
+    for (let i = 0; i < lines.length; i++) {
+      lines[i].setAttribute('dy', `${(start + i) * lineHeight}`);
+    }
+  }
+
+  public tooltipPropsChanged(oldValue: any, newValue: any) {
+    this._updateTextInsideDonut();
+  }
 }

@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Mon, 11 Nov 2024 10:01:09 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Nov 2024 09:44:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.13.12)
+
+Mon, 18 Nov 2024 09:44:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.13.11..@fluentui/react-combobox_v9.13.12)
+
+### Patches
+
+- fix: Clearable Dropdowns and Comboboxes do not show clear button if they are disabled. ([PR #33251](https://github.com/microsoft/fluentui/pull/33251) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-field to v9.1.80 ([PR #33229](https://github.com/microsoft/fluentui/pull/33229) by beachball)
+- Bump @fluentui/react-positioning to v9.15.12 ([PR #33229](https://github.com/microsoft/fluentui/pull/33229) by beachball)
 
 ## [9.13.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.13.11)
 

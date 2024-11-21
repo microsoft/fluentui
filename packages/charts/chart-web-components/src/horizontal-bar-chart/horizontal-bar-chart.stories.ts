@@ -6,7 +6,7 @@ import { ChartDataPoint, ChartProps, Variant } from './horizontal-bar-chart.opti
 
 const singleBarHBCData = [
   {
-    chartTitle: 'one',
+    chartSeriesTitle: 'one',
     chartData: [
       {
         legend: 'one',
@@ -17,7 +17,7 @@ const singleBarHBCData = [
     ],
   },
   {
-    chartTitle: 'two',
+    chartSeriesTitle: 'two',
     chartData: [
       {
         legend: 'two',
@@ -28,7 +28,7 @@ const singleBarHBCData = [
     ],
   },
   {
-    chartTitle: 'three',
+    chartSeriesTitle: 'three',
     chartData: [
       {
         legend: 'three',
@@ -39,7 +39,7 @@ const singleBarHBCData = [
     ],
   },
   {
-    chartTitle: 'four',
+    chartSeriesTitle: 'four',
     chartData: [
       {
         legend: 'four',
@@ -50,7 +50,7 @@ const singleBarHBCData = [
     ],
   },
   {
-    chartTitle: 'five',
+    chartSeriesTitle: 'five',
     chartData: [
       {
         legend: 'five',
@@ -61,7 +61,7 @@ const singleBarHBCData = [
     ],
   },
   {
-    chartTitle: 'six',
+    chartSeriesTitle: 'six',
     chartData: [
       {
         legend: 'six',
@@ -72,7 +72,7 @@ const singleBarHBCData = [
     ],
   },
   {
-    chartTitle: 'seven',
+    chartSeriesTitle: 'seven',
     chartData: [
       {
         legend: 'seven',
@@ -83,7 +83,7 @@ const singleBarHBCData = [
     ],
   },
   {
-    chartTitle: 'eight',
+    chartSeriesTitle: 'eight',
     chartData: [
       {
         legend: 'eight',
@@ -97,7 +97,7 @@ const singleBarHBCData = [
 
 const singleBarNMVariantData: ChartProps[] = [
   {
-    chartTitle: 'one',
+    chartSeriesTitle: 'one',
     chartData: [
       {
         legend: 'one',
@@ -109,7 +109,7 @@ const singleBarNMVariantData: ChartProps[] = [
     chartDataText: '1.5k/15k hours',
   },
   {
-    chartTitle: 'two',
+    chartSeriesTitle: 'two',
     chartData: [
       {
         legend: 'two',
@@ -121,7 +121,7 @@ const singleBarNMVariantData: ChartProps[] = [
     chartDataText: '800/15k hours',
   },
   {
-    chartTitle: 'three',
+    chartSeriesTitle: 'three',
     chartData: [
       {
         legend: 'three',
@@ -133,7 +133,7 @@ const singleBarNMVariantData: ChartProps[] = [
     chartDataText: '8.9k/15k hours',
   },
   {
-    chartTitle: 'four',
+    chartSeriesTitle: 'four',
     chartData: [
       {
         legend: 'four',
@@ -145,7 +145,7 @@ const singleBarNMVariantData: ChartProps[] = [
     chartDataText: '16k/15k hours',
   },
   {
-    chartTitle: 'five',
+    chartSeriesTitle: 'five',
     chartData: [
       {
         legend: 'five',
@@ -157,7 +157,7 @@ const singleBarNMVariantData: ChartProps[] = [
     chartDataText: '11k/15k hours',
   },
   {
-    chartTitle: 'six',
+    chartSeriesTitle: 'six',
     chartData: [
       {
         legend: 'six',
@@ -169,7 +169,7 @@ const singleBarNMVariantData: ChartProps[] = [
     chartDataText: '14k/15k hours',
   },
   {
-    chartTitle: 'seven',
+    chartSeriesTitle: 'seven',
     chartData: [
       {
         legend: 'seven',
@@ -181,7 +181,7 @@ const singleBarNMVariantData: ChartProps[] = [
     chartDataText: '9.9k/15k hours',
   },
   {
-    chartTitle: 'eight',
+    chartSeriesTitle: 'eight',
     chartData: [
       {
         legend: 'eight',
@@ -265,22 +265,22 @@ const chartPoints3: ChartDataPoint[] = [
 
 const data: ChartProps[] = [
   {
-    chartTitle: 'Monitored First',
+    chartSeriesTitle: 'Monitored First',
     chartData: chartPoints1,
   },
   {
-    chartTitle: 'Monitored Second',
+    chartSeriesTitle: 'Monitored Second',
     chartData: chartPoints2,
   },
   {
-    chartTitle: 'Unmonitored',
+    chartSeriesTitle: 'Unmonitored',
     chartData: chartPoints3,
   },
 ];
 
 const singlePointData = [
   {
-    chartTitle: 'one',
+    chartSeriesTitle: 'one',
     chartData: [
       {
         legend: 'one',
@@ -294,7 +294,7 @@ const singlePointData = [
 
 const benchmarkData: ChartProps[] = [
   {
-    chartTitle: 'one',
+    chartSeriesTitle: 'one',
     chartData: [
       {
         legend: 'one',
@@ -306,7 +306,7 @@ const benchmarkData: ChartProps[] = [
     benchmarkData: 50,
   },
   {
-    chartTitle: 'two',
+    chartSeriesTitle: 'two',
     chartData: [
       {
         legend: 'two',
@@ -318,7 +318,7 @@ const benchmarkData: ChartProps[] = [
     benchmarkData: 30,
   },
   {
-    chartTitle: 'three',
+    chartSeriesTitle: 'three',
     chartData: [
       {
         legend: 'three',

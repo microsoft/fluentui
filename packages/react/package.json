@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.121.11",
+  "version": "8.121.12",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,7 @@
     "start": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts dev:storybook",
     "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
     "start-test": "just-scripts jest-watch",
-    "test": "cross-env NODE_OPTIONS=--max-old-space-size=8192 just-scripts test",
+    "test": "just-scripts test",
     "update-snapshots": "just-scripts jest -u",
     "mf": "just-scripts mf",
     "verify-packaging": "just-scripts verify-packaging"

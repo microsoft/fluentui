@@ -24,7 +24,6 @@ import { SankeyLink } from 'd3-sankey';
 import { SankeyNode } from 'd3-sankey';
 import { ScaleBand } from 'd3-scale';
 import { ScaleLinear } from 'd3-scale';
-import { SVGProps } from 'react';
 import { TimeLocaleDefinition } from 'd3-time-format';
 
 // @public
@@ -400,8 +399,8 @@ export interface IChartProps {
     chartTitle?: string;
     chartTitleAccessibilityData?: IAccessibilityProps;
     lineChartData?: ILineChartPoints[];
-    pointLineOptions?: SVGProps<SVGLineElement>;
-    pointOptions?: SVGProps<SVGCircleElement>;
+    pointLineOptions?: React_2.SVGProps<SVGLineElement>;
+    pointOptions?: React_2.SVGProps<SVGCircleElement>;
     SankeyChartData?: ISankeyChartData;
 }
 
@@ -933,7 +932,7 @@ export interface ILineChartGap {
 }
 
 // @public (undocumented)
-export interface ILineChartLineOptions extends SVGProps<SVGPathElement> {
+export interface ILineChartLineOptions extends React_2.SVGProps<SVGPathElement> {
     lineBorderColor?: string;
     lineBorderWidth?: string | number;
     strokeDasharray?: string | number;

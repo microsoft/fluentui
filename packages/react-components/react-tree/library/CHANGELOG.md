@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Mon, 11 Nov 2024 10:00:37 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Nov 2024 09:44:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.8.6)
+
+Mon, 18 Nov 2024 09:44:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.8.5..@fluentui/react-tree_v9.8.6)
+
+### Patches
+
+- chore: ensure TreeItem role can be overridden by props ([PR #33277](https://github.com/microsoft/fluentui/pull/33277) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-avatar to v9.6.43 ([PR #33229](https://github.com/microsoft/fluentui/pull/33229) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.41 ([PR #33229](https://github.com/microsoft/fluentui/pull/33229) by beachball)
+- Bump @fluentui/react-radio to v9.2.36 ([PR #33229](https://github.com/microsoft/fluentui/pull/33229) by beachball)
 
 ## [9.8.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.8.5)
 

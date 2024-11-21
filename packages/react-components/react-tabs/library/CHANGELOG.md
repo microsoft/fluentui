@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Mon, 11 Nov 2024 10:00:57 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Nov 2024 09:44:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.6.2)
+
+Mon, 18 Nov 2024 09:44:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.6.1..@fluentui/react-tabs_v9.6.2)
+
+### Patches
+
+- fix: focus selected tab by default ([PR #33236](https://github.com/microsoft/fluentui/pull/33236) by dmytrokirpa@microsoft.com)
 
 ## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.6.1)
 

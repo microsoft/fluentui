@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Mon, 18 Nov 2024 09:44:39 GMT",
+      "tag": "@fluentui/react-positioning_v9.15.12",
+      "version": "9.15.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "072ad5a3be7e47d6ccc19ac5addb0f633f403094",
+            "comment": "fix: update writeArrowUpdates to correctly resolve arrow position"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:00:51 GMT",
       "tag": "@fluentui/react-positioning_v9.15.11",
       "version": "9.15.11",

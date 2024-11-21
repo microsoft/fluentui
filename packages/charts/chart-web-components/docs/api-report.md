@@ -14,10 +14,11 @@ import { Selection as Selection_2 } from 'd3-selection';
 //
 // @public (undocumented)
 export class DonutChart extends FASTElement {
+    constructor();
     // (undocumented)
     activeLegend: string;
     // (undocumented)
-    activeLegendChanged: (oldValue: string, newValue: string) => void;
+    activeLegendChanged(oldValue: string, newValue: string): void;
     // (undocumented)
     chartWrapper: HTMLDivElement;
     // (undocumented)
@@ -27,15 +28,17 @@ export class DonutChart extends FASTElement {
     // (undocumented)
     data: ChartProps_2;
     // (undocumented)
-    getLegends: () => Legend[];
+    elementInternals: ElementInternals;
+    // (undocumented)
+    getLegends(): Legend[];
     // (undocumented)
     group: SVGGElement;
     // (undocumented)
-    handleLegendClick: (legendTitle: string) => void;
+    handleLegendClick(legendTitle: string): void;
     // (undocumented)
-    handleLegendMouseoutAndBlur: () => void;
+    handleLegendMouseoutAndBlur(): void;
     // (undocumented)
-    handleLegendMouseoverAndFocus: (legendTitle: string) => void;
+    handleLegendMouseoverAndFocus(legendTitle: string): void;
     // (undocumented)
     height: number;
     // (undocumented)
@@ -64,6 +67,8 @@ export class DonutChart extends FASTElement {
         yPos: number;
     };
     // (undocumented)
+    tooltipPropsChanged(oldValue: any, newValue: any): void;
+    // (undocumented)
     valueInsideDonut?: string;
     // (undocumented)
     width: number;
@@ -82,12 +87,15 @@ export const DonutChartTemplate: ElementViewTemplate<DonutChart>;
 
 // @public
 export class HorizontalBarChart extends FASTElement {
+    constructor();
     // (undocumented)
     activeLegend: string;
     // (undocumented)
     activeLegendChanged: (oldValue: string, newValue: string) => void;
     // (undocumented)
     chartContainer: HTMLDivElement;
+    // (undocumented)
+    chartTitle?: string;
     // (undocumented)
     connectedCallback(): void;
     // (undocumented)
@@ -96,6 +104,8 @@ export class HorizontalBarChart extends FASTElement {
     //
     // (undocumented)
     data: ChartProps[];
+    // (undocumented)
+    elementInternals: ElementInternals;
     // (undocumented)
     handleLegendClick: (legendTitle: string) => void;
     // (undocumented)

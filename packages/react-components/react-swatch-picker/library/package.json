@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@fluentui/react-context-selector": "^9.1.69",
+    "@fluentui/react-field": "^9.1.80",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-jsx-runtime": "^9.0.46",
     "@fluentui/react-shared-contexts": "^9.21.0",

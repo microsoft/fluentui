@@ -1,9 +1,8 @@
+import * as React from 'react';
 import { createKeyborg } from 'keyborg';
-import { useEffect, useMemo, useRef } from 'react';
 import { KEYBOARD_NAV_ATTRIBUTE } from '../focus/constants';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { KeyborgCallback } from 'keyborg';
-import type { RefObject } from 'react';
 
 /**
  * Instantiates [keyborg](https://github.com/microsoft/keyborg) and adds `data-keyboard-nav`
@@ -12,9 +11,9 @@ import type { RefObject } from 'react';
  */
 export function useKeyboardNavAttribute<E extends HTMLElement>() {
   const { targetDocument } = useFluent();
-  const keyborg = useMemo(() => targetDocument && createKeyborg(targetDocument.defaultView!), [targetDocument]);
-  const ref = useRef<E>(null);
-  useEffect(() => {
+  const keyborg = React.useMemo(() => targetDocument && createKeyborg(targetDocument.defaultView!), [targetDocument]);
+  const ref = React.useRef<E>(null);
+  React.useEffect(() => {
     if (keyborg) {
       setBooleanAttribute(ref, KEYBOARD_NAV_ATTRIBUTE, keyborg.isNavigatingWithKeyboard());
       const cb: KeyborgCallback = next => {
@@ -27,7 +26,7 @@ export function useKeyboardNavAttribute<E extends HTMLElement>() {
   return ref;
 }
 
-function setBooleanAttribute(elementRef: RefObject<HTMLElement>, attribute: string, value: boolean) {
+function setBooleanAttribute(elementRef: React.RefObject<HTMLElement>, attribute: string, value: boolean) {
   if (!elementRef.current) {
     return;
   }
