@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Left-aligning menu items in Pivot's overflow menu.",
+  "packageName": "@fluentui/react",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}
