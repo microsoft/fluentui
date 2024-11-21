@@ -111,8 +111,8 @@ export const PeoplePickerNormalExample: React.FunctionComponent = () => {
     setShowPickerLabel(!showPickerLabel);
   };
 
-  const onPickerLabelChanged = (ev?: any, newValue?: string): void => {
-    setPickerLabel(newValue || '');
+  const onPickerLabelChange = (_: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
+    setPickerLabel(newValue ?? '');
   };
 
   const onRequiredButtonClick = (): void => {
@@ -204,7 +204,7 @@ export const PeoplePickerNormalExample: React.FunctionComponent = () => {
           label={'People Picker Label'}
           value={pickerLabel}
           // eslint-disable-next-line react/jsx-no-bind
-          onChange={onPickerLabelChanged}
+          onChange={onPickerLabelChange}
         />
       )}
     </div>

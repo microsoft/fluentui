@@ -45,7 +45,7 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
   componentRef?: IRefObject<IBasePicker<T>>;
 
   /**
-   * Descriptive label for the field
+   * Descriptive label for the field.
    */
   label?: string;
 
@@ -350,7 +350,7 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
  * {@docCategory Pickers}
  */
 export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'className' | 'disabled'> & {
-  /** Element has an error message. */
+  /** Whether the element has an error message or not. */
   hasErrorMessage: boolean;
 
   /** Whether text style area is focused */
