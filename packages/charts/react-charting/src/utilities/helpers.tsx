@@ -1,32 +1,74 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { DonutChart, IDonutChartProps } from '../components/DonutChart/index';
-import { IChartProps } from '../types/IDataPoint';
+import { IChartProps, IVerticalStackedChartProps } from '../types/IDataPoint';
 import { getNextColor } from './colors';
+import { IVerticalStackedBarChartProps, VerticalStackedBarChart } from '../components/VerticalStackedBarChart/index';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const transformPlotlyJsonToDonutProps = (obj: any): IDonutChartProps => {
   const donutData: IChartProps = {
     chartTitle: obj.layout.title,
-    chartData: (obj.data[0].labels as string[]).map((label, index) => {
+    chartData: obj.data[0].labels.map((label: string, index: number) => {
       return {
         legend: label,
-        data: obj.data[0].values[index] as number,
+        data: obj.data[0].values[index],
         color: getNextColor(index),
       };
     }),
   };
 
+  // const width: number = obj.layout.width;
+  // const height: number = obj.layout.height;
+  // const innerRadius: number = (Math.min(width, height) * obj.data[0].hole) / 2;
+
   return {
     data: donutData,
     hideLegend: !obj.layout.showlegend,
+    // width,
+    // height,
+    // innerRadius,
   };
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const transformPlotlyJsonToColumnProps = (obj: any): IVerticalStackedBarChartProps => {
+  const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
+
+  obj.data.forEach((series: any, index1: number) => {
+    series.x.forEach((x: string | number, index2: number) => {
+      if (!mapXToDataPoints[x]) {
+        mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
+      }
+      if (series.type === 'bar') {
+        mapXToDataPoints[x].chartData.push({
+          legend: series.name,
+          data: series.y[index2],
+          color: getNextColor(index1),
+        });
+      } else if (series.type === 'line') {
+        mapXToDataPoints[x].lineData!.push({
+          legend: series.name,
+          y: series.y[index2],
+          color: getNextColor(index1),
+        });
+      }
+    });
+  });
+
+  return {
+    data: Object.values(mapXToDataPoints),
+    chartTitle: obj.layout.title,
+    // width: obj.layout.width,
+    // height: obj.layout.height,
+    barWidth: 'auto',
+  };
+};
+
 export const renderChartFromPlotlyJson = (obj: any): React.ReactNode => {
   switch (obj.data[0].type) {
     case 'pie':
       return <DonutChart {...transformPlotlyJsonToDonutProps(obj)} />;
+    case 'bar':
+      return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(obj)} />;
     default:
       return null;
   }
