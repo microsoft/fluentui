@@ -1594,6 +1594,9 @@ export enum NodesComposition {
 // @public
 export const PieChart: React_2.FunctionComponent<IPieChartProps>;
 
+// @public (undocumented)
+export const renderChartFromPlotlyJson: (obj: any) => React_2.ReactNode;
+
 // @public
 export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
 
