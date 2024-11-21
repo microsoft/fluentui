@@ -42,25 +42,55 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           <g
             id="_HorizontalLine_lllllm_0"
           >
+            <defs>
+              <lineargradient
+                id="HBC_Gradient80_0_0"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#004b50"
+                />
+                <stop
+                  offset="100%"
+                  stop-color=""
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30, 10%."
               class="fui-hbc__barWrapper"
               data-is-focusable="true"
-              fill="#004b50"
+              fill="url(#HBC_Gradient80_0_0)"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
               y="0"
             />
+            <defs>
+              <lineargradient
+                id="HBC_Gradient80_0_1"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#E6E6E6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#E6E6E6"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="13457/15000."
               class="fui-hbc__barWrapper"
               data-is-focusable="false"
-              fill="var(--colorBackgroundOverlay)"
+              fill="url(#HBC_Gradient80_0_1)"
               height="12"
               role="img"
+              rx="4"
               width="89.71333333333334%"
               x="10.286666666666665%"
               y="0"
@@ -106,25 +136,55 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           <g
             id="_HorizontalLine_lllllm_1"
           >
+            <defs>
+              <lineargradient
+                id="HBC_Gradient80_1_0"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#5c2d91"
+                />
+                <stop
+                  offset="100%"
+                  stop-color=""
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30, 5%."
               class="fui-hbc__barWrapper"
               data-is-focusable="true"
-              fill="#5c2d91"
+              fill="url(#HBC_Gradient80_1_0)"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
               y="0"
             />
+            <defs>
+              <lineargradient
+                id="HBC_Gradient80_1_1"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#E6E6E6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#E6E6E6"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="14200/15000."
               class="fui-hbc__barWrapper"
               data-is-focusable="false"
-              fill="var(--colorBackgroundOverlay)"
+              fill="url(#HBC_Gradient80_1_1)"
               height="12"
               role="img"
+              rx="4"
               width="94.66666666666667%"
               x="5.333333333333334%"
               y="0"
@@ -170,25 +230,55 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           <g
             id="_HorizontalLine_lllllm_2"
           >
+            <defs>
+              <lineargradient
+                id="HBC_Gradient80_2_0"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#a4262c"
+                />
+                <stop
+                  offset="100%"
+                  stop-color=""
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30, 59%."
               class="fui-hbc__barWrapper"
               data-is-focusable="true"
-              fill="#a4262c"
+              fill="url(#HBC_Gradient80_2_0)"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
               y="0"
             />
+            <defs>
+              <lineargradient
+                id="HBC_Gradient80_2_1"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#E6E6E6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#E6E6E6"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="6112/15000."
               class="fui-hbc__barWrapper"
               data-is-focusable="false"
-              fill="var(--colorBackgroundOverlay)"
+              fill="url(#HBC_Gradient80_2_1)"
               height="12"
               role="img"
+              rx="4"
               width="40.74666666666666%"
               x="59.25333333333334%"
               y="0"
@@ -199,7 +289,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout70"
+      id="callout84"
     />
   </div>
 </div>
@@ -247,25 +337,55 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           <g
             id="_HorizontalLine_lllllm_0"
           >
+            <defs>
+              <lineargradient
+                id="HBC_Gradient86_0_0"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#004b50"
+                />
+                <stop
+                  offset="100%"
+                  stop-color=""
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30, 10%."
               class="fui-hbc__barWrapper"
               data-is-focusable="true"
-              fill="#004b50"
+              fill="url(#HBC_Gradient86_0_0)"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
               y="0"
             />
+            <defs>
+              <lineargradient
+                id="HBC_Gradient86_0_1"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#E6E6E6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#E6E6E6"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="13457/15000."
               class="fui-hbc__barWrapper"
               data-is-focusable="false"
-              fill="var(--colorBackgroundOverlay)"
+              fill="url(#HBC_Gradient86_0_1)"
               height="12"
               role="img"
+              rx="4"
               width="89.71333333333334%"
               x="10.286666666666665%"
               y="0"
@@ -311,25 +431,55 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           <g
             id="_HorizontalLine_lllllm_1"
           >
+            <defs>
+              <lineargradient
+                id="HBC_Gradient86_1_0"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#5c2d91"
+                />
+                <stop
+                  offset="100%"
+                  stop-color=""
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30, 5%."
               class="fui-hbc__barWrapper"
               data-is-focusable="true"
-              fill="#5c2d91"
+              fill="url(#HBC_Gradient86_1_0)"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
               y="0"
             />
+            <defs>
+              <lineargradient
+                id="HBC_Gradient86_1_1"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#E6E6E6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#E6E6E6"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="14200/15000."
               class="fui-hbc__barWrapper"
               data-is-focusable="false"
-              fill="var(--colorBackgroundOverlay)"
+              fill="url(#HBC_Gradient86_1_1)"
               height="12"
               role="img"
+              rx="4"
               width="94.66666666666667%"
               x="5.333333333333334%"
               y="0"
@@ -375,25 +525,55 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           <g
             id="_HorizontalLine_lllllm_2"
           >
+            <defs>
+              <lineargradient
+                id="HBC_Gradient86_2_0"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#a4262c"
+                />
+                <stop
+                  offset="100%"
+                  stop-color=""
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30, 59%."
               class="fui-hbc__barWrapper"
               data-is-focusable="true"
-              fill="#a4262c"
+              fill="url(#HBC_Gradient86_2_0)"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
               y="0"
             />
+            <defs>
+              <lineargradient
+                id="HBC_Gradient86_2_1"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#E6E6E6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#E6E6E6"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="6112/15000."
               class="fui-hbc__barWrapper"
               data-is-focusable="false"
-              fill="var(--colorBackgroundOverlay)"
+              fill="url(#HBC_Gradient86_2_1)"
               height="12"
               role="img"
+              rx="4"
               width="40.74666666666666%"
               x="59.25333333333334%"
               y="0"
@@ -404,7 +584,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout75"
+      id="callout90"
     />
   </div>
 </div>
@@ -413,7 +593,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
 exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider76"
+    class="fui-FluentProvider fui-FluentProvider91"
     dir="ltr"
   >
     <div
@@ -456,25 +636,55 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             <g
               id="_HorizontalLine_lllllm_0"
             >
+              <defs>
+                <lineargradient
+                  id="HBC_Gradient93_0_0"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="#004b50"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color=""
+                  />
+                </lineargradient>
+              </defs>
               <rect
                 aria-label="2020/04/30, 10%."
                 class="fui-hbc__barWrapper"
                 data-is-focusable="true"
-                fill="#004b50"
+                fill="url(#HBC_Gradient93_0_0)"
                 height="12"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="10.286666666666665%"
                 x="0%"
                 y="0"
               />
+              <defs>
+                <lineargradient
+                  id="HBC_Gradient93_0_1"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="#E6E6E6"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="#E6E6E6"
+                  />
+                </lineargradient>
+              </defs>
               <rect
                 aria-label="13457/15000."
                 class="fui-hbc__barWrapper"
                 data-is-focusable="false"
-                fill="var(--colorBackgroundOverlay)"
+                fill="url(#HBC_Gradient93_0_1)"
                 height="12"
                 role="img"
+                rx="4"
                 width="89.71333333333334%"
                 x="10.286666666666665%"
                 y="0"
@@ -520,25 +730,55 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             <g
               id="_HorizontalLine_lllllm_1"
             >
+              <defs>
+                <lineargradient
+                  id="HBC_Gradient93_1_0"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="#5c2d91"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color=""
+                  />
+                </lineargradient>
+              </defs>
               <rect
                 aria-label="2020/04/30, 5%."
                 class="fui-hbc__barWrapper"
                 data-is-focusable="true"
-                fill="#5c2d91"
+                fill="url(#HBC_Gradient93_1_0)"
                 height="12"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="5.333333333333334%"
                 x="0%"
                 y="0"
               />
+              <defs>
+                <lineargradient
+                  id="HBC_Gradient93_1_1"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="#E6E6E6"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="#E6E6E6"
+                  />
+                </lineargradient>
+              </defs>
               <rect
                 aria-label="14200/15000."
                 class="fui-hbc__barWrapper"
                 data-is-focusable="false"
-                fill="var(--colorBackgroundOverlay)"
+                fill="url(#HBC_Gradient93_1_1)"
                 height="12"
                 role="img"
+                rx="4"
                 width="94.66666666666667%"
                 x="5.333333333333334%"
                 y="0"
@@ -584,25 +824,55 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             <g
               id="_HorizontalLine_lllllm_2"
             >
+              <defs>
+                <lineargradient
+                  id="HBC_Gradient93_2_0"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="#a4262c"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color=""
+                  />
+                </lineargradient>
+              </defs>
               <rect
                 aria-label="2020/04/30, 59%."
                 class="fui-hbc__barWrapper"
                 data-is-focusable="true"
-                fill="#a4262c"
+                fill="url(#HBC_Gradient93_2_0)"
                 height="12"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="59.25333333333334%"
                 x="0%"
                 y="0"
               />
+              <defs>
+                <lineargradient
+                  id="HBC_Gradient93_2_1"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="#E6E6E6"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="#E6E6E6"
+                  />
+                </lineargradient>
+              </defs>
               <rect
                 aria-label="6112/15000."
                 class="fui-hbc__barWrapper"
                 data-is-focusable="false"
-                fill="var(--colorBackgroundOverlay)"
+                fill="url(#HBC_Gradient93_2_1)"
                 height="12"
                 role="img"
+                rx="4"
                 width="40.74666666666666%"
                 x="59.25333333333334%"
                 y="0"
@@ -613,7 +883,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout81"
+        id="callout97"
       />
     </div>
   </div>
@@ -624,7 +894,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_HBC_empty82"
+    id="_HBC_empty98"
     role="alert"
     style="opacity: 0;"
   />
@@ -674,25 +944,55 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           <g
             id="_HorizontalLine_lllllm_0"
           >
+            <defs>
+              <lineargradient
+                id="HBC_Gradient99_0_0"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#004b50"
+                />
+                <stop
+                  offset="100%"
+                  stop-color=""
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30, 10%."
               class="fui-hbc__barWrapper"
               data-is-focusable="true"
-              fill="#004b50"
+              fill="url(#HBC_Gradient99_0_0)"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
               y="0"
             />
+            <defs>
+              <lineargradient
+                id="HBC_Gradient99_0_1"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#E6E6E6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#E6E6E6"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="13457/15000."
               class="fui-hbc__barWrapper"
               data-is-focusable="false"
-              fill="var(--colorBackgroundOverlay)"
+              fill="url(#HBC_Gradient99_0_1)"
               height="12"
               role="img"
+              rx="4"
               width="89.71333333333334%"
               x="10.286666666666665%"
               y="0"
@@ -738,25 +1038,55 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           <g
             id="_HorizontalLine_lllllm_1"
           >
+            <defs>
+              <lineargradient
+                id="HBC_Gradient99_1_0"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#5c2d91"
+                />
+                <stop
+                  offset="100%"
+                  stop-color=""
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30, 5%."
               class="fui-hbc__barWrapper"
               data-is-focusable="true"
-              fill="#5c2d91"
+              fill="url(#HBC_Gradient99_1_0)"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
               y="0"
             />
+            <defs>
+              <lineargradient
+                id="HBC_Gradient99_1_1"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#E6E6E6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#E6E6E6"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="14200/15000."
               class="fui-hbc__barWrapper"
               data-is-focusable="false"
-              fill="var(--colorBackgroundOverlay)"
+              fill="url(#HBC_Gradient99_1_1)"
               height="12"
               role="img"
+              rx="4"
               width="94.66666666666667%"
               x="5.333333333333334%"
               y="0"
@@ -802,25 +1132,55 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           <g
             id="_HorizontalLine_lllllm_2"
           >
+            <defs>
+              <lineargradient
+                id="HBC_Gradient99_2_0"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#a4262c"
+                />
+                <stop
+                  offset="100%"
+                  stop-color=""
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30, 59%."
               class="fui-hbc__barWrapper"
               data-is-focusable="true"
-              fill="#a4262c"
+              fill="url(#HBC_Gradient99_2_0)"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
               y="0"
             />
+            <defs>
+              <lineargradient
+                id="HBC_Gradient99_2_1"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#E6E6E6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#E6E6E6"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="6112/15000."
               class="fui-hbc__barWrapper"
               data-is-focusable="false"
-              fill="var(--colorBackgroundOverlay)"
+              fill="url(#HBC_Gradient99_2_1)"
               height="12"
               role="img"
+              rx="4"
               width="40.74666666666666%"
               x="59.25333333333334%"
               y="0"
@@ -831,7 +1191,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout86"
+      id="callout103"
     />
   </div>
 </div>
@@ -879,25 +1239,55 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           <g
             id="_HorizontalLine_lllllm_0"
           >
+            <defs>
+              <lineargradient
+                id="HBC_Gradient2_0_0"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#004b50"
+                />
+                <stop
+                  offset="100%"
+                  stop-color=""
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30, 10%."
               class="fui-hbc__barWrapper"
               data-is-focusable="true"
-              fill="#004b50"
+              fill="url(#HBC_Gradient2_0_0)"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
               y="0"
             />
+            <defs>
+              <lineargradient
+                id="HBC_Gradient2_0_1"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#E6E6E6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#E6E6E6"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="13457/15000."
               class="fui-hbc__barWrapper"
               data-is-focusable="false"
-              fill="var(--colorBackgroundOverlay)"
+              fill="url(#HBC_Gradient2_0_1)"
               height="12"
               role="img"
+              rx="4"
               width="89.71333333333334%"
               x="10.286666666666665%"
               y="0"
@@ -943,25 +1333,55 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           <g
             id="_HorizontalLine_lllllm_1"
           >
+            <defs>
+              <lineargradient
+                id="HBC_Gradient2_1_0"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#5c2d91"
+                />
+                <stop
+                  offset="100%"
+                  stop-color=""
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30, 5%."
               class="fui-hbc__barWrapper"
               data-is-focusable="true"
-              fill="#5c2d91"
+              fill="url(#HBC_Gradient2_1_0)"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
               y="0"
             />
+            <defs>
+              <lineargradient
+                id="HBC_Gradient2_1_1"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#E6E6E6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#E6E6E6"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="14200/15000."
               class="fui-hbc__barWrapper"
               data-is-focusable="false"
-              fill="var(--colorBackgroundOverlay)"
+              fill="url(#HBC_Gradient2_1_1)"
               height="12"
               role="img"
+              rx="4"
               width="94.66666666666667%"
               x="5.333333333333334%"
               y="0"
@@ -1007,25 +1427,55 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           <g
             id="_HorizontalLine_lllllm_2"
           >
+            <defs>
+              <lineargradient
+                id="HBC_Gradient2_2_0"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#a4262c"
+                />
+                <stop
+                  offset="100%"
+                  stop-color=""
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="2020/04/30, 59%."
               class="fui-hbc__barWrapper"
               data-is-focusable="true"
-              fill="#a4262c"
+              fill="url(#HBC_Gradient2_2_0)"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
               y="0"
             />
+            <defs>
+              <lineargradient
+                id="HBC_Gradient2_2_1"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#E6E6E6"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#E6E6E6"
+                />
+              </lineargradient>
+            </defs>
             <rect
               aria-label="6112/15000."
               class="fui-hbc__barWrapper"
               data-is-focusable="false"
-              fill="var(--colorBackgroundOverlay)"
+              fill="url(#HBC_Gradient2_2_1)"
               height="12"
               role="img"
+              rx="4"
               width="40.74666666666666%"
               x="59.25333333333334%"
               y="0"
@@ -1036,7 +1486,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout5"
+      id="callout6"
     />
   </div>
 </div>

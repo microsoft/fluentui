@@ -116,7 +116,6 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           // TODO innerradius and outerradius were absent
           id={id}
           d={pathData}
-          className={classes.root}
           style={{ fill: 'transparent', cursor: href ? 'pointer' : 'default' }}
           onFocus={_onFocus.bind(this, props.data!.data, id)}
           data-is-focusable={props.activeArc === props.data!.data.legend || props.activeArc === ''}

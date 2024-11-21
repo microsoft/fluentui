@@ -24,45 +24,96 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
             <g>
               <path
                 aria-label="2020/04/30, 20000."
-                class="fui-donut-arc__root"
-                d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+                d="M0.497,-49.747A5,5,0,0,1,6.047,-54.667A55,55,0,0,1,49.18,-24.624A5,5,0,0,1,46.489,-17.713L0,0Z"
                 data-is-focusable="true"
                 id="_Pie_1first20000"
-                opacity="1"
                 role="img"
-                style="fill: #E5E5E5; cursor: default;"
+                style="fill: transparent; cursor: default;"
               />
+              <clippath
+                id="Arc_clip2#E5E5E5_"
+              >
+                <path
+                  d="M0.497,-49.747A5,5,0,0,1,6.047,-54.667A55,55,0,0,1,49.18,-24.624A5,5,0,0,1,46.489,-17.713L0,0Z"
+                />
+              </clippath>
+              <foreignobject
+                clip-path="url(#Arc_clip2#E5E5E5_)"
+                height="100%"
+                width="100%"
+                x="-50%"
+                y="-50%"
+              >
+                <div
+                  class="fui-donut-arc__root"
+                  style="width: 100%; height: 100%; opacity: 1;"
+                />
+              </foreignobject>
             </g>
             <g>
               <path
                 aria-label="2020/04/20, 39000."
-                class="fui-donut-arc__root"
-                d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+                d="M46.834,-16.78A5,5,0,0,1,53.373,-13.28A55,55,0,0,1,-17.233,52.23A5,5,0,0,1,-20.234,45.449L0,0Z"
                 data-is-focusable="true"
                 id="_Pie_1second39000"
-                opacity="1"
                 role="img"
-                style="fill: #0078D4; cursor: default;"
+                style="fill: transparent; cursor: default;"
               />
+              <clippath
+                id="Arc_clip3#0078D4_"
+              >
+                <path
+                  d="M46.834,-16.78A5,5,0,0,1,53.373,-13.28A55,55,0,0,1,-17.233,52.23A5,5,0,0,1,-20.234,45.449L0,0Z"
+                />
+              </clippath>
+              <foreignobject
+                clip-path="url(#Arc_clip3#0078D4_)"
+                height="100%"
+                width="100%"
+                x="-50%"
+                y="-50%"
+              >
+                <div
+                  class="fui-donut-arc__root"
+                  style="width: 100%; height: 100%; opacity: 1;"
+                />
+              </foreignobject>
             </g>
             <g>
               <path
                 aria-label="2020/04/25, 45000."
-                class="fui-donut-arc__root"
-                d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                d="M-21.139,45.035A5,5,0,0,1,-28.232,47.201A55,55,0,0,1,-6.047,-54.667A5,5,0,0,1,-0.497,-49.747L0,0Z"
                 data-is-focusable="true"
                 id="_Pie_1third45000"
-                opacity="1"
                 role="img"
-                style="fill: #DADADA; cursor: default;"
+                style="fill: transparent; cursor: default;"
               />
+              <clippath
+                id="Arc_clip4#DADADA_"
+              >
+                <path
+                  d="M-21.139,45.035A5,5,0,0,1,-28.232,47.201A55,55,0,0,1,-6.047,-54.667A5,5,0,0,1,-0.497,-49.747L0,0Z"
+                />
+              </clippath>
+              <foreignobject
+                clip-path="url(#Arc_clip4#DADADA_)"
+                height="100%"
+                width="100%"
+                x="-50%"
+                y="-50%"
+              >
+                <div
+                  class="fui-donut-arc__root"
+                  style="width: 100%; height: 100%; opacity: 1;"
+                />
+              </foreignobject>
             </g>
           </g>
         </svg>
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout2"
+        id="callout5"
       />
       <div
         class="fui-donut__legendContainer"
@@ -146,7 +197,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
 exports[`Donut chart interactions Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider32"
+    class="fui-FluentProvider fui-FluentProvider59"
     dir="ltr"
   >
     <div
@@ -171,45 +222,96 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
               <g>
                 <path
                   aria-label="2020/04/30, 20000."
-                  class="fui-donut-arc__root"
-                  d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+                  d="M0.497,-49.747A5,5,0,0,1,6.047,-54.667A55,55,0,0,1,49.18,-24.624A5,5,0,0,1,46.489,-17.713L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_33first20000"
-                  opacity="1"
+                  id="_Pie_60first20000"
                   role="img"
-                  style="fill: #E5E5E5; cursor: default;"
+                  style="fill: transparent; cursor: default;"
                 />
+                <clippath
+                  id="Arc_clip61#E5E5E5_"
+                >
+                  <path
+                    d="M0.497,-49.747A5,5,0,0,1,6.047,-54.667A55,55,0,0,1,49.18,-24.624A5,5,0,0,1,46.489,-17.713L0,0Z"
+                  />
+                </clippath>
+                <foreignobject
+                  clip-path="url(#Arc_clip61#E5E5E5_)"
+                  height="100%"
+                  width="100%"
+                  x="-50%"
+                  y="-50%"
+                >
+                  <div
+                    class="fui-donut-arc__root"
+                    style="width: 100%; height: 100%; opacity: 1;"
+                  />
+                </foreignobject>
               </g>
               <g>
                 <path
                   aria-label="2020/04/20, 39000."
-                  class="fui-donut-arc__root"
-                  d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+                  d="M46.834,-16.78A5,5,0,0,1,53.373,-13.28A55,55,0,0,1,-17.233,52.23A5,5,0,0,1,-20.234,45.449L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_33second39000"
-                  opacity="1"
+                  id="_Pie_60second39000"
                   role="img"
-                  style="fill: #0078D4; cursor: default;"
+                  style="fill: transparent; cursor: default;"
                 />
+                <clippath
+                  id="Arc_clip62#0078D4_"
+                >
+                  <path
+                    d="M46.834,-16.78A5,5,0,0,1,53.373,-13.28A55,55,0,0,1,-17.233,52.23A5,5,0,0,1,-20.234,45.449L0,0Z"
+                  />
+                </clippath>
+                <foreignobject
+                  clip-path="url(#Arc_clip62#0078D4_)"
+                  height="100%"
+                  width="100%"
+                  x="-50%"
+                  y="-50%"
+                >
+                  <div
+                    class="fui-donut-arc__root"
+                    style="width: 100%; height: 100%; opacity: 1;"
+                  />
+                </foreignobject>
               </g>
               <g>
                 <path
                   aria-label="2020/04/25, 45000."
-                  class="fui-donut-arc__root"
-                  d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+                  d="M-21.139,45.035A5,5,0,0,1,-28.232,47.201A55,55,0,0,1,-6.047,-54.667A5,5,0,0,1,-0.497,-49.747L0,0Z"
                   data-is-focusable="true"
-                  id="_Pie_33third45000"
-                  opacity="1"
+                  id="_Pie_60third45000"
                   role="img"
-                  style="fill: #DADADA; cursor: default;"
+                  style="fill: transparent; cursor: default;"
                 />
+                <clippath
+                  id="Arc_clip63#DADADA_"
+                >
+                  <path
+                    d="M-21.139,45.035A5,5,0,0,1,-28.232,47.201A55,55,0,0,1,-6.047,-54.667A5,5,0,0,1,-0.497,-49.747L0,0Z"
+                  />
+                </clippath>
+                <foreignobject
+                  clip-path="url(#Arc_clip63#DADADA_)"
+                  height="100%"
+                  width="100%"
+                  x="-50%"
+                  y="-50%"
+                >
+                  <div
+                    class="fui-donut-arc__root"
+                    style="width: 100%; height: 100%; opacity: 1;"
+                  />
+                </foreignobject>
               </g>
             </g>
           </svg>
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="callout34"
+          id="callout64"
         />
         <div
           class="fui-donut__legendContainer"

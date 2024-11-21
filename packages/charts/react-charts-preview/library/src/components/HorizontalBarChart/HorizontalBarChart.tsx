@@ -232,9 +232,9 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       const gradientId = _gradientId + `_${dataPointIndex}_${index}`;
 
       return (
-        <>
+        <React.Fragment key={index}>
           <defs>
-            <linearGradient id={gradientId}>
+            <linearGradient id={gradientId} className='HBC_gradient'>
               <stop offset="0" stopColor={point.gradient?.[0]} />
               <stop offset="100%" stopColor={point.gradient?.[1]} />
             </linearGradient>
@@ -261,7 +261,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
             className={classes.barWrapper}
             tabIndex={point.legend !== '' ? 0 : undefined}
           />
-        </>
+        </React.Fragment>
       );
     });
     return bars;

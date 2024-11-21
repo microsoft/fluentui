@@ -5,6 +5,7 @@ import { HorizontalBarChart } from './HorizontalBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartVariant, ChartProps } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { DataVizGradientPalette, getGradientFromToken } from '../../utilities/gradients';
 
 expect.extend(toHaveNoViolations);
 
@@ -88,14 +89,18 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
     { data: chartPoints },
     container => {
       // colors mentioned in the data points itself
+
+      // find the gradients and check their stop color
+      const gradients = getByClass(container, /HBC_gradient/i);
+
+      const disabledColor = getGradientFromToken(DataVizGradientPalette.disabled)[0];
       // Assert
-      const bars = getByClass(container, /barWrapper/);
-      expect(bars[0].getAttribute('fill')).toEqual('#004b50');
-      expect(bars[1].getAttribute('fill')).toEqual('var(--colorBackgroundOverlay)');
-      expect(bars[2].getAttribute('fill')).toEqual('#5c2d91');
-      expect(bars[3].getAttribute('fill')).toEqual('var(--colorBackgroundOverlay)');
-      expect(bars[4].getAttribute('fill')).toEqual('#a4262c');
-      expect(bars[5].getAttribute('fill')).toEqual('var(--colorBackgroundOverlay)');
+      expect(gradients[0].querySelector('stop')?.getAttribute('stop-color')).toEqual('#004b50');
+      expect(gradients[1].querySelector('stop')?.getAttribute('stop-color')).toEqual(disabledColor);
+      expect(gradients[2].querySelector('stop')?.getAttribute('stop-color')).toEqual('#5c2d91');
+      expect(gradients[3].querySelector('stop')?.getAttribute('stop-color')).toEqual(disabledColor);
+      expect(gradients[4].querySelector('stop')?.getAttribute('stop-color')).toEqual('#a4262c');
+      expect(gradients[5].querySelector('stop')?.getAttribute('stop-color')).toEqual(disabledColor);
     },
   );
 

@@ -52,11 +52,25 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
           key="_HorizontalLine_lllllm_0"
           onClick={[Function]}
         >
+          <defs>
+            <linearGradient
+              id="HBC_Gradient42_0_0"
+            >
+              <stop
+                offset="0"
+                stopColor="#004b50"
+              />
+              <stop
+                offset="100%"
+                stopColor=""
+              />
+            </linearGradient>
+          </defs>
           <rect
             aria-label="2020/04/30, 94%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="#004b50"
+            fill="url(#HBC_Gradient42_0_0)"
             height={12}
             key="0"
             onBlur={[Function]}
@@ -64,21 +78,37 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
             role="img"
+            rx={4}
             tabIndex={0}
             width="10.286666666666665%"
             x="0%"
             y={0}
           />
+          <defs>
+            <linearGradient
+              id="HBC_Gradient42_0_1"
+            >
+              <stop
+                offset="0"
+                stopColor="#E6E6E6"
+              />
+              <stop
+                offset="100%"
+                stopColor="#E6E6E6"
+              />
+            </linearGradient>
+          </defs>
           <rect
             aria-label="13457/15000."
             className="fui-hbc__barWrapper"
             data-is-focusable={false}
-            fill="var(--colorBackgroundOverlay)"
+            fill="url(#HBC_Gradient42_0_1)"
             height={12}
             key="1"
             onBlur={[Function]}
             onMouseLeave={[Function]}
             role="img"
+            rx={4}
             width="89.71333333333334%"
             x="10.286666666666665%"
             y={0}
@@ -134,11 +164,25 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
           key="_HorizontalLine_lllllm_1"
           onClick={[Function]}
         >
+          <defs>
+            <linearGradient
+              id="HBC_Gradient42_1_0"
+            >
+              <stop
+                offset="0"
+                stopColor="#5c2d91"
+              />
+              <stop
+                offset="100%"
+                stopColor=""
+              />
+            </linearGradient>
+          </defs>
           <rect
             aria-label="2020/04/30, 19%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="#5c2d91"
+            fill="url(#HBC_Gradient42_1_0)"
             height={12}
             key="0"
             onBlur={[Function]}
@@ -146,21 +190,37 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
             role="img"
+            rx={4}
             tabIndex={0}
             width="5.333333333333334%"
             x="0%"
             y={0}
           />
+          <defs>
+            <linearGradient
+              id="HBC_Gradient42_1_1"
+            >
+              <stop
+                offset="0"
+                stopColor="#E6E6E6"
+              />
+              <stop
+                offset="100%"
+                stopColor="#E6E6E6"
+              />
+            </linearGradient>
+          </defs>
           <rect
             aria-label="14200/15000."
             className="fui-hbc__barWrapper"
             data-is-focusable={false}
-            fill="var(--colorBackgroundOverlay)"
+            fill="url(#HBC_Gradient42_1_1)"
             height={12}
             key="1"
             onBlur={[Function]}
             onMouseLeave={[Function]}
             role="img"
+            rx={4}
             width="94.66666666666667%"
             x="5.333333333333334%"
             y={0}
@@ -171,7 +231,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
   </div>
   <div
     className="fui-cart__calloutContainer"
-    id="callout36"
+    id="callout45"
   />
 </div>
 `;
@@ -228,11 +288,25 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
           key="_HorizontalLine_lllllm_0"
           onClick={[Function]}
         >
+          <defs>
+            <linearGradient
+              id="HBC_Gradient47_0_0"
+            >
+              <stop
+                offset="0"
+                stopColor="#004b50"
+              />
+              <stop
+                offset="100%"
+                stopColor=""
+              />
+            </linearGradient>
+          </defs>
           <rect
             aria-label="2020/04/30, 94%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="#004b50"
+            fill="url(#HBC_Gradient47_0_0)"
             height={12}
             key="0"
             onBlur={[Function]}
@@ -240,21 +314,37 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
             role="img"
+            rx={4}
             tabIndex={0}
             width="10.286666666666665%"
             x="0%"
             y={0}
           />
+          <defs>
+            <linearGradient
+              id="HBC_Gradient47_0_1"
+            >
+              <stop
+                offset="0"
+                stopColor="#E6E6E6"
+              />
+              <stop
+                offset="100%"
+                stopColor="#E6E6E6"
+              />
+            </linearGradient>
+          </defs>
           <rect
             aria-label="13457/15000."
             className="fui-hbc__barWrapper"
             data-is-focusable={false}
-            fill="var(--colorBackgroundOverlay)"
+            fill="url(#HBC_Gradient47_0_1)"
             height={12}
             key="1"
             onBlur={[Function]}
             onMouseLeave={[Function]}
             role="img"
+            rx={4}
             width="89.71333333333334%"
             x="10.286666666666665%"
             y={0}
@@ -310,11 +400,25 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
           key="_HorizontalLine_lllllm_1"
           onClick={[Function]}
         >
+          <defs>
+            <linearGradient
+              id="HBC_Gradient47_1_0"
+            >
+              <stop
+                offset="0"
+                stopColor="#5c2d91"
+              />
+              <stop
+                offset="100%"
+                stopColor=""
+              />
+            </linearGradient>
+          </defs>
           <rect
             aria-label="2020/04/30, 19%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="#5c2d91"
+            fill="url(#HBC_Gradient47_1_0)"
             height={12}
             key="0"
             onBlur={[Function]}
@@ -322,21 +426,37 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
             role="img"
+            rx={4}
             tabIndex={0}
             width="5.333333333333334%"
             x="0%"
             y={0}
           />
+          <defs>
+            <linearGradient
+              id="HBC_Gradient47_1_1"
+            >
+              <stop
+                offset="0"
+                stopColor="#E6E6E6"
+              />
+              <stop
+                offset="100%"
+                stopColor="#E6E6E6"
+              />
+            </linearGradient>
+          </defs>
           <rect
             aria-label="14200/15000."
             className="fui-hbc__barWrapper"
             data-is-focusable={false}
-            fill="var(--colorBackgroundOverlay)"
+            fill="url(#HBC_Gradient47_1_1)"
             height={12}
             key="1"
             onBlur={[Function]}
             onMouseLeave={[Function]}
             role="img"
+            rx={4}
             width="94.66666666666667%"
             x="5.333333333333334%"
             y={0}
@@ -347,7 +467,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
   </div>
   <div
     className="fui-cart__calloutContainer"
-    id="callout40"
+    id="callout50"
   />
 </div>
 `;
@@ -392,17 +512,32 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
           id="_HorizontalLine_lllllm_0"
           onClick={[Function]}
         >
+          <defs>
+            <linearGradient
+              id="HBC_Gradient7_0_0"
+            >
+              <stop
+                offset="0"
+                stopColor="#004b50"
+              />
+              <stop
+                offset="100%"
+                stopColor=""
+              />
+            </linearGradient>
+          </defs>
           <rect
             aria-label="2020/04/30, 94%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="#004b50"
+            fill="url(#HBC_Gradient7_0_0)"
             height={12}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
             role="img"
+            rx={4}
             tabIndex={0}
             width="10.286666666666665%"
             x="0%"
@@ -448,17 +583,32 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
           id="_HorizontalLine_lllllm_1"
           onClick={[Function]}
         >
+          <defs>
+            <linearGradient
+              id="HBC_Gradient7_1_0"
+            >
+              <stop
+                offset="0"
+                stopColor="#5c2d91"
+              />
+              <stop
+                offset="100%"
+                stopColor=""
+              />
+            </linearGradient>
+          </defs>
           <rect
             aria-label="2020/04/30, 19%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="#5c2d91"
+            fill="url(#HBC_Gradient7_1_0)"
             height={12}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
             role="img"
+            rx={4}
             tabIndex={0}
             width="5.333333333333334%"
             x="0%"
@@ -471,7 +621,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
   </div>
   <div
     className="fui-cart__calloutContainer"
-    id="callout8"
+    id="callout10"
   />
 </div>
 `;
@@ -516,17 +666,32 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
           id="_HorizontalLine_lllllm_0"
           onClick={[Function]}
         >
+          <defs>
+            <linearGradient
+              id="HBC_Gradient2_0_0"
+            >
+              <stop
+                offset="0"
+                stopColor="#004b50"
+              />
+              <stop
+                offset="100%"
+                stopColor=""
+              />
+            </linearGradient>
+          </defs>
           <rect
             aria-label="2020/04/30, 94%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="#004b50"
+            fill="url(#HBC_Gradient2_0_0)"
             height={12}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
             role="img"
+            rx={4}
             tabIndex={0}
             width="10.286666666666665%"
             x="0%"
@@ -581,17 +746,32 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
           id="_HorizontalLine_lllllm_1"
           onClick={[Function]}
         >
+          <defs>
+            <linearGradient
+              id="HBC_Gradient2_1_0"
+            >
+              <stop
+                offset="0"
+                stopColor="#5c2d91"
+              />
+              <stop
+                offset="100%"
+                stopColor=""
+              />
+            </linearGradient>
+          </defs>
           <rect
             aria-label="2020/04/30, 19%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="#5c2d91"
+            fill="url(#HBC_Gradient2_1_0)"
             height={12}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
             role="img"
+            rx={4}
             tabIndex={0}
             width="5.333333333333334%"
             x="0%"
@@ -613,7 +793,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
   </div>
   <div
     className="fui-cart__calloutContainer"
-    id="callout4"
+    id="callout5"
   />
 </div>
 `;
