@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 19 Nov 2024 07:22:07 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Nov 2024 07:21:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.121.13](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.13)
+
+Fri, 22 Nov 2024 07:21:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.121.12..@fluentui/react_v8.121.13)
+
+### Patches
+
+- fix: Left-aligning menu items in Pivot's overflow menu. ([PR #33325](https://github.com/microsoft/fluentui/pull/33325) by makotom@microsoft.com)
 
 ## [8.121.12](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.12)
 

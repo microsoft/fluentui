@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-file-type-icons): Map onepart extension to onenote icon",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "cpalaparthi@microsoft.com",
-  "dependentChangeType": "patch"
-}
