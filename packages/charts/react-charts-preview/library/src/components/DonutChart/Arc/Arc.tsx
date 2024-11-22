@@ -106,11 +106,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       <g ref={currentRef}>
         {!!focusedArcId && focusedArcId === id && (
           // TODO innerradius and outerradius were absent
-          <path
-            id={id + 'focusRing'}
-            d={focusPathData}
-            className={classes.focusRing}
-          />
+          <path id={id + 'focusRing'} d={focusPathData} className={classes.focusRing} />
         )}
         <path
           // TODO innerradius and outerradius were absent

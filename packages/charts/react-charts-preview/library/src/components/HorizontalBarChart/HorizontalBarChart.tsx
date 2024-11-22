@@ -234,7 +234,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       return (
         <React.Fragment key={index}>
           <defs>
-            <linearGradient id={gradientId} className='HBC_gradient'>
+            <linearGradient id={gradientId} className="HBC_gradient">
               <stop offset="0" stopColor={point.gradient?.[0]} />
               <stop offset="100%" stopColor={point.gradient?.[1]} />
             </linearGradient>
