@@ -282,7 +282,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
 
     const suggestionsVisible = !!this.state.suggestionsVisible;
     const suggestionsAvailable = suggestionsVisible ? this._ariaMap.suggestionList : undefined;
-    const hasError = typeof (this.state.errorMessage || this.props.errorMessage) !== 'undefined';
+    const hasError = !!(this.state.errorMessage ?? this.props.errorMessage);
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
@@ -303,8 +303,8 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
         })
       : {
           root: css('ms-BasePicker', className ? className : ''),
-          error: css('ms-BasePicker-error', ''),
-          label: css('ms-BasePicker-label', ''),
+          error: 'ms-BasePicker-error',
+          label: 'ms-BasePicker-label',
           text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
           itemsWrapper: legacyStyles.pickerItems,
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
@@ -312,7 +312,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
         };
 
     const comboLabel = this.props['aria-label'] || inputProps?.['aria-label'];
-    const inputId = inputProps?.id ? inputProps.id : this._ariaMap.combobox;
+    const inputId = inputProps?.id ?? this._ariaMap.combobox;
 
     // selectionAriaLabel is contained in a separate <span> rather than an aria-label on the items list
     // because if the items list has an aria-label, the aria-describedby on the input will only read
@@ -376,14 +376,14 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   }
 
   protected _getDescribedBy = (items: T[], hasError: boolean): string => {
-    const describedBy = [];
+    let describedBy = '';
     if (items.length > 0) {
-      describedBy.push(this._ariaMap.selectedItems);
+      describedBy += this._ariaMap.selectedItems;
     }
     if (hasError) {
-      describedBy.push(this._ariaMap.error);
+      describedBy += this._ariaMap.error;
     }
-    return describedBy.join(' ');
+    return describedBy;
   };
 
   protected canAddItems(): boolean {
@@ -405,7 +405,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   }
 
   protected renderError(className?: string): JSX.Element | null {
-    const errorMessage = this.props.errorMessage || this.state.errorMessage;
+    const { errorMessage = this.state.errorMessage } = this.props;
     if (!errorMessage) {
       return null;
     }
@@ -1201,7 +1201,7 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
     const suggestionsVisible = !!this.state.suggestionsVisible;
 
     const suggestionsAvailable: string | undefined = suggestionsVisible ? this._ariaMap.suggestionList : undefined;
-    const hasError = !!(this.state.errorMessage || this.props.errorMessage);
+    const hasError = !!(this.state.errorMessage ?? this.props.errorMessage);
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
@@ -1222,8 +1222,8 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
         })
       : {
           root: css('ms-BasePicker', legacyStyles.picker, className ? className : ''),
-          error: css('ms-BasePicker-error', ''),
-          label: css('ms-BasePicker-label', ''),
+          error: 'ms-BasePicker-error',
+          label: 'ms-BasePicker-label',
           text: css(
             'ms-BasePicker-text',
             legacyStyles.pickerText,
@@ -1236,7 +1236,7 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
         };
 
     const comboLabel = this.props['aria-label'] || inputProps?.['aria-label'];
-    const inputId = inputProps?.id ? inputProps.id : this._ariaMap.combobox;
+    const inputId = inputProps?.id ?? this._ariaMap.combobox;
 
     return (
       <div ref={this.root} onBlur={this.onBlur} onFocus={this.onFocus}>
