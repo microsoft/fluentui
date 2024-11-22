@@ -78,22 +78,75 @@ export function useEmblaCarousel(
   });
 
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
-  /* We store the autoplay as both a ref and as state:
-   * State: Used to trigger a re-init on the carousel engine itself
-   * Ref: Used to prevent getPlugin dependencies from recreating embla carousel
-   */
-  const [autoplay, setAutoplay] = React.useState<boolean>(false);
-  const autoplayRef = React.useRef<boolean>(false);
+  const autoplay = React.useRef<boolean>(false);
 
   const resetAutoplay = React.useCallback(() => {
     emblaApi.current?.plugins().autoplay?.reset();
   }, []);
 
+  const getPlugins = React.useCallback(() => {
+    const plugins: EmblaPluginType[] = [];
+
+    if (autoplay.current) {
+      plugins.push(
+        Autoplay({
+          playOnInit: true,
+          /* stopOnInteraction: false causes autoplay to restart on interaction end*/
+          /* we must remove/re-add plugin on autoplay state change*/
+          stopOnInteraction: false,
+          stopOnMouseEnter: true,
+          stopOnFocusIn: true,
+        }),
+      );
+    }
+
+    // Optionally add Fade plugin
+    if (motion === 'fade') {
+      plugins.push(Fade());
+    }
+
+    if (watchDrag) {
+      plugins.push(
+        pointerEventPlugin({
+          onSelectViaDrag: onDragEvent,
+        }),
+      );
+    }
+
+    return plugins;
+  }, [motion, onDragEvent, watchDrag]);
+
+  const reinitializeCarousel = React.useCallback(() => {
+    const plugins = getPlugins();
+
+    emblaOptions.current = {
+      startIndex: emblaOptions.current.startIndex,
+      align,
+      direction,
+      loop,
+      slidesToScroll,
+      watchDrag,
+      containScroll,
+    };
+
+    emblaApi.current?.reInit(
+      {
+        ...DEFAULT_EMBLA_OPTIONS,
+        ...emblaOptions.current,
+      },
+      plugins,
+    );
+  }, [align, containScroll, direction, getPlugins, loop, slidesToScroll, watchDrag]);
+
+  React.useEffect(() => {
+    reinitializeCarousel();
+  }, [reinitializeCarousel]);
+
   /* Our autoplay button, which is required by standards for autoplay to be enabled, will handle controlled state */
   const enableAutoplay = React.useCallback(
     (_autoplay: boolean) => {
-      autoplayRef.current = _autoplay;
-      setAutoplay(_autoplay);
+      autoplay.current = _autoplay;
+      reinitializeCarousel();
 
       if (_autoplay) {
         emblaApi.current?.plugins().autoplay?.play();
@@ -103,42 +156,7 @@ export function useEmblaCarousel(
         emblaApi.current?.plugins().autoplay?.stop();
       }
     },
-    [resetAutoplay],
-  );
-
-  const getPlugins = React.useCallback(
-    (initAutoplay: boolean) => {
-      const plugins: EmblaPluginType[] = [];
-
-      if (initAutoplay) {
-        plugins.push(
-          Autoplay({
-            playOnInit: true,
-            /* stopOnInteraction: false causes autoplay to restart on interaction end*/
-            /* we must remove/re-add plugin on autoplay state change*/
-            stopOnInteraction: false,
-            stopOnMouseEnter: true,
-            stopOnFocusIn: true,
-          }),
-        );
-      }
-
-      // Optionally add Fade plugin
-      if (motion === 'fade') {
-        plugins.push(Fade());
-      }
-
-      if (watchDrag) {
-        plugins.push(
-          pointerEventPlugin({
-            onSelectViaDrag: onDragEvent,
-          }),
-        );
-      }
-
-      return plugins;
-    },
-    [motion, onDragEvent, watchDrag],
+    [reinitializeCarousel, resetAutoplay],
   );
 
   // Listeners contains callbacks for UI elements that may require state update based on embla changes
@@ -205,7 +223,7 @@ export function useEmblaCarousel(
     };
 
     // Get plugins using autoplayRef to prevent state change recreating EmblaCarousel
-    const plugins = getPlugins(autoplayRef.current);
+    const plugins = getPlugins();
 
     return {
       set current(newElement: HTMLDivElement | null) {
@@ -279,29 +297,6 @@ export function useEmblaCarousel(
       emblaApi.current?.scrollTo(activeIndex);
     }
   }, [activeIndex]);
-
-  React.useEffect(() => {
-    // Get plugins with autoplay state to trigger re-init when nessecary
-    const plugins = getPlugins(autoplay);
-
-    emblaOptions.current = {
-      startIndex: emblaOptions.current.startIndex,
-      align,
-      direction,
-      loop,
-      slidesToScroll,
-      watchDrag,
-      containScroll,
-    };
-
-    emblaApi.current?.reInit(
-      {
-        ...DEFAULT_EMBLA_OPTIONS,
-        ...emblaOptions.current,
-      },
-      plugins,
-    );
-  }, [align, direction, loop, slidesToScroll, watchDrag, containScroll, getPlugins, autoplay]);
 
   return {
     activeIndex,
