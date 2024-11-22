@@ -29,11 +29,11 @@ export default {
   title: 'Components/DonutChart',
 } as Meta<FluentDonutChart>;
 
-export const Basic: Story<FluentDonutChart> = renderComponent(storyTemplate).bind({});
-
 export const RTL: Story<FluentDonutChart> = renderComponent(html<StoryArgs<FluentDonutChart>>`
   <div dir="rtl">
     <fluent-donut-chart data="${JSON.stringify(data)}" value-inside-donut="39,000" inner-radius="55">
     </fluent-donut-chart>
   </div>
 `);
+
+export const Basic: Story<FluentDonutChart> = renderComponent(storyTemplate).bind({});

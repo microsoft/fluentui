@@ -339,17 +339,26 @@ export default {
   title: 'Components/HorizontalBarChart',
 } as Meta<FluentHorizontalBarChart>;
 
-export const Basic: Story<FluentHorizontalBarChart> = renderComponent(storyTemplate).bind({});
+export const RTL: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
+  <div dir="rtl">
+    <div>
+      <fluent-horizontal-bar-chart style="width: 100%" data="${JSON.stringify(data)}"> </fluent-horizontal-bar-chart>
+    </div>
+  </div>
+`);
 
-export const singleBarHBC: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
+export const singleDataPoint: Story<FluentHorizontalBarChart> = renderComponent(html<
+  StoryArgs<FluentHorizontalBarChart>
+>`
   <div>
-    <fluent-horizontal-bar-chart
-      style="width: 100%"
-      data="${JSON.stringify(singleBarHBCData)}"
-      variant="${Variant.AbsoluteScale}"
-    >
+    <fluent-horizontal-bar-chart style="width: 100%" variant="single-bar" data="${JSON.stringify(singlePointData)}">
     </fluent-horizontal-bar-chart>
   </div>
+`);
+
+export const Benchmark: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
+  <fluent-horizontal-bar-chart style="width: 100%" variant="single-bar" data="${JSON.stringify(benchmarkData)}">
+  </fluent-horizontal-bar-chart>
 `);
 
 export const singleBarNMVariant: Story<FluentHorizontalBarChart> = renderComponent(html<
@@ -365,24 +374,15 @@ export const singleBarNMVariant: Story<FluentHorizontalBarChart> = renderCompone
   </div>
 `);
 
-export const Benchmark: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
-  <fluent-horizontal-bar-chart style="width: 100%" variant="single-bar" data="${JSON.stringify(benchmarkData)}">
-  </fluent-horizontal-bar-chart>
-`);
-
-export const singleDataPoint: Story<FluentHorizontalBarChart> = renderComponent(html<
-  StoryArgs<FluentHorizontalBarChart>
->`
+export const singleBarHBC: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
   <div>
-    <fluent-horizontal-bar-chart style="width: 100%" variant="single-bar" data="${JSON.stringify(singlePointData)}">
+    <fluent-horizontal-bar-chart
+      style="width: 100%"
+      data="${JSON.stringify(singleBarHBCData)}"
+      variant="${Variant.AbsoluteScale}"
+    >
     </fluent-horizontal-bar-chart>
   </div>
 `);
 
-export const RTL: Story<FluentHorizontalBarChart> = renderComponent(html<StoryArgs<FluentHorizontalBarChart>>`
-  <div dir="rtl">
-    <div>
-      <fluent-horizontal-bar-chart style="width: 100%" data="${JSON.stringify(data)}"> </fluent-horizontal-bar-chart>
-    </div>
-  </div>
-`);
+export const Basic: Story<FluentHorizontalBarChart> = renderComponent(storyTemplate).bind({});
