@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
-import type { HsvColor } from '../ColorPicker/ColorPicker.types';
+import type { HsvColor } from '../../types/color';
 
 export type SliderOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
   color: HsvColor;

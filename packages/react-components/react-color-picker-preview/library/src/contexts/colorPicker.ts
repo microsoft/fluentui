@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
-import type { ColorPickerState, HsvColor } from '../components/ColorPicker/ColorPicker.types';
+import type { ColorPickerState } from '../components/ColorPicker/ColorPicker.types';
+import type { HsvColor } from '../types/color';
 import { INITIAL_COLOR_HSV } from '../utils/constants';
 
 /**

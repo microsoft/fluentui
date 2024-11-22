@@ -67,9 +67,6 @@ export const useColorSlider_unstable = (
     setCurrentValue(newValue);
     inputOnChange?.(event);
     onChange?.(event, { type: 'change', event, color: newColor });
-    onChangeFromContext(event, {
-      color: newColor,
-    });
   });
 
   const rootVariables = {

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
 import { ColorPickerContextValue } from '../../contexts/colorPicker';
+import type { HsvColor } from '../../types/color';
 
 export type ColorPickerOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
   color: HsvColor;
@@ -8,13 +9,6 @@ export type ColorPickerOnChangeData = EventData<'change', React.ChangeEvent<HTML
 
 export type ColorPickerSlots = {
   root: Slot<'div'>;
-};
-
-export type HsvColor = {
-  h: number;
-  s: number;
-  v: number;
-  a?: number;
 };
 
 /**

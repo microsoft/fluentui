@@ -7,7 +7,7 @@ import type { AlphaSliderState, AlphaSliderProps } from './AlphaSlider.types';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
 import { MIN, MAX } from '../../utils/constants';
 import { getPercent } from '../../utils/getPercent';
-import type { HsvColor } from '../ColorPicker/ColorPicker.types';
+import type { HsvColor } from '../../types/color';
 
 export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: AlphaSliderProps) => {
   'use no memo';
@@ -35,9 +35,6 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
     setCurrentValue(newValue);
     inputOnChange?.(event);
     onChange?.(event, { type: 'change', event, color: newColor });
-    onChangeFromContext(event, {
-      color: newColor,
-    });
   });
 
   const rootVariables = {

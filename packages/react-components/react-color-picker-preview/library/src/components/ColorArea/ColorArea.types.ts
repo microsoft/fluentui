@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { ComponentState, Slot, EventHandler, EventData, ComponentProps } from '@fluentui/react-utilities';
-import type { HsvColor } from '../ColorPicker/ColorPicker.types';
+import type { HsvColor } from '../../types/color';
 
 export type ColorAreaOnColorChangeData = EventData<'change', React.SyntheticEvent | MouseEvent> & {
   color: HsvColor;
