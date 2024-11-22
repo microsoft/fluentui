@@ -18,8 +18,8 @@ export default {
 
 export const Basic = () => {
   const points: ChartDataPoint[] = [
-    { legend: 'first', data: 20000, color: '#DADADA', xAxisCalloutData: '2020/04/30' },
-    { legend: 'second', data: 39000, color: '#0078D4', xAxisCalloutData: '2020/04/20' },
+    { legend: 'first', data: 20000, gradient: ['#DADADA', '#DADADA'], xAxisCalloutData: '2020/04/30' },
+    { legend: 'second', data: 39000, gradient: ['#0078D4', '#0078D4'], xAxisCalloutData: '2020/04/20' },
   ];
 
   const data: ChartProps = {
@@ -54,22 +54,22 @@ export const Dynamic = () => {
       {
         legend: 'first',
         data: Math.floor(120),
-        color: '#00bcf2',
+        gradient: ['#00bcf2', '#00bcf2'],
       },
       {
         legend: 'second',
         data: Math.floor(130),
-        color: '#b4a0ff',
+        gradient: ['#b4a0ff', '#b4a0ff'],
       },
       {
         legend: 'third',
         data: Math.floor(10),
-        color: '#fff100',
+        gradient: ['#fff100', '#fff100'],
       },
       {
         legend: 'fourth',
         data: Math.floor(270),
-        color: '#605e5c',
+        gradient: ['#605e5c', '#605e5c'],
       },
     ],
   };
