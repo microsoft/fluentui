@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Introduce gradients and rounded corners to v9 charts",
+  "packageName": "@fluentui/react-charts-preview",
+  "email": "shawngrant333@gmail.com",
+  "dependentChangeType": "patch"
+}
