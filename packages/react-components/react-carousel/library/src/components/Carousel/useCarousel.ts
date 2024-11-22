@@ -38,20 +38,28 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   } = props;
 
   const { dir } = useFluent();
-  const { activeIndex, carouselApi, containerRef, viewportRef, subscribeForValues, enableAutoplay, resetAutoplay } =
-    useEmblaCarousel({
-      align,
-      direction: dir,
-      loop: circular,
-      slidesToScroll: groupSize,
-      defaultActiveIndex: props.defaultActiveIndex,
-      activeIndex: props.activeIndex,
-      watchDrag: draggable,
-      containScroll: whitespace ? false : 'keepSnaps',
-      motion,
-      onDragIndexChange: onActiveIndexChange,
-      onAutoplayIndexChange,
-    });
+  const {
+    activeIndex,
+    carouselApi,
+    containerRef,
+    viewportRef,
+    subscribeForValues,
+    initAutoplay,
+    enableAutoplay,
+    resetAutoplay,
+  } = useEmblaCarousel({
+    align,
+    direction: dir,
+    loop: circular,
+    slidesToScroll: groupSize,
+    defaultActiveIndex: props.defaultActiveIndex,
+    activeIndex: props.activeIndex,
+    watchDrag: draggable,
+    containScroll: whitespace ? false : 'keepSnaps',
+    motion,
+    onDragIndexChange: onActiveIndexChange,
+    onAutoplayIndexChange,
+  });
 
   const selectPageByElement: CarouselContextValue['selectPageByElement'] = useEventCallback((event, element, jump) => {
     const foundIndex = carouselApi.scrollToElement(element, jump);
@@ -137,5 +145,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     subscribeForValues,
     enableAutoplay,
     resetAutoplay,
+    initAutoplay,
   };
 }

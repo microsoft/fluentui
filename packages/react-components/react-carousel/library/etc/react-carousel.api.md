@@ -104,6 +104,7 @@ export type CarouselContextValue = {
     selectPageByIndex: (event: React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, value: number, jump?: boolean) => void;
     subscribeForValues: (listener: (data: CarouselUpdateData) => void) => () => void;
     enableAutoplay: (autoplay: boolean) => void;
+    initAutoplay: (autoplay: boolean) => void;
     resetAutoplay: () => void;
     containerRef?: React_2.RefObject<HTMLDivElement>;
     viewportRef?: React_2.RefObject<HTMLDivElement>;

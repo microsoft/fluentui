@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { CarouselViewportProps, CarouselViewportState } from './CarouselViewport.types';
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 
@@ -17,6 +17,28 @@ export const useCarouselViewport_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): CarouselViewportState => {
   const viewportRef = useCarouselContext(ctx => ctx.viewportRef);
+  const enableAutoplay = useCarouselContext(ctx => ctx.enableAutoplay);
+
+  const handleFocusCapture = React.useCallback(
+    (e: React.FocusEvent) => {
+      // Will pause autoplay when focus is captured within viewport (if autoplay is initialized)
+      enableAutoplay(false);
+    },
+    [enableAutoplay],
+  );
+
+  const handleBlurCapture = React.useCallback(
+    (e: React.FocusEvent) => {
+      // Will enable autoplay (if initialized) when focus exits viewport
+      if (!e.currentTarget.contains(e.relatedTarget)) {
+        enableAutoplay(true);
+      }
+    },
+    [enableAutoplay],
+  );
+
+  const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocusCapture);
+  const onBlurCapture = mergeCallbacks(props.onBlurCapture, handleBlurCapture);
 
   return {
     components: {
@@ -29,6 +51,8 @@ export const useCarouselViewport_unstable = (
         // Draggable ensures dragging is supported (even if not enabled)
         draggable: true,
         ...props,
+        onFocusCapture,
+        onBlurCapture,
       }),
       { elementType: 'div' },
     ),

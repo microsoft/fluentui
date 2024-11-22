@@ -211,6 +211,7 @@ export const AlignmentAndWhitespace = () => {
             layout="inline"
             next={{ 'aria-label': 'go to next' }}
             prev={{ 'aria-label': 'go to prev' }}
+            autoplay={{}}
           >
             <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
           </CarouselNavContainer>

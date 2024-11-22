@@ -27,17 +27,17 @@ export const useCarouselAutoplayButton_unstable = (
     defaultState: defaultChecked,
     initialState: false,
   });
-  const enableAutoplay = useCarouselContext(ctx => ctx.enableAutoplay);
+  const initAutoplay = useCarouselContext(ctx => ctx.initAutoplay);
 
   React.useEffect(() => {
-    // Update carousel autoplay based on button state
-    enableAutoplay(autoplay);
+    // Initialize carousel autoplay based on button state
+    initAutoplay(autoplay);
 
     return () => {
-      // We disable autoplay if the button gets unmounted.
-      enableAutoplay(false);
+      // We uninitialize autoplay if the button gets unmounted.
+      initAutoplay(false);
     };
-  }, [autoplay, enableAutoplay]);
+  }, [autoplay, initAutoplay]);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
     if (event.isDefaultPrevented()) {

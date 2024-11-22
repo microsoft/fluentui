@@ -90,12 +90,11 @@ export function useEmblaCarousel(
     if (autoplay.current) {
       plugins.push(
         Autoplay({
-          playOnInit: true,
           /* stopOnInteraction: false causes autoplay to restart on interaction end*/
           /* we must remove/re-add plugin on autoplay state change*/
           stopOnInteraction: false,
           stopOnMouseEnter: true,
-          stopOnFocusIn: true,
+          stopOnFocusIn: false, // We'll handle this one manually to prevent conflicts with tabster
         }),
       );
     }
@@ -142,12 +141,11 @@ export function useEmblaCarousel(
     reinitializeCarousel();
   }, [reinitializeCarousel]);
 
-  /* Our autoplay button, which is required by standards for autoplay to be enabled, will handle controlled state */
+  /* This function enables autoplay to pause/play without affecting underlying state
+   * Useful for pausing on focus etc. without having to reinitialize or set autoplay to off
+   */
   const enableAutoplay = React.useCallback(
     (_autoplay: boolean) => {
-      autoplay.current = _autoplay;
-      reinitializeCarousel();
-
       if (_autoplay) {
         emblaApi.current?.plugins().autoplay?.play();
         // Reset after play to ensure timing and any focus/mouse pause state is reset.
@@ -156,7 +154,18 @@ export function useEmblaCarousel(
         emblaApi.current?.plugins().autoplay?.stop();
       }
     },
-    [reinitializeCarousel, resetAutoplay],
+    [resetAutoplay],
+  );
+
+  /* Our autoplay button, which is required by standards for autoplay to be enabled, will handle controlled state */
+  const initAutoplay = React.useCallback(
+    (_autoplay: boolean) => {
+      autoplay.current = _autoplay;
+      reinitializeCarousel();
+
+      enableAutoplay(_autoplay);
+    },
+    [enableAutoplay, reinitializeCarousel],
   );
 
   // Listeners contains callbacks for UI elements that may require state update based on embla changes
@@ -306,5 +315,6 @@ export function useEmblaCarousel(
     subscribeForValues,
     enableAutoplay,
     resetAutoplay,
+    initAutoplay,
   };
 }
