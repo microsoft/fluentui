@@ -177,10 +177,8 @@ export const styles: ElementStyles = css`
       forced-color-adjust: auto;
       color: rgb(255, 255, 255);
     }
-    @media (forced-colors: active) {
-      .bar-label {
-        fill: white !important;
-      }
+    .bar-label {
+      fill: white !important;
     }
   `),
 );
