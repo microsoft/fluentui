@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: searchbox dismiss span control not accessible via keyboard",
+  "packageName": "@fluentui/react-search",
+  "email": "mateus.sle.per@hotmail.com",
+  "dependentChangeType": "patch"
+}
