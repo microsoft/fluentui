@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type {ExtractSlotProps} from '@fluentui/react-utilities';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import {
   isResolvedShorthand,
   mergeCallbacks,
@@ -8,10 +8,9 @@ import {
   useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import {useInput_unstable} from '@fluentui/react-input';
-import {DismissRegular, SearchRegular} from '@fluentui/react-icons';
-import {SearchBoxProps, SearchBoxSlots, SearchBoxState} from './SearchBox.types';
-
+import { useInput_unstable } from '@fluentui/react-input';
+import { DismissRegular, SearchRegular } from '@fluentui/react-icons';
+import { SearchBoxProps, SearchBoxSlots, SearchBoxState } from './SearchBox.types';
 
 /**
  * Create the state required to render SearchBox.
@@ -52,59 +51,61 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
   }, [setFocused]);
 
   const onBlur: React.FocusEventHandler<HTMLSpanElement> = React.useCallback(
-      ev => {
-        setFocused(!!searchBoxRootRef.current?.contains(ev.relatedTarget));
-      },
-      [setFocused],
+    ev => {
+      setFocused(!!searchBoxRootRef.current?.contains(ev.relatedTarget));
+    },
+    [setFocused],
   );
 
   const rootProps = slot.resolveShorthand(root);
 
-  const handleDismissClick = useEventCallback((event: React.MouseEvent<HTMLSpanElement> | React.KeyboardEvent<HTMLSpanElement>) => {
-    if (isResolvedShorthand(dismiss) && event.type === 'click') {
-      dismiss.onClick?.(event as React.MouseEvent<HTMLSpanElement>);
-    }
-    const newValue = '';
-    setInternalValue(newValue);
-    props.onChange?.(event, { value: newValue });
-  });
+  const handleDismissClick = useEventCallback(
+    (event: React.MouseEvent<HTMLSpanElement> | React.KeyboardEvent<HTMLSpanElement>) => {
+      if (isResolvedShorthand(dismiss) && event.type === 'click') {
+        dismiss.onClick?.(event as React.MouseEvent<HTMLSpanElement>);
+      }
+      const newValue = '';
+      setInternalValue(newValue);
+      props.onChange?.(event, { value: newValue });
+    },
+  );
 
   const inputState = useInput_unstable(
-      {
-        type: 'search',
-        disabled,
-        size,
-        value: internalValue,
-        root: slot.always<ExtractSlotProps<SearchBoxSlots['root']>>(
-            {
-              ...rootProps,
-              ref: useMergedRefs(rootProps?.ref, searchBoxRootRef),
-              onFocus: mergeCallbacks(rootProps?.onFocus, onFocus),
-              onBlur: mergeCallbacks(rootProps?.onBlur, onBlur),
-            },
-            {
-              elementType: 'span',
-            },
-        ),
-        contentBefore: slot.optional(contentBefore, {
-          renderByDefault: true,
-          defaultProps: {
-            children: <SearchRegular />,
-          },
+    {
+      type: 'search',
+      disabled,
+      size,
+      value: internalValue,
+      root: slot.always<ExtractSlotProps<SearchBoxSlots['root']>>(
+        {
+          ...rootProps,
+          ref: useMergedRefs(rootProps?.ref, searchBoxRootRef),
+          onFocus: mergeCallbacks(rootProps?.onFocus, onFocus),
+          onBlur: mergeCallbacks(rootProps?.onBlur, onBlur),
+        },
+        {
           elementType: 'span',
-        }),
-        contentAfter: slot.optional(contentAfter, {
-          renderByDefault: true,
-          elementType: 'span',
-        }),
-        ...inputProps,
-        onChange: useEventCallback(ev => {
-          const newValue = ev.target.value;
-          props.onChange?.(ev, { value: newValue });
-          setInternalValue(newValue);
-        }),
-      },
-      useMergedRefs(searchBoxRef, ref),
+        },
+      ),
+      contentBefore: slot.optional(contentBefore, {
+        renderByDefault: true,
+        defaultProps: {
+          children: <SearchRegular />,
+        },
+        elementType: 'span',
+      }),
+      contentAfter: slot.optional(contentAfter, {
+        renderByDefault: true,
+        elementType: 'span',
+      }),
+      ...inputProps,
+      onChange: useEventCallback(ev => {
+        const newValue = ev.target.value;
+        props.onChange?.(ev, { value: newValue });
+        setInternalValue(newValue);
+      }),
+    },
+    useMergedRefs(searchBoxRef, ref),
   );
 
   const state: SearchBoxState = {
