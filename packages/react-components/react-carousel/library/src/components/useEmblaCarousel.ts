@@ -254,8 +254,6 @@ export function useEmblaCarousel(
           emblaApi.current?.on('slidesInView', handleVisibilityChange);
           emblaApi.current?.on('select', handleIndexChange);
           emblaApi.current?.on('autoplay:select', handleAutoplayIndexChange);
-          emblaApi.current?.on('autoplay:play', () => console.log('Autoplay: start'));
-          emblaApi.current?.on('autoplay:stop', () => console.log('Autoplay: stop'));
         }
       },
     };
