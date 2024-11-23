@@ -87,17 +87,16 @@ export function useEmblaCarousel(
   const getPlugins = React.useCallback(() => {
     const plugins: EmblaPluginType[] = [];
 
-    if (autoplay.current) {
-      plugins.push(
-        Autoplay({
-          /* stopOnInteraction: false causes autoplay to restart on interaction end*/
-          /* we must remove/re-add plugin on autoplay state change*/
-          stopOnInteraction: false,
-          stopOnMouseEnter: true,
-          stopOnFocusIn: false, // We'll handle this one manually to prevent conflicts with tabster
-        }),
-      );
-    }
+    plugins.push(
+      Autoplay({
+        playOnInit: autoplay.current,
+        /* stopOnInteraction: false causes autoplay to restart on interaction end*/
+        /* we'll handle this logic to ensure autoplay state is respected */
+        stopOnInteraction: true,
+        stopOnMouseEnter: false,
+        stopOnFocusIn: false, // We'll handle this one manually to prevent conflicts with tabster
+      }),
+    );
 
     // Optionally add Fade plugin
     if (motion === 'fade') {
@@ -145,27 +144,21 @@ export function useEmblaCarousel(
    * Useful for pausing on focus etc. without having to reinitialize or set autoplay to off
    */
   const enableAutoplay = React.useCallback(
-    (_autoplay: boolean) => {
-      if (_autoplay) {
+    (_autoplay: boolean, temporary?: boolean) => {
+      if (!temporary) {
+        autoplay.current = _autoplay;
+      }
+
+      if (_autoplay && autoplay.current) {
+        // Autoplay should only enable in the case where underlying state is true, temporary should not override
         emblaApi.current?.plugins().autoplay?.play();
         // Reset after play to ensure timing and any focus/mouse pause state is reset.
         resetAutoplay();
-      } else {
+      } else if (!_autoplay) {
         emblaApi.current?.plugins().autoplay?.stop();
       }
     },
     [resetAutoplay],
-  );
-
-  /* Our autoplay button, which is required by standards for autoplay to be enabled, will handle controlled state */
-  const initAutoplay = React.useCallback(
-    (_autoplay: boolean) => {
-      autoplay.current = _autoplay;
-      reinitializeCarousel();
-
-      enableAutoplay(_autoplay);
-    },
-    [enableAutoplay, reinitializeCarousel],
   );
 
   // Listeners contains callbacks for UI elements that may require state update based on embla changes
@@ -261,6 +254,8 @@ export function useEmblaCarousel(
           emblaApi.current?.on('slidesInView', handleVisibilityChange);
           emblaApi.current?.on('select', handleIndexChange);
           emblaApi.current?.on('autoplay:select', handleAutoplayIndexChange);
+          emblaApi.current?.on('autoplay:play', () => console.log('Autoplay: start'));
+          emblaApi.current?.on('autoplay:stop', () => console.log('Autoplay: stop'));
         }
       },
     };
@@ -315,6 +310,5 @@ export function useEmblaCarousel(
     subscribeForValues,
     enableAutoplay,
     resetAutoplay,
-    initAutoplay,
   };
 }

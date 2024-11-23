@@ -16,13 +16,16 @@ export const useCarouselViewport_unstable = (
   props: CarouselViewportProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselViewportState => {
+  const hasFocus = React.useRef(false);
+  const hasMouse = React.useRef(false);
   const viewportRef = useCarouselContext(ctx => ctx.viewportRef);
   const enableAutoplay = useCarouselContext(ctx => ctx.enableAutoplay);
 
   const handleFocusCapture = React.useCallback(
     (e: React.FocusEvent) => {
+      hasFocus.current = true;
       // Will pause autoplay when focus is captured within viewport (if autoplay is initialized)
-      enableAutoplay(false);
+      enableAutoplay(false, true);
     },
     [enableAutoplay],
   );
@@ -31,7 +34,27 @@ export const useCarouselViewport_unstable = (
     (e: React.FocusEvent) => {
       // Will enable autoplay (if initialized) when focus exits viewport
       if (!e.currentTarget.contains(e.relatedTarget)) {
-        enableAutoplay(true);
+        hasFocus.current = false;
+        if (!hasMouse.current) {
+          enableAutoplay(true, true);
+        }
+      }
+    },
+    [enableAutoplay],
+  );
+
+  const handleMouseEnter = React.useCallback(
+    (event: React.MouseEvent) => {
+      hasMouse.current = true;
+      enableAutoplay(false, true);
+    },
+    [enableAutoplay],
+  );
+  const handleMouseLeave = React.useCallback(
+    (event: React.MouseEvent) => {
+      hasMouse.current = false;
+      if (!hasFocus.current) {
+        enableAutoplay(true, true);
       }
     },
     [enableAutoplay],
@@ -39,6 +62,8 @@ export const useCarouselViewport_unstable = (
 
   const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocusCapture);
   const onBlurCapture = mergeCallbacks(props.onBlurCapture, handleBlurCapture);
+  const onMouseEnter = mergeCallbacks(props.onMouseEnter, handleMouseEnter);
+  const onMouseLeave = mergeCallbacks(props.onMouseLeave, handleMouseLeave);
 
   return {
     components: {
@@ -53,6 +78,8 @@ export const useCarouselViewport_unstable = (
         ...props,
         onFocusCapture,
         onBlurCapture,
+        onMouseEnter,
+        onMouseLeave,
       }),
       { elementType: 'div' },
     ),
