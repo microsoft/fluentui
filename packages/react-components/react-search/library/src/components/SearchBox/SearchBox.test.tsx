@@ -1,10 +1,10 @@
 import * as React from 'react';
 import userEvent from '@testing-library/user-event';
-import { render, RenderResult, fireEvent, screen } from '@testing-library/react';
+import { fireEvent, render, RenderResult, screen } from '@testing-library/react';
 import { SearchBox } from './SearchBox';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { searchBoxClassNames } from './useSearchBoxStyles.styles';
+import { searchBoxClassNames } from '@fluentui/react-search';
 
 function getSearchBox(): HTMLInputElement {
   return screen.getByRole('searchbox') as HTMLInputElement;
@@ -120,6 +120,18 @@ describe('SearchBox', () => {
     userEvent.click(renderedComponent.getByRole('button'));
     expect(getSearchBox().value).toBe('');
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('clears value after pressing Tab + Enter if focused', () => {
+    renderedComponent = render(<SearchBox defaultValue="hello" />);
+    const searchBox = getSearchBox();
+    searchBox.focus();
+
+    const dismissButton = renderedComponent.getByRole('button');
+    fireEvent.keyDown(searchBox, { key: 'Tab' });
+    fireEvent.keyDown(dismissButton, { key: 'Enter' });
+
+    expect(searchBox.value).toBe('');
   });
 
   it('invokes `onChange` when the dismiss button is clicked', () => {

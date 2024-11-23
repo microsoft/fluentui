@@ -35,7 +35,7 @@ exports[`SearchBox renders a default state 1`] = `
         aria-label="clear"
         class="fui-SearchBox__dismiss"
         role="button"
-        tabindex="-1"
+        tabindex="0"
       >
         <svg
           aria-hidden="true"
