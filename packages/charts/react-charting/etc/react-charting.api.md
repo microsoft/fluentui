@@ -119,6 +119,14 @@ export const DataVizPalette: {
     highSuccess: string;
 };
 
+// @public (undocumented)
+export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
+
+// @public (undocumented)
+export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
+    chartSchema: any;
+}
+
 // @public
 export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 
