@@ -2,6 +2,42 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Fri, 22 Nov 2024 07:21:18 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.137",
+      "version": "8.13.137",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.121.13",
+            "commit": "b1d0ddd4c97b6fffd8ba5045c24c9a232cdaf1ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.255",
+            "commit": "b1d0ddd4c97b6fffd8ba5045c24c9a232cdaf1ff"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Nov 2024 07:21:53 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.136",
+      "version": "8.13.136",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-docsite-components",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Nov 2024 07:22:07 GMT",
       "tag": "@fluentui/react-docsite-components_v8.13.136",
       "version": "8.13.136",
