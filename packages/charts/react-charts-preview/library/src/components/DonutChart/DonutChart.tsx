@@ -193,7 +193,12 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
     function _addDefaultGradients(donutChartDataPoint?: ChartDataPoint[]): ChartDataPoint[] {
       return donutChartDataPoint
         ? donutChartDataPoint.map((item, index) => {
-            return { ...item, gradient: item.gradient ?? getNextGradient(index, 0) };
+            // ensure start and stop colors are defined
+            const gradient =
+              item.gradient && item.gradient[0].trim().length > 0 && item.gradient[1].trim().length > 0
+                ? item.gradient
+                : getNextGradient(index);
+            return { ...item, gradient };
           })
         : [];
     }
