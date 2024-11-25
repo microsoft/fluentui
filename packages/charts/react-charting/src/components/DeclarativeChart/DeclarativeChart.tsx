@@ -7,8 +7,10 @@ import {
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToColumnProps,
   transformPlotlyJsonToLineChartProps,
+  transformPlotlyJsonToHorizontalBarWithAxisProps,
 } from './PlotlySchemaAdapter';
 import { LineChart } from '../LineChart/index';
+import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
 
 export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElement> {
   /**
@@ -21,11 +23,17 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   HTMLDivElement,
   DeclarativeChartProps
 >((props, forwardedRef) => {
+  const orientation = props.chartSchema.data[0].orientation;
+
   switch (props.chartSchema.data[0].type) {
     case 'pie':
       return <DonutChart {...transformPlotlyJsonToDonutProps(props.chartSchema)} />;
     case 'bar':
-      return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(props.chartSchema)} />;
+      if (orientation === 'h') {
+        return <HorizontalBarChartWithAxis {...transformPlotlyJsonToHorizontalBarWithAxisProps(props.chartSchema)} />;
+      } else {
+        return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(props.chartSchema)} />;
+      }
     case 'scatter':
       return <LineChart {...transformPlotlyJsonToLineChartProps(props.chartSchema)} />;
     default:

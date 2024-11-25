@@ -4,10 +4,16 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IDonutChartProps } from '../DonutChart/index';
-import { IChartProps, ILineChartPoints, IVerticalStackedChartProps } from '../../types/IDataPoint';
+import {
+  IChartProps,
+  IHorizontalBarChartWithAxisDataPoint,
+  ILineChartPoints,
+  IVerticalStackedChartProps,
+} from '../../types/IDataPoint';
 import { getNextColor } from '../../utilities/colors';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
 import { ILineChartProps } from '../LineChart/index';
+import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
 
 export const transformPlotlyJsonToDonutProps = (jsonObj: any): IDonutChartProps => {
   const { data, layout } = jsonObj;
@@ -93,6 +99,26 @@ export const transformPlotlyJsonToLineChartProps = (jsonObj: any): ILineChartPro
 
   return {
     data: chartProps,
+  };
+};
+
+export const transformPlotlyJsonToHorizontalBarWithAxisProps = (jsonObj: any): IHorizontalBarChartWithAxisProps => {
+  const { data, layout } = jsonObj;
+
+  const chartData: IHorizontalBarChartWithAxisDataPoint[] = data
+    .map((series: any, index: number) => {
+      return series.y.map((yValue: string, i: number) => ({
+        x: series.x[i],
+        y: yValue,
+        legend: series.name,
+        color: series.marker?.color || getNextColor(index),
+      }));
+    })
+    .flat();
+
+  return {
+    data: chartData,
+    chartTitle: layout.title || '',
   };
 };
 
