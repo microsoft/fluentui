@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  DonutChart,
-  ChartProps,
-  ChartDataPoint,
-  DataVizGradientPalette,
-  getGradientFromToken,
-} from '@fluentui/react-charts-preview';
+import { DonutChart, ChartProps, ChartDataPoint } from '@fluentui/react-charts-preview';
 
 export const DonutChartCustomGradient = () => {
   const points: ChartDataPoint[] = [
