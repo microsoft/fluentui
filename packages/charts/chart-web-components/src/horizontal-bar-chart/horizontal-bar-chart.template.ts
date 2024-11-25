@@ -10,7 +10,8 @@ import { ChartDataPoint } from './horizontal-bar-chart.options.js';
 export function horizontalbarchartTemplate<T extends HorizontalBarChart>(): ElementViewTemplate<T> {
   return html<T>`
     <template ${ref('rootDiv')}>
-      <div ${ref('chartContainer')}></div>
+      //giving temporary id for testing purpose
+      <div id="xyz" ${ref('chartContainer')}></div>
       ${when(
         x => !x.hideLegends,
         html<T>`
@@ -40,22 +41,12 @@ export function horizontalbarchartTemplate<T extends HorizontalBarChart>(): Elem
           </div>
         `,
       )}
-      ${when(
-        x => !x.hideTooltip && x.tooltipProps.isVisible,
-        html<T>`
-          <div
-            class="tooltip"
-            style="inset-inline-start: ${x => x.tooltipProps.xPos}px; top: ${x => x.tooltipProps.yPos}px"
-          >
-            <div class="tooltip-line" style="border-color: ${x => x.tooltipProps.color};">
-              <div class="tooltip-legend-text">${x => x.tooltipProps.legend}</div>
-              <div class="tooltip-data-y" style="color: ${x => x.tooltipProps.color};">
-                ${x => x.tooltipProps.yValue}
-              </div>
-            </div>
-          </div>
-        `,
-      )}
+      <fluent-tooltip anchor="${x => x.tooltipProps.id}" positioning="above-start">
+        <div class="tooltip-line" style="border-color: ${x => x.tooltipProps.color};">
+          <div class="tooltip-legend-text">${x => x.tooltipProps.legend}</div>
+          <div class="tooltip-data-y" style="color: ${x => x.tooltipProps.color};">${x => x.tooltipProps.yValue}</div>
+        </div>
+      </fluent-tooltip>
     </template>
   `;
 }

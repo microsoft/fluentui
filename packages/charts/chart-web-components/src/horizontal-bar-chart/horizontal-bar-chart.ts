@@ -41,6 +41,7 @@ export class HorizontalBarChart extends FASTElement {
 
   @observable
   public tooltipProps = {
+    id: '',
     isVisible: false,
     legend: '',
     yValue: '',
@@ -345,12 +346,14 @@ export class HorizontalBarChart extends FASTElement {
         if (d && d.hasOwnProperty('placeholder') && (d as any).placeholder === true) {
           return;
         }
-
+        const barElement = event.target.closest('rect.bar');
+        const barId = barElement.id;
         const bounds = this.rootDiv.getBoundingClientRect();
         const centerX = window.innerWidth / 2;
         const xPos = Math.max(0, Math.min(centerX, window.innerWidth));
 
         this.tooltipProps = {
+          id: `${barId}`,
           isVisible: true,
           legend: d.legend,
           yValue: `${d.data}`,
@@ -359,8 +362,8 @@ export class HorizontalBarChart extends FASTElement {
           yPos: event.clientY - bounds.top - 40,
         };
       })
-      .on('mouseout', () => {
-        this.tooltipProps = { isVisible: false, legend: '', yValue: '', color: '', xPos: 0, yPos: 0 };
+      .on('mouseout', event => {
+        this.tooltipProps = { id: '', isVisible: false, legend: '', yValue: '', color: '', xPos: 0, yPos: 0 };
       });
 
     if (this.variant === Variant.AbsoluteScale) {
