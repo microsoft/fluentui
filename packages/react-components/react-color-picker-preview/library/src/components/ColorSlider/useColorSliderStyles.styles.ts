@@ -13,7 +13,6 @@ export const colorSliderClassNames: SlotClassNames<ColorSliderSlots> = {
 export const colorSliderCSSVars = {
   sliderDirectionVar: `--fui-Slider--direction`,
   sliderProgressVar: `--fui-Slider--progress`,
-  sliderStepsPercentVar: `--fui-Slider--steps-percent`,
   thumbColorVar: `--fui-Slider__thumb--color`,
 };
 
@@ -21,10 +20,8 @@ export const colorSliderCSSVars = {
 const thumbSizeVar = `--fui-Slider__thumb--size`;
 const railSizeVar = `--fui-Slider__rail--size`;
 
-const { sliderDirectionVar, sliderProgressVar, thumbColorVar } = colorSliderCSSVars;
-
 const hueBackground = `linear-gradient(${[
-  `var(${sliderDirectionVar})`,
+  `var(${colorSliderCSSVars.sliderDirectionVar})`,
   'red 0',
   '#f09 10%',
   '#cd00ff 20%',
@@ -54,7 +51,7 @@ const useRootStyles = makeResetStyles({
 
 const useStyles = makeStyles({
   horizontal: {
-    minWidth: '120px',
+    minWidth: '200px',
     // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
     gridTemplateRows: `1fr var(${thumbSizeVar}) 1fr`,
     gridTemplateColumns: `1fr calc(100% - var(${thumbSizeVar})) 1fr`,
@@ -76,7 +73,7 @@ const useStyles = makeStyles({
  */
 const useRailStyles = makeStyles({
   rail: {
-    borderRadius: tokens.borderRadiusXLarge,
+    borderRadius: tokens.borderRadiusMedium,
     pointerEvents: 'none',
     gridRowStart: '2',
     gridRowEnd: '2',
@@ -131,7 +128,7 @@ const useThumbStyles = makeStyles({
     forcedColorAdjust: 'none',
     borderRadius: tokens.borderRadiusCircular,
     boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
-    backgroundColor: `var(${thumbColorVar})`,
+    backgroundColor: `var(${colorSliderCSSVars.thumbColorVar})`,
     '::before': {
       position: 'absolute',
       top: '0px',
@@ -146,11 +143,11 @@ const useThumbStyles = makeStyles({
   },
   horizontal: {
     transform: 'translateX(-50%)',
-    left: `var(${sliderProgressVar})`,
+    left: `var(${colorSliderCSSVars.sliderProgressVar})`,
   },
   vertical: {
     transform: 'translateY(50%)',
-    bottom: `var(${sliderProgressVar})`,
+    bottom: `var(${colorSliderCSSVars.sliderProgressVar})`,
   },
 });
 
