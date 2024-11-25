@@ -54,13 +54,13 @@ const useStyles = makeStyles({
     minWidth: '200px',
     // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
     gridTemplateRows: `1fr var(${thumbSizeVar}) 1fr`,
-    gridTemplateColumns: `1fr calc(106% - var(${thumbSizeVar})) 1fr`,
+    gridTemplateColumns: `1fr calc(100% - var(${thumbSizeVar})) 1fr`,
   },
 
   vertical: {
     minHeight: '280px',
     // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
-    gridTemplateRows: `1fr calc(106% - var(${thumbSizeVar})) 1fr`,
+    gridTemplateRows: `1fr calc(100% - var(${thumbSizeVar})) 1fr`,
     gridTemplateColumns: `1fr var(${thumbSizeVar}) 1fr`,
   },
   hue: {
