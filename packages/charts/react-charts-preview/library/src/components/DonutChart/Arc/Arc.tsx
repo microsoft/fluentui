@@ -96,7 +96,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
     const gradientFill = `conic-gradient(
       from ${props.data?.startAngle}rad,
       ${props.gradient[0]},
-      ${props.gradient[1]} ${props.data?.endAngle}rad
+      ${props.gradient[1]} ${props.data!.endAngle - props.data!.startAngle}rad
     )`;
 
     const pathData = arc({ ...props.data!, innerRadius: props.innerRadius, outerRadius: props.outerRadius })!;

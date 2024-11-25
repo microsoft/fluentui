@@ -8,6 +8,7 @@ export { DonutChartCustomAccessibility } from './DonutChartCustomAccessibility.s
 export { DonutChartDynamic } from './DonutChartDynamic.stories';
 export { DonutChartCustomCallout } from './DonutChartCustomCallout.stories';
 export { DonutChartStyled } from './DonutChartStyled.stories';
+export { DonutChartCustomGradient } from './DonutChartCustomGradient.stories';
 
 export default {
   title: 'Charts/DonutChart',
