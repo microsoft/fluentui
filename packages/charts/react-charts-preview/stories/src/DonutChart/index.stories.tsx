@@ -10,7 +10,7 @@ export { DonutChartCustomCallout } from './DonutChartCustomCallout.stories';
 export { DonutChartStyled } from './DonutChartStyled.stories';
 
 export default {
-  title: 'Compat Components/Charts/DonutChart',
+  title: 'Charts/DonutChart',
   component: DonutChart,
   parameters: {
     docs: {

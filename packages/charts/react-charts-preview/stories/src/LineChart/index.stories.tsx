@@ -13,7 +13,7 @@ export { LineChartGaps } from './LineChartGaps.stories';
 export { LineChartLargeData } from './LineChartLargeData.stories';
 
 export default {
-  title: 'Compat Components/Charts/LineChart',
+  title: 'Charts/LineChart',
   component: LineChart,
   parameters: {
     docs: {

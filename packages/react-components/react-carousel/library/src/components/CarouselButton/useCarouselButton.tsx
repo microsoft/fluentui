@@ -14,7 +14,6 @@ import { useCarouselContext_unstable as useCarouselContext } from '../CarouselCo
 import type { CarouselButtonProps, CarouselButtonState } from './CarouselButton.types';
 import type { CarouselUpdateData } from '../Carousel/Carousel.types';
 import { carouselButtonClassNames } from './useCarouselButtonStyles.styles';
-import { useRef } from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
@@ -36,7 +35,7 @@ export const useCarouselButton_unstable = (
   const [totalSlides, setTotalSlides] = React.useState(0);
 
   const { dir } = useFluent();
-  const buttonRef = useRef<HTMLButtonElement>();
+  const buttonRef = React.useRef<HTMLButtonElement>();
   const circular = useCarouselContext(ctx => ctx.circular);
   const containerRef = useCarouselContext(ctx => ctx.containerRef);
   const selectPageByDirection = useCarouselContext(ctx => ctx.selectPageByDirection);

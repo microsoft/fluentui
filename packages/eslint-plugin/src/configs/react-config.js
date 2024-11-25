@@ -22,6 +22,16 @@ module.exports = {
   },
   rules: {
     /**
+     * Enforce consistent importing from React by resticting named imports.
+     */
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: "ImportDeclaration[source.value='react'] ImportSpecifier",
+        message: "Avoid named imports from 'react'. Use 'import * as React from \"react\"' instead.",
+      },
+    ],
+    /**
      * griffel eslint rules
      * @see https://github.com/microsoft/griffel/tree/main/packages/eslint-plugin
      */

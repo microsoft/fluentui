@@ -310,7 +310,6 @@ import { precisionRound } from '@fluentui/utilities';
 import { PulsingBeaconAnimationStyles } from '@fluentui/style-utilities';
 import { raiseClick } from '@fluentui/utilities';
 import * as React_2 from 'react';
-import type { ReactNode } from 'react';
 import { Rectangle } from '@fluentui/utilities';
 import { RefObject } from '@fluentui/utilities';
 import { registerDefaultFontFaces } from '@fluentui/theme';
@@ -7878,7 +7877,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     ariaLabelledBy?: string;
     backgroundColor?: string;
     bounds?: IRectangle;
-    children?: ReactNode;
+    children?: React_2.ReactNode;
     className?: string;
     componentRef?: IRefObject<IPositioningContainer>;
     coverTarget?: boolean;

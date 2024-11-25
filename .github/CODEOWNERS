@@ -129,6 +129,7 @@ apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
 apps/react-18-tests-v8 @microsoft/cxe-red @micahgodbolt
 apps/react-18-tests-v9 @microsoft/fluentui-react-build
+apps/chart-docsite @microsoft/charting-team
 
 #### Packages
 packages/azure-themes @Jacqueline-ms @robtaft-ms
