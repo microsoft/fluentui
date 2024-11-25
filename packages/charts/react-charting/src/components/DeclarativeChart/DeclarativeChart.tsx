@@ -18,7 +18,7 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
             case 'bar':
               return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(props.chartSchema)} />;
             default:
-              return null;
+              return <div>Unsupported Schema</div>;
           }
     },
   );

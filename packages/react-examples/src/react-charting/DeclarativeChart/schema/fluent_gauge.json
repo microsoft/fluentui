@@ -1,0 +1,72 @@
+{
+  "visualizer": "plotly",
+  "data": [
+    {
+      "name": "speed",
+      "text": 2468,
+      "type": "scatter",
+      "x": [0],
+      "y": [0],
+      "marker": {
+        "size": 28,
+        "color": "850000"
+      },
+      "hoverinfo": "text+name",
+      "showlegend": false
+    },
+    {
+      "hole": 0.5,
+      "type": "pie",
+      "marker": {
+        "colors": [
+          "rgba(14, 127, 0, .5)",
+          "rgba(110, 154, 22, .5)",
+          "rgba(170, 202, 42, .5)",
+          "rgba(202, 209, 95, .5)",
+          "rgba(210, 206, 145, .5)",
+          "rgba(232, 226, 202, .5)",
+          "rgba(255, 255, 255, 0)"
+        ]
+      },
+      "text": ["60% +", "50%", "40%", "30%", "20%", "10%", ""],
+      "rotation": 90,
+      "textinfo": "text",
+      "hoverinfo": "label",
+      "labels": ["151-180", "121-150", "91-120", "61-90", "31-60", "0-30", ""],
+      "values": [
+        8.333333333333334, 8.333333333333334, 8.333333333333334, 8.333333333333334, 8.333333333333334,
+        8.333333333333334, 50
+      ],
+      "showlegend": false,
+      "textposition": "inside"
+    }
+  ],
+  "layout": {
+    "title": "Gauge",
+    "width": 1000,
+    "xaxis": {
+      "range": [-1, 1],
+      "showgrid": false,
+      "zeroline": false,
+      "showticklabels": false
+    },
+    "yaxis": {
+      "range": [-1, 1],
+      "showgrid": false,
+      "zeroline": false,
+      "showticklabels": false
+    },
+    "height": 1000,
+    "shapes": [
+      {
+        "line": {
+          "color": "850000"
+        },
+        "path": "M -.0 -0.025 L .0 0.025 L -0.659197688992 0.751969684779 Z",
+        "type": "path",
+        "fillcolor": "850000"
+      }
+    ]
+  },
+  "frames": []
+}
