@@ -2,18 +2,12 @@ import * as React from 'react';
 import { useHorizontalBarChartStyles_unstable } from './useHorizontalBarChartStyles.styles';
 import { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData, HorizontalBarChartVariant } from './index';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import {
-  DataVizGradientPalette,
-  formatValueWithSIPrefix,
-  getAccessibleDataObject,
-  getGradientFromToken,
-  getNextGradient,
-  useRtl,
-} from '../../utilities/index';
+import { formatValueWithSIPrefix, getAccessibleDataObject, getNextGradient, useRtl } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
+import { tokens } from '@fluentui/react-theme';
 
 /**
  * HorizontalBarChart is the context wrapper and container for all HorizontalBarChart content/controls,
@@ -333,7 +327,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
             x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
             y: points.chartData![0].horizontalBarChartdata!.y,
           },
-          gradient: getGradientFromToken(DataVizGradientPalette.disabled),
+          gradient: [tokens.colorBackgroundOverlay, tokens.colorBackgroundOverlay],
         };
 
         // Hide right side text of chart title for absolute-scale variant
