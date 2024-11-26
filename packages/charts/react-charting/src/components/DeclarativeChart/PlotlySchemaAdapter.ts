@@ -14,6 +14,7 @@ import { getNextColor } from '../../utilities/colors';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
 import { ILineChartProps } from '../LineChart/index';
 import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
+import { isDateArray, isNumberArray } from './DeclarativeChart';
 import { IAreaChartProps } from '../AreaChart/index';
 
 export const transformPlotlyJsonToDonutProps = (jsonObj: any): IDonutChartProps => {
@@ -79,17 +80,25 @@ export const transformPlotlyJsonToColumnProps = (jsonObj: any): IVerticalStacked
   };
 };
 
-export const transformPlotlyJsonToLineChartProps = (jsonObj: any): ILineChartProps => {
+export const transformPlotlyJsonToScatterChartProps = (
+  jsonObj: any,
+  isAreaChart: boolean,
+): ILineChartProps | IAreaChartProps => {
   const { data, layout } = jsonObj;
 
   const chartData: ILineChartPoints[] = data.map((series: any, index: number) => {
+    const xValues = series.x;
+    const isString = typeof xValues[0] === 'string';
+    const isXDate = isDateArray(xValues);
+    const isXNumber = isNumberArray(xValues);
+
     return {
-      legend: series.name,
-      data: series.x.map((x: string | number, i: number) => ({
-        x: new Date(x),
+      legend: series.name || `Series ${index + 1}`,
+      data: xValues.map((x: string | number, i: number) => ({
+        x: isString ? (isXDate ? new Date(x) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
       })),
-      color: series.line.color || getNextColor(index),
+      color: series.line?.color || getNextColor(index),
     };
   });
 
@@ -98,30 +107,15 @@ export const transformPlotlyJsonToLineChartProps = (jsonObj: any): ILineChartPro
     lineChartData: chartData,
   };
 
-  return {
-    data: chartProps,
-  };
-};
-
-export const transformPlotlyJsonToAreaChartProps = (jsonObj: any): IAreaChartProps => {
-  const { data, layout } = jsonObj;
-
-  const chartData: ILineChartPoints[] = data.map((series: any, index: number) => {
+  if (isAreaChart) {
     return {
-      legend: series.name,
-      data: series.x.map((x: number, i: number) => ({
-        x,
-        y: series.y[i],
-      })),
-    };
-  });
-
-  return {
-    data: {
-      chartTitle: layout.title || '',
-      lineChartData: chartData,
-    },
-  };
+      data: chartProps,
+    } as IAreaChartProps;
+  } else {
+    return {
+      data: chartProps,
+    } as ILineChartProps;
+  }
 };
 
 export const transformPlotlyJsonToHorizontalBarWithAxisProps = (jsonObj: any): IHorizontalBarChartWithAxisProps => {
