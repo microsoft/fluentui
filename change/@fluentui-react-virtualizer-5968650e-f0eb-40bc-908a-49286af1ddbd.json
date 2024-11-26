@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "updated to use gradient property for charts-preview",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "shawngrant333@gmail.com",
-  "dependentChangeType": "none"
-}

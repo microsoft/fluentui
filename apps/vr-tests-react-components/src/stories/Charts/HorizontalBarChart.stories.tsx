@@ -35,7 +35,7 @@ export const Basic = () => {
         {
           legend: 'one',
           horizontalBarChartdata: { x: 1543, y: 15000 },
-          gradient: ['#4cb4b7', '#4cb4b7'],
+          color: '#4cb4b7',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '10%',
         },
@@ -47,7 +47,7 @@ export const Basic = () => {
         {
           legend: 'two',
           horizontalBarChartdata: { x: 800, y: 15000 },
-          gradient: ['#800080', '#800080'],
+          color: '#800080',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '5%',
         },
@@ -59,7 +59,7 @@ export const Basic = () => {
         {
           legend: 'three',
           horizontalBarChartdata: { x: 8888, y: 15000 },
-          gradient: ['#ff0000', '#ff0000'],
+          color: '#ff0000',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '59%',
         },
@@ -71,7 +71,7 @@ export const Basic = () => {
         {
           legend: 'four',
           horizontalBarChartdata: { x: 15888, y: 15000 },
-          gradient: ['#fbc0c3', '#fbc0c3'],
+          color: '#fbc0c3',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '105%',
         },
@@ -83,7 +83,7 @@ export const Basic = () => {
         {
           legend: 'five',
           horizontalBarChartdata: { x: 11444, y: 15000 },
-          gradient: ['#f7630c', '#f7630c'],
+          color: '#f7630c',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '76%',
         },
@@ -95,7 +95,7 @@ export const Basic = () => {
         {
           legend: 'six',
           horizontalBarChartdata: { x: 14000, y: 15000 },
-          gradient: ['#107c10', '#107c10'],
+          color: '#107c10',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '93%',
         },
@@ -107,7 +107,7 @@ export const Basic = () => {
         {
           legend: 'seven',
           horizontalBarChartdata: { x: 9855, y: 15000 },
-          gradient: ['#6e0811', '#6e0811'],
+          color: '#6e0811',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '65%',
         },
@@ -119,7 +119,7 @@ export const Basic = () => {
         {
           legend: 'eight',
           horizontalBarChartdata: { x: 4250, y: 15000 },
-          gradient: ['#3a96dd', '#3a96dd'],
+          color: '#3a96dd',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '28%',
         },
@@ -149,7 +149,7 @@ export const WithBenchmark = () => {
           legend: 'one',
           data: 50,
           horizontalBarChartdata: { x: 10, y: 100 },
-          gradient: ['#4cb4b7', '#4cb4b7'],
+          color: '#4cb4b7',
         },
       ],
     },
@@ -160,7 +160,7 @@ export const WithBenchmark = () => {
           legend: 'two',
           data: 30,
           horizontalBarChartdata: { x: 30, y: 200 },
-          gradient: ['#800080', '#800080'],
+          color: '#800080',
         },
       ],
     },
@@ -171,7 +171,7 @@ export const WithBenchmark = () => {
           legend: 'three',
           data: 5,
           horizontalBarChartdata: { x: 15, y: 50 },
-          gradient: ['#ff0000', '#ff0000'],
+          color: '#ff0000',
         },
       ],
     },
@@ -198,7 +198,7 @@ export const Variant = () => {
         {
           legend: 'one',
           horizontalBarChartdata: { x: 1543, y: 15000 },
-          gradient: ['#4cb4b7', '#4cb4b7'],
+          color: '#4cb4b7',
         },
       ],
     },
@@ -208,7 +208,7 @@ export const Variant = () => {
         {
           legend: 'two',
           horizontalBarChartdata: { x: 800, y: 15000 },
-          gradient: ['#800080', '#800080'],
+          color: '#800080',
         },
       ],
     },
@@ -218,7 +218,7 @@ export const Variant = () => {
         {
           legend: 'three',
           horizontalBarChartdata: { x: 8888, y: 15000 },
-          gradient: ['#ff0000', '#ff0000'],
+          color: '#ff0000',
         },
       ],
     },
@@ -228,7 +228,7 @@ export const Variant = () => {
         {
           legend: 'four',
           horizontalBarChartdata: { x: 15888, y: 15000 },
-          gradient: ['#fbc0c3', '#fbc0c3'],
+          color: '#fbc0c3',
         },
       ],
     },
@@ -238,7 +238,7 @@ export const Variant = () => {
         {
           legend: 'five',
           horizontalBarChartdata: { x: 11444, y: 15000 },
-          gradient: ['#f7630c', '#f7630c'],
+          color: '#f7630c',
         },
       ],
     },
@@ -248,7 +248,7 @@ export const Variant = () => {
         {
           legend: 'six',
           horizontalBarChartdata: { x: 14000, y: 15000 },
-          gradient: ['#107c10', '#107c10'],
+          color: '#107c10',
         },
       ],
     },
@@ -258,7 +258,7 @@ export const Variant = () => {
         {
           legend: 'seven',
           horizontalBarChartdata: { x: 9855, y: 15000 },
-          gradient: ['#6e0811', '#6e0811'],
+          color: '#6e0811',
         },
       ],
     },
@@ -268,7 +268,7 @@ export const Variant = () => {
         {
           legend: 'eight',
           horizontalBarChartdata: { x: 4250, y: 15000 },
-          gradient: ['#3a96dd', '#3a96dd'],
+          color: '#3a96dd',
         },
       ],
     },
