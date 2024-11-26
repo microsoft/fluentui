@@ -182,8 +182,8 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
       const zVal = firstData.z?.[yIdx]?.[xIdx];
 
       heatmapDataPoints.push({
-        x: xVal,
-        y: yVal,
+        x: layout.xaxis?.type === 'date' ? new Date(xVal) : xVal,
+        y: layout.yaxis?.type === 'date' ? new Date(yVal) : yVal,
         value: zVal,
       });
 
