@@ -58,7 +58,7 @@
       "t": 25
     },
     "hovermode": "closest",
-    "showlegend": false
+    "showlegend": true
   },
   "frames": []
 }

@@ -1,7 +1,13 @@
 import { IDonutChartProps } from '../DonutChart/index';
-import { IChartDataPoint, IVerticalStackedChartProps } from '../../types/IDataPoint';
+import {
+  IChartDataPoint,
+  IVerticalStackedChartProps,
+  IHeatMapChartData,
+  IHeatMapChartDataPoint,
+} from '../../types/IDataPoint';
 import { getNextColor } from '../../utilities/colors';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
+import { IHeatMapChartProps } from '../HeatMapChart/index';
 
 export const transformPlotlyJsonToDonutProps = (jsonObj: any): IDonutChartProps => {
   const { data, layout } = jsonObj;
@@ -85,6 +91,48 @@ export const transformPlotlyJsonToColumnProps = (jsonObj: any): IVerticalStacked
     // height: layout.height,
     barWidth: 'auto',
     yMaxValue,
+  };
+};
+
+// FIXME: Order of string axis ticks does not match the order in plotly json
+// TODO: Add support for custom hover card
+export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartProps => {
+  const { data, layout } = jsonObj;
+  const firstData = data[0];
+  const heatmapDataPoints: IHeatMapChartDataPoint[] = [];
+  let zMin = Number.POSITIVE_INFINITY;
+  let zMax = Number.NEGATIVE_INFINITY;
+
+  firstData.x?.forEach((xVal: any, xIdx: number) => {
+    firstData.y?.forEach((yVal: any, yIdx: number) => {
+      const zVal = firstData.z?.[yIdx]?.[xIdx];
+
+      heatmapDataPoints.push({
+        x: xVal,
+        y: yVal,
+        value: zVal,
+        rectText: zVal,
+      });
+
+      zMin = Math.min(zMin, zVal);
+      zMax = Math.max(zMax, zVal);
+    });
+  });
+  const heatmapData: IHeatMapChartData = {
+    legend: firstData.name || '',
+    data: heatmapDataPoints,
+    value: 0,
+  };
+
+  // Convert normalized values to actual values
+  const domainValuesForColorScale: number[] = firstData.colorscale?.map((arr: any) => arr[0] * (zMax - zMin) + zMin);
+  const rangeValuesForColorScale: string[] = firstData.colorscale?.map((arr: any) => arr[1]);
+
+  return {
+    data: [heatmapData],
+    domainValuesForColorScale,
+    rangeValuesForColorScale,
+    hideLegend: true,
   };
 };
 
