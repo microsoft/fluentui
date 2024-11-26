@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
+import { elementContains, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import type {
   TagPickerOnOpenChangeData,
   TagPickerOnOptionSelectData,
@@ -100,7 +100,10 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     selectOption: useEventCallback((event, data) => {
       // if the option is already selected, invoke onOptionSelect callback with current selected values
       // the combobox state would unselect the option, which is not the behavior expected
-      if (comboboxState.selectedOptions.includes(data.value)) {
+      if (
+        comboboxState.selectedOptions.includes(data.value) &&
+        !elementContains(tagPickerGroupRef.current, event.target as Node)
+      ) {
         props.onOptionSelect?.(event, {
           selectedOptions: comboboxState.selectedOptions,
           value: data.value,
