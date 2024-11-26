@@ -63,6 +63,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     align: isSubmenu ? 'top' : 'start',
     target: props.openOnContext ? contextTarget : undefined,
     fallbackPositions: isSubmenu ? submenuFallbackPositions : undefined,
+    autoSize: true,
     ...resolvePositioningShorthand(props.positioning),
   } as const;
 
