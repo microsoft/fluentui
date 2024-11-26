@@ -70,7 +70,6 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
   });
 
   const { trigger, popover } = childrenToTriggerAndPopover(props.children, noPopover);
-
   return {
     activeDescendantController,
     components: {},
@@ -98,7 +97,20 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     getOptionsMatchingValue: comboboxState.getOptionsMatchingValue,
     registerOption: comboboxState.registerOption,
     selectedOptions: comboboxState.selectedOptions,
-    selectOption: comboboxState.selectOption,
+    selectOption: useEventCallback((event, data) => {
+      // if the option is already selected, invoke onOptionSelect callback with current selected values
+      // the combobox state would unselect the option, which is not the behavior expected
+      if (comboboxState.selectedOptions.includes(data.value)) {
+        props.onOptionSelect?.(event, {
+          selectedOptions: comboboxState.selectedOptions,
+          value: data.value,
+          type: event.type,
+          event,
+        } as TagPickerOnOptionSelectData);
+        return;
+      }
+      comboboxState.selectOption(event, data);
+    }),
     setHasFocus: comboboxState.setHasFocus,
     setOpen: comboboxState.setOpen,
     setValue: comboboxState.setValue,
