@@ -31,14 +31,14 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                 style="fill: transparent; cursor: default;"
               />
               <clippath
-                id="Arc_clip2#E5E5E5_"
+                id="Arc_clip2#E5E5E5_#E5E5E5"
               >
                 <path
                   d="M0.497,-49.747A5,5,0,0,1,6.047,-54.667A55,55,0,0,1,49.18,-24.624A5,5,0,0,1,46.489,-17.713L0,0Z"
                 />
               </clippath>
               <foreignobject
-                clip-path="url(#Arc_clip2#E5E5E5_)"
+                clip-path="url(#Arc_clip2#E5E5E5_#E5E5E5)"
                 height="100%"
                 width="100%"
                 x="-50%"
@@ -60,14 +60,14 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                 style="fill: transparent; cursor: default;"
               />
               <clippath
-                id="Arc_clip3#0078D4_"
+                id="Arc_clip3#0078D4_#0078D4"
               >
                 <path
                   d="M46.834,-16.78A5,5,0,0,1,53.373,-13.28A55,55,0,0,1,-17.233,52.23A5,5,0,0,1,-20.234,45.449L0,0Z"
                 />
               </clippath>
               <foreignobject
-                clip-path="url(#Arc_clip3#0078D4_)"
+                clip-path="url(#Arc_clip3#0078D4_#0078D4)"
                 height="100%"
                 width="100%"
                 x="-50%"
@@ -89,14 +89,14 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                 style="fill: transparent; cursor: default;"
               />
               <clippath
-                id="Arc_clip4#DADADA_"
+                id="Arc_clip4#DADADA_#DADADA"
               >
                 <path
                   d="M-21.139,45.035A5,5,0,0,1,-28.232,47.201A55,55,0,0,1,-6.047,-54.667A5,5,0,0,1,-0.497,-49.747L0,0Z"
                 />
               </clippath>
               <foreignobject
-                clip-path="url(#Arc_clip4#DADADA_)"
+                clip-path="url(#Arc_clip4#DADADA_#DADADA)"
                 height="100%"
                 width="100%"
                 x="-50%"
@@ -229,14 +229,14 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   style="fill: transparent; cursor: default;"
                 />
                 <clippath
-                  id="Arc_clip61#E5E5E5_"
+                  id="Arc_clip61#E5E5E5_#E5E5E5"
                 >
                   <path
                     d="M0.497,-49.747A5,5,0,0,1,6.047,-54.667A55,55,0,0,1,49.18,-24.624A5,5,0,0,1,46.489,-17.713L0,0Z"
                   />
                 </clippath>
                 <foreignobject
-                  clip-path="url(#Arc_clip61#E5E5E5_)"
+                  clip-path="url(#Arc_clip61#E5E5E5_#E5E5E5)"
                   height="100%"
                   width="100%"
                   x="-50%"
@@ -258,14 +258,14 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   style="fill: transparent; cursor: default;"
                 />
                 <clippath
-                  id="Arc_clip62#0078D4_"
+                  id="Arc_clip62#0078D4_#0078D4"
                 >
                   <path
                     d="M46.834,-16.78A5,5,0,0,1,53.373,-13.28A55,55,0,0,1,-17.233,52.23A5,5,0,0,1,-20.234,45.449L0,0Z"
                   />
                 </clippath>
                 <foreignobject
-                  clip-path="url(#Arc_clip62#0078D4_)"
+                  clip-path="url(#Arc_clip62#0078D4_#0078D4)"
                   height="100%"
                   width="100%"
                   x="-50%"
@@ -287,14 +287,14 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   style="fill: transparent; cursor: default;"
                 />
                 <clippath
-                  id="Arc_clip63#DADADA_"
+                  id="Arc_clip63#DADADA_#DADADA"
                 >
                   <path
                     d="M-21.139,45.035A5,5,0,0,1,-28.232,47.201A55,55,0,0,1,-6.047,-54.667A5,5,0,0,1,-0.497,-49.747L0,0Z"
                   />
                 </clippath>
                 <foreignobject
-                  clip-path="url(#Arc_clip63#DADADA_)"
+                  clip-path="url(#Arc_clip63#DADADA_#DADADA)"
                   height="100%"
                   width="100%"
                   x="-50%"

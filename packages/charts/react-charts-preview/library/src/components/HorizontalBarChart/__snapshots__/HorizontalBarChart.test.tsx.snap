@@ -92,11 +92,11 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             >
               <stop
                 offset="0"
-                stopColor="#E6E6E6"
+                stopColor="var(--colorBackgroundOverlay)"
               />
               <stop
                 offset="100%"
-                stopColor="#E6E6E6"
+                stopColor="var(--colorBackgroundOverlay)"
               />
             </linearGradient>
           </defs>
@@ -206,11 +206,11 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             >
               <stop
                 offset="0"
-                stopColor="#E6E6E6"
+                stopColor="var(--colorBackgroundOverlay)"
               />
               <stop
                 offset="100%"
-                stopColor="#E6E6E6"
+                stopColor="var(--colorBackgroundOverlay)"
               />
             </linearGradient>
           </defs>
@@ -332,11 +332,11 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             >
               <stop
                 offset="0"
-                stopColor="#E6E6E6"
+                stopColor="var(--colorBackgroundOverlay)"
               />
               <stop
                 offset="100%"
-                stopColor="#E6E6E6"
+                stopColor="var(--colorBackgroundOverlay)"
               />
             </linearGradient>
           </defs>
@@ -446,11 +446,11 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             >
               <stop
                 offset="0"
-                stopColor="#E6E6E6"
+                stopColor="var(--colorBackgroundOverlay)"
               />
               <stop
                 offset="100%"
-                stopColor="#E6E6E6"
+                stopColor="var(--colorBackgroundOverlay)"
               />
             </linearGradient>
           </defs>

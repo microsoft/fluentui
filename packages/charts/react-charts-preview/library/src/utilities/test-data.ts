@@ -124,18 +124,18 @@ export const pointsHBCWA = [
 ];
 
 export const pointsDC: ChartDataPoint[] = [
-  { legend: 'first', data: 20000, gradient: ['#E5E5E5', ''], xAxisCalloutData: '2020/04/30' },
-  { legend: 'second', data: 39000, gradient: ['#0078D4', ''], xAxisCalloutData: '2020/04/20' },
-  { legend: 'third', data: 45000, gradient: ['#DADADA', ''], xAxisCalloutData: '2020/04/25' },
+  { legend: 'first', data: 20000, gradient: ['#E5E5E5', '#E5E5E5'], xAxisCalloutData: '2020/04/30' },
+  { legend: 'second', data: 39000, gradient: ['#0078D4', '#0078D4'], xAxisCalloutData: '2020/04/20' },
+  { legend: 'third', data: 45000, gradient: ['#DADADA', '#DADADA'], xAxisCalloutData: '2020/04/25' },
 ];
 
 export const pointsDCElevateMinimumsExample: ChartDataPoint[] = [
-  { legend: 'first', data: 39000, gradient: ['#E5E5E5', ''], xAxisCalloutData: '2020/04/30' },
-  { legend: 'second', data: 20, gradient: ['#0078D4', ''], xAxisCalloutData: '2020/04/20' },
-  { legend: 'third', data: 20, gradient: ['#DADADA', ''], xAxisCalloutData: '2020/04/25' },
-  { legend: 'fourth', data: 20, gradient: ['#DADADA', ''], xAxisCalloutData: '2020/04/25' },
-  { legend: 'fifth', data: 20, gradient: ['#DADADA', ''], xAxisCalloutData: '2020/04/25' },
-  { legend: 'sixth', data: 20, gradient: ['#DADADA', ''], xAxisCalloutData: '2020/04/25' },
+  { legend: 'first', data: 39000, gradient: ['#E5E5E5', '#E5E5E5'], xAxisCalloutData: '2020/04/30' },
+  { legend: 'second', data: 20, gradient: ['#0078D4', '#0078D4'], xAxisCalloutData: '2020/04/20' },
+  { legend: 'third', data: 20, gradient: ['#DADADA', '#DADADA'], xAxisCalloutData: '2020/04/25' },
+  { legend: 'fourth', data: 20, gradient: ['#DADADA', '#DADADA'], xAxisCalloutData: '2020/04/25' },
+  { legend: 'fifth', data: 20, gradient: ['#DADADA', '#DADADA'], xAxisCalloutData: '2020/04/25' },
+  { legend: 'sixth', data: 20, gradient: ['#DADADA', '#DADADA'], xAxisCalloutData: '2020/04/25' },
 ];
 
 export const chartPointsDC: ChartProps = {

@@ -93,14 +93,13 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
       // find the gradients and check their stop color
       const gradients = getByClass(container, /HBC_gradient/i);
 
-      const disabledColor = getGradientFromToken(DataVizGradientPalette.disabled)[0];
       // Assert
       expect(gradients[0].querySelector('stop')?.getAttribute('stop-color')).toEqual('#004b50');
-      expect(gradients[1].querySelector('stop')?.getAttribute('stop-color')).toEqual(disabledColor);
+      expect(gradients[1].querySelector('stop')?.getAttribute('stop-color')).toEqual('var(--colorBackgroundOverlay)');
       expect(gradients[2].querySelector('stop')?.getAttribute('stop-color')).toEqual('#5c2d91');
-      expect(gradients[3].querySelector('stop')?.getAttribute('stop-color')).toEqual(disabledColor);
+      expect(gradients[3].querySelector('stop')?.getAttribute('stop-color')).toEqual('var(--colorBackgroundOverlay)');
       expect(gradients[4].querySelector('stop')?.getAttribute('stop-color')).toEqual('#a4262c');
-      expect(gradients[5].querySelector('stop')?.getAttribute('stop-color')).toEqual(disabledColor);
+      expect(gradients[5].querySelector('stop')?.getAttribute('stop-color')).toEqual('var(--colorBackgroundOverlay)');
     },
   );
 

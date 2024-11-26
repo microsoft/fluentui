@@ -77,11 +77,11 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               >
                 <stop
                   offset="0"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
               </lineargradient>
             </defs>
@@ -173,11 +173,11 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               >
                 <stop
                   offset="0"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
               </lineargradient>
             </defs>
@@ -269,11 +269,11 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               >
                 <stop
                   offset="0"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
               </lineargradient>
             </defs>
@@ -378,11 +378,11 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               >
                 <stop
                   offset="0"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
               </lineargradient>
             </defs>
@@ -474,11 +474,11 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               >
                 <stop
                   offset="0"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
               </lineargradient>
             </defs>
@@ -570,11 +570,11 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               >
                 <stop
                   offset="0"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
               </lineargradient>
             </defs>
@@ -683,11 +683,11 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 >
                   <stop
                     offset="0"
-                    stop-color="#E6E6E6"
+                    stop-color="var(--colorBackgroundOverlay)"
                   />
                   <stop
                     offset="100%"
-                    stop-color="#E6E6E6"
+                    stop-color="var(--colorBackgroundOverlay)"
                   />
                 </lineargradient>
               </defs>
@@ -779,11 +779,11 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 >
                   <stop
                     offset="0"
-                    stop-color="#E6E6E6"
+                    stop-color="var(--colorBackgroundOverlay)"
                   />
                   <stop
                     offset="100%"
-                    stop-color="#E6E6E6"
+                    stop-color="var(--colorBackgroundOverlay)"
                   />
                 </lineargradient>
               </defs>
@@ -875,11 +875,11 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 >
                   <stop
                     offset="0"
-                    stop-color="#E6E6E6"
+                    stop-color="var(--colorBackgroundOverlay)"
                   />
                   <stop
                     offset="100%"
-                    stop-color="#E6E6E6"
+                    stop-color="var(--colorBackgroundOverlay)"
                   />
                 </lineargradient>
               </defs>
@@ -997,11 +997,11 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               >
                 <stop
                   offset="0"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
               </lineargradient>
             </defs>
@@ -1093,11 +1093,11 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               >
                 <stop
                   offset="0"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
               </lineargradient>
             </defs>
@@ -1189,11 +1189,11 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               >
                 <stop
                   offset="0"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
               </lineargradient>
             </defs>
@@ -1298,11 +1298,11 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               >
                 <stop
                   offset="0"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
               </lineargradient>
             </defs>
@@ -1394,11 +1394,11 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               >
                 <stop
                   offset="0"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
               </lineargradient>
             </defs>
@@ -1490,11 +1490,11 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               >
                 <stop
                   offset="0"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#E6E6E6"
+                  stop-color="var(--colorBackgroundOverlay)"
                 />
               </lineargradient>
             </defs>
