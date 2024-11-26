@@ -1,4 +1,5 @@
 import { IDonutChartProps } from '../DonutChart/index';
+import { ISankeyChartProps } from '../SankeyChart/index';
 import { IChartDataPoint, IVerticalStackedChartProps } from '../../types/IDataPoint';
 import { getNextColor } from '../../utilities/colors';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -85,6 +86,49 @@ export const transformPlotlyJsonToColumnProps = (jsonObj: any): IVerticalStacked
     // height: layout.height,
     barWidth: 'auto',
     yMaxValue,
+  };
+};
+
+export const transformPlotlyJsonToSankeyProps = (jsonObj: any): ISankeyChartProps => {
+  const { data, layout } = jsonObj;
+  const { link, node } = data[0];
+  const validLinks = link.value
+    .map((val: number, index: number) => ({
+      value: val,
+      source: link.source[index],
+      target: link.target[index],
+    }))
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    .filter(link => link.source !== link.target); // Filter out self-references(circular links)
+
+  const sankeyChartData = {
+    nodes: node.label.map((label: string, index: number) => ({
+      nodeId: index,
+      name: label,
+      color: node.color[index] || '#D3D3D3',
+      borderColor: node.line?.color || 'black',
+    })),
+    links: validLinks,
+  };
+
+  const width: number = layout?.width || 440;
+  const height: number = layout?.height || 220;
+  const styles: ISankeyChartProps['styles'] = {
+    root: {
+      fontSize: layout.font?.size,
+    },
+  };
+  const shouldResize: number = width + height;
+  return {
+    data: {
+      chartTitle: layout?.title,
+      SankeyChartData: sankeyChartData,
+    },
+    width,
+    height,
+    styles,
+    shouldResize,
+    enableReflow: true,
   };
 };
 
