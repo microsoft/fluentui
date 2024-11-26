@@ -92,11 +92,11 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
     const id = props.uniqText! + props.data!.data.legend!.replace(/\s+/, '') + props.data!.data.data;
     const opacity: number = props.activeArc === props.data!.data.legend || props.activeArc === '' ? 1 : 0.1;
 
-    const clipId = useId('Arc_clip') + `${props.gradient[0]}_${props.gradient[1]}`;
+    const clipId = useId('Arc_clip') + `${props.color[0]}_${props.color[1]}`;
     const gradientFill = `conic-gradient(
       from ${props.data?.startAngle}rad,
-      ${props.gradient[0]},
-      ${props.gradient[1]} ${props.data!.endAngle - props.data!.startAngle}rad
+      ${props.color[0]},
+      ${props.color[1]} ${props.data!.endAngle - props.data!.startAngle}rad
     )`;
 
     const pathData = arc({ ...props.data!, innerRadius: props.innerRadius, outerRadius: props.outerRadius })!;

@@ -33,7 +33,7 @@ export interface ArcProps {
   /**
    * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
    */
-  gradient: [string, string];
+  color: string | [string, string];
 
   /**
    * Defines the function that is executed upon hovering over the legend
