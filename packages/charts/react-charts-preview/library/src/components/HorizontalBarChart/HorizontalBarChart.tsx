@@ -52,7 +52,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       _calloutAnchorPoint = point;
       updatePosition(event.clientX, event.clientY);
       setHoverValue(hoverVal);
-      setLineColor(point.gradient![0]);
+      setLineColor(Array.isArray(point.color) ? point.color[0] : point.color!);
       setLegend(point.legend!);
       setXCalloutValue(point.xAxisCalloutData!);
       setYCalloutValue(point.yAxisCalloutData!);
@@ -224,15 +224,18 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       }
 
       const gradientId = _gradientId + `_${dataPointIndex}_${index}`;
+      const useGradient = Array.isArray(point.color);
 
       return (
         <React.Fragment key={index}>
-          <defs>
-            <linearGradient id={gradientId} className="HBC_gradient">
-              <stop offset="0" stopColor={point.gradient?.[0]} />
-              <stop offset="100%" stopColor={point.gradient?.[1]} />
-            </linearGradient>
-          </defs>
+          {useGradient && (
+            <defs>
+              <linearGradient id={gradientId} className="HBC_gradient">
+                <stop offset="0" stopColor={point.color?.[0]} />
+                <stop offset="100%" stopColor={point.color?.[1]} />
+              </linearGradient>
+            </defs>
+          )}
           <rect
             key={index}
             x={`${
@@ -245,7 +248,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
             data-is-focusable={point.legend !== '' ? true : false}
             width={value + '%'}
             height={_barHeight}
-            fill={`url(#${gradientId})`}
+            fill={useGradient ? `url(#${gradientId})` : (point.color as string)}
             onMouseOver={point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
             onFocus={point.legend !== '' ? event => _hoverOn.bind(event, xValue, point) : undefined}
             role="img"
@@ -264,7 +267,11 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   function _addDefaultGradients(dataPoints: ChartDataPoint[], chartDataIndex: number): ChartDataPoint[] {
     return dataPoints
       ? dataPoints.map((item, index) => {
-          return { ...item, gradient: item.gradient ?? getNextGradient(chartDataIndex, 0) };
+          const gradient =
+            item.color && item.color[0].trim().length > 0 && item.color[1].trim().length > 0
+              ? item.color
+              : getNextGradient(index);
+          return { ...item, color: gradient ?? getNextGradient(chartDataIndex, 0) };
         })
       : [];
   }
@@ -327,7 +334,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
             x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
             y: points.chartData![0].horizontalBarChartdata!.y,
           },
-          gradient: [tokens.colorBackgroundOverlay, tokens.colorBackgroundOverlay],
+          color: tokens.colorBackgroundOverlay,
         };
 
         // Hide right side text of chart title for absolute-scale variant

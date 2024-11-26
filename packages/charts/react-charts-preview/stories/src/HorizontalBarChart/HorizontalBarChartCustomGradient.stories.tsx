@@ -10,7 +10,7 @@ export const HorizontalBarCustomGradient = () => {
           legend: 'one',
           horizontalBarChartdata: { x: 1543, y: 15000 },
           // custom gradient
-          gradient: ['#8800FF', '#00D0FF'],
+          color: ['#8800FF', '#00D0FF'],
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '10%',
         },
@@ -23,7 +23,7 @@ export const HorizontalBarCustomGradient = () => {
           legend: 'two',
           horizontalBarChartdata: { x: 800, y: 15000 },
           // custom gradient
-          gradient: ['#00D0FF', 'lightgreen'],
+          color: ['#00D0FF', 'lightgreen'],
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '5%',
         },
@@ -36,7 +36,7 @@ export const HorizontalBarCustomGradient = () => {
           legend: 'three',
           horizontalBarChartdata: { x: 8888, y: 15000 },
           // custom gradient
-          gradient: ['green', 'yellow'],
+          color: ['green', 'yellow'],
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '59%',
         },
@@ -48,7 +48,7 @@ export const HorizontalBarCustomGradient = () => {
         {
           legend: 'four',
           horizontalBarChartdata: { x: 15888, y: 15000 },
-          gradient: ['yellow', 'orange'],
+          color: ['yellow', 'orange'],
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '106%',
         },
@@ -60,7 +60,7 @@ export const HorizontalBarCustomGradient = () => {
         {
           legend: 'five',
           horizontalBarChartdata: { x: 11444, y: 15000 },
-          gradient: ['orange', 'red'],
+          color: ['orange', 'red'],
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '76%',
         },

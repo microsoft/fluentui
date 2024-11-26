@@ -5,7 +5,6 @@ import { HorizontalBarChart } from './HorizontalBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartVariant, ChartProps } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { DataVizGradientPalette, getGradientFromToken } from '../../utilities/gradients';
 
 expect.extend(toHaveNoViolations);
 
@@ -16,7 +15,7 @@ const chartPoints: ChartProps[] = [
       {
         legend: 'one',
         horizontalBarChartdata: { x: 1543, y: 15000 },
-        gradient: ['#004b50', ''],
+        color: '#004b50',
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '10%',
       },
@@ -28,7 +27,7 @@ const chartPoints: ChartProps[] = [
       {
         legend: 'two',
         horizontalBarChartdata: { x: 800, y: 15000 },
-        gradient: ['#5c2d91', ''],
+        color: '#5c2d91',
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '5%',
       },
@@ -40,7 +39,7 @@ const chartPoints: ChartProps[] = [
       {
         legend: 'three',
         horizontalBarChartdata: { x: 8888, y: 15000 },
-        gradient: ['#a4262c', ''],
+        color: '#a4262c',
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '59%',
       },
@@ -51,15 +50,15 @@ const chartPoints: ChartProps[] = [
 const chartPointsWithBenchMark: ChartProps[] = [
   {
     chartTitle: 'one',
-    chartData: [{ legend: 'one', data: 50, horizontalBarChartdata: { x: 10, y: 100 }, gradient: ['#004b50', ''] }],
+    chartData: [{ legend: 'one', data: 50, horizontalBarChartdata: { x: 10, y: 100 }, color: '#004b50' }],
   },
   {
     chartTitle: 'two',
-    chartData: [{ legend: 'two', data: 30, horizontalBarChartdata: { x: 30, y: 200 }, gradient: ['#5c2d91', ''] }],
+    chartData: [{ legend: 'two', data: 30, horizontalBarChartdata: { x: 30, y: 200 }, color: '#5c2d91' }],
   },
   {
     chartTitle: 'three',
-    chartData: [{ legend: 'three', data: 5, horizontalBarChartdata: { x: 15, y: 50 }, gradient: ['#a4262c', ''] }],
+    chartData: [{ legend: 'three', data: 5, horizontalBarChartdata: { x: 15, y: 50 }, color: '#a4262c' }],
   },
 ];
 

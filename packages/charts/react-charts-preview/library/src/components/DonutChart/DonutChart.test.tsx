@@ -55,8 +55,8 @@ describe('DonutChart snapShot testing', () => {
   });
 
   it('renders DonutChart correctly without color points', () => {
-    const chartPointColor = pointsDC[0].gradient;
-    delete pointsDC[0].gradient;
+    const chartPointColor = pointsDC[0].color;
+    delete pointsDC[0].color;
 
     let component: any;
     rendererAct(() => {
@@ -64,7 +64,7 @@ describe('DonutChart snapShot testing', () => {
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
-    pointsDC[0].gradient = chartPointColor;
+    pointsDC[0].color = chartPointColor;
   });
 
   it('renders hideLegend correctly', () => {

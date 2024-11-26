@@ -23,7 +23,7 @@ export const HorizontalBarCustomCallout = () => {
         {
           legend: 'one',
           horizontalBarChartdata: { x: 1543, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient1Ext),
+          color: getGradientFromToken(DataVizGradientPalette.gradient1Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '1.5K',
         },
@@ -35,7 +35,7 @@ export const HorizontalBarCustomCallout = () => {
         {
           legend: 'two',
           horizontalBarChartdata: { x: 800, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient2Ext),
+          color: getGradientFromToken(DataVizGradientPalette.gradient2Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '800',
         },
@@ -47,7 +47,7 @@ export const HorizontalBarCustomCallout = () => {
         {
           legend: 'three',
           horizontalBarChartdata: { x: 8888, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient3Ext),
+          color: getGradientFromToken(DataVizGradientPalette.gradient3Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '8.8K',
         },
@@ -59,7 +59,7 @@ export const HorizontalBarCustomCallout = () => {
         {
           legend: 'four',
           horizontalBarChartdata: { x: 15888, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient4Ext),
+          color: getGradientFromToken(DataVizGradientPalette.gradient4Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '16K',
         },
@@ -71,7 +71,7 @@ export const HorizontalBarCustomCallout = () => {
         {
           legend: 'five',
           horizontalBarChartdata: { x: 11444, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient5Ext),
+          color: getGradientFromToken(DataVizGradientPalette.gradient5Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '11K',
         },
@@ -83,7 +83,7 @@ export const HorizontalBarCustomCallout = () => {
         {
           legend: 'six',
           horizontalBarChartdata: { x: 14000, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient6Ext),
+          color: getGradientFromToken(DataVizGradientPalette.gradient6Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '14K',
         },
@@ -95,7 +95,7 @@ export const HorizontalBarCustomCallout = () => {
         {
           legend: 'seven',
           horizontalBarChartdata: { x: 9855, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient7Ext),
+          color: getGradientFromToken(DataVizGradientPalette.gradient7Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '9.9K',
         },
@@ -107,7 +107,7 @@ export const HorizontalBarCustomCallout = () => {
         {
           legend: 'eight',
           horizontalBarChartdata: { x: 4250, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient8Ext),
+          color: getGradientFromToken(DataVizGradientPalette.gradient8Ext),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '4.3K',
         },
@@ -117,7 +117,7 @@ export const HorizontalBarCustomCallout = () => {
 
   const customPopoverProps = (props: ChartDataPoint): ChartPopoverProps => {
     const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : '';
-    const color = props ? props.gradient?.[0] : getColorFromToken(DataVizPalette.color28);
+    const color = props ? props.color?.[0] : getColorFromToken(DataVizPalette.color28);
     return {
       XValue: 'Custom XVal',
       legend: 'Custom Legend',

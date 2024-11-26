@@ -9,7 +9,7 @@ export const HorizontalBarBasic = () => {
         {
           legend: 'one',
           horizontalBarChartdata: { x: 1543, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient1),
+          color: getGradientFromToken(DataVizGradientPalette.gradient1),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '10%',
         },
@@ -21,7 +21,7 @@ export const HorizontalBarBasic = () => {
         {
           legend: 'two',
           horizontalBarChartdata: { x: 800, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient2),
+          color: getGradientFromToken(DataVizGradientPalette.gradient2),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '5%',
         },
@@ -33,7 +33,7 @@ export const HorizontalBarBasic = () => {
         {
           legend: 'three',
           horizontalBarChartdata: { x: 8888, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient3),
+          color: getGradientFromToken(DataVizGradientPalette.gradient3),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '59%',
         },
@@ -45,7 +45,7 @@ export const HorizontalBarBasic = () => {
         {
           legend: 'four',
           horizontalBarChartdata: { x: 15888, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient4),
+          color: getGradientFromToken(DataVizGradientPalette.gradient4),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '106%',
         },
@@ -57,7 +57,7 @@ export const HorizontalBarBasic = () => {
         {
           legend: 'five',
           horizontalBarChartdata: { x: 11444, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient5),
+          color: getGradientFromToken(DataVizGradientPalette.gradient5),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '76%',
         },
@@ -69,7 +69,7 @@ export const HorizontalBarBasic = () => {
         {
           legend: 'six',
           horizontalBarChartdata: { x: 14000, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient6),
+          color: getGradientFromToken(DataVizGradientPalette.gradient6),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '93%',
         },
@@ -81,7 +81,7 @@ export const HorizontalBarBasic = () => {
         {
           legend: 'seven',
           horizontalBarChartdata: { x: 9855, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient7),
+          color: getGradientFromToken(DataVizGradientPalette.gradient7),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '66%',
         },
@@ -93,7 +93,7 @@ export const HorizontalBarBasic = () => {
         {
           legend: 'eight',
           horizontalBarChartdata: { x: 4250, y: 15000 },
-          gradient: getGradientFromToken(DataVizGradientPalette.gradient8),
+          color: getGradientFromToken(DataVizGradientPalette.gradient8),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '28%',
         },
