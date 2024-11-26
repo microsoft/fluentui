@@ -47,14 +47,14 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               }
             />
             <clipPath
-              id="Arc_clip85#E5E5E5_#E5E5E5"
+              id="Arc_clip85#E5E5E5"
             >
               <path
                 d="M0.497,-49.747A5,5,0,0,1,6.047,-54.667A55,55,0,0,1,49.18,-24.624A5,5,0,0,1,46.489,-17.713L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip85#E5E5E5_#E5E5E5)"
+              clipPath="url(#Arc_clip85#E5E5E5)"
               height="100%"
               width="100%"
               x="-50%"
@@ -64,11 +64,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 0rad,
-      #E5E5E5,
-      #E5E5E5 1.2167664052268437rad
-    )",
+                    "background": "#E5E5E5",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -97,14 +93,14 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               }
             />
             <clipPath
-              id="Arc_clip86#0078D4_#0078D4"
+              id="Arc_clip86#0078D4"
             >
               <path
                 d="M46.834,-16.78A5,5,0,0,1,53.373,-13.28A55,55,0,0,1,-17.233,52.23A5,5,0,0,1,-20.234,45.449L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip86#0078D4_#0078D4)"
+              clipPath="url(#Arc_clip86#0078D4)"
               height="100%"
               width="100%"
               x="-50%"
@@ -114,11 +110,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 1.2167664052268437rad,
-      #0078D4,
-      #0078D4 2.3536944901923453rad
-    )",
+                    "background": "#0078D4",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -147,14 +139,14 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               }
             />
             <clipPath
-              id="Arc_clip87#DADADA_#DADADA"
+              id="Arc_clip87#DADADA"
             >
               <path
                 d="M-21.139,45.035A5,5,0,0,1,-28.232,47.201A55,55,0,0,1,-6.047,-54.667A5,5,0,0,1,-0.497,-49.747L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip87#DADADA_#DADADA)"
+              clipPath="url(#Arc_clip87#DADADA)"
               height="100%"
               width="100%"
               x="-50%"
@@ -164,11 +156,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 3.5704608954191888rad,
-      #DADADA,
-      #DADADA 2.7127244117603975rad
-    )",
+                    "background": "#DADADA",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -439,14 +427,14 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               }
             />
             <clipPath
-              id="Arc_clip99#E5E5E5_#E5E5E5"
+              id="Arc_clip99#E5E5E5"
             >
               <path
                 d="M0.497,-49.747A5,5,0,0,1,6.047,-54.667A55,55,0,0,1,49.18,-24.624A5,5,0,0,1,46.489,-17.713L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip99#E5E5E5_#E5E5E5)"
+              clipPath="url(#Arc_clip99#E5E5E5)"
               height="100%"
               width="100%"
               x="-50%"
@@ -456,11 +444,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 0rad,
-      #E5E5E5,
-      #E5E5E5 1.2167664052268437rad
-    )",
+                    "background": "#E5E5E5",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -489,14 +473,14 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               }
             />
             <clipPath
-              id="Arc_clip100#0078D4_#0078D4"
+              id="Arc_clip100#0078D4"
             >
               <path
                 d="M46.834,-16.78A5,5,0,0,1,53.373,-13.28A55,55,0,0,1,-17.233,52.23A5,5,0,0,1,-20.234,45.449L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip100#0078D4_#0078D4)"
+              clipPath="url(#Arc_clip100#0078D4)"
               height="100%"
               width="100%"
               x="-50%"
@@ -506,11 +490,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 1.2167664052268437rad,
-      #0078D4,
-      #0078D4 2.3536944901923453rad
-    )",
+                    "background": "#0078D4",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -539,14 +519,14 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               }
             />
             <clipPath
-              id="Arc_clip101#DADADA_#DADADA"
+              id="Arc_clip101#DADADA"
             >
               <path
                 d="M-21.139,45.035A5,5,0,0,1,-28.232,47.201A55,55,0,0,1,-6.047,-54.667A5,5,0,0,1,-0.497,-49.747L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip101#DADADA_#DADADA)"
+              clipPath="url(#Arc_clip101#DADADA)"
               height="100%"
               width="100%"
               x="-50%"
@@ -556,11 +536,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 3.5704608954191888rad,
-      #DADADA,
-      #DADADA 2.7127244117603975rad
-    )",
+                    "background": "#DADADA",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -831,14 +807,14 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               }
             />
             <clipPath
-              id="Arc_clip49#E5E5E5_#E5E5E5"
+              id="Arc_clip49#E5E5E5"
             >
               <path
                 d="M0.949,-94.864A5,5,0,0,1,6.261,-99.804A100,100,0,0,1,91.444,-40.473A5,5,0,0,1,88.652,-33.777L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip49#E5E5E5_#E5E5E5)"
+              clipPath="url(#Arc_clip49#E5E5E5)"
               height="100%"
               width="100%"
               x="-50%"
@@ -848,11 +824,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 0rad,
-      #E5E5E5,
-      #E5E5E5 1.2167664052268437rad
-    )",
+                    "background": "#E5E5E5",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -881,14 +853,14 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               }
             />
             <clipPath
-              id="Arc_clip50#0078D4_#0078D4"
+              id="Arc_clip50#0078D4"
             >
               <path
                 d="M89.309,-31.998A5,5,0,0,1,95.785,-28.727A100,100,0,0,1,-35.808,93.369A5,5,0,0,1,-38.585,86.667L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip50#0078D4_#0078D4)"
+              clipPath="url(#Arc_clip50#0078D4)"
               height="100%"
               width="100%"
               x="-50%"
@@ -898,11 +870,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 1.2167664052268437rad,
-      #0078D4,
-      #0078D4 2.3536944901923453rad
-    )",
+                    "background": "#0078D4",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -931,14 +899,14 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               }
             />
             <clipPath
-              id="Arc_clip51#DADADA_#DADADA"
+              id="Arc_clip51#DADADA"
             >
               <path
                 d="M-40.311,85.878A5,5,0,0,1,-47.197,88.161A100,100,0,0,1,-6.261,-99.804A5,5,0,0,1,-0.949,-94.864L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip51#DADADA_#DADADA)"
+              clipPath="url(#Arc_clip51#DADADA)"
               height="100%"
               width="100%"
               x="-50%"
@@ -948,11 +916,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 3.5704608954191888rad,
-      #DADADA,
-      #DADADA 2.7127244117603975rad
-    )",
+                    "background": "#DADADA",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -1172,14 +1136,14 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip37#E5E5E5_#E5E5E5"
+              id="Arc_clip37#E5E5E5"
             >
               <path
                 d="M0.548,-54.77A5,5,0,0,1,6.052,-59.694A60,60,0,0,1,53.894,-26.371A5,5,0,0,1,51.183,-19.501L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip37#E5E5E5_#E5E5E5)"
+              clipPath="url(#Arc_clip37#E5E5E5)"
               height="100%"
               width="100%"
               x="-50%"
@@ -1189,11 +1153,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 0rad,
-      #E5E5E5,
-      #E5E5E5 1.2167664052268437rad
-    )",
+                    "background": "#E5E5E5",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -1232,14 +1192,14 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip38#0078D4_#0078D4"
+              id="Arc_clip38#0078D4"
             >
               <path
                 d="M51.563,-18.474A5,5,0,0,1,58.09,-15.018A60,60,0,0,1,-19.32,56.805A5,5,0,0,1,-22.277,50.037L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip38#0078D4_#0078D4)"
+              clipPath="url(#Arc_clip38#0078D4)"
               height="100%"
               width="100%"
               x="-50%"
@@ -1249,11 +1209,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 1.2167664052268437rad,
-      #0078D4,
-      #0078D4 2.3536944901923453rad
-    )",
+                    "background": "#0078D4",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -1292,14 +1248,14 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip39#DADADA_#DADADA"
+              id="Arc_clip39#DADADA"
             >
               <path
                 d="M-23.274,49.582A5,5,0,0,1,-30.327,51.771A60,60,0,0,1,-6.052,-59.694A5,5,0,0,1,-0.548,-54.77L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip39#DADADA_#DADADA)"
+              clipPath="url(#Arc_clip39#DADADA)"
               height="100%"
               width="100%"
               x="-50%"
@@ -1309,11 +1265,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 3.5704608954191888rad,
-      #DADADA,
-      #DADADA 2.7127244117603975rad
-    )",
+                    "background": "#DADADA",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -1543,14 +1495,14 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               }
             />
             <clipPath
-              id="Arc_clip43#E5E5E5_#E5E5E5"
+              id="Arc_clip43#E5E5E5"
             >
               <path
                 d="M0.548,-54.77A5,5,0,0,1,6.052,-59.694A60,60,0,0,1,53.894,-26.371A5,5,0,0,1,51.183,-19.501L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip43#E5E5E5_#E5E5E5)"
+              clipPath="url(#Arc_clip43#E5E5E5)"
               height="100%"
               width="100%"
               x="-50%"
@@ -1560,11 +1512,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 0rad,
-      #E5E5E5,
-      #E5E5E5 1.2167664052268437rad
-    )",
+                    "background": "#E5E5E5",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -1603,14 +1551,14 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               }
             />
             <clipPath
-              id="Arc_clip44#0078D4_#0078D4"
+              id="Arc_clip44#0078D4"
             >
               <path
                 d="M51.563,-18.474A5,5,0,0,1,58.09,-15.018A60,60,0,0,1,-19.32,56.805A5,5,0,0,1,-22.277,50.037L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip44#0078D4_#0078D4)"
+              clipPath="url(#Arc_clip44#0078D4)"
               height="100%"
               width="100%"
               x="-50%"
@@ -1620,11 +1568,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 1.2167664052268437rad,
-      #0078D4,
-      #0078D4 2.3536944901923453rad
-    )",
+                    "background": "#0078D4",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -1663,14 +1607,14 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               }
             />
             <clipPath
-              id="Arc_clip45#DADADA_#DADADA"
+              id="Arc_clip45#DADADA"
             >
               <path
                 d="M-23.274,49.582A5,5,0,0,1,-30.327,51.771A60,60,0,0,1,-6.052,-59.694A5,5,0,0,1,-0.548,-54.77L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip45#DADADA_#DADADA)"
+              clipPath="url(#Arc_clip45#DADADA)"
               height="100%"
               width="100%"
               x="-50%"
@@ -1680,11 +1624,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 3.5704608954191888rad,
-      #DADADA,
-      #DADADA 2.7127244117603975rad
-    )",
+                    "background": "#DADADA",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -1914,14 +1854,14 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip2#E5E5E5_#E5E5E5"
+              id="Arc_clip2#E5E5E5"
             >
               <path
                 d="M1.141,-94.801A5,5,0,0,1,6.464,-99.791A100,100,0,0,1,91.361,-40.659A5,5,0,0,1,88.526,-33.936L55.588,-21.762A5,5,0,0,1,49.367,-24.248A55,55,0,0,0,5.629,-54.711A5,5,0,0,1,1.141,-59.685Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip2#E5E5E5_#E5E5E5)"
+              clipPath="url(#Arc_clip2#E5E5E5)"
               height="100%"
               width="100%"
               x="-50%"
@@ -1931,11 +1871,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 0rad,
-      #E5E5E5,
-      #E5E5E5 1.2167664052268437rad
-    )",
+                    "background": "#E5E5E5",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -1964,14 +1900,14 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip3#0078D4_#0078D4"
+              id="Arc_clip3#0078D4"
             >
               <path
                 d="M89.318,-31.795A5,5,0,0,1,95.843,-28.532A100,100,0,0,1,-35.618,93.442A5,5,0,0,1,-38.384,86.69L-23.782,54.754A5,5,0,0,1,-17.632,52.097A55,55,0,0,0,53.27,-13.687A5,5,0,0,1,56.379,-19.621Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip3#0078D4_#0078D4)"
+              clipPath="url(#Arc_clip3#0078D4)"
               height="100%"
               width="100%"
               x="-50%"
@@ -1981,11 +1917,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 1.2167664052268437rad,
-      #0078D4,
-      #0078D4 2.3536944901923453rad
-    )",
+                    "background": "#0078D4",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -2014,14 +1946,14 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip4#DADADA_#DADADA"
+              id="Arc_clip4#DADADA"
             >
               <path
                 d="M-40.46,85.741A5,5,0,0,1,-47.376,88.065A100,100,0,0,1,-6.464,-99.791A5,5,0,0,1,-1.141,-94.801L-1.141,-59.685A5,5,0,0,1,-5.629,-54.711A55,55,0,0,0,-27.871,47.415A5,5,0,0,1,-25.857,53.805Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip4#DADADA_#DADADA)"
+              clipPath="url(#Arc_clip4#DADADA)"
               height="100%"
               width="100%"
               x="-50%"
@@ -2031,11 +1963,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 3.5704608954191888rad,
-      #DADADA,
-      #DADADA 2.7127244117603975rad
-    )",
+                    "background": "#DADADA",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -2596,14 +2524,14 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               }
             />
             <clipPath
-              id="Arc_clip25#E5E5E5_#E5E5E5"
+              id="Arc_clip25#E5E5E5"
             >
               <path
                 d="M0.949,-94.864A5,5,0,0,1,6.261,-99.804A100,100,0,0,1,91.444,-40.473A5,5,0,0,1,88.652,-33.777L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip25#E5E5E5_#E5E5E5)"
+              clipPath="url(#Arc_clip25#E5E5E5)"
               height="100%"
               width="100%"
               x="-50%"
@@ -2613,11 +2541,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 0rad,
-      #E5E5E5,
-      #E5E5E5 1.2167664052268437rad
-    )",
+                    "background": "#E5E5E5",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -2646,14 +2570,14 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               }
             />
             <clipPath
-              id="Arc_clip26#0078D4_#0078D4"
+              id="Arc_clip26#0078D4"
             >
               <path
                 d="M89.309,-31.998A5,5,0,0,1,95.785,-28.727A100,100,0,0,1,-35.808,93.369A5,5,0,0,1,-38.585,86.667L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip26#0078D4_#0078D4)"
+              clipPath="url(#Arc_clip26#0078D4)"
               height="100%"
               width="100%"
               x="-50%"
@@ -2663,11 +2587,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 1.2167664052268437rad,
-      #0078D4,
-      #0078D4 2.3536944901923453rad
-    )",
+                    "background": "#0078D4",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -2696,14 +2616,14 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               }
             />
             <clipPath
-              id="Arc_clip27#DADADA_#DADADA"
+              id="Arc_clip27#DADADA"
             >
               <path
                 d="M-40.311,85.878A5,5,0,0,1,-47.197,88.161A100,100,0,0,1,-6.261,-99.804A5,5,0,0,1,-0.949,-94.864L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip27#DADADA_#DADADA)"
+              clipPath="url(#Arc_clip27#DADADA)"
               height="100%"
               width="100%"
               x="-50%"
@@ -2713,11 +2633,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 3.5704608954191888rad,
-      #DADADA,
-      #DADADA 2.7127244117603975rad
-    )",
+                    "background": "#DADADA",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -2937,14 +2853,14 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip14#E5E5E5_#E5E5E5"
+              id="Arc_clip14#E5E5E5"
             >
               <path
                 d="M0.949,-94.864A5,5,0,0,1,6.261,-99.804A100,100,0,0,1,91.444,-40.473A5,5,0,0,1,88.652,-33.777L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip14#E5E5E5_#E5E5E5)"
+              clipPath="url(#Arc_clip14#E5E5E5)"
               height="100%"
               width="100%"
               x="-50%"
@@ -2954,11 +2870,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 0rad,
-      #E5E5E5,
-      #E5E5E5 1.2167664052268437rad
-    )",
+                    "background": "#E5E5E5",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -2987,14 +2899,14 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip15#0078D4_#0078D4"
+              id="Arc_clip15#0078D4"
             >
               <path
                 d="M89.309,-31.998A5,5,0,0,1,95.785,-28.727A100,100,0,0,1,-35.808,93.369A5,5,0,0,1,-38.585,86.667L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip15#0078D4_#0078D4)"
+              clipPath="url(#Arc_clip15#0078D4)"
               height="100%"
               width="100%"
               x="-50%"
@@ -3004,11 +2916,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 1.2167664052268437rad,
-      #0078D4,
-      #0078D4 2.3536944901923453rad
-    )",
+                    "background": "#0078D4",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -3037,14 +2945,14 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip16#DADADA_#DADADA"
+              id="Arc_clip16#DADADA"
             >
               <path
                 d="M-40.311,85.878A5,5,0,0,1,-47.197,88.161A100,100,0,0,1,-6.261,-99.804A5,5,0,0,1,-0.949,-94.864L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip16#DADADA_#DADADA)"
+              clipPath="url(#Arc_clip16#DADADA)"
               height="100%"
               width="100%"
               x="-50%"
@@ -3054,11 +2962,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 3.5704608954191888rad,
-      #DADADA,
-      #DADADA 2.7127244117603975rad
-    )",
+                    "background": "#DADADA",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -3125,14 +3029,14 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip19#E5E5E5_#E5E5E5"
+              id="Arc_clip19#E5E5E5"
             >
               <path
                 d="M0.949,-94.864A5,5,0,0,1,6.261,-99.804A100,100,0,0,1,91.444,-40.473A5,5,0,0,1,88.652,-33.777L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip19#E5E5E5_#E5E5E5)"
+              clipPath="url(#Arc_clip19#E5E5E5)"
               height="100%"
               width="100%"
               x="-50%"
@@ -3142,11 +3046,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 0rad,
-      #E5E5E5,
-      #E5E5E5 1.2167664052268437rad
-    )",
+                    "background": "#E5E5E5",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -3175,14 +3075,14 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip20#0078D4_#0078D4"
+              id="Arc_clip20#0078D4"
             >
               <path
                 d="M89.309,-31.998A5,5,0,0,1,95.785,-28.727A100,100,0,0,1,-35.808,93.369A5,5,0,0,1,-38.585,86.667L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip20#0078D4_#0078D4)"
+              clipPath="url(#Arc_clip20#0078D4)"
               height="100%"
               width="100%"
               x="-50%"
@@ -3192,11 +3092,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 1.2167664052268437rad,
-      #0078D4,
-      #0078D4 2.3536944901923453rad
-    )",
+                    "background": "#0078D4",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -3225,14 +3121,14 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip21#DADADA_#DADADA"
+              id="Arc_clip21#DADADA"
             >
               <path
                 d="M-40.311,85.878A5,5,0,0,1,-47.197,88.161A100,100,0,0,1,-6.261,-99.804A5,5,0,0,1,-0.949,-94.864L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip21#DADADA_#DADADA)"
+              clipPath="url(#Arc_clip21#DADADA)"
               height="100%"
               width="100%"
               x="-50%"
@@ -3242,11 +3138,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 3.5704608954191888rad,
-      #DADADA,
-      #DADADA 2.7127244117603975rad
-    )",
+                    "background": "#DADADA",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -3466,14 +3358,14 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip31#E5E5E5_#E5E5E5"
+              id="Arc_clip31#E5E5E5"
             >
               <path
                 d="M0.949,-94.864A5,5,0,0,1,6.261,-99.804A100,100,0,0,1,91.444,-40.473A5,5,0,0,1,88.652,-33.777L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip31#E5E5E5_#E5E5E5)"
+              clipPath="url(#Arc_clip31#E5E5E5)"
               height="100%"
               width="100%"
               x="-50%"
@@ -3483,11 +3375,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 0rad,
-      #E5E5E5,
-      #E5E5E5 1.2167664052268437rad
-    )",
+                    "background": "#E5E5E5",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -3516,14 +3404,14 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip32#0078D4_#0078D4"
+              id="Arc_clip32#0078D4"
             >
               <path
                 d="M89.309,-31.998A5,5,0,0,1,95.785,-28.727A100,100,0,0,1,-35.808,93.369A5,5,0,0,1,-38.585,86.667L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip32#0078D4_#0078D4)"
+              clipPath="url(#Arc_clip32#0078D4)"
               height="100%"
               width="100%"
               x="-50%"
@@ -3533,11 +3421,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 1.2167664052268437rad,
-      #0078D4,
-      #0078D4 2.3536944901923453rad
-    )",
+                    "background": "#0078D4",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",
@@ -3566,14 +3450,14 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               }
             />
             <clipPath
-              id="Arc_clip33#DADADA_#DADADA"
+              id="Arc_clip33#DADADA"
             >
               <path
                 d="M-40.311,85.878A5,5,0,0,1,-47.197,88.161A100,100,0,0,1,-6.261,-99.804A5,5,0,0,1,-0.949,-94.864L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#Arc_clip33#DADADA_#DADADA)"
+              clipPath="url(#Arc_clip33#DADADA)"
               height="100%"
               width="100%"
               x="-50%"
@@ -3583,11 +3467,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 className="fui-donut-arc__root"
                 style={
                   Object {
-                    "background": "conic-gradient(
-      from 3.5704608954191888rad,
-      #DADADA,
-      #DADADA 2.7127244117603975rad
-    )",
+                    "background": "#DADADA",
                     "height": "100%",
                     "opacity": 1,
                     "width": "100%",

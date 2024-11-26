@@ -52,26 +52,11 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
           key="_HorizontalLine_lllllm_0"
           onClick={[Function]}
         >
-          <defs>
-            <linearGradient
-              className="HBC_gradient"
-              id="HBC_Gradient42_0_0"
-            >
-              <stop
-                offset="0"
-                stopColor="#004b50"
-              />
-              <stop
-                offset="100%"
-                stopColor=""
-              />
-            </linearGradient>
-          </defs>
           <rect
             aria-label="2020/04/30, 94%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="url(#HBC_Gradient42_0_0)"
+            fill="#004b50"
             height={12}
             key="0"
             onBlur={[Function]}
@@ -85,26 +70,11 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             x="0%"
             y={0}
           />
-          <defs>
-            <linearGradient
-              className="HBC_gradient"
-              id="HBC_Gradient42_0_1"
-            >
-              <stop
-                offset="0"
-                stopColor="var(--colorBackgroundOverlay)"
-              />
-              <stop
-                offset="100%"
-                stopColor="var(--colorBackgroundOverlay)"
-              />
-            </linearGradient>
-          </defs>
           <rect
             aria-label="13457/15000."
             className="fui-hbc__barWrapper"
             data-is-focusable={false}
-            fill="url(#HBC_Gradient42_0_1)"
+            fill="var(--colorBackgroundOverlay)"
             height={12}
             key="1"
             onBlur={[Function]}
@@ -166,26 +136,11 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
           key="_HorizontalLine_lllllm_1"
           onClick={[Function]}
         >
-          <defs>
-            <linearGradient
-              className="HBC_gradient"
-              id="HBC_Gradient42_1_0"
-            >
-              <stop
-                offset="0"
-                stopColor="#5c2d91"
-              />
-              <stop
-                offset="100%"
-                stopColor=""
-              />
-            </linearGradient>
-          </defs>
           <rect
             aria-label="2020/04/30, 19%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="url(#HBC_Gradient42_1_0)"
+            fill="#5c2d91"
             height={12}
             key="0"
             onBlur={[Function]}
@@ -199,26 +154,11 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             x="0%"
             y={0}
           />
-          <defs>
-            <linearGradient
-              className="HBC_gradient"
-              id="HBC_Gradient42_1_1"
-            >
-              <stop
-                offset="0"
-                stopColor="var(--colorBackgroundOverlay)"
-              />
-              <stop
-                offset="100%"
-                stopColor="var(--colorBackgroundOverlay)"
-              />
-            </linearGradient>
-          </defs>
           <rect
             aria-label="14200/15000."
             className="fui-hbc__barWrapper"
             data-is-focusable={false}
-            fill="url(#HBC_Gradient42_1_1)"
+            fill="var(--colorBackgroundOverlay)"
             height={12}
             key="1"
             onBlur={[Function]}
@@ -292,26 +232,11 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
           key="_HorizontalLine_lllllm_0"
           onClick={[Function]}
         >
-          <defs>
-            <linearGradient
-              className="HBC_gradient"
-              id="HBC_Gradient47_0_0"
-            >
-              <stop
-                offset="0"
-                stopColor="#004b50"
-              />
-              <stop
-                offset="100%"
-                stopColor=""
-              />
-            </linearGradient>
-          </defs>
           <rect
             aria-label="2020/04/30, 94%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="url(#HBC_Gradient47_0_0)"
+            fill="#004b50"
             height={12}
             key="0"
             onBlur={[Function]}
@@ -325,26 +250,11 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             x="0%"
             y={0}
           />
-          <defs>
-            <linearGradient
-              className="HBC_gradient"
-              id="HBC_Gradient47_0_1"
-            >
-              <stop
-                offset="0"
-                stopColor="var(--colorBackgroundOverlay)"
-              />
-              <stop
-                offset="100%"
-                stopColor="var(--colorBackgroundOverlay)"
-              />
-            </linearGradient>
-          </defs>
           <rect
             aria-label="13457/15000."
             className="fui-hbc__barWrapper"
             data-is-focusable={false}
-            fill="url(#HBC_Gradient47_0_1)"
+            fill="var(--colorBackgroundOverlay)"
             height={12}
             key="1"
             onBlur={[Function]}
@@ -406,26 +316,11 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
           key="_HorizontalLine_lllllm_1"
           onClick={[Function]}
         >
-          <defs>
-            <linearGradient
-              className="HBC_gradient"
-              id="HBC_Gradient47_1_0"
-            >
-              <stop
-                offset="0"
-                stopColor="#5c2d91"
-              />
-              <stop
-                offset="100%"
-                stopColor=""
-              />
-            </linearGradient>
-          </defs>
           <rect
             aria-label="2020/04/30, 19%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="url(#HBC_Gradient47_1_0)"
+            fill="#5c2d91"
             height={12}
             key="0"
             onBlur={[Function]}
@@ -439,26 +334,11 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             x="0%"
             y={0}
           />
-          <defs>
-            <linearGradient
-              className="HBC_gradient"
-              id="HBC_Gradient47_1_1"
-            >
-              <stop
-                offset="0"
-                stopColor="var(--colorBackgroundOverlay)"
-              />
-              <stop
-                offset="100%"
-                stopColor="var(--colorBackgroundOverlay)"
-              />
-            </linearGradient>
-          </defs>
           <rect
             aria-label="14200/15000."
             className="fui-hbc__barWrapper"
             data-is-focusable={false}
-            fill="url(#HBC_Gradient47_1_1)"
+            fill="var(--colorBackgroundOverlay)"
             height={12}
             key="1"
             onBlur={[Function]}
@@ -520,26 +400,11 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
           id="_HorizontalLine_lllllm_0"
           onClick={[Function]}
         >
-          <defs>
-            <linearGradient
-              className="HBC_gradient"
-              id="HBC_Gradient7_0_0"
-            >
-              <stop
-                offset="0"
-                stopColor="#004b50"
-              />
-              <stop
-                offset="100%"
-                stopColor=""
-              />
-            </linearGradient>
-          </defs>
           <rect
             aria-label="2020/04/30, 94%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="url(#HBC_Gradient7_0_0)"
+            fill="#004b50"
             height={12}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -592,26 +457,11 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
           id="_HorizontalLine_lllllm_1"
           onClick={[Function]}
         >
-          <defs>
-            <linearGradient
-              className="HBC_gradient"
-              id="HBC_Gradient7_1_0"
-            >
-              <stop
-                offset="0"
-                stopColor="#5c2d91"
-              />
-              <stop
-                offset="100%"
-                stopColor=""
-              />
-            </linearGradient>
-          </defs>
           <rect
             aria-label="2020/04/30, 19%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="url(#HBC_Gradient7_1_0)"
+            fill="#5c2d91"
             height={12}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -676,26 +526,11 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
           id="_HorizontalLine_lllllm_0"
           onClick={[Function]}
         >
-          <defs>
-            <linearGradient
-              className="HBC_gradient"
-              id="HBC_Gradient2_0_0"
-            >
-              <stop
-                offset="0"
-                stopColor="#004b50"
-              />
-              <stop
-                offset="100%"
-                stopColor=""
-              />
-            </linearGradient>
-          </defs>
           <rect
             aria-label="2020/04/30, 94%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="url(#HBC_Gradient2_0_0)"
+            fill="#004b50"
             height={12}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -757,26 +592,11 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
           id="_HorizontalLine_lllllm_1"
           onClick={[Function]}
         >
-          <defs>
-            <linearGradient
-              className="HBC_gradient"
-              id="HBC_Gradient2_1_0"
-            >
-              <stop
-                offset="0"
-                stopColor="#5c2d91"
-              />
-              <stop
-                offset="100%"
-                stopColor=""
-              />
-            </linearGradient>
-          </defs>
           <rect
             aria-label="2020/04/30, 19%."
             className="fui-hbc__barWrapper"
             data-is-focusable={true}
-            fill="url(#HBC_Gradient2_1_0)"
+            fill="#5c2d91"
             height={12}
             onBlur={[Function]}
             onFocus={[Function]}

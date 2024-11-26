@@ -164,8 +164,8 @@ export type ChartDataMode = 'default' | 'fraction' | 'percentage';
 // @public (undocumented)
 export interface ChartDataPoint {
     callOutAccessibilityData?: AccessibilityProps;
+    color?: string | [string, string];
     data?: number;
-    gradient?: [string, string];
     horizontalBarChartdata?: HorizontalDataPoint;
     legend?: string;
     onClick?: VoidFunction;

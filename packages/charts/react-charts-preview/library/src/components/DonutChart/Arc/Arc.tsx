@@ -92,10 +92,10 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
     const id = props.uniqText! + props.data!.data.legend!.replace(/\s+/, '') + props.data!.data.data;
     const opacity: number = props.activeArc === props.data!.data.legend || props.activeArc === '' ? 1 : 0.1;
 
-    const useGradient = Array.isArray(props.color);
-
-    const clipId = useId('Arc_clip') + useGradient ? `${props.color[0]}_${props.color[1]}` : props.color as string;
     // check if gradient ([string, string]) or color (string) is provided
+    const useGradient = Array.isArray(props.color);
+    const clipId = useId('Arc_clip') + (useGradient ? `${props.color[0]}_${props.color[1]}` : (props.color as string));
+
     const fill = useGradient
       ? `conic-gradient(
       from ${props.data?.startAngle}rad,
