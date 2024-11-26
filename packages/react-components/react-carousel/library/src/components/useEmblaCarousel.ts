@@ -10,6 +10,8 @@ import Fade from 'embla-carousel-fade';
 import { pointerEventPlugin } from './pointerEvents';
 import type { CarouselIndexChangeData } from './CarouselContext.types';
 
+type EmblaEventHandler = Parameters<EmblaCarouselType['on']>[1];
+
 const sliderClassname = `.${carouselSliderClassNames.root}`;
 
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
@@ -163,7 +165,7 @@ export function useEmblaCarousel(
     }
   });
 
-  const handleIndexChange = React.useCallback(() => {
+  const handleIndexChange: EmblaEventHandler = useEventCallback((_, eventType) => {
     const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
     const slides = emblaApi.current?.slideNodes();
     const actualIndex = emblaApi.current?.internalEngine().slideRegistry[newIndex][0] ?? 0;
@@ -173,13 +175,11 @@ export function useEmblaCarousel(
       setTabsterDefault(slide, slideIndex === actualIndex);
     });
     setActiveIndex(newIndex);
-  }, [setActiveIndex]);
 
-  const handleAutoplayIndexChange = useEventCallback(() => {
-    // Autoplay does not have an event trigger, we generate one to keep type consistency
-    const _event = new Event('autoplay');
-    const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
-    onAutoplayIndexChange?.(_event, { event: _event, type: 'autoplay', index: newIndex });
+    if (eventType === 'autoplay:select') {
+      const _event = new Event('autoplay');
+      onAutoplayIndexChange?.(_event, { event: _event, type: 'autoplay', index: newIndex });
+    }
   });
 
   const viewportRef: React.RefObject<HTMLDivElement> = React.useRef(null);
@@ -209,7 +209,7 @@ export function useEmblaCarousel(
           emblaApi.current?.off('slidesInView', handleVisibilityChange);
           emblaApi.current?.off('select', handleIndexChange);
           emblaApi.current?.off('reInit', handleReinit);
-          emblaApi.current?.off('autoplay:select', handleAutoplayIndexChange);
+          emblaApi.current?.off('autoplay:select', handleIndexChange);
           emblaApi.current?.destroy();
         }
 
@@ -228,11 +228,11 @@ export function useEmblaCarousel(
           emblaApi.current?.on('reInit', handleReinit);
           emblaApi.current?.on('slidesInView', handleVisibilityChange);
           emblaApi.current?.on('select', handleIndexChange);
-          emblaApi.current?.on('autoplay:select', handleAutoplayIndexChange);
+          emblaApi.current?.on('autoplay:select', handleIndexChange);
         }
       },
     };
-  }, [getPlugins, handleAutoplayIndexChange, handleIndexChange, handleReinit]);
+  }, [getPlugins, handleIndexChange, handleReinit]);
 
   const carouselApi = React.useMemo(
     () => ({
