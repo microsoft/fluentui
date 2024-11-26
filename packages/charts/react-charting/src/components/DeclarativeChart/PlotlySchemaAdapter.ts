@@ -5,6 +5,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IDonutChartProps } from '../DonutChart/index';
 import {
+  IChartDataPoint,
   IChartProps,
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartPoints,
@@ -12,34 +13,60 @@ import {
 } from '../../types/IDataPoint';
 import { getNextColor } from '../../utilities/colors';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
-import { ILineChartProps } from '../LineChart/index';
 import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
-import { isDateArray, isNumberArray } from './DeclarativeChart';
+import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
+
+const isDate = (value: any): boolean => !isNaN(Date.parse(value));
+const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
+export const isDateArray = (array: any[]): boolean => Array.isArray(array) && array.every(isDate);
+export const isNumberArray = (array: any[]): boolean => Array.isArray(array) && array.every(isNumber);
 
 export const transformPlotlyJsonToDonutProps = (jsonObj: any): IDonutChartProps => {
   const { data, layout } = jsonObj;
-  const donutData: IChartProps = {
-    chartTitle: layout.title,
-    chartData: data[0].labels.map((label: string, index: number) => {
-      return {
-        legend: label,
-        data: data[0].values[index],
-        color: getNextColor(index),
-      };
-    }),
+  const firstData = data[0];
+
+  const donutData = firstData.labels?.map((label: string, index: number): IChartDataPoint => {
+    return {
+      legend: label,
+      data: firstData.values?.[index],
+      color: firstData.marker?.colors?.[index] || getNextColor(index),
+    };
+  });
+
+  // TODO: innerRadius as a fraction needs to be supported internally. The pixel value depends on
+  // chart dimensions, arc label dimensions and the legend container height, all of which are subject to change.
+  const width: number = layout?.width || 440;
+  const height: number = layout?.height || 220;
+  const hideLabels = firstData.textinfo ? !['value', 'percent'].includes(firstData.textinfo) : false;
+  const donutMarginHorizontal = hideLabels ? 0 : 80;
+  const donutMarginVertical = 40 + (hideLabels ? 0 : 40);
+  const innerRadius: number = firstData.hole
+    ? firstData.hole * (Math.min(width - donutMarginHorizontal, height - donutMarginVertical) / 2)
+    : 0;
+
+  const styles: IDonutChartProps['styles'] = {
+    root: {
+      '[class^="arcLabel"]': {
+        fontSize: firstData.textfont?.size,
+      },
+    },
   };
 
-  const width: number = layout.width || 440;
-  const height: number = layout.height || 220;
-  const innerRadius: number = (Math.min(width, height - 40) * (data[0].hole || 0.5)) / 2;
-
   return {
-    data: donutData,
-    hideLegend: !layout.showlegend,
+    data: {
+      chartTitle: layout?.title,
+      chartData: donutData,
+    },
+    hideLegend: layout?.showlegend === false ? true : false,
     width,
     height,
     innerRadius,
+    hideLabels,
+    showLabelsInPercent: firstData.textinfo ? firstData.textinfo === 'percent' : true,
+    styles,
+    // TODO: Render custom hover card based on textinfo
+    // onRenderCalloutPerDataPoint: undefined,
   };
 };
 
