@@ -1,7 +1,26 @@
+/* eslint-disable one-var */
+/* eslint-disable vars-on-top */
+/* eslint-disable no-var */
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IDonutChartProps } from '../DonutChart/index';
-import { IChartDataPoint, IVerticalStackedChartProps } from '../../types/IDataPoint';
+import {
+  IChartDataPoint,
+  IChartProps,
+  IHorizontalBarChartWithAxisDataPoint,
+  ILineChartPoints,
+  IVerticalStackedChartProps,
+} from '../../types/IDataPoint';
 import { getNextColor } from '../../utilities/colors';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
+import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
+import { ILineChartProps } from '../LineChart/index';
+import { IAreaChartProps } from '../AreaChart/index';
+
+const isDate = (value: any): boolean => !isNaN(Date.parse(value));
+const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
+export const isDateArray = (array: any[]): boolean => Array.isArray(array) && array.every(isDate);
+export const isNumberArray = (array: any[]): boolean => Array.isArray(array) && array.every(isNumber);
 
 export const transformPlotlyJsonToDonutProps = (jsonObj: any): IDonutChartProps => {
   const { data, layout } = jsonObj;
@@ -85,6 +104,64 @@ export const transformPlotlyJsonToColumnProps = (jsonObj: any): IVerticalStacked
     // height: layout.height,
     barWidth: 'auto',
     yMaxValue,
+  };
+};
+
+export const transformPlotlyJsonToScatterChartProps = (
+  jsonObj: any,
+  isAreaChart: boolean,
+): ILineChartProps | IAreaChartProps => {
+  const { data, layout } = jsonObj;
+
+  const chartData: ILineChartPoints[] = data.map((series: any, index: number) => {
+    const xValues = series.x;
+    const isString = typeof xValues[0] === 'string';
+    const isXDate = isDateArray(xValues);
+    const isXNumber = isNumberArray(xValues);
+
+    return {
+      legend: series.name || `Series ${index + 1}`,
+      data: xValues.map((x: string | number, i: number) => ({
+        x: isString ? (isXDate ? new Date(x) : isXNumber ? parseFloat(x as string) : x) : x,
+        y: series.y[i],
+      })),
+      color: series.line?.color || getNextColor(index),
+    };
+  });
+
+  const chartProps: IChartProps = {
+    chartTitle: layout.title || '',
+    lineChartData: chartData,
+  };
+
+  if (isAreaChart) {
+    return {
+      data: chartProps,
+    } as IAreaChartProps;
+  } else {
+    return {
+      data: chartProps,
+    } as ILineChartProps;
+  }
+};
+
+export const transformPlotlyJsonToHorizontalBarWithAxisProps = (jsonObj: any): IHorizontalBarChartWithAxisProps => {
+  const { data, layout } = jsonObj;
+
+  const chartData: IHorizontalBarChartWithAxisDataPoint[] = data
+    .map((series: any, index: number) => {
+      return series.y.map((yValue: string, i: number) => ({
+        x: series.x[i],
+        y: yValue,
+        legend: series.name,
+        color: series.marker?.color || getNextColor(index),
+      }));
+    })
+    .flat();
+
+  return {
+    data: chartData,
+    chartTitle: layout.title || '',
   };
 };
 
