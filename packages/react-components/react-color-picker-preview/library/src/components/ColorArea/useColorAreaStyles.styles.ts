@@ -27,7 +27,6 @@ const thumbSizeVar = `--fui-Slider__thumb--size`;
 const useRootStyles = makeResetStyles({
   position: 'relative',
   border: `1px solid ${tokens.colorNeutralStroke1}`,
-  borderRadius: tokens.borderRadiusMedium,
   background: `linear-gradient(to bottom, transparent, #000), linear-gradient(to right, #fff, transparent), var(${colorAreaCSSVars.mainColorVar})`,
   forcedColorAdjust: 'none',
   display: 'inline-grid',
@@ -93,6 +92,15 @@ const useInputStyles = makeStyles({
   },
 });
 
+const useShapeStyles = makeStyles({
+  rounded: {
+    borderRadius: tokens.borderRadiusMedium,
+  },
+  square: {
+    borderRadius: tokens.borderRadiusNone,
+  },
+});
+
 /**
  * Apply styling to the ColorArea slots based on the state
  */
@@ -102,8 +110,14 @@ export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaSta
   const rootStyles = useRootStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
+  const shapeStyles = useShapeStyles();
 
-  state.root.className = mergeClasses(colorAreaClassNames.root, rootStyles, state.root.className);
+  state.root.className = mergeClasses(
+    colorAreaClassNames.root,
+    rootStyles,
+    shapeStyles[state.shape || 'rounded'],
+    state.root.className,
+  );
 
   state.thumb.className = mergeClasses(
     colorAreaClassNames.thumb,
