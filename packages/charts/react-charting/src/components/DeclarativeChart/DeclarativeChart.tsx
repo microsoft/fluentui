@@ -8,9 +8,11 @@ import {
   transformPlotlyJsonToColumnProps,
   transformPlotlyJsonToLineChartProps,
   transformPlotlyJsonToHorizontalBarWithAxisProps,
+  transformPlotlyJsonToAreaChartProps,
 } from './PlotlySchemaAdapter';
 import { LineChart } from '../LineChart/index';
 import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
+import { AreaChart } from '../AreaChart/index';
 
 export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElement> {
   /**
@@ -23,19 +25,23 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   HTMLDivElement,
   DeclarativeChartProps
 >((props, forwardedRef) => {
-  const orientation = props.chartSchema.data[0].orientation;
-
   switch (props.chartSchema.data[0].type) {
     case 'pie':
       return <DonutChart {...transformPlotlyJsonToDonutProps(props.chartSchema)} />;
     case 'bar':
+      const orientation = props.chartSchema.data[0].orientation;
       if (orientation === 'h') {
         return <HorizontalBarChartWithAxis {...transformPlotlyJsonToHorizontalBarWithAxisProps(props.chartSchema)} />;
       } else {
         return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(props.chartSchema)} />;
       }
     case 'scatter':
-      return <LineChart {...transformPlotlyJsonToLineChartProps(props.chartSchema)} />;
+      const isAreaChart = props.chartSchema.data.some((series: any) => series.fill === 'tonexty');
+      if (isAreaChart) {
+        return <AreaChart {...transformPlotlyJsonToAreaChartProps(props.chartSchema)} />;
+      } else {
+        return <LineChart {...transformPlotlyJsonToLineChartProps(props.chartSchema)} />;
+      }
     default:
       return <div>Unsupported Schema</div>;
   }

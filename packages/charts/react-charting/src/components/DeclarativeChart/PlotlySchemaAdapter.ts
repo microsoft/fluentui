@@ -14,6 +14,7 @@ import { getNextColor } from '../../utilities/colors';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
 import { ILineChartProps } from '../LineChart/index';
 import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
+import { IAreaChartProps } from '../AreaChart/index';
 
 export const transformPlotlyJsonToDonutProps = (jsonObj: any): IDonutChartProps => {
   const { data, layout } = jsonObj;
@@ -99,6 +100,27 @@ export const transformPlotlyJsonToLineChartProps = (jsonObj: any): ILineChartPro
 
   return {
     data: chartProps,
+  };
+};
+
+export const transformPlotlyJsonToAreaChartProps = (jsonObj: any): IAreaChartProps => {
+  const { data, layout } = jsonObj;
+
+  const chartData: ILineChartPoints[] = data.map((series: any, index: number) => {
+    return {
+      legend: series.name,
+      data: series.x.map((x: number, i: number) => ({
+        x,
+        y: series.y[i],
+      })),
+    };
+  });
+
+  return {
+    data: {
+      chartTitle: layout.title || '',
+      lineChartData: chartData,
+    },
   };
 };
 
