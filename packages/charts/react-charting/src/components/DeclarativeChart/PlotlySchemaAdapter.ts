@@ -111,7 +111,6 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
         x: xVal,
         y: yVal,
         value: zVal,
-        rectText: zVal,
       });
 
       zMin = Math.min(zMin, zVal);
