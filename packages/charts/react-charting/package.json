@@ -15,6 +15,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "lint": "just-scripts lint",
     "test": "cross-env TZ=UTC just-scripts test",
     "just": "just-scripts",
     "clean": "just-scripts clean",
