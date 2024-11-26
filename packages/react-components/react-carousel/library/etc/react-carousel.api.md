@@ -115,7 +115,7 @@ export type CarouselContextValues = {
 };
 
 // @public (undocumented)
-export type CarouselIndexChangeData = (EventData<'click', React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> | EventData<'focus', React_2.FocusEvent> | EventData<'drag', PointerEvent | MouseEvent>) & {
+export type CarouselIndexChangeData = (EventData<'click', React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> | EventData<'focus', React_2.FocusEvent> | EventData<'drag', PointerEvent | MouseEvent> | EventData<'autoplay', Event>) & {
     index: number;
 };
 
@@ -209,7 +209,6 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     align?: 'center' | 'start' | 'end';
     activeIndex?: number;
     onActiveIndexChange?: EventHandler<CarouselIndexChangeData>;
-    onAutoplayIndexChange?: (ev: null, data: CarouselAutoplayIndexChangeData) => void;
     circular?: boolean;
     groupSize?: number | 'auto';
     draggable?: boolean;

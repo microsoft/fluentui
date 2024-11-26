@@ -129,7 +129,6 @@ export const Controlled = () => {
         activeIndex={activeIndex}
         groupSize={1}
         onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
-        onAutoplayIndexChange={(e, data) => setActiveIndex(data.index)}
         announcement={getAnnouncement}
       >
         <div className={classes.carousel}>

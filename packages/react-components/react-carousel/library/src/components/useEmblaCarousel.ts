@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { carouselCardClassNames } from './CarouselCard/useCarouselCardStyles.styles';
 import { carouselSliderClassNames } from './CarouselSlider/useCarouselSliderStyles.styles';
-import { CarouselMotion, CarouselProps, CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
+import { CarouselMotion, CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import Fade from 'embla-carousel-fade';
 import { pointerEventPlugin } from './pointerEvents';
@@ -43,7 +43,7 @@ export function useEmblaCarousel(
     activeIndex: number | undefined;
     motion?: CarouselMotion;
     onDragIndexChange?: EventHandler<CarouselIndexChangeData>;
-    onAutoplayIndexChange?: CarouselProps['onAutoplayIndexChange'];
+    onAutoplayIndexChange?: EventHandler<CarouselIndexChangeData>;
   },
 ) {
   const {
@@ -78,7 +78,7 @@ export function useEmblaCarousel(
   });
 
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
-  const autoplay = React.useRef<boolean>(false);
+  const autoplayRef = React.useRef<boolean>(false);
 
   const resetAutoplay = React.useCallback(() => {
     emblaApi.current?.plugins().autoplay?.reset();
@@ -89,12 +89,12 @@ export function useEmblaCarousel(
 
     plugins.push(
       Autoplay({
-        playOnInit: autoplay.current,
+        playOnInit: autoplayRef.current,
         /* stopOnInteraction: false causes autoplay to restart on interaction end*/
         /* we'll handle this logic to ensure autoplay state is respected */
         stopOnInteraction: true,
-        stopOnMouseEnter: false,
         stopOnFocusIn: false, // We'll handle this one manually to prevent conflicts with tabster
+        stopOnMouseEnter: false, // We will handle this manually to align functionality
       }),
     );
 
@@ -114,42 +114,16 @@ export function useEmblaCarousel(
     return plugins;
   }, [motion, onDragEvent, watchDrag]);
 
-  const reinitializeCarousel = React.useCallback(() => {
-    const plugins = getPlugins();
-
-    emblaOptions.current = {
-      startIndex: emblaOptions.current.startIndex,
-      align,
-      direction,
-      loop,
-      slidesToScroll,
-      watchDrag,
-      containScroll,
-    };
-
-    emblaApi.current?.reInit(
-      {
-        ...DEFAULT_EMBLA_OPTIONS,
-        ...emblaOptions.current,
-      },
-      plugins,
-    );
-  }, [align, containScroll, direction, getPlugins, loop, slidesToScroll, watchDrag]);
-
-  React.useEffect(() => {
-    reinitializeCarousel();
-  }, [reinitializeCarousel]);
-
   /* This function enables autoplay to pause/play without affecting underlying state
    * Useful for pausing on focus etc. without having to reinitialize or set autoplay to off
    */
   const enableAutoplay = React.useCallback(
     (_autoplay: boolean, temporary?: boolean) => {
       if (!temporary) {
-        autoplay.current = _autoplay;
+        autoplayRef.current = _autoplay;
       }
 
-      if (_autoplay && autoplay.current) {
+      if (_autoplay && autoplayRef.current) {
         // Autoplay should only enable in the case where underlying state is true, temporary should not override
         emblaApi.current?.plugins().autoplay?.play();
         // Reset after play to ensure timing and any focus/mouse pause state is reset.
@@ -202,14 +176,16 @@ export function useEmblaCarousel(
   }, [setActiveIndex]);
 
   const handleAutoplayIndexChange = useEventCallback(() => {
-    handleIndexChange();
+    // Autoplay does not have an event trigger, we generate one to keep type consistency
+    const _event = new Event('autoplay');
     const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
-    onAutoplayIndexChange?.(null, { event: null, type: 'autoplay', index: newIndex });
+    onAutoplayIndexChange?.(_event, { event: _event, type: 'autoplay', index: newIndex });
   });
 
   const viewportRef: React.RefObject<HTMLDivElement> = React.useRef(null);
-  const currentElementRef = React.useRef<HTMLDivElement | null>();
   const containerRef: React.RefObject<HTMLDivElement> = React.useMemo(() => {
+    let currentElement: HTMLDivElement | null = null;
+
     const handleVisibilityChange = () => {
       const cardElements = emblaApi.current?.slideNodes();
       const visibleIndexes = emblaApi.current?.slidesInView() ?? [];
@@ -229,7 +205,7 @@ export function useEmblaCarousel(
 
     return {
       set current(newElement: HTMLDivElement | null) {
-        if (currentElementRef.current) {
+        if (currentElement) {
           emblaApi.current?.off('slidesInView', handleVisibilityChange);
           emblaApi.current?.off('select', handleIndexChange);
           emblaApi.current?.off('reInit', handleReinit);
@@ -238,11 +214,10 @@ export function useEmblaCarousel(
         }
 
         // Use direct viewport if available, else fallback to container (includes Carousel controls).
-        const wrapperElement = viewportRef.current ?? newElement;
-        currentElementRef.current = wrapperElement;
-        if (wrapperElement) {
+        currentElement = viewportRef.current ?? newElement;
+        if (currentElement) {
           emblaApi.current = EmblaCarousel(
-            wrapperElement,
+            currentElement,
             {
               ...DEFAULT_EMBLA_OPTIONS,
               ...emblaOptions.current,
@@ -288,6 +263,28 @@ export function useEmblaCarousel(
     }),
     [],
   );
+
+  React.useEffect(() => {
+    const plugins = getPlugins();
+
+    emblaOptions.current = {
+      startIndex: emblaOptions.current.startIndex,
+      align,
+      direction,
+      loop,
+      slidesToScroll,
+      watchDrag,
+      containScroll,
+    };
+
+    emblaApi.current?.reInit(
+      {
+        ...DEFAULT_EMBLA_OPTIONS,
+        ...emblaOptions.current,
+      },
+      plugins,
+    );
+  }, [align, containScroll, direction, getPlugins, loop, slidesToScroll, watchDrag]);
 
   React.useEffect(() => {
     // Scroll to controlled values on update

@@ -155,10 +155,6 @@ export const Eventing = () => {
           setActiveIndex(data.index);
           setStatusLog(prev => [[Date.now(), { type: data.type, index: data.index }], ...prev]);
         }}
-        onAutoplayIndexChange={(ev, data) => {
-          setActiveIndex(data.index);
-          setStatusLog(prev => [[Date.now(), { type: data.type, index: data.index }], ...prev]);
-        }}
       >
         <CarouselViewport>
           <CarouselSlider cardFocus>

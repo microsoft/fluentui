@@ -7,14 +7,8 @@ export type CarouselIndexChangeData = (
   | EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>>
   | EventData<'focus', React.FocusEvent>
   | EventData<'drag', PointerEvent | MouseEvent>
+  | EventData<'autoplay', Event>
 ) & {
-  /**
-   * The index to be set after event has occurred.
-   */
-  index: number;
-};
-
-export type CarouselAutoplayIndexChangeData = EventData<'autoplay', null> & {
   /**
    * The index to be set after event has occurred.
    */
