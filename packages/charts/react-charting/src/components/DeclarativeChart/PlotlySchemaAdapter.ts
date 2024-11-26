@@ -1,8 +1,32 @@
+/* eslint-disable one-var */
+/* eslint-disable vars-on-top */
+/* eslint-disable no-var */
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IDonutChartProps } from '../DonutChart/index';
+import {
+  IChartDataPoint,
+  IChartProps,
+  IHorizontalBarChartWithAxisDataPoint,
+  ILineChartPoints,
+  IVerticalStackedChartProps,
+  IHeatMapChartData,
+  IHeatMapChartDataPoint,
+  IChartDataPoint,
+  IVerticalStackedChartProps,
+} from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
-import { IChartDataPoint, IVerticalStackedChartProps } from '../../types/IDataPoint';
-import { getNextColor } from '../../utilities/colors';
+import { getNextColor, DataVizPalette } from '../../utilities/colors';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
+import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
+import { ILineChartProps } from '../LineChart/index';
+import { IAreaChartProps } from '../AreaChart/index';
+import { IHeatMapChartProps } from '../HeatMapChart/index';
+
+const isDate = (value: any): boolean => !isNaN(Date.parse(value));
+const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
+export const isDateArray = (array: any[]): boolean => Array.isArray(array) && array.every(isDate);
+export const isNumberArray = (array: any[]): boolean => Array.isArray(array) && array.every(isNumber);
 
 export const transformPlotlyJsonToDonutProps = (jsonObj: any): IDonutChartProps => {
   const { data, layout } = jsonObj;
@@ -89,6 +113,105 @@ export const transformPlotlyJsonToColumnProps = (jsonObj: any): IVerticalStacked
   };
 };
 
+export const transformPlotlyJsonToScatterChartProps = (
+  jsonObj: any,
+  isAreaChart: boolean,
+): ILineChartProps | IAreaChartProps => {
+  const { data, layout } = jsonObj;
+
+  const chartData: ILineChartPoints[] = data.map((series: any, index: number) => {
+    const xValues = series.x;
+    const isString = typeof xValues[0] === 'string';
+    const isXDate = isDateArray(xValues);
+    const isXNumber = isNumberArray(xValues);
+
+    return {
+      legend: series.name || `Series ${index + 1}`,
+      data: xValues.map((x: string | number, i: number) => ({
+        x: isString ? (isXDate ? new Date(x) : isXNumber ? parseFloat(x as string) : x) : x,
+        y: series.y[i],
+      })),
+      color: series.line?.color || getNextColor(index),
+    };
+  });
+
+  const chartProps: IChartProps = {
+    chartTitle: layout.title || '',
+    lineChartData: chartData,
+  };
+
+  if (isAreaChart) {
+    return {
+      data: chartProps,
+    } as IAreaChartProps;
+  } else {
+    return {
+      data: chartProps,
+    } as ILineChartProps;
+  }
+};
+
+export const transformPlotlyJsonToHorizontalBarWithAxisProps = (jsonObj: any): IHorizontalBarChartWithAxisProps => {
+  const { data, layout } = jsonObj;
+
+  const chartData: IHorizontalBarChartWithAxisDataPoint[] = data
+    .map((series: any, index: number) => {
+      return series.y.map((yValue: string, i: number) => ({
+        x: series.x[i],
+        y: yValue,
+        legend: series.name,
+        color: series.marker?.color || getNextColor(index),
+      }));
+    })
+    .flat();
+
+  return {
+    data: chartData,
+    chartTitle: layout.title || '',
+  };
+};
+
+// FIXME: Order of string axis ticks does not match the order in plotly json
+// TODO: Add support for custom hover card
+export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartProps => {
+  const { data, layout } = jsonObj;
+  const firstData = data[0];
+  const heatmapDataPoints: IHeatMapChartDataPoint[] = [];
+  let zMin = Number.POSITIVE_INFINITY;
+  let zMax = Number.NEGATIVE_INFINITY;
+
+  firstData.x?.forEach((xVal: any, xIdx: number) => {
+    firstData.y?.forEach((yVal: any, yIdx: number) => {
+      const zVal = firstData.z?.[yIdx]?.[xIdx];
+
+      heatmapDataPoints.push({
+        x: layout.xaxis?.type === 'date' ? new Date(xVal) : xVal,
+        y: layout.yaxis?.type === 'date' ? new Date(yVal) : yVal,
+        value: zVal,
+      });
+
+      zMin = Math.min(zMin, zVal);
+      zMax = Math.max(zMax, zVal);
+    });
+  });
+  const heatmapData: IHeatMapChartData = {
+    legend: firstData.name || '',
+    data: heatmapDataPoints,
+    value: 0,
+  };
+
+  // Convert normalized values to actual values
+  const domainValuesForColorScale: number[] = firstData.colorscale?.map((arr: any) => arr[0] * (zMax - zMin) + zMin);
+  const rangeValuesForColorScale: string[] = firstData.colorscale?.map((arr: any) => arr[1]);
+
+  return {
+    data: [heatmapData],
+    domainValuesForColorScale,
+    rangeValuesForColorScale,
+    hideLegend: true,
+  };
+};
+
 export const transformPlotlyJsonToSankeyProps = (jsonObj: any): ISankeyChartProps => {
   const { data, layout } = jsonObj;
   const { link, node } = data[0];
@@ -105,8 +228,8 @@ export const transformPlotlyJsonToSankeyProps = (jsonObj: any): ISankeyChartProp
     nodes: node.label.map((label: string, index: number) => ({
       nodeId: index,
       name: label,
-      color: node.color[index] || '#D3D3D3',
-      borderColor: node.line?.color || 'black',
+      color: node.color[index] || DataVizPalette.disabled,
+      borderColor: node.line?.color || DataVizPalette.disabled,
     })),
     links: validLinks,
   };
