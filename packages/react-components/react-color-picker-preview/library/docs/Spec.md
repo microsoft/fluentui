@@ -107,8 +107,8 @@ ColorSliders might represent different color channels.
 
 ### Shapes
 
-- `square` (default)
-- `rounded`
+- `square`
+- `rounded` (default)
 
 ### Size
 
@@ -135,7 +135,7 @@ For custom sizes users might want to customize it via CSS.
 | ---------- | ------------------- | --------- | -------------------------------------- |
 | color      | `HSV`               |           | Sets color value in HSV format         |
 | onChange   | `function`          | undefined | Callback called when color is selected |
-| shape      | `square`, `rounded` | `square`  | Sets shape                             |
+| shape      | `square`, `rounded` | `rounded` | Sets shape                             |
 | step       | `number`            | 1         | Step for arrow navigation              |
 | customStep | `number`            | 3         | Fast navigation                        |
 
@@ -189,7 +189,7 @@ For color manipulation and conversion [tinycolor](https://www.npmjs.com/package/
 | color        | `HSV`               |           | Sets color value in HSV format          |
 | defauleColor | `HSV`               |           | Sets color for uncontrollable ColorArea |
 | onChange     | `function`          | undefined | Callback called when color is selected  |
-| shape        | `square`, `rounded` | `square`  | Sets shape                              |
+| shape        | `square`, `rounded` | `rounded` | Sets shape                              |
 
 | Slots   | Values  | Default | Description                                                         |
 | ------- | ------- | ------- | ------------------------------------------------------------------- |
@@ -206,7 +206,7 @@ For color manipulation and conversion [tinycolor](https://www.npmjs.com/package/
 | defauleColor | `HSV`                    |              | Sets color for uncontrollable ColorSlider |
 | onChange     | `function`               | undefined    | Callback called when color is selected    |
 | orient       | `horizontal`, `vertical` | `horizontal` | Orientation of a slider                   |
-| shape        | `square`, `rounded`      | `square`     | Sets shape                                |
+| shape        | `square`, `rounded`      | `rounded`    | Sets shape                                |
 
 | Slots  | Values  | Default | Description                                                      |
 | ------ | ------- | ------- | ---------------------------------------------------------------- |
