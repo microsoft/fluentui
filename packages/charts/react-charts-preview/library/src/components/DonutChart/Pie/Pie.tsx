@@ -7,7 +7,7 @@ import { PieProps } from './index';
 import { Arc } from '../Arc/index';
 import { ChartDataPoint } from '../index';
 import { usePieStyles_unstable } from './usePieStyles.styles';
-import { getNextGradient, wrapTextInsideDonut } from '../../../utilities/index';
+import { wrapTextInsideDonut } from '../../../utilities/index';
 const TEXT_PADDING: number = 5;
 
 // Create a Pie within Donut Chart variant which uses these default styles and this styled subcomponent.
@@ -45,7 +45,7 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
     }
 
     function arcGenerator(d: PieArcDatum<ChartDataPoint>, i: number, focusData: any, href?: string): JSX.Element {
-      const gradient = d.data.gradient ?? getNextGradient(i, 0);
+      // const gradient = d.data.gradient ?? getNextGradient(i, 0);
       return (
         <Arc
           key={i}
@@ -53,7 +53,7 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
           focusData={focusData}
           innerRadius={props.innerRadius}
           outerRadius={props.outerRadius}
-          color={gradient}
+          color={d.data.color!}
           onFocusCallback={_focusCallback}
           hoverOnCallback={_hoverCallback}
           onBlurCallback={props.onBlurCallback}

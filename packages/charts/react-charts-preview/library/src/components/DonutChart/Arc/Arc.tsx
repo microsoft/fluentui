@@ -92,12 +92,17 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
     const id = props.uniqText! + props.data!.data.legend!.replace(/\s+/, '') + props.data!.data.data;
     const opacity: number = props.activeArc === props.data!.data.legend || props.activeArc === '' ? 1 : 0.1;
 
-    const clipId = useId('Arc_clip') + `${props.color[0]}_${props.color[1]}`;
-    const gradientFill = `conic-gradient(
+    const useGradient = Array.isArray(props.color);
+
+    const clipId = useId('Arc_clip') + useGradient ? `${props.color[0]}_${props.color[1]}` : props.color as string;
+    // check if gradient ([string, string]) or color (string) is provided
+    const fill = useGradient
+      ? `conic-gradient(
       from ${props.data?.startAngle}rad,
       ${props.color[0]},
       ${props.color[1]} ${props.data!.endAngle - props.data!.startAngle}rad
-    )`;
+    )`
+      : (props.color as string);
 
     const pathData = arc({ ...props.data!, innerRadius: props.innerRadius, outerRadius: props.outerRadius })!;
     const focusPathData = arc({ ...props.focusData!, innerRadius: props.innerRadius, outerRadius: props.outerRadius })!;
@@ -134,7 +139,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
             style={{
               width: '100%',
               height: '100%',
-              background: gradientFill,
+              background: fill,
               opacity,
             }}
           />

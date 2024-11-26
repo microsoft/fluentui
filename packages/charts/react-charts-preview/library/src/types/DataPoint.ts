@@ -129,9 +129,9 @@ export interface ChartDataPoint {
   onClick?: VoidFunction;
 
   /**
-   * Gradient for the legend in the chart. If not provided, it will fallback on the default gradient palette.
+   * color or gradient for the legend in the chart. If not provided, it will fallback on the default palette.
    */
-  gradient?: [string, string];
+  color?: string | [string, string];
 
   /**
    * placeholder data point

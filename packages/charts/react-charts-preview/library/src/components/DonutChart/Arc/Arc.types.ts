@@ -31,7 +31,7 @@ export interface ArcProps {
   outerRadius: number;
 
   /**
-   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * Color or gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
    */
   color: string | [string, string];
 

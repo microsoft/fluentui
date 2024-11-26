@@ -18,14 +18,14 @@ export const DonutChartCustomCallout = () => {
     {
       legend: 'first',
       data: 20000,
-      gradient: getGradientFromToken(DataVizGradientPalette.gradient9),
+      color: getGradientFromToken(DataVizGradientPalette.gradient9),
       xAxisCalloutData: '2020/04/30',
       callOutAccessibilityData: { ariaLabel: 'Custom XVal Custom Legend 20000h' },
     },
     {
       legend: 'second',
       data: 39000,
-      gradient: getGradientFromToken(DataVizGradientPalette.gradient10),
+      color: getGradientFromToken(DataVizGradientPalette.gradient10),
       xAxisCalloutData: '2020/04/20',
       callOutAccessibilityData: { ariaLabel: 'Custom XVal Custom Legend 39000h' },
     },

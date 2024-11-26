@@ -7,21 +7,21 @@ export const DonutChartCustomGradient = () => {
       legend: 'first',
       data: 20000,
       //  Custom gradient
-      gradient: ['#000AC4', '#E823CE'],
+      color: ['#000AC4', '#E823CE'],
       xAxisCalloutData: '2020/04/30',
     },
     {
       legend: 'second',
       data: 35000,
       //  Custom gradient
-      gradient: ['#d621c8', '#00D0FF'],
+      color: ['#d621c8', '#00D0FF'],
       xAxisCalloutData: '2020/04/20',
     },
     {
       legend: 'third',
       data: 10000,
       //  Custom gradient
-      gradient: ['#00D0FF', 'white'],
+      color: ['#00D0FF', 'white'],
       xAxisCalloutData: '2020/04/10',
     },
   ];

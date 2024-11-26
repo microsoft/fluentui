@@ -12,13 +12,13 @@ export const DonutChartBasic = () => {
     {
       legend: 'first',
       data: 20000,
-      gradient: getGradientFromToken(DataVizGradientPalette.gradient1),
+      color: getGradientFromToken(DataVizGradientPalette.gradient1),
       xAxisCalloutData: '2020/04/30',
     },
     {
       legend: 'second',
       data: 35000,
-      gradient: getGradientFromToken(DataVizGradientPalette.gradient2),
+      color: getGradientFromToken(DataVizGradientPalette.gradient2),
       xAxisCalloutData: '2020/04/20',
     },
   ];

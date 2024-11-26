@@ -38,10 +38,10 @@ export const DonutChartDynamic = () => {
   ];
 
   const [dynamicData, setDynamicData] = React.useState<ChartDataPoint[]>([
-    { legend: 'first', data: 40, gradient: getGradientFromToken(DataVizGradientPalette.gradient1) },
-    { legend: 'second', data: 20, gradient: getGradientFromToken(DataVizGradientPalette.gradient2) },
-    { legend: 'third', data: 30, gradient: getGradientFromToken(DataVizGradientPalette.gradient3) },
-    { legend: 'fourth', data: 10, gradient: getGradientFromToken(DataVizGradientPalette.gradient4) },
+    { legend: 'first', data: 40, color: getGradientFromToken(DataVizGradientPalette.gradient1) },
+    { legend: 'second', data: 20, color: getGradientFromToken(DataVizGradientPalette.gradient2) },
+    { legend: 'third', data: 30, color: getGradientFromToken(DataVizGradientPalette.gradient3) },
+    { legend: 'fourth', data: 10, color: getGradientFromToken(DataVizGradientPalette.gradient4) },
   ]);
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
   const [showLabelsInPercent, setShowLabelsInPercent] = React.useState<boolean>(false);
@@ -51,10 +51,10 @@ export const DonutChartDynamic = () => {
 
   const _changeData = (): void => {
     setDynamicData([
-      { legend: 'first', data: _randomY(), gradient: getGradientFromToken(DataVizGradientPalette.gradient1) },
-      { legend: 'second', data: _randomY(), gradient: getGradientFromToken(DataVizGradientPalette.gradient2) },
-      { legend: 'third', data: _randomY(), gradient: getGradientFromToken(DataVizGradientPalette.gradient3) },
-      { legend: 'fourth', data: _randomY(), gradient: getGradientFromToken(DataVizGradientPalette.gradient4) },
+      { legend: 'first', data: _randomY(), color: getGradientFromToken(DataVizGradientPalette.gradient1) },
+      { legend: 'second', data: _randomY(), color: getGradientFromToken(DataVizGradientPalette.gradient2) },
+      { legend: 'third', data: _randomY(), color: getGradientFromToken(DataVizGradientPalette.gradient3) },
+      { legend: 'fourth', data: _randomY(), color: getGradientFromToken(DataVizGradientPalette.gradient4) },
     ]);
     setStatusKey(statusKey + 1);
     setStatusMessage('Donut chart data changed');
@@ -62,10 +62,10 @@ export const DonutChartDynamic = () => {
 
   const _changeColors = (): void => {
     setDynamicData([
-      { legend: 'first', data: 40, gradient: _randomGradient(0) },
-      { legend: 'second', data: 20, gradient: _randomGradient(1) },
-      { legend: 'third', data: 30, gradient: _randomGradient(2) },
-      { legend: 'fourth', data: 10, gradient: _randomGradient(3) },
+      { legend: 'first', data: 40, color: _randomGradient(0) },
+      { legend: 'second', data: 20, color: _randomGradient(1) },
+      { legend: 'third', data: 30, color: _randomGradient(2) },
+      { legend: 'fourth', data: 10, color: _randomGradient(3) },
     ]);
     setStatusKey(statusKey + 1);
     setStatusMessage('Donut chart colors changed');
