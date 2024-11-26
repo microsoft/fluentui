@@ -8,10 +8,12 @@ import {
   transformPlotlyJsonToColumnProps,
   transformPlotlyJsonToScatterChartProps,
   transformPlotlyJsonToHorizontalBarWithAxisProps,
+  transformPlotlyJsonToHeatmapProps,
 } from './PlotlySchemaAdapter';
 import { LineChart } from '../LineChart/index';
 import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
 import { AreaChart } from '../AreaChart/index';
+import { HeatMapChart } from '../HeatMapChart/index';
 
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
@@ -52,6 +54,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return <LineChart {...transformPlotlyJsonToScatterChartProps(props.chartSchema, false)} />;
       }
       return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(props.chartSchema)} />;
+    case 'heatmap':
+      return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(props.chartSchema)} />;
     default:
       return <div>Unsupported Schema</div>;
   }

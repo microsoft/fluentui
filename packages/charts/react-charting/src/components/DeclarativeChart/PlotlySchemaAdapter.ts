@@ -10,12 +10,15 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartPoints,
   IVerticalStackedChartProps,
+  IHeatMapChartData,
+  IHeatMapChartDataPoint,
 } from '../../types/IDataPoint';
 import { getNextColor } from '../../utilities/colors';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
 import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
+import { IHeatMapChartProps } from '../HeatMapChart/index';
 
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
@@ -162,6 +165,47 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (jsonObj: any): I
   return {
     data: chartData,
     chartTitle: layout.title || '',
+  };
+};
+
+// FIXME: Order of string axis ticks does not match the order in plotly json
+// TODO: Add support for custom hover card
+export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartProps => {
+  const { data, layout } = jsonObj;
+  const firstData = data[0];
+  const heatmapDataPoints: IHeatMapChartDataPoint[] = [];
+  let zMin = Number.POSITIVE_INFINITY;
+  let zMax = Number.NEGATIVE_INFINITY;
+
+  firstData.x?.forEach((xVal: any, xIdx: number) => {
+    firstData.y?.forEach((yVal: any, yIdx: number) => {
+      const zVal = firstData.z?.[yIdx]?.[xIdx];
+
+      heatmapDataPoints.push({
+        x: layout.xaxis?.type === 'date' ? new Date(xVal) : xVal,
+        y: layout.yaxis?.type === 'date' ? new Date(yVal) : yVal,
+        value: zVal,
+      });
+
+      zMin = Math.min(zMin, zVal);
+      zMax = Math.max(zMax, zVal);
+    });
+  });
+  const heatmapData: IHeatMapChartData = {
+    legend: firstData.name || '',
+    data: heatmapDataPoints,
+    value: 0,
+  };
+
+  // Convert normalized values to actual values
+  const domainValuesForColorScale: number[] = firstData.colorscale?.map((arr: any) => arr[0] * (zMax - zMin) + zMin);
+  const rangeValuesForColorScale: string[] = firstData.colorscale?.map((arr: any) => arr[1]);
+
+  return {
+    data: [heatmapData],
+    domainValuesForColorScale,
+    rangeValuesForColorScale,
+    hideLegend: true,
   };
 };
 
