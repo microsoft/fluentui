@@ -12,8 +12,11 @@ import {
   IVerticalStackedChartProps,
   IHeatMapChartData,
   IHeatMapChartDataPoint,
+  IChartDataPoint,
+  IVerticalStackedChartProps,
 } from '../../types/IDataPoint';
-import { getNextColor } from '../../utilities/colors';
+import { ISankeyChartProps } from '../SankeyChart/index';
+import { getNextColor, DataVizPalette } from '../../utilities/colors';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
 import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
 import { ILineChartProps } from '../LineChart/index';
@@ -206,6 +209,49 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
     domainValuesForColorScale,
     rangeValuesForColorScale,
     hideLegend: true,
+  };
+};
+
+export const transformPlotlyJsonToSankeyProps = (jsonObj: any): ISankeyChartProps => {
+  const { data, layout } = jsonObj;
+  const { link, node } = data[0];
+  const validLinks = link.value
+    .map((val: number, index: number) => ({
+      value: val,
+      source: link.source[index],
+      target: link.target[index],
+    }))
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    .filter(link => link.source !== link.target); // Filter out self-references(circular links)
+
+  const sankeyChartData = {
+    nodes: node.label.map((label: string, index: number) => ({
+      nodeId: index,
+      name: label,
+      color: node.color[index] || DataVizPalette.disabled,
+      borderColor: node.line?.color || DataVizPalette.disabled,
+    })),
+    links: validLinks,
+  };
+
+  const width: number = layout?.width || 440;
+  const height: number = layout?.height || 220;
+  const styles: ISankeyChartProps['styles'] = {
+    root: {
+      fontSize: layout.font?.size,
+    },
+  };
+  const shouldResize: number = width + height;
+  return {
+    data: {
+      chartTitle: layout?.title,
+      SankeyChartData: sankeyChartData,
+    },
+    width,
+    height,
+    styles,
+    shouldResize,
+    enableReflow: true,
   };
 };
 
