@@ -12,8 +12,6 @@ import {
   IVerticalStackedChartProps,
   IHeatMapChartData,
   IHeatMapChartDataPoint,
-  IChartDataPoint,
-  IVerticalStackedChartProps,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { getNextColor, DataVizPalette } from '../../utilities/colors';
@@ -222,7 +220,8 @@ export const transformPlotlyJsonToSankeyProps = (jsonObj: any): ISankeyChartProp
       target: link.target[index],
     }))
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    .filter(link => link.source !== link.target); // Filter out self-references(circular links)
+    //@ts-expect-error Dynamic link object. Ignore for now.
+    .filter(x => x.source !== x.target); // Filter out self-references(circular links)
 
   const sankeyChartData = {
     nodes: node.label.map((label: string, index: number) => ({
