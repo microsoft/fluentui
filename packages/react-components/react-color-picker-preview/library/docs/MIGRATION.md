@@ -6,9 +6,7 @@
 
 #### New props
 
-- `customStep`
 - `shape`
-- `step`
 
 #### Supported Props
 
@@ -33,11 +31,9 @@
 
 #### New props
 
-- `customStep`
+- `defaultColor`
 - `shape`
-- `step`
-- `valueX`
-- `valueY`
+- `onChange`
 
 #### Props supported
 
@@ -47,39 +43,38 @@
 
 #### New props
 
-- `customStep`
+- `defaultColor`
 - `shape`
 - `orient`
-- `step`
 
 #### Props supported
 
-- `value`
 - `onChange`
 
 #### Props no longer supported with an equivalent functionality in ColorPicker V9:
 
-- `minValue` => Use `min` instead
-- `maxValue` => Use `max` instead
+- `value` => Use `color` instead
 - `type` => in case of support channels it'll be `channel` instead
 - `isAlpha` => use `AlphaSlider` component instead
 - `overlayColor` => part of `AlphaSlider` component
 - `thumbColor` => is calculated automatically or can be customized via CSS
 
+#### Props no longer supported
+
+- `minValue`
+- `maxValue`
+
 #### Property Mapping
 
 | v8 `ColorPicker` | v9 `ColorPicker`           |
 | ---------------- | -------------------------- |
-| `value`          | `value`                    |
+| `value`          | `color`                    |
 | `onChange`       | `onChange`                 |
-| `maxValue`       | `max`                      |
-| `minValue`       | `min`                      |
+| `maxValue`       |                            |
+| `minValue`       |                            |
 | `shape `         |                            |
-| `type`           | `channel`                  |
+| `type`           |                            |
 | `isAlpha`        | `AlphaSlider` component    |
 | `overlayColor`   | In `AlphaSlider` component |
 | `thumbColor`     |                            |
-|                  | `customStep`               |
 |                  | `shape`                    |
-|                  | `orient`                   |
-|                  | `step`                     |
