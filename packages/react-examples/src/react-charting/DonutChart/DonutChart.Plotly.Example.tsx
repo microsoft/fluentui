@@ -46,6 +46,6 @@ const plotlyJson = {
 
 export class DonutChartPlotlyExample extends React.Component<{}, {}> {
   public render(): React.ReactNode {
-    return <DeclarativeChart chartSchema={plotlyJson}/>;
+    return <DeclarativeChart chartSchema={plotlyJson} />;
   }
 }
