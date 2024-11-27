@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Rating component now correctly uses the itemLabel prop",
+  "comment": "fix: Pass missing Rating's itemLabel prop to its state so RatingItem consumes it from context.",
   "packageName": "@fluentui/react-rating",
   "email": "derdem@microsoft.com",
   "dependentChangeType": "patch"
