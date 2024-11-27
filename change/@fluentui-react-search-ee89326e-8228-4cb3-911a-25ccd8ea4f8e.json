@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-search): restore focus to SearchBox after clear button is clicked",
+  "packageName": "@fluentui/react-search",
+  "email": "jiangemma@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,18 +1,17 @@
 import {
-  createMotionComponent,
+  createPresenceComponent,
   Field,
   makeStyles,
   mergeClasses,
   type MotionImperativeRef,
   motionTokens,
-  tokens,
   Slider,
-  ToggleButton,
+  Switch,
+  tokens,
 } from '@fluentui/react-components';
-import { PlayFilled, PauseFilled } from '@fluentui/react-icons';
 import * as React from 'react';
 
-import description from './ImperativeRefPlayState.stories.md';
+import description from './CreatePresenceComponentUnmountOnExit.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -62,47 +61,50 @@ const useClasses = makeStyles({
   },
 });
 
-const FadeEnter = createMotionComponent({
-  keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  duration: motionTokens.durationSlow,
-  iterations: Infinity,
+const Fade = createPresenceComponent({
+  enter: {
+    keyframes: [{ opacity: 0 }, { opacity: 1 }],
+    duration: motionTokens.durationSlow,
+  },
+  exit: {
+    keyframes: [{ opacity: 1 }, { opacity: 0 }],
+    duration: motionTokens.durationSlow,
+  },
 });
 
-export const ImperativeRefPlayState = () => {
+export const CreatePresenceComponentUnmountOnExit = () => {
   const classes = useClasses();
   const motionRef = React.useRef<MotionImperativeRef>();
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
-  const [isRunning, setIsRunning] = React.useState<boolean>(false);
+  const [visible, setVisible] = React.useState<boolean>(true);
+  const [unmountOnExit, setUnmountOnExit] = React.useState<boolean>(true);
 
   // Heads up!
   // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
     motionRef.current?.setPlaybackRate(playbackRate / 100);
-  }, [playbackRate]);
-  React.useEffect(() => {
-    motionRef.current?.setPlayState(isRunning ? 'running' : 'paused');
-  }, [isRunning]);
+  }, [playbackRate, visible]);
 
   return (
     <div className={classes.container}>
       <div className={classes.card}>
-        <FadeEnter imperativeRef={motionRef}>
+        <Fade imperativeRef={motionRef} visible={visible} unmountOnExit={unmountOnExit}>
           <div className={classes.item} />
-        </FadeEnter>
+        </Fade>
       </div>
 
       <div className={classes.controls}>
-        <div>
-          <ToggleButton
-            icon={isRunning ? <PauseFilled /> : <PlayFilled />}
-            appearance="subtle"
-            checked={isRunning}
-            onClick={() => setIsRunning(v => !v)}
-          >
-            {isRunning ? 'Pause' : 'Play'}
-          </ToggleButton>
-        </div>
+        <Field className={classes.field}>
+          <Switch
+            label={<code>unmountOnExit</code>}
+            checked={unmountOnExit}
+            onChange={() => setUnmountOnExit(v => !v)}
+          />
+        </Field>
+        <Field className={classes.field}>
+          <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
+        </Field>
         <Field
           className={mergeClasses(classes.field, classes.sliderField)}
           label={{
@@ -130,7 +132,7 @@ export const ImperativeRefPlayState = () => {
   );
 };
 
-ImperativeRefPlayState.parameters = {
+CreatePresenceComponentUnmountOnExit.parameters = {
   docs: {
     description: {
       story: description,
