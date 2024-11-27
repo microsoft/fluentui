@@ -12,7 +12,7 @@ By default, it lets people navigate through colors on a color spectrum; or speci
 To import React ColorPicker components:
 
 ```tsx
-import { ColorPicker, ColorSwatch, ColorPickerOnSelectEventHandler } from '@fluentui/react-components';
+import { ColorPicker, ColorSwatch, type ColorPickerOnSelectEventHandler } from '@fluentui/react-components';
 ```
 
 Simple example of ColorPicker Usage:
