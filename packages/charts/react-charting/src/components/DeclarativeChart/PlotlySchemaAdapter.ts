@@ -175,6 +175,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (jsonObj: any): I
     data: chartData,
     chartTitle: layout.title || '',
     barHeight,
+    showYAxisLables: true,
     styles: {
       root: {
         height: chartHeight,
