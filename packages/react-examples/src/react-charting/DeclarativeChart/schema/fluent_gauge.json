@@ -6,7 +6,7 @@
       "mode": "gauge+number+delta",
       "value": 420,
       "title": { "text": "Speed", "font": { "size": 24 } },
-      "delta": { "reference": 400, "decreasing": { "color": "RebeccaPurple" } },
+      "delta": { "reference": 400, "increasing": { "color": "RebeccaPurple" } },
       "gauge": {
         "axis": { "range": [null, 500], "tickwidth": 1, "tickcolor": "darkblue" },
         "bar": { "color": "darkblue" },

@@ -288,10 +288,10 @@ export const transformPlotlyJsonToGaugeProps = (jsonObj: any): IGaugeChartProps 
   if (typeof firstData.delta?.reference === 'number') {
     const diff = firstData.value - firstData.delta.reference;
     if (diff >= 0) {
-      sublabel = `\u2BC5 ${diff}`;
+      sublabel = `\u25B2 ${diff}`;
       sublabelColor = firstData.delta.increasing?.color || getColorFromToken(DataVizPalette.success);
     } else {
-      sublabel = `\u2BC6 ${Math.abs(diff)}`;
+      sublabel = `\u25BC ${Math.abs(diff)}`;
       sublabelColor = firstData.delta.decreasing?.color || getColorFromToken(DataVizPalette.error);
     }
   }
