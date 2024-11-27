@@ -2,71 +2,35 @@
   "visualizer": "plotly",
   "data": [
     {
-      "name": "speed",
-      "text": 2468,
-      "type": "scatter",
-      "x": [0],
-      "y": [0],
-      "marker": {
-        "size": 28,
-        "color": "850000"
-      },
-      "hoverinfo": "text+name",
-      "showlegend": false
-    },
-    {
-      "hole": 0.5,
-      "type": "pie",
-      "marker": {
-        "colors": [
-          "rgba(14, 127, 0, .5)",
-          "rgba(110, 154, 22, .5)",
-          "rgba(170, 202, 42, .5)",
-          "rgba(202, 209, 95, .5)",
-          "rgba(210, 206, 145, .5)",
-          "rgba(232, 226, 202, .5)",
-          "rgba(255, 255, 255, 0)"
-        ]
-      },
-      "text": ["60% +", "50%", "40%", "30%", "20%", "10%", ""],
-      "rotation": 90,
-      "textinfo": "text",
-      "hoverinfo": "label",
-      "labels": ["151-180", "121-150", "91-120", "61-90", "31-60", "0-30", ""],
-      "values": [
-        8.333333333333334, 8.333333333333334, 8.333333333333334, 8.333333333333334, 8.333333333333334,
-        8.333333333333334, 50
-      ],
-      "showlegend": false,
-      "textposition": "inside"
+      "type": "indicator",
+      "mode": "gauge+number+delta",
+      "value": 420,
+      "title": { "text": "Speed", "font": { "size": 24 } },
+      "delta": { "reference": 400, "decreasing": { "color": "RebeccaPurple" } },
+      "gauge": {
+        "axis": { "range": [null, 500], "tickwidth": 1, "tickcolor": "darkblue" },
+        "bar": { "color": "darkblue" },
+        "bgcolor": "white",
+        "borderwidth": 2,
+        "bordercolor": "gray",
+        "steps": [
+          { "range": [0, 250], "color": "cyan" },
+          { "range": [250, 400], "color": "royalblue" }
+        ],
+        "threshold": {
+          "line": { "color": "red", "width": 4 },
+          "thickness": 0.75,
+          "value": 490
+        }
+      }
     }
   ],
   "layout": {
-    "title": "Gauge",
-    "width": 1000,
-    "xaxis": {
-      "range": [-1, 1],
-      "showgrid": false,
-      "zeroline": false,
-      "showticklabels": false
-    },
-    "yaxis": {
-      "range": [-1, 1],
-      "showgrid": false,
-      "zeroline": false,
-      "showticklabels": false
-    },
-    "height": 1000,
-    "shapes": [
-      {
-        "line": {
-          "color": "850000"
-        },
-        "path": "M -.0 -0.025 L .0 0.025 L -0.659197688992 0.751969684779 Z",
-        "type": "path",
-        "fillcolor": "850000"
-      }
-    ]
+    "width": 500,
+    "height": 400,
+    "margin": { "t": 25, "r": 25, "l": 25, "b": 25 },
+    "paper_bgcolor": "lavender",
+    "font": { "color": "darkblue", "family": "Arial" }
   },
   "frames": []
 }
