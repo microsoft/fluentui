@@ -564,9 +564,9 @@ export class RadioGroup extends FASTElement {
    * @param e - the slot change event
    * @internal
    */
-  public slotchangeHandler(e: Event): void {
-    Updates.enqueue(() => {
-      this.radios = [...this.querySelectorAll('*')].filter(x => x instanceof Radio) as Radio[];
-    });
+  public slotchangeHandler(): void {
+    this.radios = [...this.querySelectorAll('*')].filter(x => x instanceof Radio) as Radio[];
+    /** this looks silly but is needed to trigger the setter updates (form value + checkedIndex) */
+    this.value = this.value; // eslint-disable-line no-self-assign
   }
 }
