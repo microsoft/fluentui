@@ -529,6 +529,11 @@ export class BaseCheckbox extends FASTElement {
     clickHandler(e: MouseEvent): boolean | void;
     // (undocumented)
     connectedCallback(): void;
+    currentValue: string;
+    // @internal
+    currentValueChanged(prev: string, next: string): void;
+    // @internal
+    protected dirtyState: boolean;
     disabled?: boolean;
     disabledAttribute?: boolean;
     // @internal
@@ -542,9 +547,12 @@ export class BaseCheckbox extends FASTElement {
     formAttribute?: string;
     // @internal
     formResetCallback(): void;
-    initialChecked?: boolean;
+    initial?: boolean;
     // @internal
-    protected initialCheckedChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    protected initialChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @deprecated
+    get initialChecked(): boolean | undefined;
+    set initialChecked(value: boolean | undefined);
     initialValue: string;
     // @internal
     protected initialValueChanged(prev: string, next: string): void;
@@ -555,18 +563,28 @@ export class BaseCheckbox extends FASTElement {
     // @internal
     keyupHandler(e: KeyboardEvent): boolean | void;
     get labels(): ReadonlyArray<HTMLLabelElement>;
+    // Warning: (ae-forgotten-export) The symbol "CheckboxMode" needs to be exported by the entry point index.d.ts
+    //
+    // @internal
+    static mode: CheckboxMode;
+    // (undocumented)
+    protected get mode(): CheckboxMode;
     name: string;
     reportValidity(): boolean;
     required: boolean;
     // @internal
     protected requiredChanged(prev: boolean, next: boolean): void;
+    get selected(): boolean;
+    set selected(next: boolean);
     // @internal
-    protected setAriaChecked(value?: boolean): void;
+    protected setAriaProperties(value?: boolean): void;
     setCustomValidity(message: string): void;
     // @internal
     setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    toggle(force?: boolean): void;
+    // @deprecated
     toggleChecked(force?: boolean): void;
     get validationMessage(): string;
     get validity(): ValidityState;
@@ -954,14 +972,14 @@ export class Checkbox extends BaseCheckbox {
     // @internal
     protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal @override
-    protected setAriaChecked(value?: boolean): void;
+    protected setAriaProperties(value?: boolean): void;
     shape?: CheckboxShape;
     // @internal
     protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
     // @internal
     protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
-    toggleChecked(force?: boolean): void;
+    toggle(force?: boolean): void;
 }
 
 // @public
@@ -2404,6 +2422,94 @@ export const DrawerType: {
 export type DrawerType = ValuesOf<typeof DrawerType>;
 
 // @public
+export class Dropdown extends FASTElement {
+    constructor();
+    get activeDescendant(): string;
+    // @internal
+    activeIndex: number;
+    // (undocumented)
+    activeIndexChanged(prev: number, next: number): void;
+    ariaLabelledBy: string;
+    beforetoggleHandler(e: ToggleEvent): boolean | void;
+    changeHandler(e: Event): boolean | void;
+    // @internal
+    checkedOptions: Set<Option_2>;
+    clickHandler(e: PointerEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    control: HTMLInputElement;
+    // (undocumented)
+    controlChanged(prev: HTMLInputElement | undefined, next: HTMLInputElement | undefined): void;
+    // (undocumented)
+    controlSlot: HTMLSlotElement;
+    disabled: boolean;
+    // (undocumented)
+    disconnectedCallback(): void;
+    get displayValue(): string;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    focus(options?: FocusOptions): void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    static formAssociated: boolean;
+    // @internal
+    indicator: HTMLDivElement;
+    // @internal
+    indicatorSlot: HTMLSlotElement;
+    initialValue?: string;
+    // (undocumented)
+    inputHandler(e: InputEvent): boolean | void;
+    // (undocumented)
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    // @internal
+    listbox: Listbox;
+    // @internal
+    listboxChildren: Listbox[];
+    // @internal
+    listboxSlot: HTMLSlotElement;
+    // @internal
+    mousedownHandler(e: MouseEvent): boolean | void;
+    multiple: boolean;
+    // @internal
+    protected multipleChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    name: string;
+    open: boolean;
+    // @internal
+    openChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    get options(): Option_2[];
+    placeholder: string;
+    // @internal
+    popoverContainer: HTMLDivElement;
+    required: boolean;
+    // @internal
+    get selectedIndex(): number;
+    selectOption(index?: number): void;
+    // @internal
+    setActiveOption(): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    // Warning: (ae-forgotten-export) The symbol "DropdownType" needs to be exported by the entry point index.d.ts
+    type: DropdownType;
+    // @internal
+    typeChanged(prev: DropdownType | undefined, next: DropdownType | undefined): void;
+    // @internal
+    get validationMessage(): string;
+    get value(): string | null;
+    set value(next: string | null);
+}
+
+// @public
+export const DropdownDefinition: FASTElementDefinition<typeof Dropdown>;
+
+// @public
+export const DropdownStyles: ElementStyles;
+
+// @public
+export const DropdownTemplate: ElementViewTemplate<Dropdown>;
+
+// @public
 export const durationFast = "var(--durationFast)";
 
 // @public
@@ -2575,6 +2681,15 @@ export const ImageStyles: ElementStyles;
 export const ImageTemplate: ElementViewTemplate<Image_2>;
 
 // @public
+export function isDropdown(element?: Node | null, tagName?: string): element is Dropdown;
+
+// @public
+export function isListbox(element?: Node): element is Listbox;
+
+// @public
+export function isOption(value: Node | null, tagName?: string): value is Option_2;
+
+// @public
 export class Label extends FASTElement {
     disabled: boolean;
     disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
@@ -2691,6 +2806,46 @@ export type LinkTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
 export const LinkTemplate: ElementViewTemplate<Link>;
+
+// @public
+export class Listbox extends FASTElement {
+    // (undocumented)
+    clickHandler(e: PointerEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // (undocumented)
+    protected dropdown?: Dropdown;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get enabledOptions(): Option_2[];
+    // @internal
+    handleChange(source: any, propertyName?: string): void;
+    // @override
+    id: string;
+    multiple?: boolean;
+    options: Option_2[];
+    // @internal
+    optionsChanged(prev: Option_2[] | undefined, next: Option_2[] | undefined): void;
+    // @internal
+    selectedIndex: number;
+    get selectedOptions(): Option_2[];
+    selectOption(index?: number): void;
+}
+
+// @public
+export const ListboxDefinition: FASTElementDefinition<typeof Listbox>;
+
+// @public
+export const ListboxStyles: ElementStyles;
+
+// @public
+export const ListboxTemplate: ElementViewTemplate<Listbox>;
+
+// @public
+export function listboxTemplate<T extends Listbox>(): ElementViewTemplate<T>;
 
 // @public
 export abstract class MatchMediaBehavior implements HostBehavior {
@@ -2966,6 +3121,52 @@ export const MessageBarStyles: ElementStyles;
 export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
 
 // @public
+class Option_2 extends BaseCheckbox {
+    constructor();
+    // (undocumented)
+    descriptionSlot: Node[];
+    // (undocumented)
+    descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    // @override
+    id: string;
+    initial?: boolean;
+    // @internal
+    static mode: CheckboxMode;
+    // (undocumented)
+    setActiveState(force?: boolean): void;
+    // @internal
+    protected setAriaProperties(value?: boolean): void;
+    // (undocumented)
+    setMultipleState(force?: boolean): void;
+    // (undocumented)
+    start: HTMLSlotElement;
+    get text(): string;
+    textAttribute?: string;
+    // (undocumented)
+    titleSlot: Node[];
+    // (undocumented)
+    titleSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    // (undocumented)
+    get value(): string;
+    set value(value: string);
+}
+export { Option_2 as Option }
+
+// @public
+export const OptionDefinition: FASTElementDefinition<typeof Option_2>;
+
+// @public
+export type OptionOptions = {
+    checkedIndicator?: StaticallyComposableHTML<Option_2>;
+};
+
+// @public
+export const OptionStyles: ElementStyles;
+
+// @public
+export const OptionTemplate: ElementViewTemplate<Option_2>;
+
+// @public
 class ProgressBar_2 extends BaseProgressBar {
     shape?: ProgressBarShape;
     shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
@@ -3027,6 +3228,8 @@ export class Radio extends BaseCheckbox {
     // @internal @override
     setValidity(): void;
     // @override
+    toggle(force?: boolean): void;
+    // @deprecated
     toggleChecked(force?: boolean): void;
 }
 
