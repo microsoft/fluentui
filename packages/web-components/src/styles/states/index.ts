@@ -1,6 +1,12 @@
 import { stateSelector } from '../../utils/element-internals.js';
 
 /**
+ * Selector for the `active` state.
+ * @public
+ */
+export const activeState = stateSelector('active');
+
+/**
  * Selector for the `align-end` state.
  * @public
  */
@@ -373,6 +379,12 @@ export const monospaceState = stateSelector('monospace');
 export const multiLineState = stateSelector('multiline');
 
 /**
+ * Selector for the `multiselect` state.
+ * @public
+ */
+export const multipleState = stateSelector('multiple');
+
+/**
  * Selector for the `navy` state.
  * @public
  */
@@ -509,6 +521,12 @@ export const royalBlueState = stateSelector('royal-blue');
  * @public
  */
 export const seafoamState = stateSelector('seafoam');
+
+/**
+ * Selector for the `selected` state.
+ * @public
+ */
+export const selectedState = stateSelector('selected');
 
 /**
  * Selector for the `semibold` state.
