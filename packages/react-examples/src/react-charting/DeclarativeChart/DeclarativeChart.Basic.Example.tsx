@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { DeclarativeChart, DeclarativeChartProps } from '@fluentui/react-charting';
-import { areaSchema } from '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema/fluent_area.test';
-import { donutSchema } from '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema/fluent_donut.test';
+import { areaSchema } from '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema/fluent_area';
+import { donutSchema } from '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema/fluent_donut';
 
 interface IDeclarativeChartState {
   selectedChoice: string;

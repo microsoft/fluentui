@@ -97,6 +97,7 @@ function lintImports(
     '@fluentui/react-examples/lib/react-experiments/TilesList/ExampleHelpers',
     '@fluentui/react-examples/lib/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example',
     '@fluentui/react-examples/lib/react/Keytip/KeytipSetup',
+    '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema',
     '@fluentui/react-charting/lib/types/IDataPoint',
     '@fluentui/react-experiments/lib/utilities/scrolling/ScrollContainer',
     // Once the components using this data are promoted, the data should go into @fluentui/example-data
