@@ -10,6 +10,7 @@ export { Max } from './RatingMax.stories';
 export { Size } from './RatingSize.stories';
 export { Color } from './RatingColor.stories';
 export { Shape } from './RatingShape.stories';
+export { ItemLabel } from './RatingItemLabel.stories';
 
 export default {
   title: 'Components/Rating',

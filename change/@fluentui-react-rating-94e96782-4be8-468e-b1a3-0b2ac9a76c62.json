@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Rating component now correctly uses the itemLabel prop",
+  "packageName": "@fluentui/react-rating",
+  "email": "derdem@microsoft.com",
+  "dependentChangeType": "patch"
+}
