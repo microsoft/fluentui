@@ -157,7 +157,7 @@ export class RadioGroup extends FASTElement {
       this.name = next[0].name;
     }
 
-    const checkedIndex = findLastIndex(this.enabledRadios, x => x.initialChecked);
+    const checkedIndex = findLastIndex(this.enabledRadios, x => x.initial);
 
     next.forEach((radio, index) => {
       radio.ariaPosInSet = `${index + 1}`;

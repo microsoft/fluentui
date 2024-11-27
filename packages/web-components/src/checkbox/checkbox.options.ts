@@ -3,6 +3,18 @@ import type { ValuesOf } from '../utils/typings.js';
 import type { Checkbox } from './checkbox.js';
 
 /**
+ * Checkbox selection mode values
+ * @public
+ */
+export const CheckboxMode = {
+  checked: 'checked',
+  selected: 'selected',
+} as const;
+
+/** @public */
+export type CheckboxMode = ValuesOf<typeof CheckboxMode>;
+
+/**
  * Checkbox configuration options
  * @public
  */
