@@ -11,7 +11,7 @@ export function radioGroupTemplate<T extends RadioGroup>(): ElementViewTemplate<
       @focusout="${(x, c) => x.focusoutHandler(c.event as FocusEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
     >
-      <slot @slotchange="${(x, c) => x.slotchangeHandler(c.event as Event)}"></slot>
+      <slot @slotchange="${(x, c) => x.slotchangeHandler()}"></slot>
     </template>
   `;
 }
