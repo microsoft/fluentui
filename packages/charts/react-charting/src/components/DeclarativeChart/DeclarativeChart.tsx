@@ -8,6 +8,8 @@ import {
   transformPlotlyJsonToColumnProps,
   transformPlotlyJsonToScatterChartProps,
   transformPlotlyJsonToHorizontalBarWithAxisProps,
+  isDateArray,
+  isNumberArray,
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
@@ -16,14 +18,13 @@ import { LineChart } from '../LineChart/index';
 import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
 import { AreaChart } from '../AreaChart/index';
 import { HeatMapChart } from '../HeatMapChart/index';
+import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 
-const isDate = (value: any): boolean => !isNaN(Date.parse(value));
-const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
-export const isDateArray = (array: any[]): boolean => Array.isArray(array) && array.every(isDate);
-export const isNumberArray = (array: any[]): boolean => Array.isArray(array) && array.every(isNumber);
-import { SankeyChart } from '../SankeyChart/SankeyChart';
-
+/**
+ * DeclarativeChart props.
+ * {@docCategory DeclarativeChart}
+ */
 export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * The schema representing the chart
@@ -31,6 +32,10 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
   chartSchema: any;
 }
 
+/**
+ * DeclarativeChart component.
+ * {@docCategory DeclarativeChart}
+ */
 export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = React.forwardRef<
   HTMLDivElement,
   DeclarativeChartProps
