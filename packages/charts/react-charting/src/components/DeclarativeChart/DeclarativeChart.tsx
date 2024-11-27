@@ -8,15 +8,12 @@ import {
   transformPlotlyJsonToColumnProps,
   transformPlotlyJsonToScatterChartProps,
   transformPlotlyJsonToHorizontalBarWithAxisProps,
+  isDateArray,
+  isNumberArray,
 } from './PlotlySchemaAdapter';
 import { LineChart } from '../LineChart/index';
 import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
 import { AreaChart } from '../AreaChart/index';
-
-const isDate = (value: any): boolean => !isNaN(Date.parse(value));
-const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
-export const isDateArray = (array: any[]): boolean => Array.isArray(array) && array.every(isDate);
-export const isNumberArray = (array: any[]): boolean => Array.isArray(array) && array.every(isNumber);
 
 export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElement> {
   /**

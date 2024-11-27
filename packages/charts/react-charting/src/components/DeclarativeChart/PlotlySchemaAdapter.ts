@@ -153,15 +153,30 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (jsonObj: any): I
       return series.y.map((yValue: string, i: number) => ({
         x: series.x[i],
         y: yValue,
-        legend: series.name,
+        legend: yValue,
         color: series.marker?.color || getNextColor(index),
       }));
     })
     .flat();
 
+  const chartHeight = layout.height || 350;
+  const margin = layout.margin?.l || 0;
+  const padding = layout.margin?.pad || 0;
+  const availableHeight = chartHeight - margin - padding;
+  const numberOfBars = data[0].y.length;
+  const gapFactor = 0.5;
+  const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));
+
   return {
     data: chartData,
     chartTitle: layout.title || '',
+    barHeight,
+    styles: {
+      root: {
+        height: chartHeight,
+        width: layout.width || 600,
+      },
+    },
   };
 };
 
