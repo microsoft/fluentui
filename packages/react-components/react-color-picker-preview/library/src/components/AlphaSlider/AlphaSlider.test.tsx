@@ -25,12 +25,12 @@ describe('AlphaSlider', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<AlphaSlider overlayColor="red" />);
+    const result = render(<AlphaSlider color={{ h: 0, s: 1, v: 1 }} />);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <div
           class="fui-ColorSlider fui-AlphaSlider"
-          style="--fui-AlphaSlider--direction: 90deg; --fui-AlphaSlider--progress: 100%; --fui-AlphaSlider__thumb--color: transparent; --fui-AlphaSlider__rail--color: hsl(0 0%, 0%);"
+          style="--fui-AlphaSlider--direction: 90deg; --fui-AlphaSlider--progress: 100%; --fui-AlphaSlider__thumb--color: transparent; --fui-AlphaSlider__rail--color: hsl(0 100%, 50%);"
         >
           <input
             class="fui-ColorSlider__input fui-AlphaSlider__input"

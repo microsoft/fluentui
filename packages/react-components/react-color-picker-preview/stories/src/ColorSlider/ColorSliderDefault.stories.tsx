@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { tinycolor } from '@ctrl/tinycolor';
 import { ColorSlider, ColorSliderProps } from '@fluentui/react-color-picker-preview';
 import { Button, makeStyles } from '@fluentui/react-components';
 
@@ -17,18 +18,19 @@ const useStyles = makeStyles({
   },
 });
 
+const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
+
 export const Default = (props: Partial<ColorSliderProps>) => {
   const styles = useStyles();
-  const defaultColor = '#2be700';
-  const [color, setColor] = React.useState(defaultColor);
-  const onSliderChange: ColorSliderProps['onChange'] = (_, data) => setColor(data.color);
-  const resetSlider = () => setColor(defaultColor);
+  const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
+  const onSliderChange: ColorSliderProps['onChange'] = (_, data) => setColor({ ...data.color, a: data.color.a ?? 1 });
+  const resetSlider = () => setColor(DEFAULT_COLOR_HSV);
 
   return (
     <div className={styles.example}>
       <ColorSlider color={color} onChange={onSliderChange} {...props} />
       <ColorSlider color={color} onChange={onSliderChange} vertical {...props} />
-      <div className={styles.previewColor} style={{ backgroundColor: color }} />
+      <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toHexString() }} />
       <Button onClick={resetSlider}>Reset</Button>
     </div>
   );
