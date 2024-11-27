@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { DeclarativeChart, DeclarativeChartProps } from '@fluentui/react-charting';
+import { areaSchema } from './schema/fluent_area';
+import { donutSchema } from './schema/fluent_donut';
 
 interface IDeclarativeChartState {
   selectedChoice: string;
@@ -22,8 +24,8 @@ const options: IDropdownOption[] = [
 ];
 
 const schemas: any[] = [
-  { key: 'areachart', schema: require('./schema/fluent_area.json') },
-  { key: 'donutchart', schema: require('./schema/fluent_donut.json') },
+  { key: 'areachart', schema: areaSchema },
+  { key: 'donutchart', schema: donutSchema },
   { key: 'gaugechart', schema: require('./schema/fluent_gauge.json') },
   { key: 'heatmapchart', schema: require('./schema/fluent_heatmap.json') },
   { key: 'horizontalbarchart', schema: require('./schema/fluent_horizontalbar.json') },
