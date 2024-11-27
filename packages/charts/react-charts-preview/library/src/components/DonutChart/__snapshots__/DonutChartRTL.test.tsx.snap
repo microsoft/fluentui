@@ -27,6 +27,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                 d="M0.497,-49.747A5,5,0,0,1,6.047,-54.667A55,55,0,0,1,49.18,-24.624A5,5,0,0,1,46.489,-17.713L0,0Z"
                 data-is-focusable="true"
                 id="_Pie_1first20000"
+                opacity="1"
                 role="img"
                 style="fill: transparent; cursor: default;"
               />
@@ -56,6 +57,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                 d="M46.834,-16.78A5,5,0,0,1,53.373,-13.28A55,55,0,0,1,-17.233,52.23A5,5,0,0,1,-20.234,45.449L0,0Z"
                 data-is-focusable="true"
                 id="_Pie_1second39000"
+                opacity="1"
                 role="img"
                 style="fill: transparent; cursor: default;"
               />
@@ -85,6 +87,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                 d="M-21.139,45.035A5,5,0,0,1,-28.232,47.201A55,55,0,0,1,-6.047,-54.667A5,5,0,0,1,-0.497,-49.747L0,0Z"
                 data-is-focusable="true"
                 id="_Pie_1third45000"
+                opacity="1"
                 role="img"
                 style="fill: transparent; cursor: default;"
               />
@@ -225,6 +228,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   d="M0.497,-49.747A5,5,0,0,1,6.047,-54.667A55,55,0,0,1,49.18,-24.624A5,5,0,0,1,46.489,-17.713L0,0Z"
                   data-is-focusable="true"
                   id="_Pie_60first20000"
+                  opacity="1"
                   role="img"
                   style="fill: transparent; cursor: default;"
                 />
@@ -254,6 +258,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   d="M46.834,-16.78A5,5,0,0,1,53.373,-13.28A55,55,0,0,1,-17.233,52.23A5,5,0,0,1,-20.234,45.449L0,0Z"
                   data-is-focusable="true"
                   id="_Pie_60second39000"
+                  opacity="1"
                   role="img"
                   style="fill: transparent; cursor: default;"
                 />
@@ -283,6 +288,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   d="M-21.139,45.035A5,5,0,0,1,-28.232,47.201A55,55,0,0,1,-6.047,-54.667A5,5,0,0,1,-0.497,-49.747L0,0Z"
                   data-is-focusable="true"
                   id="_Pie_60third45000"
+                  opacity="1"
                   role="img"
                   style="fill: transparent; cursor: default;"
                 />

@@ -45,7 +45,6 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
     }
 
     function arcGenerator(d: PieArcDatum<ChartDataPoint>, i: number, focusData: any, href?: string): JSX.Element {
-      // const gradient = d.data.gradient ?? getNextGradient(i, 0);
       return (
         <Arc
           key={i}

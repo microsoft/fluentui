@@ -38,6 +38,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -84,6 +85,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -130,6 +132,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -418,6 +421,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -464,6 +468,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -510,6 +515,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -798,6 +804,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -844,6 +851,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -890,6 +898,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -1127,6 +1136,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -1183,6 +1193,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -1239,6 +1250,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -1486,6 +1498,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -1542,6 +1555,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -1598,6 +1612,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -1845,6 +1860,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -1891,6 +1907,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -1937,6 +1954,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -2174,6 +2192,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -2224,6 +2243,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -2274,6 +2294,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -2515,6 +2536,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -2561,6 +2583,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -2607,6 +2630,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -2844,6 +2868,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -2890,6 +2915,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -2936,6 +2962,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -3020,6 +3047,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -3066,6 +3094,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -3112,6 +3141,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -3349,6 +3379,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -3395,6 +3426,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {
@@ -3441,6 +3473,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              opacity={1}
               role="img"
               style={
                 Object {

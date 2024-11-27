@@ -124,6 +124,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           onMouseMove={_hoverOn.bind(this, props.data!.data)}
           onMouseLeave={_hoverOff}
           onBlur={_onBlur}
+          opacity={opacity}
           onClick={props.data?.data.onClick}
           aria-label={_getAriaLabel()}
           role="img"
