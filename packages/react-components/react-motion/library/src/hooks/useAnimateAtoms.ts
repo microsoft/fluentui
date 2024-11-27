@@ -1,6 +1,10 @@
 import * as React from 'react';
 import type { AnimationHandle, AtomMotion } from '../types';
 
+export const DEFAULT_ANIMATION_OPTIONS: KeyframeEffectOptions = {
+  fill: 'forwards',
+};
+
 function useAnimateAtomsInSupportedEnvironment() {
   // eslint-disable-next-line @nx/workspace-no-restricted-globals
   const SUPPORTS_PERSIST = typeof window !== 'undefined' && typeof window.Animation?.prototype.persist === 'function';
@@ -17,13 +21,20 @@ function useAnimateAtomsInSupportedEnvironment() {
       const { isReducedMotion } = options;
 
       const animations = atoms.map(motion => {
-        const { keyframes, ...params } = motion;
-        const animation = element.animate(keyframes, {
-          fill: 'forwards',
+        const { keyframes, reducedMotion, ...params } = motion;
+        const { keyframes: reducedMotionKeyframes = keyframes, ...reducedMotionParams } = reducedMotion ?? {
+          duration: 1,
+        };
 
+        const animationKeyframes: Keyframe[] = isReducedMotion ? reducedMotionKeyframes : keyframes;
+        const animationParams: KeyframeEffectOptions = {
+          ...DEFAULT_ANIMATION_OPTIONS,
           ...params,
-          ...(isReducedMotion && { duration: 1 }),
-        });
+
+          ...(isReducedMotion && reducedMotionParams),
+        };
+
+        const animation = element.animate(animationKeyframes, animationParams);
 
         if (SUPPORTS_PERSIST) {
           animation.persist();

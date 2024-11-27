@@ -1,16 +1,17 @@
 import {
-  createMotionComponent,
+  createPresenceComponent,
   Field,
   makeStyles,
   mergeClasses,
   type MotionImperativeRef,
   motionTokens,
   Slider,
+  Switch,
   tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
-import description from './CreateMotionComponentFunctions.stories.md';
+import description from './CreatePresenceComponentReducedMotion.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -29,7 +30,6 @@ const useClasses = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
     padding: '10px',
-    minHeight: '180px',
   },
   controls: {
     display: 'flex',
@@ -52,53 +52,68 @@ const useClasses = makeStyles({
   },
 
   item: {
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorBrandBackground}`,
-    padding: '8px',
-    width: '300px',
-    overflow: 'hidden',
+    backgroundColor: tokens.colorBrandBackground,
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
+
+    width: '100px',
+    height: '100px',
   },
-  description: { margin: '5px' },
 });
 
-const Grow = createMotionComponent(({ element }) => ({
-  duration: motionTokens.durationUltraSlow,
-  keyframes: [
-    { opacity: 0, maxHeight: `${element.scrollHeight / 2}px` },
-    { opacity: 1, maxHeight: `${element.scrollHeight}px` },
-    { opacity: 0, maxHeight: `${element.scrollHeight / 2}px` },
-  ],
-  iterations: Infinity,
+const FadeAndScale = createPresenceComponent({
+  enter: {
+    keyframes: [
+      { opacity: 0, transform: 'rotate(0)' },
+      { transform: 'rotate(90deg) scale(1.5)' },
+      { opacity: 1, transform: 'rotate(0)' },
+    ],
+    duration: motionTokens.durationGentle,
 
-  reducedMotion: {
-    iterations: 1,
+    reducedMotion: {
+      keyframes: [{ opacity: 0 }, { opacity: 1 }],
+      duration: motionTokens.durationUltraSlow,
+    },
   },
-}));
+  exit: {
+    keyframes: [
+      { opacity: 1, transform: 'rotate(0)' },
+      { transform: 'rotate(-90deg) scale(1.5)' },
+      { opacity: 0, transform: 'rotate(0)' },
+    ],
+    duration: motionTokens.durationGentle,
 
-export const CreateMotionComponentFunctions = () => {
+    reducedMotion: {
+      keyframes: [{ opacity: 1 }, { opacity: 0 }],
+      duration: motionTokens.durationUltraSlow,
+    },
+  },
+});
+
+export const CreatePresenceComponentReducedMotion = () => {
   const classes = useClasses();
-
   const motionRef = React.useRef<MotionImperativeRef>();
-  const [playbackRate, setPlaybackRate] = React.useState<number>(20);
+
+  const [playbackRate, setPlaybackRate] = React.useState<number>(30);
+  const [visible, setVisible] = React.useState<boolean>(true);
 
   // Heads up!
   // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
     motionRef.current?.setPlaybackRate(playbackRate / 100);
-  }, [playbackRate]);
+  }, [playbackRate, visible]);
 
   return (
     <div className={classes.container}>
       <div className={classes.card}>
-        <Grow imperativeRef={motionRef}>
-          <div className={classes.item}>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed vel lectus. Donec odio tempus molestie,
-            porttitor ut, iaculis quis, sem. Integer vulputate sem a nibh rutrum consequat. Etiam quis quam. Curabitur
-            sagittis hendrerit ante. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede.
-          </div>
-        </Grow>
+        <FadeAndScale imperativeRef={motionRef} visible={visible}>
+          <div className={classes.item} />
+        </FadeAndScale>
       </div>
 
       <div className={classes.controls}>
+        <Field className={classes.field}>
+          <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
+        </Field>
         <Field
           className={mergeClasses(classes.field, classes.sliderField)}
           label={{
@@ -126,7 +141,7 @@ export const CreateMotionComponentFunctions = () => {
   );
 };
 
-CreateMotionComponentFunctions.parameters = {
+CreatePresenceComponentReducedMotion.parameters = {
   docs: {
     description: {
       story: description,

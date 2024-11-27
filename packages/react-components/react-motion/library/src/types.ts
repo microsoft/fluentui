@@ -1,4 +1,15 @@
-export type AtomMotion = { keyframes: Keyframe[] } & KeyframeEffectOptions;
+export type AtomMotion = { keyframes: Keyframe[] } & KeyframeEffectOptions & {
+    /**
+     * Allows to specify a reduced motion version of the animation. If provided, the settings will be used when the
+     * user has enabled the reduced motion setting in the operating system. If not provided, the duration of the
+     * animation will be overridden to be 1ms.
+     *
+     * Note, if keyframes are provided, they will be used instead of the regular keyframes.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
+     */
+    reducedMotion?: { keyframes?: Keyframe[] } & KeyframeEffectOptions;
+  };
 
 export type PresenceDirection = 'enter' | 'exit';
 
