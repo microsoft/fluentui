@@ -84,7 +84,19 @@ export class Radio extends BaseCheckbox {
    * @remarks
    * The radio checked state is controlled by the `RadioGroup` component, so the `force` parameter defaults to `true`.
    */
+  public toggle(force: boolean = true): void {
+    super.toggle(force);
+  }
+
+  /**
+   * Toggles the checked state of the control.
+   *
+   * @param force - Forces the element to be checked or unchecked
+   * @public
+   *
+   * @deprecated Use `toggle()` instead.
+   */
   public toggleChecked(force: boolean = true): void {
-    super.toggleChecked(force);
+    this.toggle(force);
   }
 }
