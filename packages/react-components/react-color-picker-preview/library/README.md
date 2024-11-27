@@ -4,8 +4,9 @@
 
 These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 
-The ColorPicker is used to browse through and select colors.
-By default, it lets people navigate through colors on a color spectrum; or specify a color in either Red-Green-Blue (RGB); or alpha color code; or Hexadecimal textboxes.
+The ColorPicker allows users to browse and select colors.
+By default, it enables navigation through a color spectrum and operates in HSV/HSL format.
+However, it is also possible to specify a color using Red-Green-Blue (RGB), an alpha color code, or hexadecimal values in the text boxes.
 
 ## Usage
 
