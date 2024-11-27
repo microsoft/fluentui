@@ -6,7 +6,10 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { FC } from 'react';
+import type { MutableRefObject } from 'react';
 import * as React_2 from 'react';
+import type { RefObject } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -129,7 +132,7 @@ export const useVirtualizerScrollViewStyles_unstable: (state: VirtualizerScrollV
 export const useVirtualizerStyles_unstable: (state: VirtualizerState) => VirtualizerState;
 
 // @public
-export const Virtualizer: React_2.FC<VirtualizerProps>;
+export const Virtualizer: FC<VirtualizerProps>;
 
 // @public
 export type VirtualizerChildRenderFunction = (index: number, isScrolling: boolean) => React_2.ReactNode;
@@ -149,10 +152,10 @@ export const VirtualizerContextProvider: React_2.Provider<VirtualizerContextProp
 
 // @public (undocumented)
 export type VirtualizerDataRef = {
-    progressiveSizes: React_2.RefObject<number[]>;
-    nodeSizes: React_2.RefObject<number[]>;
+    progressiveSizes: RefObject<number[]>;
+    nodeSizes: RefObject<number[]>;
     setFlaggedIndex: (index: number | null) => void;
-    currentIndex: React_2.RefObject<number>;
+    currentIndex: RefObject<number>;
 };
 
 // @public (undocumented)
