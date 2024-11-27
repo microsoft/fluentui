@@ -22,6 +22,10 @@ export const isDateArray = (array: any[]): boolean => Array.isArray(array) && ar
 export const isNumberArray = (array: any[]): boolean => Array.isArray(array) && array.every(isNumber);
 import { SankeyChart } from '../SankeyChart/SankeyChart';
 
+/**
+ * DeclarativeChart props.
+ * {@docCategory DeclarativeChart}
+ */
 export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * The schema representing the chart
@@ -29,6 +33,10 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
   chartSchema: any;
 }
 
+/**
+ * DeclarativeChart component.
+ * {@docCategory DeclarativeChart}
+ */
 export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = React.forwardRef<
   HTMLDivElement,
   DeclarativeChartProps

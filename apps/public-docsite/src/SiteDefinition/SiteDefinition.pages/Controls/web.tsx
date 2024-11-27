@@ -131,6 +131,7 @@ export const categories: { [name: string]: ICategory } = {
     SankeyChart: {},
     SparklineChart: {},
     TreeChart: {},
+    DeclarativeChart: {},
   },
   Utilities: {
     Announced: {
