@@ -409,6 +409,12 @@ export const nowrapState = stateSelector('nowrap');
 export const numericState = stateSelector('numeric');
 
 /**
+ * Selector for the `open` state.
+ * @public
+ */
+export const openState = stateSelector('open');
+
+/**
  * Selector for the `outline` state.
  * @public
  */

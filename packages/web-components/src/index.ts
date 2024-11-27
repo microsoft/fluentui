@@ -104,6 +104,7 @@ export {
   DrawerStyles,
 } from './drawer/index.js';
 export { DrawerBody, DrawerBodyDefinition, DrawerBodyTemplate, DrawerBodyStyles } from './drawer-body/index.js';
+export { Dropdown, DropdownDefinition, DropdownStyles, DropdownTemplate, isDropdown } from './dropdown/index.js';
 export {
   ListboxDefinition,
   Listbox,

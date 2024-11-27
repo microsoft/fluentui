@@ -12,6 +12,7 @@ import './dialog-body/define.js';
 import './divider/define.js';
 import './drawer/define.js';
 import './drawer-body/define.js';
+import './dropdown/define.js';
 import './field/define.js';
 import './image/define.js';
 import './label/define.js';
