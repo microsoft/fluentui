@@ -3,6 +3,8 @@
 /* eslint-disable no-var */
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import * as React from 'react';
+import { color as d3Color } from 'd3-color';
 import { IDonutChartProps } from '../DonutChart/index';
 import {
   IChartDataPoint,
@@ -14,7 +16,7 @@ import {
   IHeatMapChartDataPoint,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
-import { getNextColor, DataVizPalette } from '../../utilities/colors';
+import { getNextColor } from '../../utilities/colors';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
 import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
 import { ILineChartProps } from '../LineChart/index';
@@ -26,15 +28,36 @@ const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(
 export const isDateArray = (array: any[]): boolean => Array.isArray(array) && array.every(isDate);
 export const isNumberArray = (array: any[]): boolean => Array.isArray(array) && array.every(isNumber);
 
+const UseColorMapping = () => {
+  const [colorMapping, setColorMapping] = React.useState(new Map<string, string>());
+
+  const getColor = (colorString: string, index: number): { color: string; opacity?: number } => {
+    const d3ColorObj = d3Color(colorString);
+    const hexColor = d3ColorObj ? d3ColorObj.formatHex() : colorString;
+
+    if (!colorMapping.has(hexColor)) {
+      const nextColor = getNextColor(index);
+      setColorMapping(prev => new Map(prev).set(hexColor, nextColor));
+      return { color: nextColor, opacity: d3ColorObj?.opacity };
+    }
+
+    return { color: colorMapping.get(hexColor) as string, opacity: d3ColorObj?.opacity };
+  };
+
+  return getColor;
+};
+
 export const transformPlotlyJsonToDonutProps = (jsonObj: any): IDonutChartProps => {
+  const getColor = UseColorMapping();
   const { data, layout } = jsonObj;
   const firstData = data[0];
 
   const donutData = firstData.labels?.map((label: string, index: number): IChartDataPoint => {
+    const { color } = getColor(firstData.marker?.color?.[index], index);
     return {
       legend: label,
       data: firstData.values?.[index],
-      color: firstData.marker?.colors?.[index] || getNextColor(index),
+      color,
     };
   });
 
@@ -75,6 +98,7 @@ export const transformPlotlyJsonToDonutProps = (jsonObj: any): IDonutChartProps 
 };
 
 export const transformPlotlyJsonToColumnProps = (jsonObj: any): IVerticalStackedBarChartProps => {
+  const getColor = UseColorMapping();
   const { data, layout } = jsonObj;
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
   let yMaxValue = 0;
@@ -85,16 +109,18 @@ export const transformPlotlyJsonToColumnProps = (jsonObj: any): IVerticalStacked
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
       }
       if (series.type === 'bar') {
+        const { color } = getColor(series.marker?.color, index1);
         mapXToDataPoints[x].chartData.push({
           legend: series.name,
           data: series.y[index2],
-          color: series.marker?.color || getNextColor(index1),
+          color,
         });
       } else if (series.type === 'line') {
+        const { color } = getColor(series.marker?.color, index1);
         mapXToDataPoints[x].lineData!.push({
           legend: series.name,
           y: series.y[index2],
-          color: series.marker?.color || getNextColor(index1),
+          color,
         });
       }
       yMaxValue = Math.max(yMaxValue, series.y[index2]);
@@ -115,6 +141,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   jsonObj: any,
   isAreaChart: boolean,
 ): ILineChartProps | IAreaChartProps => {
+  const getColor = UseColorMapping();
   const { data, layout } = jsonObj;
 
   const chartData: ILineChartPoints[] = data.map((series: any, index: number) => {
@@ -123,13 +150,18 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
 
+    const { color: lineColor } = getColor(series.line?.color, index);
+    const { color: fillColor, opacity: fillOpacity } = getColor(series.fillcolor, index);
+
     return {
       legend: series.name || `Series ${index + 1}`,
       data: xValues.map((x: string | number, i: number) => ({
         x: isString ? (isXDate ? new Date(x) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
       })),
-      color: series.line?.color || getNextColor(index),
+      color: lineColor,
+      fillColor,
+      opacity: fillOpacity,
     };
   });
 
@@ -150,16 +182,24 @@ export const transformPlotlyJsonToScatterChartProps = (
 };
 
 export const transformPlotlyJsonToHorizontalBarWithAxisProps = (jsonObj: any): IHorizontalBarChartWithAxisProps => {
+  const getColor = UseColorMapping();
   const { data, layout } = jsonObj;
 
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = data
     .map((series: any, index: number) => {
-      return series.y.map((yValue: string, i: number) => ({
-        x: series.x[i],
-        y: yValue,
-        legend: yValue,
-        color: series.marker?.color || getNextColor(index),
-      }));
+      return series.y.map((yValue: string, i: number) => {
+        const { color, opacity } = getColor(series.marker?.color, i);
+        return {
+          x: series.x[i],
+          y: yValue,
+          legend: yValue,
+          color,
+          styles: {
+            fill: color,
+            opacity,
+          },
+        };
+      });
     })
     .flat();
 
@@ -227,6 +267,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
 };
 
 export const transformPlotlyJsonToSankeyProps = (jsonObj: any): ISankeyChartProps => {
+  const getColor = UseColorMapping();
   const { data, layout } = jsonObj;
   const { link, node } = data[0];
   const validLinks = link.value
@@ -237,16 +278,29 @@ export const transformPlotlyJsonToSankeyProps = (jsonObj: any): ISankeyChartProp
     }))
     // eslint-disable-next-line @typescript-eslint/no-shadow
     //@ts-expect-error Dynamic link object. Ignore for now.
-    .filter(x => x.source !== x.target); // Filter out self-references(circular links)
+    .filter(x => x.source !== x.target); // Filter out self-references (circular links)
 
   const sankeyChartData = {
-    nodes: node.label.map((label: string, index: number) => ({
-      nodeId: index,
-      name: label,
-      color: node.color[index] || DataVizPalette.disabled,
-      borderColor: node.line?.color || DataVizPalette.disabled,
-    })),
-    links: validLinks,
+    nodes: node.label.map((label: string, index: number) => {
+      const { color, opacity } = getColor(node.color?.[index] || '', index);
+      const { color: lineColor } = getColor(node.line?.color || '', index);
+
+      return {
+        nodeId: index,
+        name: label,
+        color,
+        borderColor: lineColor,
+        opacity,
+      };
+    }),
+    links: validLinks.map((validLink: any, index: number) => {
+      const { color, opacity } = getColor(validLink.color?.[index] || '', index);
+      return {
+        ...validLink,
+        color,
+        opacity,
+      };
+    }),
   };
 
   const width: number = layout?.width || 440;
