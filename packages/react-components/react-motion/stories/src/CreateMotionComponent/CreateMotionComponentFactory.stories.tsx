@@ -1,7 +1,7 @@
 import { createMotionComponent, makeStyles, tokens } from '@fluentui/react-components';
 import * as React from 'react';
 
-import description from './TokensUsage.stories.md';
+import description from './CreateMotionComponentFactory.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -20,14 +20,14 @@ const useClasses = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
     padding: '10px',
+    paddingTop: '120px',
   },
 
   item: {
     backgroundColor: tokens.colorBrandBackground,
-    borderRadius: tokens.borderRadiusCircular,
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
     width: '100px',
     height: '100px',
-    forcedColorAdjust: 'none',
   },
   description: {
     fontFamily: tokens.fontFamilyMonospace,
@@ -38,32 +38,32 @@ const useClasses = makeStyles({
   },
 });
 
-const BackgroundChange = createMotionComponent({
+const DropIn = createMotionComponent({
   keyframes: [
-    { backgroundColor: tokens.colorStatusDangerBackground3 },
-    { backgroundColor: tokens.colorStatusSuccessBackground3 },
+    { transform: 'rotate(-30deg) translateY(-100%)', opacity: 0 },
+    { transform: 'rotate(0deg) translateY(0%)', opacity: 1 },
   ],
-  duration: 3000,
+  duration: 4000,
   iterations: Infinity,
 });
 
-export const TokensUsage = () => {
+export const CreateMotionComponentFactory = () => {
   const classes = useClasses();
 
   return (
     <div className={classes.container}>
       <div className={classes.card}>
-        <BackgroundChange>
+        <DropIn>
           <div className={classes.item} />
-        </BackgroundChange>
+        </DropIn>
 
-        <div className={classes.description}>Custom background color motion</div>
+        <code className={classes.description}>Custom drop in motion</code>
       </div>
     </div>
   );
 };
 
-TokensUsage.parameters = {
+CreateMotionComponentFactory.parameters = {
   docs: {
     description: {
       story: description,

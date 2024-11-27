@@ -1,7 +1,7 @@
-import { createMotionComponent, MotionComponentProps, makeStyles, tokens } from '@fluentui/react-components';
+import { createMotionComponent, makeStyles, tokens } from '@fluentui/react-components';
 import * as React from 'react';
 
-import description from './CreateMotionComponent.stories.md';
+import description from './CreateMotionComponentTokensUsage.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -20,14 +20,14 @@ const useClasses = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
     padding: '10px',
-    paddingTop: '120px',
   },
 
   item: {
     backgroundColor: tokens.colorBrandBackground,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
+    borderRadius: tokens.borderRadiusCircular,
     width: '100px',
     height: '100px',
+    forcedColorAdjust: 'none',
   },
   description: {
     fontFamily: tokens.fontFamilyMonospace,
@@ -38,32 +38,32 @@ const useClasses = makeStyles({
   },
 });
 
-const DropIn = createMotionComponent({
+const BackgroundChange = createMotionComponent({
   keyframes: [
-    { transform: 'rotate(-30deg) translateY(-100%)', opacity: 0 },
-    { transform: 'rotate(0deg) translateY(0%)', opacity: 1 },
+    { backgroundColor: tokens.colorStatusDangerBackground3 },
+    { backgroundColor: tokens.colorStatusSuccessBackground3 },
   ],
-  duration: 4000,
+  duration: 3000,
   iterations: Infinity,
 });
 
-export const CreateMotionComponent = (props: MotionComponentProps) => {
+export const CreateMotionComponentTokensUsage = () => {
   const classes = useClasses();
 
   return (
     <div className={classes.container}>
       <div className={classes.card}>
-        <DropIn>
+        <BackgroundChange>
           <div className={classes.item} />
-        </DropIn>
+        </BackgroundChange>
 
-        <code className={classes.description}>Custom drop in motion</code>
+        <div className={classes.description}>Custom background color motion</div>
       </div>
     </div>
   );
 };
 
-CreateMotionComponent.parameters = {
+CreateMotionComponentTokensUsage.parameters = {
   docs: {
     description: {
       story: description,

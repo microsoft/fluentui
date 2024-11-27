@@ -11,12 +11,12 @@ import {
 } from '@fluentui/react-components';
 import * as React from 'react';
 
-import description from './PresenceAppear.stories.md';
+import description from './CreatePresenceComponentFunctionParams.stories.md';
 
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplate: `"card card" "controls ." / 1fr 1fr`,
+    gridTemplate: `"cardA cardB" "controls ." / 1fr 1fr`,
     gap: '20px 10px',
   },
   card: {
@@ -24,7 +24,6 @@ const useClasses = makeStyles({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'end',
-    gridArea: 'card',
 
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
@@ -51,6 +50,12 @@ const useClasses = makeStyles({
     textWrap: 'nowrap',
   },
 
+  cardA: {
+    gridArea: 'cardA',
+  },
+  cardB: {
+    gridArea: 'cardB',
+  },
   item: {
     backgroundColor: tokens.colorBrandBackground,
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
@@ -59,44 +64,67 @@ const useClasses = makeStyles({
     width: '100px',
     height: '100px',
   },
-});
-
-const Fade = createPresenceComponent({
-  enter: {
-    keyframes: [{ opacity: 0 }, { opacity: 1 }],
-    duration: motionTokens.durationSlow,
-  },
-  exit: {
-    keyframes: [{ opacity: 1 }, { opacity: 0 }],
-    duration: motionTokens.durationSlow,
+  description: {
+    fontFamily: tokens.fontFamilyMonospace,
+    borderRadius: tokens.borderRadiusMedium,
+    marginTop: '10px',
+    padding: '5px 10px',
+    backgroundColor: tokens.colorNeutralBackground1Pressed,
   },
 });
 
-export const PresenceAppear = () => {
+const Scale = createPresenceComponent<{ startFrom?: number }>(({ startFrom = 0.5 }) => {
+  const keyframes = [
+    { opacity: 0, transform: `scale(${startFrom})` },
+    { opacity: 1, transform: 'scale(1)' },
+  ];
+
+  return {
+    enter: {
+      keyframes,
+      duration: motionTokens.durationUltraSlow,
+    },
+    exit: {
+      keyframes: [...keyframes].reverse(),
+      duration: motionTokens.durationSlow,
+    },
+  };
+});
+
+export const CreatePresenceComponentFunctionParams = () => {
   const classes = useClasses();
-  const motionRef = React.useRef<MotionImperativeRef>();
+
+  const motionBRef = React.useRef<MotionImperativeRef>();
+  const motionARef = React.useRef<MotionImperativeRef>();
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
-  const [isMounted, setIsMounted] = React.useState<boolean>(false);
+  const [visible, setVisible] = React.useState<boolean>(true);
 
   // Heads up!
   // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
-    motionRef.current?.setPlaybackRate(playbackRate / 100);
-  }, [playbackRate, isMounted]);
+    motionARef.current?.setPlaybackRate(playbackRate / 100);
+    motionBRef.current?.setPlaybackRate(playbackRate / 100);
+  }, [playbackRate, visible]);
 
   return (
     <div className={classes.container}>
-      <div className={classes.card}>
-        {isMounted && (
-          <Fade appear imperativeRef={motionRef} visible>
-            <div className={classes.item} />
-          </Fade>
-        )}
+      <div className={mergeClasses(classes.card, classes.cardA)}>
+        <Scale imperativeRef={motionARef} startFrom={0.1} visible={visible}>
+          <div className={classes.item} />
+        </Scale>
+        <div className={classes.description}>startFrom=0.1</div>
       </div>
+      <div className={mergeClasses(classes.card, classes.cardB)}>
+        <Scale imperativeRef={motionBRef} startFrom={0.8} visible={visible}>
+          <div className={classes.item} />
+        </Scale>
+        <div className={classes.description}>startFrom=0.8</div>
+      </div>
+
       <div className={classes.controls}>
         <Field className={classes.field}>
-          <Switch label="Mount an element?" checked={isMounted} onChange={() => setIsMounted(v => !v)} />
+          <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
         </Field>
         <Field
           className={mergeClasses(classes.field, classes.sliderField)}
@@ -124,7 +152,7 @@ export const PresenceAppear = () => {
   );
 };
 
-PresenceAppear.parameters = {
+CreatePresenceComponentFunctionParams.parameters = {
   docs: {
     description: {
       story: description,

@@ -20,9 +20,7 @@ export const AlphaSlider: ForwardRefComponent<AlphaSliderProps>;
 export const alphaSliderClassNames: SlotClassNames<AlphaSliderSlots>;
 
 // @public
-export type AlphaSliderProps = Omit<ComponentProps<Partial<AlphaSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value'> & ColorSliderProps & {
-    overlayColor?: string;
-};
+export type AlphaSliderProps = ColorSliderProps;
 
 // @public (undocumented)
 export type AlphaSliderSlots = ColorSliderSlots;
@@ -61,8 +59,8 @@ export const ColorPicker: ForwardRefComponent<ColorPickerProps>;
 export const colorPickerClassNames: SlotClassNames<ColorPickerSlots>;
 
 // @public
-export type ColorPickerProps = ComponentProps<ColorPickerSlots> & {
-    color: string;
+export type ColorPickerProps = Omit<ComponentProps<Partial<ColorPickerSlots>>, 'color'> & {
+    color: HsvColor;
     onColorChange?: EventHandler<ColorPickerOnChangeData>;
 };
 
@@ -81,11 +79,12 @@ export const ColorSlider: ForwardRefComponent<ColorSliderProps>;
 export const colorSliderClassNames: SlotClassNames<ColorSliderSlots>;
 
 // @public
-export type ColorSliderProps = Omit<ComponentProps<Partial<ColorSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value'> & {
+export type ColorSliderProps = Omit<ComponentProps<Partial<ColorSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value' | 'color'> & {
     channel?: string;
     onChange?: EventHandler<SliderOnChangeData>;
     vertical?: boolean;
-    color?: string;
+    color?: HsvColor;
+    defaultColor?: HsvColor;
 };
 
 // @public (undocumented)
