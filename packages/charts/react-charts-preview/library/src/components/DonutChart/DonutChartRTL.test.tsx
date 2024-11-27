@@ -82,7 +82,7 @@ describe('Donut chart interactions', () => {
     // Assert
     const getById = queryAllByAttribute.bind(null, 'id');
     expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
-    expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
+    expect(getById(container, /Pie.*?third/i)[0]).toHaveAttribute('opacity', '0.1');
   });
 
   test('Should select legend on single mouse click on legends', () => {
