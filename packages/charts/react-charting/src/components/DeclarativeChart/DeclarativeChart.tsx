@@ -10,10 +10,14 @@ import {
   transformPlotlyJsonToHorizontalBarWithAxisProps,
   isDateArray,
   isNumberArray,
+  transformPlotlyJsonToHeatmapProps,
+  transformPlotlyJsonToSankeyProps,
 } from './PlotlySchemaAdapter';
 import { LineChart } from '../LineChart/index';
 import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
 import { AreaChart } from '../AreaChart/index';
+import { HeatMapChart } from '../HeatMapChart/index';
+import { SankeyChart } from '../SankeyChart/SankeyChart';
 
 export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElement> {
   /**
@@ -49,6 +53,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return <LineChart {...transformPlotlyJsonToScatterChartProps(props.chartSchema, false)} />;
       }
       return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(props.chartSchema)} />;
+    case 'heatmap':
+      return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(props.chartSchema)} />;
+    case 'sankey':
+      return <SankeyChart {...transformPlotlyJsonToSankeyProps(props.chartSchema)} />;
     default:
       return <div>Unsupported Schema</div>;
   }

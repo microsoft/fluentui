@@ -7,33 +7,33 @@ interface IDeclarativeChartState {
 }
 
 const options: IDropdownOption[] = [
-  { key: 'areachart', text: 'Area Chart'},
-  { key: 'donutchart', text: 'Donut Chart'},
-  { key: 'gaugechart', text: 'Gauge Chart'},
-  { key: 'heatmapchart', text: 'Heatmap Chart'},
-  { key: 'horizontalbarchart', text: 'HorizontalBar Chart'},
-  { key: 'linechart', text: 'Line Chart'},
-  { key: 'piechart', text: 'Pie Chart'},
-  { key: 'sankeychart', text: 'Sankey Chart'},
-  { key: 'sparklinechart', text: 'Sparkline Chart'},
-  { key: 'treemapchart', text: 'Treemap Chart'},
-  { key: 'verticalbarchart', text: 'VerticalBar Chart'},
-  { key: 'verticalbar_histogramchart', text: 'VerticalBar Histogram Chart'},
+  { key: 'areachart', text: 'Area Chart' },
+  { key: 'donutchart', text: 'Donut Chart' },
+  { key: 'gaugechart', text: 'Gauge Chart' },
+  { key: 'heatmapchart', text: 'Heatmap Chart' },
+  { key: 'horizontalbarchart', text: 'HorizontalBar Chart' },
+  { key: 'linechart', text: 'Line Chart' },
+  { key: 'piechart', text: 'Pie Chart' },
+  { key: 'sankeychart', text: 'Sankey Chart' },
+  { key: 'sparklinechart', text: 'Sparkline Chart' },
+  { key: 'treemapchart', text: 'Treemap Chart' },
+  { key: 'verticalbarchart', text: 'VerticalBar Chart' },
+  { key: 'verticalbar_histogramchart', text: 'VerticalBar Histogram Chart' },
 ];
 
 const schemas: any[] = [
-  { key: 'areachart', schema: require('./schema/fluent_area.json')},
-  { key: 'donutchart', schema: require('./schema/fluent_donut.json')},
-  { key: 'gaugechart', schema: require('./schema/fluent_gauge.json')},
-  { key: 'heatmapchart', schema: require('./schema/fluent_heatmap.json')},
-  { key: 'horizontalbarchart', schema: require('./schema/fluent_horizontalbar.json')},
-  { key: 'linechart', schema: require('./schema/fluent_line.json')},
-  { key: 'piechart', schema: require('./schema/fluent_pie.json')},
-  { key: 'sankeychart', schema: require('./schema/fluent_sankey.json')},
-  { key: 'sparklinechart', schema: require('./schema/fluent_sparkline.json')},
-  { key: 'treemapchart', schema: require('./schema/fluent_treemap.json')},
-  { key: 'verticalbarchart', schema: require('./schema/fluent_verticalbar.json')},
-  { key: 'verticalbar_histogramchart', schema: require('./schema/fluent_verticalbar_histogram.json')},
+  { key: 'areachart', schema: require('./schema/fluent_area.json') },
+  { key: 'donutchart', schema: require('./schema/fluent_donut.json') },
+  { key: 'gaugechart', schema: require('./schema/fluent_gauge.json') },
+  { key: 'heatmapchart', schema: require('./schema/fluent_heatmap.json') },
+  { key: 'horizontalbarchart', schema: require('./schema/fluent_horizontalbar.json') },
+  { key: 'linechart', schema: require('./schema/fluent_line.json') },
+  { key: 'piechart', schema: require('./schema/fluent_pie.json') },
+  { key: 'sankeychart', schema: require('./schema/fluent_sankey.json') },
+  { key: 'sparklinechart', schema: require('./schema/fluent_sparkline.json') },
+  { key: 'treemapchart', schema: require('./schema/fluent_treemap.json') },
+  { key: 'verticalbarchart', schema: require('./schema/fluent_verticalbar.json') },
+  { key: 'verticalbar_histogramchart', schema: require('./schema/fluent_verticalbar_histogram.json') },
 ];
 
 const dropdownStyles = { dropdown: { width: 200 } };
@@ -46,17 +46,17 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     };
   }
 
+  public render(): JSX.Element {
+    return <div>{this._createDeclarativeChart()}</div>;
+  }
+
   private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IDropdownOption): void => {
     this.setState({ selectedChoice: option.key as string });
   };
 
   private _getSchemaByKey(key: string): any {
-    const schema = schemas.find(schema => schema.key === key);
+    const schema = schemas.find(x => x.key === key);
     return schema ? schema.schema : null;
-  }
-
-  public render(): JSX.Element {
-    return <div>{this._createDeclarativeChart()}</div>;
   }
 
   private _createDeclarativeChart(): JSX.Element {
@@ -65,14 +65,15 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     return (
       <>
         <Dropdown
-        label="Select a schema"
-        options={options}
-        onChange={this._onChange}
-        selectedKey={this.state.selectedChoice}
-        styles={dropdownStyles}
-      />
-      <br/><br/>
-        <DeclarativeChart chartSchema={selectedSchema}/>             
+          label="Select a schema"
+          options={options}
+          onChange={this._onChange}
+          selectedKey={this.state.selectedChoice}
+          styles={dropdownStyles}
+        />
+        <br />
+        <br />
+        <DeclarativeChart chartSchema={selectedSchema} />
       </>
     );
   }

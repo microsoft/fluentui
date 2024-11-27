@@ -1,12 +1,6 @@
 import * as React from 'react';
 
-import {
-  ComponentPage,
-  ExampleCard,
-  IComponentDemoPageProps,
-  PropertiesTableSet,
-  Markdown,
-} from '@fluentui/react-docsite-components';
+import { ComponentPage, ExampleCard, IComponentDemoPageProps, Markdown } from '@fluentui/react-docsite-components';
 
 import { DeclarativeChartBasicExample } from './DeclarativeChart.Basic.Example';
 
