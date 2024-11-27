@@ -46,8 +46,12 @@ export function stateSelector<S extends string>(state: S): StateSelector<S> {
  * @param force - force the state to be toggled on or off
  * @internal
  */
-export function toggleState(elementInternals: ElementInternals, state: string | undefined, force?: boolean): void {
-  if (!state) {
+export function toggleState(
+  elementInternals: ElementInternals | undefined,
+  state: string | undefined,
+  force?: boolean,
+): void {
+  if (!state || !elementInternals) {
     return;
   }
 
