@@ -120,17 +120,17 @@ export function useEmblaCarousel(
    * Useful for pausing on focus etc. without having to reinitialize or set autoplay to off
    */
   const enableAutoplay = React.useCallback(
-    (_autoplay: boolean, temporary?: boolean) => {
+    (autoplay: boolean, temporary?: boolean) => {
       if (!temporary) {
-        autoplayRef.current = _autoplay;
+        autoplayRef.current = autoplay;
       }
 
-      if (_autoplay && autoplayRef.current) {
+      if (autoplay && autoplayRef.current) {
         // Autoplay should only enable in the case where underlying state is true, temporary should not override
         emblaApi.current?.plugins().autoplay?.play();
         // Reset after play to ensure timing and any focus/mouse pause state is reset.
         resetAutoplay();
-      } else if (!_autoplay) {
+      } else if (!autoplay) {
         emblaApi.current?.plugins().autoplay?.stop();
       }
     },
@@ -177,8 +177,8 @@ export function useEmblaCarousel(
     setActiveIndex(newIndex);
 
     if (eventType === 'autoplay:select') {
-      const _event = new Event('autoplay');
-      onAutoplayIndexChange?.(_event, { event: _event, type: 'autoplay', index: newIndex });
+      const noopEvent = new Event('autoplay');
+      onAutoplayIndexChange?.(noopEvent, { event: noopEvent, type: 'autoplay', index: newIndex });
     }
   });
 
