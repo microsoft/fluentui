@@ -19,7 +19,7 @@ Simple example of ColorPicker Usage:
 
 ```tsx
 import { tinycolor } from '@ctrl/tinycolor';
-import { ColorPicker, ColorSlider, AlphaSlider, ColorPickerProps, ColorArea } from '@fluentui/react-components';
+import { ColorPicker, ColorSlider, AlphaSlider, type ColorPickerProps, ColorArea } from '@fluentui/react-components';
 
 export const App = () => {
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
