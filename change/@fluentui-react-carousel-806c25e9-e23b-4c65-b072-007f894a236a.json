@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add autoplay index change callback and fix autoplay pause on interaction",
+  "packageName": "@fluentui/react-carousel",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
