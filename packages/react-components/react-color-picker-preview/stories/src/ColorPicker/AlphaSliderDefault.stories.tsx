@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 
 const COLOR = tinycolor('#5be600').toHsv();
 
-export const Default = (props: Partial<AlphaSliderProps>) => {
+export const AlphaSliderExample = (props: Partial<AlphaSliderProps>) => {
   const styles = useStyles();
 
   const [color, setColor] = React.useState(COLOR);
@@ -35,4 +35,12 @@ export const Default = (props: Partial<AlphaSliderProps>) => {
       <Button onClick={resetSlider}>Reset</Button>
     </div>
   );
+};
+
+AlphaSliderExample.parameters = {
+  docs: {
+    description: {
+      story: 'The `AlphaSlider` allows users to change the alpha channel of a color value.',
+    },
+  },
 };
