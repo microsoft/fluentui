@@ -14,12 +14,13 @@ import {
   IHeatMapChartDataPoint,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
-import { getNextColor, DataVizPalette } from '../../utilities/colors';
+import { getNextColor, DataVizPalette, getColorFromToken } from '../../utilities/colors';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
 import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
+import { IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
@@ -157,15 +158,31 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (jsonObj: any): I
       return series.y.map((yValue: string, i: number) => ({
         x: series.x[i],
         y: yValue,
-        legend: series.name,
+        legend: yValue,
         color: series.marker?.color || getNextColor(index),
       }));
     })
     .flat();
 
+  const chartHeight = layout.height || 350;
+  const margin = layout.margin?.l || 0;
+  const padding = layout.margin?.pad || 0;
+  const availableHeight = chartHeight - margin - padding;
+  const numberOfBars = data[0].y.length;
+  const gapFactor = 0.5;
+  const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));
+
   return {
     data: chartData,
     chartTitle: layout.title || '',
+    barHeight,
+    showYAxisLables: true,
+    styles: {
+      root: {
+        height: chartHeight,
+        width: layout.width || 600,
+      },
+    },
   };
 };
 
@@ -251,6 +268,53 @@ export const transformPlotlyJsonToSankeyProps = (jsonObj: any): ISankeyChartProp
     styles,
     shouldResize,
     enableReflow: true,
+  };
+};
+
+export const transformPlotlyJsonToGaugeProps = (jsonObj: any): IGaugeChartProps => {
+  const { data, layout } = jsonObj;
+  const firstData = data[0];
+
+  const segments = firstData.gauge?.steps?.map((step: any, index: number): IGaugeChartSegment => {
+    return {
+      legend: step.name || `Segment ${index + 1}`,
+      size: step.range?.[1] - step.range?.[0],
+      color: step.color || getNextColor(index),
+    };
+  });
+
+  let sublabel: string | undefined;
+  let sublabelColor: string | undefined;
+  if (typeof firstData.delta?.reference === 'number') {
+    const diff = firstData.value - firstData.delta.reference;
+    if (diff >= 0) {
+      sublabel = `\u25B2 ${diff}`;
+      sublabelColor = firstData.delta.increasing?.color || getColorFromToken(DataVizPalette.success);
+    } else {
+      sublabel = `\u25BC ${Math.abs(diff)}`;
+      sublabelColor = firstData.delta.decreasing?.color || getColorFromToken(DataVizPalette.error);
+    }
+  }
+
+  const styles: IGaugeChartProps['styles'] = {
+    sublabel: {
+      fill: sublabelColor,
+    },
+  };
+
+  return {
+    segments,
+    chartValue: firstData.value,
+    chartTitle: firstData.title?.text,
+    sublabel,
+    // range values can be null
+    minValue: firstData.gauge?.axis?.range?.[0] ?? undefined,
+    maxValue: firstData.gauge?.axis?.range?.[1] ?? undefined,
+    chartValueFormat: () => firstData.value,
+    width: layout?.width,
+    height: layout?.height,
+    hideLegend: true,
+    styles,
   };
 };
 
