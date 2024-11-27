@@ -11,8 +11,6 @@ import type { RatingProps, RatingState } from './Rating.types';
 import { RatingItem } from '../../RatingItem';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
 
-const defaultItemLabel = (num: number) => num + '';
-
 /**
  * Create the state required to render Rating.
  *
@@ -33,7 +31,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
     onChange,
     step = 1,
     size = 'extra-large',
-    itemLabel = defaultItemLabel,
+    itemLabel,
   } = props;
 
   const [value, setValue] = useControllableState({
