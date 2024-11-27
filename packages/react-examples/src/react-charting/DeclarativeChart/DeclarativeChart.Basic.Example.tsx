@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { DeclarativeChart, DeclarativeChartProps } from '@fluentui/react-charting';
-import { areaSchema } from '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema/fluent_area';
-import { donutSchema } from '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema/fluent_donut';
-import { gaugeSchema } from '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema/fluent_gauge';
-import { heatmapSchema } from '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema/fluent_heatmap';
-import { hbcSchema } from '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema/fluent_horizontalbar';
-import { lineSchema } from '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema/fluent_line';
-import { pieSchema } from '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema/fluent_pie';
-import { sankeySchema } from '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema/fluent_sankey';
-import { vbcHistogramSchema } from '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema/fluent_verticalbar_histogram';
-import { vbcSchema } from '@fluentui/react-examples/src/react-charting/DeclarativeChart/schema/fluent_verticalbar';
+import { areaSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_area';
+import { donutSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_donut';
+import { gaugeSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_gauge';
+import { heatmapSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_heatmap';
+import { hbcSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_horizontalbar';
+import { lineSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_line';
+import { pieSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_pie';
+import { sankeySchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_sankey';
+import { vbcHistogramSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_verticalbar_histogram';
+import { vbcSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_verticalbar';
 
 interface IDeclarativeChartState {
   selectedChoice: string;
@@ -38,8 +38,8 @@ const schemas: any[] = [
   { key: 'linechart', schema: lineSchema },
   { key: 'piechart', schema: pieSchema },
   { key: 'sankeychart', schema: sankeySchema },
-  { key: 'verticalbarchart', schema: vbcHistogramSchema },
-  { key: 'verticalbar_histogramchart', schema: vbcSchema },
+  { key: 'verticalbarchart', schema: vbcSchema },
+  { key: 'verticalbar_histogramchart', schema: vbcHistogramSchema },
 ];
 
 const dropdownStyles = { dropdown: { width: 200 } };
