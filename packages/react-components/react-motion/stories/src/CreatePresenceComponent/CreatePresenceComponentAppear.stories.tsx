@@ -1,18 +1,17 @@
 import {
-  createMotionComponent,
+  createPresenceComponent,
   Field,
   makeStyles,
   mergeClasses,
   type MotionImperativeRef,
   motionTokens,
-  tokens,
   Slider,
-  ToggleButton,
+  Switch,
+  tokens,
 } from '@fluentui/react-components';
-import { PlayFilled, PauseFilled } from '@fluentui/react-icons';
 import * as React from 'react';
 
-import description from './MotionArrays.stories.md';
+import description from './CreatePresenceComponentAppear.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -52,81 +51,53 @@ const useClasses = makeStyles({
     textWrap: 'nowrap',
   },
 
-  balloon: {
-    display: 'inline-block',
-    width: '80px',
-    height: '100px',
+  item: {
     backgroundColor: tokens.colorBrandBackground,
-    borderRadius: '80%',
-    position: 'relative',
-    boxShadow: 'inset -10px -10px 0 rgba(0,0,0,0.07)',
-    margin: '20px 30px',
-    zIndex: 1,
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
+    borderRadius: '50%',
 
-    '::before': {
-      content: "'▲'",
-      fontSize: '20px',
-      color: tokens.colorCompoundBrandBackgroundPressed,
-      display: 'block',
-      textAlign: 'center',
-      width: '100%',
-      position: 'absolute',
-      bottom: '-12px',
-      zIndex: -1,
-    },
+    width: '100px',
+    height: '100px',
   },
 });
 
-const FadeFastGrowSlow = createMotionComponent([
-  {
+const Fade = createPresenceComponent({
+  enter: {
     keyframes: [{ opacity: 0 }, { opacity: 1 }],
-    duration: motionTokens.durationNormal,
-    easing: motionTokens.curveLinear,
+    duration: motionTokens.durationSlow,
   },
-  {
-    keyframes: [{ transform: 'scale(0)' }, { transform: 'scale(1)' }],
-    duration: motionTokens.durationUltraSlow,
-    easing: motionTokens.curveEasyEase,
+  exit: {
+    keyframes: [{ opacity: 1 }, { opacity: 0 }],
+    duration: motionTokens.durationSlow,
   },
-]);
+});
 
-export const MotionArrays = () => {
+export const CreatePresenceComponentAppear = () => {
   const classes = useClasses();
-
   const motionRef = React.useRef<MotionImperativeRef>();
-  const ref = React.useRef<HTMLDivElement>(null);
 
-  const [playbackRate, setPlaybackRate] = React.useState<number>(10);
-  const [isRunning, setIsRunning] = React.useState<boolean>(false);
+  const [playbackRate, setPlaybackRate] = React.useState<number>(30);
+  const [isMounted, setIsMounted] = React.useState<boolean>(false);
 
   // Heads up!
   // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
     motionRef.current?.setPlaybackRate(playbackRate / 100);
-  }, [playbackRate]);
-  React.useEffect(() => {
-    motionRef.current?.setPlayState(isRunning ? 'running' : 'paused');
-  }, [isRunning]);
+  }, [playbackRate, isMounted]);
 
   return (
     <div className={classes.container}>
       <div className={classes.card}>
-        <FadeFastGrowSlow imperativeRef={motionRef}>
-          <div ref={ref} className={classes.balloon} />
-        </FadeFastGrowSlow>
+        {isMounted && (
+          <Fade appear imperativeRef={motionRef} visible>
+            <div className={classes.item} />
+          </Fade>
+        )}
       </div>
-
       <div className={classes.controls}>
-        <div>
-          <ToggleButton
-            icon={isRunning ? <PauseFilled /> : <PlayFilled />}
-            appearance="subtle"
-            checked={isRunning}
-            onClick={() => setIsRunning(v => !v)}
-          >
-            {isRunning ? 'Pause' : 'Play'}
-          </ToggleButton>
-        </div>
+        <Field className={classes.field}>
+          <Switch label="Mount an element?" checked={isMounted} onChange={() => setIsMounted(v => !v)} />
+        </Field>
         <Field
           className={mergeClasses(classes.field, classes.sliderField)}
           label={{
@@ -141,7 +112,6 @@ export const MotionArrays = () => {
         >
           <Slider
             aria-valuetext={`Value is ${playbackRate}%`}
-            className={mergeClasses(classes.field, classes.sliderField)}
             value={playbackRate}
             onChange={(ev, data) => setPlaybackRate(data.value)}
             min={0}
@@ -154,7 +124,7 @@ export const MotionArrays = () => {
   );
 };
 
-MotionArrays.parameters = {
+CreatePresenceComponentAppear.parameters = {
   docs: {
     description: {
       story: description,
