@@ -5,12 +5,14 @@ import {
   mergeClasses,
   type MotionImperativeRef,
   motionTokens,
-  Slider,
   tokens,
+  Slider,
+  ToggleButton,
 } from '@fluentui/react-components';
+import { PlayFilled, PauseFilled } from '@fluentui/react-icons';
 import * as React from 'react';
 
-import description from './MotionFunctions.stories.md';
+import description from './CreateMotionComponentArrays.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -29,7 +31,6 @@ const useClasses = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
     padding: '10px',
-    minHeight: '180px',
   },
   controls: {
     display: 'flex',
@@ -51,50 +52,81 @@ const useClasses = makeStyles({
     textWrap: 'nowrap',
   },
 
-  item: {
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorBrandBackground}`,
-    padding: '8px',
-    width: '300px',
-    overflow: 'hidden',
+  balloon: {
+    display: 'inline-block',
+    width: '80px',
+    height: '100px',
+    backgroundColor: tokens.colorBrandBackground,
+    borderRadius: '80%',
+    position: 'relative',
+    boxShadow: 'inset -10px -10px 0 rgba(0,0,0,0.07)',
+    margin: '20px 30px',
+    zIndex: 1,
+
+    '::before': {
+      content: "'▲'",
+      fontSize: '20px',
+      color: tokens.colorCompoundBrandBackgroundPressed,
+      display: 'block',
+      textAlign: 'center',
+      width: '100%',
+      position: 'absolute',
+      bottom: '-12px',
+      zIndex: -1,
+    },
   },
-  description: { margin: '5px' },
 });
 
-const Grow = createMotionComponent(({ element }) => ({
-  duration: motionTokens.durationUltraSlow,
-  keyframes: [
-    { opacity: 0, maxHeight: `${element.scrollHeight / 2}px` },
-    { opacity: 1, maxHeight: `${element.scrollHeight}px` },
-    { opacity: 0, maxHeight: `${element.scrollHeight / 2}px` },
-  ],
-  iterations: Infinity,
-}));
+const FadeFastGrowSlow = createMotionComponent([
+  {
+    keyframes: [{ opacity: 0 }, { opacity: 1 }],
+    duration: motionTokens.durationNormal,
+    easing: motionTokens.curveLinear,
+  },
+  {
+    keyframes: [{ transform: 'scale(0)' }, { transform: 'scale(1)' }],
+    duration: motionTokens.durationUltraSlow,
+    easing: motionTokens.curveEasyEase,
+  },
+]);
 
-export const MotionFunctions = () => {
+export const CreateMotionComponentArrays = () => {
   const classes = useClasses();
 
   const motionRef = React.useRef<MotionImperativeRef>();
-  const [playbackRate, setPlaybackRate] = React.useState<number>(20);
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  const [playbackRate, setPlaybackRate] = React.useState<number>(10);
+  const [isRunning, setIsRunning] = React.useState<boolean>(false);
 
   // Heads up!
   // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
     motionRef.current?.setPlaybackRate(playbackRate / 100);
   }, [playbackRate]);
+  React.useEffect(() => {
+    motionRef.current?.setPlayState(isRunning ? 'running' : 'paused');
+  }, [isRunning]);
 
   return (
     <div className={classes.container}>
       <div className={classes.card}>
-        <Grow imperativeRef={motionRef}>
-          <div className={classes.item}>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed vel lectus. Donec odio tempus molestie,
-            porttitor ut, iaculis quis, sem. Integer vulputate sem a nibh rutrum consequat. Etiam quis quam. Curabitur
-            sagittis hendrerit ante. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede.
-          </div>
-        </Grow>
+        <FadeFastGrowSlow imperativeRef={motionRef}>
+          <div ref={ref} className={classes.balloon} />
+        </FadeFastGrowSlow>
       </div>
 
       <div className={classes.controls}>
+        <div>
+          <ToggleButton
+            icon={isRunning ? <PauseFilled /> : <PlayFilled />}
+            appearance="subtle"
+            checked={isRunning}
+            onClick={() => setIsRunning(v => !v)}
+          >
+            {isRunning ? 'Pause' : 'Play'}
+          </ToggleButton>
+        </div>
         <Field
           className={mergeClasses(classes.field, classes.sliderField)}
           label={{
@@ -122,7 +154,7 @@ export const MotionFunctions = () => {
   );
 };
 
-MotionFunctions.parameters = {
+CreateMotionComponentArrays.parameters = {
   docs: {
     description: {
       story: description,
