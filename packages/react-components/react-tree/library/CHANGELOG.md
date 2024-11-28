@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Mon, 18 Nov 2024 09:44:40 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Nov 2024 09:30:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.8.7)
+
+Thu, 28 Nov 2024 09:30:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.8.6..@fluentui/react-tree_v9.8.7)
+
+### Patches
+
+- bugfix: ensure that onActionVisibilityChange is properly invoked ([PR #33320](https://github.com/microsoft/fluentui/pull/33320) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-motion-components-preview to v0.3.1 ([PR #33331](https://github.com/microsoft/fluentui/pull/33331) by beachball)
+- Bump @fluentui/react-motion to v9.6.2 ([PR #33331](https://github.com/microsoft/fluentui/pull/33331) by beachball)
 
 ## [9.8.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.8.6)
 

@@ -1,22 +1,21 @@
 import {
-  createPresenceComponent,
+  createMotionComponent,
   Field,
   makeStyles,
   mergeClasses,
   type MotionImperativeRef,
   motionTokens,
   Slider,
-  Switch,
   tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
-import description from './PresenceUnmountOnExit.stories.md';
+import description from './CreateMotionComponentFunctionParams.stories.md';
 
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplate: `"card card" "controls ." / 1fr 1fr`,
+    gridTemplate: `"cardA cardB" "controls ." / 1fr 1fr`,
     gap: '20px 10px',
   },
   card: {
@@ -24,7 +23,6 @@ const useClasses = makeStyles({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'end',
-    gridArea: 'card',
 
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
@@ -51,6 +49,12 @@ const useClasses = makeStyles({
     textWrap: 'nowrap',
   },
 
+  cardA: {
+    gridArea: 'cardA',
+  },
+  cardB: {
+    gridArea: 'cardB',
+  },
   item: {
     backgroundColor: tokens.colorBrandBackground,
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
@@ -59,52 +63,58 @@ const useClasses = makeStyles({
     width: '100px',
     height: '100px',
   },
-});
-
-const Fade = createPresenceComponent({
-  enter: {
-    keyframes: [{ opacity: 0 }, { opacity: 1 }],
-    duration: motionTokens.durationSlow,
-  },
-  exit: {
-    keyframes: [{ opacity: 1 }, { opacity: 0 }],
-    duration: motionTokens.durationSlow,
+  description: {
+    fontFamily: tokens.fontFamilyMonospace,
+    borderRadius: tokens.borderRadiusMedium,
+    marginTop: '10px',
+    padding: '5px 10px',
+    backgroundColor: tokens.colorNeutralBackground1Pressed,
   },
 });
 
-export const PresenceUnmountOnExit = () => {
+const Scale = createMotionComponent<{ startFrom?: number }>(({ startFrom = 0.5 }) => {
+  return {
+    keyframes: [
+      { opacity: 0, transform: `scale(${startFrom})` },
+      { opacity: 1, transform: 'scale(1)' },
+      { opacity: 0, transform: `scale(${startFrom})` },
+    ],
+    duration: motionTokens.durationUltraSlow,
+    iterations: Infinity,
+  };
+});
+
+export const CreateMotionComponentFunctionParams = () => {
   const classes = useClasses();
-  const motionRef = React.useRef<MotionImperativeRef>();
 
-  const [playbackRate, setPlaybackRate] = React.useState<number>(30);
-  const [visible, setVisible] = React.useState<boolean>(true);
-  const [unmountOnExit, setUnmountOnExit] = React.useState<boolean>(true);
+  const motionBRef = React.useRef<MotionImperativeRef>();
+  const motionARef = React.useRef<MotionImperativeRef>();
+
+  const [playbackRate, setPlaybackRate] = React.useState<number>(20);
 
   // Heads up!
   // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
-    motionRef.current?.setPlaybackRate(playbackRate / 100);
-  }, [playbackRate, visible]);
+    motionARef.current?.setPlaybackRate(playbackRate / 100);
+    motionBRef.current?.setPlaybackRate(playbackRate / 100);
+  }, [playbackRate]);
 
   return (
     <div className={classes.container}>
-      <div className={classes.card}>
-        <Fade imperativeRef={motionRef} visible={visible} unmountOnExit={unmountOnExit}>
+      <div className={mergeClasses(classes.card, classes.cardA)}>
+        <Scale imperativeRef={motionARef} startFrom={0.1}>
           <div className={classes.item} />
-        </Fade>
+        </Scale>
+        <div className={classes.description}>startFrom=0.1</div>
+      </div>
+      <div className={mergeClasses(classes.card, classes.cardB)}>
+        <Scale imperativeRef={motionBRef} startFrom={0.8}>
+          <div className={classes.item} />
+        </Scale>
+        <div className={classes.description}>startFrom=0.8</div>
       </div>
 
       <div className={classes.controls}>
-        <Field className={classes.field}>
-          <Switch
-            label={<code>unmountOnExit</code>}
-            checked={unmountOnExit}
-            onChange={() => setUnmountOnExit(v => !v)}
-          />
-        </Field>
-        <Field className={classes.field}>
-          <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
-        </Field>
         <Field
           className={mergeClasses(classes.field, classes.sliderField)}
           label={{
@@ -132,7 +142,7 @@ export const PresenceUnmountOnExit = () => {
   );
 };
 
-PresenceUnmountOnExit.parameters = {
+CreateMotionComponentFunctionParams.parameters = {
   docs: {
     description: {
       story: description,

@@ -13,7 +13,7 @@ import {
 } from '@fluentui/react-components';
 import * as React from 'react';
 
-import description from './PresenceLifecycleCallbacks.stories.md';
+import description from './CreatePresenceComponentLifecycleCallbacks.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -98,7 +98,7 @@ const Fade = createPresenceComponent({
   },
 });
 
-export const PresenceLifecycleCallbacks = () => {
+export const CreatePresenceComponentLifecycleCallbacks = () => {
   const classes = useClasses();
   const logLabelId = useId();
 
@@ -177,7 +177,7 @@ export const PresenceLifecycleCallbacks = () => {
   );
 };
 
-PresenceLifecycleCallbacks.parameters = {
+CreatePresenceComponentLifecycleCallbacks.parameters = {
   docs: {
     description: {
       story: description,

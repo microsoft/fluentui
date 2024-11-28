@@ -11,12 +11,12 @@ import {
 } from '@fluentui/react-components';
 import * as React from 'react';
 
-import description from './PresenceMotionFunctionParams.stories.md';
+import description from './CreatePresenceComponentArrays.stories.md';
 
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplate: `"cardA cardB" "controls ." / 1fr 1fr`,
+    gridTemplate: `"card card" "controls ." / 1fr 1fr`,
     gap: '20px 10px',
   },
   card: {
@@ -24,6 +24,7 @@ const useClasses = makeStyles({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'end',
+    gridArea: 'card',
 
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
@@ -50,76 +51,71 @@ const useClasses = makeStyles({
     textWrap: 'nowrap',
   },
 
-  cardA: {
-    gridArea: 'cardA',
-  },
-  cardB: {
-    gridArea: 'cardB',
-  },
-  item: {
-    backgroundColor: tokens.colorBrandBackground,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
-    borderRadius: '50%',
-
-    width: '100px',
+  balloon: {
+    display: 'inline-block',
+    width: '80px',
     height: '100px',
-  },
-  description: {
-    fontFamily: tokens.fontFamilyMonospace,
-    borderRadius: tokens.borderRadiusMedium,
-    marginTop: '10px',
-    padding: '5px 10px',
-    backgroundColor: tokens.colorNeutralBackground1Pressed,
+    backgroundColor: tokens.colorBrandBackground,
+    borderRadius: '80%',
+    position: 'relative',
+    boxShadow: 'inset -10px -10px 0 rgba(0,0,0,0.07)',
+    margin: '20px 30px',
+    zIndex: 1,
+
+    '::before': {
+      content: "'▲'",
+      fontSize: '20px',
+      color: tokens.colorCompoundBrandBackgroundPressed,
+      display: 'block',
+      textAlign: 'center',
+      width: '100%',
+      position: 'absolute',
+      bottom: '-12px',
+      zIndex: -1,
+    },
   },
 });
 
-const Scale = createPresenceComponent<{ startFrom?: number }>(({ startFrom = 0.5 }) => {
-  const keyframes = [
-    { opacity: 0, transform: `scale(${startFrom})` },
-    { opacity: 1, transform: 'scale(1)' },
-  ];
-
-  return {
-    enter: {
-      keyframes,
-      duration: motionTokens.durationUltraSlow,
+const FastFadeSlowScale = createPresenceComponent({
+  enter: [
+    {
+      keyframes: [{ opacity: 0 }, { opacity: 1 }],
+      duration: motionTokens.durationFast,
+      easing: motionTokens.curveLinear,
     },
-    exit: {
-      keyframes: [...keyframes].reverse(),
+    {
+      keyframes: [{ transform: 'scale(0)' }, { transform: 'scale(1)' }],
       duration: motionTokens.durationSlow,
+      easing: motionTokens.curveEasyEase,
     },
-  };
+  ],
+  exit: {
+    keyframes: [{ opacity: 1 }, { opacity: 0 }],
+    duration: motionTokens.durationSlow,
+  },
 });
 
-export const PresenceMotionFunctionParams = () => {
+export const CreatePresenceComponentArrays = () => {
   const classes = useClasses();
 
-  const motionBRef = React.useRef<MotionImperativeRef>();
-  const motionARef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>();
+  const ref = React.useRef<HTMLDivElement>(null);
 
-  const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [visible, setVisible] = React.useState<boolean>(true);
+  const [playbackRate, setPlaybackRate] = React.useState<number>(30);
 
   // Heads up!
   // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
-    motionARef.current?.setPlaybackRate(playbackRate / 100);
-    motionBRef.current?.setPlaybackRate(playbackRate / 100);
+    motionRef.current?.setPlaybackRate(playbackRate / 100);
   }, [playbackRate, visible]);
 
   return (
     <div className={classes.container}>
-      <div className={mergeClasses(classes.card, classes.cardA)}>
-        <Scale imperativeRef={motionARef} startFrom={0.1} visible={visible}>
-          <div className={classes.item} />
-        </Scale>
-        <div className={classes.description}>startFrom=0.1</div>
-      </div>
-      <div className={mergeClasses(classes.card, classes.cardB)}>
-        <Scale imperativeRef={motionBRef} startFrom={0.8} visible={visible}>
-          <div className={classes.item} />
-        </Scale>
-        <div className={classes.description}>startFrom=0.8</div>
+      <div className={classes.card}>
+        <FastFadeSlowScale imperativeRef={motionRef} visible={visible}>
+          <div ref={ref} className={classes.balloon} />
+        </FastFadeSlowScale>
       </div>
 
       <div className={classes.controls}>
@@ -152,7 +148,7 @@ export const PresenceMotionFunctionParams = () => {
   );
 };
 
-PresenceMotionFunctionParams.parameters = {
+CreatePresenceComponentArrays.parameters = {
   docs: {
     description: {
       story: description,

@@ -1,16 +1,17 @@
 import {
-  createMotionComponent,
+  createPresenceComponent,
   Field,
   makeStyles,
   mergeClasses,
   type MotionImperativeRef,
-  motionTokens,
+  type PresenceMotionFn,
   Slider,
+  Switch,
   tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
-import description from './MotionFunctionParams.stories.md';
+import description from './CreatePresenceComponentFunctions.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -28,6 +29,8 @@ const useClasses = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
     padding: '10px',
+
+    minHeight: '230px',
   },
   controls: {
     display: 'flex',
@@ -56,12 +59,10 @@ const useClasses = makeStyles({
     gridArea: 'cardB',
   },
   item: {
-    backgroundColor: tokens.colorBrandBackground,
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
-    borderRadius: '50%',
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorBrandBackground}`,
+    padding: '8px',
 
-    width: '100px',
-    height: '100px',
+    width: '300px',
   },
   description: {
     fontFamily: tokens.fontFamilyMonospace,
@@ -72,49 +73,63 @@ const useClasses = makeStyles({
   },
 });
 
-const Scale = createMotionComponent<{ startFrom?: number }>(({ startFrom = 0.5 }) => {
-  return {
-    keyframes: [
-      { opacity: 0, transform: `scale(${startFrom})` },
-      { opacity: 1, transform: 'scale(1)' },
-      { opacity: 0, transform: `scale(${startFrom})` },
-    ],
-    duration: motionTokens.durationUltraSlow,
-    iterations: Infinity,
-  };
-});
+const collapseMotion: PresenceMotionFn = ({ element }) => {
+  const duration = 500;
+  const keyframes = [
+    { opacity: 0, maxHeight: '0px', overflow: 'hidden' },
+    { opacity: 1, maxHeight: `${element.scrollHeight}px`, overflow: 'hidden' },
+  ];
 
-export const MotionFunctionParams = () => {
+  return {
+    enter: { duration, keyframes },
+    exit: { duration, keyframes: [...keyframes].reverse() },
+  };
+};
+const Collapse = createPresenceComponent(collapseMotion);
+
+export const CreatePresenceComponentFunctions = () => {
   const classes = useClasses();
 
-  const motionBRef = React.useRef<MotionImperativeRef>();
-  const motionARef = React.useRef<MotionImperativeRef>();
+  const motionInRef = React.useRef<MotionImperativeRef>();
+  const motionOutRef = React.useRef<MotionImperativeRef>();
 
-  const [playbackRate, setPlaybackRate] = React.useState<number>(20);
+  const [playbackRate, setPlaybackRate] = React.useState<number>(30);
+  const [visible, setVisible] = React.useState<boolean>(true);
 
   // Heads up!
   // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
-    motionARef.current?.setPlaybackRate(playbackRate / 100);
-    motionBRef.current?.setPlaybackRate(playbackRate / 100);
-  }, [playbackRate]);
+    motionInRef.current?.setPlaybackRate(playbackRate / 100);
+    motionOutRef.current?.setPlaybackRate(playbackRate / 100);
+  }, [playbackRate, visible]);
 
   return (
     <div className={classes.container}>
       <div className={mergeClasses(classes.card, classes.cardA)}>
-        <Scale imperativeRef={motionARef} startFrom={0.1}>
-          <div className={classes.item} />
-        </Scale>
-        <div className={classes.description}>startFrom=0.1</div>
+        <Collapse imperativeRef={motionInRef} visible={visible}>
+          <div className={classes.item}>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed vel lectus. Donec odio tempus molestie,
+            porttitor ut, iaculis quis, sem. Integer vulputate sem a nibh rutrum consequat. Etiam quis quam. Curabitur
+            sagittis hendrerit ante. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede.
+          </div>
+        </Collapse>
+        <div className={classes.description}>normal state</div>
       </div>
       <div className={mergeClasses(classes.card, classes.cardB)}>
-        <Scale imperativeRef={motionBRef} startFrom={0.8}>
-          <div className={classes.item} />
-        </Scale>
-        <div className={classes.description}>startFrom=0.8</div>
+        <Collapse imperativeRef={motionOutRef} visible={!visible}>
+          <div className={classes.item}>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed vel lectus. Donec odio tempus molestie,
+            porttitor ut, iaculis quis, sem. Integer vulputate sem a nibh rutrum consequat. Etiam quis quam. Curabitur
+            sagittis hendrerit ante. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede.
+          </div>
+        </Collapse>
+        <div className={classes.description}>reversed state</div>
       </div>
 
       <div className={classes.controls}>
+        <Field className={classes.field}>
+          <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
+        </Field>
         <Field
           className={mergeClasses(classes.field, classes.sliderField)}
           label={{
@@ -129,7 +144,6 @@ export const MotionFunctionParams = () => {
         >
           <Slider
             aria-valuetext={`Value is ${playbackRate}%`}
-            className={mergeClasses(classes.field, classes.sliderField)}
             value={playbackRate}
             onChange={(ev, data) => setPlaybackRate(data.value)}
             min={0}
@@ -142,7 +156,7 @@ export const MotionFunctionParams = () => {
   );
 };
 
-MotionFunctionParams.parameters = {
+CreatePresenceComponentFunctions.parameters = {
   docs: {
     description: {
       story: description,

@@ -3,13 +3,12 @@ import {
   Field,
   makeStyles,
   type MotionImperativeRef,
-  PresenceComponentProps,
   tokens,
   Switch,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
-import description from './CreatePresenceComponent.stories.md';
+import description from './CreatePresenceComponentFactory.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -68,7 +67,7 @@ const DropIn = createPresenceComponent({
   },
 });
 
-export const CreatePresenceComponent = (props: PresenceComponentProps) => {
+export const CreatePresenceComponentFactory = () => {
   const classes = useClasses();
 
   const motionRef = React.useRef<MotionImperativeRef>();
@@ -91,7 +90,7 @@ export const CreatePresenceComponent = (props: PresenceComponentProps) => {
   );
 };
 
-CreatePresenceComponent.parameters = {
+CreatePresenceComponentFactory.parameters = {
   docs: {
     description: {
       story: description,
