@@ -326,14 +326,16 @@ export const transformPlotlyJsonToSankeyProps = (jsonObj: any): ISankeyChartProp
 };
 
 export const transformPlotlyJsonToGaugeProps = (jsonObj: any): IGaugeChartProps => {
+  const getColor = UseColorMapping();
   const { data, layout } = jsonObj;
   const firstData = data[0];
 
   const segments = firstData.gauge?.steps?.map((step: any, index: number): IGaugeChartSegment => {
+    const { color } = getColor(step?.color || '', index);
     return {
       legend: step.name || `Segment ${index + 1}`,
       size: step.range?.[1] - step.range?.[0],
-      color: step.color || getNextColor(index),
+      color,
     };
   });
 
@@ -343,10 +345,12 @@ export const transformPlotlyJsonToGaugeProps = (jsonObj: any): IGaugeChartProps 
     const diff = firstData.value - firstData.delta.reference;
     if (diff >= 0) {
       sublabel = `\u25B2 ${diff}`;
-      sublabelColor = firstData.delta.increasing?.color || getColorFromToken(DataVizPalette.success);
+      const { color } = getColor(firstData.delta.increasing?.color || getColorFromToken(DataVizPalette.success), 0);
+      sublabelColor = color;
     } else {
       sublabel = `\u25BC ${Math.abs(diff)}`;
-      sublabelColor = firstData.delta.decreasing?.color || getColorFromToken(DataVizPalette.error);
+      const { color } = getColor(firstData.delta.decreasing?.color || getColorFromToken(DataVizPalette.error), 0);
+      sublabelColor = color;
     }
   }
 
