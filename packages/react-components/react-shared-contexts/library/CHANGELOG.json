@@ -2,6 +2,35 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Mon, 11 Nov 2024 10:00:54 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.21.0",
+      "version": "9.21.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "2558ddce7329d2a1c1f76fa1e5f614918fe6dcd9",
+            "comment": "chore: replace npm-scripts and just-scrtips with nx inferred tasks"
+          }
+        ],
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "69dc72ae5c62762e7592ed29cdd445a24b025d6c",
+            "comment": "feat: Add custom style hooks for Carousel components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.1.22",
+            "commit": "027ab04e8d35e90f7d3cecf78c12d86b600e9716"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Oct 2024 17:17:50 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.20.2",
       "version": "9.20.2",

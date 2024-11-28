@@ -19,7 +19,7 @@ export const useAlphaSlider_unstable = (
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['onChange'],
+    excludedPropNames: ['onChange', 'color'],
   });
 
   const {

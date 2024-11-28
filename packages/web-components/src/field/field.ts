@@ -1,7 +1,7 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 import { toggleState } from '../utils/element-internals.js';
-import { LabelPosition, SlottableInput, ValidationFlags } from './field.options.js';
+import { LabelPosition, type SlottableInput, ValidationFlags } from './field.options.js';
 
 /**
  * A Field Custom HTML Element.

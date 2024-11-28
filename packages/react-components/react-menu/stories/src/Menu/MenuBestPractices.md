@@ -8,6 +8,7 @@
 - Use the `hasIcons` prop for alignment if only some menu items have icons.
 - Use the `hasCheckmarks` prop for alignment if only some menu items are selectable.
 - Use `MenuItemLink` if the menu item should navigate to a new page
+- Use `positioning={{ autoSize: true }}` if the Menu could potentially be clipped by the top of the page when forced to render above the trigger, or render past the bottom of the page when forced to render below the trigger (these can happen at high zoom or on small devices). Optionally: use `autoSize: true` for all Menus to force them to stay within the viewport and have their own scrollbars if there is overflow.
 
 ### Don't
 

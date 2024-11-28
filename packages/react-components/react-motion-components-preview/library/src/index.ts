@@ -1,10 +1,11 @@
 export {
   Collapse,
   CollapseSnappy,
-  CollapseExaggerated,
+  CollapseRelaxed,
   CollapseDelayed,
   createCollapsePresence,
   createCollapseDelayedPresence,
 } from './components/Collapse';
-export { Fade, FadeSnappy, FadeExaggerated, createFadePresence } from './components/Fade';
-export { Scale, ScaleSnappy, ScaleExaggerated } from './components/Scale';
+export type { CollapseRuntimeParams } from './components/Collapse';
+export { Fade, FadeSnappy, FadeRelaxed, createFadePresence } from './components/Fade';
+export { Scale, ScaleSnappy, ScaleRelaxed } from './components/Scale';

@@ -12,32 +12,17 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "just-scripts build",
-    "build-storybook": "storybook build -o ./dist/storybook",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "start": "yarn storybook",
-    "test": "jest --passWithNoTests",
-    "storybook": "storybook dev",
-    "type-check": "just-scripts type-check",
-    "generate-api": "just-scripts generate-api",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
-  },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.55.1",
-    "@fluentui/react-context-selector": "^9.1.68",
+    "@fluentui/react-components": "^9.56.3",
+    "@fluentui/react-context-selector": "^9.1.69",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",
-    "@fluentui/react-theme": "^9.1.21",
-    "@fluentui/react-utilities": "^9.18.16",
+    "@fluentui/react-theme": "^9.1.22",
+    "@fluentui/react-utilities": "^9.18.17",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",
     "dedent": "^1.2.0",

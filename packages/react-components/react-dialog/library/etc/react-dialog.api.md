@@ -15,7 +15,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
-import { Provider } from 'react';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -169,7 +168,7 @@ export type DialogSurfaceElement = HTMLElement;
 export type DialogSurfaceProps = ComponentProps<Partial<DialogSurfaceSlots>> & Pick<PortalProps, 'mountNode'>;
 
 // @public (undocumented)
-export const DialogSurfaceProvider: Provider<boolean | undefined>;
+export const DialogSurfaceProvider: React_2.Provider<boolean | undefined>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {

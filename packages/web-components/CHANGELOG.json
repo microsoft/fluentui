@@ -2,6 +2,73 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 07 Nov 2024 04:07:40 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.73",
+      "version": "3.0.0-beta.73",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "70d3d23742e1914983cde0c9a16bb36e1a35165a",
+            "comment": "feat: add Tooltip component"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2aa7c97cbe6e14931f81f8765f334f0560cd4ee4",
+            "comment": "chore: resolve TS errors within web-components build"
+          },
+          {
+            "author": "viktorgenaev@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "d6af8e30ddd353c900441eea489b4a5aea0db088",
+            "comment": "update tsconfig to be compatiable with 5.2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Oct 2024 04:06:53 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.72",
+      "version": "3.0.0-beta.72",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "36474e58a4a9721954c6badad419c9e93df1fc6f",
+            "comment": "add swapStates function for attribute-driven internal states"
+          }
+        ],
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "8614d041a6a8b329099c40009cff9c9ae63aceac",
+            "comment": "identify type-only imports and exports"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Oct 2024 04:06:49 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.71",
+      "version": "3.0.0-beta.71",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "62d8aaa93842818bb51626606f8e93a8358924d4",
+            "comment": "replace state partials with stateSelector function"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Oct 2024 20:54:39 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.70",
       "version": "3.0.0-beta.70",

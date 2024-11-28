@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Tue, 15 Oct 2024 17:17:51 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Nov 2024 09:44:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.15.22)
+
+Mon, 18 Nov 2024 09:44:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.15.21..@fluentui/react-table_v9.15.22)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.43 ([PR #33229](https://github.com/microsoft/fluentui/pull/33229) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.41 ([PR #33229](https://github.com/microsoft/fluentui/pull/33229) by beachball)
+- Bump @fluentui/react-radio to v9.2.36 ([PR #33229](https://github.com/microsoft/fluentui/pull/33229) by beachball)
+
+## [9.15.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.15.21)
+
+Mon, 11 Nov 2024 10:00:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.15.20..@fluentui/react-table_v9.15.21)
+
+### Patches
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- fix: subtle selection should apply correctly to header rows ([PR #33104](https://github.com/microsoft/fluentui/pull/33104) by lingfangao@hotmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.8 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-aria to v9.13.9 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-avatar to v9.6.42 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.40 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.69 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-radio to v9.2.35 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.21.0 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-tabster to v9.23.0 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-theme to v9.1.22 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-utilities to v9.18.17 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.46 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
 
 ## [9.15.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.15.20)
 

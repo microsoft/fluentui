@@ -10,7 +10,7 @@ describe('ColorPicker', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<ColorPicker color="red" />);
+    const result = render(<ColorPicker color={{ h: 0, s: 1, v: 1 }} />);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <div

@@ -1,5 +1,4 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { wrapInBounds } from '@microsoft/fast-web-utilities';
 import {
   keyArrowDown,
   keyArrowLeft,
@@ -8,11 +7,12 @@ import {
   keyEnd,
   keyHome,
   uniqueId,
+  wrapInBounds,
 } from '@microsoft/fast-web-utilities';
 import { getDirection } from '../utils/index.js';
-import { toggleState } from '../utils/element-internals.js';
+import { swapStates, toggleState } from '../utils/element-internals.js';
 import { isFocusableElement } from '../utils/focusable-element.js';
-import { Tab } from '../index.js';
+import type { Tab } from '../tab/tab.js';
 import { TablistAppearance, TablistOrientation, TablistSize } from './tablist.options.js';
 
 type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
@@ -62,12 +62,7 @@ export class BaseTablist extends FASTElement {
   protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void {
     this.elementInternals.ariaOrientation = next ?? TablistOrientation.horizontal;
 
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, TablistOrientation);
 
     if (this.$fastController.isConnected) {
       this.setTabs();
@@ -308,12 +303,7 @@ export class Tablist extends BaseTablist {
    * @internal
    */
   protected appearanceChanged(prev: TablistAppearance, next: TablistAppearance): void {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, TablistAppearance);
   }
 
   /**
@@ -328,12 +318,7 @@ export class Tablist extends BaseTablist {
    * @internal
    */
   protected sizeChanged(prev: TablistSize, next: TablistSize): void {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, TablistSize);
   }
 
   /**

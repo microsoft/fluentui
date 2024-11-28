@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { VirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
 import { makeStyles } from '@fluentui/react-components';
-import { useEffect } from 'react';
 
 const useStyles = makeStyles({
   child: {
@@ -19,7 +18,7 @@ export const AutoMeasure = () => {
   // Array size ref stores a list of random num for div sizing and callbacks
   const arraySize = React.useRef(new Array<number>(childLength).fill(minHeight));
 
-  useEffect(() => {
+  React.useEffect(() => {
     // Set random heights on init (to be measured)
     for (let i = 0; i < childLength; i++) {
       // if (i % 10 == 0) {

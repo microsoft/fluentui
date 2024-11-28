@@ -2,7 +2,7 @@ import { html, repeat } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 import { LabelPosition, ValidationFlags } from '../field/field.options.js';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
-import { Checkbox as FluentCheckbox } from './checkbox.js';
+import type { Checkbox as FluentCheckbox } from './checkbox.js';
 import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
 type Story = StoryObj<FluentCheckbox>;

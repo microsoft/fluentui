@@ -1,8 +1,18 @@
 # Change Log - @fluentui/babel-preset-global-context
 
-This log was last generated on Tue, 15 Oct 2024 17:17:53 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Nov 2024 10:01:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.76](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-global-context_v9.0.0-beta.76)
+
+Mon, 11 Nov 2024 10:01:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-preset-global-context_v9.0.0-beta.75..@fluentui/babel-preset-global-context_v9.0.0-beta.76)
+
+### Changes
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- Bump @fluentui/global-context to v9.0.0-beta.76 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
 
 ## [9.0.0-beta.75](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-global-context_v9.0.0-beta.75)
 

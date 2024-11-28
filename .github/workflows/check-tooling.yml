@@ -35,6 +35,9 @@ jobs:
 
       - run: yarn nx list @fluentui/workspace-plugin
 
+      # pre-build react-jsx-runtime - as generate-api executor doesn't provide copy assets capability
+      - run: yarn nx run react-jsx-runtime:build
+
       - run: yarn nx g @fluentui/workspace-plugin:react-library --name hello-world --owner '@microsoft/fluentui-react-build' --kind standard --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:react-component --project hello-world-preview --name Aiur --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:cypress-component-configuration --project hello-world-preview --no-interactive

@@ -218,9 +218,9 @@
     "doctrine": "3.0.0",
     "dotparser": "1.1.1",
     "ejs": "3.1.10",
-    "embla-carousel": "8.3.0",
-    "embla-carousel-autoplay": "8.3.0",
-    "embla-carousel-fade": "8.3.0",
+    "embla-carousel": "8.5.1",
+    "embla-carousel-autoplay": "8.5.1",
+    "embla-carousel-fade": "8.5.1",
     "enquirer": "2.3.6",
     "enzyme": "3.10.0",
     "enzyme-to-json": "3.6.2",
@@ -340,7 +340,7 @@
     "tsconfig-paths": "4.2.0",
     "tsconfig-paths-webpack-plugin": "4.1.0",
     "tslib": "2.6.3",
-    "typescript": "5.0.4",
+    "typescript": "5.2.2",
     "vinyl": "2.2.0",
     "webpack": "5.94.0",
     "webpack-bundle-analyzer": "4.10.1",
@@ -365,6 +365,8 @@
       "packages/fluentui/*",
       "packages/react-components/*",
       "packages/react-components/*/*",
+      "packages/charts/*",
+      "packages/charts/*/*",
       "scripts/*",
       "tools/*",
       "typings"
@@ -376,7 +378,9 @@
     "eslint": "8.57.0",
     "swc-loader": "^0.2.6",
     "prettier": "2.8.8",
-    "puppeteer": "19.6.0"
+    "puppeteer": "19.6.0",
+    "@microsoft/api-extractor/typescript": "5.2.2",
+    "ws": "8.17.1"
   },
   "nx": {
     "includedScripts": []

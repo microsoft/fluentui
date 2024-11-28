@@ -78,6 +78,9 @@ export const useTreeItemLayout_unstable = (
           event,
           type: event.type,
         } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
+        if (event.defaultPrevented) {
+          return;
+        }
         setIsActionsVisible(true);
       }
     },
@@ -97,6 +100,9 @@ export const useTreeItemLayout_unstable = (
           event,
           type: event.type,
         } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
+        if (event.defaultPrevented) {
+          return;
+        }
         setIsActionsVisible(true);
         return;
       }
@@ -108,6 +114,9 @@ export const useTreeItemLayout_unstable = (
         event,
         type: event.type,
       } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
+      if (event.defaultPrevented) {
+        return;
+      }
       setIsActionsVisible(false);
     },
     [setIsActionsVisible, onActionVisibilityChange, treeItemRef],
@@ -155,7 +164,7 @@ export const useTreeItemLayout_unstable = (
   const hasActions = Boolean(props.actions);
 
   React.useEffect(() => {
-    if (treeItemRef.current && hasActions && isActionsVisibleFromProps === undefined) {
+    if (treeItemRef.current && hasActions) {
       const treeItemElement = treeItemRef.current;
 
       const handleMouseOver = setActionsVisibleIfNotFromSubtree;
@@ -175,13 +184,7 @@ export const useTreeItemLayout_unstable = (
         treeItemElement.removeEventListener('blur', handleBlur);
       };
     }
-  }, [
-    hasActions,
-    treeItemRef,
-    isActionsVisibleFromProps,
-    setActionsVisibleIfNotFromSubtree,
-    setActionsInvisibleIfNotFromSubtree,
-  ]);
+  }, [hasActions, treeItemRef, setActionsVisibleIfNotFromSubtree, setActionsInvisibleIfNotFromSubtree]);
 
   return {
     components: {

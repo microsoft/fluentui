@@ -29,7 +29,7 @@ export const VerticalBarChartPageProps: IDocPageProps = {
   title: 'VerticalBarChart',
   componentName: 'VerticalBarChart',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/VerticalBarChart',
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/VerticalBarChart',
   examples: [
     {
       title: 'VerticalBarChart basic',

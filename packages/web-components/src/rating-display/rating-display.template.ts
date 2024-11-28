@@ -1,4 +1,4 @@
-import { elements, ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
+import { elements, type ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
 import { staticallyCompose } from '../utils/template-helpers.js';
 import type { RatingDisplay } from './rating-display.js';
 

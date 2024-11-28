@@ -158,14 +158,13 @@ describe('TagPicker', () => {
       cy.get('[data-testid="tag-picker-control"]').realClick();
       cy.get('[data-testid="tag-picker-list"]').should('not.be.visible');
     });
-    // FIXME: this test is flaky - make it more robust
-    it.skip('should open/close a listbox once surface (tag group) is clicked', () => {
+    it('should open/close a listbox once surface (tag group) is clicked', () => {
       mount(<TagPickerControlled defaultSelectedOptions={options} />);
       cy.get('[data-testid="tag-picker-list"]').should('not.exist');
-      cy.get('[data-testid="tag-picker-group"]').realClick();
+      cy.get('[data-testid="tag-picker-group"]').realClick({ x: 1, y: 1 }); // make sure to not click on tag
       cy.get('[data-testid="tag-picker-list"]').should('be.visible');
       cy.get('[data-testid="tag-picker-input"]').should('be.focused');
-      cy.get('[data-testid="tag-picker-group"]').realClick();
+      cy.get('[data-testid="tag-picker-group"]').realClick({ x: 1, y: 1 });
       cy.get('[data-testid="tag-picker-list"]').should('not.be.visible');
     });
     it('should not open/close a listbox once secondary action is clicked', () => {
@@ -321,6 +320,7 @@ describe('TagPicker', () => {
         cy.get(`[data-testid="tag--${options[options.length - 1]}"]`).should('not.be.focused');
         cy.get('[data-testid="tag-picker-input"]').should('have.value', 'Some Tex').should('be.focused');
       });
+      // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33173
       it('should move to last tag on Backspace key press on input, when input is not empty but the cursor is on the first character', () => {
         mount(<TagPickerControlled defaultSelectedOptions={options} />);
         cy.get('[data-testid="tag-picker-input"]').focus().realType('SomeText').realPress('Backspace');
@@ -329,6 +329,7 @@ describe('TagPicker', () => {
         cy.get('[data-testid="tag-picker-input"]').realPress(['ControlLeft', 'ArrowLeft']).realPress('Backspace');
         cy.get(`[data-testid="tag--${options[options.length - 1]}"]`).should('be.focused');
       });
+      // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33173
       it('should delete input content on Backspace when input is not empty and selected', () => {
         mount(<TagPickerControlled defaultSelectedOptions={options} />);
         cy.get('[data-testid="tag-picker-input"]').focus().realType('SomeText').realPress('Backspace');

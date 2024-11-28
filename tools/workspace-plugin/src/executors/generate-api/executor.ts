@@ -8,6 +8,7 @@ import { Extractor, ExtractorConfig, type IConfigFile } from '@microsoft/api-ext
 import type { GenerateApiExecutorSchema } from './schema';
 import type { PackageJson, TsConfig } from '../../types';
 import { measureEnd, measureStart } from '../../utils';
+import { isCI } from './lib/shared';
 
 const runExecutor: PromiseExecutor<GenerateApiExecutorSchema> = async (schema, context) => {
   measureStart('GenerateApiExecutor');
@@ -45,7 +46,8 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
 
   const project = context.projectsConfigurations!.projects[context.projectName!];
 
-  const resolveLocalFlag = Boolean(process.env.__FORCE_API_MD_UPDATE__) || isCI() ? false : resolvedSchema.local;
+  const resolveLocalFlag = Boolean(process.env.__FORCE_API_MD_UPDATE__) || (isCI() ? false : resolvedSchema.local);
+
   const projectAbsolutePath = join(context.root, project.root);
   const resolveConfig = getApiExtractorConfigPath(resolvedSchema, projectAbsolutePath);
   const tsConfigPathForCompilation = getTsConfigPathUsedForProduction(projectAbsolutePath);
@@ -67,14 +69,6 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
     tsConfigPathForCompilation: tsConfigPathForCompilation.result!,
     packageJsonPath,
   };
-
-  function isCI() {
-    return (
-      (process.env.CI && process.env.CI !== 'false') ||
-      process.env.TF_BUILD === 'true' ||
-      process.env.GITHUB_ACTIONS === 'true'
-    );
-  }
 }
 
 function generateTypeDeclarations(options: NormalizedOptions) {
