@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 
 const DEFAULT_COLOR_HSV = tinycolor('#804066').toHsv();
 
-export const Default = () => {
+export const ColorAreaExample = () => {
   const styles = useStyles();
 
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
@@ -34,4 +34,13 @@ export const Default = () => {
       <Button onClick={resetSlider}>Reset</Button>
     </div>
   );
+};
+
+ColorAreaExample.parameters = {
+  docs: {
+    description: {
+      story:
+        'The `ColorArea` component allows users to adjust two channels of HSB color values against a two-dimensional gradient background.',
+    },
+  },
 };
