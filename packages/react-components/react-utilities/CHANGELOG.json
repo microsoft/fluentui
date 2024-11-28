@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 28 Nov 2024 09:30:53 GMT",
+      "tag": "@fluentui/react-utilities_v9.18.17",
+      "version": "9.18.17",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:00:38 GMT",
       "tag": "@fluentui/react-utilities_v9.18.17",
       "version": "9.18.17",

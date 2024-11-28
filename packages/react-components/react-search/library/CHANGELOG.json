@@ -2,6 +2,21 @@
   "name": "@fluentui/react-search",
   "entries": [
     {
+      "date": "Thu, 28 Nov 2024 09:30:52 GMT",
+      "tag": "@fluentui/react-search_v9.0.23",
+      "version": "9.0.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "94f7b85e933d6358cf30094aa584feb94f85c8c6",
+            "comment": "fix(react-search): restore focus to SearchBox after clear button is clicked"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Nov 2024 09:44:40 GMT",
       "tag": "@fluentui/react-search_v9.0.22",
       "version": "9.0.22",
