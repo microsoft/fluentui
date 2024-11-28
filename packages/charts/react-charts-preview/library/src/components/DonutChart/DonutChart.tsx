@@ -82,7 +82,7 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
         // mapping data to the format Legends component needs
         const pointLegend: Legend = {
           title: point.legend!,
-          color: useGradient ? point.color![0] : point.color as string,
+          color: useGradient ? point.color![0] : (point.color as string),
           action: () => {
             if (selectedLegend === point.legend) {
               setSelectedLegend('');
@@ -193,12 +193,30 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
     function _addDefaultColors(donutChartDataPoint?: ChartDataPoint[]): ChartDataPoint[] {
       return donutChartDataPoint
         ? donutChartDataPoint.map((item, index) => {
-            // ensure start and stop colors are defined
-            const gradient =
-              item.color && item.color[0].trim().length > 0 && item.color[1].trim().length > 0
-                ? item.color
-                : getNextGradient(index);
-            return { ...item, color: gradient };
+            let itemColor = item.color;
+
+            // if color is not defined, assign a default color
+            if (!itemColor) {
+              itemColor = getNextGradient(index);
+            }
+            // if color is a string, check if it is undefined or blank assign a default color
+            if (typeof itemColor === 'string' && itemColor.trim() === '') {
+              itemColor = getNextGradient(index);
+            }
+            // if color is an array, check if either colors are undefined or blank
+            // if startColor is undefined or blank, assign a default color
+            // if endColor is undefined or blank, assign the startColor to endColor
+            if (Array.isArray(itemColor)) {
+              const [startColor, endColor] = itemColor;
+              if (!startColor || startColor.trim() === '') {
+                itemColor[0] = getNextGradient(index)[0];
+              }
+              if (!endColor || endColor.trim() === '') {
+                itemColor[1] = itemColor[0];
+              }
+            }
+
+            return { ...item, color: itemColor };
           })
         : [];
     }

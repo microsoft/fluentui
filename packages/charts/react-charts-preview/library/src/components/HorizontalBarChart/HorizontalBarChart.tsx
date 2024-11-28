@@ -264,14 +264,33 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     return bars;
   }
 
-  function _addDefaultGradients(dataPoints: ChartDataPoint[], chartDataIndex: number): ChartDataPoint[] {
+  function _addDefaultColors(dataPoints: ChartDataPoint[], chartDataIndex: number): ChartDataPoint[] {
     return dataPoints
       ? dataPoints.map((item, index) => {
-          const gradient =
-            item.color && item.color[0].trim().length > 0 && item.color[1].trim().length > 0
-              ? item.color
-              : getNextGradient(index);
-          return { ...item, color: gradient ?? getNextGradient(chartDataIndex, 0) };
+          let itemColor = item.color;
+
+          // if color is not defined, assign a default color
+          if (!itemColor) {
+            itemColor = getNextGradient(index);
+          }
+          // if color is a string, check if it is undefined or blank assign a default color
+          if (typeof itemColor === 'string' && itemColor.trim() === '') {
+            itemColor = getNextGradient(index);
+          }
+          // if color is an array, check if either colors are undefined or blank
+          // if startColor is undefined or blank, assign a default color
+          // if endColor is undefined or blank, assign the startColor to endColor
+          if (Array.isArray(itemColor)) {
+            const [startColor, endColor] = itemColor;
+            if (!startColor || startColor.trim() === '') {
+              itemColor[0] = getNextGradient(index)[0];
+            }
+            if (!endColor || endColor.trim() === '') {
+              itemColor[1] = itemColor[0];
+            }
+          }
+
+          return { ...item, color: itemColor };
         })
       : [];
   }
@@ -321,7 +340,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     <div className={classes.root} onMouseLeave={_handleChartMouseLeave}>
       {data!.map((points: ChartProps, index: number) => {
         // Add default gradients if not present
-        points = { ...points, chartData: _addDefaultGradients(points.chartData!, index) };
+        points = { ...points, chartData: _addDefaultColors(points.chartData!, index) };
 
         if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
           datapoint = points.chartData![0].horizontalBarChartdata!.x;
