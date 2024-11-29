@@ -493,6 +493,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             role="region"
             aria-label={this._getChartDescription()}
             style={{ display: 'block' }}
+            // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-user-defined-props
             {...svgProps}
           >
             <g

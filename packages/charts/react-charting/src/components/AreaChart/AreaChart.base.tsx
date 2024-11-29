@@ -710,6 +710,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             onMouseMove={this._onRectMouseMove}
             onMouseOut={this._onRectMouseOut}
             onMouseOver={this._onRectMouseMove}
+            // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-user-defined-props
             {...points[index]!.lineOptions}
           />
           {singleStackedData.length === 1 ? (
@@ -788,6 +789,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                   onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
                   onFocus={() => this._handleFocus(index, pointIndex, circleId)}
                   onBlur={this._handleBlur}
+                  // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-user-defined-props
                   {...pointOptions}
                   r={this._getCircleRadius(xDataPoint, circleRadius, circleId)}
                   role="img"
@@ -816,6 +818,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
                 onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
+                // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-user-defined-props
                 {...pointOptions}
                 r={this._getCircleRadius(xDataPoint, circleRadius, circleId)}
               />,
@@ -837,6 +840,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         stroke={lineColor!}
         opacity={0.5}
         visibility={this.state.displayOfLine}
+        // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-user-defined-props
         {...pointLineOptions}
       />,
     );

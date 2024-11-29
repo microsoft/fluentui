@@ -48,5 +48,6 @@ export const Textbox: React.FunctionComponent<ITextboxProps> = props => {
 
   const { lineHeight, ...rest } = props;
 
+  // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-user-defined-props
   return <text ref={textElementRef} {...rest} />;
 };

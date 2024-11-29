@@ -785,6 +785,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     mouseEvent: React.MouseEvent<SVGElement>,
   ): void {
     this.props.onBarClick?.(mouseEvent, data);
+    // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-href-attribute
     this.props.href ? (window.location.href = this.props.href) : '';
   }
 
