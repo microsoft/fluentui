@@ -34,6 +34,7 @@ import {
   domainRangeOfDateForAreaLineVerticalBarChart,
   createStringYAxis,
   formatDate,
+  getSafeProps,
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -704,14 +705,15 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             id={`${index}-line-${this._uniqueIdForGraph}`}
             d={line(singleStackedData)!}
             fill={'transparent'}
-            strokeWidth={3}
+            strokeWidth={points[index].lineOptions?.strokeWidth ?? 3}
             stroke={this._colors[index]}
             opacity={this._getLineOpacity(points[index]!.legend)}
             onMouseMove={this._onRectMouseMove}
             onMouseOut={this._onRectMouseOut}
             onMouseOver={this._onRectMouseMove}
-            // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-user-defined-props
-            {...points[index]!.lineOptions}
+            strokeDasharray={points[index].lineOptions?.strokeDasharray}
+            strokeDashoffset={points[index].lineOptions?.strokeDashoffset}
+            strokeLinecap={points[index].lineOptions?.strokeLinecap ?? 'round'}
           />
           {singleStackedData.length === 1 ? (
             <circle
@@ -789,8 +791,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                   onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
                   onFocus={() => this._handleFocus(index, pointIndex, circleId)}
                   onBlur={this._handleBlur}
-                  // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-user-defined-props
-                  {...pointOptions}
+                  {...getSafeProps(pointOptions)}
                   r={this._getCircleRadius(xDataPoint, circleRadius, circleId)}
                   role="img"
                   aria-label={this._getAriaLabel(index, pointIndex)}
@@ -818,8 +819,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
                 onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
-                // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-user-defined-props
-                {...pointOptions}
+                {...getSafeProps(pointOptions)}
                 r={this._getCircleRadius(xDataPoint, circleRadius, circleId)}
               />,
             );
@@ -840,8 +840,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         stroke={lineColor!}
         opacity={0.5}
         visibility={this.state.displayOfLine}
-        // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-user-defined-props
-        {...pointLineOptions}
+        {...getSafeProps(pointLineOptions)}
       />,
     );
     const classNames = getClassNames(this.props.styles!, {

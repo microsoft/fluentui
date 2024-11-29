@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { select } from 'd3-selection';
+import { getSafeProps } from '../../../utilities/utilities';
 
 interface ITextboxProps {
   text: string;
@@ -48,6 +49,5 @@ export const Textbox: React.FunctionComponent<ITextboxProps> = props => {
 
   const { lineHeight, ...rest } = props;
 
-  // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-user-defined-props
-  return <text ref={textElementRef} {...rest} />;
+  return <text ref={textElementRef} {...getSafeProps(rest)} />;
 };

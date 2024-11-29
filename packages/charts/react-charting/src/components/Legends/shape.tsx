@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LegendShape } from './Legends.types';
-import { CustomPoints, Points } from '../../utilities/utilities';
+import { CustomPoints, getSafeProps, Points } from '../../utilities/utilities';
 
 export interface IShapeProps {
   svgProps: React.SVGAttributes<SVGElement>;
@@ -35,12 +35,10 @@ export const Shape: React.FC<IShapeProps> = ({ svgProps, pathProps, shape, class
       width={14}
       height={14}
       viewBox={'-1 -1 14 14'}
-      // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-user-defined-props
-      {...svgProps}
+      {...getSafeProps(svgProps)}
       transform={`rotate(${shape === Points[Points.diamond] ? 45 : shape === Points[Points.pyramid] ? 180 : 0}, 0, 0)`}
     >
-      {/* FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-user-defined-props */}
-      <path d={pointPath[shape]} {...pathProps} />
+      <path d={pointPath[shape]} {...getSafeProps(pathProps)} />
     </svg>
   );
 };
