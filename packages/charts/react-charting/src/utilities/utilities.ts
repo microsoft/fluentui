@@ -447,7 +447,6 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   dataPoints: string[],
   isRtl: boolean,
   barWidth: number,
-  supportNegativeValuesForYAxis: boolean = false,
 ) => {
   const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement } = yAxisParams;
 
