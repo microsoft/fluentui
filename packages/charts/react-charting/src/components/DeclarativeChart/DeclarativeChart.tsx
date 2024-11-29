@@ -12,12 +12,14 @@ import {
   isNumberArray,
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
+  transformPlotlyJsonToGaugeProps,
 } from './PlotlySchemaAdapter';
 import { LineChart } from '../LineChart/index';
 import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
 import { AreaChart } from '../AreaChart/index';
 import { HeatMapChart } from '../HeatMapChart/index';
 import { SankeyChart } from '../SankeyChart/SankeyChart';
+import { GaugeChart } from '../GaugeChart/index';
 
 /**
  * DeclarativeChart props.
@@ -79,6 +81,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(props.chartSchema)} />;
     case 'sankey':
       return <SankeyChart {...transformPlotlyJsonToSankeyProps(props.chartSchema, colorMap)} />;
+    case 'indicator':
+      if (props.chartSchema?.data?.[0]?.mode?.includes('gauge')) {
+        return <GaugeChart {...transformPlotlyJsonToGaugeProps(props.chartSchema, colorMap)} />;
+      }
+      return <div>Unsupported Schema</div>;
     default:
       return <div>Unsupported Schema</div>;
   }

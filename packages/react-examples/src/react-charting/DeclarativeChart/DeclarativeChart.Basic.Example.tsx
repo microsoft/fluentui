@@ -1,6 +1,16 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { DeclarativeChart, DeclarativeChartProps } from '@fluentui/react-charting';
+import { areaSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_area';
+import { donutSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_donut';
+import { gaugeSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_gauge';
+import { heatmapSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_heatmap';
+import { hbcSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_horizontalbar';
+import { lineSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_line';
+import { pieSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_pie';
+import { sankeySchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_sankey';
+import { vbcHistogramSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_verticalbar_histogram';
+import { vbcSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_verticalbar';
 
 interface IDeclarativeChartState {
   selectedChoice: string;
@@ -15,25 +25,21 @@ const options: IDropdownOption[] = [
   { key: 'linechart', text: 'Line Chart' },
   { key: 'piechart', text: 'Pie Chart' },
   { key: 'sankeychart', text: 'Sankey Chart' },
-  { key: 'sparklinechart', text: 'Sparkline Chart' },
-  { key: 'treemapchart', text: 'Treemap Chart' },
   { key: 'verticalbarchart', text: 'VerticalBar Chart' },
   { key: 'verticalbar_histogramchart', text: 'VerticalBar Histogram Chart' },
 ];
 
 const schemas: any[] = [
-  { key: 'areachart', schema: require('./schema/fluent_area.json') },
-  { key: 'donutchart', schema: require('./schema/fluent_donut.json') },
-  { key: 'gaugechart', schema: require('./schema/fluent_gauge.json') },
-  { key: 'heatmapchart', schema: require('./schema/fluent_heatmap.json') },
-  { key: 'horizontalbarchart', schema: require('./schema/fluent_horizontalbar.json') },
-  { key: 'linechart', schema: require('./schema/fluent_line.json') },
-  { key: 'piechart', schema: require('./schema/fluent_pie.json') },
-  { key: 'sankeychart', schema: require('./schema/fluent_sankey.json') },
-  { key: 'sparklinechart', schema: require('./schema/fluent_sparkline.json') },
-  { key: 'treemapchart', schema: require('./schema/fluent_treemap.json') },
-  { key: 'verticalbarchart', schema: require('./schema/fluent_verticalbar.json') },
-  { key: 'verticalbar_histogramchart', schema: require('./schema/fluent_verticalbar_histogram.json') },
+  { key: 'areachart', schema: areaSchema },
+  { key: 'donutchart', schema: donutSchema },
+  { key: 'gaugechart', schema: gaugeSchema },
+  { key: 'heatmapchart', schema: heatmapSchema },
+  { key: 'horizontalbarchart', schema: hbcSchema },
+  { key: 'linechart', schema: lineSchema },
+  { key: 'piechart', schema: pieSchema },
+  { key: 'sankeychart', schema: sankeySchema },
+  { key: 'verticalbarchart', schema: vbcSchema },
+  { key: 'verticalbar_histogramchart', schema: vbcHistogramSchema },
 ];
 
 const dropdownStyles = { dropdown: { width: 200 } };

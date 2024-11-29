@@ -20,8 +20,9 @@ import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
-import { DataVizPalette, getNextColor } from '../../utilities/colors';
+import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
 import { color as d3Color } from 'd3-color';
+import { IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
@@ -327,6 +328,59 @@ export const transformPlotlyJsonToSankeyProps = (
     styles,
     shouldResize,
     enableReflow: true,
+  };
+};
+
+export const transformPlotlyJsonToGaugeProps = (
+  jsonObj: any,
+  colorMap: { colorMapping: React.MutableRefObject<Map<string, string>>; colorIndex: React.MutableRefObject<number> },
+): IGaugeChartProps => {
+  const { data, layout } = jsonObj;
+  const firstData = data[0];
+
+  const segments = firstData.gauge?.steps?.map((step: any, index: number): IGaugeChartSegment => {
+    const color = getColor(step?.color || '', colorMap);
+    return {
+      legend: step.name || `Segment ${index + 1}`,
+      size: step.range?.[1] - step.range?.[0],
+      color,
+    };
+  });
+
+  let sublabel: string | undefined;
+  let sublabelColor: string | undefined;
+  if (typeof firstData.delta?.reference === 'number') {
+    const diff = firstData.value - firstData.delta.reference;
+    if (diff >= 0) {
+      sublabel = `\u25B2 ${diff}`;
+      const color = getColor(firstData.delta.increasing?.color || getColorFromToken(DataVizPalette.success), colorMap);
+      sublabelColor = color;
+    } else {
+      sublabel = `\u25BC ${Math.abs(diff)}`;
+      const color = getColor(firstData.delta.decreasing?.color || getColorFromToken(DataVizPalette.error), colorMap);
+      sublabelColor = color;
+    }
+  }
+
+  const styles: IGaugeChartProps['styles'] = {
+    sublabel: {
+      fill: sublabelColor,
+    },
+  };
+
+  return {
+    segments,
+    chartValue: firstData.value,
+    chartTitle: firstData.title?.text,
+    sublabel,
+    // range values can be null
+    minValue: firstData.gauge?.axis?.range?.[0] ?? undefined,
+    maxValue: firstData.gauge?.axis?.range?.[1] ?? undefined,
+    chartValueFormat: () => firstData.value,
+    width: layout?.width,
+    height: layout?.height,
+    hideLegend: true,
+    styles,
   };
 };
 
