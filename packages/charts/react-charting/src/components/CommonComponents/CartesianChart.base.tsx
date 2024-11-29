@@ -28,6 +28,7 @@ import {
   createYAxisLabels,
   ChartTypes,
   wrapContent,
+  getSafeProps,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
@@ -493,8 +494,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             role="region"
             aria-label={this._getChartDescription()}
             style={{ display: 'block' }}
-            // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-user-defined-props
-            {...svgProps}
+            {...getSafeProps(svgProps)}
           >
             <g
               ref={(e: SVGSVGElement | null) => {
