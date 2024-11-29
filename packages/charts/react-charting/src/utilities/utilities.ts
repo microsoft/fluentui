@@ -349,9 +349,10 @@ export function prepareDatapoints(
     : (maxVal - minVal) / splitInto;
   const dataPointsArray: number[] = [minVal < 0 && maxVal >= 0 ? 0 : minVal];
   if (minVal < 0 && maxVal >= 0) {
-    while (dataPointsArray[0] > minVal) {
-      dataPointsArray.unshift(dataPointsArray[0] - val);
+    while (dataPointsArray[dataPointsArray.length - 1] > minVal) {
+      dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] - val);
     }
+    dataPointsArray.reverse();
   }
   while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
     dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
