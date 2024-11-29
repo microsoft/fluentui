@@ -1067,6 +1067,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];
+    supportNegativeValuesForYAxis?: boolean;
     svgFocusZoneProps?: IFocusZoneProps;
     tickParams?: {
         tickValues?: number[] | Date[];
@@ -1433,6 +1434,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
     onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
     roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
+    supportNegativeYValues?: boolean;
     useSingleColor?: boolean;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
