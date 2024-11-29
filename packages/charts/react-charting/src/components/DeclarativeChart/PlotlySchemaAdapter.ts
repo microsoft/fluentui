@@ -3,8 +3,6 @@
 /* eslint-disable no-var */
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import * as React from 'react';
-import { color as d3Color } from 'd3-color';
 import { IDonutChartProps } from '../DonutChart/index';
 import {
   IChartDataPoint,
@@ -16,7 +14,6 @@ import {
   IHeatMapChartDataPoint,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
-import { getNextColor } from '../../utilities/colors';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
 import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
 import { ILineChartProps } from '../LineChart/index';
@@ -28,32 +25,15 @@ const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(
 export const isDateArray = (array: any[]): boolean => Array.isArray(array) && array.every(isDate);
 export const isNumberArray = (array: any[]): boolean => Array.isArray(array) && array.every(isNumber);
 
-const UseColorMapping = () => {
-  const [colorMapping, setColorMapping] = React.useState(new Map<string, string>());
-
-  const getColor = (colorString: string, index: number): { color: string; opacity?: number } => {
-    const d3ColorObj = d3Color(colorString);
-    const hexColor = d3ColorObj ? d3ColorObj.formatHex() : colorString;
-
-    if (!colorMapping.has(hexColor)) {
-      const nextColor = getNextColor(index);
-      setColorMapping(prev => new Map(prev).set(hexColor, nextColor));
-      return { color: nextColor, opacity: d3ColorObj?.opacity };
-    }
-
-    return { color: colorMapping.get(hexColor) as string, opacity: d3ColorObj?.opacity };
-  };
-
-  return getColor;
-};
-
-export const transformPlotlyJsonToDonutProps = (jsonObj: any): IDonutChartProps => {
-  const getColor = UseColorMapping();
+export const transformPlotlyJsonToDonutProps = (
+  jsonObj: any,
+  getColor: (colorString: string) => string,
+): IDonutChartProps => {
   const { data, layout } = jsonObj;
   const firstData = data[0];
 
   const donutData = firstData.labels?.map((label: string, index: number): IChartDataPoint => {
-    const { color } = getColor(firstData.marker?.color?.[index], index);
+    const color = Array.isArray(firstData.marker?.color) ? getColor(firstData.marker.color[index]) : getColor('');
     return {
       legend: label,
       data: firstData.values?.[index],
@@ -97,8 +77,10 @@ export const transformPlotlyJsonToDonutProps = (jsonObj: any): IDonutChartProps 
   };
 };
 
-export const transformPlotlyJsonToColumnProps = (jsonObj: any): IVerticalStackedBarChartProps => {
-  const getColor = UseColorMapping();
+export const transformPlotlyJsonToColumnProps = (
+  jsonObj: any,
+  getColor: (colorString: string) => string,
+): IVerticalStackedBarChartProps => {
   const { data, layout } = jsonObj;
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
   let yMaxValue = 0;
@@ -109,14 +91,14 @@ export const transformPlotlyJsonToColumnProps = (jsonObj: any): IVerticalStacked
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
       }
       if (series.type === 'bar') {
-        const { color } = getColor(series.marker?.color, index1);
+        const color = getColor(series.marker?.color);
         mapXToDataPoints[x].chartData.push({
           legend: series.name,
           data: series.y[index2],
           color,
         });
       } else if (series.type === 'line') {
-        const { color } = getColor(series.marker?.color, index1);
+        const color = getColor(series.marker?.color);
         mapXToDataPoints[x].lineData!.push({
           legend: series.name,
           y: series.y[index2],
@@ -140,8 +122,8 @@ export const transformPlotlyJsonToColumnProps = (jsonObj: any): IVerticalStacked
 export const transformPlotlyJsonToScatterChartProps = (
   jsonObj: any,
   isAreaChart: boolean,
+  getColor: (colorString: string) => string,
 ): ILineChartProps | IAreaChartProps => {
-  const getColor = UseColorMapping();
   const { data, layout } = jsonObj;
 
   const chartData: ILineChartPoints[] = data.map((series: any, index: number) => {
@@ -149,9 +131,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
-
-    const { color: lineColor } = getColor(series.line?.color, index);
-    const { color: fillColor, opacity: fillOpacity } = getColor(series.fillcolor, index);
+    const lineColor = getColor(series.line?.color);
 
     return {
       legend: series.name || `Series ${index + 1}`,
@@ -160,8 +140,6 @@ export const transformPlotlyJsonToScatterChartProps = (
         y: series.y[i],
       })),
       color: lineColor,
-      fillColor,
-      opacity: fillOpacity,
     };
   });
 
@@ -181,23 +159,21 @@ export const transformPlotlyJsonToScatterChartProps = (
   }
 };
 
-export const transformPlotlyJsonToHorizontalBarWithAxisProps = (jsonObj: any): IHorizontalBarChartWithAxisProps => {
-  const getColor = UseColorMapping();
+export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
+  jsonObj: any,
+  getColor: (colorString: string) => string,
+): IHorizontalBarChartWithAxisProps => {
   const { data, layout } = jsonObj;
 
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = data
     .map((series: any, index: number) => {
       return series.y.map((yValue: string, i: number) => {
-        const { color, opacity } = getColor(series.marker?.color, i);
+        const color = Array.isArray(series.marker?.color) ? getColor(series.marker?.color[i]) : getColor('');
         return {
           x: series.x[i],
           y: yValue,
           legend: yValue,
           color,
-          styles: {
-            fill: color,
-            opacity,
-          },
         };
       });
     })
@@ -266,8 +242,10 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
   };
 };
 
-export const transformPlotlyJsonToSankeyProps = (jsonObj: any): ISankeyChartProps => {
-  const getColor = UseColorMapping();
+export const transformPlotlyJsonToSankeyProps = (
+  jsonObj: any,
+  getColor: (colorString: string) => string,
+): ISankeyChartProps => {
   const { data, layout } = jsonObj;
   const { link, node } = data[0];
   const validLinks = link.value
@@ -282,23 +260,21 @@ export const transformPlotlyJsonToSankeyProps = (jsonObj: any): ISankeyChartProp
 
   const sankeyChartData = {
     nodes: node.label.map((label: string, index: number) => {
-      const { color, opacity } = getColor(node.color?.[index] || '', index);
-      const { color: lineColor } = getColor(node.line?.color || '', index);
+      const color = getColor(node.color?.[index] || '');
+      const borderColor = getColor(node.line?.color || '');
 
       return {
         nodeId: index,
         name: label,
         color,
-        borderColor: lineColor,
-        opacity,
+        borderColor,
       };
     }),
     links: validLinks.map((validLink: any, index: number) => {
-      const { color, opacity } = getColor(validLink.color?.[index] || '', index);
+      const color = getColor(validLink.color?.[index] || '');
       return {
         ...validLink,
         color,
-        opacity,
       };
     }),
   };
