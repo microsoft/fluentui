@@ -3,6 +3,7 @@
 /* eslint-disable no-var */
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import * as React from 'react';
 import { IDonutChartProps } from '../DonutChart/index';
 import {
   IChartDataPoint,
@@ -19,21 +20,48 @@ import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
+import { DataVizPalette, getNextColor } from '../../utilities/colors';
+import { color as d3Color } from 'd3-color';
 
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
-export const isDateArray = (array: any[]): boolean => Array.isArray(array) && array.every(isDate);
-export const isNumberArray = (array: any[]): boolean => Array.isArray(array) && array.every(isNumber);
+export const isDateArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isDate);
+export const isNumberArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isNumber);
+
+const totalColors = Object.keys(DataVizPalette).length;
+export const getColor = (
+  colorString: string,
+  colorMap: { colorMapping: React.MutableRefObject<Map<string, string>>; colorIndex: React.MutableRefObject<number> },
+): string => {
+  if (colorString === '') {
+    const nextColor = getNextColor(colorMap.colorIndex.current % totalColors);
+    colorMap.colorIndex.current += 1;
+    return nextColor;
+  }
+  const d3ColorObj = d3Color(colorString);
+  const hexColor = d3ColorObj ? d3ColorObj.formatHex() : colorString;
+
+  if (!colorMap.colorMapping.current.has(hexColor)) {
+    const nextColor = getNextColor(colorMap.colorIndex.current % totalColors);
+    colorMap.colorMapping.current.set(hexColor, nextColor);
+    colorMap.colorIndex.current += 1;
+    return nextColor;
+  }
+
+  return colorMap.colorMapping.current.get(hexColor) as string;
+};
 
 export const transformPlotlyJsonToDonutProps = (
   jsonObj: any,
-  getColor: (colorString: string) => string,
+  colorMap: { colorMapping: React.MutableRefObject<Map<string, string>>; colorIndex: React.MutableRefObject<number> },
 ): IDonutChartProps => {
   const { data, layout } = jsonObj;
   const firstData = data[0];
 
   const donutData = firstData.labels?.map((label: string, index: number): IChartDataPoint => {
-    const color = Array.isArray(firstData.marker?.color) ? getColor(firstData.marker.color[index]) : getColor('');
+    const color = isArrayOrTypedArray(firstData.marker?.color)
+      ? getColor(firstData.marker.color[index], colorMap)
+      : getColor('', colorMap);
     return {
       legend: label,
       data: firstData.values?.[index],
@@ -79,7 +107,7 @@ export const transformPlotlyJsonToDonutProps = (
 
 export const transformPlotlyJsonToColumnProps = (
   jsonObj: any,
-  getColor: (colorString: string) => string,
+  colorMap: { colorMapping: React.MutableRefObject<Map<string, string>>; colorIndex: React.MutableRefObject<number> },
 ): IVerticalStackedBarChartProps => {
   const { data, layout } = jsonObj;
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
@@ -91,14 +119,14 @@ export const transformPlotlyJsonToColumnProps = (
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
       }
       if (series.type === 'bar') {
-        const color = getColor(series.marker?.color);
+        const color = getColor(series.marker?.color, colorMap);
         mapXToDataPoints[x].chartData.push({
           legend: series.name,
           data: series.y[index2],
           color,
         });
       } else if (series.type === 'line') {
-        const color = getColor(series.marker?.color);
+        const color = getColor(series.marker?.color, colorMap);
         mapXToDataPoints[x].lineData!.push({
           legend: series.name,
           y: series.y[index2],
@@ -122,7 +150,7 @@ export const transformPlotlyJsonToColumnProps = (
 export const transformPlotlyJsonToScatterChartProps = (
   jsonObj: any,
   isAreaChart: boolean,
-  getColor: (colorString: string) => string,
+  colorMap: { colorMapping: React.MutableRefObject<Map<string, string>>; colorIndex: React.MutableRefObject<number> },
 ): ILineChartProps | IAreaChartProps => {
   const { data, layout } = jsonObj;
 
@@ -131,7 +159,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
-    const lineColor = getColor(series.line?.color);
+    const lineColor = getColor(series.line?.color, colorMap);
 
     return {
       legend: series.name || `Series ${index + 1}`,
@@ -161,14 +189,16 @@ export const transformPlotlyJsonToScatterChartProps = (
 
 export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   jsonObj: any,
-  getColor: (colorString: string) => string,
+  colorMap: { colorMapping: React.MutableRefObject<Map<string, string>>; colorIndex: React.MutableRefObject<number> },
 ): IHorizontalBarChartWithAxisProps => {
   const { data, layout } = jsonObj;
 
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = data
     .map((series: any, index: number) => {
       return series.y.map((yValue: string, i: number) => {
-        const color = Array.isArray(series.marker?.color) ? getColor(series.marker?.color[i]) : getColor('');
+        const color = isArrayOrTypedArray(series.marker?.color)
+          ? getColor(series.marker?.color[i], colorMap)
+          : getColor('', colorMap);
         return {
           x: series.x[i],
           y: yValue,
@@ -244,7 +274,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
 
 export const transformPlotlyJsonToSankeyProps = (
   jsonObj: any,
-  getColor: (colorString: string) => string,
+  colorMap: { colorMapping: React.MutableRefObject<Map<string, string>>; colorIndex: React.MutableRefObject<number> },
 ): ISankeyChartProps => {
   const { data, layout } = jsonObj;
   const { link, node } = data[0];
@@ -260,8 +290,8 @@ export const transformPlotlyJsonToSankeyProps = (
 
   const sankeyChartData = {
     nodes: node.label.map((label: string, index: number) => {
-      const color = getColor(node.color?.[index] || '');
-      const borderColor = getColor(node.line?.color || '');
+      const color = getColor(node.color?.[index] || '', colorMap);
+      const borderColor = getColor(node.line?.color || '', colorMap);
 
       return {
         nodeId: index,
@@ -271,7 +301,7 @@ export const transformPlotlyJsonToSankeyProps = (
       };
     }),
     links: validLinks.map((validLink: any, index: number) => {
-      const color = getColor(validLink.color?.[index] || '');
+      const color = getColor(validLink.color?.[index] || '', colorMap);
       return {
         ...validLink,
         color,
