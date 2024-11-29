@@ -506,6 +506,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   };
 
   private _redirectToUrl(href: string | undefined): void {
+    // FIXME: XSS vulnerability: https://stackoverflow.com/collectives/articles/75138459/mitigating-xss-attacks-in-react-applications#heading-xss-via-href-attribute
     href ? (window.location.href = href) : '';
   }
 
