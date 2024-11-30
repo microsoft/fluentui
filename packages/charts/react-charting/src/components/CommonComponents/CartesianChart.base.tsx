@@ -28,7 +28,7 @@ import {
   createYAxisLabels,
   ChartTypes,
   wrapContent,
-  getSafeProps,
+  getSecureProps,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
@@ -494,7 +494,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             role="region"
             aria-label={this._getChartDescription()}
             style={{ display: 'block' }}
-            {...getSafeProps(svgProps)}
+            {...getSecureProps(svgProps)}
           >
             <g
               ref={(e: SVGSVGElement | null) => {

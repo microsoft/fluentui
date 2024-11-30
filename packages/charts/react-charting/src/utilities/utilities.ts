@@ -1386,20 +1386,7 @@ export const formatDate = (date: Date, useUTC?: boolean) => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getSafeProps = (props: Record<string, any> | undefined) => {
-  if (!props) {
-    return {};
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const result: Record<string, any> = {};
-  const keys = Object.keys(props);
-
-  for (const key of keys) {
-    if (key !== 'dangerouslySetInnerHTML') {
-      result[key] = props[key];
-    }
-  }
-
+export function getSecureProps(props: Record<string, any> = {}): Record<string, any> {
+  const { dangerouslySetInnerHTML, ...result } = props;
   return result;
-};
+}

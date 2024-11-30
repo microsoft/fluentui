@@ -34,7 +34,7 @@ import {
   domainRangeOfDateForAreaLineVerticalBarChart,
   createStringYAxis,
   formatDate,
-  getSafeProps,
+  getSecureProps,
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -713,7 +713,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             onMouseOver={this._onRectMouseMove}
             strokeDasharray={points[index].lineOptions?.strokeDasharray}
             strokeDashoffset={points[index].lineOptions?.strokeDashoffset}
-            strokeLinecap={points[index].lineOptions?.strokeLinecap ?? 'round'}
+            strokeLinecap={points[index].lineOptions?.strokeLinecap}
           />
           {singleStackedData.length === 1 ? (
             <circle
@@ -791,7 +791,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                   onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
                   onFocus={() => this._handleFocus(index, pointIndex, circleId)}
                   onBlur={this._handleBlur}
-                  {...getSafeProps(pointOptions)}
+                  {...getSecureProps(pointOptions)}
                   r={this._getCircleRadius(xDataPoint, circleRadius, circleId)}
                   role="img"
                   aria-label={this._getAriaLabel(index, pointIndex)}
@@ -819,7 +819,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
                 onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
-                {...getSafeProps(pointOptions)}
+                {...getSecureProps(pointOptions)}
                 r={this._getCircleRadius(xDataPoint, circleRadius, circleId)}
               />,
             );
@@ -840,7 +840,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         stroke={lineColor!}
         opacity={0.5}
         visibility={this.state.displayOfLine}
-        {...getSafeProps(pointLineOptions)}
+        {...getSecureProps(pointLineOptions)}
       />,
     );
     const classNames = getClassNames(this.props.styles!, {
