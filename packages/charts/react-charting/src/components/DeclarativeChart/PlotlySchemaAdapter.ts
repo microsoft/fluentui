@@ -291,8 +291,12 @@ export const transformPlotlyJsonToSankeyProps = (
 
   const sankeyChartData = {
     nodes: node.label.map((label: string, index: number) => {
-      const color = getColor(node.color?.[index] || '', colorMap);
-      const borderColor = getColor(node.line?.color || '', colorMap);
+      const color = isArrayOrTypedArray(node.color)
+        ? getColor(node.color?.[index] || '', colorMap)
+        : getColor('', colorMap);
+      const borderColor = isArrayOrTypedArray(node.line?.color)
+        ? getColor(node.line?.color[index] || '', colorMap)
+        : getColor('', colorMap);
 
       return {
         nodeId: index,
