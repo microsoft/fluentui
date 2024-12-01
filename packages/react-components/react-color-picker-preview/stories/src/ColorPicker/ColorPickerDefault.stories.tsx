@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { tinycolor } from '@ctrl/tinycolor';
 import { makeStyles } from '@fluentui/react-components';
 import {
   ColorPicker,
@@ -23,21 +24,23 @@ const useStyles = makeStyles({
   },
 });
 
+const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
+
 export const Default = () => {
   const styles = useStyles();
-  const defaultColor = '#2be700';
-  const [color, setColor] = React.useState(defaultColor);
-  const handleChange: ColorPickerProps['onColorChange'] = (_, data) => setColor(data.color);
+  const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
+  const handleChange: ColorPickerProps['onColorChange'] = (_, data) =>
+    setColor({ ...data.color, a: data.color.a ?? 1 });
 
   return (
     <div className={styles.example}>
       <ColorPicker color={color} onColorChange={handleChange}>
-        <ColorSlider max={360} />
+        <ColorSlider />
         <AlphaSlider />
         <ColorArea />
       </ColorPicker>
 
-      <div className={styles.previewColor} style={{ backgroundColor: color }} />
+      <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toRgbString() }} />
     </div>
   );
 };

@@ -1,18 +1,21 @@
 import * as React from 'react';
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
-import type { ColorPickerProps, ColorPickerState } from '../components/ColorPicker/ColorPicker.types';
+import type { ColorPickerState } from '../components/ColorPicker/ColorPicker.types';
+import type { HsvColor } from '../types/color';
+import { INITIAL_COLOR_HSV } from '../utils/constants';
 
 /**
  * The context through which individual color controls communicate with the picker.
  */
-export type ColorPickerContextValue = Pick<ColorPickerProps, 'color'> & {
+export type ColorPickerContextValue = {
+  color: HsvColor;
   /**
    * @internal
    * Callback used by Sliders to request a change on it's selected value
    * Should be used to get value of color channel
    */
-  requestChange: (event: React.ChangeEvent<HTMLInputElement>, data: { color: string }) => void;
+  requestChange: (event: React.ChangeEvent<HTMLInputElement>, data: { color: HsvColor }) => void;
 };
 
 export const useColorPickerContextValues = (state: ColorPickerState): ColorPickerContextValues => {
@@ -31,7 +34,7 @@ export const colorPickerContextDefaultValue: ColorPickerContextValue = {
   requestChange: () => {
     /*noop*/
   },
-  color: '',
+  color: { ...INITIAL_COLOR_HSV },
 };
 
 export type ColorPickerContextValues = {

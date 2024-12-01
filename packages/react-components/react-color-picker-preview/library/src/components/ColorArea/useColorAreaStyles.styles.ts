@@ -20,6 +20,9 @@ export const colorAreaCSSVars = {
 
 // Internal CSS variables
 const thumbSizeVar = `--fui-Slider__thumb--size`;
+const thumbPositionXVar = `--fui-AlphaSlider__thumb--positionX`;
+const thumbPositionYVar = `--fui-AlphaSlider__thumb--positionY`;
+const innerThumbRadiusVar = `--fui-AlphaSlider__thumb--radius`;
 
 /**
  * Styles for the root slot
@@ -37,6 +40,7 @@ const useRootStyles = makeResetStyles({
   [thumbSizeVar]: '20px',
   minWidth: '200px',
   minHeight: '200px',
+  [innerThumbRadiusVar]: '6px',
 });
 
 /**
@@ -54,8 +58,10 @@ const useThumbStyles = makeStyles({
     boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${colorAreaCSSVars.thumbColorVar})`,
     transform: 'translate(-50%, 50%)',
-    left: `var(${colorAreaCSSVars.areaXProgressVar})`,
-    bottom: `var(${colorAreaCSSVars.areaYProgressVar})`,
+    [`${thumbPositionXVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${colorAreaCSSVars.areaXProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
+    [`${thumbPositionYVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${colorAreaCSSVars.areaYProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
+    left: `var(${thumbPositionXVar})`,
+    bottom: `var(${thumbPositionYVar})`,
     '::before': {
       position: 'absolute',
       inset: '0px',
