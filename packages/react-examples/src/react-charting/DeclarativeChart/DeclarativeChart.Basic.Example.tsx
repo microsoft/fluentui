@@ -67,7 +67,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
 
   private _createDeclarativeChart(): JSX.Element {
     const selectedPlotlySchema = this._getSchemaByKey(this.state.selectedChoice);
-    const inputSchema: Schema = {plotlySchema: selectedPlotlySchema};
+    const inputSchema: Schema = { plotlySchema: selectedPlotlySchema };
 
     return (
       <>
