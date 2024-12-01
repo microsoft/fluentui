@@ -48,10 +48,10 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
    */
   chartSchema: Schema;
 
-   /**
+  /**
    * Callback when an event occurs
    */
-    onSchemaChange?: (eventData: Schema) => void;
+  onSchemaChange?: (eventData: Schema) => void;
 }
 
 /**
@@ -62,7 +62,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   HTMLDivElement,
   DeclarativeChartProps
 >((props, forwardedRef) => {
-  const {plotlySchema} = props.chartSchema;
+  const { plotlySchema } = props.chartSchema;
   const xValues = plotlySchema.data[0].x;
   const isXDate = isDateArray(xValues);
   const isXNumber = isNumberArray(xValues);
