@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-swatch-picker
 
-This log was last generated on Mon, 11 Nov 2024 10:00:55 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Nov 2024 09:30:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker_v9.1.14)
+
+Thu, 28 Nov 2024 09:30:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker_v9.1.13..@fluentui/react-swatch-picker_v9.1.14)
+
+### Patches
+
+- feat: Correctly integrating SwatchPicker with Field component. ([PR #33274](https://github.com/microsoft/fluentui/pull/33274) by Humberto.Morimoto@microsoft.com)
 
 ## [9.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker_v9.1.13)
 

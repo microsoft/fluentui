@@ -1384,3 +1384,9 @@ export const formatDate = (date: Date, useUTC?: boolean) => {
   const timeFormat = useUTC ? d3UtcFormat : d3TimeFormat;
   return timeFormat('%-e %b %Y, %H:%M')(date) + (useUTC ? ' GMT' : '');
 };
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getSecureProps(props: Record<string, any> = {}): Record<string, any> {
+  const { dangerouslySetInnerHTML, ...result } = props;
+  return result;
+}

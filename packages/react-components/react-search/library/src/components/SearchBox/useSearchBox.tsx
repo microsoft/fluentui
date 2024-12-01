@@ -66,6 +66,8 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     const newValue = '';
     setInternalValue(newValue);
     props.onChange?.(event, { value: newValue });
+
+    searchBoxRef.current?.focus();
   });
 
   const inputState = useInput_unstable(
