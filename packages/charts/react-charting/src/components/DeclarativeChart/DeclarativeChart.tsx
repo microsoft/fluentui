@@ -21,15 +21,37 @@ import { HeatMapChart } from '../HeatMapChart/index';
 import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 
+export interface Schema {
+  /**
+   * Plotly schema represented as JSON object
+   */
+  plotlySchema: any;
+
+  /**
+   * The legends selected by the user to persist in the chart
+   */
+  selectedLegends?: string[];
+
+  /**
+   * Dictionary for localizing the accessibility labels
+   */
+  accesibilityLabels?: { [key: string]: string };
+}
+
 /**
  * DeclarativeChart props.
  * {@docCategory DeclarativeChart}
  */
 export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElement> {
   /**
-   * The schema representing the chart
+   * The schema representing the chart data, layout and configuration
    */
-  chartSchema: any;
+  chartSchema: Schema;
+
+   /**
+   * Callback when an event occurs
+   */
+    onSchemaChange?: (eventData: Schema) => void;
 }
 
 /**
@@ -40,36 +62,41 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   HTMLDivElement,
   DeclarativeChartProps
 >((props, forwardedRef) => {
-  const xValues = props.chartSchema.data[0].x;
+  const {plotlySchema} = props.chartSchema;
+  const xValues = plotlySchema.data[0].x;
   const isXDate = isDateArray(xValues);
   const isXNumber = isNumberArray(xValues);
 
-  switch (props.chartSchema.data[0].type) {
+  const updateSchema = (eventData: any) => {
+    props.onSchemaChange?.(props.chartSchema);
+  };
+
+  switch (plotlySchema.data[0].type) {
     case 'pie':
-      return <DonutChart {...transformPlotlyJsonToDonutProps(props.chartSchema)} />;
+      return <DonutChart {...transformPlotlyJsonToDonutProps(plotlySchema)} />;
     case 'bar':
-      const orientation = props.chartSchema.data[0].orientation;
+      const orientation = plotlySchema.data[0].orientation;
       if (orientation === 'h') {
-        return <HorizontalBarChartWithAxis {...transformPlotlyJsonToHorizontalBarWithAxisProps(props.chartSchema)} />;
+        return <HorizontalBarChartWithAxis {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema)} />;
       } else {
-        return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(props.chartSchema)} />;
+        return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(plotlySchema)} />;
       }
     case 'scatter':
-      const isAreaChart = props.chartSchema.data.some((series: any) => series.fill === 'tonexty');
+      const isAreaChart = plotlySchema.data.some((series: any) => series.fill === 'tonexty');
       if (isXDate || isXNumber) {
         if (isAreaChart) {
-          return <AreaChart {...transformPlotlyJsonToScatterChartProps(props.chartSchema, true)} />;
+          return <AreaChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, true)} />;
         }
-        return <LineChart {...transformPlotlyJsonToScatterChartProps(props.chartSchema, false)} />;
+        return <LineChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, false)} />;
       }
-      return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(props.chartSchema)} />;
+      return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(plotlySchema)} />;
     case 'heatmap':
-      return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(props.chartSchema)} />;
+      return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(plotlySchema)} />;
     case 'sankey':
-      return <SankeyChart {...transformPlotlyJsonToSankeyProps(props.chartSchema)} />;
+      return <SankeyChart {...transformPlotlyJsonToSankeyProps(plotlySchema)} />;
     case 'indicator':
-      if (props.chartSchema?.data?.[0]?.mode?.includes('gauge')) {
-        return <GaugeChart {...transformPlotlyJsonToGaugeProps(props.chartSchema)} />;
+      if (plotlySchema?.data?.[0]?.mode?.includes('gauge')) {
+        return <GaugeChart {...transformPlotlyJsonToGaugeProps(plotlySchema)} />;
       }
       return <div>Unsupported Schema</div>;
     default:
