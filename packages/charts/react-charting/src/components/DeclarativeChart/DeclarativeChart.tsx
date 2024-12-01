@@ -67,11 +67,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const isXDate = isDateArray(xValues);
   const isXNumber = isNumberArray(xValues);
 
-//  ToDo - Enable this code when the schema change event is implemented
-//  const updateSchema = (eventData: any) => {
-//    props.onSchemaChange?.(props.chartSchema);
-//  };
-
   switch (plotlySchema.data[0].type) {
     case 'pie':
       return <DonutChart {...transformPlotlyJsonToDonutProps(plotlySchema)} />;
