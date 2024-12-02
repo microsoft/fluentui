@@ -2,6 +2,21 @@
   "name": "@fluentui/react-teaching-popover",
   "entries": [
     {
+      "date": "Thu, 28 Nov 2024 09:30:53 GMT",
+      "tag": "@fluentui/react-teaching-popover_v9.1.22",
+      "version": "9.1.22",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Nov 2024 09:44:40 GMT",
       "tag": "@fluentui/react-teaching-popover_v9.1.22",
       "version": "9.1.22",

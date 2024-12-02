@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Tue, 12 Nov 2024 09:31:25 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Nov 2024 09:30:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.11.22)
+
+Thu, 28 Nov 2024 09:30:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.11.20..@fluentui/react-dialog_v9.11.22)
+
+### Patches
+
+- feat(motion): update DialogBackdropMotion to use createFadePresence API ([PR #33288](https://github.com/microsoft/fluentui/pull/33288) by olkatruk@microsoft.com)
+- Bump @fluentui/react-motion to v9.6.2 ([PR #33331](https://github.com/microsoft/fluentui/pull/33331) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.3.1 ([PR #33331](https://github.com/microsoft/fluentui/pull/33331) by beachball)
 
 ## [9.11.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.11.20)
 

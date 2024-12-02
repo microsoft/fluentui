@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charts-preview
 
-This log was last generated on Mon, 18 Nov 2024 09:44:38 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Nov 2024 09:30:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.1)
+
+Thu, 28 Nov 2024 09:30:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.0..@fluentui/react-charts-preview_v0.1.1)
+
+### Patches
+
+- Update readme with current content ([PR #33295](https://github.com/microsoft/fluentui/pull/33295) by 98592573+AtishayMsft@users.noreply.github.com)
 
 ## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.0)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-search
 
-This log was last generated on Mon, 18 Nov 2024 09:44:40 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Nov 2024 09:30:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.23)
+
+Thu, 28 Nov 2024 09:30:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.0.22..@fluentui/react-search_v9.0.23)
+
+### Patches
+
+- fix(react-search): restore focus to SearchBox after clear button is clicked ([PR #33340](https://github.com/microsoft/fluentui/pull/33340) by jiangemma@microsoft.com)
 
 ## [9.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.22)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-carousel
 
-This log was last generated on Tue, 12 Nov 2024 09:31:25 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Nov 2024 09:30:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.4.0)
+
+Thu, 28 Nov 2024 09:30:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.3.1..@fluentui/react-carousel_v9.4.0)
+
+### Minor changes
+
+- feat: Add autoplay index change callback and fix autoplay pause on interaction ([PR #33291](https://github.com/microsoft/fluentui/pull/33291) by mifraser@microsoft.com)
 
 ## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.3.1)
 

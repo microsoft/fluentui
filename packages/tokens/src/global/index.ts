@@ -1,9 +1,74 @@
-export * from './borderRadius';
-export * from './colors';
-export * from './curves';
-export * from './durations';
-export * from './fonts';
-export * from './spacings';
-export * from './strokeWidths';
-export * from './borderRadius';
-export * from './typographyStyles';
+export { borderRadius } from './borderRadius';
+export {
+  anchor,
+  beige,
+  berry,
+  black,
+  blackAlpha,
+  blue,
+  brass,
+  bronze,
+  brown,
+  burgundy,
+  charcoal,
+  cornflower,
+  cranberry,
+  cyan,
+  darkBlue,
+  darkBrown,
+  darkGreen,
+  darkOrange,
+  darkPurple,
+  darkRed,
+  darkTeal,
+  forest,
+  gold,
+  grape,
+  green,
+  grey,
+  grey10Alpha,
+  grey12Alpha,
+  grey14Alpha,
+  hcButtonFace,
+  hcButtonText,
+  hcCanvas,
+  hcCanvasText,
+  hcDisabled,
+  hcHighlight,
+  hcHighlightText,
+  hcHyperlink,
+  hotPink,
+  lavender,
+  lightBlue,
+  lightGreen,
+  lightTeal,
+  lilac,
+  lime,
+  magenta,
+  marigold,
+  mink,
+  navy,
+  orange,
+  orchid,
+  peach,
+  pink,
+  platinum,
+  plum,
+  pumpkin,
+  purple,
+  red,
+  royalBlue,
+  seafoam,
+  silver,
+  steel,
+  teal,
+  white,
+  whiteAlpha,
+  yellow,
+} from './colors';
+export { curves } from './curves';
+export { durations } from './durations';
+export { fontFamilies, fontSizes, fontWeights, lineHeights } from './fonts';
+export { horizontalSpacings, verticalSpacings } from './spacings';
+export { strokeWidths } from './strokeWidths';
+export { typographyStyles } from './typographyStyles';
