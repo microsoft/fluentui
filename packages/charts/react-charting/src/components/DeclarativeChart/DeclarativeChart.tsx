@@ -33,12 +33,8 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
 }
 
 const useColorMapping = () => {
-  const colorMapping = React.useRef(new Map<string, string>());
-  const colorIndex = React.useRef(0);
-  return {
-    colorMapping,
-    colorIndex,
-  };
+  const colorMap = React.useRef(new Map<string, string>());
+  return colorMap;
 };
 
 /**

@@ -20,8 +20,7 @@ import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
-import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
-import { color as d3Color } from 'd3-color';
+import { getNextColor } from '../../utilities/colors';
 import { IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
@@ -29,40 +28,25 @@ const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(
 export const isDateArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isDate);
 export const isNumberArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isNumber);
 
-const totalColors = Object.keys(DataVizPalette).length;
-export const getColor = (
-  colorString: string,
-  colorMap: { colorMapping: React.MutableRefObject<Map<string, string>>; colorIndex: React.MutableRefObject<number> },
-): string => {
-  if (colorString === '') {
-    const nextColor = getNextColor(colorMap.colorIndex.current % totalColors);
-    colorMap.colorIndex.current += 1;
-    return nextColor;
-  }
-  const d3ColorObj = d3Color(colorString);
-  const hexColor = d3ColorObj ? d3ColorObj.formatHex() : colorString;
-
-  if (!colorMap.colorMapping.current.has(hexColor)) {
-    const nextColor = getNextColor(colorMap.colorIndex.current % totalColors);
-    colorMap.colorMapping.current.set(hexColor, nextColor);
-    colorMap.colorIndex.current += 1;
+export const getColor = (legendLabel: string, colorMap: React.MutableRefObject<Map<string, string>>): string => {
+  if (!colorMap.current.has(legendLabel)) {
+    const nextColor = getNextColor(colorMap.current.size + 1);
+    colorMap.current.set(legendLabel, nextColor);
     return nextColor;
   }
 
-  return colorMap.colorMapping.current.get(hexColor) as string;
+  return colorMap.current.get(legendLabel) as string;
 };
 
 export const transformPlotlyJsonToDonutProps = (
   jsonObj: any,
-  colorMap: { colorMapping: React.MutableRefObject<Map<string, string>>; colorIndex: React.MutableRefObject<number> },
+  colorMap: React.MutableRefObject<Map<string, string>>,
 ): IDonutChartProps => {
   const { data, layout } = jsonObj;
   const firstData = data[0];
 
   const donutData = firstData.labels?.map((label: string, index: number): IChartDataPoint => {
-    const color = isArrayOrTypedArray(firstData.marker?.color)
-      ? getColor(firstData.marker.color[index], colorMap)
-      : getColor('', colorMap);
+    const color = getColor(label, colorMap);
     return {
       legend: label,
       data: firstData.values?.[index],
@@ -108,7 +92,7 @@ export const transformPlotlyJsonToDonutProps = (
 
 export const transformPlotlyJsonToColumnProps = (
   jsonObj: any,
-  colorMap: { colorMapping: React.MutableRefObject<Map<string, string>>; colorIndex: React.MutableRefObject<number> },
+  colorMap: React.MutableRefObject<Map<string, string>>,
 ): IVerticalStackedBarChartProps => {
   const { data, layout } = jsonObj;
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
@@ -120,14 +104,14 @@ export const transformPlotlyJsonToColumnProps = (
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
       }
       if (series.type === 'bar') {
-        const color = getColor(series.marker?.color, colorMap);
+        const color = getColor(series.name, colorMap);
         mapXToDataPoints[x].chartData.push({
           legend: series.name,
           data: series.y[index2],
           color,
         });
       } else if (series.type === 'line') {
-        const color = getColor(series.marker?.color, colorMap);
+        const color = getColor(series.name, colorMap);
         mapXToDataPoints[x].lineData!.push({
           legend: series.name,
           y: series.y[index2],
@@ -151,7 +135,7 @@ export const transformPlotlyJsonToColumnProps = (
 export const transformPlotlyJsonToScatterChartProps = (
   jsonObj: any,
   isAreaChart: boolean,
-  colorMap: { colorMapping: React.MutableRefObject<Map<string, string>>; colorIndex: React.MutableRefObject<number> },
+  colorMap: React.MutableRefObject<Map<string, string>>,
 ): ILineChartProps | IAreaChartProps => {
   const { data, layout } = jsonObj;
 
@@ -160,7 +144,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
-    const lineColor = getColor(series.line?.color, colorMap);
+    const lineColor = getColor(series.name, colorMap);
 
     return {
       legend: series.name || `Series ${index + 1}`,
@@ -190,16 +174,14 @@ export const transformPlotlyJsonToScatterChartProps = (
 
 export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   jsonObj: any,
-  colorMap: { colorMapping: React.MutableRefObject<Map<string, string>>; colorIndex: React.MutableRefObject<number> },
+  colorMap: React.MutableRefObject<Map<string, string>>,
 ): IHorizontalBarChartWithAxisProps => {
   const { data, layout } = jsonObj;
 
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = data
     .map((series: any, index: number) => {
       return series.y.map((yValue: string, i: number) => {
-        const color = isArrayOrTypedArray(series.marker?.color)
-          ? getColor(series.marker?.color[i], colorMap)
-          : getColor('', colorMap);
+        const color = getColor(yValue, colorMap);
         return {
           x: series.x[i],
           y: yValue,
@@ -275,7 +257,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
 
 export const transformPlotlyJsonToSankeyProps = (
   jsonObj: any,
-  colorMap: { colorMapping: React.MutableRefObject<Map<string, string>>; colorIndex: React.MutableRefObject<number> },
+  colorMap: React.MutableRefObject<Map<string, string>>,
 ): ISankeyChartProps => {
   const { data, layout } = jsonObj;
   const { link, node } = data[0];
@@ -291,25 +273,17 @@ export const transformPlotlyJsonToSankeyProps = (
 
   const sankeyChartData = {
     nodes: node.label.map((label: string, index: number) => {
-      const color = isArrayOrTypedArray(node.color)
-        ? getColor(node.color?.[index] || '', colorMap)
-        : getColor('', colorMap);
-      const borderColor = isArrayOrTypedArray(node.line?.color)
-        ? getColor(node.line?.color[index] || '', colorMap)
-        : getColor('', colorMap);
+      const color = getColor(label, colorMap);
 
       return {
         nodeId: index,
         name: label,
         color,
-        borderColor,
       };
     }),
     links: validLinks.map((validLink: any, index: number) => {
-      const color = getColor(validLink.color?.[index] || '', colorMap);
       return {
         ...validLink,
-        color,
       };
     }),
   };
@@ -337,15 +311,16 @@ export const transformPlotlyJsonToSankeyProps = (
 
 export const transformPlotlyJsonToGaugeProps = (
   jsonObj: any,
-  colorMap: { colorMapping: React.MutableRefObject<Map<string, string>>; colorIndex: React.MutableRefObject<number> },
+  colorMap: React.MutableRefObject<Map<string, string>>,
 ): IGaugeChartProps => {
   const { data, layout } = jsonObj;
   const firstData = data[0];
 
   const segments = firstData.gauge?.steps?.map((step: any, index: number): IGaugeChartSegment => {
-    const color = getColor(step?.color || '', colorMap);
+    const legend = step.name || `Segment ${index + 1}`;
+    const color = getColor(legend, colorMap);
     return {
-      legend: step.name || `Segment ${index + 1}`,
+      legend,
       size: step.range?.[1] - step.range?.[0],
       color,
     };
@@ -357,11 +332,11 @@ export const transformPlotlyJsonToGaugeProps = (
     const diff = firstData.value - firstData.delta.reference;
     if (diff >= 0) {
       sublabel = `\u25B2 ${diff}`;
-      const color = getColor(firstData.delta.increasing?.color || getColorFromToken(DataVizPalette.success), colorMap);
+      const color = getColor(firstData.delta.increasing?.color || '', colorMap);
       sublabelColor = color;
     } else {
       sublabel = `\u25BC ${Math.abs(diff)}`;
-      const color = getColor(firstData.delta.decreasing?.color || getColorFromToken(DataVizPalette.error), colorMap);
+      const color = getColor(firstData.delta.decreasing?.color || '', colorMap);
       sublabelColor = color;
     }
   }
