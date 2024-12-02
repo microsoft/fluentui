@@ -155,8 +155,7 @@ export const Selector = () => {
 
   const [selectedComponents, setSelectedComponents] = React.useState<string[]>([]);
   const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
-  const selectedDecisions = React.useRef<string[]>([]);
-  const [selectedQuestion, setSelectedQuestion] = React.useState('');
+
   const [behavior1, setBehavior1] = React.useState(false);
   const [behavior2, setBehavior2] = React.useState(false);
   const [behavior3, setBehavior3] = React.useState(false);
@@ -246,71 +245,6 @@ export const Selector = () => {
     mergeBaseObjects();
     cleanUpBaseObjects();
   }
-
-  //Following useMemo wasn't call when I tick checkbox
-  // const suitableComponents = React.useMemo(() => {
-  //   const suitableComponents: any[] = [];
-
-  //   componentsDefinitions.current.forEach(definition => {
-  //     const keysInDefinitions = Object.keys(definition);
-
-  //     const matching = [];
-  //     selectedDecisions.current.forEach(decision => {
-  //       if (keysInDefinitions.indexOf(decision) >= 0) {
-  //         matching.push('matched');
-  //       }
-  //     });
-
-  //     if (selectedDecisions.current.length === matching.length) {
-  //       console.log('fully matched');
-  //       suitableComponents.push(definition);
-  //     }
-  //   });
-  //   return suitableComponents;
-  // }, [selectedDecisions]);
-
-  // const updateDecisions = (name: string, value: boolean | string, modifySelectedDecisions = true) => {
-  //   const category = getDecisionCategory(name) as string;
-  //   decisionState[category][name] = value;
-  //   setDecisionState({ ...decisionState });
-
-  //   // Currently not in use, but might be useful in future to have options which do not modify the selected decisions
-  //   if (!modifySelectedDecisions) {
-  //     return;
-  //   }
-
-  //   if (value) {
-  //     // Determine if the option is a radio as opposed to checkbox
-  //     if (name in decisionRadioValues) {
-  //       // Clear all the properties in this category
-  //       for (let nameToRemove in decisionState[category]) {
-  //         if (nameToRemove in decisionRadioValues) {
-  //           decisionRadioValues[nameToRemove].forEach(item => {
-  //             removeFromArray(selectedDecisions.current, item);
-  //           });
-  //         } else {
-  //           removeFromArray(selectedDecisions.current, nameToRemove);
-  //         }
-  //       }
-
-  //       // Remove the props other than the value from selected decisions
-  //       decisionRadioValues[name].forEach(prop => {
-  //         if (prop !== value) {
-  //           removeFromArray(selectedDecisions.current, prop);
-  //         }
-  //       });
-
-  //       // The value is the name of the prop we want to push into selected decisions
-  //       if (decisionRadioValues[name].includes(value as string)) {
-  //         selectedDecisions.current.push(value as string);
-  //       }
-  //     } else {
-  //       selectedDecisions.current.push(name);
-  //     }
-  //   } else {
-  //     removeFromArray(selectedDecisions.current, name);
-  //   }
-  // };
 
   const updateDecisionsForCheckbox = (name: string, checked: boolean | string) => {
     if (checked) {
@@ -450,30 +384,6 @@ export const Selector = () => {
     </>
   ));
 
-  // const QuestionRadioGroup = () => {
-  //   // const [selectedBehavioursFromQuestions, setSelectedBehavioursFromQuestions] = React.useState<string[]>([]);
-  //   React.useEffect(() => {
-  //     console.log(`UseEffect: QuestionRadioGroup: Array: ${selectedBehaviours}`);
-  //   }, []);
-
-  //   const allQuestions = getAllQuestions(selectedComponents, questions);
-
-  //   return (
-  //     <>
-  //       {allQuestions.length > 0 && <h2 className={classes.heading}>Questions</h2>}
-  //       {allQuestions.length > 0 &&
-  //         allQuestions.map((item, index) => (
-  //           <Question
-  //             key={item.id}
-  //             QuestionItem={item}
-  //             indexQuestion={index}
-  //             updateDecisionForQuestion={updateDecisionForQuestion}
-  //           />
-  //         ))}
-  //     </>
-  //   );
-  // };
-
   const MatchingComponents = () => {
     const foundComponents = getComponent();
 
@@ -540,7 +450,7 @@ export const Selector = () => {
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
-      {/* <QuestionRadioGroup /> */}
+      {allQuestions.length > 0 && <h2 className={classes.heading}>Questions</h2>}
       {QuestionRadioGroup}
       <h2 className={classes.heading}>Choose behavior</h2>
       <div className={classes.behaviors}>
@@ -564,16 +474,7 @@ export const Selector = () => {
         >
           static
         </ToggleButton>
-        {/* <ToggleButton
-          checked={behavior3}
-          shape="circular"
-          onClick={() => {
-            setBehavior3(!behavior3);
-            updateDecisionsForCheckbox('selectable', !behavior3);
-          }}
-        >
-          selectable
-        </ToggleButton> */}
+
         <ToggleButton
           checked={behavior4}
           shape="circular"
