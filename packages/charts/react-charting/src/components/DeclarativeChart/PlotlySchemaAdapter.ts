@@ -102,19 +102,19 @@ export const transformPlotlyJsonToVSBCProps = (
 
   data.forEach((series: any, index1: number) => {
     series.x?.forEach((x: string | number, index2: number) => {
-      const legend: string = series.name || `Series ${index1 + 1}`;
-      const color = getColor(legend, colorMap);
-
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
       }
+      const legend: string = series.name || `Series ${index1 + 1}`;
       if (series.type === 'bar') {
+        const color = getColor(legend, colorMap);
         mapXToDataPoints[x].chartData.push({
           legend,
           data: series.y?.[index2],
           color,
         });
       } else if (series.type === 'line') {
+        const color = getColor(legend, colorMap);
         mapXToDataPoints[x].lineData!.push({
           legend,
           y: series.y?.[index2],
