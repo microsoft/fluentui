@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 02 Dec 2024 07:20:01 GMT",
+      "tag": "@fluentui/react-charting_v5.23.18",
+      "version": "5.23.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "850601c455b4ed1261d9fcaf16a79118fc6589b4",
+            "comment": "Mitigate XSS vulnerabilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 Nov 2024 07:21:18 GMT",
       "tag": "@fluentui/react-charting_v5.23.17",
       "version": "5.23.17",
