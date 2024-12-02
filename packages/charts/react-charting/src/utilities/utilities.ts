@@ -378,9 +378,8 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
-  const maxAbsoluteY = Math.max(Math.abs(finalYmin), Math.abs(finalYmax));
   const yAxisScale = d3ScaleLinear()
-    .domain([finalYmin < 0 ? -maxAbsoluteY : finalYmin, finalYmax > 0 ? maxAbsoluteY : finalYmax])
+    .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
@@ -394,8 +393,8 @@ export function createNumericYAxis(
   isRtl: boolean,
   axisData: IAxisData,
   isIntegralDataset: boolean,
-  supportNegativeValuesForYAxis: boolean = false,
   useSecondaryYScale: boolean = false,
+  supportNegativeValuesForYAxis: boolean = false,
 ) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },

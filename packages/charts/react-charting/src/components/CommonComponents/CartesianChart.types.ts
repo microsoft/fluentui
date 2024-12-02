@@ -657,6 +657,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     axisData: IAxisData,
     isIntegralDataset: boolean,
     useSecondaryYScale?: boolean,
+    supportNegativeValuesForYAxis?: boolean,
   ) => ScaleLinear<number, number, never>;
 
   /**
