@@ -7,7 +7,7 @@ import { VerticalBarChartDateAxisExample } from './VerticalBarChart.DateAxis.Exa
 import { VerticalBarChartDynamicExample } from './VerticalBarChart.Dynamic.Example';
 import { VerticalBarChartRotatedLabelExample } from './VerticalBarChart.RotateLabels.Example';
 import { VerticalBarChartStyledExample } from './VerticalBarChart.Styled.Example';
-import { VerticalBarChartNegativeExample } from './VerticalBarChartNegative.Example';
+import { VerticalBarChartNegativeExample } from './VerticalBarChart.Negative.Example';
 
 export const Basic = () => <VerticalBarChartBasicExample />;
 
