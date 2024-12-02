@@ -103,17 +103,18 @@ export const transformPlotlyJsonToColumnProps = (
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
       }
+      const legend = series.name || `Series ${index1 + 1}`;
       if (series.type === 'bar') {
-        const color = getColor(series.name, colorMap);
+        const color = getColor(legend, colorMap);
         mapXToDataPoints[x].chartData.push({
-          legend: series.name,
+          legend,
           data: series.y[index2],
           color,
         });
       } else if (series.type === 'line') {
-        const color = getColor(series.name, colorMap);
+        const color = getColor(legend, colorMap);
         mapXToDataPoints[x].lineData!.push({
-          legend: series.name,
+          legend,
           y: series.y[index2],
           color,
         });
