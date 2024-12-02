@@ -68,7 +68,6 @@ test.describe('Message Bar', () => {
     await expect(element).toHaveCustomState('rounded');
   });
 
-  // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
   test('should set and retrieve the `layout` property correctly', async ({ page }) => {
     const element = page.locator('fluent-message-bar');
 
@@ -77,14 +76,14 @@ test.describe('Message Bar', () => {
     });
 
     await expect(element).toHaveJSProperty('layout', 'multiline');
-    expect(await element.evaluate((node: MessageBar) => node.getAttribute('layout'))).toBe('multiline');
+    await expect(element).toHaveAttribute('layout', 'multiline');
 
     await element.evaluate((node: MessageBar) => {
       node.layout = 'singleline';
     });
 
     await expect(element).toHaveJSProperty('layout', 'singleline');
-    expect(await element.evaluate((node: MessageBar) => node.getAttribute('layout'))).toBe('singleline');
+    await expect(element).toHaveAttribute('layout', 'singleline');
   });
 
   test('should emit dismiss event when dismissMessageBar is called', async ({ page }) => {
