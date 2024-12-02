@@ -34,7 +34,7 @@ export class RadioGroup extends FASTElement {
       return;
     }
 
-    this.checkRadio(next);
+    this.enabledRadios[next]?.click();
   }
 
   /**
@@ -470,7 +470,7 @@ export class RadioGroup extends FASTElement {
       }
 
       case ' ': {
-        this.checkRadio();
+        this.enabledRadios[this.checkedIndex]?.click();
         break;
       }
     }
