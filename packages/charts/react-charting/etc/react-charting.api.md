@@ -1059,7 +1059,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];
-    supportNegativeValuesForYAxis?: boolean;
+    supportNegativeData?: boolean;
     svgFocusZoneProps?: IFocusZoneProps;
     tickParams?: {
         tickValues?: number[] | Date[];
