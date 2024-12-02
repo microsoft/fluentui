@@ -135,7 +135,7 @@ export { DataVizPalette, getColorFromToken, getNextColor } from './utilities/col
 export { DataVizGradientPalette, getGradientFromToken, getNextGradient } from './utilities/gradients';
 export type { IGaugeChartProps, IGaugeChartSegment, IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart';
 export { GaugeChart, GaugeChartVariant, GaugeValueFormat } from './GaugeChart';
-export type { DeclarativeChartProps } from './DeclarativeChart';
+export type { DeclarativeChartProps, Schema } from './DeclarativeChart';
 export { DeclarativeChart } from './DeclarativeChart';
 
 import './version';
