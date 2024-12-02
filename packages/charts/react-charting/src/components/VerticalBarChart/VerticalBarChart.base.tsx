@@ -715,7 +715,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
       // Calculate threshold for minimum visible bar height
-      const minBarHeight = Math.ceil(yBarScale(this._yMax - this._yMin) / 100.0);
+      const maxHeightFromBaseline = this._yMax < 0
+    ? Math.abs(this._yMin - baselinePoint)
+    : Math.abs(this._yMax - baselinePoint);
+      const minBarHeight = Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
       let adjustedBarHeight = barHeight;
 
       if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeYValues)) {
@@ -819,7 +822,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
       // Calculate threshold for minimum visible bar height
-      const minBarHeight = Math.ceil(yBarScale(this._yMax - this._yMin) / 100.0);
+      const maxHeightFromBaseline = this._yMax < 0
+    ? Math.abs(this._yMin - baselinePoint)
+    : Math.abs(this._yMax - baselinePoint);
+      const minBarHeight = Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
       let adjustedBarHeight = barHeight;
 
       if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeYValues)) {
@@ -938,7 +944,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
       // Calculate threshold for minimum visible bar height
-      const minBarHeight = Math.ceil(yBarScale(this._yMax - this._yMin) / 100.0);
+      const maxHeightFromBaseline = this._yMax < 0
+    ? Math.abs(this._yMin - baselinePoint)
+    : Math.abs(this._yMax - baselinePoint);
+      const minBarHeight = Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
       let adjustedBarHeight = barHeight;
 
       if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeYValues)) {
