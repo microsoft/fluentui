@@ -53,6 +53,8 @@ export type NormalizedAutoSize = { applyMaxWidth: boolean; applyMaxHeight: boole
 
 export type Boundary = HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 
+export type CoverTarget = boolean | 'overflow';
+
 export type PositioningImperativeRef = {
   /**
    * Updates the position imperatively.
@@ -140,7 +142,8 @@ export interface PositioningOptions {
    * Applies styles on the positioned element to fit it within the available space in viewport.
    * - true: set styles for max height/width.
    * - 'height': set styles for max height.
-   * - 'width'': set styles for max width.
+   * - 'width': set styles for max width.
+   * // TODO autoSize coverTarget height? width?
    * Note that options 'always'/'height-always'/'width-always' are now obsolete, and equivalent to true/'height'/'width'.
    */
   autoSize?: AutoSize;
@@ -148,7 +151,7 @@ export interface PositioningOptions {
   /**
    * Modifies position and alignment to cover the target
    */
-  coverTarget?: boolean;
+  coverTarget?: CoverTarget;
 
   /**
    * Disables automatic repositioning of the component; it will always be placed according to the values of `align` and

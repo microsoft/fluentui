@@ -20,6 +20,7 @@ import {
   offset as offsetMiddleware,
   intersecting as intersectingMiddleware,
   matchTargetSize as matchTargetSizeMiddleware,
+  coverTargetOnOverflow as coverTargetOnOverflowMiddleware,
 } from './middleware';
 import { createPositionManager } from './createPositionManager';
 import { devtools } from '@floating-ui/devtools';
@@ -196,7 +197,7 @@ function usePositioningOptions(options: PositioningOptions) {
         autoSize && resetMaxSizeMiddleware(autoSize),
         matchTargetSize && matchTargetSizeMiddleware(),
         offset && offsetMiddleware(offset),
-        coverTarget && coverTargetMiddleware(),
+        coverTarget === true && coverTargetMiddleware(),
         !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),
         shiftMiddleware({
           container,
@@ -206,6 +207,13 @@ function usePositioningOptions(options: PositioningOptions) {
           overflowBoundaryPadding,
           isRtl,
         }),
+        coverTarget === 'overflow' &&
+          coverTargetOnOverflowMiddleware({
+            container,
+            overflowBoundary,
+            overflowBoundaryPadding,
+            isRtl,
+          }),
         autoSize && maxSizeMiddleware(autoSize, { container, overflowBoundary, overflowBoundaryPadding, isRtl }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
