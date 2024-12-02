@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Mon, 11 Nov 2024 10:00:45 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Nov 2024 09:30:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.2)
+
+Thu, 28 Nov 2024 09:30:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.1..@fluentui/react-motion_v9.6.2)
+
+### Patches
+
+- fix: respect reduced motion in createMotionComponent() ([PR #33357](https://github.com/microsoft/fluentui/pull/33357) by olfedias@microsoft.com)
 
 ## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.1)
 

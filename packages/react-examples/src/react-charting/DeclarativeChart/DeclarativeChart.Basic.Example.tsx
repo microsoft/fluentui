@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
-import { DeclarativeChart, DeclarativeChartProps } from '@fluentui/react-charting';
+import { DeclarativeChart, DeclarativeChartProps, Schema } from '@fluentui/react-charting';
 import { areaSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_area';
 import { donutSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_donut';
 import { gaugeSchema } from '@fluentui/react-examples/lib/react-charting/DeclarativeChart/schema/fluent_gauge';
@@ -66,7 +66,8 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
   }
 
   private _createDeclarativeChart(): JSX.Element {
-    const selectedSchema = this._getSchemaByKey(this.state.selectedChoice);
+    const selectedPlotlySchema = this._getSchemaByKey(this.state.selectedChoice);
+    const inputSchema: Schema = { plotlySchema: selectedPlotlySchema };
 
     return (
       <>
@@ -79,7 +80,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
         />
         <br />
         <br />
-        <DeclarativeChart chartSchema={selectedSchema} />
+        <DeclarativeChart chartSchema={inputSchema} />
       </>
     );
   }

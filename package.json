@@ -218,9 +218,9 @@
     "doctrine": "3.0.0",
     "dotparser": "1.1.1",
     "ejs": "3.1.10",
-    "embla-carousel": "8.3.0",
-    "embla-carousel-autoplay": "8.3.0",
-    "embla-carousel-fade": "8.3.0",
+    "embla-carousel": "8.5.1",
+    "embla-carousel-autoplay": "8.5.1",
+    "embla-carousel-fade": "8.5.1",
     "enquirer": "2.3.6",
     "enzyme": "3.10.0",
     "enzyme-to-json": "3.6.2",
@@ -379,7 +379,8 @@
     "swc-loader": "^0.2.6",
     "prettier": "2.8.8",
     "puppeteer": "19.6.0",
-    "@microsoft/api-extractor/typescript": "5.2.2"
+    "@microsoft/api-extractor/typescript": "5.2.2",
+    "ws": "8.17.1"
   },
   "nx": {
     "includedScripts": []

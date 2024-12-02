@@ -144,10 +144,11 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
-    const lineColor = getColor(series.name, colorMap);
+    const legend = series.name || `Series ${index + 1}`;
+    const lineColor = getColor(legend, colorMap);
 
     return {
-      legend: series.name || `Series ${index + 1}`,
+      legend,
       data: xValues.map((x: string | number, i: number) => ({
         x: isString ? (isXDate ? new Date(x) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
