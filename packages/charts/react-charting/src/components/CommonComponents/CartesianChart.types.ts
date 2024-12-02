@@ -638,7 +638,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * @default false
    * Used for enabling negative values in Y axis.
    */
-  supportNegativeValuesForYAxis?: boolean;
+  supportNegativeData?: boolean;
 
   /**
    * Get the min and max values of the y-axis
