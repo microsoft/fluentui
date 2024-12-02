@@ -21,15 +21,37 @@ import { HeatMapChart } from '../HeatMapChart/index';
 import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 
+export interface Schema {
+  /**
+   * Plotly schema represented as JSON object
+   */
+  plotlySchema: any;
+
+  /**
+   * The legends selected by the user to persist in the chart
+   */
+  selectedLegends?: string[];
+
+  /**
+   * Dictionary for localizing the accessibility labels
+   */
+  accesibilityLabels?: { [key: string]: string };
+}
+
 /**
  * DeclarativeChart props.
  * {@docCategory DeclarativeChart}
  */
 export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElement> {
   /**
-   * The schema representing the chart
+   * The schema representing the chart data, layout and configuration
    */
-  chartSchema: any;
+  chartSchema: Schema;
+
+  /**
+   * Callback when an event occurs
+   */
+  onSchemaChange?: (eventData: Schema) => void;
 }
 
 const useColorMapping = () => {
@@ -45,41 +67,40 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   HTMLDivElement,
   DeclarativeChartProps
 >((props, forwardedRef) => {
-  const colorMap = useColorMapping();
-  const xValues = props.chartSchema.data[0].x;
+  const { plotlySchema } = plotlySchema;
+  const xValues = plotlySchema.data[0].x;
   const isXDate = isDateArray(xValues);
   const isXNumber = isNumberArray(xValues);
+  const colorMap = useColorMapping();
 
-  switch (props.chartSchema.data[0].type) {
+  switch (plotlySchema.data[0].type) {
     case 'pie':
-      return <DonutChart {...transformPlotlyJsonToDonutProps(props.chartSchema, colorMap)} />;
+      return <DonutChart {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap)} />;
     case 'bar':
-      const orientation = props.chartSchema.data[0].orientation;
+      const orientation = plotlySchema.data[0].orientation;
       if (orientation === 'h') {
         return (
-          <HorizontalBarChartWithAxis
-            {...transformPlotlyJsonToHorizontalBarWithAxisProps(props.chartSchema, colorMap)}
-          />
+          <HorizontalBarChartWithAxis {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap)} />
         );
       } else {
-        return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(props.chartSchema, colorMap)} />;
+        return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(plotlySchema, colorMap)} />;
       }
     case 'scatter':
-      const isAreaChart = props.chartSchema.data.some((series: any) => series.fill === 'tonexty');
+      const isAreaChart = plotlySchema.data.some((series: any) => series.fill === 'tonexty');
       if (isXDate || isXNumber) {
         if (isAreaChart) {
-          return <AreaChart {...transformPlotlyJsonToScatterChartProps(props.chartSchema, true, colorMap)} />;
+          return <AreaChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, true, colorMap)} />;
         }
-        return <LineChart {...transformPlotlyJsonToScatterChartProps(props.chartSchema, false, colorMap)} />;
+        return <LineChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, false, colorMap)} />;
       }
-      return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(props.chartSchema, colorMap)} />;
+      return <VerticalStackedBarChart {...transformPlotlyJsonToColumnProps(plotlySchema, colorMap)} />;
     case 'heatmap':
-      return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(props.chartSchema)} />;
+      return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(plotlySchema)} />;
     case 'sankey':
-      return <SankeyChart {...transformPlotlyJsonToSankeyProps(props.chartSchema, colorMap)} />;
+      return <SankeyChart {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap)} />;
     case 'indicator':
-      if (props.chartSchema?.data?.[0]?.mode?.includes('gauge')) {
-        return <GaugeChart {...transformPlotlyJsonToGaugeProps(props.chartSchema, colorMap)} />;
+      if (plotlySchema?.data?.[0]?.mode?.includes('gauge')) {
+        return <GaugeChart {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap)} />;
       }
       return <div>Unsupported Schema</div>;
     default:
