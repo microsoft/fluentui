@@ -1,8 +1,8 @@
-export * from './dispatchToast';
-export * from './dismissToast';
-export * from './dismissAllToasts';
-export * from './updateToast';
-export * from './pauseToast';
-export * from './playToast';
-export * from './createToaster';
-export * from './getPositionStyles';
+export { dispatchToast } from './dispatchToast';
+export { dismissToast } from './dismissToast';
+export { dismissAllToasts } from './dismissAllToasts';
+export { updateToast } from './updateToast';
+export { pauseToast } from './pauseToast';
+export { playToast } from './playToast';
+export { createToaster } from './createToaster';
+export { getPositionStyles } from './getPositionStyles';

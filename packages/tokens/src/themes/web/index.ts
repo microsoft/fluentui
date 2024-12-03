@@ -1,2 +1,2 @@
-export * from './lightTheme';
-export * from './darkTheme';
+export { webLightTheme } from './lightTheme';
+export { webDarkTheme } from './darkTheme';
