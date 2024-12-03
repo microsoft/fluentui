@@ -18,6 +18,19 @@ export function isDropdown(element?: Node | null, tagName: string = '-dropdown')
 }
 
 /**
+ * Values for the `size` attribute of the {@link (Dropdown:class)} component.
+ * @public
+ */
+export const DropdownSize = {
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+} as const;
+
+/** @public */
+export type DropdownSize = ValuesOf<typeof DropdownSize>;
+
+/**
  * Values  for the `type` attribute of the {@link (Dropdown:class)} component.
  * @public
  */

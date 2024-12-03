@@ -1,6 +1,10 @@
 import { css } from '@microsoft/fast-element';
-import { typographyBody1Styles } from '../styles/partials/typography.partials.js';
-import { openState } from '../styles/states/index.js';
+import {
+  typographyBody1Styles,
+  typographyBody2Styles,
+  typographyCaption1Styles,
+} from '../styles/partials/typography.partials.js';
+import { largeState, openState, smallState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   colorCompoundBrandBackgroundHover,
@@ -17,9 +21,14 @@ import {
   curveDecelerateMid,
   durationNormal,
   durationUltraFast,
+  spacingHorizontalM,
   spacingHorizontalMNudge,
+  spacingHorizontalS,
+  spacingHorizontalSNudge,
   spacingHorizontalXXS,
+  spacingVerticalS,
   spacingVerticalSNudge,
+  spacingVerticalXS,
   strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
@@ -41,16 +50,15 @@ export const styles = css`
   }
 
   .popover {
-    anchor-name: --dropdown-popover;
     background: transparent;
+    border: none;
     box-sizing: border-box;
     display: flex;
-    overflow: visible;
-    border: none;
     flex-direction: column;
     inset: unset;
     margin: 0;
     min-width: 160px;
+    overflow: visible;
     padding: 0;
     position: absolute;
     z-index: 1;
@@ -61,8 +69,8 @@ export const styles = css`
   }
 
   .popover:popover-open {
-    position-area: block-end span-inline-end;
     position-anchor: --dropdown-trigger;
+    position-area: block-end span-inline-end;
     position-try-fallbacks: flip-inline, flip-block, block-start;
     width: anchor-size(width);
   }
@@ -71,11 +79,6 @@ export const styles = css`
     .popover:popover-open {
       margin-block-start: 32px;
     }
-  }
-
-  .control {
-    anchor-name: --dropdown-trigger;
-    z-index: 1;
   }
 
   .control {
@@ -93,7 +96,6 @@ export const styles = css`
     column-gap: ${spacingHorizontalXXS};
     display: inline-flex;
     justify-content: space-between;
-    min-height: 32px;
     min-width: 160px;
     overflow: hidden;
     padding: ${spacingVerticalSNudge} ${spacingHorizontalMNudge};
@@ -102,6 +104,18 @@ export const styles = css`
     width: 100%;
     z-index: 1;
     ${typographyBody1Styles}
+  }
+
+  :host(${smallState}) .control {
+    column-gap: ${spacingHorizontalXXS};
+    padding: ${spacingVerticalXS} ${spacingHorizontalSNudge};
+    ${typographyCaption1Styles}
+  }
+
+  :host(${largeState}) .control {
+    column-gap: ${spacingHorizontalS};
+    padding: ${spacingVerticalS} ${spacingHorizontalM};
+    ${typographyBody2Styles}
   }
 
   ::slotted(:is(input, button)) {
@@ -159,14 +173,13 @@ export const styles = css`
     scale: 0.5 1;
   }
 
-  :host(${openState}) .control::after,
-  :host(:focus-within) .control::after {
+  :host(:is(${openState}, :focus-within)) .control::after {
     scale: 1 1;
     transition-duration: ${durationNormal};
     transition-timing-function: ${curveAccelerateMid};
   }
 
-  .control ::slotted([slot='indicator']) {
+  ::slotted([slot='indicator']) {
     all: unset;
     appearance: none;
     border: none;
@@ -176,5 +189,13 @@ export const styles = css`
     align-items: center;
     width: 20px;
     aspect-ratio: 1;
+  }
+
+  :host(${smallState}) ::slotted([slot='indicator']) {
+    width: 16px;
+  }
+
+  :host(${largeState}) ::slotted([slot='indicator']) {
+    width: 24px;
   }
 `;

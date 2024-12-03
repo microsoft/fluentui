@@ -1,10 +1,18 @@
-import { attr, FASTElement, Observable, observable, Updates, volatile } from '@microsoft/fast-element';
+import {
+  attr,
+  FASTElement,
+  Observable,
+  observable,
+  Updates,
+  type ViewTemplate,
+  volatile,
+} from '@microsoft/fast-element';
 import type { Listbox } from '../listbox/listbox.js';
 import type { Option } from '../option/option.js';
 import { isOption } from '../option/option.options.js';
-import { toggleState } from '../utils/element-internals.js';
+import { swapStates, toggleState } from '../utils/element-internals.js';
 import { uniqueId } from '../utils/unique-id.js';
-import { DropdownType } from './dropdown.options.js';
+import { DropdownSize, DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownIndicatorTemplate, dropdownInputTemplate } from './dropdown.template.js';
 
 /**
@@ -17,7 +25,7 @@ import { dropdownButtonTemplate, dropdownIndicatorTemplate, dropdownInputTemplat
  *
  * @public
  */
-export class Dropdown extends FASTElement {
+export class BaseDropdown extends FASTElement {
   /**
    * The index of the first checked option, scoped to the enabled options.
    *
@@ -93,7 +101,7 @@ export class Dropdown extends FASTElement {
    * @internal
    */
   @observable
-  public indicatorSlot!: HTMLSlotElement;
+  public indicatorSlot?: HTMLSlotElement;
 
   /**
    * The value of the checked option.
@@ -136,7 +144,7 @@ export class Dropdown extends FASTElement {
    * HTML Attribute: `multiple`
    */
   @attr({ mode: 'boolean' })
-  public multiple!: boolean;
+  public multiple?: boolean;
 
   /**
    * Toggles between single and multiple selection modes when the `multiple` property changes.
@@ -410,10 +418,8 @@ export class Dropdown extends FASTElement {
       return true;
     }
 
-    if (isOption(target)) {
-      if (!this.multiple) {
-        this.popoverContainer.hidePopover();
-      }
+    if (isOption(target) && !this.multiple) {
+      this.popoverContainer.hidePopover();
     }
 
     return true;
@@ -423,19 +429,10 @@ export class Dropdown extends FASTElement {
     super();
 
     this.elementInternals.role = 'presentation';
-  }
 
-  public connectedCallback(): void {
-    super.connectedCallback();
-
-    this.insertControl();
-    this.insertIndicator();
-  }
-
-  public disconnectedCallback(): void {
-    Observable.getNotifier(this).unsubscribe(this.listbox);
-
-    super.disconnectedCallback();
+    Updates.enqueue(() => {
+      this.insertControl();
+    });
   }
 
   /**
@@ -485,7 +482,7 @@ export class Dropdown extends FASTElement {
     return true;
   }
 
-  private insertControl(): void {
+  protected insertControl(): void {
     this.controlSlot?.assignedNodes().forEach(x => this.removeChild(x));
     switch (this.type) {
       case DropdownType.combobox: {
@@ -499,14 +496,6 @@ export class Dropdown extends FASTElement {
         break;
       }
     }
-  }
-
-  private insertIndicator(): void {
-    this.indicatorSlot?.assignedNodes().forEach(x => this.removeChild(x));
-
-    dropdownIndicatorTemplate.render(this, this);
-    this.append(this.indicator);
-    this.indicatorSlot.assign(this.indicator);
   }
 
   public keydownHandler(e: KeyboardEvent): boolean | void {
@@ -588,10 +577,7 @@ export class Dropdown extends FASTElement {
    * @internal
    */
   public setActiveOption(): void {
-    let optionIndex = this.matches(':has(:focus-visible)') ? this.activeIndex : -1;
-    if (this.multiple && optionIndex === -1) {
-      optionIndex = 0;
-    }
+    const optionIndex = this.matches(':has(:focus-visible)') ? this.activeIndex : -1;
 
     this.listbox?.enabledOptions.forEach((option, index) => {
       option.setActiveState(index === optionIndex);
@@ -633,5 +619,51 @@ export class Dropdown extends FASTElement {
         anchor ?? this.listbox.enabledOptions[0],
       );
     }
+  }
+}
+
+export class Dropdown extends BaseDropdown {
+
+  /**
+   * The size of the dropdown.
+   * @public
+   * @remarks
+   * HTML Attribute: `size`
+   */
+  @attr
+  public size?: DropdownSize;
+
+  /**
+   * Swaps size states when the size property changes.
+   *
+   * @param prev - the previous size state
+   * @param next - the current size state
+   * @internal
+   */
+  public sizeChanged(prev: DropdownSize | undefined, next: DropdownSize | undefined): void {
+    swapStates(this.elementInternals, prev, next, DropdownSize);
+  }
+
+  /**
+   * Inserts the control element.
+   *
+   * @internal
+   */
+  protected insertControl(): void {
+    super.insertControl();
+    this.insertIndicator();
+  }
+
+  /**
+   * Removes any existing indicators and inserts a new one.
+   *
+   * @param template - The template to use for the indicator.
+   * @internal
+   */
+  protected insertIndicator(template: ViewTemplate = dropdownIndicatorTemplate): void {
+    this.indicatorSlot?.assignedNodes().forEach(x => this.removeChild(x));
+    template.render(this, this);
+    this.append(this.indicator);
+    this.indicatorSlot?.assign(this.indicator);
   }
 }
