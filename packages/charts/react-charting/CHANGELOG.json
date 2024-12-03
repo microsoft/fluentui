@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 03 Dec 2024 07:20:27 GMT",
+      "tag": "@fluentui/react-charting_v5.23.19",
+      "version": "5.23.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "99e5e6a9d394d6be64a58ac4ffb38b11023bcb72",
+            "comment": "Create declarative chart component"
+          },
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "f97d1c3965fcd9dc372123b7a9c47f2c8220fd1d",
+            "comment": "Add grouped vertical bar chart plotly adapter"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Dec 2024 07:20:01 GMT",
       "tag": "@fluentui/react-charting_v5.23.18",
       "version": "5.23.18",

@@ -24,6 +24,12 @@ export type ColorPickerProps = Omit<ComponentProps<Partial<ColorPickerSlots>>, '
    * Callback for when the user changes the color.
    */
   onColorChange?: EventHandler<ColorPickerOnChangeData>;
+
+  /**
+   * ColorPicker shape
+   * @defaultvalue 'rounded'
+   */
+  shape?: 'rounded' | 'square';
 };
 
 /**
