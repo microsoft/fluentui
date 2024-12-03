@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 22 Nov 2024 07:21:18 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Dec 2024 07:20:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.19)
+
+Tue, 03 Dec 2024 07:20:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.18..@fluentui/react-charting_v5.23.19)
+
+### Patches
+
+- Create declarative chart component ([PR #33348](https://github.com/microsoft/fluentui/pull/33348) by atisjai@microsoft.com)
+- Add grouped vertical bar chart plotly adapter ([PR #33383](https://github.com/microsoft/fluentui/pull/33383) by 110246001+krkshitij@users.noreply.github.com)
+
+## [5.23.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.18)
+
+Mon, 02 Dec 2024 07:20:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.17..@fluentui/react-charting_v5.23.18)
+
+### Patches
+
+- Mitigate XSS vulnerabilities ([PR #33376](https://github.com/microsoft/fluentui/pull/33376) by 110246001+krkshitij@users.noreply.github.com)
 
 ## [5.23.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.17)
 
