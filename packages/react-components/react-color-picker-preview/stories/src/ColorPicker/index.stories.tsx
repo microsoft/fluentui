@@ -4,6 +4,7 @@ import descriptionMd from './ColorPickerDescription.md';
 import bestPracticesMd from './ColorPickerBestPractices.md';
 
 export { Default } from './ColorPickerDefault.stories';
+export { ColorPickerShape } from './ColorPickerShape.stories';
 export { ColorAreaExample } from './ColorAreaDefault.stories';
 export { ColorSliderExample } from './ColorSliderDefault.stories';
 export { AlphaSliderExample } from './AlphaSliderDefault.stories';
