@@ -394,9 +394,9 @@ describe('Vertical bar chart rendering', () => {
   );
 
   testWithoutWait(
-    'Should render the vertical bar chart with all negative y value bars',
+    'Should render the vertical bar chart with all negative y value bars correctly',
     VerticalBarChart,
-    { data: allNegativeChartPointsVBC },
+    { data: allNegativeChartPointsVBC, supportNegativeYValues: true },
     container => {
       //Asset
       expect(container).toMatchSnapshot();
@@ -404,9 +404,9 @@ describe('Vertical bar chart rendering', () => {
   );
 
   testWithoutWait(
-    'should render the vertical bar chart with some positive and some negative y value bars',
+    'should render the vertical bar chart with some positive and some negative y value bars correctly',
     VerticalBarChart,
-    { data: negativeChartPointsVBC },
+    { data: negativeChartPointsVBC, supportNegativeYValues: true },
     container => {
       //Asset
       expect(container).toMatchSnapshot();

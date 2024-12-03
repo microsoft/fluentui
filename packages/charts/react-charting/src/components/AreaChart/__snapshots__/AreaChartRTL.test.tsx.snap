@@ -4186,12 +4186,12 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
             font-family="sans-serif"
             font-size="10"
             id="yAxisGElementSecondarychart_6"
-            text-anchor="end"
+            text-anchor="start"
             transform="translate(610, 0)"
           >
             <path
               class="domain"
-              d="M-6,257.5H0.5V20.5H-6"
+              d="M6,257.5H0.5V20.5H6"
               stroke="currentColor"
             />
             <g
@@ -4201,13 +4201,13 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
             >
               <line
                 stroke="currentColor"
-                x2="570"
+                x2="-570"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="10"
               >
                 0
               </text>
@@ -4219,13 +4219,13 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
             >
               <line
                 stroke="currentColor"
-                x2="570"
+                x2="-570"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="10"
               >
                 25
               </text>
@@ -4237,13 +4237,13 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
             >
               <line
                 stroke="currentColor"
-                x2="570"
+                x2="-570"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="10"
               >
                 50
               </text>
@@ -4255,13 +4255,13 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
             >
               <line
                 stroke="currentColor"
-                x2="570"
+                x2="-570"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="10"
               >
                 75
               </text>
@@ -4273,13 +4273,13 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
             >
               <line
                 stroke="currentColor"
-                x2="570"
+                x2="-570"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="10"
               >
                 100
               </text>

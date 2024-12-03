@@ -9943,7 +9943,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
 </div>
 `;
 
-exports[`Vertical bar chart rendering Should render the vertical bar chart with all negative y value bars 1`] = `
+exports[`Vertical bar chart rendering Should render the vertical bar chart with all negative y value bars correctly 1`] = `
 <div>
   <div
     aria-label="Graph has no data to display"
@@ -14012,7 +14012,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
 </div>
 `;
 
-exports[`Vertical bar chart rendering should render the vertical bar chart with some positive and some negative y value bars 1`] = `
+exports[`Vertical bar chart rendering should render the vertical bar chart with some positive and some negative y value bars correctly 1`] = `
 <div>
   <div
     class=
@@ -14043,7 +14043,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone7"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -14241,7 +14241,61 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,257.5)"
+            transform="translate(0,283.8333333333333)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              −60k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,231.16666666666666)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              −40k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,178.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              −20k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,125.83333333333333)"
           >
             <line
               stroke="currentColor"
@@ -14259,7 +14313,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,198.25)"
+            transform="translate(0,73.16666666666666)"
           >
             <line
               stroke="currentColor"
@@ -14271,43 +14325,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               fill="currentColor"
               x="-10"
             >
-              7.5k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,139)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              15k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,79.75)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              23k
+              20k
             </text>
           </g>
           <g
@@ -14325,7 +14343,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               fill="currentColor"
               x="-10"
             >
-              30k
+              40k
             </text>
           </g>
         </g>
@@ -14340,14 +14358,14 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="79"
-              id="_VBC_bar_10"
+              height="23.69999999999999"
+              id="_VBC_bar_14"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="48"
-              y="178"
+              y="91.10000000000002"
             />
             <text
               aria-hidden="true"
@@ -14360,12 +14378,46 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                   }
               text-anchor="middle"
               x="56"
-              y="172"
+              y="85.10000000000002"
             >
               10.0k
             </text>
           </g>
-           
+          <g>
+            <rect
+              aria-label="2020/04/30. Second, 20%."
+              class=
+
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#002050"
+              height="118.49999999999999"
+              id="_VBC_bar_16"
+              role="img"
+              rx="0"
+              tabindex="-1"
+              width="16"
+              x="262.61538461538464"
+              y="114.80000000000001"
+            />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="270.61538461538464"
+              y="245.3"
+            >
+              −50k
+            </text>
+          </g>
           <g>
             <rect
               aria-label="2020/04/30. Third, 37%."
@@ -14376,14 +14428,14 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                   }
               data-is-focusable="true"
               fill="#00188f"
-              height="237"
-              id="_VBC_bar_12"
+              height="71.10000000000002"
+              id="_VBC_bar_18"
               role="img"
               rx="0"
               tabindex="-1"
               width="16"
               x="584.5384615384615"
-              y="20"
+              y="43.69999999999999"
             />
             <text
               aria-hidden="true"
@@ -14396,7 +14448,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                   }
               text-anchor="middle"
               x="592.5384615384615"
-              y="14"
+              y="37.69999999999999"
             >
               30.0k
             </text>
@@ -14441,7 +14493,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone8"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
