@@ -151,7 +151,7 @@ export function useEmblaCarousel(
     const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
     const slides = emblaApi.current?.slideNodes();
     const actualIndex = emblaApi.current?.internalEngine().slideRegistry[newIndex][0] ?? 0;
-    // We set the active or first index of group on-screen as the selected tabster index
+    // We set the first card in the current group as the default tabster index for focus capture
     slides?.forEach((slide, slideIndex) => {
       setTabsterDefault(slide, slideIndex === actualIndex);
     });
@@ -178,7 +178,6 @@ export function useEmblaCarousel(
 
   const handleIndexChange: EmblaEventHandler = useEventCallback((_, eventType) => {
     const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
-
     updateIndex();
     if (eventType === 'autoplay:select') {
       const noopEvent = new Event('autoplay');
