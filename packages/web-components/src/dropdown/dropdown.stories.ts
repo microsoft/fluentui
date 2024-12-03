@@ -2,6 +2,7 @@ import { html, repeat } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Option as FluentOption } from '../option/option.js';
 import type { Dropdown as FluentDropdown } from './dropdown.js';
+import { DropdownSize } from './dropdown.options.js';
 
 type Story = StoryObj<FluentDropdown>;
 
@@ -23,7 +24,7 @@ const dropdownTemplate = html<StoryArgs<FluentDropdown>>`
     placeholder="${x => x.placeholder}"
     type="${x => x.type}"
   >
-    <fluent-listbox>${repeat(x => x.storyItems, optionTemplate)}</fluent-listbox>
+    <fluent-listbox>${repeat(x => x.slottedOptions, optionTemplate)}</fluent-listbox>
   </fluent-dropdown>
 `;
 
@@ -51,7 +52,12 @@ export default {
       control: 'boolean',
       table: { category: 'attributes' },
     },
-    storyItems: { table: { disable: true } },
+    size: {
+      control: 'select',
+      options: ['', ...Object.values(DropdownSize)],
+      table: { category: 'attributes' },
+    },
+    slottedOptions: { table: { disable: true } },
   },
 } as Meta<FluentDropdown>;
 
@@ -59,7 +65,7 @@ export const Dropdown: Story = {
   args: {
     placeholder: 'Select a fruit',
     type: DropdownType.dropdown,
-    storyItems: [
+    slottedOptions: [
       { value: 'apple', slottedContent: () => 'Apple' },
       { value: 'banana', slottedContent: () => 'Banana' },
       { value: 'orange', slottedContent: () => 'Orange' },
@@ -78,5 +84,19 @@ export const MultipleSelection: Story = {
     ...Dropdown.args,
     multiple: true,
     placeholder: 'Select fruits',
+  },
+};
+
+export const Small: Story = {
+  args: {
+    ...Dropdown.args,
+    size: DropdownSize.small,
+  },
+};
+
+export const Large: Story = {
+  args: {
+    ...Dropdown.args,
+    size: DropdownSize.large,
   },
 };
