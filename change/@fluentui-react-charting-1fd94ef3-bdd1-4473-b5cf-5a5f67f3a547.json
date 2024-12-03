@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Create declarative chart component",
-  "packageName": "@fluentui/react-charting",
-  "email": "atisjai@microsoft.com",
-  "dependentChangeType": "patch"
-}
