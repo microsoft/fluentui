@@ -4,6 +4,9 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, merge as d3Merge } from 'd3-array';
+import { scaleLinear as d3ScaleLinear } from 'd3-scale';
+import { format as d3Format, precisionFixed as d3PrecisionFixed } from 'd3-format';
 import { IDonutChartProps } from '../DonutChart/index';
 import {
   IChartDataPoint,
@@ -14,6 +17,7 @@ import {
   IHeatMapChartData,
   IHeatMapChartDataPoint,
   IGroupedVerticalBarChartData,
+  IVerticalBarChartDataPoint,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -24,6 +28,7 @@ import { IHeatMapChartProps } from '../HeatMapChart/index';
 import { getNextColor } from '../../utilities/colors';
 import { IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
+import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
@@ -169,6 +174,90 @@ export const transformPlotlyJsonToGVBCProps = (
     // width: layout?.width,
     // height: layout?.height,
     barwidth: 'auto',
+  };
+};
+
+// TODO: Add support for padding in continuous x-axis
+export const transformPlotlyJsonToVBCProps = (
+  jsonObj: any,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+): IVerticalBarChartProps => {
+  const { data, layout } = jsonObj;
+  const firstData = data[0];
+  const vbcData: IVerticalBarChartDataPoint[] = [];
+
+  if (firstData.x) {
+    const scale = d3ScaleLinear()
+      .domain(d3Extent<number>(firstData.x) as [number, number])
+      .nice();
+    let [xMin, xMax] = scale.domain();
+
+    xMin = typeof firstData.xbins?.start === 'number' ? firstData.xbins.start : xMin;
+    xMax = typeof firstData.xbins?.end === 'number' ? firstData.xbins.end : xMax;
+
+    const bin = d3Bin().domain([xMin, xMax]);
+
+    if (typeof firstData.xbins?.size === 'number') {
+      const thresholds: number[] = [];
+      let th = xMin;
+      const precision = d3PrecisionFixed(firstData.xbins.size);
+      const format = d3Format(`.${precision}f`);
+
+      while (th < xMax + firstData.xbins.size) {
+        thresholds.push(parseFloat(format(th)));
+        th += firstData.xbins.size;
+      }
+
+      xMin = thresholds[0];
+      xMax = thresholds[thresholds.length - 1];
+      bin.domain([xMin, xMax]).thresholds(thresholds);
+    }
+
+    const buckets = bin(firstData.x);
+    const totalDataPoints = d3Merge(buckets).length;
+
+    buckets.forEach(bucket => {
+      if (bucket.length < 1) {
+        return;
+      }
+
+      const legend = firstData.name || `Series 1`;
+      const color = getColor(legend, colorMap);
+      let y = bucket.length;
+
+      if (firstData.histnorm === 'percent') {
+        y = (bucket.length / totalDataPoints) * 100;
+      } else if (firstData.histnorm === 'probability') {
+        y = bucket.length / totalDataPoints;
+      } else if (firstData.histnorm === 'density') {
+        y = bucket.length / (bucket.x1! - bucket.x0!);
+      } else if (firstData.histnorm === 'probability density') {
+        y = bucket.length / (totalDataPoints * (bucket.x1! - bucket.x0!));
+      } else if (firstData.histfunc === 'sum') {
+        y = d3Sum(bucket);
+      } else if (firstData.histfunc === 'avg') {
+        y = d3Sum(bucket) / bucket.length;
+      } else if (firstData.histfunc === 'min') {
+        y = d3Min(bucket)!;
+      } else if (firstData.histfunc === 'max') {
+        y = d3Max(bucket)!;
+      }
+
+      vbcData.push({
+        x: (bucket.x1! + bucket.x0!) / 2,
+        y,
+        legend,
+        color,
+      });
+    });
+  }
+
+  return {
+    data: vbcData,
+    chartTitle: layout?.title,
+    // width: layout?.width,
+    // height: layout?.height,
+    hideLegend: true,
   };
 };
 
