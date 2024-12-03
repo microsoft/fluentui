@@ -347,7 +347,21 @@ export function prepareDatapoints(
     : (maxVal - minVal) / splitInto >= 1
     ? Math.ceil((maxVal - minVal) / splitInto)
     : (maxVal - minVal) / splitInto;
+  /*
+    For cases where we have negative and positive values
+    The dataPointsArray is filled from 0 to minVal by val difference
+    Then the array is reversed and values from 0(excluding 0) to maxVal are appended
+    This ensures presence of 0 to act as an anchor reference.
+    For simple cases where the scale may not encounter such a need for 0,
+    We simply fill from minVal to maxVal
+  */
   const dataPointsArray: number[] = [minVal < 0 && maxVal >= 0 ? 0 : minVal];
+  /*For the case of all positive or all negative, we need to add another value
+   in array for atleast one interval, but in case of mix of positive and negative,
+   there will always be one more entry that will be added by the logic we have*/
+  if (dataPointsArray[0] === minVal) {
+    dataPointsArray.push(minVal + val);
+  }
   if (minVal < 0 && maxVal >= 0) {
     while (dataPointsArray[dataPointsArray.length - 1] > minVal) {
       dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] - val);
@@ -394,7 +408,7 @@ export function createNumericYAxis(
   axisData: IAxisData,
   isIntegralDataset: boolean,
   useSecondaryYScale: boolean = false,
-  supportNegativeValuesForYAxis: boolean = false,
+  supportNegativeData: boolean = false,
 ) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -415,12 +429,14 @@ export function createNumericYAxis(
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = supportNegativeValuesForYAxis
+  const finalYmin = supportNegativeData
     ? Math.min(yMinMaxValues.startValue, yMinValue || 0)
-    : Math.max(Math.min(yMinMaxValues.startValue, yMinValue || 0), 0);
+    : yMinMaxValues.startValue < yMinValue
+    ? 0
+    : yMinValue!;
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
   const yAxisScale = d3ScaleLinear()
-    .domain([domainValues[0], domainValues[domainValues.length - 1]])
+    .domain([finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);

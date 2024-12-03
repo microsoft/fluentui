@@ -700,7 +700,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
 
-    const baselinePoint = this._yMax < 0 ? this._yMax : 0;
+    const yReferencePoint = this._yMax < 0 ? this._yMax : 0;
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
       this._classNames = getClassNames(this.props.styles!, {
@@ -709,14 +709,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         shouldHighlight,
       });
 
-      let barHeight: number = this.props.supportNegativeYValues
-        ? yBarScale(point.y) - yBarScale(baselinePoint)
-        : yBarScale(point.y);
+      let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
       // Calculate threshold for minimum visible bar height
       const maxHeightFromBaseline =
-        this._yMax < 0 ? Math.abs(this._yMin - baselinePoint) : Math.abs(this._yMax - baselinePoint);
+        this._yMax < 0 ? Math.abs(this._yMin - yReferencePoint) : Math.abs(this._yMax - yReferencePoint);
       const minBarHeight = Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
       let adjustedBarHeight = barHeight;
 
@@ -732,8 +730,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         containerHeight -
         this.margins.bottom! -
         (isHeightNegative ? -1 * adjustedBarHeight : adjustedBarHeight) -
-        yBarScale(baselinePoint);
-      const baselineHeight = containerHeight - this.margins.bottom! - yBarScale(baselinePoint);
+        yBarScale(yReferencePoint);
+      const baselineHeight = containerHeight - this.margins.bottom! - yBarScale(yReferencePoint);
 
       let startColor = point.color && !useSingleColor ? point.color : colorScale(point.y);
       let endColor = startColor;
@@ -813,16 +811,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
-    const baselinePoint = this._yMax < 0 ? this._yMax : 0;
+    const yReferencePoint = this._yMax < 0 ? this._yMax : 0;
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
-      let barHeight: number = this.props.supportNegativeYValues
-        ? yBarScale(point.y) - yBarScale(baselinePoint)
-        : yBarScale(point.y);
+      let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
       // Calculate threshold for minimum visible bar height
       const maxHeightFromBaseline =
-        this._yMax < 0 ? Math.abs(this._yMin - baselinePoint) : Math.abs(this._yMax - baselinePoint);
+        this._yMax < 0 ? Math.abs(this._yMin - yReferencePoint) : Math.abs(this._yMax - yReferencePoint);
       const minBarHeight = Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
       let adjustedBarHeight = barHeight;
 
@@ -838,8 +834,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         containerHeight -
         this.margins.bottom! -
         (isHeightNegative ? -1 * adjustedBarHeight : adjustedBarHeight) -
-        yBarScale(baselinePoint);
-      const baselineHeight = containerHeight - this.margins.bottom! - yBarScale(baselinePoint);
+        yBarScale(yReferencePoint);
+      const baselineHeight = containerHeight - this.margins.bottom! - yBarScale(yReferencePoint);
       // Setting the bar width here is safe because there are no dependencies earlier in the code
       // that rely on the width of bars in vertical bar charts with string x-axis.
       this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
@@ -927,7 +923,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
 
-    const baselinePoint = this._yMax < 0 ? this._yMax : 0;
+    const yReferencePoint = this._yMax < 0 ? this._yMax : 0;
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
       this._classNames = getClassNames(this.props.styles!, {
@@ -936,14 +932,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         shouldHighlight,
       });
 
-      let barHeight: number = this.props.supportNegativeYValues
-        ? yBarScale(point.y) - yBarScale(baselinePoint)
-        : yBarScale(point.y);
+      let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
       // Calculate threshold for minimum visible bar height
       const maxHeightFromBaseline =
-        this._yMax < 0 ? Math.abs(this._yMin - baselinePoint) : Math.abs(this._yMax - baselinePoint);
+        this._yMax < 0 ? Math.abs(this._yMin - yReferencePoint) : Math.abs(this._yMax - yReferencePoint);
       const minBarHeight = Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
       let adjustedBarHeight = barHeight;
 
@@ -959,8 +953,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         containerHeight -
         this.margins.bottom! -
         (isHeightNegative ? -1 * adjustedBarHeight : adjustedBarHeight) -
-        yBarScale(baselinePoint);
-      const baselineHeight = containerHeight - this.margins.bottom! - yBarScale(baselinePoint);
+        yBarScale(yReferencePoint);
+      const baselineHeight = containerHeight - this.margins.bottom! - yBarScale(yReferencePoint);
 
       let startColor = point.color && !useSingleColor ? point.color : colorScale(point.y);
       let endColor = startColor;
