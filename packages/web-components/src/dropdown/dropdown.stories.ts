@@ -1,9 +1,9 @@
 import { html, repeat } from '@microsoft/fast-element';
-import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
-import { renderComponent } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Option as FluentOption } from '../option/option.js';
 import type { Dropdown as FluentDropdown } from './dropdown.js';
-import { DropdownType } from './dropdown.options.js';
+
+type Story = StoryObj<FluentDropdown>;
 
 const optionTemplate = html<StoryArgs<FluentOption>>` <fluent-option
   ?disabled="${x => x.disabled}"
@@ -36,6 +36,7 @@ const storyTemplate = html<StoryArgs<FluentDropdown>>`
 
 export default {
   title: 'Components/Dropdown',
+  render: renderComponent(storyTemplate),
   argTypes: {
     type: {
       control: 'radio',
@@ -54,26 +55,28 @@ export default {
   },
 } as Meta<FluentDropdown>;
 
-export const Dropdown: Story<FluentDropdown> = renderComponent(storyTemplate);
-Dropdown.args = {
-  placeholder: 'Select a fruit',
-  type: DropdownType.dropdown,
-  storyItems: [
-    { value: 'apple', slottedContent: () => 'Apple' },
-    { value: 'banana', slottedContent: () => 'Banana' },
-    { value: 'orange', slottedContent: () => 'Orange' },
-    { value: 'mango', slottedContent: () => 'Mango' },
-    { value: 'kiwi', slottedContent: () => 'Kiwi' },
-    { value: 'cherry', slottedContent: () => 'Cherry' },
-    { value: 'grapefruit', slottedContent: () => 'Grapefruit' },
-    { value: 'papaya', slottedContent: () => 'Papaya' },
-    { value: 'lychee', slottedContent: () => 'Lychee' },
-  ],
+export const Dropdown: Story = {
+  args: {
+    placeholder: 'Select a fruit',
+    type: DropdownType.dropdown,
+    storyItems: [
+      { value: 'apple', slottedContent: () => 'Apple' },
+      { value: 'banana', slottedContent: () => 'Banana' },
+      { value: 'orange', slottedContent: () => 'Orange' },
+      { value: 'mango', slottedContent: () => 'Mango' },
+      { value: 'kiwi', slottedContent: () => 'Kiwi' },
+      { value: 'cherry', slottedContent: () => 'Cherry' },
+      { value: 'grapefruit', slottedContent: () => 'Grapefruit' },
+      { value: 'papaya', slottedContent: () => 'Papaya' },
+      { value: 'lychee', slottedContent: () => 'Lychee' },
+    ],
+  },
 };
 
-export const MultipleSelection: Story<FluentDropdown> = renderComponent(storyTemplate);
-MultipleSelection.args = {
-  ...Dropdown.args,
-  multiple: true,
-  placeholder: 'Select fruits',
+export const MultipleSelection: Story = {
+  args: {
+    ...Dropdown.args,
+    multiple: true,
+    placeholder: 'Select fruits',
+  },
 };
