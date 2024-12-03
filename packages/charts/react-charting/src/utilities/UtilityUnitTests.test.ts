@@ -315,22 +315,22 @@ describe('prepareDatapoints', () => {
   });
 
   it('should handle the case where the range spans across zero', () => {
-    const result = utils.prepareDatapoints(-7, 0, 3, false);
+    const result = utils.prepareDatapoints(0, -7, 3, false);
     matchResult(result);
   });
 
   it('should return data points when minVal is negative and maxVal is non-negative', () => {
-    const result = utils.prepareDatapoints(-5, 3, 2, false);
+    const result = utils.prepareDatapoints(3, -5, 2, false);
     matchResult(result);
   });
 
   it('should return data points for positive only range', () => {
-    const result = utils.prepareDatapoints(1, 5, 1, false);
+    const result = utils.prepareDatapoints(5, 1, 1, false);
     matchResult(result);
   });
 
   it('should return data points for a negative only range', () => {
-    const result = utils.prepareDatapoints(-5, -1, 1, false);
+    const result = utils.prepareDatapoints(-1, -5, 1, false);
     matchResult(result);
   });
 });
