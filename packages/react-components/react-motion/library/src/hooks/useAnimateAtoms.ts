@@ -81,7 +81,7 @@ function useAnimateAtomsInSupportedEnvironment() {
         },
       };
     },
-    [],
+    [SUPPORTS_PERSIST],
   );
 }
 
