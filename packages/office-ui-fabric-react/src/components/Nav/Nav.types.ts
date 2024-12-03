@@ -197,6 +197,11 @@ export interface INavLink {
   isExpanded?: boolean;
 
   /**
+   * Aria-current token for active nav links. Must be a valid token value, and defaults to 'page'.
+   */
+  ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true';
+
+  /**
    * Aria label for nav link
    */
   ariaLabel?: string;
