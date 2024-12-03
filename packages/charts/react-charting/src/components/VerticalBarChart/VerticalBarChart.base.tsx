@@ -1236,10 +1236,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   };
 
   private _isChartEmpty(): boolean {
-    return (
-      this._points.length === 0 ||
-      (d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine)
-    );
+    return this._points.length === 0 || (this._points.every(point => point.y === 0) && !this._isHavingLine);
   }
 
   private _getChartTitle = (): string => {
