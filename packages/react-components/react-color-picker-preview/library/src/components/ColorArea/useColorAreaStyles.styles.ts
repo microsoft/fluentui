@@ -20,6 +20,9 @@ export const colorAreaCSSVars = {
 
 // Internal CSS variables
 const thumbSizeVar = `--fui-Slider__thumb--size`;
+const thumbPositionXVar = `--fui-AlphaSlider__thumb--positionX`;
+const thumbPositionYVar = `--fui-AlphaSlider__thumb--positionY`;
+const innerThumbRadiusVar = `--fui-AlphaSlider__thumb--radius`;
 
 /**
  * Styles for the root slot
@@ -27,7 +30,6 @@ const thumbSizeVar = `--fui-Slider__thumb--size`;
 const useRootStyles = makeResetStyles({
   position: 'relative',
   border: `1px solid ${tokens.colorNeutralStroke1}`,
-  borderRadius: tokens.borderRadiusMedium,
   background: `linear-gradient(to bottom, transparent, #000), linear-gradient(to right, #fff, transparent), var(${colorAreaCSSVars.mainColorVar})`,
   forcedColorAdjust: 'none',
   display: 'inline-grid',
@@ -37,6 +39,7 @@ const useRootStyles = makeResetStyles({
   [thumbSizeVar]: '20px',
   minWidth: '200px',
   minHeight: '200px',
+  [innerThumbRadiusVar]: '6px',
 });
 
 /**
@@ -54,8 +57,10 @@ const useThumbStyles = makeStyles({
     boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${colorAreaCSSVars.thumbColorVar})`,
     transform: 'translate(-50%, 50%)',
-    left: `var(${colorAreaCSSVars.areaXProgressVar})`,
-    bottom: `var(${colorAreaCSSVars.areaYProgressVar})`,
+    [`${thumbPositionXVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${colorAreaCSSVars.areaXProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
+    [`${thumbPositionYVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${colorAreaCSSVars.areaYProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
+    left: `var(${thumbPositionXVar})`,
+    bottom: `var(${thumbPositionYVar})`,
     '::before': {
       position: 'absolute',
       inset: '0px',
@@ -93,6 +98,15 @@ const useInputStyles = makeStyles({
   },
 });
 
+const useShapeStyles = makeStyles({
+  rounded: {
+    borderRadius: tokens.borderRadiusMedium,
+  },
+  square: {
+    borderRadius: tokens.borderRadiusNone,
+  },
+});
+
 /**
  * Apply styling to the ColorArea slots based on the state
  */
@@ -102,8 +116,14 @@ export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaSta
   const rootStyles = useRootStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
+  const shapeStyles = useShapeStyles();
 
-  state.root.className = mergeClasses(colorAreaClassNames.root, rootStyles, state.root.className);
+  state.root.className = mergeClasses(
+    colorAreaClassNames.root,
+    rootStyles,
+    shapeStyles[state.shape || 'rounded'],
+    state.root.className,
+  );
 
   state.thumb.className = mergeClasses(
     colorAreaClassNames.thumb,

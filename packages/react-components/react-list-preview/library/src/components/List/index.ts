@@ -1,5 +1,13 @@
-export * from './List';
-export * from './List.types';
-export * from './renderList';
-export * from './useList';
-export * from './useListStyles.styles';
+export { List } from './List';
+export type {
+  ListContextValue,
+  ListContextValues,
+  ListNavigationMode,
+  ListProps,
+  ListSlots,
+  ListState,
+  OnListSelectionChangeData,
+} from './List.types';
+export { renderList_unstable } from './renderList';
+export { useList_unstable } from './useList';
+export { listClassNames, useListStyles_unstable } from './useListStyles.styles';

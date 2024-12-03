@@ -2,8 +2,9 @@
 
 ## Background
 
-The ColorPicker is used to browse through and select colors.
-By default, it lets people navigate through colors on a color spectrum; or specify a color in either Red-Green-Blue (RGB); or alpha color code; or Hexadecimal textboxes.
+The ColorPicker allows users to browse and select colors.
+By default, it enables navigation through a color spectrum and operates in HSV/HSL format.
+However, it is also possible to specify a color using Red-Green-Blue (RGB), an alpha color code, or hexadecimal values in the text boxes.
 
 ## Prior Art
 
@@ -58,18 +59,18 @@ const ColorPickerBasicExample: React.FunctionComponent = () => {
 
 ### Components
 
-| Purpose                                                                  | Fabric (V8)    | Spectrum    | V9                 | Matching? |
-| ------------------------------------------------------------------------ | -------------- | ----------- | ------------------ | --------- |
-| Component responsible for color editing using ColorArea and ColorSliders | ColorPicker    | ColorPicker | ColorPickerPalette | ⚠️        |
-| ColorArea allows user to pick a color using two channels                 | ColorRectangle | ColorArea   | ColorArea          | ⚠️        |
-| ColorSlider allows user to pick a color using individual channel         | ColorSlider    | ColorSlider | ColorSlider        | ⚠️        |
-| AlphaSlider allows user to pick a color using alpha channel              |                |             | AlphaSlider        | ❌        |
+| Purpose                                                                  | Fabric (V8)    | Spectrum    | V9          | Matching? |
+| ------------------------------------------------------------------------ | -------------- | ----------- | ----------- | --------- |
+| Component responsible for color editing using ColorArea and ColorSliders | ColorPicker    | ColorPicker | ColorPicker | ⚠️        |
+| ColorArea allows user to pick a color using two channels                 | ColorRectangle | ColorArea   | ColorArea   | ⚠️        |
+| ColorSlider allows user to pick a color using individual channel         | ColorSlider    | ColorSlider | ColorSlider | ⚠️        |
+| AlphaSlider allows user to pick a color using alpha channel              |                |             | AlphaSlider | ❌        |
 
 ## Sample Code of proposed API below
 
 ```jsx
 import {
-  ColorPickerPalette,
+  ColorPicker,
   ColorArea,
   ColorSliderProps,
   AlphaSlider,
@@ -85,11 +86,11 @@ export const Default = () => {
 
   return (
     <>
-      <ColorPickerPalette color={selectedColor} onChange={handleChange}>
+      <ColorPicker color={selectedColor} onChange={handleChange}>
         <ColorArea />
         <AlphaSlider />
         <HueSlider />
-      </ColorPickerPalette>
+      </ColorPicker>
       <div style={{ backgroundColor: `${selectedColor}` }} />
     </>
   );
@@ -107,8 +108,8 @@ ColorSliders might represent different color channels.
 
 ### Shapes
 
-- `square` (default)
-- `rounded`
+- `square`
+- `rounded` (default)
 
 ### Size
 
@@ -133,44 +134,46 @@ For custom sizes users might want to customize it via CSS.
 
 | Property   | Values              | Default   | Purpose                                |
 | ---------- | ------------------- | --------- | -------------------------------------- |
-| color      | `string`            |           | Sets color value                       |
+| color      | `HSV`               |           | Sets color value in HSV format         |
 | onChange   | `function`          | undefined | Callback called when color is selected |
-| shape      | `square`, `rounded` | `square`  | Sets shape                             |
+| shape      | `square`, `rounded` | `rounded` | Sets shape                             |
 | step       | `number`            | 1         | Step for arrow navigation              |
 | customStep | `number`            | 3         | Fast navigation                        |
 
-Color has `string` type because all the color manipulations will be done inside of the ColorPicker component. It'll transform any color to HSL or RGB format.
+Color has an `HSV` type because the correct functioning of the component requires coordinates. In some parts of the ColorArea, the color is the same, and therefore it should be calculated using coordinates. Color manipulations will be done on the user end in the desired format.
 
-`onChange` event returns data which contains a new color and values of color channels.
+`onChange` event returns data which contains a new color.
 
 Input fields with color values will be in `renderUtils`. It will contain default ColorPicker which has all colors represented and a preview swatch. This functionality is similar to V8.
 
 ```tsx
 import { ColorPicker } from '@fluentui/react-color-picker-preview';
 
+const COLOR = { h: 0, s: 1, v: 1 };
+
 export const Default = () => {
-  const COLOR = 'rgba(0, 255, 170, 1)';
   const [selectedColor, setSelectedColor] = React.useState(COLOR);
   const handleChange: ColorPickerOnSelectEventHandler = (_, data) => {
-    setSelectedColor(data.selectedColorHex);
+    setSelectedColor({ ...data.color, a: data.color.a ?? 1 });
   };
 
   return (
     <>
-      <ColorPicker
-        color={selectedColor}
-        onChange={handleChange}
-        showAlphaSlider={true}
-        showPreview={true}
-        channels={['hex', 'rgb']}
-      />
+      <ColorPicker color={color} onColorChange={handleChange}>
+        <ColorSlider />
+        <AlphaSlider />
+        <ColorArea />
+      </ColorPicker>
+      <InputHexField color={color} onChange={handleChange} />
+      <InputRgbField color={color} onChange={handleChange} />
+      <ColorSwatch color={color}>
       <div style={{ backgroundColor: `${selectedColor}` }} />
     </>
   );
 };
 ```
 
-![ColorPickerPalette](./assets/color-picker-layout.jpg)
+![ColorPicker](./assets/color-picker-layout.jpg)
 
 Validation of color fields will be in `utils`. Validation should not allow entering incorrect values to the input fields.
 
@@ -182,14 +185,12 @@ For color manipulation and conversion [tinycolor](https://www.npmjs.com/package/
 
 ### ColorArea
 
-| Property   | Values              | Default   | Purpose                                |
-| ---------- | ------------------- | --------- | -------------------------------------- |
-| customStep | `number`            | 3         | Fast step for the slider               |
-| onChange   | `function`          | undefined | Callback called when color is selected |
-| shape      | `square`, `rounded` | `square`  | Sets shape                             |
-| step       | `number`            | 1         | Step for the slider                    |
-| valueX     | `string`            |           | Value of the slider on X axis          |
-| valueY     | `string`            |           | Value of the slider on Y axis          |
+| Property     | Values              | Default   | Purpose                                 |
+| ------------ | ------------------- | --------- | --------------------------------------- |
+| color        | `HSV`               |           | Sets color value in HSV format          |
+| defauleColor | `HSV`               |           | Sets color for uncontrollable ColorArea |
+| onChange     | `function`          | undefined | Callback called when color is selected  |
+| shape        | `square`, `rounded` | `rounded` | Sets shape                              |
 
 | Slots   | Values  | Default | Description                                                         |
 | ------- | ------- | ------- | ------------------------------------------------------------------- |
@@ -200,16 +201,13 @@ For color manipulation and conversion [tinycolor](https://www.npmjs.com/package/
 
 ### ColorSlider
 
-| Property   | Values                   | Default      | Purpose                                |
-| ---------- | ------------------------ | ------------ | -------------------------------------- |
-| customStep | `number`                 | 3            | Fast step for the slider               |
-| max        | `number`                 | 360          | The max value of the Slider.           |
-| min        | `number`                 | 0            | The min value of the Slider.           |
-| onChange   | `function`               | undefined    | Callback called when color is selected |
-| orient     | `horizontal`, `vertical` | `horizontal` | Orientation of a slider                |
-| shape      | `square`, `rounded`      | `square`     | Sets shape                             |
-| step       | `number`                 | 1            | Step for the slider                    |
-| value      | `string`                 |              | Value of the slider                    |
+| Property     | Values                   | Default      | Purpose                                   |
+| ------------ | ------------------------ | ------------ | ----------------------------------------- |
+| color        | `HSV`                    |              | Sets color value in HSV format            |
+| defauleColor | `HSV`                    |              | Sets color for uncontrollable ColorSlider |
+| onChange     | `function`               | undefined    | Callback called when color is selected    |
+| orient       | `horizontal`, `vertical` | `horizontal` | Orientation of a slider                   |
+| shape        | `square`, `rounded`      | `rounded`    | Sets shape                                |
 
 | Slots  | Values  | Default | Description                                                      |
 | ------ | ------- | ------- | ---------------------------------------------------------------- |
@@ -220,44 +218,27 @@ For color manipulation and conversion [tinycolor](https://www.npmjs.com/package/
 
 ### AlphaSlider
 
-| Property     | Values                   | Default      | Purpose                                |
-| ------------ | ------------------------ | ------------ | -------------------------------------- |
-| customStep   | `number`                 | 3            | Fast step for the slider               |
-| max          | `number`                 | 100          | The max value of the Slider.           |
-| min          | `number`                 | 0            | The min value of the Slider.           |
-| onChange     | `function`               | undefined    | Callback called when color is selected |
-| orient       | `horizontal`, `vertical` | `horizontal` | Orientation of a slider                |
-| overlayColor | `string`                 | undefined    | Overlay color                          |
-| shape        | `square`, `rounded`      | `square`     | Sets shape                             |
-| step         | `number`                 | 1            | Step for the slider                    |
-| value        | `string`                 |              | value of the slider                    |
-
-| Slots  | Values  | Default | Description                                                      |
-| ------ | ------- | ------- | ---------------------------------------------------------------- |
-| root   | `div`   | `div`   | The root of the AlphaSlider element                              |
-| thumb  | `div`   | `div`   | The draggable icon used to select a given value from the Slider. |
-| slider | `input` | `input` | Input for slider                                                 |
-| rail   | `div`   | `div`   | It is used to visibly display the min and max selectable values. |
+AlphaSlider has the same props and slots as ColorSlider.
 
 ## Structure
 
 ### Components
 
-| Component          | Purpose                                      |
-| ------------------ | -------------------------------------------- |
-| ColorPickerPalette | Renders ColorPicker                          |
-| ColorArea          | Renders two-dimensional gradient background. |
-| ColorSlider        | Renders individual color channel             |
-| AlphaSlider        | Renders slider with alpha channel            |
+| Component   | Purpose                                      |
+| ----------- | -------------------------------------------- |
+| ColorPicker | Renders ColorPicker                          |
+| ColorArea   | Renders two-dimensional gradient background. |
+| ColorSlider | Renders individual color channel             |
+| AlphaSlider | Renders slider with alpha channel            |
 
-#### ColorPickerPalette component
+#### ColorPicker component
 
-![ColorPickerPalette Anatomy](./assets/color-picker-anatomy.jpg)
+![ColorPicker Anatomy](./assets/color-picker-anatomy.jpg)
 
 #### DOM
 
 ```HTML
-<div role="group" class="fui-ColorPickerPalette" arial-label="ColorPicker">
+<div role="group" class="fui-ColorPicker" arial-label="ColorPicker">
   <!-- Content rendered here -->
 </div>
 ```
@@ -309,90 +290,6 @@ For color manipulation and conversion [tinycolor](https://www.npmjs.com/package/
   <div class="fui-AlphaSlider__thumb"></div>
 </div>
 ```
-
-## Migration
-
-### Fabric (v8) property mapping
-
-#### New props
-
-- `customStep`
-- `shape`
-- `step`
-
-#### Supported Props
-
-- `color`
-- `onChange`
-
-#### Props no longer supported with an equivalent functionality in ColorPicker V9:
-
-- `className` => Slot system supports it by default. We don't need to provide it explicitly.
-- `styles` => Use style customization through `className` instead.
-- `theme`
-
-#### Props no longer supported
-
-- `alphaType`
-- `componentRef`
-- `showPreview`
-- `strings`
-- `tooltipProps`
-
-#### ColorArea component
-
-#### New props
-
-- `customStep`
-- `shape`
-- `step`
-- `valueX`
-- `valueY`
-
-#### Props supported
-
-- `color`
-
-#### ColorSlider component
-
-#### New props
-
-- `customStep`
-- `shape`
-- `orient`
-- `step`
-
-#### Props supported
-
-- `value`
-- `onChange`
-
-#### Props no longer supported with an equivalent functionality in ColorPicker V9:
-
-- `minValue` => Use `min` instead
-- `maxValue` => Use `max` instead
-- `type` => in case of support channels it'll be `channel` instead
-- `isAlpha` => use `AlphaSlider` component instead
-- `overlayColor` => part of `AlphaSlider` component
-- `thumbColor` => is calculated automatically or can be customized via CSS
-
-#### Property Mapping
-
-| v8 `ColorPicker` | v9 `ColorPicker`           |
-| ---------------- | -------------------------- |
-| `value`          | `value`                    |
-| `onChange`       | `onChange`                 |
-| `maxValue`       | `max`                      |
-| `minValue`       | `min`                      |
-| `shape `         |                            |
-| `type`           | `channel`                  |
-| `isAlpha`        | `AlphaSlider` component    |
-| `overlayColor`   | In `AlphaSlider` component |
-| `thumbColor`     |                            |
-|                  | `customStep`               |
-|                  | `shape`                    |
-|                  | `orient`                   |
-|                  | `step`                     |
 
 ## Behaviors
 

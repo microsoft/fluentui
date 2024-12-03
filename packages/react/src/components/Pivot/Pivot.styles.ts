@@ -224,10 +224,10 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
       classNames.linkInMenu,
       ...getLinkStyles(props, classNames, true),
       {
-        textAlign: 'left',
-        width: '100%',
+        justifyContent: 'start',
         height: 36,
         lineHeight: 36,
+        width: '100%',
       },
     ],
     linkIsSelected: [

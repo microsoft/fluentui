@@ -2,6 +2,41 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Thu, 28 Nov 2024 09:30:51 GMT",
+      "tag": "@fluentui/react-dialog_v9.11.22",
+      "version": "9.11.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "olkatruk@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "502a0592c966ac78739c9f2704f772e2fd92230f",
+            "comment": "feat(motion): update DialogBackdropMotion to use createFadePresence API"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-motion to v9.6.2",
+            "commit": "8b28fafa6e2ce60d17fbffe3a32f7d567c981604"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.3.1",
+            "commit": "8b28fafa6e2ce60d17fbffe3a32f7d567c981604"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Nov 2024 09:31:25 GMT",
       "tag": "@fluentui/react-dialog_v9.11.20",
       "version": "9.11.20",

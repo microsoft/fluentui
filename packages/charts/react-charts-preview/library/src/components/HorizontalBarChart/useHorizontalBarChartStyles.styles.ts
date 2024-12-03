@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-components';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HorizontalBarChartProps, HorizontalBarChartStyles, HorizontalBarChartVariant } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
