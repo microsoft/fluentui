@@ -2,6 +2,115 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 28 Nov 2024 09:30:49 GMT",
+      "tag": "@fluentui/react-components_v9.56.3",
+      "version": "9.56.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: update api.md"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          }
+        ],
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "2fc8151970bf59010c951314e1a059809a24f439",
+            "comment": "feat: Add autoplay index change callback and fix autoplay pause on interaction"
+          }
+        ],
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts-preview",
+            "commit": "0cb1e6ea1615357bcb47d8501a51faac831554a1",
+            "comment": "Update readme with current content"
+          },
+          {
+            "author": "olkatruk@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "502a0592c966ac78739c9f2704f772e2fd92230f",
+            "comment": "feat(motion): update DialogBackdropMotion to use createFadePresence API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "883151bfb7aa84ea8f950d2c27a806922d438122",
+            "comment": "fix: respect reduced motion in createMotionComponent()"
+          },
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "94f7b85e933d6358cf30094aa584feb94f85c8c6",
+            "comment": "fix(react-search): restore focus to SearchBox after clear button is clicked"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "5273591bf76555d0c81cdbdeb3b1a29079cab24f",
+            "comment": "feat: Correctly integrating SwatchPicker with Field component."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f7ad10bb3137cc3b7d477405c9e1713dbd756c05",
+            "comment": "bugfix: ensure that onActionVisibilityChange is properly invoked"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Nov 2024 09:44:38 GMT",
       "tag": "@fluentui/react-components_v9.56.2",
       "version": "9.56.2",
