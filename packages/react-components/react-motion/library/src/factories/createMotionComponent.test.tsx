@@ -86,7 +86,7 @@ describe('createMotionComponent', () => {
     );
 
     expect(animateMock).toHaveBeenCalledWith(motion.keyframes, {
-      duration: 1,
+      duration: 500,
       fill: 'forwards',
     });
   });

@@ -104,7 +104,7 @@ describe('createPresenceComponent', () => {
 
       expect(animateMock).toHaveBeenCalledWith(enterKeyframes, {
         ...options,
-        duration: 1,
+        duration: 500,
       });
     });
 

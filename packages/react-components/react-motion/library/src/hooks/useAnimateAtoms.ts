@@ -22,10 +22,15 @@ function useAnimateAtomsInSupportedEnvironment() {
           fill: 'forwards',
 
           ...params,
-          ...((isReducedMotion || !SUPPORTS_PERSIST) && { duration: 1 }),
+          ...(isReducedMotion && { duration: 1 }),
         });
 
-        SUPPORTS_PERSIST && animation.persist();
+        if (SUPPORTS_PERSIST) {
+          animation.persist();
+        } else {
+          const resultKeyframe = keyframes[keyframes.length - 1];
+          Object.assign(element.style ?? {}, resultKeyframe);
+        }
 
         return animation;
       });
