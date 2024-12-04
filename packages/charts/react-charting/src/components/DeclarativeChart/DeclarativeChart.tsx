@@ -23,6 +23,10 @@ import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 
+/**
+ * DeclarativeChart schema.
+ * {@docCategory DeclarativeChart}
+ */
 export interface Schema {
   /**
    * Plotly schema represented as JSON object
