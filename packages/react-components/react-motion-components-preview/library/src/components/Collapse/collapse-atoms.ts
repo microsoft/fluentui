@@ -68,16 +68,18 @@ export const sizeExitAtom = ({
 
 // ----- WHITESPACE -----
 
-// Whitespace animation currently includes padding, but could be extended to handle margin.
+// Whitespace animation includes padding and margin.
 const whitespaceValuesForOrientation = (orientation: CollapseOrientation) => {
   const paddingStart = orientation === 'horizontal' ? 'paddingLeft' : 'paddingTop';
   const paddingEnd = orientation === 'horizontal' ? 'paddingRight' : 'paddingBottom';
-  return { paddingStart, paddingEnd };
+
+  const marginStart = orientation === 'horizontal' ? 'marginLeft' : 'marginTop';
+  const marginEnd = orientation === 'horizontal' ? 'marginRight' : 'marginBottom';
+  return { paddingStart, paddingEnd, marginStart, marginEnd };
 };
 
-// Because a height of zero does not eliminate padding,
-// we will create keyframes to animate it to zero.
-// TODO: consider collapsing margin, perhaps as an option.
+// Because a height of zero does not eliminate padding or margin,
+// we will create keyframes to animate them to zero.
 export const whitespaceEnterAtom = ({
   orientation,
   duration,
@@ -87,9 +89,10 @@ export const whitespaceEnterAtom = ({
   duration: number;
   easing: string;
 }): AtomMotion => {
-  const { paddingStart, paddingEnd } = whitespaceValuesForOrientation(orientation);
+  const { paddingStart, paddingEnd, marginStart, marginEnd } = whitespaceValuesForOrientation(orientation);
   return {
-    keyframes: [{ [paddingStart]: '0', [paddingEnd]: '0', offset: 0 }],
+    // Animate from whitespace of zero to the current whitespace, by omitting the ending keyframe.
+    keyframes: [{ [paddingStart]: '0', [paddingEnd]: '0', [marginStart]: '0', [marginEnd]: '0', offset: 0 }],
     duration,
     easing,
   };
@@ -106,9 +109,10 @@ export const whitespaceExitAtom = ({
   easing: string;
   delay?: number;
 }): AtomMotion => {
-  const { paddingStart, paddingEnd } = whitespaceValuesForOrientation(orientation);
+  const { paddingStart, paddingEnd, marginStart, marginEnd } = whitespaceValuesForOrientation(orientation);
   return {
-    keyframes: [{ [paddingStart]: '0', [paddingEnd]: '0', offset: 1 }],
+    // Animate from the current whitespace to whitespace of zero, by using offset 1 and omitting the starting keyframe.
+    keyframes: [{ [paddingStart]: '0', [paddingEnd]: '0', [marginStart]: '0', [marginEnd]: '0', offset: 1 }],
     duration,
     easing,
     fill: 'forwards',
