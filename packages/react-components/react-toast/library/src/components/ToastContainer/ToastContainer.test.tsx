@@ -35,9 +35,9 @@ const pausedTimerSelector = '[data-timer-status="paused"]';
 
 const FAKE_MOTION_DURATION = 500;
 
-jest.mock('./ToastContainerMotion', () => ({
+jest.mock('@fluentui/react-motion-components-preview', () => ({
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  ToastContainerMotion: (props: PresenceComponentProps) => {
+  CollapseDelayed: (props: PresenceComponentProps) => {
     const { children, onMotionFinish, visible } = props;
 
     React.useEffect(() => {
