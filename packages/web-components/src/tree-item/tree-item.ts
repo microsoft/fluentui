@@ -1,15 +1,18 @@
-import { attr, customElement, FASTElement, nullableNumberConverter, observable, volatile } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, observable, volatile } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
 import { template } from './tree-item.template.js';
 import { styles } from './tree-item.style.js';
 import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
+import { toggleState } from '../utils/element-internals.js';
 
-@customElement({
-  name: `${FluentDesignSystem.prefix}-tree-item`,
-  template,
-  styles,
-})
 export class TreeItem extends FASTElement {
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
   /**
    * When true, the control will be immutable by user interaction. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled | disabled HTML attribute} for more information.
    * @public
@@ -18,6 +21,20 @@ export class TreeItem extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   disabled = false;
+
+  /**
+   * Handles changes to the disabled attribute
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  disabledChanged(prev: boolean, next: boolean): void {
+    this.elementInternals.ariaDisabled = next ? 'true' : 'false';
+  }
+
+  constructor() {
+    super();
+    this.elementInternals.role = 'treeitem';
+  }
 
   /**
    * The depth of the tree item
@@ -32,9 +49,16 @@ export class TreeItem extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   expanded = false;
-  protected expandedChanged() {
-    if (this.$fastController.isConnected) {
-      this.$emit('expanded-change', this);
+
+  /**
+   * Handles changes to the expanded attribute
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public expandedChanged(prev: boolean, next: boolean): void {
+    toggleState(this.elementInternals, 'expanded', next);
+    if (this.childTreeItems && this.childTreeItems.length > 0) {
+      this.elementInternals.ariaExpanded = next ? 'true' : 'false';
     }
   }
 
@@ -46,10 +70,15 @@ export class TreeItem extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   selected = false;
-  protected selectedChanged(): void {
-    if (this.$fastController.isConnected) {
-      this.$emit('selected-change', this);
-    }
+
+  /**
+   * Handles changes to the selected attribute
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  protected selectedChanged(prev: boolean, next: boolean): void {
+    toggleState(this.elementInternals, 'selected', next);
+    this.elementInternals.ariaSelected = next ? 'true' : 'false';
   }
 
   /**
@@ -57,6 +86,11 @@ export class TreeItem extends FASTElement {
    */
   @observable
   size: TreeItemSize = 'medium';
+
+  /**
+   * Handles changes to the size attribute
+   * we update the child tree items' size based on the size
+   */
   private sizeChanged() {
     this.updateChildTreeItems();
   }
@@ -66,12 +100,20 @@ export class TreeItem extends FASTElement {
    */
   @observable
   appearance: TreeItemAppearance = 'subtle';
+
+  /**
+   * Handles changes to the appearance attribute
+   */
   private appearanceChanged() {
     this.updateChildTreeItems();
   }
 
   @observable
-  childTreeItems: TreeItem[] = [];
+  childTreeItems: TreeItem[] | undefined = [];
+
+  /**
+   * Handles changes to the child tree items
+   */
   private childTreeItemsChanged() {
     this.updateChildTreeItems();
   }
@@ -122,7 +164,7 @@ export class TreeItem extends FASTElement {
    * Toggle the expansion state of the tree item
    */
   toggleExpansion() {
-    if (!this.disabled && this.childTreeItems.length) {
+    if (!this.disabled && this.childTreeItems?.length) {
       this.expanded = !this.expanded;
     }
   }
@@ -159,7 +201,7 @@ export class TreeItem extends FASTElement {
   @volatile
   get calculatedClassName() {
     let className = '';
-    if (!this.childTreeItems.length) {
+    if (!this.childTreeItems?.length) {
       className += 'leaf';
     }
     if (this.isRootItem) {
