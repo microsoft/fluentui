@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add @fluentui/react-list to suite",
+  "packageName": "@fluentui/react-components",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}
