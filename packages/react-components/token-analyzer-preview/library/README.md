@@ -2,6 +2,13 @@
 
 A static analysis tool that scans your project's style files to track and analyze design token usage. The analyzer helps identify where and how design tokens are being used across your codebase, making it easier to maintain consistency and track token adoption.
 
+## TODO
+
+- Some property assignments can also be function calls, we need to process this scenario
+- `createCustomFocusIndicatorStyle` is a special function that is used throughout the library so we might be able to special case it
+- if we have file imports we need to analyze those such as importing base styles
+- we also need to ensure var analysis is done correctly after the refactor
+
 ## Features
 
 - Scans TypeScript/JavaScript style files for token usage

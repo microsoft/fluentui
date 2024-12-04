@@ -1,4 +1,4 @@
-// Base types
+// types.ts
 export interface TokenReference {
   property: string;
   token: string;
@@ -30,10 +30,13 @@ export interface StyleMetadata {
   };
 }
 
-// Separate styles and metadata cleanly
-export interface EnhancedStyleAnalysis {
+export interface FileAnalysis {
   styles: StyleAnalysis;
   metadata: StyleMetadata;
+}
+
+export interface AnalysisResults {
+  [filePath: string]: FileAnalysis;
 }
 
 // Constants
@@ -41,5 +44,4 @@ export const TOKEN_REGEX = /tokens\.[a-zA-Z0-9.]+/g;
 export const IGNORED_DIRS = ['node_modules', 'dist', 'build', '.git'];
 export const VALID_EXTENSIONS = ['.ts', '.tsx', '.js', '.jsx', '.mjs'];
 
-// Type to track variable to token mappings
 export type TokenMap = Map<string, string>;

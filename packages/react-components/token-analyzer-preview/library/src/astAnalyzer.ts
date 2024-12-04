@@ -3,7 +3,7 @@ import { Project, Node, SourceFile, PropertyAssignment } from 'ts-morph';
 import {
   TokenReference,
   StyleAnalysis,
-  EnhancedStyleAnalysis,
+  FileAnalysis,
   StyleCondition,
   StyleContent,
   StyleMetadata,
@@ -223,7 +223,7 @@ async function analyzeMakeStyles(sourceFile: SourceFile): Promise<StyleAnalysis>
 /**
  * Combines mergeClasses and makeStyles analysis
  */
-async function analyzeFile(filePath: string, project: Project): Promise<EnhancedStyleAnalysis> {
+async function analyzeFile(filePath: string, project: Project): Promise<FileAnalysis> {
   log(`Analyzing ${filePath}`);
 
   const sourceFile = project.addSourceFileAtPath(filePath);

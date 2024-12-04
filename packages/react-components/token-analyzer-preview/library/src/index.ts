@@ -4,28 +4,21 @@ import { promises as fs } from 'fs';
 import { relative } from 'path';
 import { findStyleFiles } from './fileOperations.js';
 import { analyzeFile } from './astAnalyzer.js';
-import { formatAnalysis } from './formatter.js';
-import { EnhancedStyleAnalysis, StyleAnalysis } from './types.js';
+import { AnalysisResults, FileAnalysis } from './types.js';
 import { configure, log, error, measureAsync } from './debugUtils.js';
 
 async function analyzeProjectStyles(
   rootDir: string,
   outputFile?: string,
   options: { debug?: boolean; perf?: boolean } = {},
-): Promise<EnhancedStyleAnalysis> {
-  // Configure debug utilities
+): Promise<AnalysisResults> {
   configure({
     debug: options.debug || false,
     perf: options.perf || false,
   });
 
   log(`Starting analysis of ${rootDir}`);
-  const results: EnhancedStyleAnalysis = {
-    styles: {},
-    metadata: {
-      styleConditions: {},
-    },
-  };
+  const results: AnalysisResults = {};
 
   try {
     const styleFiles = await measureAsync('find style files', () => findStyleFiles(rootDir));
@@ -43,12 +36,9 @@ async function analyzeProjectStyles(
       try {
         const analysis = await analyzeFile(file, project);
         if (Object.keys(analysis.styles).length > 0) {
-          // Merge the style analysis
-          results.styles[relativePath] = analysis.styles[relativePath];
-          // Merge the metadata
-          results.metadata.styleConditions = {
-            ...results.metadata.styleConditions,
-            ...analysis.metadata.styleConditions,
+          results[relativePath] = {
+            styles: analysis.styles,
+            metadata: analysis.metadata,
           };
         }
       } catch (err) {
@@ -58,8 +48,7 @@ async function analyzeProjectStyles(
 
     if (outputFile) {
       await measureAsync('write output file', async () => {
-        const formattedResults = formatAnalysis(results);
-        await fs.writeFile(outputFile, JSON.stringify(formattedResults, null, 2), 'utf8');
+        await fs.writeFile(outputFile, JSON.stringify(results, null, 2), 'utf8');
         console.log(`Analysis written to ${outputFile}`);
       });
     }
@@ -71,12 +60,14 @@ async function analyzeProjectStyles(
   }
 }
 
-function countTokens(analysis: StyleAnalysis): number {
+function countTokens(analysis: FileAnalysis): number {
   let count = 0;
-  Object.values(analysis).forEach(value => {
+  Object.values(analysis.styles).forEach(value => {
     count += value.tokens.length;
     if (value.nested) {
-      count += countTokens(value.nested);
+      Object.values(value.nested).forEach(nestedValue => {
+        count += nestedValue.tokens.length;
+      });
     }
   });
   return count;
@@ -85,17 +76,20 @@ function countTokens(analysis: StyleAnalysis): number {
 // CLI execution
 const isRunningDirectly = process.argv[1].endsWith('index.ts');
 if (isRunningDirectly) {
-  const rootDir = process.argv[2] || './src';
-  const outputFile = process.argv[3] || './token-analysis.json';
+  const rootDir = process.argv[2] || '../..';
+  const outputFile = process.argv[3] || './output.json';
   const debug = process.argv.includes('--debug');
   const perf = process.argv.includes('--perf');
 
   console.log(`Starting analysis of ${rootDir}`);
   analyzeProjectStyles(rootDir, outputFile, { debug, perf })
     .then(results => {
-      const totalFiles = Object.keys(results.styles).length;
+      const totalFiles = Object.keys(results).length;
       let totalTokens = 0;
-      totalTokens += countTokens(results.styles);
+
+      Object.values(results).forEach(fileAnalysis => {
+        totalTokens += countTokens(fileAnalysis);
+      });
 
       console.log('\nAnalysis complete!');
       console.log(`Processed ${totalFiles} files containing styles`);
