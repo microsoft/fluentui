@@ -6,9 +6,6 @@ export function useMessageBarReflow(enabled: boolean = false) {
   const { targetDocument } = useFluent();
   const forceUpdate = React.useReducer(() => ({}), {})[1];
   const reflowingRef = React.useRef(false);
-  // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-  // eslint-disable-next-line no-restricted-globals
-  const resizeObserverRef = React.useRef<ResizeObserver | null>(null);
   const prevInlineSizeRef = React.useRef(-1);
 
   const handleResize: ResizeObserverCallback = React.useCallback(
@@ -54,6 +51,10 @@ export function useMessageBarReflow(enabled: boolean = false) {
         if (inlineSize < scrollWidth) {
           nextReflowing = true;
         }
+
+        if (!isFullyInViewport(target)) {
+          nextReflowing = true;
+        }
       }
 
       prevInlineSizeRef.current = inlineSize;
@@ -65,27 +66,39 @@ export function useMessageBarReflow(enabled: boolean = false) {
     [forceUpdate],
   );
 
-  const ref = React.useCallback(
-    (el: HTMLElement | null) => {
+  const ref = React.useMemo(() => {
+    let resizeObserver: ResizeObserver | null = null;
+    return (el: HTMLElement | null) => {
       if (!enabled || !el || !targetDocument?.defaultView) {
+        resizeObserver?.disconnect();
         return;
       }
 
-      resizeObserverRef.current?.disconnect();
+      resizeObserver?.disconnect();
 
       const win = targetDocument.defaultView;
-      const resizeObserver = new win.ResizeObserver(handleResize);
-      resizeObserverRef.current = resizeObserver;
+      resizeObserver = new win.ResizeObserver(handleResize);
       resizeObserver.observe(el, { box: 'border-box' });
-    },
-    [targetDocument, handleResize, enabled],
-  );
-
-  React.useEffect(() => {
-    return () => {
-      resizeObserverRef.current?.disconnect();
+      resizeObserver.observe(el.ownerDocument.body);
     };
-  }, []);
+  }, [targetDocument, handleResize, enabled]);
 
   return { ref, reflowing: reflowingRef.current };
 }
+
+const isFullyInViewport = (el: HTMLElement) => {
+  const rect = el.getBoundingClientRect();
+  const doc = el.ownerDocument;
+  const win = doc.defaultView;
+
+  if (!win) {
+    return true;
+  }
+
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (win.innerHeight || doc.documentElement.clientHeight) &&
+    rect.right <= (win.innerWidth || doc.documentElement.clientWidth)
+  );
+};
