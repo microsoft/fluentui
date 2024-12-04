@@ -177,35 +177,39 @@ export const transformPlotlyJsonToGVBCProps = (
   };
 };
 
-// TODO: Add support for padding in continuous x-axis
+// TODO: Add support for padding in continuous axis
+// FIXME: Vertical bar chart displays duplicate legend buttons
 export const transformPlotlyJsonToVBCProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
 ): IVerticalBarChartProps => {
   const { data, layout } = jsonObj;
-  const firstData = data[0];
   const vbcData: IVerticalBarChartDataPoint[] = [];
 
-  if (firstData.x) {
+  data.forEach((series: any, index: number) => {
+    if (!series.x) {
+      return;
+    }
+
     const scale = d3ScaleLinear()
-      .domain(d3Extent<number>(firstData.x) as [number, number])
+      .domain(d3Extent<number>(series.x) as [number, number])
       .nice();
     let [xMin, xMax] = scale.domain();
 
-    xMin = typeof firstData.xbins?.start === 'number' ? firstData.xbins.start : xMin;
-    xMax = typeof firstData.xbins?.end === 'number' ? firstData.xbins.end : xMax;
+    xMin = typeof series.xbins?.start === 'number' ? series.xbins.start : xMin;
+    xMax = typeof series.xbins?.end === 'number' ? series.xbins.end : xMax;
 
     const bin = d3Bin().domain([xMin, xMax]);
 
-    if (typeof firstData.xbins?.size === 'number') {
+    if (typeof series.xbins?.size === 'number') {
       const thresholds: number[] = [];
       let th = xMin;
-      const precision = d3PrecisionFixed(firstData.xbins.size);
+      const precision = d3PrecisionFixed(series.xbins.size);
       const format = d3Format(`.${precision}f`);
 
-      while (th < xMax + firstData.xbins.size) {
+      while (th < xMax + series.xbins.size) {
         thresholds.push(parseFloat(format(th)));
-        th += firstData.xbins.size;
+        th += series.xbins.size;
       }
 
       xMin = thresholds[0];
@@ -213,7 +217,7 @@ export const transformPlotlyJsonToVBCProps = (
       bin.domain([xMin, xMax]).thresholds(thresholds);
     }
 
-    const buckets = bin(firstData.x);
+    const buckets = bin(series.x);
     const totalDataPoints = d3Merge(buckets).length;
 
     buckets.forEach(bucket => {
@@ -221,25 +225,25 @@ export const transformPlotlyJsonToVBCProps = (
         return;
       }
 
-      const legend = firstData.name || `Series 1`;
+      const legend = series.name || `Series ${index + 1}`;
       const color = getColor(legend, colorMap);
       let y = bucket.length;
 
-      if (firstData.histnorm === 'percent') {
+      if (series.histnorm === 'percent') {
         y = (bucket.length / totalDataPoints) * 100;
-      } else if (firstData.histnorm === 'probability') {
+      } else if (series.histnorm === 'probability') {
         y = bucket.length / totalDataPoints;
-      } else if (firstData.histnorm === 'density') {
+      } else if (series.histnorm === 'density') {
         y = bucket.length / (bucket.x1! - bucket.x0!);
-      } else if (firstData.histnorm === 'probability density') {
+      } else if (series.histnorm === 'probability density') {
         y = bucket.length / (totalDataPoints * (bucket.x1! - bucket.x0!));
-      } else if (firstData.histfunc === 'sum') {
+      } else if (series.histfunc === 'sum') {
         y = d3Sum(bucket);
-      } else if (firstData.histfunc === 'avg') {
+      } else if (series.histfunc === 'avg') {
         y = d3Sum(bucket) / bucket.length;
-      } else if (firstData.histfunc === 'min') {
+      } else if (series.histfunc === 'min') {
         y = d3Min(bucket)!;
-      } else if (firstData.histfunc === 'max') {
+      } else if (series.histfunc === 'max') {
         y = d3Max(bucket)!;
       }
 
@@ -248,9 +252,10 @@ export const transformPlotlyJsonToVBCProps = (
         y,
         legend,
         color,
+        xAxisCalloutData: `[${bucket.x0} - ${bucket.x1})`,
       });
     });
-  }
+  });
 
   return {
     data: vbcData,
@@ -258,6 +263,7 @@ export const transformPlotlyJsonToVBCProps = (
     // width: layout?.width,
     // height: layout?.height,
     hideLegend: true,
+    barWidth: 24,
   };
 };
 
