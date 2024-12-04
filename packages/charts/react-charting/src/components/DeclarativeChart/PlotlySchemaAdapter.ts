@@ -61,8 +61,6 @@ export const transformPlotlyJsonToDonutProps = (
     };
   });
 
-  // TODO: innerRadius as a fraction needs to be supported internally. The pixel value depends on
-  // chart dimensions, arc label dimensions and the legend container height, all of which are subject to change.
   const width: number = layout?.width || 440;
   const height: number = layout?.height || 220;
   const hideLabels = firstData.textinfo ? !['value', 'percent'].includes(firstData.textinfo) : false;
@@ -92,8 +90,6 @@ export const transformPlotlyJsonToDonutProps = (
     hideLabels,
     showLabelsInPercent: firstData.textinfo ? firstData.textinfo === 'percent' : true,
     styles,
-    // TODO: Render custom hover card based on textinfo
-    // onRenderCalloutPerDataPoint: undefined,
   };
 };
 
@@ -141,7 +137,6 @@ export const transformPlotlyJsonToVSBCProps = (
   };
 };
 
-// TODO: Add support for continuous x-axis in grouped vertical bar chart
 export const transformPlotlyJsonToGVBCProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -177,8 +172,6 @@ export const transformPlotlyJsonToGVBCProps = (
   };
 };
 
-// TODO: Add support for padding in continuous axis
-// FIXME: Vertical bar chart displays duplicate legend buttons
 export const transformPlotlyJsonToVBCProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -218,13 +211,10 @@ export const transformPlotlyJsonToVBCProps = (
     }
 
     const buckets = bin(series.x);
+    // If the start or end of xbins is specified, then the number of datapoints may become less than x.length
     const totalDataPoints = d3Merge(buckets).length;
 
     buckets.forEach(bucket => {
-      if (bucket.length < 1) {
-        return;
-      }
-
       const legend = series.name || `Series ${index + 1}`;
       const color = getColor(legend, colorMap);
       let y = bucket.length;
@@ -234,13 +224,13 @@ export const transformPlotlyJsonToVBCProps = (
       } else if (series.histnorm === 'probability') {
         y = bucket.length / totalDataPoints;
       } else if (series.histnorm === 'density') {
-        y = bucket.length / (bucket.x1! - bucket.x0!);
+        y = bucket.x0 === bucket.x1 ? 0 : bucket.length / (bucket.x1! - bucket.x0!);
       } else if (series.histnorm === 'probability density') {
-        y = bucket.length / (totalDataPoints * (bucket.x1! - bucket.x0!));
+        y = bucket.x0 === bucket.x1 ? 0 : bucket.length / (totalDataPoints * (bucket.x1! - bucket.x0!));
       } else if (series.histfunc === 'sum') {
         y = d3Sum(bucket);
       } else if (series.histfunc === 'avg') {
-        y = d3Sum(bucket) / bucket.length;
+        y = bucket.length === 0 ? 0 : d3Sum(bucket) / bucket.length;
       } else if (series.histfunc === 'min') {
         y = d3Min(bucket)!;
       } else if (series.histfunc === 'max') {
@@ -350,8 +340,6 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   };
 };
 
-// FIXME: Order of string axis ticks does not match the order in plotly json
-// TODO: Add support for custom hover card
 export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartProps => {
   const { data, layout } = jsonObj;
   const firstData = data[0];
