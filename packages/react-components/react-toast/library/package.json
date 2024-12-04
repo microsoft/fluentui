@@ -25,6 +25,7 @@
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-jsx-runtime": "^9.0.46",
     "@fluentui/react-motion": "^9.6.2",
+    "@fluentui/react-motion-components-preview": "^0.3.1",
     "@fluentui/react-portal": "^9.4.38",
     "@fluentui/react-shared-contexts": "^9.21.0",
     "@fluentui/react-tabster": "^9.23.0",
