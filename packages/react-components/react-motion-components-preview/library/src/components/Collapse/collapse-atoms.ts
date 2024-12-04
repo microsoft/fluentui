@@ -70,12 +70,21 @@ export const sizeExitAtom = ({
 
 // Whitespace animation includes padding and margin.
 const whitespaceValuesForOrientation = (orientation: CollapseOrientation) => {
-  const paddingStart = orientation === 'horizontal' ? 'paddingLeft' : 'paddingTop';
-  const paddingEnd = orientation === 'horizontal' ? 'paddingRight' : 'paddingBottom';
+  if (orientation === 'horizontal') {
+    return {
+      paddingStart: 'paddingLeft',
+      paddingEnd: 'paddingRight',
+      marginStart: 'marginLeft',
+      marginEnd: 'marginRight',
+    };
+  }
 
-  const marginStart = orientation === 'horizontal' ? 'marginLeft' : 'marginTop';
-  const marginEnd = orientation === 'horizontal' ? 'marginRight' : 'marginBottom';
-  return { paddingStart, paddingEnd, marginStart, marginEnd };
+  return {
+    paddingStart: 'paddingTop',
+    paddingEnd: 'paddingBottom',
+    marginStart: 'marginTop',
+    marginEnd: 'marginBottom',
+  };
 };
 
 // Because a height of zero does not eliminate padding or margin,
