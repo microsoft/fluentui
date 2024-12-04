@@ -46,7 +46,7 @@ export class VerticalBarChartAllNegativeExample extends React.Component<IVertica
   }
 
   public render(): JSX.Element {
-    return <div>{this._basicExample()}</div>;
+    return <div>{this._allNegativeExample()}</div>;
   }
 
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,7 +82,7 @@ export class VerticalBarChartAllNegativeExample extends React.Component<IVertica
     this.setState({ roundCorners: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _allNegativeExample(): JSX.Element {
     const negativePoints: IVerticalBarChartDataPoint[] = [
       {
         x: 0,

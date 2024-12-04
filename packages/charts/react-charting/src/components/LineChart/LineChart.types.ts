@@ -87,6 +87,12 @@ export interface ILineChartProps extends ICartesianChartProps {
    * The prop used to enable the perf optimization
    */
   enablePerfOptimization?: boolean;
+
+  /**
+   * Prop to enable support for negative values
+   * @default false
+   */
+  supportNegativeYValues?: boolean;
 }
 
 /**
