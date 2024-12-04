@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Project, Node, SourceFile, PropertyAssignment } from 'ts-morph';
 import {
   TokenReference,
@@ -16,11 +17,13 @@ interface StyleMapping {
 }
 
 /**
- * Process a style property to extract token references
+ * Process a style property to extract token references.
+ * Property names are derived from the actual CSS property in the path,
+ * not the object key containing them.
  */
 function processStyleProperty(prop: PropertyAssignment): TokenReference[] {
   const tokens: TokenReference[] = [];
-  const propertyName = prop.getName();
+  const parentName = prop.getName();
 
   function processNode(node?: Node, path: string[] = []): void {
     if (!node) {
@@ -33,7 +36,7 @@ function processStyleProperty(prop: PropertyAssignment): TokenReference[] {
       if (matches) {
         matches.forEach(match => {
           tokens.push({
-            property: propertyName,
+            property: path[path.length - 1] || parentName,
             token: match,
             path,
           });
@@ -43,7 +46,7 @@ function processStyleProperty(prop: PropertyAssignment): TokenReference[] {
       const text = node.getText();
       if (text.startsWith('tokens.')) {
         tokens.push({
-          property: propertyName,
+          property: path[path.length - 1] || parentName,
           token: text,
           path,
         });
@@ -79,6 +82,12 @@ function analyzeMergeClasses(sourceFile: SourceFile): StyleMapping[] {
         conditionalStyles: [],
       };
 
+      /**
+       *  TODO: We could also walk the tree to find what function is assigned to our makeStyles call, and thus, what
+       * styles object we're working with. Typically this is called `useStyles` and then assigned to `styles`. We've hard
+       * coded it for now but this could be improved.
+       */
+
       node.getArguments().forEach(arg => {
         // Handle direct style references
         if (Node.isPropertyAccessExpression(arg) && arg.getText().startsWith('styles.')) {
@@ -106,24 +115,42 @@ function analyzeMergeClasses(sourceFile: SourceFile): StyleMapping[] {
 }
 
 /**
- * Creates a StyleContent object from token references
+ * Creates a StyleContent object from token references.
+ *
+ * The path structure in token references is relative to the style property being processed.
+ * For example, given a style object:
+ * ```typescript
+ * {
+ *   root: {              // Handled by analyzeMakeStyles
+ *     color: token,      // path = ['color']
+ *     ':hover': {        // Start of nested structure
+ *       color: token     // path = [':hover', 'color']
+ *     }
+ *   }
+ * }
+ * ```
+ * Property names reflect the actual CSS property, derived from the path.
  */
 function createStyleContent(tokens: TokenReference[]): StyleContent {
   const content: StyleContent = {
-    tokens: tokens.filter(t => !t.path.length),
+    tokens: tokens.filter(t => t.path.length === 1),
   };
 
-  const nestedTokens = tokens.filter(t => t.path.length > 0);
+  // Nested structures have paths longer than 1
+  const nestedTokens = tokens.filter(t => t.path.length > 1);
   if (nestedTokens.length > 0) {
     content.nested = nestedTokens.reduce<StyleAnalysis>((acc, token) => {
-      const path = token.path.join('.');
-      if (!acc[path]) {
-        acc[path] = { tokens: [] };
+      const nestedKey = token.path[0];
+
+      if (!acc[nestedKey]) {
+        acc[nestedKey] = { tokens: [] };
       }
-      acc[path].tokens.push({
+
+      acc[nestedKey].tokens.push({
         ...token,
         path: [], // Reset path as we've used it for nesting
       });
+
       return acc;
     }, {});
   }
@@ -174,6 +201,7 @@ async function analyzeMakeStyles(sourceFile: SourceFile): Promise<StyleAnalysis>
   sourceFile.forEachDescendant(node => {
     if (Node.isCallExpression(node) && node.getExpression().getText() === 'makeStyles') {
       const stylesArg = node.getArguments()[0];
+      console.log('analyzing makeStyles', stylesArg.getText());
       if (Node.isObjectLiteralExpression(stylesArg)) {
         // Process the styles object
         stylesArg.getProperties().forEach(prop => {
