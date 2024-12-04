@@ -2,8 +2,6 @@
 
 **React Breadcrumb components for [Fluent UI React](https://react.fluentui.dev/)**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
-
 Breadcrumbs should be used as a navigational aid in your app or site. They indicate the current page's location within a hierarchy and help the user understand where they are in relation to the rest of that hierarchy.
 
 ## Usage
