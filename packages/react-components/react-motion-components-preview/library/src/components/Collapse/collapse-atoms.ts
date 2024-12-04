@@ -70,20 +70,21 @@ export const sizeExitAtom = ({
 
 // Whitespace animation includes padding and margin.
 const whitespaceValuesForOrientation = (orientation: CollapseOrientation) => {
+  // horizontal whitespace collapse
   if (orientation === 'horizontal') {
     return {
-      paddingStart: 'paddingLeft',
-      paddingEnd: 'paddingRight',
-      marginStart: 'marginLeft',
-      marginEnd: 'marginRight',
+      paddingStart: 'paddingInlineStart',
+      paddingEnd: 'paddingInlineEnd',
+      marginStart: 'marginInlineStart',
+      marginEnd: 'marginInlineEnd',
     };
   }
-
+  // vertical whitespace collapse
   return {
-    paddingStart: 'paddingTop',
-    paddingEnd: 'paddingBottom',
-    marginStart: 'marginTop',
-    marginEnd: 'marginBottom',
+    paddingStart: 'paddingBlockStart',
+    paddingEnd: 'paddingBlockEnd',
+    marginStart: 'marginBlockStart',
+    marginEnd: 'marginBlockEnd',
   };
 };
 
