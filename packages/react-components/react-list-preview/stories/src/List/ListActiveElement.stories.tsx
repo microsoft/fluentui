@@ -45,7 +45,7 @@ const useStyles = makeStyles({
   },
   personaSelected: {
     '@media (forced-colors:active)': {
-      'forced-color-adjust': 'none',
+      forcedColorAdjust: 'none',
       color: 'HighlightText',
     },
   },
