@@ -15019,7 +15019,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,283.8333333333333)"
+            transform="translate(0,257.5)"
           >
             <line
               stroke="currentColor"
@@ -15037,7 +15037,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,231.16666666666666)"
+            transform="translate(0,210.10000000000002)"
           >
             <line
               stroke="currentColor"
@@ -15055,7 +15055,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,178.5)"
+            transform="translate(0,162.7)"
           >
             <line
               stroke="currentColor"
@@ -15073,7 +15073,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,125.83333333333333)"
+            transform="translate(0,115.30000000000001)"
           >
             <line
               stroke="currentColor"
@@ -15091,7 +15091,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,73.16666666666666)"
+            transform="translate(0,67.89999999999999)"
           >
             <line
               stroke="currentColor"
