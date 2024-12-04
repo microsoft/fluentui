@@ -4,7 +4,6 @@ import type { TreeView } from './tree-view.js';
 
 export const template = html<TreeView>`
   <template
-    role="tree"
     tabindex="0"
     @click="${(x, c) => x.handleClick(c.event)}"
     @focusin="${(x, c) => x.handleFocus(c.event as FocusEvent)}"
@@ -12,9 +11,9 @@ export const template = html<TreeView>`
     @keydown="${(x, c) => x.handleKeyDown(c.event as KeyboardEvent)}"
     @selected-change="${(x, c) => x.handleSelectedChange(c.event)}"
     ${children({
-      property: 'childTreeItems',
-      filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
-    })}
+  property: 'childTreeItems',
+  filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
+})}
   >
     <slot></slot>
   </template>

@@ -300,6 +300,8 @@ export {
   TreeItemDefinition,
   TreeItemTemplate,
   TreeItemStyles,
+} from './tree-item/index.js';
+export type {
   TreeItemAppearance,
   TreeItemSize,
 } from './tree-item/index.js';

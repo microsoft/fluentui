@@ -26,11 +26,6 @@ import { TreeItem, TreeItemAppearance, TreeItemSize } from '../tree-item/index.j
 import { template } from './tree-view.template.js';
 import { styles } from './tree-view.style.js';
 
-@customElement({
-  name: `${FluentDesignSystem.prefix}-tree-view`,
-  template,
-  styles,
-})
 export class TreeView extends FASTElement {
   /**
    * The currently selected tree item
@@ -45,6 +40,18 @@ export class TreeView extends FASTElement {
    * @internal
    */
   currentFocused: HTMLElement | null = null;
+
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
+  constructor() {
+    super();
+    this.elementInternals.role = 'tree';
+  }
 
   /**
    * The size of the tree item element
