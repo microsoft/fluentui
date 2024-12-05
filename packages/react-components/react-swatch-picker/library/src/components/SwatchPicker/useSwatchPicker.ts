@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 
 import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
@@ -25,12 +24,6 @@ export const useSwatchPicker_unstable = (
   const { layout, onSelectionChange, size = 'medium', shape, spacing = 'medium', style, ...rest } = props;
 
   const isGrid = layout === 'grid';
-  const focusAttributes = useArrowNavigationGroup({
-    circular: true,
-    axis: isGrid ? 'grid-linear' : 'both',
-    memorizeCurrent: true,
-  });
-
   const role = isGrid ? 'grid' : 'radiogroup';
 
   const [selectedValue, setSelectedValue] = useControllableState({
@@ -57,7 +50,6 @@ export const useSwatchPicker_unstable = (
       getIntrinsicElementProps('div', {
         ref,
         role,
-        ...focusAttributes,
         ...rest,
       }),
       { elementType: 'div' },
