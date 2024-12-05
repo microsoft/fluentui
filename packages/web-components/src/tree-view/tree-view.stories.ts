@@ -31,8 +31,6 @@ const storyTemplate = html<TreeViewStoryArgs>`
     <fluent-tree-item>Item 2-2</fluent-tree-item>
     <fluent-tree-item>
       Item 2-3
-      <div slot="start">Start</div>
-      <div slot="end">&nbsp End</div>
     </fluent-tree-item>
   </fluent-tree-item>
 </fluent-tree-view>
@@ -45,6 +43,12 @@ export default {
     appearance: 'subtle',
   },
   argTypes: {
+    slottedContent: {
+      control: false,
+      description: 'The default slot',
+      name: '',
+      table: { category: 'slots', type: {} },
+    },
     size: {
       control: 'select',
       options: Object.values(treeItemSize),
@@ -54,6 +58,7 @@ export default {
           summary: 'medium',
         },
       },
+      category: 'attributes',
     },
     appearance: {
       control: 'select',
@@ -64,6 +69,7 @@ export default {
           summary: 'subtle',
         },
       },
+      category: 'attributes',
     },
   },
 } as TreeViewStoryMeta;

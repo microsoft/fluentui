@@ -18,7 +18,11 @@ const storyTemplate = html<TreeItemStoryArgs>`
     Item 2
     <fluent-tree-item>Item 2-1</fluent-tree-item>
     <fluent-tree-item>Item 2-2</fluent-tree-item>
-    <fluent-tree-item>Item 2-3</fluent-tree-item>
+    <fluent-tree-item>
+      Item 2-3
+      <div slot="start">Start</div>
+      <div slot="end">&nbspEnd</div>
+    </fluent-tree-item>
   </fluent-tree-item>
 `;
 
@@ -30,6 +34,48 @@ export default {
     selected: false,
   },
   argTypes: {
+    slottedContent: {
+      control: false,
+      description: 'The default slot',
+      name: '',
+      table: { category: 'slots', type: {} },
+    },
+    slottedChevron: {
+      control: false,
+      description: 'The chevron icon slot',
+      name: 'chevron',
+      table: { category: 'slots', type: {} },
+    },
+    slottedStart: {
+      control: false,
+      description: 'The start region slot',
+      name: 'start',
+      table: { category: 'slots', type: {} },
+    },
+    slottedMiddle: {
+      control: false,
+      description: 'The middle regin slot, usually it is same as default slot',
+      name: 'middle',
+      table: { category: 'slots', type: {} },
+    },
+    slottedEnd: {
+      control: false,
+      description: 'The end region slot',
+      name: 'end',
+      table: { category: 'slots', type: {} },
+    },
+    slottedBadging: {
+      control: false,
+      description: 'The badging slot',
+      name: 'badging',
+      table: { category: 'slots', type: {} },
+    },
+    slottedToolbar: {
+      control: false,
+      description: 'The toolbar slot',
+      name: 'toolbar',
+      table: { category: 'slots', type: {} },
+    },
     expanded: {
       control: {
         type: 'boolean',
@@ -41,6 +87,7 @@ export default {
         defaultValue: {
           summary: 'false',
         },
+        category: 'attributes',
       },
     },
     disabled: {
@@ -55,6 +102,7 @@ export default {
         defaultValue: {
           summary: 'false',
         },
+        category: 'attributes',
       },
     },
     selected: {
@@ -68,6 +116,7 @@ export default {
         defaultValue: {
           summary: 'false',
         },
+        category: 'attributes',
       },
     },
   },
