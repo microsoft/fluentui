@@ -14,11 +14,6 @@ export class TreeItem extends FASTElement {
   public elementInternals: ElementInternals = this.attachInternals();
 
   /**
-   * the container of child tree items
-   */
-  public itemsRef: HTMLDivElement | undefined;
-
-  /**
    * When true, the control will be immutable by user interaction. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled | disabled HTML attribute} for more information.
    * @public
    * @remarks
@@ -64,12 +59,6 @@ export class TreeItem extends FASTElement {
     toggleState(this.elementInternals, 'expanded', next);
     if (this.childTreeItems && this.childTreeItems.length > 0) {
       this.elementInternals.ariaExpanded = next ? 'true' : 'false';
-      // if (next) {
-      //   this.itemsRef?.style.setProperty('visibility', 'visible');
-      // } else {
-      //   this.itemsRef?.style.setProperty('visibility', 'hidden');
-      //   this.itemsRef?.style.setProperty('max-height', '0');
-      // }
     }
   }
 
