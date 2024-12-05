@@ -980,7 +980,6 @@ export interface ILineChartProps extends ICartesianChartProps {
     // (undocumented)
     optimizeLargeData?: boolean;
     styles?: IStyleFunctionOrObject<ILineChartStyleProps, ILineChartStyles>;
-    supportNegativeYValues?: boolean;
 }
 
 // @public
