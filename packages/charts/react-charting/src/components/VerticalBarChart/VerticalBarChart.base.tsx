@@ -693,13 +693,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     return { xBarScale, yBarScale };
   };
 
-  private _calculateMaxHeightFromBaseline(yMin: number, yMax: number, yReferencePoint: number): number {
-    return yMax < 0
-      ? Math.abs(yMin - yReferencePoint)
-      : Math.max(Math.abs(yMax - yReferencePoint), Math.abs(yMin - yReferencePoint));
-  }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _calculateMinBarHeight(maxHeightFromBaseline: number, yBarScale: any) {
+  private _calculateMinBarHeight(yMin: number, yMax: number, yReferencePoint: number, yBarScale: any): number {
+    const maxHeightFromBaseline =
+      yMax < 0
+        ? Math.abs(yMin - yReferencePoint)
+        : Math.max(Math.abs(yMax - yReferencePoint), Math.abs(yMin - yReferencePoint));
     return Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
   }
   private _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
@@ -720,8 +719,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
       // Calculate threshold for minimum visible bar height
-      const maxHeightFromBaseline = this._calculateMaxHeightFromBaseline(this._yMin, this._yMax, yReferencePoint);
-      const minBarHeight = this._calculateMinBarHeight(maxHeightFromBaseline, yBarScale);
+      const minBarHeight = this._calculateMinBarHeight(this._yMin, this._yMax, yReferencePoint, yBarScale);
       let adjustedBarHeight = barHeight;
 
       if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeData)) {
@@ -823,8 +821,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
       // Calculate threshold for minimum visible bar height
-      const maxHeightFromBaseline = this._calculateMaxHeightFromBaseline(this._yMin, this._yMax, yReferencePoint);
-      const minBarHeight = this._calculateMinBarHeight(maxHeightFromBaseline, yBarScale);
+      const minBarHeight = this._calculateMinBarHeight(this._yMin, this._yMax, yReferencePoint, yBarScale);
       let adjustedBarHeight = barHeight;
 
       if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeData)) {
@@ -941,8 +938,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
       // Calculate threshold for minimum visible bar height
-      const maxHeightFromBaseline = this._calculateMaxHeightFromBaseline(this._yMin, this._yMax, yReferencePoint);
-      const minBarHeight = this._calculateMinBarHeight(maxHeightFromBaseline, yBarScale);
+      const minBarHeight = this._calculateMinBarHeight(this._yMin, this._yMax, yReferencePoint, yBarScale);
       let adjustedBarHeight = barHeight;
 
       if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeData)) {
@@ -952,7 +948,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       else if (barHeight <= minBarHeight) {
         adjustedBarHeight = minBarHeight;
       }
-      const xPoint = xBarScale(point.x) - this._barWidth / 2;
+      const xPoint = xBarScale(point.x as number) - this._barWidth / 2;
       const yPoint =
         containerHeight -
         this.margins.bottom! -
