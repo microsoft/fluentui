@@ -10,7 +10,6 @@ test.describe('<tree-view> and <tree-item>', () => {
     await page.waitForFunction(() => customElements.whenDefined('fluent-tree-view'));
   });
 
-
   test('should work with basic rendering', async ({ page }) => {
     await page.setContent(/* html */ `
       <fluent-tree-view>
@@ -121,7 +120,7 @@ test.describe('<tree-view> and <tree-item>', () => {
 
     // collapes
     await treeItem.nth(0).click({
-      position: { x: 10, y: 10 } // click on the top left
+      position: { x: 10, y: 10 }, // click on the top left
     });
     expect(await treeItem.nth(0).getAttribute('expanded')).toBeNull();
   });
@@ -165,7 +164,7 @@ test.describe('<tree-view> and <tree-item>', () => {
       for (let i = 0; i < 30; i++) {
         node.appendChild(document.createElement('fluent-tree-item'));
       }
-    })
+    });
     expect(await treeViewEl.evaluate(node => node.children.length)).toBe(31);
 
     const treeItem1 = treeViewEl.locator('fluent-tree-item').nth(0);
