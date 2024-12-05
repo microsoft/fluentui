@@ -103,6 +103,12 @@ export const styles = css`
         }
       }
 
+      & .start-region {
+        display: flex;
+        align-items: center;
+        min-width: 0;
+      }
+
       ::slotted([slot='start']),
       ::slotted([slot='middle']) {
         display: flex;

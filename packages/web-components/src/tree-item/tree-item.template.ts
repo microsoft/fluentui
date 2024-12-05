@@ -1,4 +1,4 @@
-import { children, elements, html, when } from '@microsoft/fast-element';
+import { children, elements, html, ref } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { TreeItem } from './tree-item.js';
 import { treeItemLevelToken } from './tree-item.style.js';
@@ -30,22 +30,18 @@ export const template = html<TreeItem>`
     <div class="positioning-region" part="positioning-region">
       <div class="content-region" part="content-region">
         <span class="selection-region" part="selection-region"></span>
-        ${when(
-          // Not sure what's going on, sometimes the x will be null, and an error will appear saying
-          // cannot read properties of null (read 'childTreeItems'), so we use ?. here
-          x => x?.childTreeItems?.length,
-          html`
-            <span aria-hidden="true" class="chevron-region" part="chevron-region">
-              <slot name="chevron">${chevronIcon}</slot>
-            </span>
-          `,
-        )}
+        <span style="${
+          x => (x.childTreeItems && x.childTreeItems.length > 0 ? 'visibility: visible' : 'visibility: hidden; max-width: 0;')
+        }" class="chevron-region" part="chevron-region">
+          <slot name="chevron">${chevronIcon}</slot>
+        </span>
         <span class="start-region" part="start-region">
           <slot name="start"></slot>
           <slot name="middle">
             <slot></slot>
           </slot>
           <slot name="end"></slot>
+        </span>
       </div>
       <div class="badging-region" part="badging-region">
         <slot name="badging"></slot>
@@ -54,13 +50,13 @@ export const template = html<TreeItem>`
         <slot name="toolbar"></slot>
       </div>
     </div>
-    ${when(
-      x => x?.childTreeItems?.length > 0 && x.expanded,
-      html<TreeItem>`
-        <div role="group" class="items" part="items">
-          <slot name="item"></slot>
-        </div>
-      `,
-    )}
+    <div style="${
+      x =>
+       x.childTreeItems && x.childTreeItems.length > 0 && x.isExpanded
+          ? 'visibility: visible;'
+          : 'visibility: hidden; max-height: 0;'
+    }"  role="group" class="items" part="items">
+      <slot name="item"></slot>
+    </div>
   </template>
 `;
