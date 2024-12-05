@@ -215,7 +215,7 @@ export class LineChartAllNegativeExample extends React.Component<{}, ILineChartB
             yAxisTitle={this.state.showAxisTitles ? 'Different categories of mail flow' : undefined}
             xAxisTitle={this.state.showAxisTitles ? 'Values of each category' : undefined}
             useUTC={this.state.useUTC}
-            supportNegativeYValues={true}
+            supportNegativeData={true}
           />
         </div>
       </>

@@ -351,7 +351,7 @@ describe('Line chart rendering', () => {
   testWithoutWait(
     'should render the line chart with negative y values',
     LineChart,
-    { data: negativeYChartPoints, supportNegativeYValues: true },
+    { data: negativeYChartPoints, supportNegativeData: true },
     container => {
       //Assert
       expect(container).toMatchSnapshot();
@@ -361,7 +361,7 @@ describe('Line chart rendering', () => {
   testWithoutWait(
     'should render the line chart with all negative y values',
     LineChart,
-    { data: allNegativeYChartPoints, supportNegativeYValues: true },
+    { data: allNegativeYChartPoints, supportNegativeData: true },
     container => {
       //Assert
       expect(container).toMatchSnapshot();
