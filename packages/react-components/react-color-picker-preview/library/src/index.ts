@@ -30,4 +30,3 @@ export {
   useAlphaSliderStyles_unstable,
   useAlphaSlider_unstable,
 } from './AlphaSlider';
-export { handleHexKeyPress } from './utils/handleInputFieldEvents';
