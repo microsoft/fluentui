@@ -31,10 +31,7 @@ export const template = html<TreeItem>`
       <div class="content-region" part="content-region">
         <span class="selection-region" part="selection-region"></span>
         <span
-          style="${x =>
-            x.childTreeItems && x.childTreeItems.length > 0
-              ? ''
-              : 'visibility: hidden; max-width: 0;'}"
+          style="${x => (x.childTreeItems && x.childTreeItems.length > 0 ? '' : 'visibility: hidden; max-width: 0;')}"
           class="chevron-region"
           part="chevron-region"
         >
@@ -55,18 +52,21 @@ export const template = html<TreeItem>`
         <slot name="toolbar"></slot>
       </div>
     </div>
-    ${when((x) => x.childTreeItems && x.childTreeItems.length > 0 , html`
-      <div
-        style="${x =>
-          x.childTreeItems && x.childTreeItems.length > 0 && x.isExpanded
-            ? 'visibility: visible;'
-            : 'visibility: hidden; max-height: 0;'}"
-        role="group"
-        class="items"
-        part="items"
-      >
-        <slot name="item"></slot>
-      </div>
-    `)}
+    ${when(
+      x => x.childTreeItems && x.childTreeItems.length > 0,
+      html`
+        <div
+          style="${x =>
+            x.childTreeItems && x.childTreeItems.length > 0 && x.isExpanded
+              ? 'visibility: visible;'
+              : 'visibility: hidden; max-height: 0;'}"
+          role="group"
+          class="items"
+          part="items"
+        >
+          <slot name="item"></slot>
+        </div>
+      `,
+    )}
   </template>
 `;

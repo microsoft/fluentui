@@ -296,7 +296,7 @@ export class TreeView extends FASTElement {
   private isTreeView = true;
 
   private getVisibleNodes(): HTMLElement[] {
-    return getDisplayedNodes(this, "fluent-tree-item") || [];
+    return getDisplayedNodes(this, 'fluent-tree-item') || [];
   }
 
   /**
