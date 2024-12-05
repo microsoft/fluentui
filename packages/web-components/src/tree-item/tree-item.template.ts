@@ -1,4 +1,4 @@
-import { children, elements, html, ref } from '@microsoft/fast-element';
+import { children, elements, html, when } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { TreeItem } from './tree-item.js';
 import { treeItemLevelToken } from './tree-item.style.js';
@@ -55,16 +55,18 @@ export const template = html<TreeItem>`
         <slot name="toolbar"></slot>
       </div>
     </div>
-    <div
-      style="${x =>
-        x.childTreeItems && x.childTreeItems.length > 0 && x.isExpanded
-          ? 'visibility: visible;'
-          : 'visibility: hidden; max-height: 0;'}"
-      role="group"
-      class="items"
-      part="items"
-    >
-      <slot name="item"></slot>
-    </div>
+    ${when((x) => x.childTreeItems && x.childTreeItems.length > 0 , html`
+      <div
+        style="${x =>
+          x.childTreeItems && x.childTreeItems.length > 0 && x.isExpanded
+            ? 'visibility: visible;'
+            : 'visibility: hidden; max-height: 0;'}"
+        role="group"
+        class="items"
+        part="items"
+      >
+        <slot name="item"></slot>
+      </div>
+    `)}
   </template>
 `;
