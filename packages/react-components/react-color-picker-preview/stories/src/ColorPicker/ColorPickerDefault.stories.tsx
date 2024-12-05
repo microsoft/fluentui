@@ -7,7 +7,7 @@ import {
   AlphaSlider,
   ColorPickerProps,
   ColorArea,
-} from '@fluentui/rea`ct-color-picker-preview';
+} from '@fluentui/react-color-picker-preview';
 
 const useStyles = makeStyles({
   example: {
@@ -71,7 +71,7 @@ export const Default = () => {
             if (newColor.isValid) {
               setColor(newColor.toHsv());
             }
-            setHex(e.target.value);
+            setHex(value);
           }}
         />
       </div>
@@ -117,7 +117,6 @@ const handleOnBlur = (e: React.FocusEvent<HTMLInputElement>) => {
 
 const handleHexKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
   const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter', 'ArrowUp', 'ArrowDown'];
-
   const isCtrlCmd = e.ctrlKey || e.metaKey;
 
   if (isCtrlCmd && e.key) {
