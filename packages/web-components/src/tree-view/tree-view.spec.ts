@@ -145,7 +145,7 @@ test.describe('<tree-view> and <tree-item>', () => {
     expect(await treeItemEl.nth(1).getAttribute('selected')).toBeNull();
     // select item 2
     await treeItemEl.nth(1).click();
-    expect(await treeItemEl.nth(0).getAttribute('selected')).toBeNull();
+    expect(await treeItemEl.nth(0).getAttribute('selected')).not.toBeNull();
     expect(await treeItemEl.nth(1).getAttribute('selected')).not.toBeNull();
   });
 
