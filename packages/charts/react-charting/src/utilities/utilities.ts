@@ -436,7 +436,7 @@ export function createNumericYAxis(
     : yMinValue!;
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
   const yAxisScale = d3ScaleLinear()
-    .domain([domainValues[0], domainValues[domainValues.length - 1]])
+    .domain([supportNegativeData ? domainValues[0] : finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
