@@ -278,7 +278,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         {...this.props}
         chartTitle={this._getChartTitle()}
         points={points}
-        supportNegativeData={this.props.supportNegativeData}
         chartType={ChartTypes.LineChart}
         isCalloutForStack
         calloutProps={calloutProps}
