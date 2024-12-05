@@ -90,10 +90,10 @@ export class VerticalBarChartAllNegativeExample extends React.Component<IVertica
         legend: 'Oranges',
         color: DefaultPalette.accent,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '4%',
+        yAxisCalloutData: '-4%',
         lineData: {
           y: -7000,
-          yAxisCalloutData: '3%',
+          yAxisCalloutData: '-3%',
         },
       },
       {
@@ -102,10 +102,10 @@ export class VerticalBarChartAllNegativeExample extends React.Component<IVertica
         legend: 'Dogs',
         color: DefaultPalette.blueDark,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '21%',
+        yAxisCalloutData: '-21%',
         lineData: {
           y: -30000,
-          yAxisCalloutData: '12%',
+          yAxisCalloutData: '-12%',
         },
       },
       {
@@ -114,10 +114,10 @@ export class VerticalBarChartAllNegativeExample extends React.Component<IVertica
         legend: 'Apples',
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '12%',
+        yAxisCalloutData: '-12%',
         lineData: {
           y: -3000,
-          yAxisCalloutData: '1%',
+          yAxisCalloutData: '-1%',
         },
       },
 
@@ -127,7 +127,7 @@ export class VerticalBarChartAllNegativeExample extends React.Component<IVertica
         legend: 'Bananas',
         color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '5%',
+        yAxisCalloutData: '-5%',
       },
       {
         x: 52000,
@@ -135,10 +135,10 @@ export class VerticalBarChartAllNegativeExample extends React.Component<IVertica
         legend: 'Giraffes',
         color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '18%',
+        yAxisCalloutData: '-18%',
         lineData: {
           y: -30000,
-          yAxisCalloutData: '12%',
+          yAxisCalloutData: '-12%',
         },
       },
       {
@@ -147,10 +147,10 @@ export class VerticalBarChartAllNegativeExample extends React.Component<IVertica
         legend: 'Cats',
         color: DefaultPalette.blueDark,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '12%',
+        yAxisCalloutData: '-12%',
         lineData: {
           y: -5000,
-          yAxisCalloutData: '2%',
+          yAxisCalloutData: '-2%',
         },
       },
       {
@@ -159,10 +159,10 @@ export class VerticalBarChartAllNegativeExample extends React.Component<IVertica
         legend: 'Elephants',
         color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '8%',
+        yAxisCalloutData: '-8%',
         lineData: {
           y: -16000,
-          yAxisCalloutData: '7%',
+          yAxisCalloutData: '-7%',
         },
       },
       {
@@ -171,10 +171,10 @@ export class VerticalBarChartAllNegativeExample extends React.Component<IVertica
         legend: 'Monkeys',
         color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '19%',
+        yAxisCalloutData: '-19%',
         lineData: {
           y: -40000,
-          yAxisCalloutData: '16%',
+          yAxisCalloutData: '-16%',
         },
       },
     ];
