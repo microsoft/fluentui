@@ -316,10 +316,10 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('value', '7');
   });
 
-  test('should increase or decrease the slider value on arrow up/down keys', async ({ fastPage, page }) => {
+  test('should increase or decrease the slider value on arrow up/down keys', async ({ fastPage }) => {
     const { element } = fastPage;
 
-    await page.setContent(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <form>
         <fluent-slider min="0" max="100"></fluent-slider>
       </form>
@@ -441,9 +441,7 @@ test.describe('Slider', () => {
   test('should update the `stepMultiplier` when the `step` attribute has been updated', async ({ fastPage, page }) => {
     const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-slider step="2" value="4"></fluent-slider>
-    `);
+    await fastPage.setTemplate({ attributes: { step: '2', value: '4' } });
 
     await element.evaluate((node: Slider) => {
       node.increment();
@@ -466,7 +464,7 @@ test.describe('Slider', () => {
     }) => {
       const { element } = fastPage;
 
-      await page.setContent(/* html */ `
+      await fastPage.setTemplate(/* html */ `
         <form>
           <fluent-slider></fluent-slider>
         </form>
@@ -493,7 +491,7 @@ test.describe('Slider', () => {
     }) => {
       const { element } = fastPage;
 
-      await page.setContent(/* html */ `
+      await fastPage.setTemplate(/* html */ `
         <form>
           <fluent-slider min="0" max="100"></fluent-slider>
         </form>
@@ -526,7 +524,7 @@ test.describe('Slider', () => {
       const { element } = fastPage;
       const form = page.locator('form');
 
-      await page.setContent(/* html */ `
+      await fastPage.setTemplate(/* html */ `
         <form>
           <fluent-slider min="0" max="100"></fluent-slider>
         </form>
