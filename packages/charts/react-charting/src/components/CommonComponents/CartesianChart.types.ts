@@ -439,6 +439,12 @@ export interface ICartesianChartProps {
    * @default true
    */
   useUTC?: boolean;
+
+  /**
+   * @default false
+   * Used for enabling negative values in Y axis.
+   */
+  supportNegativeData?: boolean;
 }
 
 export interface IYValueHover {
@@ -633,12 +639,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Used to control the first render cycle Performance optimization code.
    */
   enableFirstRenderOptimization?: boolean;
-
-  /**
-   * @default false
-   * Used for enabling negative values in Y axis.
-   */
-  supportNegativeData?: boolean;
 
   /**
    * Get the min and max values of the y-axis

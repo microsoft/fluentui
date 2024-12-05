@@ -254,7 +254,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
                 ) => (props ? defaultRender(props) : null),
               })}
               hideLabels={this.state.hideLabels}
-              supportNegativeYValues={true}
+              supportNegativeData={true}
               enableReflow={true}
               yAxisTitle={this.state.showAxisTitles ? 'Different categories of animals and fruits' : undefined}
               xAxisTitle={this.state.showAxisTitles ? 'Values of each category' : undefined}
@@ -285,7 +285,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
               enableReflow={true}
               enableGradient={this.state.enableGradient}
               roundCorners={this.state.roundCorners}
-              supportNegativeYValues={true}
+              supportNegativeData={true}
             />
           </div>
         )}

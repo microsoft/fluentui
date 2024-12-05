@@ -176,8 +176,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         {...this.props}
         chartTitle={this._getChartTitle()}
         points={this._points}
-        yMinValue={this.props.supportNegativeYValues ? this._yMin : 0}
-        supportNegativeData={this.props.supportNegativeYValues}
+        yMinValue={this.props.supportNegativeData ? this._yMin : 0}
+        supportNegativeData={this.props.supportNegativeData}
         chartType={ChartTypes.VerticalBarChart}
         xAxisType={this._xAxisType}
         createYAxis={createNumericYAxis}
@@ -659,7 +659,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     let xBarScale: any;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const yBarScale: any = d3ScaleLinear()
-      .domain([this.props.supportNegativeYValues ? this._yMin : 0, this._yMax])
+      .domain([this.props.supportNegativeData ? this._yMin : 0, this._yMax])
       .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
 
     if (this._xAxisType === XAxisTypes.NumericAxis) {
@@ -722,7 +722,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const minBarHeight = Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
       let adjustedBarHeight = barHeight;
 
-      if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeYValues)) {
+      if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeData)) {
         return <React.Fragment key={point.x as string}> </React.Fragment>;
       }
       // Adjust bar height if it's smaller than the threshold
@@ -825,7 +825,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const minBarHeight = Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
       let adjustedBarHeight = barHeight;
 
-      if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeYValues)) {
+      if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeData)) {
         return <React.Fragment key={point.x as string}> </React.Fragment>;
       }
       // Adjust bar height if it's smaller than the threshold
@@ -943,7 +943,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const minBarHeight = Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
       let adjustedBarHeight = barHeight;
 
-      if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeYValues)) {
+      if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeData)) {
         return <React.Fragment key={point.x as string}> </React.Fragment>;
       }
       // Adjust bar height if it's smaller than the threshold

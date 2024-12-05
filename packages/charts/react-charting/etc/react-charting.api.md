@@ -1436,7 +1436,6 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
     onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
     roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
-    supportNegativeYValues?: boolean;
     useSingleColor?: boolean;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
