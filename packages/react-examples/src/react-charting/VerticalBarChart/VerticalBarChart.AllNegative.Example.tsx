@@ -186,8 +186,8 @@ export class VerticalBarChartAllNegativeExample extends React.Component<IVertica
     return (
       <>
         <Label>
-          In this example the xAxisCalloutData property overrides the x value that is shown on the callout. So instead
-          of a numeric value, the callout will show the date that is passed in the xAxisCalloutData property.
+          In this example the supportNegativeData property is enabled and all negative y points are passed to the data.
+          As a result chart with negative y axis data is rendered.
         </Label>
         <label htmlFor="changeWidth">Change Width:</label>
         <input
