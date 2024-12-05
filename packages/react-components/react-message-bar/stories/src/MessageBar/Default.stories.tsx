@@ -10,18 +10,16 @@ import {
 } from '@fluentui/react-components';
 
 export const Default = () => (
-  <div style={{ minWidth: 'min-content' }}>
-    <MessageBar>
-      <MessageBarBody>
-        <MessageBarTitle>Descriptive title</MessageBarTitle>
-        Message providing information to the user with actionable insights. <Link>Link</Link>
-      </MessageBarBody>
-      <MessageBarActions
-        containerAction={<Button aria-label="dismiss" appearance="transparent" icon={<DismissRegular />} />}
-      >
-        <Button>Action</Button>
-        <Button>Action</Button>
-      </MessageBarActions>
-    </MessageBar>
-  </div>
+  <MessageBar>
+    <MessageBarBody>
+      <MessageBarTitle>Descriptive title</MessageBarTitle>
+      Message providing information to the user with actionable insights. <Link>Link</Link>
+    </MessageBarBody>
+    <MessageBarActions
+      containerAction={<Button aria-label="dismiss" appearance="transparent" icon={<DismissRegular />} />}
+    >
+      <Button>Action</Button>
+      <Button>Action</Button>
+    </MessageBarActions>
+  </MessageBar>
 );
