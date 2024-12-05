@@ -209,12 +209,13 @@ test.describe('RadioGroup', () => {
   });
 
   test('radio should remain checked after it is set to disabled and uncheck when a new radio is checked', async ({
+    fastPage,
     page,
   }) => {
-    const element = page.locator('fluent-radio-group');
+    const { element } = fastPage;
     const radios = element.locator('fluent-radio');
 
-    await page.setContent(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <fluent-radio-group>
         <fluent-radio id="radio-1" name="radio" value="foo"></fluent-radio>
         <fluent-radio id="radio-2" name="radio" value="bar"></fluent-radio>
@@ -240,11 +241,11 @@ test.describe('RadioGroup', () => {
     await expect(radios.nth(2)).toHaveJSProperty('checked', true);
   });
 
-  test('should emit `change` event when using keyboard', async ({ page }) => {
+  test('should emit `change` event when using keyboard', async ({ fastPage, page }) => {
     const element = page.locator('fluent-radio-group');
     const radios = element.locator('fluent-radio');
 
-    await page.setContent(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <fluent-radio-group>
         <fluent-radio id="radio-1" name="radio" value="foo"></fluent-radio>
         <fluent-radio id="radio-2" name="radio" value="bar"></fluent-radio>
@@ -264,7 +265,6 @@ test.describe('RadioGroup', () => {
     await expect(wasChanged).resolves.toBeTruthy();
   });
 
-  // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
   test('should set a child radio with a matching `value` to `checked` when value changes', async ({ fastPage }) => {
     const { element } = fastPage;
     const radios = element.locator('fluent-radio');
@@ -291,7 +291,6 @@ test.describe('RadioGroup', () => {
     await expect(radios.nth(2)).toHaveJSProperty('checked', false);
   });
 
-  // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
   test('should mark only the last radio defaulted to checked as checked', async ({ fastPage }) => {
     const { element } = fastPage;
     const radios = element.locator('fluent-radio');

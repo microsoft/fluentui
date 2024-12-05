@@ -261,7 +261,7 @@ test.describe('Tablist', () => {
     const { element } = fastPage;
     const tabs = element.locator('fluent-tab');
 
-    fastPage.setTemplate({
+    await fastPage.setTemplate({
       innerHTML: /* html */ `
         <fluent-tab>Tab one</fluent-tab>
         <fluent-tab hidden>Tab two</fluent-tab>
@@ -289,7 +289,7 @@ test.describe('Tablist', () => {
     const { element } = fastPage;
     const tabs = element.locator('fluent-tab');
 
-    fastPage.setTemplate({
+    await fastPage.setTemplate({
       innerHTML: /* html */ `
         <fluent-tab>Tab one</fluent-tab>
         <fluent-tab>Tab two</fluent-tab>

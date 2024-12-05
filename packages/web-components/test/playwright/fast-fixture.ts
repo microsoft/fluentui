@@ -54,17 +54,24 @@ export class FASTFixture {
           attributes?: Record<string, string | true>;
           innerHTML?: string;
         },
-  ) {
+  ): Promise<void> {
     const template =
       typeof templateOrOptions === 'string'
         ? templateOrOptions
         : this.defaultTemplate(this.tagName, templateOrOptions?.attributes, templateOrOptions?.innerHTML);
 
-    await this.page.evaluate(template => {
+    const body = this.page.locator('body');
+
+    await body.evaluateHandle((node, template) => {
       const fragment = document.createRange().createContextualFragment(template);
-      document.body.innerHTML = '';
-      document.body.append(...fragment.childNodes);
+      node.innerHTML = '';
+      node.append(fragment);
     }, template);
+
+    const bodyHandle = await body.elementHandle();
+    if (bodyHandle) {
+      await bodyHandle.waitForElementState('stable');
+    }
   }
 
   async waitForCustomElement(tagName: string = this.tagName, ...tagNames: string[]) {

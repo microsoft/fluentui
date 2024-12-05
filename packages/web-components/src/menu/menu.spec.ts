@@ -140,7 +140,7 @@ test.describe('Menu', () => {
     const menuButton = element.locator('fluent-menu-button');
     const menuList = element.locator('fluent-menu-list');
 
-    fastPage.setTemplate({ attributes: { 'open-on-hover': true } });
+    await fastPage.setTemplate({ attributes: { 'open-on-hover': true } });
 
     await expect(menuList).toBeHidden();
 
@@ -165,7 +165,7 @@ test.describe('Menu', () => {
     const menuButton = element.locator('fluent-menu-button');
     const menuList = element.locator('fluent-menu-list');
 
-    fastPage.setTemplate({ attributes: { 'open-on-context': true } });
+    await fastPage.setTemplate({ attributes: { 'open-on-context': true } });
 
     await expect(menuList).toBeHidden();
 
@@ -174,7 +174,6 @@ test.describe('Menu', () => {
     await expect(menuList).toBeVisible();
   });
 
-  // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
   test('should focus the first item when a submenu is closed', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -184,7 +183,7 @@ test.describe('Menu', () => {
 
     const submenuList = element.locator('fluent-menu-list[slot="submenu"]');
 
-    fastPage.setTemplate({
+    await fastPage.setTemplate({
       innerHTML: /* html */ `
         <fluent-menu-button appearance="primary" slot="trigger">Toggle Menu</fluent-menu-button>
         <fluent-menu-list>
@@ -228,7 +227,7 @@ test.describe('Menu', () => {
     const { element } = fastPage;
     const menuButton = element.locator('fluent-menu-button');
 
-    fastPage.setTemplate(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <fluent-menu>
         <fluent-menu-button appearance="primary" slot="trigger" icon-only></fluent-menu-button>
         <fluent-button appearance="primary" slot="primary-action">Primary Action</fluent-menu-button>
