@@ -21,20 +21,20 @@ export const template = html<TreeItem>`
     class="${x => x.calculatedClassName}"
     @focusin="${(x, c) => x.handleFocus(c.event as FocusEvent)}"
     @focusout="${(x, c) => x.handleBlur(c.event as FocusEvent)}"
-    style="${(x) => (`${treeItemLevelToken}: ${x.depth};`)}"
+    style="${x => `${treeItemLevelToken}: ${x.depth};`}"
     ${children({
-  property: 'childTreeItems',
-  filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
-})}
+      property: 'childTreeItems',
+      filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
+    })}
   >
     <div class="positioning-region" part="positioning-region">
       <div class="content-region" part="content-region">
         <span class="selection-region" part="selection-region"></span>
         ${when(
-  // Not sure what's going on, sometimes the x will be null, and an error will appear saying
-  // cannot read properties of null (read 'childTreeItems'), so we use ?. here
-  x => x?.childTreeItems?.length,
-  html`
+          // Not sure what's going on, sometimes the x will be null, and an error will appear saying
+          // cannot read properties of null (read 'childTreeItems'), so we use ?. here
+          x => x?.childTreeItems?.length,
+          html`
             <span aria-hidden="true" class="chevron-region" part="chevron-region">
               <slot name="chevron">${chevronIcon}</slot>
             </span>
@@ -55,12 +55,12 @@ export const template = html<TreeItem>`
       </div>
     </div>
     ${when(
-  x => x?.childTreeItems?.length > 0 && x.expanded,
-  html<TreeItem>`
+      x => x?.childTreeItems?.length > 0 && x.expanded,
+      html<TreeItem>`
         <div role="group" class="items" part="items">
           <slot name="item"></slot>
         </div>
       `,
-)}
+    )}
   </template>
 `;
