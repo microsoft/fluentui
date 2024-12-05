@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "support negative y values in Vertical Bar chart",
+  "comment": "support negative y values in Line chart and Area chart",
   "packageName": "@fluentui/react-charting",
   "email": "74965306+Anush2303@users.noreply.github.com",
   "dependentChangeType": "minor"
