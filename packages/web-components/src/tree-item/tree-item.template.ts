@@ -58,7 +58,7 @@ export const template = html<TreeItem>`
         <div
           style="${x =>
             x.childTreeItems && x.childTreeItems.length > 0 && x.isExpanded
-              ? 'visibility: visible;'
+              ? '' /** make sure we do not use visibility: visible here, it will still visible even if parent is hidden */
               : 'visibility: hidden; max-height: 0;'}"
           role="group"
           class="items"
