@@ -33,7 +33,7 @@ export const template = html<TreeItem>`
         <span
           style="${x =>
             x.childTreeItems && x.childTreeItems.length > 0
-              ? 'visibility: visible'
+              ? ''
               : 'visibility: hidden; max-width: 0;'}"
           class="chevron-region"
           part="chevron-region"
