@@ -30,9 +30,14 @@ export const template = html<TreeItem>`
     <div class="positioning-region" part="positioning-region">
       <div class="content-region" part="content-region">
         <span class="selection-region" part="selection-region"></span>
-        <span style="${
-          x => (x.childTreeItems && x.childTreeItems.length > 0 ? 'visibility: visible' : 'visibility: hidden; max-width: 0;')
-        }" class="chevron-region" part="chevron-region">
+        <span
+          style="${x =>
+            x.childTreeItems && x.childTreeItems.length > 0
+              ? 'visibility: visible'
+              : 'visibility: hidden; max-width: 0;'}"
+          class="chevron-region"
+          part="chevron-region"
+        >
           <slot name="chevron">${chevronIcon}</slot>
         </span>
         <span class="start-region" part="start-region">
@@ -50,12 +55,15 @@ export const template = html<TreeItem>`
         <slot name="toolbar"></slot>
       </div>
     </div>
-    <div style="${
-      x =>
-       x.childTreeItems && x.childTreeItems.length > 0 && x.isExpanded
+    <div
+      style="${x =>
+        x.childTreeItems && x.childTreeItems.length > 0 && x.isExpanded
           ? 'visibility: visible;'
-          : 'visibility: hidden; max-height: 0;'
-    }"  role="group" class="items" part="items">
+          : 'visibility: hidden; max-height: 0;'}"
+      role="group"
+      class="items"
+      part="items"
+    >
       <slot name="item"></slot>
     </div>
   </template>

@@ -159,8 +159,6 @@ export const styles = css`
     }
   }
 
-
-
   :host(.small) .positioning-region {
     height: ${spacingVerticalXXL};
     /**
