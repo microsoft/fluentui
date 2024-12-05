@@ -195,15 +195,13 @@ test.describe('Tablist', () => {
 
     const firstTab = tabs.nth(0);
 
-    const firstTabId = await firstTab.getAttribute('id');
+    await expect(firstTab).toHaveId('tab-1');
 
-    expect(firstTabId).toBe('tab-1');
+    await element.evaluate((node: Tablist) => {
+      node.activeid = 'tab-1';
+    });
 
-    await element.evaluate((node: Tablist, firstTabId) => {
-      node.activeid = `${firstTabId}`;
-    }, firstTabId);
-
-    await expect(element).toHaveJSProperty('activeid', firstTabId);
+    await expect(element).toHaveJSProperty('activeid', 'tab-1');
 
     const secondTab = tabs.nth(1);
 
@@ -214,7 +212,7 @@ test.describe('Tablist', () => {
     // eslint-disable-next-line playwright/no-force-option
     await secondTab.click({ force: true });
 
-    await expect(element).toHaveJSProperty('activeid', firstTabId);
+    await expect(element).toHaveJSProperty('activeid', 'tab-1');
   });
 
   test('should allow selecting tab that has been enabled after it has been connected', async ({ fastPage }) => {
