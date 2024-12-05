@@ -102,10 +102,10 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         legend: 'Dogs',
         color: DefaultPalette.blueDark,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '21%',
+        yAxisCalloutData: '-21%',
         lineData: {
           y: -30000,
-          yAxisCalloutData: '12%',
+          yAxisCalloutData: '-12%',
         },
       },
       {
@@ -127,7 +127,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         legend: 'Bananas',
         color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '5%',
+        yAxisCalloutData: '-5%',
       },
       {
         x: 52000,
@@ -147,10 +147,10 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         legend: 'Cats',
         color: DefaultPalette.blueDark,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '12%',
+        yAxisCalloutData: '-12%',
         lineData: {
           y: -5000,
-          yAxisCalloutData: '2%',
+          yAxisCalloutData: '-2%',
         },
       },
       {
@@ -171,10 +171,10 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         legend: 'Monkeys',
         color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '19%',
+        yAxisCalloutData: '-19%',
         lineData: {
           y: -40000,
-          yAxisCalloutData: '16%',
+          yAxisCalloutData: '-16%',
         },
       },
     ];
