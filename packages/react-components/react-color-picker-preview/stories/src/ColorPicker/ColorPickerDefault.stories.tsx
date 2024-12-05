@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { tinycolor } from '@ctrl/tinycolor';
-import { makeStyles, useId, Input, InputProps, Label } from '@fluentui/react-components';
+import { makeStyles, useId, Input, type InputProps, Label } from '@fluentui/react-components';
 import {
   ColorPicker,
   ColorSlider,
