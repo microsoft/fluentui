@@ -7,7 +7,7 @@ import type { ColorPickerProps } from './ColorPicker.types';
 import { useColorPickerContextValues } from '../../contexts/colorPicker';
 
 /**
- * ColorPicker component - TODO: add more docs
+ * ColorPicker component
  */
 export const ColorPicker: ForwardRefComponent<ColorPickerProps> = React.forwardRef((props, ref) => {
   const state = useColorPicker_unstable(props, ref);

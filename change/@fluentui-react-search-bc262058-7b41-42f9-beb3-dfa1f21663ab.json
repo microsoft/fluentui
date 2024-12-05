@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix SearchBox contentAfter hidden clickable",
-  "packageName": "@fluentui/react-search",
-  "email": "carla.muntean@microsoft.com",
-  "dependentChangeType": "patch"
-}

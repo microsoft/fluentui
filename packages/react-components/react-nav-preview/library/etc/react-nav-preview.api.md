@@ -217,7 +217,9 @@ export type NavDrawerHeaderSlots = DrawerHeaderSlots;
 export type NavDrawerHeaderState = DrawerHeaderState;
 
 // @public
-export type NavDrawerProps = ComponentProps<NavDrawerSlots> & DrawerProps & NavProps;
+export type NavDrawerProps = ComponentProps<NavDrawerSlots> & DrawerProps & NavProps & {
+    tabbable?: boolean;
+};
 
 // @public
 export type NavDrawerSlots = DrawerSlots;

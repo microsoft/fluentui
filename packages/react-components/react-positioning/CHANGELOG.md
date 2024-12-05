@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Tue, 15 Oct 2024 17:17:53 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Nov 2024 09:44:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.12)
+
+Mon, 18 Nov 2024 09:44:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.11..@fluentui/react-positioning_v9.15.12)
+
+### Patches
+
+- fix: update writeArrowUpdates to correctly resolve arrow position ([PR #33260](https://github.com/microsoft/fluentui/pull/33260) by vgenaev@gmail.com)
+
+## [9.15.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.11)
+
+Mon, 11 Nov 2024 10:00:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.10..@fluentui/react-positioning_v9.15.11)
+
+### Patches
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.21.0 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-theme to v9.1.22 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-utilities to v9.18.17 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
 
 ## [9.15.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.10)
 

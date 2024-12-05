@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix(docs): Collapse storybook updates",
-  "packageName": "@fluentui/react-motion-components-preview",
-  "email": "olkatruk@microsoft.com",
-  "dependentChangeType": "none"
-}

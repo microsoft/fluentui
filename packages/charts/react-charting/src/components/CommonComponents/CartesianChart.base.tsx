@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { lazy } from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { Callout } from '@fluentui/react/lib/Callout';
@@ -29,12 +28,13 @@ import {
   createYAxisLabels,
   ChartTypes,
   wrapContent,
+  getSecureProps,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
-const ChartHoverCard = lazy(() =>
+const ChartHoverCard = React.lazy(() =>
   import('../../utilities/ChartHoverCard/ChartHoverCard').then(module => ({ default: module.ChartHoverCard })),
 );
 
@@ -494,7 +494,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             role="region"
             aria-label={this._getChartDescription()}
             style={{ display: 'block' }}
-            {...svgProps}
+            {...getSecureProps(svgProps)}
           >
             <g
               ref={(e: SVGSVGElement | null) => {

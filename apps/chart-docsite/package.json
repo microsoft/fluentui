@@ -1,0 +1,33 @@
+{
+  "name": "@fluentui/chart-docsite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fluent UI React v9 documentation",
+  "scripts": {
+    "build-storybook": "storybook build -o ./dist/storybook --docs && node ./.storybook/fix-title.js 'Fluent UI Charts v9' ../dist",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "type-check": "just-scripts type-check",
+    "start": "yarn storybook:docs",
+    "storybook": "storybook dev --port 3000",
+    "storybook:docs": "yarn storybook --docs",
+    "test": "jest --passWithNoTests"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-storybook": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
+  "dependencies": {
+    "@fluentui/react-charts-preview": "*",
+    "@fluentui/react-components": "*",
+    "@griffel/react": "^1.5.22",
+    "@microsoft/applicationinsights-web": "^3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-window": "^1.8.6",
+    "tslib": "^2.1.0",
+    "react-hook-form": "^5.7.2"
+  }
+}
