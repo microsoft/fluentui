@@ -1,9 +1,10 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
 import { ColorPickerContextValue } from '../../contexts/colorPicker';
+import type { HsvColor } from '../../types/color';
 
 export type ColorPickerOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
-  color: string;
+  color: HsvColor;
 };
 
 export type ColorPickerSlots = {
@@ -13,16 +14,22 @@ export type ColorPickerSlots = {
 /**
  * ColorPicker Props
  */
-export type ColorPickerProps = ComponentProps<ColorPickerSlots> & {
+export type ColorPickerProps = Omit<ComponentProps<Partial<ColorPickerSlots>>, 'color'> & {
   /**
    * Selected color.
    */
-  color: string;
+  color: HsvColor;
 
   /**
    * Callback for when the user changes the color.
    */
   onColorChange?: EventHandler<ColorPickerOnChangeData>;
+
+  /**
+   * ColorPicker shape
+   * @defaultvalue 'rounded'
+   */
+  shape?: 'rounded' | 'square';
 };
 
 /**

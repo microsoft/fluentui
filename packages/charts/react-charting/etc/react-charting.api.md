@@ -120,6 +120,15 @@ export const DataVizPalette: {
 };
 
 // @public
+export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
+
+// @public
+export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
+    chartSchema: Schema;
+    onSchemaChange?: (eventData: Schema) => void;
+}
+
+// @public
 export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 
 // @public
@@ -1590,6 +1599,15 @@ export const PieChart: React_2.FunctionComponent<IPieChartProps>;
 
 // @public
 export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
+
+// @public (undocumented)
+export interface Schema {
+    accesibilityLabels?: {
+        [key: string]: string;
+    };
+    plotlySchema: any;
+    selectedLegends?: string[];
+}
 
 // @public (undocumented)
 export const Shape: React_2.FC<IShapeProps>;

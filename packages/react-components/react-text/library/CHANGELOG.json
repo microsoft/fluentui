@@ -2,6 +2,21 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Thu, 28 Nov 2024 09:30:53 GMT",
+      "tag": "@fluentui/react-text_v9.4.27",
+      "version": "9.4.27",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:01:00 GMT",
       "tag": "@fluentui/react-text_v9.4.27",
       "version": "9.4.27",

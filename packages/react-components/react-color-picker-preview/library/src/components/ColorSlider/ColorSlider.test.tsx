@@ -21,6 +21,8 @@ describe('ColorSlider', () => {
           <input
             class="fui-ColorSlider__input"
             id="slider-9"
+            max="360"
+            min="0"
             type="range"
             value="0"
           />
@@ -42,7 +44,7 @@ describe('ColorSlider', () => {
   });
 
   it('applies the color prop', () => {
-    render(<ColorSlider color="#f09" />);
+    render(<ColorSlider color={{ h: 324, s: 1, v: 1 }} />);
     expect(screen.getByRole('slider').getAttribute('value')).toEqual('324');
   });
 

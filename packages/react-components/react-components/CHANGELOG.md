@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 18 Nov 2024 09:44:38 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Nov 2024 09:30:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.56.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.3)
+
+Thu, 28 Nov 2024 09:30:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.2..@fluentui/react-components_v9.56.3)
+
+### Minor changes
+
+- `@fluentui/react-carousel`
+  - feat: Add autoplay index change callback and fix autoplay pause on interaction ([PR #33291](https://github.com/microsoft/fluentui/pull/33291) by mifraser@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts-preview`
+  - Update readme with current content ([PR #33295](https://github.com/microsoft/fluentui/pull/33295) by 98592573+AtishayMsft@users.noreply.github.com)
+- `@fluentui/react-dialog`
+  - feat(motion): update DialogBackdropMotion to use createFadePresence API ([PR #33288](https://github.com/microsoft/fluentui/pull/33288) by olkatruk@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: respect reduced motion in createMotionComponent() ([PR #33357](https://github.com/microsoft/fluentui/pull/33357) by olfedias@microsoft.com)
+- `@fluentui/react-search`
+  - fix(react-search): restore focus to SearchBox after clear button is clicked ([PR #33340](https://github.com/microsoft/fluentui/pull/33340) by jiangemma@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - feat: Correctly integrating SwatchPicker with Field component. ([PR #33274](https://github.com/microsoft/fluentui/pull/33274) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-tree`
+  - bugfix: ensure that onActionVisibilityChange is properly invoked ([PR #33320](https://github.com/microsoft/fluentui/pull/33320) by bernardo.sunderhus@gmail.com)
 
 ## [9.56.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.2)
 

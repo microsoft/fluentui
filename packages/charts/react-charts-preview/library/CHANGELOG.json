@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charts-preview",
   "entries": [
     {
+      "date": "Thu, 28 Nov 2024 09:30:50 GMT",
+      "tag": "@fluentui/react-charts-preview_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts-preview",
+            "commit": "0cb1e6ea1615357bcb47d8501a51faac831554a1",
+            "comment": "Update readme with current content"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Nov 2024 09:44:38 GMT",
       "tag": "@fluentui/react-charts-preview_v0.1.0",
       "version": "0.1.0",

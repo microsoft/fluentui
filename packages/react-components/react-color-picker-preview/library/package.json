@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/react-color-picker-preview",
   "version": "0.0.0",
-  "private": true,
-  "description": "New fluentui react package",
+  "description": "ColorPicker component for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",

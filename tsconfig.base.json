@@ -16,6 +16,9 @@
       "@fluentui/babel-preset-storybook-full-source": [
         "packages/react-components/babel-preset-storybook-full-source/src/index.ts"
       ],
+      "@fluentui/eslint-plugin-react-components": [
+        "packages/react-components/eslint-plugin-react-components/src/index.ts"
+      ],
       "@fluentui/global-context": ["packages/react-components/global-context/src/index.ts"],
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
       "@fluentui/keyboard-keys": ["packages/react-components/keyboard-keys/src/index.ts"],
