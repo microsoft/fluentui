@@ -293,6 +293,7 @@ export interface ICartesianChartProps {
     showXAxisLablesTooltip?: boolean;
     strokeWidth?: number;
     styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
+    supportNegativeData?: boolean;
     svgProps?: React_2.SVGProps<SVGSVGElement>;
     theme?: ITheme;
     tickFormat?: string;
@@ -1068,7 +1069,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];
-    supportNegativeData?: boolean;
     svgFocusZoneProps?: IFocusZoneProps;
     tickParams?: {
         tickValues?: number[] | Date[];
@@ -1435,6 +1435,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
     onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
     roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
+    supportNegativeYValues?: boolean;
     useSingleColor?: boolean;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
