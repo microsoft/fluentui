@@ -126,6 +126,31 @@ describe('SpinButton', () => {
       expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
     });
 
+    it('disables increment and decrement buttons and the min and max values', () => {
+      const { getByLabelText } = render(
+        <SpinButton
+          defaultValue={1}
+          min={0}
+          max={10}
+          incrementButton={{ 'aria-label': 'increment' }}
+          decrementButton={{ 'aria-label': 'decrement' }}
+        />,
+      );
+
+      const decrementBtn = getByLabelText('decrement') as HTMLButtonElement;
+      const incrementBtn = getByLabelText('increment') as HTMLButtonElement;
+
+      expect(decrementBtn.disabled).toBeFalsy();
+      expect(incrementBtn.disabled).toBeFalsy();
+
+      userEvent.click(decrementBtn);
+      expect(decrementBtn.disabled).toBeTruthy();
+
+      fireEvent.keyDown(getSpinButtonInput(), { key: End });
+      expect(decrementBtn.disabled).toBeFalsy();
+      expect(incrementBtn.disabled).toBeTruthy();
+    });
+
     it('clamps value at min when uncontrolled', () => {
       const onChange = jest.fn();
       const { getAllByRole } = render(<SpinButton defaultValue={-100} min={-100} onChange={onChange} />);
