@@ -28,6 +28,7 @@ import {
   createYAxisLabels,
   ChartTypes,
   wrapContent,
+  getSecureProps,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
@@ -386,9 +387,23 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             yAxisPadding: this.props.yAxisPadding,
           };
 
-          yScaleSecondary = this.props.createYAxis(YAxisParamsSecondary, this._isRtl, axisData, this.isIntegralDataset);
+          yScaleSecondary = yScaleSecondary = this.props.createYAxis(
+            YAxisParamsSecondary,
+            this._isRtl,
+            axisData,
+            this.isIntegralDataset,
+            true,
+            this.props.supportNegativeData!,
+          );
         }
-        yScale = this.props.createYAxis(YAxisParams, this._isRtl, axisData, this.isIntegralDataset);
+        yScale = this.props.createYAxis(
+          YAxisParams,
+          this._isRtl,
+          axisData,
+          this.isIntegralDataset,
+          false,
+          this.props.supportNegativeData!,
+        );
       }
 
       /*
@@ -493,7 +508,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             role="region"
             aria-label={this._getChartDescription()}
             style={{ display: 'block' }}
-            {...svgProps}
+            {...getSecureProps(svgProps)}
           >
             <g
               ref={(e: SVGSVGElement | null) => {

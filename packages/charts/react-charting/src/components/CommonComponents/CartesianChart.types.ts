@@ -439,6 +439,12 @@ export interface ICartesianChartProps {
    * @default true
    */
   useUTC?: boolean;
+
+  /**
+   * @default false
+   * Used for enabling negative values in Y axis.
+   */
+  supportNegativeData?: boolean;
 }
 
 export interface IYValueHover {
@@ -651,6 +657,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     axisData: IAxisData,
     isIntegralDataset: boolean,
     useSecondaryYScale?: boolean,
+    supportNegativeData?: boolean,
   ) => ScaleLinear<number, number, never>;
 
   /**

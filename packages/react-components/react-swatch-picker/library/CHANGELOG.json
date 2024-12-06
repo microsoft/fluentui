@@ -2,6 +2,21 @@
   "name": "@fluentui/react-swatch-picker",
   "entries": [
     {
+      "date": "Thu, 28 Nov 2024 09:30:52 GMT",
+      "tag": "@fluentui/react-swatch-picker_v9.1.14",
+      "version": "9.1.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "5273591bf76555d0c81cdbdeb3b1a29079cab24f",
+            "comment": "feat: Correctly integrating SwatchPicker with Field component."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:00:55 GMT",
       "tag": "@fluentui/react-swatch-picker_v9.1.13",
       "version": "9.1.13",

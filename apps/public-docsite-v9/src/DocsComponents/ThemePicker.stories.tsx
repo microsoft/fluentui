@@ -49,6 +49,7 @@ export const ThemePicker: React.FC<{ selectedThemeId?: string }> = ({ selectedTh
     <Menu
       onCheckedValueChange={onCheckedValueChange}
       checkedValues={{ theme: selectedThemeId ? [selectedThemeId] : [] }}
+      positioning={{ autoSize: true }}
     >
       <MenuTrigger>
         <MenuButton className={styles.menuButton} menuIcon={{ className: styles.chevronIcon }}>

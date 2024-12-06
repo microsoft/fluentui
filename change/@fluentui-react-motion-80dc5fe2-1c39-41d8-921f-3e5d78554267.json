@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: respect reduced motion in createMotionComponent()",
-  "packageName": "@fluentui/react-motion",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
