@@ -378,7 +378,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   protected _getDescribedBy = (items: T[], hasError: boolean): string => {
     let describedBy = '';
     if (items.length > 0) {
-      describedBy += this._ariaMap.selectedItems;
+      describedBy += this._ariaMap.selectedItems + ' ';
     }
     if (hasError) {
       describedBy += this._ariaMap.error;
