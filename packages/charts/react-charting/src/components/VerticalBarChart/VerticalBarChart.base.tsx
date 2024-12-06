@@ -176,6 +176,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         {...this.props}
         chartTitle={this._getChartTitle()}
         points={this._points}
+        supportNegativeData={this.props.supportNegativeData}
         chartType={ChartTypes.VerticalBarChart}
         xAxisType={this._xAxisType}
         createYAxis={createNumericYAxis}

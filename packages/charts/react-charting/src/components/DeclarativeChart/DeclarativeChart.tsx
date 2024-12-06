@@ -14,6 +14,7 @@ import {
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
   transformPlotlyJsonToGVBCProps,
+  transformPlotlyJsonToVBCProps,
 } from './PlotlySchemaAdapter';
 import { LineChart } from '../LineChart/index';
 import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
@@ -22,6 +23,7 @@ import { HeatMapChart } from '../HeatMapChart/index';
 import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
+import { VerticalBarChart } from '../VerticalBarChart/index';
 
 export interface Schema {
   /**
@@ -108,6 +110,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return <GaugeChart {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap)} />;
       }
       return <div>Unsupported Schema</div>;
+    case 'histogram':
+      return <VerticalBarChart {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap)} />;
     default:
       return <div>Unsupported Schema</div>;
   }

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 03 Dec 2024 07:20:27 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Dec 2024 07:23:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.20)
+
+Thu, 05 Dec 2024 07:23:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.19..@fluentui/react-charting_v5.23.20)
+
+### Patches
+
+- feat: add plotly adapter for histogram ([PR #33399](https://github.com/microsoft/fluentui/pull/33399) by 110246001+krkshitij@users.noreply.github.com)
 
 ## [5.23.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.19)
 
