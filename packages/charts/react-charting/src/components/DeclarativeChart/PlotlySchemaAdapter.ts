@@ -254,6 +254,7 @@ export const transformPlotlyJsonToVBCProps = (
     // height: layout?.height,
     hideLegend: true,
     barWidth: 24,
+    supportNegativeData: true,
   };
 };
 
@@ -290,10 +291,12 @@ export const transformPlotlyJsonToScatterChartProps = (
   if (isAreaChart) {
     return {
       data: chartProps,
+      supportNegativeData: true,
     } as IAreaChartProps;
   } else {
     return {
       data: chartProps,
+      supportNegativeData: true,
     } as ILineChartProps;
   }
 };

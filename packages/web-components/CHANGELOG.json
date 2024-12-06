@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 06 Dec 2024 04:07:47 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.74",
+      "version": "3.0.0-beta.74",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "df2eb6185aec09cc78d0ee5a806b41d8b5225dca",
+            "comment": "add current-value attribute to text-input"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Nov 2024 04:07:40 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.73",
       "version": "3.0.0-beta.73",

@@ -1,8 +1,78 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 28 Nov 2024 09:30:49 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Dec 2024 12:53:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.56.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.4)
+
+Fri, 06 Dec 2024 12:53:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.3..@fluentui/react-components_v9.56.4)
+
+### Minor changes
+
+- `@fluentui/eslint-plugin-react-components`
+  - feat: initial package structure ([PR #33214](https://github.com/microsoft/fluentui/pull/33214) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-color-picker-preview`
+  - 'feat(react-color-picker): Release ColorPicker as unstable ([PR #33395](https://github.com/microsoft/fluentui/pull/33395) by vkozlova@microsoft.com)
+- `@fluentui/react-tooltip`
+  - feat: do not show tooltip, if it's menu trigger and Menu is opened ([PR #33394](https://github.com/microsoft/fluentui/pull/33394) by vgenaev@gmail.com)
+
+### Patches
+
+- `@fluentui/react-breadcrumb`
+  - Updated README.md ([PR #33385](https://github.com/microsoft/fluentui/pull/33385) by vkozlova@microsoft.com)
+- `@fluentui/react-charts-preview`
+  - chore: fix import of makeStyles() ([PR #33381](https://github.com/microsoft/fluentui/pull/33381) by olfedias@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-list-preview`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-menu`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-message-bar`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-popover`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-portal`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fix: up/down buttons were not semantically disabled when unclickable ([PR #33143](https://github.com/microsoft/fluentui/pull/33143) by sarah.higley@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - Updated README.md ([PR #33385](https://github.com/microsoft/fluentui/pull/33385) by vkozlova@microsoft.com)
+- `@fluentui/react-table`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-tags`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-toast`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-toolbar`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - feat: Add gap property to simplify gap css virtualization ([PR #33275](https://github.com/microsoft/fluentui/pull/33275) by mifraser@microsoft.com)
+- `@fluentui/tokens`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
 
 ## [9.56.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.3)
 
