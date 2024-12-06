@@ -71,7 +71,7 @@ export const Default = () => {
             if (newColor.isValid) {
               setColor(newColor.toHsv());
             }
-            setHex(value);
+            setHex(oldValue => HEX_COLOR_REGEX.test(value) ? value : oldValue);
           }}
         />
       </div>
