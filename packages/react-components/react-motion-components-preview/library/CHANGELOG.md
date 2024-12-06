@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Mon, 11 Nov 2024 10:00:46 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Dec 2024 12:53:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.3.2)
+
+Fri, 06 Dec 2024 12:53:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.3.0..@fluentui/react-motion-components-preview_v0.3.2)
+
+### Patches
+
+- chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.3.0)
 

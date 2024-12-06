@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: do not show tooltip, if it's menu trigger and Menu is opened",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}
