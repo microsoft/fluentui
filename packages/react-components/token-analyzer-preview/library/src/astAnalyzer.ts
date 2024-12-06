@@ -201,7 +201,7 @@ async function analyzeMakeStyles(sourceFile: SourceFile): Promise<StyleAnalysis>
   sourceFile.forEachDescendant(node => {
     if (Node.isCallExpression(node) && node.getExpression().getText() === 'makeStyles') {
       const stylesArg = node.getArguments()[0];
-      console.log('analyzing makeStyles', stylesArg.getText());
+
       if (Node.isObjectLiteralExpression(stylesArg)) {
         // Process the styles object
         stylesArg.getProperties().forEach(prop => {
