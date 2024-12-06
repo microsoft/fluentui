@@ -8,12 +8,13 @@ import { DATA_POSITIONING_PLACEMENT } from './constants';
  * @returns Griffel styles to spread to a slot
  */
 export function createSlideStyles(mainAxis: number): GriffelStyle {
+  // With 'accumulate' animation composition, the opacity keyframes are deltas from the default value of 1.
   const fadeIn = {
     from: {
-      opacity: 0,
+      opacity: -1, // default of 1 - 1 = 0 actual
     },
     to: {
-      opacity: 1,
+      opacity: 0, // default of 1 + 0 = 1 actual
     },
   };
 
