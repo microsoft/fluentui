@@ -71,7 +71,7 @@ export const Default = () => {
             if (newColor.isValid) {
               setColor(newColor.toHsv());
             }
-            setHex(oldValue => HEX_COLOR_REGEX.test(value) ? value : oldValue);
+            setHex(oldValue => (HEX_COLOR_REGEX.test(value) ? value : oldValue));
           }}
         />
       </div>
@@ -94,14 +94,7 @@ const InputHexField = ({
   return (
     <div className={styles.colorFieldWrapper}>
       <Label htmlFor={id}>{label}</Label>
-      <Input
-        className={styles.input}
-        value={value}
-        id={id}
-        onKeyDown={handleHexKeyPress}
-        onChange={onChange}
-        onBlur={handleOnBlur}
-      />
+      <Input className={styles.input} value={value} id={id} onChange={onChange} onBlur={handleOnBlur} />
     </div>
   );
 };
@@ -112,18 +105,5 @@ const handleOnBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     e.target.setAttribute('aria-invalid', 'true');
   } else {
     e.target.removeAttribute('aria-invalid');
-  }
-};
-
-const handleHexKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter', 'ArrowUp', 'ArrowDown'];
-  const isCtrlCmd = e.ctrlKey || e.metaKey;
-
-  if (isCtrlCmd && e.key) {
-    return;
-  }
-
-  if (!allowedKeys.includes(e.key) && !HEX_COLOR_REGEX.test((e.target as HTMLInputElement).value + e.key)) {
-    e.preventDefault();
   }
 };
