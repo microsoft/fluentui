@@ -40,8 +40,12 @@ describe('Fade motion component', () => {
     // Testing fade out motion
     rerender(<Fade visible={false}>{testElement}</Fade>);
     expect(animateSpy).toHaveBeenCalledWith(
-      [{ opacity: 1 }, { opacity: 0 }],
-      expect.objectContaining({ duration: motionTokens.durationNormal, easing: motionTokens.curveEasyEase }),
+      [{ opacity: 0 }, { opacity: 1 }],
+      expect.objectContaining({
+        direction: 'reverse',
+        duration: motionTokens.durationNormal,
+        easing: motionTokens.curveEasyEase,
+      }),
     );
   });
 

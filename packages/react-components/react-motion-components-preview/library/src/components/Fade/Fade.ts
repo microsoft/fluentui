@@ -1,19 +1,7 @@
 import { motionTokens, createPresenceComponent } from '@fluentui/react-motion';
 import type { PresenceMotionCreator } from '../../types';
-
-type FadeVariantParams = {
-  /** Time (ms) for the enter transition (fade-in). Defaults to the `durationNormal` value (200 ms). */
-  enterDuration?: number;
-
-  /** Easing curve for the enter transition (fade-in). Defaults to the `easeEase` value.  */
-  enterEasing?: string;
-
-  /** Time (ms) for the exit transition (fade-out). Defaults to the `enterDuration` param for symmetry. */
-  exitDuration?: number;
-
-  /** Easing curve for the exit transition (fade-out). Defaults to the `enterEasing` param for symmetry.  */
-  exitEasing?: string;
-};
+import type { FadeVariantParams } from './Fade.types';
+import { opacityAtom } from '../Atoms';
 
 /** Define a presence motion for fade in/out  */
 export const createFadePresence: PresenceMotionCreator<FadeVariantParams> = ({
@@ -22,8 +10,8 @@ export const createFadePresence: PresenceMotionCreator<FadeVariantParams> = ({
   exitDuration = enterDuration,
   exitEasing = enterEasing,
 } = {}) => ({
-  enter: { duration: enterDuration, easing: enterEasing, keyframes: [{ opacity: 0 }, { opacity: 1 }] },
-  exit: { duration: exitDuration, easing: exitEasing, keyframes: [{ opacity: 1 }, { opacity: 0 }] },
+  enter: opacityAtom({ duration: enterDuration, easing: enterEasing }),
+  exit: opacityAtom({ duration: exitDuration, easing: exitEasing, direction: 'reverse' }),
 });
 
 /** A React component that applies fade in/out transitions to its children. */

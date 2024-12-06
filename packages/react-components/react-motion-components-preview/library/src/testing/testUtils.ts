@@ -1,6 +1,6 @@
 import type { PresenceComponent, PresenceMotionFn } from '@fluentui/react-motion';
 
-function getMotionFunction(component: PresenceComponent): PresenceMotionFn | null {
+export function getMotionFunction(component: PresenceComponent): PresenceMotionFn | null {
   const symbols = Object.getOwnPropertySymbols(component);
 
   for (const symbol of symbols) {
