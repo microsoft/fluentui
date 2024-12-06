@@ -11,36 +11,21 @@ const useStyles = makeStyles({
 const ExampleContent = () => {
   const styles = useStyles();
   return (
-    <div
-      style={{
-        backgroundColor: 'cornflowerblue',
+    <div>
+      <h3 className={styles.contentHeader}>Popover content</h3>
 
-        width: 300,
-      }}
-    >
-      <h3>Popover content</h3>
-
-      {new Array(8).fill(0).map((_, i) => (
-        <div key={i} style={{ height: 50, backgroundColor: 'lavender' }}>
-          {i} This is some popover content
-        </div>
-      ))}
+      <div>This is some popover content</div>
     </div>
   );
 };
 
-export const Default = () => (
-  <Popover positioning={{ coverTarget: 'overflow', autoSize: true }}>
+export const Default = (props: PopoverProps) => (
+  <Popover {...props}>
     <PopoverTrigger disableButtonEnhancement>
-      <Button style={{ marginTop: 300 }}>Popover trigger</Button>
+      <Button>Popover trigger</Button>
     </PopoverTrigger>
 
-    <PopoverSurface
-      tabIndex={-1}
-      style={{
-        backgroundColor: 'salmon',
-      }}
-    >
+    <PopoverSurface tabIndex={-1}>
       <ExampleContent />
     </PopoverSurface>
   </Popover>
