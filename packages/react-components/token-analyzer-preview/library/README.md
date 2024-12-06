@@ -11,6 +11,9 @@ A static analysis tool that scans your project's style files to track and analyz
 - Manage makeResetStyles (likely same as makeStyles)
 - Button has some weird patterns in it where it uses makeResetStyles and then uses enums to pull in the styles, we might need to account for those as well.
 - what if we have multiple `makeStyles` calls merged, are we handling that correctly or just nuking the conflicts in our output?
+- make sure this works with shorthand spread
+- as we update the functionality, we should update our test cases to reflect the new functionality we support and ensure it works.
+- if we have functions we can't process (or other code for that matter), can we add that data into our report so we know to manually go deal with it?
 
 ## Features
 
