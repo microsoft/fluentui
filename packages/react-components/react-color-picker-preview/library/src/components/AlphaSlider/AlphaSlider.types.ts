@@ -6,7 +6,7 @@ export type AlphaSliderSlots = ColorSliderSlots;
 /**
  * AlphaSlider Props
  */
-export type AlphaSliderProps = ColorSliderProps & {
+export type AlphaSliderProps = Omit<ColorSliderProps, 'channel'> & {
   /**
    * The `transparency` property determines how the alpha channel is interpreted.
    * - When `false`, the alpha channel represents the opacity of the color.
