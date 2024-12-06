@@ -8,6 +8,9 @@ A static analysis tool that scans your project's style files to track and analyz
 - `createCustomFocusIndicatorStyle` is a special function that is used throughout the library so we might be able to special case it
 - if we have file imports we need to analyze those such as importing base styles
 - we also need to ensure var analysis is done correctly after the refactor
+- Manage makeResetStyles (likely same as makeStyles)
+- Button has some weird patterns in it where it uses makeResetStyles and then uses enums to pull in the styles, we might need to account for those as well.
+- what if we have multiple `makeStyles` calls merged, are we handling that correctly or just nuking the conflicts in our output?
 
 ## Features
 
