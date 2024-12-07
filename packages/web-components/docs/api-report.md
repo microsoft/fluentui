@@ -2421,83 +2421,23 @@ export const DrawerType: {
 // @public
 export type DrawerType = ValuesOf<typeof DrawerType>;
 
-// @public
-export class Dropdown extends FASTElement {
-    constructor();
-    get activeDescendant(): string;
+// Warning: (ae-forgotten-export) The symbol "BaseDropdown" needs to be exported by the entry point index.d.ts
+// Warning: (ae-missing-release-tag) "Dropdown" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class Dropdown extends BaseDropdown {
+    // Warning: (ae-forgotten-export) The symbol "DropdownAppearance" needs to be exported by the entry point index.d.ts
+    appearance: DropdownAppearance;
     // @internal
-    activeIndex: number;
-    // (undocumented)
-    activeIndexChanged(prev: number, next: number): void;
-    ariaLabelledBy: string;
-    beforetoggleHandler(e: ToggleEvent): boolean | void;
-    changeHandler(e: Event): boolean | void;
+    appearanceChanged(prev: DropdownAppearance | undefined, next: DropdownAppearance | undefined): void;
     // @internal
-    checkedOptions: Set<Option_2>;
-    clickHandler(e: PointerEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
-    // (undocumented)
-    control: HTMLInputElement;
-    // (undocumented)
-    controlChanged(prev: HTMLInputElement | undefined, next: HTMLInputElement | undefined): void;
-    // (undocumented)
-    controlSlot: HTMLSlotElement;
-    disabled: boolean;
-    // (undocumented)
-    disconnectedCallback(): void;
-    get displayValue(): string;
+    protected insertControl(): void;
     // @internal
-    elementInternals: ElementInternals;
+    protected insertIndicator(template?: ViewTemplate): void;
+    // Warning: (ae-forgotten-export) The symbol "DropdownSize" needs to be exported by the entry point index.d.ts
+    size?: DropdownSize;
     // @internal
-    focus(options?: FocusOptions): void;
-    // @internal
-    focusoutHandler(e: FocusEvent): boolean | void;
-    static formAssociated: boolean;
-    // @internal
-    indicator: HTMLDivElement;
-    // @internal
-    indicatorSlot: HTMLSlotElement;
-    initialValue?: string;
-    // (undocumented)
-    inputHandler(e: InputEvent): boolean | void;
-    // (undocumented)
-    keydownHandler(e: KeyboardEvent): boolean | void;
-    // @internal
-    listbox: Listbox;
-    // @internal
-    listboxChildren: Listbox[];
-    // @internal
-    listboxSlot: HTMLSlotElement;
-    // @internal
-    mousedownHandler(e: MouseEvent): boolean | void;
-    multiple: boolean;
-    // @internal
-    protected multipleChanged(prev: boolean | undefined, next: boolean | undefined): void;
-    name: string;
-    open: boolean;
-    // @internal
-    openChanged(prev: boolean | undefined, next: boolean | undefined): void;
-    get options(): Option_2[];
-    placeholder: string;
-    // @internal
-    popoverContainer: HTMLDivElement;
-    required: boolean;
-    // @internal
-    get selectedIndex(): number;
-    selectOption(index?: number): void;
-    // @internal
-    setActiveOption(): void;
-    // @internal
-    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
-    // Warning: (ae-forgotten-export) The symbol "DropdownType" needs to be exported by the entry point index.d.ts
-    type: DropdownType;
-    // @internal
-    typeChanged(prev: DropdownType | undefined, next: DropdownType | undefined): void;
-    // @internal
-    get validationMessage(): string;
-    get value(): string | null;
-    set value(next: string | null);
+    sizeChanged(prev: DropdownSize | undefined, next: DropdownSize | undefined): void;
 }
 
 // @public
@@ -2507,7 +2447,7 @@ export const DropdownDefinition: FASTElementDefinition<typeof Dropdown>;
 export const DropdownStyles: ElementStyles;
 
 // @public
-export const DropdownTemplate: ElementViewTemplate<Dropdown>;
+export const DropdownTemplate: ElementViewTemplate<BaseDropdown>;
 
 // @public
 export const durationFast = "var(--durationFast)";
@@ -2809,6 +2749,7 @@ export const LinkTemplate: ElementViewTemplate<Link>;
 
 // @public
 export class Listbox extends FASTElement {
+    constructor();
     // (undocumented)
     clickHandler(e: PointerEvent): boolean | void;
     // (undocumented)
