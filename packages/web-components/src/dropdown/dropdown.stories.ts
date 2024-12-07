@@ -7,29 +7,32 @@ import { DropdownAppearance, DropdownSize, DropdownType } from './dropdown.optio
 type Story = StoryObj<FluentDropdown>;
 
 const optionTemplate = html<StoryArgs<FluentOption>>` <fluent-option
-  ?disabled="${x => x.disabled}"
-  ?selected="${x => x.selected}"
-  value="${x => x.value}"
-  placeholder="${x => x.placeholder}"
-  >${x => x.slottedContent?.()}</fluent-option
+  ?disabled="${story => story.disabled}"
+  ?selected="${story => story.selected}"
+  value="${story => story.value}"
+  placeholder="${story => story.placeholder}"
+  >${story => story.slottedContent?.()}</fluent-option
 >`;
 
 const dropdownTemplate = html<StoryArgs<FluentDropdown>>`
   <fluent-dropdown
-    slot="${x => x.slot}"
-    appearance="${x => x.appearance}"
-    ?multiple="${x => x.multiple}"
-    size="${x => x.size}"
-    id="${x => x.id}"
-    placeholder="${x => x.placeholder}"
-    type="${x => x.type}"
+    appearance="${story => story.appearance}"
+    ?disabled="${story => story.disabled}"
+    ?multiple="${story => story.multiple}"
+    size="${story => story.size}"
+    id="${story => story.id}"
+    placeholder="${story => story.placeholder}"
+    slot="${story => story.slot}"
+    type="${story => story.type}"
   >
-    <fluent-listbox>${repeat(x => x.slottedOptions, optionTemplate)}</fluent-listbox>
+    <fluent-listbox>${repeat(story => story.slottedOptions, optionTemplate)}</fluent-listbox>
   </fluent-dropdown>
 `;
 
 const storyTemplate = html<StoryArgs<FluentDropdown>>`
-  <fluent-field><label slot="label">Fruit</label>${dropdownTemplate}</fluent-field>
+  <fluent-field ?disabled="${story => story.disabled}"
+    ><label slot="label">Fruit</label>${dropdownTemplate}</fluent-field
+  >
 `;
 
 export default {
