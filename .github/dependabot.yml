@@ -11,3 +11,6 @@ updates:
       - dependency-type: 'development'
     open-pull-requests-limit: 6
     versioning-strategy: increase
+    update-types:
+      - "minor"
+      - "patch"
