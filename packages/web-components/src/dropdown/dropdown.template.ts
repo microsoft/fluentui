@@ -6,7 +6,7 @@ export const dropdownIndicatorTemplate = html<BaseDropdown>`
     class="chevron-down-20-regular"
     role="button"
     slot="indicator"
-    tabindex="-1"
+    tabindex="${x => (!x.disabled ? -1 : void 0)}"
     viewBox="0 0 20 20"
     xmlns="http://www.w3.org/2000/svg"
     ${ref('indicator')}
@@ -29,6 +29,7 @@ export const dropdownInputTemplate = html<BaseDropdown>`
     aria-haspopup="listbox"
     placeholder="${x => x.placeholder}"
     role="combobox"
+    ?disabled="${x => x.disabled}"
     type="${x => x.type}"
     :value="${x => x.displayValue}"
     ${ref('control')}
@@ -42,6 +43,7 @@ export const dropdownButtonTemplate = html<BaseDropdown>`
     aria-expanded="${x => x.open}"
     aria-haspopup="listbox"
     role="combobox"
+    ?disabled="${x => x.disabled}"
     ${ref('control')}
   >
     ${x => x.displayValue}

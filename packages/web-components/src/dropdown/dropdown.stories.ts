@@ -144,3 +144,10 @@ export const Inline: Story = {
     slot: null,
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    ...Default.args,
+    disabled: true,
+  },
+};

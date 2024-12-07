@@ -58,8 +58,12 @@ export class BaseDropdown extends FASTElement {
   /**
    * The disabled state of the dropdown.
    */
-  @observable
-  public disabled: boolean = false;
+  @attr({ mode: 'boolean' })
+  public disabled?: boolean;
+
+  public disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    toggleState(this.elementInternals, 'disabled', next);
+  }
 
   /**
    * The display value for the control.
@@ -438,6 +442,10 @@ export class BaseDropdown extends FASTElement {
    * @internal
    */
   public focus(options?: FocusOptions): void {
+    if (this.disabled) {
+      return;
+    }
+
     this.control.focus(options);
   }
 
@@ -567,6 +575,9 @@ export class BaseDropdown extends FASTElement {
    * @internal
    */
   public mousedownHandler(e: MouseEvent): boolean | void {
+    if (this.disabled) {
+      return;
+    }
     return !isOption(e.target as HTMLElement);
   }
 

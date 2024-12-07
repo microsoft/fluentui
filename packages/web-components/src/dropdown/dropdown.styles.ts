@@ -5,6 +5,7 @@ import {
   typographyCaption1Styles,
 } from '../styles/partials/typography.partials.js';
 import {
+  disabledState,
   filledDarkerState,
   filledLighterState,
   largeState,
@@ -22,19 +23,21 @@ import {
   colorCompoundBrandStroke,
   colorNeutralBackground1,
   colorNeutralBackground3,
+  colorNeutralBackgroundDisabled,
   colorNeutralForeground1,
   colorNeutralForeground3,
   colorNeutralForeground4,
+  colorNeutralForegroundDisabled,
   colorNeutralStroke1,
   colorNeutralStroke1Hover,
   colorNeutralStroke1Pressed,
   colorNeutralStrokeAccessible,
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
+  colorNeutralStrokeDisabled,
   colorTransparentBackground,
   colorTransparentStroke,
   colorTransparentStrokeInteractive,
-  curveAccelerateMax,
   curveAccelerateMid,
   curveDecelerateMid,
   durationNormal,
@@ -75,7 +78,7 @@ export const styles = css`
   .control {
     align-items: center;
     appearance: none;
-    background: ${colorNeutralBackground1};
+    background-color: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
     border: none;
     box-shadow: inset 0 0 0 ${strokeWidthThin} var(--control-border-color);
@@ -108,12 +111,15 @@ export const styles = css`
 
   ::slotted(:is(input, button)) {
     all: unset;
-    cursor: default;
     flex: 1;
   }
 
   ::slotted(button) {
     cursor: pointer;
+  }
+
+  ::slotted(input) {
+    cursor: text;
   }
 
   ::slotted([slot='indicator']) {
@@ -154,11 +160,6 @@ export const styles = css`
     transition: scale ${durationUltraFast} ${curveDecelerateMid};
   }
 
-  :host(:has(button:active)) .control::after {
-    scale: 0.5 1;
-    transition-timing-function: ${curveAccelerateMax};
-  }
-
   :host(:where(${openState}, :focus-within)) .control::after {
     scale: 1 1;
     transition-duration: ${durationNormal};
@@ -171,20 +172,8 @@ export const styles = css`
 
   :host(${transparentState}) .control {
     --control-border-color: ${colorTransparentStrokeInteractive};
-    background: ${colorTransparentBackground};
+    background-color: ${colorTransparentBackground};
     border-radius: ${borderRadiusNone};
-  }
-
-  :host(${transparentState}) .control:hover::before {
-    background-color: ${colorNeutralStrokeAccessibleHover};
-  }
-
-  :host(${transparentState}) .control:active::before {
-    background-color: ${colorNeutralStrokeAccessiblePressed};
-  }
-
-  :host(${outlineState}) .control:active::before {
-    background-color: ${colorNeutralStrokeAccessiblePressed};
   }
 
   :host(${outlineState}) .control {
@@ -195,11 +184,7 @@ export const styles = css`
     --control-border-color: ${colorNeutralStroke1Hover};
   }
 
-  :host(${outlineState}) .control:active {
-    --control-border-color: ${colorNeutralStroke1Pressed};
-  }
-
-  :host(${outlineState}) .control:hover::before {
+  :host(:where(${outlineState}, ${transparentState})) .control:hover::before {
     background-color: ${colorNeutralStrokeAccessibleHover};
   }
 
@@ -207,23 +192,41 @@ export const styles = css`
     background-color: ${colorCompoundBrandBackgroundHover};
   }
 
-  :host(${outlineState}) .control:active::before {
+  :host(${outlineState}) .control:active {
+    --control-border-color: ${colorNeutralStroke1Pressed};
+  }
+
+  :host(:where(${outlineState}, ${transparentState})) .control:active::before {
     background-color: ${colorNeutralStrokeAccessiblePressed};
   }
 
-  :host(${outlineState}) .control:active::after {
+  :host(:where(${outlineState}, ${transparentState})) .control:active::after {
     background-color: ${colorCompoundBrandBackgroundPressed};
   }
 
-  :host(${filledLighterState}) .control {
-    background: ${colorNeutralBackground1};
-  }
-
   :host(${filledDarkerState}) .control {
-    background: ${colorNeutralBackground3};
+    background-color: ${colorNeutralBackground3};
   }
 
-  :host(:where(${filledLighterState}, ${filledDarkerState}) .control {
+  :host(:where(${filledLighterState}, ${filledDarkerState})) .control {
     --control-border-color: ${colorTransparentStroke};
+  }
+
+  :host(${disabledState}),
+  :host(${disabledState}) ::slotted(button) {
+    cursor: not-allowed;
+  }
+
+  :host(${disabledState}) .control::before,
+  :host(${disabledState}) .control::after {
+    content: none;
+  }
+
+  :host(${disabledState}) .control,
+  :host(${disabledState}) .control:is(:active, :hover),
+  :host(${disabledState}) ::slotted([slot='indicator']) {
+    --control-border-color: ${colorNeutralStrokeDisabled};
+    background-color: ${colorNeutralBackgroundDisabled};
+    color: ${colorNeutralForegroundDisabled};
   }
 `;
