@@ -63,7 +63,6 @@ export class Option extends BaseCheckbox {
   public descriptionSlot!: Node[];
 
   public descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
-    console.log('descriptionSlotChanged', prev, next);
     toggleState(this.elementInternals, 'description', !!next?.length);
   }
 
