@@ -155,7 +155,7 @@ export class Listbox extends FASTElement {
       this.popover = 'auto';
       this.addEventListener('beforetoggle', this.dropdown.beforetoggleListboxHandler as EventListener);
 
-      for (const key of ['multiple', 'listboxSlot', 'listboxChildren']) {
+      for (const key of ['disabled', 'multiple', 'listboxSlot', 'listboxChildren']) {
         this.parentNotifier.notify(key);
       }
     }
