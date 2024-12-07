@@ -16,7 +16,7 @@ const optionTemplate = html<StoryArgs<FluentOption>>` <fluent-option
 
 const dropdownTemplate = html<StoryArgs<FluentDropdown>>`
   <fluent-dropdown
-    slot="input"
+    slot="${x => x.slot}"
     appearance="${x => x.appearance}"
     ?multiple="${x => x.multiple}"
     size="${x => x.size}"
@@ -60,13 +60,14 @@ export default {
       table: { category: 'attributes' },
     },
     slottedOptions: { table: { disable: true } },
+    slot: { table: { disable: true } },
   },
 } as Meta<FluentDropdown>;
 
 export const Default: Story = {
   args: {
     placeholder: 'Select a fruit',
-    type: DropdownType.dropdown,
+    slot: 'input',
     slottedOptions: [
       { value: 'apple', slottedContent: () => 'Apple' },
       { value: 'banana', slottedContent: () => 'Banana' },
@@ -128,5 +129,15 @@ export const Transparent: Story = {
   args: {
     ...Default.args,
     appearance: DropdownAppearance.transparent,
+  },
+};
+
+export const Inline: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <p>Some text inline with the ${dropdownTemplate} and more text.</p>
+  `),
+  args: {
+    ...Default.args,
+    slot: null,
   },
 };
