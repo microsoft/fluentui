@@ -199,6 +199,11 @@ export type VirtualizerConfigProps = {
    * this should be passed in from useDynamicVirtualizerMeasure
    */
   updateScrollPosition?: (position: number) => void;
+
+  /**
+   * Spacing between rendered children for calculation, should match the container's gap CSS value.
+   */
+  gap?: number;
 };
 
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;

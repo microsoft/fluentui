@@ -1,8 +1,17 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Mon, 11 Nov 2024 10:00:39 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.20)
+
+Fri, 06 Dec 2024 12:53:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.19..@fluentui/tokens_v1.0.0-alpha.20)
+
+### Changes
+
+- chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
 
 ## [1.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.19)
 
