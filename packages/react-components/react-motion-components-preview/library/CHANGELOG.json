@@ -2,6 +2,21 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Fri, 06 Dec 2024 12:53:40 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.3.2",
+      "version": "0.3.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "b9cac91d1e624aca5139cf7bef047de9abfa7385",
+            "comment": "chore: remove usage of \"export *\" "
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:00:46 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.3.0",
       "version": "0.3.0",

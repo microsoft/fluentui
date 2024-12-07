@@ -792,6 +792,9 @@ export class BaseTextInput extends FASTElement {
     control: HTMLInputElement;
     // @internal
     controlLabel: HTMLLabelElement;
+    currentValue: string;
+    // @internal
+    currentValueChanged(prev: string, next: string): void;
     // @internal
     defaultSlottedNodes: Node[];
     // @internal

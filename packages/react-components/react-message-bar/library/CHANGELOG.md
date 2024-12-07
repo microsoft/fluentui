@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-message-bar
 
-This log was last generated on Mon, 11 Nov 2024 10:00:44 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Dec 2024 12:53:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.2.16)
+
+Fri, 06 Dec 2024 12:53:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.2.15..@fluentui/react-message-bar_v9.2.16)
+
+### Patches
+
+- chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- Bump @fluentui/react-button to v9.3.96 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.47 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.21.1 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-link to v9.3.3 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-theme to v9.1.23 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-utilities to v9.18.18 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
 
 ## [9.2.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.2.15)
 
