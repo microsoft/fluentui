@@ -1,16 +1,21 @@
-import { children, type ElementViewTemplate, html, ref } from '@microsoft/fast-element';
-import { isListbox } from '../listbox/listbox.options.js';
+import { type ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import type { BaseDropdown } from './dropdown.js';
 
 export const dropdownIndicatorTemplate = html<BaseDropdown>`
-  <div slot="indicator" tabindex="-1" ${ref('indicator')} role="button">
-    <svg aria-hidden="true" class="chevron-down-20-regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-      <path
-        d="M15.85 7.65a.5.5 0 0 1 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16a.5.5 0 0 1 .7 0"
-        fill="currentColor"
-      />
-    </svg>
-  </div>
+  <svg
+    class="chevron-down-20-regular"
+    role="button"
+    slot="indicator"
+    tabindex="-1"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+    ${ref('indicator')}
+  >
+    <path
+      d="M15.85 7.65a.5.5 0 0 1 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16a.5.5 0 0 1 .7 0"
+      fill="currentColor"
+    />
+  </svg>
 `;
 
 export const dropdownInputTemplate = html<BaseDropdown>`
@@ -58,20 +63,13 @@ export function dropdownTemplate<T extends BaseDropdown>(): ElementViewTemplate<
       @focusout="${(x, c) => x.focusoutHandler(c.event as FocusEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
       @mousedown="${(x, c) => x.mousedownHandler(c.event as MouseEvent)}"
-      ${children({ property: 'listboxChildren', filter: isListbox })}
+      id="${x => x.id}"
     >
       <div class="control">
         <slot name="control" ${ref('controlSlot')}></slot>
         <slot name="indicator" ${ref('indicatorSlot')}></slot>
       </div>
-      <div
-        class="popover"
-        popover="manual"
-        @beforetoggle="${(x, c) => x.beforetoggleHandler(c.event as ToggleEvent)}"
-        ${ref('popoverContainer')}
-      >
-        <slot ${ref('listboxSlot')}></slot>
-      </div>
+      <slot ${ref('listboxSlot')}></slot>
     </template>
   `;
 }

@@ -90,6 +90,17 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * Sets the listbox ID to a unique value if one is not provided.
+   *
+   * @override
+   * @public
+   * @remarks
+   * HTML Attribute: `id`
+   */
+  @attr({ attribute: 'id', mode: 'fromView' })
+  public override id: string = uniqueId('dropdown-');
+
+  /**
    * Reference to the indicator button element.
    *
    * @internal
@@ -183,27 +194,12 @@ export class BaseDropdown extends FASTElement {
   public listboxSlot!: HTMLSlotElement;
 
   /**
-   * The collection of all child listboxes.
-   *
-   * @internal
-   */
-  @observable
-  public listboxChildren!: Listbox[];
-
-  /**
    * Reference to the slotted listbox element.
    *
    * @internal
    */
   @observable
   public listbox!: Listbox;
-
-  /**
-   * Reference to the popover container element which contains the listbox in the shadow DOM.
-   *
-   * @internal
-   */
-  public popoverContainer!: HTMLDivElement;
 
   /**
    * The name of the dropdown.
@@ -364,7 +360,7 @@ export class BaseDropdown extends FASTElement {
    *
    * @public
    */
-  public beforetoggleHandler(e: ToggleEvent): boolean | void {
+  public beforetoggleListboxHandler = (e: ToggleEvent): boolean | void => {
     if (this.disabled) {
       this.open = false;
       return;
@@ -372,9 +368,8 @@ export class BaseDropdown extends FASTElement {
 
     this.open = e.newState === 'open';
     this.activeIndex = this.selectedIndex;
-    this.setActiveOption();
     return true;
-  }
+  };
 
   /**
    * Handles the change events for the dropdown.
@@ -416,12 +411,12 @@ export class BaseDropdown extends FASTElement {
     this.focus();
 
     if (!this.open) {
-      this.popoverContainer.showPopover();
+      this.listbox.showPopover();
       return true;
     }
 
     if (isOption(target) && !this.multiple) {
-      this.popoverContainer.hidePopover();
+      this.listbox.hidePopover();
     }
 
     return true;
@@ -456,7 +451,7 @@ export class BaseDropdown extends FASTElement {
     const relatedTarget = e.relatedTarget as HTMLElement | null;
 
     if (this.open && !this.contains(relatedTarget)) {
-      this.popoverContainer.togglePopover();
+      this.listbox.togglePopover();
     }
 
     return true;
@@ -472,7 +467,7 @@ export class BaseDropdown extends FASTElement {
 
   public inputHandler(e: InputEvent): boolean | void {
     if (!this.open) {
-      this.popoverContainer.showPopover();
+      this.listbox.showPopover();
     }
 
     const index = this.listbox.enabledOptions.findIndex(x =>
@@ -529,17 +524,17 @@ export class BaseDropdown extends FASTElement {
             return true;
           }
 
-          this.popoverContainer.hidePopover();
+          this.listbox.hidePopover();
           return;
         }
 
-        this.popoverContainer.showPopover();
+        this.listbox.showPopover();
         return;
       }
 
       case 'Escape': {
         this.activeIndex = this.multiple ? 0 : this.selectedIndex;
-        this.popoverContainer.hidePopover();
+        this.listbox.hidePopover();
         return true;
       }
     }
@@ -552,11 +547,13 @@ export class BaseDropdown extends FASTElement {
     if (this.open) {
       nextIndex += increment;
     } else {
-      this.popoverContainer.showPopover();
+      this.listbox.showPopover();
       return;
     }
 
     this.activeIndex = this.getEnabledIndexInBounds(nextIndex);
+
+    this.setActiveOption(true);
 
     return true;
   }
@@ -578,8 +575,8 @@ export class BaseDropdown extends FASTElement {
    *
    * @internal
    */
-  public setActiveOption(): void {
-    const optionIndex = this.matches(':has(:focus-visible)') ? this.activeIndex : -1;
+  public setActiveOption(force?: boolean): void {
+    const optionIndex = this.matches(':has(:focus-visible)') || force ? this.activeIndex : -1;
 
     this.listbox?.enabledOptions.forEach((option, index) => {
       option.setActiveState(index === optionIndex);

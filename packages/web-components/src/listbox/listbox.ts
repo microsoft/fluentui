@@ -1,21 +1,21 @@
 import { attr, FASTElement, Notifier, Observable, observable } from '@microsoft/fast-element';
-import type { Dropdown } from '../dropdown/dropdown.js';
+import type { BaseDropdown } from '../dropdown/dropdown.js';
 import { isDropdown } from '../dropdown/dropdown.options.js';
 import type { Option } from '../option/option.js';
 import { isOption } from '../option/option.options.js';
+import { AnchorPositioningCSSSupported, AnchorPositioningHTMLSupported } from '../utils/support.js';
 import { toggleState } from '../utils/element-internals.js';
 import { uniqueId } from '../utils/unique-id.js';
 
 /**
- * A Dropdown Custom HTML Element.
- * Implements the {@link https://w3c.github.io/aria/#combobox | ARIA combobox } role.
+ * A Listbox Custom HTML Element.
+ * Implements the {@link https://w3c.github.io/aria/#listbox | ARIA listbox } role.
  *
- * @slot indicator - The indicator glyph
- * @slot default - The default slot for the dropdown options
+ * @slot default - The default slot for the options
  *
  * @remarks
- * The Dropdown element does not provide a form association value. Instead, the slotted Option elements handle form
- * association the same way as {@link (Checkbox:class)} elements. See the {@link (Option:class)} element for more details.
+ * The listbox component represents a list of options that can be selected.
+ * It is intended to be used in conjunction with the {@link BaseDropdown | Dropdown} component.
  *
  * @public
  */
@@ -70,7 +70,17 @@ export class Listbox extends FASTElement {
   @observable
   public selectedIndex!: number;
 
-  protected dropdown?: Dropdown;
+  /**
+   * Fallback style element for anchor positioning.
+   * @internal
+   */
+  protected anchorPositioningStyleElement: HTMLStyleElement | null = null;
+
+  /**
+   * Reference to the parent dropdown element.
+   * @internal
+   */
+  protected dropdown?: BaseDropdown;
 
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
@@ -109,6 +119,12 @@ export class Listbox extends FASTElement {
     return this.options?.filter(x => x.selected) ?? [];
   }
 
+  /**
+   * Sets the `selected` state on a target option when clicked.
+   *
+   * @param e - The pointer event
+   * @public
+   */
   public clickHandler(e: PointerEvent): boolean | void {
     const target = e.target as HTMLElement;
 
@@ -117,6 +133,74 @@ export class Listbox extends FASTElement {
     }
 
     return true;
+  }
+
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'listbox';
+
+    this.notifier = Observable.getNotifier(this);
+    this.notifier.subscribe(this);
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    if (isDropdown(this.parentElement)) {
+      this.dropdown = this.parentElement;
+      this.parentNotifier = Observable.getNotifier(this.dropdown);
+      this.parentNotifier.subscribe(this);
+
+      this.popover = 'auto';
+      this.addEventListener('beforetoggle', this.dropdown.beforetoggleListboxHandler as EventListener);
+
+      for (const key of ['multiple', 'listboxSlot', 'listboxChildren']) {
+        this.parentNotifier.notify(key);
+      }
+    }
+  }
+
+  disconnectedCallback(): void {
+    this.parentNotifier?.unsubscribe(this);
+    Observable.getNotifier(this).unsubscribe(this);
+
+    this.popover = null;
+    this.removeEventListener('beforetoggle', this.dropdown?.beforetoggleListboxHandler as EventListener);
+
+    this.anchorPositioningStyleElement?.remove();
+
+    super.disconnectedCallback();
+  }
+
+  /**
+   * Handles observable subscriptions for the listbox.
+   *
+   * @param source - The source of the observed change
+   * @param propertyName - The name of the property that changed
+   *
+   * @internal
+   */
+  handleChange(source: any, propertyName?: string): void {
+    switch (propertyName) {
+      case 'multiple': {
+        this.multiple = source.multiple;
+        this.elementInternals.ariaMultiSelectable = this.multiple ? 'true' : 'false';
+        toggleState(this.elementInternals, 'multiple', this.multiple);
+        this.options?.forEach(x => toggleState(x.elementInternals, 'multiple', this.multiple));
+
+        break;
+      }
+
+      case 'listboxSlot': {
+        if (this.dropdown) {
+          this.dropdown.listbox = this;
+          this.dropdown.listboxSlot.assign(this);
+        }
+        this.setAnchorPositioningFallbackStyles();
+        break;
+      }
+    }
   }
 
   /**
@@ -147,71 +231,42 @@ export class Listbox extends FASTElement {
     this.selectedIndex = selectedIndex;
   }
 
-  constructor() {
-    super();
-
-    this.elementInternals.role = 'listbox';
-
-    this.notifier = Observable.getNotifier(this);
-    this.notifier.subscribe(this);
-  }
-
-  connectedCallback(): void {
-    super.connectedCallback();
-
-    if (isDropdown(this.parentElement)) {
-      this.dropdown = this.parentElement;
-      this.parentNotifier = Observable.getNotifier(this.dropdown);
-      this.parentNotifier.subscribe(this);
-
-      for (const key of ['multiple', 'listboxSlot', 'listboxChildren']) {
-        this.parentNotifier.notify(key);
-      }
-    }
-  }
-
-  disconnectedCallback(): void {
-    this.parentNotifier?.unsubscribe(this);
-    Observable.getNotifier(this).unsubscribe(this);
-
-    super.disconnectedCallback();
-  }
-
   /**
-   * Assigns the listbox to the dropdown's listbox slot.
-   * @internal
-   */
-  private assignToDropdown(): void {
-    this.dropdown?.listboxSlot.assign(this);
-  }
-
-  /**
-   * Handles observable subscriptions for the listbox.
-   *
-   * @param source - The source of the observed change
-   * @param propertyName - The name of the property that changed
+   * Applies anchor positioning fallback styles.
    *
    * @internal
    */
-  handleChange(source: any, propertyName?: string): void {
-    switch (propertyName) {
-      case 'multiple': {
-        this.multiple = source.multiple;
-        this.elementInternals.ariaMultiSelectable = this.multiple ? 'true' : 'false';
-        toggleState(this.elementInternals, 'multiple', this.multiple);
-        this.options?.forEach(x => toggleState(x.elementInternals, 'multiple', this.multiple));
+  private setAnchorPositioningFallbackStyles(): void {
+    if (this.dropdown) {
+      // @ts-expect-error - Anchor positioning
+      const anchorName = this.dropdown.style.anchorName || `--${this.id}`;
 
-        break;
+      if (AnchorPositioningCSSSupported) {
+        if (!AnchorPositioningHTMLSupported) {
+          this.dropdown.style.setProperty('anchor-name', anchorName);
+          this.style.setProperty('position-anchor', anchorName);
+        }
+        return;
       }
 
-      case 'listboxSlot': {
-        this.assignToDropdown();
-        break;
-      }
+      if ((window as any).CSS_ANCHOR_POLYFILL) {
+        this.anchorPositioningStyleElement = this.anchorPositioningStyleElement ?? document.createElement('style');
+        document.head.append(this.anchorPositioningStyleElement);
 
-      case 'listboxChildren': {
-        source.listbox = this;
-        break;
+        this.anchorPositioningStyleElement.textContent = /* css */ `
+          #${this.dropdown.id} {
+            anchor-name: ${anchorName};
+          }
+
+          #${this.id} {
+            position: absolute;
+            position-anchor: ${anchorName};
+            top: anchor(bottom);
+            position-area: block-end span-inline-end;
+            position-try-fallbacks: flip-inline, flip-block, block-start;
+          }
+        `;
+        (window as any).CSS_ANCHOR_POLYFILL.call({ element: this.anchorPositioningStyleElement });
       }
     }
   }
