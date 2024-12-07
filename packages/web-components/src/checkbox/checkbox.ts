@@ -220,7 +220,7 @@ export class BaseCheckbox extends FASTElement {
    *
    * @internal
    */
-  private _validationFallbackMessage: string = '';
+  protected _validationFallbackMessage: string = '';
 
   /**
    * The validation message. Uses the browser's default validation message for native checkboxes if not otherwise

@@ -33,6 +33,7 @@ export class Radio extends BaseCheckbox {
   protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
     super.disabledChanged(prev, next);
     if (next) {
+      this.checked = false;
       this.tabIndex = -1;
     }
 
@@ -86,5 +87,33 @@ export class Radio extends BaseCheckbox {
    */
   public toggleChecked(force: boolean = true): void {
     super.toggleChecked(force);
+  }
+
+  /**
+   * The validation message. Uses the browser's default validation message for native checkboxes if not otherwise
+   * specified (e.g., via `setCustomValidity`).
+   *
+   * @public
+   * @remarks
+   * Reflects the
+   * {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validationMessage | `ElementInternals.validationMessage`}
+   * property.
+   */
+  public override get validationMessage(): string {
+    if (this.elementInternals.validationMessage) {
+      return this.elementInternals.validationMessage;
+    }
+
+    if (!this._validationFallbackMessage) {
+      const validationMessageFallbackControl = document.createElement('input');
+      validationMessageFallbackControl.type = 'radio';
+      validationMessageFallbackControl.required = true;
+      validationMessageFallbackControl.checked = false;
+      validationMessageFallbackControl.name = '##--ThisShouldBeSufficientForATemporaryString--##';
+
+      this._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
+    }
+
+    return this._validationFallbackMessage;
   }
 }

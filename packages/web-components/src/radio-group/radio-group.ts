@@ -268,6 +268,7 @@ export class RadioGroup extends FASTElement {
       validationMessageFallbackControl.type = 'radio';
       validationMessageFallbackControl.required = true;
       validationMessageFallbackControl.checked = false;
+      validationMessageFallbackControl.name = '##--ThisShouldBeSufficientForATemporaryString--##';
 
       this._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
     }
