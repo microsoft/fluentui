@@ -147,13 +147,17 @@ export class Listbox extends FASTElement {
     this.selectedIndex = selectedIndex;
   }
 
-  connectedCallback(): void {
-    super.connectedCallback();
+  constructor() {
+    super();
 
     this.elementInternals.role = 'listbox';
 
     this.notifier = Observable.getNotifier(this);
     this.notifier.subscribe(this);
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
 
     if (isDropdown(this.parentElement)) {
       this.dropdown = this.parentElement;

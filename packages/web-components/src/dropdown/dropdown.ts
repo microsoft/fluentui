@@ -12,7 +12,7 @@ import type { Option } from '../option/option.js';
 import { isOption } from '../option/option.options.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
 import { uniqueId } from '../utils/unique-id.js';
-import { DropdownSize, DropdownType } from './dropdown.options.js';
+import { DropdownAppearance, DropdownSize, DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownIndicatorTemplate, dropdownInputTemplate } from './dropdown.template.js';
 
 /**
@@ -83,6 +83,8 @@ export class BaseDropdown extends FASTElement {
     if (this.isCombobox) {
       return displayValue ?? '';
     }
+
+    toggleState(this.elementInternals, 'placeholder-shown', !displayValue);
 
     return displayValue ?? this.placeholder ?? '';
   }
@@ -623,6 +625,26 @@ export class BaseDropdown extends FASTElement {
 }
 
 export class Dropdown extends BaseDropdown {
+  /**
+   * The appearance of the dropdown.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `appearance`
+   */
+  @attr
+  public appearance: DropdownAppearance = DropdownAppearance.outline;
+
+  /**
+   * Swaps appearance states when the appearance property changes.
+   *
+   * @param prev - the previous appearance state
+   * @param next - the current appearance state
+   * @internal
+   */
+  public appearanceChanged(prev: DropdownAppearance | undefined, next: DropdownAppearance | undefined): void {
+    swapStates(this.elementInternals, prev, next, DropdownAppearance);
+  }
 
   /**
    * The size of the dropdown.
