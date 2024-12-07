@@ -32,4 +32,26 @@ export const styles = css`
     row-gap: ${spacingHorizontalXXS};
     z-index: 1;
   }
+
+  :host([popover]) {
+    position-anchor: --dropdown-trigger;
+    border: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    inset: unset;
+    margin: 0;
+    min-width: 160px;
+    overflow: visible;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    position-area: block-end span-inline-end;
+    position-try-fallbacks: flip-inline, flip-block, block-start;
+    width: anchor-size(width);
+  }
+
+  :host([popover]:not(:popover-open)) {
+    display: none;
+  }
 `;

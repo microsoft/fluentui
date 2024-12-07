@@ -61,6 +61,7 @@ export const styles = css`
   ${display('inline-flex')}
 
   :host {
+    anchor-name: --dropdown-trigger;
     box-sizing: border-box;
     color: ${colorNeutralForeground1};
     cursor: pointer;
@@ -73,7 +74,6 @@ export const styles = css`
 
   .control {
     align-items: center;
-    anchor-name: --dropdown-trigger;
     appearance: none;
     background: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
@@ -104,38 +104,6 @@ export const styles = css`
     column-gap: ${spacingHorizontalS};
     padding: ${spacingVerticalS} ${spacingHorizontalM};
     ${typographyBody2Styles}
-  }
-
-  .popover {
-    background: transparent;
-    border: none;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    inset: unset;
-    margin: 0;
-    min-width: 160px;
-    overflow: visible;
-    padding: 0;
-    position: absolute;
-    z-index: 1;
-  }
-
-  .popover:not(:popover-open) {
-    display: none;
-  }
-
-  .popover:popover-open {
-    position-anchor: --dropdown-trigger;
-    position-area: block-end span-inline-end;
-    position-try-fallbacks: flip-inline, flip-block, block-start;
-    width: anchor-size(width);
-  }
-
-  @supports not (position-anchor: --dropdown-trigger) {
-    .popover:popover-open {
-      margin-block-start: 32px;
-    }
   }
 
   ::slotted(:is(input, button)) {
