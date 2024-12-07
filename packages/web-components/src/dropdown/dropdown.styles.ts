@@ -4,19 +4,37 @@ import {
   typographyBody2Styles,
   typographyCaption1Styles,
 } from '../styles/partials/typography.partials.js';
-import { largeState, openState, smallState } from '../styles/states/index.js';
+import {
+  filledDarkerState,
+  filledLighterState,
+  largeState,
+  openState,
+  outlineState,
+  placeholderShownState,
+  smallState,
+  transparentState,
+} from '../styles/states/index.js';
 import {
   borderRadiusMedium,
+  borderRadiusNone,
   colorCompoundBrandBackgroundHover,
+  colorCompoundBrandBackgroundPressed,
   colorCompoundBrandStroke,
   colorNeutralBackground1,
+  colorNeutralBackground3,
   colorNeutralForeground1,
+  colorNeutralForeground3,
+  colorNeutralForeground4,
   colorNeutralStroke1,
   colorNeutralStroke1Hover,
   colorNeutralStroke1Pressed,
   colorNeutralStrokeAccessible,
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
+  colorTransparentBackground,
+  colorTransparentStroke,
+  colorTransparentStrokeInteractive,
+  curveAccelerateMax,
   curveAccelerateMid,
   curveDecelerateMid,
   durationNormal,
@@ -49,41 +67,11 @@ export const styles = css`
     position: relative;
   }
 
-  .popover {
-    background: transparent;
-    border: none;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    inset: unset;
-    margin: 0;
-    min-width: 160px;
-    overflow: visible;
-    padding: 0;
-    position: absolute;
-    z-index: 1;
-  }
-
-  .popover:not(:popover-open) {
-    display: none;
-  }
-
-  .popover:popover-open {
-    position-anchor: --dropdown-trigger;
-    position-area: block-end span-inline-end;
-    position-try-fallbacks: flip-inline, flip-block, block-start;
-    width: anchor-size(width);
-  }
-
-  @supports not (position-anchor: --dropdown-trigger) {
-    .popover:popover-open {
-      margin-block-start: 32px;
-    }
+  :host(${placeholderShownState}) {
+    color: ${colorNeutralForeground4};
   }
 
   .control {
-    --bottom-border-color: ${colorNeutralStrokeAccessible};
-    --control-border-color: ${colorNeutralStroke1};
     align-items: center;
     anchor-name: --dropdown-trigger;
     appearance: none;
@@ -118,6 +106,38 @@ export const styles = css`
     ${typographyBody2Styles}
   }
 
+  .popover {
+    background: transparent;
+    border: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    inset: unset;
+    margin: 0;
+    min-width: 160px;
+    overflow: visible;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .popover:not(:popover-open) {
+    display: none;
+  }
+
+  .popover:popover-open {
+    position-anchor: --dropdown-trigger;
+    position-area: block-end span-inline-end;
+    position-try-fallbacks: flip-inline, flip-block, block-start;
+    width: anchor-size(width);
+  }
+
+  @supports not (position-anchor: --dropdown-trigger) {
+    .popover:popover-open {
+      margin-block-start: 32px;
+    }
+  }
+
   ::slotted(:is(input, button)) {
     all: unset;
     cursor: default;
@@ -128,25 +148,34 @@ export const styles = css`
     cursor: pointer;
   }
 
-  .control:hover {
-    --control-border-color: ${colorNeutralStroke1Hover};
+  ::slotted([slot='indicator']) {
+    all: unset;
+    align-items: center;
+    appearance: none;
+    aspect-ratio: 1;
+    color: ${colorNeutralForeground3};
+    display: inline-flex;
+    justify-content: center;
+    width: 20px;
   }
 
-  .control:active {
-    --control-border-color: ${colorNeutralStroke1Pressed};
+  :host(${smallState}) ::slotted([slot='indicator']) {
+    width: 16px;
+  }
+
+  :host(${largeState}) ::slotted([slot='indicator']) {
+    width: 24px;
   }
 
   .control::after,
   .control::before {
     content: '' / '';
-    height: 100%;
     inset: auto 0 0;
     pointer-events: none;
     position: absolute;
   }
 
   .control::before {
-    background-color: var(--bottom-border-color);
     height: ${strokeWidthThin};
   }
 
@@ -157,45 +186,76 @@ export const styles = css`
     transition: scale ${durationUltraFast} ${curveDecelerateMid};
   }
 
-  .control:hover::before {
-    background-color: ${colorNeutralStrokeAccessibleHover};
-  }
-
-  .control:hover::after {
-    background-color: ${colorCompoundBrandBackgroundHover};
-  }
-
-  .control:active::before {
-    background-color: ${colorNeutralStrokeAccessiblePressed};
-  }
-
-  .control:active::after {
+  :host(:has(button:active)) .control::after {
     scale: 0.5 1;
+    transition-timing-function: ${curveAccelerateMax};
   }
 
-  :host(:is(${openState}, :focus-within)) .control::after {
+  :host(:where(${openState}, :focus-within)) .control::after {
     scale: 1 1;
     transition-duration: ${durationNormal};
     transition-timing-function: ${curveAccelerateMid};
   }
 
-  ::slotted([slot='indicator']) {
-    all: unset;
-    appearance: none;
-    border: none;
-    background: transparent;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 20px;
-    aspect-ratio: 1;
+  :host(:where(${outlineState}, ${transparentState})) .control::before {
+    background-color: ${colorNeutralStrokeAccessible};
   }
 
-  :host(${smallState}) ::slotted([slot='indicator']) {
-    width: 16px;
+  :host(${transparentState}) .control {
+    --control-border-color: ${colorTransparentStrokeInteractive};
+    background: ${colorTransparentBackground};
+    border-radius: ${borderRadiusNone};
   }
 
-  :host(${largeState}) ::slotted([slot='indicator']) {
-    width: 24px;
+  :host(${transparentState}) .control:hover::before {
+    background-color: ${colorNeutralStrokeAccessibleHover};
+  }
+
+  :host(${transparentState}) .control:active::before {
+    background-color: ${colorNeutralStrokeAccessiblePressed};
+  }
+
+  :host(${outlineState}) .control:active::before {
+    background-color: ${colorNeutralStrokeAccessiblePressed};
+  }
+
+  :host(${outlineState}) .control {
+    --control-border-color: ${colorNeutralStroke1};
+  }
+
+  :host(${outlineState}) .control:hover {
+    --control-border-color: ${colorNeutralStroke1Hover};
+  }
+
+  :host(${outlineState}) .control:active {
+    --control-border-color: ${colorNeutralStroke1Pressed};
+  }
+
+  :host(${outlineState}) .control:hover::before {
+    background-color: ${colorNeutralStrokeAccessibleHover};
+  }
+
+  :host(${outlineState}) .control:hover::after {
+    background-color: ${colorCompoundBrandBackgroundHover};
+  }
+
+  :host(${outlineState}) .control:active::before {
+    background-color: ${colorNeutralStrokeAccessiblePressed};
+  }
+
+  :host(${outlineState}) .control:active::after {
+    background-color: ${colorCompoundBrandBackgroundPressed};
+  }
+
+  :host(${filledLighterState}) .control {
+    background: ${colorNeutralBackground1};
+  }
+
+  :host(${filledDarkerState}) .control {
+    background: ${colorNeutralBackground3};
+  }
+
+  :host(:where(${filledLighterState}, ${filledDarkerState}) .control {
+    --control-border-color: ${colorTransparentStroke};
   }
 `;

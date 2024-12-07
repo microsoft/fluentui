@@ -439,6 +439,12 @@ export const peachState = stateSelector('peach');
 export const pinkState = stateSelector('pink');
 
 /**
+ * Selector for the `placeholder-shown` state.
+ * @public
+ */
+export const placeholderShownState = stateSelector('placeholder-shown');
+
+/**
  * Selector for the `platinum` state.
  * @public
  */

@@ -18,6 +18,20 @@ export function isDropdown(element?: Node | null, tagName: string = '-dropdown')
 }
 
 /**
+ * Values for the `appearance` attribute of the {@link (Dropdown:class)} component.
+ * @public
+ */
+export const DropdownAppearance = {
+  filledDarker: 'filled-darker',
+  filledLighter: 'filled-lighter',
+  outline: 'outline',
+  transparent: 'transparent',
+};
+
+/** @public */
+export type DropdownAppearance = ValuesOf<typeof DropdownAppearance>;
+
+/**
  * Values for the `size` attribute of the {@link (Dropdown:class)} component.
  * @public
  */
