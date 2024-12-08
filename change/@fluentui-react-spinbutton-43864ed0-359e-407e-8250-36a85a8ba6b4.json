@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: up/down buttons were not semantically disabled when unclickable",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
