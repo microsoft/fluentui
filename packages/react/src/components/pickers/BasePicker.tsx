@@ -9,6 +9,7 @@ import {
   classNamesFunction,
   styled,
   initializeComponentRef,
+  IStyleFunctionOrObject,
 } from '../../Utilities';
 import { Callout } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
@@ -32,6 +33,7 @@ import type { IAutofill } from '../Autofill/index';
 import type { IPickerItemProps } from './PickerItem.types';
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx } from '../../utilities/dom';
+import { ILabelStyleProps, ILabelStyles } from '../../../lib/components/Label/Label.types';
 
 const legacyStyles: any = stylesImport;
 
@@ -304,7 +306,6 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
       : {
           root: css('ms-BasePicker', className ? className : ''),
           error: 'ms-BasePicker-error',
-          label: 'ms-BasePicker-label',
           text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
           itemsWrapper: legacyStyles.pickerItems,
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
@@ -327,7 +328,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
         onBlur={this.onBlur}
         onClick={this.onWrapperClick}
       >
-        {this.renderLabel(inputId, classNames.label)}
+        {this.renderLabel(inputId, classNames.subComponentStyles?.label)}
         {this.renderCustomAlert(classNames.screenReaderText)}
         <span id={`${this._ariaMap.selectedItems}-label`} hidden>
           {selectionAriaLabel || comboLabel}
@@ -392,13 +393,16 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     return itemLimit === undefined || items.length < itemLimit;
   }
 
-  protected renderLabel(inputId: string, className?: string): JSX.Element | null {
+  protected renderLabel(
+    inputId: string,
+    styles: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> | undefined,
+  ): JSX.Element | null {
     const { label, disabled, required } = this.props;
     if (!label) {
       return null;
     }
     return (
-      <Label className={className} disabled={disabled} required={required} htmlFor={inputId}>
+      <Label className="ms-BasePicker-label" styles={styles} disabled={disabled} required={required} htmlFor={inputId}>
         {label}
       </Label>
     );
@@ -1223,7 +1227,6 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
       : {
           root: css('ms-BasePicker', legacyStyles.picker, className ? className : ''),
           error: 'ms-BasePicker-error',
-          label: 'ms-BasePicker-label',
           text: css(
             'ms-BasePicker-text',
             legacyStyles.pickerText,
@@ -1240,7 +1243,7 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
 
     return (
       <div ref={this.root} onBlur={this.onBlur} onFocus={this.onFocus}>
-        {this.renderLabel(inputId, classNames.label)}
+        {this.renderLabel(inputId, classNames.subComponentStyles?.label)}
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.renderCustomAlert(classNames.screenReaderText)}
           <span id={`${this._ariaMap.selectedItems}-label`} hidden>

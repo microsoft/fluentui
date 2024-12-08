@@ -7,6 +7,7 @@ import type { ICalloutProps } from '../../Callout';
 import type { ITheme, IStyle } from '../../Styling';
 import type { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
 import { IIconProps } from '../Icon/Icon.types';
+import { ILabelStyleProps, ILabelStyles } from '../Label/Label.types';
 
 /**
  * BasePicker component.
@@ -361,6 +362,14 @@ export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'class
 };
 
 /**
+ * {@docCategory Pickers}
+ */
+export interface IBasePickerSubComponentStyles {
+  /** Styling for Label child component. */
+  label: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
+}
+
+/**
  * Represents the stylable areas of the control.
  * {@docCategory Pickers}
  */
@@ -377,8 +386,8 @@ export interface IBasePickerStyles {
    */
   text: IStyle;
 
-  /** Refers to the label element (if specified). */
-  label: IStyle;
+  /** Styling for subcomponents. */
+  subComponentStyles: IBasePickerSubComponentStyles;
 
   /** Refers to the items already selected (picked). */
   itemsWrapper: IStyle;
