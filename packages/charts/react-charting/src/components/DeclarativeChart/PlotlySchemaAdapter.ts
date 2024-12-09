@@ -321,12 +321,13 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     })
     .flat();
 
-  const chartHeight = layout.height || 350;
+  const chartHeight = layout.height || 450;
   const margin = layout.margin?.l || 0;
   const padding = layout.margin?.pad || 0;
   const availableHeight = chartHeight - margin - padding;
   const numberOfBars = data[0].y.length;
-  const gapFactor = 0.5;
+  const scalingFactor = 0.01;
+  const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
   const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));
 
   return {
@@ -371,8 +372,10 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
   };
 
   // Convert normalized values to actual values
-  const domainValuesForColorScale: number[] = firstData.colorscale?.map((arr: any) => arr[0] * (zMax - zMin) + zMin);
-  const rangeValuesForColorScale: string[] = firstData.colorscale?.map((arr: any) => arr[1]);
+  const domainValuesForColorScale: number[] = firstData.colorscale
+    ? firstData.colorscale.map((arr: any) => arr[0] * (zMax - zMin) + zMin)
+    : [];
+  const rangeValuesForColorScale: string[] = firstData.colorscale ? firstData.colorscale.map((arr: any) => arr[1]) : [];
 
   return {
     data: [heatmapData],
