@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Popover): opacity transition was not happening",
+  "packageName": "@fluentui/react-positioning",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
