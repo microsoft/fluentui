@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 11 Nov 2024 10:00:38 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Dec 2024 12:53:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.18)
+
+Fri, 06 Dec 2024 12:53:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.17..@fluentui/react-utilities_v9.18.18)
+
+### Patches
+
+- chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.21.1 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
 
 ## [9.18.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.17)
 
