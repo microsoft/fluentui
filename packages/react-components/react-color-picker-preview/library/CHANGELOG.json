@@ -2,6 +2,21 @@
   "name": "@fluentui/react-color-picker-preview",
   "entries": [
     {
+      "date": "Mon, 09 Dec 2024 17:38:10 GMT",
+      "tag": "@fluentui/react-color-picker-preview_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "cad13936cd49ba0b34b50bc2f58395605c4e8da4",
+            "comment": "chore: remove usage of \"export *\""
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2024 12:53:39 GMT",
       "tag": "@fluentui/react-color-picker-preview_v0.1.0",
       "version": "0.1.0",

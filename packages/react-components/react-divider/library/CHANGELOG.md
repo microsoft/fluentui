@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.79)
+
+Mon, 09 Dec 2024 17:38:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.78..@fluentui/react-divider_v9.2.79)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
 
 ## [9.2.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.78)
 

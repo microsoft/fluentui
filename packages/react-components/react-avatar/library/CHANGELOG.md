@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.6.45)
+
+Mon, 09 Dec 2024 17:38:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.6.44..@fluentui/react-avatar_v9.6.45)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- Bump @fluentui/react-badge to v9.2.47 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
+- Bump @fluentui/react-popover to v9.9.27 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
+- Bump @fluentui/react-tooltip to v9.5.1 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
 
 ## [9.6.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.6.44)
 

@@ -2,6 +2,39 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Mon, 09 Dec 2024 17:38:10 GMT",
+      "tag": "@fluentui/react-combobox_v9.13.14",
+      "version": "9.13.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "cad13936cd49ba0b34b50bc2f58395605c4e8da4",
+            "comment": "chore: remove usage of \"export *\""
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-aria to v9.13.11",
+            "commit": "80f2ce07be06e66b369bd18e4484d8faf6b493c7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.1.82",
+            "commit": "80f2ce07be06e66b369bd18e4484d8faf6b493c7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.15.14",
+            "commit": "80f2ce07be06e66b369bd18e4484d8faf6b493c7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2024 12:53:46 GMT",
       "tag": "@fluentui/react-combobox_v9.13.13",
       "version": "9.13.13",

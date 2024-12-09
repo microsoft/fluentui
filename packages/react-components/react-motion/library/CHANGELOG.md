@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.4)
+
+Mon, 09 Dec 2024 17:38:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.3..@fluentui/react-motion_v9.6.4)
+
+### Patches
+
+- fix: avoid memory leak in Animation:finished ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by olfedias@microsoft.com)
 
 ## [9.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.3)
 

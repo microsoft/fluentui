@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.1.80)
+
+Mon, 09 Dec 2024 17:38:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.1.79..@fluentui/react-label_v9.1.80)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
 
 ## [9.1.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.1.79)
 

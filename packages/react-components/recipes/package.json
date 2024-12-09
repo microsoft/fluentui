@@ -29,7 +29,7 @@
   "dependencies": {
     "@fluentui/react-provider": "^9.18.1",
     "@fluentui/react-theme": "^9.1.23",
-    "@fluentui/react-text": "^9.4.28",
+    "@fluentui/react-text": "^9.4.29",
     "@fluentui/react-utilities": "^9.18.18",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",

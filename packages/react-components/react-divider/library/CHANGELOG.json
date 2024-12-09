@@ -2,6 +2,21 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Mon, 09 Dec 2024 17:38:11 GMT",
+      "tag": "@fluentui/react-divider_v9.2.79",
+      "version": "9.2.79",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "cad13936cd49ba0b34b50bc2f58395605c4e8da4",
+            "comment": "chore: remove usage of \"export *\""
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2024 12:53:46 GMT",
       "tag": "@fluentui/react-divider_v9.2.78",
       "version": "9.2.78",

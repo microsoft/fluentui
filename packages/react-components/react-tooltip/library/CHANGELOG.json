@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Mon, 09 Dec 2024 17:38:07 GMT",
+      "tag": "@fluentui/react-tooltip_v9.5.1",
+      "version": "9.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "cad13936cd49ba0b34b50bc2f58395605c4e8da4",
+            "comment": "chore: remove usage of \"export *\""
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-positioning to v9.15.14",
+            "commit": "80f2ce07be06e66b369bd18e4484d8faf6b493c7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2024 12:53:44 GMT",
       "tag": "@fluentui/react-tooltip_v9.5.0",
       "version": "9.5.0",

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.82)
+
+Mon, 09 Dec 2024 17:38:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.81..@fluentui/react-field_v9.1.82)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- Bump @fluentui/react-label to v9.1.80 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
 
 ## [9.1.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.81)
 

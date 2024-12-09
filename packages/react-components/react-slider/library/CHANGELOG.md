@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.2.2)
+
+Mon, 09 Dec 2024 17:38:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.2.1..@fluentui/react-slider_v9.2.2)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- Bump @fluentui/react-field to v9.1.82 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
 
 ## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.2.1)
 

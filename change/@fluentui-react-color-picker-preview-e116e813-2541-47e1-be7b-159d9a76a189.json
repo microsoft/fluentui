@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: remove usage of \"export *\"",
-  "packageName": "@fluentui/react-color-picker-preview",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

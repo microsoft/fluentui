@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: avoid memory leak in Animation:finished",
-  "packageName": "@fluentui/react-motion",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
