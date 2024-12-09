@@ -3,7 +3,6 @@ import { tinycolor } from '@ctrl/tinycolor';
 import {
   makeStyles,
   Button,
-  Label,
   SwatchPicker,
   EmptySwatch,
   ColorSwatch,
