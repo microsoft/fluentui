@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor(Popover): migrate opacity transition to Fade component",
+  "packageName": "@fluentui/react-popover",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

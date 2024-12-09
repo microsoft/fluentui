@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor(react-positioning): migrate opacity transition to Fade component",
+  "packageName": "@fluentui/react-positioning",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
