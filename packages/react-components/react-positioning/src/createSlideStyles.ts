@@ -8,13 +8,12 @@ import { DATA_POSITIONING_PLACEMENT } from './constants';
  * @returns Griffel styles to spread to a slot
  */
 export function createSlideStyles(mainAxis: number): GriffelStyle {
-  // With 'accumulate' animation composition, the opacity keyframes are deltas from the default value of 1.
   const fadeIn = {
     from: {
-      opacity: -1, // default of 1 - 1 = 0 actual
+      opacity: 0,
     },
     to: {
-      opacity: 0, // default of 1 + 0 = 1 actual
+      opacity: 1,
     },
   };
 
@@ -22,7 +21,8 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
   const slideDistanceVarY = '--fui-positioning-slide-distance-y';
 
   return {
-    animationComposition: 'accumulate',
+    // The fade has absolute values, whereas the slide amount is relative.
+    animationComposition: 'replace, accumulate',
     animationDuration: tokens.durationSlower,
     animationTimingFunction: tokens.curveDecelerateMid,
     [slideDistanceVarX]: `0px`,
@@ -55,6 +55,7 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
     // Note: at-rules have more specificity in Griffel
     '@media(prefers-reduced-motion)': {
       [`&[${DATA_POSITIONING_PLACEMENT}]`]: {
+        animationComposition: 'replace',
         animationDuration: '1ms',
         animationName: fadeIn,
       },
@@ -63,6 +64,7 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
     // Tested in Firefox 79
     '@supports not (animation-composition: accumulate)': {
       [`&[${DATA_POSITIONING_PLACEMENT}]`]: {
+        animationComposition: 'replace',
         animationName: fadeIn,
       },
     },
