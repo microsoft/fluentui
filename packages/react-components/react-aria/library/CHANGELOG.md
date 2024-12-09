@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.13.11)
+
+Mon, 09 Dec 2024 17:38:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.13.10..@fluentui/react-aria_v9.13.11)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
 
 ## [9.13.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.13.10)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.6.4)
+
+Mon, 09 Dec 2024 17:38:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.6.3..@fluentui/react-tabs_v9.6.4)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
 
 ## [9.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.6.3)
 

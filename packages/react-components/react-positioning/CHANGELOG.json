@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Mon, 09 Dec 2024 17:38:14 GMT",
+      "tag": "@fluentui/react-positioning_v9.15.14",
+      "version": "9.15.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "39feb05abbd0f8ac4ab4e6bc0b41e198e512b2fe",
+            "comment": "fix(Popover): opacity transition was not happening"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2024 12:53:41 GMT",
       "tag": "@fluentui/react-positioning_v9.15.13",
       "version": "9.15.13",

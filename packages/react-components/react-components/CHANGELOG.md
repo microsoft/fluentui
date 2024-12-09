@@ -1,8 +1,99 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 06 Dec 2024 12:53:38 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.56.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.5)
+
+Mon, 09 Dec 2024 17:38:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.4..@fluentui/react-components_v9.56.5)
+
+### Minor changes
+
+- `@fluentui/react-motion-components-preview`
+  - feat(Collapse): add margin to whitespace animation ([PR #33405](https://github.com/microsoft/fluentui/pull/33405) by robertpenner@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-spinbutton`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-spinner`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-text`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-toast`
+  - refactor(Toast): replace custom component with CollapseDelayed ([PR #33405](https://github.com/microsoft/fluentui/pull/33405) by robertpenner@microsoft.com)
+- `@fluentui/react-tooltip`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-aria`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-avatar`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-badge`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-card`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-color-picker-preview`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-divider`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-drawer`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-field`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-image`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-infolabel`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-input`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-label`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-link`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: avoid memory leak in Animation:finished ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by olfedias@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - feat(motion): Refactor scale, migrate to new variant structure ([PR #33341](https://github.com/microsoft/fluentui/pull/33341) by olkatruk@microsoft.com)
+- `@fluentui/react-persona`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix(Popover): opacity transition was not happening ([PR #33421](https://github.com/microsoft/fluentui/pull/33421) by robertpenner@microsoft.com)
+- `@fluentui/react-progress`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-rating`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-search`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-select`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-skeleton`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-slider`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
 
 ## [9.56.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.4)
 

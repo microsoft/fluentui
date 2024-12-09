@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.2.43)
+
+Mon, 09 Dec 2024 17:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.2.42..@fluentui/react-checkbox_v9.2.43)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- Bump @fluentui/react-field to v9.1.82 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
+- Bump @fluentui/react-label to v9.1.80 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
 
 ## [9.2.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.2.42)
 

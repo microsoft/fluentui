@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.97)
+
+Mon, 09 Dec 2024 17:38:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.96..@fluentui/react-button_v9.3.97)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.11 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
 
 ## [9.3.96](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.96)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 09 Dec 2024 07:21:03 GMT",
+      "tag": "@fluentui/react-charting_v5.23.22",
+      "version": "5.23.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e186b82f297ec893820859c7ed08e2e890a0839e",
+            "comment": "enable negativeData prop in declarative charts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2024 07:21:16 GMT",
       "tag": "@fluentui/react-charting_v5.23.21",
       "version": "5.23.21",
