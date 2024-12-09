@@ -1,5 +1,6 @@
 import type { PortalProps } from '@fluentui/react-portal';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { MenuContextValue } from '../../contexts/menuContext';
 
 export type MenuPopoverSlots = {
   root: Slot<'div'>;
@@ -14,6 +15,7 @@ export type MenuPopoverProps = ComponentProps<MenuPopoverSlots>;
  * State used in rendering MenuPopover
  */
 export type MenuPopoverState = ComponentState<MenuPopoverSlots> &
+  Pick<MenuContextValue, 'open'> &
   Pick<PortalProps, 'mountNode'> & {
     /**
      * Root menus are rendered out of DOM order on `document.body`, use this to render the menu in DOM order

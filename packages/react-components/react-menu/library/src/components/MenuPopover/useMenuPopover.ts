@@ -97,5 +97,5 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
     }
     onKeyDownOriginal?.(event);
   });
-  return { inline, mountNode, components: { root: 'div' }, root: rootProps };
+  return { inline, mountNode, open, components: { root: 'div' }, root: rootProps };
 };

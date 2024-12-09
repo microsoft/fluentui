@@ -24,6 +24,7 @@
     "@fluentui/react-aria": "^9.13.10",
     "@fluentui/react-context-selector": "^9.1.70",
     "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-motion-components-preview": "^0.3.2",
     "@fluentui/react-portal": "^9.4.39",
     "@fluentui/react-positioning": "^9.15.13",
     "@fluentui/react-shared-contexts": "^9.21.1",
