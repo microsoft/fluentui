@@ -285,6 +285,21 @@ const useFocusStyles = makeStyles({
     },
     { enableOutline: true },
   ),
+  circular: createCustomFocusIndicatorStyle(
+    {
+      ...shorthands.borderColor('transparent'),
+      outlineWidth: tokens.strokeWidthThick,
+      outlineColor: 'transparent',
+      outlineStyle: 'solid',
+      boxShadow: `
+        ${tokens.shadow4},
+        0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2},
+        0 0 0 ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeOnBrand} inset
+      `,
+      zIndex: 1,
+    },
+    { enableOutline: true },
+  ),
 });
 
 /** Indicator styles for when pending selection */
@@ -624,6 +639,7 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
 
   const circularAppearance = [
     circularStyles.base,
+    focusStyles.circular,
     // sizes
     size === 'medium' && circularStyles.medium,
     // subtle-circular appearance
@@ -639,6 +655,7 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
   ];
 
   const regularAppearance = [
+    focusStyles.base,
     !disabled && appearance === 'subtle' && rootStyles.subtle,
     !disabled && appearance === 'transparent' && rootStyles.transparent,
     !disabled && selected && rootStyles.selected,
@@ -653,7 +670,6 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
     size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
     size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
     size === 'large' && (vertical ? rootStyles.largeVertical : rootStyles.largeHorizontal),
-    focusStyles.base,
     ...(isCircular ? circularAppearance : regularAppearance),
     disabled && rootStyles.disabledCursor,
     slot.className,
