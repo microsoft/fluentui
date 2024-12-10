@@ -3,7 +3,7 @@ import { fixtureURL } from '../helpers.tests.js';
 
 test.describe('<tree-item>', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-treeview--tree-item'));
+    await page.goto(fixtureURL('components-tree-item'));
     await page.waitForFunction(() => customElements.whenDefined('fluent-tree-item'));
   });
 

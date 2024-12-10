@@ -1,8 +1,8 @@
 import { children, elements, html } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import type { TreeView } from './tree-view.js';
+import type { Tree } from './tree.js';
 
-export const template = html<TreeView>`
+export const template = html<Tree>`
   <template
     tabindex="0"
     @click="${(x, c) => x.handleClick(c.event)}"

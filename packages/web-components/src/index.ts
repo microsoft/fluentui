@@ -297,7 +297,7 @@ export {
 export type { ToggleButtonOptions } from './toggle-button/index.js';
 export { TreeItem, TreeItemDefinition, TreeItemTemplate, TreeItemStyles } from './tree-item/index.js';
 export type { TreeItemAppearance, TreeItemSize } from './tree-item/index.js';
-export { TreeView, TreeViewDefinition, TreeViewStyles, TreeViewTemplate } from './tree-view/index.js';
+export { TreeView, TreeViewDefinition, TreeViewStyles, TreeViewTemplate } from './tree/index.js';
 export {
   Tooltip,
   TooltipDefinition,

@@ -1,5 +1,5 @@
 /**
- * The <tree-view> element is mainly responsible for these things:
+ * The <tree> element is mainly responsible for these things:
  * 1. To act as a tree role, e.i. role='tree'
  * 2. To handle the keyboard events and mouse events that are bubbling from the <tree-item>s,
  *    like click, selected-change, keydown, focusin, focusout
@@ -8,7 +8,7 @@
  * 5. Selection management
  */
 
-import { attr, customElement, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import {
   getDisplayedNodes,
   isHTMLElement,
@@ -21,12 +21,9 @@ import {
   keyHome,
   keySpace,
 } from '@microsoft/fast-web-utilities';
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { TreeItem, TreeItemAppearance, TreeItemSize } from '../tree-item/index.js';
-import { template } from './tree-view.template.js';
-import { styles } from './tree-view.style.js';
 
-export class TreeView extends FASTElement {
+export class Tree extends FASTElement {
   /**
    * The currently selected tree item
    * @public
@@ -83,8 +80,8 @@ export class TreeView extends FASTElement {
   }
 
   /**
-   * 1. Update the child items' size based on the tree-view's size
-   * 2. Update the child items' appearance based on the tree-view's appearance
+   * 1. Update the child items' size based on the tree's size
+   * 2. Update the child items' appearance based on the tree's appearance
    */
   private updateSizeAndAppearance() {
     if (!this.childTreeItems || !this.childTreeItems.length) {
@@ -140,14 +137,14 @@ export class TreeView extends FASTElement {
         }
         return;
       case keyArrowLeft:
-        if (item.childTreeItems.length && item.expanded) {
+        if (item?.childTreeItems?.length && item.expanded) {
           item.expanded = false;
         } else if (item.parentElement instanceof TreeItem) {
           item.parentElement.focus();
         }
         return;
       case keyArrowRight:
-        if (item.childTreeItems.length) {
+        if (item?.childTreeItems?.length) {
           if (!item.expanded) {
             item.expanded = true;
           } else {
@@ -289,11 +286,6 @@ export class TreeView extends FASTElement {
     }
     return null;
   }
-
-  /**
-   * Indicates that this is a tree-view element
-   */
-  private isTreeView = true;
 
   private getVisibleNodes(): HTMLElement[] {
     return getDisplayedNodes(this, 'fluent-tree-item') || [];

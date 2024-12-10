@@ -34,12 +34,14 @@ import {
   spacingVerticalXXS,
   spacingVerticalXXXL,
 } from '../theme/design-tokens.js';
+import { display } from '../utils/display.js';
 
 export const treeItemLevelToken = '--fluentTreeItemLevel' as const;
 
 export const styles = css`
+  ${display('block')}
+
   :host {
-    display: block;
     outline: none;
   }
 
