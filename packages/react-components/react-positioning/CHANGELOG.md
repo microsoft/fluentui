@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 18 Nov 2024 09:44:39 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.14)
+
+Mon, 09 Dec 2024 17:38:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.13..@fluentui/react-positioning_v9.15.14)
+
+### Patches
+
+- fix(Popover): opacity transition was not happening ([PR #33421](https://github.com/microsoft/fluentui/pull/33421) by robertpenner@microsoft.com)
+
+## [9.15.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.13)
+
+Fri, 06 Dec 2024 12:53:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.12..@fluentui/react-positioning_v9.15.13)
+
+### Patches
+
+- chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.21.1 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-theme to v9.1.23 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-utilities to v9.18.18 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
 
 ## [9.15.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.12)
 
