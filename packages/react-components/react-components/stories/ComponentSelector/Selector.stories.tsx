@@ -190,11 +190,17 @@ export const Selector = () => {
   };
 
   const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
-  Object.entries(componentsDefinitionsImported).forEach(([key, value]) => {
-    componentsDefinitions.current.push(value);
-  });
-  mergeBaseObjects();
-  cleanUpBaseObjects();
+  const fillComponentsDefinitions = () => {
+    if (componentsDefinitions && componentsDefinitions.current.length === 0) {
+      Object.entries(componentsDefinitionsImported).forEach(([key, value]) => {
+        componentsDefinitions.current.push(value);
+      });
+      mergeBaseObjects();
+      cleanUpBaseObjects();
+    }
+  };
+
+  fillComponentsDefinitions();
 
   const updateDecisionsForCheckbox = (name: string, checked: boolean | string) => {
     if (checked) {
