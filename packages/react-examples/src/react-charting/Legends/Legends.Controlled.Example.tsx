@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { Legends, ILegend, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
-import { Button, Stack } from '@fluentui/react';
+import { DefaultButton, Stack } from '@fluentui/react';
 
 const legends: ILegend[] = [
   {
@@ -46,9 +46,9 @@ export const LegendsControlledExample: React.FunctionComponent = () => {
   return (
     <div>
       <Stack horizontal tokens={{ childrenGap: 10 }} styles={{ root: { marginBottom: 15 } }}>
-        <Button onClick={handleSelect1And3}>Select 1 and 3</Button>
-        <Button onClick={handleSelect2And4}>Select 2 and 4</Button>
-        <Button onClick={handleSelectAll}>Select all</Button>
+        <DefaultButton onClick={handleSelect1And3}>Select 1 and 3</DefaultButton>
+        <DefaultButton onClick={handleSelect2And4}>Select 2 and 4</DefaultButton>
+        <DefaultButton onClick={handleSelectAll}>Select all</DefaultButton>
       </Stack>
       <Legends
         legends={legends}
