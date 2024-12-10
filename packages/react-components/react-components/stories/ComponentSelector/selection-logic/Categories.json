@@ -1,0 +1,26 @@
+[
+  {
+    "id": "basicInputs",
+    "title": "Basic inputs",
+    "components": [
+      "Accordion",
+      "Button",
+      "Checkbox",
+      "InfoLabel",
+      "link",
+      "List",
+      "Menu",
+      "MenuButton",
+      "MenuItemCheckbox",
+      "MenuItemRadio",
+      "MenuSubmenu",
+      "SplitButton",
+      "Table",
+      "TabList",
+      "Text",
+      "ToggleButton",
+      "Tooltip",
+      "Tree"
+    ]
+  }
+]
