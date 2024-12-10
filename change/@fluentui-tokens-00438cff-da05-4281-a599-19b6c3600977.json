@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: remove usage of \"export *\" ",
-  "packageName": "@fluentui/tokens",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,5 +1,10 @@
-export * from './ColorPicker';
-export * from './ColorPicker.types';
-export * from './renderColorPicker';
-export * from './useColorPicker';
-export * from './useColorPickerStyles.styles';
+export { ColorPicker } from './ColorPicker';
+export type {
+  ColorPickerOnChangeData,
+  ColorPickerProps,
+  ColorPickerSlots,
+  ColorPickerState,
+} from './ColorPicker.types';
+export { renderColorPicker_unstable } from './renderColorPicker';
+export { useColorPicker_unstable } from './useColorPicker';
+export { colorPickerClassNames, useColorPickerStyles_unstable } from './useColorPickerStyles.styles';

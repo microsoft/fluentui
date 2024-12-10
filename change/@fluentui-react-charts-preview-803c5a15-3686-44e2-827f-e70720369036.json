@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: fix import of makeStyles()",
-  "packageName": "@fluentui/react-charts-preview",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
