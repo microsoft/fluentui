@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.99](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.99)
+
+Mon, 09 Dec 2024 17:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.98..@fluentui/react-card_v9.0.99)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- Bump @fluentui/react-text to v9.4.29 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
 
 ## [9.0.98](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.98)
 

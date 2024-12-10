@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.95](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.95)
+
+Mon, 09 Dec 2024 17:38:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.4.94..@fluentui/react-input_v9.4.95)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- Bump @fluentui/react-field to v9.1.82 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
 
 ## [9.4.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.94)
 

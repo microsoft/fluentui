@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-calendar-compat
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.1.23)
+
+Mon, 09 Dec 2024 17:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.1.22..@fluentui/react-calendar-compat_v0.1.23)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
 
 ## [0.1.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.1.22)
 
