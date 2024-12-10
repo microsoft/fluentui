@@ -22,6 +22,7 @@ import {
 } from '@fluentui/react-components';
 import { removeFromArray, getComponentStoryUrl, getAllQuestions } from './utils';
 import questions from './selection-logic/Questions.json';
+import categories from './selection-logic/Categories.json';
 import * as componentsDefinitionsImported from './components-definitions/index';
 import { add, create, get, set } from 'lodash';
 import { SelectionCard } from './SelectionCard';
@@ -270,28 +271,44 @@ export const Selector = () => {
     return suitableComponents;
   };
 
-  const namesOfComponents = () => {
-    const definitionsWithDisplayName = componentsDefinitions.current.map(definition => {
-      const componentName = definition.story ? `${definition.name} : ${definition.story}` : definition.name;
-      definition['displayName'] = componentName;
-      return definition;
-    });
-    definitionsWithDisplayName.sort((a, b) => (a.displayName > b.displayName ? 1 : -1));
-
-    return definitionsWithDisplayName;
-  };
-
   const addComponent = name => {
     console.log(`addComponent: ${name}`);
     console.log(`selectedComponents: ${selectedComponents}`);
     setSelectedComponents(prevArray => [...prevArray, name]);
   };
-  // setSelectedComponents([...selectedComponents, name]);
-  // };
 
-  // setSelectedComponents(selectedComponents.filter(component => component !== name));
+  const categorizedComponents = () => {
+    const definitionsWithDisplayName = componentsDefinitions.current.map(definition => {
+      const componentName = definition.story ? `${definition.component} : ${definition.story}` : definition.name;
+      definition['displayName'] = componentName;
+      return definition;
+    });
+    definitionsWithDisplayName.sort((a, b) => (a.displayName > b.displayName ? 1 : -1));
 
-  const componentsToDisplay = namesOfComponents().map(definitionsWithDisplayName => (
+    const result = categories.map(category => {
+      category['cards'] = [];
+      definitionsWithDisplayName.forEach(definition => {
+        if (category.components.includes(definition.component)) {
+          const card = (
+            <>
+              <SelectionCard
+                displayName={definition.displayName}
+                name={definition.name}
+                image={definition.img}
+                addComponent={addComponent}
+              />
+            </>
+          );
+          category['cards'].push(card);
+        }
+      });
+      return category;
+    });
+    return result;
+  };
+
+  /*
+  const componentsToDisplay = categorizedComponents().map(definitionsWithDisplayName => (
     <>
       <SelectionCard
         displayName={definitionsWithDisplayName.displayName}
@@ -301,6 +318,7 @@ export const Selector = () => {
       />
     </>
   ));
+  */
 
   const updateDecisionForQuestion = (currentName: string, previousName: string) => {
     if (currentName === 'none' && previousName === 'none') {
@@ -380,24 +398,14 @@ export const Selector = () => {
     <>
       <h2>Choose component</h2>
       <Accordion multiple>
-        <AccordionItem value="1">
-          <AccordionHeader as="h3">Basic Inputs</AccordionHeader>
-          <AccordionPanel>
-            <div className={classes.root}>{componentsToDisplay}</div>
-          </AccordionPanel>
-        </AccordionItem>
-        <AccordionItem value="2">
-          <AccordionHeader as="h3">Commands, Menus & Navs</AccordionHeader>
-          <AccordionPanel>
-            <div>Accordion Panel 2</div>
-          </AccordionPanel>
-        </AccordionItem>
-        <AccordionItem value="3">
-          <AccordionHeader as="h3">Galleries & Pickers</AccordionHeader>
-          <AccordionPanel>
-            <div>Accordion Panel 3</div>
-          </AccordionPanel>
-        </AccordionItem>
+        {categorizedComponents().map(category => (
+          <AccordionItem value={category.id}>
+            <AccordionHeader as="h3">{category.title}</AccordionHeader>
+            <AccordionPanel>
+              <div className={classes.root}>{category['cards']}</div>
+            </AccordionPanel>
+          </AccordionItem>
+        ))}
       </Accordion>
       {allQuestions.length > 0 && <h2 className={classes.heading}>Questions</h2>}
       {QuestionRadioGroup}
