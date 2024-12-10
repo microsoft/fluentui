@@ -22,33 +22,7 @@ import {
 } from '@fluentui/react-components';
 import { removeFromArray, getComponentStoryUrl, getAllQuestions } from './utils';
 import questions from './selection-logic/Questions.json';
-import GroupsDef from './selection-logic/Groups.json';
-import {
-  ListBaseDef,
-  AccordionDef,
-  CheckboxDef,
-  TableCellNavigationDef,
-  TableBaseDef,
-  TableCellActionsDef,
-  MenuBaseDef,
-  MenuItemCheckboxDef,
-  MenuDef,
-  MenuItemRadioDef,
-  MenuSubmenuDef,
-  SplitButtonDef,
-  ToggleButtonDef,
-  ButtonBaseDef,
-  LinkDef,
-  TextDef,
-  TableDef,
-  ListDef,
-  ListSingleActionDef,
-  TreeDef,
-  TreeSelectionDef,
-  TreeBaseDef,
-  MenuButtonDef,
-  TabListDef,
-} from './components-definitions/index';
+import * as componentsDefinitionsImported from './components-definitions/index';
 import { add, create, get, set } from 'lodash';
 import { SelectionCard } from './SelectionCard';
 import { Question } from './Question';
@@ -208,43 +182,18 @@ export const Selector = () => {
     componentsDefinitions.current.forEach((definition, index) => {
       // just check the name if includes "Base",
       // in future would be better detection based on prop, like: "abstract": "true"
-      if (definition.name.includes('Base')) {
+      if (definition.name && definition.name.includes('Base')) {
         componentsDefinitions.current.splice(index, 1);
       }
     });
   };
 
   const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
-  if (componentsDefinitions.current.length === 0) {
-    componentsDefinitions.current.push(
-      ListBaseDef,
-      AccordionDef,
-      CheckboxDef,
-      TableCellNavigationDef,
-      TableBaseDef,
-      TableCellActionsDef,
-      MenuBaseDef,
-      MenuItemCheckboxDef,
-      MenuDef,
-      MenuItemRadioDef,
-      MenuSubmenuDef,
-      SplitButtonDef,
-      ToggleButtonDef,
-      ButtonBaseDef,
-      LinkDef,
-      TextDef,
-      TableDef,
-      ListDef,
-      ListSingleActionDef,
-      TreeDef,
-      TreeSelectionDef,
-      TreeBaseDef,
-      MenuButtonDef,
-      TabListDef,
-    );
-    mergeBaseObjects();
-    cleanUpBaseObjects();
-  }
+  Object.entries(componentsDefinitionsImported).forEach(([key, value]) => {
+    componentsDefinitions.current.push(value);
+  });
+  mergeBaseObjects();
+  cleanUpBaseObjects();
 
   const updateDecisionsForCheckbox = (name: string, checked: boolean | string) => {
     if (checked) {
