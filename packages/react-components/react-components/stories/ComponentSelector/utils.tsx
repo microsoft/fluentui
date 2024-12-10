@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { GroupsDef } from './components-definitions/index';
+import GroupsDef from './selection-logic/Groups.json';
 
 const APP_TITLE = 'Component Selector';
 const APP_TITLE_SEPARATOR = ' | ';

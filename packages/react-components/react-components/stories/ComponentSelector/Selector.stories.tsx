@@ -21,7 +21,8 @@ import {
   useId,
 } from '@fluentui/react-components';
 import { removeFromArray, getComponentStoryUrl, getAllQuestions } from './utils';
-import questions from './components-definitions/Questions.json';
+import questions from './selection-logic/Questions.json';
+import GroupsDef from './selection-logic/Groups.json';
 import {
   ListBaseDef,
   AccordionDef,
@@ -47,7 +48,6 @@ import {
   TreeBaseDef,
   MenuButtonDef,
   TabListDef,
-  GroupsDef,
 } from './components-definitions/index';
 import { add, create, get, set } from 'lodash';
 import { SelectionCard } from './SelectionCard';

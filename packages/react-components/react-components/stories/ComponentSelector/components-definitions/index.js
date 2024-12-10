@@ -29,7 +29,5 @@ export { default as TreeSelectionDef } from './TreeSelection.json';
 
 export { default as TabListDef } from './TabList.json';
 
-export { default as GroupsDef } from './Groups.json';
-
 export { default as TooltipDef } from './Tooltip.json';
 export { default as InfoLabelDef } from './InfoLabel.json';
