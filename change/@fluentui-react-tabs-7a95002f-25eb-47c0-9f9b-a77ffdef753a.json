@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: adjust styles for circular tabs",
+  "packageName": "@fluentui/react-tabs",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
