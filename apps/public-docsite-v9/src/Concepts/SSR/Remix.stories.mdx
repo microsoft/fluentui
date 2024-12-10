@@ -37,7 +37,7 @@ import griffel from '@griffel/vite-plugin';
 export default defineConfig(({ command }) => ({
   plugins: [
     reactRouter(), // or remix(),
-    tsconfigPaths(), // Add CJS interop plugin for Fluent UI packages,
+    tsconfigPaths(),
 
     // Add CJS interop plugin for Fluent UI packages until they are ESM compatible
     cjsInterop({
