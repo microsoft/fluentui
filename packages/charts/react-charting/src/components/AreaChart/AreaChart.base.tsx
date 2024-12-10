@@ -56,7 +56,7 @@ export interface IAreaChartAreaPoint {
   values: IAreaChartDataSetPoint;
 }
 export interface IAreaChartDataSetPoint {
-  [key: string]: number | string;
+  [key: string]: number | string | number[];
 }
 export interface IDPointType {
   values: { 0: number; 1: number; data: {} };
@@ -119,6 +119,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _enableComputationOptimization: boolean;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
+  private mode = this.props.mode as 'tozeroy' | 'tonexty' | undefined;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -404,17 +405,21 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getStackedData = (keys: string[], dataSet: any) => {
+  private _getStackedData = (keys: string[], dataSet: any, mode: 'tozeroy' | 'tonexty' = 'tonexty') => {
     const stackedValues = d3Stack().keys(keys)(dataSet);
     const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
     const stackedData: Array<IAreaChartDataSetPoint[]> = [];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    stackedValues.forEach((layer: any) => {
+    stackedValues.forEach((layer: any, layerIndex: number) => {
       const currentStack: IAreaChartDataSetPoint[] = [];
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      layer.forEach((d: any) => {
+      layer.forEach((d: any, index: number) => {
+        let y0 = 0;
+        if (mode === 'tonexty' && layerIndex > 0) {
+          y0 = stackedValues[layerIndex - 1][index][1];
+        }
         currentStack.push({
-          values: d,
+          values: [y0, d[1]],
           xVal: d.data.xVal,
         });
       });
@@ -475,7 +480,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       }
 
       // Stacked Info used to draw graph
-      const stackedInfo = this._getStackedData(keys, dataSet);
+      const stackedInfo = this._getStackedData(keys, dataSet, this.mode);
 
       return {
         colors,
@@ -528,7 +533,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       }
 
       // Stacked Info used to draw graph
-      const stackedInfo = this._getStackedData(keys, dataSet);
+      const stackedInfo = this._getStackedData(keys, dataSet, this.mode);
 
       return {
         colors,

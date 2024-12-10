@@ -264,6 +264,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   colorMap: React.MutableRefObject<Map<string, string>>,
 ): ILineChartProps | IAreaChartProps => {
   const { data, layout } = jsonObj;
+  let mode = 'tozeroy';
 
   const chartData: ILineChartPoints[] = data.map((series: any, index: number) => {
     const xValues = series.x;
@@ -273,11 +274,18 @@ export const transformPlotlyJsonToScatterChartProps = (
     const legend = series.name || `Series ${index + 1}`;
     const lineColor = getColor(legend, colorMap);
 
+    let yValues = series.y;
+    if (isAreaChart && series.fill === 'tonexty' && index > 0) {
+      mode = 'tonexty';
+      const previousSeries = data[index - 1];
+      yValues = yValues.map((yValue: number, i: number) => yValue + previousSeries.y[i]);
+    }
+
     return {
       legend,
       data: xValues.map((x: string | number, i: number) => ({
         x: isString ? (isXDate ? new Date(x) : isXNumber ? parseFloat(x as string) : x) : x,
-        y: series.y[i],
+        y: yValues[i],
       })),
       color: lineColor,
     };
@@ -292,6 +300,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     return {
       data: chartProps,
       supportNegativeData: true,
+      mode,
     } as IAreaChartProps;
   } else {
     return {
