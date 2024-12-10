@@ -1,6 +1,15 @@
-export * from './Accordion';
-export * from './Accordion.types';
-export * from './renderAccordion';
-export * from './useAccordion';
-export * from './useAccordionStyles.styles';
-export * from './useAccordionContextValues';
+export { Accordion } from './Accordion';
+export type {
+  AccordionContextValues,
+  AccordionIndex,
+  AccordionProps,
+  AccordionSlots,
+  AccordionState,
+  AccordionToggleData,
+  AccordionToggleEvent,
+  AccordionToggleEventHandler,
+} from './Accordion.types';
+export { renderAccordion_unstable } from './renderAccordion';
+export { useAccordion_unstable } from './useAccordion';
+export { accordionClassNames, useAccordionStyles_unstable } from './useAccordionStyles.styles';
+export { useAccordionContextValues_unstable } from './useAccordionContextValues';

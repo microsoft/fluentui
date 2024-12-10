@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 06 Dec 2024 07:21:16 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 07:21:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.22)
+
+Mon, 09 Dec 2024 07:21:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.21..@fluentui/react-charting_v5.23.22)
+
+### Patches
+
+- enable negativeData prop in declarative charts ([PR #33414](https://github.com/microsoft/fluentui/pull/33414) by 74965306+Anush2303@users.noreply.github.com)
 
 ## [5.23.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.21)
 
