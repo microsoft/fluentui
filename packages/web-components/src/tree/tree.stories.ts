@@ -1,15 +1,15 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
-import type { TreeView as FluentTreeView } from './tree-view.js';
-import '../tree-view/define.js';
+import type { Tree as FluentTree } from './tree.js';
+import './define.js';
 import { treeItemAppearance, treeItemSize } from '../tree-item/tree-item.options.js';
 
-type TreeViewStoryArgs = Args & FluentTreeView;
-type TreeViewStoryMeta = Meta<TreeViewStoryArgs>;
+type TreeStoryArgs = Args & FluentTree;
+type TreeStoryMeta = Meta<TreeStoryArgs>;
 
-const storyTemplate = html<TreeViewStoryArgs>`
-<fluent-tree-view size="${x => x.size}" appearance="${x => x.appearance}">
+const storyTemplate = html<TreeStoryArgs>`
+<fluent-tree size="${x => x.size}" appearance="${x => x.appearance}">
   <fluent-tree-item >
     Item 1
     <fluent-tree-item>Item 1-1
@@ -33,11 +33,11 @@ const storyTemplate = html<TreeViewStoryArgs>`
       Item 2-3
     </fluent-tree-item>
   </fluent-tree-item>
-</fluent-tree-view>
+</fluent-tree>
 `;
 
 export default {
-  title: 'Components/TreeView',
+  title: 'Components/Tree',
   args: {
     size: 'medium',
     appearance: 'subtle',
@@ -72,6 +72,6 @@ export default {
       category: 'attributes',
     },
   },
-} as TreeViewStoryMeta;
+} as TreeStoryMeta;
 
-export const TreeView = renderComponent(storyTemplate).bind({});
+export const Tree = renderComponent(storyTemplate).bind({});

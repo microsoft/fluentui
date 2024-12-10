@@ -1,11 +1,11 @@
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition } from './tree-item.definition.js';
+import { definition } from './tree.definition.js';
 
 definition.define(FluentDesignSystem.registry);
 
 const itemRenderer = () => {
-  const treeItem = document.createElement('fluent-tree-item');
-  return treeItem;
+  const tree = document.createElement('fluent-tree');
+  return tree;
 };
 
 export default itemRenderer;

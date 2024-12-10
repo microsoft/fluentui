@@ -1,7 +1,7 @@
 import { children, elements, html, when } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { TreeItem } from './tree-item.js';
-import { treeItemLevelToken } from './tree-item.style.js';
+import { treeItemLevelToken } from './tree-item.styles.js';
 
 // We don't put the icon into the icons/index.ts file because
 // this icon is the default chevron icon of the tree-item component,

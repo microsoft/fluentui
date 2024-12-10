@@ -1,7 +1,4 @@
 import { attr, FASTElement, nullableNumberConverter, observable, volatile } from '@microsoft/fast-element';
-import { FluentDesignSystem } from '../fluent-design-system.js';
-import { template } from './tree-item.template.js';
-import { styles } from './tree-item.style.js';
 import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
 import { toggleState } from '../utils/element-internals.js';
 
@@ -119,8 +116,8 @@ export class TreeItem extends FASTElement {
   }
 
   /**
-   * 1. Update the child items' size based on the tree-view's size
-   * 2. Update the child items' appearance based on the tree-view's appearance
+   * 1. Update the child items' size based on the tree's size
+   * 2. Update the child items' appearance based on the tree's appearance
    */
   private updateChildTreeItems() {
     if (!this.childTreeItems || !this.childTreeItems.length) {
