@@ -24,7 +24,7 @@ import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
-import { fileSaver, svgToPng } from './helpers';
+import { downloadImage } from './helpers';
 
 export interface Schema {
   /**
@@ -72,61 +72,64 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   HTMLDivElement,
   DeclarativeChartProps
 >((props, forwardedRef) => {
-  React.useEffect(() => {
-    const svgElement = document.querySelector('[class^="chart"]');
-    const { width, height } = svgElement.getBoundingClientRect();
-
-    svgToPng(svgElement, width, height).then((result: string) => {
-      const newWindow = window.open();
-      newWindow.document.body.innerHTML = `<img src="${result}" />`;
-
-      // fileSaver(result);
-    });
-  }, []);
-
-  const { plotlySchema } = props.chartSchema;
-  const xValues = plotlySchema.data[0].x;
-  const isXDate = isDateArray(xValues);
-  const isXNumber = isNumberArray(xValues);
   const colorMap = useColorMapping();
 
-  switch (plotlySchema.data[0].type) {
-    case 'pie':
-      return <DonutChart {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap)} />;
-    case 'bar':
-      const orientation = plotlySchema.data[0].orientation;
-      if (orientation === 'h') {
-        return (
-          <HorizontalBarChartWithAxis {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap)} />
-        );
-      } else {
-        if (['group', 'overlay'].includes(plotlySchema?.layout?.barmode)) {
-          return <GroupedVerticalBarChart {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap)} />;
+  const renderChart = React.useCallback(() => {
+    const { plotlySchema } = props.chartSchema;
+    const xValues = plotlySchema.data[0].x;
+    const isXDate = isDateArray(xValues);
+    const isXNumber = isNumberArray(xValues);
+
+    switch (plotlySchema.data[0].type) {
+      case 'pie':
+        return <DonutChart {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap)} />;
+      case 'bar':
+        const orientation = plotlySchema.data[0].orientation;
+        if (orientation === 'h') {
+          return (
+            <HorizontalBarChartWithAxis {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap)} />
+          );
+        } else {
+          if (['group', 'overlay'].includes(plotlySchema?.layout?.barmode)) {
+            return <GroupedVerticalBarChart {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap)} />;
+          }
+          return <VerticalStackedBarChart {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap)} />;
+        }
+      case 'scatter':
+        const isAreaChart = plotlySchema.data.some((series: any) => series.fill === 'tonexty');
+        if (isXDate || isXNumber) {
+          if (isAreaChart) {
+            return <AreaChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, true, colorMap)} />;
+          }
+          return <LineChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, false, colorMap)} />;
         }
         return <VerticalStackedBarChart {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap)} />;
-      }
-    case 'scatter':
-      const isAreaChart = plotlySchema.data.some((series: any) => series.fill === 'tonexty');
-      if (isXDate || isXNumber) {
-        if (isAreaChart) {
-          return <AreaChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, true, colorMap)} />;
+      case 'heatmap':
+        return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(plotlySchema)} />;
+      case 'sankey':
+        return <SankeyChart {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap)} />;
+      case 'indicator':
+        if (plotlySchema?.data?.[0]?.mode?.includes('gauge')) {
+          return <GaugeChart {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap)} />;
         }
-        return <LineChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, false, colorMap)} />;
-      }
-      return <VerticalStackedBarChart {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap)} />;
-    case 'heatmap':
-      return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(plotlySchema)} />;
-    case 'sankey':
-      return <SankeyChart {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap)} />;
-    case 'indicator':
-      if (plotlySchema?.data?.[0]?.mode?.includes('gauge')) {
-        return <GaugeChart {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap)} />;
-      }
-      return <div>Unsupported Schema</div>;
-    case 'histogram':
-      return <VerticalBarChart {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap)} />;
-    default:
-      return <div>Unsupported Schema</div>;
-  }
+        return <div>Unsupported Schema</div>;
+      case 'histogram':
+        return <VerticalBarChart {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap)} />;
+      default:
+        return <div>Unsupported Schema</div>;
+    }
+  }, [props.chartSchema, colorMap]);
+
+  const onDownloadBtnClick = React.useCallback(() => {
+    const svgElement = document.querySelector('[class^="chart"]') as SVGSVGElement | null;
+    downloadImage(svgElement);
+  }, []);
+
+  return (
+    <>
+      <button onClick={onDownloadBtnClick}>Download</button>
+      {renderChart()}
+    </>
+  );
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
