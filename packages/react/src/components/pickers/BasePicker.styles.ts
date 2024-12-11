@@ -95,7 +95,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
             },
           },
         },
-        focusColor && getInputFocusStyle(focusColor, effects.roundedCorner2),
+      focusColor && getInputFocusStyle(focusColor, effects.roundedCorner2),
       disabled && {
         borderColor: disabledOverlayColor,
         selectors: {
@@ -162,5 +162,8 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
       inputClassName,
     ],
     screenReaderText: hiddenContentStyle,
+    subComponentStyles: {
+      label: {},
+    },
   };
 }
