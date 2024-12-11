@@ -26,8 +26,8 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
     unstable_hasDefault: true,
   });
 
+  // Users can choose controlled or uncontrolled, if uncontrolled, the default is initialized by carousel context
   const [totalSlides, setTotalSlides] = useControllableState({
-    defaultState: props.totalSlides,
     state: props.totalSlides,
     initialState: 0,
   });
