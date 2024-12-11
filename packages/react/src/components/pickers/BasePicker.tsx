@@ -33,7 +33,7 @@ import type { IAutofill } from '../Autofill/index';
 import type { IPickerItemProps } from './PickerItem.types';
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx } from '../../utilities/dom';
-import { ILabelStyleProps, ILabelStyles } from '../../../lib/components/Label/Label.types';
+import type { ILabelStyleProps, ILabelStyles } from '../../Label';
 
 const legacyStyles: any = stylesImport;
 
