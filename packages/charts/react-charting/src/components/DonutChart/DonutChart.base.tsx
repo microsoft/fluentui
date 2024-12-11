@@ -27,6 +27,7 @@ export interface IDonutChartState {
   selectedLegend: string;
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
+  selectedLegends: string[];
 }
 
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
@@ -75,6 +76,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       yCalloutValue: '',
       selectedLegend: '',
       focusedArcId: '',
+      selectedLegends: [],
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._focusCallback = this._focusCallback.bind(this);
@@ -138,7 +140,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 hoverLeaveCallback={this._hoverLeave}
                 uniqText={this._uniqText}
                 onBlurCallback={this._onBlur}
-                activeArc={this._getHighlightedLegend()}
+                activeArc={this._getHighlightedLegend().filter(
+                  (legend): legend is string => legend !== undefined && legend !== '',
+                )}
                 focusedArcId={this.state.focusedArcId || ''}
                 href={this.props.href!}
                 calloutId={this._calloutId}
@@ -241,11 +245,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         title: point.legend!,
         color,
         action: () => {
-          if (this.state.selectedLegend === point.legend) {
-            this.setState({ selectedLegend: '' });
-          } else {
-            this.setState({ selectedLegend: point.legend! });
-          }
+          const { selectedLegends } = this.state;
+          const isSelected = selectedLegends.includes(point.legend!);
+          const newSelectedLegends = isSelected
+            ? selectedLegends.filter(l => l !== point.legend)
+            : [...selectedLegends, point.legend!];
+          this.setState({ selectedLegends: newSelectedLegends });
         },
         hoverAction: () => {
           this._handleChartMouseLeave();
@@ -257,6 +262,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       };
       return legend;
     });
+
     const legends = (
       <Legends
         legends={legendDataItems}
@@ -265,6 +271,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
+        canSelectMultipleLegends
       />
     );
     return legends;
@@ -324,11 +331,14 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   };
 
   private _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
-    const highlightedLegend = this._getHighlightedLegend();
-    if (valueInsideDonut !== undefined && (highlightedLegend !== '' || this.state.showHover)) {
+    const highlightedLegends = this._getHighlightedLegend();
+    if (valueInsideDonut !== undefined && (highlightedLegends.length > 0 || this.state.showHover)) {
       let legendValue = valueInsideDonut;
       data!.map((point: IChartDataPoint, index: number) => {
-        if (point.legend === highlightedLegend || (this.state.showHover && point.legend === this.state.legend)) {
+        if (
+          highlightedLegends.includes(point.legend!) ||
+          (this.state.showHover && point.legend === this.state.legend)
+        ) {
           legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
         }
         return;
@@ -354,7 +364,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
    * Note: This won't work in case of multiple legends selection.
    */
   private _getHighlightedLegend() {
-    return this.state.selectedLegend || this.state.activeLegend;
+    return this.state.selectedLegends.length > 0 ? this.state.selectedLegends : [this.state.activeLegend];
   }
 
   private _isChartEmpty(): boolean {

@@ -31,12 +31,11 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   }
 
   public render(): JSX.Element {
-    const { arc, href, focusedArcId } = this.props;
+    const { arc, href, focusedArcId, activeArc } = this.props;
     const getClassNames = classNamesFunction<IArcStyleProps, IArcStyles>();
     const id = this.props.uniqText! + this.props.data!.data.legend!.replace(/\s+/, '') + this.props.data!.data.data;
-    const opacity: number =
-      this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '' ? 1 : 0.1;
-
+    const isActive = activeArc?.includes(this.props.data?.data.legend!);
+    const opacity: number = activeArc && activeArc.length > 0 ? (isActive ? 1 : 0.1) : 1;
     const startAngle = this.props.data?.startAngle ?? 0;
     const endAngle = (this.props.data?.endAngle ?? 0) - startAngle;
     const cornerRadius = this.props.roundCorners ? 3 : 0;
@@ -70,7 +69,10 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           d={arc.cornerRadius(cornerRadius)(this.props.data)}
           onFocus={this._onFocus.bind(this, this.props.data!.data, id)}
           className={classNames.root}
-          data-is-focusable={this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === ''}
+          data-is-focusable={
+            Array.isArray(this.props.activeArc) &&
+            (this.props.activeArc.includes(this.props.data!.data.legend!) || this.props.activeArc.length === 0)
+          }
           onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseMove={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseLeave={this._hoverOff}
@@ -129,7 +131,8 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     if (
       hideLabels ||
       Math.abs(data!.endAngle - data!.startAngle) < Math.PI / 12 ||
-      (activeArc !== data!.data.legend && activeArc !== '')
+      !Array.isArray(activeArc) ||
+      (data!.data.legend && activeArc.includes(data!.data.legend))
     ) {
       return null;
     }
