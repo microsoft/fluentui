@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Improve Slider Drag Interaction to be centered on Thumb",
+  "packageName": "@fluentui/web-components",
+  "email": "tom.coladonato@auctane.com",
+  "dependentChangeType": "patch"
+}

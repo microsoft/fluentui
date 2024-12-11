@@ -89,4 +89,5 @@ This is a known issue and will indicate that you need to refresh the page. We're
 
 ## Testing
 
+Tests run on playwright `npx playwright install`.
 When testing locally, start the dev server and in a separate terminal window, run `yarn test:dev` within the web-components folder.
