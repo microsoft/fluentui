@@ -38,7 +38,7 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
     return subscribeForValues(data => {
       setTotalSlides(data.navItemsCount);
     });
-  }, [subscribeForValues]);
+  }, [subscribeForValues, setTotalSlides]);
 
   return {
     totalSlides,
