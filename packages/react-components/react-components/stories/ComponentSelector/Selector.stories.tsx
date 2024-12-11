@@ -255,7 +255,7 @@ export const Selector = () => {
       componentsToIterate.forEach(definition => {
         const keysInDefinitions = Object.keys(definition);
 
-        const matching = [];
+        const matching: string[] = [];
         selectedBehaviours.forEach(decision => {
           definition.attributes.includes(decision) ? matching.push('matched') : null;
           // if (keysInDefinitions.indexOf(decision) >= 0) {

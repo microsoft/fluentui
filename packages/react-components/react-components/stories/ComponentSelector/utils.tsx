@@ -67,7 +67,7 @@ export const getComponentStoryUrl = component => {
 };
 
 const getQuestionsIDs = (name: string) => {
-  let questions = [];
+  let questions: string[][] = [];
   GroupsDef.forEach(group => {
     group.tags.includes(name) ? questions.push(group.questions) : null;
   });
@@ -75,7 +75,7 @@ const getQuestionsIDs = (name: string) => {
 };
 
 export const getAllQuestions = (selectedComponents, questions) => {
-  let allQuestionsIDs = [];
+  let allQuestionsIDs: string[] = [];
   selectedComponents.forEach(component => {
     allQuestionsIDs.push(getQuestionsIDs(component));
   });
