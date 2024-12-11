@@ -285,7 +285,7 @@ export const Selector = () => {
     setSelectedComponents(prevArray => [...prevArray, name]);
   };
 
-  const categorizedComponents = () => {
+  const categorizedComponents = React.useMemo(() => {
     const definitionsWithDisplayName = filteredComponentsDefinitions.map(definition => {
       const componentName = definition.story ? `${definition.component} : ${definition.story}` : definition.name;
       definition['displayName'] = componentName;
@@ -313,7 +313,7 @@ export const Selector = () => {
       return category;
     });
     return result;
-  };
+  }, [filteredComponentsDefinitions]);
 
   const updateDecisionForQuestion = (currentName: string, previousName: string) => {
     if (currentName === 'none' && previousName === 'none') {
@@ -407,7 +407,7 @@ export const Selector = () => {
       </Field>
       <h2>Choose component</h2>
       <Accordion multiple>
-        {categorizedComponents().map(category => (
+        {categorizedComponents.map(category => (
           <AccordionItem value={category.id}>
             <AccordionHeader as="h3">{category.title}</AccordionHeader>
             <AccordionPanel>
