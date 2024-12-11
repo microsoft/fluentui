@@ -67,28 +67,23 @@ export const getComponentStoryUrl = component => {
 };
 
 const getQuestionsIDs = (name: string) => {
-  let questions: string[][] = [];
+  const questionsIds: string[] = [];
   groups.forEach(group => {
-    group.tags.includes(name) ? questions.push(group.questions) : null;
+    group.tags.includes(name) ? questionsIds.push(...group.questions) : null;
   });
-  return questions;
+  return questionsIds;
 };
 
 export const getAllQuestions = (selectedComponents, questions) => {
-  let allQuestionsIDs: string[][][] = [];
+  let allQuestionsIDs: string[] = [];
   selectedComponents.forEach(component => {
-    allQuestionsIDs.push(getQuestionsIDs(component));
+    getQuestionsIDs(component).forEach(id => {
+      allQuestionsIDs.includes(id) ? null : allQuestionsIDs.push(id);
+    });
   });
 
-  const allQuestions = allQuestionsIDs.map(questionId =>
-    questions.map(item => {
-      // questionId is array of arrays, to simplyfy the check we flat it
-      const questionIdFlat = questionId.flat();
-      if (questionIdFlat.includes(item.id)) {
-        return item;
-      }
-    }),
-  );
-  const allQuestionsFlat = allQuestions.flat().filter(item => item !== undefined);
-  return allQuestionsFlat;
+  const allQuestions = allQuestionsIDs
+    .map(questionId => questions.find(question => question.id === questionId))
+    .filter(foundQuestion => foundQuestion !== undefined);
+  return allQuestions;
 };
