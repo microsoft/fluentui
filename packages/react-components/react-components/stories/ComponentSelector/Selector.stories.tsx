@@ -227,12 +227,12 @@ export const Selector = () => {
     }
   };
 
-  const getComponentByName = (name: string) => {
+  const getComponentDefinitionByName = (name: string) => {
     return componentsDefinitions.current.find(definition => definition.name === name);
   };
 
-  const getComponent = () => {
-    console.log(`--------- get component called`);
+  const getMatchingComponents = () => {
+    console.log(`--------- get matching components called`);
     const suitableComponents: any[] = [];
 
     console.log(`selectedComponents: ${selectedComponents}`);
@@ -240,10 +240,10 @@ export const Selector = () => {
     // if there is already selected any behavior ignore component selection
     if (selectedComponents && selectedComponents.length > 0 && selectedBehaviours.length === 0) {
       selectedComponents.forEach(componentName => {
-        const component = getComponentByName(componentName);
+        const definition = getComponentDefinitionByName(componentName);
         // console.log(`PUSH component name: ${component.name}`);
-        if (component) {
-          suitableComponents.push(component);
+        if (definition) {
+          suitableComponents.push(definition);
         }
       });
     }
@@ -253,7 +253,7 @@ export const Selector = () => {
       const componentsToIterate = suitableComponents.length > 0 ? suitableComponents : componentsDefinitions.current;
       // componentsDefinitions.current.forEach(definition => {
       componentsToIterate.forEach(definition => {
-        const keysInDefinitions = Object.keys(definition);
+        // const keysInDefinitions = Object.keys(definition);
 
         const matching: string[] = [];
         selectedBehaviours.forEach(decision => {
@@ -347,7 +347,7 @@ export const Selector = () => {
   ));
 
   const MatchingComponents = () => {
-    const foundComponents = getComponent();
+    const foundComponents = getMatchingComponents();
 
     React.useEffect(() => {
       console.log(`UseEffect: MatchingComponents: foundComponents: ${foundComponents}`);
