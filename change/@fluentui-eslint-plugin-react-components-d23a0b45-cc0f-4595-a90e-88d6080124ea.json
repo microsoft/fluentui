@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: initial package structure",
-  "packageName": "@fluentui/eslint-plugin-react-components",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Add gap property to simplify gap css virtualization",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}
