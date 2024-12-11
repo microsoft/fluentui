@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 import type { CarouselNavProps, CarouselNavState } from './CarouselNav.types';
+import { useControllableState } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render CarouselNav.
@@ -25,7 +26,12 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
     unstable_hasDefault: true,
   });
 
-  const [totalSlides, setTotalSlides] = React.useState(props.totalSlides ?? 0);
+  const [totalSlides, setTotalSlides] = useControllableState({
+    defaultState: props.totalSlides,
+    state: props.totalSlides,
+    initialState: 0,
+  });
+
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
 
   useIsomorphicLayoutEffect(() => {
