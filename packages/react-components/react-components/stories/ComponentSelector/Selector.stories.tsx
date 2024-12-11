@@ -9,15 +9,16 @@ import {
   Text,
   Divider,
   Checkbox,
+  Field,
+  Input,
+  Image,
+  Label,
   RadioGroup,
   Radio,
-  Label,
+  Select,
+  ToggleButton,
   makeStyles,
   tokens,
-  Image,
-  ToggleButton,
-  Field,
-  Select,
   useId,
 } from '@fluentui/react-components';
 import { removeFromArray, getComponentStoryUrl, getAllQuestions } from './utils';
@@ -190,6 +191,7 @@ export const Selector = () => {
   };
 
   const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
+  const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] = React.useState<Record<string, any>[]>([]);
   const fillComponentsDefinitions = () => {
     if (componentsDefinitions && componentsDefinitions.current.length === 0) {
       Object.entries(componentsDefinitionsImported).forEach(([key, value]) => {
@@ -284,7 +286,7 @@ export const Selector = () => {
   };
 
   const categorizedComponents = () => {
-    const definitionsWithDisplayName = componentsDefinitions.current.map(definition => {
+    const definitionsWithDisplayName = filteredComponentsDefinitions.map(definition => {
       const componentName = definition.story ? `${definition.component} : ${definition.story}` : definition.name;
       definition['displayName'] = componentName;
       return definition;
@@ -312,19 +314,6 @@ export const Selector = () => {
     });
     return result;
   };
-
-  /*
-  const componentsToDisplay = categorizedComponents().map(definitionsWithDisplayName => (
-    <>
-      <SelectionCard
-        displayName={definitionsWithDisplayName.displayName}
-        name={definitionsWithDisplayName.name}
-        image={definitionsWithDisplayName.img}
-        addComponent={addComponent}
-      />
-    </>
-  ));
-  */
 
   const updateDecisionForQuestion = (currentName: string, previousName: string) => {
     if (currentName === 'none' && previousName === 'none') {
@@ -400,8 +389,22 @@ export const Selector = () => {
     );
   };
 
+  React.useEffect(() => {
+    setFilteredComponentsDefinitions(componentsDefinitions.current);
+  }, [setFilteredComponentsDefinitions]);
+  const onFilterChange = (event, data) => {
+    setFilteredComponentsDefinitions(
+      componentsDefinitions.current.filter(definition =>
+        definition.component.toLowerCase().includes(data.value.toLowerCase()),
+      ),
+    );
+  };
+
   return (
     <>
+      <Field label="Filter components">
+        <Input onChange={onFilterChange} />
+      </Field>
       <h2>Choose component</h2>
       <Accordion multiple>
         {categorizedComponents().map(category => (
