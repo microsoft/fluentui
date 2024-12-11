@@ -26,6 +26,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     scrollViewRef,
     enableScrollLoad,
     updateScrollPosition,
+    gap = 0,
   } = props;
 
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
@@ -86,7 +87,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     }
 
     for (let index = 0; index < numItems; index++) {
-      childSizes.current[index] = getItemSize(index);
+      const _gap = index < numItems - 1 ? gap : 0;
+      childSizes.current[index] = getItemSize(index) + _gap;
       if (index === 0) {
         childProgressiveSizes.current[index] = childSizes.current[index];
       } else {
@@ -162,7 +164,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
       let didUpdate = false;
       for (let i = startIndex; i < endIndex; i++) {
-        const newSize = getItemSize(i);
+        const _gap = i < numItems - 1 ? gap : 0;
+        const newSize = getItemSize(i) + _gap;
         if (newSize !== childSizes.current[i]) {
           childSizes.current[i] = newSize;
           didUpdate = true;
@@ -177,7 +180,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         }
       }
     },
-    [getItemSize, numItems, virtualizerLength],
+    [getItemSize, numItems, virtualizerLength, gap],
   );
 
   const batchUpdateNewIndex = React.useCallback(
@@ -243,29 +246,29 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   const getIndexFromScrollPosition = React.useCallback(
     (scrollPos: number) => {
       if (!getItemSize) {
-        return Math.round(scrollPos / itemSize);
+        return Math.round(scrollPos / (itemSize + gap));
       }
 
       return getIndexFromSizeArray(scrollPos);
     },
-    [getIndexFromSizeArray, getItemSize, itemSize],
+    [getIndexFromSizeArray, getItemSize, itemSize, gap],
   );
 
   const calculateTotalSize = React.useCallback(() => {
     if (!getItemSize) {
-      return itemSize * numItems;
+      return (itemSize + gap) * numItems;
     }
 
     // Time for custom size calcs
     return childProgressiveSizes.current[numItems - 1];
-  }, [getItemSize, itemSize, numItems]);
+  }, [getItemSize, itemSize, numItems, gap]);
 
   const calculateBefore = React.useCallback(() => {
     const currentIndex = Math.min(actualIndex, numItems - 1);
 
     if (!getItemSize) {
       // The missing items from before virtualization starts height
-      return currentIndex * itemSize;
+      return currentIndex * (itemSize + gap);
     }
 
     if (currentIndex <= 0) {
@@ -274,7 +277,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     // Time for custom size calcs
     return childProgressiveSizes.current[currentIndex - 1];
-  }, [actualIndex, getItemSize, itemSize, numItems]);
+  }, [actualIndex, getItemSize, itemSize, numItems, gap]);
 
   const calculateAfter = React.useCallback(() => {
     if (numItems === 0 || actualIndex + virtualizerLength >= numItems) {
@@ -285,12 +288,12 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     if (!getItemSize) {
       // The missing items from after virtualization ends height
       const remainingItems = numItems - lastItemIndex;
-      return remainingItems * itemSize;
+      return remainingItems * (itemSize + gap) - gap;
     }
 
     // Time for custom size calcs
     return childProgressiveSizes.current[numItems - 1] - childProgressiveSizes.current[lastItemIndex - 1];
-  }, [actualIndex, getItemSize, itemSize, numItems, virtualizerLength]);
+  }, [actualIndex, getItemSize, itemSize, numItems, virtualizerLength, gap]);
 
   // Observe intersections of virtualized components
   const { setObserverList } = useIntersectionObserver(
@@ -532,7 +535,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     // We only run this effect on getItemSize change (recalc dynamic sizes)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getItemSize]);
+  }, [getItemSize, gap]);
 
   // Effect to check flag index on updates
   React.useEffect(() => {

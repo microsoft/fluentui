@@ -1,4 +1,4 @@
-import { ColorPicker } from '@fluentui/react-color-picker-preview';
+import { ColorPicker, ColorArea, ColorSlider, AlphaSlider } from '@fluentui/react-color-picker-preview';
 
 import descriptionMd from './ColorPickerDescription.md';
 import bestPracticesMd from './ColorPickerBestPractices.md';
@@ -12,6 +12,11 @@ export { AlphaSliderExample } from './AlphaSliderDefault.stories';
 export default {
   title: 'Preview Components/ColorPicker',
   component: ColorPicker,
+  subcomponents: {
+    ColorArea,
+    ColorSlider,
+    AlphaSlider,
+  },
   parameters: {
     docs: {
       description: {

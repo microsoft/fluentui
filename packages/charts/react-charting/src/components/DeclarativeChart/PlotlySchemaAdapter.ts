@@ -4,6 +4,9 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, merge as d3Merge } from 'd3-array';
+import { scaleLinear as d3ScaleLinear } from 'd3-scale';
+import { format as d3Format, precisionFixed as d3PrecisionFixed } from 'd3-format';
 import { IDonutChartProps } from '../DonutChart/index';
 import {
   IChartDataPoint,
@@ -14,6 +17,7 @@ import {
   IHeatMapChartData,
   IHeatMapChartDataPoint,
   IGroupedVerticalBarChartData,
+  IVerticalBarChartDataPoint,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -24,15 +28,20 @@ import { IHeatMapChartProps } from '../HeatMapChart/index';
 import { getNextColor } from '../../utilities/colors';
 import { IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
+import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 export const isDateArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isDate);
 export const isNumberArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isNumber);
 
-export const getColor = (legendLabel: string, colorMap: React.MutableRefObject<Map<string, string>>): string => {
+export const getColor = (
+  legendLabel: string,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): string => {
   if (!colorMap.current.has(legendLabel)) {
-    const nextColor = getNextColor(colorMap.current.size + 1);
+    const nextColor = getNextColor(colorMap.current.size + 1, 0, isDarkTheme);
     colorMap.current.set(legendLabel, nextColor);
     return nextColor;
   }
@@ -43,12 +52,13 @@ export const getColor = (legendLabel: string, colorMap: React.MutableRefObject<M
 export const transformPlotlyJsonToDonutProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): IDonutChartProps => {
   const { data, layout } = jsonObj;
   const firstData = data[0];
 
   const donutData = firstData.labels?.map((label: string, index: number): IChartDataPoint => {
-    const color = getColor(label, colorMap);
+    const color = getColor(label, colorMap, isDarkTheme);
     return {
       legend: label,
       data: firstData.values?.[index],
@@ -56,8 +66,6 @@ export const transformPlotlyJsonToDonutProps = (
     };
   });
 
-  // TODO: innerRadius as a fraction needs to be supported internally. The pixel value depends on
-  // chart dimensions, arc label dimensions and the legend container height, all of which are subject to change.
   const width: number = layout?.width || 440;
   const height: number = layout?.height || 220;
   const hideLabels = firstData.textinfo ? !['value', 'percent'].includes(firstData.textinfo) : false;
@@ -87,14 +95,13 @@ export const transformPlotlyJsonToDonutProps = (
     hideLabels,
     showLabelsInPercent: firstData.textinfo ? firstData.textinfo === 'percent' : true,
     styles,
-    // TODO: Render custom hover card based on textinfo
-    // onRenderCalloutPerDataPoint: undefined,
   };
 };
 
 export const transformPlotlyJsonToVSBCProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): IVerticalStackedBarChartProps => {
   const { data, layout } = jsonObj;
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
@@ -107,14 +114,14 @@ export const transformPlotlyJsonToVSBCProps = (
       }
       const legend: string = series.name || `Series ${index1 + 1}`;
       if (series.type === 'bar') {
-        const color = getColor(legend, colorMap);
+        const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].chartData.push({
           legend,
           data: series.y?.[index2],
           color,
         });
       } else if (series.type === 'line') {
-        const color = getColor(legend, colorMap);
+        const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].lineData!.push({
           legend,
           y: series.y?.[index2],
@@ -136,10 +143,10 @@ export const transformPlotlyJsonToVSBCProps = (
   };
 };
 
-// TODO: Add support for continuous x-axis in grouped vertical bar chart
 export const transformPlotlyJsonToGVBCProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): IGroupedVerticalBarChartProps => {
   const { data, layout } = jsonObj;
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
@@ -151,7 +158,7 @@ export const transformPlotlyJsonToGVBCProps = (
       }
       if (series.type === 'bar') {
         const legend: string = series.name || `Series ${index1 + 1}`;
-        const color = getColor(legend, colorMap);
+        const color = getColor(legend, colorMap, isDarkTheme);
 
         mapXToDataPoints[x].series.push({
           key: legend,
@@ -172,10 +179,98 @@ export const transformPlotlyJsonToGVBCProps = (
   };
 };
 
+export const transformPlotlyJsonToVBCProps = (
+  jsonObj: any,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): IVerticalBarChartProps => {
+  const { data, layout } = jsonObj;
+  const vbcData: IVerticalBarChartDataPoint[] = [];
+
+  data.forEach((series: any, index: number) => {
+    if (!series.x) {
+      return;
+    }
+
+    const scale = d3ScaleLinear()
+      .domain(d3Extent<number>(series.x) as [number, number])
+      .nice();
+    let [xMin, xMax] = scale.domain();
+
+    xMin = typeof series.xbins?.start === 'number' ? series.xbins.start : xMin;
+    xMax = typeof series.xbins?.end === 'number' ? series.xbins.end : xMax;
+
+    const bin = d3Bin().domain([xMin, xMax]);
+
+    if (typeof series.xbins?.size === 'number') {
+      const thresholds: number[] = [];
+      let th = xMin;
+      const precision = d3PrecisionFixed(series.xbins.size);
+      const format = d3Format(`.${precision}f`);
+
+      while (th < xMax + series.xbins.size) {
+        thresholds.push(parseFloat(format(th)));
+        th += series.xbins.size;
+      }
+
+      xMin = thresholds[0];
+      xMax = thresholds[thresholds.length - 1];
+      bin.domain([xMin, xMax]).thresholds(thresholds);
+    }
+
+    const buckets = bin(series.x);
+    // If the start or end of xbins is specified, then the number of datapoints may become less than x.length
+    const totalDataPoints = d3Merge(buckets).length;
+
+    buckets.forEach(bucket => {
+      const legend = series.name || `Series ${index + 1}`;
+      const color = getColor(legend, colorMap, isDarkTheme);
+      let y = bucket.length;
+
+      if (series.histnorm === 'percent') {
+        y = (bucket.length / totalDataPoints) * 100;
+      } else if (series.histnorm === 'probability') {
+        y = bucket.length / totalDataPoints;
+      } else if (series.histnorm === 'density') {
+        y = bucket.x0 === bucket.x1 ? 0 : bucket.length / (bucket.x1! - bucket.x0!);
+      } else if (series.histnorm === 'probability density') {
+        y = bucket.x0 === bucket.x1 ? 0 : bucket.length / (totalDataPoints * (bucket.x1! - bucket.x0!));
+      } else if (series.histfunc === 'sum') {
+        y = d3Sum(bucket);
+      } else if (series.histfunc === 'avg') {
+        y = bucket.length === 0 ? 0 : d3Sum(bucket) / bucket.length;
+      } else if (series.histfunc === 'min') {
+        y = d3Min(bucket)!;
+      } else if (series.histfunc === 'max') {
+        y = d3Max(bucket)!;
+      }
+
+      vbcData.push({
+        x: (bucket.x1! + bucket.x0!) / 2,
+        y,
+        legend,
+        color,
+        xAxisCalloutData: `[${bucket.x0} - ${bucket.x1})`,
+      });
+    });
+  });
+
+  return {
+    data: vbcData,
+    chartTitle: layout?.title,
+    // width: layout?.width,
+    // height: layout?.height,
+    hideLegend: true,
+    barWidth: 24,
+    supportNegativeData: true,
+  };
+};
+
 export const transformPlotlyJsonToScatterChartProps = (
   jsonObj: any,
   isAreaChart: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
   const { data, layout } = jsonObj;
 
@@ -185,7 +280,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const legend = series.name || `Series ${index + 1}`;
-    const lineColor = getColor(legend, colorMap);
+    const lineColor = getColor(legend, colorMap, isDarkTheme);
 
     return {
       legend,
@@ -205,10 +300,12 @@ export const transformPlotlyJsonToScatterChartProps = (
   if (isAreaChart) {
     return {
       data: chartProps,
+      supportNegativeData: true,
     } as IAreaChartProps;
   } else {
     return {
       data: chartProps,
+      supportNegativeData: true,
     } as ILineChartProps;
   }
 };
@@ -216,13 +313,14 @@ export const transformPlotlyJsonToScatterChartProps = (
 export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): IHorizontalBarChartWithAxisProps => {
   const { data, layout } = jsonObj;
 
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = data
     .map((series: any, index: number) => {
       return series.y.map((yValue: string, i: number) => {
-        const color = getColor(yValue, colorMap);
+        const color = getColor(yValue, colorMap, isDarkTheme);
         return {
           x: series.x[i],
           y: yValue,
@@ -255,8 +353,6 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   };
 };
 
-// FIXME: Order of string axis ticks does not match the order in plotly json
-// TODO: Add support for custom hover card
 export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartProps => {
   const { data, layout } = jsonObj;
   const firstData = data[0];
@@ -299,6 +395,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
 export const transformPlotlyJsonToSankeyProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): ISankeyChartProps => {
   const { data, layout } = jsonObj;
   const { link, node } = data[0];
@@ -314,7 +411,7 @@ export const transformPlotlyJsonToSankeyProps = (
 
   const sankeyChartData = {
     nodes: node.label.map((label: string, index: number) => {
-      const color = getColor(label, colorMap);
+      const color = getColor(label, colorMap, isDarkTheme);
 
       return {
         nodeId: index,
@@ -353,13 +450,14 @@ export const transformPlotlyJsonToSankeyProps = (
 export const transformPlotlyJsonToGaugeProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): IGaugeChartProps => {
   const { data, layout } = jsonObj;
   const firstData = data[0];
 
   const segments = firstData.gauge?.steps?.map((step: any, index: number): IGaugeChartSegment => {
     const legend = step.name || `Segment ${index + 1}`;
-    const color = getColor(legend, colorMap);
+    const color = getColor(legend, colorMap, isDarkTheme);
     return {
       legend,
       size: step.range?.[1] - step.range?.[0],
@@ -373,11 +471,11 @@ export const transformPlotlyJsonToGaugeProps = (
     const diff = firstData.value - firstData.delta.reference;
     if (diff >= 0) {
       sublabel = `\u25B2 ${diff}`;
-      const color = getColor(firstData.delta.increasing?.color || '', colorMap);
+      const color = getColor(firstData.delta.increasing?.color || '', colorMap, isDarkTheme);
       sublabelColor = color;
     } else {
       sublabel = `\u25BC ${Math.abs(diff)}`;
-      const color = getColor(firstData.delta.decreasing?.color || '', colorMap);
+      const color = getColor(firstData.delta.decreasing?.color || '', colorMap, isDarkTheme);
       sublabelColor = color;
     }
   }

@@ -59,7 +59,7 @@ const BodyPresenceMotion = createPresenceComponent<{ level: 1 | 2 }>(({ level })
 
   return {
     enter: {
-      keyframes: keyframes,
+      keyframes,
       duration,
       easing,
     },
@@ -78,7 +78,7 @@ const IconPresenceMotion = createPresenceComponent(() => {
 
   return {
     enter: {
-      keyframes: keyframes,
+      keyframes,
       duration: motionTokens.durationNormal,
       easing: motionTokens.curveEasyEase,
     },

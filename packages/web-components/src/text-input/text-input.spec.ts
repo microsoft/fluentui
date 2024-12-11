@@ -833,4 +833,85 @@ test.describe('TextInput', () => {
       await expect(control).toBeFocused();
     });
   });
+
+  test('should reset the value to an empty string when the form is reset', async ({ page }) => {
+    const element = page.locator('fluent-text-input');
+    const control = element.locator('input');
+    const reset = page.locator('button');
+
+    await page.setContent(/* html */ `
+      <form id="form" action="foo">
+        <fluent-text-input name="testinput"></fluent-text-input>
+        <button type="reset">Reset</button>
+      </form>
+    `);
+
+    await expect(control).toHaveValue('');
+
+    await control.fill('hello');
+
+    await reset.click();
+
+    await expect(control).toHaveValue('');
+  });
+
+  test('should change the `value` property when the `current-value` attribute changes', async ({ page }) => {
+    const element = page.locator('fluent-text-input');
+
+    await page.setContent(/* html */ `
+      <fluent-text-input></fluent-text-input>
+    `);
+
+    await element.evaluate(node => {
+      node.setAttribute('current-value', 'foo');
+    });
+
+    await expect(element).toHaveJSProperty('value', 'foo');
+  });
+
+  test('should change the `value` property when the `currentValue` property changes', async ({ page }) => {
+    const element = page.locator('fluent-text-input');
+
+    await page.setContent(/* html */ `
+      <fluent-text-input></fluent-text-input>
+    `);
+
+    await element.evaluate((node: TextInput) => {
+      node.currentValue = 'foo';
+    });
+
+    await expect(element).toHaveJSProperty('value', 'foo');
+  });
+
+  test('should set the `current-value` attribute to match the `value` property', async ({ page }) => {
+    const element = page.locator('fluent-text-input');
+
+    await page.setContent(/* html */ `
+      <fluent-text-input></fluent-text-input>
+    `);
+
+    await expect(element).not.toHaveAttribute('current-value');
+
+    await element.evaluate((node: TextInput) => {
+      node.value = 'foo';
+    });
+
+    await expect(element).toHaveAttribute('current-value', 'foo');
+  });
+
+  test('should set the `currentValue` property to match the `value` property', async ({ page }) => {
+    const element = page.locator('fluent-text-input');
+
+    await page.setContent(/* html */ `
+      <fluent-text-input></fluent-text-input>
+    `);
+
+    await expect(element).toHaveJSProperty('currentValue', undefined);
+
+    await element.evaluate((node: TextInput) => {
+      node.value = 'foo';
+    });
+
+    await expect(element).toHaveJSProperty('currentValue', 'foo');
+  });
 });
