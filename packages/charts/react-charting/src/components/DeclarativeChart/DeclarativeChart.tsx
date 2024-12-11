@@ -24,6 +24,7 @@ import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
+import { fileSaver, svgToPng } from './helpers';
 
 export interface Schema {
   /**
@@ -71,6 +72,18 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   HTMLDivElement,
   DeclarativeChartProps
 >((props, forwardedRef) => {
+  React.useEffect(() => {
+    const svgElement = document.querySelector('[class^="chart"]');
+    const { width, height } = svgElement.getBoundingClientRect();
+
+    svgToPng(svgElement, width, height).then((result: string) => {
+      const newWindow = window.open();
+      newWindow.document.body.innerHTML = `<img src="${result}" />`;
+
+      // fileSaver(result);
+    });
+  }, []);
+
   const { plotlySchema } = props.chartSchema;
   const xValues = plotlySchema.data[0].x;
   const isXDate = isDateArray(xValues);
