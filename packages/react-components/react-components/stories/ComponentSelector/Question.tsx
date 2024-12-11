@@ -1,23 +1,22 @@
 import * as React from 'react';
-
 import {
   Accordion,
   AccordionHeader,
   AccordionItem,
   AccordionPanel,
-  Link,
-  Text,
-  Divider,
   Checkbox,
-  RadioGroup,
-  Radio,
+  Divider,
+  Field,
   Label,
+  Link,
+  Radio,
+  RadioGroup,
+  Select,
+  Text,
+  ToggleButton,
+  Image,
   makeStyles,
   tokens,
-  Image,
-  ToggleButton,
-  Field,
-  Select,
   useId,
 } from '@fluentui/react-components';
 
@@ -82,11 +81,9 @@ const useStyles = makeStyles({
   behaviors: { display: 'flex', gap: '10px' },
 });
 
-export const Question = props => {
+export const Question = ({ QuestionItem, indexQuestion, updateDecisionForQuestion }) => {
   const [value, setRadioValue] = React.useState('none');
   const classes = useStyles();
-
-  const { QuestionItem, indexQuestion, updateDecisionForQuestion } = props;
 
   React.useEffect(() => {
     console.log(`UseEffect: Question${indexQuestion}: Value: ${value}`);

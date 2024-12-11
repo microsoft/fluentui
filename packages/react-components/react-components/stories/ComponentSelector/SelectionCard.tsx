@@ -1,7 +1,17 @@
 import * as React from 'react';
-import { makeStyles, Button, Caption1, tokens, Text, Checkbox } from '@fluentui/react-components';
+import {
+  Button,
+  Caption1,
+  Card,
+  CardHeader,
+  CardPreview,
+  CardProps,
+  Checkbox,
+  Text,
+  makeStyles,
+  tokens,
+} from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
-import { Card, CardHeader, CardPreview, CardProps } from '@fluentui/react-components';
 import { stat } from 'fs';
 
 const resolveAsset = (asset: string) => {
