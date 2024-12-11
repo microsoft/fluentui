@@ -1,20 +1,21 @@
 import { name, version } from '../package.json';
+import { RULE_NAME as preferFluentUIV9Name, rule as preferFluentUIV9 } from './rules/prefer-fluentui-v9';
 
 const allRules = {
-  // add all rules here
+  [preferFluentUIV9Name]: preferFluentUIV9,
 };
 
 const configs = {
   recommended: {
     plugins: [name],
     rules: {
-      // add all recommended rules here
+      [`@fluentui/react-components/${preferFluentUIV9Name}`]: 'warn',
     },
   },
 };
 
 // Plugin definition
-const plugin = {
+export const plugin = {
   meta: {
     name,
     version,
@@ -33,4 +34,4 @@ Object.assign(configs, {
   },
 });
 
-export default plugin;
+module.exports = plugin;

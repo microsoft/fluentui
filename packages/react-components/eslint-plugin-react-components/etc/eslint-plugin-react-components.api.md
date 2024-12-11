@@ -4,8 +4,11 @@
 
 ```ts
 
+import { RuleListener } from '@typescript-eslint/utils/dist/ts-eslint';
+import { RuleModule } from '@typescript-eslint/utils/dist/ts-eslint';
+
 // @public (undocumented)
-const plugin: {
+export const plugin: {
     meta: {
         name: string;
         version: string;
@@ -13,12 +16,17 @@ const plugin: {
     configs: {
         recommended: {
             plugins: string[];
-            rules: {};
+            rules: {
+                "@fluentui/react-components/prefer-fluentui-v9": string;
+            };
         };
     };
-    rules: {};
+    rules: {
+        "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceFluent8With9Unstable" | "replaceIconWithJsx" | "replaceStackWithFlex", {
+        unstable?: boolean | undefined;
+        }[], unknown, RuleListener>;
+    };
 };
-export default plugin;
 
 // (No @packageDocumentation comment for this package)
 

@@ -40,21 +40,46 @@ module.exports = {
 };
 ```
 
-1. Or configure individual rules manually:
+2. Or configure individual rules manually:
 
 ```js
 module.exports = {
   plugins: ['@fluentui/react-components'],
   rules: {
-    '@fluentui/react-components/rule-name-1': 'error',
-    '@fluentui/react-components/rule-name-2': 'warn',
+    '@fluentui/react-components/prefer-fluentui-v9': 'warn',
   },
 };
 ```
 
 ## Available Rules
 
-TBD
+### prefer-fluentui-v9
+
+This rule ensures the use of Fluent UI v9 counterparts for Fluent UI v8 components.
+
+#### Options
+
+- `unstable` (boolean): Whether to enforce Fluent UI v9 preview component migrations.
+
+#### Examples
+
+**✅ Do**
+
+```js
+// Import and use components that have been already migrated to Fluent UI v9
+import { Button } from '@fluentui/react-components';
+
+const Component = () => <Button>...</Button>;
+```
+
+**❌ Don't**
+
+```js
+// Avoid importing and using Fluent UI V8 components that have already been migrated to Fluent UI V9.
+import { DefaultButton } from '@fluentui/react';
+
+const Component = () => <DefaultButton>...</DefaultButton>;
+```
 
 ## License
 
