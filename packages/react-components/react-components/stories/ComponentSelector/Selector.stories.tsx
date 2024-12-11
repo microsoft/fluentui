@@ -1,21 +1,20 @@
 import * as React from 'react';
-
 import {
   Accordion,
   AccordionHeader,
   AccordionItem,
   AccordionPanel,
-  Link,
-  Text,
-  Divider,
   Checkbox,
+  Divider,
   Field,
-  Input,
   Image,
+  Input,
   Label,
-  RadioGroup,
+  Link,
   Radio,
+  RadioGroup,
   Select,
+  Text,
   ToggleButton,
   makeStyles,
   tokens,
@@ -28,6 +27,7 @@ import * as componentsDefinitionsImported from './components-definitions/index';
 import { add, create, get, set } from 'lodash';
 import { SelectionCard } from './SelectionCard';
 import { Question } from './Question';
+import { MatchingComponents } from './MatchingComponents';
 
 const decisionRadioValues: Record<string, string[]> = {
   navigationBy: ['navigationByArrowKeys', 'navigationByTabKey'],
@@ -346,49 +346,6 @@ export const Selector = () => {
     </>
   ));
 
-  const MatchingComponents = () => {
-    const foundComponents = getMatchingComponents();
-
-    React.useEffect(() => {
-      console.log(`UseEffect: MatchingComponents: foundComponents: ${foundComponents}`);
-    }, []);
-
-    return (
-      <>
-        <h2 id="matching-heading" className={classes.heading}>
-          Matching components
-        </h2>
-        <div role="group" aria-labelledby="matching-heading">
-          <div className={classes.foundMessage}>
-            <Text as="h3" weight="bold">
-              {/* Found {foundComponents.length} component(s).{' '} */}
-            </Text>
-          </div>
-          {foundComponents.map((component, index) => {
-            return (
-              <div key={`component-${index}}`}>
-                <Text weight="semibold">
-                  Component name:{' '}
-                  <Link target="_blank" inline href={getComponentStoryUrl(component)}>
-                    {component.name}{' '}
-                  </Link>
-                </Text>
-                <br />
-                <Text weight="semibold">Example:</Text> {component.exampleName ? component.exampleName : 'Default'}
-                {component.note && (
-                  <div>
-                    <Text weight="semibold">Note:</Text> <Text>{component.note}</Text>
-                  </div>
-                )}
-                <Divider appearance="strong" />
-              </div>
-            );
-          })}
-        </div>
-      </>
-    );
-  };
-
   React.useEffect(() => {
     setFilteredComponentsDefinitions(componentsDefinitions.current);
   }, [setFilteredComponentsDefinitions]);
@@ -500,7 +457,7 @@ export const Selector = () => {
       </div>
 
       {/* nova komponenta na resutls: Found components */}
-      <MatchingComponents />
+      <MatchingComponents components={getMatchingComponents()} />
     </>
   );
 };
