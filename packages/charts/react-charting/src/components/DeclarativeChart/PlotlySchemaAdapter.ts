@@ -35,9 +35,13 @@ const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(
 export const isDateArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isDate);
 export const isNumberArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isNumber);
 
-export const getColor = (legendLabel: string, colorMap: React.MutableRefObject<Map<string, string>>): string => {
+export const getColor = (
+  legendLabel: string,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): string => {
   if (!colorMap.current.has(legendLabel)) {
-    const nextColor = getNextColor(colorMap.current.size + 1);
+    const nextColor = getNextColor(colorMap.current.size + 1, 0, isDarkTheme);
     colorMap.current.set(legendLabel, nextColor);
     return nextColor;
   }
@@ -48,12 +52,13 @@ export const getColor = (legendLabel: string, colorMap: React.MutableRefObject<M
 export const transformPlotlyJsonToDonutProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): IDonutChartProps => {
   const { data, layout } = jsonObj;
   const firstData = data[0];
 
   const donutData = firstData.labels?.map((label: string, index: number): IChartDataPoint => {
-    const color = getColor(label, colorMap);
+    const color = getColor(label, colorMap, isDarkTheme);
     return {
       legend: label,
       data: firstData.values?.[index],
@@ -97,6 +102,7 @@ export const transformPlotlyJsonToDonutProps = (
 export const transformPlotlyJsonToVSBCProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): IVerticalStackedBarChartProps => {
   const { data, layout } = jsonObj;
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
@@ -109,14 +115,14 @@ export const transformPlotlyJsonToVSBCProps = (
       }
       const legend: string = series.name || `Series ${index1 + 1}`;
       if (series.type === 'bar') {
-        const color = getColor(legend, colorMap);
+        const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].chartData.push({
           legend,
           data: series.y?.[index2],
           color,
         });
       } else if (series.type === 'line') {
-        const color = getColor(legend, colorMap);
+        const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].lineData!.push({
           legend,
           y: series.y?.[index2],
@@ -141,6 +147,7 @@ export const transformPlotlyJsonToVSBCProps = (
 export const transformPlotlyJsonToGVBCProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): IGroupedVerticalBarChartProps => {
   const { data, layout } = jsonObj;
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
@@ -152,7 +159,7 @@ export const transformPlotlyJsonToGVBCProps = (
       }
       if (series.type === 'bar') {
         const legend: string = series.name || `Series ${index1 + 1}`;
-        const color = getColor(legend, colorMap);
+        const color = getColor(legend, colorMap, isDarkTheme);
 
         mapXToDataPoints[x].series.push({
           key: legend,
@@ -176,6 +183,7 @@ export const transformPlotlyJsonToGVBCProps = (
 export const transformPlotlyJsonToVBCProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): IVerticalBarChartProps => {
   const { data, layout } = jsonObj;
   const vbcData: IVerticalBarChartDataPoint[] = [];
@@ -217,7 +225,7 @@ export const transformPlotlyJsonToVBCProps = (
 
     buckets.forEach(bucket => {
       const legend = series.name || `Series ${index + 1}`;
-      const color = getColor(legend, colorMap);
+      const color = getColor(legend, colorMap, isDarkTheme);
       let y = bucket.length;
 
       if (series.histnorm === 'percent') {
@@ -263,6 +271,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   jsonObj: any,
   isAreaChart: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
   const { data, layout } = jsonObj;
 
@@ -272,7 +281,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const legend = series.name || `Series ${index + 1}`;
-    const lineColor = getColor(legend, colorMap);
+    const lineColor = getColor(legend, colorMap, isDarkTheme);
 
     return {
       legend,
@@ -305,13 +314,14 @@ export const transformPlotlyJsonToScatterChartProps = (
 export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): IHorizontalBarChartWithAxisProps => {
   const { data, layout } = jsonObj;
 
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = data
     .map((series: any, index: number) => {
       return series.y.map((yValue: string, i: number) => {
-        const color = getColor(yValue, colorMap);
+        const color = getColor(yValue, colorMap, isDarkTheme);
         return {
           x: series.x[i],
           y: yValue,
@@ -386,6 +396,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
 export const transformPlotlyJsonToSankeyProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): ISankeyChartProps => {
   const { data, layout } = jsonObj;
   const { link, node } = data[0];
@@ -401,7 +412,7 @@ export const transformPlotlyJsonToSankeyProps = (
 
   const sankeyChartData = {
     nodes: node.label.map((label: string, index: number) => {
-      const color = getColor(label, colorMap);
+      const color = getColor(label, colorMap, isDarkTheme);
 
       return {
         nodeId: index,
@@ -440,13 +451,14 @@ export const transformPlotlyJsonToSankeyProps = (
 export const transformPlotlyJsonToGaugeProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
 ): IGaugeChartProps => {
   const { data, layout } = jsonObj;
   const firstData = data[0];
 
   const segments = firstData.gauge?.steps?.map((step: any, index: number): IGaugeChartSegment => {
     const legend = step.name || `Segment ${index + 1}`;
-    const color = getColor(legend, colorMap);
+    const color = getColor(legend, colorMap, isDarkTheme);
     return {
       legend,
       size: step.range?.[1] - step.range?.[0],
@@ -460,11 +472,11 @@ export const transformPlotlyJsonToGaugeProps = (
     const diff = firstData.value - firstData.delta.reference;
     if (diff >= 0) {
       sublabel = `\u25B2 ${diff}`;
-      const color = getColor(firstData.delta.increasing?.color || '', colorMap);
+      const color = getColor(firstData.delta.increasing?.color || '', colorMap, isDarkTheme);
       sublabelColor = color;
     } else {
       sublabel = `\u25BC ${Math.abs(diff)}`;
-      const color = getColor(firstData.delta.decreasing?.color || '', colorMap);
+      const color = getColor(firstData.delta.decreasing?.color || '', colorMap, isDarkTheme);
       sublabelColor = color;
     }
   }
