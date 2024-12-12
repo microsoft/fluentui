@@ -90,6 +90,7 @@ export const transformPlotlyJsonToDonutProps = (
     hideLabels,
     showLabelsInPercent: firstData.textinfo ? firstData.textinfo === 'percent' : true,
     styles,
+    canSelectMultipleLegends: true,
   };
 };
 

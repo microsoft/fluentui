@@ -69,6 +69,12 @@ export interface IDonutChartProps extends ICartesianChartProps {
    * @default false
    */
   roundCorners?: boolean;
+
+  /**
+   * Prop to enable the multiple legend selection
+   * @default false
+   */
+  canSelectMultipleLegends?: boolean;
 }
 
 /**

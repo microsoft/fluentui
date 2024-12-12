@@ -247,9 +247,16 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         action: () => {
           const { selectedLegends } = this.state;
           const isSelected = selectedLegends.includes(point.legend!);
-          const newSelectedLegends = isSelected
-            ? selectedLegends.filter(l => l !== point.legend)
-            : [...selectedLegends, point.legend!];
+
+          let newSelectedLegends;
+          if (this.props.canSelectMultipleLegends) {
+            newSelectedLegends = isSelected
+              ? selectedLegends.filter(l => l !== point.legend)
+              : [...selectedLegends, point.legend!];
+          } else {
+            newSelectedLegends = isSelected ? [] : [point.legend!];
+          }
+
           this.setState({ selectedLegends: newSelectedLegends });
         },
         hoverAction: () => {
@@ -271,7 +278,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
-        canSelectMultipleLegends
+        canSelectMultipleLegends={this.props.canSelectMultipleLegends}
       />
     );
     return legends;
