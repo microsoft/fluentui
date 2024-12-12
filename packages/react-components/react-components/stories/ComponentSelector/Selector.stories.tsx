@@ -27,6 +27,7 @@ import * as componentsDefinitionsImported from './components-definitions/index';
 import { add, create, get, set } from 'lodash';
 import { SelectionCard } from './SelectionCard';
 import { Question } from './Question';
+import { BehaviorSelection } from './BehaviorSelection';
 import { MatchingComponents } from './MatchingComponents';
 
 const decisionRadioValues: Record<string, string[]> = {
@@ -92,7 +93,6 @@ const useStyles = makeStyles({
   radioItem: {
     display: 'flex',
   },
-  behaviors: { display: 'flex', gap: '10px' },
 });
 
 export const Selector = () => {
@@ -204,7 +204,7 @@ export const Selector = () => {
 
   fillComponentsDefinitions();
 
-  const updateDecisionsForCheckbox = (name: string, checked: boolean | string) => {
+  const updateBehaviorDecision = (name: string, checked: boolean | string) => {
     if (checked) {
       setSelectedBehaviours([...selectedBehaviours, name]);
     } else {
@@ -362,7 +362,7 @@ export const Selector = () => {
       <Field label="Filter components">
         <Input onChange={onFilterChange} />
       </Field>
-      <h2>Choose component</h2>
+      <h2>Choose Component</h2>
       <Accordion multiple>
         {categorizedComponents.map(category => (
           <AccordionItem value={category.id}>
@@ -375,88 +375,7 @@ export const Selector = () => {
       </Accordion>
       {allQuestions.length > 0 && <h2 className={classes.heading}>Questions</h2>}
       {QuestionRadioGroup}
-      <h2 className={classes.heading}>Choose behavior</h2>
-      <div className={classes.behaviors}>
-        <ToggleButton
-          checked={behavior1}
-          shape="circular"
-          onClick={() => {
-            setBehavior1(!behavior1);
-            updateDecisionsForCheckbox('interactive', !behavior1);
-          }}
-        >
-          interactive
-        </ToggleButton>
-        <ToggleButton
-          checked={behavior2}
-          shape="circular"
-          onClick={() => {
-            setBehavior2(!behavior2);
-            updateDecisionsForCheckbox('static', !behavior2);
-          }}
-        >
-          static
-        </ToggleButton>
-
-        <ToggleButton
-          checked={behavior4}
-          shape="circular"
-          onClick={() => {
-            setBehavior4(!behavior4);
-            updateDecisionsForCheckbox('toggle', !behavior4);
-          }}
-        >
-          toggle
-        </ToggleButton>
-        <ToggleButton
-          checked={behavior5}
-          shape="circular"
-          onClick={() => {
-            setBehavior5(!behavior5);
-            updateDecisionsForCheckbox('moreActions', !behavior5);
-          }}
-        >
-          multiple actions
-        </ToggleButton>
-      </div>
-
-      <h2 className={classes.heading}>Choose keyboard and screen reader experience</h2>
-      <div className={classes.behaviors}>
-        <ToggleButton
-          checked={behavior6}
-          shape="circular"
-          onClick={() => {
-            setBehavior6(!behavior6);
-            updateDecisionsForCheckbox('navigationByArrowKeys', !behavior6);
-          }}
-        >
-          arrow keys
-        </ToggleButton>
-
-        <ToggleButton
-          checked={behavior7}
-          shape="circular"
-          onClick={() => {
-            setBehavior7(!behavior7);
-            updateDecisionsForCheckbox('navigationByTabKey', !behavior7);
-          }}
-        >
-          Tab key
-        </ToggleButton>
-
-        <ToggleButton
-          checked={behavior8}
-          shape="circular"
-          onClick={() => {
-            setBehavior8(!behavior8);
-            updateDecisionsForCheckbox('narratesPosition', !behavior8);
-          }}
-        >
-          screen reader narrates position
-        </ToggleButton>
-      </div>
-
-      {/* nova komponenta na resutls: Found components */}
+      <BehaviorSelection updateBehaviorDecision={updateBehaviorDecision} />
       <MatchingComponents components={getMatchingComponents()} />
     </>
   );

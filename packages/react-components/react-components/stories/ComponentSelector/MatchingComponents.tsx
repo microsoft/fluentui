@@ -14,7 +14,7 @@ export const MatchingComponents = ({ components }) => {
   return (
     <>
       <h2 id="matching-heading" className={classes.heading}>
-        Matching components
+        Matching Components
       </h2>
       <div role="group" aria-labelledby="matching-heading">
         <div className={classes.foundMessage}>

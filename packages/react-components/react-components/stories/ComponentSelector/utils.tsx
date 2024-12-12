@@ -46,7 +46,7 @@ export const Scenario: React.FC<{ pageTitle: string }> = ({ pageTitle, children 
   );
 };
 
-export const removeFromArray = (array: string[], item: string) => {
+export const removeFromArray = (array: string[], item: any) => {
   const index = array.indexOf(item);
   if (index >= 0) {
     array.splice(index, 1);
