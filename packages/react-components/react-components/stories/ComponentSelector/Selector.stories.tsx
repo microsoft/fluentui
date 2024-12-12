@@ -250,7 +250,7 @@ export const Selector = () => {
 
     if (selectedBehaviours.length > 0) {
       console.log(`GET COMPONENT: selectedBehaviours: ${selectedBehaviours}`);
-      const componentsToIterate = suitableComponents.length > 0 ? suitableComponents : componentsDefinitions.current;
+      const componentsToIterate = componentsDefinitions.current;
       // componentsDefinitions.current.forEach(definition => {
       componentsToIterate.forEach(definition => {
         // const keysInDefinitions = Object.keys(definition);
