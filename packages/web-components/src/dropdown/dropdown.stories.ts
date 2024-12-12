@@ -151,3 +151,20 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
+
+export const DisabledOptions: Story = {
+  args: {
+    ...Default.args,
+    slottedOptions: [
+      { disabled: true, value: 'apple', slottedContent: () => 'Apple' },
+      { value: 'banana', slottedContent: () => 'Banana' },
+      { value: 'orange', slottedContent: () => 'Orange' },
+      { disabled: true, value: 'mango', slottedContent: () => 'Mango' },
+      { disabled: true, value: 'kiwi', slottedContent: () => 'Kiwi' },
+      { value: 'cherry', slottedContent: () => 'Cherry' },
+      { value: 'grapefruit', slottedContent: () => 'Grapefruit' },
+      { disabled: true, value: 'papaya', slottedContent: () => 'Papaya' },
+      { value: 'lychee', slottedContent: () => 'Lychee' },
+    ],
+  },
+};
