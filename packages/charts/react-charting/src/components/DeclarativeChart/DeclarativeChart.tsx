@@ -24,29 +24,22 @@ import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
-
-import { useTheme } from '@fluentui/react';
+import { useTheme } from '@fluentui/react/lib/Theme';
 
 export const UseIsDarkTheme = (): boolean => {
   const theme = useTheme();
   return theme.isInverted;
 };
 
+/**
+ * DeclarativeChart schema.
+ * {@docCategory DeclarativeChart}
+ */
 export interface Schema {
   /**
    * Plotly schema represented as JSON object
    */
   plotlySchema: any;
-
-  /**
-   * The legends selected by the user to persist in the chart
-   */
-  selectedLegends?: string[];
-
-  /**
-   * Dictionary for localizing the accessibility labels
-   */
-  accesibilityLabels?: { [key: string]: string };
 }
 
 /**
@@ -79,17 +72,26 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   DeclarativeChartProps
 >((props, forwardedRef) => {
   const { plotlySchema } = props.chartSchema;
-  const xValues = plotlySchema.data[0].x;
+  const { data, layout, selectedLegends } = plotlySchema;
+  const xValues = data[0].x;
   const isXDate = isDateArray(xValues);
   const isXNumber = isNumberArray(xValues);
   const colorMap = useColorMapping();
   const isDarkTheme = UseIsDarkTheme();
 
-  switch (plotlySchema.data[0].type) {
+  const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends ?? []);
+  const onActiveLegendsChange = (keys: string[]) => {
+    setActiveLegends(keys);
+    if (props.onSchemaChange) {
+      props.onSchemaChange({ plotlySchema: { data, layout, selectedLegends: keys } });
+    }
+  };
+
+  switch (data[0].type) {
     case 'pie':
       return <DonutChart {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)} />;
     case 'bar':
-      const orientation = plotlySchema.data[0].orientation;
+      const orientation = data[0].orientation;
       if (orientation === 'h') {
         return (
           <HorizontalBarChartWithAxis
@@ -103,12 +105,30 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return <VerticalStackedBarChart {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)} />;
       }
     case 'scatter':
-      const isAreaChart = plotlySchema.data.some((series: any) => series.fill === 'tonexty');
+      const isAreaChart = data.some((series: any) => series.fill === 'tonexty');
       if (isXDate || isXNumber) {
         if (isAreaChart) {
-          return <AreaChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, true, colorMap, isDarkTheme)} />;
+          return (
+            <AreaChart
+              {...transformPlotlyJsonToScatterChartProps({ data, layout }, true, colorMap, isDarkTheme)}
+              legendProps={{
+                canSelectMultipleLegends: false,
+                selectedLegend: activeLegends.length > 0 ? activeLegends[0] : '',
+                onChange: onActiveLegendsChange,
+              }}
+            />
+          );
         }
-        return <LineChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, false, colorMap, isDarkTheme)} />;
+        return (
+          <LineChart
+            {...transformPlotlyJsonToScatterChartProps({ data, layout }, false, colorMap, isDarkTheme)}
+            legendProps={{
+              canSelectMultipleLegends: true,
+              selectedLegends: activeLegends,
+              onChange: onActiveLegendsChange,
+            }}
+          />
+        );
       }
       return <VerticalStackedBarChart {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)} />;
     case 'heatmap':
@@ -116,7 +136,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'sankey':
       return <SankeyChart {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap, isDarkTheme)} />;
     case 'indicator':
-      if (plotlySchema?.data?.[0]?.mode?.includes('gauge')) {
+      if (data?.[0]?.mode?.includes('gauge')) {
         return <GaugeChart {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)} />;
       }
       return <div>Unsupported Schema</div>;

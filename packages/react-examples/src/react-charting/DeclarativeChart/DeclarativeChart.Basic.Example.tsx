@@ -38,7 +38,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
   constructor(props: DeclarativeChartProps) {
     super(props);
     this.state = {
-      selectedChoice: 'donutchart',
+      selectedChoice: 'areachart',
     };
   }
 
