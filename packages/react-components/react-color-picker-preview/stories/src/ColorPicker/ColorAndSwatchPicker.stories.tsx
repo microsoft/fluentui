@@ -49,8 +49,8 @@ const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
 export const ColorAndSwatchPickerExample = () => {
   const styles = useStyles();
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
-  const [selectedValue, setSelectedValue] = React.useState('fff');
-  const [selectedColor, setSelectedColor] = React.useState('#fff');
+  const [selectedValue, setSelectedValue] = React.useState(DEFAULT_SELECTED_VALUE);
+  const [selectedColor, setSelectedColor] = React.useState(DEFAULT_SELECTED_COLOR);
 
   const colorFocusTargetRef = React.useRef<HTMLButtonElement>(null);
   const [colorFocusTarget, setColorFocusTarget] = React.useState<string | null>(null);
