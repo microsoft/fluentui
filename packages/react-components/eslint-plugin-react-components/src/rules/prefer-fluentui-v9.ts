@@ -2,10 +2,7 @@ import { createRule } from './utils/create-rule';
 
 export const RULE_NAME = 'prefer-fluentui-v9';
 
-type Options = Array<{
-  /** Whether to enforce Fluent UI v9 preview component migrations. */
-  preview?: boolean;
-}>;
+type Options = Array<{}>;
 
 type MessageIds = 'replaceFluent8With9' | 'replaceIconWithJsx' | 'replaceStackWithFlex' | 'replaceFocusZoneWithTabster';
 
@@ -19,10 +16,7 @@ export const rule = createRule<Options, MessageIds>({
     schema: [
       {
         type: 'object',
-        properties: {
-          preview: { type: 'boolean' },
-        },
-        additionalProperties: false,
+        properties: {},
       },
     ],
     messages: {
@@ -34,8 +28,6 @@ export const rule = createRule<Options, MessageIds>({
   },
   defaultOptions: [],
   create(context) {
-    const { preview = false } = context.options[0] ?? {};
-
     return {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       ImportDeclaration(node) {
@@ -71,18 +63,7 @@ export const rule = createRule<Options, MessageIds>({
                       package: migration.package,
                     },
                   });
-                } else if (isPreviewMigration(name) && preview) {
-                  context.report({
-                    node,
-                    messageId: 'replaceFluent8With9',
-                    data: {
-                      fluent8: name,
-                      fluent9: PREVIEW_MIGRATIONS[name].component,
-                      package: PREVIEW_MIGRATIONS[name].package,
-                    },
-                  });
                 }
-                break;
             }
           }
         }
@@ -163,28 +144,11 @@ const MIGRATIONS = {
 } satisfies Record<string, Migration>;
 
 /**
- * Preview migrations for certain components.
- * @see https://react.fluentui.dev/?path=/docs/concepts-migration-from-v8-component-mapping--docs
- */
-const PREVIEW_MIGRATIONS = {
-  ColorPicker: { component: 'ColorPicker', package: '@fluentui/react-color-picker-preview' },
-  List: { component: 'List', package: '@fluentui/react-list-preview' },
-  Virtualizer: { component: 'Virtualizer', package: '@fluentui/react-virtualizer-preview' },
-} satisfies Record<string, Migration>;
-
-/**
  * Checks if a component name is in the MIGRATIONS list.
  * @param name - The name of the component.
  * @returns True if the component is in the MIGRATIONS list, false otherwise.
  */
 const isMigration = (name: string): name is keyof typeof MIGRATIONS => name in MIGRATIONS;
-
-/**
- * Checks if a component name is in the PREVIEW_MIGRATIONS list.
- * @param name - The name of the component.
- * @returns True if the component is in the PREVIEW_MIGRATIONS list, false otherwise.
- */
-const isPreviewMigration = (name: string): name is keyof typeof PREVIEW_MIGRATIONS => name in PREVIEW_MIGRATIONS;
 
 /**
  * Get the component and package name to use for a migration.
