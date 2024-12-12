@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { tinycolor } from '@ctrl/tinycolor';
-import { makeStyles, Button, SwatchPicker, EmptySwatch, ColorSwatch, Label } from '@fluentui/react-components';
+import { makeStyles, Button, SwatchPicker, EmptySwatch, ColorSwatch, Label, tokens } from '@fluentui/react-components';
 import {
   ColorPicker,
   ColorSlider,
@@ -20,16 +20,16 @@ const useStyles = makeStyles({
   previewColor: {
     width: '50px',
     height: '50px',
-    borderRadius: '4px',
-    border: '1px solid #ccc',
-    margin: '10px 0',
+    borderRadius: tokens.borderRadiusMedium,
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    margin: `${tokens.spacingVerticalMNudge} 0`,
   },
   button: {
-    marginRight: '8px',
+    marginRight: tokens.spacingHorizontalS,
   },
   input: {
     display: 'block',
-    margin: '6px 0',
+    margin: `${tokens.spacingVerticalSNudge} 0`,
   },
   row: {
     display: 'flex',
@@ -45,6 +45,8 @@ const useStyles = makeStyles({
 
 const ITEMS_LIMIT = 8;
 const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
+const DEFAULT_SELECTED_VALUE = 'FFF';
+const DEFAULT_SELECTED_COLOR = '#FFFFFF';
 
 export const ColorAndSwatchPickerExample = () => {
   const styles = useStyles();
