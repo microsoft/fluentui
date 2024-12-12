@@ -46,7 +46,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     super(props);
     this.state = {
       isCalloutVisible: false,
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       activeLegend: '',
       refSelected: null,
       dataForHoverCard: 0,

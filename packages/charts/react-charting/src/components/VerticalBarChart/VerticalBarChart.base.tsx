@@ -110,7 +110,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       dataForHoverCard: 0,
       isCalloutVisible: false,
       refSelected: null,
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       activeLegend: '',
       xCalloutValue: '',
       yCalloutValue: '',

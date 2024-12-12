@@ -69,7 +69,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this.state = {
       isCalloutVisible: false,
       refArray: [],
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       activeLegend: '',
       refSelected: null,
       dataForHoverCard: 0,
