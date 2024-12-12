@@ -1,0 +1,40 @@
+[
+  {
+    "title": "Choose Behavior",
+    "behaviors": [
+      {
+        "id": "interactive",
+        "name": "Interactive"
+      },
+      {
+        "id": "static",
+        "name": "Static"
+      },
+      {
+        "id": "toggle",
+        "name": "Toggle"
+      },
+      {
+        "id": "moreActions",
+        "name": "Multiple actions"
+      }
+    ]
+  },
+  {
+    "title": "Choose Keyboard and Screen Reader Experience",
+    "behaviors": [
+      {
+        "id": "navigationByTabKey",
+        "name": "Navigation by Tab key"
+      },
+      {
+        "id": "navigationByArrowKeys",
+        "name": "Navigation by arrow keys"
+      },
+      {
+        "id": "narratesPosition",
+        "name": "Screen reader narrates position"
+      }
+    ]
+  }
+]
