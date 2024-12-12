@@ -27,7 +27,7 @@ export const defaultTableState: TableFeaturesState<unknown> = {
 
 export function useTableFeatures<TItem>(
   options: UseTableFeaturesOptions<TItem>,
-  plugins: TableFeaturePlugin[] = [],
+  plugins: TableFeaturePlugin<TItem>[] = [],
 ): TableFeaturesState<TItem> {
   const { items, getRowId, columns } = options;
 
