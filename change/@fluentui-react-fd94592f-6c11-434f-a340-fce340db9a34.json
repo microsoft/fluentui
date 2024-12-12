@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: Added label, required, and error properties to BasePicker.",
+  "packageName": "@fluentui/react",
+  "email": "tpalacino@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

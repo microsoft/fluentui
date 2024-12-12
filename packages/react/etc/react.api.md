@@ -716,6 +716,8 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     static getDerivedStateFromProps(newProps: IBasePickerProps<any>): {
         items: any[];
     } | null;
+    // (undocumented)
+    protected _getDescribedBy: (items: T[], hasError: boolean) => string;
     // @deprecated (undocumented)
     protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
     // (undocumented)
@@ -764,7 +766,11 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     protected renderCustomAlert(alertClassName?: string): JSX.Element;
     // (undocumented)
+    protected renderError(className?: string): JSX.Element | null;
+    // (undocumented)
     protected renderItems(): JSX.Element[];
+    // (undocumented)
+    protected renderLabel(inputId: string, styles: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> | undefined): JSX.Element | null;
     // (undocumented)
     protected renderSuggestions(): JSX.Element | null;
     // (undocumented)
@@ -2382,9 +2388,11 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
     defaultSelectedItems?: T[];
     disabled?: boolean;
     enableSelectedSuggestionAlert?: boolean;
+    errorMessage?: string | JSX.Element;
     getTextFromItem?: (item: T, currentValue?: string) => string;
     inputProps?: IInputProps;
     itemLimit?: number;
+    label?: string;
     onBlur?: React_2.FocusEventHandler<HTMLInputElement | Autofill>;
     onChange?: (items?: T[]) => void;
     onDismiss?: (ev?: any, selectedItem?: T) => boolean | void;
@@ -2393,6 +2401,7 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
     onEmptyResolveSuggestions?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     // @deprecated
     onFocus?: React_2.FocusEventHandler<HTMLInputElement | Autofill>;
+    onGetErrorMessage?: (items: T[]) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
     onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onInputChange?: (input: string) => string;
     onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
@@ -2405,6 +2414,7 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
     pickerSuggestionsProps?: IBasePickerSuggestionsProps;
     removeButtonAriaLabel?: string;
     removeButtonIconProps?: IIconProps;
+    required?: boolean;
     resolveDelay?: number;
     searchingText?: ((props: {
         input: string;
@@ -2419,6 +2429,8 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
 
 // @public (undocumented)
 export interface IBasePickerState<T> {
+    // (undocumented)
+    errorMessage?: string | JSX.Element;
     // (undocumented)
     isFocused?: boolean;
     // (undocumented)
@@ -2447,16 +2459,20 @@ export interface IBasePickerState<T> {
 
 // @public
 export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'className' | 'disabled'> & {
+    hasErrorMessage: boolean;
     isFocused?: boolean;
     inputClassName?: string;
 };
 
 // @public
 export interface IBasePickerStyles {
+    error: IStyle;
     input: IStyle;
     itemsWrapper: IStyle;
     root: IStyle;
     screenReaderText: IStyle;
+    // Warning: (ae-forgotten-export) The symbol "IBasePickerSubComponentStyles" needs to be exported by the entry point index.d.ts
+    subComponentStyles: IBasePickerSubComponentStyles;
     text: IStyle;
 }
 
@@ -7700,6 +7716,7 @@ export type IPickerAriaIds = {
     selectedItems: string;
     suggestionList: string;
     combobox: string;
+    error: string;
 };
 
 // @public
