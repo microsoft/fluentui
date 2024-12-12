@@ -335,16 +335,6 @@ export const Selector = () => {
   };
 
   const allQuestions = getAllQuestions(selectedComponents, questions);
-  const QuestionRadioGroup = allQuestions.map((item, index) => (
-    <>
-      <Question
-        key={item.id}
-        QuestionItem={item}
-        indexQuestion={index}
-        updateDecisionForQuestion={updateDecisionForQuestion}
-      />
-    </>
-  ));
 
   React.useEffect(() => {
     setFilteredComponentsDefinitions(componentsDefinitions.current);
@@ -365,7 +355,7 @@ export const Selector = () => {
       <h2>Choose Component</h2>
       <Accordion multiple>
         {categorizedComponents.map(category => (
-          <AccordionItem value={category.id}>
+          <AccordionItem key={category.id} value={category.id}>
             <AccordionHeader as="h3">{category.title}</AccordionHeader>
             <AccordionPanel>
               <div className={classes.root}>{category['cards']}</div>
@@ -374,7 +364,14 @@ export const Selector = () => {
         ))}
       </Accordion>
       {allQuestions.length > 0 && <h2 className={classes.heading}>Questions</h2>}
-      {QuestionRadioGroup}
+      {allQuestions.map((item, index) => (
+        <Question
+          key={item.id}
+          QuestionItem={item}
+          indexQuestion={index}
+          updateDecisionForQuestion={updateDecisionForQuestion}
+        />
+      ))}
       <BehaviorSelection updateBehaviorDecision={updateBehaviorDecision} />
       <MatchingComponents components={getMatchingComponents()} />
     </>

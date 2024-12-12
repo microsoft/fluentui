@@ -25,11 +25,12 @@ export const BehaviorSelection = ({ updateBehaviorDecision }) => {
   return (
     <>
       {behaviorOptions.map(category => (
-        <>
+        <React.Fragment key={category.id}>
           <h2 className={classes.heading}>{category.title}</h2>
           <div className={classes.behaviors}>
             {category.behaviors.map(behavior => (
               <ToggleButton
+                key={behavior.id}
                 checked={behaviors[behavior.id]}
                 shape="circular"
                 onClick={() => {
@@ -44,7 +45,7 @@ export const BehaviorSelection = ({ updateBehaviorDecision }) => {
               </ToggleButton>
             ))}
           </div>
-        </>
+        </React.Fragment>
       ))}
     </>
   );

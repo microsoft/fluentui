@@ -82,8 +82,8 @@ const useStyles = makeStyles({
 });
 
 export const Question = ({ QuestionItem, indexQuestion, updateDecisionForQuestion }) => {
-  const [value, setRadioValue] = React.useState('none');
   const classes = useStyles();
+  const [value, setValue] = React.useState('none');
 
   React.useEffect(() => {
     console.log(`UseEffect: Question${indexQuestion}: Value: ${value}`);
@@ -98,7 +98,7 @@ export const Question = ({ QuestionItem, indexQuestion, updateDecisionForQuestio
           onChange={(_, data) => {
             // calling this caused rerendering of the component
 
-            setRadioValue(previousValue => {
+            setValue(previousValue => {
               updateDecisionForQuestion(data.value, previousValue);
               return data.value;
             });

@@ -1,5 +1,6 @@
 [
   {
+    "id": "general",
     "title": "Choose Behavior",
     "behaviors": [
       {
@@ -21,6 +22,7 @@
     ]
   },
   {
+    "id": "keyboardAndScreenReaders",
     "title": "Choose Keyboard and Screen Reader Experience",
     "behaviors": [
       {
