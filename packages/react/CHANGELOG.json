@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 12 Dec 2024 07:22:32 GMT",
+      "tag": "@fluentui/react_v8.122.0",
+      "version": "8.122.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tpalacino@users.noreply.github.com",
+            "package": "@fluentui/react",
+            "commit": "53dd771e70338065810404663cd6219d1b54c1e2",
+            "comment": "fix: Added label, required, and error properties to BasePicker."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 Nov 2024 07:21:17 GMT",
       "tag": "@fluentui/react_v8.121.13",
       "version": "8.121.13",
