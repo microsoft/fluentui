@@ -22,8 +22,8 @@ export const plugin: {
         };
     };
     rules: {
-        "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceFluent8With9Unstable" | "replaceIconWithJsx" | "replaceStackWithFlex", {
-        unstable?: boolean | undefined;
+        "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceIconWithJsx" | "replaceStackWithFlex" | "replaceFocusZoneWithTabster", {
+        preview?: boolean | undefined;
         }[], unknown, RuleListener>;
     };
 };
