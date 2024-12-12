@@ -399,7 +399,7 @@ export const transformPlotlyJsonToSankeyProps = (
     }))
     // eslint-disable-next-line @typescript-eslint/no-shadow
     //@ts-expect-error Dynamic link object. Ignore for now.
-    // Filter out non-negative nodes, unequal nodes and self-references (circular links)
+    // Filter out negative nodes, unequal nodes and self-references (circular links)
     .filter(x => x.source > 0 && x.target > 0 && x.source !== x.target);
 
   const sankeyChartData = {
