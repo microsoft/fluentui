@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 09 Dec 2024 07:21:03 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Dec 2024 07:22:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.23)
+
+Thu, 12 Dec 2024 07:22:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.22..@fluentui/react-charting_v5.23.23)
+
+### Patches
+
+- Dark mode theme colors for declarative charts ([PR #33439](https://github.com/microsoft/fluentui/pull/33439) by 120183316+srmukher@users.noreply.github.com)
+- Add support for controlled selction of legends. ([PR #33436](https://github.com/microsoft/fluentui/pull/33436) by 74965306+Anush2303@users.noreply.github.com)
+- Bump @fluentui/theme-samples to v8.7.189 ([PR #33243](https://github.com/microsoft/fluentui/pull/33243) by beachball)
+- Bump @fluentui/react to v8.122.0 ([PR #33243](https://github.com/microsoft/fluentui/pull/33243) by beachball)
 
 ## [5.23.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.22)
 
