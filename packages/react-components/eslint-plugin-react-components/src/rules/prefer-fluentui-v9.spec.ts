@@ -18,8 +18,8 @@ ruleTester.run(RULE_NAME, rule, {
       code: `import { Button } from '@fluentui/react-components';`,
     },
     {
-      code: `import { Rating } from '@fluentui/react';`,
-      options: [{ unstable: false }],
+      code: `import { ColorPicker } from '@fluentui/react';`,
+      options: [{ preview: false }],
     },
   ],
   invalid: [
@@ -33,12 +33,22 @@ ruleTester.run(RULE_NAME, rule, {
     },
     {
       code: `import { DatePicker } from '@fluentui/react';`,
-      errors: [{ messageId: 'replaceFluent8With9Unstable' }],
+      errors: [
+        {
+          messageId: 'replaceFluent8With9',
+          data: { fluent8: 'DatePicker', fluent9: 'DatePicker', package: '@fluentui/react-datepicker-compat' },
+        },
+      ],
     },
     {
-      code: `import { Rating } from '@fluentui/react';`,
-      options: [{ unstable: true }],
-      errors: [{ messageId: 'replaceFluent8With9Unstable' }],
+      code: `import { List } from '@fluentui/react';`,
+      options: [{ preview: true }],
+      errors: [
+        {
+          messageId: 'replaceFluent8With9',
+          data: { fluent8: 'List', fluent9: 'List', package: '@fluentui/react-list-preview' },
+        },
+      ],
     },
   ],
 });
