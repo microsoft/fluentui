@@ -27,7 +27,6 @@ const PORTFOLIO = 'portfolio';
 const ALBUM = 'album';
 const LIST_FORM = 'listform';
 
-
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
 export type ImageFileType = 'svg' | 'png';
