@@ -592,6 +592,8 @@ export class BaseDropdown extends FASTElement {
     this.listbox?.enabledOptions.forEach((option, index) => {
       option.setActiveState(index === optionIndex);
     });
+
+    this.listbox?.enabledOptions[optionIndex]?.scrollIntoView({ block: 'nearest' });
   }
 
   /**
