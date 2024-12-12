@@ -59,7 +59,14 @@ describe('react-component generator', () => {
         const rootOffset = offsetFromRoot(componentRootPath);
 
         expect(tree.read(joinPathFragments(projectSourceRootPath, 'MyOne.ts'), 'utf-8')).toMatchInlineSnapshot(`
-      "export * from './components/MyOne/index';
+      "export {
+        myOneClassNames,
+        MyOne,
+        renderMyOne_unstable,
+        useMyOne_unstable,
+        useMyOneStyles_unstable,
+      } from './components/MyOne/index';
+      export type { MyOneProps, MyOneState } from './components/MyOne/index';
       "
     `);
 
@@ -74,6 +81,18 @@ describe('react-component generator', () => {
         "useMyOneStyles.styles.ts",
       ]
     `);
+
+        expect(tree.read(joinPathFragments(componentRootPath, 'index.ts'), 'utf-8')).toMatchInlineSnapshot(`
+          "export { MyOne } from './MyOne';
+          export type { MyOneProps, MyOneState } from './MyOne.types';
+          export { renderMyOne_unstable } from './renderMyOne';
+          export { useMyOne_unstable } from './useMyOne';
+          export {
+            myOneClassNames,
+            useMyOneStyles_unstable,
+          } from './useMyOneStyles.styles';
+          "
+        `);
 
         expect(tree.read(joinPathFragments(componentRootPath, 'MyOne.tsx'), 'utf-8')).toMatchInlineSnapshot(`
       "import * as React from 'react';
@@ -174,15 +193,36 @@ describe('react-component generator', () => {
         const barrelPath = joinPathFragments(projectSourceRootPath, 'index.ts');
 
         expect(tree.read(barrelPath, 'utf-8')).toMatchInlineSnapshot(`
-      "export * from './MyOne';
+      "export {
+        myOneClassNames,
+        MyOne,
+        renderMyOne_unstable,
+        useMyOne_unstable,
+        useMyOneStyles_unstable,
+      } from './MyOne';
+      export type { MyOneProps, MyOneState } from './MyOne';
       "
     `);
 
         await generator(tree, { project: 'react-one', name: 'MyTwo' });
 
         expect(tree.read(barrelPath, 'utf-8')).toMatchInlineSnapshot(`
-      "export * from './MyOne';
-      export * from './MyTwo';
+      "export {
+        myOneClassNames,
+        MyOne,
+        renderMyOne_unstable,
+        useMyOne_unstable,
+        useMyOneStyles_unstable,
+      } from './MyOne';
+      export type { MyOneProps, MyOneState } from './MyOne';
+      export {
+        myTwoClassNames,
+        MyTwo,
+        renderMyTwo_unstable,
+        useMyTwo_unstable,
+        useMyTwoStyles_unstable,
+      } from './MyTwo';
+      export type { MyTwoProps, MyTwoState } from './MyTwo';
       "
     `);
       });

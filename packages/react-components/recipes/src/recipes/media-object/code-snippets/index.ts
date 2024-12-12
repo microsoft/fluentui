@@ -1,1 +1,1 @@
-export * from './MediaObject';
+export { FlexSkeleton, IconMediaObject, TextAlignmentVariations, TextPositionVariations } from './MediaObject';

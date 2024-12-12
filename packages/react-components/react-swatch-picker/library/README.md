@@ -2,8 +2,6 @@
 
 **React Swatch Picker components for [Fluent UI React](https://react.fluentui.dev/)**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
-
 The SwatchPicker is used in graphic and text editors. It allows user to choose a needed color, image or pattern.
 The SwatchPicker can be integrated within a popover or used as a standalone feature.
 
