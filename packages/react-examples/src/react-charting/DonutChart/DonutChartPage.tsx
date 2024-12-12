@@ -9,7 +9,6 @@ import {
 } from '@fluentui/react-docsite-components';
 
 import { DonutChartBasicExample } from './DonutChart.Basic.Example';
-import { DonutChartMultipleExample } from './DonutChart.Multiple.Example';
 import { DonutChartDynamicExample } from './DonutChart.Dynamic.Example';
 import { DonutChartCustomCalloutExample } from './DonutChart.CustomCallout.Example';
 import { DonutChartCustomAccessibilityExample } from './DonutChart.CustomAccessibility.Example';
@@ -22,8 +21,6 @@ const DonutChartCustomCalloutExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/DonutChart.CustomCallout.Example.tsx') as string;
 const DonutChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/DonutChart.CustomAccessibility.Example.tsx') as string;
-const DonutChartMultipleExampleCode =
-  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/DonutChart.Multiple.Example.tsx') as string;
 
 export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -44,9 +41,6 @@ export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}>
             </ExampleCard>
             <ExampleCard title="DonutChart Custom Accessibility" code={DonutChartCustomAccessibilityExampleCode}>
               <DonutChartCustomAccessibilityExample />
-            </ExampleCard>
-            <ExampleCard title="DonutChart Multiple" code={DonutChartMultipleExampleCode}>
-              <DonutChartMultipleExample />
             </ExampleCard>
           </div>
         }

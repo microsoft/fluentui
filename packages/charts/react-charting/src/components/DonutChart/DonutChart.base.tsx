@@ -70,7 +70,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       legend: '',
       _width: this.props.width || 200,
       _height: this.props.height || 200,
-      activeLegend: '',
+      activeLegend: undefined,
       color: '',
       xCalloutValue: '',
       yCalloutValue: '',
@@ -264,7 +264,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
           this.setState({ activeLegend: point.legend! });
         },
         onMouseOutAction: () => {
-          this.setState({ activeLegend: '' });
+          this.setState({ activeLegend: undefined });
         },
       };
       return legend;
@@ -338,22 +338,23 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   };
 
   private _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
-    const highlightedLegends = this._getHighlightedLegend();
-    if (valueInsideDonut !== undefined && (highlightedLegends.length > 0 || this.state.showHover)) {
-      let legendValue = valueInsideDonut;
+    const highlightedLegends = this._getHighlightedLegend().filter(legend => legend !== undefined);
+
+    if (this.state.showHover) {
+      const legendValue = data.find(point => point.legend === this.state.legend);
+      return legendValue
+        ? legendValue.yAxisCalloutData
+          ? legendValue.yAxisCalloutData
+          : legendValue.data!
+        : valueInsideDonut;
+    } else if (highlightedLegends.length > 0) {
       let totalValue = 0;
-      data!.map((point: IChartDataPoint, index: number) => {
-        if (
-          highlightedLegends.includes(point.legend!) ||
-          (this.state.showHover && point.legend === this.state.legend)
-        ) {
-          legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
+      data.forEach(point => {
+        if (highlightedLegends.includes(point.legend!)) {
           totalValue += point.data!;
         }
-        return;
       });
-      legendValue = totalValue === 0 ? legendValue : totalValue;
-      return legendValue;
+      return totalValue;
     } else {
       return valueInsideDonut;
     }
