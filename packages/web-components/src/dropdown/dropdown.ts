@@ -222,7 +222,7 @@ export class BaseDropdown extends FASTElement {
    * @remarks
    * HTML Attribute: `open`
    */
-  @attr({ mode: 'boolean' })
+  @observable
   public open!: boolean;
 
   /**
