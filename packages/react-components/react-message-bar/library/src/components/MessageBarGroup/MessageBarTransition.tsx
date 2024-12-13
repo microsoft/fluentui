@@ -3,6 +3,7 @@ import { Transition, TransitionStatus } from 'react-transition-group';
 import { MessageBarTransitionContextProvider } from '../../contexts/messageBarTransitionContext';
 import { MessageBarGroupProps } from './MessageBarGroup.types';
 
+// TODO: delete this unused code to save bytes
 const getClassName = (
   status: TransitionStatus,
   enterClassName: string,
@@ -24,6 +25,7 @@ const getClassName = (
 /**
  * Internal component that controls the animation transition for MessageBar components
  * @internal
+ * @deprecated Code is unused, replaced by motion components
  */
 export const MessageBarTransition: React.FC<{
   children: React.ReactElement;
@@ -50,6 +52,7 @@ export const MessageBarTransition: React.FC<{
   );
 };
 
+// TODO: delete this unused code to save bytes
 const MessageBarTransitionInner: React.FC<{
   children: React.ReactElement;
   enterClassName: string;

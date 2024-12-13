@@ -48,5 +48,8 @@ export type MessageBarProps = ComponentProps<MessageBarSlots> &
 export type MessageBarState = ComponentState<MessageBarSlots> &
   Required<Pick<MessageBarProps, 'layout' | 'intent' | 'shape'>> &
   Pick<MessageBarContextValue, 'actionsRef' | 'bodyRef' | 'titleId'> & {
+    /**
+     * @deprecated Code is unused, replaced by motion components
+     */
     transitionClassName: string;
   };
