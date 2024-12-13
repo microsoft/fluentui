@@ -139,6 +139,11 @@ export const darkGreenState = stateSelector('dark-green');
 export const darkRedState = stateSelector('dark-red');
 
 /**
+ * Selector for the `description` state.
+ */
+export const descriptionState = stateSelector('description');
+
+/**
  * Selector for the `disabled` state.
  * @public
  */

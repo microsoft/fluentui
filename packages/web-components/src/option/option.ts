@@ -1,6 +1,7 @@
 import { attr, observable, Observable } from '@microsoft/fast-element';
 import { BaseCheckbox } from '../checkbox/checkbox.js';
 import { CheckboxMode } from '../checkbox/checkbox.options.js';
+import type { Start } from '../patterns/start-end.js';
 import { toggleState } from '../utils/element-internals.js';
 import { uniqueId } from '../utils/unique-id.js';
 
@@ -20,7 +21,14 @@ import { uniqueId } from '../utils/unique-id.js';
  *
  * @public
  */
-export class Option extends BaseCheckbox {
+export class Option extends BaseCheckbox implements Start {
+  /**
+   * Reference to the start slot.
+   * @internal
+   */
+  @observable
+  public start!: HTMLSlotElement;
+
   /**
    * Sets that the option id attribute.
    *
@@ -65,8 +73,6 @@ export class Option extends BaseCheckbox {
   public descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
     toggleState(this.elementInternals, 'description', !!next?.length);
   }
-
-  public start!: HTMLSlotElement;
 
   /**
    * The toggle mode.

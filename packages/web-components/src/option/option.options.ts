@@ -1,3 +1,4 @@
+import type { StartOptions } from '../patterns/start-end.js';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
 import type { Option } from './option.js';
 
@@ -22,6 +23,6 @@ export function isOption(value: Node | null, tagName: string = '-option'): value
  *
  * @public
  */
-export type OptionOptions = {
+export type OptionOptions = StartOptions<Option> & {
   checkedIndicator?: StaticallyComposableHTML<Option>;
 };
