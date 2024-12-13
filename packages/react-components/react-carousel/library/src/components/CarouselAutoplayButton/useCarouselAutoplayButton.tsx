@@ -1,13 +1,7 @@
 import type { ARIAButtonElement } from '@fluentui/react-aria';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { PlayCircleRegular, PauseCircleRegular } from '@fluentui/react-icons';
-import {
-  mergeCallbacks,
-  slot,
-  useControllableState,
-  useEventCallback,
-  useIsomorphicLayoutEffect,
-} from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import type { CarouselAutoplayButtonProps, CarouselAutoplayButtonState } from './CarouselAutoplayButton.types';
@@ -36,15 +30,13 @@ export const useCarouselAutoplayButton_unstable = (
   const enableAutoplay = useCarouselContext(ctx => ctx.enableAutoplay);
 
   React.useEffect(() => {
+    // Initialize carousel autoplay based on button state
+    enableAutoplay(autoplay);
+
     return () => {
-      // We disable autoplay if the button gets unmounted.
+      // We uninitialize autoplay if the button gets unmounted.
       enableAutoplay(false);
     };
-  }, [enableAutoplay]);
-
-  useIsomorphicLayoutEffect(() => {
-    // Enable/disable autoplay on state change
-    enableAutoplay(autoplay);
   }, [autoplay, enableAutoplay]);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {

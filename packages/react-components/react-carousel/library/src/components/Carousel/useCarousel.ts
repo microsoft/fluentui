@@ -49,6 +49,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       containScroll: whitespace ? false : 'keepSnaps',
       motion,
       onDragIndexChange: onActiveIndexChange,
+      onAutoplayIndexChange: onActiveIndexChange,
     });
 
   const selectPageByElement: CarouselContextValue['selectPageByElement'] = useEventCallback((event, element, jump) => {
