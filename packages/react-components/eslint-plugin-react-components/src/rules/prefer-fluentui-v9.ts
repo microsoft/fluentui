@@ -47,7 +47,7 @@ export const rule = createRule<Options, MessageIds>({
                 break;
               default:
                 if (isMigration(name)) {
-                  const migration = getMigrationData(MIGRATIONS[name]);
+                  const migration = getMigrationDetails(MIGRATIONS[name]);
 
                   context.report({
                     node,
@@ -148,6 +148,10 @@ const isMigration = (name: string): name is keyof typeof MIGRATIONS => name in M
 /**
  * Get the component and package name to use for a migration.
  */
-const getMigrationData = (migration: Migration) => {
-  return typeof migration === 'string' ? { component: migration, package: '@fluentui/react-components' } : migration;
+const getMigrationDetails = (migration: Migration) => {
+  if (typeof migration === 'string') {
+    return { component: migration, package: '@fluentui/react-components' };
+  }
+
+  return migration;
 };
