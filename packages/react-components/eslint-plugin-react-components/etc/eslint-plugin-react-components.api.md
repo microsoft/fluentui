@@ -22,9 +22,7 @@ export const plugin: {
         };
     };
     rules: {
-        "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceIconWithJsx" | "replaceStackWithFlex" | "replaceFocusZoneWithTabster", {
-        preview?: boolean | undefined;
-        }[], unknown, RuleListener>;
+        "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceIconWithJsx" | "replaceStackWithFlex" | "replaceFocusZoneWithTabster", {}[], unknown, RuleListener>;
     };
 };
 

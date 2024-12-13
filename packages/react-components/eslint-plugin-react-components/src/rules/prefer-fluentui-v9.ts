@@ -13,12 +13,7 @@ export const rule = createRule<Options, MessageIds>({
     docs: {
       description: 'This rule ensures the use of Fluent UI v9 counterparts for Fluent UI v8 components.',
     },
-    schema: [
-      {
-        type: 'object',
-        properties: {},
-      },
-    ],
+    schema: [],
     messages: {
       replaceFluent8With9: `Avoid importing {{ fluent8 }} from '@fluentui/react', as this package has started migration to Fluent UI 9. Import {{ fluent9 }} from '{{ package }}' instead.`,
       replaceIconWithJsx: `Avoid using Icon from '@fluentui/react', as this package has already migrated to Fluent UI 9. Use a JSX SVG icon from '@fluentui/react-icons' instead.`,

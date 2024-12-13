@@ -57,10 +57,6 @@ module.exports = {
 
 This rule ensures the use of Fluent UI v9 counterparts for Fluent UI v8 components.
 
-#### Options
-
-- `unstable` (boolean): Whether to enforce Fluent UI v9 preview component migrations.
-
 #### Examples
 
 **✅ Do**
