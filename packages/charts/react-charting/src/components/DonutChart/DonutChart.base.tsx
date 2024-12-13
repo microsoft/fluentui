@@ -244,21 +244,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       const legend: ILegend = {
         title: point.legend!,
         color,
-        action: () => {
-          const { selectedLegends } = this.state;
-          const isSelected = selectedLegends.includes(point.legend!);
-
-          let newSelectedLegends;
-          if (this.props.canSelectMultipleLegends) {
-            newSelectedLegends = isSelected
-              ? selectedLegends.filter(l => l !== point.legend)
-              : [...selectedLegends, point.legend!];
-          } else {
-            newSelectedLegends = isSelected ? [] : [point.legend!];
-          }
-
-          this.setState({ selectedLegends: newSelectedLegends });
-        },
         hoverAction: () => {
           this._handleChartMouseLeave();
           this.setState({ activeLegend: point.legend! });
@@ -279,10 +264,15 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
         canSelectMultipleLegends={this.props.canSelectMultipleLegends}
+        onChange={this._onLegendChange}
       />
     );
     return legends;
   }
+
+  private _onLegendChange = (selectedLegends: string[]) => {
+    this.setState({ selectedLegends });
+  };
 
   private _focusCallback = (data: IChartDataPoint, id: string, element: SVGPathElement): void => {
     this._currentHoverElement = element;
