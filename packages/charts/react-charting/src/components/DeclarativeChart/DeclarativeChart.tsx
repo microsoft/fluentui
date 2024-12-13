@@ -26,6 +26,13 @@ import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
 import { downloadImage } from './helpers';
 
+import { useTheme } from '@fluentui/react';
+
+export const UseIsDarkTheme = (): boolean => {
+  const theme = useTheme();
+  return theme?.isInverted ?? false;
+};
+
 export interface Schema {
   /**
    * Plotly schema represented as JSON object
@@ -73,6 +80,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   DeclarativeChartProps
 >((props, forwardedRef) => {
   const colorMap = useColorMapping();
+  const isDarkTheme = UseIsDarkTheme();
 
   const renderChart = React.useCallback(() => {
     const { plotlySchema } = props.chartSchema;
@@ -82,43 +90,45 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
     switch (plotlySchema.data[0].type) {
       case 'pie':
-        return <DonutChart {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap)} />;
+        return <DonutChart {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)} />;
       case 'bar':
         const orientation = plotlySchema.data[0].orientation;
         if (orientation === 'h') {
           return (
-            <HorizontalBarChartWithAxis {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap)} />
+            <HorizontalBarChartWithAxis
+              {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap, isDarkTheme)}
+            />
           );
         } else {
           if (['group', 'overlay'].includes(plotlySchema?.layout?.barmode)) {
-            return <GroupedVerticalBarChart {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap)} />;
+            return <GroupedVerticalBarChart {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap, isDarkTheme)} />;
           }
-          return <VerticalStackedBarChart {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap)} />;
+          return <VerticalStackedBarChart {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)} />;
         }
       case 'scatter':
         const isAreaChart = plotlySchema.data.some((series: any) => series.fill === 'tonexty');
         if (isXDate || isXNumber) {
           if (isAreaChart) {
-            return <AreaChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, true, colorMap)} />;
+            return <AreaChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, true, colorMap, isDarkTheme)} />;
           }
-          return <LineChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, false, colorMap)} />;
+          return <LineChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, false, colorMap, isDarkTheme)} />;
         }
-        return <VerticalStackedBarChart {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap)} />;
+        return <VerticalStackedBarChart {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)} />;
       case 'heatmap':
         return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(plotlySchema)} />;
       case 'sankey':
-        return <SankeyChart {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap)} />;
+        return <SankeyChart {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap, isDarkTheme)} />;
       case 'indicator':
         if (plotlySchema?.data?.[0]?.mode?.includes('gauge')) {
-          return <GaugeChart {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap)} />;
+          return <GaugeChart {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)} />;
         }
         return <div>Unsupported Schema</div>;
       case 'histogram':
-        return <VerticalBarChart {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap)} />;
+        return <VerticalBarChart {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap, isDarkTheme)} />;
       default:
         return <div>Unsupported Schema</div>;
     }
-  }, [props.chartSchema, colorMap]);
+  }, [props.chartSchema, colorMap, isDarkTheme]);
 
   const onDownloadBtnClick = React.useCallback(() => {
     const svgElement = document.querySelector('[class^="chart"]') as SVGSVGElement | null;

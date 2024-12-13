@@ -2,6 +2,29 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Mon, 09 Dec 2024 17:38:13 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "a905fddf661bc610dfd089348e08bf88c34c2eba",
+            "comment": "feat(Collapse): add margin to whitespace animation"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olkatruk@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "899b9687929bdb91b8c211f540fb915009b744d1",
+            "comment": "feat(motion): Refactor scale, migrate to new variant structure"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2024 12:53:40 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.3.2",
       "version": "0.3.2",

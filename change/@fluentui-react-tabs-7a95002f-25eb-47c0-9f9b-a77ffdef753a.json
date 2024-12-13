@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "chore: remove usage of \"export *\"",
+  "comment": "fix: adjust styles for circular tabs",
   "packageName": "@fluentui/react-tabs",
-  "email": "olfedias@microsoft.com",
+  "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"
 }

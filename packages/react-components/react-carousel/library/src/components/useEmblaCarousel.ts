@@ -147,11 +147,21 @@ export function useEmblaCarousel(
     };
   }, []);
 
+  const updateIndex = () => {
+    const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
+    const slides = emblaApi.current?.slideNodes();
+    const actualIndex = emblaApi.current?.internalEngine().slideRegistry[newIndex][0] ?? 0;
+    // We set the first card in the current group as the default tabster index for focus capture
+    slides?.forEach((slide, slideIndex) => {
+      setTabsterDefault(slide, slideIndex === actualIndex);
+    });
+    setActiveIndex(newIndex);
+  };
+
   const handleReinit = useEventCallback(() => {
     const nodes: HTMLElement[] = emblaApi.current?.slideNodes() ?? [];
     const groupIndexList: number[][] = emblaApi.current?.internalEngine().slideRegistry ?? [];
     const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
-
     const data: CarouselUpdateData = {
       navItemsCount,
       activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
@@ -159,6 +169,7 @@ export function useEmblaCarousel(
       slideNodes: nodes,
     };
 
+    updateIndex();
     emblaApi.current?.scrollTo(activeIndex, false);
     for (const listener of listeners.current) {
       listener(data);
@@ -167,15 +178,7 @@ export function useEmblaCarousel(
 
   const handleIndexChange: EmblaEventHandler = useEventCallback((_, eventType) => {
     const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
-    const slides = emblaApi.current?.slideNodes();
-    const actualIndex = emblaApi.current?.internalEngine().slideRegistry[newIndex][0] ?? 0;
-
-    // We set the active or first index of group on-screen as the selected tabster index
-    slides?.forEach((slide, slideIndex) => {
-      setTabsterDefault(slide, slideIndex === actualIndex);
-    });
-    setActiveIndex(newIndex);
-
+    updateIndex();
     if (eventType === 'autoplay:select') {
       const noopEvent = new Event('autoplay');
       onAutoplayIndexChange?.(noopEvent, { event: noopEvent, type: 'autoplay', index: newIndex });

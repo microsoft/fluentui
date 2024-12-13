@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adding cliptemplate and listform filetype and itemtype mappings & updating corresponding fabric-cdn URL",
+  "packageName": "@fluentui/style-utilities",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}

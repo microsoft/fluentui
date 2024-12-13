@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-progress
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.1.93)
+
+Mon, 09 Dec 2024 17:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.1.92..@fluentui/react-progress_v9.1.93)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- Bump @fluentui/react-field to v9.1.82 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
 
 ## [9.1.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.1.92)
 

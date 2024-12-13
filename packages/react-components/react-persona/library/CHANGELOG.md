@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-persona
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.104](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.104)
+
+Mon, 09 Dec 2024 17:38:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.103..@fluentui/react-persona_v9.2.104)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- Bump @fluentui/react-avatar to v9.6.45 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
+- Bump @fluentui/react-badge to v9.2.47 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
 
 ## [9.2.103](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.103)
 

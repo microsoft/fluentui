@@ -2,6 +2,21 @@
   "name": "@fluentui/react-rating",
   "entries": [
     {
+      "date": "Mon, 09 Dec 2024 17:38:15 GMT",
+      "tag": "@fluentui/react-rating_v9.0.24",
+      "version": "9.0.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "cad13936cd49ba0b34b50bc2f58395605c4e8da4",
+            "comment": "chore: remove usage of \"export *\""
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2024 12:53:46 GMT",
       "tag": "@fluentui/react-rating_v9.0.23",
       "version": "9.0.23",
