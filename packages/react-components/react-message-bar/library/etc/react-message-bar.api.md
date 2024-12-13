@@ -144,13 +144,13 @@ export type MessageBarTitleSlots = {
 // @public
 export type MessageBarTitleState = ComponentState<MessageBarTitleSlots>;
 
-// @internal @deprecated (undocumented)
+// @internal (undocumented)
 export const messageBarTransitionContextDefaultValue: MessageBarTransitionContextValue;
 
-// @internal @deprecated
+// @internal
 export const MessageBarTransitionContextProvider: React_2.Provider<MessageBarTransitionContextValue | undefined>;
 
-// @public @deprecated (undocumented)
+// @public (undocumented)
 export type MessageBarTransitionContextValue = {
     className: string;
     nodeRef: React_2.Ref<HTMLDivElement | null>;
@@ -210,7 +210,7 @@ export const useMessageBarTitle_unstable: (props: MessageBarTitleProps, ref: Rea
 // @public
 export const useMessageBarTitleStyles_unstable: (state: MessageBarTitleState) => MessageBarTitleState;
 
-// @internal @deprecated (undocumented)
+// @internal (undocumented)
 export const useMessageBarTransitionContext: () => MessageBarTransitionContextValue;
 
 // (No @packageDocumentation comment for this package)
