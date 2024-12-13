@@ -80,6 +80,7 @@ export interface IAreaChartState extends IBasestate {
   isShowCalloutPending: boolean;
   /** focused point */
   activePoint: string;
+  selectedLegends: string[];
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
@@ -124,8 +125,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     super(props);
     this._createSet = memoizeFunction(this._createDataSet);
     this.state = {
-      selectedLegend: '',
-      activeLegend: '',
+      selectedLegends: [],
+      activeLegend: undefined,
       hoverXValue: '',
       isCalloutVisible: false,
       refSelected: null,
@@ -561,13 +562,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   private _onLegendClick(legend: string): void {
-    if (this.state.selectedLegend === legend) {
+    if (this.state.selectedLegends.includes(legend)) {
       this.setState({
-        selectedLegend: '',
+        selectedLegends: this.state.selectedLegends.filter((selectedLegend: string) => selectedLegend !== legend),
       });
     } else {
       this.setState({
-        selectedLegend: legend,
+        selectedLegends: [...this.state.selectedLegends, legend],
       });
     }
   }
@@ -580,7 +581,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _onLegendLeave(): void {
     this.setState({
-      activeLegend: '',
+      activeLegend: undefined,
     });
   }
 
@@ -621,8 +622,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         {...this.props.legendProps}
+        canSelectMultipleLegends={this.props.canSelectMultipleLegends}
+        onChange={this._onLegendChange}
       />
     );
+  };
+
+  private _onLegendChange = (selectedLegends: string[]) => {
+    this.setState({ selectedLegends });
   };
 
   private _onDataPointClick = (func: (() => void) | undefined) => {
@@ -895,7 +902,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
    */
   private _legendHighlighted = (legend: string) => {
     return (
-      this.state.selectedLegend === legend || (this.state.selectedLegend === '' && this.state.activeLegend === legend)
+      this.state.selectedLegends.includes(legend) ||
+      (this.state.selectedLegends.length === 0 && this.state.activeLegend === legend)
     );
   };
 
@@ -903,7 +911,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
    * This function checks if none of the legends is selected or hovered.
    */
   private _noLegendHighlighted = () => {
-    return this.state.selectedLegend === '' && this.state.activeLegend === '';
+    return this.state.selectedLegends.length === 0 && this.state.activeLegend === undefined;
   };
 
   private _addDefaultColors = (lineChartData?: ILineChartPoints[]): ILineChartPoints[] => {

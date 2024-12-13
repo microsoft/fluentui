@@ -70,6 +70,12 @@ export interface IAreaChartProps extends ICartesianChartProps {
    * The prop used to enable gradient fill color for the chart.
    */
   enableGradient?: boolean;
+
+  /**
+   * @default false
+   * The prop used to enable multiple selection of legends.
+   */
+  canSelectMultipleLegends?: boolean;
 }
 
 /**
