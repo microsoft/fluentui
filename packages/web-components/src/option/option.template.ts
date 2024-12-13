@@ -1,4 +1,5 @@
-import { type ElementViewTemplate, html } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
+import { startSlotTemplate } from '../patterns/start-end.js';
 import { staticallyCompose } from '../utils/template-helpers.js';
 import type { Option } from './option.js';
 import type { OptionOptions } from './option.options.js';
@@ -27,7 +28,13 @@ export function optionTemplate<T extends Option>(options: OptionOptions = {}): E
   return html<T>`
     <template id="${x => x.id}">
       <slot name="checked-indicator">${staticallyCompose(options.checkedIndicator)}</slot>
-      <slot></slot>
+      ${startSlotTemplate(options)}
+      <div class="content" part="content">
+        <slot></slot>
+      </div>
+      <div class="description" part="description">
+        <slot name="description" ${slotted('descriptionSlot')}></slot>
+      </div>
     </template>
   `;
 }

@@ -16,7 +16,8 @@ const storyTemplate = html<StoryArgs<FluentOption>>`
     slot="${story => story.slot}"
     text="${story => story.text}"
   >
-    ${story => story.slottedContent?.()}
+    ${story => story.startSlottedContent?.()}${story => story.slottedContent?.()}${story =>
+      story.descriptionSlottedContent?.()}
   </fluent-option>
 `;
 
@@ -42,12 +43,6 @@ export default {
       description: 'The name of the option',
       table: { category: 'attributes', type: { summary: 'string' } },
     },
-    selectedIndicatorContent: {
-      control: false,
-      description: 'Slot for selected indicator',
-      name: 'indicator',
-      table: { category: 'slots', type: {} },
-    },
     text: {
       control: 'text',
       description: 'The text to display in the dropdown when the option is selected',
@@ -57,6 +52,30 @@ export default {
       control: 'text',
       description: 'The value of the option',
       table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    selectedIndicatorContent: {
+      control: false,
+      description: 'Slot for selected indicator',
+      name: 'indicator',
+      table: { category: 'slots', type: {} },
+    },
+    slottedContent: {
+      control: false,
+      description: 'The content to display in the option',
+      name: '',
+      table: { category: 'slots', type: {} },
+    },
+    startSlottedContent: {
+      control: false,
+      description: 'The content to display at the start of the option',
+      name: 'start',
+      table: { category: 'slots', type: {} },
+    },
+    descriptionSlottedContent: {
+      control: false,
+      description: 'The content to display in the description slot',
+      name: 'description',
+      table: { category: 'slots', type: {} },
     },
   },
   decorators: [
@@ -131,6 +150,36 @@ export const DisabledMultiple: Story = {
           disabled: true,
           id: 'disabled-selected-multiple',
           slottedContent: () => 'Disabled selected',
+        },
+      ],
+      html<FluentOption>`${storyTemplate}<br />`,
+    )}
+  `),
+};
+
+export const startContent: Story = {
+  render: renderComponent(html<StoryArgs<FluentOption>>`
+    ${repeat(
+      [
+        {
+          id: 'start-content-16px-avatar',
+          selected: true,
+          slottedContent: () => 'Option with 16px avatar',
+          startSlottedContent: () => html`<fluent-avatar slot="start" size="16" color="blue">16</fluent-avatar>`,
+        },
+        {
+          id: 'start-content-24px-avatar',
+          selected: true,
+          slottedContent: () => 'Option with 24px avatar',
+          startSlottedContent: () => html`<fluent-avatar slot="start" size="24" color="blue">24</fluent-avatar>`,
+        },
+        {
+          id: 'start-content-32px-with-description',
+          selected: true,
+          slottedContent: () => 'Option with 32px avatar',
+          descriptionSlottedContent: () =>
+            html`<span slot="description">Additional information is slotted in the description slot</span>`,
+          startSlottedContent: () => html` <fluent-avatar slot="start" size="32" color="blue">32</fluent-avatar> `,
         },
       ],
       html<FluentOption>`${storyTemplate}<br />`,

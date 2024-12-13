@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
-import { typographyBody1Styles } from '../styles/partials/typography.partials.js';
-import { activeState, disabledState, multipleState, selectedState } from '../styles/states/index.js';
+import { typographyBody1Styles, typographyCaption1Styles } from '../styles/partials/typography.partials.js';
+import { activeState, descriptionState, disabledState, multipleState, selectedState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -13,6 +13,7 @@ import {
   colorNeutralForeground2,
   colorNeutralForeground2Hover,
   colorNeutralForeground2Pressed,
+  colorNeutralForeground3,
   colorNeutralForegroundDisabled,
   colorNeutralForegroundInverted,
   colorNeutralStrokeAccessible,
@@ -32,7 +33,7 @@ import { display } from '../utils/display.js';
  * @public
  */
 export const styles = css`
-  ${display('inline-flex')}
+  ${display('inline-grid')}
 
   :host {
     -webkit-tap-highlight-color: transparent;
@@ -43,10 +44,21 @@ export const styles = css`
     border: ${strokeWidthThick} solid ${colorTransparentStroke};
     box-sizing: border-box;
     color: ${colorNeutralForeground2};
+    column-gap: ${spacingHorizontalXS};
     cursor: pointer;
-    gap: ${spacingHorizontalXS};
+    grid-template-areas: 'indicator start content';
+    grid-template-columns: auto auto 1fr;
     min-height: 32px;
-    padding-inline: ${spacingHorizontalSNudge};
+    padding: ${spacingHorizontalSNudge};
+  }
+
+  .content {
+    grid-area: content;
+    line-height: 1;
+  }
+
+  ::slotted([slot='start']) {
+    grid-area: start;
   }
 
   :host(:hover) {
@@ -70,15 +82,15 @@ export const styles = css`
     width: 16px;
   }
 
-  slot[name='checked-indicator'],
+  slot[name='checked-indicator'] > *,
   ::slotted([slot='checked-indicator']) {
     aspect-ratio: 1;
     flex: 0 0 auto;
+    grid-area: indicator;
     visibility: hidden;
-    width: 16px;
   }
 
-  :host(${selectedState}) :is(slot[name='checked-indicator'], ::slotted([slot='checked-indicator'])) {
+  :host(${selectedState}) :is(slot[name='checked-indicator'] > *, ::slotted([slot='checked-indicator'])) {
     visibility: visible;
   }
 
@@ -115,5 +127,24 @@ export const styles = css`
 
   :host(${activeState}) {
     border: ${strokeWidthThick} solid ${colorStrokeFocus2};
+  }
+
+  @supports (selector(:host(:has(*)))) {
+    :host(:has([slot='start']:not([size='16']))) {
+      column-gap: ${spacingHorizontalSNudge};
+    }
+  }
+
+  :host(${descriptionState}) {
+    column-gap: ${spacingHorizontalSNudge};
+    grid-template-areas:
+      'indicator start content'
+      'indicator start description';
+  }
+
+  ::slotted([slot='description']) {
+    color: ${colorNeutralForeground3};
+    grid-area: description;
+    ${typographyCaption1Styles}
   }
 `;
