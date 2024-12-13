@@ -155,6 +155,12 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
    * The prop used to enable rounded corners for the chart.
    */
   roundCorners?: boolean;
+
+  /**
+   * The prop used to enable multiple legend selection.
+   * @default false
+   */
+  canSelectMultipleLegends?: boolean;
 }
 
 /**

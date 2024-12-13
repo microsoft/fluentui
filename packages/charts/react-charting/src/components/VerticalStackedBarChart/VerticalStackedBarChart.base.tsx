@@ -553,11 +553,11 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _onLegendClick(legendTitle: string): void {
     if (this.state.selectedLegends.includes(legendTitle)) {
       this.setState({
-        selectedLegend: '',
+        selectedLegends: this.state.selectedLegends.filter((selectedLegend: string) => selectedLegend !== legendTitle),
       });
     } else {
       this.setState({
-        selectedLegend: legendTitle,
+        selectedLegends: [...this.state.selectedLegends, legendTitle],
       });
     }
   }
@@ -651,16 +651,12 @@ export class VerticalStackedBarChartBase extends React.Component<
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
         onChange={this._onLegendChange}
-        canSelectMultipleLegends
+        canSelectMultipleLegends={this.props.canSelectMultipleLegends}
       />
     );
   }
 
-  private _onLegendChange = (
-    selectedLegends: string[],
-    event: React.MouseEvent<HTMLButtonElement>,
-    legend: ILegend,
-  ) => {
+  private _onLegendChange = (selectedLegends: string[]) => {
     this.setState({ selectedLegends });
   };
 
