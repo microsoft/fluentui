@@ -101,7 +101,7 @@ export class BaseDropdown extends FASTElement {
    * @remarks
    * HTML Attribute: `id`
    */
-  @attr({ attribute: 'id', mode: 'fromView' })
+  @attr({ attribute: 'id' })
   public override id: string = uniqueId('dropdown-');
 
   /**
