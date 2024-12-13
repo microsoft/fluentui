@@ -300,8 +300,8 @@ export class BaseDropdown extends FASTElement {
    * @public
    */
   @volatile
-  public get activeDescendant(): string {
-    return this.listbox?.enabledOptions[this.activeIndex]?.id ?? '';
+  public get activeDescendant(): string | null {
+    return this.open ? this.listbox.enabledOptions[this.activeIndex]?.id : null;
   }
 
   /**
