@@ -1,6 +1,7 @@
 import {
   createMotionComponent,
   makeStyles,
+  type MotionComponentProps,
   type MotionImperativeRef,
   motionTokens,
   tokens,
@@ -42,7 +43,7 @@ const FadeEnter = createMotionComponent({
   iterations: Infinity,
 });
 
-export const CreateMotionComponentDefault = () => {
+export const CreateMotionComponentDefault = (props: MotionComponentProps) => {
   const classes = useClasses();
   const motionRef = React.useRef<MotionImperativeRef>();
 

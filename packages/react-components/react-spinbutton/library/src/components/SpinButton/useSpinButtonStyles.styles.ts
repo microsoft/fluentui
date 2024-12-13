@@ -387,104 +387,19 @@ const useButtonStyles = makeStyles({
   },
 });
 
-// Cannot just disable button as they need to remain
-// exposed to ATs like screen readers.
-const useButtonDisabledStyles = makeStyles({
-  base: {
-    cursor: 'not-allowed',
-
-    ':hover': {
-      cursor: 'not-allowed',
-    },
-  },
-
-  outline: {
-    color: tokens.colorNeutralForegroundDisabled,
-    ':enabled': {
-      ':hover': {
-        color: tokens.colorNeutralForegroundDisabled,
-        backgroundColor: 'transparent',
-      },
-      ':active': {
-        color: tokens.colorNeutralForegroundDisabled,
-        backgroundColor: 'transparent',
-      },
-      [`&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-        backgroundColor: 'transparent',
-      },
-    },
-  },
-
-  underline: {
-    color: tokens.colorNeutralForegroundDisabled,
-    ':enabled': {
-      ':hover': {
-        color: tokens.colorNeutralForegroundDisabled,
-        backgroundColor: 'transparent',
-      },
-      ':active': {
-        color: tokens.colorNeutralForegroundDisabled,
-        backgroundColor: 'transparent',
-      },
-      [`&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-        backgroundColor: 'transparent',
-      },
-    },
-  },
-
-  'filled-darker': {
-    color: tokens.colorNeutralForegroundDisabled,
-    ':enabled': {
-      ':hover': {
-        color: tokens.colorNeutralForegroundDisabled,
-        backgroundColor: 'transparent',
-      },
-      ':active': {
-        color: tokens.colorNeutralForegroundDisabled,
-        backgroundColor: 'transparent',
-      },
-      [`&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-        backgroundColor: 'transparent',
-      },
-    },
-  },
-
-  'filled-lighter': {
-    color: tokens.colorNeutralForegroundDisabled,
-    ':enabled': {
-      ':hover': {
-        color: tokens.colorNeutralForegroundDisabled,
-        backgroundColor: 'transparent',
-      },
-      ':active': {
-        color: tokens.colorNeutralForegroundDisabled,
-        backgroundColor: 'transparent',
-      },
-      [`&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-        backgroundColor: 'transparent',
-      },
-    },
-  },
-});
-
 /**
  * Apply styling to the SpinButton slots based on the state
  */
 export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButtonState => {
   'use no memo';
 
-  const { appearance, atBound, spinState, size } = state;
+  const { appearance, spinState, size } = state;
   const disabled = state.input.disabled;
   const invalid = `${state.input['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
   const rootStyles = useRootStyles();
   const buttonStyles = useButtonStyles();
-  const buttonDisabledStyles = useButtonDisabledStyles();
   const inputStyles = useInputStyles();
 
   state.root.className = mergeClasses(
@@ -508,8 +423,6 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     buttonStyles.increment,
     buttonStyles[appearance],
     size === 'small' && buttonStyles.incrementButtonSmall,
-    (atBound === 'max' || atBound === 'both') && buttonDisabledStyles.base,
-    (atBound === 'max' || atBound === 'both') && buttonDisabledStyles[appearance],
     state.incrementButton.className,
   );
   state.decrementButton.className = mergeClasses(
@@ -519,8 +432,6 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     buttonStyles.decrement,
     buttonStyles[appearance],
     size === 'small' && buttonStyles.decrementButtonSmall,
-    (atBound === 'min' || atBound === 'both') && buttonDisabledStyles.base,
-    (atBound === 'min' || atBound === 'both') && buttonDisabledStyles[appearance],
     state.decrementButton.className,
   );
 

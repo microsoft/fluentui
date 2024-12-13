@@ -27,9 +27,11 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   const focusWithinRef = useFocusWithin();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
+  const shapeFromContext = useColorPickerContextValue_unstable(ctx => ctx.shape);
 
   const {
     onChange = onChangeFromContext as unknown as ColorAreaProps['onChange'],
+    shape = shapeFromContext,
     // Slots
     inputX,
     inputY,
@@ -46,7 +48,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   const saturation = Math.round(hsvColor.s * 100);
   const value = Math.round(hsvColor.v * 100);
 
-  const [activeAxis, setActiveAxis] = React.useState<'x' | 'y'>('x');
+  const [activeAxis, setActiveAxis] = React.useState<'x' | 'y' | null>(null);
 
   const requestColorChange = useEventCallback((event: MouseEvent) => {
     if (!rootRef.current) {
@@ -155,6 +157,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     [colorAreaCSSVars.mainColorVar]: `hsl(${hsvColor.h}, 100%, 50%)`,
   };
   const state: ColorAreaState = {
+    shape,
     components: {
       inputX: 'input',
       inputY: 'input',
@@ -204,18 +207,6 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
   state.inputX.value = saturation;
   state.inputY.value = value;
-
-  React.useEffect(() => {
-    // Focus the active axis input only when the active axis changes
-
-    if (activeAxis === 'x' && targetDocument?.activeElement !== xRef.current) {
-      xRef.current?.focus();
-    }
-
-    if (activeAxis === 'y' && targetDocument?.activeElement !== yRef.current) {
-      yRef.current?.focus();
-    }
-  }, [activeAxis, targetDocument?.activeElement]);
 
   return state;
 };

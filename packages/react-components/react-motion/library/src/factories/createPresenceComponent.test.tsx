@@ -21,7 +21,10 @@ function createElementMock() {
     cancel: jest.fn(),
     persist: jest.fn(),
     finish: finishMock,
-    finished: Promise.resolve(),
+
+    set onfinish(fn: () => void) {
+      fn();
+    },
   }));
   const ElementMock = React.forwardRef<{ animate: () => void }, { onRender?: () => void }>((props, ref) => {
     React.useImperativeHandle(ref, () => ({
