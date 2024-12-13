@@ -93,6 +93,7 @@ export interface IVerticalStackedBarChartState extends IBasestate {
   activeXAxisDataPoint: number | string | Date;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
+  selectedLegends: string[];
 }
 export class VerticalStackedBarChartBase extends React.Component<
   IVerticalStackedBarChartProps,
@@ -128,8 +129,8 @@ export class VerticalStackedBarChartBase extends React.Component<
     super(props);
     this.state = {
       isCalloutVisible: false,
-      selectedLegend: '',
-      activeLegend: '',
+      selectedLegends: [],
+      activeLegend: undefined,
       refSelected: null,
       dataForHoverCard: 0,
       color: '',
@@ -281,7 +282,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     const { isCalloutForStack = false } = this.props;
     let shouldFocusStackOnly: boolean = false;
     if (_isHavingLines) {
-      if (this.state.selectedLegend !== '') {
+      if (this.state.selectedLegends.length === 1) {
         shouldFocusStackOnly = false;
       } else {
         shouldFocusStackOnly = true;
@@ -418,7 +419,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             strokeLinecap="round"
             stroke={lineObject[item][i].color}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
-            {...(this.state.selectedLegend === item && {
+            {...(this.state.selectedLegends.includes(item) && {
               onMouseOver: this._lineHover.bind(this, lineObject[item][i - 1]),
               onMouseLeave: this._lineHoverOut,
             })}
@@ -438,11 +439,11 @@ export class VerticalStackedBarChartBase extends React.Component<
               circlePoint.useSecondaryYScale && secondaryYScale ? secondaryYScale(circlePoint.y) : yScale(circlePoint.y)
             }
             onMouseOver={
-              this.state.selectedLegend === item
+              this.state.selectedLegends.includes(item)
                 ? this._lineHover.bind(this, circlePoint)
                 : this._onStackHover.bind(this, circlePoint.xItem)
             }
-            {...(this.state.selectedLegend === item && {
+            {...(this.state.selectedLegends.includes(item) && {
               onMouseLeave: this._lineHoverOut,
             })}
             r={this._getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).radius}
@@ -475,11 +476,11 @@ export class VerticalStackedBarChartBase extends React.Component<
     xAxisPoint: string | number | Date,
     legend: string,
   ): { visibility: CircleVisbility; radius: number } => {
-    const { selectedLegend, activeXAxisDataPoint } = this.state;
-    if (selectedLegend !== '') {
-      if (xAxisPoint === activeXAxisDataPoint && selectedLegend === legend) {
+    const { selectedLegends, activeXAxisDataPoint } = this.state;
+    if (selectedLegends.length > 0) {
+      if (xAxisPoint === activeXAxisDataPoint && selectedLegends.includes(legend)) {
         return { visibility: CircleVisbility.show, radius: 8 };
-      } else if (selectedLegend === legend) {
+      } else if (selectedLegends.includes(legend)) {
         return { visibility: CircleVisbility.show, radius: 0.3 };
       } else {
         return { visibility: CircleVisbility.hide, radius: 0 };
@@ -550,7 +551,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   };
 
   private _onLegendClick(legendTitle: string): void {
-    if (this.state.selectedLegend === legendTitle) {
+    if (this.state.selectedLegends.includes(legendTitle)) {
       this.setState({
         selectedLegend: '',
       });
@@ -569,7 +570,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
   private _onLegendLeave(): void {
     this.setState({
-      activeLegend: '',
+      activeLegend: undefined,
     });
   }
 
@@ -649,9 +650,19 @@ export class VerticalStackedBarChartBase extends React.Component<
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
+        onChange={this._onLegendChange}
+        canSelectMultipleLegends
       />
     );
   }
+
+  private _onLegendChange = (
+    selectedLegends: string[],
+    event: React.MouseEvent<HTMLButtonElement>,
+    legend: ILegend,
+  ) => {
+    this.setState({ selectedLegends });
+  };
 
   private _onRectHover(
     xAxisPoint: string,
@@ -680,7 +691,7 @@ export class VerticalStackedBarChartBase extends React.Component<
          * Show the callout if highlighted bar is focused/hovered
          * and Hide it if unhighlighted bar is focused/hovered
          */
-        isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend,
+        isCalloutVisible: this.state.selectedLegends.length === 0 || this.state.selectedLegends.includes(point.legend),
         calloutLegend: point.legend,
         dataForHoverCard: point.data,
         color,
@@ -734,6 +745,13 @@ export class VerticalStackedBarChartBase extends React.Component<
     stack: IVerticalStackedChartProps,
     refSelected: React.MouseEvent<SVGElement> | SVGGElement,
   ): void {
+    if (this.state.selectedLegends.length > 1) {
+      stack = {
+        ...stack,
+        chartData: stack.chartData.filter(dataPoint => this.state.selectedLegends.includes(dataPoint.legend)),
+        lineData: stack.lineData?.filter(dataPoint => this.state.selectedLegends.includes(dataPoint.legend)),
+      };
+    }
     const lineData = stack.lineData;
     const isLinesPresent: boolean = lineData !== undefined && lineData.length > 0;
     if (isLinesPresent) {
@@ -742,6 +760,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         item.shouldDrawBorderBottom = true;
       });
     }
+
     this.setState({
       refSelected,
       isCalloutVisible: true,
@@ -1105,8 +1124,8 @@ export class VerticalStackedBarChartBase extends React.Component<
    */
   private _legendHighlighted = (legendTitle: string) => {
     return (
-      this.state.selectedLegend === legendTitle ||
-      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
+      this.state.selectedLegends.includes(legendTitle) ||
+      (this.state.selectedLegends.length === 0 && this.state.activeLegend === legendTitle)
     );
   };
 
@@ -1114,7 +1133,7 @@ export class VerticalStackedBarChartBase extends React.Component<
    * This function checks if none of the legends is selected or hovered.
    */
   private _noLegendHighlighted = () => {
-    return this.state.selectedLegend === '' && this.state.activeLegend === '';
+    return this.state.selectedLegends.length === 0 && this.state.activeLegend === undefined;
   };
 
   private _getAriaLabel = (singleChartData: IVerticalStackedChartProps, point?: IVSChartDataPoint): string => {
