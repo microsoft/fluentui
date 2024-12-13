@@ -18,6 +18,7 @@ export type MessageBarGroupProps = ComponentProps<MessageBarGroupSlots> & {
  */
 export type MessageBarGroupState = ComponentState<MessageBarGroupSlots> &
   Pick<MessageBarGroupProps, 'animate'> & {
+    // TODO: deprecate these 2 obsolete props?
     enterStyles: string;
     exitStyles: string;
     children: React.ReactElement[];

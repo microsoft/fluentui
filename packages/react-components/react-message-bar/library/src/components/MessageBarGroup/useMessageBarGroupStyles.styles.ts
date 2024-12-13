@@ -7,6 +7,7 @@ export const messageBarGroupClassNames: SlotClassNames<MessageBarGroupSlots> = {
   root: 'fui-MessageBarGroup',
 };
 
+// TODO: delete this obsolete code to save bytes?
 /**
  * Styles for the root slot
  */
@@ -49,6 +50,7 @@ export const useMessageBarGroupStyles_unstable = (state: MessageBarGroupState): 
 
   const styles = useStyles();
   state.root.className = mergeClasses(messageBarGroupClassNames.root, state.root.className);
+  // TODO: delete these 2 lines to save bytes?
   state.enterStyles = mergeClasses(styles.base, styles.enter);
   state.exitStyles = mergeClasses(styles.base, styles.exit);
   return state;
