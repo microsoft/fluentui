@@ -103,7 +103,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return <VerticalStackedBarChart {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)} />;
       }
     case 'scatter':
-      const isAreaChart = plotlySchema.data.some((series: any) => series.fill === 'tonexty');
+      const isAreaChart = plotlySchema.data.some(
+        (series: any) => series.fill === 'tonexty' || series.fill === 'tozeroy',
+      );
       if (isXDate || isXNumber) {
         if (isAreaChart) {
           return <AreaChart {...transformPlotlyJsonToScatterChartProps(plotlySchema, true, colorMap, isDarkTheme)} />;
