@@ -28,7 +28,7 @@ import { useTheme } from '@fluentui/react/lib/Theme';
 
 export const UseIsDarkTheme = (): boolean => {
   const theme = useTheme();
-  return theme.isInverted;
+  return theme?.isInverted ?? false;
 };
 
 /**

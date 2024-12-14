@@ -1,1 +1,1 @@
-export * from './Primitive';
+export { Primitive, primitiveClassName } from './Primitive';
