@@ -22,12 +22,12 @@ import { uniqueId } from '../utils/unique-id.js';
  * @public
  */
 export class Option extends BaseCheckbox implements Start {
-  /**
-   * Reference to the start slot.
-   * @internal
-   */
   @observable
-  public start!: HTMLSlotElement;
+  public descriptionSlot!: Node[];
+
+  public descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
+    toggleState(this.elementInternals, 'description', !!next?.length);
+  }
 
   /**
    * Sets that the option id attribute.
@@ -51,6 +51,13 @@ export class Option extends BaseCheckbox implements Start {
   public initial?: boolean;
 
   /**
+   * Reference to the start slot.
+   * @internal
+   */
+  @observable
+  public start!: HTMLSlotElement;
+
+  /**
    * The text to display in the dropdown control when the option is selected.
    *
    * @public
@@ -65,13 +72,6 @@ export class Option extends BaseCheckbox implements Start {
 
   public titleSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
     toggleState(this.elementInternals, 'title', !!next?.length);
-  }
-
-  @observable
-  public descriptionSlot!: Node[];
-
-  public descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
-    toggleState(this.elementInternals, 'description', !!next?.length);
   }
 
   /**
