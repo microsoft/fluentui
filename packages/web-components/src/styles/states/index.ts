@@ -19,6 +19,12 @@ export const alignEndState = stateSelector('align-end');
 export const alignStartState = stateSelector('align-start');
 
 /**
+ * Selector for the `fallback` state.
+ * @public
+ */
+export const fallbackState = stateSelector('anchor-position-fallback');
+
+/**
  * Selector for the `anchor` state.
  * @public
  */
@@ -226,6 +232,12 @@ export const fitCoverState = stateSelector('fit-cover');
  * @public
  */
 export const fitNoneState = stateSelector('fit-none');
+
+/**
+ * Selector for the `flip-block` state.
+ * @public
+ */
+export const flipBlockState = stateSelector('flip-block');
 
 /**
  * Selector for the `focus-visible` state.
