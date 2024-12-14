@@ -29,7 +29,7 @@ export type StartEndOptions<TSource = any, TParent = any> = StartOptions<TSource
 
 /**
  * A mixin class implementing start slots.
- * This is generally used to decorate text elements with icons or other visual indicators.
+ * @public
  */
 export class Start {
   public start!: HTMLSlotElement;
@@ -37,7 +37,7 @@ export class Start {
 
 /**
  * A mixin class implementing end slots.
- * This is generally used to decorate text elements with icons or other visual indicators.
+ * @public
  */
 export class End {
   public end!: HTMLSlotElement;

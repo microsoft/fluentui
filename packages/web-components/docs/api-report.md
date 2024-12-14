@@ -2430,10 +2430,16 @@ export class Dropdown extends BaseDropdown {
     appearance: DropdownAppearance;
     // @internal
     appearanceChanged(prev: DropdownAppearance | undefined, next: DropdownAppearance | undefined): void;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
     // @internal
     protected insertControl(): void;
     // @internal
     protected insertIndicator(template?: ViewTemplate): void;
+    // @internal
+    openChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // Warning: (ae-forgotten-export) The symbol "DropdownSize" needs to be exported by the entry point index.d.ts
     size?: DropdownSize;
     // @internal
@@ -2621,7 +2627,7 @@ export const ImageStyles: ElementStyles;
 export const ImageTemplate: ElementViewTemplate<Image_2>;
 
 // @public
-export function isDropdown(element?: Node | null, tagName?: string): element is Dropdown;
+export function isDropdown(element?: Node | null, tagName?: string): element is BaseDropdown;
 
 // @public
 export function isListbox(element?: Node): element is Listbox;
@@ -2751,13 +2757,16 @@ export const LinkTemplate: ElementViewTemplate<Link>;
 export class Listbox extends FASTElement {
     constructor();
     // (undocumented)
+    beforetoggleHandler(e: ToggleEvent): boolean | void;
     clickHandler(e: PointerEvent): boolean | void;
     // (undocumented)
     connectedCallback(): void;
     // (undocumented)
     disconnectedCallback(): void;
-    // (undocumented)
-    protected dropdown?: Dropdown;
+    // @internal
+    dropdown?: BaseDropdown;
+    // @internal
+    dropdownChanged(prev: BaseDropdown | undefined, next: BaseDropdown | undefined): void;
     // @internal
     elementInternals: ElementInternals;
     // @internal
@@ -3061,8 +3070,10 @@ export const MessageBarStyles: ElementStyles;
 // @public
 export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
 
+// Warning: (ae-forgotten-export) The symbol "Start" needs to be exported by the entry point index.d.ts
+//
 // @public
-class Option_2 extends BaseCheckbox {
+class Option_2 extends BaseCheckbox implements Start {
     constructor();
     // (undocumented)
     descriptionSlot: Node[];
@@ -3079,7 +3090,7 @@ class Option_2 extends BaseCheckbox {
     protected setAriaProperties(value?: boolean): void;
     // (undocumented)
     setMultipleState(force?: boolean): void;
-    // (undocumented)
+    // @internal
     start: HTMLSlotElement;
     get text(): string;
     textAttribute?: string;
@@ -3097,7 +3108,7 @@ export { Option_2 as Option }
 export const OptionDefinition: FASTElementDefinition<typeof Option_2>;
 
 // @public
-export type OptionOptions = {
+export type OptionOptions = StartOptions<Option_2> & {
     checkedIndicator?: StaticallyComposableHTML<Option_2>;
 };
 
@@ -3634,8 +3645,10 @@ export const SpinnerStyles: ElementStyles;
 // @public (undocumented)
 export const SpinnerTemplate: ViewTemplate<Spinner, any>;
 
+// Warning: (ae-forgotten-export) The symbol "End" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class StartEnd {
+export class StartEnd implements Start, End {
     // (undocumented)
     end: HTMLSlotElement;
     // (undocumented)
@@ -3651,7 +3664,7 @@ export type StartOptions<TSource = any, TParent = any> = {
 };
 
 // @public
-export function startSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(options: StartOptions<TSource, TParent>): CaptureType<TSource, TParent>;
+export function startSlotTemplate<TSource extends Pick<StartEnd, 'start'> = StartEnd, TParent = any>(options: StartOptions<TSource, TParent>): CaptureType<TSource, TParent>;
 
 // @public
 export const strokeWidthThick = "var(--strokeWidthThick)";
