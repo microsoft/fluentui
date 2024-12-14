@@ -87,22 +87,52 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     }
   };
 
+  let legendProps;
+  if (activeLegends.length > 0) {
+    legendProps = {
+      canSelectMultipleLegends: false,
+      selectedLegend: activeLegends[0],
+      onChange: onActiveLegendsChange,
+    };
+  } else {
+    legendProps = {
+      canSelectMultipleLegends: false,
+      onChange: onActiveLegendsChange,
+    };
+  }
+
   switch (data[0].type) {
     case 'pie':
-      return <DonutChart {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)} />;
+      return (
+        <DonutChart
+          {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)}
+          legendProps={legendProps}
+        />
+      );
     case 'bar':
       const orientation = data[0].orientation;
       if (orientation === 'h') {
         return (
           <HorizontalBarChartWithAxis
             {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap, isDarkTheme)}
+            legendProps={legendProps}
           />
         );
       } else {
         if (['group', 'overlay'].includes(plotlySchema?.layout?.barmode)) {
-          return <GroupedVerticalBarChart {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap, isDarkTheme)} />;
+          return (
+            <GroupedVerticalBarChart
+              {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap, isDarkTheme)}
+              legendProps={legendProps}
+            />
+          );
         }
-        return <VerticalStackedBarChart {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)} />;
+        return (
+          <VerticalStackedBarChart
+            {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
+            legendProps={legendProps}
+          />
+        );
       }
     case 'scatter':
       const isAreaChart = data.some((series: any) => series.fill === 'tonexty');
@@ -111,37 +141,44 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           return (
             <AreaChart
               {...transformPlotlyJsonToScatterChartProps({ data, layout }, true, colorMap, isDarkTheme)}
-              legendProps={{
-                canSelectMultipleLegends: false,
-                selectedLegend: activeLegends.length > 0 ? activeLegends[0] : '',
-                onChange: onActiveLegendsChange,
-              }}
+              legendProps={legendProps}
             />
           );
         }
         return (
           <LineChart
             {...transformPlotlyJsonToScatterChartProps({ data, layout }, false, colorMap, isDarkTheme)}
-            legendProps={{
-              canSelectMultipleLegends: true,
-              selectedLegends: activeLegends,
-              onChange: onActiveLegendsChange,
-            }}
+            legendProps={legendProps}
           />
         );
       }
-      return <VerticalStackedBarChart {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)} />;
+      return (
+        <VerticalStackedBarChart
+          {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
+          legendProps={legendProps}
+        />
+      );
     case 'heatmap':
-      return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(plotlySchema)} />;
+      return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(plotlySchema)} legendProps={legendProps} />;
     case 'sankey':
       return <SankeyChart {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap, isDarkTheme)} />;
     case 'indicator':
       if (data?.[0]?.mode?.includes('gauge')) {
-        return <GaugeChart {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)} />;
+        return (
+          <GaugeChart
+            {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)}
+            legendProps={legendProps}
+          />
+        );
       }
       return <div>Unsupported Schema</div>;
     case 'histogram':
-      return <VerticalBarChart {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap, isDarkTheme)} />;
+      return (
+        <VerticalBarChart
+          {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap, isDarkTheme)}
+          legendProps={legendProps}
+        />
+      );
     default:
       return <div>Unsupported Schema</div>;
   }
