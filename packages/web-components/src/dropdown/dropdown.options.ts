@@ -1,5 +1,5 @@
 import type { ValuesOf } from '../utils/typings.js';
-import type { Dropdown } from './dropdown.js';
+import type { BaseDropdown } from './dropdown.js';
 
 /**
  * Predicate function that determines if the element should be considered a dropdown.
@@ -9,7 +9,7 @@ import type { Dropdown } from './dropdown.js';
  * @returns true if the element is a dropdown.
  * @public
  */
-export function isDropdown(element?: Node | null, tagName: string = '-dropdown'): element is Dropdown {
+export function isDropdown(element?: Node | null, tagName: string = '-dropdown'): element is BaseDropdown {
   if (element?.nodeType !== Node.ELEMENT_NODE) {
     return false;
   }

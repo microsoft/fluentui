@@ -6,8 +6,10 @@ import {
 } from '../styles/partials/typography.partials.js';
 import {
   disabledState,
+  fallbackState,
   filledDarkerState,
   filledLighterState,
+  flipBlockState,
   largeState,
   openState,
   outlineState,
@@ -42,6 +44,9 @@ import {
   curveDecelerateMid,
   durationNormal,
   durationUltraFast,
+  lineHeightBase200,
+  lineHeightBase300,
+  lineHeightBase400,
   spacingHorizontalM,
   spacingHorizontalMNudge,
   spacingHorizontalS,
@@ -68,7 +73,6 @@ export const styles = css`
     box-sizing: border-box;
     color: ${colorNeutralForeground1};
     cursor: pointer;
-    position: relative;
   }
 
   :host(${placeholderShownState}) {
@@ -228,5 +232,39 @@ export const styles = css`
     --control-border-color: ${colorNeutralStrokeDisabled};
     background-color: ${colorNeutralBackgroundDisabled};
     color: ${colorNeutralForegroundDisabled};
+  }
+
+  ::slotted([popover]) {
+    inset: unset;
+    position: absolute;
+    position-anchor: --dropdown-trigger;
+    position-area: block-end span-inline-end;
+    position-try-fallbacks: flip-inline, flip-block, block-start;
+    max-height: var(--listbox-max-height, calc(100vh - anchor-size(self-block)));
+    min-width: anchor-size(width);
+    overflow: auto;
+  }
+
+  ::slotted([popover]:not(:popover-open)) {
+    display: none;
+  }
+
+  @supports not (anchor-name: --anchor) {
+    :host(${fallbackState}) ::slotted([popover]) {
+      margin-block-start: calc(${lineHeightBase300} + (${spacingVerticalSNudge} * 2) + ${strokeWidthThin});
+    }
+
+    :host(${fallbackState}${smallState}) ::slotted([popover]) {
+      margin-block-start: calc(${lineHeightBase200} + (${spacingVerticalXS} * 2) + ${strokeWidthThin});
+    }
+
+    :host(${fallbackState}${largeState}) ::slotted([popover]) {
+      margin-block-start: calc(${lineHeightBase400} + (${spacingVerticalS} * 2) + ${strokeWidthThin});
+    }
+
+    :host(${flipBlockState}) ::slotted([popover]) {
+      margin-block-start: revert;
+      transform: translate(0, -100%);
+    }
   }
 `;
