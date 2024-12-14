@@ -186,7 +186,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       activeLegend: '',
       YValueHover: [],
       refSelected: '',
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       isCalloutVisible: false,
       selectedLegendPoints: [],
       selectedColorBarLegend: [],
@@ -1192,7 +1192,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           () => `translate(${this._xAxisScale(pointToHighlight.x)}, ${this._yAxisScale(pointToHighlight.y)})`,
         )
         .attr('visibility', 'visibility')
-        .attr('y2', `${lineHeight - 5 - this._yAxisScale(pointToHighlight.y)}`);
+        .attr('y2', `${lineHeight - this._yAxisScale(pointToHighlight.y)}`);
 
       this.setState({
         nearestCircleToHighlight: pointToHighlight,
@@ -1278,7 +1278,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       d3Select(`#${this._verticalLine}`)
         .attr('transform', () => `translate(${_this._xAxisScale(x)}, ${_this._yAxisScale(y)})`)
         .attr('visibility', 'visibility')
-        .attr('y2', `${lineHeight - 5 - _this._yAxisScale(y)}`);
+        .attr('y2', `${lineHeight - _this._yAxisScale(y)}`);
       if (this._uniqueCallOutID !== circleId) {
         this._uniqueCallOutID = circleId;
         this.setState({
