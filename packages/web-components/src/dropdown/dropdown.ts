@@ -7,10 +7,14 @@ import {
   type ViewTemplate,
   volatile,
 } from '@microsoft/fast-element';
+import { inRange, limit } from '@microsoft/fast-web-utilities';
 import type { Listbox } from '../listbox/listbox.js';
+import { isListbox } from '../listbox/listbox.options.js';
 import type { Option } from '../option/option.js';
 import { isOption } from '../option/option.options.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
+import { cancelIdleCallback, requestIdleCallback } from '../utils/idle-callback.js';
+import { AnchorPositioningCSSSupported } from '../utils/support.js';
 import { uniqueId } from '../utils/unique-id.js';
 import { DropdownAppearance, DropdownSize, DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownIndicatorTemplate, dropdownInputTemplate } from './dropdown.template.js';
@@ -636,6 +640,66 @@ export class BaseDropdown extends FASTElement {
 
 export class Dropdown extends BaseDropdown {
   /**
+   * Static property for the anchor positioning fallback observer. The observer is used to flip the listbox when it is
+   * out of view.
+   *
+   * @remarks This is only used when the browser does not support CSS anchor positioning, and the CSS anchor polyfill is
+   * not present.
+   *
+   * @internal
+   */
+  private static AnchorPositionFallbackObserver: IntersectionObserver;
+
+  /**
+   * Static property for the anchor positioning fallback style elements.
+   *
+   * @remarks This is only used when the browser does not support CSS anchor positioning, and the CSS anchor polyfill is
+   * present.
+   *
+   * @internal
+   */
+  private static AnchorPositionFallbackStyleElements: Map<BaseDropdown, HTMLStyleElement> = new Map();
+
+  /**
+   * Static property for the anchor positioning fallback timeout reference. This is used to prevent multiple idle
+   * callbacks from being scheduled when multiple dropdowns are created in quick succession.
+   *
+   * @remarks This is only used when the browser does not support CSS anchor positioning, and the CSS anchor polyfill is
+   * present.
+   *
+   * @internal
+   */
+  private static AnchorPositionFallbackTimeout: number | null;
+
+  /**
+   * Fallback style element for anchor positioning.
+   *
+   * @remarks This is only used when the browser does not support CSS anchor positioning, and the CSS anchor polyfill is
+   * present.
+   *
+   * @internal
+   */
+  private anchorPositionFallbackStyleElement: HTMLStyleElement | null = null;
+
+  /**
+   * Applies the `--listbox-max-height` style to the listbox based on the dropdown's position in the viewport. This
+   * prevents the listbox from growing beyond the available space.
+   *
+   * @internal
+   */
+  private scrollWindowHandler = () => {
+    const rect = this.getBoundingClientRect();
+    if (rect.top < window.innerHeight - rect.bottom) {
+      this.style.setProperty(
+        '--listbox-max-height',
+        `${limit(0, window.innerHeight, window.innerHeight - rect.bottom)}px`,
+      );
+    } else {
+      this.style.setProperty('--listbox-max-height', `${limit(0, window.innerHeight, rect.top)}px`);
+    }
+  };
+
+  /**
    * The appearance of the dropdown.
    *
    * @public
@@ -676,6 +740,22 @@ export class Dropdown extends BaseDropdown {
     swapStates(this.elementInternals, prev, next, DropdownSize);
   }
 
+  connectedCallback(): void {
+    super.connectedCallback();
+    Updates.enqueue(() => this.setAnchorPositionFallbackStyles());
+  }
+
+  disconnectedCallback(): void {
+    const styles = Dropdown.AnchorPositionFallbackStyleElements.get(this);
+
+    if (styles) {
+      styles.remove();
+      Dropdown.AnchorPositionFallbackStyleElements.delete(this);
+    }
+
+    super.disconnectedCallback();
+  }
+
   /**
    * Inserts the control element.
    *
@@ -697,5 +777,101 @@ export class Dropdown extends BaseDropdown {
     template.render(this, this);
     this.append(this.indicator);
     this.indicatorSlot?.assign(this.indicator);
+  }
+
+  /**
+   * Adds or removes the window event listener based on the open state.
+   *
+   * @param prev - the previous open state
+   * @param next - the current open state
+   * @internal
+   */
+  public openChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    super.openChanged(prev, next);
+
+    if (next) {
+      Dropdown.AnchorPositionFallbackObserver?.observe(this.listbox);
+      window.addEventListener('scroll', this.scrollWindowHandler, { passive: true });
+      this.scrollWindowHandler();
+      return;
+    }
+
+    Dropdown.AnchorPositionFallbackObserver?.unobserve(this.listbox);
+    window.removeEventListener('scroll', this.scrollWindowHandler);
+  }
+
+  /**
+   * Applies anchor positioning fallback styles.
+   *
+   * @internal
+   */
+  private setAnchorPositionFallbackStyles(): void {
+    const anchorName = `--${this.id}`;
+
+    if (AnchorPositioningCSSSupported) {
+      return;
+    }
+
+    if (window.CSS_ANCHOR_POLYFILL) {
+      const observerCallback = (entries: IntersectionObserverEntry[]): void => {
+        entries.forEach(entry => {
+          const target = entry.target as Listbox;
+          if (isListbox(target)) {
+            if (inRange(entry.intersectionRatio, 0, 1)) {
+              toggleState(
+                target.dropdown?.elementInternals,
+                'flip-block',
+                entry.intersectionRect.bottom >= window.innerHeight,
+              );
+            }
+          }
+        });
+      };
+
+      Dropdown.AnchorPositionFallbackObserver =
+        Dropdown.AnchorPositionFallbackObserver ?? new IntersectionObserver(observerCallback, { threshold: [0, 1] });
+
+      toggleState(this.elementInternals, 'anchor-position-fallback', true);
+      return;
+    }
+
+    if (Dropdown.AnchorPositionFallbackTimeout) {
+      cancelIdleCallback(Dropdown.AnchorPositionFallbackTimeout);
+      Dropdown.AnchorPositionFallbackTimeout = null;
+    }
+
+    this.anchorPositionFallbackStyleElement =
+      this.anchorPositionFallbackStyleElement ?? document.createElement('style');
+
+    this.anchorPositionFallbackStyleElement.textContent = /* css */ `
+      #${this.id} { anchor-name: ${anchorName}; }
+
+      #${this.listbox.id} {
+        position-anchor: ${anchorName};
+        top: anchor(bottom);
+        left: anchor(left);
+        position-try-fallbacks: block-start, flip-inline, flip-block;
+        max-height: var(--listbox-max-height, calc(100vh - anchor-size(self-block)));
+        min-width: anchor-size(width);
+      }
+    `;
+
+    Dropdown.AnchorPositionFallbackStyleElements.set(this, this.anchorPositionFallbackStyleElement);
+
+    Dropdown.AnchorPositionFallbackTimeout = requestIdleCallback(
+      () => {
+        const styleElements: HTMLStyleElement[] = [];
+        Dropdown.AnchorPositionFallbackStyleElements.forEach(styleElement => {
+          const element = styleElement.cloneNode(true) as HTMLStyleElement;
+          (document.head ?? document.body).append(element);
+          styleElements.push(element);
+        });
+
+        (window as any).CSS_ANCHOR_POLYFILL({
+          elements: styleElements,
+        });
+      },
+      { timeout: 100 },
+    );
   }
 }

@@ -22,7 +22,7 @@ export const dropdownInputTemplate = html<BaseDropdown>`
   <input
     @input="${(x, c) => x.inputHandler(c.event as InputEvent)}"
     @change="${(x, c) => x.changeHandler(c.event as InputEvent)}"
-    aria-activedescendant="${x => (x.open ? x.activeDescendant : null)}"
+    aria-activedescendant="${x => x.activeDescendant}"
     aria-controls="${x => x.listbox?.id ?? null}"
     aria-labelledby="${x => x.ariaLabelledBy}"
     aria-expanded="${x => x.open}"
@@ -38,7 +38,7 @@ export const dropdownInputTemplate = html<BaseDropdown>`
 
 export const dropdownButtonTemplate = html<BaseDropdown>`
   <button
-    aria-activedescendant="${x => (x.open ? x.activeDescendant : null)}"
+    aria-activedescendant="${x => x.activeDescendant}"
     aria-controls="${x => x.listbox?.id ?? null}"
     aria-expanded="${x => x.open}"
     aria-haspopup="listbox"
@@ -65,7 +65,6 @@ export function dropdownTemplate<T extends BaseDropdown>(): ElementViewTemplate<
       @focusout="${(x, c) => x.focusoutHandler(c.event as FocusEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
       @mousedown="${(x, c) => x.mousedownHandler(c.event as MouseEvent)}"
-      id="${x => x.id}"
     >
       <div class="control">
         <slot name="control" ${ref('controlSlot')}></slot>

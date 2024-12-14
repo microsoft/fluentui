@@ -3,7 +3,6 @@ import type { BaseDropdown } from '../dropdown/dropdown.js';
 import { isDropdown } from '../dropdown/dropdown.options.js';
 import type { Option } from '../option/option.js';
 import { isOption } from '../option/option.options.js';
-import { AnchorPositioningCSSSupported, AnchorPositioningHTMLSupported } from '../utils/support.js';
 import { toggleState } from '../utils/element-internals.js';
 import { uniqueId } from '../utils/unique-id.js';
 
@@ -71,16 +70,45 @@ export class Listbox extends FASTElement {
   public selectedIndex!: number;
 
   /**
-   * Fallback style element for anchor positioning.
-   * @internal
-   */
-  protected anchorPositioningStyleElement: HTMLStyleElement | null = null;
-
-  /**
    * Reference to the parent dropdown element.
    * @internal
    */
-  protected dropdown?: BaseDropdown;
+  @observable
+  public dropdown?: BaseDropdown;
+
+  /**
+   * Updates notifier subscriptions and event listeners when the dropdown property changes.
+   *
+   * @param prev - the previous dropdown
+   * @param next - the current dropdown
+   * @internal
+   */
+  public dropdownChanged(prev: BaseDropdown | undefined, next: BaseDropdown | undefined): void {
+    if (!next) {
+      return;
+    }
+
+    this.parentNotifier = Observable.getNotifier(this.dropdown);
+    this.parentNotifier.subscribe(this);
+
+    for (const key of ['disabled', 'multiple', 'listboxSlot']) {
+      this.parentNotifier.notify(key);
+    }
+  }
+
+  public beforetoggleHandler(e: ToggleEvent): boolean | void {
+    if (!this.dropdown) {
+      return true;
+    }
+
+    if (this.dropdown.disabled) {
+      this.dropdown.open = false;
+      return;
+    }
+
+    this.dropdown.open = e.newState === 'open';
+    return true;
+  }
 
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
@@ -149,26 +177,12 @@ export class Listbox extends FASTElement {
 
     if (isDropdown(this.parentElement)) {
       this.dropdown = this.parentElement;
-      this.parentNotifier = Observable.getNotifier(this.dropdown);
-      this.parentNotifier.subscribe(this);
-
-      this.popover = 'auto';
-      this.addEventListener('beforetoggle', this.dropdown.beforetoggleListboxHandler as EventListener);
-
-      for (const key of ['disabled', 'multiple', 'listboxSlot', 'listboxChildren']) {
-        this.parentNotifier.notify(key);
-      }
     }
   }
 
   disconnectedCallback(): void {
     this.parentNotifier?.unsubscribe(this);
     Observable.getNotifier(this).unsubscribe(this);
-
-    this.popover = null;
-    this.removeEventListener('beforetoggle', this.dropdown?.beforetoggleListboxHandler as EventListener);
-
-    this.anchorPositioningStyleElement?.remove();
 
     super.disconnectedCallback();
   }
@@ -197,7 +211,7 @@ export class Listbox extends FASTElement {
           this.dropdown.listbox = this;
           this.dropdown.listboxSlot.assign(this);
         }
-        this.setAnchorPositioningFallbackStyles();
+
         break;
       }
     }
@@ -229,45 +243,5 @@ export class Listbox extends FASTElement {
     }
 
     this.selectedIndex = selectedIndex;
-  }
-
-  /**
-   * Applies anchor positioning fallback styles.
-   *
-   * @internal
-   */
-  private setAnchorPositioningFallbackStyles(): void {
-    if (this.dropdown) {
-      // @ts-expect-error - Anchor positioning
-      const anchorName = this.dropdown.style.anchorName || `--${this.id}`;
-
-      if (AnchorPositioningCSSSupported) {
-        if (!AnchorPositioningHTMLSupported) {
-          this.dropdown.style.setProperty('anchor-name', anchorName);
-          this.style.setProperty('position-anchor', anchorName);
-        }
-        return;
-      }
-
-      if ((window as any).CSS_ANCHOR_POLYFILL) {
-        this.anchorPositioningStyleElement = this.anchorPositioningStyleElement ?? document.createElement('style');
-        document.head.append(this.anchorPositioningStyleElement);
-
-        this.anchorPositioningStyleElement.textContent = /* css */ `
-          #${this.dropdown.id} {
-            anchor-name: ${anchorName};
-          }
-
-          #${this.id} {
-            position: absolute;
-            position-anchor: ${anchorName};
-            top: anchor(bottom);
-            position-area: block-end span-inline-end;
-            position-try-fallbacks: flip-inline, flip-block, block-start;
-          }
-        `;
-        (window as any).CSS_ANCHOR_POLYFILL.call({ element: this.anchorPositioningStyleElement });
-      }
-    }
   }
 }

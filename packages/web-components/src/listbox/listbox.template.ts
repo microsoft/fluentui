@@ -12,7 +12,12 @@ import type { Listbox } from './listbox.js';
  */
 export function listboxTemplate<T extends Listbox>(): ElementViewTemplate<T> {
   return html<T>`
-    <template id="${x => x.id}" @click="${(x, c) => x.clickHandler(c.event as PointerEvent)}">
+    <template
+      id="${x => x.id}"
+      popover="${x => (!!x.dropdown ? 'auto' : null)}"
+      @beforetoggle="${(x, c) => x.beforetoggleHandler(c.event as ToggleEvent)}"
+      @click="${(x, c) => x.clickHandler(c.event as PointerEvent)}"
+    >
       <slot
         ${slotted({
           property: 'options',
