@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: remove usage of \"export *\"",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

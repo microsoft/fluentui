@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-toast
 
-This log was last generated on Fri, 06 Dec 2024 12:53:44 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.3.62)
+
+Mon, 09 Dec 2024 17:38:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.3.61..@fluentui/react-toast_v9.3.62)
+
+### Patches
+
+- refactor(Toast): replace custom component with CollapseDelayed ([PR #33405](https://github.com/microsoft/fluentui/pull/33405) by robertpenner@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.11 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
+- Bump @fluentui/react-motion to v9.6.4 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.4.0 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
 
 ## [9.3.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.3.61)
 

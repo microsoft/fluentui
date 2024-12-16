@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-carousel",
-  "version": "9.4.1",
+  "version": "9.4.2",
   "description": "A composable carousel component that enables pagination with minimal rerenders",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,8 +25,8 @@
     "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
-    "@fluentui/react-aria": "^9.13.10",
-    "@fluentui/react-button": "^9.3.96",
+    "@fluentui/react-aria": "^9.13.11",
+    "@fluentui/react-button": "^9.3.97",
     "@fluentui/react-context-selector": "^9.1.70",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-jsx-runtime": "^9.0.47",

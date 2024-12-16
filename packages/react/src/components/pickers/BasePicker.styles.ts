@@ -10,13 +10,15 @@ import type { IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-BasePicker',
+  label: 'ms-BasePicker-label',
   text: 'ms-BasePicker-text',
   itemsWrapper: 'ms-BasePicker-itemsWrapper',
   input: 'ms-BasePicker-input',
+  error: 'ms-BasePicker-error',
 };
 
 export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
-  const { className, theme, isFocused, inputClassName, disabled } = props;
+  const { className, theme, isFocused, inputClassName, disabled, hasErrorMessage } = props;
 
   if (!theme) {
     throw new Error('theme is undefined or null in base BasePicker getStyles function.');
@@ -56,8 +58,22 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
   // const disabledOverlayColor = rgbColor ? `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0.29)` : 'transparent';
   const disabledOverlayColor = 'rgba(218, 218, 218, 0.29)';
 
+  const focusColor = isFocused && !disabled && (hasErrorMessage ? semanticColors.errorText : inputFocusBorderAlt);
+
   return {
     root: [classNames.root, className, { position: 'relative' }],
+    error: [
+      classNames.error,
+      {
+        fontSize: 12,
+        fontWeight: 400,
+        color: semanticColors.errorText,
+        margin: 0,
+        paddingTop: 5,
+        display: hasErrorMessage ? 'flex' : 'none',
+        alignItems: 'center',
+      },
+    ],
     text: [
       classNames.text,
       {
@@ -79,7 +95,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
             },
           },
         },
-      isFocused && !disabled && getInputFocusStyle(inputFocusBorderAlt, effects.roundedCorner2),
+      focusColor && getInputFocusStyle(focusColor, effects.roundedCorner2),
       disabled && {
         borderColor: disabledOverlayColor,
         selectors: {
@@ -99,6 +115,14 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
                 background: 'none',
               },
             },
+          },
+        },
+      },
+      hasErrorMessage && {
+        borderColor: semanticColors.errorText,
+        selectors: {
+          ':hover': {
+            borderColor: semanticColors.errorText,
           },
         },
       },
@@ -138,5 +162,8 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
       inputClassName,
     ],
     screenReaderText: hiddenContentStyle,
+    subComponentStyles: {
+      label: {},
+    },
   };
 }

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "bugfix: ensure teams tokens follow teams overrides for fonts",
+  "packageName": "@fluentui/tokens",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

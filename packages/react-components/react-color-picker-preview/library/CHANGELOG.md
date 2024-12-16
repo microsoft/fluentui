@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-color-picker-preview
 
-This log was last generated on Fri, 06 Dec 2024 12:53:39 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.1.1)
+
+Mon, 09 Dec 2024 17:38:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker-preview_v0.1.0..@fluentui/react-color-picker-preview_v0.1.1)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
 
 ## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.1.0)
 
