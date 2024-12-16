@@ -1,15 +1,15 @@
 import { motionTokens, createPresenceComponent, PresenceDirection, AtomMotion } from '@fluentui/react-motion';
 
-// TODO: move these atoms to react-motion-components-preview
+// TODO: import these atoms from react-motion-components-preview once they're available there
 
 /**
- *
+ * Generates a motion atom object for a fade in or fade out.
  * @param direction - The functional direction of the motion: 'enter' or 'exit'.
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
- * @returns
+ * @returns A motion atom object with opacity keyframes and the supplied duration and easing.
  */
-const opacityAtom = (
+const fadeAtom = (
   direction: PresenceDirection,
   duration: number,
   easing: string = motionTokens.curveLinear,
@@ -55,9 +55,9 @@ export const SlideInFadeOut = createPresenceComponent(() => {
   const duration = motionTokens.durationGentle;
 
   return {
-    enter: [opacityAtom('enter', duration), slideAtom('enter', 'Y', '-100%', duration)],
+    enter: [fadeAtom('enter', duration), slideAtom('enter', 'Y', '-100%', duration)],
 
-    exit: opacityAtom('exit', duration),
+    exit: fadeAtom('exit', duration),
   };
 });
 
@@ -65,6 +65,6 @@ export const FadeOut = createPresenceComponent(() => {
   return {
     enter: [],
 
-    exit: opacityAtom('exit', motionTokens.durationGentle),
+    exit: fadeAtom('exit', motionTokens.durationGentle),
   };
 });
