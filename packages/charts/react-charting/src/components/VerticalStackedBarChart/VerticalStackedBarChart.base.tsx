@@ -550,14 +550,30 @@ export class VerticalStackedBarChartBase extends React.Component<
       : null;
   };
 
-  private _onLegendClick(legendTitle: string): void {
-    if (this.state.selectedLegends.includes(legendTitle)) {
-      this.setState({
-        selectedLegends: this.state.selectedLegends.filter((selectedLegend: string) => selectedLegend !== legendTitle),
-      });
+  private _onLegendClick(legend: string): void {
+    // If multiple legends cannot be selected, set the selection to the clicked legend
+    if (!this.props.canSelectMultipleLegends) {
+      this.setState({ selectedLegends: [legend] });
     } else {
+      // Get all legend titles
+      const allLegends = this._points.map((point: IVerticalStackedChartProps) =>
+        point.chartData.map(data => data.legend),
+      );
+      let selected: string[] = [];
+      if (this.state.selectedLegends.includes(legend)) {
+        selected = this.state.selectedLegends.filter((selectedLegend: string) => selectedLegend !== legend);
+      } else {
+        selected = [...this.state.selectedLegends, legend];
+      }
+
+      // Reset selection if all legends are selected
+      const allSelected = allLegends?.flat().every(l => selected.includes(l));
+      if (allSelected) {
+        selected = [];
+      }
+
       this.setState({
-        selectedLegends: [...this.state.selectedLegends, legendTitle],
+        selectedLegends: selected,
       });
     }
   }
