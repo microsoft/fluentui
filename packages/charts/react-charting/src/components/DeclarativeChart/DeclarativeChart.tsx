@@ -28,11 +28,6 @@ import { downloadImage } from './helpers';
 
 import { useTheme } from '@fluentui/react';
 
-export const UseIsDarkTheme = (): boolean => {
-  const theme = useTheme();
-  return theme?.isInverted ?? false;
-};
-
 export interface Schema {
   /**
    * Plotly schema represented as JSON object
@@ -80,13 +75,15 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   DeclarativeChartProps
 >((props, forwardedRef) => {
   const colorMap = useColorMapping();
-  const isDarkTheme = UseIsDarkTheme();
+  const theme = useTheme();
+  const containerRef = React.useRef<HTMLDivElement>(null);
 
   const renderChart = React.useCallback(() => {
     const { plotlySchema } = props.chartSchema;
     const xValues = plotlySchema.data[0].x;
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
+    const isDarkTheme = theme?.isInverted ?? false;
 
     switch (plotlySchema.data[0].type) {
       case 'pie':
@@ -128,18 +125,17 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       default:
         return <div>Unsupported Schema</div>;
     }
-  }, [props.chartSchema, colorMap, isDarkTheme]);
+  }, [props.chartSchema, colorMap, theme]);
 
   const onDownloadBtnClick = React.useCallback(() => {
-    const svgElement = document.querySelector('[class^="chart"]') as SVGSVGElement | null;
-    downloadImage(svgElement);
-  }, []);
+    downloadImage(containerRef.current, theme.palette.white);
+  }, [theme]);
 
   return (
-    <>
+    <div ref={containerRef}>
       <button onClick={onDownloadBtnClick}>Download</button>
       {renderChart()}
-    </>
+    </div>
   );
 });
 DeclarativeChart.displayName = 'DeclarativeChart';

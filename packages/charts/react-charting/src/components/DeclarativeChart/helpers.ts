@@ -1,33 +1,58 @@
-const DOM_URL = window.URL || window.webkitURL;
+import { create as d3Create, select as d3Select, Selection } from 'd3-selection';
 
-export function downloadImage(svg: SVGSVGElement | null) {
-  if (!svg) {
+// const DOM_URL = window.URL || window.webkitURL;
+
+export function downloadImage(container: HTMLDivElement | null, background: string) {
+  if (!container) {
     return;
   }
 
-  const clonedSvg = cloneSvg(svg);
-  let s = new window.XMLSerializer().serializeToString(clonedSvg);
-  s = window.btoa(window.unescape(window.encodeURIComponent(s)));
+  const result = toSvg(container, background);
+  if (!result) {
+    return;
+  }
 
-  const { width, height } = svg.getBoundingClientRect();
-
-  svgToPng(s, width, height).then((result: string) => {
+  svgToPng(result.svg, result.width, result.height).then((imgData: string) => {
     const newWindow = window.open();
-    newWindow.document.body.innerHTML = `<img src="${result}" />`;
+    newWindow.document.body.innerHTML = `<img src="${imgData}" />`;
 
     // fileSaver(result);
   });
 }
 
-export function cloneSvg(svg: SVGSVGElement) {
-  const svgElements = svg.getElementsByTagName('*');
+export function toSvg(container: HTMLDivElement, background: string) {
+  const svg = container.querySelector<SVGSVGElement>('svg[class^="chart-"]');
+  if (!svg) {
+    return;
+  }
+
+  const { width, height } = svg.getBoundingClientRect();
   const classNames = new Set<string>();
+  const {
+    legendGroup,
+    width: legendGroupWidth,
+    height: legendGroupHeight,
+  } = cloneLegendsToSvg(container, width, height, classNames);
+  const clonedSvg = d3Select(svg.cloneNode(true) as SVGSVGElement).attr('viewBox', null);
+  const w1 = Math.max(width, legendGroupWidth);
+  const h1 = height + legendGroupHeight;
+
+  clonedSvg.append(() => legendGroup.node());
+  clonedSvg
+    .insert('rect', ':first-child')
+    .attr('x', 0)
+    .attr('y', 0)
+    .attr('width', w1)
+    .attr('height', h1)
+    .attr('fill', background);
+
+  const svgElements = svg.getElementsByTagName('*');
   const styleSheets = document.styleSheets;
   const styleRules: string[] = [];
 
   for (let i = svgElements.length - 1; i--; ) {
     svgElements[i].classList.forEach(className => {
-      classNames.add(className);
+      classNames.add(`.${className}`);
     });
   }
 
@@ -35,8 +60,8 @@ export function cloneSvg(svg: SVGSVGElement) {
     const rules = styleSheets[i].cssRules;
     for (let j = 0; j < rules.length; j++) {
       if (rules[j].constructor.name === 'CSSStyleRule') {
-        const selectorText: string = (rules[j] as CSSStyleRule).selectorText;
-        const hasClassName = selectorText.split(' ').some(text => classNames.has(text.replace('.', '')));
+        const selectorText = (rules[j] as CSSStyleRule).selectorText;
+        const hasClassName = selectorText.split(' ').some(word => classNames.has(word));
 
         if (hasClassName) {
           styleRules.push(rules[j].cssText);
@@ -48,15 +73,96 @@ export function cloneSvg(svg: SVGSVGElement) {
   const xmlDocument = new DOMParser().parseFromString('<svg></svg>', 'image/svg+xml');
   const styleNode = xmlDocument.createCDATASection(styleRules.join(' '));
 
-  const clonedSvg = svg.cloneNode(true) as SVGSVGElement;
-  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-  const style = document.createElementNS('http://www.w3.org/2000/svg', 'style');
-  style.setAttribute('type', 'text/css');
-  style.appendChild(styleNode);
-  defs.appendChild(style);
-  clonedSvg.insertBefore(defs, clonedSvg.firstChild);
+  clonedSvg.insert('defs', ':first-child').append('style').attr('type', 'text/css').node()!.appendChild(styleNode);
 
-  return clonedSvg;
+  let s = new XMLSerializer().serializeToString(clonedSvg.node()!);
+  s = btoa(decodeURIComponent(encodeURIComponent(s)));
+
+  return {
+    svg: s,
+    width: w1,
+    height: h1,
+  };
+}
+
+function cloneLegendsToSvg(container: HTMLDivElement, width: number, height: number, classNames: Set<string>) {
+  const legendButtons = container.querySelectorAll<HTMLElement>(
+    'button[class^="legend-"], [class^="legendContainer-"] div[class^="overflowIndicationTextStyle-"]',
+  );
+
+  const legendGroup = d3Create<SVGGElement>('svg:g');
+  let legendX = 0;
+  let legendY = height + 8;
+  let legendLine: Selection<SVGGElement, unknown, null, undefined>[] = [];
+  const legendLines: (typeof legendLine)[] = [];
+  const legendLineWidths: number[] = [];
+
+  for (let i = 0; i < legendButtons.length; i++) {
+    const { width: legendWidth } = legendButtons[i].getBoundingClientRect();
+    const legendItem = legendGroup.append('g');
+
+    legendLine.push(legendItem);
+    if (legendX + legendWidth > width && legendLine.length > 1) {
+      legendLine.pop();
+      legendLines.push(legendLine);
+      legendLineWidths.push(legendX);
+
+      legendLine = [legendItem];
+      legendX = 0;
+      legendY += 32;
+    }
+
+    let legendText: HTMLDivElement | null;
+    let textOffset = 0;
+
+    if (legendButtons[i].tagName.toLowerCase() === 'button') {
+      const legendRect = legendButtons[i].querySelector<HTMLDivElement>('[class^="rect"]');
+      const { backgroundColor: legendColor, borderColor: legendBorderColor } = getComputedStyle(legendRect!);
+
+      legendText = legendButtons[i].querySelector<HTMLDivElement>('[class^="text"]');
+      legendText!.classList.forEach(className => classNames.add(`.${className}`));
+      legendItem
+        .append('rect')
+        .attr('x', legendX + 8)
+        .attr('y', legendY + 8)
+        .attr('width', 12)
+        .attr('height', 12)
+        .attr('fill', legendColor)
+        .attr('stroke-width', 1)
+        .attr('stroke', legendBorderColor);
+      textOffset = 28;
+    } else {
+      legendText = legendButtons[i] as HTMLDivElement;
+      legendText.classList.forEach(className => classNames.add(`.${className}`));
+      textOffset = 8;
+    }
+
+    legendItem
+      .append('text')
+      .attr('x', legendX + textOffset)
+      .attr('y', legendY + 8)
+      .attr('dominant-baseline', 'hanging')
+      .attr('class', legendText!.getAttribute('class'))
+      .text(legendText!.textContent);
+    legendX += legendWidth;
+  }
+
+  legendLines.push(legendLine);
+  legendLineWidths.push(legendX);
+  legendY += 32;
+
+  legendLines.forEach((ln, idx) => {
+    const offsetX = Math.max((width - legendLineWidths[idx]) / 2, 0);
+    ln.forEach(item => {
+      item.attr('transform', `translate(${offsetX}, 0)`);
+    });
+  });
+
+  return {
+    legendGroup,
+    width: Math.max(...legendLineWidths),
+    height: legendY - height,
+  };
 }
 
 export function svgToPng(svg: string, width: number, height: number, scale: number = 1) {
@@ -119,12 +225,12 @@ export function fileSaver(url: string) {
   // blob = null;
 }
 
-function fixBinary(b: string) {
-  const len = b.length;
-  const buf = new ArrayBuffer(len);
-  const arr = new Uint8Array(buf);
-  for (let i = 0; i < len; i++) {
-    arr[i] = b.charCodeAt(i);
-  }
-  return buf;
-}
+// function fixBinary(b: string) {
+//   const len = b.length;
+//   const buf = new ArrayBuffer(len);
+//   const arr = new Uint8Array(buf);
+//   for (let i = 0; i < len; i++) {
+//     arr[i] = b.charCodeAt(i);
+//   }
+//   return buf;
+// }
