@@ -186,7 +186,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       activeLegend: '',
       YValueHover: [],
       refSelected: '',
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       isCalloutVisible: false,
       selectedLegendPoints: [],
       selectedColorBarLegend: [],

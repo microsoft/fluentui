@@ -1,9 +1,33 @@
 import * as React from 'react';
-import { makeStyles, Button, Label, SwatchPicker, EmptySwatch, ColorSwatch } from '@fluentui/react-components';
+import { tinycolor } from '@ctrl/tinycolor';
+import {
+  makeStyles,
+  Button,
+  SwatchPicker,
+  EmptySwatch,
+  ColorSwatch,
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
+  Tooltip,
+} from '@fluentui/react-components';
 import type { SwatchPickerOnSelectEventHandler } from '@fluentui/react-components';
+import {
+  ColorPicker,
+  ColorSlider,
+  AlphaSlider,
+  ColorPickerProps,
+  ColorArea,
+} from '@fluentui/react-color-picker-preview';
 
 const useStyles = makeStyles({
   example: {
+    width: '300px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px',
+  },
+  selectedColor: {
     width: '100px',
     height: '100px',
     border: '1px solid #ccc',
@@ -15,9 +39,26 @@ const useStyles = makeStyles({
   button: {
     marginRight: '8px',
   },
-  input: {
+  previewColor: {
+    margin: '10px 0',
+    width: '50px',
+    height: '50px',
+    borderRadius: '4px',
+    border: '1px solid #ccc',
+  },
+  previewButton: {
+    minWidth: '50px',
+    height: '50px',
     display: 'block',
     margin: '10px 0',
+  },
+  rowWrapper: {
+    display: 'flex',
+    gap: '10px',
+  },
+  sliders: {
+    display: 'flex',
+    flexDirection: 'column',
   },
 });
 
@@ -30,24 +71,33 @@ const defaultItems = [
   { color: '#00B053', value: '00B053', 'aria-label': 'green' },
 ];
 
+const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
+
 export const EmptySwatchExample = () => {
   const styles = useStyles();
 
   const [selectedValue, setSelectedValue] = React.useState('00B053');
   const [selectedColor, setSelectedColor] = React.useState('#00B053');
+  const [popoverOpen, setPopoverOpen] = React.useState(false);
+  const [previewColor, setPreviewColor] = React.useState(DEFAULT_COLOR_HSV);
+  const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
 
-  const inputRef = React.useRef<HTMLInputElement>(null);
   const colorFocusTargetRef = React.useRef<HTMLButtonElement>(null);
   const [colorFocusTarget, setColorFocusTarget] = React.useState<string | null>(null);
   const [items, setItems] = React.useState<Array<{ color: string; value: string; 'aria-label': string }>>(defaultItems);
   const emptyItems = new Array(ITEMS_LIMIT - items.length).fill(null);
 
+  const handleChange: ColorPickerProps['onColorChange'] = (_, data) => {
+    setPreviewColor({ ...data.color, a: data.color.a ?? 1 });
+  };
+
   const handleSelect: SwatchPickerOnSelectEventHandler = (_, data) => {
     setSelectedValue(data.selectedValue);
     setSelectedColor(data.selectedSwatch);
   };
+
   const handleAddColor = () => {
-    const newColor = inputRef.current?.value as string;
+    const newColor = tinycolor(color).toRgbString();
     // "value" should be unique as it's used as a key and for selection
     const newValue = `custom-${newColor} [${items.length - ITEMS_LIMIT}]`;
 
@@ -80,10 +130,47 @@ export const EmptySwatchExample = () => {
           <EmptySwatch disabled key={index} aria-label="empty swatch" />
         ))}
       </SwatchPicker>
+      <h4>Selected swatch</h4>
+      <div className={styles.selectedColor} style={{ backgroundColor: selectedColor }} />
+      <Popover open={popoverOpen} trapFocus onOpenChange={(_, data) => setPopoverOpen(data.open)}>
+        <PopoverTrigger disableButtonEnhancement>
+          <Tooltip content="Custom color" relationship="label">
+            <Button className={styles.previewButton} style={{ backgroundColor: tinycolor(color).toRgbString() }} />
+          </Tooltip>
+        </PopoverTrigger>
 
-      <div className={styles.example} style={{ backgroundColor: selectedColor }} />
-      <Label htmlFor="color-select">Add more colors:</Label>
-      <input className={styles.input} ref={inputRef} type="color" id="color-select" name="color-select" />
+        <PopoverSurface>
+          <ColorPicker color={previewColor} onColorChange={handleChange}>
+            <ColorArea />
+            <div className={styles.rowWrapper}>
+              <div className={styles.sliders}>
+                <ColorSlider />
+                <AlphaSlider />
+              </div>
+              <div className={styles.previewColor} style={{ backgroundColor: tinycolor(previewColor).toRgbString() }} />
+            </div>
+          </ColorPicker>
+          <div className={styles.rowWrapper}>
+            <Button
+              appearance="primary"
+              onClick={() => {
+                setColor(previewColor);
+                setPopoverOpen(false);
+              }}
+            >
+              Ok
+            </Button>
+            <Button
+              onClick={() => {
+                setPopoverOpen(false);
+              }}
+            >
+              Cancel
+            </Button>
+          </div>
+        </PopoverSurface>
+      </Popover>
+
       <Button
         id="add-new-color"
         className={styles.button}

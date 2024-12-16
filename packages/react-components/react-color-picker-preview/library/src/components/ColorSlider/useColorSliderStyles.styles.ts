@@ -76,7 +76,6 @@ const useStyles = makeStyles({
  */
 const useRailStyles = makeStyles({
   rail: {
-    borderRadius: tokens.borderRadiusMedium,
     pointerEvents: 'none',
     gridRowStart: '2',
     gridRowEnd: '2',
@@ -155,6 +154,15 @@ const useThumbStyles = makeStyles({
   },
 });
 
+const useShapeStyles = makeStyles({
+  rounded: {
+    borderRadius: tokens.borderRadiusMedium,
+  },
+  square: {
+    borderRadius: tokens.borderRadiusNone,
+  },
+});
+
 /**
  * Styles for the Input slot
  */
@@ -197,6 +205,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
   const railStyles = useRailStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
+  const shapeStyles = useShapeStyles();
   const isVertical = state.vertical;
 
   state.root.className = mergeClasses(
@@ -210,6 +219,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
     colorSliderClassNames.rail,
     railStyles.rail,
     styles.hue,
+    shapeStyles[state.shape || 'rounded'],
     isVertical ? railStyles.vertical : railStyles.horizontal,
     state.rail.className,
   );
