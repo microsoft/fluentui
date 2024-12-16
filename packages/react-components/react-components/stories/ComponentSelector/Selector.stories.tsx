@@ -39,7 +39,6 @@ const useStyles = makeStyles({
   secondLevel: { 'margin-left': '30px' },
   thirdLevel: { 'margin-left': '60px' },
   forthLevel: { 'margin-left': '90px' },
-  foundMessage: { 'margin-bottom': '10px' },
   heading: { margin: '30px 0 10px 0' },
   root: {
     // Stack the label above the field with a gap
@@ -339,6 +338,7 @@ export const Selector = () => {
   React.useEffect(() => {
     setFilteredComponentsDefinitions(componentsDefinitions.current);
   }, [setFilteredComponentsDefinitions]);
+
   const onFilterChange = (event, data) => {
     setFilteredComponentsDefinitions(
       componentsDefinitions.current.filter(definition => {
@@ -357,6 +357,7 @@ export const Selector = () => {
         <Input onChange={onFilterChange} />
       </Field>
       <h2>Choose Component</h2>
+      <Text role="status">{filteredComponentsDefinitions.length} components available.</Text>
       <Accordion multiple>
         {categorizedComponents.map(category => (
           <AccordionItem key={category.id} value={category.id}>
