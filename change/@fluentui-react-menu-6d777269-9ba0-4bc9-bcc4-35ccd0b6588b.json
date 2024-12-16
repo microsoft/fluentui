@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor(MenuPopover): migrate opacity transition to Fade component",
+  "packageName": "@fluentui/react-menu",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

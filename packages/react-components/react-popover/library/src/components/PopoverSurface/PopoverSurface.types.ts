@@ -17,7 +17,7 @@ export type PopoverSurfaceSlots = {
  * PopoverSurface State
  */
 export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> &
-  Pick<PopoverContextValue, 'appearance' | 'arrowRef' | 'inline' | 'mountNode' | 'size' | 'withArrow'> & {
+  Pick<PopoverContextValue, 'appearance' | 'arrowRef' | 'inline' | 'open' | 'mountNode' | 'size' | 'withArrow'> & {
     /**
      * CSS class for the arrow element
      */

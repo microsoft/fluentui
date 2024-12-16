@@ -19,6 +19,7 @@ export const usePopoverSurface_unstable = (
 ): PopoverSurfaceState => {
   const contentRef = usePopoverContext_unstable(context => context.contentRef);
   const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
+  const open = usePopoverContext_unstable(context => context.open);
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const mountNode = usePopoverContext_unstable(context => context.mountNode);
   const arrowRef = usePopoverContext_unstable(context => context.arrowRef);
@@ -35,6 +36,7 @@ export const usePopoverSurface_unstable = (
   });
 
   const state: PopoverSurfaceState = {
+    open,
     inline,
     appearance,
     withArrow,
