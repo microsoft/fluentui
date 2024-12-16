@@ -124,7 +124,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     super(props);
     this._createSet = memoizeFunction(this._createDataSet);
     this.state = {
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       activeLegend: '',
       hoverXValue: '',
       isCalloutVisible: false,
