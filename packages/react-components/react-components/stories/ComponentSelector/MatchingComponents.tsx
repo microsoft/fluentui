@@ -14,14 +14,9 @@ export const MatchingComponents = ({ components }) => {
   return (
     <>
       <h2 id="matching-heading" className={classes.heading}>
-        Matching Components
+        Matching Components {components.length}
       </h2>
       <div role="group" aria-labelledby="matching-heading">
-        <div className={classes.foundMessage}>
-          <Text as="h3" weight="bold">
-            {/* Found {foundComponents.length} component(s).{' '} */}
-          </Text>
-        </div>
         {components.map((component, index) => {
           return (
             <div key={`component-${index}}`}>
