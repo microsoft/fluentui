@@ -812,7 +812,7 @@ export class Dropdown extends BaseDropdown {
       return;
     }
 
-    if (window.CSS_ANCHOR_POLYFILL) {
+    if (!window.CSS_ANCHOR_POLYFILL) {
       const observerCallback = (entries: IntersectionObserverEntry[]): void => {
         entries.forEach(entry => {
           const target = entry.target as Listbox;
