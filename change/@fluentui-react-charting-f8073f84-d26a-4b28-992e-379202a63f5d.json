@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Enable chart selection based on legends in declarative charts",
+  "comment": "Enable Controlled Legends working in declarative HBC",
   "packageName": "@fluentui/react-charting",
   "email": "74965306+Anush2303@users.noreply.github.com",
   "dependentChangeType": "patch"
