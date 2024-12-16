@@ -637,7 +637,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
             transform={`translate(0,${0.5 * (yBarScale.bandwidth() - this._barHeight)})`}
             key={point.x}
             className={this._classNames.opacityChangeOnHover}
-            data-is-focusable={shouldHighlight}
             x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
             y={yBarScale(point.y)}
             rx={this.props.roundCorners ? 3 : 0}
@@ -657,7 +656,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
             onMouseOver={this._onBarHover.bind(this, point, startColor)}
             onMouseLeave={this._onBarLeave}
             onBlur={this._onBarLeave}
-            data-is-focusable={true}
+            data-is-focusable={shouldHighlight}
             onFocus={this._onBarFocus.bind(this, point, index, startColor)}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
           />
