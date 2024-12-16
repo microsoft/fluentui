@@ -208,8 +208,8 @@ export const Selector = () => {
     if (checked) {
       setSelectedBehaviours([...selectedBehaviours, name]);
     } else {
-      const array = selectedBehaviours.filter(behavior => behavior !== name);
-      setSelectedBehaviours(array);
+      const newBehaviors = selectedBehaviours.filter(behavior => behavior !== name);
+      setSelectedBehaviours(newBehaviors);
     }
   };
 
@@ -327,10 +327,10 @@ export const Selector = () => {
       setSelectedBehaviours(previousItems => previousItems.filter(item => item !== previousName));
       return;
     }
-    setSelectedBehaviours(previousItems => {
+    setSelectedBehaviours(previousBehaviors => {
       // remove previous radio item value and add new one
-      const arrayWithoutPerviousItem = previousItems.filter(item => item !== previousName);
-      return [...arrayWithoutPerviousItem, currentName];
+      const behaviorsWithoutPerviousItem = previousBehaviors.filter(item => item !== previousName);
+      return [...behaviorsWithoutPerviousItem, currentName];
     });
   };
 
