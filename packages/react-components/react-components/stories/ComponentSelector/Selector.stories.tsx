@@ -341,9 +341,13 @@ export const Selector = () => {
   }, [setFilteredComponentsDefinitions]);
   const onFilterChange = (event, data) => {
     setFilteredComponentsDefinitions(
-      componentsDefinitions.current.filter(definition =>
-        definition.component.toLowerCase().includes(data.value.toLowerCase()),
-      ),
+      componentsDefinitions.current.filter(definition => {
+        const isMatchInName = definition.component.toLowerCase().includes(data.value.toLowerCase());
+        const isMatchInStory = definition.story
+          ? definition.story.toLowerCase().includes(data.value.toLowerCase())
+          : false;
+        return isMatchInName || isMatchInStory;
+      }),
     );
   };
 
