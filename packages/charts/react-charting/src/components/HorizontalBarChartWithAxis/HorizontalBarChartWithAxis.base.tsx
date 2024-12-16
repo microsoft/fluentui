@@ -54,6 +54,7 @@ export interface IHorizontalBarChartWithAxisState extends IBasestate {
   callOutAccessibilityData?: IAccessibilityProps;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   tooltipElement?: any;
+  selectedLegends: string[];
 }
 
 type ColorScale = (_p?: number) => string;
@@ -93,6 +94,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       activeXdataPoint: null,
       YValueHover: [],
       hoverXValue: '',
+      selectedLegends: [],
     };
     this._calloutId = getId('callout');
     this._tooltipId = getId('HBCWATooltipID_');
@@ -337,7 +339,10 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const { YValueHover, hoverXValue } = this._getCalloutContentForBar(point);
     if (
       (this.state.isLegendSelected === false ||
-        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)) &&
+        (this.state.isLegendSelected &&
+          (this.state.selectedLegendTitle === point.legend ||
+            this.state.selectedLegends.length === 0 ||
+            this.state.selectedLegends.includes(point.legend!)))) &&
       this._calloutAnchorPoint !== point
     ) {
       this._calloutAnchorPoint = point;
@@ -457,7 +462,10 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const bars = sortedBars.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
-        shouldHighlight = this.state.selectedLegendTitle === point.legend;
+        shouldHighlight =
+          this.state.selectedLegendTitle === point.legend ||
+          this.state.selectedLegends.length === 0 ||
+          this.state.selectedLegends?.includes(point.legend!);
       }
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
@@ -780,9 +788,15 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
+        canSelectMultipleLegends={this.props.legendProps?.canSelectMultipleLegends}
+        onChange={this._onLegendChange}
       />
     );
     return legends;
+  };
+
+  private _onLegendChange = (selectedLegends: string[]) => {
+    this.setState({ selectedLegends });
   };
 
   private _getAxisData = (yAxisData: IAxisData) => {
