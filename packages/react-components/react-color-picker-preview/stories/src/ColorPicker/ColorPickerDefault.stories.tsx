@@ -9,6 +9,7 @@ import {
   SpinButton,
   type SpinButtonProps,
   type SpinButtonOnChangeData,
+  type SpinButtonChangeEvent,
 } from '@fluentui/react-components';
 import {
   ColorPicker,
@@ -63,31 +64,28 @@ export const Default = () => {
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
   const [hex, setHex] = React.useState(tinycolor(color).toHexString());
   const [rgb, setRgb] = React.useState(tinycolor(color).toRgb());
-  const [red, setRed] = React.useState(rgb.r);
-  const [green, setGreen] = React.useState(rgb.g);
-  const [blue, setBlue] = React.useState(rgb.b);
 
   const handleChange: ColorPickerProps['onColorChange'] = (_, data) => {
     setColor({ ...data.color, a: data.color.a ?? 1 });
     setHex(tinycolor(data.color).toHexString());
+    setRgb(tinycolor(data.color).toRgb());
   };
 
-  const onRgbChange = (
-    colorKey: RgbKey,
-    setColorFunction: React.Dispatch<React.SetStateAction<number>>,
-    data: SpinButtonOnChangeData,
-  ) => {
+  const onRgbChange = (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => {
     const value = data.displayValue ? parseInt(data.displayValue, 10) : data.value;
+
     if (!value) {
       return;
     }
+
+    const colorKey = (event.target as HTMLInputElement).name as RgbKey;
+
     const newColor = tinycolor({ ...rgb, [colorKey]: value });
     if (newColor.isValid) {
       setColor(newColor.toHsv());
       setHex(newColor.toHex());
       setRgb(newColor.toRgb());
     }
-    setColorFunction((oldValue: number) => (NUMBER_REGEX.test(value.toString()) ? value : oldValue));
   };
 
   return (
@@ -111,9 +109,9 @@ export const Default = () => {
             setHex(oldValue => (HEX_COLOR_REGEX.test(value) ? value : oldValue));
           }}
         />
-        <InputRgbField label="Red" value={red} onChange={(_, data) => onRgbChange('r', setRed, data)} />
-        <InputRgbField label="Green" value={green} onChange={(_, data) => onRgbChange('g', setGreen, data)} />
-        <InputRgbField label="Blue" value={blue} onChange={(_, data) => onRgbChange('b', setBlue, data)} />
+        <InputRgbField label="Red" value={rgb.r} name="r" onChange={onRgbChange} />
+        <InputRgbField label="Green" value={rgb.g} name="g" onChange={onRgbChange} />
+        <InputRgbField label="Blue" value={rgb.b} name="b" onChange={onRgbChange} />
       </div>
       <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toHexString() }} />
     </div>
@@ -144,9 +142,11 @@ const InputRgbField = ({
   value,
   onChange,
   label,
+  name,
 }: {
   value: number;
   label: string;
+  name: RgbKey;
   onChange?: SpinButtonProps['onChange'];
 }) => {
   const id = useId(`${label.toLowerCase()}-input`);
@@ -163,6 +163,7 @@ const InputRgbField = ({
         value={value}
         id={id}
         onChange={onChange}
+        name={name}
       />
     </div>
   );
