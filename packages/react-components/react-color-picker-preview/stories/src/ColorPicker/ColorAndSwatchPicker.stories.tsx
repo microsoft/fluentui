@@ -44,9 +44,9 @@ const useStyles = makeStyles({
 });
 
 const ITEMS_LIMIT = 8;
-const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
-const DEFAULT_SELECTED_VALUE = 'FFF';
-const DEFAULT_SELECTED_COLOR = '#FFFFFF';
+const DEFAULT_SELECTED_VALUE = '2be700';
+const DEFAULT_SELECTED_COLOR = '#2be700';
+const DEFAULT_COLOR_HSV = tinycolor(DEFAULT_SELECTED_COLOR).toHsv();
 
 export const ColorAndSwatchPickerExample = () => {
   const styles = useStyles();
@@ -80,8 +80,8 @@ export const ColorAndSwatchPickerExample = () => {
   const resetColors = () => {
     setItems([]);
     setColorFocusTarget(null);
-    setSelectedValue('fff');
-    setSelectedColor('#fff');
+    setSelectedValue(DEFAULT_SELECTED_VALUE);
+    setSelectedColor(DEFAULT_SELECTED_COLOR);
     setColor(DEFAULT_COLOR_HSV);
   };
 
