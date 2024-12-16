@@ -88,7 +88,7 @@ export const SelectionCard = props => {
       <Card
         className={styles.card}
         {...props}
-        floatingAction={<Checkbox onChange={onSelectedCardChange} checked={selected} />}
+        floatingAction={<Checkbox aria-label={props.displayName} onChange={onSelectedCardChange} checked={selected} />}
         selected={selected}
         onSelectionChange={onSelectedCardChange}
         // onMouseOver={() => setHovered(true)}
