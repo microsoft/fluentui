@@ -81,23 +81,21 @@ const useStyles = makeStyles({
   behaviors: { display: 'flex', gap: '10px' },
 });
 
-export const Question = ({ QuestionItem, indexQuestion, updateDecisionForQuestion }) => {
+export const Question = ({ question, number, updateDecisionForQuestion }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState('none');
 
   React.useEffect(() => {
-    console.log(`UseEffect: Question${indexQuestion}: Value: ${value}`);
-  }, [value]);
+    console.log(`UseEffect: Question${number}: Value: ${value}`);
+  }, [number, value]);
 
   return (
     <div className={classes.questionsWrapper}>
       <Field className={classes.questionsField}>
         <RadioGroup
-          key={`${QuestionItem.id}-${indexQuestion}`}
+          key={question.id}
           value={value}
           onChange={(_, data) => {
-            // calling this caused rerendering of the component
-
             setValue(previousValue => {
               updateDecisionForQuestion(data.value, previousValue);
               return data.value;
@@ -106,24 +104,14 @@ export const Question = ({ QuestionItem, indexQuestion, updateDecisionForQuestio
         >
           <div className={classes.questionContainer}>
             <div className={classes.questionLeftSide}>
-              <span className={classes.questionsLabel}>{`Q${indexQuestion + 1}`}</span>
+              <span className={classes.questionsLabel}>{`Q${number}`}</span>
             </div>
             <div className={classes.questionRightSide}>
-              <span className={classes.questionsText}>{QuestionItem.question}</span>
-              {QuestionItem.answers.map((item, index) => (
-                <Radio
-                  key={`${QuestionItem.id}-${indexQuestion + index + 1}`}
-                  value={item.value}
-                  label={item.text}
-                  className={classes.radioItem}
-                />
+              <span className={classes.questionsText}>{question.question}</span>
+              {question.answers.map(anser => (
+                <Radio key={anser.value} value={anser.value} label={anser.text} className={classes.radioItem} />
               ))}
-              <Radio
-                key={`${QuestionItem.id}-none`}
-                value={'none'}
-                label="Not applicable"
-                className={classes.radioItem}
-              />
+              <Radio value={'none'} label="Not applicable" className={classes.radioItem} />
             </div>
           </div>
         </RadioGroup>

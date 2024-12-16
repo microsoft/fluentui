@@ -364,11 +364,11 @@ export const Selector = () => {
         ))}
       </Accordion>
       {allQuestions.length > 0 && <h2 className={classes.heading}>Questions</h2>}
-      {allQuestions.map((item, index) => (
+      {allQuestions.map((question, index) => (
         <Question
-          key={item.id}
-          QuestionItem={item}
-          indexQuestion={index}
+          key={question.id}
+          question={question}
+          number={index + 1}
           updateDecisionForQuestion={updateDecisionForQuestion}
         />
       ))}
