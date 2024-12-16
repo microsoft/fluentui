@@ -7,8 +7,6 @@ export const masonsDarkTheme: AcrylicTheme = {
   ...createDarkTheme(brandWeb),
   ...masonsBorderRadius,
 
-  // additional values
-  materialAcrylicBackground: '#2E2E2ECC',
-  materialAcrylicStroke: 'black', // todo update this one.
-  materialAcrylicBlur: 'blur(10px)',
+  blurAcrylicBackground: 'blur(60px)',
+  colorAcrylicBackground: '#2E2D34E6',
 };

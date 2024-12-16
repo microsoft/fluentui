@@ -6,8 +6,6 @@ import { AcrylicTheme } from './acrylicTheme';
 export const masonsLightTheme: AcrylicTheme = {
   ...createLightTheme(brandWeb),
   ...masonsBorderRadius,
-  // additional values
-  materialAcrylicBackground: '#FFFFFF80',
-  materialAcrylicStroke: 'black', // todo update this one.
-  materialAcrylicBlur: 'blur(10px)',
+  blurAcrylicBackground: 'blur(60px)',
+  colorAcrylicBackground: '#F5F7AD9',
 };
