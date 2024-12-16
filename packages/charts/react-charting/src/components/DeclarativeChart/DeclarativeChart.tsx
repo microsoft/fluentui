@@ -87,19 +87,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     }
   };
 
-  let legendProps;
-  if (activeLegends.length > 0) {
-    legendProps = {
-      canSelectMultipleLegends: false,
-      selectedLegend: activeLegends[0],
-      onChange: onActiveLegendsChange,
-    };
-  } else {
-    legendProps = {
-      canSelectMultipleLegends: false,
-      onChange: onActiveLegendsChange,
-    };
-  }
+  const legendProps = {
+    canSelectMultipleLegends: false,
+    onChange: onActiveLegendsChange,
+    ...(activeLegends.length > 0 && { selectedLegend: activeLegends[0] }),
+  };
 
   switch (data[0].type) {
     case 'pie':
