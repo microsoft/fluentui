@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Set totalSlides on CarouselNav to controlled state",
-  "packageName": "@fluentui/react-carousel",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

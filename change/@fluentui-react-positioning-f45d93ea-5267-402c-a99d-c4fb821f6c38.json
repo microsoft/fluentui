@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add positioning option `shiftToCoverTarget` that allows the positioned element to shift to cover the target when there is not enough available space",
-  "packageName": "@fluentui/react-positioning",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

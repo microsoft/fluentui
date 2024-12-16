@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 09 Dec 2024 17:38:04 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Dec 2024 16:26:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.56.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.6)
+
+Mon, 16 Dec 2024 16:26:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.5..@fluentui/react-components_v9.56.6)
+
+### Minor changes
+
+- `@fluentui/react-positioning`
+  - Add positioning option `shiftToCoverTarget` that allows the positioned element to shift to cover the target when there is not enough available space ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by yuanboxue@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-radio`
+  - chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: adjust styles for circular tabs ([PR #33441](https://github.com/microsoft/fluentui/pull/33441) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+- `@fluentui/react-button`
+  - chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+- `@fluentui/react-carousel`
+  - fix: Set totalSlides on CarouselNav to controlled state ([PR #33453](https://github.com/microsoft/fluentui/pull/33453) by mifraser@microsoft.com)
+  - chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+  - fix: Set tabster default on carousel initialization ([PR #33401](https://github.com/microsoft/fluentui/pull/33401) by mifraser@microsoft.com)
+  - fix: Ensure a viable background color for nav items in high contrast windows ([PR #33411](https://github.com/microsoft/fluentui/pull/33411) by mifraser@microsoft.com)
+- `@fluentui/react-color-picker-preview`
+  - fix(react-color-picker): active axis for ColorPicker ([PR #33415](https://github.com/microsoft/fluentui/pull/33415) by vkozlova@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+- `@fluentui/tokens`
+  - bugfix: ensure teams tokens follow teams overrides for fonts ([PR #33393](https://github.com/microsoft/fluentui/pull/33393) by bernardo.sunderhus@gmail.com)
 
 ## [9.56.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.5)
 

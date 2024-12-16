@@ -2,6 +2,103 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 16 Dec 2024 16:26:45 GMT",
+      "tag": "@fluentui/react-components_v9.56.6",
+      "version": "9.56.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "f15afa79910b9998044dddcce63e9583e4f8b905",
+            "comment": "chore: remove usage of \"export *\""
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "a6cc5b012bf9ea8119cb76e97098a0083df295fa",
+            "comment": "fix: adjust styles for circular tabs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "f15afa79910b9998044dddcce63e9583e4f8b905",
+            "comment": "chore: remove usage of \"export *\""
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "f15afa79910b9998044dddcce63e9583e4f8b905",
+            "comment": "chore: remove usage of \"export *\""
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "1175ab27b7c787e61469f2747203a5904f769b19",
+            "comment": "fix: Set totalSlides on CarouselNav to controlled state"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "f15afa79910b9998044dddcce63e9583e4f8b905",
+            "comment": "chore: remove usage of \"export *\""
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "c142edc1617943b7745f66398893a04c90be16e9",
+            "comment": "fix: Set tabster default on carousel initialization"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "592b73f62e471a2e4668a0949583790a5ef17ef8",
+            "comment": "fix: Ensure a viable background color for nav items in high contrast windows"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "b9a11c54c2b7bd6d003ef1952b59f63647143451",
+            "comment": "fix(react-color-picker): active axis for ColorPicker"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "f15afa79910b9998044dddcce63e9583e4f8b905",
+            "comment": "chore: remove usage of \"export *\""
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "f15afa79910b9998044dddcce63e9583e4f8b905",
+            "comment": "chore: remove usage of \"export *\""
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "f15afa79910b9998044dddcce63e9583e4f8b905",
+            "comment": "chore: remove usage of \"export *\""
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "ed3876a731c1528835c658486a0f2e7d4dc9f445",
+            "comment": "bugfix: ensure teams tokens follow teams overrides for fonts"
+          }
+        ],
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff",
+            "comment": "Add positioning option `shiftToCoverTarget` that allows the positioned element to shift to cover the target when there is not enough available space"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Dec 2024 17:38:04 GMT",
       "tag": "@fluentui/react-components_v9.56.5",
       "version": "9.56.5",
