@@ -567,23 +567,28 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   private _onLegendClick(legend: string): void {
-    // Get all legend titles
-    const allLegends = this.props.data.lineChartData?.map((dataPoint: ILineChartPoints) => dataPoint.legend);
-    let selected: string[] = [];
-    if (this.state.selectedLegends.includes(legend)) {
-      selected = this.state.selectedLegends.filter((selectedLegend: string) => selectedLegend !== legend);
+    // If multiple legends cannot be selected, set the selection to the clicked legend
+    if (!this.props.canSelectMultipleLegends) {
+      this.setState({ selectedLegends: [legend] });
     } else {
-      selected = [...this.state.selectedLegends, legend];
-    }
-    // Reset selection if all legends are selected
-    const allSelected = allLegends?.every(l => selected.includes(l));
-    if (allSelected) {
-      selected = [];
-    }
+      // Get all legend titles
+      const allLegends = this.props.data.lineChartData?.map((dataPoint: ILineChartPoints) => dataPoint.legend);
+      let selected: string[] = [];
+      if (this.state.selectedLegends.includes(legend)) {
+        selected = this.state.selectedLegends.filter((selectedLegend: string) => selectedLegend !== legend);
+      } else {
+        selected = [...this.state.selectedLegends, legend];
+      }
+      // Reset selection if all legends are selected
+      const allSelected = allLegends?.every(l => selected.includes(l));
+      if (allSelected) {
+        selected = [];
+      }
 
-    this.setState({
-      selectedLegends: selected,
-    });
+      this.setState({
+        selectedLegends: selected,
+      });
+    }
   }
 
   private _onLegendHover(legend: string): void {

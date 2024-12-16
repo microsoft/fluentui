@@ -25,7 +25,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
       height: 300,
       isCalloutselected: false,
       showAxisTitles: true,
-      legendMultiSelect: true,
+      legendMultiSelect: false,
     };
   }
   public componentDidMount(): void {
