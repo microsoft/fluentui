@@ -3,8 +3,6 @@ import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { DeclarativeChart, DeclarativeChartProps, Schema } from '@fluentui/react-charting';
 
-// Issue - on clicking on selected legend again, legend selection is not getting cleared.
-
 interface IDeclarativeChartState {
   selectedChoice: string;
   preSelectLegends: boolean;
