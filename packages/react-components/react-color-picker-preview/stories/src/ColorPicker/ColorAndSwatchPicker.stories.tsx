@@ -79,7 +79,10 @@ export const ColorAndSwatchPickerExample = () => {
 
   const resetColors = () => {
     setItems([]);
-    setColorFocusTarget(selectedValue);
+    setColorFocusTarget(null);
+    setSelectedValue('fff');
+    setSelectedColor('#fff');
+    setColor(DEFAULT_COLOR_HSV);
   };
 
   React.useEffect(() => {
