@@ -101,13 +101,16 @@ export const Question = ({ question, number, updateDecisionForQuestion }) => {
               return data.value;
             });
           }}
+          aria-labelledby={`${question.id}-heading`}
         >
           <div className={classes.questionContainer}>
             <div className={classes.questionLeftSide}>
               <span className={classes.questionsLabel}>{`Q${number}`}</span>
             </div>
             <div className={classes.questionRightSide}>
-              <span className={classes.questionsText}>{question.question}</span>
+              <span className={classes.questionsText} id={`${question.id}-heading`}>
+                {question.question}
+              </span>
               {question.answers.map(anser => (
                 <Radio key={anser.value} value={anser.value} label={anser.text} className={classes.radioItem} />
               ))}
