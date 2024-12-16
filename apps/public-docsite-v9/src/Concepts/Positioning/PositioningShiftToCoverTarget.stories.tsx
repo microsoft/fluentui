@@ -3,12 +3,18 @@ import {
   Button,
   makeStyles,
   SpinButton,
-  Label,
   Menu,
   MenuTrigger,
   MenuPopover,
   MenuList,
   MenuItem,
+  PositioningImperativeRef,
+  useMergedRefs,
+  Checkbox,
+  RadioGroup,
+  Field,
+  Radio,
+  PositioningProps,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -17,6 +23,7 @@ const useStyles = makeStyles({
     width: '300px',
     height: '300px',
     overflow: 'auto',
+    resize: 'both',
   },
   trigger: {
     display: 'block',
@@ -25,31 +32,78 @@ const useStyles = makeStyles({
   },
 });
 
+const ResizableBoundary = React.forwardRef<
+  HTMLDivElement,
+  {
+    onResize: ResizeObserverCallback;
+    children: React.ReactNode;
+  }
+>(({ onResize, children }, ref) => {
+  const containerRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    if (containerRef.current) {
+      const resizeObserver = new ResizeObserver(onResize);
+      resizeObserver.observe(containerRef.current);
+
+      return () => {
+        resizeObserver.disconnect();
+      };
+    }
+  }, [onResize]);
+
+  const styles = useStyles();
+
+  return (
+    <div ref={useMergedRefs(ref, containerRef)} className={styles.boundary}>
+      {children}
+    </div>
+  );
+});
+
 export const CoverTargetForSmallViewport = () => {
   const styles = useStyles();
   const [boundaryRef, setBoundaryRef] = React.useState<HTMLDivElement | null>(null);
 
   const [menuItemCount, setMenuItemCount] = React.useState(6);
 
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+
+  const [open, setOpen] = React.useState(false);
+  const [menuPosition, setMenuPosition] = React.useState<PositioningProps['position']>('above');
+
   return (
     <>
       <div>
-        <Label style={{ marginRight: 4, marginLeft: 8 }} htmlFor="menu-item-count">
-          Menu Item Count
-        </Label>
-        <SpinButton
-          id="menu-item-count"
-          value={menuItemCount}
-          onChange={(_e, { value }) => value && setMenuItemCount(value)}
-        />
+        <Checkbox label="Open" checked={open} onChange={(e, data) => setOpen(data.checked as boolean)} />{' '}
+        <Field label="Menu position">
+          <RadioGroup
+            value={menuPosition}
+            onChange={(_, data) => setMenuPosition(data.value as PositioningProps['position'])}
+          >
+            <Radio value="above" label="above" />
+            <Radio value="after" label="after" />
+          </RadioGroup>
+        </Field>
+        <Field label="Menu Item Count">
+          <SpinButton value={menuItemCount} onChange={(_e, { value }) => value && setMenuItemCount(value)} />
+        </Field>
       </div>
-      <div ref={setBoundaryRef} className={styles.boundary}>
+      <ResizableBoundary
+        ref={setBoundaryRef}
+        onResize={() => {
+          positioningRef.current?.updatePosition();
+        }}
+      >
         <Menu
+          open={open}
           positioning={{
+            positioningRef,
             overflowBoundary: boundaryRef,
             flipBoundary: boundaryRef,
             autoSize: true,
             shiftToCoverTarget: true,
+            position: menuPosition,
           }}
         >
           <MenuTrigger disableButtonEnhancement>
@@ -63,7 +117,7 @@ export const CoverTargetForSmallViewport = () => {
             </MenuList>
           </MenuPopover>
         </Menu>
-      </div>
+      </ResizableBoundary>
     </>
   );
 };
