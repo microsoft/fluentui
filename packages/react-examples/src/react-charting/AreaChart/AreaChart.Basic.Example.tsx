@@ -9,6 +9,7 @@ interface IAreaChartBasicState {
   height: number;
   isCalloutselected: boolean;
   showAxisTitles: boolean;
+  legendMultiSelect: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -24,6 +25,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
       height: 300,
       isCalloutselected: false,
       showAxisTitles: true,
+      legendMultiSelect: true,
     };
   }
   public componentDidMount(): void {
@@ -66,6 +68,11 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
   private _onToggleAxisTitlesCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.forceUpdate();
     this.setState({ showAxisTitles: checked });
+  };
+
+  private _onToggleLegendMultiSelect = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.forceUpdate();
+    this.setState({ legendMultiSelect: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -162,10 +169,36 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
       },
     ];
 
+    const chart2Points = chart1Points.map((point, index) => {
+      return {
+        x: point.x,
+        y: point.y + 5000,
+        xAxisCalloutData: point.xAxisCalloutData,
+        yAxisCalloutData: point.yAxisCalloutData,
+      };
+    });
+
+    const chart3Points = chart1Points.map((point, index) => {
+      return {
+        x: point.x,
+        y: point.y - 5000,
+        xAxisCalloutData: point.xAxisCalloutData,
+        yAxisCalloutData: point.yAxisCalloutData,
+      };
+    });
+
     const chartPoints = [
       {
         legend: 'legend1',
         data: chart1Points,
+      },
+      {
+        legend: 'legend2',
+        data: chart2Points,
+      },
+      {
+        legend: 'legend3',
+        data: chart3Points,
       },
     ];
 
@@ -208,6 +241,14 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
           onChange={this._onToggleAxisTitlesCheckChange}
           styles={{ root: { marginTop: '10px' } }}
         />
+        <Toggle
+          label="Select multiple legends"
+          onText="ON"
+          offText="OFF"
+          checked={this.state.legendMultiSelect}
+          onChange={this._onToggleLegendMultiSelect}
+          styles={{ root: { marginTop: '10px' } }}
+        />
         {this.state.showAxisTitles && (
           <div style={rootStyle}>
             <AreaChart
@@ -230,6 +271,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
               enableReflow={true}
               yAxisTitle={this.state.showAxisTitles ? 'Variation of stock market prices' : undefined}
               xAxisTitle={this.state.showAxisTitles ? 'Number of days' : undefined}
+              canSelectMultipleLegends={this.state.legendMultiSelect}
             />
           </div>
         )}
@@ -253,6 +295,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
                 ) : null
               }
               enableReflow={true}
+              canSelectMultipleLegends={this.state.legendMultiSelect}
             />
           </div>
         )}

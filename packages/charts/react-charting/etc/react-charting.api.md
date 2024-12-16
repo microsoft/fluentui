@@ -194,6 +194,7 @@ export interface IAccessibilityProps {
 
 // @public
 export interface IAreaChartProps extends ICartesianChartProps {
+    canSelectMultipleLegends?: boolean;
     culture?: string;
     data: IChartProps;
     enableGradient?: boolean;
