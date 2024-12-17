@@ -254,15 +254,12 @@ export const Selector = () => {
       componentsToIterate.forEach(definition => {
         // const keysInDefinitions = Object.keys(definition);
 
-        const matching: string[] = [];
+        let matchedCount = 0;
         selectedBehaviours.forEach(decision => {
-          definition.attributes.includes(decision) ? matching.push('matched') : null;
-          // if (keysInDefinitions.indexOf(decision) >= 0) {
-          //   matching.push('matched');
-          // }
+          definition.attributes.includes(decision) ? matchedCount++ : null;
         });
 
-        if (selectedBehaviours.length === matching.length) {
+        if (selectedBehaviours.length === matchedCount) {
           console.log('fully matched');
           // if suitableComponents does not include definition, push it
           suitableComponents.includes(definition) ? null : suitableComponents.push(definition);
