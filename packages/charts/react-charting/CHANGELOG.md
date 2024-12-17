@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 16 Dec 2024 07:20:45 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Dec 2024 07:21:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.26)
+
+Tue, 17 Dec 2024 07:21:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.25..@fluentui/react-charting_v5.23.26)
+
+### Patches
+
+- Add support for controlling legend selection and persisting in json schema ([PR #33477](https://github.com/microsoft/fluentui/pull/33477) by 98592573+AtishayMsft@users.noreply.github.com)
+- Enable Controlled Legends working in declarative HBC ([PR #33476](https://github.com/microsoft/fluentui/pull/33476) by 74965306+Anush2303@users.noreply.github.com)
 
 ## [5.23.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.25)
 
