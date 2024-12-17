@@ -144,7 +144,9 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, ID
           valueInsideDonut={39000}
           enableGradient={this.state.enableGradient}
           roundCorners={this.state.roundCorners}
-          canSelectMultipleLegends={this.state.legendMultiSelect}
+          legendProps={{
+            canSelectMultipleLegends: this.state.legendMultiSelect,
+          }}
         />
       </>
     );
