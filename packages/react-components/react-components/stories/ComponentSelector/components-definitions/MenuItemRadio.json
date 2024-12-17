@@ -4,6 +4,5 @@
   "folder": "Menu",
   "story": "Radio Items",
   "extends": "MenuBase",
-  "attributes": ["singleChoice", "notOnOrOff"],
-  "img": "overview_radiogroup.CsXFFZdv.png"
+  "attributes": ["singleChoice", "notOnOrOff"]
 }

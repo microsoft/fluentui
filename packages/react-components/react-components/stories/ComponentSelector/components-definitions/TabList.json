@@ -1,6 +1,5 @@
 {
   "name": "TabList",
   "component": "TabList",
-  "attributes": ["interactive", "navigationByArrowKeys", "narratesPosition"],
-  "img": "overview_tablist.CTZsc6f-.png"
+  "attributes": ["interactive", "navigationByArrowKeys", "narratesPosition"]
 }

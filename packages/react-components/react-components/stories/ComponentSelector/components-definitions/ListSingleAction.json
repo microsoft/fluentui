@@ -3,6 +3,5 @@
   "component": "List",
   "story": "Single Action",
   "extends": "ListBase",
-  "attributes": ["interactive", "navigationByArrowKeys"],
-  "img": "overview_menu.DZ_QmfGO.png"
+  "attributes": ["interactive", "navigationByArrowKeys"]
 }

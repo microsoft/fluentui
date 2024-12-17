@@ -2,6 +2,5 @@
   "name": "Text",
   "component": "Text",
   "attributes": ["textOrHeading", "static"],
-  "note": "Use the 'as' prop to change text to heading.",
-  "img": "overview_text.B8EWu50L.png"
+  "note": "Use the 'as' prop to change text to heading."
 }

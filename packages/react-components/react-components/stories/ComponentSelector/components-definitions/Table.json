@@ -2,6 +2,5 @@
   "name": "Table",
   "component": "Table",
   "extends": "TableBase",
-  "attributes": ["static"],
-  "img": "overview_tablist.CTZsc6f-.png"
+  "attributes": ["static"]
 }

@@ -4,6 +4,5 @@
   "folder": "Menu",
   "story": "Nested Submenus",
   "extends": "MenuBase",
-  "attributes": ["nested"],
-  "img": "overview_menu.DZ_QmfGO.png"
+  "attributes": ["nested"]
 }

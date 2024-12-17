@@ -3,6 +3,5 @@
   "component": "SplitButton",
   "folder": "Button",
   "extends": "ButtonBase",
-  "attributes": ["moreActions"],
-  "img": "overview_spin.c4zwZGzQ.png"
+  "attributes": ["moreActions"]
 }

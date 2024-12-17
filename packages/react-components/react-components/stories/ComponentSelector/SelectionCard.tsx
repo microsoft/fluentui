@@ -14,11 +14,7 @@ import {
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { stat } from 'fs';
 
-const resolveAsset = (asset: string) => {
-  const ASSET_URL = 'https://fluent2websitecdn.azureedge.net/cdn/';
-
-  return `${ASSET_URL}${asset}`;
-};
+import * as componentsImagesImported from './components-images/index';
 
 const useStyles = makeStyles({
   main: {
@@ -63,6 +59,7 @@ const useStyles = makeStyles({
 
 export const SelectionCard = props => {
   const styles = useStyles();
+  const { name, displayName, image, addComponent } = props;
   const [selected, setSelected] = React.useState(false);
   const [hovered, setHovered] = React.useState(false);
 
@@ -77,30 +74,46 @@ export const SelectionCard = props => {
       state && state.checked && console.log('card state', state.checked);
 
       if (state?.checked === true || state?.selected === true) {
-        props.addComponent(props.name);
+        addComponent(name);
       }
     },
-    [setCheckboxState],
+    [setCheckboxState, addComponent, name],
   );
+
+  const componentImage = React.useMemo(() => {
+    let src;
+    const importName = `${name}Img`;
+    if (componentsImagesImported[importName]) {
+      const result = {
+        src: componentsImagesImported[importName],
+        alt: `Preview for ${props.displayName}`,
+      };
+      return result;
+    } else {
+      return undefined;
+    }
+  }, [name, displayName, image]);
 
   return (
     <div className={styles.main}>
       <Card
         className={styles.card}
         {...props}
-        floatingAction={<Checkbox aria-label={props.displayName} onChange={onSelectedCardChange} checked={selected} />}
+        floatingAction={<Checkbox aria-label={displayName} onChange={onSelectedCardChange} checked={selected} />}
         selected={selected}
         onSelectionChange={onSelectedCardChange}
         // onMouseOver={() => setHovered(true)}
         // onMouseOut={() => setHovered(false)}
       >
-        <CardHeader description={<Caption1 className={styles.caption}>{props.displayName}</Caption1>} />
+        <CardHeader description={<Caption1 className={styles.caption}>{displayName}</Caption1>} />
         <CardPreview className={styles.grayBackground}>
-          <img
-            className={selected || hovered ? styles.cardImageSelected : styles.cardImage}
-            src={resolveAsset(props.image)}
-            alt={`Preview for ${props.displayName}`}
-          />
+          {componentImage && (
+            <img
+              className={selected || hovered ? styles.cardImageSelected : styles.cardImage}
+              src={componentImage.src}
+              alt={componentImage.alt}
+            />
+          )}
         </CardPreview>
       </Card>
     </div>

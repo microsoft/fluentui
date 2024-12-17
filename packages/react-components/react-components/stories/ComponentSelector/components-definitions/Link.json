@@ -1,6 +1,5 @@
 {
   "name": "Link",
   "component": "Link",
-  "attributes": ["singleAction", "navigatesToPage", "navigationByTabKey", "interactive"],
-  "img": "overview_link.gTR54kn-.png"
+  "attributes": ["singleAction", "navigatesToPage", "navigationByTabKey", "interactive"]
 }

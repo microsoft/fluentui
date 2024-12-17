@@ -15,6 +15,7 @@ export { default as MenuItemRadioDef } from './MenuItemRadio.json';
 export { default as MenuSubmenuDef } from './MenuSubmenu.json';
 
 export { default as ButtonBaseDef } from './ButtonBase.json';
+export { default as ButtonDef } from './Button.json';
 export { default as SplitButtonDef } from './SplitButton.json';
 export { default as ToggleButtonDef } from './ToggleButton.json';
 export { default as MenuButtonDef } from './MenuButton.json';

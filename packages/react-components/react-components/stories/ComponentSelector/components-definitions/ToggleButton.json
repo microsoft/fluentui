@@ -3,6 +3,5 @@
   "component": "ToggleButton",
   "folder": "Button",
   "extends": "ButtonBase",
-  "attributes": ["singleAction", "multipleChoices", "onOrOff", "toggle"],
-  "img": "overview_button.Baa-fciS.png"
+  "attributes": ["singleAction", "multipleChoices", "onOrOff", "toggle"]
 }
