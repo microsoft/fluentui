@@ -196,7 +196,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       activeLine: null,
     };
     this._refArray = [];
-    this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData, false);
+    this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
     this._colorFillBars = [];
     this._calloutPoints = calloutData(this._points) || [];
     this._circleId = getId('circle');
@@ -225,14 +225,14 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       prevProps.width !== this.props.width ||
       prevProps.data !== this.props.data
     ) {
-      this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData, false);
+      this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
       this._calloutPoints = calloutData(this._points) || [];
     }
   }
 
   public render(): JSX.Element {
     const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
-    this._points = this._injectIndexPropertyInLineChartData(data.lineChartData, false);
+    this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
 
     const isXAxisDateType = getXAxisType(this._points);
     let points = this._points;
@@ -381,7 +381,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _injectIndexPropertyInLineChartData = (
     lineChartData?: ILineChartPoints[],
-    isFilterSelectedLegends?: boolean,
+    isFilterSelectedLegends: boolean = false,
   ): LineChartDataWithIndex[] | [] => {
     const { allowMultipleShapesForPoints = false } = this.props;
     // Apply filter only if isPropChange is true
@@ -601,7 +601,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
     } else {
-      this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData, false);
+      this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
     }
     for (let i = this._points.length - 1; i >= 0; i--) {
       const linesForLine: JSX.Element[] = [];
