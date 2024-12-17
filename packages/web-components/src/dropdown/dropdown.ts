@@ -39,13 +39,6 @@ export class BaseDropdown extends FASTElement {
     return this.listbox.enabledOptions.findIndex(x => x.checked);
   }
 
-  /**
-   * The collection of checked options.
-   *
-   * @internal
-   */
-  public checkedOptions: Set<Option> = new Set();
-
   @observable
   public control!: HTMLInputElement;
 
@@ -627,7 +620,7 @@ export class BaseDropdown extends FASTElement {
         return;
       }
 
-      const valueMissing = this.required && this.checkedOptions.size === 0;
+      const valueMissing = this.required && this.listbox.selectedOptions.length === 0;
 
       this.elementInternals.setValidity(
         { valueMissing, ...flags },
