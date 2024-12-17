@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-charts-preview
 
-This log was last generated on Mon, 09 Dec 2024 17:38:16 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Dec 2024 16:26:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.4)
+
+Mon, 16 Dec 2024 16:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.3..@fluentui/react-charts-preview_v0.1.4)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.98 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.48 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-overflow to v9.2.4 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-popover to v9.9.28 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.21.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-tabster to v9.23.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-theme to v9.1.24 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-tooltip to v9.5.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-utilities to v9.18.19 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.3)
 

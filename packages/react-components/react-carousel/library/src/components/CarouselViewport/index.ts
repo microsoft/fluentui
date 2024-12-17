@@ -1,5 +1,5 @@
-export * from './CarouselViewport';
-export * from './CarouselViewport.types';
-export * from './renderCarouselViewport';
-export * from './useCarouselViewport';
-export * from './useCarouselViewportStyles.styles';
+export { CarouselViewport } from './CarouselViewport';
+export type { CarouselViewportProps, CarouselViewportSlots, CarouselViewportState } from './CarouselViewport.types';
+export { renderCarouselViewport_unstable } from './renderCarouselViewport';
+export { useCarouselViewport_unstable } from './useCarouselViewport';
+export { carouselViewportClassNames, useCarouselViewportStyles_unstable } from './useCarouselViewportStyles.styles';

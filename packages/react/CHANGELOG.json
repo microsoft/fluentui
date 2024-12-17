@@ -2,6 +2,39 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 13 Dec 2024 07:23:12 GMT",
+      "tag": "@fluentui/react_v8.122.1",
+      "version": "8.122.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.22",
+            "commit": "6dfe27e984d9633129c79178b40c6a0a189e29c7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.56",
+            "commit": "6dfe27e984d9633129c79178b40c6a0a189e29c7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.9.19",
+            "commit": "6dfe27e984d9633129c79178b40c6a0a189e29c7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.11.5",
+            "commit": "6dfe27e984d9633129c79178b40c6a0a189e29c7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Dec 2024 07:22:32 GMT",
       "tag": "@fluentui/react_v8.122.0",
       "version": "8.122.0",

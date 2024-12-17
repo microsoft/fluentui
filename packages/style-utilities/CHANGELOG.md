@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Fri, 01 Nov 2024 07:23:21 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Dec 2024 07:23:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.11.5](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.11.5)
+
+Fri, 13 Dec 2024 07:23:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.11.4..@fluentui/style-utilities_v8.11.5)
+
+### Patches
+
+- Adding cliptemplate and listform filetype and itemtype mappings & updating corresponding fabric-cdn URL ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by caperez@microsoft.com)
 
 ## [8.11.4](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.11.4)
 

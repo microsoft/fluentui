@@ -24,6 +24,7 @@ export interface IDonutChartState {
   xCalloutValue?: string;
   yCalloutValue?: string;
   focusedArcId?: string;
+  selectedLegend?: string;
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   selectedLegends: string[];
@@ -73,6 +74,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       color: '',
       xCalloutValue: '',
       yCalloutValue: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       focusedArcId: '',
       selectedLegends: [],
     };
@@ -243,7 +245,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         title: point.legend!,
         color,
         action: () => {
-          // Add legend action here
+          // Add any action logic here
         },
         hoverAction: () => {
           this._handleChartMouseLeave();
@@ -271,16 +273,19 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return legends;
   }
 
-  private _onLegendChange = (selectedLegends: string[]) => {
+  private _onLegendChange = (
+    selectedLegends: string[],
+    event: React.MouseEvent<HTMLButtonElement>,
+    currentLegend?: ILegend,
+  ) => {
     this.setState({ selectedLegends });
-  };
-
-  private _isLegendSelected = (legend: string): boolean => {
-    return this.state.selectedLegends.indexOf(legend) > -1;
+    if (this.props.legendProps?.onChange) {
+      this.props.legendProps.onChange(selectedLegends, event, currentLegend);
+    }
   };
 
   private _isLegendHovered = (legend: string): boolean => {
-    return this.state.activeLegend === legend;
+    return this._noLegendsHighlighted() || this._isLegendHighlighted(legend);
   };
 
   private _isLegendHighlighted = (legend: string): boolean => {
@@ -295,7 +300,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._currentHoverElement = element;
     this.setState({
       /** Show the callout if highlighted arc is focused and Hide it if unhighlighted arc is focused */
-      showHover: this.state.selectedLegends.length === 0 || this.state.selectedLegends.includes(data.legend!),
+      showHover: this._isLegendHovered(data.legend!),
       value: data.data!.toString(),
       legend: data.legend,
       color: data.color!,
@@ -320,7 +325,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
       this.setState({
         /** Show the callout if highlighted arc is hovered and Hide it if unhighlighted arc is hovered */
-        showHover: this.state.selectedLegends.length === 0 || this.state.selectedLegends.includes(data.legend!),
+        showHover: this._noLegendsHighlighted() || this._isLegendHighlighted(data.legend!),
         value: data.data!.toString(),
         legend: data.legend,
         color,

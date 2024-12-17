@@ -128,7 +128,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     super(props);
     this.state = {
       isCalloutVisible: false,
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       activeLegend: '',
       refSelected: null,
       dataForHoverCard: 0,

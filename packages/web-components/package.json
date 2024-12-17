@@ -98,7 +98,7 @@
   },
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
-    "@fluentui/tokens": "1.0.0-alpha.20",
+    "@fluentui/tokens": "1.0.0-alpha.21",
     "tabbable": "^6.2.0",
     "tslib": "^2.1.0"
   },

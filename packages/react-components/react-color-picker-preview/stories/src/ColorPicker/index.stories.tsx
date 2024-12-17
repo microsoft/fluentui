@@ -8,6 +8,8 @@ export { ColorPickerShape } from './ColorPickerShape.stories';
 export { ColorAreaExample } from './ColorAreaDefault.stories';
 export { ColorSliderExample } from './ColorSliderDefault.stories';
 export { AlphaSliderExample } from './AlphaSliderDefault.stories';
+export { ColorAndSwatchPickerExample } from './ColorAndSwatchPicker.stories';
+export { ColorPickerPopup } from './ColorPickerPopup.stories';
 
 export default {
   title: 'Preview Components/ColorPicker',

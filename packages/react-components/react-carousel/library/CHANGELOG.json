@@ -2,6 +2,87 @@
   "name": "@fluentui/react-carousel",
   "entries": [
     {
+      "date": "Mon, 16 Dec 2024 16:26:47 GMT",
+      "tag": "@fluentui/react-carousel_v9.4.3",
+      "version": "9.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "1175ab27b7c787e61469f2747203a5904f769b19",
+            "comment": "fix: Set totalSlides on CarouselNav to controlled state"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "f15afa79910b9998044dddcce63e9583e4f8b905",
+            "comment": "chore: remove usage of \"export *\""
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "c142edc1617943b7745f66398893a04c90be16e9",
+            "comment": "fix: Set tabster default on carousel initialization"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "592b73f62e471a2e4668a0949583790a5ef17ef8",
+            "comment": "fix: Ensure a viable background color for nav items in high contrast windows"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-aria to v9.13.12",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-button to v9.3.98",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.71",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.48",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.2",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-tabster to v9.23.2",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-theme to v9.1.24",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-utilities to v9.18.19",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Dec 2024 17:38:16 GMT",
       "tag": "@fluentui/react-carousel_v9.4.2",
       "version": "9.4.2",
