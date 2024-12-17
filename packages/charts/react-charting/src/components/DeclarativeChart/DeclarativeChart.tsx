@@ -140,7 +140,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return (
           <LineChart
             {...transformPlotlyJsonToScatterChartProps({ data, layout }, false, colorMap, isDarkTheme)}
-            legendProps={legendProps}
+            legendProps={{
+              ...legendProps,
+              canSelectMultipleLegends: true,
+              selectedLegends: activeLegends,
+            }}
           />
         );
       }
