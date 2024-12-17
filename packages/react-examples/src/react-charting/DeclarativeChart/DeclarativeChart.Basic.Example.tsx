@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 import { DeclarativeChart, DeclarativeChartProps, Schema } from '@fluentui/react-charting';
 
 interface IDeclarativeChartState {
   selectedChoice: string;
+  preSelectLegends: boolean;
+  selectedLegends: string;
 }
 
 const options: IDropdownOption[] = [
@@ -39,6 +42,8 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     super(props);
     this.state = {
       selectedChoice: 'donutchart',
+      preSelectLegends: false,
+      selectedLegends: '',
     };
   }
 
@@ -47,7 +52,16 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
   }
 
   private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IDropdownOption): void => {
-    this.setState({ selectedChoice: option.key as string });
+    this.setState({ selectedChoice: option.key as string, selectedLegends: '' });
+  };
+
+  private _onTogglePreselectLegends = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ preSelectLegends: checked });
+  };
+
+  private _handleChartSchemaChanged = (eventData: Schema) => {
+    const { selectedLegends } = eventData.plotlySchema;
+    this.setState({ selectedLegends: selectedLegends.join(', ') });
   };
 
   private _getSchemaByKey(key: string): any {
@@ -57,20 +71,38 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
 
   private _createDeclarativeChart(): JSX.Element {
     const selectedPlotlySchema = this._getSchemaByKey(this.state.selectedChoice);
-    const inputSchema: Schema = { plotlySchema: selectedPlotlySchema };
+    const uniqueKey = `${this.state.selectedChoice}_${this.state.preSelectLegends}`;
+    let inputSchema: Schema = { plotlySchema: selectedPlotlySchema };
+
+    if (this.state.preSelectLegends === false) {
+      const { data, layout } = selectedPlotlySchema;
+      inputSchema = { plotlySchema: { data, layout } };
+    }
 
     return (
       <>
-        <Dropdown
-          label="Select a schema"
-          options={options}
-          onChange={this._onChange}
-          selectedKey={this.state.selectedChoice}
-          styles={dropdownStyles}
-        />
+        <div style={{ display: 'flex' }}>
+          <Dropdown
+            label="Select a schema"
+            options={options}
+            onChange={this._onChange}
+            selectedKey={this.state.selectedChoice}
+            styles={dropdownStyles}
+          />
+          &nbsp;&nbsp;&nbsp;
+          <Toggle
+            label="Pre select legends"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onTogglePreselectLegends}
+            checked={this.state.preSelectLegends}
+          />
+        </div>
         <br />
         <br />
-        <DeclarativeChart chartSchema={inputSchema} />
+        <DeclarativeChart key={uniqueKey} chartSchema={inputSchema} onSchemaChange={this._handleChartSchemaChanged} />
+        <br />
+        Legend selection changed : {this.state.selectedLegends}
       </>
     );
   }

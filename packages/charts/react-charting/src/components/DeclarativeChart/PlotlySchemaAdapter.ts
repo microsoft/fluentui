@@ -1,7 +1,6 @@
 /* eslint-disable one-var */
 /* eslint-disable vars-on-top */
 /* eslint-disable no-var */
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, merge as d3Merge } from 'd3-array';
@@ -537,9 +536,6 @@ var baseContainer: any, baseAttrName: any;
 export function findArrayAttributes(trace: any) {
   // Init basecontainer and baseAttrName
   crawlIntoTrace(baseContainer, 0, '');
-  for (const attribute of arrayAttributes) {
-    console.log(attribute);
-  }
 }
 
 function crawlIntoTrace(container: any, i: number, astrPartial: any) {
