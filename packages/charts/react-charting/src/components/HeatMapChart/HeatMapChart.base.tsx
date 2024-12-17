@@ -138,7 +138,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ): DataSet => this._createNewDataSet(data, xDate, xNum, yDate, yNum),
     );
     this.state = {
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       activeLegend: '',
       isCalloutVisible: false,
       target: null,

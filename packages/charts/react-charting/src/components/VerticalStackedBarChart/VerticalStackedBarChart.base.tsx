@@ -140,7 +140,7 @@ export class VerticalStackedBarChartBase
 
     this.state = {
       isCalloutVisible: false,
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       activeLegend: '',
       refSelected: null,
       dataForHoverCard: 0,

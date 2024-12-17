@@ -29,21 +29,15 @@ import { IChart } from '../../types/index';
 
 import { IRefObject, useTheme } from '@fluentui/react';
 
+/**
+ * DeclarativeChart schema.
+ * {@docCategory DeclarativeChart}
+ */
 export interface Schema {
   /**
    * Plotly schema represented as JSON object
    */
   plotlySchema: any;
-
-  /**
-   * The legends selected by the user to persist in the chart
-   */
-  selectedLegends?: string[];
-
-  /**
-   * Dictionary for localizing the accessibility labels
-   */
-  accesibilityLabels?: { [key: string]: string };
 }
 
 /**
@@ -86,7 +80,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   DeclarativeChartProps
 >((props, forwardedRef) => {
   const { plotlySchema } = props.chartSchema;
-  const xValues = plotlySchema.data[0].x;
+  const { data, layout, selectedLegends } = plotlySchema;
+  const xValues = data[0].x;
   const isXDate = isDateArray(xValues);
   const isXNumber = isNumberArray(xValues);
   const colorMap = useColorMapping();
@@ -106,17 +101,36 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     [download],
   );
 
-  switch (plotlySchema.data[0].type) {
+  const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends ?? []);
+  const onActiveLegendsChange = (keys: string[]) => {
+    setActiveLegends(keys);
+    if (props.onSchemaChange) {
+      props.onSchemaChange({ plotlySchema: { data, layout, selectedLegends: keys } });
+    }
+  };
+
+  const legendProps = {
+    canSelectMultipleLegends: false,
+    onChange: onActiveLegendsChange,
+    ...(activeLegends.length > 0 && { selectedLegend: activeLegends[0] }),
+  };
+
+  switch (data[0].type) {
     case 'pie':
       return (
-        <DonutChart {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)} componentRef={chartRef} />
+        <DonutChart
+          {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)}
+          legendProps={legendProps}
+          componentRef={chartRef}
+        />
       );
     case 'bar':
-      const orientation = plotlySchema.data[0].orientation;
+      const orientation = data[0].orientation;
       if (orientation === 'h') {
         return (
           <HorizontalBarChartWithAxis
             {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap, isDarkTheme)}
+            legendProps={legendProps}
             componentRef={chartRef}
           />
         );
@@ -125,6 +139,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           return (
             <GroupedVerticalBarChart
               {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap, isDarkTheme)}
+              legendProps={legendProps}
               componentRef={chartRef}
             />
           );
@@ -132,24 +147,31 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return (
           <VerticalStackedBarChart
             {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
+            legendProps={legendProps}
             componentRef={chartRef}
           />
         );
       }
     case 'scatter':
-      const isAreaChart = plotlySchema.data.some((series: any) => series.fill === 'tonexty');
+      const isAreaChart = data.some((series: any) => series.fill === 'tonexty' || series.fill === 'tozeroy');
       if (isXDate || isXNumber) {
         if (isAreaChart) {
           return (
             <AreaChart
-              {...transformPlotlyJsonToScatterChartProps(plotlySchema, true, colorMap, isDarkTheme)}
+              {...transformPlotlyJsonToScatterChartProps({ data, layout }, true, colorMap, isDarkTheme)}
+              legendProps={legendProps}
               componentRef={chartRef}
             />
           );
         }
         return (
           <LineChart
-            {...transformPlotlyJsonToScatterChartProps(plotlySchema, false, colorMap, isDarkTheme)}
+            {...transformPlotlyJsonToScatterChartProps({ data, layout }, false, colorMap, isDarkTheme)}
+            legendProps={{
+              ...legendProps,
+              canSelectMultipleLegends: true,
+              selectedLegends: activeLegends,
+            }}
             componentRef={chartRef}
           />
         );
@@ -157,11 +179,18 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <VerticalStackedBarChart
           {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
+          legendProps={legendProps}
           componentRef={chartRef}
         />
       );
     case 'heatmap':
-      return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(plotlySchema)} componentRef={chartRef} />;
+      return (
+        <HeatMapChart
+          {...transformPlotlyJsonToHeatmapProps(plotlySchema)}
+          legendProps={legendProps}
+          componentRef={chartRef}
+        />
+      );
     case 'sankey':
       return (
         <SankeyChart
@@ -174,6 +203,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return (
           <GaugeChart
             {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)}
+            legendProps={legendProps}
             componentRef={chartRef}
           />
         );
@@ -183,6 +213,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <VerticalBarChart
           {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap, isDarkTheme)}
+          legendProps={legendProps}
           componentRef={chartRef}
         />
       );

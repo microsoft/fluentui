@@ -435,5 +435,6 @@
     "plot_bgcolor": "#F5F6F9",
     "paper_bgcolor": "#F5F6F9"
   },
-  "frames": []
+  "frames": [],
+  "selectedLegends": ["Trace 0", "Trace 1"]
 }

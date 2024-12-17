@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-virtualizer
 
-This log was last generated on Fri, 06 Dec 2024 12:53:45 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Dec 2024 16:26:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.89)
+
+Mon, 16 Dec 2024 16:26:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.88..@fluentui/react-virtualizer_v9.0.0-alpha.89)
+
+### Changes
+
+- chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.48 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-utilities to v9.18.19 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.21.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
 
 ## [9.0.0-alpha.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.88)
 

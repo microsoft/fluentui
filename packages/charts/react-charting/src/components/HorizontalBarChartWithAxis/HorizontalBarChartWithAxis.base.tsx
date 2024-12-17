@@ -89,10 +89,10 @@ export class HorizontalBarChartWithAxisBase
       color: '',
       dataForHoverCard: 0,
       isCalloutVisible: false,
-      isLegendSelected: false,
+      isLegendSelected: props.legendProps?.selectedLegend !== undefined,
       isLegendHovered: false,
       refSelected: null,
-      selectedLegendTitle: '',
+      selectedLegendTitle: props.legendProps?.selectedLegend ?? '',
       xCalloutValue: '',
       yCalloutValue: '',
       activeXdataPoint: null,
@@ -594,6 +594,15 @@ export class HorizontalBarChartWithAxisBase
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, false);
     const { useSingleColor = false } = this.props;
     const bars = this._points.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
+      let shouldHighlight = true;
+      if (this.state.isLegendHovered || this.state.isLegendSelected) {
+        shouldHighlight = this.state.selectedLegendTitle === point.legend;
+      }
+      this._classNames = getClassNames(this.props.styles!, {
+        theme: this.props.theme!,
+        legendColor: this.state.color,
+        shouldHighlight,
+      });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
@@ -638,6 +647,7 @@ export class HorizontalBarChartWithAxisBase
           <rect
             transform={`translate(0,${0.5 * (yBarScale.bandwidth() - this._barHeight)})`}
             key={point.x}
+            className={this._classNames.opacityChangeOnHover}
             x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
             y={yBarScale(point.y)}
             rx={this.props.roundCorners ? 3 : 0}
@@ -657,7 +667,7 @@ export class HorizontalBarChartWithAxisBase
             onMouseOver={this._onBarHover.bind(this, point, startColor)}
             onMouseLeave={this._onBarLeave}
             onBlur={this._onBarLeave}
-            data-is-focusable={true}
+            data-is-focusable={shouldHighlight}
             onFocus={this._onBarFocus.bind(this, point, index, startColor)}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
           />
