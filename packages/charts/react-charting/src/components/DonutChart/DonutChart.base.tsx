@@ -73,7 +73,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       color: '',
       xCalloutValue: '',
       yCalloutValue: '',
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       focusedArcId: '',
     };
     this._hoverCallback = this._hoverCallback.bind(this);

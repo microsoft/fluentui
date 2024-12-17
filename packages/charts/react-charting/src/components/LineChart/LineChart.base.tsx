@@ -186,11 +186,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       activeLegend: '',
       YValueHover: [],
       refSelected: '',
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       isCalloutVisible: false,
-      selectedLegendPoints: [],
+      selectedLegendPoints: this._injectIndexPropertyInLineChartData(this.props.data.lineChartData, true),
       selectedColorBarLegend: [],
-      isSelectedLegend: false,
+      isSelectedLegend: (this.props.legendProps?.selectedLegends?.length ?? 0) > 0,
       activePoint: '',
       nearestCircleToHighlight: null,
       activeLine: null,
@@ -379,10 +379,21 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return domainNRangeValue;
   };
 
-  private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {
+  private _injectIndexPropertyInLineChartData = (
+    lineChartData?: ILineChartPoints[],
+    isFilterSelectedLegends: boolean = false,
+  ): LineChartDataWithIndex[] | [] => {
     const { allowMultipleShapesForPoints = false } = this.props;
-    return lineChartData
-      ? lineChartData.map((item: ILineChartPoints, index: number) => {
+    // Apply filter only if isPropChange is true
+    const filteredData = isFilterSelectedLegends
+      ? lineChartData?.filter(
+          (item: ILineChartPoints) =>
+            this.props.legendProps?.selectedLegends?.includes(item.legend) ||
+            this.props.legendProps?.selectedLegend === item.legend,
+        )
+      : lineChartData;
+    return filteredData
+      ? filteredData.map((item: ILineChartPoints, index: number) => {
           let color: string;
           // isInverted property is applicable to v8 themes only
           if (typeof item.color === 'undefined') {
