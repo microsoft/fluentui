@@ -17,12 +17,7 @@ export function useMessageBarReflow(enabled: boolean = false) {
     }
 
     setReflowing(prevReflowing => {
-      if (
-        !prevReflowing &&
-        messageBarRef.current &&
-        (messageBarRef.current.scrollWidth > messageBarRef.current.offsetWidth ||
-          !isFullyInViewport(messageBarRef.current))
-      ) {
+      if (!prevReflowing && messageBarRef.current && isReflowing(messageBarRef.current)) {
         return true;
       }
 
@@ -65,7 +60,7 @@ export function useMessageBarReflow(enabled: boolean = false) {
 
       const win = targetDocument.defaultView;
       resizeObserver = new win.ResizeObserver(handleResize);
-      intersectionObserer = new win.IntersectionObserver(handleIntersection);
+      intersectionObserer = new win.IntersectionObserver(handleIntersection, { threshold: 1 });
 
       intersectionObserer.observe(el);
       resizeObserver.observe(el, { box: 'border-box' });
@@ -74,6 +69,10 @@ export function useMessageBarReflow(enabled: boolean = false) {
 
   return { ref, reflowing };
 }
+
+const isReflowing = (el: HTMLElement) => {
+  return el.scrollWidth > el.offsetWidth || !isFullyInViewport(el);
+};
 
 const isFullyInViewport = (el: HTMLElement) => {
   const rect = el.getBoundingClientRect();
