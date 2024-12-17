@@ -94,15 +94,12 @@ export const SelectionCard = props => {
         // onMouseOver={() => setHovered(true)}
         // onMouseOut={() => setHovered(false)}
       >
-        <CardHeader
-          // header={<Text weight="semibold">BASIC INPUTS</Text>}
-          description={<Caption1 className={styles.caption}>{props.displayName}</Caption1>}
-        />
+        <CardHeader description={<Caption1 className={styles.caption}>{props.displayName}</Caption1>} />
         <CardPreview className={styles.grayBackground}>
           <img
             className={selected || hovered ? styles.cardImageSelected : styles.cardImage}
             src={resolveAsset(props.image)}
-            alt="Presentation Preview"
+            alt={`Preview for ${props.displayName}`}
           />
         </CardPreview>
       </Card>
