@@ -188,15 +188,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       refSelected: '',
       selectedLegend: props.legendProps?.selectedLegend ?? '',
       isCalloutVisible: false,
-      selectedLegendPoints: [],
+      selectedLegendPoints: this._injectIndexPropertyInLineChartData(this.props.data.lineChartData, true),
       selectedColorBarLegend: [],
-      isSelectedLegend: false,
+      isSelectedLegend: (this.props.legendProps?.selectedLegends?.length ?? 0) > 0,
       activePoint: '',
       nearestCircleToHighlight: null,
       activeLine: null,
     };
     this._refArray = [];
-    this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
+    this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData, false);
     this._colorFillBars = [];
     this._calloutPoints = calloutData(this._points) || [];
     this._circleId = getId('circle');
@@ -225,14 +225,14 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       prevProps.width !== this.props.width ||
       prevProps.data !== this.props.data
     ) {
-      this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
+      this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData, false);
       this._calloutPoints = calloutData(this._points) || [];
     }
   }
 
   public render(): JSX.Element {
     const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
-    this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
+    this._points = this._injectIndexPropertyInLineChartData(data.lineChartData, false);
 
     const isXAxisDateType = getXAxisType(this._points);
     let points = this._points;
@@ -379,10 +379,21 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return domainNRangeValue;
   };
 
-  private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {
+  private _injectIndexPropertyInLineChartData = (
+    lineChartData?: ILineChartPoints[],
+    isFilterSelectedLegends?: boolean,
+  ): LineChartDataWithIndex[] | [] => {
     const { allowMultipleShapesForPoints = false } = this.props;
-    return lineChartData
-      ? lineChartData.map((item: ILineChartPoints, index: number) => {
+    // Apply filter only if isPropChange is true
+    const filteredData = isFilterSelectedLegends
+      ? lineChartData?.filter(
+          (item: ILineChartPoints) =>
+            this.props.legendProps?.selectedLegends?.includes(item.legend) ||
+            this.props.legendProps?.selectedLegend === item.legend,
+        )
+      : lineChartData;
+    return filteredData
+      ? filteredData.map((item: ILineChartPoints, index: number) => {
           let color: string;
           // isInverted property is applicable to v8 themes only
           if (typeof item.color === 'undefined') {
@@ -590,7 +601,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
     } else {
-      this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
+      this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData, false);
     }
     for (let i = this._points.length - 1; i >= 0; i--) {
       const linesForLine: JSX.Element[] = [];
