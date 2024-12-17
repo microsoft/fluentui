@@ -197,6 +197,12 @@ export interface PositioningOptions {
    * Disables the resize observer that updates position on target or dimension change
    */
   disableUpdateOnResize?: boolean;
+
+  /**
+   * When true, the positioned element will shift to cover the target element when there's not enough space.
+   * @default false
+   */
+  shiftToCoverTarget?: boolean;
 }
 
 /**
@@ -221,6 +227,7 @@ export interface PositioningProps
     | 'matchTargetSize'
     | 'onPositioningEnd'
     | 'disableUpdateOnResize'
+    | 'shiftToCoverTarget'
   > {
   /** An imperative handle to Popper methods. */
   positioningRef?: React.Ref<PositioningImperativeRef>;
