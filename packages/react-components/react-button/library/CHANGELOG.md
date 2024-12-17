@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 09 Dec 2024 17:38:16 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Dec 2024 16:26:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.98](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.98)
+
+Mon, 16 Dec 2024 16:26:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.97..@fluentui/react-button_v9.3.98)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.12 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.48 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.21.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-tabster to v9.23.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-theme to v9.1.24 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-utilities to v9.18.19 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
 
 ## [9.3.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.97)
 

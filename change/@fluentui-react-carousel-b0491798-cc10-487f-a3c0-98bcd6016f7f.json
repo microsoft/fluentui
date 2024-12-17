@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Set tabster default on carousel initialization",
-  "packageName": "@fluentui/react-carousel",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}
