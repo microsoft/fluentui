@@ -18,6 +18,7 @@ export function listboxTemplate<T extends Listbox>(): ElementViewTemplate<T> {
       @beforetoggle="${(x, c) => x.beforetoggleHandler(c.event as ToggleEvent)}"
       @click="${(x, c) => x.clickHandler(c.event as PointerEvent)}"
     >
+      <slot name="freeform"></slot>
       <slot
         ${slotted({
           property: 'options',

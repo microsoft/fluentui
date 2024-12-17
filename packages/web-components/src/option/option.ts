@@ -26,6 +26,15 @@ export class Option extends BaseCheckbox implements Start {
   public descriptionSlot!: Node[];
 
   /**
+   * Indicates that the option value matches the value of the dropdown's control.
+   * @public
+   * @remarks
+   * HTML Attribute: `freeform`
+   */
+  @attr({ mode: 'boolean' })
+  public freeform?: boolean;
+
+  /**
    * Sets that the option id attribute.
    *
    * @override
