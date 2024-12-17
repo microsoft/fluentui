@@ -127,7 +127,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         );
       }
     case 'scatter':
-      const isAreaChart = data.some((series: any) => series.fill === 'tonexty');
+      const isAreaChart = data.some((series: any) => series.fill === 'tonexty' || series.fill === 'tozeroy');
       if (isXDate || isXNumber) {
         if (isAreaChart) {
           return (
