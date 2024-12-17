@@ -87,7 +87,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       isLegendSelected: false,
       isLegendHovered: false,
       refSelected: null,
-      selectedLegendTitle: '',
+      selectedLegendTitle: props.legendProps?.selectedLegend ?? '',
       xCalloutValue: '',
       yCalloutValue: '',
       activeXdataPoint: null,
