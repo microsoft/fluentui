@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
@@ -7,6 +7,7 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import {
   IAccessibilityProps,
+  IChart,
   IDataPoint,
   IGroupedVerticalBarChartData,
   IHeatMapChartDataPoint,
@@ -445,6 +446,8 @@ export interface ICartesianChartProps {
    * Used for enabling negative values in Y axis.
    */
   supportNegativeData?: boolean;
+
+  componentRef?: IRefObject<IChart>;
 }
 
 export interface IYValueHover {

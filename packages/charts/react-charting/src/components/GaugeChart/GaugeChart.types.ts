@@ -1,7 +1,7 @@
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ILegendsProps } from '../Legends/index';
-import { IAccessibilityProps } from '../../types/index';
+import { IAccessibilityProps, IChart } from '../../types/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 
 /**
@@ -168,6 +168,8 @@ export interface IGaugeChartProps {
    * @default false
    */
   roundCorners?: boolean;
+
+  componentRef?: IRefObject<IChart>;
 }
 
 /**

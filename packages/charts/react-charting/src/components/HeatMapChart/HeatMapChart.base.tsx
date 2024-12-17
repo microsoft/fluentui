@@ -1,7 +1,7 @@
 import { CartesianChart, IChildProps, IModifiedCartesianChartProps } from '../../components/CommonComponents/index';
-import { IAccessibilityProps, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
+import { IAccessibilityProps, IChart, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { classNamesFunction, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, initializeComponentRef, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
@@ -87,7 +87,7 @@ export interface IHeatMapChartState {
   callOutAccessibilityData?: IAccessibilityProps;
 }
 const getClassNames = classNamesFunction<IHeatMapChartStyleProps, IHeatMapChartStyles>();
-export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> {
+export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> implements IChart {
   private _classNames: IProcessedStyleSet<IHeatMapChartStyles>;
   private _stringXAxisDataPoints: string[];
   private _stringYAxisDataPoints: string[];
@@ -114,8 +114,13 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: FlattenData | null;
   private _emptyChartId: string;
+  private _cartesianChartRef: React.RefObject<IChart>;
+
   public constructor(props: IHeatMapChartProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     /**
      * below funciton creates a new data set from the prop
      * @data and also finds all the unique x-axis datapoints
@@ -145,6 +150,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       calloutId: '',
     };
     this._emptyChartId = getId('_HeatMap_empty');
+    this._cartesianChartRef = React.createRef();
   }
 
   public render(): React.ReactNode {
@@ -213,6 +219,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         }}
         legendBars={this._createLegendBars()}
         onChartMouseLeave={this._handleChartMouseLeave}
+        componentRef={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -229,6 +236,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         aria-label={'Graph has no data to display'}
       />
     );
+  }
+
+  public get container(): HTMLElement | null {
+    return this._cartesianChartRef.current?.container || null;
   }
 
   private _getMinMaxOfYAxis = () => {

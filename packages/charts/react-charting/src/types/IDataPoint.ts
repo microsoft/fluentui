@@ -814,3 +814,7 @@ export interface ICustomizedCalloutData {
   x: number | string | Date;
   values: ICustomizedCalloutDataPoint[];
 }
+
+export interface IChart {
+  container: HTMLElement | null;
+}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
-import { DeclarativeChart, DeclarativeChartProps, Schema } from '@fluentui/react-charting';
+import { DeclarativeChart, DeclarativeChartProps, IDeclarativeChart, Schema } from '@fluentui/react-charting';
 
 interface IDeclarativeChartState {
   selectedChoice: string;
@@ -35,11 +35,15 @@ const schemas: any[] = [
 const dropdownStyles = { dropdown: { width: 200 } };
 
 export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarativeChartState> {
+  private _declarativeChartRef: React.RefObject<IDeclarativeChart>;
+
   constructor(props: DeclarativeChartProps) {
     super(props);
     this.state = {
       selectedChoice: 'donutchart',
     };
+
+    this._declarativeChartRef = React.createRef();
   }
 
   public render(): JSX.Element {
@@ -69,8 +73,9 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
           styles={dropdownStyles}
         />
         <br />
+        <button onClick={() => this._declarativeChartRef.current?.download()}>Download</button>
         <br />
-        <DeclarativeChart chartSchema={inputSchema} />
+        <DeclarativeChart chartSchema={inputSchema} componentRef={this._declarativeChartRef} />
       </>
     );
   }

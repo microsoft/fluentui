@@ -9,7 +9,7 @@ import {
   scaleUtc as d3ScaleUtc,
   scaleTime as d3ScaleTime,
 } from 'd3-scale';
-import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import {
@@ -53,6 +53,7 @@ import {
   formatDate,
   getNextGradient,
 } from '../../utilities/index';
+import { IChart } from '../../types/index';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -76,7 +77,10 @@ export interface IVerticalBarChartState extends IBasestate {
 
 type ColorScale = (_p?: number) => string;
 
-export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps, IVerticalBarChartState> {
+export class VerticalBarChartBase
+  extends React.Component<IVerticalBarChartProps, IVerticalBarChartState>
+  implements IChart
+{
   public static defaultProps: Partial<IVerticalBarChartProps> = {
     maxBarWidth: 24,
     useUTC: true,
@@ -102,9 +106,13 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _emptyChartId: string;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
+  private _cartesianChartRef: React.RefObject<IChart>;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     this.state = {
       color: '',
       dataForHoverCard: 0,
@@ -129,6 +137,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         : XAxisTypes.StringAxis;
     this._emptyChartId = getId('_VBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
+    this._cartesianChartRef = React.createRef();
   }
 
   public render(): JSX.Element {
@@ -200,6 +209,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           xAxisInnerPadding: this._xAxisInnerPadding,
           xAxisOuterPadding: this._xAxisOuterPadding,
         })}
+        componentRef={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         children={(props: IChildProps) => {
           return (
@@ -228,6 +238,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         aria-label={'Graph has no data to display'}
       />
     );
+  }
+
+  public get container(): HTMLElement | null {
+    return this._cartesianChartRef.current?.container || null;
   }
 
   private _getDomainNRangeValues = (

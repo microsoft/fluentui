@@ -2,7 +2,7 @@ import { create as d3Create, select as d3Select, Selection } from 'd3-selection'
 
 // const DOM_URL = window.URL || window.webkitURL;
 
-export function downloadImage(container: HTMLDivElement | null, background: string) {
+export function downloadImage(container: HTMLElement | null | undefined, background: string) {
   if (!container) {
     return;
   }
@@ -20,8 +20,8 @@ export function downloadImage(container: HTMLDivElement | null, background: stri
   });
 }
 
-export function toSvg(container: HTMLDivElement, background: string) {
-  const svg = container.querySelector<SVGSVGElement>('svg[class^="chart-"]');
+export function toSvg(container: HTMLElement, background: string) {
+  const svg = container.querySelector<SVGSVGElement>('svg');
   if (!svg) {
     return;
   }
@@ -33,7 +33,10 @@ export function toSvg(container: HTMLDivElement, background: string) {
     width: legendGroupWidth,
     height: legendGroupHeight,
   } = cloneLegendsToSvg(container, width, height, classNames);
-  const clonedSvg = d3Select(svg.cloneNode(true) as SVGSVGElement).attr('viewBox', null);
+  const clonedSvg = d3Select(svg.cloneNode(true) as SVGSVGElement)
+    .attr('width', null)
+    .attr('height', null)
+    .attr('viewBox', null);
   const w1 = Math.max(width, legendGroupWidth);
   const h1 = height + legendGroupHeight;
 
@@ -72,11 +75,12 @@ export function toSvg(container: HTMLDivElement, background: string) {
 
   const xmlDocument = new DOMParser().parseFromString('<svg></svg>', 'image/svg+xml');
   const styleNode = xmlDocument.createCDATASection(styleRules.join(' '));
-
   clonedSvg.insert('defs', ':first-child').append('style').attr('type', 'text/css').node()!.appendChild(styleNode);
 
+  clonedSvg.attr('width', w1).attr('height', h1).attr('viewBox', `0 0 ${w1} ${h1}`);
+
   let s = new XMLSerializer().serializeToString(clonedSvg.node()!);
-  s = btoa(decodeURIComponent(encodeURIComponent(s)));
+  s = btoa(unescape(encodeURIComponent(s)));
 
   return {
     svg: s,
@@ -85,10 +89,12 @@ export function toSvg(container: HTMLDivElement, background: string) {
   };
 }
 
-function cloneLegendsToSvg(container: HTMLDivElement, width: number, height: number, classNames: Set<string>) {
-  const legendButtons = container.querySelectorAll<HTMLElement>(
-    'button[class^="legend-"], [class^="legendContainer-"] div[class^="overflowIndicationTextStyle-"]',
-  );
+function cloneLegendsToSvg(container: HTMLElement, width: number, height: number, classNames: Set<string>) {
+  const legendButtons = container.querySelectorAll<HTMLElement>(`
+    button[class^="legend-"],
+    [class^="legendContainer-"] div[class^="overflowIndicationTextStyle-"],
+    [class^="legendsContainer-"] div[class^="overflowIndicationTextStyle-"]
+  `);
 
   const legendGroup = d3Create<SVGGElement>('svg:g');
   let legendX = 0;
@@ -151,12 +157,15 @@ function cloneLegendsToSvg(container: HTMLDivElement, width: number, height: num
   legendLineWidths.push(legendX);
   legendY += 32;
 
-  legendLines.forEach((ln, idx) => {
-    const offsetX = Math.max((width - legendLineWidths[idx]) / 2, 0);
-    ln.forEach(item => {
-      item.attr('transform', `translate(${offsetX}, 0)`);
+  const centerLegends = true;
+  if (centerLegends) {
+    legendLines.forEach((ln, idx) => {
+      const offsetX = Math.max((width - legendLineWidths[idx]) / 2, 0);
+      ln.forEach(item => {
+        item.attr('transform', `translate(${offsetX}, 0)`);
+      });
     });
-  });
+  }
 
   return {
     legendGroup,

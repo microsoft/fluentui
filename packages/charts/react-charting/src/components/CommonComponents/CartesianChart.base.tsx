@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { Callout } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import {
@@ -32,6 +32,7 @@ import {
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
+import {IChart} from '../../types/index'
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 const ChartHoverCard = React.lazy(() =>
@@ -63,7 +64,7 @@ export interface ICartesianChartState {
  * 2.Callout
  * 3.Fit parent Continer
  */
-export class CartesianChartBase extends React.Component<IModifiedCartesianChartProps, ICartesianChartState> {
+export class CartesianChartBase extends React.Component<IModifiedCartesianChartProps, ICartesianChartState>implements IChart {
   private _classNames: IProcessedStyleSet<ICartesianChartStyles>;
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
@@ -86,6 +87,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
 
   constructor(props: IModifiedCartesianChartProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     this.state = {
       containerHeight: 0,
       containerWidth: 0,
@@ -619,6 +623,11 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       </div>
     );
   }
+
+  public get container(): HTMLElement | null {
+    return this.chartContainer;
+  }
+
   /**
    * Dedicated function to return the Callout JSX Element , which can further be used to only call this when
    * only the calloutprops and charthover props changes.
