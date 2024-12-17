@@ -25,10 +25,6 @@ export class Option extends BaseCheckbox implements Start {
   @observable
   public descriptionSlot!: Node[];
 
-  public descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
-    toggleState(this.elementInternals, 'description', !!next?.length);
-  }
-
   /**
    * Sets that the option id attribute.
    *
@@ -70,10 +66,6 @@ export class Option extends BaseCheckbox implements Start {
   @observable
   public titleSlot!: Node[];
 
-  public titleSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
-    toggleState(this.elementInternals, 'title', !!next?.length);
-  }
-
   /**
    * The toggle mode.
    *
@@ -99,6 +91,10 @@ export class Option extends BaseCheckbox implements Start {
     super.value = value;
   }
 
+  public descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
+    toggleState(this.elementInternals, 'description', !!next?.length);
+  }
+
   public setActiveState(force?: boolean) {
     toggleState(this.elementInternals, 'active', force);
   }
@@ -120,5 +116,9 @@ export class Option extends BaseCheckbox implements Start {
    */
   protected setAriaProperties(value: boolean = this[this.mode]) {
     this.elementInternals.ariaSelected = value ? 'true' : 'false';
+  }
+
+  public titleSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
+    toggleState(this.elementInternals, 'title', !!next?.length);
   }
 }
