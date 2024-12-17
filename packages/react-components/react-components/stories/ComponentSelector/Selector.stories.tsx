@@ -13,11 +13,6 @@ import {
   tokens,
   useId,
 } from "@fluentui/react-components";
-import type {
-  SelectTabData,
-  SelectTabEvent,
-  TabValue,
-} from "@fluentui/react-components";
 
 import {
   removeFromArray,
@@ -25,18 +20,13 @@ import {
   getAllQuestions,
 } from "./utils";
 import questions from "./selection-logic/Questions.json";
-import categories from "./selection-logic/Categories.json";
-import * as componentsDefinitionsImported from "./components-definitions/index";
+import importedCategories from "./selection-logic/Categories.json";
+import * as importedComponentsDefinitions from "./components-definitions/index";
 import { add, create, get, set } from "lodash";
 import { SelectionCard } from "./SelectionCard";
 import { Question } from "./Question";
 import { BehaviorSelection } from "./BehaviorSelection";
 import { MatchingComponents } from "./MatchingComponents";
-
-const decisionRadioValues: Record<string, string[]> = {
-  navigationBy: ["navigationByArrowKeys", "navigationByTabKey"],
-  interaction: ["interactive", "static"],
-};
 
 const useStyles = makeStyles({
   secondLevel: { "margin-left": "30px" },
@@ -97,6 +87,13 @@ const useStyles = makeStyles({
   },
 });
 
+interface ComponentCategory {
+  id: string;
+  title: string;
+  components: string[];
+  cards?: React.ReactNode[];
+}
+const categories: ComponentCategory[] = importedCategories;
 const savedSelectedBehaviours = {
   byComponents: [],
   byBehaviors: [],
@@ -105,48 +102,18 @@ const savedSelectedBehaviours = {
 export const Selector = () => {
   const classes = useStyles();
 
-  const [mode, setMode] = React.useState<TabValue>("byComponents");
+  const [mode, setMode] = React.useState("byComponents");
   const [selectedComponents, setSelectedComponents] = React.useState<string[]>(
     []
   );
   const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>(
     []
   );
-  const [savedSelectedBehaviours, setSavedSelectedBehaviours] = React.useState<
-    Record<string, string[]>
-  >({
-    byComponents: [],
-    byBehaviors: [],
-  });
+  const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] =
+    React.useState<Record<string, any>[]>([]);
+  const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
 
-  const [decisionState, setDecisionState] = React.useState<
-    Record<string, Record<string, boolean | string | undefined>>
-  >({
-    uiBehavior: {
-      interaction: undefined,
-      // composition: undefined,
-      toggle: false,
-      navigableToPage: false,
-      columnsAndRows: false,
-      singleColumn: false,
-      hierarchical: false,
-      opensMenu: false,
-      multipleActions: false,
-      textOrHeading: false,
-    },
-
-    keyboardNavigation: {
-      navigationBy: "notSpecified",
-      innerNavigationAfterEnter: false,
-      nestedNavigation: false,
-    },
-
-    screenReader: {
-      narratesPosition: false,
-    },
-  });
-
-  const onModeTabSelect = (event: SelectTabEvent, data: SelectTabData) => {
+  const onModeTabSelect = (event, data) => {
     const newMode = data.value;
     savedSelectedBehaviours[mode] = [...selectedBehaviours];
     setSelectedBehaviours(savedSelectedBehaviours[newMode]);
@@ -157,54 +124,46 @@ export const Selector = () => {
     console.log(`UseEffect: Selector`);
   }, []);
 
-  const [behavior1, setBehavior1] = React.useState(false);
-  const [behavior2, setBehavior2] = React.useState(false);
-  const [behavior3, setBehavior3] = React.useState(false);
-  const [behavior4, setBehavior4] = React.useState(false);
-  const [behavior5, setBehavior5] = React.useState(false);
-  const [behavior6, setBehavior6] = React.useState(false);
-  const [behavior7, setBehavior7] = React.useState(false);
-  const [behavior8, setBehavior8] = React.useState(false);
+  
+  React.useEffect(() => {
+    setFilteredComponentsDefinitions(componentsDefinitions.current);
+  }, [setFilteredComponentsDefinitions]);
 
-  const getDecisionCategory = React.useCallback(
-    (name: string) => {
-      for (let category in decisionState) {
-        for (let item in decisionState[category]) {
-          if (item === name) {
-            return category;
-          }
-        }
-      }
-      return undefined;
-    },
-    [decisionState]
-  );
+  const onFilterChange = (event, data) => {
+    setFilteredComponentsDefinitions(
+      componentsDefinitions.current.filter((definition) => {
+        const isMatchInName = definition.component
+          .toLowerCase()
+          .includes(data.value.toLowerCase());
+        const isMatchInStory = definition.story
+          ? definition.story.toLowerCase().includes(data.value.toLowerCase())
+          : false;
+        return isMatchInName || isMatchInStory;
+      })
+    );
+  };
 
   const mergeBaseObjects = () => {
     componentsDefinitions.current.forEach((definition) => {
       for (const key in definition) {
         if (key === "extends") {
           const value = definition[key];
-          // const currentJSONObject = JSON.parse(JSON.stringify(definition));
-          const attributesOfCurrentJSON = definition.attributes;
-          // find definition which is based one
+          const attributesOfCurrentDefinition = definition.attributes;
+          // find the definition which the current definition is based on
           const baseDefinition = componentsDefinitions.current.find(
             (def) => def.name === value
           );
           const attributesOfBaseDefinition = baseDefinition?.attributes;
 
-          // create new object not delete name of base definition for others usage
-          const temporaryObject = JSON.parse(JSON.stringify(baseDefinition));
-          delete temporaryObject.name;
+          // create a definition copy with the name deleted
+          const tempDefinition = JSON.parse(JSON.stringify(baseDefinition));
+          delete tempDefinition.name;
 
           // merge attributes of current JSON with Base JSON
-          if (attributesOfCurrentJSON) {
-            temporaryObject["attributes"] = [
-              ...attributesOfBaseDefinition,
-              ...attributesOfCurrentJSON,
-            ];
+          if (attributesOfCurrentDefinition) {
+            tempDefinition.attributes = [...attributesOfBaseDefinition, ...attributesOfCurrentDefinition];
           }
-          Object.assign(definition, temporaryObject);
+          Object.assign(definition, tempDefinition);
         }
       }
     });
@@ -220,12 +179,9 @@ export const Selector = () => {
     });
   };
 
-  const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
-  const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] =
-    React.useState<Record<string, any>[]>([]);
   const fillComponentsDefinitions = () => {
-    if (componentsDefinitions && componentsDefinitions.current.length === 0) {
-      Object.entries(componentsDefinitionsImported).forEach(([key, value]) => {
+    if (componentsDefinitions.current.length === 0) {
+      Object.entries(importedComponentsDefinitions).forEach(([key, value]) => {
         componentsDefinitions.current.push(value);
       });
       mergeBaseObjects();
@@ -235,7 +191,7 @@ export const Selector = () => {
 
   fillComponentsDefinitions();
 
-  const updateBehaviorDecision = (name: string, checked: boolean | string) => {
+  const updateBehaviorDecision = (name, checked) => {
     if (checked) {
       setSelectedBehaviours([...selectedBehaviours, name]);
     } else {
@@ -246,27 +202,7 @@ export const Selector = () => {
     }
   };
 
-  const additionalTags = [
-    "expandable",
-    "static",
-    "selectable",
-    "sortable",
-    "filterable",
-  ];
-
-  // Handle selectedOptions both when an option is selected or deselected in the Combobox,
-  // and when an option is removed by clicking on a tag
-  // const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
-
-  const getImage = (tagName) => {
-    try {
-      return require(`../ComponentSelector/components-images/${tagName}.png`);
-    } catch (error) {
-      return null;
-    }
-  };
-
-  const getComponentDefinitionByName = (name: string) => {
+  const getComponentDefinitionByName = (name) => {
     return componentsDefinitions.current.find(
       (definition) => definition.name === name
     );
@@ -281,7 +217,6 @@ export const Selector = () => {
     if (mode === "byComponents") {
       selectedComponents.forEach((componentName) => {
         const definition = getComponentDefinitionByName(componentName);
-        // console.log(`PUSH component name: ${component.name}`);
         if (definition) {
           suitableComponents.push(definition);
         }
@@ -290,22 +225,15 @@ export const Selector = () => {
 
     if (selectedBehaviours.length > 0) {
       console.log(`GET COMPONENT: selectedBehaviours: ${selectedBehaviours}`);
-      const componentsToIterate = componentsDefinitions.current;
-      // componentsDefinitions.current.forEach(definition => {
-      componentsToIterate.forEach((definition) => {
-        // const keysInDefinitions = Object.keys(definition);
-
+      componentsDefinitions.current.forEach(definition => {
         let matchedCount = 0;
         selectedBehaviours.forEach((decision) => {
           definition.attributes.includes(decision) ? matchedCount++ : null;
         });
-
         if (selectedBehaviours.length === matchedCount) {
           console.log("fully matched");
           // if suitableComponents does not include definition, push it
-          suitableComponents.includes(definition)
-            ? null
-            : suitableComponents.push(definition);
+          suitableComponents.includes(definition) ? null : suitableComponents.push(definition);
         } else {
           // console.log(`suitableComponents: ${suitableComponents}`);
           // console.log('GOING TO REMOVE');
@@ -314,15 +242,14 @@ export const Selector = () => {
         }
       });
     }
-
     return suitableComponents;
   };
 
-  const addComponent = (name) => {
+  const addComponent = React.useCallback((name) => {
     console.log(`addComponent: ${name}`);
     console.log(`selectedComponents: ${selectedComponents}`);
     setSelectedComponents((prevArray) => [...prevArray, name]);
-  };
+  }, [selectedComponents]);
 
   const categorizedComponents = React.useMemo(() => {
     const definitionsWithDisplayName = filteredComponentsDefinitions.map(
@@ -330,7 +257,7 @@ export const Selector = () => {
         const componentName = definition.story
           ? `${definition.component} : ${definition.story}`
           : definition.name;
-        definition["displayName"] = componentName;
+        definition.displayName = componentName;
         return definition;
       }
     );
@@ -339,7 +266,7 @@ export const Selector = () => {
     );
 
     const result = categories.map((category) => {
-      category["cards"] = [];
+      category.cards = [];
       definitionsWithDisplayName.forEach((definition) => {
         if (category.components.includes(definition.component)) {
           const card = (
@@ -352,21 +279,15 @@ export const Selector = () => {
               />
             </>
           );
-          category["cards"].push(card);
+          category.cards?.push(card);
         }
       });
       return category;
     });
     return result;
-  }, [filteredComponentsDefinitions]);
+  }, [filteredComponentsDefinitions, addComponent]);
 
-  const updateDecisionForQuestion = (
-    currentName: string,
-    previousName: string
-  ) => {
-    if (currentName === "none" && previousName === "none") {
-      return;
-    }
+  const updateDecisionForQuestion = (currentName, previousName) => {
     if (currentName === previousName) {
       return;
     }
@@ -386,25 +307,7 @@ export const Selector = () => {
     });
   };
 
-  const allQuestions = getAllQuestions(selectedComponents, questions);
-
-  React.useEffect(() => {
-    setFilteredComponentsDefinitions(componentsDefinitions.current);
-  }, [setFilteredComponentsDefinitions]);
-
-  const onFilterChange = (event, data) => {
-    setFilteredComponentsDefinitions(
-      componentsDefinitions.current.filter((definition) => {
-        const isMatchInName = definition.component
-          .toLowerCase()
-          .includes(data.value.toLowerCase());
-        const isMatchInStory = definition.story
-          ? definition.story.toLowerCase().includes(data.value.toLowerCase())
-          : false;
-        return isMatchInName || isMatchInStory;
-      })
-    );
-  };
+  const allQuestions = React.useMemo(() => getAllQuestions(selectedComponents, questions), [selectedComponents]);
 
   return (
     <>
@@ -417,7 +320,7 @@ export const Selector = () => {
         <Tab value="byComponents">By components</Tab>
         <Tab value="byBehaviors">By behaviors</Tab>
       </TabList>
-      {mode == "byComponents" && (
+      {mode === "byComponents" && (
         <>
           <Field label="Filter components">
             <Input onChange={onFilterChange} />
@@ -431,7 +334,7 @@ export const Selector = () => {
               <AccordionItem key={category.id} value={category.id}>
                 <AccordionHeader as="h3">{category.title}</AccordionHeader>
                 <AccordionPanel>
-                  <div className={classes.root}>{category["cards"]}</div>
+                  <div className={classes.root}>{category.cards}</div>
                 </AccordionPanel>
               </AccordionItem>
             ))}
@@ -449,7 +352,7 @@ export const Selector = () => {
           ))}
         </>
       )}
-      {mode == "byBehaviors" && (
+      {mode === "byBehaviors" && (
         <>
           <BehaviorSelection updateBehaviorDecision={updateBehaviorDecision} />
         </>
