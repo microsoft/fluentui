@@ -23,11 +23,11 @@ export const MatchingComponents = ({ components }) => {
               <Text weight="semibold">
                 Component name:{' '}
                 <Link target="_blank" inline href={getComponentStoryUrl(component)}>
-                  {component.name}{' '}
+                  {component.component}{' '}
                 </Link>
               </Text>
               <br />
-              <Text weight="semibold">Example:</Text> {component.exampleName ? component.exampleName : 'Default'}
+              <Text weight="semibold">Example:</Text> {component.story ? component.story : 'Default'}
               {component.note && (
                 <div>
                   <Text weight="semibold">Note:</Text> <Text>{component.note}</Text>
