@@ -22,6 +22,24 @@ import { uniqueId } from '../utils/unique-id.js';
  * @public
  */
 export class Option extends BaseCheckbox implements Start {
+  /**
+   * Indicates that the option is active.
+   * @public
+   */
+  @observable
+  public active: boolean = false;
+
+  /**
+   * Changes the active state of the option when the active property changes.
+   *
+   * @param prev - the previous active state
+   * @param next - the current active state
+   * @internal
+   */
+  protected activeChanged(prev: boolean, next: boolean): void {
+    toggleState(this.elementInternals, 'active', next);
+  }
+
   @observable
   public descriptionSlot!: Node[];
 
