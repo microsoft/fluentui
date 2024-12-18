@@ -77,7 +77,7 @@ export const transformPlotlyJsonToDonutProps = (
   const styles: IDonutChartProps['styles'] = {
     root: {
       '[class^="arcLabel"]': {
-        fontSize: typeof firstData.textfont?.size === 'number' ? firstData.textfont?.size : undefined,
+        ...(typeof firstData.textfont?.size === 'number' ? { fontSize: firstData.textfont.size } : {}),
       },
     },
   };
@@ -433,7 +433,7 @@ export const transformPlotlyJsonToSankeyProps = (
   const height: number = typeof layout?.height === 'number' ? layout?.height : 220;
   const styles: ISankeyChartProps['styles'] = {
     root: {
-      fontSize: typeof layout.font?.size === 'number' ? layout.font?.size : undefined,
+      ...(typeof layout.font?.size === 'number' ? { fontSize: layout.font?.size } : {}),
     },
   };
   const shouldResize: number = width + height;
