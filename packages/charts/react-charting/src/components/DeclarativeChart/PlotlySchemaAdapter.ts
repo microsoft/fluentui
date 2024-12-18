@@ -505,6 +505,25 @@ export const transformPlotlyJsonToGaugeProps = (
   };
 };
 
+const MAX_DEPTH = 4;
+export const sanitizeJson = (jsonObject: any, depth: number = 0): any => {
+  if (depth > MAX_DEPTH) {
+    throw new Error('Maximum json depth exceeded');
+  }
+
+  if (typeof jsonObject === 'object' && jsonObject !== null) {
+    for (const key in jsonObject) {
+      if (jsonObject.hasOwnProperty(key)) {
+        if (typeof jsonObject[key] === 'string') {
+          jsonObject[key] = jsonObject[key].replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        } else {
+          sanitizeJson(jsonObject[key], depth + 1);
+        }
+      }
+    }
+  }
+}
+
 function isTypedArray(a: any) {
   return ArrayBuffer.isView(a) && !(a instanceof DataView);
 }

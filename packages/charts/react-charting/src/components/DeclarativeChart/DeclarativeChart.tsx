@@ -10,6 +10,7 @@ import {
   transformPlotlyJsonToHorizontalBarWithAxisProps,
   isDateArray,
   isNumberArray,
+  sanitizeJson,
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
@@ -71,7 +72,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   HTMLDivElement,
   DeclarativeChartProps
 >((props, forwardedRef) => {
-  const { plotlySchema } = props.chartSchema;
+  const { plotlySchema } = sanitizeJson(props.chartSchema);
   const { data, layout, selectedLegends } = plotlySchema;
   const xValues = data[0].x;
   const isXDate = isDateArray(xValues);
