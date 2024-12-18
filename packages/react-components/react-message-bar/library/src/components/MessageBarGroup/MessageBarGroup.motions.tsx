@@ -38,24 +38,24 @@ const fadeAtom = ({
  * Generates a motion atom object for an X or Y translation, from a specified distance to zero.
  * @param direction - The functional direction of the motion: 'enter' or 'exit'.
  * @param axis - The axis of the translation: 'X' or 'Y'.
- * @param distance - The distance to slide; it can be a percentage or pixels.
+ * @param fromValue - The starting position of the slide; it can be a percentage or pixels.
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveDecelerateMid`.
  */
 const slideAtom = ({
   direction,
   axis,
-  distance,
+  fromValue,
   duration,
   easing = motionTokens.curveDecelerateMid,
 }: {
   direction: PresenceDirection;
   axis: 'X' | 'Y';
-  distance: string;
+  fromValue: string;
   duration: number;
   easing?: string;
 }): AtomMotion => {
-  const keyframes = [{ transform: `translate${axis}(${distance})` }, { transform: `translate${axis}(0)` }];
+  const keyframes = [{ transform: `translate${axis}(${fromValue})` }, { transform: `translate${axis}(0)` }];
   if (direction === 'exit') {
     keyframes.reverse();
   }
@@ -66,19 +66,26 @@ const slideAtom = ({
   };
 };
 
+/**
+ * A presence motion component that enters by sliding in from the top and fading in,
+ * and exits by just fading out.
+ */
 export const SlideInFadeOut = createPresenceComponent(() => {
   const duration = motionTokens.durationGentle;
 
   return {
     enter: [
       fadeAtom({ direction: 'enter', duration }),
-      slideAtom({ direction: 'enter', axis: 'Y', distance: '-100%', duration }),
+      slideAtom({ direction: 'enter', axis: 'Y', fromValue: '-100%', duration }),
     ],
 
     exit: fadeAtom({ direction: 'exit', duration }),
   };
 });
 
+/**
+ * A presence motion component with only an exit transition of fading out.
+ */
 export const FadeOut = createPresenceComponent(() => {
   return {
     enter: [],
