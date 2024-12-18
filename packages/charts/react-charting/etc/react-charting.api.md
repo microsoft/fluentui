@@ -488,7 +488,6 @@ export interface IDonutChart {
 // @public
 export interface IDonutChartProps extends ICartesianChartProps {
     calloutProps?: Partial<ICalloutProps>;
-    canSelectMultipleLegends?: boolean;
     culture?: string;
     data?: IChartProps;
     enableGradient?: boolean;
