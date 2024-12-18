@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "docs(react-popover): Fix doc-comment links that don't translate to storybook",
-  "packageName": "@fluentui/react-popover",
-  "email": "jiangemma@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Wed, 18 Dec 2024 10:59:37 GMT",
+      "tag": "@fluentui/react-tree_v9.8.11",
+      "version": "9.8.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-avatar to v9.6.47",
+            "commit": "54afa8c6ce8f7d200d5241584801899b27baaf1b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Dec 2024 16:26:49 GMT",
       "tag": "@fluentui/react-tree_v9.8.10",
       "version": "9.8.10",

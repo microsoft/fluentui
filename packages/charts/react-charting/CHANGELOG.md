@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 17 Dec 2024 07:21:19 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Dec 2024 07:20:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.27)
+
+Wed, 18 Dec 2024 07:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.26..@fluentui/react-charting_v5.23.27)
+
+### Patches
+
+- Enabled Multi Select behaviour of Controlled legends ([PR #33479](https://github.com/microsoft/fluentui/pull/33479) by 74965306+Anush2303@users.noreply.github.com)
+- Mode check for declarative area chart  ([PR #33467](https://github.com/microsoft/fluentui/pull/33467) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.23.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.26)
 
