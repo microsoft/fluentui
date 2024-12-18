@@ -40,11 +40,16 @@ export class Option extends BaseCheckbox implements Start {
     toggleState(this.elementInternals, 'active', next);
   }
 
+  /**
+   * The collection of slotted description elements.
+   * @internal
+   */
   @observable
   public descriptionSlot!: Node[];
 
   /**
    * Indicates that the option value matches the value of the dropdown's control.
+   *
    * @public
    * @remarks
    * HTML Attribute: `freeform`
@@ -90,6 +95,11 @@ export class Option extends BaseCheckbox implements Start {
   @attr({ attribute: 'text', mode: 'fromView' })
   public textAttribute?: string;
 
+  /**
+   * The collection of slotted title elements.
+   *
+   * @internal
+   */
   @observable
   public titleSlot!: Node[];
 
