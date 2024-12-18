@@ -77,7 +77,7 @@ export const transformPlotlyJsonToDonutProps = (
   const styles: IDonutChartProps['styles'] = {
     root: {
       '[class^="arcLabel"]': {
-        fontSize: typeof firstData.textfont?.size === 'number' ? firstData.textfont?.size : 0,
+        fontSize: typeof firstData.textfont?.size === 'number' ? firstData.textfont?.size : undefined,
       },
     },
   };
@@ -334,7 +334,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const margin: number = typeof layout.margin?.l === 'number' ? layout.margin?.l : 0;
   const padding: number = typeof layout.margin?.pad === 'number' ? layout.margin?.pad : 0;
   const availableHeight: number = chartHeight - margin - padding;
-  const numberOfBars: number = typeof data[0].y.length === 'number' ? data[0].y.length : 0;
+  const numberOfBars = data[0].y.length;
   const scalingFactor = 0.01;
   const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
   const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));
@@ -433,7 +433,7 @@ export const transformPlotlyJsonToSankeyProps = (
   const height: number = typeof layout?.height === 'number' ? layout?.height : 220;
   const styles: ISankeyChartProps['styles'] = {
     root: {
-      fontSize: typeof layout.font?.size === 'number' ? layout.font?.size : 0,
+      fontSize: typeof layout.font?.size === 'number' ? layout.font?.size : undefined,
     },
   };
   const shouldResize: number = width + height;
