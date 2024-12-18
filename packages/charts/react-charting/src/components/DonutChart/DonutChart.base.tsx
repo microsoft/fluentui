@@ -24,7 +24,6 @@ export interface IDonutChartState {
   xCalloutValue?: string;
   yCalloutValue?: string;
   focusedArcId?: string;
-  selectedLegend?: string;
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   selectedLegends: string[];
@@ -74,7 +73,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       color: '',
       xCalloutValue: '',
       yCalloutValue: '',
-      selectedLegend: props.legendProps?.selectedLegend ?? '',
       focusedArcId: '',
       selectedLegends: [],
     };
@@ -140,8 +138,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 hoverLeaveCallback={this._hoverLeave}
                 uniqText={this._uniqText}
                 onBlurCallback={this._onBlur}
-                activeArc={this._getHighlightedLegend().filter(
-                  (legend): legend is string => legend !== undefined && legend !== '',
+                activeArc={this._getHighlightedLegend().filter((legend): legend is string =>
+                  this._isLegendHighlighted(legend),
                 )}
                 focusedArcId={this.state.focusedArcId || ''}
                 href={this.props.href!}
@@ -244,9 +242,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       const legend: ILegend = {
         title: point.legend!,
         color,
-        action: () => {
-          // Add any action logic here
-        },
         hoverAction: () => {
           this._handleChartMouseLeave();
           this.setState({ activeLegend: point.legend! });
@@ -266,14 +261,13 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
-        canSelectMultipleLegends={this.props.legendProps?.canSelectMultipleLegends}
-        onChange={this._onLegendChange}
+        onChange={this._onLegendSelectionChange}
       />
     );
     return legends;
   }
 
-  private _onLegendChange = (
+  private _onLegendSelectionChange = (
     selectedLegends: string[],
     event: React.MouseEvent<HTMLButtonElement>,
     currentLegend?: ILegend,
@@ -387,7 +381,11 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
    * Note: This won't work in case of multiple legends selection.
    */
   private _getHighlightedLegend() {
-    return this.state.selectedLegends.length > 0 ? this.state.selectedLegends : [this.state.activeLegend];
+    return this.state.selectedLegends.length > 0
+      ? this.state.selectedLegends
+      : this.state.activeLegend
+      ? [this.state.activeLegend]
+      : [];
   }
 
   private _isChartEmpty(): boolean {
