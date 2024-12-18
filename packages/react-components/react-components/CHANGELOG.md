@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 16 Dec 2024 16:26:45 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Dec 2024 10:59:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.56.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.7)
+
+Wed, 18 Dec 2024 10:59:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.6..@fluentui/react-components_v9.56.7)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - docs(react-dialog): Fix doc-comment links that don't translate to storybook ([PR #33471](https://github.com/microsoft/fluentui/pull/33471) by jiangemma@microsoft.com)
+- `@fluentui/react-menu`
+  - docs(react-menu): Fix doc-comment links that don't translate to storybook ([PR #33471](https://github.com/microsoft/fluentui/pull/33471) by jiangemma@microsoft.com)
+- `@fluentui/react-popover`
+  - docs(react-popover): Fix doc-comment links that don't translate to storybook ([PR #33471](https://github.com/microsoft/fluentui/pull/33471) by jiangemma@microsoft.com)
+- `@fluentui/react-rating`
+  - fix: Pass missing Rating's itemLabel prop to its state so RatingItem consumes it from context. ([PR #33361](https://github.com/microsoft/fluentui/pull/33361) by derdem@microsoft.com)
 
 ## [9.56.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.6)
 
