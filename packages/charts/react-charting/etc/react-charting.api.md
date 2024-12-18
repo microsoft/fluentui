@@ -1605,11 +1605,7 @@ export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
 
 // @public
 export interface Schema {
-    accesibilityLabels?: {
-        [key: string]: string;
-    };
     plotlySchema: any;
-    selectedLegends?: string[];
 }
 
 // @public (undocumented)

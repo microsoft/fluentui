@@ -61,7 +61,7 @@ export const hbcSchema = {
   ],
   layout: {
     title: 'PHP Framework Popularity at Work - SitePoint, 2015',
-    width: 1151,
+    width: 850,
     xaxis: {
       type: 'linear',
       range: [-198.2562959184288, 1830.6731869091736],

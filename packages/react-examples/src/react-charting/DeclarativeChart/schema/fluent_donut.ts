@@ -62,4 +62,5 @@ export const donutSchema = {
     showlegend: true,
   },
   frames: [],
+  selectedLegends: ['Cadillac'],
 };

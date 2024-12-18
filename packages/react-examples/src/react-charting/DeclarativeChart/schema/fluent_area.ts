@@ -101,4 +101,5 @@ export const areaSchema = {
     paper_bgcolor: '#F5F6F9',
   },
   frames: [],
+  selectedLegends: ['a'],
 };

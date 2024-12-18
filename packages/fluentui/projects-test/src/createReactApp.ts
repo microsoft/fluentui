@@ -37,6 +37,11 @@ export async function createReactApp() {
   await addResolutionPathsForProjectPackages(testAppPathRoot);
 
   await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, testAppPathRoot);
+
+  // Enforce React 17
+  const dependencies = ['@types/react@17', '@types/react-dom@17', 'react@17', 'react-dom@17'].join(' ');
+  await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
+
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
   logger("STEP 3. Reference Fluent UI components in test project's App.tsx");

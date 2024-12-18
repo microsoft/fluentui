@@ -2,6 +2,39 @@
   "name": "@fluentui/react-rating",
   "entries": [
     {
+      "date": "Mon, 16 Dec 2024 16:26:49 GMT",
+      "tag": "@fluentui/react-rating_v9.0.25",
+      "version": "9.0.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.48",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating",
+            "comment": "Bump @fluentui/react-theme to v9.1.24",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating",
+            "comment": "Bump @fluentui/react-tabster to v9.23.2",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating",
+            "comment": "Bump @fluentui/react-utilities to v9.18.19",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Dec 2024 17:38:15 GMT",
       "tag": "@fluentui/react-rating_v9.0.24",
       "version": "9.0.24",

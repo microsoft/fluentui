@@ -2,6 +2,27 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Mon, 16 Dec 2024 16:26:49 GMT",
+      "tag": "@fluentui/react-motion_v9.6.5",
+      "version": "9.6.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.2",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.18.19",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Dec 2024 17:38:13 GMT",
       "tag": "@fluentui/react-motion_v9.6.4",
       "version": "9.6.4",

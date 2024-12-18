@@ -437,4 +437,5 @@ export const lineSchema = {
     paper_bgcolor: '#F5F6F9',
   },
   frames: [],
+  selectedLegends: ['Trace 0', 'Trace 1'],
 };
