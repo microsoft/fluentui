@@ -14,6 +14,7 @@ import type { Option } from '../option/option.js';
 import { isOption } from '../option/option.options.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
 import { cancelIdleCallback, requestIdleCallback } from '../utils/idle-callback.js';
+import { getLanguage } from '../utils/language.js';
 import { AnchorPositioningCSSSupported } from '../utils/support.js';
 import { uniqueId } from '../utils/unique-id.js';
 import { DropdownAppearance, DropdownSize, DropdownType } from './dropdown.options.js';
@@ -31,63 +32,50 @@ import { dropdownButtonTemplate, dropdownIndicatorTemplate, dropdownInputTemplat
  */
 export class BaseDropdown extends FASTElement {
   /**
-   * The index of the first checked option, scoped to the enabled options.
-   *
+   * Reference to the control element.
    * @internal
    */
-  public get selectedIndex(): number {
-    return this.listbox.enabledOptions.findIndex(x => x.checked);
-  }
-
   @observable
   public control!: HTMLInputElement;
 
+  /**
+   * Updates properties on the control element when the control slot changes.
+   *
+   * @param prev - the previous control element
+   * @param next - the current control element
+   * @internal
+   */
   public controlChanged(prev: HTMLInputElement | undefined, next: HTMLInputElement | undefined): void {
     if (next) {
-      next.ariaHasPopup = 'listbox';
       next.id = next.id || uniqueId('input-');
       this.controlSlot?.assign(next);
     }
   }
 
-  public controlSlot!: HTMLSlotElement;
-
   /**
    * The disabled state of the dropdown.
+   * @public
    */
   @attr({ mode: 'boolean' })
   public disabled?: boolean;
 
+  /**
+   * Toggles the disabled state of the dropdown when the disabled property changes.
+   *
+   * @param prev - the previous disabled state
+   * @param next - the current disabled state
+   * @internal
+   */
   public disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
     toggleState(this.elementInternals, 'disabled', next);
   }
 
   /**
-   * The display value for the control.
-   *
+   * The collection of enabled options.
    * @public
    */
-  @volatile
-  public get displayValue(): string {
-    if (!this.$fastController.isConnected || !this.control) {
-      return '';
-    }
-
-    if (this.multiple) {
-      return this.type === DropdownType.dropdown
-        ? [...(this.listbox?.selectedOptions ?? [])].map(x => x.textContent).join(', ') || this.placeholder
-        : '';
-    }
-
-    const displayValue = this.listbox?.enabledOptions.find(x => x.checked)?.textContent;
-
-    if (this.isCombobox) {
-      return displayValue ?? '';
-    }
-
-    toggleState(this.elementInternals, 'placeholder-shown', !displayValue);
-
-    return displayValue ?? this.placeholder ?? '';
+  public get enabledOptions(): Option[] | undefined {
+    return this.listbox?.enabledOptions;
   }
 
   /**
@@ -138,19 +126,6 @@ export class BaseDropdown extends FASTElement {
   public type: DropdownType = DropdownType.dropdown;
 
   /**
-   * Changes the slotted control element based on the dropdown type.
-   *
-   * @param prev - the previous dropdown type
-   * @param next - the current dropdown type
-   * @internal
-   */
-  public typeChanged(prev: DropdownType | undefined, next: DropdownType | undefined): void {
-    if (this.$fastController.isConnected) {
-      this.insertControl();
-    }
-  }
-
-  /**
    * Indicates whether the dropdown allows multiple options to be selected.
    *
    * @public
@@ -161,30 +136,49 @@ export class BaseDropdown extends FASTElement {
   public multiple?: boolean;
 
   /**
-   * Toggles between single and multiple selection modes when the `multiple` property changes.
-   *
-   * @param prev - the previous multiple state
-   * @param next - the next multiple state
-   * @internal
-   */
-  protected multipleChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    this.listbox?.enabledOptions.forEach(x => (x.checked = false));
-
-    this.elementInternals.ariaMultiSelectable = next ? 'true' : 'false';
-    toggleState(this.elementInternals, 'multiple', next);
-
-    Updates.enqueue(() => {
-      this.options.forEach(x => x.setMultipleState(next));
-    });
-  }
-
-  /**
    * The `aria-labelledby` attribute value of the dropdown.
    *
    * @public
    */
   @attr({ attribute: 'aria-labelledby', mode: 'fromView' })
   public ariaLabelledBy!: string;
+
+  /**
+   * The display value for the control.
+   *
+   * @public
+   */
+  @volatile
+  public get displayValue(): string {
+    if (!this.$fastController.isConnected || !this.control) {
+      return '';
+    }
+
+    if (this.multiple) {
+      if (this.isCombobox) {
+        return '';
+      }
+
+      if (!this.listFormatter) {
+        this.listFormatter = new Intl.ListFormat(getLanguage(this), {
+          type: 'conjunction',
+          style: 'narrow',
+        });
+      }
+
+      return this.listFormatter.format(this.listbox.selectedOptions.map(x => x.text)) || this.placeholder;
+    }
+
+    const displayValue = this.enabledOptions?.find(x => x.checked)?.text;
+
+    if (this.isCombobox) {
+      return displayValue ?? '';
+    }
+
+    toggleState(this.elementInternals, 'placeholder-shown', !displayValue);
+
+    return displayValue ?? this.placeholder ?? '';
+  }
 
   /**
    * Reference to the listbox slot element.
@@ -221,20 +215,6 @@ export class BaseDropdown extends FASTElement {
    */
   @observable
   public open!: boolean;
-
-  /**
-   * Handles the open state of the dropdown.
-   *
-   * @param prev - the previous open state
-   * @param next - the current open state
-   *
-   * @internal
-   */
-  public openChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    toggleState(this.elementInternals, 'open', next);
-    this.elementInternals.ariaExpanded = next ? 'true' : 'false';
-    this.activeIndex = this.selectedIndex ?? -1;
-  }
 
   /**
    * Indicates whether the dropdown is a combobox.
@@ -302,12 +282,45 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * The initial value of the control. When the control is a combobox, this value is used to set the value of the
+   * control when the dropdown is initialized.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `value`
+   */
+  @attr({ attribute: 'value' })
+  public valueAttribute: string = '';
+
+  public controlSlot!: HTMLSlotElement;
+
+  /**
    * The form-associated flag.
    * @see {@link https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-face-example | Form-associated custom elements}
    *
    * @public
    */
   public static formAssociated = true;
+
+  private get freeformOption(): Option | undefined {
+    return this.listbox.enabledOptions.find(x => x.freeform);
+  }
+
+  /**
+   * The list formatter for the dropdown. Used to format the display value when the dropdown is in multiple selection mode.
+   *
+   * @internal
+   */
+  private listFormatter?: Intl.ListFormat;
+
+  /**
+   * The index of the first checked option, scoped to the enabled options.
+   *
+   * @internal
+   */
+  public get selectedIndex(): number {
+    return this.listbox.enabledOptions.findIndex(x => x.checked);
+  }
 
   /**
    * The fallback validation message, taken from a native `<input>` element.
@@ -367,10 +380,60 @@ export class BaseDropdown extends FASTElement {
       return;
     }
 
+    this.updateFreeformOption();
+
     this.open = e.newState === 'open';
     this.activeIndex = this.selectedIndex;
-    return true;
+
+    if (!this.open) {
+      this.control.value = this.displayValue;
+    }
   };
+
+  /**
+   * Toggles between single and multiple selection modes when the `multiple` property changes.
+   *
+   * @param prev - the previous multiple state
+   * @param next - the next multiple state
+   * @internal
+   */
+  protected multipleChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    this.enabledOptions?.forEach(x => (x.checked = false));
+
+    this.elementInternals.ariaMultiSelectable = next ? 'true' : 'false';
+    toggleState(this.elementInternals, 'multiple', next);
+
+    Updates.enqueue(() => {
+      this.options.forEach(x => x.setMultipleState(next));
+    });
+  }
+
+  /**
+   * Handles the open state of the dropdown.
+   *
+   * @param prev - the previous open state
+   * @param next - the current open state
+   *
+   * @internal
+   */
+  public openChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    toggleState(this.elementInternals, 'open', next);
+    this.elementInternals.ariaExpanded = next ? 'true' : 'false';
+    this.activeIndex = this.selectedIndex ?? -1;
+  }
+
+  /**
+   * Changes the slotted control element based on the dropdown type.
+   *
+   * @param prev - the previous dropdown type
+   * @param next - the current dropdown type
+   * @internal
+   */
+  public typeChanged(prev: DropdownType | undefined, next: DropdownType | undefined): void {
+    if (this.$fastController.isConnected) {
+      this.insertControl();
+    }
+  }
 
   /**
    * Handles the change events for the dropdown.
@@ -417,6 +480,11 @@ export class BaseDropdown extends FASTElement {
     }
 
     if (isOption(target) && !this.multiple) {
+      if (this.isCombobox) {
+        this.control.value = target.text;
+        this.updateFreeformOption();
+      }
+
       this.listbox.hidePopover();
     }
 
@@ -443,7 +511,7 @@ export class BaseDropdown extends FASTElement {
       return;
     }
 
-    this.control.focus(options);
+    // this.control.focus(options);
   }
 
   /**
@@ -462,7 +530,11 @@ export class BaseDropdown extends FASTElement {
     return true;
   }
 
-  private getEnabledIndexInBounds(index: number, upperBound = this.listbox.enabledOptions.length): number {
+  private getEnabledIndexInBounds(
+    index: number,
+
+    upperBound = this.listbox.enabledOptions.length,
+  ): number {
     if (upperBound === 0) {
       return -1;
     }
@@ -475,29 +547,50 @@ export class BaseDropdown extends FASTElement {
       this.listbox.showPopover();
     }
 
-    const index = this.listbox.enabledOptions.findIndex(x =>
-      x.textContent?.toLowerCase().startsWith(this.control.value.toLowerCase()),
-    );
+    this.updateFreeformOption();
+
+    const controlValue = this.control.value;
+
+    const index =
+      controlValue !== ''
+        ? this.listbox.enabledOptions.findIndex(x => x.value.toLowerCase().startsWith(controlValue.toLowerCase()))
+        : -1;
 
     this.activeIndex = index;
 
     return true;
   }
 
+  protected updateFreeformOption(value: string = this.control.value): void {
+    if (!this.freeformOption) {
+      return;
+    }
+
+    if (
+      value === '' ||
+      this.listbox.enabledOptions
+        .filter(x => !x.freeform)
+        .some(x => x.value.toLowerCase().startsWith(value.toLowerCase()))
+    ) {
+      this.freeformOption.value = '';
+      this.freeformOption.selected = false;
+      this.freeformOption.hidden = true;
+      return;
+    }
+
+    this.freeformOption.value = value;
+    this.freeformOption.hidden = false;
+  }
+
   protected insertControl(): void {
     this.controlSlot?.assignedNodes().forEach(x => this.removeChild(x));
-    switch (this.type) {
-      case DropdownType.combobox: {
-        dropdownInputTemplate.render(this, this);
-        break;
-      }
 
-      case DropdownType.dropdown:
-      default: {
-        dropdownButtonTemplate.render(this, this);
-        break;
-      }
+    if (this.type === DropdownType.combobox) {
+      dropdownInputTemplate.render(this, this);
+      return;
     }
+
+    dropdownButtonTemplate.render(this, this);
   }
 
   public keydownHandler(e: KeyboardEvent): boolean | void {
@@ -516,13 +609,8 @@ export class BaseDropdown extends FASTElement {
         break;
       }
 
-      case ' ': {
-        if (this.type === 'combobox') {
-          break;
-        }
-      }
-
-      case 'Enter': {
+      case 'Enter':
+      case 'Tab': {
         if (this.open) {
           this.selectOption(this.activeIndex);
           if (this.multiple) {
@@ -530,11 +618,11 @@ export class BaseDropdown extends FASTElement {
           }
 
           this.listbox.hidePopover();
-          return;
+          return e.key === 'Tab';
         }
 
         this.listbox.showPopover();
-        return;
+        return true;
       }
 
       case 'Escape': {
@@ -542,21 +630,33 @@ export class BaseDropdown extends FASTElement {
         this.listbox.hidePopover();
         return true;
       }
+
+      default: {
+        if (e.key.length === 1) {
+          console.log(`Key pressed: ${e.key}`);
+        }
+      }
     }
 
     if (!increment) {
       return true;
     }
 
-    let nextIndex = this.activeIndex;
-    if (this.open) {
-      nextIndex += increment;
-    } else {
+    if (!this.open) {
       this.listbox.showPopover();
       return;
     }
 
-    this.activeIndex = this.getEnabledIndexInBounds(nextIndex);
+    let nextIndex = this.activeIndex;
+    nextIndex += increment;
+
+    let indexInBounds = this.getEnabledIndexInBounds(nextIndex);
+
+    if (indexInBounds === 0 && this.freeformOption?.hidden) {
+      indexInBounds = this.getEnabledIndexInBounds(nextIndex + increment);
+    }
+
+    this.activeIndex = indexInBounds;
 
     this.setActiveOption(true);
 
@@ -586,11 +686,13 @@ export class BaseDropdown extends FASTElement {
   public setActiveOption(force?: boolean): void {
     const optionIndex = this.matches(':has(:focus-visible)') || force ? this.activeIndex : -1;
 
-    this.listbox?.enabledOptions.forEach((option, index) => {
-      option.setActiveState(index === optionIndex);
+    this.enabledOptions?.forEach((option, index) => {
+      option.active = index === optionIndex;
     });
 
-    this.listbox?.enabledOptions[optionIndex]?.scrollIntoView({ block: 'nearest' });
+    if (this.open) {
+      this.enabledOptions?.[optionIndex]?.scrollIntoView({ block: 'nearest' });
+    }
   }
 
   /**
@@ -601,7 +703,11 @@ export class BaseDropdown extends FASTElement {
    */
   public selectOption(index: number = this.selectedIndex): void {
     this.listbox.selectOption(index);
+    this.control.value = this.displayValue;
+
     this.setValidity();
+
+    this.updateFreeformOption();
   }
 
   /**
