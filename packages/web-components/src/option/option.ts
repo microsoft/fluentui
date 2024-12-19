@@ -130,16 +130,6 @@ export class Option extends FASTElement implements Start {
   public disabled?: boolean;
 
   /**
-   * Toggles the disabled state when the user changes the `disabled` property.
-   *
-   * @internal
-   */
-  protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    this.elementInternals.ariaDisabled = this.disabled ? 'true' : 'false';
-    toggleState(this.elementInternals, 'disabled', this.disabled);
-  }
-
-  /**
    * The initial disabled state of the control.
    *
    * @public
