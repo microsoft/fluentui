@@ -60,17 +60,6 @@ export class BaseDropdown extends FASTElement {
   public disabled?: boolean;
 
   /**
-   * Toggles the disabled state of the dropdown when the disabled property changes.
-   *
-   * @param prev - the previous disabled state
-   * @param next - the current disabled state
-   * @internal
-   */
-  public disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    toggleState(this.elementInternals, 'disabled', next);
-  }
-
-  /**
    * The collection of enabled options.
    * @public
    */
@@ -535,6 +524,10 @@ export class BaseDropdown extends FASTElement {
     }
 
     if (isOption(target) && !this.multiple) {
+      if (target.disabled) {
+        return;
+      }
+
       if (this.isCombobox) {
         this.control.value = target.text;
         this.updateFreeformOption();

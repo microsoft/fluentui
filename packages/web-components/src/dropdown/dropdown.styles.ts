@@ -5,7 +5,6 @@ import {
   typographyCaption1Styles,
 } from '../styles/partials/typography.partials.js';
 import {
-  disabledState,
   fallbackState,
   filledDarkerState,
   filledLighterState,
@@ -216,19 +215,18 @@ export const styles = css`
     --control-border-color: ${colorTransparentStroke};
   }
 
-  :host(${disabledState}),
-  :host(${disabledState}) ::slotted(:where(button, input)) {
+  :host(:disabled),
+  :host(:disabled) ::slotted(:where(button, input)) {
     cursor: not-allowed;
   }
 
-  :host(${disabledState}) .control::before,
-  :host(${disabledState}) .control::after {
+  :host(:disabled) .control::before,
+  :host(:disabled) .control::after {
     content: none;
   }
 
-  :host(${disabledState}) .control,
-  :host(${disabledState}) .control:is(:active, :hover),
-  :host(${disabledState}) ::slotted([slot='indicator']) {
+  :host(:disabled) .control:is(*, :active, :hover),
+  :host(:disabled) ::slotted([slot='indicator']) {
     --control-border-color: ${colorNeutralStrokeDisabled};
     background-color: ${colorNeutralBackgroundDisabled};
     color: ${colorNeutralForegroundDisabled};

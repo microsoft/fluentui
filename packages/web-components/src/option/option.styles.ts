@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { typographyBody1Styles, typographyCaption1Styles } from '../styles/partials/typography.partials.js';
-import { activeState, descriptionState, disabledState, multipleState, selectedState } from '../styles/states/index.js';
+import { activeState, descriptionState, multipleState, selectedState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -71,7 +71,7 @@ export const styles = css`
     color: ${colorNeutralForeground2Pressed};
   }
 
-  :host(${disabledState}) {
+  :host(:disabled) {
     background-color: ${colorNeutralBackground1};
     color: ${colorNeutralForegroundDisabled};
     cursor: default;
@@ -117,11 +117,11 @@ export const styles = css`
     fill: ${colorNeutralForegroundInverted};
   }
 
-  :host(${disabledState}${multipleState}) .checkmark-12-regular {
+  :host(:disabled${multipleState}) .checkmark-12-regular {
     border-color: ${colorNeutralStrokeDisabled};
   }
 
-  :host(${disabledState}${multipleState}${selectedState}) .checkmark-12-regular {
+  :host(:disabled${multipleState}${selectedState}) .checkmark-12-regular {
     background-color: ${colorNeutralBackgroundDisabled};
   }
 
