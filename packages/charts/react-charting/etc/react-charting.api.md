@@ -1476,7 +1476,6 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     barMinimumHeight?: number;
     barWidth?: number | 'default' | 'auto';
     calloutProps?: Partial<ICalloutProps>;
-    canSelectMultipleLegends?: boolean;
     chartTitle?: string;
     // @deprecated
     colors?: string[];

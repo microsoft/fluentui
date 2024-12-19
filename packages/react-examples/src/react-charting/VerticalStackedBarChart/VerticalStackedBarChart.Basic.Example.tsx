@@ -334,6 +334,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               lineOptions={lineOptions}
               legendProps={{
                 allowFocusOnLegends: true,
+                canSelectMultipleLegends: this.state.legendMultiSelect,
               }}
               hideLabels={this.state.hideLabels}
               enableReflow={true}
@@ -341,7 +342,6 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               xAxisTitle={this.state.showAxisTitles ? 'Number of days' : undefined}
               enableGradient={this.state.enableGradient}
               roundCorners={this.state.roundCorners}
-              canSelectMultipleLegends={this.state.legendMultiSelect}
             />
           </div>
         )}
@@ -358,6 +358,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               lineOptions={lineOptions}
               legendProps={{
                 allowFocusOnLegends: true,
+                canSelectMultipleLegends: this.state.legendMultiSelect,
               }}
               hideLabels={this.state.hideLabels}
               enableReflow={true}
