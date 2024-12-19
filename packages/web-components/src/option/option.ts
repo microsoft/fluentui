@@ -48,6 +48,16 @@ export class Option extends BaseCheckbox implements Start {
   public descriptionSlot!: Node[];
 
   /**
+   * Changes the description state of the option when the description slot changes.
+   *
+   * @param prev - the previous collection of description elements
+   * @param next - the current collection of description elements
+   */
+  public descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
+    toggleState(this.elementInternals, 'description', !!next?.length);
+  }
+
+  /**
    * Indicates that the option value matches the value of the dropdown's control.
    *
    * @public
@@ -58,7 +68,14 @@ export class Option extends BaseCheckbox implements Start {
   public freeform?: boolean;
 
   /**
-   * Sets that the option id attribute.
+   * The collection of slotted `output` elements, used to display the value when the option is freeform.
+   *
+   * @internal
+   */
+  public freeformOutputs?: HTMLOutputElement[];
+
+  /**
+   * The id of the option. If not provided, a unique id will be assigned.
    *
    * @override
    * @public
@@ -104,6 +121,27 @@ export class Option extends BaseCheckbox implements Start {
   public titleSlot!: Node[];
 
   /**
+   * Changes the title state of the option when the title slot changes.
+   *
+   * @param prev - the previous collection of title elements
+   * @param next - the current collection of title elements
+   * @internal
+   */
+  public titleSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
+    toggleState(this.elementInternals, 'title', !!next?.length);
+  }
+
+  /**
+   * The initial value of the element.
+   *
+   * @override
+   * @public
+   * @remarks
+   * HTML Attribute: `value`
+   */
+  public override initialValue: string = '';
+
+  /**
    * The toggle mode.
    *
    * @internal
@@ -114,8 +152,14 @@ export class Option extends BaseCheckbox implements Start {
    * The display text of the option.
    *
    * @public
+   * @remarks
+   * When the option is freeform, the text is the value of the option.
    */
   public get text(): string {
+    if (this.freeform) {
+      return this.value.replace(/\s+/g, ' ').trim();
+    }
+
     return (this.textAttribute ?? this.textContent)?.replace(/\s+/g, ' ').trim() ?? '';
   }
 
@@ -126,18 +170,20 @@ export class Option extends BaseCheckbox implements Start {
 
   public set value(value: string) {
     super.value = value;
+
+    this.freeformOutputs?.forEach(output => {
+      output.value = value;
+    });
   }
 
-  public descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
-    toggleState(this.elementInternals, 'description', !!next?.length);
-  }
+  connectedCallback(): void {
+    super.connectedCallback();
 
-  public setActiveState(force?: boolean) {
-    toggleState(this.elementInternals, 'active', force);
-  }
-
-  public setMultipleState(force?: boolean) {
-    toggleState(this.elementInternals, 'multiple', force);
+    if (this.freeform) {
+      this.value = '';
+      this.hidden = true;
+      this.selected = false;
+    }
   }
 
   constructor() {
@@ -155,7 +201,13 @@ export class Option extends BaseCheckbox implements Start {
     this.elementInternals.ariaSelected = value ? 'true' : 'false';
   }
 
-  public titleSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
-    toggleState(this.elementInternals, 'title', !!next?.length);
+  /**
+   * Sets the multiple state.
+   *
+   * @param force - force the multiple state
+   * @internal
+   */
+  public setMultipleState(force?: boolean) {
+    toggleState(this.elementInternals, 'multiple', force);
   }
 }
