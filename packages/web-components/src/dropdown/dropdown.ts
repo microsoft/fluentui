@@ -238,6 +238,20 @@ export class BaseDropdown extends FASTElement {
   public name!: string;
 
   /**
+   * Updates the name of the options when the name property changes.
+   *
+   * @param prev - the previous name
+   * @param next - the current name
+   */
+  nameChanged(prev: string, next: string): void {
+    Updates.enqueue(() => {
+      this.options.forEach(option => {
+        option.name = next;
+      });
+    });
+  }
+
+  /**
    * Indicates whether the dropdown is open.
    *
    * @public
