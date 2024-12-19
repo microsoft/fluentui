@@ -1,4 +1,6 @@
+import * as React from 'react';
 import { motionTokens, createPresenceComponent, PresenceDirection, AtomMotion } from '@fluentui/react-motion';
+import { MessageBarGroupProps } from './MessageBarGroup.types';
 
 // TODO: import these atoms from react-motion-components-preview once they're available there
 
@@ -70,7 +72,7 @@ const slideAtom = ({
  * A presence motion component that enters by sliding in from the top and fading in,
  * and exits by just fading out.
  */
-export const SlideInFadeOut = createPresenceComponent(() => {
+const SlideInFadeOut = createPresenceComponent(() => {
   const duration = motionTokens.durationGentle;
 
   return {
@@ -86,10 +88,26 @@ export const SlideInFadeOut = createPresenceComponent(() => {
 /**
  * A presence motion component with only an exit transition of fading out.
  */
-export const FadeOut = createPresenceComponent(() => {
+const FadeOut = createPresenceComponent(() => {
   return {
     enter: [],
 
     exit: fadeAtom({ direction: 'exit', duration: motionTokens.durationGentle }),
   };
 });
+
+/**
+ * A compound component that renders a `SlideInFadeOut` or `FadeOut` component,
+ * depending on the `animate` prop being `'both'` or not.
+ */
+export const MessageBarMotion: React.FC<{
+  animate: MessageBarGroupProps['animate'];
+  children: React.ReactElement;
+}> = ({ animate, children }) =>
+  animate === 'both' ? (
+    // enter with slide and fade; exit with fade
+    <SlideInFadeOut>{children}</SlideInFadeOut>
+  ) : (
+    // no enter motion; exit with fade
+    <FadeOut>{children}</FadeOut>
+  );
