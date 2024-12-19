@@ -25,7 +25,7 @@ const dropdownTemplate = html<StoryArgs<FluentDropdown>>`
     slot="${story => story.slot}"
     type="${story => story.type}"
   >
-    <fluent-listbox>${repeat(story => story.slottedOptions, optionTemplate)}</fluent-listbox>
+    <fluent-listbox>${repeat(story => story.slottedContent, optionTemplate)}</fluent-listbox>
   </fluent-dropdown>
 `;
 
@@ -62,7 +62,7 @@ export default {
       options: ['', ...Object.values(DropdownSize)],
       table: { category: 'attributes' },
     },
-    slottedOptions: { table: { disable: true } },
+    slottedContent: { table: { disable: true } },
     slot: { table: { disable: true } },
   },
 } as Meta<FluentDropdown>;
@@ -71,7 +71,7 @@ export const Default: Story = {
   args: {
     placeholder: 'Select a fruit',
     slot: 'input',
-    slottedOptions: [
+    slottedContent: [
       { value: 'apple', slottedContent: () => 'Apple' },
       { value: 'banana', slottedContent: () => 'Banana' },
       { value: 'orange', slottedContent: () => 'Orange' },
@@ -155,7 +155,7 @@ export const Disabled: Story = {
 export const DisabledOptions: Story = {
   args: {
     ...Default.args,
-    slottedOptions: [
+    slottedContent: [
       { disabled: true, value: 'apple', slottedContent: () => 'Apple' },
       { value: 'banana', slottedContent: () => 'Banana' },
       { value: 'orange', slottedContent: () => 'Orange' },
@@ -173,7 +173,7 @@ export const ManyOptions: Story = {
   args: {
     ...Default.args,
     placeholder: 'Select a Country',
-    slottedOptions: [
+    slottedContent: [
       { slottedContent: () => 'Afghanistan' },
       { slottedContent: () => 'Åland Islands' },
       { slottedContent: () => 'Albania' },
