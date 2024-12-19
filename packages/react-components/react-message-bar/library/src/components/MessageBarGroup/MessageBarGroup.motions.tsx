@@ -69,45 +69,27 @@ const slideAtom = ({
 };
 
 /**
- * A presence motion component that enters by sliding in from the top and fading in,
- * and exits by just fading out.
+ * A presence component for a MessageBar to enter and exit from a MessageBarGroup.
+ * It has an optional enter transition of a slide-in and fade-in,
+ * when the `animate` prop is set to `'both'`.
+ * It always has an exit transition of a fade-out.
  */
-const SlideInFadeOut = createPresenceComponent(() => {
-  const duration = motionTokens.durationGentle;
+export const MessageBarMotion = createPresenceComponent<{ animate?: MessageBarGroupProps['animate'] }>(
+  ({ animate }) => {
+    const duration = motionTokens.durationGentle;
 
-  return {
-    enter: [
-      fadeAtom({ direction: 'enter', duration }),
-      slideAtom({ direction: 'enter', axis: 'Y', fromValue: '-100%', duration }),
-    ],
+    return {
+      enter:
+        animate === 'both'
+          ? // enter with slide and fade
+            [
+              fadeAtom({ direction: 'enter', duration }),
+              slideAtom({ direction: 'enter', axis: 'Y', fromValue: '-100%', duration }),
+            ]
+          : [], // no enter motion
 
-    exit: fadeAtom({ direction: 'exit', duration }),
-  };
-});
-
-/**
- * A presence motion component with only an exit transition of fading out.
- */
-const FadeOut = createPresenceComponent(() => {
-  return {
-    enter: [],
-
-    exit: fadeAtom({ direction: 'exit', duration: motionTokens.durationGentle }),
-  };
-});
-
-/**
- * A compound component that renders a `SlideInFadeOut` or `FadeOut` component,
- * depending on the `animate` prop being `'both'` or not.
- */
-export const MessageBarMotion: React.FC<{
-  animate: MessageBarGroupProps['animate'];
-  children: React.ReactElement;
-}> = ({ animate, children }) =>
-  animate === 'both' ? (
-    // enter with slide and fade; exit with fade
-    <SlideInFadeOut>{children}</SlideInFadeOut>
-  ) : (
-    // no enter motion; exit with fade
-    <FadeOut>{children}</FadeOut>
-  );
+      // Always exit with a fade
+      exit: fadeAtom({ direction: 'exit', duration }),
+    };
+  },
+);
