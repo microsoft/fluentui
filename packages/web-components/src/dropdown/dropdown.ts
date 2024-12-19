@@ -552,7 +552,7 @@ export class BaseDropdown extends FASTElement {
       return;
     }
 
-    // this.control.focus(options);
+    this.control.focus(options);
   }
 
   /**
