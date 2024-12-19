@@ -91,6 +91,14 @@ export class Option extends BaseCheckbox implements Start {
   @attr({ attribute: Option.mode, mode: 'boolean' })
   public initial?: boolean;
 
+  @observable
+  public multiple: boolean = false;
+
+  public multipleChanged(prev: boolean, next: boolean): void {
+    toggleState(this.elementInternals, 'multiple', next);
+    this.selected = false;
+  }
+
   /**
    * Reference to the start slot element.
    *
@@ -202,15 +210,5 @@ export class Option extends BaseCheckbox implements Start {
    */
   public setAriaProperties(value: boolean = this[this.mode]) {
     this.elementInternals.ariaSelected = value ? 'true' : 'false';
-  }
-
-  /**
-   * Sets the multiple state.
-   *
-   * @param force - force the multiple state
-   * @internal
-   */
-  public setMultipleState(force?: boolean) {
-    toggleState(this.elementInternals, 'multiple', force);
   }
 }
