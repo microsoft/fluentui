@@ -2426,6 +2426,7 @@ export type DrawerType = ValuesOf<typeof DrawerType>;
 //
 // @public (undocumented)
 export class Dropdown extends BaseDropdown {
+    constructor();
     // Warning: (ae-forgotten-export) The symbol "DropdownAppearance" needs to be exported by the entry point index.d.ts
     appearance: DropdownAppearance;
     // @internal
@@ -2630,7 +2631,7 @@ export const ImageTemplate: ElementViewTemplate<Image_2>;
 export function isDropdown(element?: Node | null, tagName?: string): element is BaseDropdown;
 
 // @public
-export function isListbox(element?: Node): element is Listbox;
+export function isListbox(element?: Node | null, tagName?: string): element is Listbox;
 
 // @public
 export function isOption(value: Node | null, tagName?: string): value is Option_2;
@@ -2761,12 +2762,8 @@ export class Listbox extends FASTElement {
     clickHandler(e: PointerEvent): boolean | void;
     // (undocumented)
     connectedCallback(): void;
-    // (undocumented)
-    disconnectedCallback(): void;
     // @internal
     dropdown?: BaseDropdown;
-    // @internal
-    dropdownChanged(prev: BaseDropdown | undefined, next: BaseDropdown | undefined): void;
     // @internal
     elementInternals: ElementInternals;
     // @internal
@@ -2776,6 +2773,8 @@ export class Listbox extends FASTElement {
     // @override
     id: string;
     multiple?: boolean;
+    // (undocumented)
+    multipleChanged(prev: boolean | undefined, next: boolean | undefined): void;
     options: Option_2[];
     // @internal
     optionsChanged(prev: Option_2[] | undefined, next: Option_2[] | undefined): void;
@@ -3075,28 +3074,37 @@ export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
 // @public
 class Option_2 extends BaseCheckbox implements Start {
     constructor();
+    active: boolean;
+    // @internal
+    protected activeChanged(prev: boolean, next: boolean): void;
     // (undocumented)
+    connectedCallback(): void;
+    // @internal
     descriptionSlot: Node[];
-    // (undocumented)
+    // @internal
     descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    freeform?: boolean;
+    // @internal
+    freeformOutputs?: HTMLOutputElement[];
     // @override
     id: string;
     initial?: boolean;
+    initialValue: string;
     // @internal
     static mode: CheckboxMode;
     // (undocumented)
-    setActiveState(force?: boolean): void;
-    // @internal
-    protected setAriaProperties(value?: boolean): void;
+    multiple: boolean;
     // (undocumented)
-    setMultipleState(force?: boolean): void;
+    multipleChanged(prev: boolean, next: boolean): void;
+    // @internal
+    setAriaProperties(value?: boolean): void;
     // @internal
     start: HTMLSlotElement;
     get text(): string;
     textAttribute?: string;
-    // (undocumented)
+    // @internal
     titleSlot: Node[];
-    // (undocumented)
+    // @internal
     titleSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
     // (undocumented)
     get value(): string;
