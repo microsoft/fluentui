@@ -1604,13 +1604,9 @@ export const PieChart: React_2.FunctionComponent<IPieChartProps>;
 // @public
 export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
 
-// @public (undocumented)
+// @public
 export interface Schema {
-    accesibilityLabels?: {
-        [key: string]: string;
-    };
     plotlySchema: any;
-    selectedLegends?: string[];
 }
 
 // @public (undocumented)

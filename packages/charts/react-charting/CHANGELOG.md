@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 13 Dec 2024 07:23:11 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Dec 2024 07:20:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.27)
+
+Wed, 18 Dec 2024 07:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.26..@fluentui/react-charting_v5.23.27)
+
+### Patches
+
+- Enabled Multi Select behaviour of Controlled legends ([PR #33479](https://github.com/microsoft/fluentui/pull/33479) by 74965306+Anush2303@users.noreply.github.com)
+- Mode check for declarative area chart  ([PR #33467](https://github.com/microsoft/fluentui/pull/33467) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.23.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.26)
+
+Tue, 17 Dec 2024 07:21:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.25..@fluentui/react-charting_v5.23.26)
+
+### Patches
+
+- Add support for controlling legend selection and persisting in json schema ([PR #33477](https://github.com/microsoft/fluentui/pull/33477) by 98592573+AtishayMsft@users.noreply.github.com)
+- Enable Controlled Legends working in declarative HBC ([PR #33476](https://github.com/microsoft/fluentui/pull/33476) by 74965306+Anush2303@users.noreply.github.com)
+
+## [5.23.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.25)
+
+Mon, 16 Dec 2024 07:20:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.24..@fluentui/react-charting_v5.23.25)
+
+### Patches
+
+- Enable chart selection based on legends in declarative charts ([PR #33460](https://github.com/microsoft/fluentui/pull/33460) by 74965306+Anush2303@users.noreply.github.com)
 
 ## [5.23.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.24)
 
