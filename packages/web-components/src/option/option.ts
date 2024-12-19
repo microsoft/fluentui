@@ -1,7 +1,5 @@
-import { attr, observable, Observable } from '@microsoft/fast-element';
-import { BaseCheckbox } from '../checkbox/checkbox.js';
-import { CheckboxMode } from '../checkbox/checkbox.options.js';
-import type { Start } from '../patterns/start-end.js';
+import { attr, FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
+import { Start } from '../patterns/start-end.js';
 import { toggleState } from '../utils/element-internals.js';
 import { uniqueId } from '../utils/unique-id.js';
 
@@ -21,7 +19,7 @@ import { uniqueId } from '../utils/unique-id.js';
  *
  * @public
  */
-export class Option extends BaseCheckbox implements Start {
+export class Option extends FASTElement implements Start {
   /**
    * Indicates that the option is active.
    *
@@ -42,6 +40,69 @@ export class Option extends BaseCheckbox implements Start {
   }
 
   /**
+   * The current checked state of the control.
+   *
+   * @internal
+   */
+  @attr({ attribute: 'current-selected', mode: 'boolean' })
+  public currentSelected?: boolean;
+
+  /**
+   * Sets the checked property to match the currentSelected state.
+   *
+   * @param prev - the previous selected state
+   * @param next - the current selected state
+   * @internal
+   */
+  public currentSelectedChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    this.selected = !!next;
+  }
+
+  /**
+   * The current value of the input.
+   * @public
+   * @remarks
+   * HTML Attribute: `current-value`
+   */
+  @attr({ attribute: 'current-value' })
+  public currentValue!: string;
+
+  /**
+   * Tracks the current value of the input.
+   *
+   * @param prev - the previous value
+   * @param next - the next value
+   *
+   * @internal
+   */
+  currentValueChanged(prev: string, next: string): void {
+    this.value = next;
+  }
+
+  /**
+   * The initial checked state of the element.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `checked`
+   */
+  @attr({ attribute: 'selected', mode: 'boolean' })
+  public defaultSelected?: boolean;
+
+  /**
+   * Updates the checked state when the `checked` attribute is changed, unless the checked state has been changed by the user.
+   *
+   * @param prev - The previous initial checked state
+   * @param next - The current initial checked state
+   * @internal
+   */
+  protected defaultSelectedChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    if (!this.dirtySelected) {
+      this.selected = !!next;
+    }
+  }
+
+  /**
    * The collection of slotted description elements.
    *
    * @internal
@@ -59,6 +120,56 @@ export class Option extends BaseCheckbox implements Start {
   public descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
     toggleState(this.elementInternals, 'description', !!next?.length);
   }
+
+  /**
+   * The disabled state of the control.
+   *
+   * @public
+   */
+  @observable
+  public disabled?: boolean;
+
+  /**
+   * Toggles the disabled state when the user changes the `disabled` property.
+   *
+   * @internal
+   */
+  protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    this.elementInternals.ariaDisabled = this.disabled ? 'true' : 'false';
+    toggleState(this.elementInternals, 'disabled', this.disabled);
+  }
+
+  /**
+   * The initial disabled state of the control.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `disabled`
+   */
+  @attr({ attribute: 'disabled', mode: 'boolean' })
+  public disabledAttribute?: boolean;
+
+  /**
+   * Sets the disabled state when the `disabled` attribute changes.
+   *
+   * @param prev - the previous value
+   * @param next - the current value
+   * @internal
+   */
+  protected disabledAttributeChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    this.disabled = !!next;
+  }
+
+  /**
+   * The id of a form to associate the element to.
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/input#form | `form`} attribute
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `form`
+   */
+  @attr({ attribute: 'form' })
+  public formAttribute?: string;
 
   /**
    * Indicates that the option value matches the value of the dropdown's control.
@@ -82,22 +193,53 @@ export class Option extends BaseCheckbox implements Start {
   public override id: string = uniqueId('option-');
 
   /**
-   * The initial selected state of the element.
+   * The initial value of the input.
    *
    * @public
    * @remarks
-   * HTML Attribute: `selected`
+   * HTML Attribute: `value`
    */
-  @attr({ attribute: Option.mode, mode: 'boolean' })
-  public initial?: boolean;
+  @attr({ attribute: 'value', mode: 'fromView' })
+  public initialValue: string = '';
 
+  /**
+   * Sets the value of the input when the `value` attribute changes.
+   *
+   * @param prev - The previous initial value
+   * @param next - The current initial value
+   * @internal
+   */
+  protected initialValueChanged(prev: string, next: string): void {
+    this.currentValue = next;
+  }
+
+  /**
+   * Indicates that the option is in a multiple selection mode.
+   * @public
+   */
   @observable
   public multiple: boolean = false;
 
+  /**
+   * Updates the multiple state of the option when the multiple property changes.
+   *
+   * @param prev - the previous multiple state
+   * @param next - the current multiple state
+   */
   public multipleChanged(prev: boolean, next: boolean): void {
     toggleState(this.elementInternals, 'multiple', next);
     this.selected = false;
   }
+
+  /**
+   * The name of the element. This element's value will be surfaced during form submission under the provided name.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `name`
+   */
+  @attr
+  public name!: string;
 
   /**
    * Reference to the start slot element.
@@ -137,6 +279,31 @@ export class Option extends BaseCheckbox implements Start {
   }
 
   /**
+   * Indicates that the checked state has been changed by the user.
+   *
+   * @internal
+   */
+  protected dirtySelected: boolean = false;
+
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
+  /**
+   * The associated `<form>` element.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/form | `ElementInternals.form`} property.
+   */
+  public get form(): HTMLFormElement | null {
+    return this.elementInternals.form;
+  }
+
+  /**
    * The collection of slotted `output` elements, used to display the value when the option is freeform.
    *
    * @internal
@@ -144,20 +311,45 @@ export class Option extends BaseCheckbox implements Start {
   public freeformOutputs?: HTMLOutputElement[];
 
   /**
-   * The initial value of the element.
+   * The form-associated flag.
+   * @see {@link https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-face-example | Form-associated custom elements}
    *
    * @public
-   * @remarks
-   * HTML Attribute: `value`
    */
-  public initialValue: string = '';
+  public static formAssociated = true;
 
   /**
-   * The component toggle mode.
+   * A reference to all associated `<label>` elements.
    *
-   * @internal
+   * @public
    */
-  public static mode: CheckboxMode = CheckboxMode.selected;
+  public get labels(): ReadonlyArray<HTMLLabelElement> {
+    return Object.freeze(Array.from(this.elementInternals.labels) as HTMLLabelElement[]);
+  }
+
+  /**
+   * The element's current checked state.
+   *
+   * @public
+   */
+  public get selected(): boolean {
+    Observable.track(this, 'selected');
+    return !!this.currentSelected;
+  }
+
+  public set selected(next: boolean) {
+    this.currentSelected = next;
+
+    Updates.enqueue(() => {
+      if (this.$fastController.isConnected) {
+        this.setFormValue(next ? this.value : null);
+
+        this.elementInternals.ariaSelected = next ? 'true' : 'false';
+        toggleState(this.elementInternals, 'selected', next);
+      }
+    });
+    Observable.notify(this, 'selected');
+  }
 
   /**
    * The display text of the option.
@@ -174,21 +366,34 @@ export class Option extends BaseCheckbox implements Start {
     return (this.textAttribute ?? this.textContent)?.replace(/\s+/g, ' ').trim() ?? '';
   }
 
+  /**
+   * The current value of the input.
+   *
+   * @public
+   */
   public get value(): string {
     Observable.track(this, 'value');
-    return super.value ?? this.text;
+    return this.currentValue ?? this.text;
   }
 
   public set value(value: string) {
-    super.value = value;
+    this.currentValue = value;
 
-    this.freeformOutputs?.forEach(output => {
-      output.value = value;
-    });
+    if (this.$fastController.isConnected) {
+      this.setFormValue(this.selected ? value : null);
+
+      this.freeformOutputs?.forEach(output => {
+        output.value = value;
+      });
+
+      Observable.notify(this, 'value');
+    }
   }
 
-  connectedCallback(): void {
+  connectedCallback() {
     super.connectedCallback();
+
+    this.setAriaSelected();
 
     if (this.freeform) {
       this.value = '';
@@ -203,12 +408,39 @@ export class Option extends BaseCheckbox implements Start {
   }
 
   /**
-   * Sets the ARIA selected state.
+   * Resets the form value to its initial value when the form is reset.
    *
-   * @param value - The selected state
    * @internal
    */
-  public setAriaProperties(value: boolean = this[this.mode]) {
-    this.elementInternals.ariaSelected = value ? 'true' : 'false';
+  formResetCallback(): void {
+    this.selected = this.defaultSelected ?? false;
+    this.dirtySelected = false;
+  }
+
+  /**
+   * Sets the ARIA checked state.
+   *
+   * @param value - The checked state
+   * @internal
+   */
+  protected setAriaSelected(value: boolean = this.selected) {}
+
+  /**
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/setFormValue | `ElementInternals.setFormValue()`} method.
+   *
+   * @internal
+   */
+  public setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void {
+    this.elementInternals.setFormValue(value, value ?? state);
+  }
+
+  /**
+   * Toggles the checked state of the control.
+   *
+   * @param force - Forces the element to be checked or unchecked
+   * @public
+   */
+  public toggleSelected(force: boolean = !this.selected): void {
+    this.selected = force;
   }
 }
