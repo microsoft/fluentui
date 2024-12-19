@@ -24,6 +24,7 @@ import { uniqueId } from '../utils/unique-id.js';
 export class Option extends BaseCheckbox implements Start {
   /**
    * Indicates that the option is active.
+   *
    * @public
    */
   @observable
@@ -42,6 +43,7 @@ export class Option extends BaseCheckbox implements Start {
 
   /**
    * The collection of slotted description elements.
+   *
    * @internal
    */
   @observable
@@ -52,6 +54,7 @@ export class Option extends BaseCheckbox implements Start {
    *
    * @param prev - the previous collection of description elements
    * @param next - the current collection of description elements
+   * @internal
    */
   public descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
     toggleState(this.elementInternals, 'description', !!next?.length);
@@ -66,13 +69,6 @@ export class Option extends BaseCheckbox implements Start {
    */
   @attr({ mode: 'boolean' })
   public freeform?: boolean;
-
-  /**
-   * The collection of slotted `output` elements, used to display the value when the option is freeform.
-   *
-   * @internal
-   */
-  public freeformOutputs?: HTMLOutputElement[];
 
   /**
    * The id of the option. If not provided, a unique id will be assigned.
@@ -96,7 +92,8 @@ export class Option extends BaseCheckbox implements Start {
   public initial?: boolean;
 
   /**
-   * Reference to the start slot.
+   * Reference to the start slot element.
+   *
    * @internal
    */
   @observable
@@ -132,17 +129,23 @@ export class Option extends BaseCheckbox implements Start {
   }
 
   /**
+   * The collection of slotted `output` elements, used to display the value when the option is freeform.
+   *
+   * @internal
+   */
+  public freeformOutputs?: HTMLOutputElement[];
+
+  /**
    * The initial value of the element.
    *
-   * @override
    * @public
    * @remarks
    * HTML Attribute: `value`
    */
-  public override initialValue: string = '';
+  public initialValue: string = '';
 
   /**
-   * The toggle mode.
+   * The component toggle mode.
    *
    * @internal
    */
@@ -197,7 +200,7 @@ export class Option extends BaseCheckbox implements Start {
    * @param value - The selected state
    * @internal
    */
-  protected setAriaProperties(value: boolean = this[this.mode]) {
+  public setAriaProperties(value: boolean = this[this.mode]) {
     this.elementInternals.ariaSelected = value ? 'true' : 'false';
   }
 
