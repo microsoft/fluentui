@@ -2485,10 +2485,10 @@
     "@microsoft/tsdoc-config" "~0.16.1"
     "@rushstack/node-core-library" "3.62.0"
 
-"@microsoft/api-extractor@7.38.5":
-  version "7.38.5"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.38.5.tgz#51d4cd917a31fa1a5c6d6a02e446526de763ac32"
-  integrity sha512-c/w2zfqBcBJxaCzpJNvFoouWewcYrUOfeu5ZkWCCIXTF9a/gXM85RGevEzlMAIEGM/kssAAZSXRJIZ3Q5vLFow==
+"@microsoft/api-extractor@7.39.0":
+  version "7.39.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.39.0.tgz#41c25f7f522e8b9376debda07364ff234e602eff"
+  integrity sha512-PuXxzadgnvp+wdeZFPonssRAj/EW4Gm4s75TXzPk09h3wJ8RS3x7typf95B4vwZRrPTQBGopdUl+/vHvlPdAcg==
   dependencies:
     "@microsoft/api-extractor-model" "7.28.3"
     "@microsoft/tsdoc" "0.14.2"
@@ -2501,7 +2501,7 @@
     resolve "~1.22.1"
     semver "~7.5.4"
     source-map "~0.6.1"
-    typescript "~5.0.4"
+    typescript "5.3.3"
 
 "@microsoft/applicationinsights-analytics-js@3.3.0":
   version "3.3.0"
@@ -22632,6 +22632,25 @@ ts-node@10.9.1:
     v8-compile-cache-lib "^3.0.1"
     yn "3.1.1"
 
+ts-node@10.9.2:
+  version "10.9.2"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-10.9.2.tgz#70f021c9e185bccdca820e26dc413805c101c71f"
+  integrity sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==
+  dependencies:
+    "@cspotcode/source-map-support" "^0.8.0"
+    "@tsconfig/node10" "^1.0.7"
+    "@tsconfig/node12" "^1.0.7"
+    "@tsconfig/node14" "^1.0.0"
+    "@tsconfig/node16" "^1.0.2"
+    acorn "^8.4.1"
+    acorn-walk "^8.1.1"
+    arg "^4.1.0"
+    create-require "^1.1.0"
+    diff "^4.0.1"
+    make-error "^1.1.1"
+    v8-compile-cache-lib "^3.0.1"
+    yn "3.1.1"
+
 ts-toolbelt@9.6.0:
   version "9.6.0"
   resolved "https://registry.yarnpkg.com/ts-toolbelt/-/ts-toolbelt-9.6.0.tgz#50a25426cfed500d4a09bd1b3afb6f28879edfd5"
@@ -22820,10 +22839,10 @@ typescript-eslint@^8.0.0:
     "@typescript-eslint/parser" "8.8.1"
     "@typescript-eslint/utils" "8.8.1"
 
-typescript@5.2.2, typescript@~5.0.4:
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.2.tgz#5ebb5e5a5b75f085f22bc3f8460fba308310fa78"
-  integrity sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==
+typescript@5.3.3:
+  version "5.3.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.3.tgz#b3ce6ba258e72e6305ba66f5c9b452aaee3ffe37"
+  integrity sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==
 
 typescript@~5.4.2:
   version "5.4.5"
