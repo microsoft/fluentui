@@ -366,7 +366,7 @@ export class BaseDropdown extends FASTElement {
    * This property is a reflection of {@link Listbox.selectedIndex}.
    */
   public get selectedIndex(): number {
-    return this.enabledOptions.findIndex(x => x.checked) ?? -1;
+    return this.enabledOptions.findIndex(x => x.selected) ?? -1;
   }
 
   /**
@@ -417,7 +417,7 @@ export class BaseDropdown extends FASTElement {
    */
   public get value(): string | null {
     Observable.notify(this, 'value');
-    return this.enabledOptions.find(x => x.checked)?.value ?? null;
+    return this.enabledOptions.find(x => x.selected)?.value ?? null;
   }
 
   public set value(next: string | null) {
