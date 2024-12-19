@@ -1,17 +1,19 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { ColorPicker } from '@fluentui/react-color-picker-preview';
-import { SampleColorPicker, steps } from './utils';
+import { SampleColorPicker } from './utils';
+import { Steps } from 'storywright';
 
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';
 
 export default {
   title: 'ColorPicker Converged',
-  decorators: [story => withStoryWrightSteps({ story, steps })],
+  decorators: [
+    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() }),
+  ],
 } satisfies Meta<typeof ColorPicker>;
 
 export const Default = () => <SampleColorPicker color={{ h: 109, s: 1, v: 0.91 }} />;
-Default.storyName = 'default';
 
 export const DefaultDarkMode = getStoryVariant(Default, DARK_MODE);
 
