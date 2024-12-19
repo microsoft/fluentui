@@ -1,7 +1,6 @@
 /* eslint-disable one-var */
 /* eslint-disable vars-on-top */
 /* eslint-disable no-var */
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, merge as d3Merge } from 'd3-array';
@@ -331,12 +330,13 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     })
     .flat();
 
-  const chartHeight = layout.height || 350;
+  const chartHeight = layout.height || 450;
   const margin = layout.margin?.l || 0;
   const padding = layout.margin?.pad || 0;
   const availableHeight = chartHeight - margin - padding;
   const numberOfBars = data[0].y.length;
-  const gapFactor = 0.5;
+  const scalingFactor = 0.01;
+  const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
   const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));
 
   return {
@@ -381,8 +381,10 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
   };
 
   // Convert normalized values to actual values
-  const domainValuesForColorScale: number[] = firstData.colorscale?.map((arr: any) => arr[0] * (zMax - zMin) + zMin);
-  const rangeValuesForColorScale: string[] = firstData.colorscale?.map((arr: any) => arr[1]);
+  const domainValuesForColorScale: number[] = firstData.colorscale
+    ? firstData.colorscale.map((arr: any) => arr[0] * (zMax - zMin) + zMin)
+    : [];
+  const rangeValuesForColorScale: string[] = firstData.colorscale ? firstData.colorscale.map((arr: any) => arr[1]) : [];
 
   return {
     data: [heatmapData],
@@ -407,7 +409,8 @@ export const transformPlotlyJsonToSankeyProps = (
     }))
     // eslint-disable-next-line @typescript-eslint/no-shadow
     //@ts-expect-error Dynamic link object. Ignore for now.
-    .filter(x => x.source !== x.target); // Filter out self-references (circular links)
+    // Filter out negative nodes, unequal nodes and self-references (circular links)
+    .filter(x => x.source > 0 && x.target > 0 && x.source !== x.target);
 
   const sankeyChartData = {
     nodes: node.label.map((label: string, index: number) => {
@@ -533,9 +536,6 @@ var baseContainer: any, baseAttrName: any;
 export function findArrayAttributes(trace: any) {
   // Init basecontainer and baseAttrName
   crawlIntoTrace(baseContainer, 0, '');
-  for (const attribute of arrayAttributes) {
-    console.log(attribute);
-  }
 }
 
 function crawlIntoTrace(container: any, i: number, astrPartial: any) {
