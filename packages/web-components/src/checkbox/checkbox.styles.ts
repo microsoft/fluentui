@@ -72,7 +72,7 @@ export const styles = css`
   }
 
   :host(:not([slot='input']))::after {
-    content: '' / '';
+    content: '';
     position: absolute;
     inset: -8px;
     box-sizing: border-box;
