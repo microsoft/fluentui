@@ -630,12 +630,6 @@ export class BaseDropdown extends FASTElement {
         this.listbox.hidePopover();
         return true;
       }
-
-      default: {
-        if (e.key.length === 1) {
-          console.log(`Key pressed: ${e.key}`);
-        }
-      }
     }
 
     if (!increment) {
