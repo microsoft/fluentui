@@ -632,16 +632,16 @@ export class VerticalStackedBarChartBase extends React.Component<
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
-        onChange={this._onLegendSelectionChange}
+        onChange={this._onLegendSelectionChange.bind(this)}
       />
     );
   }
 
-  private _onLegendSelectionChange = (
+  private _onLegendSelectionChange(
     selectedLegends: string[],
     event: React.MouseEvent<HTMLButtonElement>,
     currentLegend?: ILegend,
-  ) => {
+  ): void {
     if (this.props.legendProps?.canSelectMultipleLegends) {
       this.setState({ selectedLegends });
     } else {
@@ -650,7 +650,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     if (this.props.legendProps?.onChange) {
       this.props.legendProps.onChange(selectedLegends, event, currentLegend);
     }
-  };
+  }
 
   private _getHighlightedLegend() {
     return this.state.selectedLegends.length > 0

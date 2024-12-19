@@ -503,7 +503,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
     { data: simplePointsWithLine, calloutProps: { doNotLayer: true } },
     container => {
       // eslint-disable-next-line
-      const handleMouseClick = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onLegendClick');
+      const handleMouseClick = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onLegendSelectionChange');
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.click(legends[0]);
       // Assert
