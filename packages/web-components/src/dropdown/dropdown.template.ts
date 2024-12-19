@@ -8,7 +8,6 @@ export const dropdownIndicatorTemplate = html<BaseDropdown>`
     slot="indicator"
     tabindex="${x => (!x.disabled ? -1 : void 0)}"
     viewBox="0 0 20 20"
-    xmlns="http://www.w3.org/2000/svg"
     ${ref('indicator')}
   >
     <path
