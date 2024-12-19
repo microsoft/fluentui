@@ -106,7 +106,7 @@ export class BaseDropdown extends FASTElement {
   public indicatorSlot?: HTMLSlotElement;
 
   /**
-   * The value of the checked option.
+   * The value of the selected option.
    *
    * @public
    * @remarks
@@ -373,7 +373,7 @@ export class BaseDropdown extends FASTElement {
   private listCollator?: Intl.Collator;
 
   /**
-   * The index of the first checked option, scoped to the enabled options.
+   * The index of the first selected option, scoped to the enabled options.
    *
    * @internal
    * @remarks
@@ -425,7 +425,7 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
-   * The current value of the checked option.
+   * The current value of the selected option.
    *
    * @public
    */
@@ -557,7 +557,7 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
-   * Focuses the checked radio or the first enabled radio.
+   * Focuses the control when the dropdown receives focus.
    *
    * @internal
    */
