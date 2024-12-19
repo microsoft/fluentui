@@ -141,7 +141,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
 
     this.state = {
       hoveredLegend: '',
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       focusedElement: '',
       calloutTarget: null,
       isCalloutVisible: false,

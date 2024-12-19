@@ -1,5 +1,12 @@
-export * from './TeachingPopoverSurface';
-export * from './TeachingPopoverSurface.types';
-export * from './renderTeachingPopoverSurface';
-export * from './useTeachingPopoverSurface';
-export * from './useTeachingPopoverSurfaceStyles.styles';
+export { TeachingPopoverSurface } from './TeachingPopoverSurface';
+export type {
+  TeachingPopoverSurfaceProps,
+  TeachingPopoverSurfaceSlots,
+  TeachingPopoverSurfaceState,
+} from './TeachingPopoverSurface.types';
+export { renderTeachingPopoverSurface_unstable } from './renderTeachingPopoverSurface';
+export { useTeachingPopoverSurface_unstable } from './useTeachingPopoverSurface';
+export {
+  teachingPopoverSurfaceClassNames,
+  useTeachingPopoverSurfaceStyles_unstable,
+} from './useTeachingPopoverSurfaceStyles.styles';

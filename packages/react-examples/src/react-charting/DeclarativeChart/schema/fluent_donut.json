@@ -60,5 +60,6 @@
     "hovermode": "closest",
     "showlegend": true
   },
-  "frames": []
+  "frames": [],
+  "selectedLegends": ["Cadillac"]
 }
