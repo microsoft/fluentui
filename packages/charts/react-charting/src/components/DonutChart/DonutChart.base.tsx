@@ -138,9 +138,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 hoverLeaveCallback={this._hoverLeave}
                 uniqText={this._uniqText}
                 onBlurCallback={this._onBlur}
-                activeArc={this._getHighlightedLegend().filter((legend): legend is string =>
-                  this._isLegendHighlighted(legend),
-                )}
+                activeArc={this._getHighlightedLegend()}
                 focusedArcId={this.state.focusedArcId || ''}
                 href={this.props.href!}
                 calloutId={this._calloutId}
@@ -272,14 +270,14 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     event: React.MouseEvent<HTMLButtonElement>,
     currentLegend?: ILegend,
   ) => {
-    this.setState({ selectedLegends });
+    if (this.props.legendProps?.canSelectMultipleLegends) {
+      this.setState({ selectedLegends });
+    } else {
+      this.setState({ selectedLegends: selectedLegends.slice(-1) });
+    }
     if (this.props.legendProps?.onChange) {
       this.props.legendProps.onChange(selectedLegends, event, currentLegend);
     }
-  };
-
-  private _isLegendHovered = (legend: string): boolean => {
-    return this._noLegendsHighlighted() || this._isLegendHighlighted(legend);
   };
 
   private _isLegendHighlighted = (legend: string): boolean => {
@@ -294,7 +292,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._currentHoverElement = element;
     this.setState({
       /** Show the callout if highlighted arc is focused and Hide it if unhighlighted arc is focused */
-      showHover: this._isLegendHovered(data.legend!),
+      showHover: this._noLegendsHighlighted() || this._isLegendHighlighted(data.legend!),
       value: data.data!.toString(),
       legend: data.legend,
       color: data.color!,
@@ -378,7 +376,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
    * This function returns
    * the selected legend if there is one
    * or the hovered legend if none of the legends is selected.
-   * Note: This won't work in case of multiple legends selection.
    */
   private _getHighlightedLegend() {
     return this.state.selectedLegends.length > 0

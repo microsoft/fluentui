@@ -134,7 +134,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     if (
       hideLabels ||
       Math.abs(data!.endAngle - data!.startAngle) < Math.PI / 12 ||
-      this._shouldHighlightArc(activeArc!, data!.data.legend!)
+      !this._shouldHighlightArc(activeArc!, data!.data.legend!)
     ) {
       return null;
     }
