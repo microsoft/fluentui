@@ -1,6 +1,5 @@
-import { attr, FASTElement, Notifier, Observable, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import type { BaseDropdown } from '../dropdown/dropdown.js';
-import { isDropdown } from '../dropdown/dropdown.options.js';
 import type { Option } from '../option/option.js';
 import { isOption } from '../option/option.options.js';
 import { toggleState } from '../utils/element-internals.js';
@@ -37,6 +36,16 @@ export class Listbox extends FASTElement {
    */
   @observable
   public multiple?: boolean;
+
+  public multipleChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    this.elementInternals.ariaMultiSelectable = next ? 'true' : 'false';
+    toggleState(this.elementInternals, 'multiple', next);
+    Updates.enqueue(() => {
+      this.options.forEach(x => {
+        x.multiple = !!next;
+      });
+    });
+  }
 
   /**
    * The collection of all child options.
@@ -76,26 +85,6 @@ export class Listbox extends FASTElement {
   @observable
   public dropdown?: BaseDropdown;
 
-  /**
-   * Updates notifier subscriptions and event listeners when the dropdown property changes.
-   *
-   * @param prev - the previous dropdown
-   * @param next - the current dropdown
-   * @internal
-   */
-  public dropdownChanged(prev: BaseDropdown | undefined, next: BaseDropdown | undefined): void {
-    if (!next) {
-      return;
-    }
-
-    this.parentNotifier = Observable.getNotifier(this.dropdown);
-    this.parentNotifier.subscribe(this);
-
-    for (const key of ['disabled', 'multiple', 'listboxSlot']) {
-      this.parentNotifier.notify(key);
-    }
-  }
-
   public beforetoggleHandler(e: ToggleEvent): boolean | void {
     if (!this.dropdown) {
       return true;
@@ -127,18 +116,6 @@ export class Listbox extends FASTElement {
   }
 
   /**
-   * Notifier for the listbox.
-   * @internal
-   */
-  private notifier!: Notifier;
-
-  /**
-   * Notifier for the parent dropdown.
-   * @internal
-   */
-  private parentNotifier!: Notifier;
-
-  /**
    * The collection of child options that are selected.
    *
    * @public
@@ -167,24 +144,12 @@ export class Listbox extends FASTElement {
     super();
 
     this.elementInternals.role = 'listbox';
-
-    this.notifier = Observable.getNotifier(this);
-    this.notifier.subscribe(this);
   }
 
   connectedCallback(): void {
     super.connectedCallback();
 
-    if (isDropdown(this.parentElement)) {
-      this.dropdown = this.parentElement;
-    }
-  }
-
-  disconnectedCallback(): void {
-    this.parentNotifier?.unsubscribe(this);
-    Observable.getNotifier(this).unsubscribe(this);
-
-    super.disconnectedCallback();
+    this.$emit('connected');
   }
 
   /**
@@ -196,24 +161,9 @@ export class Listbox extends FASTElement {
    * @internal
    */
   handleChange(source: any, propertyName?: string): void {
-    switch (propertyName) {
-      case 'multiple': {
-        this.multiple = source.multiple;
-        this.elementInternals.ariaMultiSelectable = this.multiple ? 'true' : 'false';
-        toggleState(this.elementInternals, 'multiple', this.multiple);
-        this.options?.forEach(x => toggleState(x.elementInternals, 'multiple', this.multiple));
-
-        break;
-      }
-
-      case 'listboxSlot': {
-        if (this.dropdown) {
-          this.dropdown.listbox = this;
-          this.dropdown.listboxSlot.assign(this);
-        }
-
-        break;
-      }
+    if (propertyName === 'multiple') {
+      this.multiple = source.multiple;
+      return;
     }
   }
 

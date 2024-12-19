@@ -74,8 +74,8 @@ export class BaseDropdown extends FASTElement {
    * The collection of enabled options.
    * @public
    */
-  public get enabledOptions(): Option[] | undefined {
-    return this.listbox?.enabledOptions;
+  public get enabledOptions(): Option[] {
+    return this.listbox?.enabledOptions ?? [];
   }
 
   /**
@@ -136,6 +136,19 @@ export class BaseDropdown extends FASTElement {
   public multiple?: boolean;
 
   /**
+   * Toggles between single and multiple selection modes when the `multiple` property changes.
+   *
+   * @param prev - the previous multiple state
+   * @param next - the next multiple state
+   * @internal
+   */
+  protected multipleChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    this.elementInternals.ariaMultiSelectable = next ? 'true' : 'false';
+    toggleState(this.elementInternals, 'multiple', next);
+    this.value = null;
+  }
+
+  /**
    * The `aria-labelledby` attribute value of the dropdown.
    *
    * @public
@@ -150,34 +163,27 @@ export class BaseDropdown extends FASTElement {
    */
   @volatile
   public get displayValue(): string {
-    if (!this.$fastController.isConnected || !this.control) {
+    if (!this.$fastController.isConnected || !this.control || (this.isCombobox && this.multiple)) {
+      toggleState(this.elementInternals, 'placeholder-shown', false);
       return '';
     }
 
-    if (this.multiple) {
-      if (this.isCombobox) {
-        return '';
-      }
+    this.listFormatter =
+      this.listFormatter ??
+      new Intl.ListFormat(getLanguage(this), {
+        type: 'conjunction',
+        style: 'narrow',
+      });
 
-      if (!this.listFormatter) {
-        this.listFormatter = new Intl.ListFormat(getLanguage(this), {
-          type: 'conjunction',
-          style: 'narrow',
-        });
-      }
-
-      return this.listFormatter.format(this.listbox.selectedOptions.map(x => x.text)) || this.placeholder;
-    }
-
-    const displayValue = this.enabledOptions?.find(x => x.checked)?.text;
-
-    if (this.isCombobox) {
-      return displayValue ?? '';
-    }
-
+    const displayValue = this.listFormatter.format(this.selectedOptions.map(x => x.text));
     toggleState(this.elementInternals, 'placeholder-shown', !displayValue);
 
-    return displayValue ?? this.placeholder ?? '';
+    if (this.isCombobox) {
+      // comboboxes use an input element for the control, which provides the placeholder behavior
+      return displayValue;
+    }
+
+    return displayValue || this.placeholder;
   }
 
   /**
@@ -195,6 +201,31 @@ export class BaseDropdown extends FASTElement {
    */
   @observable
   public listbox!: Listbox;
+
+  /**
+   * Updates properties on the listbox element when the listbox reference changes.
+   *
+   * @param prev - the previous listbox element
+   * @param next - the current listbox element
+   * @internal
+   */
+  public listboxChanged(prev: Listbox | undefined, next: Listbox | undefined): void {
+    if (prev) {
+      Observable.getNotifier(this).unsubscribe(prev);
+    }
+
+    if (next) {
+      next.dropdown = this;
+      next.popover = 'auto';
+      this.listboxSlot.assign(next);
+      const notifier = Observable.getNotifier(this);
+      notifier.subscribe(next);
+
+      for (const key of ['disabled', 'multiple']) {
+        notifier.notify(key);
+      }
+    }
+  }
 
   /**
    * The name of the dropdown.
@@ -277,8 +308,10 @@ export class BaseDropdown extends FASTElement {
    * @public
    */
   @volatile
-  public get activeDescendant(): string | null {
-    return this.open ? this.listbox.enabledOptions[this.activeIndex]?.id : null;
+  public get activeDescendant(): string | undefined {
+    if (this.open) {
+      return this.enabledOptions[this.activeIndex]?.id;
+    }
   }
 
   /**
@@ -302,8 +335,13 @@ export class BaseDropdown extends FASTElement {
    */
   public static formAssociated = true;
 
+  /**
+   * A reference to the first freeform option, if present.
+   *
+   * @internal
+   */
   private get freeformOption(): Option | undefined {
-    return this.listbox.enabledOptions.find(x => x.freeform);
+    return this.enabledOptions.find(x => x.freeform);
   }
 
   /**
@@ -314,12 +352,32 @@ export class BaseDropdown extends FASTElement {
   private listFormatter?: Intl.ListFormat;
 
   /**
-   * The index of the first checked option, scoped to the enabled options.
+   * The list collator for the dropdown. Used to filter options based on the input value.
    *
    * @internal
    */
+  private listCollator?: Intl.Collator;
+
+  /**
+   * The index of the first checked option, scoped to the enabled options.
+   *
+   * @internal
+   * @remarks
+   * This property is a reflection of {@link Listbox.selectedIndex}.
+   */
   public get selectedIndex(): number {
-    return this.listbox.enabledOptions.findIndex(x => x.checked);
+    return this.enabledOptions.findIndex(x => x.checked) ?? -1;
+  }
+
+  /**
+   * The collection of selected options.
+   *
+   * @public
+   * @remarks
+   * This property is a reflection of {@link Listbox.selectedOptions}.
+   */
+  public get selectedOptions(): Option[] {
+    return this.listbox?.selectedOptions ?? [];
   }
 
   /**
@@ -359,11 +417,14 @@ export class BaseDropdown extends FASTElement {
    */
   public get value(): string | null {
     Observable.notify(this, 'value');
-    return this.listbox.enabledOptions.find(x => x.checked)?.value ?? null;
+    return this.enabledOptions.find(x => x.checked)?.value ?? null;
   }
 
   public set value(next: string | null) {
-    this.selectOption(this.listbox.enabledOptions.findIndex(x => x.value === next));
+    if (this.multiple) {
+      return;
+    }
+    this.selectOption(this.enabledOptions.findIndex(x => x.value === next));
     Observable.track(this, 'value');
   }
 
@@ -389,24 +450,6 @@ export class BaseDropdown extends FASTElement {
       this.control.value = this.displayValue;
     }
   };
-
-  /**
-   * Toggles between single and multiple selection modes when the `multiple` property changes.
-   *
-   * @param prev - the previous multiple state
-   * @param next - the next multiple state
-   * @internal
-   */
-  protected multipleChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    this.enabledOptions?.forEach(x => (x.checked = false));
-
-    this.elementInternals.ariaMultiSelectable = next ? 'true' : 'false';
-    toggleState(this.elementInternals, 'multiple', next);
-
-    Updates.enqueue(() => {
-      this.options.forEach(x => x.setMultipleState(next));
-    });
-  }
 
   /**
    * Handles the open state of the dropdown.
@@ -447,13 +490,11 @@ export class BaseDropdown extends FASTElement {
       return true;
     }
 
-    if (!this.isCombobox) {
-      const optionIndex = this.listbox.enabledOptions.indexOf(e.target as Option);
-      this.selectOption(optionIndex);
-    } else {
-      const optionIndex = this.listbox.enabledOptions.findIndex(x => x.text === this.control.value);
-      this.selectOption(optionIndex);
-    }
+    const optionIndex = this.isCombobox
+      ? this.enabledOptions.findIndex(x => x.text === this.control.value)
+      : this.enabledOptions.indexOf(e.target as Option);
+
+    this.selectOption(optionIndex);
 
     return true;
   }
@@ -530,11 +571,7 @@ export class BaseDropdown extends FASTElement {
     return true;
   }
 
-  private getEnabledIndexInBounds(
-    index: number,
-
-    upperBound = this.listbox.enabledOptions.length,
-  ): number {
+  private getEnabledIndexInBounds(index: number, upperBound = this.enabledOptions.length || 0): number {
     if (upperBound === 0) {
       return -1;
     }
@@ -550,15 +587,21 @@ export class BaseDropdown extends FASTElement {
     this.updateFreeformOption();
 
     const controlValue = this.control.value;
-
-    const index =
-      controlValue !== ''
-        ? this.listbox.enabledOptions.findIndex(x => x.value.toLowerCase().startsWith(controlValue.toLowerCase()))
-        : -1;
+    const index = this.enabledOptions.indexOf(this.filterOptions(controlValue)[0] ?? null);
 
     this.activeIndex = index;
 
     return true;
+  }
+
+  public filterOptions(value: string, collection: Option[] = this.enabledOptions): Option[] {
+    if (!this.listCollator) {
+      this.listCollator = new Intl.Collator(getLanguage(this), { usage: 'search', sensitivity: 'base' });
+    }
+
+    return collection.filter(x => {
+      return this.listCollator!.compare(x.text.substring(0, Math.min(x.text.length, value.length)), value) === 0;
+    });
   }
 
   protected updateFreeformOption(value: string = this.control.value): void {
@@ -568,9 +611,10 @@ export class BaseDropdown extends FASTElement {
 
     if (
       value === '' ||
-      this.listbox.enabledOptions
-        .filter(x => !x.freeform)
-        .some(x => x.value.toLowerCase().startsWith(value.toLowerCase()))
+      this.filterOptions(
+        value,
+        this.enabledOptions.filter(x => !x.freeform),
+      ).length
     ) {
       this.freeformOption.value = '';
       this.freeformOption.selected = false;
@@ -609,12 +653,18 @@ export class BaseDropdown extends FASTElement {
         break;
       }
 
+      case ' ': {
+        if (this.isCombobox) {
+          break;
+        }
+      }
+
       case 'Enter':
       case 'Tab': {
         if (this.open) {
           this.selectOption(this.activeIndex);
           if (this.multiple) {
-            return true;
+            break;
           }
 
           this.listbox.hidePopover();
@@ -622,13 +672,13 @@ export class BaseDropdown extends FASTElement {
         }
 
         this.listbox.showPopover();
-        return true;
+        break;
       }
 
       case 'Escape': {
         this.activeIndex = this.multiple ? 0 : this.selectedIndex;
         this.listbox.hidePopover();
-        return true;
+        break;
       }
     }
 
@@ -680,12 +730,12 @@ export class BaseDropdown extends FASTElement {
   public setActiveOption(force?: boolean): void {
     const optionIndex = this.matches(':has(:focus-visible)') || force ? this.activeIndex : -1;
 
-    this.enabledOptions?.forEach((option, index) => {
+    this.enabledOptions.forEach((option, index) => {
       option.active = index === optionIndex;
     });
 
     if (this.open) {
-      this.enabledOptions?.[optionIndex]?.scrollIntoView({ block: 'nearest' });
+      this.enabledOptions[optionIndex]?.scrollIntoView({ block: 'nearest' });
     }
   }
 
@@ -838,6 +888,12 @@ export class Dropdown extends BaseDropdown {
     Updates.enqueue(() => this.setAnchorPositionFallbackStyles());
   }
 
+  constructor() {
+    super();
+
+    this.addEventListener('connected', this.listboxConnectedHandler);
+  }
+
   disconnectedCallback(): void {
     const styles = Dropdown.AnchorPositionFallbackStyleElements.get(this);
 
@@ -870,6 +926,20 @@ export class Dropdown extends BaseDropdown {
     template.render(this, this);
     this.append(this.indicator);
     this.indicatorSlot?.assign(this.indicator);
+  }
+
+  /**
+   * Handles the connected event for the listbox.
+   *
+   * @param e - the event object
+   * @internal
+   */
+  private listboxConnectedHandler(e: Event): void {
+    const target = e.target as HTMLElement;
+
+    if (isListbox(target)) {
+      this.listbox = target;
+    }
   }
 
   /**
