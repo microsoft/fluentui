@@ -217,7 +217,7 @@ export const styles = css`
   }
 
   :host(${disabledState}),
-  :host(${disabledState}) ::slotted(button) {
+  :host(${disabledState}) ::slotted(:where(button, input)) {
     cursor: not-allowed;
   }
 
