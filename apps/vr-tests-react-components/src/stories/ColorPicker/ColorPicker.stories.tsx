@@ -10,11 +10,7 @@ export default {
   decorators: [story => withStoryWrightSteps({ story, steps })],
 } satisfies Meta<typeof ColorPicker>;
 
-export const Default = () => (
-  <>
-    <SampleColorPicker color={{ h: 109, s: 1, v: 0.91 }} />
-  </>
-);
+export const Default = () => <SampleColorPicker color={{ h: 109, s: 1, v: 0.91 }} />;
 Default.storyName = 'default';
 
 export const DefaultDarkMode = getStoryVariant(Default, DARK_MODE);
