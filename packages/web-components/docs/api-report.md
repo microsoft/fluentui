@@ -529,11 +529,6 @@ export class BaseCheckbox extends FASTElement {
     clickHandler(e: MouseEvent): boolean | void;
     // (undocumented)
     connectedCallback(): void;
-    currentValue: string;
-    // @internal
-    currentValueChanged(prev: string, next: string): void;
-    // @internal
-    protected dirtyState: boolean;
     disabled?: boolean;
     disabledAttribute?: boolean;
     // @internal
@@ -547,12 +542,9 @@ export class BaseCheckbox extends FASTElement {
     formAttribute?: string;
     // @internal
     formResetCallback(): void;
-    initial?: boolean;
+    initialChecked?: boolean;
     // @internal
-    protected initialChanged(prev: boolean | undefined, next: boolean | undefined): void;
-    // @deprecated
-    get initialChecked(): boolean | undefined;
-    set initialChecked(value: boolean | undefined);
+    protected initialCheckedChanged(prev: boolean | undefined, next: boolean | undefined): void;
     initialValue: string;
     // @internal
     protected initialValueChanged(prev: string, next: string): void;
@@ -563,28 +555,18 @@ export class BaseCheckbox extends FASTElement {
     // @internal
     keyupHandler(e: KeyboardEvent): boolean | void;
     get labels(): ReadonlyArray<HTMLLabelElement>;
-    // Warning: (ae-forgotten-export) The symbol "CheckboxMode" needs to be exported by the entry point index.d.ts
-    //
-    // @internal
-    static mode: CheckboxMode;
-    // (undocumented)
-    protected get mode(): CheckboxMode;
     name: string;
     reportValidity(): boolean;
     required: boolean;
     // @internal
     protected requiredChanged(prev: boolean, next: boolean): void;
-    get selected(): boolean;
-    set selected(next: boolean);
     // @internal
-    protected setAriaProperties(value?: boolean): void;
+    protected setAriaChecked(value?: boolean): void;
     setCustomValidity(message: string): void;
     // @internal
     setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
-    toggle(force?: boolean): void;
-    // @deprecated
     toggleChecked(force?: boolean): void;
     get validationMessage(): string;
     get validity(): ValidityState;
@@ -972,14 +954,14 @@ export class Checkbox extends BaseCheckbox {
     // @internal
     protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal @override
-    protected setAriaProperties(value?: boolean): void;
+    protected setAriaChecked(value?: boolean): void;
     shape?: CheckboxShape;
     // @internal
     protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
     // @internal
     protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
-    toggle(force?: boolean): void;
+    toggleChecked(force?: boolean): void;
 }
 
 // @public
@@ -3072,7 +3054,7 @@ export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
 // Warning: (ae-forgotten-export) The symbol "Start" needs to be exported by the entry point index.d.ts
 //
 // @public
-class Option_2 extends BaseCheckbox implements Start {
+class Option_2 extends FASTElement implements Start {
     constructor();
     active: boolean;
     // @internal
@@ -3080,24 +3062,50 @@ class Option_2 extends BaseCheckbox implements Start {
     // (undocumented)
     connectedCallback(): void;
     // @internal
+    currentSelected?: boolean;
+    // @internal
+    currentSelectedChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    currentValue: string;
+    // @internal
+    currentValueChanged(prev: string, next: string): void;
+    defaultSelected?: boolean;
+    // @internal
+    protected defaultSelectedChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
     descriptionSlot: Node[];
     // @internal
     descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    // @internal
+    protected dirtySelected: boolean;
+    disabled?: boolean;
+    disabledAttribute?: boolean;
+    // @internal
+    protected disabledAttributeChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    static formAssociated: boolean;
+    formAttribute?: string;
+    // @internal
+    formResetCallback(): void;
     freeform?: boolean;
     // @internal
     freeformOutputs?: HTMLOutputElement[];
     // @override
     id: string;
-    initial?: boolean;
     initialValue: string;
     // @internal
-    static mode: CheckboxMode;
-    // (undocumented)
+    protected initialValueChanged(prev: string, next: string): void;
+    get labels(): ReadonlyArray<HTMLLabelElement>;
     multiple: boolean;
-    // (undocumented)
     multipleChanged(prev: boolean, next: boolean): void;
+    name: string;
+    get selected(): boolean;
+    set selected(next: boolean);
     // @internal
-    setAriaProperties(value?: boolean): void;
+    protected setAriaSelected(value?: boolean): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
     // @internal
     start: HTMLSlotElement;
     get text(): string;
@@ -3106,7 +3114,7 @@ class Option_2 extends BaseCheckbox implements Start {
     titleSlot: Node[];
     // @internal
     titleSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
-    // (undocumented)
+    toggleSelected(force?: boolean): void;
     get value(): string;
     set value(value: string);
 }
@@ -3188,8 +3196,6 @@ export class Radio extends BaseCheckbox {
     // @internal @override
     setValidity(): void;
     // @override
-    toggle(force?: boolean): void;
-    // @deprecated
     toggleChecked(force?: boolean): void;
 }
 
