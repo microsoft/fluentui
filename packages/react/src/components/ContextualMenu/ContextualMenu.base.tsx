@@ -149,7 +149,7 @@ const _getMenuItemStylesFunction = memoizeFunction(
     ...styles: (IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuItemStyles> | undefined)[]
   ): IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuItemStyles> => {
     return (styleProps: IContextualMenuItemStyleProps) =>
-      concatStyleSetsWithProps(styleProps, getItemStyles, ...styles);
+      concatStyleSetsWithProps(styleProps, getItemStyles, ...styles) as IContextualMenuItemStyles;
   },
 );
 

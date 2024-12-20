@@ -2,6 +2,21 @@
   "name": "@fluentui/react-message-bar",
   "entries": [
     {
+      "date": "Thu, 19 Dec 2024 14:30:56 GMT",
+      "tag": "@fluentui/react-message-bar_v9.2.19",
+      "version": "9.2.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "f2523077e9c92fc7f065308efe2081fc86846b5b",
+            "comment": "fix: MessageBar auto reflow should handle document reflow with `min-content`"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Dec 2024 16:26:49 GMT",
       "tag": "@fluentui/react-message-bar_v9.2.18",
       "version": "9.2.18",
