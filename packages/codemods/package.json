@@ -25,7 +25,8 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "typescript": "5.3.3"
   },
   "dependencies": {
     "tslib": "^2.1.0",
