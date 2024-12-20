@@ -53,14 +53,13 @@ function getSlotNext<R extends SlotPropsRecord, K extends keyof R>(
   // TS Error: Property 'as' does not exist on type 'UnknownSlotProps | undefined'.ts(2339)
   const { as: asProp, ...propsWithoutAs } = props as NonUndefined<typeof props>;
 
-  const slot = (
+  const slot =
     state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
       ? asProp || state.components?.[slotName] || 'div'
-      : state.components[slotName]
-  ) as React.ElementType<R[K]>;
+      : state.components[slotName];
 
   const shouldOmitAsProp = typeof slot === 'string' && asProp;
   const slotProps: UnknownSlotProps = shouldOmitAsProp ? propsWithoutAs : props;
 
-  return [slot, slotProps as R[K]];
+  return [slot as React.ElementType<R[K]>, slotProps as R[K]];
 }
