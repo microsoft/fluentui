@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charts-preview",
   "entries": [
     {
+      "date": "Wed, 18 Dec 2024 10:59:37 GMT",
+      "tag": "@fluentui/react-charts-preview_v0.1.5",
+      "version": "0.1.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts-preview",
+            "comment": "Bump @fluentui/react-overflow to v9.2.5",
+            "commit": "54afa8c6ce8f7d200d5241584801899b27baaf1b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts-preview",
+            "comment": "Bump @fluentui/react-popover to v9.9.29",
+            "commit": "54afa8c6ce8f7d200d5241584801899b27baaf1b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Dec 2024 16:26:49 GMT",
       "tag": "@fluentui/react-charts-preview_v0.1.4",
       "version": "0.1.4",

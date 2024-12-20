@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charts-preview
 
-This log was last generated on Mon, 16 Dec 2024 16:26:49 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Dec 2024 10:59:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.5)
+
+Wed, 18 Dec 2024 10:59:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.4..@fluentui/react-charts-preview_v0.1.5)
+
+### Patches
+
+- Bump @fluentui/react-overflow to v9.2.5 ([PR #33483](https://github.com/microsoft/fluentui/pull/33483) by beachball)
+- Bump @fluentui/react-popover to v9.9.29 ([PR #33483](https://github.com/microsoft/fluentui/pull/33483) by beachball)
 
 ## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.4)
 

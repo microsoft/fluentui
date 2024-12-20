@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tag-picker",
-  "version": "9.3.12",
+  "version": "9.3.13",
   "description": "FluentUI TagPicker component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,7 +37,7 @@
     "@fluentui/react-aria": "^9.13.12",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-combobox": "^9.13.15",
-    "@fluentui/react-tags": "^9.3.26",
+    "@fluentui/react-tags": "^9.3.27",
     "@fluentui/react-context-selector": "^9.1.71",
     "@fluentui/react-positioning": "^9.16.0",
     "@fluentui/keyboard-keys": "^9.0.8",
