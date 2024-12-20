@@ -59,7 +59,17 @@ export class BaseDropdown extends FASTElement {
    * @internal
    */
   public activeIndexChanged(prev: number | undefined, next: number | undefined): void {
-    this.setActiveOption();
+    if (typeof next === 'number') {
+      const optionIndex = this.matches(':has(:focus-visible)') ? next : -1;
+
+      this.enabledOptions.forEach((option, index) => {
+        option.active = index === optionIndex;
+      });
+
+      if (this.open) {
+        this.enabledOptions[optionIndex]?.scrollIntoView({ block: 'nearest' });
+      }
+    }
   }
 
   /**
@@ -694,8 +704,6 @@ export class BaseDropdown extends FASTElement {
 
     this.activeIndex = indexInBounds;
 
-    this.setActiveOption(true);
-
     return true;
   }
 
@@ -712,23 +720,6 @@ export class BaseDropdown extends FASTElement {
       return;
     }
     return !isOption(e.target as HTMLElement);
-  }
-
-  /**
-   * Sets the `active` state on the currently focused option.
-   *
-   * @internal
-   */
-  public setActiveOption(force?: boolean): void {
-    const optionIndex = this.matches(':has(:focus-visible)') || force ? this.activeIndex : -1;
-
-    this.enabledOptions.forEach((option, index) => {
-      option.active = index === optionIndex;
-    });
-
-    if (this.open) {
-      this.enabledOptions[optionIndex]?.scrollIntoView({ block: 'nearest' });
-    }
   }
 
   /**
