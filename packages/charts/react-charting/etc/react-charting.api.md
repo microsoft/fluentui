@@ -493,7 +493,7 @@ export interface IDataPoint {
 // @public (undocumented)
 export interface IDeclarativeChart {
     // (undocumented)
-    download: (opts?: IImageExportOptions) => Promise<string>;
+    exportAsImage: (opts?: IImageExportOptions) => Promise<string>;
 }
 
 // @public (undocumented)

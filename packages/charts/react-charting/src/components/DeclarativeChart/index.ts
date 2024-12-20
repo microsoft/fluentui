@@ -1,2 +1,2 @@
 export * from './DeclarativeChart';
-export type { IImageExportOptions } from './helpers';
+export type { IImageExportOptions } from './imageExporter';

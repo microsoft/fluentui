@@ -26,7 +26,7 @@ import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
-import { IImageExportOptions, toImage } from './helpers';
+import { IImageExportOptions, toImage } from './imageExporter';
 import { IChart } from '../../types/index';
 
 /**
@@ -66,7 +66,7 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
  * {@docCategory DeclarativeChart}
  */
 export interface IDeclarativeChart {
-  download: (opts?: IImageExportOptions) => Promise<string>;
+  exportAsImage: (opts?: IImageExportOptions) => Promise<string>;
 }
 
 const useColorMapping = () => {
@@ -106,7 +106,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     ...(activeLegends.length > 0 && { selectedLegend: activeLegends[0] }),
   };
 
-  const download = React.useCallback(
+  const exportAsImage = React.useCallback(
     (opts?: IImageExportOptions) => {
       return toImage(chartRef.current?.container, {
         background: theme.palette.white,
@@ -119,9 +119,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   React.useImperativeHandle(
     props.componentRef,
     () => ({
-      download,
+      exportAsImage,
     }),
-    [download],
+    [exportAsImage],
   );
 
   switch (data[0].type) {

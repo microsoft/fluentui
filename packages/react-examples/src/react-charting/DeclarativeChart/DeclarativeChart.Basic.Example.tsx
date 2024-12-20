@@ -114,7 +114,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
         <br />
         <button
           onClick={() => {
-            this._declarativeChartRef.current?.download().then((imgData: string) => {
+            this._declarativeChartRef.current?.exportAsImage().then((imgData: string) => {
               fileSaver(imgData);
             });
           }}

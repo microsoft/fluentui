@@ -20,10 +20,10 @@ export function toImage(chartContainer?: HTMLElement | null, opts: IImageExportO
       const background = opts.background || 'white';
       const svg = toSVG(chartContainer, background);
 
-      let s = new XMLSerializer().serializeToString(svg.node);
-      s = btoa(unescapePonyfill(encodeURIComponent(s)));
+      const svgData = new XMLSerializer().serializeToString(svg.node);
+      const svgDataUrl = 'data:image/svg+xml;base64,' + btoa(unescapePonyfill(encodeURIComponent(svgData)));
 
-      svgToPng(s, {
+      svgToPng(svgDataUrl, {
         width: opts.width || svg.width,
         height: opts.height || svg.height,
         scale: opts.scale,
@@ -192,7 +192,7 @@ function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHei
   };
 }
 
-function svgToPng(svg: string, opts: IImageExportOptions = {}): Promise<string> {
+function svgToPng(svgDataUrl: string, opts: IImageExportOptions = {}): Promise<string> {
   return new Promise((resolve, reject) => {
     const scale = opts.scale || 1;
     const w0 = opts.width || 300;
@@ -202,8 +202,6 @@ function svgToPng(svg: string, opts: IImageExportOptions = {}): Promise<string> 
 
     const canvas = document.createElement('canvas');
     const img = new Image();
-
-    const url = 'data:image/svg+xml;base64,' + svg;
 
     canvas.width = w1;
     canvas.height = h1;
@@ -225,7 +223,7 @@ function svgToPng(svg: string, opts: IImageExportOptions = {}): Promise<string> 
       reject(err);
     };
 
-    img.src = url;
+    img.src = svgDataUrl;
   });
 }
 
