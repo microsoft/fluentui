@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { AvatarSize } from '@fluentui/react-avatar';
 import type { Checkbox } from '@fluentui/react-checkbox';

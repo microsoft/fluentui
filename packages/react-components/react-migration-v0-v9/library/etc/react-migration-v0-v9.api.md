@@ -4,15 +4,12 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ButtonProps } from '@fluentui/react-components';
 import { ComponentProps } from '@fluentui/react-components';
 import type { ComponentProps as ComponentProps_2 } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { GriffelStyle } from '@fluentui/react-components';
-import { ObjectOf } from '@fluentui/react-northstar';
 import type { ObjectShorthandValue } from '@fluentui/react-northstar';
 import * as React_2 from 'react';
 import { SelectionHookParams } from '@fluentui/react-utilities';
@@ -104,8 +101,8 @@ export const flexClassName = "fui-Flex";
 
 // @public (undocumented)
 export const flexItem: {
-    align: (value: 'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch') => GriffelStyle;
-    size: (value: 'half' | 'quarter' | 'small' | 'medium' | 'large') => GriffelStyle;
+    align: (value: "auto" | "start" | "end" | "center" | "baseline" | "stretch") => GriffelStyle;
+    size: (value: "half" | "quarter" | "small" | "medium" | "large") => GriffelStyle;
     grow: (flexGrow: boolean | number) => GriffelStyle | undefined;
     shrink: (flexShrink: boolean | number) => GriffelStyle | undefined;
     pushRow: () => GriffelStyle;
@@ -114,18 +111,16 @@ export const flexItem: {
 
 // @public (undocumented)
 export const FormFieldShim: React_2.ForwardRefExoticComponent<{
-    errorMessage?: WithContent | undefined;
-    required?: boolean | undefined;
-    control?: ({
+    errorMessage?: WithContent;
+    required?: boolean;
+    control?: ObjectShorthandValue<{
         content?: React_2.ReactNode;
-    } & ObjectOf<any> & {
-        children?: unknown;
-    } & {
-        error?: "true" | "false" | undefined;
-    }) | undefined;
-    label?: WithContent | undefined;
+    }> & {
+        error?: "true" | "false";
+    };
+    label?: WithContent;
 } & {
-    children?: React_2.ReactNode;
+    children?: React_2.ReactNode | undefined;
 } & React_2.RefAttributes<HTMLInputElement>>;
 
 // @public (undocumented)
