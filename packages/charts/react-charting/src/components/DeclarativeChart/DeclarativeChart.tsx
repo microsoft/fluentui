@@ -24,10 +24,11 @@ import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
-import { downloadImage } from './helpers';
+import { IImageExportOptions, toImage } from './helpers';
 import { IChart } from '../../types/index';
 
-import { IRefObject, useTheme } from '@fluentui/react';
+import { useTheme } from '@fluentui/react';
+import { IRefObject } from '@fluentui/react/lib/Utilities';
 
 /**
  * DeclarativeChart schema.
@@ -63,7 +64,7 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
 }
 
 export interface IDeclarativeChart {
-  download: () => void;
+  download: (opts?: IImageExportOptions) => Promise<string>;
 }
 
 const useColorMapping = () => {
@@ -89,18 +90,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const isDarkTheme = theme?.isInverted ?? false;
   const chartRef = React.useRef<IChart>(null);
 
-  const download = React.useCallback(() => {
-    downloadImage(chartRef.current?.container, theme.palette.white);
-  }, [theme]);
-
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      download,
-    }),
-    [download],
-  );
-
   const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends ?? []);
   const onActiveLegendsChange = (keys: string[]) => {
     setActiveLegends(keys);
@@ -114,6 +103,24 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     onChange: onActiveLegendsChange,
     ...(activeLegends.length > 0 && { selectedLegend: activeLegends[0] }),
   };
+
+  const download = React.useCallback(
+    (opts?: IImageExportOptions) => {
+      return toImage(chartRef.current?.container, {
+        background: theme.palette.white,
+        ...opts,
+      });
+    },
+    [theme],
+  );
+
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      download,
+    }),
+    [download],
+  );
 
   switch (data[0].type) {
     case 'pie':

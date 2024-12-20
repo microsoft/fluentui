@@ -12,6 +12,7 @@ import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IHoverCardStyleProps } from '@fluentui/react/lib/HoverCard';
 import { IHoverCardStyles } from '@fluentui/react/lib/HoverCard';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
+import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { IStyle } from '@fluentui/react/lib/Styling';
 import { IStyle as IStyle_2 } from '@fluentui/react';
@@ -125,6 +126,7 @@ export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
 // @public
 export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
     chartSchema: Schema;
+    componentRef?: IRefObject<IDeclarativeChart>;
     onSchemaChange?: (eventData: Schema) => void;
 }
 
@@ -267,6 +269,8 @@ export interface ICartesianChartProps {
     // @deprecated
     chartLabel?: string;
     className?: string;
+    // (undocumented)
+    componentRef?: IRefObject<IChart>;
     customDateTimeFormatter?: (dateTime: Date) => string;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
@@ -350,6 +354,12 @@ export interface ICartesianChartStyles {
     tooltip?: IStyle;
     xAxis?: IStyle;
     yAxis?: IStyle;
+}
+
+// @public (undocumented)
+export interface IChart {
+    // (undocumented)
+    container: HTMLElement | null;
 }
 
 // @public (undocumented)
@@ -482,12 +492,20 @@ export interface IDataPoint {
 }
 
 // @public (undocumented)
+export interface IDeclarativeChart {
+    // (undocumented)
+    download: (opts?: IImageExportOptions) => Promise<string>;
+}
+
+// @public (undocumented)
 export interface IDonutChart {
 }
 
 // @public
 export interface IDonutChartProps extends ICartesianChartProps {
     calloutProps?: Partial<ICalloutProps>;
+    // (undocumented)
+    componentRef?: IRefObject<IChart>;
     culture?: string;
     data?: IChartProps;
     enableGradient?: boolean;
@@ -536,6 +554,8 @@ export interface IGaugeChartProps {
     chartValue: number;
     chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
     className?: string;
+    // (undocumented)
+    componentRef?: IRefObject<IChart>;
     culture?: string;
     enableGradient?: boolean;
     height?: number;
@@ -830,6 +850,18 @@ export interface IHorizontalBarChartWithAxisStyles extends ICartesianChartStyles
 export interface IHorizontalDataPoint {
     x: number;
     y: number;
+}
+
+// @public (undocumented)
+export interface IImageExportOptions {
+    // (undocumented)
+    background?: string;
+    // (undocumented)
+    height?: number;
+    // (undocumented)
+    scale?: number;
+    // (undocumented)
+    width?: number;
 }
 
 // @public
@@ -1200,6 +1232,8 @@ export interface ISankeyChartProps {
     borderColorsForNodes?: string[];
     className?: string;
     colorsForNodes?: string[];
+    // (undocumented)
+    componentRef?: IRefObject<IChart>;
     data: IChartProps;
     enableReflow?: boolean;
     formatNumberOptions?: Intl.NumberFormatOptions;

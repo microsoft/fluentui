@@ -2,45 +2,58 @@ import { create as d3Create, select as d3Select, Selection } from 'd3-selection'
 
 // const DOM_URL = window.URL || window.webkitURL;
 
-export function downloadImage(container: HTMLElement | null | undefined, background: string) {
-  if (!container) {
-    return;
-  }
+export interface IImageExportOptions {
+  width?: number;
+  height?: number;
+  scale?: number;
+  background?: string;
+}
 
-  const result = toSvg(container, background);
-  if (!result) {
-    return;
-  }
+export function toImage(chartContainer?: HTMLElement | null, opts: IImageExportOptions = {}): Promise<string> {
+  return new Promise((resolve, reject) => {
+    if (!chartContainer) {
+      return reject(new Error('Chart container is not defined'));
+    }
 
-  svgToPng(result.svg, result.width, result.height).then((imgData: string) => {
-    const newWindow = window.open();
-    newWindow.document.body.innerHTML = `<img src="${imgData}" />`;
+    try {
+      const background = opts.background || 'white';
+      const svg = toSVG(chartContainer, background);
 
-    // fileSaver(result);
+      let s = new XMLSerializer().serializeToString(svg.node);
+      s = btoa(unescapePolyfill(encodeURIComponent(s)));
+
+      svgToPng(s, {
+        width: opts.width || svg.width,
+        height: opts.height || svg.height,
+        scale: opts.scale,
+      })
+        .then(resolve)
+        .catch(reject);
+    } catch (err) {
+      return reject(err);
+    }
   });
 }
 
-export function toSvg(container: HTMLElement, background: string) {
-  const svg = container.querySelector<SVGSVGElement>('svg');
+function toSVG(chartContainer: HTMLElement, background: string) {
+  const svg = chartContainer.querySelector<SVGSVGElement>('svg');
   if (!svg) {
-    return;
+    throw new Error('SVG not found');
   }
 
-  const { width, height } = svg.getBoundingClientRect();
+  const { width: svgWidth, height: svgHeight } = svg.getBoundingClientRect();
   const classNames = new Set<string>();
-  const {
-    legendGroup,
-    width: legendGroupWidth,
-    height: legendGroupHeight,
-  } = cloneLegendsToSvg(container, width, height, classNames);
+  const legendGroup = cloneLegendsToSVG(chartContainer, svgWidth, svgHeight, classNames);
+  const w1 = Math.max(svgWidth, legendGroup.width);
+  const h1 = svgHeight + legendGroup.height;
   const clonedSvg = d3Select(svg.cloneNode(true) as SVGSVGElement)
     .attr('width', null)
     .attr('height', null)
     .attr('viewBox', null);
-  const w1 = Math.max(width, legendGroupWidth);
-  const h1 = height + legendGroupHeight;
 
-  clonedSvg.append(() => legendGroup.node());
+  if (legendGroup.node) {
+    clonedSvg.append(() => legendGroup.node);
+  }
   clonedSvg
     .insert('rect', ':first-child')
     .attr('x', 0)
@@ -79,26 +92,30 @@ export function toSvg(container: HTMLElement, background: string) {
 
   clonedSvg.attr('width', w1).attr('height', h1).attr('viewBox', `0 0 ${w1} ${h1}`);
 
-  let s = new XMLSerializer().serializeToString(clonedSvg.node()!);
-  s = btoa(unescape(encodeURIComponent(s)));
-
   return {
-    svg: s,
+    node: clonedSvg.node()!,
     width: w1,
     height: h1,
   };
 }
 
-function cloneLegendsToSvg(container: HTMLElement, width: number, height: number, classNames: Set<string>) {
-  const legendButtons = container.querySelectorAll<HTMLElement>(`
+function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHeight: number, classNames: Set<string>) {
+  const legendButtons = chartContainer.querySelectorAll<HTMLElement>(`
     button[class^="legend-"],
     [class^="legendContainer-"] div[class^="overflowIndicationTextStyle-"],
     [class^="legendsContainer-"] div[class^="overflowIndicationTextStyle-"]
   `);
+  if (legendButtons.length === 0) {
+    return {
+      node: null,
+      width: 0,
+      height: 0,
+    };
+  }
 
   const legendGroup = d3Create<SVGGElement>('svg:g');
   let legendX = 0;
-  let legendY = height + 8;
+  let legendY = 8;
   let legendLine: Selection<SVGGElement, unknown, null, undefined>[] = [];
   const legendLines: (typeof legendLine)[] = [];
   const legendLineWidths: number[] = [];
@@ -108,7 +125,7 @@ function cloneLegendsToSvg(container: HTMLElement, width: number, height: number
     const legendItem = legendGroup.append('g');
 
     legendLine.push(legendItem);
-    if (legendX + legendWidth > width && legendLine.length > 1) {
+    if (legendX + legendWidth > svgWidth && legendLine.length > 1) {
       legendLine.pop();
       legendLines.push(legendLine);
       legendLineWidths.push(legendX);
@@ -130,7 +147,7 @@ function cloneLegendsToSvg(container: HTMLElement, width: number, height: number
       legendItem
         .append('rect')
         .attr('x', legendX + 8)
-        .attr('y', legendY + 8)
+        .attr('y', svgHeight + legendY + 8)
         .attr('width', 12)
         .attr('height', 12)
         .attr('fill', legendColor)
@@ -146,7 +163,7 @@ function cloneLegendsToSvg(container: HTMLElement, width: number, height: number
     legendItem
       .append('text')
       .attr('x', legendX + textOffset)
-      .attr('y', legendY + 8)
+      .attr('y', svgHeight + legendY + 8)
       .attr('dominant-baseline', 'hanging')
       .attr('class', legendText!.getAttribute('class'))
       .text(legendText!.textContent);
@@ -160,7 +177,7 @@ function cloneLegendsToSvg(container: HTMLElement, width: number, height: number
   const centerLegends = true;
   if (centerLegends) {
     legendLines.forEach((ln, idx) => {
-      const offsetX = Math.max((width - legendLineWidths[idx]) / 2, 0);
+      const offsetX = Math.max((svgWidth - legendLineWidths[idx]) / 2, 0);
       ln.forEach(item => {
         item.attr('transform', `translate(${offsetX}, 0)`);
       });
@@ -168,16 +185,19 @@ function cloneLegendsToSvg(container: HTMLElement, width: number, height: number
   }
 
   return {
-    legendGroup,
+    node: legendGroup.node(),
     width: Math.max(...legendLineWidths),
-    height: legendY - height,
+    height: legendY,
   };
 }
 
-export function svgToPng(svg: string, width: number, height: number, scale: number = 1) {
+function svgToPng(svg: string, opts: IImageExportOptions = {}): Promise<string> {
   return new Promise((resolve, reject) => {
-    const w1 = scale * width;
-    const h1 = scale * height;
+    const scale = opts.scale || 1;
+    const w0 = opts.width || 300;
+    const h0 = opts.height || 150;
+    const w1 = scale * w0;
+    const h1 = scale * h0;
 
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
@@ -216,24 +236,6 @@ export function svgToPng(svg: string, width: number, height: number, scale: numb
   });
 }
 
-export function fileSaver(url: string) {
-  const saveLink = document.createElement('a');
-
-  // const binary = fixBinary(window.atob(url));
-  // let blob: Blob | null = new window.Blob([binary], { type: 'image/png' });
-  // const objectUrl = DOM_URL.createObjectURL(blob);
-
-  // saveLink.href = objectUrl;
-  saveLink.href = url;
-  saveLink.download = 'converted-image.png';
-  document.body.appendChild(saveLink);
-  saveLink.click();
-
-  document.body.removeChild(saveLink);
-  // DOM_URL.revokeObjectURL(objectUrl);
-  // blob = null;
-}
-
 // function fixBinary(b: string) {
 //   const len = b.length;
 //   const buf = new ArrayBuffer(len);
@@ -243,3 +245,36 @@ export function fileSaver(url: string) {
 //   }
 //   return buf;
 // }
+
+const hex2 = /^[\da-f]{2}$/i;
+const hex4 = /^[\da-f]{4}$/i;
+
+function unescapePolyfill(str: string) {
+  let result = '';
+  const length = str.length;
+  let index = 0;
+  let chr;
+  let part;
+  while (index < length) {
+    chr = str.charAt(index++);
+    if (chr === '%') {
+      if (str.charAt(index) === 'u') {
+        part = str.slice(index + 1, index + 5);
+        if (hex4.exec(part)) {
+          result += String.fromCharCode(parseInt(part, 16));
+          index += 5;
+          continue;
+        }
+      } else {
+        part = str.slice(index, index + 2);
+        if (hex2.exec(part)) {
+          result += String.fromCharCode(parseInt(part, 16));
+          index += 2;
+          continue;
+        }
+      }
+    }
+    result += chr;
+  }
+  return result;
+}
