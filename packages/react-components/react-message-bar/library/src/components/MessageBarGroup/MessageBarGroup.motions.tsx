@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { motionTokens, createPresenceComponent, PresenceDirection, AtomMotion } from '@fluentui/react-motion';
 import { MessageBarGroupProps } from './MessageBarGroup.types';
 
