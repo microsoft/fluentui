@@ -32,6 +32,45 @@ import { dropdownButtonTemplate, dropdownIndicatorTemplate, dropdownInputTemplat
  */
 export class BaseDropdown extends FASTElement {
   /**
+   * The ID of the current active descendant.
+   *
+   * @public
+   */
+  @volatile
+  public get activeDescendant(): string | undefined {
+    if (this.open) {
+      return this.enabledOptions[this.activeIndex]?.id;
+    }
+  }
+
+  /**
+   * The index of the currently active option.
+   *
+   * @internal
+   */
+  @observable
+  public activeIndex: number = 0;
+
+  /**
+   * Sets the active index when the active index property changes.
+   *
+   * @param prev - the previous active index
+   * @param next - the current active index
+   * @internal
+   */
+  public activeIndexChanged(prev: number | undefined, next: number | undefined): void {
+    this.setActiveOption();
+  }
+
+  /**
+   * The `aria-labelledby` attribute value of the dropdown.
+   *
+   * @public
+   */
+  @attr({ attribute: 'aria-labelledby', mode: 'fromView' })
+  public ariaLabelledBy!: string;
+
+  /**
    * Reference to the control element.
    * @internal
    */
@@ -60,11 +99,33 @@ export class BaseDropdown extends FASTElement {
   public disabled?: boolean;
 
   /**
-   * The collection of enabled options.
+   * The display value for the control.
+   *
    * @public
    */
-  public get enabledOptions(): Option[] {
-    return this.listbox?.enabledOptions ?? [];
+  @volatile
+  public get displayValue(): string {
+    if (!this.$fastController.isConnected || !this.control || (this.isCombobox && this.multiple)) {
+      toggleState(this.elementInternals, 'placeholder-shown', false);
+      return '';
+    }
+
+    this.listFormatter =
+      this.listFormatter ??
+      new Intl.ListFormat(getLanguage(this), {
+        type: 'conjunction',
+        style: 'narrow',
+      });
+
+    const displayValue = this.listFormatter.format(this.selectedOptions.map(x => x.text));
+    toggleState(this.elementInternals, 'placeholder-shown', !displayValue);
+
+    if (this.isCombobox) {
+      // comboboxes use an input element for the control, which provides the placeholder behavior
+      return displayValue;
+    }
+
+    return displayValue || this.placeholder;
   }
 
   /**
@@ -105,85 +166,6 @@ export class BaseDropdown extends FASTElement {
   public initialValue?: string;
 
   /**
-   * The dropdown type.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `type`
-   */
-  @attr
-  public type: DropdownType = DropdownType.dropdown;
-
-  /**
-   * Indicates whether the dropdown allows multiple options to be selected.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `multiple`
-   */
-  @attr({ mode: 'boolean' })
-  public multiple?: boolean;
-
-  /**
-   * Toggles between single and multiple selection modes when the `multiple` property changes.
-   *
-   * @param prev - the previous multiple state
-   * @param next - the next multiple state
-   * @internal
-   */
-  protected multipleChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    this.elementInternals.ariaMultiSelectable = next ? 'true' : 'false';
-    toggleState(this.elementInternals, 'multiple', next);
-    this.value = null;
-  }
-
-  /**
-   * The `aria-labelledby` attribute value of the dropdown.
-   *
-   * @public
-   */
-  @attr({ attribute: 'aria-labelledby', mode: 'fromView' })
-  public ariaLabelledBy!: string;
-
-  /**
-   * The display value for the control.
-   *
-   * @public
-   */
-  @volatile
-  public get displayValue(): string {
-    if (!this.$fastController.isConnected || !this.control || (this.isCombobox && this.multiple)) {
-      toggleState(this.elementInternals, 'placeholder-shown', false);
-      return '';
-    }
-
-    this.listFormatter =
-      this.listFormatter ??
-      new Intl.ListFormat(getLanguage(this), {
-        type: 'conjunction',
-        style: 'narrow',
-      });
-
-    const displayValue = this.listFormatter.format(this.selectedOptions.map(x => x.text));
-    toggleState(this.elementInternals, 'placeholder-shown', !displayValue);
-
-    if (this.isCombobox) {
-      // comboboxes use an input element for the control, which provides the placeholder behavior
-      return displayValue;
-    }
-
-    return displayValue || this.placeholder;
-  }
-
-  /**
-   * Reference to the listbox slot element.
-   *
-   * @internal
-   */
-  @observable
-  public listboxSlot!: HTMLSlotElement;
-
-  /**
    * Reference to the slotted listbox element.
    *
    * @internal
@@ -214,6 +196,37 @@ export class BaseDropdown extends FASTElement {
         notifier.notify(key);
       }
     }
+  }
+
+  /**
+   * Reference to the listbox slot element.
+   *
+   * @internal
+   */
+  @observable
+  public listboxSlot!: HTMLSlotElement;
+
+  /**
+   * Indicates whether the dropdown allows multiple options to be selected.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `multiple`
+   */
+  @attr({ mode: 'boolean' })
+  public multiple?: boolean;
+
+  /**
+   * Toggles between single and multiple selection modes when the `multiple` property changes.
+   *
+   * @param prev - the previous multiple state
+   * @param next - the next multiple state
+   * @internal
+   */
+  protected multipleChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    this.elementInternals.ariaMultiSelectable = next ? 'true' : 'false';
+    toggleState(this.elementInternals, 'multiple', next);
+    this.value = null;
   }
 
   /**
@@ -251,21 +264,17 @@ export class BaseDropdown extends FASTElement {
   public open!: boolean;
 
   /**
-   * Indicates whether the dropdown is a combobox.
+   * Handles the open state of the dropdown.
+   *
+   * @param prev - the previous open state
+   * @param next - the current open state
    *
    * @internal
    */
-  private get isCombobox(): boolean {
-    return this.type === DropdownType.combobox;
-  }
-
-  /**
-   * The collection of all child options.
-   *
-   * @public
-   */
-  public get options(): Option[] {
-    return this.listbox?.options ?? [];
+  public openChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    toggleState(this.elementInternals, 'open', next);
+    this.elementInternals.ariaExpanded = next ? 'true' : 'false';
+    this.activeIndex = this.selectedIndex ?? -1;
   }
 
   /**
@@ -287,33 +296,25 @@ export class BaseDropdown extends FASTElement {
   public required: boolean = false;
 
   /**
-   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
-   *
-   * @internal
-   */
-  public elementInternals: ElementInternals = this.attachInternals();
-
-  /**
-   * The index of the currently active option.
-   *
-   * @internal
-   */
-  @observable
-  public activeIndex: number = 0;
-
-  public activeIndexChanged(prev: number, next: number): void {
-    this.setActiveOption();
-  }
-
-  /**
-   * The ID of the current active descendant.
+   * The dropdown type.
    *
    * @public
+   * @remarks
+   * HTML Attribute: `type`
    */
-  @volatile
-  public get activeDescendant(): string | undefined {
-    if (this.open) {
-      return this.enabledOptions[this.activeIndex]?.id;
+  @attr
+  public type: DropdownType = DropdownType.dropdown;
+
+  /**
+   * Changes the slotted control element based on the dropdown type.
+   *
+   * @param prev - the previous dropdown type
+   * @param next - the current dropdown type
+   * @internal
+   */
+  public typeChanged(prev: DropdownType | undefined, next: DropdownType | undefined): void {
+    if (this.$fastController.isConnected) {
+      this.insertControl();
     }
   }
 
@@ -328,7 +329,45 @@ export class BaseDropdown extends FASTElement {
   @attr({ attribute: 'value' })
   public valueAttribute: string = '';
 
+  /**
+   * Handles opening and closing the dropdown based on the disabled state.
+   *
+   * @param e - the event object
+   *
+   * @public
+   */
+  public beforetoggleListboxHandler = (e: ToggleEvent): boolean | void => {
+    if (this.disabled) {
+      this.open = false;
+      return;
+    }
+
+    this.updateFreeformOption();
+
+    this.open = e.newState === 'open';
+    this.activeIndex = this.selectedIndex;
+
+    if (!this.open) {
+      this.control.value = this.displayValue;
+    }
+  };
+
   public controlSlot!: HTMLSlotElement;
+
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
+  /**
+   * The collection of enabled options.
+   * @public
+   */
+  public get enabledOptions(): Option[] {
+    return this.listbox?.enabledOptions ?? [];
+  }
 
   /**
    * The form-associated flag.
@@ -348,6 +387,15 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * Indicates whether the dropdown is a combobox.
+   *
+   * @internal
+   */
+  private get isCombobox(): boolean {
+    return this.type === DropdownType.combobox;
+  }
+
+  /**
    * The list formatter for the dropdown. Used to format the display value when the dropdown is in multiple selection mode.
    *
    * @internal
@@ -360,6 +408,15 @@ export class BaseDropdown extends FASTElement {
    * @internal
    */
   private listCollator?: Intl.Collator;
+
+  /**
+   * The collection of all child options.
+   *
+   * @public
+   */
+  public get options(): Option[] {
+    return this.listbox?.options ?? [];
+  }
 
   /**
    * The index of the first selected option, scoped to the enabled options.
@@ -388,7 +445,7 @@ export class BaseDropdown extends FASTElement {
    *
    * @internal
    */
-  private _validationFallbackMessage!: string;
+  private validationFallbackMessage!: string;
 
   /**
    * The validation message. Uses the browser's default validation message for native checkboxes if not otherwise
@@ -401,16 +458,16 @@ export class BaseDropdown extends FASTElement {
       return this.elementInternals.validationMessage;
     }
 
-    if (!this._validationFallbackMessage) {
+    if (!this.validationFallbackMessage) {
       const validationMessageFallbackControl = document.createElement('input');
       validationMessageFallbackControl.type = 'radio';
       validationMessageFallbackControl.required = true;
       validationMessageFallbackControl.checked = false;
 
-      this._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
+      this.validationFallbackMessage = validationMessageFallbackControl.validationMessage;
     }
 
-    return this._validationFallbackMessage;
+    return this.validationFallbackMessage;
   }
 
   /**
@@ -429,56 +486,6 @@ export class BaseDropdown extends FASTElement {
     }
     this.selectOption(this.enabledOptions.findIndex(x => x.value === next));
     Observable.track(this, 'value');
-  }
-
-  /**
-   * Handles opening and closing the dropdown based on the disabled state.
-   *
-   * @param e - the event object
-   *
-   * @public
-   */
-  public beforetoggleListboxHandler = (e: ToggleEvent): boolean | void => {
-    if (this.disabled) {
-      this.open = false;
-      return;
-    }
-
-    this.updateFreeformOption();
-
-    this.open = e.newState === 'open';
-    this.activeIndex = this.selectedIndex;
-
-    if (!this.open) {
-      this.control.value = this.displayValue;
-    }
-  };
-
-  /**
-   * Handles the open state of the dropdown.
-   *
-   * @param prev - the previous open state
-   * @param next - the current open state
-   *
-   * @internal
-   */
-  public openChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    toggleState(this.elementInternals, 'open', next);
-    this.elementInternals.ariaExpanded = next ? 'true' : 'false';
-    this.activeIndex = this.selectedIndex ?? -1;
-  }
-
-  /**
-   * Changes the slotted control element based on the dropdown type.
-   *
-   * @param prev - the previous dropdown type
-   * @param next - the current dropdown type
-   * @internal
-   */
-  public typeChanged(prev: DropdownType | undefined, next: DropdownType | undefined): void {
-    if (this.$fastController.isConnected) {
-      this.insertControl();
-    }
   }
 
   /**
@@ -549,6 +556,16 @@ export class BaseDropdown extends FASTElement {
     });
   }
 
+  public filterOptions(value: string, collection: Option[] = this.enabledOptions): Option[] {
+    if (!this.listCollator) {
+      this.listCollator = new Intl.Collator(getLanguage(this), { usage: 'search', sensitivity: 'base' });
+    }
+
+    return collection.filter(x => {
+      return this.listCollator!.compare(x.text.substring(0, Math.min(x.text.length, value.length)), value) === 0;
+    });
+  }
+
   /**
    * Focuses the control when the dropdown receives focus.
    *
@@ -599,38 +616,6 @@ export class BaseDropdown extends FASTElement {
     this.activeIndex = index;
 
     return true;
-  }
-
-  public filterOptions(value: string, collection: Option[] = this.enabledOptions): Option[] {
-    if (!this.listCollator) {
-      this.listCollator = new Intl.Collator(getLanguage(this), { usage: 'search', sensitivity: 'base' });
-    }
-
-    return collection.filter(x => {
-      return this.listCollator!.compare(x.text.substring(0, Math.min(x.text.length, value.length)), value) === 0;
-    });
-  }
-
-  protected updateFreeformOption(value: string = this.control.value): void {
-    if (!this.freeformOption) {
-      return;
-    }
-
-    if (
-      value === '' ||
-      this.filterOptions(
-        value,
-        this.enabledOptions.filter(x => !x.freeform),
-      ).length
-    ) {
-      this.freeformOption.value = '';
-      this.freeformOption.selected = false;
-      this.freeformOption.hidden = true;
-      return;
-    }
-
-    this.freeformOption.value = value;
-    this.freeformOption.hidden = false;
   }
 
   protected insertControl(): void {
@@ -786,6 +771,28 @@ export class BaseDropdown extends FASTElement {
       );
     }
   }
+
+  protected updateFreeformOption(value: string = this.control.value): void {
+    if (!this.freeformOption) {
+      return;
+    }
+
+    if (
+      value === '' ||
+      this.filterOptions(
+        value,
+        this.enabledOptions.filter(x => !x.freeform),
+      ).length
+    ) {
+      this.freeformOption.value = '';
+      this.freeformOption.selected = false;
+      this.freeformOption.hidden = true;
+      return;
+    }
+
+    this.freeformOption.value = value;
+    this.freeformOption.hidden = false;
+  }
 }
 
 export class Dropdown extends BaseDropdown {
@@ -799,6 +806,16 @@ export class Dropdown extends BaseDropdown {
    * @internal
    */
   private static AnchorPositionFallbackObserver: IntersectionObserver;
+
+  /**
+   * Fallback style element for anchor positioning.
+   *
+   * @remarks This is only used when the browser does not support CSS anchor positioning, and the CSS anchor polyfill is
+   * present.
+   *
+   * @internal
+   */
+  private anchorPositionFallbackStyleElement: HTMLStyleElement | null = null;
 
   /**
    * Static property for the anchor positioning fallback style elements.
@@ -820,16 +837,6 @@ export class Dropdown extends BaseDropdown {
    * @internal
    */
   private static AnchorPositionFallbackTimeout: number | null;
-
-  /**
-   * Fallback style element for anchor positioning.
-   *
-   * @remarks This is only used when the browser does not support CSS anchor positioning, and the CSS anchor polyfill is
-   * present.
-   *
-   * @internal
-   */
-  private anchorPositionFallbackStyleElement: HTMLStyleElement | null = null;
 
   /**
    * Applies the `--listbox-max-height` style to the listbox based on the dropdown's position in the viewport. This
