@@ -269,7 +269,6 @@ export interface ICartesianChartProps {
     // @deprecated
     chartLabel?: string;
     className?: string;
-    // (undocumented)
     componentRef?: IRefObject<IChart>;
     customDateTimeFormatter?: (dateTime: Date) => string;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
@@ -504,7 +503,6 @@ export interface IDonutChart {
 // @public
 export interface IDonutChartProps extends ICartesianChartProps {
     calloutProps?: Partial<ICalloutProps>;
-    // (undocumented)
     componentRef?: IRefObject<IChart>;
     culture?: string;
     data?: IChartProps;
@@ -554,7 +552,6 @@ export interface IGaugeChartProps {
     chartValue: number;
     chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
     className?: string;
-    // (undocumented)
     componentRef?: IRefObject<IChart>;
     culture?: string;
     enableGradient?: boolean;
@@ -1232,7 +1229,6 @@ export interface ISankeyChartProps {
     borderColorsForNodes?: string[];
     className?: string;
     colorsForNodes?: string[];
-    // (undocumented)
     componentRef?: IRefObject<IChart>;
     data: IChartProps;
     enableReflow?: boolean;
