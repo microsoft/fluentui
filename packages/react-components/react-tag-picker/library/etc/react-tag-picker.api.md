@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import { ComboboxBaseState } from '@fluentui/react-combobox';
 import { ComboboxProps } from '@fluentui/react-combobox';

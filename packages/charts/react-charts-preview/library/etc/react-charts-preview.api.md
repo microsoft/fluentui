@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import * as React_2 from 'react';
 import { SVGProps } from 'react';
 import { TimeLocaleDefinition } from 'd3-time-format';
