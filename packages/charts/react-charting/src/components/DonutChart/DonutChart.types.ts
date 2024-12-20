@@ -70,6 +70,10 @@ export interface IDonutChartProps extends ICartesianChartProps {
    */
   roundCorners?: boolean;
 
+  /**
+   * Optional callback to access the IChart interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
   componentRef?: IRefObject<IChart>;
 }
 

@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+import { useTheme } from '@fluentui/react';
+import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
 import {
@@ -26,9 +28,6 @@ import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
 import { IImageExportOptions, toImage } from './helpers';
 import { IChart } from '../../types/index';
-
-import { useTheme } from '@fluentui/react';
-import { IRefObject } from '@fluentui/react/lib/Utilities';
 
 /**
  * DeclarativeChart schema.
@@ -63,6 +62,9 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
   componentRef?: IRefObject<IDeclarativeChart>;
 }
 
+/**
+ * {@docCategory DeclarativeChart}
+ */
 export interface IDeclarativeChart {
   download: (opts?: IImageExportOptions) => Promise<string>;
 }
@@ -206,7 +208,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         />
       );
     case 'indicator':
-      if (plotlySchema?.data?.[0]?.mode?.includes('gauge')) {
+      if (data?.[0]?.mode?.includes('gauge')) {
         return (
           <GaugeChart
             {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)}

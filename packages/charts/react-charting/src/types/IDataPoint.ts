@@ -815,6 +815,9 @@ export interface ICustomizedCalloutData {
   values: ICustomizedCalloutDataPoint[];
 }
 
+/**
+ * {@docCategory Chart}
+ */
 export interface IChart {
   container: HTMLElement | null;
 }

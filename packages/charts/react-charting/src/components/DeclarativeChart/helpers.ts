@@ -1,7 +1,8 @@
 import { create as d3Create, select as d3Select, Selection } from 'd3-selection';
 
-// const DOM_URL = window.URL || window.webkitURL;
-
+/**
+ * {@docCategory DeclarativeChart}
+ */
 export interface IImageExportOptions {
   width?: number;
   height?: number;
@@ -20,7 +21,7 @@ export function toImage(chartContainer?: HTMLElement | null, opts: IImageExportO
       const svg = toSVG(chartContainer, background);
 
       let s = new XMLSerializer().serializeToString(svg.node);
-      s = btoa(unescapePolyfill(encodeURIComponent(s)));
+      s = btoa(unescapePonyfill(encodeURIComponent(s)));
 
       svgToPng(s, {
         width: opts.width || svg.width,
@@ -200,20 +201,15 @@ function svgToPng(svg: string, opts: IImageExportOptions = {}): Promise<string> 
     const h1 = scale * h0;
 
     const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     const img = new Image();
 
-    // let svgBlob: Blob | null = new window.Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
-    // const url = DOM_URL.createObjectURL(svgBlob);
     const url = 'data:image/svg+xml;base64,' + svg;
 
     canvas.width = w1;
     canvas.height = h1;
 
     img.onload = function () {
-      // svgBlob = null;
-      // DOM_URL.revokeObjectURL(url);
-
+      const ctx = canvas.getContext('2d');
       if (!ctx) {
         return reject(new Error('Canvas context is null'));
       }
@@ -226,9 +222,6 @@ function svgToPng(svg: string, opts: IImageExportOptions = {}): Promise<string> 
     };
 
     img.onerror = function (err) {
-      // svgBlob = null;
-      // DOM_URL.revokeObjectURL(url);
-
       reject(err);
     };
 
@@ -236,20 +229,15 @@ function svgToPng(svg: string, opts: IImageExportOptions = {}): Promise<string> 
   });
 }
 
-// function fixBinary(b: string) {
-//   const len = b.length;
-//   const buf = new ArrayBuffer(len);
-//   const arr = new Uint8Array(buf);
-//   for (let i = 0; i < len; i++) {
-//     arr[i] = b.charCodeAt(i);
-//   }
-//   return buf;
-// }
-
 const hex2 = /^[\da-f]{2}$/i;
 const hex4 = /^[\da-f]{4}$/i;
 
-function unescapePolyfill(str: string) {
+/**
+ * A ponyfill for the deprecated `unescape` method, taken from the `core-js` library.
+ *
+ * Source: {@link https://github.com/zloirock/core-js/blob/167136f479d3b8519953f2e4c534ecdd1031d3cf/packages/core-js/modules/es.unescape.js core-js/packages/core-js/modules/es.unescape.js}
+ */
+function unescapePonyfill(str: string) {
   let result = '';
   const length = str.length;
   let index = 0;

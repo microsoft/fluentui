@@ -39,20 +39,11 @@ const dropdownStyles = { dropdown: { width: 200 } };
 
 function fileSaver(url: string) {
   const saveLink = document.createElement('a');
-
-  // const binary = fixBinary(window.atob(url));
-  // let blob: Blob | null = new window.Blob([binary], { type: 'image/png' });
-  // const objectUrl = DOM_URL.createObjectURL(blob);
-
-  // saveLink.href = objectUrl;
   saveLink.href = url;
   saveLink.download = 'converted-image.png';
   document.body.appendChild(saveLink);
   saveLink.click();
-
   document.body.removeChild(saveLink);
-  // DOM_URL.revokeObjectURL(objectUrl);
-  // blob = null;
 }
 
 export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarativeChartState> {
