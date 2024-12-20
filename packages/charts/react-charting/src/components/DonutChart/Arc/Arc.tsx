@@ -130,11 +130,10 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
   private _renderArcLabel = (className: string) => {
     const { arc, data, innerRadius, outerRadius, showLabelsInPercent, totalValue, hideLabels, activeArc } = this.props;
-
     if (
       hideLabels ||
       Math.abs(data!.endAngle - data!.startAngle) < Math.PI / 12 ||
-      !this._shouldHighlightArc(activeArc!, data!.data.legend!)
+      (activeArc && activeArc.length > 0 && !this._shouldHighlightArc(activeArc!, data!.data.legend!))
     ) {
       return null;
     }

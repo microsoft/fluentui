@@ -111,7 +111,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
     const chartData = this._elevateToMinimums(points.filter((d: IChartDataPoint) => d.data! >= 0));
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
-
     return !this._isChartEmpty() ? (
       <div
         className={this._classNames.root}
@@ -281,8 +280,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     }
   }
 
-  private _isLegendHighlighted = (legend: string): boolean => {
-    return this._getHighlightedLegend().indexOf(legend) > -1;
+  private _isLegendHighlighted = (legend: string | undefined): boolean => {
+    return this._getHighlightedLegend().includes(legend!);
   };
 
   private _noLegendsHighlighted = (): boolean => {
@@ -293,7 +292,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._currentHoverElement = element;
     this.setState({
       /** Show the callout if highlighted arc is focused and Hide it if unhighlighted arc is focused */
-      showHover: this._noLegendsHighlighted() || this._isLegendHighlighted(data.legend!),
+      showHover: this._noLegendsHighlighted() || this._isLegendHighlighted(data.legend),
       value: data.data!.toString(),
       legend: data.legend,
       color: data.color!,
@@ -318,7 +317,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
       this.setState({
         /** Show the callout if highlighted arc is hovered and Hide it if unhighlighted arc is hovered */
-        showHover: this._noLegendsHighlighted() || this._isLegendHighlighted(data.legend!),
+        showHover: this._noLegendsHighlighted() || this._isLegendHighlighted(data.legend),
         value: data.data!.toString(),
         legend: data.legend,
         color,
@@ -343,9 +342,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   };
 
   private _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
-    const highlightedLegends = this._getHighlightedLegend().filter(legend => legend !== undefined);
-
-    if (this.state.showHover) {
+    const highlightedLegends = this._getHighlightedLegend();
+    if (valueInsideDonut !== undefined && (highlightedLegends.length !== 0 || this.state.showHover)) {
       const legendValue = data.find(point => point.legend === this.state.legend);
       return legendValue
         ? legendValue.yAxisCalloutData

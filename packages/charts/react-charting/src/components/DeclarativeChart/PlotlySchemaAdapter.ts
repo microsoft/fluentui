@@ -65,11 +65,11 @@ export const transformPlotlyJsonToDonutProps = (
     };
   });
 
-  const width: number = layout?.width || 440;
-  const height: number = layout?.height || 220;
-  const hideLabels = firstData.textinfo ? !['value', 'percent'].includes(firstData.textinfo) : false;
-  const donutMarginHorizontal = hideLabels ? 0 : 80;
-  const donutMarginVertical = 40 + (hideLabels ? 0 : 40);
+  const width: number = typeof layout?.width === 'number' ? layout?.width : 440;
+  const height: number = typeof layout?.height === 'number' ? layout?.height : 220;
+  const hideLabels: boolean = firstData.textinfo ? !['value', 'percent'].includes(firstData.textinfo) : false;
+  const donutMarginHorizontal: number = hideLabels ? 0 : 80;
+  const donutMarginVertical: number = 40 + (hideLabels ? 0 : 40);
   const innerRadius: number = firstData.hole
     ? firstData.hole * (Math.min(width - donutMarginHorizontal, height - donutMarginVertical) / 2)
     : 0;
@@ -77,7 +77,7 @@ export const transformPlotlyJsonToDonutProps = (
   const styles: IDonutChartProps['styles'] = {
     root: {
       '[class^="arcLabel"]': {
-        fontSize: firstData.textfont?.size,
+        ...(typeof firstData.textfont?.size === 'number' ? { fontSize: firstData.textfont.size } : {}),
       },
     },
   };
@@ -225,8 +225,8 @@ export const transformPlotlyJsonToVBCProps = (
     const totalDataPoints = d3Merge(buckets).length;
 
     buckets.forEach(bucket => {
-      const legend = series.name || `Series ${index + 1}`;
-      const color = getColor(legend, colorMap, isDarkTheme);
+      const legend: string = series.name || `Series ${index + 1}`;
+      const color: string = getColor(legend, colorMap, isDarkTheme);
       let y = bucket.length;
 
       if (series.histnorm === 'percent') {
@@ -259,7 +259,7 @@ export const transformPlotlyJsonToVBCProps = (
 
   return {
     data: vbcData,
-    chartTitle: layout?.title,
+    chartTitle: typeof layout?.title === 'string' ? layout?.title : '',
     // width: layout?.width,
     // height: layout?.height,
     hideLegend: true,
@@ -281,7 +281,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
-    const legend = series.name || `Series ${index + 1}`;
+    const legend: string = series.name || `Series ${index + 1}`;
     const lineColor = getColor(legend, colorMap, isDarkTheme);
 
     return {
@@ -295,7 +295,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   });
 
   const chartProps: IChartProps = {
-    chartTitle: layout.title || '',
+    chartTitle: typeof layout.title === 'string' ? layout.title : '',
     lineChartData: chartData,
   };
 
@@ -333,10 +333,10 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     })
     .flat();
 
-  const chartHeight = layout.height || 450;
-  const margin = layout.margin?.l || 0;
-  const padding = layout.margin?.pad || 0;
-  const availableHeight = chartHeight - margin - padding;
+  const chartHeight: number = typeof layout.height === 'number' ? layout.height : 450;
+  const margin: number = typeof layout.margin?.l === 'number' ? layout.margin?.l : 0;
+  const padding: number = typeof layout.margin?.pad === 'number' ? layout.margin?.pad : 0;
+  const availableHeight: number = chartHeight - margin - padding;
   const numberOfBars = data[0].y.length;
   const scalingFactor = 0.01;
   const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
@@ -344,13 +344,13 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
 
   return {
     data: chartData,
-    chartTitle: layout.title || '',
+    chartTitle: typeof layout.title === 'string' ? layout.title : '',
     barHeight,
     showYAxisLables: true,
     styles: {
       root: {
         height: chartHeight,
-        width: layout.width || 600,
+        width: typeof layout.width === 'number' ? layout.width : 600,
       },
     },
   };
@@ -378,7 +378,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
     });
   });
   const heatmapData: IHeatMapChartData = {
-    legend: firstData.name || '',
+    legend: typeof firstData.name === 'string' ? firstData.name : '',
     data: heatmapDataPoints,
     value: 0,
   };
@@ -432,17 +432,17 @@ export const transformPlotlyJsonToSankeyProps = (
     }),
   };
 
-  const width: number = layout?.width || 440;
-  const height: number = layout?.height || 220;
+  const width: number = typeof layout?.width === 'number' ? layout?.width : 440;
+  const height: number = typeof layout?.height === 'number' ? layout?.height : 220;
   const styles: ISankeyChartProps['styles'] = {
     root: {
-      fontSize: layout.font?.size,
+      ...(typeof layout.font?.size === 'number' ? { fontSize: layout.font?.size } : {}),
     },
   };
   const shouldResize: number = width + height;
   return {
     data: {
-      chartTitle: layout?.title,
+      chartTitle: typeof layout?.title === 'string' ? layout?.title : '',
       SankeyChartData: sankeyChartData,
     },
     width,
@@ -494,15 +494,15 @@ export const transformPlotlyJsonToGaugeProps = (
 
   return {
     segments,
-    chartValue: firstData.value,
-    chartTitle: firstData.title?.text,
+    chartValue: typeof firstData.value === 'number' ? firstData.value : 0,
+    chartTitle: typeof firstData.title?.text === 'string' ? firstData.title?.text : '',
     sublabel,
     // range values can be null
-    minValue: firstData.gauge?.axis?.range?.[0] ?? undefined,
-    maxValue: firstData.gauge?.axis?.range?.[1] ?? undefined,
+    minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
+    maxValue: typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : undefined,
     chartValueFormat: () => firstData.value,
-    width: layout?.width,
-    height: layout?.height,
+    width: typeof layout?.width === 'number' ? layout?.width : 0,
+    height: typeof layout?.height === 'number' ? layout?.height : 0,
     hideLegend: true,
     styles,
   };
