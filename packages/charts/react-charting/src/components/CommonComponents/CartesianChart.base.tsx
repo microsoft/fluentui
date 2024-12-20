@@ -32,7 +32,7 @@ import {
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
-import {IChart} from '../../types/index'
+import { IChart } from '../../types/index';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 const ChartHoverCard = React.lazy(() =>
@@ -64,7 +64,10 @@ export interface ICartesianChartState {
  * 2.Callout
  * 3.Fit parent Continer
  */
-export class CartesianChartBase extends React.Component<IModifiedCartesianChartProps, ICartesianChartState>implements IChart {
+export class CartesianChartBase
+  extends React.Component<IModifiedCartesianChartProps, ICartesianChartState>
+  implements IChart
+{
   private _classNames: IProcessedStyleSet<ICartesianChartStyles>;
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
