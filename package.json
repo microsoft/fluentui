@@ -69,7 +69,7 @@
     "@griffel/webpack-loader": "2.2.10",
     "@jest/reporters": "29.7.0",
     "@mdx-js/loader": "2.3.0",
-    "@microsoft/api-extractor": "7.38.5",
+    "@microsoft/api-extractor": "7.39.0",
     "@microsoft/api-extractor-model": "7.28.3",
     "@microsoft/eslint-plugin-sdl": "0.1.9",
     "@microsoft/load-themed-styles": "1.10.26",
@@ -218,9 +218,9 @@
     "doctrine": "3.0.0",
     "dotparser": "1.1.1",
     "ejs": "3.1.10",
-    "embla-carousel": "8.3.0",
-    "embla-carousel-autoplay": "8.3.0",
-    "embla-carousel-fade": "8.3.0",
+    "embla-carousel": "8.5.1",
+    "embla-carousel-autoplay": "8.5.1",
+    "embla-carousel-fade": "8.5.1",
     "enquirer": "2.3.6",
     "enzyme": "3.10.0",
     "enzyme-to-json": "3.6.2",
@@ -336,11 +336,11 @@
     "tmp": "0.2.1",
     "ts-jest": "29.1.1",
     "ts-loader": "9.4.2",
-    "ts-node": "10.9.1",
+    "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
     "tsconfig-paths-webpack-plugin": "4.1.0",
     "tslib": "2.6.3",
-    "typescript": "5.2.2",
+    "typescript": "5.3.3",
     "vinyl": "2.2.0",
     "webpack": "5.94.0",
     "webpack-bundle-analyzer": "4.10.1",
@@ -366,6 +366,7 @@
       "packages/react-components/*",
       "packages/react-components/*/*",
       "packages/charts/*",
+      "packages/charts/*/*",
       "scripts/*",
       "tools/*",
       "typings"
@@ -378,7 +379,7 @@
     "swc-loader": "^0.2.6",
     "prettier": "2.8.8",
     "puppeteer": "19.6.0",
-    "@microsoft/api-extractor/typescript": "5.2.2"
+    "ws": "8.17.1"
   },
   "nx": {
     "includedScripts": []

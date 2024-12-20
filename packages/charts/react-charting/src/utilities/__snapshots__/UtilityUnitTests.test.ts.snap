@@ -3784,12 +3784,44 @@ Array [
 ]
 `;
 
+exports[`prepareDatapoints should handle the case where the range spans across zero 1`] = `
+Array [
+  -9,
+  -6,
+  -3,
+  0,
+]
+`;
+
 exports[`prepareDatapoints should return an array of uniformly distributed data points 1`] = `
 Array [
   0,
   34,
   68,
   102,
+]
+`;
+
+exports[`prepareDatapoints should return data points for a negative only range 1`] = `
+Array [
+  -5,
+  -1,
+]
+`;
+
+exports[`prepareDatapoints should return data points for positive only range 1`] = `
+Array [
+  1,
+  5,
+]
+`;
+
+exports[`prepareDatapoints should return data points when minVal is negative and maxVal is non-negative 1`] = `
+Array [
+  -8,
+  -4,
+  0,
+  4,
 ]
 `;
 

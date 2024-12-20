@@ -1,1 +1,1 @@
-export * from './useListSelection';
+export { useListSelection } from './useListSelection';

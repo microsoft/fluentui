@@ -27,4 +27,5 @@ export enum FileIconType {
   todoItem,
   portfolio,
   album,
+  listForm,
 }

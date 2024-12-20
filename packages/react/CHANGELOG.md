@@ -1,8 +1,74 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 01 Nov 2024 07:23:21 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Dec 2024 07:23:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.122.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.1)
+
+Fri, 13 Dec 2024 07:23:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.0..@fluentui/react_v8.122.1)
+
+### Patches
+
+- Bump @fluentui/foundation-legacy to v8.4.22 ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.56 ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by beachball)
+- Bump @fluentui/react-focus to v8.9.19 ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by beachball)
+- Bump @fluentui/style-utilities to v8.11.5 ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by beachball)
+
+## [8.122.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.0)
+
+Thu, 12 Dec 2024 07:22:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.121.13..@fluentui/react_v8.122.0)
+
+### Minor changes
+
+- fix: Added label, required, and error properties to BasePicker. ([PR #33243](https://github.com/microsoft/fluentui/pull/33243) by tpalacino@users.noreply.github.com)
+
+## [8.121.13](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.13)
+
+Fri, 22 Nov 2024 07:21:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.121.12..@fluentui/react_v8.121.13)
+
+### Patches
+
+- fix: Left-aligning menu items in Pivot's overflow menu. ([PR #33325](https://github.com/microsoft/fluentui/pull/33325) by makotom@microsoft.com)
+
+## [8.121.12](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.12)
+
+Tue, 19 Nov 2024 07:22:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.121.11..@fluentui/react_v8.121.12)
+
+### Patches
+
+- fix: Adding high contrast selector to SplitButton's menu button styles so that the styles do not bleed when high contrast mode is not active. ([PR #33290](https://github.com/microsoft/fluentui/pull/33290) by Humberto.Morimoto@microsoft.com)
+
+## [8.121.11](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.11)
+
+Thu, 14 Nov 2024 01:04:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.121.10..@fluentui/react_v8.121.11)
+
+### Patches
+
+- fix(v8 SwatchColorPicker): Add forced-color-adjust to gradients ([PR #33267](https://github.com/microsoft/fluentui/pull/33267) by jiangemma@microsoft.com)
+
+## [8.121.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.10)
+
+Wed, 13 Nov 2024 07:08:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.121.9..@fluentui/react_v8.121.10)
+
+### Patches
+
+- fix: Left-aligning SuggestionItem's contents so they do not move and shift on hover. ([PR #33263](https://github.com/microsoft/fluentui/pull/33263) by Humberto.Morimoto@microsoft.com)
+
+## [8.121.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.9)
+
+Tue, 12 Nov 2024 07:21:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.121.8..@fluentui/react_v8.121.9)
+
+### Patches
+
+- fix(v8 DatePicker): Add aria-required to required DatePickers ([PR #33239](https://github.com/microsoft/fluentui/pull/33239) by jiangemma@microsoft.com)
 
 ## [8.121.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.121.8)
 

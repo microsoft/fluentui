@@ -1,8 +1,96 @@
 # Change Log - @fluentui/react-carousel
 
-This log was last generated on Tue, 15 Oct 2024 17:17:52 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Dec 2024 16:26:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.4.3)
+
+Mon, 16 Dec 2024 16:26:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.4.2..@fluentui/react-carousel_v9.4.3)
+
+### Patches
+
+- fix: Set totalSlides on CarouselNav to controlled state ([PR #33453](https://github.com/microsoft/fluentui/pull/33453) by mifraser@microsoft.com)
+- chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+- fix: Set tabster default on carousel initialization ([PR #33401](https://github.com/microsoft/fluentui/pull/33401) by mifraser@microsoft.com)
+- fix: Ensure a viable background color for nav items in high contrast windows ([PR #33411](https://github.com/microsoft/fluentui/pull/33411) by mifraser@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.12 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-button to v9.3.98 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.71 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.48 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.21.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-tabster to v9.23.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-theme to v9.1.24 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-utilities to v9.18.19 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+
+## [9.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.4.2)
+
+Mon, 09 Dec 2024 17:38:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.4.1..@fluentui/react-carousel_v9.4.2)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.11 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
+- Bump @fluentui/react-button to v9.3.97 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
+
+## [9.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.4.1)
+
+Fri, 06 Dec 2024 12:53:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.4.0..@fluentui/react-carousel_v9.4.1)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.10 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-button to v9.3.96 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.70 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.47 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.21.1 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-tabster to v9.23.1 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-theme to v9.1.23 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-utilities to v9.18.18 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.4.0)
+
+Thu, 28 Nov 2024 09:30:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.3.1..@fluentui/react-carousel_v9.4.0)
+
+### Minor changes
+
+- feat: Add autoplay index change callback and fix autoplay pause on interaction ([PR #33291](https://github.com/microsoft/fluentui/pull/33291) by mifraser@microsoft.com)
+
+## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.3.1)
+
+Tue, 12 Nov 2024 09:31:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.3.0..@fluentui/react-carousel_v9.3.1)
+
+### Patches
+
+- fix: Enable controlled index to be set to a new card when added ([PR #33177](https://github.com/microsoft/fluentui/pull/33177) by mifraser@microsoft.com)
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.3.0)
+
+Mon, 11 Nov 2024 10:01:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.2.0..@fluentui/react-carousel_v9.3.0)
+
+### Minor changes
+
+- fix: Drag events now trigger onActiveIndexChange with drag/touch event attached ([PR #33092](https://github.com/microsoft/fluentui/pull/33092) by mifraser@microsoft.com)
+- feat: Add CarouselViewport to correctly define CarouselSlider within a static container ([PR #33155](https://github.com/microsoft/fluentui/pull/33155) by mifraser@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.9 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-button to v9.3.95 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.69 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.46 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.21.0 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-tabster to v9.23.0 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-theme to v9.1.22 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-utilities to v9.18.17 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+
+### Patches
+
+- fix: Ensure pointer events do not block future focus index changes ([PR #33204](https://github.com/microsoft/fluentui/pull/33204) by mifraser@microsoft.com)
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- style: resolve exposed jsx pragma lint issues within monorepo ([PR #32975](https://github.com/microsoft/fluentui/pull/32975) by martinhochel@microsoft.com)
 
 ## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.2.0)
 

@@ -1,8 +1,74 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Fri, 01 Nov 2024 07:23:21 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Dec 2024 07:23:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.187](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.187)
+
+Fri, 13 Dec 2024 07:23:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.186..@fluentui/react-experiments_v8.14.187)
+
+### Patches
+
+- Bump @fluentui/react to v8.122.1 ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by beachball)
+- Bump @fluentui/foundation-legacy to v8.4.22 ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.56 ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by beachball)
+- Bump @fluentui/style-utilities to v8.11.5 ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by beachball)
+
+## [8.14.186](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.186)
+
+Thu, 12 Dec 2024 07:22:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.185..@fluentui/react-experiments_v8.14.186)
+
+### Patches
+
+- Bump @fluentui/react to v8.122.0 ([PR #33243](https://github.com/microsoft/fluentui/pull/33243) by beachball)
+
+## [8.14.185](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.185)
+
+Fri, 22 Nov 2024 07:21:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.184..@fluentui/react-experiments_v8.14.185)
+
+### Patches
+
+- Bump @fluentui/react to v8.121.13 ([PR #33325](https://github.com/microsoft/fluentui/pull/33325) by beachball)
+
+## [8.14.184](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.184)
+
+Tue, 19 Nov 2024 07:22:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.183..@fluentui/react-experiments_v8.14.184)
+
+### Patches
+
+- Bump @fluentui/react to v8.121.12 ([PR #33290](https://github.com/microsoft/fluentui/pull/33290) by beachball)
+
+## [8.14.183](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.183)
+
+Thu, 14 Nov 2024 01:04:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.182..@fluentui/react-experiments_v8.14.183)
+
+### Patches
+
+- Bump @fluentui/react to v8.121.11 ([PR #33268](https://github.com/microsoft/fluentui/pull/33268) by beachball)
+
+## [8.14.182](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.182)
+
+Wed, 13 Nov 2024 07:08:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.181..@fluentui/react-experiments_v8.14.182)
+
+### Patches
+
+- Bump @fluentui/react to v8.121.10 ([PR #33263](https://github.com/microsoft/fluentui/pull/33263) by beachball)
+
+## [8.14.181](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.181)
+
+Tue, 12 Nov 2024 07:21:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.180..@fluentui/react-experiments_v8.14.181)
+
+### Patches
+
+- Bump @fluentui/react to v8.121.9 ([PR #33239](https://github.com/microsoft/fluentui/pull/33239) by beachball)
 
 ## [8.14.180](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.180)
 

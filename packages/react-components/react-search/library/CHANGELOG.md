@@ -1,8 +1,74 @@
 # Change Log - @fluentui/react-search
 
-This log was last generated on Tue, 15 Oct 2024 17:17:53 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Dec 2024 16:26:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.26)
+
+Mon, 16 Dec 2024 16:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.0.25..@fluentui/react-search_v9.0.26)
+
+### Patches
+
+- Bump @fluentui/react-input to v9.4.96 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.48 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-theme to v9.1.24 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-utilities to v9.18.19 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+
+## [9.0.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.25)
+
+Mon, 09 Dec 2024 17:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.0.24..@fluentui/react-search_v9.0.25)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- Bump @fluentui/react-input to v9.4.95 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
+
+## [9.0.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.24)
+
+Fri, 06 Dec 2024 12:53:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.0.23..@fluentui/react-search_v9.0.24)
+
+### Patches
+
+- Bump @fluentui/react-input to v9.4.94 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.47 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-theme to v9.1.23 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-utilities to v9.18.18 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+
+## [9.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.23)
+
+Thu, 28 Nov 2024 09:30:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.0.22..@fluentui/react-search_v9.0.23)
+
+### Patches
+
+- fix(react-search): restore focus to SearchBox after clear button is clicked ([PR #33340](https://github.com/microsoft/fluentui/pull/33340) by jiangemma@microsoft.com)
+
+## [9.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.22)
+
+Mon, 18 Nov 2024 09:44:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.0.21..@fluentui/react-search_v9.0.22)
+
+### Patches
+
+- Bump @fluentui/react-input to v9.4.93 ([PR #33229](https://github.com/microsoft/fluentui/pull/33229) by beachball)
+
+## [9.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.21)
+
+Mon, 11 Nov 2024 10:00:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.0.20..@fluentui/react-search_v9.0.21)
+
+### Patches
+
+- fix SearchBox contentAfter hidden clickable ([PR #33005](https://github.com/microsoft/fluentui/pull/33005) by carla.muntean@microsoft.com)
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- Bump @fluentui/react-input to v9.4.92 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.46 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-theme to v9.1.22 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-utilities to v9.18.17 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
 
 ## [9.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.20)
 

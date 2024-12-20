@@ -52,6 +52,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
   clipchamp: {
     extensions: ['clipchamp'],
   },
+  cliptemplate: {
+    extensions: ['cliptemplate'],
+  },
   code: {
     extensions: [
       'abap',
@@ -318,6 +321,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
   linkedfolder: {
     types: [FileIconType.linkedFolder],
   },
+  listform: {
+    types: [FileIconType.listForm],
+  },
   listitem: {
     types: [FileIconType.listItem],
   },
@@ -380,7 +386,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
   },
   one: {
     // This is a partial OneNote page or section export. Not whole notebooks, see "onetoc"
-    extensions: ['one'],
+    extensions: ['one', 'onepart'],
   },
   onetoc: {
     // This is an entire OneNote notebook.

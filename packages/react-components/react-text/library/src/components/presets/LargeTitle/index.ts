@@ -1,2 +1,2 @@
-export * from './LargeTitle';
+export { LargeTitle } from './LargeTitle';
 export { largeTitleClassNames } from './useLargeTitleStyles.styles';

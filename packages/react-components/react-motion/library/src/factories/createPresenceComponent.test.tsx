@@ -21,7 +21,10 @@ function createElementMock() {
     cancel: jest.fn(),
     persist: jest.fn(),
     finish: finishMock,
-    finished: Promise.resolve(),
+
+    set onfinish(fn: () => void) {
+      fn();
+    },
   }));
   const ElementMock = React.forwardRef<{ animate: () => void }, { onRender?: () => void }>((props, ref) => {
     React.useImperativeHandle(ref, () => ({
@@ -41,6 +44,28 @@ function createElementMock() {
 }
 
 describe('createPresenceComponent', () => {
+  let hasAnimation: boolean;
+  beforeEach(() => {
+    if (!global.Animation) {
+      hasAnimation = false;
+      global.Animation = {
+        // @ts-expect-error mock
+        prototype: {
+          persist: jest.fn(),
+        },
+      };
+    } else {
+      hasAnimation = true;
+    }
+  });
+
+  afterEach(() => {
+    if (!hasAnimation) {
+      // @ts-expect-error mock
+      delete global.Animation;
+    }
+  });
+
   describe('appear', () => {
     it('does not animate by default', () => {
       const TestPresence = createPresenceComponent(motion);
@@ -66,6 +91,24 @@ describe('createPresenceComponent', () => {
       );
 
       expect(animateMock).toHaveBeenCalledWith(enterKeyframes, options);
+    });
+
+    it('animates when is "true" (without .persist())', () => {
+      // @ts-expect-error mock
+      delete window.Animation.prototype.persist;
+      const TestPresence = createPresenceComponent(motion);
+      const { animateMock, ElementMock } = createElementMock();
+
+      render(
+        <TestPresence appear visible>
+          <ElementMock />
+        </TestPresence>,
+      );
+
+      expect(animateMock).toHaveBeenCalledWith(enterKeyframes, {
+        ...options,
+        duration: 500,
+      });
     });
 
     it('finishes motion when wrapped in motion behaviour context with skip behaviour', async () => {

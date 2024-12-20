@@ -2,6 +2,9 @@ import * as React from 'react';
 import type { AnimationHandle, AtomMotion } from '../types';
 
 function useAnimateAtomsInSupportedEnvironment() {
+  // eslint-disable-next-line @nx/workspace-no-restricted-globals
+  const SUPPORTS_PERSIST = typeof window !== 'undefined' && typeof window.Animation?.prototype.persist === 'function';
+
   return React.useCallback(
     (
       element: HTMLElement,
@@ -22,7 +25,12 @@ function useAnimateAtomsInSupportedEnvironment() {
           ...(isReducedMotion && { duration: 1 }),
         });
 
-        animation.persist();
+        if (SUPPORTS_PERSIST) {
+          animation.persist();
+        } else {
+          const resultKeyframe = keyframes[keyframes.length - 1];
+          Object.assign(element.style ?? {}, resultKeyframe);
+        }
 
         return animation;
       });
@@ -34,20 +42,22 @@ function useAnimateAtomsInSupportedEnvironment() {
           });
         },
         setMotionEndCallbacks(onfinish: () => void, oncancel: () => void) {
-          Promise.all(animations.map(animation => animation.finished))
+          // Heads up!
+          // This could use "Animation:finished", but it's causing a memory leak in Chromium.
+          // See: https://issues.chromium.org/u/2/issues/383016426
+          const promises = animations.map(animation => {
+            return new Promise<void>((resolve, reject) => {
+              animation.onfinish = () => resolve();
+              animation.oncancel = () => reject();
+            });
+          });
+
+          Promise.all(promises)
             .then(() => {
               onfinish();
             })
-            .catch((err: unknown) => {
-              const DOMException = element.ownerDocument.defaultView?.DOMException;
-
-              // Ignores "DOMException: The user aborted a request" that appears if animations are cancelled
-              if (DOMException && err instanceof DOMException && err.name === 'AbortError') {
-                oncancel();
-                return;
-              }
-
-              throw err;
+            .catch(() => {
+              oncancel();
             });
         },
 
@@ -73,7 +83,7 @@ function useAnimateAtomsInSupportedEnvironment() {
         },
       };
     },
-    [],
+    [SUPPORTS_PERSIST],
   );
 }
 

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Fri, 01 Nov 2024 07:23:21 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Dec 2024 07:23:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.12.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.12.6)
+
+Fri, 13 Dec 2024 07:23:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.12.5..@fluentui/react-file-type-icons_v8.12.6)
+
+### Patches
+
+- Adding cliptemplate and listform filetype and itemtype mappings & updating corresponding fabric-cdn URL ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.11.5 ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by beachball)
+
+## [8.12.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.12.5)
+
+Fri, 22 Nov 2024 07:21:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.12.4..@fluentui/react-file-type-icons_v8.12.5)
+
+### Patches
+
+- fix(react-file-type-icons): Map onepart extension to onenote icon ([PR #33318](https://github.com/microsoft/fluentui/pull/33318) by cpalaparthi@microsoft.com)
 
 ## [8.12.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.12.4)
 

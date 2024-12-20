@@ -181,6 +181,7 @@ function usePositioningOptions(options: PositioningOptions) {
     useTransform,
     matchTargetSize,
     disableUpdateOnResize = false,
+    shiftToCoverTarget,
   } = options;
 
   const { dir, targetDocument } = useFluent();
@@ -205,6 +206,7 @@ function usePositioningOptions(options: PositioningOptions) {
           disableTether,
           overflowBoundaryPadding,
           isRtl,
+          shiftToCoverTarget,
         }),
         autoSize && maxSizeMiddleware(autoSize, { container, overflowBoundary, overflowBoundaryPadding, isRtl }),
         intersectingMiddleware(),

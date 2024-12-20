@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add support for mountNode with className",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

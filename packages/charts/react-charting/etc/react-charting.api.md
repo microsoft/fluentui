@@ -24,7 +24,6 @@ import { SankeyLink } from 'd3-sankey';
 import { SankeyNode } from 'd3-sankey';
 import { ScaleBand } from 'd3-scale';
 import { ScaleLinear } from 'd3-scale';
-import { SVGProps } from 'react';
 import { TimeLocaleDefinition } from 'd3-time-format';
 
 // @public
@@ -119,6 +118,15 @@ export const DataVizPalette: {
     success: string;
     highSuccess: string;
 };
+
+// @public
+export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
+
+// @public
+export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
+    chartSchema: Schema;
+    onSchemaChange?: (eventData: Schema) => void;
+}
 
 // @public
 export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
@@ -285,6 +293,7 @@ export interface ICartesianChartProps {
     showXAxisLablesTooltip?: boolean;
     strokeWidth?: number;
     styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
+    supportNegativeData?: boolean;
     svgProps?: React_2.SVGProps<SVGSVGElement>;
     theme?: ITheme;
     tickFormat?: string;
@@ -400,8 +409,8 @@ export interface IChartProps {
     chartTitle?: string;
     chartTitleAccessibilityData?: IAccessibilityProps;
     lineChartData?: ILineChartPoints[];
-    pointLineOptions?: SVGProps<SVGLineElement>;
-    pointOptions?: SVGProps<SVGCircleElement>;
+    pointLineOptions?: React_2.SVGProps<SVGLineElement>;
+    pointOptions?: React_2.SVGProps<SVGCircleElement>;
     SankeyChartData?: ISankeyChartData;
 }
 
@@ -867,6 +876,8 @@ export interface ILegendsProps {
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
     overflowText?: string;
+    selectedLegend?: string;
+    selectedLegends?: string[];
     shape?: LegendShape;
     styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
     theme?: ITheme;
@@ -933,7 +944,7 @@ export interface ILineChartGap {
 }
 
 // @public (undocumented)
-export interface ILineChartLineOptions extends SVGProps<SVGPathElement> {
+export interface ILineChartLineOptions extends React_2.SVGProps<SVGPathElement> {
     lineBorderColor?: string;
     lineBorderWidth?: string | number;
     strokeDasharray?: string | number;
@@ -1035,7 +1046,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     createStringYAxis: (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean, barWidth: number | undefined) => ScaleBand<string>;
     // Warning: (ae-forgotten-export) The symbol "IYAxisParams" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "IAxisData" needs to be exported by the entry point index.d.ts
-    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, useSecondaryYScale?: boolean) => ScaleLinear<number, number, never>;
+    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, useSecondaryYScale?: boolean, supportNegativeData?: boolean) => ScaleLinear<number, number, never>;
     culture?: string;
     customizedCallout?: any;
     datasetForXAxisDomain?: string[];
@@ -1591,6 +1602,11 @@ export const PieChart: React_2.FunctionComponent<IPieChartProps>;
 
 // @public
 export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
+
+// @public
+export interface Schema {
+    plotlySchema: any;
+}
 
 // @public (undocumented)
 export const Shape: React_2.FC<IShapeProps>;

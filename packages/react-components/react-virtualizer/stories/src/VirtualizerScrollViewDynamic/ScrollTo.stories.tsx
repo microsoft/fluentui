@@ -3,7 +3,6 @@ import { VirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
 import type { ScrollToInterface } from '@fluentui/react-virtualizer';
 import type { VirtualizerDataRef } from '@fluentui/react-virtualizer';
 import { Button, Input, makeStyles, Text } from '@fluentui/react-components';
-import { useEffect } from 'react';
 
 const useStyles = makeStyles({
   child: {
@@ -42,7 +41,7 @@ export const ScrollTo = () => {
     setGoToIndex(newIndex);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     let _totalSize = 0;
     for (let i = 0; i < childLength; i++) {
       arraySize.current[i] = Math.random() * 250 + minHeight;
