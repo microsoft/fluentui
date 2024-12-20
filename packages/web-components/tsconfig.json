@@ -1,7 +1,8 @@
 {
   "extends": "../../tsconfig.base.wc.json",
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "ES2022",
+    "useDefineForClassFields": false,
     "module": "ESNext",
     "moduleResolution": "bundler",
     "experimentalDecorators": true,
