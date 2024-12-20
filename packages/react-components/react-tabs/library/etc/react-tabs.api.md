@@ -124,7 +124,7 @@ export type TabValue = unknown;
 export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
 
 // @public
-export const useTabButtonStyles_unstable: (state: TabState, slot: TabState['root']) => TabState;
+export const useTabButtonStyles_unstable: (state: TabState, slot: TabState["root"]) => TabState;
 
 // @public
 export const useTabContentStyles_unstable: (state: TabState) => TabState;

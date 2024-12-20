@@ -56,7 +56,13 @@ export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
 export function asAsync<TProps extends {}>(options: IAsAsyncOptions<TProps>): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TProps & {
+<<<<<<< HEAD
     asyncPlaceholder?: React_2.ElementType | undefined;
+||||||| parent of 54b71c8488 (chore: update generated api files)
+    asyncPlaceholder?: React_2.ElementType<any> | undefined;
+=======
+    asyncPlaceholder?: React_2.ElementType;
+>>>>>>> 54b71c8488 (chore: update generated api files)
 }> & React_2.RefAttributes<React_2.ElementType<TProps>>>;
 
 // @public
@@ -160,7 +166,7 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 export function createMemoizer<F extends (input: any) => any>(getValue: F): F;
 
 // @public
-export const createMergedRef: <TType, TValue = null>(value?: TValue | undefined) => (...newRefs: (React_2.Ref<TType | TValue | null> | undefined)[]) => (newValue: TType | TValue | null) => void;
+export const createMergedRef: <TType, TValue = null>(value?: TValue) => (...newRefs: (React_2.Ref<TType | null | TValue> | undefined)[]) => ((newValue: TType | TValue | null) => void);
 
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
 //
@@ -1174,7 +1180,7 @@ export function resetIds(counter?: number): void;
 export function resetMemoizations(): void;
 
 // @public
-export const safeRequestAnimationFrame: (component: React_2.Component) => (cb: Function) => void;
+export const safeRequestAnimationFrame: (component: React_2.Component) => ((cb: Function) => void);
 
 // @public
 export const safeSetTimeout: (component: React_2.Component) => (cb: Function, duration: number) => void;
