@@ -85,7 +85,7 @@ export const styles = css`
     --position-area: ${TooltipPositioningOption.below};
   }
   :host([positioning='below-end']) {
-    --position-area: ${TooltipPositioningOption.below};
+    --position-area: ${TooltipPositioningOption['below-end']};
   }
   :host([positioning='before-top']) {
     --position-area: ${TooltipPositioningOption['before-top']};
