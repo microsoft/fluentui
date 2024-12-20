@@ -1,6 +1,6 @@
 import { concatStyleSets } from './concatStyleSets';
 import { IStyleSetBase } from './IStyleSet';
-import { IStyleFunctionOrObject } from './IStyleFunction';
+import { IStyleFunction, IStyleFunctionOrObject } from './IStyleFunction';
 import { DeepPartialV2 as DeepPartial } from './DeepPartial';
 
 /**
@@ -15,7 +15,11 @@ export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSe
   const result: Array<DeepPartial<TStyleSet>> = [];
   for (const styles of allStyles) {
     if (styles) {
-      result.push(typeof styles === 'function' ? styles(styleProps) : styles);
+      if (typeof styles === 'function') {
+        result.push((styles as IStyleFunction<TStyleProps, TStyleSet>)(styleProps));
+      } else {
+        result.push(styles);
+      }
     }
   }
   if (result.length === 1) {
