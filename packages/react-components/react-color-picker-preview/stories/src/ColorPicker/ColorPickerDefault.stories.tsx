@@ -72,9 +72,9 @@ export const Default = () => {
   };
 
   const onRgbChange = (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => {
-    const value = data.displayValue ? parseInt(data.displayValue, 10) : data.value;
+    const value = data.value ?? (data.displayValue !== undefined ? parseFloat(data.displayValue) : null);
 
-    if (!value) {
+    if (value === null || Number.isNaN(value) || !NUMBER_REGEX.test(value.toString())) {
       return;
     }
 
@@ -156,7 +156,6 @@ const InputRgbField = ({
     <div className={styles.colorFieldWrapper}>
       <Label htmlFor={id}>{label}</Label>
       <SpinButton
-        onKeyDown={handleRgbKeyPress}
         className={styles.spinButton}
         min={0}
         max={255}
@@ -175,19 +174,5 @@ const handleOnBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     e.target.setAttribute('aria-invalid', 'true');
   } else {
     e.target.removeAttribute('aria-invalid');
-  }
-};
-
-const handleRgbKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter', 'ArrowUp', 'ArrowDown'];
-
-  const isCtrlCmd = e.ctrlKey || e.metaKey;
-
-  if (isCtrlCmd && e.key) {
-    return;
-  }
-
-  if (!allowedKeys.includes(e.key) && !NUMBER_REGEX.test((e.target as HTMLInputElement).value + e.key)) {
-    e.preventDefault();
   }
 };
