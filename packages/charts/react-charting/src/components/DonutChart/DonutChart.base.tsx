@@ -259,17 +259,18 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
-        onChange={this._onLegendSelectionChange}
+        // eslint-disable-next-line react/jsx-no-bind
+        onChange={this._onLegendSelectionChange.bind(this)}
       />
     );
     return legends;
   }
 
-  private _onLegendSelectionChange = (
+  private _onLegendSelectionChange(
     selectedLegends: string[],
     event: React.MouseEvent<HTMLButtonElement>,
     currentLegend?: ILegend,
-  ) => {
+  ): void {
     if (this.props.legendProps?.canSelectMultipleLegends) {
       this.setState({ selectedLegends });
     } else {
@@ -278,7 +279,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     if (this.props.legendProps?.onChange) {
       this.props.legendProps.onChange(selectedLegends, event, currentLegend);
     }
-  };
+  }
 
   private _isLegendHighlighted = (legend: string): boolean => {
     return this._getHighlightedLegend().indexOf(legend) > -1;
