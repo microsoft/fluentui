@@ -45,6 +45,7 @@ export const styles = css`
     line-height: ${lineHeightBase200};
     margin: unset; /* Remove browser default for [popover] */
     max-width: 240px;
+    overflow: visible;
     padding: 4px ${spacingHorizontalMNudge} 6px;
     position: absolute;
     position-area: var(--position-area);
