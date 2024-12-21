@@ -45,6 +45,7 @@ import {
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IChart } from '../../types/index';
+import { CartesianChartBase } from '../CommonComponents/CartesianChart.base';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
@@ -126,7 +127,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _enableComputationOptimization: boolean;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
-  private _cartesianChartRef: React.RefObject<IChart>;
+  private _cartesianChartRef: React.RefObject<CartesianChartBase>;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -224,7 +225,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           customizedCallout={this._getCustomizedCallout()}
           onChartMouseLeave={this._handleChartMouseLeave}
           enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
-          componentRef={this._cartesianChartRef}
+          ref={this._cartesianChartRef}
           /* eslint-disable react/jsx-no-bind */
           // eslint-disable-next-line react/no-children-prop
           children={(props: IChildProps) => {
@@ -263,7 +264,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public get container(): HTMLElement | null {
-    return this._cartesianChartRef.current?.container || null;
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   private _getDomainNRangeValues = (

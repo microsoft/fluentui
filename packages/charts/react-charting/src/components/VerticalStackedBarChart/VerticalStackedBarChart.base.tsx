@@ -61,6 +61,7 @@ import {
   getNextGradient,
 } from '../../utilities/index';
 import { IChart } from '../../types/index';
+import { CartesianChartBase } from '../CommonComponents/CartesianChart.base';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -131,7 +132,7 @@ export class VerticalStackedBarChartBase
   private _emptyChartId: string;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
-  private _cartesianChartRef: React.RefObject<IChart>;
+  private _cartesianChartRef: React.RefObject<CartesianChartBase>;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -251,7 +252,7 @@ export class VerticalStackedBarChartBase
             xAxisInnerPadding: this._xAxisInnerPadding,
             xAxisOuterPadding: this._xAxisOuterPadding,
           })}
-          componentRef={this._cartesianChartRef}
+          ref={this._cartesianChartRef}
           /* eslint-disable react/jsx-no-bind */
           children={(props: IChildProps) => {
             return (
@@ -284,7 +285,7 @@ export class VerticalStackedBarChartBase
   }
 
   public get container(): HTMLElement | null {
-    return this._cartesianChartRef.current?.container || null;
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   /**

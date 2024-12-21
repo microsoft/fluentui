@@ -24,6 +24,7 @@ import {
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
+import { CartesianChartBase } from '../CommonComponents/CartesianChart.base';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -114,7 +115,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: FlattenData | null;
   private _emptyChartId: string;
-  private _cartesianChartRef: React.RefObject<IChart>;
+  private _cartesianChartRef: React.RefObject<CartesianChartBase>;
 
   public constructor(props: IHeatMapChartProps) {
     super(props);
@@ -219,7 +220,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         }}
         legendBars={this._createLegendBars()}
         onChartMouseLeave={this._handleChartMouseLeave}
-        componentRef={this._cartesianChartRef}
+        ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -239,7 +240,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   }
 
   public get container(): HTMLElement | null {
-    return this._cartesianChartRef.current?.container || null;
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   private _getMinMaxOfYAxis = () => {

@@ -41,6 +41,7 @@ import {
   createStringYAxisForHorizontalBarChartWithAxis,
   getNextGradient,
 } from '../../utilities/index';
+import { CartesianChartBase } from '../CommonComponents/CartesianChart.base';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
 export interface IHorizontalBarChartWithAxisState extends IBasestate {
@@ -78,7 +79,7 @@ export class HorizontalBarChartWithAxisBase
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: IHorizontalBarChartWithAxisDataPoint | null;
-  private _cartesianChartRef: React.RefObject<IChart>;
+  private _cartesianChartRef: React.RefObject<CartesianChartBase>;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
@@ -169,7 +170,7 @@ export class HorizontalBarChartWithAxisBase
         getGraphData={this._getGraphData}
         getAxisData={this._getAxisData}
         onChartMouseLeave={this._handleChartMouseLeave}
-        componentRef={this._cartesianChartRef}
+        ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         children={(props: IChildProps) => {
           return (
@@ -183,7 +184,7 @@ export class HorizontalBarChartWithAxisBase
   }
 
   public get container(): HTMLElement | null {
-    return this._cartesianChartRef.current?.container || null;
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   private _getDomainNRangeValues = (

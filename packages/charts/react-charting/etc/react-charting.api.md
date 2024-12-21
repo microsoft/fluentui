@@ -1097,6 +1097,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
     points: any;
+    // Warning: (ae-forgotten-export) The symbol "CartesianChartBase" needs to be exported by the entry point index.d.ts
+    ref?: IRefObject<CartesianChartBase>;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];

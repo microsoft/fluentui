@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { Callout } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import {
@@ -32,7 +32,6 @@ import {
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
-import { IChart } from '../../types/index';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 const ChartHoverCard = React.lazy(() =>
@@ -64,12 +63,9 @@ export interface ICartesianChartState {
  * 2.Callout
  * 3.Fit parent Continer
  */
-export class CartesianChartBase
-  extends React.Component<IModifiedCartesianChartProps, ICartesianChartState>
-  implements IChart
-{
+export class CartesianChartBase extends React.Component<IModifiedCartesianChartProps, ICartesianChartState> {
+  public chartContainer: HTMLDivElement;
   private _classNames: IProcessedStyleSet<ICartesianChartStyles>;
-  private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
   private minLegendContainerHeight: number = 32;
   private xAxisElement: SVGSVGElement | null;
@@ -90,9 +86,6 @@ export class CartesianChartBase
 
   constructor(props: IModifiedCartesianChartProps) {
     super(props);
-
-    initializeComponentRef(this);
-
     this.state = {
       containerHeight: 0,
       containerWidth: 0,
@@ -625,10 +618,6 @@ export class CartesianChartBase
         {callout && <React.Suspense fallback={<div>Loading...</div>}>{callout}</React.Suspense>}
       </div>
     );
-  }
-
-  public get container(): HTMLElement | null {
-    return this.chartContainer;
   }
 
   /**

@@ -47,6 +47,7 @@ import {
   Legends,
 } from '../../index';
 import { IChart } from '../../types/index';
+import { CartesianChartBase } from '../CommonComponents/CartesianChart.base';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -108,7 +109,7 @@ export class GroupedVerticalBarChartBase
   private _groupWidth: number;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
-  private _cartesianChartRef: React.RefObject<IChart>;
+  private _cartesianChartRef: React.RefObject<CartesianChartBase>;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -216,7 +217,7 @@ export class GroupedVerticalBarChartBase
           xAxisOuterPadding: this._xAxisOuterPadding,
         })}
         barwidth={this._barWidth}
-        componentRef={this._cartesianChartRef}
+        ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         children={() => {
           return <g>{this._groupedVerticalBarGraph}</g>;
@@ -233,7 +234,7 @@ export class GroupedVerticalBarChartBase
   }
 
   public get container(): HTMLElement | null {
-    return this._cartesianChartRef.current?.container || null;
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   private _getMinMaxOfYAxis = () => {

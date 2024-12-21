@@ -50,6 +50,7 @@ import {
   formatDate,
 } from '../../utilities/index';
 import { IChart } from '../../types/index';
+import { CartesianChartBase } from '../CommonComponents/CartesianChart.base';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -186,7 +187,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
   private _isRTL: boolean = getRTL();
-  private _cartesianChartRef: React.RefObject<IChart>;
+  private _cartesianChartRef: React.RefObject<CartesianChartBase>;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -306,7 +307,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         createStringYAxis={createStringYAxis}
         onChartMouseLeave={this._handleChartMouseLeave}
         enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
-        componentRef={this._cartesianChartRef}
+        ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -364,7 +365,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   public get container(): HTMLElement | null {
-    return this._cartesianChartRef.current?.container || null;
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   private _getDomainNRangeValues = (

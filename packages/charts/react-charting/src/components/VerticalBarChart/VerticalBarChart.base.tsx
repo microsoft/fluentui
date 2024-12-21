@@ -54,6 +54,7 @@ import {
   getNextGradient,
 } from '../../utilities/index';
 import { IChart } from '../../types/index';
+import { CartesianChartBase } from '../CommonComponents/CartesianChart.base';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -106,7 +107,7 @@ export class VerticalBarChartBase
   private _emptyChartId: string;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
-  private _cartesianChartRef: React.RefObject<IChart>;
+  private _cartesianChartRef: React.RefObject<CartesianChartBase>;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -209,7 +210,7 @@ export class VerticalBarChartBase
           xAxisInnerPadding: this._xAxisInnerPadding,
           xAxisOuterPadding: this._xAxisOuterPadding,
         })}
-        componentRef={this._cartesianChartRef}
+        ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         children={(props: IChildProps) => {
           return (
@@ -241,7 +242,7 @@ export class VerticalBarChartBase
   }
 
   public get container(): HTMLElement | null {
-    return this._cartesianChartRef.current?.container || null;
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   private _getDomainNRangeValues = (

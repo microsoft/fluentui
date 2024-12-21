@@ -21,6 +21,7 @@ import { IChartHoverCardProps } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartTypes, IAxisData, IDomainNRange, IYAxisParams, XAxisTypes, YAxisType } from '../../utilities/utilities';
 import { ScaleBand, ScaleLinear } from 'd3-scale';
+import { CartesianChartBase } from './CartesianChart.base';
 
 /**
  * Cartesian Chart style properties
@@ -697,4 +698,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     isRtl: boolean,
     barWidth: number | undefined,
   ) => ScaleBand<string>;
+
+  /**
+   * Callback to access the public methods and properties of the component.
+   */
+  ref?: IRefObject<CartesianChartBase>;
 }
