@@ -980,26 +980,27 @@ export class Dropdown extends BaseDropdown {
       return;
     }
 
-    if (!window.CSS_ANCHOR_POLYFILL) {
-      const observerCallback = (entries: IntersectionObserverEntry[]): void => {
-        entries.forEach(entry => {
-          const target = entry.target as Listbox;
-          if (isListbox(target)) {
-            if (inRange(entry.intersectionRatio, 0, 1)) {
-              toggleState(
-                target.dropdown?.elementInternals,
-                'flip-block',
-                entry.intersectionRect.bottom >= window.innerHeight,
-              );
-            }
+    const observerCallback = (entries: IntersectionObserverEntry[]): void => {
+      entries.forEach(entry => {
+        const target = entry.target as Listbox;
+        if (isListbox(target)) {
+          if (inRange(entry.intersectionRatio, 0, 1)) {
+            toggleState(
+              target.dropdown?.elementInternals,
+              'flip-block',
+              entry.intersectionRect.bottom >= window.innerHeight,
+            );
           }
-        });
-      };
+        }
+      });
+    };
 
-      Dropdown.AnchorPositionFallbackObserver =
-        Dropdown.AnchorPositionFallbackObserver ?? new IntersectionObserver(observerCallback, { threshold: [0, 1] });
+    Dropdown.AnchorPositionFallbackObserver =
+      Dropdown.AnchorPositionFallbackObserver ?? new IntersectionObserver(observerCallback, { threshold: [0, 1] });
 
-      toggleState(this.elementInternals, 'anchor-position-fallback', true);
+    toggleState(this.elementInternals, 'anchor-position-fallback', true);
+
+    if (!window.CSS_ANCHOR_POLYFILL) {
       return;
     }
 
@@ -1016,8 +1017,6 @@ export class Dropdown extends BaseDropdown {
 
       #${this.listbox.id} {
         position-anchor: ${anchorName};
-        top: anchor(bottom);
-        left: anchor(left);
         position-try-fallbacks: block-start, flip-inline, flip-block;
         max-height: var(--listbox-max-height, calc(100vh - anchor-size(self-block)));
         min-width: anchor-size(width);

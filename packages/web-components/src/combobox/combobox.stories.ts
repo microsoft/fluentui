@@ -120,82 +120,6 @@ export const MultipleSelection: Story = {
   },
 };
 
-export const Small: Story = {
-  args: {
-    ...Default.args,
-    size: DropdownSize.small,
-  },
-};
-
-export const Large: Story = {
-  args: {
-    ...Default.args,
-    size: DropdownSize.large,
-  },
-};
-
-export const FilledLighter: Story = {
-  args: {
-    ...Default.args,
-    appearance: DropdownAppearance.filledLighter,
-  },
-};
-
-export const FilledDarker: Story = {
-  args: {
-    ...Default.args,
-    appearance: DropdownAppearance.filledDarker,
-  },
-};
-
-export const Outline: Story = {
-  args: {
-    ...Default.args,
-    appearance: DropdownAppearance.outline,
-  },
-};
-
-export const Transparent: Story = {
-  args: {
-    ...Default.args,
-    appearance: DropdownAppearance.transparent,
-  },
-};
-
-export const Inline: Story = {
-  render: renderComponent(html<StoryArgs<FluentDropdown>>`
-    <p>Some text inline with the ${dropdownTemplate} and more text.</p>
-  `),
-  args: {
-    ...Default.args,
-    slot: null,
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    ...Default.args,
-    disabled: true,
-  },
-};
-
-export const DisabledOptions: Story = {
-  args: {
-    ...Default.args,
-    slottedContent: [
-      { disabled: true, value: 'apple', slottedContent: () => 'Apple' },
-      { value: 'banana', slottedContent: () => 'Banana' },
-      { value: 'orange', slottedContent: () => 'Orange' },
-      { disabled: true, value: 'mango', slottedContent: () => 'Mango' },
-      { disabled: true, value: 'kiwi', slottedContent: () => 'Kiwi' },
-      { value: 'cherry', slottedContent: () => 'Cherry' },
-      { value: 'grapefruit', slottedContent: () => 'Grapefruit' },
-      { disabled: true, value: 'papaya', slottedContent: () => 'Papaya' },
-      { value: 'lychee', slottedContent: () => 'Lychee' },
-    ],
-  },
-};
-
 export const ManyOptions: Story = {
   args: {
     ...Default.args,
@@ -448,6 +372,82 @@ export const ManyOptions: Story = {
       { slottedContent: () => 'Yemen' },
       { slottedContent: () => 'Zambia' },
       { slottedContent: () => 'Zimbabwe' },
+    ],
+  },
+};
+
+export const Small: Story = {
+  args: {
+    ...Default.args,
+    size: DropdownSize.small,
+  },
+};
+
+export const Large: Story = {
+  args: {
+    ...Default.args,
+    size: DropdownSize.large,
+  },
+};
+
+export const FilledLighter: Story = {
+  args: {
+    ...Default.args,
+    appearance: DropdownAppearance.filledLighter,
+  },
+};
+
+export const FilledDarker: Story = {
+  args: {
+    ...Default.args,
+    appearance: DropdownAppearance.filledDarker,
+  },
+};
+
+export const Outline: Story = {
+  args: {
+    ...Default.args,
+    appearance: DropdownAppearance.outline,
+  },
+};
+
+export const Transparent: Story = {
+  args: {
+    ...Default.args,
+    appearance: DropdownAppearance.transparent,
+  },
+};
+
+export const Inline: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <p>Some text inline with the ${dropdownTemplate} and more text.</p>
+  `),
+  args: {
+    ...Default.args,
+    slot: null,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    ...Default.args,
+    disabled: true,
+  },
+};
+
+export const DisabledOptions: Story = {
+  args: {
+    ...Default.args,
+    slottedContent: [
+      { disabled: true, value: 'apple', slottedContent: () => 'Apple' },
+      { value: 'banana', slottedContent: () => 'Banana' },
+      { value: 'orange', slottedContent: () => 'Orange' },
+      { disabled: true, value: 'mango', slottedContent: () => 'Mango' },
+      { disabled: true, value: 'kiwi', slottedContent: () => 'Kiwi' },
+      { value: 'cherry', slottedContent: () => 'Cherry' },
+      { value: 'grapefruit', slottedContent: () => 'Grapefruit' },
+      { disabled: true, value: 'papaya', slottedContent: () => 'Papaya' },
+      { value: 'lychee', slottedContent: () => 'Lychee' },
     ],
   },
 };

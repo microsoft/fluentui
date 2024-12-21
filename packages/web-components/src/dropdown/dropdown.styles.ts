@@ -248,15 +248,15 @@ export const styles = css`
   }
 
   @supports not (anchor-name: --anchor) {
-    :host(${fallbackState}) ::slotted([popover]) {
+    :host(:where(${fallbackState})) ::slotted([popover]) {
       margin-block-start: calc(${lineHeightBase300} + (${spacingVerticalSNudge} * 2) + ${strokeWidthThin});
     }
 
-    :host(${fallbackState}${smallState}) ::slotted([popover]) {
+    :host(:where(${fallbackState}${smallState})) ::slotted([popover]) {
       margin-block-start: calc(${lineHeightBase200} + (${spacingVerticalXS} * 2) + ${strokeWidthThin});
     }
 
-    :host(${fallbackState}${largeState}) ::slotted([popover]) {
+    :host(:where(${fallbackState}${largeState})) ::slotted([popover]) {
       margin-block-start: calc(${lineHeightBase400} + (${spacingVerticalS} * 2) + ${strokeWidthThin});
     }
 
