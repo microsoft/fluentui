@@ -282,7 +282,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     const { isCalloutForStack = false } = this.props;
     let shouldFocusStackOnly: boolean = false;
     if (_isHavingLines) {
-      if (this.state.selectedLegends.length === 1) {
+      if (this._getHighlightedLegend().length === 1) {
         shouldFocusStackOnly = false;
       } else {
         shouldFocusStackOnly = true;
@@ -419,7 +419,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             strokeLinecap="round"
             stroke={lineObject[item][i].color}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
-            {...(this._isLegendHighlighted(item) && {
+            {...(this._legendHighlighted(item) && {
               onMouseOver: this._lineHover.bind(this, lineObject[item][i - 1]),
               onMouseLeave: this._lineHoverOut,
             })}
@@ -439,11 +439,11 @@ export class VerticalStackedBarChartBase extends React.Component<
               circlePoint.useSecondaryYScale && secondaryYScale ? secondaryYScale(circlePoint.y) : yScale(circlePoint.y)
             }
             onMouseOver={
-              this._isLegendHighlighted(item)
+              this._legendHighlighted(item)
                 ? this._lineHover.bind(this, circlePoint)
                 : this._onStackHover.bind(this, circlePoint.xItem)
             }
-            {...(this._isLegendHighlighted(item) && {
+            {...(this._legendHighlighted(item) && {
               onMouseLeave: this._lineHoverOut,
             })}
             r={this._getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).radius}
@@ -478,9 +478,9 @@ export class VerticalStackedBarChartBase extends React.Component<
   ): { visibility: CircleVisbility; radius: number } => {
     const { activeXAxisDataPoint } = this.state;
     if (!this._noLegendHighlighted()) {
-      if (xAxisPoint === activeXAxisDataPoint && this._isLegendHighlighted(legend)) {
+      if (xAxisPoint === activeXAxisDataPoint && this._legendHighlighted(legend)) {
         return { visibility: CircleVisbility.show, radius: 8 };
-      } else if (this._isLegendHighlighted(legend)) {
+      } else if (this._legendHighlighted(legend)) {
         return { visibility: CircleVisbility.show, radius: 0.3 };
       } else {
         return { visibility: CircleVisbility.hide, radius: 0 };
@@ -660,10 +660,6 @@ export class VerticalStackedBarChartBase extends React.Component<
       : [];
   }
 
-  private _isLegendHighlighted = (legend: string): boolean => {
-    return this._getHighlightedLegend().indexOf(legend) > -1;
-  };
-
   private _onRectHover(
     xAxisPoint: string,
     point: IVSChartDataPoint,
@@ -763,7 +759,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
     this.setState({
       refSelected,
-      isCalloutVisible: true,
+      isCalloutVisible: stack.chartData.length > 0 || (stack.lineData?.length ?? 0) > 0,
       YValueHover: isLinesPresent
         ? [...lineData!.sort((a, b) => (a.data! < b.data! ? 1 : -1)), ...stack.chartData.slice().reverse()]
         : stack.chartData.slice().reverse(),
@@ -1122,10 +1118,11 @@ export class VerticalStackedBarChartBase extends React.Component<
    * 1. selection: if the user clicks on it
    * 2. hovering: if there is no selected legend and the user hovers over it
    */
-  private _legendHighlighted = (legendTitle: string) => {
+  private _legendHighlighted = (legendTitle: string): boolean => {
+    const highlightedLegends = this._getHighlightedLegend();
     return (
-      this.state.selectedLegends.includes(legendTitle) ||
-      (this.state.selectedLegends.length === 0 && this.state.activeLegend === legendTitle)
+      highlightedLegends.includes(legendTitle) ||
+      (highlightedLegends.length === 0 && this.state.activeLegend === legendTitle)
     );
   };
 
