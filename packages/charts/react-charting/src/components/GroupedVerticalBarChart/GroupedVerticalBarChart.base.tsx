@@ -109,7 +109,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       dataForHoverCard: 0,
       isCalloutVisible: false,
       refSelected: null,
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       xCalloutValue: '',
       yCalloutValue: '',
       YValueHover: [],

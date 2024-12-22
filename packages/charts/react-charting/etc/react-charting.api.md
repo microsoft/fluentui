@@ -876,6 +876,8 @@ export interface ILegendsProps {
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
     overflowText?: string;
+    selectedLegend?: string;
+    selectedLegends?: string[];
     shape?: LegendShape;
     styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
     theme?: ITheme;
@@ -1601,13 +1603,9 @@ export const PieChart: React_2.FunctionComponent<IPieChartProps>;
 // @public
 export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
 
-// @public (undocumented)
+// @public
 export interface Schema {
-    accesibilityLabels?: {
-        [key: string]: string;
-    };
     plotlySchema: any;
-    selectedLegends?: string[];
 }
 
 // @public (undocumented)

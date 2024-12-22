@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Fri, 06 Dec 2024 12:53:40 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Dec 2024 17:38:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.4.0)
+
+Mon, 09 Dec 2024 17:38:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.3.2..@fluentui/react-motion-components-preview_v0.4.0)
+
+### Minor changes
+
+- feat(Collapse): add margin to whitespace animation ([PR #33405](https://github.com/microsoft/fluentui/pull/33405) by robertpenner@microsoft.com)
+
+### Patches
+
+- feat(motion): Refactor scale, migrate to new variant structure ([PR #33341](https://github.com/microsoft/fluentui/pull/33341) by olkatruk@microsoft.com)
 
 ## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.3.2)
 

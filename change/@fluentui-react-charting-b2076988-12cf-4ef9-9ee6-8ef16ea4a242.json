@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "enable negativeData prop in declarative charts",
-  "packageName": "@fluentui/react-charting",
-  "email": "74965306+Anush2303@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
