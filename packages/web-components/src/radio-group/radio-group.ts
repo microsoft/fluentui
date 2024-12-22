@@ -246,7 +246,7 @@ export class RadioGroup extends FASTElement {
    *
    * @internal
    */
-  private _validationFallbackMessage!: string;
+  private static _validationFallbackMessage: string = '';
 
   /**
    * The validation message. Uses the browser's default validation message for native checkboxes if not otherwise
@@ -263,17 +263,17 @@ export class RadioGroup extends FASTElement {
       return this.enabledRadios[0].validationMessage;
     }
 
-    if (!this._validationFallbackMessage) {
+    if (!RadioGroup._validationFallbackMessage) {
       const validationMessageFallbackControl = document.createElement('input');
       validationMessageFallbackControl.type = 'radio';
       validationMessageFallbackControl.required = true;
       validationMessageFallbackControl.checked = false;
       validationMessageFallbackControl.name = '##--ThisShouldBeSufficientForATemporaryString--##';
 
-      this._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
+      RadioGroup._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
     }
 
-    return this._validationFallbackMessage;
+    return RadioGroup._validationFallbackMessage;
   }
 
   /**

@@ -90,6 +90,13 @@ export class Radio extends BaseCheckbox {
   }
 
   /**
+   * The fallback validation message, taken from a native checkbox `<input>` element.
+   *
+   * @internal
+   */
+  static override _validationFallbackMessage: string = '';
+
+  /**
    * The validation message. Uses the browser's default validation message for native checkboxes if not otherwise
    * specified (e.g., via `setCustomValidity`).
    *
@@ -104,16 +111,16 @@ export class Radio extends BaseCheckbox {
       return this.elementInternals.validationMessage;
     }
 
-    if (!this._validationFallbackMessage) {
+    if (!Radio._validationFallbackMessage) {
       const validationMessageFallbackControl = document.createElement('input');
       validationMessageFallbackControl.type = 'radio';
       validationMessageFallbackControl.required = true;
       validationMessageFallbackControl.checked = false;
       validationMessageFallbackControl.name = '##--ThisShouldBeSufficientForATemporaryString--##';
 
-      this._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
+      Radio._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
     }
 
-    return this._validationFallbackMessage;
+    return Radio._validationFallbackMessage;
   }
 }

@@ -220,7 +220,7 @@ export class BaseCheckbox extends FASTElement {
    *
    * @internal
    */
-  protected _validationFallbackMessage: string = '';
+  static _validationFallbackMessage: string = '';
 
   /**
    * The validation message. Uses the browser's default validation message for native checkboxes if not otherwise
@@ -235,16 +235,16 @@ export class BaseCheckbox extends FASTElement {
       return this.elementInternals.validationMessage;
     }
 
-    if (!this._validationFallbackMessage) {
+    if (!Checkbox._validationFallbackMessage) {
       const validationMessageFallbackControl = document.createElement('input');
       validationMessageFallbackControl.type = 'checkbox';
       validationMessageFallbackControl.required = true;
       validationMessageFallbackControl.checked = false;
 
-      this._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
+      Checkbox._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
     }
 
-    return this._validationFallbackMessage;
+    return Checkbox._validationFallbackMessage;
   }
 
   /**
