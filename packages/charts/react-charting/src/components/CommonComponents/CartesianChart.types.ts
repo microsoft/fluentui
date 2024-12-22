@@ -7,6 +7,7 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import {
   IAccessibilityProps,
+  ICartesianChart,
   IChart,
   IDataPoint,
   IGroupedVerticalBarChartData,
@@ -21,7 +22,6 @@ import { IChartHoverCardProps } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartTypes, IAxisData, IDomainNRange, IYAxisParams, XAxisTypes, YAxisType } from '../../utilities/utilities';
 import { ScaleBand, ScaleLinear } from 'd3-scale';
-import { CartesianChartBase } from './CartesianChart.base';
 
 /**
  * Cartesian Chart style properties
@@ -702,5 +702,5 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Callback to access the public methods and properties of the component.
    */
-  ref?: IRefObject<CartesianChartBase>;
+  ref?: IRefObject<ICartesianChart>;
 }

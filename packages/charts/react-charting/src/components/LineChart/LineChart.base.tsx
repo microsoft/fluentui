@@ -49,8 +49,7 @@ import {
   createStringYAxis,
   formatDate,
 } from '../../utilities/index';
-import { IChart } from '../../types/index';
-import { CartesianChartBase } from '../CommonComponents/CartesianChart.base';
+import { ICartesianChart, IChart } from '../../types/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -187,7 +186,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
   private _isRTL: boolean = getRTL();
-  private _cartesianChartRef: React.RefObject<CartesianChartBase>;
+  private _cartesianChartRef: React.RefObject<ICartesianChart>;
 
   constructor(props: ILineChartProps) {
     super(props);

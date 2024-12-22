@@ -98,6 +98,7 @@ export type {
   SLink,
   SNode,
   IChart,
+  ICartesianChart,
 } from './types/index';
 export type {
   IChartHoverCardProps,

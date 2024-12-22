@@ -821,3 +821,10 @@ export interface ICustomizedCalloutData {
 export interface IChart {
   container: HTMLElement | null;
 }
+
+/**
+ * {@docCategory CartesianChart}
+ */
+export interface ICartesianChart {
+  chartContainer: HTMLDivElement | null;
+}

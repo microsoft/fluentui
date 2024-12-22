@@ -1,5 +1,11 @@
 import { CartesianChart, IChildProps, IModifiedCartesianChartProps } from '../../components/CommonComponents/index';
-import { IAccessibilityProps, IChart, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
+import {
+  IAccessibilityProps,
+  ICartesianChart,
+  IChart,
+  IHeatMapChartData,
+  IHeatMapChartDataPoint,
+} from '../../types/IDataPoint';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { classNamesFunction, getId, initializeComponentRef, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
@@ -24,7 +30,6 @@ import {
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
-import { CartesianChartBase } from '../CommonComponents/CartesianChart.base';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -115,7 +120,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: FlattenData | null;
   private _emptyChartId: string;
-  private _cartesianChartRef: React.RefObject<CartesianChartBase>;
+  private _cartesianChartRef: React.RefObject<ICartesianChart>;
 
   public constructor(props: IHeatMapChartProps) {
     super(props);
