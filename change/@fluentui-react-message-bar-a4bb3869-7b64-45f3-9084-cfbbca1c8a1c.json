@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: MessageBar auto reflow should handle document reflow with `min-content`",
-  "packageName": "@fluentui/react-message-bar",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

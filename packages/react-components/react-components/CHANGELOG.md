@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 18 Dec 2024 10:59:36 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Dec 2024 14:30:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.56.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.8)
+
+Thu, 19 Dec 2024 14:30:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.7..@fluentui/react-components_v9.56.8)
+
+### Patches
+
+- `@fluentui/react-message-bar`
+  - fix: MessageBar auto reflow should handle document reflow with `min-content` ([PR #33409](https://github.com/microsoft/fluentui/pull/33409) by lingfangao@hotmail.com)
 
 ## [9.56.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.7)
 
