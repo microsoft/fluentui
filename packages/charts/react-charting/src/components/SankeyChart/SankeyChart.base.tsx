@@ -7,6 +7,7 @@ import {
   format,
   getId,
   getRTL,
+  initializeComponentRef,
   memoizeFunction,
 } from '@fluentui/react/lib/Utilities';
 import { sum as d3Sum } from 'd3-array';
@@ -14,7 +15,7 @@ import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRig
 import { BaseType, Selection as D3Selection, select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import * as React from 'react';
-import { IBasestate, SLink, SNode } from '../../types/IDataPoint';
+import { IBasestate, IChart, SLink, SNode } from '../../types/IDataPoint';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/ChartHoverCard.types';
 import { IMargins } from '../../utilities/utilities';
@@ -574,12 +575,12 @@ type AccessibilityRenderer = {
 // to a function component. This will require a significant refactor of the code in this file.
 // https://stackoverflow.com/questions/60223362/fast-way-to-convert-react-class-component-to-functional-component
 // I am concerned that doing so would break this contract, making it difficult for consuming code.
-export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyChartState> {
+export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyChartState> implements IChart {
   public static defaultProps: Partial<ISankeyChartProps> = {
     enableReflow: true,
   };
 
-  private chartContainer: HTMLDivElement;
+  public chartContainer: HTMLDivElement;
   private _reqID: number;
   private readonly _calloutId: string;
   private readonly _linkId: string;
@@ -628,6 +629,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
 
   constructor(props: ISankeyChartProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     this.state = {
       containerHeight: 468,
       containerWidth: 912,

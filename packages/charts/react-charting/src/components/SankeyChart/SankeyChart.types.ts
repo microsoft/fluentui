@@ -1,6 +1,6 @@
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
-import { IChartProps } from '../../types/IDataPoint';
+import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IChart, IChartProps } from '../../types/IDataPoint';
 
 export type { IChartProps, IDataPoint, ISankeyChartData } from '../../types/IDataPoint';
 
@@ -84,6 +84,12 @@ export interface ISankeyChartProps {
    * @default true
    */
   enableReflow?: boolean;
+
+  /**
+   * Optional callback to access the IChart interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: IRefObject<IChart>;
 }
 
 /**

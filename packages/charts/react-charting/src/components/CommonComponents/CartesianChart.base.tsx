@@ -33,6 +33,7 @@ import {
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
+import { IChart } from '../../types/index';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 const ChartHoverCard = React.lazy(() =>
@@ -64,9 +65,12 @@ export interface ICartesianChartState {
  * 2.Callout
  * 3.Fit parent Continer
  */
-export class CartesianChartBase extends React.Component<IModifiedCartesianChartProps, ICartesianChartState> {
+export class CartesianChartBase
+  extends React.Component<IModifiedCartesianChartProps, ICartesianChartState>
+  implements IChart
+{
+  public chartContainer: HTMLDivElement;
   private _classNames: IProcessedStyleSet<ICartesianChartStyles>;
-  private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
   private minLegendContainerHeight: number = 32;
   private xAxisElement: SVGSVGElement | null;
@@ -636,6 +640,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       </div>
     );
   }
+
   /**
    * Dedicated function to return the Callout JSX Element , which can further be used to only call this when
    * only the calloutprops and charthover props changes.
