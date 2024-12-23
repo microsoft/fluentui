@@ -303,8 +303,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
-  const { layout } = jsonObj;
-  const data = jsonObj.updatedData ? jsonObj.updatedData : jsonObj.data;
+  const { data, layout } = jsonObj;
   const chartData: ILineChartPoints[] = data.map((series: any, index: number) => {
     const xValues = series.x;
     const isString = typeof xValues[0] === 'string';

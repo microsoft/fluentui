@@ -149,7 +149,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           x: updateXValues(dataPoint.x),
         }));
         const chartProps = {
-          ...transformPlotlyJsonToScatterChartProps({ updatedData, layout }, isAreaChart, colorMap, isDarkTheme),
+          ...transformPlotlyJsonToScatterChartProps({ data: updatedData, layout }, isAreaChart, colorMap, isDarkTheme),
           legendProps,
         };
         return renderChart(chartProps);
