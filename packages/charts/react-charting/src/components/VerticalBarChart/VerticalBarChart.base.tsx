@@ -72,6 +72,7 @@ export interface IVerticalBarChartState extends IBasestate {
   hoverXValue?: string | number | null;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
+  selectedLegends: string[];
 }
 
 type ColorScale = (_p?: number) => string;
@@ -110,8 +111,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       dataForHoverCard: 0,
       isCalloutVisible: false,
       refSelected: null,
-      selectedLegend: props.legendProps?.selectedLegend ?? '',
-      activeLegend: '',
+      selectedLegends: [],
+      activeLegend: undefined,
       xCalloutValue: '',
       yCalloutValue: '',
       activeXdataPoint: null,
@@ -182,7 +183,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         createYAxis={createNumericYAxis}
         calloutProps={calloutProps}
         tickParams={tickParams}
-        {...(this._isHavingLine && this._noLegendHighlighted() && { isCalloutForStack: true })}
+        {...(this._isHavingLine &&
+          (this._noLegendHighlighted() || this._getHighlightedLegend().length > 1) && { isCalloutForStack: true })}
         legendBars={legendBars}
         datasetForXAxisDomain={this._xAxisLabels}
         barwidth={this._barWidth}
@@ -382,11 +384,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     xAxisPoint: string | number | Date,
     legend: string,
   ): { visibility: CircleVisbility; radius: number } => {
-    const { selectedLegend, activeXdataPoint } = this.state;
-    if (selectedLegend !== '') {
-      if (xAxisPoint === activeXdataPoint && selectedLegend === legend) {
+    const { activeXdataPoint } = this.state;
+    if (!this._noLegendHighlighted()) {
+      if (xAxisPoint === activeXdataPoint && this._legendHighlighted(legend)) {
         return { visibility: CircleVisbility.show, radius: 8 };
-      } else if (selectedLegend === legend) {
+      } else if (this._legendHighlighted(legend)) {
         // Don't hide the circle to keep it focusable. For more information,
         // see https://fuzzbomb.github.io/accessibility-demos/visually-hidden-focus-test.html
         return { visibility: CircleVisbility.show, radius: 0.3 };
@@ -517,7 +519,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       : this._createColors()(1);
 
     // there might be no y value of the line for the hovered bar. so we need to check this condition
-    if (this._isHavingLine && selectedPoint[0].lineData?.y !== undefined) {
+    if (this._isHavingLine && selectedPoint[0].lineData?.y !== undefined && this._legendHighlighted(lineLegendText)) {
       // callout data for the  line
       YValueHover.push({
         legend: lineLegendText,
@@ -527,18 +529,20 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         yAxisCalloutData: selectedPoint[0].lineData?.yAxisCalloutData,
       });
     }
-    // callout data for the bar
-    YValueHover.push({
-      legend: selectedPoint[0].legend,
-      y: selectedPoint[0].y,
-      color: enableGradient
-        ? useSingleColor
-          ? getNextGradient(0, 0)[0]
-          : selectedPoint[0].gradient?.[0] || getNextGradient(pointIndex, 0)[0]
-        : calloutColor,
-      data: selectedPoint[0].yAxisCalloutData,
-      yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
-    });
+    if (this._legendHighlighted(selectedPoint[0].legend)) {
+      // callout data for the bar
+      YValueHover.push({
+        legend: selectedPoint[0].legend,
+        y: selectedPoint[0].y,
+        color: enableGradient
+          ? useSingleColor
+            ? getNextGradient(0, 0)[0]
+            : selectedPoint[0].gradient?.[0] || getNextGradient(pointIndex, 0)[0]
+          : calloutColor,
+        data: selectedPoint[0].yAxisCalloutData,
+        yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
+      });
+    }
     const hoverXValue = point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x.toString();
     return {
       YValueHover,
@@ -559,7 +563,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this.setState({
         refSelected: mouseEvent,
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
-        isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend,
+        isCalloutVisible: this._noLegendHighlighted() || this._legendHighlighted(point.legend),
         dataForHoverCard: point.y,
         calloutLegend: point.legend!,
         color: point.color || color,
@@ -570,7 +574,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
         // Hovering over a bar should highlight corresponding line points only when no legend is selected
-        activeXdataPoint: this._noLegendHighlighted() ? point.x : null,
+        activeXdataPoint: this._noLegendHighlighted() || this._legendHighlighted(point.legend) ? point.x : null,
         YValueHover,
         hoverXValue,
         callOutAccessibilityData: point.callOutAccessibilityData,
@@ -599,7 +603,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         this.setState({
           refSelected: obj.refElement,
           /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
-          isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend,
+          isCalloutVisible: this._noLegendHighlighted() || this._legendHighlighted(point.legend),
           calloutLegend: point.legend!,
           dataForHoverCard: point.y,
           color: point.color || color,
@@ -1037,18 +1041,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     });
   };
 
-  private _onLegendClick(legendTitle: string): void {
-    if (this.state.selectedLegend === legendTitle) {
-      this.setState({
-        selectedLegend: '',
-      });
-    } else {
-      this.setState({
-        selectedLegend: legendTitle,
-      });
-    }
-  }
-
   private _onLegendHover(legendTitle: string): void {
     this.setState({
       activeLegend: legendTitle,
@@ -1057,7 +1049,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
 
   private _onLegendLeave(): void {
     this.setState({
-      activeLegend: '',
+      activeLegend: undefined,
     });
   }
 
@@ -1080,9 +1072,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const legend: ILegend = {
         title: point.legend!,
         color,
-        action: () => {
-          this._onLegendClick(point.legend!);
-        },
         hoverAction: () => {
           this._handleChartMouseLeave();
           this._onLegendHover(point.legend!);
@@ -1097,9 +1086,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const lineLegend: ILegend = {
         title: lineLegendText,
         color: lineLegendColor,
-        action: () => {
-          this._onLegendClick(lineLegendText);
-        },
         hoverAction: () => {
           this._handleChartMouseLeave();
           this._onLegendHover(lineLegendText);
@@ -1119,10 +1105,26 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
+        onChange={this._onLegendSelectionChange.bind(this)}
       />
     );
     return legends;
   };
+
+  private _onLegendSelectionChange(
+    selectedLegends: string[],
+    event: React.MouseEvent<HTMLButtonElement>,
+    currentLegend?: ILegend,
+  ): void {
+    if (this.props.legendProps?.canSelectMultipleLegends) {
+      this.setState({ selectedLegends });
+    } else {
+      this.setState({ selectedLegends: selectedLegends.slice(-1) });
+    }
+    if (this.props.legendProps?.onChange) {
+      this.props.legendProps.onChange(selectedLegends, event, currentLegend);
+    }
+  }
 
   private _getAxisData = (yAxisData: IAxisData) => {
     if (yAxisData && yAxisData.yAxisDomainValues.length) {
@@ -1138,19 +1140,24 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
    * 1. selection: if the user clicks on it
    * 2. hovering: if there is no selected legend and the user hovers over it
    */
-  private _legendHighlighted = (legendTitle: string) => {
-    return (
-      this.state.selectedLegend === legendTitle ||
-      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
-    );
+  private _legendHighlighted = (legendTitle: string | undefined) => {
+    return this._getHighlightedLegend().includes(legendTitle!);
   };
 
   /**
    * This function checks if none of the legends is selected or hovered.
    */
   private _noLegendHighlighted = () => {
-    return this.state.selectedLegend === '' && this.state.activeLegend === '';
+    return this._getHighlightedLegend().length === 0;
   };
+
+  private _getHighlightedLegend() {
+    return this.state.selectedLegends.length > 0
+      ? this.state.selectedLegends
+      : this.state.activeLegend
+      ? [this.state.activeLegend]
+      : [];
+  }
 
   private _getAriaLabel = (point: IVerticalBarChartDataPoint): string => {
     const xValue = point.xAxisCalloutData
