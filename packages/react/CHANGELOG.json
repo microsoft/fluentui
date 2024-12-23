@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 20 Dec 2024 07:20:00 GMT",
+      "tag": "@fluentui/react_v8.122.1",
+      "version": "8.122.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "00fada2af3a290e83ba3812ab3440b5ae8a903cf",
+            "comment": "chore: update react.api.md"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Dec 2024 07:23:12 GMT",
       "tag": "@fluentui/react_v8.122.1",
       "version": "8.122.1",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Mon, 16 Dec 2024 16:26:49 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Dec 2024 10:59:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.9.29)
+
+Wed, 18 Dec 2024 10:59:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.9.28..@fluentui/react-popover_v9.9.29)
+
+### Patches
+
+- docs(react-popover): Fix doc-comment links that don't translate to storybook ([PR #33471](https://github.com/microsoft/fluentui/pull/33471) by jiangemma@microsoft.com)
 
 ## [9.9.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.9.28)
 
