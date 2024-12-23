@@ -4,13 +4,15 @@ import * as React from 'react';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
 import {
+  isArrayOrTypedArray,
+  isDateArray,
+  isNumberArray,
+  sanitizeJson,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,
   transformPlotlyJsonToScatterChartProps,
   transformPlotlyJsonToHorizontalBarWithAxisProps,
-  isDateArray,
-  isNumberArray,
-  sanitizeJson,
+
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
@@ -73,14 +75,18 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   DeclarativeChartProps
 >((props, forwardedRef) => {
   const { plotlySchema } = sanitizeJson(props.chartSchema);
-  const { data, layout, selectedLegends } = plotlySchema;
+  let { data, layout, selectedLegends } = plotlySchema;
   const xValues = data[0].x;
   const isXDate = isDateArray(xValues);
   const isXNumber = isNumberArray(xValues);
   const colorMap = useColorMapping();
   const isDarkTheme = UseIsDarkTheme();
 
-  const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends ?? []);
+  if (!isArrayOrTypedArray(selectedLegends)) {
+    selectedLegends = [];
+  }
+
+  const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends);
   const onActiveLegendsChange = (keys: string[]) => {
     setActiveLegends(keys);
     if (props.onSchemaChange) {
@@ -88,10 +94,16 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     }
   };
 
+  React.useEffect(() => {
+    const { plotlySchema } = sanitizeJson(props.chartSchema);
+    const { selectedLegends } = plotlySchema;
+    setActiveLegends(selectedLegends ?? []);
+  }, [props.chartSchema]);
+
   const legendProps = {
     canSelectMultipleLegends: false,
     onChange: onActiveLegendsChange,
-    ...(activeLegends.length > 0 && { selectedLegend: activeLegends[0] }),
+    selectedLegend: activeLegends.slice(0, 1)[0],
   };
 
   switch (data[0].type) {
@@ -177,7 +189,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         />
       );
     default:
-      return <div>Unsupported Schema</div>;
+      throw new Error('Unsupported chart schema');
   }
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
