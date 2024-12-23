@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 18 Dec 2024 07:20:30 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Dec 2024 07:22:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.29)
+
+Mon, 23 Dec 2024 07:22:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.28..@fluentui/react-charting_v5.23.29)
+
+### Patches
+
+- feat: add functionality to export chart as image ([PR #33445](https://github.com/microsoft/fluentui/pull/33445) by 110246001+krkshitij@users.noreply.github.com)
+- Bump @fluentui/react-focus to v8.9.20 ([PR #33445](https://github.com/microsoft/fluentui/pull/33445) by beachball)
+- Bump @fluentui/theme-samples to v8.7.191 ([PR #33445](https://github.com/microsoft/fluentui/pull/33445) by beachball)
+- Bump @fluentui/react to v8.122.2 ([PR #33445](https://github.com/microsoft/fluentui/pull/33445) by beachball)
+
+## [5.23.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.28)
+
+Fri, 20 Dec 2024 07:20:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.27..@fluentui/react-charting_v5.23.28)
+
+### Patches
+
+- Ensure type safety of dependent fields ([PR #33486](https://github.com/microsoft/fluentui/pull/33486) by 74965306+Anush2303@users.noreply.github.com)
 
 ## [5.23.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.27)
 

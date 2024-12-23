@@ -3,7 +3,14 @@ import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { classNamesFunction, getId, getRTL, memoizeFunction, warnDeprecations } from '@fluentui/react/lib/Utilities';
+import {
+  classNamesFunction,
+  getId,
+  getRTL,
+  initializeComponentRef,
+  memoizeFunction,
+  warnDeprecations,
+} from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZoneDirection } from '@fluentui/react-focus';
@@ -39,6 +46,7 @@ import {
   IRefArrayData,
   Legends,
 } from '../../index';
+import { IChart } from '../../types/index';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -67,10 +75,10 @@ export interface IGroupedVerticalBarChartState extends IBasestate {
   calloutLegend: string;
 }
 
-export class GroupedVerticalBarChartBase extends React.Component<
-  IGroupedVerticalBarChartProps,
-  IGroupedVerticalBarChartState
-> {
+export class GroupedVerticalBarChartBase
+  extends React.Component<IGroupedVerticalBarChartProps, IGroupedVerticalBarChartState>
+  implements IChart
+{
   public static defaultProps: Partial<IGroupedVerticalBarChartProps> = {
     maxBarWidth: 24,
   };
@@ -100,9 +108,13 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _groupWidth: number;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
+  private _cartesianChartRef: React.RefObject<IChart>;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     this._createSet = memoizeFunction((data: IGroupedVerticalBarChartData[]) => this._createDataSetOfGVBC(data));
     this.state = {
       color: '',
@@ -129,6 +141,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._tooltipId = getId('GVBCTooltipId_');
     this._emptyChartId = getId('_GVBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
+    this._cartesianChartRef = React.createRef();
   }
 
   public render(): React.ReactNode {
@@ -203,6 +216,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
           xAxisOuterPadding: this._xAxisOuterPadding,
         })}
         barwidth={this._barWidth}
+        ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         children={() => {
           return <g>{this._groupedVerticalBarGraph}</g>;
@@ -216,6 +230,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
         aria-label={'Graph has no data to display'}
       />
     );
+  }
+
+  public get chartContainer(): HTMLElement | null {
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   private _getMinMaxOfYAxis = () => {
