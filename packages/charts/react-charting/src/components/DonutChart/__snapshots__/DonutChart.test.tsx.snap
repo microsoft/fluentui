@@ -125,23 +125,6 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               role="img"
             />
           </g>
-          <text
-            className=
-
-                {
-                  fill: #323130;
-                  font-size: 24px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: rgb(179, 179, 179);
-                }
-            dominantBaseline="middle"
-            textAnchor="middle"
-            y={5}
-          >
-            20,000
-          </text>
         </g>
       </svg>
     </div>
@@ -831,23 +814,6 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               role="img"
             />
           </g>
-          <text
-            className=
-
-                {
-                  fill: #323130;
-                  font-size: 24px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: rgb(179, 179, 179);
-                }
-            dominantBaseline="middle"
-            textAnchor="middle"
-            y={5}
-          >
-            20,000
-          </text>
         </g>
       </svg>
     </div>
@@ -1911,6 +1877,22 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               onMouseOver={[Function]}
               role="img"
             />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="auto"
+              textAnchor="start"
+              x={35.43557344375781}
+              y={-50.87553571916512}
+            >
+              20.0k
+            </text>
           </g>
           <g>
             <path
@@ -1937,6 +1919,22 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               onMouseOver={[Function]}
               role="img"
             />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="hanging"
+              textAnchor="start"
+              x={42.16983494620299}
+              y={45.45002772947447}
+            >
+              39.0k
+            </text>
           </g>
           <g>
             <path
@@ -1963,6 +1961,22 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               onMouseOver={[Function]}
               role="img"
             />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="auto"
+              textAnchor="end"
+              x={-60.58001193073337}
+              y={-13.19326170710649}
+            >
+              45.0k
+            </text>
           </g>
         </g>
       </svg>
@@ -2429,6 +2443,22 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               onMouseOver={[Function]}
               role="img"
             />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="auto"
+              textAnchor="start"
+              x={35.43557344375781}
+              y={-50.87553571916512}
+            >
+              19%
+            </text>
           </g>
           <g>
             <path
@@ -2455,6 +2485,22 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               onMouseOver={[Function]}
               role="img"
             />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="hanging"
+              textAnchor="start"
+              x={42.16983494620299}
+              y={45.45002772947447}
+            >
+              38%
+            </text>
           </g>
           <g>
             <path
@@ -2481,6 +2527,22 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               onMouseOver={[Function]}
               role="img"
             />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="auto"
+              textAnchor="end"
+              x={-60.58001193073337}
+              y={-13.19326170710649}
+            >
+              43%
+            </text>
           </g>
         </g>
       </svg>

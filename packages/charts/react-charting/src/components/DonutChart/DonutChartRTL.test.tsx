@@ -18,6 +18,9 @@ describe('Donut chart interactions', () => {
   beforeEach(() => {
     sharedBeforeEach();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+    // Mock the implementation of wrapTextInsideDonut as it internally calls a Browser Function like
+    // getComputedTextLength() which will otherwise lead to a crash if mounted
+    jest.spyOn(utils, 'wrapTextInsideDonut').mockImplementation(() => '20000');
   });
   afterEach(() => {
     jest.spyOn(global.Math, 'random').mockRestore();
@@ -70,7 +73,7 @@ describe('Donut chart interactions', () => {
 
   test('Should highlight the corresponding Pie on mouse over on legends', () => {
     // Arrange
-    const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} hideLegend={false} />);
+    const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} hideLabels={false} />);
 
     // Act
     const legend = screen.queryByText('first');
@@ -157,9 +160,6 @@ describe('Donut chart interactions', () => {
   });
 
   test('Should change value inside donut with the legend value on mouseOver legend ', () => {
-    // Mock the implementation of wrapTextInsideDonut as it internally calls a Browser Function like
-    // getComputedTextLength() which will otherwise lead to a crash if mounted
-    jest.spyOn(utils, 'wrapTextInsideDonut').mockImplementation(() => '1000');
     // Arrange
     const { container } = render(
       <DonutChart data={chartPointsDC} innerRadius={55} hideLegend={false} valueInsideDonut={1000} />,
@@ -170,7 +170,7 @@ describe('Donut chart interactions', () => {
     fireEvent.mouseOver(screen.getByText('first'));
 
     // Assert
-    expect(getByClass(container, /insideDonutString.*?/)[0].textContent).toBe('20,000');
+    expect(getByClass(container, /insideDonutString.*?/)[0].textContent).toBe('1,000');
   });
 
   test('Should reflect theme change', () => {
@@ -183,6 +183,38 @@ describe('Donut chart interactions', () => {
 
     // Assert
     expect(container).toMatchSnapshot();
+  });
+
+  // add test for legend multi select
+  test('Should select multiple legends on click', () => {
+    // Arrange
+    const { container } = render(
+      <DonutChart
+        data={chartPointsDC}
+        innerRadius={55}
+        hideLegend={false}
+        legendProps={{
+          canSelectMultipleLegends: true,
+        }}
+      />,
+    );
+
+    // Act
+    const firstLegend = screen.queryByText('first')?.closest('button');
+    const secondLegend = screen.queryByText('second')?.closest('button');
+    expect(firstLegend).toBeDefined();
+    expect(secondLegend).toBeDefined();
+    fireEvent.click(firstLegend!);
+    fireEvent.click(secondLegend!);
+
+    // Assert
+    expect(firstLegend).toHaveAttribute('aria-selected', 'true');
+    expect(secondLegend).toHaveAttribute('aria-selected', 'true');
+
+    const getById = queryAllByAttribute.bind(null, 'id');
+    expect(getById(container, /Pie.*?first/i)[0]).toHaveStyle('opacity: 1.0');
+    expect(getById(container, /Pie.*?second/i)[0]).toHaveStyle('opacity: 1.0');
+    expect(getById(container, /Pie.*?third/i)[0]).toHaveStyle('opacity: 0.1');
   });
 });
 

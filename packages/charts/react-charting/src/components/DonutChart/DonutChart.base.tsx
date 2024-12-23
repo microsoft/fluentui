@@ -270,7 +270,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     event: React.MouseEvent<HTMLButtonElement>,
     currentLegend?: ILegend,
   ): void {
-    if (this.props.legendProps?.canSelectMultipleLegends) {
+    if (this.props.legendProps && this.props.legendProps?.canSelectMultipleLegends) {
       this.setState({ selectedLegends });
     } else {
       this.setState({ selectedLegends: selectedLegends.slice(-1) });
@@ -279,14 +279,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       this.props.legendProps.onChange(selectedLegends, event, currentLegend);
     }
   }
-
-  private _isLegendHighlighted = (legend: string | undefined): boolean => {
-    return this._getHighlightedLegend().includes(legend!);
-  };
-
-  private _noLegendsHighlighted = (): boolean => {
-    return this._getHighlightedLegend().length === 0;
-  };
 
   private _focusCallback = (data: IChartDataPoint, id: string, element: SVGPathElement): void => {
     this._currentHoverElement = element;
@@ -344,11 +336,11 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
     const highlightedLegends = this._getHighlightedLegend();
     if (valueInsideDonut !== undefined && (highlightedLegends.length !== 0 || this.state.showHover)) {
-      const legendValue = data.find(point => point.legend === this.state.legend);
-      return legendValue
-        ? legendValue.yAxisCalloutData
-          ? legendValue.yAxisCalloutData
-          : legendValue.data!
+      const pointValue = data.find(point => point.legend === this.state.legend);
+      return pointValue
+        ? pointValue.yAxisCalloutData
+          ? pointValue.yAxisCalloutData
+          : pointValue.data!
         : valueInsideDonut;
     } else if (highlightedLegends.length > 0) {
       let totalValue = 0;
@@ -383,6 +375,14 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       ? [this.state.activeLegend]
       : [];
   }
+
+  private _isLegendHighlighted = (legend: string | undefined): boolean => {
+    return this._getHighlightedLegend().includes(legend!);
+  };
+
+  private _noLegendsHighlighted = (): boolean => {
+    return this._getHighlightedLegend().length === 0;
+  };
 
   private _isChartEmpty(): boolean {
     return !(
