@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: resolve ts errors after update",
+  "packageName": "@fluentui/utilities",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}
