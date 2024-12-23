@@ -39,6 +39,7 @@ const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianCh
 const ChartHoverCard = React.lazy(() =>
   import('../../utilities/ChartHoverCard/ChartHoverCard').then(module => ({ default: module.ChartHoverCard })),
 );
+const chartTypesToCheck = [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart];
 
 export interface ICartesianChartState {
   containerWidth: number;
@@ -142,23 +143,12 @@ export class CartesianChartBase
 
   public componentDidMount(): void {
     this._fitParentContainer();
-    if (
-      [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart].includes(this.props.chartType) &&
-      this.props.showYAxisLables &&
-      this.yAxisElement
-    ) {
-      let maxYAxisLabelLength = 0;
-      if (this.props.chartType === ChartTypes.HeatMapChart) {
-        maxYAxisLabelLength = calculateLongestLabelWidth(
-          this.props.points[0].data.map((point: IHeatMapChartDataPoint) => point.y),
-          `.${this._classNames.yAxis} text`,
-        );
-      } else {
-        maxYAxisLabelLength = calculateLongestLabelWidth(
-          this.props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
-          `.${this._classNames.yAxis} text`,
-        );
-      }
+    if (chartTypesToCheck.includes(this.props.chartType) && this.props.showYAxisLables && this.yAxisElement) {
+      const maxYAxisLabelLength = this.calculateMaxYAxisLabelLength(
+        this.props.chartType,
+        this.props.points,
+        this._classNames.yAxis!,
+      );
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
           startFromX: maxYAxisLabelLength,
@@ -203,23 +193,12 @@ export class CartesianChartBase
         });
       }
     }
-    if (
-      [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart].includes(this.props.chartType) &&
-      this.props.showYAxisLables &&
-      this.yAxisElement
-    ) {
-      let maxYAxisLabelLength = 0;
-      if (this.props.chartType === ChartTypes.HeatMapChart) {
-        maxYAxisLabelLength = calculateLongestLabelWidth(
-          this.props.points[0].data.map((point: IHeatMapChartDataPoint) => point.y),
-          `.${this._classNames.yAxis} text`,
-        );
-      } else {
-        maxYAxisLabelLength = calculateLongestLabelWidth(
-          this.props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
-          `.${this._classNames.yAxis} text`,
-        );
-      }
+    if (chartTypesToCheck.includes(this.props.chartType) && this.props.showYAxisLables && this.yAxisElement) {
+      const maxYAxisLabelLength = this.calculateMaxYAxisLabelLength(
+        this.props.chartType,
+        this.props.points,
+        this._classNames.yAxis!,
+      );
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
           startFromX: maxYAxisLabelLength,
@@ -236,6 +215,25 @@ export class CartesianChartBase
       });
     }
   }
+
+  public calculateMaxYAxisLabelLength = (
+    chartType: ChartTypes,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    points: any[],
+    className: string,
+  ): number => {
+    if (chartType === ChartTypes.HeatMapChart) {
+      return calculateLongestLabelWidth(
+        points[0].data.map((point: IHeatMapChartDataPoint) => point.y),
+        `.${className} text`,
+      );
+    } else {
+      return calculateLongestLabelWidth(
+        points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
+        `.${className} text`,
+      );
+    }
+  };
 
   public render(): JSX.Element {
     const {
@@ -255,7 +253,7 @@ export class CartesianChartBase
     }
 
     const margin = { ...this.margins };
-    if ([ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart].includes(this.props.chartType)) {
+    if (chartTypesToCheck.includes(this.props.chartType)) {
       if (!this._isRtl) {
         margin.left! += this.state.startFromX;
       } else {
@@ -432,7 +430,7 @@ export class CartesianChartBase
     truncating the rest of the text and showing elipsis
     or showing the whole string,
      * */
-      [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart].includes(this.props.chartType) &&
+      chartTypesToCheck.includes(this.props.chartType) &&
         yScale &&
         createYAxisLabels(
           this.yAxisElement,
