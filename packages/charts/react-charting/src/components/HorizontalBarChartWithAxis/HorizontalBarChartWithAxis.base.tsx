@@ -14,7 +14,6 @@ import {
   IRefArrayData,
   IMargins,
   IChart,
-  ICartesianChart,
 } from '../../types/IDataPoint';
 import { IChildProps, IYValueHover } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
@@ -79,7 +78,7 @@ export class HorizontalBarChartWithAxisBase
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: IHorizontalBarChartWithAxisDataPoint | null;
-  private _cartesianChartRef: React.RefObject<ICartesianChart>;
+  private _cartesianChartRef: React.RefObject<IChart>;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
@@ -183,7 +182,7 @@ export class HorizontalBarChartWithAxisBase
     );
   }
 
-  public get container(): HTMLElement | null {
+  public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
   }
 

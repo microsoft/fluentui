@@ -192,7 +192,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     );
   }
 
-  public get container(): HTMLElement | null {
+  public get chartContainer(): HTMLElement | null {
     return this._rootElem;
   }
 

@@ -49,7 +49,7 @@ import {
   createStringYAxis,
   formatDate,
 } from '../../utilities/index';
-import { ICartesianChart, IChart } from '../../types/index';
+import { IChart } from '../../types/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -186,7 +186,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
   private _isRTL: boolean = getRTL();
-  private _cartesianChartRef: React.RefObject<ICartesianChart>;
+  private _cartesianChartRef: React.RefObject<IChart>;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -363,7 +363,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     );
   }
 
-  public get container(): HTMLElement | null {
+  public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
   }
 

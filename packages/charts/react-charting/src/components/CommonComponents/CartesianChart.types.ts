@@ -7,7 +7,6 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import {
   IAccessibilityProps,
-  ICartesianChart,
   IChart,
   IDataPoint,
   IGroupedVerticalBarChartData,
@@ -702,5 +701,5 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Callback to access the public methods and properties of the component.
    */
-  ref?: IRefObject<ICartesianChart>;
+  ref?: IRefObject<IChart>;
 }

@@ -347,7 +347,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     );
   }
 
-  public get container(): HTMLElement | null {
+  public get chartContainer(): HTMLElement | null {
     return this._rootElem;
   }
 

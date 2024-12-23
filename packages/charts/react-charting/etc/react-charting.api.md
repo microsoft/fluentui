@@ -263,12 +263,6 @@ export interface IBasestate {
     }[];
 }
 
-// @public (undocumented)
-export interface ICartesianChart {
-    // (undocumented)
-    chartContainer: HTMLDivElement | null;
-}
-
 // @public
 export interface ICartesianChartProps {
     calloutProps?: Partial<ICalloutProps>;
@@ -364,7 +358,7 @@ export interface ICartesianChartStyles {
 // @public (undocumented)
 export interface IChart {
     // (undocumented)
-    container: HTMLElement | null;
+    chartContainer: HTMLElement | null;
 }
 
 // @public (undocumented)
@@ -1103,7 +1097,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
     points: any;
-    ref?: IRefObject<ICartesianChart>;
+    ref?: IRefObject<IChart>;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];

@@ -44,7 +44,7 @@ import {
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
-import { ICartesianChart, IChart } from '../../types/index';
+import { IChart } from '../../types/index';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
@@ -126,7 +126,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _enableComputationOptimization: boolean;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
-  private _cartesianChartRef: React.RefObject<ICartesianChart>;
+  private _cartesianChartRef: React.RefObject<IChart>;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -262,7 +262,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     );
   }
 
-  public get container(): HTMLElement | null {
+  public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
   }
 

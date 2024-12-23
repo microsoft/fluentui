@@ -46,7 +46,7 @@ import {
   IRefArrayData,
   Legends,
 } from '../../index';
-import { ICartesianChart, IChart } from '../../types/index';
+import { IChart } from '../../types/index';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -108,7 +108,7 @@ export class GroupedVerticalBarChartBase
   private _groupWidth: number;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
-  private _cartesianChartRef: React.RefObject<ICartesianChart>;
+  private _cartesianChartRef: React.RefObject<IChart>;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -232,7 +232,7 @@ export class GroupedVerticalBarChartBase
     );
   }
 
-  public get container(): HTMLElement | null {
+  public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
   }
 

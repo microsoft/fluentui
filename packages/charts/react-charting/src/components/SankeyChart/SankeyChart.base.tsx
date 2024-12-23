@@ -580,7 +580,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     enableReflow: true,
   };
 
-  private chartContainer: HTMLDivElement;
+  public chartContainer: HTMLDivElement;
   private _reqID: number;
   private readonly _calloutId: string;
   private readonly _linkId: string;
@@ -894,10 +894,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         aria-label={this._accessibility.emptyAriaLabel}
       />
     );
-  }
-
-  public get container(): HTMLElement | null {
-    return this.chartContainer;
   }
 
   private _computeNodeAttributes(

@@ -819,12 +819,5 @@ export interface ICustomizedCalloutData {
  * {@docCategory Chart}
  */
 export interface IChart {
-  container: HTMLElement | null;
-}
-
-/**
- * {@docCategory CartesianChart}
- */
-export interface ICartesianChart {
-  chartContainer: HTMLDivElement | null;
+  chartContainer: HTMLElement | null;
 }
