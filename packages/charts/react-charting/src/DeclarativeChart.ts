@@ -1,1 +1,1 @@
-export * from './components/DeclarativeChart/DeclarativeChart';
+export * from './components/DeclarativeChart/index';
