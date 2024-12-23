@@ -10,6 +10,8 @@ import {
   transformPlotlyJsonToHorizontalBarWithAxisProps,
   isDateArray,
   isNumberArray,
+  isMonthArray,
+  updateXValues,
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
@@ -76,6 +78,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const xValues = data[0].x;
   const isXDate = isDateArray(xValues);
   const isXNumber = isNumberArray(xValues);
+  const isXMonth = isMonthArray(xValues);
   const colorMap = useColorMapping();
   const isDarkTheme = UseIsDarkTheme();
 
@@ -128,21 +131,28 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       }
     case 'scatter':
       const isAreaChart = data.some((series: any) => series.fill === 'tonexty' || series.fill === 'tozeroy');
-      if (isXDate || isXNumber) {
+      const renderChart = (chartProps: any) => {
         if (isAreaChart) {
-          return (
-            <AreaChart
-              {...transformPlotlyJsonToScatterChartProps({ data, layout }, true, colorMap, isDarkTheme)}
-              legendProps={legendProps}
-            />
-          );
+          return <AreaChart {...chartProps} />;
         }
-        return (
-          <LineChart
-            {...transformPlotlyJsonToScatterChartProps({ data, layout }, false, colorMap, isDarkTheme)}
-            legendProps={legendProps}
-          />
-        );
+        return <LineChart {...chartProps} />;
+      };
+      if (isXDate || isXNumber) {
+        const chartProps = {
+          ...transformPlotlyJsonToScatterChartProps({ data, layout }, isAreaChart, colorMap, isDarkTheme),
+          legendProps,
+        };
+        return renderChart(chartProps);
+      } else if (isXMonth) {
+        const updatedData = data.map((dataPoint: any) => ({
+          ...dataPoint,
+          x: updateXValues(dataPoint.x),
+        }));
+        const chartProps = {
+          ...transformPlotlyJsonToScatterChartProps({ updatedData, layout }, isAreaChart, colorMap, isDarkTheme),
+          legendProps,
+        };
+        return renderChart(chartProps);
       }
       return (
         <VerticalStackedBarChart

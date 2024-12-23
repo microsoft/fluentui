@@ -33,7 +33,38 @@ const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 export const isDateArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isDate);
 export const isNumberArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isNumber);
+export const isMonthArray = (array: any[]): boolean => {
+  if (array && array.length > 0) {
+    const presentYear = new Date().getFullYear();
+    return array.every(monthValue => {
+      return isDate(`${monthValue} 01, ${presentYear}`);
+    });
+  }
+  return false;
+};
 
+export const updateXValues = (xValues: any[]): any[] => {
+  const presentYear = new Date().getFullYear();
+  const dates = xValues.map(monthValue => {
+    const parsedDate = `${monthValue} 01, ${presentYear}`;
+    return isDate(parsedDate) ? new Date(parsedDate) : null;
+  });
+  for (let i = dates.length - 1; i > 0; i--) {
+    const currentMonth = dates[i]!.getMonth();
+    const previousMonth = dates[i - 1]!.getMonth();
+    const currentYear = dates[i]!.getFullYear();
+    const previousYear = dates[i - 1]!.getFullYear();
+    if (previousMonth >= currentMonth) {
+      dates[i - 1]!.setFullYear(dates[i]!.getFullYear() - 1);
+    } else if (previousYear > currentYear) {
+      dates[i - 1]!.setFullYear(currentYear);
+    }
+  }
+  xValues = xValues.map((month, index) => {
+    return `${month} 01, ${dates[index]!.getFullYear()}`;
+  });
+  return xValues;
+};
 export const getColor = (
   legendLabel: string,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -112,7 +143,7 @@ export const transformPlotlyJsonToVSBCProps = (
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
       }
       const legend: string = series.name || `Series ${index1 + 1}`;
-      if (series.type === 'bar') {
+      if (series.type === 'bar' || series.type === 'scatter') {
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].chartData.push({
           legend,
@@ -162,6 +193,7 @@ export const transformPlotlyJsonToGVBCProps = (
         mapXToDataPoints[x].series.push({
           key: legend,
           data: series.y?.[index2],
+          xAxisCalloutData: x as string,
           color,
           legend,
         });
@@ -271,8 +303,8 @@ export const transformPlotlyJsonToScatterChartProps = (
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
-  const { data, layout } = jsonObj;
-
+  const { layout } = jsonObj;
+  const data = jsonObj.updatedData ? jsonObj.updatedData : jsonObj.data;
   const chartData: ILineChartPoints[] = data.map((series: any, index: number) => {
     const xValues = series.x;
     const isString = typeof xValues[0] === 'string';
@@ -458,15 +490,23 @@ export const transformPlotlyJsonToGaugeProps = (
   const { data, layout } = jsonObj;
   const firstData = data[0];
 
-  const segments = firstData.gauge?.steps?.map((step: any, index: number): IGaugeChartSegment => {
-    const legend = step.name || `Segment ${index + 1}`;
-    const color = getColor(legend, colorMap, isDarkTheme);
-    return {
-      legend,
-      size: step.range?.[1] - step.range?.[0],
-      color,
-    };
-  });
+  const segments = firstData.gauge?.steps?.length
+    ? firstData.gauge.steps.map((step: any, index: number): IGaugeChartSegment => {
+        const legend = step.name || `Segment ${index + 1}`;
+        const color = getColor(legend, colorMap, isDarkTheme);
+        return {
+          legend,
+          size: step.range?.[1] - step.range?.[0],
+          color,
+        };
+      })
+    : [
+        {
+          legend: 'Segment 1',
+          size: (firstData.gauge?.range?.[1] ?? 0) - (firstData.gauge?.range?.[0] ?? 0),
+          color: getColor('Segment 1', colorMap, isDarkTheme),
+        },
+      ];
 
   let sublabel: string | undefined;
   let sublabelColor: string | undefined;
