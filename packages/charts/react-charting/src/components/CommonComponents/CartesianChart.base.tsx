@@ -9,6 +9,7 @@ import {
   IModifiedCartesianChartProps,
   IYValueHover,
   IHorizontalBarChartWithAxisDataPoint,
+  IHeatMapChartDataPoint,
 } from '../../index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import {
@@ -138,14 +139,22 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   public componentDidMount(): void {
     this._fitParentContainer();
     if (
-      this.props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
+      [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart].includes(this.props.chartType) &&
       this.props.showYAxisLables &&
       this.yAxisElement
     ) {
-      const maxYAxisLabelLength = calculateLongestLabelWidth(
-        this.props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
-        `.${this._classNames.yAxis} text`,
-      );
+      let maxYAxisLabelLength = 0;
+      if (this.props.chartType === ChartTypes.HeatMapChart) {
+        maxYAxisLabelLength = calculateLongestLabelWidth(
+          this.props.points[0].data.map((point: IHeatMapChartDataPoint) => point.y),
+          `.${this._classNames.yAxis} text`,
+        );
+      } else {
+        maxYAxisLabelLength = calculateLongestLabelWidth(
+          this.props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
+          `.${this._classNames.yAxis} text`,
+        );
+      }
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
           startFromX: maxYAxisLabelLength,
@@ -191,14 +200,22 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       }
     }
     if (
-      this.props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
+      [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart].includes(this.props.chartType) &&
       this.props.showYAxisLables &&
       this.yAxisElement
     ) {
-      const maxYAxisLabelLength = calculateLongestLabelWidth(
-        this.props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
-        `.${this._classNames.yAxis} text`,
-      );
+      let maxYAxisLabelLength = 0;
+      if (this.props.chartType === ChartTypes.HeatMapChart) {
+        maxYAxisLabelLength = calculateLongestLabelWidth(
+          this.props.points[0].data.map((point: IHeatMapChartDataPoint) => point.y),
+          `.${this._classNames.yAxis} text`,
+        );
+      } else {
+        maxYAxisLabelLength = calculateLongestLabelWidth(
+          this.props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
+          `.${this._classNames.yAxis} text`,
+        );
+      }
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
           startFromX: maxYAxisLabelLength,
@@ -234,7 +251,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
 
     const margin = { ...this.margins };
-    if (this.props.chartType === ChartTypes.HorizontalBarChartWithAxis) {
+    if ([ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart].includes(this.props.chartType)) {
       if (!this._isRtl) {
         margin.left! += this.state.startFromX;
       } else {
@@ -411,7 +428,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     truncating the rest of the text and showing elipsis
     or showing the whole string,
      * */
-      this.props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
+      [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart].includes(this.props.chartType) &&
         yScale &&
         createYAxisLabels(
           this.yAxisElement,
