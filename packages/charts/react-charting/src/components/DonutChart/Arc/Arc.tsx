@@ -70,7 +70,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           onFocus={this._onFocus.bind(this, this.props.data!.data, id)}
           className={classNames.root}
           data-is-focusable={
-            this._shouldHighlightArc(activeArc!, this.props.data!.data.legend!) || this.props.activeArc?.length === 0
+            this._shouldHighlightArc(this.props.data!.data.legend!) || this.props.activeArc?.length === 0
           }
           onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseMove={this._hoverOn.bind(this, this.props.data!.data)}
@@ -124,16 +124,17 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
 
-  private _shouldHighlightArc = (activeArc: string[], legend?: string): boolean => {
-    return Array.isArray(activeArc) && legend !== undefined && activeArc.includes(legend);
+  private _shouldHighlightArc = (legend?: string): boolean => {
+    const { activeArc } = this.props;
+    return !(activeArc && activeArc.length > 0 && legend !== undefined && !activeArc.includes(legend));
   };
 
   private _renderArcLabel = (className: string) => {
-    const { arc, data, innerRadius, outerRadius, showLabelsInPercent, totalValue, hideLabels, activeArc } = this.props;
+    const { arc, data, innerRadius, outerRadius, showLabelsInPercent, totalValue, hideLabels } = this.props;
     if (
       hideLabels ||
       Math.abs(data!.endAngle - data!.startAngle) < Math.PI / 12 ||
-      (activeArc && activeArc.length > 0 && !this._shouldHighlightArc(activeArc!, data!.data.legend!))
+      !this._shouldHighlightArc(data!.data.legend!)
     ) {
       return null;
     }
