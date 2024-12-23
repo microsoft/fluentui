@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import { DeclarativeChart, DeclarativeChartProps, Schema } from '@fluentui/react-charting';
+import { DeclarativeChart, DeclarativeChartProps, IDeclarativeChart, Schema } from '@fluentui/react-charting';
 
 interface IDeclarativeChartState {
   selectedChoice: string;
@@ -37,7 +37,18 @@ const schemas: any[] = [
 
 const dropdownStyles = { dropdown: { width: 200 } };
 
+function fileSaver(url: string) {
+  const saveLink = document.createElement('a');
+  saveLink.href = url;
+  saveLink.download = 'converted-image.png';
+  document.body.appendChild(saveLink);
+  saveLink.click();
+  document.body.removeChild(saveLink);
+}
+
 export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarativeChartState> {
+  private _declarativeChartRef: React.RefObject<IDeclarativeChart>;
+
   constructor(props: DeclarativeChartProps) {
     super(props);
     this.state = {
@@ -45,6 +56,8 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
       preSelectLegends: false,
       selectedLegends: '',
     };
+
+    this._declarativeChartRef = React.createRef();
   }
 
   public render(): JSX.Element {
@@ -99,8 +112,22 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
           />
         </div>
         <br />
+        <button
+          onClick={() => {
+            this._declarativeChartRef.current?.exportAsImage().then((imgData: string) => {
+              fileSaver(imgData);
+            });
+          }}
+        >
+          Download
+        </button>
         <br />
-        <DeclarativeChart key={uniqueKey} chartSchema={inputSchema} onSchemaChange={this._handleChartSchemaChanged} />
+        <DeclarativeChart
+          key={uniqueKey}
+          chartSchema={inputSchema}
+          onSchemaChange={this._handleChartSchemaChanged}
+          componentRef={this._declarativeChartRef}
+        />
         <br />
         Legend selection changed : {this.state.selectedLegends}
       </>
