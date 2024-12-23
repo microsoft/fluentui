@@ -36,8 +36,8 @@ export const isNumberArray = (array: any[]): boolean => isArrayOrTypedArray(arra
 export const isMonthArray = (array: any[]): boolean => {
   if (array && array.length > 0) {
     const presentYear = new Date().getFullYear();
-    return array.every(monthValue => {
-      return isDate(`${monthValue} 01, ${presentYear}`);
+    return array.every(possiblyMonthValue => {
+      return isDate(`${possiblyMonthValue} 01, ${presentYear}`);
     });
   }
   return false;
@@ -45,8 +45,8 @@ export const isMonthArray = (array: any[]): boolean => {
 
 export const updateXValues = (xValues: any[]): any[] => {
   const presentYear = new Date().getFullYear();
-  const dates = xValues.map(monthValue => {
-    const parsedDate = `${monthValue} 01, ${presentYear}`;
+  const dates = xValues.map(possiblyMonthValue => {
+    const parsedDate = `${possiblyMonthValue} 01, ${presentYear}`;
     return isDate(parsedDate) ? new Date(parsedDate) : null;
   });
   for (let i = dates.length - 1; i > 0; i--) {
@@ -304,6 +304,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
   const { data, layout } = jsonObj;
+
   const chartData: ILineChartPoints[] = data.map((series: any, index: number) => {
     const xValues = series.x;
     const isString = typeof xValues[0] === 'string';

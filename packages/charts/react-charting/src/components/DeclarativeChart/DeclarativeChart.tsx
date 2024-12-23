@@ -135,7 +135,18 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         if (isAreaChart) {
           return <AreaChart {...chartProps} />;
         }
-        return <LineChart {...chartProps} />;
+        return (
+          <LineChart
+            {...{
+              ...chartProps,
+              legendProps: {
+                onChange: onActiveLegendsChange,
+                canSelectMultipleLegends: true,
+                selectedLegends: activeLegends,
+              },
+            }}
+          />
+        );
       };
       if (isXDate || isXNumber) {
         const chartProps = {
