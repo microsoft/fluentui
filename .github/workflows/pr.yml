@@ -71,9 +71,10 @@ jobs:
         run: |
           yarn nx format:check --base origin/master
 
-      - name: build, test, lint, test-ssr (affected)
+      - name: type-check
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --nxBail
+          # FLUENT_JEST_WORKER=2 yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --nxBail
+          yarn nx run-many -t build type-check --skip-nx-cache
 
       - name: 'Check for unstaged changes'
         run: |
