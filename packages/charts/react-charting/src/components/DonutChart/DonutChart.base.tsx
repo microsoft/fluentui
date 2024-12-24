@@ -335,8 +335,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
   private _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
     const highlightedLegends = this._getHighlightedLegend();
-    if (valueInsideDonut !== undefined && (highlightedLegends.length !== 0 || this.state.showHover)) {
-      const pointValue = data.find(point => point.legend === this.state.legend);
+    if (valueInsideDonut !== undefined && (highlightedLegends.length === 1 || this.state.showHover)) {
+      const pointValue = data.find(point => this._isLegendHighlighted(point.legend));
       return pointValue
         ? pointValue.yAxisCalloutData
           ? pointValue.yAxisCalloutData

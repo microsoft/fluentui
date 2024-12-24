@@ -170,7 +170,7 @@ describe('Donut chart interactions', () => {
     fireEvent.mouseOver(screen.getByText('first'));
 
     // Assert
-    expect(getByClass(container, /insideDonutString.*?/)[0].textContent).toBe('1,000');
+    expect(getByClass(container, /insideDonutString.*?/)[0].textContent).toBe('20,000');
   });
 
   test('Should reflect theme change', () => {

@@ -126,7 +126,8 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
   private _shouldHighlightArc = (legend?: string): boolean => {
     const { activeArc } = this.props;
-    return !(activeArc && activeArc.length > 0 && legend !== undefined && !activeArc.includes(legend));
+    // If no activeArc is provided, highlight all arcs. Otherwise, only highlight the arcs that are active.
+    return !activeArc || activeArc.length === 0 || legend === undefined || activeArc.includes(legend);
   };
 
   private _renderArcLabel = (className: string) => {
