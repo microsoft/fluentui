@@ -1119,11 +1119,7 @@ export class VerticalStackedBarChartBase extends React.Component<
    * 2. hovering: if there is no selected legend and the user hovers over it
    */
   private _legendHighlighted = (legendTitle: string): boolean => {
-    const highlightedLegends = this._getHighlightedLegend();
-    return (
-      highlightedLegends.includes(legendTitle) ||
-      (highlightedLegends.length === 0 && this.state.activeLegend === legendTitle)
-    );
+    return this._getHighlightedLegend().includes(legendTitle);
   };
 
   /**
