@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
-import { ILegend, Legends } from '../Legends/index';
+import { ILegend, ILegendsProps, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
 import {
   classNamesFunction,
@@ -187,6 +187,29 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _emptyChartId: string;
   private _isRTL: boolean = getRTL();
   private _cartesianChartRef: React.RefObject<IChart>;
+
+  public static getDerivedStateFromProps(
+    nextProps: Readonly<ILineChartProps>,
+    prevState: Readonly<ILineChartState>,
+  ): Partial<ILineChartState> | null {
+    if (nextProps.legendProps?.selectedLegends?.length! > 0) {
+      const { selectedLegends = [] } = (nextProps.legendProps! as ILegendsProps) || {};
+      return {
+        ...prevState,
+        selectedLegendPoints: new LineChartBase(nextProps)._injectIndexPropertyInLineChartData(
+          nextProps.data.lineChartData,
+          Array.isArray(selectedLegends) && selectedLegends?.some(legend => legend.trim().length > 0),
+        ),
+      };
+    } else if (nextProps.legendProps?.selectedLegend !== undefined) {
+      const { selectedLegend = undefined } = (nextProps.legendProps! as ILegendsProps) || {};
+      return {
+        ...prevState,
+        selectedLegend,
+      };
+    }
+    return prevState;
+  }
 
   constructor(props: ILineChartProps) {
     super(props);
