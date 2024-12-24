@@ -691,6 +691,45 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
       expect(bars[7]).toHaveStyle('opacity: 0.1');
     },
   );
+
+  testWithWait(
+    'Should reduce the opacity of the other bars/lines and their legends on mouse over multiple legends',
+    VerticalBarChart,
+    { data: pointsWithLine, lineLegendText: 'just line', legendProps: { canSelectMultipleLegends: true } },
+    container => {
+      const bars = getById(container, /_VBC_bar/i);
+      const line = getById(container, /_VBC_line/i)[0];
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      expect(line).toBeDefined();
+      expect(bars).toHaveLength(8);
+      expect(legends).toHaveLength(9);
+      fireEvent.click(screen.getByText('just line'));
+      fireEvent.click(screen.getByText('Oranges'));
+      expect(line.getAttribute('opacity')).toEqual('1');
+      expect(screen.getByText('Dogs')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Apples')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Bananas')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Giraffes')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Cats')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Elephants')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Monkeys')).toHaveStyle('opacity: 0.67');
+      expect(line).toBeDefined();
+      expect(bars[1]).toBeDefined();
+      expect(bars[1]).toHaveStyle('opacity: 0.1');
+      expect(bars[2]).toBeDefined();
+      expect(bars[2]).toHaveStyle('opacity: 0.1');
+      expect(bars[3]).toBeDefined();
+      expect(bars[3]).toHaveStyle('opacity: 0.1');
+      expect(bars[4]).toBeDefined();
+      expect(bars[4]).toHaveStyle('opacity: 0.1');
+      expect(bars[5]).toBeDefined();
+      expect(bars[5]).toHaveStyle('opacity: 0.1');
+      expect(bars[6]).toBeDefined();
+      expect(bars[6]).toHaveStyle('opacity: 0.1');
+      expect(bars[7]).toBeDefined();
+      expect(bars[7]).toHaveStyle('opacity: 0.1');
+    },
+  );
 });
 
 describe('Vertical bar chart - Subcomponent callout', () => {
