@@ -2,7 +2,7 @@ import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
-import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ILegend } from '../../components/Legends/Legends.types';
@@ -13,6 +13,7 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
   IRefArrayData,
   IMargins,
+  IChart,
 } from '../../types/IDataPoint';
 import { IChildProps, IYValueHover } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
@@ -58,10 +59,10 @@ export interface IHorizontalBarChartWithAxisState extends IBasestate {
 
 type ColorScale = (_p?: number) => string;
 
-export class HorizontalBarChartWithAxisBase extends React.Component<
-  IHorizontalBarChartWithAxisProps,
-  IHorizontalBarChartWithAxisState
-> {
+export class HorizontalBarChartWithAxisBase
+  extends React.Component<IHorizontalBarChartWithAxisProps, IHorizontalBarChartWithAxisState>
+  implements IChart
+{
   private _points: IHorizontalBarChartWithAxisDataPoint[];
   private _barHeight: number;
   private _colors: string[];
@@ -77,9 +78,13 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: IHorizontalBarChartWithAxisDataPoint | null;
+  private _cartesianChartRef: React.RefObject<IChart>;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     this.state = {
       color: '',
       dataForHoverCard: 0,
@@ -105,6 +110,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       this.props.data! && this.props.data!.length > 0
         ? (getTypeOfAxis(this.props.data![0].y, false) as YAxisType)
         : YAxisType.StringAxis;
+    this._cartesianChartRef = React.createRef();
   }
 
   public render(): JSX.Element {
@@ -163,6 +169,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         getGraphData={this._getGraphData}
         getAxisData={this._getAxisData}
         onChartMouseLeave={this._handleChartMouseLeave}
+        ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         children={(props: IChildProps) => {
           return (
@@ -173,6 +180,10 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         }}
       />
     );
+  }
+
+  public get chartContainer(): HTMLElement | null {
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   private _getDomainNRangeValues = (
