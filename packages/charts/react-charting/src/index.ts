@@ -97,6 +97,7 @@ export type {
   IVerticalStackedChartProps,
   SLink,
   SNode,
+  IChart,
 } from './types/index';
 export type {
   IChartHoverCardProps,
@@ -135,7 +136,7 @@ export { DataVizPalette, getColorFromToken, getNextColor } from './utilities/col
 export { DataVizGradientPalette, getGradientFromToken, getNextGradient } from './utilities/gradients';
 export type { IGaugeChartProps, IGaugeChartSegment, IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart';
 export { GaugeChart, GaugeChartVariant, GaugeValueFormat } from './GaugeChart';
-export type { DeclarativeChartProps, Schema } from './DeclarativeChart';
+export type { DeclarativeChartProps, Schema, IDeclarativeChart, IImageExportOptions } from './DeclarativeChart';
 export { DeclarativeChart } from './DeclarativeChart';
 
 import './version';
