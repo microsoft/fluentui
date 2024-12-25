@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 23 Dec 2024 07:22:57 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Dec 2024 07:21:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.30)
+
+Wed, 25 Dec 2024 07:21:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.29..@fluentui/react-charting_v5.23.30)
+
+### Patches
+
+- Legends multi selection for Donut Charts ([PR #33447](https://github.com/microsoft/fluentui/pull/33447) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.23.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.29)
 
