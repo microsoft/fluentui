@@ -144,6 +144,14 @@ export class GroupedVerticalBarChartBase
     this._cartesianChartRef = React.createRef();
   }
 
+  public componentDidUpdate(prevProps: IGroupedVerticalBarChartProps): void {
+    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+      this.setState({
+        selectedLegend: this.props.legendProps?.selectedLegend ?? ''
+      });
+    }
+  }
+
   public render(): React.ReactNode {
     const points = this.props.data;
     const { keys, xAxisLabels, datasetForBars } = this._createSet(points);

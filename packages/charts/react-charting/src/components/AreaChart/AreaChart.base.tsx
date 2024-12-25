@@ -162,7 +162,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._cartesianChartRef = React.createRef();
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(prevProps: IAreaChartProps): void {
+    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+      this.setState({
+        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+      });
+    }
+
     if (this.state.isShowCalloutPending) {
       this.setState({
         refSelected: `#${this._highlightedCircleId}`,

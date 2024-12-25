@@ -51,7 +51,7 @@ function fileSaver(url: string) {
 
 export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarativeChartState> {
   private _declarativeChartRef: React.RefObject<IDeclarativeChart>;
-  private _lastKnownValidLegends: string[];
+  private _lastKnownValidLegends: string[] | undefined;
 
   constructor(props: DeclarativeChartProps) {
     super(props);
@@ -95,9 +95,13 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     const uniqueKey = `${this.state.selectedChoice}`;
     const currentPlotlySchema = this._getSchemaByKey(this.state.selectedChoice);
     const { data, layout } = currentPlotlySchema;
-    try {
-      this._lastKnownValidLegends = JSON.parse(this.state.selectedLegends);
-    } catch (error) {
+    if (this.state.selectedLegends === '') {
+      this._lastKnownValidLegends = undefined;
+    } else {
+      try {
+        this._lastKnownValidLegends = JSON.parse(this.state.selectedLegends);
+      } catch (error) {
+      }
     }
     const plotlySchema = { data, layout, selectedLegends: this._lastKnownValidLegends };
     let inputSchema: Schema = { plotlySchema: plotlySchema };

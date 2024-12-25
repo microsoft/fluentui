@@ -142,7 +142,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <DonutChart
           {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={{ ...legendProps, canSelectMultipleLegends: true }}
+          legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends}}
           componentRef={chartRef}
         />
       );
@@ -189,11 +189,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return (
           <LineChart
             {...transformPlotlyJsonToScatterChartProps({ data, layout }, false, colorMap, isDarkTheme)}
-            legendProps={{
-              onChange: onActiveLegendsChange,
-              canSelectMultipleLegends: true,
-              selectedLegends: activeLegends,
-            }}
+            legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends}}
             componentRef={chartRef}
           />
         );

@@ -167,6 +167,14 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     }
   }
 
+  public componentDidUpdate(prevProps: IGaugeChartProps): void {
+    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+      this.setState({
+        selectedLegend: this.props.legendProps?.selectedLegend ?? ''
+      });
+    }
+  }
+
   public render(): React.ReactNode {
     this._margins = this._getMargins();
     this._legendsHeight = !this.props.hideLegend ? 24 : 0;

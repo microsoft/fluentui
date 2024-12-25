@@ -113,6 +113,14 @@ export class HorizontalBarChartWithAxisBase
     this._cartesianChartRef = React.createRef();
   }
 
+  public componentDidUpdate(prevProps: IHorizontalBarChartWithAxisProps): void {
+    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+      this.setState({
+        selectedLegend: this.props.legendProps?.selectedLegend ?? ''
+      });
+    }
+  }
+
   public render(): JSX.Element {
     this._adjustProps();
     const reversedBars = [...this._points].reverse();
