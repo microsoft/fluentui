@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
-import { DeclarativeChart, DeclarativeChartProps, Schema } from '@fluentui/react-charting';
+import { DeclarativeChart, DeclarativeChartProps, IDeclarativeChart, Schema } from '@fluentui/react-charting';
 import ErrorBoundary from './ErrorBoundary';
 
 interface IDeclarativeChartState {
@@ -37,10 +37,22 @@ const schemas: any[] = [
 
 const dropdownStyles = { dropdown: { width: 200 } };
 
+
 const textFieldStyles: Partial<ITextFieldStyles> = { root: { maxWidth: 300 } };
 
+function fileSaver(url: string) {
+  const saveLink = document.createElement('a');
+  saveLink.href = url;
+  saveLink.download = 'converted-image.png';
+  document.body.appendChild(saveLink);
+  saveLink.click();
+  document.body.removeChild(saveLink);
+}
+
 export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarativeChartState> {
+  private _declarativeChartRef: React.RefObject<IDeclarativeChart>;
   private _lastKnownValidLegends: string[];
+
   constructor(props: DeclarativeChartProps) {
     super(props);
     const defaultselection = 'donutchart';
@@ -51,6 +63,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
       selectedLegends: JSON.stringify(selectedLegends),
     };
 
+    this._declarativeChartRef = React.createRef();
     this._lastKnownValidLegends = selectedLegends;
   }
 
@@ -102,8 +115,22 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
           &nbsp;&nbsp;&nbsp;
         </div>
         <br />
+        <button
+          onClick={() => {
+            this._declarativeChartRef.current?.exportAsImage().then((imgData: string) => {
+              fileSaver(imgData);
+            });
+          }}
+        >
+          Download
+        </button>
         <br />
-        <DeclarativeChart key={uniqueKey} chartSchema={inputSchema} onSchemaChange={this._handleChartSchemaChanged} />
+        <DeclarativeChart
+          key={uniqueKey}
+          chartSchema={inputSchema}
+          onSchemaChange={this._handleChartSchemaChanged}
+          componentRef={this._declarativeChartRef}
+        />
         <br />
         <TextField label="Current Legend selection" value={this.state.selectedLegends} onChange={this._onSelectedLegendsEdited} styles={textFieldStyles}/>
       </ErrorBoundary>

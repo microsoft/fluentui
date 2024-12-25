@@ -2,6 +2,54 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 19 Dec 2024 14:30:56 GMT",
+      "tag": "@fluentui/react-components_v9.56.8",
+      "version": "9.56.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "f2523077e9c92fc7f065308efe2081fc86846b5b",
+            "comment": "fix: MessageBar auto reflow should handle document reflow with `min-content`"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Dec 2024 10:59:36 GMT",
+      "tag": "@fluentui/react-components_v9.56.7",
+      "version": "9.56.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "0eca6fb68963b15b664b8560984f0f742bae280b",
+            "comment": "docs(react-dialog): Fix doc-comment links that don't translate to storybook"
+          },
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "0eca6fb68963b15b664b8560984f0f742bae280b",
+            "comment": "docs(react-menu): Fix doc-comment links that don't translate to storybook"
+          },
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "0eca6fb68963b15b664b8560984f0f742bae280b",
+            "comment": "docs(react-popover): Fix doc-comment links that don't translate to storybook"
+          },
+          {
+            "author": "derdem@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "084c76645ce97417b2bdc50203f4c66f5fd27309",
+            "comment": "fix: Pass missing Rating's itemLabel prop to its state so RatingItem consumes it from context."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Dec 2024 16:26:45 GMT",
       "tag": "@fluentui/react-components_v9.56.6",
       "version": "9.56.6",

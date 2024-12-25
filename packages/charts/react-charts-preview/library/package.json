@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-charts-preview",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "React web chart controls for Microsoft fluentui v9 system.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -39,8 +39,8 @@
   "dependencies": {
     "@fluentui/react-button": "^9.3.98",
     "@fluentui/react-jsx-runtime": "^9.0.48",
-    "@fluentui/react-overflow": "^9.2.4",
-    "@fluentui/react-popover": "^9.9.28",
+    "@fluentui/react-overflow": "^9.2.5",
+    "@fluentui/react-popover": "^9.9.29",
     "@fluentui/react-shared-contexts": "^9.21.2",
     "@fluentui/react-tabster": "^9.23.2",
     "@fluentui/react-theme": "^9.1.24",
