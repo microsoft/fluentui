@@ -67,6 +67,12 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     this._lastKnownValidLegends = selectedLegends;
   }
 
+  componentDidMount() {
+    document.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+    });
+  };
+
   public render(): JSX.Element {
     return <div>{this._createDeclarativeChart()}</div>;
   }
