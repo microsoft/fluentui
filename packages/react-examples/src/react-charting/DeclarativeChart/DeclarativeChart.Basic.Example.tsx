@@ -98,9 +98,9 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     if (this.state.selectedLegends === '') {
       this._lastKnownValidLegends = undefined;
     } else {
-      try {
-        this._lastKnownValidLegends = JSON.parse(this.state.selectedLegends);
-      } catch (error) {
+        try {
+          this._lastKnownValidLegends = JSON.parse(this.state.selectedLegends);
+        } catch (error) {
       }
     }
     const plotlySchema = { data, layout, selectedLegends: this._lastKnownValidLegends };
