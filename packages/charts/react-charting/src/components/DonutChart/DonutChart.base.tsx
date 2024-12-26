@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { ScaleOrdinal } from 'd3-scale';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -9,6 +9,7 @@ import { Pie } from './Pie/index';
 import { IChartDataPoint, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
 import { getAccessibleDataObject, getColorFromToken, getNextColor, getNextGradient } from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
+import { IChart } from '../../types/index';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 const LEGEND_CONTAINER_HEIGHT = 40;
@@ -29,7 +30,7 @@ export interface IDonutChartState {
   callOutAccessibilityData?: IAccessibilityProps;
 }
 
-export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
+export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> implements IChart {
   public static defaultProps: Partial<IDonutChartProps> = {
     innerRadius: 0,
     hideLabels: true,
@@ -63,6 +64,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
   constructor(props: IDonutChartProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     this.state = {
       showHover: false,
       value: '',
@@ -186,6 +190,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         aria-label={'Graph has no data to display'}
       />
     );
+  }
+
+  public get chartContainer(): HTMLElement | null {
+    return this._rootElem;
   }
 
   private _closeCallout = () => {

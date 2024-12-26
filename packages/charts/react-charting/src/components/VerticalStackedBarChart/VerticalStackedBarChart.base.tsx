@@ -9,7 +9,14 @@ import {
   scaleUtc as d3ScaleUtc,
   scaleTime as d3ScaleTime,
 } from 'd3-scale';
-import { classNamesFunction, getId, getRTL, warnDeprecations, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import {
+  classNamesFunction,
+  getId,
+  getRTL,
+  warnDeprecations,
+  memoizeFunction,
+  initializeComponentRef,
+} from '@fluentui/react/lib/Utilities';
 import { IPalette, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
@@ -53,6 +60,7 @@ import {
   formatDate,
   getNextGradient,
 } from '../../utilities/index';
+import { IChart } from '../../types/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -95,10 +103,10 @@ export interface IVerticalStackedBarChartState extends IBasestate {
   calloutLegend: string;
   selectedLegends: string[];
 }
-export class VerticalStackedBarChartBase extends React.Component<
-  IVerticalStackedBarChartProps,
-  IVerticalStackedBarChartState
-> {
+export class VerticalStackedBarChartBase
+  extends React.Component<IVerticalStackedBarChartProps, IVerticalStackedBarChartState>
+  implements IChart
+{
   public static defaultProps: Partial<IVerticalStackedBarChartProps> = {
     maxBarWidth: 24,
     useUTC: true,
@@ -124,12 +132,16 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _emptyChartId: string;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
+  private _cartesianChartRef: React.RefObject<IChart>;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     this.state = {
       isCalloutVisible: false,
-      selectedLegends: props.legendProps?.selectedLegend ? [props.legendProps.selectedLegend] : [],
+      selectedLegends: props.legendProps?.selectedLegends || [],
       activeLegend: undefined,
       refSelected: null,
       dataForHoverCard: 0,
@@ -155,6 +167,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
     this._emptyChartId = getId('_VSBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
+    this._cartesianChartRef = React.createRef();
   }
 
   public componentDidUpdate(prevProps: IVerticalStackedBarChartProps): void {
@@ -239,6 +252,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             xAxisInnerPadding: this._xAxisInnerPadding,
             xAxisOuterPadding: this._xAxisOuterPadding,
           })}
+          ref={this._cartesianChartRef}
           /* eslint-disable react/jsx-no-bind */
           children={(props: IChildProps) => {
             return (
@@ -268,6 +282,10 @@ export class VerticalStackedBarChartBase extends React.Component<
         aria-label={'Graph has no data to display'}
       />
     );
+  }
+
+  public get chartContainer(): HTMLElement | null {
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   /**

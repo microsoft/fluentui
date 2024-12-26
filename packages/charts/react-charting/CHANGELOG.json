@@ -2,6 +2,54 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 23 Dec 2024 07:22:57 GMT",
+      "tag": "@fluentui/react-charting_v5.23.29",
+      "version": "5.23.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "7b4a3785c6c1d7c207602cad0a1795e3df9122ee",
+            "comment": "feat: add functionality to export chart as image"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.20",
+            "commit": "7b4a3785c6c1d7c207602cad0a1795e3df9122ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.191",
+            "commit": "7b4a3785c6c1d7c207602cad0a1795e3df9122ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.122.2",
+            "commit": "7b4a3785c6c1d7c207602cad0a1795e3df9122ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Dec 2024 07:20:00 GMT",
+      "tag": "@fluentui/react-charting_v5.23.28",
+      "version": "5.23.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "da882f44f251e7bb80fb969cbe268a942a2df74e",
+            "comment": "Ensure type safety of dependent fields"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Dec 2024 07:20:30 GMT",
       "tag": "@fluentui/react-charting_v5.23.27",
       "version": "5.23.27",
