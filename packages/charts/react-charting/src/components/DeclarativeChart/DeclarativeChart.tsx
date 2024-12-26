@@ -108,9 +108,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   };
 
   React.useEffect(() => {
-    const { updatedPlotlySchema } = sanitizeJson(props.chartSchema);
-    const { updatedSelectedLegends } = updatedPlotlySchema;
-    setActiveLegends(updatedSelectedLegends ?? []);
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const { plotlySchema } = sanitizeJson(props.chartSchema);
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const { selectedLegends } = plotlySchema;
+    setActiveLegends(selectedLegends ?? []);
   }, [props.chartSchema]);
 
   const legendProps = {
