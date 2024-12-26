@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 26 Dec 2024 07:21:14 GMT",
+      "tag": "@fluentui/react-charting_v5.23.31",
+      "version": "5.23.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0dd9a713b54a6d5b5929ac7febd1c7e44c83efca",
+            "comment": "fix: remove duplicate legends in vertical bar chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Dec 2024 07:21:55 GMT",
       "tag": "@fluentui/react-charting_v5.23.30",
       "version": "5.23.30",

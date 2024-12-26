@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 25 Dec 2024 07:21:55 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Dec 2024 07:21:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.31)
+
+Thu, 26 Dec 2024 07:21:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.30..@fluentui/react-charting_v5.23.31)
+
+### Patches
+
+- fix: remove duplicate legends in vertical bar chart ([PR #33518](https://github.com/microsoft/fluentui/pull/33518) by 110246001+krkshitij@users.noreply.github.com)
 
 ## [5.23.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.30)
 
