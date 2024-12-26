@@ -3,7 +3,13 @@ import { max as d3Max, bisector } from 'd3-array';
 import { pointer } from 'd3-selection';
 import { select as d3Select } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis, line as d3Line } from 'd3-shape';
-import { classNamesFunction, find, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import {
+  classNamesFunction,
+  find,
+  getId,
+  initializeComponentRef,
+  memoizeFunction,
+} from '@fluentui/react/lib/Utilities';
 import {
   IAccessibilityProps,
   CartesianChart,
@@ -38,6 +44,7 @@ import {
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
+import { IChart } from '../../types/index';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
@@ -82,7 +89,7 @@ export interface IAreaChartState extends IBasestate {
   activePoint: string;
 }
 
-export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
+export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> implements IChart {
   public static defaultProps: Partial<IAreaChartProps> = {
     useUTC: true,
   };
@@ -119,9 +126,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _enableComputationOptimization: boolean;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
+  private _cartesianChartRef: React.RefObject<IChart>;
 
   public constructor(props: IAreaChartProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     this._createSet = memoizeFunction(this._createDataSet);
     this.state = {
       selectedLegend: props.legendProps?.selectedLegend ?? '',
@@ -148,6 +159,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._enableComputationOptimization = true;
     this._firstRenderOptimization = true;
     this._emptyChartId = getId('_AreaChart_empty');
+    this._cartesianChartRef = React.createRef();
   }
 
   public componentDidUpdate() {
@@ -212,6 +224,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           customizedCallout={this._getCustomizedCallout()}
           onChartMouseLeave={this._handleChartMouseLeave}
           enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
+          ref={this._cartesianChartRef}
           /* eslint-disable react/jsx-no-bind */
           // eslint-disable-next-line react/no-children-prop
           children={(props: IChildProps) => {
@@ -247,6 +260,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         aria-label={'Graph has no data to display'}
       />
     );
+  }
+
+  public get chartContainer(): HTMLElement | null {
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   private _getDomainNRangeValues = (
