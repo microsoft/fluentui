@@ -1,8 +1,8 @@
 import { IStyle } from '@fluentui/react/lib/Styling';
-import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ICartesianChartProps, ICartesianChartStyleProps } from '../CommonComponents/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
-import { IChartProps, IChartDataPoint } from './index';
+import { IChartProps, IChartDataPoint, IChart } from './index';
 
 export interface IDonutChart {}
 
@@ -69,6 +69,12 @@ export interface IDonutChartProps extends ICartesianChartProps {
    * @default false
    */
   roundCorners?: boolean;
+
+  /**
+   * Optional callback to access the IChart interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: IRefObject<IChart>;
 }
 
 /**

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
-import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import {
   IGaugeChartProps,
   IGaugeChartSegment,
@@ -26,6 +26,7 @@ import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IYValueHover } from '../../index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { select as d3Select } from 'd3-selection';
+import { IChart } from '../../types/index';
 
 const GAUGE_MARGIN = 16;
 const LABEL_WIDTH = 36;
@@ -120,7 +121,7 @@ export interface IExtendedSegment extends IGaugeChartSegment {
   end: number;
 }
 
-export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChartState> {
+export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChartState> implements IChart {
   private _classNames: IProcessedStyleSet<IGaugeChartStyles>;
   private _isRTL: boolean;
   private _innerRadius: number;
@@ -135,6 +136,8 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
 
   constructor(props: IGaugeChartProps) {
     super(props);
+
+    initializeComponentRef(this);
 
     this._margins = this._getMargins();
     this._legendsHeight = !props.hideLegend ? 24 : 0;
@@ -342,6 +345,10 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
         )}
       </div>
     );
+  }
+
+  public get chartContainer(): HTMLElement | null {
+    return this._rootElem;
   }
 
   private _getMargins = () => {
