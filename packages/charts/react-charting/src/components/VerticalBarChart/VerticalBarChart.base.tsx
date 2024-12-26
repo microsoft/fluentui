@@ -140,6 +140,14 @@ export class VerticalBarChartBase
     this._cartesianChartRef = React.createRef();
   }
 
+  public componentDidUpdate(prevProps: IVerticalBarChartProps): void {
+    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+      this.setState({
+        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+      });
+    }
+  }
+
   public render(): JSX.Element {
     this._adjustProps();
     this._xAxisLabels = this._points.map((point: IVerticalBarChartDataPoint) => point.x as string);

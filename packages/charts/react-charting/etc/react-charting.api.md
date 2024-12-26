@@ -1228,6 +1228,7 @@ export interface ISankeyChartData {
 export interface ISankeyChartProps {
     accessibility?: ISankeyChartAccessibilityProps;
     borderColorsForNodes?: string[];
+    calloutProps?: Partial<ICalloutProps>;
     className?: string;
     colorsForNodes?: string[];
     componentRef?: IRefObject<IChart>;

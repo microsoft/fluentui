@@ -78,7 +78,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       xCalloutValue: '',
       yCalloutValue: '',
       focusedArcId: '',
-      selectedLegends: [],
+      selectedLegends: props.legendProps?.selectedLegends || [],
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._focusCallback = this._focusCallback.bind(this);
@@ -87,11 +87,20 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._uniqText = getId('_Pie_');
     this._emptyChartId = getId('_DonutChart_empty');
   }
+
   public componentDidMount(): void {
     if (this._rootElem) {
       this.setState({
         _width: this._rootElem.offsetWidth,
         _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT,
+      });
+    }
+  }
+
+  public componentDidUpdate(prevProps: IDonutChartProps): void {
+    if (prevProps.legendProps?.selectedLegends !== this.props.legendProps?.selectedLegends) {
+      this.setState({
+        selectedLegends: this.props.legendProps?.selectedLegends || [],
       });
     }
   }

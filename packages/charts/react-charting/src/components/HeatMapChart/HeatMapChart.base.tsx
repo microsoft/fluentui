@@ -153,6 +153,14 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     this._cartesianChartRef = React.createRef();
   }
 
+  public componentDidUpdate(prevProps: IHeatMapChartProps): void {
+    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+      this.setState({
+        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+      });
+    }
+  }
+
   public render(): React.ReactNode {
     const { x, y } = this._getXandY();
     this._xAxisType = getTypeOfAxis(x, true) as XAxisTypes;
