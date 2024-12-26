@@ -129,7 +129,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <DonutChart
           {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={legendProps}
+          legendProps={{ ...legendProps, canSelectMultipleLegends: true }}
           componentRef={chartRef}
         />
       );

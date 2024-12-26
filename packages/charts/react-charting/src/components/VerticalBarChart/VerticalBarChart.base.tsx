@@ -1075,6 +1075,7 @@ export class VerticalBarChartBase
     const { theme, useSingleColor } = this.props;
     const { lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
     const actions: ILegend[] = [];
+    const mapLegendToColor: Record<string, string> = {};
     data.forEach((point: IVerticalBarChartDataPoint, _index: number) => {
       let color: string = !useSingleColor ? point.color! : this._createColors()(1);
 
@@ -1086,13 +1087,16 @@ export class VerticalBarChartBase
         }
       }
 
+      mapLegendToColor[point.legend!] = color;
+    });
+    Object.entries(mapLegendToColor).forEach(([legendTitle, color]) => {
       // mapping data to the format Legends component needs
       const legend: ILegend = {
-        title: point.legend!,
+        title: legendTitle,
         color,
         hoverAction: () => {
           this._handleChartMouseLeave();
-          this._onLegendHover(point.legend!);
+          this._onLegendHover(legendTitle);
         },
         onMouseOutAction: () => {
           this._onLegendLeave();
