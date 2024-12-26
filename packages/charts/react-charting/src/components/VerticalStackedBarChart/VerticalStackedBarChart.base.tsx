@@ -172,7 +172,7 @@ export class VerticalStackedBarChartBase
   public componentDidUpdate(prevProps: IVerticalStackedBarChartProps): void {
     if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
       this.setState({
-        selectedLegend: this.props.legendProps?.selectedLegend ?? ''
+        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
       });
     }
 

@@ -92,10 +92,10 @@ export interface ISankeyChartProps {
    */
   componentRef?: IRefObject<IChart>;
 
-    /**
-     * props for the callout in the chart
-     */
-    calloutProps?: Partial<ICalloutProps>;
+  /**
+   * props for the callout in the chart
+   */
+  calloutProps?: Partial<ICalloutProps>;
 }
 
 /**

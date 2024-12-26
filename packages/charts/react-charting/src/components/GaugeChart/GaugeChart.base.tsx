@@ -170,7 +170,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   public componentDidUpdate(prevProps: IGaugeChartProps): void {
     if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
       this.setState({
-        selectedLegend: this.props.legendProps?.selectedLegend ?? ''
+        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
       });
     }
   }

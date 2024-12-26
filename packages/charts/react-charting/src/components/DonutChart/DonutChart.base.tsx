@@ -100,7 +100,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   public componentDidUpdate(prevProps: IDonutChartProps): void {
     if (prevProps.legendProps?.selectedLegends !== this.props.legendProps?.selectedLegends) {
       this.setState({
-        selectedLegends: this.props.legendProps?.selectedLegends || []
+        selectedLegends: this.props.legendProps?.selectedLegends || [],
       });
     }
   }

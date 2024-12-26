@@ -156,7 +156,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   public componentDidUpdate(prevProps: IHeatMapChartProps): void {
     if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
       this.setState({
-        selectedLegend: this.props.legendProps?.selectedLegend ?? ''
+        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
       });
     }
   }

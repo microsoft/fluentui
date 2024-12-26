@@ -523,7 +523,7 @@ export const sanitizeJson = (jsonObject: any, depth: number = 0): any => {
   }
 
   return jsonObject;
-}
+};
 
 function isTypedArray(a: any) {
   return ArrayBuffer.isView(a) && !(a instanceof DataView);

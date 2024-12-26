@@ -14,7 +14,6 @@ import {
   transformPlotlyJsonToVSBCProps,
   transformPlotlyJsonToScatterChartProps,
   transformPlotlyJsonToHorizontalBarWithAxisProps,
-
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
@@ -86,7 +85,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   DeclarativeChartProps
 >((props, forwardedRef) => {
   const { plotlySchema } = sanitizeJson(props.chartSchema);
-  let { data, layout, selectedLegends } = plotlySchema;
+  const { data, layout } = plotlySchema;
+  let { selectedLegends } = plotlySchema;
   const xValues = data[0].x;
   const isXDate = isDateArray(xValues);
   const isXNumber = isNumberArray(xValues);
@@ -108,9 +108,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   };
 
   React.useEffect(() => {
-    const { plotlySchema } = sanitizeJson(props.chartSchema);
-    const { selectedLegends } = plotlySchema;
-    setActiveLegends(selectedLegends ?? []);
+    const { updatedPlotlySchema } = sanitizeJson(props.chartSchema);
+    const { updatedSelectedLegends } = updatedPlotlySchema;
+    setActiveLegends(updatedSelectedLegends ?? []);
   }, [props.chartSchema]);
 
   const legendProps = {
@@ -142,10 +142,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <DonutChart
           {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends}}
+          legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends }}
           componentRef={chartRef}
           // Bubble event to prevent right click to open menu on the callout
-          calloutProps={{layerProps: {eventBubblingEnabled: true}}}
+          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
       );
     case 'bar':
@@ -156,7 +156,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
             {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap, isDarkTheme)}
             legendProps={legendProps}
             componentRef={chartRef}
-            calloutProps={{layerProps: {eventBubblingEnabled: true}}}
+            calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
           />
         );
       } else {
@@ -166,7 +166,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
               {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap, isDarkTheme)}
               legendProps={legendProps}
               componentRef={chartRef}
-              calloutProps={{layerProps: {eventBubblingEnabled: true}}}
+              calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
             />
           );
         }
@@ -175,7 +175,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
             {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
             legendProps={legendProps}
             componentRef={chartRef}
-            calloutProps={{layerProps: {eventBubblingEnabled: true}}}
+            calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
           />
         );
       }
@@ -188,16 +188,16 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
               {...transformPlotlyJsonToScatterChartProps({ data, layout }, true, colorMap, isDarkTheme)}
               legendProps={legendProps}
               componentRef={chartRef}
-              calloutProps={{layerProps: {eventBubblingEnabled: true}}}
+              calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
             />
           );
         }
         return (
           <LineChart
             {...transformPlotlyJsonToScatterChartProps({ data, layout }, false, colorMap, isDarkTheme)}
-            legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends}}
+            legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends }}
             componentRef={chartRef}
-            calloutProps={{layerProps: {eventBubblingEnabled: true}}}
+            calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
           />
         );
       }
@@ -206,7 +206,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
           legendProps={legendProps}
           componentRef={chartRef}
-          calloutProps={{layerProps: {eventBubblingEnabled: true}}}
+          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
       );
     case 'heatmap':
@@ -215,7 +215,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           {...transformPlotlyJsonToHeatmapProps(plotlySchema)}
           legendProps={legendProps}
           componentRef={chartRef}
-          calloutProps={{layerProps: {eventBubblingEnabled: true}}}
+          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
       );
     case 'sankey':
@@ -223,7 +223,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         <SankeyChart
           {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap, isDarkTheme)}
           componentRef={chartRef}
-          calloutProps={{layerProps: {eventBubblingEnabled: true}}}
+          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
       );
     case 'indicator':
@@ -233,7 +233,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
             {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)}
             legendProps={legendProps}
             componentRef={chartRef}
-            calloutProps={{layerProps: {eventBubblingEnabled: true}}}
+            calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
           />
         );
       }
@@ -244,7 +244,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap, isDarkTheme)}
           legendProps={legendProps}
           componentRef={chartRef}
-          calloutProps={{layerProps: {eventBubblingEnabled: true}}}
+          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
       );
     default:

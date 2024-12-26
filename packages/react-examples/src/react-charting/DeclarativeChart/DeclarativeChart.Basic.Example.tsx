@@ -37,7 +37,6 @@ const schemas: any[] = [
 
 const dropdownStyles = { dropdown: { width: 200 } };
 
-
 const textFieldStyles: Partial<ITextFieldStyles> = { root: { maxWidth: 300 } };
 
 function fileSaver(url: string) {
@@ -67,11 +66,11 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     this._lastKnownValidLegends = selectedLegends;
   }
 
-  componentDidMount() {
-    document.addEventListener('contextmenu', (e) => {
+  public componentDidMount() {
+    document.addEventListener('contextmenu', e => {
       e.preventDefault();
     });
-  };
+  }
 
   public render(): JSX.Element {
     return <div>{this._createDeclarativeChart()}</div>;
@@ -83,7 +82,10 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     this.setState({ selectedChoice: option.key as string, selectedLegends: JSON.stringify(selectedLegends) });
   };
 
-  private _onSelectedLegendsEdited = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
+  private _onSelectedLegendsEdited = (
+    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    newValue?: string,
+  ): void => {
     this.setState({ selectedLegends: newValue ?? '' });
   };
 
@@ -104,13 +106,14 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     if (this.state.selectedLegends === '') {
       this._lastKnownValidLegends = undefined;
     } else {
-        try {
-          this._lastKnownValidLegends = JSON.parse(this.state.selectedLegends);
-        } catch (error) {
+      try {
+        this._lastKnownValidLegends = JSON.parse(this.state.selectedLegends);
+      } catch (error) {
+        // Nothing to do here
       }
     }
     const plotlySchema = { data, layout, selectedLegends: this._lastKnownValidLegends };
-    let inputSchema: Schema = { plotlySchema: plotlySchema };
+    const inputSchema: Schema = { plotlySchema };
 
     return (
       <ErrorBoundary>
@@ -142,7 +145,12 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
           componentRef={this._declarativeChartRef}
         />
         <br />
-        <TextField label="Current Legend selection" value={this.state.selectedLegends} onChange={this._onSelectedLegendsEdited} styles={textFieldStyles}/>
+        <TextField
+          label="Current Legend selection"
+          value={this.state.selectedLegends}
+          onChange={this._onSelectedLegendsEdited}
+          styles={textFieldStyles}
+        />
       </ErrorBoundary>
     );
   }

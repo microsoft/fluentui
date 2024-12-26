@@ -230,7 +230,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   public componentDidUpdate(prevProps: ILineChartProps): void {
-    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend ||
+    if (
+      prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend ||
       prevProps.legendProps?.selectedLegends !== this.props.legendProps?.selectedLegends
     ) {
       this.setState({
