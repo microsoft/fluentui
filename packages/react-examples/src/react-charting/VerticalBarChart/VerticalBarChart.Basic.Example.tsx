@@ -89,17 +89,17 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
   };
 
   private _basicExample(): JSX.Element {
-    const points: IVerticalBarChartDataPoint[] = [
+    const pointsWithLine = [
       {
         x: 0,
         y: 10000,
         legend: 'Oranges',
         color: DefaultPalette.accent,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '4%',
+        yAxisCalloutData: '10%',
         lineData: {
           y: 7000,
-          yAxisCalloutData: '3%',
+          yAxisCalloutData: '34%',
         },
       },
       {
@@ -108,10 +108,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Dogs',
         color: DefaultPalette.blueDark,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '21%',
+        yAxisCalloutData: '20%',
         lineData: {
           y: 30000,
-          yAxisCalloutData: '12%',
         },
       },
       {
@@ -120,31 +119,29 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Apples',
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '12%',
+        yAxisCalloutData: '37%',
         lineData: {
           y: 3000,
-          yAxisCalloutData: '1%',
+          yAxisCalloutData: '43%',
         },
       },
-
       {
         x: 40000,
         y: 13000,
         legend: 'Bananas',
-        color: getColorFromToken(DataVizPalette.color6),
+        color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '5%',
+        yAxisCalloutData: '88%',
       },
       {
         x: 52000,
         y: 43000,
         legend: 'Giraffes',
-        color: getColorFromToken(DataVizPalette.color11),
+        color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '18%',
+        yAxisCalloutData: '71%',
         lineData: {
           y: 30000,
-          yAxisCalloutData: '12%',
         },
       },
       {
@@ -153,34 +150,32 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Cats',
         color: DefaultPalette.blueDark,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '12%',
+        yAxisCalloutData: '40%',
         lineData: {
           y: 5000,
-          yAxisCalloutData: '2%',
         },
       },
       {
         x: 80000,
         y: 20000,
         legend: 'Elephants',
-        color: getColorFromToken(DataVizPalette.color11),
+        color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '8%',
+        yAxisCalloutData: '87%',
         lineData: {
           y: 16000,
-          yAxisCalloutData: '7%',
         },
       },
       {
         x: 92000,
         y: 45000,
         legend: 'Monkeys',
-        color: getColorFromToken(DataVizPalette.color6),
+        color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '19%',
+        yAxisCalloutData: '33%',
         lineData: {
           y: 40000,
-          yAxisCalloutData: '16%',
+          yAxisCalloutData: '45%',
         },
       },
     ];
@@ -253,7 +248,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
             <VerticalBarChart
               culture={window.navigator.language}
               chartTitle="Vertical bar chart basic example "
-              data={points}
+              data={pointsWithLine}
               width={this.state.width}
               useSingleColor={this.state.useSingleColor}
               height={this.state.height}
@@ -283,7 +278,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
             <VerticalBarChart
               culture={window.navigator.language}
               chartTitle="Vertical bar chart basic example "
-              data={points}
+              data={pointsWithLine}
               width={this.state.width}
               useSingleColor={this.state.useSingleColor}
               height={this.state.height}

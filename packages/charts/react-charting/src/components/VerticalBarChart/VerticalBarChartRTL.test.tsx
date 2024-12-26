@@ -667,6 +667,7 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
       fireEvent.click(screen.getByText('just line'));
       fireEvent.click(screen.getByText('Oranges'));
       expect(line.getAttribute('opacity')).toEqual('1');
+      expect(screen.getByText('Oranges')).not.toHaveAttribute('opacity');
       expect(screen.getByText('Dogs')).toHaveStyle('opacity: 0.67');
       expect(screen.getByText('Apples')).toHaveStyle('opacity: 0.67');
       expect(screen.getByText('Bananas')).toHaveStyle('opacity: 0.67');
@@ -675,6 +676,8 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
       expect(screen.getByText('Elephants')).toHaveStyle('opacity: 0.67');
       expect(screen.getByText('Monkeys')).toHaveStyle('opacity: 0.67');
       expect(line).toBeDefined();
+      expect(bars[0]).toBeDefined();
+      expect(bars[0]).not.toHaveAttribute('opacity');
       expect(bars[1]).toBeDefined();
       expect(bars[1]).toHaveStyle('opacity: 0.1');
       expect(bars[2]).toBeDefined();

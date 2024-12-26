@@ -519,7 +519,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       : this._createColors()(1);
 
     // there might be no y value of the line for the hovered bar. so we need to check this condition
-    if (this._isHavingLine && selectedPoint[0].lineData?.y !== undefined && this._legendHighlighted(lineLegendText)) {
+    if (
+      this._isHavingLine &&
+      selectedPoint[0].lineData?.y !== undefined &&
+      (this._legendHighlighted(lineLegendText) || this._noLegendHighlighted())
+    ) {
       // callout data for the  line
       YValueHover.push({
         legend: lineLegendText,
@@ -529,7 +533,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         yAxisCalloutData: selectedPoint[0].lineData?.yAxisCalloutData,
       });
     }
-    if (this._legendHighlighted(selectedPoint[0].legend)) {
+    if (this._legendHighlighted(selectedPoint[0].legend) || this._noLegendHighlighted()) {
       // callout data for the bar
       YValueHover.push({
         legend: selectedPoint[0].legend,
