@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Legends multi selection for Donut Charts",
-  "packageName": "@fluentui/react-charting",
-  "email": "120183316+srmukher@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

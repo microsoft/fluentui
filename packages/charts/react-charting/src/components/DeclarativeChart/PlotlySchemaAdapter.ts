@@ -259,7 +259,7 @@ export const transformPlotlyJsonToVBCProps = (
     chartTitle: typeof layout?.title === 'string' ? layout?.title : '',
     // width: layout?.width,
     // height: layout?.height,
-    hideLegend: true,
+    // hideLegend: true,
     barWidth: 24,
     supportNegativeData: true,
   };

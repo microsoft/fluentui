@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 25 Dec 2024 07:21:55 GMT",
+      "tag": "@fluentui/react-charting_v5.23.30",
+      "version": "5.23.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "fa08fec97a5bc070e2866633c792f7066f0c86e8",
+            "comment": "Legends multi selection for Donut Charts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Dec 2024 07:22:57 GMT",
       "tag": "@fluentui/react-charting_v5.23.29",
       "version": "5.23.29",
