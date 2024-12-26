@@ -129,7 +129,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     super(props);
     this.state = {
       isCalloutVisible: false,
-      selectedLegends: [],
+      selectedLegends: props.legendProps?.selectedLegend ? [props.legendProps.selectedLegend] : [],
       activeLegend: undefined,
       refSelected: null,
       dataForHoverCard: 0,
@@ -381,7 +381,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
     const xScaleBandwidthTranslate = this._xAxisType !== XAxisTypes.StringAxis ? 0 : xScale.bandwidth() / 2;
     Object.keys(lineObject).forEach((item: string, index: number) => {
-      const shouldHighlight = this._legendHighlighted(item) || this._noLegendHighlighted(); // item is legend name
+      const shouldHighlight = this._isLegendHighlighted(item) || this._noLegendHighlighted(); // item is legend name
       for (let i = 1; i < lineObject[item].length; i++) {
         const x1 = xScale(lineObject[item][i - 1].xItem.xAxisPoint);
         const useSecondaryYScale =
@@ -419,7 +419,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             strokeLinecap="round"
             stroke={lineObject[item][i].color}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
-            {...(this._legendHighlighted(item) && {
+            {...(this._isLegendHighlighted(item) && {
               onMouseOver: this._lineHover.bind(this, lineObject[item][i - 1]),
               onMouseLeave: this._lineHoverOut,
             })}
@@ -439,11 +439,11 @@ export class VerticalStackedBarChartBase extends React.Component<
               circlePoint.useSecondaryYScale && secondaryYScale ? secondaryYScale(circlePoint.y) : yScale(circlePoint.y)
             }
             onMouseOver={
-              this._legendHighlighted(item)
+              this._isLegendHighlighted(item)
                 ? this._lineHover.bind(this, circlePoint)
                 : this._onStackHover.bind(this, circlePoint.xItem)
             }
-            {...(this._legendHighlighted(item) && {
+            {...(this._isLegendHighlighted(item) && {
               onMouseLeave: this._lineHoverOut,
             })}
             r={this._getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).radius}
@@ -455,7 +455,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             // When no legend is highlighted: Line points are automatically displayed along with the bars
             // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
             // and avoid conveying duplicate info, make these line points non-focusable.
-            data-is-focusable={this._legendHighlighted(item)}
+            data-is-focusable={this._isLegendHighlighted(item)}
             ref={e => (circleRef.refElement = e)}
             onFocus={this._lineFocus.bind(this, circlePoint, circleRef)}
             onBlur={this._lineHoverOut}
@@ -478,9 +478,9 @@ export class VerticalStackedBarChartBase extends React.Component<
   ): { visibility: CircleVisbility; radius: number } => {
     const { activeXAxisDataPoint } = this.state;
     if (!this._noLegendHighlighted()) {
-      if (xAxisPoint === activeXAxisDataPoint && this._legendHighlighted(legend)) {
+      if (xAxisPoint === activeXAxisDataPoint && this._isLegendHighlighted(legend)) {
         return { visibility: CircleVisbility.show, radius: 8 };
-      } else if (this._legendHighlighted(legend)) {
+      } else if (this._isLegendHighlighted(legend)) {
         return { visibility: CircleVisbility.show, radius: 0.3 };
       } else {
         return { visibility: CircleVisbility.hide, radius: 0 };
@@ -687,7 +687,7 @@ export class VerticalStackedBarChartBase extends React.Component<
          * Show the callout if highlighted bar is focused/hovered
          * and Hide it if unhighlighted bar is focused/hovered
          */
-        isCalloutVisible: this._noLegendHighlighted() || this._legendHighlighted(point.legend),
+        isCalloutVisible: this._noLegendHighlighted() || this._isLegendHighlighted(point.legend),
         calloutLegend: point.legend,
         dataForHoverCard: point.data,
         color,
@@ -744,8 +744,8 @@ export class VerticalStackedBarChartBase extends React.Component<
     if (!this._noLegendHighlighted()) {
       stack = {
         ...stack,
-        chartData: stack.chartData.filter(dataPoint => this._legendHighlighted(dataPoint.legend)),
-        lineData: stack.lineData?.filter(dataPoint => this._legendHighlighted(dataPoint.legend)),
+        chartData: stack.chartData.filter(dataPoint => this._isLegendHighlighted(dataPoint.legend)),
+        lineData: stack.lineData?.filter(dataPoint => this._isLegendHighlighted(dataPoint.legend)),
       };
     }
     const lineData = stack.lineData;
@@ -885,7 +885,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
         const ref: IRefArrayData = {};
 
-        const shouldHighlight = this._legendHighlighted(point.legend) || this._noLegendHighlighted() ? true : false;
+        const shouldHighlight = this._isLegendHighlighted(point.legend) || this._noLegendHighlighted() ? true : false;
         this._classNames = getClassNames(this.props.styles!, {
           theme: this.props.theme!,
           shouldHighlight,
@@ -992,7 +992,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           barLabel = barTotalValue;
         } else {
           barsToDisplay.forEach(point => {
-            if (this._legendHighlighted(point.legend)) {
+            if (this._isLegendHighlighted(point.legend)) {
               showLabel = true;
               barLabel += point.data;
             }
@@ -1118,7 +1118,7 @@ export class VerticalStackedBarChartBase extends React.Component<
    * 1. selection: if the user clicks on it
    * 2. hovering: if there is no selected legend and the user hovers over it
    */
-  private _legendHighlighted = (legendTitle: string): boolean => {
+  private _isLegendHighlighted = (legendTitle: string): boolean => {
     return this._getHighlightedLegend().includes(legendTitle);
   };
 
