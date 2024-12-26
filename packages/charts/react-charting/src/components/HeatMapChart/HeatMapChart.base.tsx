@@ -114,6 +114,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: FlattenData | null;
   private _emptyChartId: string;
+  private margins: IMargins;
   private _cartesianChartRef: React.RefObject<IChart>;
 
   public constructor(props: IHeatMapChartProps) {
@@ -218,6 +219,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         createStringYAxis={createStringYAxis}
         getDomainNRangeValues={this._getDomainNRangeValues}
         getMinMaxOfYAxis={this._getMinMaxOfYAxis}
+        getmargins={this._getMargins}
         xAxisTickCount={this._stringXAxisDataPoints.length}
         xAxistickSize={0}
         xAxisPadding={0.02}
@@ -269,7 +271,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     } else {
-      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+      domainNRangeValue = domainRangeOfXStringAxis(this.margins, width, isRTL);
     }
     return domainNRangeValue;
   };
@@ -285,6 +287,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       }
     });
     return { x, y };
+  };
+
+  private _getMargins = (margins: IMargins) => {
+    this.margins = margins;
   };
 
   private _getOpacity = (legendTitle: string): string => {

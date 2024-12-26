@@ -390,6 +390,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
     domainValuesForColorScale,
     rangeValuesForColorScale,
     hideLegend: true,
+    showYAxisLables: true,
   };
 };
 
