@@ -22037,9 +22037,9 @@ syncpack@10.6.1:
     ts-toolbelt "9.6.0"
 
 systeminformation@^5.3.3:
-  version "5.22.8"
-  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.22.8.tgz#403126772defa1d2a2e4cf039e9f6d57d3f1f3ba"
-  integrity sha512-F1iWQ+PSfOzvLMGh2UXASaWLDq5o+1h1db13Kddl6ojcQ47rsJhpMtRrmBXfTA5QJgutC4KV67YRmXLuroIxrA==
+  version "5.23.14"
+  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.23.14.tgz#f8b0064cd62710535375c95f167d99acc5c68854"
+  integrity sha512-mUHEuDQJJOpphvjcIrTY0iwLnoNo/qotr6SuN7v0ANOO0L3j89mfCrEuIVheS/9S9KGRt4Osqxh9GoF7BX49UA==
 
 tabbable@^6.2.0:
   version "6.2.0"
