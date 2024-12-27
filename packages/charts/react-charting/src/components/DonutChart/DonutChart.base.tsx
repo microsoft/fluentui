@@ -7,7 +7,13 @@ import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluen
 import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
-import { getAccessibleDataObject, getColorFromToken, getNextColor, getNextGradient } from '../../utilities/index';
+import {
+  getAccessibleDataObject,
+  getColorFromToken,
+  getNextColor,
+  getNextGradient,
+  areArraysEqual,
+} from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { IChart } from '../../types/index';
 
@@ -98,7 +104,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   public componentDidUpdate(prevProps: IDonutChartProps): void {
-    if (prevProps.legendProps?.selectedLegends !== this.props.legendProps?.selectedLegends) {
+    if (!areArraysEqual(prevProps.legendProps?.selectedLegends, this.props.legendProps?.selectedLegends)) {
       this.setState({
         selectedLegends: this.props.legendProps?.selectedLegends || [],
       });

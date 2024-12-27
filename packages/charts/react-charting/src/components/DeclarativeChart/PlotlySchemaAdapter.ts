@@ -540,7 +540,6 @@ export const transformPlotlyJsonToGaugeProps = (
     chartValueFormat: () => firstData.value,
     width: typeof layout?.width === 'number' ? layout?.width : 0,
     height: typeof layout?.height === 'number' ? layout?.height : 0,
-    hideLegend: true,
     styles,
   };
 };

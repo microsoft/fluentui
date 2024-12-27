@@ -59,6 +59,7 @@ import {
   createStringYAxis,
   formatDate,
   getNextGradient,
+  areArraysEqual,
 } from '../../utilities/index';
 import { IChart } from '../../types/index';
 
@@ -171,9 +172,9 @@ export class VerticalStackedBarChartBase
   }
 
   public componentDidUpdate(prevProps: IVerticalStackedBarChartProps): void {
-    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+    if (!areArraysEqual(prevProps.legendProps?.selectedLegends, this.props.legendProps?.selectedLegends)) {
       this.setState({
-        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+        selectedLegends: this.props.legendProps?.selectedLegends || [],
       });
     }
 

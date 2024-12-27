@@ -169,7 +169,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           return (
             <GroupedVerticalBarChart
               {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap, isDarkTheme)}
-              legendProps={legendProps}
+              legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends }}
               componentRef={chartRef}
               calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
             />
@@ -178,7 +178,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return (
           <VerticalStackedBarChart
             {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
-            legendProps={legendProps}
+            legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends }}
             componentRef={chartRef}
             calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
           />
@@ -207,6 +207,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         const chartProps = {
           ...transformPlotlyJsonToScatterChartProps({ data, layout }, isAreaChart, colorMap, isDarkTheme),
           legendProps,
+          componentRef: chartRef,
+          calloutProps: { layerProps: { eventBubblingEnabled: true } },
         };
         return renderChart(chartProps);
       } else if (isXMonth) {
@@ -225,7 +227,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <VerticalStackedBarChart
           {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={legendProps}
+          legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends }}
           componentRef={chartRef}
           calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
