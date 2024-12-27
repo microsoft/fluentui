@@ -1,7 +1,7 @@
 {
   "type": "patch",
   "comment": "chore: remove usage of \"export *\"",
-  "packageName": "@fluentui/react-nav-preview",
+  "packageName": "@fluentui/react-conformance",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
 }

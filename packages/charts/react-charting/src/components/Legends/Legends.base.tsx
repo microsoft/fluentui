@@ -196,16 +196,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   /**
-   * Determine whether the component is in "controlled" mode for selections, where the selected legend(s) are
-   * determined entirely by props passed in from the parent component.
-   */
-  private _isInControlledMode = (): boolean => {
-    return this.props.canSelectMultipleLegends
-      ? this.props.selectedLegends !== undefined
-      : this.props.selectedLegend !== undefined;
-  };
-
-  /**
    * Get the new selected legends based on the legend that was clicked when multi-select is enabled.
    * @param legend The legend that was clicked
    * @returns An object with the new selected legend(s) state data.
@@ -242,9 +232,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       ? this._getNewSelectedLegendsForMultiselect(legend)
       : this._getNewSelectedLegendsForSingleSelect(legend);
 
-    if (!this._isInControlledMode()) {
-      this.setState({ selectedLegends: nextSelectedLegends });
-    }
+    this.setState({ selectedLegends: nextSelectedLegends });
     this.props.onChange?.(Object.keys(nextSelectedLegends), event, legend);
     legend.action?.();
   };
