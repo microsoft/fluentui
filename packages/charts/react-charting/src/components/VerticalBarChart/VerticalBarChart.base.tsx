@@ -52,6 +52,7 @@ import {
   createStringYAxis,
   formatDate,
   getNextGradient,
+  areArraysEqual,
 } from '../../utilities/index';
 import { IChart } from '../../types/index';
 
@@ -119,7 +120,7 @@ export class VerticalBarChartBase
       dataForHoverCard: 0,
       isCalloutVisible: false,
       refSelected: null,
-      selectedLegends: [],
+      selectedLegends: props.legendProps?.selectedLegends || [],
       activeLegend: undefined,
       xCalloutValue: '',
       yCalloutValue: '',
@@ -142,9 +143,9 @@ export class VerticalBarChartBase
   }
 
   public componentDidUpdate(prevProps: IVerticalBarChartProps): void {
-    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+    if (!areArraysEqual(prevProps.legendProps?.selectedLegends, this.props.legendProps?.selectedLegends)) {
       this.setState({
-        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+        selectedLegends: this.props.legendProps?.selectedLegends || [],
       });
     }
   }
