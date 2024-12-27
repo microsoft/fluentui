@@ -124,8 +124,6 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     if (this.props.isOpen) {
       this.setState({ visibility: PanelVisibilityState.animatingOpen });
     }
-
-    this._resizeObserver?.disconnect();
   }
 
   public componentDidUpdate(previousProps: IPanelProps, previousState: IPanelState): void {
@@ -152,6 +150,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   public componentWillUnmount(): void {
     this._async.dispose();
     this._events.dispose();
+    this._resizeObserver?.disconnect();
   }
 
   public render(): JSX.Element | null {
