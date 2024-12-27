@@ -41,6 +41,7 @@ import {
   createStringYAxis,
   formatDate,
   getSecureProps,
+  areArraysEqual,
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -136,7 +137,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     this._createSet = memoizeFunction(this._createDataSet);
     this.state = {
-      selectedLegends: [],
+      selectedLegends: props.legendProps?.selectedLegends || [],
       activeLegend: undefined,
       hoverXValue: '',
       isCalloutVisible: false,
@@ -164,9 +165,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public componentDidUpdate(prevProps: IAreaChartProps): void {
-    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+    if (!areArraysEqual(prevProps.legendProps?.selectedLegends, this.props.legendProps?.selectedLegends)) {
       this.setState({
-        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+        selectedLegends: this.props.legendProps?.selectedLegends || [],
       });
     }
 
@@ -635,15 +636,25 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         {...this.props.legendProps}
-        canSelectMultipleLegends={this.props.canSelectMultipleLegends}
-        onChange={this._onLegendChange}
+        onChange={this._onLegendSelectionChange.bind(this)}
       />
     );
   };
 
-  private _onLegendChange = (selectedLegends: string[]) => {
-    this.setState({ selectedLegends });
-  };
+  private _onLegendSelectionChange(
+    selectedLegends: string[],
+    event: React.MouseEvent<HTMLButtonElement>,
+    currentLegend?: ILegend,
+  ): void {
+    if (this.props.legendProps?.canSelectMultipleLegends) {
+      this.setState({ selectedLegends });
+    } else {
+      this.setState({ selectedLegends: selectedLegends.slice(-1) });
+    }
+    if (this.props.legendProps?.onChange) {
+      this.props.legendProps.onChange(selectedLegends, event, currentLegend);
+    }
+  }
 
   private _onDataPointClick = (func: (() => void) | undefined) => {
     if (func) {
@@ -893,10 +904,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   private _getCircleRadius = (xDataPoint: number, circleRadius: number, circleId: string, legend: string): number => {
-    const { isCircleClicked, nearestCircleToHighlight, activePoint, selectedLegends } = this.state;
+    const { isCircleClicked, nearestCircleToHighlight, activePoint } = this.state;
 
     // Show the circle if no legends are selected or if the point's legend is in the selected legends
-    if (selectedLegends.length > 0 && !selectedLegends.includes(legend)) {
+    if (!this._legendHighlighted(legend)) {
       return 0;
     }
 
@@ -922,18 +933,23 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
    * 2. hovering: if there is no selected legend and the user hovers over it
    */
   private _legendHighlighted = (legend: string) => {
-    return (
-      this.state.selectedLegends.includes(legend) ||
-      (this.state.selectedLegends.length === 0 && this.state.activeLegend === legend)
-    );
+    return this._getHighlightedLegend().includes(legend!);
   };
 
   /**
    * This function checks if none of the legends is selected or hovered.
    */
   private _noLegendHighlighted = () => {
-    return this.state.selectedLegends.length === 0 && this.state.activeLegend === undefined;
+    return this._getHighlightedLegend().length === 0;
   };
+
+  private _getHighlightedLegend() {
+    return this.state.selectedLegends.length > 0
+      ? this.state.selectedLegends
+      : this.state.activeLegend
+      ? [this.state.activeLegend]
+      : [];
+  }
 
   private _addDefaultColors = (lineChartData?: ILineChartPoints[]): ILineChartPoints[] => {
     return lineChartData
@@ -959,20 +975,24 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const found: any = this._calloutPoints.find((e: { x: string | number }) => e.x === modifiedXVal);
     // Show details in the callout for the focused point only
     found.values = found.values.filter((e: { y: number }) => e.y === y);
-    const filteredValues =
-      this.state.selectedLegends.length > 0
-        ? found.values.filter((value: { legend: string }) => this.state.selectedLegends.includes(value.legend))
-        : found.values;
+    const filteredValues = this._getFilteredLegendValues(found.values);
 
     this.setState({
       refSelected: `#${circleId}`,
       isCalloutVisible: true,
       hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
-      YValueHover: filteredValues,
+      YValueHover: filteredValues!,
       stackCalloutProps: { ...found, values: filteredValues },
       dataPointCalloutProps: { ...found, values: filteredValues },
       activePoint: circleId,
     });
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _getFilteredLegendValues = (values: any) => {
+    !this._noLegendHighlighted()
+      ? values.filter((value: { legend: string }) => this._legendHighlighted(value.legend))
+      : values;
   };
 
   private _handleBlur = () => {

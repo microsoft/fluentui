@@ -271,7 +271,9 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
               enableReflow={true}
               yAxisTitle={this.state.showAxisTitles ? 'Variation of stock market prices' : undefined}
               xAxisTitle={this.state.showAxisTitles ? 'Number of days' : undefined}
-              canSelectMultipleLegends={this.state.legendMultiSelect}
+              legendProps={{
+                canSelectMultipleLegends: this.state.legendMultiSelect,
+              }}
             />
           </div>
         )}
@@ -295,7 +297,9 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
                 ) : null
               }
               enableReflow={true}
-              canSelectMultipleLegends={this.state.legendMultiSelect}
+              legendProps={{
+                canSelectMultipleLegends: this.state.legendMultiSelect,
+              }}
             />
           </div>
         )}
