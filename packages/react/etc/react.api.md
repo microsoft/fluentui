@@ -1604,49 +1604,49 @@ export { FabricPerformance }
 // @public (undocumented)
 export enum FabricSlots {
     // (undocumented)
-    black = 21,// BaseSlots.primaryColor, Shade[Shade.Unshaded]);
+    black = 21,
     // (undocumented)
-    neutralDark = 20,// BaseSlots.primaryColor, Shade[Shade.Shade1]);
+    neutralDark = 20,
     // (undocumented)
-    neutralLight = 11,// BaseSlots.primaryColor, Shade[Shade.Shade2]);
+    neutralLight = 11,
     // (undocumented)
-    neutralLighter = 10,// BaseSlots.primaryColor, Shade[Shade.Shade3]);
+    neutralLighter = 10,
     // (undocumented)
-    neutralLighterAlt = 9,// BaseSlots.primaryColor, Shade[Shade.Shade4]);
+    neutralLighterAlt = 9,
     // (undocumented)
-    neutralPrimary = 19,// BaseSlots.primaryColor, Shade[Shade.Shade5]);
+    neutralPrimary = 19,
     // (undocumented)
-    neutralPrimaryAlt = 18,// BaseSlots.primaryColor, Shade[Shade.Shade6]);
+    neutralPrimaryAlt = 18,
     // (undocumented)
-    neutralQuaternary = 13,// BaseSlots.primaryColor, Shade[Shade.Shade7]);
+    neutralQuaternary = 13,
     // (undocumented)
-    neutralQuaternaryAlt = 12,// BaseSlots.primaryColor, Shade[Shade.Shade8]);
+    neutralQuaternaryAlt = 12,
     // (undocumented)
-    neutralSecondary = 17,// BaseSlots.backgroundColor, Shade[Shade.Shade1]);
+    neutralSecondary = 17,
     // (undocumented)
-    neutralSecondaryAlt = 16,// BaseSlots.backgroundColor, Shade[Shade.Shade2]);
+    neutralSecondaryAlt = 16,
     // (undocumented)
-    neutralTertiary = 15,// BaseSlots.backgroundColor, Shade[Shade.Shade3]);
+    neutralTertiary = 15,
     // (undocumented)
-    neutralTertiaryAlt = 14,// BaseSlots.backgroundColor, Shade[Shade.Shade4]);
+    neutralTertiaryAlt = 14,
     // (undocumented)
-    themeDark = 7,// BaseSlots.backgroundColor, Shade[Shade.Shade5]);
+    themeDark = 7,
     // (undocumented)
-    themeDarkAlt = 6,// BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
+    themeDarkAlt = 6,
     // (undocumented)
-    themeDarker = 8,// BaseSlots.foregroundColor, Shade[Shade.Shade3]);
+    themeDarker = 8,
     // (undocumented)
-    themeLight = 3,// BaseSlots.foregroundColor, Shade[Shade.Shade4]);
+    themeLight = 3,
     // (undocumented)
-    themeLighter = 2,// BaseSlots.foregroundColor, Shade[Shade.Shade5]);
+    themeLighter = 2,
     // (undocumented)
-    themeLighterAlt = 1,// BaseSlots.foregroundColor, Shade[Shade.Shade6]);
+    themeLighterAlt = 1,
     // (undocumented)
-    themePrimary = 0,// BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
+    themePrimary = 0,
     // (undocumented)
-    themeSecondary = 5,// BaseSlots.foregroundColor, Shade[Shade.Shade7]);
+    themeSecondary = 5,
     // (undocumented)
-    themeTertiary = 4,// BaseSlots.foregroundColor, Shade[Shade.Shade8]);
+    themeTertiary = 4,
     // (undocumented)
     white = 22
 }
