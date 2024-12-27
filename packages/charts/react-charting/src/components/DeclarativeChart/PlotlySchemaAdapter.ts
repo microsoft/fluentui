@@ -33,7 +33,38 @@ const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 export const isDateArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isDate);
 export const isNumberArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isNumber);
+export const isMonthArray = (array: any[]): boolean => {
+  if (array && array.length > 0) {
+    const presentYear = new Date().getFullYear();
+    return array.every(possiblyMonthValue => {
+      return isDate(`${possiblyMonthValue} 01, ${presentYear}`);
+    });
+  }
+  return false;
+};
 
+export const updateXValues = (xValues: any[]): any[] => {
+  const presentYear = new Date().getFullYear();
+  const dates = xValues.map(possiblyMonthValue => {
+    const parsedDate = `${possiblyMonthValue} 01, ${presentYear}`;
+    return isDate(parsedDate) ? new Date(parsedDate) : null;
+  });
+  for (let i = dates.length - 1; i > 0; i--) {
+    const currentMonth = dates[i]!.getMonth();
+    const previousMonth = dates[i - 1]!.getMonth();
+    const currentYear = dates[i]!.getFullYear();
+    const previousYear = dates[i - 1]!.getFullYear();
+    if (previousMonth >= currentMonth) {
+      dates[i - 1]!.setFullYear(dates[i]!.getFullYear() - 1);
+    } else if (previousYear > currentYear) {
+      dates[i - 1]!.setFullYear(currentYear);
+    }
+  }
+  xValues = xValues.map((month, index) => {
+    return `${month} 01, ${dates[index]!.getFullYear()}`;
+  });
+  return xValues;
+};
 export const getColor = (
   legendLabel: string,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -112,7 +143,7 @@ export const transformPlotlyJsonToVSBCProps = (
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
       }
       const legend: string = series.name || `Series ${index1 + 1}`;
-      if (series.type === 'bar') {
+      if (series.type === 'bar' || series.type === 'scatter') {
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].chartData.push({
           legend,
@@ -162,6 +193,7 @@ export const transformPlotlyJsonToGVBCProps = (
         mapXToDataPoints[x].series.push({
           key: legend,
           data: series.y?.[index2],
+          xAxisCalloutData: x as string,
           color,
           legend,
         });
@@ -259,7 +291,6 @@ export const transformPlotlyJsonToVBCProps = (
     chartTitle: typeof layout?.title === 'string' ? layout?.title : '',
     // width: layout?.width,
     // height: layout?.height,
-    // hideLegend: true,
     barWidth: 24,
     supportNegativeData: true,
   };
@@ -391,6 +422,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
     domainValuesForColorScale,
     rangeValuesForColorScale,
     hideLegend: true,
+    showYAxisLables: true,
   };
 };
 
@@ -458,15 +490,23 @@ export const transformPlotlyJsonToGaugeProps = (
   const { data, layout } = jsonObj;
   const firstData = data[0];
 
-  const segments = firstData.gauge?.steps?.map((step: any, index: number): IGaugeChartSegment => {
-    const legend = step.name || `Segment ${index + 1}`;
-    const color = getColor(legend, colorMap, isDarkTheme);
-    return {
-      legend,
-      size: step.range?.[1] - step.range?.[0],
-      color,
-    };
-  });
+  const segments = firstData.gauge?.steps?.length
+    ? firstData.gauge.steps.map((step: any, index: number): IGaugeChartSegment => {
+        const legend = step.name || `Segment ${index + 1}`;
+        const color = getColor(legend, colorMap, isDarkTheme);
+        return {
+          legend,
+          size: step.range?.[1] - step.range?.[0],
+          color,
+        };
+      })
+    : [
+        {
+          legend: 'Segment 1',
+          size: (firstData.gauge?.range?.[1] ?? 0) - (firstData.gauge?.range?.[0] ?? 0),
+          color: getColor('Segment 1', colorMap, isDarkTheme),
+        },
+      ];
 
   let sublabel: string | undefined;
   let sublabelColor: string | undefined;
@@ -500,16 +540,36 @@ export const transformPlotlyJsonToGaugeProps = (
     chartValueFormat: () => firstData.value,
     width: typeof layout?.width === 'number' ? layout?.width : 0,
     height: typeof layout?.height === 'number' ? layout?.height : 0,
-    hideLegend: true,
     styles,
   };
+};
+
+const MAX_DEPTH = 8;
+export const sanitizeJson = (jsonObject: any, depth: number = 0): any => {
+  if (depth > MAX_DEPTH) {
+    throw new Error('Maximum json depth exceeded');
+  }
+
+  if (typeof jsonObject === 'object' && jsonObject !== null) {
+    for (const key in jsonObject) {
+      if (jsonObject.hasOwnProperty(key)) {
+        if (typeof jsonObject[key] === 'string') {
+          jsonObject[key] = jsonObject[key].replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        } else {
+          jsonObject[key] = sanitizeJson(jsonObject[key], depth + 1);
+        }
+      }
+    }
+  }
+
+  return jsonObject;
 };
 
 function isTypedArray(a: any) {
   return ArrayBuffer.isView(a) && !(a instanceof DataView);
 }
 
-function isArrayOrTypedArray(a: any) {
+export function isArrayOrTypedArray(a: any) {
   return Array.isArray(a) || isTypedArray(a);
 }
 

@@ -7,7 +7,13 @@ import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluen
 import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
-import { getAccessibleDataObject, getColorFromToken, getNextColor, getNextGradient } from '../../utilities/index';
+import {
+  getAccessibleDataObject,
+  getColorFromToken,
+  getNextColor,
+  getNextGradient,
+  areArraysEqual,
+} from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { IChart } from '../../types/index';
 
@@ -78,7 +84,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       xCalloutValue: '',
       yCalloutValue: '',
       focusedArcId: '',
-      selectedLegends: [],
+      selectedLegends: props.legendProps?.selectedLegends || [],
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._focusCallback = this._focusCallback.bind(this);
@@ -87,11 +93,20 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._uniqText = getId('_Pie_');
     this._emptyChartId = getId('_DonutChart_empty');
   }
+
   public componentDidMount(): void {
     if (this._rootElem) {
       this.setState({
         _width: this._rootElem.offsetWidth,
         _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT,
+      });
+    }
+  }
+
+  public componentDidUpdate(prevProps: IDonutChartProps): void {
+    if (!areArraysEqual(prevProps.legendProps?.selectedLegends, this.props.legendProps?.selectedLegends)) {
+      this.setState({
+        selectedLegends: this.props.legendProps?.selectedLegends || [],
       });
     }
   }

@@ -721,6 +721,7 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
     domainValuesForColorScale: number[];
     legendProps?: Partial<ILegendsProps>;
     rangeValuesForColorScale: string[];
+    showYAxisLables?: boolean;
     styles?: IStyleFunctionOrObject<IHeatMapChartStyleProps, IHeatMapChartStyles>;
     xAxisDateFormatString?: string;
     xAxisNumberFormatString?: string;
@@ -1228,6 +1229,7 @@ export interface ISankeyChartData {
 export interface ISankeyChartProps {
     accessibility?: ISankeyChartAccessibilityProps;
     borderColorsForNodes?: string[];
+    calloutProps?: Partial<ICalloutProps>;
     className?: string;
     colorsForNodes?: string[];
     componentRef?: IRefObject<IChart>;

@@ -48,6 +48,7 @@ import {
   domainRangeOfNumericForAreaChart,
   createStringYAxis,
   formatDate,
+  areArraysEqual,
 } from '../../utilities/index';
 import { IChart } from '../../types/index';
 
@@ -230,8 +231,19 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   public componentDidUpdate(prevProps: ILineChartProps): void {
+    if (
+      prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend ||
+      !areArraysEqual(prevProps.legendProps?.selectedLegends, this.props.legendProps?.selectedLegends)
+    ) {
+      this.setState({
+        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+        selectedLegendPoints: this._injectIndexPropertyInLineChartData(this.props.data.lineChartData, true),
+        isSelectedLegend: (this.props.legendProps?.selectedLegends?.length ?? 0) > 0,
+      });
+    }
+
     /** note that height and width are not used to resize or set as dimesions of the chart,
-     * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
+     * fitParentContainer is responsible for setting the height and width or resizing of the svg/chart
      */
     if (
       prevProps.height !== this.props.height ||

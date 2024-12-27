@@ -834,6 +834,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         onDismiss: this._onCloseCallout,
         className: classNames.calloutContentRoot,
         preventDismissOnLostFocus: true,
+        ...this.props.calloutProps!,
       };
       return (
         <div
