@@ -176,7 +176,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={8}
+            r={0}
             role="img"
             stroke="red"
             strokeWidth={3}
@@ -747,7 +747,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={8}
+            r={0}
             role="img"
             stroke="red"
             strokeWidth={3}
@@ -1215,7 +1215,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={8}
+            r={0}
             role="img"
             stroke="red"
             strokeWidth={3}
