@@ -19,10 +19,9 @@ module.exports = {
   },
   overrides: [
     {
-      files: '**/src/index.{ts,tsx,js}',
+      files: '**/src/**/*.{ts,tsx,js}',
       rules: {
-        // TODO: propagate to `error` once all packages barrel files have been fixed
-        '@rnx-kit/no-export-all': ['warn', { expand: 'all' }],
+        '@rnx-kit/no-export-all': ['error', { expand: 'all' }],
       },
     },
   ],

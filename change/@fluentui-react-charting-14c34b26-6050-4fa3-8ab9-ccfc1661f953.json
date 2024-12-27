@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Support changing legends programatically at runtime and bug fixes",
+  "packageName": "@fluentui/react-charting",
+  "email": "atishay.jain@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -9,7 +9,7 @@ import {
   scaleUtc as d3ScaleUtc,
   scaleTime as d3ScaleTime,
 } from 'd3-scale';
-import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import {
@@ -53,6 +53,7 @@ import {
   formatDate,
   getNextGradient,
 } from '../../utilities/index';
+import { IChart } from '../../types/index';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -76,7 +77,10 @@ export interface IVerticalBarChartState extends IBasestate {
 
 type ColorScale = (_p?: number) => string;
 
-export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps, IVerticalBarChartState> {
+export class VerticalBarChartBase
+  extends React.Component<IVerticalBarChartProps, IVerticalBarChartState>
+  implements IChart
+{
   public static defaultProps: Partial<IVerticalBarChartProps> = {
     maxBarWidth: 24,
     useUTC: true,
@@ -102,9 +106,13 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _emptyChartId: string;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
+  private _cartesianChartRef: React.RefObject<IChart>;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     this.state = {
       color: '',
       dataForHoverCard: 0,
@@ -129,6 +137,15 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         : XAxisTypes.StringAxis;
     this._emptyChartId = getId('_VBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
+    this._cartesianChartRef = React.createRef();
+  }
+
+  public componentDidUpdate(prevProps: IVerticalBarChartProps): void {
+    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+      this.setState({
+        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -200,6 +217,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           xAxisInnerPadding: this._xAxisInnerPadding,
           xAxisOuterPadding: this._xAxisOuterPadding,
         })}
+        ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         children={(props: IChildProps) => {
           return (
@@ -228,6 +246,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         aria-label={'Graph has no data to display'}
       />
     );
+  }
+
+  public get chartContainer(): HTMLElement | null {
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   private _getDomainNRangeValues = (
@@ -1065,6 +1087,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const { theme, useSingleColor } = this.props;
     const { lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
     const actions: ILegend[] = [];
+    const mapLegendToColor: Record<string, string> = {};
     data.forEach((point: IVerticalBarChartDataPoint, _index: number) => {
       let color: string = !useSingleColor ? point.color! : this._createColors()(1);
 
@@ -1076,16 +1099,19 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         }
       }
 
+      mapLegendToColor[point.legend!] = color;
+    });
+    Object.entries(mapLegendToColor).forEach(([legendTitle, color]) => {
       // mapping data to the format Legends component needs
       const legend: ILegend = {
-        title: point.legend!,
+        title: legendTitle,
         color,
         action: () => {
-          this._onLegendClick(point.legend!);
+          this._onLegendClick(legendTitle);
         },
         hoverAction: () => {
           this._handleChartMouseLeave();
-          this._onLegendHover(point.legend!);
+          this._onLegendHover(legendTitle);
         },
         onMouseOutAction: () => {
           this._onLegendLeave();
