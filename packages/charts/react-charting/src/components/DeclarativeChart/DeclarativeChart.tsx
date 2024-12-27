@@ -265,7 +265,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <VerticalBarChart
           {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={legendProps}
+          legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends }}
           componentRef={chartRef}
           calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
