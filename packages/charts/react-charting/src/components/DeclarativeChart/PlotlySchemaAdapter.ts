@@ -291,7 +291,6 @@ export const transformPlotlyJsonToVBCProps = (
     chartTitle: typeof layout?.title === 'string' ? layout?.title : '',
     // width: layout?.width,
     // height: layout?.height,
-    hideLegend: true,
     barWidth: 24,
     supportNegativeData: true,
   };
@@ -423,6 +422,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
     domainValuesForColorScale,
     rangeValuesForColorScale,
     hideLegend: true,
+    showYAxisLables: true,
   };
 };
 
@@ -545,11 +545,32 @@ export const transformPlotlyJsonToGaugeProps = (
   };
 };
 
+const MAX_DEPTH = 8;
+export const sanitizeJson = (jsonObject: any, depth: number = 0): any => {
+  if (depth > MAX_DEPTH) {
+    throw new Error('Maximum json depth exceeded');
+  }
+
+  if (typeof jsonObject === 'object' && jsonObject !== null) {
+    for (const key in jsonObject) {
+      if (jsonObject.hasOwnProperty(key)) {
+        if (typeof jsonObject[key] === 'string') {
+          jsonObject[key] = jsonObject[key].replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        } else {
+          jsonObject[key] = sanitizeJson(jsonObject[key], depth + 1);
+        }
+      }
+    }
+  }
+
+  return jsonObject;
+};
+
 function isTypedArray(a: any) {
   return ArrayBuffer.isView(a) && !(a instanceof DataView);
 }
 
-function isArrayOrTypedArray(a: any) {
+export function isArrayOrTypedArray(a: any) {
   return Array.isArray(a) || isTypedArray(a);
 }
 

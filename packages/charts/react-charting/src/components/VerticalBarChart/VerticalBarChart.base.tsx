@@ -140,6 +140,14 @@ export class VerticalBarChartBase
     this._cartesianChartRef = React.createRef();
   }
 
+  public componentDidUpdate(prevProps: IVerticalBarChartProps): void {
+    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+      this.setState({
+        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+      });
+    }
+  }
+
   public render(): JSX.Element {
     this._adjustProps();
     this._xAxisLabels = this._points.map((point: IVerticalBarChartDataPoint) => point.x as string);
@@ -1079,6 +1087,7 @@ export class VerticalBarChartBase
     const { theme, useSingleColor } = this.props;
     const { lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
     const actions: ILegend[] = [];
+    const mapLegendToColor: Record<string, string> = {};
     data.forEach((point: IVerticalBarChartDataPoint, _index: number) => {
       let color: string = !useSingleColor ? point.color! : this._createColors()(1);
 
@@ -1090,16 +1099,19 @@ export class VerticalBarChartBase
         }
       }
 
+      mapLegendToColor[point.legend!] = color;
+    });
+    Object.entries(mapLegendToColor).forEach(([legendTitle, color]) => {
       // mapping data to the format Legends component needs
       const legend: ILegend = {
-        title: point.legend!,
+        title: legendTitle,
         color,
         action: () => {
-          this._onLegendClick(point.legend!);
+          this._onLegendClick(legendTitle);
         },
         hoverAction: () => {
           this._handleChartMouseLeave();
-          this._onLegendHover(point.legend!);
+          this._onLegendHover(legendTitle);
         },
         onMouseOutAction: () => {
           this._onLegendLeave();

@@ -1,5 +1,6 @@
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IChart, IChartProps } from '../../types/IDataPoint';
 
 export type { IChartProps, IDataPoint, ISankeyChartData } from '../../types/IDataPoint';
@@ -90,6 +91,11 @@ export interface ISankeyChartProps {
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IChart>;
+
+  /**
+   * props for the callout in the chart
+   */
+  calloutProps?: Partial<ICalloutProps>;
 }
 
 /**
