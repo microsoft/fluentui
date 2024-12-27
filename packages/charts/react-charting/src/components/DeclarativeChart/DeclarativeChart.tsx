@@ -188,7 +188,12 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       const isAreaChart = data.some((series: any) => series.fill === 'tonexty' || series.fill === 'tozeroy');
       const renderChart = (chartProps: any) => {
         if (isAreaChart) {
-          return <AreaChart {...chartProps} />;
+          return (
+            <AreaChart
+              {...chartProps}
+              legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends }}
+            />
+          );
         }
         return (
           <LineChart
