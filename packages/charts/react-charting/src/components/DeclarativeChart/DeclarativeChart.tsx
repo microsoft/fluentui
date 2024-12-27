@@ -142,12 +142,18 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     [exportAsImage],
   );
 
+  const multiSelectLegendProps = {
+    ...legendProps,
+    canSelectMultipleLegends: true,
+    selectedLegends: activeLegends,
+  };
+
   switch (data[0].type) {
     case 'pie':
       return (
         <DonutChart
           {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends }}
+          legendProps={multiSelectLegendProps}
           componentRef={chartRef}
           // Bubble event to prevent right click to open menu on the callout
           calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
@@ -169,7 +175,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           return (
             <GroupedVerticalBarChart
               {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap, isDarkTheme)}
-              legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends }}
+              legendProps={multiSelectLegendProps}
               componentRef={chartRef}
               calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
             />
@@ -178,7 +184,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return (
           <VerticalStackedBarChart
             {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
-            legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends }}
+            legendProps={multiSelectLegendProps}
             componentRef={chartRef}
             calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
           />
@@ -227,7 +233,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <VerticalStackedBarChart
           {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends }}
+          legendProps={multiSelectLegendProps}
           componentRef={chartRef}
           calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
@@ -265,7 +271,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <VerticalBarChart
           {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={legendProps}
+          legendProps={multiSelectLegendProps}
           componentRef={chartRef}
           calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
