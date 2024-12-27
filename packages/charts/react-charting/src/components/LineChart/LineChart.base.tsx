@@ -48,6 +48,7 @@ import {
   domainRangeOfNumericForAreaChart,
   createStringYAxis,
   formatDate,
+  areArraysEqual,
 } from '../../utilities/index';
 import { IChart } from '../../types/index';
 
@@ -232,7 +233,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   public componentDidUpdate(prevProps: ILineChartProps): void {
     if (
       prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend ||
-      prevProps.legendProps?.selectedLegends !== this.props.legendProps?.selectedLegends
+      !areArraysEqual(prevProps.legendProps?.selectedLegends, this.props.legendProps?.selectedLegends)
     ) {
       this.setState({
         selectedLegend: this.props.legendProps?.selectedLegend ?? '',

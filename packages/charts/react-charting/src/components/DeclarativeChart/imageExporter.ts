@@ -17,7 +17,7 @@ export function toImage(chartContainer?: HTMLElement | null, opts: IImageExportO
     }
 
     try {
-      const background = opts.background || 'white';
+      const background = 'white'; // Background is coming as --var(xxx) when used with v8 wrapper in v9
       const svg = toSVG(chartContainer, background);
 
       const svgData = new XMLSerializer().serializeToString(svg.node);
