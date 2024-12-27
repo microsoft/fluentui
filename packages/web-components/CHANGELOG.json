@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 23 Dec 2024 04:07:55 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.75",
+      "version": "3.0.0-beta.75",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "622c4aacdb5a1ab601287a9adb1064a640388f4f",
+            "comment": "fix tooltip positioning styles for 'below-end' option"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2024 04:07:47 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.74",
       "version": "3.0.0-beta.74",

@@ -4,7 +4,14 @@ import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
-import { classNamesFunction, getId, find, memoizeFunction, getRTL } from '@fluentui/react/lib/Utilities';
+import {
+  classNamesFunction,
+  getId,
+  find,
+  memoizeFunction,
+  getRTL,
+  initializeComponentRef,
+} from '@fluentui/react/lib/Utilities';
 import {
   IAccessibilityProps,
   CartesianChart,
@@ -42,6 +49,7 @@ import {
   createStringYAxis,
   formatDate,
 } from '../../utilities/index';
+import { IChart } from '../../types/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -146,7 +154,7 @@ export interface ILineChartState extends IBasestate {
   activeLine: number | null;
 }
 
-export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> {
+export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> implements IChart {
   public static defaultProps: Partial<ILineChartProps> = {
     enableReflow: true,
     useUTC: true,
@@ -178,9 +186,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
   private _isRTL: boolean = getRTL();
+  private _cartesianChartRef: React.RefObject<IChart>;
 
   constructor(props: ILineChartProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     this.state = {
       hoverXValue: '',
       activeLegend: '',
@@ -210,6 +222,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._createLegendsMemoized = memoizeFunction((data: LineChartDataWithIndex[]) => this._createLegends(data));
     this._firstRenderOptimization = true;
     this._emptyChartId = getId('_LineChart_empty');
+    this._cartesianChartRef = React.createRef();
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -217,8 +230,19 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   public componentDidUpdate(prevProps: ILineChartProps): void {
+    if (
+      prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend ||
+      prevProps.legendProps?.selectedLegends !== this.props.legendProps?.selectedLegends
+    ) {
+      this.setState({
+        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+        selectedLegendPoints: this._injectIndexPropertyInLineChartData(this.props.data.lineChartData, true),
+        isSelectedLegend: (this.props.legendProps?.selectedLegends?.length ?? 0) > 0,
+      });
+    }
+
     /** note that height and width are not used to resize or set as dimesions of the chart,
-     * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
+     * fitParentContainer is responsible for setting the height and width or resizing of the svg/chart
      */
     if (
       prevProps.height !== this.props.height ||
@@ -293,6 +317,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         createStringYAxis={createStringYAxis}
         onChartMouseLeave={this._handleChartMouseLeave}
         enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
+        ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -347,6 +372,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         aria-label={'Graph has no data to display'}
       />
     );
+  }
+
+  public get chartContainer(): HTMLElement | null {
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   private _getDomainNRangeValues = (

@@ -814,3 +814,10 @@ export interface ICustomizedCalloutData {
   x: number | string | Date;
   values: ICustomizedCalloutDataPoint[];
 }
+
+/**
+ * {@docCategory Chart}
+ */
+export interface IChart {
+  chartContainer: HTMLElement | null;
+}
