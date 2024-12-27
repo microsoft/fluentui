@@ -61,6 +61,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   private _hasCustomNavigation: boolean = !!(this.props.onRenderNavigation || this.props.onRenderNavigationContent);
   private _headerTextId: string | undefined;
   private _allowTouchBodyScroll: boolean;
+  private _resizeObserver: ResizeObserver | null;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IPanelProps>,
@@ -123,6 +124,8 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     if (this.props.isOpen) {
       this.setState({ visibility: PanelVisibilityState.animatingOpen });
     }
+
+    this._resizeObserver?.disconnect();
   }
 
   public componentDidUpdate(previousProps: IPanelProps, previousState: IPanelState): void {
@@ -310,9 +313,27 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     );
   }
 
+  private _createResizeObserver(callback: ResizeObserverCallback): ResizeObserver | null {
+    const doc = getDocumentEx(this.context);
+    let resizeObserver: ResizeObserver | null = null;
+
+    if (doc?.defaultView?.ResizeObserver) {
+      resizeObserver = new doc.defaultView.ResizeObserver(callback);
+    }
+
+    return resizeObserver;
+  }
+
   // Allow the user to scroll within the panel but not on the body
   private _allowScrollOnPanel = (elt: HTMLDivElement | null): void => {
+    this._resizeObserver = this._createResizeObserver(entries => {
+      if (entries.length > 0 && entries[0].target === elt) {
+        this._updateFooterPosition();
+      }
+    });
+
     if (elt) {
+      this._resizeObserver?.observe(elt);
       if (this._allowTouchBodyScroll) {
         allowOverscrollOnElement(elt, this._events);
       } else {
