@@ -154,6 +154,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
           <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
           &nbsp;&nbsp;
           <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
+          &nbsp;&nbsp;
           <Toggle
             label="Select multiple legends"
             onText="ON"
