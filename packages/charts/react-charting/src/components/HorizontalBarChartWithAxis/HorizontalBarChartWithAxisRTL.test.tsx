@@ -169,6 +169,31 @@ describe('Horizontal bar chart with axis- Subcomponent Legends', () => {
       expect(legendsAfterClickEvent[3]).toHaveAttribute('aria-selected', 'false');
     },
   );
+
+  testWithoutWait(
+    'Should select multiple legends on multiple mouse click on legends',
+    HorizontalBarChartWithAxis,
+    { data: chartPointsHBCWA, legendProps: { canSelectMultipleLegends: true } },
+    container => {
+      // const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      const legend1 = screen.getByText('Grapes')?.closest('button');
+      const legend2 = screen.getByText('Apples')?.closest('button');
+
+      expect(legend1).toBeDefined();
+      expect(legend2).toBeDefined();
+
+      fireEvent.click(legend1!);
+      fireEvent.click(legend2!);
+      const legendsAfterClickEvent = screen.getAllByText(
+        (content, element) => element!.tagName.toLowerCase() === 'button',
+      );
+      // Assert
+      expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'false');
+      expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'true');
+      expect(legendsAfterClickEvent[2]).toHaveAttribute('aria-selected', 'true');
+      expect(legendsAfterClickEvent[3]).toHaveAttribute('aria-selected', 'false');
+    },
+  );
 });
 
 describe('Horizontal bar chart with axis - Subcomponent callout', () => {
