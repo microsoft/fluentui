@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "docs(react-dialog): Fix doc-comment links that don't translate to storybook",
-  "packageName": "@fluentui/react-dialog",
-  "email": "jiangemma@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,6 +1,16 @@
 import * as React from 'react';
 import { tinycolor } from '@ctrl/tinycolor';
-import { makeStyles, useId, Input, type InputProps, Label } from '@fluentui/react-components';
+import {
+  makeStyles,
+  useId,
+  Input,
+  type InputProps,
+  Label,
+  SpinButton,
+  type SpinButtonProps,
+  type SpinButtonOnChangeData,
+  type SpinButtonChangeEvent,
+} from '@fluentui/react-components';
 import {
   ColorPicker,
   ColorSlider,
@@ -36,10 +46,16 @@ const useStyles = makeStyles({
   input: {
     width: '80px',
   },
+  spinButton: {
+    width: '50px',
+  },
 });
 
 const HEX_COLOR_REGEX = /^#?([0-9A-Fa-f]{0,6})$/;
+const NUMBER_REGEX = /^\d+$/;
 const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
+
+type RgbKey = 'r' | 'g' | 'b';
 
 export const Default = () => {
   const hexId = useId('hex-input');
@@ -47,10 +63,29 @@ export const Default = () => {
   const styles = useStyles();
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
   const [hex, setHex] = React.useState(tinycolor(color).toHexString());
+  const [rgb, setRgb] = React.useState(tinycolor(color).toRgb());
 
   const handleChange: ColorPickerProps['onColorChange'] = (_, data) => {
     setColor({ ...data.color, a: data.color.a ?? 1 });
     setHex(tinycolor(data.color).toHexString());
+    setRgb(tinycolor(data.color).toRgb());
+  };
+
+  const onRgbChange = (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => {
+    const value = data.value ?? (data.displayValue !== undefined ? parseFloat(data.displayValue) : null);
+
+    if (value === null || Number.isNaN(value) || !NUMBER_REGEX.test(value.toString())) {
+      return;
+    }
+
+    const colorKey = (event.target as HTMLInputElement).name as RgbKey;
+
+    const newColor = tinycolor({ ...rgb, [colorKey]: value });
+    if (newColor.isValid) {
+      setColor(newColor.toHsv());
+      setHex(newColor.toHex());
+      setRgb(newColor.toRgb());
+    }
   };
 
   return (
@@ -74,7 +109,11 @@ export const Default = () => {
             setHex(oldValue => (HEX_COLOR_REGEX.test(value) ? value : oldValue));
           }}
         />
+        <InputRgbField label="Red" value={rgb.r} name="r" onChange={onRgbChange} />
+        <InputRgbField label="Green" value={rgb.g} name="g" onChange={onRgbChange} />
+        <InputRgbField label="Blue" value={rgb.b} name="b" onChange={onRgbChange} />
       </div>
+      <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toHexString() }} />
     </div>
   );
 };
@@ -95,6 +134,36 @@ const InputHexField = ({
     <div className={styles.colorFieldWrapper}>
       <Label htmlFor={id}>{label}</Label>
       <Input className={styles.input} value={value} id={id} onChange={onChange} onBlur={handleOnBlur} />
+    </div>
+  );
+};
+
+const InputRgbField = ({
+  value,
+  onChange,
+  label,
+  name,
+}: {
+  value: number;
+  label: string;
+  name: RgbKey;
+  onChange?: SpinButtonProps['onChange'];
+}) => {
+  const id = useId(`${label.toLowerCase()}-input`);
+  const styles = useStyles();
+
+  return (
+    <div className={styles.colorFieldWrapper}>
+      <Label htmlFor={id}>{label}</Label>
+      <SpinButton
+        className={styles.spinButton}
+        min={0}
+        max={255}
+        value={value}
+        id={id}
+        onChange={onChange}
+        name={name}
+      />
     </div>
   );
 };

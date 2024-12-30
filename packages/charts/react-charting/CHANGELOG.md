@@ -1,8 +1,82 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 17 Dec 2024 07:21:19 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Dec 2024 07:21:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.33)
+
+Mon, 30 Dec 2024 07:21:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.32..@fluentui/react-charting_v5.23.33)
+
+### Patches
+
+- [Area Chart] Support legend multi selection [Area Chart] Support legend multi selection ([PR #33475](https://github.com/microsoft/fluentui/pull/33475) by 120183316+srmukher@users.noreply.github.com)
+- Select multiple legends for Vertical bar chart ([PR #33510](https://github.com/microsoft/fluentui/pull/33510) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/theme-samples to v8.7.192 ([PR #33520](https://github.com/microsoft/fluentui/pull/33520) by beachball)
+- Bump @fluentui/react to v8.122.3 ([PR #33520](https://github.com/microsoft/fluentui/pull/33520) by beachball)
+
+## [5.23.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.32)
+
+Fri, 27 Dec 2024 07:20:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.31..@fluentui/react-charting_v5.23.32)
+
+### Patches
+
+- Support changing legends programatically at runtime and bug fixes ([PR #33519](https://github.com/microsoft/fluentui/pull/33519) by atishay.jain@microsoft.com)
+- Full Yaxis labels in HeatMap chart ([PR #33509](https://github.com/microsoft/fluentui/pull/33509) by 74965306+Anush2303@users.noreply.github.com)
+- Support for multiple legend selection for Vertical Stacked Bar Chart  ([PR #33466](https://github.com/microsoft/fluentui/pull/33466) by 120183316+srmukher@users.noreply.github.com)
+- plotly examples bug fixes ([PR #33507](https://github.com/microsoft/fluentui/pull/33507) by 74965306+Anush2303@users.noreply.github.com)
+- Enabling multiple legend selection for Grouped Vertical Bar Chart ([PR #33511](https://github.com/microsoft/fluentui/pull/33511) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.23.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.31)
+
+Thu, 26 Dec 2024 07:21:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.30..@fluentui/react-charting_v5.23.31)
+
+### Patches
+
+- fix: remove duplicate legends in vertical bar chart ([PR #33518](https://github.com/microsoft/fluentui/pull/33518) by 110246001+krkshitij@users.noreply.github.com)
+
+## [5.23.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.30)
+
+Wed, 25 Dec 2024 07:21:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.29..@fluentui/react-charting_v5.23.30)
+
+### Patches
+
+- Legends multi selection for Donut Charts ([PR #33447](https://github.com/microsoft/fluentui/pull/33447) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.23.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.29)
+
+Mon, 23 Dec 2024 07:22:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.28..@fluentui/react-charting_v5.23.29)
+
+### Patches
+
+- feat: add functionality to export chart as image ([PR #33445](https://github.com/microsoft/fluentui/pull/33445) by 110246001+krkshitij@users.noreply.github.com)
+- Bump @fluentui/react-focus to v8.9.20 ([PR #33445](https://github.com/microsoft/fluentui/pull/33445) by beachball)
+- Bump @fluentui/theme-samples to v8.7.191 ([PR #33445](https://github.com/microsoft/fluentui/pull/33445) by beachball)
+- Bump @fluentui/react to v8.122.2 ([PR #33445](https://github.com/microsoft/fluentui/pull/33445) by beachball)
+
+## [5.23.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.28)
+
+Fri, 20 Dec 2024 07:20:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.27..@fluentui/react-charting_v5.23.28)
+
+### Patches
+
+- Ensure type safety of dependent fields ([PR #33486](https://github.com/microsoft/fluentui/pull/33486) by 74965306+Anush2303@users.noreply.github.com)
+
+## [5.23.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.27)
+
+Wed, 18 Dec 2024 07:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.26..@fluentui/react-charting_v5.23.27)
+
+### Patches
+
+- Enabled Multi Select behaviour of Controlled legends ([PR #33479](https://github.com/microsoft/fluentui/pull/33479) by 74965306+Anush2303@users.noreply.github.com)
+- Mode check for declarative area chart  ([PR #33467](https://github.com/microsoft/fluentui/pull/33467) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.23.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.26)
 

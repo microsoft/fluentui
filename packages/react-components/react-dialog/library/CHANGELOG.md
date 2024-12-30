@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Mon, 16 Dec 2024 16:26:49 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Dec 2024 10:59:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.11.26)
+
+Wed, 18 Dec 2024 10:59:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.11.25..@fluentui/react-dialog_v9.11.26)
+
+### Patches
+
+- docs(react-dialog): Fix doc-comment links that don't translate to storybook ([PR #33471](https://github.com/microsoft/fluentui/pull/33471) by jiangemma@microsoft.com)
 
 ## [9.11.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.11.25)
 

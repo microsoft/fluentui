@@ -3,7 +3,14 @@ import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { classNamesFunction, getId, getRTL, memoizeFunction, warnDeprecations } from '@fluentui/react/lib/Utilities';
+import {
+  classNamesFunction,
+  getId,
+  getRTL,
+  initializeComponentRef,
+  memoizeFunction,
+  warnDeprecations,
+} from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZoneDirection } from '@fluentui/react-focus';
@@ -24,6 +31,7 @@ import {
   createStringYAxis,
   getNextGradient,
   getNextColor,
+  areArraysEqual,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -39,6 +47,7 @@ import {
   IRefArrayData,
   Legends,
 } from '../../index';
+import { IChart } from '../../types/index';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -65,12 +74,13 @@ export interface IGroupedVerticalBarChartState extends IBasestate {
   dataPointCalloutProps?: IGVBarChartSeriesPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
+  selectedLegends: string[];
 }
 
-export class GroupedVerticalBarChartBase extends React.Component<
-  IGroupedVerticalBarChartProps,
-  IGroupedVerticalBarChartState
-> {
+export class GroupedVerticalBarChartBase
+  extends React.Component<IGroupedVerticalBarChartProps, IGroupedVerticalBarChartState>
+  implements IChart
+{
   public static defaultProps: Partial<IGroupedVerticalBarChartProps> = {
     maxBarWidth: 24,
   };
@@ -100,16 +110,20 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _groupWidth: number;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
+  private _cartesianChartRef: React.RefObject<IChart>;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     this._createSet = memoizeFunction((data: IGroupedVerticalBarChartData[]) => this._createDataSetOfGVBC(data));
     this.state = {
       color: '',
       dataForHoverCard: 0,
       isCalloutVisible: false,
       refSelected: null,
-      selectedLegend: props.legendProps?.selectedLegend ?? '',
+      selectedLegends: props.legendProps?.selectedLegends || [],
       xCalloutValue: '',
       yCalloutValue: '',
       YValueHover: [],
@@ -129,6 +143,15 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._tooltipId = getId('GVBCTooltipId_');
     this._emptyChartId = getId('_GVBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
+    this._cartesianChartRef = React.createRef();
+  }
+
+  public componentDidUpdate(prevProps: IGroupedVerticalBarChartProps): void {
+    if (!areArraysEqual(prevProps.legendProps?.selectedLegends, this.props.legendProps?.selectedLegends)) {
+      this.setState({
+        selectedLegends: this.props.legendProps?.selectedLegends || [],
+      });
+    }
   }
 
   public render(): React.ReactNode {
@@ -203,6 +226,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
           xAxisOuterPadding: this._xAxisOuterPadding,
         })}
         barwidth={this._barWidth}
+        ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         children={() => {
           return <g>{this._groupedVerticalBarGraph}</g>;
@@ -216,6 +240,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
         aria-label={'Graph has no data to display'}
       />
     );
+  }
+
+  public get chartContainer(): HTMLElement | null {
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   private _getMinMaxOfYAxis = () => {
@@ -307,7 +335,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       this.setState({
         refSelected: mouseEvent,
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
-        isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === pointData.legend,
+        isCalloutVisible: this._noLegendHighlighted() || this._legendHighlighted(pointData.legend),
         calloutLegend: pointData.legend,
         dataForHoverCard: pointData.data,
         color: pointData.color,
@@ -343,7 +371,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         this.setState({
           refSelected: obj.refElement,
           /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
-          isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === pointData.legend,
+          isCalloutVisible: this._noLegendHighlighted() || this._legendHighlighted(pointData.legend),
           calloutLegend: pointData.legend,
           dataForHoverCard: pointData.data,
           color: pointData.color,
@@ -555,18 +583,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
     });
   };
 
-  private _onLegendClick(legendTitle: string): void {
-    if (this.state.selectedLegend === legendTitle) {
-      this.setState({
-        selectedLegend: '',
-      });
-    } else {
-      this.setState({
-        selectedLegend: legendTitle,
-      });
-    }
-  }
-
   private _onLegendHover(legendTitle: string): void {
     this.setState({
       activeLegend: legendTitle,
@@ -598,9 +614,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
         const legend: ILegend = {
           title: point.legend,
           color,
-          action: () => {
-            this._onLegendClick(point.legend);
-          },
           hoverAction: () => {
             this._handleChartMouseLeave();
             this._onLegendHover(point.legend);
@@ -620,9 +633,25 @@ export class GroupedVerticalBarChartBase extends React.Component<
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         {...this.props.legendProps}
+        onChange={this._onLegendSelectionChange.bind(this)}
       />
     );
   };
+
+  private _onLegendSelectionChange(
+    selectedLegends: string[],
+    event: React.MouseEvent<HTMLButtonElement>,
+    currentLegend?: ILegend,
+  ): void {
+    if (this.props.legendProps?.canSelectMultipleLegends) {
+      this.setState({ selectedLegends });
+    } else {
+      this.setState({ selectedLegends: selectedLegends.slice(-1) });
+    }
+    if (this.props.legendProps?.onChange) {
+      this.props.legendProps.onChange(selectedLegends, event, currentLegend);
+    }
+  }
 
   private _getAxisData = (yAxisData: IAxisData) => {
     if (yAxisData && yAxisData.yAxisDomainValues.length) {
@@ -638,18 +667,23 @@ export class GroupedVerticalBarChartBase extends React.Component<
    * 2. hovering: if there is no selected legend and the user hovers over it
    */
   private _legendHighlighted = (legendTitle: string) => {
-    return (
-      this.state.selectedLegend === legendTitle ||
-      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
-    );
+    return this._getHighlightedLegend().includes(legendTitle!);
   };
 
   /**
    * This function checks if none of the legends is selected or hovered.
    */
   private _noLegendHighlighted = () => {
-    return this.state.selectedLegend === '' && this.state.activeLegend === '';
+    return this._getHighlightedLegend().length === 0;
   };
+
+  private _getHighlightedLegend() {
+    return this.state.selectedLegends.length > 0
+      ? this.state.selectedLegends
+      : this.state.activeLegend
+      ? [this.state.activeLegend]
+      : [];
+  }
 
   private _getAriaLabel = (point: IGVBarChartSeriesPoint, xAxisPoint: string): string => {
     const xValue = point.xAxisCalloutData || xAxisPoint;

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Wed, 18 Dec 2024 10:59:36 GMT",
+      "tag": "@fluentui/react-dialog_v9.11.26",
+      "version": "9.11.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "0eca6fb68963b15b664b8560984f0f742bae280b",
+            "comment": "docs(react-dialog): Fix doc-comment links that don't translate to storybook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Dec 2024 16:26:49 GMT",
       "tag": "@fluentui/react-dialog_v9.11.25",
       "version": "9.11.25",
