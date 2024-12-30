@@ -3,7 +3,15 @@
   "root": true,
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
+<<<<<<< HEAD
     "import/no-webpack-loader-syntax": "off", // ok in this project
+||||||| parent of 9fb6b24083 (chore(nx): set ESLINT_USE_FLAT_CONFIG=false)
+    "deprecation/deprecation": "off",
+    "import/no-webpack-loader-syntax": "off", // ok in this project
+=======
+    "@typescript-eslint/no-deprecated": "off",
+    "import/no-webpack-loader-syntax": "off",
+>>>>>>> 9fb6b24083 (chore(nx): set ESLINT_USE_FLAT_CONFIG=false)
     "prefer-const": "off",
     "react/jsx-no-bind": "off",
     "no-restricted-globals": "off",

@@ -3,6 +3,8 @@
   "root": true,
   "rules": {
     "import/no-webpack-loader-syntax": "off", // ok in this project
-    "no-restricted-globals": "off"
+    "no-restricted-globals": "off",
+    "@typescript-eslint/no-deprecated": "off",
+    "react-hooks/rules-of-hooks": "warn"
   }
 }

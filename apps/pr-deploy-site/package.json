@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "just-scripts clean",
     "generate:site": "just-scripts generate:site",
-    "lint": "eslint --ext .js,.ts --cache .",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --cache .",
     "type-check": "tsc -p . --noEmit"
   },
   "license": "MIT",

@@ -13,7 +13,7 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "just": "just-scripts",
-    "lint": "just-scripts lint",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false just-scripts lint",
     "test": "just-scripts test"
   },
   "devDependencies": {

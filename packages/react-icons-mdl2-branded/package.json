@@ -18,7 +18,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
-    "lint": "just-scripts lint"
+    "lint": "ESLINT_USE_FLAT_CONFIG=false just-scripts lint"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

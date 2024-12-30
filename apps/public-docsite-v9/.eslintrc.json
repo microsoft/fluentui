@@ -4,7 +4,15 @@
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/jsx-no-bind": "off",
+<<<<<<< HEAD
     "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../.."] }],
     "@typescript-eslint/no-deprecated": "off"
+||||||| parent of 9fb6b24083 (chore(nx): set ESLINT_USE_FLAT_CONFIG=false)
+    "deprecation/deprecation": "off",
+    "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../.."] }]
+=======
+    "@typescript-eslint/no-deprecated": "off",
+    "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../.."] }]
+>>>>>>> 9fb6b24083 (chore(nx): set ESLINT_USE_FLAT_CONFIG=false)
   }
 }

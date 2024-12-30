@@ -7,6 +7,12 @@
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/naming-convention": "off",
     "@typescript-eslint/jsx-no-bind": "off",
+<<<<<<< HEAD
+||||||| parent of 9fb6b24083 (chore(nx): set ESLINT_USE_FLAT_CONFIG=false)
+    "deprecation/deprecation": "off",
+=======
+    "@typescript-eslint/no-deprecated": "off",
+>>>>>>> 9fb6b24083 (chore(nx): set ESLINT_USE_FLAT_CONFIG=false)
     "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../.."] }],
     "@nx/workspace-no-restricted-globals": "off",
     "@typescript-eslint/no-deprecated": "off"
