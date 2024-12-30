@@ -74,7 +74,7 @@ export function getInitialResponsiveMode(): ResponsiveMode {
 export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>,
 ): any {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const resultClass = class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
     public static contextType = WindowContext;
     public context: React.ContextType<typeof WindowContext>;

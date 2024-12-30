@@ -42,7 +42,7 @@ export function presenceMotionSlot<MotionParams extends Record<string, MotionPar
     defaultProps: PresenceMotionSlotRenderProps & MotionParams;
   },
 ): SlotComponentType<PresenceMotionSlotRenderProps & MotionParams> {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const { as, children, ...rest } = motion ?? {};
 
   if (process.env.NODE_ENV !== 'production') {

@@ -47,10 +47,10 @@ export function getHighContrastNoAdjustStyle(): IRawStyle {
  * The style which turns off high contrast adjustment in (only) Edge Chromium browser.
  *  @deprecated Use `getHighContrastNoAdjustStyle`
  */
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export function getEdgeChromiumNoHighContrastAdjustSelector(): { [EdgeChromiumHighContrastSelector]: IRawStyle } {
   return {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     [EdgeChromiumHighContrastSelector]: {
       forcedColorAdjust: 'none',
       MsHighContrastAdjust: 'none',

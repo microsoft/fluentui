@@ -163,6 +163,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           directionalHint={DirectionalHint.topAutoEdge}
           id={this._calloutId}
           onDismiss={this._closeCallout}
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           preventDismissOnLostFocus={true}
           {...this.props.calloutProps!}
           {...getAccessibleDataObject(this.state.callOutAccessibilityData)}

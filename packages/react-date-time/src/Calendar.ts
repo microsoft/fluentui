@@ -6,7 +6,7 @@ export {
   FirstWeekOfYear,
   defaultCalendarNavigationIcons,
   defaultCalendarStrings,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   defaultDayPickerStrings,
 } from '@fluentui/react/lib/Calendar';
 export type {
@@ -19,9 +19,9 @@ export type {
   ICalendarDayProps,
   ICalendarDayStyleProps,
   ICalendarDayStyles,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ICalendarFormatDateCallbacks,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ICalendarIconStrings,
   ICalendarMonth,
   ICalendarMonthProps,

@@ -121,11 +121,11 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
 const getWindowEvent = (target: Node | Window | null | undefined): Event | undefined => {
   if (target) {
     if (typeof (target as Window).window === 'object' && (target as Window).window === target) {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       return target.event;
     }
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     return (target as Node).ownerDocument?.defaultView?.event ?? undefined;
   }
 

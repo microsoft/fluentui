@@ -4,7 +4,7 @@ import type { IStyleFunction } from '../../Utilities';
 export const getStyles: IStyleFunction<IVerticalDividerPropsStyles, IVerticalDividerStyles> = (
   props: IVerticalDividerPropsStyles,
 ): IVerticalDividerStyles => {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const { theme, getClassNames, className } = props;
 
   if (!theme) {

@@ -157,7 +157,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     const {
       className = '',
       elementToFocusOnDismiss,
-      /* eslint-disable deprecation/deprecation */
+      /* eslint-disable @typescript-eslint/no-deprecated */
       firstFocusableSelector,
       focusTrapZoneProps,
       forceFocusInsideTrap,

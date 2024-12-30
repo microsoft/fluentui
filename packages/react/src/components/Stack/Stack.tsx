@@ -13,7 +13,7 @@ const StackView: IStackComponent['view'] = props => {
   const {
     as: RootType = 'div',
     disableShrink = false,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     doNotRenderFalsyValues = false,
     enableScopedSelectors = false,
     wrap,

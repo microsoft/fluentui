@@ -66,7 +66,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       viewport,
       selectionMode,
       loadingText,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       isSelected = false,
       selected = false,
       indentWidth,
@@ -210,9 +210,9 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     }
 
     if (!ev.defaultPrevented) {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const shouldOpen = this.state.isCollapsed && ev.which === getRTLSafeKeyCode(KeyCodes.right, this.props.theme);
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const shouldClose = !this.state.isCollapsed && ev.which === getRTLSafeKeyCode(KeyCodes.left, this.props.theme);
       if (shouldClose || shouldOpen) {
         this._toggleCollapse();

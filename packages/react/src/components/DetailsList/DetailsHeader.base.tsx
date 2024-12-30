@@ -413,10 +413,10 @@ export class DetailsHeaderBase
             targetIndex,
           };
           columnReorderProps.onColumnDrop(dragDropDetails);
-          /* eslint-disable deprecation/deprecation */
+          /* eslint-disable @typescript-eslint/no-deprecated */
         } else if (columnReorderProps.handleColumnReorder) {
           columnReorderProps.handleColumnReorder(this._draggedColumnIndex, targetIndex);
-          /* eslint-enable deprecation/deprecation */
+          /* eslint-enable @typescript-eslint/no-deprecated */
         }
       }
     }
@@ -773,7 +773,7 @@ export class DetailsHeaderBase
     const columnIndex = Number(columnIndexAttr);
 
     if (!columnResizeDetails) {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (ev.which === KeyCodes.enter) {
         this.setState({
           columnResizeDetails: {
@@ -788,7 +788,7 @@ export class DetailsHeaderBase
     } else {
       let increment: number | undefined;
 
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (ev.which === KeyCodes.enter) {
         this.setState({
           columnResizeDetails: undefined,
@@ -796,10 +796,10 @@ export class DetailsHeaderBase
 
         ev.preventDefault();
         ev.stopPropagation();
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
       } else if (ev.which === KeyCodes.left) {
         increment = getRTL(this.props.theme) ? 1 : -1;
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
       } else if (ev.which === KeyCodes.right) {
         increment = getRTL(this.props.theme) ? -1 : 1;
       }

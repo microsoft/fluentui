@@ -132,7 +132,7 @@ export function getSemanticColors<TResult = Partial<ISemanticColors>>(
     result.listItemBackgroundChecked = neutralLight;
     result.listHeaderBackgroundPressed = neutralLight;
     result.menuItemBackgroundPressed = neutralLight;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     result.menuItemBackgroundChecked = neutralLight;
   }
   if (neutralLighter) {
@@ -227,12 +227,12 @@ function _fixDeprecatedSlots(s: ISemanticColors, depComments: boolean): ISemanti
     dep = ' /* @deprecated */';
   }
 
-  /* eslint-disable deprecation/deprecation */
+  /*  eslint-disable @typescript-eslint/no-deprecated */
   s.listTextColor = s.listText + dep;
   s.menuItemBackgroundChecked += dep;
   s.warningHighlight += dep;
   s.warningText = s.messageText + dep;
   s.successText += dep;
-  /* eslint-enable deprecation/deprecation */
+  /* eslint-enable @typescript-eslint/no-deprecated */
   return s;
 }

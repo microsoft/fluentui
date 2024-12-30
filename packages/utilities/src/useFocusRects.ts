@@ -180,14 +180,14 @@ function _onPointerDown(ev: PointerEvent, registeredProviders?: React.RefObject<
 // This works because `classList.add` is smart and will not duplicate a classname that already exists on the classList
 // when focus visibility is turned on.
 function _onKeyDown(ev: KeyboardEvent, registeredProviders?: React.RefObject<HTMLElement>[]): void {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   if (isDirectionalKeyCode(ev.which)) {
     setFocusVisibility(true, ev.target as Element, registeredProviders);
   }
 }
 
 function _onKeyUp(ev: KeyboardEvent, registeredProviders?: React.RefObject<HTMLElement>[]): void {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   if (isDirectionalKeyCode(ev.which)) {
     setFocusVisibility(true, ev.target as Element, registeredProviders);
   }

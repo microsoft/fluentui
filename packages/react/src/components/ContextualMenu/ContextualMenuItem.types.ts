@@ -59,7 +59,7 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
   /**
    * Classnames for different aspects of a menu item
    */
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   classNames: IMenuItemClassNames;
 
   /**

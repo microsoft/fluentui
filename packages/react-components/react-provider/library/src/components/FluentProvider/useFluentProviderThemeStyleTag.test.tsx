@@ -111,7 +111,7 @@ describe('useFluentProviderThemeStyleTag', () => {
 
     expect(targetDocument.body.querySelector('style')).toBeNull();
     expect(targetDocument.head.querySelectorAll('style').length).toBe(1);
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     expect(targetDocument.createElement).toHaveBeenCalledTimes(0);
   });
 });

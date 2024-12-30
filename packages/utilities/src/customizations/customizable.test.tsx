@@ -1,4 +1,4 @@
-/* eslint-disable deprecation/deprecation */
+/*  eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
 import { mount } from 'enzyme';
