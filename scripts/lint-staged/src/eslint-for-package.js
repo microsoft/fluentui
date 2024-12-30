@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const { eslintConstants } = require('@fluentui/scripts-monorepo');
-const { ESLint } = require('eslint');
+const { LegacyESLint: ESLint } = require('eslint/use-at-your-own-risk');
 const micromatch = require('micromatch');
 
 /**
