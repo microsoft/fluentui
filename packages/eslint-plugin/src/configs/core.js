@@ -14,16 +14,7 @@ const config = {
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: [
-    'import',
-    '@fluentui',
-    '@rnx-kit',
-    '@typescript-eslint',
-    'deprecation',
-    'jest',
-    'jsdoc',
-    ...__internal.plugins,
-  ],
+  plugins: ['import', '@fluentui', '@rnx-kit', '@typescript-eslint', 'jest', 'jsdoc', ...__internal.plugins],
   settings: {
     'import/resolver': {
       // @see https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
@@ -167,7 +158,7 @@ const config = {
     '@typescript-eslint/no-empty-function': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/prefer-namespace-keyword': 'error',
-
+    '@typescript-eslint/no-deprecated': 'error',
     /**
      * `@rnx-kit` eslint rules
      * @see https://github.com/microsoft/rnx-kit/tree/main/packages/eslint-plugin
@@ -245,10 +236,7 @@ const config = {
 
 /** @type {import("eslint").Linter.RulesRecord} */
 const typeAwareRules = {
-  /**
-   * plugin: https://github.com/gund/eslint-plugin-deprecation
-   */
-  'deprecation/deprecation': 'error',
+  '@typescript-eslint/no-deprecated': 'error',
 };
 
 /**
@@ -318,7 +306,7 @@ const getOverrides = () => [
   {
     files: 'src/**/*.deprecated.test.{ts,tsx}',
     rules: {
-      'deprecation/deprecation': 'off', // the purpose of these tests
+      '@typescript-eslint/no-deprecated ': 'off', // the purpose of these tests
     },
   },
   {
