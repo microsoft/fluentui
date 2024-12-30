@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 30 Dec 2024 07:21:29 GMT",
+      "tag": "@fluentui/react_v8.122.3",
+      "version": "8.122.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "681a95a732fe385a70b8d4537dc489acbcd1c21e",
+            "comment": "fix: Add event listener to Panel in order to update the footer's sticky property correctly when content changes dynamically."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Dec 2024 07:22:58 GMT",
       "tag": "@fluentui/react_v8.122.2",
       "version": "8.122.2",
