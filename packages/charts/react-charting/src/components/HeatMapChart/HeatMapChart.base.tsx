@@ -601,7 +601,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
      * rectangles and then format the x and y datapoints respectively
      */
     Object.keys(yPoints).forEach((item: string) => {
-      if (this._xAxisType !== XAxisTypes.StringAxis) {
+      if (this._xAxisType === XAxisTypes.StringAxis) {
         yPoints[item].forEach((datapoint: IHeatMapChartDataPoint) => {
           if (this._xAxisType === XAxisTypes.StringAxis) {
             datapoint.x = this._getFormattedLabelForXAxisDataPoint(datapoint.x as string);
