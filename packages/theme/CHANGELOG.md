@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Fri, 11 Oct 2024 16:51:54 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Dec 2024 07:22:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.64](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.64)
+
+Mon, 23 Dec 2024 07:22:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.63..@fluentui/theme_v2.6.64)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33448](https://github.com/microsoft/fluentui/pull/33448) by olfedias@microsoft.com)
 
 ## [2.6.63](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.63)
 

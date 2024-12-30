@@ -2128,6 +2128,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         <rect
           aria-label="1000. String One."
           aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
           data-is-focusable={true}
           fill="#0078d4"
           height={32}
@@ -2739,6 +2744,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         <rect
           aria-label="1000. String One."
           aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
           data-is-focusable={true}
           fill="#0078d4"
           height={32}

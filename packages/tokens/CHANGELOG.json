@@ -2,6 +2,21 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Mon, 16 Dec 2024 16:26:46 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.21",
+      "version": "1.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "ed3876a731c1528835c658486a0f2e7d4dc9f445",
+            "comment": "bugfix: ensure teams tokens follow teams overrides for fonts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2024 12:53:46 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.20",
       "version": "1.0.0-alpha.20",
