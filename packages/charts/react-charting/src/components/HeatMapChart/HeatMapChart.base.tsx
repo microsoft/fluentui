@@ -601,38 +601,42 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
      * rectangles and then format the x and y datapoints respectively
      */
     Object.keys(yPoints).forEach((item: string) => {
-      yPoints[item]
-        .sort((a: IHeatMapChartDataPoint, b: IHeatMapChartDataPoint) => {
-          if (this._xAxisType === XAxisTypes.StringAxis) {
-            return (a.x as string).toLowerCase() > (b.x as string).toLowerCase() ? 1 : -1;
-          } else if (this._xAxisType === XAxisTypes.DateAxis) {
-            return (a.x as Date).getTime() - (b.x as Date).getTime();
-          } else if (this._xAxisType === XAxisTypes.NumericAxis) {
-            return +(a.x as string) > +(b.x as string) ? 1 : -1;
-          } else {
-            return a.x > b.x ? 1 : -1;
-          }
-        })
-        .forEach((datapoint: IHeatMapChartDataPoint) => {
-          if (this._xAxisType === XAxisTypes.DateAxis) {
-            datapoint.x = this._getStringFormattedDate(datapoint.x as string, xAxisDateFormatString);
-          }
-          if (this._xAxisType === XAxisTypes.NumericAxis) {
-            datapoint.x = this._getStringFormattedNumber(datapoint.x as string, xAxisNumberFormatString);
-          }
+      if (this._xAxisType !== XAxisTypes.StringAxis) {
+        yPoints[item].forEach((datapoint: IHeatMapChartDataPoint) => {
           if (this._xAxisType === XAxisTypes.StringAxis) {
             datapoint.x = this._getFormattedLabelForXAxisDataPoint(datapoint.x as string);
           }
-          if (this._yAxisType === YAxisType.DateAxis) {
-            datapoint.y = this._getStringFormattedDate(datapoint.y as string, yAxisDateFormatString);
-          }
-          if (this._yAxisType === YAxisType.NumericAxis) {
-            datapoint.y = this._getStringFormattedNumber(datapoint.y as string, yAxisNumberFormatString);
-          }
-          if (this._yAxisType === YAxisType.StringAxis) {
-            datapoint.y = this._getFormattedLabelForYAxisDataPoint(datapoint.y as string);
-          }
         });
+      }
+      if (this._xAxisType !== XAxisTypes.StringAxis) {
+        yPoints[item]
+          .sort((a: IHeatMapChartDataPoint, b: IHeatMapChartDataPoint) => {
+            if (this._xAxisType === XAxisTypes.DateAxis) {
+              return (a.x as Date).getTime() - (b.x as Date).getTime();
+            } else if (this._xAxisType === XAxisTypes.NumericAxis) {
+              return +(a.x as string) > +(b.x as string) ? 1 : -1;
+            } else {
+              return a.x > b.x ? 1 : -1;
+            }
+          })
+          .forEach((datapoint: IHeatMapChartDataPoint) => {
+            if (this._xAxisType === XAxisTypes.DateAxis) {
+              datapoint.x = this._getStringFormattedDate(datapoint.x as string, xAxisDateFormatString);
+            }
+            if (this._xAxisType === XAxisTypes.NumericAxis) {
+              datapoint.x = this._getStringFormattedNumber(datapoint.x as string, xAxisNumberFormatString);
+            }
+            if (this._yAxisType === YAxisType.DateAxis) {
+              datapoint.y = this._getStringFormattedDate(datapoint.y as string, yAxisDateFormatString);
+            }
+            if (this._yAxisType === YAxisType.NumericAxis) {
+              datapoint.y = this._getStringFormattedNumber(datapoint.y as string, yAxisNumberFormatString);
+            }
+            if (this._yAxisType === YAxisType.StringAxis) {
+              datapoint.y = this._getFormattedLabelForYAxisDataPoint(datapoint.y as string);
+            }
+          });
+      }
     });
     /**
      * if  y-axis data points are of type date or number or if we have string formatter,
@@ -687,7 +691,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       if (this._xAxisType === XAxisTypes.DateAxis || this._xAxisType === XAxisTypes.NumericAxis) {
         return +a - +b;
       } else {
-        return a.toLowerCase() > b.toLowerCase() ? 1 : -1;
+        return 0;
       }
     });
     xAxisPoints = unFormattedXAxisDataPoints.map((xPoint: string) => {
@@ -714,7 +718,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       if (this._yAxisType === YAxisType.DateAxis || this._yAxisType === YAxisType.NumericAxis) {
         return +a - +b;
       } else {
-        return a.toLowerCase() > b.toLowerCase() ? 1 : -1;
+        return 0;
       }
     });
     yAxisPoints = unFormattedYAxisDataPoints.map((yPoint: string) => {
