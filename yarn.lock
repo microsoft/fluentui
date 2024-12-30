@@ -11106,10 +11106,12 @@ eslint-plugin-n@17.10.3:
     minimatch "^9.0.5"
     semver "^7.5.3"
 
-eslint-plugin-playwright@0.15.3:
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-playwright/-/eslint-plugin-playwright-0.15.3.tgz#9fd8753688351bcaf41797eb6a7df8807fd5eb1b"
-  integrity sha512-LQMW5y0DLK5Fnpya7JR1oAYL2/7Y9wDiYw6VZqlKqcRGSgjbVKNqxraphk7ra1U3Bb5EK444xMgUlQPbMg2M1g==
+eslint-plugin-playwright@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-playwright/-/eslint-plugin-playwright-2.1.0.tgz#9d84b5d839226e1f9ac926663baee29d103dcc99"
+  integrity sha512-wMbHOehofSB1cBdzz2CLaCYaKNLeTQ0YnOW+7AHa281TJqlpEJUBgTHbRUYOUxiXphfWwOyTPvgr6vvEmArbSA==
+  dependencies:
+    globals "^13.23.0"
 
 eslint-plugin-react-compiler@0.0.0-experimental-a97cca1-20240529:
   version "0.0.0-experimental-a97cca1-20240529"
@@ -12947,7 +12949,7 @@ global@^4.3.0, global@^4.3.1:
     min-document "^2.19.0"
     process "^0.11.10"
 
-globals@13.24.0:
+globals@13.24.0, globals@^13.23.0:
   version "13.24.0"
   resolved "https://registry.yarnpkg.com/globals/-/globals-13.24.0.tgz#8432a19d78ce0c1e833949c36adb345400bb1171"
   integrity sha512-AhO5QUcj8llrbG09iWhPU2B204J1xnPeL8kQmVorSsy+Sjj1sk8gIyh6cUocGmH4L0UuhAJy+hJMRA4mgA4mFQ==
