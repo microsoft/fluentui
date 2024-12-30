@@ -40,7 +40,7 @@
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",
-    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "test": "gulp test",
     "test:watch": "gulp test:watch"
