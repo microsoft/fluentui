@@ -182,7 +182,7 @@ const isObject = (val: any): val is KeyboardEventLike => {
  */
 export function getCode(eventOrKey: Partial<KeyboardEventLike> | string): number | undefined {
   if (isObject(eventOrKey)) {
-    // eslint-disable-next-line deprecation/deprecation, @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-deprecated, @typescript-eslint/no-explicit-any
     return eventOrKey.keyCode || eventOrKey.which || (keyboardKey as any)[eventOrKey.key as string];
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -204,7 +204,7 @@ export function getKey(eventOrCode: Partial<KeyboardEventLike> | number): string
     return event.key;
   }
 
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   let name = codes[(isEvent ? event.keyCode || event.which : eventOrCode) as number];
 
   if (Array.isArray(name)) {

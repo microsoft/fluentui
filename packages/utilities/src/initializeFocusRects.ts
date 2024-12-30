@@ -50,6 +50,6 @@ function _onPointerDown(ev: PointerEvent): void {
 }
 
 function _onKeyDown(ev: KeyboardEvent): void {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   isDirectionalKeyCode(ev.which) && setFocusVisibility(true, ev.target as Element);
 }

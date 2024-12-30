@@ -236,6 +236,9 @@ const config = {
 
 /** @type {import("eslint").Linter.RulesRecord} */
 const typeAwareRules = {
+  /**
+   * plugin: https://github.com/gund/eslint-plugin-deprecation
+   */
   '@typescript-eslint/no-deprecated': 'error',
 };
 
@@ -306,7 +309,7 @@ const getOverrides = () => [
   {
     files: 'src/**/*.deprecated.test.{ts,tsx}',
     rules: {
-      '@typescript-eslint/no-deprecated ': 'off', // the purpose of these tests
+      '@typescript-eslint/no-deprecated': 'off',
     },
   },
   {

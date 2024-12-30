@@ -7,7 +7,6 @@ export {
   DefaultEffects,
   DefaultFontStyles,
   DefaultPalette,
-  // eslint-disable-next-line deprecation/deprecation
   EdgeChromiumHighContrastSelector,
   FontClassNames,
   FontSizes,
@@ -39,11 +38,9 @@ export {
   createFontStyles,
   focusClear,
   fontFace,
-  // eslint-disable-next-line deprecation/deprecation
   getEdgeChromiumNoHighContrastAdjustSelector,
   getFadedOverflowStyle,
   getFocusOutlineStyle,
-  // eslint-disable-next-line deprecation/deprecation
   getFocusStyle,
   getGlobalClassNames,
   getHighContrastNoAdjustStyle,
