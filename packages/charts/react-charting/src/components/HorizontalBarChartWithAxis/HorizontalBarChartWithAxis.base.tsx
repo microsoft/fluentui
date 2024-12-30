@@ -40,6 +40,7 @@ import {
   domainRangeOfNumericForHorizontalBarChartWithAxis,
   createStringYAxisForHorizontalBarChartWithAxis,
   getNextGradient,
+  areArraysEqual,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
@@ -116,9 +117,9 @@ export class HorizontalBarChartWithAxisBase
   }
 
   public componentDidUpdate(prevProps: IHorizontalBarChartWithAxisProps): void {
-    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+    if (!areArraysEqual(prevProps.legendProps?.selectedLegends, this.props.legendProps?.selectedLegends)) {
       this.setState({
-        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+        selectedLegends: this.props.legendProps?.selectedLegends || [],
       });
     }
   }
