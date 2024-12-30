@@ -13,6 +13,7 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import {
   Points,
+  areArraysEqual,
   formatValueWithSIPrefix,
   getAccessibleDataObject,
   getColorFromToken,
@@ -106,7 +107,7 @@ interface IYValue extends Omit<IYValueHover, 'y'> {
 }
 export interface IGaugeChartState {
   hoveredLegend: string;
-  selectedLegend: string;
+  selectedLegends: string[];
   focusedElement?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   calloutTarget: any;
@@ -144,7 +145,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
 
     this.state = {
       hoveredLegend: '',
-      selectedLegend: props.legendProps?.selectedLegend ?? '',
+      selectedLegends: props.legendProps?.selectedLegends || [],
       focusedElement: '',
       calloutTarget: null,
       isCalloutVisible: false,
@@ -168,9 +169,9 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   }
 
   public componentDidUpdate(prevProps: IGaugeChartProps): void {
-    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+    if (!areArraysEqual(prevProps.legendProps?.selectedLegends, this.props.legendProps?.selectedLegends)) {
       this.setState({
-        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+        selectedLegends: this.props.legendProps?.selectedLegends || [],
       });
     }
   }
@@ -496,13 +497,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       return {
         title: segment.legend,
         color,
-        action: () => {
-          if (this.state.selectedLegend === segment.legend) {
-            this.setState({ selectedLegend: '' });
-          } else {
-            this.setState({ selectedLegend: segment.legend });
-          }
-        },
         hoverAction: () => {
           this.setState({ hoveredLegend: segment.legend });
         },
@@ -514,10 +508,31 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
 
     return (
       <div className={this._classNames.legendsContainer}>
-        <Legends legends={legends} centerLegends {...this.props.legendProps} />
+        <Legends
+          legends={legends}
+          centerLegends
+          {...this.props.legendProps}
+          // eslint-disable-next-line react/jsx-no-bind
+          onChange={this._onLegendSelectionChange.bind(this)}
+        />
       </div>
     );
   };
+
+  private _onLegendSelectionChange(
+    selectedLegends: string[],
+    event: React.MouseEvent<HTMLButtonElement>,
+    currentLegend?: ILegend,
+  ): void {
+    if (this.props.legendProps?.canSelectMultipleLegends) {
+      this.setState({ selectedLegends });
+    } else {
+      this.setState({ selectedLegends: selectedLegends.slice(-1) });
+    }
+    if (this.props.legendProps?.onChange) {
+      this.props.legendProps.onChange(selectedLegends, event, currentLegend);
+    }
+  }
 
   /**
    * This function checks if the given legend is highlighted or not.
@@ -526,17 +541,23 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
    * 2. hovering: if there is no selected legend and the user hovers over it
    */
   private _legendHighlighted = (legend: string) => {
-    return (
-      this.state.selectedLegend === legend || (this.state.selectedLegend === '' && this.state.hoveredLegend === legend)
-    );
+    return this._getHighlightedLegend().includes(legend!);
   };
 
   /**
    * This function checks if none of the legends is selected or hovered.
    */
   private _noLegendHighlighted = () => {
-    return this.state.selectedLegend === '' && this.state.hoveredLegend === '';
+    return this._getHighlightedLegend().length === 0;
   };
+
+  private _getHighlightedLegend() {
+    return this.state.selectedLegends.length > 0
+      ? this.state.selectedLegends
+      : this.state.hoveredLegend
+      ? [this.state.hoveredLegend]
+      : [];
+  }
 
   private _handleFocus = (focusEvent: React.FocusEvent<SVGElement>, focusedElement: string) => {
     this._showCallout(focusEvent.target, focusedElement, true);
@@ -580,9 +601,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       calloutTarget: target,
       /** Show the callout if highlighted arc is hovered/focused and Hide it if unhighlighted arc is hovered/focused */
       isCalloutVisible:
-        ['Needle', 'Chart value'].includes(legend) ||
-        this.state.selectedLegend === '' ||
-        this.state.selectedLegend === legend,
+        ['Needle', 'Chart value'].includes(legend) || this._noLegendHighlighted() || this._legendHighlighted(legend),
       hoverXValue,
       hoverYValues,
       ...(isFocusEvent ? { focusedElement: legend } : {}),
