@@ -606,6 +606,28 @@ describe('Area chart - Subcomponent legend', () => {
       expect(firstLegend).toHaveAttribute('aria-selected', 'false');
     },
   );
+
+  testWithoutWait(
+    'Should select multiple legends on single mouse click on legends',
+    AreaChart,
+    { data: chartData, legendProps: { canSelectMultipleLegends: true } },
+    container => {
+      const legend1 = screen.queryByText('legend1')?.closest('button');
+      expect(legend1).toBeDefined();
+      const legend2 = screen.queryByText('legend2')?.closest('button');
+      expect(legend2).toBeDefined();
+
+      fireEvent.click(legend1!);
+      fireEvent.click(legend2!);
+
+      // Assert
+      expect(legend1).toHaveAttribute('aria-selected', 'true');
+      expect(legend2).toHaveAttribute('aria-selected', 'true');
+      expect(getById(container, /graph-areaChart/i)[0]).toHaveAttribute('fill-opacity', '0.7');
+      expect(getById(container, /graph-areaChart/i)[1]).toHaveAttribute('fill-opacity', '0.7');
+      expect(getById(container, /graph-areaChart/i)[2]).toHaveAttribute('fill-opacity', '0.1');
+    },
+  );
 });
 
 describe('Area chart - Subcomponent callout', () => {
