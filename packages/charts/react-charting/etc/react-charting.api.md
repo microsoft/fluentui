@@ -722,6 +722,7 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
     legendProps?: Partial<ILegendsProps>;
     rangeValuesForColorScale: string[];
     showYAxisLables?: boolean;
+    sortOrder?: string;
     styles?: IStyleFunctionOrObject<IHeatMapChartStyleProps, IHeatMapChartStyles>;
     xAxisDateFormatString?: string;
     xAxisNumberFormatString?: string;
