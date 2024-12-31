@@ -117,7 +117,7 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
   /**
    * The prop used to decide order of string axis labels
    */
-  sortOrder?: string;
+  sortOrder?: 'none' | 'alphabetical';
 }
 
 /**

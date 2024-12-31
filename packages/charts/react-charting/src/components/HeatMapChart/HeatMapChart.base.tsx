@@ -601,11 +601,11 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
      * rectangles and then format the x and y datapoints respectively
      */
     Object.keys(yPoints).forEach((item: string) => {
-      this.props.sortOrder !== 'None'
+      this.props.sortOrder !== 'none'
         ? yPoints[item]
             .sort((a: IHeatMapChartDataPoint, b: IHeatMapChartDataPoint) => {
               if (this._xAxisType === XAxisTypes.StringAxis) {
-                return this.props.sortOrder === 'None'
+                return this.props.sortOrder === 'none'
                   ? 0
                   : (a.x as string).toLowerCase() > (b.x as string).toLowerCase()
                   ? 1
@@ -624,9 +624,6 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
               }
               if (this._xAxisType === XAxisTypes.NumericAxis) {
                 datapoint.x = this._getStringFormattedNumber(datapoint.x as string, xAxisNumberFormatString);
-              }
-              if (this._xAxisType === XAxisTypes.StringAxis) {
-                datapoint.x = this._getFormattedLabelForXAxisDataPoint(datapoint.x as string);
               }
               if (this._yAxisType === YAxisType.DateAxis) {
                 datapoint.y = this._getStringFormattedDate(datapoint.y as string, yAxisDateFormatString);
@@ -697,7 +694,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       if (this._xAxisType === XAxisTypes.DateAxis || this._xAxisType === XAxisTypes.NumericAxis) {
         return +a - +b;
       } else {
-        return this.props.sortOrder === 'None' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
+        return this.props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
       }
     });
     xAxisPoints = unFormattedXAxisDataPoints.map((xPoint: string) => {
@@ -724,7 +721,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       if (this._yAxisType === YAxisType.DateAxis || this._yAxisType === YAxisType.NumericAxis) {
         return +a - +b;
       } else {
-        return this.props.sortOrder === 'None' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
+        return this.props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
       }
     });
     yAxisPoints = unFormattedYAxisDataPoints.map((yPoint: string) => {

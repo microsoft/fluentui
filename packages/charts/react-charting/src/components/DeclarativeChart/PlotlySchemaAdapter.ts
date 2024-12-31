@@ -424,7 +424,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
     rangeValuesForColorScale,
     hideLegend: true,
     showYAxisLables: true,
-    sortOrder: 'None',
+    sortOrder: 'none',
   };
 };
 
