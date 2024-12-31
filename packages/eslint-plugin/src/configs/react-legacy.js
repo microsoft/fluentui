@@ -14,6 +14,12 @@ module.exports = {
   },
   overrides: [
     {
+      files: ['**/*.{ts,tsx}'],
+      rules: {
+        '@typescript-eslint/no-deprecated': 'off',
+      },
+    },
+    {
       // Test overrides
       files: [...configHelpers.testFiles, '**/*.stories.tsx'],
       rules: {

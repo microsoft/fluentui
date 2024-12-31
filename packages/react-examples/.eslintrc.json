@@ -4,7 +4,6 @@
   "rules": {
     "import/no-webpack-loader-syntax": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-deprecated": "warn",
     "no-alert": "off",
     "no-restricted-globals": "off",
     "@typescript-eslint/no-deprecated": "warn"
