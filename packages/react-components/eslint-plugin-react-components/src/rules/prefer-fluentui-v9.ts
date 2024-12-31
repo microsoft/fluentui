@@ -1,3 +1,5 @@
+import { AST_NODE_TYPES } from '@typescript-eslint/utils';
+
 import { createRule } from './utils/create-rule';
 
 export const RULE_NAME = 'prefer-fluentui-v9';
@@ -31,7 +33,10 @@ export const rule = createRule<Options, MessageIds>({
         }
 
         for (const specifier of node.specifiers) {
-          if (specifier.type === 'ImportSpecifier' && specifier.imported.type === 'Identifier') {
+          if (
+            specifier.type === AST_NODE_TYPES.ImportSpecifier &&
+            specifier.imported.type === AST_NODE_TYPES.Identifier
+          ) {
             const name = specifier.imported.name;
 
             switch (name) {
