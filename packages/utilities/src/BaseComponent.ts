@@ -47,6 +47,7 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState extends {} = {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(props: TProps, context?: any) {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     super(props, context);
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
