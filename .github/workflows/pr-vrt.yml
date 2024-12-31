@@ -1,9 +1,5 @@
 name: VRT CI
-
 on:
-  push:
-    branches:
-      - master
   pull_request:
 
 concurrency:
@@ -21,78 +17,52 @@ permissions:
   actions: 'read'
 
 jobs:
-  web_components:
+  generate_vrt_screenshots:
     runs-on: ubuntu-latest
-    env:
-      pipelineId: '315'
-      pipelineName: 'fluent-ui_VRT_Pipeline_web-components'
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Run and publish VR screenshot
-        uses: ./.github/actions/run-publish-vr-screenshot
-        with:
-          fluentVersion: webcomponents
-          vrTestPackageName: 'vr-tests-web-components'
-          vrTestPackagePath: 'apps/vr-tests-web-components'
-          locationPrefix: 'FluentUI-web-components'
-          locationPostfix: 'vrscreenshotwebcomponents'
-          clientName: 'fluentui-web-components-v3'
 
-  react_components:
-    runs-on: ubuntu-latest
-    env:
-      pipelineId: '311'
-      pipelineName: 'fluent-ui_VRT_Pipeline_v9'
-    steps:
-      - uses: actions/checkout@v4
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v4
         with:
-          fetch-depth: 0
-      - name: Run and publish VR screenshot
-        uses: ./.github/actions/run-publish-vr-screenshot
-        with:
-          fluentVersion: v9
-          vrTestPackageName: 'vr-tests-react-components'
-          vrTestPackagePath: 'apps/vr-tests-react-components'
-          locationPrefix: 'fluentuiv9'
-          locationPostfix: 'vrscreenshotv9'
-          clientName: 'fluentuiv9'
+          main-branch-name: 'master'
 
-  react:
-    runs-on: ubuntu-latest
-    env:
-      pipelineId: '312'
-      pipelineName: 'fluent-ui_VRT_Pipeline_v8'
-    steps:
-      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          fetch-depth: 0
-      - name: Run and publish VR screenshot
-        uses: ./.github/actions/run-publish-vr-screenshot
-        with:
-          fluentVersion: v8
-          vrTestPackageName: 'vr-tests'
-          vrTestPackagePath: 'apps/vr-tests'
-          locationPrefix: 'fluentuiv8'
-          locationPostfix: 'vrscreenshotv8'
-          clientName: 'fluentuiv8'
+          cache: 'yarn'
+          node-version: '20'
 
-  react_northstar:
-    runs-on: ubuntu-latest
-    env:
-      pipelineId: '313'
-      pipelineName: 'fluent-ui_VRT_Pipeline_v0'
-    steps:
-      - uses: actions/checkout@v4
+      - run: yarn install --frozen-lockfile
+      - run: yarn playwright install --with-deps
+
+      - name: Run VR tests (generate screenshots)
+        run: yarn nx affected -t test-vr --nxBail
+
+      - name: Prepare VR screenshots
+        uses: actions/github-script@v7
         with:
-          fetch-depth: 0
-      - name: Run and publish VR screenshot
-        uses: ./.github/actions/run-publish-vr-screenshot
+          script: |
+            const run = require('./.github/scripts/prepare-vr-screenshots-for-upload');
+            const config = {
+              projects: ["vr-tests-web-components", "vr-tests-react-components", "vr-tests", "docs"]
+            };
+            await run({github,context,core,config});
+
+      - name: Upload VR screenshots
+        uses: actions/upload-artifact@v4
         with:
-          fluentVersion: v0
-          vrTestPackageName: 'docs'
-          vrTestPackagePath: 'packages/fluentui/docs'
-          locationPrefix: 'FluentUI-v0'
-          locationPostfix: 'vrscreenshotv0'
-          clientName: 'FluentUIV0'
+          name: vrscreenshot
+          retention-days: 1
+          path: screenshots
+
+      - name: Save PR number
+        run: echo ${{ github.event.number }} > pr.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr-number
+          retention-days: 1
+          if-no-files-found: error
+          path: |
+            pr.txt
