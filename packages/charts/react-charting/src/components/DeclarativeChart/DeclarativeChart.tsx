@@ -165,7 +165,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return (
           <HorizontalBarChartWithAxis
             {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap, isDarkTheme)}
-            legendProps={legendProps}
+            legendProps={multiSelectLegendProps}
             componentRef={chartRef}
             calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
           />
@@ -264,7 +264,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return (
           <GaugeChart
             {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)}
-            legendProps={legendProps}
+            legendProps={multiSelectLegendProps}
             componentRef={chartRef}
             calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
           />
