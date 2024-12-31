@@ -5,15 +5,7 @@
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-member-accessibility": "off",
     "@typescript-eslint/member-ordering": "off",
-<<<<<<< HEAD
     "no-restricted-globals": "off",
     "@typescript-eslint/no-deprecated": "off"
-||||||| parent of 9fb6b24083 (chore(nx): set ESLINT_USE_FLAT_CONFIG=false)
-    "deprecation/deprecation": "off",
-    "no-restricted-globals": "off"
-=======
-    "@typescript-eslint/no-deprecated": "off",
-    "no-restricted-globals": "off"
->>>>>>> 9fb6b24083 (chore(nx): set ESLINT_USE_FLAT_CONFIG=false)
   }
 }
