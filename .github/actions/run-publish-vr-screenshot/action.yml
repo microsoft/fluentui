@@ -86,7 +86,6 @@ runs:
     # ==========================================================
     # STEPS BELOW WILL FAIL TO RUN ON GITHUB ACTIONS - see TODOs
     # ==========================================================
-
     # TODO: will need Federated Identity to be added to tool similarly like we have for monosize azure plugin https://github.com/microsoft/monosize/blob/main/packages/monosize-storage-azure/src/createTableClient.mts#L27
     - name: VR App - Create Policy
       if: ${{ env.isPR == 'true' }}
@@ -94,12 +93,12 @@ runs:
       run: |
         set -exuo pipefail
         npx vr-approval-cli@0.4.11 create-policy --nonBlockingPipelines '{"${{ env.pipelineId }}":{"pipelineStatus": "PENDING","pipelineName": "${{ env.pipelineName }}"}}' --clientType 'FLUENTUI'
-      env:
-        VR_APP_API_URL: ${{ secrets.VR_APP_API_URL }}
-        TENANT_ID: ${{ secrets.TenantId }}
-        PRINCIPAL_CLIENT_ID: ${{ secrets.PrincipalClientId }}
-        SERVICE_CONNECTION_ID: ${{ secrets.ServiceConnectionId }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # env:
+      # VR_APP_API_URL: ${{ secrets.VR_APP_API_URL }}
+      # TENANT_ID: ${{ secrets.TenantId }}
+      # PRINCIPAL_CLIENT_ID: ${{ secrets.PrincipalClientId }}
+      # SERVICE_CONNECTION_ID: ${{ secrets.ServiceConnectionId }}
+      # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     # TODO: will need azure/login@v2 to be added to the workflow {@ling file://./../../workflows/pr-website-deploy-comment.yml#49}
     - name: Run screenshotdiff
@@ -109,14 +108,14 @@ runs:
         # ciDefinitionId is set to 205 because that is the ID of the baseline pipeline (https://uifabric.visualstudio.com/fabricpublic/_build?definitionId=205) used by the master branch
         # TODO: not sure how this will be used on GHA cc @evancharlton @TristanWatanabe
         CI_DEFINITION_ID: 205
-        API_TOKEN: ${{ secrets.fabric-public-pipeline-access-PAT }}
-        GITHUB_API_TOKEN: ${{ secrets.githubRepoStatusPAT }}
-        VR_APP_API_URL: ${{ secrets.VR_APP_API_URL }}
-        STORAGE_ACCOUNT_ID: ${{ secrets.StorageAccountId }}
-        TENANT_ID: ${{ secrets.TenantId }}
-        PRINCIPAL_CLIENT_ID: ${{ secrets.PrincipalClientId }}
-        SERVICE_CONNECTION_ID: ${{ secrets.ServiceConnectionId }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # API_TOKEN: ${{ secrets.fabric-public-pipeline-access-PAT }}
+        # GITHUB_API_TOKEN: ${{ secrets.githubRepoStatusPAT }}
+        # VR_APP_API_URL: ${{ secrets.VR_APP_API_URL }}
+        # STORAGE_ACCOUNT_ID: ${{ secrets.StorageAccountId }}
+        # TENANT_ID: ${{ secrets.TenantId }}
+        # PRINCIPAL_CLIENT_ID: ${{ secrets.PrincipalClientId }}
+        # SERVICE_CONNECTION_ID: ${{ secrets.ServiceConnectionId }}
+        # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         azcliversion: latest
         inlineScript: |
@@ -126,15 +125,15 @@ runs:
     - name: Run screenshotdiff - update baseline (non PR)
       if: ${{ github.event_name != 'pull_request' }}
       uses: azure/cli@v2
-      env:
-        API_TOKEN: ${{ secrets.fabric-public-pipeline-access-PAT }}
-        GITHUB_API_TOKEN: ${{ secrets.githubRepoStatusPAT }}
-        VR_APP_API_URL: ${{ secrets.VR_APP_API_URL }}
-        STORAGE_ACCOUNT_ID: ${{ secrets.StorageAccountId }}
-        TENANT_ID: ${{ secrets.TenantId }}
-        PRINCIPAL_CLIENT_ID: ${{ secrets.PrincipalClientId }}
-        SERVICE_CONNECTION_ID: ${{ secrets.ServiceConnectionId }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # env:
+      # API_TOKEN: ${{ secrets.fabric-public-pipeline-access-PAT }}
+      # GITHUB_API_TOKEN: ${{ secrets.githubRepoStatusPAT }}
+      # VR_APP_API_URL: ${{ secrets.VR_APP_API_URL }}
+      # STORAGE_ACCOUNT_ID: ${{ secrets.StorageAccountId }}
+      # TENANT_ID: ${{ secrets.TenantId }}
+      # PRINCIPAL_CLIENT_ID: ${{ secrets.PrincipalClientId }}
+      # SERVICE_CONNECTION_ID: ${{ secrets.ServiceConnectionId }}
+      # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         azcliversion: latest
         inlineScript: |
