@@ -181,6 +181,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
 
     if (item.iconOnly && (itemText !== undefined || item.tooltipHostProps)) {
       return (
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         <TooltipHost role="none" content={itemText} setAriaDescribedBy={false} {...item.tooltipHostProps}>
           {this._commandButton(item, commandButtonProps)}
         </TooltipHost>
