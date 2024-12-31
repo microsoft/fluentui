@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 31 Dec 2024 07:21:44 GMT",
+      "tag": "@fluentui/react-charting_v5.23.34",
+      "version": "5.23.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "98e409211ed673c877e45bbff7ccc08a1ccd34de",
+            "comment": "[Horizontal Bar Chart With Axis] Enable multiple legend selection"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "d61ac31da90bf8f73f54262e196b3a83b9a85932",
+            "comment": "[Gauge Chart] Enabling legend multi selection"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Dec 2024 07:21:28 GMT",
       "tag": "@fluentui/react-charting_v5.23.33",
       "version": "5.23.33",

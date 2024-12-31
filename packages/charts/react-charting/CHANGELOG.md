@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 30 Dec 2024 07:21:28 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Dec 2024 07:21:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.34)
+
+Tue, 31 Dec 2024 07:21:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.33..@fluentui/react-charting_v5.23.34)
+
+### Patches
+
+- [Horizontal Bar Chart With Axis] Enable multiple legend selection ([PR #33484](https://github.com/microsoft/fluentui/pull/33484) by 120183316+srmukher@users.noreply.github.com)
+- [Gauge Chart] Enabling legend multi selection ([PR #33524](https://github.com/microsoft/fluentui/pull/33524) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.23.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.33)
 
