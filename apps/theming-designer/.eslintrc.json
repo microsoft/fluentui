@@ -3,12 +3,6 @@
   "root": true,
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
-<<<<<<< HEAD
-||||||| parent of 9fb6b24083 (chore(nx): set ESLINT_USE_FLAT_CONFIG=false)
-    "deprecation/deprecation": "off",
-=======
-    "@typescript-eslint/no-deprecated": "off",
->>>>>>> 9fb6b24083 (chore(nx): set ESLINT_USE_FLAT_CONFIG=false)
     "prefer-const": "off",
     "no-restricted-globals": "off",
     "@typescript-eslint/no-deprecated": "off"
