@@ -247,7 +247,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <HeatMapChart
           {...transformPlotlyJsonToHeatmapProps(plotlySchema)}
-          legendProps={legendProps}
           componentRef={chartRef}
           calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
