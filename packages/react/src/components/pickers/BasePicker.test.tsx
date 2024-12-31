@@ -357,6 +357,7 @@ describe('BasePicker', () => {
     ReactDOM.render(
       <BasePickerWithType
         onResolveSuggestions={onResolveSuggestions}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         onEmptyInputFocus={resolveSuggestions}
         onRenderItem={onRenderItem}
         onRenderSuggestionsItem={basicSuggestionRenderer}
