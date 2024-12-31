@@ -319,9 +319,25 @@ test.describe('Tabs', () => {
       await expect(tab).toBeEnabled();
     }
 
+<<<<<<< HEAD
     await expect(firstTab).toHaveId('tab-1');
+||||||| parent of 39829e08e9 (chore(web-components): remove eslint errors after upgrading playwright eslint plugin)
+    const firstTabId = await firstTab.getAttribute('id');
+=======
+    const firstTabId = firstTab;
+>>>>>>> 39829e08e9 (chore(web-components): remove eslint errors after upgrading playwright eslint plugin)
 
+<<<<<<< HEAD
     await expect(element).toHaveJSProperty('activeid', 'tab-1');
+||||||| parent of 39829e08e9 (chore(web-components): remove eslint errors after upgrading playwright eslint plugin)
+    expect(firstTabId).toBe('tab-1');
+
+    await expect(element).toHaveJSProperty('activeid', firstTabId);
+=======
+    await expect(firstTabId).toHaveAttribute('id', 'tab-1');
+
+    await expect(element).toHaveJSProperty('activeid', firstTabId);
+>>>>>>> 39829e08e9 (chore(web-components): remove eslint errors after upgrading playwright eslint plugin)
 
     await secondTab.evaluate((node: Tab) => {
       node.disabled = true;
