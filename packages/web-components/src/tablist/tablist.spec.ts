@@ -195,23 +195,11 @@ test.describe('Tablist', () => {
 
     const firstTab = tabs.nth(0);
 
-<<<<<<< HEAD
     await expect(firstTab).toHaveId('tab-1');
-||||||| parent of 39829e08e9 (chore(web-components): remove eslint errors after upgrading playwright eslint plugin)
-    const firstTabId = await firstTab.getAttribute('id');
-=======
-    const firstTabId = firstTab;
->>>>>>> 39829e08e9 (chore(web-components): remove eslint errors after upgrading playwright eslint plugin)
 
-<<<<<<< HEAD
     await element.evaluate((node: Tablist) => {
       node.activeid = 'tab-1';
     });
-||||||| parent of 39829e08e9 (chore(web-components): remove eslint errors after upgrading playwright eslint plugin)
-    expect(firstTabId).toBe('tab-1');
-=======
-    await expect(firstTabId).toHaveAttribute('id', 'tab-1');
->>>>>>> 39829e08e9 (chore(web-components): remove eslint errors after upgrading playwright eslint plugin)
 
     await expect(element).toHaveJSProperty('activeid', 'tab-1');
 
