@@ -1410,56 +1410,132 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           </g>
         </g>
         <g
-          aria-label="xPoint p3, yPoint p2. , No data available."
+          aria-label="xPoint p3, yPoint p2. Nasty, 25."
           data-is-focusable="true"
+          fill-opacity="1"
           role="img"
           tabindex="0"
           transform="translate(45.8415841584158, 22.34653465346534)"
         >
           <rect
-            fill="#ffffff"
+            fill="rgb(166, 207, 226)"
             height="114.98019801980197"
             width="286.23762376237624"
           />
+          <text
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #ffffff;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  pointer-events: none;
+                }
+            dominant-baseline="middle"
+            text-anchor="middle"
+            transform="translate(143.11881188118812, 57.49009900990099)"
+          >
+            25
+          </text>
         </g>
         <g
-          aria-label="xPoint p4, yPoint p2. , No data available."
+          aria-label="xPoint p4, yPoint p2. Excellent, 100."
           data-is-focusable="true"
+          fill-opacity="1"
           role="img"
           tabindex="-1"
           transform="translate(337.9207920792079, 22.34653465346534)"
         >
           <rect
-            fill="#ffffff"
+            fill="rgb(144, 180, 215)"
             height="114.98019801980197"
             width="286.23762376237624"
           />
+          <text
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #ffffff;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  pointer-events: none;
+                }
+            dominant-baseline="middle"
+            text-anchor="middle"
+            transform="translate(143.11881188118812, 57.49009900990099)"
+          >
+            100
+          </text>
         </g>
         <g
-          aria-label="xPoint p3, yPoint p1. , No data available."
+          aria-label="xPoint p3, yPoint p1. Excellent, 75."
           data-is-focusable="true"
+          fill-opacity="1"
           role="img"
           tabindex="-1"
           transform="translate(45.8415841584158, 139.67326732673268)"
         >
           <rect
-            fill="#ffffff"
+            fill="rgb(151, 189, 219)"
             height="114.98019801980197"
             width="286.23762376237624"
           />
+          <text
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #ffffff;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  pointer-events: none;
+                }
+            dominant-baseline="middle"
+            text-anchor="middle"
+            transform="translate(143.11881188118812, 57.49009900990099)"
+          >
+            75
+          </text>
         </g>
         <g
-          aria-label="xPoint p4, yPoint p1. , No data available."
+          aria-label="xPoint p4, yPoint p1. Nasty, 50."
           data-is-focusable="true"
+          fill-opacity="1"
           role="img"
           tabindex="-1"
           transform="translate(337.9207920792079, 139.67326732673268)"
         >
           <rect
-            fill="#ffffff"
+            fill="rgb(159, 198, 222)"
             height="114.98019801980197"
             width="286.23762376237624"
           />
+          <text
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #ffffff;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  pointer-events: none;
+                }
+            dominant-baseline="middle"
+            text-anchor="middle"
+            transform="translate(143.11881188118812, 57.49009900990099)"
+          >
+            50
+          </text>
         </g>
       </svg>
     </div>

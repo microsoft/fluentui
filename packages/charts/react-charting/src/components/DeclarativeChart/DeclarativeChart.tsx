@@ -244,14 +244,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         />
       );
     case 'heatmap':
-      return (
-        <HeatMapChart
-          {...transformPlotlyJsonToHeatmapProps(plotlySchema)}
-          legendProps={{ onChange: onActiveLegendsChange, canSelectMultipleLegends: false, selectedLegends: [] }}
-          componentRef={chartRef}
-          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
-        />
-      );
+      return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(plotlySchema)} />;
     case 'sankey':
       return (
         <SankeyChart
