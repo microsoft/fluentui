@@ -26,6 +26,7 @@ export const FabricIconsPage: React.FunctionComponent<IStylesPageProps> = props 
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [selectedItem, setSelectedItem] = React.useState('react-font');
   switch (platform) {
     case 'web':
