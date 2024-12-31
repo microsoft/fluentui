@@ -1,8 +1,513 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 15 Oct 2024 17:17:49 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Dec 2024 14:30:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.56.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.8)
+
+Thu, 19 Dec 2024 14:30:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.7..@fluentui/react-components_v9.56.8)
+
+### Patches
+
+- `@fluentui/react-message-bar`
+  - fix: MessageBar auto reflow should handle document reflow with `min-content` ([PR #33409](https://github.com/microsoft/fluentui/pull/33409) by lingfangao@hotmail.com)
+
+## [9.56.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.7)
+
+Wed, 18 Dec 2024 10:59:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.6..@fluentui/react-components_v9.56.7)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - docs(react-dialog): Fix doc-comment links that don't translate to storybook ([PR #33471](https://github.com/microsoft/fluentui/pull/33471) by jiangemma@microsoft.com)
+- `@fluentui/react-menu`
+  - docs(react-menu): Fix doc-comment links that don't translate to storybook ([PR #33471](https://github.com/microsoft/fluentui/pull/33471) by jiangemma@microsoft.com)
+- `@fluentui/react-popover`
+  - docs(react-popover): Fix doc-comment links that don't translate to storybook ([PR #33471](https://github.com/microsoft/fluentui/pull/33471) by jiangemma@microsoft.com)
+- `@fluentui/react-rating`
+  - fix: Pass missing Rating's itemLabel prop to its state so RatingItem consumes it from context. ([PR #33361](https://github.com/microsoft/fluentui/pull/33361) by derdem@microsoft.com)
+
+## [9.56.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.6)
+
+Mon, 16 Dec 2024 16:26:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.5..@fluentui/react-components_v9.56.6)
+
+### Minor changes
+
+- `@fluentui/react-positioning`
+  - Add positioning option `shiftToCoverTarget` that allows the positioned element to shift to cover the target when there is not enough available space ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by yuanboxue@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-radio`
+  - chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: adjust styles for circular tabs ([PR #33441](https://github.com/microsoft/fluentui/pull/33441) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+- `@fluentui/react-button`
+  - chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+- `@fluentui/react-carousel`
+  - fix: Set totalSlides on CarouselNav to controlled state ([PR #33453](https://github.com/microsoft/fluentui/pull/33453) by mifraser@microsoft.com)
+  - chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+  - fix: Set tabster default on carousel initialization ([PR #33401](https://github.com/microsoft/fluentui/pull/33401) by mifraser@microsoft.com)
+  - fix: Ensure a viable background color for nav items in high contrast windows ([PR #33411](https://github.com/microsoft/fluentui/pull/33411) by mifraser@microsoft.com)
+- `@fluentui/react-color-picker-preview`
+  - fix(react-color-picker): active axis for ColorPicker ([PR #33415](https://github.com/microsoft/fluentui/pull/33415) by vkozlova@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+- `@fluentui/tokens`
+  - bugfix: ensure teams tokens follow teams overrides for fonts ([PR #33393](https://github.com/microsoft/fluentui/pull/33393) by bernardo.sunderhus@gmail.com)
+
+## [9.56.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.5)
+
+Mon, 09 Dec 2024 17:38:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.4..@fluentui/react-components_v9.56.5)
+
+### Minor changes
+
+- `@fluentui/react-motion-components-preview`
+  - feat(Collapse): add margin to whitespace animation ([PR #33405](https://github.com/microsoft/fluentui/pull/33405) by robertpenner@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-spinbutton`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-spinner`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-text`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-toast`
+  - refactor(Toast): replace custom component with CollapseDelayed ([PR #33405](https://github.com/microsoft/fluentui/pull/33405) by robertpenner@microsoft.com)
+- `@fluentui/react-tooltip`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-aria`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-avatar`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-badge`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-card`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-color-picker-preview`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-divider`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-drawer`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-field`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-image`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-infolabel`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-input`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-label`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-link`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: avoid memory leak in Animation:finished ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by olfedias@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - feat(motion): Refactor scale, migrate to new variant structure ([PR #33341](https://github.com/microsoft/fluentui/pull/33341) by olkatruk@microsoft.com)
+- `@fluentui/react-persona`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix(Popover): opacity transition was not happening ([PR #33421](https://github.com/microsoft/fluentui/pull/33421) by robertpenner@microsoft.com)
+- `@fluentui/react-progress`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-rating`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-search`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-select`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-skeleton`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- `@fluentui/react-slider`
+  - chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+
+## [9.56.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.4)
+
+Fri, 06 Dec 2024 12:53:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.3..@fluentui/react-components_v9.56.4)
+
+### Minor changes
+
+- `@fluentui/eslint-plugin-react-components`
+  - feat: initial package structure ([PR #33214](https://github.com/microsoft/fluentui/pull/33214) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-color-picker-preview`
+  - 'feat(react-color-picker): Release ColorPicker as unstable ([PR #33395](https://github.com/microsoft/fluentui/pull/33395) by vkozlova@microsoft.com)
+- `@fluentui/react-tooltip`
+  - feat: do not show tooltip, if it's menu trigger and Menu is opened ([PR #33394](https://github.com/microsoft/fluentui/pull/33394) by vgenaev@gmail.com)
+
+### Patches
+
+- `@fluentui/react-breadcrumb`
+  - Updated README.md ([PR #33385](https://github.com/microsoft/fluentui/pull/33385) by vkozlova@microsoft.com)
+- `@fluentui/react-charts-preview`
+  - chore: fix import of makeStyles() ([PR #33381](https://github.com/microsoft/fluentui/pull/33381) by olfedias@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-list-preview`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-menu`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-message-bar`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-popover`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-portal`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fix: up/down buttons were not semantically disabled when unclickable ([PR #33143](https://github.com/microsoft/fluentui/pull/33143) by sarah.higley@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - Updated README.md ([PR #33385](https://github.com/microsoft/fluentui/pull/33385) by vkozlova@microsoft.com)
+- `@fluentui/react-table`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-tags`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-toast`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-toolbar`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - feat: Add gap property to simplify gap css virtualization ([PR #33275](https://github.com/microsoft/fluentui/pull/33275) by mifraser@microsoft.com)
+- `@fluentui/tokens`
+  - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+
+## [9.56.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.3)
+
+Thu, 28 Nov 2024 09:30:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.2..@fluentui/react-components_v9.56.3)
+
+### Minor changes
+
+- `@fluentui/react-carousel`
+  - feat: Add autoplay index change callback and fix autoplay pause on interaction ([PR #33291](https://github.com/microsoft/fluentui/pull/33291) by mifraser@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts-preview`
+  - Update readme with current content ([PR #33295](https://github.com/microsoft/fluentui/pull/33295) by 98592573+AtishayMsft@users.noreply.github.com)
+- `@fluentui/react-dialog`
+  - feat(motion): update DialogBackdropMotion to use createFadePresence API ([PR #33288](https://github.com/microsoft/fluentui/pull/33288) by olkatruk@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: respect reduced motion in createMotionComponent() ([PR #33357](https://github.com/microsoft/fluentui/pull/33357) by olfedias@microsoft.com)
+- `@fluentui/react-search`
+  - fix(react-search): restore focus to SearchBox after clear button is clicked ([PR #33340](https://github.com/microsoft/fluentui/pull/33340) by jiangemma@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - feat: Correctly integrating SwatchPicker with Field component. ([PR #33274](https://github.com/microsoft/fluentui/pull/33274) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-tree`
+  - bugfix: ensure that onActionVisibilityChange is properly invoked ([PR #33320](https://github.com/microsoft/fluentui/pull/33320) by bernardo.sunderhus@gmail.com)
+
+## [9.56.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.2)
+
+Mon, 18 Nov 2024 09:44:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.1..@fluentui/react-components_v9.56.2)
+
+### Minor changes
+
+- `@fluentui/react-charts-preview`
+  - feat: Create charts components as native v9 controls. ([PR #32966](https://github.com/microsoft/fluentui/pull/32966) by 98592573+AtishayMsft@users.noreply.github.com)
+- `@fluentui/react-slider`
+  - feat: adjust thumb positioning ([PR #32424](https://github.com/microsoft/fluentui/pull/32424) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-combobox`
+  - fix: Clearable Dropdowns and Comboboxes do not show clear button if they are disabled. ([PR #33251](https://github.com/microsoft/fluentui/pull/33251) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-components`
+  - chore: Export useListboxContext_unstable. ([PR #33268](https://github.com/microsoft/fluentui/pull/33268) by owcampbe@microsoft.com)
+- `@fluentui/react-infolabel`
+  - chore: Adding maxWidth to InfoButton's popover to match figma spec. ([PR #33253](https://github.com/microsoft/fluentui/pull/33253) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: update writeArrowUpdates to correctly resolve arrow position ([PR #33260](https://github.com/microsoft/fluentui/pull/33260) by vgenaev@gmail.com)
+- `@fluentui/react-tabs`
+  - fix: focus selected tab by default ([PR #33236](https://github.com/microsoft/fluentui/pull/33236) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: ensure TreeItem role can be overridden by props ([PR #33277](https://github.com/microsoft/fluentui/pull/33277) by bernardo.sunderhus@gmail.com)
+
+## [9.56.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.1)
+
+Tue, 12 Nov 2024 09:31:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.0..@fluentui/react-components_v9.56.1)
+
+### Minor changes
+
+- `@fluentui/react-drawer`
+  - add support for mountNode with className ([PR #33226](https://github.com/microsoft/fluentui/pull/33226) by marcosvmmoura@gmail.com)
+- `@fluentui/react-nav-preview`
+  - feat: Exposed 'tabbable' prop on NavDrawer to let consumers disagree with default arrowing opinion. ([PR #33232](https://github.com/microsoft/fluentui/pull/33232) by matejera@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-carousel`
+  - fix: Enable controlled index to be set to a new card when added ([PR #33177](https://github.com/microsoft/fluentui/pull/33177) by mifraser@microsoft.com)
+- `@fluentui/react-dialog`
+  - bugfix: ensures dialog surface style without surfaceMotion ([PR #33247](https://github.com/microsoft/fluentui/pull/33247) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tags`
+  - fix: explicitly set box-sizing for tag icon ([PR #33203](https://github.com/microsoft/fluentui/pull/33203) by dmytrokirpa@microsoft.com)
+
+## [9.56.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.0)
+
+Mon, 11 Nov 2024 10:00:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.55.1..@fluentui/react-components_v9.56.0)
+
+### Minor changes
+
+- `@fluentui/react-list-preview`
+  - Breaking: Render List/ListItem as "div" when in composite nav mode ([PR #33197](https://github.com/microsoft/fluentui/pull/33197) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - feat: add CollapseDelayed motion component variant ([PR #33069](https://github.com/microsoft/fluentui/pull/33069) by robertpenner@microsoft.com)
+  - Rename motion component variants ...Exaggerated to ...Relaxed ([PR #33182](https://github.com/microsoft/fluentui/pull/33182) by olkatruk@microsoft.com)
+- `@fluentui/react-overflow`
+  - feat: add `onOverflowChange` callback ([PR #33106](https://github.com/microsoft/fluentui/pull/33106) by lingfangao@hotmail.com)
+- `@fluentui/react-provider`
+  - feat: Add Carousel CustomStyleHook definitions ([PR #33155](https://github.com/microsoft/fluentui/pull/33155) by mifraser@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: Add custom style hooks for Carousel components ([PR #33155](https://github.com/microsoft/fluentui/pull/33155) by mifraser@microsoft.com)
+- `@fluentui/react-tabster`
+  - feat: expose keyboard navigation state getter ([PR #31887](https://github.com/microsoft/fluentui/pull/31887) by jukapsia@microsoft.com)
+- `@fluentui/react-carousel`
+  - fix: Drag events now trigger onActiveIndexChange with drag/touch event attached ([PR #33092](https://github.com/microsoft/fluentui/pull/33092) by mifraser@microsoft.com)
+  - feat: Add CarouselViewport to correctly define CarouselSlider within a static container ([PR #33155](https://github.com/microsoft/fluentui/pull/33155) by mifraser@microsoft.com)
+- `@fluentui/react-components`
+  - feat: Add CarouselViewport and deprecate CarouselSlider ([PR #33155](https://github.com/microsoft/fluentui/pull/33155) by mifraser@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-toast`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-toolbar`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: do not prevent showing tooltip in keyboard mode ([PR #31887](https://github.com/microsoft/fluentui/pull/31887) by jukapsia@microsoft.com)
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-field`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+  - fix(react-field): Add screenreader announcement for validationMessage if validationState="warning" ([PR #33175](https://github.com/microsoft/fluentui/pull/33175) by jiangemma@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-image`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-infolabel`
+  - fix: popover not dismissing in Safari after clicking on infoButton ([PR #33057](https://github.com/microsoft/fluentui/pull/33057) by vgenaev@gmail.com)
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-jsx-runtime`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-label`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-link`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-list-preview`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: Align menu item long content with icon slots ([PR #33102](https://github.com/microsoft/fluentui/pull/33102) by lingfangao@hotmail.com)
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-message-bar`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+  - style: resolve exposed jsx pragma lint issues within monorepo ([PR #32975](https://github.com/microsoft/fluentui/pull/32975) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-motion`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - refactor: migrate Fade motion component to new variant structure ([PR #33080](https://github.com/microsoft/fluentui/pull/33080) by robertpenner@microsoft.com)
+  - fix: handle content padding in Collapse ([PR #33063](https://github.com/microsoft/fluentui/pull/33063) by robertpenner@microsoft.com)
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+  - style: resolve exposed jsx pragma lint issues within monorepo ([PR #32975](https://github.com/microsoft/fluentui/pull/32975) by martinhochel@microsoft.com)
+- `@fluentui/react-overflow`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-persona`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-popover`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-portal`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat-context`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-progress`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-radio`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-rating`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-search`
+  - fix SearchBox contentAfter hidden clickable ([PR #33005](https://github.com/microsoft/fluentui/pull/33005) by carla.muntean@microsoft.com)
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-select`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-skeleton`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-slider`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-spinner`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-table`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+  - fix: subtle selection should apply correctly to header rows ([PR #33104](https://github.com/microsoft/fluentui/pull/33104) by lingfangao@hotmail.com)
+- `@fluentui/react-tabs`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+  - style: resolve exposed jsx pragma lint issues within monorepo ([PR #32975](https://github.com/microsoft/fluentui/pull/32975) by martinhochel@microsoft.com)
+- `@fluentui/react-tags`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+  - style: resolve exposed jsx pragma lint issues within monorepo ([PR #32975](https://github.com/microsoft/fluentui/pull/32975) by martinhochel@microsoft.com)
+- `@fluentui/react-text`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-theme`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/keyboard-keys`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/priority-overflow`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-aria`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+  - fix: correct expectations for Button rendered as a link with an href ([PR #33050](https://github.com/microsoft/fluentui/pull/33050) by sarah.higley@microsoft.com)
+  - style: resolve exposed jsx pragma lint issues within monorepo ([PR #32975](https://github.com/microsoft/fluentui/pull/32975) by martinhochel@microsoft.com)
+- `@fluentui/react-avatar`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-badge`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-button`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+  - fix: Button with as=a should present as a semantic link ([PR #33050](https://github.com/microsoft/fluentui/pull/33050) by sarah.higley@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-card`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-carousel`
+  - fix: Ensure pointer events do not block future focus index changes ([PR #33204](https://github.com/microsoft/fluentui/pull/33204) by mifraser@microsoft.com)
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+  - style: resolve exposed jsx pragma lint issues within monorepo ([PR #32975](https://github.com/microsoft/fluentui/pull/32975) by martinhochel@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix(Combobox): remove "defaultValue" from hooks dependencies ([PR #32287](https://github.com/microsoft/fluentui/pull/32287) by olfedias@microsoft.com)
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-components`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-conformance`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-context-selector`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+  - docs: removed the mention of non-existent useContextSelectors and fixed the example ([PR #33146](https://github.com/microsoft/fluentui/pull/33146) by gk.joker@gmail.com)
+- `@fluentui/react-datepicker-compat`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-divider`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-drawer`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: Enable virtualizer to fall back to most recent IO event if none intersecting ([PR #33125](https://github.com/microsoft/fluentui/pull/33125) by mifraser@microsoft.com)
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/tokens`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/react-theme-sass`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/babel-preset-global-context`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- `@fluentui/global-context`
+  - chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
 
 ## [9.55.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.55.1)
 

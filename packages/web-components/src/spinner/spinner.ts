@@ -1,6 +1,6 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
-import type { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
+import { swapStates } from '../utils/element-internals.js';
+import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 
 /**
  * The base class used for constructing a fluent-spinner custom element
@@ -43,12 +43,7 @@ export class Spinner extends BaseSpinner {
    * @param next - the next state
    */
   public sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, SpinnerSize);
   }
 
   /**
@@ -66,11 +61,6 @@ export class Spinner extends BaseSpinner {
    * @param next - the next state
    */
   public appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, SpinnerAppearance);
   }
 }

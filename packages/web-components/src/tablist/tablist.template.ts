@@ -1,5 +1,5 @@
 import { html, slotted } from '@microsoft/fast-element';
-import { Tablist } from './tablist.js';
+import type { Tablist } from './tablist.js';
 
 /**
  * @public

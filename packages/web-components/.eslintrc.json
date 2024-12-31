@@ -70,5 +70,14 @@
         // TODO: I think we can come up with a regex that ignores variables with __ in them
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.json"],
+      "rules": {
+        "@typescript-eslint/naming-convention": "off",
+        "@typescript-eslint/no-unused-expressions": "off"
+      }
+    }
+  ]
 }

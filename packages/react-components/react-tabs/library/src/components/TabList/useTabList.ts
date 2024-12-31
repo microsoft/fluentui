@@ -35,7 +35,9 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
     axis: vertical ? 'vertical' : 'horizontal',
-    memorizeCurrent: true,
+    memorizeCurrent: false,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_hasDefault: true,
   });
 
   const [selectedValue, setSelectedValue] = useControllableState({

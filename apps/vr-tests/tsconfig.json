@@ -10,7 +10,8 @@
     "experimentalDecorators": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "types": ["webpack-env", "@storybook/react"]
+    "types": ["webpack-env", "@storybook/react"],
+    "typeRoots": ["../../node_modules", "../../node_modules/@types"]
   },
   "include": ["src"]
 }

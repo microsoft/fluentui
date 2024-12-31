@@ -294,7 +294,10 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       defaultProps: {
         tabIndex: -1,
         children: <ChevronUp16Regular />,
-        disabled: nativeProps.primary.disabled,
+        disabled:
+          nativeProps.primary.disabled ||
+          internalState.current.atBound === 'max' ||
+          internalState.current.atBound === 'both',
         'aria-label': 'Increment value',
         type: 'button',
       },
@@ -304,7 +307,10 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       defaultProps: {
         tabIndex: -1,
         children: <ChevronDown16Regular />,
-        disabled: nativeProps.primary.disabled,
+        disabled:
+          nativeProps.primary.disabled ||
+          internalState.current.atBound === 'min' ||
+          internalState.current.atBound === 'both',
         'aria-label': 'Decrement value',
         type: 'button',
       },

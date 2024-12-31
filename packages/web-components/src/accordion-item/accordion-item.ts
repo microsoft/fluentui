@@ -4,7 +4,7 @@ import type { StaticallyComposableHTML } from '../utils/index.js';
 import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { toggleState } from '../utils/element-internals.js';
+import { swapStates, toggleState } from '../utils/element-internals.js';
 import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
 
 /**
@@ -128,13 +128,8 @@ export class AccordionItem extends BaseAccordionItem {
    * @param prev - previous value
    * @param next - next value
    */
-  public sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
+  public sizeChanged(prev: AccordionItemSize | undefined, next: AccordionItemSize | undefined) {
+    swapStates(this.elementInternals, prev, next, AccordionItemSize);
   }
 
   /**
@@ -152,13 +147,11 @@ export class AccordionItem extends BaseAccordionItem {
    * @param prev - previous value
    * @param next - next value
    */
-  public markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void {
-    if (prev) {
-      toggleState(this.elementInternals, `align-${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `align-${next}`, true);
-    }
+  public markerPositionChanged(
+    prev: AccordionItemMarkerPosition | undefined,
+    next: AccordionItemMarkerPosition | undefined,
+  ) {
+    swapStates(this.elementInternals, prev, next, AccordionItemMarkerPosition, 'align-');
   }
 
   /**

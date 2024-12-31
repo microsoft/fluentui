@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import type { Locator } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
-import { Dialog } from './dialog.js';
+import type { Dialog } from './dialog.js';
 
 async function getPointOutside(element: Locator) {
   // Get the bounding box of the element

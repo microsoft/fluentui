@@ -114,7 +114,7 @@ export const CollapseSnappy = createPresenceComponent(
   createCollapsePresence({ enterDuration: motionTokens.durationFast }),
 );
 
-export const CollapseExaggerated = createPresenceComponent(
+export const CollapseRelaxed = createPresenceComponent(
   createCollapsePresence({ enterDuration: motionTokens.durationSlower }),
 );
 

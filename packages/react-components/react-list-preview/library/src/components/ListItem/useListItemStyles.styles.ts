@@ -26,7 +26,7 @@ const useRootBaseStyles = makeResetStyles({
 const useCheckmarkBaseStyles = makeStyles({
   root: {
     alignSelf: 'center',
-    //eslint-disable-next-line
+
     '& .fui-Checkbox__indicator': { margin: '4px' },
   },
 });

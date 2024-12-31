@@ -843,6 +843,102 @@ const TargetDisplayNone = () => {
   );
 };
 
+const ShiftToCoverTargetWithAutoSize = () => {
+  const styles = useStyles();
+  const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
+  const { containerRef, targetRef } = usePositioning({
+    position: 'below',
+    overflowBoundary,
+    shiftToCoverTarget: true,
+    autoSize: true,
+  });
+
+  return (
+    <div
+      ref={setOverflowBoundary}
+      className={styles.boundary}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: 200,
+        padding: '10px 50px',
+        position: 'relative',
+      }}
+    >
+      <button ref={targetRef}>Target</button>
+      <Box ref={containerRef} style={{ overflow: 'auto', border: '3px solid green' }}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu feugiat
+        pretium nibh ipsum consequat. Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit lectus. Porta
+        nibh venenatis cras sed felis eget. Enim sed faucibus turpis in. Non blandit massa enim nec dui nunc mattis. Ut
+        eu sem integer vitae justo.
+      </Box>
+    </div>
+  );
+};
+
+const ShiftToCoverTargetAsyncContentHorizontal = () => {
+  const styles = useStyles();
+  const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
+  const { containerRef, targetRef } = usePositioning({
+    position: 'after',
+    overflowBoundary,
+    shiftToCoverTarget: true,
+    autoSize: true,
+  });
+
+  return (
+    <div
+      ref={setOverflowBoundary}
+      className={styles.boundary}
+      style={{
+        height: 200,
+        width: 300,
+        padding: '50px 50px',
+        boxSizing: 'border-box',
+        position: 'relative',
+      }}
+    >
+      <button ref={targetRef}>Target</button>
+      <Box ref={containerRef} style={{ overflow: 'auto', border: '3px solid green', padding: 0 }}>
+        <Box style={{ maxWidth: 180 }}>
+          <AsyncFloatingContent />
+        </Box>
+      </Box>
+    </div>
+  );
+};
+
+const ShiftToCoverTargetAsyncContent = () => {
+  const styles = useStyles();
+  const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
+  const { containerRef, targetRef } = usePositioning({
+    position: 'below',
+    overflowBoundary,
+    shiftToCoverTarget: true,
+    autoSize: true,
+  });
+
+  return (
+    <div
+      ref={setOverflowBoundary}
+      className={styles.boundary}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: 200,
+        padding: '10px 50px',
+        position: 'relative',
+      }}
+    >
+      <button ref={targetRef}>Target</button>
+      <Box ref={containerRef} style={{ overflow: 'auto', border: '3px solid green' }}>
+        <AsyncFloatingContent />
+      </Box>
+    </div>
+  );
+};
+
 export default {
   title: 'Positioning',
 
@@ -1033,3 +1129,32 @@ export const _TargetDisplayNone = () => (
   </StoryWright>
 );
 _TargetDisplayNone.storyName = 'Target display none';
+
+export const _ShiftToCoverTargetWithAutoSize = () => <ShiftToCoverTargetWithAutoSize />;
+_ShiftToCoverTargetWithAutoSize.storyName = 'shiftToCoverTarget with autoSize';
+
+export const _ShiftToCoverTargetAsyncContent = () => (
+  <StoryWright
+    steps={new Steps()
+      .click('#load-content')
+      .wait('#full-content')
+      .snapshot('floating element is within the boundary')
+      .end()}
+  >
+    <ShiftToCoverTargetAsyncContent />
+  </StoryWright>
+);
+_ShiftToCoverTargetAsyncContent.storyName = 'shiftToCoverTarget with autoSize and async content';
+
+export const _ShiftToCoverTargetHorizontal = () => (
+  <StoryWright
+    steps={new Steps()
+      .click('#load-content')
+      .wait('#full-content')
+      .snapshot('floating element is within the boundary')
+      .end()}
+  >
+    <ShiftToCoverTargetAsyncContentHorizontal />
+  </StoryWright>
+);
+_ShiftToCoverTargetHorizontal.storyName = 'shiftToCoverTarget with autoSize and async content - horizontal';

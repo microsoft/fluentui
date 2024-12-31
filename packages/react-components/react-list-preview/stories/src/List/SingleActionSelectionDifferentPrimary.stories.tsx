@@ -35,12 +35,13 @@ export const SingleActionSelectionDifferentPrimary = () => {
 
   return (
     <List
+      aria-label="People example"
       selectionMode="multiselect"
       selectedItems={selectedItems}
       onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
     >
       {items.map(({ name, avatar }) => (
-        <ListItem key={name} value={name} aria-label={name} onAction={onAction}>
+        <ListItem key={name} value={name} aria-label={name} onAction={onAction} checkmark={{ 'aria-label': name }}>
           <Persona
             name={name}
             secondaryText="Available"

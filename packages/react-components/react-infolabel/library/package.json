@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-infolabel",
-  "version": "9.0.48",
+  "version": "9.0.54",
   "description": "InfoLabel component for Fluent UI v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -11,35 +11,22 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "e2e": "cypress run --component",
-    "e2e:local": "cypress open --component",
-    "generate-api": "just-scripts generate-api",
-    "lint": "just-scripts lint",
-    "start": "yarn storybook",
-    "storybook": "yarn --cwd ../stories storybook",
-    "test": "jest --passWithNoTests",
-    "type-check": "just-scripts type-check"
-  },
   "devDependencies": {
     "@fluentui/react-provider": "*",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-label": "^9.1.77",
-    "@fluentui/react-popover": "^9.9.23",
-    "@fluentui/react-tabster": "^9.22.9",
-    "@fluentui/react-jsx-runtime": "^9.0.45",
-    "@fluentui/react-theme": "^9.1.21",
-    "@fluentui/react-utilities": "^9.18.16",
+    "@fluentui/react-label": "^9.1.81",
+    "@fluentui/react-popover": "^9.9.29",
+    "@fluentui/react-tabster": "^9.23.2",
+    "@fluentui/react-jsx-runtime": "^9.0.48",
+    "@fluentui/react-theme": "^9.1.24",
+    "@fluentui/react-utilities": "^9.18.19",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },

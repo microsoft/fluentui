@@ -1,4 +1,4 @@
-import { attr, css, ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, css, type ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
 import {
   keyArrowDown,
   keyArrowLeft,
@@ -9,10 +9,10 @@ import {
   limit,
   uniqueId,
 } from '@microsoft/fast-web-utilities';
-import { Tab } from '../index.js';
+import type { Tab } from '../tab/tab.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { StartEnd } from '../patterns/index.js';
-import { TabsAppearance, TabsOrientation, TabsSize } from './tabs.options.js';
+import { TabsAppearance, TabsOrientation, type TabsSize } from './tabs.options.js';
 
 type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
 

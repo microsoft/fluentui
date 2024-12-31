@@ -1,8 +1,7 @@
-import { once } from 'events';
 import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
+import type { MenuItem } from '../menu-item/menu-item.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
-import { MenuItem } from '../menu-item/menu-item.js';
 
 test.describe('Menu', () => {
   test.beforeEach(async ({ page }) => {
@@ -127,7 +126,7 @@ test.describe('Menu', () => {
     await expect(firstMenuItem).toBeFocused();
   });
 
-  for (const role in MenuItemRole) {
+  for (const role of Object.values(MenuItemRole)) {
     test(`should accept elements as focusable child with "${role}" role`, async ({ page }) => {
       await page.setContent(/* html */ `
         <fluent-menu-list>
