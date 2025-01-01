@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 23 Dec 2024 07:22:58 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Dec 2024 07:21:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.122.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.3)
+
+Mon, 30 Dec 2024 07:21:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.2..@fluentui/react_v8.122.3)
+
+### Patches
+
+- fix: Add event listener to Panel in order to update the footer's sticky property correctly when content changes dynamically. ([PR #33520](https://github.com/microsoft/fluentui/pull/33520) by estebanmu@microsoft.com)
 
 ## [8.122.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.2)
 

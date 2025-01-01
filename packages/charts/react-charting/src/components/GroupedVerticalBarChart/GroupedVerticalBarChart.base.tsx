@@ -31,6 +31,7 @@ import {
   createStringYAxis,
   getNextGradient,
   getNextColor,
+  areArraysEqual,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -146,9 +147,9 @@ export class GroupedVerticalBarChartBase
   }
 
   public componentDidUpdate(prevProps: IGroupedVerticalBarChartProps): void {
-    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+    if (!areArraysEqual(prevProps.legendProps?.selectedLegends, this.props.legendProps?.selectedLegends)) {
       this.setState({
-        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+        selectedLegends: this.props.legendProps?.selectedLegends || [],
       });
     }
   }
