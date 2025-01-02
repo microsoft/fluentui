@@ -4,14 +4,7 @@
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/jsx-no-bind": "off",
-    "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../.."] }],
-    "overrides": [
-      {
-        "files": ["src/**/*.{tsx,ts}"],
-        "rules": {
-          "@typescript-eslint/no-deprecated": "off"
-        }
-      }
-    ]
+    "@typescript-eslint/no-deprecated": "off",
+    "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../.."] }]
   }
 }
