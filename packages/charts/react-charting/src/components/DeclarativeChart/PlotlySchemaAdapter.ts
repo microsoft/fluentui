@@ -24,8 +24,8 @@ import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
-import { getNextColor } from '../../utilities/colors';
-import { IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
+import { DataVizPalette, getNextColor } from '../../utilities/colors';
+import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 
@@ -98,7 +98,9 @@ export const transformPlotlyJsonToDonutProps = (
 
   const width: number = typeof layout?.width === 'number' ? layout?.width : 440;
   const height: number = typeof layout?.height === 'number' ? layout?.height : 220;
-  const hideLabels: boolean = firstData.textinfo ? !['value', 'percent'].includes(firstData.textinfo) : false;
+  const hideLabels: boolean = firstData.textinfo
+    ? !['value', 'percent', 'label+percent'].includes(firstData.textinfo)
+    : false;
   const donutMarginHorizontal: number = hideLabels ? 0 : 80;
   const donutMarginVertical: number = 40 + (hideLabels ? 0 : 40);
   const innerRadius: number = firstData.hole
@@ -444,7 +446,7 @@ export const transformPlotlyJsonToSankeyProps = (
     // eslint-disable-next-line @typescript-eslint/no-shadow
     //@ts-expect-error Dynamic link object. Ignore for now.
     // Filter out negative nodes, unequal nodes and self-references (circular links)
-    .filter(x => x.source > 0 && x.target > 0 && x.source !== x.target);
+    .filter(x => x.source >= 0 && x.target >= 0 && x.source !== x.target);
 
   const sankeyChartData = {
     nodes: node.label.map((label: string, index: number) => {
@@ -504,9 +506,14 @@ export const transformPlotlyJsonToGaugeProps = (
       })
     : [
         {
-          legend: 'Segment 1',
-          size: (firstData.gauge?.range?.[1] ?? 0) - (firstData.gauge?.range?.[0] ?? 0),
-          color: getColor('Segment 1', colorMap, isDarkTheme),
+          legend: 'Current',
+          size: firstData.value ?? 0 - (firstData.gauge?.range?.[0] ?? 0),
+          color: getColor('Current', colorMap, isDarkTheme),
+        },
+        {
+          legend: 'Target',
+          size: (firstData.gauge?.range?.[1] ?? 100) - (firstData.value ?? 0),
+          color: DataVizPalette.disabled,
         },
       ];
 
@@ -540,9 +547,10 @@ export const transformPlotlyJsonToGaugeProps = (
     minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
     maxValue: typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : undefined,
     chartValueFormat: () => firstData.value,
-    width: typeof layout?.width === 'number' ? layout?.width : 0,
-    height: typeof layout?.height === 'number' ? layout?.height : 0,
+    width: typeof layout?.width === 'number' ? layout?.width : 440,
+    height: typeof layout?.height === 'number' ? layout?.height : 220,
     styles,
+    variant: firstData.gauge?.steps?.length ? GaugeChartVariant.MultipleSegments : GaugeChartVariant.SingleSegment,
   };
 };
 
