@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 01 Jan 2025 07:21:09 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jan 2025 07:22:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.36)
+
+Thu, 02 Jan 2025 07:22:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.35..@fluentui/react-charting_v5.23.36)
+
+### Patches
+
+- fix: resolve css variables in svg image data ([PR #33538](https://github.com/microsoft/fluentui/pull/33538) by kumarkshitij@microsoft.com)
 
 ## [5.23.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.35)
 

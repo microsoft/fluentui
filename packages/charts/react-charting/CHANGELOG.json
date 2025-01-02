@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 02 Jan 2025 07:22:03 GMT",
+      "tag": "@fluentui/react-charting_v5.23.36",
+      "version": "5.23.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6bd14a98fb5bec1eb26dfbada654fc1588249fa8",
+            "comment": "fix: resolve css variables in svg image data"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Jan 2025 07:21:09 GMT",
       "tag": "@fluentui/react-charting_v5.23.35",
       "version": "5.23.35",
