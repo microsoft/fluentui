@@ -18,56 +18,56 @@ describe('DeclarativeChart', () => {
   });
   test('Should render areachart in DeclarativeChart', () => {
     // Arrange
-    const plotlySchema = require('./schema/fluent_area.json');
+    const plotlySchema = require('./tests/schema/fluent_area_test.json');
     const { container } = render(<DeclarativeChart key={'areachart'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
   });
 
   test('Should render donutchart in DeclarativeChart', () => {
     // Arrange
-    const plotlySchema = require('./schema/fluent_donut.json');
+    const plotlySchema = require('./tests/schema/fluent_donut_test.json');
     const { container } = render(<DeclarativeChart key={'donutchart'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
   });
 
   test('Should render gaugechart in DeclarativeChart', () => {
     // Arrange
-    const plotlySchema = require('./schema/fluent_gauge.json');
+    const plotlySchema = require('./tests/schema/fluent_gauge_test.json');
     const { container } = render(<DeclarativeChart key={'gaugechart'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
   });
 
   test('Should render heatmapchart in DeclarativeChart', () => {
     // Arrange
-    const plotlySchema = require('./schema/fluent_heatmap.json');
+    const plotlySchema = require('./tests/schema/fluent_heatmap_test.json');
     const { container } = render(<DeclarativeChart key={'heatmapchart'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
   });
 
   test('Should render linechart in DeclarativeChart', () => {
     // Arrange
-    const plotlySchema = require('./schema/fluent_line.json');
+    const plotlySchema = require('./tests/schema/fluent_line_test.json');
     const { container } = render(<DeclarativeChart key={'linechart'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
   });
 
   test('Should render piechart in DeclarativeChart', () => {
     // Arrange
-    const plotlySchema = require('./schema/fluent_pie.json');
+    const plotlySchema = require('./tests/schema/fluent_pie_test.json');
     const { container } = render(<DeclarativeChart key={'piechart'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
   });
 
   test('Should render sankeychart in DeclarativeChart', () => {
     // Arrange
-    const plotlySchema = require('./schema/fluent_sankey.json');
+    const plotlySchema = require('./tests/schema/fluent_sankey_test.json');
     const { container } = render(<DeclarativeChart key={'sankeychart'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
   });
 
   test('Should render verticalbarchart in DeclarativeChart', () => {
     // Arrange
-    const plotlySchema = require('./schema/fluent_verticalbar.json');
+    const plotlySchema = require('./tests/schema/fluent_verticalbar_test.json');
     const { container } = render(<DeclarativeChart key={'verticalbarchart'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
   });
