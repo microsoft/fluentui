@@ -43,6 +43,26 @@ export const isMonthArray = (array: any[]): boolean => {
   return false;
 };
 
+function getTitles(layout: any) {
+  const titles = {
+    chartTitle:
+      typeof layout.title === 'string' ? layout.title : typeof layout.title?.text === 'string' ? layout.title.text : '',
+    xAxisTitle:
+      typeof layout?.xaxis?.title === 'string'
+        ? layout?.xaxis?.title
+        : typeof layout?.xaxis?.title?.text === 'string'
+        ? layout?.xaxis?.title?.text
+        : '',
+    yAxisTitle:
+      typeof layout?.yaxis?.title === 'string'
+        ? layout?.yaxis?.title
+        : typeof layout?.yaxis?.title?.text === 'string'
+        ? layout?.yaxis?.title?.text
+        : '',
+  };
+  return titles;
+}
+
 export const updateXValues = (xValues: any[]): any[] => {
   const presentYear = new Date().getFullYear();
   const dates = xValues.map(possiblyMonthValue => {
@@ -113,14 +133,11 @@ export const transformPlotlyJsonToDonutProps = (
     },
   };
 
+  const { chartTitle } = getTitles(layout);
+
   return {
     data: {
-      chartTitle:
-        typeof layout.title === 'string'
-          ? layout.title
-          : typeof layout.title?.text === 'string'
-          ? layout.title?.text
-          : '',
+      chartTitle,
       chartData: donutData,
     },
     hideLegend: layout?.showlegend === false ? true : false,
@@ -168,30 +185,17 @@ export const transformPlotlyJsonToVSBCProps = (
     });
   });
 
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(layout);
+
   return {
     data: Object.values(mapXToDataPoints),
     // width: layout?.width,
     // height: layout?.height,
     barWidth: 'auto',
     yMaxValue,
-    chartTitle:
-      typeof layout.title === 'string'
-        ? layout.title
-        : typeof layout.title?.text === 'string'
-        ? layout.title?.text
-        : '',
-    xAxisTitle:
-      typeof layout?.xaxis?.title === 'string'
-        ? layout?.xaxis?.title
-        : typeof layout?.xaxis?.title?.text === 'string'
-        ? layout?.xaxis?.title?.text
-        : '',
-    yAxisTitle:
-      typeof layout?.yaxis?.title === 'string'
-        ? layout?.yaxis?.title
-        : typeof layout?.yaxis?.title?.text === 'string'
-        ? layout?.yaxis?.title?.text
-        : '',
+    chartTitle,
+    xAxisTitle,
+    yAxisTitle,
   };
 };
 
@@ -223,29 +227,16 @@ export const transformPlotlyJsonToGVBCProps = (
     });
   });
 
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(layout);
+
   return {
     data: Object.values(mapXToDataPoints),
     // width: layout?.width,
     // height: layout?.height,
     barwidth: 'auto',
-    chartTitle:
-      typeof layout.title === 'string'
-        ? layout.title
-        : typeof layout.title?.text === 'string'
-        ? layout.title?.text
-        : '',
-    xAxisTitle:
-      typeof layout?.xaxis?.title === 'string'
-        ? layout?.xaxis?.title
-        : typeof layout?.xaxis?.title?.text === 'string'
-        ? layout?.xaxis?.title?.text
-        : '',
-    yAxisTitle:
-      typeof layout?.yaxis?.title === 'string'
-        ? layout?.yaxis?.title
-        : typeof layout?.yaxis?.title?.text === 'string'
-        ? layout?.yaxis?.title?.text
-        : '',
+    chartTitle,
+    xAxisTitle,
+    yAxisTitle,
   };
 };
 
@@ -325,30 +316,17 @@ export const transformPlotlyJsonToVBCProps = (
     });
   });
 
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(layout);
+
   return {
     data: vbcData,
     // width: layout?.width,
     // height: layout?.height,
     barWidth: 24,
     supportNegativeData: true,
-    chartTitle:
-      typeof layout.title === 'string'
-        ? layout.title
-        : typeof layout.title?.text === 'string'
-        ? layout.title?.text
-        : '',
-    xAxisTitle:
-      typeof layout?.xaxis?.title === 'string'
-        ? layout?.xaxis?.title
-        : typeof layout?.xaxis?.title?.text === 'string'
-        ? layout?.xaxis?.title?.text
-        : '',
-    yAxisTitle:
-      typeof layout?.yaxis?.title === 'string'
-        ? layout?.yaxis?.title
-        : typeof layout?.yaxis?.title?.text === 'string'
-        ? layout?.yaxis?.title?.text
-        : '',
+    chartTitle,
+    xAxisTitle,
+    yAxisTitle,
   };
 };
 
@@ -378,13 +356,10 @@ export const transformPlotlyJsonToScatterChartProps = (
     };
   });
 
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(layout);
+
   const chartProps: IChartProps = {
-    chartTitle:
-      typeof layout.title === 'string'
-        ? layout.title
-        : typeof layout.title?.text === 'string'
-        ? layout.title?.text
-        : '',
+    chartTitle,
     lineChartData: chartData,
   };
 
@@ -392,35 +367,15 @@ export const transformPlotlyJsonToScatterChartProps = (
     return {
       data: chartProps,
       supportNegativeData: true,
-      xAxisTitle:
-        typeof layout?.xaxis?.title === 'string'
-          ? layout?.xaxis?.title
-          : typeof layout?.xaxis?.title?.text === 'string'
-          ? layout?.xaxis?.title?.text
-          : '',
-      yAxisTitle:
-        typeof layout?.yaxis?.title === 'string'
-          ? layout?.yaxis?.title
-          : typeof layout?.yaxis?.title?.text === 'string'
-          ? layout?.yaxis?.title?.text
-          : '',
+      xAxisTitle,
+      yAxisTitle,
     } as IAreaChartProps;
   } else {
     return {
       data: chartProps,
       supportNegativeData: true,
-      xAxisTitle:
-        typeof layout?.xaxis?.title === 'string'
-          ? layout?.xaxis?.title
-          : typeof layout?.xaxis?.title?.text === 'string'
-          ? layout?.xaxis?.title?.text
-          : '',
-      yAxisTitle:
-        typeof layout?.yaxis?.title === 'string'
-          ? layout?.yaxis?.title
-          : typeof layout?.yaxis?.title?.text === 'string'
-          ? layout?.yaxis?.title?.text
-          : '',
+      xAxisTitle,
+      yAxisTitle,
     } as ILineChartProps;
   }
 };
@@ -455,26 +410,13 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
   const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));
 
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(layout);
+
   return {
     data: chartData,
-    chartTitle:
-      typeof layout.title === 'string'
-        ? layout.title
-        : typeof layout.title?.text === 'string'
-        ? layout.title?.text
-        : '',
-    xAxisTitle:
-      typeof layout?.xaxis?.title === 'string'
-        ? layout?.xaxis?.title
-        : typeof layout?.xaxis?.title?.text === 'string'
-        ? layout?.xaxis?.title?.text
-        : '',
-    yAxisTitle:
-      typeof layout?.yaxis?.title === 'string'
-        ? layout?.yaxis?.title
-        : typeof layout?.yaxis?.title?.text === 'string'
-        ? layout?.yaxis?.title?.text
-        : '',
+    chartTitle,
+    xAxisTitle,
+    yAxisTitle,
     secondaryYAxistitle:
       typeof layout?.yaxis2?.title === 'string' ? layout?.yaxis2?.title : layout?.yaxis2?.title?.text || '',
     barHeight,
@@ -520,6 +462,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
     ? firstData.colorscale.map((arr: any) => arr[0] * (zMax - zMin) + zMin)
     : [];
   const rangeValuesForColorScale: string[] = firstData.colorscale ? firstData.colorscale.map((arr: any) => arr[1]) : [];
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(layout);
 
   return {
     data: [heatmapData],
@@ -527,24 +470,9 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
     rangeValuesForColorScale,
     hideLegend: true,
     showYAxisLables: true,
-    chartTitle:
-      typeof layout.title === 'string'
-        ? layout.title
-        : typeof layout.title?.text === 'string'
-        ? layout.title?.text
-        : '',
-    xAxisTitle:
-      typeof layout?.xaxis?.title === 'string'
-        ? layout?.xaxis?.title
-        : typeof layout?.xaxis?.title?.text === 'string'
-        ? layout?.xaxis?.title?.text
-        : '',
-    yAxisTitle:
-      typeof layout?.yaxis?.title === 'string'
-        ? layout?.yaxis?.title
-        : typeof layout?.yaxis?.title?.text === 'string'
-        ? layout?.yaxis?.title?.text
-        : '',
+    chartTitle,
+    xAxisTitle,
+    yAxisTitle,
   };
 };
 
@@ -591,14 +519,12 @@ export const transformPlotlyJsonToSankeyProps = (
     },
   };
   const shouldResize: number = width + height;
+
+  const { chartTitle } = getTitles(layout);
+
   return {
     data: {
-      chartTitle:
-        typeof layout.title === 'string'
-          ? layout.title
-          : typeof layout.title?.text === 'string'
-          ? layout.title?.text
-          : '',
+      chartTitle,
       SankeyChartData: sankeyChartData,
     },
     width,
@@ -656,15 +582,12 @@ export const transformPlotlyJsonToGaugeProps = (
     },
   };
 
+  const { chartTitle } = getTitles(layout);
+
   return {
     segments,
     chartValue: typeof firstData.value === 'number' ? firstData.value : 0,
-    chartTitle:
-      typeof layout.title === 'string'
-        ? layout.title
-        : typeof layout.title?.text === 'string'
-        ? layout.title?.text
-        : '',
+    chartTitle,
     sublabel,
     // range values can be null
     minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
