@@ -17,3 +17,8 @@ export interface Schema {
     assignees: string[];
   }>;
 }
+
+export interface FileOwnershipMatcher {
+  path: string;
+  owners: string[];
+}
