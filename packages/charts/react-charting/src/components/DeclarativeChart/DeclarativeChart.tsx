@@ -127,7 +127,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const exportAsImage = React.useCallback(
     (opts?: IImageExportOptions) => {
       return toImage(chartRef.current?.chartContainer, {
-        background: theme.palette.white,
+        background: theme.semanticColors.bodyBackground,
         ...opts,
       });
     },
@@ -165,7 +165,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return (
           <HorizontalBarChartWithAxis
             {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap, isDarkTheme)}
-            legendProps={legendProps}
+            legendProps={multiSelectLegendProps}
             componentRef={chartRef}
             calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
           />
@@ -247,7 +247,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <HeatMapChart
           {...transformPlotlyJsonToHeatmapProps(plotlySchema)}
-          legendProps={legendProps}
           componentRef={chartRef}
           calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
@@ -265,7 +264,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return (
           <GaugeChart
             {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)}
-            legendProps={legendProps}
+            legendProps={multiSelectLegendProps}
             componentRef={chartRef}
             calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
           />

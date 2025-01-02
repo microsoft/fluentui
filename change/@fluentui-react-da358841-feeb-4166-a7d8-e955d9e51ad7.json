@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Add event listener to Panel in order to update the footer's sticky property correctly when content changes dynamically.",
-  "packageName": "@fluentui/react",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}
