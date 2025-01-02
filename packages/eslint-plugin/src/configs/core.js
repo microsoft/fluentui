@@ -158,8 +158,6 @@ const config = {
     '@typescript-eslint/no-empty-function': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/prefer-namespace-keyword': 'error',
-    '@typescript-eslint/no-deprecated': 'error',
-
     /**
      * `@rnx-kit` eslint rules
      * @see https://github.com/microsoft/rnx-kit/tree/main/packages/eslint-plugin
