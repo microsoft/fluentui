@@ -1,7 +1,7 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "feat: add prefer-fluentui-v9 rule",
   "packageName": "@fluentui/eslint-plugin-react-components",
   "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }

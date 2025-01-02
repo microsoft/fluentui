@@ -26,7 +26,6 @@ export const rule = createRule<Options, MessageIds>({
   defaultOptions: [],
   create(context) {
     return {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       ImportDeclaration(node) {
         if (node.source.value !== '@fluentui/react') {
           return;
@@ -52,14 +51,14 @@ export const rule = createRule<Options, MessageIds>({
                 break;
               default:
                 if (isMigration(name)) {
-                  const migration = getMigrationDetails(MIGRATIONS[name]);
+                  const migration = MIGRATIONS[name];
 
                   context.report({
                     node,
                     messageId: 'replaceFluent8With9',
                     data: {
                       fluent8: name,
-                      fluent9: migration.component,
+                      fluent9: migration.import,
                       package: migration.package,
                     },
                   });
@@ -72,76 +71,74 @@ export const rule = createRule<Options, MessageIds>({
   },
 });
 
-type Migration = string | { component: string; package: string };
-
 /**
  * Migrations from Fluent 8 components to Fluent 9 components.
  * @see https://react.fluentui.dev/?path=/docs/concepts-migration-from-v8-component-mapping--docs
  */
 const MIGRATIONS = {
-  makeStyles: 'makeStyles',
-  ActionButton: 'Button',
-  Announced: 'useAnnounce',
-  Breadcrumb: 'Breadcrumb',
-  Button: 'Button',
-  Callout: 'Popover',
-  Calendar: { component: 'Calendar', package: '@fluentui/react-calendar-compat' },
-  CommandBar: 'Toolbar',
-  CommandBarButton: 'Toolbar',
-  CommandButton: 'MenuButton',
-  CompoundButton: 'CompoundButton',
-  Checkbox: 'Checkbox',
-  ChoiceGroup: 'RadioGroup',
-  Coachmark: 'TeachingPopover',
-  ComboBox: 'Combobox',
-  ContextualMenu: 'Menu',
-  DefaultButton: 'Button',
-  DatePicker: { component: 'DatePicker', package: '@fluentui/react-datepicker-compat' },
-  DetailsList: 'DataGrid',
-  Dialog: 'Dialog',
-  DocumentCard: 'Card',
-  Dropdown: 'Dropdown',
-  Fabric: 'FluentProvider',
-  Facepile: 'AvatarGroup',
-  FocusTrapZone: 'Tabster',
-  FocusZone: 'Tabster',
-  GroupedList: 'Tree',
-  HoverCard: 'Popover', // Not a direct equivalent; but could be used with custom behavior.
-  IconButton: 'Button',
-  Image: 'Image',
-  Keytips: { component: 'Keytips', package: '@fluentui-contrib/react-keytips' },
-  Label: 'Label',
-  Layer: 'Portal',
-  Link: 'Link',
-  MessageBar: 'MessageBar',
-  Modal: 'Dialog',
-  OverflowSet: 'Overflow',
-  Overlay: 'Portal',
-  Panel: 'Drawer',
-  PeoplePicker: 'TagPicker',
-  Persona: 'Persona',
-  Pivot: 'TabList',
-  PivotItem: 'Tab',
-  ProgressIndicator: 'ProgressBar',
-  Rating: 'Rating',
-  SearchBox: 'SearchBox',
-  Separator: 'Divider',
-  Shimmer: 'Skeleton',
-  Slider: 'Slider',
-  SplitButton: 'SplitButton',
-  SpinButton: 'SpinButton',
-  Spinner: 'Spinner',
-  Stack: 'StackShim',
-  SwatchColorPicker: 'SwatchPicker',
-  TagPicker: 'TagPicker',
-  TeachingBubble: 'TeachingPopover',
-  Text: 'Text',
-  TextField: 'Input',
-  TimePicker: { component: 'TimePicker', package: '@fluentui/react-timepicker-compat' },
-  ToggleButton: 'ToggleButton',
-  Toggle: 'Switch',
-  Tooltip: 'Tooltip',
-} satisfies Record<string, Migration>;
+  makeStyles: { import: 'makeStyles', package: '@fluentui/react-components' },
+  ActionButton: { import: 'Button', package: '@fluentui/react-components' },
+  Announced: { import: 'useAnnounce', package: '@fluentui/react-components' },
+  Breadcrumb: { import: 'Breadcrumb', package: '@fluentui/react-components' },
+  Button: { import: 'Button', package: '@fluentui/react-components' },
+  Callout: { import: 'Popover', package: '@fluentui/react-components' },
+  Calendar: { import: 'Calendar', package: '@fluentui/react-calendar-compat' },
+  CommandBar: { import: 'Toolbar', package: '@fluentui/react-components' },
+  CommandBarButton: { import: 'Toolbar', package: '@fluentui/react-components' },
+  CommandButton: { import: 'MenuButton', package: '@fluentui/react-components' },
+  CompoundButton: { import: 'CompoundButton', package: '@fluentui/react-components' },
+  Checkbox: { import: 'Checkbox', package: '@fluentui/react-components' },
+  ChoiceGroup: { import: 'RadioGroup', package: '@fluentui/react-components' },
+  Coachmark: { import: 'TeachingPopover', package: '@fluentui/react-components' },
+  ComboBox: { import: 'Combobox', package: '@fluentui/react-components' },
+  ContextualMenu: { import: 'Menu', package: '@fluentui/react-components' },
+  DefaultButton: { import: 'Button', package: '@fluentui/react-components' },
+  DatePicker: { import: 'DatePicker', package: '@fluentui/react-datepicker-compat' },
+  DetailsList: { import: 'DataGrid', package: '@fluentui/react-components' },
+  Dialog: { import: 'Dialog', package: '@fluentui/react-components' },
+  DocumentCard: { import: 'Card', package: '@fluentui/react-components' },
+  Dropdown: { import: 'Dropdown', package: '@fluentui/react-components' },
+  Fabric: { import: 'FluentProvider', package: '@fluentui/react-components' },
+  Facepile: { import: 'AvatarGroup', package: '@fluentui/react-components' },
+  FocusTrapZone: { import: 'Tabster', package: '@fluentui/react-components' },
+  FocusZone: { import: 'Tabster', package: '@fluentui/react-components' },
+  GroupedList: { import: 'Tree', package: '@fluentui/react-components' },
+  HoverCard: { import: 'Popover', package: '@fluentui/react-components' }, // Not a direct equivalent; but could be used with custom behavior.
+  IconButton: { import: 'Button', package: '@fluentui/react-components' },
+  Image: { import: 'Image', package: '@fluentui/react-components' },
+  Keytips: { import: 'Keytips', package: '@fluentui-contrib/react-keytips' },
+  Label: { import: 'Label', package: '@fluentui/react-components' },
+  Layer: { import: 'Portal', package: '@fluentui/react-components' },
+  Link: { import: 'Link', package: '@fluentui/react-components' },
+  MessageBar: { import: 'MessageBar', package: '@fluentui/react-components' },
+  Modal: { import: 'Dialog', package: '@fluentui/react-components' },
+  OverflowSet: { import: 'Overflow', package: '@fluentui/react-components' },
+  Overlay: { import: 'Portal', package: '@fluentui/react-components' },
+  Panel: { import: 'Drawer', package: '@fluentui/react-components' },
+  PeoplePicker: { import: 'TagPicker', package: '@fluentui/react-components' },
+  Persona: { import: 'Persona', package: '@fluentui/react-components' },
+  Pivot: { import: 'TabList', package: '@fluentui/react-components' },
+  PivotItem: { import: 'Tab', package: '@fluentui/react-components' },
+  ProgressIndicator: { import: 'ProgressBar', package: '@fluentui/react-components' },
+  Rating: { import: 'Rating', package: '@fluentui/react-components' },
+  SearchBox: { import: 'SearchBox', package: '@fluentui/react-components' },
+  Separator: { import: 'Divider', package: '@fluentui/react-components' },
+  Shimmer: { import: 'Skeleton', package: '@fluentui/react-components' },
+  Slider: { import: 'Slider', package: '@fluentui/react-components' },
+  SplitButton: { import: 'SplitButton', package: '@fluentui/react-components' },
+  SpinButton: { import: 'SpinButton', package: '@fluentui/react-components' },
+  Spinner: { import: 'Spinner', package: '@fluentui/react-components' },
+  Stack: { import: 'StackShim', package: '@fluentui/react-components' },
+  SwatchColorPicker: { import: 'SwatchPicker', package: '@fluentui/react-components' },
+  TagPicker: { import: 'TagPicker', package: '@fluentui/react-components' },
+  TeachingBubble: { import: 'TeachingPopover', package: '@fluentui/react-components' },
+  Text: { import: 'Text', package: '@fluentui/react-components' },
+  TextField: { import: 'Input', package: '@fluentui/react-components' },
+  TimePicker: { import: 'TimePicker', package: '@fluentui/react-timepicker-compat' },
+  ToggleButton: { import: 'ToggleButton', package: '@fluentui/react-components' },
+  Toggle: { import: 'Switch', package: '@fluentui/react-components' },
+  Tooltip: { import: 'Tooltip', package: '@fluentui/react-components' },
+};
 
 /**
  * Checks if a component name is in the MIGRATIONS list.
@@ -149,14 +146,3 @@ const MIGRATIONS = {
  * @returns True if the component is in the MIGRATIONS list, false otherwise.
  */
 const isMigration = (name: string): name is keyof typeof MIGRATIONS => name in MIGRATIONS;
-
-/**
- * Get the component and package name to use for a migration.
- */
-const getMigrationDetails = (migration: Migration) => {
-  if (typeof migration === 'string') {
-    return { component: migration, package: '@fluentui/react-components' };
-  }
-
-  return migration;
-};
