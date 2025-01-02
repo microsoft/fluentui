@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: resolve css variables in svg image data",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}

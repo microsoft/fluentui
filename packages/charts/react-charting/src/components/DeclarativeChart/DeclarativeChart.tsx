@@ -127,7 +127,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const exportAsImage = React.useCallback(
     (opts?: IImageExportOptions) => {
       return toImage(chartRef.current?.chartContainer, {
-        background: theme.palette.white,
+        background: theme.semanticColors.bodyBackground,
         ...opts,
       });
     },
