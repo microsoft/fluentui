@@ -22,8 +22,8 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
   appearance?: 'brand' | 'inverted';
 
   /**
-   * Can contain two children including {@link PopoverTrigger} and {@link PopoverSurface}.
-   * Alternatively can only contain {@link PopoverSurface} if using a custom `target`.
+   * Can contain two children including `PopoverTrigger` and `PopoverSurface`.
+   * Alternatively can only contain `PopoverSurface` if using a custom `target`.
    */
   children: [JSX.Element, JSX.Element] | JSX.Element;
 

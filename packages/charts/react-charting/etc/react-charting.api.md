@@ -12,6 +12,7 @@ import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IHoverCardStyleProps } from '@fluentui/react/lib/HoverCard';
 import { IHoverCardStyles } from '@fluentui/react/lib/HoverCard';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
+import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { IStyle } from '@fluentui/react/lib/Styling';
 import { IStyle as IStyle_2 } from '@fluentui/react';
@@ -125,6 +126,7 @@ export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
 // @public
 export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
     chartSchema: Schema;
+    componentRef?: IRefObject<IDeclarativeChart>;
     onSchemaChange?: (eventData: Schema) => void;
 }
 
@@ -267,6 +269,7 @@ export interface ICartesianChartProps {
     // @deprecated
     chartLabel?: string;
     className?: string;
+    componentRef?: IRefObject<IChart>;
     customDateTimeFormatter?: (dateTime: Date) => string;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
@@ -350,6 +353,12 @@ export interface ICartesianChartStyles {
     tooltip?: IStyle;
     xAxis?: IStyle;
     yAxis?: IStyle;
+}
+
+// @public (undocumented)
+export interface IChart {
+    // (undocumented)
+    chartContainer: HTMLElement | null;
 }
 
 // @public (undocumented)
@@ -482,12 +491,19 @@ export interface IDataPoint {
 }
 
 // @public (undocumented)
+export interface IDeclarativeChart {
+    // (undocumented)
+    exportAsImage: (opts?: IImageExportOptions) => Promise<string>;
+}
+
+// @public (undocumented)
 export interface IDonutChart {
 }
 
 // @public
 export interface IDonutChartProps extends ICartesianChartProps {
     calloutProps?: Partial<ICalloutProps>;
+    componentRef?: IRefObject<IChart>;
     culture?: string;
     data?: IChartProps;
     enableGradient?: boolean;
@@ -536,6 +552,7 @@ export interface IGaugeChartProps {
     chartValue: number;
     chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
     className?: string;
+    componentRef?: IRefObject<IChart>;
     culture?: string;
     enableGradient?: boolean;
     height?: number;
@@ -704,6 +721,8 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
     domainValuesForColorScale: number[];
     legendProps?: Partial<ILegendsProps>;
     rangeValuesForColorScale: string[];
+    showYAxisLables?: boolean;
+    sortOrder?: 'none' | 'alphabetical';
     styles?: IStyleFunctionOrObject<IHeatMapChartStyleProps, IHeatMapChartStyles>;
     xAxisDateFormatString?: string;
     xAxisNumberFormatString?: string;
@@ -832,6 +851,18 @@ export interface IHorizontalDataPoint {
     y: number;
 }
 
+// @public (undocumented)
+export interface IImageExportOptions {
+    // (undocumented)
+    background?: string;
+    // (undocumented)
+    height?: number;
+    // (undocumented)
+    scale?: number;
+    // (undocumented)
+    width?: number;
+}
+
 // @public
 export interface ILegend {
     action?: VoidFunction;
@@ -876,6 +907,8 @@ export interface ILegendsProps {
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
     overflowText?: string;
+    selectedLegend?: string;
+    selectedLegends?: string[];
     shape?: LegendShape;
     styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
     theme?: ITheme;
@@ -1066,6 +1099,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
     points: any;
+    ref?: IRefObject<IChart>;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];
@@ -1196,8 +1230,10 @@ export interface ISankeyChartData {
 export interface ISankeyChartProps {
     accessibility?: ISankeyChartAccessibilityProps;
     borderColorsForNodes?: string[];
+    calloutProps?: Partial<ICalloutProps>;
     className?: string;
     colorsForNodes?: string[];
+    componentRef?: IRefObject<IChart>;
     data: IChartProps;
     enableReflow?: boolean;
     formatNumberOptions?: Intl.NumberFormatOptions;
@@ -1601,13 +1637,9 @@ export const PieChart: React_2.FunctionComponent<IPieChartProps>;
 // @public
 export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
 
-// @public (undocumented)
+// @public
 export interface Schema {
-    accesibilityLabels?: {
-        [key: string]: string;
-    };
     plotlySchema: any;
-    selectedLegends?: string[];
 }
 
 // @public (undocumented)
