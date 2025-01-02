@@ -17,7 +17,8 @@ export function toImage(chartContainer?: HTMLElement | null, opts: IImageExportO
     }
 
     try {
-      const background = 'white'; // Background is coming as --var(xxx) when used with v8 wrapper in v9
+      const background =
+        typeof opts.background === 'string' ? resolveCSSVariables(chartContainer, opts.background) : 'transparent';
       const svg = toSVG(chartContainer, background);
 
       const svgData = new XMLSerializer().serializeToString(svg.node);
@@ -65,7 +66,7 @@ function toSVG(chartContainer: HTMLElement, background: string) {
 
   const svgElements = svg.getElementsByTagName('*');
   const styleSheets = document.styleSheets;
-  const styleRules: string[] = [];
+  let styleRules: string = '';
 
   for (let i = svgElements.length - 1; i--; ) {
     svgElements[i].classList.forEach(className => {
@@ -81,14 +82,15 @@ function toSVG(chartContainer: HTMLElement, background: string) {
         const hasClassName = selectorText.split(' ').some(word => classNames.has(word));
 
         if (hasClassName) {
-          styleRules.push(rules[j].cssText);
+          styleRules += rules[j].cssText + ' ';
         }
       }
     }
   }
+  styleRules = resolveCSSVariables(chartContainer, styleRules);
 
   const xmlDocument = new DOMParser().parseFromString('<svg></svg>', 'image/svg+xml');
-  const styleNode = xmlDocument.createCDATASection(styleRules.join(' '));
+  const styleNode = xmlDocument.createCDATASection(styleRules);
   clonedSvg.insert('defs', ':first-child').append('style').attr('type', 'text/css').node()!.appendChild(styleNode);
 
   clonedSvg.attr('width', w1).attr('height', h1).attr('viewBox', `0 0 ${w1} ${h1}`);
@@ -161,12 +163,14 @@ function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHei
       textOffset = 8;
     }
 
+    const { color: textColor } = getComputedStyle(legendText!);
     legendItem
       .append('text')
       .attr('x', legendX + textOffset)
       .attr('y', svgHeight + legendY + 8)
       .attr('dominant-baseline', 'hanging')
       .attr('class', legendText!.getAttribute('class'))
+      .attr('fill', textColor)
       .text(legendText!.textContent);
     legendX += legendWidth;
   }
@@ -190,6 +194,15 @@ function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHei
     width: Math.max(...legendLineWidths),
     height: legendY,
   };
+}
+
+const cssVarRegExp = /var\((--[a-zA-Z0-9\-]+)\)/g;
+
+function resolveCSSVariables(chartContainer: HTMLElement, styleRules: string) {
+  const containerStyles = getComputedStyle(chartContainer);
+  return styleRules.replace(cssVarRegExp, (match, group1) => {
+    return containerStyles.getPropertyValue(group1);
+  });
 }
 
 function svgToPng(svgDataUrl: string, opts: IImageExportOptions = {}): Promise<string> {
