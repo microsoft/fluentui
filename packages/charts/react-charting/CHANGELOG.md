@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 31 Dec 2024 07:21:44 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jan 2025 07:22:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.36)
+
+Thu, 02 Jan 2025 07:22:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.35..@fluentui/react-charting_v5.23.36)
+
+### Patches
+
+- fix: resolve css variables in svg image data ([PR #33538](https://github.com/microsoft/fluentui/pull/33538) by kumarkshitij@microsoft.com)
+
+## [5.23.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.35)
+
+Wed, 01 Jan 2025 07:21:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.34..@fluentui/react-charting_v5.23.35)
+
+### Patches
+
+- HeatMap chart bug fixes ([PR #33525](https://github.com/microsoft/fluentui/pull/33525) by 74965306+Anush2303@users.noreply.github.com)
+- Initialization of state variables and updating for HorizontalBarChartWithAxis chart ([PR #33532](https://github.com/microsoft/fluentui/pull/33532) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.23.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.34)
 

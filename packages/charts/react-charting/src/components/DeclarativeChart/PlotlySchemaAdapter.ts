@@ -401,6 +401,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
         x: layout.xaxis?.type === 'date' ? new Date(xVal) : xVal,
         y: layout.yaxis?.type === 'date' ? new Date(yVal) : yVal,
         value: zVal,
+        rectText: zVal,
       });
 
       zMin = Math.min(zMin, zVal);
@@ -425,6 +426,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
     rangeValuesForColorScale,
     hideLegend: true,
     showYAxisLables: true,
+    sortOrder: 'none',
   };
 };
 

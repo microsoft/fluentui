@@ -127,7 +127,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const exportAsImage = React.useCallback(
     (opts?: IImageExportOptions) => {
       return toImage(chartRef.current?.chartContainer, {
-        background: theme.palette.white,
+        background: theme.semanticColors.bodyBackground,
         ...opts,
       });
     },
@@ -247,7 +247,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <HeatMapChart
           {...transformPlotlyJsonToHeatmapProps(plotlySchema)}
-          legendProps={legendProps}
           componentRef={chartRef}
           calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
