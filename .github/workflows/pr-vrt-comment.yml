@@ -15,22 +15,24 @@ env:
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
 
-permissions:
-  contents: 'read'
-  actions: 'read'
-
 jobs:
   run_vr_diff:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
     outputs:
       pr_number: ${{ steps.pr_number.outputs.result }}
+    permissions:
+      # necessary to write comments to the PR from the vr-approval-cli
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
           sparse-checkout: |
             .github
 
+      # downloaded artifacts will contain screenshots from affected project including 'screenshots-report.json' which contains proper image mappings for affected project
+      # - see @{link file://./../scripts/prepare-vr-screenshots-for-upload.js#43}
+      # - see @{link file://./pr-vrt.yml#56}
       - uses: actions/download-artifact@v4
         with:
           name: vrscreenshot
