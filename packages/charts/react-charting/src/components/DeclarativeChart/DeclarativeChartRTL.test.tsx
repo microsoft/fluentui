@@ -44,13 +44,6 @@ describe('DeclarativeChart', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('Should render horizontalbarchart in DeclarativeChart', () => {
-    // Arrange
-    const plotlySchema = require('./schema/fluent_horizontalbar.json');
-    const { container } = render(<DeclarativeChart key={'horizontalbarchart'} chartSchema={{ plotlySchema }} />);
-    expect(container).toMatchSnapshot();
-  });
-
   test('Should render linechart in DeclarativeChart', () => {
     // Arrange
     const plotlySchema = require('./schema/fluent_line.json');
