@@ -2,6 +2,42 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 02 Jan 2025 07:22:03 GMT",
+      "tag": "@fluentui/react-charting_v5.23.36",
+      "version": "5.23.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6bd14a98fb5bec1eb26dfbada654fc1588249fa8",
+            "comment": "fix: resolve css variables in svg image data"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jan 2025 07:21:09 GMT",
+      "tag": "@fluentui/react-charting_v5.23.35",
+      "version": "5.23.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bf1b91f1fd3cfb580185870b6a4b77738384f9d2",
+            "comment": "HeatMap chart bug fixes"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "db1eb859113249615f1de99d409d330231761420",
+            "comment": "Initialization of state variables and updating for HorizontalBarChartWithAxis chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Dec 2024 07:21:44 GMT",
       "tag": "@fluentui/react-charting_v5.23.34",
       "version": "5.23.34",
