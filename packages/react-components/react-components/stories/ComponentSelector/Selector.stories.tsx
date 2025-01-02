@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   Accordion,
   AccordionHeader,
@@ -12,78 +12,74 @@ import {
   makeStyles,
   tokens,
   useId,
-} from "@fluentui/react-components";
+} from '@fluentui/react-components';
 
-import {
-  removeFromArray,
-  getComponentStoryUrl,
-  getAllQuestions,
-} from "./utils";
-import questions from "./selection-logic/Questions.json";
-import importedCategories from "./selection-logic/Categories.json";
-import * as importedComponentsDefinitions from "./components-definitions/index";
-import { add, create, get, set } from "lodash";
-import { SelectionCard } from "./SelectionCard";
-import { Question } from "./Question";
-import { BehaviorSelection } from "./BehaviorSelection";
-import { MatchingComponents } from "./MatchingComponents";
+import { removeFromArray, getComponentStoryUrl, getAllQuestions } from './utils';
+import questions from './selection-logic/Questions.json';
+import importedCategories from './selection-logic/Categories.json';
+import * as importedComponentsDefinitions from './components-definitions/index';
+import { add, create, get, set } from 'lodash';
+import { SelectionCard } from './SelectionCard';
+import { Question } from './Question';
+import { BehaviorSelection } from './BehaviorSelection';
+import { MatchingComponents } from './MatchingComponents';
 
 const useStyles = makeStyles({
-  secondLevel: { "margin-left": "30px" },
-  thirdLevel: { "margin-left": "60px" },
-  forthLevel: { "margin-left": "90px" },
-  heading: { margin: "30px 0 10px 0" },
+  secondLevel: { 'margin-left': '30px' },
+  thirdLevel: { 'margin-left': '60px' },
+  forthLevel: { 'margin-left': '90px' },
+  heading: { margin: '30px 0 10px 0' },
   root: {
     // Stack the label above the field with a gap
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "2px",
-    maxWidth: "1600px",
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '2px',
+    maxWidth: '1600px',
   },
   tagsList: {
-    listStyleType: "none",
+    listStyleType: 'none',
     marginBottom: tokens.spacingVerticalXXS,
     marginTop: 0,
     paddingLeft: 0,
-    display: "flex",
+    display: 'flex',
     gridGap: tokens.spacingHorizontalXXS,
   },
-  tooltip: { maxWidth: "500px important!", backgroundColor: "red" },
+  tooltip: { maxWidth: '500px important!', backgroundColor: 'red' },
   componentWrapper: {
-    margin: "10px",
-    padding: "10px",
-    border: "1px solid #ccc",
-    borderRadius: "5px",
-    display: "flex",
-    alignItems: "center",
-    gap: "10px",
+    margin: '10px',
+    padding: '10px',
+    border: '1px solid #ccc',
+    borderRadius: '5px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
   },
   questionsWrapper: {
-    padding: "20px",
-    margin: "20px 0",
-    backgroundColor: "white",
-    borderRadius: "16px",
-    border: "1px solid var(--colorNeutralStroke1, #e1dfdd)",
-    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+    padding: '20px',
+    margin: '20px 0',
+    backgroundColor: 'white',
+    borderRadius: '16px',
+    border: '1px solid var(--colorNeutralStroke1, #e1dfdd)',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
   },
   questionsLabel: {
-    color: "#ff00ff",
+    color: '#ff00ff',
     fontWeight: tokens.fontWeightBold,
-    marginRight: "8px",
+    marginRight: '8px',
   },
   questionsText: {
     fontWeight: tokens.fontWeightBold,
     fontSize: tokens.fontSizeBase400,
   },
   questionContainer: {
-    display: "flex",
+    display: 'flex',
   },
   questionRightSide: {
-    borderLeft: "1px solid #ff00ff",
-    padding: "0 10px",
+    borderLeft: '1px solid #ff00ff',
+    padding: '0 10px',
   },
   radioItem: {
-    display: "flex",
+    display: 'flex',
   },
 });
 
@@ -102,15 +98,10 @@ const savedSelectedBehaviours = {
 export const Selector = () => {
   const classes = useStyles();
 
-  const [mode, setMode] = React.useState("byComponents");
-  const [selectedComponents, setSelectedComponents] = React.useState<string[]>(
-    []
-  );
-  const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>(
-    []
-  );
-  const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] =
-    React.useState<Record<string, any>[]>([]);
+  const [mode, setMode] = React.useState('byComponents');
+  const [selectedComponents, setSelectedComponents] = React.useState<string[]>([]);
+  const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
+  const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] = React.useState<Record<string, any>[]>([]);
   const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
 
   const onModeTabSelect = (event, data) => {
@@ -124,35 +115,30 @@ export const Selector = () => {
     console.log(`UseEffect: Selector`);
   }, []);
 
-  
   React.useEffect(() => {
     setFilteredComponentsDefinitions(componentsDefinitions.current);
   }, [setFilteredComponentsDefinitions]);
 
   const onFilterChange = (event, data) => {
     setFilteredComponentsDefinitions(
-      componentsDefinitions.current.filter((definition) => {
-        const isMatchInName = definition.component
-          .toLowerCase()
-          .includes(data.value.toLowerCase());
+      componentsDefinitions.current.filter(definition => {
+        const isMatchInName = definition.component.toLowerCase().includes(data.value.toLowerCase());
         const isMatchInStory = definition.story
           ? definition.story.toLowerCase().includes(data.value.toLowerCase())
           : false;
         return isMatchInName || isMatchInStory;
-      })
+      }),
     );
   };
 
   const mergeBaseObjects = () => {
-    componentsDefinitions.current.forEach((definition) => {
+    componentsDefinitions.current.forEach(definition => {
       for (const key in definition) {
-        if (key === "extends") {
+        if (key === 'extends') {
           const value = definition[key];
           const attributesOfCurrentDefinition = definition.attributes;
           // find the definition which the current definition is based on
-          const baseDefinition = componentsDefinitions.current.find(
-            (def) => def.name === value
-          );
+          const baseDefinition = componentsDefinitions.current.find(def => def.name === value);
           const attributesOfBaseDefinition = baseDefinition?.attributes;
 
           // create a definition copy with the name deleted
@@ -173,13 +159,13 @@ export const Selector = () => {
     componentsDefinitions.current.forEach((definition, index) => {
       // just check the name if includes "Base",
       // in future would be better detection based on prop, like: "abstract": "true"
-      if (definition.name && definition.name.includes("Base")) {
+      if (definition.name && definition.name.includes('Base')) {
         componentsDefinitions.current.splice(index, 1);
       }
     });
   };
 
-  const fillComponentsDefinitions = () => {
+  React.useEffect(() => {
     if (componentsDefinitions.current.length === 0) {
       Object.entries(importedComponentsDefinitions).forEach(([key, value]) => {
         componentsDefinitions.current.push(value);
@@ -187,25 +173,19 @@ export const Selector = () => {
       mergeBaseObjects();
       cleanUpBaseObjects();
     }
-  };
-
-  fillComponentsDefinitions();
+  }, []);
 
   const updateBehaviorDecision = (name, checked) => {
     if (checked) {
       setSelectedBehaviours([...selectedBehaviours, name]);
     } else {
-      const newBehaviors = selectedBehaviours.filter(
-        (behavior) => behavior !== name
-      );
+      const newBehaviors = selectedBehaviours.filter(behavior => behavior !== name);
       setSelectedBehaviours(newBehaviors);
     }
   };
 
-  const getComponentDefinitionByName = (name) => {
-    return componentsDefinitions.current.find(
-      (definition) => definition.name === name
-    );
+  const getComponentDefinitionByName = name => {
+    return componentsDefinitions.current.find(definition => definition.name === name);
   };
 
   const getMatchingComponents = () => {
@@ -214,8 +194,8 @@ export const Selector = () => {
 
     console.log(`selectedComponents: ${selectedComponents}`);
 
-    if (mode === "byComponents") {
-      selectedComponents.forEach((componentName) => {
+    if (mode === 'byComponents') {
+      selectedComponents.forEach(componentName => {
         const definition = getComponentDefinitionByName(componentName);
         if (definition) {
           suitableComponents.push(definition);
@@ -227,11 +207,11 @@ export const Selector = () => {
       console.log(`GET COMPONENT: selectedBehaviours: ${selectedBehaviours}`);
       componentsDefinitions.current.forEach(definition => {
         let matchedCount = 0;
-        selectedBehaviours.forEach((decision) => {
+        selectedBehaviours.forEach(decision => {
           definition.attributes.includes(decision) ? matchedCount++ : null;
         });
         if (selectedBehaviours.length === matchedCount) {
-          console.log("fully matched");
+          console.log('fully matched');
           // if suitableComponents does not include definition, push it
           suitableComponents.includes(definition) ? null : suitableComponents.push(definition);
         } else {
@@ -245,29 +225,26 @@ export const Selector = () => {
     return suitableComponents;
   };
 
-  const addComponent = React.useCallback((name) => {
-    console.log(`addComponent: ${name}`);
-    console.log(`selectedComponents: ${selectedComponents}`);
-    setSelectedComponents((prevArray) => [...prevArray, name]);
-  }, [selectedComponents]);
+  const addComponent = React.useCallback(
+    name => {
+      console.log(`addComponent: ${name}`);
+      console.log(`selectedComponents: ${selectedComponents}`);
+      setSelectedComponents(prevArray => [...prevArray, name]);
+    },
+    [selectedComponents],
+  );
 
   const categorizedComponents = React.useMemo(() => {
-    const definitionsWithDisplayName = filteredComponentsDefinitions.map(
-      (definition) => {
-        const componentName = definition.story
-          ? `${definition.component} : ${definition.story}`
-          : definition.name;
-        definition.displayName = componentName;
-        return definition;
-      }
-    );
-    definitionsWithDisplayName.sort((a, b) =>
-      a.displayName > b.displayName ? 1 : -1
-    );
+    const definitionsWithDisplayName = filteredComponentsDefinitions.map(definition => {
+      const componentName = definition.story ? `${definition.component} : ${definition.story}` : definition.name;
+      definition.displayName = componentName;
+      return definition;
+    });
+    definitionsWithDisplayName.sort((a, b) => (a.displayName > b.displayName ? 1 : -1));
 
-    const result = categories.map((category) => {
+    const result = categories.map(category => {
       category.cards = [];
-      definitionsWithDisplayName.forEach((definition) => {
+      definitionsWithDisplayName.forEach(definition => {
         if (category.components.includes(definition.component)) {
           const card = (
             <>
@@ -291,18 +268,14 @@ export const Selector = () => {
     if (currentName === previousName) {
       return;
     }
-    if (currentName === "none") {
+    if (currentName === 'none') {
       // remove previously added radio value as now "no" option is selected
-      setSelectedBehaviours((previousItems) =>
-        previousItems.filter((item) => item !== previousName)
-      );
+      setSelectedBehaviours(previousItems => previousItems.filter(item => item !== previousName));
       return;
     }
-    setSelectedBehaviours((previousBehaviors) => {
+    setSelectedBehaviours(previousBehaviors => {
       // remove previous radio item value and add new one
-      const behaviorsWithoutPerviousItem = previousBehaviors.filter(
-        (item) => item !== previousName
-      );
+      const behaviorsWithoutPerviousItem = previousBehaviors.filter(item => item !== previousName);
       return [...behaviorsWithoutPerviousItem, currentName];
     });
   };
@@ -312,25 +285,19 @@ export const Selector = () => {
   return (
     <>
       <Text id="selectorMode-text">Selector mode:</Text>
-      <TabList
-        selectedValue={mode}
-        onTabSelect={onModeTabSelect}
-        aria-labelledby="selectorMode-text"
-      >
+      <TabList selectedValue={mode} onTabSelect={onModeTabSelect} aria-labelledby="selectorMode-text">
         <Tab value="byComponents">By components</Tab>
         <Tab value="byBehaviors">By behaviors</Tab>
       </TabList>
-      {mode === "byComponents" && (
+      {mode === 'byComponents' && (
         <>
           <Field label="Filter components">
             <Input onChange={onFilterChange} />
           </Field>
           <h2>Choose Component</h2>
-          <Text role="status">
-            {filteredComponentsDefinitions.length} components available.
-          </Text>
+          <Text role="status">{filteredComponentsDefinitions.length} components available.</Text>
           <Accordion multiple>
-            {categorizedComponents.map((category) => (
+            {categorizedComponents.map(category => (
               <AccordionItem key={category.id} value={category.id}>
                 <AccordionHeader as="h3">{category.title}</AccordionHeader>
                 <AccordionPanel>
@@ -339,9 +306,7 @@ export const Selector = () => {
               </AccordionItem>
             ))}
           </Accordion>
-          {allQuestions.length > 0 && (
-            <h2 className={classes.heading}>Questions</h2>
-          )}
+          {allQuestions.length > 0 && <h2 className={classes.heading}>Questions</h2>}
           {allQuestions.map((question, index) => (
             <Question
               key={question.id}
@@ -352,7 +317,7 @@ export const Selector = () => {
           ))}
         </>
       )}
-      {mode === "byBehaviors" && (
+      {mode === 'byBehaviors' && (
         <>
           <BehaviorSelection updateBehaviorDecision={updateBehaviorDecision} />
         </>
