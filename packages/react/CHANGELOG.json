@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 03 Jan 2025 07:21:31 GMT",
+      "tag": "@fluentui/react_v8.122.4",
+      "version": "8.122.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7bb97f178d73a470dc438a2b19d165d9d0bd4b51",
+            "comment": "fix(Combobox and Dropdown): add aria-invalid when errorMessage is set"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Dec 2024 07:21:29 GMT",
       "tag": "@fluentui/react_v8.122.3",
       "version": "8.122.3",
