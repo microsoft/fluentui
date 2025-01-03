@@ -18,6 +18,21 @@ export interface Schema {
   }>;
 }
 
+export interface SchemaV2 {
+  params: Array<{
+    /** Label added by issue template */
+    frameworkType: string;
+    /** Which heading is the source of truth for parsing selected Option */
+    headingToParse: string;
+    /**
+     * Mapping used against parsed CODEOWNERS file
+     */
+    mapping: {
+      [projectRoot: string]: /* Options within issue Dropdown */ string[];
+    };
+  }>;
+}
+
 export interface FileOwnershipMatcher {
   path: string;
   owners: string[];
