@@ -15,6 +15,9 @@ const useStyles = makeStyles({
     height: '50px',
     borderRadius: '4px',
     border: `1px solid ${tokens.colorNeutralStroke1}`,
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+    },
   },
 });
 
