@@ -31,8 +31,7 @@ import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
-export const isDateArray = (array: any[]): boolean =>
-  isArrayOrTypedArray(array) && (array.every(isDate) || array.every(parseDateFromString));
+export const isDateArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isDate);
 export const isNumberArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isNumber);
 export const isMonthArray = (array: any[]): boolean => {
   if (array && array.length > 0) {
@@ -66,34 +65,6 @@ export const updateXValues = (xValues: any[]): any[] => {
   });
   return xValues;
 };
-
-function parseDateFromString(dateString: string): Date | null {
-  // Regular expression for "YYYY-MM-DD" format
-  const isoDateRegex = /(\d{4})-(\d{2})-(\d{2})/;
-  const isoDateMatch = dateString.match(isoDateRegex);
-  if (isoDateMatch) {
-    const [_, year, month, day] = isoDateMatch;
-    return new Date(Number(year), Number(month) - 1, Number(day));
-  }
-
-  // Regular expression for "MM/DD/YYYY" format
-  const usDateRegex = /(\d{2})\/(\d{2})\/(\d{4})/;
-  const usDateMatch = dateString.match(usDateRegex);
-  if (usDateMatch) {
-    const [_, month, day, year] = usDateMatch;
-    return new Date(Number(year), Number(month) - 1, Number(day));
-  }
-
-  // Regular expression for "YYYY" format
-  const yearRegex = /(\d{4})/;
-  const yearMatch = dateString.match(yearRegex);
-  if (yearMatch) {
-    const [_, year] = yearMatch;
-    return new Date(Number(year), 0, 1);
-  }
-
-  return null;
-}
 
 export const getColor = (
   legendLabel: string,
@@ -173,7 +144,7 @@ export const transformPlotlyJsonToVSBCProps = (
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
       }
       const legend: string = series.name || `Series ${index1 + 1}`;
-      if (series.type === 'bar' || series.type === 'scatter') {
+      if (series.type === 'bar' || series.type === 'scatter' || series.type === 'Unsupported Schema') {
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].chartData.push({
           legend,
@@ -345,7 +316,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     return {
       legend,
       data: xValues.map((x: string | number, i: number) => ({
-        x: isString ? (isXDate ? parseDateFromString(x.toString()) : isXNumber ? parseFloat(x as string) : x) : x,
+        x: isString ? (isXDate ? new Date(x) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
       })),
       color: lineColor,

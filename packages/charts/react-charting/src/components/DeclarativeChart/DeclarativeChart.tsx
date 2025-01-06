@@ -90,6 +90,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const { data, layout } = plotlySchema;
   let { selectedLegends } = plotlySchema;
   const xValues = data[0].x;
+  const yValues = data[0].y;
   const isXDate = isDateArray(xValues);
   const isXNumber = isNumberArray(xValues);
   const isXMonth = isMonthArray(xValues);
@@ -146,6 +147,40 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     ...legendProps,
     canSelectMultipleLegends: true,
     selectedLegends: activeLegends,
+  };
+
+  const checkAndRenderChart = (renderChart: any, isAreaChart: boolean = false) => {
+    if (isXDate || isXNumber) {
+      const chartProps = {
+        ...transformPlotlyJsonToScatterChartProps({ data, layout }, isAreaChart, colorMap, isDarkTheme),
+        legendProps,
+        componentRef: chartRef,
+        calloutProps: { layerProps: { eventBubblingEnabled: true } },
+      };
+      return renderChart(chartProps);
+    } else if (isXMonth) {
+      const updatedData = data.map((dataPoint: any) => ({
+        ...dataPoint,
+        x: updateXValues(dataPoint.x),
+      }));
+      const chartProps = {
+        ...transformPlotlyJsonToScatterChartProps({ data: updatedData, layout }, isAreaChart, colorMap, isDarkTheme),
+        legendProps,
+        componentRef: chartRef,
+        calloutProps: { layerProps: { eventBubblingEnabled: true } },
+      };
+      return renderChart(chartProps);
+    }
+    // Unsupported schema, render as VerticalStackedBarChart
+    data[0].type = 'Unsupported Schema';
+    return (
+      <VerticalStackedBarChart
+        {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
+        legendProps={multiSelectLegendProps}
+        componentRef={chartRef}
+        calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
+      />
+    );
   };
 
   switch (data[0].type) {
@@ -214,35 +249,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           />
         );
       };
-      if (isXDate || isXNumber) {
-        const chartProps = {
-          ...transformPlotlyJsonToScatterChartProps({ data, layout }, isAreaChart, colorMap, isDarkTheme),
-          legendProps,
-          componentRef: chartRef,
-          calloutProps: { layerProps: { eventBubblingEnabled: true } },
-        };
-        return renderChart(chartProps);
-      } else if (isXMonth) {
-        const updatedData = data.map((dataPoint: any) => ({
-          ...dataPoint,
-          x: updateXValues(dataPoint.x),
-        }));
-        const chartProps = {
-          ...transformPlotlyJsonToScatterChartProps({ data: updatedData, layout }, isAreaChart, colorMap, isDarkTheme),
-          legendProps,
-          componentRef: chartRef,
-          calloutProps: { layerProps: { eventBubblingEnabled: true } },
-        };
-        return renderChart(chartProps);
-      }
-      return (
-        <VerticalStackedBarChart
-          {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={multiSelectLegendProps}
-          componentRef={chartRef}
-          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
-        />
-      );
+      return checkAndRenderChart(renderChart, isAreaChart);
     case 'heatmap':
       return (
         <HeatMapChart
@@ -281,6 +288,23 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         />
       );
     default:
+      if (xValues.length > 0 && yValues.length > 0) {
+        const renderLineChart = (chartProps: any) => {
+          return (
+            <LineChart
+              {...{
+                ...chartProps,
+                legendProps: {
+                  onChange: onActiveLegendsChange,
+                  canSelectMultipleLegends: true,
+                  selectedLegends: activeLegends,
+                },
+              }}
+            />
+          );
+        };
+        return checkAndRenderChart(renderLineChart);
+      }
       throw new Error('Unsupported chart schema');
   }
 });
