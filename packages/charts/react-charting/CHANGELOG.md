@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 03 Jan 2025 07:21:32 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Jan 2025 07:16:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.38)
+
+Mon, 06 Jan 2025 07:16:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.37..@fluentui/react-charting_v5.23.38)
+
+### Patches
+
+- Enabling titles for x and y axes for Declarative charts ([PR #33533](https://github.com/microsoft/fluentui/pull/33533) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.23.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.37)
 
