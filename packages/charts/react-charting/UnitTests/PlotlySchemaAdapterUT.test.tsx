@@ -13,13 +13,14 @@ import {
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
+  sanitizeJson,
 } from '../src/components/DeclarativeChart/PlotlySchemaAdapter';
 
 const colorMap = new Map<string, string>();
-//const env = require('../config/tests');
-//const runTest = env === 'TEST' ? describe : describe.skip;
+const env = require('../config/tests');
+const runTest = env === 'TEST' ? describe : describe.skip;
 
-describe('isDate', () => {
+runTest('isDate', () => {
   test('Should return true when input array contains Date objects', () => {
     var date = new Date();
     expect(isDateArray([date, date.getDate() + 1, date.getDate() + 2])).toBe(true);
@@ -34,7 +35,7 @@ describe('isDate', () => {
   });
 });
 
-describe('isNumberArray', () => {
+runTest('isNumberArray', () => {
   test('Should return false when input array contains Date objects', () => {
     var date = new Date();
     expect(isNumberArray([date, date.getDate() + 1, date.getDate() + 2])).toBe(false);
@@ -53,7 +54,7 @@ describe('isNumberArray', () => {
   });
 });
 
-describe('isMonthArray', () => {
+runTest('isMonthArray', () => {
   test('Should return false when input array contains Date objects', () => {
     var date = new Date();
     expect(isMonthArray([date, date.getDate() + 1, date.getDate() + 2])).toBe(false);
@@ -76,7 +77,7 @@ describe('isMonthArray', () => {
   });
 });
 
-describe('updateXValues', () => {
+runTest('updateXValues', () => {
   test('Should return true when input array contains months data', () => {
     expect(updateXValues([10, 11, 1])).toStrictEqual(['10 01, 2024', '11 01, 2024', '1 01, 2025']);
   });
@@ -87,7 +88,7 @@ describe('updateXValues', () => {
   });
 });
 
-describe('getColor', () => {
+runTest('getColor', () => {
   test('Should return color code when we had legend title', () => {
     expect(getColor('test', { current: colorMap }, true)).toBe('#e3008c');
   });
@@ -101,7 +102,7 @@ describe('getColor', () => {
   });
 });
 
-describe('transform Plotly Json To chart Props', () => {
+runTest('transform Plotly Json To chart Props', () => {
   test('transformPlotlyJsonToDonutProps - Should return donut chart props', () => {
     const plotlySchema = require('../src/components/DeclarativeChart/tests/schema/fluent_donut_test.json');
     expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
@@ -157,5 +158,12 @@ describe('transform Plotly Json To chart Props', () => {
   test('transformPlotlyJsonToGaugeProps - Should return gauge chart props', () => {
     const plotlySchema = require('../src/components/DeclarativeChart/tests/schema/fluent_gauge_test.json');
     expect(transformPlotlyJsonToGaugeProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
+  });
+});
+
+runTest('sanitizeJson', () => {
+  test('Should return json object when depth inside the range', () => {
+    const plotlySchema = require('../src/components/DeclarativeChart/tests/schema/fluent_gauge_test.json');
+    expect(sanitizeJson(plotlySchema, 0)).toMatchSnapshot();
   });
 });

@@ -1,5 +1,86 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`sanitizeJson Should return json object when depth inside the range 1`] = `
+Object {
+  "data": Array [
+    Object {
+      "delta": Object {
+        "increasing": Object {
+          "color": "RebeccaPurple",
+        },
+        "reference": 400,
+      },
+      "gauge": Object {
+        "axis": Object {
+          "range": Array [
+            null,
+            500,
+          ],
+          "tickcolor": "darkblue",
+          "tickwidth": 1,
+        },
+        "bar": Object {
+          "color": "darkblue",
+        },
+        "bgcolor": "white",
+        "bordercolor": "gray",
+        "borderwidth": 2,
+        "steps": Array [
+          Object {
+            "color": "cyan",
+            "range": Array [
+              0,
+              250,
+            ],
+          },
+          Object {
+            "color": "royalblue",
+            "range": Array [
+              250,
+              400,
+            ],
+          },
+        ],
+        "threshold": Object {
+          "line": Object {
+            "color": "red",
+            "width": 4,
+          },
+          "thickness": 0.75,
+          "value": 490,
+        },
+      },
+      "mode": "gauge+number+delta",
+      "title": Object {
+        "font": Object {
+          "size": 24,
+        },
+        "text": "Speed",
+      },
+      "type": "indicator",
+      "value": 420,
+    },
+  ],
+  "frames": Array [],
+  "layout": Object {
+    "font": Object {
+      "color": "darkblue",
+      "family": "Arial",
+    },
+    "height": 400,
+    "margin": Object {
+      "b": 25,
+      "l": 25,
+      "r": 25,
+      "t": 25,
+    },
+    "paper_bgcolor": "lavender",
+    "width": 500,
+  },
+  "visualizer": "plotly",
+}
+`;
+
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToDonutProps - Should return donut chart props 1`] = `
 Object {
   "data": Object {
