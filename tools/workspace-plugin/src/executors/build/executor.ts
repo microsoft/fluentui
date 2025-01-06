@@ -22,7 +22,12 @@ const runExecutor: PromiseExecutor<BuildExecutorSchema> = async (schema, context
     () =>
       runInParallel(
         () => runBuild(options, context),
-        () => (options.generateApi ? generateApiExecutor({}, context).then(res => res.success) : Promise.resolve(true)),
+        () =>
+          options.generateApi
+            ? generateApiExecutor({}, context).then(res => {
+                return res.success ? res.success : Promise.reject(new Error(`generate-api executor failed`));
+              })
+            : Promise.resolve(true),
       ),
     () => copyAssets(assetFiles),
   );
