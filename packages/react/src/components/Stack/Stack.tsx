@@ -2,6 +2,7 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { withSlots, createComponent, getSlots } from '@fluentui/foundation-legacy';
+import { useId } from '@fluentui/react-hooks';
 import { css, getNativeProps, htmlElementProperties, warnDeprecations } from '../../Utilities';
 import { styles, GlobalClassNames as StackGlobalClassNames } from './Stack.styles';
 import { StackItem } from './StackItem/StackItem';
@@ -26,6 +27,8 @@ const StackView: IStackComponent['view'] = props => {
     padding: 'tokens.padding',
   });
 
+  const stackId = useId('stack-');
+
   const stackChildren = _processStackChildren(props.children, {
     disableShrink,
     enableScopedSelectors,
@@ -42,7 +45,7 @@ const StackView: IStackComponent['view'] = props => {
   if (wrap) {
     return (
       <Slots.root {...nativeProps}>
-        <Slots.inner>{stackChildren}</Slots.inner>
+        <Slots.inner key={`${stackId}-inner`}>{stackChildren}</Slots.inner>
       </Slots.root>
     );
   }
