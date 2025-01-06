@@ -93,12 +93,17 @@ interface ComponentCategory {
 }
 const categories: ComponentCategory[] = importedCategories;
 
+interface SelectedComponent {
+  name: string;
+  displayName: string;
+}
+
 export const Selector = () => {
   const classes = useStyles();
 
   const [mode, setMode] = React.useState('byComponents');
   const [filterText, setFilterText] = React.useState('');
-  const [selectedComponents, setSelectedComponents] = React.useState<string[]>([]);
+  const [selectedComponents, setSelectedComponents] = React.useState<SelectedComponent[]>([]);
   const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
   const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] = React.useState<Record<string, any>[]>([]);
   const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
@@ -116,8 +121,6 @@ export const Selector = () => {
   };
 
   const onFilterChange = (event, data) => {
-    // setSelectedComponents([]);
-    // setSelectedBehaviours([]);
     setFilterText(data.value);
   };
 
@@ -197,8 +200,8 @@ export const Selector = () => {
     console.log(`selectedComponents: ${selectedComponents}`);
 
     if (mode === 'byComponents') {
-      selectedComponents.forEach(componentName => {
-        const definition = getComponentDefinitionByName(componentName);
+      selectedComponents.forEach(component => {
+        const definition = getComponentDefinitionByName(component.name);
         if (definition) {
           suitableComponents.push(definition);
         }
@@ -227,11 +230,37 @@ export const Selector = () => {
     return suitableComponents;
   };
 
-  const addComponent = React.useCallback(
-    name => {
-      console.log(`addComponent: ${name}`);
-      console.log(`selectedComponents: ${selectedComponents}`);
-      setSelectedComponents(prevArray => [...prevArray, name]);
+  const updateComponentSelection = React.useCallback(
+    (name, checked) => {
+      if (checked) {
+        // Find the definition and add the component based on the definition
+        const definition = componentsDefinitions.current.find(definition => definition.name === name);
+        if (!definition) {
+          return;
+        }
+        const displayName = definition.story ? `${definition.component} : ${definition.story}` : definition.name;
+        const newSelectedComponent = {
+          name,
+          displayName,
+        };
+        setSelectedComponents(prevSelectedComponents => {
+          const exists = prevSelectedComponents.find(component => component.name === name);
+          if (exists) {
+            return prevSelectedComponents;
+          }
+          const result = [...prevSelectedComponents, newSelectedComponent];
+          result.sort((a, b) => (a.name > b.name ? 1 : -1));
+          return result;
+        });
+      } else {
+        // Find and remove the component
+        setSelectedComponents(prevSelectedComponents => {
+          const newSelectedComponents = [...prevSelectedComponents];
+          const index = newSelectedComponents.findIndex(component => component.name === name);
+          newSelectedComponents.splice(index, 1);
+          return newSelectedComponents;
+        });
+      }
     },
     [selectedComponents],
   );
@@ -254,7 +283,7 @@ export const Selector = () => {
                 key={definition.name}
                 name={definition.name}
                 displayName={definition.displayName}
-                addComponent={addComponent}
+                updateComponentSelection={updateComponentSelection}
               />
             </>
           );
@@ -264,7 +293,7 @@ export const Selector = () => {
       return category;
     });
     return result;
-  }, [filteredComponentsDefinitions, addComponent]);
+  }, [filteredComponentsDefinitions, updateComponentSelection]);
 
   const updateDecisionForQuestion = (currentName, previousName) => {
     if (currentName === previousName) {
@@ -301,12 +330,12 @@ export const Selector = () => {
             <>
               <Text>Selected components:</Text>
               <TagGroup aria-label="Selected components">
-                {selectedComponents.map(componentName => (
+                {selectedComponents.map(component => (
                   <Tag
-                    key={componentName}
-                    value={componentName}
+                    key={component.name}
+                    value={component.displayName}
                     dismissible
-                    dismissIcon={{ 'aria-label': `Remove ${componentName}` }}
+                    dismissIcon={{ 'aria-label': `Remove ${component.displayName}` }}
                   />
                 ))}
               </TagGroup>

@@ -77,7 +77,7 @@ const getQuestionsIDs = (name: string) => {
 export const getAllQuestions = (selectedComponents, questions) => {
   let allQuestionsIDs: string[] = [];
   selectedComponents.forEach(component => {
-    getQuestionsIDs(component).forEach(id => {
+    getQuestionsIDs(component.name).forEach(id => {
       allQuestionsIDs.includes(id) ? null : allQuestionsIDs.push(id);
     });
   });

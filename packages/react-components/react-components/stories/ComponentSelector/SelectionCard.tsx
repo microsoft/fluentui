@@ -59,23 +59,14 @@ const useStyles = makeStyles({
 
 export const SelectionCard = props => {
   const styles = useStyles();
-  const { name, displayName, addComponent } = props;
-  const [selected, setSelected] = React.useState(false);
+  const { name, displayName, selected, updateComponentSelection } = props;
   const [hovered, setHovered] = React.useState(false);
-
-  const setCheckboxState = React.useCallback(({ selected, checked }, setFn) => setFn(!!(selected || checked)), []);
 
   const onSelectionChange = React.useCallback(
     (_, state) => {
-      setCheckboxState(state, setSelected);
-      console.log('------- onchange called');
-      state && state.checked && console.log('card state', state.checked);
-
-      if (state?.checked === true || state?.selected === true) {
-        addComponent(name);
-      }
+      updateComponentSelection(name, state.checked);
     },
-    [setCheckboxState, addComponent, name],
+    [updateComponentSelection, name],
   );
 
   const componentImage = React.useMemo(() => {
