@@ -95,6 +95,7 @@ export const Selector = () => {
   const classes = useStyles();
 
   const [mode, setMode] = React.useState('byComponents');
+  const [filterText, setFilterText] = React.useState('');
   const [selectedComponents, setSelectedComponents] = React.useState<string[]>([]);
   const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
   const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] = React.useState<Record<string, any>[]>([]);
@@ -103,30 +104,30 @@ export const Selector = () => {
   const onModeTabSelect = (event, data) => {
     const newMode = data.value;
 
-    // Reset selected behaviors on mode change
+    // Reset filter, selected components and selected behaviors on mode change
+    if (newMode === 'byComponents') {
+      setFilterText('');
+      setSelectedComponents([]);
+    }
     setSelectedBehaviours([]);
-    setMode(data.value);
+    setMode(newMode);
+  };
+
+  const onFilterChange = (event, data) => {
+    setFilterText(data.value);
   };
 
   React.useEffect(() => {
-    console.log(`UseEffect: Selector`);
-  }, []);
-
-  React.useEffect(() => {
-    setFilteredComponentsDefinitions(componentsDefinitions.current);
-  }, [setFilteredComponentsDefinitions]);
-
-  const onFilterChange = (event, data) => {
     setFilteredComponentsDefinitions(
       componentsDefinitions.current.filter(definition => {
-        const isMatchInName = definition.component.toLowerCase().includes(data.value.toLowerCase());
+        const isMatchInName = definition.component.toLowerCase().includes(filterText.toLowerCase());
         const isMatchInStory = definition.story
-          ? definition.story.toLowerCase().includes(data.value.toLowerCase())
+          ? definition.story.toLowerCase().includes(filterText.toLowerCase())
           : false;
         return isMatchInName || isMatchInStory;
       }),
     );
-  };
+  }, [setFilteredComponentsDefinitions, filterText]);
 
   const mergeBaseObjects = () => {
     componentsDefinitions.current.forEach(definition => {
@@ -289,7 +290,7 @@ export const Selector = () => {
       {mode === 'byComponents' && (
         <>
           <Field label="Filter components">
-            <Input onChange={onFilterChange} />
+            <Input value={filterText} onChange={onFilterChange} />
           </Field>
           <h2>Choose Component</h2>
           <Text role="status">{filteredComponentsDefinitions.length} components available.</Text>
