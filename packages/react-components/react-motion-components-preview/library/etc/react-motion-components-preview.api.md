@@ -37,9 +37,6 @@ export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantPara
 export const createFadePresence: PresenceMotionCreator<FadeVariantParams>;
 
 // @public
-export const createScalePresence: PresenceMotionFnCreator<ScaleVariantParams_unstable, ScaleRuntimeParams_unstable>;
-
-// @public
 export const Fade: PresenceComponent<    {}>;
 
 // @public (undocumented)
@@ -49,13 +46,19 @@ export const FadeRelaxed: PresenceComponent<    {}>;
 export const FadeSnappy: PresenceComponent<    {}>;
 
 // @public
-export const Scale: PresenceComponent<ScaleRuntimeParams_unstable>;
+export const Scale: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}>;
 
 // @public (undocumented)
-export const ScaleRelaxed: PresenceComponent<ScaleRuntimeParams_unstable>;
+export const ScaleRelaxed: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}>;
 
 // @public (undocumented)
-export const ScaleSnappy: PresenceComponent<ScaleRuntimeParams_unstable>;
+export const ScaleSnappy: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}>;
 
 // (No @packageDocumentation comment for this package)
 
