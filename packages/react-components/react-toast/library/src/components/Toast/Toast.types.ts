@@ -22,5 +22,5 @@ export type ToastProps = ComponentProps<ToastSlots> & {
  */
 export type ToastState = ComponentState<ToastSlots> & {
   backgroundAppearance: BackgroundAppearanceContextValue;
-  intent: ToastIntent | undefined;
+  intent?: ToastIntent | undefined;
 };
