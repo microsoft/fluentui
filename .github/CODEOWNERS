@@ -430,6 +430,7 @@ packages/react/src/components/WeeklyDayPicker @microsoft/cxe-red
 packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @dzearing
 packages/fluent2-theme @microsoft/cxe-red @geoffcoxmsft
 ## Experiments
+packages/react-experiments @microsoft/cxe-red
 packages/react-experiments/src/components/Signals @ThomasMichon
 packages/react-experiments/src/components/Tile @ThomasMichon
 packages/react-experiments/src/components/TileList @ThomasMichon

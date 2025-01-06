@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 30 Dec 2024 07:21:29 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Jan 2025 07:21:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.122.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.4)
+
+Fri, 03 Jan 2025 07:21:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.3..@fluentui/react_v8.122.4)
+
+### Patches
+
+- fix(Combobox and Dropdown): add aria-invalid when errorMessage is set ([PR #33529](https://github.com/microsoft/fluentui/pull/33529) by sarah.higley@microsoft.com)
 
 ## [8.122.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.3)
 
