@@ -8,6 +8,8 @@ import {
   Input,
   Tab,
   TabList,
+  Tag,
+  TagGroup,
   Text,
   makeStyles,
   tokens,
@@ -114,8 +116,20 @@ export const Selector = () => {
   };
 
   const onFilterChange = (event, data) => {
+    // setSelectedComponents([]);
+    // setSelectedBehaviours([]);
     setFilterText(data.value);
   };
+
+  React.useEffect(() => {
+    if (componentsDefinitions.current.length === 0) {
+      Object.entries(importedComponentsDefinitions).forEach(([key, value]) => {
+        componentsDefinitions.current.push(value);
+      });
+      mergeBaseObjects();
+      cleanUpBaseObjects();
+    }
+  }, []);
 
   React.useEffect(() => {
     setFilteredComponentsDefinitions(
@@ -162,16 +176,6 @@ export const Selector = () => {
       }
     });
   };
-
-  React.useEffect(() => {
-    if (componentsDefinitions.current.length === 0) {
-      Object.entries(importedComponentsDefinitions).forEach(([key, value]) => {
-        componentsDefinitions.current.push(value);
-      });
-      mergeBaseObjects();
-      cleanUpBaseObjects();
-    }
-  }, []);
 
   const updateBehaviorDecision = (name, checked) => {
     if (checked) {
@@ -247,9 +251,9 @@ export const Selector = () => {
           const card = (
             <>
               <SelectionCard
-                displayName={definition.displayName}
+                key={definition.name}
                 name={definition.name}
-                image={definition.img}
+                displayName={definition.displayName}
                 addComponent={addComponent}
               />
             </>
@@ -293,6 +297,21 @@ export const Selector = () => {
             <Input value={filterText} onChange={onFilterChange} />
           </Field>
           <h2>Choose Component</h2>
+          {selectedComponents.length > 0 && (
+            <>
+              <Text>Selected components:</Text>
+              <TagGroup aria-label="Selected components">
+                {selectedComponents.map(componentName => (
+                  <Tag
+                    key={componentName}
+                    value={componentName}
+                    dismissible
+                    dismissIcon={{ 'aria-label': `Remove ${componentName}` }}
+                  />
+                ))}
+              </TagGroup>
+            </>
+          )}
           <Text role="status">{filteredComponentsDefinitions.length} components available.</Text>
           <Accordion multiple>
             {categorizedComponents.map(category => (

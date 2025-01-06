@@ -59,15 +59,13 @@ const useStyles = makeStyles({
 
 export const SelectionCard = props => {
   const styles = useStyles();
-  const { name, displayName, image, addComponent } = props;
+  const { name, displayName, addComponent } = props;
   const [selected, setSelected] = React.useState(false);
   const [hovered, setHovered] = React.useState(false);
 
-  const linkRef = React.useRef<HTMLAnchorElement>(null);
-
   const setCheckboxState = React.useCallback(({ selected, checked }, setFn) => setFn(!!(selected || checked)), []);
 
-  const onSelectedCardChange = React.useCallback(
+  const onSelectionChange = React.useCallback(
     (_, state) => {
       setCheckboxState(state, setSelected);
       console.log('------- onchange called');
@@ -92,16 +90,16 @@ export const SelectionCard = props => {
     } else {
       return undefined;
     }
-  }, [name, displayName, image]);
+  }, [name, displayName]);
 
   return (
     <div className={styles.main}>
       <Card
         className={styles.card}
         {...props}
-        floatingAction={<Checkbox aria-label={displayName} onChange={onSelectedCardChange} checked={selected} />}
+        floatingAction={<Checkbox aria-label={displayName} onChange={onSelectionChange} checked={selected} />}
         selected={selected}
-        onSelectionChange={onSelectedCardChange}
+        onSelectionChange={onSelectionChange}
         // onMouseOver={() => setHovered(true)}
         // onMouseOut={() => setHovered(false)}
       >
