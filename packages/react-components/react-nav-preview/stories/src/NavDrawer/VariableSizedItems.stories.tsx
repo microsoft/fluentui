@@ -11,13 +11,12 @@ import {
   NavSectionHeader,
   NavSubItem,
   NavSubItemGroup,
-  // NavSize,
+  NavDensity,
   NavDivider,
   AppItem,
   AppItemStatic,
 } from '@fluentui/react-nav-preview';
-import { Label, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
-//  Radio, RadioGroup,
+import { Label, Switch, Tooltip, makeStyles, tokens, useId, Radio, RadioGroup } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -47,9 +46,8 @@ import {
   PreviewLink20Regular,
   bundleIcon,
   PersonCircle24Regular,
+  PersonCircle32Regular,
 } from '@fluentui/react-icons';
-
-// PersonCircle32Regular,
 
 const useStyles = makeStyles({
   root: {
@@ -95,22 +93,20 @@ export const VariableSizedItems = (props: Partial<NavDrawerProps>) => {
   const appItemIconLabelId = useId('app-item-icon-label');
   const appItemStaticLabelId = useId('app-item-static-label');
 
-  //const [size, setNavSize] = React.useState<string>('small');
+  const [density, setNavDesnity] = React.useState<NavDensity>('small');
   const [enabledLinks, setEnabledLinks] = React.useState(true);
   const [isAppItemIconPresent, setIsAppItemIconPresent] = React.useState(true);
   const [isAppItemStatic, setIsAppItemStatic] = React.useState(true);
 
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
 
-  const appItemIcon = <PersonCircle24Regular />;
-
-  // const appItemIcon = isAppItemIconPresent ? (
-  //   size === 'small' ? (
-  //     <PersonCircle24Regular />
-  //   ) : (
-  //     <PersonCircle32Regular />
-  //   )
-  // ) : undefined;
+  const appItemIcon = isAppItemIconPresent ? (
+    density === 'small' ? (
+      <PersonCircle24Regular />
+    ) : (
+      <PersonCircle32Regular />
+    )
+  ) : undefined;
 
   const appItem = isAppItemStatic ? (
     <AppItemStatic icon={appItemIcon}>Contoso HR</AppItemStatic>
@@ -122,8 +118,13 @@ export const VariableSizedItems = (props: Partial<NavDrawerProps>) => {
 
   return (
     <div className={styles.root}>
-      {/* density={size} */}
-      <NavDrawer defaultSelectedValue="7" defaultSelectedCategoryValue="6" open={true} type={'inline'}>
+      <NavDrawer
+        defaultSelectedValue="7"
+        defaultSelectedCategoryValue="6"
+        open={true}
+        type={'inline'}
+        density={density}
+      >
         <NavDrawerHeader>
           <Tooltip content="Navigation" relationship="label">
             <Hamburger />
@@ -205,12 +206,15 @@ export const VariableSizedItems = (props: Partial<NavDrawerProps>) => {
       <div className={styles.content}>
         <div className={styles.field}>
           <Label id={labelId}>Size</Label>
-          {/* <RadioGroup value={size} aria-labelledby={labelId}>
-            onChange={(_, data) => setNavSize(data.value as NavSize)}
+          <RadioGroup
+            value={density}
+            aria-labelledby={labelId}
+            onChange={(_, data) => setNavDesnity(data.value as NavDensity)}
+          >
             <Radio value="medium" label="Medium" />
             <Radio value="small" label="Small" />
           </RadioGroup>
-          */}
+
           <Label id={linkLabelId}>Links</Label>
           <Switch
             checked={enabledLinks}
