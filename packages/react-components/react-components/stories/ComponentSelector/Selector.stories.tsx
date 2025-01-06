@@ -90,10 +90,6 @@ interface ComponentCategory {
   cards?: React.ReactNode[];
 }
 const categories: ComponentCategory[] = importedCategories;
-const savedSelectedBehaviours = {
-  byComponents: [],
-  byBehaviors: [],
-};
 
 export const Selector = () => {
   const classes = useStyles();
@@ -106,9 +102,10 @@ export const Selector = () => {
 
   const onModeTabSelect = (event, data) => {
     const newMode = data.value;
-    savedSelectedBehaviours[mode] = [...selectedBehaviours];
-    setSelectedBehaviours(savedSelectedBehaviours[newMode]);
-    setMode(newMode);
+
+    // Reset selected behaviors on mode change
+    setSelectedBehaviours([]);
+    setMode(data.value);
   };
 
   React.useEffect(() => {
@@ -275,8 +272,8 @@ export const Selector = () => {
     }
     setSelectedBehaviours(previousBehaviors => {
       // remove previous radio item value and add new one
-      const behaviorsWithoutPerviousItem = previousBehaviors.filter(item => item !== previousName);
-      return [...behaviorsWithoutPerviousItem, currentName];
+      const behaviorsWithoutPreviousItem = previousBehaviors.filter(item => item !== previousName);
+      return [...behaviorsWithoutPreviousItem, currentName];
     });
   };
 
