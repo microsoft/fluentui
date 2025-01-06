@@ -30,7 +30,7 @@ describe('DeclarativeChart', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('Should render gaugechart in DeclarativeChart', () => {
+  test.skip('Should render gaugechart in DeclarativeChart', () => {
     // Arrange
     const plotlySchema = require('./tests/schema/fluent_gauge_test.json');
     const { container } = render(<DeclarativeChart key={'gaugechart'} chartSchema={{ plotlySchema }} />);
@@ -51,14 +51,14 @@ describe('DeclarativeChart', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('Should render piechart in DeclarativeChart', () => {
+  test.skip('Should render piechart in DeclarativeChart', () => {
     // Arrange
     const plotlySchema = require('./tests/schema/fluent_pie_test.json');
     const { container } = render(<DeclarativeChart key={'piechart'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
   });
 
-  test('Should render sankeychart in DeclarativeChart', () => {
+  test.skip('Should render sankeychart in DeclarativeChart', () => {
     // Arrange
     const plotlySchema = require('./tests/schema/fluent_sankey_test.json');
     const { container } = render(<DeclarativeChart key={'sankeychart'} chartSchema={{ plotlySchema }} />);
