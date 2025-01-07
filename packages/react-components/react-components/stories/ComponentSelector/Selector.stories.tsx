@@ -4,6 +4,7 @@ import {
   AccordionHeader,
   AccordionItem,
   AccordionPanel,
+  Button,
   Field,
   Input,
   Tab,
@@ -146,7 +147,13 @@ export const Selector = () => {
     );
   }, [setFilteredComponentsDefinitions, filterText]);
 
-  const onSelectedComponentsDismiss = () => {};
+  const onSelectedComponentDismiss = (_, data) => {
+    updateComponentSelection(data.value, false);
+  };
+
+  const onRemoveAllComponentsClick = () => {
+    setSelectedComponents([]);
+  };
 
   const mergeBaseObjects = () => {
     componentsDefinitions.current.forEach(definition => {
@@ -334,18 +341,14 @@ export const Selector = () => {
           {selectedComponents.length > 0 && (
             <>
               <Text>Selected components:</Text>
-              <TagGroup onDismiss={onSelectedComponentsDismiss} aria-label="Selected components">
+              <TagGroup onDismiss={onSelectedComponentDismiss} aria-label="Selected components">
                 {selectedComponents.map(component => (
-                  <Tag
-                    key={component.name}
-                    value={component.name}
-                    dismissible
-                    dismissIcon={{ 'aria-label': `Remove ${component.displayName}` }}
-                  >
+                  <Tag key={component.name} value={component.name} dismissible dismissIcon={{ 'aria-label': 'Remove' }}>
                     {component.displayName}
                   </Tag>
                 ))}
               </TagGroup>
+              <Button onClick={onRemoveAllComponentsClick}>Remove all components</Button>
             </>
           )}
           <Text role="status">{filteredComponentsDefinitions.length} components available.</Text>
