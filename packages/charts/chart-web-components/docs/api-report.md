@@ -56,8 +56,6 @@ export class DonutChart extends FASTElement {
     // (undocumented)
     legends: Legend[];
     // (undocumented)
-    rootDiv: HTMLDivElement;
-    // (undocumented)
     tooltipProps: {
         isVisible: boolean;
         legend: string;
@@ -124,8 +122,6 @@ export class HorizontalBarChart extends FASTElement {
     legendListLabel?: string;
     // (undocumented)
     renderChart(): void;
-    // (undocumented)
-    rootDiv: HTMLDivElement;
     // (undocumented)
     tooltipProps: {
         isVisible: boolean;
