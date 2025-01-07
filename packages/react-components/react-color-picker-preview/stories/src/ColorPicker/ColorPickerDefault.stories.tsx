@@ -96,9 +96,10 @@ export const Default = () => {
 
   const onAlphaChange: SpinButtonProps['onChange'] = React.useCallback(
     (_ev, data) => {
-      const value = data.value ?? (data.displayValue !== undefined ? parseFloat(data.displayValue) : null);
+      const value = data.value ?? parseFloat(data.displayValue ?? 
+      '');
 
-      if (value === null || Number.isNaN(value) || !/^(0|1|0?\.\d+|1\.0?)$/.test(value.toString())) {
+      if (Number.isNaN(value) || value < 0 || value > 1) {
         return;
       }
 
