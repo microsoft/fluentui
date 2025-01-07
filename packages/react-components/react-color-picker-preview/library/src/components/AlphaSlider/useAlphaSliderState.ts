@@ -15,13 +15,19 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const { dir } = useFluent();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
-  const { color, onChange = onChangeFromContext } = props;
+  const { color, onChange = onChangeFromContext, transparency } = props;
   const hsvColor = color || colorFromContext;
   const hslColor = tinycolor(hsvColor).toHsl();
 
+  function adjustToTransparency(value: number) {
+    return transparency ? 100 - value : value;
+  }
+
+  const defaultState = props.defaultColor?.a !== undefined ? props.defaultColor.a * 100 : undefined;
+  const _state = hsvColor?.a !== undefined ? hsvColor.a * 100 : undefined;
   const [currentValue, setCurrentValue] = useControllableState({
-    defaultState: props.defaultColor?.a ? props.defaultColor.a * 100 : undefined,
-    state: hsvColor?.a ? hsvColor.a * 100 : undefined,
+    defaultState: defaultState && adjustToTransparency(defaultState),
+    state: _state && adjustToTransparency(_state),
     initialState: 100,
   });
   const clampedValue = clamp(currentValue, MIN, MAX);
@@ -30,15 +36,23 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const inputOnChange = state.input.onChange;
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
-    const newValue = Number(event.target.value);
+    const newValue = adjustToTransparency(Number(event.target.value));
     const newColor: HsvColor = { ...hsvColor, a: newValue / 100 };
     setCurrentValue(newValue);
     inputOnChange?.(event);
     onChange?.(event, { type: 'change', event, color: newColor });
   });
 
+  const sliderDirection = state.vertical
+    ? transparency
+      ? '180deg'
+      : '0deg'
+    : dir === 'ltr' && !transparency
+    ? '90deg'
+    : '-90deg';
+
   const rootVariables = {
-    [alphaSliderCSSVars.sliderDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '-90deg',
+    [alphaSliderCSSVars.sliderDirectionVar]: sliderDirection,
     [alphaSliderCSSVars.sliderProgressVar]: `${valuePercent}%`,
     [alphaSliderCSSVars.thumbColorVar]: `transparent`,
     [alphaSliderCSSVars.railColorVar]: `hsl(${hslColor.h} ${hslColor.s * 100}%, ${hslColor.l * 100}%)`,

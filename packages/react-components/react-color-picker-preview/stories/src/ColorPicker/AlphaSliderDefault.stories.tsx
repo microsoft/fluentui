@@ -27,13 +27,16 @@ export const AlphaSliderExample = (props: Partial<AlphaSliderProps>) => {
   const styles = useStyles();
 
   const [color, setColor] = React.useState(COLOR);
-  const [value, setValue] = React.useState(COLOR.a * 100);
-  const onSliderChange: AlphaSliderProps['onChange'] = (_, data) => {
+const [transparancyColor, setTransparancyColor] = React.useState(COLOR);
+const [value, setValue] = React.useState(COLOR.a * 100);
+const onSliderChange: AlphaSliderProps['onChange'] = (_, data) => {
     const alpha = data.color.a ?? 1;
     setColor({ ...data.color, a: alpha });
     setValue(alpha * 100);
-  };
+  };  const onTransparancySliderChange: AlphaSliderProps['onChange'] = (_, data) =>
+    setTransparancyColor({ ...data.color, a: data.color.a ?? 1 });
   const resetSlider = () => setColor(COLOR);
+  const resetTransparencySlider = () => setTransparancyColor(COLOR);
 
   return (
     <div className={styles.example}>
@@ -48,6 +51,12 @@ export const AlphaSliderExample = (props: Partial<AlphaSliderProps>) => {
       />
       <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toRgbString() }} />
       <Button onClick={resetSlider}>Reset</Button>
+      <h3>Transparency</h3>
+      <AlphaSlider color={transparancyColor} onChange={onTransparancySliderChange} transparency {...props} />
+      <AlphaSlider color={transparancyColor} onChange={onTransparancySliderChange} aria-valuetext={`${value}%`}
+        aria-label="Vertical alpha" transparency vertical {...props} />
+      <div className={styles.previewColor} style={{ backgroundColor: tinycolor(transparancyColor).toRgbString() }} />
+      <Button onClick={resetTransparencySlider}>Reset</Button>
     </div>
   );
 };

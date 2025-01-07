@@ -6,7 +6,9 @@ export type AlphaSliderSlots = ColorSliderSlots;
 /**
  * AlphaSlider Props
  */
-export type AlphaSliderProps = ColorSliderProps;
+export type AlphaSliderProps = ColorSliderProps & {
+  transparency?: boolean;
+};
 
 /**
  * State used in rendering AlphaSlider
