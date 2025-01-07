@@ -28,16 +28,29 @@ import { DataVizPalette, getNextColor } from '../../utilities/colors';
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
+import { timeParse } from 'd3-time-format';
 
-const isDate = (value: any): boolean => !isNaN(Date.parse(value));
+const isDate = (value: any): boolean => {
+  const yearInString = /\b\d{4}\b/.test(value);
+  const parsedDate = new Date(Date.parse(value));
+  const parsedYear = parsedDate.getFullYear();
+  if (isNaN(parsedDate.getTime())) {
+    return false;
+  }
+  if (!yearInString && (parsedYear === 2000 || parsedYear === 2001)) {
+    return false;
+  }
+  return true;
+};
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 export const isDateArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isDate);
 export const isNumberArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isNumber);
 export const isMonthArray = (array: any[]): boolean => {
   if (array && array.length > 0) {
-    const presentYear = new Date().getFullYear();
+    const parseFullMonth = timeParse('%B');
+    const parseShortMonth = timeParse('%b');
     return array.every(possiblyMonthValue => {
-      return isDate(`${possiblyMonthValue} 01, ${presentYear}`);
+      return parseFullMonth(possiblyMonthValue) !== null || parseShortMonth(possiblyMonthValue) !== null;
     });
   }
   return false;
@@ -147,7 +160,9 @@ export const transformPlotlyJsonToDonutProps = (
     height,
     innerRadius,
     hideLabels,
-    showLabelsInPercent: firstData.textinfo ? firstData.textinfo === 'percent' : true,
+    showLabelsInPercent: firstData.textinfo
+      ? firstData.textinfo === 'percent' || firstData.textinfo === 'label+percent'
+      : true,
     styles,
   };
 };
@@ -401,7 +416,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
         };
       });
     })
-    .flat();
+    .flat()
+    .reverse();
 
   const chartHeight: number = typeof layout.height === 'number' ? layout.height : 450;
   const margin: number = typeof layout.margin?.l === 'number' ? layout.margin?.l : 0;
