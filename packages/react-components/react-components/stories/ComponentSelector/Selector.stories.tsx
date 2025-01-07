@@ -209,7 +209,7 @@ export const Selector = () => {
     return componentsDefinitions.current.find(definition => definition.name === name);
   };
 
-  const getMatchingComponents = () => {
+  const matchingComponents = React.useMemo(() => {
     console.log(`--------- get matching components called`);
     const suitableComponents: any[] = [];
 
@@ -244,7 +244,7 @@ export const Selector = () => {
       });
     }
     return suitableComponents;
-  };
+  }, [mode, selectedComponents, selectedBehaviours]);
 
   const updateComponentSelection = React.useCallback(
     (name, selected) => {
@@ -392,7 +392,7 @@ export const Selector = () => {
           <BehaviorSelection updateBehaviorDecision={updateBehaviorDecision} />
         </>
       )}
-      <MatchingComponents components={getMatchingComponents()} />
+      <MatchingComponents components={matchingComponents} />
     </>
   );
 };
