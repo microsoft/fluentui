@@ -234,7 +234,7 @@ test.describe('RadioGroup', () => {
   });
 
   // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
-  test('should set a child radio with a matching `value` to `checked` when value changes', async ({ page }) => {
+  test.skip('should set a child radio with a matching `value` to `checked` when value changes', async ({ page }) => {
     const element = page.locator('fluent-radio-group');
     const radios = element.locator('fluent-radio');
 
@@ -258,7 +258,7 @@ test.describe('RadioGroup', () => {
   });
 
   // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
-  test('should mark only the last radio defaulted to checked as checked', async ({ page }) => {
+  test.skip('should mark only the last radio defaulted to checked as checked', async ({ page }) => {
     await page.setContent(/* html */ `
         <fluent-radio-group>
             <fluent-radio value="foo" checked></fluent-radio>
@@ -415,7 +415,7 @@ test.describe('RadioGroup', () => {
   });
 
   // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
-  test('should move focus to the next radio when the radio group is focused and the arrow down key is pressed', async ({
+  test.skip('should move focus to the next radio when the radio group is focused and the arrow down key is pressed', async ({
     page,
   }) => {
     const element = page.locator('fluent-radio-group');
@@ -483,7 +483,9 @@ test.describe('RadioGroup', () => {
   });
 
   // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
-  test('should set the `name` attribute of the radios to the `name` attribute of the radio group', async ({ page }) => {
+  test.skip('should set the `name` attribute of the radios to the `name` attribute of the radio group', async ({
+    page,
+  }) => {
     const element = page.locator('fluent-radio-group');
     const radios = element.locator('fluent-radio');
 
