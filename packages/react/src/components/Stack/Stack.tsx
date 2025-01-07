@@ -27,7 +27,7 @@ const StackView: IStackComponent['view'] = props => {
     padding: 'tokens.padding',
   });
 
-  const stackId = useId('stack-');
+  const stackInnerId = useId('stack-inner');
 
   const stackChildren = _processStackChildren(props.children, {
     disableShrink,
@@ -45,7 +45,7 @@ const StackView: IStackComponent['view'] = props => {
   if (wrap) {
     return (
       <Slots.root {...nativeProps}>
-        <Slots.inner key={`${stackId}-inner`}>{stackChildren}</Slots.inner>
+        <Slots.inner key={stackInnerId}>{stackChildren}</Slots.inner>
       </Slots.root>
     );
   }
