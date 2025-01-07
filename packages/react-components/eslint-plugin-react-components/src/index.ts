@@ -9,7 +9,7 @@ const configs = {
   recommended: {
     plugins: [name],
     rules: {
-      [`@fluentui/react-components/${preferFluentUIV9Name}`]: 'warn',
+      // add all recommended rules here
     },
   },
 };

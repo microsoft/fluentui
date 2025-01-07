@@ -16,9 +16,7 @@ export const plugin: {
     configs: {
         recommended: {
             plugins: string[];
-            rules: {
-                "@fluentui/react-components/prefer-fluentui-v9": string;
-            };
+            rules: {};
         };
     };
     rules: {
