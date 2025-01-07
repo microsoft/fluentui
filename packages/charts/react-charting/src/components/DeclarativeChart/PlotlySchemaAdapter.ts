@@ -167,14 +167,14 @@ export const transformPlotlyJsonToVSBCProps = (
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
       }
       const legend: string = series.name || `Series ${index1 + 1}`;
-      if (series.type === 'bar' || series.type === 'scatter') {
+      if (series.type === 'bar') {
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].chartData.push({
           legend,
           data: series.y?.[index2],
           color,
         });
-      } else if (series.type === 'line') {
+      } else if (typeof series.type !== 'string' || series.type === 'scatter') {
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].lineData!.push({
           legend,
