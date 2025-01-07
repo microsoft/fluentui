@@ -7,6 +7,7 @@ import {
   Button,
   Field,
   Input,
+  Link,
   Tab,
   TabList,
   Tag,
@@ -348,9 +349,10 @@ export const Selector = () => {
                   </Tag>
                 ))}
               </TagGroup>
-              <Button onClick={onRemoveAllComponentsClick}>Remove all components</Button>
+              <Button onClick={onRemoveAllComponentsClick}>Clear components selection</Button>
             </>
           )}
+          {allQuestions.length > 0 && <Link href="#questions">Next: Component choice checklist</Link>}
           <Text role="status">{filteredComponentsDefinitions.length} components available.</Text>
           <Accordion multiple>
             {categorizedComponents.map(category => (
@@ -362,7 +364,11 @@ export const Selector = () => {
               </AccordionItem>
             ))}
           </Accordion>
-          {allQuestions.length > 0 && <h2 className={classes.heading}>Questions</h2>}
+          {allQuestions.length > 0 && (
+            <h2 className={classes.heading} id="questions">
+              Questions
+            </h2>
+          )}
           {allQuestions.map((question, index) => (
             <Question
               key={question.id}
