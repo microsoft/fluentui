@@ -108,6 +108,8 @@ export const Selector = () => {
   const [selectedComponents, setSelectedComponents] = React.useState<SelectedComponent[]>([]);
   const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
   const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] = React.useState<Record<string, any>[]>([]);
+
+  const firstAccordionItemRef = React.useRef<Button>(null);
   const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
 
   const onModeTabSelect = (_, data) => {
@@ -124,6 +126,18 @@ export const Selector = () => {
 
   const onFilterChange = (_, data) => {
     setFilterText(data.value);
+  };
+
+  const onSelectedComponentDismiss = (_, data) => {
+    if (selectedComponents.length === 1) {
+      firstAccordionItemRef.current?.focus();
+    }
+    updateComponentSelection(data.value, false);
+  };
+
+  const onRemoveAllComponentsClick = () => {
+    firstAccordionItemRef.current?.focus();
+    setSelectedComponents([]);
   };
 
   React.useEffect(() => {
@@ -147,14 +161,6 @@ export const Selector = () => {
       }),
     );
   }, [setFilteredComponentsDefinitions, filterText]);
-
-  const onSelectedComponentDismiss = (_, data) => {
-    updateComponentSelection(data.value, false);
-  };
-
-  const onRemoveAllComponentsClick = () => {
-    setSelectedComponents([]);
-  };
 
   const mergeBaseObjects = () => {
     componentsDefinitions.current.forEach(definition => {
@@ -354,10 +360,12 @@ export const Selector = () => {
           )}
           {allQuestions.length > 0 && <Link href="#questions">Next: Component choice checklist</Link>}
           <Text role="status">{filteredComponentsDefinitions.length} components available.</Text>
-          <Accordion multiple>
-            {categorizedComponents.map(category => (
+          <Accordion collapsible multiple>
+            {categorizedComponents.map((category, index) => (
               <AccordionItem key={category.id} value={category.id}>
-                <AccordionHeader as="h3">{category.title}</AccordionHeader>
+                <AccordionHeader as="h3" button={{ ref: index === 0 ? firstAccordionItemRef : undefined }}>
+                  {category.title}
+                </AccordionHeader>
                 <AccordionPanel>
                   <div className={classes.root}>{category.cards}</div>
                 </AccordionPanel>
