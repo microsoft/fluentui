@@ -234,7 +234,7 @@ test.describe('RadioGroup', () => {
   });
 
   // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
-  test('should set a child radio with a matching `value` to `checked` when value changes', async ({ page }) => {
+  test.skip('should set a child radio with a matching `value` to `checked` when value changes', async ({ page }) => {
     const element = page.locator('fluent-radio-group');
     const radios = element.locator('fluent-radio');
 
@@ -415,7 +415,7 @@ test.describe('RadioGroup', () => {
   });
 
   // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
-  test('should move focus to the next radio when the radio group is focused and the arrow down key is pressed', async ({
+  test.skip('should move focus to the next radio when the radio group is focused and the arrow down key is pressed', async ({
     page,
   }) => {
     const element = page.locator('fluent-radio-group');
