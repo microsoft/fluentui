@@ -108,7 +108,7 @@ export const Selector = () => {
   const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] = React.useState<Record<string, any>[]>([]);
   const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
 
-  const onModeTabSelect = (event, data) => {
+  const onModeTabSelect = (_, data) => {
     const newMode = data.value;
 
     // Reset filter, selected components and selected behaviors on mode change
@@ -120,7 +120,7 @@ export const Selector = () => {
     setMode(newMode);
   };
 
-  const onFilterChange = (event, data) => {
+  const onFilterChange = (_, data) => {
     setFilterText(data.value);
   };
 
@@ -270,8 +270,8 @@ export const Selector = () => {
 
   const categorizedComponents = React.useMemo(() => {
     const definitionsWithDisplayName = filteredComponentsDefinitions.map(definition => {
-      const componentName = definition.story ? `${definition.component} : ${definition.story}` : definition.name;
-      definition.displayName = componentName;
+      const displayName = definition.story ? `${definition.component} : ${definition.story}` : definition.name;
+      definition.displayName = displayName;
       return definition;
     });
     definitionsWithDisplayName.sort((a, b) => (a.displayName > b.displayName ? 1 : -1));
@@ -280,12 +280,14 @@ export const Selector = () => {
       category.cards = [];
       definitionsWithDisplayName.forEach(definition => {
         if (category.components.includes(definition.component)) {
+          const selected = !!selectedComponents.find(component => definition.name === component.name);
           const card = (
             <>
               <SelectionCard
                 key={definition.name}
                 name={definition.name}
                 displayName={definition.displayName}
+                selected={selected}
                 updateComponentSelection={updateComponentSelection}
               />
             </>

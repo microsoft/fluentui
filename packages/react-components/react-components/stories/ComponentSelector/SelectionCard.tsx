@@ -63,8 +63,8 @@ export const SelectionCard = props => {
   const [hovered, setHovered] = React.useState(false);
 
   const onSelectionChange = React.useCallback(
-    (_, state) => {
-      updateComponentSelection(name, state.checked || state.selected);
+    (_, data) => {
+      updateComponentSelection(name, data.checked || data.selected);
     },
     [updateComponentSelection, name],
   );
@@ -87,12 +87,12 @@ export const SelectionCard = props => {
     <div className={styles.main}>
       <Card
         className={styles.card}
-        {...props}
         floatingAction={<Checkbox aria-label={displayName} onChange={onSelectionChange} checked={selected} />}
         selected={selected}
         onSelectionChange={onSelectionChange}
         // onMouseOver={() => setHovered(true)}
         // onMouseOut={() => setHovered(false)}
+        {...props}
       >
         <CardHeader description={<Caption1 className={styles.caption}>{displayName}</Caption1>} />
         <CardPreview className={styles.grayBackground}>
