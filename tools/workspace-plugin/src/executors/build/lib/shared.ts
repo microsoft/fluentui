@@ -9,8 +9,10 @@ export async function runInParallel(...tasks: Tasks[]): Promise<boolean> {
   const processes = tasks.map(task => task());
 
   return Promise.all(processes)
-    .then(() => {
-      return true;
+    .then(results => {
+      const res = results.indexOf(false) !== -1 ? false : true;
+      console.error({ res, results });
+      return res;
     })
     .catch(err => {
       logger.error(err);

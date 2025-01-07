@@ -25,7 +25,7 @@ const runExecutor: PromiseExecutor<BuildExecutorSchema> = async (schema, context
         () =>
           options.generateApi
             ? generateApiExecutor({}, context).then(res => {
-                return res.success ? res.success : Promise.reject(new Error(`generate-api executor failed`));
+                return res.success;
               })
             : Promise.resolve(true),
       ),
