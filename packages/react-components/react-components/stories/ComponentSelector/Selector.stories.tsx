@@ -146,6 +146,8 @@ export const Selector = () => {
     );
   }, [setFilteredComponentsDefinitions, filterText]);
 
+  const onSelectedComponentsDismiss = () => {};
+
   const mergeBaseObjects = () => {
     componentsDefinitions.current.forEach(definition => {
       for (const key in definition) {
@@ -330,14 +332,16 @@ export const Selector = () => {
           {selectedComponents.length > 0 && (
             <>
               <Text>Selected components:</Text>
-              <TagGroup aria-label="Selected components">
+              <TagGroup onDismiss={onSelectedComponentsDismiss} aria-label="Selected components">
                 {selectedComponents.map(component => (
                   <Tag
                     key={component.name}
-                    value={component.displayName}
+                    value={component.name}
                     dismissible
                     dismissIcon={{ 'aria-label': `Remove ${component.displayName}` }}
-                  />
+                  >
+                    {component.displayName}
+                  </Tag>
                 ))}
               </TagGroup>
             </>
