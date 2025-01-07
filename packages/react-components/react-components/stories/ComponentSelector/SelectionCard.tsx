@@ -64,7 +64,7 @@ export const SelectionCard = props => {
 
   const onSelectionChange = React.useCallback(
     (_, state) => {
-      updateComponentSelection(name, state.checked);
+      updateComponentSelection(name, state.checked || state.selected);
     },
     [updateComponentSelection, name],
   );
