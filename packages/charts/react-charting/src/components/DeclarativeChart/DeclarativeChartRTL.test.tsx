@@ -71,4 +71,18 @@ describe('DeclarativeChart', () => {
     const { container } = render(<DeclarativeChart key={'verticalbarchart'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
   });
+
+  test('Should render areachart with string x-axis values in DeclarativeChart', () => {
+    // Arrange
+    const plotlySchema = require('./tests/schema/fluent_area_stringXaxis_test.json');
+    const { container } = render(<DeclarativeChart key={'areachart'} chartSchema={{ plotlySchema }} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  test('Should render linechart with string x-axis values in DeclarativeChart', () => {
+    // Arrange
+    const plotlySchema = require('./tests/schema/fluent_line_stringXaxis_test.json');
+    const { container } = render(<DeclarativeChart key={'linechart'} chartSchema={{ plotlySchema }} />);
+    expect(container).toMatchSnapshot();
+  });
 });

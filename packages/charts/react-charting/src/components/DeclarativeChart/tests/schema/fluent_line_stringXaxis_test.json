@@ -1,0 +1,36 @@
+{
+  "visualizer": "plotly",
+  "data": [
+    {
+      "type": "scatter",
+      "mode": "lines",
+      "x": ["September", "October", "November", "December", "January", "February", "March", "April", "May", "June"],
+      "y": [72, 75, 78, 80, 85, 88, 90, 93, 95, 97],
+      "name": "Mathematics"
+    },
+    {
+      "type": "scatter",
+      "mode": "lines",
+      "x": ["September", "October", "November", "December", "January", "February", "March", "April", "May", "June"],
+      "y": [65, 68, 70, 73, 76, 78, 81, 83, 85, 87],
+      "name": "Science"
+    },
+    {
+      "type": "scatter",
+      "mode": "lines",
+      "x": ["September", "October", "November", "December", "January", "February", "March", "April", "May", "June"],
+      "y": [55, 60, 62, 65, 68, 70, 75, 78, 80, 82],
+      "name": "English"
+    }
+  ],
+  "layout": {
+    "title": "Performance Trends Across Subjects",
+    "xaxis": {
+      "title": "Months"
+    },
+    "yaxis": {
+      "title": "Scores"
+    }
+  },
+  "id": 47
+}
