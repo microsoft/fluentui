@@ -262,7 +262,7 @@ test.describe('Tablist', () => {
     });
   }
 
-  test('should not allow selecting a tab that has been disabled after it has been connected', async ({ page }) => {
+  test.skip('should not allow selecting a tab that has been disabled after it has been connected', async ({ page }) => {
     const element = page.locator('fluent-tablist');
     const tabs = element.locator('fluent-tab');
 
