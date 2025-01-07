@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
-import { ChartDataPoint, ChartProps } from './donut-chart.options.js';
+import type { ChartDataPoint, ChartProps } from './donut-chart.options.js';
 
 const points: ChartDataPoint[] = [
   {

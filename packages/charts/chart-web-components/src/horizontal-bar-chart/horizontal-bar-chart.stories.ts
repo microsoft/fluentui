@@ -2,7 +2,8 @@ import { html } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import { HorizontalBarChart as FluentHorizontalBarChart } from './horizontal-bar-chart.js';
-import { ChartDataPoint, ChartProps, Variant } from './horizontal-bar-chart.options.js';
+import type { ChartDataPoint, ChartProps } from './horizontal-bar-chart.options.js';
+import { Variant } from './horizontal-bar-chart.options.js';
 
 const singleBarHBCData = [
   {

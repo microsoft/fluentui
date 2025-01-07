@@ -19,16 +19,6 @@ const config: PlaywrightTestConfig = {
       use: { ...devices['Desktop Chrome'] },
       testMatch: /.*\.spec\.ts$/,
     },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-      testMatch: [/set-theme\.spec\.ts$/],
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-      testMatch: [/set-theme\.spec\.ts$/],
-    },
   ],
   webServer: {
     // double-quotes are required for Windows

@@ -31,7 +31,6 @@ export const styles = css`
   :host {
     ${typographyBody1Styles}
     align-items: center;
-    // display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
@@ -41,7 +40,6 @@ export const styles = css`
   .chart {
     box-sizing: content-box;
     overflow: visible;
-    alignment-adjust: center;
     display: block;
   }
 

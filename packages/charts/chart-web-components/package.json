@@ -97,8 +97,8 @@
   },
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
-    "@fluentui/tokens": "1.0.0-alpha.18",
-    "@fluentui/web-components": "3.0.0-beta.72",
+    "@fluentui/tokens": "^1.0.0-alpha",
+    "@fluentui/web-components": "^3.0.0-beta",
     "@types/d3-selection": "^3.0.0",
     "@types/d3-shape": "^3.0.0",
     "d3-selection": "^3.0.0",
@@ -112,9 +112,8 @@
   "beachball": {
     "disallowedChangeTypes": [
       "major",
-      "minor",
-      "patch"
+      "minor"
     ],
-    "tag": "beta"
+    "tag": "alpha"
   }
 }

@@ -1,7 +1,8 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { create as d3Create, select as d3Select } from 'd3-selection';
 import { getRTL, jsonConverter, SVG_NAMESPACE_URI, validateChartPropsArray } from '../utils/chart-helpers.js';
-import { ChartDataPoint, ChartProps, Variant } from './horizontal-bar-chart.options.js';
+import type { ChartDataPoint, ChartProps } from './horizontal-bar-chart.options.js';
+import { Variant } from './horizontal-bar-chart.options.js';
 
 /**
  * A Horizontal Bar Chart HTML Element.
@@ -49,7 +50,6 @@ export class HorizontalBarChart extends FASTElement {
     yPos: 0,
   };
 
-  public rootDiv!: HTMLDivElement;
   public chartContainer!: HTMLDivElement;
   public elementInternals: ElementInternals = this.attachInternals();
 
@@ -147,7 +147,7 @@ export class HorizontalBarChart extends FASTElement {
   }
 
   private calculateBarSpacing(): number {
-    const svgWidth = this.rootDiv.getBoundingClientRect().width;
+    const svgWidth = this.getBoundingClientRect().width;
     let barSpacing = 0;
     const MARGIN_WIDTH_IN_PX = 3;
     if (svgWidth) {
@@ -346,7 +346,7 @@ export class HorizontalBarChart extends FASTElement {
           return;
         }
 
-        const bounds = this.rootDiv.getBoundingClientRect();
+        const bounds = this.getBoundingClientRect();
         const centerX = window.innerWidth / 2;
         const xPos = Math.max(0, Math.min(centerX, window.innerWidth));
 

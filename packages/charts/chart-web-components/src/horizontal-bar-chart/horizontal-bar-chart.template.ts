@@ -1,6 +1,6 @@
 import { ElementViewTemplate, html, ref, repeat, when } from '@microsoft/fast-element';
 import type { HorizontalBarChart } from './horizontal-bar-chart.js';
-import { ChartDataPoint } from './horizontal-bar-chart.options.js';
+import type { ChartDataPoint } from './horizontal-bar-chart.options.js';
 
 /**
  * Generates a template for the HorizontalBarChart component.
@@ -9,12 +9,12 @@ import { ChartDataPoint } from './horizontal-bar-chart.options.js';
  */
 export function horizontalbarchartTemplate<T extends HorizontalBarChart>(): ElementViewTemplate<T> {
   return html<T>`
-    <template ${ref('rootDiv')}>
+    <template>
       <div ${ref('chartContainer')}></div>
       ${when(
         x => !x.hideLegends,
         html<T>`
-          <div class="legendcontainer" role="listbox" aria-label="${x => x.legendListLabel || 'Legends'}">
+          <div class="legendcontainer" role="listbox" aria-label="${x => x.legendListLabel}">
             ${repeat(
               x => x.uniqueLegends,
               html<ChartDataPoint, T>` <button

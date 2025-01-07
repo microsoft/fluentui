@@ -9,7 +9,7 @@ import {
   validateChartProps,
   wrapText,
 } from '../utils/chart-helpers.js';
-import { ChartDataPoint, ChartProps, Legend } from './donut-chart.options.js';
+import type { ChartDataPoint, ChartProps, Legend } from './donut-chart.options.js';
 
 export class DonutChart extends FASTElement {
   @attr({ converter: nullableNumberConverter })
@@ -55,7 +55,6 @@ export class DonutChart extends FASTElement {
     yPos: 0,
   };
 
-  public rootDiv!: HTMLDivElement;
   public chartWrapper!: HTMLDivElement;
   public group!: SVGGElement;
   public elementInternals: ElementInternals = this.attachInternals();
@@ -124,7 +123,7 @@ export class DonutChart extends FASTElement {
           return;
         }
 
-        const bounds = this.rootDiv.getBoundingClientRect();
+        const bounds = this.getBoundingClientRect();
 
         this.tooltipProps = {
           isVisible: true,
@@ -140,7 +139,7 @@ export class DonutChart extends FASTElement {
           return;
         }
 
-        const rootBounds = this.rootDiv.getBoundingClientRect();
+        const rootBounds = this.getBoundingClientRect();
         const arcBounds = path.getBoundingClientRect();
 
         this.tooltipProps = {
@@ -159,7 +158,7 @@ export class DonutChart extends FASTElement {
       });
     });
 
-    this.rootDiv.addEventListener('mouseleave', () => {
+    this.addEventListener('mouseleave', () => {
       this.tooltipProps = { isVisible: false, legend: '', yValue: '', color: '', xPos: 0, yPos: 0 };
     });
 

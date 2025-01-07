@@ -1,6 +1,6 @@
 import { Locator, test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
-import { ChartDataPoint, ChartProps } from './horizontal-bar-chart.options.js';
+import type { ChartDataPoint, ChartProps } from './horizontal-bar-chart.options.js';
 
 const chartPoints1: ChartDataPoint[] = [
   {

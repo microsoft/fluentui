@@ -2,7 +2,7 @@ import { html } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import { DonutChart as FluentDonutChart } from './donut-chart.js';
-import { ChartDataPoint, ChartProps } from './donut-chart.options.js';
+import type { ChartDataPoint, ChartProps } from './donut-chart.options.js';
 
 const points: ChartDataPoint[] = [
   {

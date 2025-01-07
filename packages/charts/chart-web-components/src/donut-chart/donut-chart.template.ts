@@ -1,6 +1,6 @@
 import { ElementViewTemplate, html, ref, repeat, when } from '@microsoft/fast-element';
 import type { DonutChart } from './donut-chart.js';
-import { Legend } from './donut-chart.options.js';
+import type { Legend } from './donut-chart.options.js';
 
 /**
  * Generates a template for the DonutChart component.
@@ -9,7 +9,7 @@ import { Legend } from './donut-chart.options.js';
  */
 export function donutChartTemplate<T extends DonutChart>(): ElementViewTemplate<T> {
   return html<T>`
-    <template ${ref('rootDiv')}>
+    <template>
       <div ${ref('chartWrapper')}>
         <svg class="chart" width="${x => x.width}" height="${x => x.height}">
           <g ${ref('group')} transform="translate(${x => x.width / 2}, ${x => x.height / 2})"></g>
@@ -18,7 +18,7 @@ export function donutChartTemplate<T extends DonutChart>(): ElementViewTemplate<
       ${when(
         x => !x.hideLegends,
         html<T>`
-          <div class="legend-container" role="listbox" aria-label="${x => x.legendListLabel || 'Legends'}">
+          <div class="legend-container" role="listbox" aria-label="${x => x.legendListLabel}">
             ${repeat(
               x => x.legends,
               html<Legend, T>` <button
