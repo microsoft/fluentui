@@ -180,12 +180,12 @@ export const Selector = () => {
     });
   };
 
-  const updateBehaviorDecision = (name, checked) => {
-    if (checked) {
+  const updateBehaviorDecision = (name, selected) => {
+    if (selected) {
       setSelectedBehaviours([...selectedBehaviours, name]);
     } else {
-      const newBehaviors = selectedBehaviours.filter(behavior => behavior !== name);
-      setSelectedBehaviours(newBehaviors);
+      const newSelectedBehaviors = selectedBehaviours.filter(behavior => behavior !== name);
+      setSelectedBehaviours(newSelectedBehaviors);
     }
   };
 
@@ -231,8 +231,9 @@ export const Selector = () => {
   };
 
   const updateComponentSelection = React.useCallback(
-    (name, checked) => {
-      if (checked) {
+    (name, selected) => {
+      setSelectedBehaviours([]);
+      if (selected) {
         // Find the definition and add the component based on the definition
         const definition = componentsDefinitions.current.find(definition => definition.name === name);
         if (!definition) {
