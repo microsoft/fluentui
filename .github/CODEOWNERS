@@ -349,9 +349,9 @@ packages/react-components/react-calendar-compat/stories @microsoft/cxe-prg
 packages/react-components/react-infolabel @microsoft/cxe-prg
 packages/react-components/react-infolabel/library @microsoft/cxe-prg
 packages/react-components/react-infolabel/stories @microsoft/cxe-prg
-packages/react-components/react-list-preview @microsoft/teams-prg
-packages/react-components/react-list-preview/library @microsoft/teams-prg
-packages/react-components/react-list-preview/stories @microsoft/teams-prg
+packages/react-components/react-list @microsoft/teams-prg
+packages/react-components/react-list/library @microsoft/teams-prg
+packages/react-components/react-list/stories @microsoft/teams-prg
 packages/react-components/react-motion @microsoft/teams-prg
 packages/react-components/react-motion/library @microsoft/teams-prg
 packages/react-components/react-motion/stories @microsoft/teams-prg
