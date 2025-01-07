@@ -108,6 +108,16 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   *@default false
+   *Used for showing complete y axis lables   */
+  showYAxisLables?: boolean;
+
+  /**
+   * @default alphabetical
+   * The prop used to decide order of string axis labels */
+  sortOrder?: 'none' | 'alphabetical';
 }
 
 /**

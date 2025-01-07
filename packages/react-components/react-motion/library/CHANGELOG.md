@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Thu, 28 Nov 2024 09:30:51 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Dec 2024 16:26:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.5)
+
+Mon, 16 Dec 2024 16:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.4..@fluentui/react-motion_v9.6.5)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.21.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-utilities to v9.18.19 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+
+## [9.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.4)
+
+Mon, 09 Dec 2024 17:38:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.3..@fluentui/react-motion_v9.6.4)
+
+### Patches
+
+- fix: avoid memory leak in Animation:finished ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by olfedias@microsoft.com)
+
+## [9.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.3)
+
+Fri, 06 Dec 2024 12:53:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.2..@fluentui/react-motion_v9.6.3)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.21.1 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-utilities to v9.18.18 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
 
 ## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.2)
 

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 07 Nov 2024 04:07:40 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Dec 2024 04:07:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.75](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.75)
+
+Mon, 23 Dec 2024 04:07:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.74..@fluentui/web-components_v3.0.0-beta.75)
+
+### Changes
+
+- fix tooltip positioning styles for 'below-end' option ([PR #33494](https://github.com/microsoft/fluentui/pull/33494) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.74](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.74)
+
+Fri, 06 Dec 2024 04:07:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.73..@fluentui/web-components_v3.0.0-beta.74)
+
+### Changes
+
+- add current-value attribute to text-input ([PR #33144](https://github.com/microsoft/fluentui/pull/33144) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.73](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.73)
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
@@ -7,6 +7,7 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import {
   IAccessibilityProps,
+  IChart,
   IDataPoint,
   IGroupedVerticalBarChartData,
   IHeatMapChartDataPoint,
@@ -439,6 +440,18 @@ export interface ICartesianChartProps {
    * @default true
    */
   useUTC?: boolean;
+
+  /**
+   * @default false
+   * Used for enabling negative values in Y axis.
+   */
+  supportNegativeData?: boolean;
+
+  /**
+   * Optional callback to access the IChart interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: IRefObject<IChart>;
 }
 
 export interface IYValueHover {
@@ -651,6 +664,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     axisData: IAxisData,
     isIntegralDataset: boolean,
     useSecondaryYScale?: boolean,
+    supportNegativeData?: boolean,
   ) => ScaleLinear<number, number, never>;
 
   /**
@@ -683,4 +697,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     isRtl: boolean,
     barWidth: number | undefined,
   ) => ScaleBand<string>;
+
+  /**
+   * Callback to access the public methods and properties of the component.
+   */
+  ref?: IRefObject<IChart>;
 }

@@ -646,6 +646,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       'aria-label': ariaLabel && !label ? ariaLabel : undefined,
     };
 
+    const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
+
     return (
       <div
         data-ktp-target={true}
@@ -679,6 +681,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-activedescendant={ariaActiveDescendantValue}
           aria-required={required}
           aria-disabled={disabled}
+          aria-invalid={hasErrorMessage}
           aria-controls={isOpen ? this._id + '-list' : undefined}
           spellCheck={false}
           defaultVisibleValue={this._currentVisibleValue}

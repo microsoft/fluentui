@@ -21,6 +21,7 @@ interface IVerticalStackedBarState {
   margins: {};
   enableGradient: boolean;
   roundCorners: boolean;
+  legendMultiSelect: boolean;
 }
 
 export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -41,6 +42,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       },
       enableGradient: false,
       roundCorners: false,
+      legendMultiSelect: false,
     };
   }
 
@@ -92,6 +94,10 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
 
   private _onRoundCornersChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ roundCorners: checked });
+  };
+
+  private _onToggleLegendMultiSelect = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ legendMultiSelect: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -307,6 +313,13 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
           <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onEnableGradientChange} />
           &nbsp;&nbsp;
           <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onRoundCornersChange} />
+          &nbsp;&nbsp;
+          <Toggle
+            label="Select Multiple Legends"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onToggleLegendMultiSelect}
+          />
         </div>
         {this.state.showAxisTitles && (
           <div style={rootStyle}>
@@ -321,6 +334,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               lineOptions={lineOptions}
               legendProps={{
                 allowFocusOnLegends: true,
+                canSelectMultipleLegends: this.state.legendMultiSelect,
               }}
               hideLabels={this.state.hideLabels}
               enableReflow={true}
@@ -344,6 +358,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               lineOptions={lineOptions}
               legendProps={{
                 allowFocusOnLegends: true,
+                canSelectMultipleLegends: this.state.legendMultiSelect,
               }}
               hideLabels={this.state.hideLabels}
               enableReflow={true}
