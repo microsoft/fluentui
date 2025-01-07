@@ -7,7 +7,7 @@ import {
   NavDrawerBody,
   NavDrawerHeader,
   NavDrawerProps,
-  // NavSize,
+  NavDensity,
   AppItem,
   AppItemStatic,
   SplitNavItem,
@@ -189,7 +189,7 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
   const appItemIconLabelId = useId('app-item-icon-label');
   const appItemStaticLabelId = useId('app-item-static-label');
 
-  // const [size, setNavSize] = React.useState<string>('small');
+  const [density, setNavDensity] = React.useState<NavDensity>('small');
   const [enabledLinks, setEnabledLinks] = React.useState(true);
   const [isAppItemIconPresent, setIsAppItemIconPresent] = React.useState(true);
   const [isAppItemStatic, setIsAppItemStatic] = React.useState(true);
@@ -197,15 +197,13 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
 
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
 
-  const appItemIcon = <PersonCircle24Regular />;
-
-  // const appItemIcon = isAppItemIconPresent ? (
-  //   size === 'small' ? (
-  //     <PersonCircle24Regular />
-  //   ) : (
-  //     <PersonCircle32Regular />
-  //   )
-  // ) : undefined;
+  const appItemIcon = isAppItemIconPresent ? (
+    density === 'small' ? (
+      <PersonCircle24Regular />
+    ) : (
+      <PersonCircle32Regular />
+    )
+  ) : undefined;
 
   const appItem = isAppItemStatic ? (
     <AppItemStatic icon={appItemIcon}>Contoso HR</AppItemStatic>
@@ -297,8 +295,7 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
 
   return (
     <div className={styles.root}>
-      {/* density={size} */}
-      <NavDrawer defaultSelectedValue="5" open={true} type={'inline'}>
+      <NavDrawer defaultSelectedValue="5" open={true} density={density} type={'inline'}>
         <NavDrawerHeader>
           <Tooltip content="Navigation" relationship="label">
             <Hamburger />
@@ -313,12 +310,15 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
       </NavDrawer>
       <div className={styles.content}>
         <div className={styles.field}>
-          <Label id={labelId}>Size</Label>
-          {/* onChange={(_, data) => setNavSize(data.value as NavSize)} */}
-          {/* <RadioGroup value={size} aria-labelledby={labelId}>
+          <Label id={labelId}>Density</Label>
+          <RadioGroup
+            value={density}
+            aria-labelledby={labelId}
+            onChange={(_, data) => setNavDensity(data.value as NavDensity)}
+          >
             <Radio value="medium" label="Medium" />
             <Radio value="small" label="Small" />
-          </RadioGroup> */}
+          </RadioGroup>
           <Label id={linkLabelId}>Links</Label>
           <Switch
             checked={enabledLinks}
