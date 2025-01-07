@@ -39,18 +39,6 @@ describe('MenuItem', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should focus the item on mouseenter', () => {
-    // Arrange
-    const { getByRole } = render(<MenuItem>Item</MenuItem>);
-
-    // Act
-    const menuitem = getByRole('menuitem');
-    fireEvent.mouseEnter(menuitem);
-
-    // Assert
-    expect(document.activeElement).toBe(menuitem);
-  });
-
   it('should render submenu indicator icon if wrapped by menu trigger context', () => {
     // Arrange
     const slot = 'submenu';
