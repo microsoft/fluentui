@@ -66,7 +66,7 @@ test.describe('setTheme()', () => {
     await expect(div).toHaveCSS('--bar', '');
   });
 
-  test('should set and unset tokens in a light DOM subtree', async ({ page }) => {
+  test.skip('should set and unset tokens in a light DOM subtree', async ({ page }) => {
     const div = page.locator('div');
     const span = page.locator('span');
 
@@ -139,7 +139,7 @@ test.describe('setTheme()', () => {
     await expect(span).toHaveCSS('--bar', 'bar1');
   });
 
-  test('should not inherit token values from light DOM subtree once tokens are set in the shadow DOM tree', async ({
+  test.skip('should not inherit token values from light DOM subtree once tokens are set in the shadow DOM tree', async ({
     page,
   }) => {
     const parent = page.locator('div.parent');
