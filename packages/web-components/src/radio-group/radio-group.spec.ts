@@ -249,9 +249,6 @@ test.describe('RadioGroup', () => {
 
     await radios.nth(0).evaluate((node: Radio) => {
       node.checked = true;
-    });
-
-    await radios.nth(0).evaluate((node: Radio) => {
       node.disabled = true;
     });
 
