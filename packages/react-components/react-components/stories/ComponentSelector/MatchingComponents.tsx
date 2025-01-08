@@ -3,19 +3,9 @@ import { Divider, Link, Text, makeStyles } from '@fluentui/react-components';
 
 import { getComponentStoryUrl } from './utils';
 
-const useStyles = makeStyles({
-  heading: { margin: '30px 0 10px 0' },
-  foundMessage: { 'margin-bottom': '10px' },
-});
-
 export const MatchingComponents = ({ components }) => {
-  const classes = useStyles();
-
   return (
     <>
-      <h2 id="matching-heading" className={classes.heading}>
-        Matching Components {components.length}
-      </h2>
       <div role="group" aria-labelledby="matching-heading">
         {components.map((component, index) => {
           return (

@@ -434,7 +434,15 @@ export const Selector = () => {
           <BehaviorSelection updateBehaviorDecision={updateBehaviorDecision} />
         </>
       )}
-      <MatchingComponents components={matchingComponents} />
+      {(matchingComponents.length > 0 || (matchingComponents.length === 0 && selectedBehaviours.length > 0)) && (
+        <h2 id="matching-heading" className={classes.heading}>
+          Matching Components {matchingComponents.length}
+        </h2>
+      )}
+      {matchingComponents.length === 0 && selectedBehaviours.length > 0 && (
+        <Text>No components match the given answers.</Text>
+      )}
+      {matchingComponents.length > 0 && <MatchingComponents components={matchingComponents} />}
     </>
   );
 };
