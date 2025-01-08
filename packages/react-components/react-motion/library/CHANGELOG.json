@@ -2,6 +2,21 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2025 18:33:34 GMT",
+      "tag": "@fluentui/react-motion_v9.6.6",
+      "version": "9.6.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "7f1647fadcd193c0d16e51b314d299ee19ae5746",
+            "comment": "fix: handle case when Animation.persist() does not exist"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Dec 2024 16:26:49 GMT",
       "tag": "@fluentui/react-motion_v9.6.5",
       "version": "9.6.5",

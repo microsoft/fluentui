@@ -5,7 +5,7 @@ import { Nav } from '@fluentui/react-nav-preview';
 // import bestPracticesMd from './NavBestPractices.md';
 
 export { Basic } from '../NavDrawer/Basic.stories';
-export { VariableSizedItems } from '../NavDrawer/VariableSizedItems.stories';
+export { VariableDensityItems } from '../NavDrawer/VariableDensityItems.stories';
 export { Controlled } from '../NavDrawer/Controlled.stories';
 export { SplitNavItems } from '../NavDrawer/SplitNavItems.stories';
 

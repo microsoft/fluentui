@@ -57,7 +57,7 @@ export type AppItemSlots = {
 
 // @public
 export type AppItemState = ComponentState<AppItemSlots> & {
-    size: NavSize;
+    density: NavDensity;
 };
 
 // @public
@@ -77,7 +77,7 @@ export type AppItemStaticSlots = {
 
 // @public
 export type AppItemStaticState = ComponentState<AppItemStaticSlots> & {
-    size: NavSize;
+    density: NavDensity;
 };
 
 // @public
@@ -117,7 +117,7 @@ export type NavCategoryItemSlots = {
 // @public
 export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> & NavCategoryItemContextValue & {
     selected: boolean;
-    size: NavSize;
+    density: NavDensity;
 };
 
 // @public
@@ -133,7 +133,7 @@ export type NavCategoryState = NavCategoryContextValue & Required<NavCategoryPro
 export const navClassNames: SlotClassNames<NavSlots>;
 
 // @public (undocumented)
-export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'size'> & {
+export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'density'> & {
     onRegister: RegisterNavItemEventHandler;
     onUnregister: RegisterNavItemEventHandler;
     onSelect: EventHandler<OnNavItemSelectData>;
@@ -152,6 +152,9 @@ export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue'
 export type NavContextValues = {
     nav: NavContextValue;
 };
+
+// @public
+export type NavDensity = 'small' | 'medium';
 
 // @public
 export const NavDivider: ForwardRefComponent<NavDividerProps>;
@@ -254,7 +257,7 @@ export type NavItemSlots = {
 // @public
 export type NavItemState = ComponentState<NavItemSlots> & Pick<NavItemProps, 'value'> & {
     selected: boolean;
-    size: NavSize;
+    density: NavDensity;
 };
 
 // @public
@@ -271,7 +274,7 @@ export type NavProps = ComponentProps<NavSlots> & {
     selectedCategoryValue?: NavItemValue;
     multiple?: boolean;
     onNavCategoryItemToggle?: EventHandler<OnNavItemSelectData>;
-    size?: NavSize;
+    density?: NavDensity;
 };
 
 // @public (undocumented)
@@ -293,9 +296,6 @@ export type NavSectionHeaderSlots = {
 
 // @public
 export type NavSectionHeaderState = ComponentState<NavSectionHeaderSlots>;
-
-// @public
-export type NavSize = 'small' | 'medium';
 
 // @public (undocumented)
 export type NavSlots = {
@@ -344,7 +344,7 @@ export type NavSubItemSlots = {
 // @public
 export type NavSubItemState = ComponentState<NavSubItemSlots> & Pick<NavSubItemProps, 'value'> & {
     selected: boolean;
-    size: NavSize;
+    density: NavDensity;
 };
 
 // @public (undocumented)
@@ -412,7 +412,7 @@ export type SplitNavItemSlots = {
 
 // @public
 export type SplitNavItemState = ComponentState<SplitNavItemSlots> & {
-    size: NavSize;
+    density: NavDensity;
     isSubNav: boolean;
 };
 

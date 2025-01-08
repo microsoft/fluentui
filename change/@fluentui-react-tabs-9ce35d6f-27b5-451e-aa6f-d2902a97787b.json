@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update tab border color for better visibility in high contrast mode",
-  "packageName": "@fluentui/react-tabs",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

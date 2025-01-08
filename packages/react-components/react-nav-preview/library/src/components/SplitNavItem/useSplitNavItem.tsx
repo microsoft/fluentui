@@ -33,7 +33,7 @@ export const useSplitNavItem_unstable = (
     children,
   } = props;
 
-  const { size = 'medium' } = useNavContext_unstable();
+  const { density = 'medium' } = useNavContext_unstable();
 
   const { value: potentialParenValue } = useNavCategoryContext_unstable();
 
@@ -116,7 +116,7 @@ export const useSplitNavItem_unstable = (
     actionButtonTooltip: actionButtonTooltipShorthand,
     toggleButtonTooltip: toggleButtonTooltipShorthand,
     menuButtonTooltip: menuButtonTooltipShorthand,
-    size,
+    density,
     isSubNav,
   };
 };

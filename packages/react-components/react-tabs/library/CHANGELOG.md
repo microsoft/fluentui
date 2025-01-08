@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Mon, 16 Dec 2024 16:26:45 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2025 18:33:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.6.6)
+
+Wed, 08 Jan 2025 18:33:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.6.5..@fluentui/react-tabs_v9.6.6)
+
+### Patches
+
+- fix: update tab border color for better visibility in high contrast mode ([PR #33573](https://github.com/microsoft/fluentui/pull/33573) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.49 ([PR #33550](https://github.com/microsoft/fluentui/pull/33550) by beachball)
 
 ## [9.6.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.6.5)
 
