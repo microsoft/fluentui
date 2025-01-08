@@ -264,6 +264,10 @@ describe('Build Executor', () => {
       "
     `);
 
+    // ==================
+    // update api public surface to simulate out of date api.md which will fail the executor
+    // ==================
+
     const publicApiFilePath = join(workspaceRoot, 'libs/proj/src/index.ts');
     const originalApiContent = readFileSync(publicApiFilePath);
     appendFileSync(publicApiFilePath, `export const hello='new public api';\n`);
