@@ -16,6 +16,7 @@ interface IGCBasicExampleState {
   hideMinMax: boolean;
   enableGradient: boolean;
   roundedCorners: boolean;
+  legendMultiSelect: boolean;
 }
 
 export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleState> {
@@ -29,6 +30,7 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
       hideMinMax: false,
       enableGradient: false,
       roundedCorners: false,
+      legendMultiSelect: false,
     };
   }
 
@@ -99,6 +101,14 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
             checked={this.state.roundedCorners}
             onChange={this._onToggleRoundedCorners}
           />
+          &nbsp;&nbsp;
+          <Toggle
+            label="Select Multiple Legends"
+            onText="ON"
+            offText="OFF"
+            checked={this.state.legendMultiSelect}
+            onChange={this._onToggleLegendMultiSelect}
+          />
         </div>
 
         <GaugeChart
@@ -129,6 +139,9 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
           variant={GaugeChartVariant.MultipleSegments}
           enableGradient={this.state.enableGradient}
           roundCorners={this.state.roundedCorners}
+          legendProps={{
+            canSelectMultipleLegends: this.state.legendMultiSelect,
+          }}
         />
       </>
     );
@@ -154,5 +167,9 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
 
   private _onToggleRoundedCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ roundedCorners: checked });
+  };
+
+  private _onToggleLegendMultiSelect = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ legendMultiSelect: checked });
   };
 }

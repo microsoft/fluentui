@@ -18,6 +18,7 @@ interface IHorizontalBarChartWithAxisState {
   useSingleColor: boolean;
   enableGradient: boolean;
   roundCorners: boolean;
+  selectMultipleLegends: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -38,6 +39,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
       useSingleColor: false,
       enableGradient: false,
       roundCorners: false,
+      selectMultipleLegends: false,
     };
   }
 
@@ -69,6 +71,10 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
 
   private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ roundCorners: checked });
+  };
+
+  private _onToggleRoundMultipleLegendSelection = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ selectMultipleLegends: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -148,6 +154,13 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
           <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
           &nbsp;&nbsp;
           <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
+          &nbsp;&nbsp;
+          <Toggle
+            label="Select multiple legends"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onToggleRoundMultipleLegendSelection}
+          />
         </div>
         <br />
 
@@ -168,6 +181,9 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
             enableReflow={true}
             enableGradient={this.state.enableGradient}
             roundCorners={this.state.roundCorners}
+            legendProps={{
+              canSelectMultipleLegends: this.state.selectMultipleLegends,
+            }}
           />
         </div>
       </>

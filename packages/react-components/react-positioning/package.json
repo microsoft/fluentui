@@ -16,7 +16,7 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.2.0",
+    "@floating-ui/dom": "^1.6.12",
     "@floating-ui/devtools": "0.2.1",
     "@fluentui/react-shared-contexts": "^9.21.2",
     "@fluentui/react-theme": "^9.1.24",

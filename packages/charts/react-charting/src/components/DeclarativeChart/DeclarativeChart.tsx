@@ -1,15 +1,21 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+import { useTheme } from '@fluentui/react';
+import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
 import {
+  isArrayOrTypedArray,
+  isDateArray,
+  isNumberArray,
+  isMonthArray,
+  sanitizeJson,
+  updateXValues,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,
   transformPlotlyJsonToScatterChartProps,
   transformPlotlyJsonToHorizontalBarWithAxisProps,
-  isDateArray,
-  isNumberArray,
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
@@ -24,12 +30,8 @@ import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
-import { useTheme } from '@fluentui/react/lib/Theme';
-
-export const UseIsDarkTheme = (): boolean => {
-  const theme = useTheme();
-  return theme?.isInverted ?? false;
-};
+import { IImageExportOptions, toImage } from './imageExporter';
+import { IChart } from '../../types/index';
 
 /**
  * DeclarativeChart schema.
@@ -56,6 +58,19 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
    * Callback when an event occurs
    */
   onSchemaChange?: (eventData: Schema) => void;
+
+  /**
+   * Optional callback to access the IDeclarativeChart interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: IRefObject<IDeclarativeChart>;
+}
+
+/**
+ * {@docCategory DeclarativeChart}
+ */
+export interface IDeclarativeChart {
+  exportAsImage: (opts?: IImageExportOptions) => Promise<string>;
 }
 
 const useColorMapping = () => {
@@ -71,15 +86,23 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   HTMLDivElement,
   DeclarativeChartProps
 >((props, forwardedRef) => {
-  const { plotlySchema } = props.chartSchema;
-  const { data, layout, selectedLegends } = plotlySchema;
+  const { plotlySchema } = sanitizeJson(props.chartSchema);
+  const { data, layout } = plotlySchema;
+  let { selectedLegends } = plotlySchema;
   const xValues = data[0].x;
   const isXDate = isDateArray(xValues);
   const isXNumber = isNumberArray(xValues);
+  const isXMonth = isMonthArray(xValues);
   const colorMap = useColorMapping();
-  const isDarkTheme = UseIsDarkTheme();
+  const theme = useTheme();
+  const isDarkTheme = theme?.isInverted ?? false;
+  const chartRef = React.useRef<IChart>(null);
 
-  const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends ?? []);
+  if (!isArrayOrTypedArray(selectedLegends)) {
+    selectedLegends = [];
+  }
+
+  const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends);
   const onActiveLegendsChange = (keys: string[]) => {
     setActiveLegends(keys);
     if (props.onSchemaChange) {
@@ -87,10 +110,42 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     }
   };
 
+  React.useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const { plotlySchema } = sanitizeJson(props.chartSchema);
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const { selectedLegends } = plotlySchema;
+    setActiveLegends(selectedLegends ?? []);
+  }, [props.chartSchema]);
+
   const legendProps = {
     canSelectMultipleLegends: false,
     onChange: onActiveLegendsChange,
-    ...(activeLegends.length > 0 && { selectedLegend: activeLegends[0] }),
+    selectedLegend: activeLegends.slice(0, 1)[0],
+  };
+
+  const exportAsImage = React.useCallback(
+    (opts?: IImageExportOptions) => {
+      return toImage(chartRef.current?.chartContainer, {
+        background: theme.semanticColors.bodyBackground,
+        ...opts,
+      });
+    },
+    [theme],
+  );
+
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      exportAsImage,
+    }),
+    [exportAsImage],
+  );
+
+  const multiSelectLegendProps = {
+    ...legendProps,
+    canSelectMultipleLegends: true,
+    selectedLegends: activeLegends,
   };
 
   switch (data[0].type) {
@@ -98,7 +153,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <DonutChart
           {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={legendProps}
+          legendProps={multiSelectLegendProps}
+          componentRef={chartRef}
+          // Bubble event to prevent right click to open menu on the callout
+          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
       );
     case 'bar':
@@ -107,7 +165,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         return (
           <HorizontalBarChartWithAxis
             {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap, isDarkTheme)}
-            legendProps={legendProps}
+            legendProps={multiSelectLegendProps}
+            componentRef={chartRef}
+            calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
           />
         );
       } else {
@@ -115,55 +175,98 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           return (
             <GroupedVerticalBarChart
               {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap, isDarkTheme)}
-              legendProps={legendProps}
+              legendProps={multiSelectLegendProps}
+              componentRef={chartRef}
+              calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
             />
           );
         }
         return (
           <VerticalStackedBarChart
             {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
-            legendProps={legendProps}
+            legendProps={multiSelectLegendProps}
+            componentRef={chartRef}
+            calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
           />
         );
       }
     case 'scatter':
       const isAreaChart = data.some((series: any) => series.fill === 'tonexty' || series.fill === 'tozeroy');
-      if (isXDate || isXNumber) {
+      const renderChart = (chartProps: any) => {
         if (isAreaChart) {
           return (
             <AreaChart
-              {...transformPlotlyJsonToScatterChartProps({ data, layout }, true, colorMap, isDarkTheme)}
-              legendProps={legendProps}
+              {...chartProps}
+              legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends }}
             />
           );
         }
         return (
           <LineChart
-            {...transformPlotlyJsonToScatterChartProps({ data, layout }, false, colorMap, isDarkTheme)}
-            legendProps={{
-              onChange: onActiveLegendsChange,
-              canSelectMultipleLegends: true,
-              selectedLegends: activeLegends,
+            {...{
+              ...chartProps,
+              legendProps: {
+                onChange: onActiveLegendsChange,
+                canSelectMultipleLegends: true,
+                selectedLegends: activeLegends,
+              },
             }}
           />
         );
+      };
+      if (isXDate || isXNumber) {
+        const chartProps = {
+          ...transformPlotlyJsonToScatterChartProps({ data, layout }, isAreaChart, colorMap, isDarkTheme),
+          legendProps,
+          componentRef: chartRef,
+          calloutProps: { layerProps: { eventBubblingEnabled: true } },
+        };
+        return renderChart(chartProps);
+      } else if (isXMonth) {
+        const updatedData = data.map((dataPoint: any) => ({
+          ...dataPoint,
+          x: updateXValues(dataPoint.x),
+        }));
+        const chartProps = {
+          ...transformPlotlyJsonToScatterChartProps({ data: updatedData, layout }, isAreaChart, colorMap, isDarkTheme),
+          legendProps,
+          componentRef: chartRef,
+          calloutProps: { layerProps: { eventBubblingEnabled: true } },
+        };
+        return renderChart(chartProps);
       }
       return (
         <VerticalStackedBarChart
           {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={legendProps}
+          legendProps={multiSelectLegendProps}
+          componentRef={chartRef}
+          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
       );
     case 'heatmap':
-      return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(plotlySchema)} legendProps={legendProps} />;
+      return (
+        <HeatMapChart
+          {...transformPlotlyJsonToHeatmapProps(plotlySchema)}
+          componentRef={chartRef}
+          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
+        />
+      );
     case 'sankey':
-      return <SankeyChart {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap, isDarkTheme)} />;
+      return (
+        <SankeyChart
+          {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap, isDarkTheme)}
+          componentRef={chartRef}
+          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
+        />
+      );
     case 'indicator':
       if (data?.[0]?.mode?.includes('gauge')) {
         return (
           <GaugeChart
             {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)}
-            legendProps={legendProps}
+            legendProps={multiSelectLegendProps}
+            componentRef={chartRef}
+            calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
           />
         );
       }
@@ -172,11 +275,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <VerticalBarChart
           {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={legendProps}
+          legendProps={multiSelectLegendProps}
+          componentRef={chartRef}
+          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
         />
       );
     default:
-      return <div>Unsupported Schema</div>;
+      throw new Error('Unsupported chart schema');
   }
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
