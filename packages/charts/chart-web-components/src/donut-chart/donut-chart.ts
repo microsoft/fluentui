@@ -41,6 +41,21 @@ export class DonutChart extends FASTElement {
 
   @observable
   public activeLegend: string = '';
+  protected activeLegendChanged(oldValue: string, newValue: string) {
+    if (newValue === '') {
+      this._arcs?.forEach(arc => arc.classList.remove('inactive'));
+    } else {
+      this._arcs?.forEach(arc => {
+        if (arc.getAttribute('data-id') === newValue) {
+          arc.classList.remove('inactive');
+        } else {
+          arc.classList.add('inactive');
+        }
+      });
+    }
+
+    this._updateTextInsideDonut();
+  }
 
   @observable
   public isLegendSelected: boolean = false;
@@ -54,6 +69,9 @@ export class DonutChart extends FASTElement {
     xPos: 0,
     yPos: 0,
   };
+  protected tooltipPropsChanged(oldValue: any, newValue: any) {
+    this._updateTextInsideDonut();
+  }
 
   public chartWrapper!: HTMLDivElement;
   public group!: SVGGElement;
@@ -174,14 +192,14 @@ export class DonutChart extends FASTElement {
     }
   }
 
-  public getLegends(): Legend[] {
+  protected getLegends(): Legend[] {
     return this.data.chartData.map((d, index) => ({
       title: d.legend,
       color: d.color!,
     }));
   }
 
-  public handleLegendMouseoverAndFocus(legendTitle: string) {
+  protected handleLegendMouseoverAndFocus(legendTitle: string) {
     if (this.isLegendSelected) {
       return;
     }
@@ -189,7 +207,7 @@ export class DonutChart extends FASTElement {
     this.activeLegend = legendTitle;
   }
 
-  public handleLegendMouseoutAndBlur() {
+  protected handleLegendMouseoutAndBlur() {
     if (this.isLegendSelected) {
       return;
     }
@@ -197,7 +215,7 @@ export class DonutChart extends FASTElement {
     this.activeLegend = '';
   }
 
-  public handleLegendClick(legendTitle: string) {
+  protected handleLegendClick(legendTitle: string) {
     if (this.isLegendSelected && this.activeLegend === legendTitle) {
       this.activeLegend = '';
       this.isLegendSelected = false;
@@ -205,22 +223,6 @@ export class DonutChart extends FASTElement {
       this.activeLegend = legendTitle;
       this.isLegendSelected = true;
     }
-  }
-
-  public activeLegendChanged(oldValue: string, newValue: string) {
-    if (newValue === '') {
-      this._arcs?.forEach(arc => arc.classList.remove('inactive'));
-    } else {
-      this._arcs?.forEach(arc => {
-        if (arc.getAttribute('data-id') === newValue) {
-          arc.classList.remove('inactive');
-        } else {
-          arc.classList.add('inactive');
-        }
-      });
-    }
-
-    this._updateTextInsideDonut();
   }
 
   private _getTextInsideDonut(valueInsideDonut: string) {
@@ -232,9 +234,7 @@ export class DonutChart extends FASTElement {
           dataPoint.legend === this.activeLegend ||
           (this.tooltipProps.isVisible && dataPoint.legend === this.tooltipProps.legend),
       );
-      textInsideDonut = highlightedDataPoint!.yAxisCalloutData
-        ? highlightedDataPoint!.yAxisCalloutData
-        : highlightedDataPoint!.data.toLocaleString();
+      textInsideDonut = highlightedDataPoint!.yAxisCalloutData ?? highlightedDataPoint!.data.toLocaleString();
     }
 
     return textInsideDonut;
@@ -253,9 +253,5 @@ export class DonutChart extends FASTElement {
     for (let i = 0; i < lines.length; i++) {
       lines[i].setAttribute('dy', `${(start + i) * lineHeight}`);
     }
-  }
-
-  public tooltipPropsChanged(oldValue: any, newValue: any) {
-    this._updateTextInsideDonut();
   }
 }
