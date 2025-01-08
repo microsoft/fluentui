@@ -96,8 +96,7 @@ export const Default = () => {
 
   const onAlphaChange: SpinButtonProps['onChange'] = React.useCallback(
     (_ev, data) => {
-      const value = data.value ?? parseFloat(data.displayValue ?? 
-      '');
+      const value = data.value ?? parseFloat(data.displayValue ?? '');
 
       if (Number.isNaN(value) || value < 0 || value > 1) {
         return;
@@ -109,8 +108,8 @@ export const Default = () => {
         setColor(newColor.toHsv());
         setHex(newColor.toHex());
         setRgb(newColor.toRgb());
+        setAlpha(newColor.a);
       }
-      setAlpha(newColor.a);
     },
     [setAlpha, setRgb, setHex, setColor, color],
   );
