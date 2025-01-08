@@ -76,6 +76,32 @@ export class HorizontalBarChart extends FASTElement {
     this.elementInternals.role = 'region';
   }
 
+  public handleLegendMouseoverAndFocus = (legendTitle: string) => {
+    if (this.isLegendSelected) {
+      return;
+    }
+
+    this.activeLegend = legendTitle;
+  };
+
+  public handleLegendMouseoutAndBlur = () => {
+    if (this.isLegendSelected) {
+      return;
+    }
+
+    this.activeLegend = '';
+  };
+
+  public handleLegendClick = (legendTitle: string) => {
+    if (this.isLegendSelected && this.activeLegend === legendTitle) {
+      this.activeLegend = '';
+      this.isLegendSelected = false;
+    } else {
+      this.activeLegend = legendTitle;
+      this.isLegendSelected = true;
+    }
+  };
+
   connectedCallback() {
     super.connectedCallback();
 
@@ -433,30 +459,4 @@ export class HorizontalBarChart extends FASTElement {
 
     return containerDiv;
   }
-
-  public handleLegendMouseoverAndFocus = (legendTitle: string) => {
-    if (this.isLegendSelected) {
-      return;
-    }
-
-    this.activeLegend = legendTitle;
-  };
-
-  public handleLegendMouseoutAndBlur = () => {
-    if (this.isLegendSelected) {
-      return;
-    }
-
-    this.activeLegend = '';
-  };
-
-  public handleLegendClick = (legendTitle: string) => {
-    if (this.isLegendSelected && this.activeLegend === legendTitle) {
-      this.activeLegend = '';
-      this.isLegendSelected = false;
-    } else {
-      this.activeLegend = legendTitle;
-      this.isLegendSelected = true;
-    }
-  };
 }

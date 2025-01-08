@@ -8,7 +8,6 @@ import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
-import { Selection as Selection_2 } from 'd3-selection';
 
 // Warning: (ae-missing-release-tag) "DonutChart" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -18,7 +17,7 @@ export class DonutChart extends FASTElement {
     // (undocumented)
     activeLegend: string;
     // (undocumented)
-    activeLegendChanged(oldValue: string, newValue: string): void;
+    protected activeLegendChanged(oldValue: string, newValue: string): void;
     // (undocumented)
     chartWrapper: HTMLDivElement;
     // (undocumented)
@@ -29,8 +28,6 @@ export class DonutChart extends FASTElement {
     data: ChartProps_2;
     // (undocumented)
     elementInternals: ElementInternals;
-    // (undocumented)
-    getLegends(): Legend[];
     // (undocumented)
     group: SVGGElement;
     // (undocumented)
@@ -65,7 +62,7 @@ export class DonutChart extends FASTElement {
         yPos: number;
     };
     // (undocumented)
-    tooltipPropsChanged(oldValue: any, newValue: any): void;
+    protected tooltipPropsChanged(oldValue: any, newValue: any): void;
     // (undocumented)
     valueInsideDonut?: string;
     // (undocumented)
@@ -89,15 +86,13 @@ export class HorizontalBarChart extends FASTElement {
     // (undocumented)
     activeLegend: string;
     // (undocumented)
-    activeLegendChanged: (oldValue: string, newValue: string) => void;
+    protected activeLegendChanged: (oldValue: string, newValue: string) => void;
     // (undocumented)
     chartContainer: HTMLDivElement;
     // (undocumented)
     chartTitle?: string;
     // (undocumented)
     connectedCallback(): void;
-    // (undocumented)
-    _createBarsAndLegends(data: ChartProps, barNo?: number): Selection_2<HTMLDivElement, undefined, null, undefined>;
     // Warning: (ae-forgotten-export) The symbol "ChartProps" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
@@ -120,8 +115,6 @@ export class HorizontalBarChart extends FASTElement {
     isLegendSelected: boolean;
     // (undocumented)
     legendListLabel?: string;
-    // (undocumented)
-    renderChart(): void;
     // (undocumented)
     tooltipProps: {
         isVisible: boolean;
