@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: release stable",
-  "packageName": "@fluentui/react-list",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}

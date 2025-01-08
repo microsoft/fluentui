@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-color-picker-preview
 
-This log was last generated on Mon, 16 Dec 2024 16:26:48 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2025 18:33:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.1.3)
+
+Wed, 08 Jan 2025 18:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker-preview_v0.1.2..@fluentui/react-color-picker-preview_v0.1.3)
+
+### Patches
+
+- fix: contrast border of thumb ([PR #33526](https://github.com/microsoft/fluentui/pull/33526) by vkozlova@microsoft.com)
+- feat: added aria-attributes to the ColorPicker ([PR #33543](https://github.com/microsoft/fluentui/pull/33543) by vkozlova@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.49 ([PR #33550](https://github.com/microsoft/fluentui/pull/33550) by beachball)
 
 ## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.1.2)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance-griffel",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2025 18:33:36 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.13",
+      "version": "9.0.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.19.3",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:01:11 GMT",
       "tag": "@fluentui/react-conformance-griffel_v9.0.12",
       "version": "9.0.12",

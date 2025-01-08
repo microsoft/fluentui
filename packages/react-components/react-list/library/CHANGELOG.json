@@ -1,6 +1,33 @@
 {
-  "name": "@fluentui/react-list-preview",
+  "name": "@fluentui/react-list",
   "entries": [
+    {
+      "date": "Wed, 08 Jan 2025 18:33:34 GMT",
+      "tag": "@fluentui/react-list_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "aa6e5ddc04518065cd0a25bcdd5c91d2c1615bbd",
+            "comment": "feat: release stable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list",
+            "comment": "Bump @fluentui/react-checkbox to v9.2.45",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.49",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb"
+          }
+        ]
+      }
+    },
     {
       "date": "Mon, 16 Dec 2024 16:26:49 GMT",
       "tag": "@fluentui/react-list-preview_v0.4.4",
