@@ -67,11 +67,16 @@ export const Default = () => {
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
   const [hex, setHex] = React.useState(tinycolor(color).toHexString());
   const [rgb, setRgb] = React.useState(tinycolor(color).toRgb());
+  const [namedColor, setNamedColor] = React.useState('');
 
   const handleChange: ColorPickerProps['onColorChange'] = (_, data) => {
     setColor({ ...data.color, a: data.color.a ?? 1 });
     setHex(tinycolor(data.color).toHexString());
     setRgb(tinycolor(data.color).toRgb());
+    const _namedColor = tinycolor(`hsl(${data.color.h},100%,50%)`).toName();
+    if (_namedColor) {
+      setNamedColor(_namedColor);
+    }
   };
 
   const onRgbChange = (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => {
@@ -91,12 +96,18 @@ export const Default = () => {
     }
   };
 
+  const colorAriaAttributes = {
+    'aria-label': 'ColorPicker',
+    'aria-roledescription': '2D slider',
+    'aria-valuetext': `Saturation ${color.s * 100}, Brightness: ${color.v * 100}, ${namedColor}`,
+  };
+
   return (
     <div className={styles.example}>
       <ColorPicker color={color} onColorChange={handleChange}>
-        <ColorArea />
-        <ColorSlider />
-        <AlphaSlider />
+        <ColorArea inputX={colorAriaAttributes} inputY={colorAriaAttributes} />
+        <ColorSlider aria-label="Hue" aria-valuetext={`${color.h}°, ${namedColor}`} />
+        <AlphaSlider aria-label="Alpha" aria-valuetext={`${color.a * 100}%`} />
       </ColorPicker>
       <div className={styles.inputFields}>
         <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toRgbString() }} />

@@ -27,13 +27,25 @@ export const AlphaSliderExample = (props: Partial<AlphaSliderProps>) => {
   const styles = useStyles();
 
   const [color, setColor] = React.useState(COLOR);
-  const onSliderChange: AlphaSliderProps['onChange'] = (_, data) => setColor({ ...data.color, a: data.color.a ?? 1 });
+  const [value, setValue] = React.useState(COLOR.a * 100);
+  const onSliderChange: AlphaSliderProps['onChange'] = (_, data) => {
+    const alpha = data.color.a ?? 1;
+    setColor({ ...data.color, a: alpha });
+    setValue(alpha * 100);
+  };
   const resetSlider = () => setColor(COLOR);
 
   return (
     <div className={styles.example}>
-      <AlphaSlider color={color} onChange={onSliderChange} {...props} />
-      <AlphaSlider color={color} onChange={onSliderChange} vertical {...props} />
+      <AlphaSlider color={color} onChange={onSliderChange} aria-valuetext={`${value}%`} aria-label="Alpha" {...props} />
+      <AlphaSlider
+        color={color}
+        onChange={onSliderChange}
+        aria-valuetext={`${value}%`}
+        aria-label="Vertical alpha"
+        vertical
+        {...props}
+      />
       <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toRgbString() }} />
       <Button onClick={resetSlider}>Reset</Button>
     </div>
