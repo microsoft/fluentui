@@ -204,7 +204,7 @@ export const DisabledItems: Story = {
   },
 };
 
-export const DisabledAndChheckedItem: Story = {
+export const DisabledAndCheckedItem: Story = {
   args: {
     orientation: RadioGroupOrientation.vertical,
     id: 'radio-group-disabled-and-checked-item',
