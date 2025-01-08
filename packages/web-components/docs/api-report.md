@@ -3045,7 +3045,7 @@ export class RadioGroup extends FASTElement {
     // @internal
     protected checkedIndexChanged(prev: number | undefined, next: number): void;
     // @internal
-    checkRadio(index?: number): void;
+    checkRadio(index?: number, shouldEmit?: boolean): void;
     checkValidity(): boolean;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
@@ -4193,30 +4193,6 @@ export const ValidationFlags: {
 
 // @public (undocumented)
 export type ValidationFlags = ValuesOf<typeof ValidationFlags>;
-
-// @public
-export const zIndexBackground = "var(--zIndexBackground)";
-
-// @public
-export const zIndexContent = "var(--zIndexContent)";
-
-// @public
-export const zIndexDebug = "var(--zIndexDebug)";
-
-// @public
-export const zIndexFloating = "var(--zIndexFloating)";
-
-// @public
-export const zIndexMessages = "var(--zIndexMessages)";
-
-// @public
-export const zIndexOverlay = "var(--zIndexOverlay)";
-
-// @public
-export const zIndexPopup = "var(--zIndexPopup)";
-
-// @public
-export const zIndexPriority = "var(--zIndexPriority)";
 
 // Warnings were encountered during analysis:
 //
