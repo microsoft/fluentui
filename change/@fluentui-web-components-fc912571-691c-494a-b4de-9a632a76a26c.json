@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: radio-group emit change with keyboard and disabled radio unchecks",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
