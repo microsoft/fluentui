@@ -16,7 +16,9 @@ import {
   makeStyles,
   tokens,
   useId,
+  Subtitle2,
 } from '@fluentui/react-components';
+import { ArrowDownRegular } from '@fluentui/react-icons';
 
 import { removeFromArray, getComponentStoryUrl, getAllQuestions } from './utils';
 import questions from './selection-logic/Questions.json';
@@ -84,6 +86,21 @@ const useStyles = makeStyles({
   },
   radioItem: {
     display: 'flex',
+  },
+  selectedItemTag: {
+    color: 'white',
+    backgroundColor: '#5b5fc7',
+  },
+  selectedItemsContainer: {
+    marginLeft: '10px',
+  },
+  selectedComponentTitle: {
+    marginBottom: '10px',
+  },
+  selectedItemsAndNextButtonContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    paddingRight: '50px',
   },
 });
 
@@ -344,22 +361,47 @@ export const Selector = () => {
           <Field label="Filter components">
             <Input value={filterText} onChange={onFilterChange} />
           </Field>
+          <div>
+            <Text role="status">{filteredComponentsDefinitions.length} components available.</Text>
+          </div>
           <h2>Choose Component</h2>
           {selectedComponents.length > 0 && (
             <>
-              <Text>Selected components:</Text>
-              <TagGroup onDismiss={onSelectedComponentDismiss} aria-label="Selected components">
-                {selectedComponents.map(component => (
-                  <Tag key={component.name} value={component.name} dismissible dismissIcon={{ 'aria-label': 'Remove' }}>
-                    {component.displayName}
-                  </Tag>
-                ))}
-              </TagGroup>
-              <Button onClick={onRemoveAllComponentsClick}>Clear components selection</Button>
+              <div className={classes.selectedComponentTitle}>
+                <Subtitle2>Selected components</Subtitle2>
+              </div>
+              <div className={classes.selectedItemsAndNextButtonContainer}>
+                <div>
+                  <Button shape="circular" onClick={onRemoveAllComponentsClick}>
+                    Clear selection
+                  </Button>
+                  <TagGroup
+                    onDismiss={onSelectedComponentDismiss}
+                    aria-label="Selected components"
+                    className={classes.selectedItemsContainer}
+                  >
+                    {selectedComponents.map(component => (
+                      <Tag
+                        className={classes.selectedItemTag}
+                        key={component.name}
+                        value={component.name}
+                        shape="circular"
+                        dismissible
+                        dismissIcon={{ 'aria-label': 'Remove' }}
+                      >
+                        {component.displayName}
+                      </Tag>
+                    ))}
+                  </TagGroup>
+                </div>
+                {allQuestions.length > 0 && (
+                  <div>
+                    <ArrowDownRegular /> <Link href="#questions">Fill out the checklist below</Link>{' '}
+                  </div>
+                )}
+              </div>
             </>
           )}
-          {allQuestions.length > 0 && <Link href="#questions">Next: Component choice checklist</Link>}
-          <Text role="status">{filteredComponentsDefinitions.length} components available.</Text>
           <Accordion collapsible multiple>
             {categorizedComponents.map((category, index) => (
               <AccordionItem key={category.id} value={category.id}>
