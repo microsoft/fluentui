@@ -321,9 +321,11 @@ export class RadioGroup extends FASTElement {
     this.dirtyState = true;
     const radioIndex = this.enabledRadios.indexOf(e.target as Radio);
     this.checkRadio(radioIndex);
-    this.radios?.filter(x => x.disabled)?.forEach((item) => {
-      item.checked = false;
-    })
+    this.radios
+      ?.filter(x => x.disabled)
+      ?.forEach(item => {
+        item.checked = false;
+      });
     return true;
   }
 
@@ -341,8 +343,8 @@ export class RadioGroup extends FASTElement {
       item.checked = shouldCheck;
       if (shouldCheck) {
         checkedIndex = i;
-        if(shouldEmit) {
-          item.$emit("change");
+        if (shouldEmit) {
+          item.$emit('change');
         }
       }
     });

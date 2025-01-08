@@ -233,7 +233,9 @@ test.describe('RadioGroup', () => {
     await expect(radios.nth(2)).toHaveJSProperty('checked', false);
   });
 
-  test('radio should remain checked after it is set to disabled and uncheck when a new radio is checked', async ({ page }) => {
+  test('radio should remain checked after it is set to disabled and uncheck when a new radio is checked', async ({
+    page,
+  }) => {
     const element = page.locator('fluent-radio-group');
     const radios = element.locator('fluent-radio');
 
@@ -278,18 +280,17 @@ test.describe('RadioGroup', () => {
       </fluent-radio-group>
     `);
 
-      const wasChanged = element.evaluate((node: RadioGroup) => {
-        return new Promise(resolve => {
-          node.addEventListener('change', () => resolve(true), { once: true })
-        });
+    const wasChanged = element.evaluate((node: RadioGroup) => {
+      return new Promise(resolve => {
+        node.addEventListener('change', () => resolve(true), { once: true });
       });
-
-      await radios.nth(1).click();
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('ArrowRight');
-      await expect(wasChanged).resolves.toBeTruthy();
     });
 
+    await radios.nth(1).click();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+    await expect(wasChanged).resolves.toBeTruthy();
+  });
 
   // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
   test.skip('should set a child radio with a matching `value` to `checked` when value changes', async ({ page }) => {
