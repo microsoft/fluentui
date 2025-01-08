@@ -5,6 +5,7 @@ import { linkBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@
 import { isConformant } from '../../testing/isConformant';
 import { Link } from './Link';
 import { LinkProps } from './Link.types';
+import { Enter } from '@fluentui/keyboard-keys';
 
 describe('Link', () => {
   isConformant<LinkProps>({
