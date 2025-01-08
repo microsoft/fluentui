@@ -531,9 +531,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
       // Stacked Info used to draw graph
       const stackedInfo =
-        this.props.mode === AreaChartModes.toNextY
-          ? this._getStackedData(keys, dataSet)
-          : this._getStackedDataZeroToY(keys, dataSet);
+        this.props.mode === AreaChartModes.toZeroY
+          ? this._getStackedDataZeroToY(keys, dataSet)
+          : this._getStackedData(keys, dataSet);
 
       return {
         colors,
@@ -587,9 +587,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
       // Stacked Info used to draw graph
       const stackedInfo =
-        this.props.mode === AreaChartModes.toNextY
-          ? this._getStackedData(keys, dataSet)
-          : this._getStackedDataZeroToY(keys, dataSet);
+        this.props.mode === AreaChartModes.toZeroY
+          ? this._getStackedDataZeroToY(keys, dataSet)
+          : this._getStackedData(keys, dataSet);
 
       return {
         colors,
