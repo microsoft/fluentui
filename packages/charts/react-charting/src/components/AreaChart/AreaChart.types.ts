@@ -17,6 +17,18 @@ import {
 
 export type { IChildProps, IRefArrayData, IBasestate, ILineChartDataPoint, ILineChartPoints, IMargins };
 
+export enum AreaChartModes {
+  /**
+   * This mode will fill the area from the line to the x-axis.
+   */
+  toZeroY = 'tozeroy',
+
+  /**
+   * This mode will fill the area from the line to the next line.
+   */
+  toNextY = 'tonexty',
+}
+
 /**
  * Area Chart properties.
  * {@docCategory AreaChart}
@@ -70,6 +82,11 @@ export interface IAreaChartProps extends ICartesianChartProps {
    * The prop used to enable gradient fill color for the chart.
    */
   enableGradient?: boolean;
+
+  /**
+   * The prop used to define the Y axis mode (tonexty or tozeroy)
+   */
+  mode?: AreaChartModes;
 }
 
 /**

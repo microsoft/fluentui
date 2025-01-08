@@ -22,7 +22,7 @@ import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
 import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
 import { ILineChartProps } from '../LineChart/index';
-import { IAreaChartProps } from '../AreaChart/index';
+import { AreaChartModes, IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
 import { DataVizPalette, getNextColor } from '../../utilities/colors';
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
@@ -339,6 +339,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
   const { data, layout } = jsonObj;
+  let mode: AreaChartModes = AreaChartModes.toNextY;
 
   const chartData: ILineChartPoints[] = data.map((series: any, index: number) => {
     const xValues = series.x;
@@ -347,6 +348,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isXNumber = isNumberArray(xValues);
     const legend: string = series.name || `Series ${index + 1}`;
     const lineColor = getColor(legend, colorMap, isDarkTheme);
+    mode = series.fill === 'tozeroy' ? AreaChartModes.toZeroY : AreaChartModes.toNextY;
 
     return {
       legend,
@@ -371,6 +373,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       supportNegativeData: true,
       xAxisTitle,
       yAxisTitle,
+      mode,
     } as IAreaChartProps;
   } else {
     return {

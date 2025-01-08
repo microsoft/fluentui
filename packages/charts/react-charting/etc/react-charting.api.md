@@ -200,6 +200,8 @@ export interface IAreaChartProps extends ICartesianChartProps {
     data: IChartProps;
     enableGradient?: boolean;
     enablePerfOptimization?: boolean;
+    // Warning: (ae-forgotten-export) The symbol "AreaChartModes" needs to be exported by the entry point index.d.ts
+    mode?: AreaChartModes;
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
     onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
     // (undocumented)
