@@ -233,6 +233,62 @@ test.describe('RadioGroup', () => {
     await expect(radios.nth(2)).toHaveJSProperty('checked', false);
   });
 
+  test('radio should remain checked after it is set to disabled and uncheck when a new radio is checked', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-radio-group');
+    const radios = element.locator('fluent-radio');
+
+    await page.setContent(/* html */ `
+      <fluent-radio-group>
+        <fluent-radio id="radio-1" name="radio" value="foo"></fluent-radio>
+        <fluent-radio id="radio-2" name="radio" value="bar"></fluent-radio>
+        <fluent-radio id="radio-3" name="radio" value="baz"></fluent-radio>
+      </fluent-radio-group>
+    `);
+
+    await radios.nth(0).evaluate((node: Radio) => {
+      node.checked = true;
+      node.disabled = true;
+    });
+
+    await expect(radios.nth(0)).toHaveJSProperty('checked', true);
+
+    await radios.nth(1).click();
+
+    await expect(radios.nth(1)).toBeFocused();
+
+    await page.keyboard.press('ArrowRight');
+
+    await expect(radios.nth(0)).toHaveJSProperty('checked', false);
+    await expect(radios.nth(1)).toHaveJSProperty('checked', false);
+    await expect(radios.nth(2)).toHaveJSProperty('checked', true);
+  });
+
+  test('should emit `change` event when using keyboard', async ({ page }) => {
+    const element = page.locator('fluent-radio-group');
+    const radios = element.locator('fluent-radio');
+
+    await page.setContent(/* html */ `
+      <fluent-radio-group>
+        <fluent-radio id="radio-1" name="radio" value="foo"></fluent-radio>
+        <fluent-radio id="radio-2" name="radio" value="bar"></fluent-radio>
+        <fluent-radio id="radio-3" name="radio" value="baz"></fluent-radio>
+      </fluent-radio-group>
+    `);
+
+    const wasChanged = element.evaluate((node: RadioGroup) => {
+      return new Promise(resolve => {
+        node.addEventListener('change', () => resolve(true), { once: true });
+      });
+    });
+
+    await radios.nth(1).click();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+    await expect(wasChanged).resolves.toBeTruthy();
+  });
+
   // @FIXME: This test is failing on OSX - https://github.com/microsoft/fluentui/issues/33172
   test.skip('should set a child radio with a matching `value` to `checked` when value changes', async ({ page }) => {
     const element = page.locator('fluent-radio-group');
