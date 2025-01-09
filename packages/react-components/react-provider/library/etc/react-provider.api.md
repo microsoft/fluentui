@@ -69,7 +69,7 @@ export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<Flu
 export const renderFluentProvider_unstable: (state: FluentProviderState, contextValues: FluentProviderContextValues) => JSX.Element;
 
 // @public
-export const useFluentProvider_unstable: (props: FluentProviderProps, ref: React_2.Ref<HTMLDivElement>) => FluentProviderState;
+export const useFluentProvider_unstable: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>) => FluentProviderState;
 
 // @public (undocumented)
 export function useFluentProviderContextValues_unstable(state: FluentProviderState): FluentProviderContextValues;

@@ -7,7 +7,7 @@ import { useFluentProviderContextValues_unstable } from './useFluentProviderCont
 import type { FluentProviderProps } from './FluentProvider.types';
 
 export const FluentProvider: ForwardRefComponent<FluentProviderProps> = React.forwardRef<
-  HTMLDivElement,
+  HTMLElement,
   FluentProviderProps
 >((props, ref) => {
   const state = useFluentProvider_unstable(props, ref);
@@ -16,6 +16,6 @@ export const FluentProvider: ForwardRefComponent<FluentProviderProps> = React.fo
   const contextValues = useFluentProviderContextValues_unstable(state);
 
   return renderFluentProvider_unstable(state, contextValues);
-});
+}) as ForwardRefComponent<FluentProviderProps>;
 
 FluentProvider.displayName = 'FluentProvider';

@@ -31,7 +31,7 @@ const DEFAULT_RENDERER_ATTRIBUTES = {};
  */
 export const useFluentProvider_unstable = (
   props: FluentProviderProps,
-  ref: React.Ref<HTMLDivElement>,
+  ref: React.Ref<HTMLElement>,
 ): FluentProviderState => {
   'use no memo';
 
