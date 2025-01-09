@@ -16,13 +16,16 @@ describe('ColorSlider', () => {
       <div>
         <div
           class="fui-ColorSlider"
+          role="group"
           style="--fui-Slider--direction: -90deg; --fui-Slider--progress: 0%; --fui-Slider__thumb--color: hsl(0, 100%, 50%);"
         >
           <input
+            aria-orientation="horizontal"
             class="fui-ColorSlider__input"
             id="slider-9"
             max="360"
             min="0"
+            tabindex="0"
             type="range"
             value="0"
           />

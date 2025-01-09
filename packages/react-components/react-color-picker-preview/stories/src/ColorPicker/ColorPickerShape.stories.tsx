@@ -21,6 +21,9 @@ const useStyles = makeStyles({
     height: '50px',
     borderRadius: '4px',
     border: '1px solid #ccc',
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+    },
   },
 });
 

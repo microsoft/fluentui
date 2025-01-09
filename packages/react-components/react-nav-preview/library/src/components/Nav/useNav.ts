@@ -59,7 +59,7 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     onNavItemSelect,
     onNavCategoryItemToggle,
     multiple = true,
-    size = 'medium',
+    density = 'medium',
     openCategories: controlledOpenCategoryItems,
     selectedCategoryValue: controlledSelectedCategoryValue,
     selectedValue: controlledSelectedValue,
@@ -164,6 +164,6 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     getRegisteredNavItems,
     onRequestNavCategoryItemToggle,
     multiple,
-    size,
+    density,
   };
 };

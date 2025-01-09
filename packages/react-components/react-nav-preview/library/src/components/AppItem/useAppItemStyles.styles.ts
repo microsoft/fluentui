@@ -42,13 +42,13 @@ export const useAppItemStyles_unstable = (state: AppItemState): AppItemState => 
   const iconStyles = useIconStyles();
   const appItemSpecificStyles = useAppItemStyles();
 
-  const { size, icon } = state;
+  const { density, icon } = state;
 
   state.root.className = mergeClasses(
     rootDefaultClassName,
     appItemClassNames.root,
     appItemSpecificStyles.root,
-    size === 'small' && appItemSpecificStyles.small,
+    density === 'small' && appItemSpecificStyles.small,
     !icon && appItemSpecificStyles.absentIconRootAdjustment,
     state.root.className,
   );

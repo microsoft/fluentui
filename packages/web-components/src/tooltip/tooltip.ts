@@ -1,4 +1,4 @@
-import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, Updates } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 import type { TooltipPositioningOption } from './tooltip.options.js';
 
@@ -45,6 +45,17 @@ export class Tooltip extends FASTElement {
   public positioning?: TooltipPositioningOption;
 
   /**
+   * Updates the fallback styles when the positioning changes.
+   *
+   * @internal
+   */
+  public positioningChanged(): void {
+    if (!SUPPORTS_CSS_ANCHOR_POSITIONING) {
+      this.setFallbackStyles();
+    }
+  }
+
+  /**
    * The id of the anchor element for the tooltip
    */
   @attr
@@ -84,6 +95,11 @@ export class Tooltip extends FASTElement {
     const describedBy = this.anchorElement.getAttribute('aria-describedby');
     this.anchorElement.setAttribute('aria-describedby', describedBy ? `${describedBy} ${this.id}` : this.id);
 
+    this.anchorElement.addEventListener('focus', this.focusAnchorHandler);
+    this.anchorElement.addEventListener('blur', this.blurAnchorHandler);
+    this.anchorElement.addEventListener('mouseenter', this.mouseenterAnchorHandler);
+    this.anchorElement.addEventListener('mouseleave', this.mouseleaveAnchorHandler);
+
     if (SUPPORTS_CSS_ANCHOR_POSITIONING) {
       if (!SUPPORTS_HTML_ANCHOR_POSITIONING) {
         // @ts-expect-error - Baseline 2024
@@ -91,67 +107,10 @@ export class Tooltip extends FASTElement {
         // @ts-expect-error - Baseline 2024
         this.style.positionAnchor = anchorName;
       }
-    } else {
-      // Provide style fallback for browsers that do not support anchor positioning
-      if (!this.anchorPositioningStyleElement) {
-        this.anchorPositioningStyleElement = document.createElement('style');
-        document.head.append(this.anchorPositioningStyleElement);
-      }
-
-      // Given a position with <direction>-<alignment> format, return the proper CSS properties
-      // eslint-disable-next-line prefer-const
-      let [direction, alignment] = this.positioning?.split('-') ?? [];
-
-      if (alignment === undefined && (direction === 'above' || direction === 'below')) {
-        alignment = 'centerX';
-      }
-      if (alignment === undefined && (direction === 'before' || direction === 'after')) {
-        alignment = 'centerY';
-      }
-
-      const directionCSSMap = {
-        above: `bottom: anchor(${anchorName} top);`,
-        below: `top: anchor(${anchorName} bottom);`,
-        before: `right: anchor(${anchorName} left);`,
-        after: `left: anchor(${anchorName} right);`,
-      } as const;
-
-      type DirectionMapOption = keyof typeof directionCSSMap;
-      const directionCSS = directionCSSMap[direction as DirectionMapOption] ?? directionCSSMap.above;
-
-      const alignmentCSSMap = {
-        start: `left: anchor(${anchorName} left);`,
-        end: `right: anchor(${anchorName} right);`,
-        top: `top: anchor(${anchorName} top);`,
-        bottom: `bottom: anchor(${anchorName} bottom);`,
-        centerX: `left: anchor(${anchorName} center); translate: -50% 0;`,
-        centerY: `top: anchor(${anchorName} center); translate: 0 -50%;`,
-      } as const;
-
-      type AlignmentMapOption = keyof typeof alignmentCSSMap;
-      const alignmentCSS = alignmentCSSMap[alignment as AlignmentMapOption] ?? alignmentCSSMap.centerX;
-
-      this.anchorPositioningStyleElement.textContent = `
-          #${this.anchor} {
-            anchor-name: ${anchorName};
-          }
-          #${this.id} {
-            inset: unset;
-            ${directionCSS}
-            ${alignmentCSS}
-            position: absolute;
-          }
-        `;
-
-      if (window.CSS_ANCHOR_POLYFILL) {
-        window.CSS_ANCHOR_POLYFILL.call({ element: this.anchorPositioningStyleElement });
-      }
+      return;
     }
 
-    this.anchorElement.addEventListener('focus', this.focusAnchorHandler);
-    this.anchorElement.addEventListener('blur', this.blurAnchorHandler);
-    this.anchorElement.addEventListener('mouseenter', this.mouseenterAnchorHandler);
-    this.anchorElement.addEventListener('mouseleave', this.mouseleaveAnchorHandler);
+    Updates.enqueue(() => this.setFallbackStyles());
   }
 
   public disconnectedCallback(): void {
@@ -170,7 +129,6 @@ export class Tooltip extends FASTElement {
   public showTooltip(delay: number = this.defaultDelay): void {
     setTimeout(() => {
       this.setAttribute('aria-hidden', 'false');
-      //// @ts-expect-error - Baseline 2024
       this.showPopover();
     }, delay);
   }
@@ -189,7 +147,6 @@ export class Tooltip extends FASTElement {
       }
 
       this.setAttribute('aria-hidden', 'true');
-      //// @ts-expect-error - Baseline 2024
       this.hidePopover();
     }, delay);
   }
@@ -210,6 +167,68 @@ export class Tooltip extends FASTElement {
    * Hide the tooltip on blur
    */
   public blurAnchorHandler = () => this.hideTooltip(0);
+
+  private setFallbackStyles(): void {
+    if (!this.anchorElement) {
+      return;
+    }
+    // @ts-expect-error - Baseline 2024
+    const anchorName = this.anchorElement.style.anchorName || `--${this.anchor}`;
+
+    // Provide style fallback for browsers that do not support anchor positioning
+    if (!this.anchorPositioningStyleElement) {
+      this.anchorPositioningStyleElement = document.createElement('style');
+      document.head.append(this.anchorPositioningStyleElement);
+    }
+
+    let [direction, alignment] = this.positioning?.split('-') ?? [];
+
+    if (!alignment) {
+      if (direction === 'above' || direction === 'below') {
+        alignment = 'centerX';
+      }
+      if (direction === 'before' || direction === 'after') {
+        alignment = 'centerY';
+      }
+    }
+
+    const directionCSSMap = {
+      above: `bottom: anchor(top);`,
+      below: `top: anchor(bottom);`,
+      before: `right: anchor(left);`,
+      after: `left: anchor(right);`,
+    } as const;
+
+    const directionCSS = directionCSSMap[direction as keyof typeof directionCSSMap] ?? directionCSSMap.above;
+
+    const alignmentCSSMap = {
+      start: `left: anchor(left);`,
+      end: `right: anchor(right);`,
+      top: `top: anchor(top);`,
+      bottom: `bottom: anchor(bottom);`,
+      centerX: `left: anchor(center); translate: -50% 0;`,
+      centerY: `top: anchor(center); translate: 0 -50%;`,
+    } as const;
+
+    const alignmentCSS = alignmentCSSMap[alignment as keyof typeof alignmentCSSMap] ?? alignmentCSSMap.centerX;
+
+    this.anchorPositioningStyleElement.textContent = /* css */ `
+      #${this.anchor} {
+        anchor-name: ${anchorName};
+      }
+      #${this.id} {
+        inset: unset;
+        position-anchor: ${anchorName};
+        position: absolute;
+        ${directionCSS}
+        ${alignmentCSS}
+      }
+    `;
+
+    if (window.CSS_ANCHOR_POLYFILL) {
+      window.CSS_ANCHOR_POLYFILL.call({ element: this.anchorPositioningStyleElement });
+    }
+  }
 }
 
 declare global {

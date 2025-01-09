@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-motion",
-  "version": "9.6.5",
+  "version": "9.6.6",
   "description": "A package with utilities & motion definitions using Web Animations API",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

@@ -2,7 +2,7 @@ import { NavItemValue } from '../NavContext.types';
 
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { NavSize } from '../Nav/Nav.types';
+import { NavDensity } from '../Nav/Nav.types';
 
 export type NavSubItemSlots = {
   root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
@@ -29,9 +29,9 @@ export type NavSubItemState = ComponentState<NavSubItemSlots> &
      */
     selected: boolean;
     /**
-     * The size of the NavItem
+     * The density of the NavItem
      *
      * @default 'medium'
      */
-    size: NavSize;
+    density: NavDensity;
   };

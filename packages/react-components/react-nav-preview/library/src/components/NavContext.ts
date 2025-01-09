@@ -32,9 +32,9 @@ const navContextDefaultValue: NavContextValue = {
   multiple: true,
 
   /**
-   * Indicates the size and density of the Nav.
+   * Indicates the vertical density and density of the Nav.
    */
-  size: 'medium',
+  density: 'medium',
 };
 
 const NavContext = React.createContext<NavContextValue | undefined>(undefined);

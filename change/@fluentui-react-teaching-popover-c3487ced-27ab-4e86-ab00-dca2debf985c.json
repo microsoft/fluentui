@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: accName updates and semantic fixes",
-  "packageName": "@fluentui/react-teaching-popover",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -23,6 +23,9 @@ const useStyles = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     border: `1px solid ${tokens.colorNeutralStroke1}`,
     margin: `${tokens.spacingVerticalMNudge} 0`,
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+    },
   },
   button: {
     marginRight: tokens.spacingHorizontalS,

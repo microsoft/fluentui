@@ -129,7 +129,7 @@ const useThumbStyles = makeStyles({
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
     borderRadius: tokens.borderRadiusCircular,
-    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
+    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .18) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${colorSliderCSSVars.thumbColorVar})`,
     [`${thumbPositionVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${colorSliderCSSVars.sliderProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
     '::before': {
@@ -141,7 +141,7 @@ const useThumbStyles = makeStyles({
       borderRadius: tokens.borderRadiusCircular,
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1}`,
+      border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1Pressed}`,
     },
   },
   horizontal: {

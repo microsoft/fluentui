@@ -2,6 +2,33 @@
   "name": "@fluentui/react-color-picker-preview",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2025 18:33:32 GMT",
+      "tag": "@fluentui/react-color-picker-preview_v0.1.3",
+      "version": "0.1.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "c53044a18a262e2defa3f27bf09950ec724a8997",
+            "comment": "fix: contrast border of thumb"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "b52d6ba234a24ce1d05c636cfc41b0098b15cfb9",
+            "comment": "feat: added aria-attributes to the ColorPicker"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.49",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Dec 2024 16:26:48 GMT",
       "tag": "@fluentui/react-color-picker-preview_v0.1.2",
       "version": "0.1.2",

@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { NavSize } from '../Nav/Nav.types';
+import { NavDensity } from '../Nav/Nav.types';
 
 export type AppItemStaticSlots = {
   /**
@@ -22,9 +22,9 @@ export type AppItemStaticProps = ComponentProps<AppItemStaticSlots> & {};
  */
 export type AppItemStaticState = ComponentState<AppItemStaticSlots> & {
   /**
-   * The size of the Nav
+   * The density of the Nav
    *
    * @default 'medium'
    */
-  size: NavSize;
+  density: NavDensity;
 };

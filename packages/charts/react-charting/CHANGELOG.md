@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 02 Jan 2025 07:22:03 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2025 07:21:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.39)
+
+Wed, 08 Jan 2025 07:21:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.38..@fluentui/react-charting_v5.23.39)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.194 ([PR #33578](https://github.com/microsoft/fluentui/pull/33578) by beachball)
+- Bump @fluentui/react to v8.122.5 ([PR #33578](https://github.com/microsoft/fluentui/pull/33578) by beachball)
+
+## [5.23.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.38)
+
+Mon, 06 Jan 2025 07:16:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.37..@fluentui/react-charting_v5.23.38)
+
+### Patches
+
+- Enabling titles for x and y axes for Declarative charts ([PR #33533](https://github.com/microsoft/fluentui/pull/33533) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.23.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.37)
+
+Fri, 03 Jan 2025 07:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.36..@fluentui/react-charting_v5.23.37)
+
+### Patches
+
+- Gauge and Pie chart fixes ([PR #33541](https://github.com/microsoft/fluentui/pull/33541) by 74965306+Anush2303@users.noreply.github.com)
+- Bump @fluentui/theme-samples to v8.7.193 ([PR #33529](https://github.com/microsoft/fluentui/pull/33529) by beachball)
+- Bump @fluentui/react to v8.122.4 ([PR #33529](https://github.com/microsoft/fluentui/pull/33529) by beachball)
 
 ## [5.23.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.36)
 

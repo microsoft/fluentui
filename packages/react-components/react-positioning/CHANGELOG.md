@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 16 Dec 2024 16:26:49 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2025 18:33:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.1)
+
+Wed, 08 Jan 2025 18:33:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.16.0..@fluentui/react-positioning_v9.16.1)
+
+### Patches
+
+- chore: bump @floating-ui/dom ([PR #33458](https://github.com/microsoft/fluentui/pull/33458) by 863023+radium-v@users.noreply.github.com)
 
 ## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.0)
 

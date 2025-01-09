@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 09 Jan 2025 04:07:00 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.76",
+      "version": "3.0.0-beta.76",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "2247d505c62e3f464f53b77362175580144ebd56",
+            "comment": "Allow field states to be set regardless of connection status"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "479f2f31226381d03c7a12788fb0bae55cd558c4",
+            "comment": "fix: radio-group emit change with keyboard and disabled radio unchecks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Dec 2024 04:07:55 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.75",
       "version": "3.0.0-beta.75",

@@ -3,7 +3,7 @@ import { type ExecutorContext, logger, stripIndents } from '@nx/devkit';
 import { BuildExecutorSchema } from './schema';
 import executor from './executor';
 import { join } from 'node:path';
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, appendFileSync, writeFileSync } from 'node:fs';
 
 // ===== mocks start =====
 import { rm } from 'node:fs/promises';
@@ -73,7 +73,7 @@ const measureStartMock = measureStart as jest.Mock;
 const measureEndMock = measureEnd as jest.Mock;
 
 describe('Build Executor', () => {
-  it('can run', async () => {
+  it('runs build and api-generation and fails on api update', async () => {
     // mute api extractor - START
     jest.spyOn(console, 'warn').mockImplementation(() => {
       return;
@@ -263,5 +263,20 @@ describe('Build Executor', () => {
       });
       "
     `);
+
+    // ==================
+    // update api public surface to simulate out of date api.md which will fail the executor
+    // ==================
+
+    const publicApiFilePath = join(workspaceRoot, 'libs/proj/src/index.ts');
+    const originalApiContent = readFileSync(publicApiFilePath);
+    appendFileSync(publicApiFilePath, `export const hello='new public api';\n`);
+
+    // force api-extractor to generate api.md and not fail on Local/CI
+    process.env.__FORCE_API_MD_UPDATE__ = '';
+    const outputFailed = await executor(options, context);
+    expect(outputFailed.success).toBe(false);
+
+    writeFileSync(publicApiFilePath, originalApiContent, 'utf-8');
   }, 60000);
 });

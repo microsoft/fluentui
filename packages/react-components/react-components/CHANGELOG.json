@@ -2,6 +2,89 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2025 18:33:32 GMT",
+      "tag": "@fluentui/react-components_v9.57.0",
+      "version": "9.57.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "384df0ccb4a5324da6daee8f18712ef5a81fa05a",
+            "comment": "feat: add prefer-fluentui-v9 rule"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "c53044a18a262e2defa3f27bf09950ec724a8997",
+            "comment": "fix: contrast border of thumb"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "b52d6ba234a24ce1d05c636cfc41b0098b15cfb9",
+            "comment": "feat: added aria-attributes to the ColorPicker"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "dc7bb663e3d93a19b611cf1892556d69c57b1269",
+            "comment": "chore: remove usage of \"export *\""
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "7f1647fadcd193c0d16e51b314d299ee19ae5746",
+            "comment": "fix: handle case when Animation.persist() does not exist"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "8bd0e68bc5a78f8b9b3ea10210ad876151849d7a",
+            "comment": "chore: bump @floating-ui/dom"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "bd3e4c27b89c17e279e99342f305eb9c71714a09",
+            "comment": "fix: update tab border color for better visibility in high contrast mode"
+          },
+          {
+            "author": "soumya_tripathy@outlook.com",
+            "package": "@fluentui/react-toast",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb",
+            "comment": "feat: Add intent property to Toast state and useToast hook. Correct media className assignment in useToastTitleStyles."
+          }
+        ],
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "aa6e5ddc04518065cd0a25bcdd5c91d2c1615bbd",
+            "comment": "feat: add @fluentui/react-list to suite"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "aa6e5ddc04518065cd0a25bcdd5c91d2c1615bbd",
+            "comment": "feat: release stable"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "9c716b2519ad2d135fb5d16a60ef6ee183a16e31",
+            "comment": "refactor(MessageBar): migrate slide & fade to motion components"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "0bfe0c7fdf8981d7ccf8c4c15e927d8202fbdd12",
+            "comment": "fix: accName updates and semantic fixes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Dec 2024 14:30:56 GMT",
       "tag": "@fluentui/react-components_v9.56.8",
       "version": "9.56.8",

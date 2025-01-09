@@ -5,6 +5,7 @@ import { makeResetStyles, makeStyles } from '@griffel/react';
 // Styles shared by several nav components.
 
 export const navItemTokens = {
+  defaultDrawerWidth: 260,
   indicatorOffset: 16,
   indicatorWidth: 4,
   indicatorHeight: 20,

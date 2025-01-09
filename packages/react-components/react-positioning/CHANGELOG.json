@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2025 18:33:34 GMT",
+      "tag": "@fluentui/react-positioning_v9.16.1",
+      "version": "9.16.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "8bd0e68bc5a78f8b9b3ea10210ad876151849d7a",
+            "comment": "chore: bump @floating-ui/dom"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Dec 2024 16:26:49 GMT",
       "tag": "@fluentui/react-positioning_v9.16.0",
       "version": "9.16.0",
