@@ -103,7 +103,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     colors: string[];
     opacity: number[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    stackedInfo: any;
+    data: any;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     calloutPoints: any;
   };
@@ -114,7 +114,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _circleId: string;
   private _uniqueCallOutID: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _stackedData: any;
+  private _data: any;
   private _chart: JSX.Element[];
   private margins: IMargins;
   private _rectId: string;
@@ -185,12 +185,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (!this._isChartEmpty()) {
       const { lineChartData } = this.props.data;
       const points = this._addDefaultColors(lineChartData);
-      const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(points);
+      const { colors, opacity, data, calloutPoints } = this._createSet(points);
       this._calloutPoints = calloutPoints;
       const isXAxisDateType = getXAxisType(points);
       this._colors = colors;
       this._opacity = opacity;
-      this._stackedData = stackedInfo.stackedData;
+      this._data = data.renderData;
       const legends: JSX.Element = this._getLegendData(points);
 
       const tickParams = {
@@ -224,7 +224,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           isCalloutForStack
           xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
           tickParams={tickParams}
-          maxOfYVal={stackedInfo.maxOfYVal}
+          maxOfYVal={data.maxOfYVal}
           getGraphData={this._getGraphData}
           getDomainNRangeValues={this._getDomainNRangeValues}
           createStringYAxis={createStringYAxis}
@@ -435,49 +435,25 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getStackedData = (keys: string[], dataSet: any) => {
-    const stackedValues = d3Stack().keys(keys)(dataSet);
-    const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
-    const stackedData: Array<IAreaChartDataSetPoint[]> = [];
+  private _getData = (keys: string[], dataSet: any) => {
+    const dataValues = d3Stack().keys(keys)(dataSet);
+    const maxOfYVal = d3Max(dataValues[dataValues.length - 1], dp => dp[1])!;
+    const renderData: Array<IAreaChartDataSetPoint[]> = [];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    stackedValues.forEach((layer: any) => {
-      const currentStack: IAreaChartDataSetPoint[] = [];
+    dataValues.forEach((layer: any) => {
+      const currentLayer: IAreaChartDataSetPoint[] = [];
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       layer.forEach((d: any) => {
-        currentStack.push({
-          values: d,
+        currentLayer.push({
+          values: this.props.mode === AreaChartModes.toZeroY ? [0, d[1]] : d,
           xVal: d.data.xVal,
         });
       });
-      stackedData.push(currentStack);
+      renderData.push(currentLayer);
     });
-    this._isMultiStackChart = stackedData && stackedData.length > 1 ? true : false;
+    this._isMultiStackChart = renderData && renderData.length > 1 ? true : false;
     return {
-      stackedData,
-      maxOfYVal,
-    };
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getStackedDataZeroToY = (keys: string[], dataSet: any) => {
-    const stackedValues = d3Stack().keys(keys)(dataSet);
-    const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
-    const stackedData: Array<IAreaChartDataSetPoint[]> = [];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    stackedValues.forEach((layer: any, layerIndex: number) => {
-      const currentStack: IAreaChartDataSetPoint[] = [];
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      layer.forEach((d: any, index: number) => {
-        currentStack.push({
-          values: [0, d[1]],
-          xVal: d.data.xVal,
-        });
-      });
-      stackedData.push(currentStack);
-    });
-    this._isMultiStackChart = stackedData && stackedData.length > 1 ? true : false;
-    return {
-      stackedData,
+      renderData,
       maxOfYVal,
     };
   };
@@ -529,17 +505,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         keys.push(keyVal);
       }
 
-      // Stacked Info used to draw graph
-      const stackedInfo =
-        this.props.mode === AreaChartModes.toZeroY
-          ? this._getStackedDataZeroToY(keys, dataSet)
-          : this._getStackedData(keys, dataSet);
+      // Data used to draw graph
+      const data = this._getData(keys, dataSet);
 
       return {
         colors,
         opacity,
         keys,
-        stackedInfo,
+        data,
         calloutPoints,
       };
     } else {
@@ -585,17 +558,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         keys.push(keyVal);
       }
 
-      // Stacked Info used to draw graph
-      const stackedInfo =
-        this.props.mode === AreaChartModes.toZeroY
-          ? this._getStackedDataZeroToY(keys, dataSet)
-          : this._getStackedData(keys, dataSet);
+      // Data used to draw graph
+      const data = this._getData(keys, dataSet);
 
       return {
         colors,
         opacity,
         keys,
-        stackedInfo,
+        data,
         calloutPoints,
       };
     }
@@ -752,7 +722,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const graph: JSX.Element[] = [];
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
+    this._data.forEach((singleStackedData: Array<any>, index: number) => {
       graph.push(
         <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
           {this.props.enableGradient && (
@@ -817,7 +787,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     const circleRadius = pointOptions && pointOptions.r ? Number(pointOptions.r) : 8;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
+    this._data.forEach((singleStackedData: Array<any>, index: number) => {
       if (points.length === index) {
         return;
       }
@@ -835,7 +805,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             } data points.`}
           >
             {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
-              const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
+              const circleId = `${this._circleId}_${index * this._data[0].length + pointIndex}`;
               const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
               lineColor = points[index]!.color!;
               const legend = points[index]!.legend;
@@ -868,7 +838,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         singleStackedData.forEach((singlePoint: IDPointType, pointIndex: number) => {
           const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
           if (this.state.nearestCircleToHighlight === xDataPoint) {
-            const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
+            const circleId = `${this._circleId}_${index * this._data[0].length + pointIndex}`;
             lineColor = points[index]!.color!;
             const legend = points[index]!.legend;
             graph.push(
