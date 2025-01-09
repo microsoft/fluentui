@@ -3,7 +3,7 @@ import { useKeyborgRef } from './useKeyborgRef';
 
 /**
  * Instantiates [keyborg](https://github.com/microsoft/keyborg) and checks if the user is navigating with the keyboard.
- * @returns {() => boolean}
+ * @returns \{() =\> boolean\}
  */
 export function useIsNavigatingWithKeyboard(): () => boolean {
   const keyborgRef = useKeyborgRef();
