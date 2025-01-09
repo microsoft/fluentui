@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2025 07:21:37 GMT",
+      "tag": "@fluentui/react_v8.122.5",
+      "version": "8.122.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "8f763922d713d9ccd35e65db07206c10b170fafd",
+            "comment": "chore: Adding key to inner slot in Stack component."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Jan 2025 07:21:31 GMT",
       "tag": "@fluentui/react_v8.122.4",
       "version": "8.122.4",

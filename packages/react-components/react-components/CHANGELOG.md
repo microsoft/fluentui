@@ -1,8 +1,42 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 19 Dec 2024 14:30:56 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2025 18:33:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.57.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.57.0)
+
+Wed, 08 Jan 2025 18:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.8..@fluentui/react-components_v9.57.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: add @fluentui/react-list to suite ([PR #33378](https://github.com/microsoft/fluentui/pull/33378) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-list`
+  - feat: release stable ([PR #33378](https://github.com/microsoft/fluentui/pull/33378) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-message-bar`
+  - refactor(MessageBar): migrate slide & fade to motion components ([PR #33465](https://github.com/microsoft/fluentui/pull/33465) by robertpenner@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - fix: accName updates and semantic fixes ([PR #33194](https://github.com/microsoft/fluentui/pull/33194) by sarah.higley@microsoft.com)
+
+### Patches
+
+- `@fluentui/eslint-plugin-react-components`
+  - feat: add prefer-fluentui-v9 rule ([PR #33449](https://github.com/microsoft/fluentui/pull/33449) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-color-picker-preview`
+  - fix: contrast border of thumb ([PR #33526](https://github.com/microsoft/fluentui/pull/33526) by vkozlova@microsoft.com)
+  - feat: added aria-attributes to the ColorPicker ([PR #33543](https://github.com/microsoft/fluentui/pull/33543) by vkozlova@microsoft.com)
+- `@fluentui/react-conformance`
+  - chore: remove usage of "export *" ([PR #33448](https://github.com/microsoft/fluentui/pull/33448) by olfedias@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: handle case when Animation.persist() does not exist ([PR #33282](https://github.com/microsoft/fluentui/pull/33282) by seanmonahan@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: bump @floating-ui/dom ([PR #33458](https://github.com/microsoft/fluentui/pull/33458) by 863023+radium-v@users.noreply.github.com)
+- `@fluentui/react-tabs`
+  - fix: update tab border color for better visibility in high contrast mode ([PR #33573](https://github.com/microsoft/fluentui/pull/33573) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-toast`
+  - feat: Add intent property to Toast state and useToast hook. Correct media className assignment in useToastTitleStyles. ([PR #33550](https://github.com/microsoft/fluentui/pull/33550) by soumya_tripathy@outlook.com)
 
 ## [9.56.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.8)
 

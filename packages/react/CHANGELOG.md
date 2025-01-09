@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 03 Jan 2025 07:21:31 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2025 07:21:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.122.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.5)
+
+Wed, 08 Jan 2025 07:21:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.4..@fluentui/react_v8.122.5)
+
+### Patches
+
+- chore: Adding key to inner slot in Stack component. ([PR #33578](https://github.com/microsoft/fluentui/pull/33578) by Humberto.Morimoto@microsoft.com)
 
 ## [8.122.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.4)
 

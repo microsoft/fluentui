@@ -11,12 +11,12 @@ import {
   NavSectionHeader,
   NavSubItem,
   NavSubItemGroup,
-  NavSize,
+  NavDensity,
   NavDivider,
   AppItem,
   AppItemStatic,
 } from '@fluentui/react-nav-preview';
-import { Label, Radio, RadioGroup, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
+import { Label, Switch, Tooltip, makeStyles, tokens, useId, Radio, RadioGroup } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -45,8 +45,8 @@ import {
   PreviewLink20Filled,
   PreviewLink20Regular,
   bundleIcon,
-  PersonCircle32Regular,
   PersonCircle24Regular,
+  PersonCircle32Regular,
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -85,7 +85,7 @@ const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
 const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
 const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
 
-export const VariableSizedItems = (props: Partial<NavDrawerProps>) => {
+export const VariableDensityItems = (props: Partial<NavDrawerProps>) => {
   const styles = useStyles();
 
   const labelId = useId('type-label');
@@ -93,7 +93,7 @@ export const VariableSizedItems = (props: Partial<NavDrawerProps>) => {
   const appItemIconLabelId = useId('app-item-icon-label');
   const appItemStaticLabelId = useId('app-item-static-label');
 
-  const [size, setNavSize] = React.useState<NavSize>('small');
+  const [density, setNavDesnity] = React.useState<NavDensity>('small');
   const [enabledLinks, setEnabledLinks] = React.useState(true);
   const [isAppItemIconPresent, setIsAppItemIconPresent] = React.useState(true);
   const [isAppItemStatic, setIsAppItemStatic] = React.useState(true);
@@ -101,7 +101,7 @@ export const VariableSizedItems = (props: Partial<NavDrawerProps>) => {
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
 
   const appItemIcon = isAppItemIconPresent ? (
-    size === 'small' ? (
+    density === 'small' ? (
       <PersonCircle24Regular />
     ) : (
       <PersonCircle32Regular />
@@ -118,7 +118,13 @@ export const VariableSizedItems = (props: Partial<NavDrawerProps>) => {
 
   return (
     <div className={styles.root}>
-      <NavDrawer defaultSelectedValue="7" defaultSelectedCategoryValue="6" open={true} type={'inline'} size={size}>
+      <NavDrawer
+        defaultSelectedValue="7"
+        defaultSelectedCategoryValue="6"
+        open={true}
+        type={'inline'}
+        density={density}
+      >
         <NavDrawerHeader>
           <Tooltip content="Navigation" relationship="label">
             <Hamburger />
@@ -199,11 +205,16 @@ export const VariableSizedItems = (props: Partial<NavDrawerProps>) => {
       </NavDrawer>
       <div className={styles.content}>
         <div className={styles.field}>
-          <Label id={labelId}>Size</Label>
-          <RadioGroup value={size} onChange={(_, data) => setNavSize(data.value as NavSize)} aria-labelledby={labelId}>
+          <Label id={labelId}>Density</Label>
+          <RadioGroup
+            value={density}
+            aria-labelledby={labelId}
+            onChange={(_, data) => setNavDesnity(data.value as NavDensity)}
+          >
             <Radio value="medium" label="Medium" />
             <Radio value="small" label="Small" />
           </RadioGroup>
+
           <Label id={linkLabelId}>Links</Label>
           <Switch
             checked={enabledLinks}
