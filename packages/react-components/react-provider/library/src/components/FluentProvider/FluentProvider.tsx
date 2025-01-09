@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
+
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+
 import { renderFluentProvider_unstable } from './renderFluentProvider';
 import { useFluentProvider_unstable } from './useFluentProvider';
 import { useFluentProviderStyles_unstable } from './useFluentProviderStyles.styles';

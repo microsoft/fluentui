@@ -7,7 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { CustomStyleHooksContextValue_unstable } from '@fluentui/react-shared-contexts';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IconDirectionContextValue } from '@fluentui/react-icons/lib/providers';
 import type { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { PartialTheme } from '@fluentui/react-theme';
