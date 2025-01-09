@@ -4060,6 +4060,8 @@ export class Tooltip extends FASTElement {
     mouseleaveAnchorHandler: () => void;
     positioning?: TooltipPositioningOption;
     // @internal
+    positioningChanged(): void;
+    // @internal
     showTooltip(delay?: number): void;
 }
 
