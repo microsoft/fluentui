@@ -1,8 +1,27 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 06 Dec 2024 04:07:47 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jan 2025 04:07:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.76](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.76)
+
+Thu, 09 Jan 2025 04:07:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.75..@fluentui/web-components_v3.0.0-beta.76)
+
+### Changes
+
+- Allow field states to be set regardless of connection status ([PR #33023](https://github.com/microsoft/fluentui/pull/33023) by 863023+radium-v@users.noreply.github.com)
+- fix: radio-group emit change with keyboard and disabled radio unchecks ([PR #33585](https://github.com/microsoft/fluentui/pull/33585) by jes@microsoft.com)
+
+## [3.0.0-beta.75](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.75)
+
+Mon, 23 Dec 2024 04:07:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.74..@fluentui/web-components_v3.0.0-beta.75)
+
+### Changes
+
+- fix tooltip positioning styles for 'below-end' option ([PR #33494](https://github.com/microsoft/fluentui/pull/33494) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.74](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.74)
 

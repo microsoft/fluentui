@@ -38,3 +38,4 @@ visualtests
 !dist
 docs
 test-data.ts
+src/components/DeclatativeChart/tests/schema

@@ -3,8 +3,8 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { MessageBarGroupState, MessageBarGroupSlots } from './MessageBarGroup.types';
-import { TransitionGroup } from 'react-transition-group';
-import { MessageBarTransition } from './MessageBarTransition';
+import { PresenceGroup } from '@fluentui/react-motion';
+import { MessageBarMotion } from './MessageBarGroup.motions';
 
 /**
  * Render the final JSX of MessageBarGroup
@@ -14,18 +14,13 @@ export const renderMessageBarGroup_unstable = (state: MessageBarGroupState) => {
 
   return (
     <state.root>
-      <TransitionGroup component={null}>
+      <PresenceGroup>
         {state.children.map(child => (
-          <MessageBarTransition
-            animate={state.animate}
-            key={child.key}
-            enterClassName={state.enterStyles}
-            exitClassName={state.exitStyles}
-          >
+          <MessageBarMotion key={child.key} animate={state.animate}>
             {child}
-          </MessageBarTransition>
+          </MessageBarMotion>
         ))}
-      </TransitionGroup>
+      </PresenceGroup>
     </state.root>
   );
 };

@@ -1,20 +1,14 @@
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
-import type { Badge } from './badge.js';
+import { expect, test } from '../../test/playwright/index.js';
+import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
 
-test.describe('Badge component', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-badge--badge'));
-
-    await page.waitForFunction(() => customElements.whenDefined('fluent-badge'));
+test.describe('Badge', () => {
+  test.use({
+    tagName: 'fluent-badge',
+    innerHTML: 'Badge',
   });
 
-  test('should set default attribute values', async ({ page }) => {
-    const element = page.locator('fluent-badge');
-
-    await page.setContent(/* html */ `
-      <fluent-badge></fluent-badge>
-    `);
+  test('should set default attribute values', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveAttribute('appearance', 'filled');
 
@@ -25,187 +19,65 @@ test.describe('Badge component', () => {
     await expect(element).toHaveJSProperty('color', 'brand');
   });
 
-  test('should reflect color attribute and update property', async ({ page }) => {
-    const element = page.locator('fluent-badge');
+  test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-badge color="brand"></fluent-badge>
-    `);
+    for (const appearance of Object.values(BadgeAppearance)) {
+      await test.step(appearance, async () => {
+        await fastPage.setTemplate({ attributes: { appearance } });
 
-    await expect(element).toHaveAttribute('color', 'brand');
+        await expect(element).toHaveJSProperty('appearance', appearance);
 
-    await expect(element).toHaveJSProperty('color', 'brand');
-
-    await element.evaluate((node: Badge) => {
-      node.color = 'danger';
-    });
-
-    await expect(element).toHaveAttribute('color', 'danger');
-
-    await expect(element).toHaveJSProperty('color', 'danger');
-
-    await element.evaluate((node: Badge) => {
-      node.color = 'important';
-    });
-
-    await expect(element).toHaveAttribute('color', 'important');
-
-    await expect(element).toHaveJSProperty('color', 'important');
-
-    await element.evaluate((node: Badge) => {
-      node.color = 'informative';
-    });
-
-    await expect(element).toHaveAttribute('color', 'informative');
-
-    await expect(element).toHaveJSProperty('color', 'informative');
-
-    await element.evaluate((node: Badge) => {
-      node.color = 'severe';
-    });
-
-    await expect(element).toHaveAttribute('color', 'severe');
-
-    await expect(element).toHaveJSProperty('color', 'severe');
-
-    await element.evaluate((node: Badge) => {
-      node.color = 'subtle';
-    });
-
-    await expect(element).toHaveAttribute('color', 'subtle');
-
-    await expect(element).toHaveJSProperty('color', 'subtle');
-
-    await element.evaluate((node: Badge) => {
-      node.color = 'success';
-    });
-
-    await expect(element).toHaveAttribute('color', 'success');
-
-    await expect(element).toHaveJSProperty('color', 'success');
-
-    await element.evaluate((node: Badge) => {
-      node.color = 'warning';
-    });
-
-    await expect(element).toHaveAttribute('color', 'warning');
-
-    await expect(element).toHaveJSProperty('color', 'warning');
+        await expect(element).toHaveAttribute('appearance', appearance);
+      });
+    }
   });
 
-  test('should reflect size attribute and update property', async ({ page }) => {
-    const element = page.locator('fluent-badge');
+  test('should set the `color` property to match the `color` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-badge size="tiny"></fluent-badge>
-    `);
+    for (const color of Object.values(BadgeColor)) {
+      await test.step(`should set the \`color\` property to \`${color}\``, async () => {
+        await fastPage.setTemplate({ attributes: { color } });
 
-    await expect(element).toHaveAttribute('size', 'tiny');
+        await expect(element).toHaveAttribute('color', color);
 
-    await expect(element).toHaveJSProperty('size', 'tiny');
+        await expect(element).toHaveJSProperty('color', color);
 
-    await element.evaluate((node: Badge) => {
-      node.size = 'extra-small';
-    });
-
-    await expect(element).toHaveAttribute('size', 'extra-small');
-
-    await expect(element).toHaveJSProperty('size', 'extra-small');
-
-    await element.evaluate((node: Badge) => {
-      node.size = 'small';
-    });
-
-    await expect(element).toHaveAttribute('size', 'small');
-
-    await expect(element).toHaveJSProperty('size', 'small');
-
-    await element.evaluate((node: Badge) => {
-      node.size = 'medium';
-    });
-
-    await expect(element).toHaveAttribute('size', 'medium');
-
-    await expect(element).toHaveJSProperty('size', 'medium');
-
-    await element.evaluate((node: Badge) => {
-      node.size = 'large';
-    });
-
-    await expect(element).toHaveAttribute('size', 'large');
-
-    await expect(element).toHaveJSProperty('size', 'large');
-
-    await element.evaluate((node: Badge) => {
-      node.size = 'extra-large';
-    });
-
-    await expect(element).toHaveAttribute('size', 'extra-large');
-
-    await expect(element).toHaveJSProperty('size', 'extra-large');
+        await expect.soft(element).toHaveCustomState(color);
+      });
+    }
   });
 
-  test('should reflect appearance attribute and update property', async ({ page }) => {
-    const element = page.locator('fluent-badge');
+  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-badge appearance="filled"></fluent-badge>
-    `);
+    for (const size of Object.values(BadgeSize)) {
+      await test.step(`should set the \`size\` property to \`${size}\``, async () => {
+        await fastPage.setTemplate({ attributes: { size } });
 
-    await expect(element).toHaveAttribute('appearance', 'filled');
+        await expect(element).toHaveAttribute('size', size);
 
-    await expect(element).toHaveJSProperty('appearance', 'filled');
+        await expect(element).toHaveJSProperty('size', size);
 
-    await element.evaluate((node: Badge) => {
-      node.appearance = 'ghost';
-    });
-
-    await expect(element).toHaveAttribute('appearance', 'ghost');
-
-    await expect(element).toHaveJSProperty('appearance', 'ghost');
-
-    await element.evaluate((node: Badge) => {
-      node.appearance = 'outline';
-    });
-
-    await expect(element).toHaveAttribute('appearance', 'outline');
-
-    await expect(element).toHaveJSProperty('appearance', 'outline');
-
-    await element.evaluate((node: Badge) => {
-      node.appearance = 'tint';
-    });
-
-    await expect(element).toHaveAttribute('appearance', 'tint');
-
-    await expect(element).toHaveJSProperty('appearance', 'tint');
+        await expect(element).toHaveCustomState(size);
+      });
+    }
   });
 
-  test('should reflect shape attribute and update property', async ({ page }) => {
-    const element = page.locator('fluent-badge');
+  test('should set the `shape` property to match the `shape` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-badge shape="circular"></fluent-badge>
-    `);
+    for (const shape of Object.values(BadgeShape)) {
+      await test.step(`should set the \`shape\` property to \`${shape}\``, async () => {
+        await fastPage.setTemplate({ attributes: { shape } });
 
-    await expect(element).toHaveAttribute('shape', 'circular');
+        await expect(element).toHaveAttribute('shape', shape);
 
-    await expect(element).toHaveJSProperty('shape', 'circular');
+        await expect(element).toHaveJSProperty('shape', shape);
 
-    await element.evaluate((node: Badge) => {
-      node.shape = 'rounded';
-    });
-
-    await expect(element).toHaveAttribute('shape', 'rounded');
-
-    await expect(element).toHaveJSProperty('shape', 'rounded');
-
-    await element.evaluate((node: Badge) => {
-      node.shape = 'square';
-    });
-
-    await expect(element).toHaveAttribute('shape', 'square');
-
-    await expect(element).toHaveJSProperty('shape', 'square');
+        await expect(element).toHaveCustomState(shape);
+      });
+    }
   });
 });

@@ -376,6 +376,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           aria-describedby={hasErrorMessage ? this._id + '-errorMessage' : undefined}
           aria-required={required}
           aria-disabled={disabled}
+          aria-invalid={hasErrorMessage}
           aria-controls={isOpen ? this._listId : undefined}
           {...divProps}
           className={this._classNames.dropdown}
@@ -391,7 +392,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
             className={this._classNames.title}
             aria-live={hasFocus ? 'polite' : undefined}
             aria-atomic={hasFocus ? true : undefined}
-            aria-invalid={hasErrorMessage}
           >
             {
               // If option is selected render title, otherwise render the placeholder text

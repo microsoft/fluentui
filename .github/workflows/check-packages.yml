@@ -5,6 +5,7 @@ on:
 jobs:
   dependency-deduplication:
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'microsoft' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -37,6 +38,7 @@ jobs:
 
   dependency-mismatches:
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'microsoft' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -63,6 +65,7 @@ jobs:
 
   change-files:
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'microsoft' }}
     steps:
       - uses: actions/checkout@v4
         with:
