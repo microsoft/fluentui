@@ -33,7 +33,6 @@ export class Radio extends BaseCheckbox {
   protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
     super.disabledChanged(prev, next);
     if (next) {
-      this.checked = false;
       this.tabIndex = -1;
     }
 
