@@ -99,6 +99,27 @@ export const getColor = (
   return colorMap.current.get(legendLabel) as string;
 };
 
+const getSecondaryYAxisValues = (series: any, layout: any) => {
+  let secondaryYAxistitle: string = '';
+  let secondaryYScaleOptions: { yMinValue?: number; yMaxValue?: number } = {};
+  secondaryYAxistitle = layout.yaxis2.title;
+  if (layout.yaxis2.range) {
+    secondaryYScaleOptions = {
+      yMinValue: layout.yaxis2.range[0],
+      yMaxValue: layout.yaxis2.range[1],
+    };
+  } else {
+    const yValues = series.y;
+    if (yValues) {
+      secondaryYScaleOptions = {
+        yMinValue: Math.min(...yValues),
+        yMaxValue: Math.max(...yValues),
+      };
+    }
+  }
+  return { secondaryYAxistitle, secondaryYScaleOptions };
+};
+
 export const transformPlotlyJsonToDonutProps = (
   jsonObj: any,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -160,8 +181,10 @@ export const transformPlotlyJsonToVSBCProps = (
   const { data, layout } = jsonObj;
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
   let yMaxValue = 0;
-  let secondaryYAxistitle: string = '';
-  let secondaryYScaleOptions: { yMinValue?: number; yMaxValue?: number } = {};
+  let secondaryYAxisValues: {
+    secondaryYAxistitle: string;
+    secondaryYScaleOptions: { yMinValue?: number; yMaxValue?: number };
+  } = { secondaryYAxistitle: '', secondaryYScaleOptions: {} };
 
   data.forEach((series: any, index1: number) => {
     series.x?.forEach((x: string | number, index2: number) => {
@@ -188,21 +211,7 @@ export const transformPlotlyJsonToVSBCProps = (
       yMaxValue = Math.max(yMaxValue, series.y?.[index2]);
     });
     if (layout.yaxis2 && series.name === layout.yaxis2.title) {
-      secondaryYAxistitle = layout.yaxis2.title;
-      if (layout.yaxis2.range) {
-        secondaryYScaleOptions = {
-          yMinValue: layout.yaxis2.range[0],
-          yMaxValue: layout.yaxis2.range[1],
-        };
-      } else {
-        const yValues = series.y;
-        if (yValues) {
-          secondaryYScaleOptions = {
-            yMinValue: Math.min(...yValues),
-            yMaxValue: Math.max(...yValues),
-          };
-        }
-      }
+      secondaryYAxisValues = getSecondaryYAxisValues(series, layout);
     }
   });
 
@@ -217,8 +226,8 @@ export const transformPlotlyJsonToVSBCProps = (
     chartTitle,
     xAxisTitle,
     yAxisTitle,
-    secondaryYAxistitle,
-    secondaryYScaleOptions,
+    secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
+    secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
   };
 };
 
@@ -229,8 +238,10 @@ export const transformPlotlyJsonToGVBCProps = (
 ): IGroupedVerticalBarChartProps => {
   const { data, layout } = jsonObj;
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
-  let secondaryYAxistitle: string = '';
-  let secondaryYScaleOptions: { yMinValue?: number; yMaxValue?: number } = {};
+  let secondaryYAxisValues: {
+    secondaryYAxistitle: string;
+    secondaryYScaleOptions: { yMinValue?: number; yMaxValue?: number };
+  } = { secondaryYAxistitle: '', secondaryYScaleOptions: {} };
 
   data.forEach((series: any, index1: number) => {
     series.x?.forEach((x: string | number, index2: number) => {
@@ -251,21 +262,7 @@ export const transformPlotlyJsonToGVBCProps = (
       }
     });
     if (layout.yaxis2 && series.name === layout.yaxis2.title) {
-      secondaryYAxistitle = layout.yaxis2.title;
-      if (layout.yaxis2.range) {
-        secondaryYScaleOptions = {
-          yMinValue: layout.yaxis2.range[0],
-          yMaxValue: layout.yaxis2.range[1],
-        };
-      } else {
-        const yValues = series.y;
-        if (yValues) {
-          secondaryYScaleOptions = {
-            yMinValue: Math.min(...yValues),
-            yMaxValue: Math.max(...yValues),
-          };
-        }
-      }
+      secondaryYAxisValues = getSecondaryYAxisValues(series, layout);
     }
   });
 
@@ -279,8 +276,8 @@ export const transformPlotlyJsonToGVBCProps = (
     chartTitle,
     xAxisTitle,
     yAxisTitle,
-    secondaryYAxistitle,
-    secondaryYScaleOptions,
+    secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
+    secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
   };
 };
 
