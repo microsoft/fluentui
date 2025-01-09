@@ -31,12 +31,12 @@ import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { timeParse } from 'd3-time-format';
 
 const isDate = (value: any): boolean => {
-  const yearInString = /\b\d{4}\b/.test(value);
   const parsedDate = new Date(Date.parse(value));
-  const parsedYear = parsedDate.getFullYear();
   if (isNaN(parsedDate.getTime())) {
     return false;
   }
+  const parsedYear = parsedDate.getFullYear();
+  const yearInString = /\b\d{4}\b/.test(value);
   if (!yearInString && (parsedYear === 2000 || parsedYear === 2001)) {
     return false;
   }
@@ -160,9 +160,7 @@ export const transformPlotlyJsonToDonutProps = (
     height,
     innerRadius,
     hideLabels,
-    showLabelsInPercent: firstData.textinfo
-      ? firstData.textinfo === 'percent' || firstData.textinfo === 'label+percent'
-      : true,
+    showLabelsInPercent: firstData.textinfo ? ['percent', 'label+percent'].includes(firstData.textinfo) : true,
     styles,
   };
 };
@@ -417,6 +415,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
       });
     })
     .flat()
+    //reversing the order to invert the Y bars order.
     .reverse();
 
   const chartHeight: number = typeof layout.height === 'number' ? layout.height : 450;
