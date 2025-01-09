@@ -132,6 +132,33 @@ const allNegativeYPoints: ILineChartPoints[] = [
   },
 ];
 
+const strinXaxisPoints: ILineChartPoints[] = [
+  {
+    legend: 'metaData1',
+    data: [
+      { x: 'Jan', y: 'Feb' },
+      { x: 40, y: 80 },
+    ],
+    color: 'red',
+  },
+  {
+    legend: 'metaData2',
+    data: [
+      { x: 30, y: 60 },
+      { x: 50, y: 90 },
+    ],
+    color: 'green',
+  },
+  {
+    legend: 'metaData3',
+    data: [
+      { x: 70, y: 30 },
+      { x: 40, y: 80 },
+    ],
+    color: 'yellow',
+  },
+];
+
 const basicChartPoints = {
   chartTitle: 'LineChart',
   lineChartData: basicPoints,
@@ -145,6 +172,11 @@ const negativeYChartPoints = {
 const allNegativeYChartPoints = {
   chartTitle: 'LineChart',
   lineChartData: allNegativeYPoints,
+};
+
+const stringCaxisChartPoints = {
+  chartTitle: 'LineChart',
+  lineChartData: strinXaxisPoints,
 };
 
 const datePoints: ILineChartPoints[] = [
