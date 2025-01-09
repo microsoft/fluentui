@@ -226,8 +226,12 @@ export const transformPlotlyJsonToVSBCProps = (
     chartTitle,
     xAxisTitle,
     yAxisTitle,
-    secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
-    secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+    secondaryYAxistitle:
+      secondaryYAxisValues.secondaryYAxistitle !== '' ? secondaryYAxisValues.secondaryYAxistitle : undefined,
+    secondaryYScaleOptions:
+      Object.keys(secondaryYAxisValues.secondaryYScaleOptions).length !== 0
+        ? secondaryYAxisValues.secondaryYScaleOptions
+        : undefined,
   };
 };
 
@@ -276,8 +280,12 @@ export const transformPlotlyJsonToGVBCProps = (
     chartTitle,
     xAxisTitle,
     yAxisTitle,
-    secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
-    secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+    secondaryYAxistitle:
+      secondaryYAxisValues.secondaryYAxistitle !== '' ? secondaryYAxisValues.secondaryYAxistitle : undefined,
+    secondaryYScaleOptions:
+      Object.keys(secondaryYAxisValues.secondaryYScaleOptions).length !== 0
+        ? secondaryYAxisValues.secondaryYScaleOptions
+        : undefined,
   };
 };
 
