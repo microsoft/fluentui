@@ -3011,7 +3011,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                 x="0"
                 y="5"
               >
-                1
+                1 
               </tspan>
             </text>
           </g>
