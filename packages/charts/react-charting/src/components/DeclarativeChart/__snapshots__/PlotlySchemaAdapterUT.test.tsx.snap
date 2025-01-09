@@ -2837,7 +2837,7 @@ Object {
 }
 `;
 
-exports[`transform Plotly Json To chart Props transformPlotlyJsonToHorizontalBarWithAxisProps - Should return Horizontal bar chart with axis chart props 1`] = `
+exports[`transform Plotly Json To chart Props transformPlotlyJsonToHorizontalBarWithAxisProps - Should return HBC with axis chart props 1`] = `
 Object {
   "barHeight": 12.662117371807371,
   "chartTitle": "PHP Framework Popularity at Work - SitePoint, 2015",
