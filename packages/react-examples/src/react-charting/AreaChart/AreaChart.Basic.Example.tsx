@@ -3,7 +3,6 @@ import { AreaChart, ICustomizedCalloutData } from '@fluentui/react-charting';
 import { IAreaChartProps, ChartHoverCard, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import { AreaChartModes } from '@fluentui/react-charting/lib/AreaChart';
 
 interface IAreaChartBasicState {
   width: number;
@@ -290,7 +289,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
               legendProps={{
                 canSelectMultipleLegends: this.state.legendMultiSelect,
               }}
-              mode={this.state.changeChartMode ? AreaChartModes.toZeroY : AreaChartModes.toNextY}
+              mode={this.state.changeChartMode ? 'tozeroy' : 'tonexty'}
             />
           </div>
         )}
@@ -317,7 +316,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
               legendProps={{
                 canSelectMultipleLegends: this.state.legendMultiSelect,
               }}
-              mode={this.state.changeChartMode ? AreaChartModes.toZeroY : AreaChartModes.toNextY}
+              mode={this.state.changeChartMode ? 'tozeroy' : 'tonexty'}
             />
           </div>
         )}
