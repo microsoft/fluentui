@@ -16,7 +16,7 @@ import {
   sanitizeJson,
 } from './PlotlySchemaAdapter';
 
-var date = new Date();
+const date = new Date();
 const colorMap = new Map<string, string>();
 
 describe('isDate', () => {
@@ -258,7 +258,7 @@ describe('transform Plotly Json To chart Props', () => {
     expect(transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true)).toMatchSnapshot();
   });
 
-  test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should return Horizontal bar chart with axis chart props', () => {
+  test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should return HBC with axis chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_horizontalbar_test.json');
     expect(
       transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, true),
