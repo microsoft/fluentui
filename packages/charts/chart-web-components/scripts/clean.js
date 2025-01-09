@@ -2,6 +2,9 @@
 /**
  * Utility for cleaning directories.
  * Usage: node build/clean.js %path%
+ *
+ * This script should be shared for all web-component packages.
+ * Tracking issue - https://github.com/microsoft/fluentui/issues/33576
  */
 import * as path from 'path';
 import * as fsPromises from 'node:fs/promises';

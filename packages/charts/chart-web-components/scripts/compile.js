@@ -1,4 +1,8 @@
 /* eslint-disable no-undef */
+/**
+ * This script should be shared for all web-component packages.
+ * Tracking issue - https://github.com/microsoft/fluentui/issues/33576
+ */
 
 import { execSync } from 'child_process';
 import chalk from 'chalk';

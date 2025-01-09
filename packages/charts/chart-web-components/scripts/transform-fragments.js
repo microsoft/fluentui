@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type, @typescript-eslint/typedef */
 
 /**
+ * This script should be shared for all web-component packages.
+ * Tracking issue - https://github.com/microsoft/fluentui/issues/33576
+ */
+
+/**
  * Reduces extra spaces in HTML tagged templates.
  *
  * @param {string} data - the fragment value

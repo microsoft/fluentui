@@ -1,5 +1,10 @@
 // @ts-check
 
+/**
+ * This script should be shared for all web-component packages.
+ * Tracking issue - https://github.com/microsoft/fluentui/issues/33576
+ */
+
 import fs from 'node:fs';
 import path from 'node:path';
 import { promisify } from 'node:util';

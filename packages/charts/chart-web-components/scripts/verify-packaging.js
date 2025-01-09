@@ -3,6 +3,11 @@
  * Copied from ${@link 'file://./../../../../scripts/tasks/src/verify-packaging.ts'}
  */
 
+/**
+ * This script should be shared for all web-component packages.
+ * Tracking issue - https://github.com/microsoft/fluentui/issues/33576
+ */
+
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';

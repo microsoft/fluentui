@@ -1,3 +1,8 @@
+/**
+ * This config should be shared for all web-component packages.
+ * Tracking issue - https://github.com/microsoft/fluentui/issues/33576
+ */
+
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonJS from 'rollup-plugin-commonjs';
 import esbuild, { minify } from 'rollup-plugin-esbuild';

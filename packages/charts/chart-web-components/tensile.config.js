@@ -1,3 +1,8 @@
+/**
+ * This config should be shared for all web-component packages.
+ * Tracking issue - https://github.com/microsoft/fluentui/issues/33576
+ */
+
 const config = {
   // Browsers to test against
   browsers: ['chrome'],
