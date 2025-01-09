@@ -637,6 +637,7 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     // @deprecated
     legendColor?: string;
     maxBarWidth?: number;
+    mode?: 'plotly';
     onRenderCalloutPerDataPoint?: IRenderFunction<IGVBarChartSeriesPoint>;
     roundCorners?: boolean;
     // @deprecated
@@ -1468,6 +1469,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
     lineLegendText?: string;
     lineOptions?: ILineChartLineOptions;
     maxBarWidth?: number;
+    mode?: 'plotly';
     onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
     roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
@@ -1520,6 +1522,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     isCalloutForStack?: boolean;
     lineOptions?: ILineChartLineOptions;
     maxBarWidth?: number;
+    mode?: 'plotly';
     onBarClick?: (event: React_2.MouseEvent<SVGElement>, data: IVerticalStackedChartProps | IVSChartDataPoint) => void;
     onRenderCalloutPerDataPoint?: IRenderFunction<IVSChartDataPoint>;
     onRenderCalloutPerStack?: IRenderFunction<IVerticalStackedChartProps>;

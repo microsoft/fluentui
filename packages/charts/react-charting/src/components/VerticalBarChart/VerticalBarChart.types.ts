@@ -117,6 +117,11 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
    * The prop used to enable rounded corners for the chart.
    */
   roundCorners?: boolean;
+
+  /**
+   * Specifies the mode of the chart.
+   */
+  mode?: 'plotly';
 }
 
 /**
