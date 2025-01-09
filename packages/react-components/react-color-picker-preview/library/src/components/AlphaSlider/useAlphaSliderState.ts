@@ -23,13 +23,16 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
     return transparency ? 100 - value : value;
   }
 
-  const defaultState = props.defaultColor?.a !== undefined ? props.defaultColor.a * 100 : undefined;
-  const _state = hsvColor?.a !== undefined ? hsvColor.a * 100 : undefined;
+  const calculateTransparencyValue = (value?: number) => {
+    return value !== undefined ? adjustToTransparency(value * 100) : undefined;
+  };
+
   const [currentValue, setCurrentValue] = useControllableState({
-    defaultState: defaultState && adjustToTransparency(defaultState),
-    state: _state && adjustToTransparency(_state),
-    initialState: 100,
+    defaultState: calculateTransparencyValue(props.defaultColor?.a),
+    state: calculateTransparencyValue(hsvColor?.a),
+    initialState: adjustToTransparency(100),
   });
+
   const clampedValue = clamp(currentValue, MIN, MAX);
   const valuePercent = getPercent(clampedValue, MIN, MAX);
 
@@ -43,13 +46,15 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
     onChange?.(event, { type: 'change', event, color: newColor });
   });
 
-  const sliderDirection = state.vertical
-    ? transparency
-      ? '180deg'
-      : '0deg'
-    : dir === 'ltr' && !transparency
-    ? '90deg'
-    : '-90deg';
+  function getSliderDirection() {
+    if (state.vertical) {
+      return transparency ? '180deg' : '0deg';
+    } else {
+      return dir === 'ltr' && !transparency ? '90deg' : '-90deg';
+    }
+  }
+
+  const sliderDirection = getSliderDirection();
 
   const rootVariables = {
     [alphaSliderCSSVars.sliderDirectionVar]: sliderDirection,
