@@ -4057,7 +4057,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
         <g
           transform="translate(250, 340)"
         >
-
+          
           <text
             aria-label="Min value: 0"
             class=
@@ -24538,7 +24538,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                 500
               </text>
             </g>
-
+            
           </g>
         </svg>
       </div>

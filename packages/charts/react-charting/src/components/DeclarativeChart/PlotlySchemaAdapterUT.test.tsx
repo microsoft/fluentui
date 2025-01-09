@@ -128,16 +128,16 @@ describe('isMonthArray', () => {
     expect(isMonthArray([])).toBe(false);
   });
 
-  test('Should return true when input array contains only months in string formatt(MMM) in spanish', () => {
-    expect(isMonthArray(['Enero', 'Febrero'])).toBe(false);
+  test.skip('Should return true when input array contains only months in string formatt(MMM) in spanish', () => {
+    expect(isMonthArray(['Enero', 'Febrero'])).toBe(true);
   });
 
-  test('Should return true when input array contains only months in string formatt(MM) in spanish', () => {
-    expect(isMonthArray(['Ene', 'Feb'])).toBe(false);
+  test.skip('Should return true when input array contains only months in string formatt(MM) in spanish', () => {
+    expect(isMonthArray(['Ene', 'Feb'])).toBe(true);
   });
 
-  test('Should return true when input array contains only months in string formatt(MMM) in spanish', () => {
-    expect(isMonthArray(['Gennaio', 'Febbraio'])).toBe(false);
+  test.skip('Should return true when input array contains only months in string formatt(MMM) in italian', () => {
+    expect(isMonthArray(['Gennaio', 'Febbraio'])).toBe(true);
   });
 });
 

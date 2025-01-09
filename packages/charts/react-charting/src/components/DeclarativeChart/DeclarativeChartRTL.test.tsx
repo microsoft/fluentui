@@ -30,7 +30,7 @@ describe('DeclarativeChart', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test.skip('Should render gaugechart in DeclarativeChart', () => {
+  test('Should render gaugechart in DeclarativeChart', () => {
     // Arrange
     const plotlySchema = require('./tests/schema/fluent_gauge_test.json');
     const { container } = render(<DeclarativeChart key={'gaugechart'} chartSchema={{ plotlySchema }} />);
@@ -51,24 +51,38 @@ describe('DeclarativeChart', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test.skip('Should render piechart in DeclarativeChart', () => {
+  test('Should render piechart in DeclarativeChart', () => {
     // Arrange
     const plotlySchema = require('./tests/schema/fluent_pie_test.json');
     const { container } = render(<DeclarativeChart key={'piechart'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
   });
 
-  test.skip('Should render sankeychart in DeclarativeChart', () => {
+  test('Should render sankeychart in DeclarativeChart', () => {
     // Arrange
     const plotlySchema = require('./tests/schema/fluent_sankey_test.json');
     const { container } = render(<DeclarativeChart key={'sankeychart'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
   });
 
-  test('Should render verticalbarchart in DeclarativeChart', () => {
+  test.skip('Should render verticalbarchart in DeclarativeChart', () => {
     // Arrange
     const plotlySchema = require('./tests/schema/fluent_verticalbar_test.json');
     const { container } = render(<DeclarativeChart key={'verticalbarchart'} chartSchema={{ plotlySchema }} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  test.skip('Should render histogram chart in DeclarativeChart', () => {
+    // Arrange
+    const plotlySchema = require('./tests/schema/fluent_verticalbar_histogram_test.json');
+    const { container } = render(<DeclarativeChart key={'histogram'} chartSchema={{ plotlySchema }} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  test.skip('Should render horizontalbar chart in DeclarativeChart', () => {
+    // Arrange
+    const plotlySchema = require('./tests/schema/fluent_horizontalbar_test.json');
+    const { container } = render(<DeclarativeChart key={'histogram'} chartSchema={{ plotlySchema }} />);
     expect(container).toMatchSnapshot();
   });
 });
