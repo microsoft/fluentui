@@ -35,7 +35,7 @@ export const ColorArea: ForwardRefComponent<ColorAreaProps>;
 export const colorAreaClassNames: SlotClassNames<ColorAreaSlots>;
 
 // @public
-export type ColorAreaProps = Omit<ComponentProps<Partial<ColorAreaSlots>>, 'color' | 'onChange'> & {
+export type ColorAreaProps = Omit<ComponentProps<Partial<ColorAreaSlots>>, 'color' | 'onChange'> & Pick<ColorPickerProps, 'shape'> & {
     color?: HsvColor;
     defaultColor?: HsvColor;
     onChange?: EventHandler<ColorAreaOnColorChangeData>;
@@ -50,7 +50,7 @@ export type ColorAreaSlots = {
 };
 
 // @public
-export type ColorAreaState = ComponentState<Required<ColorAreaSlots>> & Pick<ColorAreaProps, 'color'>;
+export type ColorAreaState = ComponentState<Required<ColorAreaSlots>> & Pick<ColorAreaProps, 'color' | 'shape'>;
 
 // @public
 export const ColorPicker: ForwardRefComponent<ColorPickerProps>;
@@ -62,6 +62,7 @@ export const colorPickerClassNames: SlotClassNames<ColorPickerSlots>;
 export type ColorPickerProps = Omit<ComponentProps<Partial<ColorPickerSlots>>, 'color'> & {
     color: HsvColor;
     onColorChange?: EventHandler<ColorPickerOnChangeData>;
+    shape?: 'rounded' | 'square';
 };
 
 // @public (undocumented)
@@ -79,7 +80,7 @@ export const ColorSlider: ForwardRefComponent<ColorSliderProps>;
 export const colorSliderClassNames: SlotClassNames<ColorSliderSlots>;
 
 // @public
-export type ColorSliderProps = Omit<ComponentProps<Partial<ColorSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value' | 'color'> & {
+export type ColorSliderProps = Omit<ComponentProps<Partial<ColorSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value' | 'color'> & Pick<ColorPickerProps, 'shape'> & {
     channel?: string;
     onChange?: EventHandler<SliderOnChangeData>;
     vertical?: boolean;
@@ -96,7 +97,7 @@ export type ColorSliderSlots = {
 };
 
 // @public
-export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical'>;
+export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical' | 'shape'>;
 
 // @public
 export const renderAlphaSlider_unstable: (state: AlphaSliderState) => JSX.Element;
