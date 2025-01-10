@@ -18,22 +18,6 @@ import {
 export type { IChildProps, IRefArrayData, IBasestate, ILineChartDataPoint, ILineChartPoints, IMargins };
 
 /**
- * Area Chart modes
- * {@docCategory AreaChart}
- */
-export enum AreaChartModes {
-  /**
-   * This mode will fill the area from the line to the x-axis.
-   */
-  toZeroY = 'tozeroy',
-
-  /**
-   * This mode will fill the area from the line to the next line.
-   */
-  toNextY = 'tonexty',
-}
-
-/**
  * Area Chart properties.
  * {@docCategory AreaChart}
  */

@@ -46,7 +46,6 @@ import {
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IChart } from '../../types/index';
-import { AreaChartModes } from './AreaChart.types';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
@@ -435,25 +434,25 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getData = (keys: string[], dataSet: any) => {
+  private _getDataPoints = (keys: string[], dataSet: any) => {
     const dataValues = d3Stack().keys(keys)(dataSet);
     const maxOfYVal = d3Max(dataValues[dataValues.length - 1], dp => dp[1])!;
-    const renderData: Array<IAreaChartDataSetPoint[]> = [];
+    const renderPoints: Array<IAreaChartDataSetPoint[]> = [];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dataValues.forEach((layer: any) => {
       const currentLayer: IAreaChartDataSetPoint[] = [];
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       layer.forEach((d: any) => {
         currentLayer.push({
-          values: this.props.mode === AreaChartModes.toZeroY ? [0, d[1]] : d,
+          values: this.props.mode === 'tozeroy' ? [0, d[1]] : d,
           xVal: d.data.xVal,
         });
       });
-      renderData.push(currentLayer);
+      renderPoints.push(currentLayer);
     });
-    this._isMultiStackChart = renderData && renderData.length > 1 ? true : false;
+    this._isMultiStackChart = renderPoints && renderPoints.length > 1 ? true : false;
     return {
-      renderData,
+      renderData: renderPoints,
       maxOfYVal,
     };
   };
@@ -506,7 +505,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       }
 
       // Data used to draw graph
-      const data = this._getData(keys, dataSet);
+      const data = this._getDataPoints(keys, dataSet);
 
       return {
         colors,
@@ -559,7 +558,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       }
 
       // Data used to draw graph
-      const data = this._getData(keys, dataSet);
+      const data = this._getDataPoints(keys, dataSet);
 
       return {
         colors,
