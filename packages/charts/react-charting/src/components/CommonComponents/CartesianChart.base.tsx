@@ -9,6 +9,7 @@ import {
   IModifiedCartesianChartProps,
   IYValueHover,
   IHorizontalBarChartWithAxisDataPoint,
+  IHeatMapChartDataPoint,
 } from '../../index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import {
@@ -28,14 +29,17 @@ import {
   createYAxisLabels,
   ChartTypes,
   wrapContent,
+  getSecureProps,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
+import { IChart } from '../../types/index';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 const ChartHoverCard = React.lazy(() =>
   import('../../utilities/ChartHoverCard/ChartHoverCard').then(module => ({ default: module.ChartHoverCard })),
 );
+const chartTypesToCheck = [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart];
 
 export interface ICartesianChartState {
   containerWidth: number;
@@ -62,9 +66,12 @@ export interface ICartesianChartState {
  * 2.Callout
  * 3.Fit parent Continer
  */
-export class CartesianChartBase extends React.Component<IModifiedCartesianChartProps, ICartesianChartState> {
+export class CartesianChartBase
+  extends React.Component<IModifiedCartesianChartProps, ICartesianChartState>
+  implements IChart
+{
+  public chartContainer: HTMLDivElement;
   private _classNames: IProcessedStyleSet<ICartesianChartStyles>;
-  private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
   private minLegendContainerHeight: number = 32;
   private xAxisElement: SVGSVGElement | null;
@@ -136,14 +143,11 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
 
   public componentDidMount(): void {
     this._fitParentContainer();
-    if (
-      this.props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
-      this.props.showYAxisLables &&
-      this.yAxisElement
-    ) {
-      const maxYAxisLabelLength = calculateLongestLabelWidth(
-        this.props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
-        `.${this._classNames.yAxis} text`,
+    if (chartTypesToCheck.includes(this.props.chartType) && this.props.showYAxisLables && this.yAxisElement) {
+      const maxYAxisLabelLength = this.calculateMaxYAxisLabelLength(
+        this.props.chartType,
+        this.props.points,
+        this._classNames.yAxis!,
       );
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
@@ -189,14 +193,11 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         });
       }
     }
-    if (
-      this.props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
-      this.props.showYAxisLables &&
-      this.yAxisElement
-    ) {
-      const maxYAxisLabelLength = calculateLongestLabelWidth(
-        this.props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
-        `.${this._classNames.yAxis} text`,
+    if (chartTypesToCheck.includes(this.props.chartType) && this.props.showYAxisLables && this.yAxisElement) {
+      const maxYAxisLabelLength = this.calculateMaxYAxisLabelLength(
+        this.props.chartType,
+        this.props.points,
+        this._classNames.yAxis!,
       );
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
@@ -214,6 +215,25 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       });
     }
   }
+
+  public calculateMaxYAxisLabelLength = (
+    chartType: ChartTypes,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    points: any[],
+    className: string,
+  ): number => {
+    if (chartType === ChartTypes.HeatMapChart) {
+      return calculateLongestLabelWidth(
+        points[0].data.map((point: IHeatMapChartDataPoint) => point.y),
+        `.${className} text`,
+      );
+    } else {
+      return calculateLongestLabelWidth(
+        points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
+        `.${className} text`,
+      );
+    }
+  };
 
   public render(): JSX.Element {
     const {
@@ -233,7 +253,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
 
     const margin = { ...this.margins };
-    if (this.props.chartType === ChartTypes.HorizontalBarChartWithAxis) {
+    if (chartTypesToCheck.includes(this.props.chartType)) {
       if (!this._isRtl) {
         margin.left! += this.state.startFromX;
       } else {
@@ -386,9 +406,23 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             yAxisPadding: this.props.yAxisPadding,
           };
 
-          yScaleSecondary = this.props.createYAxis(YAxisParamsSecondary, this._isRtl, axisData, this.isIntegralDataset);
+          yScaleSecondary = yScaleSecondary = this.props.createYAxis(
+            YAxisParamsSecondary,
+            this._isRtl,
+            axisData,
+            this.isIntegralDataset,
+            true,
+            this.props.supportNegativeData!,
+          );
         }
-        yScale = this.props.createYAxis(YAxisParams, this._isRtl, axisData, this.isIntegralDataset);
+        yScale = this.props.createYAxis(
+          YAxisParams,
+          this._isRtl,
+          axisData,
+          this.isIntegralDataset,
+          false,
+          this.props.supportNegativeData!,
+        );
       }
 
       /*
@@ -396,7 +430,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     truncating the rest of the text and showing elipsis
     or showing the whole string,
      * */
-      this.props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
+      chartTypesToCheck.includes(this.props.chartType) &&
         yScale &&
         createYAxisLabels(
           this.yAxisElement,
@@ -493,7 +527,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             role="region"
             aria-label={this._getChartDescription()}
             style={{ display: 'block' }}
-            {...svgProps}
+            {...getSecureProps(svgProps)}
           >
             <g
               ref={(e: SVGSVGElement | null) => {
@@ -604,6 +638,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       </div>
     );
   }
+
   /**
    * Dedicated function to return the Callout JSX Element , which can further be used to only call this when
    * only the calloutprops and charthover props changes.

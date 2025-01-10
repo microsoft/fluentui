@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';

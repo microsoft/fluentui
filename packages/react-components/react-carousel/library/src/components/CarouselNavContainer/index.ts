@@ -1,5 +1,12 @@
-export * from './CarouselNavContainer';
-export * from './CarouselNavContainer.types';
-export * from './renderCarouselNavContainer';
-export * from './useCarouselNavContainer';
-export * from './useCarouselNavContainerStyles.styles';
+export { CarouselNavContainer } from './CarouselNavContainer';
+export type {
+  CarouselNavContainerProps,
+  CarouselNavContainerSlots,
+  CarouselNavContainerState,
+} from './CarouselNavContainer.types';
+export { renderCarouselNavContainer_unstable } from './renderCarouselNavContainer';
+export { useCarouselNavContainer_unstable } from './useCarouselNavContainer';
+export {
+  carouselNavContainerClassNames,
+  useCarouselNavContainerStyles_unstable,
+} from './useCarouselNavContainerStyles.styles';

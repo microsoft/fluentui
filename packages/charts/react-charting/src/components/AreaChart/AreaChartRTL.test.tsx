@@ -268,6 +268,158 @@ const chartPointsWithDate = [
   },
 ];
 
+const negativeChart1Points = [
+  {
+    x: 20,
+    y: -9,
+  },
+  {
+    x: 25,
+    y: -14,
+  },
+  {
+    x: 30,
+    y: -14,
+  },
+  {
+    x: 35,
+    y: -23,
+  },
+  {
+    x: 40,
+    y: -20,
+  },
+  {
+    x: 45,
+    y: -31,
+  },
+  {
+    x: 50,
+    y: -29,
+  },
+  {
+    x: 55,
+    y: -27,
+  },
+  {
+    x: 60,
+    y: -37,
+  },
+  {
+    x: 65,
+    y: -51,
+  },
+];
+
+const negativeChart2Points = [
+  {
+    x: 20,
+    y: -21,
+  },
+  {
+    x: 25,
+    y: -25,
+  },
+  {
+    x: 30,
+    y: -10,
+  },
+  {
+    x: 35,
+    y: -10,
+  },
+  {
+    x: 40,
+    y: -14,
+  },
+  {
+    x: 45,
+    y: -18,
+  },
+  {
+    x: 50,
+    y: -9,
+  },
+  {
+    x: 55,
+    y: -23,
+  },
+  {
+    x: 60,
+    y: -7,
+  },
+  {
+    x: 65,
+    y: -55,
+  },
+];
+
+const negativeChart3Points = [
+  {
+    x: 20,
+    y: -30,
+  },
+  {
+    x: 25,
+    y: -35,
+  },
+  {
+    x: 30,
+    y: -33,
+  },
+  {
+    x: 35,
+    y: -40,
+  },
+  {
+    x: 40,
+    y: -10,
+  },
+  {
+    x: 45,
+    y: -40,
+  },
+  {
+    x: 50,
+    y: -34,
+  },
+  {
+    x: 55,
+    y: -40,
+  },
+  {
+    x: 60,
+    y: -60,
+  },
+  {
+    x: 65,
+    y: -40,
+  },
+];
+
+const negativeChartPoints = [
+  {
+    legend: 'legend1',
+    data: negativeChart1Points,
+    color: 'green',
+  },
+  {
+    legend: 'legend2',
+    data: negativeChart2Points,
+    color: 'yellow',
+  },
+  {
+    legend: 'legend3',
+    data: negativeChart3Points,
+    color: 'blue',
+  },
+];
+
+const negativeChartData = {
+  chartTitle: 'Area chart multiple negative y value example',
+  lineChartData: negativeChartPoints,
+};
+
 const tickValues = [
   new Date('2020-01-06T00:00:00.000Z'),
   new Date('2020-01-08T00:00:00.000Z'),
@@ -347,6 +499,16 @@ describe('Area chart rendering', () => {
     container => {
       // Assert
       expect(getById(container, /yAxisGElementSecondarychart_/i)).toBeDefined();
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the Area Chart with negative y values',
+    AreaChart,
+    { data: negativeChartData, supportNegativeData: true },
+    container => {
+      //Asset
       expect(container).toMatchSnapshot();
     },
   );
@@ -442,6 +604,28 @@ describe('Area chart - Subcomponent legend', () => {
       fireEvent.click(legend!);
       // Assert
       expect(firstLegend).toHaveAttribute('aria-selected', 'false');
+    },
+  );
+
+  testWithoutWait(
+    'Should select multiple legends on single mouse click on legends',
+    AreaChart,
+    { data: chartData, legendProps: { canSelectMultipleLegends: true } },
+    container => {
+      const legend1 = screen.queryByText('legend1')?.closest('button');
+      expect(legend1).toBeDefined();
+      const legend2 = screen.queryByText('legend2')?.closest('button');
+      expect(legend2).toBeDefined();
+
+      fireEvent.click(legend1!);
+      fireEvent.click(legend2!);
+
+      // Assert
+      expect(legend1).toHaveAttribute('aria-selected', 'true');
+      expect(legend2).toHaveAttribute('aria-selected', 'true');
+      expect(getById(container, /graph-areaChart/i)[0]).toHaveAttribute('fill-opacity', '0.7');
+      expect(getById(container, /graph-areaChart/i)[1]).toHaveAttribute('fill-opacity', '0.7');
+      expect(getById(container, /graph-areaChart/i)[2]).toHaveAttribute('fill-opacity', '0.1');
     },
   );
 });

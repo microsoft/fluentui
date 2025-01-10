@@ -76,7 +76,6 @@ const useStyles = makeStyles({
  */
 const useRailStyles = makeStyles({
   rail: {
-    borderRadius: tokens.borderRadiusMedium,
     pointerEvents: 'none',
     gridRowStart: '2',
     gridRowEnd: '2',
@@ -130,7 +129,7 @@ const useThumbStyles = makeStyles({
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
     borderRadius: tokens.borderRadiusCircular,
-    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
+    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .18) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${colorSliderCSSVars.thumbColorVar})`,
     [`${thumbPositionVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${colorSliderCSSVars.sliderProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
     '::before': {
@@ -142,7 +141,7 @@ const useThumbStyles = makeStyles({
       borderRadius: tokens.borderRadiusCircular,
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1}`,
+      border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1Pressed}`,
     },
   },
   horizontal: {
@@ -152,6 +151,15 @@ const useThumbStyles = makeStyles({
   vertical: {
     transform: 'translateY(50%)',
     bottom: `var(${thumbPositionVar})`,
+  },
+});
+
+const useShapeStyles = makeStyles({
+  rounded: {
+    borderRadius: tokens.borderRadiusMedium,
+  },
+  square: {
+    borderRadius: tokens.borderRadiusNone,
   },
 });
 
@@ -197,6 +205,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
   const railStyles = useRailStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
+  const shapeStyles = useShapeStyles();
   const isVertical = state.vertical;
 
   state.root.className = mergeClasses(
@@ -210,6 +219,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
     colorSliderClassNames.rail,
     railStyles.rail,
     styles.hue,
+    shapeStyles[state.shape || 'rounded'],
     isVertical ? railStyles.vertical : railStyles.horizontal,
     state.rail.className,
   );

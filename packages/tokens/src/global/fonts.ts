@@ -37,10 +37,8 @@ export const fontWeights: FontWeightTokens = {
 
 export const fontFamilies: FontFamilyTokens = {
   fontFamilyBase:
-    // eslint-disable-next-line @fluentui/max-len
     "'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
   fontFamilyMonospace: "Consolas, 'Courier New', Courier, monospace",
   fontFamilyNumeric:
-    // eslint-disable-next-line @fluentui/max-len
     "Bahnschrift, 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
 };

@@ -16,6 +16,9 @@
       "@fluentui/babel-preset-storybook-full-source": [
         "packages/react-components/babel-preset-storybook-full-source/src/index.ts"
       ],
+      "@fluentui/eslint-plugin-react-components": [
+        "packages/react-components/eslint-plugin-react-components/src/index.ts"
+      ],
       "@fluentui/global-context": ["packages/react-components/global-context/src/index.ts"],
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
       "@fluentui/keyboard-keys": ["packages/react-components/keyboard-keys/src/index.ts"],
@@ -88,8 +91,8 @@
       "@fluentui/react-label-stories": ["packages/react-components/react-label/stories/src/index.ts"],
       "@fluentui/react-link": ["packages/react-components/react-link/library/src/index.ts"],
       "@fluentui/react-link-stories": ["packages/react-components/react-link/stories/src/index.ts"],
-      "@fluentui/react-list-preview": ["packages/react-components/react-list-preview/library/src/index.ts"],
-      "@fluentui/react-list-preview-stories": ["packages/react-components/react-list-preview/stories/src/index.ts"],
+      "@fluentui/react-list": ["packages/react-components/react-list/library/src/index.ts"],
+      "@fluentui/react-list-stories": ["packages/react-components/react-list/stories/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/library/src/index.ts"],
       "@fluentui/react-menu-stories": ["packages/react-components/react-menu/stories/src/index.ts"],
       "@fluentui/react-message-bar": ["packages/react-components/react-message-bar/library/src/index.ts"],

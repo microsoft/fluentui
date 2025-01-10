@@ -30,7 +30,6 @@ const innerThumbRadiusVar = `--fui-AlphaSlider__thumb--radius`;
 const useRootStyles = makeResetStyles({
   position: 'relative',
   border: `1px solid ${tokens.colorNeutralStroke1}`,
-  borderRadius: tokens.borderRadiusMedium,
   background: `linear-gradient(to bottom, transparent, #000), linear-gradient(to right, #fff, transparent), var(${colorAreaCSSVars.mainColorVar})`,
   forcedColorAdjust: 'none',
   display: 'inline-grid',
@@ -55,7 +54,7 @@ const useThumbStyles = makeStyles({
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
     borderRadius: tokens.borderRadiusCircular,
-    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
+    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .18) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${colorAreaCSSVars.thumbColorVar})`,
     transform: 'translate(-50%, 50%)',
     [`${thumbPositionXVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${colorAreaCSSVars.areaXProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
@@ -68,7 +67,7 @@ const useThumbStyles = makeStyles({
       borderRadius: tokens.borderRadiusCircular,
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1}`,
+      border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1Pressed}`,
     },
   },
   focusIndicator: createFocusOutlineStyle({
@@ -99,6 +98,15 @@ const useInputStyles = makeStyles({
   },
 });
 
+const useShapeStyles = makeStyles({
+  rounded: {
+    borderRadius: tokens.borderRadiusMedium,
+  },
+  square: {
+    borderRadius: tokens.borderRadiusNone,
+  },
+});
+
 /**
  * Apply styling to the ColorArea slots based on the state
  */
@@ -108,8 +116,14 @@ export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaSta
   const rootStyles = useRootStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
+  const shapeStyles = useShapeStyles();
 
-  state.root.className = mergeClasses(colorAreaClassNames.root, rootStyles, state.root.className);
+  state.root.className = mergeClasses(
+    colorAreaClassNames.root,
+    rootStyles,
+    shapeStyles[state.shape || 'rounded'],
+    state.root.className,
+  );
 
   state.thumb.className = mergeClasses(
     colorAreaClassNames.thumb,

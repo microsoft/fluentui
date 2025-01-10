@@ -32,6 +32,7 @@ export const useColorSlider_unstable = (
   const { dir } = useFluent();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
+  const shapeFromContext = useColorPickerContextValue_unstable(ctx => ctx.shape);
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
@@ -41,6 +42,7 @@ export const useColorSlider_unstable = (
   const {
     color,
     onChange = onChangeFromContext,
+    shape = shapeFromContext,
     vertical,
     // Slots
     root,
@@ -76,6 +78,7 @@ export const useColorSlider_unstable = (
   };
 
   const state: ColorSliderState = {
+    shape,
     vertical,
     components: {
       input: 'input',
@@ -84,7 +87,10 @@ export const useColorSlider_unstable = (
       thumb: 'div',
     },
     root: slot.always(root, {
-      defaultProps: nativeProps.root,
+      defaultProps: {
+        role: 'group',
+        ...nativeProps.root,
+      },
       elementType: 'div',
     }),
     input: slot.always(input, {
@@ -93,6 +99,8 @@ export const useColorSlider_unstable = (
         ref,
         min: MIN,
         max: MAX,
+        tabIndex: 0,
+        ['aria-orientation']: vertical ? 'vertical' : 'horizontal',
         ...nativeProps.primary,
         type: 'range',
       },
