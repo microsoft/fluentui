@@ -18,7 +18,7 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@ctrl/tinycolor": "3.3.4",
+    "@ctrl/tinycolor": "^3.3.4",
     "@fluentui/fluent2-theme": "^8.107.122",
     "@fluentui/react": "^8.122.5",
     "@fluentui/react-components": "^9.57.0",
