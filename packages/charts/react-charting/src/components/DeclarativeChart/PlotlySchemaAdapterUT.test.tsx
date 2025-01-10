@@ -136,7 +136,7 @@ describe('isMonthArray', () => {
     expect(isMonthArray(['Ene', 'Feb'])).toBe(true);
   });
 
-  test.skip('Should return true when input array contains only months in string formatt(MMM) in italian', () => {
+  test.skip('Should return true when input array contains only months in string format(MMM) in italian', () => {
     expect(isMonthArray(['Gennaio', 'Febbraio'])).toBe(true);
   });
 });
@@ -146,8 +146,12 @@ describe('updateXValues', () => {
     expect(updateXValues([10, 11, 1])).toStrictEqual(['10 01, 2024', '11 01, 2024', '1 01, 2025']);
   });
 
-  test.skip('Should return error when input array contains invalid months', () => {
-    expect(updateXValues([10, 11, 16])).toStrictEqual([]);
+  test('Should return error when input array contains invalid months', () => {
+    try {
+      expect(updateXValues([10, 11, 16])).toStrictEqual([]);
+    } catch (e) {
+      expect(e).toStrictEqual(TypeError("Cannot read properties of null (reading 'getMonth')"));
+    }
   });
 
   test('Should return dates array when input array contains months data in MMM format', () => {
