@@ -1,37 +1,37 @@
-pr:
-  - hotfix/5.135.6
+# pr:
+#   - hotfix/5.135.6
 
-# There's a separate pipeline for CI which also uses this file, but with a trigger override in the UI
-# https://dev.azure.com/uifabric/fabricpublic/_apps/hub/ms.vss-ciworkflow.build-ci-hub?_a=edit-build-definition&id=164&view=Tab_Triggers
-trigger: none
+# # There's a separate pipeline for CI which also uses this file, but with a trigger override in the UI
+# # https://dev.azure.com/uifabric/fabricpublic/_apps/hub/ms.vss-ciworkflow.build-ci-hub?_a=edit-build-definition&id=164&view=Tab_Triggers
+# trigger: none
 
-variables:
-  - group: fabric-variables
-  - template: .devops/templates/variables.yml
+# variables:
+#   - group: fabric-variables
+#   - template: .devops/templates/variables.yml
 
-pool: '1ES-Host-Ubuntu'
+# pool: '1ES-Host-Ubuntu'
 
-workspace:
-  clean: all
+# workspace:
+#   clean: all
 
-steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '8.x'
-    displayName: 'Install Node.js'
+# steps:
+#   - task: NodeTool@0
+#     inputs:
+#       versionSpec: '8.x'
+#     displayName: 'Install Node.js'
 
-  - script: |
-      npm install --ignore-scripts
-      node node_modules/@microsoft/rush/bin/rush install --bypass-policy
-    displayName: rush install
+#   - script: |
+#       npm install --ignore-scripts
+#       node node_modules/@microsoft/rush/bin/rush install --bypass-policy
+#     displayName: rush install
 
-  - script: |
-      npm run checkchange
-    displayName: check change
+#   - script: |
+#       npm run checkchange
+#     displayName: check change
 
-  - script: |
-      npm run buildfast
-    displayName: build ci
+#   - script: |
+#       npm run buildfast
+#     displayName: build ci
 
   # disable in this branch
   # - task: AzureUpload@2
