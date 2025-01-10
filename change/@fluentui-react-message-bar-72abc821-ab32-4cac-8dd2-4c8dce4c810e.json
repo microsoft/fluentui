@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "refactor(MessageBar): migrate slide & fade to motion components",
-  "packageName": "@fluentui/react-message-bar",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}
