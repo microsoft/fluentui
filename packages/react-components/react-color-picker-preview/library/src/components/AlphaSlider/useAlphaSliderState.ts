@@ -8,6 +8,7 @@ import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker'
 import { MIN, MAX } from '../../utils/constants';
 import { getPercent } from '../../utils/getPercent';
 import type { HsvColor } from '../../types/color';
+import { adjustToTransparency, calculateTransparencyValue, getSliderDirection } from './alphaSliderUtils';
 
 export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: AlphaSliderProps) => {
   'use no memo';
@@ -19,18 +20,10 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const hsvColor = color || colorFromContext;
   const hslColor = tinycolor(hsvColor).toHsl();
 
-  function adjustToTransparency(value: number) {
-    return transparency ? 100 - value : value;
-  }
-
-  const calculateTransparencyValue = (value?: number) => {
-    return value !== undefined ? adjustToTransparency(value * 100) : undefined;
-  };
-
   const [currentValue, setCurrentValue] = useControllableState({
-    defaultState: calculateTransparencyValue(props.defaultColor?.a),
-    state: calculateTransparencyValue(hsvColor?.a),
-    initialState: adjustToTransparency(100),
+    defaultState: calculateTransparencyValue(props.defaultColor?.a, transparency),
+    state: calculateTransparencyValue(hsvColor?.a, transparency),
+    initialState: adjustToTransparency(100, transparency),
   });
 
   const clampedValue = clamp(currentValue, MIN, MAX);
@@ -39,22 +32,14 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const inputOnChange = state.input.onChange;
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
-    const newValue = adjustToTransparency(Number(event.target.value));
+    const newValue = adjustToTransparency(Number(event.target.value), transparency);
     const newColor: HsvColor = { ...hsvColor, a: newValue / 100 };
     setCurrentValue(newValue);
     inputOnChange?.(event);
     onChange?.(event, { type: 'change', event, color: newColor });
   });
 
-  function getSliderDirection() {
-    if (state.vertical) {
-      return transparency ? '180deg' : '0deg';
-    } else {
-      return dir === 'ltr' && !transparency ? '90deg' : '-90deg';
-    }
-  }
-
-  const sliderDirection = getSliderDirection();
+  const sliderDirection = getSliderDirection(dir, state.vertical, transparency);
 
   const rootVariables = {
     [alphaSliderCSSVars.sliderDirectionVar]: sliderDirection,
