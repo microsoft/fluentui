@@ -35,13 +35,18 @@ export const ColorPickerShape = () => {
   const handleChange: ColorPickerProps['onColorChange'] = (_, data) =>
     setColor({ ...data.color, a: data.color.a ?? 1 });
 
+  const ariaAttributes = {
+    'aria-label': 'ColorPicker',
+    'aria-roledescription': '2D slider',
+  };
+
   return (
     <div className={styles.example}>
       <h3>Rounded (default)</h3>
       <ColorPicker color={color} onColorChange={handleChange}>
-        <ColorSlider />
-        <AlphaSlider />
-        <ColorArea />
+        <ColorSlider aria-label="Hue" />
+        <AlphaSlider aria-label="Alpha" />
+        <ColorArea inputX={ariaAttributes} inputY={ariaAttributes} />
       </ColorPicker>
       <h3>Square (default)</h3>
       <ColorPicker shape="square" color={color} onColorChange={handleChange}>

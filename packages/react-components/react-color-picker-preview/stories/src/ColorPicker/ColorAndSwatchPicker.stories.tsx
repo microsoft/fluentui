@@ -94,14 +94,19 @@ export const ColorAndSwatchPickerExample = () => {
     }
   }, [colorFocusTarget]);
 
+  const ariaAttributes = {
+    'aria-label': 'ColorPicker',
+    'aria-roledescription': '2D slider',
+  };
+
   return (
     <div className={styles.example}>
       <ColorPicker color={color} onColorChange={handleChange}>
-        <ColorArea />
+        <ColorArea inputX={ariaAttributes} inputY={ariaAttributes} />
         <div className={styles.row}>
           <div className={styles.sliders}>
-            <ColorSlider />
-            <AlphaSlider />
+            <ColorSlider aria-label="Hue" />
+            <AlphaSlider aria-label="Alpha" />
           </div>
           <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toRgbString() }} />
         </div>
