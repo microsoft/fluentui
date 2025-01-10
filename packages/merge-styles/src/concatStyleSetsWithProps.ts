@@ -15,11 +15,9 @@ export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSe
   const result: Array<DeepPartial<TStyleSet>> = [];
   for (const styles of allStyles) {
     if (styles) {
-      if (typeof styles === 'function') {
-        result.push((styles as IStyleFunction<TStyleProps, TStyleSet>)(styleProps));
-      } else {
-        result.push(styles);
-      }
+      result.push(
+        typeof styles === 'function' ? (styles as IStyleFunction<TStyleProps, TStyleSet>)(styleProps) : styles,
+      );
     }
   }
   if (result.length === 1) {
