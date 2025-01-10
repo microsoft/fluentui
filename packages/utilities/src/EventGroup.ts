@@ -76,7 +76,7 @@ export class EventGroup {
       if (typeof theDoc !== 'undefined' && theDoc.createEvent) {
         let ev = theDoc.createEvent('HTMLEvents');
 
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         ev.initEvent(eventName, bubbleEvent || false, true);
 
         assign(ev, eventArgs);

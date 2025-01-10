@@ -11,7 +11,7 @@ const GlobalClassNames = {
 };
 
 export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const { height, borderStyle, theme } = props;
 
   const { semanticColors } = theme;

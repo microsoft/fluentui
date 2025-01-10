@@ -78,7 +78,7 @@ const CalendarYearGridCell: React.FunctionComponent<ICalendarYearGridCellProps> 
   };
 
   const onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (ev.which === KeyCodes.enter) {
       onSelectYear?.(year);
     }
@@ -127,9 +127,12 @@ const CalendarYearGrid: React.FunctionComponent<ICalendarYearGridProps> = props 
     componentRef,
   } = props;
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const selectedCellRef = React.useRef<ICalendarYearGridCell>(null);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const currentCellRef = React.useRef<ICalendarYearGridCell>(null);
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   React.useImperativeHandle(
     componentRef,
     () => ({
@@ -246,7 +249,7 @@ const CalendarYearNavArrow: React.FunctionComponent<ICalendarYearNavArrowProps> 
   };
 
   const onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (ev.which === KeyCodes.enter) {
       onNavigate();
     }
@@ -308,7 +311,7 @@ const CalendarYearTitle: React.FunctionComponent<ICalendarYearHeaderProps> = pro
   };
 
   const onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       onHeaderSelect();
     }

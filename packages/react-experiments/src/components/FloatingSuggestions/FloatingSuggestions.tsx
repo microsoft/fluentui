@@ -250,7 +250,7 @@ export class FloatingSuggestions<TItem extends {}>
     ) {
       return;
     }
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const keyCode = ev.which;
     switch (keyCode) {
       case KeyCodes.escape:

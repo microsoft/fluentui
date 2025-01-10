@@ -289,7 +289,7 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
 
     const contrastRatio = getContrastRatio(bgc, fgc);
     let contrastRatioString = String(contrastRatio);
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     contrastRatioString = contrastRatioString.substr(0, contrastRatioString.indexOf('.') + 3);
     if (contrastRatio < 4.5) {
       contrastRatioString = '**' + contrastRatioString + '**';

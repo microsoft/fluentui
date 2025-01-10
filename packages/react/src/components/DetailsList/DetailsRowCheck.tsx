@@ -60,7 +60,7 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
     <div
       {...buttonProps}
       role={checkRole}
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       className={css(classNames.root, classNames.check)}
       aria-checked={selected}
       data-selection-toggle={true}
@@ -70,7 +70,7 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
       {onRenderCheckbox(detailsCheckboxProps)}
     </div>
   ) : (
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     <div {...divProps} className={css(classNames.root, classNames.check)} />
   );
 };

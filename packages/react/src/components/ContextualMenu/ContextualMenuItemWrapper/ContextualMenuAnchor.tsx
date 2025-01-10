@@ -102,7 +102,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
               aria-posinset={focusableElementIndex + 1}
               aria-setsize={totalItemCount}
               aria-disabled={isItemDisabled(item)}
-              // eslint-disable-next-line deprecation/deprecation
+              // eslint-disable-next-line @typescript-eslint/no-deprecated
               style={item.style}
               onClick={this._onItemClick}
               onMouseEnter={this._onItemMouseEnter}

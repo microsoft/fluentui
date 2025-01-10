@@ -381,7 +381,7 @@ describe('Popover', () => {
 
       it('should work as inertTrapFocus when set to false', () => {
         mount(
-          <Popover legacyTrapFocus={false} trapFocus>
+          <Popover inertTrapFocus={false} trapFocus>
             <PopoverTrigger disableButtonEnhancement>
               <button>Popover trigger</button>
             </PopoverTrigger>

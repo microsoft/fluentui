@@ -202,7 +202,7 @@ describe('Stack', () => {
 
   it('renders horizontal Stack with a gap in rtl context correctly', () => {
     const component = renderer.create(
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       <Fabric dir="rtl">
         <Stack horizontal tokens={{ childrenGap: 10 }}>
           <Stack.Item>Item 1</Stack.Item>

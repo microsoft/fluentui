@@ -15,7 +15,7 @@ export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptio
     disabledTests = [],
     extraTests,
     tsConfig,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     tsconfigDir,
     disableTypeTests,
   } = mergedOptions;

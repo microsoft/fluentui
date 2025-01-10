@@ -47,9 +47,10 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState extends {} = {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(props: TProps, context?: any) {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     super(props, context);
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     _makeAllSafe(this, BaseComponent.prototype, [
       'componentDidMount',
       'shouldComponentUpdate',
@@ -235,14 +236,14 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState extends {} = {
  * ensures that the BaseComponent's methods are called before the subclass's. This ensures that
  * componentWillUnmount in the base is called and that things in the _disposables array are disposed.
  */
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 function _makeAllSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodNames: string[]): void {
   for (let i = 0, len = methodNames.length; i < len; i++) {
     _makeSafe(obj, prototype, methodNames[i]);
   }
 }
 
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: string): void {
   /* eslint-disable @typescript-eslint/no-explicit-any */
   let classMethod = (obj as any)[methodName];

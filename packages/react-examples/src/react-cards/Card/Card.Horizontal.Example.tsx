@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@fluentui/react-cards';
 import { FontWeights, Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from '@fluentui/react';
 
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 
 const alertClicked = (): void => {
   alert('Clicked');

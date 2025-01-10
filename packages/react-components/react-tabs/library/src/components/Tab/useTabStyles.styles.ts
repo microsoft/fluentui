@@ -717,7 +717,7 @@ export const useTabContentStyles_unstable = (state: TabState): TabState => {
     );
     // FIXME: this is a deprecated API
     // should be removed in the next major version
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     state.contentReservedSpaceClassName = state.contentReservedSpace.className;
   }
 

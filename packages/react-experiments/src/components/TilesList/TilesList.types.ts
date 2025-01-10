@@ -135,7 +135,7 @@ export interface ITilesGridSegment<TItem> {
 
 export interface ITilesListProps<TItem>
   extends IBaseProps,
-    React.Props<TilesList<TItem>>, // eslint-disable-line deprecation/deprecation
+    React.Props<TilesList<TItem>>, // eslint-disable-line @typescript-eslint/no-deprecated
     React.HTMLAttributes<HTMLDivElement> {
   /**
    * An array of items to assign to the list.

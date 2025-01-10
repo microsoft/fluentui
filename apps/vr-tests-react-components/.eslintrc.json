@@ -7,8 +7,15 @@
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/naming-convention": "off",
     "@typescript-eslint/jsx-no-bind": "off",
-    "deprecation/deprecation": "off",
     "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../.."] }],
     "@nx/workspace-no-restricted-globals": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.{ts,tsx}"],
+      "rules": {
+        "@typescript-eslint/no-deprecated": "off"
+      }
+    }
+  ]
 }

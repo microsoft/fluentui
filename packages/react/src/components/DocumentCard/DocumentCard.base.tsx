@@ -48,7 +48,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
   }
 
   public render(): JSX.Element {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { onClick, onClickHref, children, type, accentColor, styles, theme, className } = this.props;
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
       'className',
@@ -104,7 +104,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
   };
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       this._onAction(ev);
     }

@@ -123,5 +123,4 @@ export interface IRelativePositions {
   submenuDirection: DirectionalHint;
 }
 
-// eslint-disable-next-line deprecation/deprecation
 export type { Point, IPoint } from '../../Utilities';

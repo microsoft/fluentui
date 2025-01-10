@@ -41,9 +41,9 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     disabled,
     underlined,
     styles,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     labelText,
-    // eslint-disable-next-line deprecation/deprecation
+
     placeholder = labelText,
     theme,
     clearButtonProps = defaultClearButtonProps,
@@ -57,7 +57,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     iconProps,
     role,
     onChange,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     onChanged,
   } = props;
 
@@ -156,7 +156,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
   };
 
   const onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.escape:
         customOnEscape?.(ev);

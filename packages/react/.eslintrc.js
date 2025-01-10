@@ -17,5 +17,11 @@ module.exports = {
         'import/no-extraneous-dependencies': ['error', { packageDir: ['.', configHelpers.findGitRoot()] }],
       },
     },
+    {
+      files: ['src/**/*.{ts,tsx}'],
+      rules: {
+        '@typescript-eslint/no-deprecated': 'warn',
+      },
+    },
   ],
 };

@@ -11,9 +11,9 @@ export function useTreeItemContextValues_unstable(state: TreeItemState): TreeIte
     expandIconRef,
     actionsRef,
     treeItemRef,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     isActionsVisible,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     isAsideVisible,
     selectionRef,
     checked,

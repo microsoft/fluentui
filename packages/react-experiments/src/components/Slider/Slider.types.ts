@@ -3,7 +3,7 @@ import { SliderBase } from './Slider.base';
 import type { IStyle, ITheme } from '../../Styling';
 import type { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 
 /**
  * @deprecated

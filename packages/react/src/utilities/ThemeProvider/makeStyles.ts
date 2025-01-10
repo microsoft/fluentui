@@ -94,7 +94,7 @@ type WindowWithId = Window & {
  */
 export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle } = { [key: string]: IStyle }>(
   styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet),
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): (options?: UseStylesOptions) => StylesClassMapping<TStyleSet> {
   // Create graph of inputs to map to output.
   const graph: Graph<TStyleSet> = new Map();
@@ -113,7 +113,7 @@ export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle 
     allWindows.delete(winId);
   };
 
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   return (options: UseStylesOptions = {}): StylesClassMapping<TStyleSet> => {
     let { theme } = options;
     let winId: string | undefined;

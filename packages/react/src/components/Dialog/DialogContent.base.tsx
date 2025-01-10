@@ -13,7 +13,7 @@ const DialogFooterType = ((<DialogFooter />) as React.ReactElement<IDialogFooter
 
 const COMPONENT_NAME = 'DialogContent';
 
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 @withResponsiveMode
 export class DialogContentBase extends React.Component<IDialogContentProps, {}> {
   public static defaultProps: IDialogContentProps = {
@@ -41,7 +41,7 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
       subTextId,
       subText,
       titleProps = {},
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       titleId,
       title,
       type,

@@ -38,7 +38,7 @@ export namespace personaPresenceSize {
 // TODO: remove the deprecated parts in a future major release.
 export const sizeBoolean = (size: PersonaSize) => ({
   isSize8: size === PersonaSize.size8,
-  /* eslint-disable deprecation/deprecation */
+  /* eslint-disable @typescript-eslint/no-deprecated */
   isSize10: size === PersonaSize.size10 || size === PersonaSize.tiny,
   isSize16: size === PersonaSize.size16,
   isSize24: size === PersonaSize.size24 || size === PersonaSize.extraExtraSmall,
@@ -67,7 +67,7 @@ export const sizeToPixels: { [key: number]: number } = {
   [PersonaSize.size16]: 16, // TODO: deprecated (not in the design specs)
   [PersonaSize.size24]: 24,
   [PersonaSize.size28]: 28, // TODO: deprecated (not in the design specs)
-  /* eslint-enable deprecation/deprecation */
+  /* eslint-enable @typescript-eslint/no-deprecated */
   [PersonaSize.size32]: 32,
   [PersonaSize.size40]: 40,
   [PersonaSize.size48]: 48,

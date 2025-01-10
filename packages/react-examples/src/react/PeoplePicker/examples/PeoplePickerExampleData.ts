@@ -1,7 +1,7 @@
 import { IPersonaProps, PersonaPresence } from '@fluentui/react/lib/Persona';
 import { TestImages } from '@fluentui/example-data';
 
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 
 /** @deprecated Use the version from `@fluentui/example-data` instead. */
 export const people: (IPersonaProps & { key: string | number })[] = [

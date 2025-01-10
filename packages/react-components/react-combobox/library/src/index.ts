@@ -1,4 +1,4 @@
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export { ComboboxProvider } from './contexts/ComboboxContext';
 export type { ComboboxContextValue } from './contexts/ComboboxContext';
 export { ListboxProvider, useListboxContext_unstable } from './contexts/ListboxContext';

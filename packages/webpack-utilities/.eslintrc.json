@@ -3,7 +3,6 @@
   "root": true,
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
-    "deprecation/deprecation": "off",
     "prefer-arrow-callback": "off"
   }
 }

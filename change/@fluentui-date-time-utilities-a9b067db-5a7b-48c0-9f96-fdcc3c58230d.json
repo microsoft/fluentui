@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: use eslint with USE_ESLINT_FLAT_CONFIG=false",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}

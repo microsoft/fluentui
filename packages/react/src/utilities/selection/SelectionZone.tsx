@@ -522,9 +522,9 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     const isSelectionDisabled = this._isSelectionDisabled(target);
 
     const { selection, selectionClearedOnEscapePress } = this.props;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const isSelectAllKey = ev.which === KeyCodes.a && (this._isCtrlPressed || this._isMetaPressed);
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const isClearSelectionKey = ev.which === KeyCodes.escape;
 
     // Ignore key downs from input elements.
@@ -576,7 +576,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
           }
           break;
         } else if (
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) &&
           (target.tagName === 'BUTTON' ||
             target.tagName === 'A' ||
@@ -585,7 +585,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
         ) {
           return false;
         } else if (target === itemRoot) {
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           if (ev.which === KeyCodes.enter) {
             if (span === undefined) {
               // Items should be invokable even if selection is disabled.
@@ -593,7 +593,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
               ev.preventDefault();
             }
             return;
-            // eslint-disable-next-line deprecation/deprecation
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
           } else if (ev.which === KeyCodes.space) {
             if (!isSelectionDisabled) {
               this._onToggleClick(ev, index, span);
@@ -794,7 +794,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     this._isCtrlPressed = ev.ctrlKey;
     this._isMetaPressed = ev.metaKey;
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const keyCode = (ev as React.KeyboardEvent<HTMLElement>).keyCode;
     this._isTabPressed = keyCode ? keyCode === KeyCodes.tab : false;
   }
