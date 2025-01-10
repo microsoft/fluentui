@@ -13,12 +13,12 @@ export const navItemTokens = {
   backgroundColorHover: tokens.colorNeutralBackground4Hover,
   backgroundColorPressed: tokens.colorNeutralBackground4Pressed,
   animationTokens: {
-    animationDuration: tokens.durationFast,
+    animationDuration: tokens.durationFaster,
     animationFillMode: 'both',
     animationTimingFunction: tokens.curveAccelerateMid,
   },
   transitionTokens: {
-    transitionDuration: tokens.durationFast,
+    transitionDuration: tokens.durationFaster,
     transitionTimingFunction: tokens.curveAccelerateMid,
     transitionProperty: 'background',
   },
