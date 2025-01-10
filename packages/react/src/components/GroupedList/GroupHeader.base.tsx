@@ -72,6 +72,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       indentWidth,
       onRenderGroupHeaderCheckbox,
       isCollapsedGroupSelectVisible = true,
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       expandButtonProps,
       expandButtonIcon,
       selectAllButtonProps,
