@@ -82,6 +82,6 @@
     "@fluentui/react-teaching-popover": "*",
     "@fluentui/react-tag-picker": "*",
     "@fluentui/react-carousel": "*",
-    "@fluentui/react-list": ">=9.0.0-alpha"
+    "@fluentui/react-list": "*"
   }
 }

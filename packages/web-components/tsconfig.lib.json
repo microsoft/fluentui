@@ -9,5 +9,5 @@
     "importHelpers": true
   },
   "include": ["src"],
-  "exclude": ["**/*.stories.*", "**/*.test.*", "**/*.spec.*"]
+  "exclude": ["**/*.stories.*", "**/*.spec.*"]
 }

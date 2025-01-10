@@ -14,6 +14,7 @@ env:
 
 jobs:
   check-tools:
+    if: ${{ github.repository_owner == 'microsoft' }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
