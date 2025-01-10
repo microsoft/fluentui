@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "docs: fix invalid TSdoc that is causing warnings within generate-api task",
+  "packageName": "@fluentui/react-tabster",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

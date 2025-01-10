@@ -22,6 +22,10 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
+      # TODO: these commented steps can be probably removed as we migrated these workflows to GHA
+      #  - @{link file://./.github/workflows/bundle-size-comment.yml}
+      #  - @{link file://./.github/workflows/bundle-size.yml}
+
       # - script: |
       #     yarn nx affected -t bundle-size --nxBail $(sinceArg)
       #   displayName: build packages & create reports
@@ -49,7 +53,7 @@ jobs:
 
       - task: AzureCLI@2
         displayName: upload a report (base only)
-        condition: eq(variables.isPR, false)
+        condition: and(eq(variables.isPR, false), succeeded())
         env:
           AZURE_TENANT_ID: $(AzureTenantId)
           AZURE_CLIENT_ID: $(AzureClientId)
