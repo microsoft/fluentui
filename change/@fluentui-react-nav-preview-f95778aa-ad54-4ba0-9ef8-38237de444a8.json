@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix: make api.md up to date",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
