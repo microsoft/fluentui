@@ -228,7 +228,9 @@ export type NavDrawerProps = ComponentProps<NavDrawerSlots> & DrawerProps & NavP
 export type NavDrawerSlots = DrawerSlots;
 
 // @public
-export type NavDrawerState = DrawerState & NavContextValue;
+export type NavDrawerState = DrawerState & NavContextValue & {
+    size?: 'small' | 'medium' | 'large' | 'full';
+};
 
 // @public
 export const NavItem: ForwardRefComponent<NavItemProps>;
