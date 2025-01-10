@@ -1,0 +1,38 @@
+name: CI
+on:
+  pull_request:
+
+concurrency:
+  # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  main:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      actions: 'read'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '8.x'
+
+      - name: Rush Install
+        run: |
+          npm install --ignore-scripts
+          node node_modules/@microsoft/rush/bin/rush install --bypass-policy
+
+      - name: Check Change
+        run: |
+          npm run checkchange
+
+      - name: Build CI
+        run: |
+          npm run buildfast
