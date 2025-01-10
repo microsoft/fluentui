@@ -12,6 +12,9 @@ variables:
       skipComponentGovernanceDetection: false
   - name: tags
     value: production,externalfacing
+  - name: dryRun
+    type: boolean
+    default: false
 
 resources:
   repositories:
@@ -48,6 +51,11 @@ extends:
               - template: .devops/templates/tools.yml@self
 
               - script: |
+                  echo "dry run mode enabled!"
+                displayName: dry run mode notification
+                condition: eq(variables.dryRun, true)
+
+              - script: |
                   git config user.name "Fluent UI Build"
                   git config user.email "fluentui-internal@service.microsoft.com"
                   git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
@@ -76,6 +84,7 @@ extends:
                 env:
                   GITHUB_PAT: $(githubPAT)
                 displayName: Publish changes and bump versions
+                condition: eq(variables.dryRun, false)
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:

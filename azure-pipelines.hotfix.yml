@@ -4,15 +4,13 @@ trigger: none
 
 name: '$(targetNpmVersion) ($(Rev:r))'
 
-parameters:
-  - name: isTestRun
-    type: boolean
-    default: false
-
 variables:
   - template: .devops/templates/variables.yml
   - name: tags
     value: production,externalfacing
+  - name: dryRun
+    type: boolean
+    default: false
 
 resources:
   repositories:
@@ -48,6 +46,11 @@ extends:
               - template: .devops/templates/tools.yml@self
 
               - script: |
+                  echo "dry run mode enabled!"
+                displayName: dry run mode notification
+                condition: eq(variables.dryRun, true)
+
+              - script: |
                   node -e "if('$(targetNpmVersion)' === '') throw new Error('targetNpmVersion is not specified');"
                 displayName: 'Checking for targetNpmVersion variable'
 
@@ -78,10 +81,10 @@ extends:
                 displayName: 'Create tarball'
                 workingDirectory: 'packages/react'
 
-              - ${{ if ne(parameters.isTestRun, true) }}:
-                  - script: |
-                      npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
-                    displayName: Publish new version
+              - script: |
+                  npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
+                displayName: Publish new version
+                condition: eq(variables.dryRun, false)
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:

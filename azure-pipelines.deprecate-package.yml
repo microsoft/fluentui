@@ -20,6 +20,8 @@ variables:
       skipComponentGovernanceDetection: false
   - name: tags
     value: production,externalfacing
+  - name: dryRun
+    value: false
 
 pool: '1ES-Host-Ubuntu'
 
@@ -35,6 +37,11 @@ jobs:
       - template: .devops/templates/tools.yml@self
 
       - script: |
-          npm deprecate ${{ parameters.packageSpec }} "${{ parameters.message }}" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=$(npmToken)
+          echo "dry run mode enabled!"
+        displayName: dry run mode notification
+        condition: eq(variables.dryRun, true)
 
+      - script: |
+          npm deprecate ${{ parameters.packageSpec }} "${{ parameters.message }}" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=$(npmToken)
         displayName: 'Deprecate package'
+        condition: eq(variables.dryRun, false)
