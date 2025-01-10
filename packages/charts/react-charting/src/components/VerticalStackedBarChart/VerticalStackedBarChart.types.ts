@@ -158,8 +158,9 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
 
   /**
    * Specifies the mode of the chart.
+   * @default 'default'
    */
-  mode?: 'plotly';
+  mode?: 'default' | 'plotly';
 }
 
 /**
