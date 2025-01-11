@@ -8,12 +8,20 @@ import {
   StyleContent,
   StyleMetadata,
   TOKEN_REGEX,
+  StyleTokens,
 } from './types.js';
 import { log, measure, measureAsync } from './debugUtils.js';
+
+const makeResetStylesToken = 'resetStyles';
 
 interface StyleMapping {
   baseStyles: string[];
   conditionalStyles: StyleCondition[];
+}
+
+interface VariableMapping {
+  variableName: string;
+  functionName: string;
 }
 
 /**
@@ -21,13 +29,18 @@ interface StyleMapping {
  * Property names are derived from the actual CSS property in the path,
  * not the object key containing them.
  */
-function processStyleProperty(prop: PropertyAssignment): TokenReference[] {
+function processStyleProperty(prop: PropertyAssignment, isResetStyles?: Boolean): TokenReference[] {
   const tokens: TokenReference[] = [];
   const parentName = prop.getName();
 
   function processNode(node?: Node, path: string[] = []): void {
     if (!node) {
       return;
+    }
+
+    // If we're processing a reset style, we need to add the parent name to the path
+    if (isResetStyles && path.length === 0) {
+      path.push(parentName);
     }
 
     if (Node.isStringLiteral(node) || Node.isIdentifier(node)) {
@@ -68,7 +81,6 @@ function processStyleProperty(prop: PropertyAssignment): TokenReference[] {
 
   return tokens;
 }
-
 /**
  * Analyzes mergeClasses calls to determine style relationships
  */
@@ -102,6 +114,9 @@ function analyzeMergeClasses(sourceFile: SourceFile): StyleMapping[] {
               condition: arg.getLeft().getText(),
             });
           }
+        } else if (!arg.getText().includes('.')) {
+          // We found a single variable (makeResetStyles or other assignment), add to base styles for lookup later
+          mapping.baseStyles.push(arg.getText());
         }
       });
 
@@ -139,7 +154,7 @@ function createStyleContent(tokens: TokenReference[]): StyleContent {
   // Nested structures have paths longer than 1
   const nestedTokens = tokens.filter(t => t.path.length > 1);
   if (nestedTokens.length > 0) {
-    content.nested = nestedTokens.reduce<StyleAnalysis>((acc, token) => {
+    content.nested = nestedTokens.reduce<StyleTokens>((acc, token) => {
       const nestedKey = token.path[0];
 
       if (!acc[nestedKey]) {
@@ -201,20 +216,90 @@ async function analyzeMakeStyles(sourceFile: SourceFile): Promise<StyleAnalysis>
   sourceFile.forEachDescendant(node => {
     if (Node.isCallExpression(node) && node.getExpression().getText() === 'makeStyles') {
       const stylesArg = node.getArguments()[0];
-
-      if (Node.isObjectLiteralExpression(stylesArg)) {
+      const parentNode = node.getParent();
+      if (Node.isObjectLiteralExpression(stylesArg) && Node.isVariableDeclaration(parentNode)) {
         // Process the styles object
         stylesArg.getProperties().forEach(prop => {
           if (Node.isPropertyAssignment(prop)) {
             const styleName = prop.getName();
             const tokens = processStyleProperty(prop);
+            const functionName = parentNode.getName();
+            if (!analysis[functionName]) {
+              analysis[functionName] = {};
+            }
             if (tokens.length) {
-              analysis[styleName] = createStyleContent(tokens);
+              analysis[functionName][styleName] = createStyleContent(tokens);
             }
           }
         });
       }
+    } else if (Node.isCallExpression(node) && node.getExpression().getText() === 'makeResetStyles') {
+      // Similar to above, but the styles are stored under the assigned function name instead of local variable
+      const stylesArg = node.getArguments()[0];
+      const parentNode = node.getParent();
+      if (Node.isVariableDeclaration(parentNode)) {
+        const functionName = parentNode.getName();
+        if (!analysis[functionName]) {
+          analysis[functionName] = {};
+        }
+        // We store 'isResetStyles' to differentiate from makeStyles and link mergeClasses variables
+        analysis[functionName][makeResetStylesToken] = {
+          tokens: [],
+          nested: {},
+          assignedSlots: [],
+          isResetStyles: true,
+        };
+        if (Node.isObjectLiteralExpression(stylesArg)) {
+          // Process the styles object
+          stylesArg.getProperties().forEach(prop => {
+            if (Node.isPropertyAssignment(prop)) {
+              const tokens = processStyleProperty(prop, true);
+              if (tokens.length) {
+                const styleContent = createStyleContent(tokens);
+                analysis[functionName][makeResetStylesToken].tokens = analysis[functionName][
+                  makeResetStylesToken
+                ].tokens.concat(styleContent.tokens);
+                analysis[functionName][makeResetStylesToken].nested = {
+                  ...analysis[functionName][makeResetStylesToken].nested,
+                  ...styleContent.nested,
+                };
+              }
+            }
+          });
+        }
+      }
     }
+  });
+
+  const variables: VariableMapping[] = [];
+  const styleFunctionNames: string[] = Object.keys(analysis);
+
+  sourceFile.forEachDescendant(node => {
+    // We do a second parse to link known style functions (i.e. makeResetStyles  assigned function variable names).
+    // This is necessary to handle cases where we're using a variable directly in mergeClasses to link styles.
+
+    if (Node.isCallExpression(node) && styleFunctionNames.includes(node.getExpression().getText())) {
+      const parentNode = node.getParent();
+      const functionName = node.getExpression().getText();
+      if (Node.isVariableDeclaration(parentNode)) {
+        const variableName = parentNode.getName();
+        const variableMap: VariableMapping = {
+          functionName,
+          variableName,
+        };
+        variables.push(variableMap);
+      }
+    }
+  });
+
+  // Store our makeResetStyles assigned variables in the analysis to link later
+  variables.forEach(variable => {
+    Object.keys(analysis[variable.functionName]).forEach(styleName => {
+      if (analysis[variable.functionName][styleName].assignedVariables === undefined) {
+        analysis[variable.functionName][styleName].assignedVariables = [];
+      }
+      analysis[variable.functionName][styleName].assignedVariables?.push(variable.variableName);
+    });
   });
 
   return analysis;

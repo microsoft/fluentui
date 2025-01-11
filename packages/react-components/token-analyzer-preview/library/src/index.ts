@@ -62,13 +62,15 @@ async function analyzeProjectStyles(
 
 function countTokens(analysis: FileAnalysis): number {
   let count = 0;
-  Object.values(analysis.styles).forEach(value => {
-    count += value.tokens.length;
-    if (value.nested) {
-      Object.values(value.nested).forEach(nestedValue => {
-        count += nestedValue.tokens.length;
-      });
-    }
+  Object.values(analysis.styles).forEach(_value => {
+    Object.values(_value).forEach(value => {
+      count += value.tokens.length;
+      if (value.nested) {
+        Object.values(value.nested).forEach(nestedValue => {
+          count += nestedValue.tokens.length;
+        });
+      }
+    });
   });
   return count;
 }

@@ -1,0 +1,1543 @@
+{
+  "library/src/components/CompoundButton/useCompoundButtonStyles.styles.ts": {
+    "styles": {
+      "useRootStyles": {
+        "base": {
+          "tokens": [],
+          "nested": {
+            "[`& .${compoundButtonClassNames.secondaryContent}`]": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2",
+                  "path": []
+                }
+              ]
+            },
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2Hover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2Pressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootStyles"]
+        },
+        "primary": {
+          "tokens": [],
+          "nested": {
+            "[`& .${compoundButtonClassNames.secondaryContent}`]": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundOnBrand",
+                  "path": []
+                }
+              ]
+            },
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundOnBrand",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundOnBrand",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootStyles"]
+        },
+        "subtle": {
+          "tokens": [],
+          "nested": {
+            "[`& .${compoundButtonClassNames.secondaryContent}`]": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2",
+                  "path": []
+                }
+              ]
+            },
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2Hover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2Pressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootStyles"]
+        },
+        "transparent": {
+          "tokens": [],
+          "nested": {
+            "[`& .${compoundButtonClassNames.secondaryContent}`]": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2",
+                  "path": []
+                }
+              ]
+            },
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2BrandHover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2BrandPressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootStyles"]
+        },
+        "small": {
+          "tokens": [
+            {
+              "property": "fontSize",
+              "token": "tokens.fontSizeBase300",
+              "path": ["fontSize"]
+            },
+            {
+              "property": "lineHeight",
+              "token": "tokens.lineHeightBase300",
+              "path": ["lineHeight"]
+            }
+          ],
+          "assignedVariables": ["rootStyles"]
+        },
+        "medium": {
+          "tokens": [
+            {
+              "property": "fontSize",
+              "token": "tokens.fontSizeBase300",
+              "path": ["fontSize"]
+            },
+            {
+              "property": "lineHeight",
+              "token": "tokens.lineHeightBase300",
+              "path": ["lineHeight"]
+            }
+          ],
+          "assignedVariables": ["rootStyles"]
+        },
+        "large": {
+          "tokens": [
+            {
+              "property": "fontSize",
+              "token": "tokens.fontSizeBase400",
+              "path": ["fontSize"]
+            },
+            {
+              "property": "lineHeight",
+              "token": "tokens.lineHeightBase400",
+              "path": ["lineHeight"]
+            }
+          ],
+          "assignedVariables": ["rootStyles"]
+        },
+        "disabled": {
+          "tokens": [],
+          "nested": {
+            "[`& .${compoundButtonClassNames.secondaryContent}`]": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundDisabled",
+                  "path": []
+                }
+              ]
+            },
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundDisabled",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundDisabled",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootStyles"]
+        }
+      },
+      "useRootIconOnlyStyles": {
+        "small": {
+          "tokens": [
+            {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalXS",
+              "path": ["padding"]
+            }
+          ],
+          "assignedVariables": ["rootIconOnlyStyles"]
+        },
+        "medium": {
+          "tokens": [
+            {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalSNudge",
+              "path": ["padding"]
+            }
+          ],
+          "assignedVariables": ["rootIconOnlyStyles"]
+        },
+        "large": {
+          "tokens": [
+            {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalS",
+              "path": ["padding"]
+            }
+          ],
+          "assignedVariables": ["rootIconOnlyStyles"]
+        }
+      },
+      "useIconStyles": {
+        "before": {
+          "tokens": [
+            {
+              "property": "marginRight",
+              "token": "tokens.spacingHorizontalM",
+              "path": ["marginRight"]
+            }
+          ],
+          "assignedVariables": ["iconStyles"]
+        },
+        "after": {
+          "tokens": [
+            {
+              "property": "marginLeft",
+              "token": "tokens.spacingHorizontalM",
+              "path": ["marginLeft"]
+            }
+          ],
+          "assignedVariables": ["iconStyles"]
+        }
+      },
+      "useContentContainerStyles": {},
+      "useSecondaryContentStyles": {
+        "base": {
+          "tokens": [
+            {
+              "property": "fontWeight",
+              "token": "tokens.fontWeightRegular",
+              "path": ["fontWeight"]
+            }
+          ],
+          "assignedVariables": ["secondaryContentStyles"]
+        },
+        "small": {
+          "tokens": [
+            {
+              "property": "fontSize",
+              "token": "tokens.fontSizeBase200",
+              "path": ["fontSize"]
+            }
+          ],
+          "assignedVariables": ["secondaryContentStyles"]
+        },
+        "medium": {
+          "tokens": [
+            {
+              "property": "fontSize",
+              "token": "tokens.fontSizeBase200",
+              "path": ["fontSize"]
+            }
+          ],
+          "assignedVariables": ["secondaryContentStyles"]
+        },
+        "large": {
+          "tokens": [
+            {
+              "property": "fontSize",
+              "token": "tokens.fontSizeBase300",
+              "path": ["fontSize"]
+            }
+          ],
+          "assignedVariables": ["secondaryContentStyles"]
+        }
+      }
+    },
+    "metadata": {
+      "styleConditions": {
+        "rootStyles[size]": {
+          "isBase": true
+        },
+        "secondaryContentStyles[size]": {
+          "isBase": true
+        }
+      }
+    }
+  },
+  "library/src/components/Button/useButtonStyles.styles.ts": {
+    "styles": {
+      "useRootBaseClassName": {
+        "resetStyles": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorNeutralBackground1",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground1",
+              "path": ["color"]
+            },
+            {
+              "property": "fontFamily",
+              "token": "tokens.fontFamilyBase",
+              "path": ["fontFamily"]
+            },
+            {
+              "property": "borderRadius",
+              "token": "tokens.borderRadiusMedium",
+              "path": ["borderRadius"]
+            },
+            {
+              "property": "fontSize",
+              "token": "tokens.fontSizeBase300",
+              "path": ["fontSize"]
+            },
+            {
+              "property": "fontWeight",
+              "token": "tokens.fontWeightSemibold",
+              "path": ["fontWeight"]
+            },
+            {
+              "property": "lineHeight",
+              "token": "tokens.lineHeightBase300",
+              "path": ["lineHeight"]
+            },
+            {
+              "property": "transitionDuration",
+              "token": "tokens.durationFaster",
+              "path": ["transitionDuration"]
+            },
+            {
+              "property": "transitionTimingFunction",
+              "token": "tokens.curveEasyEase",
+              "path": ["transitionTimingFunction"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorNeutralBackground1Hover",
+                  "path": []
+                },
+                {
+                  "property": "borderColor",
+                  "token": "tokens.colorNeutralStroke1Hover",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground1Hover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorNeutralBackground1Pressed",
+                  "path": []
+                },
+                {
+                  "property": "borderColor",
+                  "token": "tokens.colorNeutralStroke1Pressed",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground1Pressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedSlots": [],
+          "isResetStyles": true,
+          "assignedVariables": ["rootBaseClassName"]
+        }
+      },
+      "useIconBaseClassName": {
+        "resetStyles": {
+          "tokens": [
+            {
+              "property": "[iconSpacingVar]",
+              "token": "tokens.spacingHorizontalSNudge",
+              "path": ["[iconSpacingVar]"]
+            }
+          ],
+          "nested": {},
+          "assignedSlots": [],
+          "isResetStyles": true,
+          "assignedVariables": ["iconBaseClassName"]
+        }
+      },
+      "useRootStyles": {
+        "outline": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorTransparentBackground",
+              "path": ["backgroundColor"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackgroundHover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackgroundPressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootStyles"]
+        },
+        "primary": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorBrandBackground",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForegroundOnBrand",
+              "path": ["color"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorBrandBackgroundHover",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundOnBrand",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorBrandBackgroundPressed",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundOnBrand",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootStyles"]
+        },
+        "subtle": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorSubtleBackground",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground2",
+              "path": ["color"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorSubtleBackgroundHover",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2Hover",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2BrandHover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorSubtleBackgroundPressed",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2Pressed",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2BrandPressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootStyles"]
+        },
+        "transparent": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorTransparentBackground",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground2",
+              "path": ["color"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackgroundHover",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2BrandHover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackgroundPressed",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2BrandPressed",
+                  "path": []
+                }
+              ]
+            },
+            "'@media (forced-colors: active)'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackground",
+                  "path": []
+                },
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackground",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootStyles"]
+        },
+        "circular": {
+          "tokens": [
+            {
+              "property": "borderRadius",
+              "token": "tokens.borderRadiusCircular",
+              "path": ["borderRadius"]
+            }
+          ],
+          "assignedVariables": ["rootStyles"]
+        },
+        "square": {
+          "tokens": [
+            {
+              "property": "borderRadius",
+              "token": "tokens.borderRadiusNone",
+              "path": ["borderRadius"]
+            }
+          ],
+          "assignedVariables": ["rootStyles"]
+        },
+        "small": {
+          "tokens": [
+            {
+              "property": "borderRadius",
+              "token": "tokens.borderRadiusMedium",
+              "path": ["borderRadius"]
+            },
+            {
+              "property": "fontSize",
+              "token": "tokens.fontSizeBase200",
+              "path": ["fontSize"]
+            },
+            {
+              "property": "fontWeight",
+              "token": "tokens.fontWeightRegular",
+              "path": ["fontWeight"]
+            },
+            {
+              "property": "lineHeight",
+              "token": "tokens.lineHeightBase200",
+              "path": ["lineHeight"]
+            }
+          ],
+          "assignedVariables": ["rootStyles"]
+        },
+        "large": {
+          "tokens": [
+            {
+              "property": "borderRadius",
+              "token": "tokens.borderRadiusMedium",
+              "path": ["borderRadius"]
+            },
+            {
+              "property": "fontSize",
+              "token": "tokens.fontSizeBase400",
+              "path": ["fontSize"]
+            },
+            {
+              "property": "fontWeight",
+              "token": "tokens.fontWeightSemibold",
+              "path": ["fontWeight"]
+            },
+            {
+              "property": "lineHeight",
+              "token": "tokens.lineHeightBase400",
+              "path": ["lineHeight"]
+            }
+          ],
+          "assignedVariables": ["rootStyles"]
+        }
+      },
+      "useRootDisabledStyles": {
+        "base": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorNeutralBackgroundDisabled",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForegroundDisabled",
+              "path": ["color"]
+            }
+          ],
+          "nested": {
+            "[`& .${buttonClassNames.icon}`]": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundDisabled",
+                  "path": []
+                }
+              ]
+            },
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorNeutralBackgroundDisabled",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundDisabled",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundDisabled",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorNeutralBackgroundDisabled",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundDisabled",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundDisabled",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootDisabledStyles"]
+        },
+        "outline": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorTransparentBackground",
+              "path": ["backgroundColor"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackground",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackground",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootDisabledStyles"]
+        },
+        "subtle": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorTransparentBackground",
+              "path": ["backgroundColor"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackground",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackground",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootDisabledStyles"]
+        },
+        "transparent": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorTransparentBackground",
+              "path": ["backgroundColor"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackground",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackground",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootDisabledStyles"]
+        }
+      },
+      "useRootFocusStyles": {},
+      "useRootIconOnlyStyles": {},
+      "useIconStyles": {
+        "small": {
+          "tokens": [
+            {
+              "property": "[iconSpacingVar]",
+              "token": "tokens.spacingHorizontalXS",
+              "path": ["[iconSpacingVar]"]
+            }
+          ],
+          "assignedVariables": ["iconStyles"]
+        },
+        "large": {
+          "tokens": [
+            {
+              "property": "[iconSpacingVar]",
+              "token": "tokens.spacingHorizontalSNudge",
+              "path": ["[iconSpacingVar]"]
+            }
+          ],
+          "assignedVariables": ["iconStyles"]
+        }
+      }
+    },
+    "metadata": {
+      "styleConditions": {
+        "rootBaseClassName": {
+          "isBase": true
+        },
+        "rootStyles[size]": {
+          "isBase": true
+        },
+        "rootStyles[shape]": {
+          "isBase": true
+        },
+        "rootFocusStyles[size]": {
+          "isBase": true
+        },
+        "rootFocusStyles[shape]": {
+          "isBase": true
+        },
+        "iconBaseClassName": {
+          "isBase": true
+        },
+        "iconStyles[size]": {
+          "isBase": true
+        }
+      }
+    }
+  },
+  "library/src/components/MenuButton/useMenuButtonStyles.styles.ts": {
+    "styles": {
+      "useRootExpandedStyles": {
+        "outline": {
+          "tokens": [
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground1Selected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["rootExpandedStyles"]
+        },
+        "primary": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorBrandBackgroundSelected",
+              "path": ["backgroundColor"]
+            }
+          ],
+          "assignedVariables": ["rootExpandedStyles"]
+        },
+        "secondary": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorNeutralBackground1Selected",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground1Selected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["rootExpandedStyles"]
+        },
+        "subtle": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorSubtleBackgroundSelected",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground2Selected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["rootExpandedStyles"]
+        },
+        "transparent": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorTransparentBackgroundSelected",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground2BrandSelected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["rootExpandedStyles"]
+        }
+      },
+      "useIconExpandedStyles": {
+        "outline": {
+          "tokens": [
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground1Selected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["iconExpandedStyles"]
+        },
+        "secondary": {
+          "tokens": [
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground1Selected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["iconExpandedStyles"]
+        },
+        "subtle": {
+          "tokens": [
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground2BrandSelected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["iconExpandedStyles"]
+        },
+        "transparent": {
+          "tokens": [
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground2BrandSelected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["iconExpandedStyles"]
+        }
+      },
+      "useMenuIconStyles": {
+        "small": {
+          "tokens": [
+            {
+              "property": "lineHeight",
+              "token": "tokens.lineHeightBase200",
+              "path": ["lineHeight"]
+            }
+          ],
+          "assignedVariables": ["menuIconStyles"]
+        },
+        "medium": {
+          "tokens": [
+            {
+              "property": "lineHeight",
+              "token": "tokens.lineHeightBase200",
+              "path": ["lineHeight"]
+            }
+          ],
+          "assignedVariables": ["menuIconStyles"]
+        },
+        "large": {
+          "tokens": [
+            {
+              "property": "lineHeight",
+              "token": "tokens.lineHeightBase400",
+              "path": ["lineHeight"]
+            }
+          ],
+          "assignedVariables": ["menuIconStyles"]
+        },
+        "notIconOnly": {
+          "tokens": [
+            {
+              "property": "marginLeft",
+              "token": "tokens.spacingHorizontalXS",
+              "path": ["marginLeft"]
+            }
+          ],
+          "assignedVariables": ["menuIconStyles"]
+        }
+      }
+    },
+    "metadata": {
+      "styleConditions": {}
+    }
+  },
+  "library/src/components/SplitButton/useSplitButtonStyles.styles.ts": {
+    "styles": {
+      "useFocusStyles": {},
+      "useRootStyles": {
+        "primary": {
+          "tokens": [],
+          "nested": {
+            "[`& .${splitButtonClassNames.primaryActionButton}`]": {
+              "tokens": [
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStrokeOnBrand",
+                  "path": []
+                }
+              ]
+            },
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStrokeOnBrand",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStrokeOnBrand",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootStyles"]
+        },
+        "subtle": {
+          "tokens": [],
+          "nested": {
+            "[`& .${splitButtonClassNames.primaryActionButton}`]": {
+              "tokens": [
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStroke1",
+                  "path": []
+                }
+              ]
+            },
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStroke1Hover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStroke1Pressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootStyles"]
+        },
+        "transparent": {
+          "tokens": [],
+          "nested": {
+            "[`& .${splitButtonClassNames.primaryActionButton}`]": {
+              "tokens": [
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStroke1",
+                  "path": []
+                }
+              ]
+            },
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStroke1Hover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStroke1Pressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootStyles"]
+        },
+        "disabled": {
+          "tokens": [],
+          "nested": {
+            "[`& .${splitButtonClassNames.primaryActionButton}`]": {
+              "tokens": [
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                }
+              ]
+            },
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootStyles"]
+        }
+      }
+    },
+    "metadata": {
+      "styleConditions": {}
+    }
+  },
+  "library/src/components/ToggleButton/useToggleButtonStyles.styles.ts": {
+    "styles": {
+      "useRootCheckedStyles": {
+        "base": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorNeutralBackground1Selected",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground1Selected",
+              "path": ["color"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorNeutralBackground1Hover",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground1Hover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorNeutralBackground1Pressed",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground1Pressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootCheckedStyles"]
+        },
+        "outline": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorTransparentBackgroundSelected",
+              "path": ["backgroundColor"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackgroundHover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackgroundPressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootCheckedStyles"]
+        },
+        "primary": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorBrandBackgroundSelected",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForegroundOnBrand",
+              "path": ["color"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorBrandBackgroundHover",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundOnBrand",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorBrandBackgroundPressed",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundOnBrand",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootCheckedStyles"]
+        },
+        "subtle": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorSubtleBackgroundSelected",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground2Selected",
+              "path": ["color"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorSubtleBackgroundHover",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2Hover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorSubtleBackgroundPressed",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2Pressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootCheckedStyles"]
+        },
+        "transparent": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorTransparentBackgroundSelected",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground2BrandSelected",
+              "path": ["color"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackgroundHover",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2BrandHover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackgroundPressed",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2BrandPressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootCheckedStyles"]
+        }
+      },
+      "useRootDisabledStyles": {
+        "base": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorNeutralBackgroundDisabled",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForegroundDisabled",
+              "path": ["color"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorNeutralBackgroundDisabled",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundDisabled",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorNeutralBackgroundDisabled",
+                  "path": []
+                },
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundDisabled",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootDisabledStyles"]
+        },
+        "subtle": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorTransparentBackground",
+              "path": ["backgroundColor"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackgroundHover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackgroundPressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootDisabledStyles"]
+        },
+        "transparent": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorTransparentBackground",
+              "path": ["backgroundColor"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackgroundHover",
+                  "path": []
+                }
+              ]
+            },
+            "':hover:active'": {
+              "tokens": [
+                {
+                  "property": "backgroundColor",
+                  "token": "tokens.colorTransparentBackgroundPressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootDisabledStyles"]
+        }
+      },
+      "useIconCheckedStyles": {
+        "subtleOrTransparent": {
+          "tokens": [
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground2BrandSelected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["iconCheckedStyles"]
+        }
+      },
+      "usePrimaryHighContrastStyles": {}
+    },
+    "metadata": {
+      "styleConditions": {}
+    }
+  }
+}
