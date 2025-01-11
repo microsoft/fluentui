@@ -8,13 +8,22 @@ import {
   forcedColorsStylesheetBehavior,
   shadow4,
   spacingHorizontalL,
+  spacingHorizontalNone,
   spacingHorizontalS,
   spacingHorizontalSNudge,
   spacingVerticalL,
+  spacingVerticalM,
   spacingVerticalMNudge,
+  spacingVerticalNone,
+  spacingVerticalS,
+  spacingVerticalXS,
+  strokeWidthThick,
+  strokeWidthThickest,
+  strokeWidthThin,
   typographyBody1StrongStyles,
   typographyBody1Styles,
   typographyCaption1Styles,
+  typographyTitle2Styles,
 } from '@fluentui/web-components';
 
 /**
@@ -48,25 +57,22 @@ export const styles: ElementStyles = css`
     text-align: center;
     background: ${colorNeutralBackground1};
     box-shadow: ${shadow4};
-    border: 2px;
+    border: ${strokeWidthThick};
     pointer-events: none;
   }
   .tooltip-line {
-    padding-inline-start: 8px;
+    padding-inline-start: ${spacingHorizontalS};
     height: 50px;
-    border-inline-start: 4px solid;
+    border-inline-start: ${strokeWidthThickest} solid;
   }
   .tooltip-legend-text {
-    font-size: 13px;
-    color: theme.semanticColors.bodyText;
+    ${typographyCaption1Styles}
+    color: ${colorNeutralForeground1};
     text-align: start;
   }
   .tooltip-data-y {
-    font-weight: bold;
-    font-size: 30px;
+    ${typographyTitle2Styles}
     text-align: start;
-    lineheight: 36px;
-    margin-top: 12px;
   }
   .bar {
     opacity: 1;
@@ -76,7 +82,7 @@ export const styles: ElementStyles = css`
   }
   .bar:focus {
     outline: none;
-    stroke-width: 2px;
+    stroke-width: ${strokeWidthThick};
     stroke: black;
   }
   .svg-chart {
@@ -101,7 +107,7 @@ export const styles: ElementStyles = css`
     padding-top: ${spacingVerticalL};
     width: 100%;
     align-items: center;
-    margin: -8px 0 0 -8px;
+    margin: -${spacingVerticalS} ${spacingHorizontalNone} ${spacingVerticalNone} -${spacingHorizontalS};
   }
   .legend {
     display: flex;
@@ -116,7 +122,7 @@ export const styles: ElementStyles = css`
     width: 12px;
     height: 12px;
     margin-inline-end: ${spacingHorizontalS};
-    border: 1px solid;
+    border: ${strokeWidthThin} solid;
   }
   .legend-text {
     ${typographyCaption1Styles}
@@ -154,11 +160,11 @@ export const styles: ElementStyles = css`
   .triangle {
     width: 0;
     height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
+    border-left: ${strokeWidthThickest} solid transparent;
+    border-right: ${strokeWidthThickest} solid transparent;
     border-bottom: 7px solid;
     border-bottom-color: ${colorNeutralStrokeAccessible};
-    margin-bottom: 4px;
+    margin-bottom: ${spacingVerticalXS};
     position: absolute;
   }
   .chart-data-text {

@@ -67,7 +67,7 @@ export class HorizontalBarChart extends FASTElement {
   public elementInternals: ElementInternals = this.attachInternals();
 
   private _isRTL: boolean = false;
-  private barHeight: number = 12;
+  private _barHeight: number = 12;
   private _bars: SVGRectElement[] = [];
 
   constructor() {
@@ -414,7 +414,7 @@ export class HorizontalBarChart extends FASTElement {
               }%`,
             )
             .attr('textAnchor', 'start')
-            .attr('y', this.barHeight / 2 + 6)
+            .attr('y', this._barHeight / 2 + 6)
             .attr('dominantBaseline', 'central')
             .attr('transform', `translate(${this._isRTL ? -4 : 4})`)
             .attr('aria-label', `Total: ${barLabel}`)
@@ -434,7 +434,7 @@ export class HorizontalBarChart extends FASTElement {
               }%`,
             )
             .attr('textAnchor', 'start')
-            .attr('y', this.barHeight / 2 + 6)
+            .attr('y', this._barHeight / 2 + 6)
             .attr('dominantBaseline', 'central')
             .attr('transform', `translate(${this._isRTL ? -4 : 4})`)
             .attr('aria-label', `Total: ${barLabel}`)

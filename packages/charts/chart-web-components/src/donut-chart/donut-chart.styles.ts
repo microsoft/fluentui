@@ -11,9 +11,14 @@ import {
   display,
   forcedColorsStylesheetBehavior,
   spacingHorizontalL,
+  spacingHorizontalNone,
   spacingHorizontalS,
   spacingVerticalL,
   spacingVerticalMNudge,
+  spacingVerticalNone,
+  spacingVerticalS,
+  strokeWidthThickest,
+  strokeWidthThin,
   typographyBody1Styles,
   typographyCaption1Styles,
   typographyTitle2Styles,
@@ -49,7 +54,7 @@ export const styles = css`
 
   .arc:focus {
     outline: none;
-    stroke-width: 1px;
+    stroke-width: ${strokeWidthThin};
     stroke: ${colorStrokeFocus1};
   }
 
@@ -58,7 +63,7 @@ export const styles = css`
   }
 
   .arc-outline:has(+ .arc:focus) {
-    stroke-width: 4px;
+    stroke-width: ${strokeWidthThickest};
     stroke: ${colorStrokeFocus2};
   }
 
@@ -72,7 +77,7 @@ export const styles = css`
     white-space: nowrap;
     width: 100%;
     align-items: center;
-    margin: -8px 0 0 -8px;
+    margin: -${spacingVerticalS} ${spacingHorizontalNone} ${spacingVerticalNone} -${spacingHorizontalS};
     flex-wrap: wrap;
     display: flex;
   }
@@ -91,7 +96,7 @@ export const styles = css`
     width: 12px;
     height: 12px;
     margin-inline-end: ${spacingHorizontalS};
-    border: 1px solid;
+    border: ${strokeWidthThin} solid;
   }
 
   .legend-text {
