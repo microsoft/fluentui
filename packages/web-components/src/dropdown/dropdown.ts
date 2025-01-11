@@ -41,6 +41,8 @@ export class BaseDropdown extends FASTElement {
     if (this.open) {
       return this.enabledOptions[this.activeIndex]?.id;
     }
+
+    return undefined;
   }
 
   /**
