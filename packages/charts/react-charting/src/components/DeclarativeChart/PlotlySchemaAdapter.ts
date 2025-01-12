@@ -1,7 +1,6 @@
 /* eslint-disable one-var */
 /* eslint-disable vars-on-top */
 /* eslint-disable no-var */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, merge as d3Merge } from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
@@ -28,42 +27,82 @@ import { DataVizPalette, getNextColor } from '../../utilities/colors';
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
+import { Layout, PlotlySchema, PieData, PlotData, SankeyData } from './PlotlySchema';
+import type { Datum,  TypedArray } from './PlotlySchema';
 
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
-export const isDateArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isDate);
-export const isNumberArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isNumber);
-export const isMonthArray = (array: any[]): boolean => {
-  if (array && array.length > 0) {
+
+// const isDate = (datum: any): datum is Date => {
+//   return datum instanceof Date;
+// };
+
+const isMonth = (possiblyMonthValue: any, presentYear: number): boolean => {
+  return isDate(`${possiblyMonthValue} 01, ${presentYear}`);
+};
+
+export const isDateArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
+  if (!isArrayOrTypedArray(data)) {
+      return false;
+  }
+
+  if (Array.isArray(data[0])) {
+      // Handle 2D array
+      return (data as Datum[][]).every(innerArray => innerArray.every(isDate));
+  } else {
+      // Handle 1D array
+      return (data as Datum[]).every(isDate);
+  }
+};
+
+export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
+  if (!isArrayOrTypedArray(data)) {
+      return false;
+  }
+
+  if (Array.isArray(data[0])) {
+      // Handle 2D array
+      return (data as Datum[][]).every(innerArray => innerArray.every(isNumber));
+  } else {
+      // Handle 1D array
+      return (data as Datum[]).every(isNumber);
+  }
+};
+
+export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
+  if (!isArrayOrTypedArray(data)) {
+    return false;
+}
+  if (data.length > 0) {
     const presentYear = new Date().getFullYear();
-    return array.every(possiblyMonthValue => {
-      return isDate(`${possiblyMonthValue} 01, ${presentYear}`);
-    });
+    if (Array.isArray(data[0])) {
+      // Handle 2D array
+      return (data as Datum[][]).every(innerArray => innerArray.every(possiblyMonthValue => isMonth(possiblyMonthValue, presentYear)));
+    } else {
+        // Handle 1D array
+        return (data as Datum[]).every(possiblyMonthValue => isMonth(possiblyMonthValue, presentYear));
+    }
   }
   return false;
 };
 
-function getTitles(layout: any) {
+function getTitles(layout: Partial<Layout> | undefined) {
   const titles = {
     chartTitle:
-      typeof layout.title === 'string' ? layout.title : typeof layout.title?.text === 'string' ? layout.title.text : '',
+      typeof layout?.title === 'string' ? layout.title : layout?.title?.text?? '',
     xAxisTitle:
       typeof layout?.xaxis?.title === 'string'
         ? layout?.xaxis?.title
-        : typeof layout?.xaxis?.title?.text === 'string'
-        ? layout?.xaxis?.title?.text
-        : '',
+        : layout?.xaxis?.title?.text?? '',
     yAxisTitle:
       typeof layout?.yaxis?.title === 'string'
         ? layout?.yaxis?.title
-        : typeof layout?.yaxis?.title?.text === 'string'
-        ? layout?.yaxis?.title?.text
-        : '',
+        : layout?.yaxis?.title?.text?? '',
   };
   return titles;
 }
 
-export const updateXValues = (xValues: any[]): any[] => {
+export const updateXValues = (xValues: Datum[] | Datum[][] | TypedArray): any[] => {
   const presentYear = new Date().getFullYear();
   const dates = xValues.map(possiblyMonthValue => {
     const parsedDate = `${possiblyMonthValue} 01, ${presentYear}`;
@@ -100,24 +139,23 @@ export const getColor = (
 };
 
 export const transformPlotlyJsonToDonutProps = (
-  jsonObj: any,
+  input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): IDonutChartProps => {
-  const { data, layout } = jsonObj;
-  const firstData = data[0];
+  const firstData = input.data[0] as PieData;
 
   const donutData = firstData.labels?.map((label: string, index: number): IChartDataPoint => {
     const color = getColor(label, colorMap, isDarkTheme);
     return {
       legend: label,
-      data: firstData.values?.[index],
+      data: firstData.values?.[index] as number, //ToDo how to handle string data?
       color,
     };
   });
 
-  const width: number = typeof layout?.width === 'number' ? layout?.width : 440;
-  const height: number = typeof layout?.height === 'number' ? layout?.height : 220;
+  const width: number = typeof input.layout?.width === 'number' ? input.layout?.width : 440;
+  const height: number = typeof input.layout?.height === 'number' ? input.layout?.height : 220;
   const hideLabels: boolean = firstData.textinfo
     ? !['value', 'percent', 'label+percent'].includes(firstData.textinfo)
     : false;
@@ -135,14 +173,14 @@ export const transformPlotlyJsonToDonutProps = (
     },
   };
 
-  const { chartTitle } = getTitles(layout);
+  const { chartTitle } = getTitles(input.layout);
 
   return {
     data: {
       chartTitle,
       chartData: donutData,
     },
-    hideLegend: layout?.showlegend === false ? true : false,
+    hideLegend: input.layout?.showlegend === false ? true : false,
     width,
     height,
     innerRadius,
@@ -153,15 +191,14 @@ export const transformPlotlyJsonToDonutProps = (
 };
 
 export const transformPlotlyJsonToVSBCProps = (
-  jsonObj: any,
+  input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): IVerticalStackedBarChartProps => {
-  const { data, layout } = jsonObj;
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
   let yMaxValue = 0;
 
-  data.forEach((series: any, index1: number) => {
+  input.data.forEach((series: PlotData, index1: number) => {
     series.x?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
@@ -187,7 +224,7 @@ export const transformPlotlyJsonToVSBCProps = (
     });
   });
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(layout);
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
   return {
     data: Object.values(mapXToDataPoints),
@@ -203,14 +240,13 @@ export const transformPlotlyJsonToVSBCProps = (
 };
 
 export const transformPlotlyJsonToGVBCProps = (
-  jsonObj: any,
+  input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): IGroupedVerticalBarChartProps => {
-  const { data, layout } = jsonObj;
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
 
-  data.forEach((series: any, index1: number) => {
+  input.data.forEach((series: PlotData, index1: number) => {
     series.x?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
@@ -230,7 +266,7 @@ export const transformPlotlyJsonToGVBCProps = (
     });
   });
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(layout);
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
   return {
     data: Object.values(mapXToDataPoints),
@@ -245,14 +281,13 @@ export const transformPlotlyJsonToGVBCProps = (
 };
 
 export const transformPlotlyJsonToVBCProps = (
-  jsonObj: any,
+  input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): IVerticalBarChartProps => {
-  const { data, layout } = jsonObj;
   const vbcData: IVerticalBarChartDataPoint[] = [];
 
-  data.forEach((series: any, index: number) => {
+  input.data.forEach((series: PlotData, index: number) => {
     if (!series.x) {
       return;
     }
@@ -320,7 +355,7 @@ export const transformPlotlyJsonToVBCProps = (
     });
   });
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(layout);
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
   return {
     data: vbcData,
@@ -336,14 +371,13 @@ export const transformPlotlyJsonToVBCProps = (
 };
 
 export const transformPlotlyJsonToScatterChartProps = (
-  jsonObj: any,
+  input: PlotlySchema,
   isAreaChart: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
-  const { data, layout } = jsonObj;
 
-  const chartData: ILineChartPoints[] = data.map((series: any, index: number) => {
+  const chartData: ILineChartPoints[] = input.data.map((series: PlotData, index: number) => {
     const xValues = series.x;
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
@@ -361,7 +395,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     };
   });
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(layout);
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
   const chartProps: IChartProps = {
     chartTitle,
@@ -386,14 +420,13 @@ export const transformPlotlyJsonToScatterChartProps = (
 };
 
 export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
-  jsonObj: any,
+  input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): IHorizontalBarChartWithAxisProps => {
-  const { data, layout } = jsonObj;
 
-  const chartData: IHorizontalBarChartWithAxisDataPoint[] = data
-    .map((series: any, index: number) => {
+  const chartData: IHorizontalBarChartWithAxisDataPoint[] = input.data
+    .map((series: PlotData, index: number) => {
       return series.y.map((yValue: string, i: number) => {
         const color = getColor(yValue, colorMap, isDarkTheme);
         return {
@@ -406,16 +439,16 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     })
     .flat();
 
-  const chartHeight: number = typeof layout.height === 'number' ? layout.height : 450;
-  const margin: number = typeof layout.margin?.l === 'number' ? layout.margin?.l : 0;
-  const padding: number = typeof layout.margin?.pad === 'number' ? layout.margin?.pad : 0;
+  const chartHeight: number = typeof input.layout?.height === 'number' ? input.layout.height : 450;
+  const margin: number = typeof input.layout?.margin?.l === 'number' ? input.layout.margin?.l : 0;
+  const padding: number = typeof input.layout?.margin?.pad === 'number' ? input.layout.margin?.pad : 0;
   const availableHeight: number = chartHeight - margin - padding;
-  const numberOfBars = data[0].y.length;
+  const numberOfBars = (input.data[0] as PlotData).y.length;
   const scalingFactor = 0.01;
   const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
   const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(layout);
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
   return {
     data: chartData,
@@ -423,32 +456,31 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     xAxisTitle,
     yAxisTitle,
     secondaryYAxistitle:
-      typeof layout?.yaxis2?.title === 'string' ? layout?.yaxis2?.title : layout?.yaxis2?.title?.text || '',
+      typeof input.layout?.yaxis2?.title === 'string' ? input.layout?.yaxis2?.title : input.layout?.yaxis2?.title?.text || '',
     barHeight,
     showYAxisLables: true,
     styles: {
       root: {
         height: chartHeight,
-        width: typeof layout.width === 'number' ? layout.width : 600,
+        width: typeof input.layout?.width === 'number' ? input.layout.width : 600,
       },
     },
   };
 };
 
-export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartProps => {
-  const { data, layout } = jsonObj;
-  const firstData = data[0];
+export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMapChartProps => {
+  const firstData = input.data[0] as PlotData;
   const heatmapDataPoints: IHeatMapChartDataPoint[] = [];
   let zMin = Number.POSITIVE_INFINITY;
   let zMax = Number.NEGATIVE_INFINITY;
 
-  firstData.x?.forEach((xVal: any, xIdx: number) => {
+  firstData.x?.forEach((xVal: PlotData, xIdx: number) => {
     firstData.y?.forEach((yVal: any, yIdx: number) => {
       const zVal = firstData.z?.[yIdx]?.[xIdx];
 
       heatmapDataPoints.push({
-        x: layout.xaxis?.type === 'date' ? new Date(xVal) : xVal,
-        y: layout.yaxis?.type === 'date' ? new Date(yVal) : yVal,
+        x: input.layout?.xaxis?.type === 'date' ? new Date(xVal) : xVal,
+        y: input.layout?.yaxis?.type === 'date' ? new Date(yVal) : yVal,
         value: zVal,
         rectText: zVal,
       });
@@ -468,7 +500,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
     ? firstData.colorscale.map((arr: any) => arr[0] * (zMax - zMin) + zMin)
     : [];
   const rangeValuesForColorScale: string[] = firstData.colorscale ? firstData.colorscale.map((arr: any) => arr[1]) : [];
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(layout);
+  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
   return {
     data: [heatmapData],
@@ -484,25 +516,23 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
 };
 
 export const transformPlotlyJsonToSankeyProps = (
-  jsonObj: any,
+  input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): ISankeyChartProps => {
-  const { data, layout } = jsonObj;
-  const { link, node } = data[0];
-  const validLinks = link.value
+  const { link, node } = input.data[0] as SankeyData;
+  const validLinks = link?.value //ToDo handle undefined links
     .map((val: number, index: number) => ({
       value: val,
-      source: link.source[index],
-      target: link.target[index],
+      source: link?.source[index],
+      target: link?.target[index],
     }))
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    //@ts-expect-error Dynamic link object. Ignore for now.
     // Filter out negative nodes, unequal nodes and self-references (circular links)
     .filter(x => x.source >= 0 && x.target >= 0 && x.source !== x.target);
 
   const sankeyChartData = {
-    nodes: node.label.map((label: string, index: number) => {
+    nodes: node.label?.map((label: string, index: number) => {
       const color = getColor(label, colorMap, isDarkTheme);
 
       return {
@@ -518,16 +548,16 @@ export const transformPlotlyJsonToSankeyProps = (
     }),
   };
 
-  const width: number = typeof layout?.width === 'number' ? layout?.width : 440;
-  const height: number = typeof layout?.height === 'number' ? layout?.height : 220;
+  const width: number = typeof input.layout?.width === 'number' ? input.layout?.width : 440;
+  const height: number = typeof input.layout?.height === 'number' ? input.layout?.height : 220;
   const styles: ISankeyChartProps['styles'] = {
     root: {
-      ...(typeof layout.font?.size === 'number' ? { fontSize: layout.font?.size } : {}),
+      ...(typeof input.layout?.font?.size === 'number' ? { fontSize: input.layout.font?.size } : {}),
     },
   };
   const shouldResize: number = width + height;
 
-  const { chartTitle } = getTitles(layout);
+  const { chartTitle } = getTitles(input.layout);
 
   return {
     data: {
@@ -543,12 +573,11 @@ export const transformPlotlyJsonToSankeyProps = (
 };
 
 export const transformPlotlyJsonToGaugeProps = (
-  jsonObj: any,
+  input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): IGaugeChartProps => {
-  const { data, layout } = jsonObj;
-  const firstData = data[0];
+  const firstData = input.data[0] as PlotData;
 
   const segments = firstData.gauge?.steps?.length
     ? firstData.gauge.steps.map((step: any, index: number): IGaugeChartSegment => {
@@ -579,11 +608,11 @@ export const transformPlotlyJsonToGaugeProps = (
     const diff = firstData.value - firstData.delta.reference;
     if (diff >= 0) {
       sublabel = `\u25B2 ${diff}`;
-      const color = getColor(firstData.delta.increasing?.color || '', colorMap, isDarkTheme);
+      const color = getColor('inpr', colorMap, isDarkTheme);
       sublabelColor = color;
     } else {
       sublabel = `\u25BC ${Math.abs(diff)}`;
-      const color = getColor(firstData.delta.decreasing?.color || '', colorMap, isDarkTheme);
+      const color = getColor('inpr', colorMap, isDarkTheme);
       sublabelColor = color;
     }
   }
@@ -594,7 +623,7 @@ export const transformPlotlyJsonToGaugeProps = (
     },
   };
 
-  const { chartTitle } = getTitles(layout);
+  const { chartTitle } = getTitles(input.layout);
 
   return {
     segments,
@@ -605,8 +634,8 @@ export const transformPlotlyJsonToGaugeProps = (
     minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
     maxValue: typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : undefined,
     chartValueFormat: () => firstData.value,
-    width: typeof layout?.width === 'number' ? layout?.width : 440,
-    height: typeof layout?.height === 'number' ? layout?.height : 220,
+    width: typeof input.layout?.width === 'number' ? input.layout?.width : 440,
+    height: typeof input.layout?.height === 'number' ? input.layout?.height : 220,
     styles,
     variant: firstData.gauge?.steps?.length ? GaugeChartVariant.MultipleSegments : GaugeChartVariant.SingleSegment,
   };

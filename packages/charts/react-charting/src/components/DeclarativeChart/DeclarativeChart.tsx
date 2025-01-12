@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { useTheme } from '@fluentui/react';
 import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
+import { PlotData, PlotlySchema } from './PlotlySchema';
+//import type { Data, Layout } from './PlotlySchema';
 import {
   isArrayOrTypedArray,
   isDateArray,
@@ -87,12 +88,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   DeclarativeChartProps
 >((props, forwardedRef) => {
   const { plotlySchema } = sanitizeJson(props.chartSchema);
-  const { data, layout } = plotlySchema;
+  const plotlyInput = plotlySchema as PlotlySchema;
   let { selectedLegends } = plotlySchema;
-  const xValues = data[0].x;
-  const isXDate = isDateArray(xValues);
-  const isXNumber = isNumberArray(xValues);
-  const isXMonth = isMonthArray(xValues);
   const colorMap = useColorMapping();
   const theme = useTheme();
   const isDarkTheme = theme?.isInverted ?? false;
@@ -106,7 +103,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const onActiveLegendsChange = (keys: string[]) => {
     setActiveLegends(keys);
     if (props.onSchemaChange) {
-      props.onSchemaChange({ plotlySchema: { data, layout, selectedLegends: keys } });
+      props.onSchemaChange({ plotlySchema: { plotlyInput, selectedLegends: keys } });
     }
   };
 
@@ -148,7 +145,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     selectedLegends: activeLegends,
   };
 
-  switch (data[0].type) {
+  switch (plotlyInput.data[0].type) {
     case 'pie':
       return (
         <DonutChart
@@ -160,7 +157,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         />
       );
     case 'bar':
-      const orientation = data[0].orientation;
+      const orientation = plotlyInput.data[0].orientation;
       if (orientation === 'h') {
         return (
           <HorizontalBarChartWithAxis
@@ -191,7 +188,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         );
       }
     case 'scatter':
-      const isAreaChart = data.some((series: any) => series.fill === 'tonexty' || series.fill === 'tozeroy');
+      const xValues = (plotlyInput.data[0] as PlotData).x;
+      const isXDate = isDateArray(xValues);
+      const isXNumber = isNumberArray(xValues);
+      const isXMonth = isMonthArray(xValues);
+      const isAreaChart = plotlyInput.data.some((series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy');
       const renderChart = (chartProps: any) => {
         if (isAreaChart) {
           return (
@@ -216,19 +217,19 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       };
       if (isXDate || isXNumber) {
         const chartProps = {
-          ...transformPlotlyJsonToScatterChartProps({ data, layout }, isAreaChart, colorMap, isDarkTheme),
+          ...transformPlotlyJsonToScatterChartProps(plotlyInput, isAreaChart, colorMap, isDarkTheme),
           legendProps,
           componentRef: chartRef,
           calloutProps: { layerProps: { eventBubblingEnabled: true } },
         };
         return renderChart(chartProps);
       } else if (isXMonth) {
-        const updatedData = data.map((dataPoint: any) => ({
+        const updatedData = plotlyInput.data.map((dataPoint: PlotData) => ({
           ...dataPoint,
           x: updateXValues(dataPoint.x),
         }));
         const chartProps = {
-          ...transformPlotlyJsonToScatterChartProps({ data: updatedData, layout }, isAreaChart, colorMap, isDarkTheme),
+          ...transformPlotlyJsonToScatterChartProps({ data: updatedData, layout: plotlyInput.layout }, isAreaChart, colorMap, isDarkTheme),
           legendProps,
           componentRef: chartRef,
           calloutProps: { layerProps: { eventBubblingEnabled: true } },
@@ -260,7 +261,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         />
       );
     case 'indicator':
-      if (data?.[0]?.mode?.includes('gauge')) {
+      if (plotlyInput.data?.[0]?.mode?.includes('gauge')) {
         return (
           <GaugeChart
             {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)}
