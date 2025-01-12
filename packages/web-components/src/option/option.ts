@@ -59,27 +59,6 @@ export class Option extends FASTElement implements Start {
   }
 
   /**
-   * The current value of the input.
-   * @public
-   * @remarks
-   * HTML Attribute: `current-value`
-   */
-  @attr({ attribute: 'current-value' })
-  public currentValue!: string;
-
-  /**
-   * Tracks the current value of the input.
-   *
-   * @param prev - the previous value
-   * @param next - the next value
-   *
-   * @internal
-   */
-  currentValueChanged(prev: string, next: string): void {
-    this.value = next;
-  }
-
-  /**
    * The initial checked state of the element.
    *
    * @public
@@ -200,7 +179,7 @@ export class Option extends FASTElement implements Start {
    * @internal
    */
   protected initialValueChanged(prev: string, next: string): void {
-    this.currentValue = next;
+    this._value = next;
   }
 
   /**
@@ -357,17 +336,24 @@ export class Option extends FASTElement implements Start {
   }
 
   /**
+   * The internal value of the input.
+   *
+   * @internal
+   */
+  private _value: string = this.initialValue;
+
+  /**
    * The current value of the input.
    *
    * @public
    */
   public get value(): string {
     Observable.track(this, 'value');
-    return this.currentValue ?? this.text;
+    return this._value ?? this.text;
   }
 
   public set value(value: string) {
-    this.currentValue = value;
+    this._value = value;
 
     if (this.$fastController.isConnected) {
       this.setFormValue(this.selected ? value : null);
