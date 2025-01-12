@@ -154,8 +154,8 @@ export const transformPlotlyJsonToDonutProps = (
     };
   });
 
-  const width: number = typeof input.layout?.width === 'number' ? input.layout?.width : 440;
-  const height: number = typeof input.layout?.height === 'number' ? input.layout?.height : 220;
+  const width: number = input.layout?.width?? 440;
+  const height: number = input.layout?.height?? 220;
   const hideLabels: boolean = firstData.textinfo
     ? !['value', 'percent', 'label+percent'].includes(firstData.textinfo)
     : false;
@@ -439,9 +439,9 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     })
     .flat();
 
-  const chartHeight: number = typeof input.layout?.height === 'number' ? input.layout.height : 450;
-  const margin: number = typeof input.layout?.margin?.l === 'number' ? input.layout.margin?.l : 0;
-  const padding: number = typeof input.layout?.margin?.pad === 'number' ? input.layout.margin?.pad : 0;
+  const chartHeight: number = input.layout?.height?? 450;
+  const margin: number = input.layout?.margin?.l?? 0;
+  const padding: number = input.layout?.margin?.pad?? 0;
   const availableHeight: number = chartHeight - margin - padding;
   const numberOfBars = (input.data[0] as PlotData).y.length;
   const scalingFactor = 0.01;
@@ -490,7 +490,7 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
     });
   });
   const heatmapData: IHeatMapChartData = {
-    legend: typeof firstData.name === 'string' ? firstData.name : '',
+    legend: firstData.name,
     data: heatmapDataPoints,
     value: 0,
   };
@@ -548,8 +548,8 @@ export const transformPlotlyJsonToSankeyProps = (
     }),
   };
 
-  const width: number = typeof input.layout?.width === 'number' ? input.layout?.width : 440;
-  const height: number = typeof input.layout?.height === 'number' ? input.layout?.height : 220;
+  const width: number = input.layout?.width?? 440;
+  const height: number = input.layout?.height?? 220;
   const styles: ISankeyChartProps['styles'] = {
     root: {
       ...(typeof input.layout?.font?.size === 'number' ? { fontSize: input.layout.font?.size } : {}),
@@ -627,15 +627,15 @@ export const transformPlotlyJsonToGaugeProps = (
 
   return {
     segments,
-    chartValue: typeof firstData.value === 'number' ? firstData.value : 0,
+    chartValue: firstData.value?? 0,
     chartTitle,
     sublabel,
     // range values can be null
     minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
     maxValue: typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : undefined,
     chartValueFormat: () => firstData.value,
-    width: typeof input.layout?.width === 'number' ? input.layout?.width : 440,
-    height: typeof input.layout?.height === 'number' ? input.layout?.height : 220,
+    width: input.layout?.width?? 440,
+    height: input.layout?.height?? 220,
     styles,
     variant: firstData.gauge?.steps?.length ? GaugeChartVariant.MultipleSegments : GaugeChartVariant.SingleSegment,
   };
