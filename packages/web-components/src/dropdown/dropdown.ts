@@ -196,7 +196,7 @@ export class BaseDropdown extends FASTElement {
 
     if (next) {
       next.dropdown = this;
-      next.popover = 'auto';
+      next.popover = 'manual';
       this.listboxSlot.assign(next);
       const notifier = Observable.getNotifier(this);
       notifier.subscribe(next);
@@ -511,6 +511,11 @@ export class BaseDropdown extends FASTElement {
 
     this.focus();
 
+    if (target === this.control) {
+      this.listbox.togglePopover();
+      return true;
+    }
+
     if (!this.open) {
       this.listbox.showPopover();
       return true;
@@ -692,9 +697,10 @@ export class BaseDropdown extends FASTElement {
    * @internal
    */
   public mousedownHandler(e: MouseEvent): boolean | void {
-    if (this.disabled) {
+    if (this.disabled || e.target === this.control) {
       return;
     }
+
     return !isOption(e.target as HTMLElement);
   }
 
