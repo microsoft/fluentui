@@ -12,6 +12,7 @@ import { useWeekCornerStyles, WeekCorners } from './useWeekCornerStyles.styles';
 import { mergeClasses } from '@griffel/react';
 import type { Day } from '../../utils';
 import type { CalendarDayGridProps } from './CalendarDayGrid.types';
+import { SlideDown, SlideUp } from '../../utils/motions';
 
 export interface DayInfo extends Day {
   onSelected: () => void;
@@ -75,6 +76,8 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
 
   const weeks = useWeeks(props, onSelectDate, getSetRefCallback);
   const animateBackwards = useAnimateBackwards(weeks);
+  const SlideMotion = animateBackwards ? SlideDown : SlideUp;
+
   const [getWeekCornerStyles, calculateRoundedStyles] = useWeekCornerStyles(props);
 
   React.useImperativeHandle(
@@ -156,6 +159,8 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
   } as const;
 
   const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
+  const firstWeek = weeks[0];
+  const finalWeek = weeks![weeks!.length - 1];
 
   return (
     <table
@@ -169,34 +174,46 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     >
       <tbody>
         <CalendarMonthHeaderRow {...props} classNames={classNames} weeks={weeks} />
-        <CalendarGridRow
-          {...props}
-          {...partialWeekProps}
-          week={weeks[0]}
-          weekIndex={-1}
-          rowClassName={classNames.firstTransitionWeek}
-          aria-role="presentation"
-          ariaHidden={true}
-        />
+        <SlideMotion key={'firstTransitionWeek_' + firstWeek[0].key}>
+          <div>
+            <CalendarGridRow
+              {...props}
+              {...partialWeekProps}
+              week={firstWeek}
+              weekIndex={-1}
+              rowClassName={classNames.firstTransitionWeek}
+              aria-role="presentation"
+              ariaHidden={true}
+            />
+          </div>
+        </SlideMotion>
         {weeks!.slice(1, weeks!.length - 1).map((week: DayInfo[], weekIndex: number) => (
-          <CalendarGridRow
-            {...props}
-            {...partialWeekProps}
-            key={weekIndex}
-            week={week}
-            weekIndex={weekIndex}
-            rowClassName={classNames.weekRow}
-          />
+          <SlideMotion key={weekIndex + '_' + week[0].key}>
+            <div>
+              <CalendarGridRow
+                {...props}
+                {...partialWeekProps}
+                key={weekIndex}
+                week={week}
+                weekIndex={weekIndex}
+                rowClassName={classNames.weekRow}
+              />
+            </div>
+          </SlideMotion>
         ))}
-        <CalendarGridRow
-          {...props}
-          {...partialWeekProps}
-          week={weeks![weeks!.length - 1]}
-          weekIndex={-2}
-          rowClassName={classNames.lastTransitionWeek}
-          aria-role="presentation"
-          ariaHidden={true}
-        />
+        <SlideMotion key={'lastTransitionWeek_' + finalWeek[0].key}>
+          <div>
+            <CalendarGridRow
+              {...props}
+              {...partialWeekProps}
+              week={finalWeek}
+              weekIndex={-2}
+              rowClassName={classNames.lastTransitionWeek}
+              aria-role="presentation"
+              ariaHidden={true}
+            />
+          </div>
+        </SlideMotion>
       </tbody>
     </table>
   );
