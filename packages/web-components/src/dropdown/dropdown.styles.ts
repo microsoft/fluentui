@@ -5,7 +5,6 @@ import {
   typographyCaption1Styles,
 } from '../styles/partials/typography.partials.js';
 import {
-  fallbackState,
   filledDarkerState,
   filledLighterState,
   flipBlockState,
@@ -79,7 +78,6 @@ export const styles = css`
   }
 
   .control {
-    align-items: center;
     appearance: none;
     background-color: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
@@ -114,7 +112,7 @@ export const styles = css`
 
   ::slotted(:is(input, button)) {
     all: unset;
-    flex: 1;
+    flex: 1 1 auto;
   }
 
   ::slotted(button) {
@@ -238,7 +236,7 @@ export const styles = css`
     position-anchor: --dropdown-trigger;
     position-area: block-end span-inline-end;
     position-try-fallbacks: flip-inline, flip-block, block-start;
-    max-height: var(--listbox-max-height, calc(100vh - anchor-size(self-block)));
+    max-height: var(--listbox-max-height, calc(50vh - anchor-size(self-block)));
     min-width: anchor-size(width);
     overflow: auto;
   }
@@ -248,15 +246,16 @@ export const styles = css`
   }
 
   @supports not (anchor-name: --anchor) {
-    :host(:where(${fallbackState})) ::slotted([popover]) {
+    ::slotted([popover]) {
       margin-block-start: calc(${lineHeightBase300} + (${spacingVerticalSNudge} * 2) + ${strokeWidthThin});
+      max-height: 50vh;
     }
 
-    :host(:where(${fallbackState}${smallState})) ::slotted([popover]) {
+    :host(${smallState}) ::slotted([popover]) {
       margin-block-start: calc(${lineHeightBase200} + (${spacingVerticalXS} * 2) + ${strokeWidthThin});
     }
 
-    :host(:where(${fallbackState}${largeState})) ::slotted([popover]) {
+    :host(${largeState}) ::slotted([popover]) {
       margin-block-start: calc(${lineHeightBase400} + (${spacingVerticalS} * 2) + ${strokeWidthThin});
     }
 

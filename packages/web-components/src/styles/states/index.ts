@@ -19,12 +19,6 @@ export const alignEndState = stateSelector('align-end');
 export const alignStartState = stateSelector('align-start');
 
 /**
- * Selector for the `fallback` state.
- * @public
- */
-export const fallbackState = stateSelector('anchor-position-fallback');
-
-/**
  * Selector for the `anchor` state.
  * @public
  */
