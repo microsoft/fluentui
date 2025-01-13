@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 13 Jan 2025 07:21:22 GMT",
+      "tag": "@fluentui/react_v8.122.6",
+      "version": "8.122.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "74641ca04daeda5a6cd644513351d675ccd4dbad",
+            "comment": "fix: Remove deprecation warning from Callout's preventDismissOnResize and similar props"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2025 07:21:37 GMT",
       "tag": "@fluentui/react_v8.122.5",
       "version": "8.122.5",

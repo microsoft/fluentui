@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 08 Jan 2025 07:21:37 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jan 2025 07:21:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.122.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.6)
+
+Mon, 13 Jan 2025 07:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.5..@fluentui/react_v8.122.6)
+
+### Patches
+
+- fix: Remove deprecation warning from Callout's preventDismissOnResize and similar props ([PR #33493](https://github.com/microsoft/fluentui/pull/33493) by behowell@microsoft.com)
 
 ## [8.122.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.5)
 

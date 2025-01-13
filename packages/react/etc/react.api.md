@@ -3243,11 +3243,8 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     popupProps?: IPopupProps;
     preferScrollResizePositioning?: boolean;
     preventDismissOnEvent?: (ev: Event | React_2.FocusEvent | React_2.KeyboardEvent | React_2.MouseEvent) => boolean;
-    // @deprecated
     preventDismissOnLostFocus?: boolean;
-    // @deprecated
     preventDismissOnResize?: boolean;
-    // @deprecated
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;

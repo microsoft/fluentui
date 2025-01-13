@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Mon, 13 Jan 2025 07:21:23 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.192",
+      "version": "8.14.192",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.122.6",
+            "commit": "bf60a56cb23b3af90bcb62462c2423468eb9fa3c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2025 07:21:37 GMT",
       "tag": "@fluentui/react-experiments_v8.14.191",
       "version": "8.14.191",
