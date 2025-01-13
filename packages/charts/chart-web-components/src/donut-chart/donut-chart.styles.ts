@@ -142,7 +142,7 @@ export const styles = css`
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
     .text-inside-donut {
-      fill: rgb(179, 179, 179);
+      fill: CanvasText;
     }
 
     .legend-rect,
@@ -153,7 +153,7 @@ export const styles = css`
     .tooltip-legend-text,
     .tooltip-content-y {
       forced-color-adjust: auto;
-      color: rgb(255, 255, 255);
+      color: CanvasText;
     }
   `),
 );

@@ -181,10 +181,10 @@ export const styles: ElementStyles = css`
     .tooltip-legend-text,
     .tooltip-content-y {
       forced-color-adjust: auto;
-      color: rgb(255, 255, 255);
+      color: CanvasText;
     }
     .bar-label {
-      fill: white !important;
+      fill: CanvasText !important;
     }
   `),
 );
