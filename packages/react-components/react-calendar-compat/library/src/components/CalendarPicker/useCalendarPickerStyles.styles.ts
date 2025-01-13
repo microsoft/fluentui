@@ -329,15 +329,15 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
     buttonRow: mergeClasses(
       calendarPickerClassNames.buttonRow,
       buttonRowStyles.base,
-      buttonRowStyles.animation,
-      animateBackwards !== undefined &&
-        (animationDirection === AnimationDirection.Horizontal
-          ? animateBackwards
-            ? buttonRowStyles.horizontalBackward
-            : buttonRowStyles.horizontalForward
-          : animateBackwards
-          ? buttonRowStyles.verticalBackward
-          : buttonRowStyles.verticalForward),
+      // buttonRowStyles.animation,
+      // animateBackwards !== undefined &&
+      //   (animationDirection === AnimationDirection.Horizontal
+      //     ? animateBackwards
+      //       ? buttonRowStyles.horizontalBackward
+      //       : buttonRowStyles.horizontalForward
+      //     : animateBackwards
+      //     ? buttonRowStyles.verticalBackward
+      //     : buttonRowStyles.verticalForward),
     ),
     itemButton: mergeClasses(calendarPickerClassNames.itemButton, itemButtonStyles.base),
     selected: mergeClasses(calendarPickerClassNames.selected, highlightSelected && selectedStyles.highlightSelected),
