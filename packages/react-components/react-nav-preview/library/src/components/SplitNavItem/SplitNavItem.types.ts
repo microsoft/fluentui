@@ -2,7 +2,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { NavItemProps } from '../NavItem/NavItem.types';
 import { ButtonProps, MenuButtonProps, ToggleButtonProps } from '@fluentui/react-button';
 import type { TooltipProps } from '@fluentui/react-tooltip';
-import { NavSize } from '../Nav/Nav.types';
+import { NavDensity } from '../Nav/Nav.types';
 import { NavSubItemProps } from '../NavSubItem/NavSubItem.types';
 
 export type SplitNavItemSlots = {
@@ -58,11 +58,11 @@ export type SplitNavItemProps = ComponentProps<SplitNavItemSlots>;
  */
 export type SplitNavItemState = ComponentState<SplitNavItemSlots> & {
   /**
-   * The size of the NavItem
+   * The density of the NavItem
    *
    * @default 'medium'
    */
-  size: NavSize;
+  density: NavDensity;
 
   /**
    * A boolean that represents if the main item in the SplitNavItem is a SubNav item.
