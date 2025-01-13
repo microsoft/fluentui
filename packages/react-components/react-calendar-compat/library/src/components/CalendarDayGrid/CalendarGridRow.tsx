@@ -4,6 +4,7 @@ import { CalendarGridDayCell } from './CalendarGridDayCell';
 import type { CalendarDayGridProps, CalendarDayGridStyles } from './CalendarDayGrid.types';
 import type { DayInfo } from './CalendarDayGrid';
 import type { WeekCorners } from './useWeekCornerStyles.styles';
+import { SlideUp } from '../../utils/motions';
 
 /**
  * @internal
@@ -52,6 +53,7 @@ export const CalendarGridRow: React.FunctionComponent<CalendarGridRowProps> = pr
     : '';
 
   return (
+    // <SlideUp key={weekIndex + '_' + week[0].key}>
     <tr role={ariaRole} aria-hidden={ariaHidden} className={rowClassName} key={weekIndex + '_' + week[0].key}>
       {showWeekNumbers && weekNumbers && (
         <th
@@ -68,5 +70,6 @@ export const CalendarGridRow: React.FunctionComponent<CalendarGridRowProps> = pr
         <CalendarGridDayCell {...props} key={day.key} day={day} dayIndex={dayIndex} />
       ))}
     </tr>
+    // </SlideUp>
   );
 };
