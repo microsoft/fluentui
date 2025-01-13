@@ -345,7 +345,7 @@ export function prepareDatapoints(
 ): number[] {
   if (roundedTicks) {
     const ticks = d3Ticks(minVal, maxVal, splitInto);
-    const gap = ticks[1] - ticks[0];
+    const gap = ticks.length > 1 ? ticks[1] - ticks[0] : 1;
     if (ticks[0] !== minVal) {
       ticks.unshift(ticks[0] - gap);
     }
