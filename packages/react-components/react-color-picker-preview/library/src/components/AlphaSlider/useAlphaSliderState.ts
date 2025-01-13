@@ -16,13 +16,13 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const { dir } = useFluent();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
-  const { color, onChange = onChangeFromContext, transparency } = props;
+  const { color, onChange = onChangeFromContext, transparency = false, vertical = false } = props;
   const hsvColor = color || colorFromContext;
   const hslColor = tinycolor(hsvColor).toHsl();
 
   const [currentValue, setCurrentValue] = useControllableState({
-    defaultState: calculateTransparencyValue(props.defaultColor?.a, transparency),
-    state: calculateTransparencyValue(hsvColor?.a, transparency),
+    defaultState: calculateTransparencyValue(transparency, props.defaultColor?.a),
+    state: calculateTransparencyValue(transparency, hsvColor?.a),
     initialState: adjustToTransparency(100, transparency),
   });
 
@@ -39,7 +39,7 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
     onChange?.(event, { type: 'change', event, color: newColor });
   });
 
-  const sliderDirection = getSliderDirection(dir, state.vertical, transparency);
+  const sliderDirection = getSliderDirection(dir, vertical, transparency);
 
   const rootVariables = {
     [alphaSliderCSSVars.sliderDirectionVar]: sliderDirection,
