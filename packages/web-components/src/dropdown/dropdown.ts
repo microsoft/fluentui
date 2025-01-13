@@ -7,15 +7,12 @@ import {
   type ViewTemplate,
   volatile,
 } from '@microsoft/fast-element';
-import { inRange, limit } from '@microsoft/fast-web-utilities';
 import type { Listbox } from '../listbox/listbox.js';
 import { isListbox } from '../listbox/listbox.options.js';
 import type { Option } from '../option/option.js';
 import { isOption } from '../option/option.options.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
-import { cancelIdleCallback, requestIdleCallback } from '../utils/idle-callback.js';
 import { getLanguage } from '../utils/language.js';
-import { AnchorPositioningCSSSupported } from '../utils/support.js';
 import { uniqueId } from '../utils/unique-id.js';
 import { DropdownAppearance, DropdownSize, DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownIndicatorTemplate, dropdownInputTemplate } from './dropdown.template.js';
@@ -340,29 +337,6 @@ export class BaseDropdown extends FASTElement {
    */
   @attr({ attribute: 'value' })
   public valueAttribute: string = '';
-
-  /**
-   * Handles opening and closing the dropdown based on the disabled state.
-   *
-   * @param e - the event object
-   *
-   * @public
-   */
-  public beforetoggleListboxHandler = (e: ToggleEvent): boolean | void => {
-    if (this.disabled) {
-      this.open = false;
-      return;
-    }
-
-    this.updateFreeformOption();
-
-    this.open = e.newState === 'open';
-    this.activeIndex = this.selectedIndex;
-
-    if (!this.open) {
-      this.control.value = this.displayValue;
-    }
-  };
 
   public controlSlot!: HTMLSlotElement;
 
@@ -832,24 +806,6 @@ export class Dropdown extends BaseDropdown {
   private static AnchorPositionFallbackTimeout: number | null;
 
   /**
-   * Applies the `--listbox-max-height` style to the listbox based on the dropdown's position in the viewport. This
-   * prevents the listbox from growing beyond the available space.
-   *
-   * @internal
-   */
-  private scrollWindowHandler = () => {
-    const rect = this.getBoundingClientRect();
-    if (rect.top < window.innerHeight - rect.bottom) {
-      this.style.setProperty(
-        '--listbox-max-height',
-        `${limit(0, window.innerHeight, window.innerHeight - rect.bottom)}px`,
-      );
-    } else {
-      this.style.setProperty('--listbox-max-height', `${limit(0, window.innerHeight, rect.top)}px`);
-    }
-  };
-
-  /**
    * The appearance of the dropdown.
    *
    * @public
@@ -892,7 +848,7 @@ export class Dropdown extends BaseDropdown {
 
   connectedCallback(): void {
     super.connectedCallback();
-    Updates.enqueue(() => this.setAnchorPositionFallbackStyles());
+    this.anchorPositionFallback();
   }
 
   constructor() {
@@ -961,86 +917,37 @@ export class Dropdown extends BaseDropdown {
 
     if (next) {
       Dropdown.AnchorPositionFallbackObserver?.observe(this.listbox);
-      window.addEventListener('scroll', this.scrollWindowHandler, { passive: true });
-      this.scrollWindowHandler();
       return;
     }
 
     Dropdown.AnchorPositionFallbackObserver?.unobserve(this.listbox);
-    window.removeEventListener('scroll', this.scrollWindowHandler);
   }
 
   /**
-   * Applies anchor positioning fallback styles.
+   * When anchor positioning isn't supported, an intersection observer is used to flip the listbox when it hits the
+   * viewport bounds. One static observer is used for all dropdowns.
    *
    * @internal
    */
-  private setAnchorPositionFallbackStyles(): void {
-    const anchorName = `--${this.id}`;
-
-    if (AnchorPositioningCSSSupported) {
-      return;
-    }
-
-    const observerCallback = (entries: IntersectionObserverEntry[]): void => {
-      entries.forEach(entry => {
-        const target = entry.target as Listbox;
-        if (isListbox(target)) {
-          if (inRange(entry.intersectionRatio, 0, 1)) {
-            toggleState(
-              target.dropdown?.elementInternals,
-              'flip-block',
-              entry.intersectionRect.bottom >= window.innerHeight,
-            );
-          }
-        }
-      });
-    };
-
+  private anchorPositionFallback(): void {
     Dropdown.AnchorPositionFallbackObserver =
-      Dropdown.AnchorPositionFallbackObserver ?? new IntersectionObserver(observerCallback, { threshold: [0, 1] });
+      Dropdown.AnchorPositionFallbackObserver ??
+      new IntersectionObserver(
+        (entries: IntersectionObserverEntry[]): void => {
+          entries.forEach(({ boundingClientRect, isIntersecting, target }) => {
+            if (isListbox(target) && !isIntersecting) {
+              if (boundingClientRect.bottom > window.innerHeight) {
+                toggleState(target.dropdown!.elementInternals, 'flip-block', true);
+                return;
+              }
 
-    toggleState(this.elementInternals, 'anchor-position-fallback', true);
-
-    if (!window.CSS_ANCHOR_POLYFILL) {
-      return;
-    }
-
-    if (Dropdown.AnchorPositionFallbackTimeout) {
-      cancelIdleCallback(Dropdown.AnchorPositionFallbackTimeout);
-      Dropdown.AnchorPositionFallbackTimeout = null;
-    }
-
-    this.anchorPositionFallbackStyleElement =
-      this.anchorPositionFallbackStyleElement ?? document.createElement('style');
-
-    this.anchorPositionFallbackStyleElement.textContent = /* css */ `
-      #${this.id} { anchor-name: ${anchorName}; }
-
-      #${this.listbox.id} {
-        position-anchor: ${anchorName};
-        position-try-fallbacks: block-start, flip-inline, flip-block;
-        max-height: var(--listbox-max-height, calc(100vh - anchor-size(self-block)));
-        min-width: anchor-size(width);
-      }
-    `;
-
-    Dropdown.AnchorPositionFallbackStyleElements.set(this, this.anchorPositionFallbackStyleElement);
-
-    Dropdown.AnchorPositionFallbackTimeout = requestIdleCallback(
-      () => {
-        const styleElements: HTMLStyleElement[] = [];
-        Dropdown.AnchorPositionFallbackStyleElements.forEach(styleElement => {
-          const element = styleElement.cloneNode(true) as HTMLStyleElement;
-          (document.head ?? document.body).append(element);
-          styleElements.push(element);
-        });
-
-        (window as any).CSS_ANCHOR_POLYFILL({
-          elements: styleElements,
-        });
-      },
-      { timeout: 100 },
-    );
+              if (boundingClientRect.top < 0) {
+                toggleState(target.dropdown!.elementInternals, 'flip-block', false);
+              }
+            }
+          });
+        },
+        { threshold: 1 },
+      );
   }
 }
