@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix - changing hover animation curve to linear.",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}
