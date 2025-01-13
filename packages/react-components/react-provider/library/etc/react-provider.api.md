@@ -24,6 +24,7 @@ export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | u
 
 // @public (undocumented)
 export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots>, "dir"> & {
+    applyStylesTo?: "body" | "provider" | undefined;
     applyStylesToPortals?: boolean | undefined;
     customStyleHooks_unstable?: Partial<{
         useAccordionHeaderStyles_unstable: (state: unknown) => void;
@@ -195,6 +196,7 @@ export type FluentProviderCustomStyleHooks = CustomStyleHooksContextValue_unstab
 
 // @public (undocumented)
 export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
+    applyStylesTo?: 'body' | 'provider';
     applyStylesToPortals?: boolean;
     customStyleHooks_unstable?: FluentProviderCustomStyleHooks;
     dir?: 'ltr' | 'rtl';
@@ -209,7 +211,7 @@ export type FluentProviderSlots = {
 };
 
 // @public (undocumented)
-export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>> & {
+export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesTo' | 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>> & {
     theme: ThemeContextValue_unstable;
     themeClassName: string;
     serverStyleProps: {
