@@ -188,7 +188,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
     const chart3Points = chart1Points.map((point, index) => {
       return {
         x: point.x,
-        y: point.y - 5000,
+        y: point.y + 7000,
         xAxisCalloutData: point.xAxisCalloutData,
         yAxisCalloutData: point.yAxisCalloutData,
       };

@@ -435,22 +435,42 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getDataPoints = (keys: string[], dataSet: any) => {
-    const dataValues = d3Stack().keys(keys)(dataSet);
-    const maxOfYVal = d3Max(dataValues[dataValues.length - 1], dp => dp[1])!;
     const renderPoints: Array<IAreaChartDataSetPoint[]> = [];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    dataValues.forEach((layer: any) => {
-      const currentLayer: IAreaChartDataSetPoint[] = [];
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      layer.forEach((d: any) => {
-        currentLayer.push({
-          values: this.props.mode === 'tozeroy' ? [0, d[1]] : d,
-          xVal: d.data.xVal,
+    let maxOfYVal = 0;
+
+    if (this.props.mode === 'tozeroy') {
+      keys.forEach((key, index) => {
+        const currentLayer: IAreaChartDataSetPoint[] = [];
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        dataSet.forEach((d: any) => {
+          currentLayer.push({
+            values: [0, d[key]], // Start from zero for "tozeroy" mode
+            xVal: d.xVal,
+          });
+          if (d[key] > maxOfYVal) {
+            maxOfYVal = d[key];
+          }
         });
+        renderPoints.push(currentLayer);
       });
-      renderPoints.push(currentLayer);
-    });
-    this._isMultiStackChart = renderPoints && renderPoints.length > 1 ? true : false;
+    } else {
+      const dataValues = d3Stack().keys(keys)(dataSet);
+      maxOfYVal = d3Max(dataValues[dataValues.length - 1], dp => dp[1])!;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      dataValues.forEach((layer: any) => {
+        const currentLayer: IAreaChartDataSetPoint[] = [];
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        layer.forEach((d: any) => {
+          currentLayer.push({
+            values: d,
+            xVal: d.data.xVal,
+          });
+        });
+        renderPoints.push(currentLayer);
+      });
+    }
+
+    this._isMultiStackChart = renderPoints.length > 1;
     return {
       renderData: renderPoints,
       maxOfYVal,
@@ -722,6 +742,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._data.forEach((singleStackedData: Array<any>, index: number) => {
+      const layerOpacity = this.props.mode === 'tozeroy' ? 0.5 : this._opacity[index];
       graph.push(
         <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
           {this.props.enableGradient && (
@@ -755,7 +776,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               stroke={this._colors[index]}
               strokeWidth={3}
               fill={this._colors[index]}
-              opacity={this._opacity[index]}
+              opacity={layerOpacity}
               fillOpacity={this._getOpacity(points[index]!.legend)}
               onMouseMove={this._onRectMouseMove}
               onMouseOut={this._onRectMouseOut}
@@ -766,7 +787,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               id={`${index}-graph-${this._uniqueIdForGraph}`}
               d={area(singleStackedData)!}
               fill={this.props.enableGradient ? `url(#gradient_${index})` : this._colors[index]}
-              opacity={this._opacity[index]}
+              opacity={layerOpacity}
               fillOpacity={this._getOpacity(points[index]!.legend)}
               onMouseMove={this._onRectMouseMove}
               onMouseOut={this._onRectMouseOut}
