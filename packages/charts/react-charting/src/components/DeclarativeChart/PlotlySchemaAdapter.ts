@@ -25,7 +25,7 @@ import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
-import { /* DataVizPalette,  */ getNextColor } from '../../utilities/colors';
+import { DataVizPalette, getNextColor } from '../../utilities/colors';
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
@@ -560,17 +560,15 @@ export const transformPlotlyJsonToSankeyProps = (
   isDarkTheme?: boolean,
 ): ISankeyChartProps => {
   const { link, node } = input.data[0] as SankeyData;
-  const validLinks =
-    link?.value ??
-    []
-      .map((val: number, index: number) => ({
-        value: val,
-        source: link?.source![index],
-        target: link?.target![index],
-      }))
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      // Filter out negative nodes, unequal nodes and self-references (circular links)
-      .filter(x => x.source >= 0 && x.target >= 0 && x.source !== x.target);
+  const validLinks = (link?.value ?? [])
+    .map((val: number, index: number) => ({
+      value: val,
+      source: link?.source![index],
+      target: link?.target![index],
+    }))
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    // Filter out negative nodes, unequal nodes and self-references (circular links)
+    .filter(x => x.source >= 0 && x.target >= 0 && x.source !== x.target);
 
   const sankeyChartData = {
     nodes: node.label?.map((label: string, index: number) => {
@@ -631,16 +629,16 @@ export const transformPlotlyJsonToGaugeProps = (
         };
       })
     : [
-        /*         { //ToDo: fix this
+        {
           legend: 'Current',
-          size: firstData.value ?? 0 - (firstData.gauge?.range?.[0] ?? 0),
+          size: firstData.value ?? 0 - (firstData.gauge?.axis?.range?.[0] ?? 0),
           color: getColor('Current', colorMap, isDarkTheme),
         },
         {
           legend: 'Target',
-          size: (firstData.gauge?.range?.[1] ?? 100) - (firstData.value ?? 0),
+          size: (firstData.gauge?.axis?.range?.[1] ?? 100) - (firstData.value ?? 0),
           color: DataVizPalette.disabled,
-        }, */
+        },
       ];
 
   let sublabel: string | undefined;
