@@ -2,6 +2,7 @@
 /* eslint-disable one-var */
 /* eslint-disable vars-on-top */
 /* eslint-disable no-var */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, merge as d3Merge } from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';

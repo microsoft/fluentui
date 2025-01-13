@@ -23,9 +23,9 @@ import {
   transformPlotlyJsonToGVBCProps,
   transformPlotlyJsonToVBCProps,
 } from './PlotlySchemaAdapter';
-import { LineChart } from '../LineChart/index';
+import { LineChart, ILineChartProps } from '../LineChart/index';
 import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
-import { AreaChart } from '../AreaChart/index';
+import { AreaChart, IAreaChartProps } from '../AreaChart/index';
 import { HeatMapChart } from '../HeatMapChart/index';
 import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
@@ -42,6 +42,7 @@ export interface Schema {
   /**
    * Plotly schema represented as JSON object
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   plotlySchema: any;
 }
 
@@ -192,8 +193,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       const isXDate = isDateArray(xValues);
       const isXNumber = isNumberArray(xValues);
       const isXMonth = isMonthArray(xValues);
-      const isAreaChart = plotlyInput.data.some((series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy');
-      const renderChart = (chartProps: any) => {
+      const isAreaChart = plotlyInput.data.some(
+        (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
+      );
+      const renderChart = (chartProps: ILineChartProps | IAreaChartProps) => {
         if (isAreaChart) {
           return (
             <AreaChart
@@ -229,7 +232,12 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           x: updateXValues(dataPoint.x),
         }));
         const chartProps = {
-          ...transformPlotlyJsonToScatterChartProps({ data: updatedData, layout: plotlyInput.layout }, isAreaChart, colorMap, isDarkTheme),
+          ...transformPlotlyJsonToScatterChartProps(
+            { data: updatedData, layout: plotlyInput.layout },
+            isAreaChart,
+            colorMap,
+            isDarkTheme,
+          ),
           legendProps,
           componentRef: chartRef,
           calloutProps: { layerProps: { eventBubblingEnabled: true } },
