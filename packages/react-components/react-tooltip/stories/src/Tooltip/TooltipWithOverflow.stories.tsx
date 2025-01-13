@@ -65,13 +65,22 @@ const useIsOverflow = (ref: React.RefObject<HTMLElement>) => {
   const observer = React.useRef<ResizeObserver | null>(null);
 
   useIsomorphicLayoutEffect(() => {
-    const { current } = ref;
-
-    if (!current || !targetDocument) {
+    if (!ref.current || !targetDocument) {
       return;
     }
 
+    let current = ref.current;
+    
+
     const trigger = () => {
+      if (ref.current !== current) {
+        observer.current?.unobserve(current);
+      
+        if (ref.current) {
+          current = ref.current;
+          observer.current?.observe(current);
+        }
+      }
       const overflowX = current.scrollWidth > current.clientWidth;
       const overflowY = current.scrollHeight > current.clientHeight;
 
