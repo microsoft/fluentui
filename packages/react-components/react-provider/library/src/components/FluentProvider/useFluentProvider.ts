@@ -47,6 +47,7 @@ export const useFluentProvider_unstable = (
    * see https://github.com/microsoft/fluentui/blob/0dc74a19f3aa5a058224c20505016fbdb84db172/packages/fluentui/react-northstar/src/utils/mergeProviderContexts.ts#L89-L93
    */
   const {
+    applyStylesTo = 'provider',
     applyStylesToPortals = true,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     customStyleHooks_unstable,
@@ -88,6 +89,7 @@ export const useFluentProvider_unstable = (
   }
 
   return {
+    applyStylesTo,
     applyStylesToPortals,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     customStyleHooks_unstable: mergedCustomStyleHooks,

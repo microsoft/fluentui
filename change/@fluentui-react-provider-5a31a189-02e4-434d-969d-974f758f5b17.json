@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: allow to apply FluentProvider's tokens to body element",
+  "packageName": "@fluentui/react-provider",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -25,6 +25,15 @@ export type FluentProviderCustomStyleHooks = CustomStyleHooksContextValue;
 
 export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
   /**
+   * Determines the element to which theme token styles are applied.
+   *  - 'body' applies styles to the document body element, which can be useful for global styles.
+   *  - 'provider' applies styles to the FluentProvider element (default).
+   *
+   * @default 'provider'
+   */
+  applyStylesTo?: 'body' | 'provider';
+
+  /**
    * Passes styles applied to a component down to portals if enabled.
    * @default true
    */
@@ -50,7 +59,10 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
 export type FluentProviderState = ComponentState<FluentProviderSlots> &
   Pick<FluentProviderProps, 'targetDocument'> &
   Required<
-    Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>
+    Pick<
+      FluentProviderProps,
+      'applyStylesTo' | 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'
+    >
   > & {
     theme: ThemeContextValue;
     themeClassName: string;
