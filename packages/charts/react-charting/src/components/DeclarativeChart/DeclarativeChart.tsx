@@ -241,7 +241,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       const isAreaChart = plotlyInput.data.some(
         (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
       );
-      const renderChart = (chartProps: any) => {
+      const renderChart = (chartProps: ILineChartProps | IAreaChartProps) => {
         if (isAreaChart) {
           return (
             <AreaChart
