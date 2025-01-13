@@ -1,6 +1,7 @@
 /* eslint-disable one-var */
 /* eslint-disable vars-on-top */
 /* eslint-disable no-var */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, merge as d3Merge } from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
@@ -24,12 +25,12 @@ import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
-import { /* DataVizPalette,  */getNextColor } from '../../utilities/colors';
+import { /* DataVizPalette,  */ getNextColor } from '../../utilities/colors';
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { Layout, PlotlySchema, PieData, PlotData, SankeyData } from './PlotlySchema';
-import type { Datum,  TypedArray } from './PlotlySchema';
+import type { Datum, TypedArray } from './PlotlySchema';
 
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
@@ -44,44 +45,46 @@ const isMonth = (possiblyMonthValue: any, presentYear: number): boolean => {
 
 export const isDateArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
   if (!isArrayOrTypedArray(data)) {
-      return false;
+    return false;
   }
 
   if (Array.isArray(data[0])) {
-      // Handle 2D array
-      return (data as Datum[][]).every(innerArray => innerArray.every(isDate));
+    // Handle 2D array
+    return (data as Datum[][]).every(innerArray => innerArray.every(isDate));
   } else {
-      // Handle 1D array
-      return (data as Datum[]).every(isDate);
+    // Handle 1D array
+    return (data as Datum[]).every(isDate);
   }
 };
 
 export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
   if (!isArrayOrTypedArray(data)) {
-      return false;
+    return false;
   }
 
   if (Array.isArray(data[0])) {
-      // Handle 2D array
-      return (data as Datum[][]).every(innerArray => innerArray.every(isNumber));
+    // Handle 2D array
+    return (data as Datum[][]).every(innerArray => innerArray.every(isNumber));
   } else {
-      // Handle 1D array
-      return (data as Datum[]).every(isNumber);
+    // Handle 1D array
+    return (data as Datum[]).every(isNumber);
   }
 };
 
 export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
   if (!isArrayOrTypedArray(data)) {
     return false;
-}
+  }
   if (data.length > 0) {
     const presentYear = new Date().getFullYear();
     if (Array.isArray(data[0])) {
       // Handle 2D array
-      return (data as Datum[][]).every(innerArray => innerArray.every(possiblyMonthValue => isMonth(possiblyMonthValue, presentYear)));
+      return (data as Datum[][]).every(innerArray =>
+        innerArray.every(possiblyMonthValue => isMonth(possiblyMonthValue, presentYear)),
+      );
     } else {
-        // Handle 1D array
-        return (data as Datum[]).every(possiblyMonthValue => isMonth(possiblyMonthValue, presentYear));
+      // Handle 1D array
+      return (data as Datum[]).every(possiblyMonthValue => isMonth(possiblyMonthValue, presentYear));
     }
   }
   return false;
@@ -89,16 +92,9 @@ export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean =>
 
 function getTitles(layout: Partial<Layout> | undefined) {
   const titles = {
-    chartTitle:
-      typeof layout?.title === 'string' ? layout.title : layout?.title?.text?? '',
-    xAxisTitle:
-      typeof layout?.xaxis?.title === 'string'
-        ? layout?.xaxis?.title
-        : layout?.xaxis?.title?.text?? '',
-    yAxisTitle:
-      typeof layout?.yaxis?.title === 'string'
-        ? layout?.yaxis?.title
-        : layout?.yaxis?.title?.text?? '',
+    chartTitle: typeof layout?.title === 'string' ? layout.title : layout?.title?.text ?? '',
+    xAxisTitle: typeof layout?.xaxis?.title === 'string' ? layout?.xaxis?.title : layout?.xaxis?.title?.text ?? '',
+    yAxisTitle: typeof layout?.yaxis?.title === 'string' ? layout?.yaxis?.title : layout?.yaxis?.title?.text ?? '',
   };
   return titles;
 }
@@ -158,8 +154,8 @@ export const transformPlotlyJsonToDonutProps = (
     };
   });
 
-  const width: number = input.layout?.width?? 440;
-  const height: number = input.layout?.height?? 220;
+  const width: number = input.layout?.width ?? 440;
+  const height: number = input.layout?.height ?? 220;
   const hideLabels: boolean = firstData.textinfo
     ? !['value', 'percent', 'label+percent'].includes(firstData.textinfo)
     : false;
@@ -218,7 +214,7 @@ export const transformPlotlyJsonToVSBCProps = (
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
       }
       const legend: string = series.name || `Series ${index1 + 1}`;
-      const yVal: number = series.y?.[index2] as number?? 0
+      const yVal: number = (series.y?.[index2] as number) ?? 0;
       if (series.type === 'bar' || series.type === 'scatter') {
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].chartData.push({
@@ -281,7 +277,7 @@ export const transformPlotlyJsonToGVBCProps = (
 
         mapXToDataPoints[x].series.push({
           key: legend,
-          data: (series.y?.[index2] as number)?? 0,
+          data: (series.y?.[index2] as number) ?? 0,
           xAxisCalloutData: x as string,
           color,
           legend,
@@ -404,7 +400,6 @@ export const transformPlotlyJsonToScatterChartProps = (
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
-
   const chartData: ILineChartPoints[] = input.data.map((series: PlotData, index: number) => {
     if (series.x?.length > 0 && Array.isArray(series.x[0])) {
       throw new Error('transform to Scatter:: 2D x array not supported');
@@ -459,7 +454,6 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): IHorizontalBarChartWithAxisProps => {
-
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: PlotData, index: number) => {
       if (series.x?.length > 0 && Array.isArray(series.x[0])) {
@@ -480,9 +474,9 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     })
     .flat();
 
-  const chartHeight: number = input.layout?.height?? 450;
-  const margin: number = input.layout?.margin?.l?? 0;
-  const padding: number = input.layout?.margin?.pad?? 0;
+  const chartHeight: number = input.layout?.height ?? 450;
+  const margin: number = input.layout?.margin?.l ?? 0;
+  const padding: number = input.layout?.margin?.pad ?? 0;
   const availableHeight: number = chartHeight - margin - padding;
   const numberOfBars = (input.data[0] as PlotData).y.length;
   const scalingFactor = 0.01;
@@ -497,7 +491,9 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     xAxisTitle,
     yAxisTitle,
     secondaryYAxistitle:
-      typeof input.layout?.yaxis2?.title === 'string' ? input.layout?.yaxis2?.title : input.layout?.yaxis2?.title?.text || '',
+      typeof input.layout?.yaxis2?.title === 'string'
+        ? input.layout?.yaxis2?.title
+        : input.layout?.yaxis2?.title?.text || '',
     barHeight,
     showYAxisLables: true,
     styles: {
@@ -520,8 +516,8 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
       const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
 
       heatmapDataPoints.push({
-        x: input.layout?.xaxis?.type === 'date' ? xVal as Date : xVal?? 0,
-        y: input.layout?.yaxis?.type === 'date' ? yVal as Date : yVal,
+        x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
+        y: input.layout?.yaxis?.type === 'date' ? (yVal as Date) : yVal,
         value: zVal,
         rectText: zVal,
       });
@@ -538,9 +534,11 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
 
   // Convert normalized values to actual values
   const domainValuesForColorScale: number[] = firstData.colorscale
-    ? (firstData.colorscale as Array<[number, string]>).map((arr) => arr[0] * (zMax - zMin) + zMin)
+    ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[0] * (zMax - zMin) + zMin)
     : [];
-  const rangeValuesForColorScale: string[] = firstData.colorscale ? (firstData.colorscale as Array<[number, string]>).map((arr) => arr[1]) : [];
+  const rangeValuesForColorScale: string[] = firstData.colorscale
+    ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[1])
+    : [];
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
   return {
@@ -562,15 +560,17 @@ export const transformPlotlyJsonToSankeyProps = (
   isDarkTheme?: boolean,
 ): ISankeyChartProps => {
   const { link, node } = input.data[0] as SankeyData;
-  const validLinks = link?.value?? []
-    .map((val: number, index: number) => ({
-      value: val,
-      source: link?.source![index],
-      target: link?.target![index],
-    }))
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    // Filter out negative nodes, unequal nodes and self-references (circular links)
-    .filter(x => x.source >= 0 && x.target >= 0 && x.source !== x.target);
+  const validLinks =
+    link?.value ??
+    []
+      .map((val: number, index: number) => ({
+        value: val,
+        source: link?.source![index],
+        target: link?.target![index],
+      }))
+      // eslint-disable-next-line @typescript-eslint/no-shadow
+      // Filter out negative nodes, unequal nodes and self-references (circular links)
+      .filter(x => x.source >= 0 && x.target >= 0 && x.source !== x.target);
 
   const sankeyChartData = {
     nodes: node.label?.map((label: string, index: number) => {
@@ -589,8 +589,8 @@ export const transformPlotlyJsonToSankeyProps = (
     }),
   } as ISankeyChartData;
 
-  const width: number = input.layout?.width?? 440;
-  const height: number = input.layout?.height?? 220;
+  const width: number = input.layout?.width ?? 440;
+  const height: number = input.layout?.height ?? 220;
   const styles: ISankeyChartProps['styles'] = {
     root: {
       ...(typeof input.layout?.font?.size === 'number' ? { fontSize: input.layout.font?.size } : {}),
@@ -631,7 +631,7 @@ export const transformPlotlyJsonToGaugeProps = (
         };
       })
     : [
-/*         { //ToDo: fix this
+        /*         { //ToDo: fix this
           legend: 'Current',
           size: firstData.value ?? 0 - (firstData.gauge?.range?.[0] ?? 0),
           color: getColor('Current', colorMap, isDarkTheme),
@@ -668,15 +668,15 @@ export const transformPlotlyJsonToGaugeProps = (
 
   return {
     segments,
-    chartValue: firstData.value?? 0,
+    chartValue: firstData.value ?? 0,
     chartTitle,
     sublabel,
     // range values can be null
     minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
     maxValue: typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : undefined,
     //chartValueFormat: () => firstData.value, ToDo: fix this
-    width: input.layout?.width?? 440,
-    height: input.layout?.height?? 220,
+    width: input.layout?.width ?? 440,
+    height: input.layout?.height ?? 220,
     styles,
     variant: firstData.gauge?.steps?.length ? GaugeChartVariant.MultipleSegments : GaugeChartVariant.SingleSegment,
   };
