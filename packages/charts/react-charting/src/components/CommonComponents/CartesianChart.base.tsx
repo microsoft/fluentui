@@ -422,6 +422,7 @@ export class CartesianChartBase
           this.isIntegralDataset,
           false,
           this.props.supportNegativeData!,
+          this.props.roundedTicks!,
         );
       }
 

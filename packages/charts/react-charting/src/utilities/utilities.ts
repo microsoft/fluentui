@@ -1,5 +1,5 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
-import { max as d3Max, min as d3Min } from 'd3-array';
+import { max as d3Max, min as d3Min, ticks as d3Ticks } from 'd3-array';
 import {
   scaleLinear as d3ScaleLinear,
   scaleBand as d3ScaleBand,
@@ -341,7 +341,19 @@ export function prepareDatapoints(
   minVal: number,
   splitInto: number,
   isIntegralDataset: boolean,
+  roundedTicks?: boolean,
 ): number[] {
+  if (roundedTicks) {
+    const ticks = d3Ticks(minVal, maxVal, splitInto);
+    const gap = ticks[1] - ticks[0];
+    if (ticks[0] !== minVal) {
+      ticks.unshift(ticks[0] - gap);
+    }
+    if (ticks[ticks.length - 1] !== maxVal) {
+      ticks.push(ticks[ticks.length - 1] + gap);
+    }
+    return ticks;
+  }
   const val = isIntegralDataset
     ? Math.ceil((maxVal - minVal) / splitInto)
     : (maxVal - minVal) / splitInto >= 1
@@ -409,6 +421,7 @@ export function createNumericYAxis(
   isIntegralDataset: boolean,
   useSecondaryYScale: boolean = false,
   supportNegativeData: boolean = false,
+  roundedTicks: boolean = false,
 ) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -428,13 +441,15 @@ export function createNumericYAxis(
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
-  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = supportNegativeData
+  const finalYmax = roundedTicks ? yMaxValue : tempVal > yMaxValue ? tempVal : yMaxValue!;
+  const finalYmin = roundedTicks
+    ? yMinValue
+    : supportNegativeData
     ? Math.min(yMinMaxValues.startValue, yMinValue || 0)
     : yMinMaxValues.startValue < yMinValue
     ? 0
     : yMinValue!;
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
   const yAxisScale = d3ScaleLinear()
     .domain([supportNegativeData ? domainValues[0] : finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);

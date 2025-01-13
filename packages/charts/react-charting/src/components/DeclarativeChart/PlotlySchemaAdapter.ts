@@ -28,6 +28,7 @@ import { DataVizPalette, getNextColor } from '../../utilities/colors';
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
+import { findNumericMinMaxOfY } from '../../utilities/utilities';
 
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
@@ -350,9 +351,12 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isXNumber = isNumberArray(xValues);
     const legend: string = series.name || `Series ${index + 1}`;
     const lineColor = getColor(legend, colorMap, isDarkTheme);
-
     return {
       legend,
+      lineOptions:
+        series.line?.dash === 'dash'
+          ? { strokeDasharray: '5', strokeLinecap: 'butt', strokeWidth: '2', lineBorderWidth: '4' }
+          : {},
       data: xValues.map((x: string | number, i: number) => ({
         x: isString ? (isXDate ? new Date(x) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
@@ -361,6 +365,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     };
   });
 
+  const yMinMaxValues = findNumericMinMaxOfY(chartData);
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(layout);
 
   const chartProps: IChartProps = {
@@ -381,6 +386,9 @@ export const transformPlotlyJsonToScatterChartProps = (
       supportNegativeData: true,
       xAxisTitle,
       yAxisTitle,
+      roundedTicks: true,
+      yMinValue: yMinMaxValues.startValue,
+      yMaxValue: yMinMaxValues.endValue,
     } as ILineChartProps;
   }
 };
