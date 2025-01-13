@@ -1075,7 +1075,8 @@ export type PlotType =
   | 'treemap'
   | 'violin'
   | 'volume'
-  | 'waterfall';
+  | 'waterfall'
+  | 'fallback-vsbc';
 
 export type Data = Partial<PlotData> | Partial<PieData> | Partial<SankeyData>;
 

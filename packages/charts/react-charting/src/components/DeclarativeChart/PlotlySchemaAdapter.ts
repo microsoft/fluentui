@@ -124,6 +124,7 @@ export const updateXValues = (xValues: Datum[] | Datum[][] | TypedArray): any[] 
   });
   return xValues;
 };
+
 export const getColor = (
   legendLabel: string,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -215,7 +216,7 @@ export const transformPlotlyJsonToVSBCProps = (
       }
       const legend: string = series.name || `Series ${index1 + 1}`;
       const yVal: number = (series.y?.[index2] as number) ?? 0;
-      if (series.type === 'bar' || series.type === 'scatter') {
+      if (series.type === 'bar' || series.type === 'scatter' || series.type === 'fallback-vsbc') {
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].chartData.push({
           legend,
