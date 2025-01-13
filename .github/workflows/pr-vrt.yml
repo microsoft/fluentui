@@ -18,6 +18,7 @@ permissions:
 
 jobs:
   generate_vrt_screenshots:
+    if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
     steps:
       - uses: actions/checkout@v4

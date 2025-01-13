@@ -32,6 +32,7 @@ import {
   getNextGradient,
   getNextColor,
   areArraysEqual,
+  calculateLongestLabelWidth,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -695,21 +696,22 @@ export class GroupedVerticalBarChartBase
   private _getDomainMargins = (containerWidth: number): IMargins => {
     this._domainMargin = MIN_DOMAIN_MARGIN;
 
+    /** Total width available to render the bars */
+    const totalWidth =
+      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+    /** Rate at which the space between the groups changes wrt the group width */
+    const groupGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
+
     if (this._xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(this.props.xAxisOuterPadding)) {
         // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
         // to adjust the space before the first group and after the last group.
         this._domainMargin = 0;
       } else if (this.props.barwidth !== 'auto') {
-        /** Total width available to render the bars */
-        const totalWidth =
-          containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
         // Update the bar width so that when CartesianChart rerenders,
         // the following calculations don't use the previous bar width.
         this._barWidth = getBarWidth(this.props.barwidth, this.props.maxBarWidth);
         const groupWidth = (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE) * this._barWidth;
-        /** Rate at which the space between the groups changes wrt the group width */
-        const groupGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
         /** Total width required to render the groups. Directly proportional to group width */
         const reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * groupGapRate) * groupWidth;
 
@@ -717,6 +719,21 @@ export class GroupedVerticalBarChartBase
           // Center align the chart by setting equal left and right margins for domain
           this._domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
         }
+      } else if (this.props.mode === 'plotly' && this._xAxisLabels.length > 1) {
+        // Calculate the remaining width after rendering groups at their maximum allowable width
+        const groupBandwidth = totalWidth / (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * groupGapRate);
+        const barBandwidth = groupBandwidth / (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE);
+        const barWidth = getBarWidth(this.props.barwidth, this.props.maxBarWidth, barBandwidth);
+        const groupWidth = (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE) * barWidth;
+        let reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * groupGapRate) * groupWidth;
+        const margin1 = (totalWidth - reqWidth) / 2;
+
+        // Calculate the remaining width after accounting for the space required to render x-axis labels
+        const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
+        reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
+        const margin2 = (totalWidth - reqWidth) / 2;
+
+        this._domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
     }
 
