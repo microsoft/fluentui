@@ -3,5 +3,10 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],
+  "targets": {
+    "e2e": {
+      "dependsOn": [{ "target": "build", "projects": "dependencies" }]
+    }
+  },
   "tags": ["platform:web", "web-components"]
 }
