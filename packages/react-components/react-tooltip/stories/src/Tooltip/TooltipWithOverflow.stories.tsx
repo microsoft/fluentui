@@ -70,7 +70,6 @@ const useIsOverflow = (ref: React.RefObject<HTMLElement>) => {
     }
 
     let current = ref.current;
-    
 
     const trigger = () => {
       if (ref.current !== current) {
@@ -81,6 +80,7 @@ const useIsOverflow = (ref: React.RefObject<HTMLElement>) => {
           observer.current?.observe(current);
         }
       }
+
       const overflowX = current.scrollWidth > current.clientWidth;
       const overflowY = current.scrollHeight > current.clientHeight;
 
