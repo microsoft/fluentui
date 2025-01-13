@@ -16,6 +16,7 @@ import {
   IHeatMapChartDataPoint,
   IGroupedVerticalBarChartData,
   IVerticalBarChartDataPoint,
+  ISankeyChartData,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -23,7 +24,7 @@ import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
-import { DataVizPalette, getNextColor } from '../../utilities/colors';
+import { /* DataVizPalette,  */getNextColor } from '../../utilities/colors';
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
@@ -104,7 +105,10 @@ function getTitles(layout: Partial<Layout> | undefined) {
 
 export const updateXValues = (xValues: Datum[] | Datum[][] | TypedArray): any[] => {
   const presentYear = new Date().getFullYear();
-  const dates = xValues.map(possiblyMonthValue => {
+  if (xValues.length > 0 && Array.isArray(xValues[0])) {
+    throw new Error('updateXValues:: 2D array not supported');
+  }
+  const dates = (xValues as Datum[]).map(possiblyMonthValue => {
     const parsedDate = `${possiblyMonthValue} 01, ${presentYear}`;
     return isDate(parsedDate) ? new Date(parsedDate) : null;
   });
@@ -119,7 +123,7 @@ export const updateXValues = (xValues: Datum[] | Datum[][] | TypedArray): any[] 
       dates[i - 1]!.setFullYear(currentYear);
     }
   }
-  xValues = xValues.map((month, index) => {
+  xValues = (xValues as Datum[]).map((month, index) => {
     return `${month} 01, ${dates[index]!.getFullYear()}`;
   });
   return xValues;
@@ -199,28 +203,39 @@ export const transformPlotlyJsonToVSBCProps = (
   let yMaxValue = 0;
 
   input.data.forEach((series: PlotData, index1: number) => {
-    series.x?.forEach((x: string | number, index2: number) => {
+    if (series.x?.length > 0 && Array.isArray(series.x[0])) {
+      throw new Error('transform to VSBC:: 2D x array not supported');
+    }
+    if (series.y?.length > 0 && Array.isArray(series.y[0])) {
+      throw new Error('transform to VSBC:: 2D y array not supported');
+    }
+    if (!isNumberArray(series.y)) {
+      throw new Error('transform to VSBC:: y values are not numbers');
+    }
+
+    (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
       }
       const legend: string = series.name || `Series ${index1 + 1}`;
+      const yVal: number = series.y?.[index2] as number?? 0
       if (series.type === 'bar' || series.type === 'scatter') {
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].chartData.push({
           legend,
-          data: series.y?.[index2],
+          data: yVal,
           color,
         });
-      } else if (series.type === 'line') {
+      } /* else if (series.type === 'line') { //ToDo - Fix this as series.type cannot be line type
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].lineData!.push({
           legend,
-          y: series.y?.[index2],
+          y: yVal,
           color,
         });
-      }
+      } */
 
-      yMaxValue = Math.max(yMaxValue, series.y?.[index2]);
+      yMaxValue = Math.max(yMaxValue, yVal);
     });
   });
 
@@ -247,7 +262,16 @@ export const transformPlotlyJsonToGVBCProps = (
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
 
   input.data.forEach((series: PlotData, index1: number) => {
-    series.x?.forEach((x: string | number, index2: number) => {
+    if (series.x?.length > 0 && Array.isArray(series.x[0])) {
+      throw new Error('transform to GVBC:: 2D x array not supported');
+    }
+    if (series.y?.length > 0 && Array.isArray(series.y[0])) {
+      throw new Error('transform to GVBC:: 2D y array not supported');
+    }
+    if (!isNumberArray(series.y)) {
+      throw new Error('transform to GVBC:: y values are not numbers');
+    }
+    (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
       }
@@ -257,7 +281,7 @@ export const transformPlotlyJsonToGVBCProps = (
 
         mapXToDataPoints[x].series.push({
           key: legend,
-          data: series.y?.[index2],
+          data: (series.y?.[index2] as number)?? 0,
           xAxisCalloutData: x as string,
           color,
           legend,
@@ -288,12 +312,16 @@ export const transformPlotlyJsonToVBCProps = (
   const vbcData: IVerticalBarChartDataPoint[] = [];
 
   input.data.forEach((series: PlotData, index: number) => {
+    if (series.x?.length > 0 && Array.isArray(series.x[0])) {
+      throw new Error('transform to GVBC:: 2D x array not supported');
+    }
+
     if (!series.x) {
       return;
     }
 
     const scale = d3ScaleLinear()
-      .domain(d3Extent<number>(series.x) as [number, number])
+      .domain(d3Extent<number>(series.x as number[]) as [number, number])
       .nice();
     let [xMin, xMax] = scale.domain();
 
@@ -318,7 +346,7 @@ export const transformPlotlyJsonToVBCProps = (
       bin.domain([xMin, xMax]).thresholds(thresholds);
     }
 
-    const buckets = bin(series.x);
+    const buckets = bin(series.x as number[]);
     // If the start or end of xbins is specified, then the number of datapoints may become less than x.length
     const totalDataPoints = d3Merge(buckets).length;
 
@@ -378,7 +406,14 @@ export const transformPlotlyJsonToScatterChartProps = (
 ): ILineChartProps | IAreaChartProps => {
 
   const chartData: ILineChartPoints[] = input.data.map((series: PlotData, index: number) => {
-    const xValues = series.x;
+    if (series.x?.length > 0 && Array.isArray(series.x[0])) {
+      throw new Error('transform to Scatter:: 2D x array not supported');
+    }
+    if (series.y?.length > 0 && Array.isArray(series.y[0])) {
+      throw new Error('transform to Scatter:: 2D y array not supported');
+    }
+
+    const xValues = series.x as Datum[];
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
@@ -387,12 +422,12 @@ export const transformPlotlyJsonToScatterChartProps = (
 
     return {
       legend,
-      data: xValues.map((x: string | number, i: number) => ({
-        x: isString ? (isXDate ? new Date(x) : isXNumber ? parseFloat(x as string) : x) : x,
+      data: xValues.map((x, i: number) => ({
+        x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
       })),
       color: lineColor,
-    };
+    } as ILineChartPoints;
   });
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
@@ -427,14 +462,20 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
 
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: PlotData, index: number) => {
-      return series.y.map((yValue: string, i: number) => {
+      if (series.x?.length > 0 && Array.isArray(series.x[0])) {
+        throw new Error('transform to HBC:: 2D x array not supported');
+      }
+      if (series.y?.length > 0 && Array.isArray(series.y[0])) {
+        throw new Error('transform to HBC:: 2D y array not supported');
+      }
+      return (series.y as Datum[]).map((yValue: string, i: number) => {
         const color = getColor(yValue, colorMap, isDarkTheme);
         return {
           x: series.x[i],
           y: yValue,
           legend: yValue,
           color,
-        };
+        } as IHorizontalBarChartWithAxisDataPoint;
       });
     })
     .flat();
@@ -474,13 +515,13 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
   let zMin = Number.POSITIVE_INFINITY;
   let zMax = Number.NEGATIVE_INFINITY;
 
-  firstData.x?.forEach((xVal: PlotData, xIdx: number) => {
+  (firstData.x as Datum[])?.forEach((xVal, xIdx: number) => {
     firstData.y?.forEach((yVal: any, yIdx: number) => {
-      const zVal = firstData.z?.[yIdx]?.[xIdx];
+      const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
 
       heatmapDataPoints.push({
-        x: input.layout?.xaxis?.type === 'date' ? new Date(xVal) : xVal,
-        y: input.layout?.yaxis?.type === 'date' ? new Date(yVal) : yVal,
+        x: input.layout?.xaxis?.type === 'date' ? xVal as Date : xVal?? 0,
+        y: input.layout?.yaxis?.type === 'date' ? yVal as Date : yVal,
         value: zVal,
         rectText: zVal,
       });
@@ -497,9 +538,9 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
 
   // Convert normalized values to actual values
   const domainValuesForColorScale: number[] = firstData.colorscale
-    ? firstData.colorscale.map((arr: any) => arr[0] * (zMax - zMin) + zMin)
+    ? (firstData.colorscale as Array<[number, string]>).map((arr) => arr[0] * (zMax - zMin) + zMin)
     : [];
-  const rangeValuesForColorScale: string[] = firstData.colorscale ? firstData.colorscale.map((arr: any) => arr[1]) : [];
+  const rangeValuesForColorScale: string[] = firstData.colorscale ? (firstData.colorscale as Array<[number, string]>).map((arr) => arr[1]) : [];
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
   return {
@@ -521,11 +562,11 @@ export const transformPlotlyJsonToSankeyProps = (
   isDarkTheme?: boolean,
 ): ISankeyChartProps => {
   const { link, node } = input.data[0] as SankeyData;
-  const validLinks = link?.value //ToDo handle undefined links
+  const validLinks = link?.value?? []
     .map((val: number, index: number) => ({
       value: val,
-      source: link?.source[index],
-      target: link?.target[index],
+      source: link?.source![index],
+      target: link?.target![index],
     }))
     // eslint-disable-next-line @typescript-eslint/no-shadow
     // Filter out negative nodes, unequal nodes and self-references (circular links)
@@ -546,7 +587,7 @@ export const transformPlotlyJsonToSankeyProps = (
         ...validLink,
       };
     }),
-  };
+  } as ISankeyChartData;
 
   const width: number = input.layout?.width?? 440;
   const height: number = input.layout?.height?? 220;
@@ -590,7 +631,7 @@ export const transformPlotlyJsonToGaugeProps = (
         };
       })
     : [
-        {
+/*         { //ToDo: fix this
           legend: 'Current',
           size: firstData.value ?? 0 - (firstData.gauge?.range?.[0] ?? 0),
           color: getColor('Current', colorMap, isDarkTheme),
@@ -599,7 +640,7 @@ export const transformPlotlyJsonToGaugeProps = (
           legend: 'Target',
           size: (firstData.gauge?.range?.[1] ?? 100) - (firstData.value ?? 0),
           color: DataVizPalette.disabled,
-        },
+        }, */
       ];
 
   let sublabel: string | undefined;
@@ -633,7 +674,7 @@ export const transformPlotlyJsonToGaugeProps = (
     // range values can be null
     minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
     maxValue: typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : undefined,
-    chartValueFormat: () => firstData.value,
+    //chartValueFormat: () => firstData.value, ToDo: fix this
     width: input.layout?.width?? 440,
     height: input.layout?.height?? 220,
     styles,
