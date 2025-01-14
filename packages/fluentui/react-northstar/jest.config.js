@@ -10,6 +10,9 @@ const config = commonConfig({
     // Legacy aliases, they should not be used in new tests
     ...getAliases(),
   },
+  // Keeps Jest from using too much memory as GC gets invokes more often, makes tests slower
+  // https://stackoverflow.com/a/75857711
+  workerIdleMemoryLimit: '1024MB',
 });
 config.setupFilesAfterEnv = [...config.setupFilesAfterEnv, './jest-setup.js'];
 

@@ -8,7 +8,6 @@ import type {
 import { useDynamicVirtualizerMeasure } from '../../Hooks';
 import { useVirtualizerContextState_unstable, scrollToItemDynamic } from '../../Utilities';
 import type { VirtualizerDataRef } from '../Virtualizer/Virtualizer.types';
-import { useImperativeHandle, useState } from 'react';
 import { useMeasureList } from '../../hooks/useMeasureList';
 import type { IndexedResizeCallbackElement } from '../../hooks/useMeasureList';
 import { useDynamicVirtualizerPagination } from '../../hooks/useDynamicPagination';
@@ -32,7 +31,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
   let sizeTrackingArray = React.useRef<number[]>(new Array(props.numItems).fill(props.itemSize));
 
   // This lets us trigger updates when a size change occurs.
-  const [sizeUpdateCount, setSizeUpdateCount] = useState(0);
+  const [sizeUpdateCount, setSizeUpdateCount] = React.useState(0);
 
   const getChildSizeAuto = React.useCallback(
     (index: number) => {
@@ -49,15 +48,16 @@ export function useVirtualizerScrollViewDynamic_unstable(
     [sizeTrackingArray, props.itemSize, sizeUpdateCount],
   );
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useDynamicVirtualizerMeasure({
-    defaultItemSize: props.itemSize,
-    direction: props.axis ?? 'vertical',
-    getItemSize: props.getItemSize ?? getChildSizeAuto,
-    virtualizerContext: contextState,
-    numItems: props.numItems,
-    bufferItems: _bufferItems,
-    bufferSize: _bufferSize,
-  });
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef, updateScrollPosition } =
+    useDynamicVirtualizerMeasure({
+      defaultItemSize: props.itemSize,
+      direction: props.axis ?? 'vertical',
+      getItemSize: props.getItemSize ?? getChildSizeAuto,
+      virtualizerContext: contextState,
+      numItems: props.numItems,
+      bufferItems: _bufferItems,
+      bufferSize: _bufferSize,
+    });
 
   const _imperativeVirtualizerRef = useMergedRefs(React.useRef<VirtualizerDataRef>(null), imperativeVirtualizerRef);
 
@@ -76,10 +76,10 @@ export function useVirtualizerScrollViewDynamic_unstable(
   if (virtualizerLengthRef.current !== virtualizerLength) {
     virtualizerLengthRef.current = virtualizerLength;
   }
-  const scrollViewRef = useMergedRefs(props.scrollViewRef, scrollRef, paginationRef) as React.RefObject<HTMLDivElement>;
+  const scrollViewRef = useMergedRefs(props.scrollViewRef, scrollRef, paginationRef);
   const scrollCallbackRef = React.useRef<null | ((index: number) => void)>(null);
 
-  useImperativeHandle(
+  React.useImperativeHandle(
     imperativeRef,
     () => {
       return {
@@ -97,7 +97,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
               index,
               itemSizes: _imperativeVirtualizerRef.current?.nodeSizes,
               totalSize,
-              scrollViewRef,
+              scrollViewRef: scrollViewRef as React.RefObject<HTMLDivElement>,
               axis,
               reversed,
               behavior,
@@ -127,6 +127,8 @@ export function useVirtualizerScrollViewDynamic_unstable(
     imperativeVirtualizerRef: _imperativeVirtualizerRef,
     onRenderedFlaggedIndex: handleRenderedIndex,
     containerSizeRef,
+    scrollViewRef,
+    updateScrollPosition,
   });
 
   const measureObject = useMeasureList(

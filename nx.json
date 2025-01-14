@@ -112,7 +112,7 @@
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": ["{projectRoot}/**/*", "sharedGlobals", "{workspaceRoot}/.github/workflows/pr.yml"],
     "sharedGlobals": [],
     "production": [
       "default",
@@ -137,18 +137,23 @@
   "defaultBase": "master",
   "plugins": [
     {
-      "plugin": "@nx/jest/plugin",
+      "plugin": "./tools/workspace-plugin/src/plugins/workspace-plugin.ts",
       "options": {
-        "targetName": "test"
+        "testSSR": {
+          "exclude": ["react-theme-stories", "react-migration-v8-v9-stories", "react-migration-v0-v9-stories"]
+        },
+        "verifyPackaging": {
+          "include": ["react-text", "react-components"]
+        }
       },
-      "include": ["tools/**/*", "scripts/**/*"]
-    },
-    {
-      "plugin": "@nx/eslint/plugin",
-      "options": {
-        "targetName": "lint"
-      },
-      "include": ["tools/**/*", "scripts/**/*"]
+      "include": [
+        "tools/**/*",
+        "scripts/**/*",
+        "packages/eslint-plugin/**",
+        "packages/tokens/**",
+        "packages/react-conformance/**",
+        "packages/react-components/**/*"
+      ]
     }
   ]
 }

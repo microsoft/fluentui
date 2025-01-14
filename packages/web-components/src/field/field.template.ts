@@ -1,4 +1,4 @@
-import { children, elements, ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
+import { children, elements, type ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
 import type { Field } from './field.js';
 
 /**

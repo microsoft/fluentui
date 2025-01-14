@@ -1,8 +1,83 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 07 Oct 2024 04:08:32 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jan 2025 04:07:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.76](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.76)
+
+Thu, 09 Jan 2025 04:07:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.75..@fluentui/web-components_v3.0.0-beta.76)
+
+### Changes
+
+- Allow field states to be set regardless of connection status ([PR #33023](https://github.com/microsoft/fluentui/pull/33023) by 863023+radium-v@users.noreply.github.com)
+- fix: radio-group emit change with keyboard and disabled radio unchecks ([PR #33585](https://github.com/microsoft/fluentui/pull/33585) by jes@microsoft.com)
+
+## [3.0.0-beta.75](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.75)
+
+Mon, 23 Dec 2024 04:07:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.74..@fluentui/web-components_v3.0.0-beta.75)
+
+### Changes
+
+- fix tooltip positioning styles for 'below-end' option ([PR #33494](https://github.com/microsoft/fluentui/pull/33494) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.74](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.74)
+
+Fri, 06 Dec 2024 04:07:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.73..@fluentui/web-components_v3.0.0-beta.74)
+
+### Changes
+
+- add current-value attribute to text-input ([PR #33144](https://github.com/microsoft/fluentui/pull/33144) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.73](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.73)
+
+Thu, 07 Nov 2024 04:07:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.72..@fluentui/web-components_v3.0.0-beta.73)
+
+### Changes
+
+- feat: add Tooltip component ([PR #32852](https://github.com/microsoft/fluentui/pull/32852) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.72](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.72)
+
+Wed, 30 Oct 2024 04:06:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.71..@fluentui/web-components_v3.0.0-beta.72)
+
+### Changes
+
+- add swapStates function for attribute-driven internal states ([PR #33156](https://github.com/microsoft/fluentui/pull/33156) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.71](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.71)
+
+Tue, 29 Oct 2024 04:06:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.70..@fluentui/web-components_v3.0.0-beta.71)
+
+### Changes
+
+- replace state partials with stateSelector function ([PR #33037](https://github.com/microsoft/fluentui/pull/33037) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.70](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.70)
+
+Fri, 25 Oct 2024 20:54:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.69..@fluentui/web-components_v3.0.0-beta.70)
+
+### Changes
+
+- fix: move proper menu positioning for split button into component css ([PR #33140](https://github.com/microsoft/fluentui/pull/33140) by machi@microsoft.com)
+- fix: change to new css anchor positioning properties ([PR #33139](https://github.com/microsoft/fluentui/pull/33139) by machi@microsoft.com)
+
+## [3.0.0-beta.69](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.69)
+
+Tue, 15 Oct 2024 04:07:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.68..@fluentui/web-components_v3.0.0-beta.69)
+
+### Changes
+
+- Fix: menu-item emit current state when checked change event fires ([PR #33029](https://github.com/microsoft/fluentui/pull/33029) by jes@microsoft.com)
+- fix prefers-reduced-motion media query in button ([PR #33034](https://github.com/microsoft/fluentui/pull/33034) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.68](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.68)
 

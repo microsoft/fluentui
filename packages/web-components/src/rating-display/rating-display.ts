@@ -1,5 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { swapStates } from '../utils/element-internals.js';
 import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
 /**
@@ -171,8 +171,7 @@ export class RatingDisplay extends BaseRatingDisplay {
    * @param next - The next state
    */
   public colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void {
-    if (prev) toggleState(this.elementInternals, prev, false);
-    if (next) toggleState(this.elementInternals, next, true);
+    swapStates(this.elementInternals, prev, next, RatingDisplayColor);
   }
 
   /**
@@ -192,9 +191,8 @@ export class RatingDisplay extends BaseRatingDisplay {
    * @param prev - The previous state
    * @param next - The next state
    */
-  public sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void {
-    if (prev) toggleState(this.elementInternals, prev, false);
-    if (next) toggleState(this.elementInternals, next, true);
+  public sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined) {
+    swapStates(this.elementInternals, prev, next, RatingDisplaySize);
   }
 
   /**

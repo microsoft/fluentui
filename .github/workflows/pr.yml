@@ -1,0 +1,120 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+concurrency:
+  # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PREFER_TS_NODE: true
+  NX_VERBOSE_LOGGING: true
+
+  BROWSERSLIST_IGNORE_OLD_DATA: true
+
+  DEPLOY_HOST: fluentuipr.z22.web.core.windows.net
+  DEPLOY_URL: https://fluentuipr.z22.web.core.windows.net/${{ github.event.pull_request.number || github.ref_name }}
+  DEPLOY_BASE_PATH: ${{ github.event.pull_request.number != '' && format('pull/{0}', github.event.pull_request.number) || format('heads/{0}', github.ref_name) }}
+
+jobs:
+  main:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: macos-14-xlarge
+    permissions:
+      contents: 'read'
+      actions: 'read'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
+
+      - run: yarn install --frozen-lockfile
+
+      - name: Workspace lint
+        run: |
+          yarn nx run workspace-plugin:check-graph
+          yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --verify
+          yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies --verify
+
+      - name: Type-check just.config.ts files
+        run: |
+          # following packages need to be build in advance:
+          # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts,
+          # @fluentui/digest is used within packages/fluentui/perf-test-northstar/just.config.ts, thus it needs to be build in advance
+          #
+          # NOTE: we are running this via nx in order to get cache hits later on
+          yarn nx run-many -t build -p api-docs digest
+          yarn tsc -p ./tsconfig.just-scripts-configs.json
+
+      - name: 'check packages: installed dependencies versions'
+        run: |
+          yarn check:installed-dependencies-versions
+
+      - name: check formatting
+        run: |
+          yarn nx format:check --base origin/master
+
+      - name: build, test, lint, test-ssr (affected)
+        run: |
+          FLUENT_JEST_WORKER=2 yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --nxBail
+
+      - name: 'Check for unstaged changes'
+        run: |
+          git status --porcelain
+          git diff-index --quiet HEAD -- || exit 1
+
+  e2e:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    # TODO: switch to macos once problematic tests are fixed
+    # https://github.com/microsoft/fluentui/issues/33173
+    # https://github.com/microsoft/fluentui/issues/33172
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      actions: 'read'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
+
+      - run: yarn install --frozen-lockfile
+
+      - name: Install Playwright dependencies
+        run: yarn playwright install --with-deps
+
+      - name: Verify Cypress install
+        run: yarn cypress verify
+
+      - name: Cypress/Playwright E2E tests
+        run: yarn nx affected -t e2e --nxBail --parallel 1

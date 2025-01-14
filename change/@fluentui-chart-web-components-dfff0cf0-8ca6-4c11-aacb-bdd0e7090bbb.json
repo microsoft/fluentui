@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Create chart web components. Includes donut chart and horizontal bar chart",
+  "packageName": "@fluentui/chart-web-components",
+  "email": "98592573+AtishayMsft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

@@ -2,6 +2,336 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 13 Jan 2025 07:21:22 GMT",
+      "tag": "@fluentui/react_v8.122.6",
+      "version": "8.122.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "74641ca04daeda5a6cd644513351d675ccd4dbad",
+            "comment": "fix: Remove deprecation warning from Callout's preventDismissOnResize and similar props"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2025 07:21:37 GMT",
+      "tag": "@fluentui/react_v8.122.5",
+      "version": "8.122.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "8f763922d713d9ccd35e65db07206c10b170fafd",
+            "comment": "chore: Adding key to inner slot in Stack component."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Jan 2025 07:21:31 GMT",
+      "tag": "@fluentui/react_v8.122.4",
+      "version": "8.122.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7bb97f178d73a470dc438a2b19d165d9d0bd4b51",
+            "comment": "fix(Combobox and Dropdown): add aria-invalid when errorMessage is set"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Dec 2024 07:21:29 GMT",
+      "tag": "@fluentui/react_v8.122.3",
+      "version": "8.122.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "681a95a732fe385a70b8d4537dc489acbcd1c21e",
+            "comment": "fix: Add event listener to Panel in order to update the footer's sticky property correctly when content changes dynamically."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Dec 2024 07:22:58 GMT",
+      "tag": "@fluentui/react_v8.122.2",
+      "version": "8.122.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.23",
+            "commit": "7b4a3785c6c1d7c207602cad0a1795e3df9122ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.57",
+            "commit": "7b4a3785c6c1d7c207602cad0a1795e3df9122ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.9.20",
+            "commit": "7b4a3785c6c1d7c207602cad0a1795e3df9122ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.11.6",
+            "commit": "7b4a3785c6c1d7c207602cad0a1795e3df9122ee"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.64",
+            "commit": "7b4a3785c6c1d7c207602cad0a1795e3df9122ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Dec 2024 07:20:00 GMT",
+      "tag": "@fluentui/react_v8.122.1",
+      "version": "8.122.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "00fada2af3a290e83ba3812ab3440b5ae8a903cf",
+            "comment": "chore: update react.api.md"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Dec 2024 07:23:12 GMT",
+      "tag": "@fluentui/react_v8.122.1",
+      "version": "8.122.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.22",
+            "commit": "6dfe27e984d9633129c79178b40c6a0a189e29c7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.56",
+            "commit": "6dfe27e984d9633129c79178b40c6a0a189e29c7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.9.19",
+            "commit": "6dfe27e984d9633129c79178b40c6a0a189e29c7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.11.5",
+            "commit": "6dfe27e984d9633129c79178b40c6a0a189e29c7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Dec 2024 07:22:32 GMT",
+      "tag": "@fluentui/react_v8.122.0",
+      "version": "8.122.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tpalacino@users.noreply.github.com",
+            "package": "@fluentui/react",
+            "commit": "53dd771e70338065810404663cd6219d1b54c1e2",
+            "comment": "fix: Added label, required, and error properties to BasePicker."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 Nov 2024 07:21:17 GMT",
+      "tag": "@fluentui/react_v8.121.13",
+      "version": "8.121.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b1d0ddd4c97b6fffd8ba5045c24c9a232cdaf1ff",
+            "comment": "fix: Left-aligning menu items in Pivot's overflow menu."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Nov 2024 07:21:52 GMT",
+      "tag": "@fluentui/react_v8.121.12",
+      "version": "8.121.12",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "e1b642f5460a740fe84be00b0e336ca0bdc33dbe",
+            "comment": "chore: use consistent react imports"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Nov 2024 07:22:07 GMT",
+      "tag": "@fluentui/react_v8.121.12",
+      "version": "8.121.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "895e9a6459cdd42e4acc1ef5c82f8b3223ea1a92",
+            "comment": "fix: Adding high contrast selector to SplitButton's menu button styles so that the styles do not bleed when high contrast mode is not active."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Nov 2024 01:04:05 GMT",
+      "tag": "@fluentui/react_v8.121.11",
+      "version": "8.121.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "dcd2cedb00e2fc7388b654c2fe9b6ae73b9e9a7b",
+            "comment": "fix(v8 SwatchColorPicker): Add forced-color-adjust to gradients"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 Nov 2024 07:08:32 GMT",
+      "tag": "@fluentui/react_v8.121.10",
+      "version": "8.121.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a8ed90c7c3cd0005ff40e6cde8b06f7f54124870",
+            "comment": "fix: Left-aligning SuggestionItem's contents so they do not move and shift on hover."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Nov 2024 07:21:46 GMT",
+      "tag": "@fluentui/react_v8.121.9",
+      "version": "8.121.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "2878503f1381bfa2aaf6900fba4170d9db1b74a6",
+            "comment": "fix(v8 DatePicker): Add aria-required to required DatePickers"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Nov 2024 07:23:21 GMT",
+      "tag": "@fluentui/react_v8.121.8",
+      "version": "8.121.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.21",
+            "commit": "eb5c486ba272d82f8661da4d5deea5a1291ca5aa"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.55",
+            "commit": "eb5c486ba272d82f8661da4d5deea5a1291ca5aa"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.9.18",
+            "commit": "eb5c486ba272d82f8661da4d5deea5a1291ca5aa"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.11.4",
+            "commit": "eb5c486ba272d82f8661da4d5deea5a1291ca5aa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Oct 2024 07:22:06 GMT",
+      "tag": "@fluentui/react_v8.121.7",
+      "version": "8.121.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "62e24ae1ca536ba1e4d3ba752bc4dfdcfd3d1584",
+            "comment": "fix(v8 ColorSwatchPicker): Add border to white color in high contrast mode"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Oct 2024 07:23:06 GMT",
+      "tag": "@fluentui/react_v8.121.6",
+      "version": "8.121.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "263ead68a05ac23499be137b41e02a5579522c08",
+            "comment": "fix: make button children rendering equal for both button and button as anchor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Oct 2024 07:22:38 GMT",
+      "tag": "@fluentui/react_v8.121.5",
+      "version": "8.121.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1696fc2aa330058faefe4daa299ad6c936d3a6e1",
+            "comment": "fix: Keytip passes through describedBy id if passed in"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Oct 2024 16:51:54 GMT",
       "tag": "@fluentui/react_v8.121.4",
       "version": "8.121.4",

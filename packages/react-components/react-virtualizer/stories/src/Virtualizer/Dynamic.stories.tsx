@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Virtualizer, useDynamicVirtualizerMeasure, VirtualizerContextProvider } from '@fluentui/react-virtualizer';
 import type { DynamicVirtualizerContextProps } from '@fluentui/react-virtualizer';
 import { makeStyles } from '@fluentui/react-components';
-import { useCallback, useRef } from 'react';
 
 const smallSize = 100;
 const largeSize = 200;
@@ -14,6 +13,7 @@ const useStyles = makeStyles({
     width: '100%',
     height: '100%',
     maxHeight: '750px',
+    gap: '20px',
   },
   child: {
     height: `${smallSize}px`,
@@ -31,12 +31,11 @@ const useStyles = makeStyles({
 
 export const Dynamic = () => {
   const [currentIndex, setCurrentIndex] = React.useState(-1);
-  const [currentPosition, setCurrentPosition] = React.useState(0);
   const childProgressiveSizes = React.useRef<number[]>([]);
   const [flag, toggleFlag] = React.useState(false);
   const styles = useStyles();
   const childLength = 1000;
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
 
   React.useEffect(() => {
     updateTimeout();
@@ -51,7 +50,7 @@ export const Dynamic = () => {
     }, 2000);
   };
 
-  const getSizeForIndex = useCallback(
+  const getSizeForIndex = React.useCallback(
     (index: number): number => {
       const sizeValue1 = flag ? largeSize : smallSize;
       const sizeValue2 = flag ? smallSize : largeSize;
@@ -65,17 +64,16 @@ export const Dynamic = () => {
   const contextState: DynamicVirtualizerContextProps = {
     contextIndex: currentIndex,
     setContextIndex: setCurrentIndex,
-    contextPosition: currentPosition,
-    setContextPosition: setCurrentPosition,
     childProgressiveSizes,
   };
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useDynamicVirtualizerMeasure({
-    defaultItemSize: 100,
-    getItemSize: getSizeForIndex,
-    numItems: childLength,
-    virtualizerContext: contextState,
-  });
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef, updateScrollPosition } =
+    useDynamicVirtualizerMeasure({
+      defaultItemSize: 100,
+      getItemSize: getSizeForIndex,
+      numItems: childLength,
+      virtualizerContext: contextState,
+    });
 
   return (
     <VirtualizerContextProvider value={contextState}>
@@ -89,8 +87,10 @@ export const Dynamic = () => {
           itemSize={100}
           containerSizeRef={containerSizeRef}
           virtualizerContext={contextState}
+          updateScrollPosition={updateScrollPosition}
+          gap={20}
         >
-          {useCallback(
+          {React.useCallback(
             (index: number) => {
               const sizeValue = getSizeForIndex(index);
               const sizeClass = sizeValue === smallSize ? styles.child : styles.childLarge;

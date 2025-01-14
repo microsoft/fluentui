@@ -2,7 +2,7 @@
 
 exports[`TeachingPopoverHeader renders a default state 1`] = `
 <div>
-  <h3
+  <div
     class="fui-TeachingPopoverHeader"
   >
     <div
@@ -45,6 +45,6 @@ exports[`TeachingPopoverHeader renders a default state 1`] = `
         />
       </svg>
     </button>
-  </h3>
+  </div>
 </div>
 `;

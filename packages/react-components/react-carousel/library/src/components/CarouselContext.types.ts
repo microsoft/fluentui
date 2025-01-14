@@ -3,10 +3,12 @@ import * as React from 'react';
 
 import type { CarouselUpdateData } from '../Carousel';
 
-export type CarouselIndexChangeData = EventData<
-  'click' | 'focus',
-  React.FocusEvent | React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
-> & {
+export type CarouselIndexChangeData = (
+  | EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>>
+  | EventData<'focus', React.FocusEvent>
+  | EventData<'drag', PointerEvent | MouseEvent>
+  | EventData<'autoplay', Event>
+) & {
   /**
    * The index to be set after event has occurred.
    */
@@ -27,9 +29,12 @@ export type CarouselContextValue = {
     jump?: boolean,
   ) => void;
   subscribeForValues: (listener: (data: CarouselUpdateData) => void) => () => void;
-  enableAutoplay: (autoplay: boolean) => void;
+  enableAutoplay: (autoplay: boolean, temporary?: boolean) => void;
   resetAutoplay: () => void;
+  // Container with controls passed to carousel engine
   containerRef?: React.RefObject<HTMLDivElement>;
+  // Viewport without controls used for interactive functionality (draggable, pause autoplay etc.)
+  viewportRef?: React.RefObject<HTMLDivElement>;
 };
 
 /**

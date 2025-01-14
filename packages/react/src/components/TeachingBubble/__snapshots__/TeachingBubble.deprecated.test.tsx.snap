@@ -168,6 +168,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #ffffff;
                   border-color: #ffffff;
                   border-radius: 2px;
@@ -175,10 +176,11 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   box-sizing: border-box;
                   color: #0078d4;
                   cursor: pointer;
-                  display: inline-block;
+                  display: inline-flex;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  justify-content: center;
                   min-height: 32px;
                   min-width: 80px;
                   outline: transparent;
@@ -324,7 +326,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__3"
+                  id="id__4"
                 >
                   Test Primary Button
                 </span>
@@ -340,6 +342,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #0078d4;
                   border-color: #ffffff;
                   border-radius: 2px;
@@ -347,10 +350,11 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   box-sizing: border-box;
                   color: #323130;
                   cursor: pointer;
-                  display: inline-block;
+                  display: inline-flex;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  justify-content: center;
                   min-height: 32px;
                   min-width: 80px;
                   outline: transparent;
@@ -477,7 +481,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__6"
+                  id="id__7"
                 >
                   Test Secondary Button
                 </span>
@@ -494,17 +498,19 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 0px;
               border: none;
               box-sizing: border-box;
               color: #ffffff;
               cursor: pointer;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               margin-bottom: 0;
               margin-left: 0;
               margin-right: 15px;

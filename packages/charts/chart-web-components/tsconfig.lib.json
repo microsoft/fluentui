@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "NodeNext",
+    "lib": ["ESNext", "DOM"],
+    "declaration": true,
+    "declarationDir": "dist/dts",
+    "outDir": "dist/esm",
+    "importHelpers": true
+  },
+  "include": ["src"],
+  "exclude": ["**/*.stories.*", "**/*.test.*", "**/*.spec.*"]
+}

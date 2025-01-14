@@ -110,12 +110,14 @@ export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonS
           },
         },
         '.ms-Button--primary + .ms-Button[aria-expanded="true"]': {
-          backgroundColor: 'Highlight',
-          borderColor: 'Highlight',
-          color: 'HighlightText',
-          ...getHighContrastNoAdjustStyle(),
-          '.ms-Button-menuIcon': {
+          [HighContrastSelector]: {
+            backgroundColor: 'Highlight',
+            borderColor: 'Highlight',
             color: 'HighlightText',
+            ...getHighContrastNoAdjustStyle(),
+            '.ms-Button-menuIcon': {
+              color: 'HighlightText',
+            },
           },
         },
         '.ms-Button.is-disabled': {

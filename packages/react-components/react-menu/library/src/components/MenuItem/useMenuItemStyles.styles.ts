@@ -98,6 +98,7 @@ const useIconBaseStyles = makeResetStyles({
   alignItems: 'center',
   display: 'inline-flex',
   justifyContent: 'center',
+  flexShrink: 0,
 });
 
 const useSubmenuIndicatorBaseStyles = makeResetStyles({

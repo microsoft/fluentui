@@ -1,85 +1,64 @@
-import { once } from 'events';
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
+import type { MenuItem } from '../menu-item/menu-item.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
-import { MenuItem } from '../menu-item/menu-item.js';
 
 test.describe('Menu', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-menulist--menu-list'));
-
-    await page.waitForFunction(() => customElements.whenDefined('fluent-menu-list'));
+  test.use({
+    tagName: 'fluent-menu-list',
+    waitFor: ['fluent-menu-item'],
+    innerHTML: /* html */ `
+      <fluent-menu-item>Menu item 1</fluent-menu-item>
+      <fluent-menu-item>Menu item 2</fluent-menu-item>
+      <fluent-menu-item>Menu item 3</fluent-menu-item>
+      <fluent-menu-item>Menu item 4</fluent-menu-item>
+    `,
   });
 
-  test('should have a role of `menu`', async ({ page }) => {
-    const element = page.locator('fluent-menu-list');
-
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
-        <fluent-menu-item>Menu item</fluent-menu-item>
-      </fluent-menu-list>
-    `);
+  test('should have a role of `menu`', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'menu');
   });
 
-  test('should set `tabindex` of the first focusable menu item to 0', async ({ page }) => {
-    const element = page.locator('fluent-menu-list');
+  test('should set `tabindex` of the first focusable menu item to 0', async ({ fastPage }) => {
+    const { element } = fastPage;
     const menuItems = element.locator('fluent-menu-item');
-
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
-        <fluent-menu-item>Menu item</fluent-menu-item>
-        <fluent-menu-item>Menu item</fluent-menu-item>
-      </fluent-menu-list>
-    `);
 
     await expect(menuItems.first()).toHaveAttribute('tabindex', '0');
   });
 
-  test('should NOT set any `tabindex` on non-menu-item elements', async ({ page }) => {
-    const element = page.locator('fluent-menu-list');
+  test('should NOT set any `tabindex` on non-menu-item elements', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <fluent-menu-item>Menu item</fluent-menu-item>
         <div class="divider">Not a menu item</div>
-      </fluent-menu-list>
-    `);
+      `,
+    });
 
     const divider = element.locator('div.divider');
 
-    expect(await divider.getAttribute('tabindex')).toBeNull();
+    await expect(divider).not.toHaveAttribute('tabindex');
   });
 
-  test('should focus on first menu item when focus is called', async ({ page }) => {
-    const element = page.locator('fluent-menu-list');
-    const menuItems = element.locator('fluent-menu-item');
+  test('should focus on first menu item when `focus()` is called', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const firstItem = element.locator('fluent-menu-item').first();
 
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
-        <fluent-menu-item>Menu item</fluent-menu-item>
-        <fluent-menu-item>Menu item</fluent-menu-item>
-      </fluent-menu-list>
-    `);
-
-    await element.waitFor({ state: 'attached' });
-
-    await expect(menuItems.first()).toHaveAttribute('tabindex', '0');
+    await expect(firstItem).toHaveAttribute('tabindex', '0');
 
     await element.evaluate(node => {
       node.focus();
     });
 
-    await expect(menuItems.first()).toBeFocused();
+    await expect(firstItem).toBeFocused();
   });
 
-  test('should not throw when focus is called with no items', async ({ page }) => {
-    const element = page.locator('fluent-menu-list');
+  test('should not throw when `focus()` is called with no items', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-menu-list></fluent-menu-list>
-    `);
+    await fastPage.setTemplate({ innerHTML: '' });
 
     await element.evaluate(node => {
       node.focus();
@@ -88,10 +67,10 @@ test.describe('Menu', () => {
     await expect(element).not.toBeFocused();
   });
 
-  test('should not throw when focus is called before initialization is complete', async ({ page }) => {
-    const element = page.locator('fluent-menu-list');
+  test('should not throw when `focus()` is called before initialization is complete', async ({ fastPage, page }) => {
+    const { element } = fastPage;
 
-    await page.setContent('');
+    await fastPage.setTemplate('');
 
     await page.evaluate(() => {
       const menu = document.createElement('fluent-menu-list');
@@ -104,16 +83,16 @@ test.describe('Menu', () => {
     await expect(element).not.toBeFocused();
   });
 
-  test('should focus disabled items', async ({ page }) => {
-    const element = page.locator('fluent-menu-list');
+  test('should focus disabled items', async ({ fastPage }) => {
+    const { element } = fastPage;
     const menuItems = element.locator('fluent-menu-item');
 
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <fluent-menu-item disabled>Menu item</fluent-menu-item>
         <fluent-menu-item>Menu item</fluent-menu-item>
-      </fluent-menu-list>
-    `);
+      `,
+    });
 
     const firstMenuItem = menuItems.first();
 
@@ -127,32 +106,30 @@ test.describe('Menu', () => {
     await expect(firstMenuItem).toBeFocused();
   });
 
-  for (const role in MenuItemRole) {
-    test(`should accept elements as focusable child with "${role}" role`, async ({ page }) => {
-      await page.setContent(/* html */ `
-        <fluent-menu-list>
-          <div role="${role}">Menu item</div>
-        </fluent-menu-list>
-      `);
+  for (const role of Object.values(MenuItemRole)) {
+    test(`should accept elements as focusable child with "${role}" role`, async ({ fastPage, page }) => {
+      await fastPage.setTemplate({
+        innerHTML: /* html */ ` <div role="${role}">Menu item</div> `,
+      });
 
-      await expect(page.getByRole(role as MenuItemRole).first()).toHaveAttribute('tabindex', '0');
+      await expect(page.getByRole(role)).toHaveAttribute('tabindex', '0');
     });
   }
 
-  test('should not navigate to hidden items when changed after connection', async ({ page }) => {
-    const element = page.locator('fluent-menu-list');
+  test('should not navigate to hidden items when changed after connection', async ({ fastPage }) => {
+    const { element } = fastPage;
     const menuItems = element.locator('fluent-menu-item');
 
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <fluent-menu-item>Menu item 1</fluent-menu-item>
         <fluent-menu-item>Menu item 2</fluent-menu-item>
         <fluent-menu-item>Menu item 3</fluent-menu-item>
         <fluent-menu-item>Menu item 4</fluent-menu-item>
-      </fluent-menu-list>
-    `);
+      `,
+    });
 
-    await expect.soft(menuItems).toHaveCount(4);
+    await expect(menuItems).toHaveCount(4);
 
     await menuItems.nth(2).evaluate(node => node.toggleAttribute('hidden'));
 
@@ -195,24 +172,20 @@ test.describe('Menu', () => {
     await expect(menuItems.nth(2)).toBeFocused();
   });
 
-  test('should treat all checkbox menu items as individually selectable items', async ({ page }) => {
-    const element = page.locator('fluent-menu-list');
+  test('should treat all checkbox menu items as individually selectable items', async ({ fastPage }) => {
+    const { element } = fastPage;
     const menuItems = element.locator('fluent-menu-item');
 
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <fluent-menu-item role="menuitemcheckbox">Menu item 1</fluent-menu-item>
         <fluent-menu-item role="menuitemcheckbox">Menu item 2</fluent-menu-item>
         <fluent-menu-item role="menuitemcheckbox">Menu item 3</fluent-menu-item>
         <fluent-menu-item role="menuitemcheckbox">Menu item 4</fluent-menu-item>
-      </fluent-menu-list>
-    `);
+      `,
+    });
 
-    const menuItemsCount = await menuItems.count();
-
-    for (let i = 0; i < menuItemsCount; i++) {
-      const item = menuItems.nth(i);
-
+    for (const item of await menuItems.all()) {
       await expect(item).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
       await item.click();
@@ -226,18 +199,18 @@ test.describe('Menu', () => {
   });
 
   test(`should treat all radio menu items as a radiogroup and limit selection to one item within the group`, async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-menu-list');
+    const { element } = fastPage;
     const menuItems = element.locator('fluent-menu-item');
 
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <fluent-menu-item role="menuitemradio">Menu item 1</fluent-menu-item>
         <fluent-menu-item role="menuitemradio">Menu item 2</fluent-menu-item>
         <fluent-menu-item role="menuitemradio">Menu item 3</fluent-menu-item>
-      </fluent-menu-list>
-    `);
+      `,
+    });
 
     await menuItems.first().click();
 
@@ -265,20 +238,20 @@ test.describe('Menu', () => {
   });
 
   test('should use elements with `[role="separator"]` to divide radio menu items into different radio groups', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-menu-list');
+    const { element } = fastPage;
     const menuItems = element.locator('fluent-menu-item');
 
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <fluent-menu-item role="menuitemradio">Menu item 1</fluent-menu-item>
         <fluent-menu-item role="menuitemradio">Menu item 2</fluent-menu-item>
         <fluent-divider role="separator"></fluent-divider>
         <fluent-menu-item role="menuitemradio">Menu item 3</fluent-menu-item>
         <fluent-menu-item role="menuitemradio">Menu item 4</fluent-menu-item>
-      </fluent-menu-list>
-    `);
+      `,
+    });
 
     await test.step('should select the first item in the first group', async () => {
       await menuItems.nth(0).click();
@@ -317,20 +290,9 @@ test.describe('Menu', () => {
     });
   });
 
-  test('should navigate the menu on arrow up/down keys', async ({ page }) => {
-    const element = page.locator('fluent-menu-list');
+  test('should navigate the menu on arrow up/down keys', async ({ fastPage }) => {
+    const { element } = fastPage;
     const menuItems = element.locator('fluent-menu-item');
-
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
-        <fluent-menu-item>Menu item 1</fluent-menu-item>
-        <fluent-menu-item>Menu item 2</fluent-menu-item>
-        <fluent-menu-item>Menu item 3</fluent-menu-item>
-        <fluent-menu-item>Menu item 4</fluent-menu-item>
-      </fluent-menu-list>
-    `);
-
-    await element.waitFor({ state: 'attached' });
 
     await element.evaluate(node => {
       node.focus();
@@ -354,13 +316,13 @@ test.describe('Menu', () => {
   });
 
   test('should navigate to submenu, close it with escape key, and return focus to the first menu item', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-menu-list');
+    const { element } = fastPage;
     const menuItems = element.locator('fluent-menu-item');
 
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <fluent-menu-item
           >Menu item 1
           <fluent-menu-list slot="submenu">
@@ -369,8 +331,8 @@ test.describe('Menu', () => {
             <fluent-menu-item>Menu item 1.3</fluent-menu-item>
           </fluent-menu-list>
         </fluent-menu-item>
-      </fluent-menu-list>
-    `);
+      `,
+    });
 
     await element.first().evaluate(node => {
       node.focus();
@@ -385,18 +347,18 @@ test.describe('Menu', () => {
     await expect(menuItems.first()).toBeFocused();
   });
 
-  test('should not navigate to hidden items when set before connection', async ({ page }) => {
-    const element = page.locator('fluent-menu-list');
+  test('should not navigate to hidden items when set before connection', async ({ fastPage }) => {
+    const { element } = fastPage;
     const menuItems = element.locator('fluent-menu-item');
 
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <fluent-menu-item>Menu item 1</fluent-menu-item>
         <fluent-menu-item hidden="hidden">Menu item 2</fluent-menu-item>
         <fluent-menu-item>Menu item 3</fluent-menu-item>
         <fluent-menu-item>Menu item 4</fluent-menu-item>
-      </fluent-menu-list>
-    `);
+      `,
+    });
 
     await element.evaluate(node => {
       node.focus();
@@ -422,19 +384,10 @@ test.describe('Menu', () => {
   });
 
   test('should set the data-indent attribute to 0 correctly on all MenuItem elements when role of menuitem and not content in start slot', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-menu-list');
+    const { element } = fastPage;
     const menuItems = element.locator('fluent-menu-item');
-
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
-        <fluent-menu-item>Menu Item 1</fluent-menu-item>
-        <fluent-menu-item>Menu item 2</fluent-menu-item>
-        <fluent-menu-item>Menu item 3</fluent-menu-item>
-        <fluent-menu-item>Menu item 4</fluent-menu-item>
-      </fluent-menu-list>
-    `);
 
     for (const item of await menuItems.all()) {
       await expect(item).toHaveAttribute('data-indent', '0');
@@ -442,19 +395,19 @@ test.describe('Menu', () => {
   });
 
   test('should set the data-indent attribute to 1 correctly on all MenuItem elements when a menuitem in the menu as a role of menuitemcheckbox', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-menu-list');
+    const { element } = fastPage;
     const menuItems = element.locator('fluent-menu-item');
 
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <fluent-menu-item role="menuitemcheckbox"></fluent-menu-item>
         <fluent-menu-item>Menu item 2</fluent-menu-item>
         <fluent-menu-item>Menu item 3</fluent-menu-item>
         <fluent-menu-item>Menu item 4</fluent-menu-item>
-      </fluent-menu-list>
-    `);
+      `,
+    });
 
     for (const item of await menuItems.all()) {
       await expect(item).toHaveAttribute('data-indent', '1');
@@ -462,19 +415,19 @@ test.describe('Menu', () => {
   });
 
   test('should set the data-indent attribute to 1 correctly on all MenuItem elements when a menuitem in the menu as a role of menuitemradio', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-menu-list');
+    const { element } = fastPage;
     const menuItems = element.locator('fluent-menu-item');
 
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <fluent-menu-item role="menuitemradio"></fluent-menu-item>
         <fluent-menu-item>Menu item 2</fluent-menu-item>
         <fluent-menu-item>Menu item 3</fluent-menu-item>
         <fluent-menu-item>Menu item 4</fluent-menu-item>
-      </fluent-menu-list>
-    `);
+      `,
+    });
 
     for (const item of await menuItems.all()) {
       await expect(item).toHaveAttribute('data-indent', '1');
@@ -482,13 +435,13 @@ test.describe('Menu', () => {
   });
 
   test('should set the data-indent attribute to 2 correctly on all MenuItem elements when a menuitem in the menu has a role of menuitemcheckbox and content in the start slot', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-menu-list');
+    const { element } = fastPage;
     const menuItems = element.locator('fluent-menu-item');
 
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <fluent-menu-item role="menuitemcheckbox">
           Item 1
           <span slot="start" class="start">Icon</span>
@@ -496,8 +449,8 @@ test.describe('Menu', () => {
         <fluent-menu-item>Menu item 2</fluent-menu-item>
         <fluent-menu-item>Menu item 3</fluent-menu-item>
         <fluent-menu-item>Menu item 4</fluent-menu-item>
-      </fluent-menu-list>
-    `);
+      `,
+    });
 
     for (const item of await menuItems.all()) {
       await expect(item).toHaveAttribute('data-indent', '2');
@@ -505,19 +458,19 @@ test.describe('Menu', () => {
   });
 
   test('should set the data-indent attribute to 2 correctly on all MenuItem elements when a menuitem in the menu has a role of menuitemradio and content in the start slot', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-menu-list');
+    const { element } = fastPage;
     const menuItems = element.locator('fluent-menu-item');
 
-    await page.setContent(/* html */ `
-      <fluent-menu-list>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <fluent-menu-item role="menuitemradio"> Item 1 <span slot="start" class="start">Icon</span> </fluent-menu-item>
         <fluent-menu-item>Menu item 2</fluent-menu-item>
         <fluent-menu-item>Menu item 3</fluent-menu-item>
         <fluent-menu-item>Menu item 4</fluent-menu-item>
-      </fluent-menu-list>
-    `);
+      `,
+    });
 
     for (const item of await menuItems.all()) {
       await expect(item).toHaveAttribute('data-indent', '2');
@@ -525,17 +478,17 @@ test.describe('Menu', () => {
   });
 
   test.describe('`change` event', () => {
-    test('should emit `change` event when `checked` property changed', async ({ page }) => {
-      const element = page.locator('fluent-menu-list');
+    test('should emit `change` event when `checked` property changed', async ({ fastPage }) => {
+      const { element } = fastPage;
       const menuItems = element.locator('fluent-menu-item');
 
-      await page.setContent(/* html */ `
-      <fluent-menu-list>
-        <fluent-menu-item role="menuitemradio">Menu Item 1</fluent-menu-item>
-        <fluent-menu-item>Menu item 2</fluent-menu-item>
-        <fluent-menu-item>Menu item 3</fluent-menu-item>
-        <fluent-menu-item>Menu item 4</fluent-menu-item>
-      </fluent-menu-list>
+      await fastPage.setTemplate(/* html */ `
+        <fluent-menu-list>
+          <fluent-menu-item role="menuitemradio">Menu Item 1</fluent-menu-item>
+          <fluent-menu-item>Menu item 2</fluent-menu-item>
+          <fluent-menu-item>Menu item 3</fluent-menu-item>
+          <fluent-menu-item>Menu item 4</fluent-menu-item>
+        </fluent-menu-list>
       `);
 
       const [wasChanged] = await Promise.all([
@@ -552,17 +505,17 @@ test.describe('Menu', () => {
       expect(wasChanged).toEqual(true);
     });
 
-    test('should emit change event when menu-item checked and unchecked', async ({ page }) => {
-      const element = page.locator('fluent-menu-list');
+    test('should emit change event when menu-item checked and unchecked', async ({ fastPage }) => {
+      const { element } = fastPage;
       const menuItems = element.locator('fluent-menu-item');
 
-      await page.setContent(/* html */ `
-      <fluent-menu-list>
-        <fluent-menu-item role="menuitemradio">Menu Item 1</fluent-menu-item>
-        <fluent-menu-item checked role="menuitemradio">Menu item 2</fluent-menu-item>
-        <fluent-menu-item role="menuitemradio">Menu item 3</fluent-menu-item>
-        <fluent-menu-item role="menuitemradio">Menu item 4</fluent-menu-item>
-      </fluent-menu-list>
+      await fastPage.setTemplate(/* html */ `
+        <fluent-menu-list>
+          <fluent-menu-item role="menuitemradio">Menu Item 1</fluent-menu-item>
+          <fluent-menu-item checked role="menuitemradio">Menu item 2</fluent-menu-item>
+          <fluent-menu-item role="menuitemradio">Menu item 3</fluent-menu-item>
+          <fluent-menu-item role="menuitemradio">Menu item 4</fluent-menu-item>
+        </fluent-menu-list>
       `);
 
       let wasChanged = menuItems.nth(0).evaluate((node: MenuItem) => {

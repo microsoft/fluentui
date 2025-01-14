@@ -50,11 +50,6 @@ describe(`#getDependencies`, () => {
         Object {
           "dependencyType": "devDependencies",
           "isTopLevel": true,
-          "name": "scripts-tasks",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": true,
           "name": "eslint-plugin",
         },
         Object {
@@ -71,21 +66,6 @@ describe(`#getDependencies`, () => {
           "dependencyType": "devDependencies",
           "isTopLevel": true,
           "name": "scripts-api-extractor",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": false,
-          "name": "scripts-monorepo",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": false,
-          "name": "scripts-utils",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": false,
-          "name": "scripts-prettier",
         },
         Object {
           "dependencyType": "devDependencies",

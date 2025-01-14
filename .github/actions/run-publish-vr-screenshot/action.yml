@@ -1,0 +1,147 @@
+name: 'Run and Publish VR Screenshot'
+description: 'Runs and publishes visual regression screenshots'
+inputs:
+  fluentVersion:
+    description: 'Fluent version'
+    required: true
+    default: 'v8'
+  vrTestPackageName:
+    description: 'VR test package name'
+    required: true
+    default: 'vr-tests'
+  vrTestPackagePath:
+    description: 'VR test package path'
+    required: true
+    default: 'apps/vr-tests'
+  locationPrefix:
+    description: 'Location prefix'
+    required: true
+    default: 'fluentuiv8'
+  locationPostfix:
+    description: 'Location postfix'
+    required: true
+    default: 'vrscreenshotv8'
+  clientName:
+    description: 'Client name'
+    required: true
+    default: 'fluentuiv8'
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: nrwl/nx-set-shas@v4
+      with:
+        main-branch-name: 'master'
+
+    - uses: actions/setup-node@v4
+      with:
+        cache: 'yarn'
+        node-version: '20'
+
+    - run: yarn install --frozen-lockfile
+      shell: bash
+
+    - run: yarn playwright install --with-deps
+      shell: bash
+
+    - name: Check if vrTests should be skipped
+      shell: bash
+      run: |
+        isPR=${{ github.event_name == 'pull_request' }}
+        echo "isPR=$isPR" >> $GITHUB_ENV
+        if [[ $isPR == true ]]; then
+          packageAffected=$(yarn --silent check:affected --project ${{ inputs.vrTestPackageName }})
+          if [[ $packageAffected == false ]]; then
+            echo "In PR pipeline but NOT affecting test package. Skipping test run"
+            echo "vrTestSkip=yes" >> $GITHUB_ENV
+          else
+            echo "In PR pipeline and affecting test package. NOT Skipping test run"
+            echo "vrTestSkip=no" >> $GITHUB_ENV
+          fi
+        else
+          echo "Not in PR pipeline. NOT Skipping test run"
+          echo "vrTestSkip=no" >> $GITHUB_ENV
+        fi
+
+    - name: Run VR tests
+      if: ${{ env.vrTestSkip == 'no' }}
+      shell: bash
+      run: yarn nx run ${{ inputs.vrTestPackageName }}:test-vr --nxBail
+
+    - name: Collate Artifacts
+      if: ${{ env.vrTestSkip == 'no' }}
+      shell: bash
+      run: |
+        mkdir -p screenshots
+        cp -rf ${{ inputs.vrTestPackagePath }}/dist/screenshots/*.png screenshots/
+
+    - name: Upload VR screenshots
+      if: ${{ env.vrTestSkip == 'no' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: vrscreenshot${{ inputs.fluentVersion }}
+        retention-days: 1
+        path: screenshots
+
+    # ==========================================================
+    # STEPS BELOW WILL FAIL TO RUN ON GITHUB ACTIONS - see @TODOs
+    # ==========================================================
+    #
+    # @TODO: will need Federated Identity to be added to tool similarly like we have for monosize azure plugin https://github.com/microsoft/monosize/blob/main/packages/monosize-storage-azure/src/createTableClient.mts#L27
+    # - name: VR App - Create Policy
+    #   if: ${{ env.isPR == 'true' && env.vrTestSkip == 'no' }}
+    #   shell: bash
+    #   run: |
+    #     set -exuo pipefail
+    #     npx vr-approval-cli@0.4.11 create-policy --nonBlockingPipelines '{"${{ env.pipelineId }}":{"pipelineStatus": "PENDING","pipelineName": "${{ env.pipelineName }}"}}' --clientType 'FLUENTUI'
+    # env:
+    # VR_APP_API_URL: ${{ secrets.VR_APP_API_URL }}
+    # TENANT_ID: ${{ secrets.TenantId }}
+    # PRINCIPAL_CLIENT_ID: ${{ secrets.PrincipalClientId }}
+    # SERVICE_CONNECTION_ID: ${{ secrets.ServiceConnectionId }}
+    # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # @TODO: will need azure/login@v2 to be added to the workflow {@link file://./../../workflows/pr-website-deploy-comment.yml#49}
+    # - name: Run screenshotdiff
+    #   if: ${{ env.isPR == 'true' && env.vrTestSkip == 'no' }}
+    #   uses: azure/cli@v2
+    #   env:
+    # ciDefinitionId is set to 205 because that is the ID of the baseline pipeline (https://uifabric.visualstudio.com/fabricpublic/_build?definitionId=205) used by the master branch
+    # TODO: not sure how this will be used on GHA cc @evancharlton @TristanWatanabe
+    # CI_DEFINITION_ID: 205
+    # API_TOKEN: ${{ secrets.fabric-public-pipeline-access-PAT }}
+    # GITHUB_API_TOKEN: ${{ secrets.githubRepoStatusPAT }}
+    # VR_APP_API_URL: ${{ secrets.VR_APP_API_URL }}
+    # STORAGE_ACCOUNT_ID: ${{ secrets.StorageAccountId }}
+    # TENANT_ID: ${{ secrets.TenantId }}
+    # PRINCIPAL_CLIENT_ID: ${{ secrets.PrincipalClientId }}
+    # SERVICE_CONNECTION_ID: ${{ secrets.ServiceConnectionId }}
+    # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # with:
+    #   azcliversion: latest
+    #   inlineScript: |
+    #     npx vr-approval-cli@0.4.11 run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId ${{ env.CI_DEFINITION_ID }} --groupName ${{ env.pipelineName }} --locationPrefix ${{ inputs.locationPrefix }} --locationPostfix ${{ inputs.locationPostfix }} --pipelineId ${{ env.pipelineId }} --clientName ${{ inputs.clientName }} --threshold '0.04' --cumThreshold '1'
+
+    # ============
+    # NON PR STEPS
+    # ============
+
+    # @NOTE: this step runs via ADO from master branch only for now {@link file://./../../../azure-pipelines.vrt-baseline.yml }
+
+    # @TODO: will need azure/login@v2 to be added to the workflow {@link file://./../../workflows/pr-website-deploy-comment.yml#49}
+    # - name: Run screenshotdiff - update baseline (non PR)
+    # if: ${{ github.event_name != 'pull_request' }}
+    # uses: azure/cli@v2
+    # env:
+    # API_TOKEN: ${{ secrets.fabric-public-pipeline-access-PAT }}
+    # GITHUB_API_TOKEN: ${{ secrets.githubRepoStatusPAT }}
+    # VR_APP_API_URL: ${{ secrets.VR_APP_API_URL }}
+    # STORAGE_ACCOUNT_ID: ${{ secrets.StorageAccountId }}
+    # TENANT_ID: ${{ secrets.TenantId }}
+    # PRINCIPAL_CLIENT_ID: ${{ secrets.PrincipalClientId }}
+    # SERVICE_CONNECTION_ID: ${{ secrets.ServiceConnectionId }}
+    # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # with:
+    #   azcliversion: latest
+    #   inlineScript: |
+    #     npx vr-approval-cli@0.4.11 run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix ${{ inputs.locationPrefix }} --locationPostfix ${{ inputs.locationPostfix }} --pipelineId ${{ env.pipelineId }}

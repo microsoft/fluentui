@@ -128,7 +128,9 @@ export const baseButtonStyles = css`
   }
 
   @media screen and (prefers-reduced-motion: reduce) {
-    transition-duration: 0.01ms;
+    :host {
+      transition-duration: 0.01ms;
+    }
   }
 
   ::slotted(svg) {

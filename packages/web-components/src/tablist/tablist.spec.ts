@@ -1,29 +1,24 @@
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 import type { Tab } from '../tab/tab.js';
 import type { Tablist } from './tablist.js';
 import { TablistAppearance, TablistSize } from './tablist.options.js';
 
 test.describe('Tablist', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-tabs--tabs-default'));
-
-    await page.waitForFunction(() =>
-      Promise.all([customElements.whenDefined('fluent-tablist'), customElements.whenDefined('fluent-tab')]),
-    );
+  test.use({
+    tagName: 'fluent-tablist',
+    waitFor: ['fluent-tab'],
+    innerHTML: /* html */ `
+      <fluent-tab>Tab one</fluent-tab>
+      <fluent-tab>Tab two</fluent-tab>
+      <fluent-tab>Tab three</fluent-tab>
+    `,
   });
 
-  test('should reset tab indicator offset and scale for horizontal orientation after animation', async ({ page }) => {
-    const element = page.locator('fluent-tablist');
+  test('should reset tab indicator offset and scale for horizontal orientation after animation', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
     const tabs = element.locator('fluent-tab');
-
-    page.setContent(/* html */ `
-      <fluent-tablist>
-          <fluent-tab>Tab one</fluent-tab>
-          <fluent-tab>Tab two</fluent-tab>
-          <fluent-tab>Tab three</fluent-tab>
-      </fluent-tablist>
-    `);
 
     await tabs.nth(2).click();
 
@@ -32,18 +27,10 @@ test.describe('Tablist', () => {
     await expect(element).toHaveCSS('--tabIndicatorScale', '1');
   });
 
-  test('should animate the active tab indicator', async ({ page }) => {
-    const element = page.locator('fluent-tablist');
+  test('should animate the active tab indicator', async ({ fastPage }) => {
+    const { element } = fastPage;
     const tabs = element.locator('fluent-tab');
     const tab = tabs.nth(2);
-
-    page.setContent(/* html */ `
-      <fluent-tablist>
-          <fluent-tab>Tab one</fluent-tab>
-          <fluent-tab>Tab two</fluent-tab>
-          <fluent-tab>Tab three</fluent-tab>
-      </fluent-tablist>
-    `);
 
     await expect(tab).not.toHaveAttribute('data-animate');
 
@@ -52,16 +39,8 @@ test.describe('Tablist', () => {
     await expect(tab).toHaveAttribute('data-animate', 'true');
   });
 
-  test('should have reflect disabled attribute on control', async ({ page }) => {
-    const element = page.locator('fluent-tablist');
-
-    page.setContent(/* html */ `
-      <fluent-tablist>
-          <fluent-tab>Tab one</fluent-tab>
-          <fluent-tab>Tab two</fluent-tab>
-          <fluent-tab>Tab three</fluent-tab>
-      </fluent-tablist>
-    `);
+  test('should have reflect disabled attribute on control', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).not.toHaveAttribute('disabled');
 
@@ -72,47 +51,23 @@ test.describe('Tablist', () => {
     await expect(element).toHaveAttribute('disabled');
   });
 
-  test('should have role of `tablist`', async ({ page }) => {
-    const element = page.locator('fluent-tablist');
-
-    page.setContent(/* html */ `
-      <fluent-tablist>
-          <fluent-tab>Tab one</fluent-tab>
-          <fluent-tab>Tab two</fluent-tab>
-          <fluent-tab>Tab three</fluent-tab>
-      </fluent-tablist>
-    `);
+  test('should have role of `tablist`', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveAttribute('role', 'tablist');
   });
 
   test('should set a default orientation value of `horizontal` when `orientation` is not provided', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-tablist');
-
-    page.setContent(/* html */ `
-      <fluent-tablist>
-          <fluent-tab>Tab one</fluent-tab>
-          <fluent-tab>Tab two</fluent-tab>
-          <fluent-tab>Tab three</fluent-tab>
-      </fluent-tablist>
-    `);
+    const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('orientation', 'horizontal');
   });
 
-  test('should set an `id` attribute on the active tab when an `id` is provided', async ({ page }) => {
-    const element = page.locator('fluent-tablist');
+  test('should set an `id` attribute on the active tab when an `id` is provided', async ({ fastPage }) => {
+    const { element } = fastPage;
     const tabs = element.locator('fluent-tab');
-
-    page.setContent(/* html */ `
-      <fluent-tablist>
-          <fluent-tab>Tab one</fluent-tab>
-          <fluent-tab>Tab two</fluent-tab>
-          <fluent-tab>Tab three</fluent-tab>
-      </fluent-tablist>
-    `);
 
     const tabCount = await tabs.count();
 
@@ -129,18 +84,10 @@ test.describe('Tablist', () => {
 
   test.describe('`id` NOT provided', () => {
     test('should set an `id` attribute on tab items with a unique ID when an `id` is NOT provided', async ({
-      page,
+      fastPage,
     }) => {
-      const element = page.locator('fluent-tablist');
+      const { element } = fastPage;
       const tabs = element.locator('fluent-tab');
-
-      page.setContent(/* html */ `
-        <fluent-tablist>
-            <fluent-tab>Tab one</fluent-tab>
-            <fluent-tab>Tab two</fluent-tab>
-            <fluent-tab>Tab three</fluent-tab>
-        </fluent-tablist>
-      `);
 
       const tabCount = await tabs.count();
 
@@ -158,17 +105,9 @@ test.describe('Tablist', () => {
       }
     });
 
-    test('should default the first tab as the active index if `activeid` is NOT provided', async ({ page }) => {
-      const element = page.locator('fluent-tablist');
+    test('should default the first tab as the active index if `activeid` is NOT provided', async ({ fastPage }) => {
+      const { element } = fastPage;
       const tabs = element.locator('fluent-tab');
-
-      page.setContent(/* html */ `
-        <fluent-tablist>
-            <fluent-tab>Tab one</fluent-tab>
-            <fluent-tab>Tab two</fluent-tab>
-            <fluent-tab>Tab three</fluent-tab>
-        </fluent-tablist>
-      `);
 
       await expect(tabs.nth(0)).toHaveAttribute('aria-selected', 'true');
 
@@ -177,17 +116,11 @@ test.describe('Tablist', () => {
   });
 
   test.describe('active tab', () => {
-    test('should set an `aria-selected` attribute on the active tab when `activeid` is provided', async ({ page }) => {
-      const element = page.locator('fluent-tablist');
+    test('should set an `aria-selected` attribute on the active tab when `activeid` is provided', async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
       const tabs = element.locator('fluent-tab');
-
-      page.setContent(/* html */ `
-        <fluent-tablist>
-            <fluent-tab>Tab one</fluent-tab>
-            <fluent-tab>Tab two</fluent-tab>
-            <fluent-tab>Tab three</fluent-tab>
-        </fluent-tablist>
-      `);
 
       const secondTab = tabs.nth(1);
 
@@ -200,17 +133,11 @@ test.describe('Tablist', () => {
       await expect(secondTab).toHaveAttribute('aria-selected', 'true');
     });
 
-    test('should update `aria-selected` attribute on the active tab when `activeId` is updated', async ({ page }) => {
-      const element = page.locator('fluent-tablist');
+    test('should update `aria-selected` attribute on the active tab when `activeId` is updated', async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
       const tabs = element.locator('fluent-tab');
-
-      page.setContent(/* html */ `
-        <fluent-tablist>
-            <fluent-tab>Tab one</fluent-tab>
-            <fluent-tab>Tab two</fluent-tab>
-            <fluent-tab>Tab three</fluent-tab>
-        </fluent-tablist>
-      `);
 
       await expect(tabs.nth(0)).toHaveAttribute('aria-selected', 'true');
 
@@ -226,65 +153,55 @@ test.describe('Tablist', () => {
     });
   });
 
-  for (const appearance in TablistAppearance) {
-    test(`should set appearance to \`${appearance}\``, async ({ page }) => {
-      const element = page.locator('fluent-tablist');
+  test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-      page.setContent(/* html */ `
-        <fluent-tablist appearance="${appearance}">
-            <fluent-tab>Tab one</fluent-tab>
-            <fluent-tab>Tab two</fluent-tab>
-            <fluent-tab>Tab three</fluent-tab>
-        </fluent-tablist>
-      `);
+    for (const appearance of Object.values(TablistAppearance)) {
+      await test.step(appearance, async () => {
+        await fastPage.setTemplate({ attributes: { appearance } });
 
-      await expect(element).toHaveJSProperty('appearance', appearance);
+        await expect(element).toHaveJSProperty('appearance', appearance);
 
-      await expect(element).toHaveCustomState(appearance);
-    });
-  }
+        await expect(element).toHaveAttribute('appearance', appearance);
+      });
+    }
+  });
 
-  for (const size in TablistSize) {
-    test(`should set size to \`${size}\``, async ({ page }) => {
-      const element = page.locator('fluent-tablist');
+  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-      page.setContent(/* html */ `
-        <fluent-tablist size="${size}">
-            <fluent-tab>Tab one</fluent-tab>
-            <fluent-tab>Tab two</fluent-tab>
-            <fluent-tab>Tab three</fluent-tab>
-        </fluent-tablist>
-      `);
+    for (const size of Object.values(TablistSize)) {
+      await test.step(size, async () => {
+        await fastPage.setTemplate({ attributes: { size } });
 
-      await expect(element).toHaveJSProperty('size', size);
+        await expect(element).toHaveJSProperty('size', size);
 
-      await expect(element).toHaveCustomState(size);
-    });
-  }
+        await expect(element).toHaveAttribute('size', size);
+      });
+    }
+  });
 
-  test('should not allow selecting a tab that has been disabled after it has been connected', async ({ page }) => {
-    const element = page.locator('fluent-tablist');
+  test('should not allow selecting a tab that has been disabled after it has been connected', async ({ fastPage }) => {
+    const { element } = fastPage;
     const tabs = element.locator('fluent-tab');
 
-    await page.setContent(/* html */ `
-        <fluent-tablist>
-            <fluent-tab id="tab-1">Tab one</fluent-tab>
-            <fluent-tab id="tab-2">Tab two</fluent-tab>
-            <fluent-tab id="tab-3">Tab three</fluent-tab>
-        </fluent-tablist>
-    `);
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <fluent-tab id="tab-1">Tab one</fluent-tab>
+        <fluent-tab id="tab-2">Tab two</fluent-tab>
+        <fluent-tab id="tab-3">Tab three</fluent-tab>
+      `,
+    });
 
     const firstTab = tabs.nth(0);
 
-    const firstTabId = await firstTab.getAttribute('id');
+    await expect(firstTab).toHaveId('tab-1');
 
-    expect(firstTabId).toBe('tab-1');
+    await element.evaluate((node: Tablist) => {
+      node.activeid = 'tab-1';
+    });
 
-    await element.evaluate((node: Tablist, firstTabId) => {
-      node.activeid = `${firstTabId}`;
-    }, firstTabId);
-
-    await expect(element).toHaveJSProperty('activeid', firstTabId);
+    await expect(element).toHaveJSProperty('activeid', 'tab-1');
 
     const secondTab = tabs.nth(1);
 
@@ -292,30 +209,23 @@ test.describe('Tablist', () => {
       node.disabled = true;
     });
 
-    await secondTab.evaluate(node => {
-      node.dispatchEvent(
-        new MouseEvent('click', {
-          bubbles: true,
-          cancelable: true,
-          view: window,
-        }),
-      );
-    });
+    // eslint-disable-next-line playwright/no-force-option
+    await secondTab.click({ force: true });
 
-    await expect(element).toHaveJSProperty('activeid', firstTabId);
+    await expect(element).toHaveJSProperty('activeid', 'tab-1');
   });
 
-  test('should allow selecting tab that has been enabled after it has been connected', async ({ page }) => {
-    const element = page.locator('fluent-tablist');
+  test('should allow selecting tab that has been enabled after it has been connected', async ({ fastPage }) => {
+    const { element } = fastPage;
     const tabs = element.locator('fluent-tab');
 
-    await page.setContent(/* html */ `
-      <fluent-tablist>
-          <fluent-tab>Tab one</fluent-tab>
-          <fluent-tab disabled>Tab two</fluent-tab>
-          <fluent-tab>Tab three</fluent-tab>
-      </fluent-tablist>
-    `);
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <fluent-tab>Tab one</fluent-tab>
+        <fluent-tab disabled>Tab two</fluent-tab>
+        <fluent-tab>Tab three</fluent-tab>
+      `,
+    });
 
     const firstTab = tabs.nth(0);
 
@@ -345,17 +255,17 @@ test.describe('Tablist', () => {
     await expect(element).toHaveJSProperty('activeid', secondTabId);
   });
 
-  test('should not allow selecting hidden tab using arrow keys', async ({ page }) => {
-    const element = page.locator('fluent-tablist');
+  test('should not allow selecting hidden tab using arrow keys', async ({ fastPage }) => {
+    const { element } = fastPage;
     const tabs = element.locator('fluent-tab');
 
-    page.setContent(/* html */ `
-      <fluent-tablist>
-          <fluent-tab>Tab one</fluent-tab>
-          <fluent-tab hidden>Tab two</fluent-tab>
-          <fluent-tab>Tab three</fluent-tab>
-      </fluent-tablist>
-    `);
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <fluent-tab>Tab one</fluent-tab>
+        <fluent-tab hidden>Tab two</fluent-tab>
+        <fluent-tab>Tab three</fluent-tab>
+      `,
+    });
 
     const firstTab = tabs.nth(0);
 
@@ -373,17 +283,17 @@ test.describe('Tablist', () => {
     await expect(element).toHaveJSProperty('activeid', thirdTabId);
   });
 
-  test('should not allow selecting hidden tab by pressing End', async ({ page }) => {
-    const element = page.locator('fluent-tablist');
+  test('should not allow selecting hidden tab by pressing End', async ({ fastPage }) => {
+    const { element } = fastPage;
     const tabs = element.locator('fluent-tab');
 
-    page.setContent(/* html */ `
-      <fluent-tablist>
-          <fluent-tab>Tab one</fluent-tab>
-          <fluent-tab>Tab two</fluent-tab>
-          <fluent-tab hidden>Tab three</fluent-tab>
-      </fluent-tablist>
-    `);
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <fluent-tab>Tab one</fluent-tab>
+        <fluent-tab>Tab two</fluent-tab>
+        <fluent-tab hidden>Tab three</fluent-tab>
+      `,
+    });
 
     const firstTab = tabs.nth(0);
 

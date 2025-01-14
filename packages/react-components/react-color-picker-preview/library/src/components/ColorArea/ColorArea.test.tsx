@@ -9,10 +9,32 @@ describe('ColorArea', () => {
     displayName: 'ColorArea',
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
-    const result = render(<ColorArea>Default ColorArea</ColorArea>);
-    expect(result.container).toMatchSnapshot();
+    const result = render(<ColorArea color={{ h: 324, s: 1, v: 0.5, a: 1 }} />);
+    expect(result.container).toMatchInlineSnapshot(`
+      <div>
+        <div
+          class="fui-ColorArea"
+          style="--fui-AreaX--progress: 100%; --fui-AreaY--progress: 50%; --fui-Area__thumb--color: transparent; --fui-Area--main-color: hsl(324, 100%, 50%);"
+        >
+          <div
+            class="fui-ColorArea__thumb"
+          >
+            <input
+              class="fui-ColorArea__inputX"
+              id="sliderX-15"
+              type="range"
+              value="100"
+            />
+            <input
+              class="fui-ColorArea__inputY"
+              id="sliderY-16"
+              type="range"
+              value="50"
+            />
+          </div>
+        </div>
+      </div>
+    `);
   });
 });

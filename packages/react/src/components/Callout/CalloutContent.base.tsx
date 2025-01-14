@@ -337,11 +337,8 @@ function useDismissHandlers(
   {
     hidden,
     onDismiss,
-    // eslint-disable-next-line deprecation/deprecation
     preventDismissOnScroll,
-    // eslint-disable-next-line deprecation/deprecation
     preventDismissOnResize,
-    // eslint-disable-next-line deprecation/deprecation
     preventDismissOnLostFocus,
     dismissOnTargetClick,
     shouldDismissOnWindowFocus,

@@ -3,7 +3,7 @@ import { type ExecutorContext, logger, stripIndents } from '@nx/devkit';
 import { BuildExecutorSchema } from './schema';
 import executor from './executor';
 import { join } from 'node:path';
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, appendFileSync, writeFileSync } from 'node:fs';
 
 // ===== mocks start =====
 import { rm } from 'node:fs/promises';
@@ -73,7 +73,7 @@ const measureStartMock = measureStart as jest.Mock;
 const measureEndMock = measureEnd as jest.Mock;
 
 describe('Build Executor', () => {
-  it('can run', async () => {
+  it('runs build and api-generation and fails on api update', async () => {
     // mute api extractor - START
     jest.spyOn(console, 'warn').mockImplementation(() => {
       return;
@@ -203,7 +203,7 @@ describe('Build Executor', () => {
       "
     `);
     expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.js.map'), 'utf-8')).toMatchInlineSnapshot(
-      `"{\\"version\\":3,\\"sources\\":[\\"greeter.ts\\"],\\"sourcesContent\\":[\\"import { useStyles } from './greeter.styles';\\\\nexport function greeter(greeting: string, user: User): string {\\\\n  const styles = useStyles();\\\\n  return \`<h1 class=\\\\\\"\${styles}\\\\\\">\${greeting} \${user.name} from \${user.hometown?.name}</h1>\`;\\\\n}\\\\n\\\\ntype User = {\\\\n  name: string;\\\\n  hometown?: {\\\\n    name: string;\\\\n  };\\\\n};\\\\n\\"],\\"names\\":[\\"useStyles\\",\\"greeter\\",\\"greeting\\",\\"user\\",\\"styles\\",\\"name\\",\\"hometown\\"],\\"rangeMappings\\":\\";;;;;\\",\\"mappings\\":\\"AAAA,SAASA,SAAS,QAAQ,mBAAmB;AAC7C,OAAO,SAASC,QAAQC,QAAgB,EAAEC,IAAU;QAEYA;IAD9D,MAAMC,SAASJ;IACf,OAAO,CAAC,WAAW,EAAEI,OAAO,EAAE,EAAEF,SAAS,CAAC,EAAEC,KAAKE,IAAI,CAAC,MAAM,GAAEF,iBAAAA,KAAKG,QAAQ,cAAbH,qCAAAA,eAAeE,IAAI,CAAC,KAAK,CAAC;AAC1F\\"}"`,
+      `"{\\"version\\":3,\\"sources\\":[\\"../src/greeter.ts\\"],\\"sourcesContent\\":[\\"import { useStyles } from './greeter.styles';\\\\nexport function greeter(greeting: string, user: User): string {\\\\n  const styles = useStyles();\\\\n  return \`<h1 class=\\\\\\"\${styles}\\\\\\">\${greeting} \${user.name} from \${user.hometown?.name}</h1>\`;\\\\n}\\\\n\\\\ntype User = {\\\\n  name: string;\\\\n  hometown?: {\\\\n    name: string;\\\\n  };\\\\n};\\\\n\\"],\\"names\\":[\\"useStyles\\",\\"greeter\\",\\"greeting\\",\\"user\\",\\"styles\\",\\"name\\",\\"hometown\\"],\\"rangeMappings\\":\\";;;;;\\",\\"mappings\\":\\"AAAA,SAASA,SAAS,QAAQ,mBAAmB;AAC7C,OAAO,SAASC,QAAQC,QAAgB,EAAEC,IAAU;QAEYA;IAD9D,MAAMC,SAASJ;IACf,OAAO,CAAC,WAAW,EAAEI,OAAO,EAAE,EAAEF,SAAS,CAAC,EAAEC,KAAKE,IAAI,CAAC,MAAM,GAAEF,iBAAAA,KAAKG,QAAQ,cAAbH,qCAAAA,eAAeE,IAAI,CAAC,KAAK,CAAC;AAC1F\\"}"`,
     );
 
     expect(readFileSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.js'), 'utf-8')).toMatchInlineSnapshot(`
@@ -263,5 +263,20 @@ describe('Build Executor', () => {
       });
       "
     `);
-  }, 30000);
+
+    // ==================
+    // update api public surface to simulate out of date api.md which will fail the executor
+    // ==================
+
+    const publicApiFilePath = join(workspaceRoot, 'libs/proj/src/index.ts');
+    const originalApiContent = readFileSync(publicApiFilePath);
+    appendFileSync(publicApiFilePath, `export const hello='new public api';\n`);
+
+    // force api-extractor to generate api.md and not fail on Local/CI
+    process.env.__FORCE_API_MD_UPDATE__ = '';
+    const outputFailed = await executor(options, context);
+    expect(outputFailed.success).toBe(false);
+
+    writeFileSync(publicApiFilePath, originalApiContent, 'utf-8');
+  }, 60000);
 });

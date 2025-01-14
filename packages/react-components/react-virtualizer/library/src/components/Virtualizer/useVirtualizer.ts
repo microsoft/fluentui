@@ -1,7 +1,6 @@
-import type { ReactNode } from 'react';
+import * as React from 'react';
 import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
 
-import { useEffect, useRef, useCallback, useImperativeHandle, useState, useReducer } from 'react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { useVirtualizerContextState_unstable } from '../../Utilities';
 import { slot, useTimeout } from '@fluentui/react-utilities';
@@ -26,21 +25,24 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     containerSizeRef,
     scrollViewRef,
     enableScrollLoad,
+    updateScrollPosition,
+    gap = 0,
   } = props;
 
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
   const _virtualizerContext = useVirtualizerContextState_unstable(virtualizerContext);
 
   // We use this ref as a constant source to access the virtualizer's state imperatively
-  const actualIndexRef = useRef<number>(_virtualizerContext.contextIndex);
-  const flaggedIndex = useRef<number | null>(null);
+  const actualIndexRef = React.useRef<number>(_virtualizerContext.contextIndex);
 
+  const flaggedIndex = React.useRef<number | null>(null);
   const actualIndex = _virtualizerContext.contextIndex;
+
   // Just in case our ref gets out of date vs the context during a re-render
   if (_virtualizerContext.contextIndex !== actualIndexRef.current) {
     actualIndexRef.current = _virtualizerContext.contextIndex;
   }
-  const setActualIndex = useCallback(
+  const setActualIndex = React.useCallback(
     (index: number) => {
       actualIndexRef.current = index;
       _virtualizerContext.setContextIndex(index);
@@ -49,23 +51,23 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   );
 
   // Store ref to before padding element
-  const beforeElementRef = useRef<Element | null>(null);
+  const beforeElementRef = React.useRef<HTMLElement | null>(null);
 
   // Store ref to before padding element
-  const afterElementRef = useRef<Element | null>(null);
+  const afterElementRef = React.useRef<HTMLElement | null>(null);
 
   // We need to store an array to track dynamic sizes, we can use this to incrementally update changes
-  const childSizes = useRef<number[]>(new Array<number>(getItemSize ? numItems : 0));
+  const childSizes = React.useRef<number[]>(new Array<number>(getItemSize ? numItems : 0));
 
   /* We keep track of the progressive sizing/placement down the list,
   this helps us skip re-calculations unless children/size changes */
-  const childProgressiveSizes = useRef<number[]>(new Array<number>(getItemSize ? numItems : 0));
+  const childProgressiveSizes = React.useRef<number[]>(new Array<number>(getItemSize ? numItems : 0));
   if (virtualizerContext?.childProgressiveSizes) {
     virtualizerContext.childProgressiveSizes.current = childProgressiveSizes.current;
   }
 
   // The internal tracking REF for child array (updates often).
-  const childArray = useRef<ReactNode[]>(new Array(virtualizerLength));
+  const childArray = React.useRef<React.ReactNode[]>(new Array(virtualizerLength));
 
   const populateSizeArrays = () => {
     if (!getItemSize) {
@@ -85,7 +87,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     }
 
     for (let index = 0; index < numItems; index++) {
-      childSizes.current[index] = getItemSize(index);
+      const _gap = index < numItems - 1 ? gap : 0;
+      childSizes.current[index] = getItemSize(index) + _gap;
       if (index === 0) {
         childProgressiveSizes.current[index] = childSizes.current[index];
       } else {
@@ -94,11 +97,11 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     }
   };
 
-  const [isScrolling, setIsScrolling] = useState<boolean>(false);
+  const [isScrolling, setIsScrolling] = React.useState<boolean>(false);
   const [setScrollTimer, clearScrollTimer] = useTimeout();
-  const scrollCounter = useRef<number>(0);
+  const scrollCounter = React.useRef<number>(0);
 
-  const initializeScrollingTimer = useCallback(() => {
+  const initializeScrollingTimer = React.useCallback(() => {
     if (!enableScrollLoad) {
       // Disabled by default for reduction of render callbacks
       return;
@@ -123,11 +126,11 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     }, INIT_SCROLL_FLAG_DELAY);
   }, [clearScrollTimer, setScrollTimer, enableScrollLoad]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     initializeScrollingTimer();
   }, [actualIndex, initializeScrollingTimer]);
 
-  const updateChildRows = useCallback(
+  const updateChildRows = React.useCallback(
     (newIndex: number) => {
       if (numItems === 0) {
         /* Nothing to virtualize */
@@ -148,7 +151,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     [isScrolling, numItems, renderChild, virtualizerLength],
   );
 
-  const updateCurrentItemSizes = useCallback(
+  const updateCurrentItemSizes = React.useCallback(
     (newIndex: number) => {
       if (!getItemSize) {
         // Static sizes, not required.
@@ -161,7 +164,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
       let didUpdate = false;
       for (let i = startIndex; i < endIndex; i++) {
-        const newSize = getItemSize(i);
+        const _gap = i < numItems - 1 ? gap : 0;
+        const newSize = getItemSize(i) + _gap;
         if (newSize !== childSizes.current[i]) {
           childSizes.current[i] = newSize;
           didUpdate = true;
@@ -176,10 +180,10 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         }
       }
     },
-    [getItemSize, numItems, virtualizerLength],
+    [getItemSize, numItems, virtualizerLength, gap],
   );
 
-  const batchUpdateNewIndex = useCallback(
+  const batchUpdateNewIndex = React.useCallback(
     (index: number) => {
       // Local updates
       updateChildRows(index);
@@ -191,7 +195,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     [setActualIndex, updateChildRows, updateCurrentItemSizes],
   );
 
-  const findIndexRecursive = useCallback(
+  const findIndexRecursive = React.useCallback(
     (scrollPos: number, lowIndex: number, highIndex: number): number => {
       if (lowIndex > highIndex) {
         // We shouldn't get here - but no-op the index if we do.
@@ -218,7 +222,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     [actualIndex],
   );
 
-  const getIndexFromSizeArray = useCallback(
+  const getIndexFromSizeArray = React.useCallback(
     (scrollPos: number): number => {
       /* Quick searches our progressive height array */
       if (
@@ -239,32 +243,32 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     },
     [findIndexRecursive],
   );
-  const getIndexFromScrollPosition = useCallback(
+  const getIndexFromScrollPosition = React.useCallback(
     (scrollPos: number) => {
       if (!getItemSize) {
-        return Math.round(scrollPos / itemSize);
+        return Math.round(scrollPos / (itemSize + gap));
       }
 
       return getIndexFromSizeArray(scrollPos);
     },
-    [getIndexFromSizeArray, getItemSize, itemSize],
+    [getIndexFromSizeArray, getItemSize, itemSize, gap],
   );
 
-  const calculateTotalSize = useCallback(() => {
+  const calculateTotalSize = React.useCallback(() => {
     if (!getItemSize) {
-      return itemSize * numItems;
+      return (itemSize + gap) * numItems;
     }
 
     // Time for custom size calcs
     return childProgressiveSizes.current[numItems - 1];
-  }, [getItemSize, itemSize, numItems]);
+  }, [getItemSize, itemSize, numItems, gap]);
 
-  const calculateBefore = useCallback(() => {
+  const calculateBefore = React.useCallback(() => {
     const currentIndex = Math.min(actualIndex, numItems - 1);
 
     if (!getItemSize) {
       // The missing items from before virtualization starts height
-      return currentIndex * itemSize;
+      return currentIndex * (itemSize + gap);
     }
 
     if (currentIndex <= 0) {
@@ -273,9 +277,9 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     // Time for custom size calcs
     return childProgressiveSizes.current[currentIndex - 1];
-  }, [actualIndex, getItemSize, itemSize, numItems]);
+  }, [actualIndex, getItemSize, itemSize, numItems, gap]);
 
-  const calculateAfter = useCallback(() => {
+  const calculateAfter = React.useCallback(() => {
     if (numItems === 0 || actualIndex + virtualizerLength >= numItems) {
       return 0;
     }
@@ -284,16 +288,16 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     if (!getItemSize) {
       // The missing items from after virtualization ends height
       const remainingItems = numItems - lastItemIndex;
-      return remainingItems * itemSize;
+      return remainingItems * (itemSize + gap) - gap;
     }
 
     // Time for custom size calcs
     return childProgressiveSizes.current[numItems - 1] - childProgressiveSizes.current[lastItemIndex - 1];
-  }, [actualIndex, getItemSize, itemSize, numItems, virtualizerLength]);
+  }, [actualIndex, getItemSize, itemSize, numItems, virtualizerLength, gap]);
 
   // Observe intersections of virtualized components
   const { setObserverList } = useIntersectionObserver(
-    useCallback(
+    React.useCallback(
       // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
       // eslint-disable-next-line no-restricted-globals
       (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
@@ -306,18 +310,17 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
           return;
         }
 
-        // Grab latest entry that is intersecting
-        const latestEntry =
-          entries.length === 1
-            ? entries[0]
-            : entries
-                .sort((entry1, entry2) => entry2.time - entry1.time)
-                .find(entry => {
-                  return entry.intersectionRatio > 0;
-                });
+        if (entries.length === 0) {
+          // No entries found, return.
+          return;
+        }
+        // Find the latest entry that is intersecting
+        const sortedEntries = entries.sort((entry1, entry2) => entry2.time - entry1.time);
+        const latestEntry = sortedEntries.find(entry => {
+          return entry.isIntersecting;
+        });
 
-        if (!latestEntry || !latestEntry.isIntersecting) {
-          // If we don't find an intersecting area, ignore for now.
+        if (!latestEntry) {
           return;
         }
 
@@ -364,14 +367,15 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
           } else if (latestEntry.target === beforeElementRef.current) {
             // Get before buffers position
             measurementPos = calculateBefore();
+
             // Get exact intersection position based on overflow size (how far into window did we scroll IO?)
             const overflowAmount =
               axis === 'vertical' ? latestEntry.intersectionRect.height : latestEntry.intersectionRect.width;
+
             // Minus from original before position
             measurementPos -= overflowAmount;
             // Ignore buffer size (IO offset)
             measurementPos += bufferSize;
-
             // Calculate how far past the window bounds we are (this will be zero if IO is within window)
             const hOverflow = latestEntry.boundingClientRect.bottom - latestEntry.intersectionRect.bottom;
             const hOverflowReversed = latestEntry.boundingClientRect.top - latestEntry.intersectionRect.top;
@@ -400,30 +404,34 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
         // Safety limits
         const newStartIndex = Math.min(Math.max(startIndex, 0), maxIndex);
-
         flushSync(() => {
-          _virtualizerContext.setContextPosition(measurementPos);
+          // Callback to allow measure functions to check virtualizer length
+          if (newStartIndex + virtualizerLength >= numItems && actualIndex + virtualizerLength >= numItems) {
+            // We've already hit the end, no need to update state.
+            return;
+          }
+          updateScrollPosition?.(measurementPos);
           if (actualIndex !== newStartIndex) {
             batchUpdateNewIndex(newStartIndex);
           }
         });
       },
       [
-        _virtualizerContext,
         actualIndex,
+        virtualizerLength,
         axis,
-        batchUpdateNewIndex,
-        bufferItems,
+        reversed,
+        numItems,
         bufferSize,
+        bufferItems,
+        containerSizeRef,
+        updateScrollPosition,
+        batchUpdateNewIndex,
         calculateAfter,
         calculateBefore,
         calculateTotalSize,
-        containerSizeRef,
         getIndexFromScrollPosition,
-        numItems,
-        reversed,
         updateCurrentItemSizes,
-        virtualizerLength,
       ],
     ),
     {
@@ -433,7 +441,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     },
   );
 
-  const setBeforeRef = useCallback(
+  const setBeforeRef = React.useCallback(
     (element: HTMLDivElement) => {
       if (!element || beforeElementRef.current === element) {
         return;
@@ -453,7 +461,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     [setObserverList],
   );
 
-  const setAfterRef = useCallback(
+  const setAfterRef = React.useCallback(
     (element: HTMLDivElement) => {
       if (!element || afterElementRef.current === element) {
         return;
@@ -474,7 +482,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   );
 
   // Initialize the size array before first render.
-  const hasInitialized = useRef<boolean>(false);
+  const hasInitialized = React.useRef<boolean>(false);
   const initializeSizeArray = () => {
     if (hasInitialized.current === false) {
       hasInitialized.current = true;
@@ -482,7 +490,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     }
   };
 
-  useImperativeHandle(
+  React.useImperativeHandle(
     imperativeVirtualizerRef,
     () => {
       return {
@@ -497,7 +505,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   // Initialization on mount - update array index to 0 (ready state).
   // Only fire on mount (no deps).
-  useEffect(() => {
+  React.useEffect(() => {
     if (actualIndex < 0) {
       batchUpdateNewIndex(0);
     }
@@ -509,9 +517,9 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
    * We only want to trigger this when scrollLoading is enabled and set to false,
    * it will force re-render all children elements
    */
-  const forceUpdate = useReducer(() => ({}), {})[1];
+  const forceUpdate = React.useReducer(() => ({}), {})[1];
   // If the user passes in an updated renderChild function - update current children
-  useEffect(() => {
+  React.useEffect(() => {
     if (actualIndex >= 0) {
       updateChildRows(actualIndex);
       if (enableScrollLoad && !isScrolling) {
@@ -521,16 +529,16 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [renderChild, isScrolling]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // Ensure we repopulate if getItemSize callback changes
     populateSizeArrays();
 
     // We only run this effect on getItemSize change (recalc dynamic sizes)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getItemSize]);
+  }, [getItemSize, gap]);
 
   // Effect to check flag index on updates
-  useEffect(() => {
+  React.useEffect(() => {
     if (!onRenderedFlaggedIndex || flaggedIndex.current === null) {
       return;
     }
