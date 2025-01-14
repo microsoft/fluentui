@@ -85,48 +85,39 @@ describe('FluentProvider', () => {
   });
 
   describe('applies "applyStylesTo" attribute', () => {
-    const styleTagId = `${fluentProviderClassNames.root}1`;
+    const themeClassName = `${fluentProviderClassNames.root}1`;
 
     beforeEach(() => {
       document.body.className = '';
     });
 
-    it('theme tokens are scoped to provider element by default', () => {
+    it('applies theme tokens to provider element by default', () => {
       const { getByTestId } = render(<FluentProvider data-testid="provider">Test</FluentProvider>);
 
-      // ThemeProvider has tokens classname applied
-      expect(getByTestId('provider')).toHaveClass(styleTagId);
-
-      // It should not be applied to the body
-      expect(document.body).not.toHaveClass(styleTagId);
+      expect(getByTestId('provider')).toHaveClass(themeClassName);
+      expect(document.body).not.toHaveClass(themeClassName);
     });
 
-    it('theme tokens are scoped to provider element when applyStylesTo="provider"', () => {
+    it('applies theme tokens to provider element when applyStylesTo="provider"', () => {
       const { getByTestId } = render(
         <FluentProvider applyStylesTo="provider" data-testid="provider">
           Test
         </FluentProvider>,
       );
 
-      // ThemeProvider has tokens classname applied
-      expect(getByTestId('provider')).toHaveClass(styleTagId);
-
-      // It should not be applied to the body
-      expect(document.body).not.toHaveClass(styleTagId);
+      expect(getByTestId('provider')).toHaveClass(themeClassName);
+      expect(document.body).not.toHaveClass(themeClassName);
     });
 
-    it('theme tokens are applied to the body when applyTo="body"', () => {
+    it('applies theme tokens to the body when applyStylesTo="body"', () => {
       const { getByTestId } = render(
         <FluentProvider applyStylesTo="body" data-testid="provider">
           Test
         </FluentProvider>,
       );
 
-      // ThemeProvider doesn't have them tokens classname applied
-      expect(getByTestId('provider')).not.toHaveClass(styleTagId);
-
-      // It should be applied to the body
-      expect(document.body).toHaveClass(styleTagId);
+      expect(getByTestId('provider')).not.toHaveClass(themeClassName);
+      expect(document.body).toHaveClass(themeClassName);
     });
   });
 });
