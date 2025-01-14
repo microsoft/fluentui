@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { tokens, FluentProvider, webDarkTheme, makeStyles, makeStaticStyles } from '@fluentui/react-components';
 
-const usGlobalStyles = makeStaticStyles({
+const useGlobalStyles = makeStaticStyles({
   body: {
     backgroundColor: tokens.colorNeutralBackground2,
     color: tokens.colorNeutralForeground1,
@@ -25,7 +25,7 @@ const usLocalStyles = makeStyles({
 export const ApplyStylesToBody = () => {
   const styles = usLocalStyles();
 
-  usGlobalStyles();
+  useGlobalStyles();
 
   return (
     <FluentProvider applyStylesTo="body" className={styles.provider} theme={webDarkTheme}>
