@@ -20,8 +20,7 @@ const useStyles = makeStyles({
     },
   },
 });
-
-const COLOR = tinycolor('#5be600').toHsv();
+const COLOR = { h: 96, s: 1, v: 0.9, a: 1 };
 
 export const AlphaSliderExample = (props: Partial<AlphaSliderProps>) => {
   const styles = useStyles();
