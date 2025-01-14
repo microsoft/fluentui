@@ -3,9 +3,9 @@ import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
 import type { Option } from './option.js';
 
 /**
- * Determines if the element is an {@link Option}.
+ * Predicate function that determines if the element should be considered an option.
  *
- * @param value - The element to check.
+ * @param element - The element to check.
  * @param tagName - The tag name to check.
  * @returns true if the element is an option.
  * @public
