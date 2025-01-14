@@ -123,7 +123,7 @@ export const styles = css`
     cursor: text;
   }
 
-  ::slotted([slot='indicator']) {
+  :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
     all: unset;
     align-items: center;
     appearance: none;
@@ -134,11 +134,11 @@ export const styles = css`
     width: 20px;
   }
 
-  :host(${smallState}) ::slotted([slot='indicator']) {
+  :host(${smallState}) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
     width: 16px;
   }
 
-  :host(${largeState}) ::slotted([slot='indicator']) {
+  :host(${largeState}) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
     width: 24px;
   }
 
@@ -224,7 +224,7 @@ export const styles = css`
   }
 
   :host(:disabled) .control:is(*, :active, :hover),
-  :host(:disabled) ::slotted([slot='indicator']) {
+  :host(:disabled) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
     --control-border-color: ${colorNeutralStrokeDisabled};
     background-color: ${colorNeutralBackgroundDisabled};
     color: ${colorNeutralForegroundDisabled};
