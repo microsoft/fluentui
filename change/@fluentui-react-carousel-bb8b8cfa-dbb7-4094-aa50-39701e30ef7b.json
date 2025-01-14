@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "style: resolve exposed jsx pragma lint issues within monorepo",
-  "packageName": "@fluentui/react-carousel",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

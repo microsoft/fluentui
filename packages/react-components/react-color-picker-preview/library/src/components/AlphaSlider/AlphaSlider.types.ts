@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ColorSliderSlots, ColorSliderProps, ColorSliderState } from '../ColorSlider/ColorSlider.types';
 
 export type AlphaSliderSlots = ColorSliderSlots;
@@ -6,16 +6,17 @@ export type AlphaSliderSlots = ColorSliderSlots;
 /**
  * AlphaSlider Props
  */
-export type AlphaSliderProps = Omit<
-  ComponentProps<Partial<AlphaSliderSlots>, 'input'>,
-  'defaultValue' | 'onChange' | 'value'
-> &
-  ColorSliderProps & {
-    /**
-     * The color to overlay on the alpha slider.
-     */
-    overlayColor?: string;
-  };
+export type AlphaSliderProps = ColorSliderProps & {
+  /**
+   * The `transparency` property determines how the alpha channel is interpreted.
+   * - When `false`, the alpha channel represents the opacity of the color.
+   * - When `true`, the alpha channel represents the transparency of the color.
+   * For example, a 30% transparent color has 70% opacity.
+   *
+   * @defaultvalue false
+   */
+  transparency?: boolean;
+};
 
 /**
  * State used in rendering AlphaSlider

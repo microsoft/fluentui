@@ -60,6 +60,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         height,
         width,
         verticalAlign: 'top',
+        'forced-color-adjust': 'none',
       },
       !circle && {
         selectors: {

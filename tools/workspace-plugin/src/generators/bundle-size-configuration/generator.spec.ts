@@ -30,7 +30,7 @@ describe('bundle-size-configuration generator', () => {
 
     expect(tree.exists(joinPathFragments(config.root, 'monosize.config.mjs'))).toEqual(false);
 
-    expect(packageJson.scripts['bundle-size']).toEqual('monosize measure');
+    expect(packageJson.scripts).toEqual(undefined);
 
     expect(tree.read(joinPathFragments(config.root, 'bundle-size/index.fixture.js'), 'utf-8')).toMatchInlineSnapshot(`
       "import * as p from '@proj/react-continental';
@@ -97,7 +97,6 @@ function createLibrary(tree: Tree, name: string) {
   writeJson(tree, joinPathFragments(root, 'package.json'), {
     name: npmProjectName,
     version: '9.0.0',
-    scripts: {},
   });
 
   return tree;

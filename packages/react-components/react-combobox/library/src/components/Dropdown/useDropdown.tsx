@@ -43,7 +43,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   });
 
   const baseState = useComboboxBaseState({ ...props, activeDescendantController, freeform: false });
-  const { clearable, clearSelection, hasFocus, multiselect, open, selectedOptions, setOpen } = baseState;
+  const { clearable, clearSelection, disabled, hasFocus, multiselect, open, selectedOptions, setOpen } = baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -94,7 +94,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   });
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
 
-  const showClearButton = selectedOptions.length > 0 && clearable && !multiselect;
+  const showClearButton = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
   const state: DropdownState = {
     components: { root: 'div', button: 'button', clearButton: 'button', expandIcon: 'span', listbox: Listbox },
     root: rootSlot,

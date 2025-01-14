@@ -5,9 +5,6 @@
   "type": "commonjs",
   "generators": "./generators.json",
   "executors": "./executors.json",
-  "scripts": {
-    "check-graph": "node ./scripts/check-dep-graph.js"
-  },
   "dependencies": {
     "@nx/devkit": "~19.5.7"
   },

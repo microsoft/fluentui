@@ -378,6 +378,7 @@ export {
   ComboboxProvider,
   useComboboxContextValues,
   ListboxProvider,
+  useListboxContext_unstable,
   useListboxContextValues,
   useComboboxFilter,
 } from '@fluentui/react-combobox';
@@ -1935,6 +1936,11 @@ export {
   carouselContextDefaultValue,
   CarouselProvider,
   useCarouselContext_unstable,
+  CarouselViewport,
+  carouselViewportClassNames,
+  renderCarouselViewport_unstable,
+  useCarouselViewportStyles_unstable,
+  useCarouselViewport_unstable,
 } from '@fluentui/react-carousel';
 export type {
   CarouselButtonProps,
@@ -1969,4 +1975,28 @@ export type {
   CarouselIndexChangeData,
   CarouselContextValue,
   CarouselContextValues,
+  CarouselViewportProps,
+  CarouselViewportSlots,
+  CarouselViewportState,
 } from '@fluentui/react-carousel';
+
+export {
+  List,
+  listClassNames,
+  renderList_unstable,
+  useListStyles_unstable,
+  useList_unstable,
+  ListItem,
+  listItemClassNames,
+  renderListItem_unstable,
+  useListItemStyles_unstable,
+  useListItem_unstable,
+} from '@fluentui/react-list';
+export type {
+  ListProps,
+  ListSlots,
+  ListState,
+  ListItemProps,
+  ListItemSlots,
+  ListItemState,
+} from '@fluentui/react-list';

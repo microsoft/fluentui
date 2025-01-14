@@ -14,23 +14,9 @@ env:
 
   BROWSERSLIST_IGNORE_OLD_DATA: true
 
-  # Deploy host and URL
-  # DEPLOY_BASE_PATH: ''
-  DEPLOY_HOST: fluentuipr.z22.web.core.windows.net
-  DEPLOY_URL: https://fluentuipr.z22.web.core.windows.net/${{ github.event.pull_request.number || github.ref_name }}
-  # DEPLOY_BASE_PATH: pull/${{github.event.pull_request.number}}
-  DEPLOY_BASE_PATH: ${{ github.event.pull_request.number != '' && format('pull/{0}', github.event.pull_request.number) || format('heads/{0}', github.ref_name) }}
-
-  IS_PR: ${{ github.event_name == 'pull_request' }}
-  TARGET_BRANCH: ${{ github.event.pull_request.base.ref || '' }}
-
-  # GitHub Secrets for Azure access
-  # This service principal ("subscription" is a misleading name) only has access to the fluentuipr storage account
-  AZURE_SUBSCRIPTION: Azure PR deploy - NEW
-  AZURE_STORAGE: fluentuipr
-
 jobs:
   bundle:
+    if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
     permissions:
       contents: 'read'
@@ -66,6 +52,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: pr-website-artifacts
+          retention-days: 1
           if-no-files-found: error
           path: |
             apps/pr-deploy-site/dist/
@@ -75,6 +62,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: pr-number
+          retention-days: 1
           if-no-files-found: error
           path: |
             pr.txt

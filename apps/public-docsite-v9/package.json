@@ -29,7 +29,6 @@
     "@fluentui/react-northstar": "*",
     "@fluentui/react-icons-northstar": "*",
     "@fluentui/react-components": "*",
-    "@fluentui/react-list-preview": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/theme-designer": "*",
@@ -44,6 +43,7 @@
     "react-hook-form": "^5.7.2",
     "@fluentui/react-nav-preview": "*",
     "@fluentui/react-motion-components-preview": "*",
-    "@fluentui/react-icons-compat": "*"
+    "@fluentui/react-icons-compat": "*",
+    "@fluentui/react-color-picker-preview": "*"
   }
 }

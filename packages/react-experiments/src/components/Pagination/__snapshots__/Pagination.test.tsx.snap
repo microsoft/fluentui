@@ -1837,6 +1837,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
       <input
         aria-autocomplete="both"
         aria-expanded={false}
+        aria-invalid={false}
         autoCapitalize="off"
         autoComplete="off"
         className=

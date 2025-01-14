@@ -10,6 +10,8 @@ import Fade from 'embla-carousel-fade';
 import { pointerEventPlugin } from './pointerEvents';
 import type { CarouselIndexChangeData } from './CarouselContext.types';
 
+type EmblaEventHandler = Parameters<EmblaCarouselType['on']>[1];
+
 const sliderClassname = `.${carouselSliderClassNames.root}`;
 
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
@@ -43,9 +45,20 @@ export function useEmblaCarousel(
     activeIndex: number | undefined;
     motion?: CarouselMotion;
     onDragIndexChange?: EventHandler<CarouselIndexChangeData>;
+    onAutoplayIndexChange?: EventHandler<CarouselIndexChangeData>;
   },
 ) {
-  const { align, direction, loop, slidesToScroll, watchDrag, containScroll, motion, onDragIndexChange } = options;
+  const {
+    align,
+    direction,
+    loop,
+    slidesToScroll,
+    watchDrag,
+    containScroll,
+    motion,
+    onDragIndexChange,
+    onAutoplayIndexChange,
+  } = options;
   const [activeIndex, setActiveIndex] = useControllableState({
     defaultState: options.defaultActiveIndex,
     state: options.activeIndex,
@@ -70,36 +83,22 @@ export function useEmblaCarousel(
   const autoplayRef = React.useRef<boolean>(false);
 
   const resetAutoplay = React.useCallback(() => {
-    emblaApi.current?.plugins().autoplay.reset();
+    emblaApi.current?.plugins().autoplay?.reset();
   }, []);
 
-  /* Our autoplay button, which is required by standards for autoplay to be enabled, will handle controlled state */
-  const enableAutoplay = React.useCallback(
-    (autoplay: boolean) => {
-      autoplayRef.current = autoplay;
-      if (autoplay) {
-        emblaApi.current?.plugins().autoplay.play();
-        // Reset after play to ensure timing and any focus/mouse pause state is reset.
-        resetAutoplay();
-      } else {
-        emblaApi.current?.plugins().autoplay.stop();
-      }
-    },
-    [resetAutoplay],
-  );
-
   const getPlugins = React.useCallback(() => {
-    const plugins: EmblaPluginType[] = [
+    const plugins: EmblaPluginType[] = [];
+
+    plugins.push(
       Autoplay({
         playOnInit: autoplayRef.current,
-        stopOnInteraction: !autoplayRef.current,
-        stopOnMouseEnter: true,
-        stopOnFocusIn: true,
-        rootNode: (emblaRoot: HTMLElement) => {
-          return emblaRoot.querySelector(sliderClassname) ?? emblaRoot;
-        },
+        /* stopOnInteraction: false causes autoplay to restart on interaction end*/
+        /* we'll handle this logic to ensure autoplay state is respected */
+        stopOnInteraction: true,
+        stopOnFocusIn: false, // We'll handle this one manually to prevent conflicts with tabster
+        stopOnMouseEnter: false, // We will handle this manually to align functionality
       }),
-    ];
+    );
 
     // Optionally add Fade plugin
     if (motion === 'fade') {
@@ -117,6 +116,27 @@ export function useEmblaCarousel(
     return plugins;
   }, [motion, onDragEvent, watchDrag]);
 
+  /* This function enables autoplay to pause/play without affecting underlying state
+   * Useful for pausing on focus etc. without having to reinitialize or set autoplay to off
+   */
+  const enableAutoplay = React.useCallback(
+    (autoplay: boolean, temporary?: boolean) => {
+      if (!temporary) {
+        autoplayRef.current = autoplay;
+      }
+
+      if (autoplay && autoplayRef.current) {
+        // Autoplay should only enable in the case where underlying state is true, temporary should not override
+        emblaApi.current?.plugins().autoplay?.play();
+        // Reset after play to ensure timing and any focus/mouse pause state is reset.
+        resetAutoplay();
+      } else if (!autoplay) {
+        emblaApi.current?.plugins().autoplay?.stop();
+      }
+    },
+    [resetAutoplay],
+  );
+
   // Listeners contains callbacks for UI elements that may require state update based on embla changes
   const listeners = React.useRef(new Set<(data: CarouselUpdateData) => void>());
   const subscribeForValues = React.useCallback((listener: (data: CarouselUpdateData) => void) => {
@@ -127,36 +147,48 @@ export function useEmblaCarousel(
     };
   }, []);
 
+  const updateIndex = () => {
+    const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
+    const slides = emblaApi.current?.slideNodes();
+    const actualIndex = emblaApi.current?.internalEngine().slideRegistry[newIndex][0] ?? 0;
+    // We set the first card in the current group as the default tabster index for focus capture
+    slides?.forEach((slide, slideIndex) => {
+      setTabsterDefault(slide, slideIndex === actualIndex);
+    });
+    setActiveIndex(newIndex);
+  };
+
+  const handleReinit = useEventCallback(() => {
+    const nodes: HTMLElement[] = emblaApi.current?.slideNodes() ?? [];
+    const groupIndexList: number[][] = emblaApi.current?.internalEngine().slideRegistry ?? [];
+    const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
+    const data: CarouselUpdateData = {
+      navItemsCount,
+      activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
+      groupIndexList,
+      slideNodes: nodes,
+    };
+
+    updateIndex();
+    emblaApi.current?.scrollTo(activeIndex, false);
+    for (const listener of listeners.current) {
+      listener(data);
+    }
+  });
+
+  const handleIndexChange: EmblaEventHandler = useEventCallback((_, eventType) => {
+    const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
+    updateIndex();
+    if (eventType === 'autoplay:select') {
+      const noopEvent = new Event('autoplay');
+      onAutoplayIndexChange?.(noopEvent, { event: noopEvent, type: 'autoplay', index: newIndex });
+    }
+  });
+
+  const viewportRef: React.RefObject<HTMLDivElement> = React.useRef(null);
   const containerRef: React.RefObject<HTMLDivElement> = React.useMemo(() => {
     let currentElement: HTMLDivElement | null = null;
 
-    const handleIndexChange = () => {
-      const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
-      const slides = emblaApi.current?.slideNodes();
-      const actualIndex = emblaApi.current?.internalEngine().slideRegistry[newIndex][0] ?? 0;
-
-      // We set the active or first index of group on-screen as the selected tabster index
-      slides?.forEach((slide, slideIndex) => {
-        setTabsterDefault(slide, slideIndex === actualIndex);
-      });
-      setActiveIndex(newIndex);
-    };
-    const handleReinit = () => {
-      const nodes: HTMLElement[] = emblaApi.current?.slideNodes() ?? [];
-      const groupIndexList: number[][] = emblaApi.current?.internalEngine().slideRegistry ?? [];
-      const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
-
-      const data: CarouselUpdateData = {
-        navItemsCount,
-        activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
-        groupIndexList,
-        slideNodes: nodes,
-      };
-
-      for (const listener of listeners.current) {
-        listener(data);
-      }
-    };
     const handleVisibilityChange = () => {
       const cardElements = emblaApi.current?.slideNodes();
       const visibleIndexes = emblaApi.current?.slidesInView() ?? [];
@@ -171,6 +203,7 @@ export function useEmblaCarousel(
       });
     };
 
+    // Get plugins using autoplayRef to prevent state change recreating EmblaCarousel
     const plugins = getPlugins();
 
     return {
@@ -179,13 +212,15 @@ export function useEmblaCarousel(
           emblaApi.current?.off('slidesInView', handleVisibilityChange);
           emblaApi.current?.off('select', handleIndexChange);
           emblaApi.current?.off('reInit', handleReinit);
+          emblaApi.current?.off('autoplay:select', handleIndexChange);
           emblaApi.current?.destroy();
         }
 
-        if (newElement) {
-          currentElement = newElement;
+        // Use direct viewport if available, else fallback to container (includes Carousel controls).
+        currentElement = viewportRef.current ?? newElement;
+        if (currentElement) {
           emblaApi.current = EmblaCarousel(
-            newElement,
+            currentElement,
             {
               ...DEFAULT_EMBLA_OPTIONS,
               ...emblaOptions.current,
@@ -196,10 +231,11 @@ export function useEmblaCarousel(
           emblaApi.current?.on('reInit', handleReinit);
           emblaApi.current?.on('slidesInView', handleVisibilityChange);
           emblaApi.current?.on('select', handleIndexChange);
+          emblaApi.current?.on('autoplay:select', handleIndexChange);
         }
       },
     };
-  }, [getPlugins, setActiveIndex]);
+  }, [getPlugins, handleIndexChange, handleReinit]);
 
   const carouselApi = React.useMemo(
     () => ({
@@ -232,15 +268,6 @@ export function useEmblaCarousel(
   );
 
   React.useEffect(() => {
-    // Scroll to controlled values on update
-    const currentActiveIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
-    emblaOptions.current.startIndex = activeIndex;
-    if (activeIndex !== currentActiveIndex) {
-      emblaApi.current?.scrollTo(activeIndex);
-    }
-  }, [activeIndex]);
-
-  React.useEffect(() => {
     const plugins = getPlugins();
 
     emblaOptions.current = {
@@ -252,6 +279,7 @@ export function useEmblaCarousel(
       watchDrag,
       containScroll,
     };
+
     emblaApi.current?.reInit(
       {
         ...DEFAULT_EMBLA_OPTIONS,
@@ -259,11 +287,23 @@ export function useEmblaCarousel(
       },
       plugins,
     );
-  }, [align, direction, loop, slidesToScroll, watchDrag, containScroll, getPlugins]);
+  }, [align, containScroll, direction, getPlugins, loop, slidesToScroll, watchDrag]);
+
+  React.useEffect(() => {
+    // Scroll to controlled values on update
+    // If active index is out of bounds, re-init will handle instead
+    const currentActiveIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
+    const slideLength = emblaApi.current?.slideNodes()?.length ?? 0;
+    emblaOptions.current.startIndex = activeIndex;
+    if (activeIndex < slideLength && activeIndex !== currentActiveIndex) {
+      emblaApi.current?.scrollTo(activeIndex);
+    }
+  }, [activeIndex]);
 
   return {
     activeIndex,
     carouselApi,
+    viewportRef,
     containerRef,
     subscribeForValues,
     enableAutoplay,

@@ -503,11 +503,28 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
     { data: simplePointsWithLine, calloutProps: { doNotLayer: true } },
     container => {
       // eslint-disable-next-line
-      const handleMouseClick = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onLegendClick');
+      const handleMouseClick = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onLegendSelectionChange');
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.click(legends[0]);
       // Assert
       expect(handleMouseClick).toHaveBeenCalled();
+    },
+  );
+
+  testWithoutWait(
+    'Should select multiple legends on click',
+    VerticalStackedBarChart,
+    { data: simplePoints, legendProps: { canSelectMultipleLegends: true }, calloutProps: { doNotLayer: true } },
+    container => {
+      const firstLegend = screen.queryByText('Metadata1')?.closest('button');
+      const secondLegend = screen.queryByText('Metadata2')?.closest('button');
+      expect(firstLegend).toBeDefined();
+      expect(secondLegend).toBeDefined();
+      fireEvent.click(firstLegend!);
+      fireEvent.click(secondLegend!);
+      //Assert
+      expect(firstLegend).toHaveAttribute('aria-selected', 'true');
+      expect(secondLegend).toHaveAttribute('aria-selected', 'true');
     },
   );
 });

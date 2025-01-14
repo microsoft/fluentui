@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Align menu item long content with icon slots",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

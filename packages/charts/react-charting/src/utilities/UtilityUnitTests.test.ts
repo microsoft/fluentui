@@ -313,6 +313,26 @@ describe('prepareDatapoints', () => {
     const result = utils.prepareDatapoints(2, 0, 3, true);
     matchResult(result);
   });
+
+  it('should handle the case where the range spans across zero', () => {
+    const result = utils.prepareDatapoints(0, -7, 3, false);
+    matchResult(result);
+  });
+
+  it('should return data points when minVal is negative and maxVal is non-negative', () => {
+    const result = utils.prepareDatapoints(3, -5, 2, false);
+    matchResult(result);
+  });
+
+  it('should return data points for positive only range', () => {
+    const result = utils.prepareDatapoints(5, 1, 1, false);
+    matchResult(result);
+  });
+
+  it('should return data points for a negative only range', () => {
+    const result = utils.prepareDatapoints(-1, -5, 1, false);
+    matchResult(result);
+  });
 });
 
 const createYAxisParams = (yAxisParams?: Partial<utils.IYAxisParams>): utils.IYAxisParams => {
@@ -1160,5 +1180,27 @@ describe('getGradientFromToken', () => {
   it('should handle invalid tokens with split error gracefully', () => {
     const result = getGradientFromToken('invalidTokenWithoutDot', false);
     expect(result).toEqual(['invalidTokenWithoutDot', 'invalidTokenWithoutDot']);
+  });
+});
+
+describe('test array equality utility', () => {
+  it('both arrays are undefined', () => {
+    expect(utils.areArraysEqual(undefined, undefined) === true);
+  });
+
+  it('second array is undefined', () => {
+    expect(utils.areArraysEqual(['ac', 'bd'], undefined) === true);
+  });
+
+  it('first array is undefined', () => {
+    expect(utils.areArraysEqual(undefined, ['cg', 'df']) === false);
+  });
+
+  it('both arrays are unequal', () => {
+    expect(utils.areArraysEqual(['ae', 'bf'], ['cg', 'dh']) === false);
+  });
+
+  it('both arrays are equal', () => {
+    expect(utils.areArraysEqual(['ab', 'cd', 'ef', 'gh'], ['ab', 'cd', 'ef', 'gh']) === true);
   });
 });

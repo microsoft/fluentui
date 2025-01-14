@@ -1046,6 +1046,26 @@ describe('Combobox', () => {
       expect(clearButton).toHaveStyle({ display: 'none' });
       expect(clearButton).toHaveAttribute('aria-hidden', 'true');
     });
+
+    it('is not visible when the component is disabled', () => {
+      const { getByText } = render(
+        <Combobox
+          clearable
+          clearIcon={{ children: 'CLEAR BUTTON' }}
+          defaultSelectedOptions={['Red']}
+          defaultValue="Red"
+          disabled
+        >
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>,
+      );
+      const clearButton = getByText('CLEAR BUTTON');
+
+      expect(clearButton).toHaveStyle({ display: 'none' });
+      expect(clearButton).toHaveAttribute('aria-hidden', 'true');
+    });
   });
 
   describe('Active item change', () => {

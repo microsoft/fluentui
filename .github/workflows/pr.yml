@@ -19,11 +19,11 @@ env:
 
   DEPLOY_HOST: fluentuipr.z22.web.core.windows.net
   DEPLOY_URL: https://fluentuipr.z22.web.core.windows.net/${{ github.event.pull_request.number || github.ref_name }}
-  # DEPLOY_BASE_PATH: pull/${{github.event.pull_request.number}}
   DEPLOY_BASE_PATH: ${{ github.event.pull_request.number != '' && format('pull/{0}', github.event.pull_request.number) || format('heads/{0}', github.ref_name) }}
 
 jobs:
   main:
+    if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
     permissions:
       contents: 'read'
@@ -82,6 +82,7 @@ jobs:
           git diff-index --quiet HEAD -- || exit 1
 
   e2e:
+    if: ${{ github.repository_owner == 'microsoft' }}
     # TODO: switch to macos once problematic tests are fixed
     # https://github.com/microsoft/fluentui/issues/33173
     # https://github.com/microsoft/fluentui/issues/33172
@@ -116,9 +117,4 @@ jobs:
         run: yarn cypress verify
 
       - name: Cypress/Playwright E2E tests
-        if: github.event_name == 'pull_request'
         run: yarn nx affected -t e2e --nxBail --parallel 1
-
-      - name: Cypress/Playwright E2E tests (non-PR)
-        if: github.event_name != 'pull_request'
-        run: yarn nx run-many -t e2e --nxBail --parallel 1

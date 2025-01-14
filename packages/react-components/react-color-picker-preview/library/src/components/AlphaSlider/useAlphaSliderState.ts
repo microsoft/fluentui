@@ -5,15 +5,10 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { alphaSliderCSSVars } from './useAlphaSliderStyles.styles';
 import type { AlphaSliderState, AlphaSliderProps } from './AlphaSlider.types';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
-
-const { sliderProgressVar, sliderDirectionVar, thumbColorVar, railColorVar } = alphaSliderCSSVars;
-
-const MIN = 0;
-const MAX = 100;
-
-const getPercent = (value: number, min: number, max: number) => {
-  return max === min ? 0 : ((value - min) / (max - min)) * 100;
-};
+import { MIN, MAX } from '../../utils/constants';
+import { getPercent } from '../../utils/getPercent';
+import type { HsvColor } from '../../types/color';
+import { adjustToTransparency, calculateTransparencyValue, getSliderDirection } from './alphaSliderUtils';
 
 export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: AlphaSliderProps) => {
   'use no memo';
@@ -21,35 +16,36 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const { dir } = useFluent();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
-  const { color, onChange = onChangeFromContext } = props;
-  const _color = colorFromContext || color;
-  const hslColor = tinycolor(_color).toHsl();
+  const { color, onChange = onChangeFromContext, transparency = false, vertical = false } = props;
+  const hsvColor = color || colorFromContext;
+  const hslColor = tinycolor(hsvColor).toHsl();
 
   const [currentValue, setCurrentValue] = useControllableState({
-    state: hslColor.a * 100,
-    initialState: 0,
+    defaultState: calculateTransparencyValue(transparency, props.defaultColor?.a),
+    state: calculateTransparencyValue(transparency, hsvColor?.a),
+    initialState: adjustToTransparency(100, transparency),
   });
+
   const clampedValue = clamp(currentValue, MIN, MAX);
   const valuePercent = getPercent(clampedValue, MIN, MAX);
 
   const inputOnChange = state.input.onChange;
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
-    const newValue = Number(event.target.value);
-    const newColor = tinycolor({ ...hslColor, a: newValue / 100 }).toRgbString();
-    setCurrentValue(clamp(newValue, MIN, MAX));
+    const newValue = adjustToTransparency(Number(event.target.value), transparency);
+    const newColor: HsvColor = { ...hsvColor, a: newValue / 100 };
+    setCurrentValue(newValue);
     inputOnChange?.(event);
     onChange?.(event, { type: 'change', event, color: newColor });
-    onChangeFromContext(event, {
-      color: newColor,
-    });
   });
 
+  const sliderDirection = getSliderDirection(dir, vertical, transparency);
+
   const rootVariables = {
-    [sliderDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '-90deg',
-    [sliderProgressVar]: `${valuePercent}%`,
-    [thumbColorVar]: `transparent`,
-    [railColorVar]: `hsl(${hslColor.h} ${hslColor.s * 100}%, ${hslColor.l * 100}%)`,
+    [alphaSliderCSSVars.sliderDirectionVar]: sliderDirection,
+    [alphaSliderCSSVars.sliderProgressVar]: `${valuePercent}%`,
+    [alphaSliderCSSVars.thumbColorVar]: `transparent`,
+    [alphaSliderCSSVars.railColorVar]: `hsl(${hslColor.h} ${hslColor.s * 100}%, ${hslColor.l * 100}%)`,
   };
 
   // Root props

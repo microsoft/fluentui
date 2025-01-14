@@ -102,9 +102,9 @@ export const useToastTitleStyles_unstable = (state: ToastTitleState): ToastTitle
       toastTitleClassNames.media,
       mediaBaseClassName,
       state.backgroundAppearance === 'inverted' && invertedStyles.media,
-      state.media.className,
       intent && intentIconStyles[intent],
       intent && state.backgroundAppearance === 'inverted' && intentIconStylesInverted[intent],
+      state.media.className,
     );
   }
 

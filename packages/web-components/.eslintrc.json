@@ -35,6 +35,7 @@
       }
     ],
     "comma-dangle": "off",
+    "prefer-const": ["error", { "destructuring": "all" }],
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/no-empty-interface": "error",
@@ -70,5 +71,14 @@
         // TODO: I think we can come up with a regex that ignores variables with __ in them
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.json"],
+      "rules": {
+        "@typescript-eslint/naming-convention": "off",
+        "@typescript-eslint/no-unused-expressions": "off"
+      }
+    }
+  ]
 }

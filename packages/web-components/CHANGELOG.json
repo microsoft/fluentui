@@ -2,6 +2,86 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 09 Jan 2025 04:07:00 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.76",
+      "version": "3.0.0-beta.76",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "2247d505c62e3f464f53b77362175580144ebd56",
+            "comment": "Allow field states to be set regardless of connection status"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "479f2f31226381d03c7a12788fb0bae55cd558c4",
+            "comment": "fix: radio-group emit change with keyboard and disabled radio unchecks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Dec 2024 04:07:55 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.75",
+      "version": "3.0.0-beta.75",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "622c4aacdb5a1ab601287a9adb1064a640388f4f",
+            "comment": "fix tooltip positioning styles for 'below-end' option"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2024 04:07:47 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.74",
+      "version": "3.0.0-beta.74",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "df2eb6185aec09cc78d0ee5a806b41d8b5225dca",
+            "comment": "add current-value attribute to text-input"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Nov 2024 04:07:40 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.73",
+      "version": "3.0.0-beta.73",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "70d3d23742e1914983cde0c9a16bb36e1a35165a",
+            "comment": "feat: add Tooltip component"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2aa7c97cbe6e14931f81f8765f334f0560cd4ee4",
+            "comment": "chore: resolve TS errors within web-components build"
+          },
+          {
+            "author": "viktorgenaev@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "d6af8e30ddd353c900441eea489b4a5aea0db088",
+            "comment": "update tsconfig to be compatiable with 5.2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Oct 2024 04:06:53 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.72",
       "version": "3.0.0-beta.72",

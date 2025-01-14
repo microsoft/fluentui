@@ -16,7 +16,7 @@ export const Collapse: PresenceComponent<CollapseRuntimeParams>;
 export const CollapseDelayed: PresenceComponent<CollapseRuntimeParams>;
 
 // @public (undocumented)
-export const CollapseExaggerated: PresenceComponent<CollapseRuntimeParams>;
+export const CollapseRelaxed: PresenceComponent<CollapseRuntimeParams>;
 
 // @public (undocumented)
 export type CollapseRuntimeParams = {
@@ -37,28 +37,25 @@ export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantPara
 export const createFadePresence: PresenceMotionCreator<FadeVariantParams>;
 
 // @public
+export const createScalePresence: PresenceMotionFnCreator<ScaleVariantParams_unstable, ScaleRuntimeParams_unstable>;
+
+// @public
 export const Fade: PresenceComponent<    {}>;
 
 // @public (undocumented)
-export const FadeExaggerated: PresenceComponent<    {}>;
+export const FadeRelaxed: PresenceComponent<    {}>;
 
 // @public (undocumented)
 export const FadeSnappy: PresenceComponent<    {}>;
 
 // @public
-export const Scale: PresenceComponent<    {
-animateOpacity?: boolean | undefined;
-}>;
+export const Scale: PresenceComponent<ScaleRuntimeParams_unstable>;
 
 // @public (undocumented)
-export const ScaleExaggerated: PresenceComponent<    {
-animateOpacity?: boolean | undefined;
-}>;
+export const ScaleRelaxed: PresenceComponent<ScaleRuntimeParams_unstable>;
 
 // @public (undocumented)
-export const ScaleSnappy: PresenceComponent<    {
-animateOpacity?: boolean | undefined;
-}>;
+export const ScaleSnappy: PresenceComponent<ScaleRuntimeParams_unstable>;
 
 // (No @packageDocumentation comment for this package)
 

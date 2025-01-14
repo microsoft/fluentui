@@ -66,31 +66,35 @@ export const useCarouselCard_unstable = (
     }
   }, [cardFocus]);
 
-  const handleFocusCapture = React.useCallback(
+  const handleFocus = React.useCallback(
     (e: React.FocusEvent) => {
       if (!e.defaultPrevented && isHTMLElement(e.currentTarget) && !isMouseEvent.current) {
         // We want to prevent any browser scroll intervention for 'offscreen' focus
         containerRef?.current?.scrollTo(0, 0);
         selectPageByElement(e, e.currentTarget, false);
       }
+      // Mouse focus event has been consumed
+      isMouseEvent.current = false;
     },
     [selectPageByElement, containerRef],
   );
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handlePointerDown = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!e.defaultPrevented) {
       isMouseEvent.current = true;
     }
   };
-  const handleMouseUp = (e: React.MouseEvent<HTMLDivElement>) => {
+
+  const handlePointerUp = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!e.defaultPrevented) {
       isMouseEvent.current = false;
     }
   };
 
-  const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocusCapture);
-  const onMouseUp = mergeCallbacks(props.onMouseUp, handleMouseUp);
-  const onMouseDown = mergeCallbacks(props.onMouseDown, handleMouseDown);
+  const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocus);
+  const onPointerUp = mergeCallbacks(props.onPointerUp, handlePointerUp);
+  const onPointerDown = mergeCallbacks(props.onPointerDown, handlePointerDown);
+
   const state: CarouselCardState = {
     autoSize,
     components: {
@@ -104,8 +108,8 @@ export const useCarouselCard_unstable = (
         ...props,
         id,
         onFocusCapture,
-        onMouseDown,
-        onMouseUp,
+        onPointerUp,
+        onPointerDown,
         ...focusAttrProps,
       }),
       { elementType: 'div' },

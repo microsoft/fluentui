@@ -45,6 +45,27 @@ export class BaseTextInput extends FASTElement {
   public autofocus!: boolean;
 
   /**
+   * The current value of the input.
+   * @public
+   * @remarks
+   * HTML Attribute: `current-value`
+   */
+  @attr({ attribute: 'current-value' })
+  public currentValue!: string;
+
+  /**
+   * Tracks the current value of the input.
+   *
+   * @param prev - the previous value
+   * @param next - the next value
+   *
+   * @internal
+   */
+  currentValueChanged(prev: string, next: string): void {
+    this.value = next;
+  }
+
+  /**
    * The default slotted content. This is the content that appears in the text field label.
    *
    * @internal
@@ -275,13 +296,6 @@ export class BaseTextInput extends FASTElement {
   public type: TextInputType = TextInputType.text;
 
   /**
-   * The current value of the input.
-   *
-   * @internal
-   */
-  private _value: string = this.initialValue;
-
-  /**
    * A reference to the internal input element.
    *
    * @internal
@@ -346,14 +360,14 @@ export class BaseTextInput extends FASTElement {
    */
   public get value(): string {
     Observable.track(this, 'value');
-    return this._value;
+    return this.currentValue;
   }
 
   public set value(value: string) {
-    this._value = value;
+    this.currentValue = value;
 
     if (this.$fastController.isConnected) {
-      this.control.value = value;
+      this.control.value = value ?? '';
       this.setFormValue(value);
       this.setValidity();
       Observable.notify(this, 'value');

@@ -16,6 +16,8 @@ import { LineChartCustomAccessibilityExample } from './LineChart.CustomAccessibi
 import { LineChartGapsExample } from './LineChart.Gaps.Example';
 import { LineChartLargeDataExample } from './LineChart.LargeData.Example';
 import { LineChartCustomLocaleDateAxisExample } from './LineChart.CustomLocaleDateAxis.Example';
+import { LineChartNegativeExample } from './LineChart.Negative.Example';
+import { LineChartAllNegativeExample } from './LineChart.AllNegative.Example';
 
 const LineChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
@@ -33,6 +35,10 @@ const LineChartLargeDataExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.LargeData.Example.tsx') as string;
 const LineChartCustomLocaleDateAxisExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.CustomLocaleDateAxis.Example.tsx') as string;
+const LineChartNegativeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Negative.Example.tsx') as string;
+const LineChartAllNegativeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.AllNegative.Example.tsx') as string;
 
 // All line charts locale is impacted.
 
@@ -67,6 +73,12 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             </ExampleCard>
             <ExampleCard title="LineChart custom date axis locale" code={LineChartCustomLocaleDateAxisExampleCode}>
               <LineChartCustomLocaleDateAxisExample />
+            </ExampleCard>
+            <ExampleCard title="LineChart with Negative y values" code={LineChartNegativeExampleCode}>
+              <LineChartNegativeExample />
+            </ExampleCard>
+            <ExampleCard title="LineChart with All Negative y values" code={LineChartAllNegativeExampleCode}>
+              <LineChartAllNegativeExample />
             </ExampleCard>
           </div>
         }
