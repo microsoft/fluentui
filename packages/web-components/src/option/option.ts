@@ -7,13 +7,12 @@ import { uniqueId } from '../utils/unique-id.js';
  * An Option Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#option | ARIA option } role.
  *
+ * @slot - The default slot for the option's content
  * @slot checked-indicator - The checked indicator
- * @slot indeterminate-indicator - The indeterminate indicator
- * @fires change - Emits a custom change event when the checked state changes
- * @fires input - Emits a custom input event when the checked state changes
+ * @slot description - Optional description content.
  *
  * @remarks
- * To support single and multiple selection modes with the {@link Dropdown} element, the Option element itself handles
+ * To support single and multiple selection modes with the {@link BaseDropdown} element, the Option element itself handles
  * form association and value submission, rather than its parent Dropdown element. In this way, the Option element is
  * a variation of the Checkbox element that is specifically designed for use in the Dropdown element.
  *
@@ -40,7 +39,7 @@ export class Option extends FASTElement implements Start {
   }
 
   /**
-   * The current checked state of the control.
+   * The current selected state of the option.
    *
    * @internal
    */
@@ -48,7 +47,7 @@ export class Option extends FASTElement implements Start {
   public currentSelected?: boolean;
 
   /**
-   * Sets the checked property to match the currentSelected state.
+   * Sets the selected property to match the currentSelected state.
    *
    * @param prev - the previous selected state
    * @param next - the current selected state
@@ -59,7 +58,7 @@ export class Option extends FASTElement implements Start {
   }
 
   /**
-   * The initial checked state of the element.
+   * The initial selected state of the option.
    *
    * @public
    * @remarks
@@ -69,10 +68,10 @@ export class Option extends FASTElement implements Start {
   public defaultSelected?: boolean;
 
   /**
-   * Updates the checked state when the `checked` attribute is changed, unless the checked state has been changed by the user.
+   * Updates the selected state when the `selected` attribute is changed, unless the selected state has been changed by the user.
    *
-   * @param prev - The previous initial checked state
-   * @param next - The current initial checked state
+   * @param prev - The previous initial selected state
+   * @param next - The current initial selected state
    * @internal
    */
   protected defaultSelectedChanged(prev: boolean | undefined, next: boolean | undefined): void {
@@ -101,7 +100,7 @@ export class Option extends FASTElement implements Start {
   }
 
   /**
-   * The disabled state of the control.
+   * The current disabled state of the option.
    *
    * @public
    */
@@ -109,7 +108,7 @@ export class Option extends FASTElement implements Start {
   public disabled?: boolean;
 
   /**
-   * The initial disabled state of the control.
+   * The initial disabled state of the option.
    *
    * @public
    * @remarks
@@ -141,7 +140,7 @@ export class Option extends FASTElement implements Start {
   public formAttribute?: string;
 
   /**
-   * Indicates that the option value matches the value of the dropdown's control.
+   * Indicates that the option value should sync with the value of the dropdown's control.
    *
    * @public
    * @remarks
@@ -162,7 +161,7 @@ export class Option extends FASTElement implements Start {
   public override id: string = uniqueId('option-');
 
   /**
-   * The initial value of the input.
+   * The initial value of the option.
    *
    * @public
    * @remarks
@@ -172,7 +171,7 @@ export class Option extends FASTElement implements Start {
   public initialValue: string = '';
 
   /**
-   * Sets the value of the input when the `value` attribute changes.
+   * Sets the value of the option when the `value` attribute changes.
    *
    * @param prev - The previous initial value
    * @param next - The current initial value
@@ -183,7 +182,7 @@ export class Option extends FASTElement implements Start {
   }
 
   /**
-   * Indicates that the option is in a multiple selection mode.
+   * Indicates that the option is in a multiple selection mode context.
    * @public
    */
   @observable
@@ -201,7 +200,7 @@ export class Option extends FASTElement implements Start {
   }
 
   /**
-   * The name of the element. This element's value will be surfaced during form submission under the provided name.
+   * The name of the option. This option's value will be surfaced during form submission under the provided name.
    *
    * @public
    * @remarks
@@ -248,7 +247,7 @@ export class Option extends FASTElement implements Start {
   }
 
   /**
-   * Indicates that the checked state has been changed by the user.
+   * Indicates that the selected state has been changed by the user.
    *
    * @internal
    */
@@ -297,7 +296,7 @@ export class Option extends FASTElement implements Start {
   }
 
   /**
-   * The element's current checked state.
+   * The option's current selected state.
    *
    * @public
    */
@@ -336,14 +335,14 @@ export class Option extends FASTElement implements Start {
   }
 
   /**
-   * The internal value of the input.
+   * The internal value of the option.
    *
    * @internal
    */
   private _value: string = this.initialValue;
 
   /**
-   * The current value of the input.
+   * The current value of the option.
    *
    * @public
    */
@@ -411,7 +410,7 @@ export class Option extends FASTElement implements Start {
   }
 
   /**
-   * Toggles the checked state of the control.
+   * Toggles the selected state of the control.
    *
    * @param force - Forces the element to be checked or unchecked
    * @public
