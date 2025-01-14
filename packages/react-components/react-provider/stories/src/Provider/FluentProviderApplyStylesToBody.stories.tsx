@@ -12,7 +12,7 @@ const useGlobalStyles = makeStaticStyles({
   },
 });
 
-const usLocalStyles = makeStyles({
+const useLocalStyles = makeStyles({
   provider: {
     backgroundColor: 'none',
   },
@@ -23,7 +23,7 @@ const usLocalStyles = makeStyles({
  * which can be useful for global styles.
  */
 export const ApplyStylesToBody = () => {
-  const styles = usLocalStyles();
+  const styles = useLocalStyles();
 
   useGlobalStyles();
 
