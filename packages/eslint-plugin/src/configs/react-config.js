@@ -1,5 +1,4 @@
 const configHelpers = require('../utils/configHelpers');
-const { react: restrictedGlobals } = require('./restricted-globals');
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
@@ -23,6 +22,16 @@ module.exports = {
   },
   rules: {
     /**
+     * Enforce consistent importing from React by resticting named imports.
+     */
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: "ImportDeclaration[source.value='react'] ImportSpecifier",
+        message: "Avoid named imports from 'react'. Use 'import * as React from \"react\"' instead.",
+      },
+    ],
+    /**
      * griffel eslint rules
      * @see https://github.com/microsoft/griffel/tree/main/packages/eslint-plugin
      */
@@ -30,7 +39,6 @@ module.exports = {
     '@griffel/no-shorthands': 'error',
     '@griffel/pseudo-element-naming': 'error',
     '@griffel/styles-file': 'error',
-    'no-restricted-globals': restrictedGlobals,
     /**
      * react eslint rules
      * @see https://github.com/yannickcr/eslint-plugin-react
@@ -125,7 +133,6 @@ module.exports = {
       files: [...configHelpers.testFiles],
       rules: {
         'react/jsx-no-bind': 'off',
-        'no-restricted-globals': 'off',
       },
     },
     {
@@ -133,7 +140,6 @@ module.exports = {
       rules: {
         // allow makeStyles calls in stories as examples should be defined in a single file
         '@griffel/styles-file': 'off',
-        'no-restricted-globals': 'off',
         // allow arrow functions in stories for now (may want to change this later since using
         // constantly-mutating functions can be an anti-pattern which we may not want to demonstrate
         // in our converged components docs; it happened to be allowed starting out because .stories

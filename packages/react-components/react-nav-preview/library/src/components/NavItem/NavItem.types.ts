@@ -1,5 +1,5 @@
 import { NavItemValue } from '../NavContext.types';
-import { NavSize } from '../Nav/Nav.types';
+import { NavDensity } from '../Nav/Nav.types';
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
@@ -19,6 +19,9 @@ export type NavItemSlots = {
  * NavItem Props
  */
 export type NavItemProps = ComponentProps<NavItemSlots> & {
+  /**
+   * Destination where the nav item points to.
+   */
   href?: string;
   /**
    * The value that identifies this navCategoryItem when selected.
@@ -37,9 +40,9 @@ export type NavItemState = ComponentState<NavItemSlots> &
     selected: boolean;
 
     /**
-     * The size of the NavItem
+     * The density of the NavItem
      *
      * @default 'medium'
      */
-    size: NavSize;
+    density: NavDensity;
   };

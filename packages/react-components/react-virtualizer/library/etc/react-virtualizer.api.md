@@ -6,14 +6,18 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { Dispatch } from 'react';
-import type { FC } from 'react';
-import { MutableRefObject } from 'react';
 import * as React_2 from 'react';
-import type { RefObject } from 'react';
-import type { SetStateAction } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public
+export type DynamicVirtualizerContextProps = Required<VirtualizerContextProps>;
+
+// @public (undocumented)
+export interface IndexedResizeCallbackElement {
+    // (undocumented)
+    handleResize: () => void;
+}
 
 // @public (undocumented)
 export const renderVirtualizer_unstable: (state: VirtualizerState) => JSX.Element;
@@ -27,14 +31,14 @@ export const renderVirtualizerScrollViewDynamic_unstable: (state: VirtualizerScr
 // @public
 export interface ResizeCallbackWithRef {
     // (undocumented)
-    (entries: ResizeObserverEntry[], observer: ResizeObserver, scrollRef?: MutableRefObject<HTMLElement | null>): void;
+    (entries: ResizeObserverEntry[], observer: ResizeObserver, scrollRef?: React_2.MutableRefObject<HTMLElement | null>): void;
 }
 
 // @public (undocumented)
 export type ScrollToInterface = {
     scrollTo: (index: number, behavior?: ScrollBehavior, callback?: (index: number) => void) => void;
-    virtualizerLength: RefObject<number>;
-    currentIndex: RefObject<number> | undefined;
+    virtualizerLength: React_2.RefObject<number>;
+    currentIndex: React_2.RefObject<number> | undefined;
 };
 
 // @public (undocumented)
@@ -43,9 +47,9 @@ export const scrollToItemDynamic: (params: ScrollToItemDynamicParams) => void;
 // @public (undocumented)
 export type ScrollToItemDynamicParams = {
     index: number;
-    itemSizes: RefObject<number[]>;
+    itemSizes: React_2.RefObject<number[]>;
     totalSize: number;
-    scrollViewRef: RefObject<HTMLDivElement>;
+    scrollViewRef: React_2.RefObject<HTMLDivElement>;
     axis?: 'horizontal' | 'vertical';
     reversed?: boolean;
     behavior?: ScrollBehavior;
@@ -59,7 +63,7 @@ export type ScrollToItemStaticParams = {
     index: number;
     itemSize: number;
     totalItems: number;
-    scrollViewRef: RefObject<HTMLDivElement>;
+    scrollViewRef: React_2.RefObject<HTMLDivElement>;
     axis?: 'horizontal' | 'vertical';
     reversed?: boolean;
     behavior?: ScrollBehavior;
@@ -71,13 +75,24 @@ export const useDynamicVirtualizerMeasure: <TElement extends HTMLElement>(virtua
     bufferItems: number;
     bufferSize: number;
     scrollRef: (instance: TElement | null) => void;
+    containerSizeRef: React_2.RefObject<number>;
+    updateScrollPosition: (scrollPosition: number) => void;
 };
 
 // @public
 export const useIntersectionObserver: (callback: IntersectionObserverCallback, options?: IntersectionObserverInit) => {
-    setObserverList: Dispatch<SetStateAction<Element[] | undefined>>;
+    setObserverList: React_2.Dispatch<React_2.SetStateAction<Element[] | undefined>>;
     setObserverInit: (newInit: IntersectionObserverInit | undefined) => void;
-    observer: MutableRefObject<IntersectionObserver | undefined>;
+    observer: React_2.MutableRefObject<IntersectionObserver | undefined>;
+};
+
+// @public
+export function useMeasureList<TElement extends HTMLElement & IndexedResizeCallbackElement = HTMLElement & IndexedResizeCallbackElement>(currentIndex: number, refLength: number, totalLength: number, defaultItemSize: number): {
+    widthArray: React_2.MutableRefObject<any[]>;
+    heightArray: React_2.MutableRefObject<any[]>;
+    createIndexedRef: (index: number) => (el: TElement) => void;
+    refArray: React_2.MutableRefObject<(TElement | null | undefined)[]>;
+    sizeUpdateCount: number;
 };
 
 // @public
@@ -89,6 +104,7 @@ export const useStaticVirtualizerMeasure: <TElement extends HTMLElement>(virtual
     bufferItems: number;
     bufferSize: number;
     scrollRef: (instance: TElement | null) => void;
+    containerSizeRef: React_2.MutableRefObject<number>;
 };
 
 // @public (undocumented)
@@ -113,9 +129,9 @@ export const useVirtualizerScrollViewStyles_unstable: (state: VirtualizerScrollV
 export const useVirtualizerStyles_unstable: (state: VirtualizerState) => VirtualizerState;
 
 // @public
-export const Virtualizer: FC<VirtualizerProps>;
+export const Virtualizer: React_2.FC<VirtualizerProps>;
 
-// @public (undocumented)
+// @public
 export type VirtualizerChildRenderFunction = (index: number, isScrolling: boolean) => React_2.ReactNode;
 
 // @public (undocumented)
@@ -125,6 +141,7 @@ export const virtualizerClassNames: SlotClassNames<VirtualizerSlots>;
 export type VirtualizerContextProps = {
     contextIndex: number;
     setContextIndex: (index: number) => void;
+    childProgressiveSizes?: React_2.MutableRefObject<number[]>;
 };
 
 // @public (undocumented)
@@ -132,25 +149,29 @@ export const VirtualizerContextProvider: React_2.Provider<VirtualizerContextProp
 
 // @public (undocumented)
 export type VirtualizerDataRef = {
-    progressiveSizes: RefObject<number[]>;
-    nodeSizes: RefObject<number[]>;
+    progressiveSizes: React_2.RefObject<number[]>;
+    nodeSizes: React_2.RefObject<number[]>;
     setFlaggedIndex: (index: number | null) => void;
-    currentIndex: RefObject<number>;
+    currentIndex: React_2.RefObject<number>;
 };
 
 // @public (undocumented)
 export type VirtualizerMeasureDynamicProps = {
     defaultItemSize: number;
-    currentIndex: number;
+    virtualizerContext: DynamicVirtualizerContextProps;
     numItems: number;
     getItemSize: (index: number) => number;
     direction?: 'vertical' | 'horizontal';
+    bufferItems?: number;
+    bufferSize?: number;
 };
 
 // @public (undocumented)
 export type VirtualizerMeasureProps = {
     defaultItemSize: number;
     direction?: 'vertical' | 'horizontal';
+    bufferItems?: number;
+    bufferSize?: number;
 };
 
 // @public (undocumented)
@@ -169,13 +190,14 @@ export const VirtualizerScrollViewDynamic: React_2.FC<VirtualizerScrollViewDynam
 export const virtualizerScrollViewDynamicClassNames: SlotClassNames<VirtualizerScrollViewDynamicSlots>;
 
 // @public (undocumented)
-export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex'>> & {
+export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex' | 'virtualizerContext'>> & {
     itemSize: number;
     getItemSize?: (index: number) => number;
     numItems: number;
     children: VirtualizerChildRenderFunction;
-    imperativeRef?: RefObject<ScrollToInterface>;
+    imperativeRef?: React_2.RefObject<ScrollToInterface>;
     enablePagination?: boolean;
+    virtualizerContext?: DynamicVirtualizerContextProps;
 };
 
 // @public (undocumented)
@@ -189,7 +211,7 @@ export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrol
     itemSize: number;
     numItems: number;
     children: VirtualizerChildRenderFunction;
-    imperativeRef?: RefObject<ScrollToInterface>;
+    imperativeRef?: React_2.RefObject<ScrollToInterface>;
     enablePagination?: boolean;
 };
 

@@ -9,10 +9,14 @@ describe('ColorPicker', () => {
     displayName: 'ColorPicker',
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
-    const result = render(<ColorPicker>Default ColorPicker</ColorPicker>);
-    expect(result.container).toMatchSnapshot();
+    const result = render(<ColorPicker color={{ h: 0, s: 1, v: 1 }} />);
+    expect(result.container).toMatchInlineSnapshot(`
+      <div>
+        <div
+          class="fui-ColorPicker"
+        />
+      </div>
+    `);
   });
 });

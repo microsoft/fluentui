@@ -1,6 +1,6 @@
-import { attr, ElementsFilter, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, type ElementsFilter, FASTElement, observable } from '@microsoft/fast-element';
 import { keyArrowLeft, keyArrowRight, keyEnter, keySpace } from '@microsoft/fast-web-utilities';
-import { MenuList } from '../menu-list/menu-list.js';
+import type { MenuList } from '../menu-list/menu-list.js';
 import type { StartEndOptions } from '../patterns/start-end.js';
 import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
@@ -111,7 +111,7 @@ export class MenuItem extends FASTElement {
     toggleState(this.elementInternals, 'checked', checkableMenuItem ? next : false);
 
     if (this.$fastController.isConnected) {
-      this.$emit('change');
+      this.$emit('change', next, { bubbles: true });
     }
   }
 
@@ -183,7 +183,6 @@ export class MenuItem extends FASTElement {
       case keyArrowRight:
         //open/focus on submenu
         if (!this.disabled) {
-          // @ts-expect-error - Baseline 2024
           this.submenu?.togglePopover(true);
           this.submenu?.focus();
         }
@@ -193,7 +192,6 @@ export class MenuItem extends FASTElement {
       case keyArrowLeft:
         //close submenu
         if (this.parentElement?.hasAttribute('popover')) {
-          // @ts-expect-error - Baseline 2024
           this.parentElement.togglePopover(false);
           // focus the menu item containing the submenu
           this.parentElement.parentElement?.focus();
@@ -224,7 +222,6 @@ export class MenuItem extends FASTElement {
     if (this.disabled) {
       return false;
     }
-    // @ts-expect-error - Baseline 2024
     this.submenu?.togglePopover(true);
     return false;
   };
@@ -236,7 +233,6 @@ export class MenuItem extends FASTElement {
     if (this.contains(document.activeElement)) {
       return false;
     }
-    // @ts-expect-error - Baseline 2024
     this.submenu?.togglePopover(false);
 
     return false;
@@ -247,13 +243,11 @@ export class MenuItem extends FASTElement {
    * @internal
    */
   public toggleHandler = (e: Event): void => {
-    // @ts-expect-error - Baseline 2024
     if (e instanceof ToggleEvent && e.newState === 'open') {
       this.setAttribute('tabindex', '-1');
       this.elementInternals.ariaExpanded = 'true';
       this.setSubmenuPosition();
     }
-    // @ts-expect-error - Baseline 2024
     if (e instanceof ToggleEvent && e.newState === 'closed') {
       this.elementInternals.ariaExpanded = 'false';
       this.setAttribute('tabindex', '0');
@@ -275,7 +269,6 @@ export class MenuItem extends FASTElement {
 
       case MenuItemRole.menuitem:
         if (!!this.submenu) {
-          // @ts-expect-error - Baseline 2024
           this.submenu.togglePopover(true);
           this.submenu.focus();
           break;

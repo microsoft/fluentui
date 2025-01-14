@@ -65,6 +65,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #ffffff;
                   border-radius: 50%;
                   border: none;
@@ -75,7 +76,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
+                  justify-content: center;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -271,6 +274,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #ffffff;
                   border-radius: 50%;
                   border: none;
@@ -281,7 +285,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
+                  justify-content: center;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -477,6 +483,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #ffffff;
                   border-radius: 50%;
                   border: none;
@@ -487,7 +494,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
+                  justify-content: center;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -683,6 +692,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #ffffff;
                   border-radius: 50%;
                   border: none;
@@ -693,7 +703,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
+                  justify-content: center;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -893,6 +905,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #ffffff;
                   border-radius: 50%;
                   border: none;
@@ -903,7 +916,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
+                  justify-content: center;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -1099,6 +1114,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #ffffff;
                   border-radius: 50%;
                   border: none;
@@ -1109,7 +1125,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
+                  justify-content: center;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -1305,6 +1323,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #ffffff;
                   border-radius: 50%;
                   border: none;
@@ -1315,7 +1334,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
+                  justify-content: center;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -1511,6 +1532,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #ffffff;
                   border-radius: 50%;
                   border: none;
@@ -1521,7 +1543,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
+                  justify-content: center;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -1721,6 +1745,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #ffffff;
                   border-radius: 50%;
                   border: none;
@@ -1731,7 +1756,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
+                  justify-content: center;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -1927,6 +1954,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #ffffff;
                   border-radius: 50%;
                   border: none;
@@ -1937,7 +1965,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
+                  justify-content: center;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -2133,6 +2163,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #a19f9d;
                   border-radius: 50%;
                   border: none;
@@ -2143,7 +2174,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
+                  justify-content: center;
                   outline: transparent;
                   padding-bottom: 1px;
                   padding-left: 1px;
@@ -2204,6 +2237,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border-color: Window;
+                  outline: 1px solid ButtonText;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
                   border-color: #605e5c;
@@ -2339,6 +2373,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #ffffff;
                   border-radius: 50%;
                   border: none;
@@ -2349,7 +2384,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  forced-color-adjust: none;
                   height: 20px;
+                  justify-content: center;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;

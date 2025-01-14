@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import * as React from 'react';
 import { useCustomizationSettings } from '@fluentui/utilities';
 import { createTheme } from '@fluentui/theme';
 import { ThemeContext } from './ThemeContext';
@@ -15,7 +15,7 @@ function useCompatTheme(): ITheme | undefined {
  * React hook for programmatically accessing the theme.
  */
 export const useTheme = (): Theme => {
-  const theme = useContext(ThemeContext);
+  const theme = React.useContext(ThemeContext);
   const legacyTheme = useCompatTheme();
 
   return theme || legacyTheme || createTheme({});

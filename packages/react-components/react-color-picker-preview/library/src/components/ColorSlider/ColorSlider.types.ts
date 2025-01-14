@@ -1,9 +1,10 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
+import type { HsvColor } from '../../types/color';
+import type { ColorPickerProps } from '../ColorPicker/ColorPicker.types';
 
 export type SliderOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
-  value: number;
-  channel: string;
+  color: HsvColor;
 };
 
 export type ColorSliderSlots = {
@@ -18,46 +19,34 @@ export type ColorSliderSlots = {
  */
 export type ColorSliderProps = Omit<
   ComponentProps<Partial<ColorSliderSlots>, 'input'>,
-  'defaultValue' | 'onChange' | 'value'
-> & {
-  channel?: string;
-  /**
-   * The starting value for an uncontrolled ColorSlider.
-   * Mutually exclusive with `value` prop.
-   */
-  defaultValue?: number;
+  'defaultValue' | 'onChange' | 'value' | 'color'
+> &
+  Pick<ColorPickerProps, 'shape'> & {
+    channel?: string;
 
-  /**
-   * The max value of the Slider.
-   * @default 360
-   */
-  max?: number;
+    /**
+     * Triggers a callback when the value has been changed. This will be called on every individual step.
+     */
+    onChange?: EventHandler<SliderOnChangeData>;
 
-  /**
-   * The min value of the Slider.
-   * @default 0
-   */
-  min?: number;
+    /**
+     * Render the Slider in a vertical orientation, smallest value on the bottom.
+     * @default `false`
+     */
+    vertical?: boolean;
 
-  /**
-   * Triggers a callback when the value has been changed. This will be called on every individual step.
-   */
-  onChange?: EventHandler<SliderOnChangeData>;
+    /**
+     * Color of the ColorPicker
+     */
+    color?: HsvColor;
 
-  /**
-   * Render the Slider in a vertical orientation, smallest value on the bottom.
-   * @default `false`
-   */
-  vertical?: boolean;
-
-  /**
-   * The current value of the controlled ColorSlider.
-   * Mutually exclusive with `defaultValue` prop.
-   */
-  value?: number;
-};
+    /**
+     * The starting color for an uncontrolled ColorSlider.
+     */
+    defaultColor?: HsvColor;
+  };
 
 /**
  * State used in rendering ColorSlider
  */
-export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical'>;
+export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical' | 'shape'>;

@@ -1,5 +1,4 @@
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 import type { CounterBadge } from './counter-badge.js';
 import {
   CounterBadgeAppearance,
@@ -9,20 +8,16 @@ import {
 } from './counter-badge.options.js';
 
 test.describe('CounterBadge component', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-badge-counter-badge--counter-badge'));
-
-    await page.waitForFunction(() => customElements.whenDefined('fluent-counter-badge'));
+  test.use({
+    tagName: 'fluent-counter-badge',
   });
 
   test('should display the count when then the `count` attribute is equal to the `overflow-count` attribute', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-counter-badge');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-counter-badge count="100" overflow-count="100"></fluent-counter-badge>
-    `);
+    await fastPage.setTemplate({ attributes: { count: '100', 'overflow-count': '100' } });
 
     await expect(element).toHaveAttribute('overflow-count', '100');
 
@@ -30,13 +25,11 @@ test.describe('CounterBadge component', () => {
   });
 
   test('should display an overflow count when the `count` attribute is greater than the `overflow-count` attribute', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-counter-badge');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-counter-badge count="101" overflow-count="100"></fluent-counter-badge>
-    `);
+    await fastPage.setTemplate({ attributes: { count: '101', 'overflow-count': '100' } });
 
     await expect(element).toHaveAttribute('overflow-count', '100');
 
@@ -54,13 +47,11 @@ test.describe('CounterBadge component', () => {
   });
 
   test('should display the count when the `overflow-count` attribute is higher than the `count` attribute', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-counter-badge');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-counter-badge count="101" overflow-count="100"></fluent-counter-badge>
-    `);
+    await fastPage.setTemplate({ attributes: { count: '101', 'overflow-count': '100' } });
 
     await expect(element).toHaveAttribute('overflow-count', '100');
 
@@ -75,24 +66,20 @@ test.describe('CounterBadge component', () => {
     await expect(element).toContainText('101');
   });
 
-  test('should display the count when the `count` attribute is set', async ({ page }) => {
-    const element = page.locator('fluent-counter-badge');
+  test('should display the count when the `count` attribute is set', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-counter-badge count="5"></fluent-counter-badge>
-    `);
+    await fastPage.setTemplate({ attributes: { count: '5' } });
 
     await expect(element).toHaveAttribute('count', '5');
 
     await expect(element).toContainText('5');
   });
 
-  test('should show 0 when showZero attribute is present and value is 0', async ({ page }) => {
-    const element = page.locator('fluent-counter-badge');
+  test('should show 0 when showZero attribute is present and value is 0', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-counter-badge show-zero count="0"></fluent-counter-badge>
-    `);
+    await fastPage.setTemplate({ attributes: { 'show-zero': true, count: '0' } });
 
     await expect(element).toHaveAttribute('show-zero');
 
@@ -100,7 +87,7 @@ test.describe('CounterBadge component', () => {
 
     await expect(element).toContainText('0');
 
-    await element.evaluate((node: CounterBadge) => {
+    await element.evaluate(node => {
       node.removeAttribute('show-zero');
     });
 
@@ -112,13 +99,11 @@ test.describe('CounterBadge component', () => {
   });
 
   test('should display "0" when the `showZero` property is set to true and the `count` property is set to 0', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-counter-badge');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-counter-badge count="0"></fluent-counter-badge>
-    `);
+    await fastPage.setTemplate({ attributes: { count: '0' } });
 
     await expect(element).toHaveJSProperty('showZero', false);
 
@@ -134,12 +119,10 @@ test.describe('CounterBadge component', () => {
     await expect(element).toContainText('0');
   });
 
-  test('should display as a dot when the `dot` property is set to true', async ({ page }) => {
-    const element = page.locator('fluent-counter-badge');
+  test('should display as a dot when the `dot` property is set to true', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-counter-badge count="5"></fluent-counter-badge>
-    `);
+    await fastPage.setTemplate({ attributes: { count: '5' } });
 
     await expect(element).toContainText('5');
 
@@ -154,12 +137,10 @@ test.describe('CounterBadge component', () => {
     await expect(element).not.toContainText('5');
   });
 
-  test('should display as a number when the `dot` property is set to false', async ({ page }) => {
-    const element = page.locator('fluent-counter-badge');
+  test('should display as a number when the `dot` property is set to false', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-counter-badge count="5" dot></fluent-counter-badge>
-    `);
+    await fastPage.setTemplate({ attributes: { count: '5', dot: true } });
 
     await expect(element).not.toContainText('5');
 
@@ -174,77 +155,67 @@ test.describe('CounterBadge component', () => {
     await expect(element).toHaveJSProperty('dot', false);
   });
 
-  for (const shape in CounterBadgeShape) {
-    test(`should set the \`shape\` property to "${shape}" when the attribute is set to "${shape}"`, async ({
-      page,
-    }) => {
-      const element = page.locator('fluent-counter-badge');
+  test('should set the `shape` property to match the `shape` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-counter-badge shape="${shape}"></fluent-counter-badge>
-    `);
+    for (const shape of Object.values(CounterBadgeShape)) {
+      await test.step(`should set the \`shape\` property to \`${shape}\``, async () => {
+        await fastPage.setTemplate({ attributes: { shape } });
 
-      await expect(element).toHaveAttribute('shape', shape);
+        await expect(element).toHaveAttribute('shape', shape);
 
-      await expect(element).toHaveJSProperty('shape', shape);
+        await expect(element).toHaveJSProperty('shape', shape);
 
-      await expect(element).toHaveCustomState(shape);
-    });
-  }
+        await expect.soft(element).toHaveCustomState(shape);
+      });
+    }
+  });
 
-  for (const color in CounterBadgeColor) {
-    test(`should set the \`color\` property to "${color}" when the attribute is set to "${color}"`, async ({
-      page,
-    }) => {
-      const element = page.locator('fluent-counter-badge');
+  test('should set the `color` property to match the `color` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-          <fluent-counter-badge color="${color}"></fluent-counter-badge>
-      `);
+    for (const color of Object.values(CounterBadgeColor)) {
+      await test.step(`should set the \`color\` property to \`${color}\``, async () => {
+        await fastPage.setTemplate({ attributes: { color } });
 
-      await expect(element).toHaveAttribute('color', color);
+        await expect(element).toHaveAttribute('color', color);
 
-      await expect(element).toHaveJSProperty('color', color);
+        await expect(element).toHaveJSProperty('color', color);
 
-      await expect(element).toHaveCustomState(color);
-    });
-  }
+        await expect.soft(element).toHaveCustomState(color);
+      });
+    }
+  });
 
-  for (const size in CounterBadgeSize) {
-    test(`should set the \`size\` property to "${size}" when the attribute is set to "${size}"`, async ({ page }) => {
-      const element = page.locator('fluent-counter-badge');
+  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-          <fluent-counter-badge size="${size}"></fluent-counter-badge>
-      `);
+    for (const size of Object.values(CounterBadgeSize)) {
+      await test.step(`should set the \`size\` property to "${size}"`, async () => {
+        await fastPage.setTemplate({ attributes: { size } });
 
-      await expect(element).toHaveAttribute('size', size);
+        await expect(element).toHaveAttribute('size', size);
 
-      await expect(element).toHaveJSProperty('size', size);
+        await expect(element).toHaveJSProperty('size', size);
 
-      await expect(element).toHaveCustomState(size);
-    });
-  }
+        await expect(element).toHaveCustomState(size);
+      });
+    }
+  });
 
-  for (const appearance in CounterBadgeAppearance) {
-    test(`should set the \`appearance\` property to "${appearance}" when the attribute is set to "${appearance}"`, async ({
-      page,
-    }) => {
-      const element = page.locator('fluent-counter-badge');
+  test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-          <fluent-counter-badge appearance="${appearance}"></fluent-counter-badge>
-      `);
+    for (const appearance of Object.values(CounterBadgeAppearance)) {
+      await test.step(appearance, async () => {
+        await fastPage.setTemplate({ attributes: { appearance } });
 
-      await element.evaluate((node: CounterBadge, appearance) => {
-        node.appearance = appearance;
-      }, appearance as CounterBadgeAppearance);
+        await expect(element).toHaveJSProperty('appearance', appearance);
 
-      await expect(element).toHaveAttribute('appearance', appearance);
+        await expect(element).toHaveAttribute('appearance', appearance);
 
-      await expect(element).toHaveJSProperty('appearance', appearance);
-
-      await expect(element).toHaveCustomState(appearance);
-    });
-  }
+        await expect(element).toHaveCustomState(appearance);
+      });
+    }
+  });
 });

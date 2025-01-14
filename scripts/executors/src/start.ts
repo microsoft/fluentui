@@ -210,8 +210,19 @@ async function getSelectedTarget(
     .filter(targetName => {
       return omitTargets.includes(targetName) ? false : true;
     })
+    .map(targetName => {
+      const targetConfigurations = Object.keys(projectTargets[targetName].configurations || {});
+
+      if (targetConfigurations) {
+        return [targetName, ...targetConfigurations.map(target => `${targetName}:${target}`)];
+      }
+
+      return targetName;
+    })
+    .flat()
     .sort()
     .concat('help');
+
   const preselectedTargetChoice =
     preselectedTarget && availableTargets.indexOf(preselectedTarget) !== -1
       ? availableTargets.indexOf(preselectedTarget)
@@ -269,39 +280,43 @@ function createTargetDescription(
   targetName: string,
   targetsDescription: Record<string, string>,
 ) {
-  const description = targetsDescription[targetName];
+  const manualConfigDrivenDescription = targetsDescription[targetName];
   const nxTargetConfiguration = projectConfig.data.targets?.[targetName];
+  const nxMetadataDescription = nxTargetConfiguration?.metadata?.description;
+  const scriptContent: string | undefined = nxTargetConfiguration?.metadata?.scriptContent;
+  const command = scriptContent || nxTargetConfiguration?.options.command || nxTargetConfiguration?.command;
 
+  // special case for non existent targets that we add artificially like `help`
   if (!nxTargetConfiguration) {
-    return description;
+    return manualConfigDrivenDescription;
+  }
+
+  if (nxMetadataDescription) {
+    return nxMetadataDescription;
   }
 
   if (targetName === 'start') {
-    const scriptContent = nxTargetConfiguration.metadata?.scriptContent;
-    if (scriptContent.includes('storybook')) {
+    if (command && command.includes('storybook')) {
       return `Start the project (Alias of "storybook" target)`;
     }
-    return description;
+
+    return manualConfigDrivenDescription;
   }
 
   if (targetName === 'e2e') {
-    const scriptContent = nxTargetConfiguration.metadata?.scriptContent;
-    const runnerType = getRunnerType(scriptContent);
+    const runnerType = command && getRunnerType(command);
+    console.log({ runnerType, command });
 
-    if (!runnerType) {
-      return scriptContent;
-    }
-
-    return description + ` (using ${runnerType})`;
+    return runnerType ? manualConfigDrivenDescription + ` (using ${runnerType})` : manualConfigDrivenDescription;
   }
 
-  return description ?? nxTargetConfiguration.metadata?.scriptContent;
+  return manualConfigDrivenDescription ?? command;
 
-  function getRunnerType(scriptContent: string): 'cypress' | 'playwright' | null {
-    if (scriptContent.includes('cypress')) {
+  function getRunnerType(value: string): 'cypress' | 'playwright' | null {
+    if (value.includes('cypress')) {
       return 'cypress';
     }
-    if (scriptContent.includes('playwright')) {
+    if (value.includes('playwright')) {
       return 'playwright';
     }
 

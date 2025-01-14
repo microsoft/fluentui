@@ -8,3 +8,4 @@ export * from './StoryVariantDecorator';
 export * from './StoryWrightDecorator';
 export * from './TestWrapperDecorator';
 export * from './DevOnlyStoryHeader';
+export * from './ThemeProviderDecorator';

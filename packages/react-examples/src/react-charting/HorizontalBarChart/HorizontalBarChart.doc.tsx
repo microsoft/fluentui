@@ -23,7 +23,7 @@ export const HorizontalBarChartPageProps: IDocPageProps = {
   title: 'HorizontalBarChart',
   componentName: 'HorizontalBarChart',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/HorizontalBarChart',
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/HorizontalBarChart',
   examples: [
     {
       title: 'HorizontalBarChart n/m scale',

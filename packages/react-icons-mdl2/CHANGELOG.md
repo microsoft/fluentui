@@ -1,8 +1,75 @@
 # Change Log - @fluentui/react-icons-mdl2
 
-This log was last generated on Thu, 15 Aug 2024 07:23:34 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Dec 2024 07:22:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.82)
+
+Mon, 23 Dec 2024 07:22:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.3.81..@fluentui/react-icons-mdl2_v1.3.82)
+
+### Patches
+
+- Bump @fluentui/react-icon-provider to v1.3.78 ([PR #33445](https://github.com/microsoft/fluentui/pull/33445) by beachball)
+
+## [1.3.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.81)
+
+Fri, 13 Dec 2024 07:23:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.3.80..@fluentui/react-icons-mdl2_v1.3.81)
+
+### Patches
+
+- Bump @fluentui/react-icon-provider to v1.3.77 ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by beachball)
+
+## [1.3.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.80)
+
+Fri, 01 Nov 2024 07:23:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.3.79..@fluentui/react-icons-mdl2_v1.3.80)
+
+### Patches
+
+- Bump @fluentui/react-icon-provider to v1.3.76 ([PR #33167](https://github.com/microsoft/fluentui/pull/33167) by beachball)
+
+## [1.3.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.79)
+
+Fri, 11 Oct 2024 16:51:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.3.78..@fluentui/react-icons-mdl2_v1.3.79)
+
+### Patches
+
+- Bump @fluentui/react-icon-provider to v1.3.75 ([PR #33024](https://github.com/microsoft/fluentui/pull/33024) by beachball)
+- Bump @fluentui/utilities to v8.15.19 ([PR #33024](https://github.com/microsoft/fluentui/pull/33024) by beachball)
+
+## [1.3.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.78)
+
+Tue, 08 Oct 2024 07:23:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.3.77..@fluentui/react-icons-mdl2_v1.3.78)
+
+### Patches
+
+- Bump @fluentui/react-icon-provider to v1.3.74 ([PR #32971](https://github.com/microsoft/fluentui/pull/32971) by beachball)
+- Bump @fluentui/utilities to v8.15.18 ([PR #32971](https://github.com/microsoft/fluentui/pull/32971) by beachball)
+
+## [1.3.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.77)
+
+Wed, 02 Oct 2024 07:23:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.3.76..@fluentui/react-icons-mdl2_v1.3.77)
+
+### Patches
+
+- Bump @fluentui/react-icon-provider to v1.3.73 ([PR #32920](https://github.com/microsoft/fluentui/pull/32920) by beachball)
+- Bump @fluentui/utilities to v8.15.17 ([PR #32920](https://github.com/microsoft/fluentui/pull/32920) by beachball)
+
+## [1.3.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.76)
+
+Mon, 30 Sep 2024 07:23:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.3.75..@fluentui/react-icons-mdl2_v1.3.76)
+
+### Patches
+
+- Bump @fluentui/react-icon-provider to v1.3.72 ([PR #32437](https://github.com/microsoft/fluentui/pull/32437) by beachball)
+- Bump @fluentui/utilities to v8.15.16 ([PR #32437](https://github.com/microsoft/fluentui/pull/32437) by beachball)
 
 ## [1.3.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.75)
 

@@ -1,9 +1,9 @@
-import { spinalCase } from '@microsoft/fast-web-utilities';
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
-import { Link } from './link.js';
+import { expect, test } from '../../test/playwright/index.js';
+import type { Link } from './link.js';
+import { LinkAppearance } from './link.options.js';
 
-const proxyAttributes = {
+const attributes = {
+  download: 'download',
   href: 'href',
   ping: 'ping',
   hreflang: 'en-GB',
@@ -13,68 +13,44 @@ const proxyAttributes = {
   type: 'foo',
 };
 
-// Regular Attributes
-const attributes = {
-  appearance: 'subtle',
-  ...proxyAttributes,
-};
-
 test.describe('Link', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-link--link'));
+  test.use({ tagName: 'fluent-link' });
 
-    await page.waitForFunction(() => customElements.whenDefined('fluent-link'));
+  test(`should set each property to match its corresponding attribute`, async ({ fastPage }) => {
+    const { element } = fastPage;
+    const anchor = element.locator('a');
+
+    for (const [attribute, value] of Object.entries(attributes)) {
+      await test.step(`should set the \`${attribute}\` property to match the \`${attribute}\` attribute`, async () => {
+        await fastPage.setTemplate({ attributes: { [attribute]: value } });
+
+        await expect(element).toHaveAttribute(attribute, value);
+
+        await expect(element).toHaveJSProperty(attribute, value);
+      });
+
+      await test.step(`should set the \`${attribute}\` attribute on the internal anchor element`, async () => {
+        await expect(anchor).toHaveAttribute(attribute, value);
+      });
+    }
   });
 
-  for (const [attribute, value] of Object.entries(attributes)) {
-    const attributeSpinalCase = spinalCase(attribute);
+  test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    test(`should set the regular attribute: \`${attributeSpinalCase}\` to \`${value}\` on the element`, async ({
-      page,
-    }) => {
-      const element = page.locator('fluent-link');
+    for (const appearance of Object.values(LinkAppearance)) {
+      await test.step(appearance, async () => {
+        await fastPage.setTemplate({ attributes: { appearance } });
 
-      await page.setContent(/* html */ `
-        <fluent-link ${attributeSpinalCase}="${value}"></fluent-link>
-      `);
+        await expect(element).toHaveJSProperty('appearance', appearance);
 
-      await expect(element).toHaveJSProperty(`${attribute}`, `${value}`);
-    });
-  }
-
-  for (const [attribute, value] of Object.entries(proxyAttributes)) {
-    test(`should set the regular attribute: \`${attribute}\` to \`${value}\` on the internal proxy`, async ({
-      page,
-    }) => {
-      const element = page.locator('fluent-link');
-      const proxy = element.locator('a');
-
-      await page.setContent(/* html */ `
-        <fluent-link ${attribute}="${value}"></fluent-link>
-      `);
-
-      await expect(proxy).toHaveAttribute(`${attribute}`, `${value}`);
-    });
-  }
-
-  test('should add a custom state matching the `appearance` attribute when provided', async ({ page }) => {
-    const element = page.locator('fluent-link');
-
-    await element.evaluate((node: Link) => {
-      node.appearance = 'subtle';
-    });
-
-    await expect(element).toHaveCustomState('subtle');
-
-    await element.evaluate((node: Link) => {
-      node.appearance = undefined;
-    });
-
-    await expect(element).not.toHaveCustomState('subtle');
+        await expect(element).toHaveAttribute('appearance', appearance);
+      });
+    }
   });
 
-  test('should add a custom state of `inline` when true', async ({ page }) => {
-    const element = page.locator('fluent-link');
+  test('should add an "inline" state when the `inline` property is true', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await element.evaluate((node: Link) => {
       node.inline = true;

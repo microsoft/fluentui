@@ -1,0 +1,40 @@
+pr: none
+
+trigger: none
+
+name: 'Deprecate Published Package'
+
+parameters:
+  # @see https://docs.npmjs.com/cli/v10/using-npm/package-spec
+  - name: packageSpec
+    type: string
+    default: ''
+  - name: message
+    type: string
+    default: 'Deprecated in favor of stable release'
+
+variables:
+  - group: 'Github and NPM secrets'
+  - template: .devops/templates/variables.yml
+    parameters:
+      skipComponentGovernanceDetection: false
+  - name: tags
+    value: production,externalfacing
+
+pool: '1ES-Host-Ubuntu'
+
+jobs:
+  - job: DeprecatePublishedPackage
+    pool:
+      name: '1ES-Host-Ubuntu'
+      image: '1ES-PT-Ubuntu-20.04'
+      os: linux
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml@self
+
+      - script: |
+          npm deprecate ${{ parameters.packageSpec }} "${{ parameters.message }}" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=$(npmToken)
+
+        displayName: 'Deprecate package'

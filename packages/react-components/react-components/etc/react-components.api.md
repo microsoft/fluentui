@@ -152,6 +152,62 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
+import { Carousel } from '@fluentui/react-carousel';
+import { CarouselAnnouncerFunction } from '@fluentui/react-carousel';
+import { CarouselAutoplayButton } from '@fluentui/react-carousel';
+import { carouselAutoplayButtonClassNames } from '@fluentui/react-carousel';
+import { CarouselAutoplayButtonProps } from '@fluentui/react-carousel';
+import { CarouselAutoplayButtonSlots } from '@fluentui/react-carousel';
+import { CarouselAutoplayButtonState } from '@fluentui/react-carousel';
+import { CarouselButton } from '@fluentui/react-carousel';
+import { carouselButtonClassNames } from '@fluentui/react-carousel';
+import { CarouselButtonProps } from '@fluentui/react-carousel';
+import { CarouselButtonSlots } from '@fluentui/react-carousel';
+import { CarouselButtonState } from '@fluentui/react-carousel';
+import { CarouselCard } from '@fluentui/react-carousel';
+import { carouselCardClassNames } from '@fluentui/react-carousel';
+import { CarouselCardProps } from '@fluentui/react-carousel';
+import { CarouselCardSlots } from '@fluentui/react-carousel';
+import { CarouselCardState } from '@fluentui/react-carousel';
+import { carouselClassNames } from '@fluentui/react-carousel';
+import { carouselContextDefaultValue } from '@fluentui/react-carousel';
+import { CarouselContextValue } from '@fluentui/react-carousel';
+import { CarouselContextValues } from '@fluentui/react-carousel';
+import { CarouselIndexChangeData } from '@fluentui/react-carousel';
+import { CarouselNav } from '@fluentui/react-carousel';
+import { CarouselNavButton } from '@fluentui/react-carousel';
+import { carouselNavButtonClassNames } from '@fluentui/react-carousel';
+import { CarouselNavButtonProps } from '@fluentui/react-carousel';
+import { CarouselNavButtonSlots } from '@fluentui/react-carousel';
+import { CarouselNavButtonState } from '@fluentui/react-carousel';
+import { carouselNavClassNames } from '@fluentui/react-carousel';
+import { CarouselNavContainer } from '@fluentui/react-carousel';
+import { carouselNavContainerClassNames } from '@fluentui/react-carousel';
+import { CarouselNavContainerProps } from '@fluentui/react-carousel';
+import { CarouselNavContainerSlots } from '@fluentui/react-carousel';
+import { CarouselNavContainerState } from '@fluentui/react-carousel';
+import { CarouselNavImageButton } from '@fluentui/react-carousel';
+import { carouselNavImageButtonClassNames } from '@fluentui/react-carousel';
+import { CarouselNavImageButtonProps } from '@fluentui/react-carousel';
+import { CarouselNavImageButtonSlots } from '@fluentui/react-carousel';
+import { CarouselNavImageButtonState } from '@fluentui/react-carousel';
+import { CarouselNavProps } from '@fluentui/react-carousel';
+import { CarouselNavSlots } from '@fluentui/react-carousel';
+import { CarouselNavState } from '@fluentui/react-carousel';
+import { CarouselProps } from '@fluentui/react-carousel';
+import { CarouselProvider } from '@fluentui/react-carousel';
+import { CarouselSlider } from '@fluentui/react-carousel';
+import { carouselSliderClassNames } from '@fluentui/react-carousel';
+import { CarouselSliderProps } from '@fluentui/react-carousel';
+import { CarouselSliderSlots } from '@fluentui/react-carousel';
+import { CarouselSliderState } from '@fluentui/react-carousel';
+import { CarouselSlots } from '@fluentui/react-carousel';
+import { CarouselState } from '@fluentui/react-carousel';
+import { CarouselViewport } from '@fluentui/react-carousel';
+import { carouselViewportClassNames } from '@fluentui/react-carousel';
+import { CarouselViewportProps } from '@fluentui/react-carousel';
+import { CarouselViewportSlots } from '@fluentui/react-carousel';
+import { CarouselViewportState } from '@fluentui/react-carousel';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { checkboxClassNames } from '@fluentui/react-checkbox';
 import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
@@ -440,6 +496,7 @@ import { linkClassNames } from '@fluentui/react-link';
 import { LinkProps } from '@fluentui/react-link';
 import { LinkSlots } from '@fluentui/react-link';
 import { LinkState } from '@fluentui/react-link';
+import { List } from '@fluentui/react-list';
 import { Listbox } from '@fluentui/react-combobox';
 import { listboxClassNames } from '@fluentui/react-combobox';
 import { ListboxContextValue } from '@fluentui/react-combobox';
@@ -448,6 +505,15 @@ import { ListboxProps } from '@fluentui/react-combobox';
 import { ListboxProvider } from '@fluentui/react-combobox';
 import { ListboxSlots } from '@fluentui/react-combobox';
 import { ListboxState } from '@fluentui/react-combobox';
+import { listClassNames } from '@fluentui/react-list';
+import { ListItem } from '@fluentui/react-list';
+import { listItemClassNames } from '@fluentui/react-list';
+import { ListItemProps } from '@fluentui/react-list';
+import { ListItemSlots } from '@fluentui/react-list';
+import { ListItemState } from '@fluentui/react-list';
+import { ListProps } from '@fluentui/react-list';
+import { ListSlots } from '@fluentui/react-list';
+import { ListState } from '@fluentui/react-list';
 import { makeResetStyles } from '@griffel/react';
 import { makeStaticStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
@@ -567,6 +633,7 @@ import { MessageBarTransitionContextValue } from '@fluentui/react-message-bar';
 import { MotionComponentProps } from '@fluentui/react-motion';
 import { MotionImperativeRef } from '@fluentui/react-motion';
 import { motionTokens } from '@fluentui/react-motion';
+import { NavButtonRenderFunction } from '@fluentui/react-carousel';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnSelectionChangeCallback } from '@fluentui/react-utilities';
 import { OnSelectionChangeData } from '@fluentui/react-utilities';
@@ -708,6 +775,16 @@ import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
+import { renderCarousel_unstable } from '@fluentui/react-carousel';
+import { renderCarouselAutoplayButton_unstable } from '@fluentui/react-carousel';
+import { renderCarouselButton_unstable } from '@fluentui/react-carousel';
+import { renderCarouselCard_unstable } from '@fluentui/react-carousel';
+import { renderCarouselNav_unstable } from '@fluentui/react-carousel';
+import { renderCarouselNavButton_unstable } from '@fluentui/react-carousel';
+import { renderCarouselNavContainer_unstable } from '@fluentui/react-carousel';
+import { renderCarouselNavImageButton_unstable } from '@fluentui/react-carousel';
+import { renderCarouselSlider_unstable } from '@fluentui/react-carousel';
+import { renderCarouselViewport_unstable } from '@fluentui/react-carousel';
 import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
 import { renderColorSwatch_unstable } from '@fluentui/react-swatch-picker';
 import { renderCombobox_unstable } from '@fluentui/react-combobox';
@@ -749,7 +826,9 @@ import { renderInteractionTagPrimary_unstable } from '@fluentui/react-tags';
 import { renderInteractionTagSecondary_unstable } from '@fluentui/react-tags';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
+import { renderList_unstable } from '@fluentui/react-list';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
+import { renderListItem_unstable } from '@fluentui/react-list';
 import { renderMenu_unstable } from '@fluentui/react-menu';
 import { renderMenuButton_unstable } from '@fluentui/react-button';
 import { renderMenuDivider_unstable } from '@fluentui/react-menu';
@@ -1349,6 +1428,27 @@ import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
 import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
+import { useCarousel_unstable } from '@fluentui/react-carousel';
+import { useCarouselAutoplayButton_unstable } from '@fluentui/react-carousel';
+import { useCarouselAutoplayButtonStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselButton_unstable } from '@fluentui/react-carousel';
+import { useCarouselButtonStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselCard_unstable } from '@fluentui/react-carousel';
+import { useCarouselCardStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselContext_unstable } from '@fluentui/react-carousel';
+import { useCarouselNav_unstable } from '@fluentui/react-carousel';
+import { useCarouselNavButton_unstable } from '@fluentui/react-carousel';
+import { useCarouselNavButtonStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselNavContainer_unstable } from '@fluentui/react-carousel';
+import { useCarouselNavContainerStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselNavImageButton_unstable } from '@fluentui/react-carousel';
+import { useCarouselNavImageButtonStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselNavStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselSlider_unstable } from '@fluentui/react-carousel';
+import { useCarouselSliderStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselViewport_unstable } from '@fluentui/react-carousel';
+import { useCarouselViewportStyles_unstable } from '@fluentui/react-carousel';
 import { useCheckbox_unstable } from '@fluentui/react-checkbox';
 import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
@@ -1464,9 +1564,14 @@ import { useLabelStyles_unstable } from '@fluentui/react-label';
 import { useLink_unstable } from '@fluentui/react-link';
 import { useLinkState_unstable } from '@fluentui/react-link';
 import { useLinkStyles_unstable } from '@fluentui/react-link';
+import { useList_unstable } from '@fluentui/react-list';
 import { useListbox_unstable } from '@fluentui/react-combobox';
+import { useListboxContext_unstable } from '@fluentui/react-combobox';
 import { useListboxContextValues } from '@fluentui/react-combobox';
 import { useListboxStyles_unstable } from '@fluentui/react-combobox';
+import { useListItem_unstable } from '@fluentui/react-list';
+import { useListItemStyles_unstable } from '@fluentui/react-list';
+import { useListStyles_unstable } from '@fluentui/react-list';
 import { useMenu_unstable } from '@fluentui/react-menu';
 import { useMenuButton_unstable } from '@fluentui/react-button';
 import { useMenuButtonStyles_unstable } from '@fluentui/react-button';
@@ -2014,6 +2119,118 @@ export { CardProps }
 export { CardSlots }
 
 export { CardState }
+
+export { Carousel }
+
+export { CarouselAnnouncerFunction }
+
+export { CarouselAutoplayButton }
+
+export { carouselAutoplayButtonClassNames }
+
+export { CarouselAutoplayButtonProps }
+
+export { CarouselAutoplayButtonSlots }
+
+export { CarouselAutoplayButtonState }
+
+export { CarouselButton }
+
+export { carouselButtonClassNames }
+
+export { CarouselButtonProps }
+
+export { CarouselButtonSlots }
+
+export { CarouselButtonState }
+
+export { CarouselCard }
+
+export { carouselCardClassNames }
+
+export { CarouselCardProps }
+
+export { CarouselCardSlots }
+
+export { CarouselCardState }
+
+export { carouselClassNames }
+
+export { carouselContextDefaultValue }
+
+export { CarouselContextValue }
+
+export { CarouselContextValues }
+
+export { CarouselIndexChangeData }
+
+export { CarouselNav }
+
+export { CarouselNavButton }
+
+export { carouselNavButtonClassNames }
+
+export { CarouselNavButtonProps }
+
+export { CarouselNavButtonSlots }
+
+export { CarouselNavButtonState }
+
+export { carouselNavClassNames }
+
+export { CarouselNavContainer }
+
+export { carouselNavContainerClassNames }
+
+export { CarouselNavContainerProps }
+
+export { CarouselNavContainerSlots }
+
+export { CarouselNavContainerState }
+
+export { CarouselNavImageButton }
+
+export { carouselNavImageButtonClassNames }
+
+export { CarouselNavImageButtonProps }
+
+export { CarouselNavImageButtonSlots }
+
+export { CarouselNavImageButtonState }
+
+export { CarouselNavProps }
+
+export { CarouselNavSlots }
+
+export { CarouselNavState }
+
+export { CarouselProps }
+
+export { CarouselProvider }
+
+export { CarouselSlider }
+
+export { carouselSliderClassNames }
+
+export { CarouselSliderProps }
+
+export { CarouselSliderSlots }
+
+export { CarouselSliderState }
+
+export { CarouselSlots }
+
+export { CarouselState }
+
+export { CarouselViewport }
+
+export { carouselViewportClassNames }
+
+export { CarouselViewportProps }
+
+export { CarouselViewportSlots }
+
+export { CarouselViewportState }
 
 export { Checkbox }
 
@@ -2591,6 +2808,8 @@ export { LinkSlots }
 
 export { LinkState }
 
+export { List }
+
 export { Listbox }
 
 export { listboxClassNames }
@@ -2606,6 +2825,24 @@ export { ListboxProvider }
 export { ListboxSlots }
 
 export { ListboxState }
+
+export { listClassNames }
+
+export { ListItem }
+
+export { listItemClassNames }
+
+export { ListItemProps }
+
+export { ListItemSlots }
+
+export { ListItemState }
+
+export { ListProps }
+
+export { ListSlots }
+
+export { ListState }
 
 export { makeResetStyles }
 
@@ -2844,6 +3081,8 @@ export { MotionComponentProps }
 export { MotionImperativeRef }
 
 export { motionTokens }
+
+export { NavButtonRenderFunction }
 
 export { OnOpenChangeData }
 
@@ -3127,6 +3366,26 @@ export { renderCardHeader_unstable }
 
 export { renderCardPreview_unstable }
 
+export { renderCarousel_unstable }
+
+export { renderCarouselAutoplayButton_unstable }
+
+export { renderCarouselButton_unstable }
+
+export { renderCarouselCard_unstable }
+
+export { renderCarouselNav_unstable }
+
+export { renderCarouselNavButton_unstable }
+
+export { renderCarouselNavContainer_unstable }
+
+export { renderCarouselNavImageButton_unstable }
+
+export { renderCarouselSlider_unstable }
+
+export { renderCarouselViewport_unstable }
+
 export { renderCheckbox_unstable }
 
 export { renderColorSwatch_unstable }
@@ -3209,7 +3468,11 @@ export { renderLabel_unstable }
 
 export { renderLink_unstable }
 
+export { renderList_unstable }
+
 export { renderListbox_unstable }
+
+export { renderListItem_unstable }
 
 export { renderMenu_unstable }
 
@@ -4409,6 +4672,48 @@ export { useCardPreviewStyles_unstable }
 
 export { useCardStyles_unstable }
 
+export { useCarousel_unstable }
+
+export { useCarouselAutoplayButton_unstable }
+
+export { useCarouselAutoplayButtonStyles_unstable }
+
+export { useCarouselButton_unstable }
+
+export { useCarouselButtonStyles_unstable }
+
+export { useCarouselCard_unstable }
+
+export { useCarouselCardStyles_unstable }
+
+export { useCarouselContext_unstable }
+
+export { useCarouselNav_unstable }
+
+export { useCarouselNavButton_unstable }
+
+export { useCarouselNavButtonStyles_unstable }
+
+export { useCarouselNavContainer_unstable }
+
+export { useCarouselNavContainerStyles_unstable }
+
+export { useCarouselNavImageButton_unstable }
+
+export { useCarouselNavImageButtonStyles_unstable }
+
+export { useCarouselNavStyles_unstable }
+
+export { useCarouselSlider_unstable }
+
+export { useCarouselSliderStyles_unstable }
+
+export { useCarouselStyles_unstable }
+
+export { useCarouselViewport_unstable }
+
+export { useCarouselViewportStyles_unstable }
+
 export { useCheckbox_unstable }
 
 export { useCheckboxStyles_unstable }
@@ -4639,11 +4944,21 @@ export { useLinkState_unstable }
 
 export { useLinkStyles_unstable }
 
+export { useList_unstable }
+
 export { useListbox_unstable }
+
+export { useListboxContext_unstable }
 
 export { useListboxContextValues }
 
 export { useListboxStyles_unstable }
+
+export { useListItem_unstable }
+
+export { useListItemStyles_unstable }
+
+export { useListStyles_unstable }
 
 export { useMenu_unstable }
 

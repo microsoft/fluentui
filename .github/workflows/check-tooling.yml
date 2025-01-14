@@ -14,6 +14,7 @@ env:
 
 jobs:
   check-tools:
+    if: ${{ github.repository_owner == 'microsoft' }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
@@ -29,11 +30,16 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
-      - run: yarn nx run scripts-executors:test -t start
+      - run: yarn nx run scripts-executors:test -t 'smoke test'
+
+      - run: yarn nx run workspace-plugin:test -t 'prepare-initial-release generator'
 
       - run: yarn nx list @fluentui/workspace-plugin
 
-      - run: yarn nx g @fluentui/workspace-plugin:react-library --name hello-world --owner '@mrWick' --kind standard --no-interactive
+      # pre-build react-jsx-runtime - as generate-api executor doesn't provide copy assets capability
+      - run: yarn nx run react-jsx-runtime:build
+
+      - run: yarn nx g @fluentui/workspace-plugin:react-library --name hello-world --owner '@microsoft/fluentui-react-build' --kind standard --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:react-component --project hello-world-preview --name Aiur --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:cypress-component-configuration --project hello-world-preview --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:bundle-size-configuration --project hello-world-preview --no-interactive

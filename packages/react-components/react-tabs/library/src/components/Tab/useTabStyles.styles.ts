@@ -88,88 +88,179 @@ const useRootStyles = makeStyles({
   },
   transparent: {
     backgroundColor: tokens.colorTransparentBackground,
-    ':hover': {
+    ':enabled:hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
     },
-    ':active': {
+    ':enabled:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
-    '& .fui-Tab__icon': {
+    [`& .${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2,
     },
-    ':hover .fui-Tab__icon': {
+    [`:enabled:hover .${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':active .fui-Tab__icon': {
+    [`:enabled:active .${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2Pressed,
     },
-    '& .fui-Tab__content': {
+    [`& .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2,
     },
-    ':hover .fui-Tab__content': {
+    [`:enabled:hover .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':active .fui-Tab__content': {
+    [`:enabled:active .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2Pressed,
     },
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
-    ':hover': {
+    ':enabled:hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
     },
-    ':active': {
+    ':enabled:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
     },
-    '& .fui-Tab__icon': {
+    [`& .${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2,
     },
-    ':hover .fui-Tab__icon': {
+    [`:enabled:hover .${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':active .fui-Tab__icon': {
+    [`:enabled:active .${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2Pressed,
     },
-    '& .fui-Tab__content': {
+    [`& .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2,
     },
-    ':hover .fui-Tab__content': {
+    [`:enabled:hover .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':active .fui-Tab__content': {
+    [`:enabled:active .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground2Pressed,
     },
+  },
+  disabledCursor: {
+    cursor: 'not-allowed',
   },
   disabled: {
     backgroundColor: tokens.colorTransparentBackground,
 
-    '& .fui-Tab__icon': {
+    [`& .${tabClassNames.icon}`]: {
       color: tokens.colorNeutralForegroundDisabled,
     },
-    '& .fui-Tab__content': {
+    [`& .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForegroundDisabled,
     },
-    cursor: 'not-allowed',
   },
   selected: {
-    '& .fui-Tab__icon': {
+    [`& .${tabClassNames.icon}`]: {
       color: tokens.colorCompoundBrandForeground1,
     },
-    ':hover .fui-Tab__icon': {
+    [`:enabled:hover .${tabClassNames.icon}`]: {
       color: tokens.colorCompoundBrandForeground1Hover,
     },
-    ':active .fui-Tab__icon': {
+    [`:enabled:active .${tabClassNames.icon}`]: {
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
-    '& .fui-Tab__content': {
+    [`& .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground1,
     },
-    ':hover .fui-Tab__content': {
+    [`:enabled:hover .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground1Hover,
     },
-    ':active .fui-Tab__content': {
+    [`:enabled:active .${tabClassNames.content}`]: {
       color: tokens.colorNeutralForeground1Pressed,
     },
+  },
+});
+
+const useCircularAppearanceStyles = makeStyles({
+  base: {
+    borderRadius: tokens.borderRadiusCircular,
+    [`& .${tabClassNames.icon}`]: {
+      color: 'inherit',
+    },
+    [`& .${tabClassNames.content}`]: {
+      color: 'inherit',
+    },
+  },
+  medium: {
+    paddingBlock: `${tokens.spacingVerticalSNudge}`,
+  },
+  subtle: {
+    backgroundColor: tokens.colorSubtleBackground,
+    border: `solid ${tokens.strokeWidthThin} transparent`,
+    color: tokens.colorNeutralForeground2,
+    ':enabled:hover': {
+      backgroundColor: tokens.colorSubtleBackgroundHover,
+      border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStroke1Hover}`,
+      color: tokens.colorNeutralForeground2Hover,
+    },
+    ':enabled:active': {
+      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStroke1Pressed}`,
+      color: tokens.colorNeutralForeground2Pressed,
+    },
+  },
+  subtleSelected: {
+    backgroundColor: tokens.colorBrandBackground2,
+    border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStroke}`,
+    color: tokens.colorBrandForeground2,
+    ':enabled:hover': {
+      backgroundColor: tokens.colorBrandBackground2Hover,
+      border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStrokeHover}`,
+      color: tokens.colorBrandForeground2Hover,
+    },
+    ':enabled:active': {
+      backgroundColor: tokens.colorBrandBackground2Pressed,
+      border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStrokePressed}`,
+      color: tokens.colorBrandForeground2Pressed,
+    },
+  },
+  subtleDisabled: {
+    backgroundColor: tokens.colorSubtleBackground,
+    color: tokens.colorNeutralForegroundDisabled,
+    border: `solid ${tokens.strokeWidthThin} transparent`,
+  },
+  subtleDisabledSelected: {
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeDisabled}`,
+    color: tokens.colorNeutralForegroundDisabled,
+  },
+  filled: {
+    backgroundColor: tokens.colorNeutralBackground3,
+    color: tokens.colorNeutralForeground2,
+    ':enabled:hover': {
+      backgroundColor: tokens.colorNeutralBackground3Hover,
+      color: tokens.colorNeutralForeground2Hover,
+    },
+    ':enabled:active': {
+      backgroundColor: tokens.colorNeutralBackground3Pressed,
+      color: tokens.colorNeutralForeground2Pressed,
+    },
+  },
+  filledSelected: {
+    backgroundColor: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForegroundOnBrand,
+    ':enabled:hover': {
+      backgroundColor: tokens.colorBrandBackgroundHover,
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+    ':enabled:active': {
+      backgroundColor: tokens.colorBrandBackgroundPressed,
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+  },
+  filledDisabled: {
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    border: `solid ${tokens.strokeWidthThin} transparent`,
+    color: tokens.colorNeutralForegroundDisabled,
+  },
+  filledDisabledSelected: {
+    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeDisabled}`,
+    color: tokens.colorNeutralForegroundDisabled,
   },
 });
 
@@ -190,6 +281,21 @@ const useFocusStyles = makeStyles({
       ${tokens.shadow4},
       0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}
     `,
+      zIndex: 1,
+    },
+    { enableOutline: true },
+  ),
+  circular: createCustomFocusIndicatorStyle(
+    {
+      ...shorthands.borderColor('transparent'),
+      outlineWidth: tokens.strokeWidthThick,
+      outlineColor: 'transparent',
+      outlineStyle: 'solid',
+      boxShadow: `
+        ${tokens.shadow4},
+        0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2},
+        0 0 0 ${tokens.strokeWidthThin} ${tokens.colorNeutralStrokeOnBrand} inset
+      `,
       zIndex: 1,
     },
     { enableOutline: true },
@@ -291,20 +397,20 @@ const useActiveIndicatorStyles = makeStyles({
     '::after': {
       backgroundColor: tokens.colorCompoundBrandStroke,
     },
-    ':hover::after': {
+    ':enabled:hover::after': {
       backgroundColor: tokens.colorCompoundBrandStrokeHover,
     },
-    ':active::after': {
+    ':enabled:active::after': {
       backgroundColor: tokens.colorCompoundBrandStrokePressed,
     },
     '@media (forced-colors: active)': {
       '::after': {
         backgroundColor: 'ButtonText',
       },
-      ':hover::after': {
+      ':enabled:hover::after': {
         backgroundColor: 'ButtonText',
       },
-      ':active::after': {
+      ':enabled:active::after': {
         backgroundColor: 'ButtonText',
       },
     },
@@ -472,35 +578,36 @@ export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
   const pendingIndicatorStyles = usePendingIndicatorStyles();
   const activeIndicatorStyles = useActiveIndicatorStyles();
 
-  const { disabled, selected, size, vertical } = state;
+  const { appearance, disabled, selected, size, vertical } = state;
 
-  state.root.className = mergeClasses(
-    tabClassNames.root,
-    rootStyles.root,
+  const classes: Parameters<typeof mergeClasses> = [tabClassNames.root, rootStyles.root];
 
-    // pending indicator (before pseudo element)
-    pendingIndicatorStyles.base,
-    size === 'small' && (vertical ? pendingIndicatorStyles.smallVertical : pendingIndicatorStyles.smallHorizontal),
-    size === 'medium' && (vertical ? pendingIndicatorStyles.mediumVertical : pendingIndicatorStyles.mediumHorizontal),
-    size === 'large' && (vertical ? pendingIndicatorStyles.largeVertical : pendingIndicatorStyles.largeHorizontal),
-    disabled && pendingIndicatorStyles.disabled,
+  if (appearance !== 'subtle-circular' && appearance !== 'filled-circular') {
+    classes.push(
+      // pending indicator (before pseudo element)
+      pendingIndicatorStyles.base,
+      size === 'small' && (vertical ? pendingIndicatorStyles.smallVertical : pendingIndicatorStyles.smallHorizontal),
+      size === 'medium' && (vertical ? pendingIndicatorStyles.mediumVertical : pendingIndicatorStyles.mediumHorizontal),
+      size === 'large' && (vertical ? pendingIndicatorStyles.largeVertical : pendingIndicatorStyles.largeHorizontal),
+      disabled && pendingIndicatorStyles.disabled,
 
-    // active indicator (after pseudo element)
-    selected && activeIndicatorStyles.base,
-    selected && !disabled && activeIndicatorStyles.selected,
-    selected &&
-      size === 'small' &&
-      (vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
-    selected &&
-      size === 'medium' &&
-      (vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
-    selected &&
-      size === 'large' &&
-      (vertical ? activeIndicatorStyles.largeVertical : activeIndicatorStyles.largeHorizontal),
-    selected && disabled && activeIndicatorStyles.disabled,
+      // active indicator (after pseudo element)
+      selected && activeIndicatorStyles.base,
+      selected && !disabled && activeIndicatorStyles.selected,
+      selected &&
+        size === 'small' &&
+        (vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
+      selected &&
+        size === 'medium' &&
+        (vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
+      selected &&
+        size === 'large' &&
+        (vertical ? activeIndicatorStyles.largeVertical : activeIndicatorStyles.largeHorizontal),
+      selected && disabled && activeIndicatorStyles.disabled,
+    );
+  }
 
-    state.root.className,
-  );
+  state.root.className = mergeClasses(...classes, state.root.className);
 
   useTabAnimatedIndicatorStyles_unstable(state);
 
@@ -522,21 +629,49 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
 
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
+  const circularStyles = useCircularAppearanceStyles();
 
   const { appearance, disabled, selected, size, vertical } = state;
 
-  slot.className = mergeClasses(
-    rootStyles.button,
-    vertical ? rootStyles.vertical : rootStyles.horizontal,
-    size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
-    size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
-    size === 'large' && (vertical ? rootStyles.largeVertical : rootStyles.largeHorizontal),
+  const isSubtleCircular = appearance === 'subtle-circular';
+  const isFilledCircular = appearance === 'filled-circular';
+  const isCircular = isSubtleCircular || isFilledCircular;
+
+  const circularAppearance = [
+    circularStyles.base,
+    focusStyles.circular,
+    // sizes
+    size === 'medium' && circularStyles.medium,
+    // subtle-circular appearance
+    isSubtleCircular && circularStyles.subtle,
+    selected && isSubtleCircular && circularStyles.subtleSelected,
+    disabled && isSubtleCircular && circularStyles.subtleDisabled,
+    selected && disabled && isSubtleCircular && circularStyles.subtleDisabledSelected,
+    // filled-circular appearance
+    isFilledCircular && circularStyles.filled,
+    selected && isFilledCircular && circularStyles.filledSelected,
+    disabled && isFilledCircular && circularStyles.filledDisabled,
+    selected && disabled && isFilledCircular && circularStyles.filledDisabledSelected,
+  ];
+
+  const regularAppearance = [
     focusStyles.base,
     !disabled && appearance === 'subtle' && rootStyles.subtle,
     !disabled && appearance === 'transparent' && rootStyles.transparent,
     !disabled && selected && rootStyles.selected,
     disabled && rootStyles.disabled,
+  ];
 
+  slot.className = mergeClasses(
+    rootStyles.button,
+    // orientation
+    vertical ? rootStyles.vertical : rootStyles.horizontal,
+    // size
+    size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
+    size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
+    size === 'large' && (vertical ? rootStyles.largeVertical : rootStyles.largeHorizontal),
+    ...(isCircular ? circularAppearance : regularAppearance),
+    disabled && rootStyles.disabledCursor,
     slot.className,
   );
 

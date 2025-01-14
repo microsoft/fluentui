@@ -72,7 +72,7 @@
 /LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar @tudorpopams
 /packages/react/LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar @tudorpopams
 /.github/CODEOWNERS @microsoft/fluentui-react-build @justSlone @jurokapsiar @tudorpopams
-/.github/ISSUE_TEMPLATE* @justSlone @jurokapsiar @tudorpopams
+/.github/ISSUE_TEMPLATE/ @microsoft/fluentui-react-build @justSlone @jurokapsiar @tudorpopams
 
 ## Tooling packages
 scripts/api-extractor @microsoft/fluentui-react-build
@@ -129,10 +129,15 @@ apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
 apps/react-18-tests-v8 @microsoft/cxe-red @micahgodbolt
 apps/react-18-tests-v9 @microsoft/fluentui-react-build
+apps/chart-docsite @microsoft/charting-team
 
 #### Packages
 packages/azure-themes @Jacqueline-ms @robtaft-ms
 packages/react-conformance @microsoft/fluentui-react-build
+packages/charts/chart-web-components @microsoft/charting-team
+packages/charts/react-charting @microsoft/charting-team
+packages/charts/react-charts-preview/library @microsoft/charting-team
+packages/charts/react-charts-preview/stories @microsoft/charting-team
 packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
 packages/foundation-legacy @microsoft/cxe-red @khmakoto
@@ -147,7 +152,6 @@ packages/react-components/react-aria @microsoft/teams-prg
 packages/react-components/react-aria/library @microsoft/teams-prg
 packages/react-components/react-aria/stories @microsoft/teams-prg
 packages/react-cards @microsoft/cxe-red @khmakoto
-packages/react-charting @microsoft/charting-team
 packages/react-components/react-conformance-griffel @microsoft/teams-prg
 packages/react-components/react-context-selector @microsoft/teams-prg
 packages/react-date-time @microsoft/cxe-red
@@ -346,9 +350,9 @@ packages/react-components/react-calendar-compat/stories @microsoft/cxe-prg
 packages/react-components/react-infolabel @microsoft/cxe-prg
 packages/react-components/react-infolabel/library @microsoft/cxe-prg
 packages/react-components/react-infolabel/stories @microsoft/cxe-prg
-packages/react-components/react-list-preview @microsoft/teams-prg
-packages/react-components/react-list-preview/library @microsoft/teams-prg
-packages/react-components/react-list-preview/stories @microsoft/teams-prg
+packages/react-components/react-list @microsoft/teams-prg
+packages/react-components/react-list/library @microsoft/teams-prg
+packages/react-components/react-list/stories @microsoft/teams-prg
 packages/react-components/react-motion @microsoft/teams-prg
 packages/react-components/react-motion/library @microsoft/teams-prg
 packages/react-components/react-motion/stories @microsoft/teams-prg
@@ -364,9 +368,9 @@ packages/react-components/react-icons-compat/stories @microsoft/cxe-red @tomi-ms
 packages/react-components/react-tag-picker @microsoft/teams-prg
 packages/react-components/react-tag-picker/library @microsoft/teams-prg
 packages/react-components/react-tag-picker/stories @microsoft/teams-prg
-packages/react-components/react-carousel-preview @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
-packages/react-components/react-carousel-preview/library @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
-packages/react-components/react-carousel-preview/stories @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
+packages/react-components/react-carousel @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
+packages/react-components/react-carousel/library @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
+packages/react-components/react-carousel/stories @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
 packages/react-components/recipes @microsoft/fluentui-react @sopranopillow
 packages/react-components/react-motion-components-preview/library @microsoft/teams-prg
 packages/react-components/react-motion-components-preview/stories @microsoft/teams-prg
@@ -374,8 +378,6 @@ packages/react-components/react-utilities-compat/library @microsoft/cxe-prg
 packages/react-components/react-utilities-compat/stories @microsoft/cxe-prg
 packages/react-components/react-color-picker-preview/library @microsoft/cxe-prg
 packages/react-components/react-color-picker-preview/stories @microsoft/cxe-prg
-packages/react-components/react-keytips-preview/library @microsoft/cxe-prg
-packages/react-components/react-keytips-preview/stories @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
@@ -429,6 +431,7 @@ packages/react/src/components/WeeklyDayPicker @microsoft/cxe-red
 packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @dzearing
 packages/fluent2-theme @microsoft/cxe-red @geoffcoxmsft
 ## Experiments
+packages/react-experiments @microsoft/cxe-red
 packages/react-experiments/src/components/Signals @ThomasMichon
 packages/react-experiments/src/components/Tile @ThomasMichon
 packages/react-experiments/src/components/TileList @ThomasMichon

@@ -1,13 +1,13 @@
-import { attr, FASTElement, nullableNumberConverter, observable, Observable, Updates } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, Observable } from '@microsoft/fast-element';
 import { getInitials } from '../utils/get-initials.js';
-import { toggleState } from '../utils/element-internals.js';
+import { swapStates } from '../utils/element-internals.js';
 import {
-  AvatarActive,
-  AvatarAppearance,
+  type AvatarActive,
+  type AvatarAppearance,
   AvatarColor,
   AvatarNamedColor,
-  AvatarShape,
-  AvatarSize,
+  type AvatarShape,
+  type AvatarSize,
 } from './avatar.options.js';
 
 /**
@@ -130,7 +130,7 @@ export class Avatar extends BaseAvatar {
   /**
    * Holds the current color state
    */
-  private currentColor: string | undefined;
+  private currentColor: AvatarColor | undefined;
 
   /**
    * Handles changes to observable properties
@@ -177,8 +177,6 @@ export class Avatar extends BaseAvatar {
     const colorful: boolean = this.color === AvatarColor.colorful;
     const prev = this.currentColor;
 
-    toggleState(this.elementInternals, `${prev}`, false);
-
     this.currentColor =
       colorful && this.colorId
         ? this.colorId
@@ -186,7 +184,7 @@ export class Avatar extends BaseAvatar {
         ? (Avatar.colors[getHashCode(this.name ?? '') % Avatar.colors.length] as AvatarColor)
         : this.color ?? AvatarColor.neutral;
 
-    toggleState(this.elementInternals, `${this.currentColor}`, true);
+    swapStates(this.elementInternals, prev, this.currentColor);
   }
 
   /**

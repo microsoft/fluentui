@@ -16,6 +16,9 @@
       "@fluentui/babel-preset-storybook-full-source": [
         "packages/react-components/babel-preset-storybook-full-source/src/index.ts"
       ],
+      "@fluentui/eslint-plugin-react-components": [
+        "packages/react-components/eslint-plugin-react-components/src/index.ts"
+      ],
       "@fluentui/global-context": ["packages/react-components/global-context/src/index.ts"],
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
       "@fluentui/keyboard-keys": ["packages/react-components/keyboard-keys/src/index.ts"],
@@ -38,10 +41,10 @@
       ],
       "@fluentui/react-card": ["packages/react-components/react-card/library/src/index.ts"],
       "@fluentui/react-card-stories": ["packages/react-components/react-card/stories/src/index.ts"],
-      "@fluentui/react-carousel-preview": ["packages/react-components/react-carousel-preview/library/src/index.ts"],
-      "@fluentui/react-carousel-preview-stories": [
-        "packages/react-components/react-carousel-preview/stories/src/index.ts"
-      ],
+      "@fluentui/react-carousel": ["packages/react-components/react-carousel/library/src/index.ts"],
+      "@fluentui/react-carousel-stories": ["packages/react-components/react-carousel/stories/src/index.ts"],
+      "@fluentui/react-charts-preview": ["packages/charts/react-charts-preview/library/src/index.ts"],
+      "@fluentui/react-charts-preview-stories": ["packages/charts/react-charts-preview/stories/src/index.ts"],
       "@fluentui/react-checkbox": ["packages/react-components/react-checkbox/library/src/index.ts"],
       "@fluentui/react-checkbox-stories": ["packages/react-components/react-checkbox/stories/src/index.ts"],
       "@fluentui/react-color-picker-preview": [
@@ -84,16 +87,12 @@
         "packages/react-components/react-jsx-runtime/src/jsx-dev-runtime.ts"
       ],
       "@fluentui/react-jsx-runtime/jsx-runtime": ["packages/react-components/react-jsx-runtime/src/jsx-runtime.ts"],
-      "@fluentui/react-keytips-preview": ["packages/react-components/react-keytips-preview/library/src/index.ts"],
-      "@fluentui/react-keytips-preview-stories": [
-        "packages/react-components/react-keytips-preview/stories/src/index.ts"
-      ],
       "@fluentui/react-label": ["packages/react-components/react-label/library/src/index.ts"],
       "@fluentui/react-label-stories": ["packages/react-components/react-label/stories/src/index.ts"],
       "@fluentui/react-link": ["packages/react-components/react-link/library/src/index.ts"],
       "@fluentui/react-link-stories": ["packages/react-components/react-link/stories/src/index.ts"],
-      "@fluentui/react-list-preview": ["packages/react-components/react-list-preview/library/src/index.ts"],
-      "@fluentui/react-list-preview-stories": ["packages/react-components/react-list-preview/stories/src/index.ts"],
+      "@fluentui/react-list": ["packages/react-components/react-list/library/src/index.ts"],
+      "@fluentui/react-list-stories": ["packages/react-components/react-list/stories/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/library/src/index.ts"],
       "@fluentui/react-menu-stories": ["packages/react-components/react-menu/stories/src/index.ts"],
       "@fluentui/react-message-bar": ["packages/react-components/react-message-bar/library/src/index.ts"],

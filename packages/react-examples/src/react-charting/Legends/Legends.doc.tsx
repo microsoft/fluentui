@@ -6,6 +6,7 @@ import { LegendOverflowExample } from './Legends.Overflow.Example';
 import { LegendBasicExample } from './Legends.Basic.Example';
 import { LegendWrapLinesExample } from './Legends.WrapLines.Example';
 import { LegendStyledExample } from './Legends.Styled.Example';
+import { LegendsControlledExample } from './Legends.Controlled.Example';
 
 const LegendsOverflowExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Overflow.Example.tsx') as string;
@@ -15,11 +16,14 @@ const LegendsBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Basic.Example.tsx') as string;
 const LegendsStyledExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Styled.Example.tsx') as string;
+const LegendsControlledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Controlled.Example.tsx') as string;
 
 export const LegendsPageProps: IDocPageProps = {
   title: 'Legends',
   componentName: 'Legends',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/Legends',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/Legends',
   examples: [
     {
       title: 'Legends basic',
@@ -40,6 +44,11 @@ export const LegendsPageProps: IDocPageProps = {
       title: 'Legend styled',
       code: LegendsStyledExampleCode,
       view: <LegendStyledExample />,
+    },
+    {
+      title: 'Legend controlled selection',
+      code: LegendsControlledExampleCode,
+      view: <LegendsControlledExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/docs/LegendsOverview.md'),

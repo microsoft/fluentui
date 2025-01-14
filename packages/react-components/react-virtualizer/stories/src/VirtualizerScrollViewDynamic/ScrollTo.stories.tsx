@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { VirtualizerScrollViewDynamic } from '@fluentui/react-components/unstable';
-import type { ScrollToInterface } from '@fluentui/react-components/unstable';
+import { VirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
+import type { ScrollToInterface } from '@fluentui/react-virtualizer';
 import type { VirtualizerDataRef } from '@fluentui/react-virtualizer';
 import { Button, Input, makeStyles, Text } from '@fluentui/react-components';
-import { useEffect } from 'react';
 
 const useStyles = makeStyles({
   child: {
@@ -42,7 +41,7 @@ export const ScrollTo = () => {
     setGoToIndex(newIndex);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     let _totalSize = 0;
     for (let i = 0; i < childLength; i++) {
       arraySize.current[i] = Math.random() * 250 + minHeight;
@@ -70,7 +69,7 @@ export const ScrollTo = () => {
         getItemSize={getItemSizeCallback}
         imperativeRef={scrollRef}
         imperativeVirtualizerRef={sizeRef}
-        container={{ role: 'list', style: { maxHeight: '100vh' } }}
+        container={{ role: 'list', style: { maxHeight: '80vh' } }}
       >
         {(index: number) => {
           const backgroundColor = index % 2 ? '#FFFFFF' : '#ABABAB';

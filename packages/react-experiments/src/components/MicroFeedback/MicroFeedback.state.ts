@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import * as React from 'react';
 import type { IMicroFeedbackComponent, IMicroFeedbackViewProps, VoteType } from './MicroFeedback.types';
 
 export type IMicroFeedbackState = Pick<
@@ -17,23 +17,23 @@ export type IMicroFeedbackState = Pick<
 
 export const useMicroFeedbackState: IMicroFeedbackComponent['state'] = props => {
   const { sendFeedback } = props;
-  const likeRef = useRef<HTMLDivElement | null>(null);
-  const dislikeRef = useRef<HTMLDivElement | null>(null);
-  const [timerHandle, setTimerHandle] = useState<number | undefined>(undefined);
-  const [vote, setVote] = useState<VoteType>('no_vote');
-  const [isFollowUpVisible, setIsFollowUpVisible] = useState(false);
-  const [isThanksVisible, setIsThanksVisible] = useState(false);
+  const likeRef = React.useRef<HTMLDivElement | null>(null);
+  const dislikeRef = React.useRef<HTMLDivElement | null>(null);
+  const [timerHandle, setTimerHandle] = React.useState<number | undefined>(undefined);
+  const [vote, setVote] = React.useState<VoteType>('no_vote');
+  const [isFollowUpVisible, setIsFollowUpVisible] = React.useState(false);
+  const [isThanksVisible, setIsThanksVisible] = React.useState(false);
 
-  const onCalloutDismiss = useCallback((): void => {
+  const onCalloutDismiss = React.useCallback((): void => {
     setIsFollowUpVisible(false);
   }, []);
 
-  const onThanksDismiss = useCallback((): void => {
+  const onThanksDismiss = React.useCallback((): void => {
     clearTimeout(timerHandle);
     setIsThanksVisible(false);
   }, [timerHandle]);
 
-  const processVote = useCallback(
+  const processVote = React.useCallback(
     (newVote: VoteType): void => {
       // If the vote that is already selected is picked, then toggle off
       const updatedVote: VoteType = vote === newVote ? 'no_vote' : newVote;
@@ -46,19 +46,19 @@ export const useMicroFeedbackState: IMicroFeedbackComponent['state'] = props => 
     [sendFeedback, vote],
   );
 
-  const onLikeVote = useCallback((): void => {
+  const onLikeVote = React.useCallback((): void => {
     processVote('like');
   }, [processVote]);
 
-  const onDislikeVote = useCallback((): void => {
+  const onDislikeVote = React.useCallback((): void => {
     processVote('dislike');
   }, [processVote]);
 
-  const hideThanksMessage = useCallback((): void => {
+  const hideThanksMessage = React.useCallback((): void => {
     setIsThanksVisible(false);
   }, []);
 
-  const onThanksShow = useCallback((): void => {
+  const onThanksShow = React.useCallback((): void => {
     setIsThanksVisible(true);
 
     // Hide the Thanks message after 2 seconds
@@ -67,7 +67,7 @@ export const useMicroFeedbackState: IMicroFeedbackComponent['state'] = props => 
 
   const viewProps: IMicroFeedbackViewProps = {
     ...props,
-    vote: vote,
+    vote,
     isFollowUpVisible,
     likeRef,
     dislikeRef,

@@ -92,6 +92,7 @@ exports[`DatePicker renders DatePicker allowing text input correctly 1`] = `
             aria-expanded={false}
             aria-haspopup="dialog"
             aria-invalid={false}
+            aria-required={false}
             className=
                 ms-TextField-field
                 {
@@ -322,6 +323,7 @@ exports[`DatePicker renders DatePicker with value correctly 1`] = `
             aria-expanded={false}
             aria-haspopup="dialog"
             aria-invalid={false}
+            aria-required={false}
             className=
                 ms-TextField-field
                 {
@@ -553,6 +555,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
             aria-expanded={false}
             aria-haspopup="dialog"
             aria-invalid={false}
+            aria-required={false}
             className=
                 ms-TextField-field
                 {

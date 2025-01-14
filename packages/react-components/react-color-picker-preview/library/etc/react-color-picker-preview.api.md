@@ -20,8 +20,8 @@ export const AlphaSlider: ForwardRefComponent<AlphaSliderProps>;
 export const alphaSliderClassNames: SlotClassNames<AlphaSliderSlots>;
 
 // @public
-export type AlphaSliderProps = Omit<ComponentProps<Partial<AlphaSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value'> & ColorSliderProps & {
-    overlayColor?: string;
+export type AlphaSliderProps = ColorSliderProps & {
+    transparency?: boolean;
 };
 
 // @public (undocumented)
@@ -37,15 +37,22 @@ export const ColorArea: ForwardRefComponent<ColorAreaProps>;
 export const colorAreaClassNames: SlotClassNames<ColorAreaSlots>;
 
 // @public
-export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {};
+export type ColorAreaProps = Omit<ComponentProps<Partial<ColorAreaSlots>>, 'color' | 'onChange'> & Pick<ColorPickerProps, 'shape'> & {
+    color?: HsvColor;
+    defaultColor?: HsvColor;
+    onChange?: EventHandler<ColorAreaOnColorChangeData>;
+};
 
 // @public (undocumented)
 export type ColorAreaSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
+    thumb?: NonNullable<Slot<'div'>>;
+    inputX?: NonNullable<Slot<'input'>>;
+    inputY?: NonNullable<Slot<'input'>>;
 };
 
 // @public
-export type ColorAreaState = ComponentState<ColorAreaSlots>;
+export type ColorAreaState = ComponentState<Required<ColorAreaSlots>> & Pick<ColorAreaProps, 'color' | 'shape'>;
 
 // @public
 export const ColorPicker: ForwardRefComponent<ColorPickerProps>;
@@ -54,9 +61,10 @@ export const ColorPicker: ForwardRefComponent<ColorPickerProps>;
 export const colorPickerClassNames: SlotClassNames<ColorPickerSlots>;
 
 // @public
-export type ColorPickerProps = ComponentProps<ColorPickerSlots> & {
-    color?: string;
+export type ColorPickerProps = Omit<ComponentProps<Partial<ColorPickerSlots>>, 'color'> & {
+    color: HsvColor;
     onColorChange?: EventHandler<ColorPickerOnChangeData>;
+    shape?: 'rounded' | 'square';
 };
 
 // @public (undocumented)
@@ -74,14 +82,12 @@ export const ColorSlider: ForwardRefComponent<ColorSliderProps>;
 export const colorSliderClassNames: SlotClassNames<ColorSliderSlots>;
 
 // @public
-export type ColorSliderProps = Omit<ComponentProps<Partial<ColorSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value'> & {
+export type ColorSliderProps = Omit<ComponentProps<Partial<ColorSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value' | 'color'> & Pick<ColorPickerProps, 'shape'> & {
     channel?: string;
-    defaultValue?: number;
-    max?: number;
-    min?: number;
     onChange?: EventHandler<SliderOnChangeData>;
     vertical?: boolean;
-    value?: number;
+    color?: HsvColor;
+    defaultColor?: HsvColor;
 };
 
 // @public (undocumented)
@@ -93,7 +99,7 @@ export type ColorSliderSlots = {
 };
 
 // @public
-export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical'>;
+export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical' | 'shape'>;
 
 // @public
 export const renderAlphaSlider_unstable: (state: AlphaSliderState) => JSX.Element;

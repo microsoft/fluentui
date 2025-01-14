@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": " [BREAKING] Removed non functional reserveSelectedNavItemSpace prop. Added defaultOpenCategories and openCategories prop and example. Updated icon selection logic for NavCategoryItem. Exports OnNavItemSelectData.",
-  "packageName": "@fluentui/react-nav-preview",
-  "email": "matejera@microsoft.com",
-  "dependentChangeType": "patch"
-}

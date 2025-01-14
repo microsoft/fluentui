@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Button as FluentButton } from './button.js';
 import { ButtonAppearance, ButtonShape, ButtonSize, ButtonType } from './button.options.js';
 
@@ -42,6 +42,7 @@ export default {
       control: 'select',
       description: 'Indicates the styled appearance of the button.',
       options: ['', ...Object.values(ButtonAppearance)],
+      mapping: { '': null, ...ButtonAppearance },
       table: {
         category: 'attributes',
         type: { summary: Object.values(ButtonAppearance).join('|') },
@@ -110,6 +111,7 @@ export default {
       control: 'select',
       description: 'The size of the button.',
       options: ['', ...Object.values(ButtonSize)],
+      mapping: { '': null, ...ButtonSize },
       table: {
         category: 'attributes',
         type: { summary: Object.values(ButtonSize).join('|') },
@@ -119,6 +121,7 @@ export default {
       control: 'select',
       description: 'The shape of the button.',
       options: ['', ...Object.values(ButtonShape)],
+      mapping: { '': null, ...ButtonShape },
       table: {
         category: 'attributes',
         type: { summary: Object.values(ButtonShape).join('|') },
@@ -128,6 +131,7 @@ export default {
       control: 'select',
       description: 'The type of the button.',
       options: ['', ...Object.values(ButtonType)],
+      mapping: { '': null, ...ButtonType },
       table: {
         category: 'attributes',
         type: { summary: Object.values(ButtonType).join('|') },
@@ -158,6 +162,8 @@ export default {
     },
   },
 } as Meta<FluentButton>;
+
+export const Default: Story = {};
 
 export const Appearance: Story = {
   render: renderComponent(html<StoryArgs<FluentButton>>`

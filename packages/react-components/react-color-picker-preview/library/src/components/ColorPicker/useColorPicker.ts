@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
 import type { ColorPickerProps, ColorPickerState } from './ColorPicker.types';
-
 /**
  * Create the state required to render ColorPicker.
  *
@@ -12,14 +11,13 @@ import type { ColorPickerProps, ColorPickerState } from './ColorPicker.types';
  * @param ref - reference to root HTMLDivElement of ColorPicker
  */
 export const useColorPicker_unstable = (props: ColorPickerProps, ref: React.Ref<HTMLDivElement>): ColorPickerState => {
-  const { color, onColorChange, ...rest } = props;
+  const { color, onColorChange, shape, ...rest } = props;
 
   const requestChange: ColorPickerState['requestChange'] = useEventCallback((event, data) => {
     onColorChange?.(event, {
       type: 'change',
       event,
-      value: data.value,
-      channel: data.channel,
+      color: data.color,
     });
   });
 
@@ -36,5 +34,6 @@ export const useColorPicker_unstable = (props: ColorPickerProps, ref: React.Ref<
     ),
     color,
     requestChange,
+    shape,
   };
 };

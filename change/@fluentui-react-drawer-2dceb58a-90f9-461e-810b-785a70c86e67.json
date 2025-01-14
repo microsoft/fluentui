@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add correct direction of animations when RTL",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

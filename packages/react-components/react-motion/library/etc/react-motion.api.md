@@ -9,9 +9,9 @@ import { SlotComponentType } from '@fluentui/react-utilities';
 import { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type AtomMotion = {
-    keyframes: Keyframe[];
-} & KeyframeEffectOptions;
+export type AtomMotion = AtomCore & {
+    reducedMotion?: Partial<AtomCore>;
+};
 
 // @public (undocumented)
 export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
@@ -69,6 +69,9 @@ export type MotionImperativeRef = {
     setPlaybackRate: (rate: number) => void;
     setPlayState: (state: 'running' | 'paused') => void;
 };
+
+// @public
+export type MotionParam = boolean | number | string;
 
 // @public (undocumented)
 export const motionTokens: {

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: focus jumps to inputY instead of next element",
+  "packageName": "@fluentui/react-color-picker-preview",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}

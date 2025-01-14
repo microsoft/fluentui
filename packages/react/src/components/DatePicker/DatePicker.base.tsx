@@ -496,6 +496,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
           role="combobox"
           label={label}
           aria-expanded={isCalendarShown}
+          aria-required={isRequired}
           ariaLabel={ariaLabel}
           aria-haspopup="dialog"
           aria-controls={isCalendarShown ? calloutId : undefined}

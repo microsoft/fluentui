@@ -1,1 +1,2 @@
-export * from './Video';
+export type { VideoProps } from './Video';
+export { Video, videoClassName } from './Video';

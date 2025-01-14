@@ -310,7 +310,6 @@ import { precisionRound } from '@fluentui/utilities';
 import { PulsingBeaconAnimationStyles } from '@fluentui/style-utilities';
 import { raiseClick } from '@fluentui/utilities';
 import * as React_2 from 'react';
-import type { ReactNode } from 'react';
 import { Rectangle } from '@fluentui/utilities';
 import { RefObject } from '@fluentui/utilities';
 import { registerDefaultFontFaces } from '@fluentui/theme';
@@ -717,6 +716,8 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     static getDerivedStateFromProps(newProps: IBasePickerProps<any>): {
         items: any[];
     } | null;
+    // (undocumented)
+    protected _getDescribedBy: (items: T[], hasError: boolean) => string;
     // @deprecated (undocumented)
     protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
     // (undocumented)
@@ -765,7 +766,11 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     protected renderCustomAlert(alertClassName?: string): JSX.Element;
     // (undocumented)
+    protected renderError(className?: string): JSX.Element | null;
+    // (undocumented)
     protected renderItems(): JSX.Element[];
+    // (undocumented)
+    protected renderLabel(inputId: string, styles: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> | undefined): JSX.Element | null;
     // (undocumented)
     protected renderSuggestions(): JSX.Element | null;
     // (undocumented)
@@ -1599,49 +1604,49 @@ export { FabricPerformance }
 // @public (undocumented)
 export enum FabricSlots {
     // (undocumented)
-    black = 21,
+    black = 21,// BaseSlots.primaryColor, Shade[Shade.Unshaded]);
     // (undocumented)
-    neutralDark = 20,
+    neutralDark = 20,// BaseSlots.primaryColor, Shade[Shade.Shade1]);
     // (undocumented)
-    neutralLight = 11,
+    neutralLight = 11,// BaseSlots.primaryColor, Shade[Shade.Shade2]);
     // (undocumented)
-    neutralLighter = 10,
+    neutralLighter = 10,// BaseSlots.primaryColor, Shade[Shade.Shade3]);
     // (undocumented)
-    neutralLighterAlt = 9,
+    neutralLighterAlt = 9,// BaseSlots.primaryColor, Shade[Shade.Shade4]);
     // (undocumented)
-    neutralPrimary = 19,
+    neutralPrimary = 19,// BaseSlots.primaryColor, Shade[Shade.Shade5]);
     // (undocumented)
-    neutralPrimaryAlt = 18,
+    neutralPrimaryAlt = 18,// BaseSlots.primaryColor, Shade[Shade.Shade6]);
     // (undocumented)
-    neutralQuaternary = 13,
+    neutralQuaternary = 13,// BaseSlots.primaryColor, Shade[Shade.Shade7]);
     // (undocumented)
-    neutralQuaternaryAlt = 12,
+    neutralQuaternaryAlt = 12,// BaseSlots.primaryColor, Shade[Shade.Shade8]);
     // (undocumented)
-    neutralSecondary = 17,
+    neutralSecondary = 17,// BaseSlots.backgroundColor, Shade[Shade.Shade1]);
     // (undocumented)
-    neutralSecondaryAlt = 16,
+    neutralSecondaryAlt = 16,// BaseSlots.backgroundColor, Shade[Shade.Shade2]);
     // (undocumented)
-    neutralTertiary = 15,
+    neutralTertiary = 15,// BaseSlots.backgroundColor, Shade[Shade.Shade3]);
     // (undocumented)
-    neutralTertiaryAlt = 14,
+    neutralTertiaryAlt = 14,// BaseSlots.backgroundColor, Shade[Shade.Shade4]);
     // (undocumented)
-    themeDark = 7,
+    themeDark = 7,// BaseSlots.backgroundColor, Shade[Shade.Shade5]);
     // (undocumented)
-    themeDarkAlt = 6,
+    themeDarkAlt = 6,// BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
     // (undocumented)
-    themeDarker = 8,
+    themeDarker = 8,// BaseSlots.foregroundColor, Shade[Shade.Shade3]);
     // (undocumented)
-    themeLight = 3,
+    themeLight = 3,// BaseSlots.foregroundColor, Shade[Shade.Shade4]);
     // (undocumented)
-    themeLighter = 2,
+    themeLighter = 2,// BaseSlots.foregroundColor, Shade[Shade.Shade5]);
     // (undocumented)
-    themeLighterAlt = 1,
+    themeLighterAlt = 1,// BaseSlots.foregroundColor, Shade[Shade.Shade6]);
     // (undocumented)
-    themePrimary = 0,
+    themePrimary = 0,// BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
     // (undocumented)
-    themeSecondary = 5,
+    themeSecondary = 5,// BaseSlots.foregroundColor, Shade[Shade.Shade7]);
     // (undocumented)
-    themeTertiary = 4,
+    themeTertiary = 4,// BaseSlots.foregroundColor, Shade[Shade.Shade8]);
     // (undocumented)
     white = 22
 }
@@ -2383,9 +2388,11 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
     defaultSelectedItems?: T[];
     disabled?: boolean;
     enableSelectedSuggestionAlert?: boolean;
+    errorMessage?: string | JSX.Element;
     getTextFromItem?: (item: T, currentValue?: string) => string;
     inputProps?: IInputProps;
     itemLimit?: number;
+    label?: string;
     onBlur?: React_2.FocusEventHandler<HTMLInputElement | Autofill>;
     onChange?: (items?: T[]) => void;
     onDismiss?: (ev?: any, selectedItem?: T) => boolean | void;
@@ -2394,6 +2401,7 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
     onEmptyResolveSuggestions?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     // @deprecated
     onFocus?: React_2.FocusEventHandler<HTMLInputElement | Autofill>;
+    onGetErrorMessage?: (items: T[]) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
     onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onInputChange?: (input: string) => string;
     onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
@@ -2406,6 +2414,7 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
     pickerSuggestionsProps?: IBasePickerSuggestionsProps;
     removeButtonAriaLabel?: string;
     removeButtonIconProps?: IIconProps;
+    required?: boolean;
     resolveDelay?: number;
     searchingText?: ((props: {
         input: string;
@@ -2420,6 +2429,8 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
 
 // @public (undocumented)
 export interface IBasePickerState<T> {
+    // (undocumented)
+    errorMessage?: string | JSX.Element;
     // (undocumented)
     isFocused?: boolean;
     // (undocumented)
@@ -2448,16 +2459,20 @@ export interface IBasePickerState<T> {
 
 // @public
 export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'className' | 'disabled'> & {
+    hasErrorMessage: boolean;
     isFocused?: boolean;
     inputClassName?: string;
 };
 
 // @public
 export interface IBasePickerStyles {
+    error: IStyle;
     input: IStyle;
     itemsWrapper: IStyle;
     root: IStyle;
     screenReaderText: IStyle;
+    // Warning: (ae-forgotten-export) The symbol "IBasePickerSubComponentStyles" needs to be exported by the entry point index.d.ts
+    subComponentStyles: IBasePickerSubComponentStyles;
     text: IStyle;
 }
 
@@ -3228,11 +3243,8 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     popupProps?: IPopupProps;
     preferScrollResizePositioning?: boolean;
     preventDismissOnEvent?: (ev: Event | React_2.FocusEvent | React_2.KeyboardEvent | React_2.MouseEvent) => boolean;
-    // @deprecated
     preventDismissOnLostFocus?: boolean;
-    // @deprecated
     preventDismissOnResize?: boolean;
-    // @deprecated
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
@@ -7026,6 +7038,7 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     // @deprecated
     overflowButtonAriaLabel?: string;
     role?: 'alert' | 'status' | 'none';
+    showExpandButton?: boolean;
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
     theme?: ITheme;
     truncated?: boolean;
@@ -7700,6 +7713,7 @@ export type IPickerAriaIds = {
     selectedItems: string;
     suggestionList: string;
     combobox: string;
+    error: string;
 };
 
 // @public
@@ -7877,7 +7891,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     ariaLabelledBy?: string;
     backgroundColor?: string;
     bounds?: IRectangle;
-    children?: ReactNode;
+    children?: React_2.ReactNode;
     className?: string;
     componentRef?: IRefObject<IPositioningContainer>;
     coverTarget?: boolean;
@@ -9191,9 +9205,15 @@ export interface ITag {
 export interface ITagItemProps extends IPickerItemProps<ITag> {
     className?: string;
     enableTagFocusInDisabledPicker?: boolean;
+    removeButtonProps?: ITagItemRemoveButtonProps;
     styles?: IStyleFunctionOrObject<ITagItemStyleProps, ITagItemStyles>;
     theme?: ITheme;
     title?: string;
+}
+
+// @public
+export interface ITagItemRemoveButtonProps extends IButtonProps {
+    'data-id'?: string;
 }
 
 // @public

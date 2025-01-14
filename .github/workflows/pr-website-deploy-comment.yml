@@ -1,0 +1,107 @@
+name: PR Website Deploy | Comment on PR
+on:
+  workflow_run:
+    workflows: ['PR Website Deploy']
+    types:
+      - completed
+
+concurrency:
+  # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+  group: ${{github.event.workflow_run.id }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DEPLOY_HOST_URL: https://fluentuipr.z22.web.core.windows.net/
+  AZURE_STORAGE: fluentuipr
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'microsoft' }} && ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
+    outputs:
+      pr_number: ${{ steps.pr_number.outputs.result }}
+      website_url: ${{ steps.website_url.outputs.id }}
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: pr-website-artifacts
+          path: ./website
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: pr-number
+          path: ./results
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Load PR number
+        uses: actions/github-script@v7
+        id: pr_number
+        with:
+          script: |
+            const run = require('./.github/scripts/validate-pr-number');
+            const result = run({filePath:'results/pr.txt'});
+            return result;
+          result-encoding: string
+
+      - name: Load WEBSITE URL
+        id: website_url
+        run: echo "id=${{env.DEPLOY_HOST_URL}}pull/${{steps.pr_number.outputs.result}}/" >> $GITHUB_OUTPUT
+
+      - name: Login via Azure CLI
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Upload PR WebSite
+        uses: azure/cli@v2
+        env:
+          AZCOPY_AUTO_LOGIN_TYPE: 'AZCLI'
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az storage blob upload-batch \
+              --destination '$web' \
+              --source ./website \
+              --account-name ${{ env.AZURE_STORAGE }} \
+              --destination-path pull/${{steps.pr_number.outputs.result}} \
+              --auth-mode login \
+              --overwrite
+
+  comment:
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
+    permissions:
+      pull-requests: write
+      statuses: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 'Comment on PR'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: deploy-pr-site
+          number: ${{ needs.deploy.outputs.pr_number }}
+          message: |
+            Pull request demo site: [URL](${{needs.deploy.outputs.website_url}})
+
+      - name: Update PR deploy site GitHub status
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const run = require('./.github/scripts/deploy-pr-site-status');
+            const config = { websiteUrl: '${{ needs.deploy.outputs.website_url }}', prId: '${{ needs.deploy.outputs.pr_number }}'};
+            await run({github,context,core,config});

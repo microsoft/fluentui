@@ -1,141 +1,112 @@
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 import type { TextInput } from './text-input.js';
 import { ImplicitSubmissionBlockingTypes } from './text-input.options.js';
 
 test.describe('TextInput', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-textinput--text-input'));
+  test.use({ tagName: 'fluent-text-input' });
 
-    await page.waitForFunction(() => customElements.whenDefined('fluent-text-input'));
-  });
+  test('should focus the element when the `autofocus` attribute is present', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-  test('should focus the element when the `autofocus` attribute is present', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
-
-    await page.setContent(/* html */ `
-      <fluent-text-input autofocus></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { autofocus: true } });
 
     await expect(element).toBeFocused();
   });
 
-  test('should set the `disabled` attribute on the internal control', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should set the `disabled` attribute on the internal control', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input disabled></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { disabled: true } });
 
     await expect(control).toBeDisabled();
   });
 
-  test('should set the `readonly` attribute on the internal control', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should set the `readonly` attribute on the internal control', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input readonly></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { readonly: true } });
 
     await expect(control).toHaveAttribute('readonly');
   });
 
-  test('should set the `required` attribute on the internal control', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should set the `required` attribute on the internal control', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input required></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { required: true } });
 
     await expect(control).toHaveAttribute('required');
   });
 
-  test('should set the `spellcheck` attribute on the internal control', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should set the `spellcheck` attribute on the internal control', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input spellcheck="true"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { spellcheck: 'true' } });
 
     await expect(control).toHaveAttribute('spellcheck', 'true');
   });
 
-  test('should set the `maxlength` attribute on the internal control', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should set the `maxlength` attribute on the internal control', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input maxlength="14"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { maxlength: '14' } });
 
     await expect(control).toHaveAttribute('maxlength', '14');
   });
 
-  test('should set the `minlength` attribute on the internal control', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should set the `minlength` attribute on the internal control', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input minlength="14"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { minlength: '14' } });
 
     await expect(control).toHaveAttribute('minlength', '14');
   });
 
-  test('should set the `name` attribute on the internal control', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should set the `name` attribute on the internal control', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input name="foo"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { name: 'foo' } });
 
     await expect(control).toHaveAttribute('name', 'foo');
   });
 
-  test('should set the `placeholder` attribute on the internal control', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should set the `placeholder` attribute on the internal control', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input placeholder="foo"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { placeholder: 'foo' } });
 
     await expect(control).toHaveAttribute('placeholder', 'foo');
   });
 
-  test('should set the `size` attribute on the internal control', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should set the `size` attribute on the internal control', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input size="4"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { size: '4' } });
 
     await expect(control).toHaveAttribute('size', '4');
   });
 
-  test('should set the `list` attribute on the internal control', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should set the `list` attribute on the internal control', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input list="listId"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { list: 'listId' } });
 
     await expect(control).toHaveAttribute('list', 'listId');
   });
 
-  test('should reflect `control-size` attribute values', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should reflect `control-size` attribute values', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input control-size="small"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { 'control-size': 'small' } });
 
     await expect(element).toHaveAttribute('control-size', 'small');
     await expect(element).toHaveJSProperty('controlSize', 'small');
@@ -160,12 +131,10 @@ test.describe('TextInput', () => {
     await expect(element).toHaveJSProperty('controlSize', 'small');
   });
 
-  test('should add a custom state matching the `size` attribute when provided', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should add a custom state matching the `size` attribute when provided', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input control-size="small"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { 'control-size': 'small' } });
 
     await element.evaluate((node: TextInput) => {
       node.controlSize = 'small';
@@ -196,12 +165,10 @@ test.describe('TextInput', () => {
     await expect(element).not.toHaveCustomState('large');
   });
 
-  test('should reflect `appearance` attribute values', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should reflect `appearance` attribute values', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.evaluate((node: TextInput) => {
-      node.appearance = 'outline';
-    });
+    await fastPage.setTemplate({ attributes: { appearance: 'outline' } });
 
     await expect(element).toHaveAttribute('appearance', 'outline');
     await expect(element).toHaveJSProperty('appearance', 'outline');
@@ -226,12 +193,8 @@ test.describe('TextInput', () => {
     await expect(element).toHaveJSProperty('appearance', 'filled-lighter');
   });
 
-  test('should add a custom state matching the `appearance` attribute when provided', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
-
-    await page.setContent(/* html */ `
-      <fluent-text-input></fluent-text-input>
-    `);
+  test('should add a custom state matching the `appearance` attribute when provided', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await element.evaluate((node: TextInput) => {
       node.appearance = 'outline';
@@ -269,30 +232,24 @@ test.describe('TextInput', () => {
     await expect(element).not.toHaveCustomState('filled-lighter');
   });
 
-  test('should have an undefined `value` property when no `value` attribute is set', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
-
-    await page.setContent(/* html */ `
-        <fluent-text-input></fluent-text-input>
-    `);
+  test('should have an undefined `value` property when no `value` attribute is set', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('value', undefined);
   });
 
-  test('should initialize to the provided `value` attribute when set before connection', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should initialize to the provided `value` attribute when set before connection', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-text-input value="foo"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { value: 'foo' } });
 
     await expect(element).toHaveJSProperty('value', 'foo');
   });
 
-  test('should initialize to the provided `value` property if set pre-connection', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should initialize to the provided `value` property if set pre-connection', async ({ fastPage, page }) => {
+    const { element } = fastPage;
 
-    await page.setContent('');
+    await fastPage.setTemplate('');
 
     await page.evaluate(() => {
       const textInput = document.createElement('fluent-text-input') as TextInput;
@@ -305,13 +262,9 @@ test.describe('TextInput', () => {
     await expect(element).toHaveJSProperty('value', 'foo');
   });
 
-  test('should initialize to the provided `value` attribute if set post-connection', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should initialize to the provided `value` attribute if set post-connection', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
-
-    await page.setContent(/* html */ `
-      <fluent-text-input></fluent-text-input>
-    `);
 
     await element.evaluate(node => {
       node.setAttribute('value', 'foo');
@@ -323,14 +276,10 @@ test.describe('TextInput', () => {
   });
 
   test('should NOT initialize to the provided `value` attribute if set post-connection and the control has a dirty value', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-text-input');
+    const { element } = fastPage;
     const control = element.locator('input');
-
-    await page.setContent(/* html */ `
-      <fluent-text-input></fluent-text-input>
-    `);
 
     await control.fill('bar');
 
@@ -343,94 +292,87 @@ test.describe('TextInput', () => {
     await expect(control).toHaveValue('bar');
   });
 
-  test('should hide the label when no default slotted content is provided', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should hide the label when no default slotted content is provided', async ({ fastPage }) => {
+    const { element } = fastPage;
     const label = element.locator('label');
-
-    await page.setContent(/* html */ `
-      <fluent-text-input></fluent-text-input>
-    `);
 
     await expect(label).toBeHidden();
   });
 
-  test('should hide the label when start content is provided', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should hide the label when start content is provided', async ({ fastPage }) => {
+    const { element } = fastPage;
     const label = element.locator('label');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <div slot="start"></div>
-      </fluent-text-input>
-    `);
+      `,
+    });
 
     await expect(label).toBeHidden();
   });
 
-  test('should hide the label when end content is provided', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should hide the label when end content is provided', async ({ fastPage }) => {
+    const { element } = fastPage;
     const label = element.locator('label');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <div slot="end"></div>
-      </fluent-text-input>
-    `);
+      `,
+    });
 
     await expect(label).toBeHidden();
   });
 
-  test('should hide the label when start and end content are provided', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should hide the label when start and end content are provided', async ({ fastPage }) => {
+    const { element } = fastPage;
     const label = element.locator('label');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <div slot="start"></div>
         <div slot="end"></div>
-      </fluent-text-input>
-    `);
+      `,
+    });
 
     await expect(label).toBeHidden();
   });
 
-  test('should hide the label when space-only text nodes are slotted', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should hide the label when space-only text nodes are slotted', async ({ fastPage }) => {
+    const { element } = fastPage;
     const label = element.locator('label');
 
-    await page.setContent(/* html */ `<fluent-text-input>\n \n</fluent-text-input>`);
+    await fastPage.setTemplate({
+      innerHTML: '\n \n',
+    });
 
     await expect(element).toHaveText(/\n\s\n/);
 
     await expect(label).toBeHidden();
   });
 
-  test('should fire a `change` event when the internal control emits a `change` event', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should fire a `change` event when the internal control emits a `change` event', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input></fluent-text-input>
-    `);
+    const wasChanged = element.evaluate(
+      node =>
+        new Promise(resolve => {
+          node.addEventListener('change', () => resolve(true));
+        }),
+    );
 
-    const [wasChanged] = await Promise.all([
-      element.evaluate(
-        node =>
-          new Promise(resolve => {
-            node.addEventListener('change', () => resolve(true));
-          }),
-      ),
-      element.evaluate((node: TextInput) => node.control.dispatchEvent(new Event('change'))),
-    ]);
+    await element.evaluate((node: TextInput) => node.control.dispatchEvent(new Event('change')));
 
-    expect(wasChanged).toBeTruthy();
+    await expect(wasChanged).resolves.toBe(true);
   });
 
-  test('should be invalid when the `required` attribute is set and the `value` property is empty', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should be invalid when the `required` attribute is set and the `value` property is empty', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input required></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { required: true } });
 
     await expect(element).toHaveJSProperty('validity.valueMissing', true);
 
@@ -438,25 +380,23 @@ test.describe('TextInput', () => {
   });
 
   test('should be valid when the `required` attribute is set and the `value` property is not empty', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-text-input');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input required value="some-value"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { required: true, value: 'foo' } });
 
     await expect(element).toHaveJSProperty('validity.valid', true);
 
     await expect(element).toHaveJSProperty('validity.valueMissing', false);
   });
 
-  test('should be valid when the `minlength` attribute is set and the `value` attribute is empty', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should be valid when the `minlength` attribute is set and the `value` attribute is empty', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input minlength="1"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { minlength: '10' } });
 
     await expect(element).toHaveJSProperty('validity.valid', true);
 
@@ -464,13 +404,11 @@ test.describe('TextInput', () => {
   });
 
   test('should be valid when the `value` attribute length is less than the `minlength` attribute and the value is not dirty', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-text-input');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input type="password" minlength="10" value="123456789"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { minlength: '10', value: '123456789' } });
 
     await expect(element).toHaveJSProperty('validity.valid', true);
 
@@ -478,13 +416,11 @@ test.describe('TextInput', () => {
   });
 
   test('should be valid when the `value` attribute is not set and the `maxlength` attribute is set', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-text-input');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-text-input maxlength="10"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { maxlength: '10' } });
 
     await expect(element).toHaveJSProperty('validity.valid', true);
 
@@ -492,88 +428,76 @@ test.describe('TextInput', () => {
   });
 
   test('should report valid validity when the `value` attribute has a length which exceeds the `maxlength`', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-text-input');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input type="password" maxlength="10" value="12345678901"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { maxlength: '10', value: '123456789' } });
 
     await expect(element).toHaveJSProperty('validity.tooLong', false);
   });
 
   test('should report valid validity when the `value` is shorter than `maxlength` and the element is `required`', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-text-input');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input type="password" maxlength="10" required value="123456789"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { required: true, maxlength: '10', value: '123456789' } });
 
     await expect(element).toHaveJSProperty('validity.tooLong', false);
   });
 
-  test('should report valid validity when the `value` property matches the `pattern` property', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should report valid validity when the `value` property matches the `pattern` property', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input type="password" pattern="\\d+" value="123456789"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { pattern: '\\d+', value: '123456789' } });
 
     await expect(element).toHaveJSProperty('validity.patternMismatch', false);
   });
 
-  test('should report invalid validity when `value` does not match `pattern`', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should report invalid validity when `value` does not match `pattern`', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input type="password" pattern="value" value="other value"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { pattern: 'value', value: 'other value' } });
 
     await expect(element).toHaveJSProperty('validity.patternMismatch', true);
   });
 
-  test('should report valid validity when `value` is an empty string', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should report valid validity when `value` is an empty string', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input type="email"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { pattern: 'value', value: '' } });
 
     await expect(element).toHaveJSProperty('validity.typeMismatch', false);
   });
 
-  test('should have invalid invalidity with a `typeMismatch` when `value` is not a valid email', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should have invalid invalidity with a `typeMismatch` when `value` is not a valid email', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input type="email" value="not an email"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { type: 'email', value: 'not an email' } });
 
     await expect(element).toHaveJSProperty('validity.typeMismatch', true);
   });
 
-  test('should be invalid when `value` is not a valid URL', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should be invalid when `value` is not a valid URL', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input type="url" value="not a url"></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { type: 'url', value: 'not a url' } });
 
     await expect(element).toHaveJSProperty('validity.valid', false);
 
     await expect(element).toHaveJSProperty('validity.typeMismatch', true);
   });
 
-  test('should not accept user input when the `readonly` attribute is present', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should not accept user input when the `readonly` attribute is present', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input readonly></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { readonly: true } });
 
     await control.fill('foo', {
       // eslint-disable-next-line playwright/no-force-option
@@ -583,13 +507,11 @@ test.describe('TextInput', () => {
     await expect(control).toHaveValue('');
   });
 
-  test('should not accept user input when the `disabled` attribute is present', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should not accept user input when the `disabled` attribute is present', async ({ fastPage }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input disabled></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { disabled: true } });
 
     await control.fill('foo', {
       // eslint-disable-next-line playwright/no-force-option
@@ -600,33 +522,29 @@ test.describe('TextInput', () => {
   });
 
   test('should set the `willValidate` property to `false` when the `disabled` attribute is present', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-text-input');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input disabled></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { disabled: true } });
 
     await expect(element).toHaveJSProperty('willValidate', false);
   });
 
   test('should set the `willValidate` property to `false` when the `readonly` attribute is present', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-text-input');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-text-input readonly></fluent-text-input>
-    `);
+    await fastPage.setTemplate({ attributes: { readonly: true } });
 
     await expect(element).toHaveJSProperty('willValidate', false);
   });
 
-  test('should set the `form` property to the parent form element', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should set the `form` property to the parent form element', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <form id="foo">
         <fluent-text-input></fluent-text-input>
       </form>
@@ -635,20 +553,18 @@ test.describe('TextInput', () => {
     await expect(element).toHaveJSProperty('form.id', 'foo');
   });
 
-  test('should set the `form` property to `null` when the element is not in a form', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
-
-    await page.setContent(/* html */ `
-      <fluent-text-input></fluent-text-input>
-    `);
+  test('should set the `form` property to `null` when the element is not in a form', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('form', null);
   });
 
-  test('should set the `form` property to the form element referenced by the `form` attribute', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should set the `form` property to the form element referenced by the `form` attribute', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <form id="foo">
         <fluent-text-input form="foo"></fluent-text-input>
       </form>
@@ -658,11 +574,11 @@ test.describe('TextInput', () => {
   });
 
   test('should set the `form` property to `null` when the element is in a form with the `form` attribute set to an invalid value', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-text-input');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <form id="foo">
         <fluent-text-input form="bar"></fluent-text-input>
       </form>
@@ -671,11 +587,14 @@ test.describe('TextInput', () => {
     await expect(element).toHaveJSProperty('form', null);
   });
 
-  test('should submit the form via implicit submission when the form has no other controls', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should submit the form via implicit submission when the form has no other controls', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <form id="form" action="foo">
         <fluent-text-input name="testinput"></fluent-text-input>
       </form>
@@ -689,11 +608,14 @@ test.describe('TextInput', () => {
     expect(page.url()).toMatch(/foo\?testinput=hello$/);
   });
 
-  test('should submit the form via implicit submission when the form contains a submit button', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should submit the form via implicit submission when the form contains a submit button', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <form id="form" action="foo">
         <fluent-text-input name="testinput"></fluent-text-input>
         <button type="submit">Submit</button>
@@ -708,12 +630,13 @@ test.describe('TextInput', () => {
   });
 
   test('should submit the form via implicit submission when the form has no other implicit submission blocking controls', async ({
+    fastPage,
     page,
   }) => {
-    const element = page.locator('fluent-text-input');
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <form id="form" action="foo">
         <fluent-text-input name="testinput"></fluent-text-input>
         <button type="reset">Reset</button>
@@ -730,16 +653,16 @@ test.describe('TextInput', () => {
 
   test.describe('should NOT submit the form via implicit submission when the form has other implicit submission blocking controls', () => {
     for (const type of ImplicitSubmissionBlockingTypes) {
-      test(`Blocking type: ${type}`, async ({ page }) => {
-        const element = page.locator('fluent-text-input');
+      test(`Blocking type: ${type}`, async ({ fastPage, page }) => {
+        const { element } = fastPage;
         const control = element.locator('input');
 
-        await page.setContent(/* html */ `
-            <form id="form" action="foo">
-              <fluent-text-input name="testinput"></fluent-text-input>
-              <input name="extrainput" type="${type}" value="extravalue" />
-            </form>
-          `);
+        await fastPage.setTemplate(/* html */ `
+          <form id="form" action="foo">
+            <fluent-text-input name="testinput"></fluent-text-input>
+            <input name="extrainput" type="${type}" value="extravalue" />
+          </form>
+        `);
 
         await control.fill('hello');
 
@@ -751,11 +674,12 @@ test.describe('TextInput', () => {
   });
 
   test('should prevent form submission when the `required` attribute is set and the `value` property is empty', async ({
+    fastPage,
     page,
   }) => {
-    const element = page.locator('fluent-text-input');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <form id="form" action="foo">
         <fluent-text-input name="testinput" required></fluent-text-input>
       </form>
@@ -766,11 +690,11 @@ test.describe('TextInput', () => {
     expect(page.url()).not.toMatch(/foo/);
   });
 
-  test('should NOT prevent form submission when the `readonly` attribute is set', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should NOT prevent form submission when the `readonly` attribute is set', async ({ fastPage, page }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <form action="foo">
         <fluent-text-input name="testinput" readonly></fluent-text-input>
       </form>
@@ -782,12 +706,13 @@ test.describe('TextInput', () => {
   });
 
   test('should allow comma-separated values when the `multiple` attribute is set and the `type` is "email"', async ({
+    fastPage,
     page,
   }) => {
-    const element = page.locator('fluent-text-input');
+    const { element } = fastPage;
     const control = element.locator('input');
 
-    await page.setContent(/* html */ `
+    await fastPage.setTemplate(/* html */ `
       <form action="foo">
         <fluent-text-input name="testinput" multiple type="email"></fluent-text-input>
       </form>
@@ -800,20 +725,20 @@ test.describe('TextInput', () => {
     expect(page.url()).toMatch(/foo\?testinput=hello%40example\.com%2Cworld%40example\.com/);
   });
 
-  test('should allow focusable start and end slotted content to be focused', async ({ page }) => {
-    const element = page.locator('fluent-text-input');
+  test('should allow focusable start and end slotted content to be focused', async ({ fastPage, page }) => {
+    const { element } = fastPage;
     const control = element.locator('input');
     const start = element.locator('[slot="start"]');
     const end = element.locator('[slot="end"]');
     const label = element.locator('text=Label');
 
-    await page.setContent(/* html */ `
-      <fluent-text-input>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <span>Label</span>
         <button slot="start">start</button>
         <button slot="end">end</button>
-      </fluent-text-input>
-    `);
+      `,
+    });
 
     await page.keyboard.press('Tab');
 
@@ -832,5 +757,70 @@ test.describe('TextInput', () => {
 
       await expect(control).toBeFocused();
     });
+  });
+
+  test('should reset the value to an empty string when the form is reset', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const control = element.locator('input');
+    const reset = page.locator('button');
+
+    await fastPage.setTemplate(/* html */ `
+      <form id="form" action="foo">
+        <fluent-text-input name="testinput"></fluent-text-input>
+        <button type="reset">Reset</button>
+      </form>
+    `);
+
+    await expect(control).toHaveValue('');
+
+    await control.fill('hello');
+
+    await reset.click();
+
+    await expect(control).toHaveValue('');
+  });
+
+  test('should change the `value` property when the `current-value` attribute changes', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+
+    await element.evaluate(node => {
+      node.setAttribute('current-value', 'foo');
+    });
+
+    await expect(element).toHaveJSProperty('value', 'foo');
+  });
+
+  test('should change the `value` property when the `currentValue` property changes', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+
+    await element.evaluate((node: TextInput) => {
+      node.currentValue = 'foo';
+    });
+
+    await expect(element).toHaveJSProperty('value', 'foo');
+  });
+
+  test('should set the `current-value` attribute to match the `value` property', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+
+    await expect(element).not.toHaveAttribute('current-value');
+
+    await element.evaluate((node: TextInput) => {
+      node.value = 'foo';
+    });
+
+    await expect(element).toHaveAttribute('current-value', 'foo');
+  });
+
+  test('should set the `currentValue` property to match the `value` property', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+
+    await expect(element).toHaveJSProperty('currentValue', undefined);
+
+    await element.evaluate((node: TextInput) => {
+      node.value = 'foo';
+    });
+
+    await expect(element).toHaveJSProperty('currentValue', 'foo');
   });
 });

@@ -1,9 +1,13 @@
 import { attr, FASTElement, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
 import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { toggleState } from '../utils/element-internals.js';
-import type { TextInputControlSize } from './text-input.options.js';
-import { ImplicitSubmissionBlockingTypes, TextInputAppearance, TextInputType } from './text-input.options.js';
+import { swapStates } from '../utils/element-internals.js';
+import {
+  ImplicitSubmissionBlockingTypes,
+  TextInputAppearance,
+  TextInputControlSize,
+  TextInputType,
+} from './text-input.options.js';
 
 /**
  * A Text Input Custom HTML Element.
@@ -39,6 +43,27 @@ export class BaseTextInput extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public autofocus!: boolean;
+
+  /**
+   * The current value of the input.
+   * @public
+   * @remarks
+   * HTML Attribute: `current-value`
+   */
+  @attr({ attribute: 'current-value' })
+  public currentValue!: string;
+
+  /**
+   * Tracks the current value of the input.
+   *
+   * @param prev - the previous value
+   * @param next - the next value
+   *
+   * @internal
+   */
+  currentValueChanged(prev: string, next: string): void {
+    this.value = next;
+  }
 
   /**
    * The default slotted content. This is the content that appears in the text field label.
@@ -271,13 +296,6 @@ export class BaseTextInput extends FASTElement {
   public type: TextInputType = TextInputType.text;
 
   /**
-   * The current value of the input.
-   *
-   * @internal
-   */
-  private _value: string = this.initialValue;
-
-  /**
    * A reference to the internal input element.
    *
    * @internal
@@ -342,14 +360,14 @@ export class BaseTextInput extends FASTElement {
    */
   public get value(): string {
     Observable.track(this, 'value');
-    return this._value;
+    return this.currentValue;
   }
 
   public set value(value: string) {
-    this._value = value;
+    this.currentValue = value;
 
     if (this.$fastController.isConnected) {
-      this.control.value = value;
+      this.control.value = value ?? '';
       this.setFormValue(value);
       this.setValidity();
       Observable.notify(this, 'value');
@@ -618,12 +636,7 @@ export class TextInput extends BaseTextInput {
    * @param next - the next state
    */
   public appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, TextInputAppearance);
   }
 
   /**
@@ -642,12 +655,7 @@ export class TextInput extends BaseTextInput {
    * @param next - the next state
    */
   public controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, TextInputControlSize);
   }
 }
 

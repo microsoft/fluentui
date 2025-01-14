@@ -20,7 +20,6 @@ import { MoverMemorizedElementEventName } from 'tabster';
 import { MoverMoveFocusEvent } from 'tabster';
 import { MoverMoveFocusEventName } from 'tabster';
 import * as React_2 from 'react';
-import type { RefObject } from 'react';
 import { TabsterMoveFocusEvent } from 'tabster';
 import { TabsterMoveFocusEventName } from 'tabster';
 import { Types } from 'tabster';
@@ -1483,10 +1482,13 @@ export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(opti
 export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
 
 // @public
-export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
+export function useIsNavigatingWithKeyboard(): () => boolean;
+
+// @public
+export function useKeyboardNavAttribute<E extends HTMLElement>(): React_2.RefObject<E>;
 
 // @internal
-export const useMergedTabsterAttributes_unstable: (...attributes: Partial<Types.TabsterDOMAttribute>[]) => Types.TabsterDOMAttribute;
+export const useMergedTabsterAttributes_unstable: (...attributes: (Partial<Types.TabsterDOMAttribute> | null | undefined)[]) => Types.TabsterDOMAttribute;
 
 // @public
 export const useModalAttributes: (options?: UseModalAttributesOptions) => {

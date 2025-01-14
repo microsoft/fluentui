@@ -4,9 +4,10 @@ import { Nav } from '@fluentui/react-nav-preview';
 // import descriptionMd from './NavDescription.md';
 // import bestPracticesMd from './NavBestPractices.md';
 
-export { NavDrawerDefault } from '../NavDrawer/NavDrawerDefault.stories';
-export { NavDrawerSize } from '../NavDrawer/NavDrawerSize.stories';
-export { NavDrawerControlled } from '../NavDrawer/NavDrawerControlled.stories';
+export { Basic } from '../NavDrawer/Basic.stories';
+export { VariableDensityItems } from '../NavDrawer/VariableDensityItems.stories';
+export { Controlled } from '../NavDrawer/Controlled.stories';
+export { SplitNavItems } from '../NavDrawer/SplitNavItems.stories';
 
 export default {
   title: 'Preview Components/Nav',

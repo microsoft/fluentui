@@ -75,8 +75,8 @@ describe('TypeCheck Executor', () => {
     const output = await executor(options, mockContext);
 
     expect(promisifyCallMock.mock.calls.flat()).toEqual([
-      'tsc -p /root/libs/my-lib/tsconfig.lib.json --pretty --noEmit --baseUrl .',
-      'tsc -p /root/libs/my-lib/tsconfig.spec.json --pretty --noEmit --baseUrl .',
+      'tsc -p /root/libs/my-lib/tsconfig.lib.json --pretty --noEmit --baseUrl /root/libs/my-lib',
+      'tsc -p /root/libs/my-lib/tsconfig.spec.json --pretty --noEmit --baseUrl /root/libs/my-lib',
     ]);
 
     expect(output.success).toBe(true);
@@ -93,7 +93,7 @@ describe('TypeCheck Executor', () => {
     const output = await executor({ ...options, excludeProject: { spec: true, e2e: false } }, mockContext);
 
     expect(promisifyCallMock.mock.calls.flat()).toEqual([
-      'tsc -p /root/libs/my-lib/tsconfig.lib.json --pretty --noEmit --baseUrl .',
+      'tsc -p /root/libs/my-lib/tsconfig.lib.json --pretty --noEmit --baseUrl /root/libs/my-lib',
     ]);
 
     expect(output.success).toBe(true);

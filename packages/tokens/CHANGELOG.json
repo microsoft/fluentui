@@ -2,6 +2,81 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Mon, 16 Dec 2024 16:26:46 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.21",
+      "version": "1.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "ed3876a731c1528835c658486a0f2e7d4dc9f445",
+            "comment": "bugfix: ensure teams tokens follow teams overrides for fonts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2024 12:53:46 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.20",
+      "version": "1.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "b9cac91d1e624aca5139cf7bef047de9abfa7385",
+            "comment": "chore: remove usage of \"export *\" "
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 Nov 2024 10:00:39 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.19",
+      "version": "1.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "2558ddce7329d2a1c1f76fa1e5f614918fe6dcd9",
+            "comment": "chore: replace npm-scripts and just-scrtips with nx inferred tasks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Oct 2024 17:17:52 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.18",
+      "version": "1.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "e4022e259c27c90158ed0dbb5278df5aa714118f",
+            "comment": "feat: add explicit .js file extensions to all relative import/export statement within built output to support native ESM within browser"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Sep 2024 12:40:16 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.17",
+      "version": "1.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "de8118d071983fdc372b1ea24535c38f85e474b9",
+            "comment": "feat: add z-index tokens"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Jul 2024 17:25:25 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.16",
       "version": "1.0.0-alpha.16",
