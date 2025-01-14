@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: update disabled switch styles to GrayText for high-contrast mode",
+  "packageName": "@fluentui/web-components",
+  "email": "rupertdavid@microsoft.com",
+  "dependentChangeType": "patch"
+}
