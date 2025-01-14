@@ -773,16 +773,6 @@ export class Dropdown extends BaseDropdown {
   private static AnchorPositionFallbackObserver: IntersectionObserver;
 
   /**
-   * Fallback style element for anchor positioning.
-   *
-   * @remarks This is only used when the browser does not support CSS anchor positioning, and the CSS anchor polyfill is
-   * present.
-   *
-   * @internal
-   */
-  private anchorPositionFallbackStyleElement: HTMLStyleElement | null = null;
-
-  /**
    * Static property for the anchor positioning fallback style elements.
    *
    * @remarks This is only used when the browser does not support CSS anchor positioning, and the CSS anchor polyfill is
@@ -791,17 +781,6 @@ export class Dropdown extends BaseDropdown {
    * @internal
    */
   private static AnchorPositionFallbackStyleElements: Map<BaseDropdown, HTMLStyleElement> = new Map();
-
-  /**
-   * Static property for the anchor positioning fallback timeout reference. This is used to prevent multiple idle
-   * callbacks from being scheduled when multiple dropdowns are created in quick succession.
-   *
-   * @remarks This is only used when the browser does not support CSS anchor positioning, and the CSS anchor polyfill is
-   * present.
-   *
-   * @internal
-   */
-  private static AnchorPositionFallbackTimeout: number | null;
 
   /**
    * The appearance of the dropdown.
