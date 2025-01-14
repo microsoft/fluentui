@@ -1,5 +1,16 @@
 export { definition as DropdownDefinition } from './dropdown.definition.js';
-export { Dropdown } from './dropdown.js';
-export { DropdownType, isDropdown } from './dropdown.options.js';
+export { BaseDropdown, Dropdown } from './dropdown.js';
+export {
+  DropdownAppearance,
+  DropdownSize,
+  DropdownType,
+  isDropdown,
+  type DropdownOptions,
+} from './dropdown.options.js';
 export { styles as DropdownStyles } from './dropdown.styles.js';
-export { template as DropdownTemplate } from './dropdown.template.js';
+export {
+  dropdownButtonTemplate,
+  dropdownInputTemplate,
+  template as DropdownTemplate,
+  dropdownTemplate,
+} from './dropdown.template.js';

@@ -1,3 +1,4 @@
+import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
 import type { ValuesOf } from '../utils/typings.js';
 import type { BaseDropdown } from './dropdown.js';
 
@@ -30,6 +31,14 @@ export const DropdownAppearance = {
 
 /** @public */
 export type DropdownAppearance = ValuesOf<typeof DropdownAppearance>;
+
+/**
+ * Template options for the {@link (Dropdown:class)} component.
+ * @public
+ */
+export type DropdownOptions = {
+  indicator?: StaticallyComposableHTML<BaseDropdown>;
+};
 
 /**
  * Values for the `size` attribute of the {@link (Dropdown:class)} component.

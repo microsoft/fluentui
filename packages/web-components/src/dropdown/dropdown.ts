@@ -1,12 +1,4 @@
-import {
-  attr,
-  FASTElement,
-  Observable,
-  observable,
-  Updates,
-  type ViewTemplate,
-  volatile,
-} from '@microsoft/fast-element';
+import { attr, FASTElement, Observable, observable, Updates, volatile } from '@microsoft/fast-element';
 import type { Listbox } from '../listbox/listbox.js';
 import { isListbox } from '../listbox/listbox.options.js';
 import type { Option } from '../option/option.js';
@@ -15,7 +7,7 @@ import { swapStates, toggleState } from '../utils/element-internals.js';
 import { getLanguage } from '../utils/language.js';
 import { uniqueId } from '../utils/unique-id.js';
 import { DropdownAppearance, DropdownSize, DropdownType } from './dropdown.options.js';
-import { dropdownButtonTemplate, dropdownIndicatorTemplate, dropdownInputTemplate } from './dropdown.template.js';
+import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.template.js';
 
 /**
  * A Dropdown Custom HTML Element.
@@ -872,29 +864,6 @@ export class Dropdown extends BaseDropdown {
     }
 
     super.disconnectedCallback();
-  }
-
-  /**
-   * Inserts the control element.
-   *
-   * @internal
-   */
-  protected insertControl(): void {
-    super.insertControl();
-    this.insertIndicator();
-  }
-
-  /**
-   * Removes any existing indicators and inserts a new one.
-   *
-   * @param template - The template to use for the indicator.
-   * @internal
-   */
-  protected insertIndicator(template: ViewTemplate = dropdownIndicatorTemplate): void {
-    this.indicatorSlot?.assignedNodes().forEach(x => this.removeChild(x));
-    template.render(this, this);
-    this.append(this.indicator);
-    this.indicatorSlot?.assign(this.indicator);
   }
 
   /**

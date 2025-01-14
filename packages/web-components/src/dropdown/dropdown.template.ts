@@ -1,15 +1,10 @@
 import { type ElementViewTemplate, html, ref } from '@microsoft/fast-element';
+import { staticallyCompose } from '../utils/template-helpers.js';
 import type { BaseDropdown } from './dropdown.js';
+import type { DropdownOptions } from './dropdown.options.js';
 
-export const dropdownIndicatorTemplate = html<BaseDropdown>`
-  <svg
-    class="chevron-down-20-regular"
-    role="button"
-    slot="indicator"
-    tabindex="${x => (!x.disabled ? -1 : void 0)}"
-    viewBox="0 0 20 20"
-    ${ref('indicator')}
-  >
+const dropdownIndicatorTemplate = html<BaseDropdown>`
+  <svg class="chevron-down-20-regular" role="button" slot="indicator" viewBox="0 0 20 20" ${ref('indicator')}>
     <path
       d="M15.85 7.65a.5.5 0 0 1 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16a.5.5 0 0 1 .7 0"
       fill="currentColor"
@@ -17,6 +12,11 @@ export const dropdownIndicatorTemplate = html<BaseDropdown>`
   </svg>
 `;
 
+/**
+ * The template partial for the dropdown input element. This template is used when the `type` property is set to "combobox".
+ *
+ * @public
+ */
 export const dropdownInputTemplate = html<BaseDropdown>`
   <input
     @input="${(x, c) => x.inputHandler(c.event as InputEvent)}"
@@ -35,6 +35,11 @@ export const dropdownInputTemplate = html<BaseDropdown>`
   />
 `;
 
+/**
+ * The template partial for the dropdown button element. This template is used when the `type` property is set to "dropdown".
+ *
+ * @public
+ */
 export const dropdownButtonTemplate = html<BaseDropdown>`
   <button
     aria-activedescendant="${x => x.activeDescendant}"
@@ -57,7 +62,7 @@ export const dropdownButtonTemplate = html<BaseDropdown>`
  *
  * @public
  */
-export function dropdownTemplate<T extends BaseDropdown>(): ElementViewTemplate<T> {
+export function dropdownTemplate<T extends BaseDropdown>(options: DropdownOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <template
       @click="${(x, c) => x.clickHandler(c.event as PointerEvent)}"
@@ -67,7 +72,7 @@ export function dropdownTemplate<T extends BaseDropdown>(): ElementViewTemplate<
     >
       <div class="control">
         <slot name="control" ${ref('controlSlot')}></slot>
-        <slot name="indicator" ${ref('indicatorSlot')}></slot>
+        <slot name="indicator" ${ref('indicatorSlot')}>${staticallyCompose(options.indicator)}</slot>
       </div>
       <slot ${ref('listboxSlot')}></slot>
     </template>
@@ -79,4 +84,6 @@ export function dropdownTemplate<T extends BaseDropdown>(): ElementViewTemplate<
  *
  * @public
  */
-export const template: ElementViewTemplate<BaseDropdown> = dropdownTemplate();
+export const template: ElementViewTemplate<BaseDropdown> = dropdownTemplate({
+  indicator: dropdownIndicatorTemplate,
+});
