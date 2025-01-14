@@ -1,8 +1,8 @@
 import { attr, FASTElement, Observable, observable, Updates, volatile } from '@microsoft/fast-element';
 import type { Listbox } from '../listbox/listbox.js';
 import { isListbox } from '../listbox/listbox.options.js';
-import type { Option } from '../option/option.js';
-import { isOption } from '../option/option.options.js';
+import type { DropdownOption } from '../option/option.js';
+import { isDropdownOption } from '../option/option.options.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
 import { getLanguage } from '../utils/language.js';
 import { uniqueId } from '../utils/unique-id.js';
@@ -352,7 +352,7 @@ export class BaseDropdown extends FASTElement {
    * The collection of enabled options.
    * @public
    */
-  public get enabledOptions(): Option[] {
+  public get enabledOptions(): DropdownOption[] {
     return this.listbox?.enabledOptions ?? [];
   }
 
@@ -369,7 +369,7 @@ export class BaseDropdown extends FASTElement {
    *
    * @internal
    */
-  private get freeformOption(): Option | undefined {
+  private get freeformOption(): DropdownOption | undefined {
     return this.enabledOptions.find(x => x.freeform);
   }
 
@@ -401,7 +401,7 @@ export class BaseDropdown extends FASTElement {
    *
    * @public
    */
-  public get options(): Option[] {
+  public get options(): DropdownOption[] {
     return this.listbox?.options ?? [];
   }
 
@@ -423,7 +423,7 @@ export class BaseDropdown extends FASTElement {
    * @remarks
    * This property is a reflection of {@link Listbox.selectedOptions}.
    */
-  public get selectedOptions(): Option[] {
+  public get selectedOptions(): DropdownOption[] {
     return this.listbox?.selectedOptions ?? [];
   }
 
@@ -489,7 +489,7 @@ export class BaseDropdown extends FASTElement {
 
     const optionIndex = this.isCombobox
       ? this.enabledOptions.findIndex(x => x.text === this.control.value)
-      : this.enabledOptions.indexOf(e.target as Option);
+      : this.enabledOptions.indexOf(e.target as DropdownOption);
 
     this.selectOption(optionIndex);
 
@@ -522,7 +522,7 @@ export class BaseDropdown extends FASTElement {
       return true;
     }
 
-    if (isOption(target) && !this.multiple) {
+    if (isDropdownOption(target) && !this.multiple) {
       if (target.disabled) {
         return;
       }
@@ -556,7 +556,7 @@ export class BaseDropdown extends FASTElement {
    * @returns the filtered options
    * @internal
    */
-  public filterOptions(value: string, collection: Option[] = this.enabledOptions): Option[] {
+  public filterOptions(value: string, collection: DropdownOption[] = this.enabledOptions): DropdownOption[] {
     if (!this.listCollator) {
       this.listCollator = new Intl.Collator(getLanguage(this), { usage: 'search', sensitivity: 'base' });
     }
@@ -738,7 +738,7 @@ export class BaseDropdown extends FASTElement {
       return;
     }
 
-    return !isOption(e.target as HTMLElement);
+    return !isDropdownOption(e.target as HTMLElement);
   }
 
   /**

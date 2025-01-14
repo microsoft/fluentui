@@ -2,8 +2,8 @@ import type { ElementViewTemplate } from '@microsoft/fast-element';
 import { elements, html, slotted } from '@microsoft/fast-element';
 import { startSlotTemplate } from '../patterns/start-end.js';
 import { staticallyCompose } from '../utils/template-helpers.js';
-import type { Option } from './option.js';
-import type { OptionOptions } from './option.options.js';
+import type { DropdownOption } from './option.js';
+import type { DropdownOptionOptions } from './option.options.js';
 
 const checkedIndicator = html.partial(/* html */ `
   <svg aria-hidden="true" class="checkmark-16-filled" viewBox="0 0 16 16">
@@ -25,7 +25,9 @@ const checkedIndicator = html.partial(/* html */ `
  * @returns The template object.
  * @public
  */
-export function optionTemplate<T extends Option>(options: OptionOptions = {}): ElementViewTemplate<T> {
+export function dropdownOptionTemplate<T extends DropdownOption>(
+  options: DropdownOptionOptions = {},
+): ElementViewTemplate<T> {
   return html<T>`
     <slot name="checked-indicator">${staticallyCompose(options.checkedIndicator)}</slot>
     ${startSlotTemplate(options)}
@@ -42,6 +44,6 @@ export function optionTemplate<T extends Option>(options: OptionOptions = {}): E
  * Template for the Option component.
  * @public
  */
-export const template: ElementViewTemplate<Option> = optionTemplate({
+export const template: ElementViewTemplate<DropdownOption> = dropdownOptionTemplate({
   checkedIndicator,
 });
