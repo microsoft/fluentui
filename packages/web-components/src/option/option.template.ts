@@ -27,16 +27,14 @@ const checkedIndicator = html.partial(/* html */ `
  */
 export function optionTemplate<T extends Option>(options: OptionOptions = {}): ElementViewTemplate<T> {
   return html<T>`
-    <template id="${x => x.id}">
-      <slot name="checked-indicator">${staticallyCompose(options.checkedIndicator)}</slot>
-      ${startSlotTemplate(options)}
-      <div class="content" part="content">
-        <slot ${slotted({ property: 'freeformOutputs', filter: elements('output') })}></slot>
-      </div>
-      <div class="description" part="description">
-        <slot name="description" ${slotted('descriptionSlot')}></slot>
-      </div>
-    </template>
+    <slot name="checked-indicator">${staticallyCompose(options.checkedIndicator)}</slot>
+    ${startSlotTemplate(options)}
+    <div class="content" part="content">
+      <slot ${slotted({ property: 'freeformOutputs', filter: elements('output') })}></slot>
+    </div>
+    <div class="description" part="description">
+      <slot name="description" ${slotted('descriptionSlot')}></slot>
+    </div>
   `;
 }
 

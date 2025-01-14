@@ -75,9 +75,7 @@ export class Option extends FASTElement implements Start {
    * @internal
    */
   protected defaultSelectedChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    if (!this.dirtySelected) {
-      this.selected = !!next;
-    }
+    this.selected = !!next;
   }
 
   /**
@@ -157,7 +155,7 @@ export class Option extends FASTElement implements Start {
    * @remarks
    * HTML Attribute: `id`
    */
-  @attr({ attribute: 'id', mode: 'fromView' })
+  @attr({ attribute: 'id' })
   public override id: string = uniqueId('option-');
 
   /**
@@ -226,32 +224,6 @@ export class Option extends FASTElement implements Start {
    */
   @attr({ attribute: 'text', mode: 'fromView' })
   public textAttribute?: string;
-
-  /**
-   * The collection of slotted title elements.
-   *
-   * @internal
-   */
-  @observable
-  public titleSlot!: Node[];
-
-  /**
-   * Changes the title state of the option when the title slot changes.
-   *
-   * @param prev - the previous collection of title elements
-   * @param next - the current collection of title elements
-   * @internal
-   */
-  public titleSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
-    toggleState(this.elementInternals, 'title', !!next?.length);
-  }
-
-  /**
-   * Indicates that the selected state has been changed by the user.
-   *
-   * @internal
-   */
-  protected dirtySelected: boolean = false;
 
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
@@ -368,8 +340,6 @@ export class Option extends FASTElement implements Start {
   connectedCallback() {
     super.connectedCallback();
 
-    this.setAriaSelected();
-
     if (this.freeform) {
       this.value = '';
       this.hidden = true;
@@ -388,17 +358,8 @@ export class Option extends FASTElement implements Start {
    * @internal
    */
   formResetCallback(): void {
-    this.selected = this.defaultSelected ?? false;
-    this.dirtySelected = false;
+    this.selected = !!this.defaultSelected;
   }
-
-  /**
-   * Sets the ARIA checked state.
-   *
-   * @param value - The checked state
-   * @internal
-   */
-  protected setAriaSelected(value: boolean = this.selected) {}
 
   /**
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/setFormValue | `ElementInternals.setFormValue()`} method.
