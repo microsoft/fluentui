@@ -20,7 +20,9 @@ export const AlphaSlider: ForwardRefComponent<AlphaSliderProps>;
 export const alphaSliderClassNames: SlotClassNames<AlphaSliderSlots>;
 
 // @public
-export type AlphaSliderProps = ColorSliderProps;
+export type AlphaSliderProps = ColorSliderProps & {
+    transparency?: boolean;
+};
 
 // @public (undocumented)
 export type AlphaSliderSlots = ColorSliderSlots;
