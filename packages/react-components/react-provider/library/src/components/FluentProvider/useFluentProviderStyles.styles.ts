@@ -22,24 +22,26 @@ const useStyles = makeStyles({
 export const useFluentProviderStyles_unstable = (state: FluentProviderState) => {
   'use no memo';
 
+  const { applyStylesTo, dir, targetDocument, themeClassName } = state;
+
   const renderer = useRenderer_unstable();
-  const styles = useStyles({ dir: state.dir, renderer });
+  const styles = useStyles({ dir, renderer });
 
   // Apply theme class name to body element when `applyStylesTo` is 'body'.
   React.useEffect(() => {
-    if (state.applyStylesTo !== 'body') {
+    if (applyStylesTo !== 'body') {
       return;
     }
 
-    const classes = state.themeClassName.split(' ');
-    state.targetDocument?.body.classList.add(...classes);
+    const classes = themeClassName.split(' ');
+    targetDocument?.body.classList.add(...classes);
 
-    return () => state.targetDocument?.body.classList.remove(...classes);
-  }, []);
+    return () => targetDocument?.body.classList.remove(...classes);
+  }, [applyStylesTo, themeClassName, targetDocument]);
 
   state.root.className = mergeClasses(
     fluentProviderClassNames.root,
-    state.applyStylesTo === 'provider' && state.themeClassName,
+    applyStylesTo === 'provider' && themeClassName,
     styles.root,
     state.root.className,
   );
