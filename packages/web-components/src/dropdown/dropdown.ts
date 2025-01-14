@@ -330,6 +330,10 @@ export class BaseDropdown extends FASTElement {
   @attr({ attribute: 'value' })
   public valueAttribute: string = '';
 
+  /**
+   * The slot element for the control.
+   * @internal
+   */
   public controlSlot!: HTMLSlotElement;
 
   /**
@@ -539,6 +543,14 @@ export class BaseDropdown extends FASTElement {
     });
   }
 
+  /**
+   * Filters the options based on the input value.
+   *
+   * @param value - the input value to filter the options by
+   * @param collection - the collection of options to filter
+   * @returns the filtered options
+   * @internal
+   */
   public filterOptions(value: string, collection: Option[] = this.enabledOptions): Option[] {
     if (!this.listCollator) {
       this.listCollator = new Intl.Collator(getLanguage(this), { usage: 'search', sensitivity: 'base' });
@@ -563,7 +575,7 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
-   * Removes the `focus-visible` state from the field when a slotted input loses focus.
+   * Toggles the listbox when the control element loses focus.
    *
    * @param e - the focus event
    * @internal
@@ -578,6 +590,15 @@ export class BaseDropdown extends FASTElement {
     return true;
   }
 
+  /**
+   * Ensures the active index is within bounds of the enabled options. Out-of-bounds indices are wrapped to the opposite
+   * end of the range.
+   *
+   * @param index - the desired index
+   * @param upperBound - the upper bound of the range
+   * @returns the index in bounds
+   * @internal
+   */
   private getEnabledIndexInBounds(index: number, upperBound = this.enabledOptions.length || 0): number {
     if (upperBound === 0) {
       return -1;
@@ -586,6 +607,12 @@ export class BaseDropdown extends FASTElement {
     return (index + upperBound) % upperBound;
   }
 
+  /**
+   * Handles the input events for the dropdown from the control element.
+   *
+   * @param e - the input event
+   * @public
+   */
   public inputHandler(e: InputEvent): boolean | void {
     if (!this.open) {
       this.listbox.showPopover();
@@ -601,6 +628,10 @@ export class BaseDropdown extends FASTElement {
     return true;
   }
 
+  /**
+   * Inserts the control element based on the dropdown type.
+   * @internal
+   */
   protected insertControl(): void {
     this.controlSlot?.assignedNodes().forEach(x => this.removeChild(x));
 
@@ -612,6 +643,12 @@ export class BaseDropdown extends FASTElement {
     dropdownButtonTemplate.render(this, this);
   }
 
+  /**
+   * Handles the keydown events for the dropdown.
+   *
+   * @param e - the keyboard event
+   * @public
+   */
   public keydownHandler(e: KeyboardEvent): boolean | void {
     let increment = 0;
 
@@ -737,6 +774,12 @@ export class BaseDropdown extends FASTElement {
     }
   }
 
+  /**
+   * Updates the freeform option with the provided value.
+   *
+   * @param value - the value to update the freeform option with
+   * @internal
+   */
   protected updateFreeformOption(value: string = this.control.value): void {
     if (!this.freeformOption) {
       return;
@@ -760,27 +803,23 @@ export class BaseDropdown extends FASTElement {
   }
 }
 
+/**
+ * The Fluent Dropdown Element. Implements {@link @microsoft/fast-foundation#BaseDropdown}.
+ *
+ * @slot - The default slot. Accepts a {@link (Listbox:class)} element.
+ * @slot indicator - The indicator slot.
+ * @slot control - The control slot. This slot is automatically populated and should not be manually manipulated.
+ *
+ * @public
+ */
 export class Dropdown extends BaseDropdown {
   /**
    * Static property for the anchor positioning fallback observer. The observer is used to flip the listbox when it is
    * out of view.
-   *
-   * @remarks This is only used when the browser does not support CSS anchor positioning, and the CSS anchor polyfill is
-   * not present.
-   *
+   * @remarks This is only used when the browser does not support CSS anchor positioning.
    * @internal
    */
   private static AnchorPositionFallbackObserver: IntersectionObserver;
-
-  /**
-   * Static property for the anchor positioning fallback style elements.
-   *
-   * @remarks This is only used when the browser does not support CSS anchor positioning, and the CSS anchor polyfill is
-   * present.
-   *
-   * @internal
-   */
-  private static AnchorPositionFallbackStyleElements: Map<BaseDropdown, HTMLStyleElement> = new Map();
 
   /**
    * The appearance of the dropdown.
@@ -835,12 +874,7 @@ export class Dropdown extends BaseDropdown {
   }
 
   disconnectedCallback(): void {
-    const styles = Dropdown.AnchorPositionFallbackStyleElements.get(this);
-
-    if (styles) {
-      styles.remove();
-      Dropdown.AnchorPositionFallbackStyleElements.delete(this);
-    }
+    Dropdown.AnchorPositionFallbackObserver?.unobserve(this.listbox);
 
     super.disconnectedCallback();
   }
