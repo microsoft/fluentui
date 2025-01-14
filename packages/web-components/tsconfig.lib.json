@@ -1,8 +1,6 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ES2022",
-    "useDefineForClassFields": false,
     "lib": ["ESNext", "DOM"],
     "declaration": true,
     "declarationDir": "dist/dts",
