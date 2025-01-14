@@ -1,0 +1,118 @@
+<meta name="title" content="Fluent UI Chart Web Components" />
+<link rel="shortcut icon" href="/favicon.png" />
+<link rel="icon" type="image/png" href="/favicon-192.png" sizes="192x192" />
+<link href="shell.css" rel="stylesheet" />
+<!--
+   Override the default styles used in the Storybook svg icons for the left tree panel.
+   @see https://storybook.js.org/docs/react/configure/theming#css-escape-hatches
+   > 💡 NOTE:
+   > This is a brittle way for providing custom non thenable styles for manager UI.
+   > Those selectors might change on any storybook version bump.
+  -->
+<style>
+  /* These styles should be kept in sync with those in the `manager-head.html` file for the React v9 Storybook. */
+  @font-face {
+    font-family: 'Segoe UI';
+    src: local('Segoe UI Light'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff2) format('woff2'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff) format('woff'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.ttf) format('truetype');
+    font-weight: 100;
+  }
+
+  @font-face {
+    font-family: 'Segoe UI';
+    src: local('Segoe UI Semilight'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff2) format('woff2'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff) format('woff'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.ttf) format('truetype');
+    font-weight: 200;
+  }
+
+  @font-face {
+    font-family: 'Segoe UI';
+    src: local('Segoe UI'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2) format('woff2'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff) format('woff'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.ttf) format('truetype');
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: 'Segoe UI';
+    src: local('Segoe UI Semibold'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff2) format('woff2'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff) format('woff'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.ttf) format('truetype');
+    font-weight: 600;
+  }
+
+  @font-face {
+    font-family: 'Segoe UI';
+    src: local('Segoe UI Bold'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff2) format('woff2'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff) format('woff'),
+      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.ttf) format('truetype');
+    font-weight: 700;
+  }
+
+  #storybook-preview-iframe {
+    background: transparent !important;
+  }
+
+  #storybook-explorer-searchfield {
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    letter-spacing: -0.01em !important;
+    line-height: 14px !important;
+  }
+
+  .sidebar-item svg,
+  .sidebar-svg-icon {
+    color: #11100f !important;
+  }
+
+  .sidebar-item[data-selected='true'] svg,
+  .sidebar-item[data-selected='true'] .sidebar-svg-icon {
+    color: #ffffff !important;
+  }
+
+  .sidebar-subheading {
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    letter-spacing: 0px !important;
+    line-height: 24px !important;
+    text-transform: none !important;
+    color: #11100f !important;
+  }
+
+  .sidebar-item {
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    letter-spacing: -0.01em !important;
+    line-height: 14px !important;
+    color: #11100f !important;
+  }
+
+  .sidebar-item[data-selected='true'] {
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    letter-spacing: -0.01em !important;
+    line-height: 14px !important;
+    color: #ffffff !important;
+  }
+
+  /* Hides "Addons" button from mobile view nav. */
+  nav > button:last-child {
+    display: none;
+  }
+
+  /*
+    Storybook has proposed a feature for this in https://github.com/storybookjs/storybook/issues/9209
+    which will configure stories to exist in deeplink URL format, but do not appear in the nav tree or the docs page
+    Using suggested temporary workaround until storybook gets proper support.
+  */
+  [id*='accessibility-stories'] {
+    display: none !important;
+  }
+</style>
