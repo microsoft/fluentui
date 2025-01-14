@@ -512,7 +512,7 @@ export class BaseDropdown extends FASTElement {
 
     this.focus();
 
-    if (target === this.control) {
+    if (target === this.control && !this.isCombobox) {
       this.listbox.togglePopover();
       return true;
     }
@@ -734,7 +734,7 @@ export class BaseDropdown extends FASTElement {
    * @internal
    */
   public mousedownHandler(e: MouseEvent): boolean | void {
-    if (this.disabled || e.target === this.control) {
+    if (this.disabled || (e.target === this.control && !this.isCombobox)) {
       return;
     }
 
