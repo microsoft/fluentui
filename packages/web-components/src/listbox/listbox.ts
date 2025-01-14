@@ -9,7 +9,8 @@ import { uniqueId } from '../utils/unique-id.js';
  * A Listbox Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#listbox | ARIA listbox } role.
  *
- * @slot default - The default slot for the options
+ * @slot - The default slot for the options
+ * @emits connected - Dispatched when the element is connected to the DOM.
  *
  * @remarks
  * The listbox component represents a list of options that can be selected.
@@ -37,6 +38,12 @@ export class Listbox extends FASTElement {
   @observable
   public multiple?: boolean;
 
+  /**
+   * Updates the multiple selection state of the listbox and its options.
+   *
+   * @param prev - the previous multiple value
+   * @param next - the current multiple value
+   */
   public multipleChanged(prev: boolean | undefined, next: boolean | undefined): void {
     this.elementInternals.ariaMultiSelectable = next ? 'true' : 'false';
     toggleState(this.elementInternals, 'multiple', next);
@@ -71,8 +78,7 @@ export class Listbox extends FASTElement {
   }
 
   /**
-   * The index of the first selected option, scoped to the enabled options.
-   *
+   * The index of the first selected and enabled option.
    * @internal
    */
   @observable
@@ -85,7 +91,14 @@ export class Listbox extends FASTElement {
   @observable
   public dropdown?: BaseDropdown;
 
-  public beforetoggleHandler(e: ToggleEvent): boolean | void {
+  /**
+   * Handles the `beforetoggle` event on the listbox.
+   *
+   * @param e - the toggle event
+   * @returns true to allow the default popover behavior, undefined to prevent it
+   * @internal
+   */
+  public beforetoggleHandler(e: ToggleEvent): boolean | undefined {
     if (!this.dropdown) {
       return true;
     }
@@ -107,7 +120,7 @@ export class Listbox extends FASTElement {
   public elementInternals: ElementInternals = this.attachInternals();
 
   /**
-   * A collection of child options that are not disabled.
+   * The collection of child options that are not disabled.
    *
    * @internal
    */
