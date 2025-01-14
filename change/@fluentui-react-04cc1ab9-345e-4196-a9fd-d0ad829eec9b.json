@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "pass rest of ITagItemSuggestionProps to the underlying component",
+  "comment": "fix: Passing rest of ITagItemSuggestionProps to the underlying component.",
   "packageName": "@fluentui/react",
   "email": "kmatejka@microsoft.com",
   "dependentChangeType": "patch"
