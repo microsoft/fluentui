@@ -16,6 +16,10 @@ const dropdownIndicatorTemplate = html<BaseDropdown>`
  * The template partial for the dropdown input element. This template is used when the `type` property is set to "combobox".
  *
  * @public
+ * @remarks
+ * Since the input element must be present in the light DOM for ARIA to function correctly, this template should not be
+ * overridden.
+ * @see {@link BaseDropdown.insertControl}
  */
 export const dropdownInputTemplate = html<BaseDropdown>`
   <input
@@ -39,6 +43,10 @@ export const dropdownInputTemplate = html<BaseDropdown>`
  * The template partial for the dropdown button element. This template is used when the `type` property is set to "dropdown".
  *
  * @public
+ * @remarks
+ * Since the button element must be present in the light DOM for ARIA to function correctly, this template should not be
+ * overridden.
+ * @see {@link BaseDropdown.insertControl}
  */
 export const dropdownButtonTemplate = html<BaseDropdown>`
   <button

@@ -4,7 +4,7 @@ import { toggleState } from '../utils/element-internals.js';
 import { uniqueId } from '../utils/unique-id.js';
 
 /**
- * An Option Custom HTML Element.
+ * A DropdownOption Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#option | ARIA option } role.
  *
  * @slot - The default slot for the option's content
