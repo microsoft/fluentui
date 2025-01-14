@@ -75,10 +75,12 @@ const useIsOverflow = (ref: React.RefObject<HTMLElement>) => {
       if (ref.current !== current) {
         observer.current?.unobserve(current);
       
-        if (ref.current) {
-          current = ref.current;
-          observer.current?.observe(current);
+        if (!ref.current) {
+          return;
         }
+
+        current = ref.current;
+        observer.current?.observe(current);
       }
 
       const overflowX = current.scrollWidth > current.clientWidth;
