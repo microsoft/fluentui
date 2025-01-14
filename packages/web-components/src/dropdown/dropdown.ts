@@ -84,6 +84,8 @@ export class BaseDropdown extends FASTElement {
    * @param prev - the previous control element
    * @param next - the current control element
    * @internal
+   * @remarks
+   * The control element is assigned to the dropdown via the control slot with manual slot assignment.
    */
   public controlChanged(prev: HTMLInputElement | undefined, next: HTMLInputElement | undefined): void {
     if (next) {
@@ -180,6 +182,9 @@ export class BaseDropdown extends FASTElement {
    * @param prev - the previous listbox element
    * @param next - the current listbox element
    * @internal
+   *
+   * @remarks
+   * The listbox element is assigned to the dropdown via the default slot with manual slot assignment.
    */
   public listboxChanged(prev: Listbox | undefined, next: Listbox | undefined): void {
     if (prev) {
@@ -630,7 +635,10 @@ export class BaseDropdown extends FASTElement {
 
   /**
    * Inserts the control element based on the dropdown type.
-   * @internal
+   *
+   * @public
+   * @remarks
+   * This method can be overridden in derived classes to provide custom control elements, though this is not recommended.
    */
   protected insertControl(): void {
     this.controlSlot?.assignedNodes().forEach(x => this.removeChild(x));

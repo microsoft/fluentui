@@ -4,7 +4,7 @@ import { styles } from './dropdown.styles.js';
 import { template } from './dropdown.template.js';
 
 /**
- * The Fluent Dropdown Element
+ * The Fluent Dropdown Element.
  *
  * @public
  * @remarks
