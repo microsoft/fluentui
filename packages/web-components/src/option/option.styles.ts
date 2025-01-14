@@ -28,7 +28,7 @@ import {
 import { display } from '../utils/display.js';
 
 /**
- * Styles for the {@link (Option:class)} component.
+ * Styles for the {@link (DropdownOption:class)} component.
  *
  * @public
  */

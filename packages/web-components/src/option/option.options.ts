@@ -1,6 +1,6 @@
 import type { StartOptions } from '../patterns/start-end.js';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
-import type { Option } from './option.js';
+import type { DropdownOption } from './option.js';
 
 /**
  * Predicate function that determines if the element should be considered an option.
@@ -10,7 +10,7 @@ import type { Option } from './option.js';
  * @returns true if the element is an option.
  * @public
  */
-export function isOption(value: Node | null, tagName: string = '-option'): value is Option {
+export function isDropdownOption(value: Node | null, tagName: string = '-option'): value is DropdownOption {
   if (value?.nodeType !== Node.ELEMENT_NODE) {
     return false;
   }
@@ -19,10 +19,10 @@ export function isOption(value: Node | null, tagName: string = '-option'): value
 }
 
 /**
- * The options for the {@link Option} component.
+ * The options for the {@link DropdownOption} component.
  *
  * @public
  */
-export type OptionOptions = StartOptions<Option> & {
-  checkedIndicator?: StaticallyComposableHTML<Option>;
+export type DropdownOptionOptions = StartOptions<DropdownOption> & {
+  checkedIndicator?: StaticallyComposableHTML<DropdownOption>;
 };

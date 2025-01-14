@@ -2,11 +2,11 @@ import { html, repeat } from '@microsoft/fast-element';
 import type { Meta, StoryArgs, StoryObj } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import { toggleState } from '../utils/element-internals.js';
-import { Option as FluentOption } from './option.js';
+import { DropdownOption as FluentDropdownOption } from './option.js';
 
-type Story = StoryObj<FluentOption>;
+type Story = StoryObj<FluentDropdownOption>;
 
-const storyTemplate = html<StoryArgs<FluentOption>>`
+const storyTemplate = html<StoryArgs<FluentDropdownOption>>`
   <fluent-option
     ?selected="${story => story.selected}"
     ?disabled="${story => story.disabled}"
@@ -80,9 +80,9 @@ export default {
   },
   decorators: [
     Story => {
-      const story = Story() as DocumentFragment | FluentOption;
+      const story = Story() as DocumentFragment | FluentDropdownOption;
       if (story instanceof DocumentFragment) {
-        story.querySelectorAll<FluentOption>('[id$="multiple"]').forEach(option => {
+        story.querySelectorAll<FluentDropdownOption>('[id$="multiple"]').forEach(option => {
           toggleState(option.elementInternals, 'multiple', true);
         });
         return story;
@@ -95,7 +95,7 @@ export default {
       return story;
     },
   ],
-} as Meta<FluentOption>;
+} as Meta<FluentDropdownOption>;
 
 export const Default: Story = {
   args: {
@@ -111,10 +111,10 @@ export const Multiple: Story = {
 };
 
 export const Selected: Story = {
-  render: renderComponent(html<StoryArgs<FluentOption>>`
+  render: renderComponent(html<StoryArgs<FluentDropdownOption>>`
     ${repeat(
       [{ selected: true, id: 'selected-single', slottedContent: () => 'Selected' }],
-      html<FluentOption>`${storyTemplate}<br />`,
+      html<FluentDropdownOption>`${storyTemplate}<br />`,
     )}
   `),
 };
@@ -124,19 +124,19 @@ export const SelectedMultiple: Story = {
 };
 
 export const Disabled: Story = {
-  render: renderComponent(html<StoryArgs<FluentOption>>`
+  render: renderComponent(html<StoryArgs<FluentDropdownOption>>`
     ${repeat(
       [
         { id: 'disabled-unselected-single', disabled: true, slottedContent: () => 'Disabled unselected' },
         { selected: true, disabled: true, id: 'disabled-selected-single', slottedContent: () => 'Disabled selected' },
       ],
-      html<FluentOption>`${storyTemplate}<br />`,
+      html<FluentDropdownOption>`${storyTemplate}<br />`,
     )}
   `),
 };
 
 export const DisabledMultiple: Story = {
-  render: renderComponent(html<StoryArgs<FluentOption>>`
+  render: renderComponent(html<StoryArgs<FluentDropdownOption>>`
     ${repeat(
       [
         {
@@ -152,13 +152,13 @@ export const DisabledMultiple: Story = {
           slottedContent: () => 'Disabled selected',
         },
       ],
-      html<FluentOption>`${storyTemplate}<br />`,
+      html<FluentDropdownOption>`${storyTemplate}<br />`,
     )}
   `),
 };
 
 export const startContent: Story = {
-  render: renderComponent(html<StoryArgs<FluentOption>>`
+  render: renderComponent(html<StoryArgs<FluentDropdownOption>>`
     ${repeat(
       [
         {
@@ -182,7 +182,7 @@ export const startContent: Story = {
           startSlottedContent: () => html` <fluent-avatar slot="start" size="32" color="blue">32</fluent-avatar> `,
         },
       ],
-      html<FluentOption>`${storyTemplate}<br />`,
+      html<FluentDropdownOption>`${storyTemplate}<br />`,
     )}
   `),
 };

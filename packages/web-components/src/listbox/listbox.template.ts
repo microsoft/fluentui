@@ -1,5 +1,5 @@
 import { ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
-import { isOption } from '../option/option.options.js';
+import { isDropdownOption } from '../option/option.options.js';
 import type { Listbox } from './listbox.js';
 
 /**
@@ -20,7 +20,7 @@ export function listboxTemplate<T extends Listbox>(): ElementViewTemplate<T> {
       <slot
         ${slotted({
           property: 'options',
-          filter: node => isOption(node),
+          filter: node => isDropdownOption(node),
         })}
       ></slot>
     </template>

@@ -16,9 +16,12 @@ import { uniqueId } from '../utils/unique-id.js';
  * form association and value submission, rather than its parent Dropdown element. In this way, the Option element is
  * a variation of the Checkbox element that is specifically designed for use in the Dropdown element.
  *
+ * This class is named `DropdownOption` to avoid conflicts with the native `Option` global. Related constructs are also
+ * titled with `DropdownOption` to maintain consistency.
+ *
  * @public
  */
-export class Option extends FASTElement implements Start {
+export class DropdownOption extends FASTElement implements Start {
   /**
    * Indicates that the option is active.
    *

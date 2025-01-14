@@ -1,7 +1,7 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import type { BaseDropdown } from '../dropdown/dropdown.js';
-import type { Option } from '../option/option.js';
-import { isOption } from '../option/option.options.js';
+import type { DropdownOption } from '../option/option.js';
+import { isDropdownOption } from '../option/option.options.js';
 import { toggleState } from '../utils/element-internals.js';
 import { uniqueId } from '../utils/unique-id.js';
 
@@ -60,7 +60,7 @@ export class Listbox extends FASTElement {
    * @public
    */
   @observable
-  public options!: Option[];
+  public options!: DropdownOption[];
 
   /**
    * Updates the enabled options collection when properties on the child options change.
@@ -70,7 +70,7 @@ export class Listbox extends FASTElement {
    *
    * @internal
    */
-  public optionsChanged(prev: Option[] | undefined, next: Option[] | undefined): void {
+  public optionsChanged(prev: DropdownOption[] | undefined, next: DropdownOption[] | undefined): void {
     next?.forEach((option, index) => {
       option.elementInternals.ariaPosInSet = `${index + 1}`;
       option.elementInternals.ariaSetSize = `${next.length}`;
@@ -124,7 +124,7 @@ export class Listbox extends FASTElement {
    *
    * @internal
    */
-  public get enabledOptions(): Option[] {
+  public get enabledOptions(): DropdownOption[] {
     return this.options?.filter(x => !x.disabled) ?? [];
   }
 
@@ -133,7 +133,7 @@ export class Listbox extends FASTElement {
    *
    * @public
    */
-  public get selectedOptions(): Option[] {
+  public get selectedOptions(): DropdownOption[] {
     return this.options?.filter(x => x.selected) ?? [];
   }
 
@@ -146,7 +146,7 @@ export class Listbox extends FASTElement {
   public clickHandler(e: PointerEvent): boolean | void {
     const target = e.target as HTMLElement;
 
-    if (isOption(target)) {
+    if (isDropdownOption(target)) {
       this.selectOption(this.enabledOptions.indexOf(target));
     }
 

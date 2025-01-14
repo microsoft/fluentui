@@ -1,13 +1,14 @@
 import { html, repeat } from '@microsoft/fast-element';
-import type { Dropdown as FluentDropdown } from '../dropdown/dropdown.js';
 import type { Meta, StoryArgs, StoryObj } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
-import type { Option as FluentOption } from '../option/option.js';
+import type { DropdownOption as FluentDropdownOption } from '../option/option.js';
+import * as DropdownStories from '../dropdown/dropdown.stories.js';
+import type { Dropdown as FluentDropdown } from '../dropdown/dropdown.js';
 import { DropdownAppearance, DropdownSize, DropdownType } from '../dropdown/dropdown.options.js';
 
 type Story = StoryObj<FluentDropdown>;
 
-const optionTemplate = html<StoryArgs<FluentOption>>` <fluent-option
+const optionTemplate = html<StoryArgs<FluentDropdownOption>>` <fluent-option
   ?disabled="${story => story.disabled}"
   ?selected="${story => story.selected}"
   ?freeform="${story => story.freeform}"
@@ -105,7 +106,7 @@ export const Freeform: Story = {
     slottedContent: [
       {
         freeform: true,
-        slottedContent: () => html<StoryArgs<FluentOption>>`Search for '<output></output>'`,
+        slottedContent: () => html<StoryArgs<FluentDropdownOption>>`Search for '<output></output>'`,
       },
       ...Default.args!.slottedContent,
     ],
