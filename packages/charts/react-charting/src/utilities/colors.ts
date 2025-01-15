@@ -141,3 +141,28 @@ export const getColorFromToken = (token: string, isDarkTheme: boolean = false): 
   }
   return token;
 };
+
+const rgbLrgb1 = (v: number): number => {
+  return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+};
+
+const rgbLrgb = ({ r, g, b }: { r: number; g: number; b: number }): { r: number; g: number; b: number } => {
+  return {
+    r: rgbLrgb1(r / 255),
+    g: rgbLrgb1(g / 255),
+    b: rgbLrgb1(b / 255),
+  };
+};
+
+const lrgbLuminance = ({ r, g, b }: { r: number; g: number; b: number }): number => {
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+
+export const getColorContrast = (
+  c1: { r: number; g: number; b: number },
+  c2: { r: number; g: number; b: number },
+): number => {
+  const l1 = lrgbLuminance(rgbLrgb(c1));
+  const l2 = lrgbLuminance(rgbLrgb(c2));
+  return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+};
