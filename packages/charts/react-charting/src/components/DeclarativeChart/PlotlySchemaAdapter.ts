@@ -25,7 +25,7 @@ import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
-import { /* DataVizPalette,  */ getNextColor } from '../../utilities/colors';
+import { DataVizPalette, getNextColor } from '../../utilities/colors';
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
@@ -43,51 +43,52 @@ const isMonth = (possiblyMonthValue: any, presentYear: number): boolean => {
   return isDate(`${possiblyMonthValue} 01, ${presentYear}`);
 };
 
-export const isDateArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
+const isArrayOfType = (
+  data: Datum[] | Datum[][] | TypedArray,
+  typeCheck: (datum: any, ...args: any[]) => boolean,
+  ...args: any[]
+): boolean => {
   if (!isArrayOrTypedArray(data)) {
+    return false;
+  }
+
+  if (data.length === 0) {
     return false;
   }
 
   if (Array.isArray(data[0])) {
     // Handle 2D array
-    return (data as Datum[][]).every(innerArray => innerArray.every(isDate));
+    return (data as Datum[][]).every(innerArray => innerArray.every(datum => typeCheck(datum, ...args)));
   } else {
     // Handle 1D array
-    return (data as Datum[]).every(isDate);
+    return (data as Datum[]).every(datum => typeCheck(datum, ...args));
   }
+};
+
+export const isDateArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
+  return isArrayOfType(data, isDate);
 };
 
 export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  if (!isArrayOrTypedArray(data)) {
-    return false;
-  }
-
-  if (Array.isArray(data[0])) {
-    // Handle 2D array
-    return (data as Datum[][]).every(innerArray => innerArray.every(isNumber));
-  } else {
-    // Handle 1D array
-    return (data as Datum[]).every(isNumber);
-  }
+  return isArrayOfType(data, isNumber);
 };
 
 export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  if (!isArrayOrTypedArray(data)) {
-    return false;
+  const presentYear = new Date().getFullYear();
+  return isArrayOfType(data, isMonth, presentYear);
+};
+
+const invalidate2Dseries = (series: PlotData, chartType: string): void => {
+  if (series.x?.length > 0 && Array.isArray(series.x[0])) {
+    throw new Error(`transform to ${chartType}:: 2D x array not supported`);
   }
-  if (data.length > 0) {
-    const presentYear = new Date().getFullYear();
-    if (Array.isArray(data[0])) {
-      // Handle 2D array
-      return (data as Datum[][]).every(innerArray =>
-        innerArray.every(possiblyMonthValue => isMonth(possiblyMonthValue, presentYear)),
-      );
-    } else {
-      // Handle 1D array
-      return (data as Datum[]).every(possiblyMonthValue => isMonth(possiblyMonthValue, presentYear));
-    }
+  if (series.y?.length > 0 && Array.isArray(series.y[0])) {
+    throw new Error(`transform to ${chartType}:: 2D y array not supported`);
   }
-  return false;
+};
+
+const getLegend = (series: PlotData, index: number): string => {
+  return series.name || `Series ${index + 1}`;
 };
 
 function getTitles(layout: Partial<Layout> | undefined) {
@@ -201,21 +202,17 @@ export const transformPlotlyJsonToVSBCProps = (
   let yMaxValue = 0;
 
   input.data.forEach((series: PlotData, index1: number) => {
-    if (series.x?.length > 0 && Array.isArray(series.x[0])) {
-      throw new Error('transform to VSBC:: 2D x array not supported');
-    }
-    if (series.y?.length > 0 && Array.isArray(series.y[0])) {
-      throw new Error('transform to VSBC:: 2D y array not supported');
-    }
+    invalidate2Dseries(series, 'VSBC');
+
     if (!isNumberArray(series.y)) {
-      throw new Error('transform to VSBC:: y values are not numbers');
+      throw new Error('transform to VSBC:: y values should be numeric');
     }
 
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
       }
-      const legend: string = series.name || `Series ${index1 + 1}`;
+      const legend: string = getLegend(series, index1);
       const yVal: number = (series.y?.[index2] as number) ?? 0;
       if (series.type === 'bar' || series.type === 'scatter' || fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
@@ -260,21 +257,18 @@ export const transformPlotlyJsonToGVBCProps = (
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
 
   input.data.forEach((series: PlotData, index1: number) => {
-    if (series.x?.length > 0 && Array.isArray(series.x[0])) {
-      throw new Error('transform to GVBC:: 2D x array not supported');
-    }
-    if (series.y?.length > 0 && Array.isArray(series.y[0])) {
-      throw new Error('transform to GVBC:: 2D y array not supported');
-    }
+    invalidate2Dseries(series, 'GVBC');
+
     if (!isNumberArray(series.y)) {
-      throw new Error('transform to GVBC:: y values are not numbers');
+      throw new Error('transform to GVBC:: y values should be numeric');
     }
+
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
       }
       if (series.type === 'bar') {
-        const legend: string = series.name || `Series ${index1 + 1}`;
+        const legend: string = getLegend(series, index1);
         const color = getColor(legend, colorMap, isDarkTheme);
 
         mapXToDataPoints[x].series.push({
@@ -310,9 +304,7 @@ export const transformPlotlyJsonToVBCProps = (
   const vbcData: IVerticalBarChartDataPoint[] = [];
 
   input.data.forEach((series: PlotData, index: number) => {
-    if (series.x?.length > 0 && Array.isArray(series.x[0])) {
-      throw new Error('transform to GVBC:: 2D x array not supported');
-    }
+    invalidate2Dseries(series, 'VBC');
 
     if (!series.x) {
       return;
@@ -349,7 +341,7 @@ export const transformPlotlyJsonToVBCProps = (
     const totalDataPoints = d3Merge(buckets).length;
 
     buckets.forEach(bucket => {
-      const legend: string = series.name || `Series ${index + 1}`;
+      const legend: string = getLegend(series, index);
       const color: string = getColor(legend, colorMap, isDarkTheme);
       let y = bucket.length;
 
@@ -403,18 +395,13 @@ export const transformPlotlyJsonToScatterChartProps = (
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
   const chartData: ILineChartPoints[] = input.data.map((series: PlotData, index: number) => {
-    if (series.x?.length > 0 && Array.isArray(series.x[0])) {
-      throw new Error('transform to Scatter:: 2D x array not supported');
-    }
-    if (series.y?.length > 0 && Array.isArray(series.y[0])) {
-      throw new Error('transform to Scatter:: 2D y array not supported');
-    }
+    invalidate2Dseries(series, 'Scatter');
 
     const xValues = series.x as Datum[];
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
-    const legend: string = series.name || `Series ${index + 1}`;
+    const legend: string = getLegend(series, index);
     const lineColor = getColor(legend, colorMap, isDarkTheme);
 
     return {
@@ -458,12 +445,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
 ): IHorizontalBarChartWithAxisProps => {
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: PlotData, index: number) => {
-      if (series.x?.length > 0 && Array.isArray(series.x[0])) {
-        throw new Error('transform to HBC:: 2D x array not supported');
-      }
-      if (series.y?.length > 0 && Array.isArray(series.y[0])) {
-        throw new Error('transform to HBC:: 2D y array not supported');
-      }
+      invalidate2Dseries(series, 'HBC');
+
       return (series.y as Datum[]).map((yValue: string, i: number) => {
         const color = getColor(yValue, colorMap, isDarkTheme);
         return {
@@ -501,7 +484,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     styles: {
       root: {
         height: chartHeight,
-        width: typeof input.layout?.width === 'number' ? input.layout.width : 600,
+        width: input.layout?.width ?? 600,
       },
     },
   };
@@ -562,17 +545,15 @@ export const transformPlotlyJsonToSankeyProps = (
   isDarkTheme?: boolean,
 ): ISankeyChartProps => {
   const { link, node } = input.data[0] as SankeyData;
-  const validLinks =
-    link?.value ??
-    []
-      .map((val: number, index: number) => ({
-        value: val,
-        source: link?.source![index],
-        target: link?.target![index],
-      }))
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      // Filter out negative nodes, unequal nodes and self-references (circular links)
-      .filter(x => x.source >= 0 && x.target >= 0 && x.source !== x.target);
+  const validLinks = (link?.value ?? [])
+    .map((val: number, index: number) => ({
+      value: val,
+      source: link?.source![index],
+      target: link?.target![index],
+    }))
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    // Filter out negative nodes, unequal nodes and self-references (circular links)
+    .filter(x => x.source >= 0 && x.target >= 0 && x.source !== x.target);
 
   const sankeyChartData = {
     nodes: node.label?.map((label: string, index: number) => {
@@ -595,7 +576,7 @@ export const transformPlotlyJsonToSankeyProps = (
   const height: number = input.layout?.height ?? 220;
   const styles: ISankeyChartProps['styles'] = {
     root: {
-      ...(typeof input.layout?.font?.size === 'number' ? { fontSize: input.layout.font?.size } : {}),
+      ...(input.layout?.font?.size ? { fontSize: input.layout.font?.size } : {}),
     },
   };
   const shouldResize: number = width + height;
@@ -633,21 +614,21 @@ export const transformPlotlyJsonToGaugeProps = (
         };
       })
     : [
-        /*         { //ToDo: fix this
+        {
           legend: 'Current',
-          size: firstData.value ?? 0 - (firstData.gauge?.range?.[0] ?? 0),
+          size: firstData.value ?? 0 - (firstData.gauge?.axis?.range?.[0] ?? 0),
           color: getColor('Current', colorMap, isDarkTheme),
         },
         {
           legend: 'Target',
-          size: (firstData.gauge?.range?.[1] ?? 100) - (firstData.value ?? 0),
+          size: (firstData.gauge?.axis?.range?.[1] ?? 100) - (firstData.value ?? 0),
           color: DataVizPalette.disabled,
-        }, */
+        },
       ];
 
   let sublabel: string | undefined;
   let sublabelColor: string | undefined;
-  if (typeof firstData.delta?.reference === 'number') {
+  if (firstData.delta?.reference) {
     const diff = firstData.value - firstData.delta.reference;
     if (diff >= 0) {
       sublabel = `\u25B2 ${diff}`;
