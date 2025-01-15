@@ -1,0 +1,24 @@
+{
+  "$schema": "../scripts/triage-bot/triage-bot.schema-v2.json",
+  "params": [
+    {
+      "frameworkType": "Fluent UI react-components (v9)",
+      "headingToParse": "Component",
+      "mapping": {
+        "packages/react-components/react-accordion": ["Accordion"],
+        "packages/react-components/react-avatar": ["Avatar", "AvatarGroup"],
+        "packages/react-components/react-utilities": ["Utilities"],
+        "packages/react-components/react-provider": ["FluentProvider"],
+        "packages/react-components/react-migration-v0-v9": ["Migration Shims v0"],
+        "packages/react-components/react-migration-v8-v9": ["Migration Shims v8"]
+      }
+    },
+    {
+      "frameworkType": "Fluent UI react (v8)",
+      "headingToParse": "Package",
+      "mapping": {
+        "packages/azure-themes": ["azure-themes"]
+      }
+    }
+  ]
+}

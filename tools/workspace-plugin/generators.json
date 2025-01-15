@@ -96,6 +96,11 @@
       "schema": "./src/generators/epic-generator/schema.json",
       "description": "DEPRECATED: Create a migration tracker issue epic and subsequent team sub-issues on GitHub for React v9",
       "hidden": true
+    },
+    "stories-map": {
+      "factory": "./src/generators/stories-map/generator",
+      "schema": "./src/generators/stories-map/schema.json",
+      "description": "stories-map generator"
     }
   }
 }
