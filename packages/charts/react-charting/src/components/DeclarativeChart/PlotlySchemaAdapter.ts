@@ -138,20 +138,25 @@ export const getColor = (
   return colorMap.current.get(legendLabel) as string;
 };
 
-const getSecondaryYAxisValues = (series: any, layout: any) => {
+const getSecondaryYAxisValues = (series: PlotData, layout: Partial<Layout> | undefined) => {
   const secondaryYAxisValues: {
     secondaryYAxistitle?: string | undefined;
     secondaryYScaleOptions?: { yMinValue?: number; yMaxValue?: number } | undefined;
   } = {};
-  if (layout.yaxis2 && series.yaxis === 'y2') {
-    secondaryYAxisValues.secondaryYAxistitle = layout.yaxis2.title;
+  if (layout && layout.yaxis2 && series.yaxis === 'y2') {
+    secondaryYAxisValues.secondaryYAxistitle =
+      typeof layout.yaxis2.title === 'string'
+        ? layout.yaxis2.title
+        : typeof layout.yaxis2.title?.text === 'string'
+        ? layout.yaxis2.title.text
+        : '';
     if (layout.yaxis2.range) {
       secondaryYAxisValues.secondaryYScaleOptions = {
         yMinValue: layout.yaxis2.range[0],
         yMaxValue: layout.yaxis2.range[1],
       };
     } else {
-      const yValues = series.y;
+      const yValues = series.y as number[];
       if (yValues) {
         secondaryYAxisValues.secondaryYScaleOptions = {
           yMinValue: Math.min(...yValues),
@@ -160,10 +165,12 @@ const getSecondaryYAxisValues = (series: any, layout: any) => {
       }
     }
   }
-  secondaryYAxisValues.secondaryYAxistitle !== '' ? secondaryYAxisValues.secondaryYAxistitle : undefined;
-  secondaryYAxisValues.secondaryYScaleOptions && Object.keys(secondaryYAxisValues.secondaryYScaleOptions).length !== 0
-    ? secondaryYAxisValues.secondaryYScaleOptions
-    : undefined;
+  secondaryYAxisValues.secondaryYAxistitle =
+    secondaryYAxisValues.secondaryYAxistitle !== '' ? secondaryYAxisValues.secondaryYAxistitle : undefined;
+  secondaryYAxisValues.secondaryYScaleOptions =
+    secondaryYAxisValues.secondaryYScaleOptions && Object.keys(secondaryYAxisValues.secondaryYScaleOptions).length !== 0
+      ? secondaryYAxisValues.secondaryYScaleOptions
+      : undefined;
   return secondaryYAxisValues;
 };
 
