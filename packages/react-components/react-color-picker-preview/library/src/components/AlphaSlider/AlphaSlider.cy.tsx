@@ -4,12 +4,13 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { AlphaSlider } from './AlphaSlider';
 import type { AlphaSliderProps } from './AlphaSlider.types';
-
+import { calculateTransparencyValue } from './alphaSliderUtils';
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
 const AlphaSliderExample = (props: AlphaSliderProps) => {
+  const { transparency = false } = props;
   const [color, setColor] = React.useState(props.color ?? { h: 0, s: 1, v: 1, a: 1 });
   return (
     <>
@@ -21,7 +22,8 @@ const AlphaSliderExample = (props: AlphaSliderProps) => {
         onChange={(_, data) => setColor(data.color)}
         id="alpha-slider"
         aria-label="Alpha"
-        aria-valuetext={`${(color.a ?? 1) * 100}%`}
+        aria-valuetext={`${calculateTransparencyValue(transparency, color.a)}%`}
+        transparency={transparency}
       />
     </>
   );
@@ -46,23 +48,69 @@ describe('AlphaSlider', () => {
       cy.get('#after').should('have.focus');
     });
 
-    it('alpha channel selected correctly', () => {
-      mountFluent(<AlphaSliderExample color={{ h: 106, s: 0.96, v: 0.1, a: 0.5 }} />);
+    describe('alpha channel', () => {
+      it('selected correctly', () => {
+        mountFluent(<AlphaSliderExample color={{ h: 106, s: 0.96, v: 0.1, a: 0.5 }} />);
+        cy.get('#before').focus();
+        cy.realPress('Tab');
+        cy.realPress('ArrowLeft');
+        cy.realPress('ArrowLeft');
+        assertSliderValue('48');
+        cy.realPress('ArrowRight');
+        cy.get('#alpha-slider').should('have.attr', 'value', '49');
+        cy.realPress('ArrowUp');
+        cy.get('#alpha-slider').should('have.attr', 'value', '50');
+        cy.realPress('ArrowDown');
+        assertSliderValue('49');
+      });
+
+      it('selected on left edge correctly', () => {
+        mountFluent(<AlphaSliderExample color={{ h: 111, s: 1, v: 0.03, a: 0.02 }} />);
+        cy.get('#before').focus();
+        cy.realPress('Tab');
+        cy.realPress('ArrowLeft');
+        cy.realPress('ArrowLeft');
+        cy.get('#alpha-slider').should('have.attr', 'value', '0');
+        cy.realPress('ArrowLeft');
+        cy.get('#alpha-slider').should('have.attr', 'value', '0');
+        cy.realPress('ArrowRight');
+        assertSliderValue('1');
+      });
+
+      it('selected on right edge correctly', () => {
+        mountFluent(<AlphaSliderExample color={{ h: 111, s: 0.03, v: 0.45, a: 0.98 }} />);
+        cy.get('#before').focus();
+        cy.realPress('Tab');
+        cy.realPress('ArrowRight');
+        cy.get('#alpha-slider').should('have.attr', 'value', '99');
+        cy.realPress('ArrowRight');
+        cy.get('#alpha-slider').should('have.attr', 'value', '100');
+        cy.realPress('ArrowRight');
+        cy.get('#alpha-slider').should('have.attr', 'value', '100');
+        cy.realPress('ArrowLeft');
+        assertSliderValue('99');
+      });
+    });
+  });
+
+  describe('transparency', () => {
+    it('selected correctly', () => {
+      mountFluent(<AlphaSliderExample color={{ h: 106, s: 0.96, v: 0.1, a: 0.7 }} transparency />);
       cy.get('#before').focus();
       cy.realPress('Tab');
       cy.realPress('ArrowLeft');
       cy.realPress('ArrowLeft');
-      cy.get('#alpha-slider').should('have.attr', 'aria-valuetext', '48%');
-      cy.get('#alpha-slider').should('have.attr', 'value', '48');
+      assertSliderValue('28');
       cy.realPress('ArrowRight');
-      cy.get('#alpha-slider').should('have.attr', 'value', '49');
+      cy.get('#alpha-slider').should('have.attr', 'value', '29');
       cy.realPress('ArrowUp');
-      cy.get('#alpha-slider').should('have.attr', 'value', '50');
+      cy.get('#alpha-slider').should('have.attr', 'value', '30');
       cy.realPress('ArrowDown');
-      cy.get('#alpha-slider').should('have.attr', 'value', '49');
+      assertSliderValue('29');
     });
-    it('alpha channel selected on left edge correctly', () => {
-      mountFluent(<AlphaSliderExample color={{ h: 111, s: 1, v: 0.03, a: 0.02 }} />);
+
+    it('selected on left edge correctly', () => {
+      mountFluent(<AlphaSliderExample color={{ h: 111, s: 1, v: 0.03, a: 0.98 }} transparency />);
       cy.get('#before').focus();
       cy.realPress('Tab');
       cy.realPress('ArrowLeft');
@@ -71,11 +119,11 @@ describe('AlphaSlider', () => {
       cy.realPress('ArrowLeft');
       cy.get('#alpha-slider').should('have.attr', 'value', '0');
       cy.realPress('ArrowRight');
-      cy.get('#alpha-slider').should('have.attr', 'value', '1');
-      cy.get('#alpha-slider').should('have.attr', 'aria-valuetext', '1%');
+      assertSliderValue('1');
     });
-    it('alpha channel selected on right edge correctly', () => {
-      mountFluent(<AlphaSliderExample color={{ h: 111, s: 0.03, v: 0.45, a: 0.98 }} />);
+
+    it('selected on right edge correctly', () => {
+      mountFluent(<AlphaSliderExample color={{ h: 111, s: 0.03, v: 0.45, a: 0.02 }} transparency />);
       cy.get('#before').focus();
       cy.realPress('Tab');
       cy.realPress('ArrowRight');
@@ -85,8 +133,7 @@ describe('AlphaSlider', () => {
       cy.realPress('ArrowRight');
       cy.get('#alpha-slider').should('have.attr', 'value', '100');
       cy.realPress('ArrowLeft');
-      cy.get('#alpha-slider').should('have.attr', 'value', '99');
-      cy.get('#alpha-slider').should('have.attr', 'aria-valuetext', '99%');
+      assertSliderValue('99');
     });
   });
 
@@ -95,8 +142,12 @@ describe('AlphaSlider', () => {
       mountFluent(<AlphaSliderExample color={{ h: 324, s: 0.5, v: 0.5 }} />);
       cy.get('#alpha-slider').should('have.attr', 'aria-label', 'Alpha');
       cy.get('#alpha-slider').realClick();
-      cy.get('#alpha-slider').should('have.attr', 'aria-valuetext', '50%');
-      cy.get('#alpha-slider').should('have.attr', 'value', '50');
+      assertSliderValue('50');
     });
   });
 });
+
+function assertSliderValue(value: string) {
+  cy.get('#alpha-slider').should('have.attr', 'aria-valuetext', `${value}%`);
+  cy.get('#alpha-slider').should('have.attr', 'value', value);
+}

@@ -52,14 +52,13 @@ describe('ColorSlider', () => {
       cy.realPress('Tab');
       cy.realPress('ArrowLeft');
       cy.realPress('ArrowLeft');
-      cy.get('#color-slider').should('have.attr', 'aria-valuetext', '104°');
-      cy.get('#color-slider').should('have.attr', 'value', '104');
+      assertSliderValue('104');
       cy.realPress('ArrowRight');
       cy.get('#color-slider').should('have.attr', 'value', '105');
       cy.realPress('ArrowUp');
       cy.get('#color-slider').should('have.attr', 'value', '106');
       cy.realPress('ArrowDown');
-      cy.get('#color-slider').should('have.attr', 'value', '105');
+      assertSliderValue('105');
     });
     it('hue channel selected on left edge correctly', () => {
       mountFluent(<ColorSliderExample color={{ h: 2, s: 1, v: 0.03 }} />);
@@ -71,8 +70,7 @@ describe('ColorSlider', () => {
       cy.realPress('ArrowLeft');
       cy.get('#color-slider').should('have.attr', 'value', '0');
       cy.realPress('ArrowRight');
-      cy.get('#color-slider').should('have.attr', 'value', '1');
-      cy.get('#color-slider').should('have.attr', 'aria-valuetext', '1°');
+      assertSliderValue('1');
     });
     it('hue channel selected on right edge correctly', () => {
       mountFluent(<ColorSliderExample color={{ h: 358, s: 0.03, v: 0.45 }} />);
@@ -85,8 +83,7 @@ describe('ColorSlider', () => {
       cy.realPress('ArrowRight');
       cy.get('#color-slider').should('have.attr', 'value', '360');
       cy.realPress('ArrowLeft');
-      cy.get('#color-slider').should('have.attr', 'value', '359');
-      cy.get('#color-slider').should('have.attr', 'aria-valuetext', '359°');
+      assertSliderValue('359');
     });
   });
 
@@ -95,8 +92,12 @@ describe('ColorSlider', () => {
       mountFluent(<ColorSliderExample color={{ h: 324, s: 0.5, v: 0.5 }} />);
       cy.get('#color-slider').should('have.attr', 'aria-label', 'Hue');
       cy.get('#color-slider').realClick();
-      cy.get('#color-slider').should('have.attr', 'aria-valuetext', '180°');
-      cy.get('#color-slider').should('have.attr', 'value', '180');
+      assertSliderValue('180');
     });
   });
 });
+
+function assertSliderValue(value: string) {
+  cy.get('#color-slider').should('have.attr', 'aria-valuetext', `${value}°`);
+  cy.get('#color-slider').should('have.attr', 'value', value);
+}
