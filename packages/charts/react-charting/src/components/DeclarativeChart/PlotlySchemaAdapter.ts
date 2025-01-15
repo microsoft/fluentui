@@ -32,6 +32,11 @@ import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { Layout, PlotlySchema, PieData, PlotData, SankeyData } from './PlotlySchema';
 import type { Datum, TypedArray } from './PlotlySchema';
 
+interface ISecondaryYAxisValues {
+  secondaryYAxistitle?: string;
+  secondaryYScaleOptions?: { yMinValue?: number; yMaxValue?: number };
+}
+
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 
@@ -139,10 +144,7 @@ export const getColor = (
 };
 
 const getSecondaryYAxisValues = (series: PlotData, layout: Partial<Layout> | undefined) => {
-  const secondaryYAxisValues: {
-    secondaryYAxistitle?: string | undefined;
-    secondaryYScaleOptions?: { yMinValue?: number; yMaxValue?: number } | undefined;
-  } = {};
+  const secondaryYAxisValues: ISecondaryYAxisValues = {};
   if (layout && layout.yaxis2 && series.yaxis === 'y2') {
     secondaryYAxisValues.secondaryYAxistitle =
       typeof layout.yaxis2.title === 'string'
@@ -233,10 +235,7 @@ export const transformPlotlyJsonToVSBCProps = (
 ): IVerticalStackedBarChartProps => {
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
   let yMaxValue = 0;
-  let secondaryYAxisValues: {
-    secondaryYAxistitle?: string;
-    secondaryYScaleOptions?: { yMinValue?: number; yMaxValue?: number };
-  } = {};
+  let secondaryYAxisValues: ISecondaryYAxisValues = {};
   input.data.forEach((series: PlotData, index1: number) => {
     if (series.x?.length > 0 && Array.isArray(series.x[0])) {
       throw new Error('transform to VSBC:: 2D x array not supported');
@@ -298,10 +297,7 @@ export const transformPlotlyJsonToGVBCProps = (
   isDarkTheme?: boolean,
 ): IGroupedVerticalBarChartProps => {
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
-  let secondaryYAxisValues: {
-    secondaryYAxistitle?: string;
-    secondaryYScaleOptions?: { yMinValue?: number; yMaxValue?: number };
-  } = {};
+  let secondaryYAxisValues: ISecondaryYAxisValues = {};
   input.data.forEach((series: PlotData, index1: number) => {
     if (series.x?.length > 0 && Array.isArray(series.x[0])) {
       throw new Error('transform to GVBC:: 2D x array not supported');
@@ -448,10 +444,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
-  let secondaryYAxisValues: {
-    secondaryYAxistitle?: string;
-    secondaryYScaleOptions?: { yMinValue?: number; yMaxValue?: number };
-  } = {};
+  let secondaryYAxisValues: ISecondaryYAxisValues = {};
   const chartData: ILineChartPoints[] = input.data.map((series: PlotData, index: number) => {
     if (series.x?.length > 0 && Array.isArray(series.x[0])) {
       throw new Error('transform to Scatter:: 2D x array not supported');
