@@ -30,18 +30,7 @@ import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index'
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { timeParse } from 'd3-time-format';
 
-const isDate = (value: any): boolean => {
-  const parsedDate = new Date(Date.parse(value));
-  if (isNaN(parsedDate.getTime())) {
-    return false;
-  }
-  const parsedYear = parsedDate.getFullYear();
-  const yearInString = /\b\d{4}\b/.test(value);
-  if (!yearInString && (parsedYear === 2000 || parsedYear === 2001)) {
-    return false;
-  }
-  return true;
-};
+const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 export const isDateArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isDate);
 export const isNumberArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isNumber);
@@ -415,7 +404,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
       });
     })
     .flat()
-    //reversing the order to invert the Y bars order.
+    //reversing the order to invert the Y bars order as required by plotly.
     .reverse();
 
   const chartHeight: number = typeof layout.height === 'number' ? layout.height : 450;
