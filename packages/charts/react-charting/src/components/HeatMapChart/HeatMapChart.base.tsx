@@ -384,7 +384,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
            */
           const dataPointObject = this._dataSet[yAxisDataPoint][index];
           let styleRules = '#ffffff';
-          let foregroundColor = this.props.theme!.palette.black;
+          let foregroundColor = this.props.theme!.palette.white;
           if (this.chartContainer) {
             styleRules = resolveCSSVariables(this.chartContainer!, foregroundColor);
           }

@@ -5683,7 +5683,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -5715,7 +5715,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -5779,7 +5779,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -5843,7 +5843,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -5971,7 +5971,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -6003,7 +6003,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -6131,7 +6131,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -6163,7 +6163,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -6227,7 +6227,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -6259,7 +6259,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -6323,7 +6323,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -6355,7 +6355,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -6419,7 +6419,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -6483,7 +6483,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -6643,7 +6643,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -6771,7 +6771,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -6803,7 +6803,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -7123,7 +7123,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -7283,7 +7283,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -7411,7 +7411,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -7443,7 +7443,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -7539,7 +7539,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -7635,7 +7635,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -7763,7 +7763,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -7923,7 +7923,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -8051,7 +8051,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -8083,7 +8083,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -8179,7 +8179,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -8275,7 +8275,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -8339,7 +8339,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -8403,7 +8403,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -8563,7 +8563,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -8691,7 +8691,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -8723,7 +8723,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -8915,7 +8915,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -8979,7 +8979,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -9043,7 +9043,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -9331,7 +9331,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -9363,7 +9363,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -9619,7 +9619,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -9683,7 +9683,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -9971,7 +9971,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -10099,7 +10099,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -10259,7 +10259,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -10323,7 +10323,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -10451,7 +10451,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -10707,7 +10707,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -10739,7 +10739,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -10803,7 +10803,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -10899,7 +10899,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -11091,7 +11091,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -11123,7 +11123,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -11379,7 +11379,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -11443,7 +11443,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -11539,7 +11539,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -11603,7 +11603,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -11731,7 +11731,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -11763,7 +11763,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -11955,7 +11955,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -12019,7 +12019,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -12083,7 +12083,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -12179,7 +12179,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -12243,7 +12243,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -12371,7 +12371,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -12403,7 +12403,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -12595,7 +12595,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -12723,7 +12723,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -12883,7 +12883,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -13011,7 +13011,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -13043,7 +13043,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -13235,7 +13235,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -13363,7 +13363,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -13523,7 +13523,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -13651,7 +13651,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -13683,7 +13683,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -13715,7 +13715,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -14003,7 +14003,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -14163,7 +14163,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -14323,7 +14323,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -14355,7 +14355,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -14579,7 +14579,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -14643,7 +14643,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -14803,7 +14803,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -14931,7 +14931,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -14963,7 +14963,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -15443,7 +15443,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -15987,7 +15987,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -16083,7 +16083,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -16627,7 +16627,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -16723,7 +16723,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -17075,7 +17075,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
@@ -17523,7 +17523,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#ffffff"
             text-anchor="middle"
             transform="translate(1.5664335664335665, 1.346153846153846)"
           >
