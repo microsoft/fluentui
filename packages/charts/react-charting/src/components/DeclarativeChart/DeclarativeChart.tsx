@@ -290,7 +290,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         />
       );
     default:
-      throw new Error('Unsupported chart schema');
+      throw new Error(`Unsupported chart type :${plotlyInput.data[0].type}`);
   }
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
