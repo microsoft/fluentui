@@ -62,6 +62,7 @@ export type FlatTreeItemProps = TreeItemProps & {
 
 // @public (undocumented)
 export type FlatTreeProps = ComponentProps<TreeSlots> & {
+    navigationMode?: 'tree' | 'treegrid';
     appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
     size?: 'small' | 'medium';
     openItems?: Iterable<TreeItemValue>;
@@ -160,6 +161,7 @@ export type TreeContextValue = {
     checkedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>;
     requestTreeResponse(request: TreeItemRequest): void;
     forceUpdateRovingTabIndex?(): void;
+    navigationMode?: 'tree' | 'treegrid';
 };
 
 // @public (undocumented)
@@ -366,6 +368,7 @@ export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
 
 // @public (undocumented)
 export type TreeProps = ComponentProps<TreeSlots> & {
+    navigationMode?: 'tree' | 'treegrid';
     appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
     size?: 'small' | 'medium';
     openItems?: Iterable<TreeItemValue>;
