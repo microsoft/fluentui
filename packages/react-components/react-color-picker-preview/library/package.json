@@ -24,7 +24,7 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@ctrl/tinycolor": "3.3.4",
+    "@ctrl/tinycolor": "^3.3.4",
     "@fluentui/react-context-selector": "^9.1.71",
     "@fluentui/react-jsx-runtime": "^9.0.49",
     "@fluentui/react-shared-contexts": "^9.21.2",

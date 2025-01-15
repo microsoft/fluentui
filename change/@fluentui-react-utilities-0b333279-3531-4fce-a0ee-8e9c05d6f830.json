@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add autoCorrect and minLength input properties support to getNativeProps utility",
+  "packageName": "@fluentui/react-utilities",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
