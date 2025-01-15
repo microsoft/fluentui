@@ -20,6 +20,7 @@ import {
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { treeClassNames } from '../../Tree';
+import { useFocusFinders } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render TreeItem.
@@ -38,6 +39,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     warnIfNoProperPropsFlatTreeItem(props);
   }
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
+  const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
   const forceUpdateRovingTabIndex = useTreeContext_unstable(ctx => ctx.forceUpdateRovingTabIndex);
   const { level: contextLevel } = useSubtreeContext_unstable();
   const parentValue = useTreeItemContext_unstable(ctx => props.parentValue ?? ctx.value);
@@ -145,6 +147,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     });
   });
 
+  const { findFirstFocusable } = useFocusFinders();
+
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     onKeyDown?.(event);
     // Ignore keyboard events that do not originate from the current tree item.
@@ -205,6 +209,30 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       case treeDataTypes.ArrowRight: {
         // arrow right with alt key is reserved for history navigation
         if (event.altKey) {
+          return;
+        }
+        if (navigationMode === 'treegrid') {
+          // only navigate or open if the item is a branch
+          if (itemType === 'branch' && !open) {
+            const data = {
+              value,
+              event,
+              open: getNextOpen(),
+              type: event.key,
+              target: event.currentTarget,
+            } as const;
+            props.onOpenChange?.(event, data);
+            requestTreeResponse({
+              ...data,
+              itemType,
+              requestType: 'open',
+            });
+            return;
+          }
+          if (actionsRef.current) {
+            const first = findFirstFocusable(actionsRef.current);
+            first?.focus();
+          }
           return;
         }
         // do not navigate or open if the item is a leaf
