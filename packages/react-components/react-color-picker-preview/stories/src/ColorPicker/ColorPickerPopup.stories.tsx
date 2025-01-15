@@ -49,11 +49,6 @@ export const ColorPickerPopup = () => {
 
   const [popoverOpen, setPopoverOpen] = React.useState(false);
 
-  const ariaAttributes = {
-    'aria-label': 'ColorPicker',
-    'aria-roledescription': '2D slider',
-  };
-
   return (
     <>
       <Popover open={popoverOpen} trapFocus onOpenChange={(_, data) => setPopoverOpen(data.open)}>
@@ -63,7 +58,7 @@ export const ColorPickerPopup = () => {
 
         <PopoverSurface>
           <ColorPicker color={previewColor} onColorChange={handleChange}>
-            <ColorArea inputX={ariaAttributes} inputY={ariaAttributes} />
+            <ColorArea inputX={{ 'aria-label': 'Saturation' }} inputY={{ 'aria-label': 'Brightness' }} />
             <div className={styles.row}>
               <div className={styles.sliders}>
                 <ColorSlider aria-label="Hue" />

@@ -38,14 +38,18 @@ export const ColorAreaExample = () => {
   };
   const resetSlider = () => setColor(DEFAULT_COLOR_HSV);
   const ariaAttributes = {
-    'aria-label': 'ColorPicker',
     'aria-roledescription': '2D slider',
     'aria-valuetext': `Saturation ${color.s * 100}, Brightness: ${color.v * 100}, ${namedColor}`,
   };
 
   return (
     <div className={styles.example}>
-      <ColorArea color={color} onChange={onChange} inputX={ariaAttributes} inputY={ariaAttributes} />
+      <ColorArea
+        color={color}
+        onChange={onChange}
+        inputX={{ 'aria-label': 'Saturation', ...ariaAttributes }}
+        inputY={{ 'aria-label': 'Brightness', ...ariaAttributes }}
+      />
       <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toHexString() }} />
       <Button onClick={resetSlider}>Reset</Button>
     </div>

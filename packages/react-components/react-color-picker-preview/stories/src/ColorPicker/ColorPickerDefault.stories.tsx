@@ -120,7 +120,6 @@ export const Default = () => {
   );
 
   const colorAriaAttributes = {
-    'aria-label': 'ColorPicker',
     'aria-roledescription': '2D slider',
     'aria-valuetext': `Saturation ${color.s * 100}, Brightness: ${color.v * 100}, ${namedColor}`,
   };
@@ -128,7 +127,10 @@ export const Default = () => {
   return (
     <div className={styles.example}>
       <ColorPicker color={color} onColorChange={handleChange}>
-        <ColorArea inputX={colorAriaAttributes} inputY={colorAriaAttributes} />
+        <ColorArea
+          inputX={{ 'aria-label': 'Saturation', ...colorAriaAttributes }}
+          inputY={{ 'aria-label': 'Brightness', ...colorAriaAttributes }}
+        />
         <ColorSlider aria-label="Hue" aria-valuetext={`${color.h}°, ${namedColor}`} />
         <AlphaSlider aria-label="Alpha" aria-valuetext={`${color.a * 100}%`} />
       </ColorPicker>
