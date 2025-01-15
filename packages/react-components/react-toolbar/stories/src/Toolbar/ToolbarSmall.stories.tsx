@@ -24,7 +24,7 @@ Small.parameters = {
     description: {
       story: [
         'The size determines the spacing around the toolbar controls.',
-        'A small sized toolbar has no vertical padding and uses 20px for horizontal padding.',
+        'A small sized toolbar has no vertical padding and uses 4px for horizontal padding.',
       ].join('\n'),
     },
   },
