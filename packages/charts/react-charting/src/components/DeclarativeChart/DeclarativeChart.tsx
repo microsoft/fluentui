@@ -124,7 +124,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   };
 
   const checkAndRenderChart = (
-    renderChart: (chartProps: ILineChartProps | IAreaChartProps) => JSX.Element,
+    renderChartJsx: (chartProps: ILineChartProps | IAreaChartProps) => JSX.Element,
     isAreaChart: boolean = false,
   ) => {
     const xValues = (plotlyInput.data[0] as PlotData).x;
@@ -143,7 +143,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         componentRef: chartRef,
         calloutProps: { layerProps: { eventBubblingEnabled: true } },
       };
-      return renderChart(chartProps);
+      return renderChartJsx(chartProps);
     } else if (isXMonth) {
       const updatedData = plotlyInput.data.map((dataPoint: PlotData) => ({
         ...dataPoint,
@@ -160,7 +160,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         componentRef: chartRef,
         calloutProps: { layerProps: { eventBubblingEnabled: true } },
       };
-      return renderChart(chartProps);
+      return renderChartJsx(chartProps);
     }
     // Unsupported schema, render as VerticalStackedBarChart
     fallbackVSBC = true;
@@ -244,7 +244,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       const isAreaChart = plotlyInput.data.some(
         (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
       );
-      const renderChart = (chartProps: ILineChartProps | IAreaChartProps) => {
+      const renderChartJsx = (chartProps: ILineChartProps | IAreaChartProps) => {
         if (isAreaChart) {
           return (
             <AreaChart
@@ -266,7 +266,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           />
         );
       };
-      return checkAndRenderChart(renderChart, isAreaChart);
+      return checkAndRenderChart(renderChartJsx, isAreaChart);
     case 'heatmap':
       return (
         <HeatMapChart
