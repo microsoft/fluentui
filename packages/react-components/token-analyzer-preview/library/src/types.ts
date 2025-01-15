@@ -12,7 +12,6 @@ export interface StyleContent {
   nested?: StyleTokens;
   isResetStyles?: boolean;
   assignedVariables?: string[];
-  assignedSlots?: string[];
 }
 
 export interface StyleTokens {
@@ -33,6 +32,7 @@ export interface StyleMetadata {
     [styleName: string]: {
       isBase?: boolean;
       conditions?: string[];
+      slotName: string;
     };
   };
 }

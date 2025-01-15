@@ -313,11 +313,73 @@
     },
     "metadata": {
       "styleConditions": {
+        "compoundButtonClassNames.root": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "rootStyles.base": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "rootStyles.highContrast": {
+          "isBase": true,
+          "slotName": "root"
+        },
         "rootStyles[size]": {
-          "isBase": true
+          "isBase": true,
+          "slotName": "root"
+        },
+        "state.root.className": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "rootStyles.disabled": {
+          "conditions": ["(disabled || disabledFocusable)"],
+          "slotName": "root"
+        },
+        "rootStyles.disabledHighContrast": {
+          "conditions": ["(disabled || disabledFocusable)"],
+          "slotName": "root"
+        },
+        "compoundButtonClassNames.contentContainer": {
+          "isBase": true,
+          "slotName": "contentContainer"
+        },
+        "contentContainerStyles.base": {
+          "isBase": true,
+          "slotName": "contentContainer"
+        },
+        "state.contentContainer.className": {
+          "isBase": true,
+          "slotName": "contentContainer"
+        },
+        "compoundButtonClassNames.icon": {
+          "isBase": true,
+          "slotName": "icon"
+        },
+        "iconStyles.base": {
+          "isBase": true,
+          "slotName": "icon"
+        },
+        "state.icon.className": {
+          "isBase": true,
+          "slotName": "icon"
+        },
+        "compoundButtonClassNames.secondaryContent": {
+          "isBase": true,
+          "slotName": "secondaryContent"
+        },
+        "secondaryContentStyles.base": {
+          "isBase": true,
+          "slotName": "secondaryContent"
         },
         "secondaryContentStyles[size]": {
-          "isBase": true
+          "isBase": true,
+          "slotName": "secondaryContent"
+        },
+        "state.secondaryContent.className": {
+          "isBase": true,
+          "slotName": "secondaryContent"
         }
       }
     }
@@ -413,7 +475,6 @@
               ]
             }
           },
-          "assignedSlots": [],
           "isResetStyles": true,
           "assignedVariables": ["rootBaseClassName"]
         }
@@ -428,7 +489,6 @@
             }
           ],
           "nested": {},
-          "assignedSlots": [],
           "isResetStyles": true,
           "assignedVariables": ["iconBaseClassName"]
         }
@@ -877,26 +937,69 @@
     },
     "metadata": {
       "styleConditions": {
+        "buttonClassNames.root": {
+          "isBase": true,
+          "slotName": "root"
+        },
         "rootBaseClassName": {
-          "isBase": true
+          "isBase": true,
+          "slotName": "root"
         },
         "rootStyles[size]": {
-          "isBase": true
+          "isBase": true,
+          "slotName": "root"
         },
         "rootStyles[shape]": {
-          "isBase": true
+          "isBase": true,
+          "slotName": "root"
         },
         "rootFocusStyles[size]": {
-          "isBase": true
+          "isBase": true,
+          "slotName": "root"
         },
         "rootFocusStyles[shape]": {
-          "isBase": true
+          "isBase": true,
+          "slotName": "root"
+        },
+        "state.root.className": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "rootStyles.smallWithIcon": {
+          "conditions": ["icon && size === 'small'"],
+          "slotName": "root"
+        },
+        "rootStyles.largeWithIcon": {
+          "conditions": ["icon && size === 'large'"],
+          "slotName": "root"
+        },
+        "rootDisabledStyles.base": {
+          "conditions": ["(disabled || disabledFocusable)"],
+          "slotName": "root"
+        },
+        "rootDisabledStyles.highContrast": {
+          "conditions": ["(disabled || disabledFocusable)"],
+          "slotName": "root"
+        },
+        "rootFocusStyles.primary": {
+          "conditions": ["appearance === 'primary'"],
+          "slotName": "root"
+        },
+        "buttonClassNames.icon": {
+          "isBase": true,
+          "slotName": "icon"
         },
         "iconBaseClassName": {
-          "isBase": true
+          "isBase": true,
+          "slotName": "icon"
         },
         "iconStyles[size]": {
-          "isBase": true
+          "isBase": true,
+          "slotName": "icon"
+        },
+        "state.icon.className": {
+          "isBase": true,
+          "slotName": "icon"
         }
       }
     }
@@ -1056,7 +1159,48 @@
       }
     },
     "metadata": {
-      "styleConditions": {}
+      "styleConditions": {
+        "menuButtonClassNames.root": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "state.root.className": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "rootExpandedStyles.base": {
+          "conditions": ["state.root['aria-expanded']"],
+          "slotName": "root"
+        },
+        "menuButtonClassNames.icon": {
+          "isBase": true,
+          "slotName": "icon"
+        },
+        "state.icon.className": {
+          "isBase": true,
+          "slotName": "icon"
+        },
+        "iconExpandedStyles.highContrast": {
+          "conditions": ["state.root['aria-expanded'] && iconExpandedStyles[state.appearance]"],
+          "slotName": "icon"
+        },
+        "menuButtonClassNames.menuIcon": {
+          "isBase": true,
+          "slotName": "menuIcon"
+        },
+        "menuIconStyles.base": {
+          "isBase": true,
+          "slotName": "menuIcon"
+        },
+        "state.menuIcon.className": {
+          "isBase": true,
+          "slotName": "menuIcon"
+        },
+        "menuIconStyles.notIconOnly": {
+          "conditions": ["!state.iconOnly"],
+          "slotName": "menuIcon"
+        }
+      }
     }
   },
   "library/src/components/SplitButton/useSplitButtonStyles.styles.ts": {
@@ -1198,7 +1342,52 @@
       }
     },
     "metadata": {
-      "styleConditions": {}
+      "styleConditions": {
+        "splitButtonClassNames.root": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "rootStyles.base": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "state.root.className": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "rootStyles.disabled": {
+          "conditions": ["(disabled || disabledFocusable)"],
+          "slotName": "root"
+        },
+        "rootStyles.disabledHighContrast": {
+          "conditions": ["(disabled || disabledFocusable)"],
+          "slotName": "root"
+        },
+        "splitButtonClassNames.menuButton": {
+          "isBase": true,
+          "slotName": "menuButton"
+        },
+        "focusStyles.menuButton": {
+          "isBase": true,
+          "slotName": "menuButton"
+        },
+        "state.menuButton.className": {
+          "isBase": true,
+          "slotName": "menuButton"
+        },
+        "splitButtonClassNames.primaryActionButton": {
+          "isBase": true,
+          "slotName": "primaryActionButton"
+        },
+        "focusStyles.primaryActionButton": {
+          "isBase": true,
+          "slotName": "primaryActionButton"
+        },
+        "state.primaryActionButton.className": {
+          "isBase": true,
+          "slotName": "primaryActionButton"
+        }
+      }
     }
   },
   "library/src/components/ToggleButton/useToggleButtonStyles.styles.ts": {
@@ -1537,7 +1726,52 @@
       "usePrimaryHighContrastStyles": {}
     },
     "metadata": {
-      "styleConditions": {}
+      "styleConditions": {
+        "toggleButtonClassNames.root": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "state.root.className": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "primaryHighContrastStyles.base": {
+          "conditions": ["appearance === 'primary'"],
+          "slotName": "root"
+        },
+        "primaryHighContrastStyles.disabled": {
+          "conditions": ["appearance === 'primary' && (disabled || disabledFocusable)"],
+          "slotName": "root"
+        },
+        "rootCheckedStyles.base": {
+          "conditions": ["checked"],
+          "slotName": "root"
+        },
+        "rootCheckedStyles.highContrast": {
+          "conditions": ["checked"],
+          "slotName": "root"
+        },
+        "rootDisabledStyles.base": {
+          "conditions": ["(disabled || disabledFocusable)"],
+          "slotName": "root"
+        },
+        "toggleButtonClassNames.icon": {
+          "isBase": true,
+          "slotName": "icon"
+        },
+        "iconCheckedStyles.highContrast": {
+          "isBase": true,
+          "slotName": "icon"
+        },
+        "state.icon.className": {
+          "isBase": true,
+          "slotName": "icon"
+        },
+        "iconCheckedStyles.subtleOrTransparent": {
+          "conditions": ["checked && (appearance === 'subtle' || appearance === 'transparent')"],
+          "slotName": "icon"
+        }
+      }
     }
   }
 }

@@ -17,6 +17,7 @@ const makeResetStylesToken = 'resetStyles';
 interface StyleMapping {
   baseStyles: string[];
   conditionalStyles: StyleCondition[];
+  slotName?: string;
 }
 
 interface VariableMapping {
@@ -89,9 +90,15 @@ function analyzeMergeClasses(sourceFile: SourceFile): StyleMapping[] {
 
   sourceFile.forEachDescendant(node => {
     if (Node.isCallExpression(node) && node.getExpression().getText() === 'mergeClasses') {
+      const parentNode = node.getParent();
+      let slotName = '';
+      if (Node.isBinaryExpression(parentNode)) {
+        slotName = parentNode.getLeft().getText().split('.')[1];
+      }
       const mapping: StyleMapping = {
         baseStyles: [],
         conditionalStyles: [],
+        slotName,
       };
 
       /**
@@ -102,15 +109,15 @@ function analyzeMergeClasses(sourceFile: SourceFile): StyleMapping[] {
 
       node.getArguments().forEach(arg => {
         // Handle direct style references
-        if (Node.isPropertyAccessExpression(arg) && arg.getText().startsWith('styles.')) {
-          mapping.baseStyles.push(arg.getName());
+        if (Node.isPropertyAccessExpression(arg)) {
+          mapping.baseStyles.push(arg.getText());
         }
         // Handle conditional styles
         else if (Node.isBinaryExpression(arg)) {
           const right = arg.getRight();
-          if (Node.isPropertyAccessExpression(right) && right.getText().startsWith('styles.')) {
+          if (Node.isPropertyAccessExpression(right)) {
             mapping.conditionalStyles.push({
-              style: right.getName(),
+              style: right.getText(),
               condition: arg.getLeft().getText(),
             });
           }
@@ -186,7 +193,7 @@ function createMetadata(styleMappings: StyleMapping[]): StyleMetadata {
       if (metadata.styleConditions[style]) {
         metadata.styleConditions[style].isBase = true;
       } else {
-        metadata.styleConditions[style] = { isBase: true };
+        metadata.styleConditions[style] = { isBase: true, slotName: mapping.slotName || '' };
       }
     });
 
@@ -199,6 +206,7 @@ function createMetadata(styleMappings: StyleMapping[]): StyleMetadata {
       } else {
         metadata.styleConditions[style] = {
           conditions: condition ? [condition] : [],
+          slotName: mapping.slotName || '',
         };
       }
     });
@@ -246,7 +254,6 @@ async function analyzeMakeStyles(sourceFile: SourceFile): Promise<StyleAnalysis>
         analysis[functionName][makeResetStylesToken] = {
           tokens: [],
           nested: {},
-          assignedSlots: [],
           isResetStyles: true,
         };
         if (Node.isObjectLiteralExpression(stylesArg)) {

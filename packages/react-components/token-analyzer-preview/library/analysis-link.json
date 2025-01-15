@@ -1,0 +1,192 @@
+{
+  "library/src/components/Link/useLinkStyles.styles.ts": {
+    "styles": {
+      "useStyles": {
+        "root": {
+          "tokens": [
+            {
+              "property": "color",
+              "token": "tokens.colorBrandForegroundLink",
+              "path": ["color"]
+            },
+            {
+              "property": "fontFamily",
+              "token": "tokens.fontFamilyBase",
+              "path": ["fontFamily"]
+            },
+            {
+              "property": "fontSize",
+              "token": "tokens.fontSizeBase300",
+              "path": ["fontSize"]
+            },
+            {
+              "property": "fontWeight",
+              "token": "tokens.fontWeightRegular",
+              "path": ["fontWeight"]
+            },
+            {
+              "property": "textDecorationThickness",
+              "token": "tokens.strokeWidthThin",
+              "path": ["textDecorationThickness"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorBrandForegroundLinkHover",
+                  "path": []
+                }
+              ]
+            },
+            "':active'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorBrandForegroundLinkPressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["styles"]
+        },
+        "subtle": {
+          "tokens": [
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground2",
+              "path": ["color"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2Hover",
+                  "path": []
+                }
+              ]
+            },
+            "':active'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForeground2Pressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["styles"]
+        },
+        "disabled": {
+          "tokens": [
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForegroundDisabled",
+              "path": ["color"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundDisabled",
+                  "path": []
+                }
+              ]
+            },
+            "':active'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorNeutralForegroundDisabled",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["styles"]
+        },
+        "inverted": {
+          "tokens": [
+            {
+              "property": "color",
+              "token": "tokens.colorBrandForegroundInverted",
+              "path": ["color"]
+            }
+          ],
+          "nested": {
+            "':hover'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorBrandForegroundInvertedHover",
+                  "path": []
+                }
+              ]
+            },
+            "':active'": {
+              "tokens": [
+                {
+                  "property": "color",
+                  "token": "tokens.colorBrandForegroundInvertedPressed",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["styles"]
+        }
+      }
+    },
+    "metadata": {
+      "styleConditions": {
+        "linkClassNames.root": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "styles.root": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "styles.focusIndicator": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "state.root.className": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "styles.href": {
+          "conditions": ["root.as === 'a' && root.href"],
+          "slotName": "root"
+        },
+        "styles.button": {
+          "conditions": ["root.as === 'button'"],
+          "slotName": "root"
+        },
+        "styles.subtle": {
+          "conditions": ["appearance === 'subtle'"],
+          "slotName": "root"
+        },
+        "styles.inverted": {
+          "conditions": ["backgroundAppearance === 'inverted'"],
+          "slotName": "root"
+        },
+        "styles.inline": {
+          "conditions": ["inline"],
+          "slotName": "root"
+        },
+        "styles.disabled": {
+          "conditions": ["disabled"],
+          "slotName": "root"
+        }
+      }
+    }
+  }
+}
