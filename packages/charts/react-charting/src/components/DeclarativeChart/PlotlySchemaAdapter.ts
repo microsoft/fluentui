@@ -29,7 +29,8 @@ import { DataVizPalette, getNextColor } from '../../utilities/colors';
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
-import { Layout, PlotlySchema, PieData, PlotData, SankeyData } from './PlotlySchema';
+import { findNumericMinMaxOfY } from '../../utilities/utilities';
+import { Layout, PlotlySchema, PieData, PlotData, SankeyData, Dash } from './PlotlySchema';
 import type { Datum, TypedArray } from './PlotlySchema';
 
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
@@ -401,9 +402,11 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isXNumber = isNumberArray(xValues);
     const legend: string = getLegend(series, index);
     const lineColor = getColor(legend, colorMap, isDarkTheme);
-
     return {
       legend,
+      lineOptions: ['dot', 'dash', 'longdash', 'dashdot', 'longdashdot'].includes(series.line?.dash as Dash)
+        ? { strokeDasharray: '5', strokeLinecap: 'butt', strokeWidth: '2', lineBorderWidth: '4' }
+        : {},
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
@@ -412,6 +415,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     } as ILineChartPoints;
   });
 
+  const yMinMaxValues = findNumericMinMaxOfY(chartData);
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
   const chartProps: IChartProps = {
@@ -432,6 +436,9 @@ export const transformPlotlyJsonToScatterChartProps = (
       supportNegativeData: true,
       xAxisTitle,
       yAxisTitle,
+      roundedTicks: true,
+      yMinValue: yMinMaxValues.startValue,
+      yMaxValue: yMinMaxValues.endValue,
     } as ILineChartProps;
   }
 };
