@@ -87,6 +87,10 @@ const invalidate2Dseries = (series: PlotData, chartType: string): void => {
   }
 };
 
+const getLegend = (series: PlotData, index: number): string => {
+  return series.name || `Series ${index + 1}`;
+};
+
 function getTitles(layout: Partial<Layout> | undefined) {
   const titles = {
     chartTitle: typeof layout?.title === 'string' ? layout.title : layout?.title?.text ?? '',
@@ -206,7 +210,7 @@ export const transformPlotlyJsonToVSBCProps = (
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
       }
-      const legend: string = series.name || `Series ${index1 + 1}`;
+      const legend: string = getLegend(series, index1);
       const yVal: number = (series.y?.[index2] as number) ?? 0;
       if (series.type === 'bar' || series.type === 'scatter') {
         const color = getColor(legend, colorMap, isDarkTheme);
@@ -262,7 +266,7 @@ export const transformPlotlyJsonToGVBCProps = (
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
       }
       if (series.type === 'bar') {
-        const legend: string = series.name || `Series ${index1 + 1}`;
+        const legend: string = getLegend(series, index1);
         const color = getColor(legend, colorMap, isDarkTheme);
 
         mapXToDataPoints[x].series.push({
@@ -335,7 +339,7 @@ export const transformPlotlyJsonToVBCProps = (
     const totalDataPoints = d3Merge(buckets).length;
 
     buckets.forEach(bucket => {
-      const legend: string = series.name || `Series ${index + 1}`;
+      const legend: string = getLegend(series, index);
       const color: string = getColor(legend, colorMap, isDarkTheme);
       let y = bucket.length;
 
@@ -395,7 +399,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
-    const legend: string = series.name || `Series ${index + 1}`;
+    const legend: string = getLegend(series, index);
     const lineColor = getColor(legend, colorMap, isDarkTheme);
 
     return {
