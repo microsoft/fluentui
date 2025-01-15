@@ -48,8 +48,9 @@ const useStyles = makeStyles({
 
 const ITEMS_LIMIT = 8;
 const DEFAULT_SELECTED_VALUE = '2be700';
-const DEFAULT_SELECTED_COLOR = '#2be700';
-const DEFAULT_COLOR_HSV = tinycolor(DEFAULT_SELECTED_COLOR).toHsv();
+
+const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
+const DEFAULT_SELECTED_COLOR = tinycolor(DEFAULT_COLOR_HSV).toHex();
 
 export const ColorAndSwatchPickerExample = () => {
   const styles = useStyles();
@@ -110,6 +111,7 @@ export const ColorAndSwatchPickerExample = () => {
         aria-label="SwatchPicker with empty swatches"
         selectedValue={selectedValue}
         onSelectionChange={handleSelect}
+        shape="rounded"
       >
         {items.map(item => (
           <ColorSwatch key={item.value} ref={item.value === colorFocusTarget ? colorFocusTargetRef : null} {...item} />

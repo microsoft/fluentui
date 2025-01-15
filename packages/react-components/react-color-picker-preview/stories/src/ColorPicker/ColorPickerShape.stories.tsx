@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   },
 });
 
-const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
+const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.91, a: 1 };
 
 export const ColorPickerShape = () => {
   const styles = useStyles();
@@ -45,9 +45,9 @@ export const ColorPickerShape = () => {
       </ColorPicker>
       <h3>Square (default)</h3>
       <ColorPicker shape="square" color={color} onColorChange={handleChange}>
+        <ColorArea />
         <ColorSlider />
         <AlphaSlider />
-        <ColorArea />
       </ColorPicker>
       <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toRgbString() }} />
     </div>

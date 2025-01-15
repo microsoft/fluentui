@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
 });
 
-const DEFAULT_COLOR_HSV = tinycolor('#804066').toHsv();
+const DEFAULT_COLOR_HSV = { h: 324, s: 0.5, v: 0.5, a: 1 };
 
 export const ColorAreaExample = () => {
   const styles = useStyles();
