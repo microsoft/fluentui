@@ -195,6 +195,7 @@ export const transformPlotlyJsonToVSBCProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
+  fallbackVSBC?: boolean,
 ): IVerticalStackedBarChartProps => {
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
   let yMaxValue = 0;
@@ -216,7 +217,7 @@ export const transformPlotlyJsonToVSBCProps = (
       }
       const legend: string = series.name || `Series ${index1 + 1}`;
       const yVal: number = (series.y?.[index2] as number) ?? 0;
-      if (series.type === 'bar' || series.type === 'scatter' || series.type === 'fallback-vsbc') {
+      if (series.type === 'bar' || series.type === 'scatter' || fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].chartData.push({
           legend,

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import { useTheme } from '@fluentui/react';
@@ -96,7 +95,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const theme = useTheme();
   const isDarkTheme = theme?.isInverted ?? false;
   const chartRef = React.useRef<IChart>(null);
-  const xValues = (plotlyInput.data[0] as PlotData).x;
+  let fallbackVSBC = false;
 
   if (!isArrayOrTypedArray(selectedLegends)) {
     selectedLegends = [];
@@ -124,7 +123,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     selectedLegend: activeLegends.slice(0, 1)[0],
   };
 
-  const checkAndRenderChart = (renderChart: any, isAreaChart: boolean = false) => {
+  const checkAndRenderChart = (
+    renderChart: (chartProps: ILineChartProps | IAreaChartProps) => JSX.Element,
+    isAreaChart: boolean = false,
+  ) => {
+    const xValues = (plotlyInput.data[0] as PlotData).x;
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const isXMonth = isMonthArray(xValues);
@@ -160,10 +163,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return renderChart(chartProps);
     }
     // Unsupported schema, render as VerticalStackedBarChart
-    plotlyInput.data[0].type = 'fallback-vsbc';
+    fallbackVSBC = true;
     return (
       <VerticalStackedBarChart
-        {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
+        {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme, fallbackVSBC)}
         legendProps={multiSelectLegendProps}
         componentRef={chartRef}
         calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
@@ -302,10 +305,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         />
       );
     default:
+      const xValues = (plotlyInput.data[0] as PlotData).x;
       const yValues = (plotlyInput.data[0] as PlotData).y;
-      if (xValues.length > 0 && yValues.length > 0) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const renderLineChart = (chartProps: any) => {
+      if (xValues && yValues && xValues.length > 0 && yValues.length > 0) {
+        const renderLineChartJsx = (chartProps: ILineChartProps) => {
           return (
             <LineChart
               {...{
@@ -319,7 +322,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
             />
           );
         };
-        return checkAndRenderChart(renderLineChart);
+        return checkAndRenderChart(renderLineChartJsx);
       }
       throw new Error('Unsupported chart schema');
   }
