@@ -222,7 +222,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           />
         );
       } else {
-        if (['group', 'overlay'].includes(plotlySchema?.layout?.barmode)) {
+        const containsLines = plotlyInput.data.some(series => series.type === 'scatter');
+        if (['group', 'overlay'].includes(plotlySchema?.layout?.barmode) && !containsLines) {
           return (
             <GroupedVerticalBarChart
               {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap, isDarkTheme)}
