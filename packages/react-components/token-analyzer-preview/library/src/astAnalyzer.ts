@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Project, Node, SourceFile, PropertyAssignment } from 'ts-morph';
+import {Project, Node, SourceFile, PropertyAssignment} from 'ts-morph';
 import {
   TokenReference,
   StyleAnalysis,
@@ -70,6 +70,17 @@ function processStyleProperty(prop: PropertyAssignment, isResetStyles?: Boolean)
         if (Node.isPropertyAssignment(childProp)) {
           const childName = childProp.getName();
           processNode(childProp.getInitializer(), [...path, childName]);
+        }
+      });
+    } else if(Node.isCallExpression(node)){
+      node.getArguments().forEach(argument => {
+        if(Node.isObjectLiteralExpression(argument)) {
+          argument.getProperties().forEach(property => {
+            if (Node.isPropertyAssignment(property)) {
+              const childName = property.getName();
+              processNode(property.getInitializer(), [...path, childName]);
+            }
+          })
         }
       });
     }

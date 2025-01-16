@@ -4,7 +4,7 @@ A static analysis tool that scans your project's style files to track and analyz
 
 ## TODO
 
-- Some property assignments can also be function calls, we need to process this scenario
+- ~~Some property assignments can also be function calls, we need to process this scenario~~
 - `createCustomFocusIndicatorStyle` is a special function that is used throughout the library so we might be able to special case it
 - if we have file imports we need to analyze those such as importing base styles
 - we also need to ensure var analysis is done correctly after the refactor
