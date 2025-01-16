@@ -1,7 +1,6 @@
 import { CartesianChart, IChildProps, IModifiedCartesianChartProps } from '../../components/CommonComponents/index';
 import { IAccessibilityProps, IChart, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { rgb as d3Rgb } from 'd3-color';
 import { classNamesFunction, getId, initializeComponentRef, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -383,12 +382,12 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
            * data point such as x, y , value, rectText property of the rectangle
            */
           const dataPointObject = this._dataSet[yAxisDataPoint][index];
-          let styleRules = '#ffffff';
+          let styleRules = '';
           let foregroundColor = this.props.theme!.semanticColors.bodyText;
           if (this.chartContainer) {
             styleRules = resolveCSSVariables(this.chartContainer!, foregroundColor);
           }
-          const contrastRatio = getColorContrast(d3Rgb(styleRules), d3Rgb(this._colorScale(dataPointObject.value)));
+          const contrastRatio = getColorContrast(styleRules, this._colorScale(dataPointObject.value));
           if (contrastRatio < 3) {
             foregroundColor = this._getInvertedTextColor(foregroundColor);
           }

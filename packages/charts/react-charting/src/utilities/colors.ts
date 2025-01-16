@@ -1,3 +1,5 @@
+import { rgb as d3Rgb } from 'd3-color';
+
 export const DataVizPalette = {
   color1: 'qualitative.1',
   color2: 'qualitative.2',
@@ -159,11 +161,8 @@ const lrgbLuminance = ({ r, g, b }: { r: number; g: number; b: number }): number
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 };
 
-export const getColorContrast = (
-  c1: { r: number; g: number; b: number },
-  c2: { r: number; g: number; b: number },
-): number => {
-  const l1 = lrgbLuminance(rgbLrgb(c1));
-  const l2 = lrgbLuminance(rgbLrgb(c2));
+export const getColorContrast = (c1: string, c2: string): number => {
+  const l1 = lrgbLuminance(rgbLrgb(d3Rgb(c1)));
+  const l2 = lrgbLuminance(rgbLrgb(d3Rgb(c2)));
   return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
 };
