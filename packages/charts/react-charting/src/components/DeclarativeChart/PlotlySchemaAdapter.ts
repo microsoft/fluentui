@@ -199,6 +199,7 @@ export const transformPlotlyJsonToVSBCProps = (
     xAxisTitle,
     yAxisTitle,
     mode: 'plotly',
+    hideTickOverlap: true,
   };
 };
 
@@ -241,6 +242,7 @@ export const transformPlotlyJsonToGVBCProps = (
     xAxisTitle,
     yAxisTitle,
     mode: 'plotly',
+    hideTickOverlap: true,
   };
 };
 
@@ -332,6 +334,7 @@ export const transformPlotlyJsonToVBCProps = (
     xAxisTitle,
     yAxisTitle,
     mode: 'plotly',
+    hideTickOverlap: true,
   };
 };
 
@@ -374,6 +377,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       supportNegativeData: true,
       xAxisTitle,
       yAxisTitle,
+      hideTickOverlap: true,
     } as IAreaChartProps;
   } else {
     return {
@@ -381,6 +385,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       supportNegativeData: true,
       xAxisTitle,
       yAxisTitle,
+      hideTickOverlap: true,
     } as ILineChartProps;
   }
 };
@@ -432,6 +437,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
         width: typeof layout.width === 'number' ? layout.width : 600,
       },
     },
+    hideTickOverlap: true,
   };
 };
 
@@ -480,6 +486,7 @@ export const transformPlotlyJsonToHeatmapProps = (jsonObj: any): IHeatMapChartPr
     xAxisTitle,
     yAxisTitle,
     sortOrder: 'none',
+    hideTickOverlap: true,
   };
 };
 

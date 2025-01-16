@@ -202,6 +202,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       }),
       descriptionMessage: this.state.descriptionMessage,
     };
+    const tickParams = {
+      tickValues: this.props.tickValues,
+      tickFormat: this.props.tickFormat,
+    };
     return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
@@ -230,6 +234,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         legendBars={this._createLegendBars()}
         onChartMouseLeave={this._handleChartMouseLeave}
         ref={this._cartesianChartRef}
+        tickParams={tickParams}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
