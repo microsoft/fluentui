@@ -154,11 +154,13 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   };
 
   const handleIncrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    commit(e, currentValue, textValue);
     internalState.current.spinState = 'up';
     stepValue(e, 'up');
   };
 
   const handleDecrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    commit(e, currentValue, textValue);
     internalState.current.spinState = 'down';
     stepValue(e, 'down');
   };
@@ -231,10 +233,12 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     if (valueChanged) {
       roundedValue = precisionRound(newValue!, precision);
       setCurrentValue(roundedValue);
+      internalState.current.value = roundedValue;
     } else if (displayValueChanged && !isControlled) {
       const nextValue = parseFloat(newDisplayValue as string);
       if (!isNaN(nextValue)) {
         setCurrentValue(precisionRound(nextValue, precision));
+        internalState.current.value = precisionRound(nextValue, precision);
       }
     }
 
