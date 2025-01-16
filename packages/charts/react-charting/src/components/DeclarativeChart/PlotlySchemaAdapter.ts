@@ -49,7 +49,6 @@ const isDate = (value: any): boolean => {
   }
   return true;
 };
-
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 
 const isMonth = (possiblyMonthValue: any, presentYear: number): boolean => {
