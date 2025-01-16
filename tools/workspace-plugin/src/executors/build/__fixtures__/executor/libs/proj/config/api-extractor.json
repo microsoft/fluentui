@@ -6,7 +6,7 @@
   },
   "apiReport": {
     "enabled": true,
-    "reportFileName": "api.md"
+    "reportFileName": "proj"
   },
   "dtsRollup": {
     "enabled": true,
