@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   create-milestone:
+    if: ${{ github.repository_owner == 'microsoft' }}
     name: Create this month's milestone
     runs-on: ubuntu-latest
     steps:

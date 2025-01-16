@@ -50,7 +50,7 @@ const useStyles = makeStyles({
     width: '80px',
   },
   spinButton: {
-    width: '50px',
+    minWidth: '60px',
   },
 });
 
@@ -62,16 +62,24 @@ type RgbKey = 'r' | 'g' | 'b';
 
 export const Default = () => {
   const hexId = useId('hex-input');
+  const alphaId = useId('alpha-input');
 
   const styles = useStyles();
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
   const [hex, setHex] = React.useState(tinycolor(color).toHexString());
   const [rgb, setRgb] = React.useState(tinycolor(color).toRgb());
+  const [alpha, setAlpha] = React.useState(color.a);
+  const [namedColor, setNamedColor] = React.useState('');
 
   const handleChange: ColorPickerProps['onColorChange'] = (_, data) => {
     setColor({ ...data.color, a: data.color.a ?? 1 });
     setHex(tinycolor(data.color).toHexString());
     setRgb(tinycolor(data.color).toRgb());
+    setAlpha(data.color.a ?? 1);
+    const _namedColor = tinycolor(`hsl(${data.color.h},100%,50%)`).toName();
+    if (_namedColor) {
+      setNamedColor(_namedColor);
+    }
   };
 
   const onRgbChange = (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => {
@@ -91,15 +99,40 @@ export const Default = () => {
     }
   };
 
+  const onAlphaChange: SpinButtonProps['onChange'] = React.useCallback(
+    (_ev, data) => {
+      const value = data.value ?? parseFloat(data.displayValue ?? '');
+
+      if (Number.isNaN(value) || value < 0 || value > 1) {
+        return;
+      }
+
+      const newColor = tinycolor({ ...color, a: value });
+
+      if (newColor.isValid) {
+        setColor(newColor.toHsv());
+        setHex(newColor.toHex());
+        setRgb(newColor.toRgb());
+        setAlpha(newColor.a);
+      }
+    },
+    [setAlpha, setRgb, setHex, setColor, color],
+  );
+
+  const colorAriaAttributes = {
+    'aria-label': 'ColorPicker',
+    'aria-roledescription': '2D slider',
+    'aria-valuetext': `Saturation ${color.s * 100}, Brightness: ${color.v * 100}, ${namedColor}`,
+  };
+
   return (
     <div className={styles.example}>
       <ColorPicker color={color} onColorChange={handleChange}>
-        <ColorArea />
-        <ColorSlider />
-        <AlphaSlider />
+        <ColorArea inputX={colorAriaAttributes} inputY={colorAriaAttributes} />
+        <ColorSlider aria-label="Hue" aria-valuetext={`${color.h}°, ${namedColor}`} />
+        <AlphaSlider aria-label="Alpha" aria-valuetext={`${color.a * 100}%`} />
       </ColorPicker>
       <div className={styles.inputFields}>
-        <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toRgbString() }} />
         <InputHexField
           id={hexId}
           value={hex}
@@ -108,6 +141,7 @@ export const Default = () => {
             const newColor = tinycolor(value);
             if (newColor.isValid) {
               setColor(newColor.toHsv());
+              setRgb(newColor.toRgb());
             }
             setHex(oldValue => (HEX_COLOR_REGEX.test(value) ? value : oldValue));
           }}
@@ -115,8 +149,9 @@ export const Default = () => {
         <InputRgbField label="Red" value={rgb.r} name="r" onChange={onRgbChange} />
         <InputRgbField label="Green" value={rgb.g} name="g" onChange={onRgbChange} />
         <InputRgbField label="Blue" value={rgb.b} name="b" onChange={onRgbChange} />
+        <InputAlphaField id={alphaId} value={alpha} onChange={onAlphaChange} />
       </div>
-      <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toHexString() }} />
+      <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toRgbString() }} />
     </div>
   );
 };
@@ -167,6 +202,27 @@ const InputRgbField = ({
         onChange={onChange}
         name={name}
       />
+    </div>
+  );
+};
+
+const InputAlphaField = ({
+  label = 'Alpha',
+  value,
+  onChange,
+  id,
+}: {
+  value: number;
+  label?: string;
+  onChange?: SpinButtonProps['onChange'];
+  id: string;
+}) => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.colorFieldWrapper}>
+      <Label htmlFor={id}>{label}</Label>
+      <SpinButton min={0} max={1} className={styles.spinButton} value={value} step={0.01} onChange={onChange} id={id} />
     </div>
   );
 };

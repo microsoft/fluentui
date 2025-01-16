@@ -610,7 +610,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__3"
+                  id="id__4"
                 >
                   Test Primary Button
                 </span>
@@ -765,7 +765,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__6"
+                  id="id__7"
                 >
                   Test Secondary Button
                 </span>
