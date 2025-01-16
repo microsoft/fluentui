@@ -27,7 +27,6 @@ import {
   ISankeyChartStyleProps,
   ISankeyChartStyles,
 } from './SankeyChart.types';
-import { getColorFromToken } from '../../utilities/colors';
 
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 const PADDING_PERCENTAGE = 0.3;
@@ -1345,9 +1344,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _showTooltip(text: string, checkTrcuncated: boolean, div: any, evt: any) {
     if (checkTrcuncated) {
       //Fixing tooltip position by attaching it to the element rather than page
-      div
-        .style('opacity', 0.9)
-        .style('color', getColorFromToken(this.props.theme!.palette.neutralPrimary, this.props.theme?.isInverted));
+      div.style('opacity', 0.9).style('color', this.props.theme!.palette.neutralPrimary);
       div
         .html(text)
         .style('left', evt.pageX + 'px')
