@@ -1,6 +1,8 @@
 name: VRT CI
 on:
-  pull_request:
+  # TODO: once testing is done enable pull_request trigger again
+  # pull_request:
+  workflow_dispatch:
 
 concurrency:
   # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
@@ -18,6 +20,7 @@ permissions:
 
 jobs:
   generate_vrt_screenshots:
+    if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
     steps:
       - uses: actions/checkout@v4
