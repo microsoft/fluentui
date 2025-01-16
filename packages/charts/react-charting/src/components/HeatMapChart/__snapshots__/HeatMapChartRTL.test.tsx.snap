@@ -834,7 +834,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           />
@@ -864,7 +864,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           />
@@ -894,7 +894,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           />
@@ -924,7 +924,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           />
@@ -1434,7 +1434,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           >
@@ -1466,7 +1466,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           >
@@ -1498,7 +1498,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           >
@@ -1530,7 +1530,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                   pointer-events: none;
                 }
             dominant-baseline="middle"
-            fill="#000000"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           >
