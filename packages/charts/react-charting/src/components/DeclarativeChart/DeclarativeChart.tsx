@@ -95,7 +95,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const theme = useTheme();
   const isDarkTheme = theme?.isInverted ?? false;
   const chartRef = React.useRef<IChart>(null);
-  let fallbackVSBC = false;
 
   if (!isArrayOrTypedArray(selectedLegends)) {
     selectedLegends = [];
@@ -127,6 +126,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     renderChartJsx: (chartProps: ILineChartProps | IAreaChartProps) => JSX.Element,
     isAreaChart: boolean = false,
   ) => {
+    let fallbackVSBC = false;
     const xValues = (plotlyInput.data[0] as PlotData).x;
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
@@ -313,11 +313,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
             <LineChart
               {...{
                 ...chartProps,
-                legendProps: {
-                  onChange: onActiveLegendsChange,
-                  canSelectMultipleLegends: true,
-                  selectedLegends: activeLegends,
-                },
+                legendProps: { ...multiSelectLegendProps },
               }}
             />
           );

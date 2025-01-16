@@ -252,7 +252,7 @@ export const transformPlotlyJsonToVSBCProps = (
       }
       const legend: string = getLegend(series, index1);
       const yVal: number = (series.y?.[index2] as number) ?? 0;
-      if (series.type === 'bar' || series.type === 'scatter' || fallbackVSBC) {
+      if (series.type === 'bar' || series.type === 'scatter' || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].chartData.push({
           legend,
