@@ -130,6 +130,7 @@ export const updateXValues = (xValues: Datum[] | Datum[][] | TypedArray): any[] 
   });
   return xValues;
 };
+
 export const getColor = (
   legendLabel: string,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -233,6 +234,7 @@ export const transformPlotlyJsonToVSBCProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
+  fallbackVSBC?: boolean,
 ): IVerticalStackedBarChartProps => {
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
   let yMaxValue = 0;
@@ -250,7 +252,7 @@ export const transformPlotlyJsonToVSBCProps = (
       }
       const legend: string = getLegend(series, index1);
       const yVal: number = (series.y?.[index2] as number) ?? 0;
-      if (series.type === 'bar' || series.type === 'scatter') {
+      if (series.type === 'bar' || series.type === 'scatter' || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].chartData.push({
           legend,
