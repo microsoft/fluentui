@@ -106,7 +106,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     direction: 'up' | 'down' | 'upPage' | 'downPage',
     startFrom?: string,
   ) => {
-    // commit(e, currentValue, textValue); // Commit the current text value first
     let startValue = internalState.current.value;
     if (startFrom) {
       const num = parseFloat(startFrom);
@@ -155,13 +154,13 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   };
 
   const handleIncrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
-    commit(e, currentValue, textValue); // Commit the current text value first
+    commit(e, currentValue, textValue);
     internalState.current.spinState = 'up';
     stepValue(e, 'up');
   };
 
   const handleDecrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
-    commit(e, currentValue, textValue); // Commit the current text value first
+    commit(e, currentValue, textValue);
     internalState.current.spinState = 'down';
     stepValue(e, 'down');
   };
@@ -234,12 +233,12 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     if (valueChanged) {
       roundedValue = precisionRound(newValue!, precision);
       setCurrentValue(roundedValue);
-      internalState.current.value = roundedValue; // Update internal state
+      internalState.current.value = roundedValue;
     } else if (displayValueChanged && !isControlled) {
       const nextValue = parseFloat(newDisplayValue as string);
       if (!isNaN(nextValue)) {
         setCurrentValue(precisionRound(nextValue, precision));
-        internalState.current.value = precisionRound(nextValue, precision); // Update internal state
+        internalState.current.value = precisionRound(nextValue, precision);
       }
     }
 
