@@ -22,6 +22,7 @@ import {
   transformPlotlyJsonToGaugeProps,
   transformPlotlyJsonToGVBCProps,
   transformPlotlyJsonToVBCProps,
+  isLineData,
 } from './PlotlySchemaAdapter';
 import { LineChart, ILineChartProps } from '../LineChart/index';
 import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
@@ -222,7 +223,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           />
         );
       } else {
-        const containsLines = plotlyInput.data.some(series => series.type === 'scatter');
+        const containsLines = plotlyInput.data.some(
+          series => series.type === 'scatter' || isLineData(series as Partial<PlotData>),
+        );
         if (['group', 'overlay'].includes(plotlySchema?.layout?.barmode) && !containsLines) {
           return (
             <GroupedVerticalBarChart

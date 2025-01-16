@@ -37,6 +37,8 @@ interface ISecondaryYAxisValues {
   secondaryYScaleOptions?: { yMinValue?: number; yMaxValue?: number };
 }
 
+const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'histogram'];
+
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 
@@ -49,7 +51,7 @@ const isMonth = (possiblyMonthValue: any, presentYear: number): boolean => {
 };
 
 const isArrayOfType = (
-  data: Datum[] | Datum[][] | TypedArray,
+  data: Datum[] | Datum[][] | TypedArray | undefined,
   typeCheck: (datum: any, ...args: any[]) => boolean,
   ...args: any[]
 ): boolean => {
@@ -57,11 +59,11 @@ const isArrayOfType = (
     return false;
   }
 
-  if (data.length === 0) {
+  if (data!.length === 0) {
     return false;
   }
 
-  if (Array.isArray(data[0])) {
+  if (Array.isArray(data![0])) {
     // Handle 2D array
     return (data as Datum[][]).every(innerArray => innerArray.every(datum => typeCheck(datum, ...args)));
   } else {
@@ -81,6 +83,16 @@ export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray): boolean =
 export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
   const presentYear = new Date().getFullYear();
   return isArrayOfType(data, isMonth, presentYear);
+};
+
+export const isLineData = (data: Partial<PlotData>): boolean => {
+  return (
+    !SUPPORTED_PLOT_TYPES.includes(`${data.type}`) &&
+    Array.isArray(data.x) &&
+    isArrayOfType(data.y, (value: any) => typeof value === 'number') &&
+    data.x.length > 0 &&
+    data.x.length === data.y!.length
+  );
 };
 
 const invalidate2Dseries = (series: PlotData, chartType: string): void => {
@@ -259,7 +271,7 @@ export const transformPlotlyJsonToVSBCProps = (
           data: yVal,
           color,
         });
-      } else if (series.type === 'scatter' || !!fallbackVSBC) {
+      } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].lineData!.push({
           legend,
