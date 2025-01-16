@@ -37,12 +37,20 @@ interface ISecondaryYAxisValues {
   secondaryYScaleOptions?: { yMinValue?: number; yMaxValue?: number };
 }
 
-const isDate = (value: any): boolean => !isNaN(Date.parse(value));
-const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
+const isDate = (value: any): boolean => {
+  const parsedDate = new Date(Date.parse(value));
+  if (isNaN(parsedDate.getTime())) {
+    return false;
+  }
+  const parsedYear = parsedDate.getFullYear();
+  const yearInString = /\b\d{4}\b/.test(value);
+  if (!yearInString && (parsedYear === 2000 || parsedYear === 2001)) {
+    return false;
+  }
+  return true;
+};
 
-// const isDate = (datum: any): datum is Date => {
-//   return datum instanceof Date;
-// };
+const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 
 const isMonth = (possiblyMonthValue: any, presentYear: number): boolean => {
   return isDate(`${possiblyMonthValue} 01, ${presentYear}`);
