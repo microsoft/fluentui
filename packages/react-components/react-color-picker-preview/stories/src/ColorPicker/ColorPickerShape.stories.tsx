@@ -39,9 +39,9 @@ export const ColorPickerShape = () => {
     <div className={styles.example}>
       <h3>Rounded (default)</h3>
       <ColorPicker color={color} onColorChange={handleChange}>
-        <ColorArea />
-        <ColorSlider />
-        <AlphaSlider />
+        <ColorSlider aria-label="Hue" />
+        <AlphaSlider aria-label="Alpha" />
+        <ColorArea inputX={{ 'aria-label': 'Saturation' }} inputY={{ 'aria-label': 'Brightness' }} />
       </ColorPicker>
       <h3>Square (default)</h3>
       <ColorPicker shape="square" color={color} onColorChange={handleChange}>

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feature: TreeRootReset component",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
