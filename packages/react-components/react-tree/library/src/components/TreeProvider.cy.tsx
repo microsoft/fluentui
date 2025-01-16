@@ -4,15 +4,11 @@ import { Tree } from '../Tree';
 import { TreeItem, TreeItemProps } from '../TreeItem';
 import { TreeItemLayout } from '../TreeItemLayout';
 import { TreeRootReset } from './TreeProvider';
-import {
-  Popover,
-  PopoverTrigger,
-  Button,
-  PopoverSurface,
-  FluentProvider,
-  teamsLightTheme,
-  useRestoreFocusTarget,
-} from '@fluentui/react-components';
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
+import { Button } from '@fluentui/react-button';
+import { FluentProvider } from '@fluentui/react-provider';
+import { teamsLightTheme } from '@fluentui/react-theme';
+import { useRestoreFocusTarget } from '@fluentui/react-tabster';
 
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
