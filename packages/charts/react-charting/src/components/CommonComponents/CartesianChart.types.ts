@@ -236,7 +236,7 @@ export interface ICartesianChartProps {
    * This is a optional parameter if not specified D3 will decide which values appear on the x-axis for you
    * Please look at https://github.com/d3/d3-scale for more information on how D3 decides what data to appear on the axis of chart
    */
-  tickValues?: number[] | Date[];
+  tickValues?: number[] | Date[] | string[];
 
   /**
    * the format for the data on x-axis. For date object this can be specified to your requirement. Eg: '%m/%d', '%d'
@@ -452,6 +452,12 @@ export interface ICartesianChartProps {
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IChart>;
+
+  /**
+   * Determines whether overlapping x-axis tick labels should be hidden.
+   * @default false
+   */
+  hideTickOverlap?: boolean;
 }
 
 export interface IYValueHover {
@@ -551,7 +557,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Tick params are applicable for date axis only.
    */
   tickParams?: {
-    tickValues?: number[] | Date[];
+    tickValues?: number[] | Date[] | string[];
     tickFormat?: string;
   };
 
@@ -684,7 +690,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     isRTL: boolean,
     xAxisType: XAxisTypes,
     barWidth: number,
-    tickValues: Date[] | number[] | undefined,
+    tickValues: Date[] | number[] | string[] | undefined,
     shiftX: number,
   ) => IDomainNRange;
 

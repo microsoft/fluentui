@@ -136,6 +136,7 @@ const createXAxisParams = (xAxisParams?: ICreateXAxisParams): utils.IXAxisParams
   return {
     xAxisElement,
     containerHeight: 100,
+    containerWidth: 100,
     ...xAxisParams,
     domainNRangeValues: {
       dStartValue: 0,
@@ -170,7 +171,7 @@ const matchResult = (result: any) => {
 describe('createNumericXAxis', () => {
   it('should render the x-axis labels correctly', () => {
     const xAxisParams = createXAxisParams();
-    utils.createNumericXAxis(xAxisParams, utils.ChartTypes.VerticalBarChart);
+    utils.createNumericXAxis(xAxisParams, {}, utils.ChartTypes.VerticalBarChart);
     expect(xAxisParams.xAxisElement).toMatchSnapshot();
   });
 
@@ -179,7 +180,7 @@ describe('createNumericXAxis', () => {
       domainNRangeValues: { dStartValue: 0.243, dEndValue: 0.433 },
       showRoundOffXTickValues: true,
     });
-    const result = utils.createNumericXAxis(xAxisParams, utils.ChartTypes.VerticalBarChart);
+    const result = utils.createNumericXAxis(xAxisParams, {}, utils.ChartTypes.VerticalBarChart);
     matchResult(convertXAxisResultToJson(result));
   });
 
@@ -187,19 +188,19 @@ describe('createNumericXAxis', () => {
   // Tick padding refers to the space between a tick mark and its corresponding tick label.
   it('should render the x-axis labels correctly for specific tick size and padding values', () => {
     const xAxisParams = createXAxisParams({ xAxistickSize: 10, tickPadding: 5 });
-    utils.createNumericXAxis(xAxisParams, utils.ChartTypes.VerticalBarChart);
+    utils.createNumericXAxis(xAxisParams, {}, utils.ChartTypes.VerticalBarChart);
     expect(xAxisParams.xAxisElement).toMatchSnapshot();
   });
 
   it('should create the x-axis labels correctly for a specific number of ticks', () => {
     const xAxisParams = createXAxisParams({ xAxisCount: 3 });
-    const result = utils.createNumericXAxis(xAxisParams, utils.ChartTypes.VerticalBarChart);
+    const result = utils.createNumericXAxis(xAxisParams, {}, utils.ChartTypes.VerticalBarChart);
     matchResult(convertXAxisResultToJson(result, false, xAxisParams.xAxisCount));
   });
 
   it('should render the x-axis labels correctly for horizontal bar chart with axis', () => {
     const xAxisParams = createXAxisParams();
-    utils.createNumericXAxis(xAxisParams, utils.ChartTypes.HorizontalBarChartWithAxis);
+    utils.createNumericXAxis(xAxisParams, {}, utils.ChartTypes.HorizontalBarChartWithAxis);
     expect(xAxisParams.xAxisElement).toMatchSnapshot();
   });
 });
