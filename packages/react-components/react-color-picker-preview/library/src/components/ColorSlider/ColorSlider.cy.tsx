@@ -54,9 +54,9 @@ describe('ColorSlider', () => {
       cy.realPress('ArrowLeft');
       assertSliderValue('104');
       cy.realPress('ArrowRight');
-      cy.get('#color-slider').should('have.attr', 'value', '105');
+      assertSliderValue('105');
       cy.realPress('ArrowUp');
-      cy.get('#color-slider').should('have.attr', 'value', '106');
+      assertSliderValue('106');
       cy.realPress('ArrowDown');
       assertSliderValue('105');
     });
@@ -66,9 +66,9 @@ describe('ColorSlider', () => {
       cy.realPress('Tab');
       cy.realPress('ArrowLeft');
       cy.realPress('ArrowLeft');
-      cy.get('#color-slider').should('have.attr', 'value', '0');
+      assertSliderValue('0');
       cy.realPress('ArrowLeft');
-      cy.get('#color-slider').should('have.attr', 'value', '0');
+      assertSliderValue('0');
       cy.realPress('ArrowRight');
       assertSliderValue('1');
     });
@@ -77,11 +77,11 @@ describe('ColorSlider', () => {
       cy.get('#before').focus();
       cy.realPress('Tab');
       cy.realPress('ArrowRight');
-      cy.get('#color-slider').should('have.attr', 'value', '359');
+      assertSliderValue('359');
       cy.realPress('ArrowRight');
-      cy.get('#color-slider').should('have.attr', 'value', '360');
+      assertSliderValue('360');
       cy.realPress('ArrowRight');
-      cy.get('#color-slider').should('have.attr', 'value', '360');
+      assertSliderValue('360');
       cy.realPress('ArrowLeft');
       assertSliderValue('359');
     });

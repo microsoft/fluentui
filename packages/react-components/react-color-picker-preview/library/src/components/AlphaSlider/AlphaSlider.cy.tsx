@@ -22,7 +22,7 @@ const AlphaSliderExample = (props: AlphaSliderProps) => {
         onChange={(_, data) => setColor(data.color)}
         id="alpha-slider"
         aria-label="Alpha"
-        aria-valuetext={`${calculateTransparencyValue(transparency, color.a)}%`}
+        aria-valuetext={`${calculateTransparencyValue(transparency, color.a ?? 1)}%`}
         transparency={transparency}
       />
     </>
@@ -57,9 +57,9 @@ describe('AlphaSlider', () => {
         cy.realPress('ArrowLeft');
         assertSliderValue('48');
         cy.realPress('ArrowRight');
-        cy.get('#alpha-slider').should('have.attr', 'value', '49');
+        assertSliderValue('49');
         cy.realPress('ArrowUp');
-        cy.get('#alpha-slider').should('have.attr', 'value', '50');
+        assertSliderValue('50');
         cy.realPress('ArrowDown');
         assertSliderValue('49');
       });
@@ -70,9 +70,9 @@ describe('AlphaSlider', () => {
         cy.realPress('Tab');
         cy.realPress('ArrowLeft');
         cy.realPress('ArrowLeft');
-        cy.get('#alpha-slider').should('have.attr', 'value', '0');
+        assertSliderValue('0');
         cy.realPress('ArrowLeft');
-        cy.get('#alpha-slider').should('have.attr', 'value', '0');
+        assertSliderValue('0');
         cy.realPress('ArrowRight');
         assertSliderValue('1');
       });
@@ -82,11 +82,11 @@ describe('AlphaSlider', () => {
         cy.get('#before').focus();
         cy.realPress('Tab');
         cy.realPress('ArrowRight');
-        cy.get('#alpha-slider').should('have.attr', 'value', '99');
+        assertSliderValue('99');
         cy.realPress('ArrowRight');
-        cy.get('#alpha-slider').should('have.attr', 'value', '100');
+        assertSliderValue('100');
         cy.realPress('ArrowRight');
-        cy.get('#alpha-slider').should('have.attr', 'value', '100');
+        assertSliderValue('100');
         cy.realPress('ArrowLeft');
         assertSliderValue('99');
       });
@@ -102,9 +102,9 @@ describe('AlphaSlider', () => {
       cy.realPress('ArrowLeft');
       assertSliderValue('28');
       cy.realPress('ArrowRight');
-      cy.get('#alpha-slider').should('have.attr', 'value', '29');
+      assertSliderValue('29');
       cy.realPress('ArrowUp');
-      cy.get('#alpha-slider').should('have.attr', 'value', '30');
+      assertSliderValue('30');
       cy.realPress('ArrowDown');
       assertSliderValue('29');
     });
@@ -115,9 +115,9 @@ describe('AlphaSlider', () => {
       cy.realPress('Tab');
       cy.realPress('ArrowLeft');
       cy.realPress('ArrowLeft');
-      cy.get('#alpha-slider').should('have.attr', 'value', '0');
+      assertSliderValue('0');
       cy.realPress('ArrowLeft');
-      cy.get('#alpha-slider').should('have.attr', 'value', '0');
+      assertSliderValue('0');
       cy.realPress('ArrowRight');
       assertSliderValue('1');
     });
@@ -127,11 +127,11 @@ describe('AlphaSlider', () => {
       cy.get('#before').focus();
       cy.realPress('Tab');
       cy.realPress('ArrowRight');
-      cy.get('#alpha-slider').should('have.attr', 'value', '99');
+      assertSliderValue('99');
       cy.realPress('ArrowRight');
-      cy.get('#alpha-slider').should('have.attr', 'value', '100');
+      assertSliderValue('100');
       cy.realPress('ArrowRight');
-      cy.get('#alpha-slider').should('have.attr', 'value', '100');
+      assertSliderValue('100');
       cy.realPress('ArrowLeft');
       assertSliderValue('99');
     });
@@ -141,6 +141,7 @@ describe('AlphaSlider', () => {
     it('has correct a11y attributes', () => {
       mountFluent(<AlphaSliderExample color={{ h: 324, s: 0.5, v: 0.5 }} />);
       cy.get('#alpha-slider').should('have.attr', 'aria-label', 'Alpha');
+      assertSliderValue('100');
       cy.get('#alpha-slider').realClick();
       assertSliderValue('50');
     });
