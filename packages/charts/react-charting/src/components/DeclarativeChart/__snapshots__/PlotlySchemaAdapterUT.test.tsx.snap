@@ -356,6 +356,7 @@ Object {
       ],
     },
   ],
+  "mode": "plotly",
   "xAxisTitle": "Votes",
   "yAxisTitle": "Framework",
 }
@@ -4832,6 +4833,7 @@ Object {
       "y": 2,
     },
   ],
+  "mode": "plotly",
   "supportNegativeData": true,
   "xAxisTitle": "",
   "yAxisTitle": "",
@@ -4924,6 +4926,7 @@ Object {
       "xAxisPoint": "May",
     },
   ],
+  "mode": "plotly",
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 3400,

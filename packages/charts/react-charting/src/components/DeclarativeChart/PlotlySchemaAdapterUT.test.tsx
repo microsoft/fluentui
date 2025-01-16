@@ -21,7 +21,9 @@ const colorMap = new Map<string, string>();
 
 describe('isDate', () => {
   test('Should return true when input array contains Date objects', () => {
-    expect(isDateArray([date, date.getDate() + 1, date.getDate() + 2])).toBe(true);
+    const nextDay = new Date(date);
+    nextDay.setDate(date.getDate() + 1);
+    expect(isDateArray([date, nextDay])).toBe(true);
   });
 
   test('Should return false when input array contains numeric data', () => {
