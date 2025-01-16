@@ -1306,6 +1306,7 @@ export {
   useTreeItem_unstable,
   useTreeStyles_unstable,
   useTree_unstable,
+  TreeRootReset,
 } from '@fluentui/react-tree';
 
 export type {
