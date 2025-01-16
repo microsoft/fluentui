@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(DocumentCardPreview): add name as image alt",
+  "packageName": "@fluentui/react",
+  "email": "pieter.heemeryck@delaware.pro",
+  "dependentChangeType": "patch"
+}
