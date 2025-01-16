@@ -355,9 +355,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   };
 
   private _getInvertedTextColor = (color: string): string => {
-    return color === this.props.theme!.palette.white
-      ? this.props.theme!.palette.black
-      : this.props.theme!.palette.white;
+    return color === this.props.theme!.semanticColors.bodyText
+      ? this.props.theme!.semanticColors.bodyBackground
+      : this.props.theme!.semanticColors.bodyText;
   };
 
   /**
@@ -384,7 +384,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
            */
           const dataPointObject = this._dataSet[yAxisDataPoint][index];
           let styleRules = '#ffffff';
-          let foregroundColor = this.props.theme!.palette.white;
+          let foregroundColor = this.props.theme!.semanticColors.bodyText;
           if (this.chartContainer) {
             styleRules = resolveCSSVariables(this.chartContainer!, foregroundColor);
           }

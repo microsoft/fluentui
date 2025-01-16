@@ -142,6 +142,7 @@ export const getColorFromToken = (token: string, isDarkTheme: boolean = false): 
   return token;
 };
 
+//For reference to how these numbers are calculated, refer https://www.w3.org/TR/WCAG/#dfn-contrast-ratio
 const rgbLrgb1 = (v: number): number => {
   return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
 };
