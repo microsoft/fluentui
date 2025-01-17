@@ -11,22 +11,18 @@ export const sliderClassNames: SlotClassNames<SliderSlots> = {
   input: 'fui-Slider__input',
 };
 
-// Internal CSS variables
-const thumbSizeVar = `--fui-Slider__thumb--size`;
-const innerThumbRadiusVar = `--fui-Slider__inner-thumb--radius`;
-const thumbPositionVar = `--fui-Slider__thumb--position`;
-const railSizeVar = `--fui-Slider__rail--size`;
-const railColorVar = `--fui-Slider__rail--color`;
-const progressColorVar = `--fui-Slider__progress--color`;
-const thumbColorVar = `--fui-Slider__thumb--color`;
-
 export const sliderCSSVars = {
   sliderDirectionVar: `--fui-Slider--direction`,
+  sliderInnerThumbRadiusVar: `--fui-Slider__inner-thumb--radius`,
   sliderProgressVar: `--fui-Slider--progress`,
+  sliderProgressColorVar: `--fui-Slider__progress--color`,
+  sliderRailSizeVar: `--fui-Slider__rail--size`,
+  sliderRailColorVar: `--fui-Slider__rail--color`,
   sliderStepsPercentVar: `--fui-Slider--steps-percent`,
+  sliderThumbColorVar: `--fui-Slider__thumb--color`,
+  sliderThumbSizeVar: `--fui-Slider__thumb--size`,
+  sliderThumbPositionVar: `--fui-Slider__thumb--position`,
 };
-
-const { sliderDirectionVar, sliderStepsPercentVar, sliderProgressVar } = sliderCSSVars;
 
 /**
  * Styles for the root slot
@@ -41,64 +37,64 @@ const useRootStyles = makeStyles({
   },
 
   small: {
-    [thumbSizeVar]: '16px',
-    [innerThumbRadiusVar]: '5px',
-    [railSizeVar]: '2px',
+    [sliderCSSVars.sliderThumbSizeVar]: '16px',
+    [sliderCSSVars.sliderInnerThumbRadiusVar]: '5px',
+    [sliderCSSVars.sliderRailSizeVar]: '2px',
     minHeight: '24px',
   },
 
   medium: {
-    [thumbSizeVar]: '20px',
-    [innerThumbRadiusVar]: '6px',
-    [railSizeVar]: '4px',
+    [sliderCSSVars.sliderThumbSizeVar]: '20px',
+    [sliderCSSVars.sliderInnerThumbRadiusVar]: '6px',
+    [sliderCSSVars.sliderRailSizeVar]: '4px',
     minHeight: '32px',
   },
 
   horizontal: {
     minWidth: '120px',
     // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
-    gridTemplateRows: `1fr var(${thumbSizeVar}) 1fr`,
-    gridTemplateColumns: `1fr calc(100% - var(${thumbSizeVar})) 1fr`,
+    gridTemplateRows: `1fr var(${sliderCSSVars.sliderThumbSizeVar}) 1fr`,
+    gridTemplateColumns: `1fr calc(100% - var(${sliderCSSVars.sliderThumbSizeVar})) 1fr`,
   },
 
   vertical: {
     minHeight: '120px',
     // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
-    gridTemplateRows: `1fr calc(100% - var(${thumbSizeVar})) 1fr`,
-    gridTemplateColumns: `1fr var(${thumbSizeVar}) 1fr`,
+    gridTemplateRows: `1fr calc(100% - var(${sliderCSSVars.sliderThumbSizeVar})) 1fr`,
+    gridTemplateColumns: `1fr var(${sliderCSSVars.sliderThumbSizeVar}) 1fr`,
   },
 
   enabled: {
-    [railColorVar]: tokens.colorNeutralStrokeAccessible,
-    [progressColorVar]: tokens.colorCompoundBrandBackground,
-    [thumbColorVar]: tokens.colorCompoundBrandBackground,
+    [sliderCSSVars.sliderRailColorVar]: tokens.colorNeutralStrokeAccessible,
+    [sliderCSSVars.sliderProgressColorVar]: tokens.colorCompoundBrandBackground,
+    [sliderCSSVars.sliderThumbColorVar]: tokens.colorCompoundBrandBackground,
     ':hover': {
-      [thumbColorVar]: tokens.colorCompoundBrandBackgroundHover,
-      [progressColorVar]: tokens.colorCompoundBrandBackgroundHover,
+      [sliderCSSVars.sliderThumbColorVar]: tokens.colorCompoundBrandBackgroundHover,
+      [sliderCSSVars.sliderProgressColorVar]: tokens.colorCompoundBrandBackgroundHover,
     },
     ':active': {
-      [thumbColorVar]: tokens.colorCompoundBrandBackgroundPressed,
-      [progressColorVar]: tokens.colorCompoundBrandBackgroundPressed,
+      [sliderCSSVars.sliderThumbColorVar]: tokens.colorCompoundBrandBackgroundPressed,
+      [sliderCSSVars.sliderProgressColorVar]: tokens.colorCompoundBrandBackgroundPressed,
     },
     '@media (forced-colors: active)': {
-      [railColorVar]: 'CanvasText',
-      [thumbColorVar]: 'Highlight',
-      [progressColorVar]: 'Highlight',
+      [sliderCSSVars.sliderRailColorVar]: 'CanvasText',
+      [sliderCSSVars.sliderThumbColorVar]: 'Highlight',
+      [sliderCSSVars.sliderProgressColorVar]: 'Highlight',
       ':hover': {
-        [thumbColorVar]: 'Highlight',
-        [progressColorVar]: 'Highlight',
+        [sliderCSSVars.sliderThumbColorVar]: 'Highlight',
+        [sliderCSSVars.sliderProgressColorVar]: 'Highlight',
       },
     },
   },
 
   disabled: {
-    [thumbColorVar]: tokens.colorNeutralForegroundDisabled,
-    [railColorVar]: tokens.colorNeutralBackgroundDisabled,
-    [progressColorVar]: tokens.colorNeutralForegroundDisabled,
+    [sliderCSSVars.sliderThumbColorVar]: tokens.colorNeutralForegroundDisabled,
+    [sliderCSSVars.sliderRailColorVar]: tokens.colorNeutralBackgroundDisabled,
+    [sliderCSSVars.sliderProgressColorVar]: tokens.colorNeutralForegroundDisabled,
     '@media (forced-colors: active)': {
-      [railColorVar]: 'GrayText',
-      [thumbColorVar]: 'GrayText',
-      [progressColorVar]: 'GrayText',
+      [sliderCSSVars.sliderRailColorVar]: 'GrayText',
+      [sliderCSSVars.sliderThumbColorVar]: 'GrayText',
+      [sliderCSSVars.sliderProgressColorVar]: 'GrayText',
     },
   },
 
@@ -128,10 +124,10 @@ const useRailStyles = makeStyles({
     forcedColorAdjust: 'none',
     // Background gradient represents the progress of the slider
     backgroundImage: `linear-gradient(
-      var(${sliderDirectionVar}),
-      var(${progressColorVar}) 0%,
-      var(${progressColorVar}) var(${sliderProgressVar}),
-      var(${railColorVar}) var(${sliderProgressVar})
+      var(${sliderCSSVars.sliderDirectionVar}),
+      var(${sliderCSSVars.sliderProgressColorVar}) 0%,
+      var(${sliderCSSVars.sliderProgressColorVar}) var(${sliderCSSVars.sliderProgressVar}),
+      var(${sliderCSSVars.sliderRailColorVar}) var(${sliderCSSVars.sliderProgressVar})
     )`,
     outlineWidth: '1px',
     outlineStyle: 'solid',
@@ -141,20 +137,20 @@ const useRailStyles = makeStyles({
       position: 'absolute',
       // Repeating gradient represents the steps if provided
       backgroundImage: `repeating-linear-gradient(
-        var(${sliderDirectionVar}),
+        var(${sliderCSSVars.sliderDirectionVar}),
         #0000 0%,
-        #0000 calc(var(${sliderStepsPercentVar}) - 1px),
-        ${tokens.colorNeutralBackground1} calc(var(${sliderStepsPercentVar}) - 1px),
-        ${tokens.colorNeutralBackground1} var(${sliderStepsPercentVar})
+        #0000 calc(var(${sliderCSSVars.sliderStepsPercentVar}) - 1px),
+        ${tokens.colorNeutralBackground1} calc(var(${sliderCSSVars.sliderStepsPercentVar}) - 1px),
+        ${tokens.colorNeutralBackground1} var(${sliderCSSVars.sliderStepsPercentVar})
       )`,
       // force steps to use HighlightText for high contrast mode
       '@media (forced-colors: active)': {
         backgroundImage: `repeating-linear-gradient(
-          var(${sliderDirectionVar}),
+          var(${sliderCSSVars.sliderDirectionVar}),
           #0000 0%,
-          #0000 calc(var(${sliderStepsPercentVar}) - 1px),
-          HighlightText calc(var(${sliderStepsPercentVar}) - 1px),
-          HighlightText var(${sliderStepsPercentVar})
+          #0000 calc(var(${sliderCSSVars.sliderStepsPercentVar}) - 1px),
+          HighlightText calc(var(${sliderCSSVars.sliderStepsPercentVar}) - 1px),
+          HighlightText var(${sliderCSSVars.sliderStepsPercentVar})
         )`,
       },
     },
@@ -162,19 +158,19 @@ const useRailStyles = makeStyles({
 
   horizontal: {
     width: '100%',
-    height: `var(${railSizeVar})`,
+    height: `var(${sliderCSSVars.sliderRailSizeVar})`,
     '::before': {
       left: '-1px',
       right: '-1px',
-      height: `var(${railSizeVar})`,
+      height: `var(${sliderCSSVars.sliderRailSizeVar})`,
     },
   },
 
   vertical: {
-    width: `var(${railSizeVar})`,
+    width: `var(${sliderCSSVars.sliderRailSizeVar})`,
     height: '100%',
     '::before': {
-      width: `var(${railSizeVar})`,
+      width: `var(${sliderCSSVars.sliderRailSizeVar})`,
       top: '-1px',
       bottom: '-1px',
     },
@@ -189,20 +185,20 @@ const useThumbStyles = makeStyles({
     // Ensure the thumb stays within the track boundaries.
     // When the value is at 0% or 100%, the distance from the track edge
     // to the thumb center equals the inner thumb radius.
-    [`${thumbPositionVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${sliderProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
+    [`${sliderCSSVars.sliderThumbPositionVar}`]: `clamp(var(${sliderCSSVars.sliderInnerThumbRadiusVar}), var(${sliderCSSVars.sliderProgressVar}), calc(100% - var(${sliderCSSVars.sliderInnerThumbRadiusVar})))`,
     gridRowStart: '2',
     gridRowEnd: '2',
     gridColumnStart: '2',
     gridColumnEnd: '2',
     position: 'absolute',
-    width: `var(${thumbSizeVar})`,
-    height: `var(${thumbSizeVar})`,
+    width: `var(${sliderCSSVars.sliderThumbSizeVar})`,
+    height: `var(${sliderCSSVars.sliderThumbSizeVar})`,
     pointerEvents: 'none',
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
     borderRadius: tokens.borderRadiusCircular,
-    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
-    backgroundColor: `var(${thumbColorVar})`,
+    boxShadow: `0 0 0 calc(var(${sliderCSSVars.sliderThumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
+    backgroundColor: `var(${sliderCSSVars.sliderThumbColorVar})`,
     '::before': {
       position: 'absolute',
       top: '0px',
@@ -212,21 +208,21 @@ const useThumbStyles = makeStyles({
       borderRadius: tokens.borderRadiusCircular,
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1}`,
+      border: `calc(var(${sliderCSSVars.sliderThumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1}`,
     },
   },
   disabled: {
     '::before': {
-      border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralForegroundDisabled}`,
+      border: `calc(var(${sliderCSSVars.sliderThumbSizeVar}) * .05) solid ${tokens.colorNeutralForegroundDisabled}`,
     },
   },
   horizontal: {
     transform: 'translateX(-50%)',
-    left: `var(${thumbPositionVar})`,
+    left: `var(${sliderCSSVars.sliderThumbPositionVar})`,
   },
   vertical: {
     transform: 'translateY(50%)',
-    bottom: `var(${thumbPositionVar})`,
+    bottom: `var(${sliderCSSVars.sliderThumbPositionVar})`,
   },
 });
 
@@ -248,12 +244,12 @@ const useInputStyles = makeStyles({
     cursor: 'default',
   },
   horizontal: {
-    height: `var(${thumbSizeVar})`,
+    height: `var(${sliderCSSVars.sliderThumbSizeVar})`,
     width: '100%',
   },
   vertical: {
     height: '100%',
-    width: `var(${thumbSizeVar})`,
+    width: `var(${sliderCSSVars.sliderThumbSizeVar})`,
     '-webkit-appearance': 'slider-vertical',
   },
 });
