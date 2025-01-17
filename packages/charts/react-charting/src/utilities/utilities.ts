@@ -191,7 +191,7 @@ export function createNumericXAxis(
   };
   if (hideTickOverlap && typeof xAxisCount === 'undefined') {
     const longestLabelWidth =
-      calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '.fui-cart__xAxis text') + 20;
+      calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 20;
     const [start, end] = xAxisScale.range();
     tickCount = Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth));
   }
@@ -307,7 +307,7 @@ export function createDateXAxis(
   };
   if (hideTickOverlap && typeof xAxisCount === 'undefined') {
     const longestLabelWidth =
-      calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '.fui-cart__xAxis text') + 40;
+      calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 40;
     const [start, end] = xAxisScale.range();
     tickCount = Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth));
   }
@@ -362,7 +362,7 @@ export function createStringXAxis(
   let tickValues = (tickParams.tickValues as string[] | undefined) ?? dataset;
   if (hideTickOverlap) {
     let nonOverlappingTickValues = [];
-    const tickSizes = tickValues.map(value => calculateLongestLabelWidth([value], '.fui-cart__xAxis text'));
+    const tickSizes = tickValues.map(value => calculateLongestLabelWidth([value], '[class^="xAxis-"] text'));
     // for LTR
     let start = 0;
     let end = containerWidth;
