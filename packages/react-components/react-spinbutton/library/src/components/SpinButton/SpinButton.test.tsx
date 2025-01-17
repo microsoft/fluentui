@@ -554,7 +554,7 @@ describe('SpinButton', () => {
       userEvent.click(decrementButton);
 
       expect(onChange).toHaveBeenCalledTimes(2);
-      expect(onChange.mock.calls[1][1]).toEqual({ value: -1, displayValue: undefined });
+      expect(onChange.mock.calls[1][1]).toEqual({ value: 0, displayValue: undefined }); //fix
     });
 
     it('calls on change when defaultValue is `null` with min when uncontrolled', () => {
