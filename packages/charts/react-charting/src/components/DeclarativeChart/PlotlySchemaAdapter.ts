@@ -24,10 +24,11 @@ import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
-import { DataVizPalette, getNextColor } from '../../utilities/colors';
+import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
+import { timeParse } from 'd3-time-format';
 
 const isDate = (value: any): boolean => !isNaN(Date.parse(value));
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
@@ -35,9 +36,10 @@ export const isDateArray = (array: any[]): boolean => isArrayOrTypedArray(array)
 export const isNumberArray = (array: any[]): boolean => isArrayOrTypedArray(array) && array.every(isNumber);
 export const isMonthArray = (array: any[]): boolean => {
   if (array && array.length > 0) {
-    const presentYear = new Date().getFullYear();
+    const parseFullMonth = timeParse('%B');
+    const parseShortMonth = timeParse('%b');
     return array.every(possiblyMonthValue => {
-      return isDate(`${possiblyMonthValue} 01, ${presentYear}`);
+      return parseFullMonth(possiblyMonthValue) !== null || parseShortMonth(possiblyMonthValue) !== null;
     });
   }
   return false;
@@ -147,7 +149,7 @@ export const transformPlotlyJsonToDonutProps = (
     height,
     innerRadius,
     hideLabels,
-    showLabelsInPercent: firstData.textinfo ? firstData.textinfo === 'percent' : true,
+    showLabelsInPercent: firstData.textinfo ? ['percent', 'label+percent'].includes(firstData.textinfo) : true,
     styles,
   };
 };
@@ -404,7 +406,9 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
         };
       });
     })
-    .flat();
+    .flat()
+    //reversing the order to invert the Y bars order as required by plotly.
+    .reverse();
 
   const chartHeight: number = typeof layout.height === 'number' ? layout.height : 450;
   const margin: number = typeof layout.margin?.l === 'number' ? layout.margin?.l : 0;
@@ -579,11 +583,11 @@ export const transformPlotlyJsonToGaugeProps = (
     const diff = firstData.value - firstData.delta.reference;
     if (diff >= 0) {
       sublabel = `\u25B2 ${diff}`;
-      const color = getColor(firstData.delta.increasing?.color || '', colorMap, isDarkTheme);
+      const color = getColorFromToken(DataVizPalette.success, isDarkTheme);
       sublabelColor = color;
     } else {
       sublabel = `\u25BC ${Math.abs(diff)}`;
-      const color = getColor(firstData.delta.decreasing?.color || '', colorMap, isDarkTheme);
+      const color = getColorFromToken(DataVizPalette.error, isDarkTheme);
       sublabelColor = color;
     }
   }

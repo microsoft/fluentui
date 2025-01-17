@@ -102,11 +102,7 @@ describe('isMonthArray', () => {
     expect(isMonthArray([date, date.getDate() + 1, date.getDate() + 2])).toBe(false);
   });
 
-  test('Should return true when input array contains months data', () => {
-    expect(isMonthArray([10, 11, 1])).toBe(true);
-  });
-
-  test('Should return false when input array contains numeric data(apart from months 1 to 12)', () => {
+  test('Should return false when input array contains numeric data', () => {
     expect(isMonthArray([20, 30, 40])).toBe(false);
   });
 

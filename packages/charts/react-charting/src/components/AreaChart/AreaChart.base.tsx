@@ -450,7 +450,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       });
       stackedData.push(currentStack);
     });
-    this._isMultiStackChart = stackedData && stackedData.length > 1 ? true : false;
+    this._isMultiStackChart = !!(this.props.legendProps?.selectedLegends
+      ? stackedData?.length >= 1
+      : stackedData?.length > 1);
     return {
       stackedData,
       maxOfYVal,

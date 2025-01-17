@@ -4187,7 +4187,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
             class=
 
                 {
-                  fill: #9373c0;
+                  fill: #107c10;
                   font-size: 12px;
                   font-weight: 600;
                 }
