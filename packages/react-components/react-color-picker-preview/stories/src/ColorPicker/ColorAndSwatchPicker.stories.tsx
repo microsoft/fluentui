@@ -98,11 +98,11 @@ export const ColorAndSwatchPickerExample = () => {
   return (
     <div className={styles.example}>
       <ColorPicker color={color} onColorChange={handleChange}>
-        <ColorArea />
+        <ColorArea inputX={{ 'aria-label': 'Saturation' }} inputY={{ 'aria-label': 'Brightness' }} />
         <div className={styles.row}>
           <div className={styles.sliders}>
-            <ColorSlider />
-            <AlphaSlider />
+            <ColorSlider aria-label="Hue" />
+            <AlphaSlider aria-label="Alpha" />
           </div>
           <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toRgbString() }} />
         </div>

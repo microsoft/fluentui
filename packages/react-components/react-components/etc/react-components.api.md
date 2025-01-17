@@ -1368,6 +1368,7 @@ import { TreeOpenChangeData } from '@fluentui/react-tree';
 import { TreeOpenChangeEvent } from '@fluentui/react-tree';
 import { TreeProps } from '@fluentui/react-tree';
 import { TreeProvider } from '@fluentui/react-tree';
+import { TreeRootReset } from '@fluentui/react-tree';
 import { TreeSelectionValue } from '@fluentui/react-tree';
 import { TreeSlots } from '@fluentui/react-tree';
 import { TreeState } from '@fluentui/react-tree';
@@ -4551,6 +4552,8 @@ export { TreeOpenChangeEvent }
 export { TreeProps }
 
 export { TreeProvider }
+
+export { TreeRootReset }
 
 export { TreeSelectionValue }
 

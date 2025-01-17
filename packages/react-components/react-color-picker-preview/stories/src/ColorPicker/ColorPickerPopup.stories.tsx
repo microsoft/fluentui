@@ -58,11 +58,11 @@ export const ColorPickerPopup = () => {
 
         <PopoverSurface>
           <ColorPicker color={previewColor} onColorChange={handleChange}>
-            <ColorArea />
+            <ColorArea inputX={{ 'aria-label': 'Saturation' }} inputY={{ 'aria-label': 'Brightness' }} />
             <div className={styles.row}>
               <div className={styles.sliders}>
-                <ColorSlider />
-                <AlphaSlider />
+                <ColorSlider aria-label="Hue" />
+                <AlphaSlider aria-label="Alpha" />
               </div>
               <div className={styles.previewColor} style={{ backgroundColor: tinycolor(previewColor).toRgbString() }} />
             </div>
