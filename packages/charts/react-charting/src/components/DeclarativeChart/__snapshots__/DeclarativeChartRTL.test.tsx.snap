@@ -4142,7 +4142,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
             transform="rotate(151.2, 0, 0)"
           >
             <path
-              aria-label="Current value: 420"
+              aria-label="Current value: 84%"
               class=
 
                   {
@@ -4180,7 +4180,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
               x="0"
               y="0"
             >
-              420
+              84%
             </text>
           </g>
           <text

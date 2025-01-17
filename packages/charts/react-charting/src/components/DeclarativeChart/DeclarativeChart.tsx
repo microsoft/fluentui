@@ -22,6 +22,7 @@ import {
   transformPlotlyJsonToGaugeProps,
   transformPlotlyJsonToGVBCProps,
   transformPlotlyJsonToVBCProps,
+  isLineData,
 } from './PlotlySchemaAdapter';
 import { LineChart, ILineChartProps } from '../LineChart/index';
 import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
@@ -178,6 +179,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     (opts?: IImageExportOptions) => {
       return toImage(chartRef.current?.chartContainer, {
         background: theme.semanticColors.bodyBackground,
+        scale: 3,
         ...opts,
       });
     },
@@ -205,7 +207,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           />
         );
       } else {
-        if (['group', 'overlay'].includes(plotlySchema?.layout?.barmode)) {
+        const containsLines = plotlyInput.data.some(
+          series => series.type === 'scatter' || isLineData(series as Partial<PlotData>),
+        );
+        if (['group', 'overlay'].includes(plotlySchema?.layout?.barmode) && !containsLines) {
           return (
             <GroupedVerticalBarChart
               {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap, isDarkTheme)}
