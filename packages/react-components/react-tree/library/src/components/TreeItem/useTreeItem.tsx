@@ -7,6 +7,7 @@ import {
   slot,
   elementContains,
   useMergedRefs,
+  isHTMLElement,
 } from '@fluentui/react-utilities';
 import type { TreeItemProps, TreeItemState, TreeItemValue } from './TreeItem.types';
 import { Space } from '@fluentui/keyboard-keys';
@@ -149,10 +150,55 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
 
   const { findFirstFocusable } = useFocusFinders();
 
+  const handleTreeGridActionsKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (!event.currentTarget.contains(event.target as Node) || !treeItemRef.current) {
+      return;
+    }
+    switch (event.key) {
+      case treeDataTypes.ArrowLeft: {
+        // TODO: this should be included in requestTreeResponse navigation signature
+        treeItemRef.current?.focus();
+        return;
+      }
+      case treeDataTypes.ArrowUp: {
+        requestTreeResponse({
+          requestType: 'navigate',
+          event,
+          value,
+          itemType,
+          parentValue: undefined,
+          type: event.key,
+          target: treeItemRef.current,
+        });
+        return;
+      }
+      case treeDataTypes.ArrowDown: {
+        if (!isHTMLElement(event.target) || event.target.hasAttribute('aria-haspopup')) {
+          return;
+        }
+        requestTreeResponse({
+          requestType: 'navigate',
+          event,
+          value,
+          itemType,
+          parentValue: undefined,
+          type: event.key,
+          target: treeItemRef.current,
+        });
+      }
+    }
+  };
+
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     onKeyDown?.(event);
+    if (event.isDefaultPrevented()) {
+      return;
+    }
+    if (actionsRef.current && actionsRef.current.contains(event.target as Node)) {
+      handleTreeGridActionsKeyDown(event);
+    }
     // Ignore keyboard events that do not originate from the current tree item.
-    if (event.isDefaultPrevented() || event.currentTarget !== event.target) {
+    if (event.currentTarget !== event.target) {
       return;
     }
     switch (event.key) {

@@ -19,7 +19,6 @@ import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
 import { Radio, RadioProps } from '@fluentui/react-radio';
 import { TreeItemChevron } from '../TreeItemChevron';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { treeDataTypes } from '../../utils/tokens';
 
 /**
  * Create the state required to render TreeItemLayout.
@@ -145,14 +144,7 @@ export const useTreeItemLayout_unstable = (
     : undefined;
   delete actions?.visible;
   delete actions?.onVisibilityChange;
-  const handleTreeGridActionsKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (isResolvedShorthand(props.actions)) {
-      props.actions.onKeyDown?.(event);
-    }
-    if (event.key === treeDataTypes.ArrowLeft && event.currentTarget.contains(event.target as Node)) {
-      treeItemRef.current?.focus();
-    }
-  });
+
   const actionsRefs = useMergedRefs(actions?.ref, actionsRef, actionsRefInternal);
   const handleActionsBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.actions)) {
@@ -169,9 +161,6 @@ export const useTreeItemLayout_unstable = (
   if (actions) {
     actions.ref = actionsRefs;
     actions.onBlur = handleActionsBlur;
-    if (navigationMode === 'treegrid') {
-      actions.onKeyDown = handleTreeGridActionsKeyDown;
-    }
   }
 
   const hasActions = Boolean(props.actions);
