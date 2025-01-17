@@ -1433,3 +1433,12 @@ export function areArraysEqual(arr1?: string[], arr2?: string[]): boolean {
   }
   return true;
 }
+
+const cssVarRegExp = /var\((--[a-zA-Z0-9\-]+)\)/g;
+
+export function resolveCSSVariables(chartContainer: HTMLElement, styleRules: string) {
+  const containerStyles = getComputedStyle(chartContainer);
+  return styleRules.replace(cssVarRegExp, (match, group1) => {
+    return containerStyles.getPropertyValue(group1);
+  });
+}
