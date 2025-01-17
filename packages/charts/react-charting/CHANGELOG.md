@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 13 Jan 2025 07:21:22 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2025 07:21:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.41)
+
+Fri, 17 Jan 2025 07:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.40..@fluentui/react-charting_v5.23.41)
+
+### Patches
+
+- Make Dark mode text visible ([PR #33671](https://github.com/microsoft/fluentui/pull/33671) by 74965306+Anush2303@users.noreply.github.com)
+- Bump @fluentui/theme-samples to v8.7.196 ([commit](https://github.com/microsoft/fluentui/commit/baf887d95f91874c814a7cae749c20e797f828be) by beachball)
+- Bump @fluentui/react to v8.122.7 ([commit](https://github.com/microsoft/fluentui/commit/baf887d95f91874c814a7cae749c20e797f828be) by beachball)
 
 ## [5.23.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.40)
 

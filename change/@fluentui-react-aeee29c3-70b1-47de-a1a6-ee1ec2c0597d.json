@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add missing data-id attribute to close button in TagItem",
-  "packageName": "@fluentui/react",
-  "email": "kmatejka@microsoft.com",
-  "dependentChangeType": "patch"
-}

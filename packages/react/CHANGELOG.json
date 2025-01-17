@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 17 Jan 2025 07:21:31 GMT",
+      "tag": "@fluentui/react_v8.122.7",
+      "version": "8.122.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "kmatejka@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e9706f78650b2a72e09dca1c5f69f23f4967f33b",
+            "comment": "fix: Passing rest of ITagItemSuggestionProps to the underlying component."
+          },
+          {
+            "author": "706967+KevinTCoughlin@users.noreply.github.com",
+            "package": "@fluentui/react",
+            "commit": "6e8378b3d1ef9b27ed944b5eae855c59ce348836",
+            "comment": "Delete border property from ms-PositioningContainer-layerHost containing typo"
+          },
+          {
+            "author": "kmatejka@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "614e8b594da0eec4104f9fcaa034a4352fee5c74",
+            "comment": "add missing data-id attribute to close button in TagItem"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jan 2025 07:21:22 GMT",
       "tag": "@fluentui/react_v8.122.6",
       "version": "8.122.6",

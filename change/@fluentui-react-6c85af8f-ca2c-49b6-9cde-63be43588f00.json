@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Delete border property from ms-PositioningContainer-layerHost containing typo",
-  "packageName": "@fluentui/react",
-  "email": "706967+KevinTCoughlin@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
