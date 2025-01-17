@@ -56,7 +56,7 @@ const useStyles = makeStyles({
 
 const HEX_COLOR_REGEX = /^#?([0-9A-Fa-f]{0,6})$/;
 const NUMBER_REGEX = /^\d+$/;
-const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
+const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
 
 type RgbKey = 'r' | 'g' | 'b';
 
@@ -120,7 +120,6 @@ export const Default = () => {
   );
 
   const colorAriaAttributes = {
-    'aria-label': 'ColorPicker',
     'aria-roledescription': '2D slider',
     'aria-valuetext': `Saturation ${color.s * 100}, Brightness: ${color.v * 100}, ${namedColor}`,
   };
@@ -128,7 +127,10 @@ export const Default = () => {
   return (
     <div className={styles.example}>
       <ColorPicker color={color} onColorChange={handleChange}>
-        <ColorArea inputX={colorAriaAttributes} inputY={colorAriaAttributes} />
+        <ColorArea
+          inputX={{ 'aria-label': 'Saturation', ...colorAriaAttributes }}
+          inputY={{ 'aria-label': 'Brightness', ...colorAriaAttributes }}
+        />
         <ColorSlider aria-label="Hue" aria-valuetext={`${color.h}°, ${namedColor}`} />
         <AlphaSlider aria-label="Alpha" aria-valuetext={`${color.a * 100}%`} />
       </ColorPicker>

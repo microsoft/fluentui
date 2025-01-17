@@ -68,6 +68,10 @@ const Grow = createMotionComponent(({ element }) => ({
     { opacity: 0, maxHeight: `${element.scrollHeight / 2}px` },
   ],
   iterations: Infinity,
+
+  reducedMotion: {
+    iterations: 1,
+  },
 }));
 
 export const CreateMotionComponentFunctions = () => {
