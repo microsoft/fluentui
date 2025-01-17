@@ -25,7 +25,7 @@ import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib
 import { ThemeProvider as DeprecatedThemeProvider } from '@fluentui/foundation-legacy';
 
 // Workaround to prevent errors on usage of ThemeProvider, without disabling all deprecation checks
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 const ThemeProvider = DeprecatedThemeProvider;
 
 const regionStyles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => ({
@@ -65,7 +65,7 @@ export class ThemingSchemesVariantExample extends React.Component<{}, IThemingEx
   };
 
   public render(): JSX.Element {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     return <Customizer settings={{ theme: schemeThemeVariants }}>{this._renderSchemedComponents()}</Customizer>;
   }
 
@@ -149,7 +149,7 @@ export class ThemingSchemesVariantExample extends React.Component<{}, IThemingEx
   };
 }
 
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 const onCommandClick = (ev: any, item?: ICommandBarItemProps) => console.log(item && (item.text || item.name));
 const items: ICommandBarItemProps[] = [
   {

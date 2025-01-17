@@ -280,7 +280,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
   };
 
   private _onWrapperKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.enter:
         ev.preventDefault();
@@ -297,7 +297,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
 
   private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => {
     return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       switch (ev.which) {
         case KeyCodes.enter:
           callback();

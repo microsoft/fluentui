@@ -3,7 +3,7 @@ import type { AccordionItemContextValues, AccordionItemState } from './Accordion
 import { AccordionItemContextValue } from '../../contexts/accordionItem';
 
 export function useAccordionItemContextValues_unstable(state: AccordionItemState): AccordionItemContextValues {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const { disabled, open, value, onHeaderClick } = state;
   const accordionItem = React.useMemo<AccordionItemContextValue>(
     () => ({ disabled, open, value, onHeaderClick }),

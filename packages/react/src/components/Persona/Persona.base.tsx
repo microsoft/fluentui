@@ -44,7 +44,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
      * Deprecation helper for getting text.
      */
     const getText = (): string => {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       return props.text || props.primaryText || '';
     };
 
@@ -130,7 +130,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
       initialsTextColor,
       isOutOfOffice,
       onPhotoLoadingStateChange,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       onRenderCoin,
       onRenderInitials,
       presence,
@@ -192,14 +192,14 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
       >
         {onRenderPersonaCoin(personaCoinProps, onRenderPersonaCoin)}
         {
-          /* eslint-disable deprecation/deprecation */
+          /* eslint-disable @typescript-eslint/no-deprecated */
 
           (!hidePersonaDetails ||
             size === PersonaSize.size8 ||
             size === PersonaSize.size10 ||
             size === PersonaSize.tiny) &&
             personaDetails
-          /* eslint-enable deprecation/deprecation */
+          /* eslint-enable @typescript-eslint/no-deprecated */
         }
       </div>
     );
