@@ -141,5 +141,9 @@ export const styles = css`
     :host(${checkedState}:active) .checked-indicator {
       background-color: ButtonFace;
     }
+    :host(:disabled) .checked-indicator,
+    :host(${checkedState}:disabled) .checked-indicator {
+      background-color: GrayText;
+    }
   `),
 );

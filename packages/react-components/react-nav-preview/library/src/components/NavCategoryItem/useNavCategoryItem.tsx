@@ -22,7 +22,7 @@ export const useNavCategoryItem_unstable = (
 
   const { open, value } = useNavCategoryContext_unstable();
 
-  const { onRequestNavCategoryItemToggle, selectedCategoryValue, size = 'medium' } = useNavContext_unstable();
+  const { onRequestNavCategoryItemToggle, selectedCategoryValue, density = 'medium' } = useNavContext_unstable();
 
   const onNavCategoryItemClick = useEventCallback(
     mergeCallbacks(onClick, event =>
@@ -64,6 +64,6 @@ export const useNavCategoryItem_unstable = (
     icon: slot.optional(icon, {
       elementType: 'span',
     }),
-    size,
+    density,
   };
 };

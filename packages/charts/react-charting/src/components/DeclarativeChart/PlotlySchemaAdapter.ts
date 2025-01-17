@@ -200,6 +200,7 @@ export const transformPlotlyJsonToVSBCProps = (
     chartTitle,
     xAxisTitle,
     yAxisTitle,
+    mode: 'plotly',
   };
 };
 
@@ -241,6 +242,7 @@ export const transformPlotlyJsonToGVBCProps = (
     chartTitle,
     xAxisTitle,
     yAxisTitle,
+    mode: 'plotly',
   };
 };
 
@@ -331,6 +333,7 @@ export const transformPlotlyJsonToVBCProps = (
     chartTitle,
     xAxisTitle,
     yAxisTitle,
+    mode: 'plotly',
   };
 };
 

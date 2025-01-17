@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { linkBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
 import { isConformant } from '../../testing/isConformant';
 import { Link } from './Link';
 import { LinkProps } from './Link.types';
+import { Enter } from '@fluentui/keyboard-keys';
 
 describe('Link', () => {
   isConformant<LinkProps>({
@@ -139,6 +141,63 @@ describe('Link', () => {
       );
       expect(result.queryAllByRole('link')).toHaveLength(0);
       expect(result.queryAllByRole('presentation')).toHaveLength(1);
+    });
+
+    describe('when rendered as span', () => {
+      it('should call onClick by pressing Enter', () => {
+        const onClick = jest.fn();
+
+        render(
+          <Link as="span" onClick={onClick}>
+            This is a buttonlink
+          </Link>,
+        );
+
+        userEvent.tab();
+        userEvent.keyboard('{Enter}');
+
+        expect(onClick).toHaveBeenCalledTimes(1);
+      });
+
+      it('should trigger onClick once via onKeyDown', () => {
+        const onClick = jest.fn();
+
+        render(
+          <Link
+            as="span"
+            onClick={onClick}
+            onKeyDown={ev => {
+              if (ev.key === Enter) {
+                ev.currentTarget.click();
+              }
+            }}
+          >
+            This is a buttonlink
+          </Link>,
+        );
+
+        userEvent.tab();
+        userEvent.keyboard('{Enter}');
+
+        expect(onClick).toHaveBeenCalledTimes(1);
+      });
+
+      it('should not trigger onClick', () => {
+        const onClick = jest.fn();
+        const onKeyDown = jest.fn();
+
+        render(
+          <Link as="span" onClick={onClick} onKeyDown={onKeyDown}>
+            This is a buttonlink
+          </Link>,
+        );
+
+        userEvent.tab();
+        userEvent.keyboard('{Enter}');
+
+        expect(onClick).toHaveBeenCalledTimes(0);
+        expect(onKeyDown).toHaveBeenCalledTimes(1);
+      });
     });
   });
 });

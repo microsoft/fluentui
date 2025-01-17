@@ -21,3 +21,13 @@ export const TreeProvider = (props: React.ProviderProps<TreeContextValue | Subtr
 };
 
 TreeProvider.displayName = 'TreeProvider';
+
+export type TreeRootResetProps = {
+  children?: React.ReactNode;
+};
+
+export const TreeRootReset = (props: TreeRootResetProps) => (
+  <SubtreeContext.Provider value={undefined as unknown as SubtreeContextValue}>
+    {props.children}
+  </SubtreeContext.Provider>
+);

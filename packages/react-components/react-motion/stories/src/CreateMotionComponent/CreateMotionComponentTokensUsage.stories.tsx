@@ -45,6 +45,10 @@ const BackgroundChange = createMotionComponent({
   ],
   duration: 3000,
   iterations: Infinity,
+
+  reducedMotion: {
+    iterations: 1,
+  },
 });
 
 export const CreateMotionComponentTokensUsage = () => {

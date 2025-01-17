@@ -22,7 +22,7 @@ No matter what theme is used, the component styles are always the same. The only
 
 Those tokens are resolved to CSS variables. The `FluentProvider` component is responsible for setting the values of the CSS variables in DOM and changing them when the theme changes. When the theme is switched, only the variables are changed, all styles remain the same.
 
-Place a `<FluentProvider />` at the root of your app and pass a theme to the `theme` prop. The provider will render a `div` and set all tokens as CSS variables on that element. The provider also propagates CCS variables to React portals created with [Portal component](?path=/docs/components-portal--default).
+Place a `<FluentProvider />` at the root of your app and pass a theme to the `theme` prop. The provider will render a `div` and set all tokens as CSS variables on that element. The provider also propagates CSS variables to React portals created with [Portal component](?path=/docs/components-portal--default).
 
 ```jsx
 import { FluentProvider, teamsLightTheme } from '@fluentui/react-components';

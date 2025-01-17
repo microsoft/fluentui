@@ -66,6 +66,10 @@ const FadeEnter = createMotionComponent({
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
   duration: motionTokens.durationSlow,
   iterations: Infinity,
+
+  reducedMotion: {
+    iterations: 1,
+  },
 });
 
 export const CreateMotionComponentImperativeRefPlayState = () => {
