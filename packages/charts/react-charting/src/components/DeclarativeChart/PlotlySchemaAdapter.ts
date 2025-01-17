@@ -344,6 +344,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
   const { data, layout } = jsonObj;
+  let mode: string = 'tonexty';
 
   const chartData: ILineChartPoints[] = data.map((series: any, index: number) => {
     const xValues = series.x;
@@ -352,6 +353,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isXNumber = isNumberArray(xValues);
     const legend: string = series.name || `Series ${index + 1}`;
     const lineColor = getColor(legend, colorMap, isDarkTheme);
+    mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
 
     return {
       legend,
@@ -376,6 +378,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       supportNegativeData: true,
       xAxisTitle,
       yAxisTitle,
+      mode,
     } as IAreaChartProps;
   } else {
     return {
