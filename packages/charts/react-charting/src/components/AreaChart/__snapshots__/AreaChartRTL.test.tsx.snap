@@ -1463,7 +1463,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
             fill="green"
             fill-opacity="0.7"
             id="0-graph-areaChart_0"
-            opacity="0.5"
+            opacity="0.8"
           />
           <path
             d="M40,174.05C61.852,166.15,83.704,158.25,105.556,158.25C127.407,158.25,149.259,217.5,171.111,217.5C192.963,217.5,214.815,217.5,236.667,217.5C258.519,217.5,280.37,206.967,302.222,201.7C324.074,196.433,345.926,185.9,367.778,185.9C389.63,185.9,411.481,221.45,433.333,221.45C455.185,221.45,477.037,166.15,498.889,166.15C520.741,166.15,542.593,229.35,564.444,229.35C586.296,229.35,608.148,134.55,630,39.75"
@@ -1478,7 +1478,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
             fill="yellow"
             fill-opacity="0.7"
             id="1-graph-areaChart_0"
-            opacity="0.5"
+            opacity="0.8"
           />
           <path
             d="M40,138.5C61.852,128.625,83.704,118.75,105.556,118.75C127.407,118.75,149.259,126.65,171.111,126.65C192.963,126.65,214.815,99,236.667,99C258.519,99,280.37,217.5,302.222,217.5C324.074,217.5,345.926,99,367.778,99C389.63,99,411.481,122.7,433.333,122.7C455.185,122.7,477.037,114.8,498.889,99C520.741,83.2,542.593,20,564.444,20C586.296,20,608.148,59.5,630,99"
@@ -1493,7 +1493,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
             fill="blue"
             fill-opacity="0.7"
             id="2-graph-areaChart_0"
-            opacity="0.5"
+            opacity="0.8"
           />
           <g
             aria-label="legend1, series 1 of 3 with 10 data points."
