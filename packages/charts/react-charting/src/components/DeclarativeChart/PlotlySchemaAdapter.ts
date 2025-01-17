@@ -51,24 +51,24 @@ const isMonth = (possiblyMonthValue: any, presentYear: number): boolean => {
 };
 
 const isArrayOfType = (
-  data: Datum[] | Datum[][] | TypedArray | undefined,
+  plotCoordinates: Datum[] | Datum[][] | TypedArray | undefined,
   typeCheck: (datum: any, ...args: any[]) => boolean,
   ...args: any[]
 ): boolean => {
-  if (!isArrayOrTypedArray(data)) {
+  if (!isArrayOrTypedArray(plotCoordinates)) {
     return false;
   }
 
-  if (data!.length === 0) {
+  if (plotCoordinates!.length === 0) {
     return false;
   }
 
-  if (Array.isArray(data![0])) {
+  if (Array.isArray(plotCoordinates![0])) {
     // Handle 2D array
-    return (data as Datum[][]).every(innerArray => innerArray.every(datum => typeCheck(datum, ...args)));
+    return (plotCoordinates as Datum[][]).every(innerArray => innerArray.every(datum => typeCheck(datum, ...args)));
   } else {
     // Handle 1D array
-    return (data as Datum[]).every(datum => typeCheck(datum, ...args));
+    return (plotCoordinates as Datum[]).every(datum => typeCheck(datum, ...args));
   }
 };
 
