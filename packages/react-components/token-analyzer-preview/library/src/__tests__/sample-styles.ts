@@ -21,12 +21,14 @@ const useStyles = makeStyles({
 export const Component = () => {
   const styles = useStyles();
 
-  const className = mergeClasses(
+  const state = {root:{}}
+
+  state.root.className = mergeClasses(
     styles.root,
     size === 'large' && styles.large,
     disabled && styles.disabled
   );
 
-  return <div className={className} />;
+  return <div className={state.root.className} />;
 };
 `;

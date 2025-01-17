@@ -36,8 +36,9 @@ describe('Token Analyzer', () => {
 
     const { styles, metadata } = analysis;
 
+    console.log(styles);
     // Verify root styles
-    expect(styles.root.tokens).toContainEqual(
+    expect(styles.useStyles.root.tokens).toContainEqual(
       expect.objectContaining({
         property: 'color',
         token: 'tokens.colorNeutralForeground1',
@@ -45,8 +46,14 @@ describe('Token Analyzer', () => {
     );
 
     // Verify metadata for conditional styles
-    expect(metadata.styleConditions).toHaveProperty('large');
-    expect(metadata.styleConditions).toHaveProperty('disabled');
-    expect(metadata.styleConditions.large.conditions).toContain("size === 'large'");
+    expect(metadata.styleConditions['styles.large']).toEqual({
+      conditions: ["size === 'large'"],
+      slotName: 'root',
+    });
+    expect(metadata.styleConditions['styles.disabled']).toEqual({
+      conditions: ['disabled'],
+      slotName: 'root',
+    });
+    expect(metadata.styleConditions['styles.large'].conditions).toContain("size === 'large'");
   });
 });

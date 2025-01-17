@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import {Project, Node, SourceFile, PropertyAssignment} from 'ts-morph';
+import { Project, Node, SourceFile, PropertyAssignment } from 'ts-morph';
 import {
   TokenReference,
   StyleAnalysis,
@@ -72,15 +72,50 @@ function processStyleProperty(prop: PropertyAssignment, isResetStyles?: Boolean)
           processNode(childProp.getInitializer(), [...path, childName]);
         }
       });
-    } else if(Node.isCallExpression(node)){
+    } else if (Node.isCallExpression(node) && node.getExpression().getText() === 'createCustomFocusIndicatorStyle') {
+      const focus = `:focus`;
+      const focusWithin = `:focus-within`;
+      let nestedModifier = focus;
+
+      const passedTokens = node.getArguments()[0];
+      const passedOptions = node.getArguments()[1];
+
+      if (passedOptions && Node.isObjectLiteralExpression(passedOptions)) {
+        passedOptions.getProperties().forEach(property => {
+          if (Node.isPropertyAssignment(property)) {
+            const optionName = property.getName();
+            if (optionName === 'selector') {
+              const selectorType = property.getInitializer()?.getText();
+              if (selectorType === 'focus') {
+                nestedModifier = focus;
+              } else if (selectorType === 'focus-within') {
+                nestedModifier = focusWithin;
+              }
+            }
+          }
+        });
+      }
+
+      if (passedTokens && Node.isObjectLiteralExpression(passedTokens)) {
+        passedTokens.getProperties().forEach(property => {
+          if (Node.isPropertyAssignment(property)) {
+            const childName = property.getName();
+            console.log('Get child name:', childName);
+            processNode(property.getInitializer(), [...path, nestedModifier, childName]);
+          }
+        });
+      }
+    } else if (Node.isCallExpression(node)) {
+      // Generic handling of functions that are not whitelisted - stored passed tokens under function name
+      const functionName = node.getExpression().getText();
       node.getArguments().forEach(argument => {
-        if(Node.isObjectLiteralExpression(argument)) {
+        if (Node.isObjectLiteralExpression(argument)) {
           argument.getProperties().forEach(property => {
             if (Node.isPropertyAssignment(property)) {
               const childName = property.getName();
-              processNode(property.getInitializer(), [...path, childName]);
+              processNode(property.getInitializer(), [...path, functionName, childName]);
             }
-          })
+          });
         }
       });
     }

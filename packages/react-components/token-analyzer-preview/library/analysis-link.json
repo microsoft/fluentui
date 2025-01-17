@@ -2,32 +2,59 @@
   "library/src/components/Link/useLinkStyles.styles.ts": {
     "styles": {
       "useStyles": {
+        "focusIndicator": {
+          "tokens": [],
+          "nested": {
+            ":focus": {
+              "tokens": [
+                {
+                  "property": "textDecorationColor",
+                  "token": "tokens.colorStrokeFocus2",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": [
+            "styles"
+          ]
+        },
         "root": {
           "tokens": [
             {
               "property": "color",
               "token": "tokens.colorBrandForegroundLink",
-              "path": ["color"]
+              "path": [
+                "color"
+              ]
             },
             {
               "property": "fontFamily",
               "token": "tokens.fontFamilyBase",
-              "path": ["fontFamily"]
+              "path": [
+                "fontFamily"
+              ]
             },
             {
               "property": "fontSize",
               "token": "tokens.fontSizeBase300",
-              "path": ["fontSize"]
+              "path": [
+                "fontSize"
+              ]
             },
             {
               "property": "fontWeight",
               "token": "tokens.fontWeightRegular",
-              "path": ["fontWeight"]
+              "path": [
+                "fontWeight"
+              ]
             },
             {
               "property": "textDecorationThickness",
               "token": "tokens.strokeWidthThin",
-              "path": ["textDecorationThickness"]
+              "path": [
+                "textDecorationThickness"
+              ]
             }
           ],
           "nested": {
@@ -50,14 +77,18 @@
               ]
             }
           },
-          "assignedVariables": ["styles"]
+          "assignedVariables": [
+            "styles"
+          ]
         },
         "subtle": {
           "tokens": [
             {
               "property": "color",
               "token": "tokens.colorNeutralForeground2",
-              "path": ["color"]
+              "path": [
+                "color"
+              ]
             }
           ],
           "nested": {
@@ -80,14 +111,18 @@
               ]
             }
           },
-          "assignedVariables": ["styles"]
+          "assignedVariables": [
+            "styles"
+          ]
         },
         "disabled": {
           "tokens": [
             {
               "property": "color",
               "token": "tokens.colorNeutralForegroundDisabled",
-              "path": ["color"]
+              "path": [
+                "color"
+              ]
             }
           ],
           "nested": {
@@ -110,14 +145,18 @@
               ]
             }
           },
-          "assignedVariables": ["styles"]
+          "assignedVariables": [
+            "styles"
+          ]
         },
         "inverted": {
           "tokens": [
             {
               "property": "color",
               "token": "tokens.colorBrandForegroundInverted",
-              "path": ["color"]
+              "path": [
+                "color"
+              ]
             }
           ],
           "nested": {
@@ -140,7 +179,9 @@
               ]
             }
           },
-          "assignedVariables": ["styles"]
+          "assignedVariables": [
+            "styles"
+          ]
         }
       }
     },
@@ -163,27 +204,39 @@
           "slotName": "root"
         },
         "styles.href": {
-          "conditions": ["root.as === 'a' && root.href"],
+          "conditions": [
+            "root.as === 'a' && root.href"
+          ],
           "slotName": "root"
         },
         "styles.button": {
-          "conditions": ["root.as === 'button'"],
+          "conditions": [
+            "root.as === 'button'"
+          ],
           "slotName": "root"
         },
         "styles.subtle": {
-          "conditions": ["appearance === 'subtle'"],
+          "conditions": [
+            "appearance === 'subtle'"
+          ],
           "slotName": "root"
         },
         "styles.inverted": {
-          "conditions": ["backgroundAppearance === 'inverted'"],
+          "conditions": [
+            "backgroundAppearance === 'inverted'"
+          ],
           "slotName": "root"
         },
         "styles.inline": {
-          "conditions": ["inline"],
+          "conditions": [
+            "inline"
+          ],
           "slotName": "root"
         },
         "styles.disabled": {
-          "conditions": ["disabled"],
+          "conditions": [
+            "disabled"
+          ],
           "slotName": "root"
         }
       }
