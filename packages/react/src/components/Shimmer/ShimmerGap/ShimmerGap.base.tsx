@@ -8,7 +8,7 @@ const getClassNames = classNamesFunction<IShimmerGapStyleProps, IShimmerGapStyle
  * {@docCategory Shimmer}
  */
 export const ShimmerGapBase: React.FunctionComponent<IShimmerGapProps> = props => {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const { height, styles, width = '10px', borderStyle, theme } = props;
 
   const classNames = getClassNames(styles!, {

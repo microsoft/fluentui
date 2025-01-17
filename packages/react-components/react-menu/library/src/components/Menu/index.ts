@@ -3,7 +3,7 @@ export type {
   MenuContextValues,
   MenuOpenChangeData,
   MenuOpenEvent,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   MenuOpenEvents,
   MenuProps,
   MenuSlots,

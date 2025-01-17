@@ -26,7 +26,7 @@ export const useTableSelectionCell_unstable = (
     type = 'checkbox',
     checked = false,
     subtle = false,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     hidden = false,
     invisible = false,
   } = props;
