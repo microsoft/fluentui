@@ -73,6 +73,7 @@ export interface IAreaChartProps extends ICartesianChartProps {
 
   /**
    * The prop used to define the Y axis mode (tonexty or tozeroy)
+   * If mode is undefined, behaviour will be like tonexty mode
    */
   mode?: 'tozeroy' | 'tonexty';
 }

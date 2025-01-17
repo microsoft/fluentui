@@ -518,7 +518,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         dataSet.push(singleDataset);
       });
 
-      // get keys from dataset, used to create stacked data
+      // get keys from dataset, used to render data
       const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
       const keys: string[] = [];
       for (let i = 0; i < keysLength - 1; i++) {
@@ -744,7 +744,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._data.forEach((singleStackedData: Array<any>, index: number) => {
-      const layerOpacity = this.props.mode === 'tozeroy' ? 0.5 : this._opacity[index];
+      const layerOpacity = this.props.mode === 'tozeroy' ? 0.8 : this._opacity[index];
       graph.push(
         <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
           {this.props.enableGradient && (
