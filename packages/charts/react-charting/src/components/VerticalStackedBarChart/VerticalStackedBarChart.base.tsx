@@ -60,6 +60,7 @@ import {
   formatDate,
   getNextGradient,
   areArraysEqual,
+  calculateLongestLabelWidth,
 } from '../../utilities/index';
 import { IChart } from '../../types/index';
 
@@ -1199,6 +1200,8 @@ export class VerticalStackedBarChartBase
     /** Total width available to render the bars */
     const totalWidth =
       containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+    /** Rate at which the space between the bars changes wrt the bar width */
+    const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
 
     if (this._xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(this.props.xAxisOuterPadding, this.props.xAxisPadding)) {
@@ -1206,8 +1209,6 @@ export class VerticalStackedBarChartBase
         // to adjust the space before the first bar and after the last bar.
         this._domainMargin = 0;
       } else if (this.props.barWidth !== 'auto') {
-        /** Rate at which the space between the bars changes wrt the bar width */
-        const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
         // Update the bar width so that when CartesianChart rerenders,
         // the following calculations don't use the previous bar width.
         this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
@@ -1218,6 +1219,19 @@ export class VerticalStackedBarChartBase
           // Center align the chart by setting equal left and right margins for domain
           this._domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
         }
+      } else if (this.props.mode === 'plotly' && this._xAxisLabels.length > 1) {
+        // Calculate the remaining width after rendering bars at their maximum allowable width
+        const bandwidth = totalWidth / (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate);
+        const barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, bandwidth);
+        let reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * barWidth;
+        const margin1 = (totalWidth - reqWidth) / 2;
+
+        // Calculate the remaining width after accounting for the space required to render x-axis labels
+        const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
+        reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
+        const margin2 = (totalWidth - reqWidth) / 2;
+
+        this._domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
     } else {
       const data = (this.props.data?.map(point => point.xAxisPoint) as number[] | Date[] | undefined) || [];
@@ -1240,7 +1254,7 @@ export class VerticalStackedBarChartBase
     return !(
       this.props.data &&
       this.props.data.length > 0 &&
-      this.props.data.filter(item => item.chartData.length === 0).length === 0
+      this.props.data.some(item => item.chartData.length > 0 || (item.lineData && item.lineData.length > 0))
     );
   }
 
