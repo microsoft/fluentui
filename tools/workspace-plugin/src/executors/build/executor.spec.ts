@@ -270,13 +270,19 @@ describe('Build Executor', () => {
 
     const publicApiFilePath = join(workspaceRoot, 'libs/proj/src/index.ts');
     const originalApiContent = readFileSync(publicApiFilePath);
-    appendFileSync(publicApiFilePath, `export const hello='new public api';\n`);
+    const existingEnvVariableCi = process.env.CI;
 
-    // force api-extractor to generate api.md and not fail on Local/CI
-    process.env.__FORCE_API_MD_UPDATE__ = '';
+    appendFileSync(publicApiFilePath, `export const hello='new public api';\n`);
+    // force api-extractor CI behaviors to fail on both Local/CI
+    process.env.CI = 'true';
+
     const outputFailed = await executor(options, context);
     expect(outputFailed.success).toBe(false);
 
+    // cleanup
     writeFileSync(publicApiFilePath, originalApiContent, 'utf-8');
+    if (existingEnvVariableCi) {
+      process.env.CI = existingEnvVariableCi;
+    }
   }, 60000);
 });

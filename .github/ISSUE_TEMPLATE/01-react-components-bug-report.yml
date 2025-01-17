@@ -26,8 +26,15 @@ body:
         - Breadcrumb
         - Button
         - Card
+        - CardFooter
+        - CardHeader
+        - CardPreview
+        - Carousel
+        - CarouselNav
         - Checkbox
         - Combobox
+        - CompoundButton
+        - Counter Badge
         - DataGrid
         - Dialog
         - Divider
@@ -38,14 +45,19 @@ body:
         - Image
         - InfoLabel
         - Input
+        - InteractionTag
         - Label
         - Link
+        - List
         - Menu
+        - MenuButton
+        - MenuList
         - MessageBar
         - Overflow
         - Persona
         - Popover
         - Portal
+        - PresenceBadge
         - ProgressBar
         - RadioGroup
         - Rating
@@ -56,32 +68,37 @@ body:
         - Slider
         - SpinButton
         - Spinner
+        - SplitButton
         - SwatchPicker
         - Switch
-        - Table
         - TabList
+        - Table
         - Tag
+        - TagGroup
         - TagPicker
         - TeachingPopover
         - Text
         - Textarea
         - Toast
+        - ToggleButton
         - Toolbar
         - Tooltip
         - Tree
+        - ColorPicker (Preview)
+        - Nav (Preview)
+        - Virtualizer (Preview)
+        - VirtualizerScrollView (Preview)
+        - VirtualizerScrollViewDynamic (Preview)
         - Calendar (Compat)
         - DatePicker (Compat)
         - TimePicker (Compat)
-        - Carousel (Preview)
-        - List (Preview)
-        - Nav (Preview)
-        - Virtualizer (Preview)
-        - Motion
         - Icons
-        - Theme/Tokens
-        - Utilities (utilities we provide besides Components, e.g. apis from react-utilities)
-        - Migration Shims v0
-        - Migration Shims v8
+        - Migration Shims V0
+        - Migration Shims V8
+        - Motion
+        - Theme
+        - Tokens
+        - Utilities
         - Other...
     validations:
       required: true

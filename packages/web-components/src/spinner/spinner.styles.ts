@@ -93,12 +93,12 @@ export const styles = css`
 
   .start {
     overflow: hidden;
-    inset-inline-end: 50%;
+    right: 50%;
   }
 
   .end {
     overflow: hidden;
-    inset-inline-start: 50%;
+    left: 50%;
   }
 
   .indicator {
@@ -107,7 +107,7 @@ export const styles = css`
     border-radius: 50%;
     border: var(--indicatorSize) solid transparent;
     border-block-start-color: currentcolor;
-    border-inline-end-color: currentcolor;
+    border-right-color: currentcolor;
   }
 
   :host(${invertedState}) .indicator {
@@ -171,7 +171,7 @@ export const styles = css`
     .indicator {
       border-color: Canvas;
       border-block-start-color: Highlight;
-      border-inline-end-color: Highlight;
+      border-right-color: Highlight;
     }
   `),
 );

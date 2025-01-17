@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Remove deprecation warning from Callout's preventDismissOnResize and similar props",
-  "packageName": "@fluentui/react",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

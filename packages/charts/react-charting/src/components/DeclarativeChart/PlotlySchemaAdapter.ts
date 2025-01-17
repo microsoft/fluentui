@@ -49,6 +49,7 @@ const isDate = (value: any): boolean => {
   }
   return true;
 };
+const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'histogram'];
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 
 const isMonth = (possiblyMonthValue: any, presentYear: number): boolean => {
@@ -56,24 +57,24 @@ const isMonth = (possiblyMonthValue: any, presentYear: number): boolean => {
 };
 
 const isArrayOfType = (
-  data: Datum[] | Datum[][] | TypedArray,
+  plotCoordinates: Datum[] | Datum[][] | TypedArray | undefined,
   typeCheck: (datum: any, ...args: any[]) => boolean,
   ...args: any[]
 ): boolean => {
-  if (!isArrayOrTypedArray(data)) {
+  if (!isArrayOrTypedArray(plotCoordinates)) {
     return false;
   }
 
-  if (data.length === 0) {
+  if (plotCoordinates!.length === 0) {
     return false;
   }
 
-  if (Array.isArray(data[0])) {
+  if (Array.isArray(plotCoordinates![0])) {
     // Handle 2D array
-    return (data as Datum[][]).every(innerArray => innerArray.every(datum => typeCheck(datum, ...args)));
+    return (plotCoordinates as Datum[][]).every(innerArray => innerArray.every(datum => typeCheck(datum, ...args)));
   } else {
     // Handle 1D array
-    return (data as Datum[]).every(datum => typeCheck(datum, ...args));
+    return (plotCoordinates as Datum[]).every(datum => typeCheck(datum, ...args));
   }
 };
 
@@ -88,6 +89,16 @@ export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray): boolean =
 export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
   const presentYear = new Date().getFullYear();
   return isArrayOfType(data, isMonth, presentYear);
+};
+
+export const isLineData = (data: Partial<PlotData>): boolean => {
+  return (
+    !SUPPORTED_PLOT_TYPES.includes(`${data.type}`) &&
+    Array.isArray(data.x) &&
+    isArrayOfType(data.y, (value: any) => typeof value === 'number') &&
+    data.x.length > 0 &&
+    data.x.length === data.y!.length
+  );
 };
 
 const invalidate2Dseries = (series: PlotData, chartType: string): void => {
@@ -137,6 +148,7 @@ export const updateXValues = (xValues: Datum[] | Datum[][] | TypedArray): any[] 
   });
   return xValues;
 };
+
 export const getColor = (
   legendLabel: string,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -240,6 +252,7 @@ export const transformPlotlyJsonToVSBCProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
+  fallbackVSBC?: boolean,
 ): IVerticalStackedBarChartProps => {
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
   let yMaxValue = 0;
@@ -257,21 +270,21 @@ export const transformPlotlyJsonToVSBCProps = (
       }
       const legend: string = getLegend(series, index1);
       const yVal: number = (series.y?.[index2] as number) ?? 0;
-      if (series.type === 'bar' || series.type === 'scatter') {
+      if (series.type === 'bar') {
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].chartData.push({
           legend,
           data: yVal,
           color,
         });
-      } /* else if (series.type === 'line') { //ToDo - Fix this as series.type cannot be line type
+      } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].lineData!.push({
           legend,
           y: yVal,
           color,
         });
-      } */
+      }
 
       yMaxValue = Math.max(yMaxValue, yVal);
     });

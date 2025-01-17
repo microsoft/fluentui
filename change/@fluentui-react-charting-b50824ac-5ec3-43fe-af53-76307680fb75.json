@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat: center align bars with auto barWidth in plotly mode",
+  "comment": "fix: resolve bugs in declarative chart",
   "packageName": "@fluentui/react-charting",
   "email": "110246001+krkshitij@users.noreply.github.com",
   "dependentChangeType": "patch"
