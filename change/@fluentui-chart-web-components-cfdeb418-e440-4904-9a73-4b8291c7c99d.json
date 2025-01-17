@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: sync failed release pipeline with git",
-  "packageName": "@fluentui/chart-web-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
