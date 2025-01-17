@@ -166,7 +166,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
           event,
           value,
           itemType,
-          parentValue: undefined,
+          parentValue,
           type: event.key,
           target: treeItemRef.current,
         });
@@ -181,7 +181,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
           event,
           value,
           itemType,
-          parentValue: undefined,
+          parentValue,
           type: event.key,
           target: treeItemRef.current,
         });
