@@ -25,8 +25,15 @@ export const sliderClassNames: SlotClassNames<SliderSlots>;
 // @public (undocumented)
 export const sliderCSSVars: {
     sliderDirectionVar: string;
+    sliderInnerThumbRadiusVar: string;
     sliderProgressVar: string;
+    sliderProgressColorVar: string;
+    sliderRailSizeVar: string;
+    sliderRailColorVar: string;
     sliderStepsPercentVar: string;
+    sliderThumbColorVar: string;
+    sliderThumbSizeVar: string;
+    sliderThumbPositionVar: string;
 };
 
 // @public (undocumented)
