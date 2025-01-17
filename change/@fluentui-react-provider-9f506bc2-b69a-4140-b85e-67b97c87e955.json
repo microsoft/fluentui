@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: Updating FluentProvider types to avoid implicit import in API definition.",
+  "packageName": "@fluentui/react-provider",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}

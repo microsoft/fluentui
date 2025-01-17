@@ -384,6 +384,9 @@ export const TreeProvider: {
 };
 
 // @public (undocumented)
+export const TreeRootReset: (props: TreeRootResetProps) => JSX.Element;
+
+// @public (undocumented)
 export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 
 // @public (undocumented)

@@ -47,11 +47,11 @@ export const TriggerOutsideDialog = () => {
             </DialogContent>
 
             <DialogActions>
+              <Button appearance="primary">Do Something</Button>
               {/* DialogTrigger inside of a Dialog still works properly */}
               <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">Close</Button>
               </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
             </DialogActions>
           </DialogBody>
         </DialogSurface>

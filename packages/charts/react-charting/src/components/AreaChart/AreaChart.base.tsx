@@ -470,7 +470,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       });
     }
 
-    this._isMultiStackChart = renderPoints.length > 1;
+    this._isMultiStackChart = !!(this.props.legendProps?.selectedLegends
+      ? renderPoints?.length >= 1
+      : renderPoints?.length > 1);
     return {
       renderData: renderPoints,
       maxOfYVal,
