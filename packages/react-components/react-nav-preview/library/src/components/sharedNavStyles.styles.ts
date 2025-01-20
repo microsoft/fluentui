@@ -15,11 +15,11 @@ export const navItemTokens = {
   animationTokens: {
     animationDuration: tokens.durationFaster,
     animationFillMode: 'both',
-    animationTimingFunction: tokens.curveAccelerateMid,
+    animationTimingFunction: tokens.curveLinear,
   },
   transitionTokens: {
     transitionDuration: tokens.durationFaster,
-    transitionTimingFunction: tokens.curveAccelerateMid,
+    transitionTimingFunction: tokens.curveLinear,
     transitionProperty: 'background',
   },
 };

@@ -1,0 +1,119 @@
+{
+  "name": "@fluentui/chart-web-components",
+  "description": "A library of Fluent Chart Web Components",
+  "version": "0.0.0",
+  "author": {
+    "name": "Microsoft"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui/tree/master/packages/charts/chart-web-components"
+  },
+  "bugs": {
+    "url": "https://github.com/Microsoft/fluentui/issues/new/choose"
+  },
+  "type": "module",
+  "main": "dist/esm/index.js",
+  "types": "dist/chart-web-components.d.ts",
+  "unpkg": "dist/chart-web-components.min.js",
+  "files": [
+    "*.md",
+    "dist/dts/",
+    "dist/esm/",
+    "dist/*.js",
+    "dist/*.d.ts"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/dts/index.d.ts",
+      "default": "./dist/esm/index.js"
+    },
+    "./utilities.js": {
+      "types": "./dist/dts/utils/index.d.ts",
+      "default": "./dist/esm/utils/index.js"
+    },
+    "./*/define.js": {
+      "types": "./dist/dts/*/*.define.d.ts",
+      "default": "./dist/esm/*/*.define.js"
+    },
+    "./*/definition.js": {
+      "types": "./dist/dts/*/*.definition.d.ts",
+      "default": "./dist/esm/*/*.definition.js"
+    },
+    "./*/options.js": {
+      "types": "./dist/dts/*/*.options.d.ts",
+      "default": "./dist/esm/*/*.options.js"
+    },
+    "./*/styles.js": {
+      "types": "./dist/dts/*/*.styles.d.ts",
+      "default": "./dist/esm/*/*.styles.js"
+    },
+    "./*/template.js": {
+      "types": "./dist/dts/*/*.template.d.ts",
+      "default": "./dist/esm/*/*.template.js"
+    },
+    "./*/index.js": {
+      "types": "./dist/dts/*/index.d.ts",
+      "default": "./dist/esm/*/index.js"
+    },
+    "./*.js": {
+      "types": "./dist/dts/*/define.d.ts",
+      "default": "./dist/esm/*/define.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "./dist/esm/**/define.js",
+    "./dist/chart-web-components.js",
+    "./dist/chart-web-components.min.js"
+  ],
+  "scripts": {
+    "verify-packaging": "node ./scripts/verify-packaging",
+    "type-check": "node ./scripts/type-check",
+    "benchmark": "yarn clean && yarn compile:benchmark && yarn compile && node ./scripts/run-benchmarks",
+    "compile": "node ./scripts/compile",
+    "compile:benchmark": "rollup -c rollup.bench.js",
+    "clean": "node ./scripts/clean dist",
+    "generate-api": "api-extractor run --local",
+    "build": "yarn compile && yarn rollup -c && yarn generate-api",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier -w src/**/*.{ts,html} --ignore-path ../../.prettierignore",
+    "format:check": "yarn format -c",
+    "code-style": "yarn format:check && yarn lint",
+    "start": "yarn start-storybook -p 6006 --docs",
+    "start-storybook": "storybook dev",
+    "build-storybook": "storybook build -o ./dist/storybook --docs",
+    "e2e": "playwright test",
+    "test:dev": "playwright test"
+  },
+  "devDependencies": {
+    "@microsoft/fast-element": "2.0.0",
+    "@tensile-perf/web-components": "~0.2.0",
+    "@storybook/html": "7.6.20",
+    "@storybook/html-webpack5": "7.6.20",
+    "chromedriver": "^125.0.0"
+  },
+  "dependencies": {
+    "@microsoft/fast-web-utilities": "^6.0.0",
+    "@fluentui/tokens": "^1.0.0-alpha.21",
+    "@fluentui/web-components": "^3.0.0-beta.77",
+    "@types/d3-selection": "^3.0.0",
+    "@types/d3-shape": "^3.0.0",
+    "d3-selection": "^3.0.0",
+    "d3-shape": "^3.0.0",
+    "tabbable": "^6.2.0",
+    "tslib": "^2.1.0"
+  },
+  "peerDependencies": {
+    "@microsoft/fast-element": "^2.0.0-beta.26 || ^2.0.0"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "minor"
+    ],
+    "tag": "alpha"
+  }
+}

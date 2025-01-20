@@ -84,7 +84,7 @@ const contentStyles = mergeStyleSets({
     alignItems: 'stretch',
   },
   header: [
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     theme.fonts.xLargePlus,
     {
       flex: '1 1 auto',

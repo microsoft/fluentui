@@ -9205,9 +9205,15 @@ export interface ITag {
 export interface ITagItemProps extends IPickerItemProps<ITag> {
     className?: string;
     enableTagFocusInDisabledPicker?: boolean;
+    removeButtonProps?: ITagItemRemoveButtonProps;
     styles?: IStyleFunctionOrObject<ITagItemStyleProps, ITagItemStyles>;
     theme?: ITheme;
     title?: string;
+}
+
+// @public
+export interface ITagItemRemoveButtonProps extends IButtonProps {
+    'data-id'?: string;
 }
 
 // @public

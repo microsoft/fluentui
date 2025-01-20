@@ -9,13 +9,11 @@ export {
   basicWebpackConfig,
   basicWebpackServeConfig,
   chain,
-  // eslint-disable-next-line deprecation/deprecation
   cleanTask,
   clearCache,
   condition,
   copyInstructions,
   copyInstructionsTask,
-  // eslint-disable-next-line deprecation/deprecation
   copyTask,
   createStylesOverlay,
   createTarTask,
@@ -36,11 +34,8 @@ export {
   prettierCheckTask,
   prettierTask,
   resetResolvePaths,
-  // eslint-disable-next-line deprecation/deprecation
   resolve,
-  // eslint-disable-next-line deprecation/deprecation
   resolveCwd,
-  // eslint-disable-next-line deprecation/deprecation
   sassTask,
   series,
   spawn,

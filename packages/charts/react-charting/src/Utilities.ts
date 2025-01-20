@@ -1,10 +1,8 @@
 export {
   Async,
   AutoScroll,
-  // eslint-disable-next-line deprecation/deprecation
   BaseComponent,
   Customizations,
-  // eslint-disable-next-line deprecation/deprecation
   Customizer,
   CustomizerContext,
   DATA_IS_SCROLLABLE_ATTRIBUTE,
@@ -87,7 +85,6 @@ export {
   getRTL,
   getRTLSafeKeyCode,
   getRect,
-  // eslint-disable-next-line deprecation/deprecation
   getResourceUrl,
   getScrollbarWidth,
   getVirtualParent,
@@ -99,11 +96,9 @@ export {
   hoistStatics,
   htmlElementProperties,
   iframeProperties,
-  // eslint-disable-next-line deprecation/deprecation
   imageProperties,
   imgProperties,
   initializeComponentRef,
-  // eslint-disable-next-line deprecation/deprecation
   initializeFocusRects,
   inputProperties,
   isControlled,
@@ -135,7 +130,6 @@ export {
   optionProperties,
   portalContainsElement,
   precisionRound,
-  // eslint-disable-next-line deprecation/deprecation
   raiseClick,
   removeIndex,
   replaceElement,
@@ -145,15 +139,12 @@ export {
   safeRequestAnimationFrame,
   safeSetTimeout,
   selectProperties,
-  // eslint-disable-next-line deprecation/deprecation
   setBaseUrl,
   setFocusVisibility,
-  // eslint-disable-next-line deprecation/deprecation
   setLanguage,
   setMemoizeWeakMap,
   setPortalAttribute,
   setRTL,
-  // eslint-disable-next-line deprecation/deprecation
   setSSR,
   setVirtualParent,
   setWarningCallback,
@@ -184,7 +175,6 @@ export type {
   ICancelable,
   IChangeDescription,
   IChangeEventCallback,
-  // eslint-disable-next-line deprecation/deprecation
   IClassNames,
   IClassNamesFunctionOptions,
   IComponentAs,
@@ -207,7 +197,6 @@ export type {
   IPerfData,
   IPerfMeasurement,
   IPerfSummary,
-  // eslint-disable-next-line deprecation/deprecation
   IPoint,
   IPropsWithStyles,
   IRectangle,
@@ -226,13 +215,10 @@ export type {
   IStyleFunctionOrObject,
   IVirtualElement,
   IWarnControlledUsageParams,
-  // eslint-disable-next-line deprecation/deprecation
   Omit,
   Point,
   RefObject,
-  // eslint-disable-next-line deprecation/deprecation
   Settings,
-  // eslint-disable-next-line deprecation/deprecation
   SettingsFunction,
   StyleFunction,
 } from '@fluentui/react/lib/Utilities';
