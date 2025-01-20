@@ -91,6 +91,8 @@ export type TreeContextValues = {
   tree: TreeContextValue | SubtreeContextValue;
 };
 
+export type TreeNavigationMode = 'tree' | 'treegrid';
+
 export type TreeProps = ComponentProps<TreeSlots> & {
   /**
    * Indicates how navigation between a treeitem and its actions work
@@ -98,7 +100,7 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * - 'treegrid': Pressing right arrow key navigate towards the actions of a treeitem
    * @default 'tree'
    */
-  navigationMode?: 'tree' | 'treegrid';
+  navigationMode?: TreeNavigationMode;
   /**
    * A tree item can have various appearances:
    * - 'subtle' (default): The default tree item styles.

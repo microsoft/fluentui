@@ -21,7 +21,6 @@ import {
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { treeClassNames } from '../../Tree';
-import { useFocusFinders } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render TreeItem.
@@ -148,74 +147,38 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     });
   });
 
-  const { findFirstFocusable } = useFocusFinders();
-
-  const handleTreeGridActionsKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (!event.currentTarget.contains(event.target as Node) || !treeItemRef.current) {
-      return;
-    }
-    switch (event.key) {
-      case treeDataTypes.ArrowLeft: {
-        // TODO: this should be included in requestTreeResponse navigation signature
-        treeItemRef.current?.focus();
-        return;
-      }
-      case treeDataTypes.ArrowUp: {
-        requestTreeResponse({
-          requestType: 'navigate',
-          event,
-          value,
-          itemType,
-          parentValue,
-          type: event.key,
-          target: treeItemRef.current,
-        });
-        return;
-      }
-      case treeDataTypes.ArrowDown: {
-        if (!isHTMLElement(event.target) || event.target.hasAttribute('aria-haspopup')) {
-          return;
-        }
-        requestTreeResponse({
-          requestType: 'navigate',
-          event,
-          value,
-          itemType,
-          parentValue,
-          type: event.key,
-          target: treeItemRef.current,
-        });
-      }
-    }
-  };
-
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     onKeyDown?.(event);
-    if (event.isDefaultPrevented()) {
+    if (event.isDefaultPrevented() || !treeItemRef.current) {
       return;
     }
-    if (actionsRef.current && actionsRef.current.contains(event.target as Node)) {
-      handleTreeGridActionsKeyDown(event);
-    }
-    // Ignore keyboard events that do not originate from the current tree item.
-    if (event.currentTarget !== event.target) {
-      return;
-    }
+    const isEventFromTreeItem = event.currentTarget == event.target;
+    const isEventFromActions = actionsRef.current && actionsRef.current.contains(event.target as Node);
+
     switch (event.key) {
-      case Space:
+      case Space: {
+        if (!isEventFromTreeItem) {
+          return;
+        }
         if (selectionMode !== 'none') {
           selectionRef.current?.click();
           // Prevents the page from scrolling down when the spacebar is pressed
           event.preventDefault();
         }
         return;
+      }
       case treeDataTypes.Enter: {
+        if (!isEventFromTreeItem) {
+          return;
+        }
         return event.currentTarget.click();
       }
       case treeDataTypes.End:
       case treeDataTypes.Home:
-      case treeDataTypes.ArrowUp:
-      case treeDataTypes.ArrowDown:
+      case treeDataTypes.ArrowUp: {
+        if (!isEventFromTreeItem && !isEventFromActions) {
+          return;
+        }
         return requestTreeResponse({
           requestType: 'navigate',
           event,
@@ -225,66 +188,65 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
           type: event.key,
           target: event.currentTarget,
         });
+      }
+      case treeDataTypes.ArrowDown: {
+        if (!isEventFromTreeItem && !isEventFromActions) {
+          return;
+        }
+        if (isEventFromActions && (!isHTMLElement(event.target) || event.target.hasAttribute('aria-haspopup'))) {
+          return;
+        }
+        return requestTreeResponse({
+          requestType: 'navigate',
+          event,
+          value,
+          itemType,
+          parentValue,
+          type: event.key,
+          target: event.currentTarget,
+        });
+      }
       case treeDataTypes.ArrowLeft: {
         // arrow left with alt key is reserved for history navigation
         if (event.altKey) {
+          return;
+        }
+        const data = {
+          value,
+          event,
+          open: getNextOpen(),
+          type: event.key,
+          itemType,
+          parentValue,
+          target: event.currentTarget,
+        } as const;
+
+        if (isEventFromActions && navigationMode === 'treegrid') {
+          requestTreeResponse({ ...data, requestType: 'navigate' });
+          return;
+        }
+        if (!isEventFromTreeItem) {
           return;
         }
         // do not navigate to parent if the item is on the top level
         if (level === 1 && !open) {
           return;
         }
-        const data = {
-          value,
-          event,
-          open: getNextOpen(),
-          type: event.key,
-          target: event.currentTarget,
-        } as const;
         if (open) {
           props.onOpenChange?.(event, data);
         }
-        requestTreeResponse({
-          ...data,
-          itemType,
-          parentValue,
-          requestType: open ? 'open' : 'navigate',
-        });
+        requestTreeResponse({ ...data, requestType: open ? 'open' : 'navigate' });
         return;
       }
       case treeDataTypes.ArrowRight: {
+        // Ignore keyboard events that do not originate from the current tree item.
+        if (!isEventFromTreeItem) {
+          return;
+        }
         // arrow right with alt key is reserved for history navigation
         if (event.altKey) {
           return;
         }
-        if (navigationMode === 'treegrid') {
-          // only navigate or open if the item is a branch
-          if (itemType === 'branch' && !open) {
-            const data = {
-              value,
-              event,
-              open: getNextOpen(),
-              type: event.key,
-              target: event.currentTarget,
-            } as const;
-            props.onOpenChange?.(event, data);
-            requestTreeResponse({
-              ...data,
-              itemType,
-              requestType: 'open',
-            });
-            return;
-          }
-          if (actionsRef.current) {
-            const first = findFirstFocusable(actionsRef.current);
-            first?.focus();
-          }
-          return;
-        }
-        // do not navigate or open if the item is a leaf
-        if (itemType === 'leaf') {
-          return;
-        }
         const data = {
           value,
           event,
@@ -292,17 +254,19 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
           type: event.key,
           target: event.currentTarget,
         } as const;
-        if (!open) {
+
+        if (itemType === 'branch' && !open) {
           props.onOpenChange?.(event, data);
+          requestTreeResponse({ ...data, itemType, requestType: 'open' });
+        } else {
+          requestTreeResponse({ ...data, itemType, parentValue, requestType: 'navigate' });
         }
-        requestTreeResponse({
-          ...data,
-          itemType,
-          parentValue,
-          requestType: open ? 'navigate' : 'open',
-        });
         return;
       }
+    }
+    // Ignore keyboard events that do not originate from the current tree item.
+    if (!isEventFromTreeItem) {
+      return;
     }
     const isTypeAheadCharacter =
       event.key.length === 1 && event.key.match(/\w/) && !event.altKey && !event.ctrlKey && !event.metaKey;

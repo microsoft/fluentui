@@ -334,6 +334,9 @@ export type TreeNavigationData_unstable = {
 export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 
 // @public (undocumented)
+export type TreeNavigationMode = 'tree' | 'treegrid';
+
+// @public (undocumented)
 export type TreeOpenChangeData = {
     open: boolean;
     openItems: Set<TreeItemValue>;
@@ -368,7 +371,7 @@ export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
 
 // @public (undocumented)
 export type TreeProps = ComponentProps<TreeSlots> & {
-    navigationMode?: 'tree' | 'treegrid';
+    navigationMode?: TreeNavigationMode;
     appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
     size?: 'small' | 'medium';
     openItems?: Iterable<TreeItemValue>;

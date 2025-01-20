@@ -10,6 +10,7 @@ export type {
   TreeSelectionValue,
   TreeSlots,
   TreeState,
+  TreeNavigationMode,
 } from './components/Tree/index';
 export {
   Tree,
