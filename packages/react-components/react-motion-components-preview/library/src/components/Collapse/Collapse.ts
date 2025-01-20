@@ -1,14 +1,8 @@
 import { motionTokens, createPresenceComponent, AtomMotion } from '@fluentui/react-motion';
 import type { PresenceMotionFnCreator } from '../../types';
 import type { CollapseDelayedVariantParams, CollapseRuntimeParams, CollapseVariantParams } from './collapse-types';
-import {
-  sizeEnterAtom,
-  whitespaceEnterAtom,
-  opacityEnterAtom,
-  opacityExitAtom,
-  sizeExitAtom,
-  whitespaceExitAtom,
-} from './collapse-atoms';
+import { sizeEnterAtom, sizeExitAtom, whitespaceAtom } from './collapse-atoms';
+import { fadeAtom } from '../../atoms/fade-atom';
 
 /** Define a presence motion for collapse/expand that can stagger the size and opacity motions by a given delay. */
 export const createCollapseDelayedPresence: PresenceMotionFnCreator<
@@ -32,27 +26,16 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<
     // ----- ENTER -----
     // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
     const enterAtoms: AtomMotion[] = [
-      sizeEnterAtom({
-        orientation,
-        duration: enterSizeDuration,
-        easing: enterEasing,
-        element,
-      }),
-      whitespaceEnterAtom({
-        orientation,
-        duration: enterSizeDuration,
-        easing: enterEasing,
-      }),
+      sizeEnterAtom({ orientation, duration: enterSizeDuration, easing: enterEasing, element }),
+      whitespaceAtom({ direction: 'enter', orientation, duration: enterSizeDuration, easing: enterEasing }),
     ];
     // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
     if (animateOpacity) {
-      enterAtoms.push(
-        opacityEnterAtom({
-          duration: enterOpacityDuration,
-          easing: enterEasing,
-          delay: enterDelay,
-        }),
-      );
+      enterAtoms.push({
+        ...fadeAtom({ direction: 'enter', duration: enterOpacityDuration, easing: enterEasing }),
+        delay: enterDelay,
+        fill: 'both',
+      });
     }
 
     // ----- EXIT -----
@@ -60,24 +43,12 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<
     const exitAtoms: AtomMotion[] = [];
     // Fade out only if animateOpacity is true. Otherwise, leave opacity unaffected.
     if (animateOpacity) {
-      exitAtoms.push(
-        opacityExitAtom({
-          duration: exitOpacityDuration,
-          easing: exitEasing,
-        }),
-      );
+      exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitOpacityDuration, easing: exitEasing }));
     }
     exitAtoms.push(
-      sizeExitAtom({
-        orientation,
-        duration: exitSizeDuration,
-        easing: exitEasing,
-        element,
-        delay: exitDelay,
-      }),
-    );
-    exitAtoms.push(
-      whitespaceExitAtom({
+      sizeExitAtom({ orientation, duration: exitSizeDuration, easing: exitEasing, element, delay: exitDelay }),
+      whitespaceAtom({
+        direction: 'exit',
         orientation,
         duration: exitSizeDuration,
         easing: exitEasing,

@@ -70,6 +70,12 @@ export interface IAreaChartProps extends ICartesianChartProps {
    * The prop used to enable gradient fill color for the chart.
    */
   enableGradient?: boolean;
+
+  /**
+   * @default tonexty
+   * The prop used to define the Y axis mode (tonexty or tozeroy)
+   */
+  mode?: 'tozeroy' | 'tonexty';
 }
 
 /**

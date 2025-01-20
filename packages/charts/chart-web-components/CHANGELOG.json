@@ -2,6 +2,29 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Fri, 17 Jan 2025 04:07:40 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.0",
+      "version": "0.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "408fe44060b746844a9c76c67391b18d76d1f26e",
+            "comment": "chore: sync failed release pipeline with git"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.77",
+            "commit": "24bd1b2e8063db6c121ee02425db564fbb762f5a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Jan 2025 14:42:14 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.0-alpha.2",
       "version": "0.0.0-alpha.2",

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 09 Jan 2025 04:07:00 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2025 04:07:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.77](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.77)
+
+Fri, 17 Jan 2025 04:07:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.76..@fluentui/web-components_v3.0.0-beta.77)
+
+### Changes
+
+- fix: revert logical properties in spinner to support rtl" ([PR #33654](https://github.com/microsoft/fluentui/pull/33654) by rupertdavid@microsoft.com)
+- fix: update disabled switch styles to GrayText for high-contrast mode ([PR #33637](https://github.com/microsoft/fluentui/pull/33637) by rupertdavid@microsoft.com)
 
 ## [3.0.0-beta.76](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.76)
 

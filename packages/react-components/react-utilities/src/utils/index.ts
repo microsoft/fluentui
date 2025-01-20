@@ -1,6 +1,6 @@
 export { clamp } from './clamp';
 export {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getNativeElementProps,
   getPartitionedNativeProps,
 } from './getNativeElementProps';

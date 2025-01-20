@@ -25,18 +25,20 @@ import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
-import { DataVizPalette, getNextColor } from '../../utilities/colors';
+import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { Layout, PlotlySchema, PieData, PlotData, SankeyData } from './PlotlySchema';
 import type { Datum, TypedArray } from './PlotlySchema';
+import { timeParse } from 'd3-time-format';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
   secondaryYScaleOptions?: { yMinValue?: number; yMaxValue?: number };
 }
 
+const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'histogram'];
 const isDate = (value: any): boolean => {
   const parsedDate = new Date(Date.parse(value));
   if (isNaN(parsedDate.getTime())) {
@@ -49,11 +51,13 @@ const isDate = (value: any): boolean => {
   }
   return true;
 };
-const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'histogram'];
+
 const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 
-const isMonth = (possiblyMonthValue: any, presentYear: number): boolean => {
-  return isDate(`${possiblyMonthValue} 01, ${presentYear}`);
+const isMonth = (possiblyMonthValue: any): boolean => {
+  const parseFullMonth = timeParse('%B');
+  const parseShortMonth = timeParse('%b');
+  return parseFullMonth(possiblyMonthValue) !== null || parseShortMonth(possiblyMonthValue) !== null;
 };
 
 const isArrayOfType = (
@@ -87,8 +91,7 @@ export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray): boolean =
 };
 
 export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  const presentYear = new Date().getFullYear();
-  return isArrayOfType(data, isMonth, presentYear);
+  return isArrayOfType(data, isMonth);
 };
 
 export const isLineData = (data: Partial<PlotData>): boolean => {
@@ -243,7 +246,7 @@ export const transformPlotlyJsonToDonutProps = (
     height,
     innerRadius,
     hideLabels,
-    showLabelsInPercent: firstData.textinfo ? firstData.textinfo === 'percent' : true,
+    showLabelsInPercent: firstData.textinfo ? ['percent', 'label+percent'].includes(firstData.textinfo) : true,
     styles,
   };
 };
@@ -457,9 +460,9 @@ export const transformPlotlyJsonToScatterChartProps = (
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
   let secondaryYAxisValues: ISecondaryYAxisValues = {};
+  let mode: string = 'tonexty';
   const chartData: ILineChartPoints[] = input.data.map((series: PlotData, index: number) => {
     invalidate2Dseries(series, 'Scatter');
-
     const xValues = series.x as Datum[];
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
@@ -467,6 +470,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     const legend: string = getLegend(series, index);
     const lineColor = getColor(legend, colorMap, isDarkTheme);
     secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
+    mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
 
     return {
       legend,
@@ -493,6 +497,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       yAxisTitle,
       secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
       secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+      mode,
     } as IAreaChartProps;
   } else {
     return {
@@ -525,7 +530,9 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
         } as IHorizontalBarChartWithAxisDataPoint;
       });
     })
-    .flat();
+    .flat()
+    //reversing the order to invert the Y bars order as required by plotly.
+    .reverse();
 
   const chartHeight: number = input.layout?.height ?? 450;
   const margin: number = input.layout?.margin?.l ?? 0;
@@ -700,11 +707,11 @@ export const transformPlotlyJsonToGaugeProps = (
     const diff = firstData.value - firstData.delta.reference;
     if (diff >= 0) {
       sublabel = `\u25B2 ${diff}`;
-      const color = getColor('inpr', colorMap, isDarkTheme);
+      const color = getColorFromToken(DataVizPalette.success, isDarkTheme);
       sublabelColor = color;
     } else {
       sublabel = `\u25BC ${Math.abs(diff)}`;
-      const color = getColor('inpr', colorMap, isDarkTheme);
+      const color = getColorFromToken(DataVizPalette.error, isDarkTheme);
       sublabelColor = color;
     }
   }
