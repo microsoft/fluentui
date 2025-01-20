@@ -1,0 +1,6 @@
+{
+  "name": "stater-templates",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "tags": ["vNext", "tools"]
+}

@@ -370,7 +370,8 @@
       "packages/charts/*/*",
       "scripts/*",
       "tools/*",
-      "typings"
+      "typings",
+      "starter-templates"
     ]
   },
   "resolutions": {
