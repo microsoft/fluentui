@@ -588,9 +588,9 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
   // Initialize domain and range to default values
   const defaultDomain = [zMin, zMax];
   const defaultRange = [
-    getColorFromToken(DataVizPalette.success),
-    getColorFromToken(DataVizPalette.warning),
-    getColorFromToken(DataVizPalette.error),
+    getColorFromToken(DataVizPalette.color1),
+    getColorFromToken(DataVizPalette.color2),
+    getColorFromToken(DataVizPalette.color3),
   ];
   const domainValuesForColorScale: number[] = Array.isArray(firstData.colorscale)
     ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[0] * (zMax - zMin) + zMin)
