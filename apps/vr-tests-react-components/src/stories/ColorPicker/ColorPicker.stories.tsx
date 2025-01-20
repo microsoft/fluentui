@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { ColorPicker } from '@fluentui/react-color-picker-preview';
+import { ColorPicker, ColorSlider, AlphaSlider } from '@fluentui/react-color-picker-preview';
 import { SampleColorPicker } from './utils';
 import { Steps } from 'storywright';
 
@@ -14,6 +14,22 @@ export default {
 } satisfies Meta<typeof ColorPicker>;
 
 export const Default = () => <SampleColorPicker color={{ h: 109, s: 1, v: 0.91 }} />;
+
+export const ColorSliders = () => (
+  <>
+    <ColorSlider color={{ h: 109, s: 1, v: 0.9 }} />
+    <ColorSlider color={{ h: 184, s: 1, v: 0.9 }} vertical />
+  </>
+);
+
+export const AlphaSliders = () => (
+  <>
+    <AlphaSlider color={{ h: 12, s: 1, v: 0.9, a: 0.7 }} />
+    <AlphaSlider color={{ h: 59, s: 1, v: 1 }} vertical />
+    <AlphaSlider color={{ h: 276, s: 1, v: 0.9, a: 0.2 }} transparency />
+    <AlphaSlider color={{ h: 332, s: 1, v: 0.9, a: 0.1 }} transparency vertical />
+  </>
+);
 
 export const DefaultDarkMode = getStoryVariant(Default, DARK_MODE);
 
