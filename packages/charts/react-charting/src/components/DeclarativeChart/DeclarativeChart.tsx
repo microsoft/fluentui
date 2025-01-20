@@ -226,6 +226,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         );
       }
     case 'scatter':
+      if (plotlyInput.data[0].mode === 'markers') {
+        throw new Error(`Unsupported chart type :${plotlyInput.data[0]?.type} with mode ${plotlyInput.data[0]?.mode}`);
+      }
       const isAreaChart = plotlyInput.data.some(
         (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
       );
