@@ -1,4 +1,4 @@
-import { mergeCssSets, Stylesheet } from '@fluentui/merge-styles';
+import { mergeCssSets, Stylesheet, isStyleFunction } from '@fluentui/merge-styles';
 import { getRTL } from './rtl';
 import { getWindow } from './dom';
 import type {
@@ -88,12 +88,11 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     // simply return the result from the style funcion.
     if (
       options.useStaticStyles &&
-      typeof styleFunctionOrObject === 'function' &&
+      styleFunctionOrObject &&
+      isStyleFunction(styleFunctionOrObject) &&
       (styleFunctionOrObject as StyleFunction<TStyleProps, TStyleSet>).__noStyleOverride__
     ) {
-      return (styleFunctionOrObject as IStyleFunction<TStyleProps, TStyleSet>)(
-        styleProps,
-      ) as IProcessedStyleSet<TStyleSet>;
+      return styleFunctionOrObject(styleProps) as IProcessedStyleSet<TStyleSet>;
     }
 
     getClassNamesCount++;

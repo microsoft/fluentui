@@ -3,6 +3,12 @@ import { IStyleSetBase } from './IStyleSet';
 import { IStyleFunction, IStyleFunctionOrObject } from './IStyleFunction';
 import { DeepPartialV2 as DeepPartial } from './DeepPartial';
 
+export function isStyleFunction<TStylesProps, TStyleSet extends IStyleSetBase>(
+  val: IStyleFunctionOrObject<TStylesProps, TStyleSet>,
+): val is IStyleFunction<TStylesProps, TStyleSet> {
+  return typeof val === 'function';
+}
+
 /**
  * Concatenates style sets into one, but resolves functional sets using the given props.
  * @param styleProps - Props used to resolve functional sets.
@@ -13,13 +19,13 @@ export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSe
   ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]
 ): DeepPartial<TStyleSet> {
   const result: Array<DeepPartial<TStyleSet>> = [];
+
   for (const styles of allStyles) {
     if (styles) {
-      result.push(
-        typeof styles === 'function' ? (styles as IStyleFunction<TStyleProps, TStyleSet>)(styleProps) : styles,
-      );
+      result.push(isStyleFunction(styles) ? styles(styleProps) : styles);
     }
   }
+
   if (result.length === 1) {
     return result[0];
   } else if (result.length) {
