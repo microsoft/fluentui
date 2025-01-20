@@ -91,7 +91,9 @@ export class HorizontalBarChartWithAxisBase
       color: '',
       dataForHoverCard: 0,
       isCalloutVisible: false,
-      isLegendSelected: props.legendProps?.selectedLegend !== undefined,
+      isLegendSelected:
+        (props.legendProps?.selectedLegends && props.legendProps.selectedLegends.length > 0) ||
+        props.legendProps?.selectedLegend !== undefined,
       isLegendHovered: false,
       refSelected: null,
       selectedLegendTitle: props.legendProps?.selectedLegend ?? '',
