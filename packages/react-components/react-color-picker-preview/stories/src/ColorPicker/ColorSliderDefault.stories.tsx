@@ -20,8 +20,7 @@ const useStyles = makeStyles({
     },
   },
 });
-
-const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
+const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
 
 export const ColorSliderExample = (props: Partial<ColorSliderProps>) => {
   const styles = useStyles();

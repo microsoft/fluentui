@@ -193,7 +193,7 @@ export class BaseExtendedPicker<T extends {}, P extends IBaseExtendedPickerProps
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
   protected onBackspace = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (ev.which !== KeyCodes.backspace) {
       return;
     }

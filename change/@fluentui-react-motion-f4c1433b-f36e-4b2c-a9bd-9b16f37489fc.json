@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add extended support for reduced motion",
+  "packageName": "@fluentui/react-motion",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

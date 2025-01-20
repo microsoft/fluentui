@@ -119,7 +119,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
   private _id: string;
   private _async: Async;
@@ -527,7 +527,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   protected onEmptyInputFocus() {
     const emptyResolveSuggestions = this.props.onEmptyResolveSuggestions
       ? this.props.onEmptyResolveSuggestions
-      : // eslint-disable-next-line deprecation/deprecation
+      : // eslint-disable-next-line @typescript-eslint/no-deprecated
         this.props.onEmptyInputFocus;
 
     // Only attempt to resolve suggestions if it exists
@@ -706,7 +706,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   };
 
   protected onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const keyCode = ev.which;
     switch (keyCode) {
       case KeyCodes.escape:
@@ -954,7 +954,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   protected _shouldFocusZoneEnterInnerZone = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     // If suggestions are shown const up/down keys control them, otherwise allow them through to control the focusZone.
     if (this.state.suggestionsVisible) {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       switch (ev.which) {
         case KeyCodes.up:
         case KeyCodes.down:
@@ -962,7 +962,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
       }
     }
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (ev.which === KeyCodes.enter) {
       return true;
     }
@@ -1023,7 +1023,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     return (
       <div className={alertClassName} id={this._ariaMap.selectedSuggestionAlert} aria-live="assertive">
         {
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           this.getSuggestionsAlert(alertClassName)
         }
         {removedItemText}

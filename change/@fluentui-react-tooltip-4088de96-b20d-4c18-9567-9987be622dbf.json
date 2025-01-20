@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: wrong call of useIsNavigatingWithKeyboard",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "viktorgenaev@microsoft.com",
+  "dependentChangeType": "patch"
+}

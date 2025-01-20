@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Moving @ctrl/tinycolor dependency to be a caret dependency in production packages.",
+  "packageName": "@fluentui/react-color-picker-preview",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -36,7 +36,7 @@ export type ColorSliderProps = Omit<
     vertical?: boolean;
 
     /**
-     * Color of the COlorPicker
+     * Color of the ColorPicker
      */
     color?: HsvColor;
 
