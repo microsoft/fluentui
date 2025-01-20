@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: update api-extractor to 7.49.1",
+  "packageName": "@fluentui/api-docs",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
