@@ -19,6 +19,7 @@ export type {
   TreeCheckedChangeEvent,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
+  TreeNavigationMode,
 } from './Tree';
 
 export {
