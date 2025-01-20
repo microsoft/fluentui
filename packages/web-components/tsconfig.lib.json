@@ -1,7 +1,6 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ES2019",
     "lib": ["ESNext", "DOM"],
     "declaration": true,
     "declarationDir": "dist/dts",
