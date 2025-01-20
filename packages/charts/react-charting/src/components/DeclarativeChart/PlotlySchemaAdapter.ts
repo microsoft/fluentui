@@ -25,7 +25,7 @@ import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
-import { DataVizPalette, getNextColor } from '../../utilities/colors';
+import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
@@ -585,13 +585,21 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
     value: 0,
   };
 
-  // Convert normalized values to actual values
-  const domainValuesForColorScale: number[] = firstData.colorscale
+  // Initialize domain and range to default values
+  const defaultDomain = [zMin, zMax];
+  const defaultRange = [
+    getColorFromToken(DataVizPalette.color1),
+    getColorFromToken(DataVizPalette.color2),
+    getColorFromToken(DataVizPalette.color3),
+  ];
+  const domainValuesForColorScale: number[] = Array.isArray(firstData.colorscale)
     ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[0] * (zMax - zMin) + zMin)
-    : [];
-  const rangeValuesForColorScale: string[] = firstData.colorscale
+    : defaultDomain;
+
+  const rangeValuesForColorScale: string[] = Array.isArray(firstData.colorscale)
     ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[1])
-    : [];
+    : defaultRange;
+
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
   return {
