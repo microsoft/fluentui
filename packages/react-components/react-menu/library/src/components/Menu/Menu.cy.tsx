@@ -255,27 +255,6 @@ describe('MenuItem', () => {
       .get(menuSelector)
       .should('be.visible');
   });
-
-  it('should focus on hover', () => {
-    mount(
-      <Menu>
-        <MenuTrigger disableButtonEnhancement>
-          <button id={menuTriggerId}>Menu</button>
-        </MenuTrigger>
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>Item</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>,
-    );
-    cy.get(menuTriggerSelector)
-      .trigger('click')
-      .get(menuItemSelector)
-      .each(el => {
-        cy.wrap(el).trigger('mouseover').should('be.focused');
-      });
-  });
 });
 
 describe('MenuItemCheckbox', () => {

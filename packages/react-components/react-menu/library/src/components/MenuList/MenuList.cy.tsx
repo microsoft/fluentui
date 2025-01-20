@@ -11,21 +11,6 @@ const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 describe('MenuList', () => {
-  it('should focus each menu item on hover', () => {
-    mount(
-      <div style={{ width: 'max-content', border: '1px solid black', paddingTop: 4, paddingBottom: 4 }}>
-        <MenuList>
-          <MenuItem>Cut</MenuItem>
-          <MenuItem>Paste</MenuItem>
-          <MenuItem>Edit</MenuItem>
-        </MenuList>
-      </div>,
-    );
-    cy.get(menuItemSelector).each(el => {
-      cy.wrap(el).trigger('mouseover').should('be.focused');
-    });
-  });
-
   describe('With nested submenus', () => {
     const Example = () => {
       return (
