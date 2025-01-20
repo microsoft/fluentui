@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 17 Jan 2025 07:21:32 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Jan 2025 07:21:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.42)
+
+Mon, 20 Jan 2025 07:21:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.41..@fluentui/react-charting_v5.23.42)
+
+### Patches
+
+- Support tozeroy mode for Area Charts ([PR #33581](https://github.com/microsoft/fluentui/pull/33581) by 120183316+srmukher@users.noreply.github.com)
+- Declarative chart bug fixes ([PR #33567](https://github.com/microsoft/fluentui/pull/33567) by 74965306+Anush2303@users.noreply.github.com)
 
 ## [5.23.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.41)
 

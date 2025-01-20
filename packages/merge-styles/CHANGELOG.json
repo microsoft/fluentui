@@ -2,6 +2,21 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Mon, 20 Jan 2025 07:21:46 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.13",
+      "version": "8.6.13",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "fd420e1e0b66e04c8a423cff3eea6d21d9434d2d",
+            "comment": "chore: migrate from deprecation plugin to ts-eslint/no-deprecated rule"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2024 07:24:14 GMT",
       "tag": "@fluentui/merge-styles_v8.6.13",
       "version": "8.6.13",
