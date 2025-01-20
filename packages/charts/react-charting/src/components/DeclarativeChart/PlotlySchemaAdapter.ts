@@ -29,7 +29,7 @@ import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
-import { Layout, PlotlySchema, PieData, PlotData, SankeyData } from './PlotlySchema';
+import { Layout, PlotlySchema, PieData, PlotData, SankeyData, Dash } from './PlotlySchema';
 import type { Datum, TypedArray } from './PlotlySchema';
 import { timeParse } from 'd3-time-format';
 
@@ -284,6 +284,9 @@ export const transformPlotlyJsonToVSBCProps = (
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].lineData!.push({
           legend,
+          lineOptions: ['dot', 'dash', 'longdash', 'dashdot', 'longdashdot'].includes(series.line?.dash as Dash)
+            ? { strokeDasharray: '5', strokeLinecap: 'butt', strokeWidth: '2', lineBorderWidth: '4' }
+            : {},
           y: yVal,
           color,
         });
@@ -474,6 +477,9 @@ export const transformPlotlyJsonToScatterChartProps = (
 
     return {
       legend,
+      lineOptions: ['dot', 'dash', 'longdash', 'dashdot', 'longdashdot'].includes(series.line?.dash as Dash)
+        ? { strokeDasharray: '5', strokeLinecap: 'butt', strokeWidth: '2', lineBorderWidth: '4' }
+        : {},
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],

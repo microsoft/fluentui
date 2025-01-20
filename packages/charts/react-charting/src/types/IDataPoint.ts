@@ -650,6 +650,10 @@ export interface ILineDataInVerticalStackedBarChart {
    * False by default.
    */
   useSecondaryYScale?: boolean;
+  /**
+   * options for the line drawn
+   */
+  lineOptions?: ILineChartLineOptions;
 }
 
 /**

@@ -443,6 +443,7 @@ export class VerticalStackedBarChartBase
             opacity={shouldHighlight ? 1 : 0.1}
             strokeWidth={3}
             strokeLinecap="round"
+            strokeDasharray={this._points[i].lineData?.[0]?.lineOptions?.strokeDasharray}
             stroke={lineObject[item][i].color}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             {...(this._isLegendHighlighted(item) && {
