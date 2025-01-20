@@ -11,7 +11,7 @@ const singleBarHBCData = [
     chartData: [
       {
         legend: 'one',
-        data: 1543,
+        data: 1540,
         total: 15000,
         color: '#637cef',
       },
