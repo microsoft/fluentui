@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: slider adjust design",
+  "packageName": "@fluentui/react-slider",
+  "email": "joaof.victor@hotmail.com",
+  "dependentChangeType": "patch"
+}
