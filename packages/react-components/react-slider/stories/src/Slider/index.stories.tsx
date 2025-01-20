@@ -11,6 +11,7 @@ export { Step } from './SliderStep.stories';
 export { MinMax } from './SliderMinMax.stories';
 export { Vertical } from './SliderVertical.stories';
 export { Disabled } from './SliderDisabled.stories';
+export { Customized } from './SliderCustomized.stories';
 
 export default {
   title: 'Components/Slider',
