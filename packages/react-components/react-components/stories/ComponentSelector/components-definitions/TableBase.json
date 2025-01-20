@@ -1,0 +1,4 @@
+{
+  "name": "TableBase",
+  "attributes": ["columnsAndRows", "narratesPosition"]
+}
