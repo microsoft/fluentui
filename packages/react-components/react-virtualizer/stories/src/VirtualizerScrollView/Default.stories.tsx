@@ -18,7 +18,12 @@ export const Default = () => {
     <VirtualizerScrollView
       numItems={childLength}
       itemSize={100}
-      container={{ role: 'list', style: { maxHeight: '80vh' } }}
+      container={{
+        role: 'list',
+        'aria-label': `Virtualized list with ${childLength} children`,
+        tabIndex: 0,
+        style: { maxHeight: '80vh' },
+      }}
     >
       {(index: number) => {
         return (
