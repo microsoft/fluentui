@@ -20,10 +20,12 @@ import {
   IDomainNRange,
   domainRangeOfXStringAxis,
   createStringYAxis,
+  resolveCSSVariables,
 } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
+import { getColorContrast } from '../../utilities/colors';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -351,6 +353,12 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     });
   };
 
+  private _getInvertedTextColor = (color: string): string => {
+    return color === this.props.theme!.semanticColors.bodyText
+      ? this.props.theme!.semanticColors.bodyBackground
+      : this.props.theme!.semanticColors.bodyText;
+  };
+
   /**
    * This is the function which is responsible for
    * drawing the rectangle in the graph and also
@@ -374,6 +382,15 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
            * data point such as x, y , value, rectText property of the rectangle
            */
           const dataPointObject = this._dataSet[yAxisDataPoint][index];
+          let styleRules = '';
+          let foregroundColor = this.props.theme!.semanticColors.bodyText;
+          if (this.chartContainer) {
+            styleRules = resolveCSSVariables(this.chartContainer!, foregroundColor);
+          }
+          const contrastRatio = getColorContrast(styleRules, this._colorScale(dataPointObject.value));
+          if (contrastRatio < 3) {
+            foregroundColor = this._getInvertedTextColor(foregroundColor);
+          }
           rectElement = (
             <g
               key={id}
@@ -401,6 +418,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
                 textAnchor={'middle'}
                 className={this._classNames.text}
                 transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
+                fill={foregroundColor}
               >
                 {convertToLocaleString(dataPointObject.rectText, this.props.culture)}
               </text>
