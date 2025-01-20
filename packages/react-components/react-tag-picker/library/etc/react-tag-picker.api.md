@@ -13,6 +13,7 @@ import { ComboboxSlots } from '@fluentui/react-combobox';
 import type { ComboboxState } from '@fluentui/react-combobox';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
 import { DropdownProps } from '@fluentui/react-combobox';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
@@ -79,6 +80,26 @@ export type TagPickerButtonSlots = {
 export type TagPickerButtonState = ComponentState<TagPickerButtonSlots> & Pick<TagPickerContextValue, 'size'> & {
     hasSelectedOption: boolean;
 };
+
+// @public (undocumented)
+export interface TagPickerContextValue extends Pick<ComboboxBaseState, 'open' | 'clearSelection' | 'getOptionById' | 'selectedOptions' | 'selectOption' | 'setHasFocus' | 'setOpen' | 'setValue' | 'value' | 'appearance' | 'disabled'> {
+    // (undocumented)
+    noPopover?: boolean;
+    // (undocumented)
+    popoverId: string;
+    // (undocumented)
+    popoverRef: React_2.RefObject<HTMLDivElement>;
+    // (undocumented)
+    secondaryActionRef: React_2.RefObject<HTMLSpanElement>;
+    // (undocumented)
+    size: TagPickerSize;
+    // (undocumented)
+    tagPickerGroupRef: React_2.RefObject<HTMLDivElement>;
+    // (undocumented)
+    targetRef: React_2.RefObject<HTMLDivElement>;
+    // (undocumented)
+    triggerRef: React_2.RefObject<HTMLInputElement | HTMLButtonElement>;
+}
 
 // @public (undocumented)
 export type TagPickerContextValues = {
@@ -245,6 +266,9 @@ export const useTagPickerButton_unstable: (props: TagPickerButtonProps, ref: Rea
 
 // @public
 export const useTagPickerButtonStyles_unstable: (state: TagPickerButtonState) => TagPickerButtonState;
+
+// @public (undocumented)
+export const useTagPickerContext_unstable: <T>(selector: ContextSelector<TagPickerContextValue, T>) => T;
 
 // @public
 export const useTagPickerControl_unstable: (props: TagPickerControlProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerControlState;
