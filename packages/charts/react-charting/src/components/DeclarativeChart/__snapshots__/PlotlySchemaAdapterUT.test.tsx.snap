@@ -368,6 +368,7 @@ exports[`transform Plotly Json To chart Props transformPlotlyJsonToGaugeProps - 
 Object {
   "chartTitle": "",
   "chartValue": 420,
+  "chartValueFormat": [Function],
   "height": 400,
   "maxValue": 500,
   "minValue": undefined,
