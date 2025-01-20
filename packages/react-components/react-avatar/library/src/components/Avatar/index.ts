@@ -3,7 +3,7 @@ export type {
   AvatarProps,
   AvatarShape,
   AvatarSize,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   AvatarSizes,
   AvatarSlots,
   AvatarState,

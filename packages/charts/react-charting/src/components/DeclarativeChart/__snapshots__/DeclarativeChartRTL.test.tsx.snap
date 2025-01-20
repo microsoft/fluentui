@@ -4043,7 +4043,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Speed. Gauge chart with 3 segments. "
+        aria-label="Gauge chart with 3 segments. "
         class=
 
             {
@@ -4057,20 +4057,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
         <g
           transform="translate(250, 340)"
         >
-          <text
-            aria-hidden="true"
-            class=
-
-                {
-                  fill: #323130;
-                  font-size: 12px;
-                }
-            text-anchor="middle"
-            x="0"
-            y="-205"
-          >
-            Speed
-          </text>
+          
           <text
             aria-label="Min value: 0"
             class=
@@ -4200,7 +4187,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
             class=
 
                 {
-                  fill: #9373c0;
+                  fill: #107c10;
                   font-size: 12px;
                   font-weight: 600;
                 }
@@ -5659,7 +5646,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </g>
         </g>
         <g
-          aria-label="x_0, y_19. , 1.4746401926975559."
+          aria-label="x_0, y_19. undefined, 1.4746401926975559."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -5691,7 +5678,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_19. , 76.5710413276318."
+          aria-label="x_1, y_19. undefined, 76.5710413276318."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -5723,7 +5710,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_19. , 22.444170064560886."
+          aria-label="x_2, y_19. undefined, 22.444170064560886."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -5755,7 +5742,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_19. , -11.754560357801614."
+          aria-label="x_3, y_19. undefined, -11.754560357801614."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -5787,7 +5774,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_19. , 31.65020848831535."
+          aria-label="x_4, y_19. undefined, 31.65020848831535."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -5819,7 +5806,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_19. , -6.747073251084499."
+          aria-label="x_5, y_19. undefined, -6.747073251084499."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -5851,7 +5838,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_19. , 10.677375854561543."
+          aria-label="x_6, y_19. undefined, 10.677375854561543."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -5883,7 +5870,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_19. , 18.290237353501528."
+          aria-label="x_7, y_19. undefined, 18.290237353501528."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -5915,7 +5902,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_19. , 44.04246479548906."
+          aria-label="x_8, y_19. undefined, 44.04246479548906."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -5947,7 +5934,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_19. , -0.9669084139974888."
+          aria-label="x_9, y_19. undefined, -0.9669084139974888."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -5979,7 +5966,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_19. , -10.02999798650989."
+          aria-label="x_10, y_19. undefined, -10.02999798650989."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6011,7 +5998,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_19. , 26.331023176529538."
+          aria-label="x_11, y_19. undefined, 26.331023176529538."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6043,7 +6030,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_19. , 23.744787277420585."
+          aria-label="x_12, y_19. undefined, 23.744787277420585."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6075,7 +6062,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_19. , 21.58401811955205."
+          aria-label="x_13, y_19. undefined, 21.58401811955205."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6107,7 +6094,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_19. , -5.054619683005746."
+          aria-label="x_14, y_19. undefined, -5.054619683005746."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6139,7 +6126,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_19. , -12.304220941049874."
+          aria-label="x_15, y_19. undefined, -12.304220941049874."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6171,7 +6158,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_19. , 22.0278850405599."
+          aria-label="x_16, y_19. undefined, 22.0278850405599."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6203,7 +6190,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_19. , 68.76140423378733."
+          aria-label="x_17, y_19. undefined, 68.76140423378733."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6235,7 +6222,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_19. , -11.104838839030073."
+          aria-label="x_18, y_19. undefined, -11.104838839030073."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6267,7 +6254,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_19. , 32.93901719565705."
+          aria-label="x_19, y_19. undefined, 32.93901719565705."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6299,7 +6286,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_18. , 2.008683713506029."
+          aria-label="x_0, y_18. undefined, 2.008683713506029."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6331,7 +6318,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_18. , 68.77074374390875."
+          aria-label="x_1, y_18. undefined, 68.77074374390875."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6363,7 +6350,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_18. , 27.561261630596558."
+          aria-label="x_2, y_18. undefined, 27.561261630596558."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6395,7 +6382,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_18. , -11.972754232678293."
+          aria-label="x_3, y_18. undefined, -11.972754232678293."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6427,7 +6414,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_18. , 27.652138241890253."
+          aria-label="x_4, y_18. undefined, 27.652138241890253."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6459,7 +6446,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_18. , -8.994598412149836."
+          aria-label="x_5, y_18. undefined, -8.994598412149836."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6491,7 +6478,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_18. , 16.01202612993778."
+          aria-label="x_6, y_18. undefined, 16.01202612993778."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6523,7 +6510,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_18. , 27.496822437992087."
+          aria-label="x_7, y_18. undefined, 27.496822437992087."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6555,7 +6542,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_18. , 42.223038572972655."
+          aria-label="x_8, y_18. undefined, 42.223038572972655."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6587,7 +6574,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_18. , 9.14302748045202."
+          aria-label="x_9, y_18. undefined, 9.14302748045202."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6619,7 +6606,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_18. , -9.49672264010566."
+          aria-label="x_10, y_18. undefined, -9.49672264010566."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6651,7 +6638,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_18. , 25.872388552562622."
+          aria-label="x_11, y_18. undefined, 25.872388552562622."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6683,7 +6670,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_18. , 29.591488992612543."
+          aria-label="x_12, y_18. undefined, 29.591488992612543."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6715,7 +6702,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_18. , 17.887210405056912."
+          aria-label="x_13, y_18. undefined, 17.887210405056912."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6747,7 +6734,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_18. , -5.273287251587566."
+          aria-label="x_14, y_18. undefined, -5.273287251587566."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6779,7 +6766,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_18. , -12.231659074097587."
+          aria-label="x_15, y_18. undefined, -12.231659074097587."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6811,7 +6798,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_18. , 25.21878307435221."
+          aria-label="x_16, y_18. undefined, 25.21878307435221."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6843,7 +6830,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_18. , 55.4498407189013."
+          aria-label="x_17, y_18. undefined, 55.4498407189013."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6875,7 +6862,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_18. , -16.160855914516."
+          aria-label="x_18, y_18. undefined, -16.160855914516."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6907,7 +6894,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_18. , 32.26936734704534."
+          aria-label="x_19, y_18. undefined, 32.26936734704534."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6939,7 +6926,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_17. , 8.834804620855842."
+          aria-label="x_0, y_17. undefined, 8.834804620855842."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -6971,7 +6958,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_17. , 58.63396530456222."
+          aria-label="x_1, y_17. undefined, 58.63396530456222."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7003,7 +6990,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_17. , 32.725737544844485."
+          aria-label="x_2, y_17. undefined, 32.725737544844485."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7035,7 +7022,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_17. , -13.465901648481573."
+          aria-label="x_3, y_17. undefined, -13.465901648481573."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7067,7 +7054,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_17. , 31.313375862796256."
+          aria-label="x_4, y_17. undefined, 31.313375862796256."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7099,7 +7086,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_17. , -1.937020141351771."
+          aria-label="x_5, y_17. undefined, -1.937020141351771."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7131,7 +7118,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_17. , 14.893297536987049."
+          aria-label="x_6, y_17. undefined, 14.893297536987049."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7163,7 +7150,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_17. , 23.629750932895455."
+          aria-label="x_7, y_17. undefined, 23.629750932895455."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7195,7 +7182,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_17. , 41.77269087492713."
+          aria-label="x_8, y_17. undefined, 41.77269087492713."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7227,7 +7214,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_17. , 9.082388429023517."
+          aria-label="x_9, y_17. undefined, 9.082388429023517."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7259,7 +7246,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_17. , -6.034577415215565."
+          aria-label="x_10, y_17. undefined, -6.034577415215565."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7291,7 +7278,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_17. , 26.401238496860607."
+          aria-label="x_11, y_17. undefined, 26.401238496860607."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7323,7 +7310,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_17. , 30.051671106505943."
+          aria-label="x_12, y_17. undefined, 30.051671106505943."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7355,7 +7342,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_17. , 23.834062269627154."
+          aria-label="x_13, y_17. undefined, 23.834062269627154."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7387,7 +7374,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_17. , -3.561155588342318."
+          aria-label="x_14, y_17. undefined, -3.561155588342318."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7419,7 +7406,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_17. , -10.717340944667358."
+          aria-label="x_15, y_17. undefined, -10.717340944667358."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7451,7 +7438,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_17. , 25.98741506616426."
+          aria-label="x_16, y_17. undefined, 25.98741506616426."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7483,7 +7470,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_17. , 55.13836837404197."
+          aria-label="x_17, y_17. undefined, 55.13836837404197."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7515,7 +7502,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_17. , -12.222227236438126."
+          aria-label="x_18, y_17. undefined, -12.222227236438126."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7547,7 +7534,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_17. , 30.768724196434682."
+          aria-label="x_19, y_17. undefined, 30.768724196434682."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7579,7 +7566,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_16. , 9.52854140993721."
+          aria-label="x_0, y_16. undefined, 9.52854140993721."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7611,7 +7598,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_16. , 66.15934256222516."
+          aria-label="x_1, y_16. undefined, 66.15934256222516."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7643,7 +7630,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_16. , 25.727095609917317."
+          aria-label="x_2, y_16. undefined, 25.727095609917317."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7675,7 +7662,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_16. , -16.01042996598902."
+          aria-label="x_3, y_16. undefined, -16.01042996598902."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7707,7 +7694,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_16. , 24.77811171644336."
+          aria-label="x_4, y_16. undefined, 24.77811171644336."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7739,7 +7726,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_16. , -1.2825355952790376."
+          aria-label="x_5, y_16. undefined, -1.2825355952790376."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7771,7 +7758,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_16. , 19.064261874916085."
+          aria-label="x_6, y_16. undefined, 19.064261874916085."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7803,7 +7790,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_16. , 14.509555473536986."
+          aria-label="x_7, y_16. undefined, 14.509555473536986."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7835,7 +7822,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_16. , 43.57067434580797."
+          aria-label="x_8, y_16. undefined, 43.57067434580797."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7867,7 +7854,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_16. , 7.890650307112603."
+          aria-label="x_9, y_16. undefined, 7.890650307112603."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7899,7 +7886,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_16. , 1.6731169765193206."
+          aria-label="x_10, y_16. undefined, 1.6731169765193206."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7931,7 +7918,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_16. , 11.216733394728445."
+          aria-label="x_11, y_16. undefined, 11.216733394728445."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7963,7 +7950,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_16. , 25.858459074516183."
+          aria-label="x_12, y_16. undefined, 25.858459074516183."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -7995,7 +7982,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_16. , 18.23274943606415."
+          aria-label="x_13, y_16. undefined, 18.23274943606415."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8027,7 +8014,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_16. , -1.5424885952686824."
+          aria-label="x_14, y_16. undefined, -1.5424885952686824."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8059,7 +8046,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_16. , -9.408565254995368."
+          aria-label="x_15, y_16. undefined, -9.408565254995368."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8091,7 +8078,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_16. , 24.78142561950699."
+          aria-label="x_16, y_16. undefined, 24.78142561950699."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8123,7 +8110,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_16. , 55.72892300395096."
+          aria-label="x_17, y_16. undefined, 55.72892300395096."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8155,7 +8142,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_16. , -6.132435488791322."
+          aria-label="x_18, y_16. undefined, -6.132435488791322."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8187,7 +8174,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_16. , 32.12418971970468."
+          aria-label="x_19, y_16. undefined, 32.12418971970468."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8219,7 +8206,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_15. , 18.3594620989525."
+          aria-label="x_0, y_15. undefined, 18.3594620989525."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8251,7 +8238,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_15. , 66.76755465163893."
+          aria-label="x_1, y_15. undefined, 66.76755465163893."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8283,7 +8270,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_15. , 23.378561600159312."
+          aria-label="x_2, y_15. undefined, 23.378561600159312."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8315,7 +8302,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_15. , -9.221557127656212."
+          aria-label="x_3, y_15. undefined, -9.221557127656212."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8347,7 +8334,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_15. , 28.23165649899542."
+          aria-label="x_4, y_15. undefined, 28.23165649899542."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8379,7 +8366,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_15. , -0.3620931039471351."
+          aria-label="x_5, y_15. undefined, -0.3620931039471351."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8411,7 +8398,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_15. , 28.91643855216486."
+          aria-label="x_6, y_15. undefined, 28.91643855216486."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8443,7 +8430,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_15. , 11.188848304771073."
+          aria-label="x_7, y_15. undefined, 11.188848304771073."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8475,7 +8462,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_15. , 43.30138646653476."
+          aria-label="x_8, y_15. undefined, 43.30138646653476."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8507,7 +8494,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_15. , 5.000880279196099."
+          aria-label="x_9, y_15. undefined, 5.000880279196099."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8539,7 +8526,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_15. , 1.955677009677276."
+          aria-label="x_10, y_15. undefined, 1.955677009677276."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8571,7 +8558,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_15. , 17.279662785715818."
+          aria-label="x_11, y_15. undefined, 17.279662785715818."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8603,7 +8590,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_15. , 26.178614647552152."
+          aria-label="x_12, y_15. undefined, 26.178614647552152."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8635,7 +8622,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_15. , 21.57198989722974."
+          aria-label="x_13, y_15. undefined, 21.57198989722974."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8667,7 +8654,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_15. , -1.3161643920050667."
+          aria-label="x_14, y_15. undefined, -1.3161643920050667."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8699,7 +8686,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_15. , -9.439334496282449."
+          aria-label="x_15, y_15. undefined, -9.439334496282449."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8731,7 +8718,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_15. , 18.312638310718047."
+          aria-label="x_16, y_15. undefined, 18.312638310718047."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8763,7 +8750,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_15. , 54.77270799612626."
+          aria-label="x_17, y_15. undefined, 54.77270799612626."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8795,7 +8782,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_15. , -13.618633943842825."
+          aria-label="x_18, y_15. undefined, -13.618633943842825."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8827,7 +8814,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_15. , 34.04601203745518."
+          aria-label="x_19, y_15. undefined, 34.04601203745518."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8859,7 +8846,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_14. , 17.878378279408615."
+          aria-label="x_0, y_14. undefined, 17.878378279408615."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8891,7 +8878,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_14. , 65.61603877495548."
+          aria-label="x_1, y_14. undefined, 65.61603877495548."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8923,7 +8910,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_14. , 21.1073514253479."
+          aria-label="x_2, y_14. undefined, 21.1073514253479."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8955,7 +8942,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_14. , -9.253213203481765."
+          aria-label="x_3, y_14. undefined, -9.253213203481765."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -8987,7 +8974,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_14. , 27.879670681460908."
+          aria-label="x_4, y_14. undefined, 27.879670681460908."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9019,7 +9006,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_14. , -2.8320537701090256."
+          aria-label="x_5, y_14. undefined, -2.8320537701090256."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9051,7 +9038,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_14. , 26.13796211607032."
+          aria-label="x_6, y_14. undefined, 26.13796211607032."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9083,7 +9070,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_14. , 24.926244822709098."
+          aria-label="x_7, y_14. undefined, 24.926244822709098."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9115,7 +9102,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_14. , 41.22820882460708."
+          aria-label="x_8, y_14. undefined, 41.22820882460708."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9147,7 +9134,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_14. , 4.291828909220028."
+          aria-label="x_9, y_14. undefined, 4.291828909220028."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9179,7 +9166,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_14. , 4.713688574820864."
+          aria-label="x_10, y_14. undefined, 4.713688574820864."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9211,7 +9198,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_14. , 16.71505221410986."
+          aria-label="x_11, y_14. undefined, 16.71505221410986."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9243,7 +9230,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_14. , 27.48982397761371."
+          aria-label="x_12, y_14. undefined, 27.48982397761371."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9275,7 +9262,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_14. , 14.998235183145638."
+          aria-label="x_13, y_14. undefined, 14.998235183145638."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9307,7 +9294,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_14. , -1.0419904618770504."
+          aria-label="x_14, y_14. undefined, -1.0419904618770504."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9339,7 +9326,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_14. , -0.1509352342460648."
+          aria-label="x_15, y_14. undefined, -0.1509352342460648."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9371,7 +9358,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_14. , 11.562765259884168."
+          aria-label="x_16, y_14. undefined, 11.562765259884168."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9403,7 +9390,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_14. , 54.381939331520186."
+          aria-label="x_17, y_14. undefined, 54.381939331520186."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9435,7 +9422,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_14. , -15.369316543252658."
+          aria-label="x_18, y_14. undefined, -15.369316543252658."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9467,7 +9454,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_14. , 25.018616836414115."
+          aria-label="x_19, y_14. undefined, 25.018616836414115."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9499,7 +9486,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_13. , 9.197351864496074."
+          aria-label="x_0, y_13. undefined, 9.197351864496074."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9531,7 +9518,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_13. , 55.98556586180058."
+          aria-label="x_1, y_13. undefined, 55.98556586180058."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9563,7 +9550,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_13. , 19.688495387348357."
+          aria-label="x_2, y_13. undefined, 19.688495387348357."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9595,7 +9582,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_13. , -1.1757697666321."
+          aria-label="x_3, y_13. undefined, -1.1757697666321."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9627,7 +9614,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_13. , 26.78831096366896."
+          aria-label="x_4, y_13. undefined, 26.78831096366896."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9659,7 +9646,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_13. , -5.206570891432279."
+          aria-label="x_5, y_13. undefined, -5.206570891432279."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9691,7 +9678,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_13. , 29.755041090905404."
+          aria-label="x_6, y_13. undefined, 29.755041090905404."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9723,7 +9710,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_13. , 35.45913888587404."
+          aria-label="x_7, y_13. undefined, 35.45913888587404."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9755,7 +9742,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_13. , 48.543398737558654."
+          aria-label="x_8, y_13. undefined, 48.543398737558654."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9787,7 +9774,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_13. , 3.274578409778302."
+          aria-label="x_9, y_13. undefined, 3.274578409778302."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9819,7 +9806,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_13. , 7.640442280843416."
+          aria-label="x_10, y_13. undefined, 7.640442280843416."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9851,7 +9838,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_13. , 6.615425581412669."
+          aria-label="x_11, y_13. undefined, 6.615425581412669."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9883,7 +9870,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_13. , 27.520672134556655."
+          aria-label="x_12, y_13. undefined, 27.520672134556655."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9915,7 +9902,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_13. , 17.13948338893387."
+          aria-label="x_13, y_13. undefined, 17.13948338893387."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9947,7 +9934,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_13. , -0.7130168306222968."
+          aria-label="x_14, y_13. undefined, -0.7130168306222968."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -9979,7 +9966,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_13. , 3.4923248627721257."
+          aria-label="x_15, y_13. undefined, 3.4923248627721257."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10011,7 +9998,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_13. , 10.663420634170265."
+          aria-label="x_16, y_13. undefined, 10.663420634170265."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10043,7 +10030,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_13. , 62.79712211239938."
+          aria-label="x_17, y_13. undefined, 62.79712211239938."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10075,7 +10062,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_13. , -7.102421907260435."
+          aria-label="x_18, y_13. undefined, -7.102421907260435."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10107,7 +10094,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_13. , 25.96909143426486."
+          aria-label="x_19, y_13. undefined, 25.96909143426486."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10139,7 +10126,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_12. , 3.673504371828866."
+          aria-label="x_0, y_12. undefined, 3.673504371828866."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10171,7 +10158,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_12. , 55.66537870906952."
+          aria-label="x_1, y_12. undefined, 55.66537870906952."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10203,7 +10190,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_12. , 22.222025244923273."
+          aria-label="x_2, y_12. undefined, 22.222025244923273."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10235,7 +10222,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_12. , -2.1871046243479864."
+          aria-label="x_3, y_12. undefined, -2.1871046243479864."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10267,7 +10254,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_12. , 28.014054309766728."
+          aria-label="x_4, y_12. undefined, 28.014054309766728."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10299,7 +10286,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_12. , -1.9343227464152601."
+          aria-label="x_5, y_12. undefined, -1.9343227464152601."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10331,7 +10318,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_12. , 29.16438526268995."
+          aria-label="x_6, y_12. undefined, 29.16438526268995."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10363,7 +10350,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_12. , 44.051494895676456."
+          aria-label="x_7, y_12. undefined, 44.051494895676456."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10395,7 +10382,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_12. , 47.138525452751004."
+          aria-label="x_8, y_12. undefined, 47.138525452751004."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10427,7 +10414,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_12. , -2.533067604753474."
+          aria-label="x_9, y_12. undefined, -2.533067604753474."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10459,7 +10446,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_12. , 2.4604369987892873."
+          aria-label="x_10, y_12. undefined, 2.4604369987892873."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10491,7 +10478,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_12. , 19.673236477344094."
+          aria-label="x_11, y_12. undefined, 19.673236477344094."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10523,7 +10510,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_12. , 23.43582349379937."
+          aria-label="x_12, y_12. undefined, 23.43582349379937."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10555,7 +10542,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_12. , 18.46461800040717."
+          aria-label="x_13, y_12. undefined, 18.46461800040717."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10587,7 +10574,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_12. , 3.2513035287755745."
+          aria-label="x_14, y_12. undefined, 3.2513035287755745."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10619,7 +10606,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_12. , 7.4638277204597046."
+          aria-label="x_15, y_12. undefined, 7.4638277204597046."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10651,7 +10638,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_12. , 5.836414662127938."
+          aria-label="x_16, y_12. undefined, 5.836414662127938."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10683,7 +10670,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_12. , 63.63736027633095."
+          aria-label="x_17, y_12. undefined, 63.63736027633095."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10715,7 +10702,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_12. , -2.3182235215935463."
+          aria-label="x_18, y_12. undefined, -2.3182235215935463."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10747,7 +10734,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_12. , 28.362102774855607."
+          aria-label="x_19, y_12. undefined, 28.362102774855607."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10779,7 +10766,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_11. , -1.2496939708148902."
+          aria-label="x_0, y_11. undefined, -1.2496939708148902."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10811,7 +10798,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_11. , 52.0753263525035."
+          aria-label="x_1, y_11. undefined, 52.0753263525035."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10843,7 +10830,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_11. , 16.573843720560127."
+          aria-label="x_2, y_11. undefined, 16.573843720560127."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10875,7 +10862,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_11. , 0.6254954059905691."
+          aria-label="x_3, y_11. undefined, 0.6254954059905691."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10907,7 +10894,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_11. , 25.67070005332393."
+          aria-label="x_4, y_11. undefined, 25.67070005332393."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10939,7 +10926,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_11. , 2.8833642841959586."
+          aria-label="x_5, y_11. undefined, 2.8833642841959586."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -10971,7 +10958,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_11. , 21.05489065711163."
+          aria-label="x_6, y_11. undefined, 21.05489065711163."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11003,7 +10990,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_11. , 45.54977153406254."
+          aria-label="x_7, y_11. undefined, 45.54977153406254."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11035,7 +11022,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_11. , 54.790476948309696."
+          aria-label="x_8, y_11. undefined, 54.790476948309696."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11067,7 +11054,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_11. , -1.1319446806674005."
+          aria-label="x_9, y_11. undefined, -1.1319446806674005."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11099,7 +11086,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_11. , -6.836880142255078."
+          aria-label="x_10, y_11. undefined, -6.836880142255078."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11131,7 +11118,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_11. , 15.502730715077965."
+          aria-label="x_11, y_11. undefined, 15.502730715077965."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11163,7 +11150,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_11. , 16.434991284495794."
+          aria-label="x_12, y_11. undefined, 16.434991284495794."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11195,7 +11182,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_11. , 20.05330736176254."
+          aria-label="x_13, y_11. undefined, 20.05330736176254."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11227,7 +11214,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_11. , 2.3102989662620654."
+          aria-label="x_14, y_11. undefined, 2.3102989662620654."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11259,7 +11246,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_11. , 6.6400837474901095."
+          aria-label="x_15, y_11. undefined, 6.6400837474901095."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11291,7 +11278,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_11. , 3.4554008460006247."
+          aria-label="x_16, y_11. undefined, 3.4554008460006247."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11323,7 +11310,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_11. , 54.703320294165096."
+          aria-label="x_17, y_11. undefined, 54.703320294165096."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11355,7 +11342,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_11. , -3.275155410653531."
+          aria-label="x_18, y_11. undefined, -3.275155410653531."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11387,7 +11374,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_11. , 34.69783250602105."
+          aria-label="x_19, y_11. undefined, 34.69783250602105."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11419,7 +11406,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_10. , -0.34155835630595655."
+          aria-label="x_0, y_10. undefined, -0.34155835630595655."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11451,7 +11438,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_10. , 52.257883472637104."
+          aria-label="x_1, y_10. undefined, 52.257883472637104."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11483,7 +11470,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_10. , 14.63013635132661."
+          aria-label="x_2, y_10. undefined, 14.63013635132661."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11515,7 +11502,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_10. , -1.1475310646451669."
+          aria-label="x_3, y_10. undefined, -1.1475310646451669."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11547,7 +11534,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_10. , 19.815434611539906."
+          aria-label="x_4, y_10. undefined, 19.815434611539906."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11579,7 +11566,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_10. , -0.3597615447940745."
+          aria-label="x_5, y_10. undefined, -0.3597615447940745."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11611,7 +11598,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_10. , 22.773438522174473."
+          aria-label="x_6, y_10. undefined, 22.773438522174473."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11643,7 +11630,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_10. , 45.16830973647258."
+          aria-label="x_7, y_10. undefined, 45.16830973647258."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11675,7 +11662,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_10. , 50.90620858214391."
+          aria-label="x_8, y_10. undefined, 50.90620858214391."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11707,7 +11694,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_10. , -4.123416917882673."
+          aria-label="x_9, y_10. undefined, -4.123416917882673."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11739,7 +11726,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_10. , -10.08874106711032."
+          aria-label="x_10, y_10. undefined, -10.08874106711032."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11771,7 +11758,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_10. , 17.77058648507848."
+          aria-label="x_11, y_10. undefined, 17.77058648507848."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11803,7 +11790,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_10. , 17.40525407651549."
+          aria-label="x_12, y_10. undefined, 17.40525407651549."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11835,7 +11822,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_10. , 19.428287067763215."
+          aria-label="x_13, y_10. undefined, 19.428287067763215."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11867,7 +11854,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_10. , 10.154808609159593."
+          aria-label="x_14, y_10. undefined, 10.154808609159593."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11899,7 +11886,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_10. , 9.41560200751194."
+          aria-label="x_15, y_10. undefined, 9.41560200751194."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11931,7 +11918,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_10. , 1.9106824056688325."
+          aria-label="x_16, y_10. undefined, 1.9106824056688325."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11963,7 +11950,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_10. , 55.50321452563245."
+          aria-label="x_17, y_10. undefined, 55.50321452563245."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -11995,7 +11982,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_10. , -1.086930629298445."
+          aria-label="x_18, y_10. undefined, -1.086930629298445."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12027,7 +12014,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_10. , 29.942519927990794."
+          aria-label="x_19, y_10. undefined, 29.942519927990794."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12059,7 +12046,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_9. , 1.3315750803470996."
+          aria-label="x_0, y_9. undefined, 1.3315750803470996."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12091,7 +12078,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_9. , 45.90255894008207."
+          aria-label="x_1, y_9. undefined, 45.90255894008207."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12123,7 +12110,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_9. , 9.162060301209916."
+          aria-label="x_2, y_9. undefined, 9.162060301209916."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12155,7 +12142,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_9. , -1.2943200134022526."
+          aria-label="x_3, y_9. undefined, -1.2943200134022526."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12187,7 +12174,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_9. , 21.982396858443334."
+          aria-label="x_4, y_9. undefined, 21.982396858443334."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12219,7 +12206,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_9. , -2.0046315173801657."
+          aria-label="x_5, y_9. undefined, -2.0046315173801657."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12251,7 +12238,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_9. , 23.75776947991829."
+          aria-label="x_6, y_9. undefined, 23.75776947991829."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12283,7 +12270,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_9. , 42.681396519281044."
+          aria-label="x_7, y_9. undefined, 42.681396519281044."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12315,7 +12302,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_9. , 44.65189694360409."
+          aria-label="x_8, y_9. undefined, 44.65189694360409."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12347,7 +12334,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_9. , -3.233129329636757."
+          aria-label="x_9, y_9. undefined, -3.233129329636757."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12379,7 +12366,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_9. , -11.7007015295863."
+          aria-label="x_10, y_9. undefined, -11.7007015295863."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12411,7 +12398,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_9. , 8.768962763531919."
+          aria-label="x_11, y_9. undefined, 8.768962763531919."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12443,7 +12430,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_9. , 21.48008268870696."
+          aria-label="x_12, y_9. undefined, 21.48008268870696."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12475,7 +12462,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_9. , 11.750650693071353."
+          aria-label="x_13, y_9. undefined, 11.750650693071353."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12507,7 +12494,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_9. , 10.314016323078881."
+          aria-label="x_14, y_9. undefined, 10.314016323078881."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12539,7 +12526,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_9. , 6.044971885000999."
+          aria-label="x_15, y_9. undefined, 6.044971885000999."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12571,7 +12558,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_9. , 0.39568846222827236."
+          aria-label="x_16, y_9. undefined, 0.39568846222827236."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12603,7 +12590,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_9. , 56.79992555682459."
+          aria-label="x_17, y_9. undefined, 56.79992555682459."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12635,7 +12622,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_9. , 9.686881597266042."
+          aria-label="x_18, y_9. undefined, 9.686881597266042."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12667,7 +12654,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_9. , 29.573837224244713."
+          aria-label="x_19, y_9. undefined, 29.573837224244713."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12699,7 +12686,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_8. , 0.02929945240777787."
+          aria-label="x_0, y_8. undefined, 0.02929945240777787."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12731,7 +12718,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_8. , 47.8943258538308."
+          aria-label="x_1, y_8. undefined, 47.8943258538308."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12763,7 +12750,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_8. , 13.4384038570412."
+          aria-label="x_2, y_8. undefined, 13.4384038570412."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12795,7 +12782,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_8. , 17.917433759396193."
+          aria-label="x_3, y_8. undefined, 17.917433759396193."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12827,7 +12814,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_8. , 17.039432522289083."
+          aria-label="x_4, y_8. undefined, 17.039432522289083."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12859,7 +12846,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_8. , -4.774743239794282."
+          aria-label="x_5, y_8. undefined, -4.774743239794282."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12891,7 +12878,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_8. , 12.169188113505435."
+          aria-label="x_6, y_8. undefined, 12.169188113505435."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12923,7 +12910,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_8. , 40.42317097918186."
+          aria-label="x_7, y_8. undefined, 40.42317097918186."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12955,7 +12942,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_8. , 37.22474246115934."
+          aria-label="x_8, y_8. undefined, 37.22474246115934."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -12987,7 +12974,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_8. , 0.22091049853526112."
+          aria-label="x_9, y_8. undefined, 0.22091049853526112."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13019,7 +13006,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_8. , -9.687370268531138."
+          aria-label="x_10, y_8. undefined, -9.687370268531138."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13051,7 +13038,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_8. , 10.608534707379862."
+          aria-label="x_11, y_8. undefined, 10.608534707379862."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13083,7 +13070,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_8. , 22.489367975650175."
+          aria-label="x_12, y_8. undefined, 22.489367975650175."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13115,7 +13102,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_8. , 10.669348146795615."
+          aria-label="x_13, y_8. undefined, 10.669348146795615."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13147,7 +13134,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_8. , 13.95650541886101."
+          aria-label="x_14, y_8. undefined, 13.95650541886101."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13179,7 +13166,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_8. , 6.839552569406474."
+          aria-label="x_15, y_8. undefined, 6.839552569406474."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13211,7 +13198,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_8. , 2.066756467090924."
+          aria-label="x_16, y_8. undefined, 2.066756467090924."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13243,7 +13230,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_8. , 54.581934085152405."
+          aria-label="x_17, y_8. undefined, 54.581934085152405."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13275,7 +13262,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_8. , 3.5319443821756225."
+          aria-label="x_18, y_8. undefined, 3.5319443821756225."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13307,7 +13294,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_8. , 24.532968918280666."
+          aria-label="x_19, y_8. undefined, 24.532968918280666."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13339,7 +13326,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_7. , -7.513284950652834."
+          aria-label="x_0, y_7. undefined, -7.513284950652834."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13371,7 +13358,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_7. , 44.21182779048812."
+          aria-label="x_1, y_7. undefined, 44.21182779048812."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13403,7 +13390,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_7. , 14.479713711226983."
+          aria-label="x_2, y_7. undefined, 14.479713711226983."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13435,7 +13422,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_7. , 17.660499931671584."
+          aria-label="x_3, y_7. undefined, 17.660499931671584."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13467,7 +13454,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_7. , 14.436062506263415."
+          aria-label="x_4, y_7. undefined, 14.436062506263415."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13499,7 +13486,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_7. , -8.630753569571617."
+          aria-label="x_5, y_7. undefined, -8.630753569571617."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13531,7 +13518,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_7. , 18.920515851612024."
+          aria-label="x_6, y_7. undefined, 18.920515851612024."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13563,7 +13550,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_7. , 41.961872256649784."
+          aria-label="x_7, y_7. undefined, 41.961872256649784."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13595,7 +13582,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_7. , 30.992785862263872."
+          aria-label="x_8, y_7. undefined, 30.992785862263872."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13627,7 +13614,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_7. , 0.3821317782171232."
+          aria-label="x_9, y_7. undefined, 0.3821317782171232."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13659,7 +13646,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_7. , -9.481337721021028."
+          aria-label="x_10, y_7. undefined, -9.481337721021028."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13691,7 +13678,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_7. , 1.6266164906990555."
+          aria-label="x_11, y_7. undefined, 1.6266164906990555."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13723,7 +13710,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_7. , 20.52198483872326."
+          aria-label="x_12, y_7. undefined, 20.52198483872326."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13755,7 +13742,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_7. , 9.822475957217343."
+          aria-label="x_13, y_7. undefined, 9.822475957217343."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13787,7 +13774,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_7. , 15.658011352744083."
+          aria-label="x_14, y_7. undefined, 15.658011352744083."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13819,7 +13806,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_7. , 12.855391500184762."
+          aria-label="x_15, y_7. undefined, 12.855391500184762."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13851,7 +13838,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_7. , 10.723957376497331."
+          aria-label="x_16, y_7. undefined, 10.723957376497331."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13883,7 +13870,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_7. , 41.76485494373556."
+          aria-label="x_17, y_7. undefined, 41.76485494373556."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13915,7 +13902,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_7. , 2.2340479176319485."
+          aria-label="x_18, y_7. undefined, 2.2340479176319485."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13947,7 +13934,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_7. , 16.088953253894616."
+          aria-label="x_19, y_7. undefined, 16.088953253894616."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -13979,7 +13966,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_6. , -6.877933971525136."
+          aria-label="x_0, y_6. undefined, -6.877933971525136."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14011,7 +13998,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_6. , 44.04384439381119."
+          aria-label="x_1, y_6. undefined, 44.04384439381119."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14043,7 +14030,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_6. , 13.548126342387011."
+          aria-label="x_2, y_6. undefined, 13.548126342387011."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14075,7 +14062,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_6. , 17.74014481550033."
+          aria-label="x_3, y_6. undefined, 17.74014481550033."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14107,7 +14094,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_6. , 15.7912983146064."
+          aria-label="x_4, y_6. undefined, 15.7912983146064."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14139,7 +14126,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_6. , -6.563883600581922."
+          aria-label="x_5, y_6. undefined, -6.563883600581922."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14171,7 +14158,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_6. , 21.49865383744765."
+          aria-label="x_6, y_6. undefined, 21.49865383744765."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14203,7 +14190,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_6. , 38.24729505908534."
+          aria-label="x_7, y_6. undefined, 38.24729505908534."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14235,7 +14222,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_6. , 25.710457133039732."
+          aria-label="x_8, y_6. undefined, 25.710457133039732."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14267,7 +14254,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_6. , 2.2251747151953722."
+          aria-label="x_9, y_6. undefined, 2.2251747151953722."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14299,7 +14286,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_6. , -10.093623877175773."
+          aria-label="x_10, y_6. undefined, -10.093623877175773."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14331,7 +14318,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_6. , 1.9137585062069147."
+          aria-label="x_11, y_6. undefined, 1.9137585062069147."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14363,7 +14350,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_6. , 28.853944000537858."
+          aria-label="x_12, y_6. undefined, 28.853944000537858."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14395,7 +14382,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_6. , 9.119846857537635."
+          aria-label="x_13, y_6. undefined, 9.119846857537635."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14427,7 +14414,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_6. , 16.770107402461807."
+          aria-label="x_14, y_6. undefined, 16.770107402461807."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14459,7 +14446,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_6. , 7.3577813910229235."
+          aria-label="x_15, y_6. undefined, 7.3577813910229235."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14491,7 +14478,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_6. , 5.875139865786533."
+          aria-label="x_16, y_6. undefined, 5.875139865786533."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14523,7 +14510,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_6. , 39.12143717188403."
+          aria-label="x_17, y_6. undefined, 39.12143717188403."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14555,7 +14542,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_6. , 1.341905660672623."
+          aria-label="x_18, y_6. undefined, 1.341905660672623."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14587,7 +14574,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_6. , 16.777803239858564."
+          aria-label="x_19, y_6. undefined, 16.777803239858564."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14619,7 +14606,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_5. , 1.3848305486418013."
+          aria-label="x_0, y_5. undefined, 1.3848305486418013."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14651,7 +14638,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_5. , 28.88858899620542."
+          aria-label="x_1, y_5. undefined, 28.88858899620542."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14683,7 +14670,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_5. , 12.971410893817621."
+          aria-label="x_2, y_5. undefined, 12.971410893817621."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14715,7 +14702,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_5. , 21.143305039916708."
+          aria-label="x_3, y_5. undefined, 21.143305039916708."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14747,7 +14734,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_5. , 7.466382276034302."
+          aria-label="x_4, y_5. undefined, 7.466382276034302."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14779,7 +14766,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_5. , -2.108394838355938."
+          aria-label="x_5, y_5. undefined, -2.108394838355938."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14811,7 +14798,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_5. , 16.027000754389025."
+          aria-label="x_6, y_5. undefined, 16.027000754389025."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14843,7 +14830,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_5. , 40.70844626018491."
+          aria-label="x_7, y_5. undefined, 40.70844626018491."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14875,7 +14862,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_5. , 25.966261645863177."
+          aria-label="x_8, y_5. undefined, 25.966261645863177."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14907,7 +14894,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_5. , 0.9043901831061678."
+          aria-label="x_9, y_5. undefined, 0.9043901831061678."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14939,7 +14926,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_5. , -0.6718858579700804."
+          aria-label="x_10, y_5. undefined, -0.6718858579700804."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -14971,7 +14958,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_5. , 2.6597070827875093."
+          aria-label="x_11, y_5. undefined, 2.6597070827875093."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15003,7 +14990,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_5. , 36.093975687401766."
+          aria-label="x_12, y_5. undefined, 36.093975687401766."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15035,7 +15022,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_5. , 12.79240265673884."
+          aria-label="x_13, y_5. undefined, 12.79240265673884."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15067,7 +15054,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_5. , 16.292076219475025."
+          aria-label="x_14, y_5. undefined, 16.292076219475025."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15099,7 +15086,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_5. , 13.792475502830154."
+          aria-label="x_15, y_5. undefined, 13.792475502830154."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15131,7 +15118,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_5. , 9.90068532879486."
+          aria-label="x_16, y_5. undefined, 9.90068532879486."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15163,7 +15150,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_5. , 36.74806639404701."
+          aria-label="x_17, y_5. undefined, 36.74806639404701."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15195,7 +15182,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_5. , 26.577346684827898."
+          aria-label="x_18, y_5. undefined, 26.577346684827898."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15227,7 +15214,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_5. , 16.005211030243927."
+          aria-label="x_19, y_5. undefined, 16.005211030243927."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15259,7 +15246,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_4. , 10.424697200562369."
+          aria-label="x_0, y_4. undefined, 10.424697200562369."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15291,7 +15278,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_4. , 28.78022939969912."
+          aria-label="x_1, y_4. undefined, 28.78022939969912."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15323,7 +15310,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_4. , 3.274446200066722."
+          aria-label="x_2, y_4. undefined, 3.274446200066722."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15355,7 +15342,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_4. , 8.669870516018236."
+          aria-label="x_3, y_4. undefined, 8.669870516018236."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15387,7 +15374,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_4. , 17.75655781585482."
+          aria-label="x_4, y_4. undefined, 17.75655781585482."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15419,7 +15406,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_4. , -6.896721183137775."
+          aria-label="x_5, y_4. undefined, -6.896721183137775."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15451,7 +15438,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_4. , 17.337127681913973."
+          aria-label="x_6, y_4. undefined, 17.337127681913973."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15483,7 +15470,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_4. , 42.70107878756259."
+          aria-label="x_7, y_4. undefined, 42.70107878756259."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15515,7 +15502,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_4. , 27.376076996458107."
+          aria-label="x_8, y_4. undefined, 27.376076996458107."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15547,7 +15534,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_4. , 10.416788406228507."
+          aria-label="x_9, y_4. undefined, 10.416788406228507."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15579,7 +15566,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_4. , 5.9545352540812."
+          aria-label="x_10, y_4. undefined, 5.9545352540812."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15611,7 +15598,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_4. , 15.043018310072712."
+          aria-label="x_11, y_4. undefined, 15.043018310072712."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15643,7 +15630,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_4. , 32.12573718137715."
+          aria-label="x_12, y_4. undefined, 32.12573718137715."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15675,7 +15662,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_4. , 11.294834569956391."
+          aria-label="x_13, y_4. undefined, 11.294834569956391."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15707,7 +15694,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_4. , 16.313424113247194."
+          aria-label="x_14, y_4. undefined, 16.313424113247194."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15739,7 +15726,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_4. , 15.444451104553893."
+          aria-label="x_15, y_4. undefined, 15.444451104553893."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15771,7 +15758,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_4. , 10.443516068409753."
+          aria-label="x_16, y_4. undefined, 10.443516068409753."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15803,7 +15790,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_4. , 33.07558322142471."
+          aria-label="x_17, y_4. undefined, 33.07558322142471."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15835,7 +15822,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_4. , 22.67825393852671."
+          aria-label="x_18, y_4. undefined, 22.67825393852671."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15867,7 +15854,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_4. , 14.910979364805373."
+          aria-label="x_19, y_4. undefined, 14.910979364805373."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15899,7 +15886,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_3. , 12.732656491556462."
+          aria-label="x_0, y_3. undefined, 12.732656491556462."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15931,7 +15918,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_3. , 24.158612074358526."
+          aria-label="x_1, y_3. undefined, 24.158612074358526."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15963,7 +15950,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_3. , 1.8639666906231516."
+          aria-label="x_2, y_3. undefined, 1.8639666906231516."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -15995,7 +15982,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_3. , 9.195075731494875."
+          aria-label="x_3, y_3. undefined, 9.195075731494875."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16027,7 +16014,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_3. , 19.788944565361437."
+          aria-label="x_4, y_3. undefined, 19.788944565361437."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16059,7 +16046,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_3. , -6.833645216204284."
+          aria-label="x_5, y_3. undefined, -6.833645216204284."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16091,7 +16078,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_3. , 9.969142303073252."
+          aria-label="x_6, y_3. undefined, 9.969142303073252."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16123,7 +16110,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_3. , 46.34145242145437."
+          aria-label="x_7, y_3. undefined, 46.34145242145437."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16155,7 +16142,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_3. , 27.310374393715577."
+          aria-label="x_8, y_3. undefined, 27.310374393715577."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16187,7 +16174,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_3. , 15.451738777747869."
+          aria-label="x_9, y_3. undefined, 15.451738777747869."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16219,7 +16206,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_3. , 6.691398648622392."
+          aria-label="x_10, y_3. undefined, 6.691398648622392."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16251,7 +16238,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_3. , 14.55281641333698."
+          aria-label="x_11, y_3. undefined, 14.55281641333698."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16283,7 +16270,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_3. , 31.321025344254267."
+          aria-label="x_12, y_3. undefined, 31.321025344254267."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16315,7 +16302,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_3. , 9.311054030160307."
+          aria-label="x_13, y_3. undefined, 9.311054030160307."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16347,7 +16334,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_3. , 12.004790333591908."
+          aria-label="x_14, y_3. undefined, 12.004790333591908."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16379,7 +16366,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_3. , 13.059625413572078."
+          aria-label="x_15, y_3. undefined, 13.059625413572078."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16411,7 +16398,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_3. , 10.25485330260371."
+          aria-label="x_16, y_3. undefined, 10.25485330260371."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16443,7 +16430,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_3. , 29.181400631242038."
+          aria-label="x_17, y_3. undefined, 29.181400631242038."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16475,7 +16462,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_3. , 17.203123079730577."
+          aria-label="x_18, y_3. undefined, 17.203123079730577."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16507,7 +16494,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_3. , 15.96262678993938."
+          aria-label="x_19, y_3. undefined, 15.96262678993938."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16539,7 +16526,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_2. , 16.104827483834423."
+          aria-label="x_0, y_2. undefined, 16.104827483834423."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16571,7 +16558,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_2. , 16.816096580158092."
+          aria-label="x_1, y_2. undefined, 16.816096580158092."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16603,7 +16590,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_2. , -1.0796033248100874."
+          aria-label="x_2, y_2. undefined, -1.0796033248100874."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16635,7 +16622,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_2. , 13.037577162924944."
+          aria-label="x_3, y_2. undefined, 13.037577162924944."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16667,7 +16654,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_2. , 25.071276081749808."
+          aria-label="x_4, y_2. undefined, 25.071276081749808."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16699,7 +16686,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_2. , -6.016235615271988."
+          aria-label="x_5, y_2. undefined, -6.016235615271988."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16731,7 +16718,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_2. , 12.248777535804365."
+          aria-label="x_6, y_2. undefined, 12.248777535804365."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16763,7 +16750,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_2. , 35.617617939013286."
+          aria-label="x_7, y_2. undefined, 35.617617939013286."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16795,7 +16782,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_2. , 20.621055215762404."
+          aria-label="x_8, y_2. undefined, 20.621055215762404."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16827,7 +16814,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_2. , 18.321563171124787."
+          aria-label="x_9, y_2. undefined, 18.321563171124787."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16859,7 +16846,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_2. , 5.106104151848498."
+          aria-label="x_10, y_2. undefined, 5.106104151848498."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16891,7 +16878,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_2. , 20.47764211274059."
+          aria-label="x_11, y_2. undefined, 20.47764211274059."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16923,7 +16910,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_2. , 13.078423154116999."
+          aria-label="x_12, y_2. undefined, 13.078423154116999."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16955,7 +16942,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_2. , 4.270904076038434."
+          aria-label="x_13, y_2. undefined, 4.270904076038434."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -16987,7 +16974,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_2. , 10.32885307002288."
+          aria-label="x_14, y_2. undefined, 10.32885307002288."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17019,7 +17006,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_2. , 11.953280688550777."
+          aria-label="x_15, y_2. undefined, 11.953280688550777."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17051,7 +17038,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_2. , 1.5514493835400103."
+          aria-label="x_16, y_2. undefined, 1.5514493835400103."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17083,7 +17070,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_2. , 28.102083355215736."
+          aria-label="x_17, y_2. undefined, 28.102083355215736."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17115,7 +17102,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_2. , 11.122082151320692."
+          aria-label="x_18, y_2. undefined, 11.122082151320692."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17147,7 +17134,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_2. , 17.271525748515398."
+          aria-label="x_19, y_2. undefined, 17.271525748515398."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17179,7 +17166,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_1. , 18.072596781382654."
+          aria-label="x_0, y_1. undefined, 18.072596781382654."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17211,7 +17198,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_1. , 6.872368565119988."
+          aria-label="x_1, y_1. undefined, 6.872368565119988."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17243,7 +17230,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_1. , 2.6331323456979367."
+          aria-label="x_2, y_1. undefined, 2.6331323456979367."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17275,7 +17262,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_1. , 8.910260123844887."
+          aria-label="x_3, y_1. undefined, 8.910260123844887."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17307,7 +17294,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_1. , 23.29825386450679."
+          aria-label="x_4, y_1. undefined, 23.29825386450679."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17339,7 +17326,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_1. , 9.18418261775059."
+          aria-label="x_5, y_1. undefined, 9.18418261775059."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17371,7 +17358,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_1. , 18.052236884018036."
+          aria-label="x_6, y_1. undefined, 18.052236884018036."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17403,7 +17390,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_1. , 32.088269277118485."
+          aria-label="x_7, y_1. undefined, 32.088269277118485."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17435,7 +17422,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_1. , 15.862814449470617."
+          aria-label="x_8, y_1. undefined, 15.862814449470617."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17467,7 +17454,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_1. , 20.517302217015732."
+          aria-label="x_9, y_1. undefined, 20.517302217015732."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17499,7 +17486,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_1. , 1.5668378537843557."
+          aria-label="x_10, y_1. undefined, 1.5668378537843557."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17531,7 +17518,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_1. , 19.031137709612036."
+          aria-label="x_11, y_1. undefined, 19.031137709612036."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17563,7 +17550,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_1. , 12.133745300119848."
+          aria-label="x_12, y_1. undefined, 12.133745300119848."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17595,7 +17582,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_1. , 8.724453334098921."
+          aria-label="x_13, y_1. undefined, 8.724453334098921."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17627,7 +17614,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_1. , 8.972456038301432."
+          aria-label="x_14, y_1. undefined, 8.972456038301432."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17659,7 +17646,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_1. , 9.771921362871048."
+          aria-label="x_15, y_1. undefined, 9.771921362871048."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17691,7 +17678,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_1. , 4.761205803361531."
+          aria-label="x_16, y_1. undefined, 4.761205803361531."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17723,7 +17710,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_1. , 23.82727745555418."
+          aria-label="x_17, y_1. undefined, 23.82727745555418."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17755,7 +17742,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_1. , 14.369250386770794."
+          aria-label="x_18, y_1. undefined, 14.369250386770794."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17787,7 +17774,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_1. , 9.730029718884163."
+          aria-label="x_19, y_1. undefined, 9.730029718884163."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17819,7 +17806,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_0, y_0. , 12."
+          aria-label="x_0, y_0. undefined, 12."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17851,7 +17838,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_1, y_0. , 11.697147742124411."
+          aria-label="x_1, y_0. undefined, 11.697147742124411."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17883,7 +17870,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_2, y_0. , 7.1748009833505355."
+          aria-label="x_2, y_0. undefined, 7.1748009833505355."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17915,7 +17902,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_3, y_0. , 11.443688379214382."
+          aria-label="x_3, y_0. undefined, 11.443688379214382."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17947,7 +17934,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_4, y_0. , 23.648522429525176."
+          aria-label="x_4, y_0. undefined, 23.648522429525176."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -17979,7 +17966,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_5, y_0. , 10.040502684649338."
+          aria-label="x_5, y_0. undefined, 10.040502684649338."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -18011,7 +17998,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_6, y_0. , 10.819974608119614."
+          aria-label="x_6, y_0. undefined, 10.819974608119614."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -18043,7 +18030,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_7, y_0. , 20.83991840239746."
+          aria-label="x_7, y_0. undefined, 20.83991840239746."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -18075,7 +18062,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_8, y_0. , 14.378243279399832."
+          aria-label="x_8, y_0. undefined, 14.378243279399832."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -18107,7 +18094,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_9, y_0. , 9.546437633051273."
+          aria-label="x_9, y_0. undefined, 9.546437633051273."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -18139,7 +18126,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_10, y_0. , 2.117430162487592."
+          aria-label="x_10, y_0. undefined, 2.117430162487592."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -18171,7 +18158,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_11, y_0. , 24.053122758748437."
+          aria-label="x_11, y_0. undefined, 24.053122758748437."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -18203,7 +18190,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_12, y_0. , 14.741753869753929."
+          aria-label="x_12, y_0. undefined, 14.741753869753929."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -18235,7 +18222,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_13, y_0. , 11.223068582526338."
+          aria-label="x_13, y_0. undefined, 11.223068582526338."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -18267,7 +18254,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_14, y_0. , 2.9058799108357736."
+          aria-label="x_14, y_0. undefined, 2.9058799108357736."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -18299,7 +18286,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_15, y_0. , 12.523922839169199."
+          aria-label="x_15, y_0. undefined, 12.523922839169199."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -18331,7 +18318,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_16, y_0. , 12.426446278371158."
+          aria-label="x_16, y_0. undefined, 12.426446278371158."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -18363,7 +18350,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_17, y_0. , 15.786820017213348."
+          aria-label="x_17, y_0. undefined, 15.786820017213348."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -18395,7 +18382,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_18, y_0. , 25.828355052498736."
+          aria-label="x_18, y_0. undefined, 25.828355052498736."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -18427,7 +18414,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
           </text>
         </g>
         <g
-          aria-label="x_19, y_0. , 15.884458175971286."
+          aria-label="x_19, y_0. undefined, 15.884458175971286."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -24382,6 +24369,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
     >
       <div>
         <svg
+          aria-label=""
           class=
 
               {
@@ -24550,6 +24538,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                 500
               </text>
             </g>
+            
           </g>
         </svg>
       </div>
@@ -25048,7 +25037,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone33"
+      data-focuszone-id="FocusZone36"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -25068,14 +25057,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               }
         >
           <g
-            id="nodeGElement35"
+            id="nodeGElement38"
           >
             <rect
-              aria-label="node Leave+No – 16 with weight 16"
+              aria-label="node Remain+No – 28 with weight 28"
               data-is-focusable="true"
-              fill="#2aa0a4"
-              height="79.99999999999994"
-              id="nodeBar34"
+              fill="#e3008c"
+              height="99.37254901960782"
+              id="nodeBar37"
               opacity="1"
               role="img"
               stroke="#757575"
@@ -25108,10 +25097,85 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar34-name"
+                  id="nodeBar37-name"
                   text-anchor="start"
                   x="48"
                   y="36"
+                >
+                  Remain+No – 28
+                </text>
+              </g>
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="2em"
+                fill="#FFFFFF"
+                font-size="14"
+                font-weight="bold"
+                text-anchor="start"
+                x="48"
+                y="36"
+              >
+                28
+              </text>
+            </g>
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
+          <g
+            id="nodeGElement40"
+          >
+            <rect
+              aria-label="node Leave+No – 16 with weight 16"
+              data-is-focusable="true"
+              fill="#2aa0a4"
+              height="56.78431372549022"
+              id="nodeBar39"
+              opacity="1"
+              role="img"
+              stroke="#757575"
+              stroke-width="2"
+              tabindex="-1"
+              width="124"
+              x="48"
+              y="143.37254901960782"
+            />
+            <g
+              class=
+
+                  {
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                    fill: rgb(179, 179, 179);
+                  }
+            >
+              <g
+                class="nodeName"
+              >
+                <text
+                  aria-hidden="true"
+                  dx="0.4em"
+                  dy="1.2em"
+                  fill="#FFFFFF"
+                  font-size="10"
+                  font-weight="regular"
+                  id="nodeBar39-name"
+                  text-anchor="start"
+                  x="48"
+                  y="143.37254901960782"
                 >
                   Leave+No – 16
                 </text>
@@ -25125,7 +25189,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="36"
+                y="143.37254901960782"
               >
                 16
               </text>
@@ -25143,14 +25207,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               }
         >
           <g
-            id="nodeGElement37"
+            id="nodeGElement42"
           >
             <rect
               aria-label="node Remain+Yes – 21 with weight 22"
               data-is-focusable="true"
               fill="#9373c0"
-              height="110"
-              id="nodeBar36"
+              height="78.07843137254915"
+              id="nodeBar41"
               opacity="1"
               role="img"
               stroke="#757575"
@@ -25158,7 +25222,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               tabindex="-1"
               width="124"
               x="48"
-              y="123.99999999999994"
+              y="208.15686274509804"
             />
             <g
               class=
@@ -25183,10 +25247,10 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar36-name"
+                  id="nodeBar41-name"
                   text-anchor="start"
                   x="48"
-                  y="123.99999999999994"
+                  y="208.15686274509804"
                 >
                   Remain+Yes – 21
                 </text>
@@ -25200,7 +25264,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="123.99999999999994"
+                y="208.15686274509804"
               >
                 22
               </text>
@@ -25218,14 +25282,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               }
         >
           <g
-            id="nodeGElement39"
+            id="nodeGElement44"
           >
             <rect
               aria-label="node Leave+Yes – 14 with weight 14"
               data-is-focusable="true"
               fill="#13a10e"
-              height="70.00000000000011"
-              id="nodeBar38"
+              height="49.686274509803866"
+              id="nodeBar43"
               opacity="1"
               role="img"
               stroke="#757575"
@@ -25233,7 +25297,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               tabindex="-1"
               width="124"
               x="48"
-              y="241.99999999999994"
+              y="294.2352941176472"
             />
             <g
               class=
@@ -25258,10 +25322,10 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar38-name"
+                  id="nodeBar43-name"
                   text-anchor="start"
                   x="48"
-                  y="241.99999999999994"
+                  y="294.2352941176472"
                 >
                   Leave+Yes – 14
                 </text>
@@ -25275,7 +25339,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="241.99999999999994"
+                y="294.2352941176472"
               >
                 14
               </text>
@@ -25293,14 +25357,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               }
         >
           <g
-            id="nodeGElement41"
+            id="nodeGElement46"
           >
             <rect
               aria-label="node Didn’t vote in at least one referendum – 21 with weight 22"
               data-is-focusable="true"
               fill="#3a96dd"
-              height="110"
-              id="nodeBar40"
+              height="78.07843137254906"
+              id="nodeBar45"
               opacity="1"
               role="img"
               stroke="#757575"
@@ -25308,7 +25372,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               tabindex="-1"
               width="124"
               x="48"
-              y="320.00000000000006"
+              y="351.92156862745105"
             />
             <g
               class=
@@ -25333,10 +25397,10 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar40-name"
+                  id="nodeBar45-name"
                   text-anchor="start"
                   x="48"
-                  y="320.00000000000006"
+                  y="351.92156862745105"
                 >
                   Didn’t vote in at least one referendum – 21
                 </text>
@@ -25350,7 +25414,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 font-weight="bold"
                 text-anchor="start"
                 x="48"
-                y="320.00000000000006"
+                y="351.92156862745105"
               >
                 22
               </text>
@@ -25381,7 +25445,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               >
                 <stop
                   offset="0"
-                  stop-color="#2aa0a4"
+                  stop-color="#e3008c"
                 />
                 <stop
                   offset="100%"
@@ -25390,11 +25454,11 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               </lineargradient>
             </defs>
             <path
-              aria-label="link from Leave+No – 16 to 46 – No with weight 14"
-              d="M172,36C455.5,36,455.5,44,739,44L739,114C455.5,114,455.5,106,172,106Z"
+              aria-label="link from Remain+No – 28 to 46 – No with weight 20"
+              d="M172,36C455.5,36,455.5,47.482,739,47.482L739,118.462C455.5,118.462,455.5,106.98,172,106.98Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link50"
+              id="link53"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -25427,7 +25491,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               >
                 <stop
                   offset="0"
-                  stop-color="#2aa0a4"
+                  stop-color="#e3008c"
                 />
                 <stop
                   offset="100%"
@@ -25436,11 +25500,11 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               </lineargradient>
             </defs>
             <path
-              aria-label="link from Leave+No – 16 to 39 – Yes with weight 1"
-              d="M172,106C455.5,106,455.5,177,739,177L739,182C455.5,182,455.5,111,172,111Z"
+              aria-label="link from Remain+No – 28 to 39 – Yes with weight 3"
+              d="M172,106.98C455.5,106.98,455.5,215.188,739,215.188L739,225.835C455.5,225.835,455.5,117.627,172,117.627Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link51"
+              id="link54"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -25473,7 +25537,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               >
                 <stop
                   offset="0"
-                  stop-color="#2aa0a4"
+                  stop-color="#e3008c"
                 />
                 <stop
                   offset="100%"
@@ -25482,11 +25546,11 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               </lineargradient>
             </defs>
             <path
-              aria-label="link from Leave+No – 16 to 14 – Don’t know / would not vote with weight 1"
-              d="M172,111C455.5,111,455.5,365,739,365L739,370C455.5,370,455.5,116,172,116Z"
+              aria-label="link from Remain+No – 28 to 14 – Don’t know / would not vote with weight 5"
+              d="M172,117.627C455.5,117.627,455.5,361.6,739,361.6L739,379.345C455.5,379.345,455.5,135.373,172,135.373Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link52"
+              id="link55"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -25519,7 +25583,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               >
                 <stop
                   offset="0"
-                  stop-color="#9373c0"
+                  stop-color="#2aa0a4"
                 />
                 <stop
                   offset="100%"
@@ -25528,11 +25592,11 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               </lineargradient>
             </defs>
             <path
-              aria-label="link from Remain+Yes – 21 to 46 – No with weight 3"
-              d="M172,124C455.5,124,455.5,114,739,114L739,129C455.5,129,455.5,139,172,139Z"
+              aria-label="link from Leave+No – 16 to 46 – No with weight 14"
+              d="M172,143.373C455.5,143.373,455.5,118.462,739,118.462L739,168.149C455.5,168.149,455.5,193.059,172,193.059Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link53"
+              id="link56"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -25565,7 +25629,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               >
                 <stop
                   offset="0"
-                  stop-color="#9373c0"
+                  stop-color="#2aa0a4"
                 />
                 <stop
                   offset="100%"
@@ -25574,11 +25638,11 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               </lineargradient>
             </defs>
             <path
-              aria-label="link from Remain+Yes – 21 to 39 – Yes with weight 17"
-              d="M172,139C455.5,139,455.5,182,739,182L739,267C455.5,267,455.5,224,172,224Z"
+              aria-label="link from Leave+No – 16 to 39 – Yes with weight 1"
+              d="M172,193.059C455.5,193.059,455.5,225.835,739,225.835L739,229.384C455.5,229.384,455.5,196.608,172,196.608Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link54"
+              id="link57"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -25611,7 +25675,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               >
                 <stop
                   offset="0"
-                  stop-color="#9373c0"
+                  stop-color="#2aa0a4"
                 />
                 <stop
                   offset="100%"
@@ -25620,11 +25684,11 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               </lineargradient>
             </defs>
             <path
-              aria-label="link from Remain+Yes – 21 to 14 – Don’t know / would not vote with weight 2"
-              d="M172,224C455.5,224,455.5,370,739,370L739,380C455.5,380,455.5,234,172,234Z"
+              aria-label="link from Leave+No – 16 to 14 – Don’t know / would not vote with weight 1"
+              d="M172,196.608C455.5,196.608,455.5,379.345,739,379.345L739,382.894C455.5,382.894,455.5,200.157,172,200.157Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link55"
+              id="link58"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -25657,7 +25721,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               >
                 <stop
                   offset="0"
-                  stop-color="#13a10e"
+                  stop-color="#9373c0"
                 />
                 <stop
                   offset="100%"
@@ -25666,11 +25730,11 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               </lineargradient>
             </defs>
             <path
-              aria-label="link from Leave+Yes – 14 to 46 – No with weight 3"
-              d="M172,242C455.5,242,455.5,129,739,129L739,144C455.5,144,455.5,257,172,257Z"
+              aria-label="link from Remain+Yes – 21 to 46 – No with weight 3"
+              d="M172,208.157C455.5,208.157,455.5,168.149,739,168.149L739,178.796C455.5,178.796,455.5,218.804,172,218.804Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link56"
+              id="link59"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -25703,7 +25767,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               >
                 <stop
                   offset="0"
-                  stop-color="#13a10e"
+                  stop-color="#9373c0"
                 />
                 <stop
                   offset="100%"
@@ -25712,11 +25776,11 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               </lineargradient>
             </defs>
             <path
-              aria-label="link from Leave+Yes – 14 to 39 – Yes with weight 9"
-              d="M172,257C455.5,257,455.5,267,739,267L739,312C455.5,312,455.5,302,172,302Z"
+              aria-label="link from Remain+Yes – 21 to 39 – Yes with weight 17"
+              d="M172,218.804C455.5,218.804,455.5,229.384,739,229.384L739,289.717C455.5,289.717,455.5,279.137,172,279.137Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link57"
+              id="link60"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -25749,7 +25813,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               >
                 <stop
                   offset="0"
-                  stop-color="#13a10e"
+                  stop-color="#9373c0"
                 />
                 <stop
                   offset="100%"
@@ -25758,11 +25822,11 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               </lineargradient>
             </defs>
             <path
-              aria-label="link from Leave+Yes – 14 to 14 – Don’t know / would not vote with weight 2"
-              d="M172,302C455.5,302,455.5,380,739,380L739,390C455.5,390,455.5,312,172,312Z"
+              aria-label="link from Remain+Yes – 21 to 14 – Don’t know / would not vote with weight 2"
+              d="M172,279.137C455.5,279.137,455.5,382.894,739,382.894L739,389.992C455.5,389.992,455.5,286.235,172,286.235Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link58"
+              id="link61"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -25795,7 +25859,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               >
                 <stop
                   offset="0"
-                  stop-color="#3a96dd"
+                  stop-color="#13a10e"
                 />
                 <stop
                   offset="100%"
@@ -25804,11 +25868,11 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               </lineargradient>
             </defs>
             <path
-              aria-label="link from Didn’t vote in at least one referendum – 21 to 46 – No with weight 5"
-              d="M172,320C455.5,320,455.5,144,739,144L739,169C455.5,169,455.5,345,172,345Z"
+              aria-label="link from Leave+Yes – 14 to 46 – No with weight 3"
+              d="M172,294.235C455.5,294.235,455.5,178.796,739,178.796L739,189.443C455.5,189.443,455.5,304.882,172,304.882Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link59"
+              id="link62"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -25841,7 +25905,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               >
                 <stop
                   offset="0"
-                  stop-color="#3a96dd"
+                  stop-color="#13a10e"
                 />
                 <stop
                   offset="100%"
@@ -25850,11 +25914,11 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               </lineargradient>
             </defs>
             <path
-              aria-label="link from Didn’t vote in at least one referendum – 21 to 39 – Yes with weight 9"
-              d="M172,345C455.5,345,455.5,312,739,312L739,357C455.5,357,455.5,390,172,390Z"
+              aria-label="link from Leave+Yes – 14 to 39 – Yes with weight 9"
+              d="M172,304.882C455.5,304.882,455.5,289.717,739,289.717L739,321.658C455.5,321.658,455.5,336.824,172,336.824Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link60"
+              id="link63"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -25887,6 +25951,144 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               >
                 <stop
                   offset="0"
+                  stop-color="#13a10e"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#b146c2"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from Leave+Yes – 14 to 14 – Don’t know / would not vote with weight 2"
+              d="M172,336.824C455.5,336.824,455.5,389.992,739,389.992L739,397.09C455.5,397.09,455.5,343.922,172,343.922Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link64"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #ffffff;
+                stroke-width: 3px;
+                stroke: #000000;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+          stroke-opacity="1"
+        >
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-12"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#3a96dd"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#ca5010"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from Didn’t vote in at least one referendum – 21 to 46 – No with weight 5"
+              d="M172,351.922C455.5,351.922,455.5,189.443,739,189.443L739,207.188C455.5,207.188,455.5,369.667,172,369.667Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link65"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #ffffff;
+                stroke-width: 3px;
+                stroke: #000000;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+          stroke-opacity="1"
+        >
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-13"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#3a96dd"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#57811b"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from Didn’t vote in at least one referendum – 21 to 39 – Yes with weight 9"
+              d="M172,369.667C455.5,369.667,455.5,321.658,739,321.658L739,353.6C455.5,353.6,455.5,401.608,172,401.608Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link66"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #ffffff;
+                stroke-width: 3px;
+                stroke: #000000;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+          stroke-opacity="1"
+        >
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-14"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
                   stop-color="#3a96dd"
                 />
                 <stop
@@ -25897,10 +26099,10 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
             </defs>
             <path
               aria-label="link from Didn’t vote in at least one referendum – 21 to 14 – Don’t know / would not vote with weight 8"
-              d="M172,390C455.5,390,455.5,390,739,390L739,430C455.5,430,455.5,430,172,430Z"
+              d="M172,401.608C455.5,401.608,455.5,397.09,739,397.09L739,425.482C455.5,425.482,455.5,430,172,430Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link61"
+              id="link67"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -25920,44 +26122,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               }
         >
           <g
-            id="nodeGElement43"
+            id="nodeGElement48"
           >
             <rect
-              aria-label="node Remain+No – 28 with weight 0"
-              data-is-focusable="true"
-              fill="#e3008c"
-              height="0"
-              id="nodeBar42"
-              opacity="1"
-              role="img"
-              stroke="#757575"
-              stroke-width="2"
-              tabindex="-1"
-              width="124"
-              x="739"
-              y="36"
-            />
-          </g>
-        </g>
-        <g
-          class=
-
-              {
-                fill: #F5F5F5;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
-              }
-        >
-          <g
-            id="nodeGElement45"
-          >
-            <rect
-              aria-label="node 46 – No with weight 25"
+              aria-label="node 46 – No with weight 45"
               data-is-focusable="true"
               fill="#ca5010"
-              height="125.00000000000006"
-              id="nodeBar44"
+              height="159.70588235294113"
+              id="nodeBar47"
               opacity="1"
               role="img"
               stroke="#757575"
@@ -25965,7 +26137,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               tabindex="-1"
               width="124"
               x="739"
-              y="44"
+              y="47.48191060502646"
             />
             <g
               class=
@@ -25990,10 +26162,10 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar44-name"
+                  id="nodeBar47-name"
                   text-anchor="start"
                   x="739"
-                  y="44"
+                  y="47.48191060502646"
                 >
                   46 – No
                 </text>
@@ -26007,9 +26179,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 font-weight="bold"
                 text-anchor="start"
                 x="739"
-                y="44"
+                y="47.48191060502646"
               >
-                25
+                45
               </text>
             </g>
           </g>
@@ -26025,14 +26197,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               }
         >
           <g
-            id="nodeGElement47"
+            id="nodeGElement50"
           >
             <rect
-              aria-label="node 39 – Yes with weight 36"
+              aria-label="node 39 – Yes with weight 39"
               data-is-focusable="true"
               fill="#57811b"
-              height="180.00000000000017"
-              id="nodeBar46"
+              height="138.41176470588226"
+              id="nodeBar49"
               opacity="1"
               role="img"
               stroke="#757575"
@@ -26040,7 +26212,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               tabindex="-1"
               width="124"
               x="739"
-              y="177.00000000000006"
+              y="215.1877929579676"
             />
             <g
               class=
@@ -26065,10 +26237,10 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar46-name"
+                  id="nodeBar49-name"
                   text-anchor="start"
                   x="739"
-                  y="177.00000000000006"
+                  y="215.1877929579676"
                 >
                   39 – Yes
                 </text>
@@ -26082,9 +26254,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 font-weight="bold"
                 text-anchor="start"
                 x="739"
-                y="177.00000000000006"
+                y="215.1877929579676"
               >
-                36
+                39
               </text>
             </g>
           </g>
@@ -26100,14 +26272,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               }
         >
           <g
-            id="nodeGElement49"
+            id="nodeGElement52"
           >
             <rect
-              aria-label="node 14 – Don’t know / would not vote with weight 13"
+              aria-label="node 14 – Don’t know / would not vote with weight 18"
               data-is-focusable="true"
               fill="#b146c2"
-              height="65"
-              id="nodeBar48"
+              height="63.882352941176464"
+              id="nodeBar51"
               opacity="1"
               role="img"
               stroke="#757575"
@@ -26115,7 +26287,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
               tabindex="-1"
               width="124"
               x="739"
-              y="365.0000000000002"
+              y="361.59955766384985"
             />
             <g
               class=
@@ -26140,10 +26312,10 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar48-name"
+                  id="nodeBar51-name"
                   text-anchor="start"
                   x="739"
-                  y="365.0000000000002"
+                  y="361.59955766384985"
                 >
                   14 – Don’t know / would not vote
                 </text>
@@ -26157,9 +26329,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 font-weight="bold"
                 text-anchor="start"
                 x="739"
-                y="365.0000000000002"
+                y="361.59955766384985"
               >
-                13
+                18
               </text>
             </g>
           </g>

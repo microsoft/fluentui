@@ -36,11 +36,18 @@ export const useLinkState_unstable = (state: LinkState): LinkState => {
 
   // Disallow keydown event when component is disabled and eat events when disabledFocusable is set to true.
   state.root.onKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement & HTMLButtonElement>) => {
-    if ((disabled || disabledFocusable) && (ev.key === Enter || ev.key === Space)) {
+    const keyPressed = ev.key === Enter || ev.key === Space;
+
+    if ((disabled || disabledFocusable) && keyPressed) {
       ev.preventDefault();
       ev.stopPropagation();
     } else {
       onKeyDown?.(ev);
+      // if there is already onKeyDown provided - respect it
+      if (state.root.as === 'span' && !!state.root.onClick && !onKeyDown && keyPressed) {
+        ev.preventDefault();
+        ev.currentTarget.click();
+      }
     }
   };
 

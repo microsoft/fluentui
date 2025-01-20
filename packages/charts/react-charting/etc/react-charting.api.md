@@ -200,6 +200,7 @@ export interface IAreaChartProps extends ICartesianChartProps {
     data: IChartProps;
     enableGradient?: boolean;
     enablePerfOptimization?: boolean;
+    mode?: 'tozeroy' | 'tonexty';
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
     onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
     // (undocumented)

@@ -962,7 +962,7 @@ function Checkbox(props) {
 }
 ```
 
-[fluent-colors]: https://react.fluentui.dev/?path=/docs/theme-colors--page
+[fluent-colors]: https://react.fluentui.dev/?path=/docs/theme-colors--docs
 [griffel]: https://griffel.js.org
 [griffel-aot]: https://griffel.js.org/react/ahead-of-time-compilation/introduction
 [griffel-atomic-css]: https://griffel.js.org/react/guides/atomic-css
