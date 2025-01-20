@@ -95,24 +95,21 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
 
   const renderFunction = isSlot(props) ? props[SLOT_RENDER_FUNCTION_SYMBOL] : undefined;
 
-  const slot =
-    state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
-      ? asProp || state.components?.[slotName] || 'div'
-      : state.components[slotName];
-
-  const asserted = slot as React.ElementType<R[K]>;
+  const slot = (state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
+    ? asProp || state.components[slotName] || 'div'
+    : state.components[slotName]) as unknown as React.ElementType<R[K]>;
 
   if (renderFunction || typeof children === 'function') {
     const render = (renderFunction || children) as SlotRenderFunction<R[K]>;
     return [
       React.Fragment,
       {
-        children: render(asserted, rest as Omit<R[K], 'as'>),
+        children: render(slot, rest as Omit<R[K], 'as'>),
       } as unknown as R[K],
     ];
   }
 
   const shouldOmitAsProp = typeof slot === 'string' && asProp;
   const slotProps = (shouldOmitAsProp ? omit(props, ['as']) : (props as UnknownSlotProps)) as R[K];
-  return [asserted, slotProps];
+  return [slot, slotProps];
 }
