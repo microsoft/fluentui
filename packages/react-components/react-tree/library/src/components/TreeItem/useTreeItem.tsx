@@ -152,7 +152,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     if (event.isDefaultPrevented() || !treeItemRef.current) {
       return;
     }
-    const isEventFromTreeItem = event.currentTarget == event.target;
+    const isEventFromTreeItem = event.currentTarget === event.target;
     const isEventFromActions = actionsRef.current && actionsRef.current.contains(event.target as Node);
 
     switch (event.key) {
