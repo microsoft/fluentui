@@ -1,5 +1,5 @@
 import { create as d3Create, select as d3Select, Selection } from 'd3-selection';
-import { resolveCSSVariables } from '@fluentui/react-charting/src/utilities/index';
+import { resolveCSSVariables } from '../../utilities/index';
 
 /**
  * {@docCategory DeclarativeChart}

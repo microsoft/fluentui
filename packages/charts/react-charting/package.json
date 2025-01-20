@@ -40,7 +40,6 @@
   },
   "dependencies": {
     "@fluentui/react-focus": "^8.9.20",
-    "@fluentui/react-charting": "^5.23.41",
     "@fluentui/theme-samples": "^8.7.196",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/d3-array": "^3.0.0",
