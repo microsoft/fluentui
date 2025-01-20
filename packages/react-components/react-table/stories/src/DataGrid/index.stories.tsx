@@ -25,6 +25,8 @@ export { ResizableColumns } from './ResizableColumns.stories';
 export { ResizableColumns as ResizableColumnsDisableAutoFit } from './ResizableColumnsDisableAutoFit.stories';
 export { Virtualization } from './Virtualization.stories';
 export { CustomRowId } from './CustomRowId.stories';
+export { Reflow } from './Reflow.stories';
+export { ReflowStickyColumn } from './ReflowStickyColumn.stories';
 
 export default {
   title: 'Components/DataGrid',
