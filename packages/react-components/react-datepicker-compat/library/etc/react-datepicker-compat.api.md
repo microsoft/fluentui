@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { CalendarProps } from '@fluentui/react-calendar-compat';
 import { CalendarStrings } from '@fluentui/react-calendar-compat';
 import type { ComponentProps } from '@fluentui/react-utilities';

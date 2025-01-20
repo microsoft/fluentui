@@ -1,4 +1,10 @@
-import { runComponentToCompat, buildCompatHash, ComponentToCompat, RawCompat, getNamedExports } from './compatHelpers';
+import {
+  runComponentToCompat,
+  buildCompatHash,
+  getNamedExports,
+  type RawCompat,
+  type ComponentToCompat as ComponentToCompatType,
+} from './compatHelpers';
 import { ExportMapping } from './namedExports';
 import { CodeMod } from '../../types';
 import { SourceFile } from 'ts-morph';
@@ -12,7 +18,7 @@ function getPath(root: string, componentName: string) {
   return `${root}${componentName}`;
 }
 
-export function createComponentToCompat(comp: RawCompat): ComponentToCompat {
+export function createComponentToCompat(comp: RawCompat): ComponentToCompatType {
   return {
     oldPath: getPath(completePath, comp.componentName),
     newComponentPath: getPath(newPathStart, comp.componentName),

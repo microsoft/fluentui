@@ -2,6 +2,8 @@
 const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
 const createRule = require('../../utils/createRule');
 
+/** @import { TSESTree } from "@typescript-eslint/utils" */
+
 /**
  *
  * @typedef {{
@@ -43,7 +45,7 @@ module.exports = createRule({
     const createContextParentIdentifiers = [];
 
     /**
-     * @param {import("@typescript-eslint/utils").TSESTree.Expression} callee
+     * @param { TSESTree.Expression } callee
      */
     function isCalleeCreateContext(callee) {
       if (
@@ -97,8 +99,8 @@ module.exports = createRule({
 });
 
 /**
- * @param {import("@typescript-eslint/utils").TSESTree.CallExpressionArgument} expression
- * @returns {expression is import("@typescript-eslint/utils").TSESTree.Identifier}
+ * @param { TSESTree.CallExpressionArgument } expression
+ * @returns { expression is TSESTree.Identifier }
  */
 function isArgumentNotUndefined(expression) {
   return expression.type !== AST_NODE_TYPES.Identifier || expression.name !== 'undefined';

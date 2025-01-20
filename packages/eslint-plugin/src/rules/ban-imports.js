@@ -2,15 +2,10 @@
 const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
 const createRule = require('../utils/createRule');
 
-// Nasty syntax required for type imports until https://github.com/microsoft/TypeScript/issues/22160 is implemented.
-// For some reason just importing TSESTree and accessing properties off that doesn't work.
 /**
- * @typedef {import("@typescript-eslint/utils").TSESTree.ExportNamedDeclaration} ExportNamedDeclaration
- * @typedef {import("@typescript-eslint/utils").TSESTree.ExportSpecifier} ExportSpecifier
- * @typedef {import("@typescript-eslint/utils").TSESTree.Identifier} Identifier
- * @typedef {import("@typescript-eslint/utils").TSESTree.ImportDeclaration} ImportDeclaration
- * @typedef {import("@typescript-eslint/utils").TSESTree.ImportSpecifier} ImportSpecifier
- *
+ * @import { TSESTree } from '@typescript-eslint/utils'; */
+
+/**
  * @typedef {{
  *   path?: string;
  *   pathRegex?: string;
@@ -104,9 +99,9 @@ module.exports = createRule({
     }
 
     /**
-     * @param {ImportDeclaration | ExportNamedDeclaration} importOrExport the whole import/export node
+     * @param {TSESTree.ImportDeclaration | TSESTree.ExportNamedDeclaration} importOrExport the whole import/export node
      * @param {string} importPath path importing/exporting from
-     * @param {Identifier[]} identifiers imported/exported identifiers
+     * @param {TSESTree.Identifier[]} identifiers imported/exported identifiers
      */
     function checkImportOrExport(importOrExport, importPath, identifiers) {
       for (const rule of options) {
@@ -152,7 +147,7 @@ module.exports = createRule({
           return;
         }
 
-        const specifiers = /** @type {ImportSpecifier[]} */ (
+        const specifiers = /** @type {TSESTree.ImportSpecifier[]} */ (
           imprt.specifiers.filter(
             // Filter out default imports and namespace (star) imports
             spec => spec.type === AST_NODE_TYPES.ImportSpecifier,

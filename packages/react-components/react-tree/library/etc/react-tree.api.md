@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ArrowDown } from '@fluentui/keyboard-keys';
 import type { ArrowLeft } from '@fluentui/keyboard-keys';
 import type { ArrowRight } from '@fluentui/keyboard-keys';

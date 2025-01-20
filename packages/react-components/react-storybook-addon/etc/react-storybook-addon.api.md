@@ -50,7 +50,7 @@ export function parameters(options?: FluentParameters): {
     mode: string;
     reactStorybookAddon?: {
         disabledDecorators: ["AriaLive" | "FluentProvider" | "ReactStrictMode"];
-    } | undefined;
+    };
 };
 
 // @public (undocumented)
