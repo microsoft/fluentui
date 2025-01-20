@@ -25,6 +25,7 @@ exports[`TooltipHost renders correctly 1`] = `
         "overflow": "hidden",
         "padding": 0,
         "position": "absolute",
+        "top": 0,
         "whiteSpace": "nowrap",
         "width": 1,
       }
