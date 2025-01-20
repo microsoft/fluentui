@@ -5,8 +5,8 @@
 Download the example [or clone the repo](https://github.com/microsoft/fluentui):
 
 ```bash
-npx degit microsoft/fluentui/sandbox/fluentui-v9-vite
-cd fluentui-v9-vite
+npx degit microsoft/fluentui/starter-templates/src/react-components-vite
+cd react-components-vite
 ```
 
 Install it and run:
@@ -18,9 +18,9 @@ npm run dev
 
 or:
 
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/microsoft/fluentui/tree/master/sandbox/fluentui-v9-vite)
+[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/microsoft/fluentui/tree/master/starter-templates/src/react-components-vite)
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/github/microsoft/fluentui/tree/master/sandbox/fluentui-v9-vite)
+[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/github/microsoft/fluentui/tree/master/starter-templates/src/react-components-vite)
 
 ## The idea behind the example
 
