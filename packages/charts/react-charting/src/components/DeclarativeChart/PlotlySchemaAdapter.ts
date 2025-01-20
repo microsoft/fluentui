@@ -586,21 +586,19 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
   };
 
   // Initialize domain and range to default values
-  const defaultDomain = [0.0, 0.1, 0.2];
+  const defaultDomain = [zMin, zMax];
   const defaultRange = [
     getColorFromToken(DataVizPalette.success),
     getColorFromToken(DataVizPalette.warning),
     getColorFromToken(DataVizPalette.error),
   ];
-  const domainValuesForColorScale: number[] =
-    firstData.colorscale && firstData.colorscale !== 'Viridis'
-      ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[0] * (zMax - zMin) + zMin)
-      : defaultDomain;
+  const domainValuesForColorScale: number[] = Array.isArray(firstData.colorscale)
+    ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[0] * (zMax - zMin) + zMin)
+    : defaultDomain;
 
-  const rangeValuesForColorScale: string[] =
-    firstData.colorscale && firstData.colorscale !== 'Viridis'
-      ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[1])
-      : defaultRange;
+  const rangeValuesForColorScale: string[] = Array.isArray(firstData.colorscale)
+    ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[1])
+    : defaultRange;
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
