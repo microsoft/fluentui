@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Mon, 20 Jan 2025 07:21:44 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.193",
+      "version": "8.14.193",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "fd420e1e0b66e04c8a423cff3eea6d21d9434d2d",
+            "comment": "chore: migrate from deprecation plugin to ts-eslint/no-deprecated rule"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jan 2025 07:21:32 GMT",
       "tag": "@fluentui/react-experiments_v8.14.193",
       "version": "8.14.193",
