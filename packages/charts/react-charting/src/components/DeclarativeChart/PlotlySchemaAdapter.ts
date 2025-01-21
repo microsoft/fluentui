@@ -444,7 +444,6 @@ export const transformPlotlyJsonToVBCProps = (
     data: vbcData,
     // width: layout?.width,
     // height: layout?.height,
-    barWidth: 24,
     supportNegativeData: true,
     chartTitle,
     xAxisTitle,
