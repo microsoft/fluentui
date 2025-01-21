@@ -29,7 +29,7 @@ import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
-import { Layout, PlotlySchema, PieData, PlotData, SankeyData } from './PlotlySchema';
+import { Layout, PlotlySchema, PieData, PlotData, SankeyData, Dash } from './PlotlySchema';
 import type { Datum, TypedArray } from './PlotlySchema';
 import { timeParse } from 'd3-time-format';
 
@@ -39,6 +39,22 @@ interface ISecondaryYAxisValues {
 }
 
 const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'histogram'];
+const dashProperties: Record<
+  Dash,
+  {
+    strokeDasharray: string;
+    strokeLinecap: 'butt' | 'round' | 'square' | 'inherit' | undefined;
+    strokeWidth: string;
+    lineBorderWidth: string;
+  }
+> = {
+  dot: { strokeDasharray: '1, 5', strokeLinecap: 'round', strokeWidth: '2', lineBorderWidth: '4' },
+  dash: { strokeDasharray: '5, 5', strokeLinecap: 'butt', strokeWidth: '2', lineBorderWidth: '4' },
+  longdash: { strokeDasharray: '10, 5', strokeLinecap: 'butt', strokeWidth: '2', lineBorderWidth: '4' },
+  dashdot: { strokeDasharray: '5, 5, 1, 5', strokeLinecap: 'butt', strokeWidth: '2', lineBorderWidth: '4' },
+  longdashdot: { strokeDasharray: '10, 5, 1, 5', strokeLinecap: 'butt', strokeWidth: '2', lineBorderWidth: '4' },
+  solid: { strokeDasharray: '0', strokeLinecap: 'butt', strokeWidth: '2', lineBorderWidth: '4' },
+};
 const isDate = (value: any): boolean => {
   const parsedDate = new Date(Date.parse(value));
   if (isNaN(parsedDate.getTime())) {
@@ -284,6 +300,7 @@ export const transformPlotlyJsonToVSBCProps = (
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].lineData!.push({
           legend,
+          lineOptions: dashProperties[series.line?.dash as Dash] || {},
           y: yVal,
           color,
         });
@@ -474,6 +491,7 @@ export const transformPlotlyJsonToScatterChartProps = (
 
     return {
       legend,
+      lineOptions: dashProperties[series.line?.dash as Dash] || {},
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
@@ -593,7 +611,7 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
   };
 
   // Initialize domain and range to default values
-  const defaultDomain = [zMin, zMax];
+  const defaultDomain = [zMin, (zMax + zMin) / 2, zMax];
   const defaultRange = [
     getColorFromToken(DataVizPalette.color1),
     getColorFromToken(DataVizPalette.color2),
