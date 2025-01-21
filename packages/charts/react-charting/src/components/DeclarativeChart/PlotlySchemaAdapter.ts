@@ -29,7 +29,7 @@ import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
-import { Layout, PlotlySchema, PieData, PlotData, SankeyData, Dash } from './PlotlySchema';
+import { Layout, PlotlySchema, PieData, PlotData, SankeyData } from './PlotlySchema';
 import type { Datum, TypedArray } from './PlotlySchema';
 import { timeParse } from 'd3-time-format';
 
