@@ -2,6 +2,36 @@
   "name": "@fluentui/react-rating",
   "entries": [
     {
+      "date": "Wed, 08 Jan 2025 18:33:36 GMT",
+      "tag": "@fluentui/react-rating_v9.0.27",
+      "version": "9.0.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.49",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Dec 2024 10:59:37 GMT",
+      "tag": "@fluentui/react-rating_v9.0.26",
+      "version": "9.0.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "derdem@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "084c76645ce97417b2bdc50203f4c66f5fd27309",
+            "comment": "fix: Pass missing Rating's itemLabel prop to its state so RatingItem consumes it from context."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Dec 2024 16:26:49 GMT",
       "tag": "@fluentui/react-rating_v9.0.25",
       "version": "9.0.25",

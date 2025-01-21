@@ -175,7 +175,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
       defaultProps: {
         id: useId('sliderX-'),
         type: 'range',
-        ...(activeAxis === 'x' && { tabIndex: 0 }),
+        ...(activeAxis && { tabIndex: activeAxis === 'x' ? 0 : -1 }),
       },
       elementType: 'input',
     }),
@@ -183,7 +183,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
       defaultProps: {
         id: useId('sliderY-'),
         type: 'range',
-        ...(activeAxis === 'y' && { tabIndex: 0 }),
+        ...(activeAxis && { tabIndex: activeAxis === 'y' ? 0 : -1 }),
       },
       elementType: 'input',
     }),

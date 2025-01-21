@@ -15,7 +15,7 @@ import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { Async, EventGroup, FocusRects } from '@fluentui/utilities';
 import type { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles, ISliderMarks } from './Slider.types';
 
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 
 /** @deprecated */
 export interface ISliderState {
@@ -71,7 +71,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
 
     this.state = {
-      value: value,
+      value,
       renderedValue: undefined,
     };
   }

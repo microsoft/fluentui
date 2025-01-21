@@ -190,7 +190,7 @@ const useCircularAppearanceStyles = makeStyles({
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
-    border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
+    border: `solid ${tokens.strokeWidthThin} transparent`,
     color: tokens.colorNeutralForeground2,
     ':enabled:hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
@@ -221,7 +221,7 @@ const useCircularAppearanceStyles = makeStyles({
   subtleDisabled: {
     backgroundColor: tokens.colorSubtleBackground,
     color: tokens.colorNeutralForegroundDisabled,
-    border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
+    border: `solid ${tokens.strokeWidthThin} transparent`,
   },
   subtleDisabledSelected: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
@@ -254,7 +254,7 @@ const useCircularAppearanceStyles = makeStyles({
   },
   filledDisabled: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
+    border: `solid ${tokens.strokeWidthThin} transparent`,
     color: tokens.colorNeutralForegroundDisabled,
   },
   filledDisabledSelected: {
@@ -717,7 +717,7 @@ export const useTabContentStyles_unstable = (state: TabState): TabState => {
     );
     // FIXME: this is a deprecated API
     // should be removed in the next major version
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     state.contentReservedSpaceClassName = state.contentReservedSpace.className;
   }
 

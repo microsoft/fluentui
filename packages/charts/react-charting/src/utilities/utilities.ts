@@ -312,19 +312,12 @@ export function createStringXAxis(
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
     .paddingInner(typeof xAxisInnerPadding !== 'undefined' ? xAxisInnerPadding : xAxisPadding)
     .paddingOuter(typeof xAxisOuterPadding !== 'undefined' ? xAxisOuterPadding : xAxisPadding);
-  const xAxis = d3AxisBottom(xAxisScale)
-    .tickSize(xAxistickSize)
-    .tickPadding(tickPadding)
-    .ticks(xAxisCount)
-    .tickFormat((x: string, index: number) => {
-      return convertToLocaleString(dataset[index], culture) as string;
-    });
+  const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).ticks(xAxisCount);
 
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = dataset.map(xAxis.tickFormat()!);
-  return { xScale: xAxisScale, tickValues };
+  return { xScale: xAxisScale, tickValues: dataset };
 }
 
 /**
@@ -1414,4 +1407,22 @@ export const formatDate = (date: Date, useUTC?: boolean) => {
 export function getSecureProps(props: Record<string, any> = {}): Record<string, any> {
   const { dangerouslySetInnerHTML, ...result } = props;
   return result;
+}
+
+export function areArraysEqual(arr1?: string[], arr2?: string[]): boolean {
+  if (arr1 === arr2) {
+    return true;
+  }
+  if (!arr1 && !arr2) {
+    return true;
+  }
+  if (!arr1 || !arr2 || arr1.length !== arr2.length) {
+    return false;
+  }
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) {
+      return false;
+    }
+  }
+  return true;
 }

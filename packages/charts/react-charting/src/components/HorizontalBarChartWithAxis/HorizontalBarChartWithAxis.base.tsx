@@ -2,7 +2,7 @@ import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
-import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ILegend } from '../../components/Legends/Legends.types';
@@ -13,6 +13,7 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
   IRefArrayData,
   IMargins,
+  IChart,
 } from '../../types/IDataPoint';
 import { IChildProps, IYValueHover } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
@@ -39,6 +40,7 @@ import {
   domainRangeOfNumericForHorizontalBarChartWithAxis,
   createStringYAxisForHorizontalBarChartWithAxis,
   getNextGradient,
+  areArraysEqual,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
@@ -54,14 +56,15 @@ export interface IHorizontalBarChartWithAxisState extends IBasestate {
   callOutAccessibilityData?: IAccessibilityProps;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   tooltipElement?: any;
+  selectedLegends: string[];
 }
 
 type ColorScale = (_p?: number) => string;
 
-export class HorizontalBarChartWithAxisBase extends React.Component<
-  IHorizontalBarChartWithAxisProps,
-  IHorizontalBarChartWithAxisState
-> {
+export class HorizontalBarChartWithAxisBase
+  extends React.Component<IHorizontalBarChartWithAxisProps, IHorizontalBarChartWithAxisState>
+  implements IChart
+{
   private _points: IHorizontalBarChartWithAxisDataPoint[];
   private _barHeight: number;
   private _colors: string[];
@@ -77,14 +80,20 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: IHorizontalBarChartWithAxisDataPoint | null;
+  private _cartesianChartRef: React.RefObject<IChart>;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     this.state = {
       color: '',
       dataForHoverCard: 0,
       isCalloutVisible: false,
-      isLegendSelected: props.legendProps?.selectedLegend !== undefined,
+      isLegendSelected:
+        (props.legendProps?.selectedLegends && props.legendProps.selectedLegends.length > 0) ||
+        props.legendProps?.selectedLegend !== undefined,
       isLegendHovered: false,
       refSelected: null,
       selectedLegendTitle: props.legendProps?.selectedLegend ?? '',
@@ -93,6 +102,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       activeXdataPoint: null,
       YValueHover: [],
       hoverXValue: '',
+      selectedLegends: props.legendProps?.selectedLegends || [],
     };
     this._calloutId = getId('callout');
     this._tooltipId = getId('HBCWATooltipID_');
@@ -105,6 +115,15 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       this.props.data! && this.props.data!.length > 0
         ? (getTypeOfAxis(this.props.data![0].y, false) as YAxisType)
         : YAxisType.StringAxis;
+    this._cartesianChartRef = React.createRef();
+  }
+
+  public componentDidUpdate(prevProps: IHorizontalBarChartWithAxisProps): void {
+    if (!areArraysEqual(prevProps.legendProps?.selectedLegends, this.props.legendProps?.selectedLegends)) {
+      this.setState({
+        selectedLegends: this.props.legendProps?.selectedLegends || [],
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -163,6 +182,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         getGraphData={this._getGraphData}
         getAxisData={this._getAxisData}
         onChartMouseLeave={this._handleChartMouseLeave}
+        ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         children={(props: IChildProps) => {
           return (
@@ -173,6 +193,10 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         }}
       />
     );
+  }
+
+  public get chartContainer(): HTMLElement | null {
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   private _getDomainNRangeValues = (
@@ -336,8 +360,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
 
     const { YValueHover, hoverXValue } = this._getCalloutContentForBar(point);
     if (
-      (this.state.isLegendSelected === false ||
-        (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)) &&
+      (this.state.isLegendSelected === false || this._isLegendHighlighted(point.legend)) &&
       this._calloutAnchorPoint !== point
     ) {
       this._calloutAnchorPoint = point;
@@ -379,8 +402,8 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     color: string,
   ): void => {
     if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)
+      (this.state.isLegendSelected === false || this._isLegendHighlighted(point.legend)) &&
+      this._calloutAnchorPoint !== point
     ) {
       const { YValueHover, hoverXValue } = this._getCalloutContentForBar(point);
       this._refArray.forEach((obj: IRefArrayData, index: number) => {
@@ -457,7 +480,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const bars = sortedBars.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
-        shouldHighlight = this.state.selectedLegendTitle === point.legend;
+        shouldHighlight = this._isLegendHighlighted(point.legend);
       }
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
@@ -585,7 +608,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const bars = this._points.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
-        shouldHighlight = this.state.selectedLegendTitle === point.legend;
+        shouldHighlight = this._isLegendHighlighted(point.legend);
       }
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
@@ -698,28 +721,8 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     });
   };
 
-  private _onLegendClick(customMessage: string): void {
-    if (this.state.isLegendSelected) {
-      if (this.state.selectedLegendTitle === customMessage) {
-        this.setState({
-          isLegendSelected: false,
-          selectedLegendTitle: customMessage,
-        });
-      } else {
-        this.setState({
-          selectedLegendTitle: customMessage,
-        });
-      }
-    } else {
-      this.setState({
-        isLegendSelected: true,
-        selectedLegendTitle: customMessage,
-      });
-    }
-  }
-
   private _onLegendHover(customMessage: string): void {
-    if (this.state.isLegendSelected === false) {
+    if (!this._isLegendSelected()) {
       this.setState({
         isLegendHovered: true,
         selectedLegendTitle: customMessage,
@@ -728,11 +731,11 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   }
 
   private _onLegendLeave(isLegendFocused?: boolean): void {
-    if (!!isLegendFocused || this.state.isLegendSelected === false) {
+    if (!!isLegendFocused || !this._isLegendSelected()) {
       this.setState({
         isLegendHovered: false,
         selectedLegendTitle: '',
-        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
+        isLegendSelected: isLegendFocused ? false : this._isLegendSelected(),
       });
     }
   }
@@ -759,9 +762,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       const legend: ILegend = {
         title: point.legend!,
         color,
-        action: () => {
-          this._onLegendClick(point.legend!);
-        },
         hoverAction: () => {
           this._handleChartMouseLeave();
           this._onLegendHover(point.legend!);
@@ -780,10 +780,57 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
+        onChange={this._onLegendSelectionChange.bind(this)}
       />
     );
     return legends;
   };
+
+  private _isLegendSelected = (): boolean => {
+    return this.state.isLegendSelected!;
+  };
+
+  /**
+   * This function checks if the given legend is highlighted or not.
+   * A legend can be highlighted in 2 ways:
+   * 1. selection: if the user clicks on it
+   * 2. hovering: if there is no selected legend and the user hovers over it
+   */
+  private _isLegendHighlighted = (legend?: string) => {
+    return this._getHighlightedLegend().includes(legend!);
+  };
+
+  private _getHighlightedLegend() {
+    return this.state.selectedLegends.length > 0
+      ? this.state.selectedLegends
+      : this.state.selectedLegendTitle
+      ? [this.state.selectedLegendTitle]
+      : [];
+  }
+
+  private _onLegendSelectionChange(
+    selectedLegends: string[],
+    event: React.MouseEvent<HTMLButtonElement>,
+    currentLegend?: ILegend,
+  ): void {
+    if (this.props.legendProps?.canSelectMultipleLegends) {
+      this.setState({
+        selectedLegends,
+        selectedLegendTitle: currentLegend?.title!,
+      });
+    } else {
+      this.setState({
+        selectedLegends: selectedLegends.slice(-1),
+        selectedLegendTitle: currentLegend?.title!,
+      });
+    }
+    this.setState({
+      isLegendSelected: selectedLegends.length > 0,
+    });
+    if (this.props.legendProps?.onChange) {
+      this.props.legendProps.onChange(selectedLegends, event, currentLegend);
+    }
+  }
 
   private _getAxisData = (yAxisData: IAxisData) => {
     if (yAxisData && yAxisData.yAxisDomainValues.length) {

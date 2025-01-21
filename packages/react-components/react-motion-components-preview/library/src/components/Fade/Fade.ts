@@ -1,5 +1,6 @@
 import { motionTokens, createPresenceComponent } from '@fluentui/react-motion';
 import type { PresenceMotionCreator } from '../../types';
+import { fadeAtom } from '../../atoms/fade-atom';
 
 type FadeVariantParams = {
   /** Time (ms) for the enter transition (fade-in). Defaults to the `durationNormal` value (200 ms). */
@@ -22,8 +23,8 @@ export const createFadePresence: PresenceMotionCreator<FadeVariantParams> = ({
   exitDuration = enterDuration,
   exitEasing = enterEasing,
 } = {}) => ({
-  enter: { duration: enterDuration, easing: enterEasing, keyframes: [{ opacity: 0 }, { opacity: 1 }] },
-  exit: { duration: exitDuration, easing: exitEasing, keyframes: [{ opacity: 1 }, { opacity: 0 }] },
+  enter: fadeAtom({ direction: 'enter', duration: enterDuration, easing: enterEasing }),
+  exit: fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing }),
 });
 
 /** A React component that applies fade in/out transitions to its children. */

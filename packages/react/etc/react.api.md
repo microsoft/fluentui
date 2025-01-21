@@ -1604,49 +1604,49 @@ export { FabricPerformance }
 // @public (undocumented)
 export enum FabricSlots {
     // (undocumented)
-    black = 21,
+    black = 21,// BaseSlots.primaryColor, Shade[Shade.Unshaded]);
     // (undocumented)
-    neutralDark = 20,
+    neutralDark = 20,// BaseSlots.primaryColor, Shade[Shade.Shade1]);
     // (undocumented)
-    neutralLight = 11,
+    neutralLight = 11,// BaseSlots.primaryColor, Shade[Shade.Shade2]);
     // (undocumented)
-    neutralLighter = 10,
+    neutralLighter = 10,// BaseSlots.primaryColor, Shade[Shade.Shade3]);
     // (undocumented)
-    neutralLighterAlt = 9,
+    neutralLighterAlt = 9,// BaseSlots.primaryColor, Shade[Shade.Shade4]);
     // (undocumented)
-    neutralPrimary = 19,
+    neutralPrimary = 19,// BaseSlots.primaryColor, Shade[Shade.Shade5]);
     // (undocumented)
-    neutralPrimaryAlt = 18,
+    neutralPrimaryAlt = 18,// BaseSlots.primaryColor, Shade[Shade.Shade6]);
     // (undocumented)
-    neutralQuaternary = 13,
+    neutralQuaternary = 13,// BaseSlots.primaryColor, Shade[Shade.Shade7]);
     // (undocumented)
-    neutralQuaternaryAlt = 12,
+    neutralQuaternaryAlt = 12,// BaseSlots.primaryColor, Shade[Shade.Shade8]);
     // (undocumented)
-    neutralSecondary = 17,
+    neutralSecondary = 17,// BaseSlots.backgroundColor, Shade[Shade.Shade1]);
     // (undocumented)
-    neutralSecondaryAlt = 16,
+    neutralSecondaryAlt = 16,// BaseSlots.backgroundColor, Shade[Shade.Shade2]);
     // (undocumented)
-    neutralTertiary = 15,
+    neutralTertiary = 15,// BaseSlots.backgroundColor, Shade[Shade.Shade3]);
     // (undocumented)
-    neutralTertiaryAlt = 14,
+    neutralTertiaryAlt = 14,// BaseSlots.backgroundColor, Shade[Shade.Shade4]);
     // (undocumented)
-    themeDark = 7,
+    themeDark = 7,// BaseSlots.backgroundColor, Shade[Shade.Shade5]);
     // (undocumented)
-    themeDarkAlt = 6,
+    themeDarkAlt = 6,// BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
     // (undocumented)
-    themeDarker = 8,
+    themeDarker = 8,// BaseSlots.foregroundColor, Shade[Shade.Shade3]);
     // (undocumented)
-    themeLight = 3,
+    themeLight = 3,// BaseSlots.foregroundColor, Shade[Shade.Shade4]);
     // (undocumented)
-    themeLighter = 2,
+    themeLighter = 2,// BaseSlots.foregroundColor, Shade[Shade.Shade5]);
     // (undocumented)
-    themeLighterAlt = 1,
+    themeLighterAlt = 1,// BaseSlots.foregroundColor, Shade[Shade.Shade6]);
     // (undocumented)
-    themePrimary = 0,
+    themePrimary = 0,// BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
     // (undocumented)
-    themeSecondary = 5,
+    themeSecondary = 5,// BaseSlots.foregroundColor, Shade[Shade.Shade7]);
     // (undocumented)
-    themeTertiary = 4,
+    themeTertiary = 4,// BaseSlots.foregroundColor, Shade[Shade.Shade8]);
     // (undocumented)
     white = 22
 }
@@ -3243,11 +3243,8 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     popupProps?: IPopupProps;
     preferScrollResizePositioning?: boolean;
     preventDismissOnEvent?: (ev: Event | React_2.FocusEvent | React_2.KeyboardEvent | React_2.MouseEvent) => boolean;
-    // @deprecated
     preventDismissOnLostFocus?: boolean;
-    // @deprecated
     preventDismissOnResize?: boolean;
-    // @deprecated
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
@@ -9208,9 +9205,15 @@ export interface ITag {
 export interface ITagItemProps extends IPickerItemProps<ITag> {
     className?: string;
     enableTagFocusInDisabledPicker?: boolean;
+    removeButtonProps?: ITagItemRemoveButtonProps;
     styles?: IStyleFunctionOrObject<ITagItemStyleProps, ITagItemStyles>;
     theme?: ITheme;
     title?: string;
+}
+
+// @public
+export interface ITagItemRemoveButtonProps extends IButtonProps {
+    'data-id'?: string;
 }
 
 // @public

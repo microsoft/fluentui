@@ -1,8 +1,68 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 16 Dec 2024 16:26:45 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2025 18:33:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.57.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.57.0)
+
+Wed, 08 Jan 2025 18:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.8..@fluentui/react-components_v9.57.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: add @fluentui/react-list to suite ([PR #33378](https://github.com/microsoft/fluentui/pull/33378) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-list`
+  - feat: release stable ([PR #33378](https://github.com/microsoft/fluentui/pull/33378) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-message-bar`
+  - refactor(MessageBar): migrate slide & fade to motion components ([PR #33465](https://github.com/microsoft/fluentui/pull/33465) by robertpenner@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - fix: accName updates and semantic fixes ([PR #33194](https://github.com/microsoft/fluentui/pull/33194) by sarah.higley@microsoft.com)
+
+### Patches
+
+- `@fluentui/eslint-plugin-react-components`
+  - feat: add prefer-fluentui-v9 rule ([PR #33449](https://github.com/microsoft/fluentui/pull/33449) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-color-picker-preview`
+  - fix: contrast border of thumb ([PR #33526](https://github.com/microsoft/fluentui/pull/33526) by vkozlova@microsoft.com)
+  - feat: added aria-attributes to the ColorPicker ([PR #33543](https://github.com/microsoft/fluentui/pull/33543) by vkozlova@microsoft.com)
+- `@fluentui/react-conformance`
+  - chore: remove usage of "export *" ([PR #33448](https://github.com/microsoft/fluentui/pull/33448) by olfedias@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: handle case when Animation.persist() does not exist ([PR #33282](https://github.com/microsoft/fluentui/pull/33282) by seanmonahan@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: bump @floating-ui/dom ([PR #33458](https://github.com/microsoft/fluentui/pull/33458) by 863023+radium-v@users.noreply.github.com)
+- `@fluentui/react-tabs`
+  - fix: update tab border color for better visibility in high contrast mode ([PR #33573](https://github.com/microsoft/fluentui/pull/33573) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-toast`
+  - feat: Add intent property to Toast state and useToast hook. Correct media className assignment in useToastTitleStyles. ([PR #33550](https://github.com/microsoft/fluentui/pull/33550) by soumya_tripathy@outlook.com)
+
+## [9.56.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.8)
+
+Thu, 19 Dec 2024 14:30:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.7..@fluentui/react-components_v9.56.8)
+
+### Patches
+
+- `@fluentui/react-message-bar`
+  - fix: MessageBar auto reflow should handle document reflow with `min-content` ([PR #33409](https://github.com/microsoft/fluentui/pull/33409) by lingfangao@hotmail.com)
+
+## [9.56.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.7)
+
+Wed, 18 Dec 2024 10:59:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.56.6..@fluentui/react-components_v9.56.7)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - docs(react-dialog): Fix doc-comment links that don't translate to storybook ([PR #33471](https://github.com/microsoft/fluentui/pull/33471) by jiangemma@microsoft.com)
+- `@fluentui/react-menu`
+  - docs(react-menu): Fix doc-comment links that don't translate to storybook ([PR #33471](https://github.com/microsoft/fluentui/pull/33471) by jiangemma@microsoft.com)
+- `@fluentui/react-popover`
+  - docs(react-popover): Fix doc-comment links that don't translate to storybook ([PR #33471](https://github.com/microsoft/fluentui/pull/33471) by jiangemma@microsoft.com)
+- `@fluentui/react-rating`
+  - fix: Pass missing Rating's itemLabel prop to its state so RatingItem consumes it from context. ([PR #33361](https://github.com/microsoft/fluentui/pull/33361) by derdem@microsoft.com)
 
 ## [9.56.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.56.6)
 

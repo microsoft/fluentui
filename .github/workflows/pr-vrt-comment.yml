@@ -1,0 +1,151 @@
+name: VRT CI | Comment on PR
+on:
+  workflow_run:
+    workflows: ['VRT CI']
+    types:
+      - completed
+    branches:
+      - master
+      # remove following once CRT testing is done
+      - vrt-gha-testing
+
+concurrency:
+  # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PREFER_TS_NODE: true
+  NX_VERBOSE_LOGGING: true
+
+jobs:
+  run_vr_diff:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'microsoft' }} && ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
+    outputs:
+      pr_number: ${{ steps.pr_number.outputs.result }}
+    permissions:
+      # necessary to write comments to the PR from the vr-approval-cli
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github
+
+      # downloaded artifacts will contain screenshots from affected project including 'screenshots-report.json' which contains proper image mappings for affected project
+      # - see @{link file://./../scripts/prepare-vr-screenshots-for-upload.js#43}
+      # - see @{link file://./pr-vrt.yml#56}
+      - uses: actions/download-artifact@v4
+        with:
+          name: vrscreenshot
+          path: ./screenshots
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: pr-number
+          path: ./results
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Load PR number
+        uses: actions/github-script@v7
+        id: pr_number
+        with:
+          script: |
+            const run = require('./.github/scripts/validate-pr-number');
+            const result = run({filePath:'results/pr.txt'});
+            return result;
+          result-encoding: string
+
+      - name: VR App - Create Policy
+        run: |
+          echo "MAKE THIS WORK"
+
+      - name: Run screenshotdiff
+        run: |
+          echo "MAKE THIS WORK"
+          npx vr-approval-cli@0.4.11 run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --threshold '0.04' --cumThreshold '1'
+
+# 💡 NOTE:
+#   - following is manually provided setup used in previous ADO pipeline {@link file://./../../azure-pipelines.vrt-baseline.yml }
+#   - keeping for future reference
+
+# web_components:
+#   runs-on: ubuntu-latest
+#   env:
+#     pipelineId: '315'
+#     pipelineName: 'fluent-ui_VRT_Pipeline_web-components'
+#   steps:
+#     - uses: actions/checkout@v4
+#       with:
+#         fetch-depth: 0
+#     - name: Run and publish VR screenshot
+#       uses: ./.github/actions/run-publish-vr-screenshot
+#       with:
+#         fluentVersion: webcomponents
+#         vrTestPackageName: 'vr-tests-web-components'
+#         vrTestPackagePath: 'apps/vr-tests-web-components'
+#         locationPrefix: 'FluentUI-web-components'
+#         locationPostfix: 'vrscreenshotwebcomponents'
+#         clientName: 'fluentui-web-components-v3'
+
+# react_components:
+#   runs-on: ubuntu-latest
+#   env:
+#     pipelineId: '311'
+#     pipelineName: 'fluent-ui_VRT_Pipeline_v9'
+#   steps:
+#     - uses: actions/checkout@v4
+#       with:
+#         fetch-depth: 0
+#     - name: Run and publish VR screenshot
+#       uses: ./.github/actions/run-publish-vr-screenshot
+#       with:
+#         fluentVersion: v9
+#         vrTestPackageName: 'vr-tests-react-components'
+#         vrTestPackagePath: 'apps/vr-tests-react-components'
+#         locationPrefix: 'fluentuiv9'
+#         locationPostfix: 'vrscreenshotv9'
+#         clientName: 'fluentuiv9'
+
+# react:
+#   runs-on: ubuntu-latest
+#   env:
+#     pipelineId: '312'
+#     pipelineName: 'fluent-ui_VRT_Pipeline_v8'
+#   steps:
+#     - uses: actions/checkout@v4
+#       with:
+#         fetch-depth: 0
+#     - name: Run and publish VR screenshot
+#       uses: ./.github/actions/run-publish-vr-screenshot
+#       with:
+#         fluentVersion: v8
+#         vrTestPackageName: 'vr-tests'
+#         vrTestPackagePath: 'apps/vr-tests'
+#         locationPrefix: 'fluentuiv8'
+#         locationPostfix: 'vrscreenshotv8'
+#         clientName: 'fluentuiv8'
+
+# react_northstar:
+#   runs-on: ubuntu-latest
+#   env:
+#     pipelineId: '313'
+#     pipelineName: 'fluent-ui_VRT_Pipeline_v0'
+#   steps:
+#     - uses: actions/checkout@v4
+#       with:
+#         fetch-depth: 0
+#     - name: Run and publish VR screenshot
+#       uses: ./.github/actions/run-publish-vr-screenshot
+#       with:
+#         fluentVersion: v0
+#         vrTestPackageName: 'docs'
+#         vrTestPackagePath: 'packages/fluentui/docs'
+#         locationPrefix: 'FluentUI-v0'
+#         locationPostfix: 'vrscreenshotv0'
+#         clientName: 'FluentUIV0'

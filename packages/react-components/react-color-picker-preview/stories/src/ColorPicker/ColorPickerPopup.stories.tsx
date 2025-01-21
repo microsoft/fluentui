@@ -22,6 +22,9 @@ const useStyles = makeStyles({
     height: '50px',
     borderRadius: '4px',
     border: '1px solid #ccc',
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+    },
   },
   row: {
     display: 'flex',
@@ -33,7 +36,7 @@ const useStyles = makeStyles({
   },
 });
 
-const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
+const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
 
 export const ColorPickerPopup = () => {
   const styles = useStyles();
@@ -55,11 +58,11 @@ export const ColorPickerPopup = () => {
 
         <PopoverSurface>
           <ColorPicker color={previewColor} onColorChange={handleChange}>
-            <ColorArea />
+            <ColorArea inputX={{ 'aria-label': 'Saturation' }} inputY={{ 'aria-label': 'Brightness' }} />
             <div className={styles.row}>
               <div className={styles.sliders}>
-                <ColorSlider />
-                <AlphaSlider />
+                <ColorSlider aria-label="Hue" />
+                <AlphaSlider aria-label="Alpha" />
               </div>
               <div className={styles.previewColor} style={{ backgroundColor: tinycolor(previewColor).toRgbString() }} />
             </div>

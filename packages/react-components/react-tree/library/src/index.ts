@@ -32,7 +32,7 @@ export {
 
 export type { FlatTreeSlots, FlatTreeProps, FlatTreeState } from './FlatTree';
 
-export { TreeProvider } from './components/TreeProvider';
+export { TreeProvider, TreeRootReset } from './components/TreeProvider';
 
 export {
   useTreeContext_unstable,

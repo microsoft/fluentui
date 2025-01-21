@@ -23,6 +23,7 @@ interface IVerticalChartState {
   showAxisTitles: boolean;
   enableGradient: boolean;
   roundCorners: boolean;
+  selectMultipleLegends: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -42,6 +43,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       showAxisTitles: true,
       enableGradient: false,
       roundCorners: false,
+      selectMultipleLegends: false,
     };
   }
 
@@ -80,6 +82,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
 
   private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ roundCorners: checked });
+  };
+
+  private _onToggleMultiLegendSelection = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ selectMultipleLegends: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -234,6 +240,13 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
           <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
           &nbsp;&nbsp;
           <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
+          &nbsp;&nbsp;
+          <Toggle
+            label="Select Multiple Legends"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onToggleMultiLegendSelection}
+          />
         </div>
         {this.state.showAxisTitles && (
           <div style={rootStyle}>
@@ -259,6 +272,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
               xAxisTitle={this.state.showAxisTitles ? 'Values of each category' : undefined}
               enableGradient={this.state.enableGradient}
               roundCorners={this.state.roundCorners}
+              legendProps={{
+                canSelectMultipleLegends: this.state.selectMultipleLegends,
+              }}
             />
           </div>
         )}
@@ -284,6 +300,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
               enableReflow={true}
               enableGradient={this.state.enableGradient}
               roundCorners={this.state.roundCorners}
+              legendProps={{
+                canSelectMultipleLegends: this.state.selectMultipleLegends,
+              }}
             />
           </div>
         )}

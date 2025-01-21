@@ -1805,5 +1805,5 @@ export const enum IconNames {
   SizeLegacy = 'SizeLegacy',
 }
 
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export type IconNamesInput = keyof typeof IconNames;

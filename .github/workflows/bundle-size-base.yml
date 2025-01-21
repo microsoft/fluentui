@@ -18,6 +18,7 @@ env:
 
 jobs:
   bundle-size-base:
+    if: ${{ github.repository_owner == 'microsoft' }}
     # TODO: use macos-14-xlarge (arm) for faster builds once https://github.com/Azure/cli/issues/172 will be fixed
     runs-on: ubuntu-latest
     permissions:
