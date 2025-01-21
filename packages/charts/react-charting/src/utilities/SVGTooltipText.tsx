@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ITooltipHost, ITooltipProps, Tooltip, TooltipDelay } from '@fluentui/react/lib/Tooltip';
 import { Async, KeyCodes, getId, portalContainsElement } from '../Utilities';
+import { ITheme } from '@fluentui/react';
 
 interface ISVGTooltipTextProps {
   /**
@@ -62,11 +63,20 @@ interface ISVGTooltipTextProps {
    * and return a boolean value indicating whether the text overflowed
    */
   wrapContent?: (content: string, id: string, maxWidth: number, maxHeight?: number) => boolean;
+
+  /**
+   * Theme provided by High Order Component
+   */
+  theme?: ITheme;
 }
 
 interface ISVGTooltipTextState {
   isTooltipVisible: boolean;
   isOverflowing: boolean;
+  textX?: number;
+  textY?: number;
+  textWidth?: number;
+  textHeight?: number;
 }
 
 /**
@@ -121,22 +131,32 @@ export class SVGTooltipText
 
     const showTooltip =
       (!!this.props.isTooltipVisibleProp && this.state.isOverflowing && !!content) || (isTooltipVisible && !!content);
-
+    const backgroundColor = this.props.theme ? this.props.theme?.palette.neutralLighter : undefined;
     return (
       <>
-        <text
-          {...textProps}
-          id={this._tooltipHostId}
-          ref={this._tooltipHost}
-          onFocusCapture={this._onTooltipFocus}
-          onBlurCapture={this._onTooltipBlur}
-          onMouseEnter={this._onTooltipMouseEnter}
-          onMouseLeave={this._onTooltipMouseLeave}
-          onKeyDown={this._onTooltipKeyDown}
-          data-is-focusable={shouldReceiveFocus && this.state.isOverflowing}
-        >
-          {content}
-        </text>
+        <svg>
+          <rect
+            x={this.state.textX}
+            y={this.state.textY}
+            width={this.state.textWidth}
+            height={this.state.textHeight}
+            fill={backgroundColor}
+            transform={textProps?.transform}
+          />
+          <text
+            {...textProps}
+            id={this._tooltipHostId}
+            ref={this._tooltipHost}
+            onFocusCapture={this._onTooltipFocus}
+            onBlurCapture={this._onTooltipBlur}
+            onMouseEnter={this._onTooltipMouseEnter}
+            onMouseLeave={this._onTooltipMouseLeave}
+            onKeyDown={this._onTooltipKeyDown}
+            data-is-focusable={shouldReceiveFocus && this.state.isOverflowing}
+          >
+            {content}
+          </text>
+        </svg>
         {showTooltip && <Tooltip {...tooltipRenderProps} />}
       </>
     );
@@ -144,11 +164,13 @@ export class SVGTooltipText
 
   public componentDidMount(): void {
     this._wrapContent();
+    this._measureText();
   }
 
   public componentDidUpdate(prevProps: Readonly<ISVGTooltipTextProps>): void {
     if (this.props.maxWidth !== prevProps.maxWidth || this.props.maxHeight !== prevProps.maxHeight) {
       this._wrapContent();
+      this._measureText();
     }
   }
 
@@ -166,6 +188,18 @@ export class SVGTooltipText
 
   public dismiss = (): void => {
     this._hideTooltip();
+  };
+
+  private _measureText = (): void => {
+    if (this._tooltipHost.current) {
+      const bbox = this._tooltipHost.current.getBBox();
+      this.setState({
+        textX: bbox.x,
+        textY: bbox.y,
+        textWidth: bbox.width,
+        textHeight: bbox.height,
+      });
+    }
   };
 
   private _getTargetElement = (): HTMLElement | undefined => {
