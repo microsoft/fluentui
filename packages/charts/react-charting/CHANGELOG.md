@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 20 Jan 2025 07:21:43 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Jan 2025 07:13:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.43)
+
+Tue, 21 Jan 2025 07:13:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.42..@fluentui/react-charting_v5.23.43)
+
+### Patches
+
+- fix: resolve overlapping bars issue in histogram ([PR #33695](https://github.com/microsoft/fluentui/pull/33695) by 110246001+krkshitij@users.noreply.github.com)
+- Adding fallback and fixes for test app crashes for 12 schema data  ([PR #33621](https://github.com/microsoft/fluentui/pull/33621) by 120183316+srmukher@users.noreply.github.com)
+- Use strongly typed interfaces for plotly schema ([PR #33621](https://github.com/microsoft/fluentui/pull/33621) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix: resolve bugs in declarative chart ([PR #33621](https://github.com/microsoft/fluentui/pull/33621) by 110246001+krkshitij@users.noreply.github.com)
+- StronglyType plotly schema bug fix ([PR #33621](https://github.com/microsoft/fluentui/pull/33621) by 74965306+Anush2303@users.noreply.github.com)
 
 ## [5.23.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.42)
 
