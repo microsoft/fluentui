@@ -65,7 +65,8 @@ export const useColorSlider_unstable = (
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
     const newValue = Number(event.target.value);
-    const newColor = { ...hsvColor, h: newValue };
+    const { s = 0, v = 0, a = 1 } = hsvColor || {};
+    const newColor = { h: newValue, s, v, a };
     setCurrentValue(newValue);
     inputOnChange?.(event);
     onChange?.(event, { type: 'change', event, color: newColor });
