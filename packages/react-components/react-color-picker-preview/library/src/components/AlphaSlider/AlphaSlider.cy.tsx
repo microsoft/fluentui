@@ -5,13 +5,15 @@ import { webLightTheme } from '@fluentui/react-theme';
 import { AlphaSlider } from './AlphaSlider';
 import type { AlphaSliderProps } from './AlphaSlider.types';
 import { calculateTransparencyValue } from './alphaSliderUtils';
+import { INITIAL_COLOR_HSV } from '../../utils/constants';
+
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
 const AlphaSliderExample = (props: AlphaSliderProps) => {
   const { transparency = false } = props;
-  const [color, setColor] = React.useState(props.color ?? { h: 0, s: 1, v: 1, a: 1 });
+  const [color, setColor] = React.useState(props.color ?? INITIAL_COLOR_HSV);
   return (
     <>
       <p tabIndex={0} id="before">
@@ -53,13 +55,21 @@ describe('AlphaSlider', () => {
         mountFluent(<AlphaSliderExample color={{ h: 106, s: 0.96, v: 0.1, a: 0.5 }} />);
         cy.get('#before').focus();
         cy.realPress('Tab');
+
+        // decrements the value two times
         cy.realPress('ArrowLeft');
         cy.realPress('ArrowLeft');
         assertSliderValue('48');
+
+        // increments the value
         cy.realPress('ArrowRight');
         assertSliderValue('49');
+
+        // increments the value with arrowUp
         cy.realPress('ArrowUp');
         assertSliderValue('50');
+
+        // decrements the value with arrowDown
         cy.realPress('ArrowDown');
         assertSliderValue('49');
       });
@@ -68,11 +78,17 @@ describe('AlphaSlider', () => {
         mountFluent(<AlphaSliderExample color={{ h: 111, s: 1, v: 0.03, a: 0.02 }} />);
         cy.get('#before').focus();
         cy.realPress('Tab');
+
+        // decrements the value two times
         cy.realPress('ArrowLeft');
         cy.realPress('ArrowLeft');
         assertSliderValue('0');
+
+        // decrements the value on left edge
         cy.realPress('ArrowLeft');
         assertSliderValue('0');
+
+        // increments the value
         cy.realPress('ArrowRight');
         assertSliderValue('1');
       });
@@ -81,12 +97,20 @@ describe('AlphaSlider', () => {
         mountFluent(<AlphaSliderExample color={{ h: 111, s: 0.03, v: 0.45, a: 0.98 }} />);
         cy.get('#before').focus();
         cy.realPress('Tab');
+
+        // increments the value
         cy.realPress('ArrowRight');
         assertSliderValue('99');
+
+        // increments the value
         cy.realPress('ArrowRight');
         assertSliderValue('100');
+
+        // increments the value on right edge
         cy.realPress('ArrowRight');
         assertSliderValue('100');
+
+        // decrements the value
         cy.realPress('ArrowLeft');
         assertSliderValue('99');
       });
@@ -98,13 +122,21 @@ describe('AlphaSlider', () => {
       mountFluent(<AlphaSliderExample color={{ h: 106, s: 0.96, v: 0.1, a: 0.7 }} transparency />);
       cy.get('#before').focus();
       cy.realPress('Tab');
+
+      // decrements the value two times
       cy.realPress('ArrowLeft');
       cy.realPress('ArrowLeft');
       assertSliderValue('28');
+
+      // increments the value
       cy.realPress('ArrowRight');
       assertSliderValue('29');
+
+      // increments the value with arrowUp
       cy.realPress('ArrowUp');
       assertSliderValue('30');
+
+      // decrements the value with arrowDown
       cy.realPress('ArrowDown');
       assertSliderValue('29');
     });
@@ -113,11 +145,17 @@ describe('AlphaSlider', () => {
       mountFluent(<AlphaSliderExample color={{ h: 111, s: 1, v: 0.03, a: 0.98 }} transparency />);
       cy.get('#before').focus();
       cy.realPress('Tab');
+
+      // decrements the value two times
       cy.realPress('ArrowLeft');
       cy.realPress('ArrowLeft');
       assertSliderValue('0');
+
+      // decrements the value on left edge
       cy.realPress('ArrowLeft');
       assertSliderValue('0');
+
+      // increments the value
       cy.realPress('ArrowRight');
       assertSliderValue('1');
     });
@@ -126,12 +164,20 @@ describe('AlphaSlider', () => {
       mountFluent(<AlphaSliderExample color={{ h: 111, s: 0.03, v: 0.45, a: 0.02 }} transparency />);
       cy.get('#before').focus();
       cy.realPress('Tab');
+
+      // increments the value
       cy.realPress('ArrowRight');
       assertSliderValue('99');
+
+      // increments the value
       cy.realPress('ArrowRight');
       assertSliderValue('100');
+
+      // increments the value on right edge
       cy.realPress('ArrowRight');
       assertSliderValue('100');
+
+      // decrements the value
       cy.realPress('ArrowLeft');
       assertSliderValue('99');
     });
