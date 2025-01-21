@@ -512,6 +512,16 @@ describe('Area chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+
+  testWithoutWait(
+    'Should render the Area Chart with tozeroy mode',
+    AreaChart,
+    { data: chartData, mode: 'tozeroy' },
+    container => {
+      //Asset
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
 
 describe('Area chart - Subcomponent Area', () => {

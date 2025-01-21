@@ -2,6 +2,35 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 20 Jan 2025 07:21:43 GMT",
+      "tag": "@fluentui/react-charting_v5.23.42",
+      "version": "5.23.42",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "556fc8e7b9a921cedbb07c2f0670dfabcf8ec0ed",
+            "comment": "Support tozeroy mode for Area Charts"
+          },
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "dc365b11fcca7eb0077460510eb78d93d3315ecd",
+            "comment": "Declarative chart bug fixes"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "fd420e1e0b66e04c8a423cff3eea6d21d9434d2d",
+            "comment": "chore: migrate from deprecation plugin to ts-eslint/no-deprecated rule"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jan 2025 07:21:32 GMT",
       "tag": "@fluentui/react-charting_v5.23.41",
       "version": "5.23.41",

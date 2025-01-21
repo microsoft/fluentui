@@ -1254,7 +1254,7 @@ export class VerticalStackedBarChartBase
     return !(
       this.props.data &&
       this.props.data.length > 0 &&
-      this.props.data.filter(item => item.chartData.length === 0).length === 0
+      this.props.data.some(item => item.chartData.length > 0 || (item.lineData && item.lineData.length > 0))
     );
   }
 

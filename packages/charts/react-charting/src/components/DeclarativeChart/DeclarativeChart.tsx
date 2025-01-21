@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { useTheme } from '@fluentui/react';
 import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
+import { PlotData, PlotlySchema } from './PlotlySchema';
+//import type { Data, Layout } from './PlotlySchema';
 import {
   isArrayOrTypedArray,
   isDateArray,
@@ -21,10 +22,11 @@ import {
   transformPlotlyJsonToGaugeProps,
   transformPlotlyJsonToGVBCProps,
   transformPlotlyJsonToVBCProps,
+  isLineData,
 } from './PlotlySchemaAdapter';
-import { LineChart } from '../LineChart/index';
+import { LineChart, ILineChartProps } from '../LineChart/index';
 import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
-import { AreaChart } from '../AreaChart/index';
+import { AreaChart, IAreaChartProps } from '../AreaChart/index';
 import { HeatMapChart } from '../HeatMapChart/index';
 import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
@@ -41,6 +43,7 @@ export interface Schema {
   /**
    * Plotly schema represented as JSON object
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   plotlySchema: any;
 }
 
@@ -87,12 +90,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   DeclarativeChartProps
 >((props, forwardedRef) => {
   const { plotlySchema } = sanitizeJson(props.chartSchema);
-  const { data, layout } = plotlySchema;
+  const plotlyInput = plotlySchema as PlotlySchema;
   let { selectedLegends } = plotlySchema;
-  const xValues = data[0].x;
-  const isXDate = isDateArray(xValues);
-  const isXNumber = isNumberArray(xValues);
-  const isXMonth = isMonthArray(xValues);
   const colorMap = useColorMapping();
   const theme = useTheme();
   const isDarkTheme = theme?.isInverted ?? false;
@@ -106,7 +105,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const onActiveLegendsChange = (keys: string[]) => {
     setActiveLegends(keys);
     if (props.onSchemaChange) {
-      props.onSchemaChange({ plotlySchema: { data, layout, selectedLegends: keys } });
+      props.onSchemaChange({ plotlySchema: { plotlyInput, selectedLegends: keys } });
     }
   };
 
@@ -118,10 +117,62 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     setActiveLegends(selectedLegends ?? []);
   }, [props.chartSchema]);
 
-  const legendProps = {
-    canSelectMultipleLegends: false,
+  const multiSelectLegendProps = {
+    canSelectMultipleLegends: true,
     onChange: onActiveLegendsChange,
-    selectedLegend: activeLegends.slice(0, 1)[0],
+    selectedLegends: activeLegends,
+  };
+
+  const commonProps = {
+    legendProps: multiSelectLegendProps,
+    componentRef: chartRef,
+    calloutProps: { layerProps: { eventBubblingEnabled: true } },
+  };
+
+  const checkAndRenderChart = (
+    renderChartJsx: (chartProps: ILineChartProps | IAreaChartProps) => JSX.Element,
+    isAreaChart: boolean = false,
+  ) => {
+    let fallbackVSBC = false;
+    const xValues = (plotlyInput.data[0] as PlotData).x;
+    const isXDate = isDateArray(xValues);
+    const isXNumber = isNumberArray(xValues);
+    const isXMonth = isMonthArray(xValues);
+    if (isXDate || isXNumber) {
+      const chartProps: ILineChartProps | IAreaChartProps = {
+        ...transformPlotlyJsonToScatterChartProps(
+          { data: plotlyInput.data, layout: plotlyInput.layout },
+          isAreaChart,
+          colorMap,
+          isDarkTheme,
+        ),
+        ...commonProps,
+      };
+      return renderChartJsx(chartProps);
+    } else if (isXMonth) {
+      const updatedData = plotlyInput.data.map((dataPoint: PlotData) => ({
+        ...dataPoint,
+        x: updateXValues(dataPoint.x),
+      }));
+      const chartProps: ILineChartProps | IAreaChartProps = {
+        ...transformPlotlyJsonToScatterChartProps(
+          { data: updatedData, layout: plotlyInput.layout },
+          isAreaChart,
+          colorMap,
+          isDarkTheme,
+        ),
+        ...commonProps,
+      };
+      return renderChartJsx(chartProps);
+    }
+    // Unsupported schema, render as VerticalStackedBarChart
+    fallbackVSBC = true;
+    return (
+      <VerticalStackedBarChart
+        {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme, fallbackVSBC)}
+        {...commonProps}
+      />
+    );
   };
 
   const exportAsImage = React.useCallback(
@@ -143,146 +194,78 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     [exportAsImage],
   );
 
-  const multiSelectLegendProps = {
-    ...legendProps,
-    canSelectMultipleLegends: true,
-    selectedLegends: activeLegends,
-  };
-
-  switch (data[0].type) {
+  switch (plotlyInput.data[0].type) {
     case 'pie':
-      return (
-        <DonutChart
-          {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={multiSelectLegendProps}
-          componentRef={chartRef}
-          // Bubble event to prevent right click to open menu on the callout
-          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
-        />
-      );
+      return <DonutChart {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)} {...commonProps} />;
     case 'bar':
-      const orientation = data[0].orientation;
+      const orientation = plotlyInput.data[0].orientation;
       if (orientation === 'h') {
         return (
           <HorizontalBarChartWithAxis
             {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap, isDarkTheme)}
-            legendProps={multiSelectLegendProps}
-            componentRef={chartRef}
-            calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
+            {...commonProps}
           />
         );
       } else {
-        if (['group', 'overlay'].includes(plotlySchema?.layout?.barmode)) {
+        const containsLines = plotlyInput.data.some(
+          series => series.type === 'scatter' || isLineData(series as Partial<PlotData>),
+        );
+        if (['group', 'overlay'].includes(plotlySchema?.layout?.barmode) && !containsLines) {
           return (
             <GroupedVerticalBarChart
               {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap, isDarkTheme)}
-              legendProps={multiSelectLegendProps}
-              componentRef={chartRef}
-              calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
+              {...commonProps}
             />
           );
         }
         return (
           <VerticalStackedBarChart
             {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
-            legendProps={multiSelectLegendProps}
-            componentRef={chartRef}
-            calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
+            {...commonProps}
           />
         );
       }
     case 'scatter':
-      const isAreaChart = data.some((series: any) => series.fill === 'tonexty' || series.fill === 'tozeroy');
-      const renderChart = (chartProps: any) => {
-        if (isAreaChart) {
-          return (
-            <AreaChart
-              {...chartProps}
-              legendProps={{ ...legendProps, canSelectMultipleLegends: true, selectedLegends: activeLegends }}
-            />
-          );
-        }
-        return (
-          <LineChart
-            {...{
-              ...chartProps,
-              legendProps: {
-                onChange: onActiveLegendsChange,
-                canSelectMultipleLegends: true,
-                selectedLegends: activeLegends,
-              },
-            }}
-          />
-        );
-      };
-      if (isXDate || isXNumber) {
-        const chartProps = {
-          ...transformPlotlyJsonToScatterChartProps({ data, layout }, isAreaChart, colorMap, isDarkTheme),
-          legendProps,
-          componentRef: chartRef,
-          calloutProps: { layerProps: { eventBubblingEnabled: true } },
-        };
-        return renderChart(chartProps);
-      } else if (isXMonth) {
-        const updatedData = data.map((dataPoint: any) => ({
-          ...dataPoint,
-          x: updateXValues(dataPoint.x),
-        }));
-        const chartProps = {
-          ...transformPlotlyJsonToScatterChartProps({ data: updatedData, layout }, isAreaChart, colorMap, isDarkTheme),
-          legendProps,
-          componentRef: chartRef,
-          calloutProps: { layerProps: { eventBubblingEnabled: true } },
-        };
-        return renderChart(chartProps);
+      if (plotlyInput.data[0].mode === 'markers') {
+        throw new Error(`Unsupported chart - type :${plotlyInput.data[0]?.type}, mode: ${plotlyInput.data[0]?.mode}`);
       }
-      return (
-        <VerticalStackedBarChart
-          {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={multiSelectLegendProps}
-          componentRef={chartRef}
-          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
-        />
+      const isAreaChart = plotlyInput.data.some(
+        (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
       );
+      const renderChartJsx = (chartProps: ILineChartProps | IAreaChartProps) => {
+        if (isAreaChart) {
+          return <AreaChart {...chartProps} />;
+        }
+        return <LineChart {...chartProps} />;
+      };
+      return checkAndRenderChart(renderChartJsx, isAreaChart);
     case 'heatmap':
-      return (
-        <HeatMapChart
-          {...transformPlotlyJsonToHeatmapProps(plotlySchema)}
-          componentRef={chartRef}
-          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
-        />
-      );
+      return <HeatMapChart {...transformPlotlyJsonToHeatmapProps(plotlySchema)} {...commonProps} legendProps={{}} />;
     case 'sankey':
       return (
-        <SankeyChart
-          {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap, isDarkTheme)}
-          componentRef={chartRef}
-          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
-        />
+        <SankeyChart {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap, isDarkTheme)} {...commonProps} />
       );
     case 'indicator':
-      if (data?.[0]?.mode?.includes('gauge')) {
+      if (plotlyInput.data?.[0]?.mode?.includes('gauge')) {
         return (
-          <GaugeChart
-            {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)}
-            legendProps={multiSelectLegendProps}
-            componentRef={chartRef}
-            calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
-          />
+          <GaugeChart {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)} {...commonProps} />
         );
       }
-      return <div>Unsupported Schema</div>;
+      throw new Error(`Unsupported chart - type: ${plotlyInput.data[0]?.type}, mode: ${plotlyInput.data[0]?.mode}`);
     case 'histogram':
       return (
-        <VerticalBarChart
-          {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap, isDarkTheme)}
-          legendProps={multiSelectLegendProps}
-          componentRef={chartRef}
-          calloutProps={{ layerProps: { eventBubblingEnabled: true } }}
-        />
+        <VerticalBarChart {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap, isDarkTheme)} {...commonProps} />
       );
     default:
-      throw new Error('Unsupported chart schema');
+      const xValues = (plotlyInput.data[0] as PlotData).x;
+      const yValues = (plotlyInput.data[0] as PlotData).y;
+      if (xValues && yValues && xValues.length > 0 && yValues.length > 0) {
+        const renderLineChartJsx = (chartProps: ILineChartProps) => {
+          return <LineChart {...chartProps} />;
+        };
+        return checkAndRenderChart(renderLineChartJsx);
+      }
+      throw new Error(`Unsupported chart type :${plotlyInput.data[0]?.type}`);
   }
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
