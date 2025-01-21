@@ -300,7 +300,7 @@ export const transformPlotlyJsonToVSBCProps = (
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].lineData!.push({
           legend,
-          lineOptions: dashProperties[series.line?.dash as Dash] || {},
+          ...(series.line?.dash ? { lineOptions: dashProperties[series.line.dash as Dash] } : {}),
           y: yVal,
           color,
         });
@@ -491,7 +491,7 @@ export const transformPlotlyJsonToScatterChartProps = (
 
     return {
       legend,
-      lineOptions: dashProperties[series.line?.dash as Dash] || {},
+      ...(series.line?.dash ? { lineOptions: dashProperties[series.line.dash as Dash] } : {}),
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],

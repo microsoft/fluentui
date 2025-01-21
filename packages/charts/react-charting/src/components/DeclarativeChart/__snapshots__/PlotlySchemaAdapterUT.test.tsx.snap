@@ -3185,7 +3185,6 @@ Object {
           },
         ],
         "legend": "a",
-        "lineOptions": Object {},
       },
       Object {
         "color": "#9bd9db",
@@ -3232,7 +3231,6 @@ Object {
           },
         ],
         "legend": "b",
-        "lineOptions": Object {},
       },
       Object {
         "color": "#b29ad4",
@@ -3279,7 +3277,6 @@ Object {
           },
         ],
         "legend": "c",
-        "lineOptions": Object {},
       },
       Object {
         "color": "#a4cc6c",
@@ -3326,7 +3323,6 @@ Object {
           },
         ],
         "legend": "d",
-        "lineOptions": Object {},
       },
     ],
   },
@@ -3749,7 +3745,6 @@ Object {
           },
         ],
         "legend": "Trace 0",
-        "lineOptions": Object {},
       },
       Object {
         "color": "#83bdeb",
@@ -4156,7 +4151,6 @@ Object {
           },
         ],
         "legend": "Trace 1",
-        "lineOptions": Object {},
       },
       Object {
         "color": "#df8e64",
@@ -4563,7 +4557,6 @@ Object {
           },
         ],
         "legend": "Trace 2",
-        "lineOptions": Object {},
       },
     ],
   },
