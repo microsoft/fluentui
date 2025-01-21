@@ -65,12 +65,14 @@ export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HT
   }, [cancelAnimationFrame, setAnimationFrame, updateScrollState]);
 
   useIsomorphicLayoutEffect(() => {
+    cancelAnimationFrame();
     setAnimationFrame(() => updateScrollState());
     /* update scroll state when children changes */
     return () => cancelAnimationFrame();
   }, [props.children, cancelAnimationFrame, updateScrollState, setAnimationFrame]);
 
   useIsomorphicLayoutEffect(() => {
+    cancelAnimationFrame();
     setAnimationFrame(() => updateScrollState());
 
     return () => cancelAnimationFrame();
