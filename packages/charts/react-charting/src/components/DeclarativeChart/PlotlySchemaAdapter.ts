@@ -39,22 +39,44 @@ interface ISecondaryYAxisValues {
 }
 
 const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'histogram'];
-const dashProperties: Record<
-  Dash,
-  {
-    strokeDasharray: string;
-    strokeLinecap: 'butt' | 'round' | 'square' | 'inherit' | undefined;
-    strokeWidth: string;
-    lineBorderWidth: string;
-  }
-> = {
-  dot: { strokeDasharray: '1, 5', strokeLinecap: 'round', strokeWidth: '2', lineBorderWidth: '4' },
-  dash: { strokeDasharray: '5, 5', strokeLinecap: 'butt', strokeWidth: '2', lineBorderWidth: '4' },
-  longdash: { strokeDasharray: '10, 5', strokeLinecap: 'butt', strokeWidth: '2', lineBorderWidth: '4' },
-  dashdot: { strokeDasharray: '5, 5, 1, 5', strokeLinecap: 'butt', strokeWidth: '2', lineBorderWidth: '4' },
-  longdashdot: { strokeDasharray: '10, 5, 1, 5', strokeLinecap: 'butt', strokeWidth: '2', lineBorderWidth: '4' },
-  solid: { strokeDasharray: '0', strokeLinecap: 'butt', strokeWidth: '2', lineBorderWidth: '4' },
-};
+const dashOptions = {
+  dot: {
+    strokeDasharray: '1, 5',
+    strokeLinecap: 'round',
+    strokeWidth: '2',
+    lineBorderWidth: '4',
+  },
+  dash: {
+    strokeDasharray: '5, 5',
+    strokeLinecap: 'butt',
+    strokeWidth: '2',
+    lineBorderWidth: '4',
+  },
+  longdash: {
+    strokeDasharray: '10, 5',
+    strokeLinecap: 'butt',
+    strokeWidth: '2',
+    lineBorderWidth: '4',
+  },
+  dashdot: {
+    strokeDasharray: '5, 5, 1, 5',
+    strokeLinecap: 'butt',
+    strokeWidth: '2',
+    lineBorderWidth: '4',
+  },
+  longdashdot: {
+    strokeDasharray: '10, 5, 1, 5',
+    strokeLinecap: 'butt',
+    strokeWidth: '2',
+    lineBorderWidth: '4',
+  },
+  solid: {
+    strokeDasharray: '0',
+    strokeLinecap: 'butt',
+    strokeWidth: '2',
+    lineBorderWidth: '4',
+  },
+} as const;
 const isDate = (value: any): boolean => {
   const parsedDate = new Date(Date.parse(value));
   if (isNaN(parsedDate.getTime())) {
@@ -300,7 +322,9 @@ export const transformPlotlyJsonToVSBCProps = (
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].lineData!.push({
           legend,
-          ...(series.line?.dash ? { lineOptions: dashProperties[series.line.dash as Dash] } : {}),
+          ...(series.line?.dash && dashOptions[series.line.dash]
+            ? { lineOptions: { ...dashOptions[series.line.dash] } }
+            : {}),
           y: yVal,
           color,
         });
@@ -491,7 +515,9 @@ export const transformPlotlyJsonToScatterChartProps = (
 
     return {
       legend,
-      ...(series.line?.dash ? { lineOptions: dashProperties[series.line.dash as Dash] } : {}),
+      ...(series.line?.dash && dashOptions[series.line.dash]
+        ? { lineOptions: { ...dashOptions[series.line.dash] } }
+        : {}),
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
