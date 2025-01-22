@@ -312,19 +312,12 @@ export function createStringXAxis(
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
     .paddingInner(typeof xAxisInnerPadding !== 'undefined' ? xAxisInnerPadding : xAxisPadding)
     .paddingOuter(typeof xAxisOuterPadding !== 'undefined' ? xAxisOuterPadding : xAxisPadding);
-  const xAxis = d3AxisBottom(xAxisScale)
-    .tickSize(xAxistickSize)
-    .tickPadding(tickPadding)
-    .ticks(xAxisCount)
-    .tickFormat((x: string, index: number) => {
-      return convertToLocaleString(dataset[index], culture) as string;
-    });
+  const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).ticks(xAxisCount);
 
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = dataset.map(xAxis.tickFormat()!);
-  return { xScale: xAxisScale, tickValues };
+  return { xScale: xAxisScale, tickValues: dataset };
 }
 
 /**

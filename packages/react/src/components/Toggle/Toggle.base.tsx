@@ -19,13 +19,13 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
       disabled,
       inlineLabel,
       label,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       offAriaLabel,
       offText,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       onAriaLabel,
       onChange,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       onChanged,
       onClick: onToggleClick,
       onText,

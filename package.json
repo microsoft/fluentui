@@ -231,7 +231,6 @@
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-prettier": "8.3.0",
     "eslint-import-resolver-typescript": "3.6.1",
-    "eslint-plugin-deprecation": "3.0.0",
     "eslint-plugin-es": "4.1.0",
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-jest": "28.8.0",
@@ -343,7 +342,7 @@
     "tslib": "2.6.3",
     "typescript": "5.3.3",
     "vinyl": "2.2.0",
-    "vite": "6.0.7",
+    "vite": "6.0.9",
     "webpack": "5.94.0",
     "webpack-bundle-analyzer": "4.10.1",
     "webpack-cli": "5.1.4",
@@ -371,7 +370,8 @@
       "packages/charts/*/*",
       "scripts/*",
       "tools/*",
-      "typings"
+      "typings",
+      "starter-templates"
     ]
   },
   "resolutions": {

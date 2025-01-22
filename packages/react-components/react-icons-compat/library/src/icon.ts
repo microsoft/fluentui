@@ -171,7 +171,7 @@ export function getIcon(name?: string): IconRecord | undefined {
         }
       }
     } else {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (!options.disableWarnings && options.warnOnMissingIcons) {
         // eslint-disable-next-line no-console
         console.warn(

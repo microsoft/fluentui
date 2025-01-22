@@ -26,7 +26,7 @@ export function getIsChecked(item: IContextualMenuItem): boolean | null {
 }
 
 export function hasSubmenu(item: IContextualMenuItem): boolean {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   return !!(item.subMenuProps || item.items);
 }
 

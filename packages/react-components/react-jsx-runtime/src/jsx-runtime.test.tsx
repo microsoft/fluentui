@@ -71,12 +71,12 @@ describe('createElement with getSlotsNext', () => {
         const state: TestComponentState = {
           components: { slot: 'div' },
 
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           slot: resolveShorthand(props.slot, {
             defaultProps: { children: 'Default Children', id: 'slot' },
           }),
         };
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         const { slots, slotProps } = getSlotsNext<TestComponentSlots>(state);
 
         return <slots.slot {...slotProps.slot} />;
@@ -114,12 +114,12 @@ describe('createElement with getSlotsNext', () => {
         const state: TestComponentState = {
           components: { inner: 'div', outer: 'div' },
 
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           inner: resolveShorthand(props.inner, { defaultProps: { id: 'inner' } }),
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           outer: resolveShorthand(props.outer, { defaultProps: { id: 'outer' } }),
         };
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         const { slots, slotProps } = getSlotsNext<TestComponentSlots>(state);
 
         return (
