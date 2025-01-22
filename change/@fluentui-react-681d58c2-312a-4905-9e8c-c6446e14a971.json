@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Autofill): Set selection to the end when suggested value is an empty string and the component has updated.",
+  "packageName": "@fluentui/react",
+  "email": "estebanmu@microsoft.com",
+  "dependentChangeType": "patch"
+}
