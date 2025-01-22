@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Wed, 08 Jan 2025 18:33:36 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jan 2025 14:00:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.3.7)
+
+Wed, 22 Jan 2025 14:00:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.3.6..@fluentui/react-link_v9.3.7)
+
+### Patches
+
+- fix: support Enter and Space interaction, if rendered as span ([PR #33587](https://github.com/microsoft/fluentui/pull/33587) by vgenaev@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.50 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-tabster to v9.23.3 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-utilities to v9.18.20 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
 
 ## [9.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.3.6)
 

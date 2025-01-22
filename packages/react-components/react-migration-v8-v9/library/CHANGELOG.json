@@ -2,6 +2,27 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2025 14:00:18 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.6.46",
+      "version": "9.6.46",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "e7a954abbbe42a13ba302f28710a908cd34b72b9",
+            "comment": "chore: Moving @ctrl/tinycolor dependency to be a caret dependency in production packages."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.58.0",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2025 18:33:36 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v9.6.45",
       "version": "9.6.45",

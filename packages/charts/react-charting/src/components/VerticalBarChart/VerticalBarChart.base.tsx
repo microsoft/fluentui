@@ -1272,7 +1272,15 @@ export class VerticalBarChartBase
         this._domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
     } else {
-      const data = (this.props.data?.map(point => point.x) as number[] | Date[] | undefined) || [];
+      const uniqueX: Record<number, number | Date> = {};
+      this.props.data?.forEach(point => {
+        if (point.x instanceof Date) {
+          uniqueX[point.x.getTime()] = point.x;
+        } else {
+          uniqueX[point.x as number] = point.x as number;
+        }
+      });
+      const data = Object.values(uniqueX) as number[] | Date[];
       this._barWidth = getBarWidth(
         this.props.barWidth,
         this.props.maxBarWidth,

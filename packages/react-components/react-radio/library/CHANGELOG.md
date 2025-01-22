@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-radio
 
-This log was last generated on Wed, 08 Jan 2025 18:33:36 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jan 2025 14:00:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.2.41)
+
+Wed, 22 Jan 2025 14:00:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.2.40..@fluentui/react-radio_v9.2.41)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.85 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.50 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-label to v9.1.83 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-tabster to v9.23.3 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-utilities to v9.18.20 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
 
 ## [9.2.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.2.40)
 
