@@ -63,7 +63,7 @@ jobs:
 
       - name: VR App - Create Policy
         run: |
-          echo "MAKE THIS WORK TEST"
+          echo "MAKE THIS WORK"
 
       - name: Run screenshotdiff
         run: |
