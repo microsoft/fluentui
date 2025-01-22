@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "BREAKING: rename api report file name according to api-extractor change",
+  "packageName": "@fluentui/chart-web-components",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
