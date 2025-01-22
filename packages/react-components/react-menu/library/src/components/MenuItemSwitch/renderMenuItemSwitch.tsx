@@ -12,8 +12,11 @@ export const renderMenuItemSwitch_unstable = (state: MenuItemSwitchState) => {
   return (
     <state.root>
       {state.icon && <state.icon />}
-      {state.content && <state.content />}
-      {state.subText && <state.subText />}
+      {state.content && (
+        <state.content>
+          {state.content.children} {state.subText && <state.subText />}
+        </state.content>
+      )}
       {state.secondaryContent && <state.secondaryContent />}
       {state.switchIndicator && <state.switchIndicator />}
     </state.root>

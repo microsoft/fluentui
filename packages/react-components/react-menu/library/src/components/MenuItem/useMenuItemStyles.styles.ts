@@ -7,11 +7,6 @@ import type { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-const cssVars = {
-  menuItemMultilineGridAreas: '--fui-MenuItem-grid-areas',
-  menuItemMultilineGridColumns: '--fui-MenuItem-grid-columns',
-};
-
 export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
   root: 'fui-MenuItem',
   icon: 'fui-MenuItem__icon',
@@ -119,8 +114,6 @@ const useSubmenuIndicatorBaseStyles = makeResetStyles({
 
 const useSubtextBaseStyles = makeResetStyles({
   ...typographyStyles.caption2,
-  paddingLeft: '2px',
-  paddingRight: '2px',
 });
 
 const useStyles = makeStyles({
@@ -188,61 +181,19 @@ const useStyles = makeStyles({
 });
 
 const useMultilineStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: `var(${cssVars.menuItemMultilineGridColumns})`,
-    gridTemplateAreas: `var(${cssVars.menuItemMultilineGridAreas})`,
-  },
-
-  checkmark: {
-    gridArea: 'checkmark',
-  },
-
-  icon: {
-    gridArea: 'icon',
-  },
-
   content: {
-    gridArea: 'content',
+    display: 'flex',
+    flexDirection: 'column',
   },
 
   secondaryContent: {
-    gridArea: 'secondaryContent',
     alignSelf: 'center',
-  },
-
-  subText: {
-    gridArea: 'subText',
   },
 
   submenuIndicator: {
     alignSelf: 'center',
-    gridArea: 'submenuIndicator',
   },
 });
-
-const buildMultilineGridArea = (slots: MenuItemSlots, hasSubmenu: boolean) => {
-  const checkmark = slots.checkmark ? 'checkmark' : '';
-  const icon = slots.icon ? 'icon' : '';
-  const secondaryContent = slots.secondaryContent ? 'secondaryContent' : '';
-  const submenuIndicator = slots.submenuIndicator || hasSubmenu ? 'submenuIndicator' : '';
-
-  return `
-    "${checkmark} ${icon} content ${secondaryContent} ${submenuIndicator}"
-    "${checkmark} ${icon} subText ${secondaryContent} ${submenuIndicator}"
-  `;
-};
-
-const buildMultilineGridColumns = (slots: MenuItemSlots, hasSubmenu: boolean) => {
-  const checkmark = slots.checkmark ? 'auto' : '';
-  const icon = slots.icon ? 'auto' : '';
-  const secondaryContent = slots.secondaryContent ? 'auto' : '';
-  const submenuIndicator = slots.submenuIndicator || hasSubmenu ? 'auto' : '';
-
-  return `
-    ${checkmark} ${icon} 1fr ${secondaryContent} ${submenuIndicator}
-  `;
-};
 
 /** Applies style classnames to slots */
 export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState => {
@@ -261,17 +212,8 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
     menuItemClassNames.root,
     rootBaseStyles,
     state.disabled && styles.disabled,
-    multiline && multilineStyles.root,
     state.root.className,
   );
-
-  if (multiline) {
-    state.root.style ??= {};
-    Object.assign(state.root.style, {
-      [cssVars.menuItemMultilineGridAreas]: buildMultilineGridArea(state, state.hasSubmenu),
-      [cssVars.menuItemMultilineGridColumns]: buildMultilineGridColumns(state, state.hasSubmenu),
-    });
-  }
 
   if (state.content) {
     state.content.className = mergeClasses(
@@ -283,12 +225,7 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   }
 
   if (state.checkmark) {
-    state.checkmark.className = mergeClasses(
-      menuItemClassNames.checkmark,
-      styles.checkmark,
-      state.checkmark.className,
-      multiline && multilineStyles.checkmark,
-    );
+    state.checkmark.className = mergeClasses(menuItemClassNames.checkmark, styles.checkmark, state.checkmark.className);
   }
 
   if (state.secondaryContent) {
@@ -301,12 +238,7 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   }
 
   if (state.icon) {
-    state.icon.className = mergeClasses(
-      menuItemClassNames.icon,
-      iconBaseStyles,
-      state.icon.className,
-      multiline && multilineStyles.icon,
-    );
+    state.icon.className = mergeClasses(menuItemClassNames.icon, iconBaseStyles, state.icon.className);
   }
 
   if (state.submenuIndicator) {
@@ -319,12 +251,7 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   }
 
   if (state.subText) {
-    state.subText.className = mergeClasses(
-      menuItemClassNames.subText,
-      state.subText.className,
-      subtextBaseStyles,
-      multiline && multilineStyles.subText,
-    );
+    state.subText.className = mergeClasses(menuItemClassNames.subText, state.subText.className, subtextBaseStyles);
   }
 
   useCheckmarkStyles_unstable(state as MenuItemCheckboxState);

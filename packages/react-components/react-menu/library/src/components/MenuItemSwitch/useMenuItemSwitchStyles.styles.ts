@@ -22,10 +22,6 @@ const trackWidth = 40;
 const thumbSize = trackHeight - spaceBetweenThumbAndTrack;
 
 const useSwitchIndicatorBaseClassName = makeResetStyles({
-  // Switch items should not have submenus, we put it in the same grid area
-  // as the submenu indicator in multiline
-  gridArea: 'submenuIndicator',
-
   borderRadius: tokens.borderRadiusCircular,
   border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
   lineHeight: 0,
@@ -89,15 +85,23 @@ const useSwitchIndicatorStyles = makeStyles({
   },
 });
 
+const useMultilineStyles = makeStyles({
+  switch: {
+    alignSelf: 'center',
+  },
+});
+
 /**
  * Apply styling to the MenuItemSwitch slots based on the state
  */
 export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): MenuItemSwitchState => {
   'use no memo';
 
-  const { checked } = state;
+  const { checked, subText } = state;
+  const multiline = !!subText;
   const switchIndicatorStyles = useSwitchIndicatorStyles();
   const switchIndicatorBaseStyles = useSwitchIndicatorBaseClassName();
+  const multilineStyles = useMultilineStyles();
   state.root.className = mergeClasses(menuItemSwitchClassNames.root, state.root.className);
   if (state.content) {
     state.content.className = mergeClasses(menuItemSwitchClassNames.content, state.content.className);
@@ -124,6 +128,7 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
       switchIndicatorBaseStyles,
       checked && switchIndicatorStyles.checked,
       state.switchIndicator.className,
+      multiline && multilineStyles.switch,
     );
   }
 
@@ -136,9 +141,7 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
     },
     checkmark: undefined,
     submenuIndicator: undefined,
-    // Since switch items should not have submenus, we put it in the same grid area
-    // as the submen in multiline
-    hasSubmenu: !!state.subText,
+    hasSubmenu: false,
     persistOnClick: true,
   });
 
