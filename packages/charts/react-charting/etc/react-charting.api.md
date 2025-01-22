@@ -1042,6 +1042,7 @@ export interface ILineDataInVerticalStackedBarChart {
     data?: number;
     // (undocumented)
     legend: string;
+    lineOptions?: ILineChartLineOptions;
     useSecondaryYScale?: boolean;
     // (undocumented)
     y: number;
