@@ -28,20 +28,20 @@ export const Carousel = () => (
         <TeachingPopoverCarouselCard value="1">
           <TeachingPopoverBody media={<Image alt="test image" fit="cover" src={swapImage} />}>
             <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
-            <div>This is page: 1</div>
+            <div>This test page: 1</div>
           </TeachingPopoverBody>
         </TeachingPopoverCarouselCard>
 
         <TeachingPopoverCarouselCard value="2">
           <TeachingPopoverBody media={<Image alt="test image" fit="cover" src={swapImage} />}>
             <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
-            <div>This is page: 2</div>
+            <div>This is page: test 2</div>
           </TeachingPopoverBody>
         </TeachingPopoverCarouselCard>
 
-        <TeachingPopoverCarouselCard value="3">
+        <TeachingPopoverCarouselCard value="9">
           <TeachingPopoverBody media={<Image alt="test image" fit="cover" src={swapImage} />}>
-            <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+            <TeachingPopoverTitle>Teaching Bubble 3 Title</TeachingPopoverTitle>
             <div>This is page: 3</div>
           </TeachingPopoverBody>
         </TeachingPopoverCarouselCard>
