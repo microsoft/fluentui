@@ -1,4 +1,5 @@
 import { create as d3Create, select as d3Select, Selection } from 'd3-selection';
+import { resolveCSSVariables } from '../../utilities/index';
 
 /**
  * {@docCategory DeclarativeChart}
@@ -194,15 +195,6 @@ function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHei
     width: Math.max(...legendLineWidths),
     height: legendY,
   };
-}
-
-const cssVarRegExp = /var\((--[a-zA-Z0-9\-]+)\)/g;
-
-function resolveCSSVariables(chartContainer: HTMLElement, styleRules: string) {
-  const containerStyles = getComputedStyle(chartContainer);
-  return styleRules.replace(cssVarRegExp, (match, group1) => {
-    return containerStyles.getPropertyValue(group1);
-  });
 }
 
 function svgToPng(svgDataUrl: string, opts: IImageExportOptions = {}): Promise<string> {
