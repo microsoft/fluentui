@@ -69,7 +69,7 @@ jobs:
         run: |
           echo "MAKE THIS WORK"
           npx vr-approval-cli@0.4.11 run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --threshold '0.04' --cumThreshold '1'
-
+# Test
 # 💡 NOTE:
 #   - following is manually provided setup used in previous ADO pipeline {@link file://./../../azure-pipelines.vrt-baseline.yml }
 #   - keeping for future reference
