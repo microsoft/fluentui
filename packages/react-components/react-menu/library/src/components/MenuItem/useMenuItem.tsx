@@ -20,6 +20,7 @@ import {
   useARIAButtonProps,
 } from '@fluentui/react-aria';
 import { Enter, Space } from '@fluentui/keyboard-keys';
+import { useMenuSplitGroupContext_unstable } from '../../contexts/menuSplitGroupContext';
 
 const ChevronRightIcon = bundleIcon(ChevronRightFilled, ChevronRightRegular);
 const ChevronLeftIcon = bundleIcon(ChevronLeftFilled, ChevronLeftRegular);
@@ -34,6 +35,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
   const hasIcons = useMenuListContext_unstable(context => context.hasIcons);
   const hasCheckmarks = useMenuListContext_unstable(context => context.hasCheckmarks);
   const setOpen = useMenuContext_unstable(context => context.setOpen);
+  const isSplitItemTrigger = useMenuSplitGroupContext_unstable() && hasSubmenu;
 
   const { dir } = useFluent();
   const innerRef = React.useRef<ARIAButtonElementIntersection<'div'>>(null);
@@ -50,6 +52,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
       submenuIndicator: 'span',
       content: 'span',
       secondaryContent: 'span',
+      subText: 'span',
     },
     root: slot.always(
       getIntrinsicElementProps(
@@ -89,8 +92,11 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
       ),
       { elementType: 'div' },
     ),
-    icon: slot.optional(props.icon, { renderByDefault: hasIcons, elementType: 'span' }),
-    checkmark: slot.optional(props.checkmark, { renderByDefault: hasCheckmarks, elementType: 'span' }),
+    icon: slot.optional(props.icon, { renderByDefault: hasIcons && !isSplitItemTrigger, elementType: 'span' }),
+    checkmark: slot.optional(props.checkmark, {
+      renderByDefault: hasCheckmarks && !isSplitItemTrigger,
+      elementType: 'span',
+    }),
     submenuIndicator: slot.optional(props.submenuIndicator, {
       renderByDefault: hasSubmenu,
       defaultProps: {
@@ -104,6 +110,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
       elementType: 'span',
     }),
     secondaryContent: slot.optional(props.secondaryContent, { elementType: 'span' }),
+    subText: slot.optional(props.subText, { elementType: 'span' }),
   };
   useCharacterSearch(state, innerRef);
   return state;

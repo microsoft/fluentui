@@ -13,6 +13,7 @@ export const renderMenuItemCheckbox_unstable = (state: MenuItemCheckboxState) =>
       {state.checkmark && <state.checkmark />}
       {state.icon && <state.icon />}
       {state.content && <state.content />}
+      {state.subText && <state.subText />}
       {state.secondaryContent && <state.secondaryContent />}
     </state.root>
   );

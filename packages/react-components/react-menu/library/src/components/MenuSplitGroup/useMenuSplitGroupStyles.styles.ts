@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     [`& > .${menuItemClassNames.root}:nth-of-type(1)`]: {
-      flexGrow: 1,
+      flex: 1,
     },
     [`& > .${menuItemClassNames.root}:nth-of-type(2)`]: {
       borderTopLeftRadius: 0,

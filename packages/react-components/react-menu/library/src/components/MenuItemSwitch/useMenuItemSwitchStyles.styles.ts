@@ -1,6 +1,6 @@
 import { makeStyles, makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { type SlotClassNames } from '@fluentui/react-utilities';
 import type { MenuItemSwitchSlots, MenuItemSwitchState } from './MenuItemSwitch.types';
 import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles.styles';
 
@@ -10,6 +10,7 @@ export const menuItemSwitchClassNames: SlotClassNames<MenuItemSwitchSlots> = {
   content: 'fui-MenuItemSwitch__content',
   secondaryContent: 'fui-MenuItemSwitch__secondaryContent',
   switchIndicator: 'fui-MenuItemSwitch__switchIndicator',
+  subText: 'fui-MenuItemSwitch__subText',
 };
 
 export const circleFilledClassName = 'fui-MenuItemSwitch__switchIndicator__circleFilled';
@@ -21,6 +22,10 @@ const trackWidth = 40;
 const thumbSize = trackHeight - spaceBetweenThumbAndTrack;
 
 const useSwitchIndicatorBaseClassName = makeResetStyles({
+  // Switch items should not have submenus, we put it in the same grid area
+  // as the submenu indicator in multiline
+  gridArea: 'submenuIndicator',
+
   borderRadius: tokens.borderRadiusCircular,
   border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
   lineHeight: 0,
@@ -109,6 +114,10 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
     state.icon.className = mergeClasses(menuItemSwitchClassNames.icon, state.icon.className);
   }
 
+  if (state.subText) {
+    state.subText.className = mergeClasses(menuItemSwitchClassNames.subText, state.subText.className);
+  }
+
   if (state.switchIndicator) {
     state.switchIndicator.className = mergeClasses(
       menuItemSwitchClassNames.switchIndicator,
@@ -127,7 +136,9 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
     },
     checkmark: undefined,
     submenuIndicator: undefined,
-    hasSubmenu: false,
+    // Since switch items should not have submenus, we put it in the same grid area
+    // as the submen in multiline
+    hasSubmenu: !!state.subText,
     persistOnClick: true,
   });
 

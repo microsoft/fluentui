@@ -14,6 +14,7 @@ export const renderMenuItem_unstable = (state: MenuItemState) => {
       {state.checkmark && <state.checkmark />}
       {state.icon && <state.icon />}
       {state.content && <state.content />}
+      {state.subText && <state.subText />}
       {state.secondaryContent && <state.secondaryContent />}
       {state.submenuIndicator && <state.submenuIndicator />}
     </state.root>

@@ -16,6 +16,7 @@ export const renderMenuItemRadio_unstable = (state: MenuItemRadioState) => {
       {state.checkmark && <state.checkmark />}
       {state.icon && <state.icon />}
       {state.content && <state.content />}
+      {state.subText && <state.subText />}
       {state.secondaryContent && <state.secondaryContent />}
     </state.root>
   );

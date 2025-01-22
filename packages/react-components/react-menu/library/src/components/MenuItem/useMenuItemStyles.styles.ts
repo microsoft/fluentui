@@ -7,6 +7,11 @@ import type { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+const cssVars = {
+  menuItemMultilineGridAreas: '--fui-MenuItem-grid-areas',
+  menuItemMultilineGridColumns: '--fui-MenuItem-grid-columns',
+};
+
 export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
   root: 'fui-MenuItem',
   icon: 'fui-MenuItem__icon',
@@ -14,6 +19,7 @@ export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
   submenuIndicator: 'fui-MenuItem__submenuIndicator',
   content: 'fui-MenuItem__content',
   secondaryContent: 'fui-MenuItem__secondaryContent',
+  subText: 'fui-MenuItem__subText',
 };
 
 const useRootBaseStyles = makeResetStyles({
@@ -33,7 +39,7 @@ const useRootBaseStyles = makeResetStyles({
   alignItems: 'start',
   fontSize: tokens.fontSizeBase300,
   cursor: 'pointer',
-  gap: '4px',
+  columnGap: '4px',
 
   ':hover': {
     backgroundColor: tokens.colorNeutralBackground1Hover,
@@ -111,6 +117,12 @@ const useSubmenuIndicatorBaseStyles = makeResetStyles({
   justifyContent: 'center',
 });
 
+const useSubtextBaseStyles = makeResetStyles({
+  ...typographyStyles.caption2,
+  paddingLeft: '2px',
+  paddingRight: '2px',
+});
+
 const useStyles = makeStyles({
   checkmark: {
     marginTop: '2px',
@@ -175,6 +187,63 @@ const useStyles = makeStyles({
   },
 });
 
+const useMultilineStyles = makeStyles({
+  root: {
+    display: 'grid',
+    gridTemplateColumns: `var(${cssVars.menuItemMultilineGridColumns})`,
+    gridTemplateAreas: `var(${cssVars.menuItemMultilineGridAreas})`,
+  },
+
+  checkmark: {
+    gridArea: 'checkmark',
+  },
+
+  icon: {
+    gridArea: 'icon',
+  },
+
+  content: {
+    gridArea: 'content',
+  },
+
+  secondaryContent: {
+    gridArea: 'secondaryContent',
+    alignSelf: 'center',
+  },
+
+  subText: {
+    gridArea: 'subText',
+  },
+
+  submenuIndicator: {
+    alignSelf: 'center',
+    gridArea: 'submenuIndicator',
+  },
+});
+
+const buildMultilineGridArea = (slots: MenuItemSlots, hasSubmenu: boolean) => {
+  const checkmark = slots.checkmark ? 'checkmark' : '';
+  const icon = slots.icon ? 'icon' : '';
+  const secondaryContent = slots.secondaryContent ? 'secondaryContent' : '';
+  const submenuIndicator = slots.submenuIndicator || hasSubmenu ? 'submenuIndicator' : '';
+
+  return `
+    "${checkmark} ${icon} content ${secondaryContent} ${submenuIndicator}"
+    "${checkmark} ${icon} subText ${secondaryContent} ${submenuIndicator}"
+  `;
+};
+
+const buildMultilineGridColumns = (slots: MenuItemSlots, hasSubmenu: boolean) => {
+  const checkmark = slots.checkmark ? 'auto' : '';
+  const icon = slots.icon ? 'auto' : '';
+  const secondaryContent = slots.secondaryContent ? 'auto' : '';
+  const submenuIndicator = slots.submenuIndicator || hasSubmenu ? 'auto' : '';
+
+  return `
+    ${checkmark} ${icon} 1fr ${secondaryContent} ${submenuIndicator}
+  `;
+};
+
 /** Applies style classnames to slots */
 export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState => {
   'use no memo';
@@ -185,19 +254,41 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   const secondaryContentBaseStyles = useSecondaryContentBaseStyles();
   const iconBaseStyles = useIconBaseStyles();
   const submenuIndicatorBaseStyles = useSubmenuIndicatorBaseStyles();
+  const multilineStyles = useMultilineStyles();
+  const subtextBaseStyles = useSubtextBaseStyles();
+  const multiline = !!state.subText;
   state.root.className = mergeClasses(
     menuItemClassNames.root,
     rootBaseStyles,
     state.disabled && styles.disabled,
+    multiline && multilineStyles.root,
     state.root.className,
   );
 
+  if (multiline) {
+    state.root.style ??= {};
+    Object.assign(state.root.style, {
+      [cssVars.menuItemMultilineGridAreas]: buildMultilineGridArea(state, state.hasSubmenu),
+      [cssVars.menuItemMultilineGridColumns]: buildMultilineGridColumns(state, state.hasSubmenu),
+    });
+  }
+
   if (state.content) {
-    state.content.className = mergeClasses(menuItemClassNames.content, contentBaseStyles, state.content.className);
+    state.content.className = mergeClasses(
+      menuItemClassNames.content,
+      contentBaseStyles,
+      state.content.className,
+      multiline && multilineStyles.content,
+    );
   }
 
   if (state.checkmark) {
-    state.checkmark.className = mergeClasses(menuItemClassNames.checkmark, styles.checkmark, state.checkmark.className);
+    state.checkmark.className = mergeClasses(
+      menuItemClassNames.checkmark,
+      styles.checkmark,
+      state.checkmark.className,
+      multiline && multilineStyles.checkmark,
+    );
   }
 
   if (state.secondaryContent) {
@@ -205,11 +296,17 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
       menuItemClassNames.secondaryContent,
       !state.disabled && secondaryContentBaseStyles,
       state.secondaryContent.className,
+      multiline && multilineStyles.secondaryContent,
     );
   }
 
   if (state.icon) {
-    state.icon.className = mergeClasses(menuItemClassNames.icon, iconBaseStyles, state.icon.className);
+    state.icon.className = mergeClasses(
+      menuItemClassNames.icon,
+      iconBaseStyles,
+      state.icon.className,
+      multiline && multilineStyles.icon,
+    );
   }
 
   if (state.submenuIndicator) {
@@ -217,6 +314,16 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
       menuItemClassNames.submenuIndicator,
       submenuIndicatorBaseStyles,
       state.submenuIndicator.className,
+      multiline && multilineStyles.submenuIndicator,
+    );
+  }
+
+  if (state.subText) {
+    state.subText.className = mergeClasses(
+      menuItemClassNames.subText,
+      state.subText.className,
+      subtextBaseStyles,
+      multiline && multilineStyles.subText,
     );
   }
 
