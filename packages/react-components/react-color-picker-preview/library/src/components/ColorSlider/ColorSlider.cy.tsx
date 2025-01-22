@@ -13,18 +13,13 @@ const mountFluent = (element: JSX.Element) => {
 const ColorSliderExample = (props: ColorSliderProps) => {
   const [color, setColor] = React.useState(props.color ?? INITIAL_COLOR_HSV);
   return (
-    <>
-      <p tabIndex={0} id="before">
-        Before
-      </p>
-      <ColorSlider
-        color={color}
-        onChange={(_, data) => setColor(data.color)}
-        id="color-slider"
-        aria-label="Hue"
-        aria-valuetext={`${color.h}°`}
-      />
-    </>
+    <ColorSlider
+      color={color}
+      onChange={(_, data) => setColor(data.color)}
+      id="color-slider"
+      aria-label="Hue"
+      aria-valuetext={`${color.h}°`}
+    />
   );
 };
 
@@ -33,6 +28,9 @@ describe('ColorSlider', () => {
     it('has correct focus behavior', () => {
       mountFluent(
         <>
+          <p tabIndex={0} id="before">
+            Before
+          </p>
           <ColorSliderExample color={{ h: 106, s: 0.96, v: 0.1 }} />
           <p tabIndex={0} id="after">
             After
@@ -49,8 +47,7 @@ describe('ColorSlider', () => {
 
     it('hue channel selected correctly', () => {
       mountFluent(<ColorSliderExample color={{ h: 106, s: 0.96, v: 0.1 }} />);
-      cy.get('#before').focus();
-      cy.realPress('Tab');
+      cy.get('.fui-ColorSlider__input').focus();
 
       // decrements the value two times
       cy.realPress('ArrowLeft');
@@ -72,8 +69,7 @@ describe('ColorSlider', () => {
 
     it('hue channel selected on left edge correctly', () => {
       mountFluent(<ColorSliderExample color={{ h: 2, s: 1, v: 0.03 }} />);
-      cy.get('#before').focus();
-      cy.realPress('Tab');
+      cy.get('.fui-ColorSlider__input').focus();
 
       // decrements the value two times
       cy.realPress('ArrowLeft');
@@ -91,8 +87,7 @@ describe('ColorSlider', () => {
 
     it('hue channel selected on right edge correctly', () => {
       mountFluent(<ColorSliderExample color={{ h: 358, s: 0.03, v: 0.45 }} />);
-      cy.get('#before').focus();
-      cy.realPress('Tab');
+      cy.get('.fui-ColorSlider__input').focus();
 
       // increments the value
       cy.realPress('ArrowRight');
@@ -116,6 +111,8 @@ describe('ColorSlider', () => {
     it('has correct a11y attributes', () => {
       mountFluent(<ColorSliderExample color={{ h: 324, s: 0.5, v: 0.5 }} />);
       cy.get('#color-slider').should('have.attr', 'aria-label', 'Hue');
+      assertSliderValue('324');
+
       cy.get('#color-slider').realClick();
       assertSliderValue('180');
     });

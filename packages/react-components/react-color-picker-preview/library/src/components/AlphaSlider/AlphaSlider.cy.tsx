@@ -15,19 +15,14 @@ const AlphaSliderExample = (props: AlphaSliderProps) => {
   const { transparency = false } = props;
   const [color, setColor] = React.useState(props.color ?? INITIAL_COLOR_HSV);
   return (
-    <>
-      <p tabIndex={0} id="before">
-        Before
-      </p>
-      <AlphaSlider
-        color={color}
-        onChange={(_, data) => setColor(data.color)}
-        id="alpha-slider"
-        aria-label="Alpha"
-        aria-valuetext={`${calculateTransparencyValue(transparency, color.a ?? 1)}%`}
-        transparency={transparency}
-      />
-    </>
+    <AlphaSlider
+      color={color}
+      onChange={(_, data) => setColor(data.color)}
+      id="alpha-slider"
+      aria-label="Alpha"
+      aria-valuetext={`${calculateTransparencyValue(transparency, color.a ?? 1)}%`}
+      transparency={transparency}
+    />
   );
 };
 
@@ -36,6 +31,9 @@ describe('AlphaSlider', () => {
     it('has correct focus behavior', () => {
       mountFluent(
         <>
+          <p tabIndex={0} id="before">
+            Before
+          </p>
           <AlphaSliderExample color={{ h: 106, s: 0.96, v: 0.1 }} />
           <p tabIndex={0} id="after">
             After
@@ -53,8 +51,7 @@ describe('AlphaSlider', () => {
     describe('alpha channel', () => {
       it('selected correctly', () => {
         mountFluent(<AlphaSliderExample color={{ h: 106, s: 0.96, v: 0.1, a: 0.5 }} />);
-        cy.get('#before').focus();
-        cy.realPress('Tab');
+        cy.get('.fui-AlphaSlider__input').focus();
 
         // decrements the value two times
         cy.realPress('ArrowLeft');
@@ -76,8 +73,7 @@ describe('AlphaSlider', () => {
 
       it('selected on left edge correctly', () => {
         mountFluent(<AlphaSliderExample color={{ h: 111, s: 1, v: 0.03, a: 0.02 }} />);
-        cy.get('#before').focus();
-        cy.realPress('Tab');
+        cy.get('.fui-AlphaSlider__input').focus();
 
         // decrements the value two times
         cy.realPress('ArrowLeft');
@@ -95,8 +91,7 @@ describe('AlphaSlider', () => {
 
       it('selected on right edge correctly', () => {
         mountFluent(<AlphaSliderExample color={{ h: 111, s: 0.03, v: 0.45, a: 0.98 }} />);
-        cy.get('#before').focus();
-        cy.realPress('Tab');
+        cy.get('.fui-AlphaSlider__input').focus();
 
         // increments the value
         cy.realPress('ArrowRight');
@@ -120,8 +115,7 @@ describe('AlphaSlider', () => {
   describe('transparency', () => {
     it('selected correctly', () => {
       mountFluent(<AlphaSliderExample color={{ h: 106, s: 0.96, v: 0.1, a: 0.7 }} transparency />);
-      cy.get('#before').focus();
-      cy.realPress('Tab');
+      cy.get('.fui-AlphaSlider__input').focus();
 
       // decrements the value two times
       cy.realPress('ArrowLeft');
@@ -143,8 +137,7 @@ describe('AlphaSlider', () => {
 
     it('selected on left edge correctly', () => {
       mountFluent(<AlphaSliderExample color={{ h: 111, s: 1, v: 0.03, a: 0.98 }} transparency />);
-      cy.get('#before').focus();
-      cy.realPress('Tab');
+      cy.get('.fui-AlphaSlider__input').focus();
 
       // decrements the value two times
       cy.realPress('ArrowLeft');
@@ -162,8 +155,7 @@ describe('AlphaSlider', () => {
 
     it('selected on right edge correctly', () => {
       mountFluent(<AlphaSliderExample color={{ h: 111, s: 0.03, v: 0.45, a: 0.02 }} transparency />);
-      cy.get('#before').focus();
-      cy.realPress('Tab');
+      cy.get('.fui-AlphaSlider__input').focus();
 
       // increments the value
       cy.realPress('ArrowRight');
