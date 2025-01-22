@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feature: introduces navigationMode property",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
