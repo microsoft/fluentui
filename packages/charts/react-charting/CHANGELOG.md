@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 20 Jan 2025 07:21:43 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jan 2025 07:21:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.44)
+
+Wed, 22 Jan 2025 07:21:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.43..@fluentui/react-charting_v5.23.44)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.197 ([PR #33685](https://github.com/microsoft/fluentui/pull/33685) by beachball)
+- Bump @fluentui/react to v8.122.8 ([PR #33685](https://github.com/microsoft/fluentui/pull/33685) by beachball)
+
+## [5.23.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.43)
+
+Tue, 21 Jan 2025 07:13:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.42..@fluentui/react-charting_v5.23.43)
+
+### Patches
+
+- fix: resolve overlapping bars issue in histogram ([PR #33695](https://github.com/microsoft/fluentui/pull/33695) by 110246001+krkshitij@users.noreply.github.com)
+- Adding fallback and fixes for test app crashes for 12 schema data  ([PR #33621](https://github.com/microsoft/fluentui/pull/33621) by 120183316+srmukher@users.noreply.github.com)
+- Use strongly typed interfaces for plotly schema ([PR #33621](https://github.com/microsoft/fluentui/pull/33621) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix: resolve bugs in declarative chart ([PR #33621](https://github.com/microsoft/fluentui/pull/33621) by 110246001+krkshitij@users.noreply.github.com)
+- StronglyType plotly schema bug fix ([PR #33621](https://github.com/microsoft/fluentui/pull/33621) by 74965306+Anush2303@users.noreply.github.com)
 
 ## [5.23.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.42)
 
