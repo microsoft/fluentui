@@ -198,7 +198,7 @@ export class VerticalStackedBarChartBase
       const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
       const { isCalloutForStack = false } = this.props;
       this._dataset = this._createDataSetLayer();
-      const legendBars: JSX.Element = this._getLegendData(
+      const legendBars: JSX.Element = this._renderLegends(
         this._points,
         this.props.theme!.palette,
         this._createLegendsForLine(this.props.data),
@@ -294,6 +294,10 @@ export class VerticalStackedBarChartBase
 
   public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
+  }
+
+  public get legends(): ILegend[] {
+    return this._getLegendData(this._points, this.props.theme!.palette, this._createLegendsForLine(this.props.data));
   }
 
   /**
@@ -588,14 +592,7 @@ export class VerticalStackedBarChartBase
     });
   }
 
-  private _getLegendData(
-    data: IVerticalStackedChartProps[],
-    palette: IPalette,
-    lineLegends: LineLegends[],
-  ): JSX.Element {
-    if (this.props.hideLegend) {
-      return <></>;
-    }
+  private _getLegendData(data: IVerticalStackedChartProps[], palette: IPalette, lineLegends: LineLegends[]): ILegend[] {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
     const { allowHoverOnLegend = true, theme } = this.props;
@@ -650,6 +647,18 @@ export class VerticalStackedBarChartBase
       });
     }
     const totalLegends: ILegend[] = legendsOfLine.concat(actions);
+    return totalLegends;
+  }
+
+  private _renderLegends(
+    data: IVerticalStackedChartProps[],
+    palette: IPalette,
+    lineLegends: LineLegends[],
+  ): JSX.Element {
+    if (this.props.hideLegend) {
+      return <></>;
+    }
+    const totalLegends = this._getLegendData(data, palette, lineLegends);
     return (
       <Legends
         legends={totalLegends}

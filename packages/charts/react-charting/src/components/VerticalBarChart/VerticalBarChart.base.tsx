@@ -162,7 +162,7 @@ export class VerticalBarChartBase
       d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.y)!,
       this.props.yMinValue || 0,
     );
-    const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
+    const legendBars: JSX.Element = this._renderLegends(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       legendColor: this.state.color,
@@ -254,6 +254,10 @@ export class VerticalBarChartBase
 
   public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
+  }
+
+  public get legends(): ILegend[] {
+    return this._getLegendData(this._points, this.props.theme!.palette);
   }
 
   private _getDomainNRangeValues = (
@@ -1081,7 +1085,7 @@ export class VerticalBarChartBase
     });
   }
 
-  private _getLegendData = (data: IVerticalBarChartDataPoint[], palette: IPalette): JSX.Element => {
+  private _getLegendData = (data: IVerticalBarChartDataPoint[], palette: IPalette): ILegend[] => {
     const { theme, useSingleColor } = this.props;
     const { lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
     const actions: ILegend[] = [];
@@ -1129,6 +1133,11 @@ export class VerticalBarChartBase
       };
       actions.unshift(lineLegend);
     }
+    return actions;
+  };
+
+  private _renderLegends = (data: IVerticalBarChartDataPoint[], palette: IPalette): JSX.Element => {
+    const actions = this._getLegendData(data, palette);
     const legends = (
       <Legends
         legends={actions}

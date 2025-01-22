@@ -220,7 +220,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._tooltipId = getId('LineChartTooltipId_');
     this._rectId = getId('containerRectLD');
     this._staticHighlightCircle = getId('staticHighlightCircle');
-    this._createLegendsMemoized = memoizeFunction((data: LineChartDataWithIndex[]) => this._createLegends(data));
+    this._createLegendsMemoized = memoizeFunction((data: LineChartDataWithIndex[]) => this._renderLegends(data));
     this._firstRenderOptimization = true;
     this._emptyChartId = getId('_LineChart_empty');
     this._cartesianChartRef = React.createRef();
@@ -379,6 +379,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return this._cartesianChartRef.current?.chartContainer || null;
   }
 
+  public get legends(): ILegend[] {
+    return this._getLegendData(this._points);
+  }
+
   private _getDomainNRangeValues = (
     points: ILineChartPoints[],
     margins: IMargins,
@@ -484,7 +488,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     });
   };
 
-  private _createLegends(data: LineChartDataWithIndex[]): JSX.Element {
+  private _getLegendData(data: LineChartDataWithIndex[]): ILegend[] {
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
     const legendDataItems = data.map((point: LineChartDataWithIndex) => {
@@ -546,9 +550,17 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         })
       : [];
 
+    return [...legendDataItems, ...colorFillBarsLegendDataItems];
+  }
+
+  private _renderLegends(data: LineChartDataWithIndex[]): JSX.Element {
+    const { legendProps } = this.props;
+    const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
+    const legends = this._getLegendData(data);
+
     return (
       <Legends
-        legends={[...legendDataItems, ...colorFillBarsLegendDataItems]}
+        legends={legends}
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}

@@ -575,7 +575,10 @@ type AccessibilityRenderer = {
 // to a function component. This will require a significant refactor of the code in this file.
 // https://stackoverflow.com/questions/60223362/fast-way-to-convert-react-class-component-to-functional-component
 // I am concerned that doing so would break this contract, making it difficult for consuming code.
-export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyChartState> implements IChart {
+export class SankeyChartBase
+  extends React.Component<ISankeyChartProps, ISankeyChartState>
+  implements Omit<IChart, 'legends'>
+{
   public static defaultProps: Partial<ISankeyChartProps> = {
     enableReflow: true,
   };

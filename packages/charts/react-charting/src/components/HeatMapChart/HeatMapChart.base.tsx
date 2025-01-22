@@ -227,7 +227,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         svgFocusZoneProps={{
           direction: FocusZoneDirection.bidirectional,
         }}
-        legendBars={this._createLegendBars()}
+        legendBars={this._renderLegends()}
         onChartMouseLeave={this._handleChartMouseLeave}
         ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
@@ -250,6 +250,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
 
   public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
+  }
+
+  public get legends(): ILegend[] {
+    return this._getLegendData();
   }
 
   private _getMinMaxOfYAxis = () => {
@@ -486,8 +490,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       });
     }
   }
-  private _createLegendBars = (): JSX.Element => {
-    const { data, legendProps } = this.props;
+
+  private _getLegendData = (): ILegend[] => {
+    const { data } = this.props;
     const legends: ILegend[] = [];
     data.forEach((item: IHeatMapChartData) => {
       const legend: ILegend = {
@@ -506,6 +511,14 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       };
       legends.push(legend);
     });
+
+    return legends;
+  };
+
+  private _renderLegends = (): JSX.Element => {
+    const { legendProps } = this.props;
+    const legends = this._getLegendData();
+
     return <Legends {...legendProps} legends={legends} />;
   };
 

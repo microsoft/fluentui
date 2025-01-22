@@ -129,6 +129,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
   private _cartesianChartRef: React.RefObject<IChart>;
+  private _points:ILineChartPoints[]=[]
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -183,14 +184,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   public render(): JSX.Element {
     if (!this._isChartEmpty()) {
       const { lineChartData } = this.props.data;
-      const points = this._addDefaultColors(lineChartData);
-      const { colors, opacity, data, calloutPoints } = this._createSet(points);
+      this._points = this._addDefaultColors(lineChartData);
+      const { colors, opacity, data, calloutPoints } = this._createSet(this._points);
       this._calloutPoints = calloutPoints;
-      const isXAxisDateType = getXAxisType(points);
+      const isXAxisDateType = getXAxisType(this._points);
       this._colors = colors;
       this._opacity = opacity;
       this._data = data.renderData;
-      const legends: JSX.Element = this._getLegendData(points);
+      const legends: JSX.Element = this._renderLegends(this._points);
 
       const tickParams = {
         tickValues: this.props.tickValues,
@@ -215,7 +216,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         <CartesianChart
           {...this.props}
           chartTitle={this._getChartTitle()}
-          points={points}
+          points={this._points}
           chartType={ChartTypes.AreaChart}
           calloutProps={calloutProps}
           legendBars={legends}
@@ -272,6 +273,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
+  }
+
+  public get legends(): ILegend[] {
+    return this._getLegendData(this._points);
   }
 
   private _getDomainNRangeValues = (
@@ -624,7 +629,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     });
   }
 
-  private _getLegendData = (points: ILineChartPoints[]): JSX.Element => {
+  private _getLegendData = (points: ILineChartPoints[]): ILegend[] => {
     const data = points;
     const actions: ILegend[] = [];
 
@@ -651,6 +656,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
       actions.push(legend);
     });
+
+    return actions;
+  };
+
+  private _renderLegends = (points: ILineChartPoints[]): JSX.Element => {
+    const actions = this._getLegendData(points);
+
     return (
       <Legends
         legends={actions}

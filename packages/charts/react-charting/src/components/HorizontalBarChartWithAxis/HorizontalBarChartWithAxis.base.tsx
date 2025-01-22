@@ -134,7 +134,7 @@ export class HorizontalBarChartWithAxisBase
       d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x)!,
       this.props.xMaxValue || 0,
     );
-    const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
+    const legendBars: JSX.Element = this._renderLegends(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       legendColor: this.state.color,
@@ -197,6 +197,10 @@ export class HorizontalBarChartWithAxisBase
 
   public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
+  }
+
+  public get legends(): ILegend[] {
+    return this._getLegendData(this._points, this.props.theme!.palette);
   }
 
   private _getDomainNRangeValues = (
@@ -740,7 +744,7 @@ export class HorizontalBarChartWithAxisBase
     }
   }
 
-  private _getLegendData = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): JSX.Element => {
+  private _getLegendData = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): ILegend[] => {
     const { useSingleColor } = this.props;
     const actions: ILegend[] = [];
 
@@ -772,6 +776,12 @@ export class HorizontalBarChartWithAxisBase
       };
       actions.push(legend);
     });
+
+    return actions;
+  };
+
+  private _renderLegends = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): JSX.Element => {
+    const actions = this._getLegendData(data, palette);
     const legends = (
       <Legends
         legends={actions}

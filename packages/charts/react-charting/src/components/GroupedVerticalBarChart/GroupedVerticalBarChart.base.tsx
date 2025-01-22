@@ -162,7 +162,7 @@ export class GroupedVerticalBarChartBase
     this._xAxisLabels = xAxisLabels;
     this._datasetForBars = datasetForBars;
     this._xAxisType = getTypeOfAxis(points[0].name, true) as XAxisTypes;
-    const legends: JSX.Element = this._getLegendData(points, this.props.theme!.palette);
+    const legends: JSX.Element = this._renderLegends(points, this.props.theme!.palette);
     this._adjustProps();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -245,6 +245,10 @@ export class GroupedVerticalBarChartBase
 
   public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
+  }
+
+  public get legends(): ILegend[] {
+    return this._getLegendData(this.props.data, this.props.theme!.palette);
   }
 
   private _getMinMaxOfYAxis = () => {
@@ -596,7 +600,7 @@ export class GroupedVerticalBarChartBase
     });
   }
 
-  private _getLegendData = (points: IGroupedVerticalBarChartData[], palette: IPalette): JSX.Element => {
+  private _getLegendData = (points: IGroupedVerticalBarChartData[], palette: IPalette): ILegend[] => {
     const data = points;
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
@@ -627,6 +631,14 @@ export class GroupedVerticalBarChartBase
         actions.push(legend);
       });
     });
+
+    return actions;
+  };
+
+  private _renderLegends = (points: IGroupedVerticalBarChartData[], palette: IPalette): JSX.Element => {
+    const data = points;
+    const actions = this._getLegendData(data, palette);
+
     return (
       <Legends
         legends={actions}

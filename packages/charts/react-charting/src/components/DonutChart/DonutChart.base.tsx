@@ -50,6 +50,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _emptyChartId: string | null;
+  private _points: IChartDataPoint[] = [];
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -113,7 +114,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
   public render(): JSX.Element {
     const { data, hideLegend = false } = this.props;
-    const points = this._addDefaultColors(data?.chartData);
+    this._points = this._addDefaultColors(data?.chartData);
 
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -123,12 +124,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       className: this.props.className!,
     });
 
-    const legendBars = this._createLegends(points);
+    const legendBars = this._renderLegends(this._points);
     const donutMarginHorizontal = this.props.hideLabels ? 0 : 80;
     const donutMarginVertical = this.props.hideLabels ? 0 : 40;
     const outerRadius =
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
-    const chartData = this._elevateToMinimums(points.filter((d: IChartDataPoint) => d.data! >= 0));
+    const chartData = this._elevateToMinimums(this._points.filter((d: IChartDataPoint) => d.data! >= 0));
     const valueInsideDonut =
       this.props.innerRadius !== 0 ? this._valueInsideDonut(this.props.valueInsideDonut!, chartData!) : '';
     return !this._isChartEmpty() ? (
@@ -212,6 +213,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return this._rootElem;
   }
 
+  public get legends(): ILegend[] {
+    return this._getLegendData(this._points);
+  }
+
   private _closeCallout = () => {
     this.setState({
       showHover: false,
@@ -254,7 +259,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     node.setAttribute('viewBox', viewbox);
   }
 
-  private _createLegends(chartData: IChartDataPoint[]): JSX.Element {
+  private _getLegendData(chartData: IChartDataPoint[]): ILegend[] {
     const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
       const color: string = this.props.enableGradient
         ? point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0]
@@ -274,6 +279,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       };
       return legend;
     });
+
+    return legendDataItems;
+  }
+
+  private _renderLegends(chartData: IChartDataPoint[]): JSX.Element {
+    const legendDataItems = this._getLegendData(chartData);
 
     const legends = (
       <Legends

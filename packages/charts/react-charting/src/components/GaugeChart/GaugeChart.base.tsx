@@ -360,6 +360,10 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     return this._rootElem;
   }
 
+  public get legends(): ILegend[] {
+    return this._getLegendData();
+  }
+
   private _getMargins = () => {
     const { hideMinMax, chartTitle, sublabel } = this.props;
 
@@ -484,11 +488,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     );
   };
 
-  private _renderLegends = () => {
-    if (this.props.hideLegend) {
-      return null;
-    }
-
+  private _getLegendData = () => {
     const legends: ILegend[] = this._segments.map((segment, index) => {
       const color: string = this.props.enableGradient
         ? segment.gradient?.[0] || getNextGradient(index, 0, this.props.theme!.isInverted)[0]
@@ -505,6 +505,16 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
         },
       };
     });
+
+    return legends;
+  };
+
+  private _renderLegends = () => {
+    if (this.props.hideLegend) {
+      return null;
+    }
+
+    const legends = this._getLegendData()
 
     return (
       <div className={this._classNames.legendsContainer}>
