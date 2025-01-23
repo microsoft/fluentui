@@ -19,7 +19,7 @@ import { PositioningVirtualElement } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 import type { UseOnClickOrScrollOutsideOptions } from '@fluentui/react-utilities';
 
@@ -195,6 +195,7 @@ export type MenuItemSlots = {
     submenuIndicator?: Slot<'span'>;
     content?: Slot<'span'>;
     secondaryContent?: Slot<'span'>;
+    subText?: Slot<'span'>;
 };
 
 // @public (undocumented)
@@ -210,7 +211,7 @@ export const menuItemSwitchClassNames: SlotClassNames<MenuItemSwitchSlots>;
 export type MenuItemSwitchProps = ComponentProps<MenuItemSwitchSlots> & Pick<MenuItemCheckboxProps, 'disabled' | 'persistOnClick' | 'name' | 'value'>;
 
 // @public (undocumented)
-export type MenuItemSwitchSlots = Pick<MenuItemSlots, 'root' | 'content' | 'secondaryContent' | 'icon'> & {
+export type MenuItemSwitchSlots = Pick<MenuItemSlots, 'root' | 'content' | 'secondaryContent' | 'icon' | 'subText'> & {
     switchIndicator?: Slot<'span'>;
 };
 
@@ -365,7 +366,7 @@ export type MenuSplitGroupSlots = {
 };
 
 // @public
-export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots>;
+export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots> & Pick<MenuSplitGroupContextValue, 'setMultiline'>;
 
 // @public (undocumented)
 export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'mountNode' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
@@ -445,7 +446,7 @@ export const renderMenuList_unstable: (state: MenuListState, contextValues: Menu
 export const renderMenuPopover_unstable: (state: MenuPopoverState) => JSX.Element;
 
 // @public
-export const renderMenuSplitGroup_unstable: (state: MenuSplitGroupState) => JSX.Element;
+export const renderMenuSplitGroup_unstable: (state: MenuSplitGroupState, contexts: MenuSplitGroupContextValues) => JSX.Element;
 
 // @public
 export const renderMenuTrigger_unstable: (state: MenuTriggerState) => JSX.Element;
