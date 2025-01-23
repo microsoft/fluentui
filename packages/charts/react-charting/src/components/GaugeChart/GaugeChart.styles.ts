@@ -30,6 +30,8 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
       display: 'block',
       width: chartWidth,
       height: chartHeight,
+      marginLeft: 'auto',
+      marginRight: 'auto',
     },
 
     limits: {
@@ -76,6 +78,8 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
 
     legendsContainer: {
       width: chartWidth,
+      marginLeft: 'auto',
+      marginRight: 'auto',
     },
 
     calloutContentRoot: [
