@@ -347,6 +347,8 @@ export const Default = () => {
           <MenuList style={{ minWidth: 290 }}>
             <TextOnly />
             <MenuDivider />
+            <SelectableTextOnly />
+            <MenuDivider />
             <SelectableWithIcon />
             <MenuDivider />
             <SelectableWithSecondary />
