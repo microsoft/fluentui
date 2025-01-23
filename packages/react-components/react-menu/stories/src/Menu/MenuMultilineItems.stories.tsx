@@ -305,7 +305,7 @@ const SwitchWithIconAndSecondary = () => (
 
 export const MultilineItems = () => {
   return (
-    <Menu open>
+    <Menu>
       <MenuTrigger>
         <Button>Multiline items</Button>
       </MenuTrigger>
