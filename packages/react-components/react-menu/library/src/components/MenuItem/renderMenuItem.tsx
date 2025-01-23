@@ -15,7 +15,8 @@ export const renderMenuItem_unstable = (state: MenuItemState) => {
       {state.icon && <state.icon />}
       {state.content && (
         <state.content>
-          {state.content.children} {state.subText && <state.subText />}
+          {state.content.children}
+          {state.subText && <state.subText />}
         </state.content>
       )}
       {state.secondaryContent && <state.secondaryContent />}

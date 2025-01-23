@@ -11,6 +11,7 @@ export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots> = {
 };
 /**
  * Styles for the root slot
+ * TODO - remove the use of nested combinators to style child menu items
  */
 const useStyles = makeStyles({
   root: {

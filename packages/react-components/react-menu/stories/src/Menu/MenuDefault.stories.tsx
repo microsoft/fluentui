@@ -14,7 +14,6 @@ export const Default = () => (
         <MenuItem>New Window</MenuItem>
         <MenuItem disabled>Open File</MenuItem>
         <MenuItem>Open Folder</MenuItem>
-        <MenuItem subText="Creates a new folder">New folder</MenuItem>
       </MenuList>
     </MenuPopover>
   </Menu>
