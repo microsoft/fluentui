@@ -15,7 +15,7 @@ export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    [`${menuSplitGroupMultilineAttr}`]: {
+    [`[${menuSplitGroupMultilineAttr}]`]: {
       [`& > .${menuItemClassNames.root}:nth-of-type(2)`]: {
         alignSelf: 'center',
       },
