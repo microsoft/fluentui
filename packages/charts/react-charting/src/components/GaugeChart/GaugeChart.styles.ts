@@ -20,6 +20,9 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
       theme.fonts.medium,
       'ms-GaugeChart',
       {
+        alignItems: 'center',
+        display: 'flex',
+        flexDirection: 'column',
         width: '100%',
         height: '100%',
       },
@@ -30,8 +33,6 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
       display: 'block',
       width: chartWidth,
       height: chartHeight,
-      marginLeft: 'auto',
-      marginRight: 'auto',
     },
 
     limits: {
@@ -78,8 +79,6 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
 
     legendsContainer: {
       width: chartWidth,
-      marginLeft: 'auto',
-      marginRight: 'auto',
     },
 
     calloutContentRoot: [
