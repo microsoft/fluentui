@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { useEventCallback, useMergedRefs, getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import {
+  useEventCallback,
+  useMergedRefs,
+  getIntrinsicElementProps,
+  slot,
+  useIsomorphicLayoutEffect,
+} from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
@@ -20,7 +26,7 @@ import {
   useARIAButtonProps,
 } from '@fluentui/react-aria';
 import { Enter, Space } from '@fluentui/keyboard-keys';
-import { useMenuSplitGroupContext_unstable } from '../../contexts/menuSplitGroupContext';
+import { useIsInMenuSplitGroup, useMenuSplitGroupContext_unstable } from '../../contexts/menuSplitGroupContext';
 
 const ChevronRightIcon = bundleIcon(ChevronRightFilled, ChevronRightRegular);
 const ChevronLeftIcon = bundleIcon(ChevronLeftFilled, ChevronLeftRegular);
@@ -32,10 +38,9 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
   const isSubmenuTrigger = useMenuTriggerContext_unstable();
   const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
   const { as = 'div', disabled = false, hasSubmenu = isSubmenuTrigger, persistOnClick = persistOnClickContext } = props;
-  const hasIcons = useMenuListContext_unstable(context => context.hasIcons);
-  const hasCheckmarks = useMenuListContext_unstable(context => context.hasCheckmarks);
+  const { hasIcons, hasCheckmarks } = useIconAndCheckmarkAlignment({ hasSubmenu });
   const setOpen = useMenuContext_unstable(context => context.setOpen);
-  const isSplitItemTrigger = useMenuSplitGroupContext_unstable() && hasSubmenu;
+  useNotifySplitItemMultiline({ subText: props.subText, hasSubmenu });
 
   const { dir } = useFluent();
   const innerRef = React.useRef<ARIAButtonElementIntersection<'div'>>(null);
@@ -92,9 +97,9 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
       ),
       { elementType: 'div' },
     ),
-    icon: slot.optional(props.icon, { renderByDefault: hasIcons && !isSplitItemTrigger, elementType: 'span' }),
+    icon: slot.optional(props.icon, { renderByDefault: hasIcons, elementType: 'span' }),
     checkmark: slot.optional(props.checkmark, {
-      renderByDefault: hasCheckmarks && !isSplitItemTrigger,
+      renderByDefault: hasCheckmarks,
       elementType: 'span',
     }),
     submenuIndicator: slot.optional(props.submenuIndicator, {
@@ -114,4 +119,34 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
   };
   useCharacterSearch(state, innerRef);
   return state;
+};
+
+/**
+ * MenuSplitGroup needs to apply extra styles when its main item is in multiline layout mode
+ * Notify the parent MenuSplitGroup so that it can handle this case
+ */
+const useNotifySplitItemMultiline = (options: { hasSubmenu: boolean; subText: MenuItemProps['subText'] }) => {
+  const { hasSubmenu, subText } = options;
+  const isSplitItemTrigger = useIsInMenuSplitGroup() && hasSubmenu;
+  const multiline = !!subText;
+
+  const { setMultiline } = useMenuSplitGroupContext_unstable();
+
+  useIsomorphicLayoutEffect(() => {
+    if (!isSplitItemTrigger) {
+      setMultiline(multiline);
+    }
+  }, [setMultiline, multiline, isSplitItemTrigger]);
+};
+
+const useIconAndCheckmarkAlignment = (options: { hasSubmenu: boolean }) => {
+  const { hasSubmenu } = options;
+  const hasIcons = useMenuListContext_unstable(context => context.hasIcons);
+  const hasCheckmarks = useMenuListContext_unstable(context => context.hasCheckmarks);
+  const isSplitItemTrigger = useIsInMenuSplitGroup() && hasSubmenu;
+
+  return {
+    hasIcons: hasIcons && !isSplitItemTrigger,
+    hasCheckmarks: hasCheckmarks && !isSplitItemTrigger,
+  };
 };

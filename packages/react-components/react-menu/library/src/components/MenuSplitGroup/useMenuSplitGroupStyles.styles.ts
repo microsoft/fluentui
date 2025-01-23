@@ -4,6 +4,8 @@ import { menuItemClassNames } from '../MenuItem/useMenuItemStyles.styles';
 import type { MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+export const menuSplitGroupMultilineAttr = 'data-multiline';
+
 export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots> = {
   root: 'fui-MenuSplitGroup',
 };
@@ -12,6 +14,11 @@ export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots> = {
  */
 const useStyles = makeStyles({
   root: {
+    [`${menuSplitGroupMultilineAttr}`]: {
+      [`& > .${menuItemClassNames.root}:nth-of-type(2)`]: {
+        alignSelf: 'center',
+      },
+    },
     display: 'flex',
     [`& > .${menuItemClassNames.root}:nth-of-type(1)`]: {
       flex: 1,
