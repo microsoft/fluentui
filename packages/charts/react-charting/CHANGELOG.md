@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 22 Jan 2025 07:21:49 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Jan 2025 07:21:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.45)
+
+Thu, 23 Jan 2025 07:21:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.44..@fluentui/react-charting_v5.23.45)
+
+### Patches
+
+- Support for dashed and dotted line in Declarative chart ([PR #33694](https://github.com/microsoft/fluentui/pull/33694) by 74965306+Anush2303@users.noreply.github.com)
+- Heatmap text color based on contrast ratio ([PR #33659](https://github.com/microsoft/fluentui/pull/33659) by 74965306+Anush2303@users.noreply.github.com)
 
 ## [5.23.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.44)
 

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 23 Jan 2025 07:21:31 GMT",
+      "tag": "@fluentui/react-charting_v5.23.45",
+      "version": "5.23.45",
+      "comments": {
+        "patch": [
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "82ef8b9000a1223756a4253aacde35fe4eaea401",
+            "comment": "Support for dashed and dotted line in Declarative chart"
+          },
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "af631b94cfaa3e9a9d79160236a7f0679240777b",
+            "comment": "Heatmap text color based on contrast ratio"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2025 07:21:49 GMT",
       "tag": "@fluentui/react-charting_v5.23.44",
       "version": "5.23.44",
