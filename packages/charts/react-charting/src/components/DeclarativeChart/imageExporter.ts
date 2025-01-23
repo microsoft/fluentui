@@ -43,15 +43,37 @@ function toSVG(chartContainer: HTMLElement, background: string) {
     throw new Error('SVG not found');
   }
 
-  const { width: svgWidth, height: svgHeight } = svg.getBoundingClientRect();
-  const classNames = new Set<string>();
-  const legendGroup = cloneLegendsToSVG(chartContainer, svgWidth, svgHeight, classNames);
-  const w1 = Math.max(svgWidth, legendGroup.width);
-  const h1 = svgHeight + legendGroup.height;
   const clonedSvg = d3Select(svg.cloneNode(true) as SVGSVGElement)
     .attr('width', null)
     .attr('height', null)
     .attr('viewBox', null);
+  const svgElements = svg.getElementsByTagName('*');
+  const clonedSvgElements = clonedSvg.node()!.getElementsByTagName('*');
+
+  for (let i = 1; i < svgElements.length; i++) {
+    const properties = [
+      'display',
+      'fill',
+      'fill-opacity',
+      'font-family',
+      'font-size',
+      'font-style',
+      'font-weight',
+      'opacity',
+      'stroke',
+      'stroke-width',
+      'text-anchor',
+      'transform',
+    ];
+    const elementStyles = getComputedStyle(svgElements[i]);
+    const styleAttrVal = properties.map(prop => `${prop}: ${elementStyles.getPropertyValue(prop)}`).join('; ');
+    clonedSvgElements[i].setAttribute('style', styleAttrVal);
+  }
+
+  const { width: svgWidth, height: svgHeight } = svg.getBoundingClientRect();
+  const legendGroup = cloneLegendsToSVG(chartContainer, svgWidth, svgHeight);
+  const w1 = Math.max(svgWidth, legendGroup.width);
+  const h1 = svgHeight + legendGroup.height;
 
   if (legendGroup.node) {
     clonedSvg.append(() => legendGroup.node);
@@ -63,36 +85,6 @@ function toSVG(chartContainer: HTMLElement, background: string) {
     .attr('width', w1)
     .attr('height', h1)
     .attr('fill', background);
-
-  const svgElements = svg.getElementsByTagName('*');
-  const styleSheets = document.styleSheets;
-  let styleRules: string = '';
-
-  for (let i = svgElements.length - 1; i--; ) {
-    svgElements[i].classList.forEach(className => {
-      classNames.add(`.${className}`);
-    });
-  }
-
-  for (let i = 0; i < styleSheets.length; i++) {
-    const rules = styleSheets[i].cssRules;
-    for (let j = 0; j < rules.length; j++) {
-      if (rules[j].constructor.name === 'CSSStyleRule') {
-        const selectorText = (rules[j] as CSSStyleRule).selectorText;
-        const hasClassName = selectorText.split(' ').some(word => classNames.has(word));
-
-        if (hasClassName) {
-          styleRules += rules[j].cssText + ' ';
-        }
-      }
-    }
-  }
-  styleRules = resolveCSSVariables(chartContainer, styleRules);
-
-  const xmlDocument = new DOMParser().parseFromString('<svg></svg>', 'image/svg+xml');
-  const styleNode = xmlDocument.createCDATASection(styleRules);
-  clonedSvg.insert('defs', ':first-child').append('style').attr('type', 'text/css').node()!.appendChild(styleNode);
-
   clonedSvg.attr('width', w1).attr('height', h1).attr('viewBox', `0 0 ${w1} ${h1}`);
 
   return {
@@ -102,7 +94,7 @@ function toSVG(chartContainer: HTMLElement, background: string) {
   };
 }
 
-function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHeight: number, classNames: Set<string>) {
+function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHeight: number) {
   const legendButtons = chartContainer.querySelectorAll<HTMLElement>(`
     button[class^="legend-"],
     [class^="legendContainer-"] div[class^="overflowIndicationTextStyle-"],
@@ -146,7 +138,6 @@ function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHei
       const { backgroundColor: legendColor, borderColor: legendBorderColor } = getComputedStyle(legendRect!);
 
       legendText = legendButtons[i].querySelector<HTMLDivElement>('[class^="text"]');
-      legendText!.classList.forEach(className => classNames.add(`.${className}`));
       legendItem
         .append('rect')
         .attr('x', legendX + 8)
@@ -159,18 +150,19 @@ function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHei
       textOffset = 28;
     } else {
       legendText = legendButtons[i] as HTMLDivElement;
-      legendText.classList.forEach(className => classNames.add(`.${className}`));
       textOffset = 8;
     }
 
-    const { color: textColor } = getComputedStyle(legendText!);
+    const properties = ['font-family', 'font-size', 'font-weight', 'opacity'];
+    const textStyles = getComputedStyle(legendText!);
+    const styleAttrVal = properties.map(prop => `${prop}: ${textStyles.getPropertyValue(prop)}`).join('; ');
     legendItem
       .append('text')
       .attr('x', legendX + textOffset)
       .attr('y', svgHeight + legendY + 8)
       .attr('dominant-baseline', 'hanging')
-      .attr('class', legendText!.getAttribute('class'))
-      .attr('fill', textColor)
+      .attr('fill', textStyles.color)
+      .attr('style', styleAttrVal)
       .text(legendText!.textContent);
     legendX += legendWidth;
   }
