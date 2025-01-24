@@ -11,15 +11,15 @@ const MenuSplitGroupContext = React.createContext<MenuSplitGroupContextValue | u
   undefined,
 ) as React.Context<MenuSplitGroupContextValue>;
 
-const menuTriggerContextDefaultValue = {
+export const menuSplitGroupContextDefaultValue = {
   setMultiline: () => null,
 };
 
 export const MenuSplitGroupContextProvider = MenuSplitGroupContext.Provider;
 export const useMenuSplitGroupContext_unstable = () =>
-  React.useContext(MenuSplitGroupContext) ?? menuTriggerContextDefaultValue;
+  React.useContext(MenuSplitGroupContext) ?? menuSplitGroupContextDefaultValue;
 
 export const useIsInMenuSplitGroup = () => {
   const context = useMenuSplitGroupContext_unstable();
-  return context !== menuTriggerContextDefaultValue;
+  return context !== menuSplitGroupContextDefaultValue;
 };
