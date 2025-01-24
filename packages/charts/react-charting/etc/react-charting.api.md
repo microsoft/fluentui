@@ -1212,6 +1212,21 @@ export interface IRefArrayData {
     refElement?: SVGGElement;
 }
 
+// @public (undocumented)
+export interface IResponsiveContainerProps {
+    // (undocumented)
+    children: React_2.ReactElement<{
+        width?: number;
+        height?: number;
+    }>;
+    // (undocumented)
+    height?: number | string;
+    // (undocumented)
+    onResize?: (width: number, height: number) => void;
+    // (undocumented)
+    width?: number | string;
+}
+
 // @public
 export interface ISankeyChartAccessibilityProps {
     emptyAriaLabel?: string;
@@ -1636,6 +1651,9 @@ export enum NodesComposition {
 
 // @public
 export const PieChart: React_2.FunctionComponent<IPieChartProps>;
+
+// @public (undocumented)
+export const ResponsiveContainer: React_2.FC<IResponsiveContainerProps>;
 
 // @public
 export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
