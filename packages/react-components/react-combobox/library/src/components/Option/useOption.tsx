@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, useMergedRefs, slot, useEventCallback } from '@fluentui/react-utilities';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
 import { CheckmarkFilled, Checkmark12Filled } from '@fluentui/react-icons';
 import { useListboxContext_unstable } from '../../contexts/ListboxContext';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { OptionProps, OptionState } from './Option.types';
+import { useSetKeyboardNavigation } from '@fluentui/react-tabster';
 
 function getTextString(text: string | undefined, children: React.ReactNode) {
   if (text !== undefined) {
@@ -87,6 +88,15 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     props.onClick?.(event);
   };
 
+  const setKeyboardNavigationState = useSetKeyboardNavigation();
+  const onMouseMove = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (activeDescendantController.active() !== id) {
+      activeDescendantController.focus(id);
+    }
+
+    setKeyboardNavigationState(false);
+  });
+
   // register option data with context
   React.useEffect(() => {
     if (id && optionRef.current) {
@@ -114,6 +124,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
         ...semanticProps,
         ...props,
         onClick,
+        onMouseMove,
       }),
       { elementType: 'div' },
     ),

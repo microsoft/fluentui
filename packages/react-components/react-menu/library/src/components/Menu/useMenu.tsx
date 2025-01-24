@@ -21,6 +21,7 @@ import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
+import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 
 // If it's not possible to position the submenu in smaller viewports, try
 // and fallback to this order of positions
@@ -269,9 +270,16 @@ const useMenuOpenState = (
   }, [findFirstFocusable, state.menuPopoverRef]);
 
   const firstMount = useFirstMount();
+  const mouseInputState = useMenuListContext_unstable(context => context.mouseInputState);
   React.useEffect(() => {
     if (open) {
-      focusFirst();
+      // TODO this should not be called when user is moving the mouse around
+      // This only applies to submenus
+      // Submenu should only read this state if it's wrapped by a menulist
+      // MenuList should set this state
+      if (!mouseInputState?.isMouseInput()) {
+        focusFirst();
+      }
     } else {
       if (!firstMount) {
         if (targetDocument?.activeElement === targetDocument?.body) {
@@ -287,7 +295,7 @@ const useMenuOpenState = (
     }
     // firstMount change should not re-run this effect
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.triggerRef, state.isSubmenu, open, focusFirst, targetDocument, state.menuPopoverRef]);
+  }, [state.triggerRef, state.isSubmenu, open, focusFirst, targetDocument, state.menuPopoverRef, mouseInputState]);
 
   return [open, setOpen] as const;
 };

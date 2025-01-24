@@ -26,11 +26,11 @@ const useStyles = makeStyles({
     padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalS}`,
     position: 'relative',
 
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      color: tokens.colorNeutralForeground1Hover,
-      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
-    },
+    // ':hover': {
+    //   backgroundColor: tokens.colorNeutralBackground1Hover,
+    //   color: tokens.colorNeutralForeground1Hover,
+    //   [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
+    // },
 
     ':active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
@@ -40,6 +40,11 @@ const useStyles = makeStyles({
   },
 
   active: {
+    [`&[data-activedescendant]`]: {
+      backgroundColor: tokens.colorNeutralBackground1Hover,
+      color: tokens.colorNeutralForeground1Hover,
+      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
+    },
     [`[${ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE}]::after`]: {
       content: '""',
       position: 'absolute',
