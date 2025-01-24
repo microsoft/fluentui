@@ -52,7 +52,9 @@ function toSVG(chartContainer: HTMLElement, background: string) {
     .attr('width', null)
     .attr('height', null)
     .attr('viewBox', null);
+  const { fontFamily } = getComputedStyle(chartContainer);
 
+  clonedSvg.selectAll('text').style('font-family', fontFamily);
   if (legendGroup.node) {
     clonedSvg.append(() => legendGroup.node);
   }
