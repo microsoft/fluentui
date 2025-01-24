@@ -48,7 +48,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   const saturation = Math.round(hsvColor.s * 100);
   const value = Math.round(hsvColor.v * 100);
 
-  const [activeAxis, setActiveAxis] = React.useState<'x' | 'y'>('x');
+  const [activeAxis, setActiveAxis] = React.useState<'x' | 'y' | null>(null);
 
   const requestColorChange = useEventCallback((event: MouseEvent) => {
     if (!rootRef.current) {
@@ -175,7 +175,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
       defaultProps: {
         id: useId('sliderX-'),
         type: 'range',
-        ...(activeAxis === 'x' && { tabIndex: 0 }),
+        ...(activeAxis && { tabIndex: activeAxis === 'x' ? 0 : -1 }),
       },
       elementType: 'input',
     }),
@@ -183,7 +183,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
       defaultProps: {
         id: useId('sliderY-'),
         type: 'range',
-        ...(activeAxis === 'y' && { tabIndex: 0 }),
+        ...(activeAxis && { tabIndex: activeAxis === 'y' ? 0 : -1 }),
       },
       elementType: 'input',
     }),
@@ -207,18 +207,6 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
   state.inputX.value = saturation;
   state.inputY.value = value;
-
-  React.useEffect(() => {
-    // Focus the active axis input only when the active axis changes
-
-    if (activeAxis === 'x' && targetDocument?.activeElement !== xRef.current) {
-      xRef.current?.focus();
-    }
-
-    if (activeAxis === 'y' && targetDocument?.activeElement !== yRef.current) {
-      yRef.current?.focus();
-    }
-  }, [activeAxis, targetDocument?.activeElement]);
 
   return state;
 };

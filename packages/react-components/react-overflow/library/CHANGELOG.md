@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Mon, 11 Nov 2024 10:00:48 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jan 2025 14:00:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.2.7)
+
+Wed, 22 Jan 2025 14:00:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.2.4..@fluentui/react-overflow_v9.2.7)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.72 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-utilities to v9.18.20 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+
+## [9.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.2.4)
+
+Mon, 16 Dec 2024 16:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.2.2..@fluentui/react-overflow_v9.2.4)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.71 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-theme to v9.1.24 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-utilities to v9.18.19 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.2.2)
+
+Fri, 06 Dec 2024 12:53:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.2.0..@fluentui/react-overflow_v9.2.2)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.70 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-theme to v9.1.23 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-utilities to v9.18.18 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
 
 ## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.2.0)
 

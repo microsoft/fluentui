@@ -173,7 +173,7 @@ function usePositioningOptions(options: PositioningOptions) {
     pinned,
     position,
     unstable_disableTether: disableTether,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     positionFixed,
     strategy,
     overflowBoundaryPadding,
@@ -181,6 +181,7 @@ function usePositioningOptions(options: PositioningOptions) {
     useTransform,
     matchTargetSize,
     disableUpdateOnResize = false,
+    shiftToCoverTarget,
   } = options;
 
   const { dir, targetDocument } = useFluent();
@@ -205,6 +206,7 @@ function usePositioningOptions(options: PositioningOptions) {
           disableTether,
           overflowBoundaryPadding,
           isRtl,
+          shiftToCoverTarget,
         }),
         autoSize && maxSizeMiddleware(autoSize, { container, overflowBoundary, overflowBoundaryPadding, isRtl }),
         intersectingMiddleware(),

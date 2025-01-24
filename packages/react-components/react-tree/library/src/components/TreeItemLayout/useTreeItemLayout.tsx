@@ -39,6 +39,7 @@ export const useTreeItemLayout_unstable = (
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
+  const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
 
   const [isActionsVisibleFromProps, onActionVisibilityChange]: [
     TreeItemLayoutActionSlotProps['visible'],
@@ -134,7 +135,7 @@ export const useTreeItemLayout_unstable = (
   if (expandIcon) {
     expandIcon.ref = expandIconRefs;
   }
-  const arrowNavigationProps = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
+  const arrowNavigationProps = useArrowNavigationGroup({ circular: navigationMode === 'tree', axis: 'horizontal' });
   const actions = isActionsVisible
     ? slot.optional(props.actions, {
         defaultProps: { ...arrowNavigationProps, role: 'toolbar' },
@@ -143,6 +144,7 @@ export const useTreeItemLayout_unstable = (
     : undefined;
   delete actions?.visible;
   delete actions?.onVisibilityChange;
+
   const actionsRefs = useMergedRefs(actions?.ref, actionsRef, actionsRefInternal);
   const handleActionsBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.actions)) {

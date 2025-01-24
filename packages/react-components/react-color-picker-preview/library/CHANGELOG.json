@@ -1,0 +1,214 @@
+{
+  "name": "@fluentui/react-color-picker-preview",
+  "entries": [
+    {
+      "date": "Wed, 22 Jan 2025 14:00:14 GMT",
+      "tag": "@fluentui/react-color-picker-preview_v0.1.4",
+      "version": "0.1.4",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "fd420e1e0b66e04c8a423cff3eea6d21d9434d2d",
+            "comment": "chore: migrate from deprecation plugin to ts-eslint/no-deprecated rule"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "2f88d062a57e6dc44ecd65df2ab067652ae4c7ce",
+            "comment": "fix: make api.md up to date"
+          }
+        ],
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "e7a954abbbe42a13ba302f28710a908cd34b72b9",
+            "comment": "chore: Moving @ctrl/tinycolor dependency to be a caret dependency in production packages."
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "9ed5fce8dda03bb85d583a23478ed298e51d305d",
+            "comment": "fix: focus jumps to inputY instead of next element"
+          },
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "f1a15496cf7c7121f4d163e2394d5647fbe9eb96",
+            "comment": "feat: Added `transparent` option to the AlphaSlider"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.72",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.50",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.23.3",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.20",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2025 18:33:32 GMT",
+      "tag": "@fluentui/react-color-picker-preview_v0.1.3",
+      "version": "0.1.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "c53044a18a262e2defa3f27bf09950ec724a8997",
+            "comment": "fix: contrast border of thumb"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "b52d6ba234a24ce1d05c636cfc41b0098b15cfb9",
+            "comment": "feat: added aria-attributes to the ColorPicker"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.49",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Dec 2024 16:26:48 GMT",
+      "tag": "@fluentui/react-color-picker-preview_v0.1.2",
+      "version": "0.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "b9a11c54c2b7bd6d003ef1952b59f63647143451",
+            "comment": "fix(react-color-picker): active axis for ColorPicker"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.71",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.48",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.2",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.23.2",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-theme to v9.1.24",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.19",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Dec 2024 17:38:10 GMT",
+      "tag": "@fluentui/react-color-picker-preview_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "cad13936cd49ba0b34b50bc2f58395605c4e8da4",
+            "comment": "chore: remove usage of \"export *\""
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2024 12:53:39 GMT",
+      "tag": "@fluentui/react-color-picker-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "9e47c8cc53f408a0fb14b3d2b1d8210a8564bf91",
+            "comment": "'feat(react-color-picker): Release ColorPicker as unstable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.70",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.47",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.1",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.23.1",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-theme to v9.1.23",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.18",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          }
+        ]
+      }
+    }
+  ]
+}

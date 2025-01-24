@@ -2,6 +2,87 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2025 14:00:21 GMT",
+      "tag": "@fluentui/react-portal_v9.4.42",
+      "version": "9.4.42",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.23.3",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-utilities to v9.18.20",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Dec 2024 16:26:49 GMT",
+      "tag": "@fluentui/react-portal_v9.4.40",
+      "version": "9.4.40",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.2",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.23.2",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-utilities to v9.18.19",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2024 12:53:41 GMT",
+      "tag": "@fluentui/react-portal_v9.4.39",
+      "version": "9.4.39",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "b9cac91d1e624aca5139cf7bef047de9abfa7385",
+            "comment": "chore: remove usage of \"export *\" "
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.1",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.23.1",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-utilities to v9.18.18",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:00:50 GMT",
       "tag": "@fluentui/react-portal_v9.4.38",
       "version": "9.4.38",

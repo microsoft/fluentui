@@ -2,6 +2,65 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2025 14:00:12 GMT",
+      "tag": "@fluentui/react-utilities_v9.18.20",
+      "version": "9.18.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "8cf401d626def27ad679f9e53928533df9f9ef52",
+            "comment": "fix: add autoCorrect and minLength input properties support to getNativeProps utility"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "fd420e1e0b66e04c8a423cff3eea6d21d9434d2d",
+            "comment": "chore: migrate from deprecation plugin to ts-eslint/no-deprecated rule"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Dec 2024 16:26:49 GMT",
+      "tag": "@fluentui/react-utilities_v9.18.19",
+      "version": "9.18.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.2",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2024 12:53:45 GMT",
+      "tag": "@fluentui/react-utilities_v9.18.18",
+      "version": "9.18.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b9cac91d1e624aca5139cf7bef047de9abfa7385",
+            "comment": "chore: remove usage of \"export *\" "
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.1",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Nov 2024 09:30:53 GMT",
       "tag": "@fluentui/react-utilities_v9.18.17",
       "version": "9.18.17",

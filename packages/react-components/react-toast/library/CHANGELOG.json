@@ -2,6 +2,269 @@
   "name": "@fluentui/react-toast",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2025 14:00:10 GMT",
+      "tag": "@fluentui/react-toast_v9.3.65",
+      "version": "9.3.65",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "2f88d062a57e6dc44ecd65df2ab067652ae4c7ce",
+            "comment": "fix: make api.md up to date"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-aria to v9.13.14",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.50",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-motion to v9.6.7",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.4.3",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-portal to v9.4.42",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-tabster to v9.23.3",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-utilities to v9.18.20",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2025 18:33:35 GMT",
+      "tag": "@fluentui/react-toast_v9.3.64",
+      "version": "9.3.64",
+      "comments": {
+        "patch": [
+          {
+            "author": "soumya_tripathy@outlook.com",
+            "package": "@fluentui/react-toast",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb",
+            "comment": "feat: Add intent property to Toast state and useToast hook. Correct media className assignment in useToastTitleStyles."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-aria to v9.13.13",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.49",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-motion to v9.6.6",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.4.2",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-portal to v9.4.41",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Dec 2024 16:26:49 GMT",
+      "tag": "@fluentui/react-toast_v9.3.63",
+      "version": "9.3.63",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-aria to v9.13.12",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.48",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-motion to v9.6.5",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.4.1",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-portal to v9.4.40",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.2",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-tabster to v9.23.2",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-theme to v9.1.24",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-utilities to v9.18.19",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Dec 2024 17:38:07 GMT",
+      "tag": "@fluentui/react-toast_v9.3.62",
+      "version": "9.3.62",
+      "comments": {
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "a905fddf661bc610dfd089348e08bf88c34c2eba",
+            "comment": "refactor(Toast): replace custom component with CollapseDelayed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-aria to v9.13.11",
+            "commit": "80f2ce07be06e66b369bd18e4484d8faf6b493c7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-motion to v9.6.4",
+            "commit": "80f2ce07be06e66b369bd18e4484d8faf6b493c7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.4.0",
+            "commit": "80f2ce07be06e66b369bd18e4484d8faf6b493c7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2024 12:53:44 GMT",
+      "tag": "@fluentui/react-toast_v9.3.61",
+      "version": "9.3.61",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "b9cac91d1e624aca5139cf7bef047de9abfa7385",
+            "comment": "chore: remove usage of \"export *\" "
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-aria to v9.13.10",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.47",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-motion to v9.6.3",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-portal to v9.4.39",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.1",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-tabster to v9.23.1",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-theme to v9.1.23",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-utilities to v9.18.18",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Nov 2024 09:30:54 GMT",
       "tag": "@fluentui/react-toast_v9.3.60",
       "version": "9.3.60",

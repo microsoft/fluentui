@@ -2,6 +2,86 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 17 Jan 2025 04:07:40 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.77",
+      "version": "3.0.0-beta.77",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "00458f3bbe3f12c0cef556f8d8fd564ffa66983c",
+            "comment": "fix: revert logical properties in spinner to support rtl\""
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1e110d6492d33ca8959aaddc35e21cbd8992706b",
+            "comment": "fix: update disabled switch styles to GrayText for high-contrast mode"
+          }
+        ],
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "e7e2987a4b0c8c36984dc9732937e2e58fb8fb35",
+            "comment": "build tokens package before running e2e tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jan 2025 04:07:00 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.76",
+      "version": "3.0.0-beta.76",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "2247d505c62e3f464f53b77362175580144ebd56",
+            "comment": "Allow field states to be set regardless of connection status"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "479f2f31226381d03c7a12788fb0bae55cd558c4",
+            "comment": "fix: radio-group emit change with keyboard and disabled radio unchecks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Dec 2024 04:07:55 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.75",
+      "version": "3.0.0-beta.75",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "622c4aacdb5a1ab601287a9adb1064a640388f4f",
+            "comment": "fix tooltip positioning styles for 'below-end' option"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2024 04:07:47 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.74",
+      "version": "3.0.0-beta.74",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "df2eb6185aec09cc78d0ee5a806b41d8b5225dca",
+            "comment": "add current-value attribute to text-input"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Nov 2024 04:07:40 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.73",
       "version": "3.0.0-beta.73",

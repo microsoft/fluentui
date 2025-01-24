@@ -81,6 +81,10 @@ const Scale = createMotionComponent<{ startFrom?: number }>(({ startFrom = 0.5 }
     ],
     duration: motionTokens.durationUltraSlow,
     iterations: Infinity,
+
+    reducedMotion: {
+      iterations: 1,
+    },
   };
 });
 

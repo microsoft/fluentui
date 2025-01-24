@@ -1,7 +1,7 @@
 import { CartesianChart, IChildProps, IModifiedCartesianChartProps } from '../../components/CommonComponents/index';
-import { IAccessibilityProps, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
+import { IAccessibilityProps, IChart, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { classNamesFunction, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, initializeComponentRef, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
@@ -20,10 +20,12 @@ import {
   IDomainNRange,
   domainRangeOfXStringAxis,
   createStringYAxis,
+  resolveCSSVariables,
 } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
+import { getColorContrast } from '../../utilities/colors';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -87,7 +89,7 @@ export interface IHeatMapChartState {
   callOutAccessibilityData?: IAccessibilityProps;
 }
 const getClassNames = classNamesFunction<IHeatMapChartStyleProps, IHeatMapChartStyles>();
-export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> {
+export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> implements IChart {
   private _classNames: IProcessedStyleSet<IHeatMapChartStyles>;
   private _stringXAxisDataPoints: string[];
   private _stringYAxisDataPoints: string[];
@@ -114,8 +116,14 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: FlattenData | null;
   private _emptyChartId: string;
+  private margins: IMargins;
+  private _cartesianChartRef: React.RefObject<IChart>;
+
   public constructor(props: IHeatMapChartProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     /**
      * below funciton creates a new data set from the prop
      * @data and also finds all the unique x-axis datapoints
@@ -133,7 +141,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ): DataSet => this._createNewDataSet(data, xDate, xNum, yDate, yNum),
     );
     this.state = {
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       activeLegend: '',
       isCalloutVisible: false,
       target: null,
@@ -145,6 +153,15 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       calloutId: '',
     };
     this._emptyChartId = getId('_HeatMap_empty');
+    this._cartesianChartRef = React.createRef();
+  }
+
+  public componentDidUpdate(prevProps: IHeatMapChartProps): void {
+    if (prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend) {
+      this.setState({
+        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+      });
+    }
   }
 
   public render(): React.ReactNode {
@@ -204,6 +221,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         createStringYAxis={createStringYAxis}
         getDomainNRangeValues={this._getDomainNRangeValues}
         getMinMaxOfYAxis={this._getMinMaxOfYAxis}
+        getmargins={this._getMargins}
         xAxisTickCount={this._stringXAxisDataPoints.length}
         xAxistickSize={0}
         xAxisPadding={0.02}
@@ -213,6 +231,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         }}
         legendBars={this._createLegendBars()}
         onChartMouseLeave={this._handleChartMouseLeave}
+        ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -229,6 +248,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         aria-label={'Graph has no data to display'}
       />
     );
+  }
+
+  public get chartContainer(): HTMLElement | null {
+    return this._cartesianChartRef.current?.chartContainer || null;
   }
 
   private _getMinMaxOfYAxis = () => {
@@ -250,7 +273,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     } else {
-      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+      domainNRangeValue = domainRangeOfXStringAxis(this.margins, width, isRTL);
     }
     return domainNRangeValue;
   };
@@ -266,6 +289,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       }
     });
     return { x, y };
+  };
+
+  private _getMargins = (margins: IMargins) => {
+    this.margins = margins;
   };
 
   private _getOpacity = (legendTitle: string): string => {
@@ -326,6 +353,12 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     });
   };
 
+  private _getInvertedTextColor = (color: string): string => {
+    return color === this.props.theme!.semanticColors.bodyText
+      ? this.props.theme!.semanticColors.bodyBackground
+      : this.props.theme!.semanticColors.bodyText;
+  };
+
   /**
    * This is the function which is responsible for
    * drawing the rectangle in the graph and also
@@ -349,6 +382,15 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
            * data point such as x, y , value, rectText property of the rectangle
            */
           const dataPointObject = this._dataSet[yAxisDataPoint][index];
+          let styleRules = '';
+          let foregroundColor = this.props.theme!.semanticColors.bodyText;
+          if (this.chartContainer) {
+            styleRules = resolveCSSVariables(this.chartContainer!, foregroundColor);
+          }
+          const contrastRatio = getColorContrast(styleRules, this._colorScale(dataPointObject.value));
+          if (contrastRatio < 3) {
+            foregroundColor = this._getInvertedTextColor(foregroundColor);
+          }
           rectElement = (
             <g
               key={id}
@@ -376,6 +418,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
                 textAnchor={'middle'}
                 className={this._classNames.text}
                 transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
+                fill={foregroundColor}
               >
                 {convertToLocaleString(dataPointObject.rectText, this.props.culture)}
               </text>
@@ -579,7 +622,11 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       yPoints[item]
         .sort((a: IHeatMapChartDataPoint, b: IHeatMapChartDataPoint) => {
           if (this._xAxisType === XAxisTypes.StringAxis) {
-            return (a.x as string).toLowerCase() > (b.x as string).toLowerCase() ? 1 : -1;
+            return this.props.sortOrder === 'none'
+              ? 0
+              : (a.x as string).toLowerCase() > (b.x as string).toLowerCase()
+              ? 1
+              : -1;
           } else if (this._xAxisType === XAxisTypes.DateAxis) {
             return (a.x as Date).getTime() - (b.x as Date).getTime();
           } else if (this._xAxisType === XAxisTypes.NumericAxis) {
@@ -662,7 +709,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       if (this._xAxisType === XAxisTypes.DateAxis || this._xAxisType === XAxisTypes.NumericAxis) {
         return +a - +b;
       } else {
-        return a.toLowerCase() > b.toLowerCase() ? 1 : -1;
+        return this.props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
       }
     });
     xAxisPoints = unFormattedXAxisDataPoints.map((xPoint: string) => {
@@ -689,7 +736,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       if (this._yAxisType === YAxisType.DateAxis || this._yAxisType === YAxisType.NumericAxis) {
         return +a - +b;
       } else {
-        return a.toLowerCase() > b.toLowerCase() ? 1 : -1;
+        return this.props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
       }
     });
     yAxisPoints = unFormattedYAxisDataPoints.map((yPoint: string) => {

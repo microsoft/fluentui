@@ -134,6 +134,7 @@ apps/chart-docsite @microsoft/charting-team
 #### Packages
 packages/azure-themes @Jacqueline-ms @robtaft-ms
 packages/react-conformance @microsoft/fluentui-react-build
+packages/charts/chart-web-components @microsoft/charting-team
 packages/charts/react-charting @microsoft/charting-team
 packages/charts/react-charts-preview/library @microsoft/charting-team
 packages/charts/react-charts-preview/stories @microsoft/charting-team
@@ -349,9 +350,9 @@ packages/react-components/react-calendar-compat/stories @microsoft/cxe-prg
 packages/react-components/react-infolabel @microsoft/cxe-prg
 packages/react-components/react-infolabel/library @microsoft/cxe-prg
 packages/react-components/react-infolabel/stories @microsoft/cxe-prg
-packages/react-components/react-list-preview @microsoft/teams-prg
-packages/react-components/react-list-preview/library @microsoft/teams-prg
-packages/react-components/react-list-preview/stories @microsoft/teams-prg
+packages/react-components/react-list @microsoft/teams-prg
+packages/react-components/react-list/library @microsoft/teams-prg
+packages/react-components/react-list/stories @microsoft/teams-prg
 packages/react-components/react-motion @microsoft/teams-prg
 packages/react-components/react-motion/library @microsoft/teams-prg
 packages/react-components/react-motion/stories @microsoft/teams-prg
@@ -430,6 +431,7 @@ packages/react/src/components/WeeklyDayPicker @microsoft/cxe-red
 packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @dzearing
 packages/fluent2-theme @microsoft/cxe-red @geoffcoxmsft
 ## Experiments
+packages/react-experiments @microsoft/cxe-red
 packages/react-experiments/src/components/Signals @ThomasMichon
 packages/react-experiments/src/components/Tile @ThomasMichon
 packages/react-experiments/src/components/TileList @ThomasMichon

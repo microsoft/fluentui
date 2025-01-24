@@ -2,6 +2,123 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2025 14:00:21 GMT",
+      "tag": "@fluentui/react-text_v9.4.32",
+      "version": "9.4.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-utilities to v9.18.20",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.50",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2025 18:33:36 GMT",
+      "tag": "@fluentui/react-text_v9.4.31",
+      "version": "9.4.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.49",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Dec 2024 16:26:49 GMT",
+      "tag": "@fluentui/react-text_v9.4.30",
+      "version": "9.4.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.2",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-theme to v9.1.24",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-utilities to v9.18.19",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.48",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Dec 2024 17:38:06 GMT",
+      "tag": "@fluentui/react-text_v9.4.29",
+      "version": "9.4.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "cad13936cd49ba0b34b50bc2f58395605c4e8da4",
+            "comment": "chore: remove usage of \"export *\""
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2024 12:53:46 GMT",
+      "tag": "@fluentui/react-text_v9.4.28",
+      "version": "9.4.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.1",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-theme to v9.1.23",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-utilities to v9.18.18",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.47",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Nov 2024 09:30:53 GMT",
       "tag": "@fluentui/react-text_v9.4.27",
       "version": "9.4.27",

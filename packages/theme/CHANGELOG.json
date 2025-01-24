@@ -2,6 +2,36 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Mon, 20 Jan 2025 07:21:42 GMT",
+      "tag": "@fluentui/theme_v2.6.64",
+      "version": "2.6.64",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/theme",
+            "commit": "fd420e1e0b66e04c8a423cff3eea6d21d9434d2d",
+            "comment": "chore: migrate from deprecation plugin to ts-eslint/no-deprecated rule"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Dec 2024 07:22:58 GMT",
+      "tag": "@fluentui/theme_v2.6.64",
+      "version": "2.6.64",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/theme",
+            "commit": "dc7bb663e3d93a19b611cf1892556d69c57b1269",
+            "comment": "chore: remove usage of \"export *\""
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Nov 2024 00:59:52 GMT",
       "tag": "@fluentui/theme_v2.6.63",
       "version": "2.6.63",

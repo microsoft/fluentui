@@ -792,6 +792,9 @@ export class BaseTextInput extends FASTElement {
     control: HTMLInputElement;
     // @internal
     controlLabel: HTMLLabelElement;
+    currentValue: string;
+    // @internal
+    currentValueChanged(prev: string, next: string): void;
     // @internal
     defaultSlottedNodes: Node[];
     // @internal
@@ -3042,7 +3045,7 @@ export class RadioGroup extends FASTElement {
     // @internal
     protected checkedIndexChanged(prev: number | undefined, next: number): void;
     // @internal
-    checkRadio(index?: number): void;
+    checkRadio(index?: number, shouldEmit?: boolean): void;
     checkValidity(): boolean;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
@@ -4056,6 +4059,8 @@ export class Tooltip extends FASTElement {
     mouseenterAnchorHandler: () => void;
     mouseleaveAnchorHandler: () => void;
     positioning?: TooltipPositioningOption;
+    // @internal
+    positioningChanged(): void;
     // @internal
     showTooltip(delay?: number): void;
 }

@@ -29,7 +29,7 @@ export const Basic = () => {
   return (
     <div style={{ padding: 10 }}>
       <DonutChart
-        culture={window.navigator.language}
+        culture="en-US"
         data={data}
         innerRadius={55}
         href={'https://developer.microsoft.com/en-us/'}

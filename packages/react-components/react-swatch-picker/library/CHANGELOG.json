@@ -2,6 +2,195 @@
   "name": "@fluentui/react-swatch-picker",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2025 14:00:21 GMT",
+      "tag": "@fluentui/react-swatch-picker_v9.1.19",
+      "version": "9.1.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.72",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-field to v9.1.85",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.50",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-tabster to v9.23.3",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-utilities to v9.18.20",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2025 18:33:36 GMT",
+      "tag": "@fluentui/react-swatch-picker_v9.1.18",
+      "version": "9.1.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-field to v9.1.84",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.49",
+            "commit": "52572e1cdd452d32c67195bdc42f1114f58242bb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Dec 2024 16:26:49 GMT",
+      "tag": "@fluentui/react-swatch-picker_v9.1.17",
+      "version": "9.1.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.71",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-field to v9.1.83",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.48",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.2",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-tabster to v9.23.2",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-theme to v9.1.24",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-utilities to v9.18.19",
+            "commit": "27a945ec646737e2132d05da293265335ee6d0ff"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Dec 2024 17:38:05 GMT",
+      "tag": "@fluentui/react-swatch-picker_v9.1.16",
+      "version": "9.1.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "cad13936cd49ba0b34b50bc2f58395605c4e8da4",
+            "comment": "chore: remove usage of \"export *\""
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-field to v9.1.82",
+            "commit": "80f2ce07be06e66b369bd18e4484d8faf6b493c7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2024 12:53:42 GMT",
+      "tag": "@fluentui/react-swatch-picker_v9.1.15",
+      "version": "9.1.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "eca1dd1be0709b0971d2e35846f1acb165b984aa",
+            "comment": "Updated README.md"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.70",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-field to v9.1.81",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.47",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.21.1",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-tabster to v9.23.1",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-theme to v9.1.23",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-utilities to v9.18.18",
+            "commit": "0676543e19b8d0dc12ac4f18b2768a5eec8f34eb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Nov 2024 09:30:52 GMT",
       "tag": "@fluentui/react-swatch-picker_v9.1.14",
       "version": "9.1.14",
