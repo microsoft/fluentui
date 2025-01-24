@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: default state for ColorSliders",
+  "packageName": "@fluentui/react-color-picker-preview",
+  "email": "v.kozlova13@gmail.com",
+  "dependentChangeType": "patch"
+}
