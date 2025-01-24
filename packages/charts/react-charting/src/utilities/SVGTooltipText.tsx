@@ -131,32 +131,30 @@ export class SVGTooltipText
 
     const showTooltip =
       (!!this.props.isTooltipVisibleProp && this.state.isOverflowing && !!content) || (isTooltipVisible && !!content);
-    const backgroundColor = this.props.theme ? this.props.theme?.palette.neutralLighter : undefined;
+    const backgroundColor = this.props.theme ? this.props.theme.semanticColors.bodyBackground : undefined;
     return (
       <>
-        <svg>
-          <rect
-            x={this.state.textX}
-            y={this.state.textY}
-            width={this.state.textWidth}
-            height={this.state.textHeight}
-            fill={backgroundColor}
-            transform={textProps?.transform}
-          />
-          <text
-            {...textProps}
-            id={this._tooltipHostId}
-            ref={this._tooltipHost}
-            onFocusCapture={this._onTooltipFocus}
-            onBlurCapture={this._onTooltipBlur}
-            onMouseEnter={this._onTooltipMouseEnter}
-            onMouseLeave={this._onTooltipMouseLeave}
-            onKeyDown={this._onTooltipKeyDown}
-            data-is-focusable={shouldReceiveFocus && this.state.isOverflowing}
-          >
-            {content}
-          </text>
-        </svg>
+        <rect
+          x={this.state.textX! - 4}
+          y={this.state.textY! - 4}
+          width={this.state.textWidth! + 8}
+          height={this.state.textHeight! + 8}
+          fill={backgroundColor}
+          transform={textProps?.transform}
+        />
+        <text
+          {...textProps}
+          id={this._tooltipHostId}
+          ref={this._tooltipHost}
+          onFocusCapture={this._onTooltipFocus}
+          onBlurCapture={this._onTooltipBlur}
+          onMouseEnter={this._onTooltipMouseEnter}
+          onMouseLeave={this._onTooltipMouseLeave}
+          onKeyDown={this._onTooltipKeyDown}
+          data-is-focusable={shouldReceiveFocus && this.state.isOverflowing}
+        >
+          {content}
+        </text>
         {showTooltip && <Tooltip {...tooltipRenderProps} />}
       </>
     );
