@@ -77,7 +77,7 @@ export const useMenuSplitGroup_unstable = (
  * Children can mount before parents so we need to store the value and apply it when the parent is mounted
  */
 const useHandleMultilineMenuItem = () => {
-  const [[multilineRef, setMultiline]] = React.useState(() => {
+  const [handle] = React.useState(() => {
     let isMultiline = false;
     let multilineNode: HTMLElement | null = null;
 
@@ -85,8 +85,8 @@ const useHandleMultilineMenuItem = () => {
       multilineNode?.toggleAttribute(menuSplitGroupMultilineAttr, isMultiline);
     }
 
-    return [
-      (node: HTMLDivElement | null) => {
+    return {
+      multilineRef: (node: HTMLDivElement | null) => {
         if (node) {
           multilineNode = node;
           applyAttr();
@@ -94,12 +94,12 @@ const useHandleMultilineMenuItem = () => {
           multilineNode = null;
         }
       },
-      (value: boolean) => {
+      setMultiline: (value: boolean) => {
         isMultiline = value;
         applyAttr();
       },
-    ] as const;
+    };
   });
 
-  return { multilineRef, setMultiline };
+  return handle;
 };
