@@ -49,11 +49,19 @@ const useRootBaseStyles = makeResetStyles({
     [`& .${menuItemClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2BrandSelected,
     },
+
+    [`& .${menuItemClassNames.subText}`]: {
+      color: tokens.colorNeutralForeground3Hover,
+    },
   },
 
   ':hover:active': {
     backgroundColor: tokens.colorNeutralBackground1Pressed,
     color: tokens.colorNeutralForeground2Pressed,
+
+    [`& .${menuItemClassNames.subText}`]: {
+      color: tokens.colorNeutralForeground3Pressed,
+    },
   },
 
   // High contrast styles
@@ -114,6 +122,7 @@ const useSubmenuIndicatorBaseStyles = makeResetStyles({
 
 const useSubtextBaseStyles = makeResetStyles({
   ...typographyStyles.caption2,
+  color: tokens.colorNeutralForeground3,
 });
 
 const useStyles = makeStyles({
