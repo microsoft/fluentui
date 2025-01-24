@@ -379,7 +379,6 @@
     "esbuild": "0.24.2",
     "@microsoft/api-extractor/typescript": "5.5.2",
     "eslint": "8.57.0",
-    "@microsoft/api-extractor/typescript": "5.3.3",
     "swc-loader": "^0.2.6",
     "prettier": "2.8.8",
     "puppeteer": "19.6.0",
