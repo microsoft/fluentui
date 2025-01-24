@@ -40,13 +40,13 @@ describe('MenuItem', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should focus the item on mouseenter', () => {
+  it('should focus the item on mousemove', () => {
     // Arrange
     const { getByRole } = render(<MenuItem>Item</MenuItem>);
 
     // Act
     const menuitem = getByRole('menuitem');
-    fireEvent.mouseEnter(menuitem);
+    fireEvent.mouseMove(menuitem);
 
     // Assert
     expect(document.activeElement).toBe(menuitem);
