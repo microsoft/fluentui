@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 23 Jan 2025 07:21:31 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Jan 2025 07:20:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.46)
+
+Fri, 24 Jan 2025 07:20:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.45..@fluentui/react-charting_v5.23.46)
+
+### Patches
+
+- Centre align gauge chart ([PR #33710](https://github.com/microsoft/fluentui/pull/33710) by 74965306+Anush2303@users.noreply.github.com)
 
 ## [5.23.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.45)
 
