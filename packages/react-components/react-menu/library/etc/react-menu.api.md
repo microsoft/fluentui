@@ -446,7 +446,7 @@ export const renderMenuList_unstable: (state: MenuListState, contextValues: Menu
 export const renderMenuPopover_unstable: (state: MenuPopoverState) => JSX.Element;
 
 // @public
-export const renderMenuSplitGroup_unstable: (state: MenuSplitGroupState, contexts: MenuSplitGroupContextValues) => JSX.Element;
+export const renderMenuSplitGroup_unstable: (state: MenuSplitGroupState, contexts?: MenuSplitGroupContextValues) => JSX.Element;
 
 // @public
 export const renderMenuTrigger_unstable: (state: MenuTriggerState) => JSX.Element;
