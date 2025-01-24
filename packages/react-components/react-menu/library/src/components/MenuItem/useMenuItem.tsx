@@ -40,7 +40,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
   const { as = 'div', disabled = false, hasSubmenu = isSubmenuTrigger, persistOnClick = persistOnClickContext } = props;
   const { hasIcons, hasCheckmarks } = useIconAndCheckmarkAlignment({ hasSubmenu });
   const setOpen = useMenuContext_unstable(context => context.setOpen);
-  useNotifySplitItemMultiline({ subText: props.subText, hasSubmenu });
+  useNotifySplitItemMultiline({ multiline: !!props.subText, hasSubmenu });
 
   const { dir } = useFluent();
   const innerRef = React.useRef<ARIAButtonElementIntersection<'div'>>(null);
@@ -125,10 +125,9 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
  * MenuSplitGroup needs to apply extra styles when its main item is in multiline layout mode
  * Notify the parent MenuSplitGroup so that it can handle this case
  */
-const useNotifySplitItemMultiline = (options: { hasSubmenu: boolean; subText: MenuItemProps['subText'] }) => {
-  const { hasSubmenu, subText } = options;
+const useNotifySplitItemMultiline = (options: { hasSubmenu: boolean; multiline: boolean }) => {
+  const { hasSubmenu, multiline } = options;
   const isSplitItemTrigger = useIsInMenuSplitGroup() && hasSubmenu;
-  const multiline = !!subText;
 
   const { setMultiline } = useMenuSplitGroupContext_unstable();
 

@@ -34,7 +34,7 @@ const useRootBaseStyles = makeResetStyles({
   alignItems: 'start',
   fontSize: tokens.fontSizeBase300,
   cursor: 'pointer',
-  columnGap: '4px',
+  gap: '4px',
 
   ':hover': {
     backgroundColor: tokens.colorNeutralBackground1Hover,
