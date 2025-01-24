@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: ensure text elements use the correct font-family in SVG export",
+  "packageName": "@fluentui/react-charting",
+  "email": "110246001+krkshitij@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

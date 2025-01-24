@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 17 Jan 2025 07:21:31 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jan 2025 07:21:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.122.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.8)
+
+Wed, 22 Jan 2025 07:21:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.7..@fluentui/react_v8.122.8)
+
+### Patches
+
+- Async dispose to release references ([PR #33685](https://github.com/microsoft/fluentui/pull/33685) by 706967+KevinTCoughlin@users.noreply.github.com)
 
 ## [8.122.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.7)
 

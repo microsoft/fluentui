@@ -2,6 +2,29 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2025 14:00:07 GMT",
+      "tag": "@fluentui/react-positioning_v9.16.2",
+      "version": "9.16.2",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "fd420e1e0b66e04c8a423cff3eea6d21d9434d2d",
+            "comment": "chore: migrate from deprecation plugin to ts-eslint/no-deprecated rule"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.18.20",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2025 18:33:34 GMT",
       "tag": "@fluentui/react-positioning_v9.16.1",
       "version": "9.16.1",

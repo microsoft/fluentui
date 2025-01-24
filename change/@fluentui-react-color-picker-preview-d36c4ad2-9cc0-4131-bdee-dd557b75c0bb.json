@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: Added `transparent` option to the AlphaSlider",
-  "packageName": "@fluentui/react-color-picker-preview",
-  "email": "v.kozlova13@gmail.com",
-  "dependentChangeType": "patch"
-}

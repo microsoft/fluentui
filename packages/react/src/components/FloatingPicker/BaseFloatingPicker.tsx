@@ -125,6 +125,7 @@ export class BaseFloatingPicker<T extends {}, P extends IBaseFloatingPickerProps
 
   public componentWillUnmount(): void {
     this._unbindFromInputElement();
+    this._async.dispose();
     this.isComponentMounted = false;
   }
 

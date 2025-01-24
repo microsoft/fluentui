@@ -9,7 +9,6 @@ export const getHeatMapChartStyles = (props: IHeatMapChartStyleProps): IHeatMapC
       theme.fonts.medium,
       {
         pointerEvents: 'none',
-        fill: theme.palette.white,
         fontWeight: FontWeights.semibold,
       },
     ],

@@ -2,6 +2,41 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2025 14:00:13 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.91",
+      "version": "9.0.0-alpha.91",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "fd420e1e0b66e04c8a423cff3eea6d21d9434d2d",
+            "comment": "chore: migrate from deprecation plugin to ts-eslint/no-deprecated rule"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "2f88d062a57e6dc44ecd65df2ab067652ae4c7ce",
+            "comment": "fix: make api.md up to date"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.50",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.20",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2025 18:33:36 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.90",
       "version": "9.0.0-alpha.90",
