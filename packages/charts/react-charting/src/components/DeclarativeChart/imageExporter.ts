@@ -38,6 +38,9 @@ export function toImage(chartContainer?: HTMLElement | null, opts: IImageExportO
   });
 }
 
+const SVG_STYLE_PROPERTIES = ['display', 'fill', 'fill-opacity', 'opacity', 'stroke', 'stroke-width', 'transform'];
+const SVG_TEXT_STYLE_PROPERTIES = ['font-family', 'font-size', 'font-weight', 'text-anchor'];
+
 function toSVG(chartContainer: HTMLElement, background: string) {
   const svg = chartContainer.querySelector<SVGSVGElement>('svg');
   if (!svg) {
@@ -51,24 +54,12 @@ function toSVG(chartContainer: HTMLElement, background: string) {
   const svgElements = svg.getElementsByTagName('*');
   const clonedSvgElements = clonedSvg.node()!.getElementsByTagName('*');
 
-  for (let i = 1; i < svgElements.length; i++) {
-    const properties = [
-      'display',
-      'fill',
-      'fill-opacity',
-      'font-family',
-      'font-size',
-      'font-style',
-      'font-weight',
-      'opacity',
-      'stroke',
-      'stroke-width',
-      'text-anchor',
-      'transform',
-    ];
-    const elementStyles = getComputedStyle(svgElements[i]);
-    const styleAttrVal = properties.map(prop => `${prop}: ${elementStyles.getPropertyValue(prop)}`).join('; ');
-    clonedSvgElements[i].setAttribute('style', styleAttrVal);
+  for (let i = 0; i < svgElements.length; i++) {
+    if (svgElements[i].tagName.toLowerCase() === 'text') {
+      copyStyle([...SVG_STYLE_PROPERTIES, ...SVG_TEXT_STYLE_PROPERTIES], svgElements[i], clonedSvgElements[i]);
+    } else {
+      copyStyle(SVG_STYLE_PROPERTIES, svgElements[i], clonedSvgElements[i]);
+    }
   }
 
   const { width: svgWidth, height: svgHeight } = svg.getBoundingClientRect();
@@ -94,6 +85,18 @@ function toSVG(chartContainer: HTMLElement, background: string) {
     height: h1,
   };
 }
+
+const LEGEND_RECT_STYLE_PROPERTIES_MAP = {
+  'background-color': 'fill',
+  'border-color': 'stroke',
+};
+const LEGEND_TEXT_STYLE_PROPERTIES_MAP = {
+  color: 'fill',
+  'font-family': 'font-family',
+  'font-size': 'font-size',
+  'font-weight': 'font-weight',
+  opacity: 'opacity',
+};
 
 function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHeight: number) {
   const legendButtons = chartContainer.querySelectorAll<HTMLElement>(`
@@ -136,7 +139,6 @@ function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHei
 
     if (legendButtons[i].tagName.toLowerCase() === 'button') {
       const legendRect = legendButtons[i].querySelector<HTMLDivElement>('[class^="rect"]');
-      const { backgroundColor: legendColor, borderColor: legendBorderColor } = getComputedStyle(legendRect!);
 
       legendText = legendButtons[i].querySelector<HTMLDivElement>('[class^="text"]');
       legendItem
@@ -145,26 +147,21 @@ function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHei
         .attr('y', svgHeight + legendY + 8)
         .attr('width', 12)
         .attr('height', 12)
-        .attr('fill', legendColor)
         .attr('stroke-width', 1)
-        .attr('stroke', legendBorderColor);
+        .call(selection => copyStyle(LEGEND_RECT_STYLE_PROPERTIES_MAP, legendRect!, selection.node()!));
       textOffset = 28;
     } else {
       legendText = legendButtons[i] as HTMLDivElement;
       textOffset = 8;
     }
 
-    const properties = ['font-family', 'font-size', 'font-weight', 'opacity'];
-    const textStyles = getComputedStyle(legendText!);
-    const styleAttrVal = properties.map(prop => `${prop}: ${textStyles.getPropertyValue(prop)}`).join('; ');
     legendItem
       .append('text')
       .attr('x', legendX + textOffset)
       .attr('y', svgHeight + legendY + 8)
       .attr('dominant-baseline', 'hanging')
-      .attr('fill', textStyles.color)
-      .attr('style', styleAttrVal)
-      .text(legendText!.textContent);
+      .text(legendText!.textContent)
+      .call(selection => copyStyle(LEGEND_TEXT_STYLE_PROPERTIES_MAP, legendText!, selection.node()!));
     legendX += legendWidth;
   }
 
@@ -260,4 +257,17 @@ function unescapePonyfill(str: string) {
     result += chr;
   }
   return result;
+}
+
+function copyStyle(properties: string[] | Record<string, string>, fromEl: Element, toEl: Element) {
+  const styles = getComputedStyle(fromEl);
+  if (Array.isArray(properties)) {
+    properties.forEach(prop => {
+      d3Select(toEl).style(prop, styles.getPropertyValue(prop));
+    });
+  } else {
+    Object.entries(properties).forEach(([fromProp, toProp]) => {
+      d3Select(toEl).style(toProp, styles.getPropertyValue(fromProp));
+    });
+  }
 }
