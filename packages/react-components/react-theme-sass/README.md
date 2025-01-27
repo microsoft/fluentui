@@ -21,10 +21,22 @@ ReactDOM.render(
 );
 ```
 
-2. In SCSS styles you can import SCSS variables from `@fluentui/react-theme-sass` and use them in the styles:
+2. In SCSS styles you can `@use` SASS variables from `@fluentui/react-theme-sass`.
+   
+```scss
+// With a namespace
+@use '@fluentui/react-theme-sass/sass/tokens' as 'fluentTokens';
+
+.brandedElement {
+  color: fluentTokens.colorBrandForeground1;
+  background: fluentTokens.colorBrandBackground;
+  border-radius: fluentTokens.borderRadiusLarge;
+}
+```
 
 ```scss
-@import '@fluentui/react-theme-sass';
+// Without a namespace
+@use '@fluentui/react-theme-sass/sass/tokens' as *;
 
 .brandedElement {
   color: $colorBrandForeground1;
@@ -32,5 +44,4 @@ ReactDOM.render(
   border-radius: $borderRadiusLarge;
 }
 ```
-
 > ⚠ Note: This package does not export any Javascript code.️
