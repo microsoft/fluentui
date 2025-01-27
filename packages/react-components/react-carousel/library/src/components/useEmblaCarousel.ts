@@ -153,7 +153,7 @@ export function useEmblaCarousel(
     const slideRegistry = emblaApi.current?.internalEngine().slideRegistry;
     let actualIndex = 0;
     if (slideRegistry && slideRegistry.length > newIndex) {
-      actualIndex = slideRegistry[newIndex][0];
+      actualIndex = slideRegistry[newIndex][0] ?? 0;
     }
     // We set the first card in the current group as the default tabster index for focus capture
     slides?.forEach((slide, slideIndex) => {
