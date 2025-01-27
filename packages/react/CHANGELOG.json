@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2025 07:21:49 GMT",
+      "tag": "@fluentui/react_v8.122.8",
+      "version": "8.122.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "706967+KevinTCoughlin@users.noreply.github.com",
+            "package": "@fluentui/react",
+            "commit": "012298d98651800023aac24c591831e9bc51bea2",
+            "comment": "Async dispose to release references"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Jan 2025 07:21:47 GMT",
       "tag": "@fluentui/react_v8.122.7",
       "version": "8.122.7",

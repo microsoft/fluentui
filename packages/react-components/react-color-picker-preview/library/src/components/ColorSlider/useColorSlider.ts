@@ -13,6 +13,7 @@ import type { ColorSliderProps, ColorSliderState } from './ColorSlider.types';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
 import { MIN, HUE_MAX as MAX } from '../../utils/constants';
 import { getPercent } from '../../utils/getPercent';
+import { createHsvColor } from '../../utils/createHsvColor';
 
 /**
  * Create the state required to render ColorSlider.
@@ -65,7 +66,7 @@ export const useColorSlider_unstable = (
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
     const newValue = Number(event.target.value);
-    const newColor = { ...hsvColor, h: newValue };
+    const newColor = createHsvColor({ ...hsvColor, h: newValue });
     setCurrentValue(newValue);
     inputOnChange?.(event);
     onChange?.(event, { type: 'change', event, color: newColor });

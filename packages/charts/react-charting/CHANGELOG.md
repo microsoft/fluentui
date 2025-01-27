@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 21 Jan 2025 07:13:50 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jan 2025 07:20:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.47)
+
+Mon, 27 Jan 2025 07:20:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.46..@fluentui/react-charting_v5.23.47)
+
+### Patches
+
+- Fix Duplicate keys warning ([PR #33722](https://github.com/microsoft/fluentui/pull/33722) by 74965306+Anush2303@users.noreply.github.com)
+- fix: ensure text elements use the correct font-family in SVG export ([PR #33719](https://github.com/microsoft/fluentui/pull/33719) by 110246001+krkshitij@users.noreply.github.com)
+
+## [5.23.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.46)
+
+Fri, 24 Jan 2025 07:20:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.45..@fluentui/react-charting_v5.23.46)
+
+### Patches
+
+- Centre align gauge chart ([PR #33710](https://github.com/microsoft/fluentui/pull/33710) by 74965306+Anush2303@users.noreply.github.com)
+
+## [5.23.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.45)
+
+Thu, 23 Jan 2025 07:21:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.44..@fluentui/react-charting_v5.23.45)
+
+### Patches
+
+- Support for dashed and dotted line in Declarative chart ([PR #33694](https://github.com/microsoft/fluentui/pull/33694) by 74965306+Anush2303@users.noreply.github.com)
+- Heatmap text color based on contrast ratio ([PR #33659](https://github.com/microsoft/fluentui/pull/33659) by 74965306+Anush2303@users.noreply.github.com)
+
+## [5.23.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.44)
+
+Wed, 22 Jan 2025 07:21:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.43..@fluentui/react-charting_v5.23.44)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.197 ([PR #33685](https://github.com/microsoft/fluentui/pull/33685) by beachball)
+- Bump @fluentui/react to v8.122.8 ([PR #33685](https://github.com/microsoft/fluentui/pull/33685) by beachball)
 
 ## [5.23.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.43)
 
