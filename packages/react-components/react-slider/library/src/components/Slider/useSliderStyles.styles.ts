@@ -11,6 +11,9 @@ export const sliderClassNames: SlotClassNames<SliderSlots> = {
   input: 'fui-Slider__input',
 };
 
+// Internal CSS variables
+const thumbPositionVar = `--fui-Slider__thumb--position`;
+
 export const sliderCSSVars = {
   sliderDirectionVar: `--fui-Slider--direction`,
   sliderInnerThumbRadiusVar: `--fui-Slider__inner-thumb--radius`,
@@ -21,7 +24,6 @@ export const sliderCSSVars = {
   sliderStepsPercentVar: `--fui-Slider--steps-percent`,
   sliderThumbColorVar: `--fui-Slider__thumb--color`,
   sliderThumbSizeVar: `--fui-Slider__thumb--size`,
-  sliderThumbPositionVar: `--fui-Slider__thumb--position`,
 };
 
 const {
@@ -34,7 +36,6 @@ const {
   sliderStepsPercentVar,
   sliderThumbColorVar,
   sliderThumbSizeVar,
-  sliderThumbPositionVar,
 } = sliderCSSVars;
 
 /**
@@ -198,7 +199,7 @@ const useThumbStyles = makeStyles({
     // Ensure the thumb stays within the track boundaries.
     // When the value is at 0% or 100%, the distance from the track edge
     // to the thumb center equals the inner thumb radius.
-    [`${sliderThumbPositionVar}`]: `clamp(var(${sliderInnerThumbRadiusVar}), var(${sliderProgressVar}), calc(100% - var(${sliderInnerThumbRadiusVar})))`,
+    [`${thumbPositionVar}`]: `clamp(var(${sliderInnerThumbRadiusVar}), var(${sliderProgressVar}), calc(100% - var(${sliderInnerThumbRadiusVar})))`,
     gridRowStart: '2',
     gridRowEnd: '2',
     gridColumnStart: '2',
@@ -231,11 +232,11 @@ const useThumbStyles = makeStyles({
   },
   horizontal: {
     transform: 'translateX(-50%)',
-    left: `var(${sliderThumbPositionVar})`,
+    left: `var(${thumbPositionVar})`,
   },
   vertical: {
     transform: 'translateY(50%)',
-    bottom: `var(${sliderThumbPositionVar})`,
+    bottom: `var(${thumbPositionVar})`,
   },
 });
 
