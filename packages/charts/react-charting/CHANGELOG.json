@@ -2,6 +2,179 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 27 Jan 2025 07:20:35 GMT",
+      "tag": "@fluentui/react-charting_v5.23.47",
+      "version": "5.23.47",
+      "comments": {
+        "patch": [
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ab504b182ef3b6c7594fce9aa91948dac8332dd5",
+            "comment": "Fix Duplicate keys warning"
+          },
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "57165f4aa96f1417347275e52262f6de755225d5",
+            "comment": "fix: ensure text elements use the correct font-family in SVG export"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jan 2025 07:20:37 GMT",
+      "tag": "@fluentui/react-charting_v5.23.46",
+      "version": "5.23.46",
+      "comments": {
+        "patch": [
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0cca67396f110239e39d8cc5de96c9b128ca07de",
+            "comment": "Centre align gauge chart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jan 2025 07:21:31 GMT",
+      "tag": "@fluentui/react-charting_v5.23.45",
+      "version": "5.23.45",
+      "comments": {
+        "patch": [
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "82ef8b9000a1223756a4253aacde35fe4eaea401",
+            "comment": "Support for dashed and dotted line in Declarative chart"
+          },
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "af631b94cfaa3e9a9d79160236a7f0679240777b",
+            "comment": "Heatmap text color based on contrast ratio"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jan 2025 07:21:49 GMT",
+      "tag": "@fluentui/react-charting_v5.23.44",
+      "version": "5.23.44",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.197",
+            "commit": "012298d98651800023aac24c591831e9bc51bea2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.122.8",
+            "commit": "012298d98651800023aac24c591831e9bc51bea2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jan 2025 07:13:50 GMT",
+      "tag": "@fluentui/react-charting_v5.23.43",
+      "version": "5.23.43",
+      "comments": {
+        "patch": [
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "08575f8e7d2362e9b986bccee516546f88fe562a",
+            "comment": "fix: resolve overlapping bars issue in histogram"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b929a867df391be107630afe2de281c5d06594e7",
+            "comment": "Adding fallback and fixes for test app crashes for 12 schema data "
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b929a867df391be107630afe2de281c5d06594e7",
+            "comment": "Use strongly typed interfaces for plotly schema"
+          },
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b929a867df391be107630afe2de281c5d06594e7",
+            "comment": "fix: resolve bugs in declarative chart"
+          },
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b929a867df391be107630afe2de281c5d06594e7",
+            "comment": "StronglyType plotly schema bug fix"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Jan 2025 07:21:43 GMT",
+      "tag": "@fluentui/react-charting_v5.23.42",
+      "version": "5.23.42",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "556fc8e7b9a921cedbb07c2f0670dfabcf8ec0ed",
+            "comment": "Support tozeroy mode for Area Charts"
+          },
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "dc365b11fcca7eb0077460510eb78d93d3315ecd",
+            "comment": "Declarative chart bug fixes"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "fd420e1e0b66e04c8a423cff3eea6d21d9434d2d",
+            "comment": "chore: migrate from deprecation plugin to ts-eslint/no-deprecated rule"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2025 07:21:32 GMT",
+      "tag": "@fluentui/react-charting_v5.23.41",
+      "version": "5.23.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c26be3e3a85258c61111cf2dd5c19798d3a4e936",
+            "comment": "Make Dark mode text visible"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.196",
+            "commit": "baf887d95f91874c814a7cae749c20e797f828be"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.122.7",
+            "commit": "baf887d95f91874c814a7cae749c20e797f828be"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jan 2025 07:21:22 GMT",
       "tag": "@fluentui/react-charting_v5.23.40",
       "version": "5.23.40",

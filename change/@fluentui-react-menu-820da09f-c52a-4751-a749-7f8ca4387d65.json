@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: MenuItem is only focused when mouse cursor is moved",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

@@ -24,12 +24,7 @@ export const Basic = (context: any) => {
   ];
   const colors = ['#e81123', '#0078d4', '#107c10'];
   return (
-    <PieChart
-      culture={window.navigator.language}
-      data={points}
-      chartTitle="Pie Chart basic example"
-      colors={colors}
-    />
+    <PieChart culture="en-US" data={points} chartTitle="Pie Chart basic example" colors={colors} />
   );
 };
 

@@ -1,0 +1,55 @@
+{
+  "name": "@fluentui/chart-web-components",
+  "entries": [
+    {
+      "date": "Fri, 17 Jan 2025 04:07:40 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.0",
+      "version": "0.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "408fe44060b746844a9c76c67391b18d76d1f26e",
+            "comment": "chore: sync failed release pipeline with git"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.77",
+            "commit": "24bd1b2e8063db6c121ee02425db564fbb762f5a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Jan 2025 14:42:14 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.0-alpha.2",
+      "version": "0.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "5964b11d0ac272f2ae10e1081b8f0d1e17497eef",
+            "comment": "Create chart web components. Includes donut chart and horizontal bar chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/tokens to v1.0.0-alpha.21",
+            "commit": "8cf401d626def27ad679f9e53928533df9f9ef52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.76",
+            "commit": "8cf401d626def27ad679f9e53928533df9f9ef52"
+          }
+        ]
+      }
+    }
+  ]
+}

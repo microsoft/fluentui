@@ -20,6 +20,7 @@ export { ExpandIcon } from './TreeExpandIcon.stories';
 export { IconBeforeAndAfter } from './TreeIconBeforeAndAfter.stories';
 export { Aside } from './TreeAside.stories';
 export { Actions } from './TreeActions.stories';
+export { NavigationModeTreeGrid } from './TreeNavigationModeTreeGrid.stories';
 
 // FUNCTIONAL EXAMPLES
 export { DefaultOpen } from './TreeDefaultOpen.stories';

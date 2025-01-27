@@ -441,8 +441,9 @@ export class VerticalStackedBarChartBase
             x2={x2}
             y2={y2}
             opacity={shouldHighlight ? 1 : 0.1}
-            strokeWidth={3}
-            strokeLinecap="round"
+            strokeWidth={lineObject[item][0].lineOptions?.strokeWidth ?? 3}
+            strokeLinecap={lineObject[item][0].lineOptions?.strokeLinecap ?? 'round'}
+            strokeDasharray={lineObject[item][0].lineOptions?.strokeDasharray}
             stroke={lineObject[item][i].color}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             {...(this._isLegendHighlighted(item) && {
@@ -524,7 +525,7 @@ export class VerticalStackedBarChartBase
     this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
     const { theme } = this.props;
     const { palette } = theme!;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     this._xAxisType = getTypeOfAxis(this.props.data[0].xAxisPoint, true) as XAxisTypes;
     this._lineObject = this._getFormattedLineData(this.props.data);
@@ -1254,7 +1255,7 @@ export class VerticalStackedBarChartBase
     return !(
       this.props.data &&
       this.props.data.length > 0 &&
-      this.props.data.filter(item => item.chartData.length === 0).length === 0
+      this.props.data.some(item => item.chartData.length > 0 || (item.lineData && item.lineData.length > 0))
     );
   }
 

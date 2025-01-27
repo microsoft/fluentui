@@ -45,6 +45,10 @@ const DropIn = createMotionComponent({
   ],
   duration: 4000,
   iterations: Infinity,
+
+  reducedMotion: {
+    iterations: 1,
+  },
 });
 
 export const CreateMotionComponentFactory = () => {

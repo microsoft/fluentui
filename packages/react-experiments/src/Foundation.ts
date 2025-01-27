@@ -1,5 +1,5 @@
 export {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ThemeProvider,
   createComponent,
   createFactory,
@@ -22,7 +22,7 @@ export type {
   IHTMLElementSlot,
   IHTMLSlot,
   IProcessedSlotProps,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   IPropsWithChildren,
   ISlot,
   ISlotCreator,
