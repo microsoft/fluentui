@@ -70,7 +70,7 @@ export const useCarouselNavButton_unstable = (
 
   useIsomorphicLayoutEffect(() => {
     return subscribeForValues(data => {
-      if (index < 0 || index >= data.groupIndexList.length) {
+      if (index < 0 || index >= data.groupIndexList.length || data.groupIndexList[index] === undefined) {
         return;
       }
       const controlList = data.groupIndexList[index];
