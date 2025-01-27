@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 24 Jan 2025 07:20:37 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jan 2025 07:20:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.47)
+
+Mon, 27 Jan 2025 07:20:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.46..@fluentui/react-charting_v5.23.47)
+
+### Patches
+
+- Fix Duplicate keys warning ([PR #33722](https://github.com/microsoft/fluentui/pull/33722) by 74965306+Anush2303@users.noreply.github.com)
+- fix: ensure text elements use the correct font-family in SVG export ([PR #33719](https://github.com/microsoft/fluentui/pull/33719) by 110246001+krkshitij@users.noreply.github.com)
 
 ## [5.23.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.46)
 
