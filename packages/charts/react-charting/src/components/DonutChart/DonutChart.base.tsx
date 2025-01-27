@@ -137,37 +137,39 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
         onMouseLeave={this._handleChartMouseLeave}
       >
-        <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.all}>
-          <div>
-            <svg
-              className={this._classNames.chart}
-              aria-label={data?.chartTitle}
-              ref={(node: SVGElement | null) => this._setViewBox(node)}
-            >
-              <Pie
-                width={this.state._width!}
-                height={this.state._height!}
-                outerRadius={outerRadius}
-                innerRadius={this.props.innerRadius!}
-                data={chartData!}
-                enableGradient={this.props.enableGradient}
-                roundCorners={this.props.roundCorners}
-                onFocusCallback={this._focusCallback}
-                hoverOnCallback={this._hoverCallback}
-                hoverLeaveCallback={this._hoverLeave}
-                uniqText={this._uniqText}
-                onBlurCallback={this._onBlur}
-                activeArc={this._getHighlightedLegend()}
-                focusedArcId={this.state.focusedArcId || ''}
-                href={this.props.href!}
-                calloutId={this._calloutId}
-                valueInsideDonut={this._toLocaleString(valueInsideDonut)}
-                theme={this.props.theme!}
-                showLabelsInPercent={this.props.showLabelsInPercent}
-                hideLabels={this.props.hideLabels}
-              />
-            </svg>
-          </div>
+        <FocusZone
+          direction={FocusZoneDirection.horizontal}
+          handleTabKey={FocusZoneTabbableElements.all}
+          className="chartWrapper"
+        >
+          <svg
+            className={this._classNames.chart}
+            aria-label={data?.chartTitle}
+            ref={(node: SVGElement | null) => this._setViewBox(node)}
+          >
+            <Pie
+              width={this.state._width!}
+              height={this.state._height!}
+              outerRadius={outerRadius}
+              innerRadius={this.props.innerRadius!}
+              data={chartData!}
+              enableGradient={this.props.enableGradient}
+              roundCorners={this.props.roundCorners}
+              onFocusCallback={this._focusCallback}
+              hoverOnCallback={this._hoverCallback}
+              hoverLeaveCallback={this._hoverLeave}
+              uniqText={this._uniqText}
+              onBlurCallback={this._onBlur}
+              activeArc={this._getHighlightedLegend()}
+              focusedArcId={this.state.focusedArcId || ''}
+              href={this.props.href!}
+              calloutId={this._calloutId}
+              valueInsideDonut={this._toLocaleString(valueInsideDonut)}
+              theme={this.props.theme!}
+              showLabelsInPercent={this.props.showLabelsInPercent}
+              hideLabels={this.props.hideLabels}
+            />
+          </svg>
         </FocusZone>
         <Callout
           target={this._currentHoverElement}

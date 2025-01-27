@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { IStyle } from '@fluentui/react/lib/Styling';
 
+export interface IResponsiveChildProps {
+  width?: number;
+  height?: number;
+  shouldResize?: number;
+}
+
 export interface IResponsiveContainerProps {
   /**
    *
@@ -20,12 +26,9 @@ export interface IResponsiveContainerProps {
   /**
    *
    */
-  children: React.ReactElement<{ width?: number; height?: number }>;
+  children: React.ReactElement<IResponsiveChildProps>;
 }
 
 export interface IResponsiveContainerStyles {
-  /**
-   *
-   */
   root: IStyle;
 }

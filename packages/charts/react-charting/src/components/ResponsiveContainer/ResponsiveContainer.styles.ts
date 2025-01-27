@@ -6,7 +6,7 @@ export const getStyles = (): IResponsiveContainerStyles => {
       width: '100%',
       height: '100%',
 
-      '& [class^="chartWrapper-"]': {
+      '& [class^="chartWrapper"]': {
         width: '100%', // optional
         // To prevent chart height from collapsing while resizing
         height: '100%', // optional

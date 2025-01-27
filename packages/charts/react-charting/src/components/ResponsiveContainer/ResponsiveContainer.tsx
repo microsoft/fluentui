@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { classNamesFunction, getWindow } from '@fluentui/react';
-import { IResponsiveContainerProps, IResponsiveContainerStyles } from './ResponsiveContainer.types';
+import {
+  IResponsiveChildProps,
+  IResponsiveContainerProps,
+  IResponsiveContainerStyles,
+} from './ResponsiveContainer.types';
 import { getStyles } from './ResponsiveContainer.styles';
 
 const getClassNames = classNamesFunction<{}, IResponsiveContainerStyles>();
@@ -55,9 +59,10 @@ export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props =>
 
   return (
     <div ref={containerRef} className={classNames.root} style={{ width: props.width, height: props.height }}>
-      {React.cloneElement(props.children, {
+      {React.cloneElement<IResponsiveChildProps>(props.children, {
         width: size.containerWidth,
         height: size.containerHeight,
+        shouldResize: (size.containerWidth ?? 0) + (size.containerHeight ?? 0),
       })}
     </div>
   );
