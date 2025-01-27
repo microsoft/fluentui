@@ -333,6 +333,26 @@ describe('prepareDatapoints', () => {
     const result = utils.prepareDatapoints(-1, -5, 1, false);
     matchResult(result);
   });
+
+  it('should return an array with rounded data points when roundedTicks is true and yMinValue is 0', () => {
+    const result = utils.prepareDatapoints(100, 0, 3, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points when roundedTicks is true and yMinValue is positive', () => {
+    const result = utils.prepareDatapoints(100, 50, 4, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points when roundedTicks is true and yMinValue is negative', () => {
+    const result = utils.prepareDatapoints(100, -100, 4, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points when roundedTicks is true and yMaxValue is negative', () => {
+    const result = utils.prepareDatapoints(-100, -200, 4, true, true);
+    matchResult(result);
+  });
 });
 
 const createYAxisParams = (yAxisParams?: Partial<utils.IYAxisParams>): utils.IYAxisParams => {
