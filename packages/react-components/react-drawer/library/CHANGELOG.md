@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Wed, 22 Jan 2025 14:00:21 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jan 2025 20:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.6.9)
+
+Mon, 27 Jan 2025 20:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.6.8..@fluentui/react-drawer_v9.6.9)
+
+### Patches
+
+- fix: remove forced synchronous layout in Drawer ([PR #33665](https://github.com/microsoft/fluentui/pull/33665) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-dialog to v9.11.29 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
 
 ## [9.6.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.6.8)
 

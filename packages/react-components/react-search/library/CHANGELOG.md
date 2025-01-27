@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-search
 
-This log was last generated on Wed, 22 Jan 2025 14:00:21 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jan 2025 20:27:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.29)
+
+Mon, 27 Jan 2025 20:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.0.28..@fluentui/react-search_v9.0.29)
+
+### Patches
+
+- Bump @fluentui/react-input to v9.4.99 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
 
 ## [9.0.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.28)
 

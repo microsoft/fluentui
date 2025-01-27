@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Wed, 22 Jan 2025 14:00:11 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jan 2025 20:27:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.9.1)
+
+Mon, 27 Jan 2025 20:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.9.0..@fluentui/react-tree_v9.9.1)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.50 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.47 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
+- Bump @fluentui/react-radio to v9.2.42 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
 
 ## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.9.0)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: export \"PositioningBoundary\" & \"PositioningRect\" types",
-  "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

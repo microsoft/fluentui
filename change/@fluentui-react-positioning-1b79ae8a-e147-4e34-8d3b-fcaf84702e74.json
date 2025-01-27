@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: allow to configure boundaries with \"PositioningRect\"",
-  "packageName": "@fluentui/react-positioning",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-nav-preview",
   "entries": [
     {
+      "date": "Mon, 27 Jan 2025 20:27:35 GMT",
+      "tag": "@fluentui/react-nav-preview_v0.11.1",
+      "version": "0.11.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-tooltip to v9.5.5",
+            "commit": "808cd501d50a317249d3d02f01ea3dd88114b252"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-drawer to v9.6.9",
+            "commit": "808cd501d50a317249d3d02f01ea3dd88114b252"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2025 14:00:20 GMT",
       "tag": "@fluentui/react-nav-preview_v0.11.0",
       "version": "0.11.0",

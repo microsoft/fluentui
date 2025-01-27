@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Wed, 22 Jan 2025 14:00:21 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jan 2025 20:27:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.2.16)
+
+Mon, 27 Jan 2025 20:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.2.15..@fluentui/react-toolbar_v9.2.16)
+
+### Patches
+
+- Bump @fluentui/react-radio to v9.2.42 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
 
 ## [9.2.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.2.15)
 

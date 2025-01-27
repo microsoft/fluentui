@@ -2,6 +2,53 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 27 Jan 2025 20:27:33 GMT",
+      "tag": "@fluentui/react-components_v9.58.1",
+      "version": "9.58.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "d8e6230e7e0b504a9651d10b15860ccaf0a87824",
+            "comment": "fix: default state for ColorSliders"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "808cd501d50a317249d3d02f01ea3dd88114b252",
+            "comment": "feat: export \"PositioningBoundary\" & \"PositioningRect\" types"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "d9e58109843ce340b96de6b8fefa12c5daf66443",
+            "comment": "fix: remove forced synchronous layout in Drawer"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "87d6ba3bd577a8be9756f4d392b048083d8ef16a",
+            "comment": "fix: MenuItem is only focused when mouse cursor is moved"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "808cd501d50a317249d3d02f01ea3dd88114b252",
+            "comment": "feat: allow to configure boundaries with \"PositioningRect\""
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "1466381afda4e941e87afa3d1ff61200022e8fac",
+            "comment": "feat: Add `subText` slot to enable multiline menu layout"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2025 14:00:07 GMT",
       "tag": "@fluentui/react-components_v9.58.0",
       "version": "9.58.0",
