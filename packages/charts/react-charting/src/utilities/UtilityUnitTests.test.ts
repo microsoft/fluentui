@@ -345,12 +345,22 @@ describe('prepareDatapoints', () => {
   });
 
   it('should return an array with rounded data points when roundedTicks is true and yMinValue is negative', () => {
-    const result = utils.prepareDatapoints(100, -100, 4, true, true);
+    const result = utils.prepareDatapoints(100, -100, 4, false, true);
     matchResult(result);
   });
 
   it('should return an array with rounded data points when roundedTicks is true and yMaxValue is negative', () => {
     const result = utils.prepareDatapoints(-100, -200, 4, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points with non-integral dataset', () => {
+    const result = utils.prepareDatapoints(12.8, -8.4, 4, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points with large numbers in dataset', () => {
+    const result = utils.prepareDatapoints(1000000, -1000000, 4, true, true);
     matchResult(result);
   });
 });

@@ -3842,6 +3842,27 @@ Array [
 ]
 `;
 
+exports[`prepareDatapoints should return an array with rounded data points with large numbers in dataset 1`] = `
+Array [
+  -1000000,
+  -500000,
+  0,
+  500000,
+  1000000,
+]
+`;
+
+exports[`prepareDatapoints should return an array with rounded data points with non-integral dataset 1`] = `
+Array [
+  -10,
+  -5,
+  0,
+  5,
+  10,
+  15,
+]
+`;
+
 exports[`prepareDatapoints should return data points for a negative only range 1`] = `
 Array [
   -5,
