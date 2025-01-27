@@ -18,7 +18,8 @@ import type {
 import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
 import { Radio, RadioProps } from '@fluentui/react-radio';
 import { TreeItemChevron } from '../TreeItemChevron';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup, useIsNavigatingWithKeyboard } from '@fluentui/react-tabster';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
  * Create the state required to render TreeItemLayout.
@@ -88,6 +89,9 @@ export const useTreeItemLayout_unstable = (
     [subtreeRef, setIsActionsVisible, onActionVisibilityChange],
   );
 
+  const { targetDocument } = useFluent();
+  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
+
   const setActionsInvisibleIfNotFromSubtree = React.useCallback(
     (event: FocusEvent | MouseEvent) => {
       const isRelatedTargetFromActions = () =>
@@ -108,6 +112,17 @@ export const useTreeItemLayout_unstable = (
         return;
       }
       if (isTargetFromActions() && isRelatedTargetFromTreeItem()) {
+        return;
+      }
+      // when a mouseout event happens during keyboard interaction
+      // we should not hide the actions if the activeElement is the treeitem or an action
+      // as the focus on the treeitem takes precedence over the mouseout event
+      if (
+        event.type === 'mouseout' &&
+        isNavigatingWithKeyboard() &&
+        (targetDocument?.activeElement === treeItemRef.current ||
+          elementContains(actionsRefInternal.current, targetDocument?.activeElement as Node))
+      ) {
         return;
       }
       onActionVisibilityChange?.(event, {
