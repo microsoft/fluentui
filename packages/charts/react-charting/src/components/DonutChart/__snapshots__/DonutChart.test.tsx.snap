@@ -21,6 +21,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -30,104 +31,102 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
-    <div>
-      <svg
-        aria-label="Donut chart example"
-        className=
+    <svg
+      aria-label="Donut chart example"
+      className=
 
-            {
-              alignment-adjust: center;
-              box-sizing: content-box;
-              display: block;
-              height: -40px;
-              overflow: visible;
-              width: 0px;
-            }
+          {
+            alignment-adjust: center;
+            box-sizing: content-box;
+            display: block;
+            height: -40px;
+            overflow: visible;
+            width: 0px;
+          }
+    >
+      <g
+        transform="translate(0, -20)"
       >
-        <g
-          transform="translate(0, -20)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              className=
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            className=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
-              data-is-focusable={true}
-              id="_Pie_1first20000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
-              data-is-focusable={true}
-              id="_Pie_1second39000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
-              data-is-focusable={true}
-              id="_Pie_1third45000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
+                {
+                  cursor: default;
+                  fill: #E5E5E5;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
+            data-is-focusable={true}
+            id="_Pie_1first20000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
         </g>
-      </svg>
-    </div>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #0078D4;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
+            data-is-focusable={true}
+            id="_Pie_1second39000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #DADADA;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
+            data-is-focusable={true}
+            id="_Pie_1third45000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+      </g>
+    </svg>
   </div>
   <div
     className=
@@ -710,6 +709,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -719,104 +719,102 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
-    <div>
-      <svg
-        aria-label="Donut chart example"
-        className=
+    <svg
+      aria-label="Donut chart example"
+      className=
 
-            {
-              alignment-adjust: center;
-              box-sizing: content-box;
-              display: block;
-              height: -40px;
-              overflow: visible;
-              width: 0px;
-            }
+          {
+            alignment-adjust: center;
+            box-sizing: content-box;
+            display: block;
+            height: -40px;
+            overflow: visible;
+            width: 0px;
+          }
+    >
+      <g
+        transform="translate(0, -20)"
       >
-        <g
-          transform="translate(0, -20)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              className=
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            className=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
-              data-is-focusable={true}
-              id="_Pie_1first20000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
-              data-is-focusable={true}
-              id="_Pie_1second39000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
-              data-is-focusable={true}
-              id="_Pie_1third45000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
+                {
+                  cursor: default;
+                  fill: #E5E5E5;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
+            data-is-focusable={true}
+            id="_Pie_1first20000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
         </g>
-      </svg>
-    </div>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #0078D4;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
+            data-is-focusable={true}
+            id="_Pie_1second39000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #DADADA;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
+            data-is-focusable={true}
+            id="_Pie_1third45000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+      </g>
+    </svg>
   </div>
   <div
     className=
@@ -1308,6 +1306,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -1317,105 +1316,103 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
-    <div>
-      <svg
-        aria-label="Donut chart example"
-        className=
+    <svg
+      aria-label="Donut chart example"
+      className=
 
-            {
-              alignment-adjust: center;
-              box-sizing: content-box;
-              display: block;
-              height: 200px;
-              overflow: visible;
-              width: 200px;
-            }
+          {
+            alignment-adjust: center;
+            box-sizing: content-box;
+            display: block;
+            height: 200px;
+            overflow: visible;
+            width: 200px;
+          }
+    >
+      <g
+        transform="translate(100, 100)"
       >
-        <g
-          transform="translate(100, 100)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              className=
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            className=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1first20000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1second39000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1third45000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          
+                {
+                  cursor: default;
+                  fill: #E5E5E5;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1first20000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
         </g>
-      </svg>
-    </div>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #0078D4;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1second39000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #DADADA;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1third45000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        
+      </g>
+    </svg>
   </div>
   <span
     className="ms-layer"
@@ -1827,6 +1824,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -1836,153 +1834,151 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
-    <div>
-      <svg
-        aria-label="Donut chart example"
-        className=
+    <svg
+      aria-label="Donut chart example"
+      className=
 
-            {
-              alignment-adjust: center;
-              box-sizing: content-box;
-              display: block;
-              height: 200px;
-              overflow: visible;
-              width: 200px;
-            }
+          {
+            alignment-adjust: center;
+            box-sizing: content-box;
+            display: block;
+            height: 200px;
+            overflow: visible;
+            width: 200px;
+          }
+    >
+      <g
+        transform="translate(100, 100)"
       >
-        <g
-          transform="translate(100, 100)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              className=
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            className=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1first20000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-            <text
-              aria-hidden={true}
-              className=
+                {
+                  cursor: default;
+                  fill: #E5E5E5;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1first20000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+          <text
+            aria-hidden={true}
+            className=
 
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              dominantBaseline="auto"
-              textAnchor="start"
-              x={35.43557344375781}
-              y={-50.87553571916512}
-            >
-              20.0k
-            </text>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1second39000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-            <text
-              aria-hidden={true}
-              className=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              dominantBaseline="hanging"
-              textAnchor="start"
-              x={42.16983494620299}
-              y={45.45002772947447}
-            >
-              39.0k
-            </text>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1third45000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-            <text
-              aria-hidden={true}
-              className=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              dominantBaseline="auto"
-              textAnchor="end"
-              x={-60.58001193073337}
-              y={-13.19326170710649}
-            >
-              45.0k
-            </text>
-          </g>
-          
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            dominantBaseline="auto"
+            textAnchor="start"
+            x={35.43557344375781}
+            y={-50.87553571916512}
+          >
+            20.0k
+          </text>
         </g>
-      </svg>
-    </div>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #0078D4;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1second39000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            dominantBaseline="hanging"
+            textAnchor="start"
+            x={42.16983494620299}
+            y={45.45002772947447}
+          >
+            39.0k
+          </text>
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #DADADA;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1third45000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            dominantBaseline="auto"
+            textAnchor="end"
+            x={-60.58001193073337}
+            y={-13.19326170710649}
+          >
+            45.0k
+          </text>
+        </g>
+        
+      </g>
+    </svg>
   </div>
   <span
     className="ms-layer"
@@ -2394,6 +2390,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -2403,153 +2400,151 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
-    <div>
-      <svg
-        aria-label="Donut chart example"
-        className=
+    <svg
+      aria-label="Donut chart example"
+      className=
 
-            {
-              alignment-adjust: center;
-              box-sizing: content-box;
-              display: block;
-              height: 200px;
-              overflow: visible;
-              width: 200px;
-            }
+          {
+            alignment-adjust: center;
+            box-sizing: content-box;
+            display: block;
+            height: 200px;
+            overflow: visible;
+            width: 200px;
+          }
+    >
+      <g
+        transform="translate(100, 100)"
       >
-        <g
-          transform="translate(100, 100)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              className=
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            className=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1first20000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-            <text
-              aria-hidden={true}
-              className=
+                {
+                  cursor: default;
+                  fill: #E5E5E5;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1first20000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+          <text
+            aria-hidden={true}
+            className=
 
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              dominantBaseline="auto"
-              textAnchor="start"
-              x={35.43557344375781}
-              y={-50.87553571916512}
-            >
-              19%
-            </text>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1second39000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-            <text
-              aria-hidden={true}
-              className=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              dominantBaseline="hanging"
-              textAnchor="start"
-              x={42.16983494620299}
-              y={45.45002772947447}
-            >
-              38%
-            </text>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1third45000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-            <text
-              aria-hidden={true}
-              className=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              dominantBaseline="auto"
-              textAnchor="end"
-              x={-60.58001193073337}
-              y={-13.19326170710649}
-            >
-              43%
-            </text>
-          </g>
-          
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            dominantBaseline="auto"
+            textAnchor="start"
+            x={35.43557344375781}
+            y={-50.87553571916512}
+          >
+            19%
+          </text>
         </g>
-      </svg>
-    </div>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #0078D4;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1second39000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            dominantBaseline="hanging"
+            textAnchor="start"
+            x={42.16983494620299}
+            y={45.45002772947447}
+          >
+            38%
+          </text>
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #DADADA;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1third45000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            dominantBaseline="auto"
+            textAnchor="end"
+            x={-60.58001193073337}
+            y={-13.19326170710649}
+          >
+            43%
+          </text>
+        </g>
+        
+      </g>
+    </svg>
   </div>
   <span
     className="ms-layer"
@@ -2961,6 +2956,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -2970,192 +2966,190 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
-    <div>
-      <svg
-        aria-label="Donut chart example"
-        className=
+    <svg
+      aria-label="Donut chart example"
+      className=
 
-            {
-              alignment-adjust: center;
-              box-sizing: content-box;
-              display: block;
-              height: 200px;
-              overflow: visible;
-              width: 200px;
-            }
+          {
+            alignment-adjust: center;
+            box-sizing: content-box;
+            display: block;
+            height: 200px;
+            overflow: visible;
+            width: 200px;
+          }
+    >
+      <g
+        transform="translate(100, 100)"
       >
-        <g
-          transform="translate(100, 100)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              className=
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            className=
 
-                  {
-                    cursor: default;
-                    fill: transparent;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
+                {
+                  cursor: default;
+                  fill: transparent;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1first20000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+          <clipPath
+            id="Arc_clip4#4760D5_#637CEF"
+          >
+            <path
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1first20000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
             />
-            <clipPath
-              id="Arc_clip4#4760D5_#637CEF"
-            >
-              <path
-                d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
-              />
-            </clipPath>
-            <foreignObject
-              clipPath="url(#Arc_clip4#4760D5_#637CEF)"
-              height="100%"
-              width="100%"
-              x="-50%"
-              y="-50%"
-            >
-              <div
-                className=
-
-                    {
-                      background: conic-gradient(
-                              from 0rad,
-                              #4760D5,
-                              #637CEF 1.2167664052268437rad
-                            );
-                      height: 100%;
-                      opacity: 1;
-                      width: 100%;
-                    }
-              />
-            </foreignObject>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
+          </clipPath>
+          <foreignObject
+            clipPath="url(#Arc_clip4#4760D5_#637CEF)"
+            height="100%"
+            width="100%"
+            x="-50%"
+            y="-50%"
+          >
+            <div
               className=
 
                   {
-                    cursor: default;
-                    fill: transparent;
+                    background: conic-gradient(
+                            from 0rad,
+                            #4760D5,
+                            #637CEF 1.2167664052268437rad
+                          );
+                    height: 100%;
                     opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
+                    width: 100%;
                   }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1second39000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
             />
-            <clipPath
-              id="Arc_clip5#795AA6_#9373C0"
-            >
-              <path
-                d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
-              />
-            </clipPath>
-            <foreignObject
-              clipPath="url(#Arc_clip5#795AA6_#9373C0)"
-              height="100%"
-              width="100%"
-              x="-50%"
-              y="-50%"
-            >
-              <div
-                className=
-
-                    {
-                      background: conic-gradient(
-                              from 1.2167664052268437rad,
-                              #795AA6,
-                              #9373C0 2.3536944901923453rad
-                            );
-                      height: 100%;
-                      opacity: 1;
-                      width: 100%;
-                    }
-              />
-            </foreignObject>
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: transparent;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1third45000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-            <clipPath
-              id="Arc_clip6#159195_#2AA0A4"
-            >
-              <path
-                d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
-              />
-            </clipPath>
-            <foreignObject
-              clipPath="url(#Arc_clip6#159195_#2AA0A4)"
-              height="100%"
-              width="100%"
-              x="-50%"
-              y="-50%"
-            >
-              <div
-                className=
-
-                    {
-                      background: conic-gradient(
-                              from 3.5704608954191888rad,
-                              #159195,
-                              #2AA0A4 2.7127244117603975rad
-                            );
-                      height: 100%;
-                      opacity: 1;
-                      width: 100%;
-                    }
-              />
-            </foreignObject>
-          </g>
-          
+          </foreignObject>
         </g>
-      </svg>
-    </div>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: transparent;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1second39000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+          <clipPath
+            id="Arc_clip5#795AA6_#9373C0"
+          >
+            <path
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+            />
+          </clipPath>
+          <foreignObject
+            clipPath="url(#Arc_clip5#795AA6_#9373C0)"
+            height="100%"
+            width="100%"
+            x="-50%"
+            y="-50%"
+          >
+            <div
+              className=
+
+                  {
+                    background: conic-gradient(
+                            from 1.2167664052268437rad,
+                            #795AA6,
+                            #9373C0 2.3536944901923453rad
+                          );
+                    height: 100%;
+                    opacity: 1;
+                    width: 100%;
+                  }
+            />
+          </foreignObject>
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: transparent;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1third45000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+          <clipPath
+            id="Arc_clip6#159195_#2AA0A4"
+          >
+            <path
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+            />
+          </clipPath>
+          <foreignObject
+            clipPath="url(#Arc_clip6#159195_#2AA0A4)"
+            height="100%"
+            width="100%"
+            x="-50%"
+            y="-50%"
+          >
+            <div
+              className=
+
+                  {
+                    background: conic-gradient(
+                            from 3.5704608954191888rad,
+                            #159195,
+                            #2AA0A4 2.7127244117603975rad
+                          );
+                    height: 100%;
+                    opacity: 1;
+                    width: 100%;
+                  }
+            />
+          </foreignObject>
+        </g>
+        
+      </g>
+    </svg>
   </div>
   <span
     className="ms-layer"
@@ -3567,6 +3561,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -3576,105 +3571,103 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
-    <div>
-      <svg
-        aria-label="Donut chart example"
-        className=
+    <svg
+      aria-label="Donut chart example"
+      className=
 
-            {
-              alignment-adjust: center;
-              box-sizing: content-box;
-              display: block;
-              height: 200px;
-              overflow: visible;
-              width: 200px;
-            }
+          {
+            alignment-adjust: center;
+            box-sizing: content-box;
+            display: block;
+            height: 200px;
+            overflow: visible;
+            width: 200px;
+          }
+    >
+      <g
+        transform="translate(100, 100)"
       >
-        <g
-          transform="translate(100, 100)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              className=
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            className=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M0.97,-96.949A3,3,0,0,1,4.092,-99.916A100,100,0,0,1,92.301,-38.477A3,3,0,0,1,90.6,-34.52L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1first20000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M91.272,-32.701A3,3,0,0,1,95.138,-30.801A100,100,0,0,1,-37.828,92.569A3,3,0,0,1,-39.434,88.572L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1second39000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M-41.197,87.766A3,3,0,0,1,-45.271,89.166A100,100,0,0,1,-4.092,-99.916A3,3,0,0,1,-0.97,-96.949L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1third45000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          
+                {
+                  cursor: default;
+                  fill: #E5E5E5;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M0.97,-96.949A3,3,0,0,1,4.092,-99.916A100,100,0,0,1,92.301,-38.477A3,3,0,0,1,90.6,-34.52L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1first20000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
         </g>
-      </svg>
-    </div>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #0078D4;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M91.272,-32.701A3,3,0,0,1,95.138,-30.801A100,100,0,0,1,-37.828,92.569A3,3,0,0,1,-39.434,88.572L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1second39000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #DADADA;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M-41.197,87.766A3,3,0,0,1,-45.271,89.166A100,100,0,0,1,-4.092,-99.916A3,3,0,0,1,-0.97,-96.949L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1third45000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        
+      </g>
+    </svg>
   </div>
   <span
     className="ms-layer"
@@ -4086,6 +4079,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -4095,104 +4089,102 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
-    <div>
-      <svg
-        aria-label="Donut chart example"
-        className=
+    <svg
+      aria-label="Donut chart example"
+      className=
 
-            {
-              alignment-adjust: center;
-              box-sizing: content-box;
-              display: block;
-              height: 200px;
-              overflow: visible;
-              width: 200px;
-            }
+          {
+            alignment-adjust: center;
+            box-sizing: content-box;
+            display: block;
+            height: 200px;
+            overflow: visible;
+            width: 200px;
+          }
+    >
+      <g
+        transform="translate(100, 100)"
       >
-        <g
-          transform="translate(100, 100)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              className=
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            className=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
-              data-is-focusable={true}
-              id="_Pie_1first20000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
-              data-is-focusable={true}
-              id="_Pie_1second39000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
-              data-is-focusable={true}
-              id="_Pie_1third45000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
+                {
+                  cursor: default;
+                  fill: #E5E5E5;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
+            data-is-focusable={true}
+            id="_Pie_1first20000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
         </g>
-      </svg>
-    </div>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #0078D4;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
+            data-is-focusable={true}
+            id="_Pie_1second39000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #DADADA;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
+            data-is-focusable={true}
+            id="_Pie_1third45000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+      </g>
+    </svg>
   </div>
   <span
     className="ms-layer"
@@ -4604,6 +4596,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -4613,105 +4606,103 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
-    <div>
-      <svg
-        aria-label="Donut chart example"
-        className=
+    <svg
+      aria-label="Donut chart example"
+      className=
 
-            {
-              alignment-adjust: center;
-              box-sizing: content-box;
-              display: block;
-              height: 200px;
-              overflow: visible;
-              width: 200px;
-            }
+          {
+            alignment-adjust: center;
+            box-sizing: content-box;
+            display: block;
+            height: 200px;
+            overflow: visible;
+            width: 200px;
+          }
+    >
+      <g
+        transform="translate(100, 100)"
       >
-        <g
-          transform="translate(100, 100)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              className=
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            className=
 
-                  {
-                    cursor: default;
-                    fill: #637cef;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1first20000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #e3008c;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1second39000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #2aa0a4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1third45000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          
+                {
+                  cursor: default;
+                  fill: #637cef;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1first20000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
         </g>
-      </svg>
-    </div>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #e3008c;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1second39000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #2aa0a4;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1third45000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        
+      </g>
+    </svg>
   </div>
   <span
     className="ms-layer"
@@ -5123,6 +5114,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -5132,105 +5124,103 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
-    <div>
-      <svg
-        aria-label="Donut chart example"
-        className=
+    <svg
+      aria-label="Donut chart example"
+      className=
 
-            {
-              alignment-adjust: center;
-              box-sizing: content-box;
-              display: block;
-              height: 200px;
-              overflow: visible;
-              width: 200px;
-            }
+          {
+            alignment-adjust: center;
+            box-sizing: content-box;
+            display: block;
+            height: 200px;
+            overflow: visible;
+            width: 200px;
+          }
+    >
+      <g
+        transform="translate(100, 100)"
       >
-        <g
-          transform="translate(100, 100)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              className=
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            className=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1first20000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1second39000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1third45000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          
+                {
+                  cursor: default;
+                  fill: #E5E5E5;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1first20000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
         </g>
-      </svg>
-    </div>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #0078D4;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1second39000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #DADADA;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1third45000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        
+      </g>
+    </svg>
   </div>
   <span
     className="ms-layer"
@@ -5642,6 +5632,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -5651,105 +5642,103 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
-    <div>
-      <svg
-        aria-label="Donut chart example"
-        className=
+    <svg
+      aria-label="Donut chart example"
+      className=
 
-            {
-              alignment-adjust: center;
-              box-sizing: content-box;
-              display: block;
-              height: 200px;
-              overflow: visible;
-              width: 200px;
-            }
+          {
+            alignment-adjust: center;
+            box-sizing: content-box;
+            display: block;
+            height: 200px;
+            overflow: visible;
+            width: 200px;
+          }
+    >
+      <g
+        transform="translate(100, 100)"
       >
-        <g
-          transform="translate(100, 100)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              className=
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            className=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1first20000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1second39000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1third45000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          
+                {
+                  cursor: default;
+                  fill: #E5E5E5;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1first20000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
         </g>
-      </svg>
-    </div>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #0078D4;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1second39000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #DADADA;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1third45000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        
+      </g>
+    </svg>
   </div>
   <span
     className="ms-layer"
@@ -5778,6 +5767,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -5787,105 +5777,103 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
-    <div>
-      <svg
-        aria-label="Donut chart example"
-        className=
+    <svg
+      aria-label="Donut chart example"
+      className=
 
-            {
-              alignment-adjust: center;
-              box-sizing: content-box;
-              display: block;
-              height: 200px;
-              overflow: visible;
-              width: 200px;
-            }
+          {
+            alignment-adjust: center;
+            box-sizing: content-box;
+            display: block;
+            height: 200px;
+            overflow: visible;
+            width: 200px;
+          }
+    >
+      <g
+        transform="translate(100, 100)"
       >
-        <g
-          transform="translate(100, 100)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              className=
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            className=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1first20000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1second39000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1third45000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          
+                {
+                  cursor: default;
+                  fill: #E5E5E5;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1first20000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
         </g>
-      </svg>
-    </div>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #0078D4;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1second39000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #DADADA;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1third45000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        
+      </g>
+    </svg>
   </div>
   <span
     className="ms-layer"
@@ -6297,6 +6285,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -6306,105 +6295,103 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
-    <div>
-      <svg
-        aria-label="Donut chart example"
-        className=
+    <svg
+      aria-label="Donut chart example"
+      className=
 
-            {
-              alignment-adjust: center;
-              box-sizing: content-box;
-              display: block;
-              height: 200px;
-              overflow: visible;
-              width: 200px;
-            }
+          {
+            alignment-adjust: center;
+            box-sizing: content-box;
+            display: block;
+            height: 200px;
+            overflow: visible;
+            width: 200px;
+          }
+    >
+      <g
+        transform="translate(100, 100)"
       >
-        <g
-          transform="translate(100, 100)"
-        >
-          <g>
-            <path
-              aria-label="2020/04/30, 20000."
-              className=
+        <g>
+          <path
+            aria-label="2020/04/30, 20000."
+            className=
 
-                  {
-                    cursor: default;
-                    fill: #E5E5E5;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1first20000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/20, 39000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #0078D4;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1second39000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          <g>
-            <path
-              aria-label="2020/04/25, 45000."
-              className=
-
-                  {
-                    cursor: default;
-                    fill: #DADADA;
-                    opacity: 1;
-                    outline: transparent;
-                    stroke: #ffffff;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
-              data-is-focusable={true}
-              id="_Pie_1third45000"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            />
-          </g>
-          
+                {
+                  cursor: default;
+                  fill: #E5E5E5;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1first20000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
         </g>
-      </svg>
-    </div>
+        <g>
+          <path
+            aria-label="2020/04/20, 39000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #0078D4;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1second39000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        <g>
+          <path
+            aria-label="2020/04/25, 45000."
+            className=
+
+                {
+                  cursor: default;
+                  fill: #DADADA;
+                  opacity: 1;
+                  outline: transparent;
+                  stroke: #ffffff;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+            d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+            data-is-focusable={true}
+            id="_Pie_1third45000"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          />
+        </g>
+        
+      </g>
+    </svg>
   </div>
   <span
     className="ms-layer"

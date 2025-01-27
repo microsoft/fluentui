@@ -22,6 +22,7 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
     <div
       class=
           ms-FocusZone
+          chartWrapper
           &:focus {
             outline: none;
           }
@@ -844,6 +845,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -1391,6 +1393,7 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -1585,6 +1588,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -2177,6 +2181,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
     <div
       className=
           ms-FocusZone
+          chartWrapper
           &:focus {
             outline: none;
           }
@@ -2757,6 +2762,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -3336,6 +3342,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -3792,6 +3799,7 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -4247,6 +4255,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -4840,6 +4849,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
@@ -5419,6 +5429,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
   <div
     className=
         ms-FocusZone
+        chartWrapper
         &:focus {
           outline: none;
         }
