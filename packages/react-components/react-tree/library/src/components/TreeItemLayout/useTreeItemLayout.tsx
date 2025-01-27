@@ -135,7 +135,7 @@ export const useTreeItemLayout_unstable = (
       }
       setIsActionsVisible(false);
     },
-    [setIsActionsVisible, onActionVisibilityChange, treeItemRef],
+    [setIsActionsVisible, onActionVisibilityChange, treeItemRef, isNavigatingWithKeyboard, targetDocument],
   );
 
   const expandIcon = slot.optional(props.expandIcon, {
