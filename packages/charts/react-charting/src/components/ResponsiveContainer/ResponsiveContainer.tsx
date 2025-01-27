@@ -9,6 +9,10 @@ import { getStyles } from './ResponsiveContainer.styles';
 
 const getClassNames = classNamesFunction<{}, IResponsiveContainerStyles>();
 
+/**
+ * Responsive Container component
+ * {@docCategory ResponsiveContainer}
+ */
 export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const onResizeRef = React.useRef<IResponsiveContainerProps['onResize']>();

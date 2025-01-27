@@ -138,7 +138,7 @@ export type { IGaugeChartProps, IGaugeChartSegment, IGaugeChartStyleProps, IGaug
 export { GaugeChart, GaugeChartVariant, GaugeValueFormat } from './GaugeChart';
 export type { DeclarativeChartProps, Schema, IDeclarativeChart, IImageExportOptions } from './DeclarativeChart';
 export { DeclarativeChart } from './DeclarativeChart';
-export type { IResponsiveContainerProps } from './ResponsiveContainer';
+export type { IResponsiveContainerProps, IResponsiveChildProps } from './ResponsiveContainer';
 export { ResponsiveContainer } from './ResponsiveContainer';
 
 import './version';

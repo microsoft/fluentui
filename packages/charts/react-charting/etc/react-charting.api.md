@@ -1212,18 +1212,21 @@ export interface IRefArrayData {
     refElement?: SVGGElement;
 }
 
-// @public (undocumented)
+// @public
+export interface IResponsiveChildProps {
+    // (undocumented)
+    height?: number;
+    // (undocumented)
+    shouldResize?: number;
+    // (undocumented)
+    width?: number;
+}
+
+// @public
 export interface IResponsiveContainerProps {
-    // (undocumented)
-    children: React_2.ReactElement<{
-        width?: number;
-        height?: number;
-    }>;
-    // (undocumented)
+    children: React_2.ReactElement<IResponsiveChildProps>;
     height?: number | string;
-    // (undocumented)
     onResize?: (width: number, height: number) => void;
-    // (undocumented)
     width?: number | string;
 }
 
@@ -1652,7 +1655,7 @@ export enum NodesComposition {
 // @public
 export const PieChart: React_2.FunctionComponent<IPieChartProps>;
 
-// @public (undocumented)
+// @public
 export const ResponsiveContainer: React_2.FC<IResponsiveContainerProps>;
 
 // @public
