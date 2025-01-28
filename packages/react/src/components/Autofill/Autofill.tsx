@@ -109,31 +109,35 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     const document = this.context?.window.document || getDocument(this._inputElement.current);
     const isFocused = this._inputElement.current && this._inputElement.current === document?.activeElement;
 
-    if (isFocused && this._autoFillEnabled && this.value && previousState.inputValue !== this.value) {
-      if (suggestedDisplayValue && _doesTextStartWith(suggestedDisplayValue, this.value)) {
-        let shouldSelectFullRange = false;
+    if (
+      isFocused &&
+      this._autoFillEnabled &&
+      this.value &&
+      suggestedDisplayValue &&
+      _doesTextStartWith(suggestedDisplayValue, this.value) &&
+      previousState.inputValue !== this.value
+    ) {
+      let shouldSelectFullRange = false;
 
-        if (shouldSelectFullInputValueInComponentDidUpdate) {
-          shouldSelectFullRange = shouldSelectFullInputValueInComponentDidUpdate();
+      if (shouldSelectFullInputValueInComponentDidUpdate) {
+        shouldSelectFullRange = shouldSelectFullInputValueInComponentDidUpdate();
+      }
+
+      if (shouldSelectFullRange) {
+        this._inputElement.current!.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
+      } else {
+        while (
+          differenceIndex < this.value.length &&
+          this.value[differenceIndex].toLocaleLowerCase() === suggestedDisplayValue[differenceIndex].toLocaleLowerCase()
+        ) {
+          differenceIndex++;
         }
-
-        if (shouldSelectFullRange) {
-          this._inputElement.current!.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
-        } else {
-          while (
-            differenceIndex < this.value.length &&
-            this.value[differenceIndex].toLocaleLowerCase() ===
-              suggestedDisplayValue[differenceIndex].toLocaleLowerCase()
-          ) {
-            differenceIndex++;
-          }
-          if (differenceIndex > 0) {
-            this._inputElement.current!.setSelectionRange(
-              differenceIndex,
-              suggestedDisplayValue.length,
-              SELECTION_BACKWARD,
-            );
-          }
+        if (differenceIndex > 0) {
+          this._inputElement.current!.setSelectionRange(
+            differenceIndex,
+            suggestedDisplayValue.length,
+            SELECTION_BACKWARD,
+          );
         }
       }
     } else if (this._inputElement.current) {
