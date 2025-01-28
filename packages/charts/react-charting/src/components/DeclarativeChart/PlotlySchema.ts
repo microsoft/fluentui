@@ -1076,7 +1076,7 @@ export type PlotType =
   | 'violin'
   | 'volume'
   | 'waterfall'
-  // adding custom plot types as we get in plotly schemas
+  // adding custom plot types as seen in AI generated plotly schema
   | 'gauge';
 
 export type Data = Partial<PlotData> | Partial<PieData> | Partial<SankeyData>;
