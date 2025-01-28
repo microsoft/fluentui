@@ -56,6 +56,7 @@ export const dropdownButtonTemplate = html<BaseDropdown>`
     aria-haspopup="listbox"
     role="combobox"
     ?disabled="${x => x.disabled}"
+    type="button"
     ${ref('control')}
   >
     ${x => x.displayValue}

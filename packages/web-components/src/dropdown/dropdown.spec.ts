@@ -71,4 +71,52 @@ test.describe('Dropdown', () => {
 
     await expect(listbox).toBeHidden();
   });
+
+  test("should set the `name` property on options when it's set on the dropdown", async ({ fastPage }) => {
+    const { element } = fastPage;
+    const options = element.locator('fluent-option');
+
+    await fastPage.setTemplate({ attributes: { name: 'fruit' } });
+
+    for (const option of await options.all()) {
+      await expect(option).toHaveJSProperty('name', 'fruit');
+    }
+  });
+
+  test.describe('when in a form', () => {
+    test('should submit the value when the form is submitted', async ({ fastPage, page }) => {
+      const { element } = fastPage;
+      const submitButton = page.locator('button[type=submit]');
+
+      await fastPage.setTemplate(/* html */ `
+        <form action="foo">
+          <fluent-dropdown name="fruit">
+            <fluent-listbox>
+              <fluent-option value="apple">Apple</fluent-option>
+              <fluent-option value="banana">Banana</fluent-option>
+              <fluent-option value="orange">Orange</fluent-option>
+              <fluent-option value="mango">Mango</fluent-option>
+              <fluent-option value="kiwi">Kiwi</fluent-option>
+              <fluent-option value="cherry">Cherry</fluent-option>
+              <fluent-option value="grapefruit">Grapefruit</fluent-option>
+              <fluent-option value="papaya">Papaya</fluent-option>
+            </fluent-listbox>
+          </fluent-dropdown>
+          <button type="submit">Submit</button>
+        </form>
+      `);
+
+      await element.click();
+
+      await expect(element.locator('fluent-listbox')).toBeVisible();
+
+      await element.locator('fluent-option[value=cherry]').click();
+
+      await expect(element.locator('fluent-option[value=cherry]')).toHaveJSProperty('selected', true);
+
+      await submitButton.click();
+
+      await expect(page).toHaveURL(/fruit=cherry/);
+    });
+  });
 });
