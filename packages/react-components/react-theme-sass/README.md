@@ -22,7 +22,7 @@ ReactDOM.render(
 ```
 
 2. In SCSS styles you can `@use` SASS variables from `@fluentui/react-theme-sass`.
-   
+
 ```scss
 // With a namespace
 @use '@fluentui/react-theme-sass/sass/tokens' as 'fluentTokens';
@@ -44,4 +44,5 @@ ReactDOM.render(
   border-radius: $borderRadiusLarge;
 }
 ```
+
 > ⚠ Note: This package does not export any Javascript code.️
