@@ -1075,7 +1075,9 @@ export type PlotType =
   | 'treemap'
   | 'violin'
   | 'volume'
-  | 'waterfall';
+  | 'waterfall'
+  // adding custom plot types as we get in plotly schemas
+  | 'gauge';
 
 export type Data = Partial<PlotData> | Partial<PieData> | Partial<SankeyData>;
 
