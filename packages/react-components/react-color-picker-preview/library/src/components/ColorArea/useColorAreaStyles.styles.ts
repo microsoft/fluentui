@@ -54,7 +54,8 @@ const useThumbStyles = makeStyles({
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
     borderRadius: tokens.borderRadiusCircular,
-    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .18) ${tokens.colorNeutralBackground1} inset`,
+    border: `1px solid ${tokens.colorNeutralForeground4}`,
+    boxShadow: tokens.shadow4,
     backgroundColor: `var(${colorAreaCSSVars.thumbColorVar})`,
     transform: 'translate(-50%, 50%)',
     [`${thumbPositionXVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${colorAreaCSSVars.areaXProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
@@ -67,7 +68,7 @@ const useThumbStyles = makeStyles({
       borderRadius: tokens.borderRadiusCircular,
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1Pressed}`,
+      border: `2px solid ${tokens.colorNeutralBackground1}`,
     },
   },
   focusIndicator: createFocusOutlineStyle({
