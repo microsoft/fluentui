@@ -1,3 +1,5 @@
+Theming is a really important part of any design system. Teams should look to tokens and variables first when considering how to change the look and feel of an app. Teams sometimes need a more powerful tool to accomplish their mission or sometimes just to handle edge cases. This document explains how to leverage the custom style hooks built into Fluent UI React V9.
+
 Most v9 components wrapper is structured like this.
 
     export  const  Button:  ForwardRefComponent<ButtonProps> =  React.forwardRef((props, ref) => {
