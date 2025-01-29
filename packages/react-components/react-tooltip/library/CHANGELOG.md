@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Wed, 22 Jan 2025 14:00:11 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jan 2025 20:27:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.5.5)
+
+Mon, 27 Jan 2025 20:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.5.4..@fluentui/react-tooltip_v9.5.5)
+
+### Patches
+
+- Bump @fluentui/react-positioning to v9.16.3 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
 
 ## [9.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.5.4)
 

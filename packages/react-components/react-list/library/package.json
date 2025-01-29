@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-list",
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "React List v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,7 +26,7 @@
     "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
-    "@fluentui/react-checkbox": "^9.2.46",
+    "@fluentui/react-checkbox": "^9.2.47",
     "@fluentui/react-context-selector": "^9.1.72",
     "@fluentui/react-jsx-runtime": "^9.0.50",
     "@fluentui/keyboard-keys": "^9.0.8",

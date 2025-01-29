@@ -2,6 +2,21 @@
   "name": "@fluentui/react-switch",
   "entries": [
     {
+      "date": "Mon, 27 Jan 2025 20:27:35 GMT",
+      "tag": "@fluentui/react-switch_v9.1.104",
+      "version": "9.1.104",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-field to v9.1.86",
+            "commit": "808cd501d50a317249d3d02f01ea3dd88114b252"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2025 14:00:08 GMT",
       "tag": "@fluentui/react-switch_v9.1.103",
       "version": "9.1.103",

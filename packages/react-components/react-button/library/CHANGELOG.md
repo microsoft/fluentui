@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 22 Jan 2025 14:00:21 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jan 2025 21:26:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.101)
+
+Tue, 28 Jan 2025 21:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.100..@fluentui/react-button_v9.3.101)
+
+### Patches
+
+- fix: make SplitButton divider transparent for subtle and transparent variants ([PR #33726](https://github.com/microsoft/fluentui/pull/33726) by vgenaev@gmail.com)
 
 ## [9.3.100](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.100)
 

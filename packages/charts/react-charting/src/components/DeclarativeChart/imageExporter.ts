@@ -38,24 +38,35 @@ export function toImage(chartContainer?: HTMLElement | null, opts: IImageExportO
   });
 }
 
+const SVG_STYLE_PROPERTIES = ['display', 'fill', 'fill-opacity', 'opacity', 'stroke', 'stroke-width', 'transform'];
+const SVG_TEXT_STYLE_PROPERTIES = ['font-family', 'font-size', 'font-weight', 'text-anchor'];
+
 function toSVG(chartContainer: HTMLElement, background: string) {
   const svg = chartContainer.querySelector<SVGSVGElement>('svg');
   if (!svg) {
     throw new Error('SVG not found');
   }
 
-  const { width: svgWidth, height: svgHeight } = svg.getBoundingClientRect();
-  const classNames = new Set<string>();
-  const legendGroup = cloneLegendsToSVG(chartContainer, svgWidth, svgHeight, classNames);
-  const w1 = Math.max(svgWidth, legendGroup.width);
-  const h1 = svgHeight + legendGroup.height;
   const clonedSvg = d3Select(svg.cloneNode(true) as SVGSVGElement)
     .attr('width', null)
     .attr('height', null)
     .attr('viewBox', null);
-  const { fontFamily } = getComputedStyle(chartContainer);
+  const svgElements = svg.getElementsByTagName('*');
+  const clonedSvgElements = clonedSvg.node()!.getElementsByTagName('*');
 
-  clonedSvg.selectAll('text').style('font-family', fontFamily);
+  for (let i = 0; i < svgElements.length; i++) {
+    if (svgElements[i].tagName.toLowerCase() === 'text') {
+      copyStyle([...SVG_STYLE_PROPERTIES, ...SVG_TEXT_STYLE_PROPERTIES], svgElements[i], clonedSvgElements[i]);
+    } else {
+      copyStyle(SVG_STYLE_PROPERTIES, svgElements[i], clonedSvgElements[i]);
+    }
+  }
+
+  const { width: svgWidth, height: svgHeight } = svg.getBoundingClientRect();
+  const legendGroup = cloneLegendsToSVG(chartContainer, svgWidth, svgHeight);
+  const w1 = Math.max(svgWidth, legendGroup.width);
+  const h1 = svgHeight + legendGroup.height;
+
   if (legendGroup.node) {
     clonedSvg.append(() => legendGroup.node);
   }
@@ -66,36 +77,6 @@ function toSVG(chartContainer: HTMLElement, background: string) {
     .attr('width', w1)
     .attr('height', h1)
     .attr('fill', background);
-
-  const svgElements = svg.getElementsByTagName('*');
-  const styleSheets = document.styleSheets;
-  let styleRules: string = '';
-
-  for (let i = svgElements.length - 1; i--; ) {
-    svgElements[i].classList.forEach(className => {
-      classNames.add(`.${className}`);
-    });
-  }
-
-  for (let i = 0; i < styleSheets.length; i++) {
-    const rules = styleSheets[i].cssRules;
-    for (let j = 0; j < rules.length; j++) {
-      if (rules[j].constructor.name === 'CSSStyleRule') {
-        const selectorText = (rules[j] as CSSStyleRule).selectorText;
-        const hasClassName = selectorText.split(' ').some(word => classNames.has(word));
-
-        if (hasClassName) {
-          styleRules += rules[j].cssText + ' ';
-        }
-      }
-    }
-  }
-  styleRules = resolveCSSVariables(chartContainer, styleRules);
-
-  const xmlDocument = new DOMParser().parseFromString('<svg></svg>', 'image/svg+xml');
-  const styleNode = xmlDocument.createCDATASection(styleRules);
-  clonedSvg.insert('defs', ':first-child').append('style').attr('type', 'text/css').node()!.appendChild(styleNode);
-
   clonedSvg.attr('width', w1).attr('height', h1).attr('viewBox', `0 0 ${w1} ${h1}`);
 
   return {
@@ -105,7 +86,19 @@ function toSVG(chartContainer: HTMLElement, background: string) {
   };
 }
 
-function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHeight: number, classNames: Set<string>) {
+const LEGEND_RECT_STYLE_PROPERTIES_MAP = {
+  'background-color': 'fill',
+  'border-color': 'stroke',
+};
+const LEGEND_TEXT_STYLE_PROPERTIES_MAP = {
+  color: 'fill',
+  'font-family': 'font-family',
+  'font-size': 'font-size',
+  'font-weight': 'font-weight',
+  opacity: 'opacity',
+};
+
+function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHeight: number) {
   const legendButtons = chartContainer.querySelectorAll<HTMLElement>(`
     button[class^="legend-"],
     [class^="legendContainer-"] div[class^="overflowIndicationTextStyle-"],
@@ -146,35 +139,29 @@ function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHei
 
     if (legendButtons[i].tagName.toLowerCase() === 'button') {
       const legendRect = legendButtons[i].querySelector<HTMLDivElement>('[class^="rect"]');
-      const { backgroundColor: legendColor, borderColor: legendBorderColor } = getComputedStyle(legendRect!);
 
       legendText = legendButtons[i].querySelector<HTMLDivElement>('[class^="text"]');
-      legendText!.classList.forEach(className => classNames.add(`.${className}`));
       legendItem
         .append('rect')
         .attr('x', legendX + 8)
         .attr('y', svgHeight + legendY + 8)
         .attr('width', 12)
         .attr('height', 12)
-        .attr('fill', legendColor)
         .attr('stroke-width', 1)
-        .attr('stroke', legendBorderColor);
+        .call(selection => copyStyle(LEGEND_RECT_STYLE_PROPERTIES_MAP, legendRect!, selection.node()!));
       textOffset = 28;
     } else {
       legendText = legendButtons[i] as HTMLDivElement;
-      legendText.classList.forEach(className => classNames.add(`.${className}`));
       textOffset = 8;
     }
 
-    const { color: textColor } = getComputedStyle(legendText!);
     legendItem
       .append('text')
       .attr('x', legendX + textOffset)
       .attr('y', svgHeight + legendY + 8)
       .attr('dominant-baseline', 'hanging')
-      .attr('class', legendText!.getAttribute('class'))
-      .attr('fill', textColor)
-      .text(legendText!.textContent);
+      .text(legendText!.textContent)
+      .call(selection => copyStyle(LEGEND_TEXT_STYLE_PROPERTIES_MAP, legendText!, selection.node()!));
     legendX += legendWidth;
   }
 
@@ -270,4 +257,17 @@ function unescapePonyfill(str: string) {
     result += chr;
   }
   return result;
+}
+
+function copyStyle(properties: string[] | Record<string, string>, fromEl: Element, toEl: Element) {
+  const styles = getComputedStyle(fromEl);
+  if (Array.isArray(properties)) {
+    properties.forEach(prop => {
+      d3Select(toEl).style(prop, styles.getPropertyValue(prop));
+    });
+  } else {
+    Object.entries(properties).forEach(([fromProp, toProp]) => {
+      d3Select(toEl).style(toProp, styles.getPropertyValue(fromProp));
+    });
+  }
 }

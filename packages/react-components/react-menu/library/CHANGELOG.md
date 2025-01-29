@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Wed, 22 Jan 2025 14:00:18 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jan 2025 20:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.15.0)
+
+Mon, 27 Jan 2025 20:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.14.26..@fluentui/react-menu_v9.15.0)
+
+### Minor changes
+
+- feat: Add `subText` slot to enable multiline menu layout ([PR #33704](https://github.com/microsoft/fluentui/pull/33704) by lingfangao@hotmail.com)
+- Bump @fluentui/react-positioning to v9.16.3 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
+
+### Patches
+
+- fix: MenuItem is only focused when mouse cursor is moved ([PR #33725](https://github.com/microsoft/fluentui/pull/33725) by lingfangao@hotmail.com)
 
 ## [9.14.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.14.26)
 
