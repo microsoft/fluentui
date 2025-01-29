@@ -280,7 +280,7 @@ export const transformPlotlyJsonToDonutProps = (
       chartData: donutData,
     },
     hideLegend: input.layout?.showlegend === false ? true : false,
-    width,
+    width: input.layout?.width,
     height,
     innerRadius,
     hideLabels,
