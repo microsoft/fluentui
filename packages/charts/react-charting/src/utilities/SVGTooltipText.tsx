@@ -79,6 +79,8 @@ interface ISVGTooltipTextState {
   textHeight?: number;
 }
 
+const PADDING = 4;
+
 /**
  * Component to render an SVG text element with an optional tooltip.
  * The tooltip appears on hovering and focusing the element when its content overflows.
@@ -132,13 +134,15 @@ export class SVGTooltipText
     const showTooltip =
       (!!this.props.isTooltipVisibleProp && this.state.isOverflowing && !!content) || (isTooltipVisible && !!content);
     const backgroundColor = this.props.theme ? this.props.theme.semanticColors.bodyBackground : undefined;
+    const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+    const rectX = isRTL ? this.state.textX! + this.state.textWidth! - PADDING : this.state.textX! - PADDING;
     return (
       <>
         <rect
-          x={this.state.textX! - 4}
-          y={this.state.textY! - 4}
-          width={this.state.textWidth! + 8}
-          height={this.state.textHeight! + 8}
+          x={rectX}
+          y={this.state.textY! - PADDING}
+          width={this.state.textWidth! + 2 * PADDING}
+          height={this.state.textHeight! + 2 * PADDING}
           fill={backgroundColor}
           transform={textProps?.transform}
         />
