@@ -3844,11 +3844,11 @@ Array [
 
 exports[`prepareDatapoints should return an array with rounded data points with large numbers in dataset 1`] = `
 Array [
-  -1000000,
-  -500000,
+  -10000000,
+  -5000000,
   0,
-  500000,
-  1000000,
+  5000000,
+  10000000,
 ]
 `;
 
@@ -3860,6 +3860,16 @@ Array [
   5,
   10,
   15,
+]
+`;
+
+exports[`prepareDatapoints should return an array with rounded data points with variation in dataset 1`] = `
+Array [
+  -200000,
+  0,
+  200000,
+  400000,
+  600000,
 ]
 `;
 
