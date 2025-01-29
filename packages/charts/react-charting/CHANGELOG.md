@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 27 Jan 2025 07:20:35 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Jan 2025 07:21:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.48)
+
+Wed, 29 Jan 2025 07:21:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.47..@fluentui/react-charting_v5.23.48)
+
+### Patches
+
+- fix: use inline styles in SVG export for better compatibility ([PR #33713](https://github.com/microsoft/fluentui/pull/33713) by 110246001+krkshitij@users.noreply.github.com)
+- Bump @fluentui/theme-samples to v8.7.198 ([PR #33713](https://github.com/microsoft/fluentui/pull/33713) by beachball)
+- Bump @fluentui/react to v8.122.9 ([PR #33713](https://github.com/microsoft/fluentui/pull/33713) by beachball)
 
 ## [5.23.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.47)
 

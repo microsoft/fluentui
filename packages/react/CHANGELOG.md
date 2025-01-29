@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 22 Jan 2025 07:21:49 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Jan 2025 07:21:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.122.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.9)
+
+Wed, 29 Jan 2025 07:21:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.8..@fluentui/react_v8.122.9)
+
+### Patches
+
+- fix(Autofill): Only apply selection logic if the current value does not match the previous value to avoid using the value before state is set and handle del key as delete in the keydown event. ([PR #33700](https://github.com/microsoft/fluentui/pull/33700) by estebanmu@microsoft.com)
 
 ## [8.122.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.8)
 

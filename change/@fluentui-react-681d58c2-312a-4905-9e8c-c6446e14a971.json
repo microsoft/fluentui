@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(Autofill): Only apply selection logic if the current value does not match the previous value to avoid using the value before state is set and handle del key as delete in the keydown event.",
-  "packageName": "@fluentui/react",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}
