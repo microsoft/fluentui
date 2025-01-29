@@ -1706,6 +1706,9 @@ export const VerticalBarChart: React_2.FunctionComponent<IVerticalBarChartProps>
 // @public
 export const VerticalStackedBarChart: React_2.FunctionComponent<IVerticalStackedBarChartProps>;
 
+// @public
+export function withResponsiveContainer<TProps extends Omit<IResponsiveContainerProps, 'children'>>(WrappedComponent: React_2.ComponentType<TProps>): React_2.FC<TProps>;
+
 // (No @packageDocumentation comment for this package)
 
 ```

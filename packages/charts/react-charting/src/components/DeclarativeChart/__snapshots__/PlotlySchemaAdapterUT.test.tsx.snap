@@ -356,9 +356,11 @@ Object {
       ],
     },
   ],
+  "height": 742,
   "mode": "plotly",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,
+  "width": 850,
   "xAxisTitle": "Votes",
   "yAxisTitle": "Framework",
 }
@@ -2819,6 +2821,7 @@ Object {
     67.29785160341703,
     76.5710413276318,
   ],
+  "height": 350,
   "hideLegend": true,
   "rangeValuesForColorScale": Array [
     "rgb(158,1,66)",
@@ -2835,6 +2838,7 @@ Object {
   ],
   "showYAxisLables": true,
   "sortOrder": "none",
+  "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -2984,14 +2988,10 @@ Object {
       "y": "Laravel",
     },
   ],
+  "height": 742,
   "secondaryYAxistitle": "",
   "showYAxisLables": true,
-  "styles": Object {
-    "root": Object {
-      "height": 742,
-      "width": 850,
-    },
-  },
+  "width": 850,
   "xAxisTitle": "Votes",
   "yAxisTitle": "Framework",
 }
@@ -3125,13 +3125,12 @@ Object {
   },
   "enableReflow": true,
   "height": 772,
-  "shouldResize": 1212,
   "styles": Object {
     "root": Object {
       "fontSize": 10,
     },
   },
-  "width": 440,
+  "width": undefined,
 }
 `;
 
@@ -3326,10 +3325,12 @@ Object {
       },
     ],
   },
+  "height": 350,
   "mode": "tonexty",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,
   "supportNegativeData": true,
+  "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -4560,10 +4561,12 @@ Object {
       },
     ],
   },
+  "height": 350,
   "mode": "tonexty",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,
   "supportNegativeData": true,
+  "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -4840,8 +4843,10 @@ Object {
       "y": 2,
     },
   ],
+  "height": 350,
   "mode": "plotly",
   "supportNegativeData": true,
+  "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -4933,9 +4938,11 @@ Object {
       "xAxisPoint": "May",
     },
   ],
+  "height": 350,
   "mode": "plotly",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,
+  "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 3400,
