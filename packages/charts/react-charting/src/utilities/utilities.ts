@@ -328,8 +328,8 @@ export function createStringXAxis(
  * @returns {number[]}
  */
 function calculateRoundedTicks(minVal: number, maxVal: number, splitInto: number) {
-  const finalYmin = minVal >= 0 ? (minVal !== maxVal ? minVal : 0) : minVal;
-  const finalYmax = minVal >= 0 ? maxVal : minVal !== maxVal ? maxVal : 0;
+  const finalYmin = minVal >= 0 && minVal === maxVal ? 0 : minVal;
+  const finalYmax = minVal < 0 && minVal === maxVal ? 0 : maxVal;
   const ticksInterval = d3nice(finalYmin, finalYmax, splitInto);
   return d3Ticks(ticksInterval[0], ticksInterval[ticksInterval.length - 1], splitInto);
 }

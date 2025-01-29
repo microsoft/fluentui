@@ -333,7 +333,9 @@ describe('prepareDatapoints', () => {
     const result = utils.prepareDatapoints(-1, -5, 1, false);
     matchResult(result);
   });
+});
 
+describe('prepareDatapoints for rounded tick value cases', () => {
   it('should return an array with rounded data points when roundedTicks is true and yMinValue is 0', () => {
     const result = utils.prepareDatapoints(100, 0, 3, true, true);
     matchResult(result);
