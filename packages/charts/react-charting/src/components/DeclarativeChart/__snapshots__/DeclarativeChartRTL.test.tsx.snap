@@ -1229,7 +1229,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
           height: 100%;
           width: 100%;
         }
-    style="width: 440px; height: 220px;"
+    style="height: 220px;"
   >
     <div
       class=
@@ -24447,7 +24447,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
           height: 100%;
           width: 100%;
         }
-    style="width: 440px; height: 220px;"
+    style="height: 220px;"
   >
     <div
       class=

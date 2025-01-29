@@ -208,7 +208,7 @@ Object {
       "[class^=\\"arcLabel\\"]": Object {},
     },
   },
-  "width": 440,
+  "width": undefined,
 }
 `;
 
@@ -251,7 +251,7 @@ Object {
       },
     },
   },
-  "width": 440,
+  "width": undefined,
 }
 `;
 
