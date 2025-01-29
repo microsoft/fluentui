@@ -328,10 +328,9 @@ export function createStringXAxis(
  * @returns {number[]}
  */
 function calculateRoundedTicks(minVal: number, maxVal: number, splitInto: number) {
-  const ticksInterval =
-    minVal >= 0
-      ? d3nice(minVal !== maxVal ? minVal : 0, maxVal, splitInto)
-      : d3nice(minVal, minVal !== maxVal ? maxVal : 0, splitInto);
+  const finalYmin = minVal >= 0 ? (minVal !== maxVal ? minVal : 0) : minVal;
+  const finalYmax = minVal >= 0 ? maxVal : minVal !== maxVal ? maxVal : 0;
+  const ticksInterval = d3nice(finalYmin, finalYmax, splitInto);
   return d3Ticks(ticksInterval[0], ticksInterval[ticksInterval.length - 1], splitInto);
 }
 /**
@@ -440,10 +439,8 @@ export function createNumericYAxis(
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
-  const finalYmax = roundedTicks ? yMaxValue : tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = roundedTicks
-    ? yMinValue
-    : supportNegativeData
+  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
+  const finalYmin = supportNegativeData
     ? Math.min(yMinMaxValues.startValue, yMinValue || 0)
     : yMinMaxValues.startValue < yMinValue
     ? 0
