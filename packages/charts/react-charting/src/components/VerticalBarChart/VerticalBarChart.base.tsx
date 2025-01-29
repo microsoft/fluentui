@@ -786,7 +786,7 @@ export class VerticalBarChartBase
       const gradientId = getId('VBC_Gradient') + `_${index}_${startColor}`;
 
       return (
-        <g key={point.x as string}>
+        <g key={`${point.x}_${index}` as string}>
           {this.props.enableGradient && (
             <defs>
               <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
@@ -892,7 +892,7 @@ export class VerticalBarChartBase
 
       return (
         <g
-          key={point.x instanceof Date ? point.x.getTime() : point.x}
+          key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}
           transform={`translate(${0.5 * (xBarScale.bandwidth() - this._barWidth)}, 0)`}
         >
           {this.props.enableGradient && (
@@ -1005,7 +1005,7 @@ export class VerticalBarChartBase
       const gradientId = getId('VBC_Gradient') + `_${index}_${startColor}`;
 
       return (
-        <g key={point.x instanceof Date ? point.x.getTime() : point.x}>
+        <g key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}>
           {this.props.enableGradient && (
             <defs>
               <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">

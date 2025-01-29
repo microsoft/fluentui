@@ -5,7 +5,6 @@ import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
 import { PlotData, PlotlySchema } from './PlotlySchema';
-//import type { Data, Layout } from './PlotlySchema';
 import {
   isArrayOrTypedArray,
   isDateArray,
@@ -199,7 +198,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return <DonutChart {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)} {...commonProps} />;
     case 'bar':
       const orientation = plotlyInput.data[0].orientation;
-      if (orientation === 'h') {
+      if (orientation === 'h' && isNumberArray((plotlyInput.data[0] as PlotData).x)) {
         return (
           <HorizontalBarChartWithAxis
             {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap, isDarkTheme)}
@@ -246,7 +245,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         <SankeyChart {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap, isDarkTheme)} {...commonProps} />
       );
     case 'indicator':
-      if (plotlyInput.data?.[0]?.mode?.includes('gauge')) {
+    case 'gauge':
+      if (plotlyInput.data?.[0]?.mode?.includes('gauge') || plotlyInput.data?.[0]?.type === 'gauge') {
         return (
           <GaugeChart {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)} {...commonProps} />
         );

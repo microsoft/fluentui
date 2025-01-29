@@ -188,6 +188,25 @@ describe('Tree', () => {
       cy.document().realPress('Tab');
       cy.get('#action').should('be.focused');
     });
+    describe('navigationMode="treegrid"', () => {
+      it('should focus on actions/treeitem when pressing right/left arrow', () => {
+        mount(
+          <TreeTest openItems={['item1']} navigationMode="treegrid" id="tree" aria-label="Tree">
+            <TreeItem itemType="branch" value="item1" data-testid="item1">
+              <TreeItemLayout actions={<Button id="action">action</Button>}>level 1, item 1</TreeItemLayout>
+              <Tree>
+                <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
+                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+          </TreeTest>,
+        );
+        cy.get('[data-testid="item1"]').focus().realPress('{rightarrow}');
+        cy.get('#action').should('be.focused').realPress('{leftarrow}');
+        cy.get('[data-testid="item1"]').should('be.focused');
+      });
+    });
     it('should not expand/collapse item on actions Enter/Space key', () => {
       mount(
         <TreeTest id="tree" aria-label="Tree">
@@ -231,25 +250,49 @@ describe('Tree', () => {
         cy.get('[data-testid="item2"]').should('be.focused');
         cy.focused().realPress('Tab').should('not.exist');
       });
-      it('should move with Left/Right keys', () => {
-        mount(<TreeTest defaultOpenItems={['item2', 'item2__item1']} />);
-        cy.get('[data-testid="item1"]').focus().realPress('{downarrow}');
-        cy.get('[data-testid="item2"]').should('be.focused').realPress('{rightarrow}');
-        cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{rightarrow}');
-        cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress('{leftarrow}');
-        cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{leftarrow}').realPress('{leftarrow}');
-        cy.get('[data-testid="item2"]').should('be.focused');
-      });
-      it('should not move with Alt + Left/Right keys', () => {
-        mount(<TreeTest defaultOpenItems={['item2', 'item2__item1']} />);
-        cy.get('[data-testid="item1"]').focus().realPress('{downarrow}');
-        cy.get('[data-testid="item2"]').should('be.focused').realPress(['Alt', '{rightarrow}']);
-        cy.get('[data-testid="item2"]').should('be.focused').realPress('{rightarrow}');
-        cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{rightarrow}');
-        cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress(['Alt', '{leftarrow}']);
-        cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress('{leftarrow}');
-        cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{leftarrow}').realPress('{leftarrow}');
-        cy.get('[data-testid="item2"]').should('be.focused');
+      describe('navigationMode="treegrid"', () => {
+        it('should move with Up/Down keys', () => {
+          mount(
+            <TreeTest openItems={['item1']} navigationMode="treegrid" id="tree" aria-label="Tree">
+              <TreeItem itemType="branch" value="item1" data-testid="item1">
+                <TreeItemLayout>level 1, item 1</TreeItemLayout>
+                <Tree>
+                  <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
+                    <TreeItemLayout actions={<Button id="action">action</Button>}>level 2, item 1</TreeItemLayout>
+                  </TreeItem>
+                  <TreeItem itemType="leaf" value="item1__item2" data-testid="item1__item2">
+                    <TreeItemLayout>level 2, item 2</TreeItemLayout>
+                  </TreeItem>
+                </Tree>
+              </TreeItem>
+            </TreeTest>,
+          );
+          cy.get('[data-testid="item1__item1"]').focus().realPress('{rightarrow}');
+          cy.get('#action').should('be.focused').realPress('{uparrow}');
+          cy.get('[data-testid="item1"]').should('be.focused');
+          cy.get('[data-testid="item1__item1"]').focus().realPress('{rightarrow}');
+          cy.get('#action').should('be.focused').realPress('{downarrow}');
+          cy.get('[data-testid="item1__item2"]').should('be.focused');
+        });
+        it('should move with Left keys', () => {
+          mount(<TreeTest navigationMode="treegrid" defaultOpenItems={['item2', 'item2__item1']} />);
+          cy.get('[data-testid="item1"]').focus().realPress('{downarrow}');
+          cy.get('[data-testid="item2"]').should('be.focused').realPress('{downarrow}');
+          cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{downarrow}');
+          cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress('{leftarrow}');
+          cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{leftarrow}').realPress('{leftarrow}');
+          cy.get('[data-testid="item2"]').should('be.focused');
+        });
+        it('should not move with Alt + Left keys', () => {
+          mount(<TreeTest navigationMode="treegrid" defaultOpenItems={['item2', 'item2__item1']} />);
+          cy.get('[data-testid="item1"]').focus().realPress('{downarrow}');
+          cy.get('[data-testid="item2"]').should('be.focused').realPress('{downarrow}');
+          cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{downarrow}');
+          cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress(['Alt', '{leftarrow}']);
+          cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress('{leftarrow}');
+          cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{leftarrow}').realPress('{leftarrow}');
+          cy.get('[data-testid="item2"]').should('be.focused');
+        });
       });
       it('should move to last item with End key', () => {
         mount(<TreeTest defaultOpenItems={['item1', 'item2', 'item2__item1']} />);
@@ -280,6 +323,31 @@ describe('Tree', () => {
         cy.get('[data-testid="item0"]').focus().realPress('{end}');
         cy.get('[data-testid="item199"]').should('be.focused').isOutsideViewport();
       });
+    });
+  });
+  describe('Keyboard + Mouse interactions', () => {
+    it('actions should remain visible whenever a focused treeitem is hovered in/out', () => {
+      mount(
+        <TreeTest defaultOpenItems={['item1']} id="tree" aria-label="Tree">
+          <TreeItem itemType="branch" value="item1" data-testid="item1">
+            <TreeItemLayout actions={<Button id="action">action</Button>}>level 1, item 1</TreeItemLayout>
+            <Tree>
+              <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
+                <TreeItemLayout>level 2, item 1</TreeItemLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
+          <TreeItem itemType="leaf" value="item2" data-testid="item2">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+          </TreeItem>
+        </TreeTest>,
+      );
+      cy.focused().should('not.exist');
+      cy.document().realPress('Tab');
+      cy.get('[data-testid="item1"]').should('be.focused');
+      cy.get('#action').should('be.visible').realHover();
+      cy.get('[data-testid=item2]').realHover();
+      cy.get('#action').should('be.visible');
     });
   });
 

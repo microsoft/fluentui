@@ -5,6 +5,7 @@ import { useMenuSplitGroupStyles_unstable } from './useMenuSplitGroupStyles.styl
 import type { MenuSplitGroupProps } from './MenuSplitGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
+import { useMenuSplitGroupContextValues } from './useMenuSplitGroupContextValues';
 
 /**
  * Layout wrapper that provides extra keyboard navigation behavior for two `MenuItem` components.
@@ -16,7 +17,7 @@ export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps> = React.fo
 
   useCustomStyleHook_unstable('useMenuSplitGroupStyles_unstable')(state);
 
-  return renderMenuSplitGroup_unstable(state);
+  return renderMenuSplitGroup_unstable(state, useMenuSplitGroupContextValues(state));
 });
 
 MenuSplitGroup.displayName = 'MenuSplitGroup';

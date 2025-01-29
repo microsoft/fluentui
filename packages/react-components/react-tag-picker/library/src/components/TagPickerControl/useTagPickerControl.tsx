@@ -61,6 +61,7 @@ export const useTagPickerControl_unstable = (
     renderByDefault: !noPopover,
     defaultProps: {
       'aria-expanded': open,
+      'aria-disabled': disabled ? 'true' : undefined,
       children: <ChevronDownRegular />,
       role: 'button',
     },

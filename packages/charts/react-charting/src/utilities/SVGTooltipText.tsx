@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ITooltipHost, ITooltipProps, Tooltip, TooltipDelay } from '@fluentui/react/lib/Tooltip';
 import { Async, KeyCodes, getId, portalContainsElement } from '../Utilities';
-import { ITheme } from '@fluentui/react';
+import { getRTL, ITheme } from '@fluentui/react';
 
 interface ISVGTooltipTextProps {
   /**
@@ -134,7 +134,7 @@ export class SVGTooltipText
     const showTooltip =
       (!!this.props.isTooltipVisibleProp && this.state.isOverflowing && !!content) || (isTooltipVisible && !!content);
     const backgroundColor = this.props.theme ? this.props.theme.semanticColors.bodyBackground : undefined;
-    const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+    const isRTL = getRTL();
     const rectX = isRTL ? this.state.textX! + this.state.textWidth! - PADDING : this.state.textX! - PADDING;
     return (
       <>

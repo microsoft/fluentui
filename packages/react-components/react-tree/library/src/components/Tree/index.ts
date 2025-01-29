@@ -11,6 +11,7 @@ export type {
   TreeSelectionValue,
   TreeSlots,
   TreeState,
+  TreeNavigationMode,
 } from './Tree.types';
 export { useTree_unstable } from './useTree';
 export { useTreeContextValues_unstable } from './useTreeContextValues';

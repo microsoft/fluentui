@@ -7,8 +7,8 @@ import type { AlphaSliderState, AlphaSliderProps } from './AlphaSlider.types';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
 import { MIN, MAX } from '../../utils/constants';
 import { getPercent } from '../../utils/getPercent';
-import type { HsvColor } from '../../types/color';
 import { adjustToTransparency, calculateTransparencyValue, getSliderDirection } from './alphaSliderUtils';
+import { createHsvColor } from '../../utils/createHsvColor';
 
 export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: AlphaSliderProps) => {
   'use no memo';
@@ -33,7 +33,7 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
     const newValue = adjustToTransparency(Number(event.target.value), transparency);
-    const newColor: HsvColor = { ...hsvColor, a: newValue / 100 };
+    const newColor = createHsvColor({ ...hsvColor, a: newValue / 100 });
     setCurrentValue(newValue);
     inputOnChange?.(event);
     onChange?.(event, { type: 'change', event, color: newColor });

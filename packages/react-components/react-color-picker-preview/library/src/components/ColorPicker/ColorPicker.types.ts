@@ -18,7 +18,7 @@ export type ColorPickerProps = Omit<ComponentProps<Partial<ColorPickerSlots>>, '
   /**
    * Selected color.
    */
-  color: HsvColor;
+  color?: HsvColor;
 
   /**
    * Callback for when the user changes the color.

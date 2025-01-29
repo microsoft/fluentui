@@ -1,8 +1,71 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 20 Jan 2025 07:21:43 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Jan 2025 07:21:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.48)
+
+Wed, 29 Jan 2025 07:21:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.47..@fluentui/react-charting_v5.23.48)
+
+### Patches
+
+- fix: use inline styles in SVG export for better compatibility ([PR #33713](https://github.com/microsoft/fluentui/pull/33713) by 110246001+krkshitij@users.noreply.github.com)
+- Bump @fluentui/theme-samples to v8.7.198 ([PR #33713](https://github.com/microsoft/fluentui/pull/33713) by beachball)
+- Bump @fluentui/react to v8.122.9 ([PR #33713](https://github.com/microsoft/fluentui/pull/33713) by beachball)
+
+## [5.23.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.47)
+
+Mon, 27 Jan 2025 07:20:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.46..@fluentui/react-charting_v5.23.47)
+
+### Patches
+
+- Fix Duplicate keys warning ([PR #33722](https://github.com/microsoft/fluentui/pull/33722) by 74965306+Anush2303@users.noreply.github.com)
+- fix: ensure text elements use the correct font-family in SVG export ([PR #33719](https://github.com/microsoft/fluentui/pull/33719) by 110246001+krkshitij@users.noreply.github.com)
+
+## [5.23.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.46)
+
+Fri, 24 Jan 2025 07:20:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.45..@fluentui/react-charting_v5.23.46)
+
+### Patches
+
+- Centre align gauge chart ([PR #33710](https://github.com/microsoft/fluentui/pull/33710) by 74965306+Anush2303@users.noreply.github.com)
+
+## [5.23.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.45)
+
+Thu, 23 Jan 2025 07:21:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.44..@fluentui/react-charting_v5.23.45)
+
+### Patches
+
+- Support for dashed and dotted line in Declarative chart ([PR #33694](https://github.com/microsoft/fluentui/pull/33694) by 74965306+Anush2303@users.noreply.github.com)
+- Heatmap text color based on contrast ratio ([PR #33659](https://github.com/microsoft/fluentui/pull/33659) by 74965306+Anush2303@users.noreply.github.com)
+
+## [5.23.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.44)
+
+Wed, 22 Jan 2025 07:21:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.43..@fluentui/react-charting_v5.23.44)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.197 ([PR #33685](https://github.com/microsoft/fluentui/pull/33685) by beachball)
+- Bump @fluentui/react to v8.122.8 ([PR #33685](https://github.com/microsoft/fluentui/pull/33685) by beachball)
+
+## [5.23.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.43)
+
+Tue, 21 Jan 2025 07:13:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.42..@fluentui/react-charting_v5.23.43)
+
+### Patches
+
+- fix: resolve overlapping bars issue in histogram ([PR #33695](https://github.com/microsoft/fluentui/pull/33695) by 110246001+krkshitij@users.noreply.github.com)
+- Adding fallback and fixes for test app crashes for 12 schema data  ([PR #33621](https://github.com/microsoft/fluentui/pull/33621) by 120183316+srmukher@users.noreply.github.com)
+- Use strongly typed interfaces for plotly schema ([PR #33621](https://github.com/microsoft/fluentui/pull/33621) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix: resolve bugs in declarative chart ([PR #33621](https://github.com/microsoft/fluentui/pull/33621) by 110246001+krkshitij@users.noreply.github.com)
+- StronglyType plotly schema bug fix ([PR #33621](https://github.com/microsoft/fluentui/pull/33621) by 74965306+Anush2303@users.noreply.github.com)
 
 ## [5.23.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.42)
 
