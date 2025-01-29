@@ -32,54 +32,6 @@ const flatTreeItems: FlatItem[] = [
   { value: '2-1-1-1', parentValue: '2-1-1', content: 'Level 4, item 1' },
 ];
 
-// // EXAMPLE OF NESTED TREE ITEMS BEING FLATTEN BY `flattenTree`:
-// type Item = TreeItemProps & { content: React.ReactNode };
-
-// const nestedTreeItems = [
-//   {
-//     value: '1',
-//     content: <>level 1, item 1</>,
-//     subtree: [
-//       {
-//         value: '1-1',
-//         content: <>level 2, item 1</>,
-//       },
-//       {
-//         value: '1-2',
-//         content: <>level 2, item 2</>,
-//       },
-//       {
-//         value: '1-3',
-//         content: <>level 2, item 3</>,
-//       },
-//     ],
-//   },
-//   {
-//     value: '2',
-//     content: <>level 1, item 2</>,
-//     subtree: [
-//       {
-//         value: '2-1',
-//         content: <>level 2, item 1</>,
-//         subtree: [
-//           {
-//             value: '2-1-1',
-//             content: <>level 3, item 1</>,
-//             subtree: [
-//               {
-//                 value: '2-1-1-1',
-//                 content: <>level 4, item 1</>,
-//               },
-//             ],
-//           },
-//         ],
-//       },
-//     ],
-//   },
-// ];
-
-// const flatTreeItems = flattenTree_unstable<Item>(nestedTreeItems);
-
 const ActionsExample = () => (
   <>
     <Button aria-label="Edit" appearance="subtle" icon={<Edit20Regular />} />

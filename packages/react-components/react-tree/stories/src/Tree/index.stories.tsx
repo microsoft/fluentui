@@ -32,6 +32,7 @@ export { FlatTreeStory as FlatTree } from './FlatTree.stories';
 
 // SCENARIOS & FEATURES
 export { UseHeadlessFlatTree } from './UseHeadlessFlatTree.stories';
+export { UseHeadlessFlatTreeWithNestedStructure } from './UseHeadlessFlatTreeWithNestedStructure.stories';
 export { Selection } from './TreeSelection.stories';
 export { Manipulation } from './TreeManipulation.stories';
 export { LazyLoading } from './TreeLazyLoading.stories';
