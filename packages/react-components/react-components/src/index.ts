@@ -821,7 +821,9 @@ export type {
 
 export { resolvePositioningShorthand } from '@fluentui/react-positioning';
 export type {
+  PositioningBoundary,
   PositioningProps,
+  PositioningRect,
   PositioningShorthand,
   PositioningShorthandValue,
   PositioningImperativeRef,

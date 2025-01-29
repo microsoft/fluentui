@@ -325,6 +325,31 @@ describe('Tree', () => {
       });
     });
   });
+  describe('Keyboard + Mouse interactions', () => {
+    it('actions should remain visible whenever a focused treeitem is hovered in/out', () => {
+      mount(
+        <TreeTest defaultOpenItems={['item1']} id="tree" aria-label="Tree">
+          <TreeItem itemType="branch" value="item1" data-testid="item1">
+            <TreeItemLayout actions={<Button id="action">action</Button>}>level 1, item 1</TreeItemLayout>
+            <Tree>
+              <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
+                <TreeItemLayout>level 2, item 1</TreeItemLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
+          <TreeItem itemType="leaf" value="item2" data-testid="item2">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+          </TreeItem>
+        </TreeTest>,
+      );
+      cy.focused().should('not.exist');
+      cy.document().realPress('Tab');
+      cy.get('[data-testid="item1"]').should('be.focused');
+      cy.get('#action').should('be.visible').realHover();
+      cy.get('[data-testid=item2]').realHover();
+      cy.get('#action').should('be.visible');
+    });
+  });
 
   describe('Control open state per item', () => {
     it('should remain open when opening/closing a controlled item', () => {

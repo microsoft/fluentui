@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-overflow",
-  "version": "9.2.7",
+  "version": "9.2.8",
   "description": "React bindings for @fluentui/priority-overflow",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

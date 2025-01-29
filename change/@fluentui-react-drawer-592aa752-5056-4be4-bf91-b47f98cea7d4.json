@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove forced synchronous layout in Drawer",
-  "packageName": "@fluentui/react-drawer",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
