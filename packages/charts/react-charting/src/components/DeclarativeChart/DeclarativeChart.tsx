@@ -245,7 +245,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         <SankeyChart {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap, isDarkTheme)} {...commonProps} />
       );
     case 'indicator':
-      if (plotlyInput.data?.[0]?.mode?.includes('gauge')) {
+    case 'gauge':
+      if (plotlyInput.data?.[0]?.mode?.includes('gauge') || plotlyInput.data?.[0]?.type === 'gauge') {
         return (
           <GaugeChart {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)} {...commonProps} />
         );
@@ -255,8 +256,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <VerticalBarChart {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap, isDarkTheme)} {...commonProps} />
       );
-    case 'gauge':
-      return <GaugeChart {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)} {...commonProps} />;
     default:
       const xValues = (plotlyInput.data[0] as PlotData).x;
       const yValues = (plotlyInput.data[0] as PlotData).y;
