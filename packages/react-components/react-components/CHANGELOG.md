@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 22 Jan 2025 14:00:07 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jan 2025 21:26:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.58.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.58.2)
+
+Tue, 28 Jan 2025 21:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.58.1..@fluentui/react-components_v9.58.2)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: make SplitButton divider transparent for subtle and transparent variants ([PR #33726](https://github.com/microsoft/fluentui/pull/33726) by vgenaev@gmail.com)
+- `@fluentui/react-carousel`
+  - fix: Ensure carousel handles indexing when window size is larger then combined card size ([PR #33732](https://github.com/microsoft/fluentui/pull/33732) by mifraser@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: add aria-disabled to expand button when disabled ([PR #33530](https://github.com/microsoft/fluentui/pull/33530) by sarah.higley@microsoft.com)
+- `@fluentui/react-tree`
+  - bugfix: actions lose visibility when mouse and keyboard interactions are mixed ([PR #33731](https://github.com/microsoft/fluentui/pull/33731) by bernardo.sunderhus@gmail.com)
+
+## [9.58.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.58.1)
+
+Mon, 27 Jan 2025 20:27:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.58.0..@fluentui/react-components_v9.58.1)
+
+### Minor changes
+
+- `@fluentui/react-menu`
+  - feat: Add `subText` slot to enable multiline menu layout ([PR #33704](https://github.com/microsoft/fluentui/pull/33704) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-color-picker-preview`
+  - fix: default state for ColorSliders ([PR #33715](https://github.com/microsoft/fluentui/pull/33715) by v.kozlova13@gmail.com)
+- `@fluentui/react-components`
+  - feat: export "PositioningBoundary" & "PositioningRect" types ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by olfedias@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: remove forced synchronous layout in Drawer ([PR #33665](https://github.com/microsoft/fluentui/pull/33665) by seanmonahan@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: MenuItem is only focused when mouse cursor is moved ([PR #33725](https://github.com/microsoft/fluentui/pull/33725) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - feat: allow to configure boundaries with "PositioningRect" ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by olfedias@microsoft.com)
 
 ## [9.58.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.58.0)
 

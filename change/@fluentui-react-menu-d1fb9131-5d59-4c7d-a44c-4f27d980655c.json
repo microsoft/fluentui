@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add `subText` slot to enable multiline menu layout",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

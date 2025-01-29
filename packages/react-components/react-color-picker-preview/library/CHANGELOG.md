@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-color-picker-preview
 
-This log was last generated on Wed, 22 Jan 2025 14:00:14 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jan 2025 20:27:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.1.5)
+
+Mon, 27 Jan 2025 20:27:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker-preview_v0.1.4..@fluentui/react-color-picker-preview_v0.1.5)
+
+### Patches
+
+- fix: default state for ColorSliders ([PR #33715](https://github.com/microsoft/fluentui/pull/33715) by v.kozlova13@gmail.com)
 
 ## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.1.4)
 
