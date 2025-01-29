@@ -328,7 +328,10 @@ export function createStringXAxis(
  * @returns {number[]}
  */
 function calculateRoundedTicks(minVal: number, maxVal: number, splitInto: number) {
-  const ticksInterval = d3nice(minVal, maxVal, splitInto);
+  const ticksInterval =
+    minVal >= 0
+      ? d3nice(minVal !== maxVal ? minVal : 0, maxVal, splitInto)
+      : d3nice(minVal, minVal !== maxVal ? maxVal : 0, splitInto);
   return d3Ticks(ticksInterval[0], ticksInterval[ticksInterval.length - 1], splitInto);
 }
 /**
