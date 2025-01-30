@@ -25,6 +25,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
   const selected = useDataGridContext_unstable(ctx => ctx.selection.isRowSelected(rowId));
   const focusMode = useDataGridContext_unstable(ctx => ctx.focusMode);
   const compositeRowTabsterAttribute = useDataGridContext_unstable(ctx => ctx.compositeRowTabsterAttribute);
+  const isSingleSelect = useDataGridContext_unstable(ctx => ctx.selection.selectionMode === 'single');
 
   const tabbable = focusMode === 'row_unstable' || focusMode === 'composite';
   const appearance = useDataGridContext_unstable(ctx => {
@@ -78,6 +79,11 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
     selectionCell: slot.optional(props.selectionCell, {
       renderByDefault: selectable,
       elementType: DataGridSelectionCell,
+      defaultProps: {
+        radioIndicator: {
+          disabled: isHeader,
+        },
+      },
     }),
     renderCell: props.children,
     columnDefs,
