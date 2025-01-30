@@ -33,7 +33,6 @@ export const sliderCSSVars: {
     sliderStepsPercentVar: string;
     sliderThumbColorVar: string;
     sliderThumbSizeVar: string;
-    sliderThumbPositionVar: string;
 };
 
 // @public (undocumented)
