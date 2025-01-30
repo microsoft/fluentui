@@ -129,7 +129,7 @@ const useThumbStyles = makeStyles({
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
     borderRadius: tokens.borderRadiusCircular,
-    border: `1px solid ${tokens.colorNeutralForeground4}`,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralForeground4}`,
     boxShadow: tokens.shadow4,
     backgroundColor: `var(${colorSliderCSSVars.thumbColorVar})`,
     [`${thumbPositionVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${colorSliderCSSVars.sliderProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
