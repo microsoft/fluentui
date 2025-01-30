@@ -117,7 +117,7 @@ export class SVGTooltipText
 
   public render(): React.ReactNode {
     const { content, tooltipProps, textProps, shouldReceiveFocus = true } = this.props;
-    const { isTooltipVisible } = this.state;
+    const { isTooltipVisible, textX, textY, textWidth, textHeight } = this.state;
     const tooltipRenderProps: ITooltipProps = {
       content,
       targetElement: this._getTargetElement(),
@@ -135,16 +135,15 @@ export class SVGTooltipText
       (!!this.props.isTooltipVisibleProp && this.state.isOverflowing && !!content) || (isTooltipVisible && !!content);
     const backgroundColor = this.props.theme ? this.props.theme.semanticColors.bodyBackground : undefined;
     const isRTL = getRTL();
-    const rectX = isRTL ? this.state.textX! + this.state.textWidth! - PADDING : this.state.textX! - PADDING;
+    const rectX = isRTL ? (textX ?? 0) + (textWidth ?? 0) - PADDING : (textX ?? 0) - PADDING;
     return (
       <>
         <rect
           x={rectX}
-          y={this.state.textY! - PADDING}
-          width={this.state.textWidth! + 2 * PADDING}
-          height={this.state.textHeight! + 2 * PADDING}
+          y={(textY ?? 0) - PADDING}
+          width={(textWidth ?? 0) + 2 * PADDING}
+          height={(textHeight ?? 0) + 2 * PADDING}
           fill={backgroundColor}
-          transform={textProps?.transform}
         />
         <text
           {...textProps}
@@ -193,7 +192,7 @@ export class SVGTooltipText
   };
 
   private _measureText = (): void => {
-    if (this._tooltipHost.current) {
+    if (this._tooltipHost.current && typeof this._tooltipHost.current.getBBox === 'function') {
       const bbox = this._tooltipHost.current.getBBox();
       this.setState({
         textX: bbox.x,
