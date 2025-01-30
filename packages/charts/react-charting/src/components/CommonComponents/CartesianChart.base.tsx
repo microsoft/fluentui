@@ -413,6 +413,7 @@ export class CartesianChartBase
             this.isIntegralDataset,
             true,
             this.props.supportNegativeData!,
+            this.props.roundedTicks!,
           );
         }
         yScale = this.props.createYAxis(
@@ -422,6 +423,7 @@ export class CartesianChartBase
           this.isIntegralDataset,
           false,
           this.props.supportNegativeData!,
+          this.props.roundedTicks!,
         );
       }
 
