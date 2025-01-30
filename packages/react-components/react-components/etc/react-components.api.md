@@ -691,8 +691,10 @@ import { Portal } from '@fluentui/react-portal';
 import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
+import { PositioningBoundary } from '@fluentui/react-positioning';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningRect } from '@fluentui/react-positioning';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
@@ -1135,6 +1137,7 @@ import { tagPickerButtonClassNames } from '@fluentui/react-tag-picker';
 import { TagPickerButtonProps } from '@fluentui/react-tag-picker';
 import { TagPickerButtonSlots } from '@fluentui/react-tag-picker';
 import { TagPickerButtonState } from '@fluentui/react-tag-picker';
+import { TagPickerContextValue } from '@fluentui/react-tag-picker';
 import { TagPickerContextValues } from '@fluentui/react-tag-picker';
 import { TagPickerControl } from '@fluentui/react-tag-picker';
 import { tagPickerControlClassNames } from '@fluentui/react-tag-picker';
@@ -1734,6 +1737,7 @@ import { useTagGroupStyles_unstable } from '@fluentui/react-tags';
 import { useTagPicker_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerButton_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerButtonStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerContext_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerControl_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerControlStyles_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerFilter } from '@fluentui/react-tag-picker';
@@ -3199,9 +3203,13 @@ export { PortalProps }
 
 export { PortalState }
 
+export { PositioningBoundary }
+
 export { PositioningImperativeRef }
 
 export { PositioningProps }
+
+export { PositioningRect }
 
 export { PositioningShorthand }
 
@@ -4086,6 +4094,8 @@ export { TagPickerButtonProps }
 export { TagPickerButtonSlots }
 
 export { TagPickerButtonState }
+
+export { TagPickerContextValue }
 
 export { TagPickerContextValues }
 
@@ -5284,6 +5294,8 @@ export { useTagPicker_unstable }
 export { useTagPickerButton_unstable }
 
 export { useTagPickerButtonStyles_unstable }
+
+export { useTagPickerContext_unstable }
 
 export { useTagPickerControl_unstable }
 

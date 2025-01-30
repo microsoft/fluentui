@@ -1,8 +1,43 @@
 # Change Log - @fluentui/react-charts-preview
 
-This log was last generated on Wed, 08 Jan 2025 18:33:36 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jan 2025 21:26:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.9)
+
+Tue, 28 Jan 2025 21:26:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.8..@fluentui/react-charts-preview_v0.1.9)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.101 ([PR #33736](https://github.com/microsoft/fluentui/pull/33736) by beachball)
+
+## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.8)
+
+Mon, 27 Jan 2025 20:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.7..@fluentui/react-charts-preview_v0.1.8)
+
+### Patches
+
+- Bump @fluentui/react-overflow to v9.2.8 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
+- Bump @fluentui/react-popover to v9.9.32 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
+- Bump @fluentui/react-tooltip to v9.5.5 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
+
+## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.7)
+
+Wed, 22 Jan 2025 14:00:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.6..@fluentui/react-charts-preview_v0.1.7)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.100 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.50 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-overflow to v9.2.7 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-popover to v9.9.31 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-tabster to v9.23.3 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-tooltip to v9.5.4 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-utilities to v9.18.20 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
 
 ## [0.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.6)
 

@@ -357,6 +357,8 @@ Object {
     },
   ],
   "mode": "plotly",
+  "secondaryYAxistitle": undefined,
+  "secondaryYScaleOptions": undefined,
   "xAxisTitle": "Votes",
   "yAxisTitle": "Framework",
 }
@@ -2800,7 +2802,7 @@ Object {
           "y": "y_19",
         },
       ],
-      "legend": "",
+      "legend": undefined,
       "value": 0,
     },
   ],
@@ -3325,6 +3327,8 @@ Object {
     ],
   },
   "mode": "tonexty",
+  "secondaryYAxistitle": undefined,
+  "secondaryYScaleOptions": undefined,
   "supportNegativeData": true,
   "xAxisTitle": "",
   "yAxisTitle": "",
@@ -4557,6 +4561,8 @@ Object {
     ],
   },
   "mode": "tonexty",
+  "secondaryYAxistitle": undefined,
+  "secondaryYScaleOptions": undefined,
   "supportNegativeData": true,
   "xAxisTitle": "",
   "yAxisTitle": "",
@@ -4565,7 +4571,6 @@ Object {
 
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToVBCProps - Should return VBC props 1`] = `
 Object {
-  "barWidth": 24,
   "chartTitle": "",
   "data": Array [
     Object {
@@ -4929,6 +4934,8 @@ Object {
     },
   ],
   "mode": "plotly",
+  "secondaryYAxistitle": undefined,
+  "secondaryYScaleOptions": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 3400,

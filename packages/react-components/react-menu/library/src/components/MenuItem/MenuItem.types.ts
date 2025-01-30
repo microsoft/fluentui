@@ -29,6 +29,11 @@ export type MenuItemSlots = {
    * Secondary content rendered opposite the primary content (e.g Shortcut text)
    */
   secondaryContent?: Slot<'span'>;
+
+  /**
+   * Additional descriptor to main content that creates a multiline layout
+   */
+  subText?: Slot<'span'>;
 };
 
 export type MenuItemProps = Omit<ComponentProps<Partial<MenuItemSlots>>, 'content'> &
