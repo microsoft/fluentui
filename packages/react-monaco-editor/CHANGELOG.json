@@ -2,6 +2,21 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Thu, 30 Jan 2025 07:20:49 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.287",
+      "version": "1.7.287",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.23.49",
+            "commit": "fa5549e7d9da4865ac079c8c7b284106813a7e82"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Jan 2025 07:21:15 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.7.286",
       "version": "1.7.286",

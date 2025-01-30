@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 29 Jan 2025 07:21:15 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Jan 2025 07:20:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.49)
+
+Thu, 30 Jan 2025 07:20:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.48..@fluentui/react-charting_v5.23.49)
+
+### Patches
+
+- Support rounded ticks in declarative charts ([PR #33730](https://github.com/microsoft/fluentui/pull/33730) by 74965306+Anush2303@users.noreply.github.com)
+- Add background to the SVGTooltipText ([PR #33696](https://github.com/microsoft/fluentui/pull/33696) by 120183316+srmukher@users.noreply.github.com)
+- Fix chart crashes of plotly examples ([PR #33735](https://github.com/microsoft/fluentui/pull/33735) by 74965306+Anush2303@users.noreply.github.com)
 
 ## [5.23.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.48)
 
