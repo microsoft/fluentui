@@ -149,6 +149,12 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
             />
           </g>
           <g>
+            <rect
+              height="8"
+              width="8"
+              x="-4"
+              y="-4"
+            />
             <text
               aria-hidden="true"
               class=
@@ -957,28 +963,36 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
           onMouseEnter={[Function]}
           onMouseMove={[Function]}
         >
-          <text
-            aria-hidden="true"
-            className=
+          Array [
+            <rect
+              height={8}
+              width={8}
+              x={-4}
+              y={-4}
+            />,
+            <text
+              aria-hidden="true"
+              className=
 
-                {
-                  fill: #323130;
-                  font-size: 20px;
-                  font-weight: 600;
-                }
-            data-is-focusable={false}
-            id="tooltip-host4"
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            textAnchor="middle"
-            x={0}
-            y={0}
-          >
-            25%
-          </text>
+                  {
+                    fill: #323130;
+                    font-size: 20px;
+                    font-weight: 600;
+                  }
+              data-is-focusable={false}
+              id="tooltip-host4"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              textAnchor="middle"
+              x={0}
+              y={0}
+            >
+              25%
+            </text>,
+          ]
         </g>
       </g>
     </svg>
@@ -1536,28 +1550,36 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
           onMouseEnter={[Function]}
           onMouseMove={[Function]}
         >
-          <text
-            aria-hidden="true"
-            className=
+          Array [
+            <rect
+              height={8}
+              width={8}
+              x={-4}
+              y={-4}
+            />,
+            <text
+              aria-hidden="true"
+              className=
 
-                {
-                  fill: #323130;
-                  font-size: 20px;
-                  font-weight: 600;
-                }
-            data-is-focusable={false}
-            id="tooltip-host4"
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            textAnchor="middle"
-            x={0}
-            y={0}
-          >
-            25%
-          </text>
+                  {
+                    fill: #323130;
+                    font-size: 20px;
+                    font-weight: 600;
+                  }
+              data-is-focusable={false}
+              id="tooltip-host4"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              textAnchor="middle"
+              x={0}
+              y={0}
+            >
+              25%
+            </text>,
+          ]
         </g>
       </g>
     </svg>
@@ -1730,28 +1752,36 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
           onMouseEnter={[Function]}
           onMouseMove={[Function]}
         >
-          <text
-            aria-hidden="true"
-            className=
+          Array [
+            <rect
+              height={8}
+              width={8}
+              x={-4}
+              y={-4}
+            />,
+            <text
+              aria-hidden="true"
+              className=
 
-                {
-                  fill: #323130;
-                  font-size: 20px;
-                  font-weight: 600;
-                }
-            data-is-focusable={false}
-            id="tooltip-host4"
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            textAnchor="middle"
-            x={0}
-            y={0}
-          >
-            25%
-          </text>
+                  {
+                    fill: #323130;
+                    font-size: 20px;
+                    font-weight: 600;
+                  }
+              data-is-focusable={false}
+              id="tooltip-host4"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              textAnchor="middle"
+              x={0}
+              y={0}
+            >
+              25%
+            </text>,
+          ]
         </g>
       </g>
     </svg>
@@ -2322,28 +2352,36 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
             onMouseEnter={[Function]}
             onMouseMove={[Function]}
           >
-            <text
-              aria-hidden="true"
-              className=
+            Array [
+              <rect
+                height={8}
+                width={8}
+                x={-4}
+                y={-4}
+              />,
+              <text
+                aria-hidden="true"
+                className=
 
-                  {
-                    fill: #f3f2f1;
-                    font-size: 20px;
-                    font-weight: 600;
-                  }
-              data-is-focusable={false}
-              id="tooltip-host7"
-              onBlurCapture={[Function]}
-              onFocusCapture={[Function]}
-              onKeyDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              textAnchor="middle"
-              x={0}
-              y={0}
-            >
-              25%
-            </text>
+                    {
+                      fill: #f3f2f1;
+                      font-size: 20px;
+                      font-weight: 600;
+                    }
+                data-is-focusable={false}
+                id="tooltip-host7"
+                onBlurCapture={[Function]}
+                onFocusCapture={[Function]}
+                onKeyDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                textAnchor="middle"
+                x={0}
+                y={0}
+              >
+                25%
+              </text>,
+            ]
           </g>
         </g>
       </svg>
@@ -2902,28 +2940,36 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
           onMouseEnter={[Function]}
           onMouseMove={[Function]}
         >
-          <text
-            aria-hidden="true"
-            className=
+          Array [
+            <rect
+              height={8}
+              width={8}
+              x={-4}
+              y={-4}
+            />,
+            <text
+              aria-hidden="true"
+              className=
 
-                {
-                  fill: #323130;
-                  font-size: 20px;
-                  font-weight: 600;
-                }
-            data-is-focusable={false}
-            id="tooltip-host4"
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            textAnchor="middle"
-            x={0}
-            y={0}
-          >
-            25%
-          </text>
+                  {
+                    fill: #323130;
+                    font-size: 20px;
+                    font-weight: 600;
+                  }
+              data-is-focusable={false}
+              id="tooltip-host4"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              textAnchor="middle"
+              x={0}
+              y={0}
+            >
+              25%
+            </text>,
+          ]
         </g>
       </g>
     </svg>
@@ -3462,28 +3508,36 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
           onMouseEnter={[Function]}
           onMouseMove={[Function]}
         >
-          <text
-            aria-hidden="true"
-            className=
+          Array [
+            <rect
+              height={8}
+              width={8}
+              x={-4}
+              y={-4}
+            />,
+            <text
+              aria-hidden="true"
+              className=
 
-                {
-                  fill: #323130;
-                  font-size: 20px;
-                  font-weight: 600;
-                }
-            data-is-focusable={false}
-            id="tooltip-host3"
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            textAnchor="middle"
-            x={0}
-            y={0}
-          >
-            60%
-          </text>
+                  {
+                    fill: #323130;
+                    font-size: 20px;
+                    font-weight: 600;
+                  }
+              data-is-focusable={false}
+              id="tooltip-host3"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              textAnchor="middle"
+              x={0}
+              y={0}
+            >
+              60%
+            </text>,
+          ]
         </g>
       </g>
     </svg>
@@ -3918,28 +3972,36 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
           onMouseEnter={[Function]}
           onMouseMove={[Function]}
         >
-          <text
-            aria-hidden="true"
-            className=
+          Array [
+            <rect
+              height={8}
+              width={8}
+              x={-4}
+              y={-4}
+            />,
+            <text
+              aria-hidden="true"
+              className=
 
-                {
-                  fill: #323130;
-                  font-size: 20px;
-                  font-weight: 600;
-                }
-            data-is-focusable={false}
-            id="tooltip-host3"
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            textAnchor="middle"
-            x={0}
-            y={0}
-          >
-            60%
-          </text>
+                  {
+                    fill: #323130;
+                    font-size: 20px;
+                    font-weight: 600;
+                  }
+              data-is-focusable={false}
+              id="tooltip-host3"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              textAnchor="middle"
+              x={0}
+              y={0}
+            >
+              60%
+            </text>,
+          ]
         </g>
       </g>
     </svg>
@@ -4406,28 +4468,36 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
           onMouseEnter={[Function]}
           onMouseMove={[Function]}
         >
-          <text
-            aria-hidden="true"
-            className=
+          Array [
+            <rect
+              height={8}
+              width={8}
+              x={-4}
+              y={-4}
+            />,
+            <text
+              aria-hidden="true"
+              className=
 
-                {
-                  fill: #323130;
-                  font-size: 20px;
-                  font-weight: 600;
-                }
-            data-is-focusable={false}
-            id="tooltip-host4"
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            textAnchor="middle"
-            x={0}
-            y={0}
-          >
-            25%
-          </text>
+                  {
+                    fill: #323130;
+                    font-size: 20px;
+                    font-weight: 600;
+                  }
+              data-is-focusable={false}
+              id="tooltip-host4"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              textAnchor="middle"
+              x={0}
+              y={0}
+            >
+              25%
+            </text>,
+          ]
         </g>
       </g>
     </svg>
@@ -4985,28 +5055,36 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
           onMouseEnter={[Function]}
           onMouseMove={[Function]}
         >
-          <text
-            aria-hidden="true"
-            className=
+          Array [
+            <rect
+              height={8}
+              width={8}
+              x={-4}
+              y={-4}
+            />,
+            <text
+              aria-hidden="true"
+              className=
 
-                {
-                  fill: #323130;
-                  font-size: 20px;
-                  font-weight: 600;
-                }
-            data-is-focusable={false}
-            id="tooltip-host4"
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            textAnchor="middle"
-            x={0}
-            y={0}
-          >
-            25/100
-          </text>
+                  {
+                    fill: #323130;
+                    font-size: 20px;
+                    font-weight: 600;
+                  }
+              data-is-focusable={false}
+              id="tooltip-host4"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              textAnchor="middle"
+              x={0}
+              y={0}
+            >
+              25/100
+            </text>,
+          ]
         </g>
       </g>
     </svg>
@@ -5564,17 +5642,55 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
           onMouseEnter={[Function]}
           onMouseMove={[Function]}
         >
+          Array [
+            <rect
+              height={8}
+              width={8}
+              x={-4}
+              y={-4}
+            />,
+            <text
+              aria-hidden="true"
+              className=
+
+                  {
+                    fill: #323130;
+                    font-size: 20px;
+                    font-weight: 600;
+                  }
+              data-is-focusable={false}
+              id="tooltip-host4"
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              textAnchor="middle"
+              x={0}
+              y={0}
+            >
+              25%
+            </text>,
+          ]
+        </g>
+        Array [
+          <rect
+            height={8}
+            width={8}
+            x={-4}
+            y={-4}
+          />,
           <text
-            aria-hidden="true"
             className=
 
                 {
                   fill: #323130;
-                  font-size: 20px;
+                  font-size: 12px;
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host4"
+            dominantBaseline="hanging"
+            id="tooltip-host5"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -5582,33 +5698,11 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
             onMouseLeave={[Function]}
             textAnchor="middle"
             x={0}
-            y={0}
+            y={4}
           >
-            25%
-          </text>
-        </g>
-        <text
-          className=
-
-              {
-                fill: #323130;
-                font-size: 12px;
-                font-weight: 600;
-              }
-          data-is-focusable={false}
-          dominantBaseline="hanging"
-          id="tooltip-host5"
-          onBlurCapture={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          textAnchor="middle"
-          x={0}
-          y={4}
-        >
-          Low Risk
-        </text>
+            Low Risk
+          </text>,
+        ]
       </g>
     </svg>
   </div>

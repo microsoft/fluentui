@@ -796,7 +796,7 @@ export const transformPlotlyJsonToGaugeProps = (
   };
 };
 
-const MAX_DEPTH = 8;
+const MAX_DEPTH = 15;
 export const sanitizeJson = (jsonObject: any, depth: number = 0): any => {
   if (depth > MAX_DEPTH) {
     throw new Error('Maximum json depth exceeded');
