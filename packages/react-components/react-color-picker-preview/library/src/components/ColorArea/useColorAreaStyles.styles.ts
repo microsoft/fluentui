@@ -54,7 +54,7 @@ const useThumbStyles = makeStyles({
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
     borderRadius: tokens.borderRadiusCircular,
-    border: `1px solid ${tokens.colorNeutralForeground4}`,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralForeground4}`,
     boxShadow: tokens.shadow4,
     backgroundColor: `var(${colorAreaCSSVars.thumbColorVar})`,
     transform: 'translate(-50%, 50%)',
