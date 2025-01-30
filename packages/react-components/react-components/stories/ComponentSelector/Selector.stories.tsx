@@ -18,7 +18,7 @@ import {
   useId,
   Subtitle2,
 } from '@fluentui/react-components';
-import { ArrowDownRegular } from '@fluentui/react-icons';
+import { ArrowDownRegular, SearchRegular } from '@fluentui/react-icons';
 
 import { removeFromArray, getComponentStoryUrl, getAllQuestions } from './utils';
 import questions from './selection-logic/Questions.json';
@@ -98,6 +98,11 @@ const useStyles = makeStyles({
     marginBottom: '10px',
   },
   selectedItemsAndNextButtonContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    paddingRight: '50px',
+  },
+  topTabsAndSearchWrapper: {
     display: 'flex',
     justifyContent: 'space-between',
     paddingRight: '50px',
@@ -351,20 +356,27 @@ export const Selector = () => {
 
   return (
     <>
-      <Text id="selectorMode-text">Selector mode:</Text>
-      <TabList selectedValue={mode} onTabSelect={onModeTabSelect} aria-labelledby="selectorMode-text">
-        <Tab value="byComponents">By components</Tab>
-        <Tab value="byBehaviors">By behaviors</Tab>
-      </TabList>
+      <div className={classes.topTabsAndSearchWrapper}>
+        <TabList selectedValue={mode} onTabSelect={onModeTabSelect} aria-labelledby="selectorMode-text">
+          <Tab value="byComponents">By components</Tab>
+          <Tab value="byBehaviors">By behaviors</Tab>
+        </TabList>
+        <Input
+          contentBefore={<SearchRegular />}
+          size="small"
+          placeholder="Filter"
+          aria-label="Filter"
+          value={filterText}
+          onChange={onFilterChange}
+        />
+      </div>
       {mode === 'byComponents' && (
         <>
-          <Field label="Filter components">
-            <Input value={filterText} onChange={onFilterChange} />
-          </Field>
-          <div>
+          {/* // TODO make aria-live region which is hidden and announce the number of components available */}
+          {/* <div>
             <Text role="status">{filteredComponentsDefinitions.length} components available.</Text>
-          </div>
-          <h2>Choose Component</h2>
+          </div> */}
+          <h2>Choose Component ({filteredComponentsDefinitions.length})</h2>
           {selectedComponents.length > 0 && (
             <>
               <div className={classes.selectedComponentTitle}>
