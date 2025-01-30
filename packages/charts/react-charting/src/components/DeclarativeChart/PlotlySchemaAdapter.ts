@@ -29,6 +29,7 @@ import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
+import { findNumericMinMaxOfY } from '../../utilities/utilities';
 import { Layout, PlotlySchema, PieData, PlotData, SankeyData } from './PlotlySchema';
 import type { Datum, TypedArray } from './PlotlySchema';
 import { timeParse } from 'd3-time-format';
@@ -525,6 +526,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     } as ILineChartPoints;
   });
 
+  const yMinMaxValues = findNumericMinMaxOfY(chartData);
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
   const chartProps: IChartProps = {
@@ -550,6 +552,9 @@ export const transformPlotlyJsonToScatterChartProps = (
       yAxisTitle,
       secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
       secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+      roundedTicks: true,
+      yMinValue: yMinMaxValues.startValue,
+      yMaxValue: yMinMaxValues.endValue,
     } as ILineChartProps;
   }
 };
