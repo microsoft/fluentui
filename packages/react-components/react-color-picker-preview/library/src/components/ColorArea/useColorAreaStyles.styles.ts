@@ -68,7 +68,7 @@ const useThumbStyles = makeStyles({
       borderRadius: tokens.borderRadiusCircular,
       boxSizing: 'border-box',
       content: "''",
-      border: `2px solid ${tokens.colorNeutralBackground1}`,
+      border: `${tokens.strokeWidthThick} solid ${tokens.colorNeutralBackground1}`,
     },
   },
   focusIndicator: createFocusOutlineStyle({
