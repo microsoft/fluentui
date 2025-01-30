@@ -144,6 +144,7 @@ export class SVGTooltipText
           width={(textWidth ?? 0) + 2 * PADDING}
           height={(textHeight ?? 0) + 2 * PADDING}
           fill={backgroundColor}
+          transform={textProps?.transform}
         />
         <text
           {...textProps}
