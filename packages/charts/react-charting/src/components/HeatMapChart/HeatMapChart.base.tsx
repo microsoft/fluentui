@@ -408,7 +408,11 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
               onMouseOut={this._onRectBlurOrMouseOut}
             >
               <rect
-                fill={this._colorScale(dataPointObject.value)}
+                fill={
+                  dataPointObject.value
+                    ? this._colorScale(dataPointObject.value)
+                    : this.props.theme!.semanticColors.bodyBackground
+                }
                 width={this._xAxisScale.bandwidth()}
                 height={this._yAxisScale.bandwidth()}
                 onClick={dataPointObject.onClick}
@@ -418,7 +422,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
                 textAnchor={'middle'}
                 className={this._classNames.text}
                 transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
-                fill={foregroundColor}
+                fill={dataPointObject.value ? foregroundColor : this.props.theme!.semanticColors.bodyText}
               >
                 {convertToLocaleString(dataPointObject.rectText, this.props.culture)}
               </text>
