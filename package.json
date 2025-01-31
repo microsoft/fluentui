@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/fluentui-repo",
   "version": "1.0.0",
-  "description": "Reusable React components for building experiences for Microsoft 365.",
+  "description": "Reusable React components for test building experiences for Microsoft 365.",
   "private": true,
   "repository": {
     "type": "git",
