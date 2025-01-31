@@ -3,6 +3,7 @@ import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Slider } from '@fluentui/react-slider';
 import { getStoryVariant, RTL, TestWrapperDecorator, withStoryWrightSteps } from '../../utilities';
+import { SampleCustomizedSlider } from './utils';
 
 export default {
   title: 'Slider Converged',
@@ -31,3 +32,5 @@ export const Vertical100 = () => <Slider vertical defaultValue={100} />;
 Vertical100.storyName = 'Vertical - 100%';
 
 export const Vertical100RTL = getStoryVariant(Vertical100, RTL);
+
+export const CustomizedSlider = <SampleCustomizedSlider />;
