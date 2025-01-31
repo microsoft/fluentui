@@ -71,7 +71,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
 
     this.state = {
-      value: value,
+      value,
       renderedValue: undefined,
     };
   }
