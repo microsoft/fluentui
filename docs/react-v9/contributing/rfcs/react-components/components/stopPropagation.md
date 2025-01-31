@@ -41,11 +41,13 @@ The one thing to note is that this RFC is narrowly scoped to only escape key key
 `preventDefault`:
 
 - Is less opinionated about when & how partner teams should be able to listen to the escape key
+- Not destructive / allows teams to opt in to stopping propagation for escape
 
 `stopPropagation`:
 
 - Follows the most common established pattern
 - Interop with v8, v0, the HTML `<dialog>` element, and other non-Fluent controls
+- No way to opt out of stopping propagation for escape
 
 ## Open Issues
 
