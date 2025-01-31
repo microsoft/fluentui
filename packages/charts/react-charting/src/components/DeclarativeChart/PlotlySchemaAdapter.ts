@@ -621,7 +621,7 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
 
   (firstData.x as Datum[])?.forEach((xVal, xIdx: number) => {
     firstData.y?.forEach((yVal: any, yIdx: number) => {
-      const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
+      const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx] ?? 0;
 
       heatmapDataPoints.push({
         x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
