@@ -30,15 +30,15 @@ export default {
 } satisfies Meta<typeof DataGrid>;
 
 export const Default = () => {
-  const getRowId = React.useCallback((item: Item) => item.file.label, []);
   return (
     <DataGrid
       items={items}
       columns={columns}
       sortable
-      selectionMode="single"
+      selectionMode="multiselect"
       subtleSelection
-      getRowId={getRowId}
+      // eslint-disable-next-line react/jsx-no-bind
+      getRowId={(item: Item) => item.file.label}
       focusMode="composite"
       style={{ minWidth: '550px' }}
     >

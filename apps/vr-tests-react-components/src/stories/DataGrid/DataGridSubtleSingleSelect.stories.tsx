@@ -13,7 +13,7 @@ import { withStoryWrightSteps } from '../../utilities';
 import { columns, items, type Item } from './utils';
 
 export default {
-  title: 'DataGridConverged - subtle multi select',
+  title: 'DataGridConverged - subtle single select',
 
   decorators: [
     story =>
@@ -30,15 +30,15 @@ export default {
 } satisfies Meta<typeof DataGrid>;
 
 export const Default = () => {
-  const getRowId = React.useCallback((item: Item) => item.file.label, []);
   return (
     <DataGrid
       items={items}
       columns={columns}
       sortable
-      selectionMode="multiselect"
+      selectionMode="single"
       subtleSelection
-      getRowId={getRowId}
+      // eslint-disable-next-line react/jsx-no-bind
+      getRowId={(item: Item) => item.file.label}
       focusMode="composite"
       style={{ minWidth: '550px' }}
     >
