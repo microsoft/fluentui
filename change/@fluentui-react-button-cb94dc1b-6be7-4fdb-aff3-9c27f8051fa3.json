@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Button sets correct disabledFocusable icon color",
+  "packageName": "@fluentui/react-button",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
