@@ -1,5 +1,5 @@
 import { attr, FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
-import { Start } from '../patterns/start-end.js';
+import type { Start } from '../patterns/start-end.js';
 import { toggleState } from '../utils/element-internals.js';
 import { uniqueId } from '../utils/unique-id.js';
 
@@ -107,6 +107,16 @@ export class DropdownOption extends FASTElement implements Start {
    */
   @observable
   public disabled?: boolean;
+
+  /**
+   * Toggles the disabled state when the user changes the `disabled` property.
+   *
+   * @internal
+   */
+  protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    this.elementInternals.ariaDisabled = this.disabled ? 'true' : 'false';
+    toggleState(this.elementInternals, 'disabled', this.disabled);
+  }
 
   /**
    * The initial disabled state of the option.
@@ -356,20 +366,15 @@ export class DropdownOption extends FASTElement implements Start {
   }
 
   /**
-   * Resets the form value to its initial value when the form is reset.
-   *
-   * @internal
-   */
-  formResetCallback(): void {
-    this.selected = !!this.defaultSelected;
-  }
-
-  /**
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/setFormValue | `ElementInternals.setFormValue()`} method.
    *
    * @internal
    */
   public setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void {
+    if (this.disabled) {
+      this.elementInternals.setFormValue(null);
+      return;
+    }
     this.elementInternals.setFormValue(value, value ?? state);
   }
 

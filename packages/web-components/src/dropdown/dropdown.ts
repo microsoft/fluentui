@@ -101,6 +101,14 @@ export class BaseDropdown extends FASTElement {
   @attr({ mode: 'boolean' })
   public disabled?: boolean;
 
+  public disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    Updates.enqueue(() => {
+      this.options.forEach(option => {
+        option.disabled = option.disabledAttribute || this.disabled;
+      });
+    });
+  }
+
   /**
    * The display value for the control.
    *
@@ -201,6 +209,14 @@ export class BaseDropdown extends FASTElement {
       for (const key of ['disabled', 'multiple']) {
         notifier.notify(key);
       }
+
+      Updates.enqueue(() => {
+        this.enabledOptions
+          .filter(x => x.defaultSelected)
+          .forEach((x, i) => {
+            x.selected = this.multiple || i === 0;
+          });
+      });
     }
   }
 
@@ -363,6 +379,22 @@ export class BaseDropdown extends FASTElement {
    * @public
    */
   public static formAssociated = true;
+
+  formResetCallback(): void {
+    this.enabledOptions.forEach((x, i) => {
+      if (this.multiple) {
+        x.selected = !!x.defaultSelected;
+        return;
+      }
+
+      if (!x.defaultSelected) {
+        x.selected = false;
+        return;
+      }
+
+      this.selectOption(i);
+    });
+  }
 
   /**
    * A reference to the first freeform option, if present.

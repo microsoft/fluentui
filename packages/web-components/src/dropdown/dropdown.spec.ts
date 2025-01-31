@@ -118,5 +118,195 @@ test.describe('Dropdown', () => {
 
       await expect(page).toHaveURL(/fruit=cherry/);
     });
+
+    test('should NOT submit the value when the dropdown is disabled', async ({ fastPage, page }) => {
+      const { element } = fastPage;
+      const submitButton = page.locator('button[type=submit]');
+
+      await fastPage.setTemplate(/* html */ `
+        <form action="foo">
+          <fluent-dropdown name="fruit" disabled>
+            <fluent-listbox>
+              <fluent-option value="apple">Apple</fluent-option>
+              <fluent-option value="banana">Banana</fluent-option>
+              <fluent-option value="orange">Orange</fluent-option>
+              <fluent-option value="mango">Mango</fluent-option>
+              <fluent-option value="kiwi">Kiwi</fluent-option>
+              <fluent-option value="cherry" selected>Cherry</fluent-option>
+              <fluent-option value="grapefruit">Grapefruit</fluent-option>
+              <fluent-option value="papaya">Papaya</fluent-option>
+            </fluent-listbox>
+          </fluent-dropdown>
+          <button type="submit">Submit</button>
+        </form>
+      `);
+
+      await element.click();
+
+      await expect(element.locator('fluent-listbox')).toBeHidden();
+
+      await submitButton.click();
+
+      await expect(page).not.toHaveURL(/fruit=cherry/);
+    });
+
+    test('should NOT submit multiple values when the `multiple` attribute is NOT set and multiple options are selected', async ({
+      fastPage,
+      page,
+    }) => {
+      const { element } = fastPage;
+      const submitButton = page.locator('button[type=submit]');
+
+      await fastPage.setTemplate(/* html */ `
+        <form action="foo">
+          <fluent-dropdown name="fruit">
+            <fluent-listbox>
+              <fluent-option value="apple">Apple</fluent-option>
+              <fluent-option value="banana">Banana</fluent-option>
+              <fluent-option value="orange">Orange</fluent-option>
+              <fluent-option value="mango" selected>Mango</fluent-option>
+              <fluent-option value="kiwi" selected>Kiwi</fluent-option>
+              <fluent-option value="cherry">Cherry</fluent-option>
+              <fluent-option value="grapefruit">Grapefruit</fluent-option>
+              <fluent-option value="papaya">Papaya</fluent-option>
+            </fluent-listbox>
+          </fluent-dropdown>
+          <button type="submit">Submit</button>
+        </form>
+      `);
+
+      await element.click();
+
+      await expect(element.locator('fluent-listbox')).toBeVisible();
+
+      await submitButton.click();
+
+      await expect(page).toHaveURL(/fruit=mango/);
+
+      await expect(page).not.toHaveURL(/fruit=kiwi/);
+    });
+
+    test('should submit multiple values when the `multiple` attribute is set and multiple options are selected', async ({
+      fastPage,
+      page,
+    }) => {
+      const { element } = fastPage;
+      const submitButton = page.locator('button[type=submit]');
+
+      await fastPage.setTemplate(/* html */ `
+        <form action="foo">
+          <fluent-dropdown name="fruit" multiple>
+            <fluent-listbox>
+              <fluent-option value="apple">Apple</fluent-option>
+              <fluent-option value="banana">Banana</fluent-option>
+              <fluent-option value="orange">Orange</fluent-option>
+              <fluent-option value="mango" selected>Mango</fluent-option>
+              <fluent-option value="kiwi" selected>Kiwi</fluent-option>
+              <fluent-option value="cherry">Cherry</fluent-option>
+              <fluent-option value="grapefruit">Grapefruit</fluent-option>
+              <fluent-option value="papaya">Papaya</fluent-option>
+            </fluent-listbox>
+          </fluent-dropdown>
+          <button type="submit">Submit</button>
+        </form>
+      `);
+
+      await expect(element.locator('fluent-option[value=mango]')).toHaveJSProperty('selected', true);
+      await expect(element.locator('fluent-option[value=mango]')).toHaveAttribute('selected');
+
+      await expect(element.locator('fluent-option[value=kiwi]')).toHaveJSProperty('selected', true);
+      await expect(element.locator('fluent-option[value=kiwi]')).toHaveAttribute('selected');
+
+      await submitButton.click();
+
+      await expect(page).toHaveURL(/fruit=mango/);
+
+      await expect(page).toHaveURL(/fruit=kiwi/);
+    });
+
+    test('should reset the value when the form is reset', async ({ fastPage, page }) => {
+      const { element } = fastPage;
+      const resetButton = page.locator('button[type=reset]');
+
+      await fastPage.setTemplate(/* html */ `
+        <form action="foo">
+          <fluent-dropdown name="fruit">
+            <fluent-listbox>
+              <fluent-option value="apple">Apple</fluent-option>
+              <fluent-option value="banana">Banana</fluent-option>
+              <fluent-option value="orange">Orange</fluent-option>
+              <fluent-option value="mango" selected>Mango</fluent-option>
+              <fluent-option value="kiwi">Kiwi</fluent-option>
+              <fluent-option value="cherry">Cherry</fluent-option>
+              <fluent-option value="grapefruit">Grapefruit</fluent-option>
+              <fluent-option value="papaya">Papaya</fluent-option>
+            </fluent-listbox>
+          </fluent-dropdown>
+          <button type="reset">Reset</button>
+        </form>
+      `);
+
+      await element.click();
+
+      await expect(element.locator('fluent-listbox')).toBeVisible();
+
+      await element.locator('fluent-option[value=kiwi]').click();
+
+      await expect(element.locator('fluent-option[value=kiwi]')).toHaveJSProperty('selected', true);
+
+      await expect(element.locator('fluent-option[value=mango]')).toHaveJSProperty('selected', false);
+
+      await resetButton.click();
+
+      await expect(element.locator('fluent-option[value=mango]')).toHaveJSProperty('selected', true);
+
+      await expect(element.locator('fluent-option[value=kiwi]')).toHaveJSProperty('selected', false);
+    });
+
+    test('should reset the values when the form is reset and the `multiple` attribute is present', async ({
+      fastPage,
+      page,
+    }) => {
+      const { element } = fastPage;
+      const resetButton = page.locator('button[type=reset]');
+
+      await fastPage.setTemplate(/* html */ `
+        <form action="foo">
+          <fluent-dropdown name="fruit" multiple>
+            <fluent-listbox>
+              <fluent-option value="apple">Apple</fluent-option>
+              <fluent-option value="banana">Banana</fluent-option>
+              <fluent-option value="orange">Orange</fluent-option>
+              <fluent-option value="mango" selected>Mango</fluent-option>
+              <fluent-option value="kiwi" selected>Kiwi</fluent-option>
+              <fluent-option value="cherry">Cherry</fluent-option>
+              <fluent-option value="grapefruit">Grapefruit</fluent-option>
+              <fluent-option value="papaya">Papaya</fluent-option>
+            </fluent-listbox>
+          </fluent-dropdown>
+          <button type="reset">Reset</button>
+        </form>
+      `);
+
+      await element.click();
+
+      await expect(element.locator('fluent-listbox')).toBeVisible();
+
+      await element.locator('fluent-option[value=apple]').click();
+
+      await expect(element.locator('fluent-option[value=kiwi]')).toHaveJSProperty('selected', true);
+
+      await expect(element.locator('fluent-option[value=mango]')).toHaveJSProperty('selected', true);
+
+      await expect(element.locator('fluent-option[value=apple]')).toHaveJSProperty('selected', true);
+
+      await resetButton.click();
+
+      await expect(element.locator('fluent-option[value=mango]')).toHaveJSProperty('selected', true);
+
+      await expect(element.locator('fluent-option[value=kiwi]')).toHaveJSProperty('selected', true);
+
+      await expect(element.locator('fluent-option[value=apple]')).toHaveJSProperty('selected', false);
+    });
   });
 });
