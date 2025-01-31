@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 31 Jan 2025 07:21:30 GMT",
+      "tag": "@fluentui/react-charting_v5.23.50",
+      "version": "5.23.50",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5a9a15f090aa7d01d5dc2f83ef7d22f91390eed2",
+            "comment": "Adding transform prop to svg rect"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jan 2025 07:20:49 GMT",
       "tag": "@fluentui/react-charting_v5.23.49",
       "version": "5.23.49",

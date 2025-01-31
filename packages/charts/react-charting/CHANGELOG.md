@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 30 Jan 2025 07:20:49 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Jan 2025 07:21:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.50)
+
+Fri, 31 Jan 2025 07:21:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.49..@fluentui/react-charting_v5.23.50)
+
+### Patches
+
+- Adding transform prop to svg rect ([PR #33748](https://github.com/microsoft/fluentui/pull/33748) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.23.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.49)
 
