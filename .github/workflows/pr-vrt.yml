@@ -42,7 +42,7 @@ jobs:
       - run: yarn playwright install --with-deps
 
       - name: Run VR tests (generate screenshots)
-        run: yarn nx affected -t test-vr --nxBail
+        run: yarn nx affected run-many -t test-vr --nxBail
 
       - name: Prepare VR screenshots for upload
         uses: actions/github-script@v7
