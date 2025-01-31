@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Single select should not render header selection indicator",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
