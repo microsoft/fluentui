@@ -4,6 +4,11 @@ import type { ContextSelector, Context } from '@fluentui/react-context-selector'
 import type { SelectableHandler } from '../selectable/index';
 import type { MenuCheckedValueChangeData, MenuCheckedValueChangeEvent, MenuListProps } from '../components/index';
 
+export interface MouseInputState {
+  isMouseInput: () => boolean;
+  setMouseInput(isMouseInput: boolean): void;
+}
+
 export const MenuListContext: Context<MenuListContextValue> = createContext<MenuListContextValue | undefined>(
   undefined,
 ) as Context<MenuListContextValue>;
@@ -15,6 +20,7 @@ const menuListContextDefaultValue: MenuListContextValue = {
   selectRadio: () => null,
   hasIcons: false,
   hasCheckmarks: false,
+  mouseInputState: { isMouseInput: () => false, setMouseInput: () => null },
 };
 
 /**
@@ -34,6 +40,7 @@ export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'hasIco
    * the signature remains just to avoid breaking changes
    */
   onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
+  mouseInputState?: MouseInputState;
 };
 
 export const MenuListProvider = MenuListContext.Provider;
