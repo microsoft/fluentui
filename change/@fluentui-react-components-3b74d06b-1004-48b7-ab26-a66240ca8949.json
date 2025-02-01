@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "BREAKING: rename api report file name according to api-extractor change",
+  "packageName": "@fluentui/react-components",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
