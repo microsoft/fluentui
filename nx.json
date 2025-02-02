@@ -11,38 +11,63 @@
   },
   "targetDefaults": {
     "bundle-size": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "cache": true
     },
     "bundle": {
       "cache": true,
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"],
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ],
       "cache": true
     },
     "build-storybook": {
       "dependsOn": [],
-      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.storybook/**",
+        "{projectRoot}/.storybook/**"
+      ],
       "cache": true
     },
     "generate-api": {
-      "dependsOn": ["^generate-api"],
+      "dependsOn": [
+        "^generate-api"
+      ],
       "cache": true
     },
     "type-check": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "cache": true
     },
     "prepare": {
-      "dependsOn": ["^prepare"],
+      "dependsOn": [
+        "^prepare"
+      ],
       "cache": true
     },
     "test": {
-      "dependsOn": ["^build"],
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js"
+      ],
       "cache": true
     },
     "test-ssr": {
@@ -51,10 +76,16 @@
     "e2e": {
       "dependsOn": [],
       "cache": true,
-      "inputs": ["default", "{projectRoot}/cypress.config.ts", "!{projectRoot}/**/?(*.)+cy.[jt]s?(x)?"]
+      "inputs": [
+        "default",
+        "{projectRoot}/cypress.config.ts",
+        "!{projectRoot}/**/?(*.)+cy.[jt]s?(x)?"
+      ]
     },
     "lint": {
-      "dependsOn": ["build"],
+      "dependsOn": [
+        "build"
+      ],
       "cache": true,
       "inputs": [
         "default",
@@ -64,11 +95,17 @@
       ]
     },
     "verify-packaging": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "cache": true
     },
     "@nx/jest:jest": {
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js"
+      ],
       "cache": true,
       "options": {
         "passWithNoTests": true
@@ -82,7 +119,10 @@
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "sharedGlobals": [],
     "production": [
       "default",
@@ -98,11 +138,14 @@
       "northstar": {
         "releaseTagPattern": "@fluentui/react-northstar_v{version}",
         "projectsRelationship": "fixed",
-        "projects": ["packages/fluentui/*"]
+        "projects": [
+          "packages/fluentui/*"
+        ]
       }
     }
   },
   "parallel": 3,
   "useInferencePlugins": false,
-  "defaultBase": "master"
+  "defaultBase": "master",
+  "nxCloudAccessToken": "ZTAyOTBkMjAtMDAwNy00ZTllLTg5NzktNTdhNjQzOTJlMDRkfHJlYWQtd3JpdGU="
 }
