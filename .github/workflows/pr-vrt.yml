@@ -41,6 +41,29 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn playwright install --with-deps
 
+      - name: Run VR tests (generate screenshots)
+        run: yarn nx affected -t test-vr --nxBail
+
+      - name: Prepare VR screenshots for upload
+        uses: actions/github-script@v7
+        id: screenshots_root
+        with:
+          script: |
+            const run = require('./.github/scripts/prepare-vr-screenshots-for-upload');
+            const config = {
+              projects: ['vr-tests-web-components', 'vr-tests-react-components', 'vr-tests', 'docs']
+            };
+            const result = await run({github,context,core,config});
+            return result;
+          result-encoding: string
+
+      - name: Upload VR screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: vrscreenshot
+          retention-days: 1
+          path: ${{steps.screenshots_root.outputs.result}}
+
       - name: Save PR number
         run: echo ${{ github.event.number }} > pr.txt
       - uses: actions/upload-artifact@v4
