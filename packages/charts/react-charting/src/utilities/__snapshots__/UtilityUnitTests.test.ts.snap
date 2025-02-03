@@ -3784,6 +3784,77 @@ Array [
 ]
 `;
 
+exports[`prepareDatapoints for rounded tick value cases should return an array with rounded data points when roundedTicks is true and yMaxValue is negative 1`] = `
+Array [
+  -200,
+  -180,
+  -160,
+  -140,
+  -120,
+  -100,
+]
+`;
+
+exports[`prepareDatapoints for rounded tick value cases should return an array with rounded data points when roundedTicks is true and yMinValue is 0 1`] = `
+Array [
+  0,
+  50,
+  100,
+]
+`;
+
+exports[`prepareDatapoints for rounded tick value cases should return an array with rounded data points when roundedTicks is true and yMinValue is negative 1`] = `
+Array [
+  -100,
+  -50,
+  0,
+  50,
+  100,
+]
+`;
+
+exports[`prepareDatapoints for rounded tick value cases should return an array with rounded data points when roundedTicks is true and yMinValue is positive 1`] = `
+Array [
+  50,
+  60,
+  70,
+  80,
+  90,
+  100,
+]
+`;
+
+exports[`prepareDatapoints for rounded tick value cases should return an array with rounded data points with large numbers in dataset 1`] = `
+Array [
+  -10000000,
+  -5000000,
+  0,
+  5000000,
+  10000000,
+]
+`;
+
+exports[`prepareDatapoints for rounded tick value cases should return an array with rounded data points with non-integral dataset 1`] = `
+Array [
+  -10,
+  -5,
+  0,
+  5,
+  10,
+  15,
+]
+`;
+
+exports[`prepareDatapoints for rounded tick value cases should return an array with rounded data points with variation in dataset 1`] = `
+Array [
+  -200000,
+  0,
+  200000,
+  400000,
+  600000,
+]
+`;
+
 exports[`prepareDatapoints should handle the case where the range spans across zero 1`] = `
 Array [
   -9,

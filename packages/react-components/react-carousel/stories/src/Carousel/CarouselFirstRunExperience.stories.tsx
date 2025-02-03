@@ -93,7 +93,7 @@ export const FirstRunExperience = () => {
       <DialogTrigger>
         <Button>Open Dialog</Button>
       </DialogTrigger>
-      <DialogSurface className={styles.surface}>
+      <DialogSurface className={styles.surface} aria-label="Discover Copilot">
         <Carousel
           className={styles.carousel}
           groupSize={1}

@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Wed, 22 Jan 2025 14:00:11 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jan 2025 21:26:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.9.2)
+
+Tue, 28 Jan 2025 21:26:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.9.1..@fluentui/react-tree_v9.9.2)
+
+### Patches
+
+- bugfix: actions lose visibility when mouse and keyboard interactions are mixed ([PR #33731](https://github.com/microsoft/fluentui/pull/33731) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-button to v9.3.101 ([PR #33736](https://github.com/microsoft/fluentui/pull/33736) by beachball)
+
+## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.9.1)
+
+Mon, 27 Jan 2025 20:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.9.0..@fluentui/react-tree_v9.9.1)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.50 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.47 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
+- Bump @fluentui/react-radio to v9.2.42 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
 
 ## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.9.0)
 

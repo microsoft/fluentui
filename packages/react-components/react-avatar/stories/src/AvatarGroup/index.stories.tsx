@@ -1,4 +1,4 @@
-import { AvatarGroup } from '@fluentui/react-components';
+import { AvatarGroup, AvatarGroupItem, Avatar, AvatarGroupPopover } from '@fluentui/react-components';
 
 import bestPracticesMd from './AvatarGroupBestPractices.md';
 import descriptionMd from './AvatarGroupDescription.md';
@@ -14,6 +14,11 @@ export { Tooltip } from './AvatarGroupTooltip.stories';
 export default {
   title: 'Components/AvatarGroup',
   component: AvatarGroup,
+  subcomponents: {
+    AvatarGroupItem,
+    Avatar,
+    AvatarGroupPopover,
+  },
   parameters: {
     docs: {
       description: {

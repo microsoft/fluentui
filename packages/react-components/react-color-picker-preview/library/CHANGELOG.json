@@ -2,6 +2,21 @@
   "name": "@fluentui/react-color-picker-preview",
   "entries": [
     {
+      "date": "Mon, 27 Jan 2025 20:27:33 GMT",
+      "tag": "@fluentui/react-color-picker-preview_v0.1.5",
+      "version": "0.1.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "d8e6230e7e0b504a9651d10b15860ccaf0a87824",
+            "comment": "fix: default state for ColorSliders"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2025 14:00:14 GMT",
       "tag": "@fluentui/react-color-picker-preview_v0.1.4",
       "version": "0.1.4",

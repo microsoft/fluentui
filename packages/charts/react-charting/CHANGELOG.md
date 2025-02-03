@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 27 Jan 2025 07:20:35 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Jan 2025 07:21:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.50)
+
+Fri, 31 Jan 2025 07:21:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.49..@fluentui/react-charting_v5.23.50)
+
+### Patches
+
+- Adding transform prop to svg rect ([PR #33748](https://github.com/microsoft/fluentui/pull/33748) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.23.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.49)
+
+Thu, 30 Jan 2025 07:20:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.48..@fluentui/react-charting_v5.23.49)
+
+### Patches
+
+- Support rounded ticks in declarative charts ([PR #33730](https://github.com/microsoft/fluentui/pull/33730) by 74965306+Anush2303@users.noreply.github.com)
+- Add background to the SVGTooltipText ([PR #33696](https://github.com/microsoft/fluentui/pull/33696) by 120183316+srmukher@users.noreply.github.com)
+- Fix chart crashes of plotly examples ([PR #33735](https://github.com/microsoft/fluentui/pull/33735) by 74965306+Anush2303@users.noreply.github.com)
+
+## [5.23.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.48)
+
+Wed, 29 Jan 2025 07:21:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.47..@fluentui/react-charting_v5.23.48)
+
+### Patches
+
+- fix: use inline styles in SVG export for better compatibility ([PR #33713](https://github.com/microsoft/fluentui/pull/33713) by 110246001+krkshitij@users.noreply.github.com)
+- Bump @fluentui/theme-samples to v8.7.198 ([PR #33713](https://github.com/microsoft/fluentui/pull/33713) by beachball)
+- Bump @fluentui/react to v8.122.9 ([PR #33713](https://github.com/microsoft/fluentui/pull/33713) by beachball)
 
 ## [5.23.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.47)
 

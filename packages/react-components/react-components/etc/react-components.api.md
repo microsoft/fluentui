@@ -691,8 +691,10 @@ import { Portal } from '@fluentui/react-portal';
 import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
+import { PositioningBoundary } from '@fluentui/react-positioning';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningRect } from '@fluentui/react-positioning';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
@@ -3201,9 +3203,13 @@ export { PortalProps }
 
 export { PortalState }
 
+export { PositioningBoundary }
+
 export { PositioningImperativeRef }
 
 export { PositioningProps }
+
+export { PositioningRect }
 
 export { PositioningShorthand }
 

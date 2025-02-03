@@ -215,7 +215,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       );
     case 'bar':
       const orientation = plotlyInput.data[0].orientation;
-      if (orientation === 'h') {
+      if (orientation === 'h' && isNumberArray((plotlyInput.data[0] as PlotData).x)) {
         return (
           <ResponsiveHorizontalBarChartWithAxis
             {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap, isDarkTheme)}
@@ -271,7 +271,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         />
       );
     case 'indicator':
-      if (plotlyInput.data?.[0]?.mode?.includes('gauge')) {
+    case 'gauge':
+      if (plotlyInput.data?.[0]?.mode?.includes('gauge') || plotlyInput.data?.[0]?.type === 'gauge') {
         return (
           <ResponsiveGaugeChart
             {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)}
