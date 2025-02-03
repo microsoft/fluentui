@@ -725,6 +725,8 @@ export class BaseDropdown extends FASTElement {
         if (this.isCombobox) {
           break;
         }
+
+        e.preventDefault();
       }
 
       case 'Enter':

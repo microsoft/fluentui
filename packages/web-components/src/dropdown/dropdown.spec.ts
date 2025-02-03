@@ -72,6 +72,16 @@ test.describe('Dropdown', () => {
     await expect(listbox).toBeHidden();
   });
 
+  test('should open the dropdown when the space key is pressed', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const listbox = element.locator('fluent-listbox');
+    const button = element.locator('[role=combobox]');
+
+    await button.press(' ');
+
+    await expect(listbox).toBeVisible();
+  });
+
   test("should set the `name` property on options when it's set on the dropdown", async ({ fastPage }) => {
     const { element } = fastPage;
     const options = element.locator('fluent-option');
