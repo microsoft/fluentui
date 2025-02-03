@@ -408,11 +408,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
               onMouseOut={this._onRectBlurOrMouseOut}
             >
               <rect
-                fill={
-                  !isNaN(dataPointObject.value)
-                    ? this._colorScale(dataPointObject.value)
-                    : this.props.theme!.semanticColors.bodyBackground
-                }
+                fill={this._colorScale(dataPointObject.value)}
                 width={this._xAxisScale.bandwidth()}
                 height={this._yAxisScale.bandwidth()}
                 onClick={dataPointObject.onClick}
