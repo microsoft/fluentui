@@ -607,6 +607,7 @@ export class BaseDropdown extends FASTElement {
     // @internal
     controlSlot: HTMLSlotElement;
     disabled?: boolean;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
     get displayValue(): string;
     // @internal
     elementInternals: ElementInternals;
@@ -618,6 +619,8 @@ export class BaseDropdown extends FASTElement {
     // @internal
     focusoutHandler(e: FocusEvent): boolean | void;
     static formAssociated: boolean;
+    // @internal
+    formResetCallback(): void;
     // @override
     id: string;
     // @internal
@@ -2542,12 +2545,12 @@ export class DropdownOption extends FASTElement implements Start {
     // @internal
     protected disabledAttributeChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal
+    protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
     elementInternals: ElementInternals;
     get form(): HTMLFormElement | null;
     static formAssociated: boolean;
     formAttribute?: string;
-    // @internal
-    formResetCallback(): void;
     freeform?: boolean;
     // @internal
     freeformOutputs?: HTMLOutputElement[];

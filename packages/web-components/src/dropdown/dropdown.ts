@@ -101,6 +101,12 @@ export class BaseDropdown extends FASTElement {
   @attr({ mode: 'boolean' })
   public disabled?: boolean;
 
+  /**
+   * Updates the disabled state of the options when the disabled property changes.
+   *
+   * @param prev - the previous disabled state
+   * @param next - the current disabled state
+   */
   public disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
     Updates.enqueue(() => {
       this.options.forEach(option => {
@@ -380,6 +386,11 @@ export class BaseDropdown extends FASTElement {
    */
   public static formAssociated = true;
 
+  /**
+   * Resets the form value to its initial value when the form is reset.
+   *
+   * @internal
+   */
   formResetCallback(): void {
     this.enabledOptions.forEach((x, i) => {
       if (this.multiple) {
