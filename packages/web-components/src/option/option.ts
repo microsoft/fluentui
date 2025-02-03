@@ -7,14 +7,14 @@ import { uniqueId } from '../utils/unique-id.js';
  * A DropdownOption Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#option | ARIA option } role.
  *
- * @slot - The default slot for the option's content
- * @slot checked-indicator - The checked indicator
+ * @slot - The default slot for the option's content.
+ * @slot checked-indicator - The checked indicator.
  * @slot description - Optional description content.
  *
  * @remarks
- * To support single and multiple selection modes with the {@link BaseDropdown} element, the Option element itself handles
- * form association and value submission, rather than its parent Dropdown element. In this way, the Option element is
- * a variation of the Checkbox element that is specifically designed for use in the Dropdown element.
+ * To support single and multiple selection modes with the {@link (BaseDropdown:class)} element, the Option element
+ * itself handles form association and value submission, rather than its parent Dropdown element. In this way, the
+ * Option element is a variation of the Checkbox element that is specifically designed for use in the Dropdown element.
  *
  * This class is named `DropdownOption` to avoid conflicts with the native `Option` global. Related constructs are also
  * titled with `DropdownOption` to maintain consistency.

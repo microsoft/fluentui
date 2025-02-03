@@ -15,7 +15,12 @@ import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.templa
  *
  * @remarks
  * The Dropdown element does not provide a form association value. Instead, the slotted Option elements handle form
- * association the same way as {@link (Checkbox:class)} elements. See the {@link (Option:class)} element for more details.
+ * association the same way as {@link (Checkbox:class)} elements. See the {@link (DropdownOption:class)} element for
+ * more details.
+ *
+ * @slot - The default slot. Accepts a {@link (Listbox:class)} element.
+ * @slot indicator - The indicator slot.
+ * @slot control - The control slot. This slot is automatically populated and should not be manually manipulated.
  *
  * @public
  */

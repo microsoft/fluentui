@@ -9,7 +9,7 @@ import { uniqueId } from '../utils/unique-id.js';
  * A Listbox Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#listbox | ARIA listbox } role.
  *
- * @slot - The default slot for the options
+ * @slot - The default slot for the options.
  * @emits connected - Dispatched when the element is connected to the DOM.
  *
  * @remarks
