@@ -166,6 +166,45 @@ const HeatMapNumberData: IHeatMapChartProps['data'] = [
   },
 ];
 
+const HeatMapUndefinedValueData: IHeatMapChartProps['data'] = [
+  {
+    value: 100,
+    legend: 'Excellent',
+    data: [
+      {
+        x: numericPoints[2],
+        y: numericPoints[1],
+        value: NaN,
+        callOutAccessibilityData: { ariaLabel: 'Lorem ipsum dolor sit amet' },
+      },
+      {
+        x: numericPoints[3],
+        y: numericPoints[0],
+        value: NaN,
+        callOutAccessibilityData: { ariaLabel: 'consectetur adipiscing elit' },
+      },
+    ],
+  },
+  {
+    value: 200,
+    legend: 'Nasty',
+    data: [
+      {
+        x: numericPoints[2],
+        y: numericPoints[0],
+        value: 25,
+        callOutAccessibilityData: { ariaLabel: 'sed do eiusmod tempor incididunt' },
+      },
+      {
+        x: numericPoints[3],
+        y: numericPoints[1],
+        value: NaN,
+        callOutAccessibilityData: { ariaLabel: 'ut labore et dolore magna aliqua' },
+      },
+    ],
+  },
+];
+
 describe('HeatMap chart rendering', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
@@ -322,6 +361,18 @@ describe('HeatMapChart snapshot tests', () => {
     const { container } = render(
       <HeatMapChart
         data={HeatMapNumberData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render HeatMapChart correctly with some undefined values in datapoints', () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapUndefinedValueData}
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
