@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add isStyleFunction type guard",
+  "packageName": "@fluentui/merge-styles",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

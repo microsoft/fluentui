@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import * as React_2 from 'react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 

@@ -1,7 +1,13 @@
-import { mergeCssSets, Stylesheet } from '@fluentui/merge-styles';
+import { mergeCssSets, Stylesheet, isStyleFunction } from '@fluentui/merge-styles';
 import { getRTL } from './rtl';
 import { getWindow } from './dom';
-import type { IStyleSet, IStyleSetBase, IProcessedStyleSet, IStyleFunctionOrObject } from '@fluentui/merge-styles';
+import type {
+  IStyleSet,
+  IStyleSetBase,
+  IProcessedStyleSet,
+  IStyleFunctionOrObject,
+  IStyleFunction,
+} from '@fluentui/merge-styles';
 import type { StyleFunction } from './styled';
 
 const MAX_CACHE_COUNT = 50;
@@ -82,7 +88,8 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     // simply return the result from the style funcion.
     if (
       options.useStaticStyles &&
-      typeof styleFunctionOrObject === 'function' &&
+      styleFunctionOrObject &&
+      isStyleFunction(styleFunctionOrObject) &&
       (styleFunctionOrObject as StyleFunction<TStyleProps, TStyleSet>).__noStyleOverride__
     ) {
       return styleFunctionOrObject(styleProps) as IProcessedStyleSet<TStyleSet>;
@@ -126,7 +133,7 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
         (current as any)[retVal] = mergeCssSets(
           [
             (typeof styleFunctionOrObject === 'function'
-              ? styleFunctionOrObject(styleProps)
+              ? (styleFunctionOrObject as IStyleFunction<TStyleProps, TStyleSet>)(styleProps)
               : styleFunctionOrObject) as IStyleSet<TStyleSet>,
           ],
           {

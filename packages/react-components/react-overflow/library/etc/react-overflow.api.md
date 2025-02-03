@@ -31,7 +31,7 @@ export interface OnOverflowChangeData extends OverflowState {
 // @public
 export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<ObserveOptions, "padding" | "overflowDirection" | "overflowAxis" | "minimumVisible">> & {
     children: React_2.ReactElement;
-    onOverflowChange?: ((ev: null, data: OverflowState) => void) | undefined;
+    onOverflowChange?: (ev: null, data: OverflowState) => void;
 } & React_2.RefAttributes<unknown>>;
 
 // @public
@@ -61,7 +61,7 @@ export function useIsOverflowGroupVisible(id: string): OverflowGroupState;
 export function useIsOverflowItemVisible(id: string): boolean;
 
 // @internal (undocumented)
-export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<ObserveOptions, 'onUpdateOverflow'>) => UseOverflowContainerReturn<TElement>;
+export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<ObserveOptions, "onUpdateOverflow">) => UseOverflowContainerReturn<TElement>;
 
 // @internal (undocumented)
 export interface UseOverflowContainerReturn<TElement extends HTMLElement> extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'registerOverflowMenu' | 'registerDivider'> {

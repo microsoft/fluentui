@@ -27,7 +27,7 @@ export { mergeStyleSets, mergeCssSets } from './mergeStyleSets';
 
 export { concatStyleSets } from './concatStyleSets';
 
-export { concatStyleSetsWithProps } from './concatStyleSetsWithProps';
+export { concatStyleSetsWithProps, isStyleFunction } from './concatStyleSetsWithProps';
 
 export { fontFace } from './fontFace';
 

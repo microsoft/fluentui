@@ -448,6 +448,9 @@ export interface ISerializedStylesheet {
     rules: Stylesheet['_rules'];
 }
 
+// @public (undocumented)
+export function isStyleFunction<TStylesProps, TStyleSet extends IStyleSetBase>(val: IStyleFunctionOrObject<TStylesProps, TStyleSet>): val is IStyleFunction<TStylesProps, TStyleSet>;
+
 // @public
 export type IStyle = IStyleBase | IStyleBaseArray;
 
