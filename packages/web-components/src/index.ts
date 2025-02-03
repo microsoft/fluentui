@@ -105,6 +105,29 @@ export {
 } from './drawer/index.js';
 export { DrawerBody, DrawerBodyDefinition, DrawerBodyTemplate, DrawerBodyStyles } from './drawer-body/index.js';
 export {
+  DropdownDefinition,
+  BaseDropdown,
+  Dropdown,
+  DropdownAppearance,
+  DropdownSize,
+  DropdownType,
+  isDropdown,
+  type DropdownOptions,
+  DropdownStyles,
+  dropdownButtonTemplate,
+  dropdownInputTemplate,
+  DropdownTemplate,
+} from './dropdown/index.js';
+export {
+  ListboxDefinition,
+  Listbox,
+  isListbox,
+  ListboxStyles,
+  ListboxTemplate,
+  listboxTemplate,
+} from './listbox/index.js';
+
+export {
   BaseField,
   Field,
   FieldLabelPosition,
@@ -157,6 +180,14 @@ export {
 export type { MenuItemColumnCount, MenuItemOptions } from './menu-item/index.js';
 export { MenuList, MenuListDefinition, MenuListStyles, MenuListTemplate } from './menu-list/index.js';
 export { Menu, MenuDefinition, MenuStyles, MenuTemplate } from './menu/index.js';
+export {
+  DropdownOption,
+  DropdownOptionDefinition,
+  DropdownOptionStyles,
+  DropdownOptionTemplate,
+  isDropdownOption,
+  type DropdownOptionOptions,
+} from './option/index.js';
 export { StartEnd, endSlotTemplate, startSlotTemplate } from './patterns/start-end.js';
 export type { StartOptions, EndOptions, StartEndOptions } from './patterns/start-end.js';
 export {
