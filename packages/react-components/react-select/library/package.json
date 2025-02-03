@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@fluentui/react-field": "^9.1.86",
-    "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-icons": "^2.0.271",
     "@fluentui/react-jsx-runtime": "^9.0.50",
     "@fluentui/react-shared-contexts": "^9.21.2",
     "@fluentui/react-theme": "^9.1.24",
