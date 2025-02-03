@@ -1216,6 +1216,24 @@ export interface IRefArrayData {
 }
 
 // @public
+export interface IResponsiveChildProps {
+    // (undocumented)
+    height?: number;
+    // (undocumented)
+    shouldResize?: number;
+    // (undocumented)
+    width?: number;
+}
+
+// @public
+export interface IResponsiveContainerProps {
+    children: React_2.ReactElement<IResponsiveChildProps>;
+    height?: number | string;
+    onResize?: (width: number, height: number) => void;
+    width?: number | string;
+}
+
+// @public
 export interface ISankeyChartAccessibilityProps {
     emptyAriaLabel?: string;
     linkAriaLabel?: string;
@@ -1641,6 +1659,9 @@ export enum NodesComposition {
 export const PieChart: React_2.FunctionComponent<IPieChartProps>;
 
 // @public
+export const ResponsiveContainer: React_2.FC<IResponsiveContainerProps>;
+
+// @public
 export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
 
 // @public
@@ -1685,6 +1706,9 @@ export const VerticalBarChart: React_2.FunctionComponent<IVerticalBarChartProps>
 
 // @public
 export const VerticalStackedBarChart: React_2.FunctionComponent<IVerticalStackedBarChartProps>;
+
+// @public
+export function withResponsiveContainer<TProps extends Omit<IResponsiveContainerProps, 'children'>>(WrappedComponent: React_2.ComponentType<TProps>): React_2.FC<TProps>;
 
 // (No @packageDocumentation comment for this package)
 

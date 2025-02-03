@@ -21,100 +21,99 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
     <div
       class=
           ms-FocusZone
+          chartWrapper
           &:focus {
             outline: none;
           }
       data-focuszone-id="FocusZone3"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <div>
-        <svg
-          aria-label="Donut chart example"
-          class=
+      <svg
+        aria-label="Donut chart example"
+        class=
 
-              {
-                alignment-adjust: center;
-                box-sizing: content-box;
-                display: block;
-                height: -40px;
-                overflow: visible;
-                width: 0px;
-              }
-          focusable="false"
-          viewBox="0 0 0 0"
+            {
+              alignment-adjust: center;
+              box-sizing: content-box;
+              display: block;
+              height: -40px;
+              overflow: visible;
+              width: 0px;
+            }
+        focusable="false"
+        viewBox="0 0 0 0"
+      >
+        <g
+          transform="translate(0, -20)"
         >
-          <g
-            transform="translate(0, -20)"
-          >
-            <g>
-              <path
-                aria-label="2020/04/30, 20000."
-                class=
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              class=
 
-                    {
-                      cursor: default;
-                      fill: #E5E5E5;
-                      opacity: 1;
-                      outline: transparent;
-                      stroke: #ffffff;
-                    }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
-                data-is-focusable="true"
-                id="_Pie_1first20000"
-                role="img"
-                tabindex="0"
-              />
-            </g>
-            <g>
-              <path
-                aria-label="2020/04/20, 39000."
-                class=
-
-                    {
-                      cursor: default;
-                      fill: #0078D4;
-                      opacity: 1;
-                      outline: transparent;
-                      stroke: #ffffff;
-                    }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
-                data-is-focusable="true"
-                id="_Pie_1second39000"
-                role="img"
-                tabindex="-1"
-              />
-            </g>
-            <g>
-              <path
-                aria-label="2020/04/25, 45000."
-                class=
-
-                    {
-                      cursor: default;
-                      fill: #DADADA;
-                      opacity: 1;
-                      outline: transparent;
-                      stroke: #ffffff;
-                    }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
-                data-is-focusable="true"
-                id="_Pie_1third45000"
-                role="img"
-                tabindex="-1"
-              />
-            </g>
+                  {
+                    cursor: default;
+                    fill: #E5E5E5;
+                    opacity: 1;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
+              data-is-focusable="true"
+              id="_Pie_1first20000"
+              role="img"
+              tabindex="0"
+            />
           </g>
-        </svg>
-      </div>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              class=
+
+                  {
+                    cursor: default;
+                    fill: #0078D4;
+                    opacity: 1;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
+              data-is-focusable="true"
+              id="_Pie_1second39000"
+              role="img"
+              tabindex="-1"
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              class=
+
+                  {
+                    cursor: default;
+                    fill: #DADADA;
+                    opacity: 1;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
+              data-is-focusable="true"
+              id="_Pie_1third45000"
+              role="img"
+              tabindex="-1"
+            />
+          </g>
+        </g>
+      </svg>
     </div>
     <div
       class=
@@ -670,100 +669,99 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
       <div
         class=
             ms-FocusZone
+            chartWrapper
             &:focus {
               outline: none;
             }
         data-focuszone-id="FocusZone6"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
-        <div>
-          <svg
-            aria-label="Donut chart example"
-            class=
+        <svg
+          aria-label="Donut chart example"
+          class=
 
-                {
-                  alignment-adjust: center;
-                  box-sizing: content-box;
-                  display: block;
-                  height: -40px;
-                  overflow: visible;
-                  width: 0px;
-                }
-            focusable="false"
-            viewBox="0 0 0 0"
+              {
+                alignment-adjust: center;
+                box-sizing: content-box;
+                display: block;
+                height: -40px;
+                overflow: visible;
+                width: 0px;
+              }
+          focusable="false"
+          viewBox="0 0 0 0"
+        >
+          <g
+            transform="translate(0, -20)"
           >
-            <g
-              transform="translate(0, -20)"
-            >
-              <g>
-                <path
-                  aria-label="2020/04/30, 20000."
-                  class=
+            <g>
+              <path
+                aria-label="2020/04/30, 20000."
+                class=
 
-                      {
-                        cursor: default;
-                        fill: #E5E5E5;
-                        opacity: 1;
-                        outline: transparent;
-                        stroke: #1b1a19;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                  d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
-                  data-is-focusable="true"
-                  id="_Pie_4first20000"
-                  role="img"
-                  tabindex="0"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="2020/04/20, 39000."
-                  class=
-
-                      {
-                        cursor: default;
-                        fill: #0078D4;
-                        opacity: 1;
-                        outline: transparent;
-                        stroke: #1b1a19;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                  d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
-                  data-is-focusable="true"
-                  id="_Pie_4second39000"
-                  role="img"
-                  tabindex="-1"
-                />
-              </g>
-              <g>
-                <path
-                  aria-label="2020/04/25, 45000."
-                  class=
-
-                      {
-                        cursor: default;
-                        fill: #DADADA;
-                        opacity: 1;
-                        outline: transparent;
-                        stroke: #1b1a19;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                  d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
-                  data-is-focusable="true"
-                  id="_Pie_4third45000"
-                  role="img"
-                  tabindex="-1"
-                />
-              </g>
+                    {
+                      cursor: default;
+                      fill: #E5E5E5;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #1b1a19;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
+                data-is-focusable="true"
+                id="_Pie_4first20000"
+                role="img"
+                tabindex="0"
+              />
             </g>
-          </svg>
-        </div>
+            <g>
+              <path
+                aria-label="2020/04/20, 39000."
+                class=
+
+                    {
+                      cursor: default;
+                      fill: #0078D4;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #1b1a19;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
+                data-is-focusable="true"
+                id="_Pie_4second39000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
+            <g>
+              <path
+                aria-label="2020/04/25, 45000."
+                class=
+
+                    {
+                      cursor: default;
+                      fill: #DADADA;
+                      opacity: 1;
+                      outline: transparent;
+                      stroke: #1b1a19;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
+                data-is-focusable="true"
+                id="_Pie_4third45000"
+                role="img"
+                tabindex="-1"
+              />
+            </g>
+          </g>
+        </svg>
       </div>
       <span
         class="ms-layer"
