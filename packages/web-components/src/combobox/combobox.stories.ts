@@ -2,7 +2,6 @@ import { html, repeat } from '@microsoft/fast-element';
 import type { Meta, StoryArgs, StoryObj } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import type { DropdownOption as FluentDropdownOption } from '../option/option.js';
-import * as DropdownStories from '../dropdown/dropdown.stories.js';
 import type { Dropdown as FluentDropdown } from '../dropdown/dropdown.js';
 import { DropdownAppearance, DropdownSize, DropdownType } from '../dropdown/dropdown.options.js';
 

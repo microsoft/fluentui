@@ -309,4 +309,31 @@ test.describe('Dropdown', () => {
       await expect(element.locator('fluent-option[value=apple]')).toHaveJSProperty('selected', false);
     });
   });
+
+  test.describe('type="combobox"', () => {
+    test('should select an option when the user types the value', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const input = element.locator('input');
+      const listbox = element.locator('fluent-listbox');
+      const kiwiOption = element.locator('fluent-option[value=kiwi]');
+
+      await fastPage.setTemplate({ attributes: { type: 'combobox' } });
+
+      await input.fill('kiwi');
+
+      await expect(listbox).toBeVisible();
+
+      const kiwiOptionId = await kiwiOption.evaluate(el => el.id);
+
+      await expect(input).toHaveAttribute('aria-activedescendant', kiwiOptionId);
+
+      await expect(kiwiOption).toHaveJSProperty('selected', false);
+
+      await input.press('Enter');
+
+      await expect(kiwiOption).toHaveJSProperty('selected', true);
+
+      await expect(input).toHaveValue('Kiwi');
+    });
+  });
 });
