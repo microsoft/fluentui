@@ -621,16 +621,16 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
 
   (firstData.x as Datum[])?.forEach((xVal, xIdx: number) => {
     firstData.y?.forEach((yVal: any, yIdx: number) => {
-      const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx] ?? NaN;
+      const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
 
       heatmapDataPoints.push({
         x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
         y: input.layout?.yaxis?.type === 'date' ? (yVal as Date) : yVal,
         value: zVal,
-        rectText: isNaN(zVal) ? '' : zVal,
+        rectText: zVal,
       });
 
-      if (typeof zVal === 'number' && !isNaN(zVal)) {
+      if (typeof zVal === 'number') {
         zMin = Math.min(zMin, zVal);
         zMax = Math.max(zMax, zVal);
       }
