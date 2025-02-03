@@ -1,0 +1,5 @@
+{
+  "name": "Link",
+  "component": "Link",
+  "attributes": ["singleAction", "navigatesToPage", "navigationByTabKey", "interactive"]
+}

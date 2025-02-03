@@ -1,0 +1,36 @@
+[
+  {
+    "id": "basicInputs",
+    "title": "Basic Inputs",
+    "components": [
+      "Accordion",
+      "Button",
+      "Checkbox",
+      "InfoLabel",
+      "link",
+      "List",
+      "Menu",
+      "MenuButton",
+      "MenuItemCheckbox",
+      "MenuItemRadio",
+      "MenuSubmenu",
+      "SplitButton",
+      "Table",
+      "TabList",
+      "Text",
+      "ToggleButton",
+      "Tooltip",
+      "Tree"
+    ]
+  },
+  {
+    "id": "commandsMenusAndNavs",
+    "title": "Commands, Menus and Navs",
+    "components": []
+  },
+  {
+    "id": "galleriesAndPickers",
+    "title": "Galleries and Pickers",
+    "components": []
+  }
+]
