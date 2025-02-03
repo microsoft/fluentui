@@ -448,6 +448,12 @@ export interface ICartesianChartProps {
   supportNegativeData?: boolean;
 
   /**
+   * @default false
+   * The prop used to decide rounded ticks on y axis
+   */
+  roundedTicks?: boolean;
+
+  /**
    * Optional callback to access the IChart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
@@ -671,6 +677,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     isIntegralDataset: boolean,
     useSecondaryYScale?: boolean,
     supportNegativeData?: boolean,
+    roundedTicks?: boolean,
   ) => ScaleLinear<number, number, never>;
 
   /**

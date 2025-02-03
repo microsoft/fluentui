@@ -429,6 +429,7 @@ export class CartesianChartBase
             this.isIntegralDataset,
             true,
             this.props.supportNegativeData!,
+            this.props.roundedTicks!,
           );
         }
         yScale = this.props.createYAxis(
@@ -438,6 +439,7 @@ export class CartesianChartBase
           this.isIntegralDataset,
           false,
           this.props.supportNegativeData!,
+          this.props.roundedTicks!,
         );
       }
 
@@ -568,6 +570,7 @@ export class CartesianChartBase
                 }}
                 maxWidth={xAxisTitleMaximumAllowedWidth}
                 wrapContent={wrapContent}
+                theme={this.props.theme}
               />
             )}
             <g
@@ -616,6 +619,7 @@ export class CartesianChartBase
                     }}
                     maxWidth={yAxisTitleMaximumAllowedHeight}
                     wrapContent={wrapContent}
+                    theme={this.props.theme}
                   />
                 )}
               </g>
@@ -639,6 +643,7 @@ export class CartesianChartBase
                 }}
                 maxWidth={yAxisTitleMaximumAllowedHeight}
                 wrapContent={wrapContent}
+                theme={this.props.theme}
               />
             )}
           </svg>

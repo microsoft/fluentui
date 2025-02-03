@@ -53,9 +53,9 @@ export const TruncatedValue = (props: Partial<DropdownProps>) => {
 
   return (
     <div className={styles.root}>
-      <label id={dropdownId}>Best pet</label>
+      <label htmlFor={dropdownId}>Best pet</label>
       <Dropdown
-        aria-labelledby={dropdownId}
+        id={dropdownId}
         listbox={{ className: styles.listbox }}
         button={<span className={styles.truncatedText}>{value}</span>}
         onOptionSelect={(e, data) => setValue(data.optionText ?? placeholder)}
