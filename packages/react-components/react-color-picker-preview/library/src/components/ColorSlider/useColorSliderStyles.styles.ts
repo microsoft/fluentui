@@ -14,6 +14,7 @@ export const colorSliderCSSVars = {
   sliderDirectionVar: `--fui-Slider--direction`,
   sliderProgressVar: `--fui-Slider--progress`,
   thumbColorVar: `--fui-Slider__thumb--color`,
+  railColorVar: `--fui-Slider__rail--color`,
 };
 
 // Internal CSS variables
@@ -66,8 +67,29 @@ const useStyles = makeStyles({
     gridTemplateRows: `1fr 100% 1fr`,
     gridTemplateColumns: `1fr var(${thumbSizeVar}) 1fr`,
   },
+});
+
+const useChannelStyles = makeStyles({
   hue: {
     backgroundImage: hueBackground,
+  },
+  saturation: {
+    backgroundImage: `linear-gradient(to right, #808080, var(${colorSliderCSSVars.railColorVar}))`,
+  },
+  value: {
+    backgroundImage: `linear-gradient(to right, #000, var(${colorSliderCSSVars.railColorVar}))`,
+  },
+  lightness: {
+    backgroundImage: `linear-gradient(to right, #000, var(${colorSliderCSSVars.railColorVar}), #fff)`,
+  },
+  red: {
+    backgroundImage: `linear-gradient(to right, #000, red)`,
+  },
+  green: {
+    backgroundImage: `linear-gradient(to right, #000, lime)`,
+  },
+  blue: {
+    backgroundImage: `linear-gradient(to right, #000, blue)`,
   },
 });
 
@@ -204,6 +226,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
   const shapeStyles = useShapeStyles();
+  const channelStyles = useChannelStyles();
   const isVertical = state.vertical;
 
   state.root.className = mergeClasses(
@@ -216,7 +239,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
   state.rail.className = mergeClasses(
     colorSliderClassNames.rail,
     railStyles.rail,
-    styles.hue,
+    channelStyles[state.channel || 'hue'],
     shapeStyles[state.shape || 'rounded'],
     isVertical ? railStyles.vertical : railStyles.horizontal,
     state.rail.className,

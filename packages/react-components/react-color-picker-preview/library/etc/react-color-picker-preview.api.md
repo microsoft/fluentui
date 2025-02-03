@@ -20,7 +20,7 @@ export const AlphaSlider: ForwardRefComponent<AlphaSliderProps>;
 export const alphaSliderClassNames: SlotClassNames<AlphaSliderSlots>;
 
 // @public
-export type AlphaSliderProps = ColorSliderProps & {
+export type AlphaSliderProps = Omit<ColorSliderProps, 'channel'> & {
     transparency?: boolean;
 };
 
@@ -83,7 +83,7 @@ export const colorSliderClassNames: SlotClassNames<ColorSliderSlots>;
 
 // @public
 export type ColorSliderProps = Omit<ComponentProps<Partial<ColorSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value' | 'color'> & Pick<ColorPickerProps, 'shape'> & {
-    channel?: string;
+    channel?: ColorChannel;
     onChange?: EventHandler<SliderOnChangeData>;
     vertical?: boolean;
     color?: HsvColor;
@@ -99,7 +99,7 @@ export type ColorSliderSlots = {
 };
 
 // @public
-export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical' | 'shape'>;
+export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical' | 'shape' | 'channel'>;
 
 // @public
 export const renderAlphaSlider_unstable: (state: AlphaSliderState) => JSX.Element;
