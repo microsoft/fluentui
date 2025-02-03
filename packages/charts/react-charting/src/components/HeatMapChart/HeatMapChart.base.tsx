@@ -422,7 +422,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
                 textAnchor={'middle'}
                 className={this._classNames.text}
                 transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
-                fill={!isNaN(dataPointObject.value) ? foregroundColor : this.props.theme!.semanticColors.bodyText}
+                fill={foregroundColor}
               >
                 {convertToLocaleString(dataPointObject.rectText, this.props.culture)}
               </text>
