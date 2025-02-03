@@ -36,5 +36,5 @@ jobs:
 
       - script: |
           npm deprecate ${{ parameters.packageSpec }} "${{ parameters.message }}" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=$(npmToken)
-
         displayName: 'Deprecate package'
+        condition: eq(variables.dryRun, false)

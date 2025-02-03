@@ -78,6 +78,7 @@ extends:
                 env:
                   GITHUB_PAT: $(githubPAT)
                 displayName: Publish changes and bump versions
+                condition: eq(variables.dryRun, false)
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:
