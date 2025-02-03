@@ -7,7 +7,7 @@ const tsConfigPath = path.resolve(__dirname, '../../../tsconfig.base.json');
 
 module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig} */ ({
   addons: [loadWorkspaceAddon('@fluentui/react-storybook-addon', { tsConfigPath })],
-  stories: ['../src/stories/Button/*.stories.tsx'],
+  stories: ['../src/**/*.stories.tsx'],
   core: {
     disableTelemetry: true,
   },
