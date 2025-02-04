@@ -24,6 +24,8 @@ export type ColorSliderProps = Omit<
   Pick<ColorPickerProps, 'shape'> & {
     channel?: string;
 
+    customStep?: string | number;
+
     /**
      * Triggers a callback when the value has been changed. This will be called on every individual step.
      */

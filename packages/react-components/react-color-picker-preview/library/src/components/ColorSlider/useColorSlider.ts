@@ -42,6 +42,7 @@ export const useColorSlider_unstable = (
 
   const {
     color,
+    customStep = '2',
     onChange = onChangeFromContext,
     shape = shapeFromContext,
     vertical,
@@ -70,6 +71,14 @@ export const useColorSlider_unstable = (
     setCurrentValue(newValue);
     inputOnChange?.(event);
     onChange?.(event, { type: 'change', event, color: newColor });
+  });
+
+  const _onKeyDown: React.KeyboardEventHandler<HTMLInputElement> = useEventCallback(event => {
+    if (event.key === 'PageUp' || event.key === 'PageDown') {
+      event.target.step = customStep;
+    } else {
+      event.target.step = props.step || '1';
+    }
   });
 
   const rootVariables = {
@@ -120,5 +129,7 @@ export const useColorSlider_unstable = (
   // Input Props
   state.input.value = clampedValue;
   state.input.onChange = _onChange;
+  state.input.onKeyDown = _onKeyDown;
+
   return state;
 };

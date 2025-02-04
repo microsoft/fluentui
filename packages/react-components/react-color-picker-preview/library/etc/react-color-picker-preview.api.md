@@ -62,7 +62,7 @@ export const colorPickerClassNames: SlotClassNames<ColorPickerSlots>;
 
 // @public
 export type ColorPickerProps = Omit<ComponentProps<Partial<ColorPickerSlots>>, 'color'> & {
-    color?: HsvColor;
+    color: HsvColor;
     onColorChange?: EventHandler<ColorPickerOnChangeData>;
     shape?: 'rounded' | 'square';
 };
