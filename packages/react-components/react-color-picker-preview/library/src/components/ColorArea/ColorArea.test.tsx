@@ -15,7 +15,7 @@ describe('ColorArea', () => {
       <div>
         <div
           class="fui-ColorArea"
-          style="--fui-AreaX--progress: 100%; --fui-AreaY--progress: 50%; --fui-Area__thumb--color: transparent; --fui-Area--main-color: hsl(324, 100%, 50%);"
+          style="--fui-AreaX--progress: 100%; --fui-AreaY--progress: 50%; --fui-Area__thumb--color: rgb(128, 0, 76); --fui-Area--main-color: hsl(324, 100%, 50%);"
         >
           <div
             class="fui-ColorArea__thumb"

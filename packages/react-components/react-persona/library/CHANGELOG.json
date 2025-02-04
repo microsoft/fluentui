@@ -2,6 +2,54 @@
   "name": "@fluentui/react-persona",
   "entries": [
     {
+      "date": "Mon, 27 Jan 2025 20:27:35 GMT",
+      "tag": "@fluentui/react-persona_v9.2.109",
+      "version": "9.2.109",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-avatar to v9.6.50",
+            "commit": "808cd501d50a317249d3d02f01ea3dd88114b252"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jan 2025 14:00:21 GMT",
+      "tag": "@fluentui/react-persona_v9.2.108",
+      "version": "9.2.108",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-avatar to v9.6.49",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-badge to v9.2.50",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-utilities to v9.18.20",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.50",
+            "commit": "5e95b13c1b6f513e6bdd9a4c688139748f912695"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2025 18:33:36 GMT",
       "tag": "@fluentui/react-persona_v9.2.107",
       "version": "9.2.107",

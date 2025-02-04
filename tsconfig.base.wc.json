@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "ES2022",
+    "useDefineForClassFields": false,
     "module": "ESNext",
     "esModuleInterop": true,
     "sourceMap": true,

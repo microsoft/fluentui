@@ -3,7 +3,7 @@ import { MenuItemSlots } from '../MenuItem/MenuItem.types';
 import { MenuItemSelectableState } from '../../selectable/types';
 import { MenuItemCheckboxProps } from '../MenuItemCheckbox/MenuItemCheckbox.types';
 
-export type MenuItemSwitchSlots = Pick<MenuItemSlots, 'root' | 'content' | 'secondaryContent' | 'icon'> & {
+export type MenuItemSwitchSlots = Pick<MenuItemSlots, 'root' | 'content' | 'secondaryContent' | 'icon' | 'subText'> & {
   switchIndicator?: Slot<'span'>;
 };
 

@@ -1,5 +1,5 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
-import { max as d3Max, min as d3Min } from 'd3-array';
+import { max as d3Max, min as d3Min, ticks as d3Ticks, nice as d3nice } from 'd3-array';
 import {
   scaleLinear as d3ScaleLinear,
   scaleBand as d3ScaleBand,
@@ -321,6 +321,19 @@ export function createStringXAxis(
 }
 
 /**
+ * This method is used to calculate the rounded tick values for the y-axis
+ * @param {number} minVal
+ * @param {number} maxVal
+ * @param {number} splitInto
+ * @returns {number[]}
+ */
+function calculateRoundedTicks(minVal: number, maxVal: number, splitInto: number) {
+  const finalYmin = minVal >= 0 && minVal === maxVal ? 0 : minVal;
+  const finalYmax = minVal < 0 && minVal === maxVal ? 0 : maxVal;
+  const ticksInterval = d3nice(finalYmin, finalYmax, splitInto);
+  return d3Ticks(ticksInterval[0], ticksInterval[ticksInterval.length - 1], splitInto);
+}
+/**
  * This method used for creating data points for the y axis.
  * @export
  * @param {number} maxVal
@@ -334,7 +347,11 @@ export function prepareDatapoints(
   minVal: number,
   splitInto: number,
   isIntegralDataset: boolean,
+  roundedTicks?: boolean,
 ): number[] {
+  if (roundedTicks) {
+    return calculateRoundedTicks(minVal, maxVal, splitInto);
+  }
   const val = isIntegralDataset
     ? Math.ceil((maxVal - minVal) / splitInto)
     : (maxVal - minVal) / splitInto >= 1
@@ -402,6 +419,7 @@ export function createNumericYAxis(
   isIntegralDataset: boolean,
   useSecondaryYScale: boolean = false,
   supportNegativeData: boolean = false,
+  roundedTicks: boolean = false,
 ) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -427,7 +445,7 @@ export function createNumericYAxis(
     : yMinMaxValues.startValue < yMinValue
     ? 0
     : yMinValue!;
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
   const yAxisScale = d3ScaleLinear()
     .domain([supportNegativeData ? domainValues[0] : finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
@@ -1425,4 +1443,13 @@ export function areArraysEqual(arr1?: string[], arr2?: string[]): boolean {
     }
   }
   return true;
+}
+
+const cssVarRegExp = /var\((--[a-zA-Z0-9\-]+)\)/g;
+
+export function resolveCSSVariables(chartContainer: HTMLElement, styleRules: string) {
+  const containerStyles = getComputedStyle(chartContainer);
+  return styleRules.replace(cssVarRegExp, (match, group1) => {
+    return containerStyles.getPropertyValue(group1);
+  });
 }

@@ -15,7 +15,7 @@ export const Default = () => {
   return (
     <CardFooter
       className={styles.footer}
-      action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} />}
+      action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
     >
       <Button icon={<ArrowReply16Regular />}>Reply</Button>
       <Button icon={<Share16Regular />}>Share</Button>
