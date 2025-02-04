@@ -79,18 +79,6 @@ const useChannelStyles = makeStyles({
   value: {
     backgroundImage: `linear-gradient(to right, #000, var(${colorSliderCSSVars.railColorVar}))`,
   },
-  lightness: {
-    backgroundImage: `linear-gradient(to right, #000, var(${colorSliderCSSVars.railColorVar}), #fff)`,
-  },
-  red: {
-    backgroundImage: `linear-gradient(to right, #000, red)`,
-  },
-  green: {
-    backgroundImage: `linear-gradient(to right, #000, lime)`,
-  },
-  blue: {
-    backgroundImage: `linear-gradient(to right, #000, blue)`,
-  },
 });
 
 /**
