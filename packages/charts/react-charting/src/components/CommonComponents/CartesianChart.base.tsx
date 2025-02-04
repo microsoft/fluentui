@@ -130,13 +130,13 @@ export class CartesianChartBase
     if (this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '') {
       this.margins.left! = this._isRtl
         ? this.props.margins?.right ?? this.props?.secondaryYAxistitle
-          ? 60
+          ? 80
           : 40
         : this.props.margins?.left ?? 60;
       this.margins.right! = this._isRtl
         ? this.props.margins?.left ?? 60
         : this.props.margins?.right ?? this.props?.secondaryYAxistitle
-        ? 60
+        ? 80
         : 40;
     }
   }
@@ -577,7 +577,9 @@ export class CartesianChartBase
                   }}
                   id={`yAxisGElementSecondary${this.idForGraph}`}
                   transform={`translate(${
-                    this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
+                    this._isRtl
+                      ? this.margins.left! + this.state.startFromX
+                      : svgDimensions.width - this.margins.right! - this.state.startFromX
                   }, 0)`}
                   className={this._classNames.yAxis}
                 />
