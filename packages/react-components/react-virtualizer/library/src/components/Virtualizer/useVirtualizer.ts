@@ -104,6 +104,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   const initializeScrollingTimer = React.useCallback(() => {
     if (!enableScrollLoad) {
       // Disabled by default for reduction of render callbacks
+      setIsScrolling(false);
       clearScrollTimer();
       return;
     }
