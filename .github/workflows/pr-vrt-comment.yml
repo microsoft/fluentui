@@ -60,7 +60,7 @@ jobs:
       - name: VR App - Create Policy
         run: |
           echo "MAKE THIS STEP WORK"
-          
+
       - name: Login via Azure CLI
         uses: azure/login@v2
         with:
@@ -70,13 +70,13 @@ jobs:
 
       - name: Run screenshotdiff
         env:
-          API_TOKEN: $(FormatPAT.NonBase64PAT)
+          API_TOKEN: ${{ FormatPAT.NonBase64PAT }}
           VR_APP_API_URL: 'https://vrapprovaldev2.azurewebsites.net/api/'
-          STORAGE_ACCOUNT_ID: $(STORAGE-ACCOUNT-ID)
-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+          STORAGE_ACCOUNT_ID: 'https://onejstestartifactsprod.blob.core.windows.net/'
+          SYSTEM_ACCESSTOKEN: ${{ System.AccessToken }}
           TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           PRINCIPAL_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          SERVICE_CONNECTION_ID: $(SERVICE-CONNECTION-ID)
+          SERVICE_CONNECTION_ID: ${{ SERVICE-CONNECTION-ID }}
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "MAKE THIS WORK"
