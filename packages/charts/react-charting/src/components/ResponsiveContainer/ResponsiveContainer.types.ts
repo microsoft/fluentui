@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle } from '@fluentui/react/lib/Styling';
+import { IStyle, IStyleFunctionOrObject } from '@fluentui/react';
 
 /**
  * Responsive Child props
@@ -9,6 +9,7 @@ export interface IResponsiveChildProps {
   width?: number;
   height?: number;
   shouldResize?: number;
+  styles?: IStyleFunctionOrObject<{}, { root: IStyle }>;
 }
 
 /**
@@ -16,6 +17,11 @@ export interface IResponsiveChildProps {
  * {@docCategory ResponsiveContainer}
  */
 export interface IResponsiveContainerProps {
+  /**
+   * Aspect ratio (width / height) of the container. If specified, the height will be calculated by width / aspect.
+   */
+  aspect?: number;
+
   /**
    * Width of the container
    */
@@ -27,6 +33,21 @@ export interface IResponsiveContainerProps {
   height?: number | string;
 
   /**
+   * Minimum width of the container
+   */
+  minWidth?: number | string;
+
+  /**
+   * Minimum height of the container
+   */
+  minHeight?: number | string;
+
+  /**
+   * Maximum height of the container
+   */
+  maxHeight?: number;
+
+  /**
    * Callback providing the updated chart width and height values when the container is resized
    */
   onResize?: (width: number, height: number) => void;
@@ -35,8 +56,4 @@ export interface IResponsiveContainerProps {
    * Child component to be rendered within the container
    */
   children: React.ReactElement<IResponsiveChildProps>;
-}
-
-export interface IResponsiveContainerStyles {
-  root: IStyle;
 }

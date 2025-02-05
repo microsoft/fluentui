@@ -1,13 +1,6 @@
 import * as React from 'react';
-import { classNamesFunction, getWindow } from '@fluentui/react';
-import {
-  IResponsiveChildProps,
-  IResponsiveContainerProps,
-  IResponsiveContainerStyles,
-} from './ResponsiveContainer.types';
-import { getStyles } from './ResponsiveContainer.styles';
-
-const getClassNames = classNamesFunction<{}, IResponsiveContainerStyles>();
+import { getWindow } from '@fluentui/react';
+import { IResponsiveChildProps, IResponsiveContainerProps } from './ResponsiveContainer.types';
 
 /**
  * Responsive Container component
@@ -16,7 +9,6 @@ const getClassNames = classNamesFunction<{}, IResponsiveContainerStyles>();
 export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const onResizeRef = React.useRef<IResponsiveContainerProps['onResize']>();
-  const classNames = React.useMemo(() => getClassNames(getStyles()), []);
 
   const [size, setSize] = React.useState<{ containerWidth?: number; containerHeight?: number }>({});
 
@@ -61,13 +53,49 @@ export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props =>
     };
   }, []);
 
+  const chartContent = React.useMemo(() => {
+    let calculatedWidth = size.containerWidth;
+    let calculatedHeight = size.containerHeight;
+
+    if (typeof props.aspect === 'number' && props.aspect > 0) {
+      if (calculatedWidth) {
+        calculatedHeight = calculatedWidth / props.aspect;
+      } else if (calculatedHeight) {
+        calculatedWidth = calculatedHeight * props.aspect;
+      }
+
+      if (typeof props.maxHeight === 'number' && calculatedHeight && calculatedHeight > props.maxHeight) {
+        calculatedHeight = props.maxHeight;
+      }
+    }
+
+    return React.cloneElement<IResponsiveChildProps>(props.children, {
+      width: calculatedWidth,
+      height: calculatedHeight,
+      shouldResize: (calculatedWidth ?? 0) + (calculatedHeight ?? 0),
+      styles: {
+        root: {
+          // https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height
+          // https://and-ha.com/en/coding-en/solving-responsive-coding-with-min-height/
+          width: calculatedWidth,
+          height: calculatedHeight,
+        },
+      },
+    });
+  }, [size, props.aspect, props.maxHeight, props.children]);
+
   return (
-    <div ref={containerRef} className={classNames.root} style={{ width: props.width, height: props.height }}>
-      {React.cloneElement<IResponsiveChildProps>(props.children, {
-        width: size.containerWidth,
-        height: size.containerHeight,
-        shouldResize: (size.containerWidth ?? 0) + (size.containerHeight ?? 0),
-      })}
+    <div
+      ref={containerRef}
+      style={{
+        width: props.width ?? '100%',
+        height: props.height ?? '100%',
+        minWidth: props.minWidth,
+        minHeight: props.minHeight,
+        maxHeight: props.maxHeight,
+      }}
+    >
+      {chartContent}
     </div>
   );
 };

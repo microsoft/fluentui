@@ -123,7 +123,7 @@ export class VerticalBarChartResponsiveExample extends React.Component {
   public render(): JSX.Element {
     return (
       <div className={this._classNames.resizableArea}>
-        <ResponsiveContainer height={350}>
+        <ResponsiveContainer>
           <VerticalBarChart
             data={points}
             lineLegendText={'Line'}

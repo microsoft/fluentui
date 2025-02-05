@@ -1222,13 +1222,21 @@ export interface IResponsiveChildProps {
     // (undocumented)
     shouldResize?: number;
     // (undocumented)
+    styles?: IStyleFunctionOrObject_2<{}, {
+        root: IStyle_2;
+    }>;
+    // (undocumented)
     width?: number;
 }
 
 // @public
 export interface IResponsiveContainerProps {
+    aspect?: number;
     children: React_2.ReactElement<IResponsiveChildProps>;
     height?: number | string;
+    maxHeight?: number;
+    minHeight?: number | string;
+    minWidth?: number | string;
     onResize?: (width: number, height: number) => void;
     width?: number | string;
 }

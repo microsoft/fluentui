@@ -203,7 +203,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
 
     return (
       <div className={this._classNames.root} ref={el => (this._rootElem = el)}>
-        <FocusZone direction={FocusZoneDirection.horizontal} className="chartWrapper">
+        <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg
             className={this._classNames.chart}
             role="region"

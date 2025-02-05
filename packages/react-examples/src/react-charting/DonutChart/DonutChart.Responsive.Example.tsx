@@ -131,7 +131,7 @@ export class DonutChartResponsiveExample extends React.Component {
   public render(): JSX.Element {
     return (
       <div className={this._classNames.resizableArea}>
-        <ResponsiveContainer height={220}>
+        <ResponsiveContainer>
           <DonutChart data={data} innerRadius={55} valueInsideDonut={39000} />
         </ResponsiveContainer>
       </div>
