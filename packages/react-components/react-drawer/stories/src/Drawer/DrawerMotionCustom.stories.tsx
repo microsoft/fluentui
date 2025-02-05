@@ -43,6 +43,7 @@ const useStyles = makeStyles({
     position: 'absolute',
     inset: 0,
     backgroundColor: tokens.colorNeutralBackground1,
+    border: `1px solid ${tokens.colorNeutralBackground1}`,
   },
 
   field: {
