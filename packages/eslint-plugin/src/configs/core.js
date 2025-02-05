@@ -12,9 +12,11 @@ const config = {
     'plugin:import/typescript',
     // Extended configs are applied in order, so these configs that turn other rules off should come last
     'prettier',
+    // Browser compatibility linter rules
+    'plugin:compat/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['import', '@fluentui', '@rnx-kit', '@typescript-eslint', 'jest', 'jsdoc', ...__internal.plugins],
+  plugins: ['compat', 'import', '@fluentui', '@rnx-kit', '@typescript-eslint', 'jest', 'jsdoc', ...__internal.plugins],
   settings: {
     'import/resolver': {
       // @see https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
@@ -35,6 +37,21 @@ const config = {
         returns: 'returns',
       },
     },
+    // Browser matrix support - https://react.fluentui.dev/?path=/docs/concepts-developer-browser-support-matrix--docs#full-browser-support-matrix
+    targets: [
+      // Desktop browsers
+      'edge >= 84',
+      'firefox >= 75',
+      'chrome >= 84',
+      'safari >= 14.1',
+      'opera >= 73',
+      'not ie <= 11',
+      // Mobile browsers
+      'ios_saf >= 14.5',
+      'android >= 84',
+      'samsung >= 16',
+      'not op_mini all',
+    ],
   },
   env: {
     browser: true,
@@ -304,6 +321,7 @@ const getOverrides = () => [
     files: [...configHelpers.testFiles],
     rules: {
       'no-console': 'off',
+      'compat/compat': 'off',
     },
   },
   {
@@ -318,6 +336,7 @@ const getOverrides = () => [
     rules: {
       'no-alert': 'off',
       'no-console': 'off',
+      'compat/compat': 'off',
     },
   },
   {
