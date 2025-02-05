@@ -69,18 +69,23 @@ export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props =>
       }
     }
 
-    return React.cloneElement<IResponsiveChildProps>(props.children, {
-      width: calculatedWidth,
-      height: calculatedHeight,
-      shouldResize: (calculatedWidth ?? 0) + (calculatedHeight ?? 0),
-      styles: {
-        root: {
-          // https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height
-          // https://and-ha.com/en/coding-en/solving-responsive-coding-with-min-height/
-          width: calculatedWidth,
-          height: calculatedHeight,
+    return React.Children.map(props.children, child => {
+      return React.cloneElement<IResponsiveChildProps>(child, {
+        width: calculatedWidth,
+        height: calculatedHeight,
+        shouldResize: (calculatedWidth ?? 0) + (calculatedHeight ?? 0),
+        styles: {
+          // Keep components styles
+          ...child.props.styles,
+          root: {
+            ...child.props.styles?.root,
+            // Ensure the child element fills the parent container
+            // https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height
+            width: calculatedWidth,
+            height: calculatedHeight,
+          },
         },
-      },
+      });
     });
   }, [size, props.aspect, props.maxHeight, props.children]);
 

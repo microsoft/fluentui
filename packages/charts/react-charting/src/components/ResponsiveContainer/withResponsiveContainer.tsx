@@ -10,9 +10,26 @@ import { IResponsiveContainerProps } from './ResponsiveContainer.types';
 export function withResponsiveContainer<TProps extends Omit<IResponsiveContainerProps, 'children'>>(
   WrappedComponent: React.ComponentType<TProps>,
 ) {
-  const ComponentWithResponsiveContainer: React.FC<TProps> = ({ width, height, onResize, ...restProps }) => {
+  const ComponentWithResponsiveContainer: React.FC<TProps> = ({
+    aspect,
+    width,
+    height,
+    minWidth,
+    minHeight,
+    maxHeight,
+    onResize,
+    ...restProps
+  }) => {
     return (
-      <ResponsiveContainer width={width} height={height} onResize={onResize}>
+      <ResponsiveContainer
+        aspect={aspect}
+        width={width}
+        height={height}
+        minWidth={minWidth}
+        minHeight={minHeight}
+        maxHeight={maxHeight}
+        onResize={onResize}
+      >
         <WrappedComponent {...(restProps as any)} />
       </ResponsiveContainer>
     );

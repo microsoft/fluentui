@@ -4212,7 +4212,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
               class=
 
                   {
-                    fill: #323130;
+                    fill: #107c10;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -24389,6 +24389,9 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
             height: 100%;
             width: 100%;
           }
+          & [class^="arcLabel"] {
+            font-size: 20px;
+          }
     >
       <div
         class=
@@ -25056,7 +25059,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
             display: flex;
             flex-direction: column;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 10px;
             font-weight: 400;
             height: 100%;
             overflow: hidden;
