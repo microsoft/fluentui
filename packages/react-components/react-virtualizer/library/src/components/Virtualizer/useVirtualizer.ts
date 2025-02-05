@@ -104,6 +104,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   const initializeScrollingTimer = React.useCallback(() => {
     if (!enableScrollLoad) {
       // Disabled by default for reduction of render callbacks
+      clearScrollTimer();
       return;
     }
     /*
@@ -522,9 +523,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   React.useEffect(() => {
     if (actualIndex >= 0) {
       updateChildRows(actualIndex);
-      if (enableScrollLoad && !isScrolling) {
-        forceUpdate();
-      }
+      forceUpdate();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [renderChild, isScrolling]);
