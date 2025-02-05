@@ -84,7 +84,7 @@ jobs:
           SERVICE_CONNECTION_ID: $(SERVICE-CONNECTION-ID)
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "MAKE THIS WORK"
+          echo "MAKE THIS  WORK"
           npx vr-approval-cli@0.4.11 run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --threshold '0.04' --cumThreshold '1'
 
 # 💡 NOTE:
