@@ -11,6 +11,7 @@ export const menuItemRadioClassNames: SlotClassNames<Omit<MenuItemSlots, 'submen
   checkmark: 'fui-MenuItemRadio__checkmark',
   content: 'fui-MenuItemRadio__content',
   secondaryContent: 'fui-MenuItemRadio__secondaryContent',
+  subText: 'fui-MenuItemRadio__subText',
 };
 
 export const useMenuItemRadioStyles_unstable = (state: MenuItemRadioState) => {
@@ -35,6 +36,10 @@ export const useMenuItemRadioStyles_unstable = (state: MenuItemRadioState) => {
 
   if (state.checkmark) {
     state.checkmark.className = mergeClasses(menuItemRadioClassNames.checkmark, state.checkmark.className);
+  }
+
+  if (state.subText) {
+    state.subText.className = mergeClasses(menuItemRadioClassNames.subText, state.subText.className);
   }
 
   useMenuItemStyles_unstable(state);

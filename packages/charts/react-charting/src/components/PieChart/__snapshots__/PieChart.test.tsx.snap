@@ -26,12 +26,12 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={350}
-      width={600}
+      height={358}
+      width={608}
     >
       <g
         className="pie"
-        transform="translate(300, 175)"
+        transform="translate(304, 179)"
       >
         <g
           aria-label="A-50"
@@ -54,6 +54,13 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 }
             d="M0.795,-158.998A159,159,0,0,1,1.59,158.992L0.798,0.603A1,1,0,0,0,0.795,-0.607Z"
           />
+          <rect
+            fill="#ffffff"
+            height={8}
+            width={8}
+            x={-4}
+            y={-4}
+          />
           <text
             aria-label="A-50"
             className=
@@ -71,8 +78,8 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="start"
-            x={158.9995031252588}
-            y={-0.3974995859376562}
+            x={168.9995031252588}
+            y={-10.397499585937656}
           >
             A-50
           </text>
@@ -98,6 +105,13 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 }
             d="M0,159A159,159,0,0,1,-158.996,1.193L-0.704,0.71Z"
           />
+          <rect
+            fill="#ffffff"
+            height={8}
+            width={8}
+            x={-4}
+            y={-4}
+          />
           <text
             aria-label="B-25"
             className=
@@ -115,8 +129,8 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-112.00757625617408}
-            y={112.85079911643227}
+            x={-122.00757625617408}
+            y={122.85079911643227}
           >
             B-25
           </text>
@@ -142,6 +156,13 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 }
             d="M-159,-0.398A159,159,0,0,1,-0.795,-158.998L-0.708,-0.706Z"
           />
+          <rect
+            fill="#ffffff"
+            height={8}
+            width={8}
+            x={-4}
+            y={-4}
+          />
           <text
             aria-label="C-25"
             className=
@@ -159,8 +180,8 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-112.57042780891464}
-            y={-112.2893529365894}
+            x={-122.57042780891464}
+            y={-122.2893529365894}
           >
             C-25
           </text>
@@ -197,12 +218,12 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={300}
-      width={600}
+      height={308}
+      width={608}
     >
       <g
         className="pie"
-        transform="translate(300, 150)"
+        transform="translate(304, 154)"
       >
         <g
           aria-label="A-50"
@@ -225,6 +246,13 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 }
             d="M0.67,-133.998A134,134,0,0,1,1.34,133.993L0.674,0.739A1,1,0,0,0,0.67,-0.742Z"
           />
+          <rect
+            fill="#ffffff"
+            height={8}
+            width={8}
+            x={-4}
+            y={-4}
+          />
           <text
             aria-label="A-50"
             className=
@@ -242,8 +270,8 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="start"
-            x={133.99958125021809}
-            y={-0.3349996510417983}
+            x={143.99958125021809}
+            y={-10.334999651041798}
           >
             A-50
           </text>
@@ -269,6 +297,13 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 }
             d="M0,134A134,134,0,0,1,-133.996,1.005L-0.741,0.672A1,1,0,0,0,-0.666,0.746Z"
           />
+          <rect
+            fill="#ffffff"
+            height={8}
+            width={8}
+            x={-4}
+            y={-4}
+          />
           <text
             aria-label="B-25"
             className=
@@ -286,8 +321,8 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-94.39632212784481}
-            y={95.1069627773706}
+            x={-104.39632212784481}
+            y={105.1069627773706}
           >
             B-25
           </text>
@@ -313,6 +348,13 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 }
             d="M-134,-0.335A134,134,0,0,1,-0.67,-133.998L-0.67,-0.742A1,1,0,0,0,-0.744,-0.668Z"
           />
+          <rect
+            fill="#ffffff"
+            height={8}
+            width={8}
+            x={-4}
+            y={-4}
+          />
           <text
             aria-label="C-25"
             className=
@@ -330,8 +372,8 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-94.87067500877083}
-            y={-94.63379429876088}
+            x={-104.87067500877083}
+            y={-104.63379429876088}
           >
             C-25
           </text>

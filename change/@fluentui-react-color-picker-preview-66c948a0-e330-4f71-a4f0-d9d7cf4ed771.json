@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: thumb design for ColorPicker - partner's ask",
+  "packageName": "@fluentui/react-color-picker-preview",
+  "email": "v.kozlova13@gmail.com",
+  "dependentChangeType": "patch"
+}
