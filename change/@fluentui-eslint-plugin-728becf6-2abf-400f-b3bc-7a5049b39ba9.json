@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add browser compatibility plugin",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "minor"
+}
