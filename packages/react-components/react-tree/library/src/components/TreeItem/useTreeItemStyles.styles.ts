@@ -32,6 +32,9 @@ const useBaseStyles = makeResetStyles({
     {
       borderRadius: tokens.borderRadiusMedium,
       outlineColor: tokens.colorStrokeFocus2,
+      '@media (forced-colors: active)': {
+        outlineColor: 'Highlight',
+      },
       outlineRadius: tokens.borderRadiusMedium,
       // FIXME: tokens.strokeWidthThick causes some weird bugs
       outlineWidth: '2px',
