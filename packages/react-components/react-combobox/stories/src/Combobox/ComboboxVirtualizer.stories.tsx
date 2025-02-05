@@ -56,7 +56,7 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
           }}
           onOptionSelect={(e, data) => {
             if (data.optionValue) {
-              selectedIndex.current = parseInt(data.optionValue);
+              selectedIndex.current = parseInt(data.optionValue, 10);
             }
           }}
         >
