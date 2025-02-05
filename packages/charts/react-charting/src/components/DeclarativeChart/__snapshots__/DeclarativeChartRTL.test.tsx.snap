@@ -4177,6 +4177,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
             </g>
             <g>
               <rect
+                fill="#ffffff"
                 height="8"
                 width="8"
                 x="-4"
@@ -4202,7 +4203,6 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
               </text>
             </g>
             <rect
-              fill="#ffffff"
               height="8"
               width="8"
               x="-4"
