@@ -516,7 +516,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   /*
    * forceUpdate:
-   * We only want to trigger this when scrollLoading is enabled and set to false,
+   * We only want to trigger this when child render or scroll loading changes,
    * it will force re-render all children elements
    */
   const forceUpdate = React.useReducer(() => ({}), {})[1];
