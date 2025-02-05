@@ -14,7 +14,7 @@ const steps = new Steps()
   // .hover('#button-id')
   // .snapshot('hover', { cropTo: '.testWrapper' })
   .mouseDown('#button-id')
-  .snapshot('pressed', { cropTo: '.testWrapper' })
+  .snapshot('pressed')
   .end();
 
 export default {
