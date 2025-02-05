@@ -33,6 +33,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
 
     const TEXT_MAX_WIDTH = 40;
     const TEXT_LINE_HEIGHT = 16;
+    const PADDING = 4;
 
     /**
      * The radius for the pie chart is computed based on the space available inside the svg
@@ -47,8 +48,8 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
         {this.props.chartTitle && <p className={this._classNames.chartTitle}>{this.props.chartTitle}</p>}
         <Pie
           culture={culture}
-          width={width!}
-          height={height!}
+          width={width! + 2 * PADDING}
+          height={height! + 2 * PADDING}
           outerRadius={outerRadius}
           innerRadius={1}
           data={data!}

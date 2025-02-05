@@ -317,6 +317,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                   }}
                   maxWidth={this._innerRadius * 2 - 24}
                   wrapContent={this._wrapContent}
+                  theme={this.props.theme}
                 />
               </g>
               {this.props.sublabel && (

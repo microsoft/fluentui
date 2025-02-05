@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 05 Feb 2025 07:16:29 GMT",
+      "tag": "@fluentui/react-charting_v5.23.51",
+      "version": "5.23.51",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5f1fb069b5da9c7a104063184eacce1927c06f7c",
+            "comment": "fix(react-charting): Fixed tooltip position and background on Gauge and Pie charts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Jan 2025 07:21:30 GMT",
       "tag": "@fluentui/react-charting_v5.23.50",
       "version": "5.23.50",

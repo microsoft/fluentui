@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 31 Jan 2025 07:21:30 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Feb 2025 07:16:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.51)
+
+Wed, 05 Feb 2025 07:16:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.50..@fluentui/react-charting_v5.23.51)
+
+### Patches
+
+- fix(react-charting): Fixed tooltip position and background on Gauge and Pie charts ([PR #33773](https://github.com/microsoft/fluentui/pull/33773) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.23.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.50)
 

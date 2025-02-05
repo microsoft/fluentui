@@ -96,8 +96,8 @@ export class LabeledArc extends Arc {
         <SVGTooltipText
           content={content}
           textProps={{
-            x: labelX,
-            y: labelY,
+            x: labelX + (angle > Math.PI ? -10 : 10),
+            y: labelY + (angle > Math.PI / 2 && angle < (3 * Math.PI) / 2 ? 10 : -10),
             dominantBaseline: angle > Math.PI / 2 && angle < (3 * Math.PI) / 2 ? 'hanging' : 'auto',
             textAnchor: (!this._isRTL && angle > Math.PI) || (this._isRTL && angle < Math.PI) ? 'end' : 'start',
             'aria-label': `${data?.data.x}-${convertToLocaleString(data?.data.y, culture)}`,
@@ -107,6 +107,7 @@ export class LabeledArc extends Arc {
           shouldReceiveFocus={false}
           maxWidth={40}
           wrapContent={wrapContent}
+          theme={this.props.theme}
         />
       </g>
     );
