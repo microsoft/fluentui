@@ -31,9 +31,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
             &:focus {
               outline: none;
             }
-            {
-              overflow: auto;
-            }
+
         data-focuszone-id="FocusZone8"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
@@ -4624,9 +4622,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
             &:focus {
               outline: none;
             }
-            {
-              overflow: auto;
-            }
+
         data-focuszone-id="FocusZone3"
         data-tabster="{\\"uncontrolled\\": {}}"
       >

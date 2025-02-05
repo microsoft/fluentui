@@ -2,7 +2,7 @@ import { ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types'
 import { HighContrastSelectorBlack } from '@fluentui/react/lib/Styling';
 
 export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => {
-  const { className, theme, pathColor } = props;
+  const { className, theme, pathColor, enableReflow } = props;
   const { effects } = theme;
   return {
     root: [
@@ -66,7 +66,7 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
       boxShadow: effects.elevation4,
     },
     chartWrapper: {
-      overflow: 'auto',
+      ...(enableReflow ? { overflow: 'auto' } : {}),
     },
   };
 };

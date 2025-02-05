@@ -324,6 +324,7 @@ export interface ICartesianChartProps {
 export interface ICartesianChartStyleProps {
     className?: string;
     color?: string;
+    enableReflow?: boolean;
     height?: number;
     href?: string;
     isRtl?: boolean;
@@ -1286,6 +1287,8 @@ export interface ISankeyChartStrings {
 export interface ISankeyChartStyleProps {
     // (undocumented)
     className?: string;
+    // (undocumented)
+    enableReflow?: boolean;
     // (undocumented)
     height: number;
     // (undocumented)

@@ -28,9 +28,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -845,9 +843,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -2210,9 +2206,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -2830,9 +2824,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
