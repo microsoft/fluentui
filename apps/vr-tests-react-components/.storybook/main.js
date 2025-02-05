@@ -53,4 +53,7 @@ module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig}
       },
     };
   },
+  features: {
+    storyStoreV7: false,
+  },
 });
