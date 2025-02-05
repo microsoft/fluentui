@@ -1,14 +1,12 @@
+import { CustomStatesSetSupported } from './support.js';
+
 /**
  * Inference type for a CSS custom state selector.
  * @public
  */
 export type StateSelector<S> = S extends string ? `:state(${S})` | `[state--${S}]` : never;
 
-/**
- * Check if the browser supports Custom States.
- * @public
- */
-export const CustomStatesSetSupported = CSS.supports('selector(:state(g))');
+export { CustomStatesSetSupported };
 
 /**
  * Map to store the state values.
@@ -46,8 +44,12 @@ export function stateSelector<S extends string>(state: S): StateSelector<S> {
  * @param force - force the state to be toggled on or off
  * @internal
  */
-export function toggleState(elementInternals: ElementInternals, state: string | undefined, force?: boolean): void {
-  if (!state) {
+export function toggleState(
+  elementInternals: ElementInternals | undefined,
+  state: string | undefined,
+  force?: boolean,
+): void {
+  if (!state || !elementInternals) {
     return;
   }
 
