@@ -27,7 +27,7 @@ export function menuItemTemplate<T extends MenuItem>(options: MenuItemOptions = 
       </div>
       ${endSlotTemplate(options)}
       <slot name="submenu-glyph"> ${staticallyCompose(options.submenuGlyph)} </slot>
-      <slot name="submenu" ${slotted({ property: 'slottedSubmenu'})}></slot>
+      <slot name="submenu" ${slotted({ property: 'slottedSubmenu' })}></slot>
     </template>
   `;
 }

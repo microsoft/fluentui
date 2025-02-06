@@ -209,8 +209,7 @@ test.describe('Menu', () => {
     await element.press('ArrowRight');
 
     await expect(submenuList).toBeVisible();
-    await expect(submenuList).toHaveAttribute('popover')
-
+    await expect(submenuList).toHaveAttribute('popover');
   });
 
   test('should focus the first item when a submenu is closed', async ({ fastPage }) => {
