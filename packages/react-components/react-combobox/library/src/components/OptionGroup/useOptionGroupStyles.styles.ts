@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     rowGap: tokens.spacingHorizontalXXS,
+    fontFamily: tokens.fontFamilyBase,
 
     '&:not(:last-child)::after': {
       content: '""',
