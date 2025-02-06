@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Test change",
+  "packageName": "@fluentui/react-charts-preview",
+  "email": "98592573+AtishayMsft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
