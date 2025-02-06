@@ -1,6 +1,5 @@
-import { attr, type ElementsFilter, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { keyArrowLeft, keyArrowRight, keyEnter, keySpace } from '@microsoft/fast-web-utilities';
-import type { MenuList } from '../menu-list/menu-list.js';
 import type { StartEndOptions } from '../patterns/start-end.js';
 import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
