@@ -174,6 +174,45 @@ test.describe('Menu', () => {
     await expect(menuList).toBeVisible();
   });
 
+  test('should set popover attribute on slotted submenu', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    const menuButton = element.locator('fluent-menu-button');
+    const menuList = element.locator('fluent-menu-list:not([slot])');
+    const menuItems = menuList.locator('fluent-menu-item');
+
+    const submenuList = element.locator('fluent-menu-list[slot="submenu"]');
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <fluent-menu-button appearance="primary" slot="trigger">Toggle Menu</fluent-menu-button>
+        <fluent-menu-list>
+          <fluent-menu-item>
+            Menu item 1
+            <fluent-menu-list slot="submenu">
+              <fluent-menu-item> Subitem 1 </fluent-menu-item>
+              <fluent-menu-item> Subitem 2 </fluent-menu-item>
+              <fluent-menu-item> Subitem 3 </fluent-menu-item>
+            </fluent-menu-list>
+          </fluent-menu-item>
+          <fluent-menu-item>Menu item 2</fluent-menu-item>
+          <fluent-menu-item>Menu item 3</fluent-menu-item>
+          <fluent-menu-item>Menu item 4</fluent-menu-item>
+        </fluent-menu-list>
+      `,
+    });
+
+    await menuButton.click();
+
+    await menuItems.first().focus();
+
+    await element.press('ArrowRight');
+
+    await expect(submenuList).toBeVisible();
+    await expect(submenuList).toHaveAttribute('popover')
+
+  });
+
   test('should focus the first item when a submenu is closed', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -213,7 +252,6 @@ test.describe('Menu', () => {
     await element.press('ArrowRight');
 
     await expect(submenuList).toBeVisible();
-    await expect(submenuList).toHaveAttribute('popover')
 
     await element.press('ArrowLeft');
 
