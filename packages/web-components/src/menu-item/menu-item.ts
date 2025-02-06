@@ -134,8 +134,6 @@ export class MenuItem extends FASTElement {
   protected slottedSubmenuChanged(prev: HTMLElement[] | undefined, next: HTMLElement[]) {
     this.submenu?.removeEventListener('toggle', this.toggleHandler);
 
-    console.log("Renders", next[0], !!next.length);
-
     if (next.length) {
       this.submenu = next[0];
       this.submenu.toggleAttribute('popover', true);
