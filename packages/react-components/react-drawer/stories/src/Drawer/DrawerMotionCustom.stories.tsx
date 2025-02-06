@@ -163,7 +163,8 @@ export const MotionCustom = () => {
 MotionCustom.parameters = {
   docs: {
     description: {
-      story: 'Drawer animations can be customized using the Motion APIs, together with the `surfaceMotion` prop.',
+      story:
+        'Drawer animations can be customized using the [Motion APIs](?path=/docs/motion-apis-createpresencecomponent--docs), together with the `surfaceMotion` prop.',
     },
   },
 };
