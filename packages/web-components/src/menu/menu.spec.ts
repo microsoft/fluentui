@@ -213,6 +213,7 @@ test.describe('Menu', () => {
     await element.press('ArrowRight');
 
     await expect(submenuList).toBeVisible();
+    await expect(submenuList).toHaveAttribute('popover')
 
     await element.press('ArrowLeft');
 
