@@ -22,13 +22,6 @@ export type MenuItemOptions = StartEndOptions<MenuItem> & {
 };
 
 /**
- * Creates a function that can be used to filter a Node array, selecting only elements with elementInternals role of "menu".
- * @public
- */
-export const menuFilter = (): ElementsFilter => value =>
-  value.nodeType === 1 && (value as MenuList).elementInternals.role === 'menu';
-
-/**
  * A Switch Custom HTML Element.
  * Implements {@link https://www.w3.org/TR/wai-aria-1.1/#menuitem | ARIA menuitem }, {@link https://www.w3.org/TR/wai-aria-1.1/#menuitemcheckbox | ARIA menuitemcheckbox}, or {@link https://www.w3.org/TR/wai-aria-1.1/#menuitemradio | ARIA menuitemradio }.
  *
@@ -140,6 +133,8 @@ export class MenuItem extends FASTElement {
    */
   protected slottedSubmenuChanged(prev: HTMLElement[] | undefined, next: HTMLElement[]) {
     this.submenu?.removeEventListener('toggle', this.toggleHandler);
+
+    console.log("Renders", next[0], !!next.length);
 
     if (next.length) {
       this.submenu = next[0];
