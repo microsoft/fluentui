@@ -267,9 +267,7 @@ export const transformPlotlyJsonToDonutProps = (
 
   const styles: IDonutChartProps['styles'] = {
     root: {
-      '[class^="arcLabel"]': {
-        ...(typeof firstData.textfont?.size === 'number' ? { fontSize: firstData.textfont.size } : {}),
-      },
+      ...(typeof firstData.textfont?.size === 'number' ? { fontSize: firstData.textfont.size } : {}),
     },
   };
 

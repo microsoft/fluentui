@@ -204,9 +204,7 @@ Object {
   "innerRadius": 42,
   "showLabelsInPercent": true,
   "styles": Object {
-    "root": Object {
-      "[class^=\\"arcLabel\\"]": Object {},
-    },
+    "root": Object {},
   },
   "width": 440,
 }
@@ -246,9 +244,7 @@ Object {
   "showLabelsInPercent": false,
   "styles": Object {
     "root": Object {
-      "[class^=\\"arcLabel\\"]": Object {
-        "fontSize": 20,
-      },
+      "fontSize": 20,
     },
   },
   "width": 440,
