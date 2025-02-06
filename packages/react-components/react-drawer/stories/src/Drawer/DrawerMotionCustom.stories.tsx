@@ -47,6 +47,9 @@ const useStyles = makeStyles({
   },
 });
 
+/*
+ * Create a custom DrawerMotion component that animates the drawer surface.
+ */
 const DrawerMotion = createPresenceComponent(() => {
   const keyframes = [
     {
@@ -81,6 +84,9 @@ const DrawerMotion = createPresenceComponent(() => {
   };
 });
 
+/*
+ * Create a custom ContentMotion component that animates the content element.
+ */
 const ContentMotion = createPresenceComponent(() => {
   const keyframes = [
     {
@@ -123,6 +129,7 @@ export const MotionCustom = () => {
     <div className={styles.root}>
       <InlineDrawer
         className={styles.drawer}
+        // Override motion settings for the drawer surface
         surfaceMotion={{ children: (_, props) => <DrawerMotion {...props} /> }}
         separator
         open={isOpen}
