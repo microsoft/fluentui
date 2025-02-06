@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add top:0 to hiddenContentStyle",
+  "packageName": "@fluentui/style-utilities",
+  "email": "mikula@gmail.com",
+  "dependentChangeType": "patch"
+}
