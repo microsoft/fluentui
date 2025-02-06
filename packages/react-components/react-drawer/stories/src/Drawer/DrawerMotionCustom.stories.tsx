@@ -13,7 +13,7 @@ import { Dismiss24Regular } from '@fluentui/react-icons';
 import * as React from 'react';
 
 const drawerWidth = '320px';
-const drawerMargin = tokens.spacingVerticalL;
+const drawerMargin = tokens.spacingVerticalM;
 
 const useStyles = makeStyles({
   root: {
@@ -37,18 +37,13 @@ const useStyles = makeStyles({
     display: 'grid',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    gap: tokens.spacingVerticalL,
+    gap: tokens.spacingVerticalM,
     gridAutoRows: 'max-content',
     boxSizing: 'border-box',
     position: 'absolute',
     inset: 0,
     backgroundColor: tokens.colorNeutralBackground1,
     border: `1px solid ${tokens.colorNeutralBackground1}`,
-  },
-
-  field: {
-    display: 'grid',
-    gap: tokens.spacingVerticalS,
   },
 });
 
@@ -76,12 +71,12 @@ const DrawerMotion = createPresenceComponent(() => {
     enter: {
       keyframes,
       duration: motionTokens.durationNormal,
-      easing: motionTokens.curveDecelerateMid,
+      easing: motionTokens.curveDecelerateMin,
     },
     exit: {
       keyframes: [...keyframes].reverse(),
-      duration: motionTokens.durationGentle,
-      easing: motionTokens.curveAccelerateMid,
+      duration: motionTokens.durationSlow,
+      easing: motionTokens.curveAccelerateMin,
     },
   };
 });
@@ -110,12 +105,12 @@ const ContentMotion = createPresenceComponent(() => {
     enter: {
       keyframes,
       duration: motionTokens.durationGentle,
-      easing: motionTokens.curveDecelerateMid,
+      easing: motionTokens.curveDecelerateMin,
     },
     exit: {
       keyframes: [...keyframes].reverse(),
-      duration: motionTokens.durationNormal,
-      easing: motionTokens.curveAccelerateMid,
+      duration: motionTokens.durationGentle,
+      easing: motionTokens.curveAccelerateMin,
     },
   };
 });
