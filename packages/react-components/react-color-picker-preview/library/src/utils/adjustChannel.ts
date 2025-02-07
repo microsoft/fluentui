@@ -14,13 +14,5 @@ export type ChannelActions<T> = {
 };
 
 export function adjustChannel<T>(channel: ColorChannel, actions: ChannelActions<T>): T {
-  switch (channel) {
-    case 'hue':
-    default:
-      return actions.hue;
-    case 'saturation':
-      return actions.saturation;
-    case 'value':
-      return actions.value;
-  }
+  return actions[channel] || actions.hue;
 }

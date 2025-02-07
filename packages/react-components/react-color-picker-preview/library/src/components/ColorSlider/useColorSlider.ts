@@ -16,6 +16,7 @@ import { getPercent } from '../../utils/getPercent';
 import { createHsvColor } from '../../utils/createHsvColor';
 import { clampValue, ChannelActions, adjustChannel } from '../../utils/adjustChannel';
 import { HsvColor } from '../../types/color';
+import { INITIAL_COLOR_HSV } from '../../utils/constants';
 
 /**
  * Create the state required to render ColorSlider.
@@ -58,30 +59,18 @@ export const useColorSlider_unstable = (
   const hsvColor = color || colorFromContext;
   const hslColor = tinycolor(hsvColor).toHsl();
 
-  const [hue, setHue] = useControllableState({
-    defaultState: props.defaultColor?.h,
-    state: hsvColor?.h,
-    initialState: 0,
-  });
-
-  const [saturation, setSaturation] = useControllableState({
-    defaultState: props.defaultColor?.s,
-    state: hsvColor?.s,
-    initialState: 0,
-  });
-
-  const [value, setValue] = useControllableState({
-    defaultState: props.defaultColor?.v,
-    state: hsvColor?.v,
-    initialState: 0,
+  const [currentColor, setCurrentColor] = useControllableState<HsvColor>({
+    defaultState: props.defaultColor,
+    state: hsvColor,
+    initialState: INITIAL_COLOR_HSV,
   });
 
   const MAX = channel === 'hue' ? HUE_MAX : COLOR_MAX;
 
   const valueChannelActions: ChannelActions<number> = {
-    hue: clampValue(hue),
-    saturation: clampValue(saturation * 100),
-    value: clampValue(value * 100),
+    hue: clampValue(currentColor.h),
+    saturation: clampValue(currentColor.s * 100),
+    value: clampValue(currentColor.v * 100),
   };
 
   const clampedValue = adjustChannel(channel, valueChannelActions);
@@ -98,13 +87,7 @@ export const useColorSlider_unstable = (
     };
     const newColor = adjustChannel(channel, colorActions)();
 
-    const colorSetters: ChannelActions<() => void> = {
-      hue: () => setHue(newValue),
-      saturation: () => setSaturation(newValue),
-      value: () => setValue(newValue),
-    };
-
-    adjustChannel(channel, colorSetters)();
+    setCurrentColor(newColor);
 
     inputOnChange?.(event);
     onChange?.(event, {
