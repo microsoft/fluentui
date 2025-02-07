@@ -59,8 +59,8 @@ jobs:
 
       - name: VR App - Create Policy
         run: |
-          echo "MAKE THIS STEP WORK"
-          
+          echo "MAKE THIS STEP WORK TEST"
+
       - name: Login via Azure CLI
         uses: azure/login@v2
         with:
