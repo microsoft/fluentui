@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Revert MessageBar auto reflow changes from #33409",
-  "packageName": "@fluentui/react-message-bar",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

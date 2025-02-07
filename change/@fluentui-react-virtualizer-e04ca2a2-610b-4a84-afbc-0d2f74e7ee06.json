@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Fix regression of child render function update",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}
