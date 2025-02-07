@@ -13,6 +13,7 @@ export { Size } from './InteractionTagSize.stories';
 export { Appearance } from './InteractionTagAppearance.stories';
 export { Disabled } from './InteractionTagDisabled.stories';
 export { HasPrimaryAction } from './InteractionTagHasPrimaryAction.stories';
+export { InteractionTagSelected } from './InteractionTagSelected.stories';
 
 export default {
   title: 'Components/Tag/InteractionTag',

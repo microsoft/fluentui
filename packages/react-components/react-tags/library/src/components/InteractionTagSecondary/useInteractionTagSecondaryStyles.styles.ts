@@ -104,6 +104,21 @@ const useRootStyles = makeStyles({
       },
     },
   },
+  selected: {
+    background: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForegroundOnBrand,
+    ...shorthands.borderColor(tokens.colorBrandBackground),
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackgroundHover,
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+    ':active': {
+      backgroundColor: tokens.colorBrandBackgroundPressed,
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+    // divider
+    borderLeftColor: tokens.colorNeutralStrokeOnBrand2,
+  },
 
   rounded: {
     borderTopRightRadius: tokens.borderRadiusMedium,
@@ -162,7 +177,7 @@ export const useInteractionTagSecondaryStyles_unstable = (
   const rootStyles = useRootStyles();
   const rootDisabledStyles = useRootDisabledStyles();
 
-  const { shape, size, appearance } = state;
+  const { selected, shape, size, appearance } = state;
 
   state.root.className = mergeClasses(
     interactionTagSecondaryClassNames.root,
@@ -170,6 +185,7 @@ export const useInteractionTagSecondaryStyles_unstable = (
     state.disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
     rootStyles[shape],
     rootStyles[size],
+    selected && !state.disabled && rootStyles.selected,
     state.root.className,
   );
 

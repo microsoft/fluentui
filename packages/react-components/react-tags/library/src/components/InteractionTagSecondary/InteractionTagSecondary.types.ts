@@ -14,4 +14,4 @@ export type InteractionTagSecondaryProps = ComponentProps<InteractionTagSecondar
  * State used in rendering InteractionTagSecondary
  */
 export type InteractionTagSecondaryState = ComponentState<InteractionTagSecondarySlots> &
-  Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'>>;
+  Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'selected' | 'shape' | 'size'>>;

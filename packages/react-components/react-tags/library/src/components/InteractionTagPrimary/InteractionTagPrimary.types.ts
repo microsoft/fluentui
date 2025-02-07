@@ -39,6 +39,13 @@ export type InteractionTagPrimaryProps = ComponentProps<Partial<InteractionTagPr
    * @default false
    */
   hasSecondaryAction?: boolean;
+
+  /**
+   * An InteractionTag can be selected.
+   *
+   * @default false
+   */
+  selected?: boolean;
 };
 
 /**
@@ -46,7 +53,7 @@ export type InteractionTagPrimaryProps = ComponentProps<Partial<InteractionTagPr
  */
 export type InteractionTagPrimaryState = ComponentState<InteractionTagPrimarySlots> &
   Required<
-    Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'> &
+    Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'selected' | 'shape' | 'size'> &
       Pick<InteractionTagPrimaryProps, 'hasSecondaryAction'>
   > &
   UseTagAvatarContextValuesOptions;

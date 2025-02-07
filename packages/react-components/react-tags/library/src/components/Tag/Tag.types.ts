@@ -59,6 +59,13 @@ export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
   dismissible?: boolean;
 
   /**
+   * An InteractionTag can be selected.
+   *
+   * @default false
+   */
+  selected?: boolean;
+
+  /**
    * A Tag can have rounded or circular shape.
    *
    * @default 'round'
@@ -82,5 +89,5 @@ export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
  * State used in rendering Tag
  */
 export type TagState = ComponentState<TagSlots> &
-  Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'>> &
+  Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'selected' | 'shape' | 'size'>> &
   UseTagAvatarContextValuesOptions;

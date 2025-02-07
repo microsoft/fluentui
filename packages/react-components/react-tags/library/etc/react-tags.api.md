@@ -33,6 +33,7 @@ export type InteractionTagPrimaryContextValues = TagAvatarContextValues;
 // @public
 export type InteractionTagPrimaryProps = ComponentProps<Partial<InteractionTagPrimarySlots>> & {
     hasSecondaryAction?: boolean;
+    selected?: boolean;
 };
 
 // @public (undocumented)
@@ -45,12 +46,13 @@ export type InteractionTagPrimarySlots = {
 };
 
 // @public
-export type InteractionTagPrimaryState = ComponentState<InteractionTagPrimarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'> & Pick<InteractionTagPrimaryProps, 'hasSecondaryAction'>> & UseTagAvatarContextValuesOptions;
+export type InteractionTagPrimaryState = ComponentState<InteractionTagPrimarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'selected' | 'shape' | 'size'> & Pick<InteractionTagPrimaryProps, 'hasSecondaryAction'>> & UseTagAvatarContextValuesOptions;
 
 // @public
 export type InteractionTagProps<Value = TagValue> = ComponentProps<Partial<InteractionTagSlots>> & {
     appearance?: TagAppearance;
     disabled?: boolean;
+    selected?: boolean;
     shape?: TagShape;
     size?: TagSize;
     value?: Value;
@@ -71,7 +73,7 @@ export type InteractionTagSecondarySlots = {
 };
 
 // @public
-export type InteractionTagSecondaryState = ComponentState<InteractionTagSecondarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'>>;
+export type InteractionTagSecondaryState = ComponentState<InteractionTagSecondarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'selected' | 'shape' | 'size'>>;
 
 // @public (undocumented)
 export type InteractionTagSlots = {
@@ -79,7 +81,7 @@ export type InteractionTagSlots = {
 };
 
 // @public
-export type InteractionTagState<Value = TagValue> = ComponentState<InteractionTagSlots> & Required<Pick<InteractionTagProps, 'appearance' | 'disabled' | 'shape' | 'size' | 'value'>> & {
+export type InteractionTagState<Value = TagValue> = ComponentState<InteractionTagSlots> & Required<Pick<InteractionTagProps, 'appearance' | 'disabled' | 'selected' | 'shape' | 'size' | 'value'>> & {
     handleTagDismiss: TagDismissHandler<Value>;
     interactionTagPrimaryId: string;
 };
@@ -155,6 +157,7 @@ export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
     appearance?: TagAppearance;
     disabled?: boolean;
     dismissible?: boolean;
+    selected?: boolean;
     shape?: TagShape;
     size?: TagSize;
     value?: Value;
@@ -177,7 +180,7 @@ export type TagSlots = {
 };
 
 // @public
-export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'>> & UseTagAvatarContextValuesOptions;
+export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'selected' | 'shape' | 'size'>> & UseTagAvatarContextValuesOptions;
 
 // @public (undocumented)
 export type TagValue = string;

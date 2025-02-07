@@ -116,7 +116,11 @@ const useRootStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorBrandForeground2,
   },
-
+  selected: {
+    backgroundColor: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForegroundOnBrand,
+    ...shorthands.borderColor(tokens.colorBrandBackground),
+  },
   medium: {
     height: '32px',
   },
@@ -342,7 +346,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   const primaryTextStyles = usePrimaryTextStyles();
   const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
 
-  const { shape, size, appearance } = state;
+  const { shape, size, appearance = 'filled', selected } = state;
 
   state.root.className = mergeClasses(
     tagClassNames.root,
@@ -350,6 +354,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
     shape === 'rounded' ? rootRoundedBaseClassName : rootCircularBaseClassName,
 
     state.disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
+    selected && rootStyles.selected,
     rootStyles[size],
 
     !state.media && !state.icon && rootWithoutMediaStyles[size],
