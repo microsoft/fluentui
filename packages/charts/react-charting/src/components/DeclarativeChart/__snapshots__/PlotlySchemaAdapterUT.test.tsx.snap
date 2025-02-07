@@ -203,9 +203,6 @@ Object {
   "hideLegend": false,
   "innerRadius": 42,
   "showLabelsInPercent": true,
-  "styles": Object {
-    "root": Object {},
-  },
   "width": 440,
 }
 `;
@@ -242,11 +239,6 @@ Object {
   "hideLegend": false,
   "innerRadius": 0,
   "showLabelsInPercent": false,
-  "styles": Object {
-    "root": Object {
-      "fontSize": 20,
-    },
-  },
   "width": 440,
 }
 `;
