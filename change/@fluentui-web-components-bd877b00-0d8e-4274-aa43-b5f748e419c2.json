@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove unnecessary filtering in menu-item",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
