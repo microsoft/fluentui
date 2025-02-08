@@ -92,11 +92,7 @@
     "e2e:local": "node ./scripts/e2e.js --ui"
   },
   "devDependencies": {
-    "@microsoft/fast-element": "2.0.0",
-    "@tensile-perf/web-components": "~0.2.0",
-    "@storybook/html": "7.6.20",
-    "@storybook/html-webpack5": "7.6.20",
-    "chromedriver": "^125.0.0"
+    "@microsoft/fast-element": "2.0.0"
   },
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
