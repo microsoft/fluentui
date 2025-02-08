@@ -1,8 +1,27 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 17 Jan 2025 04:07:40 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Feb 2025 04:07:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.79](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.79)
+
+Fri, 07 Feb 2025 04:07:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.78..@fluentui/web-components_v3.0.0-beta.79)
+
+### Changes
+
+- remove unnecessary filtering in menu-item ([PR #33795](https://github.com/microsoft/fluentui/pull/33795) by jes@microsoft.com)
+
+## [3.0.0-beta.78](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.78)
+
+Tue, 04 Feb 2025 04:07:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.77..@fluentui/web-components_v3.0.0-beta.78)
+
+### Changes
+
+- add Dropdown, Listbox, and Option components ([PR #32116](https://github.com/microsoft/fluentui/pull/32116) by 863023+radium-v@users.noreply.github.com)
+- fix: dropdown opens then closes on space key ([PR #33767](https://github.com/microsoft/fluentui/pull/33767) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.77](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.77)
 

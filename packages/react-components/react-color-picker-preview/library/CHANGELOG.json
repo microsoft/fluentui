@@ -2,6 +2,21 @@
   "name": "@fluentui/react-color-picker-preview",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2025 10:42:11 GMT",
+      "tag": "@fluentui/react-color-picker-preview_v0.1.6",
+      "version": "0.1.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "678529c67e1a18062fa8c810e85cf1b4f46ff513",
+            "comment": "fix: thumb design for ColorPicker - partner's ask"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Jan 2025 20:27:33 GMT",
       "tag": "@fluentui/react-color-picker-preview_v0.1.5",
       "version": "0.1.5",

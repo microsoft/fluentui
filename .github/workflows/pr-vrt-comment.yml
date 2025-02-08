@@ -4,10 +4,6 @@ on:
     workflows: ['VRT CI']
     types:
       - completed
-    branches:
-      - master
-      # remove following once CRT testing is done
-      - vrt-gha-testing
 
 concurrency:
   # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
@@ -63,9 +59,25 @@ jobs:
 
       - name: VR App - Create Policy
         run: |
-          echo "MAKE THIS WORK"
+          echo "MAKE THIS STEP WORK"
+
+      - name: Login via Azure CLI
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Run screenshotdiff
+        env:
+          API_TOKEN: ${{ FormatPAT.NonBase64PAT }}
+          VR_APP_API_URL: 'https://vrapprovaldev2.azurewebsites.net/api/'
+          STORAGE_ACCOUNT_ID: 'https://onejstestartifactsprod.blob.core.windows.net/'
+          SYSTEM_ACCESSTOKEN: ${{ System.AccessToken }}
+          TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          PRINCIPAL_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          SERVICE_CONNECTION_ID: ${{ SERVICE-CONNECTION-ID }}
+          GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "MAKE THIS WORK"
           npx vr-approval-cli@0.4.11 run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --threshold '0.04' --cumThreshold '1'

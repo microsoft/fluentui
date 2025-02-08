@@ -2,6 +2,53 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2025 10:42:10 GMT",
+      "tag": "@fluentui/react-components_v9.58.3",
+      "version": "9.58.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "da62e83423063b6ab3ed62e62bcb965f37cf5700",
+            "comment": "fix: Button sets correct disabledFocusable icon color"
+          },
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "678529c67e1a18062fa8c810e85cf1b4f46ff513",
+            "comment": "fix: thumb design for ColorPicker - partner's ask"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "b37554b631f4e27e0927b123732f3d57d62660a3",
+            "comment": "fix: Revert MessageBar auto reflow changes from #33409"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "ace3f409f133410a2ed749fa88839159b7e291b6",
+            "comment": "fix: exported internal CSS variables"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "171c1b1bda0d403270e828fbad3d8c7b791e21af",
+            "comment": "bugfix: regression from #33689"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "a17aac2acd61ee1e4cdd59c2637498cabd81cfe9",
+            "comment": "fix: Fix regression of child render function update"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jan 2025 21:26:33 GMT",
       "tag": "@fluentui/react-components_v9.58.2",
       "version": "9.58.2",

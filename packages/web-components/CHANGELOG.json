@@ -2,6 +2,42 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2025 04:07:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.79",
+      "version": "3.0.0-beta.79",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "da4d05c54ebaae0927060601929213cdc1a5f9eb",
+            "comment": "remove unnecessary filtering in menu-item"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Feb 2025 04:07:18 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.78",
+      "version": "3.0.0-beta.78",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "f706fe1a83c6641180fdad58656297c3cfc82d0c",
+            "comment": "add Dropdown, Listbox, and Option components"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "4239291f8d8a9ff7bb96f1b7eb61ad770a991fae",
+            "comment": "fix: dropdown opens then closes on space key"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jan 2025 04:07:40 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.77",
       "version": "3.0.0-beta.77",

@@ -1942,15 +1942,7 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-icons@^2.0.237", "@fluentui/react-icons@^2.0.239":
-  version "2.0.245"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.245.tgz#66df74bf52861046b8171b49c2d05f8f29a28a1a"
-  integrity sha512-okaKAWR9BPTEu7g/Lz7M+SeABkveiDC0A5dA+AKbnGX/5V60/0jV/m/mnTCs9EfsbMdHZaoErsVqzCxP3mqYGQ==
-  dependencies:
-    "@griffel/react" "^1.0.0"
-    tslib "^2.1.0"
-
-"@fluentui/react-icons@^2.0.271":
+"@fluentui/react-icons@^2.0.237", "@fluentui/react-icons@^2.0.239", "@fluentui/react-icons@^2.0.271":
   version "2.0.271"
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.271.tgz#a03cd6d97d15bab28bb4f03fb28d91fa61b6bbbe"
   integrity sha512-I5rFvmZTzf1OQduU5Lal8yNMFcjCsfLnFDEwYjpwTdcyAPoIY2MTZMb4hCbGoohAreQL4cbItkWugxZc7N1wdw==
@@ -21670,9 +21662,9 @@ stoppable@^1.1.0:
   integrity sha512-KXDYZ9dszj6bzvnEMRYvxgeTHU74QBFL54XKtP3nyMuJ81CFYtABZ3bAzL2EdFUaEwJOBOgENyFj3R7oTzDyyw==
 
 store2@^2.14.2:
-  version "2.14.3"
-  resolved "https://registry.yarnpkg.com/store2/-/store2-2.14.3.tgz#24077d7ba110711864e4f691d2af941ec533deb5"
-  integrity sha512-4QcZ+yx7nzEFiV4BMLnr/pRa5HYzNITX2ri0Zh6sT9EyQHbBHacC6YigllUPU9X3D0f/22QCgfokpKs52YRrUg==
+  version "2.14.4"
+  resolved "https://registry.yarnpkg.com/store2/-/store2-2.14.4.tgz#81b313abaddade4dcd7570c5cc0e3264a8f7a242"
+  integrity sha512-srTItn1GOvyvOycgxjAnPA63FZNwy0PTyUBFMHRM+hVFltAeoh0LmNBz9SZqUS9mMqGk8rfyWyXn3GH5ReJ8Zw==
 
 storybook-addon-performance@0.17.3:
   version "0.17.3"

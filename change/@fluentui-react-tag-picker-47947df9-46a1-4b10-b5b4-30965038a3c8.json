@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: regression from #33689",
-  "packageName": "@fluentui/react-tag-picker",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

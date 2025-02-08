@@ -150,6 +150,7 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
           </g>
           <g>
             <rect
+              fill="#ffffff"
               height="8"
               width="8"
               x="-4"
@@ -965,6 +966,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
         >
           Array [
             <rect
+              fill="#ffffff"
               height={8}
               width={8}
               x={-4}
@@ -1552,6 +1554,7 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
         >
           Array [
             <rect
+              fill="#ffffff"
               height={8}
               width={8}
               x={-4}
@@ -1754,6 +1757,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
         >
           Array [
             <rect
+              fill="#ffffff"
               height={8}
               width={8}
               x={-4}
@@ -2354,6 +2358,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
           >
             Array [
               <rect
+                fill="#1b1a19"
                 height={8}
                 width={8}
                 x={-4}
@@ -2942,6 +2947,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
         >
           Array [
             <rect
+              fill="#ffffff"
               height={8}
               width={8}
               x={-4}
@@ -3510,6 +3516,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
         >
           Array [
             <rect
+              fill="#ffffff"
               height={8}
               width={8}
               x={-4}
@@ -3974,6 +3981,7 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
         >
           Array [
             <rect
+              fill="#ffffff"
               height={8}
               width={8}
               x={-4}
@@ -4470,6 +4478,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
         >
           Array [
             <rect
+              fill="#ffffff"
               height={8}
               width={8}
               x={-4}
@@ -5057,6 +5066,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
         >
           Array [
             <rect
+              fill="#ffffff"
               height={8}
               width={8}
               x={-4}
@@ -5644,6 +5654,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
         >
           Array [
             <rect
+              fill="#ffffff"
               height={8}
               width={8}
               x={-4}
