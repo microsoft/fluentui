@@ -20,7 +20,7 @@
     "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-icons": "^2.0.271",
     "@fluentui/react-label": "^9.1.83",
     "@fluentui/react-popover": "^9.9.32",
     "@fluentui/react-tabster": "^9.23.3",

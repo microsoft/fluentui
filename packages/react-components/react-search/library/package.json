@@ -18,7 +18,7 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-icons": "^2.0.271",
     "@fluentui/react-input": "^9.4.99",
     "@fluentui/react-jsx-runtime": "^9.0.50",
     "@fluentui/react-theme": "^9.1.24",

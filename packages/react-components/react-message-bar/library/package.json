@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@fluentui/react-button": "^9.3.102",
-    "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-icons": "^2.0.271",
     "@fluentui/react-jsx-runtime": "^9.0.50",
     "@fluentui/react-motion": "^9.6.7",
     "@fluentui/react-motion-components-preview": "^0.4.3",
