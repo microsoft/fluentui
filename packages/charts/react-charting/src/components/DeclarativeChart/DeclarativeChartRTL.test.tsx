@@ -53,7 +53,7 @@ describe('DeclarativeChart', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test.only('Should render heatmapchart in DeclarativeChart', () => {
+  test('Should render heatmapchart in DeclarativeChart', () => {
     // Arrange
     const plotlySchema = require('./tests/schema/fluent_heatmap_test.json');
     const { container } = render(<DeclarativeChart key={'heatmapchart'} chartSchema={{ plotlySchema }} />);
