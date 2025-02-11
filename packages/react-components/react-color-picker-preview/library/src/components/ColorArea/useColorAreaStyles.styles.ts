@@ -37,8 +37,9 @@ const useRootStyles = makeResetStyles({
   alignItems: 'start',
   justifyItems: 'start',
   [thumbSizeVar]: '20px',
-  minWidth: '200px',
-  minHeight: '200px',
+  minWidth: '300px',
+  minHeight: '300px',
+  boxSizing: 'border-box',
   [innerThumbRadiusVar]: '6px',
 });
 
