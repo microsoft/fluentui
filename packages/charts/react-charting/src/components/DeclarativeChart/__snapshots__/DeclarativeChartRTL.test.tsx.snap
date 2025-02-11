@@ -24370,9 +24370,6 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
           height: 100%;
           width: 100%;
         }
-        & [class^="arcLabel"] {
-          font-size: 20px;
-        }
   >
     <div
       class=
