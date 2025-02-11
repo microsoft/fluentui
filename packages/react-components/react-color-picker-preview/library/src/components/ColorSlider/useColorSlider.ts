@@ -14,7 +14,7 @@ import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker'
 import { MIN, HUE_MAX, MAX as COLOR_MAX } from '../../utils/constants';
 import { getPercent } from '../../utils/getPercent';
 import { createHsvColor } from '../../utils/createHsvColor';
-import { clampValue, ChannelActions, adjustChannel } from '../../utils/adjustChannel';
+import { clampValue, type ChannelActions, adjustChannel } from '../../utils/adjustChannel';
 import { HsvColor } from '../../types/color';
 import { INITIAL_COLOR_HSV } from '../../utils/constants';
 
