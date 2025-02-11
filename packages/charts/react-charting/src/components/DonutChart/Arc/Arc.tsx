@@ -33,10 +33,11 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   public render(): JSX.Element {
     const { arc, href, focusedArcId, activeArc } = this.props;
     const getClassNames = classNamesFunction<IArcStyleProps, IArcStyles>();
-    const legend = this.props.data!.data.legend;
     const id =
       this.props.uniqText! +
-      (typeof legend === 'string' ? legend.replace(/\s+/g, '') : '') +
+      (this.props.data!.data.legend && typeof this.props.data!.data.legend === 'string'
+        ? this.props.data!.data.legend.replace(/\s+/g, '')
+        : '') +
       this.props.data!.data.data;
     const opacity: number =
       activeArc && activeArc.length > 0 ? (activeArc.includes(this.props.data?.data.legend!) ? 1 : 0.1) : 1;
