@@ -35,9 +35,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     const getClassNames = classNamesFunction<IArcStyleProps, IArcStyles>();
     const id =
       this.props.uniqText! +
-      (this.props.data!.data.legend && typeof this.props.data!.data.legend === 'string'
-        ? this.props.data!.data.legend.replace(/\s+/g, '')
-        : '') +
+      (typeof this.props.data!.data.legend === 'string' ? this.props.data!.data.legend.replace(/\s+/g, '') : '') +
       this.props.data!.data.data;
     const opacity: number =
       activeArc && activeArc.length > 0 ? (activeArc.includes(this.props.data?.data.legend!) ? 1 : 0.1) : 1;
