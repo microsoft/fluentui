@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 
 const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
 
-export const ColorSliderCustomExample = () => {
+export const ColorSliderChannels = () => {
   const styles = useStyles();
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
 
@@ -44,10 +44,10 @@ export const ColorSliderCustomExample = () => {
   );
 };
 
-ColorSliderCustomExample.parameters = {
+ColorSliderChannels.parameters = {
   docs: {
     description: {
-      story: 'The `ColorSlider` allows users to change the hue aspect of a color value.',
+      story: 'The `ColorSlider` allows users to choose color channels like hue, saturation, and value.',
     },
   },
 };
