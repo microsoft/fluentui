@@ -107,7 +107,6 @@ export class LabeledArc extends Arc {
           shouldReceiveFocus={false}
           maxWidth={40}
           wrapContent={wrapContent}
-          theme={this.props.theme}
         />
       </g>
     );

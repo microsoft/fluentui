@@ -555,6 +555,7 @@ export class CartesianChartBase
                 maxWidth={xAxisTitleMaximumAllowedWidth}
                 wrapContent={wrapContent}
                 theme={this.props.theme}
+                showBackground={true}
               />
             )}
             <g
@@ -604,6 +605,7 @@ export class CartesianChartBase
                     maxWidth={yAxisTitleMaximumAllowedHeight}
                     wrapContent={wrapContent}
                     theme={this.props.theme}
+                    showBackground={true}
                   />
                 )}
               </g>
@@ -628,6 +630,7 @@ export class CartesianChartBase
                 maxWidth={yAxisTitleMaximumAllowedHeight}
                 wrapContent={wrapContent}
                 theme={this.props.theme}
+                showBackground={true}
               />
             )}
           </svg>
