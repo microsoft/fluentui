@@ -1,5 +1,11 @@
 import { CartesianChart, IChildProps, IModifiedCartesianChartProps } from '../../components/CommonComponents/index';
-import { IAccessibilityProps, IChart, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
+import {
+  IAccessibilityProps,
+  IChart,
+  IExportedLegend,
+  IHeatMapChartData,
+  IHeatMapChartDataPoint,
+} from '../../types/IDataPoint';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { classNamesFunction, getId, initializeComponentRef, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
@@ -20,6 +26,7 @@ import {
   IDomainNRange,
   domainRangeOfXStringAxis,
   createStringYAxis,
+  transformLegendDataForExport,
 } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
@@ -252,8 +259,13 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     return this._cartesianChartRef.current?.chartContainer || null;
   }
 
-  public get legends(): ILegend[] {
-    return this._getLegendData();
+  public get legend(): IExportedLegend {
+    return {
+      items: transformLegendDataForExport(
+        this._getLegendData(),
+        this.state.selectedLegend ? [this.state.selectedLegend] : [],
+      ),
+    };
   }
 
   private _getMinMaxOfYAxis = () => {

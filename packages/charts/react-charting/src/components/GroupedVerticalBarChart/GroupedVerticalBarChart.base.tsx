@@ -33,6 +33,7 @@ import {
   getNextColor,
   areArraysEqual,
   calculateLongestLabelWidth,
+  transformLegendDataForExport,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -48,7 +49,7 @@ import {
   IRefArrayData,
   Legends,
 } from '../../index';
-import { IChart } from '../../types/index';
+import { IChart, IExportedLegend } from '../../types/index';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -247,8 +248,13 @@ export class GroupedVerticalBarChartBase
     return this._cartesianChartRef.current?.chartContainer || null;
   }
 
-  public get legends(): ILegend[] {
-    return this._getLegendData(this.props.data, this.props.theme!.palette);
+  public get legend(): IExportedLegend {
+    return {
+      items: transformLegendDataForExport(
+        this._getLegendData(this.props.data, this.props.theme!.palette),
+        this.state.selectedLegends,
+      ),
+    };
   }
 
   private _getMinMaxOfYAxis = () => {

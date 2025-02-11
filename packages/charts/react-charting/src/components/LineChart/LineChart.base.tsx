@@ -49,8 +49,9 @@ import {
   createStringYAxis,
   formatDate,
   areArraysEqual,
+  transformLegendDataForExport,
 } from '../../utilities/index';
-import { IChart } from '../../types/index';
+import { IChart, IExportedLegend } from '../../types/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -379,8 +380,17 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return this._cartesianChartRef.current?.chartContainer || null;
   }
 
-  public get legends(): ILegend[] {
-    return this._getLegendData(this._points);
+  public get legend(): IExportedLegend {
+    return {
+      items: transformLegendDataForExport(
+        this._getLegendData(this._points),
+        this.props.legendProps?.canSelectMultipleLegends
+          ? this.state.selectedLegendPoints.map(item => item.legend)
+          : this.state.selectedLegend
+          ? [this.state.selectedLegend]
+          : [],
+      ),
+    };
   }
 
   private _getDomainNRangeValues = (

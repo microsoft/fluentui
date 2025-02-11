@@ -42,10 +42,11 @@ import {
   formatDate,
   getSecureProps,
   areArraysEqual,
+  transformLegendDataForExport,
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
-import { IChart } from '../../types/index';
+import { IChart, IExportedLegend } from '../../types/index';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
@@ -129,7 +130,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
   private _cartesianChartRef: React.RefObject<IChart>;
-  private _points:ILineChartPoints[]=[]
+  private _points: ILineChartPoints[] = [];
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -275,8 +276,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return this._cartesianChartRef.current?.chartContainer || null;
   }
 
-  public get legends(): ILegend[] {
-    return this._getLegendData(this._points);
+  public get legend(): IExportedLegend {
+    return {
+      items: transformLegendDataForExport(this._getLegendData(this._points), this.state.selectedLegends),
+    };
   }
 
   private _getDomainNRangeValues = (

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SankeyLink, SankeyNode } from 'd3-sankey';
-import { ILegend, LegendShape } from '../components/Legends/Legends.types';
+import { LegendShape } from '../components/Legends/Legends.types';
 
 export interface IBasestate {
   _width?: number;
@@ -820,5 +820,19 @@ export interface ICustomizedCalloutData {
  */
 export interface IChart {
   chartContainer: HTMLElement | null;
-  legends: ILegend[];
+  legend?: IExportedLegend;
+}
+
+export interface IExportedLegend {
+  items: IExportedLegendItem[];
+  centerAlign?: boolean;
+  textStyles?: {
+    color?: string;
+  };
+}
+
+export interface IExportedLegendItem {
+  name: string;
+  color: string;
+  isSelected: boolean;
 }

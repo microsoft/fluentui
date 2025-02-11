@@ -1,6 +1,6 @@
 import { create as d3Create, select as d3Select, Selection } from 'd3-selection';
-import { ILegend } from '../Legends/Legends.types';
 import { calculateLongestLabelWidth } from '../../utilities/utilities';
+import { IExportedLegend } from '../HorizontalBarChart/index';
 
 /**
  * {@docCategory DeclarativeChart}
@@ -13,8 +13,8 @@ export interface IImageExportOptions {
 }
 
 export function toImage(
-  chartContainer?: HTMLElement | null,
-  legends?: ILegend[],
+  chartContainer: HTMLElement | null | undefined,
+  legend: IExportedLegend | undefined,
   opts: IImageExportOptions = {},
 ): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -25,7 +25,7 @@ export function toImage(
     try {
       const background =
         typeof opts.background === 'string' ? resolveCSSVariables(chartContainer, opts.background) : 'transparent';
-      const svg = toSVG(chartContainer, legends, background);
+      const svg = toSVG(chartContainer, legend, background);
 
       const svgData = new XMLSerializer().serializeToString(svg.node);
       const svgDataUrl = 'data:image/svg+xml;base64,' + btoa(unescapePonyfill(encodeURIComponent(svgData)));
@@ -43,7 +43,7 @@ export function toImage(
   });
 }
 
-function toSVG(chartContainer: HTMLElement, legends: ILegend[] | undefined, background: string) {
+function toSVG(chartContainer: HTMLElement, legend: IExportedLegend | undefined, background: string) {
   const svg = chartContainer.querySelector<SVGSVGElement>('svg');
   if (!svg) {
     throw new Error('SVG not found');
@@ -51,7 +51,7 @@ function toSVG(chartContainer: HTMLElement, legends: ILegend[] | undefined, back
 
   const { width: svgWidth, height: svgHeight } = svg.getBoundingClientRect();
   const classNames = new Set<string>();
-  const legendGroup = cloneLegendsToSVG(legends, svgWidth, svgHeight, classNames);
+  const legendGroup = cloneLegendsToSVG(chartContainer, legend, svgWidth, svgHeight, classNames);
   const w1 = Math.max(svgWidth, legendGroup.width);
   const h1 = svgHeight + legendGroup.height;
   const clonedSvg = d3Select(svg.cloneNode(true) as SVGSVGElement)
@@ -109,12 +109,13 @@ function toSVG(chartContainer: HTMLElement, legends: ILegend[] | undefined, back
 }
 
 function cloneLegendsToSVG(
-  legends: ILegend[] | undefined,
+  chartContainer: HTMLElement,
+  legend: IExportedLegend | undefined,
   svgWidth: number,
   svgHeight: number,
   classNames: Set<string>,
 ) {
-  if (!legends || legends.length === 0) {
+  if (!legend || legend.items.length === 0) {
     return {
       node: null,
       width: 0,
@@ -122,6 +123,7 @@ function cloneLegendsToSVG(
     };
   }
 
+  const { items: legends } = legend;
   const legendGroup = d3Create<SVGGElement>('svg:g');
   let legendX = 0;
   let legendY = 8;
@@ -131,7 +133,7 @@ function cloneLegendsToSVG(
 
   for (let i = 0; i < legends.length; i++) {
     const textOffset = 28;
-    const legendWidth = calculateLongestLabelWidth([legends[i].title]) + textOffset;
+    const legendWidth = calculateLongestLabelWidth([legends[i].name]) + textOffset + 8;
     const legendItem = legendGroup.append('g');
 
     legendLine.push(legendItem);
@@ -151,17 +153,21 @@ function cloneLegendsToSVG(
       .attr('y', svgHeight + legendY + 8)
       .attr('width', 12)
       .attr('height', 12)
-      .attr('fill', legends[i].color)
-      .attr('stroke-width', 1)
-      .attr('stroke', legends[i].color);
+      .style('fill', legends[i].isSelected ? legends[i].color : 'transparent')
+      .style('stroke-width', 1)
+      .style('stroke', legends[i].color);
 
     legendItem
       .append('text')
       .attr('x', legendX + textOffset)
       .attr('y', svgHeight + legendY + 8)
       .attr('dominant-baseline', 'hanging')
-      .attr('fill', 'black')
-      .text(legends[i].title);
+      .style('fill', resolveCSSVariables(chartContainer, legend.textStyles?.color || '#000000'))
+      .style('font-family', getComputedStyle(chartContainer).fontFamily)
+      .style('font-size', 12)
+      .style('font-weight', 400)
+      .style('opacity', legends[i].isSelected ? 1 : 0.67)
+      .text(legends[i].name);
     legendX += legendWidth;
   }
 
@@ -169,8 +175,7 @@ function cloneLegendsToSVG(
   legendLineWidths.push(legendX);
   legendY += 32;
 
-  const centerLegends = true;
-  if (centerLegends) {
+  if (legend.centerAlign) {
     legendLines.forEach((ln, idx) => {
       const offsetX = Math.max((svgWidth - legendLineWidths[idx]) / 2, 0);
       ln.forEach(item => {

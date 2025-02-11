@@ -68,7 +68,7 @@ export interface ICartesianChartState {
  */
 export class CartesianChartBase
   extends React.Component<IModifiedCartesianChartProps, ICartesianChartState>
-  implements Omit<IChart, 'legends'>
+  implements IChart
 {
   public chartContainer: HTMLDivElement;
   private _classNames: IProcessedStyleSet<ICartesianChartStyles>;

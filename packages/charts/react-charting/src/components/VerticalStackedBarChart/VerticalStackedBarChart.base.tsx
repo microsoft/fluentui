@@ -61,8 +61,9 @@ import {
   getNextGradient,
   areArraysEqual,
   calculateLongestLabelWidth,
+  transformLegendDataForExport,
 } from '../../utilities/index';
-import { IChart } from '../../types/index';
+import { IChart, IExportedLegend } from '../../types/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -296,8 +297,13 @@ export class VerticalStackedBarChartBase
     return this._cartesianChartRef.current?.chartContainer || null;
   }
 
-  public get legends(): ILegend[] {
-    return this._getLegendData(this._points, this.props.theme!.palette, this._createLegendsForLine(this.props.data));
+  public get legend(): IExportedLegend {
+    return {
+      items: transformLegendDataForExport(
+        this._getLegendData(this._points, this.props.theme!.palette, this._createLegendsForLine(this.props.data)),
+        this.state.selectedLegends,
+      ),
+    };
   }
 
   /**

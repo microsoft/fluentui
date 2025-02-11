@@ -20,6 +20,7 @@ import {
   getNextColor,
   getNextGradient,
   pointTypes,
+  transformLegendDataForExport,
 } from '../../utilities/index';
 import { ILegend, LegendShape, Legends, Shape } from '../Legends/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
@@ -27,7 +28,7 @@ import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IYValueHover } from '../../index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { select as d3Select } from 'd3-selection';
-import { IChart } from '../../types/index';
+import { IChart, IExportedLegend } from '../../types/index';
 
 const GAUGE_MARGIN = 16;
 const LABEL_WIDTH = 36;
@@ -360,8 +361,11 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     return this._rootElem;
   }
 
-  public get legends(): ILegend[] {
-    return this._getLegendData();
+  public get legend(): IExportedLegend {
+    return {
+      items: transformLegendDataForExport(this._getLegendData(), this.state.selectedLegends),
+      centerAlign: this.props.legendProps?.centerLegends ?? true,
+    };
   }
 
   private _getMargins = () => {
@@ -514,7 +518,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       return null;
     }
 
-    const legends = this._getLegendData()
+    const legends = this._getLegendData();
 
     return (
       <div className={this._classNames.legendsContainer}>

@@ -14,6 +14,7 @@ import {
   IRefArrayData,
   IMargins,
   IChart,
+  IExportedLegend,
 } from '../../types/IDataPoint';
 import { IChildProps, IYValueHover } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
@@ -41,6 +42,7 @@ import {
   createStringYAxisForHorizontalBarChartWithAxis,
   getNextGradient,
   areArraysEqual,
+  transformLegendDataForExport,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
@@ -199,8 +201,13 @@ export class HorizontalBarChartWithAxisBase
     return this._cartesianChartRef.current?.chartContainer || null;
   }
 
-  public get legends(): ILegend[] {
-    return this._getLegendData(this._points, this.props.theme!.palette);
+  public get legend(): IExportedLegend {
+    return {
+      items: transformLegendDataForExport(
+        this._getLegendData(this._points, this.props.theme!.palette),
+        this.state.selectedLegends,
+      ),
+    };
   }
 
   private _getDomainNRangeValues = (

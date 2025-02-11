@@ -13,9 +13,10 @@ import {
   getNextColor,
   getNextGradient,
   areArraysEqual,
+  transformLegendDataForExport,
 } from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { IChart } from '../../types/index';
+import { IChart, IExportedLegend } from '../../types/index';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 const LEGEND_CONTAINER_HEIGHT = 40;
@@ -213,8 +214,11 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return this._rootElem;
   }
 
-  public get legends(): ILegend[] {
-    return this._getLegendData(this._points);
+  public get legend(): IExportedLegend {
+    return {
+      items: transformLegendDataForExport(this._getLegendData(this._points), this.state.selectedLegends),
+      centerAlign: this.props.legendProps?.centerLegends ?? true,
+    };
   }
 
   private _closeCallout = () => {

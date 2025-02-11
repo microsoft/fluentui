@@ -40,8 +40,10 @@ import {
   IVerticalStackedBarDataPoint,
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
+  ILegend,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
+import { IExportedLegendItem } from '../HorizontalBarChart';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -1425,4 +1427,17 @@ export function areArraysEqual(arr1?: string[], arr2?: string[]): boolean {
     }
   }
   return true;
+}
+
+export function transformLegendDataForExport(
+  legendData: ILegend[],
+  selectedLegendsArr: string[],
+): IExportedLegendItem[] {
+  const selectedLegends = new Set(selectedLegendsArr);
+
+  return legendData.map(legend => ({
+    name: legend.title,
+    color: legend.color,
+    isSelected: selectedLegends.size === 0 || selectedLegends.has(legend.title),
+  }));
 }
