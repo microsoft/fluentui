@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Nested modalizer fix.",
+  "packageName": "@fluentui/react-tabster",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}
