@@ -1,36 +1,121 @@
 [
   {
+    "id": "uncategorized",
+    "title": "Uncategorized",
+    "components": [
+      "Accordion",
+      "Avatar",
+      "AvatarGroup",
+      "Badge",
+      "BadgeCounter",
+      "BadgePresence",
+      "Carousel",
+      "CarouselNav",
+      "DataGrid",
+      "Divider",
+      "Drawer",
+      "Example",
+      "FluentProvider",
+      "Image",
+      "MessageBar",
+      "Overflow",
+      "Portal",
+      "Rating",
+      "RatingDisplay",
+      "Skeleton",
+      "Table",
+      "TableCellActions",
+      "TableCellNavigation",
+      "TabList",
+      "Tag",
+      "TagInteractionTag",
+      "TagPicker",
+      "TagTagGroup",
+      "Text",
+      "Toast"
+    ]
+  },
+  {
     "id": "basicInputs",
     "title": "Basic Inputs",
     "components": [
-      "Accordion",
       "Button",
+      "ButtonCompound",
       "Checkbox",
-      "InfoLabel",
+      "Combobox",
+      "Dropdown",
+      "Field",
+      "Input",
+      "Label",
       "link",
-      "List",
-      "Menu",
-      "MenuButton",
-      "MenuItemCheckbox",
-      "MenuItemRadio",
-      "MenuSubmenu",
+      "RadioGroup",
+      "SearchBox",
+      "Select",
+      "Slider",
+      "SpinButton",
       "SplitButton",
-      "Table",
-      "TabList",
-      "Text",
+      "Switch",
       "ToggleButton",
-      "Tooltip",
-      "Tree"
+      "Toolbar"
+    ]
+  },
+  {
+    "id": "galleriesAndPickers",
+    "title": "Galleries and Pickers",
+    "components": ["Calendar", "ColorPicker", "DatePicker", "SwatchPicker", "TimePicker"]
+  },
+  {
+    "id": "itemsAndLists",
+    "title": "Items and Lists",
+    "components": [
+      "Card",
+      "CardFooter",
+      "CardHeader",
+      "CardPreview",
+      "List",
+      "ListSingleAction",
+      "Persona",
+      "Tree",
+      "TreeSelection"
     ]
   },
   {
     "id": "commandsMenusAndNavs",
     "title": "Commands, Menus and Navs",
+    "components": [
+      "Breadcrumb",
+      "Menu",
+      "MenuButton",
+      "MenuItemCheckbox",
+      "MenuItemRadio",
+      "MenuList",
+      "MenuSubmenu",
+      "Overflow"
+    ]
+  },
+  {
+    "id": "notificationAndEngagement",
+    "title": "Notification and Engagement",
     "components": []
   },
   {
-    "id": "galleriesAndPickers",
-    "title": "Galleries and Pickers",
+    "id": "progress",
+    "title": "Progress",
+    "components": ["ProgressBar", "Spinner"]
+  },
+  {
+    "id": "surfaces",
+    "title": "Surfaces",
+    "components": ["Dialog", "InfoLabel", "Popover", "TeachingPopover", "Tooltip"]
+  },
+  {
+    "id": "charts",
+    "title": "Charts",
+    "components": []
+  },
+  {
+    "id": "utilities",
+    "title": "Utilities",
     "components": []
   }
 ]
