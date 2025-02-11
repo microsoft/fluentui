@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-color-picker-preview
 
-This log was last generated on Mon, 27 Jan 2025 20:27:33 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Feb 2025 10:42:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.1.6)
+
+Fri, 07 Feb 2025 10:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker-preview_v0.1.5..@fluentui/react-color-picker-preview_v0.1.6)
+
+### Patches
+
+- fix: thumb design for ColorPicker - partner's ask ([PR #33743](https://github.com/microsoft/fluentui/pull/33743) by v.kozlova13@gmail.com)
 
 ## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.1.5)
 

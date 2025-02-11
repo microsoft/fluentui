@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tag-picker",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2025 10:42:12 GMT",
+      "tag": "@fluentui/react-tag-picker_v9.4.3",
+      "version": "9.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "171c1b1bda0d403270e828fbad3d8c7b791e21af",
+            "comment": "bugfix: regression from #33689"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jan 2025 21:26:34 GMT",
       "tag": "@fluentui/react-tag-picker_v9.4.2",
       "version": "9.4.2",

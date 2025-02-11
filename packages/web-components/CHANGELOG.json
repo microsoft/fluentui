@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2025 04:07:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.79",
+      "version": "3.0.0-beta.79",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "da4d05c54ebaae0927060601929213cdc1a5f9eb",
+            "comment": "remove unnecessary filtering in menu-item"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Feb 2025 04:07:18 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.78",
       "version": "3.0.0-beta.78",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 28 Jan 2025 21:26:33 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Feb 2025 10:42:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.102](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.102)
+
+Fri, 07 Feb 2025 10:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.101..@fluentui/react-button_v9.3.102)
+
+### Patches
+
+- fix: Button sets correct disabledFocusable icon color ([PR #33756](https://github.com/microsoft/fluentui/pull/33756) by sarah.higley@microsoft.com)
 
 ## [9.3.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.101)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-virtualizer
 
-This log was last generated on Wed, 22 Jan 2025 14:00:13 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Feb 2025 10:42:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.92)
+
+Fri, 07 Feb 2025 10:42:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.91..@fluentui/react-virtualizer_v9.0.0-alpha.92)
+
+### Changes
+
+- fix: Fix regression of child render function update ([PR #33788](https://github.com/microsoft/fluentui/pull/33788) by mifraser@microsoft.com)
 
 ## [9.0.0-alpha.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.91)
 

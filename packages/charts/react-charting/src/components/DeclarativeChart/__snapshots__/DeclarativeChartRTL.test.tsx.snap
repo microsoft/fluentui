@@ -4167,12 +4167,6 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
             />
           </g>
           <g>
-            <rect
-              height="8"
-              width="8"
-              x="-4"
-              y="-4"
-            />
             <text
               aria-hidden="true"
               class=
@@ -4192,12 +4186,6 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
               420
             </text>
           </g>
-          <rect
-            height="8"
-            width="8"
-            x="-4"
-            y="-4"
-          />
           <text
             class=
 
@@ -24368,9 +24356,6 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
           font-weight: 400;
           height: 100%;
           width: 100%;
-        }
-        & [class^="arcLabel"] {
-          font-size: 20px;
         }
   >
     <div
