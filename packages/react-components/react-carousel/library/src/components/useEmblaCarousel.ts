@@ -40,17 +40,23 @@ export function setTabsterDefault(element: Element, isDefault: boolean) {
 }
 
 export function useEmblaCarousel(
-  options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'watchDrag' | 'containScroll'> & {
+  options: Pick<
+    EmblaOptionsType,
+    'align' | 'direction' | 'loop' | 'slidesToScroll' | 'watchDrag' | 'containScroll' | 'duration'
+  > & {
     defaultActiveIndex: number | undefined;
     activeIndex: number | undefined;
     motion?: CarouselMotion;
     onDragIndexChange?: EventHandler<CarouselIndexChangeData>;
     onAutoplayIndexChange?: EventHandler<CarouselIndexChangeData>;
+    autoplayInterval?: number;
   },
 ) {
   const {
     align,
+    autoplayInterval,
     direction,
+    duration,
     loop,
     slidesToScroll,
     watchDrag,
@@ -77,6 +83,7 @@ export function useEmblaCarousel(
     startIndex: activeIndex,
     watchDrag,
     containScroll,
+    duration,
   });
 
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
@@ -92,6 +99,7 @@ export function useEmblaCarousel(
     plugins.push(
       Autoplay({
         playOnInit: autoplayRef.current,
+        delay: autoplayInterval,
         /* stopOnInteraction: false causes autoplay to restart on interaction end*/
         /* we'll handle this logic to ensure autoplay state is respected */
         stopOnInteraction: true,
@@ -114,7 +122,7 @@ export function useEmblaCarousel(
     }
 
     return plugins;
-  }, [motion, onDragEvent, watchDrag]);
+  }, [motion, onDragEvent, watchDrag, autoplayInterval]);
 
   /* This function enables autoplay to pause/play without affecting underlying state
    * Useful for pausing on focus etc. without having to reinitialize or set autoplay to off
@@ -280,6 +288,7 @@ export function useEmblaCarousel(
       slidesToScroll,
       watchDrag,
       containScroll,
+      duration,
     };
 
     emblaApi.current?.reInit(
@@ -289,7 +298,7 @@ export function useEmblaCarousel(
       },
       plugins,
     );
-  }, [align, containScroll, direction, getPlugins, loop, slidesToScroll, watchDrag]);
+  }, [align, containScroll, direction, getPlugins, loop, slidesToScroll, watchDrag, duration]);
 
   React.useEffect(() => {
     // Scroll to controlled values on update
