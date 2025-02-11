@@ -376,7 +376,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       this._stringXAxisDataPoints.forEach((xAxisDataPoint: string) => {
         let rectElement: JSX.Element;
         const id = `x${xAxisDataPoint}y${yAxisDataPoint}`;
-        if (this._dataSet[yAxisDataPoint][index]?.x === xAxisDataPoint) {
+        if (
+          this._dataSet[yAxisDataPoint][index]?.x === xAxisDataPoint &&
+          typeof this._dataSet[yAxisDataPoint][index]?.value === 'number'
+        ) {
           /**
            * dataPointObject is an object where it contains information on single
            * data point such as x, y , value, rectText property of the rectangle

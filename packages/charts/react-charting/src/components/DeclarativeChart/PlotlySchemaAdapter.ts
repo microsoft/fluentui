@@ -620,8 +620,10 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
         rectText: zVal,
       });
 
-      zMin = Math.min(zMin, zVal);
-      zMax = Math.max(zMax, zVal);
+      if (typeof zVal === 'number') {
+        zMin = Math.min(zMin, zVal);
+        zMax = Math.max(zMax, zVal);
+      }
     });
   });
   const heatmapData: IHeatMapChartData = {
