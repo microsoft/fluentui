@@ -219,6 +219,8 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     whitespace?: boolean;
     motion?: CarouselMotion;
     announcement?: CarouselAnnouncerFunction;
+    slideDuration?: number;
+    autoplayInterval?: number;
 };
 
 // @public (undocumented)

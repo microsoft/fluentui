@@ -75,7 +75,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   announcement?: CarouselAnnouncerFunction;
 
   /**
-   * Set scroll duration - Higher numbers enables slower scrolling.
+   * Set slide animation duration - Higher numbers enables slower scrolling.
    * Drag interactions are not affected because duration is then determined by the drag force.
    *
    * Note: Duration is not in milliseconds because Carousel uses an
@@ -84,10 +84,10 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    *
    * Defaults: 25
    */
-  duration?: number;
+  slideDuration?: number;
 
   /**
-   * Choose a delay between transitions in milliseconds.
+   * Choose a delay between autoplay transitions in milliseconds.
    * Only active if Autoplay is enabled via CarouselAutoplayButton
    *
    * Defaults: 4000

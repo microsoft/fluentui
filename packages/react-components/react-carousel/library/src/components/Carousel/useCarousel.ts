@@ -34,7 +34,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     whitespace = false,
     announcement,
     motion = 'slide',
-    duration = 25,
+    slideDuration = 25,
     autoplayInterval = 4000,
   } = props;
 
@@ -52,7 +52,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       motion,
       onDragIndexChange: onActiveIndexChange,
       onAutoplayIndexChange: onActiveIndexChange,
-      duration,
+      duration: slideDuration,
       autoplayInterval,
     });
 
