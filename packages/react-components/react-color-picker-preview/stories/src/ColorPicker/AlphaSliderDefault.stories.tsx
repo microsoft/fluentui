@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 });
 const COLOR = { h: 96, s: 1, v: 0.9, a: 1 };
 
-export const AlphaSliderExample = (props: Partial<AlphaSliderProps>) => {
+export const AlphaSliderDefault = (props: Partial<AlphaSliderProps>) => {
   const styles = useStyles();
 
   const [color, setColor] = React.useState(COLOR);
@@ -75,7 +75,7 @@ export const AlphaSliderExample = (props: Partial<AlphaSliderProps>) => {
   );
 };
 
-AlphaSliderExample.parameters = {
+AlphaSliderDefault.parameters = {
   docs: {
     description: {
       story: 'The `AlphaSlider` allows users to change the alpha channel of a color value.',
