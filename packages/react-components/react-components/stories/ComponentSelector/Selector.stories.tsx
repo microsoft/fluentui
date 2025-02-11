@@ -31,6 +31,15 @@ import { BehaviorSelection } from './BehaviorSelection';
 import { MatchingComponents } from './MatchingComponents';
 
 const useStyles = makeStyles({
+  visuallyHidden: {
+    clip: 'rect(0px, 0px, 0px, 0px)',
+    height: '1px',
+    width: '1px',
+    margin: '-1px',
+    padding: '0px',
+    overflow: 'hidden',
+    position: 'absolute',
+  },
   secondLevel: { 'margin-left': '30px' },
   thirdLevel: { 'margin-left': '60px' },
   forthLevel: { 'margin-left': '90px' },
@@ -372,10 +381,9 @@ export const Selector = () => {
       </div>
       {mode === 'byComponents' && (
         <>
-          {/* // TODO make aria-live region which is hidden and announce the number of components available */}
-          {/* <div>
+          <div className={classes.visuallyHidden}>
             <Text role="status">{filteredComponentsDefinitions.length} components available.</Text>
-          </div> */}
+          </div>
           <h2>Choose Component ({filteredComponentsDefinitions.length})</h2>
           {selectedComponents.length > 0 && (
             <>
