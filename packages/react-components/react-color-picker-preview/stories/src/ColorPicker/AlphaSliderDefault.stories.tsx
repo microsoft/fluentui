@@ -75,7 +75,7 @@ export const AlphaSliderDefault = (props: Partial<AlphaSliderProps>) => {
   );
 };
 
-AlphaSliderExample.parameters = {
+AlphaSliderDefault.parameters = {
   docs: {
     description: {
       story: 'The `AlphaSlider` allows users to change the alpha channel of a color value.',
