@@ -2,7 +2,8 @@ import type { Preview } from '@storybook/react';
 
 import * as rootPreview from '../../../.storybook/preview';
 
-import { FluentDocsContainer } from '../../public-docsite-v9/src/DocsComponents/FluentDocsContainer.stories';
+// TODO: These custom Docs implementations should be part of custom SB addon/storybook components package
+import { FluentDocsContainer } from '../src/DocsComponents/FluentDocsContainer';
 
 const preview: Preview = {
   ...rootPreview,

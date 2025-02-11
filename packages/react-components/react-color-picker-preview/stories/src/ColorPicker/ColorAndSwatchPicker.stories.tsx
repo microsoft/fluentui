@@ -52,7 +52,7 @@ const DEFAULT_SELECTED_VALUE = '2be700';
 const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
 const DEFAULT_SELECTED_COLOR = tinycolor(DEFAULT_COLOR_HSV).toHex();
 
-export const ColorAndSwatchPickerExample = () => {
+export const ColorAndSwatchPicker = () => {
   const styles = useStyles();
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
   const [selectedValue, setSelectedValue] = React.useState(DEFAULT_SELECTED_VALUE);

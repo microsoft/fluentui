@@ -3,6 +3,6 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-charts-preview/stories/src",
-  "tags": ["vNext", "platform:web", "type:stories"],
+  "tags": ["vNext", "platform:web", "type:stories", "charting"],
   "implicitDependencies": []
 }

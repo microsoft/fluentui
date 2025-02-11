@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 });
 const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
 
-export const ColorSliderExample = (props: Partial<ColorSliderProps>) => {
+export const ColorSliderDefault = (props: Partial<ColorSliderProps>) => {
   const styles = useStyles();
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
   const [hue, setHue] = React.useState(DEFAULT_COLOR_HSV.h);
@@ -60,7 +60,7 @@ export const ColorSliderExample = (props: Partial<ColorSliderProps>) => {
   );
 };
 
-ColorSliderExample.parameters = {
+ColorSliderDefault.parameters = {
   docs: {
     description: {
       story: 'The `ColorSlider` allows users to change the hue aspect of a color value.',

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "custom color channels",
+  "packageName": "@fluentui/react-color-picker-preview",
+  "email": "v.kozlova13@gmail.com",
+  "dependentChangeType": "patch"
+}

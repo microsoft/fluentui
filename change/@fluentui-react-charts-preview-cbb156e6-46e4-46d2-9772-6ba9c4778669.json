@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: add new 'charting' domain tag",
+  "packageName": "@fluentui/react-charts-preview",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
