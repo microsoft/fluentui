@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Mon, 27 Jan 2025 20:27:35 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Feb 2025 10:42:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.2.7)
+
+Fri, 07 Feb 2025 10:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.2.6..@fluentui/react-slider_v9.2.7)
+
+### Patches
+
+- fix: exported internal CSS variables ([PR #33682](https://github.com/microsoft/fluentui/pull/33682) by vkozlova@microsoft.com)
 
 ## [9.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.2.6)
 

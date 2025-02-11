@@ -38,3 +38,9 @@ steps:
       echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
     displayName: Log environment variables (Linux)
     condition: eq(variables['Agent.OS'], 'Linux')
+
+  # Logs a message when dry run mode is enabled.
+  - script: |
+      echo "dry run mode enabled!"
+    displayName: dry run mode notification
+    condition: eq(variables.dryRun, true)

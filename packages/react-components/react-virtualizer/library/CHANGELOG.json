@@ -2,6 +2,21 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2025 10:42:12 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.92",
+      "version": "9.0.0-alpha.92",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "a17aac2acd61ee1e4cdd59c2637498cabd81cfe9",
+            "comment": "fix: Fix regression of child render function update"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2025 14:00:13 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.91",
       "version": "9.0.0-alpha.91",

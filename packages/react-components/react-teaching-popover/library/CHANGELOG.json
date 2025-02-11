@@ -2,6 +2,21 @@
   "name": "@fluentui/react-teaching-popover",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2025 10:42:12 GMT",
+      "tag": "@fluentui/react-teaching-popover_v9.2.4",
+      "version": "9.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-button to v9.3.102",
+            "commit": "b37554b631f4e27e0927b123732f3d57d62660a3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jan 2025 21:26:35 GMT",
       "tag": "@fluentui/react-teaching-popover_v9.2.3",
       "version": "9.2.3",
