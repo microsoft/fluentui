@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 11 Feb 2025 07:21:12 GMT",
+      "tag": "@fluentui/react-charting_v5.23.52",
+      "version": "5.23.52",
+      "comments": {
+        "patch": [
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9e72d59c8bea571e3f05e544015de8b0386f4486",
+            "comment": "fix plotlyAdapterUT cases"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "f45bd1071de1e3a8aa9c7177438e2559498b7920",
+            "comment": "Making the tooltip optional"
+          },
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "74464afb1de05f56bd72826b327be0389a4b9818",
+            "comment": "Heatmap black color fix"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 05 Feb 2025 07:16:29 GMT",
       "tag": "@fluentui/react-charting_v5.23.51",
       "version": "5.23.51",
