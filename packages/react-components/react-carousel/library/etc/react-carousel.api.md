@@ -25,6 +25,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
+import { TooltipProps } from '@fluentui/react-tooltip';
 
 // @public
 export const Carousel: ForwardRefComponent<CarouselProps>;
@@ -159,8 +160,11 @@ export type CarouselNavContainerProps = ComponentProps<CarouselNavContainerSlots
 export type CarouselNavContainerSlots = {
     root: Slot<'div'>;
     next?: Slot<CarouselButtonProps>;
+    nextTooltip?: Slot<TooltipProps>;
     prev?: Slot<CarouselButtonProps>;
+    prevTooltip?: Slot<TooltipProps>;
     autoplay?: Slot<typeof CarouselAutoplayButton>;
+    autoplayTooltip?: Slot<TooltipProps>;
 };
 
 // @public
