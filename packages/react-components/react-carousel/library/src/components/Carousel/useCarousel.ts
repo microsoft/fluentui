@@ -96,7 +96,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
     if (announcementText !== announcementTextRef.current) {
       announcementTextRef.current = announcementText;
-      console.log('announcing', announcementText);
       announce(announcementText, { polite: true });
     }
   });
