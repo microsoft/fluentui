@@ -5,7 +5,7 @@
   "description": "Fluent UI React v9 documentation",
   "scripts": {
     "build-storybook": "storybook build -o ./dist/storybook --docs",
-    "postbuild-storybook": "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI React v9' --distPath ./dist",
+    "postbuild-storybook": "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI React v9' --distPath ./dist/storybook",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
