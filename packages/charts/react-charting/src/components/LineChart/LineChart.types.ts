@@ -87,6 +87,12 @@ export interface ILineChartProps extends ICartesianChartProps {
    * The prop used to enable the perf optimization
    */
   enablePerfOptimization?: boolean;
+
+  /**
+   * @default false
+   * The prop used to handle scatter plot
+   */
+  scatterMarkersMode?: boolean;
 }
 
 /**
