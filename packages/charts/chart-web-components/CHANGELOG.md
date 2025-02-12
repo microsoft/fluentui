@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-web-components
 
-This log was last generated on Fri, 07 Feb 2025 04:07:36 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Feb 2025 04:07:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.3)
+
+Wed, 12 Feb 2025 04:07:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.2..@fluentui/chart-web-components_v0.0.3)
+
+### Patches
+
+- BREAKING: rename api report file name according to api-extractor change ([PR #33692](https://github.com/microsoft/fluentui/pull/33692) by vgenaev@gmail.com)
 
 ## [0.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.2)
 

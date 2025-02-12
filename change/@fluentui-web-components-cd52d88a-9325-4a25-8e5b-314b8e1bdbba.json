@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "BREAKING: rename api report file name according to api-extractor change",
-  "packageName": "@fluentui/web-components",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}
