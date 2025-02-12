@@ -1,9 +1,6 @@
 export const themes = [
-  { id: 'web-light', label: 'Web Light' },
-  { id: 'web-dark', label: 'Web Dark' },
-  { id: 'teams-light', label: 'Teams Light' },
-  { id: 'teams-dark', label: 'Teams Dark' },
-  { id: 'teams-high-contrast', label: 'Teams High Contrast' },
+  { id: 'masons-light', label: 'Masons Light' },
+  { id: 'masons-dark', label: 'Masons Dark' },
 ] as const;
 
 export const defaultTheme = themes[0];
