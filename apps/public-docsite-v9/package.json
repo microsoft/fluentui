@@ -4,7 +4,7 @@
   "private": true,
   "description": "Fluent UI React v9 documentation",
   "scripts": {
-    "build-storybook": "storybook build -o ./dist/storybook --docs",
+    "build-storybook": "cross-env NODE_OPTIONS=--max_old_space_size=3072 storybook build -o ./dist/storybook --docs",
     "postbuild-storybook": "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI React v9' --distPath ./dist/storybook",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
