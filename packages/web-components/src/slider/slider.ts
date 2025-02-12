@@ -68,7 +68,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     switch (propertyName) {
       case 'min':
       case 'max':
-        this.setSliderPosition(this.direction);
+        this.setSliderPosition();
       case 'step':
         this.handleStepStyles();
         break;
@@ -225,7 +225,10 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   public get value(): string {
     Observable.track(this, 'value');
-    return this._value.toString();
+    if(this._value) {
+      return this._value.toString();
+    }
+    return "";
   }
 
   public set value(value: string) {
@@ -245,7 +248,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this._value = value.toString();
     this.elementInternals.ariaValueNow = this._value;
     this.elementInternals.ariaValueText = this.valueTextFormatter(this._value);
-    this.setSliderPosition(this.direction);
+    this.setSliderPosition();
     this.$emit('change');
     this.setFormValue(value);
     Observable.notify(this, 'value');
@@ -303,6 +306,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   @observable
   public direction: Direction = Direction.ltr;
+  public directionChanged(): void {
+    this.setSliderPosition();
+  }
 
   /**
    * @internal
@@ -502,7 +508,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     swapStates(this.elementInternals, prev, next, Orientation);
 
     if (this.$fastController.isConnected) {
-      this.setSliderPosition(this.direction);
+      this.setSliderPosition();
     }
   }
 
@@ -536,7 +542,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this.setupTrackConstraints();
     this.setupListeners();
     this.setupDefaultValue();
-    this.setSliderPosition(this.direction);
+    this.setSliderPosition();
 
     Observable.getNotifier(this).subscribe(this, 'max');
     Observable.getNotifier(this).subscribe(this, 'min');
@@ -632,15 +638,10 @@ export class Slider extends FASTElement implements SliderConfiguration {
    *
    * @param direction - writing mode
    */
-  private setSliderPosition(direction: Direction): void {
-    const newPct: number = convertPixelToPercent(parseFloat(this.value), this.minAsNumber, this.maxAsNumber, direction);
-    const percentage: number = (1 - newPct) * 100;
-    const thumbPosition = `calc(100% - ${percentage}%)`;
-    const trackProgress =
-      !(this.orientation === Orientation.vertical) && direction === Direction.rtl
-        ? `${percentage}%`
-        : `calc(100% - ${percentage}%)`;
-    this.position = `--slider-thumb: ${thumbPosition}; --slider-progress: ${trackProgress}`;
+  private setSliderPosition(): void {
+    const newPct: number = convertPixelToPercent(parseFloat(this.value), this.minAsNumber, this.maxAsNumber, this.direction);
+    const percentage: number = newPct * 100;
+    this.position = `--slider-thumb: ${percentage}%; --slider-progress: ${percentage}%`;
   }
 
   /**
