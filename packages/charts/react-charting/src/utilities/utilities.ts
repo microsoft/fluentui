@@ -362,6 +362,9 @@ export function createStringXAxis(
   let tickValues = (tickParams.tickValues as string[] | undefined) ?? dataset;
   if (hideTickOverlap) {
     let nonOverlappingTickValues = [];
+    // Here, we need the width of each individual label to detect overlaps,
+    // but calculateLongestLabelWidth returns the maximum pixel width from an array of labels.
+    // So call this function separately for each label, instead of the entire array.
     const tickSizes = tickValues.map(value => calculateLongestLabelWidth([value], '[class^="xAxis-"] text'));
     // for LTR
     let start = 0;
