@@ -110,6 +110,40 @@ export const SizeExtraSmallWithMedia = () => (
   </InteractionTag>
 );
 
+// selected
+export const Selected = () => (
+  <InteractionTag selected>
+    <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
+      Primary Text
+    </InteractionTagPrimary>
+    <InteractionTagSecondary />
+  </InteractionTag>
+);
+export const SelectedHighContrast = getStoryVariant(Selected, HIGH_CONTRAST);
+export const SelectedDarkMode = getStoryVariant(Selected, DARK_MODE);
+
+export const OutlineSelected = () => (
+  <InteractionTag appearance="outline" selected>
+    <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
+      Primary Text
+    </InteractionTagPrimary>
+    <InteractionTagSecondary />
+  </InteractionTag>
+);
+export const OutlineSelectedHighContrast = getStoryVariant(OutlineSelected, HIGH_CONTRAST);
+export const OutlineSelectedDarkMode = getStoryVariant(OutlineSelected, DARK_MODE);
+
+export const BrandSelected = () => (
+  <InteractionTag appearance="brand" selected>
+    <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
+      Primary Text
+    </InteractionTagPrimary>
+    <InteractionTagSecondary />
+  </InteractionTag>
+);
+export const BrandSelectedHighContrast = getStoryVariant(BrandSelected, HIGH_CONTRAST);
+export const BrandSelectedDarkMode = getStoryVariant(BrandSelected, DARK_MODE);
+
 const useBoxSizingContainerStyles = makeStyles({
   container: {
     boxSizing: 'border-box',

@@ -12,7 +12,7 @@ export { Shape } from './TagShape.stories';
 export { Size } from './TagSize.stories';
 export { Appearance } from './TagAppearance.stories';
 export { Disabled } from './TagDisabled.stories';
-export { TagSelected } from './TagSelected.stories';
+export { Selected } from './TagSelected.stories';
 
 export default {
   title: 'Components/Tag/Tag',

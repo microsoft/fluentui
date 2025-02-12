@@ -33,7 +33,6 @@ export type InteractionTagPrimaryContextValues = TagAvatarContextValues;
 // @public
 export type InteractionTagPrimaryProps = ComponentProps<Partial<InteractionTagPrimarySlots>> & {
     hasSecondaryAction?: boolean;
-    selected?: boolean;
 };
 
 // @public (undocumented)

@@ -1,18 +1,48 @@
 import * as React from 'react';
-import { Tag, TagProps } from '@fluentui/react-components';
+import { Tag, makeStyles } from '@fluentui/react-components';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-export const TagSelected = (props: Partial<TagProps>) => (
-  <>
-    <Tag {...props}>Primary text</Tag>
-    <Tag appearance="outline">Test</Tag>
-    <Tag appearance="brand">Test</Tag>
-    <h3>Selected</h3>
-    <Tag selected>Test</Tag>
-    <Tag appearance="outline" selected>
-      Test
-    </Tag>
-    <Tag appearance="brand" selected>
-      Test
-    </Tag>
-  </>
-);
+const useContainerStyles = makeStyles({
+  container: {
+    columnGap: '10px',
+    display: 'flex',
+  },
+});
+
+export const Selected = () => {
+  const styles = useContainerStyles();
+
+  return (
+    <div className={styles.container}>
+      <Tag
+        selected
+        secondaryText="appearance=filled"
+        icon={<CalendarMonthRegular />}
+        dismissible
+        dismissIcon={{ 'aria-label': 'remove' }}
+      >
+        Selected
+      </Tag>
+      <Tag
+        selected
+        secondaryText="appearance=outline"
+        appearance="outline"
+        icon={<CalendarMonthRegular />}
+        dismissible
+        dismissIcon={{ 'aria-label': 'remove' }}
+      >
+        Selected
+      </Tag>
+      <Tag
+        selected
+        secondaryText="appearance=brand"
+        appearance="brand"
+        icon={<CalendarMonthRegular />}
+        dismissible
+        dismissIcon={{ 'aria-label': 'remove' }}
+      >
+        Selected
+      </Tag>
+    </div>
+  );
+};

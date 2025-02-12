@@ -39,13 +39,6 @@ export type InteractionTagPrimaryProps = ComponentProps<Partial<InteractionTagPr
    * @default false
    */
   hasSecondaryAction?: boolean;
-
-  /**
-   * An InteractionTag can be selected.
-   *
-   * @default false
-   */
-  selected?: boolean;
 };
 
 /**

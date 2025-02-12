@@ -35,7 +35,7 @@ export const useInteractionTagPrimary_unstable = (
     shape,
     size,
   } = useInteractionTagContext_unstable();
-  const { hasSecondaryAction = false, selected = contextSelected ?? false } = props;
+  const { hasSecondaryAction = false } = props;
 
   return {
     appearance,
@@ -43,7 +43,7 @@ export const useInteractionTagPrimary_unstable = (
     avatarSize: avatarSizeMap[size],
     disabled,
     hasSecondaryAction,
-    selected,
+    selected: contextSelected ?? false,
     shape,
     size,
 

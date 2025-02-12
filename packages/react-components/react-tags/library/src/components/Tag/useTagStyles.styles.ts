@@ -346,7 +346,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   const primaryTextStyles = usePrimaryTextStyles();
   const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
 
-  const { shape, size, appearance = 'filled', selected } = state;
+  const { shape, size, appearance, selected } = state;
 
   state.root.className = mergeClasses(
     tagClassNames.root,
