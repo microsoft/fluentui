@@ -4,13 +4,27 @@ import { tokens } from '@fluentui/react-theme';
 import type { LinkSlots, LinkState } from './Link.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+import {
+  ctrlFocusOuterStroke,
+  ctrlLinkForegroundBrandHover,
+  ctrlLinkForegroundBrandPressed,
+  ctrlLinkForegroundNeutralRest,
+  ctrlLinkForegroundNeutralHover,
+  ctrlLinkForegroundNeutralPressed,
+  foregroundCtrlNeutralPrimaryDisabled,
+  textGlobalBody3Fontsize,
+  textStyleDefaultRegularFontfamily,
+  textStyleDefaultRegularWeight,
+  strokewidthDefault,
+} from '@fluentui/semantic-tokens';
+
 export const linkClassNames: SlotClassNames<LinkSlots> = {
   root: 'fui-Link',
 };
 
 const useStyles = makeStyles({
   focusIndicator: createCustomFocusIndicatorStyle({
-    textDecorationColor: tokens.colorStrokeFocus2,
+    textDecorationColor: ctrlFocusOuterStroke,
     textDecorationLine: 'underline',
     textDecorationStyle: 'double',
     outlineStyle: 'none',
@@ -22,29 +36,29 @@ const useStyles = makeStyles({
     },
     backgroundColor: 'transparent',
     boxSizing: 'border-box',
-    color: tokens.colorBrandForegroundLink,
+    color: ctrlLinkForegroundNeutralRest,
     cursor: 'pointer',
     display: 'inline',
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightRegular,
+    fontFamily: textStyleDefaultRegularFontfamily,
+    fontSize: textGlobalBody3Fontsize,
+    fontWeight: textStyleDefaultRegularWeight,
     margin: '0',
     padding: '0',
     overflow: 'inherit',
     textAlign: 'left',
     textDecorationLine: 'none',
-    textDecorationThickness: tokens.strokeWidthThin,
+    textDecorationThickness: strokewidthDefault,
     textOverflow: 'inherit',
     userSelect: 'text',
 
     ':hover': {
       textDecorationLine: 'underline',
-      color: tokens.colorBrandForegroundLinkHover,
+      color: ctrlLinkForegroundBrandHover,
     },
 
     ':active': {
       textDecorationLine: 'underline',
-      color: tokens.colorBrandForegroundLinkPressed,
+      color: ctrlLinkForegroundBrandPressed,
     },
   },
   // Overrides when the Link renders as a button.
@@ -57,16 +71,16 @@ const useStyles = makeStyles({
   },
   // Overrides when the Link appears subtle.
   subtle: {
-    color: tokens.colorNeutralForeground2,
+    color: ctrlLinkForegroundNeutralRest,
 
     ':hover': {
       textDecorationLine: 'underline',
-      color: tokens.colorNeutralForeground2Hover,
+      color: ctrlLinkForegroundNeutralHover,
     },
 
     ':active': {
       textDecorationLine: 'underline',
-      color: tokens.colorNeutralForeground2Pressed,
+      color: ctrlLinkForegroundNeutralPressed,
     },
   },
   // Overrides when the Link is rendered inline within text.
@@ -76,20 +90,21 @@ const useStyles = makeStyles({
   // Overrides when the Link is disabled.
   disabled: {
     textDecorationLine: 'none',
-    color: tokens.colorNeutralForegroundDisabled,
+    color: foregroundCtrlNeutralPrimaryDisabled,
     cursor: 'not-allowed',
 
     ':hover': {
       textDecorationLine: 'none',
-      color: tokens.colorNeutralForegroundDisabled,
+      color: foregroundCtrlNeutralPrimaryDisabled,
     },
 
     ':active': {
       textDecorationLine: 'none',
-      color: tokens.colorNeutralForegroundDisabled,
+      color: foregroundCtrlNeutralPrimaryDisabled,
     },
   },
 
+  // TODO: Add semantic tokens for inverted colors (not yet defined).
   inverted: {
     color: tokens.colorBrandForegroundInverted,
     ':hover': {
