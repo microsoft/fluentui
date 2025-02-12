@@ -3504,6 +3504,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
     decrement(): void;
     // @internal (undocumented)
     direction: Direction;
+    // (undocumented)
+    directionChanged(): void;
     disabled: boolean;
     // (undocumented)
     protected disabledChanged(): void;
