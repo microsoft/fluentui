@@ -10,9 +10,9 @@ function main(): void {
   try {
     const { title, distPath } = processArgs();
     const normalizedDistPath = join(cwd(), distPath);
-    const storybookDistPath = join(normalizedDistPath, 'storybook');
-    const indexPath = join(storybookDistPath, 'index.html');
-    const iframePath = join(storybookDistPath, 'iframe.html');
+
+    const indexPath = join(normalizedDistPath, 'index.html');
+    const iframePath = join(normalizedDistPath, 'iframe.html');
 
     rewriteTitle(indexPath, title);
     rewriteTitle(iframePath, title);
