@@ -634,7 +634,12 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * Places the thumb based on the current value
    */
   private setSliderPosition(): void {
-    const newPct: number = convertPixelToPercent(parseFloat(this.value), this.minAsNumber, this.maxAsNumber, this.direction);
+    const newPct: number = convertPixelToPercent(
+      parseFloat(this.value),
+      this.minAsNumber,
+      this.maxAsNumber,
+      this.direction,
+    );
     const percentage: number = newPct * 100;
     this.position = `--slider-thumb: ${percentage}%; --slider-progress: ${percentage}%`;
   }

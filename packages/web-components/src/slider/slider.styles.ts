@@ -144,7 +144,6 @@ export const styles = css`
     width: calc(100% - var(--slider-progress));
   }
 
-
   :host(${verticalState}) .track::before {
     width: 100%;
     bottom: 0;
