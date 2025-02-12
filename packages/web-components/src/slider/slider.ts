@@ -225,10 +225,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   public get value(): string {
     Observable.track(this, 'value');
-    if(this._value) {
-      return this._value.toString();
-    }
-    return "";
+    return this._value?.toString() ?? '';
   }
 
   public set value(value: string) {
@@ -635,8 +632,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
 
   /**
    * Places the thumb based on the current value
-   *
-   * @param direction - writing mode
    */
   private setSliderPosition(): void {
     const newPct: number = convertPixelToPercent(parseFloat(this.value), this.minAsNumber, this.maxAsNumber, this.direction);
