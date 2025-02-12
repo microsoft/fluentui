@@ -9,11 +9,11 @@ const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const dismissIconId = 'dismiss-icon-id';
 const steps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
+  .snapshot('default')
   .hover(`#${dismissIconId}}`)
-  .snapshot('hover', { cropTo: '.testWrapper' })
+  .snapshot('hover')
   .mouseDown(`#${dismissIconId}}`)
-  .snapshot('pressed', { cropTo: '.testWrapper' })
+  .snapshot('pressed')
   .end();
 
 export default {

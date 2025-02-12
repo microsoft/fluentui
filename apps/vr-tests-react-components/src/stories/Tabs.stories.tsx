@@ -13,11 +13,11 @@ export default {
       withStoryWrightSteps({
         story,
         steps: new Steps()
-          .snapshot('default', { cropTo: '.testWrapper' })
+          .snapshot('default')
           .hover('.mouse-target')
-          .snapshot('hover', { cropTo: '.testWrapper' })
+          .snapshot('hover')
           .mouseDown('.mouse-target')
-          .snapshot('pressed', { cropTo: '.testWrapper' })
+          .snapshot('pressed')
           .mouseUp('.mouse-target')
           .end(),
       }),
