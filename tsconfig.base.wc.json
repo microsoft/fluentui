@@ -14,7 +14,8 @@
     "paths": {
       "@fluentui/chart-web-components": ["packages/charts/chart-web-components/src/index.ts"],
       "@fluentui/web-components": ["packages/web-components/src/index.ts"],
-      "@fluentui/tokens": ["packages/tokens/src/index.ts"]
+      "@fluentui/tokens": ["packages/tokens/src/index.ts"],
+      "@fluentui/semantic-tokens": ["packages/semantic-tokens/src/index.ts"]
     }
   }
 }
