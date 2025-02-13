@@ -1,0 +1,6 @@
+{
+  "name": "Button",
+  "component": "Button",
+  "extends": "ButtonBase",
+  "attributes": ["singleAction"]
+}
