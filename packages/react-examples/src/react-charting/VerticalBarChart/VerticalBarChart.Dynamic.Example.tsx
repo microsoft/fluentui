@@ -238,6 +238,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
             xAxisOuterPadding={this.state.xAxisOuterPaddingEnabled ? this.state.xAxisOuterPadding : undefined}
             enableGradient={this.state.enableGradient}
             roundCorners={this.state.roundCorners}
+            hideTickOverlap={true}
           />
         </div>
         <div>

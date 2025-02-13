@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 11 Feb 2025 07:21:12 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Feb 2025 07:22:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.54)
+
+Thu, 13 Feb 2025 07:22:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.53..@fluentui/react-charting_v5.23.54)
+
+### Patches
+
+- feat: hide overlapping x-axis tick labels ([PR #33678](https://github.com/microsoft/fluentui/pull/33678) by 110246001+krkshitij@users.noreply.github.com)
+
+## [5.23.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.53)
+
+Wed, 12 Feb 2025 07:20:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.52..@fluentui/react-charting_v5.23.53)
+
+### Patches
+
+- fix(react-charting):Fixing error in donut chart ([PR #33814](https://github.com/microsoft/fluentui/pull/33814) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.23.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.52)
 

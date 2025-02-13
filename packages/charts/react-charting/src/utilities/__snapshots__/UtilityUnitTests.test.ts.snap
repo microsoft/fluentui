@@ -545,6 +545,23 @@ Array [
 ]
 `;
 
+exports[`createNumericXAxis should render fewer x-axis labels when hideTickOverlap is true and container width is small 1`] = `
+Array [
+  Array [
+    0,
+    "0",
+  ],
+  Array [
+    25,
+    "50",
+  ],
+  Array [
+    50,
+    "100",
+  ],
+]
+`;
+
 exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
 <g
   fill="none"
@@ -944,6 +961,15 @@ Array [
   Array [
     71.42857142857143,
     "X-axis label 3",
+  ],
+]
+`;
+
+exports[`createStringXAxis should render fewer x-axis labels when hideTickOverlap is true and container width is small 1`] = `
+Array [
+  Array [
+    35.483870967741936,
+    "X-axis label 2",
   ],
 ]
 `;

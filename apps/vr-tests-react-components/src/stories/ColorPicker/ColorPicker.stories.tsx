@@ -8,9 +8,7 @@ import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } 
 
 export default {
   title: 'ColorPicker Converged',
-  decorators: [
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() }),
-  ],
+  decorators: [story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default').end() })],
 } satisfies Meta<typeof ColorPicker>;
 
 export const Default = () => <SampleColorPicker color={{ h: 109, s: 1, v: 0.91 }} />;

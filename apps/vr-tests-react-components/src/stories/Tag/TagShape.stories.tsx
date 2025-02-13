@@ -7,11 +7,11 @@ import { Steps } from 'storywright';
 
 const tagId = 'tag-id';
 const steps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
+  .snapshot('default')
   // This needs to be added so that the focus outline is shown correctly
   .executeScript(`document.querySelector('#${tagId}').setAttribute('data-fui-focus-visible', '')`)
   .focus(`#${tagId}`)
-  .snapshot('focused', { cropTo: '.testWrapper' })
+  .snapshot('focused')
   .executeScript(`document.querySelector('#${tagId}').removeAttribute('data-fui-focus-visible')`)
   .end();
 

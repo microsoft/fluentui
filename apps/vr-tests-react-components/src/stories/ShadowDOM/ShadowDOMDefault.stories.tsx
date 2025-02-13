@@ -41,7 +41,7 @@ export default {
 };
 
 export const Default = () => (
-  <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+  <StoryWright steps={new Steps().snapshot('default').end()}>
     <ShadowRoot>
       <ComponentSet />
     </ShadowRoot>

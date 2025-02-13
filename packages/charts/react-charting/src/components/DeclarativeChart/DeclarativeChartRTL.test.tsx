@@ -13,9 +13,25 @@ describe('DeclarativeChart', () => {
       value: mockGetComputedTextLength,
     },
   );
+
+  const originalRAF = window.requestAnimationFrame;
+
   beforeEach(() => {
     resetIds();
+
+    jest.useFakeTimers();
+    Object.defineProperty(window, 'requestAnimationFrame', {
+      writable: true,
+      value: (callback: FrameRequestCallback) => callback(0),
+    });
+    window.HTMLElement.prototype.getBoundingClientRect = jest.fn().mockReturnValue({ width: 600, height: 350 });
   });
+
+  afterEach(() => {
+    jest.useRealTimers();
+    window.requestAnimationFrame = originalRAF;
+  });
+
   test('Should render areachart in DeclarativeChart', () => {
     // Arrange
     const plotlySchema = require('./tests/schema/fluent_area_test.json');

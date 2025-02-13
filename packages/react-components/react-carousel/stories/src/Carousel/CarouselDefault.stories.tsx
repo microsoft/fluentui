@@ -90,11 +90,9 @@ export const Default = () => (
     </CarouselViewport>
     <CarouselNavContainer
       layout="inline"
-      autoplay={{
-        'aria-label': 'Enable autoplay',
-      }}
-      next={{ 'aria-label': 'go to next' }}
-      prev={{ 'aria-label': 'go to prev' }}
+      autoplayTooltip={{ content: 'Autoplay', relationship: 'label' }}
+      nextTooltip={{ content: 'Go to next', relationship: 'label' }}
+      prevTooltip={{ content: 'Go to prev', relationship: 'label' }}
     >
       <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
     </CarouselNavContainer>

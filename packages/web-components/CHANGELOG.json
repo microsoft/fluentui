@@ -2,6 +2,36 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 13 Feb 2025 04:06:52 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.80",
+      "version": "3.0.0-beta.80",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "cf102ebd054c8a477dba152d4bcad6864c9bb9af",
+            "comment": "makes direction change observable for slider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Feb 2025 04:07:31 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.79",
+      "version": "3.0.0-beta.79",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "f0f16ea9d7e407f87e4f144a40be8a3c4f2b6369",
+            "comment": "BREAKING: rename api report file name according to api-extractor change"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Feb 2025 04:07:35 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.79",
       "version": "3.0.0-beta.79",

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add tooltip wrappers for icon buttons in nav container",
+  "packageName": "@fluentui/react-carousel",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

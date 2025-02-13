@@ -9,9 +9,7 @@ export default {
   title: 'Image Converged',
 
   decorators: [
-    (story: () => React.ReactNode) => (
-      <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
-    ),
+    (story: () => React.ReactNode) => <StoryWright steps={new Steps().snapshot('normal').end()}>{story()}</StoryWright>,
   ],
 } satisfies Meta<typeof Image>;
 
