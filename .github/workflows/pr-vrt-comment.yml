@@ -75,7 +75,7 @@ jobs:
           SYSTEM_ACCESSTOKEN: ${{ secrets.ADO_SYSTEM_ACCESSTOKEN }}
           TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           PRINCIPAL_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          SERVICE_CONNECTION_ID: ${{ SERVICE-CONNECTION-ID }}
+          SERVICE_CONNECTION_ID: '895ec195-b2db-4323-bd13-649b008acaf6'
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "MAKE THIS WORK"
