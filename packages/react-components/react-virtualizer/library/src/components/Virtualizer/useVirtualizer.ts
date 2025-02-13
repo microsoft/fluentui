@@ -104,6 +104,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   const initializeScrollingTimer = React.useCallback(() => {
     if (!enableScrollLoad) {
       // Disabled by default for reduction of render callbacks
+      setIsScrolling(false);
+      clearScrollTimer();
       return;
     }
     /*
@@ -514,7 +516,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   /*
    * forceUpdate:
-   * We only want to trigger this when scrollLoading is enabled and set to false,
+   * We only want to trigger this when child render or scroll loading changes,
    * it will force re-render all children elements
    */
   const forceUpdate = React.useReducer(() => ({}), {})[1];
@@ -522,9 +524,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   React.useEffect(() => {
     if (actualIndex >= 0) {
       updateChildRows(actualIndex);
-      if (enableScrollLoad && !isScrolling) {
-        forceUpdate();
-      }
+      forceUpdate();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [renderChild, isScrolling]);

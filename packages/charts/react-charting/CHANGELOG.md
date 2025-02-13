@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 05 Feb 2025 07:16:29 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Feb 2025 07:22:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.54)
+
+Thu, 13 Feb 2025 07:22:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.53..@fluentui/react-charting_v5.23.54)
+
+### Patches
+
+- feat: hide overlapping x-axis tick labels ([PR #33678](https://github.com/microsoft/fluentui/pull/33678) by 110246001+krkshitij@users.noreply.github.com)
+
+## [5.23.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.53)
+
+Wed, 12 Feb 2025 07:20:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.52..@fluentui/react-charting_v5.23.53)
+
+### Patches
+
+- fix(react-charting):Fixing error in donut chart ([PR #33814](https://github.com/microsoft/fluentui/pull/33814) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.23.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.52)
+
+Tue, 11 Feb 2025 07:21:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.51..@fluentui/react-charting_v5.23.52)
+
+### Patches
+
+- fix plotlyAdapterUT cases ([PR #33791](https://github.com/microsoft/fluentui/pull/33791) by 74965306+Anush2303@users.noreply.github.com)
+- Making the tooltip optional ([PR #33807](https://github.com/microsoft/fluentui/pull/33807) by 120183316+srmukher@users.noreply.github.com)
+- Heatmap black color fix ([PR #33751](https://github.com/microsoft/fluentui/pull/33751) by 74965306+Anush2303@users.noreply.github.com)
 
 ## [5.23.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.51)
 

@@ -203,11 +203,6 @@ Object {
   "hideLegend": false,
   "innerRadius": 42,
   "showLabelsInPercent": true,
-  "styles": Object {
-    "root": Object {
-      "[class^=\\"arcLabel\\"]": Object {},
-    },
-  },
   "width": undefined,
 }
 `;
@@ -244,13 +239,6 @@ Object {
   "hideLegend": false,
   "innerRadius": 0,
   "showLabelsInPercent": false,
-  "styles": Object {
-    "root": Object {
-      "[class^=\\"arcLabel\\"]": Object {
-        "fontSize": 20,
-      },
-    },
-  },
   "width": undefined,
 }
 `;
@@ -357,6 +345,7 @@ Object {
     },
   ],
   "height": 742,
+  "hideTickOverlap": true,
   "mode": "plotly",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,
@@ -2823,6 +2812,7 @@ Object {
   ],
   "height": 350,
   "hideLegend": true,
+  "hideTickOverlap": true,
   "rangeValuesForColorScale": Array [
     "rgb(158,1,66)",
     "rgb(213,62,79)",
@@ -2989,6 +2979,7 @@ Object {
     },
   ],
   "height": 742,
+  "hideTickOverlap": true,
   "secondaryYAxistitle": "",
   "showYAxisLables": true,
   "width": 850,
@@ -3326,6 +3317,7 @@ Object {
     ],
   },
   "height": 350,
+  "hideTickOverlap": true,
   "mode": "tonexty",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,
@@ -4562,6 +4554,7 @@ Object {
     ],
   },
   "height": 350,
+  "hideTickOverlap": true,
   "mode": "tonexty",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,
@@ -4844,6 +4837,7 @@ Object {
     },
   ],
   "height": 350,
+  "hideTickOverlap": true,
   "mode": "plotly",
   "supportNegativeData": true,
   "width": undefined,
@@ -4939,6 +4933,7 @@ Object {
     },
   ],
   "height": 350,
+  "hideTickOverlap": true,
   "mode": "plotly",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,

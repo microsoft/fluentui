@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 04 Feb 2025 04:07:18 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Feb 2025 04:06:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.80](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.80)
+
+Thu, 13 Feb 2025 04:06:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.79..@fluentui/web-components_v3.0.0-beta.80)
+
+### Changes
+
+- makes direction change observable for slider ([PR #33834](https://github.com/microsoft/fluentui/pull/33834) by jes@microsoft.com)
+
+## [3.0.0-beta.79](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.79)
+
+Fri, 07 Feb 2025 04:07:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.78..@fluentui/web-components_v3.0.0-beta.79)
+
+### Changes
+
+- remove unnecessary filtering in menu-item ([PR #33795](https://github.com/microsoft/fluentui/pull/33795) by jes@microsoft.com)
 
 ## [3.0.0-beta.78](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.78)
 

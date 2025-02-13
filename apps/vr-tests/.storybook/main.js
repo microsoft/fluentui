@@ -51,4 +51,8 @@ module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig}
       },
     };
   },
+  // 💡 NOTE: this is necessary for StoryWright. without this the current version "0.0.27-storybook7.9" wont take screenshots for Steps
+  features: {
+    storyStoreV7: false,
+  },
 });
