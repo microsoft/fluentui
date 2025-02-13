@@ -10,7 +10,7 @@ import {
   Stories,
   type DocsContextProps,
 } from '@storybook/addon-docs';
-import type { PreparedStory, Renderer } from '@storybook/types';
+import type { PreparedStory, Renderer, StrictArgTypes, StoryContextForEnhancers } from '@storybook/types';
 import type { SBEnumType } from '@storybook/csf';
 import { makeStyles, shorthands, tokens, Link, Text } from '@fluentui/react-components';
 import { InfoFilled } from '@fluentui/react-icons';
@@ -133,11 +133,41 @@ const getNativeElementsList = (elements: SBEnumType['value']): JSX.Element => {
   );
 };
 
-const RenderArgsTable = ({ hideArgsTable, primaryStory }: { primaryStory: PrimaryStory; hideArgsTable: boolean }) => {
+const slotRegex = /as\?:\s*"([^"]+)"/;
+function withSlotEnhancer(story: PreparedStory) {
+  const docGenProps = story.component?.__docgenInfo?.props;
+
+  if (!docGenProps) {
+    return story;
+  }
+
+  Object.entries(docGenProps).forEach(([key, argType]) => {
+    const value: string = argType?.type?.name;
+    const match = value.match(slotRegex);
+
+    if (Array.isArray(match)) {
+      story.component.__docgenInfo.props[key].type.name = `Slot<\"${match[1]}\">`;
+    }
+  });
+
+  return story;
+}
+
+const RenderArgsTable = ({
+  hideArgsTable,
+  primaryStory,
+  argsTypes,
+}: {
+  primaryStory: PrimaryStory;
+  hideArgsTable: boolean;
+  argsTypes: StrictArgTypes;
+}) => {
   const styles = useStyles();
+
   return hideArgsTable ? null : (
     <>
       <ArgsTable of={primaryStory.component} />
+
       {primaryStory.argTypes.as && primaryStory.argTypes.as?.type?.name === 'enum' && (
         <div className={styles.nativeProps}>
           <InfoFilled className={styles.nativePropsIcon} />
@@ -179,6 +209,7 @@ const RenderPrimaryStory = ({
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
   const stories = context.componentStories();
+
   const primaryStory = stories[0];
   const primaryStoryContext = context.getStoryContext(primaryStory);
 
@@ -204,6 +235,8 @@ export const FluentDocsPage = () => {
   //   })),
   // );
 
+  const TweakedComponent = withSlotEnhancer(primaryStory);
+
   return (
     <div className="sb-unstyled">
       <Title />
@@ -219,7 +252,11 @@ export const FluentDocsPage = () => {
             {videos && <VideoPreviews videos={videos} />}
           </div>
           <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
-          <RenderArgsTable primaryStory={primaryStory} hideArgsTable={hideArgsTable} />
+          <RenderArgsTable
+            primaryStory={primaryStory}
+            hideArgsTable={hideArgsTable}
+            argsTypes={primaryStoryContext.argTypes}
+          />
           <Stories />
         </div>
         <div className={styles.toc}>
