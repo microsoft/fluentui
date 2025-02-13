@@ -59,3 +59,33 @@ export const parameters = {
     },
   },
 };
+
+const slotRegex = /as\?:\s*"([^"]+)"/;
+
+/**
+ *
+ * @type {import('@storybook/types').ArgTypesEnhancer}
+ */
+const withSlotEnhancer = context => {
+  const updatedArgTypes = { ...context.argTypes };
+
+  Object.entries(updatedArgTypes).forEach(([key, argType]) => {
+    // @ts-expect-error - storybook doesn't ship proper types
+    const value = argType?.type?.value;
+
+    // we are interested only on raw strings ( which is case of non Storybook supported types)
+    if (value && typeof value === 'string') {
+      const match = value.match(slotRegex);
+      if (match) {
+        updatedArgTypes[key].table.type.summary = `Slot<'${match[1]}'>`;
+      }
+    }
+  });
+
+  return updatedArgTypes;
+};
+
+/**
+ * @type {import('@storybook/types').ArgTypesEnhancer[]}
+ */
+export const argTypesEnhancers = [withSlotEnhancer];
