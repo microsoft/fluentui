@@ -75,11 +75,11 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
             }
           }),
           onMouseMove: useEventCallback(event => {
-            if (event.currentTarget.ownerDocument.activeElement !== event.currentTarget) {
+            props.onMouseMove?.(event);
+            if (!event.isDefaultPrevented() && 
+                event.currentTarget.ownerDocument.activeElement !== event.currentTarget) {
               innerRef.current?.focus();
             }
-
-            props.onMouseMove?.(event);
           }),
           onClick: useEventCallback(event => {
             if (!hasSubmenu && !persistOnClick) {
