@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "makes direction change observable for slider",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
