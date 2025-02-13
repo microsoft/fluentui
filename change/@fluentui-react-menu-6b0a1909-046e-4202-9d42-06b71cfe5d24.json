@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Currently, FluentUI MenuItem has no way of letting users override focus on hover behavior. This change allows that by a small reordering of lines.",
+  "packageName": "@fluentui/react-menu",
+  "email": "57237883+lekevin-microsoft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
