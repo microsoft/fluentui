@@ -70,10 +70,9 @@ jobs:
 
       - name: Run screenshotdiff
         env:
-          API_TOKEN: ${{ FormatPAT.NonBase64PAT }}
           VR_APP_API_URL: 'https://vrapprovaldev2.azurewebsites.net/api/'
           STORAGE_ACCOUNT_ID: 'https://onejstestartifactsprod.blob.core.windows.net/'
-          SYSTEM_ACCESSTOKEN: ${{ System.AccessToken }}
+          SYSTEM_ACCESSTOKEN: ${{ secrets.ADO_SYSTEM_ACCESSTOKEN }}
           TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           PRINCIPAL_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           SERVICE_CONNECTION_ID: ${{ SERVICE-CONNECTION-ID }}
