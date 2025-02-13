@@ -77,7 +77,7 @@ const withSlotEnhancer = context => {
     if (value && typeof value === 'string') {
       const match = value.match(slotRegex);
       if (match) {
-        updatedArgTypes[key].table.type.summary = `Slot<'${match[1]}'>`;
+        updatedArgTypes[key].table.type.summary = `Slot<\"${match[1]}\">`;
       }
     }
   });
