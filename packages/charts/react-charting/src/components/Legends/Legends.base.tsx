@@ -304,8 +304,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         instantOpenOnClick={true}
         // eslint-disable-next-line react/jsx-no-bind
         onCardHide={onHoverCardHideHandler}
-        setInitialFocus={true}
-        trapFocus={false}
+        setInitialFocus={false}
+        trapFocus={true}
         onCardVisible={this._hoverCardVisible}
         styles={classNames.subComponentStyles.hoverCardStyles}
         cardDismissDelay={300}
