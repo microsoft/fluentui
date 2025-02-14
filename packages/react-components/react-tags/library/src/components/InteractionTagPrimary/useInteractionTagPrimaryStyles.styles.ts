@@ -197,10 +197,16 @@ const useRootStyles = makeStyles({
     ':hover': {
       backgroundColor: tokens.colorBrandBackgroundHover,
       color: tokens.colorNeutralForegroundOnBrand,
+      [`& .${iconFilledClassName}`]: {
+        color: tokens.colorNeutralForegroundOnBrand,
+      },
     },
     ':active': {
       backgroundColor: tokens.colorBrandBackgroundPressed,
       color: tokens.colorNeutralForegroundOnBrand,
+      [`& .${iconFilledClassName}`]: {
+        color: tokens.colorNeutralForegroundOnBrand,
+      },
     },
   },
   medium: {

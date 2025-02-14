@@ -285,6 +285,14 @@ const useDismissIconStyles = makeStyles({
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
+  selected: {
+    ':hover': {
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+    ':active': {
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+  },
 });
 
 export const usePrimaryTextStyles = makeStyles({
@@ -354,7 +362,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
     shape === 'rounded' ? rootRoundedBaseClassName : rootCircularBaseClassName,
 
     state.disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
-    selected && rootStyles.selected,
+    selected && !state.disabled && rootStyles.selected,
     rootStyles[size],
 
     !state.media && !state.icon && rootWithoutMediaStyles[size],
@@ -399,6 +407,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
       dismissIconStyles.base,
       dismissIconStyles[size],
       !state.disabled && dismissIconStyles[appearance],
+      selected && !state.disabled && dismissIconStyles.selected,
       state.dismissIcon.className,
     );
   }
