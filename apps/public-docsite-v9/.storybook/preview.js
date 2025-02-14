@@ -70,14 +70,24 @@ const withSlotEnhancer = context => {
   const updatedArgTypes = { ...context.argTypes };
 
   Object.entries(updatedArgTypes).forEach(([key, argType]) => {
-    // @ts-expect-error - storybook doesn't ship proper types
-    const value = argType?.type?.value;
+    const type = argType.type;
+    if (!type || type.name !== 'other') {
+      return;
+    }
+
+    const value = type.value;
+
+    if (!value) {
+      return;
+    }
 
     // we are interested only on raw strings ( which is case of non Storybook supported types)
-    if (value && typeof value === 'string') {
+    if (typeof value === 'string') {
       const match = value.match(slotRegex);
       if (match) {
         updatedArgTypes[key].table.type.summary = `Slot<\"${match[1]}\">`;
+        // @ts-expect-error - storybook doesn't ship proper types (value is missing)
+        updatedArgTypes[key].type.value = `Slot<\"${match[1]}\">`;
       }
     }
   });

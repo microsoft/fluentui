@@ -10,7 +10,7 @@ import {
   Stories,
   type DocsContextProps,
 } from '@storybook/addon-docs';
-import type { PreparedStory, Renderer, StrictArgTypes, StoryContextForEnhancers } from '@storybook/types';
+import type { PreparedStory, Renderer, StrictArgTypes } from '@storybook/types';
 import type { SBEnumType } from '@storybook/csf';
 import { makeStyles, shorthands, tokens, Link, Text } from '@fluentui/react-components';
 import { InfoFilled } from '@fluentui/react-icons';
@@ -135,40 +135,47 @@ const getNativeElementsList = (elements: SBEnumType['value']): JSX.Element => {
 
 const slotRegex = /as\?:\s*"([^"]+)"/;
 function withSlotEnhancer(story: PreparedStory) {
-  const docGenProps = story.component?.__docgenInfo?.props;
+  type InternalComponentApi = {
+    __docgenInfo: { props?: Record<string, { type: { name: string } }> };
+    [k: string]: unknown;
+  };
+  const component = story.component as InternalComponentApi;
+  const docGenProps = component?.__docgenInfo?.props;
 
   if (!docGenProps) {
-    return story;
+    return component;
   }
 
   Object.entries(docGenProps).forEach(([key, argType]) => {
     const value: string = argType?.type?.name;
     const match = value.match(slotRegex);
 
-    if (Array.isArray(match)) {
-      story.component.__docgenInfo.props[key].type.name = `Slot<\"${match[1]}\">`;
+    if (match) {
+      component.__docgenInfo.props![key].type.name = `Slot<\"${match[1]}\">`;
     }
   });
 
-  return story;
+  return component;
 }
 
 const RenderArgsTable = ({
   hideArgsTable,
-  primaryStory,
-  argsTypes,
+  story,
+  argTypes,
 }: {
-  primaryStory: PrimaryStory;
+  story: PrimaryStory;
   hideArgsTable: boolean;
-  argsTypes: StrictArgTypes;
+  argTypes: StrictArgTypes;
 }) => {
   const styles = useStyles();
 
+  const { component } = withSlotEnhancer(story);
+
   return hideArgsTable ? null : (
     <>
-      <ArgsTable of={primaryStory.component} />
+      <ArgsTable of={component} />
 
-      {primaryStory.argTypes.as && primaryStory.argTypes.as?.type?.name === 'enum' && (
+      {story.argTypes.as && story.argTypes.as?.type?.name === 'enum' && (
         <div className={styles.nativeProps}>
           <InfoFilled className={styles.nativePropsIcon} />
           <div className={styles.nativePropsMessage}>
@@ -176,9 +183,8 @@ const RenderArgsTable = ({
               Native props are supported <span role="presentation">🙌</span>
             </b>
             <span>
-              All HTML attributes native to the {getNativeElementsList(primaryStory.argTypes.as.type.value)}, including
-              all <code>aria-*</code> and <code>data-*</code> attributes, can be applied as native props on this
-              component.
+              All HTML attributes native to the {getNativeElementsList(story.argTypes.as.type.value)}, including all{' '}
+              <code>aria-*</code> and <code>data-*</code> attributes, can be applied as native props on this component.
             </span>
           </div>
         </div>
@@ -235,8 +241,6 @@ export const FluentDocsPage = () => {
   //   })),
   // );
 
-  const TweakedComponent = withSlotEnhancer(primaryStory);
-
   return (
     <div className="sb-unstyled">
       <Title />
@@ -252,11 +256,7 @@ export const FluentDocsPage = () => {
             {videos && <VideoPreviews videos={videos} />}
           </div>
           <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
-          <RenderArgsTable
-            primaryStory={primaryStory}
-            hideArgsTable={hideArgsTable}
-            argsTypes={primaryStoryContext.argTypes}
-          />
+          <RenderArgsTable story={primaryStory} hideArgsTable={hideArgsTable} argTypes={primaryStoryContext.argTypes} />
           <Stories />
         </div>
         <div className={styles.toc}>
