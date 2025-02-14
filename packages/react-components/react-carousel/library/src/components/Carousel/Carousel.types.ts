@@ -13,7 +13,7 @@ export type CarouselAnnouncerFunction = (index: number, totalSlides: number, sli
 /**
  * List of integrated motion types
  */
-export type CarouselMotion = 'slide' | 'fade';
+export type CarouselMotion = 'slide' | { kind: 'slide'; duration?: number } | 'fade';
 
 /**
  * Carousel Props
@@ -63,8 +63,15 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   whitespace?: boolean;
 
   /**
-   * Sets motion to fade in/out style with minimal movement
-   * Defaults: false
+   * Sets motion type as either 'slide' or 'fade'
+   * Defaults: 'slide'
+   *
+   * Users can also pass 'slide' & duration via CarouselMotion object to control carousel speed.
+   * Drag interactions are not affected because duration is then determined by the drag force.
+   *
+   * Note: Duration is not in milliseconds because Carousel uses an
+   * attraction physics simulation when scrolling instead of easings.
+   * Only values between 20-60 are recommended, 25 is the default.
    */
   motion?: CarouselMotion;
 
@@ -73,18 +80,6 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Defaults to: undefined
    */
   announcement?: CarouselAnnouncerFunction;
-
-  /**
-   * Set slide animation duration - Higher numbers enables slower scrolling.
-   * Drag interactions are not affected because duration is then determined by the drag force.
-   *
-   * Note: Duration is not in milliseconds because Carousel uses an
-   * attraction physics simulation when scrolling instead of easings.
-   * Only values between 20-60 are recommended.
-   *
-   * Defaults: 25
-   */
-  slideDuration?: number;
 
   /**
    * Choose a delay between autoplay transitions in milliseconds.

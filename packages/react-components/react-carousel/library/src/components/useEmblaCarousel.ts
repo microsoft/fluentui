@@ -40,10 +40,7 @@ export function setTabsterDefault(element: Element, isDefault: boolean) {
 }
 
 export function useEmblaCarousel(
-  options: Pick<
-    EmblaOptionsType,
-    'align' | 'direction' | 'loop' | 'slidesToScroll' | 'watchDrag' | 'containScroll' | 'duration'
-  > & {
+  options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'watchDrag' | 'containScroll'> & {
     defaultActiveIndex: number | undefined;
     activeIndex: number | undefined;
     motion?: CarouselMotion;
@@ -56,7 +53,6 @@ export function useEmblaCarousel(
     align,
     autoplayInterval,
     direction,
-    duration,
     loop,
     slidesToScroll,
     watchDrag,
@@ -65,6 +61,10 @@ export function useEmblaCarousel(
     onDragIndexChange,
     onAutoplayIndexChange,
   } = options;
+
+  const motionType = typeof motion === 'string' ? motion : motion?.kind ?? 'slide';
+  const motionDuration = typeof motion === 'string' ? 25 : motion?.duration ?? 25;
+
   const [activeIndex, setActiveIndex] = useControllableState({
     defaultState: options.defaultActiveIndex,
     state: options.activeIndex,
@@ -83,7 +83,7 @@ export function useEmblaCarousel(
     startIndex: activeIndex,
     watchDrag,
     containScroll,
-    duration,
+    duration: motionDuration,
   });
 
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
@@ -109,7 +109,7 @@ export function useEmblaCarousel(
     );
 
     // Optionally add Fade plugin
-    if (motion === 'fade') {
+    if (motionType === 'fade') {
       plugins.push(Fade());
     }
 
@@ -122,7 +122,7 @@ export function useEmblaCarousel(
     }
 
     return plugins;
-  }, [motion, onDragEvent, watchDrag, autoplayInterval]);
+  }, [motionType, onDragEvent, watchDrag, autoplayInterval]);
 
   /* This function enables autoplay to pause/play without affecting underlying state
    * Useful for pausing on focus etc. without having to reinitialize or set autoplay to off
@@ -288,7 +288,7 @@ export function useEmblaCarousel(
       slidesToScroll,
       watchDrag,
       containScroll,
-      duration,
+      duration: motionDuration,
     };
 
     emblaApi.current?.reInit(
@@ -298,7 +298,7 @@ export function useEmblaCarousel(
       },
       plugins,
     );
-  }, [align, containScroll, direction, getPlugins, loop, slidesToScroll, watchDrag, duration]);
+  }, [align, containScroll, direction, getPlugins, loop, slidesToScroll, watchDrag, motionDuration]);
 
   React.useEffect(() => {
     // Scroll to controlled values on update
