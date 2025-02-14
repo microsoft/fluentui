@@ -824,7 +824,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               <circle
                 id={circleId}
                 key={circleId}
-                r={this._points[i].data[j - 1].markerSize || 4}
+                r={this._points[i].data[j - 1].markerSize ?? 4}
                 cx={this._xAxisScale(x1)}
                 cy={this._yAxisScale(y1)}
                 data-is-focusable={isLegendSelected}
@@ -917,7 +917,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   <circle
                     id={lastCircleId}
                     key={lastCircleId}
-                    r={this._points[i].data[j - 1].markerSize || 4}
+                    r={this._points[i].data[j].markerSize ?? 4}
                     cx={this._xAxisScale(x2)}
                     cy={this._yAxisScale(y2)}
                     data-is-focusable={isLegendSelected}
