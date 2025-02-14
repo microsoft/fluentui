@@ -90,34 +90,101 @@ const useStyles = makeStyles({
 		3) Note that the spinner was removed since it was causing confusing with the loading state of the page
 */
 
+const AvatarSection = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.avatar}>
+      <Persona
+        name="Cameron Evans"
+        secondaryText="Senior Researcher at Contoso"
+        avatar={{ color: 'brand', badge: { status: 'available' } }}
+      />
+    </div>
+  );
+};
+
+const TabSection = () => {
+  const tabValues = ['Home', 'Pages', 'Documents'];
+    return (
+      <TabList defaultSelectedValue="tab1">
+      {tabValues.map((tab, index) => (
+        <Tab key={index} value={`tab${index + 1}`}>{tab}</Tab>
+      ))}
+      </TabList>
+    );
+};
+
+const InputSection = () => {
+  const dropdownId = useId('dropdown-default');
+  const optionValues = ['Option 1', 'Option 2', 'Option 3'];
+  return (
+    <>
+    <Field>
+      <Input
+        placeholder="Find"
+        contentAfter={<Button aria-label="Find" appearance="transparent" icon={<SearchRegular />} size="small" />}
+      />
+    </Field>
+    <Dropdown aria-labelledby={dropdownId} placeholder="Select" inlinePopup>
+        {optionValues.map((option, index) => (
+          <Option key={index} value={option}>
+            {option}
+          </Option>
+        ))}
+    </Dropdown>
+    </>
+  )
+};
+
+const ControlRow = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.controlRow}>
+      <Button appearance="primary">Text</Button>
+      <div className={styles.controlColumn}>
+        <Switch defaultChecked={true} label="On" />
+        <Switch label="Off" />
+      </div>
+    </div>
+  );
+};
+
+const CheckboxSection = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.controlRow}>
+      <div className={styles.controlColumn}>
+        <Checkbox defaultChecked={true} label="Option 1" />
+        <Checkbox label="Option 2" />
+      </div>
+      <div className={styles.controlColumn}>
+        <RadioGroup>
+          <Radio defaultChecked={true} label="Option 1" />
+          <Radio label="Option 2" />
+        </RadioGroup>
+      </div>
+    </div>
+  );
+};
+
+const DescriptionSection = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.inputLabel}>
+      <Field label="Description" required>
+        <Input placeholder="Example Text" appearance="filled-darker" />
+      </Field>
+    </div>
+  );
+};
+
 export const Column1 = () => {
   const styles = useStyles();
-  const dropdownId = useId('dropdown-default');
   return (
     <div className={styles.column}>
-      <div className={styles.avatar}>
-        <Persona
-          name="Cameron Evans"
-          secondaryText="Senior Researcher at Contoso"
-          avatar={{ color: 'brand', badge: { status: 'available' } }}
-        />
-      </div>
-      <TabList defaultSelectedValue="tab1">
-        <Tab value="tab1">Home</Tab>
-        <Tab value="tab2">Pages</Tab>
-        <Tab value="tab3">Documents</Tab>
-      </TabList>
-      <Field>
-        <Input
-          placeholder="Find"
-          contentAfter={<Button aria-label="Find" appearance="transparent" icon={<SearchRegular />} size="small" />}
-        />
-      </Field>
-      <Dropdown aria-labelledby={dropdownId} placeholder="Select" inlinePopup>
-        <Option value="Action 1">Action 1</Option>
-        <Option value="Action 2">Action 2 </Option>
-        <Option value="Action 3">Action 3</Option>
-      </Dropdown>
+      <AvatarSection />
+      <TabSection />
+      <InputSection />
     </div>
   );
 };
@@ -126,26 +193,9 @@ export const Column2 = () => {
   const styles = useStyles();
   return (
     <div className={styles.column}>
-      <div className={styles.controlRow}>
-        <Button appearance="primary">Text</Button>
-        <div className={styles.controlColumn}>
-          <Switch defaultChecked={true} label="On" />
-          <Switch label="Off" />
-        </div>
-      </div>
+      <ControlRow />
       <Slider defaultValue={50} />
-      <div className={styles.controlRow}>
-        <div className={styles.controlColumn}>
-          <Checkbox defaultChecked={true} label="Option 1" />
-          <Checkbox label="Option 2" />
-        </div>
-        <div className={styles.controlColumn}>
-          <RadioGroup>
-            <Radio defaultChecked={true} label="Option 1" />
-            <Radio label="Option 2" />
-          </RadioGroup>
-        </div>
-      </div>
+      <CheckboxSection />
     </div>
   );
 };
@@ -170,12 +220,8 @@ export const Column3 = () => {
 
   return (
     <div className={styles.column}>
-      <div className={styles.inputLabel}>
-        <Field label="Description" required>
-          <Input placeholder="Example Text" appearance="filled-darker" />
-        </Field>
-      </div>
-      <Link href="https://www.microsoft.com">Example link - www.microsoft.com</Link>
+     <DescriptionSection />
+     <Link href="https://www.microsoft.com">Example link - www.microsoft.com</Link>
     </div>
   );
 };

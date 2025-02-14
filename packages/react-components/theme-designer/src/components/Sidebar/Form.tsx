@@ -224,22 +224,6 @@ export const Form: React.FC = () => {
             </div>
           </AccordionPanel>
         </AccordionItem>
-        {/*
-        The accessibility check is not adequate for the theme designer.
-        Removing it for now because we don't want people proceeding with a false sense of security.
-        <AccordionItem value="2">
-          <AccordionHeader>
-            <Caption1Stronger>Step 2 - Accessibility checks</Caption1Stronger>
-          </AccordionHeader>
-          <AccordionPanel className={styles.accordionContainer}>
-            <Switch checked={isDark} onChange={handleIsDarkChange} label={'Dark theme'} />
-            <AccessibilityPanel
-              darkThemeOverrides={darkThemeOverrides}
-              brand={brand}
-              lightThemeOverrides={lightThemeOverrides}
-            />
-          </AccordionPanel>
-        </AccordionItem> */}
         <AccordionItem value="2">
           <AccordionHeader>
             <Caption1Stronger>Step 2 - Export</Caption1Stronger>
