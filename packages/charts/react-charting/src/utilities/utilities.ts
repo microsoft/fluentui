@@ -447,7 +447,10 @@ export function createNumericYAxis(
     ? 0
     : yMinValue!;
   const maxMarkerSizeInPixelsForYAxis = maxMarkerSize
-    ? (maxMarkerSize * (finalYmin - finalYmax)) / (margins.top! - containerHeight + margins.bottom! + 2 * maxMarkerSize)
+    ? Math.abs(
+        (maxMarkerSize * (finalYmin - finalYmax)) /
+          (margins.top! - containerHeight + margins.bottom! + 2 * maxMarkerSize),
+      )
     : 0;
   const domainValues = prepareDatapoints(
     finalYmax + maxMarkerSizeInPixelsForYAxis,
@@ -922,7 +925,7 @@ export function domainRangeOfNumericForAreaChart(
     });
   })!;
   const maxMarkerSizeInPixelsForXAxis = maxMarkerSize
-    ? (maxMarkerSize * (xMax - xMin)) / (width - margins.right! - margins.left! - 2 * maxMarkerSize)
+    ? Math.abs((maxMarkerSize * (xMax - xMin)) / (width - margins.right! - margins.left! - 2 * maxMarkerSize))
     : 0;
   const rStartValue = margins.left!;
   const rEndValue = width - margins.right!;
