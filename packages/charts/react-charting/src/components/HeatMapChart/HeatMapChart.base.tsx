@@ -1,13 +1,25 @@
 import { CartesianChart, IChildProps, IModifiedCartesianChartProps } from '../../components/CommonComponents/index';
-import { IAccessibilityProps, IChart, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
+import {
+  IAccessibilityProps,
+  IChart,
+  IHeatMapChartData,
+  IHeatMapChartDataPoint,
+  IImageExportOptions,
+} from '../../types/IDataPoint';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { classNamesFunction, getId, initializeComponentRef, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import {
+  classNamesFunction,
+  getId,
+  getRTL,
+  initializeComponentRef,
+  memoizeFunction,
+} from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
-import { ILegend, Legends } from '../Legends/index';
+import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import {
   ChartTypes,
@@ -26,6 +38,7 @@ import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
 import { getColorContrast } from '../../utilities/colors';
+import { toImage } from '../../utilities/image-export-utils';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -118,6 +131,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _emptyChartId: string;
   private margins: IMargins;
   private _cartesianChartRef: React.RefObject<IChart>;
+  private _legendsRef: React.RefObject<ILegendContainer>;
 
   public constructor(props: IHeatMapChartProps) {
     super(props);
@@ -154,6 +168,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     };
     this._emptyChartId = getId('_HeatMap_empty');
     this._cartesianChartRef = React.createRef();
+    this._legendsRef = React.createRef();
   }
 
   public componentDidUpdate(prevProps: IHeatMapChartProps): void {
@@ -253,6 +268,11 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
   }
+
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    const direction = getRTL() ? 'rtl' : 'ltr';
+    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, direction, opts);
+  };
 
   private _getMinMaxOfYAxis = () => {
     return { startValue: 0, endValue: 0 };
@@ -527,7 +547,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       };
       legends.push(legend);
     });
-    return <Legends {...legendProps} legends={legends} />;
+    return <Legends {...legendProps} legends={legends} ref={this._legendsRef} />;
   };
 
   private _getColorScale = () => {

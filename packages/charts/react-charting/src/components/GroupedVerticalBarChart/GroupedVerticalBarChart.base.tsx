@@ -48,7 +48,9 @@ import {
   IRefArrayData,
   Legends,
 } from '../../index';
-import { IChart } from '../../types/index';
+import { IChart, IImageExportOptions } from '../../types/index';
+import { toImage } from '../../utilities/image-export-utils';
+import { ILegendContainer } from '../Legends/index';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -112,6 +114,7 @@ export class GroupedVerticalBarChartBase
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
   private _cartesianChartRef: React.RefObject<IChart>;
+  private _legendsRef: React.RefObject<ILegendContainer>;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -145,6 +148,7 @@ export class GroupedVerticalBarChartBase
     this._emptyChartId = getId('_GVBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
     this._cartesianChartRef = React.createRef();
+    this._legendsRef = React.createRef();
   }
 
   public componentDidUpdate(prevProps: IGroupedVerticalBarChartProps): void {
@@ -246,6 +250,11 @@ export class GroupedVerticalBarChartBase
   public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
   }
+
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    const direction = this._isRtl ? 'rtl' : 'ltr';
+    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, direction, opts);
+  };
 
   private _getMinMaxOfYAxis = () => {
     return { startValue: 0, endValue: 0 };
@@ -635,6 +644,7 @@ export class GroupedVerticalBarChartBase
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         {...this.props.legendProps}
         onChange={this._onLegendSelectionChange.bind(this)}
+        ref={this._legendsRef}
       />
     );
   };

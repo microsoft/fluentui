@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IHoverCardStyleProps, IHoverCardStyles } from '@fluentui/react/lib/HoverCard';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
@@ -279,6 +279,11 @@ export interface ILegendsProps {
    * The shape for the legend.
    */
   shape?: LegendShape;
+
+  /**
+   * Callback to access the public methods and properties of the component.
+   */
+  ref?: IRefObject<ILegendContainer>;
 }
 
 /**
@@ -289,3 +294,14 @@ export interface ILegendsProps {
  * {@docCategory Legends}
  */
 export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
+
+export interface ILegendContainer {
+  toSVG: (
+    svgWidth: number,
+    direction?: 'ltr' | 'rtl',
+  ) => {
+    node: SVGGElement | null;
+    width: number;
+    height: number;
+  };
+}

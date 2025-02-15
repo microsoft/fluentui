@@ -7,6 +7,7 @@ import {
   classNamesFunction,
   find,
   getId,
+  getRTL,
   initializeComponentRef,
   memoizeFunction,
 } from '@fluentui/react/lib/Utilities';
@@ -43,9 +44,10 @@ import {
   getSecureProps,
   areArraysEqual,
 } from '../../utilities/index';
-import { ILegend, Legends } from '../Legends/index';
+import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
-import { IChart } from '../../types/index';
+import { IChart, IImageExportOptions } from '../../types/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
@@ -129,6 +131,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
   private _cartesianChartRef: React.RefObject<IChart>;
+  private _legendsRef: React.RefObject<ILegendContainer>;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -162,6 +165,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._firstRenderOptimization = true;
     this._emptyChartId = getId('_AreaChart_empty');
     this._cartesianChartRef = React.createRef();
+    this._legendsRef = React.createRef();
   }
 
   public componentDidUpdate(prevProps: IAreaChartProps): void {
@@ -273,6 +277,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
   }
+
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    const direction = getRTL() ? 'rtl' : 'ltr';
+    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, direction, opts);
+  };
 
   private _getDomainNRangeValues = (
     points: ILineChartPoints[],
@@ -659,6 +668,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         {...this.props.legendProps}
         onChange={this._onLegendSelectionChange.bind(this)}
+        ref={this._legendsRef}
       />
     );
   };

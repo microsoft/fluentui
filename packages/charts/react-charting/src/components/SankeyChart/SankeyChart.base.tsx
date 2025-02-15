@@ -15,7 +15,7 @@ import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRig
 import { BaseType, Selection as D3Selection, select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import * as React from 'react';
-import { IBasestate, IChart, SLink, SNode } from '../../types/IDataPoint';
+import { IBasestate, IChart, IImageExportOptions, SLink, SNode } from '../../types/IDataPoint';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/ChartHoverCard.types';
 import { IMargins } from '../../utilities/utilities';
@@ -27,6 +27,7 @@ import {
   ISankeyChartStyleProps,
   ISankeyChartStyles,
 } from './SankeyChart.types';
+import { toImage } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 const PADDING_PERCENTAGE = 0.3;
@@ -896,6 +897,11 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       />
     );
   }
+
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    const direction = this._isRtl ? 'rtl' : 'ltr';
+    return toImage(this.chartContainer, undefined, direction, opts);
+  };
 
   private _computeNodeAttributes(
     nodes: SNode[],

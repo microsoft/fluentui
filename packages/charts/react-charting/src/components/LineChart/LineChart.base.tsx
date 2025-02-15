@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
-import { ILegend, Legends } from '../Legends/index';
+import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
 import {
   classNamesFunction,
@@ -50,7 +50,8 @@ import {
   formatDate,
   areArraysEqual,
 } from '../../utilities/index';
-import { IChart } from '../../types/index';
+import { IChart, IImageExportOptions } from '../../types/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -188,6 +189,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _emptyChartId: string;
   private _isRTL: boolean = getRTL();
   private _cartesianChartRef: React.RefObject<IChart>;
+  private _legendsRef: React.RefObject<ILegendContainer>;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -224,6 +226,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._firstRenderOptimization = true;
     this._emptyChartId = getId('_LineChart_empty');
     this._cartesianChartRef = React.createRef();
+    this._legendsRef = React.createRef();
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -378,6 +381,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
   }
+
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    const direction = this._isRTL ? 'rtl' : 'ltr';
+    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, direction, opts);
+  };
 
   private _getDomainNRangeValues = (
     points: ILineChartPoints[],
@@ -555,6 +563,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         overflowText={this.props.legendsOverflowText}
         {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: this._onHoverCardHide })}
         {...this.props.legendProps}
+        ref={this._legendsRef}
       />
     );
   }

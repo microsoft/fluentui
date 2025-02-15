@@ -361,6 +361,10 @@ export interface ICartesianChartStyles {
 export interface IChart {
     // (undocumented)
     chartContainer: HTMLElement | null;
+    // Warning: (ae-forgotten-export) The symbol "IImageExportOptions" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    toImage?: (opts?: IImageExportOptions) => Promise<string>;
 }
 
 // @public (undocumented)
@@ -854,18 +858,6 @@ export interface IHorizontalDataPoint {
     y: number;
 }
 
-// @public (undocumented)
-export interface IImageExportOptions {
-    // (undocumented)
-    background?: string;
-    // (undocumented)
-    height?: number;
-    // (undocumented)
-    scale?: number;
-    // (undocumented)
-    width?: number;
-}
-
 // @public
 export interface ILegend {
     action?: VoidFunction;
@@ -910,6 +902,8 @@ export interface ILegendsProps {
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
     overflowText?: string;
+    // Warning: (ae-forgotten-export) The symbol "ILegendContainer" needs to be exported by the entry point index.d.ts
+    ref?: IRefObject<ILegendContainer>;
     selectedLegend?: string;
     selectedLegends?: string[];
     shape?: LegendShape;

@@ -14,8 +14,10 @@ import {
   ILegendsStyles,
   ILegendStyleProps,
   ILegendOverflowData,
+  ILegendContainer,
 } from './Legends.types';
 import { Shape } from './shape';
+import { cloneLegendsToSVG } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
 
@@ -40,7 +42,7 @@ export interface ILegendState {
   /** Set of legends selected, both for multiple selection and single selection */
   selectedLegends: { [key: string]: boolean };
 }
-export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
+export class LegendsBase extends React.Component<ILegendsProps, ILegendState> implements ILegendContainer {
   private _hoverCardRef: HTMLDivElement;
   private _classNames: IProcessedStyleSet<ILegendsStyles>;
   /** Boolean variable to check if one or more legends are selected */
@@ -118,6 +120,15 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       </div>
     );
   }
+
+  public toSVG = (svgWidth: number, direction: 'ltr' | 'rtl' = 'ltr') => {
+    return cloneLegendsToSVG(this.props.legends, svgWidth, {
+      selectedLegends: this.state.selectedLegends,
+      centerLegends: !!this.props.centerLegends,
+      textClassName: this._classNames.text,
+      isRTL: direction === 'rtl',
+    });
+  };
 
   private _generateData(): ILegendOverflowData {
     const { allowFocusOnLegends = true, shape } = this.props;

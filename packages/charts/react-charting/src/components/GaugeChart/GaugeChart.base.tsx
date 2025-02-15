@@ -21,13 +21,14 @@ import {
   getNextGradient,
   pointTypes,
 } from '../../utilities/index';
-import { ILegend, LegendShape, Legends, Shape } from '../Legends/index';
+import { ILegend, ILegendContainer, LegendShape, Legends, Shape } from '../Legends/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IYValueHover } from '../../index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { select as d3Select } from 'd3-selection';
-import { IChart } from '../../types/index';
+import { IChart, IImageExportOptions } from '../../types/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 const GAUGE_MARGIN = 16;
 const LABEL_WIDTH = 36;
@@ -134,6 +135,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   private _rootElem: HTMLDivElement | null;
   private _margins: { left: number; right: number; top: number; bottom: number };
   private _legendsHeight: number;
+  private _legendsRef: React.RefObject<ILegendContainer>;
 
   constructor(props: IGaugeChartProps) {
     super(props);
@@ -157,6 +159,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
 
     this._isRTL = getRTL(props.theme);
     this._calloutAnchor = '';
+    this._legendsRef = React.createRef();
   }
 
   public componentDidMount(): void {
@@ -360,6 +363,11 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     return this._rootElem;
   }
 
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    const direction = this._isRTL ? 'rtl' : 'ltr';
+    return toImage(this._rootElem, this._legendsRef.current?.toSVG, direction, opts);
+  };
+
   private _getMargins = () => {
     const { hideMinMax, chartTitle, sublabel } = this.props;
 
@@ -514,6 +522,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           {...this.props.legendProps}
           // eslint-disable-next-line react/jsx-no-bind
           onChange={this._onLegendSelectionChange.bind(this)}
+          ref={this._legendsRef}
         />
       </div>
     );

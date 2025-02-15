@@ -1453,3 +1453,43 @@ export function resolveCSSVariables(chartContainer: HTMLElement, styleRules: str
     return containerStyles.getPropertyValue(group1);
   });
 }
+
+export function copyStyle(properties: string[] | Record<string, string>, fromEl: Element, toEl: Element) {
+  const styles = getComputedStyle(fromEl);
+  if (Array.isArray(properties)) {
+    properties.forEach(prop => {
+      d3Select(toEl).style(prop, styles.getPropertyValue(prop));
+    });
+  } else {
+    Object.entries(properties).forEach(([fromProp, toProp]) => {
+      d3Select(toEl).style(toProp, styles.getPropertyValue(fromProp));
+    });
+  }
+}
+
+const SPAN_STYLE = {
+  position: 'absolute',
+  top: '-20000px',
+  left: 0,
+  padding: 0,
+  margin: 0,
+  border: 'none',
+  whiteSpace: 'pre',
+};
+const MEASUREMENT_SPAN_ID = 'measurement_span';
+
+export const createMeasurementSpan = (text: string | number, className: string) => {
+  let measurementSpan = document.getElementById(MEASUREMENT_SPAN_ID);
+  if (!measurementSpan) {
+    measurementSpan = document.createElement('span');
+    measurementSpan.setAttribute('id', MEASUREMENT_SPAN_ID);
+    measurementSpan.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(measurementSpan);
+  }
+
+  Object.assign(measurementSpan.style, SPAN_STYLE);
+  measurementSpan.setAttribute('class', className);
+  measurementSpan.textContent = `${text}`;
+
+  return measurementSpan;
+};

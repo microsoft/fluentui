@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, getId, initializeComponentRef } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { ScaleOrdinal } from 'd3-scale';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -15,7 +15,9 @@ import {
   areArraysEqual,
 } from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { IChart } from '../../types/index';
+import { IChart, IImageExportOptions } from '../../types/index';
+import { toImage } from '../../utilities/image-export-utils';
+import { ILegendContainer } from '../Legends/index';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 const LEGEND_CONTAINER_HEIGHT = 40;
@@ -50,6 +52,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _emptyChartId: string | null;
+  private _legendsRef: React.RefObject<ILegendContainer>;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -92,6 +95,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._calloutId = getId('callout');
     this._uniqText = getId('_Pie_');
     this._emptyChartId = getId('_DonutChart_empty');
+    this._legendsRef = React.createRef();
   }
 
   public componentDidMount(): void {
@@ -212,6 +216,11 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return this._rootElem;
   }
 
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    const direction = getRTL() ? 'rtl' : 'ltr';
+    return toImage(this._rootElem, this._legendsRef.current?.toSVG, direction, opts);
+  };
+
   private _closeCallout = () => {
     this.setState({
       showHover: false,
@@ -285,6 +294,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         {...this.props.legendProps}
         // eslint-disable-next-line react/jsx-no-bind
         onChange={this._onLegendSelectionChange.bind(this)}
+        ref={this._legendsRef}
       />
     );
     return legends;

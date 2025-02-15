@@ -1,17 +1,14 @@
 import { create as d3Create, select as d3Select, Selection } from 'd3-selection';
-import { resolveCSSVariables } from '../../utilities/index';
+import { copyStyle, createMeasurementSpan, resolveCSSVariables } from './index';
+import { IImageExportOptions } from '../types/index';
+import { ILegend, ILegendContainer } from '../Legends';
 
-/**
- * {@docCategory DeclarativeChart}
- */
-export interface IImageExportOptions {
-  width?: number;
-  height?: number;
-  scale?: number;
-  background?: string;
-}
-
-export function toImage(chartContainer?: HTMLElement | null, opts: IImageExportOptions = {}): Promise<string> {
+export function toImage(
+  chartContainer: HTMLElement | null | undefined,
+  legendsToSvgCallback?: ILegendContainer['toSVG'],
+  direction: 'ltr' | 'rtl' = 'ltr',
+  opts: IImageExportOptions = {},
+): Promise<string> {
   return new Promise((resolve, reject) => {
     if (!chartContainer) {
       return reject(new Error('Chart container is not defined'));
@@ -20,7 +17,7 @@ export function toImage(chartContainer?: HTMLElement | null, opts: IImageExportO
     try {
       const background =
         typeof opts.background === 'string' ? resolveCSSVariables(chartContainer, opts.background) : 'transparent';
-      const svg = toSVG(chartContainer, background);
+      const svg = toSVG(chartContainer, legendsToSvgCallback, direction, background);
 
       const svgData = new XMLSerializer().serializeToString(svg.node);
       const svgDataUrl = 'data:image/svg+xml;base64,' + btoa(unescapePonyfill(encodeURIComponent(svgData)));
@@ -41,7 +38,12 @@ export function toImage(chartContainer?: HTMLElement | null, opts: IImageExportO
 const SVG_STYLE_PROPERTIES = ['display', 'fill', 'fill-opacity', 'opacity', 'stroke', 'stroke-width', 'transform'];
 const SVG_TEXT_STYLE_PROPERTIES = ['font-family', 'font-size', 'font-weight', 'text-anchor'];
 
-function toSVG(chartContainer: HTMLElement, background: string) {
+function toSVG(
+  chartContainer: HTMLElement,
+  legendsToSvgCallback: ILegendContainer['toSVG'] | undefined,
+  direction: 'ltr' | 'rtl',
+  background: string,
+) {
   const svg = chartContainer.querySelector<SVGSVGElement>('svg');
   if (!svg) {
     throw new Error('SVG not found');
@@ -63,11 +65,15 @@ function toSVG(chartContainer: HTMLElement, background: string) {
   }
 
   const { width: svgWidth, height: svgHeight } = svg.getBoundingClientRect();
-  const legendGroup = cloneLegendsToSVG(chartContainer, svgWidth, svgHeight);
+  const legendGroup =
+    typeof legendsToSvgCallback === 'function'
+      ? legendsToSvgCallback(svgWidth, direction)
+      : { node: null, width: 0, height: 0 };
   const w1 = Math.max(svgWidth, legendGroup.width);
   const h1 = svgHeight + legendGroup.height;
 
   if (legendGroup.node) {
+    d3Select(legendGroup.node).attr('transform', `translate(0, ${svgHeight})`);
     clonedSvg.append(() => legendGroup.node);
   }
   clonedSvg
@@ -77,7 +83,7 @@ function toSVG(chartContainer: HTMLElement, background: string) {
     .attr('width', w1)
     .attr('height', h1)
     .attr('fill', background);
-  clonedSvg.attr('width', w1).attr('height', h1).attr('viewBox', `0 0 ${w1} ${h1}`);
+  clonedSvg.attr('width', w1).attr('height', h1).attr('viewBox', `0 0 ${w1} ${h1}`).attr('direction', direction);
 
   return {
     node: clonedSvg.node()!,
@@ -86,25 +92,30 @@ function toSVG(chartContainer: HTMLElement, background: string) {
   };
 }
 
-const LEGEND_RECT_STYLE_PROPERTIES_MAP = {
-  'background-color': 'fill',
-  'border-color': 'stroke',
-};
+const LEGEND_CONTAINER_MARGIN_TOP = 8;
+const LEGEND_CONTAINER_MARGIN_START = 12;
+const LEGEND_PADDING = 8;
+const LEGEND_HEIGHT = 32;
+const LEGEND_SHAPE_SIZE = 12.5;
+const LEGEND_SHAPE_MARGIN_END = 8;
 const LEGEND_TEXT_STYLE_PROPERTIES_MAP = {
   color: 'fill',
   'font-family': 'font-family',
   'font-size': 'font-size',
   'font-weight': 'font-weight',
-  opacity: 'opacity',
 };
 
-function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHeight: number) {
-  const legendButtons = chartContainer.querySelectorAll<HTMLElement>(`
-    button[class^="legend-"],
-    [class^="legendContainer-"] div[class^="overflowIndicationTextStyle-"],
-    [class^="legendsContainer-"] div[class^="overflowIndicationTextStyle-"]
-  `);
-  if (legendButtons.length === 0) {
+export function cloneLegendsToSVG(
+  legends: ILegend[],
+  svgWidth: number,
+  config: {
+    selectedLegends: Record<string, boolean>;
+    centerLegends: boolean;
+    textClassName: string;
+    isRTL: boolean;
+  },
+) {
+  if (legends.length === 0) {
     return {
       node: null,
       width: 0,
@@ -112,69 +123,82 @@ function cloneLegendsToSVG(chartContainer: HTMLElement, svgWidth: number, svgHei
     };
   }
 
+  const { selectedLegends, centerLegends, textClassName, isRTL } = config;
   const legendGroup = d3Create<SVGGElement>('svg:g');
-  let legendX = 0;
-  let legendY = 8;
-  let legendLine: Selection<SVGGElement, unknown, null, undefined>[] = [];
+  let legendX = centerLegends ? 0 : LEGEND_CONTAINER_MARGIN_START;
+  let legendY = LEGEND_CONTAINER_MARGIN_TOP;
+  let legendLine: { elem: Selection<SVGGElement, unknown, null, undefined>; width: number }[] = [];
   const legendLines: (typeof legendLine)[] = [];
   const legendLineWidths: number[] = [];
+  const noLegendsSelected = Object.keys(selectedLegends).length === 0;
 
-  for (let i = 0; i < legendButtons.length; i++) {
-    const { width: legendWidth } = legendButtons[i].getBoundingClientRect();
+  for (let i = 0; i < legends.length; i++) {
+    const textOffset = LEGEND_PADDING + LEGEND_SHAPE_SIZE + LEGEND_SHAPE_MARGIN_END;
+    const legendText = createMeasurementSpan(legends[i].title, textClassName);
+    const legendWidth = textOffset + legendText.getBoundingClientRect().width + LEGEND_PADDING;
     const legendItem = legendGroup.append('g');
 
-    legendLine.push(legendItem);
+    legendLine.push({ elem: legendItem, width: legendWidth });
     if (legendX + legendWidth > svgWidth && legendLine.length > 1) {
       legendLine.pop();
       legendLines.push(legendLine);
       legendLineWidths.push(legendX);
 
-      legendLine = [legendItem];
-      legendX = 0;
-      legendY += 32;
+      legendLine = [{ elem: legendItem, width: legendWidth }];
+      legendX = centerLegends ? 0 : LEGEND_CONTAINER_MARGIN_START;
+      legendY += LEGEND_HEIGHT;
     }
 
-    let legendText: HTMLDivElement | null;
-    let textOffset = 0;
+    const isLegendActive = selectedLegends[legends[i].title] || noLegendsSelected;
 
-    if (legendButtons[i].tagName.toLowerCase() === 'button') {
-      const legendRect = legendButtons[i].querySelector<HTMLDivElement>('[class^="rect"]');
-
-      legendText = legendButtons[i].querySelector<HTMLDivElement>('[class^="text"]');
-      legendItem
-        .append('rect')
-        .attr('x', legendX + 8)
-        .attr('y', svgHeight + legendY + 8)
-        .attr('width', 12)
-        .attr('height', 12)
-        .attr('stroke-width', 1)
-        .call(selection => copyStyle(LEGEND_RECT_STYLE_PROPERTIES_MAP, legendRect!, selection.node()!));
-      textOffset = 28;
-    } else {
-      legendText = legendButtons[i] as HTMLDivElement;
-      textOffset = 8;
-    }
+    legendItem
+      .append('rect')
+      .attr('x', legendX + (isRTL ? legendWidth - LEGEND_PADDING - LEGEND_SHAPE_SIZE : LEGEND_PADDING))
+      .attr('y', legendY + LEGEND_PADDING)
+      .attr('width', LEGEND_SHAPE_SIZE)
+      .attr('height', LEGEND_SHAPE_SIZE)
+      .style('fill', isLegendActive ? legends[i].color : 'transparent')
+      .style('stroke-width', 1)
+      .style('stroke', legends[i].color);
 
     legendItem
       .append('text')
-      .attr('x', legendX + textOffset)
-      .attr('y', svgHeight + legendY + 8)
+      .attr('x', legendX + (isRTL ? legendWidth - textOffset : textOffset))
+      .attr('y', legendY + LEGEND_PADDING)
       .attr('dominant-baseline', 'hanging')
-      .text(legendText!.textContent)
-      .call(selection => copyStyle(LEGEND_TEXT_STYLE_PROPERTIES_MAP, legendText!, selection.node()!));
+      .style('opacity', isLegendActive ? 1 : 0.67)
+      .text(legends[i].title)
+      .call(selection => copyStyle(LEGEND_TEXT_STYLE_PROPERTIES_MAP, legendText, selection.node()!));
+
     legendX += legendWidth;
   }
 
   legendLines.push(legendLine);
   legendLineWidths.push(legendX);
-  legendY += 32;
+  legendY += LEGEND_HEIGHT;
 
-  const centerLegends = true;
   if (centerLegends) {
     legendLines.forEach((ln, idx) => {
-      const offsetX = Math.max((svgWidth - legendLineWidths[idx]) / 2, 0);
+      const lineOffsetX = Math.max((svgWidth - legendLineWidths[idx]) / 2, 0);
+      let remLineWidth = legendLineWidths[idx];
+      let itemOffsetX = 0;
       ln.forEach(item => {
-        item.attr('transform', `translate(${offsetX}, 0)`);
+        const newOffsetX = lineOffsetX + (isRTL ? remLineWidth - item.width - itemOffsetX : 0);
+        remLineWidth -= item.width;
+        itemOffsetX += item.width;
+        item.elem.attr('transform', `translate(${newOffsetX}, 0)`);
+      });
+    });
+  } else if (isRTL) {
+    const w1 = Math.max(svgWidth, ...legendLineWidths);
+    legendLines.forEach(ln => {
+      let remLineWidth = w1 - LEGEND_CONTAINER_MARGIN_START;
+      let itemOffsetX = LEGEND_CONTAINER_MARGIN_START;
+      ln.forEach(item => {
+        const newOffsetX = remLineWidth - item.width - itemOffsetX;
+        remLineWidth -= item.width;
+        itemOffsetX += item.width;
+        item.elem.attr('transform', `translate(${newOffsetX}, 0)`);
       });
     });
   }
@@ -257,17 +281,4 @@ function unescapePonyfill(str: string) {
     result += chr;
   }
   return result;
-}
-
-function copyStyle(properties: string[] | Record<string, string>, fromEl: Element, toEl: Element) {
-  const styles = getComputedStyle(fromEl);
-  if (Array.isArray(properties)) {
-    properties.forEach(prop => {
-      d3Select(toEl).style(prop, styles.getPropertyValue(prop));
-    });
-  } else {
-    Object.entries(properties).forEach(([fromProp, toProp]) => {
-      d3Select(toEl).style(toProp, styles.getPropertyValue(fromProp));
-    });
-  }
 }
