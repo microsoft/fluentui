@@ -26,8 +26,8 @@ export const ControllingOpenAndClose = () => {
   return (
     <div className={styles.root}>
       <Checkbox value="open" name="state" label="open" checked={open} onChange={onChange} />
-      <label id={dropdownId}>Best pet</label>
-      <Dropdown aria-labelledby={dropdownId} placeholder="Select an animal" open={open} onOpenChange={handleOpenChange}>
+      <label htmlFor={dropdownId}>Best pet</label>
+      <Dropdown id={dropdownId} placeholder="Select an animal" open={open} onOpenChange={handleOpenChange}>
         {options.map(option => (
           <Option key={option} disabled={option === 'Ferret'}>
             {option}

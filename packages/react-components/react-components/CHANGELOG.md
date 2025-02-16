@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 27 Jan 2025 20:27:33 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Feb 2025 10:42:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.58.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.58.3)
+
+Fri, 07 Feb 2025 10:42:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.58.2..@fluentui/react-components_v9.58.3)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: Button sets correct disabledFocusable icon color ([PR #33756](https://github.com/microsoft/fluentui/pull/33756) by sarah.higley@microsoft.com)
+- `@fluentui/react-color-picker-preview`
+  - fix: thumb design for ColorPicker - partner's ask ([PR #33743](https://github.com/microsoft/fluentui/pull/33743) by v.kozlova13@gmail.com)
+- `@fluentui/react-message-bar`
+  - fix: Revert MessageBar auto reflow changes from #33409 ([PR #33797](https://github.com/microsoft/fluentui/pull/33797) by lingfangao@hotmail.com)
+- `@fluentui/react-slider`
+  - fix: exported internal CSS variables ([PR #33682](https://github.com/microsoft/fluentui/pull/33682) by vkozlova@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - bugfix: regression from #33689 ([PR #33747](https://github.com/microsoft/fluentui/pull/33747) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: Fix regression of child render function update ([PR #33788](https://github.com/microsoft/fluentui/pull/33788) by mifraser@microsoft.com)
+
+## [9.58.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.58.2)
+
+Tue, 28 Jan 2025 21:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.58.1..@fluentui/react-components_v9.58.2)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: make SplitButton divider transparent for subtle and transparent variants ([PR #33726](https://github.com/microsoft/fluentui/pull/33726) by vgenaev@gmail.com)
+- `@fluentui/react-carousel`
+  - fix: Ensure carousel handles indexing when window size is larger then combined card size ([PR #33732](https://github.com/microsoft/fluentui/pull/33732) by mifraser@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: add aria-disabled to expand button when disabled ([PR #33530](https://github.com/microsoft/fluentui/pull/33530) by sarah.higley@microsoft.com)
+- `@fluentui/react-tree`
+  - bugfix: actions lose visibility when mouse and keyboard interactions are mixed ([PR #33731](https://github.com/microsoft/fluentui/pull/33731) by bernardo.sunderhus@gmail.com)
 
 ## [9.58.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.58.1)
 

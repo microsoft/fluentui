@@ -84,6 +84,7 @@ extends:
               - script: |
                   node -r ./scripts/ts-node/src/register ./scripts/executors/src/deprecate-react-components-preview-packages.ts --token $(npmToken)
                 displayName: 'Deprecate preview packages'
+                condition: eq(variables.dryRun, false)
 
               - script: |
                   yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-vNext.config.js --message 'release: applying package updates - react-components'
@@ -91,11 +92,13 @@ extends:
                 env:
                   GITHUB_PAT: $(githubPAT)
                 displayName: Publish changes and bump versions
+                condition: eq(variables.dryRun, false)
 
               - script: |
                   node -r ./scripts/ts-node/src/register scripts/executors/src/tag-react-components.ts --token $(npmToken)
                 displayName: Tag prelease packages with prerelease tag
                 continueOnError: true
+                condition: eq(variables.dryRun, false)
 
               # Since releases are scoped, this should warn for any packages that were mistakenly not included in scoping
               - script: |

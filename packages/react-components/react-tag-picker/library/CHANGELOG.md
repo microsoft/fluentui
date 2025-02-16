@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-tag-picker
 
-This log was last generated on Mon, 27 Jan 2025 20:27:35 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Feb 2025 10:42:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.4.3)
+
+Fri, 07 Feb 2025 10:42:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker_v9.4.2..@fluentui/react-tag-picker_v9.4.3)
+
+### Patches
+
+- bugfix: regression from #33689 ([PR #33747](https://github.com/microsoft/fluentui/pull/33747) by bernardo.sunderhus@gmail.com)
+
+## [9.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.4.2)
+
+Tue, 28 Jan 2025 21:26:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker_v9.4.1..@fluentui/react-tag-picker_v9.4.2)
+
+### Patches
+
+- fix: add aria-disabled to expand button when disabled ([PR #33530](https://github.com/microsoft/fluentui/pull/33530) by sarah.higley@microsoft.com)
 
 ## [9.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.4.1)
 

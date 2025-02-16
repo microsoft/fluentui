@@ -2,6 +2,36 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2025 10:42:11 GMT",
+      "tag": "@fluentui/react-button_v9.3.102",
+      "version": "9.3.102",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "da62e83423063b6ab3ed62e62bcb965f37cf5700",
+            "comment": "fix: Button sets correct disabledFocusable icon color"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jan 2025 21:26:33 GMT",
+      "tag": "@fluentui/react-button_v9.3.101",
+      "version": "9.3.101",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "61d6bbe9279d1184ee455c2fa5b1c8b05bfd6f6b",
+            "comment": "fix: make SplitButton divider transparent for subtle and transparent variants"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2025 14:00:21 GMT",
       "tag": "@fluentui/react-button_v9.3.100",
       "version": "9.3.100",

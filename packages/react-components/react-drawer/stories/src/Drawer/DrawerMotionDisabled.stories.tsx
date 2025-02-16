@@ -102,7 +102,7 @@ MotionDisabled.parameters = {
   docs: {
     description: {
       story:
-        'To disable the Drawer transition animation, you can use a custom style to set `transitionDuration` to `0ms`.',
+        'To disable the Drawer transition animation, you can set both `surfaceMotion` and `backdropMotion` props of the Drawer to `null`.',
     },
   },
 };

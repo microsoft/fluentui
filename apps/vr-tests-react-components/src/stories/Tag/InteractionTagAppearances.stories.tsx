@@ -10,16 +10,16 @@ const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 const contentId = 'content-id';
 const dismissButtonId = 'dismiss-button-id';
 const steps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
+  .snapshot('default')
   .hover(`#${contentId}`)
-  .snapshot('hover content', { cropTo: '.testWrapper' })
+  .snapshot('hover content')
   .mouseDown(`#${contentId}`)
-  .snapshot('pressed content', { cropTo: '.testWrapper' })
+  .snapshot('pressed content')
   .mouseUp(`#${contentId}`)
   .hover(`#${dismissButtonId}`)
-  .snapshot('hover dismiss', { cropTo: '.testWrapper' })
+  .snapshot('hover dismiss')
   .mouseDown(`#${dismissButtonId}`)
-  .snapshot('pressed dismiss', { cropTo: '.testWrapper' })
+  .snapshot('pressed dismiss')
   .mouseUp(`#${dismissButtonId}`)
   .end();
 

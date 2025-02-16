@@ -44,7 +44,7 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const rootVariables = {
     [alphaSliderCSSVars.sliderDirectionVar]: sliderDirection,
     [alphaSliderCSSVars.sliderProgressVar]: `${valuePercent}%`,
-    [alphaSliderCSSVars.thumbColorVar]: `transparent`,
+    [alphaSliderCSSVars.thumbColorVar]: `hsla(${hslColor.h} ${hslColor.s * 100}%, ${hslColor.l * 100}%, ${hslColor.a})`,
     [alphaSliderCSSVars.railColorVar]: `hsl(${hslColor.h} ${hslColor.s * 100}%, ${hslColor.l * 100}%)`,
   };
 

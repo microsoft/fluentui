@@ -2,6 +2,36 @@
   "name": "@fluentui/react-tag-picker",
   "entries": [
     {
+      "date": "Fri, 07 Feb 2025 10:42:12 GMT",
+      "tag": "@fluentui/react-tag-picker_v9.4.3",
+      "version": "9.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "171c1b1bda0d403270e828fbad3d8c7b791e21af",
+            "comment": "bugfix: regression from #33689"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jan 2025 21:26:34 GMT",
+      "tag": "@fluentui/react-tag-picker_v9.4.2",
+      "version": "9.4.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "7e1bfd0a35afc0a13d093533cdee51f1d6829da6",
+            "comment": "fix: add aria-disabled to expand button when disabled"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Jan 2025 20:27:35 GMT",
       "tag": "@fluentui/react-tag-picker_v9.4.1",
       "version": "9.4.1",

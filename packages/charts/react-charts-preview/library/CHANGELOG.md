@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-charts-preview
 
-This log was last generated on Mon, 27 Jan 2025 20:27:35 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Feb 2025 10:42:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.10)
+
+Fri, 07 Feb 2025 10:42:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.9..@fluentui/react-charts-preview_v0.1.10)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.102 ([PR #33797](https://github.com/microsoft/fluentui/pull/33797) by beachball)
+
+## [0.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.9)
+
+Tue, 28 Jan 2025 21:26:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.8..@fluentui/react-charts-preview_v0.1.9)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.101 ([PR #33736](https://github.com/microsoft/fluentui/pull/33736) by beachball)
 
 ## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.8)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 29 Jan 2025 07:21:15 GMT",
+      "tag": "@fluentui/react_v8.122.9",
+      "version": "8.122.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "75fc0440a890f12af8845061d9cafd983d9a4e33",
+            "comment": "fix(Autofill): Only apply selection logic if the current value does not match the previous value to avoid using the value before state is set and handle del key as delete in the keydown event."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2025 07:21:49 GMT",
       "tag": "@fluentui/react_v8.122.8",
       "version": "8.122.8",
