@@ -1,7 +1,7 @@
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { AnnounceOptions } from '@fluentui/react-shared-contexts';
 import { createPriorityQueue, useTimeout } from '@fluentui/react-utilities';
-import { useDangerousNeverHidden } from '@fluentui/react-tabster';
+import { useDangerousNeverHidden_unstable as useDangerousNeverHidden } from '@fluentui/react-tabster';
 import * as React from 'react';
 
 import type { AriaLiveAnnounceFn, AriaLiveMessage } from './AriaLiveAnnouncer.types';
@@ -138,8 +138,10 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
     const element = targetDocument.createElement('div');
     element.setAttribute('aria-live', 'assertive');
 
-    for (let key in tabsterNeverHiddenAttributes) {
-      element.setAttribute(key, tabsterNeverHiddenAttributes[key]);
+    for (const key in tabsterNeverHiddenAttributes) {
+      if (tabsterNeverHiddenAttributes.hasOwnProperty(key)) {
+        element.setAttribute(key, tabsterNeverHiddenAttributes[key]);
+      }
     }
 
     Object.assign(element.style, VISUALLY_HIDDEN_STYLES);
@@ -153,7 +155,7 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
       clearAnnounceTimeout();
       timeoutRef.current = undefined;
     };
-  }, [clearAnnounceTimeout, targetDocument]);
+  }, [clearAnnounceTimeout, tabsterNeverHiddenAttributes, targetDocument]);
 
   return announce;
 };

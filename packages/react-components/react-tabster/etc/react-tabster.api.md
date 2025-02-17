@@ -1452,7 +1452,7 @@ export interface UseArrowNavigationGroupOptions {
 }
 
 // @public
-export function useDangerousNeverHidden(): {
+export function useDangerousNeverHidden_unstable(): {
     [key: string]: string;
 };
 
