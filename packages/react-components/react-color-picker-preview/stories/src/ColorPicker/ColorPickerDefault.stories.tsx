@@ -83,13 +83,16 @@ export const Default = () => {
   };
 
   const onRgbChange = (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => {
-    const value = data.value ?? (data.displayValue !== undefined ? parseFloat(data.displayValue) : null);
+    const value = data.value ?? parseFloat(data.displayValue ?? '');
 
     if (value === null || Number.isNaN(value) || !NUMBER_REGEX.test(value.toString())) {
       return;
     }
 
-    const colorKey = (event.target as HTMLInputElement).name as RgbKey;
+    let colorKey = (event.target as HTMLInputElement).name as RgbKey;
+    if (!colorKey) {
+      colorKey = (event.currentTarget.parentElement?.querySelector('input') as HTMLInputElement)?.name as RgbKey;
+    }
 
     const newColor = tinycolor({ ...rgb, [colorKey]: value });
     if (newColor.isValid) {
