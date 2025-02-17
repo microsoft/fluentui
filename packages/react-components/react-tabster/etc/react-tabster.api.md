@@ -1452,6 +1452,11 @@ export interface UseArrowNavigationGroupOptions {
 }
 
 // @public
+export function useDangerousNeverHidden(): {
+    [key: string]: string;
+};
+
+// @public
 export const useFocusableGroup: (options?: UseFocusableGroupOptions) => Types.TabsterDOMAttribute;
 
 // @public (undocumented)
