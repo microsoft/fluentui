@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { getModalizer, getRestorer, Types as TabsterTypes, RestorerTypes } from 'tabster';
@@ -38,7 +39,7 @@ export interface UseModalAttributesOptions {
  * @returns Attribute to apply to the target element that should never receive aria-hidden
  */
 export function useDangerousNeverHidden_unstable(): { [key: string]: string } {
-  return { [DangerousNeverHiddenAttribute]: '' };
+  return React.useRef({ [DangerousNeverHiddenAttribute]: '' }).current;
 }
 
 const tabsterAccessibleCheck: TabsterTypes.ModalizerElementAccessibleCheck = element => {
