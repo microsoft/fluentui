@@ -69,7 +69,6 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Fetch Access Token
-        id: get_token
         run: |
           echo "ACCESSTOKEN=$(az account get-access-token --query accessToken --output tsv)" >> $GITHUB_ENV
 
