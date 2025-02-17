@@ -102,24 +102,6 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(70.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                0.5
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(100.5,0)"
             >
               <line
@@ -133,24 +115,6 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 y="16"
               >
                 1
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(130.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                1.5
               </text>
             </g>
             <g
@@ -174,24 +138,6 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(190.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                2.5
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(220.5,0)"
             >
               <line
@@ -205,24 +151,6 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 y="16"
               >
                 3
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(250.50000000000003,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                3.5
               </text>
             </g>
             <g
@@ -246,24 +174,6 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(310.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                4.5
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(340.5,0)"
             >
               <line
@@ -277,24 +187,6 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 y="16"
               >
                 5
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(370.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                5.5
               </text>
             </g>
             <g
@@ -318,24 +210,6 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(430.49999999999994,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                6.5
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(460.50000000000006,0)"
             >
               <line
@@ -354,24 +228,6 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(490.50000000000006,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                7.5
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(520.5,0)"
             >
               <line
@@ -385,24 +241,6 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 y="16"
               >
                 8
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(550.4999999999999,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                8.5
               </text>
             </g>
             <g
@@ -18931,9 +18769,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
             &:focus {
               outline: none;
             }
-            {
-              overflow: auto;
-            }
+
         data-focuszone-id="FocusZone11"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
