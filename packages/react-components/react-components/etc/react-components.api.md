@@ -482,6 +482,7 @@ import { InteractionTagSecondarySlots } from '@fluentui/react-tags';
 import { InteractionTagSecondaryState } from '@fluentui/react-tags';
 import { InteractionTagSlots } from '@fluentui/react-tags';
 import { InteractionTagState } from '@fluentui/react-tags';
+import { isHTMLElement } from '@fluentui/react-utilities';
 import { isTruncatableBreadcrumbContent } from '@fluentui/react-breadcrumb';
 import { Label } from '@fluentui/react-label';
 import { labelClassNames } from '@fluentui/react-label';
@@ -2784,6 +2785,8 @@ export { InteractionTagSecondaryState }
 export { InteractionTagSlots }
 
 export { InteractionTagState }
+
+export { isHTMLElement }
 
 export { isTruncatableBreadcrumbContent }
 
