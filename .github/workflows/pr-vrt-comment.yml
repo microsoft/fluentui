@@ -68,14 +68,19 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+      - name: Fetch Access Token
+        id: get_token
+        run: |
+          echo "ACCESSTOKEN=$(az account get-access-token --query accessToken --output tsv)" >> $GITHUB_ENV
+
       - name: Run screenshotdiff
         env:
           VR_APP_API_URL: 'https://vrapprovaldev2.azurewebsites.net/api/'
           STORAGE_ACCOUNT_ID: 'https://onejstestartifactsprod.blob.core.windows.net/'
-          SYSTEM_ACCESSTOKEN: ${{ secrets.ADO_SYSTEM_ACCESSTOKEN }}
+          SYSTEM_ACCESSTOKEN: ${{ env.ACCESSTOKEN }}
           TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           PRINCIPAL_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          SERVICE_CONNECTION_ID: '895ec195-b2db-4323-bd13-649b008acaf6'
+          SERVICE_CONNECTION_ID: ${{ secrets.ADO_VRT_SERVICE_CONNECTION_ID }}
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "MAKE THIS WORK"
