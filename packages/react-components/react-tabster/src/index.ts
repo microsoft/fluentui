@@ -5,6 +5,7 @@ export {
   useFocusVisible,
   useFocusWithin,
   useKeyboardNavAttribute,
+  useDangerousNeverHidden,
   useModalAttributes,
   useTabsterAttributes,
   useObservedElement,

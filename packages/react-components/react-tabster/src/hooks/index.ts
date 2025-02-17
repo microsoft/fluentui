@@ -8,7 +8,7 @@ export { useFocusWithin } from './useFocusWithin';
 export { useKeyboardNavAttribute } from './useKeyboardNavAttribute';
 export { useOnKeyboardNavigationChange } from './useOnKeyboardNavigationChange';
 export type { UseModalAttributesOptions } from './useModalAttributes';
-export { useModalAttributes } from './useModalAttributes';
+export { useDangerousNeverHidden, useModalAttributes } from './useModalAttributes';
 export { useTabsterAttributes } from './useTabsterAttributes';
 export { useObservedElement } from './useObservedElement';
 export { useMergedTabsterAttributes_unstable } from './useMergeTabsterAttributes';
