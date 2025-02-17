@@ -24,6 +24,7 @@ jobs:
     permissions:
       # necessary to write comments to the PR from the vr-approval-cli
       pull-requests: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
