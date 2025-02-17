@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: provide methods for elements such as live regions to not get hidden by modals",
+  "packageName": "@fluentui/react-tabster",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
