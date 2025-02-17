@@ -961,6 +961,7 @@ export interface ILegendSubComponentStyles {
 export interface ILineChartDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     hideCallout?: boolean;
+    markerSize?: number;
     onDataPointClick?: () => void;
     x: number | Date;
     xAxisCalloutAccessibilityData?: IAccessibilityProps;
@@ -1015,6 +1016,7 @@ export interface ILineChartProps extends ICartesianChartProps {
     onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
     // (undocumented)
     optimizeLargeData?: boolean;
+    scatterMarkersMode?: boolean;
     styles?: IStyleFunctionOrObject<ILineChartStyleProps, ILineChartStyles>;
 }
 
