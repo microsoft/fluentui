@@ -42,6 +42,7 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
+import { getId } from '@fluentui/react';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -1467,8 +1468,9 @@ export function copyStyle(properties: string[] | Record<string, string>, fromEl:
   }
 }
 
-const SPAN_STYLE = {
+const MEASUREMENT_SPAN_STYLE = {
   position: 'absolute',
+  visibility: 'hidden',
   top: '-20000px',
   left: 0,
   padding: 0,
@@ -1476,7 +1478,7 @@ const SPAN_STYLE = {
   border: 'none',
   whiteSpace: 'pre',
 };
-const MEASUREMENT_SPAN_ID = 'measurement_span';
+const MEASUREMENT_SPAN_ID = getId('measurement_span_');
 
 export const createMeasurementSpan = (text: string | number, className: string) => {
   let measurementSpan = document.getElementById(MEASUREMENT_SPAN_ID);
@@ -1487,8 +1489,8 @@ export const createMeasurementSpan = (text: string | number, className: string) 
     document.body.appendChild(measurementSpan);
   }
 
-  Object.assign(measurementSpan.style, SPAN_STYLE);
   measurementSpan.setAttribute('class', className);
+  Object.assign(measurementSpan.style, MEASUREMENT_SPAN_STYLE);
   measurementSpan.textContent = `${text}`;
 
   return measurementSpan;
