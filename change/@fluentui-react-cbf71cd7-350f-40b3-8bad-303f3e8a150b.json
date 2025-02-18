@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(KeytipTree): refactor updateNode to improve parent handling",
+  "packageName": "@fluentui/react",
+  "email": "walterb@microsoft.com",
+  "dependentChangeType": "patch"
+}
