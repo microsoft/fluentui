@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { StoryWright } from 'storywright';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem, MenuDivider } from '@fluentui/react-menu';
 import { CutRegular, ClipboardPasteRegular } from '@fluentui/react-icons';
 
@@ -8,8 +7,6 @@ import { getStoryVariant, RTL } from '../../utilities';
 
 export default {
   title: 'Menu Converged - long content',
-
-  decorators: [story => <StoryWright>{story()}</StoryWright>],
 } satisfies Meta<typeof Menu>;
 
 export const Default = () => (

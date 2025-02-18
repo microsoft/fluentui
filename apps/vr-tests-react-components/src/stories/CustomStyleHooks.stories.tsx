@@ -10,10 +10,14 @@ import type {
 } from '@fluentui/react-button';
 import { FluentProvider, FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { type StoryParameters, Steps } from 'storywright';
 
 export default {
   title: 'FluentProvider CustomStyleHooks',
   component: FluentProvider,
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('normal').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof FluentProvider>;
 
 export const Default = () => <FluentProvider>Hello, world</FluentProvider>;

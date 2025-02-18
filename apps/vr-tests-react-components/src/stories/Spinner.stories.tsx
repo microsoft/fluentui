@@ -2,10 +2,10 @@ import * as React from 'react';
 import type { Decorator, Meta } from '@storybook/react';
 import { Spinner, spinnerClassNames } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 
-import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
 
 const usePauseWrapperClass = makeResetStyles({
   minWidth: '300px',
@@ -33,10 +33,10 @@ const InvertedWrapper: React.FC = ({ children }) => {
 export default {
   title: 'Spinner converged',
 
-  decorators: [
-    TestWrapperDecoratorPauseAnimation,
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() }),
-  ],
+  decorators: [TestWrapperDecoratorPauseAnimation],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Spinner>;
 
 export const Primary = () => <Spinner />;

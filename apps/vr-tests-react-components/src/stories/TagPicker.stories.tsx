@@ -14,7 +14,7 @@ import { Tag } from '@fluentui/react-tags';
 import { Avatar } from '@fluentui/react-avatar';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { Steps, StoryWright } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { ArrowDownFilled } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-button';
 
@@ -22,6 +22,9 @@ import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
 
 export default {
   title: 'TagPicker',
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof TagPicker>;
 
 const options = [
@@ -92,51 +95,53 @@ export const DefaultOpen = () => {
   };
 
   return (
-    <StoryWright
-      steps={new Steps()
-        .hover('#tag-picker-option-1')
-        .snapshot('default open option hover')
-        .mouseDown('#tag-picker-option-1')
-        .snapshot('default open option mouse down')}
-    >
-      <div style={{ maxWidth: 400 }}>
-        <TagPicker defaultOpen onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
-          <TagPickerControl>
-            <TagPickerGroup>
-              {selectedOptions.map(option => (
-                <Tag
-                  key={option}
-                  shape="rounded"
-                  media={<Avatar aria-hidden name={option} color="colorful" />}
-                  value={option}
-                >
-                  {option}
-                </Tag>
-              ))}
-            </TagPickerGroup>
-            <TagPickerInput aria-label="Select Employees" />
-          </TagPickerControl>
-          <TagPickerList>
-            {options
-              .filter(option => !selectedOptions.includes(option))
-              .map((option, index) => (
-                <TagPickerOption
-                  id={`tag-picker-option-${index}`}
-                  secondaryContent="Microsoft FTE"
-                  media={<Avatar aria-hidden name={option} color="colorful" />}
-                  value={option}
-                  key={option}
-                >
-                  {option}
-                </TagPickerOption>
-              ))}
-          </TagPickerList>
-        </TagPicker>
-      </div>
-    </StoryWright>
+    <div style={{ maxWidth: 400 }}>
+      <TagPicker defaultOpen onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
+        <TagPickerControl>
+          <TagPickerGroup>
+            {selectedOptions.map(option => (
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput aria-label="Select Employees" />
+        </TagPickerControl>
+        <TagPickerList>
+          {options
+            .filter(option => !selectedOptions.includes(option))
+            .map((option, index) => (
+              <TagPickerOption
+                id={`tag-picker-option-${index}`}
+                secondaryContent="Microsoft FTE"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))}
+        </TagPickerList>
+      </TagPicker>
+    </div>
   );
 };
 DefaultOpen.storyName = 'default open';
+DefaultOpen.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .hover('#tag-picker-option-1')
+      .snapshot('default open option hover')
+      .mouseDown('#tag-picker-option-1')
+      .snapshot('default open option mouse down')
+      .end(),
+  },
+} satisfies StoryParameters;
 
 export const DefaultOpenDarkMode = getStoryVariant(DefaultOpen, DARK_MODE);
 
@@ -223,44 +228,47 @@ export const Disabled = () => {
   };
 
   return (
-    <StoryWright steps={new Steps().hover('#tag-picker-input').snapshot('disabled input hover')}>
-      <div style={{ maxWidth: 400 }}>
-        <TagPicker disabled onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
-          <TagPickerControl>
-            <TagPickerGroup>
-              {selectedOptions.map(option => (
-                <Tag
-                  key={option}
-                  shape="rounded"
-                  media={<Avatar aria-hidden name={option} color="colorful" />}
-                  value={option}
-                >
-                  {option}
-                </Tag>
-              ))}
-            </TagPickerGroup>
-            <TagPickerInput id="tag-picker-input" aria-label="Select Employees" />
-          </TagPickerControl>
-          <TagPickerList>
-            {options
-              .filter(option => !selectedOptions.includes(option))
-              .map(option => (
-                <TagPickerOption
-                  secondaryContent="Microsoft FTE"
-                  media={<Avatar aria-hidden name={option} color="colorful" />}
-                  value={option}
-                  key={option}
-                >
-                  {option}
-                </TagPickerOption>
-              ))}
-          </TagPickerList>
-        </TagPicker>
-      </div>
-    </StoryWright>
+    <div style={{ maxWidth: 400 }}>
+      <TagPicker disabled onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
+        <TagPickerControl>
+          <TagPickerGroup>
+            {selectedOptions.map(option => (
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
+                {option}
+              </Tag>
+            ))}
+          </TagPickerGroup>
+          <TagPickerInput id="tag-picker-input" aria-label="Select Employees" />
+        </TagPickerControl>
+        <TagPickerList>
+          {options
+            .filter(option => !selectedOptions.includes(option))
+            .map(option => (
+              <TagPickerOption
+                secondaryContent="Microsoft FTE"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))}
+        </TagPickerList>
+      </TagPicker>
+    </div>
   );
 };
 Disabled.storyName = 'disabled';
+Disabled.parameters = {
+  storyWright: {
+    steps: new Steps().hover('#tag-picker-input').snapshot('disabled input hover').end(),
+  },
+} satisfies StoryParameters;
 
 export const DisabledDarkMode = getStoryVariant(Disabled, DARK_MODE);
 
