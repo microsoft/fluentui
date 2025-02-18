@@ -96,7 +96,7 @@ const useStyles = makeStyles({
   icon: {
     height: '100%',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     paddingRight: tokens.spacingHorizontalS,
     lineHeight: tokens.lineHeightBase500,
     fontSize: tokens.fontSizeBase500,
