@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-carousel
 
-This log was last generated on Fri, 07 Feb 2025 10:42:12 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Feb 2025 11:26:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.5.0)
+
+Tue, 18 Feb 2025 11:26:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.4.7..@fluentui/react-carousel_v9.5.0)
+
+### Minor changes
+
+- feat: Add tooltip wrappers for icon buttons in nav container ([PR #33821](https://github.com/microsoft/fluentui/pull/33821) by mifraser@microsoft.com)
 
 ## [9.4.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.4.7)
 
