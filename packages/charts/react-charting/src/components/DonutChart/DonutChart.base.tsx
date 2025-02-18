@@ -217,8 +217,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    const direction = getRTL() ? 'rtl' : 'ltr';
-    return toImage(this._rootElem, this._legendsRef.current?.toSVG, direction, opts);
+    return toImage(this._rootElem, this._legendsRef.current?.toSVG, getRTL(), opts);
   };
 
   private _closeCallout = () => {

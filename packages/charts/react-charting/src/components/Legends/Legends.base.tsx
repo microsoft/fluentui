@@ -121,12 +121,12 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
     );
   }
 
-  public toSVG = (svgWidth: number, direction: 'ltr' | 'rtl' = 'ltr') => {
+  public toSVG = (svgWidth: number, isRTL: boolean = false) => {
     return cloneLegendsToSVG(this.props.legends, svgWidth, {
       selectedLegends: this.state.selectedLegends,
       centerLegends: !!this.props.centerLegends,
       textClassName: this._classNames.text,
-      isRTL: direction === 'rtl',
+      isRTL,
     });
   };
 

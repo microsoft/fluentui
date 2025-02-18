@@ -98,6 +98,7 @@ export type {
   SLink,
   SNode,
   IChart,
+  IImageExportOptions,
 } from './types/index';
 export type {
   IChartHoverCardProps,

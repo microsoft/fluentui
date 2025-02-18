@@ -361,8 +361,6 @@ export interface ICartesianChartStyles {
 export interface IChart {
     // (undocumented)
     chartContainer: HTMLElement | null;
-    // Warning: (ae-forgotten-export) The symbol "IImageExportOptions" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     toImage?: (opts?: IImageExportOptions) => Promise<string>;
 }
@@ -856,6 +854,18 @@ export interface IHorizontalBarChartWithAxisStyles extends ICartesianChartStyles
 export interface IHorizontalDataPoint {
     x: number;
     y: number;
+}
+
+// @public (undocumented)
+export interface IImageExportOptions {
+    // (undocumented)
+    background?: string;
+    // (undocumented)
+    height?: number;
+    // (undocumented)
+    scale?: number;
+    // (undocumented)
+    width?: number;
 }
 
 // @public

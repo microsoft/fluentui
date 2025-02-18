@@ -383,8 +383,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    const direction = this._isRTL ? 'rtl' : 'ltr';
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, direction, opts);
+    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRTL, opts);
   };
 
   private _getDomainNRangeValues = (

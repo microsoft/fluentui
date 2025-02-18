@@ -270,8 +270,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    const direction = getRTL() ? 'rtl' : 'ltr';
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, direction, opts);
+    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, getRTL(), opts);
   };
 
   private _getMinMaxOfYAxis = () => {

@@ -261,8 +261,7 @@ export class VerticalBarChartBase
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    const direction = this._isRtl ? 'rtl' : 'ltr';
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, direction, opts);
+    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRtl, opts);
   };
 
   private _getDomainNRangeValues = (

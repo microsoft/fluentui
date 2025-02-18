@@ -295,10 +295,13 @@ export interface ILegendsProps {
  */
 export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
 
+/**
+ * {@docCategory Legends}
+ */
 export interface ILegendContainer {
   toSVG: (
     svgWidth: number,
-    direction?: 'ltr' | 'rtl',
+    isRTL?: boolean,
   ) => {
     node: SVGGElement | null;
     width: number;

@@ -6,7 +6,7 @@ import { ILegend, ILegendContainer } from '../Legends';
 export function toImage(
   chartContainer: HTMLElement | null | undefined,
   legendsToSvgCallback?: ILegendContainer['toSVG'],
-  direction: 'ltr' | 'rtl' = 'ltr',
+  isRTL: boolean = false,
   opts: IImageExportOptions = {},
 ): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -17,7 +17,7 @@ export function toImage(
     try {
       const background =
         typeof opts.background === 'string' ? resolveCSSVariables(chartContainer, opts.background) : 'transparent';
-      const svg = toSVG(chartContainer, legendsToSvgCallback, direction, background);
+      const svg = toSVG(chartContainer, legendsToSvgCallback, isRTL, background);
 
       const svgData = new XMLSerializer().serializeToString(svg.node);
       const svgDataUrl = 'data:image/svg+xml;base64,' + btoa(unescapePonyfill(encodeURIComponent(svgData)));
@@ -41,7 +41,7 @@ const SVG_TEXT_STYLE_PROPERTIES = ['font-family', 'font-size', 'font-weight', 't
 function toSVG(
   chartContainer: HTMLElement,
   legendsToSvgCallback: ILegendContainer['toSVG'] | undefined,
-  direction: 'ltr' | 'rtl',
+  isRTL: boolean,
   background: string,
 ) {
   const svg = chartContainer.querySelector<SVGSVGElement>('svg');
@@ -67,7 +67,7 @@ function toSVG(
   const { width: svgWidth, height: svgHeight } = svg.getBoundingClientRect();
   const legendGroup =
     typeof legendsToSvgCallback === 'function'
-      ? legendsToSvgCallback(svgWidth, direction)
+      ? legendsToSvgCallback(svgWidth, isRTL)
       : { node: null, width: 0, height: 0 };
   const w1 = Math.max(svgWidth, legendGroup.width);
   const h1 = svgHeight + legendGroup.height;
@@ -83,7 +83,11 @@ function toSVG(
     .attr('width', w1)
     .attr('height', h1)
     .attr('fill', background);
-  clonedSvg.attr('width', w1).attr('height', h1).attr('viewBox', `0 0 ${w1} ${h1}`).attr('direction', direction);
+  clonedSvg
+    .attr('width', w1)
+    .attr('height', h1)
+    .attr('viewBox', `0 0 ${w1} ${h1}`)
+    .attr('direction', isRTL ? 'rtl' : 'ltr');
 
   return {
     node: clonedSvg.node()!,

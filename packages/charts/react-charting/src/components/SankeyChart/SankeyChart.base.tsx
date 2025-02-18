@@ -899,8 +899,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    const direction = this._isRtl ? 'rtl' : 'ltr';
-    return toImage(this.chartContainer, undefined, direction, opts);
+    return toImage(this.chartContainer, undefined, this._isRtl, opts);
   };
 
   private _computeNodeAttributes(
