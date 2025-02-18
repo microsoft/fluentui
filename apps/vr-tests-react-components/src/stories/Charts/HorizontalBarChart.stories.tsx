@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
-import { ChartProps, HorizontalBarChart, HorizontalBarChartVariant } from '@fluentui/react-charts-preview';
+import { ChartProps, HorizontalBarChart, HorizontalBarChartVariant } from '@fluentui/react-charts';
 
 export default {
   title: 'Charts/HorizontalBarChart',
