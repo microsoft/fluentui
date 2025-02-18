@@ -310,9 +310,10 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         styles={classNames.subComponentStyles.hoverCardStyles}
         cardDismissDelay={300}
         target={this._hoverCardRef}
+        tabIndex={0}
       >
         {/* "button" role is not allowed as a child of parent role "listbox" */}
-        <div role="option">
+        <div role="option" tabIndex={0}>
           <div
             className={classNames.overflowIndicationTextStyle}
             ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
@@ -401,6 +402,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onFocus={onHoverHandler}
         onBlur={onMouseOut}
         data-is-focusable={allowFocusOnLegends}
+        tabIndex={0}
         /* eslint-enable react/jsx-no-bind */
       >
         {shape}
