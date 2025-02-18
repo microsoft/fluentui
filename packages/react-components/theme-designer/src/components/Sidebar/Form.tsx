@@ -12,8 +12,9 @@ import {
   Slider,
   tokens,
   useId,
-  Caption1Stronger,
   Field,
+  Text,
+  Subtitle2Stronger
 } from '@fluentui/react-components';
 import { defaultThemePlaceholderName } from '../../Context/ThemeDesignerContext';
 // import { AccessibilityPanel } from './AccessibilityPanel';
@@ -21,7 +22,7 @@ import { useDebounce } from '../../utils/useDebounce';
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: tokens.colorNeutralBackground2,
   },
   inputs: {
     display: 'flex',
@@ -39,15 +40,17 @@ const useStyles = makeStyles({
   },
   labels: {
     display: 'grid',
-    gridTemplateColumns: '135px 30px',
+    gridTemplateColumns: '110px 100px',
     columnGap: tokens.spacingVerticalL,
   },
   colorPicker: {
     border: `1px solid ${tokens.colorNeutralStroke1}`,
     borderRadius: '25px',
-    height: '30px',
-    width: '30px',
+    height: '45px',
+    width: '45px',
     overflow: 'hidden',
+    cursor: 'pointer',
+    boxShadow: `inset 0 2px 4px ${tokens.colorNeutralShadowAmbient}, inset 0 2px 4px ${tokens.colorNeutralShadowKey}`
   },
   color: {
     padding: '0px',
@@ -59,18 +62,10 @@ const useStyles = makeStyles({
     gridTemplateColumns: '115px 50px',
     columnGap: '15px',
   },
-  element: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-  },
   labelName: {
-    // Stack the label above the field
     display: 'flex',
     flexDirection: 'column',
-    // Use 2px gap below the label (per the design system)
     gap: '2px',
-    // Prevent the example from taking the full width of the page (optional)
     maxWidth: '400px',
   },
   export: {
@@ -79,6 +74,9 @@ const useStyles = makeStyles({
     justifyContent: 'flex-end',
     paddingRight: '20px',
   },
+  startHere: {
+    padding: '12px 12px 0 12px',
+  }
 });
 
 const DELAY_INPUT = 20;
@@ -159,35 +157,39 @@ export const Form: React.FC = () => {
 
   return (
     <div className={styles.root} role="tabpanel" aria-labelledby="Edit">
-      <Accordion defaultOpenItems={['1', '2', '3']} multiple>
+      <div className={styles.startHere}>
+        <Subtitle2Stronger as="h2">
+          Start Here
+        </Subtitle2Stronger>
+      </div>
+      <Accordion defaultOpenItems={['1']} collapsible>
         {/* `multiple` allows for toggle of collapse as well as open multiple panels */}
         <AccordionItem value="1">
-          <AccordionHeader>
-            <Caption1Stronger>Step 1 - Color settings</Caption1Stronger>
-          </AccordionHeader>
-
+            <AccordionHeader size="large">Step 1 - Color settings</AccordionHeader>
           <AccordionPanel className={styles.accordionContainer}>
+            <Text as="h6">Use the Color Picker to select a color or enter a hex value in the text box below to generate a theme. Adjust the Hue Torsion and Vibrancy using the sliders below for further refinement.</Text>
             <div className={styles.inputs}>
               <div className={styles.labels}>
-                <Field label="Key color value">
-                  <Input
-                    className={styles.keyColor}
-                    size="large"
-                    appearance="underline"
-                    value={keyColor}
-                    onChange={handleKeyColorChange}
-                    maxLength={7}
-                    onBlur={handleKeyColorBlur}
+              <Field label="Key color value">
+                <Input
+                  appearance="outline"
+                  value={keyColor}
+                  onChange={handleKeyColorChange}
+                  maxLength={7}
+                  onBlur={handleKeyColorBlur}
+                  style={{ width: '100px' }}
                   />
                 </Field>
-                <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
+                <Field label="Color Picker">
+                  <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
                   <input
                     className={styles.color}
                     type="color"
                     id={sidebarId + 'keyColor Color'}
                     onChange={handleKeyColorChange}
                   />
-                </div>
+                  </div>
+                </Field>
               </div>
             </div>
             <div>
@@ -224,27 +226,10 @@ export const Form: React.FC = () => {
             </div>
           </AccordionPanel>
         </AccordionItem>
-        {/*
-        The accessibility check is not adequate for the theme designer.
-        Removing it for now because we don't want people proceeding with a false sense of security.
         <AccordionItem value="2">
-          <AccordionHeader>
-            <Caption1Stronger>Step 2 - Accessibility checks</Caption1Stronger>
-          </AccordionHeader>
+          <AccordionHeader size="large">Step 2 - Export</AccordionHeader>
           <AccordionPanel className={styles.accordionContainer}>
-            <Switch checked={isDark} onChange={handleIsDarkChange} label={'Dark theme'} />
-            <AccessibilityPanel
-              darkThemeOverrides={darkThemeOverrides}
-              brand={brand}
-              lightThemeOverrides={lightThemeOverrides}
-            />
-          </AccordionPanel>
-        </AccordionItem> */}
-        <AccordionItem value="2">
-          <AccordionHeader>
-            <Caption1Stronger>Step 2 - Export</Caption1Stronger>
-          </AccordionHeader>
-          <AccordionPanel className={styles.accordionContainer}>
+          <Text as="h6">Enter a desired theme name below and click the Export button to export your theme</Text>
             <div className={styles.labelName}>
               <Field label={'Theme name'}>
                 <Input
