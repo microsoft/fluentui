@@ -241,6 +241,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -345,6 +346,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -632,6 +634,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -736,6 +739,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1023,6 +1027,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1127,6 +1132,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1414,6 +1420,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1518,6 +1525,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1788,6 +1796,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               onMouseOut={[Function]}
               onMouseOver={[Function]}
               role="option"
+              tabIndex={0}
             >
               <div
                 className=
@@ -1892,6 +1901,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               onMouseOut={[Function]}
               onMouseOver={[Function]}
               role="option"
+              tabIndex={0}
             >
               <div
                 className=
@@ -2288,6 +2298,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2392,6 +2403,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2679,6 +2691,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2783,6 +2796,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3070,6 +3084,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3174,6 +3189,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3461,6 +3477,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3565,6 +3582,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3852,6 +3870,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3956,6 +3975,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=

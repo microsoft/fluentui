@@ -125,6 +125,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -229,6 +230,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -333,6 +335,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -437,6 +440,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -541,6 +545,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -645,6 +650,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -749,6 +755,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -853,6 +860,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -957,6 +965,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -1061,6 +1070,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -1165,6 +1175,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -1269,6 +1280,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -1373,6 +1385,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -1477,6 +1490,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -1581,6 +1595,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -1685,6 +1700,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -1789,6 +1805,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -1958,6 +1975,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -2062,6 +2080,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -2166,6 +2185,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -2270,6 +2290,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -2374,6 +2395,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -2478,6 +2500,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -2582,6 +2605,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -2686,6 +2710,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -2790,6 +2815,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -2894,6 +2920,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -2998,6 +3025,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -3102,6 +3130,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -3206,6 +3235,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -3310,6 +3340,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -3414,6 +3445,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -3518,6 +3550,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -3622,6 +3655,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -3791,6 +3825,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -3895,6 +3930,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -3999,6 +4035,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -4103,6 +4140,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -4207,6 +4245,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -4311,6 +4350,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -4415,6 +4455,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -4519,6 +4560,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -4623,6 +4665,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -4727,6 +4770,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -4831,6 +4875,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -4935,6 +4980,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -5039,6 +5085,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -5143,6 +5190,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -5247,6 +5295,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -5351,6 +5400,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -5455,6 +5505,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -5624,6 +5675,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -5728,6 +5780,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -5832,6 +5885,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -5936,6 +5990,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -6040,6 +6095,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -6144,6 +6200,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -6248,6 +6305,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -6352,6 +6410,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -6456,6 +6515,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -6560,6 +6620,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -6664,6 +6725,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -6768,6 +6830,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -6872,6 +6935,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -6976,6 +7040,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -7080,6 +7145,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -7184,6 +7250,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=
@@ -7288,6 +7355,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 role="option"
+                tabIndex={0}
               >
                 <div
                   className=

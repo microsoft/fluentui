@@ -378,6 +378,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -483,6 +484,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -588,6 +590,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1195,6 +1198,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1300,6 +1304,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1405,6 +1410,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2549,6 +2555,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               onMouseOut={[Function]}
               onMouseOver={[Function]}
               role="option"
+              tabIndex={0}
             >
               <div
                 className=
@@ -2654,6 +2661,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               onMouseOut={[Function]}
               onMouseOver={[Function]}
               role="option"
+              tabIndex={0}
             >
               <div
                 className=
@@ -2759,6 +2767,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               onMouseOut={[Function]}
               onMouseOver={[Function]}
               role="option"
+              tabIndex={0}
             >
               <div
                 className=

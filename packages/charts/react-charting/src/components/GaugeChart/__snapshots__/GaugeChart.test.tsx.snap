@@ -1115,6 +1115,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1220,6 +1221,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1325,6 +1327,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1888,6 +1891,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1993,6 +1997,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2098,6 +2103,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2480,6 +2486,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                       onMouseOut={[Function]}
                       onMouseOver={[Function]}
                       role="option"
+                      tabIndex={0}
                     >
                       <div
                         className=
@@ -2585,6 +2592,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                       onMouseOut={[Function]}
                       onMouseOver={[Function]}
                       role="option"
+                      tabIndex={0}
                     >
                       <div
                         className=
@@ -2690,6 +2698,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                       onMouseOut={[Function]}
                       onMouseOver={[Function]}
                       role="option"
+                      tabIndex={0}
                     >
                       <div
                         className=
@@ -3060,6 +3069,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3165,6 +3175,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3270,6 +3281,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3620,6 +3632,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3725,6 +3738,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -4076,6 +4090,7 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -4181,6 +4196,7 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -4564,6 +4580,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -4669,6 +4686,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -4774,6 +4792,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -5143,6 +5162,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -5248,6 +5268,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -5353,6 +5374,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -5744,6 +5766,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -5849,6 +5872,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -5954,6 +5978,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=

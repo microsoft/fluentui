@@ -433,6 +433,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -538,6 +539,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -643,6 +645,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1031,6 +1034,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1136,6 +1140,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1241,6 +1246,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1552,6 +1558,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1656,6 +1663,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1760,6 +1768,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2119,6 +2128,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2223,6 +2233,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2327,6 +2338,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2686,6 +2698,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2790,6 +2803,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2894,6 +2908,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3292,6 +3307,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3396,6 +3412,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3500,6 +3517,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3811,6 +3829,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3915,6 +3934,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -4019,6 +4039,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -4329,6 +4350,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -4433,6 +4455,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -4537,6 +4560,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -4848,6 +4872,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -4952,6 +4977,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -5056,6 +5082,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -5367,6 +5394,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -5471,6 +5499,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -5575,6 +5604,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -6022,6 +6052,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -6126,6 +6157,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -6230,6 +6262,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -6541,6 +6574,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -6645,6 +6679,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -6749,6 +6784,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=

@@ -279,6 +279,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -383,6 +384,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -487,6 +489,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -591,6 +594,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -902,6 +906,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1006,6 +1011,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1110,6 +1116,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1214,6 +1221,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1525,6 +1533,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1629,6 +1638,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1733,6 +1743,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1837,6 +1848,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2285,6 +2297,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2387,6 +2400,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2489,6 +2503,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2591,6 +2606,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2901,6 +2917,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3003,6 +3020,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3105,6 +3123,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -3207,6 +3226,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=

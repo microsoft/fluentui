@@ -2449,6 +2449,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -2553,6 +2554,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=

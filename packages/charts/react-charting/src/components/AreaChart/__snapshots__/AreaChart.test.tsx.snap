@@ -325,6 +325,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -896,6 +897,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
@@ -1364,6 +1366,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                     onMouseOut={[Function]}
                     onMouseOver={[Function]}
                     role="option"
+                    tabIndex={0}
                   >
                     <div
                       className=
