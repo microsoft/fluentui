@@ -954,7 +954,7 @@
           },
           {
             "author": "olfedias@microsoft.com",
-            "package": "@fluentui/react-charts-preview",
+            "package": "@fluentui/react-charts",
             "commit": "7e9766f5d5090cef047eb3a2196d5b4249508949",
             "comment": "chore: fix import of makeStyles()"
           },
@@ -1173,7 +1173,7 @@
         "patch": [
           {
             "author": "98592573+AtishayMsft@users.noreply.github.com",
-            "package": "@fluentui/react-charts-preview",
+            "package": "@fluentui/react-charts",
             "commit": "0cb1e6ea1615357bcb47d8501a51faac831554a1",
             "comment": "Update readme with current content"
           },
@@ -1226,7 +1226,7 @@
         "minor": [
           {
             "author": "98592573+AtishayMsft@users.noreply.github.com",
-            "package": "@fluentui/react-charts-preview",
+            "package": "@fluentui/react-charts",
             "commit": "b79227adaeee478533c01c2e26b9cfdd205e18ce",
             "comment": "feat: Create charts components as native v9 controls."
           },

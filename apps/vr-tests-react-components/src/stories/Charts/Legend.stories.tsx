@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
-import { Legend, Legends } from '@fluentui/react-charts-preview';
+import { Legend, Legends } from '@fluentui/react-charts';
 
 export default {
   title: 'Charts/Legend',

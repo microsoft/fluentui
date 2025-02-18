@@ -10,7 +10,7 @@ const config: StorybookConfig = {
     '../src/**/*.mdx',
     '../src/**/index.stories.@(js|jsx|ts|tsx)',
     // packages stories
-    '../../../packages/charts/react-charts-preview/stories/**/index.stories.@(js|jsx|ts|tsx)',
+    '../../../packages/charts/react-charts/stories/**/index.stories.@(js|jsx|ts|tsx)',
   ],
 };
 
