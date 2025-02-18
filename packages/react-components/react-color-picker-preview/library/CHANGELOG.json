@@ -2,6 +2,29 @@
   "name": "@fluentui/react-color-picker-preview",
   "entries": [
     {
+      "date": "Tue, 18 Feb 2025 11:26:27 GMT",
+      "tag": "@fluentui/react-color-picker-preview_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "88132360465097de0c8628861fd4cfb9fac0a124",
+            "comment": "fix: design changes for ColorPicker"
+          }
+        ],
+        "minor": [
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "d9f7b1a94a36c1a532ac8f9287fdd04a811739ce",
+            "comment": "custom color channels"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Feb 2025 10:42:11 GMT",
       "tag": "@fluentui/react-color-picker-preview_v0.1.6",
       "version": "0.1.6",

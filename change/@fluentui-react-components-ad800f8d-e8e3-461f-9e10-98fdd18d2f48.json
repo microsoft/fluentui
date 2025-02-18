@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: export isHTMLElement from public API",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
