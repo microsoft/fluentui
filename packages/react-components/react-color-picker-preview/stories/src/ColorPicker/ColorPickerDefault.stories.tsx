@@ -1,22 +1,22 @@
 import * as React from 'react';
 import { tinycolor } from '@ctrl/tinycolor';
 import {
-  makeStyles,
-  useId,
   Input,
   type InputProps,
   Label,
+  makeStyles,
   SpinButton,
-  type SpinButtonProps,
-  type SpinButtonOnChangeData,
   type SpinButtonChangeEvent,
+  type SpinButtonOnChangeData,
+  type SpinButtonProps,
+  useId,
 } from '@fluentui/react-components';
 import {
-  ColorPicker,
-  ColorSlider,
   AlphaSlider,
-  ColorPickerProps,
   ColorArea,
+  ColorPicker,
+  ColorPickerProps,
+  ColorSlider,
 } from '@fluentui/react-color-picker-preview';
 
 const useStyles = makeStyles({
@@ -82,19 +82,8 @@ export const Default = () => {
     }
   };
 
-  const onRgbChange = (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => {
-    const value = data.value ?? parseFloat(data.displayValue ?? '');
-
-    if (value === null || Number.isNaN(value) || !NUMBER_REGEX.test(value.toString())) {
-      return;
-    }
-
-    let colorKey = (event.target as HTMLInputElement).name as RgbKey;
-    if (!colorKey) {
-      colorKey = (event.currentTarget.parentElement?.querySelector('input') as HTMLInputElement)?.name as RgbKey;
-    }
-
-    const newColor = tinycolor({ ...rgb, [colorKey]: value });
+  const onRgbChange: InputRgbFieldProps['onChange'] = (_, data) => {
+    const newColor = tinycolor({ ...rgb, [data.name]: data.value });
     if (newColor.isValid) {
       setColor(newColor.toHsv());
       setHex(newColor.toHex());
@@ -181,19 +170,31 @@ const InputHexField = ({
   );
 };
 
-const InputRgbField = ({
-  value,
-  onChange,
-  label,
-  name,
-}: {
+interface InputRgbFieldProps {
   value: number;
   label: string;
   name: RgbKey;
-  onChange?: SpinButtonProps['onChange'];
-}) => {
+  onChange?: (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData & { name: string }) => void;
+}
+
+const InputRgbField = ({ value, onChange, label, name }: InputRgbFieldProps) => {
   const id = useId(`${label.toLowerCase()}-input`);
   const styles = useStyles();
+
+  const handleChange = React.useCallback(
+    (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => {
+      const val = data.value ?? parseFloat(data.displayValue ?? '');
+
+      if (val === null || Number.isNaN(val) || !NUMBER_REGEX.test(val.toString())) {
+        return;
+      }
+
+      if (onChange) {
+        onChange(event, { ...data, value: val, name });
+      }
+    },
+    [name, onChange],
+  );
 
   return (
     <div className={styles.colorFieldWrapper}>
@@ -204,7 +205,7 @@ const InputRgbField = ({
         max={255}
         value={value}
         id={id}
-        onChange={onChange}
+        onChange={handleChange}
         name={name}
       />
     </div>
