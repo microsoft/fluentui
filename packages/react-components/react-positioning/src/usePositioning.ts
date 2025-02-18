@@ -33,7 +33,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
   'use no memo';
 
   const managerRef = React.useRef<PositionManager | null>(null);
-  const targetRef = React.useRef<TargetElement | null>(null);
+  const targetRef = React.useRef<TargetElement | null>(options.target ?? null);
   const overrideTargetRef = React.useRef<TargetElement | null>(null);
   const containerRef = React.useRef<HTMLElement | null>(null);
   const arrowRef = React.useRef<HTMLElement | null>(null);
@@ -131,7 +131,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     }, []);
   }
 
-  const setTarget = useCallbackRef<TargetElement>(null, target => {
+  const setTarget = useCallbackRef<TargetElement>(targetRef.current, target => {
     if (targetRef.current !== target) {
       targetRef.current = target;
       updatePositionManager();
