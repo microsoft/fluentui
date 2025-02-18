@@ -63,6 +63,13 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     updatePositionManager();
   });
 
+  const setTarget = useCallbackRef<TargetElement>(targetRef.current, target => {
+    if (targetRef.current !== target) {
+      targetRef.current = target;
+      updatePositionManager();
+    }
+  });
+
   React.useImperativeHandle(
     options.positioningRef,
     () => ({
@@ -77,9 +84,11 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
         }
 
         setOverrideTarget(target);
+        // Ensure the target ref is kept up to date.
+        setTarget.current = target;
       },
     }),
-    [options.target, setOverrideTarget],
+    [setTarget, options.target, setOverrideTarget],
   );
 
   useIsomorphicLayoutEffect(() => {
@@ -130,13 +139,6 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
       // TODO: Should be rework to handle options.enabled and contentRef updates
     }, []);
   }
-
-  const setTarget = useCallbackRef<TargetElement>(targetRef.current, target => {
-    if (targetRef.current !== target) {
-      targetRef.current = target;
-      updatePositionManager();
-    }
-  });
 
   const onPositioningEnd = useEventCallback(() => options.onPositioningEnd?.());
   const setContainer = useCallbackRef<HTMLElement | null>(null, container => {
