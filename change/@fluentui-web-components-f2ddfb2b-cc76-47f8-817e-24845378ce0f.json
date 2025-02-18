@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "docs: add v2 to v3 migration docs",
+  "packageName": "@fluentui/web-components",
+  "email": "rupertdavid@microsoft.com",
+  "dependentChangeType": "none"
+}
