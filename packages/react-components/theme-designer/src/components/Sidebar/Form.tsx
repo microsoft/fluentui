@@ -17,7 +17,6 @@ import {
   Subtitle2Stronger
 } from '@fluentui/react-components';
 import { defaultThemePlaceholderName } from '../../Context/ThemeDesignerContext';
-// import { AccessibilityPanel } from './AccessibilityPanel';
 import { useDebounce } from '../../utils/useDebounce';
 
 const useStyles = makeStyles({
@@ -87,14 +86,8 @@ export const Form: React.FC = () => {
   const {
     dispatch,
     state: { themeName, keyColorHex },
-    // - unused values from a11y panel.
-    // isDark, darkThemeOverrides, lightThemeOverrides, brand,
   } = useThemeDesigner();
   const themeNameInputId = useId('themeNameInputId');
-
-  // const handleIsDarkChange = () => {
-  //   dispatch({ type: 'isDark', payload: !isDark });
-  // };
 
   const [keyColor, setKeyColor] = React.useState<string>(keyColorHex);
   const [hueTorsion, setHueTorsion] = React.useState<number>(0);
@@ -163,31 +156,30 @@ export const Form: React.FC = () => {
         </Subtitle2Stronger>
       </div>
       <Accordion defaultOpenItems={['1']} collapsible>
-        {/* `multiple` allows for toggle of collapse as well as open multiple panels */}
         <AccordionItem value="1">
-            <AccordionHeader size="large">Step 1 - Color settings</AccordionHeader>
+          <AccordionHeader size="large">Step 1 - Color settings</AccordionHeader>
           <AccordionPanel className={styles.accordionContainer}>
             <Text as="h6">Use the Color Picker to select a color or enter a hex value in the text box below to generate a theme. Adjust the Hue Torsion and Vibrancy using the sliders below for further refinement.</Text>
             <div className={styles.inputs}>
               <div className={styles.labels}>
-              <Field label="Key color value">
-                <Input
-                  appearance="outline"
-                  value={keyColor}
-                  onChange={handleKeyColorChange}
-                  maxLength={7}
-                  onBlur={handleKeyColorBlur}
-                  style={{ width: '100px' }}
-                  />
-                </Field>
-                <Field label="Color Picker">
-                  <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
-                  <input
-                    className={styles.color}
-                    type="color"
-                    id={sidebarId + 'keyColor Color'}
+                <Field label="Key color value">
+                  <Input
+                    appearance="outline"
+                    value={keyColor}
                     onChange={handleKeyColorChange}
-                  />
+                    maxLength={7}
+                    onBlur={handleKeyColorBlur}
+                    style={{ width: '100px' }}
+                    />
+                  </Field>
+                  <Field label="Color Picker">
+                    <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
+                      <input
+                        className={styles.color}
+                        type="color"
+                        id={sidebarId + 'keyColor Color'}
+                        onChange={handleKeyColorChange}
+                      />
                   </div>
                 </Field>
               </div>
@@ -241,9 +233,7 @@ export const Form: React.FC = () => {
                 />
               </Field>
             </div>
-            <Button size="small" appearance="primary" onClick={showExportButton}>
-              Export
-            </Button>
+            <Button size="small" appearance="primary" onClick={showExportButton}>Export</Button>
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
