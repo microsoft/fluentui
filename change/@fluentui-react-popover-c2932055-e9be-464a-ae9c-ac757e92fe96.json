@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "useActivateModal() hook to activate modals without moving focus.",
+  "packageName": "@fluentui/react-popover",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}
