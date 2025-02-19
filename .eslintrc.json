@@ -1,4 +1,12 @@
+// Default eslintrc for packages without one, or files outside a package
+// NOTE:
+//  - this is very old config (v8/v0 active era) - we don't use it anywhere
+//  - if nx migration adds any kind of overrides undo these changes as our config setup is not compatible with extending package from root
+// TODO:
+//  - this needs to be re-done when doing whole lint re-structuring within monorepo
+//  - will be used to follow standard NX linting approach
 {
+  "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -19,12 +27,5 @@
     "**/node_modules",
     "**/temp",
     "**/*.scss.ts"
-  ],
-  "overrides": [
-    {
-      "files": "*.json",
-      "parser": "jsonc-eslint-parser",
-      "rules": {}
-    }
   ]
 }
