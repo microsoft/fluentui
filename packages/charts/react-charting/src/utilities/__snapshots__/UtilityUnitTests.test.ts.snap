@@ -3850,6 +3850,15 @@ Array [
 ]
 `;
 
+exports[`prepareDatapoints for rounded tick value cases should return an array with rounded data points when yMax is almost power of 10 1`] = `
+Array [
+  -500,
+  0,
+  500,
+  1000,
+]
+`;
+
 exports[`prepareDatapoints for rounded tick value cases should return an array with rounded data points with large numbers in dataset 1`] = `
 Array [
   -10000000,
