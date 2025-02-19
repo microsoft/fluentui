@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { useStrictMode } from '../knobs/useStrictMode';
+import type { Decorator } from '@storybook/react';
 
-const StrictModeWrapper: React.FunctionComponent<{}> = props => {
-  const strictMode = useStrictMode();
-  return strictMode ? <React.StrictMode>{props.children}</React.StrictMode> : <>{props.children}</>;
+const StrictModeWrapper: React.FunctionComponent<{ strictMode: boolean }> = props => {
+  return props.strictMode ? <React.StrictMode>{props.children}</React.StrictMode> : <>{props.children}</>;
 };
 
-export const withStrictMode = (storyFn: () => React.ReactNode) => {
-  return <StrictModeWrapper>{storyFn()}</StrictModeWrapper>;
+export const withStrictMode: Decorator = (storyFn, context) => {
+  const strictMode = context.globals.strictMode === 'on';
+
+  return <StrictModeWrapper strictMode={strictMode}>{storyFn()}</StrictModeWrapper>;
 };

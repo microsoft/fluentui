@@ -1,0 +1,29 @@
+{
+  "executors": {
+    "build": {
+      "implementation": "./src/executors/build/executor",
+      "schema": "./src/executors/build/schema.json",
+      "description": "build executor"
+    },
+    "type-check": {
+      "implementation": "./src/executors/type-check/executor",
+      "schema": "./src/executors/type-check/schema.json",
+      "description": "type-check executor - Type check project files via TypeScript"
+    },
+    "generate-api": {
+      "implementation": "./src/executors/generate-api/executor",
+      "schema": "./src/executors/generate-api/schema.json",
+      "description": "generate-api executor"
+    },
+    "verify-packaging": {
+      "implementation": "./src/executors/verify-packaging/executor",
+      "schema": "./src/executors/verify-packaging/schema.json",
+      "description": "verify-packaging executor"
+    },
+    "clean": {
+      "implementation": "./src/executors/clean/executor",
+      "schema": "./src/executors/clean/schema.json",
+      "description": "clean executor - remove build artifacts."
+    }
+  }
+}

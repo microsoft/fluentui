@@ -1,193 +1,127 @@
-import { expect, test } from '@playwright/test';
-import type { Locator, Page } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
-import { Avatar } from './avatar.js';
+import { expect, test } from '../../test/playwright/index.js';
 import { AvatarAppearance, AvatarColor, AvatarSize } from './avatar.options.js';
 
-test.describe('Avatar Component', () => {
-  let page: Page;
-  let element: Locator;
-  let root: Locator;
-
-  test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
-
-    element = page.locator('fluent-avatar');
-
-    root = page.locator('#root');
-
-    await page.goto(fixtureURL('components-avatar--avatar'));
+test.describe('Avatar', () => {
+  test.use({
+    tagName: 'fluent-avatar',
   });
 
-  test.afterAll(async () => {
-    await page.close();
-  });
+  test('should have a `role` of `img`', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-  const colorAttributes = {
-    neutral: 'neutral',
-    brand: 'brand',
-    colorful: 'colorful',
-    darkRed: 'dark-red',
-    cranberry: 'cranberry',
-    red: 'red',
-    pumpkin: 'pumpkin',
-    peach: 'peach',
-    marigold: 'marigold',
-    gold: 'gold',
-    brass: 'brass',
-    brown: 'brown',
-    forest: 'forest',
-    seafoam: 'seafoam',
-    darkGreen: 'dark-green',
-    lightTeal: 'light-teal',
-    teal: 'teal',
-    steel: 'steel',
-    blue: 'blue',
-    royalBlue: 'royal-blue',
-    cornflower: 'cornflower',
-    navy: 'navy',
-    lavender: 'lavender',
-    purple: 'purple',
-    grape: 'grape',
-    lilac: 'lilac',
-    pink: 'pink',
-    magenta: 'magenta',
-    plum: 'plum',
-    beige: 'beige',
-    mink: 'mink',
-    platinum: 'platinum',
-    anchor: 'anchor',
-  };
-
-  const appearanceAttributes = {
-    ring: 'ring',
-    shadow: 'shadow',
-    ringShadow: 'ring-shadow',
-  };
-
-  const sizeAttributes = {
-    _16: 16,
-    _20: 20,
-    _24: 24,
-    _28: 28,
-    _32: 32,
-    _36: 36,
-    _40: 40,
-    _48: 48,
-    _56: 56,
-    _64: 64,
-    _72: 72,
-    _96: 96,
-    _120: 120,
-    _128: 128,
-  };
-
-  test('should render without crashing', async () => {
-    await page.waitForSelector('fluent-avatar');
-    await expect(element).toBeVisible();
-  });
-
-  test('should have a role of img', async () => {
-    await page.waitForSelector('fluent-avatar');
     await expect(element).toHaveJSProperty('elementInternals.role', 'img');
   });
 
-  test('When no name value is set, should render with custom initials based on the provided initials value', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-        <fluent-avatar initials="JD"></fluent-avatar>
-      `;
-    });
+  test('When no name value is set, should render with custom initials based on the provided initials value', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-    await expect(element).toHaveText('JD');
+    await fastPage.setTemplate({ attributes: { initials: 'JD' } });
+
+    await expect(element).toContainText('JD');
   });
 
-  test('When name value is set, should generate initials based on the provided name value', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-        <fluent-avatar name="John Doe"></fluent-avatar>
-      `;
-    });
+  test('When name value is set, should generate initials based on the provided name value', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await expect(element).toHaveText('JD');
+    await fastPage.setTemplate({ attributes: { name: 'John Doe' } });
+
+    await expect(element).toContainText('JD');
   });
 
-  test('When name value and custom initials are set, should prioritize the provided initials', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-        <fluent-avatar name="Julie Wright" initials="JJ"></fluent-avatar>
-      `;
-    });
+  test('When `name` and `initials` attributes are both set, should prioritize the provided initials', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-    await expect(element).toHaveText('JJ');
+    await fastPage.setTemplate({ attributes: { initials: 'JJ', name: 'Julie Wright' } });
+
+    await expect(element).toContainText('JJ');
   });
 
-  test('should render correctly in active state', async () => {
-    await element.evaluate((node: Avatar) => {
-      node.active = 'active';
-    });
+  test('should set the `active` property to `active` when the `active` attribute is set', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { active: 'active' } });
 
     await expect(element).toHaveJSProperty('active', 'active');
   });
 
-  test('should render correctly in inactive state', async () => {
-    await element.evaluate((node: Avatar) => {
-      node.active = 'inactive';
-    });
+  test('should set the `active` property to `inactive` when the `active` attribute is set to `inactive`', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { active: 'inactive' } });
 
     await expect(element).toHaveJSProperty('active', 'inactive');
   });
 
-  test('default color should be neutral', async () => {
-    expect(await element.evaluate((node: Avatar) => node.elementInternals.states.has('neutral'))).toBe(true);
+  test('should have a custom state of `neutral` when no color is provided', async ({ fastPage }) => {
+    await expect(fastPage.element).toHaveCustomState('neutral');
   });
 
-  test('should add a custom state of `brand` when `brand is provided as the color', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-        <fluent-avatar color-id="pumpkin" name="John Doe" color="brand"></fluent-avatar>
-      `;
-    });
+  test('should add a custom state of `brand` when `brand is provided as the color', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    expect(await element.evaluate((node: Avatar) => node.elementInternals.states.has('brand'))).toBe(true);
+    await fastPage.setTemplate({ attributes: { color: 'brand', 'color-id': 'pumpkin', name: 'John Doe' } });
+
+    await expect(element).toHaveCustomState('brand');
   });
 
-  test('should prioritize color derivation from colorId over name when set to "colorful"', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-        <fluent-avatar color-id="pumpkin" name="Steve Smith" color="colorful"></fluent-avatar>
-      `;
-    });
+  test('should prioritize color derivation from `colorId` over `name` when set to "colorful"', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    expect(await element.evaluate((node: Avatar) => node.elementInternals.states.has('pumpkin'))).toBe(true);
+    await fastPage.setTemplate({ attributes: { color: 'colorful', 'color-id': 'pumpkin', name: 'Steve Smith' } });
+
+    await expect(element).toHaveCustomState('pumpkin');
   });
 
-  for (const [, value] of Object.entries(colorAttributes)) {
-    test(`should set the color attribute to \`${value}\` on the internal control`, async () => {
-      await element.evaluate((node: Avatar, colorValue: string) => {
-        node.color = colorValue as AvatarColor;
-      }, value as string);
-      await expect(element).toHaveJSProperty('color', `${value}`);
-      await expect(element).toHaveAttribute('color', `${value}`);
-    });
-  }
-  for (const [, value] of Object.entries(sizeAttributes)) {
-    test(`should set the size attribute to \`${value}\` on the internal control`, async () => {
-      await element.evaluate((node: Avatar, sizeValue: number) => {
-        node.size = sizeValue as AvatarSize;
-      }, value as number);
-      await expect(element).toHaveJSProperty('size', value);
-      await expect(element).toHaveAttribute('size', `${value}`);
-    });
-  }
-  for (const [, value] of Object.entries(appearanceAttributes)) {
-    test(`should set and reflect the appearance attribute to \`${value}\` on the internal control`, async () => {
-      await element.evaluate((node: Avatar, appearanceValue: string) => {
-        node.appearance = appearanceValue as AvatarAppearance;
-      }, value as string);
+  test('should set the `color` property to match the `color` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-      await expect(element).toHaveJSProperty('appearance', `${value}`);
-      await expect(element).toHaveAttribute('appearance', `${value}`);
-    });
-  }
+    for (const color of Object.values(AvatarColor)) {
+      await test.step(`should set the \`color\` property to \`${color}\``, async () => {
+        await fastPage.setTemplate({ attributes: { color } });
+
+        await expect(element).toHaveAttribute('color', color);
+
+        await expect(element).toHaveJSProperty('color', color);
+
+        // eslint-disable-next-line playwright/no-conditional-in-test
+        if (color !== AvatarColor.colorful) {
+          await expect.soft(element).toHaveCustomState(color);
+        }
+      });
+    }
+  });
+
+  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    for (const size of Object.values(AvatarSize)) {
+      await test.step(`should set the \`size\` property to \`${size}\``, async () => {
+        await fastPage.setTemplate({ attributes: { size: `${size}` } });
+
+        await expect(element).toHaveAttribute('size', `${size}`);
+
+        await expect(element).toHaveJSProperty('size', size);
+      });
+    }
+  });
+
+  test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    for (const appearance of Object.values(AvatarAppearance)) {
+      await test.step(appearance, async () => {
+        await fastPage.setTemplate({ attributes: { appearance } });
+
+        await expect(element).toHaveJSProperty('appearance', appearance);
+
+        await expect(element).toHaveAttribute('appearance', appearance);
+      });
+    }
+  });
 });

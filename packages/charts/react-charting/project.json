@@ -1,0 +1,12 @@
+{
+  "name": "react-charting",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "tags": ["v8", "ships-bundle", "charting"],
+  "implicitDependencies": [],
+  "targets": {
+    "test": {
+      "dependsOn": ["^build"]
+    }
+  }
+}

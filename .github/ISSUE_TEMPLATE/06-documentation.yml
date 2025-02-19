@@ -1,0 +1,64 @@
+name: '📖 Documentation issue'
+description: Help improve our docs.
+title: '[Docs]: '
+labels: ['Area: Documentation', 'Needs: Triage :mag:']
+projects: ['microsoft/395']
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping us improve our documentation !
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which documentation site is this issue related to?
+      options:
+        - React Components (https://react.fluentui.dev)
+        - React v8 (https://developer.microsoft.com/en-us/fluentui)
+        - Web Components (https://web-components.fluentui.dev)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: documentation-issue-type
+    attributes:
+      label: What kind of documentation issue are you reporting?
+      options:
+        - label: Reporting a typo
+        - label: Reporting a documentation bug
+        - label: Documentation improvement
+        - label: Documentation feedback
+    validations:
+      required: true
+
+  - type: textarea
+    id: url-pages
+    attributes:
+      label: Is there a specific documentation page you are reporting?
+      description: |
+        Enter the URL or documentation section here.
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: |
+        - If you are reporting a bug, please provide a clear and concise description of the issue.
+        - If you are reporting a typo, please provide the correct information.
+        - If you are providing feedback, please provide a clear and concise description of the feedback.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checkboxes
+    attributes:
+      label: Validations
+      description: Before submitting the issue, please make sure you do the following
+      options:
+        - label: Check that there isn't already an issue that requests the same feature to avoid creating a duplicate.
+          required: true

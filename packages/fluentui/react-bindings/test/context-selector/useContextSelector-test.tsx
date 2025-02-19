@@ -52,28 +52,28 @@ describe('useContextSelector', () => {
     });
 
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('false');
-    expect(onUpdate).toBeCalledTimes(1);
+    expect(onUpdate).toHaveBeenCalledTimes(1);
 
     // Match => update, (v.index: 1, p.index: 1)
     act(() => {
       document.querySelector<HTMLElement>('.test-provider')?.click();
     });
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('true');
-    expect(onUpdate).toBeCalledTimes(2);
+    expect(onUpdate).toHaveBeenCalledTimes(2);
 
     // No match, but update because "active" changed, (v.index: 2, p.index: 1)
     act(() => {
       document.querySelector<HTMLElement>('.test-provider')?.click();
     });
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('false');
-    expect(onUpdate).toBeCalledTimes(3);
+    expect(onUpdate).toHaveBeenCalledTimes(3);
 
     // Match previous => no update, (v.index: 3, p.index: 1)
     act(() => {
       document.querySelector<HTMLElement>('.test-provider')?.click();
     });
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('false');
-    expect(onUpdate).toBeCalledTimes(3);
+    expect(onUpdate).toHaveBeenCalledTimes(3);
   });
 
   it('updates are propogated inside React.memo()', () => {
@@ -95,6 +95,6 @@ describe('useContextSelector', () => {
       document.querySelector<HTMLElement>('.test-provider')?.click();
     });
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('true');
-    expect(onUpdate).toBeCalledTimes(2);
+    expect(onUpdate).toHaveBeenCalledTimes(2);
   });
 });

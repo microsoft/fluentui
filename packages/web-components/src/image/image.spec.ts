@@ -1,220 +1,110 @@
-import { expect, test } from '@playwright/test';
-import type { Locator, Page } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 import type { Image } from './image.js';
+import { ImageFit, ImageShape } from './image.options.js';
 
 test.describe('Image', () => {
-  let page: Page;
-  let element: Locator;
-  let root: Locator;
-
-  test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
-    element = page.locator('fluent-image');
-    root = page.locator('#root');
-    await page.goto(fixtureURL('components-image--image'));
+  test.use({
+    tagName: 'fluent-image',
+    innerHTML: /* html */ `
+      <img alt="Short image description" src="/300x100.png" />
+    `,
   });
 
-  test.afterAll(async () => {
-    await page.close();
-  });
+  test('should set the `block` property to match the `block` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-  test('should initialize to the `block` attribute when provided', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-        <fluent-image block>
-          <img alt="Short image description" src="https://picsum.photos/300/100">
-        </fluent-image>
-      `;
-    });
+    await fastPage.setTemplate({ attributes: { block: true } });
+
+    await expect(element).toHaveAttribute('block');
 
     await expect(element).toHaveJSProperty('block', true);
 
+    await expect(element).toHaveCustomState('block');
+
     await element.evaluate((node: Image) => {
       node.block = false;
     });
+
+    await expect(element).not.toHaveAttribute('block');
+
     await expect(element).not.toHaveJSProperty('block', true);
+
+    await expect(element).not.toHaveCustomState('block');
   });
 
-  test('should add a custom state of `block` when a value of true is provided', async () => {
-    await element.evaluate((node: Image) => {
-      node.block = true;
-    });
+  test('should set the `bordered` property to match the `bordered` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('block'))).toBe(true);
+    await fastPage.setTemplate({ attributes: { bordered: true } });
 
-    await element.evaluate((node: Image) => {
-      node.block = false;
-    });
-
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('block'))).toBe(false);
-  });
-
-  test('should initialize to the `bordered` attribute', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-        <fluent-image bordered>
-          <img alt="Short image description" src="https://picsum.photos/300/100">
-        </fluent-image>
-      `;
-    });
+    await expect(element).toHaveAttribute('bordered');
 
     await expect(element).toHaveJSProperty('bordered', true);
 
-    await element.evaluate((node: Image) => {
-      node.bordered = undefined;
-    });
-    await expect(element).not.toHaveJSProperty('bordered', true);
-  });
-
-  test('should add a custom state of `bordered` when a value of true is provided', async () => {
-    await element.evaluate((node: Image) => {
-      node.bordered = true;
-    });
-
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('bordered'))).toBe(true);
+    await expect(element).toHaveCustomState('bordered');
 
     await element.evaluate((node: Image) => {
       node.bordered = false;
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('bordered'))).toBe(false);
+    await expect(element).not.toHaveAttribute('bordered');
+
+    await expect(element).toHaveJSProperty('bordered', false);
+
+    await expect(element).not.toHaveCustomState('bordered');
   });
 
-  test('should initialize to the `shadow` attribute', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-        <fluent-image shadow>
-          <img alt="Short image description" src="https://picsum.photos/300/100">
-        </fluent-image>
-      `;
-    });
+  test('should set the `shadow` property to match the `shadow` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { shadow: true } });
+
+    await expect(element).toHaveAttribute('shadow');
 
     await expect(element).toHaveJSProperty('shadow', true);
 
-    await element.evaluate((node: Image) => {
-      node.shadow = undefined;
-    });
-    await expect(element).not.toHaveJSProperty('shadow', true);
-  });
-
-  test('should add a custom state of `shadow` when a value of true is provided', async () => {
-    await element.evaluate((node: Image) => {
-      node.shadow = true;
-    });
-
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('shadow'))).toBe(true);
+    await expect(element).toHaveCustomState('shadow');
 
     await element.evaluate((node: Image) => {
       node.shadow = false;
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('shadow'))).toBe(false);
+    await expect(element).not.toHaveAttribute('shadow');
+
+    await expect(element).toHaveJSProperty('shadow', false);
+
+    await expect(element).not.toHaveCustomState('shadow');
   });
 
-  test('should initialize to the `fit` attribute', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-        <fluent-image fit="default">
-          <img alt="Short image description" src="https://picsum.photos/300/100">
-        </fluent-image>
-      `;
-    });
+  test('should set the `fit` property to match the `fit` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await expect(element).toHaveJSProperty('fit', 'default');
+    for (const fit of Object.values(ImageFit)) {
+      await test.step(`should set the \`fit\` property to "${fit}"`, async () => {
+        await fastPage.setTemplate({ attributes: { fit } });
 
-    await element.evaluate((node: Image) => {
-      node.fit = 'none';
-    });
-    await expect(element).toHaveJSProperty('fit', 'none');
+        await expect(element).toHaveAttribute('fit', fit);
 
-    await element.evaluate((node: Image) => {
-      node.fit = 'center';
-    });
-    await expect(element).toHaveJSProperty('fit', 'center');
+        await expect(element).toHaveJSProperty('fit', fit);
 
-    await element.evaluate((node: Image) => {
-      node.fit = 'contain';
-    });
-    await expect(element).toHaveJSProperty('fit', 'contain');
-
-    await element.evaluate((node: Image) => {
-      node.fit = 'cover';
-    });
-    await expect(element).toHaveJSProperty('fit', 'cover');
+        await expect(element).toHaveCustomState(`fit-${fit}`);
+      });
+    }
   });
 
-  test('should add a custom state matching the `fit` attribute when provided', async () => {
-    await element.evaluate((node: Image) => {
-      node.fit = 'contain';
-    });
+  test('should set the `shape` property to match the `shape` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('fit-contain'))).toBe(true);
+    for (const shape of Object.values(ImageShape)) {
+      await test.step(`should set the \`shape\` property to "${shape}"`, async () => {
+        await fastPage.setTemplate({ attributes: { shape } });
 
-    await element.evaluate((node: Image) => {
-      node.fit = 'none';
-    });
+        await expect(element).toHaveAttribute('shape', shape);
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('fit-contain'))).toBe(false);
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('fit-none'))).toBe(true);
+        await expect(element).toHaveJSProperty('shape', shape);
 
-    await element.evaluate((node: Image) => {
-      node.fit = 'cover';
-    });
-
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('fit-none'))).toBe(false);
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('fit-cover'))).toBe(true);
-  });
-
-  test('should initialize to the `shape` attribute', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-        <fluent-image shape="circular">
-          <img alt="Short image description" src="https://picsum.photos/300/100">
-        </fluent-image>
-      `;
-    });
-
-    await expect(element).toHaveJSProperty('shape', 'circular');
-
-    await element.evaluate((node: Image) => {
-      node.shape = 'rounded';
-    });
-    await expect(element).toHaveJSProperty('shape', 'rounded');
-
-    await element.evaluate((node: Image) => {
-      node.shape = 'square';
-    });
-    await expect(element).toHaveJSProperty('shape', 'square');
-  });
-
-  test('should add a custom state matching the `shape` attribute when provided', async () => {
-    await element.evaluate((node: Image) => {
-      node.shape = 'circular';
-    });
-
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('circular'))).toBe(true);
-
-    await element.evaluate((node: Image) => {
-      node.shape = 'rounded';
-    });
-
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('circular'))).toBe(false);
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('rounded'))).toBe(true);
-
-    await element.evaluate((node: Image) => {
-      node.shape = 'square';
-    });
-
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('rounded'))).toBe(false);
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('square'))).toBe(true);
-
-    await element.evaluate((node: Image) => {
-      node.shape = undefined;
-    });
-
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('rounded'))).toBe(false);
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('square'))).toBe(false);
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('circular'))).toBe(false);
+        await expect(element).toHaveCustomState(shape);
+      });
+    }
   });
 });

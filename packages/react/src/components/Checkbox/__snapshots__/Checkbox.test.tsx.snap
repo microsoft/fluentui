@@ -145,6 +145,7 @@ exports[`Checkbox renders checked correctly 1`] = `
                 font-weight: normal;
                 opacity: 1;
                 speak: none;
+                text-decoration: inherit;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
@@ -337,6 +338,7 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
                 font-weight: normal;
                 opacity: 0;
                 speak: none;
+                text-decoration: inherit;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
@@ -502,6 +504,7 @@ exports[`Checkbox renders unchecked correctly 1`] = `
                 font-weight: normal;
                 opacity: 0;
                 speak: none;
+                text-decoration: inherit;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;

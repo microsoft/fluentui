@@ -1,4 +1,4 @@
-import { TreeNavigationData_unstable } from '../components/Tree/Tree.types';
+import { TreeNavigationData_unstable, TreeNavigationMode } from '../components/Tree/Tree.types';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
 import { treeDataTypes } from '../utils/tokens';
 import { useRovingTabIndex } from './useRovingTabIndexes';
@@ -6,14 +6,17 @@ import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
 import * as React from 'react';
 import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
 import { useMergedRefs } from '@fluentui/react-utilities';
+import { treeItemLayoutClassNames } from '../TreeItemLayout';
+import { useFocusFinders } from '@fluentui/react-tabster';
 
 /**
  * @internal
  */
-export function useTreeNavigation() {
+export function useTreeNavigation(navigationMode: TreeNavigationMode = 'tree') {
   'use no memo';
 
-  const { rove, initialize: initializeRovingTabIndex } = useRovingTabIndex();
+  const { rove, initialize: initializeRovingTabIndex, forceUpdate: forceUpdateRovingTabIndex } = useRovingTabIndex();
+  const { findFirstFocusable } = useFocusFinders();
   const { walkerRef, rootRef: walkerRootRef } = useHTMLElementWalkerRef();
 
   const rootRefCallback: React.RefCallback<HTMLElement> = React.useCallback(
@@ -35,10 +38,22 @@ export function useTreeNavigation() {
       case treeDataTypes.TypeAhead:
         walkerRef.current.currentElement = data.target;
         return nextTypeAheadElement(walkerRef.current, data.event.key);
-      case treeDataTypes.ArrowLeft:
+      case treeDataTypes.ArrowLeft: {
+        const actions = queryActions(data.target);
+        if (navigationMode === 'treegrid' && actions?.contains(data.target.ownerDocument.activeElement)) {
+          return data.target;
+        }
         walkerRef.current.currentElement = data.target;
         return walkerRef.current.parentElement();
+      }
       case treeDataTypes.ArrowRight:
+        if (navigationMode === 'treegrid') {
+          const actions = queryActions(data.target);
+          if (actions) {
+            findFirstFocusable(actions)?.focus();
+          }
+          return null;
+        }
         walkerRef.current.currentElement = data.target;
         return walkerRef.current.firstChild();
       case treeDataTypes.End:
@@ -64,6 +79,7 @@ export function useTreeNavigation() {
   return {
     navigate,
     treeRef: useMergedRefs(walkerRootRef, rootRefCallback) as React.RefCallback<HTMLElement>,
+    forceUpdateRovingTabIndex,
   } as const;
 }
 
@@ -75,3 +91,8 @@ function lastChildRecursive(walker: HTMLElementWalker) {
   }
   return lastElement;
 }
+
+const queryActions = (target: HTMLElement) =>
+  target.querySelector<HTMLElement>(
+    `:scope > .${treeItemLayoutClassNames.root} > .${treeItemLayoutClassNames.actions}`,
+  );

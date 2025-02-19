@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-jsx-runtime",
-  "version": "9.0.42",
+  "version": "9.0.50",
   "description": "Custom JSX runtime for @fluentui/react-components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -11,27 +11,14 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
-    "generate-api": "just-scripts copy && just-scripts generate-api",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
-    "bundle-size": "monosize measure"
-  },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "^9.18.13",
+    "@fluentui/react-utilities": "^9.18.20",
     "react-is": "^17.0.2",
     "@swc/helpers": "^0.5.1"
   },

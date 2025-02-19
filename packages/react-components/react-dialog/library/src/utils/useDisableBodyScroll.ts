@@ -1,5 +1,5 @@
+import * as React from 'react';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { useCallback } from 'react';
 
 import { useBodyNoScrollStyles, useHTMLNoScrollStyles } from './useDisableBodyScroll.styles';
 
@@ -15,12 +15,14 @@ export function useDisableBodyScroll(): {
   const bodyNoScrollStyles = useBodyNoScrollStyles();
   const { targetDocument } = useFluent_unstable();
 
-  const disableBodyScroll = useCallback(() => {
+  const disableBodyScroll = React.useCallback(() => {
     if (!targetDocument) {
       return;
     }
     const isHorizontalScrollbarVisible =
-      targetDocument.body.clientHeight > (targetDocument.defaultView?.innerHeight ?? 0);
+      // When the window is a fractional height, `innerHeight` always rounds down but `clientHeight` rounds either up or down depending on the value.
+      // To properly compare the body clientHeight to the window innerHeight, manually round down the fractional value to match innerHeight's calculation.
+      Math.floor(targetDocument.body.getBoundingClientRect().height) > (targetDocument.defaultView?.innerHeight ?? 0);
     if (!isHorizontalScrollbarVisible) {
       return;
     }
@@ -29,7 +31,7 @@ export function useDisableBodyScroll(): {
     return;
   }, [targetDocument, htmlNoScrollStyles, bodyNoScrollStyles]);
 
-  const enableBodyScroll = useCallback(() => {
+  const enableBodyScroll = React.useCallback(() => {
     if (!targetDocument) {
       return;
     }

@@ -20,7 +20,7 @@ import {
   ITextStyles,
 } from '@fluentui/react';
 
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 
 export type FilledSectionKey = '0' | '1' | '2' | '3';
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Slider } from '@fluentui/react-northstar';
 import { focusSliderSteps, rightArrowSteps, upArrowSteps } from './commonStoryWrightSteps';
 import { getThemeStoryVariant } from '../utilities';
@@ -14,7 +14,7 @@ export default {
     story => <StoryWright steps={rightArrowSteps}>{story()}</StoryWright>,
     story => <StoryWright steps={upArrowSteps}>{story()}</StoryWright>,
   ],
-} as ComponentMeta<typeof Slider>;
+} as Meta<typeof Slider>;
 
 const SliderExampleRtlTeams = getThemeStoryVariant(SliderExampleRtl, 'teamsV2');
 

@@ -6,6 +6,8 @@ import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn }
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { TooltipHost } from '@fluentui/react';
+import { Text } from '@fluentui/react/lib/Text';
+import { Link } from '@fluentui/react/lib/Link';
 
 const classNames = mergeStyleSets({
   fileIconHeaderIcon: {
@@ -114,6 +116,14 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         sortDescendingAriaLabel: 'Sorted Z to A',
         onColumnClick: this._onColumnClick,
         data: 'string',
+        onRender: (item: IDocument) => {
+          return (
+            // eslint-disable-next-line react/jsx-no-bind
+            <Link onClick={() => this._onItemInvoked(item)} underline>
+              {item.name}
+            </Link>
+          );
+        },
         isPadded: true,
       },
       {
@@ -185,6 +195,10 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
 
     return (
       <div>
+        <Text>
+          Note: While focusing a row, pressing enter or double clicking will execute onItemInvoked, which in this
+          example will show an alert.
+        </Text>
         <div className={classNames.controlWrapper}>
           <Toggle
             label="Enable compact mode"

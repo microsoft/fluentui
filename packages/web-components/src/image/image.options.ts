@@ -9,7 +9,6 @@ export const ImageFit = {
   center: 'center',
   contain: 'contain',
   cover: 'cover',
-  default: 'default',
 } as const;
 /**
  * Types for image fit

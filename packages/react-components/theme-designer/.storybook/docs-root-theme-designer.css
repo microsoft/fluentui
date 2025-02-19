@@ -1,8 +1,8 @@
-#docs-root .sbdocs-wrapper {
+#storybook-docs .sbdocs-wrapper {
   padding: 0;
 }
 
-#docs-root .sbdocs-content {
+#storybook-docs .sbdocs-content {
   max-width: none;
   font-family: none;
 }

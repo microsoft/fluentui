@@ -118,15 +118,13 @@ extends:
                 displayName: bundle
 
               - script: |
-                  ls -la packages/react/dist
-                  ls -la packages/react/lib
-                  ls -la packages/react/lib-commonjs
-                  ls -la packages/react/lib-amd
-                displayName: verify packaged react assets
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t verify-packaging -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: verify packaged assets
 
               - script: |
                   yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-v8.config.js --message 'release: applying package updates - react v8'
                   git reset --hard origin/master
+                condition: eq(variables.dryRun, false)
                 env:
                   GITHUB_PAT: $(githubPAT)
                 displayName: Publish changes and bump versions
@@ -157,10 +155,15 @@ extends:
                   node ./packages/public-docsite-setup/scripts/generateHomepage ./homepage
                 displayName: 'Generate homepage.htm'
 
+              - template: .devops/templates/publish-website.yml@self
+                parameters:
+                  version: 8
+
               # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
               # failure doesn't need to block anything else
               - script: |
                   node -r ./scripts/ts-node/src/register ./scripts/update-release-notes/src/index.ts --token=$(githubPAT) --apply --debug
+                condition: eq(variables.dryRun, false)
                 displayName: 'Update github release notes'
 
               - template: .devops/templates/cleanup.yml@self

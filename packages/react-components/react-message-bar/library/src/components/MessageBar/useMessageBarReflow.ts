@@ -7,7 +7,7 @@ export function useMessageBarReflow(enabled: boolean = false) {
   const forceUpdate = React.useReducer(() => ({}), {})[1];
   const reflowingRef = React.useRef(false);
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-  // eslint-disable-next-line no-restricted-globals
+
   const resizeObserverRef = React.useRef<ResizeObserver | null>(null);
   const prevInlineSizeRef = React.useRef(-1);
 
@@ -27,12 +27,13 @@ export function useMessageBarReflow(enabled: boolean = false) {
       }
 
       const entry = entries[0];
-      const borderBoxSize = entry?.borderBoxSize[0];
-      if (!borderBoxSize || !entry) {
+      // `borderBoxSize` is not supported before Chrome 84, Firefox 92, nor Safari 15.4
+      const inlineSize = entry?.borderBoxSize?.[0]?.inlineSize ?? entry?.target.getBoundingClientRect().width;
+
+      if (inlineSize === undefined || !entry) {
         return;
       }
 
-      const { inlineSize } = borderBoxSize;
       const { target } = entry;
 
       if (!isHTMLElement(target)) {

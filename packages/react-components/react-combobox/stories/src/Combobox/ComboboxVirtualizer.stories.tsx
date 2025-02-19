@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Combobox, Option, makeStyles, useId } from '@fluentui/react-components';
+import { Combobox, Option, makeStyles, useId, useMergedRefs, useTimeout } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
 import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
@@ -17,15 +17,25 @@ const useStyles = makeStyles({
 export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
   const comboId = useId('combobox');
 
-  const itemHeight = 32; //This should match the height of each item in the listbox
+  //This should include the item height (32px) and account for rowGap (2px)
+  const itemHeight = 32;
+  const rowGap = 2;
   const numberOfItems = 10000;
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: itemHeight,
     direction: 'vertical',
+    // We want at least 10 additional items on each side of visible items for page up/down (+ 1 buffer)
+    bufferItems: 11,
+    // We need to recalculate index when at least 10 items (+1px) from the bottom or top for page up/down
+    bufferSize: itemHeight * 10 + 1,
   });
+  const selectedIndex = React.useRef(0);
 
   const styles = useStyles();
+  const mergedRefs = useMergedRefs(scrollRef);
+  // Scroll timer required to post scrollTo on stack post-open state change
+  const [setScrollTimer, clearScrollTimer] = useTimeout();
 
   return (
     <div>
@@ -35,7 +45,20 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
           id={`${comboId}`}
           placeholder="Select a number"
           positioning={{ autoSize: 'width' }}
-          listbox={{ ref: scrollRef, className: styles.listbox }}
+          listbox={{ ref: mergedRefs, className: styles.listbox }}
+          onOpenChange={(e, data) => {
+            clearScrollTimer();
+            if (data.open) {
+              setScrollTimer(() => {
+                mergedRefs.current?.scrollTo({ top: (itemHeight + rowGap) * selectedIndex.current });
+              }, 0);
+            }
+          }}
+          onOptionSelect={(e, data) => {
+            if (data.optionValue) {
+              selectedIndex.current = parseInt(data.optionValue, 10);
+            }
+          }}
         >
           <Virtualizer
             numItems={numberOfItems}
@@ -43,6 +66,8 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
             bufferItems={bufferItems}
             bufferSize={bufferSize}
             itemSize={itemHeight}
+            containerSizeRef={containerSizeRef}
+            gap={rowGap}
           >
             {index => {
               return (
@@ -51,7 +76,10 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
                   aria-posinset={index}
                   aria-setsize={numberOfItems}
                   key={`item-${index}`}
-                >{`Item ${index + 1}`}</Option>
+                  value={index.toString()}
+                >
+                  {`Item ${index + 1}`}
+                </Option>
               );
             }}
           </Virtualizer>

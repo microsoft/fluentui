@@ -8,12 +8,16 @@ import { TreeItemValue } from '../TreeItem';
 import { dataTreeItemValueAttrName } from '../utils/getTreeItemValueFromElement';
 import * as React from 'react';
 import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
+import { TreeNavigationMode } from '../components/Tree/Tree.types';
+import { useFocusFinders } from '@fluentui/react-tabster';
+import { treeItemLayoutClassNames } from '../TreeItemLayout';
 
-export function useFlatTreeNavigation() {
+export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree') {
   'use no memo';
 
   const { walkerRef, rootRef: walkerRootRef } = useHTMLElementWalkerRef();
-  const { rove, initialize: initializeRovingTabIndex } = useRovingTabIndex();
+  const { rove, forceUpdate: forceUpdateRovingTabIndex, initialize: initializeRovingTabIndex } = useRovingTabIndex();
+  const { findFirstFocusable } = useFocusFinders();
 
   const rootRefCallback: React.RefCallback<HTMLElement> = React.useCallback(
     root => {
@@ -35,6 +39,10 @@ export function useFlatTreeNavigation() {
         walkerRef.current.currentElement = data.target;
         return nextTypeAheadElement(walkerRef.current, data.event.key);
       case treeDataTypes.ArrowLeft: {
+        const actions = queryActions(data.target);
+        if (navigationMode === 'treegrid' && actions?.contains(data.target.ownerDocument.activeElement)) {
+          return data.target;
+        }
         const nextElement = parentElement(data.parentValue, walkerRef.current);
         if (!nextElement && process.env.NODE_ENV !== 'production') {
           // eslint-disable-next-line no-console
@@ -50,6 +58,13 @@ export function useFlatTreeNavigation() {
         return nextElement;
       }
       case treeDataTypes.ArrowRight: {
+        if (navigationMode === 'treegrid') {
+          const actions = queryActions(data.target);
+          if (actions) {
+            findFirstFocusable(actions)?.focus();
+          }
+          return null;
+        }
         walkerRef.current.currentElement = data.target;
         const nextElement = firstChild(data.target, walkerRef.current);
         if (!nextElement && process.env.NODE_ENV !== 'production') {
@@ -87,7 +102,11 @@ export function useFlatTreeNavigation() {
       rove(nextElement);
     }
   });
-  return { navigate, rootRef: useMergedRefs<HTMLDivElement>(walkerRootRef, rootRefCallback) } as const;
+  return {
+    navigate,
+    rootRef: useMergedRefs<HTMLDivElement>(walkerRootRef, rootRefCallback),
+    forceUpdateRovingTabIndex,
+  } as const;
 }
 
 function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker): HTMLElement | null {
@@ -110,3 +129,8 @@ function parentElement(parentValue: TreeItemValue | undefined, treeWalker: HTMLE
   }
   return treeWalker.root.querySelector<HTMLElement>(`[${dataTreeItemValueAttrName}="${parentValue}"]`);
 }
+
+const queryActions = (target: HTMLElement) =>
+  target.querySelector<HTMLElement>(
+    `:scope > .${treeItemLayoutClassNames.root} > .${treeItemLayoutClassNames.actions}`,
+  );

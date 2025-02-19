@@ -1,0 +1,123 @@
+{
+  "name": "@fluentui/chart-web-components",
+  "entries": [
+    {
+      "date": "Thu, 13 Feb 2025 04:06:52 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.4",
+      "version": "0.0.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.80",
+            "commit": "cf102ebd054c8a477dba152d4bcad6864c9bb9af"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Feb 2025 04:07:31 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.3",
+      "version": "0.0.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "5b5091795bd462fe78f1545fd91b21ef6510a45d",
+            "comment": "chore: add new 'charting' domain tag"
+          }
+        ],
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "f0f16ea9d7e407f87e4f144a40be8a3c4f2b6369",
+            "comment": "BREAKING: rename api report file name according to api-extractor change"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2025 04:07:36 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.2",
+      "version": "0.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.79",
+            "commit": "da4d05c54ebaae0927060601929213cdc1a5f9eb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Feb 2025 04:07:18 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.1",
+      "version": "0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.78",
+            "commit": "da62e83423063b6ab3ed62e62bcb965f37cf5700"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2025 04:07:40 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.0",
+      "version": "0.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "408fe44060b746844a9c76c67391b18d76d1f26e",
+            "comment": "chore: sync failed release pipeline with git"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.77",
+            "commit": "24bd1b2e8063db6c121ee02425db564fbb762f5a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Jan 2025 14:42:14 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.0-alpha.2",
+      "version": "0.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "5964b11d0ac272f2ae10e1081b8f0d1e17497eef",
+            "comment": "Create chart web components. Includes donut chart and horizontal bar chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/tokens to v1.0.0-alpha.21",
+            "commit": "8cf401d626def27ad679f9e53928533df9f9ef52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.76",
+            "commit": "8cf401d626def27ad679f9e53928533df9f9ef52"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -75,6 +75,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
             font-weight: normal;
             opacity: 1;
             speak: none;
+            text-decoration: inherit;
             transition: opacity 0.167s 0s;
           }
       data-icon-name="Search"
@@ -208,6 +209,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
             font-weight: normal;
             opacity: 1;
             speak: none;
+            text-decoration: inherit;
           }
       data-icon-name="Search"
     >

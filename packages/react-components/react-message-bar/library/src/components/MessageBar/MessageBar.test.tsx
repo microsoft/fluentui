@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { MessageBar } from './MessageBar';
-import { AnnounceProvider_unstable } from '@fluentui/react-shared-contexts';
+import { AnnounceProvider } from '@fluentui/react-shared-contexts';
 import { MessageBarBody } from '../MessageBarBody/MessageBarBody';
 import { MessageBarTitle } from '../MessageBarTitle/MessageBarTitle';
 import { MessageBarActions } from '../MessageBarActions/MessageBarActions';
@@ -57,13 +57,13 @@ describe('MessageBar', () => {
   ])('should announce %s with %s intent', (politeness, intent) => {
     const announce = jest.fn();
     render(
-      <AnnounceProvider_unstable value={{ announce }}>
+      <AnnounceProvider value={{ announce }}>
         <MessageBar intent={intent}>
           <MessageBarBody>
             <MessageBarTitle>Title</MessageBarTitle>Body
           </MessageBarBody>
         </MessageBar>
-      </AnnounceProvider_unstable>,
+      </AnnounceProvider>,
     );
 
     expect(announce).toHaveBeenCalledTimes(1);
@@ -76,7 +76,7 @@ describe('MessageBar', () => {
   it('should announce actions', () => {
     const announce = jest.fn();
     render(
-      <AnnounceProvider_unstable value={{ announce }}>
+      <AnnounceProvider value={{ announce }}>
         <MessageBar>
           <MessageBarBody>
             <MessageBarTitle>Title</MessageBarTitle>Body
@@ -86,7 +86,7 @@ describe('MessageBar', () => {
             <button>Action 2</button>
           </MessageBarActions>
         </MessageBar>
-      </AnnounceProvider_unstable>,
+      </AnnounceProvider>,
     );
 
     expect(announce).toHaveBeenCalledTimes(1);

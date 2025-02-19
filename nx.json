@@ -4,11 +4,6 @@
     "libsDir": "packages",
     "appsDir": "apps"
   },
-  "pluginsConfig": {
-    "@nx/js": {
-      "analyzeSourceFiles": false
-    }
-  },
   "targetDefaults": {
     "bundle-size": {
       "dependsOn": ["build"],
@@ -41,12 +36,15 @@
       "cache": true
     },
     "test": {
-      "dependsOn": ["^build"],
+      "dependsOn": [],
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
-      "cache": true
+      "cache": true,
+      "options": {
+        "passWithNoTests": true
+      }
     },
     "test-integration": {
-      "dependsOn": ["build"],
+      "dependsOn": ["build", "^build"],
       "cache": true
     },
     "test-ssr": {
@@ -73,7 +71,27 @@
         "{workspaceRoot}/.eslintrc.json",
         "{workspaceRoot}/.eslintignore",
         "{workspaceRoot}/eslint.config.js"
-      ]
+      ],
+      "options": {
+        "command": "eslint src"
+      }
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier --write {projectRoot}"
+      },
+      "metadata": {
+        "help": {
+          "command": "yarn prettier --help",
+          "options": {}
+        }
+      },
+      "configurations": {
+        "check": {
+          "command": "prettier --check {projectRoot}"
+        }
+      }
     },
     "verify-packaging": {
       "dependsOn": ["build"],
@@ -94,7 +112,7 @@
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": ["{projectRoot}/**/*", "sharedGlobals", "{workspaceRoot}/.github/workflows/pr.yml"],
     "sharedGlobals": [],
     "production": [
       "default",
@@ -116,5 +134,26 @@
   },
   "parallel": 3,
   "useInferencePlugins": false,
-  "defaultBase": "master"
+  "defaultBase": "master",
+  "plugins": [
+    {
+      "plugin": "./tools/workspace-plugin/src/plugins/workspace-plugin.ts",
+      "options": {
+        "testSSR": {
+          "exclude": ["react-theme-stories", "react-migration-v8-v9-stories", "react-migration-v0-v9-stories"]
+        },
+        "verifyPackaging": {
+          "include": ["react-text", "react-components"]
+        }
+      },
+      "include": [
+        "tools/**/*",
+        "scripts/**/*",
+        "packages/eslint-plugin/**",
+        "packages/tokens/**",
+        "packages/react-conformance/**",
+        "packages/react-components/**/*"
+      ]
+    }
+  ]
 }

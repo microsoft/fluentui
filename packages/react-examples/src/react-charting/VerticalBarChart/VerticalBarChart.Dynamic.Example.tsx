@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react-charting';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 export interface IExampleState {
   dynamicData: IVerticalBarChartDataPoint[];
@@ -24,6 +25,8 @@ export interface IExampleState {
   xAxisType: string;
   enableReflow: boolean;
   dataSize: number;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
@@ -91,6 +94,8 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
       xAxisType: initialXAxisType,
       enableReflow: false,
       dataSize: initialDataSize,
+      enableGradient: false,
+      roundCorners: false,
     };
 
     this._changeData = this._changeData.bind(this);
@@ -203,14 +208,19 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
             />
           </Stack>
         </Stack>
-        <div style={{ marginTop: '20px' }}>
+        <div style={{ marginTop: '20px', display: 'flex' }}>
           <ChoiceGroup
             options={xAxisTypeOptions}
             selectedKey={this.state.xAxisType}
             onChange={this._onAxisTypeChange}
             label="X-Axis type:"
           />
+          &nbsp;&nbsp;
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+          &nbsp;&nbsp;
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
         </div>
+
         <div style={{ width: `${this.state.width}px`, height: '350px' }}>
           <VerticalBarChart
             // Force rerender when any of the following states change
@@ -226,6 +236,9 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
             maxBarWidth={this.state.maxBarWidth}
             xAxisInnerPadding={this.state.xAxisInnerPaddingEnabled ? this.state.xAxisInnerPadding : undefined}
             xAxisOuterPadding={this.state.xAxisOuterPaddingEnabled ? this.state.xAxisOuterPadding : undefined}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
+            hideTickOverlap={true}
           />
         </div>
         <div>
@@ -326,5 +339,13 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
       data.sort((a, b) => (a.x as number) - (b.x as number));
     }
     return data;
+  };
+
+  private _onToggleGradient = (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundedCorners = (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
   };
 }

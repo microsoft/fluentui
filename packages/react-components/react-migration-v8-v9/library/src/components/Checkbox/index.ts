@@ -1,1 +1,1 @@
-export * from './CheckboxShim';
+export { CheckboxShim } from './CheckboxShim';

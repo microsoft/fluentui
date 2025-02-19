@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "title": "Build executor",
+  "description": "Transpiles TS files with SWC to specified JS module type, Generates rolluped .d.ts + api.md, transforms *.styles.* files via Babel(Griffel) and copies provided Assets.",
+  "type": "object",
+  "properties": {
+    "sourceRoot": {
+      "type": "string",
+      "description": "Directory where the source files are located (relative to {projectRoot})."
+    },
+    "outputPathRoot": {
+      "type": "string",
+      "description": "Root directory where all output assets will live. Relative to {workspaceRoot}"
+    },
+    "moduleOutput": {
+      "type": "array",
+      "description": "Which JS module type to use to transpile to provided output.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "module": { "type": "string", "enum": ["es6", "commonjs", "amd"], "description": "The module type" },
+          "outputPath": {
+            "type": "string",
+            "description": "The output path of the generated files (relative to {outputPathRoot})"
+          }
+        },
+        "required": ["module", "outputPath"]
+      }
+    },
+    "generateApi": {
+      "type": "boolean",
+      "description": "Generate rolluped 'd.ts' bundle including 'api.md' that provides project public API",
+      "default": true
+    },
+    "assets": {
+      "type": "array",
+      "description": "List of static assets.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "glob": { "type": "string", "description": "The pattern to match." },
+              "input": { "type": "string", "description": "The input directory path in which to apply 'glob'" },
+              "output": { "type": "string", "description": "Absolute path within the output" },
+              "substitutions": {
+                "type": "object",
+                "description": "Key-value pairs to replace in the output path",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": ["glob", "input", "output"]
+          },
+          { "type": "string" }
+        ]
+      }
+    },
+    "clean": {
+      "type": "boolean",
+      "description": "Remove previous output before build",
+      "default": true
+    }
+  },
+  "required": ["sourceRoot", "outputPathRoot", "moduleOutput"]
+}

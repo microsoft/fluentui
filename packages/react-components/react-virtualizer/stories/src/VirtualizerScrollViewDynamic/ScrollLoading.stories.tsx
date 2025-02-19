@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { VirtualizerScrollViewDynamic } from '@fluentui/react-components/unstable';
+import { VirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
 import { makeStyles } from '@fluentui/react-components';
-import { useEffect } from 'react';
 
 const useStyles = makeStyles({
   child: {
@@ -20,7 +19,7 @@ export const ScrollLoading = () => {
   // totalSize flag drives our callback update
   const [totalSize, setTotalSize] = React.useState(minHeight * childLength);
 
-  useEffect(() => {
+  React.useEffect(() => {
     let _totalSize = 0;
     for (let i = 0; i < childLength; i++) {
       arraySize.current[i] = Math.random() * 150 + minHeight;
@@ -42,7 +41,8 @@ export const ScrollLoading = () => {
       numItems={childLength}
       itemSize={minHeight}
       getItemSize={getItemSizeCallback}
-      container={{ role: 'list', style: { maxHeight: '100vh' } }}
+      container={{ role: 'list', style: { maxHeight: '80vh' } }}
+      enableScrollLoad={true}
     >
       {(index: number, isScrolling = false) => {
         const backgroundColor = index % 2 ? '#FFFFFF' : '#ABABAB';

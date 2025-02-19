@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DocsContainer, DocsContextProps } from '@storybook/addon-docs';
-import { FluentStoryContext } from '@fluentui/react-storybook-addon';
+import { DocsContainer, type DocsContextProps } from '@storybook/addon-docs';
+import { type FluentStoryContext } from '@fluentui/react-storybook-addon';
 import { webLightTheme, FluentProvider } from '@fluentui/react-components';
 
 interface FluentDocsContainerProps {
@@ -14,7 +14,7 @@ export const FluentDocsContainer: React.FC<FluentDocsContainerProps> = ({ childr
   return (
     <>
       {/** TODO add table of contents */}
-      <FluentProvider style={{ backgroundColor: 'transparent' }} theme={webLightTheme}>
+      <FluentProvider className="sb-unstyled" style={{ backgroundColor: 'transparent' }} theme={webLightTheme}>
         <DocsContainer context={context}>{children}</DocsContainer>
       </FluentProvider>
     </>

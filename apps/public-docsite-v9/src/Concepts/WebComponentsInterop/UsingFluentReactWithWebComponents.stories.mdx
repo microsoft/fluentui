@@ -31,6 +31,8 @@ import { FluentProvider, webLightTheme, Button } from '@fluentui/react-component
 In the above example, note that `FluentProvider` sits outside the shadow DOM. When `FluentProvider` is inside the shadow
 DOM styling/theming will not work as expected.
 
+> ⚠️ `FluentProvider` must be in the light DOM for this method to work.
+
 ```tsx
 // ❌ This will not render correctly, for example purposes only ❌
 import { root } from '@fluentui-contrib/react-shadow';

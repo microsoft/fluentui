@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { MergeStylesRootContext } from '../contexts/MergeStylesRootContext';
+import { MergeStylesDefaultContext } from '../contexts/MergeStylesDefaultContext';
 
 export const useMergeStylesHooks = () => {
-  const ctx = React.useContext(MergeStylesRootContext);
+  const ctx = React.useContext(MergeStylesDefaultContext);
   return {
     useAdoptedStylesheet: ctx.useAdoptedStylesheet,
     useAdoptedStylesheetEx: ctx.useAdoptedStylesheetEx,

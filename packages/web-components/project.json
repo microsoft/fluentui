@@ -3,9 +3,5 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],
-  "tags": ["platform:web", "web-components"],
-  "targets": {
-    "e2e": { "dependsOn": ["build-storybook"] },
-    "type-check": { "dependsOn": ["build"] }
-  }
+  "tags": ["platform:web", "web-components"]
 }

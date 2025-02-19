@@ -3,18 +3,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { merge } from 'webpack-merge';
 
-/** @type {Partial<import('@storybook/core-common').StorybookConfig>} */
-const config = {
+const config = /** @type {import('@storybook/react-webpack5').StorybookConfig} */ ({
   stories: getStories(),
-  addons: [
-    '@storybook/addon-a11y',
-    '@storybook/addon-essentials',
-    'storybook-addon-performance',
-    {
-      name: '@storybook/addon-knobs',
-      options: { escapeHTML: false },
-    },
-  ],
+  addons: ['@storybook/addon-a11y', '@storybook/addon-essentials', 'storybook-addon-performance'],
   typescript: {
     // disable react-docgen-typescript due to perf issues
     // (also appears that it would require more configuration to work properly)
@@ -23,23 +14,17 @@ const config = {
   webpackFinal: config => {
     const customConfig = createStorybookWebpackConfig(config);
 
-    return merge(customConfig, {
-      resolve: {
-        fallback: {
-          crypto: require.resolve('crypto-browserify'),
-          stream: require.resolve('stream-browserify'),
-          vm: require.resolve('vm-browserify'),
-          path: require.resolve('path-browserify'),
-        },
-      },
-    });
+    return merge(customConfig, {});
   },
 
   core: {
-    builder: 'webpack5',
     disableTelemetry: true,
   },
-};
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
+  },
+});
 
 function getStories() {
   const packageName = path.basename(process.cwd());

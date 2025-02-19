@@ -13,8 +13,8 @@ import {
 } from '@microsoft/fast-web-utilities';
 import { numberLikeStringConverter } from '../utils/converters.js';
 import { getDirection } from '../utils/direction.js';
-import { toggleState } from '../utils/element-internals.js';
-import { SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
+import { swapStates } from '../utils/element-internals.js';
+import { type SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
 import { convertPixelToPercent } from './slider-utilities.js';
 
 /**
@@ -23,7 +23,7 @@ import { convertPixelToPercent } from './slider-utilities.js';
  * @slot thumb - The slot for a custom thumb element.
  * @csspart thumb-container - The container element of the thumb.
  * @csspart track-container - The container element of the track.
- * @fire change - Fires a custom 'change' event when the value changes.
+ * @fires change - Fires a custom 'change' event when the value changes.
  *
  * @public
  */
@@ -60,20 +60,15 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   @attr
   public size?: SliderSize;
-  protected sizeChanged(prev: string, next: string): void {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+  protected sizeChanged(prev: SliderSize | undefined, next: SliderSize | undefined) {
+    swapStates(this.elementInternals, prev, next, SliderSize);
   }
 
   public handleChange(_: any, propertyName: string): void {
     switch (propertyName) {
       case 'min':
       case 'max':
-        this.setSliderPosition(this.direction);
+        this.setSliderPosition();
       case 'step':
         this.handleStepStyles();
         break;
@@ -230,7 +225,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   public get value(): string {
     Observable.track(this, 'value');
-    return this._value.toString();
+    return this._value?.toString() ?? '';
   }
 
   public set value(value: string) {
@@ -250,7 +245,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this._value = value.toString();
     this.elementInternals.ariaValueNow = this._value;
     this.elementInternals.ariaValueText = this.valueTextFormatter(this._value);
-    this.setSliderPosition(this.direction);
+    this.setSliderPosition();
     this.$emit('change');
     this.setFormValue(value);
     Observable.notify(this, 'value');
@@ -308,6 +303,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   @observable
   public direction: Direction = Direction.ltr;
+  public directionChanged(): void {
+    this.setSliderPosition();
+  }
 
   /**
    * @internal
@@ -501,18 +499,13 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   @attr
   public orientation?: Orientation;
-  protected orientationChanged(prev: string | undefined, next: string | undefined): void {
+  protected orientationChanged(prev: Orientation | undefined, next: Orientation | undefined) {
     this.elementInternals.ariaOrientation = next ?? Orientation.horizontal;
 
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, Orientation);
 
     if (this.$fastController.isConnected) {
-      this.setSliderPosition(this.direction);
+      this.setSliderPosition();
     }
   }
 
@@ -546,7 +539,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this.setupTrackConstraints();
     this.setupListeners();
     this.setupDefaultValue();
-    this.setSliderPosition(this.direction);
+    this.setSliderPosition();
 
     Observable.getNotifier(this).subscribe(this, 'max');
     Observable.getNotifier(this).subscribe(this, 'min');
@@ -639,18 +632,16 @@ export class Slider extends FASTElement implements SliderConfiguration {
 
   /**
    * Places the thumb based on the current value
-   *
-   * @param direction - writing mode
    */
-  private setSliderPosition(direction: Direction): void {
-    const newPct: number = convertPixelToPercent(parseFloat(this.value), this.minAsNumber, this.maxAsNumber, direction);
-    const percentage: number = (1 - newPct) * 100;
-    const thumbPosition = `calc(100% - ${percentage}%)`;
-    const trackProgress =
-      !(this.orientation === Orientation.vertical) && direction === Direction.rtl
-        ? `${percentage}%`
-        : `calc(100% - ${percentage}%)`;
-    this.position = `--slider-thumb: ${thumbPosition}; --slider-progress: ${trackProgress}`;
+  private setSliderPosition(): void {
+    const newPct: number = convertPixelToPercent(
+      parseFloat(this.value),
+      this.minAsNumber,
+      this.maxAsNumber,
+      this.direction,
+    );
+    const percentage: number = newPct * 100;
+    this.position = `--slider-thumb: ${percentage}%; --slider-progress: ${percentage}%`;
   }
 
   /**

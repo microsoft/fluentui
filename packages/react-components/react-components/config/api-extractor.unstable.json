@@ -4,7 +4,7 @@
   "mainEntryPointFilePath": "<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts",
   "apiReport": {
     "enabled": true,
-    "reportFileName": "<unscopedPackageName>.unstable.api.md"
+    "reportFileName": "<unscopedPackageName>.unstable"
   },
   "dtsRollup": {
     "enabled": true,

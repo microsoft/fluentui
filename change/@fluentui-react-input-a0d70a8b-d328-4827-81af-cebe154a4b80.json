@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Added comments on deprecated appearances",
-  "packageName": "@fluentui/react-input",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

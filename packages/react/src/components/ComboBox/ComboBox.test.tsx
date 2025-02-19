@@ -122,6 +122,15 @@ describe('ComboBox', () => {
     expect(combobox.getAttribute('aria-disabled')).toEqual('true');
   });
 
+  it('sets alert message and aria-invalid when errorMessage is set', () => {
+    const { getByRole } = render(
+      <ComboBox label="Test label" options={DEFAULT_OPTIONS} errorMessage="This is an example error." />,
+    );
+    const alert = getByRole('alert');
+    expect(alert.textContent).toBe('This is an example error.');
+    expect(getByRole('combobox').getAttribute('aria-invalid')).toBe('true');
+  });
+
   it('Renders no selected item in default case', () => {
     const { getByRole } = render(<ComboBox options={DEFAULT_OPTIONS} />);
     expect(getByRole('combobox').getAttribute('value')).toEqual('');

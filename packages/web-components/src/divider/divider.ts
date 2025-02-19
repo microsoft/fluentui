@@ -1,5 +1,5 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { swapStates, toggleState } from '../utils/element-internals.js';
 import { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole } from './divider.options.js';
 
 /**
@@ -70,16 +70,10 @@ export class BaseDivider extends FASTElement {
    * @param next - the current orientation value
    * @internal
    */
-  public orientationChanged(previous: string | null, next: string | null): void {
-    this.elementInternals.ariaOrientation = this.role !== DividerRole.presentation ? next : null;
+  public orientationChanged(previous: DividerRole | undefined, next: DividerRole | undefined): void {
+    this.elementInternals.ariaOrientation = this.role !== DividerRole.presentation ? next ?? null : null;
 
-    if (previous) {
-      toggleState(this.elementInternals, `${previous}`, false);
-    }
-
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, previous, next, DividerOrientation);
   }
 }
 
@@ -104,12 +98,7 @@ export class Divider extends BaseDivider {
    * @param next - the next state
    */
   public alignContentChanged(prev: DividerAlignContent | undefined, next: DividerAlignContent | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `align-${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `align-${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, DividerAlignContent, 'align-');
   }
 
   /**
@@ -126,12 +115,7 @@ export class Divider extends BaseDivider {
    * @param next - the next state
    */
   public appearanceChanged(prev: DividerAppearance | undefined, next: DividerAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, DividerAppearance);
   }
 
   /**
@@ -140,7 +124,7 @@ export class Divider extends BaseDivider {
    * Adds padding to the beginning and end of the divider.
    */
   @attr({ mode: 'boolean' })
-  public inset?: boolean = false;
+  public inset?: boolean;
 
   /**
    * Handles changes to inset custom states

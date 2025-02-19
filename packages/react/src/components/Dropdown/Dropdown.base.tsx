@@ -57,7 +57,7 @@ const COMPONENT_NAME = 'Dropdown';
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
 /** Internal only props interface to support mixing in responsive mode */
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 interface IDropdownInternalProps extends Omit<IDropdownProps, 'ref'>, IWithResponsiveModeState {
   hoisted: {
     rootRef: React.RefObject<HTMLDivElement>;
@@ -146,7 +146,7 @@ function useSelectedItemsState({
         if (searchKey != null) {
           return option.key === searchKey;
         } else {
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           return !!option.selected || !!option.isSelected;
         }
       });
@@ -324,7 +324,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       hoisted: { selectedIndices },
     } = props;
     const { isOpen, calloutRenderEdge, hasFocus } = this.state;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._getPlaceholder;
 
     // If our cached options are out of date update our cache
@@ -376,6 +376,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           aria-describedby={hasErrorMessage ? this._id + '-errorMessage' : undefined}
           aria-required={required}
           aria-disabled={disabled}
+          aria-invalid={hasErrorMessage}
           aria-controls={isOpen ? this._listId : undefined}
           {...divProps}
           className={this._classNames.dropdown}
@@ -391,7 +392,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
             className={this._classNames.title}
             aria-live={hasFocus ? 'polite' : undefined}
             aria-atomic={hasFocus ? true : undefined}
-            aria-invalid={hasErrorMessage}
           >
             {
               // If option is selected render title, otherwise render the placeholder text
@@ -492,7 +492,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     checked?: boolean,
     multiSelect?: boolean,
   ) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { onChange, onChanged } = this.props;
     if (onChange || onChanged) {
       // for single-select, option passed in will always be selected.
@@ -506,7 +506,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
   /** Get either props.placeholder (new name) or props.placeHolder (old name) */
   private _getPlaceholder = (): string | undefined => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     return this.props.placeholder || this.props.placeHolder;
   };
 
@@ -1048,7 +1048,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
     const isOpen = this.state.isOpen;
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.enter:
         this.setState({
@@ -1136,7 +1136,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         return;
       }
     }
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.space:
         this.setState({
@@ -1159,7 +1159,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
    * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
    */
   private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
   }
 
@@ -1187,7 +1187,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
     const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.up:
         if (containsExpandCollapseModifier) {
@@ -1298,7 +1298,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
    */
   private _isDisabled: () => boolean | undefined = () => {
     let { disabled } = this.props;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { isDisabled } = this.props;
 
     // Remove this deprecation workaround at 1.0.0

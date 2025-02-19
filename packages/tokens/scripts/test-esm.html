@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>native ESM for @fluentui/tokens</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .root {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 50%;
+        margin: auto;
+      }
+      .color-ramp {
+        display: flex;
+      }
+      .color-ramp > div {
+        flex: 1;
+        padding: 0.5em;
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "@fluentui/tokens": "../lib/index.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as tokens from '@fluentui/tokens';
+
+      bootstrap(App());
+
+      function App() {
+        const Root = document.createElement('section');
+        Root.classList.add('root');
+
+        const Colors = Object.entries(tokens.webLightTheme)
+          .map(([key, value]) => {
+            if (key.startsWith('color')) {
+              return `<div class="color-ramp" data-id="${key}">
+                      <div>${key}</div>
+                      <div style="background-color:${value}"></div>
+                    </div>`;
+            }
+
+            return;
+          })
+          .filter(Boolean)
+          .join('\n');
+
+        Root.innerHTML = Colors;
+
+        return Root;
+      }
+
+      function bootstrap(App) {
+        const mountRoot = document.querySelector('#app');
+        mountRoot.appendChild(App);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Native ESM / <code>@fluentui/tokens</code></h1>
+    <div id="app"></div>
+  </body>
+</html>

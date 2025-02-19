@@ -5,6 +5,7 @@ import type { IIconStyleProps, IIconStyles } from './Icon.types';
 export const classNames = mergeStyleSets({
   root: {
     display: 'inline-block',
+    textDecoration: 'inherit',
   },
   placeholder: [
     'ms-Icon-placeHolder',
@@ -33,7 +34,7 @@ export const getStyles = (props: IIconStyleProps): IIconStyles => {
       iconClassName,
       className,
       styles && styles.root,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       styles && styles.imageContainer,
     ],
   };

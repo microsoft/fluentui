@@ -1,20 +1,24 @@
+import type { Meta } from '@storybook/react';
+
 import CreatePresenceComponentDescription from './CreatePresenceComponentDescription.md';
+import { CreatePresenceComponentDefault } from './CreatePresenceComponentDefault.stories';
 
 export { CreatePresenceComponentDefault as Default } from './CreatePresenceComponentDefault.stories';
 
-export { CreatePresenceComponent as createPresenceComponent } from './CreatePresenceComponent.stories';
+export { CreatePresenceComponentFactory as createPresenceComponent } from './CreatePresenceComponentFactory.stories';
 
-export { PresenceAppear as appear } from './PresenceAppear.stories';
-export { PresenceUnmountOnExit as unmountOnExit } from './PresenceUnmountOnExit.stories';
-export { PresenceLifecycleCallbacks as LifecycleCallbacks } from './PresenceLifecycleCallbacks.stories';
+export { CreatePresenceComponentAppear as appear } from './CreatePresenceComponentAppear.stories';
+export { CreatePresenceComponentReducedMotion as reducedMotion } from './CreatePresenceComponentReducedMotion.stories';
+export { CreatePresenceComponentUnmountOnExit as unmountOnExit } from './CreatePresenceComponentUnmountOnExit.stories';
+export { CreatePresenceComponentLifecycleCallbacks as LifecycleCallbacks } from './CreatePresenceComponentLifecycleCallbacks.stories';
 
-export { PresenceMotionArrays as arrays } from './PresenceMotionArrays.stories';
-export { PresenceMotionFunctions as functions } from './PresenceMotionFunctions.stories';
-export { PresenceMotionFunctionParams as functionParams } from './PresenceMotionFunctionParams.stories';
+export { CreatePresenceComponentArrays as arrays } from './CreatePresenceComponentArrays.stories';
+export { CreatePresenceComponentFunctions as functions } from './CreatePresenceComponentFunctions.stories';
+export { CreatePresenceComponentFunctionParams as functionParams } from './CreatePresenceComponentFunctionParams.stories';
 
 export default {
   title: 'Motion/APIs/createPresenceComponent',
-  component: null,
+  component: CreatePresenceComponentDefault,
   parameters: {
     docs: {
       description: {
@@ -22,4 +26,4 @@ export default {
       },
     },
   },
-};
+} satisfies Meta;

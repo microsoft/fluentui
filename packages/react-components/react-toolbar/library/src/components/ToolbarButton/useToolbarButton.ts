@@ -13,7 +13,15 @@ export const useToolbarButton_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarButtonState => {
   const { vertical = false, ...buttonProps } = props;
-  const state = useButton_unstable({ appearance: 'subtle', ...buttonProps }, ref);
+  const state = useButton_unstable(
+    {
+      appearance: 'subtle',
+      ...buttonProps,
+      size: 'medium',
+    },
+    ref,
+  );
+
   return {
     vertical,
     ...state,

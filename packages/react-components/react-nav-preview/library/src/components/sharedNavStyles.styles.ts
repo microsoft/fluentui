@@ -5,6 +5,7 @@ import { makeResetStyles, makeStyles } from '@griffel/react';
 // Styles shared by several nav components.
 
 export const navItemTokens = {
+  defaultDrawerWidth: 260,
   indicatorOffset: 16,
   indicatorWidth: 4,
   indicatorHeight: 20,
@@ -12,9 +13,14 @@ export const navItemTokens = {
   backgroundColorHover: tokens.colorNeutralBackground4Hover,
   backgroundColorPressed: tokens.colorNeutralBackground4Pressed,
   animationTokens: {
-    animationDuration: tokens.durationFast,
+    animationDuration: tokens.durationFaster,
     animationFillMode: 'both',
-    animationTimingFunction: tokens.curveAccelerateMid,
+    animationTimingFunction: tokens.curveLinear,
+  },
+  transitionTokens: {
+    transitionDuration: tokens.durationFaster,
+    transitionTimingFunction: tokens.curveLinear,
+    transitionProperty: 'background',
   },
 };
 
@@ -27,6 +33,8 @@ export const useRootDefaultClassName = makeResetStyles({
   textTransform: 'none',
   position: 'relative',
   justifyContent: 'start',
+  alignItems: 'flex-start',
+  textAlign: 'left',
   gap: tokens.spacingVerticalL,
   padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalS} ${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
   backgroundColor: navItemTokens.backgroundColor,

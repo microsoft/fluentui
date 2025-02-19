@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { setResponsiveMode, withResponsiveMode, ResponsiveMode } from './withResponsiveMode';
 
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 @withResponsiveMode
 class Example extends React.Component<any, any> {
   public render(): JSX.Element {

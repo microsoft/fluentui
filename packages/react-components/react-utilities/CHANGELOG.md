@@ -1,8 +1,74 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 23 Jul 2024 20:13:13 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jan 2025 14:00:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.20)
+
+Wed, 22 Jan 2025 14:00:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.19..@fluentui/react-utilities_v9.18.20)
+
+### Patches
+
+- fix: add autoCorrect and minLength input properties support to getNativeProps utility ([PR #33642](https://github.com/microsoft/fluentui/pull/33642) by dmytrokirpa@microsoft.com)
+
+## [9.18.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.19)
+
+Mon, 16 Dec 2024 16:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.18..@fluentui/react-utilities_v9.18.19)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.21.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+
+## [9.18.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.18)
+
+Fri, 06 Dec 2024 12:53:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.17..@fluentui/react-utilities_v9.18.18)
+
+### Patches
+
+- chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.21.1 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+
+## [9.18.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.17)
+
+Mon, 11 Nov 2024 10:00:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.16..@fluentui/react-utilities_v9.18.17)
+
+### Patches
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.8 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.21.0 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+
+## [9.18.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.16)
+
+Tue, 15 Oct 2024 17:17:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.15..@fluentui/react-utilities_v9.18.16)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.20.2 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+
+## [9.18.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.15)
+
+Mon, 23 Sep 2024 12:40:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.14..@fluentui/react-utilities_v9.18.15)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.20.1 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+
+## [9.18.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.14)
+
+Tue, 10 Sep 2024 10:19:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.13..@fluentui/react-utilities_v9.18.14)
+
+### Patches
+
+- chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
 
 ## [9.18.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.13)
 

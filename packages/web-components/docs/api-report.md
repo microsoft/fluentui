@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="web" />
-
 import { CaptureType } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
@@ -17,7 +15,7 @@ import type { HostBehavior } from '@microsoft/fast-element';
 import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
-import type { SyntheticViewTemplate } from '@microsoft/fast-element';
+import { SyntheticViewTemplate } from '@microsoft/fast-element';
 import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
@@ -57,9 +55,9 @@ export class AccordionItem extends BaseAccordionItem {
     block: boolean;
     blockChanged(prev: boolean, next: boolean): void;
     markerPosition?: AccordionItemMarkerPosition;
-    markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
+    markerPositionChanged(prev: AccordionItemMarkerPosition | undefined, next: AccordionItemMarkerPosition | undefined): void;
     size?: AccordionItemSize;
-    sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
+    sizeChanged(prev: AccordionItemSize | undefined, next: AccordionItemSize | undefined): void;
 }
 
 // @internal
@@ -118,7 +116,6 @@ export const accordionStyles: ElementStyles;
 export const accordionTemplate: ElementViewTemplate<Accordion>;
 
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
-// Warning: (ae-forgotten-export) The symbol "BaseAnchor" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AnchorButton" because one of its declarations is marked as @internal
 //
 // @public
@@ -190,7 +187,7 @@ export class Avatar extends BaseAvatar {
     appearance?: AvatarAppearance | undefined;
     color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
-    static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
+    static colors: ("anchor" | "beige" | "blue" | "brass" | "brown" | "cornflower" | "cranberry" | "dark-green" | "dark-red" | "forest" | "gold" | "grape" | "lavender" | "light-teal" | "lilac" | "magenta" | "marigold" | "mink" | "navy" | "peach" | "pink" | "platinum" | "plum" | "pumpkin" | "purple" | "red" | "royal-blue" | "seafoam" | "steel" | "teal")[];
     // (undocumented)
     connectedCallback(): void;
     // (undocumented)
@@ -452,6 +449,30 @@ export class BaseAccordionItem extends FASTElement {
 }
 
 // @public
+export class BaseAnchor extends FASTElement {
+    constructor();
+    // @internal
+    clickHandler(e: PointerEvent): boolean;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    download?: string;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
+    href?: string;
+    hreflang?: string;
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    ping?: string;
+    referrerpolicy?: string;
+    rel: string;
+    target?: AnchorTarget;
+    type?: string;
+}
+
+// @public
 export class BaseAvatar extends FASTElement {
     constructor();
     active?: AvatarActive | undefined;
@@ -499,6 +520,62 @@ export class BaseButton extends FASTElement {
 }
 
 // @public
+export class BaseCheckbox extends FASTElement {
+    autofocus: boolean;
+    get checked(): boolean;
+    set checked(next: boolean);
+    checkValidity(): boolean;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    disabled?: boolean;
+    disabledAttribute?: boolean;
+    // @internal
+    protected disabledAttributeChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    static formAssociated: boolean;
+    formAttribute?: string;
+    // @internal
+    formResetCallback(): void;
+    initialChecked?: boolean;
+    // @internal
+    protected initialCheckedChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    initialValue: string;
+    // @internal
+    protected initialValueChanged(prev: string, next: string): void;
+    // @internal
+    inputHandler(e: InputEvent): boolean | void;
+    // @internal
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    // @internal
+    keyupHandler(e: KeyboardEvent): boolean | void;
+    get labels(): ReadonlyArray<HTMLLabelElement>;
+    name: string;
+    reportValidity(): boolean;
+    required: boolean;
+    // @internal
+    protected requiredChanged(prev: boolean, next: boolean): void;
+    // @internal
+    protected setAriaChecked(value?: boolean): void;
+    setCustomValidity(message: string): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    toggleChecked(force?: boolean): void;
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(value: string);
+    get willValidate(): boolean;
+}
+
+// @public
 export class BaseDivider extends FASTElement {
     // (undocumented)
     connectedCallback(): void;
@@ -506,10 +583,89 @@ export class BaseDivider extends FASTElement {
     elementInternals: ElementInternals;
     orientation?: DividerOrientation;
     // @internal
-    orientationChanged(previous: string | null, next: string | null): void;
+    orientationChanged(previous: DividerRole | undefined, next: DividerRole | undefined): void;
     role: DividerRole;
     // @internal
     roleChanged(previous: string | null, next: string | null): void;
+}
+
+// @public
+export class BaseDropdown extends FASTElement {
+    constructor();
+    get activeDescendant(): string | undefined;
+    // @internal
+    activeIndex: number;
+    // @internal
+    activeIndexChanged(prev: number | undefined, next: number | undefined): void;
+    ariaLabelledBy: string;
+    changeHandler(e: Event): boolean | void;
+    clickHandler(e: PointerEvent): boolean | void;
+    // @internal
+    control: HTMLInputElement;
+    // @internal
+    controlChanged(prev: HTMLInputElement | undefined, next: HTMLInputElement | undefined): void;
+    // @internal
+    controlSlot: HTMLSlotElement;
+    disabled?: boolean;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    get displayValue(): string;
+    // @internal
+    elementInternals: ElementInternals;
+    get enabledOptions(): DropdownOption[];
+    // @internal
+    filterOptions(value: string, collection?: DropdownOption[]): DropdownOption[];
+    // @internal
+    focus(options?: FocusOptions): void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    static formAssociated: boolean;
+    // @internal
+    formResetCallback(): void;
+    // @override
+    id: string;
+    // @internal
+    indicator: HTMLDivElement;
+    // @internal
+    indicatorSlot?: HTMLSlotElement;
+    initialValue?: string;
+    inputHandler(e: InputEvent): boolean | void;
+    protected insertControl(): void;
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    // @internal
+    listbox: Listbox;
+    // @internal
+    listboxChanged(prev: Listbox | undefined, next: Listbox | undefined): void;
+    // @internal
+    listboxSlot: HTMLSlotElement;
+    // @internal
+    mousedownHandler(e: MouseEvent): boolean | void;
+    multiple?: boolean;
+    // @internal
+    protected multipleChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    name: string;
+    nameChanged(prev: string, next: string): void;
+    open: boolean;
+    // @internal
+    openChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    get options(): DropdownOption[];
+    placeholder: string;
+    required: boolean;
+    // @internal
+    get selectedIndex(): number;
+    get selectedOptions(): DropdownOption[];
+    selectOption(index?: number): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    type: DropdownType;
+    // @internal
+    typeChanged(prev: DropdownType | undefined, next: DropdownType | undefined): void;
+    // @internal
+    protected updateFreeformOption(value?: string): void;
+    // @internal
+    get validationMessage(): string;
+    get value(): string | null;
+    set value(next: string | null);
+    valueAttribute: string;
 }
 
 // @public
@@ -569,10 +725,134 @@ export class BaseProgressBar extends FASTElement {
 }
 
 // @public
+export class BaseRatingDisplay extends FASTElement {
+    constructor();
+    count?: number;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get formattedCount(): string;
+    // @internal
+    generateIcons(): string;
+    protected getMaxIcons(): number;
+    protected getSelectedValue(): number;
+    iconViewBox?: string;
+    max?: number;
+    // @internal (undocumented)
+    slottedIcon: HTMLElement[];
+    // @internal (undocumented)
+    slottedIconChanged(): void;
+    value?: number;
+}
+
+// @public
 export class BaseSpinner extends FASTElement {
     constructor();
     // @internal
     elementInternals: ElementInternals;
+}
+
+// @public
+export class BaseTablist extends FASTElement {
+    activeid: string;
+    // @internal (undocumented)
+    protected activeidChanged(oldValue: string, newValue: string): void;
+    activetab: HTMLElement;
+    adjust(adjustment: number): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    disabled: boolean;
+    // @internal
+    protected disabledChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
+    orientation: TablistOrientation;
+    // @internal (undocumented)
+    protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
+    protected setTabs(): void;
+    // @internal (undocumented)
+    tabs: HTMLElement[];
+    // @internal (undocumented)
+    protected tabsChanged(): void;
+}
+
+// @public
+export class BaseTextArea extends FASTElement {
+    constructor();
+    autocomplete?: TextAreaAutocomplete;
+    autoResize: boolean;
+    // (undocumented)
+    protected autoResizeChanged(): void;
+    // @internal (undocumented)
+    autoSizerEl?: HTMLDivElement;
+    checkValidity(): boolean;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    // @internal
+    controlEl: HTMLTextAreaElement;
+    // @internal
+    defaultSlottedNodes: Node[];
+    // (undocumented)
+    protected defaultSlottedNodesChanged(): void;
+    get defaultValue(): string;
+    set defaultValue(next: string);
+    dirName?: string;
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
+    displayShadow: boolean;
+    // @internal
+    elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    static readonly formAssociated = true;
+    // @internal (undocumented)
+    formDisabledCallback(disabled: boolean): void;
+    // @internal
+    formResetCallback(): void;
+    // @internal (undocumented)
+    handleControlChange(): void;
+    // @internal (undocumented)
+    handleControlInput(): void;
+    // @internal (undocumented)
+    handleControlSelect(): void;
+    initialForm?: string;
+    // @internal
+    labelEl: HTMLLabelElement;
+    get labels(): NodeList;
+    // @internal
+    labelSlottedNodes: Label[];
+    // (undocumented)
+    protected labelSlottedNodesChanged(): void;
+    maxLength?: number;
+    minLength?: number;
+    name: string;
+    placeholder?: string;
+    readOnly: boolean;
+    // (undocumented)
+    protected readOnlyChanged(): void;
+    reportValidity(): boolean;
+    required: boolean;
+    // (undocumented)
+    protected requiredChanged(): void;
+    resize: TextAreaResize;
+    // (undocumented)
+    protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void;
+    select(): void;
+    setCustomValidity(message: string | null): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    spellcheck: boolean;
+    get textLength(): number;
+    get type(): 'textarea';
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(next: string);
+    get willValidate(): boolean;
 }
 
 // @public
@@ -591,6 +871,9 @@ export class BaseTextInput extends FASTElement {
     control: HTMLInputElement;
     // @internal
     controlLabel: HTMLLabelElement;
+    currentValue: string;
+    // @internal
+    currentValueChanged(prev: string, next: string): void;
     // @internal
     defaultSlottedNodes: Node[];
     // @internal
@@ -743,8 +1026,6 @@ export const ButtonType: {
 // @public
 export type ButtonType = ValuesOf<typeof ButtonType>;
 
-// Warning: (ae-forgotten-export) The symbol "BaseCheckbox" needs to be exported by the entry point index.d.ts
-//
 // @public
 export class Checkbox extends BaseCheckbox {
     constructor();
@@ -2083,7 +2364,6 @@ export const DividerAppearance: {
     readonly strong: "strong";
     readonly brand: "brand";
     readonly subtle: "subtle";
-    readonly default: "default";
 };
 
 // @public
@@ -2201,6 +2481,145 @@ export const DrawerType: {
 
 // @public
 export type DrawerType = ValuesOf<typeof DrawerType>;
+
+// @public
+export class Dropdown extends BaseDropdown {
+    constructor();
+    appearance: DropdownAppearance;
+    // @internal
+    appearanceChanged(prev: DropdownAppearance | undefined, next: DropdownAppearance | undefined): void;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // @internal
+    openChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    size?: DropdownSize;
+    // @internal
+    sizeChanged(prev: DropdownSize | undefined, next: DropdownSize | undefined): void;
+}
+
+// @public
+export const DropdownAppearance: {
+    filledDarker: string;
+    filledLighter: string;
+    outline: string;
+    transparent: string;
+};
+
+// @public (undocumented)
+export type DropdownAppearance = ValuesOf<typeof DropdownAppearance>;
+
+// @public
+export const dropdownButtonTemplate: ViewTemplate<BaseDropdown, any>;
+
+// @public
+export const DropdownDefinition: FASTElementDefinition<typeof Dropdown>;
+
+// @public
+export const dropdownInputTemplate: ViewTemplate<BaseDropdown, any>;
+
+// Warning: (ae-forgotten-export) The symbol "Start" needs to be exported by the entry point index.d.ts
+//
+// @public
+export class DropdownOption extends FASTElement implements Start {
+    constructor();
+    active: boolean;
+    // @internal
+    protected activeChanged(prev: boolean, next: boolean): void;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    currentSelected?: boolean;
+    // @internal
+    currentSelectedChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    defaultSelected?: boolean;
+    // @internal
+    protected defaultSelectedChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    descriptionSlot: Node[];
+    // @internal
+    descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    disabled?: boolean;
+    disabledAttribute?: boolean;
+    // @internal
+    protected disabledAttributeChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    static formAssociated: boolean;
+    formAttribute?: string;
+    freeform?: boolean;
+    // @internal
+    freeformOutputs?: HTMLOutputElement[];
+    // @override
+    id: string;
+    initialValue: string;
+    // @internal
+    protected initialValueChanged(prev: string, next: string): void;
+    get labels(): ReadonlyArray<HTMLLabelElement>;
+    multiple: boolean;
+    multipleChanged(prev: boolean, next: boolean): void;
+    name: string;
+    get selected(): boolean;
+    set selected(next: boolean);
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    start: HTMLSlotElement;
+    get text(): string;
+    textAttribute?: string;
+    toggleSelected(force?: boolean): void;
+    get value(): string;
+    set value(value: string);
+}
+
+// @public
+export const DropdownOptionDefinition: FASTElementDefinition<typeof DropdownOption>;
+
+// @public
+export type DropdownOptionOptions = StartOptions<DropdownOption> & {
+    checkedIndicator?: StaticallyComposableHTML<DropdownOption>;
+};
+
+// @public
+export type DropdownOptions = {
+    indicator?: StaticallyComposableHTML<BaseDropdown>;
+};
+
+// @public
+export const DropdownOptionStyles: ElementStyles;
+
+// @public
+export const DropdownOptionTemplate: ElementViewTemplate<DropdownOption>;
+
+// @public
+export const DropdownSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public (undocumented)
+export type DropdownSize = ValuesOf<typeof DropdownSize>;
+
+// @public
+export const DropdownStyles: ElementStyles;
+
+// @public
+export const DropdownTemplate: ElementViewTemplate<BaseDropdown>;
+
+// @public
+export const DropdownType: {
+    readonly combobox: "combobox";
+    readonly dropdown: "dropdown";
+    readonly select: "select";
+};
+
+// @public (undocumented)
+export type DropdownType = ValuesOf<typeof DropdownType>;
 
 // @public
 export const durationFast = "var(--durationFast)";
@@ -2350,7 +2769,6 @@ export const ImageFit: {
     readonly center: "center";
     readonly contain: "contain";
     readonly cover: "cover";
-    readonly default: "default";
 };
 
 // @public
@@ -2373,6 +2791,15 @@ export const ImageStyles: ElementStyles;
 
 // @public
 export const ImageTemplate: ElementViewTemplate<Image_2>;
+
+// @public
+export function isDropdown(element?: Node | null, tagName?: string): element is BaseDropdown;
+
+// @public
+export function isDropdownOption(value: Node | null, tagName?: string): value is DropdownOption;
+
+// @public
+export function isListbox(element?: Node | null, tagName?: string): element is Listbox;
 
 // @public
 export class Label extends FASTElement {
@@ -2473,6 +2900,11 @@ export type LinkAppearance = ValuesOf<typeof LinkAppearance>;
 // @public (undocumented)
 export const LinkDefinition: FASTElementDefinition<typeof Link>;
 
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const LinkStyles: ElementStyles;
+
 // @public
 export const LinkTarget: {
     readonly _self: "_self";
@@ -2486,6 +2918,47 @@ export type LinkTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
 export const LinkTemplate: ElementViewTemplate<Link>;
+
+// @public
+export class Listbox extends FASTElement {
+    constructor();
+    // @internal
+    beforetoggleHandler(e: ToggleEvent): boolean | undefined;
+    clickHandler(e: PointerEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    dropdown?: BaseDropdown;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get enabledOptions(): DropdownOption[];
+    // @internal
+    handleChange(source: any, propertyName?: string): void;
+    // @override
+    id: string;
+    multiple?: boolean;
+    multipleChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    options: DropdownOption[];
+    // @internal
+    optionsChanged(prev: DropdownOption[] | undefined, next: DropdownOption[] | undefined): void;
+    // @internal
+    selectedIndex: number;
+    get selectedOptions(): DropdownOption[];
+    selectOption(index?: number): void;
+}
+
+// @public
+export const ListboxDefinition: FASTElementDefinition<typeof Listbox>;
+
+// @public
+export const ListboxStyles: ElementStyles;
+
+// @public
+export const ListboxTemplate: ElementViewTemplate<Listbox>;
+
+// @public
+export function listboxTemplate<T extends Listbox>(): ElementViewTemplate<T>;
 
 // @public
 export abstract class MatchMediaBehavior implements HostBehavior {
@@ -2527,10 +3000,12 @@ export class Menu extends FASTElement {
     openOnHoverChanged(oldValue: boolean, newValue: boolean): void;
     persistOnItemClick?: boolean;
     persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
+    primaryAction: HTMLSlotElement;
     setComponent(): void;
     slottedMenuList: MenuList[];
     slottedTriggers: HTMLElement[];
-    toggleHandler: (e: Event | ToggleEvent) => void;
+    split?: boolean;
+    toggleHandler: (e: Event) => void;
     toggleMenu: () => void;
     triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
 }
@@ -2612,7 +3087,7 @@ export class MenuItem extends FASTElement {
     // @internal (undocumented)
     submenu: HTMLElement | undefined;
     // @internal
-    toggleHandler: (e: ToggleEvent | Event) => void;
+    toggleHandler: (e: Event) => void;
 }
 
 // @internal
@@ -2699,15 +3174,76 @@ export const MenuStyles: ElementStyles;
 export const MenuTemplate: ElementViewTemplate<Menu>;
 
 // @public
-export class ProgressBar extends BaseProgressBar {
+export class MessageBar extends FASTElement {
+    constructor();
+    dismissMessageBar: () => void;
+    // @internal
+    elementInternals: ElementInternals;
+    intent?: MessageBarIntent;
+    intentChanged(prev: MessageBarIntent | undefined, next: MessageBarIntent | undefined): void;
+    layout?: MessageBarLayout;
+    layoutChanged(prev: MessageBarLayout | undefined, next: MessageBarLayout | undefined): void;
+    shape?: MessageBarShape;
+    shapeChanged(prev: MessageBarShape | undefined, next: MessageBarShape | undefined): void;
+}
+
+// @public
+export const MessageBarDefinition: FASTElementDefinition<typeof MessageBar>;
+
+// Warning: (ae-missing-release-tag) "MessageBarIntent" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarIntent: {
+    readonly success: "success";
+    readonly warning: "warning";
+    readonly error: "error";
+    readonly info: "info";
+};
+
+// @public (undocumented)
+export type MessageBarIntent = ValuesOf<typeof MessageBarIntent>;
+
+// Warning: (ae-missing-release-tag) "MessageBarLayout" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarLayout: {
+    readonly multiline: "multiline";
+    readonly singleline: "singleline";
+};
+
+// @public (undocumented)
+export type MessageBarLayout = ValuesOf<typeof MessageBarLayout>;
+
+// Warning: (ae-missing-release-tag) "MessageBarShape" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarShape: {
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public (undocumented)
+export type MessageBarShape = ValuesOf<typeof MessageBarShape>;
+
+// @public
+export const MessageBarStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
+
+// @public
+class ProgressBar_2 extends BaseProgressBar {
     shape?: ProgressBarShape;
     shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
     thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
 }
+export { ProgressBar_2 as ProgressBar }
 
 // @public
-export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar>;
+export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar_2>;
 
 // @public
 export const ProgressBarShape: {
@@ -2724,7 +3260,7 @@ export const ProgressBarStyles: ElementStyles;
 // Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export const ProgressBarTemplate: ElementViewTemplate<ProgressBar>;
+export const ProgressBarTemplate: ElementViewTemplate<ProgressBar_2>;
 
 // @public
 export const ProgressBarThickness: {
@@ -2777,7 +3313,7 @@ export class RadioGroup extends FASTElement {
     // @internal
     protected checkedIndexChanged(prev: number | undefined, next: number): void;
     // @internal
-    checkRadio(index?: number): void;
+    checkRadio(index?: number, shouldEmit?: boolean): void;
     checkValidity(): boolean;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
@@ -2863,22 +3399,16 @@ export const RadioStyles: ElementStyles;
 export const RadioTemplate: ElementViewTemplate<Radio>;
 
 // @public
-export class RatingDisplay extends FASTElement {
-    constructor();
+export class RatingDisplay extends BaseRatingDisplay {
     color?: RatingDisplayColor;
     colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void;
     compact: boolean;
-    count?: number;
-    // @internal
-    elementInternals: ElementInternals;
-    // @internal
-    get formattedCount(): string;
-    // @internal
-    generateIcons(): string;
-    max?: number;
+    // @override
+    protected getMaxIcons(): number;
+    // @override
+    protected getSelectedValue(): number;
     size?: RatingDisplaySize;
     sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void;
-    value?: number;
 }
 
 // @public
@@ -2920,12 +3450,12 @@ export const roleForMenuItem: {
 // Warning: (ae-internal-missing-underscore) The name "setTheme" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export const setTheme: (theme: Theme) => void;
+export function setTheme(theme: Theme | null, node?: Document | HTMLElement): void;
 
 // Warning: (ae-internal-missing-underscore) The name "setThemeFor" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal (undocumented)
-export const setThemeFor: (element: HTMLElement, theme: Theme) => void;
+// @internal @deprecated (undocumented)
+export function setThemeFor(element: HTMLElement, theme: Theme | null): void;
 
 // @public
 export const shadow16 = "var(--shadow16)";
@@ -3009,7 +3539,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     mode: SliderMode;
     orientation?: Orientation;
     // (undocumented)
-    protected orientationChanged(prev: string | undefined, next: string | undefined): void;
+    protected orientationChanged(prev: Orientation | undefined, next: Orientation | undefined): void;
     // @internal (undocumented)
     position: string;
     reportValidity(): boolean;
@@ -3020,7 +3550,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     size?: SliderSize;
     // (undocumented)
-    protected sizeChanged(prev: string, next: string): void;
+    protected sizeChanged(prev: SliderSize | undefined, next: SliderSize | undefined): void;
     step: string;
     // (undocumented)
     protected stepChanged(): void;
@@ -3228,8 +3758,10 @@ export const SpinnerStyles: ElementStyles;
 // @public (undocumented)
 export const SpinnerTemplate: ViewTemplate<Spinner, any>;
 
+// Warning: (ae-forgotten-export) The symbol "End" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class StartEnd {
+export class StartEnd implements Start, End {
     // (undocumented)
     end: HTMLSlotElement;
     // (undocumented)
@@ -3245,7 +3777,7 @@ export type StartOptions<TSource = any, TParent = any> = {
 };
 
 // @public
-export function startSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(options: StartOptions<TSource, TParent>): CaptureType<TSource, TParent>;
+export function startSlotTemplate<TSource extends Pick<StartEnd, 'start'> = StartEnd, TParent = any>(options: StartOptions<TSource, TParent>): CaptureType<TSource, TParent>;
 
 // @public
 export const strokeWidthThick = "var(--strokeWidthThick)";
@@ -3319,6 +3851,58 @@ export interface Tab extends StartEnd {
 //
 // @public (undocumented)
 export const TabDefinition: FASTElementDefinition<typeof Tab>;
+
+// @public
+export class Tablist extends BaseTablist {
+    activeidChanged(oldValue: string, newValue: string): void;
+    appearance?: TablistAppearance;
+    // @internal (undocumented)
+    protected appearanceChanged(prev: TablistAppearance, next: TablistAppearance): void;
+    size?: TablistSize;
+    // @internal (undocumented)
+    protected sizeChanged(prev: TablistSize, next: TablistSize): void;
+    tabsChanged(): void;
+}
+
+// @public
+export const TablistAppearance: {
+    readonly subtle: "subtle";
+    readonly transparent: "transparent";
+};
+
+// @public
+export type TablistAppearance = ValuesOf<typeof TablistAppearance>;
+
+// @public (undocumented)
+export const TablistDefinition: FASTElementDefinition<typeof Tablist>;
+
+// @public
+export const TablistOrientation: {
+    readonly horizontal: "horizontal"; /**
+    * The appearance of the component
+    * @public
+    */
+    readonly vertical: "vertical";
+};
+
+// @public
+export type TablistOrientation = ValuesOf<typeof TablistOrientation>;
+
+// @public
+export const TablistSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type TablistSize = ValuesOf<typeof TablistSize>;
+
+// @public (undocumented)
+export const TablistStyles: ElementStyles;
+
+// @public (undocumented)
+export const TablistTemplate: ViewTemplate<Tablist, any>;
 
 // @public
 export type TabOptions = StartEndOptions<Tab>;
@@ -3462,6 +4046,92 @@ export const TextAlign: {
 
 // @public
 export type TextAlign = ValuesOf<typeof TextAlign>;
+
+// Warning: (ae-missing-release-tag) "TextArea" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class TextArea extends BaseTextArea {
+    appearance: TextAreaAppearance;
+    // (undocumented)
+    protected appearanceChanged(prev: TextAreaAppearance | undefined, next: TextAreaAppearance | undefined): void;
+    block: boolean;
+    // (undocumented)
+    protected blockChanged(): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
+    // @internal (undocumented)
+    handleChange(_: any, propertyName: string): void;
+    // (undocumented)
+    protected labelSlottedNodesChanged(): void;
+    size?: TextAreaSize;
+    // (undocumented)
+    protected sizeChanged(prev: TextAreaSize | undefined, next: TextAreaSize | undefined): void;
+}
+
+// Warning: (ae-missing-release-tag) "TextAreaAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaAppearance: {
+    readonly outline: "outline";
+    readonly filledLighter: "filled-lighter";
+    readonly filledDarker: "filled-darker";
+};
+
+// @public (undocumented)
+export type TextAreaAppearance = ValuesOf<typeof TextAreaAppearance>;
+
+// @public
+export const TextAreaAppearancesForDisplayShadow: Partial<TextAreaAppearance[]>;
+
+// Warning: (ae-missing-release-tag) "TextAreaAutocomplete" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaAutocomplete: {
+    readonly on: "on";
+    readonly off: "off";
+};
+
+// @public (undocumented)
+export type TextAreaAutocomplete = ValuesOf<typeof TextAreaAutocomplete>;
+
+// @public
+export const TextAreaDefinition: FASTElementDefinition<typeof TextArea>;
+
+// Warning: (ae-missing-release-tag) "TextAreaResize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "TextAreaResize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaResize: {
+    readonly none: "none";
+    readonly both: "both";
+    readonly horizontal: "horizontal";
+    readonly vertical: "vertical";
+};
+
+// @public (undocumented)
+export type TextAreaResize = ValuesOf<typeof TextAreaResize>;
+
+// Warning: (ae-missing-release-tag) "TextAreaSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public (undocumented)
+export type TextAreaSize = ValuesOf<typeof TextAreaSize>;
+
+// @public
+export const TextAreaStyles: ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "TextAreaTemplate" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const TextAreaTemplate: ElementViewTemplate<TextArea>;
 
 // @public
 export const TextDefinition: FASTElementDefinition<typeof Text_2>;
@@ -3639,6 +4309,60 @@ export const ToggleButtonStyles: ElementStyles;
 // @public
 export const ToggleButtonTemplate: ElementViewTemplate<ToggleButton>;
 
+// @public
+export class Tooltip extends FASTElement {
+    constructor();
+    anchor: string;
+    // @internal
+    protected anchorPositioningStyleElement: HTMLStyleElement | null;
+    blurAnchorHandler: () => void;
+    // (undocumented)
+    connectedCallback(): void;
+    delay?: number;
+    // (undocumented)
+    disconnectedCallback(): void;
+    elementInternals: ElementInternals;
+    focusAnchorHandler: () => void;
+    // @internal
+    hideTooltip(delay?: number): void;
+    id: string;
+    mouseenterAnchorHandler: () => void;
+    mouseleaveAnchorHandler: () => void;
+    positioning?: TooltipPositioningOption;
+    // @internal
+    positioningChanged(): void;
+    // @internal
+    showTooltip(delay?: number): void;
+}
+
+// @public
+export const TooltipDefinition: FASTElementDefinition<typeof Tooltip>;
+
+// @public
+export const TooltipPositioningOption: {
+    readonly 'above-start': "block-start span-inline-end";
+    readonly above: "block-start";
+    readonly 'above-end': "block-start span-inline-start";
+    readonly 'below-start': "block-end span-inline-end";
+    readonly below: "block-end";
+    readonly 'below-end': "block-end span-inline-start";
+    readonly 'before-top': "inline-start span-block-end";
+    readonly before: "inline-start";
+    readonly 'before-bottom': "inline-start span-block-start";
+    readonly 'after-top': "inline-end span-block-end";
+    readonly after: "inline-end";
+    readonly 'after-bottom': "inline-end span-block-start";
+};
+
+// @public
+export type TooltipPositioningOption = ValuesOf<typeof TooltipPositioningOption>;
+
+// @public
+export const TooltipStyles: ElementStyles;
+
+// @public
+export const TooltipTemplate: ViewTemplate<Tooltip, any>;
+
 // Warning: (ae-missing-release-tag) "typographyBody1StrongerStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
@@ -3741,6 +4465,30 @@ export const ValidationFlags: {
 
 // @public (undocumented)
 export type ValidationFlags = ValuesOf<typeof ValidationFlags>;
+
+// @public
+export const zIndexBackground = "var(--zIndexBackground)";
+
+// @public
+export const zIndexContent = "var(--zIndexContent)";
+
+// @public
+export const zIndexDebug = "var(--zIndexDebug)";
+
+// @public
+export const zIndexFloating = "var(--zIndexFloating)";
+
+// @public
+export const zIndexMessages = "var(--zIndexMessages)";
+
+// @public
+export const zIndexOverlay = "var(--zIndexOverlay)";
+
+// @public
+export const zIndexPopup = "var(--zIndexPopup)";
+
+// @public
+export const zIndexPriority = "var(--zIndexPriority)";
 
 // Warnings were encountered during analysis:
 //

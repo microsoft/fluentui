@@ -15,7 +15,7 @@ export {
   accordionStyles,
   accordionTemplate,
 } from './accordion/index.js';
-export { Link, LinkAppearance, LinkDefinition, LinkTemplate, LinkTarget } from './link/index.js';
+export { Link, LinkAppearance, LinkDefinition, LinkTemplate, LinkStyles, LinkTarget } from './link/index.js';
 export {
   Avatar,
   AvatarActive,
@@ -53,6 +53,7 @@ export {
 } from './button/index.js';
 export type { ButtonOptions } from './button/index.js';
 export {
+  BaseCheckbox,
   Checkbox,
   CheckboxDefinition,
   CheckboxShape,
@@ -104,6 +105,29 @@ export {
 } from './drawer/index.js';
 export { DrawerBody, DrawerBodyDefinition, DrawerBodyTemplate, DrawerBodyStyles } from './drawer-body/index.js';
 export {
+  DropdownDefinition,
+  BaseDropdown,
+  Dropdown,
+  DropdownAppearance,
+  DropdownSize,
+  DropdownType,
+  isDropdown,
+  type DropdownOptions,
+  DropdownStyles,
+  dropdownButtonTemplate,
+  dropdownInputTemplate,
+  DropdownTemplate,
+} from './dropdown/index.js';
+export {
+  ListboxDefinition,
+  Listbox,
+  isListbox,
+  ListboxStyles,
+  ListboxTemplate,
+  listboxTemplate,
+} from './listbox/index.js';
+
+export {
   BaseField,
   Field,
   FieldLabelPosition,
@@ -117,6 +141,7 @@ export { FluentDesignSystem } from './fluent-design-system.js';
 export { Image, ImageDefinition, ImageFit, ImageShape, ImageStyles, ImageTemplate } from './image/index.js';
 export { Label, LabelDefinition, LabelSize, LabelStyles, LabelTemplate, LabelWeight } from './label/index.js';
 export {
+  BaseAnchor,
   AnchorButton,
   AnchorButtonAppearance,
   AnchorButtonDefinition,
@@ -125,6 +150,15 @@ export {
   AnchorButtonTemplate,
   AnchorTarget,
 } from './anchor-button/index.js';
+export {
+  MessageBar,
+  MessageBarDefinition,
+  MessageBarIntent,
+  MessageBarLayout,
+  MessageBarShape,
+  MessageBarStyles,
+  MessageBarTemplate,
+} from './message-bar/index.js';
 export {
   MenuButton,
   MenuButtonAppearance,
@@ -146,6 +180,14 @@ export {
 export type { MenuItemColumnCount, MenuItemOptions } from './menu-item/index.js';
 export { MenuList, MenuListDefinition, MenuListStyles, MenuListTemplate } from './menu-list/index.js';
 export { Menu, MenuDefinition, MenuStyles, MenuTemplate } from './menu/index.js';
+export {
+  DropdownOption,
+  DropdownOptionDefinition,
+  DropdownOptionStyles,
+  DropdownOptionTemplate,
+  isDropdownOption,
+  type DropdownOptionOptions,
+} from './option/index.js';
 export { StartEnd, endSlotTemplate, startSlotTemplate } from './patterns/start-end.js';
 export type { StartOptions, EndOptions, StartEndOptions } from './patterns/start-end.js';
 export {
@@ -168,6 +210,7 @@ export {
 export { Radio, RadioDefinition, RadioStyles, RadioTemplate } from './radio/index.js';
 export type { RadioControl, RadioOptions } from './radio/index.js';
 export {
+  BaseRatingDisplay,
   RatingDisplay,
   RatingDisplayColor,
   RatingDisplayDefinition,
@@ -227,7 +270,29 @@ export {
   TabsStyles,
   TabsTemplate,
 } from './tabs/index.js';
+export {
+  BaseTablist,
+  Tablist,
+  TablistAppearance,
+  TablistDefinition,
+  TablistOrientation,
+  TablistSize,
+  TablistStyles,
+  TablistTemplate,
+} from './tablist/index.js';
 export type { TabsOptions } from './tabs/index.js';
+export {
+  BaseTextArea,
+  TextArea,
+  TextAreaAppearance,
+  TextAreaAppearancesForDisplayShadow,
+  TextAreaAutocomplete,
+  TextAreaDefinition,
+  TextAreaResize,
+  TextAreaSize,
+  TextAreaStyles,
+  TextAreaTemplate,
+} from './textarea/index.js';
 export {
   BaseTextInput,
   TextInput,
@@ -261,6 +326,13 @@ export {
   ToggleButtonTemplate,
 } from './toggle-button/index.js';
 export type { ToggleButtonOptions } from './toggle-button/index.js';
+export {
+  Tooltip,
+  TooltipDefinition,
+  TooltipPositioningOption,
+  TooltipStyles,
+  TooltipTemplate,
+} from './tooltip/index.js';
 export {
   darkModeStylesheetBehavior,
   forcedColorsStylesheetBehavior,

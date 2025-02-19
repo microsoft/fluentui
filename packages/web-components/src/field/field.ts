@@ -1,7 +1,7 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 import { toggleState } from '../utils/element-internals.js';
-import { LabelPosition, SlottableInput, ValidationFlags } from './field.options.js';
+import { LabelPosition, type SlottableInput, ValidationFlags } from './field.options.js';
 
 /**
  * A Field Custom HTML Element.
@@ -205,7 +205,7 @@ export class BaseField extends FASTElement {
    * @internal
    */
   public setStates() {
-    if (this.$fastController.isConnected) {
+    if (this.elementInternals && this.input) {
       toggleState(this.elementInternals, 'disabled', !!this.input.disabled);
       toggleState(this.elementInternals, 'readonly', !!this.input.readOnly);
       toggleState(this.elementInternals, 'required', !!this.input.required);

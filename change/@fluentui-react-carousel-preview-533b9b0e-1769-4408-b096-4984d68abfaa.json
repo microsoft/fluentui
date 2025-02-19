@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement carousel autoplay button and functionality",
-  "packageName": "@fluentui/react-carousel-preview",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

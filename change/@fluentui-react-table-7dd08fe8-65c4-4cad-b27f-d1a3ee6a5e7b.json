@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: removes Partial from TableProps usage",
-  "packageName": "@fluentui/react-table",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

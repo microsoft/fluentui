@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useCallback, useImperativeHandle, useRef } from 'react';
 import { useControlledState } from '@fluentui/foundation-legacy';
 import { getRTL, KeyCodes } from '../../Utilities';
 import type {
@@ -11,20 +10,20 @@ import type {
 export const useCollapsibleSectionState: ICollapsibleSectionComponent['state'] = (
   props: Readonly<ICollapsibleSectionProps>,
 ): ICollapsibleSectionViewProps => {
-  const titleElementRef = useRef<HTMLButtonElement | null>(null);
+  const titleElementRef = React.useRef<HTMLButtonElement | null>(null);
 
   const [collapsed, setCollapsed] = useControlledState(props, 'collapsed', {
     defaultPropName: 'defaultCollapsed',
     defaultPropValue: false,
   });
 
-  useImperativeHandle(props.componentRef, () => ({
+  React.useImperativeHandle(props.componentRef, () => ({
     focus: () => {
       titleElementRef.current && titleElementRef.current.focus();
     },
   }));
 
-  const _onClick = useCallback(
+  const _onClick = React.useCallback(
     (ev: React.MouseEvent<Element>) => {
       setCollapsed(!collapsed);
       ev.preventDefault();
@@ -33,17 +32,17 @@ export const useCollapsibleSectionState: ICollapsibleSectionComponent['state'] =
     [collapsed, setCollapsed],
   );
 
-  const _onKeyDown = useCallback(
+  const _onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<Element>) => {
       const collapseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
       const expandKey = getRTL() ? KeyCodes.left : KeyCodes.right;
 
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (ev.which === collapseKey && !collapsed) {
         setCollapsed(true);
         ev.preventDefault();
         ev.stopPropagation();
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
       } else if (ev.which === expandKey && collapsed) {
         setCollapsed(false);
         ev.preventDefault();
@@ -53,13 +52,13 @@ export const useCollapsibleSectionState: ICollapsibleSectionComponent['state'] =
     [collapsed, setCollapsed],
   );
 
-  const _onRootKeyDown = useCallback((ev: React.KeyboardEvent<Element>) => {
+  const _onRootKeyDown = React.useCallback((ev: React.KeyboardEvent<Element>) => {
     const rootKey = getRTL() ? KeyCodes.right : KeyCodes.left;
 
     // If left/right keypress originates from text input or text area inside collapsible section,
     // ignore the event.
     if (
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ev.which === rootKey &&
       ev.target !== titleElementRef.current &&
       titleElementRef.current &&

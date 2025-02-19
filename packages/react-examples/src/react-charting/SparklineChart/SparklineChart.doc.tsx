@@ -11,7 +11,7 @@ export const SparklineChartPageProps: IDocPageProps = {
   title: 'SparklineChart',
   componentName: 'SparklineChart',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/SparklineChart',
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/SparklineChart',
   examples: [
     {
       title: 'SparklineChart basic',

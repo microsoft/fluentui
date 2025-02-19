@@ -344,7 +344,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
   };
 
   const onTextFieldKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.enter:
         ev.preventDefault();
@@ -496,6 +496,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
           role="combobox"
           label={label}
           aria-expanded={isCalendarShown}
+          aria-required={isRequired}
           ariaLabel={ariaLabel}
           aria-haspopup="dialog"
           aria-controls={isCalendarShown ? calloutId : undefined}

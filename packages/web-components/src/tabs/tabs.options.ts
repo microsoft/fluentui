@@ -1,7 +1,7 @@
 import { Orientation } from '@microsoft/fast-web-utilities';
-import { StartEndOptions } from '../patterns/index.js';
+import type { StartEndOptions } from '../patterns/start-end.js';
 import type { ValuesOf } from '../utils/index.js';
-import { Tabs } from './tabs.js';
+import type { Tabs } from './tabs.js';
 
 export const TabsAppearance = {
   subtle: 'subtle',

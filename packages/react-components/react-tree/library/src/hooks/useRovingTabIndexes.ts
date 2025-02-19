@@ -2,7 +2,14 @@ import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
 import { useFocusedElementChange } from '@fluentui/react-tabster';
-import { elementContains } from '@fluentui/react-utilities';
+
+const findTreeItemRoot = (element: HTMLElement) => {
+  let parent = element.parentElement;
+  while (parent && parent.getAttribute('role') !== 'tree') {
+    parent = parent.parentElement;
+  }
+  return parent;
+};
 
 /**
  * @internal
@@ -13,21 +20,12 @@ export function useRovingTabIndex() {
   const walkerRef = React.useRef<HTMLElementWalker | null>(null);
   const { targetDocument } = useFluent();
 
-  React.useEffect(() => {
-    if (
-      (currentElementRef.current === null || !targetDocument?.body.contains(currentElementRef.current)) &&
-      walkerRef.current
-    ) {
-      initialize(walkerRef.current);
-    }
-  });
-
   useFocusedElementChange(element => {
-    if (
-      element?.getAttribute('role') === 'treeitem' &&
-      walkerRef.current &&
-      elementContains(walkerRef.current.root, element)
-    ) {
+    if (element?.getAttribute('role') === 'treeitem' && walkerRef.current && walkerRef.current.root.contains(element)) {
+      const treeitemRoot = findTreeItemRoot(element);
+      if (walkerRef.current.root !== treeitemRoot) {
+        return;
+      }
       rove(element);
     }
   });
@@ -60,8 +58,18 @@ export function useRovingTabIndex() {
     currentElementRef.current = nextElement;
   }, []);
 
+  const forceUpdate = React.useCallback(() => {
+    if (
+      (currentElementRef.current === null || !targetDocument?.body.contains(currentElementRef.current)) &&
+      walkerRef.current
+    ) {
+      initialize(walkerRef.current);
+    }
+  }, [targetDocument, initialize]);
+
   return {
     rove,
     initialize,
+    forceUpdate,
   };
 }

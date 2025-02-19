@@ -154,11 +154,13 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   };
 
   const handleIncrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    commit(e, currentValue, textValue);
     internalState.current.spinState = 'up';
     stepValue(e, 'up');
   };
 
   const handleDecrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    commit(e, currentValue, textValue);
     internalState.current.spinState = 'down';
     stepValue(e, 'down');
   };
@@ -231,10 +233,12 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     if (valueChanged) {
       roundedValue = precisionRound(newValue!, precision);
       setCurrentValue(roundedValue);
+      internalState.current.value = roundedValue;
     } else if (displayValueChanged && !isControlled) {
       const nextValue = parseFloat(newDisplayValue as string);
       if (!isNaN(nextValue)) {
         setCurrentValue(precisionRound(nextValue, precision));
+        internalState.current.value = precisionRound(nextValue, precision);
       }
     }
 
@@ -294,7 +298,10 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       defaultProps: {
         tabIndex: -1,
         children: <ChevronUp16Regular />,
-        disabled: nativeProps.primary.disabled,
+        disabled:
+          nativeProps.primary.disabled ||
+          internalState.current.atBound === 'max' ||
+          internalState.current.atBound === 'both',
         'aria-label': 'Increment value',
         type: 'button',
       },
@@ -304,7 +311,10 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       defaultProps: {
         tabIndex: -1,
         children: <ChevronDown16Regular />,
-        disabled: nativeProps.primary.disabled,
+        disabled:
+          nativeProps.primary.disabled ||
+          internalState.current.atBound === 'min' ||
+          internalState.current.atBound === 'both',
         'aria-label': 'Decrement value',
         type: 'button',
       },
@@ -315,9 +325,9 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   state.input.value = valueToDisplay;
   state.input['aria-valuemin'] = min;
   state.input['aria-valuemax'] = max;
-  state.input['aria-valuenow'] = currentValue ?? undefined;
   state.input['aria-valuetext'] = state.input['aria-valuetext'] ?? ((value !== undefined && displayValue) || undefined);
   state.input.onChange = mergeCallbacks(state.input.onChange, handleInputChange);
+  state.input.onInput = mergeCallbacks(state.input.onInput, handleInputChange);
   state.input.onBlur = mergeCallbacks(state.input.onBlur, handleBlur);
   state.input.onKeyDown = mergeCallbacks(state.input.onKeyDown, handleKeyDown);
   state.input.onKeyUp = mergeCallbacks(state.input.onKeyUp, handleKeyUp);

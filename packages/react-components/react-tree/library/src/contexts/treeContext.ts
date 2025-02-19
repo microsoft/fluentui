@@ -18,6 +18,12 @@ export type TreeContextValue = {
    * requests root Tree component to respond to some tree item event,
    */
   requestTreeResponse(request: TreeItemRequest): void;
+  // FIXME: this is only marked as optional to avoid breaking changes
+  // it should always be provided internally
+  forceUpdateRovingTabIndex?(): void;
+  // FIXME: this is only marked as optional to avoid breaking changes
+  // it should always be provided internally
+  navigationMode?: 'tree' | 'treegrid';
 };
 
 export type TreeItemRequest = { itemType: TreeItemType } & (
@@ -37,8 +43,10 @@ const defaultTreeContextValue: TreeContextValue = {
   openItems: ImmutableSet.empty,
   checkedItems: ImmutableMap.empty,
   requestTreeResponse: noop,
+  forceUpdateRovingTabIndex: noop,
   appearance: 'subtle',
   size: 'medium',
+  navigationMode: 'tree',
 };
 
 function noop() {

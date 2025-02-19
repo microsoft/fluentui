@@ -32,6 +32,9 @@ const useDrawerRootStyles = makeStyles({
     height: `var(${drawerCSSVars.drawerSizeVar})`,
     width: '100vw',
   },
+  absolute: {
+    position: 'absolute',
+  },
 });
 
 /**
@@ -44,6 +47,7 @@ export const useOverlayDrawerStyles_unstable = (state: OverlayDrawerState): Over
   const resetStyles = useDrawerResetStyles();
   const rootStyles = useDrawerRootStyles();
 
+  const absoluteStyles = state.hasMountNodeElement && rootStyles.absolute;
   const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement> | undefined;
 
   state.root.className = mergeClasses(
@@ -51,11 +55,12 @@ export const useOverlayDrawerStyles_unstable = (state: OverlayDrawerState): Over
     baseClassNames,
     resetStyles,
     rootStyles[state.position],
+    absoluteStyles,
     state.root.className,
   );
 
   if (backdrop) {
-    backdrop.className = mergeClasses(overlayDrawerClassNames.backdrop, backdrop.className);
+    backdrop.className = mergeClasses(overlayDrawerClassNames.backdrop, absoluteStyles, backdrop.className);
   }
 
   return state;

@@ -1,20 +1,22 @@
+import type { Meta } from '@storybook/react';
 import CreateMotionComponentDescription from './CreateMotionComponentDescription.md';
+import { CreateMotionComponentDefault } from './CreateMotionComponentDefault.stories';
 
 export { CreateMotionComponentDefault as Default } from './CreateMotionComponentDefault.stories';
 
-export { CreateMotionComponent as createMotionComponent } from './CreateMotionComponent.stories';
+export { CreateMotionComponentFactory as createMotionComponent } from './CreateMotionComponentFactory.stories';
 
-export { ImperativeRefPlayState as imperativeRef } from './ImperativeRefPlayState.stories';
-export { TokensUsage as tokens } from './TokensUsage.stories';
+export { CreateMotionComponentImperativeRefPlayState as imperativeRef } from './CreateMotionComponentImperativeRefPlayState.stories';
+export { CreateMotionComponentTokensUsage as tokens } from './CreateMotionComponentTokensUsage.stories';
 
-export { MotionLifecycleCallbacks as LifecycleCallbacks } from './MotionLifecycleCallbacks.stories';
-export { MotionArrays as arrays } from './MotionArrays.stories';
-export { MotionFunctions as functions } from './MotionFunctions.stories';
-export { MotionFunctionParams as functionParams } from './MotionFunctionParams.stories';
+export { CreateMotionComponentLifecycleCallbacks as LifecycleCallbacks } from './CreateMotionComponentLifecycleCallbacks.stories';
+export { CreateMotionComponentArrays as arrays } from './CreateMotionComponentArrays.stories';
+export { CreateMotionComponentFunctions as functions } from './CreateMotionComponentFunctions.stories';
+export { CreateMotionComponentFunctionParams as functionParams } from './CreateMotionComponentFunctionParams.stories';
 
 export default {
   title: 'Motion/APIs/createMotionComponent',
-  component: null,
+  component: CreateMotionComponentDefault,
   parameters: {
     docs: {
       description: {
@@ -22,4 +24,4 @@ export default {
       },
     },
   },
-};
+} satisfies Meta;

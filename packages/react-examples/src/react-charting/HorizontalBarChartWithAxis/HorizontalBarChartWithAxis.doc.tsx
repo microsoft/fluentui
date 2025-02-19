@@ -17,7 +17,7 @@ export const HorizontalBarChartWithAxisPageProps: IDocPageProps = {
   title: 'HorizontalBarChartWithAxis',
   componentName: 'HorizontalBarChartWithAxis',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/HorizontalBarChartWithAxis',
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/HorizontalBarChartWithAxis',
   examples: [
     {
       title: 'HorizontalBarChartWithAxis basic',

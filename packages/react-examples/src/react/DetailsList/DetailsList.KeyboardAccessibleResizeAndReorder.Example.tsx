@@ -35,7 +35,7 @@ const controlWrapperClass = mergeStyles({
   flexWrap: 'wrap',
 });
 const textFieldStyles: Partial<ITextFieldStyles> = {
-  root: { margin: margin },
+  root: { margin },
   fieldGroup: { maxWidth: '100px' },
 };
 const togglesStyles: Partial<IToggleStyles> = { root: { margin } };
@@ -62,7 +62,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     return {
       frozenColumnCountFromStart: parseInt(frozenColumnCountFromStart, 10),
       frozenColumnCountFromEnd: parseInt(frozenColumnCountFromEnd, 10),
-      handleColumnReorder: handleColumnReorder,
+      handleColumnReorder,
     };
   };
 
@@ -78,12 +78,14 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const onChangeColumnReorderEnabled = (event: React.MouseEvent<HTMLElement>, checked: boolean) =>
     setIsColumnReorderEnabled(checked);
 
-  const onItemInvoked = (item: IExampleItem) => alert(`Item invoked ${item.name}`);
-
   const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string => {
     const key = column.key as keyof IExampleItem;
     if (key === 'name') {
-      return <Link data-selection-invoke={true}>{item[key]}</Link>;
+      return (
+        <Link data-selection-invoke={true} underline>
+          {item[key]}
+        </Link>
+      );
     }
     return String(item[key]);
   };
@@ -110,7 +112,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     if (columnToEdit.current && input.current && detailsList) {
       if (clickHandler.current === RESIZE) {
         const width = input.current;
-        detailsList.updateColumn(columnToEdit.current, { width: width });
+        detailsList.updateColumn(columnToEdit.current, { width });
       } else if (clickHandler.current === REORDER) {
         const targetIndex = selection.mode ? input.current + 1 : input.current;
         detailsList.updateColumn(columnToEdit.current, { newColumnIndex: targetIndex });
@@ -135,7 +137,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     ];
 
     return {
-      items: items,
+      items,
       target: ev.currentTarget as HTMLElement,
       gapSpace: 10,
       isBeakVisible: true,
@@ -322,6 +324,11 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
 
   return (
     <div>
+      <p>
+        This example demonstrates how to implement reordering and resizing in a way that is both keyboard-accessible and
+        meets WCAG 2.2's{' '}
+        <a href="https://w3c.github.io/wcag/understanding/dragging-movements.html">Dragging Movements</a> requirement.
+      </p>
       <div className={controlWrapperClass}>
         <Toggle
           label="Enable column reorder"
@@ -355,7 +362,6 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
           columns={columns.map(x => ({ ...x, onColumnKeyDown }))}
           selection={selection}
           selectionPreservedOnEmptyClick={true}
-          onItemInvoked={onItemInvoked}
           onRenderItemColumn={onRenderItemColumn}
           dragDropEvents={dragDropEvents}
           columnReorderOptions={isColumnReorderEnabled ? getColumnReorderOptions() : undefined}

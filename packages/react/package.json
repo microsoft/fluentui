@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.120.2",
+  "version": "8.122.10",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,7 +22,7 @@
     "code-style": "just-scripts code-style",
     "codepen": "node ../../scripts/executors/src/local-codepen.js",
     "e2e": "yarn nx run react-examples:e2e --verbose",
-    "e2e:local": "yarn workspace @fluentui/react-examples e2e:local",
+    "e2e:local": "yarn nx run react-examples:e2e:local",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts dev:storybook",
@@ -30,7 +30,8 @@
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test",
     "update-snapshots": "just-scripts jest -u",
-    "mf": "just-scripts mf"
+    "mf": "just-scripts mf",
+    "verify-packaging": "just-scripts verify-packaging"
   },
   "devDependencies": {
     "@fluentui/common-styles": "*",
@@ -48,17 +49,17 @@
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.6.9",
-    "@fluentui/foundation-legacy": "^8.4.14",
-    "@fluentui/font-icons-mdl2": "^8.5.48",
-    "@fluentui/merge-styles": "^8.6.12",
-    "@fluentui/react-focus": "^8.9.11",
-    "@fluentui/react-hooks": "^8.8.11",
-    "@fluentui/react-portal-compat-context": "^9.0.12",
+    "@fluentui/foundation-legacy": "^8.4.23",
+    "@fluentui/font-icons-mdl2": "^8.5.57",
+    "@fluentui/merge-styles": "^8.6.13",
+    "@fluentui/react-focus": "^8.9.20",
+    "@fluentui/react-hooks": "^8.8.16",
+    "@fluentui/react-portal-compat-context": "^9.0.13",
     "@fluentui/react-window-provider": "^2.2.28",
     "@fluentui/set-version": "^8.2.23",
-    "@fluentui/style-utilities": "^8.10.19",
-    "@fluentui/theme": "^2.6.57",
-    "@fluentui/utilities": "^8.15.14",
+    "@fluentui/style-utilities": "^8.11.6",
+    "@fluentui/theme": "^2.6.64",
+    "@fluentui/utilities": "^8.15.19",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^2.1.0"
   },
