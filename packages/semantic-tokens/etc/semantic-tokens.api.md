@@ -44,25 +44,25 @@ export const ctrlLinkForegroundNeutralRest: string;
 export const ctrlLinkForegroundNeutralRestRaw = "--ctrl-link-foreground-neutral-rest";
 
 // @public (undocumented)
-export const foregroundCtrlBrandHover = "--foreground-ctrl-brand-hover";
+export const foregroundCtrlBrandHoverRaw = "--foreground-ctrl-brand-hover";
 
 // @public (undocumented)
-export const foregroundCtrlBrandPressed = "--foreground-ctrl-brand-pressed";
+export const foregroundCtrlBrandPressedRaw = "--foreground-ctrl-brand-pressed";
 
 // @public (undocumented)
-export const foregroundCtrlBrandRest = "--foreground-ctrl-brand-rest";
+export const foregroundCtrlBrandRestRaw = "--foreground-ctrl-brand-rest";
 
 // @public (undocumented)
 export const foregroundCtrlNeutralPrimaryDisabled: string;
 
 // @public (undocumented)
-export const foregroundCtrlNeutralPrimaryHover = "--foreground-ctrl-neutral-primary-hover";
+export const foregroundCtrlNeutralPrimaryHoverRaw = "--foreground-ctrl-neutral-primary-hover";
 
 // @public (undocumented)
-export const foregroundCtrlNeutralPrimaryPressed = "--foreground-ctrl-neutral-primary-pressed";
+export const foregroundCtrlNeutralPrimaryPressedRaw = "--foreground-ctrl-neutral-primary-pressed";
 
 // @public (undocumented)
-export const foregroundCtrlNeutralPrimaryRest = "--foreground-ctrl-neutral-primary-rest";
+export const foregroundCtrlNeutralPrimaryRestRaw = "--foreground-ctrl-neutral-primary-rest";
 
 // @public (undocumented)
 export const foregroundCtrlOntransparentDisabled: string;
