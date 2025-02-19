@@ -1,5 +1,5 @@
 import { addons } from '@storybook/manager-api';
-import webcomponentsTheme from './theme.mjs';
+import webcomponentsTheme from './theme.js';
 
 addons.setConfig({
   previewTabs: {
