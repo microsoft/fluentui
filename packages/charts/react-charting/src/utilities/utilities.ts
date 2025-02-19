@@ -44,6 +44,7 @@ import {
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
+let maxMarkerSize = 0;
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
 
@@ -524,7 +525,19 @@ export function createNumericYAxis(
     : yMinMaxValues.startValue < yMinValue
     ? 0
     : yMinValue!;
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
+  const maxMarkerSizeForYAxis = maxMarkerSize
+    ? Math.abs(
+        (maxMarkerSize * (finalYmin - finalYmax)) /
+          (margins.top! - containerHeight + margins.bottom! + 2 * maxMarkerSize),
+      )
+    : 0;
+  const domainValues = prepareDatapoints(
+    finalYmax + maxMarkerSizeForYAxis,
+    finalYmin - maxMarkerSizeForYAxis,
+    yAxisTickCount,
+    isIntegralDataset,
+    roundedTicks,
+  );
   const yAxisScale = d3ScaleLinear()
     .domain([supportNegativeData ? domainValues[0] : finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
@@ -985,12 +998,30 @@ export function domainRangeOfNumericForAreaChart(
     });
   })!;
 
+  maxMarkerSize = d3Max(points, (point: ILineChartPoints) => {
+    return d3Max(point.data, (item: ILineChartDataPoint) => {
+      return item.markerSize as number;
+    });
+  })!;
+  const maxMarkerSizeForXAxis = maxMarkerSize
+    ? Math.abs((maxMarkerSize * (xMax - xMin)) / (width - margins.right! - margins.left! - 2 * maxMarkerSize))
+    : 0;
   const rStartValue = margins.left!;
   const rEndValue = width - margins.right!;
 
   return isRTL
-    ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
-    : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
+    ? {
+        dStartValue: xMax + maxMarkerSizeForXAxis,
+        dEndValue: xMin - maxMarkerSizeForXAxis,
+        rStartValue,
+        rEndValue,
+      }
+    : {
+        dStartValue: xMin - maxMarkerSizeForXAxis,
+        dEndValue: xMax + maxMarkerSizeForXAxis,
+        rStartValue,
+        rEndValue,
+      };
 }
 
 /**
