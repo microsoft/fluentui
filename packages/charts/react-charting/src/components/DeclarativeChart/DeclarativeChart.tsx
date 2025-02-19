@@ -239,7 +239,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         if (isAreaChart) {
           return <AreaChart {...chartProps} />;
         }
-        return <LineChart {...chartProps} mode={isScatterMarkers ? 'scatter' : 'default'} />;
+        return <LineChart {...chartProps} lineMode={isScatterMarkers ? 'scatter' : 'default'} />;
       };
       return checkAndRenderChart(renderChartJsx, isAreaChart);
     case 'heatmap':

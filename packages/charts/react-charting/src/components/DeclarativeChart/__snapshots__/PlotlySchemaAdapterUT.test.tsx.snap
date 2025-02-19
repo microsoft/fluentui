@@ -3132,52 +3132,42 @@ Object {
         "color": "#f7adda",
         "data": Array [
           Object {
-            "markerSize": undefined,
             "x": 0,
             "y": 0.17048910089864067,
           },
           Object {
-            "markerSize": undefined,
             "x": 1,
             "y": 0.05390702725063046,
           },
           Object {
-            "markerSize": undefined,
             "x": 2,
             "y": 0.7560889217240573,
           },
           Object {
-            "markerSize": undefined,
             "x": 3,
             "y": 0.7393313216390578,
           },
           Object {
-            "markerSize": undefined,
             "x": 4,
             "y": 0.7562979443674754,
           },
           Object {
-            "markerSize": undefined,
             "x": 5,
             "y": 0.983908108492343,
           },
           Object {
-            "markerSize": undefined,
             "x": 6,
             "y": 0.4552096139092071,
           },
           Object {
-            "markerSize": undefined,
             "x": 7,
             "y": 0.751939393026647,
           },
           Object {
-            "markerSize": undefined,
             "x": 8,
             "y": 0.42441695150031034,
           },
           Object {
-            "markerSize": undefined,
             "x": 9,
             "y": 0.6119820237450841,
           },
@@ -3188,52 +3178,42 @@ Object {
         "color": "#9bd9db",
         "data": Array [
           Object {
-            "markerSize": undefined,
             "x": 0,
             "y": 1.0921498980687505,
           },
           Object {
-            "markerSize": undefined,
             "x": 1,
             "y": 0.628379692444796,
           },
           Object {
-            "markerSize": undefined,
             "x": 2,
             "y": 1.6804387333467445,
           },
           Object {
-            "markerSize": undefined,
             "x": 3,
             "y": 1.1741874271317159,
           },
           Object {
-            "markerSize": undefined,
             "x": 4,
             "y": 1.7098535938519392,
           },
           Object {
-            "markerSize": undefined,
             "x": 5,
             "y": 1.0165440369832146,
           },
           Object {
-            "markerSize": undefined,
             "x": 6,
             "y": 0.8201578488720772,
           },
           Object {
-            "markerSize": undefined,
             "x": 7,
             "y": 1.019179653143562,
           },
           Object {
-            "markerSize": undefined,
             "x": 8,
             "y": 0.5391840333768539,
           },
           Object {
-            "markerSize": undefined,
             "x": 9,
             "y": 0.9023036941696878,
           },
@@ -3244,52 +3224,42 @@ Object {
         "color": "#b29ad4",
         "data": Array [
           Object {
-            "markerSize": undefined,
             "x": 0,
             "y": 1.5084498776097979,
           },
           Object {
-            "markerSize": undefined,
             "x": 1,
             "y": 1.0993096327196032,
           },
           Object {
-            "markerSize": undefined,
             "x": 2,
             "y": 2.5468884763826125,
           },
           Object {
-            "markerSize": undefined,
             "x": 3,
             "y": 1.3139261978658,
           },
           Object {
-            "markerSize": undefined,
             "x": 4,
             "y": 1.7288516603693358,
           },
           Object {
-            "markerSize": undefined,
             "x": 5,
             "y": 1.3500413551768342,
           },
           Object {
-            "markerSize": undefined,
             "x": 6,
             "y": 1.4111774146124456,
           },
           Object {
-            "markerSize": undefined,
             "x": 7,
             "y": 1.1245312639069405,
           },
           Object {
-            "markerSize": undefined,
             "x": 8,
             "y": 1.4068617318281056,
           },
           Object {
-            "markerSize": undefined,
             "x": 9,
             "y": 0.9236499701488171,
           },
@@ -3300,52 +3270,42 @@ Object {
         "color": "#a4cc6c",
         "data": Array [
           Object {
-            "markerSize": undefined,
             "x": 0,
             "y": 1.912915766078795,
           },
           Object {
-            "markerSize": undefined,
             "x": 1,
             "y": 1.6450103381519354,
           },
           Object {
-            "markerSize": undefined,
             "x": 2,
             "y": 3.523866933241722,
           },
           Object {
-            "markerSize": undefined,
             "x": 3,
             "y": 1.656799203492564,
           },
           Object {
-            "markerSize": undefined,
             "x": 4,
             "y": 2.666064160881149,
           },
           Object {
-            "markerSize": undefined,
             "x": 5,
             "y": 2.2985767814076814,
           },
           Object {
-            "markerSize": undefined,
             "x": 6,
             "y": 1.6491300653173326,
           },
           Object {
-            "markerSize": undefined,
             "x": 7,
             "y": 1.2880873970749964,
           },
           Object {
-            "markerSize": undefined,
             "x": 8,
             "y": 2.192375146193222,
           },
           Object {
-            "markerSize": undefined,
             "x": 9,
             "y": 1.6271909616796654,
           },
@@ -3372,502 +3332,402 @@ Object {
         "color": "#a7e3a5",
         "data": Array [
           Object {
-            "markerSize": undefined,
             "x": 2015-01-01T00:00:00.000Z,
             "y": 0.5353935439391206,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-02T00:00:00.000Z,
             "y": -0.3510205670171982,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-03T00:00:00.000Z,
             "y": -1.3420793330744663,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-04T00:00:00.000Z,
             "y": -1.683479706754631,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-05T00:00:00.000Z,
             "y": -2.0207368899942826,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-06T00:00:00.000Z,
             "y": 0.006604084375472663,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-07T00:00:00.000Z,
             "y": 0.8037048387382045,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-08T00:00:00.000Z,
             "y": 1.6685589999803645,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-09T00:00:00.000Z,
             "y": 1.2683547027403048,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-10T00:00:00.000Z,
             "y": -1.3330462677331034,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-11T00:00:00.000Z,
             "y": -1.8663123665480104,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-12T00:00:00.000Z,
             "y": -2.8051461261147357,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-13T00:00:00.000Z,
             "y": -4.563508055068453,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-14T00:00:00.000Z,
             "y": -3.7591847216910996,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-15T00:00:00.000Z,
             "y": -3.5134185618878746,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-16T00:00:00.000Z,
             "y": -5.3419268826351995,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-17T00:00:00.000Z,
             "y": -3.332156069299614,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-18T00:00:00.000Z,
             "y": -3.5678897362109545,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-19T00:00:00.000Z,
             "y": -3.8548236009547465,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-20T00:00:00.000Z,
             "y": -4.58628192762981,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-21T00:00:00.000Z,
             "y": -4.116554826788904,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-22T00:00:00.000Z,
             "y": -2.7610003378381496,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-23T00:00:00.000Z,
             "y": -2.621859111953831,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-24T00:00:00.000Z,
             "y": -2.6349689848833315,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-25T00:00:00.000Z,
             "y": -2.0581142585936076,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-26T00:00:00.000Z,
             "y": -0.7744078058377932,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-27T00:00:00.000Z,
             "y": 0.9002451055355818,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-28T00:00:00.000Z,
             "y": 0.8373590393039949,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-29T00:00:00.000Z,
             "y": 0.5532093840234236,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-30T00:00:00.000Z,
             "y": 1.469976651890828,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-31T00:00:00.000Z,
             "y": 3.1860367266233904,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-01T00:00:00.000Z,
             "y": 2.493612510772345,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-02T00:00:00.000Z,
             "y": 1.9464391258267615,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-03T00:00:00.000Z,
             "y": 1.8807283125005585,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-04T00:00:00.000Z,
             "y": 3.0189402685173534,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-05T00:00:00.000Z,
             "y": 4.556005864163605,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-06T00:00:00.000Z,
             "y": 5.516442345945973,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-07T00:00:00.000Z,
             "y": 4.319606652282435,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-08T00:00:00.000Z,
             "y": 6.845756127344204,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-09T00:00:00.000Z,
             "y": 7.053236096270982,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-10T00:00:00.000Z,
             "y": 7.681494725458877,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-11T00:00:00.000Z,
             "y": 7.526563745782537,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-12T00:00:00.000Z,
             "y": 8.858342186205558,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-13T00:00:00.000Z,
             "y": 9.021889375014881,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-14T00:00:00.000Z,
             "y": 8.209805336778926,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-15T00:00:00.000Z,
             "y": 9.383959972549016,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-16T00:00:00.000Z,
             "y": 11.195848970970625,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-17T00:00:00.000Z,
             "y": 12.561537445362251,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-18T00:00:00.000Z,
             "y": 14.373511358982237,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-19T00:00:00.000Z,
             "y": 15.887456275652418,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-20T00:00:00.000Z,
             "y": 14.491455240251522,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-21T00:00:00.000Z,
             "y": 15.199461217404735,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-22T00:00:00.000Z,
             "y": 16.378844807972094,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-23T00:00:00.000Z,
             "y": 14.348345501207364,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-24T00:00:00.000Z,
             "y": 14.961597203409823,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-25T00:00:00.000Z,
             "y": 15.457566696478484,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-26T00:00:00.000Z,
             "y": 14.942769687687289,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-27T00:00:00.000Z,
             "y": 15.721527909780036,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-28T00:00:00.000Z,
             "y": 13.091278962257627,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-01T00:00:00.000Z,
             "y": 14.295247001092115,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-02T00:00:00.000Z,
             "y": 15.296655272416865,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-03T00:00:00.000Z,
             "y": 14.436440585461526,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-04T00:00:00.000Z,
             "y": 13.912453188370755,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-05T00:00:00.000Z,
             "y": 12.433861225213807,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-06T00:00:00.000Z,
             "y": 14.061345247447989,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-07T00:00:00.000Z,
             "y": 13.326092951912521,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-08T00:00:00.000Z,
             "y": 13.566974950387175,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-09T00:00:00.000Z,
             "y": 12.96345607653163,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-10T00:00:00.000Z,
             "y": 12.205278846692087,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-11T00:00:00.000Z,
             "y": 11.364010452431279,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-12T00:00:00.000Z,
             "y": 12.120962982512733,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-13T00:00:00.000Z,
             "y": 13.570258079014422,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-14T00:00:00.000Z,
             "y": 14.613857418348378,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-15T00:00:00.000Z,
             "y": 15.48868026864105,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-16T00:00:00.000Z,
             "y": 15.421250297066777,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-17T00:00:00.000Z,
             "y": 16.562957844203055,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-18T00:00:00.000Z,
             "y": 16.365666723485436,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-19T00:00:00.000Z,
             "y": 15.848038393086913,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-20T00:00:00.000Z,
             "y": 16.170083705874156,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-21T00:00:00.000Z,
             "y": 16.446617416519754,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-22T00:00:00.000Z,
             "y": 15.024371154281331,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-23T00:00:00.000Z,
             "y": 14.802238239296665,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-24T00:00:00.000Z,
             "y": 13.156751496135007,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-25T00:00:00.000Z,
             "y": 14.06168725142282,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-26T00:00:00.000Z,
             "y": 14.94588113322983,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-27T00:00:00.000Z,
             "y": 14.127589669913032,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-28T00:00:00.000Z,
             "y": 13.885898170515487,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-29T00:00:00.000Z,
             "y": 13.692030694564533,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-30T00:00:00.000Z,
             "y": 14.943253908206318,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-31T00:00:00.000Z,
             "y": 14.529368596515058,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-01T00:00:00.000Z,
             "y": 14.661473471114782,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-02T00:00:00.000Z,
             "y": 13.67375983483632,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-03T00:00:00.000Z,
             "y": 13.382284458918326,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-04T00:00:00.000Z,
             "y": 12.527287002966496,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-05T00:00:00.000Z,
             "y": 12.767994473001014,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-06T00:00:00.000Z,
             "y": 12.651030056419879,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-07T00:00:00.000Z,
             "y": 12.141617852418765,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-08T00:00:00.000Z,
             "y": 13.606694447410502,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-09T00:00:00.000Z,
             "y": 13.923089943159189,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-10T00:00:00.000Z,
             "y": 14.003348672865656,
           },
@@ -3878,502 +3738,402 @@ Object {
         "color": "#83bdeb",
         "data": Array [
           Object {
-            "markerSize": undefined,
             "x": 2015-01-01T00:00:00.000Z,
             "y": -2.58404773330316,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-02T00:00:00.000Z,
             "y": -1.9162964761259451,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-03T00:00:00.000Z,
             "y": -1.8899798841571565,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-04T00:00:00.000Z,
             "y": -1.098466181069551,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-05T00:00:00.000Z,
             "y": -1.2161136413159992,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-06T00:00:00.000Z,
             "y": -0.9298011508867184,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-07T00:00:00.000Z,
             "y": -2.5216450120142193,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-08T00:00:00.000Z,
             "y": -1.5547013224314532,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-09T00:00:00.000Z,
             "y": -3.1293219775443117,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-10T00:00:00.000Z,
             "y": -2.7232351981528025,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-11T00:00:00.000Z,
             "y": -1.704449229625379,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-12T00:00:00.000Z,
             "y": -1.2702366750752472,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-13T00:00:00.000Z,
             "y": -1.7688923656442583,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-14T00:00:00.000Z,
             "y": -1.9810878959630682,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-15T00:00:00.000Z,
             "y": -1.0881359248000217,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-16T00:00:00.000Z,
             "y": -0.5214761704035035,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-17T00:00:00.000Z,
             "y": -0.639866394654719,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-18T00:00:00.000Z,
             "y": -2.258513886233204,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-19T00:00:00.000Z,
             "y": -0.8711892253875131,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-20T00:00:00.000Z,
             "y": -0.45426547393253053,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-21T00:00:00.000Z,
             "y": -2.4076676391235785,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-22T00:00:00.000Z,
             "y": -2.2450025826137097,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-23T00:00:00.000Z,
             "y": -2.3488062397069234,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-24T00:00:00.000Z,
             "y": -3.2188990647525304,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-25T00:00:00.000Z,
             "y": -2.6042445674055594,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-26T00:00:00.000Z,
             "y": -2.9702468803291966,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-27T00:00:00.000Z,
             "y": -4.139691822816822,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-28T00:00:00.000Z,
             "y": -3.9967022316870042,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-29T00:00:00.000Z,
             "y": -4.796271521377118,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-30T00:00:00.000Z,
             "y": -5.244924380701339,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-31T00:00:00.000Z,
             "y": -6.965620503609484,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-01T00:00:00.000Z,
             "y": -6.430396926773768,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-02T00:00:00.000Z,
             "y": -5.234457265252843,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-03T00:00:00.000Z,
             "y": -6.181791776690352,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-04T00:00:00.000Z,
             "y": -7.3464387119459085,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-05T00:00:00.000Z,
             "y": -7.085650875056526,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-06T00:00:00.000Z,
             "y": -6.795217278293396,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-07T00:00:00.000Z,
             "y": -6.08725142043377,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-08T00:00:00.000Z,
             "y": -5.3416313194169875,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-09T00:00:00.000Z,
             "y": -4.900094995211111,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-10T00:00:00.000Z,
             "y": -4.715363010029477,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-11T00:00:00.000Z,
             "y": -3.6757033584677927,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-12T00:00:00.000Z,
             "y": -5.873900613367271,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-13T00:00:00.000Z,
             "y": -7.685787089886274,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-14T00:00:00.000Z,
             "y": -8.833149292574403,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-15T00:00:00.000Z,
             "y": -9.373517123532867,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-16T00:00:00.000Z,
             "y": -10.519456187180836,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-17T00:00:00.000Z,
             "y": -8.012082850355387,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-18T00:00:00.000Z,
             "y": -8.556759031756883,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-19T00:00:00.000Z,
             "y": -8.78527769843948,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-20T00:00:00.000Z,
             "y": -8.801850250864483,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-21T00:00:00.000Z,
             "y": -9.031427690493008,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-22T00:00:00.000Z,
             "y": -9.289972806031075,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-23T00:00:00.000Z,
             "y": -8.434541044235305,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-24T00:00:00.000Z,
             "y": -8.543619303217836,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-25T00:00:00.000Z,
             "y": -9.817816201809572,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-26T00:00:00.000Z,
             "y": -9.691704922707196,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-27T00:00:00.000Z,
             "y": -9.172230718814316,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-28T00:00:00.000Z,
             "y": -10.389025830978015,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-01T00:00:00.000Z,
             "y": -9.418276522564378,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-02T00:00:00.000Z,
             "y": -8.844666134378604,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-03T00:00:00.000Z,
             "y": -10.649699554950736,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-04T00:00:00.000Z,
             "y": -11.433978738990442,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-05T00:00:00.000Z,
             "y": -11.022214964648152,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-06T00:00:00.000Z,
             "y": -11.156982299530265,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-07T00:00:00.000Z,
             "y": -12.846500605483975,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-08T00:00:00.000Z,
             "y": -12.700459270895378,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-09T00:00:00.000Z,
             "y": -13.701718476553872,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-10T00:00:00.000Z,
             "y": -14.281259852458456,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-11T00:00:00.000Z,
             "y": -13.197701892598191,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-12T00:00:00.000Z,
             "y": -13.444607930505104,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-13T00:00:00.000Z,
             "y": -12.703127086621702,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-14T00:00:00.000Z,
             "y": -12.38184968649959,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-15T00:00:00.000Z,
             "y": -13.545422038889187,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-16T00:00:00.000Z,
             "y": -12.062411162554307,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-17T00:00:00.000Z,
             "y": -12.190051993521331,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-18T00:00:00.000Z,
             "y": -13.801739083658532,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-19T00:00:00.000Z,
             "y": -14.198265394729127,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-20T00:00:00.000Z,
             "y": -14.29078542197376,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-21T00:00:00.000Z,
             "y": -13.45263060195906,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-22T00:00:00.000Z,
             "y": -13.130412206893606,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-23T00:00:00.000Z,
             "y": -14.189794518505105,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-24T00:00:00.000Z,
             "y": -12.647928857811877,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-25T00:00:00.000Z,
             "y": -13.252175401809115,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-26T00:00:00.000Z,
             "y": -13.526006774399674,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-27T00:00:00.000Z,
             "y": -13.640567463371012,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-28T00:00:00.000Z,
             "y": -13.234252510186453,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-29T00:00:00.000Z,
             "y": -12.313307209824384,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-30T00:00:00.000Z,
             "y": -11.218557557877709,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-31T00:00:00.000Z,
             "y": -10.7821947135954,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-01T00:00:00.000Z,
             "y": -8.89016408336461,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-02T00:00:00.000Z,
             "y": -9.662631443485989,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-03T00:00:00.000Z,
             "y": -6.909371824212538,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-04T00:00:00.000Z,
             "y": -7.048202688582138,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-05T00:00:00.000Z,
             "y": -4.971706592042745,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-06T00:00:00.000Z,
             "y": -4.310618310025603,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-07T00:00:00.000Z,
             "y": -2.954237793688564,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-08T00:00:00.000Z,
             "y": -2.0883264569176156,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-09T00:00:00.000Z,
             "y": 1.1805740980198571,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-10T00:00:00.000Z,
             "y": 0.5040426644599496,
           },
@@ -4384,502 +4144,402 @@ Object {
         "color": "#df8e64",
         "data": Array [
           Object {
-            "markerSize": undefined,
             "x": 2015-01-01T00:00:00.000Z,
             "y": 0.4661114764240781,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-02T00:00:00.000Z,
             "y": 1.0610769506804194,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-03T00:00:00.000Z,
             "y": 1.0620659379275244,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-04T00:00:00.000Z,
             "y": -0.5603096501263787,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-05T00:00:00.000Z,
             "y": -0.22966983294858567,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-06T00:00:00.000Z,
             "y": 1.1358334022099883,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-07T00:00:00.000Z,
             "y": 1.8697838063194905,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-08T00:00:00.000Z,
             "y": 1.8307593169232188,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-09T00:00:00.000Z,
             "y": 2.6294937170536055,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-10T00:00:00.000Z,
             "y": 1.456439760404607,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-11T00:00:00.000Z,
             "y": 3.571977139947352,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-12T00:00:00.000Z,
             "y": 3.305623978930223,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-13T00:00:00.000Z,
             "y": 4.369054542737759,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-14T00:00:00.000Z,
             "y": 4.134928856846778,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-15T00:00:00.000Z,
             "y": 2.525747905079978,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-16T00:00:00.000Z,
             "y": 4.45625041538837,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-17T00:00:00.000Z,
             "y": 5.331621195457201,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-18T00:00:00.000Z,
             "y": 5.01722152487662,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-19T00:00:00.000Z,
             "y": 3.2730061427478807,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-20T00:00:00.000Z,
             "y": 2.3895586625726164,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-21T00:00:00.000Z,
             "y": 1.5551868349111646,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-22T00:00:00.000Z,
             "y": 0.9222137047406664,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-23T00:00:00.000Z,
             "y": -0.2408476097748915,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-24T00:00:00.000Z,
             "y": -0.7735805458656726,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-25T00:00:00.000Z,
             "y": -0.8871954038346644,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-26T00:00:00.000Z,
             "y": -1.9822438634492547,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-27T00:00:00.000Z,
             "y": -0.8886612143982666,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-28T00:00:00.000Z,
             "y": -0.7149527896910689,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-29T00:00:00.000Z,
             "y": -1.1377284325144619,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-30T00:00:00.000Z,
             "y": -1.7585300048885872,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-01-31T00:00:00.000Z,
             "y": -2.8117170543153254,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-01T00:00:00.000Z,
             "y": -2.6809842525932175,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-02T00:00:00.000Z,
             "y": -1.6457602974924186,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-03T00:00:00.000Z,
             "y": -2.1361202183757593,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-04T00:00:00.000Z,
             "y": -3.506112394459107,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-05T00:00:00.000Z,
             "y": -3.338531391597358,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-06T00:00:00.000Z,
             "y": -5.511057758779813,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-07T00:00:00.000Z,
             "y": -3.5261371875358676,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-08T00:00:00.000Z,
             "y": -4.05255557741406,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-09T00:00:00.000Z,
             "y": -5.188415501615373,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-10T00:00:00.000Z,
             "y": -6.032557392677557,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-11T00:00:00.000Z,
             "y": -5.6858700345353785,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-12T00:00:00.000Z,
             "y": -6.667528307767753,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-13T00:00:00.000Z,
             "y": -6.733517550988596,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-14T00:00:00.000Z,
             "y": -7.0502984033473615,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-15T00:00:00.000Z,
             "y": -7.574898212324232,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-16T00:00:00.000Z,
             "y": -7.1843491903366,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-17T00:00:00.000Z,
             "y": -6.080355259797091,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-18T00:00:00.000Z,
             "y": -6.398354606750326,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-19T00:00:00.000Z,
             "y": -6.286331305269291,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-20T00:00:00.000Z,
             "y": -7.175762338255774,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-21T00:00:00.000Z,
             "y": -6.6277002690607105,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-22T00:00:00.000Z,
             "y": -6.031655281290095,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-23T00:00:00.000Z,
             "y": -5.243102836583583,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-24T00:00:00.000Z,
             "y": -4.612608200873672,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-25T00:00:00.000Z,
             "y": -5.180512683218164,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-26T00:00:00.000Z,
             "y": -5.0321319726702916,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-27T00:00:00.000Z,
             "y": -4.567844497333498,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-02-28T00:00:00.000Z,
             "y": -3.347239903958168,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-01T00:00:00.000Z,
             "y": -2.5263058621799597,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-02T00:00:00.000Z,
             "y": -3.554423668680612,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-03T00:00:00.000Z,
             "y": -1.7466537357472816,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-04T00:00:00.000Z,
             "y": 0.08618389027480222,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-05T00:00:00.000Z,
             "y": 1.0223852208396356,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-06T00:00:00.000Z,
             "y": 2.2260700096326724,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-07T00:00:00.000Z,
             "y": 2.976731277433707,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-08T00:00:00.000Z,
             "y": 2.5457541264066235,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-09T00:00:00.000Z,
             "y": 2.412842465270771,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-10T00:00:00.000Z,
             "y": 2.1270496073872933,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-11T00:00:00.000Z,
             "y": 4.350264423349324,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-12T00:00:00.000Z,
             "y": 3.6000820362032346,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-13T00:00:00.000Z,
             "y": 3.6547717673422704,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-14T00:00:00.000Z,
             "y": 4.29856786980301,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-15T00:00:00.000Z,
             "y": 4.61832134099102,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-16T00:00:00.000Z,
             "y": 5.1364308299997825,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-17T00:00:00.000Z,
             "y": 5.647209819441451,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-18T00:00:00.000Z,
             "y": 6.041357011724418,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-19T00:00:00.000Z,
             "y": 4.789997568683162,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-20T00:00:00.000Z,
             "y": 6.041650920258338,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-21T00:00:00.000Z,
             "y": 5.860878612223213,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-22T00:00:00.000Z,
             "y": 5.6050673038102214,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-23T00:00:00.000Z,
             "y": 3.900259274681964,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-24T00:00:00.000Z,
             "y": 2.1974477295325476,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-25T00:00:00.000Z,
             "y": 0.979239291658772,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-26T00:00:00.000Z,
             "y": 0.9769412141062032,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-27T00:00:00.000Z,
             "y": 1.1215546396840912,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-28T00:00:00.000Z,
             "y": 1.4131546401228463,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-29T00:00:00.000Z,
             "y": -0.5715019565360024,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-30T00:00:00.000Z,
             "y": -0.4798030419178908,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-03-31T00:00:00.000Z,
             "y": -0.19867316746947167,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-01T00:00:00.000Z,
             "y": -1.3237063703965808,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-02T00:00:00.000Z,
             "y": -1.5132847802948692,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-03T00:00:00.000Z,
             "y": -0.9466159703619573,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-04T00:00:00.000Z,
             "y": 1.3543877997088902,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-05T00:00:00.000Z,
             "y": 1.3745632832250965,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-06T00:00:00.000Z,
             "y": 1.2843024279329955,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-07T00:00:00.000Z,
             "y": 1.1384756757773304,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-08T00:00:00.000Z,
             "y": 1.841477239971831,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-09T00:00:00.000Z,
             "y": 1.0626945214201182,
           },
           Object {
-            "markerSize": undefined,
             "x": 2015-04-10T00:00:00.000Z,
             "y": 1.6018849370336259,
           },
