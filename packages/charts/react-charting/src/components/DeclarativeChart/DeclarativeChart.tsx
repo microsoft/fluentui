@@ -228,7 +228,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       if (plotlyInput.data[0].mode === 'markers' && !isNumberArray(plotlyInput.data[0].y!)) {
         throw new Error(
           `Unsupported chart - type :${plotlyInput.data[0]?.type}, mode: ${plotlyInput.data[0]?.mode}
-          , xAxisType: String`,
+          , xAxisType: String or Date`,
         );
       }
       const isAreaChart = plotlyInput.data.some(
@@ -239,7 +239,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         if (isAreaChart) {
           return <AreaChart {...chartProps} />;
         }
-        return <LineChart {...chartProps} scatterMarkersMode={isScatterMarkers} />;
+        return <LineChart {...chartProps} mode={isScatterMarkers ? 'scatter' : 'default'} />;
       };
       return checkAndRenderChart(renderChartJsx, isAreaChart);
     case 'heatmap':

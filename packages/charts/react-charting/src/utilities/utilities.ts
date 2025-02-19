@@ -446,15 +446,15 @@ export function createNumericYAxis(
     : yMinMaxValues.startValue < yMinValue
     ? 0
     : yMinValue!;
-  const maxMarkerSizeInPixelsForYAxis = maxMarkerSize
+  const maxMarkerSizeForYAxis = maxMarkerSize
     ? Math.abs(
         (maxMarkerSize * (finalYmin - finalYmax)) /
           (margins.top! - containerHeight + margins.bottom! + 2 * maxMarkerSize),
       )
     : 0;
   const domainValues = prepareDatapoints(
-    finalYmax + maxMarkerSizeInPixelsForYAxis,
-    finalYmin - maxMarkerSizeInPixelsForYAxis,
+    finalYmax + maxMarkerSizeForYAxis,
+    finalYmin - maxMarkerSizeForYAxis,
     yAxisTickCount,
     isIntegralDataset,
     roundedTicks,
@@ -924,7 +924,7 @@ export function domainRangeOfNumericForAreaChart(
       return item.markerSize as number;
     });
   })!;
-  const maxMarkerSizeInPixelsForXAxis = maxMarkerSize
+  const maxMarkerSizeForXAxis = maxMarkerSize
     ? Math.abs((maxMarkerSize * (xMax - xMin)) / (width - margins.right! - margins.left! - 2 * maxMarkerSize))
     : 0;
   const rStartValue = margins.left!;
@@ -932,14 +932,14 @@ export function domainRangeOfNumericForAreaChart(
 
   return isRTL
     ? {
-        dStartValue: xMax + maxMarkerSizeInPixelsForXAxis,
-        dEndValue: xMin - maxMarkerSizeInPixelsForXAxis,
+        dStartValue: xMax + maxMarkerSizeForXAxis,
+        dEndValue: xMin - maxMarkerSizeForXAxis,
         rStartValue,
         rEndValue,
       }
     : {
-        dStartValue: xMin - maxMarkerSizeInPixelsForXAxis,
-        dEndValue: xMax + maxMarkerSizeInPixelsForXAxis,
+        dStartValue: xMin - maxMarkerSizeForXAxis,
+        dEndValue: xMax + maxMarkerSizeForXAxis,
         rStartValue,
         rEndValue,
       };

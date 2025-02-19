@@ -92,7 +92,7 @@ export interface ILineChartProps extends ICartesianChartProps {
    * @default false
    * The prop used to handle scatter plot
    */
-  scatterMarkersMode?: boolean;
+  mode?: 'default' | 'scatter';
 }
 
 /**
