@@ -3,7 +3,7 @@
  *
  * Components with a different fluent 2 fallback than the control should define a component specific token instead.
  */
-
+// eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
 
 // Text

@@ -1,9 +1,9 @@
 // Brand control foreground CSS vars
-export const foregroundCtrlBrandRest = '--foreground-ctrl-brand-rest';
-export const foregroundCtrlBrandHover = '--foreground-ctrl-brand-hover';
-export const foregroundCtrlBrandPressed = '--foreground-ctrl-brand-pressed';
+export const foregroundCtrlBrandRestRaw = '--foreground-ctrl-brand-rest';
+export const foregroundCtrlBrandHoverRaw = '--foreground-ctrl-brand-hover';
+export const foregroundCtrlBrandPressedRaw = '--foreground-ctrl-brand-pressed';
 
 // Control foreground CSS vars
-export const foregroundCtrlNeutralPrimaryRest = '--foreground-ctrl-neutral-primary-rest';
-export const foregroundCtrlNeutralPrimaryHover = '--foreground-ctrl-neutral-primary-hover';
-export const foregroundCtrlNeutralPrimaryPressed = '--foreground-ctrl-neutral-primary-pressed';
+export const foregroundCtrlNeutralPrimaryRestRaw = '--foreground-ctrl-neutral-primary-rest';
+export const foregroundCtrlNeutralPrimaryHoverRaw = '--foreground-ctrl-neutral-primary-hover';
+export const foregroundCtrlNeutralPrimaryPressedRaw = '--foreground-ctrl-neutral-primary-pressed';
