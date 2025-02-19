@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "useActivateModal() hook to activate modals without moving focus.",
+  "type": "patch",
+  "comment": "Update to satisfy the bumped Tabster 8.5.0.",
   "packageName": "@fluentui/react-popover",
   "email": "marata@microsoft.com",
   "dependentChangeType": "patch"
