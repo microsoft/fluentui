@@ -21715,10 +21715,10 @@ storybook@7.6.20:
   dependencies:
     "@storybook/cli" "7.6.20"
 
-storywright@0.0.27-storybook7.9:
-  version "0.0.27-storybook7.9"
-  resolved "https://registry.yarnpkg.com/storywright/-/storywright-0.0.27-storybook7.9.tgz#a9e7cae664c771ab5cb45a38470ef32ae1486068"
-  integrity sha512-tfEksZ6zrZR/GqAplPlHBsE6X45k9A5p7MLzoeHGwqlSmZPSKnqlmNj74yUphAB8HVqPYucLx+jK2R3ya0YjlQ==
+storywright@0.0.27-storybook7.11:
+  version "0.0.27-storybook7.11"
+  resolved "https://registry.yarnpkg.com/storywright/-/storywright-0.0.27-storybook7.11.tgz#c032deedd83c82895b09fc17b7404d397b1ebedf"
+  integrity sha512-B/tte/PyJ6MATFvMsGlv3+Yy3dSmzmWYyLYx/ijWwbUQ8O6BqDkkmmgVlsFrgydfsCu3CX2qVXPsNEQjYW8cEQ==
   dependencies:
     playwright "^1.34.3"
     prop-types "^15.6.0"
