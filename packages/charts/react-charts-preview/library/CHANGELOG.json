@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charts-preview",
   "entries": [
     {
+      "date": "Tue, 18 Feb 2025 11:26:27 GMT",
+      "tag": "@fluentui/react-charts-preview_v0.1.10",
+      "version": "0.1.10",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charts-preview",
+            "commit": "5b5091795bd462fe78f1545fd91b21ef6510a45d",
+            "comment": "chore: add new 'charting' domain tag"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Feb 2025 10:42:12 GMT",
       "tag": "@fluentui/react-charts-preview_v0.1.10",
       "version": "0.1.10",
