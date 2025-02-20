@@ -40,6 +40,9 @@ export const createFadePresence: PresenceMotionCreator<FadeVariantParams>;
 export const createScalePresence: PresenceMotionFnCreator<ScaleVariantParams_unstable, ScaleRuntimeParams_unstable>;
 
 // @public
+export const createSlidePresence: PresenceMotionFnCreator<SlideVariantParams_unstable, SlideRuntimeParams_unstable>;
+
+// @public
 export const Fade: PresenceComponent<    {}>;
 
 // @public (undocumented)
@@ -56,6 +59,15 @@ export const ScaleRelaxed: PresenceComponent<ScaleRuntimeParams_unstable>;
 
 // @public (undocumented)
 export const ScaleSnappy: PresenceComponent<ScaleRuntimeParams_unstable>;
+
+// @public
+export const Slide: PresenceComponent<SlideRuntimeParams_unstable>;
+
+// @public (undocumented)
+export const SlideRelaxed: PresenceComponent<SlideRuntimeParams_unstable>;
+
+// @public (undocumented)
+export const SlideSnappy: PresenceComponent<SlideRuntimeParams_unstable>;
 
 // (No @packageDocumentation comment for this package)
 
