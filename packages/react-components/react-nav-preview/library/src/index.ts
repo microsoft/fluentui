@@ -121,3 +121,8 @@ export {
   useSplitNavItemStyles_unstable,
   useSplitNavItem_unstable,
 } from './SplitNavItem';
+
+export type { NavCategoryContextValues } from './components/NavCategoryContext';
+export type { NavCategoryItemContextValues } from './components/NavCategoryItem/NavCategoryItem.types';
+export { useNavCategoryItemContextValues_unstable } from './components/useNavCategoryItemContextValues_unstable';
+export { useNavCategoryContextValues_unstable } from './components/useNavCategoryContextValues_unstable';
