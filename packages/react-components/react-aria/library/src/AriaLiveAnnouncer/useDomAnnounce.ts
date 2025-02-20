@@ -138,11 +138,9 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
     const element = targetDocument.createElement('div');
     element.setAttribute('aria-live', 'assertive');
 
-    for (const key in tabsterNeverHiddenAttributes) {
-      if (tabsterNeverHiddenAttributes.hasOwnProperty(key)) {
-        element.setAttribute(key, tabsterNeverHiddenAttributes[key]);
-      }
-    }
+    Object.entries(tabsterNeverHiddenAttributes).forEach((key, value) => {
+        element.setAttribute(key, value);
+    });
 
     Object.assign(element.style, VISUALLY_HIDDEN_STYLES);
     targetDocument.body.append(element);
