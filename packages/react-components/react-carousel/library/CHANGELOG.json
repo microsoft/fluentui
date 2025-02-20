@@ -2,6 +2,21 @@
   "name": "@fluentui/react-carousel",
   "entries": [
     {
+      "date": "Tue, 18 Feb 2025 11:26:27 GMT",
+      "tag": "@fluentui/react-carousel_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "58c34624254f34c19d41033d92d968b1be02d258",
+            "comment": "feat: Add tooltip wrappers for icon buttons in nav container"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Feb 2025 10:42:12 GMT",
       "tag": "@fluentui/react-carousel_v9.4.7",
       "version": "9.4.7",
