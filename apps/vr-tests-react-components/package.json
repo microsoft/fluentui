@@ -57,7 +57,6 @@
     "@fluentui/react-spinner": "*",
     "@fluentui/react-spinbutton": "*",
     "@fluentui/react-storybook-addon": "*",
-    "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/react-swatch-picker": "*",
     "@fluentui/react-switch": "*",
     "@fluentui/react-table": "*",
