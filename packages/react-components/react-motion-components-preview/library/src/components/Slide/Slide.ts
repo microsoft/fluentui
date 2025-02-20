@@ -1,37 +1,68 @@
-import { motionTokens, createPresenceComponent } from '@fluentui/react-motion';
+import { motionTokens, createPresenceComponent, AtomMotion } from '@fluentui/react-motion';
 import { PresenceMotionFnCreator } from '../../types';
 import { SlideRuntimeParams_unstable, SlideVariantParams_unstable } from './Slide.types';
+import { fadeAtom } from '../../atoms/fade-atom';
+import { slideAtom } from '../../atoms/slide-atom';
+import { visibilityAtom } from '../../atoms/visibility-atom';
 
 /** Define a presence motion for slide in/out */
 export const createSlidePresence: PresenceMotionFnCreator<SlideVariantParams_unstable, SlideRuntimeParams_unstable> =
   ({
-    enterDuration = motionTokens.durationGentle,
-    enterEasing = motionTokens.curveDecelerateMax,
+    enterDuration = motionTokens.durationNormal,
+    enterEasing = motionTokens.curveDecelerateMid,
     exitDuration = motionTokens.durationNormal,
-    exitEasing = motionTokens.curveAccelerateMax,
+    exitEasing = motionTokens.curveAccelerateMid,
   } = {}) =>
-  ({ animateOpacity = true }) => {
-    const fromOpacity = animateOpacity ? 0 : 1;
-    const toOpacity = 1;
-    const fromSlide = 0.9; // Could be a custom param in the future
-    const toSlide = 1;
-
-    const enterKeyframes = [
-      { opacity: fromOpacity, transform: `scale3d(${fromSlide}, ${fromSlide}, 1)`, visibility: 'visible' },
-      { opacity: toOpacity, transform: `scale3d(${toSlide}, ${toSlide}, 1)` },
-    ];
-
-    const exitKeyframes = [
-      { opacity: toOpacity, transform: `scale3d(${toSlide}, ${toSlide}, 1)` },
-      { opacity: fromOpacity, transform: `scale3d(${fromSlide}, ${fromSlide}, 1)`, visibility: 'hidden' },
-    ];
-    return {
-      enter: {
+  ({ animateOpacity = true, orientation = 'vertical', distance = '20px' }) => {
+    // ----- ENTER -----
+    const enterAtoms: AtomMotion[] = [
+      slideAtom({
+        direction: 'enter',
+        orientation,
+        distance,
         duration: enterDuration,
         easing: enterEasing,
-        keyframes: enterKeyframes,
-      },
-      exit: { duration: exitDuration, easing: exitEasing, keyframes: exitKeyframes },
+      }),
+    ];
+    if (animateOpacity) {
+      enterAtoms.push(
+        fadeAtom({
+          direction: 'enter',
+          duration: enterDuration,
+          easing: enterEasing,
+        }),
+      );
+    } else {
+      // Since there is no fade-in, use visibility to show the element
+      enterAtoms.push(visibilityAtom({ direction: 'enter', duration: enterDuration }));
+    }
+
+    // ----- EXIT -----
+    const exitAtoms: AtomMotion[] = [
+      slideAtom({
+        direction: 'exit',
+        orientation,
+        distance,
+        duration: exitDuration,
+        easing: exitEasing,
+      }),
+    ];
+    if (animateOpacity) {
+      exitAtoms.push(
+        fadeAtom({
+          direction: 'exit',
+          duration: exitDuration,
+          easing: exitEasing,
+        }),
+      );
+    } else {
+      // Since there is no fade-out, use visibility to hide the element
+      enterAtoms.push(visibilityAtom({ direction: 'exit', duration: exitDuration }));
+    }
+
+    return {
+      enter: enterAtoms,
+      exit: exitAtoms,
     };
   };
 
