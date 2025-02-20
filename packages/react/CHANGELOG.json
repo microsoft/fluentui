@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 19 Feb 2025 07:21:16 GMT",
+      "tag": "@fluentui/react_v8.122.10",
+      "version": "8.122.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "walterb@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "8264ce0435583ae69c051f109388005be3c0de2b",
+            "comment": "fix(KeytipTree): refactor updateNode to improve parent handling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Jan 2025 07:21:15 GMT",
       "tag": "@fluentui/react_v8.122.9",
       "version": "8.122.9",

@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 07 Feb 2025 10:42:10 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Feb 2025 11:26:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.59.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.59.0)
+
+Tue, 18 Feb 2025 11:26:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.58.3..@fluentui/react-components_v9.59.0)
+
+### Minor changes
+
+- `@fluentui/react-carousel`
+  - feat: Add tooltip wrappers for icon buttons in nav container ([PR #33821](https://github.com/microsoft/fluentui/pull/33821) by mifraser@microsoft.com)
+- `@fluentui/react-color-picker-preview`
+  - custom color channels ([PR #33763](https://github.com/microsoft/fluentui/pull/33763) by v.kozlova13@gmail.com)
+- `@fluentui/react-components`
+  - BREAKING: rename api report file name according to api-extractor change ([PR #33692](https://github.com/microsoft/fluentui/pull/33692) by vgenaev@gmail.com)
+  - feat: export isHTMLElement from public API ([PR #33856](https://github.com/microsoft/fluentui/pull/33856) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-color-picker-preview`
+  - fix: design changes for ColorPicker ([PR #33785](https://github.com/microsoft/fluentui/pull/33785) by vkozlova@microsoft.com)
 
 ## [9.58.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.58.3)
 
