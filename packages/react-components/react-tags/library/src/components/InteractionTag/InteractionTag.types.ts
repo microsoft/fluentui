@@ -30,6 +30,7 @@ export type InteractionTagProps<Value = TagValue> = ComponentProps<Partial<Inter
 
   /**
    * An InteractionTag can be selected.
+   * Note: This prop only changes the appearance of the tag at the moment. A future PR will add the integration with TagGroup.
    *
    * @default false
    */
