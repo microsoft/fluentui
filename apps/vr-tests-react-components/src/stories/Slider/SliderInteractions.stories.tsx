@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { Slider } from '@fluentui/react-slider';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, TestWrapperDecorator } from '../../utilities';
 
@@ -18,7 +18,7 @@ export default {
         .mouseUp('.test-class')
         .end(),
     },
-  } satisfies StoryParameter,
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Slider>;
 
 export const Root = () => <Slider className="test-class" defaultValue={30} />;

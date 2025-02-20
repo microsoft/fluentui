@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Decorator, Meta } from '@storybook/react';
 import { Spinner, spinnerClassNames } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
@@ -36,7 +36,7 @@ export default {
   decorators: [TestWrapperDecoratorPauseAnimation],
   parameters: {
     storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
-  } satisfies StoryParameter,
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Spinner>;
 
 export const Primary = () => <Spinner />;

@@ -4,14 +4,14 @@ import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui
 import type { Meta } from '@storybook/react';
 import { getStoryVariant, RTL } from '../../utilities';
 import { buttonId, steps, useStyles } from './utils';
-import type { StoryParameter } from 'storywright';
+import type { StoryParameters } from 'storywright';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 export default {
   title: 'MenuButton Converged',
   component: MenuButton,
-  parameters: { storyWright: { steps } } satisfies StoryParameter,
+  parameters: { storyWright: { steps } } satisfies StoryParameters,
 } satisfies Meta<typeof MenuButton>;
 
 export const Default = () => <MenuButton id={buttonId}>Hello, world</MenuButton>;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Skeleton, SkeletonItem } from '@fluentui/react-skeleton';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { makeStyles } from '@griffel/react';
 
 import { getStoryVariant, TestWrapperDecoratorFixedWidth, HIGH_CONTRAST, DARK_MODE, RTL } from '../utilities';
@@ -21,7 +21,7 @@ export default {
   decorators: [TestWrapperDecoratorFixedWidth],
   parameters: {
     storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
-  } satisfies StoryParameter,
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Skeleton>;
 
 export const OpaqueSkeletonWithRectangle = () => (

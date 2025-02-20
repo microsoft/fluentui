@@ -16,7 +16,7 @@ import { Button } from '@fluentui/react-button';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import {
   CaretDownRegular,
   CaretRightRegular,
@@ -35,7 +35,7 @@ export default {
   title: 'Tree',
   parameters: {
     storyWright: { steps: new Steps().snapshot('default').end() },
-  } satisfies StoryParameter,
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Tree>;
 
 export const Default = () => (
@@ -168,7 +168,7 @@ Appearance.parameters = {
       .snapshot('Transparent tree mousedown')
       .end(),
   },
-} satisfies StoryParameter;
+} satisfies StoryParameters;
 
 export const AppearanceDarkMode = getStoryVariant(Appearance, DARK_MODE);
 
@@ -564,7 +564,7 @@ FlatTreeSingleSelection.parameters = {
       .snapshot('flat tree single selection selected 1')
       .end(),
   },
-} satisfies StoryParameter;
+} satisfies StoryParameters;
 
 export const FlatTreeSingleSelectionDarkMode = getStoryVariant(FlatTreeSingleSelection, DARK_MODE);
 
@@ -598,7 +598,7 @@ FlatTreeMultiSelection.parameters = {
       .snapshot('flat tree multi selection selected 1-1')
       .end(),
   },
-} satisfies StoryParameter;
+} satisfies StoryParameters;
 
 export const FlatTreeMultiSelectionDarkMode = getStoryVariant(FlatTreeMultiSelection, DARK_MODE);
 

@@ -4,7 +4,7 @@ import { CircleRegular } from '@fluentui/react-icons';
 import { propValues, useStyles } from './utils';
 import type { Meta } from '@storybook/react';
 import { getStoryVariant, RTL } from '../../utilities';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 
 const BadgeSampleRow: React.FC<BadgeProps> = props => {
   const styles = useStyles();
@@ -36,7 +36,7 @@ const BadgeSampleRow: React.FC<BadgeProps> = props => {
 
 export default {
   title: 'Badge Converged',
-  parameters: { storyWright: { steps: new Steps().snapshot('normal').end() } } satisfies StoryParameter,
+  parameters: { storyWright: { steps: new Steps().snapshot('normal').end() } } satisfies StoryParameters,
 } satisfies Meta<typeof Badge>;
 
 export const SizeTiny = () => {

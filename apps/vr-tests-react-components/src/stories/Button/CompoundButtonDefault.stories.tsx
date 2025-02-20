@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { CompoundButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import type { Meta } from '@storybook/react';
@@ -20,7 +20,7 @@ const steps = new Steps()
 export default {
   title: 'CompoundButton Converged',
   component: CompoundButton,
-  parameters: { storyWright: { steps } } satisfies StoryParameter,
+  parameters: { storyWright: { steps } } satisfies StoryParameters,
 } satisfies Meta<typeof CompoundButton>;
 
 export const Default = () => (

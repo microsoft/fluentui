@@ -3,7 +3,7 @@ import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '
 import type { Meta } from '@storybook/react';
 import { getStoryVariant, RTL } from '../../utilities';
 import { Avatar } from '@fluentui/react-avatar';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 
 const contentId = 'content-id';
 const dismissButtonId = 'dismiss-button-id';
@@ -36,7 +36,7 @@ const dismissSteps = new Steps()
 export default {
   title: 'InteractionTag Converged',
   component: InteractionTag,
-  parameters: { storyWright: { steps: defaultSteps } } satisfies StoryParameter,
+  parameters: { storyWright: { steps: defaultSteps } } satisfies StoryParameters,
 } satisfies Meta<typeof InteractionTag>;
 
 export const Rounded = () => (
@@ -70,7 +70,7 @@ export const RoundedDismissible = () => (
     <InteractionTagSecondary id={dismissButtonId} />
   </InteractionTag>
 );
-RoundedDismissible.parameters = { storyWright: { steps: dismissSteps } } satisfies StoryParameter;
+RoundedDismissible.parameters = { storyWright: { steps: dismissSteps } } satisfies StoryParameters;
 export const RoundedDismissibleRTL = getStoryVariant(RoundedDismissible, RTL);
 
 export const Circular = () => (
@@ -104,6 +104,6 @@ export const CircularDismissible = () => (
     <InteractionTagSecondary id={dismissButtonId} />
   </InteractionTag>
 );
-CircularDismissible.parameters = { storyWright: { steps: dismissSteps } } satisfies StoryParameter;
+CircularDismissible.parameters = { storyWright: { steps: dismissSteps } } satisfies StoryParameters;
 
 export const CircularDismissibleRTL = getStoryVariant(CircularDismissible, RTL);

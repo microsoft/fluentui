@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { FluentProvider } from '@fluentui/react-provider';
 import { makeStyles } from '@griffel/react';
@@ -12,7 +12,7 @@ export default {
   decorators: [TestWrapperDecoratorFixedWidth],
   parameters: {
     storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
-  } satisfies StoryParameter,
+  } satisfies StoryParameters,
 } satisfies Meta<typeof SpinButton>;
 
 export const SizeSmall = () => <SpinButton size="small" value={10} />;

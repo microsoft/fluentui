@@ -14,7 +14,7 @@ import { Tag } from '@fluentui/react-tags';
 import { Avatar } from '@fluentui/react-avatar';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { ArrowDownFilled } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-button';
 
@@ -24,7 +24,7 @@ export default {
   title: 'TagPicker',
   parameters: {
     storyWright: { steps: new Steps().snapshot('default').end() },
-  } satisfies StoryParameter,
+  } satisfies StoryParameters,
 } satisfies Meta<typeof TagPicker>;
 
 const options = [
@@ -141,7 +141,7 @@ DefaultOpen.parameters = {
       .snapshot('default open option mouse down')
       .end(),
   },
-} satisfies StoryParameter;
+} satisfies StoryParameters;
 
 export const DefaultOpenDarkMode = getStoryVariant(DefaultOpen, DARK_MODE);
 
@@ -268,7 +268,7 @@ Disabled.parameters = {
   storyWright: {
     steps: new Steps().hover('#tag-picker-input').snapshot('disabled input hover').end(),
   },
-} satisfies StoryParameter;
+} satisfies StoryParameters;
 
 export const DisabledDarkMode = getStoryVariant(Disabled, DARK_MODE);
 

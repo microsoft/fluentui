@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps, StoryParameter } from 'storywright';
+import { Steps, StoryParameters } from 'storywright';
 import { SpinButton, spinButtonClassNames } from '@fluentui/react-spinbutton';
 
 import { getStoryVariant, TestWrapperDecoratorFixedWidth, DARK_MODE, RTL, HIGH_CONTRAST } from '../../utilities';
@@ -38,7 +38,7 @@ export default {
         .snapshot('focused', { cropTo })
         .end(),
     },
-  } satisfies StoryParameter,
+  } satisfies StoryParameters,
 } satisfies Meta<typeof SpinButton>;
 
 export const AppearanceOutlineDefault = () => <SpinButton value={10} />;

@@ -4,7 +4,7 @@ import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui
 import type { Meta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 import { Avatar } from '@fluentui/react-avatar';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { makeStyles } from '@griffel/react';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
@@ -14,7 +14,7 @@ export default {
   component: InteractionTag,
   parameters: {
     storyWright: { steps: new Steps().snapshot('default').end() },
-  } satisfies StoryParameter,
+  } satisfies StoryParameters,
 } satisfies Meta<typeof InteractionTag>;
 
 export const Default = () => (

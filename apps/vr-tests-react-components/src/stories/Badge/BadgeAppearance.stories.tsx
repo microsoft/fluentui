@@ -5,7 +5,7 @@ import { mergeClasses } from '@griffel/react';
 import { propValues, useStyles } from './utils';
 import type { Meta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 
 const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appearance'] }> = ({ appearance }) => {
   const styles = useStyles();
@@ -78,7 +78,7 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appe
 
 export default {
   title: 'Badge Converged',
-  parameters: { storyWright: { steps: new Steps().snapshot('normal').end() } } satisfies StoryParameter,
+  parameters: { storyWright: { steps: new Steps().snapshot('normal').end() } } satisfies StoryParameters,
 } satisfies Meta<typeof Badge>;
 
 export const Filled = () => <BadgeAppearanceTemplate appearance={'filled'} />;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { Slider } from '@fluentui/react-slider';
 import { getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { useStyles } from './utils';
@@ -10,7 +10,7 @@ export default {
   decorators: [TestWrapperDecorator],
   parameters: {
     storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
-  } satisfies StoryParameter,
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Slider>;
 
 export const Horizontal0 = () => <Slider defaultValue={0} />;

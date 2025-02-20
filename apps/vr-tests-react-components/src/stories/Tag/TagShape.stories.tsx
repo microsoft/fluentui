@@ -3,7 +3,7 @@ import { Tag } from '@fluentui/react-tags';
 import type { Meta } from '@storybook/react';
 import { getStoryVariant, RTL } from '../../utilities';
 import { Avatar } from '@fluentui/react-avatar';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 
 const tagId = 'tag-id';
 const steps = new Steps()
@@ -34,7 +34,7 @@ export const RoundedDismissible = () => (
     Primary Text
   </Tag>
 );
-RoundedDismissible.parameters = { storyWright: { steps } } satisfies StoryParameter;
+RoundedDismissible.parameters = { storyWright: { steps } } satisfies StoryParameters;
 
 export const RoundedDismissibleRTL = getStoryVariant(RoundedDismissible, RTL);
 
@@ -54,6 +54,6 @@ export const CircularDismissible = () => (
     Primary Text
   </Tag>
 );
-CircularDismissible.parameters = { storyWright: { steps } } satisfies StoryParameter;
+CircularDismissible.parameters = { storyWright: { steps } } satisfies StoryParameters;
 
 export const CircularDismissibleRTL = getStoryVariant(CircularDismissible, RTL);

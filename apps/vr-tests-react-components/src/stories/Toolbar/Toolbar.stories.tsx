@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { makeStyles } from '@griffel/react';
 import {
   Toolbar,
@@ -40,7 +40,7 @@ export default {
         .snapshot('Button Pressed', { cropTo: '.testWrapper' })
         .end(),
     },
-  } satisfies StoryParameter,
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Toolbar>;
 
 export const Default = (props: Partial<ToolbarProps>) => (

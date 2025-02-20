@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps, type StoryParameter } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { Tooltip } from '@fluentui/react-tooltip';
 import type { PositioningProps } from '@fluentui/react-positioning';
 import { useStyles } from './utils';
@@ -139,7 +139,7 @@ Positioning.parameters = {
   storyWright: {
     steps: new Steps().click('#show-tooltips').snapshot('positioned tooltips', { cropTo: '.testWrapper' }).end(),
   },
-} satisfies StoryParameter;
+} satisfies StoryParameters;
 
 export const PositioningwithFallbacks = () => <TooltipPositioningWithFallbacks />;
 
@@ -148,7 +148,7 @@ PositioningwithFallbacks.parameters = {
   storyWright: {
     steps: new Steps().snapshot('positioning fallbacks', { cropTo: '.testWrapper' }).end(),
   },
-} satisfies StoryParameter;
+} satisfies StoryParameters;
 
 export const PositioningRTL = getStoryVariant(Positioning, RTL);
 
