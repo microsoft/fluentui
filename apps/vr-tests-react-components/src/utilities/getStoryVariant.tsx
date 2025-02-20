@@ -9,15 +9,19 @@ export const RTL = 'RTL';
 
 type StoryVariant = typeof DARK_MODE | typeof HIGH_CONTRAST | typeof RTL;
 
+function isStoryFn(story: StoryFn | StoryObj): story is StoryFn {
+  return typeof story === 'function';
+}
+
 /** Helper function that returns RTL, Dark Mode or High Contrast variant of an existing story. */
-export function getStoryVariant(story: StoryFn, variant: StoryVariant) {
+export function getStoryVariant(story: StoryFn | StoryObj, variant: StoryVariant): StoryObj {
   const theme = getTheme(variant);
   const dir = getDir(variant);
   const decorators = story.decorators ?? [];
 
   return {
     ...story,
-    render: story,
+    render: isStoryFn(story) ? story : story.render,
     storyName: `${getStoryName(story)} - ${variant}`,
     parameters: {
       ...story.parameters,
@@ -52,6 +56,6 @@ function getDir(variant: StoryVariant) {
   return variant === RTL ? 'rtl' : 'ltr';
 }
 
-function getStoryName<TArgs = Args>({ name, storyName }: StoryFn<TArgs>) {
+function getStoryName<TArgs = Args>({ name, storyName }: StoryFn<TArgs> | StoryObj<TArgs>) {
   return storyName ?? name?.replace(/([a-z])([A-Z])/g, '$1 $2');
 }
