@@ -1,4 +1,4 @@
-import { expectPresenceMotionFunction, expectPresenceMotionObject } from '../../testing/testUtils';
+import { expectPresenceMotionFunction, expectPresenceMotionArray } from '../../testing/testUtils';
 import { Slide } from './Slide';
 
 describe('Slide', () => {
@@ -7,6 +7,6 @@ describe('Slide', () => {
   });
 
   it('generates a motion definition from the static function', () => {
-    expectPresenceMotionObject(Slide);
+    expectPresenceMotionArray(Slide);
   });
 });
