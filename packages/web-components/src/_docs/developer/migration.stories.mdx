@@ -8,7 +8,7 @@ We're happy to announce Fluent Web Components v3 is now available. This document
 
 Here's a snapshot of what's new and improved in v3.
 
-- Smaller bundle size (-29% compressed!)
+- Smaller bundle size (-26% compressed!)
 - Reduced DOM size and overhead by nearly 50%
 - Improved Storybook docs
 - Updated to FASTElement v2.0
@@ -38,14 +38,13 @@ A high-level look at the differences between components in v2 and v3
 ### Deprecated Components
 
 - `anchored-region`
-- `slider-label` = `use field`
+- `slider-label` = `use field, label`
 - `tabs` = use `tablist`
 - `tab-panel` = use `role="tabpanel"`
-- `label` = use `field`
 
 # API Changes
 
-- Form controls now use field wrapper to handle label spacing and errors
+- Form controls now use `<fluent-field>` wrapper to handle label spacing and errors
 - Dialog = requires Dialog Body child
 - Tabs = no longer a uniform control, allows for flexibility
 - Accordion Item = attribute changes
@@ -55,7 +54,7 @@ API changes, renames, and deprecations are itemized in the table below.
 
 <table>
 <thead>
-<tr><th> Component         </th><th> V2  </th><th> V3  </th><th> Notes </th></tr>
+<tr><th> Component </th><th> V2 </th><th> V3 </th><th> Notes </th></tr>
 </thead>
 <tbody>
 
