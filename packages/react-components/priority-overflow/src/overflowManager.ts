@@ -54,6 +54,10 @@ export function createOverflowManager(): OverflowManager {
     const lte = overflowItems[lt];
     const rte = overflowItems[rt];
 
+    if (!lte || !rte) {
+      return 0;
+    }
+
     if (lte.priority !== rte.priority) {
       return lte.priority > rte.priority ? 1 : -1;
     }
