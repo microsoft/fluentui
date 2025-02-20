@@ -10,7 +10,7 @@ export const createSlidePresence: PresenceMotionFnCreator<SlideVariantParams_uns
   ({
     enterDuration = motionTokens.durationNormal,
     enterEasing = motionTokens.curveDecelerateMid,
-    exitDuration = motionTokens.durationNormal,
+    exitDuration = enterDuration, // defaults to the enter duration for symmetry
     exitEasing = motionTokens.curveAccelerateMid,
   } = {}) =>
   ({ animateOpacity = true, orientation = 'vertical', distance = '20px' }) => {
@@ -73,16 +73,16 @@ export const SlideSnappy = createPresenceComponent(
   createSlidePresence({
     enterDuration: motionTokens.durationNormal,
     enterEasing: motionTokens.curveDecelerateMax,
-    exitDuration: motionTokens.durationFast,
+    exitDuration: motionTokens.durationNormal,
     exitEasing: motionTokens.curveAccelerateMax,
   }),
 );
 
 export const SlideRelaxed = createPresenceComponent(
   createSlidePresence({
-    enterDuration: motionTokens.durationSlow,
-    enterEasing: motionTokens.curveDecelerateMax,
+    enterDuration: motionTokens.durationGentle,
+    enterEasing: motionTokens.curveDecelerateMid,
     exitDuration: motionTokens.durationGentle,
-    exitEasing: motionTokens.curveAccelerateMax,
+    exitEasing: motionTokens.curveAccelerateMid,
   }),
 );
