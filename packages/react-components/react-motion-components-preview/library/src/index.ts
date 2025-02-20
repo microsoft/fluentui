@@ -9,3 +9,4 @@ export {
 export type { CollapseRuntimeParams } from './components/Collapse';
 export { Fade, FadeSnappy, FadeRelaxed, createFadePresence } from './components/Fade';
 export { Scale, ScaleSnappy, ScaleRelaxed, createScalePresence } from './components/Scale';
+export { Slide, SlideSnappy, SlideRelaxed, createSlidePresence } from './components/Slide';
