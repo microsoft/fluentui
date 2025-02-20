@@ -1,3 +1,5 @@
+export type SlideOrientation = 'horizontal' | 'vertical';
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export type SlideVariantParams_unstable = {
   /** Time (ms) for the enter transition. Defaults to the `durationNormal` value (200 ms). */
@@ -17,4 +19,17 @@ export type SlideVariantParams_unstable = {
 export type SlideRuntimeParams_unstable = {
   /** Whether to animate the opacity. Defaults to `true`. */
   animateOpacity?: boolean;
+
+  /**
+   * The orientation of the slide animation: 'horizontal' or 'vertical'
+   * @default 'vertical'
+   */
+  orientation?: SlideOrientation;
+
+  /**
+   * The distance of the slide, relative to the content's natural position.
+   * Can be positive or negative, in pixels or other length units.
+   * @default '10px'
+   */
+  distance?: string;
 };
