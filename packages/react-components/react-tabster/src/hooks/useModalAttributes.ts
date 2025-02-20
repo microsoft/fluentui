@@ -5,6 +5,7 @@ import { getModalizer, getRestorer, Types as TabsterTypes, RestorerTypes } from 
 import { useTabster } from './useTabster';
 
 const DangerousNeverHiddenAttribute = 'data-tabster-never-hide';
+const DangerousNeverHiddenPropObject = { [DangerousNeverHiddenAttribute]: '' };
 
 export interface UseModalAttributesOptions {
   /**
@@ -39,7 +40,7 @@ export interface UseModalAttributesOptions {
  * @returns Attribute to apply to the target element that should never receive aria-hidden
  */
 export function useDangerousNeverHidden_unstable(): { [key: string]: string } {
-  return React.useRef({ [DangerousNeverHiddenAttribute]: '' }).current;
+  return DangerousNeverHiddenPropObject;
 }
 
 const tabsterAccessibleCheck: TabsterTypes.ModalizerElementAccessibleCheck = element => {
