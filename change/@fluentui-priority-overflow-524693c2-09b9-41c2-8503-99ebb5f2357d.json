@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Add a defensive check when getting overflow item records",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
