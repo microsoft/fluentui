@@ -16,11 +16,14 @@ import {
   textStyleDefaultRegularFontfamily,
   textStyleDefaultRegularWeight,
   strokewidthDefault,
+  ctrlLinkForegroundBrandRest,
 } from '@fluentui/semantic-tokens';
 
 export const linkClassNames: SlotClassNames<LinkSlots> = {
   root: 'fui-Link',
 };
+
+console.log('Test:', ctrlLinkForegroundNeutralRest);
 
 const useStyles = makeStyles({
   focusIndicator: createCustomFocusIndicatorStyle({
@@ -36,7 +39,7 @@ const useStyles = makeStyles({
     },
     backgroundColor: 'transparent',
     boxSizing: 'border-box',
-    color: ctrlLinkForegroundNeutralRest,
+    color: ctrlLinkForegroundBrandRest,
     cursor: 'pointer',
     display: 'inline',
     fontFamily: textStyleDefaultRegularFontfamily,
