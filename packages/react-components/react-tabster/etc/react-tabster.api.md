@@ -1439,7 +1439,7 @@ interface UncontrolledProps {
 }
 
 // @public
-export function useActivateModal(): (elementFromModal: HTMLElement | undefined) => boolean;
+export function useActivateModal(): (elementFromModal: HTMLElement | undefined) => void;
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => Types.TabsterDOMAttribute;

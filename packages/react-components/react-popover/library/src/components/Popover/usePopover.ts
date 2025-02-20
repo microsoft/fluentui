@@ -112,7 +112,6 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
 
   const { findFirstFocusable } = useFocusFinders();
   const activateModal = useActivateModal();
-  const [setActivateModalTimeout] = useTimeout();
 
   React.useEffect(() => {
     if (props.unstable_disableAutoFocus) {
@@ -129,21 +128,11 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
 
       if (shouldFocusContainer) {
         // Modal activation happens automatically when something inside the modal is focused programmatically.
-        // When the container is focused, we need to activate the modal manually, and we do it on the next tick,
-        // because on this tick the element is just created and Tabster has not instantiated Modalizer yet.
-        setActivateModalTimeout(() => {
-          activateModal(contentElement);
-        }, 0);
+        // When the container is focused, we need to activate the modal manually.
+        activateModal(contentElement);
       }
     }
-  }, [
-    findFirstFocusable,
-    setActivateModalTimeout,
-    activateModal,
-    open,
-    positioningRefs.contentRef,
-    props.unstable_disableAutoFocus,
-  ]);
+  }, [findFirstFocusable, activateModal, open, positioningRefs.contentRef, props.unstable_disableAutoFocus]);
 
   return {
     ...initialState,
