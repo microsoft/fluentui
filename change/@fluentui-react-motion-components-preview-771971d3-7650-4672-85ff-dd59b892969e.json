@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add Slide motion component",
+  "packageName": "@fluentui/react-motion-components-preview",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
