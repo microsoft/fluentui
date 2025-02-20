@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>native ESM for @fluentui/semantic-tokens</title>
+    <title>native ESM for @fluentui/tokens</title>
     <style>
       * {
         box-sizing: border-box;
@@ -26,12 +26,12 @@
     <script type="importmap">
       {
         "imports": {
-          "@fluentui/semantic-tokens": "../lib/index.js"
+          "@fluentui/tokens": "../lib/index.js"
         }
       }
     </script>
     <script type="module">
-      import * as semantic-tokens from '@fluentui/semantic-tokens';
+      import * as tokens from '@fluentui/tokens';
 
       bootstrap(App());
 
@@ -39,7 +39,7 @@
         const Root = document.createElement('section');
         Root.classList.add('root');
 
-        const Colors = Object.entries(semantic-tokens.webLightTheme)
+        const Colors = Object.entries(tokens.webLightTheme)
           .map(([key, value]) => {
             if (key.startsWith('color')) {
               return `<div class="color-ramp" data-id="${key}">
@@ -65,7 +65,7 @@
     </script>
   </head>
   <body>
-    <h1>Native ESM / <code>@fluentui/semantic-tokens</code></h1>
+    <h1>Native ESM / <code>@fluentui/tokens</code></h1>
     <div id="app"></div>
   </body>
 </html>
