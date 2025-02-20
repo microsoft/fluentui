@@ -33,6 +33,9 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<CollapseDela
 export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantParams, CollapseRuntimeParams>;
 
 // @public
+export const createSlidePresence: PresenceMotionFnCreator<SlideVariantParams_unstable, SlideRuntimeParams_unstable>;
+
+// @public
 export const Fade: PresenceComponent<FadeVariantParams>;
 
 // @public (undocumented)
@@ -49,6 +52,15 @@ export const ScaleRelaxed: PresenceComponent<ScaleVariantParams>;
 
 // @public (undocumented)
 export const ScaleSnappy: PresenceComponent<ScaleVariantParams>;
+
+// @public
+export const Slide: PresenceComponent<SlideRuntimeParams_unstable>;
+
+// @public (undocumented)
+export const SlideRelaxed: PresenceComponent<SlideRuntimeParams_unstable>;
+
+// @public (undocumented)
+export const SlideSnappy: PresenceComponent<SlideRuntimeParams_unstable>;
 
 // (No @packageDocumentation comment for this package)
 
