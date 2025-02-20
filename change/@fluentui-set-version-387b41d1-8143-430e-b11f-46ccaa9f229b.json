@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: trigger v8 release to fix production source-maps issues",
+  "packageName": "@fluentui/set-version",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
