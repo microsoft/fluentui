@@ -81,13 +81,12 @@ const withSlotEnhancer = context => {
       return;
     }
 
-    // we are interested only on raw strings ( which is case of non Storybook supported types)
-    if (typeof value === 'string') {
+    if (value.includes('WithSlotShorthandValue')) {
       const match = value.match(slotRegex);
       if (match) {
         updatedArgTypes[key].table.type.summary = `Slot<\"${match[1]}\">`;
-        // @ts-expect-error - storybook doesn't ship proper types (value is missing)
-        updatedArgTypes[key].type.value = `Slot<\"${match[1]}\">`;
+      } else {
+        updatedArgTypes[key].table.type.summary = `Slot`;
       }
     }
   });
