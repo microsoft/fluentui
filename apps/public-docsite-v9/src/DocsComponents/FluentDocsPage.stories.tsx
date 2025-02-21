@@ -71,6 +71,34 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     gap: tokens.spacingVerticalXS,
   },
+  slotAPIs: {
+    display: 'flex',
+    gap: tokens.spacingHorizontalM,
+
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+    padding: tokens.spacingHorizontalM,
+    margin: `0 ${tokens.spacingHorizontalM}`,
+  },
+  slotAPIsInfo: {
+    display: 'flex',
+    gap: tokens.spacingHorizontalM,
+
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+    padding: tokens.spacingHorizontalM,
+    margin: `0 ${tokens.spacingHorizontalM}`,
+  },
+  slotAPIsMessage: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.spacingVerticalXS,
+  },
+  slotAPIsIcon: {
+    alignSelf: 'center',
+    color: tokens.colorBrandForeground1,
+    fontSize: '24px',
+  },
 });
 
 const useVideoClasses = makeStyles({
@@ -149,9 +177,10 @@ function withSlotEnhancer(story: PreparedStory) {
   Object.entries(docGenProps).forEach(([key, argType]) => {
     const value: string = argType?.type?.name;
     const match = value.match(slotRegex);
-
     if (match) {
       component.__docgenInfo.props![key].type.name = `Slot<\"${match[1]}\">`;
+      // @ts-expect-error - storybook doesn't ship proper types (value is missing)
+      updatedArgTypes[key].type.value = `Slot<\"${match[1]}\">`;
     }
   });
 
@@ -170,11 +199,11 @@ const RenderArgsTable = ({
   const styles = useStyles();
 
   const { component } = withSlotEnhancer(story);
-
+  // const hasSlot = Object.keys(story.argTypes).some(key =>
+  //   story.argTypes[key].table?.type?.summary?.startsWith('Slot<'),
+  // );
   return hideArgsTable ? null : (
     <>
-      <ArgsTable of={component} />
-
       {story.argTypes.as && story.argTypes.as?.type?.name === 'enum' && (
         <div className={styles.nativeProps}>
           <InfoFilled className={styles.nativePropsIcon} />
@@ -189,6 +218,8 @@ const RenderArgsTable = ({
           </div>
         </div>
       )}
+
+      <ArgsTable of={component} />
     </>
   );
 };
