@@ -539,7 +539,7 @@ export class BaseDropdown extends FASTElement {
       ? this.enabledOptions.findIndex(x => x.text === this.control.value)
       : this.enabledOptions.indexOf(e.target as DropdownOption);
 
-    this.selectOption(optionIndex);
+    this.selectOption(optionIndex, true);
 
     return true;
   }
@@ -570,17 +570,21 @@ export class BaseDropdown extends FASTElement {
       return true;
     }
 
-    if (isDropdownOption(target) && !this.multiple) {
+    if (isDropdownOption(target)) {
       if (target.disabled) {
         return;
       }
 
-      if (this.isCombobox) {
-        this.control.value = target.text;
-        this.updateFreeformOption();
-      }
+      this.selectOption(this.enabledOptions.indexOf(target), true);
 
-      this.listbox.hidePopover();
+      if (!this.multiple) {
+        if (this.isCombobox) {
+          this.control.value = target.text;
+          this.updateFreeformOption();
+        }
+
+        this.listbox.hidePopover();
+      }
     }
 
     return true;
@@ -732,7 +736,7 @@ export class BaseDropdown extends FASTElement {
       case 'Enter':
       case 'Tab': {
         if (this.open) {
-          this.selectOption(this.activeIndex);
+          this.selectOption(this.activeIndex, true);
           if (this.multiple) {
             break;
           }
@@ -797,13 +801,17 @@ export class BaseDropdown extends FASTElement {
    * @param index - The index of the option to select.
    * @public
    */
-  public selectOption(index: number = this.selectedIndex): void {
+  public selectOption(index: number = this.selectedIndex, shouldEmit: boolean = false): void {
     this.listbox.selectOption(index);
     this.control.value = this.displayValue;
 
     this.setValidity();
 
     this.updateFreeformOption();
+
+    if (shouldEmit) {
+      this.$emit('change');
+    }
   }
 
   /**

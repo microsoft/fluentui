@@ -1,19 +1,20 @@
 import { expect, test } from '../../test/playwright/index.js';
+import type { Dropdown } from './dropdown.js';
 
 test.describe('Dropdown', () => {
   test.use({
     tagName: 'fluent-dropdown',
     innerHTML: /* html */ `
       <fluent-listbox>
-          <fluent-option value="apple">Apple</fluent-option>
-          <fluent-option value="banana">Banana</fluent-option>
-          <fluent-option value="orange">Orange</fluent-option>
-          <fluent-option value="mango">Mango</fluent-option>
-          <fluent-option value="kiwi">Kiwi</fluent-option>
-          <fluent-option value="cherry">Cherry</fluent-option>
-          <fluent-option value="grapefruit">Grapefruit</fluent-option>
-          <fluent-option value="papaya">Papaya</fluent-option>
-        </fluent-listbox>
+        <fluent-option value="apple">Apple</fluent-option>
+        <fluent-option value="banana">Banana</fluent-option>
+        <fluent-option value="orange">Orange</fluent-option>
+        <fluent-option value="mango">Mango</fluent-option>
+        <fluent-option value="kiwi">Kiwi</fluent-option>
+        <fluent-option value="cherry">Cherry</fluent-option>
+        <fluent-option value="grapefruit">Grapefruit</fluent-option>
+        <fluent-option value="papaya">Papaya</fluent-option>
+      </fluent-listbox>
     `,
     waitFor: ['fluent-listbox', 'fluent-option'],
   });
@@ -345,5 +346,113 @@ test.describe('Dropdown', () => {
 
       await expect(input).toHaveValue('Kiwi');
     });
+
+    test('should emit a `change` event when the value changes and the control loses focus via blur', async ({
+      fastPage,
+      page,
+    }) => {
+      const { element } = fastPage;
+      const input = element.locator('input');
+      const listbox = element.locator('fluent-listbox');
+
+      await fastPage.setTemplate({ attributes: { type: 'combobox' } });
+
+      await input.fill('kiwi');
+
+      await expect(listbox).toBeVisible();
+
+      await expect(input).toHaveValue('kiwi');
+
+      await expect(input).toBeFocused();
+
+      await element.evaluate((el: Dropdown) => {
+        el.addEventListener('change', () => el.insertAdjacentText('afterend', 'changed'), { once: true });
+      });
+
+      await input.blur();
+
+      await expect(page.locator('text=changed')).toBeVisible();
+    });
+  });
+
+  test('should emit a `change` event when value changes and the control loses focus via click', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const listbox = element.locator('fluent-listbox');
+
+    await element.click();
+
+    await expect(listbox).toBeVisible();
+
+    await expect(page.locator('text=changed')).toHaveCount(0);
+
+    await element.evaluate((el: Dropdown) => {
+      el.addEventListener('change', () => el.insertAdjacentText('afterend', 'changed'), { once: true });
+    });
+
+    await expect(page.locator('text=changed')).toHaveCount(0);
+
+    await element.locator('[value=kiwi]').click();
+
+    await expect(page.locator('text=changed')).toHaveCount(1);
+
+    await expect(page.locator('text=changed')).toBeVisible();
+  });
+
+  test('should emit a `change` event when the value is confirmed by pressing Enter', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const listbox = element.locator('fluent-listbox');
+
+    await element.click();
+
+    await expect(listbox).toBeVisible();
+
+    await element.press('ArrowDown');
+    await element.press('ArrowDown');
+    await element.press('ArrowDown');
+    await element.press('ArrowDown');
+    await element.press('ArrowDown');
+
+    await expect(element).toHaveJSProperty('activeIndex', 4);
+
+    const [wasChanged] = await Promise.all([
+      element.evaluate(
+        el =>
+          new Promise((resolve, reject) => {
+            const timeout = setTimeout(() => reject('change event was not emitted'), 1000);
+            el.addEventListener(
+              'change',
+              () => {
+                clearTimeout(timeout);
+                resolve('changed');
+              },
+              { once: true },
+            );
+          }),
+      ),
+      element.evaluate(el => el.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }))),
+    ]);
+
+    expect(wasChanged).toBe('changed');
+  });
+
+  test('should NOT emit a `change` event when the value is changed programmatically', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+
+    await element.evaluate((el: Dropdown) => {
+      el.addEventListener('change', () => el.insertAdjacentText('afterend', 'changed'), { once: true });
+    });
+
+    await element.evaluate((el: Dropdown) => {
+      el.value = 'kiwi';
+    });
+
+    await expect(page.locator('text=changed')).toHaveCount(0);
+
+    await expect(element).toHaveJSProperty('value', 'kiwi');
+
+    await expect(element.locator('fluent-option[value=kiwi]')).toHaveJSProperty('selected', true);
   });
 });

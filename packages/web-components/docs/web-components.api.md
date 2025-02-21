@@ -653,7 +653,7 @@ export class BaseDropdown extends FASTElement {
     // @internal
     get selectedIndex(): number;
     get selectedOptions(): DropdownOption[];
-    selectOption(index?: number): void;
+    selectOption(index?: number, shouldEmit?: boolean): void;
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     type: DropdownType;
