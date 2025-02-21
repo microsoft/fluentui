@@ -15,13 +15,9 @@ export const colorSliderCSSVars = {
   sliderProgressVar: `--fui-Slider--progress`,
   thumbColorVar: `--fui-Slider__thumb--color`,
   railColorVar: `--fui-Slider__rail--color`,
+  thumbSizeVar: `--fui-Slider__thumb--size`,
+  railSizeVar: `--fui-Slider__rail--size`,
 };
-
-// Internal CSS variables
-const thumbSizeVar = `--fui-Slider__thumb--size`;
-const railSizeVar = `--fui-Slider__rail--size`;
-const innerThumbRadiusVar = `--fui-Slider__inner-thumb--radius`;
-const thumbPositionVar = `--fui-Slider__thumb--position`;
 
 const hueBackground = `linear-gradient(${[
   `var(${colorSliderCSSVars.sliderDirectionVar})`,
@@ -43,9 +39,8 @@ const useRootStyles = makeResetStyles({
   touchAction: 'none',
   alignItems: 'center',
   justifyItems: 'center',
-  [thumbSizeVar]: '20px',
-  [railSizeVar]: '20px',
-  [innerThumbRadiusVar]: '6px',
+  [colorSliderCSSVars.thumbSizeVar]: '20px',
+  [colorSliderCSSVars.railSizeVar]: '20px',
   minHeight: '32px',
 });
 
@@ -53,7 +48,7 @@ const useStyles = makeStyles({
   horizontal: {
     minWidth: '200px',
     // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
-    gridTemplateRows: `1fr var(${thumbSizeVar}) 1fr`,
+    gridTemplateRows: `1fr var(${colorSliderCSSVars.thumbSizeVar}) 1fr`,
     gridTemplateColumns: `1fr 100% 1fr`,
   },
 
@@ -61,7 +56,7 @@ const useStyles = makeStyles({
     minHeight: '280px',
     // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
     gridTemplateRows: `1fr 100% 1fr`,
-    gridTemplateColumns: `1fr var(${thumbSizeVar}) 1fr`,
+    gridTemplateColumns: `1fr var(${colorSliderCSSVars.thumbSizeVar}) 1fr`,
   },
 });
 
@@ -100,19 +95,19 @@ const useRailStyles = makeStyles({
 
   horizontal: {
     width: '100%',
-    height: `var(${railSizeVar})`,
+    height: `var(${colorSliderCSSVars.railSizeVar})`,
     '::before': {
       left: '-1px',
       right: '-1px',
-      height: `var(${railSizeVar})`,
+      height: `var(${colorSliderCSSVars.railSizeVar})`,
     },
   },
 
   vertical: {
-    width: `var(${railSizeVar})`,
+    width: `var(${colorSliderCSSVars.railSizeVar})`,
     height: '100%',
     '::before': {
-      width: `var(${railSizeVar})`,
+      width: `var(${colorSliderCSSVars.railSizeVar})`,
       top: '-1px',
       bottom: '1px',
     },
@@ -129,8 +124,8 @@ const useThumbStyles = makeStyles({
     gridColumnStart: '2',
     gridColumnEnd: '2',
     position: 'absolute',
-    width: `var(${thumbSizeVar})`,
-    height: `var(${thumbSizeVar})`,
+    width: `var(${colorSliderCSSVars.thumbSizeVar})`,
+    height: `var(${colorSliderCSSVars.thumbSizeVar})`,
     pointerEvents: 'none',
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
@@ -138,7 +133,6 @@ const useThumbStyles = makeStyles({
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralForeground4}`,
     boxShadow: tokens.shadow4,
     backgroundColor: `var(${colorSliderCSSVars.thumbColorVar})`,
-    [`${thumbPositionVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${colorSliderCSSVars.sliderProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
     '::before': {
       position: 'absolute',
       inset: '0px',
@@ -150,11 +144,11 @@ const useThumbStyles = makeStyles({
   },
   horizontal: {
     transform: 'translateX(-50%)',
-    left: `var(${thumbPositionVar})`,
+    left: `var(${colorSliderCSSVars.sliderProgressVar})`,
   },
   vertical: {
     transform: 'translateY(50%)',
-    bottom: `var(${thumbPositionVar})`,
+    bottom: `var(${colorSliderCSSVars.sliderProgressVar})`,
   },
 });
 
@@ -187,12 +181,12 @@ const useInputStyles = makeStyles({
     },
   },
   horizontal: {
-    height: `var(${thumbSizeVar})`,
+    height: `var(${colorSliderCSSVars.thumbSizeVar})`,
     width: '100%',
   },
   vertical: {
     height: '100%',
-    width: `var(${thumbSizeVar})`,
+    width: `var(${colorSliderCSSVars.thumbSizeVar})`,
     'writing-mode': 'vertical-lr',
     direction: 'rtl',
   },
