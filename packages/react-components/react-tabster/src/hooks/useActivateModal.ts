@@ -18,7 +18,7 @@ export function useActivateModal(): (elementFromModal: HTMLElement | undefined) 
       // and on the current tick the element has just received the attributes, but Tabster has not
       // instantiated the Modalizer yet.
       setActivateModalTimeout(() => {
-        return !!modalizerAPI?.activate(elementFromModal);
+        modalizerAPI?.activate(elementFromModal);
       }, 0);
     },
     [modalizerAPI, setActivateModalTimeout],
