@@ -144,6 +144,10 @@ export class Listbox extends FASTElement {
    * @public
    */
   public clickHandler(e: PointerEvent): boolean | void {
+    if (this.dropdown) {
+      return true;
+    }
+
     const target = e.target as HTMLElement;
 
     if (isDropdownOption(target)) {
