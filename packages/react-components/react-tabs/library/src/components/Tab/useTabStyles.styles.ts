@@ -239,6 +239,23 @@ const useCircularAppearanceStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground3Pressed,
       color: tokens.colorNeutralForeground2Pressed,
     },
+    '@media (forced-colors: active)': {
+      ':enabled:hover': {
+        backgroundColor: 'Highlight',
+        [`& .${tabClassNames.content}`]: {
+          color: 'HighlightText',
+          forcedColorAdjust: 'none',
+        },
+        [`& .${iconClassNames.filled}`]: {
+          color: 'HighlightText',
+          forcedColorAdjust: 'none',
+        },
+        [`& .${iconClassNames.regular}`]: {
+          color: 'HighlightText',
+          forcedColorAdjust: 'none',
+        },
+      },
+    },
   },
   filledSelected: {
     backgroundColor: tokens.colorBrandBackground,
@@ -250,6 +267,18 @@ const useCircularAppearanceStyles = makeStyles({
     ':enabled:active': {
       backgroundColor: tokens.colorBrandBackgroundPressed,
       color: tokens.colorNeutralForegroundOnBrand,
+    },
+    '@media (forced-colors: active)': {
+      ':enabled': {
+        backgroundColor: 'ButtonText',
+        [`& .${tabClassNames.content}`]: {
+          color: 'HighlightText',
+          forcedColorAdjust: 'none',
+        },
+      },
+      [`:enabled .${tabClassNames.icon}`]: {
+        color: 'HighlightText',
+      },
     },
   },
   filledDisabled: {
@@ -332,6 +361,14 @@ const usePendingIndicatorStyles = makeStyles({
     },
     ':active::before': {
       backgroundColor: tokens.colorTransparentStroke,
+    },
+    '@media (forced-colors: active)': {
+      ':hover::before': {
+        backgroundColor: 'transparent',
+      },
+      ':active::before': {
+        backgroundColor: 'transparent',
+      },
     },
   },
   smallHorizontal: {
