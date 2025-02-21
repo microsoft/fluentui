@@ -2,6 +2,21 @@
   "name": "@fluentui/react-color-picker-preview",
   "entries": [
     {
+      "date": "Fri, 21 Feb 2025 14:34:05 GMT",
+      "tag": "@fluentui/react-color-picker-preview_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.24.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Feb 2025 11:26:27 GMT",
       "tag": "@fluentui/react-color-picker-preview_v0.2.0",
       "version": "0.2.0",

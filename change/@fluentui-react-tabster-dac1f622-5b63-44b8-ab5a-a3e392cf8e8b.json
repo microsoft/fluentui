@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Nested modalizer fix and useActivateModal() hook to activate modals without moving focus.",
-  "packageName": "@fluentui/react-tabster",
-  "email": "marata@microsoft.com",
-  "dependentChangeType": "minor"
-}

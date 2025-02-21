@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Wed, 22 Jan 2025 14:00:14 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2025 14:34:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.14.0)
+
+Fri, 21 Feb 2025 14:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.13.14..@fluentui/react-aria_v9.14.0)
+
+### Minor changes
+
+- Bump @fluentui/react-tabster to v9.24.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+
+### Patches
+
+- fix: useAnnounce live regions do not get aria-hidden from tabster ([PR #33855](https://github.com/microsoft/fluentui/pull/33855) by sarah.higley@microsoft.com)
 
 ## [9.13.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.13.14)
 
