@@ -23,8 +23,6 @@ export const linkClassNames: SlotClassNames<LinkSlots> = {
   root: 'fui-Link',
 };
 
-console.log('Test:', ctrlLinkForegroundNeutralRest);
-
 const useStyles = makeStyles({
   focusIndicator: createCustomFocusIndicatorStyle({
     textDecorationColor: ctrlFocusOuterStroke,
