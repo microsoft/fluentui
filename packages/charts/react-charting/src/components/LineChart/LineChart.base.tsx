@@ -3,7 +3,7 @@ import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
-import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
+import { line as d3Line } from 'd3-shape';
 import {
   classNamesFunction,
   getId,
@@ -49,6 +49,7 @@ import {
   createStringYAxis,
   formatDate,
   areArraysEqual,
+  getCurveFactory,
 } from '../../utilities/index';
 import { IChart } from '../../types/index';
 
@@ -693,15 +694,16 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
       let gapIndex = 0;
       const gaps = this._points[i].gaps?.sort((a, b) => a.startIndex - b.startIndex) ?? [];
+      const lineCurve = this._points[i].lineOptions?.curve;
 
       // Use path rendering technique for larger datasets to optimize performance.
-      if (this.props.optimizeLargeData && this._points[i].data.length > 1) {
+      if ((this.props.optimizeLargeData || lineCurve) && this._points[i].data.length > 1) {
         const line = d3Line()
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .x((d: any) => this._xAxisScale(d[0]))
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .y((d: any) => this._yAxisScale(d[1]))
-          .curve(d3curveLinear);
+          .curve(getCurveFactory(lineCurve));
 
         const lineId = `${this._lineId}_${i}`;
         const borderId = `${this._borderId}_${i}`;

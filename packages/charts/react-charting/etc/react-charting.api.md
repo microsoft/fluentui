@@ -4,6 +4,7 @@
 
 ```ts
 
+import { CurveFactory } from 'd3-shape';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutContentStyleProps } from '@fluentui/react/lib/Callout';
 import { ICalloutContentStyles } from '@fluentui/react/lib/Callout';
@@ -980,6 +981,7 @@ export interface ILineChartGap {
 
 // @public (undocumented)
 export interface ILineChartLineOptions extends React_2.SVGProps<SVGPathElement> {
+    curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
     lineBorderColor?: string;
     lineBorderWidth?: string | number;
     strokeDasharray?: string | number;

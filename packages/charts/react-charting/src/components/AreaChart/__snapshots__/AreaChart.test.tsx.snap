@@ -141,7 +141,6 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         <g
           aria-label="metaData1, series 1 of 1 with 2 data points."
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
           key="0-dots-areaChart_0"
           role="region"
         >
@@ -712,7 +711,6 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         <g
           aria-label="metaData1, series 1 of 1 with 2 data points."
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
           key="0-dots-areaChart_0"
           role="region"
         >
@@ -1180,7 +1178,6 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         <g
           aria-label="metaData1, series 1 of 1 with 2 data points."
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
           key="0-dots-areaChart_0"
           role="region"
         >

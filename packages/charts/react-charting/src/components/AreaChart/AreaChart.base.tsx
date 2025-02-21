@@ -42,6 +42,7 @@ import {
   formatDate,
   getSecureProps,
   areArraysEqual,
+  getCurveFactory,
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -725,25 +726,26 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _drawGraph = (containerHeight: number, xScale: any, yScale: any, xElement: SVGElement): JSX.Element[] => {
     const points = this._addDefaultColors(this.props.data.lineChartData);
     const { pointOptions, pointLineOptions } = this.props.data;
-    const area = d3Area()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .x((d: any) => xScale(d.xVal))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y0((d: any) => yScale(d.values[0]))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y1((d: any) => yScale(d.values[1]))
-      .curve(d3CurveBasis);
-    const line = d3Line()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .x((d: any) => xScale(d.xVal))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y((d: any) => yScale(d.values[1]))
-      .curve(d3CurveBasis);
 
     const graph: JSX.Element[] = [];
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._data.forEach((singleStackedData: Array<any>, index: number) => {
+      const curveFactory = getCurveFactory(points[index].lineOptions?.curve, d3CurveBasis);
+      const area = d3Area()
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .x((d: any) => xScale(d.xVal))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .y0((d: any) => yScale(d.values[0]))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .y1((d: any) => yScale(d.values[1]))
+        .curve(curveFactory);
+      const line = d3Line()
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .x((d: any) => xScale(d.xVal))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .y((d: any) => yScale(d.values[1]))
+        .curve(curveFactory);
       const layerOpacity = this.props.mode === 'tozeroy' ? 0.8 : this._opacity[index];
       graph.push(
         <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
@@ -819,7 +821,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         graph.push(
           <g
             key={`${index}-dots-${this._uniqueIdForGraph}`}
-            d={area(singleStackedData)!}
             clipPath="url(#clip)"
             role="region"
             aria-label={`${points[index].legend}, series ${index + 1} of ${points.length} with ${
