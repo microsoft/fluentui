@@ -28,9 +28,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -665,9 +663,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -1288,9 +1284,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -1911,9 +1905,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -2047,9 +2039,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -2663,9 +2653,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
