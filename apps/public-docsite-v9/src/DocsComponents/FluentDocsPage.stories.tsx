@@ -162,6 +162,7 @@ const getNativeElementsList = (elements: SBEnumType['value']): JSX.Element => {
 };
 
 const slotRegex = /as\?:\s*"([^"]+)"/;
+
 function withSlotEnhancer(story: PreparedStory) {
   type InternalComponentApi = {
     __docgenInfo: { props?: Record<string, { type: { name: string } }> };
@@ -176,11 +177,17 @@ function withSlotEnhancer(story: PreparedStory) {
 
   Object.entries(docGenProps).forEach(([key, argType]) => {
     const value: string = argType?.type?.name;
-    const match = value.match(slotRegex);
-    if (match) {
-      component.__docgenInfo.props![key].type.name = `Slot<\"${match[1]}\">`;
-      // @ts-expect-error - storybook doesn't ship proper types (value is missing)
-      updatedArgTypes[key].type.value = `Slot<\"${match[1]}\">`;
+    if (value.includes('WithSlotShorthandValue')) {
+      const match = value.match(slotRegex);
+      if (match) {
+        component.__docgenInfo.props![key].type.name = `Slot<\"${match[1]}\">`;
+        // @ts-expect-error - storybook doesn't ship proper types (value is missing)
+        updatedArgTypes[key].type.value = `Slot<\"${match[1]}\">`;
+      } else {
+        component.__docgenInfo.props![key].type.name = `Slot`;
+        // @ts-expect-error - storybook doesn't ship proper types (value is missing)
+        updatedArgTypes[key].type.value = `Slot`;
+      }
     }
   });
 
