@@ -391,6 +391,11 @@ describe('prepareDatapoints for rounded tick value cases', () => {
     const result = utils.prepareDatapoints(589030.78, -234.45, 4, false, true);
     matchResult(result);
   });
+
+  it('should return an array with rounded data points when yMax is almost power of 10', () => {
+    const result = utils.prepareDatapoints(1000.000000002, -234.45, 4, false, true);
+    matchResult(result);
+  });
 });
 
 const createYAxisParams = (yAxisParams?: Partial<utils.IYAxisParams>): utils.IYAxisParams => {
