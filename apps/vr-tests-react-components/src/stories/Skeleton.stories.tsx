@@ -1,17 +1,10 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Skeleton, SkeletonItem } from '@fluentui/react-skeleton';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { makeStyles } from '@griffel/react';
 
-import {
-  getStoryVariant,
-  withStoryWrightSteps,
-  TestWrapperDecoratorFixedWidth,
-  HIGH_CONTRAST,
-  DARK_MODE,
-  RTL,
-} from '../utilities';
+import { getStoryVariant, TestWrapperDecoratorFixedWidth, HIGH_CONTRAST, DARK_MODE, RTL } from '../utilities';
 
 const useStyles = makeStyles({
   paused: {
@@ -25,10 +18,10 @@ const useStyles = makeStyles({
 export default {
   title: 'Skeleton converged',
 
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() }),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Skeleton>;
 
 export const OpaqueSkeletonWithRectangle = () => (
