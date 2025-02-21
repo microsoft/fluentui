@@ -19,11 +19,11 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.3.4",
-    "@fluentui/fluent2-theme": "^8.107.127",
-    "@fluentui/react": "^8.122.10",
+    "@fluentui/fluent2-theme": "^8.107.128",
+    "@fluentui/react": "^8.122.11",
     "@fluentui/react-components": "^9.59.0",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-hooks": "^8.8.16",
+    "@fluentui/react-hooks": "^8.8.17",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },

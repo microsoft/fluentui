@@ -72,6 +72,12 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
 
   const menuProps = React.useMemo(
     () => ({
+      calloutProps: {
+        // This is needed for Android devices since focus automatically goes to the first focusable element in the
+        // callout, which in this case is the SearchBox. This in turn opens the keyboard, which on the aforementioned
+        // Android devices causes a window resize that will dismiss the menu if this prop is not set to true.
+        preventDismissOnResize: true,
+      },
       onRenderMenuList: renderMenuList,
       title: 'Actions',
       shouldFocusOnMount: true,
