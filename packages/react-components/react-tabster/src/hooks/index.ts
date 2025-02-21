@@ -18,3 +18,4 @@ export { useUncontrolledFocus } from './useUncontrolledFocus';
 export { useIsNavigatingWithKeyboard } from './useIsNavigatingWithKeyboard';
 export { useSetKeyboardNavigation } from './useSetKeyboardNavigation';
 export { useFocusedElementChange } from './useFocusedElementChange';
+export { useActivateModal } from './useActivateModal';

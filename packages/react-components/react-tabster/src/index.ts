@@ -18,6 +18,7 @@ export {
   useIsNavigatingWithKeyboard,
   useSetKeyboardNavigation,
   useFocusedElementChange,
+  useActivateModal,
 } from './hooks/index';
 export type {
   UseArrowNavigationGroupOptions,
