@@ -14,6 +14,7 @@ describe('Icon', () => {
   });
 
   it('sets Icon name with ariaLabel', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(<Icon iconName="CompassNW" ariaLabel="asdf" />);
     const iconInstance = component.root.findByType('i');
 
