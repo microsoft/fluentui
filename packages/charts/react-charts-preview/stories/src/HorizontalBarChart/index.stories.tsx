@@ -8,6 +8,7 @@ export { HorizontalBarAbsoluteScale } from './HorizontalBarChartVariant.stories'
 export { HorizontalBarBenchmark } from './HorizontalBarChartBenchmark.stories';
 export { HorizontalBarCustomAccessibility } from './HorizontalBarChartCustomAccessibility.stories';
 export { HorizontalBarCustomCallout } from './HorizontalBarChartCustomCallout.stories';
+export { HorizontalBarCustomGradient } from './HorizontalBarChartCustomGradient.stories';
 
 export default {
   title: 'Charts/HorizontalBarChart',
