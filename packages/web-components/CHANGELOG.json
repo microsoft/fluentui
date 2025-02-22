@@ -2,6 +2,137 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 13 Feb 2025 04:06:52 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.80",
+      "version": "3.0.0-beta.80",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "cf102ebd054c8a477dba152d4bcad6864c9bb9af",
+            "comment": "makes direction change observable for slider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Feb 2025 04:07:31 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.79",
+      "version": "3.0.0-beta.79",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "f0f16ea9d7e407f87e4f144a40be8a3c4f2b6369",
+            "comment": "BREAKING: rename api report file name according to api-extractor change"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2025 04:07:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.79",
+      "version": "3.0.0-beta.79",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "da4d05c54ebaae0927060601929213cdc1a5f9eb",
+            "comment": "remove unnecessary filtering in menu-item"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Feb 2025 04:07:18 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.78",
+      "version": "3.0.0-beta.78",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "f706fe1a83c6641180fdad58656297c3cfc82d0c",
+            "comment": "add Dropdown, Listbox, and Option components"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "4239291f8d8a9ff7bb96f1b7eb61ad770a991fae",
+            "comment": "fix: dropdown opens then closes on space key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2025 04:07:40 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.77",
+      "version": "3.0.0-beta.77",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "00458f3bbe3f12c0cef556f8d8fd564ffa66983c",
+            "comment": "fix: revert logical properties in spinner to support rtl\""
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1e110d6492d33ca8959aaddc35e21cbd8992706b",
+            "comment": "fix: update disabled switch styles to GrayText for high-contrast mode"
+          }
+        ],
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "e7e2987a4b0c8c36984dc9732937e2e58fb8fb35",
+            "comment": "build tokens package before running e2e tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jan 2025 04:07:00 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.76",
+      "version": "3.0.0-beta.76",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "2247d505c62e3f464f53b77362175580144ebd56",
+            "comment": "Allow field states to be set regardless of connection status"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "479f2f31226381d03c7a12788fb0bae55cd558c4",
+            "comment": "fix: radio-group emit change with keyboard and disabled radio unchecks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Dec 2024 04:07:55 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.75",
+      "version": "3.0.0-beta.75",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "622c4aacdb5a1ab601287a9adb1064a640388f4f",
+            "comment": "fix tooltip positioning styles for 'below-end' option"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Dec 2024 04:07:47 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.74",
       "version": "3.0.0-beta.74",

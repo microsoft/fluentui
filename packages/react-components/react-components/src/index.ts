@@ -103,19 +103,19 @@ export {
 export type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 export {
   // getNativeElementProps is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getNativeElementProps,
   getIntrinsicElementProps,
   getPartitionedNativeProps,
   // getSlots is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getSlots,
   slot,
   assertSlots,
   IdPrefixProvider,
   resetIdsForTests,
   // resolveShorthand is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   resolveShorthand,
   SSRProvider,
   useAnimationFrame,
@@ -128,16 +128,17 @@ export {
   useScrollbarWidth,
   useSelection,
   useTimeout,
+  isHTMLElement,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
   // ResolveShorthandFunction is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandFunction,
   // ResolveShorthandOptions is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandOptions,
   Slot,
   SlotOptions,
@@ -241,7 +242,7 @@ export type {
   AvatarNamedColor,
   AvatarProps,
   // AvatarSizes is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   AvatarSizes,
   AvatarSize,
   AvatarSlots,
@@ -374,7 +375,7 @@ export {
   optionGroupClassNames,
   useOptionGroupStyles_unstable,
   useOptionGroup_unstable,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ComboboxProvider,
   useComboboxContextValues,
   ListboxProvider,
@@ -562,7 +563,7 @@ export type {
   MenuOpenChangeData,
   MenuOpenEvent,
   // MenuOpenEvents is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   MenuOpenEvents,
   MenuPopoverProps,
   MenuPopoverSlots,
@@ -578,7 +579,7 @@ export type {
   MenuTriggerState,
   SelectableHandler,
   // UninitializedMenuListState is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   UninitializedMenuListState,
 } from '@fluentui/react-menu';
 export {
@@ -630,7 +631,7 @@ export {
   renderRadio_unstable,
   renderRadioGroup_unstable,
   useRadio_unstable,
-  useRadioGroupContext_unstable, // eslint-disable-line deprecation/deprecation
+  useRadioGroupContext_unstable, // eslint-disable-line @typescript-eslint/no-deprecated
   useRadioGroupContextValue_unstable,
   useRadioGroupContextValues,
   useRadioGroup_unstable,
@@ -821,7 +822,9 @@ export type {
 
 export { resolvePositioningShorthand } from '@fluentui/react-positioning';
 export type {
+  PositioningBoundary,
   PositioningProps,
+  PositioningRect,
   PositioningShorthand,
   PositioningShorthandValue,
   PositioningImperativeRef,
@@ -1306,6 +1309,7 @@ export {
   useTreeItem_unstable,
   useTreeStyles_unstable,
   useTree_unstable,
+  TreeRootReset,
 } from '@fluentui/react-tree';
 
 export type {
@@ -1781,6 +1785,7 @@ export {
   useTagPickerOptionGroupStyles,
   useTagPickerOptionGroup,
   useTagPickerFilter,
+  useTagPickerContext_unstable,
 } from '@fluentui/react-tag-picker';
 export type {
   TagPickerContextValues,
@@ -1811,6 +1816,7 @@ export type {
   TagPickerOptionGroupProps,
   TagPickerOptionGroupSlots,
   TagPickerOptionGroupState,
+  TagPickerContextValue,
 } from '@fluentui/react-tag-picker';
 
 export {
@@ -1979,3 +1985,24 @@ export type {
   CarouselViewportSlots,
   CarouselViewportState,
 } from '@fluentui/react-carousel';
+
+export {
+  List,
+  listClassNames,
+  renderList_unstable,
+  useListStyles_unstable,
+  useList_unstable,
+  ListItem,
+  listItemClassNames,
+  renderListItem_unstable,
+  useListItemStyles_unstable,
+  useListItem_unstable,
+} from '@fluentui/react-list';
+export type {
+  ListProps,
+  ListSlots,
+  ListState,
+  ListItemProps,
+  ListItemSlots,
+  ListItemState,
+} from '@fluentui/react-list';

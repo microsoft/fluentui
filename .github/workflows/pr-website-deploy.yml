@@ -16,6 +16,7 @@ env:
 
 jobs:
   bundle:
+    if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
     permissions:
       contents: 'read'
@@ -37,6 +38,8 @@ jobs:
           node-version: '20'
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
+      - name: NodeJS heap default size
+        run: node -e 'console.log(v8.getHeapStatistics().heap_size_limit / 1024 / 1024 + " MB");'
 
       - run: yarn install --frozen-lockfile
 

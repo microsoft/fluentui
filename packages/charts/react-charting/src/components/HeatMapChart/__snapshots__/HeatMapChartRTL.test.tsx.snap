@@ -760,9 +760,22 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             <text
               dy="0.32em"
               fill="currentColor"
+              text-align="start"
               x="-10"
             >
-              10
+              <tspan
+                data-="10"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-10"
+              />
+              <tspan
+                dx="1em"
+                id="LessLength"
+                x="-10"
+              >
+                10
+              </tspan>
             </text>
           </g>
           <g
@@ -777,9 +790,22 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             <text
               dy="0.32em"
               fill="currentColor"
+              text-align="start"
               x="-10"
             >
-              20
+              <tspan
+                data-="20"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-10"
+              />
+              <tspan
+                dx="1em"
+                id="LessLength"
+                x="-10"
+              >
+                20
+              </tspan>
             </text>
           </g>
         </g>
@@ -802,13 +828,13 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: #ffffff;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
                   pointer-events: none;
                 }
             dominant-baseline="middle"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           />
@@ -832,13 +858,13 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: #ffffff;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
                   pointer-events: none;
                 }
             dominant-baseline="middle"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           />
@@ -862,13 +888,13 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: #ffffff;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
                   pointer-events: none;
                 }
             dominant-baseline="middle"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           />
@@ -892,13 +918,13 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: #ffffff;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
                   pointer-events: none;
                 }
             dominant-baseline="middle"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           />
@@ -1334,9 +1360,22 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             <text
               dy="0.32em"
               fill="currentColor"
+              text-align="start"
               x="-10"
             >
-              yPoint p1
+              <tspan
+                data-="yPoint p1"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-10"
+              />
+              <tspan
+                dx="1em"
+                id="LessLength"
+                x="-10"
+              >
+                yPoint p1
+              </tspan>
             </text>
           </g>
           <g
@@ -1351,9 +1390,22 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             <text
               dy="0.32em"
               fill="currentColor"
+              text-align="start"
               x="-10"
             >
-              yPoint p2
+              <tspan
+                data-="yPoint p2"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-10"
+              />
+              <tspan
+                dx="1em"
+                id="LessLength"
+                x="-10"
+              >
+                yPoint p2
+              </tspan>
             </text>
           </g>
         </g>
@@ -1376,13 +1428,13 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: #ffffff;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
                   pointer-events: none;
                 }
             dominant-baseline="middle"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           >
@@ -1408,13 +1460,13 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: #ffffff;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
                   pointer-events: none;
                 }
             dominant-baseline="middle"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           >
@@ -1440,13 +1492,13 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: #ffffff;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
                   pointer-events: none;
                 }
             dominant-baseline="middle"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           >
@@ -1472,13 +1524,13 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: #ffffff;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
                   pointer-events: none;
                 }
             dominant-baseline="middle"
+            fill="#323130"
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           >

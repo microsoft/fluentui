@@ -1,6 +1,12 @@
 import { stateSelector } from '../../utils/element-internals.js';
 
 /**
+ * Selector for the `active` state.
+ * @public
+ */
+export const activeState = stateSelector('active');
+
+/**
  * Selector for the `align-end` state.
  * @public
  */
@@ -133,6 +139,11 @@ export const darkGreenState = stateSelector('dark-green');
 export const darkRedState = stateSelector('dark-red');
 
 /**
+ * Selector for the `description` state.
+ */
+export const descriptionState = stateSelector('description');
+
+/**
  * Selector for the `disabled` state.
  * @public
  */
@@ -215,6 +226,12 @@ export const fitCoverState = stateSelector('fit-cover');
  * @public
  */
 export const fitNoneState = stateSelector('fit-none');
+
+/**
+ * Selector for the `flip-block` state.
+ * @public
+ */
+export const flipBlockState = stateSelector('flip-block');
 
 /**
  * Selector for the `focus-visible` state.
@@ -373,6 +390,12 @@ export const monospaceState = stateSelector('monospace');
 export const multiLineState = stateSelector('multiline');
 
 /**
+ * Selector for the `multiselect` state.
+ * @public
+ */
+export const multipleState = stateSelector('multiple');
+
+/**
  * Selector for the `navy` state.
  * @public
  */
@@ -397,6 +420,12 @@ export const nowrapState = stateSelector('nowrap');
 export const numericState = stateSelector('numeric');
 
 /**
+ * Selector for the `open` state.
+ * @public
+ */
+export const openState = stateSelector('open');
+
+/**
  * Selector for the `outline` state.
  * @public
  */
@@ -419,6 +448,12 @@ export const peachState = stateSelector('peach');
  * @public
  */
 export const pinkState = stateSelector('pink');
+
+/**
+ * Selector for the `placeholder-shown` state.
+ * @public
+ */
+export const placeholderShownState = stateSelector('placeholder-shown');
 
 /**
  * Selector for the `platinum` state.
@@ -509,6 +544,12 @@ export const royalBlueState = stateSelector('royal-blue');
  * @public
  */
 export const seafoamState = stateSelector('seafoam');
+
+/**
+ * Selector for the `selected` state.
+ * @public
+ */
+export const selectedState = stateSelector('selected');
 
 /**
  * Selector for the `semibold` state.

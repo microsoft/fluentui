@@ -5,6 +5,7 @@ export {
   useFocusVisible,
   useFocusWithin,
   useKeyboardNavAttribute,
+  useDangerousNeverHidden_unstable,
   useModalAttributes,
   useTabsterAttributes,
   useObservedElement,
@@ -17,6 +18,7 @@ export {
   useIsNavigatingWithKeyboard,
   useSetKeyboardNavigation,
   useFocusedElementChange,
+  useActivateModal,
 } from './hooks/index';
 export type {
   UseArrowNavigationGroupOptions,
@@ -64,10 +66,10 @@ export {
   /** @deprecated (Do not use! Exposed by mistake and will be removed in the next major version.)  */
   TabsterTypes6_0_1_DoNotUse as TabsterTypes,
   /** @deprecated Use element.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape })) */
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   dispatchGroupperMoveFocusEvent,
   /** @deprecated Use element.dispatchEvent(new MoverMoveFocusEvent({ key: MoverKeys.ArrowDown })) */
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   dispatchMoverMoveFocusEvent,
 };
 

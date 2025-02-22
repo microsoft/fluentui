@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.74",
+  "version": "3.0.0-beta.80",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -65,6 +65,8 @@
     "./package.json": "./package.json"
   },
   "sideEffects": [
+    "define.*",
+    "index-rollup.*",
     "./dist/esm/**/define.js",
     "./dist/web-components.js",
     "./dist/web-components.min.js"
@@ -86,10 +88,11 @@
     "start": "yarn start-storybook -p 6006 --docs",
     "start-storybook": "storybook dev",
     "build-storybook": "storybook build -o ./dist/storybook --docs",
-    "e2e": "playwright test",
-    "test:dev": "playwright test"
+    "e2e": "node ./scripts/e2e.js",
+    "e2e:local": "node ./scripts/e2e.js --ui"
   },
   "devDependencies": {
+    "@fluentui/scripts-api-extractor": "*",
     "@microsoft/fast-element": "2.0.0",
     "@tensile-perf/web-components": "~0.2.0",
     "@storybook/html": "7.6.20",
@@ -98,7 +101,7 @@
   },
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
-    "@fluentui/tokens": "1.0.0-alpha.20",
+    "@fluentui/tokens": "1.0.0-alpha.21",
     "tabbable": "^6.2.0",
     "tslib": "^2.1.0"
   },

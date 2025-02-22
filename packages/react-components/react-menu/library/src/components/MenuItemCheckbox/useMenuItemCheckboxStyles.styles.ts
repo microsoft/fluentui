@@ -11,6 +11,7 @@ export const menuItemCheckboxClassNames: SlotClassNames<Omit<MenuItemSlots, 'sub
   checkmark: 'fui-MenuItemCheckbox__checkmark',
   content: 'fui-MenuItemCheckbox__content',
   secondaryContent: 'fui-MenuItemCheckbox__secondaryContent',
+  subText: 'fui-MenuItemCheckbox__subText',
 };
 
 export const useMenuItemCheckboxStyles_unstable = (state: MenuItemCheckboxState): MenuItemCheckboxState => {
@@ -35,6 +36,10 @@ export const useMenuItemCheckboxStyles_unstable = (state: MenuItemCheckboxState)
 
   if (state.checkmark) {
     state.checkmark.className = mergeClasses(menuItemCheckboxClassNames.checkmark, state.checkmark.className);
+  }
+
+  if (state.subText) {
+    state.subText.className = mergeClasses(menuItemCheckboxClassNames.subText, state.subText.className);
   }
 
   useMenuItemStyles_unstable(state);

@@ -1,10 +1,11 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
-import { max as d3Max, min as d3Min } from 'd3-array';
+import { max as d3Max, min as d3Min, ticks as d3Ticks, nice as d3nice } from 'd3-array';
 import {
   scaleLinear as d3ScaleLinear,
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
   scaleTime as d3ScaleTime,
+  NumberValue,
 } from 'd3-scale';
 import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
@@ -126,9 +127,11 @@ export interface IXAxisParams {
   xAxisOuterPadding?: number;
   margins: IMargins;
   containerHeight: number;
+  containerWidth: number;
+  hideTickOverlap?: boolean;
 }
 export interface ITickParams {
-  tickValues?: Date[] | number[];
+  tickValues?: Date[] | number[] | string[];
   tickFormat?: string;
 }
 
@@ -158,35 +161,59 @@ export interface IYAxisParams {
  * @export
  * @param {IXAxisParams} xAxisParams
  */
-export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTypes, culture?: string) {
+export function createNumericXAxis(
+  xAxisParams: IXAxisParams,
+  tickParams: ITickParams,
+  chartType: ChartTypes,
+  culture?: string,
+) {
   const {
     domainNRangeValues,
     showRoundOffXTickValues = false,
     xAxistickSize = 6,
     tickPadding = 10,
-    xAxisCount = 6,
+    xAxisCount,
     xAxisElement,
+    hideTickOverlap,
   } = xAxisParams;
   const xAxisScale = d3ScaleLinear()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   showRoundOffXTickValues && xAxisScale.nice();
 
+  let tickCount = xAxisCount ?? 6;
+  const tickFormat = (domainValue: NumberValue, _index: number) => {
+    if (tickParams.tickFormat) {
+      return d3Format(tickParams.tickFormat)(domainValue);
+    }
+    const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
+    return convertToLocaleString(xAxisValue, culture) as string;
+  };
+  if (hideTickOverlap && typeof xAxisCount === 'undefined') {
+    const longestLabelWidth =
+      calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 20;
+    const [start, end] = xAxisScale.range();
+    tickCount = Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth));
+  }
+
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(xAxistickSize)
     .tickPadding(tickPadding)
-    .ticks(xAxisCount)
-    .tickFormat((domainValue, index) => {
-      const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
-      return convertToLocaleString(xAxisValue, culture) as string;
-    });
+    .ticks(tickCount)
+    .tickFormat(tickFormat);
   if (chartType === ChartTypes.HorizontalBarChartWithAxis) {
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
+  if (tickParams.tickValues) {
+    xAxis.tickValues(tickParams.tickValues as number[]);
+  }
+
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = xAxisScale.ticks(xAxisCount).map(xAxis.tickFormat()!);
+  const tickValues = ((tickParams.tickValues as number[] | undefined) ?? xAxisScale.ticks(tickCount)).map(
+    xAxis.tickFormat()!,
+  );
   return { xScale: xAxisScale, tickValues };
 }
 
@@ -244,42 +271,60 @@ export function createDateXAxis(
   customDateTimeFormatter?: (dateTime: Date) => string,
   useUTC?: boolean,
 ) {
-  const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
+  const {
+    domainNRangeValues,
+    xAxisElement,
+    tickPadding = 6,
+    xAxistickSize = 6,
+    xAxisCount,
+    hideTickOverlap,
+  } = xAxisParams;
   const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
   xAxisScale
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
-  const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).ticks(xAxisCount);
-  if (customDateTimeFormatter) {
-    xAxis.tickFormat((domainValue: Date, _index: number) => {
+
+  let tickCount = xAxisCount ?? 6;
+  const tickFormat = (domainValue: Date, _index: number) => {
+    if (customDateTimeFormatter) {
       return customDateTimeFormatter(domainValue);
-    });
-  } else if (culture && options) {
-    xAxis.tickFormat((domainValue: Date, _index: number) => {
+    }
+    if (culture && options) {
       return domainValue.toLocaleString(culture, options);
-    });
-  } else if (timeFormatLocale) {
-    const locale: d3TimeLocaleObject = d3TimeFormatLocale(timeFormatLocale!);
-
-    xAxis.tickFormat((domainValue: Date, _index: number) => {
+    }
+    if (timeFormatLocale) {
+      const locale: d3TimeLocaleObject = d3TimeFormatLocale(timeFormatLocale!);
       return multiFormat(domainValue, locale, useUTC);
-    });
+    }
+    if (culture === undefined && tickParams.tickFormat) {
+      if (useUTC) {
+        return d3UtcFormat(tickParams.tickFormat)(domainValue);
+      } else {
+        return d3TimeFormat(tickParams.tickFormat)(domainValue);
+      }
+    }
+    return multiFormat(domainValue, undefined, useUTC);
+  };
+  if (hideTickOverlap && typeof xAxisCount === 'undefined') {
+    const longestLabelWidth =
+      calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 40;
+    const [start, end] = xAxisScale.range();
+    tickCount = Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth));
   }
 
-  tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
-  if (culture === undefined) {
-    tickParams.tickFormat
-      ? xAxis.tickFormat(useUTC ? d3UtcFormat(tickParams.tickFormat) : d3TimeFormat(tickParams.tickFormat))
-      : '';
-  }
+  const xAxis = d3AxisBottom(xAxisScale)
+    .tickSize(xAxistickSize)
+    .tickPadding(tickPadding)
+    .ticks(tickCount)
+    .tickFormat(tickFormat);
+
+  tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues as Date[]) : '';
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = (tickParams.tickValues ?? xAxisScale.ticks(xAxisCount)).map((val, idx) => {
-    const tickFormat = xAxis.tickFormat();
-    // val is a Date object. So when the tick format is not set, format val as a string to calculate its width
-    return tickFormat ? tickFormat(val, idx) : multiFormat(val as Date, undefined, useUTC);
-  });
+  const tickValues = ((tickParams.tickValues as Date[] | undefined) ?? xAxisScale.ticks(tickCount)).map(
+    xAxis.tickFormat()!,
+  );
   return { xScale: xAxisScale, tickValues };
 }
 
@@ -300,33 +345,73 @@ export function createStringXAxis(
 ) {
   const {
     domainNRangeValues,
-    xAxisCount = 6,
     xAxistickSize = 6,
     tickPadding = 10,
     xAxisPadding = 0.1,
     xAxisInnerPadding,
     xAxisOuterPadding,
+    containerWidth,
+    hideTickOverlap,
   } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
     .paddingInner(typeof xAxisInnerPadding !== 'undefined' ? xAxisInnerPadding : xAxisPadding)
     .paddingOuter(typeof xAxisOuterPadding !== 'undefined' ? xAxisOuterPadding : xAxisPadding);
-  const xAxis = d3AxisBottom(xAxisScale)
-    .tickSize(xAxistickSize)
-    .tickPadding(tickPadding)
-    .ticks(xAxisCount)
-    .tickFormat((x: string, index: number) => {
-      return convertToLocaleString(dataset[index], culture) as string;
-    });
+
+  let tickValues = (tickParams.tickValues as string[] | undefined) ?? dataset;
+  if (hideTickOverlap) {
+    let nonOverlappingTickValues = [];
+    // Here, we need the width of each individual label to detect overlaps,
+    // but calculateLongestLabelWidth returns the maximum pixel width from an array of labels.
+    // So call this function separately for each label, instead of the entire array.
+    const tickSizes = tickValues.map(value => calculateLongestLabelWidth([value], '[class^="xAxis-"] text'));
+    // for LTR
+    let start = 0;
+    let end = containerWidth;
+    let sign = 1;
+    const range = xAxisScale.range();
+    if (range[1] - range[0] < 0) {
+      // for RTL
+      start = containerWidth;
+      end = 0;
+      sign = -1;
+    }
+    for (let i = tickValues.length - 1; i >= 0; i--) {
+      const tickPosition = xAxisScale(tickValues[i])!;
+      if (
+        sign * (tickPosition - (sign * tickSizes[i]) / 2 - start) >= 0 &&
+        sign * (tickPosition + (sign * tickSizes[i]) / 2 - end) <= 0
+      ) {
+        nonOverlappingTickValues.push(tickValues[i]);
+        end = tickPosition - sign * (tickSizes[i] / 2 + 10);
+      }
+    }
+    nonOverlappingTickValues = nonOverlappingTickValues.reverse();
+    tickValues = nonOverlappingTickValues;
+  }
+
+  const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).tickValues(tickValues);
 
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = dataset.map(xAxis.tickFormat()!);
   return { xScale: xAxisScale, tickValues };
 }
 
+/**
+ * This method is used to calculate the rounded tick values for the y-axis
+ * @param {number} minVal
+ * @param {number} maxVal
+ * @param {number} splitInto
+ * @returns {number[]}
+ */
+function calculateRoundedTicks(minVal: number, maxVal: number, splitInto: number) {
+  const finalYmin = minVal >= 0 && minVal === maxVal ? 0 : minVal;
+  const finalYmax = minVal < 0 && minVal === maxVal ? 0 : maxVal;
+  const ticksInterval = d3nice(finalYmin, finalYmax, splitInto);
+  return d3Ticks(ticksInterval[0], ticksInterval[ticksInterval.length - 1], splitInto);
+}
 /**
  * This method used for creating data points for the y axis.
  * @export
@@ -341,7 +426,11 @@ export function prepareDatapoints(
   minVal: number,
   splitInto: number,
   isIntegralDataset: boolean,
+  roundedTicks?: boolean,
 ): number[] {
+  if (roundedTicks) {
+    return calculateRoundedTicks(minVal, maxVal, splitInto);
+  }
   const val = isIntegralDataset
     ? Math.ceil((maxVal - minVal) / splitInto)
     : (maxVal - minVal) / splitInto >= 1
@@ -409,6 +498,7 @@ export function createNumericYAxis(
   isIntegralDataset: boolean,
   useSecondaryYScale: boolean = false,
   supportNegativeData: boolean = false,
+  roundedTicks: boolean = false,
 ) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -434,7 +524,7 @@ export function createNumericYAxis(
     : yMinMaxValues.startValue < yMinValue
     ? 0
     : yMinValue!;
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
   const yAxisScale = d3ScaleLinear()
     .domain([supportNegativeData ? domainValues[0] : finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
@@ -1414,4 +1504,31 @@ export const formatDate = (date: Date, useUTC?: boolean) => {
 export function getSecureProps(props: Record<string, any> = {}): Record<string, any> {
   const { dangerouslySetInnerHTML, ...result } = props;
   return result;
+}
+
+export function areArraysEqual(arr1?: string[], arr2?: string[]): boolean {
+  if (arr1 === arr2) {
+    return true;
+  }
+  if (!arr1 && !arr2) {
+    return true;
+  }
+  if (!arr1 || !arr2 || arr1.length !== arr2.length) {
+    return false;
+  }
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+const cssVarRegExp = /var\((--[a-zA-Z0-9\-]+)\)/g;
+
+export function resolveCSSVariables(chartContainer: HTMLElement, styleRules: string) {
+  const containerStyles = getComputedStyle(chartContainer);
+  return styleRules.replace(cssVarRegExp, (match, group1) => {
+    return containerStyles.getPropertyValue(group1);
+  });
 }

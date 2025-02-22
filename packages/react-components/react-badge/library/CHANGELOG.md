@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jan 2025 14:00:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.50)
+
+Wed, 22 Jan 2025 14:00:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.49..@fluentui/react-badge_v9.2.50)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.50 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-utilities to v9.18.20 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+
+## [9.2.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.49)
+
+Wed, 08 Jan 2025 18:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.48..@fluentui/react-badge_v9.2.49)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.49 ([PR #33550](https://github.com/microsoft/fluentui/pull/33550) by beachball)
+
+## [9.2.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.48)
+
+Mon, 16 Dec 2024 16:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.47..@fluentui/react-badge_v9.2.48)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.48 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.21.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-theme to v9.1.24 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-utilities to v9.18.19 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+
+## [9.2.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.47)
+
+Mon, 09 Dec 2024 17:38:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.46..@fluentui/react-badge_v9.2.47)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
 
 ## [9.2.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.46)
 

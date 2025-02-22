@@ -136,6 +136,7 @@ const createXAxisParams = (xAxisParams?: ICreateXAxisParams): utils.IXAxisParams
   return {
     xAxisElement,
     containerHeight: 100,
+    containerWidth: 100,
     ...xAxisParams,
     domainNRangeValues: {
       dStartValue: 0,
@@ -157,9 +158,8 @@ const convertXAxisResultToJson = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   result: { xScale: any; tickValues: string[] },
   isStringAxis: boolean = false,
-  tickCount: number = 6,
 ): [number, string][] => {
-  const tickValues = isStringAxis ? result.tickValues : result.xScale.ticks(tickCount);
+  const tickValues = isStringAxis ? result.tickValues : result.xScale.ticks(result.tickValues.length);
   return tickValues.map((item: number | Date | string, i: number) => [result.xScale(item), result.tickValues[i]]);
 };
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -170,7 +170,7 @@ const matchResult = (result: any) => {
 describe('createNumericXAxis', () => {
   it('should render the x-axis labels correctly', () => {
     const xAxisParams = createXAxisParams();
-    utils.createNumericXAxis(xAxisParams, utils.ChartTypes.VerticalBarChart);
+    utils.createNumericXAxis(xAxisParams, {}, utils.ChartTypes.VerticalBarChart);
     expect(xAxisParams.xAxisElement).toMatchSnapshot();
   });
 
@@ -179,7 +179,7 @@ describe('createNumericXAxis', () => {
       domainNRangeValues: { dStartValue: 0.243, dEndValue: 0.433 },
       showRoundOffXTickValues: true,
     });
-    const result = utils.createNumericXAxis(xAxisParams, utils.ChartTypes.VerticalBarChart);
+    const result = utils.createNumericXAxis(xAxisParams, {}, utils.ChartTypes.VerticalBarChart);
     matchResult(convertXAxisResultToJson(result));
   });
 
@@ -187,20 +187,26 @@ describe('createNumericXAxis', () => {
   // Tick padding refers to the space between a tick mark and its corresponding tick label.
   it('should render the x-axis labels correctly for specific tick size and padding values', () => {
     const xAxisParams = createXAxisParams({ xAxistickSize: 10, tickPadding: 5 });
-    utils.createNumericXAxis(xAxisParams, utils.ChartTypes.VerticalBarChart);
+    utils.createNumericXAxis(xAxisParams, {}, utils.ChartTypes.VerticalBarChart);
     expect(xAxisParams.xAxisElement).toMatchSnapshot();
   });
 
   it('should create the x-axis labels correctly for a specific number of ticks', () => {
     const xAxisParams = createXAxisParams({ xAxisCount: 3 });
-    const result = utils.createNumericXAxis(xAxisParams, utils.ChartTypes.VerticalBarChart);
-    matchResult(convertXAxisResultToJson(result, false, xAxisParams.xAxisCount));
+    const result = utils.createNumericXAxis(xAxisParams, {}, utils.ChartTypes.VerticalBarChart);
+    matchResult(convertXAxisResultToJson(result, false));
   });
 
   it('should render the x-axis labels correctly for horizontal bar chart with axis', () => {
     const xAxisParams = createXAxisParams();
-    utils.createNumericXAxis(xAxisParams, utils.ChartTypes.HorizontalBarChartWithAxis);
+    utils.createNumericXAxis(xAxisParams, {}, utils.ChartTypes.HorizontalBarChartWithAxis);
     expect(xAxisParams.xAxisElement).toMatchSnapshot();
+  });
+
+  it('should render fewer x-axis labels when hideTickOverlap is true and container width is small', () => {
+    const xAxisParams = createXAxisParams({ domainNRangeValues: { rEndValue: 50 }, hideTickOverlap: true });
+    const result = utils.createNumericXAxis(xAxisParams, {}, utils.ChartTypes.VerticalBarChart);
+    matchResult(convertXAxisResultToJson(result));
   });
 });
 
@@ -225,7 +231,7 @@ conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('createDateXA
   it('should create the x-axis labels correctly for a specific number of ticks', () => {
     const xAxisParams = createXAxisParams({ domainNRangeValues, xAxisCount: 12 });
     const result = utils.createDateXAxis(xAxisParams, {});
-    matchResult(convertXAxisResultToJson(result, false, xAxisParams.xAxisCount));
+    matchResult(convertXAxisResultToJson(result, false));
   });
 
   it('should create the x-axis labels correctly when customDateTimeFormatter is provided', () => {
@@ -264,6 +270,15 @@ conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('createDateXA
     });
     expect(xAxisParams.xAxisElement).toMatchSnapshot();
   });
+
+  it('should render fewer x-axis labels when hideTickOverlap is true and container width is small', () => {
+    const xAxisParams = createXAxisParams({
+      domainNRangeValues: { ...domainNRangeValues, rEndValue: 50 },
+      hideTickOverlap: true,
+    });
+    const result = utils.createDateXAxis(xAxisParams, {});
+    matchResult(convertXAxisResultToJson(result));
+  });
 });
 
 describe('createStringXAxis', () => {
@@ -293,6 +308,12 @@ describe('createStringXAxis', () => {
   // before the first band (bar) and after the last band (bar).
   it('should create the x-axis labels correctly for specific inner and outer padding values', () => {
     const xAxisParams = createXAxisParams({ xAxisInnerPadding: 0.5, xAxisOuterPadding: 1 / 3 });
+    const result = utils.createStringXAxis(xAxisParams, {}, dataset);
+    matchResult(convertXAxisResultToJson(result, true));
+  });
+
+  it('should render fewer x-axis labels when hideTickOverlap is true and container width is small', () => {
+    const xAxisParams = createXAxisParams({ containerWidth: 50, hideTickOverlap: true });
     const result = utils.createStringXAxis(xAxisParams, {}, dataset);
     matchResult(convertXAxisResultToJson(result, true));
   });
@@ -331,6 +352,43 @@ describe('prepareDatapoints', () => {
 
   it('should return data points for a negative only range', () => {
     const result = utils.prepareDatapoints(-1, -5, 1, false);
+    matchResult(result);
+  });
+});
+
+describe('prepareDatapoints for rounded tick value cases', () => {
+  it('should return an array with rounded data points when roundedTicks is true and yMinValue is 0', () => {
+    const result = utils.prepareDatapoints(100, 0, 3, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points when roundedTicks is true and yMinValue is positive', () => {
+    const result = utils.prepareDatapoints(100, 50, 4, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points when roundedTicks is true and yMinValue is negative', () => {
+    const result = utils.prepareDatapoints(100, -100, 4, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points when roundedTicks is true and yMaxValue is negative', () => {
+    const result = utils.prepareDatapoints(-100, -200, 4, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points with non-integral dataset', () => {
+    const result = utils.prepareDatapoints(12.8, -8.4, 4, false, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points with large numbers in dataset', () => {
+    const result = utils.prepareDatapoints(9874663, -8996557, 4, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points with variation in dataset', () => {
+    const result = utils.prepareDatapoints(589030.78, -234.45, 4, false, true);
     matchResult(result);
   });
 });
@@ -1180,5 +1238,27 @@ describe('getGradientFromToken', () => {
   it('should handle invalid tokens with split error gracefully', () => {
     const result = getGradientFromToken('invalidTokenWithoutDot', false);
     expect(result).toEqual(['invalidTokenWithoutDot', 'invalidTokenWithoutDot']);
+  });
+});
+
+describe('test array equality utility', () => {
+  it('both arrays are undefined', () => {
+    expect(utils.areArraysEqual(undefined, undefined) === true);
+  });
+
+  it('second array is undefined', () => {
+    expect(utils.areArraysEqual(['ac', 'bd'], undefined) === true);
+  });
+
+  it('first array is undefined', () => {
+    expect(utils.areArraysEqual(undefined, ['cg', 'df']) === false);
+  });
+
+  it('both arrays are unequal', () => {
+    expect(utils.areArraysEqual(['ae', 'bf'], ['cg', 'dh']) === false);
+  });
+
+  it('both arrays are equal', () => {
+    expect(utils.areArraysEqual(['ab', 'cd', 'ef', 'gh'], ['ab', 'cd', 'ef', 'gh']) === true);
   });
 });

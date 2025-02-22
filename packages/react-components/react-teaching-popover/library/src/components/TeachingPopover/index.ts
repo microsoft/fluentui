@@ -1,4 +1,4 @@
-export * from './TeachingPopover';
-export * from './TeachingPopover.types';
-export * from './renderTeachingPopover';
-export * from './useTeachingPopover';
+export { TeachingPopover } from './TeachingPopover';
+export type { TeachingPopoverProps, TeachingPopoverState } from './TeachingPopover.types';
+export { renderTeachingPopover_unstable } from './renderTeachingPopover';
+export { useTeachingPopover_unstable } from './useTeachingPopover';

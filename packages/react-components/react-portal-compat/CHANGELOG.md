@@ -1,8 +1,110 @@
 # Change Log - @fluentui/react-portal-compat
 
-This log was last generated on Fri, 06 Dec 2024 12:53:46 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2025 14:34:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.1.0)
+
+Fri, 21 Feb 2025 14:34:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.182..@fluentui/react-portal-compat_v9.1.0)
+
+### Minor changes
+
+- Bump @fluentui/react-tabster to v9.24.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+- Bump @fluentui/react-components to v9.60.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+
+## [9.0.182](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.182)
+
+Tue, 18 Feb 2025 11:26:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.181..@fluentui/react-portal-compat_v9.0.182)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.59.0 ([PR #33853](https://github.com/microsoft/fluentui/pull/33853) by beachball)
+
+## [9.0.181](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.181)
+
+Fri, 07 Feb 2025 10:42:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.180..@fluentui/react-portal-compat_v9.0.181)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.58.3 ([PR #33797](https://github.com/microsoft/fluentui/pull/33797) by beachball)
+
+## [9.0.180](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.180)
+
+Tue, 28 Jan 2025 21:26:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.179..@fluentui/react-portal-compat_v9.0.180)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.58.2 ([PR #33736](https://github.com/microsoft/fluentui/pull/33736) by beachball)
+
+## [9.0.179](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.179)
+
+Mon, 27 Jan 2025 20:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.178..@fluentui/react-portal-compat_v9.0.179)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.58.1 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
+
+## [9.0.178](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.178)
+
+Wed, 22 Jan 2025 14:00:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.177..@fluentui/react-portal-compat_v9.0.178)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.23.3 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-components to v9.58.0 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+
+## [9.0.177](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.177)
+
+Wed, 08 Jan 2025 18:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.176..@fluentui/react-portal-compat_v9.0.177)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.57.0 ([PR #33550](https://github.com/microsoft/fluentui/pull/33550) by beachball)
+
+## [9.0.176](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.176)
+
+Thu, 19 Dec 2024 14:30:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.175..@fluentui/react-portal-compat_v9.0.176)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.56.8 ([PR #33409](https://github.com/microsoft/fluentui/pull/33409) by beachball)
+
+## [9.0.175](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.175)
+
+Wed, 18 Dec 2024 10:59:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.174..@fluentui/react-portal-compat_v9.0.175)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.56.7 ([PR #33483](https://github.com/microsoft/fluentui/pull/33483) by beachball)
+
+## [9.0.174](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.174)
+
+Mon, 16 Dec 2024 16:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.173..@fluentui/react-portal-compat_v9.0.174)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.23.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-components to v9.56.6 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+
+## [9.0.173](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.173)
+
+Mon, 09 Dec 2024 17:38:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.172..@fluentui/react-portal-compat_v9.0.173)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.56.5 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
 
 ## [9.0.172](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.172)
 

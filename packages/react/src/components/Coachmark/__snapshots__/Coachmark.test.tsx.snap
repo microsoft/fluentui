@@ -39,7 +39,6 @@ exports[`Coachmark renders Coachmark (color properties) 1`] = `
           class=
               ms-PositioningContainer-layerHost
               {
-                border: 1px solid \${};
                 box-sizing: border-box;
                 outline: transparent;
                 position: absolute;
@@ -275,7 +274,6 @@ exports[`Coachmark renders Coachmark (correctly) 1`] = `
           class=
               ms-PositioningContainer-layerHost
               {
-                border: 1px solid \${};
                 box-sizing: border-box;
                 outline: transparent;
                 position: absolute;
@@ -513,7 +511,6 @@ exports[`Coachmark renders Coachmark (isCollapsed) 1`] = `
           class=
               ms-PositioningContainer-layerHost
               {
-                border: 1px solid \${};
                 box-sizing: border-box;
                 outline: transparent;
                 position: absolute;

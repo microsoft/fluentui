@@ -101,7 +101,7 @@ export const getPartitionedNativeProps = <
 }) => {
   return {
     root: { style: props.style, className: props.className },
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     primary: getNativeElementProps<Omit<Props, ExcludedPropKeys>>(primarySlotTagName, props, [
       ...(excludedPropNames || []),
       'style',

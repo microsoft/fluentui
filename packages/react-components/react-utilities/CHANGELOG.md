@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Fri, 06 Dec 2024 12:53:45 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jan 2025 14:00:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.20)
+
+Wed, 22 Jan 2025 14:00:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.19..@fluentui/react-utilities_v9.18.20)
+
+### Patches
+
+- fix: add autoCorrect and minLength input properties support to getNativeProps utility ([PR #33642](https://github.com/microsoft/fluentui/pull/33642) by dmytrokirpa@microsoft.com)
+
+## [9.18.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.19)
+
+Mon, 16 Dec 2024 16:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.18..@fluentui/react-utilities_v9.18.19)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.21.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
 
 ## [9.18.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.18)
 

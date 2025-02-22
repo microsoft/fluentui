@@ -3,6 +3,7 @@ import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { CarouselNavContainerProps, CarouselNavContainerState } from './CarouselNavContainer.types';
 import { CarouselAutoplayButton } from '../CarouselAutoplayButton/CarouselAutoplayButton';
 import { CarouselButton } from '../CarouselButton/CarouselButton';
+import { Tooltip } from '@fluentui/react-tooltip';
 
 /**
  * Create the state required to render CarouselNavContainer.
@@ -35,8 +36,26 @@ export const useCarouselNavContainer_unstable = (
   });
 
   const autoplay: CarouselNavContainerState['autoplay'] = slot.optional(props.autoplay, {
-    renderByDefault: false,
     elementType: CarouselAutoplayButton,
+    renderByDefault: !!props.autoplay || !!props.autoplayTooltip,
+  });
+
+  const nextTooltip: CarouselNavContainerState['nextTooltip'] = slot.optional(props.nextTooltip, {
+    defaultProps: {},
+    elementType: Tooltip,
+    renderByDefault: false,
+  });
+
+  const prevTooltip: CarouselNavContainerState['prevTooltip'] = slot.optional(props.prevTooltip, {
+    defaultProps: {},
+    elementType: Tooltip,
+    renderByDefault: false,
+  });
+
+  const autoplayTooltip: CarouselNavContainerState['autoplayTooltip'] = slot.optional(props.autoplayTooltip, {
+    defaultProps: {},
+    elementType: Tooltip,
+    renderByDefault: false,
   });
 
   return {
@@ -46,6 +65,9 @@ export const useCarouselNavContainer_unstable = (
       next: CarouselButton,
       prev: CarouselButton,
       autoplay: CarouselAutoplayButton,
+      nextTooltip: Tooltip,
+      prevTooltip: Tooltip,
+      autoplayTooltip: Tooltip,
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -57,5 +79,8 @@ export const useCarouselNavContainer_unstable = (
     next,
     prev,
     autoplay,
+    nextTooltip,
+    prevTooltip,
+    autoplayTooltip,
   };
 };

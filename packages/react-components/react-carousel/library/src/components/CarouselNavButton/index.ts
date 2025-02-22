@@ -1,5 +1,5 @@
-export * from './CarouselNavButton';
-export * from './CarouselNavButton.types';
-export * from './renderCarouselNavButton';
-export * from './useCarouselNavButton';
-export * from './useCarouselNavButtonStyles.styles';
+export { CarouselNavButton } from './CarouselNavButton';
+export type { CarouselNavButtonProps, CarouselNavButtonSlots, CarouselNavButtonState } from './CarouselNavButton.types';
+export { renderCarouselNavButton_unstable } from './renderCarouselNavButton';
+export { useCarouselNavButton_unstable } from './useCarouselNavButton';
+export { carouselNavButtonClassNames, useCarouselNavButtonStyles_unstable } from './useCarouselNavButtonStyles.styles';

@@ -1,24 +1,13 @@
 import * as React from 'react';
-import { Steps } from 'storywright';
 import {
   SwatchPicker,
   ColorSwatch,
-  SwatchPickerProps,
+  type SwatchPickerProps,
   ImageSwatch,
   EmptySwatch,
   SwatchPickerRow,
 } from '@fluentui/react-swatch-picker';
 import { HeartRegular } from '@fluentui/react-icons';
-
-export const steps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
-  .hover('.breadcrumb-sample')
-  .snapshot('hover', { cropTo: '.testWrapper' })
-  .mouseDown('.breadcrumb-sample')
-  .snapshot('pressed', { cropTo: '.testWrapper' })
-  .focus('.breadcrumb-sample')
-  .snapshot('focused', { cropTo: '.testWrapper' })
-  .end();
 
 export const SampleSwatchPickerColors = (props: SwatchPickerProps) => (
   <SwatchPicker defaultSelectedValue="00B053" {...props}>

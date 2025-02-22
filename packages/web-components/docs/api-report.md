@@ -590,6 +590,85 @@ export class BaseDivider extends FASTElement {
 }
 
 // @public
+export class BaseDropdown extends FASTElement {
+    constructor();
+    get activeDescendant(): string | undefined;
+    // @internal
+    activeIndex: number;
+    // @internal
+    activeIndexChanged(prev: number | undefined, next: number | undefined): void;
+    ariaLabelledBy: string;
+    changeHandler(e: Event): boolean | void;
+    clickHandler(e: PointerEvent): boolean | void;
+    // @internal
+    control: HTMLInputElement;
+    // @internal
+    controlChanged(prev: HTMLInputElement | undefined, next: HTMLInputElement | undefined): void;
+    // @internal
+    controlSlot: HTMLSlotElement;
+    disabled?: boolean;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    get displayValue(): string;
+    // @internal
+    elementInternals: ElementInternals;
+    get enabledOptions(): DropdownOption[];
+    // @internal
+    filterOptions(value: string, collection?: DropdownOption[]): DropdownOption[];
+    // @internal
+    focus(options?: FocusOptions): void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    static formAssociated: boolean;
+    // @internal
+    formResetCallback(): void;
+    // @override
+    id: string;
+    // @internal
+    indicator: HTMLDivElement;
+    // @internal
+    indicatorSlot?: HTMLSlotElement;
+    initialValue?: string;
+    inputHandler(e: InputEvent): boolean | void;
+    protected insertControl(): void;
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    // @internal
+    listbox: Listbox;
+    // @internal
+    listboxChanged(prev: Listbox | undefined, next: Listbox | undefined): void;
+    // @internal
+    listboxSlot: HTMLSlotElement;
+    // @internal
+    mousedownHandler(e: MouseEvent): boolean | void;
+    multiple?: boolean;
+    // @internal
+    protected multipleChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    name: string;
+    nameChanged(prev: string, next: string): void;
+    open: boolean;
+    // @internal
+    openChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    get options(): DropdownOption[];
+    placeholder: string;
+    required: boolean;
+    // @internal
+    get selectedIndex(): number;
+    get selectedOptions(): DropdownOption[];
+    selectOption(index?: number): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    type: DropdownType;
+    // @internal
+    typeChanged(prev: DropdownType | undefined, next: DropdownType | undefined): void;
+    // @internal
+    protected updateFreeformOption(value?: string): void;
+    // @internal
+    get validationMessage(): string;
+    get value(): string | null;
+    set value(next: string | null);
+    valueAttribute: string;
+}
+
+// @public
 export class BaseField extends FASTElement {
     constructor();
     // @internal
@@ -2404,6 +2483,145 @@ export const DrawerType: {
 export type DrawerType = ValuesOf<typeof DrawerType>;
 
 // @public
+export class Dropdown extends BaseDropdown {
+    constructor();
+    appearance: DropdownAppearance;
+    // @internal
+    appearanceChanged(prev: DropdownAppearance | undefined, next: DropdownAppearance | undefined): void;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // @internal
+    openChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    size?: DropdownSize;
+    // @internal
+    sizeChanged(prev: DropdownSize | undefined, next: DropdownSize | undefined): void;
+}
+
+// @public
+export const DropdownAppearance: {
+    filledDarker: string;
+    filledLighter: string;
+    outline: string;
+    transparent: string;
+};
+
+// @public (undocumented)
+export type DropdownAppearance = ValuesOf<typeof DropdownAppearance>;
+
+// @public
+export const dropdownButtonTemplate: ViewTemplate<BaseDropdown, any>;
+
+// @public
+export const DropdownDefinition: FASTElementDefinition<typeof Dropdown>;
+
+// @public
+export const dropdownInputTemplate: ViewTemplate<BaseDropdown, any>;
+
+// Warning: (ae-forgotten-export) The symbol "Start" needs to be exported by the entry point index.d.ts
+//
+// @public
+export class DropdownOption extends FASTElement implements Start {
+    constructor();
+    active: boolean;
+    // @internal
+    protected activeChanged(prev: boolean, next: boolean): void;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    currentSelected?: boolean;
+    // @internal
+    currentSelectedChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    defaultSelected?: boolean;
+    // @internal
+    protected defaultSelectedChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    descriptionSlot: Node[];
+    // @internal
+    descriptionSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    disabled?: boolean;
+    disabledAttribute?: boolean;
+    // @internal
+    protected disabledAttributeChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    static formAssociated: boolean;
+    formAttribute?: string;
+    freeform?: boolean;
+    // @internal
+    freeformOutputs?: HTMLOutputElement[];
+    // @override
+    id: string;
+    initialValue: string;
+    // @internal
+    protected initialValueChanged(prev: string, next: string): void;
+    get labels(): ReadonlyArray<HTMLLabelElement>;
+    multiple: boolean;
+    multipleChanged(prev: boolean, next: boolean): void;
+    name: string;
+    get selected(): boolean;
+    set selected(next: boolean);
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    start: HTMLSlotElement;
+    get text(): string;
+    textAttribute?: string;
+    toggleSelected(force?: boolean): void;
+    get value(): string;
+    set value(value: string);
+}
+
+// @public
+export const DropdownOptionDefinition: FASTElementDefinition<typeof DropdownOption>;
+
+// @public
+export type DropdownOptionOptions = StartOptions<DropdownOption> & {
+    checkedIndicator?: StaticallyComposableHTML<DropdownOption>;
+};
+
+// @public
+export type DropdownOptions = {
+    indicator?: StaticallyComposableHTML<BaseDropdown>;
+};
+
+// @public
+export const DropdownOptionStyles: ElementStyles;
+
+// @public
+export const DropdownOptionTemplate: ElementViewTemplate<DropdownOption>;
+
+// @public
+export const DropdownSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public (undocumented)
+export type DropdownSize = ValuesOf<typeof DropdownSize>;
+
+// @public
+export const DropdownStyles: ElementStyles;
+
+// @public
+export const DropdownTemplate: ElementViewTemplate<BaseDropdown>;
+
+// @public
+export const DropdownType: {
+    readonly combobox: "combobox";
+    readonly dropdown: "dropdown";
+    readonly select: "select";
+};
+
+// @public (undocumented)
+export type DropdownType = ValuesOf<typeof DropdownType>;
+
+// @public
 export const durationFast = "var(--durationFast)";
 
 // @public
@@ -2575,6 +2793,15 @@ export const ImageStyles: ElementStyles;
 export const ImageTemplate: ElementViewTemplate<Image_2>;
 
 // @public
+export function isDropdown(element?: Node | null, tagName?: string): element is BaseDropdown;
+
+// @public
+export function isDropdownOption(value: Node | null, tagName?: string): value is DropdownOption;
+
+// @public
+export function isListbox(element?: Node | null, tagName?: string): element is Listbox;
+
+// @public
 export class Label extends FASTElement {
     disabled: boolean;
     disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
@@ -2691,6 +2918,47 @@ export type LinkTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
 export const LinkTemplate: ElementViewTemplate<Link>;
+
+// @public
+export class Listbox extends FASTElement {
+    constructor();
+    // @internal
+    beforetoggleHandler(e: ToggleEvent): boolean | undefined;
+    clickHandler(e: PointerEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    dropdown?: BaseDropdown;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get enabledOptions(): DropdownOption[];
+    // @internal
+    handleChange(source: any, propertyName?: string): void;
+    // @override
+    id: string;
+    multiple?: boolean;
+    multipleChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    options: DropdownOption[];
+    // @internal
+    optionsChanged(prev: DropdownOption[] | undefined, next: DropdownOption[] | undefined): void;
+    // @internal
+    selectedIndex: number;
+    get selectedOptions(): DropdownOption[];
+    selectOption(index?: number): void;
+}
+
+// @public
+export const ListboxDefinition: FASTElementDefinition<typeof Listbox>;
+
+// @public
+export const ListboxStyles: ElementStyles;
+
+// @public
+export const ListboxTemplate: ElementViewTemplate<Listbox>;
+
+// @public
+export function listboxTemplate<T extends Listbox>(): ElementViewTemplate<T>;
 
 // @public
 export abstract class MatchMediaBehavior implements HostBehavior {
@@ -3045,7 +3313,7 @@ export class RadioGroup extends FASTElement {
     // @internal
     protected checkedIndexChanged(prev: number | undefined, next: number): void;
     // @internal
-    checkRadio(index?: number): void;
+    checkRadio(index?: number, shouldEmit?: boolean): void;
     checkValidity(): boolean;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
@@ -3490,8 +3758,10 @@ export const SpinnerStyles: ElementStyles;
 // @public (undocumented)
 export const SpinnerTemplate: ViewTemplate<Spinner, any>;
 
+// Warning: (ae-forgotten-export) The symbol "End" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class StartEnd {
+export class StartEnd implements Start, End {
     // (undocumented)
     end: HTMLSlotElement;
     // (undocumented)
@@ -3507,7 +3777,7 @@ export type StartOptions<TSource = any, TParent = any> = {
 };
 
 // @public
-export function startSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(options: StartOptions<TSource, TParent>): CaptureType<TSource, TParent>;
+export function startSlotTemplate<TSource extends Pick<StartEnd, 'start'> = StartEnd, TParent = any>(options: StartOptions<TSource, TParent>): CaptureType<TSource, TParent>;
 
 // @public
 export const strokeWidthThick = "var(--strokeWidthThick)";
@@ -4059,6 +4329,8 @@ export class Tooltip extends FASTElement {
     mouseenterAnchorHandler: () => void;
     mouseleaveAnchorHandler: () => void;
     positioning?: TooltipPositioningOption;
+    // @internal
+    positioningChanged(): void;
     // @internal
     showTooltip(delay?: number): void;
 }

@@ -4,11 +4,6 @@ trigger: none
 
 name: '$(targetNpmVersion) ($(Rev:r))'
 
-parameters:
-  - name: isTestRun
-    type: boolean
-    default: false
-
 variables:
   - template: .devops/templates/variables.yml
   - name: tags
@@ -78,10 +73,10 @@ extends:
                 displayName: 'Create tarball'
                 workingDirectory: 'packages/react'
 
-              - ${{ if ne(parameters.isTestRun, true) }}:
-                  - script: |
-                      npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
-                    displayName: Publish new version
+              - script: |
+                  npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
+                displayName: Publish new version
+                condition: eq(variables.dryRun, false)
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:

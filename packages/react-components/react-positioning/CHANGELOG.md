@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 06 Dec 2024 12:53:41 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jan 2025 20:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.16.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.3)
+
+Mon, 27 Jan 2025 20:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.16.2..@fluentui/react-positioning_v9.16.3)
+
+### Patches
+
+- feat: allow to configure boundaries with "PositioningRect" ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by olfedias@microsoft.com)
+
+## [9.16.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.2)
+
+Wed, 22 Jan 2025 14:00:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.16.1..@fluentui/react-positioning_v9.16.2)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.20 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+
+## [9.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.1)
+
+Wed, 08 Jan 2025 18:33:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.16.0..@fluentui/react-positioning_v9.16.1)
+
+### Patches
+
+- chore: bump @floating-ui/dom ([PR #33458](https://github.com/microsoft/fluentui/pull/33458) by 863023+radium-v@users.noreply.github.com)
+
+## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.0)
+
+Mon, 16 Dec 2024 16:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.14..@fluentui/react-positioning_v9.16.0)
+
+### Minor changes
+
+- Add positioning option `shiftToCoverTarget` that allows the positioned element to shift to cover the target when there is not enough available space ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.21.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-theme to v9.1.24 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-utilities to v9.18.19 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+
+## [9.15.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.14)
+
+Mon, 09 Dec 2024 17:38:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.13..@fluentui/react-positioning_v9.15.14)
+
+### Patches
+
+- fix(Popover): opacity transition was not happening ([PR #33421](https://github.com/microsoft/fluentui/pull/33421) by robertpenner@microsoft.com)
 
 ## [9.15.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.13)
 

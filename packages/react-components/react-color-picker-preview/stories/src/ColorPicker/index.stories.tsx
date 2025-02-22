@@ -5,9 +5,12 @@ import bestPracticesMd from './ColorPickerBestPractices.md';
 
 export { Default } from './ColorPickerDefault.stories';
 export { ColorPickerShape } from './ColorPickerShape.stories';
-export { ColorAreaExample } from './ColorAreaDefault.stories';
-export { ColorSliderExample } from './ColorSliderDefault.stories';
-export { AlphaSliderExample } from './AlphaSliderDefault.stories';
+export { ColorAreaDefault } from './ColorAreaDefault.stories';
+export { ColorSliderDefault } from './ColorSliderDefault.stories';
+export { ColorSliderChannels } from './ColorSliderChannels.stories';
+export { AlphaSliderDefault } from './AlphaSliderDefault.stories';
+export { ColorAndSwatchPicker } from './ColorAndSwatchPicker.stories';
+export { ColorPickerPopup } from './ColorPickerPopup.stories';
 
 export default {
   title: 'Preview Components/ColorPicker',

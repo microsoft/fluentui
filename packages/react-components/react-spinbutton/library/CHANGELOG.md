@@ -1,8 +1,71 @@
 # Change Log - @fluentui/react-spinbutton
 
-This log was last generated on Fri, 06 Dec 2024 12:53:42 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2025 14:34:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.3.0)
+
+Fri, 21 Feb 2025 14:34:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.2.98..@fluentui/react-spinbutton_v9.3.0)
+
+### Minor changes
+
+- Bump @fluentui/react-field to v9.2.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+
+## [9.2.98](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.98)
+
+Mon, 27 Jan 2025 20:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.2.97..@fluentui/react-spinbutton_v9.2.98)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.86 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
+
+## [9.2.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.97)
+
+Wed, 22 Jan 2025 14:00:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.2.96..@fluentui/react-spinbutton_v9.2.97)
+
+### Patches
+
+- fix spinbutton test ([PR #33680](https://github.com/microsoft/fluentui/pull/33680) by carla.muntean@microsoft.com)
+- Bump @fluentui/react-field to v9.1.85 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.50 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-utilities to v9.18.20 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+
+## [9.2.96](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.96)
+
+Wed, 08 Jan 2025 18:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.2.95..@fluentui/react-spinbutton_v9.2.96)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.84 ([PR #33550](https://github.com/microsoft/fluentui/pull/33550) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.49 ([PR #33550](https://github.com/microsoft/fluentui/pull/33550) by beachball)
+
+## [9.2.95](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.95)
+
+Mon, 16 Dec 2024 16:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.2.94..@fluentui/react-spinbutton_v9.2.95)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.83 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.48 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.21.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-theme to v9.1.24 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-utilities to v9.18.19 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+
+## [9.2.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.94)
+
+Mon, 09 Dec 2024 17:38:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.2.93..@fluentui/react-spinbutton_v9.2.94)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+- Bump @fluentui/react-field to v9.1.82 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
 
 ## [9.2.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.93)
 

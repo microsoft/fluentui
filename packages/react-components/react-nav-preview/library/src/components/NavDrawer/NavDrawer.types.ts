@@ -25,4 +25,12 @@ export type NavDrawerProps = ComponentProps<NavDrawerSlots> &
 /**
  * State used in rendering NavDrawer
  */
-export type NavDrawerState = DrawerState & NavContextValue;
+export type NavDrawerState = DrawerState &
+  NavContextValue & {
+    /**
+     * Analagous to size from DrawerBaseProps.
+     * Intended to be left unset in most cases.
+     * If left unset, it defaults to 260px.
+     */
+    size?: 'small' | 'medium' | 'large' | 'full';
+  };

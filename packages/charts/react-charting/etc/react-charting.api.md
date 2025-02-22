@@ -12,6 +12,7 @@ import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IHoverCardStyleProps } from '@fluentui/react/lib/HoverCard';
 import { IHoverCardStyles } from '@fluentui/react/lib/HoverCard';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
+import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { IStyle } from '@fluentui/react/lib/Styling';
 import { IStyle as IStyle_2 } from '@fluentui/react';
@@ -125,6 +126,7 @@ export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
 // @public
 export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
     chartSchema: Schema;
+    componentRef?: IRefObject<IDeclarativeChart>;
     onSchemaChange?: (eventData: Schema) => void;
 }
 
@@ -198,6 +200,7 @@ export interface IAreaChartProps extends ICartesianChartProps {
     data: IChartProps;
     enableGradient?: boolean;
     enablePerfOptimization?: boolean;
+    mode?: 'tozeroy' | 'tonexty';
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
     onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
     // (undocumented)
@@ -267,6 +270,7 @@ export interface ICartesianChartProps {
     // @deprecated
     chartLabel?: string;
     className?: string;
+    componentRef?: IRefObject<IChart>;
     customDateTimeFormatter?: (dateTime: Date) => string;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
@@ -274,6 +278,7 @@ export interface ICartesianChartProps {
     focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
     height?: number;
     hideLegend?: boolean;
+    hideTickOverlap?: boolean;
     hideTooltip?: boolean;
     href?: string;
     // (undocumented)
@@ -285,6 +290,7 @@ export interface ICartesianChartProps {
     noOfCharsToTruncate?: number;
     parentRef?: HTMLElement | null;
     rotateXAxisLables?: boolean;
+    roundedTicks?: boolean;
     secondaryYAxistitle?: string;
     secondaryYScaleOptions?: {
         yMinValue?: number;
@@ -298,7 +304,7 @@ export interface ICartesianChartProps {
     theme?: ITheme;
     tickFormat?: string;
     tickPadding?: number;
-    tickValues?: number[] | Date[];
+    tickValues?: number[] | Date[] | string[];
     timeFormatLocale?: TimeLocaleDefinition;
     useUTC?: boolean;
     width?: number;
@@ -350,6 +356,12 @@ export interface ICartesianChartStyles {
     tooltip?: IStyle;
     xAxis?: IStyle;
     yAxis?: IStyle;
+}
+
+// @public (undocumented)
+export interface IChart {
+    // (undocumented)
+    chartContainer: HTMLElement | null;
 }
 
 // @public (undocumented)
@@ -482,12 +494,19 @@ export interface IDataPoint {
 }
 
 // @public (undocumented)
+export interface IDeclarativeChart {
+    // (undocumented)
+    exportAsImage: (opts?: IImageExportOptions) => Promise<string>;
+}
+
+// @public (undocumented)
 export interface IDonutChart {
 }
 
 // @public
 export interface IDonutChartProps extends ICartesianChartProps {
     calloutProps?: Partial<ICalloutProps>;
+    componentRef?: IRefObject<IChart>;
     culture?: string;
     data?: IChartProps;
     enableGradient?: boolean;
@@ -536,6 +555,7 @@ export interface IGaugeChartProps {
     chartValue: number;
     chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
     className?: string;
+    componentRef?: IRefObject<IChart>;
     culture?: string;
     enableGradient?: boolean;
     height?: number;
@@ -620,6 +640,7 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     // @deprecated
     legendColor?: string;
     maxBarWidth?: number;
+    mode?: 'default' | 'plotly';
     onRenderCalloutPerDataPoint?: IRenderFunction<IGVBarChartSeriesPoint>;
     roundCorners?: boolean;
     // @deprecated
@@ -704,6 +725,8 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
     domainValuesForColorScale: number[];
     legendProps?: Partial<ILegendsProps>;
     rangeValuesForColorScale: string[];
+    showYAxisLables?: boolean;
+    sortOrder?: 'none' | 'alphabetical';
     styles?: IStyleFunctionOrObject<IHeatMapChartStyleProps, IHeatMapChartStyles>;
     xAxisDateFormatString?: string;
     xAxisNumberFormatString?: string;
@@ -832,6 +855,18 @@ export interface IHorizontalDataPoint {
     y: number;
 }
 
+// @public (undocumented)
+export interface IImageExportOptions {
+    // (undocumented)
+    background?: string;
+    // (undocumented)
+    height?: number;
+    // (undocumented)
+    scale?: number;
+    // (undocumented)
+    width?: number;
+}
+
 // @public
 export interface ILegend {
     action?: VoidFunction;
@@ -876,6 +911,8 @@ export interface ILegendsProps {
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
     overflowText?: string;
+    selectedLegend?: string;
+    selectedLegends?: string[];
     shape?: LegendShape;
     styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
     theme?: ITheme;
@@ -1007,6 +1044,7 @@ export interface ILineDataInVerticalStackedBarChart {
     data?: number;
     // (undocumented)
     legend: string;
+    lineOptions?: ILineChartLineOptions;
     useSecondaryYScale?: boolean;
     // (undocumented)
     y: number;
@@ -1044,7 +1082,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     createStringYAxis: (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean, barWidth: number | undefined) => ScaleBand<string>;
     // Warning: (ae-forgotten-export) The symbol "IYAxisParams" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "IAxisData" needs to be exported by the entry point index.d.ts
-    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, useSecondaryYScale?: boolean, supportNegativeData?: boolean) => ScaleLinear<number, number, never>;
+    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, useSecondaryYScale?: boolean, supportNegativeData?: boolean, roundedTicks?: boolean) => ScaleLinear<number, number, never>;
     culture?: string;
     customizedCallout?: any;
     datasetForXAxisDomain?: string[];
@@ -1054,7 +1092,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     getAxisData?: any;
     getDomainMargins?: (containerWidth: number) => IMargins;
     // Warning: (ae-forgotten-export) The symbol "IDomainNRange" needs to be exported by the entry point index.d.ts
-    getDomainNRangeValues: (points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[] | IHorizontalBarChartWithAxisDataPoint[] | IGroupedVerticalBarChartData[] | IHeatMapChartDataPoint[], margins: IMargins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | undefined, shiftX: number) => IDomainNRange;
+    getDomainNRangeValues: (points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[] | IHorizontalBarChartWithAxisDataPoint[] | IGroupedVerticalBarChartData[] | IHeatMapChartDataPoint[], margins: IMargins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
     getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[], yAxisType: YAxisType | undefined) => {
@@ -1066,12 +1104,13 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
     points: any;
+    ref?: IRefObject<IChart>;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];
     svgFocusZoneProps?: IFocusZoneProps;
     tickParams?: {
-        tickValues?: number[] | Date[];
+        tickValues?: number[] | Date[] | string[];
         tickFormat?: string;
     };
     xAxisInnerPadding?: number;
@@ -1196,8 +1235,10 @@ export interface ISankeyChartData {
 export interface ISankeyChartProps {
     accessibility?: ISankeyChartAccessibilityProps;
     borderColorsForNodes?: string[];
+    calloutProps?: Partial<ICalloutProps>;
     className?: string;
     colorsForNodes?: string[];
+    componentRef?: IRefObject<IChart>;
     data: IChartProps;
     enableReflow?: boolean;
     formatNumberOptions?: Intl.NumberFormatOptions;
@@ -1432,6 +1473,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
     lineLegendText?: string;
     lineOptions?: ILineChartLineOptions;
     maxBarWidth?: number;
+    mode?: 'default' | 'plotly';
     onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
     roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
@@ -1484,6 +1526,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     isCalloutForStack?: boolean;
     lineOptions?: ILineChartLineOptions;
     maxBarWidth?: number;
+    mode?: 'default' | 'plotly';
     onBarClick?: (event: React_2.MouseEvent<SVGElement>, data: IVerticalStackedChartProps | IVSChartDataPoint) => void;
     onRenderCalloutPerDataPoint?: IRenderFunction<IVSChartDataPoint>;
     onRenderCalloutPerStack?: IRenderFunction<IVerticalStackedChartProps>;
@@ -1601,13 +1644,9 @@ export const PieChart: React_2.FunctionComponent<IPieChartProps>;
 // @public
 export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
 
-// @public (undocumented)
+// @public
 export interface Schema {
-    accesibilityLabels?: {
-        [key: string]: string;
-    };
     plotlySchema: any;
-    selectedLegends?: string[];
 }
 
 // @public (undocumented)

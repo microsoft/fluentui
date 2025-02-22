@@ -1,4 +1,4 @@
-/* eslint-disable deprecation/deprecation */
+/*  eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { styled } from './styled';

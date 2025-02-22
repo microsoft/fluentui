@@ -15,28 +15,52 @@ const useStyles = makeStyles({
     height: '50px',
     borderRadius: '4px',
     border: '1px solid #ccc',
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+    },
   },
 });
+const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
 
-const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
-
-export const ColorSliderExample = (props: Partial<ColorSliderProps>) => {
+export const ColorSliderDefault = (props: Partial<ColorSliderProps>) => {
   const styles = useStyles();
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
-  const onSliderChange: ColorSliderProps['onChange'] = (_, data) => setColor({ ...data.color, a: data.color.a ?? 1 });
+  const [hue, setHue] = React.useState(DEFAULT_COLOR_HSV.h);
+  const [namedColor, setNamedColor] = React.useState('');
+  const onSliderChange: ColorSliderProps['onChange'] = (_, data) => {
+    setColor({ ...data.color, a: data.color.a ?? 1 });
+    setHue(data.color.h);
+    const _namedColor = tinycolor(`hsl(${data.color.h},100%,50%)`).toName();
+    if (_namedColor) {
+      setNamedColor(_namedColor);
+    }
+  };
   const resetSlider = () => setColor(DEFAULT_COLOR_HSV);
 
   return (
     <div className={styles.example}>
-      <ColorSlider color={color} onChange={onSliderChange} {...props} />
-      <ColorSlider color={color} onChange={onSliderChange} vertical {...props} />
+      <ColorSlider
+        color={color}
+        onChange={onSliderChange}
+        aria-label="Hue"
+        aria-valuetext={`${hue}°, ${namedColor}`}
+        {...props}
+      />
+      <ColorSlider
+        color={color}
+        onChange={onSliderChange}
+        vertical
+        aria-label="Vertical Hue"
+        aria-valuetext={`${hue}°, ${namedColor}`}
+        {...props}
+      />
       <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toHexString() }} />
       <Button onClick={resetSlider}>Reset</Button>
     </div>
   );
 };
 
-ColorSliderExample.parameters = {
+ColorSliderDefault.parameters = {
   docs: {
     description: {
       story: 'The `ColorSlider` allows users to change the hue aspect of a color value.',

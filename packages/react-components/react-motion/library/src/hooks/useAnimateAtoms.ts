@@ -1,7 +1,20 @@
 import * as React from 'react';
 import type { AnimationHandle, AtomMotion } from '../types';
 
+export const DEFAULT_ANIMATION_OPTIONS: KeyframeEffectOptions = {
+  fill: 'forwards',
+};
+
+// A motion atom's default reduced motion is a simple 1 ms duration.
+// But an atom can define a custom reduced motion, overriding keyframes and/or params like duration, easing, iterations, etc.
+const DEFAULT_REDUCED_MOTION_ATOM: NonNullable<AtomMotion['reducedMotion']> = {
+  duration: 1,
+};
+
 function useAnimateAtomsInSupportedEnvironment() {
+  // eslint-disable-next-line @nx/workspace-no-restricted-globals
+  const SUPPORTS_PERSIST = typeof window !== 'undefined' && typeof window.Animation?.prototype.persist === 'function';
+
   return React.useCallback(
     (
       element: HTMLElement,
@@ -14,15 +27,28 @@ function useAnimateAtomsInSupportedEnvironment() {
       const { isReducedMotion } = options;
 
       const animations = atoms.map(motion => {
-        const { keyframes, ...params } = motion;
-        const animation = element.animate(keyframes, {
-          fill: 'forwards',
+        // Grab the custom reduced motion definition if it exists, or fall back to the default reduced motion.
+        const { keyframes: motionKeyframes, reducedMotion = DEFAULT_REDUCED_MOTION_ATOM, ...params } = motion;
+        // Grab the reduced motion keyframes if they exist, or fall back to the regular keyframes.
+        const { keyframes: reducedMotionKeyframes = motionKeyframes, ...reducedMotionParams } = reducedMotion;
 
+        const animationKeyframes: Keyframe[] = isReducedMotion ? reducedMotionKeyframes : motionKeyframes;
+        const animationParams: KeyframeEffectOptions = {
+          ...DEFAULT_ANIMATION_OPTIONS,
           ...params,
-          ...(isReducedMotion && { duration: 1 }),
-        });
 
-        animation.persist();
+          // Use reduced motion overrides (e.g. duration, easing) when reduced motion is enabled
+          ...(isReducedMotion && reducedMotionParams),
+        };
+
+        const animation = element.animate(animationKeyframes, animationParams);
+
+        if (SUPPORTS_PERSIST) {
+          animation.persist();
+        } else {
+          const resultKeyframe = animationKeyframes[animationKeyframes.length - 1];
+          Object.assign(element.style ?? {}, resultKeyframe);
+        }
 
         return animation;
       });
@@ -34,20 +60,22 @@ function useAnimateAtomsInSupportedEnvironment() {
           });
         },
         setMotionEndCallbacks(onfinish: () => void, oncancel: () => void) {
-          Promise.all(animations.map(animation => animation.finished))
+          // Heads up!
+          // This could use "Animation:finished", but it's causing a memory leak in Chromium.
+          // See: https://issues.chromium.org/u/2/issues/383016426
+          const promises = animations.map(animation => {
+            return new Promise<void>((resolve, reject) => {
+              animation.onfinish = () => resolve();
+              animation.oncancel = () => reject();
+            });
+          });
+
+          Promise.all(promises)
             .then(() => {
               onfinish();
             })
-            .catch((err: unknown) => {
-              const DOMException = element.ownerDocument.defaultView?.DOMException;
-
-              // Ignores "DOMException: The user aborted a request" that appears if animations are cancelled
-              if (DOMException && err instanceof DOMException && err.name === 'AbortError') {
-                oncancel();
-                return;
-              }
-
-              throw err;
+            .catch(() => {
+              oncancel();
             });
         },
 
@@ -73,7 +101,7 @@ function useAnimateAtomsInSupportedEnvironment() {
         },
       };
     },
-    [],
+    [SUPPORTS_PERSIST],
   );
 }
 

@@ -141,7 +141,7 @@ export const Basic = () => {
   return (
     <div style={rootStyle}>
       <AreaChart
-        culture={window.navigator.language}
+        culture="en-US"
         height={300}
         width={700}
         data={chartData}

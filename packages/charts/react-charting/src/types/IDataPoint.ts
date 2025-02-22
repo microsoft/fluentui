@@ -650,6 +650,10 @@ export interface ILineDataInVerticalStackedBarChart {
    * False by default.
    */
   useSecondaryYScale?: boolean;
+  /**
+   * options for the line drawn
+   */
+  lineOptions?: ILineChartLineOptions;
 }
 
 /**
@@ -813,4 +817,11 @@ export interface ICustomizedCalloutDataPoint {
 export interface ICustomizedCalloutData {
   x: number | string | Date;
   values: ICustomizedCalloutDataPoint[];
+}
+
+/**
+ * {@docCategory Chart}
+ */
+export interface IChart {
+  chartContainer: HTMLElement | null;
 }

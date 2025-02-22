@@ -482,6 +482,7 @@ import { InteractionTagSecondarySlots } from '@fluentui/react-tags';
 import { InteractionTagSecondaryState } from '@fluentui/react-tags';
 import { InteractionTagSlots } from '@fluentui/react-tags';
 import { InteractionTagState } from '@fluentui/react-tags';
+import { isHTMLElement } from '@fluentui/react-utilities';
 import { isTruncatableBreadcrumbContent } from '@fluentui/react-breadcrumb';
 import { Label } from '@fluentui/react-label';
 import { labelClassNames } from '@fluentui/react-label';
@@ -496,6 +497,7 @@ import { linkClassNames } from '@fluentui/react-link';
 import { LinkProps } from '@fluentui/react-link';
 import { LinkSlots } from '@fluentui/react-link';
 import { LinkState } from '@fluentui/react-link';
+import { List } from '@fluentui/react-list';
 import { Listbox } from '@fluentui/react-combobox';
 import { listboxClassNames } from '@fluentui/react-combobox';
 import { ListboxContextValue } from '@fluentui/react-combobox';
@@ -504,6 +506,15 @@ import { ListboxProps } from '@fluentui/react-combobox';
 import { ListboxProvider } from '@fluentui/react-combobox';
 import { ListboxSlots } from '@fluentui/react-combobox';
 import { ListboxState } from '@fluentui/react-combobox';
+import { listClassNames } from '@fluentui/react-list';
+import { ListItem } from '@fluentui/react-list';
+import { listItemClassNames } from '@fluentui/react-list';
+import { ListItemProps } from '@fluentui/react-list';
+import { ListItemSlots } from '@fluentui/react-list';
+import { ListItemState } from '@fluentui/react-list';
+import { ListProps } from '@fluentui/react-list';
+import { ListSlots } from '@fluentui/react-list';
+import { ListState } from '@fluentui/react-list';
 import { makeResetStyles } from '@griffel/react';
 import { makeStaticStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
@@ -681,8 +692,10 @@ import { Portal } from '@fluentui/react-portal';
 import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
+import { PositioningBoundary } from '@fluentui/react-positioning';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningRect } from '@fluentui/react-positioning';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
@@ -816,7 +829,9 @@ import { renderInteractionTagPrimary_unstable } from '@fluentui/react-tags';
 import { renderInteractionTagSecondary_unstable } from '@fluentui/react-tags';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
+import { renderList_unstable } from '@fluentui/react-list';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
+import { renderListItem_unstable } from '@fluentui/react-list';
 import { renderMenu_unstable } from '@fluentui/react-menu';
 import { renderMenuButton_unstable } from '@fluentui/react-button';
 import { renderMenuDivider_unstable } from '@fluentui/react-menu';
@@ -1123,6 +1138,7 @@ import { tagPickerButtonClassNames } from '@fluentui/react-tag-picker';
 import { TagPickerButtonProps } from '@fluentui/react-tag-picker';
 import { TagPickerButtonSlots } from '@fluentui/react-tag-picker';
 import { TagPickerButtonState } from '@fluentui/react-tag-picker';
+import { TagPickerContextValue } from '@fluentui/react-tag-picker';
 import { TagPickerContextValues } from '@fluentui/react-tag-picker';
 import { TagPickerControl } from '@fluentui/react-tag-picker';
 import { tagPickerControlClassNames } from '@fluentui/react-tag-picker';
@@ -1356,6 +1372,7 @@ import { TreeOpenChangeData } from '@fluentui/react-tree';
 import { TreeOpenChangeEvent } from '@fluentui/react-tree';
 import { TreeProps } from '@fluentui/react-tree';
 import { TreeProvider } from '@fluentui/react-tree';
+import { TreeRootReset } from '@fluentui/react-tree';
 import { TreeSelectionValue } from '@fluentui/react-tree';
 import { TreeSlots } from '@fluentui/react-tree';
 import { TreeState } from '@fluentui/react-tree';
@@ -1552,10 +1569,14 @@ import { useLabelStyles_unstable } from '@fluentui/react-label';
 import { useLink_unstable } from '@fluentui/react-link';
 import { useLinkState_unstable } from '@fluentui/react-link';
 import { useLinkStyles_unstable } from '@fluentui/react-link';
+import { useList_unstable } from '@fluentui/react-list';
 import { useListbox_unstable } from '@fluentui/react-combobox';
 import { useListboxContext_unstable } from '@fluentui/react-combobox';
 import { useListboxContextValues } from '@fluentui/react-combobox';
 import { useListboxStyles_unstable } from '@fluentui/react-combobox';
+import { useListItem_unstable } from '@fluentui/react-list';
+import { useListItemStyles_unstable } from '@fluentui/react-list';
+import { useListStyles_unstable } from '@fluentui/react-list';
 import { useMenu_unstable } from '@fluentui/react-menu';
 import { useMenuButton_unstable } from '@fluentui/react-button';
 import { useMenuButtonStyles_unstable } from '@fluentui/react-button';
@@ -1717,6 +1738,7 @@ import { useTagGroupStyles_unstable } from '@fluentui/react-tags';
 import { useTagPicker_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerButton_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerButtonStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerContext_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerControl_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerControlStyles_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerFilter } from '@fluentui/react-tag-picker';
@@ -2764,6 +2786,8 @@ export { InteractionTagSlots }
 
 export { InteractionTagState }
 
+export { isHTMLElement }
+
 export { isTruncatableBreadcrumbContent }
 
 export { Label }
@@ -2792,6 +2816,8 @@ export { LinkSlots }
 
 export { LinkState }
 
+export { List }
+
 export { Listbox }
 
 export { listboxClassNames }
@@ -2807,6 +2833,24 @@ export { ListboxProvider }
 export { ListboxSlots }
 
 export { ListboxState }
+
+export { listClassNames }
+
+export { ListItem }
+
+export { listItemClassNames }
+
+export { ListItemProps }
+
+export { ListItemSlots }
+
+export { ListItemState }
+
+export { ListProps }
+
+export { ListSlots }
+
+export { ListState }
 
 export { makeResetStyles }
 
@@ -3162,9 +3206,13 @@ export { PortalProps }
 
 export { PortalState }
 
+export { PositioningBoundary }
+
 export { PositioningImperativeRef }
 
 export { PositioningProps }
+
+export { PositioningRect }
 
 export { PositioningShorthand }
 
@@ -3432,7 +3480,11 @@ export { renderLabel_unstable }
 
 export { renderLink_unstable }
 
+export { renderList_unstable }
+
 export { renderListbox_unstable }
+
+export { renderListItem_unstable }
 
 export { renderMenu_unstable }
 
@@ -4046,6 +4098,8 @@ export { TagPickerButtonSlots }
 
 export { TagPickerButtonState }
 
+export { TagPickerContextValue }
+
 export { TagPickerContextValues }
 
 export { TagPickerControl }
@@ -4512,6 +4566,8 @@ export { TreeProps }
 
 export { TreeProvider }
 
+export { TreeRootReset }
+
 export { TreeSelectionValue }
 
 export { TreeSlots }
@@ -4904,6 +4960,8 @@ export { useLinkState_unstable }
 
 export { useLinkStyles_unstable }
 
+export { useList_unstable }
+
 export { useListbox_unstable }
 
 export { useListboxContext_unstable }
@@ -4911,6 +4969,12 @@ export { useListboxContext_unstable }
 export { useListboxContextValues }
 
 export { useListboxStyles_unstable }
+
+export { useListItem_unstable }
+
+export { useListItemStyles_unstable }
+
+export { useListStyles_unstable }
 
 export { useMenu_unstable }
 
@@ -5233,6 +5297,8 @@ export { useTagPicker_unstable }
 export { useTagPickerButton_unstable }
 
 export { useTagPickerButtonStyles_unstable }
+
+export { useTagPickerContext_unstable }
 
 export { useTagPickerControl_unstable }
 

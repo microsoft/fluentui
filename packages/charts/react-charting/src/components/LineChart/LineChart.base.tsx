@@ -4,7 +4,14 @@ import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
-import { classNamesFunction, getId, find, memoizeFunction, getRTL } from '@fluentui/react/lib/Utilities';
+import {
+  classNamesFunction,
+  getId,
+  find,
+  memoizeFunction,
+  getRTL,
+  initializeComponentRef,
+} from '@fluentui/react/lib/Utilities';
 import {
   IAccessibilityProps,
   CartesianChart,
@@ -41,7 +48,9 @@ import {
   domainRangeOfNumericForAreaChart,
   createStringYAxis,
   formatDate,
+  areArraysEqual,
 } from '../../utilities/index';
+import { IChart } from '../../types/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -146,7 +155,7 @@ export interface ILineChartState extends IBasestate {
   activeLine: number | null;
 }
 
-export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> {
+export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> implements IChart {
   public static defaultProps: Partial<ILineChartProps> = {
     enableReflow: true,
     useUTC: true,
@@ -178,19 +187,23 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
   private _isRTL: boolean = getRTL();
+  private _cartesianChartRef: React.RefObject<IChart>;
 
   constructor(props: ILineChartProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     this.state = {
       hoverXValue: '',
       activeLegend: '',
       YValueHover: [],
       refSelected: '',
-      selectedLegend: '',
+      selectedLegend: props.legendProps?.selectedLegend ?? '',
       isCalloutVisible: false,
-      selectedLegendPoints: [],
+      selectedLegendPoints: this._injectIndexPropertyInLineChartData(this.props.data.lineChartData, true),
       selectedColorBarLegend: [],
-      isSelectedLegend: false,
+      isSelectedLegend: (this.props.legendProps?.selectedLegends?.length ?? 0) > 0,
       activePoint: '',
       nearestCircleToHighlight: null,
       activeLine: null,
@@ -210,6 +223,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._createLegendsMemoized = memoizeFunction((data: LineChartDataWithIndex[]) => this._createLegends(data));
     this._firstRenderOptimization = true;
     this._emptyChartId = getId('_LineChart_empty');
+    this._cartesianChartRef = React.createRef();
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -217,8 +231,19 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   public componentDidUpdate(prevProps: ILineChartProps): void {
+    if (
+      prevProps.legendProps?.selectedLegend !== this.props.legendProps?.selectedLegend ||
+      !areArraysEqual(prevProps.legendProps?.selectedLegends, this.props.legendProps?.selectedLegends)
+    ) {
+      this.setState({
+        selectedLegend: this.props.legendProps?.selectedLegend ?? '',
+        selectedLegendPoints: this._injectIndexPropertyInLineChartData(this.props.data.lineChartData, true),
+        isSelectedLegend: (this.props.legendProps?.selectedLegends?.length ?? 0) > 0,
+      });
+    }
+
     /** note that height and width are not used to resize or set as dimesions of the chart,
-     * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
+     * fitParentContainer is responsible for setting the height and width or resizing of the svg/chart
      */
     if (
       prevProps.height !== this.props.height ||
@@ -293,6 +318,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         createStringYAxis={createStringYAxis}
         onChartMouseLeave={this._handleChartMouseLeave}
         enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
+        ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -349,6 +375,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     );
   }
 
+  public get chartContainer(): HTMLElement | null {
+    return this._cartesianChartRef.current?.chartContainer || null;
+  }
+
   private _getDomainNRangeValues = (
     points: ILineChartPoints[],
     margins: IMargins,
@@ -379,10 +409,21 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return domainNRangeValue;
   };
 
-  private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {
+  private _injectIndexPropertyInLineChartData = (
+    lineChartData?: ILineChartPoints[],
+    isFilterSelectedLegends: boolean = false,
+  ): LineChartDataWithIndex[] | [] => {
     const { allowMultipleShapesForPoints = false } = this.props;
-    return lineChartData
-      ? lineChartData.map((item: ILineChartPoints, index: number) => {
+    // Apply filter only if isPropChange is true
+    const filteredData = isFilterSelectedLegends
+      ? lineChartData?.filter(
+          (item: ILineChartPoints) =>
+            this.props.legendProps?.selectedLegends?.includes(item.legend) ||
+            this.props.legendProps?.selectedLegend === item.legend,
+        )
+      : lineChartData;
+    return filteredData
+      ? filteredData.map((item: ILineChartPoints, index: number) => {
           let color: string;
           // isInverted property is applicable to v8 themes only
           if (typeof item.color === 'undefined') {
@@ -1045,7 +1086,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const FILL_Y_PADDING = 3;
     for (let i = 0; i < this._colorFillBars.length; i++) {
       const colorFillBar = this._colorFillBars[i];
-      const colorFillBarId = getId(colorFillBar.legend.replace(/\W/g, ''));
+      const legend = typeof colorFillBar.legend === 'string' ? colorFillBar.legend.replace(/\W/g, '') : '';
+      const colorFillBarId = getId(legend);
       // isInverted property is applicable to v8 themes only
       const color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
 

@@ -42,8 +42,11 @@ const useStyles = makeStyles({
  */
 const useThumbStyles = makeStyles({
   thumb: {
-    backgroundColor: `var(${alphaSliderCSSVars.thumbColorVar})`,
+    backgroundColor: tokens.colorNeutralBackground1,
     [`${thumbPositionVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${alphaSliderCSSVars.sliderProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
+    '::before': {
+      backgroundColor: `var(${alphaSliderCSSVars.thumbColorVar})`,
+    },
   },
   horizontal: {
     transform: 'translateX(-50%)',
