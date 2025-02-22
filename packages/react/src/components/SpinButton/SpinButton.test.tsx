@@ -28,8 +28,7 @@ describe('SpinButton', () => {
 
     // These don't update until editing is complete
     const isNumeric = !!value && !isNaN(Number(value));
-    // aria-valuenow is used for fully numeric values
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe(isNumeric ? value : null);
+
     // aria-valuetext is used for values with suffixes or empty
     expect(inputDOM.getAttribute('aria-valuetext')).toBe(isNumeric ? null : value);
   }
@@ -126,7 +125,7 @@ describe('SpinButton', () => {
 
     it('renders correctly with user-provided values', () => {
       const component = create(
-        <SpinButton min={0} max={100} label="label" value="0" ariaValueNow={0} ariaValueText="0 pt" data-test="test" />,
+        <SpinButton min={0} max={100} label="label" value="0" ariaValueText="0 pt" data-test="test" />,
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -697,7 +696,7 @@ describe('SpinButton', () => {
       const onChange = jest.fn();
       let keyCode: number | undefined;
       const onValidate = jest.fn((value: string, event?: React.SyntheticEvent) => {
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         keyCode = (event as React.KeyboardEvent).which;
         return value;
       });

@@ -1,14 +1,14 @@
 import { attr, FASTElement, Observable } from '@microsoft/fast-element';
 import { keyEnter } from '@microsoft/fast-web-utilities';
-import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
+import { StartEnd } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { toggleState } from '../utils/element-internals.js';
+import { swapStates, toggleState } from '../utils/element-internals.js';
 import {
   AnchorAttributes,
-  type AnchorButtonAppearance,
-  type AnchorButtonShape,
-  type AnchorButtonSize,
+  AnchorButtonAppearance,
+  AnchorButtonShape,
+  AnchorButtonSize,
   type AnchorTarget,
 } from './anchor-button.options.js';
 
@@ -242,6 +242,12 @@ export class BaseAnchor extends FASTElement {
   }
 }
 
+/**
+ * An Anchor Custom HTML Element.
+ * Based on BaseAnchor and includes style and layout specific attributes
+ *
+ * @public
+ */
 export class AnchorButton extends BaseAnchor {
   /**
    * The appearance the anchor button should have.
@@ -259,12 +265,7 @@ export class AnchorButton extends BaseAnchor {
    * @param next - the next state
    */
   public appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, AnchorButtonAppearance);
   }
 
   /**
@@ -283,12 +284,7 @@ export class AnchorButton extends BaseAnchor {
    * @param next - the next state
    */
   public shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, AnchorButtonShape);
   }
 
   /**
@@ -307,12 +303,7 @@ export class AnchorButton extends BaseAnchor {
    * @param next - the next state
    */
   public sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, AnchorButtonSize);
   }
 
   /**

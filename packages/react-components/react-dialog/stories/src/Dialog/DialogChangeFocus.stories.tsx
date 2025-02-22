@@ -31,12 +31,12 @@ export const ChangeFocus = () => {
             <Button appearance="outline">Third Action</Button>
           </DialogActions>
           <DialogActions position="end">
+            <Button appearance="primary">Do Something</Button>
             <DialogTrigger disableButtonEnhancement>
               <Button ref={buttonRef} appearance="secondary">
                 Close
               </Button>
             </DialogTrigger>
-            <Button appearance="primary">Do Something</Button>
           </DialogActions>
         </DialogBody>
       </DialogSurface>

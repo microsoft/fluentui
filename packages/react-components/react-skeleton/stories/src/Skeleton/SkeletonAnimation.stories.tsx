@@ -15,12 +15,12 @@ export const Animation = (props: Partial<SkeletonProps>) => {
   return (
     <div className={styles.invertedWrapper}>
       <Field validationMessage="Wave animation" validationState="none">
-        <Skeleton {...props}>
+        <Skeleton {...props} aria-label="Loading Content">
           <SkeletonItem />
         </Skeleton>
       </Field>
       <Field validationMessage="Pulse animation" validationState="none">
-        <Skeleton {...props} animation="pulse">
+        <Skeleton {...props} animation="pulse" aria-label="Loading Content">
           <SkeletonItem />
         </Skeleton>
       </Field>

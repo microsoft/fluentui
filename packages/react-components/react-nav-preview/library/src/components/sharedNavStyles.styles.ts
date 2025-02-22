@@ -5,6 +5,7 @@ import { makeResetStyles, makeStyles } from '@griffel/react';
 // Styles shared by several nav components.
 
 export const navItemTokens = {
+  defaultDrawerWidth: 260,
   indicatorOffset: 16,
   indicatorWidth: 4,
   indicatorHeight: 20,
@@ -12,21 +13,28 @@ export const navItemTokens = {
   backgroundColorHover: tokens.colorNeutralBackground4Hover,
   backgroundColorPressed: tokens.colorNeutralBackground4Pressed,
   animationTokens: {
-    animationDuration: tokens.durationFast,
+    animationDuration: tokens.durationFaster,
     animationFillMode: 'both',
-    animationTimingFunction: tokens.curveAccelerateMid,
+    animationTimingFunction: tokens.curveLinear,
+  },
+  transitionTokens: {
+    transitionDuration: tokens.durationFaster,
+    transitionTimingFunction: tokens.curveLinear,
+    transitionProperty: 'background',
   },
 };
 
 /**
  * Styles for the root slot
- * Shared across NavItem, NavCategoryItem, and NavSubItem
+ * Shared across NavItem, NavCategoryItem, NavSubItem, and AppItem
  */
 export const useRootDefaultClassName = makeResetStyles({
   display: 'flex',
   textTransform: 'none',
   position: 'relative',
   justifyContent: 'start',
+  alignItems: 'flex-start',
+  textAlign: 'left',
   gap: tokens.spacingVerticalL,
   padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalS} ${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
   backgroundColor: navItemTokens.backgroundColor,
@@ -37,6 +45,7 @@ export const useRootDefaultClassName = makeResetStyles({
   // this element can change between a button and an anchor
   // so we need to reset box sizing to prevent horizontal overflow
   boxSizing: 'border-box',
+  cursor: 'pointer',
 
   transitionDuration: navItemTokens.animationTokens.animationDuration,
   transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
@@ -60,7 +69,7 @@ export const useSmallStyles = makeStyles({
 
 /**
  * Styles for the content slot (children)
- * Shared across NavItem, NavCategoryItem, and NavSubItem
+ * Shared across NavItem, NavCategoryItem, NavSubItem, and AppItem
  */
 export const useContentStyles = makeStyles({
   selected: typographyStyles.body1Strong,
@@ -98,6 +107,7 @@ export const useIndicatorStyles = makeStyles({
 /**
  * Styles for the icon slot
  * Shared across NavItem, NavCategoryItem, and NavSubItem
+ * We use the grid trick to stack the filled and regular icons on top of each other
  */
 export const useIconStyles = makeStyles({
   base: {

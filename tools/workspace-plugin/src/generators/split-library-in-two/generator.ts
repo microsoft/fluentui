@@ -22,7 +22,7 @@ import { tsquery } from '@phenomnomnominal/tsquery';
 
 import tsConfigBaseAllGenerator from '../tsconfig-base-all/index';
 import { TsConfig } from '../../types';
-import { workspacePaths } from '../../utils';
+import { getNpmScope, workspacePaths } from '../../utils';
 import { SplitLibraryInTwoGeneratorSchema } from './schema';
 
 export { isSplitProject, assertStoriesProject } from './shared';
@@ -30,6 +30,7 @@ export { isSplitProject, assertStoriesProject } from './shared';
 type CLIOutput = typeof output;
 
 interface Options extends SplitLibraryInTwoGeneratorSchema {
+  npmScope: string;
   projectConfig: ReturnType<typeof readProjectConfiguration>;
   projectOffsetFromRoot: { old: string; updated: string };
   oldContent: {
@@ -37,9 +38,7 @@ interface Options extends SplitLibraryInTwoGeneratorSchema {
     packageJSON: Record<string, unknown>;
   };
 
-  oldPackageMetadata: {
-    ssrTestsScript: string | undefined;
-  };
+  oldPackageMetadata: {};
 }
 
 const noop = () => {
@@ -122,6 +121,7 @@ function splitLibraryInTwoInternal(
 
   const packageJSON = readJson(tree, joinPathFragments(projectConfig.root, 'package.json'));
   const normalizedOptions = {
+    npmScope: getNpmScope(tree),
     projectName,
     projectConfig,
     projectOffsetFromRoot: {
@@ -132,9 +132,7 @@ function splitLibraryInTwoInternal(
       tsConfig: readJson(tree, joinPathFragments(projectConfig.root, 'tsconfig.json')),
       packageJSON,
     },
-    oldPackageMetadata: {
-      ssrTestsScript: packageJSON?.scripts?.['test-ssr'],
-    },
+    oldPackageMetadata: {},
   };
 
   cleanup(tree, normalizedOptions, logger);
@@ -165,11 +163,11 @@ function makeSrcLibrary(tree: Tree, options: Options, logger: CLIOutput) {
   const newProjectSourceRoot = joinPathFragments(newProjectRoot, 'src');
 
   visitNotIgnoredFiles(tree, oldProjectRoot, file => {
-    if (file.includes('/stories/') || file.includes('/.storybook/')) {
+    if (file.includes(path.normalize('/stories/')) || file.includes(path.normalize('/.storybook/'))) {
       return;
     }
 
-    const newFileName = `${newProjectRoot}/${path.relative(oldProjectRoot, file)}`;
+    const newFileName = joinPathFragments(newProjectRoot, path.relative(oldProjectRoot, file));
 
     tree.rename(file, newFileName);
   });
@@ -193,11 +191,6 @@ function makeSrcLibrary(tree: Tree, options: Options, logger: CLIOutput) {
   };
 
   updateJson(tree, filePaths.pkgJson, json => {
-    json.scripts ??= {};
-    json.scripts.storybook = 'yarn --cwd ../stories storybook';
-    json.scripts['type-check'] = 'just-scripts type-check';
-    delete json.scripts['test-ssr'];
-
     const deps = getMissingDevDependenciesFromCypressAndJestFiles(
       tree,
       {
@@ -260,7 +253,9 @@ function makeSrcLibrary(tree: Tree, options: Options, logger: CLIOutput) {
 
   updateJson(tree, filePaths.rootTsConfig, (json: TsConfig) => {
     json.compilerOptions.paths = json.compilerOptions.paths ?? {};
-    json.compilerOptions.paths[options.projectConfig.name!] = [`${newProjectSourceRoot}/index.ts`];
+    json.compilerOptions.paths[`@${options.npmScope}/${options.projectConfig.name}`] = [
+      `${newProjectSourceRoot}/index.ts`,
+    ];
     return json;
   });
 
@@ -297,7 +292,7 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
 
   const templates = {
     readme: stripIndents`
-      # ${newProjectName}
+      # @${options.npmScope}/${newProjectName}
 
       Storybook stories for ${options.projectConfig.root}
 
@@ -316,32 +311,18 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
       no public API available
     `,
     packageJson: {
-      name: newProjectName,
+      name: `@${options.npmScope}/${newProjectName}`,
       version: '0.0.0',
       private: true,
-      scripts: {
-        start: 'yarn storybook',
-        storybook: 'start-storybook',
-        'type-check': 'just-scripts type-check',
-        lint: 'eslint src/',
-        format: 'just-scripts prettier',
-        ...(options.oldPackageMetadata.ssrTestsScript ? { 'test-ssr': `test-ssr "./src/**/*.stories.tsx"` } : null),
-      },
       devDependencies: {
         ...storiesWorkspaceDeps,
         // always added
-        '@fluentui/react-storybook-addon': '*',
-        '@fluentui/react-storybook-addon-export-to-sandbox': '*',
-        '@fluentui/scripts-storybook': '*',
-        '@fluentui/eslint-plugin': '*',
-        '@fluentui/scripts-tasks': '*',
+        [`@${options.npmScope}/react-storybook-addon`]: '*',
+        [`@${options.npmScope}/react-storybook-addon-export-to-sandbox`]: '*',
+        [`@${options.npmScope}/scripts-storybook`]: '*',
+        [`@${options.npmScope}/eslint-plugin`]: '*',
       },
     },
-    justConfig: stripIndents`
-      import { preset, task } from '@fluentui/scripts-tasks';
-
-      preset();
-  `,
     publicApi: stripIndents`export {}`,
     eslintrc: {
       extends: ['plugin:@fluentui/eslint-plugin/react'],
@@ -380,7 +361,6 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
 
   tree.write(joinPathFragments(newProjectRoot, 'README.md'), templates.readme);
   tree.write(joinPathFragments(newProjectSourceRoot, 'index.ts'), templates.publicApi);
-  tree.write(joinPathFragments(newProjectRoot, 'just.config.ts'), templates.justConfig);
   writeJson(tree, joinPathFragments(newProjectRoot, '.eslintrc.json'), templates.eslintrc);
   writeJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.json'), templates.tsconfig.root);
   writeJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.lib.json'), templates.tsconfig.lib);
@@ -418,7 +398,7 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
 
   updateJson(tree, '/tsconfig.base.json', (json: TsConfig) => {
     json.compilerOptions.paths = json.compilerOptions.paths ?? {};
-    json.compilerOptions.paths[newProjectName] = [`${newProjectSourceRoot}/index.ts`];
+    json.compilerOptions.paths[`@${options.npmScope}/${newProjectName}`] = [`${newProjectSourceRoot}/index.ts`];
     return json;
   });
 }
@@ -517,9 +497,12 @@ function getImportsFromSourceFiles(tree: Tree, root: string, filter: (file: stri
 
 function getWorkspaceDependencies(tree: Tree, imports: string[]) {
   const allProjects = getProjects(tree);
+  const npmScope = getNpmScope(tree);
+  const npmPackagePrefix = `@${npmScope}/`;
   const dependencies: Record<string, string> = {};
   imports.forEach(importPath => {
-    if (allProjects.has(importPath)) {
+    const projectName = importPath.replace(npmPackagePrefix, '');
+    if (importPath.startsWith(npmPackagePrefix) && allProjects.has(projectName)) {
       dependencies[importPath] = '*';
     }
   });

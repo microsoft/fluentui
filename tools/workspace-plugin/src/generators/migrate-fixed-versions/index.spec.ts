@@ -24,7 +24,7 @@ describe('migrate-fixed-versions generator', () => {
 
   it('should successfully migrate depedencies', async () => {
     tree = setupDummyPackage(tree, {
-      name: '@proj/react-button',
+      name: 'react-button',
       version: '9.0.0-alpha.0',
       dependencies: {
         '@proj/make-styles': '^9.0.0-alpha.1',
@@ -32,12 +32,12 @@ describe('migrate-fixed-versions generator', () => {
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-button/src' },
     });
     tree = setupDummyPackage(tree, {
-      name: '@proj/make-styles',
+      name: 'make-styles',
       version: '9.0.0-alpha.0',
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
     });
 
-    await generator(tree, { name: '@proj/react-button' });
+    await generator(tree, { name: 'react-button' });
 
     const packageJson = readJson(tree, 'packages/react-button/package.json');
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
@@ -49,7 +49,7 @@ describe('migrate-fixed-versions generator', () => {
 
   it('should successfully migrate dev depedencies', async () => {
     tree = setupDummyPackage(tree, {
-      name: '@proj/react-button',
+      name: 'react-button',
       version: '9.0.0-alpha.0',
       dependencies: {},
       devDependencies: {
@@ -58,12 +58,12 @@ describe('migrate-fixed-versions generator', () => {
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-button/src' },
     });
     tree = setupDummyPackage(tree, {
-      name: '@proj/make-styles',
+      name: 'make-styles',
       version: '9.0.0-alpha.0',
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
     });
 
-    await generator(tree, { name: '@proj/react-button' });
+    await generator(tree, { name: 'react-button' });
 
     const packageJson = readJson(tree, 'packages/react-button/package.json');
     expect(packageJson.devDependencies).toMatchInlineSnapshot(`
@@ -75,14 +75,14 @@ describe('migrate-fixed-versions generator', () => {
 
   it('should not migrate third party dependencies', async () => {
     tree = setupDummyPackage(tree, {
-      name: '@proj/react-positioning',
+      name: 'react-positioning',
       version: '9.0.0-alpha.0',
       dependencies: {
         'popperjs/core': '^1.0.0',
       },
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-positioning/src' },
     });
-    await generator(tree, { name: '@proj/react-positioning' });
+    await generator(tree, { name: 'react-positioning' });
 
     const packageJson = readJson(tree, 'packages/react-positioning/package.json');
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
@@ -94,7 +94,7 @@ describe('migrate-fixed-versions generator', () => {
 
   it('should not migrate third party dev dependencies', async () => {
     tree = setupDummyPackage(tree, {
-      name: '@proj/react-positioning',
+      name: 'react-positioning',
       version: '9.0.0-alpha.0',
       dependencies: {},
       devDependencies: {
@@ -102,7 +102,7 @@ describe('migrate-fixed-versions generator', () => {
       },
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-positioning/src' },
     });
-    await generator(tree, { name: '@proj/react-positioning' });
+    await generator(tree, { name: 'react-positioning' });
 
     const packageJson = readJson(tree, 'packages/react-positioning/package.json');
     expect(packageJson.devDependencies).toMatchInlineSnapshot(`
@@ -114,7 +114,7 @@ describe('migrate-fixed-versions generator', () => {
 
   it('should throw error when if package is not converged', async () => {
     tree = setupDummyPackage(tree, {
-      name: '@proj/babel-make-styles',
+      name: 'babel-make-styles',
       version: '8.0.0-alpha.0',
       dependencies: {
         '@proj/make-styles': '^9.0.0-alpha.1',
@@ -122,10 +122,10 @@ describe('migrate-fixed-versions generator', () => {
       projectConfiguration: { tags: ['vNext', 'platform:node'], sourceRoot: 'packages/babel-make-styles/src' },
     });
 
-    const result = generator(tree, { name: '@proj/babel-make-styles' });
+    const result = generator(tree, { name: 'babel-make-styles' });
 
     await expect(result).rejects.toMatchInlineSnapshot(`
-            [Error: @proj/babel-make-styles is not converged package consumed by customers.
+            [Error: babel-make-styles is not converged package consumed by customers.
                     Make sure to run the migration on packages with version 9.x.x and has tag]
           `);
   });
@@ -133,7 +133,7 @@ describe('migrate-fixed-versions generator', () => {
   describe('--all', () => {
     beforeEach(() => {
       tree = setupDummyPackage(tree, {
-        name: '@proj/react-button',
+        name: 'react-button',
         version: '9.0.0-alpha.0',
         dependencies: {
           '@proj/make-styles': '^9.0.0-alpha.1',
@@ -142,7 +142,7 @@ describe('migrate-fixed-versions generator', () => {
         projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-button/src' },
       });
       tree = setupDummyPackage(tree, {
-        name: '@proj/make-styles',
+        name: 'make-styles',
         version: '9.0.0-alpha.0',
         dependencies: {
           '@proj/react-utilities': '^9.0.0-alpha.1',
@@ -150,12 +150,12 @@ describe('migrate-fixed-versions generator', () => {
         projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
       });
       tree = setupDummyPackage(tree, {
-        name: '@proj/react-utilities',
+        name: 'react-utilities',
         version: '9.0.0-alpha.0',
         projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-utilities/src' },
       });
       tree = setupDummyPackage(tree, {
-        name: '@proj/babel-make-styles',
+        name: 'babel-make-styles',
         version: '1.0.0',
         dependencies: {
           '@proj/make-styles': '^9.0.0-alpha.1',
@@ -207,15 +207,15 @@ function setupDummyPackage(
   };
 
   const normalizedOptions = { ...defaults, ...options };
-  const pkgName = normalizedOptions.name || '';
-  const normalizedPkgName = pkgName.replace(`@${workspaceConfig.npmScope}/`, '');
+  const projectName = normalizedOptions.name || '';
+  const projectNpmName = `@${workspaceConfig.npmScope}/${projectName}`;
   const paths = {
-    root: `packages/${normalizedPkgName}`,
+    root: `packages/${projectName}`,
   };
 
   const templates = {
     packageJson: {
-      name: pkgName,
+      name: projectNpmName,
       version: normalizedOptions.version,
       dependencies: normalizedOptions.dependencies,
       devDependencies: normalizedOptions.devDependencies,
@@ -224,7 +224,7 @@ function setupDummyPackage(
 
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
 
-  addProjectConfiguration(tree, pkgName, {
+  addProjectConfiguration(tree, projectName, {
     root: paths.root,
     projectType: 'library',
     targets: {},

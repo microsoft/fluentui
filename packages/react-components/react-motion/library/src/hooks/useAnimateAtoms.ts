@@ -1,63 +1,20 @@
 import * as React from 'react';
 import type { AnimationHandle, AtomMotion } from '../types';
 
-// Heads up! "Element." is a side-effect for minifiers, should be kept as IIFE to avoid leaking after minification.
-const SUPPORTS_WEB_ANIMATIONS = /*@__PURE__*/ (() => typeof Element.prototype.animate === 'function')();
+export const DEFAULT_ANIMATION_OPTIONS: KeyframeEffectOptions = {
+  fill: 'forwards',
+};
 
-/**
- * In test environments, this hook is used to delay the execution of a callback until the next render. This is necessary
- * to ensure that the callback is not executed synchronously, which would cause the test to fail.
- *
- * @see https://github.com/microsoft/fluentui/issues/31701
- */
-function useAnimateAtomsInTestEnvironment() {
-  const [count, setCount] = React.useState(0);
-  const callbackRef = React.useRef<() => void>();
+// A motion atom's default reduced motion is a simple 1 ms duration.
+// But an atom can define a custom reduced motion, overriding keyframes and/or params like duration, easing, iterations, etc.
+const DEFAULT_REDUCED_MOTION_ATOM: NonNullable<AtomMotion['reducedMotion']> = {
+  duration: 1,
+};
 
-  React.useEffect(() => {
-    if (count > 0) {
-      callbackRef.current?.();
-    }
-  }, [count]);
+function useAnimateAtomsInSupportedEnvironment() {
+  // eslint-disable-next-line @nx/workspace-no-restricted-globals
+  const SUPPORTS_PERSIST = typeof window !== 'undefined' && typeof window.Animation?.prototype.persist === 'function';
 
-  return React.useCallback((): AnimationHandle => {
-    return {
-      setMotionEndCallbacks(onfinish: () => void) {
-        callbackRef.current = onfinish;
-        setCount(v => v + 1);
-      },
-
-      set playbackRate(rate: number) {
-        /* no-op */
-      },
-      cancel() {
-        /* no-op */
-      },
-      pause() {
-        /* no-op */
-      },
-      play() {
-        /* no-op */
-      },
-      finish() {
-        /* no-op */
-      },
-    };
-  }, []);
-}
-
-/**
- * @internal
- */
-export function useAnimateAtoms() {
-  'use no memo';
-
-  if (process.env.NODE_ENV === 'test' && !SUPPORTS_WEB_ANIMATIONS) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    return useAnimateAtomsInTestEnvironment();
-  }
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   return React.useCallback(
     (
       element: HTMLElement,
@@ -70,15 +27,28 @@ export function useAnimateAtoms() {
       const { isReducedMotion } = options;
 
       const animations = atoms.map(motion => {
-        const { keyframes, ...params } = motion;
-        const animation = element.animate(keyframes, {
-          fill: 'forwards',
+        // Grab the custom reduced motion definition if it exists, or fall back to the default reduced motion.
+        const { keyframes: motionKeyframes, reducedMotion = DEFAULT_REDUCED_MOTION_ATOM, ...params } = motion;
+        // Grab the reduced motion keyframes if they exist, or fall back to the regular keyframes.
+        const { keyframes: reducedMotionKeyframes = motionKeyframes, ...reducedMotionParams } = reducedMotion;
 
+        const animationKeyframes: Keyframe[] = isReducedMotion ? reducedMotionKeyframes : motionKeyframes;
+        const animationParams: KeyframeEffectOptions = {
+          ...DEFAULT_ANIMATION_OPTIONS,
           ...params,
-          ...(isReducedMotion && { duration: 1 }),
-        });
 
-        animation.persist();
+          // Use reduced motion overrides (e.g. duration, easing) when reduced motion is enabled
+          ...(isReducedMotion && reducedMotionParams),
+        };
+
+        const animation = element.animate(animationKeyframes, animationParams);
+
+        if (SUPPORTS_PERSIST) {
+          animation.persist();
+        } else {
+          const resultKeyframe = animationKeyframes[animationKeyframes.length - 1];
+          Object.assign(element.style ?? {}, resultKeyframe);
+        }
 
         return animation;
       });
@@ -90,20 +60,22 @@ export function useAnimateAtoms() {
           });
         },
         setMotionEndCallbacks(onfinish: () => void, oncancel: () => void) {
-          Promise.all(animations.map(animation => animation.finished))
+          // Heads up!
+          // This could use "Animation:finished", but it's causing a memory leak in Chromium.
+          // See: https://issues.chromium.org/u/2/issues/383016426
+          const promises = animations.map(animation => {
+            return new Promise<void>((resolve, reject) => {
+              animation.onfinish = () => resolve();
+              animation.oncancel = () => reject();
+            });
+          });
+
+          Promise.all(promises)
             .then(() => {
               onfinish();
             })
-            .catch((err: unknown) => {
-              const DOMException = element.ownerDocument.defaultView?.DOMException;
-
-              // Ignores "DOMException: The user aborted a request" that appears if animations are cancelled
-              if (DOMException && err instanceof DOMException && err.name === 'AbortError') {
-                oncancel();
-                return;
-              }
-
-              throw err;
+            .catch(() => {
+              oncancel();
             });
         },
 
@@ -129,6 +101,82 @@ export function useAnimateAtoms() {
         },
       };
     },
-    [],
+    [SUPPORTS_PERSIST],
   );
+}
+
+/**
+ * In test environments, this hook is used to delay the execution of a callback until the next render. This is necessary
+ * to ensure that the callback is not executed synchronously, which would cause the test to fail.
+ *
+ * @see https://github.com/microsoft/fluentui/issues/31701
+ */
+function useAnimateAtomsInTestEnvironment() {
+  const [count, setCount] = React.useState(0);
+  const callbackRef = React.useRef<() => void>();
+
+  const realAnimateAtoms = useAnimateAtomsInSupportedEnvironment();
+
+  React.useEffect(() => {
+    if (count > 0) {
+      callbackRef.current?.();
+    }
+  }, [count]);
+
+  return React.useCallback(
+    (
+      element: HTMLElement,
+      value: AtomMotion | AtomMotion[],
+      options: {
+        isReducedMotion: boolean;
+      },
+    ): AnimationHandle => {
+      const ELEMENT_SUPPORTS_WEB_ANIMATIONS = typeof element.animate === 'function';
+
+      // Heads up!
+      // If the environment supports Web Animations API, we can use the native implementation.
+      if (ELEMENT_SUPPORTS_WEB_ANIMATIONS) {
+        return realAnimateAtoms(element, value, options);
+      }
+
+      return {
+        setMotionEndCallbacks(onfinish: () => void) {
+          callbackRef.current = onfinish;
+          setCount(v => v + 1);
+        },
+
+        set playbackRate(rate: number) {
+          /* no-op */
+        },
+        cancel() {
+          /* no-op */
+        },
+        pause() {
+          /* no-op */
+        },
+        play() {
+          /* no-op */
+        },
+        finish() {
+          /* no-op */
+        },
+      };
+    },
+    [realAnimateAtoms],
+  );
+}
+
+/**
+ * @internal
+ */
+export function useAnimateAtoms() {
+  'use no memo';
+
+  if (process.env.NODE_ENV === 'test') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    return useAnimateAtomsInTestEnvironment();
+  }
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  return useAnimateAtomsInSupportedEnvironment();
 }

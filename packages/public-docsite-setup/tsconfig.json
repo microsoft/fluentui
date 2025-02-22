@@ -6,7 +6,6 @@
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
-    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "strict": true,

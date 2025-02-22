@@ -1,2 +1,2 @@
-export * from './useDisableBodyScroll';
-export * from './useFocusFirstElement';
+export { useDisableBodyScroll } from './useDisableBodyScroll';
+export { useFocusFirstElement } from './useFocusFirstElement';

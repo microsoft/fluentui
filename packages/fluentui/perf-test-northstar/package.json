@@ -5,10 +5,10 @@
   "private": true,
   "scripts": {
     "type-check": "tsc -p . --noEmit",
+    "prebundle": "nx run digest:build --nxBail --verbose",
     "bundle": "just-scripts perf-test:bundle",
     "clean": "just-scripts clean",
-    "test": "just-scripts test",
-    "perf:test": "just-scripts perf-test"
+    "test-perf": "just-scripts perf-test:run"
   },
   "dependencies": {
     "@fluentui/react-northstar": "*",

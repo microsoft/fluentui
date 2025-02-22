@@ -17,8 +17,8 @@ The following table will help you navigate the 3 projects and understand their d
 | **Used By**     | Microsoft 365 | Office | Edge |
 | **Read Me**     | [README.md](/packages/react-components/react-components/README.md) | [README.md](/packages/react/README.md)| [README.md](/packages/web-components/README.md) |
 | **Changelog** | [CHANGELOG.md](/packages/react-components/react-components/CHANGELOG.md) | [CHANGELOG.md](/packages/react/CHANGELOG.md) | [CHANGELOG.md](/packages/web-components/CHANGELOG.md) |
-| **Repo**        | [packages/react-components](/packages/react-components/react-components/CHANGELOG.md) | [./packages/react](/packages/react) | [./packages/web-components](/packages/web-components) |
-| **Quick Start** | [Quick Start](https://react.fluentui.dev/?path=/docs/concepts-developer-quick-start--page) | [Quick Start](https://developer.microsoft.com/en-us/fluentui#/get-started/web) | [See README.md](https://github.com/microsoft/fluentui/tree/master/packages/web-components/README.md) |
+| **Repo**        | [packages/react-components](/packages/react-components/react-components) | [./packages/react](/packages/react) | [./packages/web-components](/packages/web-components) |
+| **Quick Start** | [Quick Start](https://react.fluentui.dev/?path=/docs/concepts-developer-quick-start--docs) | [Quick Start](https://developer.microsoft.com/en-us/fluentui#/get-started/web) | [See README.md](https://github.com/microsoft/fluentui/tree/master/packages/web-components/README.md) |
 | **Docs**        | [https://react.fluentui.dev/](https://react.fluentui.dev/) | [aka.ms/fluentui-react](https://aka.ms/fluentui-react) | [aka.ms/fluentui-web-components](https://aka.ms/fluentui-web-components) |
 | **NPM**         | `@fluentui/react-components` | `@fluentui/react`| `@fluentui/web-components` |
 | **Version**     | [![npm version](https://img.shields.io/npm/v/@fluentui/react-components?style=flat-square)](https://www.npmjs.com/package/@fluentui/react-components) | [![npm version](https://img.shields.io/npm/v/@fluentui/react?style=flat-square)](https://www.npmjs.com/package/@fluentui/react) | [![npm version](https://img.shields.io/npm/v/@fluentui/web-components/beta?style=flat-square)](https://www.npmjs.com/package/@fluentui/web-components/v/3.0.0-beta.15) |
@@ -53,7 +53,7 @@ You can view the complete list of additions, fixes, and changes in the CHANGELOG
 
 The **Office UI Fabric React** project has evolved to **Fluent UI**.
 
-The `office-ui-fabric-react` repo is now this repo (`fluentui` in the Microsoft organization)! The name change should not disrupt any current Fabric usage, repo clones, pull requests or issue reporting. Links should redirect to the new location. The library formerly known as `office-ui-fabric-react` is now available as `@fluentui/react` (see above table for more information).
+The `office-ui-fabric-react` repo is now this repo (`fluentui` in the Microsoft organization)! The name change should not disrupt any current Fabric usage, repo clones, pull requests, or issue reporting. Links should redirect to the new location. The library formerly known as `office-ui-fabric-react` is now available as `@fluentui/react` (see above table for more information).
 
 We have a lot in store for Fluent UI - [Read our announcement here.](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)
 

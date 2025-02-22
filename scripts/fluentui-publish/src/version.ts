@@ -1,12 +1,31 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import { execSync } from "node:child_process";
+import { execSync } from 'node:child_process';
 
-import { tree } from "@fluentui/scripts-monorepo";
-import { ChangeType, NxJsonConfiguration, ProjectGraph, StringChange, Tree, applyChangesToString, joinPathFragments, output, readProjectsConfigurationFromProjectGraph, stripIndents, updateJson, workspaceRoot } from "@nx/devkit";
-import { releaseVersion } from "nx/release";
+import { tree } from '@fluentui/scripts-monorepo';
+import {
+  ChangeType,
+  NxJsonConfiguration,
+  ProjectGraph,
+  StringChange,
+  Tree,
+  applyChangesToString,
+  joinPathFragments,
+  output,
+  readProjectsConfigurationFromProjectGraph,
+  stripIndents,
+  updateJson,
+  workspaceRoot,
+} from '@nx/devkit';
+import { releaseVersion } from 'nx/release';
 
-
-import { NorthstarGroup, getGeneratorInformation, getLatestTag, getTagPattern,printAndFlushChanges,stageChanges } from "./utils";
+import {
+  NorthstarGroup,
+  getGeneratorInformation,
+  getLatestTag,
+  getTagPattern,
+  printAndFlushChanges,
+  stageChanges,
+} from './utils';
 
 type NxReleaseVersionResult = Awaited<ReturnType<typeof releaseVersion>>;
 type NxReleaseVersionArgs = Parameters<typeof releaseVersion>[0];
@@ -47,7 +66,6 @@ export async function version(config: {
   runChangeTask(args);
 }
 
-
 // ============
 
 /**
@@ -83,7 +101,7 @@ export async function changelog(
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v${previousReleasedVersion}..@fluentui/react-northstar_v${versionData.workspaceVersion})
   `;
 
-  const northstarLib = group.lib['@fluentui/react-northstar'];
+  const northstarLib = group.lib['react-northstar'];
   const changelogPath = joinPathFragments(northstarLib.data.root, '../CHANGELOG.md');
 
   if (!tree.exists(changelogPath)) {
@@ -163,7 +181,6 @@ async function runWorkspaceGenerators(tree: Tree, graph: ProjectGraph, config: {
   await Promise.all(generatorPromises);
 }
 
-
 function runChangeTask(config: { dryRun: boolean }) {
   const { dryRun } = config;
   const message = dryRun
@@ -183,8 +200,9 @@ function runChangeTask(config: { dryRun: boolean }) {
 function assertSpecifier(specifier: string): asserts specifier is 'patch' | 'minor' {
   const allowedSpecifiers = ['patch', 'minor'];
 
-  if(!allowedSpecifiers.includes(specifier)){
-    throw new Error(`your provided specifier: "${specifier}" is not allowed. Please choose one of "${allowedSpecifiers}"`)
+  if (!allowedSpecifiers.includes(specifier)) {
+    throw new Error(
+      `your provided specifier: "${specifier}" is not allowed. Please choose one of "${allowedSpecifiers}"`,
+    );
   }
 }
-

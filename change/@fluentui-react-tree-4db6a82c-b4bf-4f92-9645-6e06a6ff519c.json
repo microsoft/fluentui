@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "patch: improve strict warning from useTreeItem",
-  "packageName": "@fluentui/react-tree",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

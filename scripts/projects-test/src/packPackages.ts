@@ -6,7 +6,7 @@ import fs from 'fs-extra';
 
 import { createTempDir, shEcho } from './utils';
 
-type PackedPackages = Record<string, string>;
+type PackedPackages = Record</** npmPackageName (including scope) */ string, /** packed package path */ string>;
 
 /** Shared packed packages between tests since they're not modified by any test */
 let packedPackages: PackedPackages;
@@ -35,7 +35,7 @@ export async function packProjectPackages(logger: Function, project: string): Pr
   const { dependencies: projectDependencies, projectGraph, getProjectPackageJsonInfo } = await getDependencies(project);
   // add provided package to be packaged
   projectDependencies.unshift({
-    name: project,
+    name: project.replace('@fluentui/', ''),
     dependencyType: 'dependencies',
     isTopLevel: true,
   });
@@ -61,7 +61,7 @@ export async function packProjectPackages(logger: Function, project: string): Pr
       const entryPointPath = packageMain ? path.join(packagePath, packageMain) : '';
       if (!fs.existsSync(entryPointPath)) {
         throw new Error(
-          `Package ${packageName} does not appear to have been built yet.` +
+          `Package '${packageName}' does not appear to have been built yet.` +
             `Please ensure that package:"${project}" has properly defined dependencies in its package.json`,
         );
       }
@@ -70,8 +70,12 @@ export async function packProjectPackages(logger: Function, project: string): Pr
       // files to include/exclude are specified by .npmignore rather than package.json `files`.
       // (--quiet outputs only the .tgz filename, not all the included files)
       const packFile = (await sh(`npm pack --quiet ${packagePath}`, tmpDirectory, true /*pipeOutputToResult*/)).trim();
-      packedPackages[packageName] = path.join(tmpDirectory, packFile);
-      console.log('Wrote tarball to', packedPackages[packageName]);
+      const packedPackagePath = path.join(tmpDirectory, packFile);
+
+      // need to normalize to include npm Scope for other apis
+      packedPackages[`@fluentui/${packageName}`] = packedPackagePath;
+
+      console.log('Wrote tarball to', packagePath);
     }),
   );
 

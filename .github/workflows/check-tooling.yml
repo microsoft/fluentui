@@ -1,0 +1,50 @@
+name: Check tooling
+on:
+  pull_request:
+    paths:
+      - yarn.lock
+      - tools/workspace-plugin/**
+      - scripts/executors/**
+  workflow_dispatch:
+
+env:
+  __FORCE_API_MD_UPDATE__: true
+  __FORCE_SNAPSHOT_UPDATE__: true
+  NX_VERBOSE_LOGGING: true
+
+jobs:
+  check-tools:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - run: yarn install --frozen-lockfile
+
+      - run: yarn nx run scripts-executors:test -t 'smoke test'
+
+      - run: yarn nx run workspace-plugin:test -t 'prepare-initial-release generator'
+
+      - run: yarn nx list @fluentui/workspace-plugin
+
+      # pre-build react-jsx-runtime - as generate-api executor doesn't provide copy assets capability
+      - run: yarn nx run react-jsx-runtime:build
+
+      - run: yarn nx g @fluentui/workspace-plugin:react-library --name hello-world --owner '@microsoft/fluentui-react-build' --kind standard --no-interactive
+      - run: yarn nx g @fluentui/workspace-plugin:react-component --project hello-world-preview --name Aiur --no-interactive
+      - run: yarn nx g @fluentui/workspace-plugin:cypress-component-configuration --project hello-world-preview --no-interactive
+      - run: yarn nx g @fluentui/workspace-plugin:bundle-size-configuration --project hello-world-preview --no-interactive
+      - run: yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world-preview --phase=preview --no-interactive
+      - run: yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world-preview --phase=stable --no-interactive
+      - run: yarn nx g @nx/workspace:remove --project hello-world --forceRemove --no-interactive
+      - run: yarn nx g @nx/workspace:remove --project hello-world-stories --forceRemove --no-interactive
+      - run: yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --no-interactive

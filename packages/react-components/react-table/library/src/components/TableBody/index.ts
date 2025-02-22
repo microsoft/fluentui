@@ -1,5 +1,5 @@
-export * from './TableBody';
-export * from './TableBody.types';
-export * from './renderTableBody';
-export * from './useTableBody';
-export * from './useTableBodyStyles.styles';
+export { TableBody } from './TableBody';
+export type { TableBodyProps, TableBodySlots, TableBodyState } from './TableBody.types';
+export { renderTableBody_unstable } from './renderTableBody';
+export { useTableBody_unstable } from './useTableBody';
+export { tableBodyClassName, tableBodyClassNames, useTableBodyStyles_unstable } from './useTableBodyStyles.styles';

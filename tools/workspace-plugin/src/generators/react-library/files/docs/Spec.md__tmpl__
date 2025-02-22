@@ -1,4 +1,4 @@
-# <%= npmPackageName %> Spec
+# @<%= npmScope %>/<%= projectName %> Spec
 
 ## Background
 

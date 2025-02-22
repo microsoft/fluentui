@@ -1,5 +1,5 @@
 export interface BundleSizeConfigurationGeneratorSchema {
-  name: string;
+  project: string;
   /**
    * @default false
    */

@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-persona",
+  "name": "react-persona",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

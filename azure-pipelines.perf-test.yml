@@ -21,9 +21,9 @@ jobs:
         displayName: yarn
 
       - script: |
-          NorthstarAffected=$(yarn --silent check:affected --package @fluentui/react-northstar)
-          V8Affected=$(yarn --silent check:affected --package @fluentui/react)
-          ReactComponentsAffected=$(yarn --silent check:affected --package @fluentui/react-components)
+          NorthstarAffected=$(yarn --silent check:affected --project react-northstar)
+          V8Affected=$(yarn --silent check:affected --project react)
+          ReactComponentsAffected=$(yarn --silent check:affected --project react-components)
           if [[ $NorthstarAffected == true ]]; then
             echo "##vso[task.setvariable variable=NorthstarPackageAffected;isOutput=true]true"
           fi
@@ -51,12 +51,12 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn workspace @fluentui/perf-test-northstar perf:test --base
+          yarn nx run perf-test-northstar:test-perf --base
         condition: eq(variables.isPR, false)
         displayName: Run Perf Test Base (Northstar)
 
       - script: |
-          yarn workspace @fluentui/perf-test-northstar perf:test
+          yarn nx run perf-test-northstar:test-perf
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test (Northstar)
 
@@ -87,18 +87,18 @@ jobs:
           uniqueId: 'perfComment9424'
 
       - script: |
-          yarn northstar:stats:build
+          yarn gulp stats
         condition: eq(variables.isPR, false)
         displayName: Bundle Statistics (master only)
 
       - script: |
-          yarn northstar:perf
+          yarn nx run perf:test-perf
         condition: eq(variables.isPR, false)
         displayName: Performance Tests (master only)
 
       # HEADS UP: also see tag-version-prefix in fluentui-publish.js
       - script: |
-          yarn northstar:stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
+          yarn gulp stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
         condition: eq(variables.isPR, false)
         displayName: Save Statistics to DB (master only)
         env:
@@ -120,7 +120,7 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn workspace @fluentui/perf-test test:perf
+          yarn nx run perf-test:test-perf
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 
@@ -166,7 +166,7 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn workspace @fluentui/perf-test-react-components test:perf
+          yarn nx run perf-test-react-components:test-perf
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 

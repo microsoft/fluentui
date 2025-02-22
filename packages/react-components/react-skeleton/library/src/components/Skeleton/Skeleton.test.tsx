@@ -23,8 +23,4 @@ describe('Skeleton', () => {
     const result = render(<Skeleton />);
     expect(result.getByRole('progressbar').getAttribute('aria-busy')).toBeDefined();
   });
-  it('adds a proper aria-label to Skeleton', () => {
-    const result = render(<Skeleton />);
-    expect(result.getByRole('progressbar').getAttribute('aria-label')).toEqual('Loading Content');
-  });
 });

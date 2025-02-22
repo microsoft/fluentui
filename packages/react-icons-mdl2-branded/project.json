@@ -1,6 +1,7 @@
 {
-  "name": "@fluentui/react-icons-mdl2-branded",
+  "name": "react-icons-mdl2-branded",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "tags": ["v8"]
 }

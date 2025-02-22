@@ -25,7 +25,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Restricts imports of certain packages',
-      recommended: false,
     },
     messages: {
       restrictedImport: 'Import from {{ packageName }} detected which is not allowed.',
@@ -39,15 +38,18 @@ module.exports = createRule({
             type: 'array',
             minItems: 1,
             items: {
-              forbidden: {
-                type: 'array',
-                minItems: 1,
-                items: {
+              type: 'object',
+              properties: {
+                forbidden: {
+                  type: 'array',
+                  minItems: 1,
+                  items: {
+                    type: 'string',
+                  },
+                },
+                preferred: {
                   type: 'string',
                 },
-              },
-              preferred: {
-                type: 'string',
               },
             },
           },

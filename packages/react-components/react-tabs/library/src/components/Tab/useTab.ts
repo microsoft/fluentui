@@ -1,10 +1,12 @@
 import * as React from 'react';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 import {
   getIntrinsicElementProps,
   mergeCallbacks,
   useEventCallback,
   useMergedRefs,
   slot,
+  omit,
 } from '@fluentui/react-utilities';
 import type { TabProps, TabState } from './Tab.types';
 import { useTabListContext_unstable } from '../TabList/TabListContext';
@@ -39,6 +41,10 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
   const onTabClick = useEventCallback(mergeCallbacks(onClick, onSelectCallback));
   const onTabFocus = useEventCallback(mergeCallbacks(onFocus, onSelectCallback));
 
+  const focusProps = useTabsterAttributes({
+    focusable: { isDefault: selected },
+  });
+
   React.useEffect(() => {
     onRegister({
       value,
@@ -55,6 +61,8 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     defaultProps: { children: props.children },
     elementType: 'span',
   });
+  const contentReservedSpace: typeof content =
+    content && typeof content === 'object' ? omit(content, ['ref' as keyof typeof content]) : content;
   const iconOnly = Boolean(iconSlot?.children && !contentSlot.children);
   return {
     components: { root: 'button', icon: 'span', content: 'span', contentReservedSpace: 'span' },
@@ -69,6 +77,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
         // aria-selected undefined indicates it is not selectable
         // according to https://www.w3.org/TR/wai-aria-1.1/#aria-selected
         'aria-selected': disabled ? undefined : (`${selected}` as 'true' | 'false'),
+        ...focusProps,
         ...props,
         disabled,
         onClick: onTabClick,
@@ -79,7 +88,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     icon: iconSlot,
     iconOnly,
     content: contentSlot,
-    contentReservedSpace: slot.optional(content, {
+    contentReservedSpace: slot.optional(contentReservedSpace, {
       renderByDefault: !selected && !iconOnly && reserveSelectedTabSpace,
       defaultProps: { children: props.children },
       elementType: 'span',

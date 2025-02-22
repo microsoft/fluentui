@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { VirtualizerContextProps } from '../../Utilities';
-import type { RefObject, MutableRefObject } from 'react';
 
 export type VirtualizerSlots = {
   /**
@@ -53,6 +52,11 @@ export type VirtualizerConfigState = {
    */
   reversed?: boolean;
   /**
+   * Enables the isScrolling property in the child render function
+   * Default: false - to prevent nessecary render function calls
+   */
+  enableScrollLoad?: boolean;
+  /**
    * Pixel size of intersection observers and how much they 'cross over' into the bufferItems index.
    * Minimum 1px.
    */
@@ -69,15 +73,17 @@ export type VirtualizerConfigState = {
 
 export type VirtualizerState = ComponentState<VirtualizerSlots> & VirtualizerConfigState;
 
-// Virtualizer render function to procedurally generate children elements as rows or columns via index.
-// Q: Use generic typing and passing through object data or a simple index system?
+/**
+ * The main child render method of Virtualization
+ * isScrolling will only be enabled when enableScrollLoad is set to true.
+ */
 export type VirtualizerChildRenderFunction = (index: number, isScrolling: boolean) => React.ReactNode;
 
 export type VirtualizerDataRef = {
-  progressiveSizes: RefObject<number[]>;
-  nodeSizes: RefObject<number[]>;
+  progressiveSizes: React.RefObject<number[]>;
+  nodeSizes: React.RefObject<number[]>;
   setFlaggedIndex: (index: number | null) => void;
-  currentIndex: RefObject<number>;
+  currentIndex: React.RefObject<number>;
 };
 
 export type VirtualizerConfigProps = {
@@ -109,16 +115,19 @@ export type VirtualizerConfigProps = {
   virtualizerLength: number;
 
   /**
-   * Defaults to 1/4th of virtualizerLength.
+   * Defaults to 1/4th (or 1/3rd for dynamic items) of virtualizerLength.
+   * RECOMMEND: Override this with a consistent value if using a dynamic virtualizer.
+   *
    * Controls the number of elements rendered before the current index entering the virtualized viewport.
    * Constraints:
    * - Large enough to cover bufferSize (prevents buffers intersecting into the viewport during rest state).
-   * - Small enough that the end buffer and end index (start index + virtualizerLength) is not within viewport at rest.
+   * - Small enough that the virtualizer only renders a few items outside of view.
    */
   bufferItems?: number;
 
   /**
-   * Defaults to half of bufferItems size (in pixels).
+   * Defaults to half of bufferItems * itemSize size (in pixels).
+   * RECOMMEND: Override this with a consistent minimum item size value if using a dynamic virtualizer.
    * The length (in pixels) before the end/start DOM index where the virtualizer recalculation will be triggered.
    * Increasing this reduces whitespace on ultra-fast scroll, as additional elements
    * are buffered to appear while virtualization recalculates.
@@ -130,6 +139,7 @@ export type VirtualizerConfigProps = {
 
   /**
    * Enables users to override the intersectionObserverRoot.
+   * We recommend passing this in for accurate distance assessment in IO
    */
   scrollViewRef?: React.MutableRefObject<HTMLElement | null>;
 
@@ -144,6 +154,12 @@ export type VirtualizerConfigProps = {
    * This value should be flipped in RTL implementation (TBD whether automate RTL).
    */
   reversed?: boolean;
+
+  /**
+   * Enables the isScrolling property in the child render function
+   * Default: false - to prevent nessecary render function calls
+   */
+  enableScrollLoad?: boolean;
 
   /**
    * Callback for acquiring size of individual items
@@ -165,12 +181,29 @@ export type VirtualizerConfigProps = {
   /*
    * Callback for notifying when a flagged index has been rendered
    */
-  flaggedIndex?: MutableRefObject<number | null>;
+  flaggedIndex?: React.MutableRefObject<number | null>;
 
   /**
    * Imperative ref contains our scrollTo index functionality for user control.
    */
-  imperativeVirtualizerRef?: RefObject<VirtualizerDataRef>;
+  imperativeVirtualizerRef?: React.RefObject<VirtualizerDataRef>;
+
+  /**
+   * A ref that provides the size of container (vertical - height, horizontal - width), set by a resize observer.
+   * Virtualizer Measure hooks provide a suitable reference.
+   */
+  containerSizeRef: React.RefObject<number>;
+
+  /**
+   * A callback that enables updating scroll position for calculating required dynamic lengths,
+   * this should be passed in from useDynamicVirtualizerMeasure
+   */
+  updateScrollPosition?: (position: number) => void;
+
+  /**
+   * Spacing between rendered children for calculation, should match the container's gap CSS value.
+   */
+  gap?: number;
 };
 
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;

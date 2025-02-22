@@ -156,6 +156,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
                   {...(hasInnerButton && accNameDescription)}
                   onContextMenu={this._onColumnContextMenu}
                   onClick={this._onColumnClick}
+                  onKeyDown={this._onColumnKeyDown}
                   aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown ? 'menu' : undefined}
                   aria-expanded={
                     column.columnActionsMode === ColumnActionsMode.hasDropdown ? !!column.isMenuOpen : undefined
@@ -276,6 +277,18 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     }
   };
 
+  private _onColumnKeyDown = (ev: React.KeyboardEvent): void => {
+    const { onColumnKeyDown, column } = this.props;
+
+    if (column.onColumnKeyDown) {
+      column.onColumnKeyDown(ev, column);
+    }
+
+    if (onColumnKeyDown) {
+      onColumnKeyDown(ev, column);
+    }
+  };
+
   private _onColumnBlur = () => {
     this._tooltipRef.current && this._tooltipRef.current.dismiss();
   };
@@ -358,11 +371,11 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
   };
 
   private _updateHeaderDragInfo = (itemIndex: number, event?: MouseEvent) => {
-    /* eslint-disable deprecation/deprecation */
+    /* eslint-disable @typescript-eslint/no-deprecated */
     if (this.props.setDraggedItemIndex) {
       this.props.setDraggedItemIndex(itemIndex);
     }
-    /* eslint-enable deprecation/deprecation */
+    /* eslint-enable @typescript-eslint/no-deprecated */
     if (this.props.updateDragInfo) {
       this.props.updateDragInfo({ itemIndex }, event);
     }

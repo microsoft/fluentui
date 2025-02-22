@@ -1,6 +1,15 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '../utils/index.js';
 import {
+  alignEndState,
+  blockState,
+  disabledState,
+  expandedState,
+  extraLargeState,
+  largeState,
+  smallState,
+} from '../styles/states/index.js';
+import {
   borderRadiusMedium,
   borderRadiusSmall,
   colorNeutralForeground1,
@@ -35,7 +44,6 @@ export const styles = css`
     height: 44px;
     display: grid;
     position: relative;
-    vertical-align: middle;
     padding-inline: ${spacingHorizontalM} ${spacingHorizontalMNudge};
     border-radius: ${borderRadiusMedium};
     font-family: ${fontFamilyBase};
@@ -45,29 +53,20 @@ export const styles = css`
     grid-template-columns: auto auto 1fr auto;
   }
 
-  .heading-content {
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-
   .button {
-    box-sizing: border-box;
     appearance: none;
-    border: none;
-    outline: none;
-    text-align: start;
-    cursor: pointer;
-    font-family: inherit;
-    height: 44px;
-    color: ${colorNeutralForeground1};
     background: ${colorTransparentBackground};
-    line-height: ${lineHeightBase300};
-    height: auto;
-    padding: 0;
-    font-size: inherit;
+    border: none;
+    box-sizing: border-box;
+    color: ${colorNeutralForeground1};
+    cursor: pointer;
+    font: inherit;
     grid-column: auto / span 2;
     grid-row: 1;
+    height: 44px;
+    outline: none;
+    padding: 0;
+    text-align: start;
   }
 
   .button::before {
@@ -78,29 +77,30 @@ export const styles = css`
     border-radius: ${borderRadiusSmall};
   }
 
-  .icon {
+  :where(.default-marker-collapsed, .default-marker-expanded),
+  ::slotted(:is([slot='marker-collapsed'], [slot='marker-expanded'])) {
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
     position: relative;
     height: 100%;
-    padding-right: ${spacingHorizontalS};
+    padding-inline-end: ${spacingHorizontalS};
     grid-column: 1 / span 1;
     grid-row: 1;
   }
 
-  .region {
+  .content {
     margin: 0 ${spacingHorizontalM};
   }
 
-  ::slotted([slot='start']),
-  ::slotted([slot='end']) {
+  ::slotted([slot='start']) {
+    display: flex;
     justify-content: center;
     align-items: center;
     padding-right: ${spacingHorizontalS};
     grid-column: 2 / span 1;
-    grid-row: 1 / span 1;
+    grid-row: 1;
   }
 
   button:focus-visible::after {
@@ -116,33 +116,29 @@ export const styles = css`
 
   /* --- Disabled attr styles --- */
 
-  :host([disabled]) .button {
+  :host(${disabledState}) .button {
     color: ${colorNeutralForegroundDisabled};
   }
-  :host([disabled]) svg {
+
+  :host(${disabledState}) svg {
     filter: invert(89%) sepia(0%) saturate(569%) hue-rotate(155deg) brightness(88%) contrast(87%);
   }
 
   /* --- Expanded attr styles --- */
 
-  :host([expanded]) .region {
+  :host(${expandedState}) .content {
     display: block;
   }
 
-  :host([expanded]) .default-collapsed-icon,
-  :host([expanded]) ::slotted([slot='collapsed-icon']),
-  :host(:not([expanded])) .default-expanded-icon,
-  :host(:not([expanded])) ::slotted([slot='expanded-icon']),
-  :host([expanded]) ::slotted([slot='end']),
-  ::slotted([slot='start']),
-  .region {
+  :host(${expandedState}) .default-marker-collapsed,
+  :host(${expandedState}) ::slotted([slot='marker-collapsed']),
+  :host(:not(${expandedState})) :is(.default-marker-expanded, .content),
+  :host(:not(${expandedState})) ::slotted([slot='marker-expanded']) {
     display: none;
   }
 
-  :host([expanded]) ::slotted([slot='start']),
-  :host([expanded]) ::slotted([slot='expanded-icon']),
-  :host(:not([expanded])) ::slotted([slot='collapsed-icon']),
-  ::slotted([slot='end']) {
+  :host(${expandedState}) ::slotted([slot='marker-expanded']),
+  :host(:not(${expandedState})) ::slotted([slot='marker-collapsed']) {
     display: flex;
   }
 
@@ -153,46 +149,35 @@ export const styles = css`
     line-height: ${lineHeightBase300};
   }
 
-  :host([size='small']) .heading {
+  :host(${smallState}) .heading {
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
 
-  :host([size='large']) .heading {
+  :host(${largeState}) .heading {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
 
-  :host([size='extra-large']) .heading {
+  :host(${extraLargeState}) .heading {
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
   }
 
-  /* --- expand-icon-position attr styles --- */
+  /* --- marker-position attr styles --- */
 
-  :host([expand-icon-position='end']) :slotted(span[slot='start']),
-  :host([expand-icon-position='end']) ::slotted(span[slot='end']) {
+  :host(${alignEndState}) :slotted([slot='start']) {
     grid-column: 1 / span 1;
-    grid-row: 1;
   }
 
-  :host([expand-icon-position='end']) ::slotted(span[slot='start']),
-  :host([expand-icon-position='end']) ::slotted(span[slot='end']) {
-    grid-column: 1 / span 1;
-    grid-row: 1;
-  }
-
-  :host([expand-icon-position='end']) .icon {
+  :host(${alignEndState}) :is(.default-marker-collapsed, .default-marker-expanded) {
     grid-column: 4 / span 1;
-    grid-row: 1;
-    display: flex;
-    padding-left: 10px;
-    padding-right: 0;
+    padding-inline-start: ${spacingHorizontalS};
+    padding-inline-end: 0;
   }
 
-  :host([expand-icon-position='end']) .button {
+  :host(${alignEndState}) .button {
     grid-column: 2 / span 3;
-    grid-row: 1;
   }
 
   /* --- Block attr styles --- */
@@ -201,19 +186,20 @@ export const styles = css`
     max-width: 100%;
   }
 
-  :host([expand-icon-position='end']) .heading {
+  :host(${alignEndState}) .heading {
     grid-template-columns: auto auto 28px;
+    padding-inline: ${spacingHorizontalM};
   }
 
-  :host([expand-icon-position='end']) .icon {
-    grid-column: 5 / span 1;
+  :host(${alignEndState}:has([slot='start'])) .heading {
+    padding-inline: ${spacingHorizontalMNudge} ${spacingHorizontalM};
   }
 
-  :host([block][expand-icon-position='end']) .heading {
+  :host(${blockState}${alignEndState}) .heading {
     grid-template-columns: auto 1fr;
   }
 
-  :host([block][expand-icon-position='end']) .icon {
+  :host(${alignEndState}) :is(.default-marker-collapsed, .default-marker-expanded) {
     grid-column: 5 / span 1;
   }
 `;

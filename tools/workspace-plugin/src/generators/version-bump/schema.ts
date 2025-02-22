@@ -10,7 +10,7 @@ export interface VersionBumpGeneratorSchema {
   all?: boolean;
 
   /**
-   * Comma-delimited list of packages that should not be bumped when using the `--all` flag
+   * Comma-delimited list of projects that should not be bumped when using the `--all` flag
    */
   exclude?: string;
 

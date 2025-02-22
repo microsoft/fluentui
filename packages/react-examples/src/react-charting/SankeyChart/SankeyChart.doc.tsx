@@ -13,7 +13,8 @@ const SankeyChartInboxExampleCode =
 export const SankeyChartPageProps: IDocPageProps = {
   title: 'SankeyChart',
   componentName: 'SankeyChart',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/SankeyChart',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/SankeyChart',
   examples: [
     {
       title: 'SankeyChart basic',

@@ -24,6 +24,9 @@ const options = [
 export const SecondaryAction = () => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([options[0]]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (event, data) => {
+    if (data.value === 'no-options') {
+      return;
+    }
     setSelectedOptions(data.selectedOptions);
   };
   const handleAllClear: React.MouseEventHandler = event => {
@@ -41,7 +44,7 @@ export const SecondaryAction = () => {
             </Button>
           }
         >
-          <TagPickerGroup>
+          <TagPickerGroup aria-label="Selected Employees">
             {selectedOptions.map(option => (
               <Tag
                 key={option}
@@ -56,18 +59,20 @@ export const SecondaryAction = () => {
           <TagPickerInput aria-label="Select Employees" />
         </TagPickerControl>
         <TagPickerList>
-          {tagPickerOptions.length > 0
-            ? tagPickerOptions.map(option => (
-                <TagPickerOption
-                  secondaryContent="Microsoft FTE"
-                  media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
-                  value={option}
-                  key={option}
-                >
-                  {option}
-                </TagPickerOption>
-              ))
-            : 'No options available'}
+          {tagPickerOptions.length > 0 ? (
+            tagPickerOptions.map(option => (
+              <TagPickerOption
+                secondaryContent="Microsoft FTE"
+                media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption value="no-options">No options available</TagPickerOption>
+          )}
         </TagPickerList>
       </TagPicker>
     </Field>

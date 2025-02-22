@@ -1,3 +1,4 @@
+import { performance } from 'node:perf_hooks';
 import yargsParser from 'yargs-parser';
 import type * as Enquirer from 'enquirer';
 import {
@@ -25,18 +26,26 @@ export function getWorkspaceConfig(tree: Tree): NxJsonConfiguration & { npmScope
     throw new Error('nx.json doesnt exist at root of monorepo');
   }
 
-  const packageJSON = readJson<PackageJson>(tree, '/package.json');
-  const matchedName = NPM_SCOPE_REGEX.exec(packageJSON.name);
-
-  if (!matchedName) {
-    throw new Error('root package.json doesnt provide valid monorepo name');
-  }
-
-  const [, npmScope] = matchedName;
+  const npmScope = getNpmScope(tree);
   return {
     npmScope,
     ...nxConfig,
   };
+}
+
+export function getNpmScope(tree: Tree) {
+  const packageJSON = readJson<PackageJson>(tree, '/package.json');
+  const matchedName = NPM_SCOPE_REGEX.exec(packageJSON.name);
+  if (!matchedName) {
+    throw new Error(`root package.json doesn't provide valid monorepo name`);
+  }
+  if (!matchedName[1]) {
+    throw new Error(
+      'unable to obtain monorepo npmScope. Please make sure that root package.json#name includes npmScope',
+    );
+  }
+
+  return matchedName[1];
 }
 
 export function getProjectNameWithoutScope(projectName: string) {
@@ -258,4 +267,18 @@ export function isV8Package(tree: Tree, project: ProjectConfiguration) {
 
 export function packageJsonHasBeachballConfig(packageJson: PackageJson): packageJson is PackageJsonWithBeachball {
   return !!(packageJson as PackageJsonWithBeachball).beachball;
+}
+
+// ==========================
+// Execution time measurement
+// ==========================
+
+export function measureStart(key: string) {
+  performance.mark(`${key}:start`);
+}
+export function measureEnd(key: string) {
+  performance.mark(`${key}:end`);
+  const measure = performance.measure(key, `${key}:start`, `${key}:end`);
+
+  logger.verbose(`Execution Timings: ${key} (${(measure.duration / 1000).toFixed(2)} s)`);
 }

@@ -15,12 +15,12 @@ export const Appearance = (props: Partial<SkeletonProps>) => {
   return (
     <div className={styles.invertedWrapper}>
       <Field validationMessage="Opaque Appearance" validationState="none">
-        <Skeleton {...props}>
+        <Skeleton {...props} aria-label="Loading Content">
           <SkeletonItem />
         </Skeleton>
       </Field>
       <Field validationMessage="Translucent Appearance" validationState="none">
-        <Skeleton {...props} appearance="translucent">
+        <Skeleton {...props} appearance="translucent" aria-label="Loading Content">
           <SkeletonItem />
         </Skeleton>
       </Field>

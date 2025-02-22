@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/scripts-lint-staged",
+  "name": "scripts-lint-staged",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/lint-staged/src",
   "projectType": "library",

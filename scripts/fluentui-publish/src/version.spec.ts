@@ -43,7 +43,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
         app: {},
         crossBoundaryProjects: {},
         lib: {
-          '@fluentui/react-northstar': { name: '', type: 'lib', data: { root: 'packages/fluentui/react-northstar' } },
+          'react-northstar': { name: '', type: 'lib', data: { root: 'packages/fluentui/react-northstar' } },
         },
       },
     });

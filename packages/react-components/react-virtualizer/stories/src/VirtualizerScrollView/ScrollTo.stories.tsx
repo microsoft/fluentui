@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { VirtualizerScrollView } from '@fluentui/react-components/unstable';
-import type { ScrollToInterface } from '@fluentui/react-components/unstable';
+import { VirtualizerScrollView } from '@fluentui/react-virtualizer';
+import type { ScrollToInterface } from '@fluentui/react-virtualizer';
 import { Text, Input, makeStyles } from '@fluentui/react-components';
 import { Button } from '@fluentui/react-components';
 
@@ -38,11 +38,11 @@ export const ScrollTo = () => {
     <div>
       <Input defaultValue={'0'} onChange={onChangeGoToIndex} />
       <Button onClick={scrollToIndex}>{'GoTo'}</Button>
-      <Text>{message}</Text>
+      <Text aria-live="polite">{message}</Text>
       <VirtualizerScrollView
         numItems={childLength}
         itemSize={100}
-        container={{ role: 'list', style: { maxHeight: '100vh' } }}
+        container={{ role: 'list', style: { maxHeight: '80vh' } }}
         imperativeRef={scrollRef}
       >
         {(index: number) => {

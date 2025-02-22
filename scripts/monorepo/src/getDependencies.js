@@ -23,12 +23,15 @@ const packageJsonInfo = {};
  * @param {import('@nx/devkit').ProjectGraph} projectGraph
  */
 function getProjectPackageJsonInfo(project, projectGraph) {
-  const cachedInfo = packageJsonInfo[project];
+  const normalizedProjectName = getNormalizedName(project);
+
+  const cachedInfo = packageJsonInfo[normalizedProjectName];
   if (cachedInfo) {
     return cachedInfo;
   }
 
-  const metadata = projectGraph.nodes[project];
+  const metadata = projectGraph.nodes[normalizedProjectName];
+
   const absoluteRootPath = joinPathFragments(workspaceRoot, metadata.data.root);
   const pkgJsonContent = fs.readFileSync(joinPathFragments(workspaceRoot, metadata.data.root, 'package.json'), 'utf-8');
 
@@ -37,7 +40,7 @@ function getProjectPackageJsonInfo(project, projectGraph) {
   pkgJson.absoluteRootPath = absoluteRootPath;
 
   // store in cache
-  packageJsonInfo[project] = pkgJson;
+  packageJsonInfo[normalizedProjectName] = pkgJson;
 
   return pkgJson;
 }
@@ -75,13 +78,15 @@ function getLocalDeps(project, projectGraph) {
  * @returns
  */
 function getDepType(pkgName, json) {
-  if (json.dependencies?.[pkgName]) {
+  // need to check against real npmPackageName (including scope) - NOTE: once we move to dynamic project graph creation with nx this will no longer work - redo/simplify implementation
+  const npmPackageName = `@fluentui/${pkgName}`;
+  if (json.dependencies?.[npmPackageName]) {
     return 'dependencies';
   }
-  if (json.devDependencies?.[pkgName]) {
+  if (json.devDependencies?.[npmPackageName]) {
     return 'devDependencies';
   }
-  if (json.optionalDependencies?.[pkgName]) {
+  if (json.optionalDependencies?.[npmPackageName]) {
     return 'optionalDependencies';
   }
   return null;
@@ -145,15 +150,26 @@ function collectDependencies(
   return _acc;
 }
 
+function getNormalizedName(/** @type {string} */ value) {
+  return value.replace('@fluentui/', '');
+}
+
 /**
  * Returns dependencies metadata build from dependency graph for provided package
- * @param {string} packageName - including `@fluentui/` prefix
+ * @param {string} packageName - workspace project name. you don't have to use `@fluentui/` scope prefix
  */
 async function getDependencies(packageName) {
+  const normalizedPackageName = getNormalizedName(packageName);
   const projectGraph = await createProjectGraphAsync();
 
-  const allDepsGraph = collectDependencies(packageName, projectGraph, { shallow: false, dependenciesOnly: false });
-  const depsGraph = collectDependencies(packageName, projectGraph, { shallow: false, dependenciesOnly: true });
+  const allDepsGraph = collectDependencies(normalizedPackageName, projectGraph, {
+    shallow: false,
+    dependenciesOnly: false,
+  });
+  const depsGraph = collectDependencies(normalizedPackageName, projectGraph, {
+    shallow: false,
+    dependenciesOnly: true,
+  });
   const devDepsGraph = allDepsGraph.filter(anyDep => !depsGraph.find(prodDep => prodDep.name === anyDep.name));
 
   return {

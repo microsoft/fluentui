@@ -1,3 +1,4 @@
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
@@ -13,6 +14,11 @@ export type DialogSurfaceSlots = {
    */
   backdrop?: Slot<'div'>;
   root: Slot<'div'>;
+  /**
+   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
+   *
+   */
+  backdropMotion: Slot<PresenceMotionSlotProps>;
 };
 
 /**
@@ -23,7 +29,7 @@ export type DialogSurfaceElement = HTMLElement;
 /**
  * DialogSurface Props
  */
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & Pick<PortalProps, 'mountNode'>;
+export type DialogSurfaceProps = ComponentProps<Partial<DialogSurfaceSlots>> & Pick<PortalProps, 'mountNode'>;
 
 export type DialogSurfaceContextValues = {
   dialogSurface: DialogSurfaceContextValue;

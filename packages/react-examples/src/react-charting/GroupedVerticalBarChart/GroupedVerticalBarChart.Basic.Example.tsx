@@ -7,12 +7,16 @@ import {
 } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 interface IGroupedBarChartState {
   width: number;
   height: number;
   barwidth: number;
   selectedCallout: 'singleCallout' | 'StackCallout';
   hideLabels: boolean;
+  enableGradient: boolean;
+  roundCorners: boolean;
+  selectMultipleLegends: boolean;
 }
 
 export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGroupedBarChartState> {
@@ -24,6 +28,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
       barwidth: 16,
       selectedCallout: 'singleCallout',
       hideLabels: false,
+      enableGradient: false,
+      roundCorners: false,
+      selectMultipleLegends: false,
     };
   }
 
@@ -45,6 +52,18 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
   };
   private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ hideLabels: checked });
+  };
+
+  private _onEnableGradientChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onRoundCornersChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
+  };
+
+  private _onLegendMultiSelectChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ selectMultipleLegends: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -74,6 +93,28 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
               ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 2 of 2 2023, x value 2023/04/30, y value 44%',
             },
           },
+          {
+            key: 'series3',
+            data: 54000,
+            color: getColorFromToken(DataVizPalette.color5),
+            legend: '2024',
+            xAxisCalloutData: '2024/04/30',
+            yAxisCalloutData: '44%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 3 of 4 2022, x value 2024/04/30, y value 44%',
+            },
+          },
+          {
+            key: 'series4',
+            data: 24000,
+            color: getColorFromToken(DataVizPalette.color6),
+            legend: '2021',
+            xAxisCalloutData: '2021/04/30',
+            yAxisCalloutData: '44%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 4 of 4 2021, x value 2021/04/30, y value 44%',
+            },
+          },
         ],
       },
       {
@@ -99,6 +140,28 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             yAxisCalloutData: '3%',
             callOutAccessibilityData: {
               ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 2 of 2 2023, x value 2023/05/30, y value 3%',
+            },
+          },
+          {
+            key: 'series3',
+            data: 9000,
+            color: getColorFromToken(DataVizPalette.color5),
+            legend: '2024',
+            xAxisCalloutData: '2024/05/30',
+            yAxisCalloutData: '3%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 3 of 4 2024, x value 2024/05/30, y value 3%',
+            },
+          },
+          {
+            key: 'series4',
+            data: 12000,
+            color: getColorFromToken(DataVizPalette.color6),
+            legend: '2021',
+            xAxisCalloutData: '2021/05/30',
+            yAxisCalloutData: '3%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 4 of 4 2021, x value 2021/05/30, y value 3%',
             },
           },
         ],
@@ -129,6 +192,28 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
               ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 2 of 2 2023, x value 2023/06/30, y value 50%',
             },
           },
+          {
+            key: 'series3',
+            data: 60000,
+            color: getColorFromToken(DataVizPalette.color5),
+            legend: '2024',
+            xAxisCalloutData: '2024/06/30',
+            yAxisCalloutData: '50%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 3 of 4 2024, x value 2024/06/30, y value 50%',
+            },
+          },
+          {
+            key: 'series4',
+            data: 10000,
+            color: getColorFromToken(DataVizPalette.color6),
+            legend: '2021',
+            xAxisCalloutData: '2021/06/30',
+            yAxisCalloutData: '50%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 4 of 4 2021, x value 2021/06/30, y value 50%',
+            },
+          },
         ],
       },
       {
@@ -154,6 +239,28 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             yAxisCalloutData: '3%',
             callOutAccessibilityData: {
               ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 2 of 2 2023, x value 2023/07/30, y value 3%',
+            },
+          },
+          {
+            key: 'series3',
+            data: 6000,
+            color: getColorFromToken(DataVizPalette.color5),
+            legend: '2024',
+            xAxisCalloutData: '2024/07/30',
+            yAxisCalloutData: '3%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 3 of 4 2024, x value 2024/07/30, y value 3%',
+            },
+          },
+          {
+            key: 'series4',
+            data: 15000,
+            color: getColorFromToken(DataVizPalette.color6),
+            legend: '2021',
+            xAxisCalloutData: '2021/07/30',
+            yAxisCalloutData: '3%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 4 of 4 2021, x value 2021/07/30, y value 3%',
             },
           },
         ],
@@ -217,6 +324,18 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
           onChange={this._onCheckChange}
           styles={{ root: { marginTop: '20px' } }}
         />
+        <div style={{ display: 'flex' }}>
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onEnableGradientChange} />
+          &nbsp;&nbsp;
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onRoundCornersChange} />
+          &nbsp;&nbsp;
+          <Toggle
+            label="Select Multiple Legends"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onLegendMultiSelectChange}
+          />
+        </div>
         <div style={rootStyle}>
           <GroupedVerticalBarChart
             culture={window.navigator.language}
@@ -228,6 +347,11 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             barwidth={this.state.barwidth}
             hideLabels={this.state.hideLabels}
             enableReflow={true}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
+            legendProps={{
+              canSelectMultipleLegends: this.state.selectMultipleLegends,
+            }}
           />
         </div>
       </>

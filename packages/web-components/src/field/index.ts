@@ -1,4 +1,4 @@
-export { Field } from './field.js';
+export { BaseField, Field } from './field.js';
 export { LabelPosition as FieldLabelPosition, ValidationFlags } from './field.options.js';
 export type { SlottableInput } from './field.options.js';
 export { definition as FieldDefinition } from './field.definition.js';

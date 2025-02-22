@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/scripts-beachball",
+  "name": "scripts-beachball",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/beachball/src",
   "projectType": "library",

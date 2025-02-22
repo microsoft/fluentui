@@ -2,6 +2,10 @@ import * as React from 'react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
 
+export default {
+  title: 'Components/Toggle',
+};
+
 const stackTokens: IStackTokens = { childrenGap: 10 };
 
 export const ToggleBasicExample: React.FunctionComponent = () => {

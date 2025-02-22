@@ -7,11 +7,10 @@ Production build without hot reload. Primary purpose of this application is to m
 ## Usage
 
 ```
-yarn build:withdependencies
-yarn build:production
+yarn nx run local-sandbox:bundle
 yarn serve
 ```
 
 ## Measuring bundle size
 
-This package can be also used to analyze bundle size. After running `yarn build:production`, bundle size report is stored to **dist/report.html**.
+This package can be also used to analyze bundle size. After running `yarn nx run local-sandbox:bundle`, bundle size report is stored to **dist/report.html**.

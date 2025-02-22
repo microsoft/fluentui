@@ -1,16 +1,13 @@
 import { Nav } from '@fluentui/react-nav-preview';
 
+// Todo: light these up
 // import descriptionMd from './NavDescription.md';
 // import bestPracticesMd from './NavBestPractices.md';
 
-// export { Default } from './NavDefault.stories';
-// export { WithDefaultSelection } from './NavWithDefaultSelection.stories';
-// export { WithNestedSubItems } from './NavWithNestedSubItems.stories';
-// export { WithNestedSubItemsDefaultSelection } from './NavWithNestedSubItemsWithDefaultSelection.stories';
-// export { WithNestedSubItemsWithDefaultSelectionSingleCategory } from './NavWithNestedSubItemsWithDefaultSelectionSingleCategory.stories';
-
-export { NavDrawerDefault } from '../NavDrawer/NavDrawerDefault.stories';
-export { NavDrawerSize } from '../NavDrawer/NavDrawerSize.stories';
+export { Basic } from '../NavDrawer/Basic.stories';
+export { VariableDensityItems } from '../NavDrawer/VariableDensityItems.stories';
+export { Controlled } from '../NavDrawer/Controlled.stories';
+export { SplitNavItems } from '../NavDrawer/SplitNavItems.stories';
 
 export default {
   title: 'Preview Components/Nav',

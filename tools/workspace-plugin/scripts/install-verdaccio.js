@@ -13,7 +13,7 @@ function main() {
   } catch {
     output.logSingleLine('Installing verdaccio...');
     const pm = getPackageManagerCommand();
-    const cmd = `${pm} add -DW verdaccio@5 --ignore-scripts`;
+    const cmd = `${pm.addDev} verdaccio@5 --ignore-scripts`;
     execSync(cmd, { stdio: 'inherit', cwd: workspaceRoot });
   }
 

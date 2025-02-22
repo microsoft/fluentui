@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Pass data with value to onAction callback",
-  "packageName": "@fluentui/react-list-preview",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}

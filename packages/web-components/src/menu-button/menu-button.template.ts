@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html } from '@microsoft/fast-element';
 import { buttonTemplate } from '../button/button.template.js';
 import type { MenuButton } from './menu-button.js';
 

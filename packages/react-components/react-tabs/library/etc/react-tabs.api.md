@@ -66,7 +66,7 @@ export type TabListContextValues = {
 
 // @public
 export type TabListProps = ComponentProps<TabListSlots> & {
-    appearance?: 'transparent' | 'subtle';
+    appearance?: 'transparent' | 'subtle' | 'subtle-circular' | 'filled-circular';
     reserveSelectedTabSpace?: boolean;
     defaultSelectedValue?: TabValue;
     disabled?: boolean;
@@ -109,7 +109,7 @@ export type TabSlots = {
 
 // @public
 export type TabState = ComponentState<TabInternalSlots> & Pick<TabProps, 'value'> & Required<Pick<TabProps, 'disabled'>> & {
-    appearance?: 'transparent' | 'subtle';
+    appearance?: 'transparent' | 'subtle' | 'subtle-circular' | 'filled-circular';
     iconOnly: boolean;
     selected: boolean;
     contentReservedSpaceClassName?: string;
@@ -122,6 +122,15 @@ export type TabValue = unknown;
 
 // @public
 export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;
+
+// @public
+export const useTabButtonStyles_unstable: (state: TabState, slot: TabState['root']) => TabState;
+
+// @public
+export const useTabContentStyles_unstable: (state: TabState) => TabState;
+
+// @public
+export const useTabIndicatorStyles_unstable: (state: TabState) => TabState;
 
 // @public
 export const useTabList_unstable: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;

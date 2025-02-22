@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Step } from 'storywright';
-import { StoryContext } from './types';
+import type { StoryContext } from '@storybook/react';
 
 export const withStoryWrightSteps = ({
   story,

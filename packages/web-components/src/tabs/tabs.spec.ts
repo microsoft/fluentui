@@ -1,136 +1,80 @@
-import type { Locator, Page } from '@playwright/test';
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 import type { Tab } from '../tab/tab.js';
 import type { Tabs } from './tabs.js';
+import { TabsAppearance, TabsSize } from './tabs.options.js';
 
 test.describe('Tabs', () => {
-  let page: Page;
-  let element: Locator;
-  let root: Locator;
-  let tablist: Locator;
-  let tabs: Locator;
-
-  const template = /* html */ `
-        <fluent-tabs>
-            <fluent-tab>Tab one</fluent-tab>
-            <fluent-tab>Tab two</fluent-tab>
-            <fluent-tab>Tab three</fluent-tab>
-            <fluent-tab-panel>Tab panel one</fluent-tab-panel>
-            <fluent-tab-panel>Tab panel two</fluent-tab-panel>
-            <fluent-tab-panel>Tab panel three</fluent-tab-panel>
-        </fluent-tabs>
-    `;
-
-  test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
-
-    element = page.locator('fluent-tabs');
-
-    root = page.locator('#root');
-
-    tablist = element.locator('.tablist');
-
-    tabs = element.locator('fluent-tab');
-
-    await page.goto(fixtureURL('components-tabs--tabs-default'));
+  test.use({
+    tagName: 'fluent-tabs',
+    waitFor: ['fluent-tab', 'fluent-tab-panel'],
+    innerHTML: /* html */ `
+      <fluent-tab>Tab one</fluent-tab>
+      <fluent-tab>Tab two</fluent-tab>
+      <fluent-tab>Tab three</fluent-tab>
+      <fluent-tab-panel>Tab panel one</fluent-tab-panel>
+      <fluent-tab-panel>Tab panel two</fluent-tab-panel>
+      <fluent-tab-panel>Tab panel three</fluent-tab-panel>
+    `,
   });
 
-  test.afterAll(async () => {
-    await page.close();
-  });
-
-  test('should reset tab indicator offset and scale for horizontal orientation after animation', async () => {
-    await root.evaluate(
-      (node, { template }) => {
-        node.innerHTML = template;
-      },
-      { template },
-    );
-
-    const tab = tabs.nth(2);
-    await tab.click();
-
-    const tabIndicatorValues = await page.evaluate(() => {
-      const tabsElement = document.querySelector('fluent-tabs') as Element;
-      return {
-        offset: getComputedStyle(tabsElement).getPropertyValue('--tabIndicatorOffset').trim(),
-        scale: getComputedStyle(tabsElement).getPropertyValue('--tabIndicatorScale').trim(),
-      };
-    });
-
-    expect(tabIndicatorValues.offset).toBe('0px');
-    expect(tabIndicatorValues.scale).toBe('1');
-  });
-
-  test('should animate the active tab indicator', async () => {
-    await root.evaluate(
-      (node, { template }) => {
-        node.innerHTML = template;
-      },
-      { template },
-    );
+  test('should reset tab indicator offset and scale for horizontal orientation after animation', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const tabs = element.locator('fluent-tab');
 
     const tab = tabs.nth(2);
 
-    const valueBeforeClick = await page.evaluate(() => {
-      const tabElement = document.querySelector('fluent-tab:nth-child(3)') as Element;
-      return tabElement.getAttribute('data-animate');
-    });
+    await tab.click();
 
-    expect(valueBeforeClick).toBe(null);
+    await expect(element).toHaveCSS('--tabIndicatorOffset', '0px');
+
+    await expect(element).toHaveCSS('--tabIndicatorScale', '1');
+  });
+
+  test('should animate the active tab indicator', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const tabs = element.locator('fluent-tab');
+
+    const tab = tabs.nth(2);
+
+    await expect(tab).not.toHaveAttribute('data-animate');
 
     await tab.click();
 
-    const valueAfterClick = await page.evaluate(() => {
-      const tabElement = document.querySelector('fluent-tab:nth-child(3)') as Element;
-      return tabElement.getAttribute('data-animate');
-    });
-
-    expect(valueAfterClick).toBe('true');
+    await expect(tab).toHaveAttribute('data-animate', 'true');
   });
 
-  test('should have reflect disabled attribute on control', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-tabs></fluent-tabs>
-        `;
-    });
-    await expect(element).not.toHaveAttribute('disabled', '');
+  test('should have reflect disabled attribute on control', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await expect(element).not.toHaveAttribute('disabled');
 
     await element.evaluate((node: Tabs) => {
       node.disabled = true;
     });
 
-    await expect(element).toHaveAttribute('disabled', '');
+    await expect(element).toHaveAttribute('disabled');
   });
 
-  test('should have an internal element with a role of `tablist`', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-              <fluent-tabs></fluent-tabs>
-          `;
-    });
+  test('should have an internal element with a role of `tablist`', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const tablist = element.locator('.tablist');
 
     await expect(tablist).toHaveAttribute('role', 'tablist');
   });
 
-  test('should set a default orientation value of `horizontal` when `orientation` is not provided', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                  <fluent-tabs></fluent-tabs>
-              `;
-    });
+  test('should set a default orientation value of `horizontal` when `orientation` is not provided', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('orientation', 'horizontal');
   });
 
-  test('should set an `id` attribute on the active tab when an `id` is provided', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                  <fluent-tabs></fluent-tabs>
-              `;
-    });
+  test('should set an `id` attribute on the active tab when an `id` is provided', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const tabs = element.locator('fluent-tab');
 
     const tabCount = await tabs.count();
 
@@ -146,19 +90,13 @@ test.describe('Tabs', () => {
   });
 
   test.describe('`id` NOT provided', () => {
-    test('should set an `id` attribute on tab items with a unique ID when an `id` is NOT provided', async () => {
-      await root.evaluate(
-        (node, { template }) => {
-          node.innerHTML = template;
-        },
-        { template },
-      );
+    test('should set an `id` attribute on tab items with a unique ID when an `id` is NOT provided', async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
+      const tabs = element.locator('fluent-tab');
 
-      const tabCount = await tabs.count();
-
-      for (let i = 0; i < tabCount; i++) {
-        const tab = tabs.nth(i);
-
+      for (const tab of await tabs.all()) {
         const id = await tab.getAttribute('id');
 
         // The ID function may not start at 0 so we need to check that the ID is unique
@@ -170,20 +108,14 @@ test.describe('Tabs', () => {
       }
     });
 
-    test('should set `aria-labelledby` on the tab panel and `aria-controls` on the tab which corresponds to the matching ID when IDs are NOT provided', async () => {
-      await root.evaluate(
-        (node, { template }) => {
-          node.innerHTML = template;
-        },
-        { template },
-      );
+    test('should set `aria-labelledby` on the tab panel and `aria-controls` on the tab which corresponds to the matching ID when IDs are NOT provided', async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
+      const tabs = element.locator('fluent-tab');
 
-      const tabCount = await tabs.count();
-
-      for (let i = 0; i < tabCount; i++) {
-        const tab = tabs.nth(i);
-
-        const panelId = (await tab.getAttribute('aria-controls')) as string;
+      for (const tab of await tabs.all()) {
+        const panelId = await tab.getAttribute('aria-controls');
 
         expect(panelId).toMatch(/panel-\d+/);
 
@@ -191,30 +123,24 @@ test.describe('Tabs', () => {
 
         await expect(tabPanel).toHaveCount(1);
 
-        const tabId = (await tab.getAttribute('id')) as string;
+        const tabId = await tab.getAttribute('id');
 
         expect(tabId).toMatch(/tab-\d+/);
 
-        await expect(tabPanel).toHaveAttribute('aria-labelledby', tabId);
+        await expect(tabPanel).toHaveAttribute('aria-labelledby', tabId!);
 
-        await expect(tab).toHaveAttribute('aria-controls', panelId);
+        await expect(tab).toHaveAttribute('aria-controls', panelId!);
       }
     });
 
-    test('should set `aria-labelledby` on the tab panel and `aria-controls` on the tab which corresponds to the matching ID when IDs are NOT provided and additional tabs and panels are added', async () => {
-      await root.evaluate(
-        (node, { template }) => {
-          node.innerHTML = template;
-        },
-        { template },
-      );
+    test('should set `aria-labelledby` on the tab panel and `aria-controls` on the tab which corresponds to the matching ID when IDs are NOT provided and additional tabs and panels are added', async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
+      const tabs = element.locator('fluent-tab');
 
-      let tabCount = await tabs.count();
-
-      for (let i = 0; i < tabCount; i++) {
-        const tab = tabs.nth(i);
-
-        const panelId = (await tab.getAttribute('aria-controls')) as string;
+      for (const tab of await tabs.all()) {
+        const panelId = await tab.getAttribute('aria-controls');
 
         expect(panelId).toMatch(/panel-\d+/);
 
@@ -222,16 +148,16 @@ test.describe('Tabs', () => {
 
         await expect(tabPanel).toHaveCount(1);
 
-        const tabId = (await tab.getAttribute('id')) as string;
+        const tabId = await tab.getAttribute('id');
 
         expect(tabId).toMatch(/tab-\d+/);
 
-        await expect(tabPanel).toHaveAttribute('aria-labelledby', tabId);
+        await expect(tabPanel).toHaveAttribute('aria-labelledby', tabId!);
 
-        await expect(tab).toHaveAttribute('aria-controls', panelId);
+        await expect(tab).toHaveAttribute('aria-controls', panelId!);
       }
 
-      await element.evaluate<void, Tabs>(node => {
+      await element.evaluate(node => {
         const tabs = Array.from(node.querySelectorAll('fluent-tab'));
 
         const newTab = document.createElement('fluent-tab');
@@ -243,12 +169,8 @@ test.describe('Tabs', () => {
         node.insertBefore(newPanel, tabs[1]);
       });
 
-      tabCount = await tabs.count();
-
-      for (let i = 0; i < tabCount; i++) {
-        const tab = tabs.nth(i);
-
-        const panelId = (await tab.getAttribute('aria-controls')) as string;
+      for (const tab of await tabs.all()) {
+        const panelId = await tab.getAttribute('aria-controls');
 
         expect(panelId).toMatch(/panel-\d+/);
 
@@ -256,23 +178,19 @@ test.describe('Tabs', () => {
 
         await expect(tabPanel).toHaveCount(1);
 
-        const tabId = (await tab.getAttribute('id')) as string;
+        const tabId = await tab.getAttribute('id');
 
         expect(tabId).toMatch(/tab-\d+/);
 
-        await expect(tabPanel).toHaveAttribute('aria-labelledby', tabId);
+        await expect(tabPanel).toHaveAttribute('aria-labelledby', tabId!);
 
-        await expect(tab).toHaveAttribute('aria-controls', panelId);
+        await expect(tab).toHaveAttribute('aria-controls', panelId!);
       }
     });
 
-    test('should default the first tab as the active index if `activeid` is NOT provided', async () => {
-      await root.evaluate(
-        (node, { template }) => {
-          node.innerHTML = template;
-        },
-        { template },
-      );
+    test('should default the first tab as the active index if `activeid` is NOT provided', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const tabs = element.locator('fluent-tab');
 
       await expect(tabs.nth(0)).toHaveAttribute('aria-selected', 'true');
 
@@ -281,32 +199,28 @@ test.describe('Tabs', () => {
   });
 
   test.describe('active tab', () => {
-    test('should set an `aria-selected` attribute on the active tab when `activeid` is provided', async () => {
-      await root.evaluate(
-        (node, { template }) => {
-          node.innerHTML = template;
-        },
-        { template },
-      );
+    test('should set an `aria-selected` attribute on the active tab when `activeid` is provided', async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
+      const tabs = element.locator('fluent-tab');
 
       const secondTab = tabs.nth(1);
 
-      const secondTabId = `${await secondTab.getAttribute('id')}`;
+      const secondTabId = await secondTab.getAttribute('id');
 
       await element.evaluate((node: Tabs, secondTabId) => {
         node.activeid = secondTabId;
-      }, secondTabId);
+      }, secondTabId!);
 
       await expect(secondTab).toHaveAttribute('aria-selected', 'true');
     });
 
-    test('should update `aria-selected` attribute on the active tab when `activeId` is updated', async () => {
-      await root.evaluate(
-        (node, { template }) => {
-          node.innerHTML = template;
-        },
-        { template },
-      );
+    test('should update `aria-selected` attribute on the active tab when `activeId` is updated', async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
+      const tabs = element.locator('fluent-tab');
 
       await expect(tabs.nth(0)).toHaveAttribute('aria-selected', 'true');
 
@@ -314,7 +228,7 @@ test.describe('Tabs', () => {
 
       const secondTabId = `${await secondTab.getAttribute('id')}`;
 
-      await element.evaluate((node: Tabs, secondTabId) => {
+      await element.evaluate((node, secondTabId) => {
         node.setAttribute('activeId', secondTabId);
       }, secondTabId);
 
@@ -323,13 +237,11 @@ test.describe('Tabs', () => {
   });
 
   test.describe('active tabpanel', () => {
-    test('should set an `aria-labelledby` attribute on the tabpanel with a value of the tab id when `activeid` is provided', async () => {
-      await root.evaluate(
-        (node, { template }) => {
-          node.innerHTML = template;
-        },
-        { template },
-      );
+    test('should set an `aria-labelledby` attribute on the tabpanel with a value of the tab id when `activeid` is provided', async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
+      const tabs = element.locator('fluent-tab');
 
       const secondTab = tabs.nth(1);
 
@@ -344,13 +256,8 @@ test.describe('Tabs', () => {
       await expect(tabPanels.nth(1)).toHaveAttribute('aria-labelledby', secondTabId);
     });
 
-    test('should set an attribute of hidden if the tabpanel is not active', async () => {
-      await root.evaluate(
-        (node, { template }) => {
-          node.innerHTML = template;
-        },
-        { template },
-      );
+    test('should set an attribute of hidden if the tabpanel is not active', async ({ fastPage }) => {
+      const { element } = fastPage;
 
       const tabPanels = element.locator('fluent-tab-panel');
 
@@ -362,129 +269,101 @@ test.describe('Tabs', () => {
     });
   });
 
-  test('should reflect appearance attribute values', async () => {
-    await element.evaluate((node: Tabs) => {
-      node.appearance = 'subtle';
-    });
-    await expect(element).toHaveAttribute('appearance', 'subtle');
-    await expect(element).toHaveJSProperty('appearance', 'subtle');
+  test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.evaluate((node: Tabs) => {
-      node.appearance = 'transparent';
-    });
-    await expect(element).toHaveAttribute('appearance', 'transparent');
-    await expect(element).toHaveJSProperty('appearance', 'transparent');
+    for (const appearance of Object.values(TabsAppearance)) {
+      await test.step(appearance, async () => {
+        await fastPage.setTemplate({ attributes: { appearance } });
+
+        await expect(element).toHaveJSProperty('appearance', appearance);
+
+        await expect(element).toHaveAttribute('appearance', appearance);
+      });
+    }
   });
 
-  test('should reflect size attribute values', async () => {
-    await element.evaluate((node: Tabs) => {
-      node.size = 'small';
-    });
-    await expect(element).toHaveAttribute('size', 'small');
-    await expect(element).toHaveJSProperty('size', 'small');
+  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.evaluate((node: Tabs) => {
-      node.size = 'medium';
-    });
-    await expect(element).toHaveAttribute('size', 'medium');
-    await expect(element).toHaveJSProperty('size', 'medium');
+    for (const size of Object.values(TabsSize)) {
+      await test.step(size, async () => {
+        await fastPage.setTemplate({ attributes: { size } });
 
-    await element.evaluate((node: Tabs) => {
-      node.size = 'large';
-    });
-    await expect(element).toHaveAttribute('size', 'large');
-    await expect(element).toHaveJSProperty('size', 'large');
+        await expect(element).toHaveJSProperty('size', size);
+
+        await expect(element).toHaveAttribute('size', size);
+      });
+    }
   });
 
-  test('should not allow selecting a tab that has been disabled after it has been connected', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                  <fluent-tabs>
-                      <fluent-tab id="tab-1">Tab one</fluent-tab>
-                      <fluent-tab id="tab-2">Tab two</fluent-tab>
-                      <fluent-tab id="tab-3">Tab three</fluent-tab>
-                      <fluent-tab-panel>Tab panel one</fluent-tab-panel>
-                      <fluent-tab-panel>Tab panel two</fluent-tab-panel>
-                      <fluent-tab-panel>Tab panel three</fluent-tab-panel>
-                  </fluent-tabs>
-              `;
-    });
-
-    await (await element.elementHandle())?.waitForElementState('stable');
-
-    const firstTab = tabs.nth(0);
-
-    const firstTabId = await firstTab.getAttribute('id');
-
-    expect(firstTabId).toBe('tab-1');
-
-    await element.evaluate((node: Tabs, firstTabId) => {
-      node.activeid = `${firstTabId}`;
-    }, firstTabId);
-
-    await (await element.elementHandle())?.waitForElementState('stable');
-
-    await expect(element).toHaveJSProperty('activeid', firstTabId);
-
+  test('should not allow selecting a tab that has been disabled after it has been connected', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const tabs = element.locator('fluent-tab');
+    const firstTab = tabs.first();
     const secondTab = tabs.nth(1);
+
+    await fastPage.setTemplate({
+      attributes: { activeid: 'tab-1' },
+      innerHTML: /* html */ `
+        <fluent-tab id="tab-1">Tab one</fluent-tab>
+        <fluent-tab id="tab-2">Tab two</fluent-tab>
+        <fluent-tab id="tab-3">Tab three</fluent-tab>
+        <fluent-tab-panel>Tab panel one</fluent-tab-panel>
+        <fluent-tab-panel>Tab panel two</fluent-tab-panel>
+        <fluent-tab-panel>Tab panel three</fluent-tab-panel>
+      `,
+    });
+
+    for (const tab of await tabs.all()) {
+      await expect(tab).toBeEnabled();
+    }
+
+    await expect(firstTab).toHaveId('tab-1');
+
+    await expect(element).toHaveJSProperty('activeid', 'tab-1');
 
     await secondTab.evaluate((node: Tab) => {
       node.disabled = true;
     });
 
-    await (await element.elementHandle())?.waitForElementState('stable');
+    // eslint-disable-next-line playwright/no-force-option
+    await secondTab.click({ force: true });
 
-    await secondTab.evaluate(node => {
-      node.dispatchEvent(
-        new MouseEvent('click', {
-          bubbles: true,
-          cancelable: true,
-          view: window,
-        }),
-      );
-    });
-
-    await expect(element).toHaveJSProperty('activeid', firstTabId);
+    await expect(element).toHaveJSProperty('activeid', 'tab-1');
   });
 
-  test('should allow selecting tab that has been enabled after it has been connected', async () => {
-    test.slow();
+  test('should allow selecting tab that has been enabled after it has been connected', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const tabs = element.locator('fluent-tab');
 
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                  <fluent-tabs>
-                      <fluent-tab>Tab one</fluent-tab>
-                      <fluent-tab disabled>Tab two</fluent-tab>
-                      <fluent-tab>Tab three</fluent-tab>
-                      <fluent-tab-panel>Tab panel one</fluent-tab-panel>
-                      <fluent-tab-panel>Tab panel two</fluent-tab-panel>
-                      <fluent-tab-panel>Tab panel three</fluent-tab-panel>
-                  </fluent-tabs>
-              `;
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <fluent-tab>Tab one</fluent-tab>
+        <fluent-tab disabled>Tab two</fluent-tab>
+        <fluent-tab>Tab three</fluent-tab>
+        <fluent-tab-panel>Tab panel one</fluent-tab-panel>
+        <fluent-tab-panel>Tab panel two</fluent-tab-panel>
+        <fluent-tab-panel>Tab panel three</fluent-tab-panel>
+      `,
     });
 
     const firstTab = tabs.nth(0);
 
     const secondTab = tabs.nth(1);
 
-    const firstTabId = `${await firstTab.getAttribute('id')}`;
-    const secondTabId = `${await secondTab.getAttribute('id')}`;
+    const firstTabId = await firstTab.getAttribute('id');
+
+    const secondTabId = await secondTab.getAttribute('id');
 
     await element.evaluate((node: Tabs, firstTabId) => {
       node.activeid = firstTabId;
-    }, firstTabId);
+    }, firstTabId!);
 
     await expect(element).toHaveJSProperty('activeid', firstTabId);
 
-    await secondTab.evaluate(node => {
-      node.dispatchEvent(
-        new MouseEvent('click', {
-          bubbles: true,
-          cancelable: true,
-          view: window,
-        }),
-      );
-    });
+    // eslint-disable-next-line playwright/no-force-option
+    await secondTab.click({ force: true });
 
     await expect(element).toHaveJSProperty('activeid', firstTabId);
 
@@ -492,78 +371,67 @@ test.describe('Tabs', () => {
       node.disabled = false;
     });
 
-    await (await element.elementHandle())?.waitForElementState('stable');
+    await secondTab.click();
 
-    await secondTab.evaluate(node => {
-      node.dispatchEvent(
-        new MouseEvent('click', {
-          bubbles: true,
-          cancelable: true,
-          view: window,
-        }),
-      );
-    });
     await expect(element).toHaveJSProperty('activeid', secondTabId);
   });
 
-  test('should not allow selecting hidden tab using arrow keys', async () => {
-    test.slow();
+  test('should not allow selecting hidden tab using arrow keys', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const tabs = element.locator('fluent-tab');
 
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                  <fluent-tabs>
-                      <fluent-tab>Tab one</fluent-tab>
-                      <fluent-tab hidden>Tab two</fluent-tab>
-                      <fluent-tab>Tab three</fluent-tab>
-                      <fluent-tab-panel>Tab panel one</fluent-tab-panel>
-                      <fluent-tab-panel>Tab panel two</fluent-tab-panel>
-                      <fluent-tab-panel>Tab panel three</fluent-tab-panel>
-                  </fluent-tabs>
-              `;
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <fluent-tab>Tab one</fluent-tab>
+        <fluent-tab hidden>Tab two</fluent-tab>
+        <fluent-tab>Tab three</fluent-tab>
+        <fluent-tab-panel>Tab panel one</fluent-tab-panel>
+        <fluent-tab-panel>Tab panel two</fluent-tab-panel>
+        <fluent-tab-panel>Tab panel three</fluent-tab-panel>
+      `,
     });
 
     const firstTab = tabs.nth(0);
 
     const thirdTab = tabs.nth(2);
 
-    const firstTabId = `${await firstTab.getAttribute('id')}`;
-    const thirdTabId = `${await thirdTab.getAttribute('id')}`;
+    const firstTabId = await firstTab.getAttribute('id');
+    const thirdTabId = await thirdTab.getAttribute('id');
 
     await element.evaluate((node: Tabs, firstTabId) => {
       node.activeid = firstTabId;
-    }, firstTabId);
+    }, firstTabId!);
 
     await firstTab.press('ArrowRight');
 
     await expect(element).toHaveJSProperty('activeid', thirdTabId);
   });
 
-  test('should not allow selecting hidden tab by pressing End', async () => {
-    test.slow();
+  test('should not allow selecting hidden tab by pressing End', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const tabs = element.locator('fluent-tab');
 
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                  <fluent-tabs>
-                      <fluent-tab>Tab one</fluent-tab>
-                      <fluent-tab>Tab two</fluent-tab>
-                      <fluent-tab hidden>Tab three</fluent-tab>
-                      <fluent-tab-panel>Tab panel one</fluent-tab-panel>
-                      <fluent-tab-panel>Tab panel two</fluent-tab-panel>
-                      <fluent-tab-panel>Tab panel three</fluent-tab-panel>
-                  </fluent-tabs>
-              `;
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <fluent-tab>Tab one</fluent-tab>
+        <fluent-tab>Tab two</fluent-tab>
+        <fluent-tab hidden>Tab three</fluent-tab>
+        <fluent-tab-panel>Tab panel one</fluent-tab-panel>
+        <fluent-tab-panel>Tab panel two</fluent-tab-panel>
+        <fluent-tab-panel>Tab panel three</fluent-tab-panel>
+      `,
     });
 
     const firstTab = tabs.nth(0);
 
     const secondTab = tabs.nth(1);
 
-    const firstTabId = `${await firstTab.getAttribute('id')}`;
-    const secondTabId = `${await secondTab.getAttribute('id')}`;
+    const firstTabId = await firstTab.getAttribute('id');
+    const secondTabId = await secondTab.getAttribute('id');
 
     await element.evaluate((node: Tabs, firstTabId) => {
       node.activeid = firstTabId;
-    }, firstTabId);
+    }, firstTabId!);
 
     await firstTab.press('End');
 

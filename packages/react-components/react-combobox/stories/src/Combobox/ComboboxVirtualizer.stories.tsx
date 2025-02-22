@@ -6,6 +6,7 @@ import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-compon
 
 const useStyles = makeStyles({
   listbox: {
+    // maxHeight will be applied only positioning autoSize set.
     maxHeight: '250px',
   },
   option: {
@@ -16,12 +17,17 @@ const useStyles = makeStyles({
 export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
   const comboId = useId('combobox');
 
-  const itemHeight = 32; //This should match the height of each item in the listbox
+  //This should include the item height (32px) and account for rowGap (2px)
+  const itemHeight = 34;
   const numberOfItems = 10000;
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: itemHeight,
     direction: 'vertical',
+    // We want at least 10 additional items on each side of visible items for page up/down (+ 1 buffer)
+    bufferItems: 11,
+    // We need to recalculate index when at least 10 items (+1px) from the bottom or top for page up/down
+    bufferSize: itemHeight * 10 + 1,
   });
 
   const styles = useStyles();
@@ -33,6 +39,7 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
         <Combobox
           id={`${comboId}`}
           placeholder="Select a number"
+          positioning={{ autoSize: 'width' }}
           listbox={{ ref: scrollRef, className: styles.listbox }}
         >
           <Virtualizer
@@ -41,6 +48,7 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
             bufferItems={bufferItems}
             bufferSize={bufferSize}
             itemSize={itemHeight}
+            containerSizeRef={containerSizeRef}
           >
             {index => {
               return (
@@ -62,7 +70,9 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
 ComboboxVirtualizer.parameters = {
   docs: {
     description: {
-      story: 'A Combobox can use Virtualizer to display a large number of options.',
+      story:
+        'A Combobox can use Virtualizer to display a large number of options\n' +
+        `To manually control the maxHeight of the listbox, refer to the [positioning autoSize property](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--default#anchor-to-target)`,
     },
   },
 };

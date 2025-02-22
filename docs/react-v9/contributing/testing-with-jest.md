@@ -13,7 +13,10 @@ We use various libraries on top of Jest for rendering and interacting with React
 ## Running tests
 
 From your Terminal invoke one of following commands:
-`yarn nx run <package-name>:test` or `yarn lage test --to <package-name>`
+
+```sh
+yarn nx run <project-name>:test
+```
 
 > New packages (v9) don't require build step before, which is not true for old fluent libraries like v8.
 > Until v8 lives within our main branch we cannot remove `build` dependency from target task graph thus you'll experience build step even for new packages.

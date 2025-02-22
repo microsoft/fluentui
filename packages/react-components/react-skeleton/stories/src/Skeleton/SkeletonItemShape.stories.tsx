@@ -18,7 +18,7 @@ export const Shape = () => {
   const styles = useStyles();
   return (
     <div className={styles.invertedWrapper}>
-      <Skeleton className={styles.row}>
+      <Skeleton className={styles.row} aria-label="Loading Content">
         <SkeletonItem size={64} shape="circle" />
         <SkeletonItem size={64} shape="rectangle" />
         <SkeletonItem size={64} shape="square" />

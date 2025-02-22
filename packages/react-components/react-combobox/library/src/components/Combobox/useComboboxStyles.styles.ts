@@ -33,6 +33,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     minWidth: '250px',
     position: 'relative',
+    verticalAlign: 'middle',
 
     // windows high contrast mode focus indicator
     ':focus-within': {

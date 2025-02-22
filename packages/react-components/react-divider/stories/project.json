@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-divider-stories",
+  "name": "react-divider-stories",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-divider/stories/src",

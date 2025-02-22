@@ -1,8 +1,17 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Thu, 06 Jun 2024 15:26:28 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Nov 2024 10:01:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.14)
+
+Mon, 11 Nov 2024 10:01:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.13..@fluentui/priority-overflow_v9.1.14)
+
+### Patches
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
 
 ## [9.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.13)
 

@@ -1,7 +1,7 @@
-import * as p from '<%= packageName %>'
+import * as p from '<%= npmPackageName %>'
 
 console.log(p);
 
 export default {
-  name: '<%= packageName %> - package',
+  name: '<%= projectName %> - package',
 };

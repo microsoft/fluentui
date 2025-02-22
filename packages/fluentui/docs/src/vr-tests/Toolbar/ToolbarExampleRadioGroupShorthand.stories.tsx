@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Toolbar } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import ToolbarExampleRadioGroupShorthand from '../../examples/components/Toolbar/Content/ToolbarExampleRadioGroup.shorthand';
@@ -6,7 +6,7 @@ import ToolbarExampleRadioGroupShorthand from '../../examples/components/Toolbar
 export default {
   component: Toolbar,
   title: 'Toolbar',
-} as ComponentMeta<typeof Toolbar>;
+} as Meta<typeof Toolbar>;
 
 const ToolbarExampleRadioGroupShorthandTeams = getThemeStoryVariant(ToolbarExampleRadioGroupShorthand, 'teamsV2');
 

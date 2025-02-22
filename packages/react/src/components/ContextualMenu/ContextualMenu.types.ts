@@ -50,7 +50,7 @@ export interface IContextualMenu {}
 export interface IContextualMenuProps
   extends IBaseProps<IContextualMenu>,
     React.RefAttributes<HTMLDivElement>,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
@@ -232,7 +232,7 @@ export interface IContextualMenuProps
    * Method to provide the classnames to style the contextual menu.
    * @deprecated Use `styles` instead to leverage mergeStyles API.
    */
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
 
   /** Custom render function for a submenu. */
@@ -466,7 +466,7 @@ export interface IContextualMenuItem {
     iconClassName?: string,
     subMenuClassName?: string,
     primaryDisabled?: boolean,
-  ) => // eslint-disable-next-line deprecation/deprecation
+  ) => // eslint-disable-next-line @typescript-eslint/no-deprecated
   IMenuItemClassNames;
 
   /**
@@ -479,7 +479,7 @@ export interface IContextualMenuItem {
    * Default value is the `getSplitButtonVerticalDividerClassNames` func defined in `ContextualMenu.classnames.ts`.
    * @defaultvalue getSplitButtonVerticalDividerClassNames
    */
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 
   /**

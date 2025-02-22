@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/scripts-test-ssr",
+  "name": "scripts-test-ssr",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/test-ssr/src",
   "projectType": "library",

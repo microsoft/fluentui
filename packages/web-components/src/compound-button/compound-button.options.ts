@@ -38,4 +38,4 @@ export const CompoundButtonSize = ButtonSize;
  */
 export type CompoundButtonSize = ValuesOf<typeof CompoundButtonSize>;
 
-export { ButtonOptions as CompoundButtonOptions };
+export type { ButtonOptions as CompoundButtonOptions };

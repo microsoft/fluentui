@@ -5,7 +5,7 @@ import {
   useFluent_unstable as useFluent,
 } from '@fluentui/react-shared-contexts';
 import type { KeyborgFocusInEvent } from '@fluentui/react-tabster';
-import { KEYBORG_FOCUSIN } from '@fluentui/react-tabster';
+import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-tabster';
 import {
   applyTriggerPropsToChildren,
   useControllableState,
@@ -177,6 +177,8 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     [setDelayTimeout, setVisible, state.showDelay, context],
   );
 
+  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
+
   // Callback ref that attaches a keyborg:focusin event listener.
   const [keyborgListenerCallbackRef] = React.useState(() => {
     const onKeyborgFocusIn = ((ev: KeyborgFocusInEvent) => {
@@ -184,7 +186,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
       // For example, we don't want to show the tooltip when a dialog is closed
       // and Tabster programmatically restores focus to the trigger button.
       // See https://github.com/microsoft/fluentui/issues/27576
-      if (ev.detail?.isFocusedProgrammatically) {
+      if (ev.detail?.isFocusedProgrammatically && !isNavigatingWithKeyboard()) {
         ignoreNextFocusEventRef.current = true;
       }
     }) as EventListener;
@@ -236,6 +238,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   const child = getTriggerChild(children);
 
   const triggerAriaProps: Pick<TooltipChildProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
+  const isMenuTrigger = child?.props?.['aria-haspopup'] === 'menu' && child?.props?.['aria-expanded'];
 
   if (relationship === 'label') {
     // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
@@ -252,8 +255,9 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     state.shouldRenderTooltip = true;
   }
 
-  // Don't render the Tooltip in SSR to avoid hydration errors
-  if (isServerSideRender) {
+  // Case 1: Don't render the Tooltip in SSR to avoid hydration errors
+  // Case 2: Don't render the Tooltip, if it triggers Menu and it's already opened
+  if (isServerSideRender || isMenuTrigger) {
     state.shouldRenderTooltip = false;
   }
 

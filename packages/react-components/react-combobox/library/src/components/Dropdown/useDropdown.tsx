@@ -2,12 +2,14 @@ import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useActiveDescendant } from '@fluentui/react-aria';
 import { ChevronDownRegular as ChevronDownIcon, DismissRegular as DismissIcon } from '@fluentui/react-icons';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
   getPartitionedNativeProps,
   mergeCallbacks,
   useMergedRefs,
   slot,
   useEventCallback,
+  useOnClickOutside,
 } from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
@@ -16,6 +18,7 @@ import type { DropdownProps, DropdownState } from './Dropdown.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useButtonTriggerSlot } from './useButtonTriggerSlot';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
+import type { ComboboxOpenEvents } from '../Combobox/Combobox.types';
 
 /**
  * Create the state required to render Dropdown.
@@ -40,7 +43,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   });
 
   const baseState = useComboboxBaseState({ ...props, activeDescendantController, freeform: false });
-  const { clearable, clearSelection, hasFocus, multiselect, open, selectedOptions } = baseState;
+  const { clearable, clearSelection, disabled, hasFocus, multiselect, open, selectedOptions, setOpen } = baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -59,11 +62,21 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     },
   });
 
+  const { targetDocument } = useFluent();
+
+  useOnClickOutside({
+    element: targetDocument,
+    callback: event => setOpen(event as unknown as ComboboxOpenEvents, false),
+    refs: [triggerRef, comboboxPopupRef, comboboxTargetRef],
+    disabled: !open,
+  });
+
   const trigger = useButtonTriggerSlot(props.button ?? {}, useMergedRefs(triggerRef, activeParentRef, ref), {
     state: baseState,
     defaultProps: {
       type: 'button',
-      tabIndex: 0,
+      // tabster navigation breaks if the button is disabled and tabIndex is 0
+      tabIndex: triggerNativeProps.disabled ? undefined : 0,
       children: baseState.value || props.placeholder,
       'aria-controls': open ? listbox?.id : undefined,
       ...triggerNativeProps,
@@ -81,7 +94,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   });
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
 
-  const showClearButton = selectedOptions.length > 0 && clearable && !multiselect;
+  const showClearButton = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
   const state: DropdownState = {
     components: { root: 'div', button: 'button', clearButton: 'button', expandIcon: 'span', listbox: Listbox },
     root: rootSlot,
@@ -92,7 +105,8 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
         'aria-label': 'Clear selection',
         children: <DismissIcon />,
         // Safari doesn't allow to focus an element with this
-        tabIndex: 0,
+        // when the element is not visible (display: none) we need to remove it to avoid tabster issues
+        tabIndex: showClearButton ? 0 : undefined,
         type: 'button',
       },
       elementType: 'button',

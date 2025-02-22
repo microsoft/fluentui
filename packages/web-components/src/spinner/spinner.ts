@@ -1,12 +1,12 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
-import type { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
+import { swapStates } from '../utils/element-internals.js';
+import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 
 /**
  * The base class used for constructing a fluent-spinner custom element
  * @public
  */
-export class Spinner extends FASTElement {
+export class BaseSpinner extends FASTElement {
   /**
    * The internal {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
@@ -14,6 +14,19 @@ export class Spinner extends FASTElement {
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
+  constructor() {
+    super();
+    this.elementInternals.role = 'progressbar';
+  }
+}
+
+/**
+ * A Spinner Custom HTML Element.
+ * Based on BaseSpinner and includes style and layout specific attributes
+ *
+ * @public
+ */
+export class Spinner extends BaseSpinner {
   /**
    * The size of the spinner
    *
@@ -30,12 +43,7 @@ export class Spinner extends FASTElement {
    * @param next - the next state
    */
   public sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, SpinnerSize);
   }
 
   /**
@@ -53,16 +61,6 @@ export class Spinner extends FASTElement {
    * @param next - the next state
    */
   public appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
-
-  constructor() {
-    super();
-    this.elementInternals.role = 'progressbar';
+    swapStates(this.elementInternals, prev, next, SpinnerAppearance);
   }
 }

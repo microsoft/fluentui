@@ -103,19 +103,19 @@ export {
 export type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 export {
   // getNativeElementProps is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getNativeElementProps,
   getIntrinsicElementProps,
   getPartitionedNativeProps,
   // getSlots is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getSlots,
   slot,
   assertSlots,
   IdPrefixProvider,
   resetIdsForTests,
   // resolveShorthand is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   resolveShorthand,
   SSRProvider,
   useAnimationFrame,
@@ -134,10 +134,10 @@ export type {
   ComponentState,
   ForwardRefComponent,
   // ResolveShorthandFunction is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandFunction,
   // ResolveShorthandOptions is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandOptions,
   Slot,
   SlotOptions,
@@ -241,7 +241,7 @@ export type {
   AvatarNamedColor,
   AvatarProps,
   // AvatarSizes is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   AvatarSizes,
   AvatarSize,
   AvatarSlots,
@@ -374,10 +374,11 @@ export {
   optionGroupClassNames,
   useOptionGroupStyles_unstable,
   useOptionGroup_unstable,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ComboboxProvider,
   useComboboxContextValues,
   ListboxProvider,
+  useListboxContext_unstable,
   useListboxContextValues,
   useComboboxFilter,
 } from '@fluentui/react-combobox';
@@ -561,7 +562,7 @@ export type {
   MenuOpenChangeData,
   MenuOpenEvent,
   // MenuOpenEvents is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   MenuOpenEvents,
   MenuPopoverProps,
   MenuPopoverSlots,
@@ -577,7 +578,7 @@ export type {
   MenuTriggerState,
   SelectableHandler,
   // UninitializedMenuListState is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   UninitializedMenuListState,
 } from '@fluentui/react-menu';
 export {
@@ -629,7 +630,7 @@ export {
   renderRadio_unstable,
   renderRadioGroup_unstable,
   useRadio_unstable,
-  useRadioGroupContext_unstable, // eslint-disable-line deprecation/deprecation
+  useRadioGroupContext_unstable, // eslint-disable-line @typescript-eslint/no-deprecated
   useRadioGroupContextValue_unstable,
   useRadioGroupContextValues,
   useRadioGroup_unstable,
@@ -820,7 +821,9 @@ export type {
 
 export { resolvePositioningShorthand } from '@fluentui/react-positioning';
 export type {
+  PositioningBoundary,
   PositioningProps,
+  PositioningRect,
   PositioningShorthand,
   PositioningShorthandValue,
   PositioningImperativeRef,
@@ -1305,6 +1308,7 @@ export {
   useTreeItem_unstable,
   useTreeStyles_unstable,
   useTree_unstable,
+  TreeRootReset,
 } from '@fluentui/react-tree';
 
 export type {
@@ -1780,6 +1784,7 @@ export {
   useTagPickerOptionGroupStyles,
   useTagPickerOptionGroup,
   useTagPickerFilter,
+  useTagPickerContext_unstable,
 } from '@fluentui/react-tag-picker';
 export type {
   TagPickerContextValues,
@@ -1810,6 +1815,7 @@ export type {
   TagPickerOptionGroupProps,
   TagPickerOptionGroupSlots,
   TagPickerOptionGroupState,
+  TagPickerContextValue,
 } from '@fluentui/react-tag-picker';
 
 export {
@@ -1869,7 +1875,13 @@ export type {
   EmptySwatchState,
 } from '@fluentui/react-swatch-picker';
 
-export { motionTokens, createMotionComponent, createPresenceComponent, PresenceGroup } from '@fluentui/react-motion';
+export {
+  motionTokens,
+  createMotionComponent,
+  createPresenceComponent,
+  createPresenceComponentVariant,
+  PresenceGroup,
+} from '@fluentui/react-motion';
 export type {
   AtomMotion,
   AtomMotionFn,
@@ -1879,3 +1891,117 @@ export type {
   PresenceMotionFn,
   PresenceComponentProps,
 } from '@fluentui/react-motion';
+
+export {
+  CarouselButton,
+  carouselButtonClassNames,
+  renderCarouselButton_unstable,
+  useCarouselButtonStyles_unstable,
+  useCarouselButton_unstable,
+  CarouselNav,
+  carouselNavClassNames,
+  renderCarouselNav_unstable,
+  useCarouselNavStyles_unstable,
+  useCarouselNav_unstable,
+  CarouselNavButton,
+  carouselNavButtonClassNames,
+  renderCarouselNavButton_unstable,
+  useCarouselNavButtonStyles_unstable,
+  useCarouselNavButton_unstable,
+  Carousel,
+  carouselClassNames,
+  renderCarousel_unstable,
+  useCarouselStyles_unstable,
+  useCarousel_unstable,
+  CarouselCard,
+  carouselCardClassNames,
+  renderCarouselCard_unstable,
+  useCarouselCardStyles_unstable,
+  useCarouselCard_unstable,
+  CarouselAutoplayButton,
+  carouselAutoplayButtonClassNames,
+  renderCarouselAutoplayButton_unstable,
+  useCarouselAutoplayButtonStyles_unstable,
+  useCarouselAutoplayButton_unstable,
+  CarouselNavImageButton,
+  carouselNavImageButtonClassNames,
+  renderCarouselNavImageButton_unstable,
+  useCarouselNavImageButtonStyles_unstable,
+  useCarouselNavImageButton_unstable,
+  CarouselSlider,
+  carouselSliderClassNames,
+  renderCarouselSlider_unstable,
+  useCarouselSliderStyles_unstable,
+  useCarouselSlider_unstable,
+  CarouselNavContainer,
+  carouselNavContainerClassNames,
+  renderCarouselNavContainer_unstable,
+  useCarouselNavContainerStyles_unstable,
+  useCarouselNavContainer_unstable,
+  carouselContextDefaultValue,
+  CarouselProvider,
+  useCarouselContext_unstable,
+  CarouselViewport,
+  carouselViewportClassNames,
+  renderCarouselViewport_unstable,
+  useCarouselViewportStyles_unstable,
+  useCarouselViewport_unstable,
+} from '@fluentui/react-carousel';
+export type {
+  CarouselButtonProps,
+  CarouselButtonSlots,
+  CarouselButtonState,
+  CarouselNavProps,
+  CarouselNavSlots,
+  CarouselNavState,
+  NavButtonRenderFunction,
+  CarouselNavButtonProps,
+  CarouselNavButtonSlots,
+  CarouselNavButtonState,
+  CarouselProps,
+  CarouselSlots,
+  CarouselState,
+  CarouselAnnouncerFunction,
+  CarouselCardProps,
+  CarouselCardSlots,
+  CarouselCardState,
+  CarouselAutoplayButtonProps,
+  CarouselAutoplayButtonSlots,
+  CarouselAutoplayButtonState,
+  CarouselNavImageButtonProps,
+  CarouselNavImageButtonSlots,
+  CarouselNavImageButtonState,
+  CarouselNavContainerProps,
+  CarouselNavContainerSlots,
+  CarouselNavContainerState,
+  CarouselSliderProps,
+  CarouselSliderSlots,
+  CarouselSliderState,
+  CarouselIndexChangeData,
+  CarouselContextValue,
+  CarouselContextValues,
+  CarouselViewportProps,
+  CarouselViewportSlots,
+  CarouselViewportState,
+} from '@fluentui/react-carousel';
+
+export {
+  List,
+  listClassNames,
+  renderList_unstable,
+  useListStyles_unstable,
+  useList_unstable,
+  ListItem,
+  listItemClassNames,
+  renderListItem_unstable,
+  useListItemStyles_unstable,
+  useListItem_unstable,
+} from '@fluentui/react-list';
+export type {
+  ListProps,
+  ListSlots,
+  ListState,
+  ListItemProps,
+  ListItemSlots,
+  ListItemState,
+} from '@fluentui/react-list';

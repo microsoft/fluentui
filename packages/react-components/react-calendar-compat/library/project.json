@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-calendar-compat",
+  "name": "react-calendar-compat",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-calendar-compat/library/src",

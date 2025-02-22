@@ -7,6 +7,7 @@ import {
   slot,
   elementContains,
   useMergedRefs,
+  isHTMLElement,
 } from '@fluentui/react-utilities';
 import type { TreeItemProps, TreeItemState, TreeItemValue } from './TreeItem.types';
 import { Space } from '@fluentui/keyboard-keys';
@@ -38,6 +39,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     warnIfNoProperPropsFlatTreeItem(props);
   }
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
+  const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
+  const forceUpdateRovingTabIndex = useTreeContext_unstable(ctx => ctx.forceUpdateRovingTabIndex);
   const { level: contextLevel } = useSubtreeContext_unstable();
   const parentValue = useTreeItemContext_unstable(ctx => props.parentValue ?? ctx.value);
 
@@ -79,12 +82,23 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       if (treeItemRef.current?.querySelector(`.${treeClassNames.root}`)) {
         // eslint-disable-next-line no-console
         console.error(/** #__DE-INDENT__ */ `
-      @fluentui/react-tree [useTreeItem]:
-      <TreeItem> should be declared inside a <Tree> component.
-    `);
+          @fluentui/react-tree [useTreeItem]:
+          <TreeItem> should be declared inside a <Tree> component.
+        `);
       }
     }, [hasTreeContext]);
   }
+
+  React.useEffect(() => {
+    const treeItem = treeItemRef.current;
+    return () => {
+      // When the tree item is unmounted, we need to update the roving tab index
+      // if the tree item is the current tab indexed item
+      if (treeItem && treeItem.tabIndex === 0) {
+        forceUpdateRovingTabIndex?.();
+      }
+    };
+  }, [forceUpdateRovingTabIndex]);
 
   const open = useTreeContext_unstable(ctx => props.open ?? ctx.openItems.has(value));
   const getNextOpen = () => (itemType === 'branch' ? !open : open);
@@ -92,26 +106,22 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    onClick?.(event);
-    if (event.isDefaultPrevented()) {
+    const isEventFromActions = () => actionsRef.current && elementContains(actionsRef.current, event.target as Node);
+
+    const isEventFromSubtree = () => subtreeRef.current && elementContains(subtreeRef.current, event.target as Node);
+
+    const isEventFromSelection = () => selectionRef.current?.contains(event.target as Node);
+
+    const isEventFromExpandIcon = expandIconRef.current?.contains(event.target as Node);
+
+    if (isEventFromActions() || isEventFromSubtree() || isEventFromSelection()) {
+      return;
+    } else if (!isEventFromExpandIcon) {
+      onClick?.(event);
+    }
+    if (event.isDefaultPrevented() || itemType === 'leaf') {
       return;
     }
-    if (itemType === 'leaf') {
-      return;
-    }
-    const isEventFromActions = actionsRef.current && elementContains(actionsRef.current, event.target as Node);
-    if (isEventFromActions) {
-      return;
-    }
-    const isEventFromSubtree = subtreeRef.current && elementContains(subtreeRef.current, event.target as Node);
-    if (isEventFromSubtree) {
-      return;
-    }
-    const isEventFromSelection = selectionRef.current && elementContains(selectionRef.current, event.target as Node);
-    if (isEventFromSelection) {
-      return;
-    }
-    const isEventFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
 
     ReactDOM.unstable_batchedUpdates(() => {
       const data = {
@@ -139,25 +149,36 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
 
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     onKeyDown?.(event);
-    // Ignore keyboard events that do not originate from the current tree item.
-    if (event.isDefaultPrevented() || event.currentTarget !== event.target) {
+    if (event.isDefaultPrevented() || !treeItemRef.current) {
       return;
     }
+    const isEventFromTreeItem = event.currentTarget === event.target;
+    const isEventFromActions = actionsRef.current && actionsRef.current.contains(event.target as Node);
+
     switch (event.key) {
-      case Space:
+      case Space: {
+        if (!isEventFromTreeItem) {
+          return;
+        }
         if (selectionMode !== 'none') {
           selectionRef.current?.click();
           // Prevents the page from scrolling down when the spacebar is pressed
           event.preventDefault();
         }
         return;
+      }
       case treeDataTypes.Enter: {
+        if (!isEventFromTreeItem) {
+          return;
+        }
         return event.currentTarget.click();
       }
       case treeDataTypes.End:
       case treeDataTypes.Home:
-      case treeDataTypes.ArrowUp:
-      case treeDataTypes.ArrowDown:
+      case treeDataTypes.ArrowUp: {
+        if (!isEventFromTreeItem && !isEventFromActions) {
+          return;
+        }
         return requestTreeResponse({
           requestType: 'navigate',
           event,
@@ -167,42 +188,65 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
           type: event.key,
           target: event.currentTarget,
         });
+      }
+      case treeDataTypes.ArrowDown: {
+        if (!isEventFromTreeItem && !isEventFromActions) {
+          return;
+        }
+        if (isEventFromActions && (!isHTMLElement(event.target) || event.target.hasAttribute('aria-haspopup'))) {
+          return;
+        }
+        return requestTreeResponse({
+          requestType: 'navigate',
+          event,
+          value,
+          itemType,
+          parentValue,
+          type: event.key,
+          target: event.currentTarget,
+        });
+      }
       case treeDataTypes.ArrowLeft: {
         // arrow left with alt key is reserved for history navigation
         if (event.altKey) {
+          return;
+        }
+        const data = {
+          value,
+          event,
+          open: getNextOpen(),
+          type: event.key,
+          itemType,
+          parentValue,
+          target: event.currentTarget,
+        } as const;
+
+        if (isEventFromActions && navigationMode === 'treegrid') {
+          requestTreeResponse({ ...data, requestType: 'navigate' });
+          return;
+        }
+        if (!isEventFromTreeItem) {
           return;
         }
         // do not navigate to parent if the item is on the top level
         if (level === 1 && !open) {
           return;
         }
-        const data = {
-          value,
-          event,
-          open: getNextOpen(),
-          type: event.key,
-          target: event.currentTarget,
-        } as const;
         if (open) {
           props.onOpenChange?.(event, data);
         }
-        requestTreeResponse({
-          ...data,
-          itemType,
-          parentValue,
-          requestType: open ? 'open' : 'navigate',
-        });
+        requestTreeResponse({ ...data, requestType: open ? 'open' : 'navigate' });
         return;
       }
       case treeDataTypes.ArrowRight: {
+        // Ignore keyboard events that do not originate from the current tree item.
+        if (!isEventFromTreeItem) {
+          return;
+        }
         // arrow right with alt key is reserved for history navigation
         if (event.altKey) {
           return;
         }
-        // do not navigate or open if the item is a leaf
-        if (itemType === 'leaf') {
-          return;
-        }
         const data = {
           value,
           event,
@@ -210,17 +254,19 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
           type: event.key,
           target: event.currentTarget,
         } as const;
-        if (!open) {
+
+        if (itemType === 'branch' && !open) {
           props.onOpenChange?.(event, data);
+          requestTreeResponse({ ...data, itemType, requestType: 'open' });
+        } else {
+          requestTreeResponse({ ...data, itemType, parentValue, requestType: 'navigate' });
         }
-        requestTreeResponse({
-          ...data,
-          itemType,
-          parentValue,
-          requestType: open ? 'navigate' : 'open',
-        });
         return;
       }
+    }
+    // Ignore keyboard events that do not originate from the current tree item.
+    if (!isEventFromTreeItem) {
+      return;
     }
     const isTypeAheadCharacter =
       event.key.length === 1 && event.key.match(/\w/) && !event.altKey && !event.ctrlKey && !event.metaKey;
@@ -280,12 +326,11 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       getIntrinsicElementProps(as, {
         tabIndex: -1,
         [dataTreeItemValueAttrName]: value,
+        role: 'treeitem',
         ...rest,
         ref: useMergedRefs(ref, treeItemRef),
-        role: 'treeitem',
         'aria-level': level,
         'aria-checked': selectionMode === 'multiselect' ? checked : undefined,
-        // Casting: when selectionMode is 'single', checked is a boolean
         'aria-selected': ariaSelected !== undefined ? ariaSelected : selectionMode === 'single' ? !!checked : undefined,
         'aria-expanded': ariaExpanded !== undefined ? ariaExpanded : itemType === 'branch' ? open : undefined,
         onClick: handleClick,

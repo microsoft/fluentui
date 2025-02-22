@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-type Rect = {
+export type PositioningRect = {
   width: number;
   height: number;
   x: number;
@@ -8,8 +8,8 @@ type Rect = {
 };
 
 export type OffsetFunctionParam = {
-  positionedRect: Rect;
-  targetRect: Rect;
+  positionedRect: PositioningRect;
+  targetRect: PositioningRect;
   position: Position;
   alignment?: Alignment;
 };
@@ -51,7 +51,17 @@ export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
 export type NormalizedAutoSize = { applyMaxWidth: boolean; applyMaxHeight: boolean };
 
-export type Boundary = HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
+export type PositioningBoundary =
+  | PositioningRect
+  | HTMLElement
+  | Array<HTMLElement>
+  | 'clippingParents'
+  | 'scrollParent'
+  | 'window';
+/**
+ * @deprecated use PositioningBoundary instead
+ */
+export type Boundary = PositioningBoundary;
 
 export type PositioningImperativeRef = {
   /**
@@ -91,10 +101,10 @@ export interface PositioningOptions {
   align?: Alignment;
 
   /** The element which will define the boundaries of the positioned element for the flip behavior. */
-  flipBoundary?: Boundary | null;
+  flipBoundary?: PositioningBoundary | null;
 
   /** The element which will define the boundaries of the positioned element for the overflow behavior. */
-  overflowBoundary?: Boundary | null;
+  overflowBoundary?: PositioningBoundary | null;
 
   /**
    * Applies a padding to the overflow bounadry, so that overflow is detected earlier before the
@@ -197,6 +207,12 @@ export interface PositioningOptions {
    * Disables the resize observer that updates position on target or dimension change
    */
   disableUpdateOnResize?: boolean;
+
+  /**
+   * When true, the positioned element will shift to cover the target element when there's not enough space.
+   * @default false
+   */
+  shiftToCoverTarget?: boolean;
 }
 
 /**
@@ -209,6 +225,7 @@ export interface PositioningProps
     | 'arrowPadding'
     | 'autoSize'
     | 'coverTarget'
+    | 'fallbackPositions'
     | 'flipBoundary'
     | 'offset'
     | 'overflowBoundary'
@@ -220,6 +237,7 @@ export interface PositioningProps
     | 'matchTargetSize'
     | 'onPositioningEnd'
     | 'disableUpdateOnResize'
+    | 'shiftToCoverTarget'
   > {
   /** An imperative handle to Popper methods. */
   positioningRef?: React.Ref<PositioningImperativeRef>;

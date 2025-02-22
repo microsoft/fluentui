@@ -9,12 +9,17 @@ permissions:
 
 jobs:
   label:
+    if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/labeler@v3
+      - uses: actions/labeler@v5
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          sync-labels: true
+          configuration-path: .github/labeler.yml
+
   assign-to-current-milestone:
+    if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: ubuntu-latest
     steps:
       - name: Assign to latest milestone

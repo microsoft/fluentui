@@ -50,6 +50,22 @@ const useRootStyles = makeStyles({
       display: 'none',
     },
   },
+
+  unfocusedNoContentAfter: {
+    paddingRight: 0,
+  },
+});
+
+const useInputStyles = makeStyles({
+  small: {
+    paddingRight: tokens.spacingHorizontalSNudge,
+  },
+  medium: {
+    paddingRight: tokens.spacingHorizontalS,
+  },
+  large: {
+    paddingRight: tokens.spacingHorizontalMNudge,
+  },
 });
 
 const useContentAfterStyles = makeStyles({
@@ -58,9 +74,10 @@ const useContentAfterStyles = makeStyles({
     columnGap: tokens.spacingHorizontalXS,
   },
   rest: {
-    opacity: 0,
     height: 0,
     width: 0,
+    paddingLeft: 0,
+    overflow: 'hidden',
   },
 });
 
@@ -99,12 +116,23 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   const { disabled, focused, size } = state;
 
   const rootStyles = useRootStyles();
+  const inputStyles = useInputStyles();
   const contentAfterStyles = useContentAfterStyles();
   const dismissClassName = useDismissClassName();
   const dismissStyles = useDismissStyles();
 
-  state.root.className = mergeClasses(searchBoxClassNames.root, rootStyles[size], state.root.className);
-  state.input.className = mergeClasses(searchBoxClassNames.input, rootStyles.input, state.input.className);
+  state.root.className = mergeClasses(
+    searchBoxClassNames.root,
+    rootStyles[size],
+    !focused && rootStyles.unfocusedNoContentAfter,
+    state.root.className,
+  );
+  state.input.className = mergeClasses(
+    searchBoxClassNames.input,
+    rootStyles.input,
+    !focused && inputStyles[size],
+    state.input.className,
+  );
 
   if (state.dismiss) {
     state.dismiss.className = mergeClasses(

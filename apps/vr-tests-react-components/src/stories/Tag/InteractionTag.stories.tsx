@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 import { Avatar } from '@fluentui/react-avatar';
 import { Steps } from 'storywright';
+import { makeStyles } from '@griffel/react';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
@@ -12,9 +13,9 @@ const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
 
 export default {
   title: 'InteractionTag Converged',
-  Component: InteractionTag,
+  component: InteractionTag,
   decorators: [story => withStoryWrightSteps({ story, steps })],
-} as ComponentMeta<typeof InteractionTag>;
+} satisfies Meta<typeof InteractionTag>;
 
 export const Default = () => (
   <InteractionTag>
@@ -108,3 +109,26 @@ export const SizeExtraSmallWithMedia = () => (
     </InteractionTagPrimary>
   </InteractionTag>
 );
+
+const useBoxSizingContainerStyles = makeStyles({
+  container: {
+    boxSizing: 'border-box',
+    '& *, & *::before, & *::after': {
+      boxSizing: 'inherit',
+    },
+  },
+});
+
+// Make sure the icon measurements are correct when `box-sizing` default value is `border-box`
+// https://github.com/microsoft/fluentui/issues/32952
+export const WithIconBoxSizing = () => {
+  const styles = useBoxSizingContainerStyles();
+
+  return (
+    <div className={styles.container}>
+      <InteractionTag>
+        <InteractionTagPrimary icon={<CalendarMonth />}>Primary Text</InteractionTagPrimary>
+      </InteractionTag>
+    </div>
+  );
+};

@@ -1,8 +1,54 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Mon, 18 Mar 2024 19:50:46 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Dec 2024 16:26:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.24)
+
+Mon, 16 Dec 2024 16:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.23..@fluentui/react-theme_v9.1.24)
+
+### Patches
+
+- Bump @fluentui/tokens to v1.0.0-alpha.21 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+
+## [9.1.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.23)
+
+Fri, 06 Dec 2024 12:53:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.22..@fluentui/react-theme_v9.1.23)
+
+### Patches
+
+- Bump @fluentui/tokens to v1.0.0-alpha.20 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+
+## [9.1.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.22)
+
+Mon, 11 Nov 2024 10:01:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.21..@fluentui/react-theme_v9.1.22)
+
+### Patches
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- Bump @fluentui/tokens to v1.0.0-alpha.19 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+
+## [9.1.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.21)
+
+Tue, 15 Oct 2024 17:17:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.20..@fluentui/react-theme_v9.1.21)
+
+### Patches
+
+- Bump @fluentui/tokens to v1.0.0-alpha.18 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+
+## [9.1.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.20)
+
+Mon, 23 Sep 2024 12:40:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.19..@fluentui/react-theme_v9.1.20)
+
+### Patches
+
+- Bump @fluentui/tokens to v1.0.0-alpha.17 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
 
 ## [9.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.19)
 

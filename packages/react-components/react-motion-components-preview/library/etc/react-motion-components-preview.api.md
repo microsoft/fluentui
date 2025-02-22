@@ -4,6 +4,59 @@
 
 ```ts
 
+import type { MotionParam } from '@fluentui/react-motion';
+import { PresenceComponent } from '@fluentui/react-motion';
+import type { PresenceMotion } from '@fluentui/react-motion';
+import type { PresenceMotionFn } from '@fluentui/react-motion';
+
+// @public
+export const Collapse: PresenceComponent<CollapseRuntimeParams>;
+
+// @public (undocumented)
+export const CollapseDelayed: PresenceComponent<CollapseRuntimeParams>;
+
+// @public (undocumented)
+export const CollapseRelaxed: PresenceComponent<CollapseRuntimeParams>;
+
+// @public (undocumented)
+export type CollapseRuntimeParams = {
+    animateOpacity?: boolean;
+    orientation?: CollapseOrientation;
+};
+
+// @public (undocumented)
+export const CollapseSnappy: PresenceComponent<CollapseRuntimeParams>;
+
+// @public
+export const createCollapseDelayedPresence: PresenceMotionFnCreator<CollapseDelayedVariantParams, CollapseRuntimeParams>;
+
+// @public
+export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantParams, CollapseRuntimeParams>;
+
+// @public
+export const createFadePresence: PresenceMotionCreator<FadeVariantParams>;
+
+// @public
+export const createScalePresence: PresenceMotionFnCreator<ScaleVariantParams_unstable, ScaleRuntimeParams_unstable>;
+
+// @public
+export const Fade: PresenceComponent<    {}>;
+
+// @public (undocumented)
+export const FadeRelaxed: PresenceComponent<    {}>;
+
+// @public (undocumented)
+export const FadeSnappy: PresenceComponent<    {}>;
+
+// @public
+export const Scale: PresenceComponent<ScaleRuntimeParams_unstable>;
+
+// @public (undocumented)
+export const ScaleRelaxed: PresenceComponent<ScaleRuntimeParams_unstable>;
+
+// @public (undocumented)
+export const ScaleSnappy: PresenceComponent<ScaleRuntimeParams_unstable>;
+
 // (No @packageDocumentation comment for this package)
 
 ```

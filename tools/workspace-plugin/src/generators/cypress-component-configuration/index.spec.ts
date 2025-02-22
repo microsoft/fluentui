@@ -18,7 +18,7 @@ describe(`cypress-component-configuration`, () => {
   });
 
   it(`should not create component testing for application`, async () => {
-    const project = '@proj/app-one';
+    const project = 'app-one';
     tree = setupDummyPackage(tree, { name: project, projectType: 'application' });
 
     await generator(tree, { project });
@@ -27,7 +27,7 @@ describe(`cypress-component-configuration`, () => {
   });
 
   it(`should setup cypress component testing for existing project`, async () => {
-    const project = '@proj/one';
+    const project = 'one';
     tree = setupDummyPackage(tree, { name: project });
 
     await generator(tree, { project });
@@ -56,10 +56,13 @@ describe(`cypress-component-configuration`, () => {
             "ES2019",
             "dom",
           ],
+          "typeRoots": Array [
+            "../node_modules",
+            "../node_modules/@types",
+          ],
           "types": Array [
             "node",
             "cypress",
-            "cypress-storybook/cypress",
             "cypress-real-events",
           ],
         },
@@ -73,12 +76,7 @@ describe(`cypress-component-configuration`, () => {
 
     const pkgJson = readJson(tree, 'packages/one/package.json');
 
-    expect(pkgJson.scripts).toEqual(
-      expect.objectContaining({
-        e2e: 'cypress run --component',
-        'e2e:local': 'cypress open --component',
-      }),
-    );
+    expect(pkgJson.scripts).toEqual(undefined);
     expect(pkgJson.devDependencies).toEqual(
       expect.objectContaining({
         '@fluentui/scripts-cypress': '*',
@@ -97,11 +95,10 @@ function setupDummyPackage(tree: Tree, options: { name: string; projectType?: 'a
 
   const templates = {
     packageJson: {
-      name: pkgName,
+      name: '@proj/' + pkgName,
       version: '0.0.1',
       typings: 'lib/index.d.ts',
       main: 'lib-commonjs/index.js',
-      scripts: {},
       dependencies: {},
       devDependencies: {},
     },

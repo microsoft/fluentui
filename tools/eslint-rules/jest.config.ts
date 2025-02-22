@@ -2,15 +2,9 @@
 export default {
   displayName: 'eslint-rules',
   preset: '../../jest.preset.js',
+  testEnvironment: 'node',
   transform: {
-    '^.+\\.[tj]s$': [
-      'ts-jest',
-      {
-        diagnostics: false,
-        isolatedModules: true,
-        tsconfig: '<rootDir>/tsconfig.spec.json',
-      },
-    ],
+    '^.+\\.[tj]s$': ['@swc/jest', {}],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/tools/eslint-rules',

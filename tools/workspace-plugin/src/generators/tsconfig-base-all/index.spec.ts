@@ -50,7 +50,6 @@ describe('tsconfig-base-all generator', () => {
       Object {
         "compilerOptions": Object {
           "baseUrl": ".",
-          "forceConsistentCasingInFileNames": true,
           "isolatedModules": true,
           "moduleResolution": "node",
           "paths": Object {

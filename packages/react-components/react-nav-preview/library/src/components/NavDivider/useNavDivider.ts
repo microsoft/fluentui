@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { NavDividerProps, NavDividerState } from './NavDivider.types';
+import { useDivider_unstable } from '@fluentui/react-divider';
 
 /**
  * Create the state required to render NavDivider.
@@ -11,21 +11,6 @@ import type { NavDividerProps, NavDividerState } from './NavDivider.types';
  * @param props - props from this instance of NavDivider
  * @param ref - reference to root HTMLDivElement of NavDivider
  */
-export const useNavDivider_unstable = (props: NavDividerProps, ref: React.Ref<HTMLDivElement>): NavDividerState => {
-  return {
-    // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: 'div',
-    },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
-  };
+export const useNavDivider_unstable = (props: NavDividerProps, ref: React.Ref<HTMLElement>): NavDividerState => {
+  return useDivider_unstable({ appearance: 'strong', ...props }, ref);
 };

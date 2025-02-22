@@ -266,7 +266,7 @@ const api = {
 
         plugins: [
           ...(process.env.TF_BUILD || process.env.SKIP_TYPECHECK ? [] : [new ForkTsCheckerWebpackPlugin()]),
-          ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin({})]),
+          ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin({})]),
         ],
 
         target,

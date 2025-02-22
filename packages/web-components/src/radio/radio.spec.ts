@@ -1,268 +1,190 @@
-import { expect, test } from '@playwright/test';
-import type { Locator, Page } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 import type { Radio } from './radio.js';
 
 test.describe('Radio', () => {
-  let page: Page;
-  let element: Locator;
-  let root: Locator;
+  test.use({ tagName: 'fluent-radio' });
 
-  test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
+  test('should have a role of `radio`', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    element = page.locator('fluent-radio');
-
-    root = page.locator('#root');
-
-    await page.goto(fixtureURL('components-radio--radio'));
+    await expect(element).toHaveJSProperty('elementInternals.role', 'radio');
   });
 
-  test.afterAll(async () => {
-    await page.close();
-  });
+  test('should set ARIA attributes to match the state', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-  test('should have a role of `radio`', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-radio>Radio</fluent-radio>
-            `;
+    await test.step('ariaChecked', async () => {
+      await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+
+      await element.evaluate((node: Radio) => (node.checked = true));
+
+      await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'true');
+
+      await element.evaluate((node: Radio) => (node.checked = false));
+
+      await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'false');
     });
 
-    await expect(element).toHaveAttribute('role', 'radio');
+    await test.step('ariaDisabled', async () => {
+      await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', null);
+
+      await element.evaluate((node: Radio) => (node.disabled = true));
+
+      await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
+
+      await element.evaluate((node: Radio) => (node.disabled = false));
+
+      await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
+    });
   });
 
-  test('should set ARIA attributes to match the state', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-radio>Radio</fluent-radio>
-            `;
-    });
-
-    // Checked
-    await expect(element).toHaveAttribute('aria-checked', 'false');
-
-    await element.evaluate((node: Radio) => (node.checked = true));
-
-    await expect(element).toHaveAttribute('aria-checked', 'true');
-
-    await element.evaluate((node: Radio) => (node.checked = false));
-
-    await expect(element).toHaveAttribute('aria-checked', 'false');
-
-    // Required
-    await expect(element).toHaveAttribute('aria-required', 'false');
-
-    await element.evaluate((node: Radio) => (node.required = true));
-
-    await expect(element).toHaveAttribute('aria-required', 'true');
-
-    await element.evaluate((node: Radio) => (node.required = false));
-
-    await expect(element).toHaveAttribute('aria-required', 'false');
-
-    // Disabled
-    await expect(element).toHaveAttribute('aria-disabled', 'false');
-
-    await element.evaluate((node: Radio) => (node.disabled = true));
-
-    await expect(element).toHaveAttribute('aria-disabled', 'true');
-
-    await element.evaluate((node: Radio) => (node.disabled = false));
-
-    await expect(element).toHaveAttribute('aria-disabled', 'false');
-  });
-
-  test('should set a tabindex of 0 on the element', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-radio>Radio</fluent-radio>
-            `;
-    });
+  test('should set a `tabindex` of 0 on the element', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveAttribute('tabindex', '0');
   });
 
-  test('should NOT set a tabindex when disabled is `true`', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-radio disabled></fluent-radio>
-            `;
-    });
+  test('should set the tabindex to -1 when disabled is `true`', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await expect(element).not.toHaveAttribute('tabindex', '');
+    await fastPage.setTemplate({ attributes: { disabled: true } });
+
+    await expect(element).toHaveAttribute('tabindex', '-1');
   });
 
-  test('should initialize to the initial value if no value property is set', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-radio>Radio</fluent-radio>
-            `;
-    });
+  test('should initialize to the initial value if no value property is set', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('value', 'on');
 
     await expect(element).toHaveJSProperty('initialValue', 'on');
   });
 
-  test('should initialize to the provided value attribute if set pre-connection', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-radio>Radio</fluent-radio>
-            `;
+  test('should initialize to the provided value attribute if set pre-connection', async ({ fastPage, page }) => {
+    await fastPage.setTemplate('');
+
+    const value = await page.evaluate(() => {
+      const radio = document.createElement('fluent-radio') as Radio;
+      radio.setAttribute('value', 'foo');
+
+      return radio.value;
     });
+
+    expect(value).toBe('foo');
+  });
+
+  test('should initialize to the provided value attribute if set post-connection', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await element.evaluate((node: Radio) => node.setAttribute('value', 'foo'));
 
     await expect(element).toHaveJSProperty('value', 'foo');
   });
 
-  test('should initialize to the provided value attribute if set post-connection', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-radio>Radio</fluent-radio>
-            `;
-    });
+  test('should initialize to the provided value property if set pre-connection', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.evaluate((node: Radio) => node.setAttribute('value', 'foo'));
+    await fastPage.setTemplate({ attributes: { value: 'foo' } });
 
     await expect(element).toHaveJSProperty('value', 'foo');
   });
 
-  test('should initialize to the provided value property if set pre-connection', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-radio value="foo"></fluent-radio>
-            `;
-    });
+  test('should fire an event when spacebar is pressed', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await expect(element).toHaveJSProperty('value', 'foo');
+    const wasPressed = element.evaluate(
+      node => new Promise(resolve => node.addEventListener('keydown', () => resolve(true))),
+    );
+
+    await element.focus();
+
+    await element.press(' ');
+
+    await expect(wasPressed).resolves.toBe(true);
   });
 
-  test('should set the `label__hidden` class on the internal label when default slotted content does not exist', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-radio>label</fluent-radio>
-            `;
-    });
+  test('should NOT fire events when clicked', async ({ fastPage, page }) => {
+    const { element } = fastPage;
 
-    const label = element.locator('label');
+    const wasNotClicked = await page.evaluate(el => {
+      const event = new KeyboardEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+      });
 
-    await expect(label).toHaveClass(/^label$/);
+      // The return value of dispatchEvent will be false if any event listener called preventDefault, or true otherwise.
+      return el?.dispatchEvent(event);
+    }, await element.elementHandle());
 
-    await element.evaluate(node => {
-      node.textContent = '';
-    });
-
-    await expect(label).toHaveClass(/label__hidden/);
-  });
-
-  test('should fire an event when spacebar is pressed', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-radio>Radio</fluent-radio>
-            `;
-    });
-
-    const [wasPressed] = await Promise.all([
-      element.evaluate(
-        (node: Radio) =>
-          new Promise(resolve =>
-            node.addEventListener('keydown', () => resolve(true), {
-              once: true,
-            }),
-          ),
-      ),
-      // FIXME: Playwright's keyboard API is not working as expected.
-      element.evaluate(node => node.dispatchEvent(new KeyboardEvent('keydown', { key: ' ' }))),
-    ]);
-
-    expect(wasPressed).toBeTruthy();
-  });
-
-  test('should NOT fire events when clicked', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-radio>Radio</fluent-radio>
-            `;
-    });
-
-    const [wasClicked] = await Promise.all([
-      element.evaluate(
-        (node: Radio) =>
-          new Promise(resolve =>
-            node.addEventListener('click', () => resolve(false), {
-              once: true,
-            }),
-          ),
-      ),
-      element.evaluate(node => {
-        node.dispatchEvent(new MouseEvent('click'));
-      }),
-    ]);
-
-    expect(wasClicked).toBeFalsy();
+    expect(wasNotClicked).toEqual(true);
   });
 
   test.describe('whose parent form has its reset() method invoked', () => {
-    test('should set its checked property to false if the checked attribute is unset', async () => {
-      await root.evaluate(node => {
-        node.innerHTML = /* html */ `
-                    <form>
-                        <fluent-radio>Radio</fluent-radio>
-                    </form>
-                `;
-      });
-
+    test('should set its checked property to false if the checked attribute is unset', async ({ fastPage, page }) => {
+      const { element } = fastPage;
       const form = page.locator('form');
 
-      await element.evaluate((node: Radio) => (node.checked = true));
+      await fastPage.setTemplate(/* html */ `
+        <form>
+          <fluent-radio>Radio</fluent-radio>
+        </form>
+      `);
 
-      await expect(element).toBeChecked();
+      await element.evaluate((node: Radio) => {
+        node.checked = true;
+      });
+
+      await expect(element).toHaveJSProperty('checked', true);
 
       await form.evaluate((node: HTMLFormElement) => {
         node.reset();
       });
 
-      await expect(element).not.toBeChecked();
+      await expect(element).toHaveJSProperty('checked', false);
     });
 
-    test('should set its checked property to true if the checked attribute is set', async () => {
-      await root.evaluate(node => {
-        node.innerHTML = /* html */ `
-                    <form>
-                        <fluent-radio checked></fluent-radio>
-                    </form>
-                `;
-      });
-
+    test('should set its `checked` property to true if the `checked` attribute is set', async ({ fastPage, page }) => {
+      const { element } = fastPage;
       const form = page.locator('form');
 
-      expect(await element.evaluate(node => node.hasAttribute('checked'))).toBeTruthy();
+      await fastPage.setTemplate(/* html */ `
+        <form>
+          <fluent-radio checked></fluent-radio>
+        </form>
+      `);
 
-      await expect(element).toBeChecked();
+      await expect(element).toHaveAttribute('checked');
+
+      await expect(element).toHaveJSProperty('checked', true);
 
       await element.evaluate((node: Radio) => (node.checked = false));
 
-      await expect(element).not.toBeChecked();
+      await expect(element).toHaveAttribute('checked');
+
+      await expect(element).toHaveJSProperty('checked', false);
 
       await form.evaluate((node: HTMLFormElement) => {
         node.reset();
       });
 
-      await expect(element).toBeChecked();
+      await expect(element).toHaveAttribute('checked');
+
+      await expect(element).toHaveJSProperty('checked', true);
     });
 
-    test('should put the control into a clean state, where `checked` attribute modifications modify the `checked` property prior to user or programmatic interaction', async () => {
-      await root.evaluate(node => {
-        node.innerHTML = /* html */ `
-                    <form>
-                        <fluent-radio>Radio</fluent-radio>
-                    </form>
-                `;
-      });
-
+    test('should put the control into a clean state, where `checked` attribute modifications modify the `checked` property prior to user or programmatic interaction', async ({
+      fastPage,
+      page,
+    }) => {
+      const { element } = fastPage;
       const form = page.locator('form');
+
+      await fastPage.setTemplate(/* html */ `
+        <form>
+          <fluent-radio>Radio</fluent-radio>
+        </form>
+      `);
 
       await element.evaluate((node: Radio) => {
         node.checked = true;
@@ -270,17 +192,118 @@ test.describe('Radio', () => {
 
       await element.evaluate(node => node.removeAttribute('checked'));
 
-      await expect(element).toBeChecked();
+      await expect(element).toHaveJSProperty('checked', true);
 
       await form.evaluate((node: HTMLFormElement) => {
         node.reset();
       });
 
-      await expect(element).not.toBeChecked();
+      await expect(element).toHaveJSProperty('checked', false);
 
       await element.evaluate(node => node.setAttribute('checked', ''));
 
-      await expect(element).toBeChecked();
+      await expect(element).toHaveJSProperty('checked', true);
     });
+  });
+
+  test('should set the `checked` property to false if the `checked` attribute is unset', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const form = page.locator('form');
+
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fluent-radio></fluent-radio>
+      </form>
+    `);
+
+    await expect(element).toHaveJSProperty('checked', false);
+
+    await element.evaluate((node: Radio) => {
+      node.checked = true;
+    });
+
+    await expect(element).toHaveJSProperty('checked', true);
+
+    await form.evaluate((node: HTMLFormElement) => {
+      node.reset();
+    });
+
+    await expect(element).toHaveJSProperty('checked', false);
+  });
+
+  test('should set its checked property to true if the checked attribute is set', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const form = page.locator('form');
+
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fluent-radio></fluent-radio>
+      </form>
+    `);
+
+    await expect(element).toHaveJSProperty('checked', false);
+
+    await element.evaluate((node: Radio) => {
+      node.setAttribute('checked', '');
+    });
+
+    await expect(element).toHaveJSProperty('checked', true);
+
+    await form.evaluate((node: HTMLFormElement) => {
+      node.reset();
+    });
+
+    await expect(element).toHaveJSProperty('checked', true);
+  });
+
+  test('should put the control into a clean state, where `checked` attribute modifications change the `checked` property prior to user or programmatic interaction', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const form = page.locator('form');
+
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fluent-radio required></fluent-radio>
+      </form>
+    `);
+
+    await element.evaluate((node: Radio) => {
+      node.checked = true;
+      node.removeAttribute('checked');
+    });
+
+    await expect(element).toHaveJSProperty('checked', true);
+
+    await form.evaluate((node: HTMLFormElement) => {
+      node.reset();
+    });
+
+    await expect(element).toHaveJSProperty('checked', false);
+
+    await element.evaluate((node: Radio) => {
+      node.toggleAttribute('checked', true);
+    });
+
+    await expect(element).toHaveJSProperty('checked', true);
+  });
+
+  test('should NOT submit the value of the radio when checked', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const submitButton = page.locator('button');
+
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fluent-radio name="radio" value="foo"></fluent-radio>
+        <button type="submit">submit</button>
+      </form>
+    `);
+
+    await element.click();
+
+    await submitButton.click();
+
+    await expect(page).not.toHaveURL(/\?radio=foo/);
   });
 });

@@ -11,7 +11,7 @@ import {
 } from '../../contexts';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
 
-export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
+export const dialogSurfaceClassNames: SlotClassNames<Omit<DialogSurfaceSlots, 'backdropMotion'>> = {
   root: 'fui-DialogSurface',
   backdrop: 'fui-DialogSurface__backdrop',
 };
@@ -39,6 +39,9 @@ const useRootBaseStyle = makeResetStyles({
   boxSizing: 'border-box',
   backgroundColor: tokens.colorNeutralBackground1,
   color: tokens.colorNeutralForeground1,
+  // Same styles as DialogSurfaceMotion last keyframe,
+  // to ensure dialog will be properly styled when surfaceMotion is opted-out
+  boxShadow: tokens.shadow64,
 
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',

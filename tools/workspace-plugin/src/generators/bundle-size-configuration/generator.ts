@@ -6,13 +6,12 @@ import {
   ProjectConfiguration,
   readProjectConfiguration,
   Tree,
-  updateJson,
   visitNotIgnoredFiles,
 } from '@nx/devkit';
 
 import * as path from 'path';
 
-import { PackageJson } from '../../types';
+import { getNpmScope } from '../../utils';
 import { assertStoriesProject, isSplitProject } from '../split-library-in-two/shared';
 
 import { BundleSizeConfigurationGeneratorSchema } from './schema';
@@ -20,7 +19,7 @@ import { BundleSizeConfigurationGeneratorSchema } from './schema';
 export async function bundleSizeConfigurationGenerator(tree: Tree, schema: BundleSizeConfigurationGeneratorSchema) {
   const options = normalizeOptions(tree, schema);
 
-  const project = readProjectConfiguration(tree, options.name);
+  const project = readProjectConfiguration(tree, options.project);
 
   assertOptions(tree, { isSplitProject: isSplitProject(tree, project), project });
 
@@ -30,7 +29,8 @@ export async function bundleSizeConfigurationGenerator(tree: Tree, schema: Bundl
   };
 
   generateFiles(tree, path.join(__dirname, 'files'), project.root, {
-    packageName: options.name,
+    projectName: project.name,
+    npmPackageName: `@${options.npmScope}/${project.name}`,
     rootOffset: offsetFromRoot(project.root),
   });
 
@@ -49,18 +49,13 @@ export async function bundleSizeConfigurationGenerator(tree: Tree, schema: Bundl
     tree.delete(configPaths.bundleSizeConfig);
   }
 
-  updateJson(tree, joinPathFragments(project.root, 'package.json'), (json: PackageJson) => {
-    json.scripts = json.scripts ?? {};
-    json.scripts['bundle-size'] = 'monosize measure';
-    return json;
-  });
-
   await formatFiles(tree);
 }
 
 function normalizeOptions(tree: Tree, schema: BundleSizeConfigurationGeneratorSchema) {
   return {
     overrideBaseConfig: false,
+    npmScope: getNpmScope(tree),
     ...schema,
   };
 }

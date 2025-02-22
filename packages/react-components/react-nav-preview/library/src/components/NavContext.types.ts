@@ -5,7 +5,7 @@ import type { NavProps, OnNavItemSelectData } from './Nav/Nav.types';
 
 export type NavContextValue = Pick<
   NavProps,
-  'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'reserveSelectedNavItemSpace' | 'size'
+  'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'density'
 > & {
   /** A callback to allow a navItem to register itself with the navItem list. */
   onRegister: RegisterNavItemEventHandler;
@@ -46,7 +46,7 @@ export type NavContextValue = Pick<
 /**
  * Any value that identifies a specific Item.
  */
-export type NavItemValue = unknown;
+export type NavItemValue = string;
 
 /**
  * Context values used in rendering navItemList.

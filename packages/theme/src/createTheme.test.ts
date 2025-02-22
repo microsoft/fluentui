@@ -17,7 +17,7 @@ describe('createTheme', () => {
 
   it('applies defaultFontStyle to fonts and retains all other default values', () => {
     const defaultFontStyle: IRawStyle = { fontFamily: 'Segoe UI' };
-    const userTheme = { defaultFontStyle: defaultFontStyle };
+    const userTheme = { defaultFontStyle };
     const newTheme = createTheme(userTheme);
 
     expect(newTheme.fonts.tiny.fontFamily).toEqual('Segoe UI');
@@ -38,7 +38,7 @@ describe('createTheme', () => {
 
   it('applies defaultFontStyle and fonts to theme and retains all other default values', () => {
     const defaultFontStyle: IRawStyle = { fontFamily: 'Foo', fontSize: '10px' };
-    const userTheme = { defaultFontStyle: defaultFontStyle, fonts: { small: { fontSize: '20px' } } };
+    const userTheme = { defaultFontStyle, fonts: { small: { fontSize: '20px' } } };
     const newTheme = createTheme(userTheme);
 
     expect(newTheme.fonts.tiny.fontFamily).toEqual('Foo');

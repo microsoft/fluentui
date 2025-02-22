@@ -1,0 +1,92 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/Polyfilling" />
+
+# Polyfilling
+
+Fluent UI Web Components takes a "bring your own polyfill" approach so that projects can opt-in to polyfilling only when necessary. Features gracefully degrade whenever possible but some features might require a small shim to work in older browsers.
+
+## Baseline
+
+Here's a list of features we're leveraging and their current [Baseline](https://web.dev/baseline) browser support.
+
+<table>
+  <tr>
+    <th></th>
+    <th>Chrome</th>
+    <th>Edge</th>
+    <th>Firefox</th>
+    <th>Safari</th>
+  </tr>
+  <tr>
+    <td>HTML Popover Attribute</td>
+    <td>114</td>
+    <td>114</td>
+    <td>125</td>
+    <td>17</td>
+  </tr>
+  <tr>
+    <td>CSS Anchor Positioning</td>
+    <td>125</td>
+    <td>125</td>
+    <td>❌</td>
+    <td>❌</td>
+  </tr>
+</table>
+
+## HTML Popover
+
+From Fluent UI Web Components V3 forward, popover-like components will make use of the newer [HTML popover attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/popover). Broader `[popover]` support beyond the browser baseline will require a polyfill.
+
+To get started, add the [popover polyfill](https://github.com/oddbird/popover-polyfill/) to your package.
+
+```bash
+yarn install @oddbird/popover-polyfill
+```
+
+Then in your `main.js` file after your `setTheme()` call, check for `popover` support and lazily import the package if not supported.
+
+```js
+(async () => {
+  if (!('popover' in HTMLElement.prototype)) {
+    await import('@oddbird/popover-polyfill');
+  }
+})();
+```
+
+Two lines of global CSS are needed to cleanup a potential positioning side effect created by the polyfill and LightDOM authored child components.
+
+```css
+[popover].\:popover-open {
+  inset: unset;
+  border: 1px solid transparent;
+}
+```
+
+<fluent-anchor-button target="_blank" href="https://stackblitz.com/edit/typescript-pqdtqs?file=index.html">Open Demo on StackBlitz</fluent-anchor-button>
+
+## CSS Anchor Positioning
+
+Menu anchor positioning is handled minimally in a fallback script but for more complex anchor positioned components (Tooltip, Dropdown, Combobox), you will need to implement your own polyfill.
+
+```js
+/**
+ * Client-side Import example with conditional polyfill import for older browsers.
+ * This MUST be included before Fluent UI.
+ */
+if (!CSS.supports('anchor-name: --foo')) {
+  const { default: applyPolyfill } = await import(
+    'https://unpkg.com/@oddbird/css-anchor-positioning/dist/css-anchor-positioning-fn.js'
+  );
+  window.CSS_ANCHOR_POLYFILL = applyPolyfill;
+}
+```
+
+```js
+/**
+ * NPM Import example where polyfill is bundled into main bundle
+ * This MUST be included before Fluent UI.
+ */
+import { default as applyPolyfill } from '@oddbird/css-anchor-positioning/fn';
+window.CSS_ANCHOR_POLYFILL = applyPolyfill;
+```

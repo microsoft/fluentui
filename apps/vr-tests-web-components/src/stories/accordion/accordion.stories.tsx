@@ -63,41 +63,41 @@ export const Size = () =>
 export const SizeRTL = getStoryVariant(Size, RTL);
 export const SizeDarkMode = getStoryVariant(Size, DARK_MODE);
 
-export const ExpandIconPositionEnd = () =>
+export const MarkerPositionEnd = () =>
   parse(`
   <fluent-accordion openItems={[0]}>
-    <fluent-accordion-item expanded expand-icon-position="end">
+    <fluent-accordion-item expanded marker-position="end">
       <span slot="heading">Opened</span>
       Visible Panel
     </fluent-accordion-item>
-    <fluent-accordion-item expand-icon-position="end">
+    <fluent-accordion-item marker-position="end">
       <span slot="heading">Closed</span>
       Hidden Panel
     </fluent-accordion-item>
   </fluent-accordion>
 `);
 
-export const ExpandIconPositionEndRTL = getStoryVariant(ExpandIconPositionEnd, RTL);
-export const ExpandIconPositionEndDarkMode = getStoryVariant(ExpandIconPositionEnd, DARK_MODE);
+export const MarkerPositionEndRTL = getStoryVariant(MarkerPositionEnd, RTL);
+export const MarkerPositionEndDarkMode = getStoryVariant(MarkerPositionEnd, DARK_MODE);
 
 export const AccordionWithCustomIcons = () =>
   parse(`
   <fluent-accordion>
     <fluent-accordion-item>
-      <span slot="collapsed-icon">${add20Filled}</span>
-      <span slot="expanded-icon">${subtract20Filled}</span>
+      <span slot="marker-collapsed">${add20Filled}</span>
+      <span slot="marker-expanded">${subtract20Filled}</span>
       <span slot="heading">Accordion Header 1</span>
       Accordion Panel 1
     </fluent-accordion-item>
     <fluent-accordion-item>
-      <span slot="collapsed-icon">${add20Filled}</span>
-      <span slot="expanded-icon">${subtract20Filled}</span>
+      <span slot="marker-collapsed">${add20Filled}</span>
+      <span slot="marker-expanded">${subtract20Filled}</span>
       <span slot="heading">Accordion Header 2</span>
       Accordion Panel 1
     </fluent-accordion-item>
     <fluent-accordion-item>
-      <span slot="collapsed-icon">${add20Filled}</span>
-      <span slot="expanded-icon">${subtract20Filled}</span>
+      <span slot="marker-collapsed">${add20Filled}</span>
+      <span slot="marker-expanded">${subtract20Filled}</span>
       <span slot="heading">Accordion Header 3</span>
       Accordion Panel 1
     </fluent-accordion-item>

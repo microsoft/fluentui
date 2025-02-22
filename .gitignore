@@ -71,6 +71,10 @@ dist
 dist-storybook
 screenshots
 !tools/**/lib
+tools/**/__fixtures__/**/lib
+tools/**/__fixtures__/**/lib-commonjs
+# Playwright
+test-results/
 
 *.tar.gz
 
@@ -165,3 +169,4 @@ gulp-cache
 .rollupcache
 .swc
 .nx/cache
+.nx/workspace-data

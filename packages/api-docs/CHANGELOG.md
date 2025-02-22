@@ -1,8 +1,17 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Wed, 05 Jun 2024 07:23:51 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Jul 2024 07:33:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.25](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.2.25)
+
+Thu, 11 Jul 2024 07:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.2.24..@fluentui/api-docs_v8.2.25)
+
+### Patches
+
+- chore: bump api-extractor-model to support typescript 5.0 ([PR #31898](https://github.com/microsoft/fluentui/pull/31898) by vgenaev@gmail.com)
 
 ## [8.2.22](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.2.22)
 

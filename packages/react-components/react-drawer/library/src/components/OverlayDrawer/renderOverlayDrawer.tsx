@@ -9,10 +9,6 @@ import type { OverlayDrawerState, OverlayDrawerInternalSlots } from './OverlayDr
  * Render the final JSX of OverlayDrawer
  */
 export const renderOverlayDrawer_unstable = (state: OverlayDrawerState, contextValue: DrawerContextValue) => {
-  if (!state.motion.canRender) {
-    return null;
-  }
-
   assertSlots<OverlayDrawerInternalSlots>(state);
 
   return (

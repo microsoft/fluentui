@@ -1,9 +1,13 @@
 import { attr, FASTElement, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
 import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { toggleState } from '../utils/element-internals.js';
-import type { TextInputControlSize } from './text-input.options.js';
-import { ImplicitSubmissionBlockingTypes, TextInputAppearance, TextInputType } from './text-input.options.js';
+import { swapStates } from '../utils/element-internals.js';
+import {
+  ImplicitSubmissionBlockingTypes,
+  TextInputAppearance,
+  TextInputControlSize,
+  TextInputType,
+} from './text-input.options.js';
 
 /**
  * A Text Input Custom HTML Element.
@@ -17,31 +21,7 @@ import { ImplicitSubmissionBlockingTypes, TextInputAppearance, TextInputType } f
  * @csspart control - The internal `<input>` control
  * @public
  */
-export class TextInput extends FASTElement {
-  /**
-   * Indicates the styled appearance of the element.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `appearance`
-   */
-  @attr
-  public appearance?: TextInputAppearance;
-
-  /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
-
+export class BaseTextInput extends FASTElement {
   /**
    * Indicates the element's autocomplete state.
    * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Attributes/autocomplete | `autocomplete`} attribute
@@ -65,27 +45,24 @@ export class TextInput extends FASTElement {
   public autofocus!: boolean;
 
   /**
-   * Sets the size of the control.
-   *
+   * The current value of the input.
    * @public
    * @remarks
-   * HTML Attribute: `control-size`
+   * HTML Attribute: `current-value`
    */
-  @attr({ attribute: 'control-size' })
-  public controlSize?: TextInputControlSize;
+  @attr({ attribute: 'current-value' })
+  public currentValue!: string;
 
   /**
-   * Handles changes to `control-size` attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
+   * Tracks the current value of the input.
+   *
+   * @param prev - the previous value
+   * @param next - the next value
+   *
+   * @internal
    */
-  public controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+  currentValueChanged(prev: string, next: string): void {
+    this.value = next;
   }
 
   /**
@@ -319,13 +296,6 @@ export class TextInput extends FASTElement {
   public type: TextInputType = TextInputType.text;
 
   /**
-   * The current value of the input.
-   *
-   * @internal
-   */
-  private _value: string = this.initialValue;
-
-  /**
    * A reference to the internal input element.
    *
    * @internal
@@ -390,14 +360,14 @@ export class TextInput extends FASTElement {
    */
   public get value(): string {
     Observable.track(this, 'value');
-    return this._value;
+    return this.currentValue;
   }
 
   public set value(value: string) {
-    this._value = value;
+    this.currentValue = value;
 
     if (this.$fastController.isConnected) {
-      this.control.value = value;
+      this.control.value = value ?? '';
       this.setFormValue(value);
       this.setValidity();
       Observable.notify(this, 'value');
@@ -474,9 +444,11 @@ export class TextInput extends FASTElement {
    * @param e - the event object
    */
   public clickHandler(e: MouseEvent): boolean | void {
-    if (this.isSameNode(e.target as Node | null)) {
+    if (e.target === this) {
       this.control?.click();
     }
+
+    return true;
   }
 
   public connectedCallback(): void {
@@ -493,7 +465,11 @@ export class TextInput extends FASTElement {
    * @public
    */
   public focusinHandler(e: FocusEvent): boolean | void {
-    this.control?.focus();
+    if (e.target === this) {
+      this.control?.focus();
+    }
+
+    return true;
   }
 
   /**
@@ -634,6 +610,52 @@ export class TextInput extends FASTElement {
 
       this.elementInternals.setValidity(flags, message, anchor);
     }
+  }
+}
+
+/**
+ * A Text Input Custom HTML Element.
+ * Based on BaseTextInput and includes style and layout specific attributes
+ *
+ * @public
+ */
+export class TextInput extends BaseTextInput {
+  /**
+   * Indicates the styled appearance of the element.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `appearance`
+   */
+  @attr
+  public appearance?: TextInputAppearance;
+
+  /**
+   * Handles changes to appearance attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined) {
+    swapStates(this.elementInternals, prev, next, TextInputAppearance);
+  }
+
+  /**
+   * Sets the size of the control.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `control-size`
+   */
+  @attr({ attribute: 'control-size' })
+  public controlSize?: TextInputControlSize;
+
+  /**
+   * Handles changes to `control-size` attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined) {
+    swapStates(this.elementInternals, prev, next, TextInputControlSize);
   }
 }
 

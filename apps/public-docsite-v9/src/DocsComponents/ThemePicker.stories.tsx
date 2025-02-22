@@ -10,7 +10,7 @@ import {
   MenuTrigger,
 } from '@fluentui/react-components';
 import { themes, ThemeIds, THEME_ID } from '@fluentui/react-storybook-addon';
-import addons from '@storybook/addons';
+import { addons } from '@storybook/preview-api';
 
 const useStyles = makeStyles({
   menuButton: {
@@ -49,6 +49,7 @@ export const ThemePicker: React.FC<{ selectedThemeId?: string }> = ({ selectedTh
     <Menu
       onCheckedValueChange={onCheckedValueChange}
       checkedValues={{ theme: selectedThemeId ? [selectedThemeId] : [] }}
+      positioning={{ autoSize: true }}
     >
       <MenuTrigger>
         <MenuButton className={styles.menuButton} menuIcon={{ className: styles.chevronIcon }}>

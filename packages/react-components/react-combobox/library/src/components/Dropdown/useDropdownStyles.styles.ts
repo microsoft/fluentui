@@ -23,6 +23,7 @@ const useStyles = makeStyles({
     display: 'inline-flex',
     minWidth: '250px',
     position: 'relative',
+    verticalAlign: 'middle',
 
     // windows high contrast mode focus indicator
     ':focus-within': {

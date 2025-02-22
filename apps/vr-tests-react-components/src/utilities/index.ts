@@ -1,12 +1,9 @@
-import { ExtendedStoryApi } from './types';
-
-declare module '@storybook/addons' {
-  interface StoryApi {
-    /** adds a story, but via VR Tests' addon which auto adds variants like RTL */
-    addStory: ExtendedStoryApi['addStory'];
-  }
-}
-
-export * from './TestWrapperDecorator';
-export * from './getStoryVariant';
-export * from './withStoryWrightSteps';
+export {
+  TestWrapperDecorator,
+  TestWrapperDecoratorFixedWidth,
+  TestWrapperDecoratorFullWidth,
+  TestWrapperDecoratorTall,
+  TestWrapperDecoratorTallFixedWidth,
+} from './TestWrapperDecorator';
+export { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from './getStoryVariant';
+export { withStoryWrightSteps } from './withStoryWrightSteps';

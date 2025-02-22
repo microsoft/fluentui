@@ -20,6 +20,7 @@ const useRootStyles = makeStyles({
     padding: `0 0 ${tokens.strokeWidthThick} 0`,
     margin: '0',
     borderRadius: tokens.borderRadiusMedium,
+    verticalAlign: 'top',
   },
 
   disabled: {

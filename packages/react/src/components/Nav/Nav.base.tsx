@@ -148,7 +148,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties, ['onClick']) };
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { expandButtonAriaLabel, styles, groups, theme } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -254,7 +254,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   };
 
   private _renderGroupHeader = (group: IRenderGroupHeaderProps): React.ReactElement<{}> => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { styles, groups, theme, expandButtonAriaLabel } = this.props;
 
     const { isExpanded } = group;
@@ -267,7 +267,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     });
 
     // respect deprecated collapseAriaLabel, but default to expandAriaLabel for both states
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const collapseAriaLabel = group.collapseAriaLabel ?? group.expandAriaLabel;
     const label = (isExpanded ? collapseAriaLabel : group.expandAriaLabel) || expandButtonAriaLabel;
 

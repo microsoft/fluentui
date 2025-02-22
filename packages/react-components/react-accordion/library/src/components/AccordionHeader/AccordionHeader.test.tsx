@@ -58,7 +58,7 @@ describe('AccordionHeader', () => {
     renderer.act(() => {
       component.root.findAllByType('button')[0].props.onClick({ defaultPrevented: false });
     });
-    expect(mockClick).toBeCalledTimes(2);
+    expect(mockClick).toHaveBeenCalledTimes(2);
   });
 
   it('should invoke click and prevent toggle', () => {
@@ -74,6 +74,6 @@ describe('AccordionHeader', () => {
     renderer.act(() => {
       component.root.findAllByType('button')[0].props.onClick({ defaultPrevented: true });
     });
-    expect(mockClick).toBeCalledTimes(1);
+    expect(mockClick).toHaveBeenCalledTimes(1);
   });
 });

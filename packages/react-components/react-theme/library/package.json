@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme",
-  "version": "9.1.19",
+  "version": "9.1.24",
   "description": "Fluent UI themes",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -11,26 +11,12 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "scripts": {
-    "build": "just-scripts build",
-    "bundle-size": "monosize measure",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "start": "yarn storybook",
-    "storybook": "yarn --cwd ../stories storybook",
-    "test": "jest --passWithNoTests",
-    "type-check": "just-scripts type-check",
-    "generate-api": "just-scripts generate-api"
-  },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@fluentui/tokens": "1.0.0-alpha.16",
+    "@fluentui/tokens": "1.0.0-alpha.21",
     "@swc/helpers": "^0.5.1"
   },
   "beachball": {

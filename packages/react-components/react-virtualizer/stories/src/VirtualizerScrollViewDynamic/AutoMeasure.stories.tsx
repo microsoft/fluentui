@@ -1,40 +1,49 @@
 import * as React from 'react';
-import { VirtualizerScrollViewDynamic } from '@fluentui/react-components/unstable';
+import { VirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
 import { makeStyles } from '@fluentui/react-components';
-import { useEffect } from 'react';
 
 const useStyles = makeStyles({
   child: {
-    lineHeight: '42px',
+    lineHeight: '25px',
     width: '100%',
-    minHeight: '42px',
+    minHeight: '25px',
   },
 });
 
 export const AutoMeasure = () => {
   const styles = useStyles();
-  const childLength = 1000;
-  const minHeight = 42;
-  const maxHeightIncrease = 150;
+  const childLength = 100;
+  const minHeight = 25;
+  const maxHeightIncrease = 55;
   // Array size ref stores a list of random num for div sizing and callbacks
   const arraySize = React.useRef(new Array<number>(childLength).fill(minHeight));
 
-  useEffect(() => {
+  React.useEffect(() => {
     // Set random heights on init (to be measured)
     for (let i = 0; i < childLength; i++) {
-      arraySize.current[i] = Math.floor(Math.random() * maxHeightIncrease + minHeight);
+      // if (i % 10 == 0) {
+      if (i < 10) {
+        arraySize.current[i] = 1000;
+      } else {
+        arraySize.current[i] = Math.floor(Math.random() * maxHeightIncrease + minHeight);
+      }
+
+      // arraySize.current[i] = Math.floor(Math.random() * maxHeightIncrease + minHeight);
     }
   }, []);
 
   return (
     <VirtualizerScrollViewDynamic
       numItems={childLength}
-      // We can use itemSize to set an average height for minimal size change impact
-      itemSize={minHeight + maxHeightIncrease / 2}
-      container={{ role: 'list', style: { maxHeight: '100vh' } }}
+      // We can use itemSize to set average height and reduce unknown whitespace
+      itemSize={minHeight + maxHeightIncrease / 2.0 + 100}
+      container={{ role: 'list', style: { maxHeight: '80vh', gap: '20px' } }}
+      bufferItems={1}
+      bufferSize={minHeight / 2.0}
+      gap={20}
     >
       {(index: number) => {
-        const backgroundColor = index % 2 ? '#FFFFFF' : '#ABABAB';
+        const backgroundColor = index % 2 ? '#CCCCCC' : '#ABABAB';
         return (
           <div
             role={'listitem'}

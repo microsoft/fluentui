@@ -1,10 +1,9 @@
-import { attr, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
 import { keyEnter, keySpace } from '@microsoft/fast-web-utilities';
 import { StartEnd } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { toggleState } from '../utils/element-internals.js';
-import type { ButtonAppearance, ButtonFormTarget, ButtonShape, ButtonSize } from './button.options.js';
-import { ButtonType } from './button.options.js';
+import { swapStates, toggleState } from '../utils/element-internals.js';
+import { ButtonAppearance, ButtonFormTarget, ButtonShape, ButtonSize, ButtonType } from './button.options.js';
 
 /**
  * A Button Custom HTML Element.
@@ -17,31 +16,7 @@ import { ButtonType } from './button.options.js';
  *
  * @public
  */
-export class Button extends FASTElement {
-  /**
-   * Indicates the styled appearance of the button.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `appearance`
-   */
-  @attr
-  public appearance?: ButtonAppearance;
-
-  /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
-
+export class BaseButton extends FASTElement {
   /**
    * Indicates the button should be focused when the page is loaded.
    * @see The {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#autofocus | `autofocus`} attribute
@@ -81,6 +56,16 @@ export class Button extends FASTElement {
    */
   @attr({ attribute: 'disabled-focusable', mode: 'boolean' })
   public disabledFocusable: boolean = false;
+
+  /**
+   * Sets that the button tabindex attribute
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `tabindex`
+   */
+  @attr({ attribute: 'tabindex', mode: 'fromView', converter: nullableNumberConverter })
+  public override tabIndex: number = 0;
 
   /**
    * Sets the element's internal disabled state when the element is focusable while disabled.
@@ -200,25 +185,6 @@ export class Button extends FASTElement {
   public formTarget?: ButtonFormTarget;
 
   /**
-   * Indicates that the button should only display as an icon with no text content.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `icon-only`
-   */
-  @attr({ attribute: 'icon-only', mode: 'boolean' })
-  public iconOnly: boolean = false;
-
-  /**
-   * Handles changes to icon only custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public iconOnlyChanged(prev: boolean, next: boolean) {
-    toggleState(this.elementInternals, 'icon', next);
-  }
-
-  /**
    * A reference to all associated label elements.
    *
    * @public
@@ -237,54 +203,6 @@ export class Button extends FASTElement {
    */
   @attr
   public name?: string;
-
-  /**
-   * The shape of the button.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `shape`
-   */
-  @attr
-  public shape?: ButtonShape;
-
-  /**
-   * Handles changes to shape attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
-
-  /**
-   * The size of the button.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `size`
-   */
-  @attr
-  public size?: ButtonSize;
-
-  /**
-   * Handles changes to size attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The button type.
@@ -502,6 +420,90 @@ export class Button extends FASTElement {
       this.elementInternals.setFormValue(null);
       this.elementInternals.form.requestSubmit(this.formSubmissionFallbackControl);
     }
+  }
+}
+
+/**
+ * A Button Custom HTML Element.
+ * Based on BaseButton and includes style and layout specific attributes
+ *
+ * @public
+ */
+export class Button extends BaseButton {
+  /**
+   * Indicates the styled appearance of the button.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `appearance`
+   */
+  @attr
+  public appearance?: ButtonAppearance;
+
+  /**
+   * Handles changes to appearance attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined) {
+    swapStates(this.elementInternals, prev, next, ButtonAppearance);
+  }
+
+  /**
+   * The shape of the button.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `shape`
+   */
+  @attr
+  public shape?: ButtonShape;
+
+  /**
+   * Handles changes to shape attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined) {
+    swapStates(this.elementInternals, prev, next, ButtonShape);
+  }
+
+  /**
+   * The size of the button.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `size`
+   */
+  @attr
+  public size?: ButtonSize;
+
+  /**
+   * Handles changes to size attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined) {
+    swapStates(this.elementInternals, prev, next, ButtonSize);
+  }
+
+  /**
+   * Indicates that the button should only display as an icon with no text content.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `icon-only`
+   */
+  @attr({ attribute: 'icon-only', mode: 'boolean' })
+  public iconOnly: boolean = false;
+
+  /**
+   * Handles changes to icon only custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public iconOnlyChanged(prev: boolean, next: boolean) {
+    toggleState(this.elementInternals, 'icon', next);
   }
 }
 

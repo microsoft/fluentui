@@ -102,6 +102,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       setComboBoxText(comboboxOption ? comboboxOption.text : formattedTimeString);
     } else {
       setSelectedKey(null);
+      setComboBoxText('');
     }
   }, [selectedTime, timePickerOptions, onFormatDate, showSeconds, useHour12]);
 
@@ -190,7 +191,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   );
 
   const evaluatePressedKey = (event: React.KeyboardEvent<IComboBox>) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const charCode = event.charCode;
     if (
       !onFormatDate &&

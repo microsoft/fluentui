@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Alert } from '@fluentui/react-northstar';
 import StoryWrightSteps from './commonStoryWrightSteps';
 
@@ -11,7 +11,7 @@ export default {
   component: Alert,
   title: 'Alert',
   decorators: [story => <StoryWright steps={StoryWrightSteps}>{story()}</StoryWright>],
-} as ComponentMeta<typeof Alert>;
+} as Meta<typeof Alert>;
 
 const AlertExampleOofTeams = getThemeStoryVariant(AlertExampleOof, 'teamsV2');
 

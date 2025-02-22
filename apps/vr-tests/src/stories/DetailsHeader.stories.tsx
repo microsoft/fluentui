@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import {
   IColumn,
   DetailsListLayoutMode,
@@ -113,11 +112,13 @@ const _columnReorderProps = {
   frozenColumnCountFromEnd: 1,
 };
 
-storiesOf('DetailsHeader', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'DetailsHeader',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default', { cropTo: '.ms-DetailsHeader' })
         .hover('[data-item-key=a]')
         .snapshot('hoverFrozenFirst', { cropTo: '.ms-DetailsHeader' })
@@ -136,18 +137,17 @@ storiesOf('DetailsHeader', module)
         .cssAnimations(true)
         .executeScript(`DndSimulator.simulate('[draggable="true"]', '[data-item-key="d"]', true)`)
         .snapshot('dropHint')
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
+        .end(),
+    ),
+  ],
+};
 
-  .addStory('Root', () => (
-    <DetailsHeader
-      selection={_selection}
-      selectionMode={SelectionMode.multiple}
-      layoutMode={DetailsListLayoutMode.fixedColumns}
-      columns={columns}
-      columnReorderProps={_columnReorderProps}
-    />
-  ));
+export const Root = () => (
+  <DetailsHeader
+    selection={_selection}
+    selectionMode={SelectionMode.multiple}
+    layoutMode={DetailsListLayoutMode.fixedColumns}
+    columns={columns}
+    columnReorderProps={_columnReorderProps}
+  />
+);

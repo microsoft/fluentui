@@ -1,7 +1,7 @@
-import { ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
 import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
 import type { Button } from './button.js';
-import { ButtonOptions } from './button.options.js';
+import type { ButtonOptions } from './button.options.js';
 
 /**
  * Generates a template for the Button component.
@@ -11,7 +11,7 @@ import { ButtonOptions } from './button.options.js';
 export function buttonTemplate<T extends Button>(options: ButtonOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <template
-      tabindex="${x => (x.disabled ? -1 : 0)}"
+      tabindex="${x => (x.disabled ? null : x.tabIndex ?? 0)}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
       @keypress="${(x, c) => x.keypressHandler(c.event as KeyboardEvent)}"
     >

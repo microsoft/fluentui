@@ -1,5 +1,4 @@
 import { Overflow, OverflowItem } from '@fluentui/react-components';
-import { ComponentMeta } from '@storybook/react';
 import descriptionMd from './OverflowDescription.md';
 
 export { Default } from './Default.stories';
@@ -13,7 +12,12 @@ export { Dividers } from './Dividers.stories';
 export { LargerDividers } from './LargerDividers.stories';
 export { PriorityWithDividers } from './PriorityWithDividers.stories';
 export { CustomComponent } from './CustomComponent.stories';
+export { ListenToChanges } from './ListenToChanges.stories';
 
+// Typing with as Meta<typeof Overflow> generates a type error for the `subcomponents` property.
+// https://github.com/storybookjs/storybook/issues/27535
+//
+// TODO: bring back typing when the issue is resolved
 export default {
   title: 'Components/Overflow',
   component: Overflow,
@@ -27,4 +31,4 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Overflow>;
+};

@@ -14,13 +14,18 @@ const getClassNames = classNamesFunction<ITagItemSuggestionStyleProps, ITagItemS
  * {@docCategory TagPicker}
  */
 export const TagItemSuggestionBase = (props: ITagItemSuggestionProps) => {
-  const { styles, theme, children } = props;
+  const { styles, theme, children, ...rest } = props;
 
   const classNames = getClassNames(styles, {
     theme: theme!,
   });
 
-  return <div className={classNames.suggestionTextOverflow}> {children} </div>;
+  return (
+    <div className={classNames.suggestionTextOverflow} {...rest}>
+      {' '}
+      {children}{' '}
+    </div>
+  );
 };
 
 export const TagItemSuggestion = styled<

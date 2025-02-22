@@ -1,15 +1,15 @@
 import { Observable } from '@microsoft/fast-element';
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { keyArrowDown, keyArrowUp, keyEnd, keyHome, wrapInBounds } from '@microsoft/fast-web-utilities';
-import { AccordionItem } from '../accordion-item/accordion-item.js';
+import { BaseAccordionItem } from '../accordion-item/accordion-item.js';
 import { AccordionExpandMode } from './accordion.options.js';
 
 /**
  * An Accordion Custom HTML Element
  * Implements {@link https://www.w3.org/TR/wai-aria-practices-1.1/#accordion | ARIA Accordion}.
  *
+ * @slot - The default slot for the accordion items
  * @fires change - Fires a custom 'change' event when the active item changes
- * @csspart item - The slot for the accordion items
+ *
  * @public
  */
 export class Accordion extends FASTElement {
@@ -34,11 +34,13 @@ export class Accordion extends FASTElement {
       return;
     }
 
-    if (next !== AccordionExpandMode.single) {
-      (expandedItem as AccordionItem)?.expandbutton.removeAttribute('aria-disabled');
-    } else {
+    if (next === AccordionExpandMode.single) {
       this.setSingleExpandMode(expandedItem);
+      return;
     }
+
+    // Clean up single expand mode behavior
+    (expandedItem as BaseAccordionItem)?.expandbutton.removeAttribute('aria-disabled');
   }
 
   /**
@@ -47,6 +49,9 @@ export class Accordion extends FASTElement {
   @observable
   public slottedAccordionItems!: HTMLElement[];
 
+  /**
+   * @internal
+   */
   protected accordionItems!: Element[];
 
   /**
@@ -59,6 +64,7 @@ export class Accordion extends FASTElement {
   }
 
   /**
+   * Watch for changes to the slotted accordion items `disabled` and `expanded` attributes
    * @internal
    */
   public handleChange(source: any, propertyName: string) {
@@ -73,59 +79,70 @@ export class Accordion extends FASTElement {
     }
   }
 
-  private activeid!: string | null;
   private activeItemIndex: number = 0;
-  private accordionIds!: Array<string | null>;
 
-  private change = (): void => {
-    this.$emit('change', this.activeid);
-  };
-
-  private findExpandedItem(): AccordionItem | Element | null {
+  /**
+   * Find the first expanded item in the accordion
+   * @returns {void}
+   */
+  private findExpandedItem(): BaseAccordionItem | Element | null {
     if (this.accordionItems.length === 0) {
       return null;
     }
 
     return (
-      this.accordionItems.find((item: Element | AccordionItem) => item instanceof AccordionItem && item.expanded) ??
-      this.accordionItems[0]
+      this.accordionItems.find(
+        (item: Element | BaseAccordionItem) => item instanceof BaseAccordionItem && item.expanded,
+      ) ?? this.accordionItems[0]
     );
   }
 
+  /**
+   * Resets event listeners and sets the `accordionItems` property
+   * then rebinds event listeners to each non-disabled item
+   * @returns {void}
+   */
   private setItems = (): void => {
     if (this.slottedAccordionItems.length === 0) {
       return;
     }
 
+    // Get all existing children and remove event listeners
     const children: Element[] = Array.from(this.children);
-
     this.removeItemListeners(children);
 
+    // Resubscribe to the `disabled` attribute of all children
     children.forEach((child: Element) => Observable.getNotifier(child).subscribe(this, 'disabled'));
 
+    // Add event listeners to each non-disabled AccordionItem
     this.accordionItems = children.filter(child => !child.hasAttribute('disabled'));
-
-    this.accordionIds = this.getItemIds();
-
     this.accordionItems.forEach((item: Element, index: number) => {
-      if (item instanceof AccordionItem) {
-        item.addEventListener('click', this.activeItemChange);
-        item.addEventListener('keydown', this.handleItemKeyDown);
-        item.addEventListener('focus', this.handleItemFocus);
+      if (item instanceof BaseAccordionItem) {
+        item.addEventListener('click', this.expandedChangedHandler);
+        // Subscribe to the expanded attribute of the item
         Observable.getNotifier(item).subscribe(this, 'expanded');
       }
-
-      const itemId: string | null = this.accordionIds[index];
-      item.setAttribute('id', typeof itemId !== 'string' ? `accordion-${index + 1}` : itemId);
-      this.activeid = this.accordionIds[this.activeItemIndex] as string;
     });
 
     if (this.isSingleExpandMode()) {
-      const expandedItem = this.findExpandedItem() as AccordionItem;
+      const expandedItem = this.findExpandedItem() as BaseAccordionItem;
       this.setSingleExpandMode(expandedItem);
     }
   };
 
+  /**
+   * Checks if the accordion is in single expand mode
+   * @returns {boolean}
+   */
+  private isSingleExpandMode(): boolean {
+    return this.expandmode === AccordionExpandMode.single;
+  }
+
+  /**
+   * Controls the behavior of the accordion in single expand mode
+   * @param expandedItem The item to expand in single expand mode
+   * @returns {void}
+   */
   private setSingleExpandMode(expandedItem: Element): void {
     if (this.accordionItems.length === 0) {
       return;
@@ -134,7 +151,7 @@ export class Accordion extends FASTElement {
     this.activeItemIndex = currentItems.indexOf(expandedItem);
 
     currentItems.forEach((item: Element, index: number) => {
-      if (item instanceof AccordionItem) {
+      if (item instanceof BaseAccordionItem) {
         if (this.activeItemIndex === index) {
           item.expanded = true;
           item.expandbutton.setAttribute('aria-disabled', 'true');
@@ -149,30 +166,27 @@ export class Accordion extends FASTElement {
     });
   }
 
+  /**
+   * Removes event listeners from the previous accordion items
+   * @param oldValue An array of the previous accordion items
+   */
   private removeItemListeners = (oldValue: any): void => {
     oldValue.forEach((item: HTMLElement, index: number) => {
       Observable.getNotifier(item).unsubscribe(this, 'disabled');
       Observable.getNotifier(item).unsubscribe(this, 'expanded');
-      item.removeEventListener('click', this.activeItemChange);
-      item.removeEventListener('keydown', this.handleItemKeyDown);
-      item.removeEventListener('focus', this.handleItemFocus);
+      item.removeEventListener('click', this.expandedChangedHandler);
     });
   };
 
-  private activeItemChange = (event: Event): void => {
-    if (event.defaultPrevented || event.target !== event.currentTarget) {
-      return;
-    }
+  /**
+   * Changes the expanded state of the accordion item
+   * @param evt Click event
+   * @returns
+   */
+  private expandedChangedHandler: EventListener = (evt: Event): void => {
+    const item = evt.target as HTMLElement;
 
-    event.preventDefault();
-
-    this.handleExpandedChange(event.target as HTMLElement);
-  };
-
-  private handleExpandedChange = (item: HTMLElement) => {
-    if (item instanceof AccordionItem) {
-      this.activeid = item.getAttribute('id');
-
+    if (item instanceof BaseAccordionItem) {
       if (!this.isSingleExpandMode()) {
         item.expanded = !item.expanded;
         // setSingleExpandMode sets activeItemIndex on its own
@@ -181,69 +195,7 @@ export class Accordion extends FASTElement {
         this.setSingleExpandMode(item);
       }
 
-      this.change();
+      this.$emit('change');
     }
   };
-
-  private getItemIds(): Array<string | null> {
-    return this.slottedAccordionItems.map((accordionItem: HTMLElement) => {
-      return accordionItem.id;
-    });
-  }
-
-  private isSingleExpandMode(): boolean {
-    return this.expandmode === AccordionExpandMode.single;
-  }
-
-  private handleItemKeyDown = (event: KeyboardEvent): void => {
-    // only handle the keydown if the event target is the accordion item
-    // prevents arrow keys from moving focus to accordion headers when focus is on accordion item panel content
-    if (event.target !== event.currentTarget) {
-      return;
-    }
-    this.accordionIds = this.getItemIds();
-    switch (event.key) {
-      case keyArrowUp:
-        event.preventDefault();
-        this.adjust(-1);
-        break;
-      case keyArrowDown:
-        event.preventDefault();
-        this.adjust(1);
-        break;
-      case keyHome:
-        this.activeItemIndex = 0;
-        this.focusItem();
-        break;
-      case keyEnd:
-        this.activeItemIndex = this.accordionItems.length - 1;
-        this.focusItem();
-        break;
-    }
-  };
-
-  private handleItemFocus = (event: FocusEvent): void => {
-    // update the active item index if the focus moves to an accordion item via a different method other than the up and down arrow key actions
-    // only do so if the focus is actually on the accordion item and not on any of its children
-    if (event.target === event.currentTarget) {
-      const focusedItem = event.target as HTMLElement;
-      const focusedIndex: number = (this.activeItemIndex = Array.from(this.accordionItems).indexOf(focusedItem));
-      if (this.activeItemIndex !== focusedIndex && focusedIndex !== -1) {
-        this.activeItemIndex = focusedIndex;
-        this.activeid = this.accordionIds[this.activeItemIndex] as string;
-      }
-    }
-  };
-
-  private adjust(adjustment: number): void {
-    this.activeItemIndex = wrapInBounds(0, this.accordionItems.length - 1, this.activeItemIndex + adjustment);
-    this.focusItem();
-  }
-
-  private focusItem(): void {
-    const element: Element = this.accordionItems[this.activeItemIndex];
-    if (element instanceof AccordionItem) {
-      element.expandbutton.focus();
-    }
-  }
 }

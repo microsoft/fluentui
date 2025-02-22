@@ -4,7 +4,6 @@ exports[`Skeleton renders a default state 1`] = `
 <div>
   <div
     aria-busy="true"
-    aria-label="Loading Content"
     class="fui-Skeleton"
     role="progressbar"
   >

@@ -384,4 +384,4 @@ export {
   shadow28Brand,
   shadow64Brand,
 } from './design-tokens.js';
-export { setTheme, setThemeFor } from './set-theme.js';
+export { setTheme, setThemeFor, type Theme } from './set-theme.js';

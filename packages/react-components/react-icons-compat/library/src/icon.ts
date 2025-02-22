@@ -171,7 +171,7 @@ export function getIcon(name?: string): IconRecord | undefined {
         }
       }
     } else {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (!options.disableWarnings && options.warnOnMissingIcons) {
         // eslint-disable-next-line no-console
         console.warn(
@@ -198,7 +198,6 @@ export function setIconOptions(options: Partial<IconOptions>): void {
 
 let _missingIcons: string[] = [];
 // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-// eslint-disable-next-line no-restricted-globals
 let _missingIconsTimer: ReturnType<typeof setTimeout> | undefined = undefined;
 
 function _warnDuplicateIcon(iconName: string): void {
@@ -209,19 +208,20 @@ function _warnDuplicateIcon(iconName: string): void {
   if (!options.disableWarnings) {
     _missingIcons.push(iconName);
     if (_missingIconsTimer === undefined) {
-      // eslint-disable-next-line no-restricted-globals
-      _missingIconsTimer = setTimeout(() => {
-        // eslint-disable-next-line no-console
-        console.warn(
-          `Some icons were re-registered. Applications should only call registerIcons for any given ` +
-            `icon once. Redefining what an icon is may have unintended consequences. Duplicates ` +
-            `include: \n` +
-            _missingIcons.slice(0, maxIconsInMessage).join(', ') +
-            (_missingIcons.length > maxIconsInMessage ? ` (+ ${_missingIcons.length - maxIconsInMessage} more)` : ''),
-        );
-        _missingIconsTimer = undefined;
-        _missingIcons = [];
-      }, warningDelay);
+      _missingIconsTimer =
+        // eslint-disable-next-line @nx/workspace-no-restricted-globals
+        setTimeout(() => {
+          // eslint-disable-next-line no-console
+          console.warn(
+            `Some icons were re-registered. Applications should only call registerIcons for any given ` +
+              `icon once. Redefining what an icon is may have unintended consequences. Duplicates ` +
+              `include: \n` +
+              _missingIcons.slice(0, maxIconsInMessage).join(', ') +
+              (_missingIcons.length > maxIconsInMessage ? ` (+ ${_missingIcons.length - maxIconsInMessage} more)` : ''),
+          );
+          _missingIconsTimer = undefined;
+          _missingIcons = [];
+        }, warningDelay);
     }
   }
 }

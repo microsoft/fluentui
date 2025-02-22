@@ -45,6 +45,7 @@ const useRootClassName = makeResetStyles({
   borderRadius: tokens.borderRadiusMedium, // used for all but underline
   position: 'relative',
   boxSizing: 'border-box',
+  verticalAlign: 'middle',
 
   // size: medium (default)
   minHeight: fieldHeights.medium,
@@ -186,10 +187,12 @@ const useRootStyles = makeStyles({
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
   },
+  // This shadow appearance is deprecated and will be removed in a future release.
   'filled-darker-shadow': {
     backgroundColor: tokens.colorNeutralBackground3,
     boxShadow: tokens.shadow2,
   },
+  // This shadow appearance is deprecated and will be removed in a future release.
   'filled-lighter-shadow': {
     backgroundColor: tokens.colorNeutralBackground1,
     boxShadow: tokens.shadow2,

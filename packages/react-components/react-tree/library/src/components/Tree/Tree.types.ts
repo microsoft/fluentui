@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import type { ComponentProps, ComponentState, SelectionMode, Slot } from '@fluentui/react-utilities';
 import type { TreeContextValue, SubtreeContextValue } from '../../contexts';
 import type { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
@@ -12,6 +13,7 @@ export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 
 export type TreeSlots = {
   root: Slot<'div'>;
+  collapseMotion?: Slot<PresenceMotionSlotProps>;
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -89,7 +91,16 @@ export type TreeContextValues = {
   tree: TreeContextValue | SubtreeContextValue;
 };
 
+export type TreeNavigationMode = 'tree' | 'treegrid';
+
 export type TreeProps = ComponentProps<TreeSlots> & {
+  /**
+   * Indicates how navigation between a treeitem and its actions work
+   * - 'tree' (default): The default navigation, pressing right arrow key navigates inward the first inner children of a branch treeitem
+   * - 'treegrid': Pressing right arrow key navigate towards the actions of a treeitem
+   * @default 'tree'
+   */
+  navigationMode?: TreeNavigationMode;
   /**
    * A tree item can have various appearances:
    * - 'subtle' (default): The default tree item styles.

@@ -54,7 +54,6 @@ describe('eslint-rule generator', () => {
           type: 'problem',
           docs: {
             description: \`\`,
-            recommended: 'recommended',
           },
           schema: [],
           messages: {},
@@ -68,13 +67,9 @@ describe('eslint-rule generator', () => {
     `);
 
     expect(tree.read(paths.spec, 'utf-8')).toMatchInlineSnapshot(`
-      "import { TSESLint } from '@typescript-eslint/utils';
+      "import { RuleTester } from '@typescript-eslint/rule-tester';
       import { rule, RULE_NAME } from './uppercase';
-
-      const ruleTester = new TSESLint.RuleTester({
-        parser: require.resolve('@typescript-eslint/parser'),
-      });
-
+      const ruleTester = new RuleTester();
       ruleTester.run(RULE_NAME, rule, {
         valid: [\`const example = true;\`],
         invalid: [],

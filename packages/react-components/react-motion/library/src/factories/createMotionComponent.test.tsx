@@ -3,13 +3,7 @@ import * as React from 'react';
 
 import type { AtomMotion } from '../types';
 import { createMotionComponent } from './createMotionComponent';
-
-jest.mock('./createMotionComponent', () => {
-  // Add a mock for the `animate` method on the HTMLElement prototype as jsdom does not support it
-  Element.prototype.animate = jest.fn();
-
-  return jest.requireActual('./createMotionComponent');
-});
+import { MotionBehaviourProvider } from '../contexts/MotionBehaviourContext';
 
 const motion: AtomMotion = {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
@@ -22,7 +16,9 @@ function createElementMock() {
     cancel: jest.fn(),
     persist: jest.fn(),
     finish: finishMock,
-    finished: Promise.resolve(),
+    set onfinish(fn: () => void) {
+      fn();
+    },
   }));
   const ElementMock = React.forwardRef<{ animate: () => void }, { onRender?: () => void }>((props, ref) => {
     React.useImperativeHandle(ref, () => ({
@@ -42,10 +38,27 @@ function createElementMock() {
 }
 
 describe('createMotionComponent', () => {
-  it('has mock for .animate()', () => {
-    expect(Element.prototype.animate).toBeDefined();
+  let hasAnimation: boolean;
+  beforeEach(() => {
+    if (!global.Animation) {
+      hasAnimation = false;
+      global.Animation = {
+        // @ts-expect-error mock
+        prototype: {
+          persist: jest.fn(),
+        },
+      };
+    } else {
+      hasAnimation = true;
+    }
   });
 
+  afterEach(() => {
+    if (!hasAnimation) {
+      // @ts-expect-error mock
+      delete global.Animation;
+    }
+  });
   it('creates a motion and plays it', () => {
     const TestAtom = createMotionComponent(motion);
     const { animateMock, ElementMock } = createElementMock();
@@ -58,6 +71,24 @@ describe('createMotionComponent', () => {
 
     expect(animateMock).toHaveBeenCalledWith(motion.keyframes, {
       duration: motion.duration,
+      fill: 'forwards',
+    });
+  });
+
+  it('creates a motion and plays it (without .persist())', () => {
+    // @ts-expect-error mock
+    delete global.Animation.prototype.persist;
+    const TestAtom = createMotionComponent(motion);
+    const { animateMock, ElementMock } = createElementMock();
+
+    render(
+      <TestAtom>
+        <ElementMock />
+      </TestAtom>,
+    );
+
+    expect(animateMock).toHaveBeenCalledWith(motion.keyframes, {
+      duration: 500,
       fill: 'forwards',
     });
   });
@@ -100,5 +131,28 @@ describe('createMotionComponent', () => {
 
     expect(onMotionStart).toHaveBeenCalledTimes(1);
     expect(onMotionFinish).toHaveBeenCalledTimes(1);
+  });
+
+  it('finishes motion when wrapped in motion context with skip behaviour', async () => {
+    const TestAtom = createMotionComponent(motion);
+    const onMotionStart = jest.fn();
+    const onMotionFinish = jest.fn();
+
+    const { finishMock, ElementMock } = createElementMock();
+
+    render(
+      <TestAtom onMotionFinish={onMotionFinish} onMotionStart={onMotionStart}>
+        <ElementMock />
+      </TestAtom>,
+      { wrapper: ({ children }) => <MotionBehaviourProvider value="skip">{children}</MotionBehaviourProvider> },
+    );
+
+    await act(async () => {
+      await new Promise<void>(process.nextTick);
+    });
+
+    expect(onMotionStart).toHaveBeenCalledTimes(1);
+    expect(onMotionFinish).toHaveBeenCalledTimes(1);
+    expect(finishMock).toHaveBeenCalledTimes(1);
   });
 });

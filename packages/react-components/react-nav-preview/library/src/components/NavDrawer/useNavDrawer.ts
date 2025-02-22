@@ -16,9 +16,12 @@ import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
  * @param ref - reference to root HTMLDivElement of NavDrawer
  */
 export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTMLDivElement>): NavDrawerState => {
+  const { tabbable = false, size = undefined } = props;
+
   const focusAttributes = useArrowNavigationGroup({
     axis: 'vertical',
     circular: true,
+    tabbable,
   });
 
   const navState = useNav_unstable(
@@ -31,18 +34,23 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
 
   return {
     ...navState,
+    size,
     components: {
-      root: Drawer,
+      // TODO: remove once React v18 slot API is modified
+      // this is a problem with the lack of support for union types on React v18
+      // ComponentState is using React.ComponentType which will try to infer propType
+      // propTypes WeakValidator signature will break distributive unions making this type invalid
+      root: Drawer as React.FC<DrawerProps>,
     },
 
-    root: slot.always<DrawerProps>(
+    root: slot.always(
+      { ref, ...props, ...focusAttributes },
       {
-        ref,
-        ...props,
-        ...focusAttributes,
-      },
-      {
-        elementType: Drawer,
+        // TODO: remove once React v18 slot API is modified
+        // this is a problem with the lack of support for union types on React v18
+        // ComponentState is using React.ComponentType which will try to infer propType
+        // propTypes WeakValidator signature will break distributive unions making this type invalid
+        elementType: Drawer as React.FC<DrawerProps & React.RefAttributes<HTMLDivElement>>,
       },
     ),
   };

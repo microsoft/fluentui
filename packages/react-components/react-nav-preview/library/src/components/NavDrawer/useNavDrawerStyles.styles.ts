@@ -4,7 +4,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavDrawerState } from './NavDrawer.types';
 import { navItemTokens } from '../sharedNavStyles.styles';
 
-export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
+export const navDrawerClassNames: SlotClassNames<Omit<InlineDrawerSlots, 'surfaceMotion'>> = {
   root: 'fui-NavDrawer',
 };
 
@@ -13,9 +13,13 @@ export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    width: '260px', // per spec
     backgroundColor: navItemTokens.backgroundColor,
     alignItems: 'unset',
+  },
+  // seperate style so it can be applied conditionally
+  // if size is not set, use default width from the token.
+  defaultWidth: {
+    width: `${navItemTokens.defaultDrawerWidth}px`,
   },
 });
 
@@ -25,8 +29,15 @@ const useStyles = makeStyles({
 export const useNavDrawerStyles_unstable = (state: NavDrawerState): NavDrawerState => {
   'use no memo';
 
+  const { size } = state;
+
   const styles = useStyles();
-  state.root.className = mergeClasses(navDrawerClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    navDrawerClassNames.root,
+    styles.root,
+    !size && styles.defaultWidth,
+    state.root.className,
+  );
 
   return state;
 };

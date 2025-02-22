@@ -1,6 +1,8 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { keyEnter, keyEscape, keySpace, keyTab } from '@microsoft/fast-web-utilities';
-import { MenuList } from '../menu-list/menu-list.js';
+import type { MenuList } from '../menu-list/menu-list.js';
+import { MenuItem } from '../menu-item/menu-item.js';
+import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
 /**
  * A Menu component that provides a customizable menu element.
@@ -11,9 +13,11 @@ import { MenuList } from '../menu-list/menu-list.js';
  * @attr open-on-context - Determines if the menu should open on right click.
  * @attr close-on-scroll - Determines if the menu should close on scroll.
  * @attr persist-on-item-click - Determines if the menu open state should persist on click of menu item.
+ * @attr split - Determines if the menu is in split state.
  *
  * @cssproperty --menu-max-height - The max-height of the menu.
  *
+ * @slot primary-action - Slot for the primary action elements. Used when in `split` state.
  * @slot trigger - Slot for the trigger elements.
  * @slot - Default slot for the menu list.
  *
@@ -46,33 +50,36 @@ export class Menu extends FASTElement {
    * Determines if the menu should open on hover.
    * @public
    */
-  @observable
   @attr({ attribute: 'open-on-hover', mode: 'boolean' })
-  public openOnHover?: boolean = false;
+  public openOnHover?: boolean;
 
   /**
    * Determines if the menu should open on right click.
    * @public
    */
-  @observable
   @attr({ attribute: 'open-on-context', mode: 'boolean' })
-  public openOnContext?: boolean = false;
+  public openOnContext?: boolean;
 
   /**
    * Determines if the menu should close on scroll.
    * @public
    */
-  @observable
   @attr({ attribute: 'close-on-scroll', mode: 'boolean' })
-  public closeOnScroll?: boolean = false;
+  public closeOnScroll?: boolean;
 
   /**
    * Determines if the menu open state should persis on click of menu item
    * @public
    */
-  @observable
   @attr({ attribute: 'persist-on-item-click', mode: 'boolean' })
-  public persistOnItemClick?: boolean = false;
+  public persistOnItemClick?: boolean;
+
+  /**
+   * Determines if the menu is in split state.
+   * @public
+   */
+  @attr({ mode: 'boolean' })
+  public split?: boolean;
 
   /**
    * Holds the slotted menu list.
@@ -87,6 +94,13 @@ export class Menu extends FASTElement {
    */
   @observable
   public slottedTriggers: HTMLElement[] = [];
+
+  /**
+   * Holds the primary slot element.
+   * @public
+   */
+  @observable
+  public primaryAction!: HTMLSlotElement;
 
   /**
    * Defines whether the menu is open or not.
@@ -154,7 +168,15 @@ export class Menu extends FASTElement {
    * Closes the menu.
    * @public
    */
-  public closeMenu = () => {
+  public closeMenu = (event?: Event) => {
+    // Keep menu open if the event target is a menu item checkbox or radio
+    if (
+      event?.target instanceof MenuItem &&
+      (event.target.getAttribute('role') === MenuItemRole.menuitemcheckbox ||
+        event.target.getAttribute('role') === MenuItemRole.menuitemradio)
+    ) {
+      return;
+    }
     this._menuList?.togglePopover(false);
 
     if (this.closeOnScroll) {
@@ -204,8 +226,10 @@ export class Menu extends FASTElement {
    * @param e - the event
    * @returns void
    */
-  public toggleHandler = (e: Event | ToggleEvent): void => {
-    if (e instanceof ToggleEvent) {
+  public toggleHandler = (e: Event): void => {
+    // @ts-expect-error - Baseline 2024
+    if (e.type === 'toggle' && e.newState) {
+      // @ts-expect-error - Baseline 2024
       const newState = e.newState === 'open' ? true : false;
       this._trigger?.setAttribute('aria-expanded', `${newState}`);
       this._open = newState;
@@ -238,9 +262,9 @@ export class Menu extends FASTElement {
    */
   public persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void {
     if (!newValue) {
-      this._menuList?.addEventListener('click', this.closeMenu);
+      this._menuList?.addEventListener('change', this.closeMenu);
     } else {
-      this._menuList?.removeEventListener('click', this.closeMenu);
+      this._menuList?.removeEventListener('change', this.closeMenu);
     }
   }
 
@@ -288,7 +312,7 @@ export class Menu extends FASTElement {
     this._trigger?.addEventListener('keydown', this.triggerKeydownHandler);
 
     if (!this.persistOnItemClick) {
-      this._menuList?.addEventListener('click', this.closeMenu);
+      this._menuList?.addEventListener('change', this.closeMenu);
     }
     if (this.openOnHover) {
       this._trigger?.addEventListener('mouseover', this.openMenu);
@@ -313,7 +337,7 @@ export class Menu extends FASTElement {
 
     this._trigger?.removeEventListener('keydown', this.triggerKeydownHandler);
     if (!this.persistOnItemClick) {
-      this._menuList?.removeEventListener('click', this.closeMenu);
+      this._menuList?.removeEventListener('change', this.closeMenu);
     }
     if (this.openOnHover) {
       this._trigger?.removeEventListener('mouseover', this.openMenu);
@@ -349,7 +373,11 @@ export class Menu extends FASTElement {
         break;
       case keyTab:
         if (this._open) this.closeMenu();
-        if (e.shiftKey && e.composedPath()[0] !== this._trigger) {
+        if (
+          e.shiftKey &&
+          e.composedPath()[0] !== this._trigger &&
+          (e.composedPath()[0] as HTMLElement).assignedSlot !== this.primaryAction
+        ) {
           this.focusTrigger();
         } else if (e.shiftKey) {
           return true;

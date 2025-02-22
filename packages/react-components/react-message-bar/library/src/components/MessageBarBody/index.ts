@@ -1,5 +1,10 @@
-export * from './MessageBarBody';
-export * from './MessageBarBody.types';
-export * from './renderMessageBarBody';
-export * from './useMessageBarBody';
-export * from './useMessageBarBodyStyles.styles';
+export { MessageBarBody } from './MessageBarBody';
+export type {
+  MessageBarBodyContextValues,
+  MessageBarBodyProps,
+  MessageBarBodySlots,
+  MessageBarBodyState,
+} from './MessageBarBody.types';
+export { renderMessageBarBody_unstable } from './renderMessageBarBody';
+export { useMessageBarBody_unstable } from './useMessageBarBody';
+export { messageBarBodyClassNames, useMessageBarBodyStyles_unstable } from './useMessageBarBodyStyles.styles';

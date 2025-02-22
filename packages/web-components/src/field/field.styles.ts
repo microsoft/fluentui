@@ -1,5 +1,21 @@
 import { css } from '@microsoft/fast-element';
 import {
+  badInputState,
+  customErrorState,
+  disabledState,
+  focusVisibleState,
+  hasMessageState,
+  patternMismatchState,
+  rangeOverflowState,
+  rangeUnderflowState,
+  stepMismatchState,
+  tooLongState,
+  tooShortState,
+  typeMismatchState,
+  validState,
+  valueMissingState,
+} from '../styles/states/index.js';
+import {
   borderRadiusMedium,
   colorNeutralForeground1,
   colorStrokeFocus2,
@@ -13,90 +29,14 @@ import {
   lineHeightBase300,
   lineHeightBase400,
   spacingHorizontalM,
+  spacingHorizontalS,
+  spacingVerticalM,
   spacingVerticalS,
   spacingVerticalXXS,
   strokeWidthThick,
 } from '../theme/design-tokens.js';
 import { display } from '../utils/display.js';
 import { ValidationFlags } from './field.options.js';
-
-/**
- * Selector for the `disabled` state.
- * @public
- */
-const disabledState = css.partial`:is([state--disabled], :state(disabled))`;
-
-/**
- * Selector for the `focus-visible` state.
- * @public
- */
-const focusVisibleState = css.partial`:is([state--focus-visible], :state(focus-visible))`;
-
-/**
- * Selector for the `bad-input` state.
- * @public
- */
-const badInputState = css.partial`:is([state--${ValidationFlags.badInput}], :state(${ValidationFlags.badInput}))`;
-
-/**
- * Selector for the `custom-error` state.
- * @public
- */
-const customErrorState = css.partial`:is([state--${ValidationFlags.customError}], :state(${ValidationFlags.customError}))`;
-
-/**
- * Selector for the `pattern-mismatch` state.
- * @public
- */
-const patternMismatchState = css.partial`:is([state--${ValidationFlags.patternMismatch}], :state(${ValidationFlags.patternMismatch}))`;
-
-/**
- * Selector for the `range-overflow` state.
- * @public
- */
-const rangeOverflowState = css.partial`:is([state--${ValidationFlags.rangeOverflow}], :state(${ValidationFlags.rangeOverflow}))`;
-
-/**
- * Selector for the `range-underflow` state.
- * @public
- */
-const rangeUnderflowState = css.partial`:is([state--${ValidationFlags.rangeUnderflow}], :state(${ValidationFlags.rangeUnderflow}))`;
-
-/**
- * Selector for the `step-mismatch` state.
- * @public
- */
-const stepMismatchState = css.partial`:is([state--${ValidationFlags.stepMismatch}], :state(${ValidationFlags.stepMismatch}))`;
-
-/**
- * Selector for the `too-long` state.
- * @public
- */
-const tooLongState = css.partial`:is([state--${ValidationFlags.tooLong}], :state(${ValidationFlags.tooLong}))`;
-
-/**
- * Selector for the `too-short` state.
- * @public
- */
-const tooShortState = css.partial`:is([state--${ValidationFlags.tooShort}], :state(${ValidationFlags.tooShort}))`;
-
-/**
- * Selector for the `type-mismatch` state.
- * @public
- */
-const typeMismatchState = css.partial`:is([state--${ValidationFlags.typeMismatch}], :state(${ValidationFlags.typeMismatch}))`;
-
-/**
- * Selector for the `valid` state.
- * @public
- */
-const validState = css.partial`:is([state-${ValidationFlags.valid}], :state(${ValidationFlags.valid}))`;
-
-/**
- * Selector for the `value-missing` state.
- * @public
- */
-const valueMissingState = css.partial`:is([state--${ValidationFlags.valueMissing}], :state(${ValidationFlags.valueMissing}))`;
 
 /**
  * The styles for the {@link Field} component.
@@ -107,11 +47,11 @@ export const styles = css`
   ${display('inline-grid')}
 
   :host {
+    color: ${colorNeutralForeground1};
     align-items: center;
-    cursor: pointer;
     gap: 0 ${spacingHorizontalM};
     justify-items: start;
-    padding: ${spacingVerticalS};
+    position: relative;
   }
 
   :has([slot='message']) {
@@ -144,15 +84,28 @@ export const styles = css`
 
   :host([label-position='below']) {
     grid-template-areas: 'input' 'label' 'message';
+    justify-items: center;
   }
 
-  ::slotted([slot='label']) {
-    cursor: pointer;
-    grid-area: label;
+  :host([label-position='below']) ::slotted([slot='label']) {
+    margin-block-start: ${spacingVerticalM};
+  }
+
+  :host([label-position='below']:not(${hasMessageState})) {
+    grid-template-areas: 'input' 'label';
+  }
+
+  ::slotted([slot='label'])::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
   }
 
   ::slotted([slot='input']) {
     grid-area: input;
+    position: relative;
+    z-index: 1;
   }
 
   ::slotted([slot='message']) {
@@ -165,13 +118,14 @@ export const styles = css`
     outline: ${strokeWidthThick} solid ${colorStrokeFocus2};
   }
 
-  ::slotted(label) {
+  ::slotted(label),
+  ::slotted([slot='label']) {
+    cursor: inherit;
     display: inline-flex;
-    color: ${colorNeutralForeground1};
-    cursor: pointer;
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
+    grid-area: label;
     line-height: ${lineHeightBase300};
     user-select: none;
   }
@@ -191,8 +145,7 @@ export const styles = css`
     font-weight: ${fontWeightSemibold};
   }
 
-  :host(${disabledState}) ::slotted(label) {
-    color: ${colorNeutralForeground1};
+  :host(${disabledState}) {
     cursor: default;
   }
 

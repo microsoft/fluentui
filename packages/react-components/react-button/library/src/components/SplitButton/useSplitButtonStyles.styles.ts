@@ -10,6 +10,10 @@ export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
   primaryActionButton: 'fui-SplitButton__primaryActionButton',
 };
 
+// WCAG minimum target size for pointer targets that are immediately adjacent to other targets:
+// https://w3c.github.io/wcag/guidelines/22/#target-size-minimum
+const MIN_TARGET_SIZE = '24px';
+
 const useFocusStyles = makeStyles({
   primaryActionButton: createCustomFocusIndicatorStyle({
     borderTopRightRadius: 0,
@@ -40,7 +44,7 @@ const useRootStyles = makeStyles({
       borderLeftWidth: 0,
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
-      minWidth: 0,
+      minWidth: MIN_TARGET_SIZE,
     },
   },
 
@@ -88,35 +92,35 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStroke1,
+      borderRightColor: tokens.colorTransparentBackground,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Hover,
+        borderRightColor: tokens.colorTransparentBackgroundHover,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Pressed,
+        borderRightColor: tokens.colorTransparentBackgroundPressed,
       },
     },
   },
   transparent: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStroke1,
+      borderRightColor: tokens.colorTransparentBackground,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Hover,
+        borderRightColor: tokens.colorTransparentBackgroundHover,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Pressed,
+        borderRightColor: tokens.colorTransparentBackgroundPressed,
       },
     },
   },

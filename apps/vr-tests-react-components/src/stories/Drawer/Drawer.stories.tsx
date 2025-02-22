@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 
 import {
   Drawer,
@@ -7,8 +7,8 @@ import {
   DrawerHeaderTitle,
   DrawerBody,
   DrawerHeaderNavigation,
-  DrawerProps,
   OverlayDrawer,
+  OverlayDrawerProps,
   InlineDrawer,
   InlineDrawerProps,
   DrawerFooter,
@@ -26,7 +26,7 @@ import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities'
 
 export default {
   title: 'Drawer',
-} as ComponentMeta<typeof Drawer>;
+} satisfies Meta<typeof Drawer>;
 
 const ExampleDrawerHeader = () => (
   <DrawerHeader>
@@ -53,9 +53,11 @@ const ExampleDrawerFooter = () => (
 );
 
 const ExampleDrawer = ({
-  Component = Drawer,
-  ...props
-}: { Component?: React.ComponentType<DrawerProps> } & DrawerProps) => (
+  Component,
+  props,
+}:
+  | { Component: typeof OverlayDrawer; props?: OverlayDrawerProps }
+  | { Component: typeof InlineDrawer; props?: InlineDrawerProps }) => (
   <Component open {...props}>
     <ExampleDrawerHeader />
 
@@ -68,9 +70,11 @@ const ExampleDrawer = ({
 );
 
 const ExampleLargeContentScrollDrawer = ({
-  Component = Drawer,
-  ...props
-}: { Component?: React.ComponentType<DrawerProps> } & DrawerProps) => (
+  Component,
+  props,
+}:
+  | { Component: typeof OverlayDrawer; props?: OverlayDrawerProps }
+  | { Component: typeof InlineDrawer; props?: InlineDrawerProps }) => (
   <Component open {...props}>
     <ExampleDrawerHeader />
 
@@ -99,13 +103,13 @@ const ExampleInlineDrawer = (props: InlineDrawerProps) => {
   return (
     <div style={{ display: 'flex' }}>
       {props.position === 'end' && pageContent}
-      <ExampleDrawer Component={InlineDrawer} {...props} style={{ height: '500px' }} />
+      <ExampleDrawer Component={InlineDrawer} props={{ style: { height: '500px' } }} />
       {props.position === 'start' && pageContent}
     </div>
   );
 };
 
-export const Default = () => <ExampleDrawer />;
+export const Default = () => <ExampleDrawer Component={Drawer} />;
 
 Default.storyName = 'default drawer';
 
@@ -121,7 +125,7 @@ export const OverlayDarkMode = getStoryVariant(Overlay, DARK_MODE);
 export const OverlayHighContrast = getStoryVariant(Overlay, HIGH_CONTRAST);
 export const OverlayRTL = getStoryVariant(Overlay, RTL);
 
-export const PositionStartOverlay = () => <ExampleDrawer Component={OverlayDrawer} position="start" />;
+export const PositionStartOverlay = () => <ExampleDrawer Component={OverlayDrawer} props={{ position: 'start' }} />;
 
 PositionStartOverlay.storyName = 'overlay drawer position start';
 
@@ -129,7 +133,7 @@ export const PositionStartOverlayDarkMode = getStoryVariant(PositionStartOverlay
 export const PositionStartOverlayHighContrast = getStoryVariant(PositionStartOverlay, HIGH_CONTRAST);
 export const PositionStartOverlayRTL = getStoryVariant(PositionStartOverlay, RTL);
 
-export const PositionEndOverlay = () => <ExampleDrawer Component={OverlayDrawer} position="end" />;
+export const PositionEndOverlay = () => <ExampleDrawer Component={OverlayDrawer} props={{ position: 'end' }} />;
 
 PositionEndOverlay.storyName = 'overlay drawer position end';
 
@@ -137,7 +141,7 @@ export const PositionEndOverlayDarkMode = getStoryVariant(PositionEndOverlay, DA
 export const PositionEndOverlayHighContrast = getStoryVariant(PositionEndOverlay, HIGH_CONTRAST);
 export const PositionEndOverlayRTL = getStoryVariant(PositionEndOverlay, RTL);
 
-export const NonModalOverlay = () => <ExampleDrawer Component={OverlayDrawer} modalType="non-modal" />;
+export const NonModalOverlay = () => <ExampleDrawer Component={OverlayDrawer} props={{ modalType: 'non-modal' }} />;
 
 NonModalOverlay.storyName = 'overlay drawer non modal';
 
@@ -145,7 +149,7 @@ export const NonModalOverlayDarkMode = getStoryVariant(NonModalOverlay, DARK_MOD
 export const NonModalOverlayHighContrast = getStoryVariant(NonModalOverlay, HIGH_CONTRAST);
 export const NonModalOverlayRTL = getStoryVariant(NonModalOverlay, RTL);
 
-export const AlertOverlay = () => <ExampleDrawer Component={OverlayDrawer} modalType="alert" />;
+export const AlertOverlay = () => <ExampleDrawer Component={OverlayDrawer} props={{ modalType: 'alert' }} />;
 
 AlertOverlay.storyName = 'overlay drawer alert';
 
@@ -153,7 +157,7 @@ export const AlertOverlayDarkMode = getStoryVariant(AlertOverlay, DARK_MODE);
 export const AlertOverlayHighContrast = getStoryVariant(AlertOverlay, HIGH_CONTRAST);
 export const AlertOverlayRTL = getStoryVariant(AlertOverlay, RTL);
 
-export const MediumOverlay = () => <ExampleDrawer Component={OverlayDrawer} size="medium" />;
+export const MediumOverlay = () => <ExampleDrawer Component={OverlayDrawer} props={{ size: 'medium' }} />;
 
 MediumOverlay.storyName = 'overlay drawer medium';
 
@@ -161,7 +165,7 @@ export const MediumOverlayDarkMode = getStoryVariant(MediumOverlay, DARK_MODE);
 export const MediumOverlayHighContrast = getStoryVariant(MediumOverlay, HIGH_CONTRAST);
 export const MediumOverlayRTL = getStoryVariant(MediumOverlay, RTL);
 
-export const LargeOverlay = () => <ExampleDrawer Component={OverlayDrawer} size="large" />;
+export const LargeOverlay = () => <ExampleDrawer Component={OverlayDrawer} props={{ size: 'large' }} />;
 
 LargeOverlay.storyName = 'overlay drawer large';
 
@@ -169,7 +173,7 @@ export const LargeOverlayDarkMode = getStoryVariant(LargeOverlay, DARK_MODE);
 export const LargeOverlayHighContrast = getStoryVariant(LargeOverlay, HIGH_CONTRAST);
 export const LargeOverlayRTL = getStoryVariant(LargeOverlay, RTL);
 
-export const FullOverlay = () => <ExampleDrawer Component={OverlayDrawer} size="full" />;
+export const FullOverlay = () => <ExampleDrawer Component={OverlayDrawer} props={{ size: 'full' }} />;
 
 FullOverlay.storyName = 'overlay drawer full';
 
@@ -243,7 +247,7 @@ export const FullInlineRTL = getStoryVariant(FullInline, RTL);
 
 export const LargeContentScrollInline = () => (
   <div style={{ display: 'flex' }}>
-    <ExampleLargeContentScrollDrawer Component={InlineDrawer} style={{ height: '500px' }} />
+    <ExampleLargeContentScrollDrawer Component={InlineDrawer} props={{ style: { height: '500px' } }} />
     <div style={{ flex: 1, padding: '16px' }}>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum ullam repellat quis explicabo, alias consectetur
       rem quas iure assumenda cum ad esse hic itaque obcaecati? Nisi earum quo adipisci corrupti.

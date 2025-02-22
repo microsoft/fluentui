@@ -11,9 +11,9 @@ const typeAwareRules = {
 
 const root = configHelpers.findGitRoot();
 const unstableV9Packages = configHelpers.getV9UnstablePackages(root);
-const v9PackageDeps = Object.keys(
-  configHelpers.getPackageJson({ root, name: '@fluentui/react-components' }).dependencies,
-).filter(pkg => !unstableV9Packages.has(pkg));
+const v9PackageDeps = Object.keys(configHelpers.getPackageJson({ root, name: 'react-components' }).dependencies).filter(
+  pkg => !unstableV9Packages.has(pkg),
+);
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
@@ -30,6 +30,7 @@ module.exports = {
     '@fluentui/no-context-default-value': [
       'error',
       {
+        // nx-ignore-next-line - this is a valid use case to ignore workspace packages. keeping  them part of the project dependencies would be wrong assumption
         imports: ['react', '@fluentui/react-context-selector', '@fluentui/global-context'],
       },
     ],

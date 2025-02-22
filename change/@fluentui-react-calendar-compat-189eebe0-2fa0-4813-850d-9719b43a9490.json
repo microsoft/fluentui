@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove unnecessary group role, better table accName",
-  "packageName": "@fluentui/react-calendar-compat",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

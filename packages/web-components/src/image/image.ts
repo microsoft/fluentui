@@ -1,5 +1,5 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { swapStates, toggleState } from '../utils/element-internals.js';
 import { ImageFit, ImageShape } from './image.options.js';
 
 /**
@@ -22,7 +22,7 @@ export class Image extends FASTElement {
    * HTML attribute: block.
    */
   @attr({ mode: 'boolean' })
-  public block?: boolean = false;
+  public block?: boolean;
 
   /**
    * Handles changes to block custom states
@@ -87,12 +87,7 @@ export class Image extends FASTElement {
    * @param next - the next state
    */
   public fitChanged(prev: ImageFit | undefined, next: ImageFit | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `fit-${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `fit-${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, ImageFit, 'fit-');
   }
 
   /**
@@ -111,11 +106,6 @@ export class Image extends FASTElement {
    * @param next - the next state
    */
   public shapeChanged(prev: ImageShape | undefined, next: ImageShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, ImageShape);
   }
 }

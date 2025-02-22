@@ -1,8 +1,117 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Tue, 25 Jun 2024 07:32:52 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Dec 2024 07:22:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.20)
+
+Mon, 23 Dec 2024 07:22:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.19..@fluentui/react-focus_v8.9.20)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.11.6 ([PR #33445](https://github.com/microsoft/fluentui/pull/33445) by beachball)
+
+## [8.9.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.19)
+
+Fri, 13 Dec 2024 07:23:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.18..@fluentui/react-focus_v8.9.19)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.11.5 ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by beachball)
+
+## [8.9.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.18)
+
+Fri, 01 Nov 2024 07:23:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.17..@fluentui/react-focus_v8.9.18)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.11.4 ([PR #33167](https://github.com/microsoft/fluentui/pull/33167) by beachball)
+
+## [8.9.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.17)
+
+Fri, 11 Oct 2024 16:51:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.16..@fluentui/react-focus_v8.9.17)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.11.3 ([PR #33024](https://github.com/microsoft/fluentui/pull/33024) by beachball)
+- Bump @fluentui/utilities to v8.15.19 ([PR #33024](https://github.com/microsoft/fluentui/pull/33024) by beachball)
+
+## [8.9.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.16)
+
+Tue, 08 Oct 2024 07:23:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.15..@fluentui/react-focus_v8.9.16)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.11.2 ([PR #32971](https://github.com/microsoft/fluentui/pull/32971) by beachball)
+- Bump @fluentui/utilities to v8.15.18 ([PR #32971](https://github.com/microsoft/fluentui/pull/32971) by beachball)
+
+## [8.9.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.15)
+
+Wed, 02 Oct 2024 07:23:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.14..@fluentui/react-focus_v8.9.15)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.11.1 ([PR #32920](https://github.com/microsoft/fluentui/pull/32920) by beachball)
+- Bump @fluentui/utilities to v8.15.17 ([PR #32920](https://github.com/microsoft/fluentui/pull/32920) by beachball)
+
+## [8.9.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.14)
+
+Mon, 30 Sep 2024 07:23:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.13..@fluentui/react-focus_v8.9.14)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.11.0 ([PR #32437](https://github.com/microsoft/fluentui/pull/32437) by beachball)
+- Bump @fluentui/utilities to v8.15.16 ([PR #32437](https://github.com/microsoft/fluentui/pull/32437) by beachball)
+
+## [8.9.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.13)
+
+Thu, 15 Aug 2024 07:23:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.12..@fluentui/react-focus_v8.9.13)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.10.21 ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by beachball)
+
+## [8.9.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.12)
+
+Thu, 08 Aug 2024 07:24:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.11..@fluentui/react-focus_v8.9.12)
+
+### Patches
+
+- fix: ship bundled and umd code to registry ([PR #32212](https://github.com/microsoft/fluentui/pull/32212) by martinhochel@microsoft.com)
+- Bump @fluentui/merge-styles to v8.6.13 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+- Bump @fluentui/style-utilities to v8.10.20 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+- Bump @fluentui/utilities to v8.15.15 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+
+## [8.9.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.11)
+
+Thu, 01 Aug 2024 07:24:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.10..@fluentui/react-focus_v8.9.11)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.10.19 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
+- Bump @fluentui/utilities to v8.15.14 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
+
+## [8.9.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.10)
+
+Tue, 09 Jul 2024 07:36:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.9..@fluentui/react-focus_v8.9.10)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- Bump @fluentui/style-utilities to v8.10.18 ([commit](https://github.com/microsoft/fluentui/commit/71daccf5b87388209fe648aeb64adf0b4cbdd9e6) by beachball)
+- Bump @fluentui/utilities to v8.15.13 ([commit](https://github.com/microsoft/fluentui/commit/71daccf5b87388209fe648aeb64adf0b4cbdd9e6) by beachball)
 
 ## [8.9.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.9)
 

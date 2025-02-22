@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: do not create global header/footer roles in Drawer",
-  "packageName": "@fluentui/react-drawer",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

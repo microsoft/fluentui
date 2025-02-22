@@ -7,6 +7,7 @@ import accessibilityMd from './DropdownAccessibility.md';
 
 export { Default } from './DropdownDefault.stories';
 export { Appearance } from './DropdownAppearance.stories';
+export { WithField } from './DropdownField.stories';
 export { Grouped } from './DropdownGrouped.stories';
 export { Clearable } from './DropdownClearable.stories';
 export { ComplexOptions } from './DropdownComplexOptions.stories';
@@ -17,6 +18,7 @@ export { Size } from './DropdownSize.stories';
 export { Disabled } from './DropdownDisabled.stories';
 export { TruncatedValue } from './DropdownTruncation.stories';
 export { ActiveOptionChange } from './DropdownActiveOptionChange.stories';
+export { ControllingOpenAndClose } from './DropdownControllingOpenAndClose.stories';
 
 export default {
   title: 'Components/Dropdown',

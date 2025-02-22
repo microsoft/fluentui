@@ -26,6 +26,7 @@ import type { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Home } from '@fluentui/keyboard-keys';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { Radio } from '@fluentui/react-radio';
 import { RadioProps } from '@fluentui/react-radio';
 import * as React_2 from 'react';
@@ -46,7 +47,7 @@ export type FlattenTreeItem<Props extends TreeItemProps> = Omit<Props, 'subtree'
 export const FlatTree: ForwardRefComponent<FlatTreeProps>;
 
 // @public (undocumented)
-export const flatTreeClassNames: SlotClassNames<FlatTreeSlots>;
+export const flatTreeClassNames: SlotClassNames<Omit<FlatTreeSlots, 'collapseMotion'>>;
 
 // @public
 export const FlatTreeItem: ForwardRefComponent<FlatTreeItemProps>;
@@ -61,6 +62,7 @@ export type FlatTreeItemProps = TreeItemProps & {
 
 // @public (undocumented)
 export type FlatTreeProps = ComponentProps<TreeSlots> & {
+    navigationMode?: 'tree' | 'treegrid';
     appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
     size?: 'small' | 'medium';
     openItems?: Iterable<TreeItemValue>;
@@ -145,7 +147,7 @@ export type TreeCheckedChangeData = {
 export type TreeCheckedChangeEvent = TreeCheckedChangeData['event'];
 
 // @public (undocumented)
-export const treeClassNames: SlotClassNames<TreeSlots>;
+export const treeClassNames: SlotClassNames<Omit<TreeSlots, 'collapseMotion'>>;
 
 // @public (undocumented)
 export type TreeContextValue = {
@@ -158,6 +160,8 @@ export type TreeContextValue = {
     openItems: ImmutableSet<TreeItemValue>;
     checkedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>;
     requestTreeResponse(request: TreeItemRequest): void;
+    forceUpdateRovingTabIndex?(): void;
+    navigationMode?: 'tree' | 'treegrid';
 };
 
 // @public (undocumented)
@@ -330,6 +334,9 @@ export type TreeNavigationData_unstable = {
 export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 
 // @public (undocumented)
+export type TreeNavigationMode = 'tree' | 'treegrid';
+
+// @public (undocumented)
 export type TreeOpenChangeData = {
     open: boolean;
     openItems: Set<TreeItemValue>;
@@ -364,6 +371,7 @@ export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
 
 // @public (undocumented)
 export type TreeProps = ComponentProps<TreeSlots> & {
+    navigationMode?: TreeNavigationMode;
     appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
     size?: 'small' | 'medium';
     openItems?: Iterable<TreeItemValue>;
@@ -382,11 +390,15 @@ export const TreeProvider: {
 };
 
 // @public (undocumented)
+export const TreeRootReset: (props: TreeRootResetProps) => JSX.Element;
+
+// @public (undocumented)
 export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 
 // @public (undocumented)
 export type TreeSlots = {
     root: Slot<'div'>;
+    collapseMotion?: Slot<PresenceMotionSlotProps>;
 };
 
 // @public

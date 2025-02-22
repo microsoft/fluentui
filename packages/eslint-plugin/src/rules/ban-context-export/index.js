@@ -35,7 +35,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Ban export of React context or context selector objects',
-      recommended: 'error',
     },
     messages: {
       nativeContext: '{{exportName}} should not be exported directly',
@@ -50,7 +49,7 @@ module.exports = createRule({
      * @param {string} exportName
      */
     function checkContextType(node, exportName) {
-      const currentFileName = context.getFilename();
+      const currentFileName = context.filename;
       if (exclude.some(pattern => minimatch(currentFileName, pattern))) {
         return;
       }
@@ -102,7 +101,7 @@ module.exports = createRule({
               messageId: options.messageId,
               data: {
                 exportName,
-                filename: context.getFilename(),
+                filename: context.filename,
               },
             });
           }

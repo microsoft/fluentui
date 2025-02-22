@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, initializeComponentRef, warnDeprecations, warn } from '../../Utilities';
+import { classNamesFunction, FocusRects, initializeComponentRef, warnDeprecations, warn } from '../../Utilities';
 import { TextField } from '../../TextField';
 import { TooltipHost } from '../../Tooltip';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -120,7 +120,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       alphaSliderHidden: 'alphaType',
     });
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (strings.hue) {
       // warnDeprecations can't handle nested deprecated props
       warn("ColorPicker property 'strings.hue' was used but has been deprecated. Use 'strings.hueAriaLabel' instead.");
@@ -138,14 +138,14 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     const defaultStrings = ColorPickerBase.defaultProps.strings as Required<IColorPickerStrings>;
 
     this._textLabels = {
-      /* eslint-disable deprecation/deprecation */
+      /* eslint-disable @typescript-eslint/no-deprecated */
       r: props.redLabel || strings.red || defaultStrings.red,
       g: props.greenLabel || strings.green || defaultStrings.green,
       b: props.blueLabel || strings.blue || defaultStrings.blue,
       a: props.alphaLabel || strings.alpha || defaultStrings.alpha,
       hex: props.hexLabel || strings.hex || defaultStrings.hex,
       t: strings.transparency || defaultStrings.transparency,
-      /* eslint-enable deprecation/deprecation */
+      /* eslint-enable @typescript-eslint/no-deprecated */
     };
 
     this._strings = {
@@ -180,7 +180,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       className,
       styles,
       alphaType,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       alphaSliderHidden = alphaType === 'none',
       tooltipProps,
     } = props;
@@ -218,7 +218,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
               <ColorSlider
                 className="is-hue"
                 type="hue"
-                // eslint-disable-next-line deprecation/deprecation
+                // eslint-disable-next-line @typescript-eslint/no-deprecated
                 ariaLabel={strings.hue || strings.hueAriaLabel}
                 value={color.h}
                 onChange={this._onHChanged}
@@ -291,6 +291,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
             </tbody>
           </table>
         </div>
+        <FocusRects />
       </div>
     );
   }
@@ -346,7 +347,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     const isHex = component === 'hex';
     const isAlpha = component === 'a';
     const isTransparency = component === 't';
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     newValue = (newValue || '').substr(0, isHex ? MAX_HEX_LENGTH : MAX_RGBA_LENGTH);
 
     // Ignore what the user typed if it contains invalid characters

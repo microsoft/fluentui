@@ -1,79 +1,123 @@
 import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
-import { SliderSize as SliderSetSize } from './slider.options.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { SliderOrientation as SliderSetOrientation, SliderSize as SliderSetSize } from './slider.options.js';
 import type { Slider as FluentSlider } from './slider.js';
 
-type SliderStoryArgs = Args & FluentSlider;
-type SliderStoryMeta = Meta<SliderStoryArgs>;
+type Story = StoryObj<FluentSlider>;
 
-const storyTemplate = html<SliderStoryArgs>`
+const storyTemplate = html<StoryArgs<FluentSlider>>`
   <fluent-slider
-    ?disabled=${x => x.disabled}
-    ?readonly=${x => x.readOnly}
-    step=${x => x.step}
-    size=${x => x.size}
-    min=${x => x.min}
-    max=${x => x.max}
-    orientation=${x => x.orientation}
-    value=${x => x.value}
+    ?disabled="${story => story.disabled}"
+    id="${story => story.id}"
+    step="${story => story.step}"
+    size="${story => story.size}"
+    min="${story => story.min}"
+    max="${story => story.max}"
+    orientation="${story => story.orientation}"
+    value="${story => story.value}"
+    slot="${story => story.slot}"
   ></fluent-slider>
 `;
 
 export default {
   title: 'Components/Slider',
-  args: {
-    disabled: false,
-    readOnly: false,
-    min: 0,
-    max: 100,
-    size: SliderSetSize.medium,
-    orientation: 'horizontal',
-  },
+  render: renderComponent(storyTemplate),
   argTypes: {
-    disabled: { control: 'boolean' },
-    readOnly: { control: 'boolean' },
+    disabled: {
+      control: 'boolean',
+      description: "The element's disabled state.",
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
     min: {
       control: 'number',
-      defaultValue: 0,
+      description: 'The minimum value of the slider.',
+      table: { category: 'attributes', type: { summary: 'number' } },
     },
     max: {
       control: 'number',
-      defaultValue: 100,
+      description: 'The maximum value of the slider.',
+      table: { category: 'attributes', type: { summary: 'number' } },
     },
-    value: { control: 'number', defaultValue: 50 },
+    value: {
+      control: 'number',
+      description: 'The value of the slider.',
+      table: { category: 'attributes', type: { summary: 'number' } },
+    },
+    step: {
+      control: 'number',
+      description: 'The step value of the slider.',
+      table: { category: 'attributes', type: { summary: 'number' } },
+    },
     size: {
-      control: {
-        type: 'inline-radio',
-        options: Object.values(SliderSetSize),
+      control: 'select',
+      description: 'The size of the slider.',
+      options: ['', ...Object.values(SliderSetSize)],
+      mapping: { '': null, ...SliderSetSize },
+      table: {
+        category: 'attributes',
+        type: Object.values(SliderSetSize).join('|'),
       },
     },
     orientation: {
-      control: {
-        type: 'inline-radio',
-        options: ['horizontal', 'vertical'],
+      control: 'select',
+      description: 'The orientation of the slider',
+      options: ['', ...Object.values(SliderSetOrientation)],
+      mapping: { '': null, ...SliderSetOrientation },
+      table: {
+        category: 'attributes',
+        type: Object.values(SliderSetOrientation).join('|'),
       },
     },
   },
-} as SliderStoryMeta;
+} as Meta<FluentSlider>;
 
-export const Slider = renderComponent(storyTemplate).bind({});
+export const Default: Story = {};
 
-export const SliderOrientation = renderComponent(html<SliderStoryArgs>`
-  <fluent-slider orientation="vertical" step="20" value="60" min="0" max="100"></fluent-slider>
-  <fluent-slider orientation="horizontal" step="20" value="60" min="0" max="100"></fluent-slider>
-`);
+export const SliderInField: Story = {
+  render: renderComponent(html`
+    <fluent-field label-position="before">
+      <label slot="label" for="slider-in-field">Slider</label>
+      <fluent-slider slot="input" id="slider-in-field"></fluent-slider>
+    </fluent-field>
+  `),
+};
 
-export const SliderSize = renderComponent(html<SliderStoryArgs>`
-  <fluent-slider size="small" value="10" min="0" max="10"></fluent-slider>
-  <fluent-slider size="medium" value="10" min="0" max="10"></fluent-slider>
-`);
+export const VerticalOrientation: Story = {
+  args: {
+    orientation: SliderSetOrientation.vertical,
+  },
+};
 
-export const SliderSteps = renderComponent(html<SliderStoryArgs>`
-  <fluent-slider step="10" value="10" min="0" max="100"></fluent-slider>
-`);
+export const SmallSize: Story = {
+  args: {
+    size: SliderSetSize.small,
+  },
+};
 
-export const SliderDisabled = renderComponent(html<SliderStoryArgs>`
-  <fluent-slider disabled value="10" min="0" max="100"></fluent-slider>
-  <fluent-slider step="25" disabled value="50" min="0" max="100"></fluent-slider>
-`);
+export const MediumSize: Story = {
+  args: {
+    size: SliderSetSize.medium,
+  },
+};
+
+export const MinMax: Story = {
+  args: {
+    // @ts-expect-error Slider attrs are typed as strings??
+    min: 0,
+    // @ts-expect-error Slider attrs are typed as strings??
+    max: 100,
+  },
+};
+
+export const SliderSteps: Story = {
+  args: {
+    // @ts-expect-error Slider attrs are typed as strings??
+    step: 10,
+  },
+};
+
+export const SliderDisabled = {
+  args: {
+    disabled: true,
+  },
+};

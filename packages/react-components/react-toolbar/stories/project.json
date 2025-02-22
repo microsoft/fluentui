@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-toolbar-stories",
+  "name": "react-toolbar-stories",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-toolbar/stories/src",

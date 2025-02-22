@@ -5,7 +5,6 @@ import { Portal } from '@fluentui/react-portal';
 import { assertSlots } from '@fluentui/react-utilities';
 
 import { DialogSurfaceProvider } from '../../contexts';
-import { DialogBackdropMotion } from '../DialogBackdropMotion';
 import type { DialogSurfaceState, DialogSurfaceSlots, DialogSurfaceContextValues } from './DialogSurface.types';
 
 /**
@@ -16,11 +15,14 @@ export const renderDialogSurface_unstable = (state: DialogSurfaceState, contextV
 
   return (
     <Portal mountNode={state.mountNode}>
-      {state.backdrop && (
-        <DialogBackdropMotion appear visible={state.open}>
-          <state.backdrop />
-        </DialogBackdropMotion>
-      )}
+      {state.backdrop &&
+        // TODO: state.backdropMotion is non nullable, but assertSlots asserts it as nullable
+        // FIXME: this should be resolved by properly splitting props and state slots declaration
+        state.backdropMotion && (
+          <state.backdropMotion>
+            <state.backdrop />
+          </state.backdropMotion>
+        )}
       <DialogSurfaceProvider value={contextValues.dialogSurface}>
         <state.root />
       </DialogSurfaceProvider>

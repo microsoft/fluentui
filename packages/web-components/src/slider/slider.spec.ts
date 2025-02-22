@@ -1,259 +1,201 @@
-import { expect, test } from '@playwright/test';
-import type { Locator, Page } from '@playwright/test';
-import { Direction } from '@microsoft/fast-web-utilities';
-import { fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 import type { Slider } from './slider.js';
+import { SliderSize } from './slider.options.js';
 
 test.describe('Slider', () => {
-  let page: Page;
-  let element: Locator;
-  let root: Locator;
-
-  test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
-
-    element = page.locator('fluent-slider');
-
-    root = page.locator('#root');
-
-    await page.goto(fixtureURL('components-slider--slider'));
-  });
-
-  test.afterAll(async () => {
-    await page.close();
-  });
-
-  test('should set and retrieve the `size` property correctly', async () => {
-    await element.evaluate((node: Slider) => {
-      node.size = 'small';
-    });
-
-    await expect(element).toHaveJSProperty('size', 'small');
-
-    await element.evaluate((node: Slider) => {
-      node.size = 'medium';
-    });
-
-    await expect(element).toHaveJSProperty('size', 'medium');
+  test.use({
+    tagName: 'fluent-slider',
   });
 
   // Foundation tests
-  test('should have a role of `slider`', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
-    await expect(element).toHaveAttribute('role', 'slider');
+  test('should have a default role of `slider`', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await expect(element).toHaveJSProperty('elementInternals.role', 'slider');
   });
 
-  test('should set a default `min` property of 0 when `min` is not provided', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
+  test('should have default empty string values if `min`, `max`, and `step` attributes are not set', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-    await expect(element).toHaveJSProperty('min', 0);
+    await expect(element).toHaveJSProperty('min', '');
+
+    await expect(element).toHaveJSProperty('max', '');
+
+    await expect(element).toHaveJSProperty('step', '');
   });
 
-  test('should set a default `max` property of 10 when `max` is not provided', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
+  test('should reference connected `<label>` elements', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await expect(element).toHaveJSProperty('max', 10);
+    await fastPage.setTemplate(/* html */ `
+      <label for="slider">Label 1</label>
+      <fluent-slider id="slider"></fluent-slider>
+      <label for="slider">Label 2</label>
+    `);
+
+    await expect(element).toHaveJSProperty('labels.length', 2);
+
+    expect(await element.evaluate((el: Slider) => el.labels[0].textContent)).toBe('Label 1');
+
+    expect(await element.evaluate((el: Slider) => el.labels[1].textContent)).toBe('Label 2');
   });
 
-  test('should set a `tabindex` of 0', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
+  test('should set a `tabindex` of 0', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveAttribute('tabindex', '0');
   });
 
-  test('should NOT set a default `aria-disabled` value when `disabled` is not defined', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
+  test('should set a default `elementInternals.ariaOrientation` when `orientation` is not defined', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-    const hasAriaDisabled = await element.evaluate((node: Element) => node.hasAttribute('aria-disabled'));
-
-    expect(hasAriaDisabled).toBe(false);
+    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
   });
 
-  test('should set a default `aria-orientation` value when `orientation` is not defined', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
+  test('should initialize to the initial value if no value property is set', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await expect(element).toHaveAttribute('aria-orientation', 'horizontal');
+    await expect(element).toHaveJSProperty('value', '50');
   });
 
-  test('should NOT set a default `aria-readonly` value when `readonly` is not defined', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-              <fluent-slider></fluent-slider>
-          `;
-    });
+  test('should NOT set default `elementInternals.ariaDisabled` when `disabled` is not defined', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-    const hasAriaReadonly = await element.evaluate((node: Element) => node.hasAttribute('aria-readonly'));
-
-    expect(hasAriaReadonly).toBe(false);
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
   });
 
-  test('should initialize to the initial value if no value property is set', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
+  test('should set `elementInternals.ariaDisabled` when the `disabled` attribute is set', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    const initialValue = await element.evaluate<string, Slider>(node => node.initialValue);
+    await fastPage.setTemplate({ attributes: { disabled: true } });
 
-    await expect(element).toHaveJSProperty('value', initialValue);
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
   });
 
-  test('should set the `aria-disabled` attribute when `disabled` value is true', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
+  test('should set the `elementInternals.ariaDisabled` when `disabled` property is true', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
 
     await element.evaluate((node: Slider) => {
       node.disabled = true;
     });
 
-    await expect(element).toHaveAttribute('aria-disabled', 'true');
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
   });
 
-  test('should NOT set a tabindex when `disabled` value is true', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
+  test('should set a negative `tabindex` when `disabled` is true', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.evaluate((node: Slider) => {
-      node.disabled = true;
-    });
+    await fastPage.setTemplate({ attributes: { disabled: true } });
 
-    await expect(element).not.toHaveAttribute('tabindex', '0');
+    await expect(element).toHaveAttribute('tabindex', '-1');
   });
 
-  test('should set the `aria-readonly` attribute when `readonly` value is true', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
+  test('should be enabled/disabled by the associated fieldset', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const fieldset = page.locator('fieldset');
 
-    await element.evaluate((node: Slider) => {
-      node.readOnly = true;
-    });
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fieldset>
+          <fluent-slider></fluent-slider>
+        </fieldset>
+      </form>
+    `);
 
-    await expect(element).toHaveAttribute('aria-readonly', 'true');
+    await fieldset.evaluate((node: HTMLFieldSetElement) => (node.disabled = true));
+
+    // The `disabled` property and attribute should not be affected.
+    await expect(element).toHaveJSProperty('disabled', false);
+
+    await expect(element).not.toHaveAttribute('disabled');
+
+    // But `ariaDisabled` and `tabIndex` should be updated.
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
+
+    await expect(element).toHaveAttribute('tabindex', '-1');
+
+    await fieldset.evaluate((node: HTMLFieldSetElement) => (node.disabled = false));
+
+    // The `disabled` property and attribute should not be affected.
+    await expect(element).toHaveJSProperty('disabled', false);
+
+    await expect(element).not.toHaveAttribute('disabled');
+
+    // But `ariaDisabled` and `tabIndex` should be updated.
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
+
+    await expect(element).toHaveAttribute('tabindex', '0');
   });
 
-  test('should set the `aria-orientation` attribute equal to the `orientation` value', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
+  test('should set `elementInternals.ariaOrientation` to `horizontal` when `orientation` is set to `horizontal`', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    await fastPage.setTemplate({ attributes: { orientation: 'horizontal' } });
 
-    await element.evaluate((node: Slider) => {
-      node.orientation = 'horizontal';
-    });
-
-    await expect(element).toHaveAttribute('aria-orientation', 'horizontal');
-
-    await element.evaluate((node: Slider, SliderOrientation) => {
-      node.orientation = 'vertical';
-    });
-
-    await expect(element).toHaveAttribute('aria-orientation', 'vertical');
+    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
   });
 
-  test('should set direction equal to the `direction` value', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-              <fluent-slider></fluent-slider>
-          `;
-    });
+  test('should set `elementInternals.ariaOrientation` to `vertical` when `orientation` is set to `vertical`', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    await fastPage.setTemplate({ attributes: { orientation: 'vertical' } });
 
-    await element.evaluate((node: Slider) => {
-      node.direction = 'ltr' as Direction;
-    });
-
-    await expect(element).toHaveJSProperty('direction', 'ltr');
-
-    await element.evaluate((node: Slider) => {
-      node.direction = 'rtl' as Direction;
-    });
-
-    await expect(element).toHaveJSProperty('direction', 'rtl');
+    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
   });
 
-  test('should set the `aria-valuenow` attribute with the `value` property when provided', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
+  for (const size of Object.values(SliderSize)) {
+    test(`should set the \`size\` property to \`${size}\` when the \`size\` attribute is set to \`${size}\``, async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
 
-    await element.evaluate((node: Slider) => {
-      node.value = '8';
-    });
+      await fastPage.setTemplate({ attributes: { size } });
 
-    await expect(element).toHaveAttribute('aria-valuenow', '8');
+      await expect(element).toHaveJSProperty('size', size);
+
+      await expect(element).toHaveCustomState(size);
+    });
+  }
+
+  test('should set `elementInternals.ariaValueNow` with the `value` property when provided', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { value: '8' } });
+
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '8');
   });
 
-  test('should set the `aria-valuemin` attribute with the `min` property when provided', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
+  test('should set `elementInternals.ariaValueMin` with the `min` property when provided', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.evaluate((node: Slider) => {
-      node.min = 0;
-    });
+    await fastPage.setTemplate({ attributes: { min: '0' } });
 
-    await expect(element).toHaveAttribute('aria-valuemin', '0');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueMin', '0');
   });
 
-  test('should set the `aria-valuemax` attribute with the `max` property when provided', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
+  test('should set `elementInternals.ariaValueMax` attribute with the `max` property when provided', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-    await element.evaluate((node: Slider) => {
-      node.max = 75;
-    });
+    await fastPage.setTemplate({ attributes: { max: '75' } });
 
-    await expect(element).toHaveAttribute('aria-valuemax', '75');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueMax', '75');
   });
 
   test.describe('valueAsNumber', () => {
-    test('should allow setting value with number', async () => {
-      await root.evaluate(node => {
-        node.innerHTML = /* html */ `
-                <fluent-slider></fluent-slider>
-            `;
-      });
+    test('should allow setting value with number', async ({ fastPage }) => {
+      const { element } = fastPage;
 
       await element.evaluate((node: Slider) => {
         node.valueAsNumber = 8;
@@ -262,119 +204,102 @@ test.describe('Slider', () => {
       await expect(element).toHaveJSProperty('value', '8');
     });
 
-    test('should allow reading value as number', async () => {
-      await root.evaluate(node => {
-        node.innerHTML = /* html */ `
-                <fluent-slider></fluent-slider>
-            `;
-      });
+    test('should allow reading value as number', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await element.evaluate((node: Slider) => {
-        node.value = '8';
-      });
+      await fastPage.setTemplate({ attributes: { value: '8' } });
 
       await expect(element).toHaveJSProperty('valueAsNumber', 8);
     });
   });
 
-  test('should set an `aria-valuestring` attribute with the result of the valueTextFormatter() method', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
+  test('should set `elementInternals.ariaValueText` attribute with the result of the valueTextFormatter() method', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
     await element.evaluate((node: Slider) => {
       node.valueTextFormatter = () => 'Seventy Five Years';
     });
 
-    await expect(element).toHaveAttribute('aria-valuetext', 'Seventy Five Years');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueText', 'Seventy Five Years');
+
+    await element.evaluate((node: Slider) => {
+      node.valueTextFormatter = value => `New value is ${value}`;
+      node.value = '100';
+    });
+
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueText', 'New value is 100');
   });
 
   test.describe('increment and decrement methods', () => {
-    test('should increment the value when the `increment()` method is invoked', async () => {
-      await root.evaluate(node => {
-        node.innerHTML = /* html */ `
-                <fluent-slider min="0" max="100" value="50" step="5"></fluent-slider>
-            `;
-      });
+    test('should increment the value when the `increment()` method is invoked', async ({ fastPage }) => {
+      const { element } = fastPage;
 
-      await expect(element).toHaveAttribute('aria-valuenow', '50');
+      await fastPage.setTemplate({ attributes: { min: '0', max: '100', value: '50', step: '5' } });
 
       await element.evaluate((node: Slider) => {
         node.increment();
       });
 
       await expect(element).toHaveJSProperty('value', '55');
-
-      await expect(element).toHaveAttribute('aria-valuenow', '55');
+      await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '55');
     });
 
-    test('should decrement the value when the `decrement()` method is invoked', async () => {
-      await root.evaluate(node => {
-        node.innerHTML = /* html */ `
-                <fluent-slider min="0" max="100" value="50" step="5"></fluent-slider>
-            `;
-      });
+    test('should decrement the value when the `decrement()` method is invoked', async ({ fastPage }) => {
+      const { element } = fastPage;
+
+      await fastPage.setTemplate({ attributes: { min: '0', max: '100', value: '50', step: '5' } });
 
       await element.evaluate((node: Slider) => {
         node.decrement();
       });
 
       await expect(element).toHaveJSProperty('value', '45');
-
-      await expect(element).toHaveAttribute('aria-valuenow', '45');
+      await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '45');
     });
 
-    test('should increment the value when the `increment()` method is invoked and step is not provided', async () => {
-      await root.evaluate(node => {
-        node.innerHTML = /* html */ `
-                <fluent-slider min="0" max="100" value="50"></fluent-slider>
-            `;
-      });
+    test('should increment the value when the `increment()` method is invoked and step is not provided', async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
 
-      await expect(element).toHaveAttribute('aria-valuenow', '50');
+      await fastPage.setTemplate({ attributes: { min: '0', max: '100', value: '50' } });
 
       await element.evaluate((node: Slider) => {
         node.increment();
       });
 
       await expect(element).toHaveJSProperty('value', '51');
-
-      await expect(element).toHaveAttribute('aria-valuenow', '51');
+      await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '51');
     });
 
-    test('should decrement the value when the `decrement()` method is invoked and step is not provided', async () => {
-      await root.evaluate(node => {
-        node.innerHTML = /* html */ `
-                <fluent-slider min="0" max="100" value="50"></fluent-slider>
-            `;
-      });
+    test('should decrement the value when the `decrement()` method is invoked and step is not provided', async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
+
+      await fastPage.setTemplate({ attributes: { min: '0', max: '100', value: '50' } });
 
       await element.evaluate((node: Slider) => {
         node.decrement();
       });
 
       await expect(element).toHaveJSProperty('value', '49');
-
-      await expect(element).toHaveAttribute('aria-valuenow', '49');
+      await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '49');
     });
   });
 
-  test('should increase or decrease the slider value on arrow left/right keys', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <form>
-                <fluent-slider min="0" max="100"></fluent-slider>
-            </form>
-        `;
-    });
+  test('should increase or decrease the slider value on arrow left/right keys', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.waitFor({ state: 'attached' });
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fluent-slider min="0" max="100"></fluent-slider>
+      </form>
+    `);
 
-    await element.evaluate(node => {
-      node.focus();
-    });
+    await element.focus();
 
     await element.evaluate((node: Slider) => {
       node.value = '7';
@@ -391,20 +316,16 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('value', '7');
   });
 
-  test('should increase or decrease the slider value on arrow up/down keys', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <form>
-                <fluent-slider min="0" max="100"></fluent-slider>
-            </form>
-        `;
-    });
+  test('should increase or decrease the slider value on arrow up/down keys', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.waitFor({ state: 'attached' });
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fluent-slider min="0" max="100"></fluent-slider>
+      </form>
+    `);
 
-    await element.evaluate(node => {
-      node.focus();
-    });
+    await element.focus();
 
     await element.evaluate((node: Slider) => {
       node.value = '7';
@@ -421,12 +342,12 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('value', '7');
   });
 
-  test('should constrain and normalize the value between `min` and `max` when the value is out of range', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider min="0" max="100"></fluent-slider>
-        `;
-    });
+  test('should constrain and normalize the value between `min` and `max` when the value is out of range', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { min: '0', max: '100' } });
 
     await element.evaluate((node: Slider) => {
       node.value = '200';
@@ -434,7 +355,7 @@ test.describe('Slider', () => {
 
     await expect(element).toHaveJSProperty('value', '100');
 
-    await expect(element).toHaveAttribute('aria-valuenow', '100');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '100');
 
     await element.evaluate((node: Slider) => {
       node.value = '-5';
@@ -443,50 +364,84 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('value', '0');
   });
 
-  test('should initialize to the provided value attribute if set pre-connection', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider value="4"></fluent-slider>
-        `;
+  test('should return string values for `min`, `max`, and `step` regardless the value types were used to set', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { min: '0', max: '100', step: '20' } });
+
+    await element.evaluate<void, any>(node => {
+      node.min = 20;
+      node.max = 110;
+      node.step = 10;
     });
+
+    await expect(element).toHaveJSProperty('min', '20');
+    await expect(element).toHaveJSProperty('max', '110');
+    await expect(element).toHaveJSProperty('step', '10');
+  });
+
+  test('should set to empty strings if `min`, `max`, and `step` to be set as invalid values', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { min: '10', max: '200', step: '20' } });
+
+    await element.evaluate<void, any>(node => {
+      node.min = undefined;
+      node.max = null;
+      node.step = 'not a number';
+    });
+
+    await expect(element).toHaveJSProperty('min', '');
+    await expect(element).toHaveJSProperty('max', '');
+    await expect(element).toHaveJSProperty('step', '');
+  });
+
+  test('should initialize to the provided value attribute when set pre-connection', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { value: '4' } });
 
     await element.waitFor({ state: 'attached' });
 
     await expect(element).toHaveJSProperty('value', '4');
+
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '4');
   });
 
-  test('should initialize to the provided value attribute if set post-connection', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+  test('should initialize to the provided value property when set pre-connection', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate('');
+
+    await page.evaluate(() => {
+      const slider = document.createElement('fluent-slider') as Slider;
+
+      slider.value = '3';
+
+      document.body.appendChild(slider);
     });
+
+    await expect(element).toHaveJSProperty('value', '3');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '3');
+  });
+
+  test('should initialize to the provided value attribute when set post-connection', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await element.evaluate((node: Slider) => {
       node.setAttribute('value', '3');
     });
 
     await expect(element).toHaveJSProperty('value', '3');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '3');
   });
 
-  test('should initialize to the provided value property if set pre-connection', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = '';
+  test('should update the `stepMultiplier` when the `step` attribute has been updated', async ({ fastPage, page }) => {
+    const { element } = fastPage;
 
-      const slider = document.createElement('fluent-slider') as Slider;
-      slider.value = '3';
-      node.appendChild(slider);
-    });
-
-    await expect(element).toHaveJSProperty('value', '3');
-  });
-
-  test('should update the `stepMultiplier` when the `step` attribute has been updated', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider step="2" value="4"></fluent-slider>
-        `;
-    });
+    await fastPage.setTemplate({ attributes: { step: '2', value: '4' } });
 
     await element.evaluate((node: Slider) => {
       node.increment();
@@ -495,22 +450,25 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('value', '6');
 
     await element.evaluate((node: Slider) => {
-      node.step = 0.1;
+      node.step = '0.1';
       node.increment();
     });
 
     await expect(element).toHaveJSProperty('value', '6.1');
   });
 
-  test.describe("when the owning form's reset() method is invoked", () => {
-    test('should reset its `value` property to the midpoint if no `value` attribute is set', async () => {
-      await root.evaluate(node => {
-        node.innerHTML = /* html */ `
-                <form>
-                    <fluent-slider></fluent-slider>
-                </form>
-            `;
-      });
+  test.describe('when the associated form’s reset() method is invoked', () => {
+    test('should reset its `value` property to the midpoint if no `value` attribute is set', async ({
+      fastPage,
+      page,
+    }) => {
+      const { element } = fastPage;
+
+      await fastPage.setTemplate(/* html */ `
+        <form>
+          <fluent-slider></fluent-slider>
+        </form>
+      `);
 
       const form = page.locator('form');
 
@@ -524,17 +482,20 @@ test.describe('Slider', () => {
         node.reset();
       });
 
-      await expect(element).toHaveJSProperty('value', '5');
+      await expect(element).toHaveJSProperty('value', '50');
     });
 
-    test('should reset its `value` property to match the `value` attribute when it is set', async () => {
-      await root.evaluate(node => {
-        node.innerHTML = /* html */ `
-                <form>
-                    <fluent-slider min="0" max="100"></fluent-slider>
-                </form>
-            `;
-      });
+    test('should reset its `value` property to match the `value` attribute when it is set', async ({
+      fastPage,
+      page,
+    }) => {
+      const { element } = fastPage;
+
+      await fastPage.setTemplate(/* html */ `
+        <form>
+          <fluent-slider min="0" max="100"></fluent-slider>
+        </form>
+      `);
 
       const form = page.locator('form');
 
@@ -556,16 +517,18 @@ test.describe('Slider', () => {
       await expect(element).toHaveJSProperty('value', '7');
     });
 
-    test('should put the control into a clean state, where the value attribute changes the value property prior to user or programmatic interaction', async () => {
-      await root.evaluate(node => {
-        node.innerHTML = /* html */ `
-                <form>
-                    <fluent-slider min="0" max="100"></fluent-slider>
-                </form>
-            `;
-      });
-
+    test('should put the control into a clean state, where the value attribute changes the value property prior to user or programmatic interaction', async ({
+      fastPage,
+      page,
+    }) => {
+      const { element } = fastPage;
       const form = page.locator('form');
+
+      await fastPage.setTemplate(/* html */ `
+        <form>
+          <fluent-slider min="0" max="100"></fluent-slider>
+        </form>
+      `);
 
       await element.evaluate((node: Slider) => {
         node.value = '7';
@@ -575,7 +538,7 @@ test.describe('Slider', () => {
         node.setAttribute('value', '8');
       });
 
-      await expect(element).toHaveJSProperty('value', '7');
+      await expect(element).toHaveJSProperty('value', '8');
 
       await form.evaluate<void, HTMLFormElement>(node => {
         node.reset();
@@ -588,6 +551,84 @@ test.describe('Slider', () => {
       });
 
       await expect(element).toHaveJSProperty('value', '3');
+    });
+  });
+
+  test.describe('`change` event', () => {
+    test('should emit `change` event when `value` property changed', async ({ fastPage }) => {
+      const { element } = fastPage;
+
+      const wasChanged = element.evaluate(
+        node => new Promise(resolve => node.addEventListener('change', () => resolve(true))),
+      );
+
+      await element.evaluate((node: Slider) => {
+        node.value = '10';
+      });
+
+      await expect(wasChanged).resolves.toEqual(true);
+    });
+
+    test('should emit `change` event if the `value` attribute changed', async ({ fastPage }) => {
+      const { element } = fastPage;
+
+      const wasChanged = element.evaluate(
+        node => new Promise(resolve => node.addEventListener('change', () => resolve(true))),
+      );
+
+      element.evaluate((node: Slider) => {
+        node.setAttribute('value', '10');
+      });
+
+      await expect(wasChanged).resolves.toEqual(true);
+    });
+
+    test('should emit `change` event if changes on `min` causes `value` change', async ({ fastPage }) => {
+      const { element } = fastPage;
+
+      await fastPage.setTemplate({ attributes: { min: '10', value: '20', max: '30' } });
+
+      const wasChanged = element.evaluate(
+        node => new Promise(resolve => node.addEventListener('change', () => resolve(true))),
+      );
+
+      await element.evaluate((node: Slider) => {
+        node.min = '21';
+      });
+
+      await expect(wasChanged).resolves.toEqual(true);
+    });
+
+    test('should emit `change` event if changes on `max` causes `value` change', async ({ fastPage }) => {
+      const { element } = fastPage;
+
+      await fastPage.setTemplate({ attributes: { min: '10', value: '20', max: '30' } });
+
+      const wasChanged = element.evaluate(
+        node => new Promise(resolve => node.addEventListener('change', () => resolve(true))),
+      );
+
+      await element.evaluate((node: Slider) => {
+        node.max = '19';
+      });
+
+      await expect(wasChanged).resolves.toEqual(true);
+    });
+
+    test('should emit `change` event if changes on `step` causes `value` change', async ({ fastPage, page }) => {
+      const { element } = fastPage;
+
+      await fastPage.setTemplate({ attributes: { min: '10', value: '20', step: '10', max: '30' } });
+
+      const wasChanged = element.evaluate(
+        node => new Promise(resolve => node.addEventListener('change', () => resolve(true))),
+      );
+
+      await element.evaluate((node: Slider) => {
+        node.step = '11';
+      });
+
+      await expect(wasChanged).resolves.toEqual(true);
     });
   });
 });

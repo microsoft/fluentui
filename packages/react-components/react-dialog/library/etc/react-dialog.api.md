@@ -14,7 +14,7 @@ import { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import type { PortalProps } from '@fluentui/react-portal';
-import { Provider } from 'react';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -137,10 +137,12 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
 export const DialogProvider: React_2.Provider<DialogContextValue | undefined> & React_2.FC<React_2.ProviderProps<DialogContextValue | undefined>>;
 
 // @public (undocumented)
-export type DialogSlots = {};
+export type DialogSlots = {
+    surfaceMotion: Slot<PresenceMotionSlotProps>;
+};
 
 // @public (undocumented)
-export type DialogState = ComponentState<DialogSlots> & DialogContextValue & {
+export type DialogState = ComponentState<InternalDialogSlots> & DialogContextValue & {
     content: React_2.ReactNode;
     trigger: React_2.ReactNode;
 };
@@ -149,7 +151,7 @@ export type DialogState = ComponentState<DialogSlots> & DialogContextValue & {
 export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
 
 // @public (undocumented)
-export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
+export const dialogSurfaceClassNames: SlotClassNames<Omit<DialogSurfaceSlots, 'backdropMotion'>>;
 
 // @public (undocumented)
 export type DialogSurfaceContextValue = boolean;
@@ -163,15 +165,16 @@ export type DialogSurfaceContextValues = {
 export type DialogSurfaceElement = HTMLElement;
 
 // @public
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & Pick<PortalProps, 'mountNode'>;
+export type DialogSurfaceProps = ComponentProps<Partial<DialogSurfaceSlots>> & Pick<PortalProps, 'mountNode'>;
 
 // @public (undocumented)
-export const DialogSurfaceProvider: Provider<boolean | undefined>;
+export const DialogSurfaceProvider: React_2.Provider<boolean | undefined>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
     backdrop?: Slot<'div'>;
     root: Slot<'div'>;
+    backdropMotion: Slot<PresenceMotionSlotProps>;
 };
 
 // @public

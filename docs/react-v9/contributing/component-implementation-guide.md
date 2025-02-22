@@ -119,7 +119,7 @@ A draft implementation is optional, but you may find it useful to create one bef
 ### Resources
 
 - Start with the [Spec Template](Spec-Template)
-- Refer to the [Best Practices](https://github.com/microsoft/fluentui/wiki/Implementation-Best-Practices) while designing the component
+- Refer to the [Best Practices](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/implementation-best-practices.md) while designing the component
 
 Write the spec in a file named `SPEC.md` in the component's folder. The spec should document your research above, and outline the proposed API, structure, and usage of the component.
 
@@ -169,8 +169,8 @@ Once the first draft of the spec has been reviewed, you can get started on the i
 
 You can follow examples of other converged components for the structure of the implementation, such as:
 
-- [Button](https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-button/src/components/Button)
-- [Avatar](https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-avatar/src/components/Avatar)
+- [Button](https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-button/library/src/components/Button)
+- [Avatar](https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-avatar/library/src/components/Avatar)
 
 ## Documentation
 
@@ -180,8 +180,8 @@ The primary public documentation for our controls is in the form of storybook st
 
 You can get started by looking at existing storybook stories:
 
-- [Button examples](https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-button/stories/Button)
-- [Avatar examples](https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-avatar/src/stories/Avatar)
+- [Button examples](https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-button/stories/src/Button)
+- [Avatar examples](https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-avatar/stories/src/Avatar)
 
 ### Additional documentation
 
@@ -216,15 +216,15 @@ Once the component has been released as unstable, you should perform additional 
   - Use [queries](https://testing-library.com/docs/queries/about) like `getByRole` to find elements in the rendered DOM tree, and check that their attributes are as expected.
   - Avoid using snapshot tests.
   - When deciding what tests to write, generally the tests should cover all functionality in your component's state hook (`use{Component}`)
-  - Follow examples from other components for more guidance, such as [Button.test.tsx](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-button/src/components/Button/Button.test.tsx)
+  - Follow examples from other components for more guidance, such as [Button.test.tsx](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-button/library/src/components/Button/Button.test.tsx)
 - **Visual Regression Tests**
   - VR tests ensure that the components visuals do not change unexpectedly.
-  - Add stories to the `vr-tests-react-components` app, for example [Button.stories.tsx](https://github.com/microsoft/fluentui/blob/master/apps/vr-tests-react-components/src/stories/Button.stories.tsx)
+  - Add stories to the `vr-tests-react-components` app, for example [Button.stories.tsx](https://github.com/microsoft/fluentui/blob/master/apps/vr-tests-react-components/src/stories/Button/Button.stories.tsx)
   - When deciding what tests to write, generally the tests should cover all states in your component's styling hook (`use{Component}Styles`).
 - **Bundle Size Tests**
-  - Example: [Button.fixture.js](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-button/bundle-size/Button.fixture.js)
+  - Example: [Button.fixture.js](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-button/library/bundle-size/Button.fixture.js)
 - **Manual Accessibility Tests**
-  - For more info see [Manual Accessibility Review Checklist](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist)
+  - For more info see [Manual Accessibility Review Checklist](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/accessibility-review-checklist.md)
 
 ## Validation
 

@@ -1,106 +1,91 @@
-import { expect, test } from '@playwright/test';
-import type { Locator, Page } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 import type { Label } from './label.js';
+import { LabelSize, LabelWeight } from './label.options.js';
 
 test.describe('Label', () => {
-  let page: Page;
-  let element: Locator;
-  let root: Locator;
+  test.use({ tagName: 'fluent-label' });
 
-  test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
+  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    element = page.locator('fluent-label');
-    root = page.locator('#root');
+    for (const size of Object.values(LabelSize)) {
+      await test.step(`should set the \`size\` property to "${size}"`, async () => {
+        await fastPage.setTemplate({ attributes: { size } });
 
-    await page.goto(fixtureURL('components-label--label'));
+        await expect(element).toHaveAttribute('size', size);
+
+        await expect(element).toHaveJSProperty('size', size);
+
+        await expect(element).toHaveCustomState(size);
+      });
+    }
   });
 
-  test.afterAll(async () => {
-    await page.close();
+  test('should set the `weight` property to match the `weight` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    for (const weight of Object.values(LabelWeight)) {
+      await test.step(`should set the \`weight\` property to "${weight}"`, async () => {
+        await fastPage.setTemplate({ attributes: { weight } });
+
+        await expect(element).toHaveAttribute('weight', weight);
+
+        await expect(element).toHaveJSProperty('weight', weight);
+
+        await expect(element).toHaveCustomState(weight);
+      });
+    }
   });
 
-  test('should reflect size attribute', async () => {
-    await element.evaluate((node: Label) => {
-      node.size = 'small';
-    });
+  test('should set the `disabled` property to match the `disabled` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await expect(element).toHaveAttribute('size', 'small');
-    await expect(element).toHaveJSProperty('size', 'small');
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('small'))).toBe(true);
+    await fastPage.setTemplate({ attributes: { disabled: true } });
 
-    await element.evaluate((node: Label) => {
-      node.size = 'medium';
-    });
+    await expect(element).toHaveAttribute('disabled');
 
-    await expect(element).toHaveAttribute('size', 'medium');
-    await expect(element).toHaveJSProperty('size', 'medium');
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('small'))).toBe(false);
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('medium'))).toBe(true);
-
-    await element.evaluate((node: Label) => {
-      node.size = 'large';
-    });
-    await expect(element).toHaveAttribute('size', 'large');
-    await expect(element).toHaveJSProperty('size', 'large');
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('medium'))).toBe(false);
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('large'))).toBe(true);
-  });
-
-  test('should reflect weight attribute', async () => {
-    await element.evaluate((node: Label) => {
-      node.weight = 'regular';
-    });
-    await expect(element).toHaveAttribute('weight', 'regular');
-    await expect(element).toHaveJSProperty('weight', 'regular');
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('regular'))).toBe(true);
-
-    await element.evaluate((node: Label) => {
-      node.weight = 'semibold';
-    });
-    await expect(element).toHaveAttribute('weight', 'semibold');
-    await expect(element).toHaveJSProperty('weight', 'semibold');
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('regular'))).toBe(false);
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('semibold'))).toBe(true);
-  });
-
-  test('should reflect disabled attribute', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-label disabled>Label</fluent-label>
-            `;
-    });
-
-    await expect(element).toHaveAttribute('disabled', '');
     await expect(element).toHaveJSProperty('disabled', true);
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('disabled'))).toBe(true);
-  });
 
-  test('should reflect required attribute and show asterisk', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-label required>Label</fluent-label>
-            `;
+    await expect(element).toHaveCustomState('disabled');
+
+    await element.evaluate((node: Label) => {
+      node.disabled = false;
     });
 
-    const asterisk = element.locator('span.asterisk');
+    await expect(element).not.toHaveAttribute('disabled');
 
-    await expect(element).toHaveAttribute('required', '');
+    await expect(element).toHaveJSProperty('disabled', false);
+
+    await expect(element).not.toHaveCustomState('disabled');
+  });
+
+  test('should set the `required` property to match the `required` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { required: true } });
+
+    await expect(element).toHaveAttribute('required');
+
     await expect(element).toHaveJSProperty('required', true);
-    await expect(asterisk).toBeVisible();
-  });
 
-  test('should hide asterisk when required attribute is not set', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                    <fluent-label>Label</fluent-label>
-            `;
+    await test.step('should display an asterisk when the `required` attribute is set', async () => {
+      const asterisk = element.locator('span.asterisk');
+
+      await expect(asterisk).toBeVisible();
     });
 
-    const asterisk = element.locator('span.asterisk');
-    await expect(element).not.toHaveAttribute('required', '');
+    await element.evaluate((node: Label) => {
+      node.required = false;
+    });
+
+    await expect(element).not.toHaveAttribute('required');
+
     await expect(element).toHaveJSProperty('required', false);
-    await expect(asterisk).toBeHidden();
+
+    await test.step('should NOT display an asterisk when the `required` attribute is NOT set', async () => {
+      const asterisk = element.locator('span.asterisk');
+
+      await expect(asterisk).toBeHidden();
+    });
   });
 });

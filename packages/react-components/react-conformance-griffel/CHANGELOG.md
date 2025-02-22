@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-conformance-griffel
 
-This log was last generated on Mon, 20 May 2024 12:44:54 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2025 18:33:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.13)
+
+Wed, 08 Jan 2025 18:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.12..@fluentui/react-conformance-griffel_v9.0.13)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.19.3 ([PR #33550](https://github.com/microsoft/fluentui/pull/33550) by beachball)
+
+## [9.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.12)
+
+Mon, 11 Nov 2024 10:01:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.11..@fluentui/react-conformance-griffel_v9.0.12)
+
+### Patches
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- Bump @fluentui/react-conformance to v0.19.2 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+
+## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.11)
+
+Mon, 15 Jul 2024 17:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.10..@fluentui/react-conformance-griffel_v9.0.11)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.19.1 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
 
 ## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.10)
 

@@ -87,23 +87,23 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
   isBeakVisible?: boolean;
 
   /**
-   * If true then the callout will not dismiss on scroll
+   * If true then the callout will not dismiss on scroll.
+   * *Note:* This property will be ignored if using `preventDismissOnEvent`.
    * @defaultvalue false
-   * @deprecated use preventDismissOnEvent callback instead
    */
   preventDismissOnScroll?: boolean;
 
   /**
-   * If true then the callout will not dismiss on resize
+   * If true then the callout will not dismiss on resize.
+   * *Note:* This property will be ignored if using `preventDismissOnEvent`.
    * @defaultvalue false
-   * @deprecated use preventDismissOnEvent callback instead
    */
   preventDismissOnResize?: boolean;
 
   /**
-   * If true then the callout will not dismiss when it loses focus
+   * If true then the callout will not dismiss when it loses focus.
+   * *Note:* This property will be ignored if using `preventDismissOnEvent`.
    * @defaultvalue false
-   * @deprecated use preventDismissOnEvent callback instead
    */
   preventDismissOnLostFocus?: boolean;
 

@@ -1,13 +1,13 @@
-import { ElementViewTemplate, html } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html } from '@microsoft/fast-element';
 import { staticallyCompose } from '../utils/index.js';
-import { Switch, SwitchOptions } from './switch.js';
+import type { Switch, SwitchOptions } from './switch.js';
 
 export function switchTemplate<T extends Switch>(options: SwitchOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <template
       tabindex="${x => (!x.disabled ? 0 : void 0)}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
-      @input="${(x, c) => x.inputHandler(c.event as Event)}"
+      @input="${(x, c) => x.inputHandler(c.event as InputEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
       @keyup="${(x, c) => x.keyupHandler(c.event as KeyboardEvent)}"
     >

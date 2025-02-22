@@ -5,7 +5,7 @@ trigger: none
 variables:
   - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
       - name: sinceArg
-        value: --since $(targetBranch)
+        value: --base $(targetBranch)
 
   - group: fabric-variables
 
@@ -21,6 +21,11 @@ resources:
 extends:
   template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
   parameters:
+    sdl:
+      codeql:
+        compiled:
+          enabled: true
+        runSourceLanguagesInSourceAnalysis: true
     pool:
       name: Azure-Pipelines-1ESPT-ExDShared
       image: windows-latest

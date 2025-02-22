@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { VirtualizerStaticPaginationProps } from './hooks.types';
-import { useRef } from 'react';
 import { useTimeout } from '@fluentui/react-utilities';
 
 /**
@@ -18,8 +17,8 @@ export const useStaticVirtualizerPagination = (
   const { itemSize, axis = 'vertical' } = virtualizerProps;
 
   const [setScrollTimer, clearScrollTimer] = useTimeout();
-  const lastScrollPos = useRef<number>(0);
-  const lastIndexScrolled = useRef<number>(0);
+  const lastScrollPos = React.useRef<number>(0);
+  const lastIndexScrolled = React.useRef<number>(0);
 
   const scrollContainer = React.useRef<HTMLElement | null>(null);
 

@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-theme-stories",
+  "name": "react-theme-stories",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-theme/stories/src",

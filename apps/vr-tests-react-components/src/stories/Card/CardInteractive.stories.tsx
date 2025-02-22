@@ -3,7 +3,7 @@ import { Steps, StoryWright } from 'storywright';
 import { Card } from '@fluentui/react-card';
 import { action } from '@storybook/addon-actions';
 import { SampleCardContent } from './utils';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
 
 export default {
@@ -26,7 +26,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Card>;
+} satisfies Meta<typeof Card>;
 
 export const AppearanceInteractiveFilled = () => (
   <Card onClick={action('filled card clicked')} appearance="filled">

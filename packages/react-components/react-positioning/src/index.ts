@@ -8,6 +8,7 @@ export { resolvePositioningShorthand, mergeArrowOffset } from './utils/index';
 export type {
   Alignment,
   AutoSize,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   Boundary,
   Offset,
   OffsetFunction,
@@ -15,8 +16,10 @@ export type {
   OffsetObject,
   OffsetShorthand,
   Position,
+  PositioningBoundary,
   PositioningImperativeRef,
   PositioningProps,
+  PositioningRect,
   PositioningShorthand,
   PositioningShorthandValue,
   PositioningVirtualElement,
