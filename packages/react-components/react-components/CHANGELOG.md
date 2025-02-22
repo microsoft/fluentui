@@ -1,8 +1,76 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 28 Jan 2025 21:26:33 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2025 14:34:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.60.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.60.0)
+
+Fri, 21 Feb 2025 14:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.59.0..@fluentui/react-components_v9.60.0)
+
+### Minor changes
+
+- `@fluentui/react-carousel`
+  - feat: Implement props to control animation duration and autoplay interval ([PR #33820](https://github.com/microsoft/fluentui/pull/33820) by mifraser@microsoft.com)
+- `@fluentui/react-tabster`
+  - Nested modalizer fix and useActivateModal() hook to activate modals without moving focus. ([PR #33817](https://github.com/microsoft/fluentui/pull/33817) by marata@microsoft.com)
+
+### Patches
+
+- `@fluentui/priority-overflow`
+  - fix: Add a defensive check when getting overflow item records ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by lingfangao@hotmail.com)
+- `@fluentui/react-aria`
+  - fix: useAnnounce live regions do not get aria-hidden from tabster ([PR #33855](https://github.com/microsoft/fluentui/pull/33855) by sarah.higley@microsoft.com)
+- `@fluentui/react-popover`
+  - Update to satisfy the bumped Tabster 8.5.0. ([PR #33817](https://github.com/microsoft/fluentui/pull/33817) by marata@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: provide methods for elements such as live regions to not get hidden by modals ([PR #33855](https://github.com/microsoft/fluentui/pull/33855) by sarah.higley@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - fix: TeachingPopoverCarousel fires announce() messages on slide change ([PR #33833](https://github.com/microsoft/fluentui/pull/33833) by sarah.higley@microsoft.com)
+
+## [9.59.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.59.0)
+
+Tue, 18 Feb 2025 11:26:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.58.3..@fluentui/react-components_v9.59.0)
+
+### Minor changes
+
+- `@fluentui/react-carousel`
+  - feat: Add tooltip wrappers for icon buttons in nav container ([PR #33821](https://github.com/microsoft/fluentui/pull/33821) by mifraser@microsoft.com)
+- `@fluentui/react-color-picker-preview`
+  - custom color channels ([PR #33763](https://github.com/microsoft/fluentui/pull/33763) by v.kozlova13@gmail.com)
+- `@fluentui/react-components`
+  - BREAKING: rename api report file name according to api-extractor change ([PR #33692](https://github.com/microsoft/fluentui/pull/33692) by vgenaev@gmail.com)
+  - feat: export isHTMLElement from public API ([PR #33856](https://github.com/microsoft/fluentui/pull/33856) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-color-picker-preview`
+  - fix: design changes for ColorPicker ([PR #33785](https://github.com/microsoft/fluentui/pull/33785) by vkozlova@microsoft.com)
+
+## [9.58.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.58.3)
+
+Fri, 07 Feb 2025 10:42:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.58.2..@fluentui/react-components_v9.58.3)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: Button sets correct disabledFocusable icon color ([PR #33756](https://github.com/microsoft/fluentui/pull/33756) by sarah.higley@microsoft.com)
+- `@fluentui/react-color-picker-preview`
+  - fix: thumb design for ColorPicker - partner's ask ([PR #33743](https://github.com/microsoft/fluentui/pull/33743) by v.kozlova13@gmail.com)
+- `@fluentui/react-message-bar`
+  - fix: Revert MessageBar auto reflow changes from #33409 ([PR #33797](https://github.com/microsoft/fluentui/pull/33797) by lingfangao@hotmail.com)
+- `@fluentui/react-slider`
+  - fix: exported internal CSS variables ([PR #33682](https://github.com/microsoft/fluentui/pull/33682) by vkozlova@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - bugfix: regression from #33689 ([PR #33747](https://github.com/microsoft/fluentui/pull/33747) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: Fix regression of child render function update ([PR #33788](https://github.com/microsoft/fluentui/pull/33788) by mifraser@microsoft.com)
 
 ## [9.58.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.58.2)
 

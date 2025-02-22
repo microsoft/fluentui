@@ -2,6 +2,21 @@
   "name": "@fluentui/react-rating",
   "entries": [
     {
+      "date": "Fri, 21 Feb 2025 14:34:05 GMT",
+      "tag": "@fluentui/react-rating_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating",
+            "comment": "Bump @fluentui/react-tabster to v9.24.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2025 14:00:21 GMT",
       "tag": "@fluentui/react-rating_v9.0.28",
       "version": "9.0.28",

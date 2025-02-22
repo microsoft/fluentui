@@ -2,6 +2,66 @@
   "name": "@fluentui/react-tag-picker",
   "entries": [
     {
+      "date": "Fri, 21 Feb 2025 14:34:05 GMT",
+      "tag": "@fluentui/react-tag-picker_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-portal to v9.5.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tabster to v9.24.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-aria to v9.14.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-combobox to v9.14.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tags to v9.4.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-field to v9.2.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2025 10:42:12 GMT",
+      "tag": "@fluentui/react-tag-picker_v9.4.3",
+      "version": "9.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "171c1b1bda0d403270e828fbad3d8c7b791e21af",
+            "comment": "bugfix: regression from #33689"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jan 2025 21:26:34 GMT",
       "tag": "@fluentui/react-tag-picker_v9.4.2",
       "version": "9.4.2",

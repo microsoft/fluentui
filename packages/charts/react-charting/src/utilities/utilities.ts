@@ -5,6 +5,7 @@ import {
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
   scaleTime as d3ScaleTime,
+  NumberValue,
 } from 'd3-scale';
 import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
@@ -126,9 +127,11 @@ export interface IXAxisParams {
   xAxisOuterPadding?: number;
   margins: IMargins;
   containerHeight: number;
+  containerWidth: number;
+  hideTickOverlap?: boolean;
 }
 export interface ITickParams {
-  tickValues?: Date[] | number[];
+  tickValues?: Date[] | number[] | string[];
   tickFormat?: string;
 }
 
@@ -158,35 +161,59 @@ export interface IYAxisParams {
  * @export
  * @param {IXAxisParams} xAxisParams
  */
-export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTypes, culture?: string) {
+export function createNumericXAxis(
+  xAxisParams: IXAxisParams,
+  tickParams: ITickParams,
+  chartType: ChartTypes,
+  culture?: string,
+) {
   const {
     domainNRangeValues,
     showRoundOffXTickValues = false,
     xAxistickSize = 6,
     tickPadding = 10,
-    xAxisCount = 6,
+    xAxisCount,
     xAxisElement,
+    hideTickOverlap,
   } = xAxisParams;
   const xAxisScale = d3ScaleLinear()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   showRoundOffXTickValues && xAxisScale.nice();
 
+  let tickCount = xAxisCount ?? 6;
+  const tickFormat = (domainValue: NumberValue, _index: number) => {
+    if (tickParams.tickFormat) {
+      return d3Format(tickParams.tickFormat)(domainValue);
+    }
+    const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
+    return convertToLocaleString(xAxisValue, culture) as string;
+  };
+  if (hideTickOverlap && typeof xAxisCount === 'undefined') {
+    const longestLabelWidth =
+      calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 20;
+    const [start, end] = xAxisScale.range();
+    tickCount = Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth));
+  }
+
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(xAxistickSize)
     .tickPadding(tickPadding)
-    .ticks(xAxisCount)
-    .tickFormat((domainValue, index) => {
-      const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
-      return convertToLocaleString(xAxisValue, culture) as string;
-    });
+    .ticks(tickCount)
+    .tickFormat(tickFormat);
   if (chartType === ChartTypes.HorizontalBarChartWithAxis) {
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
+  if (tickParams.tickValues) {
+    xAxis.tickValues(tickParams.tickValues as number[]);
+  }
+
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = xAxisScale.ticks(xAxisCount).map(xAxis.tickFormat()!);
+  const tickValues = ((tickParams.tickValues as number[] | undefined) ?? xAxisScale.ticks(tickCount)).map(
+    xAxis.tickFormat()!,
+  );
   return { xScale: xAxisScale, tickValues };
 }
 
@@ -244,42 +271,60 @@ export function createDateXAxis(
   customDateTimeFormatter?: (dateTime: Date) => string,
   useUTC?: boolean,
 ) {
-  const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
+  const {
+    domainNRangeValues,
+    xAxisElement,
+    tickPadding = 6,
+    xAxistickSize = 6,
+    xAxisCount,
+    hideTickOverlap,
+  } = xAxisParams;
   const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
   xAxisScale
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
-  const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).ticks(xAxisCount);
-  if (customDateTimeFormatter) {
-    xAxis.tickFormat((domainValue: Date, _index: number) => {
+
+  let tickCount = xAxisCount ?? 6;
+  const tickFormat = (domainValue: Date, _index: number) => {
+    if (customDateTimeFormatter) {
       return customDateTimeFormatter(domainValue);
-    });
-  } else if (culture && options) {
-    xAxis.tickFormat((domainValue: Date, _index: number) => {
+    }
+    if (culture && options) {
       return domainValue.toLocaleString(culture, options);
-    });
-  } else if (timeFormatLocale) {
-    const locale: d3TimeLocaleObject = d3TimeFormatLocale(timeFormatLocale!);
-
-    xAxis.tickFormat((domainValue: Date, _index: number) => {
+    }
+    if (timeFormatLocale) {
+      const locale: d3TimeLocaleObject = d3TimeFormatLocale(timeFormatLocale!);
       return multiFormat(domainValue, locale, useUTC);
-    });
+    }
+    if (culture === undefined && tickParams.tickFormat) {
+      if (useUTC) {
+        return d3UtcFormat(tickParams.tickFormat)(domainValue);
+      } else {
+        return d3TimeFormat(tickParams.tickFormat)(domainValue);
+      }
+    }
+    return multiFormat(domainValue, undefined, useUTC);
+  };
+  if (hideTickOverlap && typeof xAxisCount === 'undefined') {
+    const longestLabelWidth =
+      calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 40;
+    const [start, end] = xAxisScale.range();
+    tickCount = Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth));
   }
 
-  tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
-  if (culture === undefined) {
-    tickParams.tickFormat
-      ? xAxis.tickFormat(useUTC ? d3UtcFormat(tickParams.tickFormat) : d3TimeFormat(tickParams.tickFormat))
-      : '';
-  }
+  const xAxis = d3AxisBottom(xAxisScale)
+    .tickSize(xAxistickSize)
+    .tickPadding(tickPadding)
+    .ticks(tickCount)
+    .tickFormat(tickFormat);
+
+  tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues as Date[]) : '';
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = (tickParams.tickValues ?? xAxisScale.ticks(xAxisCount)).map((val, idx) => {
-    const tickFormat = xAxis.tickFormat();
-    // val is a Date object. So when the tick format is not set, format val as a string to calculate its width
-    return tickFormat ? tickFormat(val, idx) : multiFormat(val as Date, undefined, useUTC);
-  });
+  const tickValues = ((tickParams.tickValues as Date[] | undefined) ?? xAxisScale.ticks(tickCount)).map(
+    xAxis.tickFormat()!,
+  );
   return { xScale: xAxisScale, tickValues };
 }
 
@@ -300,24 +345,58 @@ export function createStringXAxis(
 ) {
   const {
     domainNRangeValues,
-    xAxisCount = 6,
     xAxistickSize = 6,
     tickPadding = 10,
     xAxisPadding = 0.1,
     xAxisInnerPadding,
     xAxisOuterPadding,
+    containerWidth,
+    hideTickOverlap,
   } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
     .paddingInner(typeof xAxisInnerPadding !== 'undefined' ? xAxisInnerPadding : xAxisPadding)
     .paddingOuter(typeof xAxisOuterPadding !== 'undefined' ? xAxisOuterPadding : xAxisPadding);
-  const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).ticks(xAxisCount);
+
+  let tickValues = (tickParams.tickValues as string[] | undefined) ?? dataset;
+  if (hideTickOverlap) {
+    let nonOverlappingTickValues = [];
+    // Here, we need the width of each individual label to detect overlaps,
+    // but calculateLongestLabelWidth returns the maximum pixel width from an array of labels.
+    // So call this function separately for each label, instead of the entire array.
+    const tickSizes = tickValues.map(value => calculateLongestLabelWidth([value], '[class^="xAxis-"] text'));
+    // for LTR
+    let start = 0;
+    let end = containerWidth;
+    let sign = 1;
+    const range = xAxisScale.range();
+    if (range[1] - range[0] < 0) {
+      // for RTL
+      start = containerWidth;
+      end = 0;
+      sign = -1;
+    }
+    for (let i = tickValues.length - 1; i >= 0; i--) {
+      const tickPosition = xAxisScale(tickValues[i])!;
+      if (
+        sign * (tickPosition - (sign * tickSizes[i]) / 2 - start) >= 0 &&
+        sign * (tickPosition + (sign * tickSizes[i]) / 2 - end) <= 0
+      ) {
+        nonOverlappingTickValues.push(tickValues[i]);
+        end = tickPosition - sign * (tickSizes[i] / 2 + 10);
+      }
+    }
+    nonOverlappingTickValues = nonOverlappingTickValues.reverse();
+    tickValues = nonOverlappingTickValues;
+  }
+
+  const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).tickValues(tickValues);
 
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  return { xScale: xAxisScale, tickValues: dataset };
+  return { xScale: xAxisScale, tickValues };
 }
 
 /**

@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-color-picker-preview
 
-This log was last generated on Mon, 27 Jan 2025 20:27:33 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2025 14:34:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.3.0)
+
+Fri, 21 Feb 2025 14:34:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker-preview_v0.2.0..@fluentui/react-color-picker-preview_v0.3.0)
+
+### Minor changes
+
+- Bump @fluentui/react-tabster to v9.24.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.2.0)
+
+Tue, 18 Feb 2025 11:26:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker-preview_v0.1.6..@fluentui/react-color-picker-preview_v0.2.0)
+
+### Minor changes
+
+- custom color channels ([PR #33763](https://github.com/microsoft/fluentui/pull/33763) by v.kozlova13@gmail.com)
+
+### Patches
+
+- fix: design changes for ColorPicker ([PR #33785](https://github.com/microsoft/fluentui/pull/33785) by vkozlova@microsoft.com)
+
+## [0.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.1.6)
+
+Fri, 07 Feb 2025 10:42:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker-preview_v0.1.5..@fluentui/react-color-picker-preview_v0.1.6)
+
+### Patches
+
+- fix: thumb design for ColorPicker - partner's ask ([PR #33743](https://github.com/microsoft/fluentui/pull/33743) by v.kozlova13@gmail.com)
 
 ## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.1.5)
 

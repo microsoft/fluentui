@@ -24,6 +24,7 @@ jobs:
     permissions:
       # necessary to write comments to the PR from the vr-approval-cli
       pull-requests: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -68,15 +69,18 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+      - name: Fetch Access Token
+        run: |
+          echo "ACCESSTOKEN=$(az account get-access-token --query accessToken --output tsv)" >> $GITHUB_ENV
+
       - name: Run screenshotdiff
         env:
-          API_TOKEN: ${{ FormatPAT.NonBase64PAT }}
           VR_APP_API_URL: 'https://vrapprovaldev2.azurewebsites.net/api/'
           STORAGE_ACCOUNT_ID: 'https://onejstestartifactsprod.blob.core.windows.net/'
-          SYSTEM_ACCESSTOKEN: ${{ System.AccessToken }}
+          SYSTEM_ACCESSTOKEN: ${{ env.ACCESSTOKEN }}
           TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           PRINCIPAL_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          SERVICE_CONNECTION_ID: ${{ SERVICE-CONNECTION-ID }}
+          SERVICE_CONNECTION_ID: ${{ secrets.ADO_VRT_SERVICE_CONNECTION_ID }}
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "MAKE THIS WORK"

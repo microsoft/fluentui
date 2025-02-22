@@ -264,15 +264,6 @@ export const transformPlotlyJsonToDonutProps = (
   const innerRadius: number = firstData.hole
     ? firstData.hole * (Math.min(width - donutMarginHorizontal, height - donutMarginVertical) / 2)
     : 0;
-
-  const styles: IDonutChartProps['styles'] = {
-    root: {
-      '[class^="arcLabel"]': {
-        ...(typeof firstData.textfont?.size === 'number' ? { fontSize: firstData.textfont.size } : {}),
-      },
-    },
-  };
-
   const { chartTitle } = getTitles(input.layout);
 
   return {
@@ -286,7 +277,6 @@ export const transformPlotlyJsonToDonutProps = (
     innerRadius,
     hideLabels,
     showLabelsInPercent: firstData.textinfo ? ['percent', 'label+percent'].includes(firstData.textinfo) : true,
-    styles,
   };
 };
 
@@ -350,6 +340,7 @@ export const transformPlotlyJsonToVSBCProps = (
     mode: 'plotly',
     secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
     secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+    hideTickOverlap: true,
   };
 };
 
@@ -400,6 +391,7 @@ export const transformPlotlyJsonToGVBCProps = (
     mode: 'plotly',
     secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
     secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+    hideTickOverlap: true,
   };
 };
 
@@ -491,6 +483,7 @@ export const transformPlotlyJsonToVBCProps = (
     xAxisTitle,
     yAxisTitle,
     mode: 'plotly',
+    hideTickOverlap: true,
   };
 };
 
@@ -543,6 +536,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
       secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
       mode,
+      hideTickOverlap: true,
     } as IAreaChartProps;
   } else {
     return {
@@ -555,6 +549,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       roundedTicks: true,
       yMinValue: yMinMaxValues.startValue,
       yMaxValue: yMinMaxValues.endValue,
+      hideTickOverlap: true,
     } as ILineChartProps;
   }
 };
@@ -610,6 +605,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
         width: input.layout?.width ?? 600,
       },
     },
+    hideTickOverlap: true,
   };
 };
 
@@ -630,8 +626,10 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
         rectText: zVal,
       });
 
-      zMin = Math.min(zMin, zVal);
-      zMax = Math.max(zMax, zVal);
+      if (typeof zVal === 'number') {
+        zMin = Math.min(zMin, zVal);
+        zMax = Math.max(zMax, zVal);
+      }
     });
   });
   const heatmapData: IHeatMapChartData = {
@@ -667,6 +665,7 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
     xAxisTitle,
     yAxisTitle,
     sortOrder: 'none',
+    hideTickOverlap: true,
   };
 };
 

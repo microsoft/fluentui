@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-migration-v0-v9
 
-This log was last generated on Tue, 28 Jan 2025 21:26:35 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2025 14:34:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.3.0)
+
+Fri, 21 Feb 2025 14:34:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.2.31..@fluentui/react-migration-v0-v9_v9.3.0)
+
+### Minor changes
+
+- Bump @fluentui/react-aria to v9.14.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+- Bump @fluentui/react-components to v9.60.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+- Bump @fluentui/react-tabster to v9.24.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+
+## [9.2.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.2.31)
+
+Tue, 18 Feb 2025 11:26:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.2.30..@fluentui/react-migration-v0-v9_v9.2.31)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.59.0 ([PR #33853](https://github.com/microsoft/fluentui/pull/33853) by beachball)
+
+## [9.2.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.2.30)
+
+Fri, 07 Feb 2025 10:42:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.2.29..@fluentui/react-migration-v0-v9_v9.2.30)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.58.3 ([PR #33797](https://github.com/microsoft/fluentui/pull/33797) by beachball)
 
 ## [9.2.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.2.29)
 

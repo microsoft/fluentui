@@ -14,6 +14,7 @@ export const colorSliderCSSVars = {
   sliderDirectionVar: `--fui-Slider--direction`,
   sliderProgressVar: `--fui-Slider--progress`,
   thumbColorVar: `--fui-Slider__thumb--color`,
+  railColorVar: `--fui-Slider__rail--color`,
 };
 
 // Internal CSS variables
@@ -24,17 +25,13 @@ const thumbPositionVar = `--fui-Slider__thumb--position`;
 
 const hueBackground = `linear-gradient(${[
   `var(${colorSliderCSSVars.sliderDirectionVar})`,
-  'red 0',
-  '#f09 10%',
-  '#cd00ff 20%',
-  '#3200ff 30%',
-  '#06f 40%',
-  '#00fffd 50%',
-  '#0f6 60%',
-  '#35ff00 70%',
-  '#cdff00 80%',
-  '#f90 90%',
-  'red 100%',
+  'red',
+  'fuchsia',
+  'blue',
+  'aqua',
+  'lime',
+  'yellow',
+  'red',
 ].join(',')})`;
 
 /**
@@ -66,8 +63,17 @@ const useStyles = makeStyles({
     gridTemplateRows: `1fr 100% 1fr`,
     gridTemplateColumns: `1fr var(${thumbSizeVar}) 1fr`,
   },
+});
+
+const useChannelStyles = makeStyles({
   hue: {
     backgroundImage: hueBackground,
+  },
+  saturation: {
+    backgroundImage: `linear-gradient(to right, #808080, var(${colorSliderCSSVars.railColorVar}))`,
+  },
+  value: {
+    backgroundImage: `linear-gradient(to right, #000, var(${colorSliderCSSVars.railColorVar}))`,
   },
 });
 
@@ -204,6 +210,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();
   const shapeStyles = useShapeStyles();
+  const channelStyles = useChannelStyles();
   const isVertical = state.vertical;
 
   state.root.className = mergeClasses(
@@ -216,7 +223,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
   state.rail.className = mergeClasses(
     colorSliderClassNames.rail,
     railStyles.rail,
-    styles.hue,
+    channelStyles[state.channel || 'hue'],
     shapeStyles[state.shape || 'rounded'],
     isVertical ? railStyles.vertical : railStyles.horizontal,
     state.rail.className,

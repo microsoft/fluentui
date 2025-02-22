@@ -2,6 +2,48 @@
   "name": "@fluentui/react-message-bar",
   "entries": [
     {
+      "date": "Fri, 21 Feb 2025 14:34:05 GMT",
+      "tag": "@fluentui/react-message-bar_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.4.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-link to v9.4.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2025 10:42:11 GMT",
+      "tag": "@fluentui/react-message-bar_v9.3.3",
+      "version": "9.3.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "b37554b631f4e27e0927b123732f3d57d62660a3",
+            "comment": "fix: Revert MessageBar auto reflow changes from #33409"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.102",
+            "commit": "b37554b631f4e27e0927b123732f3d57d62660a3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jan 2025 21:26:35 GMT",
       "tag": "@fluentui/react-message-bar_v9.3.2",
       "version": "9.3.2",
