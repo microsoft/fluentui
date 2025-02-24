@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface ResponsiveContainerProps {
-  children: (props: { containerWidth?: number; containerHeight?: number }) => React.ReactNode;
+  children: React.ReactElement;
   onResize?: (width: number, height: number) => void;
   width?: number | string;
   height?: number | string;

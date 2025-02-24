@@ -63,7 +63,7 @@ export interface Basestate {
     }[];
 }
 
-// @public (undocumented)
+// @public
 export const CartesianChart: React_2.FunctionComponent<ModifiedCartesianChartProps>;
 
 // @public
@@ -86,9 +86,7 @@ export interface CartesianChartProps {
     legendsOverflowText?: any;
     margins?: Margins;
     noOfCharsToTruncate?: number;
-    onResize?: (width: number, height: number) => void;
     parentRef?: HTMLElement | null;
-    responsive?: boolean;
     rotateXAxisLables?: boolean;
     secondaryYAxistitle?: string;
     secondaryYScaleOptions?: {
@@ -353,7 +351,7 @@ export const DataVizPalette: {
     highSuccess: string;
 };
 
-// @public (undocumented)
+// @public
 export const DonutChart: React_2.FunctionComponent<DonutChartProps>;
 
 // @public
@@ -763,6 +761,9 @@ export interface RefArrayData {
     // (undocumented)
     refElement?: SVGGElement;
 }
+
+// @public (undocumented)
+export const ResponsiveContainer: React_2.FC<ResponsiveContainerProps>;
 
 // @public (undocumented)
 export const Shape: React_2.FunctionComponent<ShapeProps>;

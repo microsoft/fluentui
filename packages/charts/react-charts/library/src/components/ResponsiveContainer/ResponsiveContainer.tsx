@@ -55,7 +55,12 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
 
   return (
     <div ref={containerRef} className={classes.root} style={{ width: props.width, height: props.height }}>
-      {props.children(size)}
+      {React.Children.map(props.children, child => {
+        return React.cloneElement(child, {
+          width: size.containerWidth,
+          height: size.containerHeight,
+        });
+      })}
     </div>
   );
 };
