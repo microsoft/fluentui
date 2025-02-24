@@ -4,6 +4,7 @@ import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import {
   classNamesFunction,
   getId,
@@ -49,6 +50,7 @@ import {
   createStringYAxis,
   formatDate,
   areArraysEqual,
+  YAxisType,
 } from '../../utilities/index';
 import { IChart } from '../../types/index';
 
@@ -66,6 +68,9 @@ const bisect = bisector((d: any) => d.x).left;
 const DEFAULT_LINE_STROKE_SIZE = 4;
 // The given shape of a icon must be 2.5 times bigger than line width (known as stroke width)
 const PATH_MULTIPLY_SIZE = 2.5;
+
+// markersize for scatter plot
+let maxMarkerSize = 0;
 
 /**
  *
@@ -310,7 +315,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         legendBars={legendBars}
         createYAxis={createNumericYAxis}
         getmargins={this._getMargins}
-        getMinMaxOfYAxis={findNumericMinMaxOfY}
+        getMinMaxOfYAxis={this._getNumericMinMaxOfYForLineChart}
         getGraphData={this._initializeLineChartData}
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         customizedCallout={this._getCustomizedCallout()}
@@ -391,7 +396,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
-    if (xAxisType === XAxisTypes.NumericAxis) {
+    if (this.props.lineMode === 'scatter' && xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = this._getDomainNRangeValuesWithPadding(points, margins, width, isRTL);
+    } else if (xAxisType === XAxisTypes.NumericAxis) {
       domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
     } else if (xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
@@ -447,6 +454,37 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       : this.props.onRenderCalloutPerDataPoint
       ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
       : null;
+  };
+
+  private _getNumericMinMaxOfYForLineChart = (
+    points: ILineChartPoints[],
+    yAxisType: YAxisType,
+    containerHeight: number,
+    margins: IMargins,
+  ): { startValue: number; endValue: number } => {
+    const { startValue, endValue } = findNumericMinMaxOfY(points);
+    let maxMarkerSizeForYAxis = 0;
+    if (this.props.lineMode === 'scatter') {
+      maxMarkerSize = d3Max(points, (point: ILineChartPoints) => {
+        return d3Max(point.data, (item: ILineChartDataPoint) => {
+          return item.markerSize as number;
+        });
+      })!;
+      maxMarkerSizeForYAxis = this._getExtendedDomainValue(
+        startValue,
+        endValue,
+        margins.bottom!,
+        containerHeight - margins.top!,
+      );
+    }
+    return {
+      startValue: startValue - maxMarkerSizeForYAxis,
+      endValue: endValue + maxMarkerSizeForYAxis,
+    };
+  };
+
+  private _getExtendedDomainValue = (x1: number, x2: number, y1: number, y2: number): number => {
+    return maxMarkerSize ? Math.abs((maxMarkerSize * (x2 - x1)) / (y2 - y1 - 2 * maxMarkerSize)) : 0;
   };
 
   private _getMargins = (margins: IMargins) => {
@@ -820,40 +858,79 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
           const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
           pointsForLine.push(
-            <path
-              id={circleId}
-              key={circleId}
-              d={path}
-              data-is-focusable={isLegendSelected}
-              onMouseOver={this._handleHover.bind(
-                this,
-                x1,
-                y1,
-                verticaLineHeight,
-                xAxisCalloutData,
-                circleId,
-                xAxisCalloutAccessibilityData,
-              )}
-              onMouseMove={this._handleHover.bind(
-                this,
-                x1,
-                y1,
-                verticaLineHeight,
-                xAxisCalloutData,
-                circleId,
-                xAxisCalloutAccessibilityData,
-              )}
-              onMouseOut={this._handleMouseOut}
-              onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
-              onBlur={this._handleMouseOut}
-              {...this._getClickHandler(this._points[i].data[j - 1].onDataPointClick)}
-              opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
-              fill={this._getPointFill(lineColor, circleId, j, false)}
-              stroke={lineColor}
-              strokeWidth={strokeWidth}
-              role="img"
-              aria-label={this._getAriaLabel(i, j - 1)}
-            />,
+            this.props.lineMode === 'scatter' ? (
+              <circle
+                id={circleId}
+                key={circleId}
+                r={this._points[i].data[j - 1].markerSize ?? 4}
+                cx={this._xAxisScale(x1)}
+                cy={this._yAxisScale(y1)}
+                data-is-focusable={isLegendSelected}
+                onMouseOver={this._handleHover.bind(
+                  this,
+                  x1,
+                  y1,
+                  verticaLineHeight,
+                  xAxisCalloutData,
+                  circleId,
+                  xAxisCalloutAccessibilityData,
+                )}
+                onMouseMove={this._handleHover.bind(
+                  this,
+                  x1,
+                  y1,
+                  verticaLineHeight,
+                  xAxisCalloutData,
+                  circleId,
+                  xAxisCalloutAccessibilityData,
+                )}
+                onMouseOut={this._handleMouseOut}
+                onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+                onBlur={this._handleMouseOut}
+                {...this._getClickHandler(this._points[i].data[j - 1].onDataPointClick)}
+                opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
+                fill={this._getPointFill(lineColor, circleId, j, false)}
+                stroke={lineColor}
+                strokeWidth={strokeWidth}
+                role="img"
+                aria-label={this._getAriaLabel(i, j - 1)}
+              />
+            ) : (
+              <path
+                id={circleId}
+                key={circleId}
+                d={path}
+                data-is-focusable={isLegendSelected}
+                onMouseOver={this._handleHover.bind(
+                  this,
+                  x1,
+                  y1,
+                  verticaLineHeight,
+                  xAxisCalloutData,
+                  circleId,
+                  xAxisCalloutAccessibilityData,
+                )}
+                onMouseMove={this._handleHover.bind(
+                  this,
+                  x1,
+                  y1,
+                  verticaLineHeight,
+                  xAxisCalloutData,
+                  circleId,
+                  xAxisCalloutAccessibilityData,
+                )}
+                onMouseOut={this._handleMouseOut}
+                onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+                onBlur={this._handleMouseOut}
+                {...this._getClickHandler(this._points[i].data[j - 1].onDataPointClick)}
+                opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
+                fill={this._getPointFill(lineColor, circleId, j, false)}
+                stroke={lineColor}
+                strokeWidth={strokeWidth}
+                role="img"
+                aria-label={this._getAriaLabel(i, j - 1)}
+              />
+            ),
           );
           if (j + 1 === this._points[i].data.length) {
             // If this is last point of the line segment.
@@ -874,42 +951,95 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             } = this._points[i].data[j];
             pointsForLine.push(
               <React.Fragment key={`${lastCircleId}_container`}>
-                <path
-                  id={lastCircleId}
-                  key={lastCircleId}
-                  d={path}
-                  data-is-focusable={isLegendSelected}
-                  onMouseOver={this._handleHover.bind(
-                    this,
-                    x2,
-                    y2,
-                    verticaLineHeight,
-                    lastCirlceXCallout,
-                    lastCircleId,
-                    lastCirlceXCalloutAccessibilityData,
-                  )}
-                  onMouseMove={this._handleHover.bind(
-                    this,
-                    x2,
-                    y2,
-                    verticaLineHeight,
-                    lastCirlceXCallout,
-                    lastCircleId,
-                    lastCirlceXCalloutAccessibilityData,
-                  )}
-                  onMouseOut={this._handleMouseOut}
-                  onFocus={() =>
-                    this._handleFocus(lineId, x2, lastCirlceXCallout, lastCircleId, lastCirlceXCalloutAccessibilityData)
-                  }
-                  onBlur={this._handleMouseOut}
-                  {...this._getClickHandler(this._points[i].data[j].onDataPointClick)}
-                  opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
-                  fill={this._getPointFill(lineColor, lastCircleId, j, true)}
-                  stroke={lineColor}
-                  strokeWidth={strokeWidth}
-                  role="img"
-                  aria-label={this._getAriaLabel(i, j)}
-                />
+                {this.props.lineMode === 'scatter' ? (
+                  <circle
+                    id={lastCircleId}
+                    key={lastCircleId}
+                    r={this._points[i].data[j].markerSize ?? 4}
+                    cx={this._xAxisScale(x2)}
+                    cy={this._yAxisScale(y2)}
+                    data-is-focusable={isLegendSelected}
+                    onMouseOver={this._handleHover.bind(
+                      this,
+                      x2,
+                      y2,
+                      verticaLineHeight,
+                      lastCirlceXCallout,
+                      lastCircleId,
+                      lastCirlceXCalloutAccessibilityData,
+                    )}
+                    onMouseMove={this._handleHover.bind(
+                      this,
+                      x2,
+                      y2,
+                      verticaLineHeight,
+                      lastCirlceXCallout,
+                      lastCircleId,
+                      lastCirlceXCalloutAccessibilityData,
+                    )}
+                    onMouseOut={this._handleMouseOut}
+                    onFocus={() =>
+                      this._handleFocus(
+                        lineId,
+                        x2,
+                        lastCirlceXCallout,
+                        lastCircleId,
+                        lastCirlceXCalloutAccessibilityData,
+                      )
+                    }
+                    onBlur={this._handleMouseOut}
+                    {...this._getClickHandler(this._points[i].data[j].onDataPointClick)}
+                    opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
+                    fill={this._getPointFill(lineColor, lastCircleId, j, true)}
+                    stroke={lineColor}
+                    strokeWidth={strokeWidth}
+                    role="img"
+                    aria-label={this._getAriaLabel(i, j)}
+                  />
+                ) : (
+                  <path
+                    id={lastCircleId}
+                    key={lastCircleId}
+                    d={path}
+                    data-is-focusable={isLegendSelected}
+                    onMouseOver={this._handleHover.bind(
+                      this,
+                      x2,
+                      y2,
+                      verticaLineHeight,
+                      lastCirlceXCallout,
+                      lastCircleId,
+                      lastCirlceXCalloutAccessibilityData,
+                    )}
+                    onMouseMove={this._handleHover.bind(
+                      this,
+                      x2,
+                      y2,
+                      verticaLineHeight,
+                      lastCirlceXCallout,
+                      lastCircleId,
+                      lastCirlceXCalloutAccessibilityData,
+                    )}
+                    onMouseOut={this._handleMouseOut}
+                    onFocus={() =>
+                      this._handleFocus(
+                        lineId,
+                        x2,
+                        lastCirlceXCallout,
+                        lastCircleId,
+                        lastCirlceXCalloutAccessibilityData,
+                      )
+                    }
+                    onBlur={this._handleMouseOut}
+                    {...this._getClickHandler(this._points[i].data[j].onDataPointClick)}
+                    opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
+                    fill={this._getPointFill(lineColor, lastCircleId, j, true)}
+                    stroke={lineColor}
+                    strokeWidth={strokeWidth}
+                    role="img"
+                    aria-label={this._getAriaLabel(i, j)}
+                  />
+                )}
                 {/* Dummy circle acting as magnetic latch for last callout point */}
                 <circle
                   id={hiddenHoverCircleId}
@@ -944,90 +1074,91 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 />
               </React.Fragment>,
             );
-            /* eslint-enable react/jsx-no-bind */
           }
 
-          if (isLegendSelected) {
-            // don't draw line if it is in a gap
-            if (!isInGap) {
-              const lineBorderWidth = this._points[i].lineOptions?.lineBorderWidth
-                ? Number.parseFloat(this._points[i].lineOptions!.lineBorderWidth!.toString())
-                : 0;
-              if (lineBorderWidth > 0) {
-                bordersForLine.push(
+          if (this.props.lineMode !== 'scatter') {
+            if (isLegendSelected) {
+              // don't draw line if it is in a gap
+              if (!isInGap) {
+                const lineBorderWidth = this._points[i].lineOptions?.lineBorderWidth
+                  ? Number.parseFloat(this._points[i].lineOptions!.lineBorderWidth!.toString())
+                  : 0;
+                if (lineBorderWidth > 0) {
+                  bordersForLine.push(
+                    <line
+                      id={borderId}
+                      key={borderId}
+                      x1={this._xAxisScale(x1)}
+                      y1={this._yAxisScale(y1)}
+                      x2={this._xAxisScale(x2)}
+                      y2={this._yAxisScale(y2)}
+                      strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
+                      strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
+                      stroke={this._points[i].lineOptions?.lineBorderColor || theme!.semanticColors.bodyBackground}
+                      opacity={1}
+                    />,
+                  );
+                }
+
+                linesForLine.push(
                   <line
-                    id={borderId}
-                    key={borderId}
+                    id={lineId}
+                    key={lineId}
                     x1={this._xAxisScale(x1)}
                     y1={this._yAxisScale(y1)}
                     x2={this._xAxisScale(x2)}
                     y2={this._yAxisScale(y2)}
+                    strokeWidth={strokeWidth}
+                    ref={(e: SVGLineElement | null) => {
+                      this._refCallback(e!, lineId);
+                    }}
+                    onMouseOver={this._handleHover.bind(
+                      this,
+                      x1,
+                      y1,
+                      verticaLineHeight,
+                      xAxisCalloutData,
+                      circleId,
+                      xAxisCalloutAccessibilityData,
+                    )}
+                    onMouseMove={this._handleHover.bind(
+                      this,
+                      x1,
+                      y1,
+                      verticaLineHeight,
+                      xAxisCalloutData,
+                      circleId,
+                      xAxisCalloutAccessibilityData,
+                    )}
+                    onMouseOut={this._handleMouseOut}
+                    stroke={lineColor}
                     strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
-                    strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
-                    stroke={this._points[i].lineOptions?.lineBorderColor || theme!.semanticColors.bodyBackground}
+                    strokeDasharray={this._points[i].lineOptions?.strokeDasharray}
+                    strokeDashoffset={this._points[i].lineOptions?.strokeDashoffset}
                     opacity={1}
+                    {...this._getClickHandler(this._points[i].onLineClick)}
                   />,
                 );
               }
-
-              linesForLine.push(
-                <line
-                  id={lineId}
-                  key={lineId}
-                  x1={this._xAxisScale(x1)}
-                  y1={this._yAxisScale(y1)}
-                  x2={this._xAxisScale(x2)}
-                  y2={this._yAxisScale(y2)}
-                  strokeWidth={strokeWidth}
-                  ref={(e: SVGLineElement | null) => {
-                    this._refCallback(e!, lineId);
-                  }}
-                  onMouseOver={this._handleHover.bind(
-                    this,
-                    x1,
-                    y1,
-                    verticaLineHeight,
-                    xAxisCalloutData,
-                    circleId,
-                    xAxisCalloutAccessibilityData,
-                  )}
-                  onMouseMove={this._handleHover.bind(
-                    this,
-                    x1,
-                    y1,
-                    verticaLineHeight,
-                    xAxisCalloutData,
-                    circleId,
-                    xAxisCalloutAccessibilityData,
-                  )}
-                  onMouseOut={this._handleMouseOut}
-                  stroke={lineColor}
-                  strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
-                  strokeDasharray={this._points[i].lineOptions?.strokeDasharray}
-                  strokeDashoffset={this._points[i].lineOptions?.strokeDashoffset}
-                  opacity={1}
-                  {...this._getClickHandler(this._points[i].onLineClick)}
-                />,
-              );
-            }
-          } else {
-            if (!isInGap) {
-              linesForLine.push(
-                <line
-                  id={lineId}
-                  key={lineId}
-                  x1={this._xAxisScale(x1)}
-                  y1={this._yAxisScale(y1)}
-                  x2={this._xAxisScale(x2)}
-                  y2={this._yAxisScale(y2)}
-                  strokeWidth={strokeWidth}
-                  stroke={lineColor}
-                  strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
-                  strokeDasharray={this._points[i].lineOptions?.strokeDasharray}
-                  strokeDashoffset={this._points[i].lineOptions?.strokeDashoffset}
-                  opacity={0.1}
-                />,
-              );
+            } else {
+              if (!isInGap) {
+                linesForLine.push(
+                  <line
+                    id={lineId}
+                    key={lineId}
+                    x1={this._xAxisScale(x1)}
+                    y1={this._yAxisScale(y1)}
+                    x2={this._xAxisScale(x2)}
+                    y2={this._yAxisScale(y2)}
+                    strokeWidth={strokeWidth}
+                    stroke={lineColor}
+                    strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
+                    strokeDasharray={this._points[i].lineOptions?.strokeDasharray}
+                    strokeDashoffset={this._points[i].lineOptions?.strokeDashoffset}
+                    opacity={0.1}
+                  />,
+                );
+              }
             }
           }
         }
@@ -1509,6 +1640,41 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const legend = line.legend;
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
+  };
+
+  private _getDomainNRangeValuesWithPadding = (
+    points: ILineChartPoints[],
+    margins: IMargins,
+    width: number,
+    isRTL: boolean,
+  ): IDomainNRange => {
+    const xMin = d3Min(points, (point: ILineChartPoints) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => item.x as number)!;
+    })!;
+
+    const xMax = d3Max(points, (point: ILineChartPoints) => {
+      return d3Max(point.data, (item: ILineChartDataPoint) => {
+        return item.x as number;
+      });
+    })!;
+
+    const maxMarkerSizeForXAxis = this._getExtendedDomainValue(xMax, xMin, width - margins.right!, margins.left!);
+    const rStartValue = margins.left!;
+    const rEndValue = width - margins.right!;
+
+    return isRTL
+      ? {
+          dStartValue: xMax + maxMarkerSizeForXAxis,
+          dEndValue: xMin - maxMarkerSizeForXAxis,
+          rStartValue,
+          rEndValue,
+        }
+      : {
+          dStartValue: xMin - maxMarkerSizeForXAxis,
+          dEndValue: xMax + maxMarkerSizeForXAxis,
+          rStartValue,
+          rEndValue,
+        };
   };
 
   private _isChartEmpty(): boolean {

@@ -962,6 +962,7 @@ export interface ILegendSubComponentStyles {
 export interface ILineChartDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     hideCallout?: boolean;
+    markerSize?: number;
     onDataPointClick?: () => void;
     x: number | Date;
     xAxisCalloutAccessibilityData?: IAccessibilityProps;
@@ -1012,6 +1013,7 @@ export interface ILineChartProps extends ICartesianChartProps {
     enablePerfOptimization?: boolean;
     eventAnnotationProps?: IEventsAnnotationProps;
     getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
+    lineMode?: 'default' | 'scatter';
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
     onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
     // (undocumented)
@@ -1095,7 +1097,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     getDomainNRangeValues: (points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[] | IHorizontalBarChartWithAxisDataPoint[] | IGroupedVerticalBarChartData[] | IHeatMapChartDataPoint[], margins: IMargins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
-    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[], yAxisType: YAxisType | undefined) => {
+    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[], yAxisType: YAxisType | undefined, containerHeight?: number, margins?: IMargins) => {
         startValue: number;
         endValue: number;
     };
