@@ -659,6 +659,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   getMinMaxOfYAxis: (
     points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[],
     yAxisType: YAxisType | undefined,
+    containerHeight?: number,
+    margins?: IMargins,
   ) => { startValue: number; endValue: number };
 
   /**

@@ -4,6 +4,7 @@ import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import {
   classNamesFunction,
   getId,
@@ -49,6 +50,7 @@ import {
   createStringYAxis,
   formatDate,
   areArraysEqual,
+  YAxisType,
 } from '../../utilities/index';
 import { IChart } from '../../types/index';
 
@@ -66,6 +68,9 @@ const bisect = bisector((d: any) => d.x).left;
 const DEFAULT_LINE_STROKE_SIZE = 4;
 // The given shape of a icon must be 2.5 times bigger than line width (known as stroke width)
 const PATH_MULTIPLY_SIZE = 2.5;
+
+// markersize for scatter plot
+let maxMarkerSize = 0;
 
 /**
  *
@@ -310,7 +315,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         legendBars={legendBars}
         createYAxis={createNumericYAxis}
         getmargins={this._getMargins}
-        getMinMaxOfYAxis={findNumericMinMaxOfY}
+        getMinMaxOfYAxis={this._getNumericMinMaxOfYForLineChart}
         getGraphData={this._initializeLineChartData}
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         customizedCallout={this._getCustomizedCallout()}
@@ -391,7 +396,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
-    if (xAxisType === XAxisTypes.NumericAxis) {
+    if (this.props.lineMode === 'scatter' && xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = this._getDomainNRangeValuesWithPadding(points, margins, width, isRTL);
+    } else if (xAxisType === XAxisTypes.NumericAxis) {
       domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
     } else if (xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
@@ -447,6 +454,37 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       : this.props.onRenderCalloutPerDataPoint
       ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
       : null;
+  };
+
+  private _getNumericMinMaxOfYForLineChart = (
+    points: ILineChartPoints[],
+    yAxisType: YAxisType,
+    containerHeight: number,
+    margins: IMargins,
+  ): { startValue: number; endValue: number } => {
+    const { startValue, endValue } = findNumericMinMaxOfY(points);
+    let maxMarkerSizeForYAxis = 0;
+    if (this.props.lineMode === 'scatter') {
+      maxMarkerSize = d3Max(points, (point: ILineChartPoints) => {
+        return d3Max(point.data, (item: ILineChartDataPoint) => {
+          return item.markerSize as number;
+        });
+      })!;
+      maxMarkerSizeForYAxis = this._getExtendedDomainValue(
+        startValue,
+        endValue,
+        margins.bottom!,
+        containerHeight - margins.top!,
+      );
+    }
+    return {
+      startValue: startValue - maxMarkerSizeForYAxis,
+      endValue: endValue + maxMarkerSizeForYAxis,
+    };
+  };
+
+  private _getExtendedDomainValue = (x1: number, x2: number, y1: number, y2: number): number => {
+    return maxMarkerSize ? Math.abs((maxMarkerSize * (x2 - x1)) / (y2 - y1 - 2 * maxMarkerSize)) : 0;
   };
 
   private _getMargins = (margins: IMargins) => {
@@ -1035,7 +1073,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   onBlur={this._handleMouseOut}
                 />
               </React.Fragment>,
-              /* eslint-enable react/jsx-no-bind */
             );
           }
 
@@ -1602,6 +1639,41 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const legend = line.legend;
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
+  };
+
+  private _getDomainNRangeValuesWithPadding = (
+    points: ILineChartPoints[],
+    margins: IMargins,
+    width: number,
+    isRTL: boolean,
+  ): IDomainNRange => {
+    const xMin = d3Min(points, (point: ILineChartPoints) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => item.x as number)!;
+    })!;
+
+    const xMax = d3Max(points, (point: ILineChartPoints) => {
+      return d3Max(point.data, (item: ILineChartDataPoint) => {
+        return item.x as number;
+      });
+    })!;
+
+    const maxMarkerSizeForXAxis = this._getExtendedDomainValue(xMax, xMin, width - margins.right!, margins.left!);
+    const rStartValue = margins.left!;
+    const rEndValue = width - margins.right!;
+
+    return isRTL
+      ? {
+          dStartValue: xMax + maxMarkerSizeForXAxis,
+          dEndValue: xMin - maxMarkerSizeForXAxis,
+          rStartValue,
+          rEndValue,
+        }
+      : {
+          dStartValue: xMin - maxMarkerSizeForXAxis,
+          dEndValue: xMax + maxMarkerSizeForXAxis,
+          rStartValue,
+          rEndValue,
+        };
   };
 
   private _isChartEmpty(): boolean {
