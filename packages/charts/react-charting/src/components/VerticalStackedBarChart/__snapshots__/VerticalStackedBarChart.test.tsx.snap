@@ -28,9 +28,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -419,9 +417,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -810,9 +806,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -1201,9 +1195,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -1592,9 +1584,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -1963,9 +1953,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -2075,9 +2063,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -2466,9 +2452,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -2857,9 +2841,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -3248,9 +3230,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -3639,9 +3619,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
