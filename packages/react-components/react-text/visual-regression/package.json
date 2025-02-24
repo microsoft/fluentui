@@ -1,0 +1,11 @@
+{
+  "name": "@fluentui/react-text-visual-regression",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@fluentui/react-text": "*"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts"
+}
