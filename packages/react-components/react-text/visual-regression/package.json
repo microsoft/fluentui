@@ -3,7 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@fluentui/react-text": "*"
+    "@fluentui/react-text": "*",
+    "@fluentui/visual-regression-utilities": "*"
+  },
+  "peerDependencies": {
+    "@storybook/react": "^7.6.20"
+  },
+  "devDependencies": {
+    "@fluentui/react-storybook-addon": "*",
+    "@fluentui/scripts-storybook": "*"
   },
   "type": "commonjs",
   "main": "./src/index.js",
