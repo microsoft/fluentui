@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Link now pulls customStyleHook from context",
+  "packageName": "@fluentui/react-link",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
