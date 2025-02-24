@@ -12,7 +12,7 @@
       }
     },
     "test-vr": {
-      "command": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
+      "command": "rm -rf dist/screenshots && storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
       "options": {
         "cwd": "{projectRoot}"
       }
