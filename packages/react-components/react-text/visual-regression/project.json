@@ -23,6 +23,12 @@
         "cwd": "{projectRoot}"
       }
     },
+    "test-vr-assert": {
+      "command": "yarn playwright test",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
     "build": {
       "executor": "@nx/js:swc",
       "outputs": ["{options.outputPath}"],
