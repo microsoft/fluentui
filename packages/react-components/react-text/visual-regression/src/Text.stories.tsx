@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import { type Meta } from '@storybook/react';
 import { Steps, type StoryParameters } from 'storywright';
 import {
   Body1,

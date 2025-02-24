@@ -5,11 +5,23 @@
   "projectType": "library",
   "tags": ["vNext", "platform:web", "visual-regression"],
   "targets": {
+    "storybook": {
+      "command": "storybook dev",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
     "test-vr": {
-      "command": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
+      "command": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
     },
     "build-storybook": {
-      "command": "storybook build -o dist/storybook"
+      "command": "storybook build -o dist/storybook",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
     },
     "build": {
       "executor": "@nx/js:swc",
