@@ -1,0 +1,28 @@
+{
+  "name": "react-text-visual-regression",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/react-components/react-text/visual-regression/src",
+  "projectType": "library",
+  "tags": ["vNext", "platform:web", "visual-regression"],
+  "targets": {
+    "test-vr": {
+      "command": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
+    },
+    "build-storybook": {
+      "command": "storybook build -o dist/storybook"
+    },
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/react-components/react-text/visual-regression",
+        "main": "packages/react-components/react-text/visual-regression/src/index.ts",
+        "tsConfig": "packages/react-components/react-text/visual-regression/tsconfig.lib.json",
+        "assets": ["packages/react-components/react-text/visual-regression/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
