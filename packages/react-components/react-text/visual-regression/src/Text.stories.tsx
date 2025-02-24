@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import {
   Body1,
   Body1Strong,
@@ -22,7 +22,7 @@ import {
   Title3,
 } from '@fluentui/react-text';
 
-import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '@fluentui/visual-regression-utilities';
 
 export default {
   title: 'Text Converged',
@@ -33,8 +33,10 @@ export default {
         {storyFn(context)}
       </div>
     ),
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() }),
   ],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Text>;
 
 export const Default = () => (
