@@ -123,24 +123,6 @@ export interface VerticalBarChartStyleProps extends CartesianChartStyleProps {
  */
 export interface VerticalBarChartStyles extends CartesianChartStyles {
   /**
-   * Style for the lines representing the ticks along the x-axis.
-   * @deprecated This style cannot be customized anymore
-   */
-  xAxisTicks?: string;
-
-  /**
-   * Style for the line representing the domain of the y-axis.
-   * @deprecated This style cannot be customized anymore
-   */
-  yAxisDomain?: string;
-
-  /**
-   * Style for the lines representing the ticks along the y-axis.
-   * @deprecated This style cannot be customized anymore
-   */
-  yAxisTicks?: string;
-
-  /**
    * Style for the bar labels
    */
   barLabel: string;

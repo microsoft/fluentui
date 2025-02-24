@@ -303,12 +303,6 @@ export interface CartesianChartProps {
    */
   href?: string;
 
-  /**
-   * Label to apply to the whole chart.
-   * @deprecated - Use your chart label for the chart.
-   */
-  chartLabel?: string;
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   legendsOverflowText?: any;
 

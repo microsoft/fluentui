@@ -69,8 +69,6 @@ export const CartesianChart: React_2.FunctionComponent<ModifiedCartesianChartPro
 // @public
 export interface CartesianChartProps {
     calloutProps?: Partial<ChartPopoverProps>;
-    // @deprecated
-    chartLabel?: string;
     className?: string;
     customDateTimeFormatter?: (dateTime: Date) => string;
     customProps?: (dataPointCalloutProps: any) => ChartPopoverProps;
@@ -857,12 +855,6 @@ export interface VerticalBarChartStyleProps extends CartesianChartStyleProps {
 // @public
 export interface VerticalBarChartStyles extends CartesianChartStyles {
     barLabel: string;
-    // @deprecated
-    xAxisTicks?: string;
-    // @deprecated
-    yAxisDomain?: string;
-    // @deprecated
-    yAxisTicks?: string;
 }
 
 // @public (undocumented)
