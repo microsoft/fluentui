@@ -392,7 +392,7 @@ describe('prepareDatapoints for rounded tick value cases', () => {
     matchResult(result);
   });
 
-  it('should return an array with rounded data points when yMax is almost power of 10', () => {
+  it('should return array with rounded datapoints when yMax is power of 10 with floating point precision error', () => {
     const result = utils.prepareDatapoints(1000.000000002, -234.45, 4, false, true);
     matchResult(result);
   });

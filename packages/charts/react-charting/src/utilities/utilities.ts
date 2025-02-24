@@ -260,7 +260,8 @@ function isPowerOf10(n: number): boolean {
   return Math.log10(n) % 1 === 0;
 }
 
-function roundIfAlmostInteger(num: number): number {
+//for reference, go through this 'https://docs.python.org/release/2.5.1/tut/node16.html'
+function handleFloatingPointPrecisionError(num: number): number {
   const rounded = Math.round(num);
   return Math.abs(num - rounded) < 1e-6 ? rounded : num;
 }
@@ -420,7 +421,7 @@ function calculateRoundedTicks(minVal: number, maxVal: number, splitInto: number
   const finalYmax = minVal < 0 && minVal === maxVal ? 0 : maxVal;
   const ticksInterval = d3nice(finalYmin, finalYmax, splitInto);
   const ticks = d3Ticks(ticksInterval[0], ticksInterval[ticksInterval.length - 1], splitInto);
-  const roundedfinalYMax = roundIfAlmostInteger(finalYmax);
+  const roundedfinalYMax = handleFloatingPointPrecisionError(finalYmax);
   if (ticks[ticks.length - 1] > finalYmax && isPowerOf10(roundedfinalYMax)) {
     ticks.pop();
   }
