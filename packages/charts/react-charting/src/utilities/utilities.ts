@@ -905,22 +905,13 @@ export function domainRangeOfNumericForAreaChart(
       return item.x as number;
     });
   })!;
+
   const rStartValue = margins.left!;
   const rEndValue = width - margins.right!;
 
   return isRTL
-    ? {
-        dStartValue: xMax,
-        dEndValue: xMin,
-        rStartValue,
-        rEndValue,
-      }
-    : {
-        dStartValue: xMin,
-        dEndValue: xMax,
-        rStartValue,
-        rEndValue,
-      };
+    ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
+    : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
 }
 
 /**
