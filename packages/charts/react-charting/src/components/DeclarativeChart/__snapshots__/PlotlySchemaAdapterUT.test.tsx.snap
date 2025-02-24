@@ -203,11 +203,6 @@ Object {
   "hideLegend": false,
   "innerRadius": 42,
   "showLabelsInPercent": true,
-  "styles": Object {
-    "root": Object {
-      "[class^=\\"arcLabel\\"]": Object {},
-    },
-  },
   "width": 440,
 }
 `;
@@ -244,13 +239,6 @@ Object {
   "hideLegend": false,
   "innerRadius": 0,
   "showLabelsInPercent": false,
-  "styles": Object {
-    "root": Object {
-      "[class^=\\"arcLabel\\"]": Object {
-        "fontSize": 20,
-      },
-    },
-  },
   "width": 440,
 }
 `;
@@ -356,6 +344,7 @@ Object {
       ],
     },
   ],
+  "hideTickOverlap": true,
   "mode": "plotly",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,
@@ -2820,6 +2809,7 @@ Object {
     76.5710413276318,
   ],
   "hideLegend": true,
+  "hideTickOverlap": true,
   "rangeValuesForColorScale": Array [
     "rgb(158,1,66)",
     "rgb(213,62,79)",
@@ -2984,6 +2974,7 @@ Object {
       "y": "Laravel",
     },
   ],
+  "hideTickOverlap": true,
   "secondaryYAxistitle": "",
   "showYAxisLables": true,
   "styles": Object {
@@ -3326,6 +3317,7 @@ Object {
       },
     ],
   },
+  "hideTickOverlap": true,
   "mode": "tonexty",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,
@@ -4560,6 +4552,7 @@ Object {
       },
     ],
   },
+  "hideTickOverlap": true,
   "mode": "tonexty",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,
@@ -4840,6 +4833,7 @@ Object {
       "y": 2,
     },
   ],
+  "hideTickOverlap": true,
   "mode": "plotly",
   "supportNegativeData": true,
   "xAxisTitle": "",
@@ -4933,6 +4927,7 @@ Object {
       "xAxisPoint": "May",
     },
   ],
+  "hideTickOverlap": true,
   "mode": "plotly",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,

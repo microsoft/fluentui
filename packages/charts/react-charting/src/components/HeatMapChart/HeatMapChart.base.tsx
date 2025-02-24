@@ -204,6 +204,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       }),
       descriptionMessage: this.state.descriptionMessage,
     };
+    const tickParams = {
+      tickValues: this.props.tickValues,
+      tickFormat: this.props.tickFormat,
+    };
     return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
@@ -232,6 +236,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         legendBars={this._createLegendBars()}
         onChartMouseLeave={this._handleChartMouseLeave}
         ref={this._cartesianChartRef}
+        tickParams={tickParams}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -376,7 +381,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       this._stringXAxisDataPoints.forEach((xAxisDataPoint: string) => {
         let rectElement: JSX.Element;
         const id = `x${xAxisDataPoint}y${yAxisDataPoint}`;
-        if (this._dataSet[yAxisDataPoint][index]?.x === xAxisDataPoint) {
+        if (
+          this._dataSet[yAxisDataPoint][index]?.x === xAxisDataPoint &&
+          typeof this._dataSet[yAxisDataPoint][index]?.value === 'number'
+        ) {
           /**
            * dataPointObject is an object where it contains information on single
            * data point such as x, y , value, rectText property of the rectangle

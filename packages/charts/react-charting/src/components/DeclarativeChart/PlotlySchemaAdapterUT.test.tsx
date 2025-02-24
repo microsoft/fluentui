@@ -62,11 +62,11 @@ describe('isDate', () => {
     expect(isDateArray(['12/1/2025', '12/11/2025'])).toBe(true);
   });
 
-  test.skip('Should return true when input array contains date in simple date Object format', () => {
-    expect(isDateArray([11 / 2 / 2025, 10 / 2 / 2025])).toBe(true);
+  test('Should return true when input array contains date in simple date Object format', () => {
+    expect(isDateArray([new Date(2025, 11, 2), new Date(2025, 10, 2)])).toBe(true);
   });
 
-  test.skip('Should return false when input array is empty', () => {
+  test('Should return false when input array is empty', () => {
     expect(isDateArray([])).toBe(false);
   });
 

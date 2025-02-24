@@ -7,9 +7,7 @@ import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } 
 export default {
   title: 'Label Converged',
 
-  decorators: [
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() }),
-  ],
+  decorators: [story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default').end() })],
 } satisfies Meta<typeof Label>;
 
 export const Root = () => <Label>I'm a label</Label>;

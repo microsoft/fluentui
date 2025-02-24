@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 
 const DEFAULT_COLOR_HSV = { h: 324, s: 0.5, v: 0.5, a: 1 };
 
-export const ColorAreaExample = () => {
+export const ColorAreaDefault = () => {
   const styles = useStyles();
 
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
@@ -56,7 +56,7 @@ export const ColorAreaExample = () => {
   );
 };
 
-ColorAreaExample.parameters = {
+ColorAreaDefault.parameters = {
   docs: {
     description: {
       story:
