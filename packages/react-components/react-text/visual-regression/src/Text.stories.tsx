@@ -38,7 +38,8 @@ export default {
   } satisfies StoryParameters,
 } satisfies Meta<typeof Text>;
 
-export const Default: StoryObj = {
+export const Default = {
+  name: 'Default',
   render: () => (
     <>
       <p>
@@ -149,7 +150,7 @@ export const Default: StoryObj = {
       </p>
     </>
   ),
-};
+} satisfies StoryObj;
 
 export const DefaultRTL = getStoryVariant(Default, RTL);
 
@@ -157,7 +158,7 @@ export const DefaultHighContrast = getStoryVariant(Default, HIGH_CONTRAST);
 
 export const DefaultDarkMode = getStoryVariant(Default, DARK_MODE);
 
-export const TypographyPresets: StoryObj = {
+export const TypographyPresets = {
   render: () => (
     <>
       <Body1 block>Body1</Body1>
@@ -181,6 +182,6 @@ export const TypographyPresets: StoryObj = {
   ),
 
   name: 'Typography presets',
-};
+} satisfies StoryObj;
 
 export const TypographyPresetsRTL = getStoryVariant(TypographyPresets, RTL);
