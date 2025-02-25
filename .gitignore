@@ -51,6 +51,7 @@ $RECYCLE.BIN/
 
 # Generated files
 *.scss.ts
+playwright-report
 
 # Files that might appear on external disk
 .Spotlight-V100
