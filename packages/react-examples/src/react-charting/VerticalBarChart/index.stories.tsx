@@ -9,6 +9,7 @@ import { VerticalBarChartRotatedLabelExample } from './VerticalBarChart.RotateLa
 import { VerticalBarChartStyledExample } from './VerticalBarChart.Styled.Example';
 import { VerticalBarChartNegativeExample } from './VerticalBarChart.Negative.Example';
 import { VerticalBarChartAllNegativeExample } from './VerticalBarChart.AllNegative.Example';
+import { VerticalBarChartResponsiveExample } from './VerticalBarChart.Responsive.Example';
 
 export const Basic = () => <VerticalBarChartBasicExample />;
 
@@ -27,6 +28,8 @@ export const Tooltip = () => <VerticalBarChartTooltipExample />;
 export const Negative = () => <VerticalBarChartNegativeExample />;
 
 export const AllNegative = () => <VerticalBarChartAllNegativeExample />;
+
+export const Responsive = () => <VerticalBarChartResponsiveExample />;
 
 export default {
   title: 'Components/VerticalBarChart',
