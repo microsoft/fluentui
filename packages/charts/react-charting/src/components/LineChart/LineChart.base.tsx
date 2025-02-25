@@ -473,8 +473,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       maxMarkerSizeForYAxis = this._getExtendedDomainValue(
         startValue,
         endValue,
-        margins.bottom!,
-        containerHeight - margins.top!,
+        containerHeight - margins.bottom!,
+        margins.top!,
       );
     }
     return {
@@ -484,7 +484,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   };
 
   private _getExtendedDomainValue = (x1: number, x2: number, y1: number, y2: number): number => {
-    return maxMarkerSize ? Math.abs((maxMarkerSize * (x2 - x1)) / (y2 - y1 - 2 * maxMarkerSize)) : 0;
+    return maxMarkerSize
+      ? y2 > y1
+        ? Math.abs((maxMarkerSize * (x2 - x1)) / (y2 - y1 - 2 * maxMarkerSize))
+        : Math.abs((-1 * maxMarkerSize * (x2 - x1)) / (y2 - y1 + 2 * maxMarkerSize))
+      : 0;
   };
 
   private _getMargins = (margins: IMargins) => {
@@ -690,7 +694,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           <circle
             id={circleId}
             key={circleId}
-            r={activePoint === circleId ? 5.5 : 3.5}
+            r={this._points[i].data[0].markerSize ?? 4}
             cx={this._xAxisScale(x1)}
             cy={this._yAxisScale(y1)}
             fill={activePoint === circleId ? theme!.semanticColors.bodyBackground : lineColor}
@@ -1657,7 +1661,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       });
     })!;
 
-    const maxMarkerSizeForXAxis = this._getExtendedDomainValue(xMax, xMin, width - margins.right!, margins.left!);
+    const maxMarkerSizeForXAxis = this._getExtendedDomainValue(xMin, xMax, width - margins.right!, margins.left!);
     const rStartValue = margins.left!;
     const rEndValue = width - margins.right!;
 
