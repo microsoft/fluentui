@@ -1,14 +1,68 @@
 [
   {
-    "tags": ["Button", "Link", "SplitButton", "ToggleButton"],
-    "questions": ["hasMoreActions", "doesNavigateToPage"]
+    "tags": [
+      "Button",
+      "Link",
+      "SplitButton",
+      "ToggleButton",
+      "MenuButton",
+      "ToggleButton",
+      "LinkButton",
+      "ToolbarToggleButton"
+    ],
+    "name": "Actions",
+    "questions": ["hasMoreActions", "doesNavigateToPage", "isOnOrOff", "controlAppearance", "toggleOrNotToggle"]
   },
   {
-    "tags": ["Checkbox", "Radio", "ToggleButton", "Switch", "MenuItemCheckbox", "MenuItemRadio"],
-    "questions": ["canSelectMultipleChoices", "isOnOrOff", "isInsideMenu"]
+    "tags": ["Checkbox", "Radio", "Switch", "MenuItemCheckbox", "MenuItemRadio", "ToolbarRadio", "ToolbarToggleButton"],
+    "questions": ["canSelectMultipleChoices", "autoSelect", "visibilityInOnce", "isInstantAction"],
+    "name": "Input & Selection"
   },
   {
     "tags": ["InfoLabel", "Tooltip"],
-    "questions": ["hasInteractiveContent", "doesAppearOnHover"]
+    "comment": "add custom infoIcon codesandbox",
+    "questions": ["hasInteractiveContent", "doesAppearOnHover", "activationSource"],
+    "name": "Hints and tips"
+  },
+  {
+    "tags": ["List", "Grid", "Treegrid", "Table", "Menu"],
+    "questions": ["navigationOrDisplayingData", "moreInteraction", "visualLayout", "relationships"],
+    "name": "Structures and lists"
+  },
+  {
+    "tags": ["Card"],
+    "questions": ["cardPrimaryPurpose", "cardInteraction", "numberOfCards"],
+    "name": "Content grouping"
+  },
+  {
+    "tags": ["Dialog", "Popover", "TeachingPopover"],
+    "questions": ["dialogPrimaryPurpose", "dialogInteraction"],
+    "name": "Surfaces"
+  },
+  {
+    "tags": ["Combobox", "Dropdown", "Select"],
+    "comment": "missing calendar and datepicker",
+    "questions": ["", "", ""],
+    "name": "Options and picker"
+  },
+  {
+    "tags": ["Tree", "Accordion", "Tabs"],
+    "questions": ["hasInteractiveContent", "doesAppearOnHover", "activationSource"],
+    "name": "Navigation & disclosure"
+  },
+  {
+    "tags": ["MessageBar", "Badges", "Toast"],
+    "questions": ["", "", ""],
+    "name": "Notification"
+  },
+  {
+    "tags": ["TextInput", "TextArea", "Field"],
+    "questions": ["", "", ""],
+    "name": "Text input"
+  },
+  {
+    "tags": ["ProgressIndicator", "Spinner", "Skeleton"],
+    "questions": ["", "", ""],
+    "name": "Loading & progress"
   }
 ]

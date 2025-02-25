@@ -1,99 +1,316 @@
 [
   {
     "id": "hasMoreActions",
-    "question": "Does component have more actions?",
+    "question": "What is the Primary Purpose?",
     "answers": [
       {
         "value": "moreActions",
-        "text": "Yes"
+        "text": "Actions - a control performs an immediate action (e.g., submitting a form, triggering an event) "
       },
       {
         "value": "singleAction",
-        "text": "No"
+        "text": "Navigation - it navigates to another page/section"
       }
     ]
   },
   {
     "id": "doesNavigateToPage",
-    "question": "Does component navigate to new page?",
+    "question": "Do You Need to Offer Additional Options?",
     "answers": [
       {
         "value": "navigatesToPage",
-        "text": "Yes"
+        "text": "there is a primary action with related actions available in a dropdown"
       },
       {
         "value": "staysOnPage",
-        "text": "No"
+        "text": "all actions are equal in priority available in a dropdown"
       }
     ]
   },
   {
     "id": "canSelectMultipleChoices",
-    "question": "Does group of component provide possibility to select multiple choices?",
+    "question": "What is the Primary Purpose?",
     "answers": [
       {
         "value": "multipleChoices",
-        "text": "Yes"
+        "text": "it is multi-select"
       },
       {
         "value": "singleChoice",
+        "text": "it is mutually exclusive, i.e. only one choice can be selected at a time"
+      }
+    ]
+  },
+  {
+    "id": "toggleOrNotToggle",
+    "question": "Does the control has on/off state?",
+    "answers": [
+      {
+        "value": "toggle",
+        "text": "Yes, the control can hold on/off state"
+      },
+      {
+        "value": "notToggle",
         "text": "No"
       }
     ]
   },
   {
-    "id": "isOnOrOff",
-    "question": "Does component select between on/off or enabled/disabled states?",
+    "id": "autoSelect",
+    "question": "What is the interaction model for selecting option?",
     "answers": [
       {
         "value": "onOrOff",
-        "text": "Yes"
+        "text": "Selection happens automatically when navigating with keyboard"
       },
       {
         "value": "notOnOrOff",
-        "text": "No"
+        "text": "Selection happens only when the user activates the control using keyboard or mouse"
       }
     ]
   },
   {
-    "id": "isInsideMenu",
-    "question": "Is component inside menu?",
+    "id": "controlAppearance",
+    "question": "How Should the Control Appear and navigate ?",
     "answers": [
       {
-        "value": "insideMenu",
-        "text": "Yes"
+        "value": "linkAsButton",
+        "text": "it looks like a Link but it navigates within the application"
       },
       {
-        "value": "notInsideMenu",
-        "text": "No"
+        "value": "link",
+        "text": "it looks like a link and it navigates to an external page"
+      }
+    ]
+  },
+  {
+    "id": "visibilityInOnce",
+    "question": "Can all available options be visible at once or is screen space limited?",
+    "answers": [
+      {
+        "value": "onScreen",
+        "text": "yes all options can be visible at once"
+      },
+      {
+        "value": "offScreen",
+        "text": "there are too many options to fit withing the space available"
+      }
+    ]
+  },
+
+  {
+    "id": "isInstantAction",
+    "question": "Does the action need to be instant?",
+    "answers": [
+      {
+        "value": "isInstantAction",
+        "comment": "when it is instant then return switch component",
+        "text": "it should instantly make the change"
+      },
+      {
+        "value": "isNotInstantAction",
+        "text": "you have to click a 'save' or 'submit' button to implement and confirm the change"
       }
     ]
   },
   {
     "id": "hasInteractiveContent",
-    "question": "Does it contain extensive text or interactive content, e.g., links or buttons?",
+    "question": "What is the Primary Purpose?",
     "answers": [
       {
         "value": "interactiveContent",
-        "text": "Yes"
+        "text": "a popup that contains text and interactive content (e.g., links, buttons)"
       },
       {
         "value": "nonInteractiveContent",
-        "text": "No"
+        "text": "a popup that only shows text "
       }
     ]
   },
   {
     "id": "doesAppearOnHover",
-    "question": "Does it appear on hover/keybord focus rather than on click/keyboard activation?",
+    "question": "How the popup would be activated?",
     "answers": [
       {
         "value": "onHover",
-        "text": "Yes"
+        "text": "on hover and on focus with keyboard"
       },
       {
         "value": "onClick",
-        "text": "No"
+        "text": "on click or enter key with keyboard"
+      }
+    ]
+  },
+  {
+    "id": "activationSource",
+    "question": "Will the popup be activated via an information icon or a control?",
+    "answers": [
+      {
+        "value": "sourceInfoIcon",
+        "text": "Via a info icon or image"
+      },
+      {
+        "value": "sourceButton",
+        "text": "Via a button or actionable control"
+      }
+    ]
+  },
+  {
+    "id": "navigationOrDisplayingData",
+    "question": "What is the Primary Purpose?",
+    "answers": [
+      {
+        "value": "navigation",
+        "text": "it is interactive (used for navigation or operation)",
+        "comment": "return list, menu, dataGrid"
+      },
+      {
+        "value": "displayingData",
+        "text": "displaying non-interactive data or information",
+        "comment": "return list, table"
+      }
+    ]
+  },
+  {
+    "id": "moreInteraction",
+    "question": "Does it have one or more interactions associated with it?",
+    "answers": [
+      {
+        "value": "moreInteraction",
+        "text": "Yes, it's a combination of primary and additional actions (i.e. context menu, nested buttons or links)"
+      },
+      {
+        "value": "oneInteraction",
+        "text": "One primary interaction only"
+      }
+    ]
+  },
+  {
+    "id": "visualLayout",
+    "question": "What is the desired visual layout you want?",
+    "answers": [
+      {
+        "value": "verticalLayout",
+        "text": "Vertical only"
+      },
+      {
+        "value": "horizontalLayout",
+        "text": "Horizontal only"
+      },
+      {
+        "value": "gridLayout",
+        "text": "Grid layout both horizontal and vertical"
+      }
+    ]
+  },
+  {
+    "id": "relationships",
+    "question": "Is there relationships between rows and columns?",
+    "answers": [
+      {
+        "value": "onOrOff",
+        "text": "Yes, each column or row requires a heading."
+      },
+      {
+        "value": "notOnOrOff",
+        "text": "All data is the same and doesn't required categorization."
+      },
+      {
+        "value": "notOnOrOff",
+        "text": "All data is the same and they requires sorting."
+      }
+    ]
+  },
+  {
+    "id": "cardPrimaryPurpose",
+    "question": "What is the Primary Purpose?",
+    "answers": [
+      {
+        "value": "cardPrimaryPurposeInteractive",
+        "text": "it is interactive (used for navigation or operation?)"
+      },
+      {
+        "value": "cardPrimaryPurposeStatic",
+        "text": "it is static, used primarily for displaying non-interactive data or information"
+      }
+    ]
+  },
+  {
+    "id": "cardInteraction",
+    "question": "Does it have one or more interactions associated with it?",
+    "answers": [
+      {
+        "value": "cardPrimaryPurposeInteractive",
+        "text": "Yes, it's a combination of primary and additional actions (i.e. context menu, nested buttons or links) (If yes recommend card - role: Group, or ListItem as grid)"
+      },
+      {
+        "value": "cardPrimaryPurposeStatic",
+        "text": "One primary interaction only "
+      }
+    ]
+  },
+  {
+    "id": "numberOfCards",
+    "question": "How many cards will you be using?",
+    "answers": [
+      {
+        "value": "cardPrimaryPurposeInteractive",
+        "text": "one or two cards"
+      },
+      {
+        "value": "cardPrimaryPurposeStatic",
+        "text": "More than 2 cards"
+      }
+    ]
+  },
+  {
+    "id": "dialogPrimaryPurpose",
+    "question": "What is the Primary Purpose?",
+    "answers": [
+      {
+        "value": "lightweightInformation",
+        "comment": "this should be popover",
+        "text": "Displays lightweight information or quick actions."
+      },
+      {
+        "value": "dasf",
+        "text": "Requests user input, confirmation, or decision-making"
+      },
+      {
+        "value": "afdsa",
+        "text": "Provides in context teaching hints, that interrupt the user's attention (teaching UI)"
+      }
+    ]
+  },
+  {
+    "id": "dialogInteraction",
+    "question": "Do you require the user's attention and input before continuing?",
+    "answers": [
+      {
+        "value": "requiresUserInput",
+        "text": "Yes, The information is important and should not be missed. The user needs to confirm or take action (e.g., submit a form). Example Scenarios: A confirmation modal before deleting an item. A form dialog for user input (e.g., \"Edit Profile\"). A system alert requiring acknowledgment before proceeding. (Use alert dialog)"
+      },
+      {
+        "value": "doesNotRequireUserInput",
+        "text": "No, The user doesn't need to take any immediate action. The user should be able to continue interacting with the rest of the UI, it is not critical to read out the information on invocation of the popover. Example Scenarios: Displaying a quick preview of a file or item.Inline dropdowns for navigation or filter selection. "
+      }
+    ]
+  },
+  {
+    "id": "userAttentionBeforeContinue",
+    "question": "Do you require the user's attention and input before continuing?",
+    "answers": [
+      {
+        "value": "requiresUserInput",
+        "text": "the user flow is necessary, the user must make a choice before continuing"
+      },
+      {
+        "value": "doesNotRequireUserInput",
+        "text": "The information is important to the user and needs to capture their attention"
+      },
+      {
+        "value": "popover",
+        "text": "If information can be glanced at without disrupting the flow , If the action is minor or non-critical, provides quick actions or helpful hints"
       }
     ]
   }
