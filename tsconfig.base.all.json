@@ -88,6 +88,7 @@
       "@fluentui/global-context": ["packages/react-components/global-context/src/index.ts"],
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
       "@fluentui/keyboard-keys": ["packages/react-components/keyboard-keys/src/index.ts"],
+      "@fluentui/masons-theme-preview": ["packages/react-components/masons-theme-preview/library/src/index.ts"],
       "@fluentui/priority-overflow": ["packages/react-components/priority-overflow/src/index.ts"],
       "@fluentui/react-accordion": ["packages/react-components/react-accordion/library/src/index.ts"],
       "@fluentui/react-accordion-stories": ["packages/react-components/react-accordion/stories/src/index.ts"],
@@ -265,7 +266,8 @@
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
       "@fluentui/react-list-stories": ["packages/react-components/react-list/stories/src/index.ts"],
-      "@fluentui/react-list": ["packages/react-components/react-list/library/src/index.ts"]
+      "@fluentui/react-list": ["packages/react-components/react-list/library/src/index.ts"],
+      "@fluentui/masons-theme-preview-stories": ["packages/react-components/masons-theme-preview/stories/src/index.ts"]
     }
   }
 }
