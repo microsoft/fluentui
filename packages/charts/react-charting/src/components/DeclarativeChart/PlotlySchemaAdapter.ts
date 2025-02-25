@@ -511,7 +511,11 @@ export const transformPlotlyJsonToScatterChartProps = (
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
-        ...(Array.isArray(series.marker?.size) ? { markerSize: series.marker.size[i] } : {}),
+        ...(Array.isArray(series.marker?.size)
+          ? { markerSize: series.marker.size[i] }
+          : typeof series.marker?.size === 'number'
+          ? { markerSize: series.marker.size }
+          : {}),
       })),
       color: lineColor,
     } as ILineChartPoints;
