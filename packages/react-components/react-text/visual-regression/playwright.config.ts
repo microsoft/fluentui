@@ -7,6 +7,7 @@ const config: PlaywrightTestConfig = {
   retries: 3,
   fullyParallel: process.env.CI ? false : true,
   timeout: process.env.CI ? 10000 : 30000,
+  snapshotPathTemplate: '{testDir}/src/__snapshots__/{arg}{ext}',
   // use: {
   //   baseURL: 'http://localhost:6006',
   //   viewport: {
@@ -18,7 +19,7 @@ const config: PlaywrightTestConfig = {
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-      testMatch: /.*\.spec-e2e\.ts$/,
+      testMatch: /spec-vr.ts$/,
     },
     // {
     //   name: 'firefox',

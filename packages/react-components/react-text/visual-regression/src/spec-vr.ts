@@ -1,14 +1,15 @@
-import { readdirSync, readFileSync } from 'node:fs';
+import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { expect, test } from '@playwright/test';
 
 const actualRoot = join(__dirname, '../dist/screenshots');
 const actualSnapshots = readdirSync(actualRoot);
 
-const expectedRoot = __filename + '-snapshots';
-const expectedSnapshots = readdirSync(expectedRoot);
+const expectedRoot = join(__dirname, '__snapshots__');
 
-console.log({ actualSnapshots, expectedSnapshots });
+if (!existsSync(expectedRoot)) {
+  console.warn(`No snapshots exist yet! - ${expectedRoot}`);
+}
 
 actualSnapshots.forEach(async actualSnapshotFileName => {
   test(`${actualSnapshotFileName}`, async ({ page }) => {
