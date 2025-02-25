@@ -21,6 +21,7 @@ import { initializeIcons as i17 } from './fabric-icons-17';
 import { IIconOptions } from '@uifabric/styling';
 import { registerIconAliases } from './iconAliases';
 import { getWindow } from '@uifabric/utilities';
+
 const DEFAULT_BASE_URL = 'https://res.cdn.office.net/files/fabric-cdn-prod_20241209.001/assets/icons/';
 
 /*
