@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 21 Feb 2025 07:22:41 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Feb 2025 07:20:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.57)
+
+Tue, 25 Feb 2025 07:20:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.56..@fluentui/react-charting_v5.23.57)
+
+### Patches
+
+- feat: make charts responsive ([PR #33723](https://github.com/microsoft/fluentui/pull/33723) by 110246001+krkshitij@users.noreply.github.com)
 
 ## [5.23.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.56)
 
