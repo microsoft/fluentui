@@ -11,11 +11,18 @@
         "cwd": "{projectRoot}"
       }
     },
-    "test-vr": {
+    "prepare-test-vr": {
       "command": "rm -rf dist/screenshots && storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
       "options": {
         "cwd": "{projectRoot}"
-      }
+      },
+      "metadata": {
+        "help": {
+          "command": "yarn storywright --help",
+          "example": {}
+        }
+      },
+      "dependsOn": ["build-storybook"]
     },
     "build-storybook": {
       "command": "storybook build -o dist/storybook",
@@ -23,11 +30,18 @@
         "cwd": "{projectRoot}"
       }
     },
-    "test-vr-assert": {
+    "test-vr": {
       "command": "yarn playwright test",
       "options": {
         "cwd": "{projectRoot}"
-      }
+      },
+      "metadata": {
+        "help": {
+          "command": "yarn playwright test --help",
+          "example": {}
+        }
+      },
+      "dependsOn": ["build-storybook", "prepare-test-vr"]
     },
     "build": {
       "executor": "@nx/js:swc",

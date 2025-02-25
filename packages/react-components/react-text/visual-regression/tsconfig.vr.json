@@ -3,5 +3,5 @@
   "compilerOptions": {
     "types": ["node"]
   },
-  "include": ["playwright.config.ts", "**/*.spec-e2e.ts"]
+  "include": ["playwright.config.ts", "**/spec-vr.ts"]
 }
