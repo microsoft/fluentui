@@ -72,10 +72,6 @@ export type PresenceComponent<MotionParams extends Record<string, MotionParam> =
   [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
 };
 
-function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean, visible: boolean | undefined) {
-  return !appear && isFirstMount && !!visible;
-}
-
 export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(
   value: PresenceMotion | PresenceMotionFn<MotionParams>,
 ): PresenceComponent<MotionParams> {
@@ -143,17 +139,20 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
         () => {
           const element = elementRef.current;
 
-          if (!element || shouldSkipAnimation(optionsRef.current.appear, isFirstMount, visible)) {
+          if (!element) {
             return;
           }
 
           const presenceMotion =
             typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : (value as PresenceMotion);
-          const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
 
+          const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
           const direction: PresenceDirection = visible ? 'enter' : 'exit';
-          const applyInitialStyles = !visible && isFirstMount;
-          const skipAnimation = optionsRef.current.skipMotions;
+
+          // Heads up!
+          // Initial styles are applied when the component is mounted for the first time and "appear" is set to "false" (otherwise animations are triggered)
+          const applyInitialStyles = !optionsRef.current.appear && isFirstMount;
+          const skipAnimationByConfig = optionsRef.current.skipMotions;
 
           if (!applyInitialStyles) {
             handleMotionStart(direction);
@@ -174,7 +173,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
             () => handleMotionCancel(direction),
           );
 
-          if (skipAnimation) {
+          if (skipAnimationByConfig) {
             handle.finish();
           }
 

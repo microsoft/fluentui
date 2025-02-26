@@ -2,6 +2,54 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 25 Feb 2025 07:20:44 GMT",
+      "tag": "@fluentui/react-charting_v5.23.57",
+      "version": "5.23.57",
+      "comments": {
+        "patch": [
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "1115b9326cc915802278305d826b345d318c16f2",
+            "comment": "feat: make charts responsive"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Feb 2025 07:22:41 GMT",
+      "tag": "@fluentui/react-charting_v5.23.56",
+      "version": "5.23.56",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.21",
+            "commit": "37cb222b6d035ea02d490aa26a2aaf7dfd94c761"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.200",
+            "commit": "37cb222b6d035ea02d490aa26a2aaf7dfd94c761"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/set-version to v8.2.24",
+            "commit": "37cb222b6d035ea02d490aa26a2aaf7dfd94c761"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.122.11",
+            "commit": "37cb222b6d035ea02d490aa26a2aaf7dfd94c761"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Feb 2025 07:21:16 GMT",
       "tag": "@fluentui/react-charting_v5.23.55",
       "version": "5.23.55",

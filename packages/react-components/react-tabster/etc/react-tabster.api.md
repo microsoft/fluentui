@@ -1439,6 +1439,9 @@ interface UncontrolledProps {
 }
 
 // @public
+export function useActivateModal(): (elementFromModal: HTMLElement | undefined) => void;
+
+// @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => Types.TabsterDOMAttribute;
 
 // @public (undocumented)
@@ -1450,6 +1453,11 @@ export interface UseArrowNavigationGroupOptions {
     tabbable?: boolean;
     unstable_hasDefault?: boolean;
 }
+
+// @public
+export function useDangerousNeverHidden_unstable(): {
+    [key: string]: string;
+};
 
 // @public
 export const useFocusableGroup: (options?: UseFocusableGroupOptions) => Types.TabsterDOMAttribute;

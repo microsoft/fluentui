@@ -1,5 +1,6 @@
 import { VirtualizerScrollView } from '@fluentui/react-virtualizer';
 import descriptionMd from './VirtualizerScrollViewDescription.md';
+import accessibilityMd from './VirtualizerScrollViewAccessibility.md';
 
 export { Default } from './Default.stories';
 export { ScrollTo } from './ScrollTo.stories';
@@ -11,7 +12,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd].join('\n'),
+        component: [descriptionMd, accessibilityMd].join('\n'),
       },
     },
   },

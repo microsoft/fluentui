@@ -41,7 +41,12 @@ export const ScrollLoading = () => {
       numItems={childLength}
       itemSize={minHeight}
       getItemSize={getItemSizeCallback}
-      container={{ role: 'list', style: { maxHeight: '80vh' } }}
+      container={{
+        role: 'list',
+        'aria-label': `Virtualized list with ${childLength} children`,
+        tabIndex: 0,
+        style: { maxHeight: '80vh' },
+      }}
       enableScrollLoad={true}
     >
       {(index: number, isScrolling = false) => {
