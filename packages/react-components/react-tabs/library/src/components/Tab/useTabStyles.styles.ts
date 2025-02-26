@@ -22,6 +22,11 @@ const iconClassNames = {
   regular: 'fui-Icon-regular',
 };
 
+const windowsHCStyles = {
+  color: 'HighlightText',
+  forcedColorAdjust: 'none',
+};
+
 /**
  * Styles for the root slot
  */
@@ -242,18 +247,9 @@ const useCircularAppearanceStyles = makeStyles({
     '@media (forced-colors: active)': {
       ':enabled:hover': {
         backgroundColor: 'Highlight',
-        [`& .${tabClassNames.content}`]: {
-          color: 'HighlightText',
-          forcedColorAdjust: 'none',
-        },
-        [`& .${iconClassNames.filled}`]: {
-          color: 'HighlightText',
-          forcedColorAdjust: 'none',
-        },
-        [`& .${iconClassNames.regular}`]: {
-          color: 'HighlightText',
-          forcedColorAdjust: 'none',
-        },
+        [`& .${tabClassNames.content}`]: windowsHCStyles,
+        [`& .${iconClassNames.filled}`]: windowsHCStyles,
+        [`& .${iconClassNames.regular}`]: windowsHCStyles,
       },
     },
   },
@@ -271,10 +267,7 @@ const useCircularAppearanceStyles = makeStyles({
     '@media (forced-colors: active)': {
       ':enabled': {
         backgroundColor: 'ButtonText',
-        [`& .${tabClassNames.content}`]: {
-          color: 'HighlightText',
-          forcedColorAdjust: 'none',
-        },
+        [`& .${tabClassNames.content}`]: windowsHCStyles,
       },
       [`:enabled .${tabClassNames.icon}`]: {
         color: 'HighlightText',
