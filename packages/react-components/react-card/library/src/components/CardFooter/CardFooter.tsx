@@ -4,7 +4,7 @@ import { renderCardFooter_unstable } from './renderCardFooter';
 import { useCardFooterStyles_unstable } from './useCardFooterStyles.styles';
 import type { CardFooterProps } from './CardFooter.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHook_unstable } from '../../../../../react-shared-contexts/library/src/index';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Component to render Button actions in a Card component.
