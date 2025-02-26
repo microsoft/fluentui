@@ -3881,6 +3881,15 @@ Array [
 ]
 `;
 
+exports[`prepareDatapoints for rounded tick value cases should return array with rounded datapoints when yMax is power of 10 with floating point precision error 1`] = `
+Array [
+  -500,
+  0,
+  500,
+  1000,
+]
+`;
+
 exports[`prepareDatapoints should handle the case where the range spans across zero 1`] = `
 Array [
   -9,
