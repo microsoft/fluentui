@@ -1699,3 +1699,71 @@ export const formatDate = (date: Date, useUTC?: string | boolean) => {
   const timeFormat = useUTC ? d3UtcFormat : d3TimeFormat;
   return timeFormat('%-e %b %Y, %H:%M')(date) + (useUTC ? ' GMT' : '');
 };
+
+export function createNumericYAxis(
+  yAxisParams: IYAxisParams,
+  isRtl: boolean,
+  axisData: IAxisData,
+  isIntegralDataset: boolean,
+  useSecondaryYScale: boolean = false,
+  supportNegativeData: boolean = false,
+  roundedTicks: boolean = false,
+) {
+  const {
+    yMinMaxValues = { startValue: 0, endValue: 0 },
+    yAxisElement = null,
+    yMaxValue = 0,
+    yMinValue = 0,
+    containerHeight,
+    containerWidth,
+    margins,
+    tickPadding = 12,
+    maxOfYVal = 0,
+    yAxisTickFormat,
+    yAxisTickCount = 4,
+    eventAnnotationProps,
+    eventLabelHeight,
+  } = yAxisParams;
+
+  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
+  const tempVal = maxOfYVal || yMinMaxValues.endValue;
+  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
+  const finalYmin = supportNegativeData
+    ? Math.min(yMinMaxValues.startValue, yMinValue || 0)
+    : yMinMaxValues.startValue < yMinValue
+    ? 0
+    : yMinValue!;
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
+  const yAxisScale = d3ScaleLinear()
+    .domain([supportNegativeData ? domainValues[0] : finalYmin, domainValues[domainValues.length - 1]])
+    .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
+  const axis =
+    (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+  const yAxis = axis
+    .tickPadding(tickPadding)
+    .tickValues(domainValues)
+    .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+  axisData.yAxisDomainValues = domainValues;
+  return yAxisScale;
+}
+
+export function areArraysEqual(arr1?: string[], arr2?: string[]): boolean {
+  if (arr1 === arr2) {
+    return true;
+  }
+  if (!arr1 && !arr2) {
+    return true;
+  }
+  if (!arr1 || !arr2 || arr1.length !== arr2.length) {
+    return false;
+  }
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) {
+      return false;
+    }
+  }
+  return true;
+}

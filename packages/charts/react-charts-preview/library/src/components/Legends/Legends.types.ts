@@ -192,6 +192,32 @@ export interface LegendsProps {
   defaultSelectedLegend?: string;
 
   /**
+   * Keys (title) that will be used to set selected items in multi-select scenarios when canSelectMultipleLegends is
+   * true. For single-select, use selectedLegend.
+   *
+   * When this prop is provided, the component is controlled and does not automatically update the selection based on
+   * user interactions; the parent component must update the value passed to this property by handling the onChange
+   * event.
+   *
+   * @see defaultSelectedLegends for setting the initially-selected legends in uncontrolled mode.
+   * @see selectedLegends for setting the selected legends when `canSelectMultipleLegends` is `true`.
+   */
+  selectedLegends?: string[];
+
+  /**
+   * Key (title) that will be used to set the selected item in single-select scenarios when canSelectMultipleLegends is
+   * false or unspecified. For multi-select, use selectedLegends.
+   *
+   * When this prop is provided, the component is controlled and does not automatically update the selection based on
+   * user interactions; the parent component must update the value passed to this property by handling the onChange
+   * event.
+   *
+   * @see defaultSelectedLegend for setting the initially-selected legend in uncontrolled mode.
+   * @see selectedLegend for setting the selected legend when `canSelectMultipleLegends` is `false`.
+   */
+  selectedLegend?: string;
+
+  /**
    * The shape for the legend.
    */
   shape?: LegendShape;
