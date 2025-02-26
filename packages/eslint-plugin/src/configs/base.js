@@ -6,12 +6,7 @@ const { getNamingConventionRule, testFiles, storyFiles } = require('../utils/con
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
-  extends: [
-    path.join(__dirname, 'core'),
-    // Browser compatibility linter rules
-    'plugin:compat/recommended',
-  ],
-  plugins: ['compat'],
+  extends: [path.join(__dirname, 'core')],
   rules: {
     /**
      * `@typescript-eslint`plugin eslint rules
@@ -30,27 +25,30 @@ module.exports = {
       },
     },
     {
-      files: [...testFiles, ...storyFiles],
-      rules: {
-        'compat/compat': 'off',
+      files: '**/src/**/*.{ts,tsx,js}',
+      excludedFiles: [...testFiles, ...storyFiles],
+      extends: ['plugin:compat/recommended'],
+      plugins: ['compat'],
+      settings: {
+        /**
+         * Browser matrix support
+         * @see https://react.fluentui.dev/?path=/docs/concepts-developer-browser-support-matrix--docs#partial-browser-support-matrix
+         **/
+        targets: [
+          // Desktop browsers
+          'edge >= 79',
+          'firefox >= 69',
+          'chrome >= 79',
+          'safari >= 13.1',
+          'opera >= 64',
+          'not ie <= 11',
+          // Mobile browsers
+          'ios_saf >= 13.4',
+          'android >= 79',
+          'samsung >= 14',
+          'not op_mini all',
+        ],
       },
     },
   ],
-  settings: {
-    // Browser matrix support - https://react.fluentui.dev/?path=/docs/concepts-developer-browser-support-matrix--docs#partial-browser-support-matrix
-    targets: [
-      // Desktop browsers
-      'edge >= 79',
-      'firefox >= 69',
-      'chrome >= 79',
-      'safari >= 13.1',
-      'opera >= 64',
-      'not ie <= 11',
-      // Mobile browsers
-      'ios_saf >= 13.4',
-      'android >= 79',
-      'samsung >= 14',
-      'not op_mini all',
-    ],
-  },
 };
