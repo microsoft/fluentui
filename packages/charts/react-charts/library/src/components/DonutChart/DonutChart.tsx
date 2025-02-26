@@ -10,7 +10,6 @@ import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
-import { ResponsiveContainer } from '../CommonComponents/ResponsiveContainer';
 
 const MIN_LEGEND_CONTAINER_HEIGHT = 40;
 
@@ -19,7 +18,7 @@ const MIN_LEGEND_CONTAINER_HEIGHT = 40;
  * Donutchart component.
  * {@docCategory DonutChart}
  */
-const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRef<HTMLDivElement, DonutChartProps>(
+export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwardRef<HTMLDivElement, DonutChartProps>(
   (props, forwardedRef) => {
     const _rootElem = React.useRef<HTMLDivElement | null>(null);
     const _uniqText: string = useId('_Pie_');
@@ -321,22 +320,8 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
   },
 );
 
-export const DonutChart: React.FunctionComponent<DonutChartProps> = props => {
-  if (!props.responsive) {
-    return <DonutChartBase {...props} />;
-  }
-
-  return (
-    <ResponsiveContainer onResize={props.onResize} width={props.width} height={props.height}>
-      {({ containerWidth, containerHeight }) => (
-        <DonutChartBase {...props} width={containerWidth} height={containerHeight} />
-      )}
-    </ResponsiveContainer>
-  );
-};
 DonutChart.displayName = 'DonutChart';
 DonutChart.defaultProps = {
   innerRadius: 0,
   hideLabels: true,
-  responsive: true,
 };

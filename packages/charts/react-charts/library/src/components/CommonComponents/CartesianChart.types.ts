@@ -303,12 +303,6 @@ export interface CartesianChartProps {
    */
   href?: string;
 
-  /**
-   * Label to apply to the whole chart.
-   * @deprecated - Use your chart label for the chart.
-   */
-  chartLabel?: string;
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   legendsOverflowText?: any;
 
@@ -412,19 +406,6 @@ export interface CartesianChartProps {
    * @default true
    */
   useUTC?: string | boolean;
-
-  /**
-   * Enables the chart to automatically adjust its size based on the container's dimensions.
-   * @default true
-   */
-  responsive?: boolean;
-
-  /**
-   * The function that is called when the chart is resized.
-   * @param width - The new width of the chart.
-   * @param height - The new height of the chart.
-   */
-  onResize?: (width: number, height: number) => void;
 
   /**
    * Determines whether overlapping x-axis tick labels should be hidden.

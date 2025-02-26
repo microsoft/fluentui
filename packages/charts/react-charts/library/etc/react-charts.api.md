@@ -63,14 +63,12 @@ export interface Basestate {
     }[];
 }
 
-// @public (undocumented)
+// @public
 export const CartesianChart: React_2.FunctionComponent<ModifiedCartesianChartProps>;
 
 // @public
 export interface CartesianChartProps {
     calloutProps?: Partial<ChartPopoverProps>;
-    // @deprecated
-    chartLabel?: string;
     className?: string;
     customDateTimeFormatter?: (dateTime: Date) => string;
     customProps?: (dataPointCalloutProps: any) => ChartPopoverProps;
@@ -88,9 +86,7 @@ export interface CartesianChartProps {
     legendsOverflowText?: any;
     margins?: Margins;
     noOfCharsToTruncate?: number;
-    onResize?: (width: number, height: number) => void;
     parentRef?: HTMLElement | null;
-    responsive?: boolean;
     rotateXAxisLables?: boolean;
     secondaryYAxistitle?: string;
     secondaryYScaleOptions?: {
@@ -355,21 +351,31 @@ export const DataVizPalette: {
     highSuccess: string;
 };
 
-// @public (undocumented)
+// @public
 export const DonutChart: React_2.FunctionComponent<DonutChartProps>;
 
 // @public
-export interface DonutChartProps extends CartesianChartProps {
+export interface DonutChartProps {
     calloutProps?: ChartPopoverProps;
+    className?: string;
     culture?: string;
     customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     data?: ChartProps;
+    height?: number;
     hideLabels?: boolean;
+    hideLegend?: boolean;
+    href?: string;
     innerRadius?: number;
+    // (undocumented)
+    legendProps?: Partial<LegendsProps>;
+    // (undocumented)
+    legendsOverflowText?: any;
     onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSX.Element | undefined;
+    parentRef?: HTMLElement | null;
     showLabelsInPercent?: boolean;
     styles?: DonutChartStyles;
     valueInsideDonut?: string | number;
+    width?: number;
 }
 
 // @public
@@ -767,6 +773,9 @@ export interface RefArrayData {
 }
 
 // @public (undocumented)
+export const ResponsiveContainer: React_2.FC<ResponsiveContainerProps>;
+
+// @public (undocumented)
 export const Shape: React_2.FunctionComponent<ShapeProps>;
 
 // @public (undocumented)
@@ -857,12 +866,6 @@ export interface VerticalBarChartStyleProps extends CartesianChartStyleProps {
 // @public
 export interface VerticalBarChartStyles extends CartesianChartStyles {
     barLabel: string;
-    // @deprecated
-    xAxisTicks?: string;
-    // @deprecated
-    yAxisDomain?: string;
-    // @deprecated
-    yAxisTicks?: string;
 }
 
 // @public (undocumented)
