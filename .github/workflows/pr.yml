@@ -1,0 +1,44 @@
+name: CI
+on:
+  push:
+    branches:
+      - 7.0
+  pull_request:
+
+concurrency:
+  # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  main:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: macos-14-xlarge
+    permissions:
+      contents: 'read'
+      actions: 'read'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '14.x'
+
+      - name: yarn install
+        run: |
+          bash ${GITHUB_WORKSPACE}/yarn-ci.sh
+
+      - name: check change
+        run: |
+          yarn checkchange
+
+      - name: prelint (satisfied, syncpack, lint-files)
+        run: |
+          yarn prelint
+
+      - name: build, test, lint
+        run: |
+          yarn buildci --no-cache
