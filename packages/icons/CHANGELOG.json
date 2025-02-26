@@ -2,6 +2,21 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "date": "Wed, 26 Feb 2025 19:36:18 GMT",
+      "tag": "@uifabric/icons_v7.9.6",
+      "version": "7.9.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: update icons base URL to point to new CDN.",
+            "author": "twatanabe@microsoft.com",
+            "commit": "131282b0a1c998665fc0703e7cc243665a85cfbc",
+            "package": "@uifabric/icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 31 Oct 2022 12:24:01 GMT",
       "tag": "@uifabric/icons_v7.9.5",
       "version": "7.9.5",

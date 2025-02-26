@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/charting",
-  "version": "4.23.26",
+  "version": "4.23.27",
   "description": "Experimental React charting components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,7 +37,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.22.33",
+    "@uifabric/example-app-base": "^7.22.34",
     "@uifabric/jest-serializer-merge-styles": "^7.2.6",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
@@ -57,7 +57,7 @@
     "@types/d3-shape": "^1.2.3",
     "@types/d3-time-format": "^2.1.0",
     "@types/d3-time": "^1.1.0",
-    "@uifabric/icons": "^7.9.5",
+    "@uifabric/icons": "^7.9.6",
     "@uifabric/set-version": "^7.0.24",
     "@types/d3-hierarchy": "2.0.0",
     "d3-array": "1.2.1",
@@ -74,7 +74,7 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
-    "office-ui-fabric-react": "^7.204.0",
+    "office-ui-fabric-react": "^7.204.1",
     "@types/react-dom": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0",
     "react-dom": ">=16.8.0 <18.0.0"

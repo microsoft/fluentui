@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update icons base URL to point to new CDN.",
-  "packageName": "@uifabric/icons",
-  "email": "twatanabe@microsoft.com",
-  "dependentChangeType": "patch"
-}

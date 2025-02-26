@@ -1,8 +1,17 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Fri, 18 Aug 2023 12:23:54 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Feb 2025 19:36:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.39](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.39)
+
+Wed, 26 Feb 2025 19:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.38..@fluentui/storybook_v0.9.39)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.39 ([PR #33900](https://github.com/microsoft/fluentui/pull/33900) by twatanabe@microsoft.com)
 
 ## [0.9.38](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.38)
 
