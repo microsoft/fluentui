@@ -135,7 +135,7 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
   useMenuItemStyles_unstable({
     ...state,
     components: {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...state.components,
       checkmark: 'span',
       submenuIndicator: 'span',

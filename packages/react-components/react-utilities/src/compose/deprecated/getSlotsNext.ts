@@ -25,7 +25,7 @@ export function getSlotsNext<R extends SlotPropsRecord>(
   const slots = {} as Slots<R>;
   const slotProps = {} as R;
 
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const slotNames: (keyof R)[] = Object.keys(typedState.components);
   for (const slotName of slotNames) {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -56,12 +56,12 @@ function getSlotNext<R extends SlotPropsRecord, K extends keyof R>(
   const { as: asProp, ...propsWithoutAs } = props as NonUndefined<typeof props>;
 
   const slot = (
-    state.components?.[slotName] === undefined || // eslint-disable-line deprecation/deprecation
-    // eslint-disable-next-line deprecation/deprecation
+    state.components?.[slotName] === undefined || // eslint-disable-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     typeof state.components[slotName] === 'string'
-      ? // eslint-disable-next-line deprecation/deprecation
+      ? // eslint-disable-next-line @typescript-eslint/no-deprecated
         asProp || state.components?.[slotName] || 'div'
-      : // eslint-disable-next-line deprecation/deprecation
+      : // eslint-disable-next-line @typescript-eslint/no-deprecated
         state.components[slotName]
   ) as React.ElementType<R[K]>;
 

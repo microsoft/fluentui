@@ -183,7 +183,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
   return {
     ...virtualizerState,
     components: {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...virtualizerState.components,
       container: 'div',
     },

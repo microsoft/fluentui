@@ -16,7 +16,7 @@ import type { ARIAButtonProps, ARIAButtonType } from './types';
  */
 // eslint-disable-next-line @typescript-eslint/no-deprecated, @typescript-eslint/no-explicit-any
 export const useARIAButtonShorthand: ResolveShorthandFunction<any> = ((value, options) => {
-  // eslint-disable-next-line@typescript-eslint/no-deprecated
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const shorthand = resolveShorthand(value, options);
   const shorthandARIAButton = useARIAButtonProps<ARIAButtonType, ARIAButtonProps>(
     shorthand?.as ?? 'button',
