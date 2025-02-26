@@ -256,8 +256,9 @@ function multiFormat(date: Date, locale?: d3TimeLocaleObject, useUTC?: boolean) 
   )(date);
 }
 
-function isPowerOf10(n: number): boolean {
-  return Math.log10(n) % 1 === 0;
+function isPowerOf10(num: number): boolean {
+  const roundedfinalYMax = handleFloatingPointPrecisionError(num);
+  return Math.log10(roundedfinalYMax) % 1 === 0;
 }
 
 //for reference, go through this 'https://docs.python.org/release/2.5.1/tut/node16.html'
@@ -421,8 +422,7 @@ function calculateRoundedTicks(minVal: number, maxVal: number, splitInto: number
   const finalYmax = minVal < 0 && minVal === maxVal ? 0 : maxVal;
   const ticksInterval = d3nice(finalYmin, finalYmax, splitInto);
   const ticks = d3Ticks(ticksInterval[0], ticksInterval[ticksInterval.length - 1], splitInto);
-  const roundedfinalYMax = handleFloatingPointPrecisionError(finalYmax);
-  if (ticks[ticks.length - 1] > finalYmax && isPowerOf10(roundedfinalYMax)) {
+  if (ticks[ticks.length - 1] > finalYmax && isPowerOf10(finalYmax)) {
     ticks.pop();
   }
   return ticks;
