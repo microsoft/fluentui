@@ -1,0 +1,4 @@
+{
+  "name": "ButtonBase",
+  "attributes": ["staysOnPage", "navigationByTabKey", "interactive"]
+}
