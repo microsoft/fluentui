@@ -1,8 +1,39 @@
 import * as React from 'react';
 
-import { makeStyles, Body1, Caption1, Button } from '@fluentui/react-components';
+import {
+  makeStyles,
+  Body1,
+  Caption1,
+  Button,
+  mergeClasses,
+  tokens,
+  FluentProvider,
+  Card,
+  CardFooter,
+  CardHeader,
+  CardPreview,
+} from '@fluentui/react-components';
 import { ArrowReplyRegular, ShareRegular } from '@fluentui/react-icons';
-import { Card, CardFooter, CardHeader, CardPreview } from '@fluentui/react-components';
+import type { CardState, FluentProviderCustomStyleHooks } from '@fluentui/react-components';
+
+const useCardStyle = makeStyles({
+  root: {
+    backgroundColor: tokens.colorNeutralBackground3,
+    width: '620px',
+    maxWidth: '100%',
+    margin: 'auto',
+  },
+});
+
+export const useCardStyles = (state: unknown) => {
+  const cardStyles = useCardStyle();
+  const componentState = state as CardState;
+  componentState.root.className = mergeClasses(componentState.root.className, cardStyles.root);
+};
+
+export const customStyleHooks: FluentProviderCustomStyleHooks = {
+  useCardStyles_unstable: useCardStyles,
+};
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -23,25 +54,27 @@ export const Default = () => {
   const styles = useStyles();
 
   return (
-    <Card className={styles.card}>
-      <CardHeader
-        image={<img src={resolveAsset('avatar_elvia.svg')} alt="Elvia Atkins avatar picture" />}
-        header={
-          <Body1>
-            <b>Elvia Atkins</b> mentioned you
-          </Body1>
-        }
-        description={<Caption1>5h ago · About us - Overview</Caption1>}
-      />
+    <FluentProvider customStyleHooks_unstable={customStyleHooks}>
+      <Card className={styles.card}>
+        <CardHeader
+          image={<img src={resolveAsset('avatar_elvia.svg')} alt="Elvia Atkins avatar picture" />}
+          header={
+            <Body1>
+              <b>Elvia Atkins</b> mentioned you
+            </Body1>
+          }
+          description={<Caption1>5h ago · About us - Overview</Caption1>}
+        />
 
-      <CardPreview logo={<img src={resolveAsset('docx.png')} alt="Microsoft Word document" />}>
-        <img src={resolveAsset('doc_template.png')} alt="Preview of a Word document: About Us - Overview" />
-      </CardPreview>
+        <CardPreview logo={<img src={resolveAsset('docx.png')} alt="Microsoft Word document" />}>
+          <img src={resolveAsset('doc_template.png')} alt="Preview of a Word document: About Us - Overview" />
+        </CardPreview>
 
-      <CardFooter>
-        <Button icon={<ArrowReplyRegular fontSize={16} />}>Reply</Button>
-        <Button icon={<ShareRegular fontSize={16} />}>Share</Button>
-      </CardFooter>
-    </Card>
+        <CardFooter>
+          <Button icon={<ArrowReplyRegular fontSize={16} />}>Reply</Button>
+          <Button icon={<ShareRegular fontSize={16} />}>Share</Button>
+        </CardFooter>
+      </Card>
+    </FluentProvider>
   );
 };
