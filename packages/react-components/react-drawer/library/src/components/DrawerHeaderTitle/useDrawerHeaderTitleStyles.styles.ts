@@ -39,7 +39,7 @@ export const useDrawerHeaderTitleStyles_unstable = (state: DrawerHeaderTitleStat
   // but there's no way to retrieve the element type of a slot from the slot definition
   // right now without using SLOT_ELEMENT_TYPE_SYMBOL
   // TODO: create a method to retrieve the element type of a slot
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const { heading: root = {}, action, components } = state;
 
   useDialogTitleStyles_unstable({

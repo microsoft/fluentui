@@ -72,7 +72,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
   return {
     ...baseState,
     components: {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...baseState.components,
       selectionCell: DataGridSelectionCell,
     },
