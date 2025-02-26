@@ -355,17 +355,27 @@ export const DataVizPalette: {
 export const DonutChart: React_2.FunctionComponent<DonutChartProps>;
 
 // @public
-export interface DonutChartProps extends CartesianChartProps {
+export interface DonutChartProps {
     calloutProps?: ChartPopoverProps;
+    className?: string;
     culture?: string;
     customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     data?: ChartProps;
+    height?: number;
     hideLabels?: boolean;
+    hideLegend?: boolean;
+    href?: string;
     innerRadius?: number;
+    // (undocumented)
+    legendProps?: Partial<LegendsProps>;
+    // (undocumented)
+    legendsOverflowText?: any;
     onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSX.Element | undefined;
+    parentRef?: HTMLElement | null;
     showLabelsInPercent?: boolean;
     styles?: DonutChartStyles;
     valueInsideDonut?: string | number;
+    width?: number;
 }
 
 // @public
