@@ -13,7 +13,7 @@ concurrency:
 jobs:
   main:
     if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: macos-14-xlarge
+    runs-on: ubuntu-latest
     permissions:
       contents: 'read'
       actions: 'read'
