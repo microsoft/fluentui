@@ -1,5 +1,6 @@
 import { makeStyles, mergeClasses, tokens } from '@fluentui/react-components';
 import { type CardState } from '@fluentui/react-components';
+import { type FluentProviderCustomStyleHooks } from '@fluentui/react-components';
 
 const useCardStyle = makeStyles({
   root: {
@@ -14,4 +15,8 @@ export const useCardStyles = (state: unknown) => {
   const cardStyles = useCardStyle();
   const componentState = state as CardState;
   componentState.root.className = mergeClasses(componentState.root.className, cardStyles.root);
+};
+
+export const customStyleHooks: FluentProviderCustomStyleHooks = {
+  useCardStyles_unstable: useCardStyles,
 };
