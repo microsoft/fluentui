@@ -256,7 +256,7 @@ packages/react-components/react-toolbar/stories @microsoft/teams-prg @chpalac @l
 packages/react-components/react-portal-compat @microsoft/teams-prg
 packages/react-components/react-portal-compat-context @microsoft/teams-prg
 packages/react-components/react-theme-sass @microsoft/teams-prg
-packages/react-components/theme-designer @microsoft/cxe-red @ms-acalzaretto
+packages/react-components/theme-designer @microsoft/cxe-red
 packages/react-components/global-context @microsoft/teams-prg
 packages/react-components/babel-preset-global-context @microsoft/teams-prg
 packages/react-components/react-table/library @microsoft/teams-prg
