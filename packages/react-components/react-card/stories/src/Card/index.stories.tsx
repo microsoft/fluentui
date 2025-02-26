@@ -11,6 +11,7 @@ export { SelectableIndicator } from './CardSelectableIndicator.stories';
 export { WithAction } from './CardAction.stories';
 export { FocusMode } from './CardFocusMode.stories';
 export { Templates } from './CardTemplates.stories';
+export { CardCustomStyles } from './CardCustomStyles.stories';
 
 export default {
   title: 'Components/Card/Card',
