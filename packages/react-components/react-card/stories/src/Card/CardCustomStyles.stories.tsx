@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { customStyleHooks } from '../../../library/src/components/CustomHooks';
+import { customStyleHooks } from '../../../library/src/components/CustomHooks/useCardStyles';
 import {
   Card,
   CardFooter,
