@@ -22,6 +22,11 @@ const iconClassNames = {
   regular: 'fui-Icon-regular',
 };
 
+const windowsHCStyles = {
+  color: 'HighlightText',
+  forcedColorAdjust: 'none',
+};
+
 /**
  * Styles for the root slot
  */
@@ -239,6 +244,14 @@ const useCircularAppearanceStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground3Pressed,
       color: tokens.colorNeutralForeground2Pressed,
     },
+    '@media (forced-colors: active)': {
+      ':enabled:hover': {
+        backgroundColor: 'Highlight',
+        [`& .${tabClassNames.content}`]: windowsHCStyles,
+        [`& .${iconClassNames.filled}`]: windowsHCStyles,
+        [`& .${iconClassNames.regular}`]: windowsHCStyles,
+      },
+    },
   },
   filledSelected: {
     backgroundColor: tokens.colorBrandBackground,
@@ -250,6 +263,15 @@ const useCircularAppearanceStyles = makeStyles({
     ':enabled:active': {
       backgroundColor: tokens.colorBrandBackgroundPressed,
       color: tokens.colorNeutralForegroundOnBrand,
+    },
+    '@media (forced-colors: active)': {
+      ':enabled': {
+        backgroundColor: 'ButtonText',
+        [`& .${tabClassNames.content}`]: windowsHCStyles,
+      },
+      [`:enabled .${tabClassNames.icon}`]: {
+        color: 'HighlightText',
+      },
     },
   },
   filledDisabled: {
@@ -332,6 +354,14 @@ const usePendingIndicatorStyles = makeStyles({
     },
     ':active::before': {
       backgroundColor: tokens.colorTransparentStroke,
+    },
+    '@media (forced-colors: active)': {
+      ':hover::before': {
+        backgroundColor: 'transparent',
+      },
+      ':active::before': {
+        backgroundColor: 'transparent',
+      },
     },
   },
   smallHorizontal: {
