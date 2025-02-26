@@ -480,6 +480,7 @@ export class CartesianChartBase
       height: this.state._height,
       className: this.props.className,
       isRtl: this._isRtl,
+      enableReflow: this.props.enableReflow,
     });
 
     const svgDimensions = {

@@ -2,6 +2,59 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 21 Feb 2025 14:34:03 GMT",
+      "tag": "@fluentui/react-components_v9.60.0",
+      "version": "9.60.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3",
+            "comment": "fix: Add a defensive check when getting overflow item records"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "f42a127ac74016eff8c6c48f7eea020e266dffe1",
+            "comment": "fix: useAnnounce live regions do not get aria-hidden from tabster"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "99ddb187429057e71a05f334e099fa0e8270f576",
+            "comment": "Update to satisfy the bumped Tabster 8.5.0."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "f42a127ac74016eff8c6c48f7eea020e266dffe1",
+            "comment": "fix: provide methods for elements such as live regions to not get hidden by modals"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "54cb71b1e716ffd78ab109da033b588a9d9e7516",
+            "comment": "fix: TeachingPopoverCarousel fires announce() messages on slide change"
+          }
+        ],
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "3441c65501ce8a65495db7646f0e4b2af5066b83",
+            "comment": "feat: Implement props to control animation duration and autoplay interval"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "99ddb187429057e71a05f334e099fa0e8270f576",
+            "comment": "Nested modalizer fix and useActivateModal() hook to activate modals without moving focus."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Feb 2025 11:26:27 GMT",
       "tag": "@fluentui/react-components_v9.59.0",
       "version": "9.59.0",

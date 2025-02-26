@@ -2,6 +2,36 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 26 Feb 2025 04:06:04 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.81",
+      "version": "3.0.0-beta.81",
+      "comments": {
+        "none": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "aac812bbe00a89eec5c1eb7dbfcf3172f49f73fb",
+            "comment": "docs: add v2 to v3 migration docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Feb 2025 04:07:15 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.81",
+      "version": "3.0.0-beta.81",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "30294bd242b7ec3de554feb9081dca890d70a809",
+            "comment": "fix: dropdown should emit a change event when the value changes via user input"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Feb 2025 04:06:52 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.80",
       "version": "3.0.0-beta.80",

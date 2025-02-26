@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 13 Feb 2025 04:06:52 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Feb 2025 04:07:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.81](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.81)
+
+Tue, 25 Feb 2025 04:07:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.80..@fluentui/web-components_v3.0.0-beta.81)
+
+### Changes
+
+- fix: dropdown should emit a change event when the value changes via user input ([PR #33885](https://github.com/microsoft/fluentui/pull/33885) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.80](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.80)
 

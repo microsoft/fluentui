@@ -47,6 +47,7 @@ const config = {
         'eslint-config-airbnb',
         'eslint-config-prettier',
         'eslint-import-resolver-typescript',
+        'eslint-plugin-compat',
         'eslint-plugin-import',
         'eslint-plugin-jest',
         'eslint-plugin-jsx-a11y',

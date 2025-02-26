@@ -32,7 +32,12 @@ export const SnapToAlignment = () => {
       numItems={childLength}
       // We can use itemSize to set an average height for minimal size change impact
       itemSize={minHeight + maxHeightIncrease / 2}
-      container={{ role: 'list', style: { maxHeight: '80vh' } }}
+      container={{
+        role: 'list',
+        'aria-label': `Virtualized list with ${childLength} children`,
+        tabIndex: 0,
+        style: { maxHeight: '80vh' },
+      }}
       enablePagination
     >
       {(index: number) => {
