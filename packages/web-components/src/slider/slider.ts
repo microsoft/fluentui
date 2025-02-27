@@ -717,10 +717,13 @@ export class Slider extends FASTElement implements SliderConfiguration {
 
     // update the value based on current position
     const sourceEvent = window.TouchEvent && event instanceof TouchEvent ? event.touches[0] : (event as PointerEvent);
+
+    const thumbWidth = this.thumb.getBoundingClientRect().width;
+
     const eventValue: number =
       this.orientation === Orientation.vertical
         ? sourceEvent.pageY - document.documentElement.scrollTop
-        : sourceEvent.pageX - document.documentElement.scrollLeft - this.trackLeft;
+        : sourceEvent.pageX - document.documentElement.scrollLeft - this.trackLeft - thumbWidth / 2;
 
     this.value = `${this.calculateNewValue(eventValue)}`;
   };
@@ -772,12 +775,14 @@ export class Slider extends FASTElement implements SliderConfiguration {
       documentFn('mouseleave', this.handleWindowPointerUp);
       windowFn('pointermove', this.handlePointerMove);
 
+      const thumbWidth = this.thumb.getBoundingClientRect().width;
+
       if (event) {
         this.setupTrackConstraints();
         const controlValue: number =
           this.orientation === Orientation.vertical
             ? event.pageY - document.documentElement.scrollTop
-            : event.pageX - document.documentElement.scrollLeft - this.trackLeft;
+            : event.pageX - document.documentElement.scrollLeft - this.trackLeft - thumbWidth / 2;
 
         this.value = `${this.calculateNewValue(controlValue)}`;
       }
