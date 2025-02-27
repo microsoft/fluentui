@@ -3521,16 +3521,16 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // (undocumented)
     handleChange(_: any, propertyName: string): void;
     // (undocumented)
-    handlePointerDown: (event: PointerEvent | null) => void;
-    handleThumbPointerDown: (event: PointerEvent | null) => void;
+    handleKeydown(event: KeyboardEvent): boolean;
+    // (undocumented)
+    handlePointerDown: (event: PointerEvent | null) => boolean;
+    handleThumbPointerDown: (event: PointerEvent | null) => boolean;
     increment(): void;
     initialValue: string;
     // @internal
     protected initialValueChanged(_: string, next: string): void;
     // @internal (undocumented)
     isDragging: boolean;
-    // (undocumented)
-    keypressHandler: (event: KeyboardEvent) => void;
     get labels(): ReadonlyArray<Node>;
     max: string;
     // (undocumented)
