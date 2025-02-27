@@ -645,11 +645,11 @@ test.describe('Slider', () => {
 
       const track = element.locator('.track');
       const thumb = element.locator('.thumb-container');
-      const trackBox = await track.boundingBox() as BoundingBox;
+      const trackBox = (await track.boundingBox()) as BoundingBox;
 
       expect(trackBox).not.toBeNull();
 
-      let thumbBox = await thumb.boundingBox() as BoundingBox;
+      let thumbBox = (await thumb.boundingBox()) as BoundingBox;
       expect(thumbBox).not.toBeNull();
 
       const thumbCenterX = thumbBox.x + thumbBox.width / 2;
@@ -658,7 +658,7 @@ test.describe('Slider', () => {
       await page.mouse.move(thumbCenterX, thumbCenterY);
       await page.mouse.down();
 
-      thumbBox = await thumb.boundingBox() as BoundingBox;
+      thumbBox = (await thumb.boundingBox()) as BoundingBox;
       expect(thumbBox).not.toBeNull();
       expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbCenterX);
       expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbCenterY);
@@ -668,7 +668,7 @@ test.describe('Slider', () => {
       const thumbHandle = await thumb.elementHandle();
       await thumbHandle?.waitForElementState('stable');
 
-      thumbBox = await thumb.boundingBox() as BoundingBox;
+      thumbBox = (await thumb.boundingBox()) as BoundingBox;
       expect(thumbBox).not.toBeNull();
       expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbMoveToX);
       expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbCenterY);
@@ -677,17 +677,17 @@ test.describe('Slider', () => {
     test('should follow pointer event coordinates in vertical orientation', async ({ fastPage, page }) => {
       const { element } = fastPage;
       await fastPage.setTemplate({ attributes: { orientation: 'vertical' } });
-      const elementBox = await element.boundingBox() as BoundingBox;
+      const elementBox = (await element.boundingBox()) as BoundingBox;
 
       expect(elementBox.width).toBeLessThan(elementBox.height);
 
       const track = element.locator('.track');
       const thumb = element.locator('.thumb-container');
-      const trackBox = await track.boundingBox() as BoundingBox;
+      const trackBox = (await track.boundingBox()) as BoundingBox;
 
       expect(trackBox).not.toBeNull();
 
-      let thumbBox = await thumb.boundingBox() as BoundingBox;
+      let thumbBox = (await thumb.boundingBox()) as BoundingBox;
       expect(thumbBox).not.toBeNull();
 
       const thumbCenterX = thumbBox.x + thumbBox.width / 2;
@@ -696,7 +696,7 @@ test.describe('Slider', () => {
       await page.mouse.move(thumbCenterX, thumbCenterY);
       await page.mouse.down();
 
-      thumbBox = await thumb.boundingBox() as BoundingBox;
+      thumbBox = (await thumb.boundingBox()) as BoundingBox;
       expect(thumbBox).not.toBeNull();
       expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbCenterX);
       expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbCenterY);
@@ -706,7 +706,7 @@ test.describe('Slider', () => {
       const thumbHandle = await thumb.elementHandle();
       await thumbHandle?.waitForElementState('stable');
 
-      thumbBox = await thumb.boundingBox() as BoundingBox;
+      thumbBox = (await thumb.boundingBox()) as BoundingBox;
       expect(thumbBox).not.toBeNull();
       expect(thumbBox.x + thumbBox.width / 2).toBeCloseTo(thumbCenterX);
       expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbMoveToY);
