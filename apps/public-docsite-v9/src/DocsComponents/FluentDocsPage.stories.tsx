@@ -52,7 +52,7 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateColumns: '1fr min-content',
   },
-  nativeProps: {
+  additionalInfo: {
     display: 'flex',
     flexDirection: 'column',
     gap: tokens.spacingHorizontalM,
@@ -61,13 +61,13 @@ const useStyles = makeStyles({
     padding: tokens.spacingHorizontalM,
     margin: `0 ${tokens.spacingHorizontalM}`,
   },
-  nativePropsIcon: {
+  additionalInfoIcon: {
     alignSelf: 'flex-start',
     color: tokens.colorBrandForeground1,
     fontSize: '24px',
     marginRight: tokens.spacingHorizontalM,
   },
-  nativePropsMessage: {
+  additionalInfoMessage: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -78,32 +78,6 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     gap: tokens.spacingVerticalXS,
     flex: 1,
-  },
-  slotAPIs: {
-    display: 'flex',
-    gap: tokens.spacingHorizontalM,
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    padding: tokens.spacingHorizontalM,
-    margin: `0 ${tokens.spacingHorizontalM}`,
-  },
-  slotAPIsInfo: {
-    display: 'flex',
-    gap: tokens.spacingHorizontalM,
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    padding: tokens.spacingHorizontalM,
-    margin: `0 ${tokens.spacingHorizontalM}`,
-  },
-  slotAPIsMessage: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalXS,
-  },
-  slotAPIsIcon: {
-    alignSelf: 'center',
-    color: tokens.colorBrandForeground1,
-    fontSize: '24px',
   },
 });
 
@@ -216,9 +190,9 @@ const RenderArgsTable = ({
   return hideArgsTable ? null : (
     <>
       {story.argTypes.as && story.argTypes.as?.type?.name === 'enum' && (
-        <div className={styles.nativeProps}>
-          <div className={styles.nativePropsMessage}>
-            <InfoFilled className={styles.nativePropsIcon} />
+        <div className={styles.additionalInfo}>
+          <div className={styles.additionalInfoMessage}>
+            <InfoFilled className={styles.additionalInfoIcon} />
             <div className={styles.infoIcon}>
               <b>
                 Native props are supported <span role="presentation">🙌</span>
@@ -230,8 +204,8 @@ const RenderArgsTable = ({
               </span>
             </div>
           </div>
-          <div className={styles.nativePropsMessage}>
-            <InfoFilled className={styles.nativePropsIcon} />
+          <div className={styles.additionalInfoMessage}>
+            <InfoFilled className={styles.additionalInfoIcon} />
             <div className={styles.infoIcon}>
               <b>
                 Customizing components with slots <span role="presentation">🙌</span>
