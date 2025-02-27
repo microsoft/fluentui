@@ -1751,10 +1751,7 @@ export function createNumericYAxis(
 }
 
 export function areArraysEqual(arr1?: string[], arr2?: string[]): boolean {
-  if (arr1 === arr2) {
-    return true;
-  }
-  if (!arr1 && !arr2) {
+  if (arr1 === arr2 || (!arr1 && !arr2)) {
     return true;
   }
   if (!arr1 || !arr2 || arr1.length !== arr2.length) {
