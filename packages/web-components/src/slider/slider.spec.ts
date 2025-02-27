@@ -712,4 +712,18 @@ test.describe('Slider', () => {
       expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbMoveToY);
     });
   });
+
+  test('should allow keyboard interactions after clicking on the thumb', async ({ fastPage, page }) => {
+      const { element } = fastPage;
+      const thumb = element.locator('.thumb-container');
+
+      await expect(element).toHaveJSProperty('valueAsNumber', 50);
+
+      await thumb.click();
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('ArrowRight', {delay: 10});
+      await page.keyboard.press('ArrowRight', {delay: 10});
+
+      await expect(element).toHaveJSProperty('valueAsNumber', 53);
+  });
 });
