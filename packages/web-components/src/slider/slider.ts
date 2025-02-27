@@ -537,7 +537,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this.setDisabledSideEffect(this.disabled);
     this.updateStepMultiplier();
     this.setupTrackConstraints();
-    this.setupListeners();
     this.setupDefaultValue();
     this.setSliderPosition();
 
@@ -553,8 +552,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   public disconnectedCallback(): void {
     super.disconnectedCallback();
-
-    this.setupListeners(true);
 
     Observable.getNotifier(this).unsubscribe(this, 'max');
     Observable.getNotifier(this).unsubscribe(this, 'min');
@@ -593,9 +590,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this.value = decrementedValString;
   }
 
-  public keypressHandler = (event: KeyboardEvent): void => {
+  public handleKeydown(event: KeyboardEvent): boolean {
     if (this.disabled) {
-      return;
+      return true;
     }
 
     switch (event.key) {
@@ -628,6 +625,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
         }
         break;
     }
+
+    return true;
   };
 
   /**
@@ -666,15 +665,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
     }
   };
 
-  private setupListeners = (remove: boolean = false): void => {
-    //TODO Bug: https://github.com/microsoft/fluentui/issues/30087
-    this.addEventListener('keydown', this.keypressHandler);
-
-    if (remove) {
-      this.removeEventListener('keydown', this.keypressHandler);
-    }
-  };
-
   private get midpoint(): string {
     return `${this.convertToConstrainedValue((this.maxAsNumber + this.minAsNumber) / 2)}`;
   }
@@ -698,13 +688,14 @@ export class Slider extends FASTElement implements SliderConfiguration {
    *  Handle mouse moves during a thumb drag operation
    *  If the event handler is null it removes the events
    */
-  public handleThumbPointerDown = (event: PointerEvent | null): void => {
+  public handleThumbPointerDown = (event: PointerEvent | null): boolean => {
     const windowFn = event !== null ? window.addEventListener : window.removeEventListener;
     windowFn('pointerup', this.handleWindowPointerUp);
     windowFn('pointermove', this.handlePointerMove, { passive: true });
     windowFn('touchmove', this.handlePointerMove, { passive: true });
     windowFn('touchend', this.handleWindowPointerUp);
     this.isDragging = event !== null;
+    return true;
   };
 
   /**
@@ -787,6 +778,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
         this.value = `${this.calculateNewValue(controlValue)}`;
       }
     }
+    return true;
   };
 
   private convertToConstrainedValue(value: number): number {
