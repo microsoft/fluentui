@@ -31,7 +31,8 @@ export const useCardStyles = (state: unknown) => {
   componentState.root.className = mergeClasses(componentState.root.className, cardStyles.root);
 };
 
-export const customStyleHooks: FluentProviderCustomStyleHooks = {
+export const CUSTOM_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   useCardStyles_unstable: useCardStyles,
 };
 
@@ -54,7 +55,7 @@ export const Default = () => {
   const styles = useStyles();
 
   return (
-    <FluentProvider customStyleHooks_unstable={customStyleHooks}>
+    <FluentProvider customStyleHooks_unstable={CUSTOM_STYLE_HOOKS}>
       <Card className={styles.card}>
         <CardHeader
           image={<img src={resolveAsset('avatar_elvia.svg')} alt="Elvia Atkins avatar picture" />}
