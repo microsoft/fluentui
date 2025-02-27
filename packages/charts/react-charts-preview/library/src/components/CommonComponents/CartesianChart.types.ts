@@ -620,7 +620,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /**
    * Get the min and max values of the y-axis
    */
-  getMinMaxOfYAxis: (
+  getMinMaxOfYAxis?: (
     points: LineChartPoints[] | HorizontalBarChartWithAxisDataPoint[] | VerticalBarChartDataPoint[] | DataPoint[],
     yAxisType: YAxisType | undefined,
   ) => { startValue: number; endValue: number };
@@ -628,7 +628,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /**
    * Create the y-axis
    */
-  createYAxis: (
+  createYAxis?: (
     yAxisParams: IYAxisParams,
     isRtl: boolean,
     axisData: IAxisData,
@@ -641,7 +641,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /**
    * Get the domain and range values
    */
-  getDomainNRangeValues: (
+  getDomainNRangeValues?: (
     points:
       | LineChartPoints[]
       | VerticalBarChartDataPoint[]
@@ -661,7 +661,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /**
    * Create the string y-axis
    */
-  createStringYAxis: (
+  createStringYAxis?: (
     yAxisParams: IYAxisParams,
     dataPoints: string[],
     isRtl: boolean,

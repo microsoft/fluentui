@@ -85,9 +85,12 @@ type CalloutAnchorPointData = {
 export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBarChartProps> = props => {
   let _points: VerticalStackedChartProps[] = [];
   let _dataset: VerticalStackedBarDataPoint[];
-  let _xAxisLabels: string[];
+  let _xAxisLabels: string[] = [];
   let _bars: JSX.Element[];
-  let _xAxisType: XAxisTypes;
+  let _xAxisType: XAxisTypes =
+    props.data! && props.data!.length > 0
+      ? (getTypeOfAxis(props.data[0]!.xAxisPoint, true) as XAxisTypes)
+      : XAxisTypes.StringAxis;
   let _barWidth: number = 0;
   const _calloutId: string = useId('callout');
   let _colors: string[];
@@ -205,9 +208,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     return (
       <Legends
         legends={totalLegends}
-        overflowProps={props.legendsOverflowProps}
-        enabledWrapLines={props.enabledWrapLines}
-        focusZonePropsInHoverCard={props.focusZonePropsForLegendsInHoverCard}
+        enabledWrapLines={props.enabledLegendsWrapLines}
         overflowText={props.legendsOverflowText}
         {...props.legendProps}
         onChange={_onLegendSelectionChange}
@@ -1087,7 +1088,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     const legendBars: JSX.Element = _getLegendData(_points, _createLegendsForLine(props.data));
     const calloutProps: ModifiedCartesianChartProps['calloutProps'] = {
       id: `toolTip${_calloutId}`,
-      target: refSelected,
+      target: refSelected!,
       isBeakVisible: false,
       gapSpace: 15,
       color: color,

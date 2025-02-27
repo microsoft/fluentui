@@ -7,6 +7,8 @@
 /// <reference types="react" />
 
 import * as React_2 from 'react';
+import { ScaleBand } from 'd3-scale';
+import { ScaleLinear } from 'd3-scale';
 import { SVGProps } from 'react';
 import { TimeLocaleDefinition } from 'd3-time-format';
 
@@ -196,7 +198,13 @@ export interface ChartPopoverProps {
     // (undocumented)
     descriptionMessage?: string;
     // (undocumented)
+    gapSpace?: number;
+    // (undocumented)
     hoverXValue?: string | number;
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    isBeakVisible?: boolean;
     // (undocumented)
     isCalloutForStack?: boolean;
     // (undocumented)
@@ -206,7 +214,13 @@ export interface ChartPopoverProps {
     // (undocumented)
     legend?: string | number | Date;
     // (undocumented)
+    onDismiss?: () => void;
+    // (undocumented)
+    preventDismissOnLostFocus?: boolean;
+    // (undocumented)
     ratio?: [number, number];
+    // (undocumented)
+    target?: SVGGElement;
     // (undocumented)
     xAxisCalloutAccessibilityData?: {
         ariaLabel?: string;
@@ -545,6 +559,8 @@ export interface LegendsProps {
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
     overflowStyles?: React_2.CSSProperties;
     overflowText?: string;
+    selectedLegend?: string;
+    selectedLegends?: string[];
     shape?: LegendShape;
     styles?: LegendsStyles;
 }
@@ -675,6 +691,7 @@ export interface LineDataInVerticalStackedBarChart {
     data?: number;
     // (undocumented)
     legend: string;
+    lineOptions?: LineChartLineOptions;
     useSecondaryYScale?: boolean;
     // (undocumented)
     y: number;
@@ -697,14 +714,23 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     chartTitle?: string;
     chartType: ChartTypes;
     children(props: ChildProps): React_2.ReactNode;
+    createStringYAxis?: (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean, chartType: ChartTypes, barWidth: number | undefined, culture: string) => ScaleBand<string>;
+    createYAxis?: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, useSecondaryYScale?: boolean, supportNegativeData?: boolean, roundedTicks?: boolean) => ScaleLinear<number, number, never>;
     culture?: string;
+    customizedCallout?: any;
     datasetForXAxisDomain?: string[];
     enableFirstRenderOptimization?: boolean;
     // (undocumented)
     getAxisData?: any;
     getDomainMargins?: (containerWidth: number) => Margins;
+    getDomainNRangeValues?: (points: LineChartPoints[] | VerticalBarChartDataPoint[] | VerticalStackedBarDataPoint[] | HorizontalBarChartWithAxisDataPoint[] | GroupedVerticalBarChartData[], margins: Margins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: Margins) => void;
+    getMinMaxOfYAxis?: (points: LineChartPoints[] | HorizontalBarChartWithAxisDataPoint[] | VerticalBarChartDataPoint[] | DataPoint[], yAxisType: YAxisType | undefined) => {
+        startValue: number;
+        endValue: number;
+    };
+    isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
@@ -861,6 +887,62 @@ export interface VerticalBarChartStyles extends CartesianChartStyles {
     xAxisTicks?: string;
     // @deprecated
     yAxisDomain?: string;
+    // @deprecated
+    yAxisTicks?: string;
+}
+
+// @public (undocumented)
+export const VerticalStackedBarChart: React_2.FunctionComponent<VerticalStackedBarChartProps>;
+
+// @public
+export interface VerticalStackedBarChartProps extends CartesianChartProps {
+    allowHoverOnLegend?: boolean;
+    barCornerRadius?: number;
+    barGapMax?: number;
+    barMinimumHeight?: number;
+    barWidth?: number | 'default' | 'auto';
+    chartTitle?: string;
+    // @deprecated
+    colors?: string[];
+    culture?: string;
+    data: VerticalStackedChartProps[];
+    enableGradient?: boolean;
+    hideLabels?: boolean;
+    isCalloutForStack?: boolean;
+    lineOptions?: LineChartLineOptions;
+    maxBarWidth?: number;
+    mode?: 'default' | 'plotly';
+    onBarClick?: (event: React_2.MouseEvent<SVGElement>, data: VerticalStackedChartProps | VSChartDataPoint) => void;
+    onRenderCalloutPerDataPoint?: RenderFunction<VSChartDataPoint>;
+    onRenderCalloutPerStack?: RenderFunction<VerticalStackedChartProps>;
+    roundCorners?: boolean;
+    styles?: VerticalStackedBarChartStyles;
+    xAxisInnerPadding?: number;
+    xAxisOuterPadding?: number;
+    xAxisPadding?: number;
+    yMinValue?: undefined;
+}
+
+// @public
+export interface VerticalStackedBarChartStyleProps extends CartesianChartStyleProps {
+}
+
+// @public
+export interface VerticalStackedBarChartStyles extends CartesianChartStyles {
+    barLabel: string;
+    // @deprecated
+    chart?: string;
+    opacityChangeOnHover?: string;
+    // @deprecated
+    xAxisDomain?: string;
+    // @deprecated
+    xAxisText?: string;
+    // @deprecated
+    xAxisTicks?: string;
+    // @deprecated
+    yAxisDomain?: string;
+    // @deprecated
+    yAxisText?: string;
     // @deprecated
     yAxisTicks?: string;
 }
