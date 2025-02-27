@@ -627,7 +627,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     }
 
     return true;
-  };
+  }
 
   /**
    * Places the thumb based on the current value
