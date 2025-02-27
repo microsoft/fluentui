@@ -74,24 +74,22 @@ import {
   ColorArea,
   ColorSliderProps,
   AlphaSlider,
-  HueSlider,
+  ColorSlider,
   ColorPickerOnSelectEventHandler,
 } from '@fluentui/react-color-picker-preview';
 
 export const Default = () => {
-  const [selectedColor, setSelectedColor] = React.useState('rgba(0, 255, 170, 1)');
-  const handleChange: ColorPickerProps['onChange'] = (_, data) => {
-    setSelectedColor(data.selectedColorHex);
-  };
+  const [selectedColor, setSelectedColor] = React.useState({ h: 109, s: 1, v: 0.9, a: 1 });
+  const handleChange: ColorPickerProps['onChange'] = (_, data) => setSelectedColor(data.selectedColorHex);
 
   return (
     <>
       <ColorPicker color={selectedColor} onChange={handleChange}>
         <ColorArea />
         <AlphaSlider />
-        <HueSlider />
+        <ColorSlider />
       </ColorPicker>
-      <div style={{ backgroundColor: `${selectedColor}` }} />
+      <div style={{ backgroundColor: tinycolor(color).toRgbString() }} />
     </>
   );
 };
@@ -132,50 +130,17 @@ For custom sizes users might want to customize it via CSS.
 
 ### ColorPicker
 
-| Property   | Values              | Default   | Purpose                                |
-| ---------- | ------------------- | --------- | -------------------------------------- |
-| color      | `HSV`               |           | Sets color value in HSV format         |
-| onChange   | `function`          | undefined | Callback called when color is selected |
-| shape      | `square`, `rounded` | `rounded` | Sets shape                             |
-| step       | `number`            | 1         | Step for arrow navigation              |
-| customStep | `number`            | 3         | Fast navigation                        |
+| Property      | Values              | Default   | Purpose                                |
+| ------------- | ------------------- | --------- | -------------------------------------- |
+| color         | `HSV`               |           | Sets color value in HSV format         |
+| onColorChange | `function`          | undefined | Callback called when color is selected |
+| shape         | `square`, `rounded` | `rounded` | Sets shape                             |
 
 Color has an `HSV` type because the correct functioning of the component requires coordinates. In some parts of the ColorArea, the color is the same, and therefore it should be calculated using coordinates. Color manipulations will be done on the user end in the desired format.
 
-`onChange` event returns data which contains a new color.
-
-Input fields with color values will be in `renderUtils`. It will contain default ColorPicker which has all colors represented and a preview swatch. This functionality is similar to V8.
-
-```tsx
-import { ColorPicker } from '@fluentui/react-color-picker-preview';
-
-const COLOR = { h: 0, s: 1, v: 1 };
-
-export const Default = () => {
-  const [selectedColor, setSelectedColor] = React.useState(COLOR);
-  const handleChange: ColorPickerOnSelectEventHandler = (_, data) => {
-    setSelectedColor({ ...data.color, a: data.color.a ?? 1 });
-  };
-
-  return (
-    <>
-      <ColorPicker color={color} onColorChange={handleChange}>
-        <ColorSlider />
-        <AlphaSlider />
-        <ColorArea />
-      </ColorPicker>
-      <InputHexField color={color} onChange={handleChange} />
-      <InputRgbField color={color} onChange={handleChange} />
-      <ColorSwatch color={color}>
-      <div style={{ backgroundColor: `${selectedColor}` }} />
-    </>
-  );
-};
-```
+`onColorChange` event returns data which contains a new color.
 
 ![ColorPicker](./assets/color-picker-layout.jpg)
-
-Validation of color fields will be in `utils`. Validation should not allow entering incorrect values to the input fields.
 
 For color manipulation and conversion [tinycolor](https://www.npmjs.com/package/@ctrl/tinycolor) library will be used.
 
@@ -188,7 +153,7 @@ For color manipulation and conversion [tinycolor](https://www.npmjs.com/package/
 | Property     | Values              | Default   | Purpose                                 |
 | ------------ | ------------------- | --------- | --------------------------------------- |
 | color        | `HSV`               |           | Sets color value in HSV format          |
-| defauleColor | `HSV`               |           | Sets color for uncontrollable ColorArea |
+| defaultColor | `HSV`               |           | Sets color for uncontrollable ColorArea |
 | onChange     | `function`          | undefined | Callback called when color is selected  |
 | shape        | `square`, `rounded` | `rounded` | Sets shape                              |
 
@@ -201,13 +166,14 @@ For color manipulation and conversion [tinycolor](https://www.npmjs.com/package/
 
 ### ColorSlider
 
-| Property     | Values                   | Default      | Purpose                                   |
-| ------------ | ------------------------ | ------------ | ----------------------------------------- |
-| color        | `HSV`                    |              | Sets color value in HSV format            |
-| defauleColor | `HSV`                    |              | Sets color for uncontrollable ColorSlider |
-| onChange     | `function`               | undefined    | Callback called when color is selected    |
-| orient       | `horizontal`, `vertical` | `horizontal` | Orientation of a slider                   |
-| shape        | `square`, `rounded`      | `rounded`    | Sets shape                                |
+| Property     | Values                       | Default   | Purpose                                   |
+| ------------ | ---------------------------- | --------- | ----------------------------------------- |
+| channel      | `hue`, `saturation`, `value` | `hue`     | Sets color channel                        |
+| color        | `HSV`                        |           | Sets color value in HSV format            |
+| defaultColor | `HSV`                        |           | Sets color for uncontrollable ColorSlider |
+| onChange     | `function`                   | undefined | Callback called when color is selected    |
+| shape        | `square`, `rounded`          | `rounded` | Sets shape                                |
+| vertical     | `boolean`                    | `false`   | Orientation of a slider                   |
 
 | Slots  | Values  | Default | Description                                                      |
 | ------ | ------- | ------- | ---------------------------------------------------------------- |
@@ -218,7 +184,10 @@ For color manipulation and conversion [tinycolor](https://www.npmjs.com/package/
 
 ### AlphaSlider
 
-AlphaSlider has the same props and slots as ColorSlider.
+AlphaSlider has the same props and slots as ColorSlider except `transparent` prop.
+| Property | Values | Default | Purpose |
+| ------------ | ---------------------------- | --------- | ----------------------------------------- |
+| transparent | `boolean` | `false` | The `transparency` property determines how the alpha channel is interpreted |
 
 ## Structure
 
@@ -309,11 +278,12 @@ States:
 
 In a `horizontal` orientation top/right arrows move to the right, bottom/left arrows move to the left.
 
-| Key                  | Result                                                         |
-| -------------------- | -------------------------------------------------------------- |
-| Arrows               | Color thumb is focused. Color is selected                      |
-| `Home/End/PgUp/PgDn` | Can be used another configuration for the step to move faster. |
-| `Tab`                | Navigation between color sliders and Color Area                |
+| Key         | Result                                          |
+| ----------- | ----------------------------------------------- |
+| Arrows      | Color thumb is focused. Color is selected       |
+| `PgUp/PgDn` | Can be used for faster navigation               |
+| `Home/End`  | Navigates to the beginning or end of a Slider   |
+| `Tab`       | Navigation between color sliders and Color Area |
 
 ##### Color/Alpha Slider
 
