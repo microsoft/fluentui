@@ -187,6 +187,7 @@ const RenderArgsTable = ({
   const storyCopy = { ...story };
   const { component } = withSlotEnhancer(storyCopy);
 
+  // const hasSlot = story.argTypes.as && story.argTypes.type.value === 'Slot';
   return hideArgsTable ? null : (
     <>
       {story.argTypes.as && story.argTypes.as?.type?.name === 'enum' && (
@@ -215,9 +216,9 @@ const RenderArgsTable = ({
                 approach to customizing components. Each slot is exposed as a top-level prop and can be filled with
                 primitive values, JSX/TSX, props objects, or render functions. This allows for more dynamic and reusable
                 component structures, similar to slots in other frameworks.{' '}
-                <a href="https://fluent2.microsoft.design/get-started/migrate/#customizing-component-parts">
-                  Customizing components with slots
-                </a>
+                <Link href="https://react.fluentui.dev/?path=/docs/concepts-developer-customizing-components-with-slots--docs">
+                  Customizing components with slots{' '}
+                </Link>
               </span>
             </div>
           </div>
