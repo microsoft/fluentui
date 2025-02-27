@@ -307,12 +307,7 @@ export class CartesianChartBase
         yMaxValue: this.props.yMaxValue || 0,
         tickPadding: 10,
         maxOfYVal: this.props.maxOfYVal,
-        yMinMaxValues: this.props.getMinMaxOfYAxis(
-          points,
-          this.props.yAxisType,
-          this.state.containerHeight - this.state._removalValueForTextTuncate!,
-          this.margins,
-        ),
+        yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType),
         // please note these padding default values must be consistent in here
         // and the parent chart(HBWA/Vertical etc..) for more details refer example
         // http://using-d3js.com/04_07_ordinal_scales.html

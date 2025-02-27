@@ -50,7 +50,6 @@ import {
   createStringYAxis,
   formatDate,
   areArraysEqual,
-  YAxisType,
 } from '../../utilities/index';
 import { IChart } from '../../types/index';
 
@@ -69,8 +68,11 @@ const DEFAULT_LINE_STROKE_SIZE = 4;
 // The given shape of a icon must be 2.5 times bigger than line width (known as stroke width)
 const PATH_MULTIPLY_SIZE = 2.5;
 
-// markersize for scatter plot
-let maxMarkerSize = 0;
+// minimum of all x of line chart points
+let xMin = 0;
+
+//minimum of all y of line chart points
+let yMin = 0;
 
 /**
  *
@@ -315,7 +317,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         legendBars={legendBars}
         createYAxis={createNumericYAxis}
         getmargins={this._getMargins}
-        getMinMaxOfYAxis={this._getNumericMinMaxOfYForLineChart}
+        getMinMaxOfYAxis={this._getNumericMinMaxOfY}
         getGraphData={this._initializeLineChartData}
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         customizedCallout={this._getCustomizedCallout()}
@@ -456,39 +458,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       : null;
   };
 
-  private _getNumericMinMaxOfYForLineChart = (
-    points: ILineChartPoints[],
-    yAxisType: YAxisType,
-    containerHeight: number,
-    margins: IMargins,
-  ): { startValue: number; endValue: number } => {
+  private _getNumericMinMaxOfY = (points: ILineChartPoints[]): { startValue: number; endValue: number } => {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     const { startValue, endValue } = findNumericMinMaxOfY(points);
-    let maxMarkerSizeForYAxis = 0;
-    if (this.props.lineMode === 'scatter') {
-      maxMarkerSize = d3Max(points, (point: ILineChartPoints) => {
-        return d3Max(point.data, (item: ILineChartDataPoint) => {
-          return item.markerSize as number;
-        });
-      })!;
-      maxMarkerSizeForYAxis = this._getExtendedDomainValue(
-        startValue,
-        endValue,
-        containerHeight - margins.bottom!,
-        margins.top!,
-      );
-    }
+    yMin = startValue;
+    const padding = this.props.lineMode === 'scatter' ? (endValue - startValue) * 0.1 : 0;
     return {
-      startValue: startValue - maxMarkerSizeForYAxis,
-      endValue: endValue + maxMarkerSizeForYAxis,
+      startValue: startValue - padding,
+      endValue: endValue + padding,
     };
-  };
-
-  private _getExtendedDomainValue = (x1: number, x2: number, y1: number, y2: number): number => {
-    return maxMarkerSize
-      ? y2 > y1
-        ? Math.abs((maxMarkerSize * (x2 - x1)) / (y2 - y1 - 2 * maxMarkerSize))
-        : Math.abs((-1 * maxMarkerSize * (x2 - x1)) / (y2 - y1 + 2 * maxMarkerSize))
-      : 0;
   };
 
   private _getMargins = (margins: IMargins) => {
@@ -668,6 +646,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       }
     }
   };
+  private _getExtraPixelsToRender(containerHeight: number): number {
+    const extraXPixels = this._xAxisScale(xMin) - this.margins.left!;
+    const extraYPixels = containerHeight - this.margins.bottom! - this._yAxisScale(yMin);
+    return Math.min(extraXPixels, extraYPixels);
+  }
   private _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
     const lines: JSX.Element[] = [];
     if (this.state.isSelectedLegend) {
@@ -675,6 +658,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     } else {
       this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
     }
+    const extraMaxPixels = this.props.lineMode === 'scatter' ? this._getExtraPixelsToRender(containerHeight) : 0;
+    const maxMarkerSize = d3Max(this._points, (point: ILineChartPoints) => {
+      return d3Max(point.data, (item: ILineChartDataPoint) => {
+        return item.markerSize as number;
+      });
+    })!;
     for (let i = this._points.length - 1; i >= 0; i--) {
       const linesForLine: JSX.Element[] = [];
       const bordersForLine: JSX.Element[] = [];
@@ -690,11 +679,18 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         const circleId = `${this._circleId}_${i}`;
         const isLegendSelected: boolean =
           this._legendHighlighted(legendVal) || this._noLegendHighlighted() || this.state.isSelectedLegend;
+        const currentMarkerSize = this._points[i].data[0].markerSize!;
         pointsForLine.push(
           <circle
             id={circleId}
             key={circleId}
-            r={this._points[i].data[0].markerSize ?? 4}
+            r={
+              currentMarkerSize
+                ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize
+                : activePoint === circleId
+                ? 5.5
+                : 3.5
+            }
             cx={this._xAxisScale(x1)}
             cy={this._yAxisScale(y1)}
             fill={activePoint === circleId ? theme!.semanticColors.bodyBackground : lineColor}
@@ -861,12 +857,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             this._legendHighlighted(legendVal) || this._noLegendHighlighted() || this.state.isSelectedLegend;
 
           const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
+          let currentMarkerSize = this._points[i].data[j - 1].markerSize!;
           pointsForLine.push(
             this.props.lineMode === 'scatter' ? (
               <circle
                 id={circleId}
                 key={circleId}
-                r={this._points[i].data[j - 1].markerSize ?? 4}
+                r={currentMarkerSize ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize : 4}
                 cx={this._xAxisScale(x1)}
                 cy={this._yAxisScale(y1)}
                 data-is-focusable={isLegendSelected}
@@ -953,13 +950,14 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               xAxisCalloutData: lastCirlceXCallout,
               xAxisCalloutAccessibilityData: lastCirlceXCalloutAccessibilityData,
             } = this._points[i].data[j];
+            currentMarkerSize = this._points[i].data[j].markerSize!;
             pointsForLine.push(
               <React.Fragment key={`${lastCircleId}_container`}>
                 {this.props.lineMode === 'scatter' ? (
                   <circle
                     id={lastCircleId}
                     key={lastCircleId}
-                    r={this._points[i].data[j].markerSize ?? 4}
+                    r={currentMarkerSize ? (currentMarkerSize! * extraMaxPixels) / maxMarkerSize : 4}
                     cx={this._xAxisScale(x2)}
                     cy={this._yAxisScale(y2)}
                     data-is-focusable={isLegendSelected}
@@ -1651,7 +1649,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     width: number,
     isRTL: boolean,
   ): IDomainNRange => {
-    const xMin = d3Min(points, (point: ILineChartPoints) => {
+    xMin = d3Min(points, (point: ILineChartPoints) => {
       return d3Min(point.data, (item: ILineChartDataPoint) => item.x as number)!;
     })!;
 
@@ -1661,20 +1659,20 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       });
     })!;
 
-    const maxMarkerSizeForXAxis = this._getExtendedDomainValue(xMin, xMax, width - margins.right!, margins.left!);
+    const padding = this.props.lineMode === 'scatter' ? (xMax - xMin) * 0.1 : 0;
     const rStartValue = margins.left!;
     const rEndValue = width - margins.right!;
 
     return isRTL
       ? {
-          dStartValue: xMax + maxMarkerSizeForXAxis,
-          dEndValue: xMin - maxMarkerSizeForXAxis,
+          dStartValue: xMax + padding,
+          dEndValue: xMin - padding,
           rStartValue,
           rEndValue,
         }
       : {
-          dStartValue: xMin - maxMarkerSizeForXAxis,
-          dEndValue: xMax + maxMarkerSizeForXAxis,
+          dStartValue: xMin - padding,
+          dEndValue: xMax + padding,
           rStartValue,
           rEndValue,
         };
