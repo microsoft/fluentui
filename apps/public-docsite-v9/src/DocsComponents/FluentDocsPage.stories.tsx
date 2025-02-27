@@ -54,27 +54,34 @@ const useStyles = makeStyles({
   },
   nativeProps: {
     display: 'flex',
+    flexDirection: 'column',
     gap: tokens.spacingHorizontalM,
-
     border: `1px solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
     padding: tokens.spacingHorizontalM,
     margin: `0 ${tokens.spacingHorizontalM}`,
   },
   nativePropsIcon: {
-    alignSelf: 'center',
+    alignSelf: 'flex-start',
     color: tokens.colorBrandForeground1,
     fontSize: '24px',
+    marginRight: tokens.spacingHorizontalM,
   },
   nativePropsMessage: {
     display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: tokens.spacingVerticalXS,
+  },
+  infoIcon: {
+    display: 'flex',
     flexDirection: 'column',
     gap: tokens.spacingVerticalXS,
+    flex: 1,
   },
   slotAPIs: {
     display: 'flex',
     gap: tokens.spacingHorizontalM,
-
     border: `1px solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
     padding: tokens.spacingHorizontalM,
@@ -83,7 +90,6 @@ const useStyles = makeStyles({
   slotAPIsInfo: {
     display: 'flex',
     gap: tokens.spacingHorizontalM,
-
     border: `1px solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
     padding: tokens.spacingHorizontalM,
@@ -193,7 +199,6 @@ function withSlotEnhancer(story: PreparedStory) {
 
   return component;
 }
-
 const RenderArgsTable = ({
   hideArgsTable,
   story,
@@ -206,19 +211,40 @@ const RenderArgsTable = ({
   const styles = useStyles();
 
   const { component } = withSlotEnhancer(story);
+
   return hideArgsTable ? null : (
     <>
       {story.argTypes.as && story.argTypes.as?.type?.name === 'enum' && (
         <div className={styles.nativeProps}>
-          <InfoFilled className={styles.nativePropsIcon} />
           <div className={styles.nativePropsMessage}>
-            <b>
-              Native props are supported <span role="presentation">🙌</span>
-            </b>
-            <span>
-              All HTML attributes native to the {getNativeElementsList(story.argTypes.as.type.value)}, including all{' '}
-              <code>aria-*</code> and <code>data-*</code> attributes, can be applied as native props on this component.
-            </span>
+            <InfoFilled className={styles.nativePropsIcon} />
+            <div className={styles.infoIcon}>
+              <b>
+                Native props are supported <span role="presentation">🙌</span>
+              </b>
+              <span>
+                All HTML attributes native to the {getNativeElementsList(story.argTypes.as.type.value)}, including all{' '}
+                <code>aria-*</code> and <code>data-*</code> attributes, can be applied as native props on this
+                component.
+              </span>
+            </div>
+          </div>
+          <div className={styles.nativePropsMessage}>
+            <InfoFilled className={styles.nativePropsIcon} />
+            <div className={styles.infoIcon}>
+              <b>
+                Customizing components with slots <span role="presentation">🙌</span>
+              </b>
+              <span>
+                Slots in Fluent UI React components are designed to be modified or replaced, providing a flexible
+                approach to customizing components. Each slot is exposed as a top-level prop and can be filled with
+                primitive values, JSX/TSX, props objects, or render functions. This allows for more dynamic and reusable
+                component structures, similar to slots in other frameworks.{' '}
+                <a href="https://fluent2.microsoft.design/get-started/migrate/#customizing-component-parts">
+                  Customizing components with slots
+                </a>
+              </span>
+            </div>
           </div>
         </div>
       )}
@@ -226,7 +252,6 @@ const RenderArgsTable = ({
     </>
   );
 };
-
 const RenderPrimaryStory = ({
   primaryStory,
   skipPrimaryStory,
