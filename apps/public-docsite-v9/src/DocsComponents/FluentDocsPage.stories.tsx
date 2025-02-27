@@ -210,7 +210,8 @@ const RenderArgsTable = ({
 }) => {
   const styles = useStyles();
 
-  const { component } = withSlotEnhancer(story);
+  const storyCopy = { ...story };
+  const { component } = withSlotEnhancer(storyCopy);
 
   return hideArgsTable ? null : (
     <>
