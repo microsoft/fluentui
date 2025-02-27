@@ -1699,3 +1699,12 @@ export const formatDate = (date: Date, useUTC?: string | boolean) => {
   const timeFormat = useUTC ? d3UtcFormat : d3TimeFormat;
   return timeFormat('%-e %b %Y, %H:%M')(date) + (useUTC ? ' GMT' : '');
 };
+
+const cssVarRegExp = /var\((--[a-zA-Z0-9\-]+)\)/g;
+
+export function resolveCSSVariables(chartContainer: HTMLElement, styleRules: string) {
+  const containerStyles = getComputedStyle(chartContainer);
+  return styleRules.replace(cssVarRegExp, (match, group1) => {
+    return containerStyles.getPropertyValue(group1);
+  });
+}

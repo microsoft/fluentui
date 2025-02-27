@@ -691,3 +691,10 @@ export interface CustomizedCalloutData {
   x: number | string | Date;
   values: CustomizedCalloutDataPoint[];
 }
+
+/**
+ * {@docCategory Chart}
+ */
+export interface Chart {
+  chartContainer: HTMLElement | null;
+}
