@@ -238,10 +238,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     setColor(lineData.color);
   }
 
-  function onStackHoverFocus(
-    stack: VerticalStackedChartProps,
-    refSelected: React.MouseEvent<SVGElement> | SVGGElement,
-  ): void {
+  function onStackHoverFocus(stack: VerticalStackedChartProps, mouseEvent: React.MouseEvent<SVGElement>): void {
     if (!_noLegendHighlighted()) {
       stack = {
         ...stack,
@@ -257,7 +254,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         item.shouldDrawBorderBottom = true;
       });
     }
-    setRefSelected;
+    updatePosition(mouseEvent.clientX, mouseEvent.clientY);
     setPopoverOpen(stack.chartData.length > 0 || (stack.lineData?.length ?? 0) > 0);
     setYValueHover(
       isLinesPresent
@@ -665,7 +662,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     mouseEvent: React.MouseEvent<SVGElement>,
   ): void {
     mouseEvent.persist();
-    updatePosition(mouseEvent.clientX, mouseEvent.clientY);
     _onRectFocusHover(xAxisPoint, point, color, mouseEvent);
   }
 
@@ -673,13 +669,14 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     xAxisPoint: string,
     point: VSChartDataPoint,
     color: string,
-    refSelected: React.MouseEvent<SVGElement> | SVGGElement,
+    mouseEvent: React.MouseEvent<SVGElement>,
   ) {
     if (_calloutAnchorPoint?.chartDataPoint !== point || _calloutAnchorPoint?.xAxisDataPoint !== xAxisPoint) {
       _calloutAnchorPoint = {
         chartDataPoint: point,
         xAxisDataPoint: xAxisPoint,
       };
+      updatePosition(mouseEvent.clientX, mouseEvent.clientY);
       setPopoverOpen(_noLegendHighlighted() || _isLegendHighlighted(point.legend));
       setCalloutLegend(point.legend);
       setDataForHoverCard(point.data);
@@ -930,12 +927,14 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         const rectFocusProps = !shouldFocusWholeStack && {
           'data-is-focusable': !props.hideTooltip && shouldHighlight,
           'aria-label': _getAriaLabel(singleChartData, point),
-          onMouseOver: _onRectHover.bind(singleChartData.xAxisPoint, point, startColor),
-          onMouseMove: _onRectHover.bind(singleChartData.xAxisPoint, point, startColor),
+          onMouseOver: (event: React.MouseEvent<SVGElement, MouseEvent>) =>
+            _onRectHover(singleChartData.xAxisPoint as string, point, startColor, event),
+          onMouseMove: (event: React.MouseEvent<SVGElement, MouseEvent>) =>
+            _onRectHover(singleChartData.xAxisPoint as string, point, startColor, event),
           onMouseLeave: _handleMouseOut,
-          onFocus: _onRectFocus.bind(point, singleChartData.xAxisPoint, startColor, ref),
+          onFocus: () => _onRectFocus(point, singleChartData.xAxisPoint as string, startColor, ref),
           onBlur: _handleMouseOut,
-          onClick: onClick.bind(point),
+          onClick: (event: React.MouseEvent<SVGElement, MouseEvent>) => onClick(point, event),
           role: 'img',
         };
 
@@ -970,7 +969,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
                   h ${-_barWidth}
                   z
                 `}
-                //fill={props.enableGradient ? `url(#${gradientId})` : startColor}
+                fill={startColor}
                 rx={props.roundCorners ? 3 : 0}
                 ref={e => (ref.refElement = e)}
                 transform={`translate(${xScaleBandwidthTranslate}, 0)`}
@@ -1012,12 +1011,12 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       const stackFocusProps = shouldFocusWholeStack && {
         'data-is-focusable': !props.hideTooltip,
         'aria-label': _getAriaLabel(singleChartData),
-        onMouseOver: _onStackHover.bind(singleChartData),
-        onMouseMove: _onStackHover.bind(singleChartData),
+        onMouseOver: (event: any) => _onStackHover(singleChartData, event),
+        onMouseMove: (event: any) => _onStackHover(singleChartData, event),
         onMouseLeave: _handleMouseOut,
-        onFocus: _onStackFocus.bind(singleChartData, groupRef),
+        onFocus: () => _onStackFocus(singleChartData, groupRef),
         onBlur: _handleMouseOut,
-        onClick: onClick.bind(singleChartData),
+        onClick: (event: any) => onClick(singleChartData, event),
         role: 'img',
       };
       let showLabel = false;
@@ -1069,7 +1068,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         // eslint-disable-next-line no-empty
       } catch (e) {}
       const tooltipProps = {
-        //tooltipCls: _classNames.tooltip!,
+        tooltipCls: classes.tooltip!,
         id: _tooltipId,
         xAxis: xAxisElement,
       };
@@ -1101,6 +1100,14 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       preventDismissOnLostFocus: true,
       ...props.calloutProps,
       ...getAccessibleDataObject(callOutAccessibilityData),
+      clickPosition: clickPosition,
+      isPopoverOpen: isPopoverOpen,
+      isCalloutForStack: _isHavingLines && _noLegendHighlighted(),
+      isCartesian: true,
+      customCallout: {
+        customizedCallout: _getCustomizedCallout() != null ? _getCustomizedCallout()! : undefined,
+        customCalloutProps: props.customProps ? props.customProps(dataPointCalloutProps!) : undefined,
+      },
     };
     const tickParams = {
       tickValues: props.tickValues,
@@ -1126,7 +1133,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         getmargins={_getMargins}
         getGraphData={_getGraphData}
         getAxisData={_getAxisData}
-        customizedCallout={_getCustomizedCallout()}
         onChartMouseLeave={_handleChartMouseLeave}
         getDomainMargins={_getDomainMargins}
         {...(_xAxisType === XAxisTypes.StringAxis && {
