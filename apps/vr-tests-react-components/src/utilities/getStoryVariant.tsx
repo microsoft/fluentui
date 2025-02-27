@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Args, Decorator, StoryFn, StoryObj } from '@storybook/react';
 import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme, webDarkTheme, teamsHighContrastTheme } from '@fluentui/react-theme';
+import { webLightTheme, webDarkTheme, teamsHighContrastTheme, type Theme } from '@fluentui/react-theme';
 
 export const DARK_MODE = 'Dark Mode';
 export const HIGH_CONTRAST = 'High Contrast';
@@ -13,8 +13,13 @@ function isStoryFn(story: StoryFn | StoryObj): story is StoryFn {
   return typeof story === 'function';
 }
 
+interface StoryObjVariant extends StoryObj {
+  storyName: string;
+  parameters: StoryObj['parameters'] & { dir: ReturnType<typeof getDir>; theme: Theme; mode: 'vr-test' };
+}
+
 /** Helper function that returns RTL, Dark Mode or High Contrast variant of an existing story. */
-export function getStoryVariant(story: StoryFn | StoryObj, variant: StoryVariant): StoryObj {
+export function getStoryVariant(story: StoryFn | StoryObj, variant: StoryVariant): StoryObjVariant {
   const theme = getTheme(variant);
   const dir = getDir(variant);
   const decorators = story.decorators ?? [];
@@ -30,7 +35,7 @@ export function getStoryVariant(story: StoryFn | StoryObj, variant: StoryVariant
       theme,
     },
     decorators: [...(Array.isArray(decorators) ? decorators : [decorators]), StoryVariantDecorator],
-  } satisfies StoryObj;
+  } satisfies StoryObjVariant;
 }
 
 const StoryVariantDecorator: Decorator = (storyFn, context) => {
