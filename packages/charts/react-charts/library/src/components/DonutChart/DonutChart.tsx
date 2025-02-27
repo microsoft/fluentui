@@ -55,6 +55,14 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
       prevSize.current.width = props.width;
     }, [props.width, props.height]);
 
+    React.useImperativeHandle(
+      props.componentRef,
+      () => ({
+        chartContainer: _rootElem.current,
+      }),
+      [],
+    );
+
     function _elevateToMinimums(data: ChartDataPoint[]) {
       let sumOfData = 0;
       const minPercent = 0.01;

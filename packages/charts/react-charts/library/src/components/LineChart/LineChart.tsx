@@ -19,6 +19,7 @@ import {
   ColorFillBarsProps,
   LineChartGap,
   LineChartDataPoint,
+  Chart,
 } from '../../index';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { tokens } from '@fluentui/react-theme';
@@ -151,6 +152,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const _colorFillBarId = useId('_colorFillBarId');
     const _isRTL: boolean = useRtl();
     let xAxisCalloutAccessibilityData: AccessibilityProps = {};
+    const cartesianChartRef = React.useRef<Chart>(null);
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -182,6 +184,14 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         calloutPointsRef.current = calloutData(pointsRef.current);
       }
     }, [props.height, props.width, props.data]);
+
+    React.useImperativeHandle(
+      props.componentRef,
+      () => ({
+        chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      }),
+      [],
+    );
 
     function _injectIndexPropertyInLineChartData(lineChartData?: LineChartPoints[]): LineChartDataWithIndex[] | [] {
       const { allowMultipleShapesForPoints = false } = props;
@@ -1292,6 +1302,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         onChartMouseLeave={_handleChartMouseLeave}
         enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
+        componentRef={cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: ChildProps) => {

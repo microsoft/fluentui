@@ -23,6 +23,7 @@ import {
   ChildProps,
   YValueHover,
   ChartPopover,
+  Chart,
 } from '../../index';
 import {
   ChartTypes,
@@ -80,6 +81,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
   type ColorScale = (_p?: number) => string;
+  const cartesianChartRef = React.useRef<Chart>(null);
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -95,6 +97,14 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<VerticalBarChartDataPoint>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+    }),
+    [],
+  );
 
   function _createLine(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -984,6 +994,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         xAxisInnerPadding: _xAxisInnerPadding,
         xAxisOuterPadding: _xAxisOuterPadding,
       })}
+      componentRef={cartesianChartRef}
       /* eslint-disable react/jsx-no-bind */
       // eslint-disable-next-line react/no-children-prop
       children={(props: ChildProps) => {
