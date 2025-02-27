@@ -25,13 +25,13 @@ const useCardStyle = makeStyles({
   },
 });
 
-export const useCardStyles = (state: unknown) => {
+const useCardStyles = (state: unknown) => {
   const cardStyles = useCardStyle();
   const componentState = state as CardState;
   componentState.root.className = mergeClasses(componentState.root.className, cardStyles.root);
 };
 
-export const CUSTOM_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
+const CUSTOM_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   useCardStyles_unstable: useCardStyles,
 };
