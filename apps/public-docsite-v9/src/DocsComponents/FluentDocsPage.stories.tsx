@@ -206,9 +206,6 @@ const RenderArgsTable = ({
   const styles = useStyles();
 
   const { component } = withSlotEnhancer(story);
-  // const hasSlot = Object.keys(story.argTypes).some(key =>
-  //   story.argTypes[key].table?.type?.summary?.startsWith('Slot<'),
-  // );
   return hideArgsTable ? null : (
     <>
       {story.argTypes.as && story.argTypes.as?.type?.name === 'enum' && (
@@ -225,7 +222,6 @@ const RenderArgsTable = ({
           </div>
         </div>
       )}
-
       <ArgsTable of={component} />
     </>
   );
