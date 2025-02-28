@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
 import { MoreHorizontal24Filled, MoreHorizontal20Filled } from '@fluentui/react-icons';
 import { Body1, Caption1, Text } from '@fluentui/react-text';
@@ -15,13 +15,14 @@ export default {
 
   decorators: [
     story => (
-      <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-        <div className="testWrapper" style={{ width: '600px' }}>
-          {story()}
-        </div>
-      </StoryWright>
+      <div className="testWrapper" style={{ width: '600px' }}>
+        {story()}
+      </div>
     ),
   ],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Card>;
 
 export const CardTemplates = () => (
