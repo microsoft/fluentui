@@ -1,7 +1,8 @@
+// eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
 
 export const ctrlAvatarSize = 'var(${ctrlAvatarSizeRaw}, var(${sizeCtrlDefaultRaw}, ${📦 sizeAvatarSizeRaw}))';
-export const ctrlAvatarCornerItem = 'var(${ctrlAvatarCornerItemRaw}, var(${cornerCircularRaw}, ${cornerCircularRaw}))';
+export const ctrlAvatarCornerItem = 'var(${ctrlAvatarCornerItemRaw}, ${cornerCircularRaw})';
 export const ctrlAvatarBackground = 'var(${ctrlAvatarBackgroundRaw}, ${neutralBackground6RestRaw})';
 export const ctrlAvatarForeground = 'var(${ctrlAvatarForegroundRaw}, ${neutralForeground3RestRaw})';
 export const ctrlAvatarIconSize = 'var(${ctrlAvatarIconSizeRaw}, ${sizeCtrlIconRaw})';

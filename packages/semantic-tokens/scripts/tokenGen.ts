@@ -26,7 +26,7 @@ interface ComponentTokenMap {
 }
 
 // ToDo, make this dynamic to handle all needed variables imported after/during files generation
-function exportImportHeaders() {
+function generateImportHeaders() {
   const esLintDisable = '// eslint-disable-next-line no-restricted-imports\n';
   const importFluent = "import { tokens } from '@fluentui/tokens';\n\n";
   return esLintDisable + importFluent;
@@ -110,9 +110,9 @@ function toCamelCase(str: string) {
 function generateTokenVariables() {
   // Default our files to token imports
   // TODO: Add raw token imports
-  let optionalTokens = exportImportHeaders();
-  let controlTokens = exportImportHeaders();
-  let nullableTokens = exportImportHeaders();
+  let optionalTokens = generateImportHeaders();
+  let controlTokens = generateImportHeaders();
+  let nullableTokens = generateImportHeaders();
   const componentTokens: ComponentTokenMap = {};
   for (const token in tokensJSON) {
     const tokenData: Token = tokensJSON[token];
@@ -143,7 +143,7 @@ function generateTokenVariables() {
 
     let resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)})`;
     // TODO: Check if a token has a FST reference that falls back to another FST/fluent fallback?
-    if (tokenFallback && tokenSemanticRef) {
+    if (tokenFallback && tokenSemanticRef && tokenFallback !== tokenSemanticRef) {
       // Token has both a FST fallback and a Fluent fallback
       resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(
         tokenSemanticRef,
@@ -160,7 +160,7 @@ function generateTokenVariables() {
       // We have a component level control token
       const component = tokenData.name.split('/')[1];
       if (!componentTokens[component]) {
-        componentTokens[component] = "import { tokens } from '@fluentui/tokens';\n\n";
+        componentTokens[component] = generateImportHeaders();
       }
       componentTokens[component] += `export const ${token} = '${resolvedTokenFallback}';\n`;
     } else {

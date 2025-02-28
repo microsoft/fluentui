@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
 
 export const ctrlSpinnerSize = 'var(${ctrlSpinnerSizeRaw}, var(${sizeCtrlDefaultRaw}, ${📦 sizeSpinnerSizeRaw}))';

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
 
 export const ctrlListPillWidth = 'var(${ctrlListPillWidthRaw}, ${thickerRaw})';
@@ -14,10 +15,10 @@ export const ctrlListCornerPressed = 'var(${ctrlListCornerPressedRaw}, var(${cor
 export const ctrlListIndentLevel1 = 'var(${ctrlListIndentLevel1Raw}, ${paddingCtrlHorizontalDefaultRaw})';
 export const ctrlListIndentLevel2 = 'var(${ctrlListIndentLevel2Raw})';
 export const ctrlListIndentLevel3 = 'var(${ctrlListIndentLevel3Raw})';
-export const ctrlListBackgroundSelectedRest = 'var(${ctrlListBackgroundSelectedRestRaw}, var(${backgroundCtrlSubtleRestRaw}, ${backgroundCtrlSubtleRestRaw}))';
-export const ctrlListBackgroundSelectedHover = 'var(${ctrlListBackgroundSelectedHoverRaw}, var(${backgroundCtrlSubtleHoverRaw}, ${backgroundCtrlSubtleHoverRaw}))';
-export const ctrlListBackgroundSelectedPressed = 'var(${ctrlListBackgroundSelectedPressedRaw}, var(${backgroundCtrlSubtlePressedRaw}, ${backgroundCtrlSubtlePressedRaw}))';
-export const ctrlListBackgroundSelectedDisabled = 'var(${ctrlListBackgroundSelectedDisabledRaw}, var(${backgroundCtrlSubtleDisabledRaw}, ${backgroundCtrlSubtleDisabledRaw}))';
+export const ctrlListBackgroundSelectedRest = 'var(${ctrlListBackgroundSelectedRestRaw}, ${backgroundCtrlSubtleRestRaw})';
+export const ctrlListBackgroundSelectedHover = 'var(${ctrlListBackgroundSelectedHoverRaw}, ${backgroundCtrlSubtleHoverRaw})';
+export const ctrlListBackgroundSelectedPressed = 'var(${ctrlListBackgroundSelectedPressedRaw}, ${backgroundCtrlSubtlePressedRaw})';
+export const ctrlListBackgroundSelectedDisabled = 'var(${ctrlListBackgroundSelectedDisabledRaw}, ${backgroundCtrlSubtleDisabledRaw})';
 export const ctrlListChoiceBackgroundRest = 'var(${ctrlListChoiceBackgroundRestRaw}, var(${nullColorRaw}, ${neutralBackgroundTransparentRestRaw}))';
 export const ctrlListChoiceStrokeRest = 'var(${ctrlListChoiceStrokeRestRaw}, var(${nullColorRaw}, ${neutralStrokeTransparentRestRaw}))';
 export const ctrlListChoiceStrokeDisabled = 'var(${ctrlListChoiceStrokeDisabledRaw}, var(${nullColorRaw}, ${neutralStrokeTransparentDisabledRestRaw}))';

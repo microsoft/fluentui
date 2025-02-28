@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
 
 export const ctrlInputBackgroundRest = 'var(${ctrlInputBackgroundRestRaw}, var(${backgroundCtrlNeutralRestRaw}, ${neutralBackground1RestRaw}))';
