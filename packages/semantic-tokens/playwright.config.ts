@@ -32,7 +32,7 @@ const config: PlaywrightTestConfig = {
     // },
   ],
   webServer: {
-    command: `node scripts/server.js --port 6006`,
+    command: `node scripts/server.js --smtc-port 6006`,
     port: 6006,
     reuseExistingServer: process.env.CI ? false : true,
   },

@@ -5,16 +5,65 @@
  */
 // eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
+import {
+  textGlobalBody1FontsizeRaw,
+  textGlobalBody1LineheightRaw,
+  textGlobalBody2FontsizeRaw,
+  textGlobalBody2LineheightRaw,
+  textGlobalBody3FontsizeRaw,
+  textGlobalBody3LineheightRaw,
+  textGlobalCaption1FontsizeRaw,
+  textGlobalCaption1LineheightRaw,
+  textGlobalCaption2FontsizeRaw,
+  textGlobalCaption2LineheightRaw,
+  textGlobalDisplay1FontsizeRaw,
+  textGlobalDisplay1LineheightRaw,
+  textGlobalDisplay2FontsizeRaw,
+  textGlobalDisplay2LineheightRaw,
+  textGlobalSubtitle1FontsizeRaw,
+  textGlobalSubtitle1LineheightRaw,
+  textGlobalSubtitle2FontsizeRaw,
+  textGlobalSubtitle2LineheightRaw,
+  textGlobalTitle1FontsizeRaw,
+  textGlobalTitle1LineheightRaw,
+  textGlobalTitle2FontsizeRaw,
+  textGlobalTitle2LineheightRaw,
+  textStyleDefaultHeaderWeightRaw,
+  textStyleDefaultRegularFontfamilyRaw,
+  textStyleDefaultRegularLetterspacingRaw,
+  textStyleDefaultRegularWeightRaw,
+} from './variables';
 
-// Text
-export const textStyleDefaultRegularFontfamily = `var(--text-style-default-regular-fontfamily, ${tokens.fontFamilyBase})`;
-export const textGlobalBody3Fontsize = `var(--text-global-body3-fontsize, ${tokens.fontSizeBase300})`;
-export const textStyleDefaultRegularWeight = `var(--text-style-default-regular-weight, ${tokens.fontWeightRegular})`;
+// Font sizes and line heights
+// TODO: Check fallbacks for below font size fallbacks (some unknowns)
+export const textGlobalDisplay1Fontsize = `var(${textGlobalDisplay1FontsizeRaw})`;
+export const textGlobalDisplay1Lineheight = `var(${textGlobalDisplay1LineheightRaw})`;
+export const textGlobalDisplay2Fontsize = `var(${textGlobalDisplay2FontsizeRaw})`;
+export const textGlobalDisplay2Lineheight = `var(${textGlobalDisplay2LineheightRaw})`;
+export const textGlobalTitle1Fontsize = `var(${textGlobalTitle1FontsizeRaw})`;
+export const textGlobalTitle1Lineheight = `var(${textGlobalTitle1LineheightRaw})`;
+export const textGlobalTitle2Fontsize = `var(${textGlobalTitle2FontsizeRaw})`;
+export const textGlobalTitle2Lineheight = `var(${textGlobalTitle2LineheightRaw})`;
+export const textGlobalSubtitle1Fontsize = `var(${textGlobalSubtitle1FontsizeRaw})`;
+export const textGlobalSubtitle1Lineheight = `var(${textGlobalSubtitle1LineheightRaw})`;
+export const textGlobalSubtitle2Fontsize = `var(${textGlobalSubtitle2FontsizeRaw})`;
+export const textGlobalSubtitle2Lineheight = `var(${textGlobalSubtitle2LineheightRaw})`;
+// TODO: Unknown font fallbacks end here
 
-// Stroke
-export const strokewidthDefault = `var(--strokewidth-default, ${tokens.strokeWidthThin})`;
-export const ctrlFocusOuterStroke = `var(--ctrl-focus-outer-stroke, ${tokens.colorStrokeFocus2})`;
+// Body and caption fonts
+export const textGlobalBody1Fontsize = `var(${textGlobalBody1FontsizeRaw})`;
+export const textGlobalBody1Lineheight = `var(${textGlobalBody1LineheightRaw})`;
+export const textGlobalBody2Fontsize = `var(${textGlobalBody2FontsizeRaw})`;
+export const textGlobalBody2Lineheight = `var(${textGlobalBody2LineheightRaw})`;
+export const textGlobalBody3Fontsize = `var(${textGlobalBody3FontsizeRaw})`;
+export const textGlobalBody3Lineheight = `var(${textGlobalBody3LineheightRaw})`;
+export const textGlobalCaption1Fontsize = `var(${textGlobalCaption1FontsizeRaw})`;
+export const textGlobalCaption1Lineheight = `var(${textGlobalCaption1LineheightRaw})`;
+export const textGlobalCaption2Fontsize = `var(${textGlobalCaption2FontsizeRaw})`;
+export const textGlobalCaption2Lineheight = `var(${textGlobalCaption2LineheightRaw})`;
 
-// Disabled
-export const foregroundCtrlOntransparentDisabled = `var(--foreground-ctrl-ontransparent-disabled, ${tokens.colorNeutralForegroundDisabled})`;
-export const foregroundCtrlNeutralPrimaryDisabled = `var(--foreground-ctrl-neutral-primary-disabled, ${tokens.colorNeutralForegroundDisabled})`;
+// Font family and weight
+export const textStyleDefaultRegularFontfamily = `var(${textStyleDefaultRegularFontfamilyRaw}, ${tokens.fontFamilyBase})`;
+export const textStyleDefaultRegularWeight = `var(${textStyleDefaultRegularWeightRaw}, ${tokens.fontWeightRegular})`;
+export const textStyleDefaultRegularLetterspacing = `var(${textStyleDefaultRegularLetterspacingRaw}, 'normal')`;
+export const textStyleDefaultHeaderWeight = `var(${textStyleDefaultHeaderWeightRaw})`;

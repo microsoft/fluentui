@@ -1,9 +1,26 @@
-// Brand control foreground CSS vars
-export const foregroundCtrlBrandRestRaw = '--foreground-ctrl-brand-rest';
-export const foregroundCtrlBrandHoverRaw = '--foreground-ctrl-brand-hover';
-export const foregroundCtrlBrandPressedRaw = '--foreground-ctrl-brand-pressed';
-
-// Control foreground CSS vars
-export const foregroundCtrlNeutralPrimaryRestRaw = '--foreground-ctrl-neutral-primary-rest';
-export const foregroundCtrlNeutralPrimaryHoverRaw = '--foreground-ctrl-neutral-primary-hover';
-export const foregroundCtrlNeutralPrimaryPressedRaw = '--foreground-ctrl-neutral-primary-pressed';
+export const textGlobalDisplay1FontsizeRaw = '--smtc-text-global-display1-fontsize';
+export const textGlobalDisplay2FontsizeRaw = '--smtc-text-global-display2-fontsize';
+export const textGlobalDisplay1LineheightRaw = '--smtc-text-global-display1-lineheight';
+export const textGlobalDisplay2LineheightRaw = '--smtc-text-global-display2-lineheight';
+export const textGlobalTitle1FontsizeRaw = '--smtc-text-global-title1-fontsize';
+export const textGlobalTitle1LineheightRaw = '--smtc-text-global-title1-lineheight';
+export const textGlobalTitle2FontsizeRaw = '--smtc-text-global-title2-fontsize';
+export const textGlobalTitle2LineheightRaw = '--smtc-text-global-title2-lineheight';
+export const textGlobalSubtitle1FontsizeRaw = '--smtc-text-global-subtitle1-fontsize';
+export const textGlobalSubtitle1LineheightRaw = '--smtc-text-global-subtitle1-lineheight';
+export const textGlobalSubtitle2FontsizeRaw = '--smtc-text-global-subtitle2-fontsize';
+export const textGlobalSubtitle2LineheightRaw = '--smtc-text-global-subtitle2-lineheight';
+export const textGlobalBody1FontsizeRaw = '--smtc-text-global-body1-fontsize';
+export const textGlobalBody1LineheightRaw = '--smtc-text-global-body1-lineheight';
+export const textGlobalBody2FontsizeRaw = '--smtc-text-global-body2-fontsize';
+export const textGlobalBody2LineheightRaw = '--smtc-text-global-body2-lineheight';
+export const textGlobalBody3FontsizeRaw = '--smtc-text-global-body3-fontsize';
+export const textGlobalBody3LineheightRaw = '--smtc-text-global-body3-lineheight';
+export const textGlobalCaption1FontsizeRaw = '--smtc-text-global-caption1-fontsize';
+export const textGlobalCaption1LineheightRaw = '--smtc-text-global-caption1-lineheight';
+export const textGlobalCaption2FontsizeRaw = '--smtc-text-global-caption2-fontsize';
+export const textGlobalCaption2LineheightRaw = '--smtc-text-global-caption2-lineheight';
+export const textStyleDefaultRegularFontfamilyRaw = '--smtc-text-style-default-regular-fontfamily';
+export const textStyleDefaultRegularWeightRaw = '--smtc-text-style-default-regular-weight';
+export const textStyleDefaultRegularLetterspacingRaw = '--smtc-text-style-default-regular-letterspacing';
+export const textStyleDefaultHeaderWeightRaw = '--smtc-text-style-default-header-weight';

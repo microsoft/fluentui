@@ -11,58 +11,58 @@ export const ctrlFocusOuterStroke: string;
 export const ctrlLinkForegroundBrandHover: string;
 
 // @public (undocumented)
-export const ctrlLinkForegroundBrandHoverRaw = "--ctrl-link-foreground-brand-hover";
+export const ctrlLinkForegroundBrandHoverRaw = "--smtc-ctrl-link-foreground-brand-hover";
 
 // @public (undocumented)
 export const ctrlLinkForegroundBrandPressed: string;
 
 // @public (undocumented)
-export const ctrlLinkForegroundBrandPressedRaw = "--ctrl-link-foreground-brand-pressed";
+export const ctrlLinkForegroundBrandPressedRaw = "--smtc-ctrl-link-foreground-brand-pressed";
 
 // @public (undocumented)
 export const ctrlLinkForegroundBrandRest: string;
 
 // @public (undocumented)
-export const ctrlLinkForegroundBrandRestRaw = "--ctrl-link-foreground-brand-rest";
+export const ctrlLinkForegroundBrandRestRaw = "--smtc-ctrl-link-foreground-brand-rest";
 
 // @public (undocumented)
 export const ctrlLinkForegroundNeutralHover: string;
 
 // @public (undocumented)
-export const ctrlLinkForegroundNeutralHoverRaw = "--ctrl-link-foreground-neutral-hover";
+export const ctrlLinkForegroundNeutralHoverRaw = "--smtc-ctrl-link-foreground-neutral-hover";
 
 // @public (undocumented)
 export const ctrlLinkForegroundNeutralPressed: string;
 
 // @public (undocumented)
-export const ctrlLinkForegroundNeutralPressedRaw = "--ctrl-link-foreground-neutral-pressed";
+export const ctrlLinkForegroundNeutralPressedRaw = "--smtc-ctrl-link-foreground-neutral-pressed";
 
 // @public (undocumented)
 export const ctrlLinkForegroundNeutralRest: string;
 
 // @public (undocumented)
-export const ctrlLinkForegroundNeutralRestRaw = "--ctrl-link-foreground-neutral-rest";
+export const ctrlLinkForegroundNeutralRestRaw = "--smtc-ctrl-link-foreground-neutral-rest";
 
 // @public (undocumented)
-export const foregroundCtrlBrandHoverRaw = "--foreground-ctrl-brand-hover";
+export const foregroundCtrlBrandHoverRaw = "--smtc-foreground-ctrl-brand-hover";
 
 // @public (undocumented)
-export const foregroundCtrlBrandPressedRaw = "--foreground-ctrl-brand-pressed";
+export const foregroundCtrlBrandPressedRaw = "--smtc-foreground-ctrl-brand-pressed";
 
 // @public (undocumented)
-export const foregroundCtrlBrandRestRaw = "--foreground-ctrl-brand-rest";
+export const foregroundCtrlBrandRestRaw = "--smtc-foreground-ctrl-brand-rest";
 
 // @public (undocumented)
 export const foregroundCtrlNeutralPrimaryDisabled: string;
 
 // @public (undocumented)
-export const foregroundCtrlNeutralPrimaryHoverRaw = "--foreground-ctrl-neutral-primary-hover";
+export const foregroundCtrlNeutralPrimaryHoverRaw = "--smtc-foreground-ctrl-neutral-primary-hover";
 
 // @public (undocumented)
-export const foregroundCtrlNeutralPrimaryPressedRaw = "--foreground-ctrl-neutral-primary-pressed";
+export const foregroundCtrlNeutralPrimaryPressedRaw = "--smtc-foreground-ctrl-neutral-primary-pressed";
 
 // @public (undocumented)
-export const foregroundCtrlNeutralPrimaryRestRaw = "--foreground-ctrl-neutral-primary-rest";
+export const foregroundCtrlNeutralPrimaryRestRaw = "--smtc-foreground-ctrl-neutral-primary-rest";
 
 // @public (undocumented)
 export const foregroundCtrlOntransparentDisabled: string;
