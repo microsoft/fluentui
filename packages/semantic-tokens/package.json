@@ -40,5 +40,8 @@
     "dist/*.d.ts",
     "lib",
     "lib-commonjs"
-  ]
+  ],
+  "scripts": {
+    "generate-tokens": "npx ts-node scripts/tokenGen.ts"
+  }
 }
