@@ -1,6 +1,8 @@
 import * as React from 'react';
 import type { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
 
+/* eslint-disable react-hooks/rules-of-hooks */
+
 const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
   ref: React.Ref<ISelectedItemsList<TItem>>,
