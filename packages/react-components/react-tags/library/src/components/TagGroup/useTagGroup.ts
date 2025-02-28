@@ -4,6 +4,7 @@ import type { TagGroupProps, TagGroupState } from './TagGroup.types';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { interactionTagSecondaryClassNames } from '../InteractionTagSecondary/useInteractionTagSecondaryStyles.styles';
+import { TagValue } from '../../utils/types';
 
 /**
  * Create the state required to render TagGroup.
@@ -22,11 +23,15 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
     appearance = 'filled',
     dismissible = false,
     role = 'toolbar',
+    onSelect,
+    ...rest
   } = props;
 
   const innerRef = React.useRef<HTMLElement>();
   const { targetDocument } = useFluent();
   const { findNextFocusable, findPrevFocusable } = useFocusFinders();
+
+  const [items, setItems] = React.useState<Array<TagValue>>([]);
 
   const handleTagDismiss: TagGroupState['handleTagDismiss'] = useEventCallback((e, data) => {
     onDismiss?.(e, data);
@@ -52,6 +57,16 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
     }
   });
 
+  const handleTagSelect: TagGroupState['handleTagSelect'] = useEventCallback((e, data) => {
+    onSelect?.(e, data);
+
+    if (items.includes(data.value)) {
+      setItems(items.filter(item => item !== data.value));
+    } else {
+      setItems([...items, data.value]);
+    }
+  });
+
   const arrowNavigationProps = useArrowNavigationGroup({
     circular: true,
     axis: 'both',
@@ -60,6 +75,8 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
 
   return {
     handleTagDismiss,
+    handleTagSelect: onSelect ? handleTagSelect : undefined,
+    selectedValues: items,
     role,
     size,
     disabled,
@@ -78,7 +95,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
         role,
         'aria-disabled': disabled,
         ...arrowNavigationProps,
-        ...props,
+        ...rest,
       }),
       { elementType: 'div' },
     ),

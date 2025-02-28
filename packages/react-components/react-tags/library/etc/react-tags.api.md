@@ -10,6 +10,8 @@ import { AvatarShape } from '@fluentui/react-avatar';
 import { AvatarSize } from '@fluentui/react-avatar';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
+import { EventData } from '@fluentui/react-utilities';
+import { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { Slot } from '@fluentui/react-utilities';
@@ -82,6 +84,8 @@ export type InteractionTagSlots = {
 // @public
 export type InteractionTagState<Value = TagValue> = ComponentState<InteractionTagSlots> & Required<Pick<InteractionTagProps, 'appearance' | 'disabled' | 'selected' | 'shape' | 'size' | 'value'>> & {
     handleTagDismiss: TagDismissHandler<Value>;
+    handleTagSelect?: TagSelectHandler<Value>;
+    selectedValues: Value[];
     interactionTagPrimaryId: string;
 };
 
@@ -132,12 +136,13 @@ export type TagGroupContextValues = {
 };
 
 // @public
-export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
+export type TagGroupProps<Value = TagValue> = Omit<ComponentProps<TagGroupSlots>, 'onSelect'> & {
     onDismiss?: TagDismissHandler<Value>;
     disabled?: boolean;
     size?: TagSize;
     appearance?: TagAppearance;
     dismissible?: boolean;
+    onSelect?: EventHandler<TagSelectData<Value>>;
 };
 
 // @public (undocumented)
@@ -148,7 +153,9 @@ export type TagGroupSlots = {
 // @public
 export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'disabled' | 'size' | 'appearance' | 'dismissible'>> & {
     handleTagDismiss: TagDismissHandler<Value>;
+    handleTagSelect?: TagSelectHandler<Value>;
     role?: React_2.AriaRole;
+    selectedValues: Value[];
 };
 
 // @public

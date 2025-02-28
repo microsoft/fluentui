@@ -1,5 +1,12 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TagSize, TagValue, TagDismissHandler, TagAppearance } from '../../utils/types';
+import type { ComponentProps, ComponentState, Slot, EventHandler } from '@fluentui/react-utilities';
+import {
+  TagSize,
+  TagValue,
+  TagDismissHandler,
+  TagAppearance,
+  TagSelectHandler,
+  TagSelectData,
+} from '../../utils/types';
 import { TagGroupContextValue } from '../../contexts/tagGroupContext';
 import * as React from 'react';
 
@@ -14,7 +21,7 @@ export type TagGroupSlots = {
 /**
  * TagGroup Props
  */
-export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
+export type TagGroupProps<Value = TagValue> = Omit<ComponentProps<TagGroupSlots>, 'onSelect'> & {
   /**
    * Callback for when a tag is dismissed
    */
@@ -31,6 +38,11 @@ export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
   size?: TagSize;
   appearance?: TagAppearance;
   dismissible?: boolean;
+
+  /**
+   * Callback for when a tag is selected
+   */
+  onSelect?: EventHandler<TagSelectData<Value>>;
 };
 
 /**
@@ -39,5 +51,7 @@ export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
 export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> &
   Required<Pick<TagGroupProps, 'disabled' | 'size' | 'appearance' | 'dismissible'>> & {
     handleTagDismiss: TagDismissHandler<Value>;
+    handleTagSelect?: TagSelectHandler<Value>;
     role?: React.AriaRole;
+    selectedValues: Value[];
   };
