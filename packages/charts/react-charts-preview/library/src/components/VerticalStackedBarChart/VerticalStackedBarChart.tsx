@@ -15,7 +15,6 @@ import {
 } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
-//import { warnDeprecations, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import {
   AccessibilityProps,
   CartesianChart,
@@ -107,7 +106,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   const _emptyChartId: string = useId('_VSBC_empty');
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
-  //const _cartesianChartRef: React.RefObject<IChart> = React.createRef();
 
   const [selectedLegends, setSelectedLegends] = React.useState(props.legendProps?.selectedLegends || []);
   const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
@@ -144,7 +142,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     if (props.hideLegend) {
       return <></>;
     }
-    //const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const defaultPalette: string[] = [
       tokens.colorPaletteBlueForeground2,
       tokens.colorPaletteCornflowerForeground2,
@@ -158,14 +155,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     data.forEach((singleChartData: VerticalStackedChartProps) => {
       singleChartData.chartData.forEach((point: VSChartDataPoint) => {
         const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
-        /*if (props.enableGradient) {
-          const pointIndex = Math.max(
-            singleChartData.chartData?.findIndex((item: { legend: any }) => item.legend === point.legend) || 0,
-            0,
-          );
-          color = point.gradient?.[0] || getNextGradient(pointIndex, 0, theme?.isInverted)[0];
-        }*/
-
         const checkSimilarLegends = actions.filter((leg: Legend) => leg.title === point.legend && leg.color === color);
         if (checkSimilarLegends!.length > 0) {
           return;
@@ -937,18 +926,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
       const singleBar = barsToDisplay.map((point: VSChartDataPoint, index: number) => {
         const startColor = point.color ? point.color : _colors[index];
-        //const endColor = startColor;
-
-        /*if (props.enableGradient) {
-          startColor = point.gradient?.[0] || getNextGradient(index, 0, props.theme?.isInverted)[0];
-          endColor = point.gradient?.[1] || getNextGradient(index, 0, props.theme?.isInverted)[1];
-          singleChartData.chartData[index].color = startColor;
-        }*/
-
         const ref: IRefArrayData = {};
-
         const shouldHighlight = _isLegendHighlighted(point.legend) || _noLegendHighlighted() ? true : false;
-
         const rectFocusProps = !shouldFocusWholeStack && {
           'data-is-focusable': !props.hideTooltip && shouldHighlight,
           'aria-label': _getAriaLabel(singleChartData, point),
@@ -970,19 +949,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
 
-        //const gradientId = useId('VSBC_Gradient') + `_${indexNumber}_${index}`;
-
         if (barCornerRadius && barHeight > barCornerRadius && index === barsToDisplay.length - 1) {
           return (
             <React.Fragment key={index + indexNumber + `${shouldFocusWholeStack}`}>
-              {/*{props.enableGradient && (
-                <defs>
-                  <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
-                    <stop offset="0" stopColor={startColor} />
-                    <stop offset="100%" stopColor={endColor} />
-                  </linearGradient>
-                </defs>
-              )}*/}
               <path
                 className={classes.opacityChangeOnHover}
                 d={`
@@ -1008,15 +977,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         }
         return (
           <React.Fragment key={index + indexNumber}>
-            {props.enableGradient &&
-              {
-                /*<defs>
-                <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
-                  <stop offset="0" stopColor={startColor} />
-                  <stop offset="100%" stopColor={endColor} />
-                </linearGradient>
-              </defs>*/
-              }}
             <rect
               className={classes.opacityChangeOnHover}
               x={xPoint}
