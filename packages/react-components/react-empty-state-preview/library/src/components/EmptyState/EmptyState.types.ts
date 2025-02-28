@@ -13,6 +13,6 @@ export type EmptyStateSlots = {
   title: Slot<'span'>;
 };
 
-export type EmptyStateProps = ComponentProps<EmptyStateSlots> & {};
+export type EmptyStateProps = ComponentProps<EmptyStateSlots>;
 
-export type EmptyStateState = ComponentState<EmptyStateSlots> & {};
+export type EmptyStateState = ComponentState<EmptyStateSlots>;

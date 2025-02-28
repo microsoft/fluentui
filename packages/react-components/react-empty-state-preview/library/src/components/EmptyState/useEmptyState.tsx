@@ -12,7 +12,7 @@ import type { EmptyStateProps, EmptyStateState } from './EmptyState.types';
  * @param ref - reference to root HTMLElement of EmptyState
  */
 export const useEmptyState = (props: EmptyStateProps, ref: React.Ref<HTMLElement>): EmptyStateState => {
-  const { title } = props;
+  const { title, ...rest } = props;
 
   const state: EmptyStateState = {
     components: {
@@ -22,7 +22,7 @@ export const useEmptyState = (props: EmptyStateProps, ref: React.Ref<HTMLElement
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: ref as React.Ref<HTMLDivElement>,
-        ...props,
+        ...rest,
       }),
       { elementType: 'div' },
     ),
