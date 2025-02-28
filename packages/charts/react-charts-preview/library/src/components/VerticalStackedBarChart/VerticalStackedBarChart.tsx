@@ -238,7 +238,21 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     setColor(lineData.color);
   }
 
-  function onStackHoverFocus(stack: VerticalStackedChartProps, mouseEvent: React.MouseEvent<SVGElement>): void {
+  function onStackHoverFocus(
+    stack: VerticalStackedChartProps,
+    mouseEvent: React.MouseEvent<SVGElement> | SVGGElement,
+  ): void {
+    let clientX = 0;
+    let clientY = 0;
+    if ('clientX' in mouseEvent) {
+      clientX = mouseEvent.clientX;
+      clientY = mouseEvent.clientY;
+    } else {
+      // Handle case where mouseEvent is an SVGGElement
+      const boundingRect = mouseEvent.getBoundingClientRect();
+      clientX = boundingRect.left + boundingRect.width / 2;
+      clientY = boundingRect.top + boundingRect.height / 2;
+    }
     if (!_noLegendHighlighted()) {
       stack = {
         ...stack,
@@ -254,7 +268,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         item.shouldDrawBorderBottom = true;
       });
     }
-    updatePosition(mouseEvent.clientX, mouseEvent.clientY);
+    updatePosition(clientX, clientY);
     setPopoverOpen(stack.chartData.length > 0 || (stack.lineData?.length ?? 0) > 0);
     setYValueHover(
       isLinesPresent
@@ -669,14 +683,25 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     xAxisPoint: string,
     point: VSChartDataPoint,
     color: string,
-    mouseEvent: React.MouseEvent<SVGElement>,
+    mouseEvent: React.MouseEvent<SVGElement> | SVGGElement,
   ) {
+    let clientX = 0,
+      clientY = 0;
+    if ('clientX' in mouseEvent) {
+      clientX = mouseEvent.clientX;
+      clientY = mouseEvent.clientY;
+    } else {
+      // Handle case where mouseEvent is an SVGGElement
+      const boundingRect = mouseEvent.getBoundingClientRect();
+      clientX = boundingRect.left + boundingRect.width / 2;
+      clientY = boundingRect.top + boundingRect.height / 2;
+    }
     if (_calloutAnchorPoint?.chartDataPoint !== point || _calloutAnchorPoint?.xAxisDataPoint !== xAxisPoint) {
       _calloutAnchorPoint = {
         chartDataPoint: point,
         xAxisDataPoint: xAxisPoint,
       };
-      updatePosition(mouseEvent.clientX, mouseEvent.clientY);
+      updatePosition(clientX, clientY);
       setPopoverOpen(_noLegendHighlighted() || _isLegendHighlighted(point.legend));
       setCalloutLegend(point.legend);
       setDataForHoverCard(point.data);
@@ -1003,6 +1028,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               ref={e => (ref.refElement = e)}
               {...rectFocusProps}
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+              tabIndex={point.legend !== '' ? 0 : undefined}
             />
           </React.Fragment>
         );
