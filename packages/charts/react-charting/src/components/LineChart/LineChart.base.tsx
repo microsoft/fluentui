@@ -74,6 +74,9 @@ let xMin = Number.NEGATIVE_INFINITY;
 //minimum of all y of line chart points
 let yMin = Number.NEGATIVE_INFINITY;
 
+//maximum of all x of line chart points
+let xMax = Number.POSITIVE_INFINITY;
+
 /**
  *
  * @param x units from origin
@@ -648,7 +651,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   };
   private _getRangeForScatterMarkerSize(containerHeight: number, containerWidth: number): number {
     const extraXPixels = this._isRTL
-      ? containerWidth - this.margins.right! - this._xAxisScale(xMin)
+      ? containerWidth - this.margins.right! - this._xAxisScale(xMax)
       : this._xAxisScale(xMin) - this.margins.left!;
     const extraYPixels = containerHeight - this.margins.bottom! - this._yAxisScale(yMin);
     return Math.min(extraXPixels, extraYPixels);
@@ -1656,7 +1659,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       return d3Min(point.data, (item: ILineChartDataPoint) => item.x as number)!;
     })!;
 
-    const xMax = d3Max(points, (point: ILineChartPoints) => {
+    xMax = d3Max(points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: ILineChartDataPoint) => {
         return item.x as number;
       });
