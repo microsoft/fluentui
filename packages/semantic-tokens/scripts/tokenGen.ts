@@ -127,7 +127,9 @@ function generateTokenVariables() {
 
     // Token fallback may be a fluent 2 token or new FST, let's check known fluent 2 tokens
     if (tokenData.fallback.length > 0) {
-      if (tokenData.fallback.startsWith('Line-height')) {
+      if (tokenData.fallback === 'Thin') {
+        tokenFallback = `tokens.strokeWidthThin`;
+      } else if (tokenData.fallback.startsWith('Line-height')) {
         const tokenFallbackArr = tokenData.fallback.split('/');
         const tokenFallbackVal = tokenFallbackArr[tokenFallbackArr.length - 1];
         tokenFallback = `tokens.lineHeightBase${tokenFallbackVal}`;
