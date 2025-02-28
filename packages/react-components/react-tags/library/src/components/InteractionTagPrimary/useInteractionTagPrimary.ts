@@ -27,7 +27,14 @@ export const useInteractionTagPrimary_unstable = (
   props: InteractionTagPrimaryProps,
   ref: React.Ref<HTMLButtonElement>,
 ): InteractionTagPrimaryState => {
-  const { appearance, disabled, interactionTagPrimaryId, shape, size } = useInteractionTagContext_unstable();
+  const {
+    appearance,
+    disabled,
+    interactionTagPrimaryId,
+    selected: contextSelected,
+    shape,
+    size,
+  } = useInteractionTagContext_unstable();
   const { hasSecondaryAction = false } = props;
 
   return {
@@ -36,6 +43,7 @@ export const useInteractionTagPrimary_unstable = (
     avatarSize: avatarSizeMap[size],
     disabled,
     hasSecondaryAction,
+    selected: contextSelected ?? false,
     shape,
     size,
 

@@ -9,6 +9,7 @@ const interactionTagContextDefaultValue: InteractionTagContextValue = {
   disabled: false,
   handleTagDismiss: () => ({}),
   interactionTagPrimaryId: '',
+  selected: false,
   shape: 'rounded',
   size: 'medium',
   value: '',
@@ -18,7 +19,7 @@ const interactionTagContextDefaultValue: InteractionTagContextValue = {
  * Context shared between InteractionTag and its children components
  */
 export type InteractionTagContextValue<Value = string> = Required<
-  Pick<InteractionTagState, 'appearance' | 'disabled' | 'shape' | 'size'> & {
+  Pick<InteractionTagState, 'appearance' | 'disabled' | 'selected' | 'shape' | 'size'> & {
     handleTagDismiss: TagDismissHandler<Value>;
     interactionTagPrimaryId: string;
     value?: Value;
