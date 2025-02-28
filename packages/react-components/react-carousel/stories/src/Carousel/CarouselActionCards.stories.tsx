@@ -25,10 +25,6 @@ import * as React from 'react';
 
 const useClasses = makeStyles({
   container: {
-    display: 'grid',
-    gridTemplateColumns: '1fr',
-    gridTemplateRows: 'auto 1fr',
-
     boxShadow: tokens.shadow16,
   },
   card: {
