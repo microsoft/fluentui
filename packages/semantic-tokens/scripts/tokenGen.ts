@@ -25,6 +25,7 @@ interface ComponentTokenMap {
   [component: string]: string;
 }
 
+// ToDo, make this dynamic to handle all needed variables imported after/during files generation
 function exportImportHeaders() {
   const esLintDisable = '// eslint-disable-next-line no-restricted-imports\n';
   const importFluent = "import { tokens } from '@fluentui/tokens';\n\n";
@@ -40,6 +41,14 @@ function generateTokens() {
 
 function escapeInlineToken(token: string) {
   return `\$\{${token}\}`;
+}
+
+function cleanFSTTokenName(originalTokenName: string) {
+  // Handle any name housekeeping or small token name fixes
+
+  const newtokenName = originalTokenName.replace('-', '/');
+
+  return newtokenName;
 }
 
 function generateTokenRawStrings() {
@@ -113,7 +122,7 @@ function generateTokenVariables() {
     let tokenSemanticRef: null | string = null;
 
     if (tokenData.fst_reference.length > 0) {
-      tokenSemanticRef = toCamelCase(tokenData.fst_reference) + 'Raw';
+      tokenSemanticRef = toCamelCase(cleanFSTTokenName(tokenData.fst_reference)) + 'Raw';
     }
 
     // Token fallback may be a fluent 2 token or new FST, let's check known fluent 2 tokens
@@ -132,7 +141,7 @@ function generateTokenVariables() {
       }
     }
 
-    let resolvedTokenFallback = `var(${tokenNameRaw})`;
+    let resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)})`;
     // TODO: Check if a token has a FST reference that falls back to another FST/fluent fallback?
     if (tokenFallback && tokenSemanticRef) {
       // Token has both a FST fallback and a Fluent fallback
