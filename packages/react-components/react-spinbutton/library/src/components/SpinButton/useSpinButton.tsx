@@ -6,6 +6,7 @@ import {
   useControllableState,
   useTimeout,
   slot,
+  useMergedRefs,
 } from '@fluentui/react-utilities';
 import { ArrowUp, ArrowDown, End, Enter, Escape, Home, PageDown, PageUp } from '@fluentui/keyboard-keys';
 import {
@@ -85,6 +86,8 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     defaultState: defaultValue,
     initialState: 0,
   });
+
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const isControlled = value !== undefined;
 
@@ -233,12 +236,21 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     if (valueChanged) {
       roundedValue = precisionRound(newValue!, precision);
       setCurrentValue(roundedValue);
+      if (inputRef.current) {
+        // we need to set this here using the IDL attribute directly, because otherwise the timing of the ARIA value update
+        // is not in sync with the user-entered native input value, and some screen readers end up reading the previous value.
+        inputRef.current.ariaValueNow = `${roundedValue}`;
+      }
       internalState.current.value = roundedValue;
     } else if (displayValueChanged && !isControlled) {
       const nextValue = parseFloat(newDisplayValue as string);
       if (!isNaN(nextValue)) {
-        setCurrentValue(precisionRound(nextValue, precision));
-        internalState.current.value = precisionRound(nextValue, precision);
+        const roundedNextValue = precisionRound(nextValue, precision);
+        setCurrentValue(roundedNextValue);
+        if (inputRef.current) {
+          inputRef.current.ariaValueNow = `${roundedNextValue}`;
+        }
+        internalState.current.value = roundedNextValue;
       }
     }
 
@@ -285,7 +297,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     }),
     input: slot.always(input, {
       defaultProps: {
-        ref,
         autoComplete: 'off',
         role: 'spinbutton',
         appearance,
@@ -323,6 +334,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   };
 
   state.input.value = valueToDisplay;
+  state.input.ref = useMergedRefs(inputRef, ref);
   state.input['aria-valuemin'] = min;
   state.input['aria-valuemax'] = max;
   state.input['aria-valuetext'] = state.input['aria-valuetext'] ?? ((value !== undefined && displayValue) || undefined);
