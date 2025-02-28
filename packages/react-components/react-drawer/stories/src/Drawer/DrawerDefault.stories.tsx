@@ -54,7 +54,8 @@ export const Default = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [type, setType] = React.useState<DrawerType>('overlay');
 
-  // Overlay Drawer will handle focus by default, but inline Drawers need manual focus restoration attributes, if applicable
+  // all Drawers need manual focus restoration attributes
+  // unless (as in the case of some inline drawers, you do not want automatic focus restoration)
   const restoreFocusTargetAttributes = useRestoreFocusTarget();
   const restoreFocusSourceAttributes = useRestoreFocusSource();
 

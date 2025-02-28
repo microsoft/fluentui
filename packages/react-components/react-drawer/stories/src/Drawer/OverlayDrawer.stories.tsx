@@ -1,13 +1,31 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, OverlayDrawer, Button } from '@fluentui/react-components';
+import {
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  OverlayDrawer,
+  Button,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
+} from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 export const Overlay = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
+  // all Drawers need manual focus restoration attributes
+  // unless (as in the case of some inline drawers, you do not want automatic focus restoration)
+  const restoreFocusTargetAttributes = useRestoreFocusTarget();
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
+
   return (
     <div>
-      <OverlayDrawer as="aside" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <OverlayDrawer
+        as="aside"
+        {...restoreFocusSourceAttributes}
+        open={isOpen}
+        onOpenChange={(_, { open }) => setIsOpen(open)}
+      >
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -28,7 +46,7 @@ export const Overlay = () => {
         </DrawerBody>
       </OverlayDrawer>
 
-      <Button appearance="primary" onClick={() => setIsOpen(true)}>
+      <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setIsOpen(true)}>
         Open Drawer
       </Button>
     </div>
