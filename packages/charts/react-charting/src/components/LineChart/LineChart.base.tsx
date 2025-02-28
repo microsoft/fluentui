@@ -69,10 +69,10 @@ const DEFAULT_LINE_STROKE_SIZE = 4;
 const PATH_MULTIPLY_SIZE = 2.5;
 
 // minimum of all x of line chart points
-let xMin = 0;
+let xMin = Number.NEGATIVE_INFINITY;
 
 //minimum of all y of line chart points
-let yMin = 0;
+let yMin = Number.NEGATIVE_INFINITY;
 
 /**
  *
@@ -483,7 +483,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._xAxisScale = xScale;
     this._yAxisScale = yScale;
     this._renderedColorFillBars = this.props.colorFillBars ? this._createColorFillBars(containerHeight) : [];
-    this.lines = this._createLines(xElement!, containerHeight!);
+    this.lines = this._createLines(xElement!, containerHeight!, containerWidth!);
   };
 
   private _handleSingleLegendSelectionAction = (lineChartItem: LineChartDataWithIndex | IColorFillBarsProps) => {
@@ -646,19 +646,22 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       }
     }
   };
-  private _getExtraPixelsToRender(containerHeight: number): number {
-    const extraXPixels = this._xAxisScale(xMin) - this.margins.left!;
+  private _getRangeForScatterMarkerSize(containerHeight: number, containerWidth: number): number {
+    const extraXPixels = this._isRTL
+      ? containerWidth - this.margins.right! - this._xAxisScale(xMin)
+      : this._xAxisScale(xMin) - this.margins.left!;
     const extraYPixels = containerHeight - this.margins.bottom! - this._yAxisScale(yMin);
     return Math.min(extraXPixels, extraYPixels);
   }
-  private _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
+  private _createLines(xElement: SVGElement, containerHeight: number, containerWidth: number): JSX.Element[] {
     const lines: JSX.Element[] = [];
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
     } else {
       this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
     }
-    const extraMaxPixels = this.props.lineMode === 'scatter' ? this._getExtraPixelsToRender(containerHeight) : 0;
+    const extraMaxPixels =
+      this.props.lineMode === 'scatter' ? this._getRangeForScatterMarkerSize(containerHeight, containerWidth) : 0;
     const maxMarkerSize = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: ILineChartDataPoint) => {
         return item.markerSize as number;

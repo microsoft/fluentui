@@ -225,7 +225,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         );
       }
     case 'scatter':
-      if (plotlyInput.data[0].mode === 'markers' && !isNumberArray(plotlyInput.data[0].y!)) {
+      if (plotlyInput.data[0]?.mode?.includes('markers') && !isNumberArray(plotlyInput.data[0].y!)) {
         throw new Error(
           `Unsupported chart - type :${plotlyInput.data[0]?.type}, mode: ${plotlyInput.data[0]?.mode}
           , xAxisType: String or Date`,
