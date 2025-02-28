@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fixed button start and end slots inline spacing.",
-  "packageName": "@fluentui/web-components",
-  "email": "601470+mlijanto@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

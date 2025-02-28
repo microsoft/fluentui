@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: position thumb properly at pointer coordinates",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}
