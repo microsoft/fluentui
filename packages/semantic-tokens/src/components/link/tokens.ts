@@ -1,27 +1,17 @@
-// eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
-import {
-  foregroundCtrlBrandRestRaw,
-  foregroundCtrlBrandHoverRaw,
-  foregroundCtrlBrandPressedRaw,
-  foregroundCtrlNeutralPrimaryHoverRaw,
-  foregroundCtrlNeutralPrimaryPressedRaw,
-  foregroundCtrlNeutralPrimaryRestRaw,
-} from '../../control/variables';
 
-// Brand colors (Used as default Link control colors in Fluent 2)
-export const ctrlLinkForegroundBrandRestRaw = '--smtc-ctrl-link-foreground-brand-rest';
-export const ctrlLinkForegroundBrandHoverRaw = '--smtc-ctrl-link-foreground-brand-hover';
-export const ctrlLinkForegroundBrandPressedRaw = '--smtc-ctrl-link-foreground-brand-pressed';
-export const ctrlLinkForegroundBrandRest = `var(${ctrlLinkForegroundBrandRestRaw}, var(${foregroundCtrlBrandRestRaw},${tokens.colorBrandForegroundLink}))`;
-export const ctrlLinkForegroundBrandHover = `var(${ctrlLinkForegroundBrandHoverRaw}, var(${foregroundCtrlBrandHoverRaw},${tokens.colorBrandForegroundLinkHover}))`;
-export const ctrlLinkForegroundBrandPressed = `var(${ctrlLinkForegroundBrandPressedRaw}, var(${foregroundCtrlBrandPressedRaw},${tokens.colorBrandForegroundLinkPressed}))`;
-
-// Neutral colors (for non-branded use aka fluent2 'subtle')
-export const ctrlLinkForegroundNeutralRestRaw = '--smtc-ctrl-link-foreground-neutral-rest';
-export const ctrlLinkForegroundNeutralHoverRaw = '--smtc-ctrl-link-foreground-neutral-hover';
-export const ctrlLinkForegroundNeutralPressedRaw = '--smtc-ctrl-link-foreground-neutral-pressed';
-// In the design specs, this falls back to colorNeutralForeground1, but in fluent2 it falls back to colorNeutralForeground2
-export const ctrlLinkForegroundNeutralRest = `var(${ctrlLinkForegroundNeutralRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw},${tokens.colorNeutralForeground2}))`;
-export const ctrlLinkForegroundNeutralHover = `var(${ctrlLinkForegroundNeutralHoverRaw}, var(${foregroundCtrlNeutralPrimaryHoverRaw},${tokens.colorNeutralForeground2Hover}))`;
-export const ctrlLinkForegroundNeutralPressed = `var(${ctrlLinkForegroundNeutralPressedRaw}, var(${foregroundCtrlNeutralPrimaryPressedRaw},${tokens.colorNeutralForeground2Pressed}))`;
+export const ctrlLinkForegroundNeutralRest = 'var(${ctrlLinkForegroundNeutralRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${foregroundCtrlNeutralPrimaryRestRaw}))';
+export const ctrlLinkInlineStrokewidthRest = 'var(${ctrlLinkInlineStrokewidthRestRaw}, var(${strokewidthDefaultRaw}, ${thinRaw}))';
+export const ctrlLinkInlineStrokewidthHover = 'var(${ctrlLinkInlineStrokewidthHoverRaw}, var(${strokewidthDefaultRaw}, ${thinRaw}))';
+export const ctrlLinkInlineUnderlineDashed = 'var(ctrlLinkInlineUnderlineDashedRaw)';
+export const ctrlLinkInlineUnderlineSolidFigmaOnly = 'var(ctrlLinkInlineUnderlineSolidFigmaOnlyRaw)';
+export const ctrlLinkForegroundNeutralHover = 'var(${ctrlLinkForegroundNeutralHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${foregroundCtrlNeutralPrimaryHoverRaw}))';
+export const ctrlLinkForegroundNeutralPressed = 'var(${ctrlLinkForegroundNeutralPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${foregroundCtrlNeutralPrimaryPressedRaw}))';
+export const ctrlLinkForegroundBrandRest = 'var(${ctrlLinkForegroundBrandRestRaw}, var(${foregroundCtrlBrandRestRaw}, ${foregroundCtrlBrandRestRaw}))';
+export const ctrlLinkForegroundBrandHover = 'var(${ctrlLinkForegroundBrandHoverRaw}, var(${foregroundCtrlBrandHoverRaw}, ${foregroundCtrlBrandHoverRaw}))';
+export const ctrlLinkForegroundBrandPressed = 'var(${ctrlLinkForegroundBrandPressedRaw}, var(${foregroundCtrlBrandPressedRaw}, ${foregroundCtrlBrandPressedRaw}))';
+export const ctrlLinkOnpageStrokewidthRest = 'var(${ctrlLinkOnpageStrokewidthRestRaw}, var(${strokewidthDefaultRaw}, ${thinRaw}))';
+export const ctrlLinkOnpageStrokewidthHover = 'var(${ctrlLinkOnpageStrokewidthHoverRaw}, var(${strokewidthDefaultRaw}, ${thinRaw}))';
+export const ctrlLinkOnpageUnderlineDashed = 'var(ctrlLinkOnpageUnderlineDashedRaw)';
+export const ctrlLinkOnpageUnderlineSolidFigmaOnly = 'var(ctrlLinkOnpageUnderlineSolidFigmaOnlyRaw)';
+export const ctrlLinkShowunderlineatrest = 'var(ctrlLinkShowunderlineatrestRaw)';

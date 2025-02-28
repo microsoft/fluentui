@@ -25,14 +25,21 @@ interface ComponentTokenMap {
   [component: string]: string;
 }
 
+function exportImportHeaders() {
+  const esLintDisable = '// eslint-disable-next-line no-restricted-imports\n';
+  const importFluent = "import { tokens } from '@fluentui/tokens';\n\n";
+  return esLintDisable + importFluent;
+}
+
 function generateTokens() {
   console.log('Generating tokens...');
-  console.log('Imported JSON:', tokensJSON);
-  const ParsedJSON = JSON.stringify(tokensJSON);
-  console.log('ParsedJSON:', ParsedJSON);
   // Simple for now, just generate the raw strings and variables
   generateTokenRawStrings();
   generateTokenVariables();
+}
+
+function escapeInlineToken(token: string) {
+  return `\$\{${token}\}`;
 }
 
 function generateTokenRawStrings() {
@@ -43,13 +50,13 @@ function generateTokenRawStrings() {
   for (const token in tokensJSON) {
     const tokenData: Token = tokensJSON[token];
     const tokenName = '--smtc-' + tokenData.name.split('/').join('-').toLowerCase();
-    const tokenRawString = `export const ${tokenData.name}Raw = '${tokenName}';\n`;
+    const tokenRawString = `export const ${token}Raw = '${tokenName}';\n`;
 
     if (tokenData.name.startsWith('CTRL/')) {
       // We have a component level control token
       const component = tokenData.name.split('/')[1];
       if (!componentTokens[component]) {
-        componentTokens[component] = "import { tokens } from '@fluentui/tokens';\n\n";
+        componentTokens[component] = '';
       }
       componentTokens[component] += tokenRawString;
     } else {
@@ -63,12 +70,17 @@ function generateTokenRawStrings() {
     }
   }
 
-  fs.writeFileSync('./optional/variables.ts', optionalRawTokens);
-  fs.writeFileSync('./control/variables.ts', controlRawTokens);
-  fs.writeFileSync('./nullable/variables.ts', nullableRawTokens);
+  fs.writeFileSync('./src/optional/variables.ts', optionalRawTokens);
+  fs.writeFileSync('./src/control/variables.ts', controlRawTokens);
+  fs.writeFileSync('./src/nullable/variables.ts', nullableRawTokens);
 
   for (const component in componentTokens) {
-    fs.writeFileSync(`../components/${component}/tokens.ts`, componentTokens[component]);
+    var dir = `./src/components/${component}/`;
+
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(`./src/components/${component}/tokens.ts`, componentTokens[component]);
   }
 }
 
@@ -89,9 +101,9 @@ function toCamelCase(str: string) {
 function generateTokenVariables() {
   // Default our files to token imports
   // TODO: Add raw token imports
-  let optionalTokens = "import { tokens } from '@fluentui/tokens';\n\n";
-  let controlTokens = "import { tokens } from '@fluentui/tokens';\n\n";
-  let nullableTokens = "import { tokens } from '@fluentui/tokens';\n\n";
+  let optionalTokens = exportImportHeaders();
+  let controlTokens = exportImportHeaders();
+  let nullableTokens = exportImportHeaders();
   const componentTokens: ComponentTokenMap = {};
   for (const token in tokensJSON) {
     const tokenData: Token = tokensJSON[token];
@@ -110,6 +122,10 @@ function generateTokenVariables() {
         const tokenFallbackArr = tokenData.fallback.split('/');
         const tokenFallbackVal = tokenFallbackArr[tokenFallbackArr.length - 1];
         tokenFallback = `tokens.lineHeightBase${tokenFallbackVal}`;
+      } else if (tokenData.fallback.startsWith('Font-size')) {
+        const tokenFallbackArr = tokenData.fallback.split('/');
+        const tokenFallbackVal = tokenFallbackArr[tokenFallbackArr.length - 1];
+        tokenFallback = `tokens.fontSizeBase${tokenFallbackVal}`;
       } else {
         // handle base case
         tokenFallback = toCamelCase(tokenData.fallback) + 'Raw';
@@ -120,13 +136,15 @@ function generateTokenVariables() {
     // TODO: Check if a token has a FST reference that falls back to another FST/fluent fallback?
     if (tokenFallback && tokenSemanticRef) {
       // Token has both a FST fallback and a Fluent fallback
-      resolvedTokenFallback = `var(${tokenNameRaw}, var(${tokenSemanticRef}, ${tokenFallback}))`;
+      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(
+        tokenSemanticRef,
+      )}, ${escapeInlineToken(tokenFallback)}))`;
     } else if (tokenSemanticRef) {
       // Token just has a FST reference fallback
-      resolvedTokenFallback = `var(${tokenNameRaw}, ${tokenSemanticRef})`;
+      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${escapeInlineToken(tokenSemanticRef)})`;
     } else if (tokenFallback) {
       // Just in case a token falls back directly to a Fluent fallback
-      resolvedTokenFallback = `var(${tokenNameRaw}, ${tokenFallback})`;
+      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${escapeInlineToken(tokenFallback)})`;
     }
 
     if (tokenData.name.startsWith('CTRL/')) {
@@ -135,25 +153,30 @@ function generateTokenVariables() {
       if (!componentTokens[component]) {
         componentTokens[component] = "import { tokens } from '@fluentui/tokens';\n\n";
       }
-      componentTokens[component] += `export const ${tokenData.name} = '${resolvedTokenFallback}';\n`;
+      componentTokens[component] += `export const ${token} = '${resolvedTokenFallback}';\n`;
     } else {
       // We have a global token
       if (tokenData.optional) {
-        optionalTokens += `export const ${tokenData.name} = '${resolvedTokenFallback}';\n`;
+        optionalTokens += `export const ${token} = '${resolvedTokenFallback}';\n`;
       } else if (tokenData.nullable) {
-        nullableTokens += `export const ${tokenData.name} = '${resolvedTokenFallback}';\n`;
+        nullableTokens += `export const ${token} = '${resolvedTokenFallback}';\n`;
       } else {
-        controlTokens += `export const ${tokenData.name} = '${resolvedTokenFallback}';\n`;
+        controlTokens += `export const ${token} = '${resolvedTokenFallback}';\n`;
       }
     }
   }
 
-  fs.writeFileSync('./optional/tokens.ts', optionalTokens);
-  fs.writeFileSync('./control/tokens.ts', controlTokens);
-  fs.writeFileSync('./nullable/tokens.ts', nullableTokens);
+  fs.writeFileSync('./src/optional/tokens.ts', optionalTokens);
+  fs.writeFileSync('./src/control/tokens.ts', controlTokens);
+  fs.writeFileSync('./src/nullable/tokens.ts', nullableTokens);
 
   for (const component in componentTokens) {
-    fs.writeFileSync(`../components/${component}/tokens.ts`, componentTokens[component]);
+    var dir = `./src/components/${component}/`;
+
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(`./src/components/${component}/tokens.ts`, componentTokens[component]);
   }
 }
 

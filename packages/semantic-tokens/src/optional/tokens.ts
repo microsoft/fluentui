@@ -1,126 +1,262 @@
 // eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
-import {
-  textRampItembodyFontsizeRaw,
-  textRampItembodyLineheightRaw,
-  textRampItemheaderFontsizeRaw,
-  textRampItemheaderLineheightRaw,
-  textRampLegalLineheightRaw,
-  textRampMetadataFontsizeRaw,
-  textRampMetadataLineheightRaw,
-  textRampPageheaderFontsizeRaw,
-  textRampPageheaderLineheightRaw,
-  textRampReadingbodyFontsizeRaw,
-  textRampReadingbodyLineheightRaw,
-  textRampSectionheaderFontsizeRaw,
-  textRampSectionheaderLineheightRaw,
-  textRampSmPageheaderFontsizeRaw,
-  textRampSmPageheaderLineheightRaw,
-  textRampSmSectionheaderFontsizeRaw,
-  textRampSubsectionheaderFontsizeRaw,
-  textRampSubsectionheaderLineheightRaw,
-  textStyleAiHeaderFontfamilyRaw,
-  textStyleAiHeaderLetterspacingRaw,
-  textStyleAiHeaderWeightRaw,
-  textStyleAiRegularFontfamilyRaw,
-  textStyleAiRegularLetterspacingRaw,
-  textStyleAiRegularWeightRaw,
-  textStyleArticleHeaderFontfamilyRaw,
-  textStyleArticleHeaderLetterspacingRaw,
-  textStyleArticleRegularFontfamilyRaw,
-  textStyleArticleRegularLetterspacingRaw,
-  textStyleArticleRegularWeightRaw,
-  textStyleCodeHeaderFontfamilyRaw,
-  textStyleCodeHeaderLetterspacingRaw,
-  textStyleCodeHeaderWeightRaw,
-  textStyleCodeRegularFontfamilyRaw,
-  textStyleCodeRegularLetterspacingRaw,
-  textStyleCodeRegularWeightRaw,
-  textStyleDatavizHeaderFontfamilyRaw,
-  textStyleDatavizHeaderLetterspacingRaw,
-  textStyleDatavizHeaderWeightRaw,
-  textStyleDatavizRegularFontfamilyRaw,
-  textStyleDatavizRegularLetterspacingRaw,
-  textStyleDatavizRegularWeightRaw,
-  textStyleDefaultHeaderFontfamilyRaw,
-  textStyleDefaultHeaderLetterspacingRaw,
-  textStyleQuoteHeaderLetterspacingRaw,
-  textStyleQuoteHeaderWeightRaw,
-  textStyleQuoteRegularFontfamilyRaw,
-  textStyleQuoteRegularLetterspacingRaw,
-  textStyleQuoteRegularWeightRaw,
-} from './variables';
 
-// Our optional tokens can fallback to control tokens
-import {
-  textGlobalBody1FontsizeRaw,
-  textGlobalBody2FontsizeRaw,
-  textGlobalBody2LineheightRaw,
-  textGlobalBody3FontsizeRaw,
-  textGlobalBody3LineheightRaw,
-  textGlobalCaption1FontsizeRaw,
-  textGlobalCaption1LineheightRaw,
-  textGlobalCaption2LineheightRaw,
-  textGlobalSubtitle1FontsizeRaw,
-  textGlobalSubtitle1LineheightRaw,
-  textGlobalSubtitle2FontsizeRaw,
-  textGlobalSubtitle2LineheightRaw,
-  textGlobalTitle2FontsizeRaw,
-  textGlobalTitle2LineheightRaw,
-  textStyleDefaultHeaderWeightRaw,
-  textStyleDefaultRegularFontfamilyRaw,
-  textStyleDefaultRegularLetterspacingRaw,
-  textStyleDefaultRegularWeightRaw,
-} from '../control/variables';
-
-// Optional tokens
-
-export const textStyleDefaultHeaderFontfamily = `var(${textStyleDefaultHeaderFontfamilyRaw}, var(${textStyleDefaultRegularFontfamilyRaw}, ${tokens.fontFamilyBase}))`;
-export const textStyleDefaultHeaderLetterspacing = `var(${textStyleDefaultHeaderLetterspacingRaw}, var(${textStyleDefaultRegularLetterspacingRaw}, 'normal'))`;
-export const textStyleAiRegularFontfamily = `var(${textStyleAiRegularFontfamilyRaw}, var(${textStyleDefaultRegularFontfamilyRaw}, ${tokens.fontFamilyBase}))`;
-export const textStyleAiRegularWeight = `var(${textStyleAiRegularWeightRaw}, var(${textStyleDefaultRegularWeightRaw}, ${tokens.fontWeightRegular}))`;
-export const textStyleAiRegularLetterspacing = `var(${textStyleAiRegularLetterspacingRaw}, var(${textStyleDefaultRegularLetterspacingRaw}, 'normal'))`;
-export const textStyleAiHeaderFontfamily = `var(${textStyleAiHeaderFontfamilyRaw}, var(${textStyleDefaultRegularFontfamilyRaw}, ${tokens.fontFamilyBase}))`;
-export const textStyleAiHeaderWeight = `var(${textStyleAiHeaderWeightRaw}, var(${textStyleDefaultHeaderWeightRaw}, ${tokens.fontWeightRegular}))`;
-export const textStyleAiHeaderLetterspacing = `var(${textStyleAiHeaderLetterspacingRaw}, var(${textStyleDefaultRegularLetterspacingRaw}, 'normal'))`;
-export const textStyleArticleRegularFontfamily = `var(${textStyleArticleRegularFontfamilyRaw}, var(${textStyleDefaultRegularFontfamilyRaw}, ${tokens.fontFamilyBase}))`;
-export const textStyleArticleRegularWeight = `var(${textStyleArticleRegularWeightRaw}, var(${textStyleDefaultRegularWeightRaw}, ${tokens.fontWeightRegular}))`;
-export const textStyleArticleRegularLetterspacing = `var(${textStyleArticleRegularLetterspacingRaw}, var(${textStyleDefaultRegularLetterspacingRaw}, 'normal'))`;
-export const textStyleArticleHeaderFontfamily = `var(${textStyleArticleHeaderFontfamilyRaw}, var(${textStyleDefaultRegularFontfamilyRaw}, ${tokens.fontFamilyBase}))`;
-export const textStyleArticleHeaderWeight = `var(${textStyleDefaultHeaderWeightRaw}, var(${textStyleDefaultHeaderWeightRaw}, ${tokens.fontWeightRegular}))`;
-export const textStyleArticleHeaderLetterspacing = `var(${textStyleArticleHeaderLetterspacingRaw}, var(${textStyleDefaultRegularLetterspacingRaw}, 'normal'))`;
-export const textStyleCodeRegularFontfamily = `var(${textStyleCodeRegularFontfamilyRaw}, var(${textStyleDefaultRegularFontfamilyRaw}, ${tokens.fontFamilyMonospace}))`;
-export const textStyleCodeRegularWeight = `var(${textStyleCodeRegularWeightRaw}, var(${textStyleDefaultRegularWeightRaw}, ${tokens.fontWeightRegular}))`;
-export const textStyleCodeRegularLetterspacing = `var(${textStyleCodeRegularLetterspacingRaw}, var(${textStyleDefaultRegularLetterspacingRaw}, 'normal'))`;
-export const textStyleCodeHeaderFontfamily = `var(${textStyleCodeHeaderFontfamilyRaw}, var(${textStyleDefaultRegularFontfamilyRaw}, ${tokens.fontFamilyMonospace}))`;
-export const textStyleCodeHeaderWeight = `var(${textStyleCodeHeaderWeightRaw}, ${textStyleDefaultHeaderWeightRaw})`;
-export const textStyleCodeHeaderLetterspacing = `var(${textStyleCodeHeaderLetterspacingRaw}, var(${textStyleDefaultRegularLetterspacingRaw}, 'normal'))`;
-export const textStyleDatavizRegularFontfamily = `var(${textStyleDatavizRegularFontfamilyRaw},var(${textStyleDefaultRegularFontfamilyRaw}, ${tokens.fontFamilyBase}))`;
-export const textStyleDatavizRegularWeight = `var(${textStyleDatavizRegularWeightRaw}, var(${textStyleDefaultRegularWeightRaw}, ${tokens.fontWeightRegular}))`;
-export const textStyleDatavizRegularLetterspacing = `var(${textStyleDatavizRegularLetterspacingRaw}, var(${textStyleDefaultRegularLetterspacingRaw}, 'normal'))`;
-export const textStyleDatavizHeaderFontfamily = `var(${textStyleDatavizHeaderFontfamilyRaw}, var(${textStyleDefaultRegularFontfamilyRaw}, ${tokens.fontFamilyBase}))`;
-export const textStyleDatavizHeaderWeight = `var(${textStyleDatavizHeaderWeightRaw}, var(${textStyleDefaultRegularWeightRaw}, ${tokens.fontWeightSemibold}))`;
-export const textStyleDatavizHeaderLetterspacing = `var(${textStyleDatavizHeaderLetterspacingRaw}, var(${textStyleDefaultRegularLetterspacingRaw}, 'normal'))`;
-export const textStyleQuoteRegularFontfamily = `var(${textStyleQuoteRegularFontfamilyRaw}, var(${textStyleDefaultRegularFontfamilyRaw}, ${tokens.fontFamilyBase}))`;
-export const textStyleQuoteRegularWeight = `var(${textStyleQuoteRegularWeightRaw}, var(${textStyleDefaultRegularWeightRaw}, ${tokens.fontWeightRegular}))`;
-export const textStyleQuoteRegularLetterspacing = `var(${textStyleQuoteRegularLetterspacingRaw}, var(${textStyleDefaultRegularLetterspacingRaw}, 'normal'))`;
-export const textStyleQuoteHeaderWeight = `var(${textStyleQuoteHeaderWeightRaw}, var(${textStyleDefaultHeaderWeightRaw}, ${tokens.fontWeightSemibold}))`;
-export const textStyleQuoteHeaderLetterspacing = `var(${textStyleQuoteHeaderLetterspacingRaw}, var(${textStyleDefaultRegularLetterspacingRaw}, 'normal'))`;
-export const textRampPageheaderFontsize = `var(${textRampPageheaderFontsizeRaw}, var(${textGlobalTitle2FontsizeRaw}, ${textGlobalSubtitle1FontsizeRaw}))`;
-export const textRampPageheaderLineheight = `var(${textRampPageheaderLineheightRaw}, var(${textGlobalTitle2LineheightRaw}, ${textGlobalSubtitle1LineheightRaw}))`;
-export const textRampSectionheaderFontsize = `var(${textRampSectionheaderFontsizeRaw}, var(${textGlobalSubtitle1FontsizeRaw}, ${textGlobalSubtitle2FontsizeRaw}))`;
-export const textRampSectionheaderLineheight = `var(${textRampSectionheaderLineheightRaw}, var(${textGlobalSubtitle1LineheightRaw}, ${textGlobalSubtitle2LineheightRaw}))`;
-export const textRampSubsectionheaderFontsize = `var(${textRampSubsectionheaderFontsizeRaw}, ${textGlobalSubtitle2FontsizeRaw})`;
-export const textRampSubsectionheaderLineheight = `var(${textRampSubsectionheaderLineheightRaw}, ${textGlobalSubtitle2LineheightRaw})`;
-export const textRampReadingbodyFontsize = `var(${textRampReadingbodyFontsizeRaw}, ${textGlobalBody2FontsizeRaw})`;
-export const textRampReadingbodyLineheight = `var(${textRampReadingbodyLineheightRaw}, ${textGlobalBody2LineheightRaw})`;
-export const textRampItemheaderFontsize = `var(${textRampItemheaderFontsizeRaw}, ${textGlobalBody2FontsizeRaw})`;
-export const textRampItemheaderLineheight = `var(${textRampItemheaderLineheightRaw}, ${textGlobalBody2LineheightRaw})`;
-export const textRampItembodyFontsize = `var(${textRampItembodyFontsizeRaw}, var(${textGlobalBody3FontsizeRaw}, ${tokens.fontSizeBase300}))`;
-export const textRampItembodyLineheight = `var(${textRampItembodyLineheightRaw}, var(${textGlobalBody3LineheightRaw}, ${tokens.lineHeightBase300}))`;
-export const textRampMetadataFontsize = `var(${textRampMetadataFontsizeRaw}, ${textGlobalCaption1FontsizeRaw})`;
-export const textRampMetadataLineheight = `var(${textRampMetadataLineheightRaw}, ${textGlobalCaption1LineheightRaw})`;
-export const textRampLegalLineheight = `var(${textRampLegalLineheightRaw}, ${textGlobalCaption2LineheightRaw})`;
-export const textRampSmPageheaderFontsize = `var(${textRampSmPageheaderFontsizeRaw}, var(${textGlobalSubtitle1FontsizeRaw}, ${textGlobalSubtitle2FontsizeRaw}))`;
-export const textRampSmPageheaderLineheight = `var(${textRampSmPageheaderLineheightRaw}, var(${textGlobalSubtitle1LineheightRaw}, ${textGlobalSubtitle2LineheightRaw}))`;
-export const textRampSmSectionheaderFontsize = `var(${textRampSmSectionheaderFontsizeRaw}, var(${textGlobalSubtitle2FontsizeRaw}, ${textGlobalBody1FontsizeRaw}))`;
+export const textStyleDefaultHeaderFontfamily = 'var(${textStyleDefaultHeaderFontfamilyRaw}, var(${textStyleDefaultRegularFontfamilyRaw}, ${font-familyBaseRaw}))';
+export const textStyleDefaultHeaderLetterspacing = 'var(${textStyleDefaultHeaderLetterspacingRaw}, ${textStyleDefaultRegularLetterspacingRaw})';
+export const textStyleAiRegularFontfamily = 'var(${textStyleAiRegularFontfamilyRaw}, ${textStyleDefaultRegularFontfamilyRaw})';
+export const textStyleAiRegularWeight = 'var(${textStyleAiRegularWeightRaw}, ${textStyleDefaultRegularWeightRaw})';
+export const textStyleAiRegularLetterspacing = 'var(${textStyleAiRegularLetterspacingRaw}, ${textStyleDefaultRegularLetterspacingRaw})';
+export const textStyleAiHeaderFontfamily = 'var(${textStyleAiHeaderFontfamilyRaw}, ${textStyleDefaultRegularFontfamilyRaw})';
+export const textStyleAiHeaderWeight = 'var(${textStyleAiHeaderWeightRaw}, ${textStyleDefaultHeaderWeightRaw})';
+export const textStyleAiHeaderLetterspacing = 'var(${textStyleAiHeaderLetterspacingRaw}, ${textStyleDefaultRegularLetterspacingRaw})';
+export const textStyleArticleRegularFontfamily = 'var(${textStyleArticleRegularFontfamilyRaw}, ${textStyleDefaultRegularFontfamilyRaw})';
+export const textStyleArticleRegularWeight = 'var(${textStyleArticleRegularWeightRaw}, ${textStyleDefaultRegularWeightRaw})';
+export const textStyleArticleRegularLetterspacing = 'var(${textStyleArticleRegularLetterspacingRaw}, ${textStyleDefaultRegularLetterspacingRaw})';
+export const textStyleArticleHeaderFontfamily = 'var(${textStyleArticleHeaderFontfamilyRaw}, ${textStyleDefaultRegularFontfamilyRaw})';
+export const textStyleArticleHeaderWeight = 'var(${textStyleArticleHeaderWeightRaw}, ${textStyleDefaultHeaderWeightRaw})';
+export const textStyleArticleHeaderLetterspacing = 'var(${textStyleArticleHeaderLetterspacingRaw}, ${textStyleDefaultRegularLetterspacingRaw})';
+export const textStyleCodeRegularFontfamily = 'var(${textStyleCodeRegularFontfamilyRaw}, ${textStyleDefaultRegularFontfamilyRaw})';
+export const textStyleCodeRegularWeight = 'var(${textStyleCodeRegularWeightRaw}, ${textStyleDefaultRegularWeightRaw})';
+export const textStyleCodeRegularLetterspacing = 'var(${textStyleCodeRegularLetterspacingRaw}, ${textStyleDefaultRegularLetterspacingRaw})';
+export const textStyleCodeHeaderFontfamily = 'var(${textStyleCodeHeaderFontfamilyRaw}, ${textStyleDefaultRegularFontfamilyRaw})';
+export const textStyleCodeHeaderWeight = 'var(${textStyleCodeHeaderWeightRaw}, ${textStyleDefaultHeaderWeightRaw})';
+export const textStyleCodeHeaderLetterspacing = 'var(${textStyleCodeHeaderLetterspacingRaw}, ${textStyleDefaultRegularLetterspacingRaw})';
+export const textStyleDatavizRegularFontfamily = 'var(${textStyleDatavizRegularFontfamilyRaw}, ${textStyleDefaultRegularFontfamilyRaw})';
+export const textStyleDatavizRegularWeight = 'var(${textStyleDatavizRegularWeightRaw}, ${textStyleDefaultRegularWeightRaw})';
+export const textStyleDatavizRegularLetterspacing = 'var(${textStyleDatavizRegularLetterspacingRaw}, ${textStyleDefaultRegularLetterspacingRaw})';
+export const textStyleDatavizHeaderFontfamily = 'var(${textStyleDatavizHeaderFontfamilyRaw}, ${textStyleDefaultRegularFontfamilyRaw})';
+export const textStyleDatavizHeaderWeight = 'var(${textStyleDatavizHeaderWeightRaw}, ${textStyleDefaultHeaderWeightRaw})';
+export const textStyleDatavizHeaderLetterspacing = 'var(${textStyleDatavizHeaderLetterspacingRaw}, ${textStyleDefaultRegularLetterspacingRaw})';
+export const textStyleQuoteRegularFontfamily = 'var(${textStyleQuoteRegularFontfamilyRaw}, ${textStyleDefaultRegularFontfamilyRaw})';
+export const textStyleQuoteRegularWeight = 'var(${textStyleQuoteRegularWeightRaw}, ${textStyleDefaultRegularWeightRaw})';
+export const textStyleQuoteRegularLetterspacing = 'var(${textStyleQuoteRegularLetterspacingRaw}, ${textStyleDefaultRegularLetterspacingRaw})';
+export const textStyleQuoteHeaderFontfamily = 'var(${textStyleQuoteHeaderFontfamilyRaw}, ${textStyleDefaultRegularFontfamilyRaw})';
+export const textStyleQuoteHeaderWeight = 'var(${textStyleQuoteHeaderWeightRaw}, ${textStyleDefaultHeaderWeightRaw})';
+export const textStyleQuoteHeaderLetterspacing = 'var(${textStyleQuoteHeaderLetterspacingRaw}, ${textStyleDefaultRegularLetterspacingRaw})';
+export const textRampPageheaderFontsize = 'var(${textRampPageheaderFontsizeRaw}, var(${textGlobalTitle2FontsizeRaw}, ${textGlobalSubtitle1FontsizeRaw}))';
+export const textRampPageheaderLineheight = 'var(${textRampPageheaderLineheightRaw}, var(${textGlobalTitle2LineheightRaw}, ${textGlobalSubtitle1LineheightRaw}))';
+export const textRampSectionheaderFontsize = 'var(${textRampSectionheaderFontsizeRaw}, var(${textGlobalSubtitle1FontsizeRaw}, ${textGlobalSubtitle2FontsizeRaw}))';
+export const textRampSectionheaderLineheight = 'var(${textRampSectionheaderLineheightRaw}, var(${textGlobalSubtitle1LineheightRaw}, ${textGlobalSubtitle2LineheightRaw}))';
+export const textRampSubsectionheaderFontsize = 'var(${textRampSubsectionheaderFontsizeRaw}, var(${textGlobalSubtitle2FontsizeRaw}, ${textGlobalSubtitle2FontsizeRaw}))';
+export const textRampSubsectionheaderLineheight = 'var(${textRampSubsectionheaderLineheightRaw}, var(${textGlobalSubtitle2LineheightRaw}, ${textGlobalSubtitle2LineheightRaw}))';
+export const textRampReadingbodyFontsize = 'var(${textRampReadingbodyFontsizeRaw}, var(${textGlobalBody2FontsizeRaw}, ${textGlobalBody2FontsizeRaw}))';
+export const textRampReadingbodyLineheight = 'var(${textRampReadingbodyLineheightRaw}, var(${textGlobalBody2LineheightRaw}, ${textGlobalBody2LineheightRaw}))';
+export const textRampItemheaderFontsize = 'var(${textRampItemheaderFontsizeRaw}, var(${textGlobalBody2FontsizeRaw}, ${textGlobalBody2FontsizeRaw}))';
+export const textRampItemheaderLineheight = 'var(${textRampItemheaderLineheightRaw}, var(${textGlobalBody2LineheightRaw}, ${textGlobalBody2LineheightRaw}))';
+export const textRampItembodyFontsize = 'var(${textRampItembodyFontsizeRaw}, var(${textGlobalBody3FontsizeRaw}, ${tokens.fontSizeBase300}))';
+export const textRampItembodyLineheight = 'var(${textRampItembodyLineheightRaw}, var(${textGlobalBody3LineheightRaw}, ${tokens.lineHeightBase300}))';
+export const textRampMetadataFontsize = 'var(${textRampMetadataFontsizeRaw}, ${textGlobalCaption1FontsizeRaw})';
+export const textRampMetadataLineheight = 'var(${textRampMetadataLineheightRaw}, ${textGlobalCaption1LineheightRaw})';
+export const textRampLegalFontsize = 'var(${textRampLegalFontsizeRaw}, ${textGlobalCaption2FontsizeRaw})';
+export const textRampLegalLineheight = 'var(${textRampLegalLineheightRaw}, ${textGlobalCaption2LineheightRaw})';
+export const textRampSmPageheaderFontsize = 'var(${textRampSmPageheaderFontsizeRaw}, var(${textGlobalSubtitle1FontsizeRaw}, ${textGlobalSubtitle2FontsizeRaw}))';
+export const textRampSmPageheaderLineheight = 'var(${textRampSmPageheaderLineheightRaw}, var(${textGlobalSubtitle1LineheightRaw}, ${textGlobalSubtitle2LineheightRaw}))';
+export const textRampSmSectionheaderFontsize = 'var(${textRampSmSectionheaderFontsizeRaw}, var(${textGlobalSubtitle2FontsizeRaw}, ${textGlobalBody1FontsizeRaw}))';
+export const textRampSmSectionheaderLineheight = 'var(${textRampSmSectionheaderLineheightRaw}, var(${textGlobalSubtitle2LineheightRaw}, ${textGlobalBody1LineheightRaw}))';
+export const textRampSmSubsectionheaderFontsize = 'var(${textRampSmSubsectionheaderFontsizeRaw}, var(${textGlobalBody1FontsizeRaw}, ${textGlobalBody1FontsizeRaw}))';
+export const textRampSmSubsectionheaderLineheight = 'var(${textRampSmSubsectionheaderLineheightRaw}, var(${textGlobalBody1LineheightRaw}, ${textGlobalBody1LineheightRaw}))';
+export const textRampSmReadingbodyFontsize = 'var(${textRampSmReadingbodyFontsizeRaw}, var(${textGlobalBody3FontsizeRaw}, ${textGlobalBody3FontsizeRaw}))';
+export const textRampSmReadingbodyLineheight = 'var(${textRampSmReadingbodyLineheightRaw}, var(${textGlobalBody3LineheightRaw}, ${textGlobalBody3LineheightRaw}))';
+export const textRampSmItemheaderFontsize = 'var(${textRampSmItemheaderFontsizeRaw}, var(${textGlobalBody3FontsizeRaw}, ${textGlobalBody3FontsizeRaw}))';
+export const textRampSmItemheaderLineheight = 'var(${textRampSmItemheaderLineheightRaw}, var(${textGlobalBody3LineheightRaw}, ${textGlobalBody3LineheightRaw}))';
+export const textRampSmItembodyFontsize = 'var(${textRampSmItembodyFontsizeRaw}, ${textGlobalCaption1FontsizeRaw})';
+export const textRampSmItembodyLineheight = 'var(${textRampSmItembodyLineheightRaw}, ${textGlobalCaption1LineheightRaw})';
+export const textRampSmMetadataFontsize = 'var(${textRampSmMetadataFontsizeRaw}, ${textGlobalCaption1FontsizeRaw})';
+export const textRampSmMetadataLineheight = 'var(${textRampSmMetadataLineheightRaw}, ${textGlobalCaption1LineheightRaw})';
+export const textRampSmLegalFontsize = 'var(${textRampSmLegalFontsizeRaw}, ${textGlobalCaption2FontsizeRaw})';
+export const textRampSmLegalLineheight = 'var(${textRampSmLegalLineheightRaw}, ${textGlobalCaption2LineheightRaw})';
+export const textRampLgPageheaderFontsize = 'var(${textRampLgPageheaderFontsizeRaw}, var(${textGlobalTitle1FontsizeRaw}, ${textGlobalTitle2FontsizeRaw}))';
+export const textRampLgPageheaderLineheight = 'var(${textRampLgPageheaderLineheightRaw}, var(${textGlobalTitle1LineheightRaw}, ${textGlobalTitle2LineheightRaw}))';
+export const textRampLgSectionheaderFontsize = 'var(${textRampLgSectionheaderFontsizeRaw}, var(${textGlobalTitle2FontsizeRaw}, ${textGlobalSubtitle1FontsizeRaw}))';
+export const textRampLgSectionheaderLineheight = 'var(${textRampLgSectionheaderLineheightRaw}, var(${textGlobalTitle2LineheightRaw}, ${textGlobalSubtitle1LineheightRaw}))';
+export const textRampLgSubsectionheaderFontsize = 'var(${textRampLgSubsectionheaderFontsizeRaw}, var(${textGlobalSubtitle1FontsizeRaw}, ${textGlobalSubtitle1FontsizeRaw}))';
+export const textRampLgSubsectionheaderLineheight = 'var(${textRampLgSubsectionheaderLineheightRaw}, var(${textGlobalSubtitle1LineheightRaw}, ${textGlobalSubtitle1LineheightRaw}))';
+export const textRampLgReadingbodyFontsize = 'var(${textRampLgReadingbodyFontsizeRaw}, var(${textGlobalBody1FontsizeRaw}, ${textGlobalBody1FontsizeRaw}))';
+export const textRampLgReadingbodyLineheight = 'var(${textRampLgReadingbodyLineheightRaw}, var(${textGlobalBody1LineheightRaw}, ${textGlobalBody1LineheightRaw}))';
+export const textRampLgItemheaderFontsize = 'var(${textRampLgItemheaderFontsizeRaw}, var(${textGlobalSubtitle2FontsizeRaw}, ${textGlobalBody1FontsizeRaw}))';
+export const textRampLgItemheaderLineheight = 'var(${textRampLgItemheaderLineheightRaw}, var(${textGlobalSubtitle2LineheightRaw}, ${textGlobalBody1LineheightRaw}))';
+export const textRampLgItembodyFontsize = 'var(${textRampLgItembodyFontsizeRaw}, var(${textGlobalBody2FontsizeRaw}, ${tokens.fontSizeBase400}))';
+export const textRampLgItembodyLineheight = 'var(${textRampLgItembodyLineheightRaw}, var(${textGlobalBody2LineheightRaw}, ${tokens.lineHeightBase400}))';
+export const textRampLgMetadataFontsize = 'var(${textRampLgMetadataFontsizeRaw}, ${textGlobalBody3FontsizeRaw})';
+export const textRampLgMetadataLineheight = 'var(${textRampLgMetadataLineheightRaw}, ${textGlobalBody3LineheightRaw})';
+export const textRampLgLegalFontsize = 'var(${textRampLgLegalFontsizeRaw}, ${textGlobalCaption1FontsizeRaw})';
+export const textRampLgLegalLineheight = 'var(${textRampLgLegalLineheightRaw}, ${textGlobalCaption1LineheightRaw})';
+export const textCtrlWeightDefault = 'var(${textCtrlWeightDefaultRaw}, ${textStyleDefaultRegularWeightRaw})';
+export const textCtrlButtonWeightDefault = 'var(${textCtrlButtonWeightDefaultRaw}, ${textStyleDefaultRegularWeightRaw})';
+export const textCtrlButtonWeightSelected = 'var(${textCtrlButtonWeightSelectedRaw}, ${textCtrlWeightSelectedRaw})';
+export const paddingToolbarInside = 'var(${paddingToolbarInsideRaw}, ${paddingContentXsmallRaw})';
+export const paddingToolbarOutside = 'var(${paddingToolbarOutsideRaw}, ${paddingContentXxsmallRaw})';
+export const paddingFlyoutDefault = 'var(${paddingFlyoutDefaultRaw}, ${paddingContentAlignOutdent-textonsubtleRaw})';
+export const paddingCardNestedimage = 'var(${paddingCardNestedimageRaw}, ${paddingContentAlignDefaultRaw})';
+export const paddingCtrlTextbottom = 'var(${paddingCtrlTextbottomRaw}, ${paddingCtrlTexttopRaw})';
+export const paddingCtrlSmTextbottom = 'var(${paddingCtrlSmTextbottomRaw}, ${paddingCtrl-smTexttopRaw})';
+export const paddingCtrlLgTextbottom = 'var(${paddingCtrlLgTextbottomRaw}, ${paddingCtrl-lgTexttopRaw})';
+export const gapBetweenCtrlNested = 'var(${gapBetweenCtrlNestedRaw}, ${paddingCtrlTonestedcontrolRaw})';
+export const gapTextSmall = 'var(${gapTextSmallRaw}, ${gapBetweenContentXxsmallRaw})';
+export const gapTextLarge = 'var(${gapTextLargeRaw}, ${gapBetweenContentXsmallRaw})';
+export const gapBetweenCtrlLgNested = 'var(${gapBetweenCtrlLgNestedRaw}, ${paddingCtrl-lgTonestedcontrolRaw})';
+export const gapBetweenCtrlSmNested = 'var(${gapBetweenCtrlSmNestedRaw}, ${paddingCtrl-smTonestedcontrolRaw})';
+export const gapList = 'var(${gapListRaw}, ${gapBetweenContentXxsmallRaw})';
+export const gapCard = 'var(${gapCardRaw}, ${gapBetweenContentMediumRaw})';
+export const strokewidthDividerDefault = 'var(${strokewidthDividerDefaultRaw}, var(${strokewidthDefaultRaw}, ${thinRaw}))';
+export const strokewidthDividerStrong = 'var(${strokewidthDividerStrongRaw}, var(${strokewidthDefaultRaw}, ${thinRaw}))';
+export const strokewidthCtrlOutlineRest = 'var(${strokewidthCtrlOutlineRestRaw}, var(${strokewidthDefaultRaw}, ${thinRaw}))';
+export const strokewidthCtrlOutlineHover = 'var(${strokewidthCtrlOutlineHoverRaw}, var(${strokewidthDefaultRaw}, ${thinRaw}))';
+export const strokewidthCtrlOutlinePressed = 'var(${strokewidthCtrlOutlinePressedRaw}, var(${strokewidthDefaultRaw}, ${thinRaw}))';
+export const strokewidthCtrlOutlineSelected = 'var(${strokewidthCtrlOutlineSelectedRaw}, var(${strokewidthDefaultRaw}, ${thinRaw}))';
+export const strokewidthWindowDefault = 'var(${strokewidthWindowDefaultRaw}, ${strokewidthDefaultRaw})';
+export const backgroundToolbar = 'var(${backgroundToolbarRaw}, var(${backgroundCardOnprimaryDefaultRestRaw}, ${neutralBackground1RestRaw}))';
+export const strokeToolbar = 'var(${strokeToolbarRaw}, var(${strokeCardOnprimaryRestRaw}, ${neutralStrokeTransparentRestRaw}))';
+export const strokeCtrlOnbrandRestStop2 = 'var(${strokeCtrlOnbrandRestStop2Raw}, var(${strokeCtrlOnbrandRestRaw}, ${strokeCtrlOnbrandRestRaw}))';
+export const strokeCtrlOnbrandHoverStop2 = 'var(${strokeCtrlOnbrandHoverStop2Raw}, var(${strokeCtrlOnbrandHoverRaw}, ${strokeCtrlOnbrandHoverRaw}))';
+export const strokeCtrlOnbrandPressedStop2 = 'var(${strokeCtrlOnbrandPressedStop2Raw}, var(${strokeCtrlOnbrandPressedRaw}, ${strokeCtrlOnbrandPressedRaw}))';
+export const strokeCtrlOnbrandDisabledStop2 = 'var(${strokeCtrlOnbrandDisabledStop2Raw}, var(${strokeCtrlOnbrandDisabledRaw}, ${strokeCtrlOnbrandDisabledRaw}))';
+export const strokeCtrlOnneutralRestStop2 = 'var(${strokeCtrlOnneutralRestStop2Raw}, var(${strokeCtrlOnneutralRestRaw}, ${strokeCtrlOnneutralRestRaw}))';
+export const strokeCtrlOnneutralHoverStop2 = 'var(${strokeCtrlOnneutralHoverStop2Raw}, var(${strokeCtrlOnneutralPressedRaw}, ${strokeCtrlOnneutralHoverRaw}))';
+export const strokeCtrlOnneutralPressedStop2 = 'var(${strokeCtrlOnneutralPressedStop2Raw}, var(${strokeCtrlOnneutralHoverRaw}, ${strokeCtrlOnneutralPressedRaw}))';
+export const strokeCtrlOnneutralDisabledStop2 = 'var(${strokeCtrlOnneutralDisabledStop2Raw}, var(${strokeCtrlOnneutralDisabledRaw}, ${strokeCtrlOnneutralDisabledRaw}))';
+export const strokeCtrlOnoutlineRestStop2 = 'var(${strokeCtrlOnoutlineRestStop2Raw}, var(${strokeCtrlOnoutlineRestRaw}, ${strokeCtrlOnoutlineRestRaw}))';
+export const strokeCtrlOnoutlineHoverStop2 = 'var(${strokeCtrlOnoutlineHoverStop2Raw}, var(${strokeCtrlOnoutlineHoverRaw}, ${strokeCtrlOnoutlineHoverRaw}))';
+export const strokeCtrlOnoutlinePressedStop2 = 'var(${strokeCtrlOnoutlinePressedStop2Raw}, var(${strokeCtrlOnoutlinePressedRaw}, ${strokeCtrlOnoutlinePressedRaw}))';
+export const strokeCtrlOnoutlineDisabledStop2 = 'var(${strokeCtrlOnoutlineDisabledStop2Raw}, var(${strokeCtrlOnoutlineDisabledRaw}, ${strokeCtrlDividerOnoutlineRaw}))';
+export const strokeCtrlOnactivebrandRest = 'var(${strokeCtrlOnactivebrandRestRaw}, var(${strokeCtrlOnbrandRestRaw}, ${strokeCtrlOnbrandRestRaw}))';
+export const strokeCtrlDividerOnbrandDisabled = 'var(${strokeCtrlDividerOnbrandDisabledRaw}, var(${strokeCtrlDividerOnbrandRaw}, ${neutralStrokeOn brand2RestRaw}))';
+export const strokeCtrlDividerOnneutralDisabled = 'var(${strokeCtrlDividerOnneutralDisabledRaw}, var(${strokeCtrlDividerOnneutralRaw}, ${neutralStrokeDisabledRestRaw}))';
+export const strokeCtrlDividerOnoutlineDisabled = 'var(${strokeCtrlDividerOnoutlineDisabledRaw}, ${strokeCtrlDividerOnoutlineRaw})';
+export const strokeCtrlDividerOnactivebrand = 'var(${strokeCtrlDividerOnactivebrandRaw}, var(${strokeCtrlDividerOnbrandRaw}, ${strokeCtrlDividerOnbrandRaw}))';
+export const strokeCtrlDividerOnactivebrandDisabled = 'var(${strokeCtrlDividerOnactivebrandDisabledRaw}, var(${strokeCtrlDividerOnbrandRaw}, ${strokeCtrlDividerOnbrandRaw}))';
+export const strokeCtrlOnactivebrandHover = 'var(${strokeCtrlOnactivebrandHoverRaw}, var(${strokeCtrlOnbrandHoverRaw}, ${strokeCtrlOnbrandHoverRaw}))';
+export const strokeCtrlOnactivebrandPressed = 'var(${strokeCtrlOnactivebrandPressedRaw}, var(${strokeCtrlOnbrandPressedRaw}, ${strokeCtrlOnbrandPressedRaw}))';
+export const strokeCtrlOnactivebrandDisabled = 'var(${strokeCtrlOnactivebrandDisabledRaw}, var(${strokeCtrlOnbrandDisabledRaw}, ${strokeCtrlOnbrandDisabledRaw}))';
+export const strokeCtrlOnactivebrandRestStop2 = 'var(${strokeCtrlOnactivebrandRestStop2Raw}, var(${strokeCtrlOnbrandRestRaw}, ${strokeCtrlOnactivebrandRestRaw}))';
+export const strokeCtrlOnactivebrandHoverStop2 = 'var(${strokeCtrlOnactivebrandHoverStop2Raw}, var(${strokeCtrlOnbrandRestRaw}, ${strokeCtrlOnactivebrandHoverRaw}))';
+export const strokeCtrlOnactivebrandPressedStop2 = 'var(${strokeCtrlOnactivebrandPressedStop2Raw}, var(${strokeCtrlOnbrandPressedRaw}, ${strokeCtrlOnactivebrandPressedRaw}))';
+export const strokeCtrlOnactivebrandDisabledStop2 = 'var(${strokeCtrlOnactivebrandDisabledStop2Raw}, var(${strokeCtrlOnbrandDisabledRaw}, ${strokeCtrlOnactivebrandDisabledRaw}))';
+export const strokeDividerSubtle = 'var(${strokeDividerSubtleRaw}, var(${strokeDividerDefaultRaw}, ${neutralStroke3RestRaw}))';
+export const strokeDividerStrong = 'var(${strokeDividerStrongRaw}, var(${strokeDividerDefaultRaw}, ${neutralStroke1RestRaw}))';
+export const strokeDividerBrand = 'var(${strokeDividerBrandRaw}, var(${backgroundCtrlBrandRestRaw}, ${brandStroke1RestRaw}))';
+export const strokeWindowInactive = 'var(${strokeWindowInactiveRaw}, var(${strokeWindowActiveRaw}, ${neutralStroke2RestRaw}))';
+export const backgroundLayerPrimaryStop1 = 'var(${backgroundLayerPrimaryStop1Raw}, ${backgroundLayerPrimary (solid)Raw})';
+export const backgroundLayerPrimaryStop2 = 'var(${backgroundLayerPrimaryStop2Raw}, ${backgroundLayerPrimary (solid)Raw})';
+export const backgroundLayerPrimaryStop3 = 'var(${backgroundLayerPrimaryStop3Raw}, ${backgroundLayerPrimary (solid)Raw})';
+export const backgroundLayerSecondary = 'var(${backgroundLayerSecondaryRaw}, var(${backgroundLayerPrimary (solid)Raw}, ${neutralBackground2RestRaw}))';
+export const backgroundLayerTertiary = 'var(${backgroundLayerTertiaryRaw}, var(${backgroundLayerPrimary (solid)Raw}, ${neutralBackground3RestRaw}))';
+export const backgroundCardOnprimaryDefaultSelected = 'var(${backgroundCardOnprimaryDefaultSelectedRaw}, var(${backgroundCardOnprimaryDefaultRestRaw}, ${neutralBackground1SelectedRaw}))';
+export const backgroundCtrlActivebrandRest = 'var(${backgroundCtrlActivebrandRestRaw}, var(${backgroundCtrlBrandRestRaw}, ${backgroundCtrlBrandRestRaw}))';
+export const backgroundCtrlActivebrandHover = 'var(${backgroundCtrlActivebrandHoverRaw}, var(${backgroundCtrlBrandHoverRaw}, ${backgroundCtrlBrandHoverRaw}))';
+export const backgroundCtrlActivebrandPressed = 'var(${backgroundCtrlActivebrandPressedRaw}, var(${backgroundCtrlBrandPressedRaw}, ${backgroundCtrlBrandPressedRaw}))';
+export const backgroundCtrlActivebrandDisabled = 'var(${backgroundCtrlActivebrandDisabledRaw}, var(${backgroundCtrlBrandDisabledRaw}, ${backgroundCtrlBrandDisabledRaw}))';
+export const backgroundCtrlShapesafeActivebrandRest = 'var(${backgroundCtrlShapesafeActivebrandRestRaw}, var(${backgroundCtrlBrandRestRaw}, ${brandStrokeCompoundRestRaw}))';
+export const backgroundCtrlShapesafeActivebrandDisabled = 'var(${backgroundCtrlShapesafeActivebrandDisabledRaw}, var(${backgroundCtrlBrandDisabledRaw}, ${neutralForegroundDisabledRestRaw}))';
+export const backgroundCtrlShapesafeNeutralRest = 'var(${backgroundCtrlShapesafeNeutralRestRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${neutralStrokeAccessibleHoverRaw}))';
+export const backgroundCtrlShapesafeNeutralHover = 'var(${backgroundCtrlShapesafeNeutralHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${neutralStrokeAccessibleHoverRaw}))';
+export const backgroundCtrlShapesafeNeutralPressed = 'var(${backgroundCtrlShapesafeNeutralPressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${neutralStrokeAccessiblePressedRaw}))';
+export const backgroundCtrlShapesafeNeutralDisabled = 'var(${backgroundCtrlShapesafeNeutralDisabledRaw}, var(${foregroundCtrlNeutralSecondaryDisabledRaw}, ${neutralForegroundDisabledRestRaw}))';
+export const cornerFlyoutHover = 'var(${cornerFlyoutHoverRaw}, var(${cornerFlyoutRestRaw}, ${mediumRaw}))';
+export const cornerFlyoutPressed = 'var(${cornerFlyoutPressedRaw}, var(${cornerFlyoutRestRaw}, ${mediumRaw}))';
+export const cornerLayerIntersection = 'var(${cornerLayerIntersectionRaw}, ${cornerZeroRaw})';
+export const cornerCardHover = 'var(${cornerCardHoverRaw}, ${cornerCardRestRaw})';
+export const cornerCardPressed = 'var(${cornerCardPressedRaw}, ${cornerCardRestRaw})';
+export const cornerToolbarDefault = 'var(${cornerToolbarDefaultRaw}, ${cornerCardRestRaw})';
+export const cornerImageOnpage = 'var(${cornerImageOnpageRaw}, ${cornerCardRestRaw})';
+export const cornerCtrlHover = 'var(${cornerCtrlHoverRaw}, var(${cornerCtrlRestRaw}, ${mediumRaw}))';
+export const cornerCtrlPressed = 'var(${cornerCtrlPressedRaw}, var(${cornerCtrlRestRaw}, ${mediumRaw}))';
+export const cornerCtrlSmHover = 'var(${cornerCtrlSmHoverRaw}, var(${cornerCtrl-smRestRaw}, ${smallRaw}))';
+export const cornerCtrlSmPressed = 'var(${cornerCtrlSmPressedRaw}, var(${cornerCtrl-smRestRaw}, ${smallRaw}))';
+export const cornerCtrlLgHover = 'var(${cornerCtrlLgHoverRaw}, ${cornerCtrl-lgRestRaw})';
+export const cornerCtrlLgPressed = 'var(${cornerCtrlLgPressedRaw}, ${cornerCtrl-lgRestRaw})';
+export const foregroundContentNeutralPrimary = 'var(${foregroundContentNeutralPrimaryRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground1RestRaw}))';
+export const foregroundContentNeutralSecondary = 'var(${foregroundContentNeutralSecondaryRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${neutralForeground2RestRaw}))';
+export const foregroundContentBrandPrimary = 'var(${foregroundContentBrandPrimaryRaw}, var(${foregroundCtrlBrandRestRaw}, ${brandForegroundLinkRestRaw}))';
+export const foregroundCtrlNeutralPrimaryHover = 'var(${foregroundCtrlNeutralPrimaryHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground1HoverRaw}))';
+export const foregroundCtrlNeutralPrimaryPressed = 'var(${foregroundCtrlNeutralPrimaryPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground1PressedRaw}))';
+export const foregroundCtrlNeutralSecondaryHover = 'var(${foregroundCtrlNeutralSecondaryHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${neutralForeground4RestRaw}))';
+export const foregroundCtrlNeutralSecondaryPressed = 'var(${foregroundCtrlNeutralSecondaryPressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${neutralForeground4RestRaw}))';
+export const foregroundCtrlIconOnneutralRest = 'var(${foregroundCtrlIconOnneutralRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground2RestRaw}))';
+export const foregroundCtrlIconOnneutralHover = 'var(${foregroundCtrlIconOnneutralHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground2HoverRaw}))';
+export const foregroundCtrlIconOnneutralPressed = 'var(${foregroundCtrlIconOnneutralPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground2PressedRaw}))';
+export const foregroundCtrlIconOnneutralDisabled = 'var(${foregroundCtrlIconOnneutralDisabledRaw}, var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${neutralForegroundDisabledRestRaw}))';
+export const foregroundCtrlIconOnoutlineRest = 'var(${foregroundCtrlIconOnoutlineRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground2RestRaw}))';
+export const foregroundCtrlIconOnoutlineHover = 'var(${foregroundCtrlIconOnoutlineHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground2HoverRaw}))';
+export const foregroundCtrlIconOnoutlinePressed = 'var(${foregroundCtrlIconOnoutlinePressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground2PressedRaw}))';
+export const foregroundCtrlIconOnoutlineDisabled = 'var(${foregroundCtrlIconOnoutlineDisabledRaw}, var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${neutralForegroundDisabledRestRaw}))';
+export const foregroundCtrlIconOnsubtleRest = 'var(${foregroundCtrlIconOnsubtleRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground2RestRaw}))';
+export const foregroundCtrlIconOnsubtleHover = 'var(${foregroundCtrlIconOnsubtleHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground2BrandHoverRaw}))';
+export const foregroundCtrlIconOnsubtlePressed = 'var(${foregroundCtrlIconOnsubtlePressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground2BrandPressedRaw}))';
+export const foregroundCtrlIconOnsubtleDisabled = 'var(${foregroundCtrlIconOnsubtleDisabledRaw}, var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${neutralForegroundDisabledRestRaw}))';
+export const foregroundCtrlOnbrandHover = 'var(${foregroundCtrlOnbrandHoverRaw}, var(${foregroundCtrlOnbrandRestRaw}, ${neutralForegroundOn brandRestRaw}))';
+export const foregroundCtrlOnbrandPressed = 'var(${foregroundCtrlOnbrandPressedRaw}, var(${foregroundCtrlOnbrandRestRaw}, ${neutralForegroundOn brandRestRaw}))';
+export const foregroundCtrlActivebrandRest = 'var(${foregroundCtrlActivebrandRestRaw}, var(${foregroundCtrlBrandRestRaw}, ${foregroundCtrlBrandRestRaw}))';
+export const foregroundCtrlActivebrandHover = 'var(${foregroundCtrlActivebrandHoverRaw}, var(${foregroundCtrlBrandHoverRaw}, ${foregroundCtrlBrandHoverRaw}))';
+export const foregroundCtrlActivebrandPressed = 'var(${foregroundCtrlActivebrandPressedRaw}, var(${foregroundCtrlBrandPressedRaw}, ${foregroundCtrlBrandPressedRaw}))';
+export const foregroundCtrlActivebrandDisabled = 'var(${foregroundCtrlActivebrandDisabledRaw}, var(${foregroundCtrlBrandDisabledRaw}, ${foregroundCtrlBrandDisabledRaw}))';
+export const foregroundCtrlOnactivebrandRest = 'var(${foregroundCtrlOnactivebrandRestRaw}, var(${foregroundCtrlOnbrandRestRaw}, ${foregroundCtrlOnbrandRestRaw}))';
+export const foregroundCtrlOnactivebrandHover = 'var(${foregroundCtrlOnactivebrandHoverRaw}, var(${foregroundCtrlOnbrandRestRaw}, ${foregroundCtrlOnbrandHoverRaw}))';
+export const foregroundCtrlOnactivebrandPressed = 'var(${foregroundCtrlOnactivebrandPressedRaw}, var(${foregroundCtrlOnbrandRestRaw}, ${foregroundCtrlOnbrandPressedRaw}))';
+export const foregroundCtrlOnactivebrandDisabled = 'var(${foregroundCtrlOnactivebrandDisabledRaw}, var(${foregroundCtrlOnbrandDisabledRaw}, ${foregroundCtrlOnbrandDisabledRaw}))';
+export const foregroundCtrlOnoutlineRest = 'var(${foregroundCtrlOnoutlineRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground1RestRaw}))';
+export const foregroundCtrlOnoutlineHover = 'var(${foregroundCtrlOnoutlineHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground1HoverRaw}))';
+export const foregroundCtrlOnoutlinePressed = 'var(${foregroundCtrlOnoutlinePressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground1PressedRaw}))';
+export const foregroundCtrlOnoutlineDisabled = 'var(${foregroundCtrlOnoutlineDisabledRaw}, var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${neutralForegroundDisabledRestRaw}))';
+export const foregroundCtrlOnsubtleRest = 'var(${foregroundCtrlOnsubtleRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground2RestRaw}))';
+export const foregroundCtrlOnsubtleHover = 'var(${foregroundCtrlOnsubtleHoverRaw}, var(${foregroundCtrlNeutralPrimaryHoverRaw}, ${neutralForeground2HoverRaw}))';
+export const foregroundCtrlOnsubtlePressed = 'var(${foregroundCtrlOnsubtlePressedRaw}, var(${foregroundCtrlNeutralPrimaryPressedRaw}, ${neutralForeground2PressedRaw}))';
+export const foregroundCtrlOnsubtleDisabled = 'var(${foregroundCtrlOnsubtleDisabledRaw}, var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${neutralForegroundDisabledRestRaw}))';
+export const foregroundCtrlOntransparentRest = 'var(${foregroundCtrlOntransparentRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground1RestRaw}))';
+export const foregroundCtrlOntransparentHover = 'var(${foregroundCtrlOntransparentHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground2BrandHoverRaw}))';
+export const foregroundCtrlOntransparentPressed = 'var(${foregroundCtrlOntransparentPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${neutralForeground2BrandPressedRaw}))';
+export const foregroundCtrlOntransparentDisabled = 'var(${foregroundCtrlOntransparentDisabledRaw}, var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${neutralForegroundDisabledRestRaw}))';
+export const shadowCtrlOndragKeyY = 'var(${shadowCtrlOndragKeyYRaw}, ${shadowFlyout(key)(y)Raw})';
+export const shadowCtrlOndragKeyX = 'var(${shadowCtrlOndragKeyXRaw}, ${shadowFlyout(key)(x)Raw})';
+export const shadowCtrlOndragKeyBlur = 'var(${shadowCtrlOndragKeyBlurRaw}, ${shadowFlyout(key)(blur)Raw})';
+export const shadowCtrlOndragKeyColor = 'var(${shadowCtrlOndragKeyColorRaw}, ${shadowFlyout(key)(color)Raw})';
+export const shadowCtrlOndragAmbientY = 'var(${shadowCtrlOndragAmbientYRaw}, ${shadowFlyout(ambient)(y)Raw})';
+export const shadowCtrlOndragAmbientX = 'var(${shadowCtrlOndragAmbientXRaw}, ${shadowFlyout(ambient)(x)Raw})';
+export const shadowCtrlOndragAmbientBlur = 'var(${shadowCtrlOndragAmbientBlurRaw}, ${shadowFlyout(ambient)(blur)Raw})';
+export const shadowCtrlOndragAmbientColor = 'var(${shadowCtrlOndragAmbientColorRaw}, ${shadowFlyout(ambient)(color)Raw})';
+export const materialAcrylicDefaultSolid = 'var(${materialAcrylicDefaultSolidRaw}, var(${backgroundLayerPrimary (solid)Raw}, ${neutralBackground1RestRaw}))';
+export const materialAcrylicDefaultColorblend = 'var(${materialAcrylicDefaultColorblendRaw}, var(${backgroundLayerPrimary (solid)Raw}, ${neutralBackground1RestRaw}))';
+export const materialAcrylicDefaultLumblend = 'var(${materialAcrylicDefaultLumblendRaw}, var(${backgroundLayerPrimary (solid)Raw}, ${neutralBackground1RestRaw}))';
+export const materialMicaDefaultSolid = 'var(${materialMicaDefaultSolidRaw}, ${backgroundLayerPrimary (solid)Raw})';
+export const materialMicaDefaultColorblend = 'var(${materialMicaDefaultColorblendRaw}, ${backgroundLayerPrimary (solid)Raw})';
+export const materialMicaDefaultLumblend = 'var(${materialMicaDefaultLumblendRaw}, ${backgroundLayerPrimary (solid)Raw})';
+export const materialMicaDarkerSolid = 'var(${materialMicaDarkerSolidRaw}, ${backgroundLayerPrimary (solid)Raw})';
+export const materialMicaDarkerColorblend = 'var(${materialMicaDarkerColorblendRaw}, ${backgroundLayerPrimary (solid)Raw})';
+export const materialMicaDarkerLumblend = 'var(${materialMicaDarkerLumblendRaw}, ${backgroundLayerPrimary (solid)Raw})';
+export const materialMicaThinSolid = 'var(${materialMicaThinSolidRaw}, ${backgroundLayerPrimary (solid)Raw})';
+export const materialMicaThinColorblend = 'var(${materialMicaThinColorblendRaw}, var(${backgroundLayerPrimary (solid)Raw}, ${neutralBackground1RestRaw}))';
+export const materialMicaThinLumblend = 'var(${materialMicaThinLumblendRaw}, var(${backgroundLayerPrimary (solid)Raw}, ${neutralBackground1RestRaw}))';
+export const iconthemeCtrlDefaultHover = 'var(${iconthemeCtrlDefaultHoverRaw}, ${iconthemeCtrlDefaultRestRaw})';
+export const iconthemeCtrlDefaultPressed = 'var(${iconthemeCtrlDefaultPressedRaw}, ${iconthemeCtrlDefaultRestRaw})';
+export const iconthemeCtrlSubtleRest = 'var(${iconthemeCtrlSubtleRestRaw}, ${iconthemeCtrlDefaultRestRaw})';
+export const iconthemeCtrlSubtleHover = 'var(${iconthemeCtrlSubtleHoverRaw}, ${iconthemeCtrlDefaultRestRaw})';
+export const iconthemeCtrlSubtlePressed = 'var(${iconthemeCtrlSubtlePressedRaw}, ${iconthemeCtrlDefaultRestRaw})';
+export const iconthemeCtrlSubtleSelected = 'var(${iconthemeCtrlSubtleSelectedRaw}, ${iconthemeCtrlDefaultSelectedRaw})';
+export const iconthemeCtrlChevronDefault = 'var(${iconthemeCtrlChevronDefaultRaw}, ${iconthemeCtrlDefaultRestRaw})';
+export const iconthemeCtrlChevronSelected = 'var(${iconthemeCtrlChevronSelectedRaw}, ${iconthemeCtrlDefaultSelectedRaw})';
+export const statusBrandBackground = 'var(${statusBrandBackgroundRaw}, var(${backgroundCtrlBrandRestRaw}, ${brandBackground1RestRaw}))';
+export const statusBrandStroke = 'var(${statusBrandStrokeRaw}, var(${backgroundCtrlBrandRestRaw}, ${brandBackground1RestRaw}))';
+export const statusBrandForeground = 'var(${statusBrandForegroundRaw}, var(${foregroundCtrlOnbrandRestRaw}, ${neutralForegroundOn brandRestRaw}))';
+export const statusBrandTintForeground = 'var(${statusBrandTintForegroundRaw}, var(${foregroundCtrlBrandRestRaw}, ${brandForeground2RestRaw}))';
+export const statusDangerStroke = 'var(${statusDangerStrokeRaw}, var(${statusDangerBackgroundRaw}, ${statusDangerStroke2RestRaw}))';
+export const statusDangerForeground = 'var(${statusDangerForegroundRaw}, var(${foregroundCtrlOnbrandRestRaw}, ${neutralForegroundOn brandRestRaw}))';
+export const statusWarningStroke = 'var(${statusWarningStrokeRaw}, var(${statusWarningBackgroundRaw}, ${statusWarningForeground2RestRaw}))';
+export const statusWarningForeground = 'var(${statusWarningForegroundRaw}, var(${foregroundCtrlOnbrandRestRaw}, ${neutralForegroundStaticRestRaw}))';
+export const statusSuccessStroke = 'var(${statusSuccessStrokeRaw}, var(${statusSuccessBackgroundRaw}, ${statusSuccessStroke2RestRaw}))';
+export const statusSuccessForeground = 'var(${statusSuccessForegroundRaw}, var(${foregroundCtrlOnbrandRestRaw}, ${neutralForegroundOn brandRestRaw}))';
+export const statusImportantStroke = 'var(${statusImportantStrokeRaw}, var(${statusImportantBackgroundRaw}, ${neutralStrokeAccessibleRestRaw}))';
+export const statusImportantForeground = 'var(${statusImportantForegroundRaw}, var(${foregroundCtrlOnbrandRestRaw}, ${neutralForegroundOn brandRestRaw}))';
+export const statusInformativeStroke = 'var(${statusInformativeStrokeRaw}, var(${statusInformativeBackgroundRaw}, ${neutralStroke2RestRaw}))';
+export const statusInformativeForeground = 'var(${statusInformativeForegroundRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${neutralForeground3RestRaw}))';
+export const shadowWindowInactiveKeyX = 'var(${shadowWindowInactiveKeyXRaw}, ${shadowWindowActive(key)(x)Raw})';
+export const shadowWindowInactiveKeyY = 'var(${shadowWindowInactiveKeyYRaw}, ${shadowWindowActive(key)(y)Raw})';
+export const shadowWindowInactiveKeyBlur = 'var(${shadowWindowInactiveKeyBlurRaw}, ${shadowWindowActive(key)(blur)Raw})';
+export const shadowWindowInactiveKeyColor = 'var(${shadowWindowInactiveKeyColorRaw}, var(${shadowWindowActive(key)(color)Raw}, ${shadowAmbient lighterRaw}))';
+export const statusNeutralStroke = 'var(${statusNeutralStrokeRaw}, var(${🗑️StatusNeutralBackgroundRaw}, ${neutralStroke2RestRaw}))';
+export const statusNeutralForeground = 'var(${statusNeutralForegroundRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${neutralForeground3RestRaw}))';
+export const statusNeutralTintForeground = 'var(${statusNeutralTintForegroundRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${neutralForeground3RestRaw}))';
+export const cornerFlyoutShellRest = 'var(${cornerFlyoutShellRestRaw}, ${cornerFlyoutRestRaw})';
+export const materialAcrylicShellDefaultSolid = 'var(${materialAcrylicShellDefaultSolidRaw}, var(${backgroundLayerPrimary (solid)Raw}, ${neutralBackground1RestRaw}))';
+export const materialAcrylicShellDefaultColorblend = 'var(${materialAcrylicShellDefaultColorblendRaw}, var(${backgroundLayerPrimary (solid)Raw}, ${neutralBackground1RestRaw}))';
+export const materialAcrylicShellDefaultLumblend = 'var(${materialAcrylicShellDefaultLumblendRaw}, var(${backgroundLayerPrimary (solid)Raw}, ${neutralBackground1RestRaw}))';
+export const backgroundCardOnsecondaryDefaultSelected = 'var(${backgroundCardOnsecondaryDefaultSelectedRaw}, var(${backgroundCardOnsecondaryDefaultRestRaw}, ${neutralBackground1SelectedRaw}))';
