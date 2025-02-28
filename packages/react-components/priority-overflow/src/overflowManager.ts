@@ -9,6 +9,7 @@ import type {
   ObserveOptions,
   OverflowDividerEntry,
 } from './types';
+import { parseCSSLength } from './utils';
 
 /**
  * @internal
@@ -18,6 +19,7 @@ export function createOverflowManager(): OverflowManager {
   // calls to `offsetWidth or offsetHeight` can happen multiple times in an update
   // Use a cache to avoid causing too many recalcs and avoid scripting time to meausure sizes
   const sizeCache = new Map<HTMLElement, number>();
+  const liveStylesCache = new Map<HTMLElement, CSSStyleDeclaration>();
   let container: HTMLElement | undefined;
   let overflowMenu: HTMLElement | undefined;
   // Set as true when resize observer is observing
@@ -32,6 +34,8 @@ export function createOverflowManager(): OverflowManager {
     minimumVisible: 0,
     onUpdateItemVisibility: () => undefined,
     onUpdateOverflow: () => undefined,
+    boxModel: 'border',
+    measureGap: false,
   };
 
   const overflowItems: Record<string, OverflowItemEntry> = {};
@@ -76,10 +80,19 @@ export function createOverflowManager(): OverflowManager {
     vertical: 'clientHeight' | 'offsetHeight',
     el: HTMLElement,
   ): number {
-    if (!sizeCache.has(el)) {
-      sizeCache.set(el, options.overflowAxis === 'horizontal' ? el[horizontal] : el[vertical]);
+    if (sizeCache.has(el)) {
+      return sizeCache.get(el)!;
     }
 
+    const requested = options.overflowAxis === 'horizontal' ? horizontal : vertical;
+    let measurement = el[requested];
+
+    if (options.boxModel === 'inline-margin' && requested === 'offsetWidth' && liveStylesCache.has(el)) {
+      const liveStyles = liveStylesCache.get(el)!;
+      measurement += parseCSSLength(liveStyles.marginInlineStart) + parseCSSLength(liveStyles.marginInlineEnd);
+    }
+
+    sizeCache.set(el, measurement);
     return sizeCache.get(el)!;
   }
 
@@ -144,13 +157,30 @@ export function createOverflowManager(): OverflowManager {
     options.onUpdateOverflow({ visibleItems, invisibleItems, groupVisibility: groupManager.groupVisibility() });
   };
 
+  const getAvailableSize = () => {
+    if (!container) {
+      return 0;
+    }
+
+    let totalGapSize = 0;
+
+    if (options.measureGap && liveStylesCache.has(container)) {
+      const cssColumnGap = liveStylesCache.get(container)!.columnGap;
+      const columnGap = parseCSSLength(cssColumnGap);
+      const overflowMenuMod = overflowMenu ? 1 : 0;
+      if (columnGap) {
+        totalGapSize = columnGap * (visibleItemQueue.size() - 1 + overflowMenuMod);
+      }
+    }
+
+    return getClientSize(container) - options.padding - totalGapSize;
+  };
+
   const processOverflowItems = (): boolean => {
     if (!container) {
       return false;
     }
     sizeCache.clear();
-
-    const availableSize = getClientSize(container) - options.padding;
 
     // Snapshot of the visible/invisible state to compare for updates
     const visibleTop = visibleItemQueue.peek();
@@ -165,14 +195,14 @@ export function createOverflowManager(): OverflowManager {
     for (let i = 0; i < 2; i++) {
       // Add items until available width is filled - can result in overflow
       while (
-        (occupiedSize() < availableSize && invisibleItemQueue.size() > 0) ||
+        (occupiedSize() < getAvailableSize() && invisibleItemQueue.size() > 0) ||
         invisibleItemQueue.size() === 1 // attempt to show the last invisible item hoping it's size does not exceed overflow menu size
       ) {
         showItem();
       }
 
       // Remove items until there's no more overflow
-      while (occupiedSize() > availableSize && visibleItemQueue.size() > options.minimumVisible) {
+      while (occupiedSize() > getAvailableSize() && visibleItemQueue.size() > options.minimumVisible) {
         hideItem();
       }
     }
@@ -196,6 +226,11 @@ export function createOverflowManager(): OverflowManager {
     Object.values(overflowItems).forEach(item => visibleItemQueue.enqueue(item.id));
 
     container = observedContainer;
+    if (container.ownerDocument.defaultView) {
+      const liveStyles = container.ownerDocument.defaultView.getComputedStyle(container);
+      liveStylesCache.set(container, liveStyles);
+    }
+
     disposeResizeObserver = observeResize(container, entries => {
       if (!entries[0] || !container) {
         return;
@@ -211,6 +246,10 @@ export function createOverflowManager(): OverflowManager {
     }
 
     overflowItems[item.id] = item;
+    if (item.element.ownerDocument.defaultView) {
+      const liveStyles = item.element.ownerDocument.defaultView.getComputedStyle(item.element);
+      liveStylesCache.set(item.element, liveStyles);
+    }
 
     // some options can affect priority which are only set on `observe`
     if (observing) {
@@ -231,6 +270,10 @@ export function createOverflowManager(): OverflowManager {
 
   const addOverflowMenu: OverflowManager['addOverflowMenu'] = el => {
     overflowMenu = el;
+    if (overflowMenu.ownerDocument.defaultView) {
+      const liveStyles = overflowMenu.ownerDocument.defaultView.getComputedStyle(overflowMenu);
+      liveStylesCache.set(overflowMenu, liveStyles);
+    }
   };
 
   const addDivider: OverflowManager['addDivider'] = divider => {
@@ -240,9 +283,16 @@ export function createOverflowManager(): OverflowManager {
 
     divider.element.setAttribute(DATA_OVERFLOW_GROUP, divider.groupId);
     overflowDividers[divider.groupId] = divider;
+    if (divider.element.ownerDocument.defaultView) {
+      const liveStyles = divider.element.ownerDocument.defaultView.getComputedStyle(divider.element);
+      liveStylesCache.set(divider.element, liveStyles);
+    }
   };
 
   const removeOverflowMenu: OverflowManager['removeOverflowMenu'] = () => {
+    if (overflowMenu) {
+      liveStylesCache.delete(overflowMenu);
+    }
     overflowMenu = undefined;
   };
 
@@ -251,6 +301,8 @@ export function createOverflowManager(): OverflowManager {
       return;
     }
     const divider = overflowDividers[groupId];
+    sizeCache.delete(divider.element);
+    liveStylesCache.delete(divider.element);
     if (divider.groupId) {
       delete overflowDividers[groupId];
       divider.element.removeAttribute(DATA_OVERFLOW_GROUP);
@@ -278,6 +330,7 @@ export function createOverflowManager(): OverflowManager {
     }
 
     sizeCache.delete(item.element);
+    liveStylesCache.delete(item.element);
     delete overflowItems[itemId];
     update();
   };
@@ -295,6 +348,7 @@ export function createOverflowManager(): OverflowManager {
     Object.keys(overflowDividers).forEach(dividerId => removeDivider(dividerId));
     removeOverflowMenu();
     sizeCache.clear();
+    liveStylesCache.clear();
   };
 
   return {

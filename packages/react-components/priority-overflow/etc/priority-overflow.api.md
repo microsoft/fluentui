@@ -9,6 +9,8 @@ export function createOverflowManager(): OverflowManager;
 
 // @public (undocumented)
 export interface ObserveOptions {
+    boxModel?: 'border' | 'inline-margin';
+    measureGap?: boolean;
     minimumVisible?: number;
     onUpdateItemVisibility: OnUpdateItemVisibility;
     onUpdateOverflow: OnUpdateOverflow;

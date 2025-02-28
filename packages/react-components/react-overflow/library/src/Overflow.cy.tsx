@@ -21,12 +21,9 @@ const selectors = {
   menu: 'data-test-menu',
 };
 
-const Container: React.FC<{ children?: React.ReactNode; size?: number } & Omit<OverflowProps, 'children'>> = ({
-  children,
-  size,
-  overflowAxis = 'horizontal' as const,
-  ...userProps
-}) => {
+const Container: React.FC<
+  { children?: React.ReactNode; size?: number; style?: React.CSSProperties } & Omit<OverflowProps, 'children'>
+> = ({ children, size, overflowAxis = 'horizontal' as const, style, ...userProps }) => {
   const selector = {
     [selectors.container]: '',
   };
@@ -48,6 +45,7 @@ const Container: React.FC<{ children?: React.ReactNode; size?: number } & Omit<O
           whiteSpace: 'nowrap',
           overflow: 'hidden',
           resize: overflowAxis,
+          ...style,
         }}
       >
         {children}
@@ -73,25 +71,26 @@ const setContainerHeight = (size: number) => {
   setContainerSize(size, 'height');
 };
 
-const Item: React.FC<{ children?: React.ReactNode; width?: number | string } & Omit<OverflowItemProps, 'children'>> = ({
-  children,
-  width,
-  ...overflowItemProps
-}) => {
+const Item: React.FC<
+  { children?: React.ReactNode; width?: number | string; style?: React.CSSProperties } & Omit<
+    OverflowItemProps,
+    'children'
+  >
+> = ({ children, width, style, ...overflowItemProps }) => {
   const selector = {
     [selectors.item]: overflowItemProps.id,
   };
 
   return (
     <OverflowItem {...overflowItemProps}>
-      <button {...selector} style={{ width: width ?? 50, height: 50, flexShrink: 0 }}>
+      <button {...selector} style={{ width: width ?? 50, height: 50, flexShrink: 0, ...style }}>
         {children}
       </button>
     </OverflowItem>
   );
 };
 
-const Menu: React.FC<{ width?: number }> = ({ width }) => {
+const Menu: React.FC<{ width?: number; style?: React.CSSProperties }> = ({ width, style }) => {
   const { isOverflowing, ref, overflowCount } = useOverflowMenu<HTMLButtonElement>();
   const itemVisibility = useOverflowContext(ctx => ctx.itemVisibility);
   const selector = {
@@ -105,7 +104,7 @@ const Menu: React.FC<{ width?: number }> = ({ width }) => {
   // No need to actually render a menu, we're testing state
   return (
     <>
-      <button {...selector} ref={ref} style={{ width: width ?? 50, height: 50 }}>
+      <button {...selector} ref={ref} style={{ width: width ?? 50, height: 50, ...style }}>
         +{overflowCount}
       </button>
       <Portal>
@@ -1108,6 +1107,81 @@ describe('Overflow', () => {
           expect(latestUpdate?.itemVisibility[i.toString()]).to.equal(false);
         }
       });
+    });
+  });
+
+  it(`should overflow items with flex gap`, () => {
+    const mapHelper = new Array(6).fill(0).map((_, i) => i);
+    mount(
+      <Container style={{ gap: 10 }}>
+        {mapHelper.map(i => (
+          <Item key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+      </Container>,
+    );
+    const overflowCases = [
+      { containerSize: 290, overflowCount: 2 },
+      { containerSize: 230, overflowCount: 3 },
+      { containerSize: 170, overflowCount: 4 },
+      { containerSize: 110, overflowCount: 5 },
+    ];
+
+    overflowCases.forEach(({ overflowCount, containerSize }) => {
+      setContainerWidth(containerSize);
+      cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+    });
+  });
+
+  it(`should overflow items with margin`, () => {
+    const mapHelper = new Array(6).fill(0).map((_, i) => i);
+    mount(
+      <Container>
+        {mapHelper.map((i, index) => (
+          <Item style={{ marginInlineStart: index > 0 ? 10 : 0 }} key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu style={{ marginInlineStart: 10 }} />
+      </Container>,
+    );
+    const overflowCases = [
+      { containerSize: 290, overflowCount: 2 },
+      { containerSize: 230, overflowCount: 3 },
+      { containerSize: 170, overflowCount: 4 },
+      { containerSize: 110, overflowCount: 5 },
+    ];
+
+    overflowCases.forEach(({ overflowCount, containerSize }) => {
+      setContainerWidth(containerSize);
+      cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+    });
+  });
+
+  it(`should overflow items with gap and`, () => {
+    const mapHelper = new Array(6).fill(0).map((_, i) => i);
+    mount(
+      <Container style={{ gap: 5 }}>
+        {mapHelper.map((i, index) => (
+          <Item style={{ marginInlineStart: index > 0 ? 5 : 0 }} key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu style={{ marginInlineStart: 5 }} />
+      </Container>,
+    );
+    const overflowCases = [
+      { containerSize: 290, overflowCount: 2 },
+      { containerSize: 230, overflowCount: 3 },
+      { containerSize: 170, overflowCount: 4 },
+      { containerSize: 110, overflowCount: 5 },
+    ];
+
+    overflowCases.forEach(({ overflowCount, containerSize }) => {
+      setContainerWidth(containerSize);
+      cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
     });
   });
 });

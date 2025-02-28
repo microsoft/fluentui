@@ -83,6 +83,21 @@ export interface ObserveOptions {
    * Callback when item visibility is updated
    */
   onUpdateOverflow: OnUpdateOverflow;
+
+  /**
+   * This library provides some support for different box models
+   * - border - the default box model, width and height are measured with offsetWidth and offsetHeight
+   * - inline-margin - inline margins are added to the border box
+   *
+   * @default border
+   */
+  boxModel?: 'border' | 'inline-margin';
+
+  /**
+   * The library will read the CSS gap on the the container element and take that into account
+   * when calculating available space
+   */
+  measureGap?: boolean;
 }
 
 /**
