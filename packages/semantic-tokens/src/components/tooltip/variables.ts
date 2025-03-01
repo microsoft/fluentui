@@ -1,0 +1,11 @@
+export const ctrlTooltipShadowKeyXRaw = '--smtc-ctrl-tooltip-shadow-(key)-(x)';
+export const ctrlTooltipShadowKeyYRaw = '--smtc-ctrl-tooltip-shadow-(key)-(y)';
+export const ctrlTooltipShadowKeyBlurRaw = '--smtc-ctrl-tooltip-shadow-(key)-(blur)';
+export const ctrlTooltipShadowKeyColorRaw = '--smtc-ctrl-tooltip-shadow-(key)-(color)';
+export const ctrlTooltipShadowAmbientXRaw = '--smtc-ctrl-tooltip-shadow-(ambient)-(x)';
+export const ctrlTooltipShadowAmbientYRaw = '--smtc-ctrl-tooltip-shadow-(ambient)-(y)';
+export const ctrlTooltipShadowAmbientBlurRaw = '--smtc-ctrl-tooltip-shadow-(ambient)-(blur)';
+export const ctrlTooltipShadowAmbientColorRaw = '--smtc-ctrl-tooltip-shadow-(ambient)-(color)';
+export const ctrlTooltipCornerRaw = '--smtc-ctrl-tooltip-corner';
+export const ctrlTooltipBackgroundRaw = '--smtc-ctrl-tooltip-background';
+export const ctrlTooltipForegroundRaw = '--smtc-ctrl-tooltip-foreground';
