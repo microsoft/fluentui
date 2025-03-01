@@ -1,0 +1,13 @@
+export const ctrlDialogBackgroundRaw = '--smtc-ctrl-dialog-background';
+export const ctrlDialogStrokeRaw = '--smtc-ctrl-dialog-stroke';
+export const ctrlDialogBaseCornerRaw = '--smtc-ctrl-dialog-base-corner';
+export const ctrlDialogBaseShadowKeyXRaw = '--smtc-ctrl-dialog-base-shadow-(key)-(x)';
+export const ctrlDialogBaseShadowKeyYRaw = '--smtc-ctrl-dialog-base-shadow-(key)-(y)';
+export const ctrlDialogBaseShadowKeyBlurRaw = '--smtc-ctrl-dialog-base-shadow-(key)-(blur)';
+export const ctrlDialogBaseShadowKeyColorRaw = '--smtc-ctrl-dialog-base-shadow-(key)-(color)';
+export const ctrlDialogBaseShadowAmbientXRaw = '--smtc-ctrl-dialog-base-shadow-(ambient)-(x)';
+export const ctrlDialogBaseShadowAmbientYRaw = '--smtc-ctrl-dialog-base-shadow-(ambient)-(y)';
+export const ctrlDialogBaseShadowAmbientBlurRaw = '--smtc-ctrl-dialog-base-shadow-(ambient)-(blur)';
+export const ctrlDialogBaseShadowAmbientColorRaw = '--smtc-ctrl-dialog-base-shadow-(ambient)-(color)';
+export const ctrlDialogLayerBackgroundRaw = '--smtc-ctrl-dialog-layer-background';
+export const ctrlDialogLayerPaddingBottomRaw = '--smtc-ctrl-dialog-layer-padding-bottom';

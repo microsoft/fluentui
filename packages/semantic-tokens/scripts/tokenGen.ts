@@ -89,7 +89,7 @@ function generateTokenRawStrings() {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    fs.writeFileSync(`./src/components/${component}/tokens.ts`, componentTokens[component]);
+    fs.writeFileSync(`./src/components/${component}/variables.ts`, componentTokens[component]);
   }
 }
 
