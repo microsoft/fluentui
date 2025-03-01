@@ -946,6 +946,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               width={_barWidth}
               height={barHeight}
               fill={startColor}
+              opacity={shouldHighlight ? 1 : 0.1}
               rx={props.roundCorners ? 3 : 0}
               ref={e => (ref.refElement = e)}
               {...rectFocusProps}
