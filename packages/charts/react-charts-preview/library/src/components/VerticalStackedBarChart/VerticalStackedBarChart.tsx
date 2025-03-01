@@ -26,7 +26,6 @@ import {
   VSChartDataPoint,
   LineDataInVerticalStackedBarChart,
   ModifiedCartesianChartProps,
-  DataPoint,
   Legend,
   ChartPopover,
   Legends,
@@ -43,13 +42,6 @@ import {
   getScalePadding,
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
-  findVSBCNumericMinMaxOfY,
-  createNumericYAxis,
-  IDomainNRange,
-  domainRangeOfDateForAreaLineVerticalBarChart,
-  domainRangeOfVSBCNumeric,
-  domainRangeOfXStringAxis,
-  createStringYAxis,
   formatDate,
   areArraysEqual,
   calculateLongestLabelWidth,
@@ -345,36 +337,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     setPopoverOpen(false);
   }
 
-  function _getDomainNRangeValues(
-    points: DataPoint[],
-    _margins: Margins,
-    width: number,
-    chartType: ChartTypes,
-    isRTL: boolean,
-    xAxisType: XAxisTypes,
-    barWidth: number,
-    tickValues: Date[] | number[] | undefined,
-    shiftX: number,
-  ) {
-    let domainNRangeValue: IDomainNRange;
-    if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRangeOfVSBCNumeric(points, _margins, width, isRTL, barWidth!);
-    } else if (xAxisType === XAxisTypes.DateAxis) {
-      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
-        points,
-        _margins,
-        width,
-        isRTL,
-        tickValues! as Date[],
-        chartType,
-        barWidth,
-      );
-    } else {
-      domainNRangeValue = domainRangeOfXStringAxis(_margins, width, isRTL);
-    }
-    return domainNRangeValue;
-  }
-
   function _getMargins(_margins: Margins) {
     margins = _margins;
   }
@@ -644,7 +606,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   function _renderCallout(props?: VSChartDataPoint): JSX.Element | null {
     return props ? (
       <ChartPopover
-        culture={'en-us'}
+        culture={props.culture ?? 'en-us'}
         XValue={props.xAxisCalloutData}
         xCalloutValue={xCalloutValue}
         yCalloutValue={yCalloutValue}
@@ -674,8 +636,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     color: string,
     mouseEvent: React.MouseEvent<SVGElement> | SVGGElement,
   ) {
-    let clientX = 0,
-      clientY = 0;
+    let clientX = 0;
+    let clientY = 0;
     if ('clientX' in mouseEvent) {
       clientX = mouseEvent.clientX;
       clientY = mouseEvent.clientY;
@@ -1107,14 +1069,10 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         chartType={ChartTypes.VerticalStackedBarChart}
         xAxisType={_xAxisType}
         calloutProps={calloutProps}
-        createYAxis={createNumericYAxis}
         tickParams={tickParams}
         legendBars={legendBars}
-        getMinMaxOfYAxis={findVSBCNumericMinMaxOfY}
         datasetForXAxisDomain={_xAxisLabels}
         isCalloutForStack={shouldFocusWholeStack}
-        getDomainNRangeValues={_getDomainNRangeValues}
-        createStringYAxis={createStringYAxis}
         barwidth={_barWidth}
         getmargins={_getMargins}
         getGraphData={_getGraphData}

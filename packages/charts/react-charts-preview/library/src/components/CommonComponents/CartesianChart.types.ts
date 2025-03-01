@@ -1,19 +1,9 @@
 import * as React from 'react';
 import { LegendsProps } from '../Legends/index';
-import {
-  AccessibilityProps,
-  Margins,
-  HorizontalBarChartWithAxisDataPoint,
-  LineChartPoints,
-  VerticalBarChartDataPoint,
-  DataPoint,
-  VerticalStackedBarDataPoint,
-  GroupedVerticalBarChartData,
-} from '../../types/index';
-import { ChartTypes, XAxisTypes, YAxisType, IYAxisParams, IAxisData, IDomainNRange } from '../../utilities/index';
+import { AccessibilityProps, Margins } from '../../types/index';
+import { ChartTypes, XAxisTypes, YAxisType } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartPopoverProps } from './ChartPopover.types';
-import { ScaleBand, ScaleLinear } from 'd3-scale';
 /**
  * Cartesian Chart style properties
  * {@docCategory CartesianChart}
@@ -616,57 +606,4 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
    * Used to control the first render cycle Performance optimization code.
    */
   enableFirstRenderOptimization?: boolean;
-
-  /**
-   * Get the min and max values of the y-axis
-   */
-  getMinMaxOfYAxis?: (
-    points: LineChartPoints[] | HorizontalBarChartWithAxisDataPoint[] | VerticalBarChartDataPoint[] | DataPoint[],
-    yAxisType: YAxisType | undefined,
-  ) => { startValue: number; endValue: number };
-
-  /**
-   * Create the y-axis
-   */
-  createYAxis?: (
-    yAxisParams: IYAxisParams,
-    isRtl: boolean,
-    axisData: IAxisData,
-    isIntegralDataset: boolean,
-    useSecondaryYScale?: boolean,
-    supportNegativeData?: boolean,
-    roundedTicks?: boolean,
-  ) => ScaleLinear<number, number, never>;
-
-  /**
-   * Get the domain and range values
-   */
-  getDomainNRangeValues?: (
-    points:
-      | LineChartPoints[]
-      | VerticalBarChartDataPoint[]
-      | VerticalStackedBarDataPoint[]
-      | HorizontalBarChartWithAxisDataPoint[]
-      | GroupedVerticalBarChartData[],
-    margins: Margins,
-    width: number,
-    chartType: ChartTypes,
-    isRTL: boolean,
-    xAxisType: XAxisTypes,
-    barWidth: number,
-    tickValues: Date[] | number[] | string[] | undefined,
-    shiftX: number,
-  ) => IDomainNRange;
-
-  /**
-   * Create the string y-axis
-   */
-  createStringYAxis?: (
-    yAxisParams: IYAxisParams,
-    dataPoints: string[],
-    isRtl: boolean,
-    chartType: ChartTypes,
-    barWidth: number | undefined,
-    culture: string,
-  ) => ScaleBand<string>;
 }

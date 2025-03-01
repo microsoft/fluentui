@@ -7,8 +7,6 @@
 /// <reference types="react" />
 
 import * as React_2 from 'react';
-import { ScaleBand } from 'd3-scale';
-import { ScaleLinear } from 'd3-scale';
 import { SVGProps } from 'react';
 import { TimeLocaleDefinition } from 'd3-time-format';
 
@@ -714,8 +712,6 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     chartTitle?: string;
     chartType: ChartTypes;
     children(props: ChildProps): React_2.ReactNode;
-    createStringYAxis?: (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean, chartType: ChartTypes, barWidth: number | undefined, culture: string) => ScaleBand<string>;
-    createYAxis?: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, useSecondaryYScale?: boolean, supportNegativeData?: boolean, roundedTicks?: boolean) => ScaleLinear<number, number, never>;
     culture?: string;
     customizedCallout?: any;
     datasetForXAxisDomain?: string[];
@@ -723,13 +719,8 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     // (undocumented)
     getAxisData?: any;
     getDomainMargins?: (containerWidth: number) => Margins;
-    getDomainNRangeValues?: (points: LineChartPoints[] | VerticalBarChartDataPoint[] | VerticalStackedBarDataPoint[] | HorizontalBarChartWithAxisDataPoint[] | GroupedVerticalBarChartData[], margins: Margins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: Margins) => void;
-    getMinMaxOfYAxis?: (points: LineChartPoints[] | HorizontalBarChartWithAxisDataPoint[] | VerticalBarChartDataPoint[] | DataPoint[], yAxisType: YAxisType | undefined) => {
-        startValue: number;
-        endValue: number;
-    };
     isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;
@@ -930,21 +921,7 @@ export interface VerticalStackedBarChartStyleProps extends CartesianChartStylePr
 // @public
 export interface VerticalStackedBarChartStyles extends CartesianChartStyles {
     barLabel: string;
-    // @deprecated
-    chart?: string;
     opacityChangeOnHover?: string;
-    // @deprecated
-    xAxisDomain?: string;
-    // @deprecated
-    xAxisText?: string;
-    // @deprecated
-    xAxisTicks?: string;
-    // @deprecated
-    yAxisDomain?: string;
-    // @deprecated
-    yAxisText?: string;
-    // @deprecated
-    yAxisTicks?: string;
 }
 
 // @public (undocumented)
@@ -965,6 +942,7 @@ export interface VerticalStackedChartProps {
 export interface VSChartDataPoint {
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
+    culture?: string;
     data: number;
     legend: string;
     xAxisCalloutData?: string;

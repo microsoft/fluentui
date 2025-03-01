@@ -182,46 +182,4 @@ export interface VerticalStackedBarChartStyles extends CartesianChartStyles {
    * Style for the bar labels
    */
   barLabel: string;
-
-  /**
-   * Style for the chart.
-   * @deprecated use root instead.
-   */
-  chart?: string;
-
-  /**
-   * Style for the line representing the domain of the x-axis.
-   * @deprecated - use xAxis instead.
-   */
-  xAxisDomain?: string;
-
-  /**
-   * Style for the lines representing the ticks along the x-axis.
-   * @deprecated - use xAxis instead.
-   */
-  xAxisTicks?: string;
-
-  /**
-   * Style for the text labeling each tick along the x-axis.
-   * @deprecated - use xAxis instead.
-   */
-  xAxisText?: string;
-
-  /**
-   * Style for the line representing the domain of the y-axis.
-   * @deprecated - use xAxis instead.
-   */
-  yAxisDomain?: string;
-
-  /**
-   * Style for the lines representing the ticks along the y-axis.
-   * @deprecated - use xAxis instead.
-   */
-  yAxisTicks?: string;
-
-  /**
-   * Style for the text labeling each tick along the y-axis.
-   * @deprecated - use xAxis instead.
-   */
-  yAxisText?: string;
 }
