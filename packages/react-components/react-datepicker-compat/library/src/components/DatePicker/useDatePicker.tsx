@@ -13,13 +13,19 @@ import {
   useOnClickOutside,
   useOnScrollOutside,
   slot,
+  ExtractSlotProps,
 } from '@fluentui/react-utilities';
 import { useFieldContext_unstable as useFieldContext } from '@fluentui/react-field';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopupPositioning } from '../../utils/usePopupPositioning';
 import type { CalendarProps, ICalendar } from '@fluentui/react-calendar-compat';
-import type { DatePickerProps, DatePickerState, DatePickerValidationResultData } from './DatePicker.types';
+import type {
+  DatePickerProps,
+  DatePickerSlots,
+  DatePickerState,
+  DatePickerValidationResultData,
+} from './DatePicker.types';
 import type { InputProps, InputOnChangeData } from '@fluentui/react-input';
 
 function isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
@@ -453,7 +459,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       calendar.current.focus();
     }
   }, [disableAutoFocus, open, props.disabled]);
-  const calendarShorthand = slot.always(props.calendar, {
+  const calendarShorthand = slot.always<ExtractSlotProps<DatePickerSlots['calendar']>>(props.calendar, {
     defaultProps: {
       allFocusable,
       componentRef: calendar,
