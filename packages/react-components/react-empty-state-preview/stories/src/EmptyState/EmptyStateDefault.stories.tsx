@@ -1,4 +1,11 @@
 import * as React from 'react';
-import { EmptyState } from '../../../library/src'; // @fluentui/react-empty-state-preview?
+import { EmptyState } from '@fluentui/react-empty-state-preview';
 
-export const EmptyStateDefault = () => <EmptyState title="No data" />;
+export const EmptyStateDefault = () => {
+  return (
+    <div>
+      Test
+      {/* <EmptyState title="No data" /> */}
+    </div>
+  );
+};
