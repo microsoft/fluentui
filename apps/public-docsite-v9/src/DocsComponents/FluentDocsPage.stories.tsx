@@ -142,7 +142,7 @@ const getNativeElementsList = (elements: SBEnumType['value']): JSX.Element => {
 };
 
 const slotRegex = /as\?:\s*"([^"]+)"/;
-
+let hasSlotMatch = false;
 function withSlotEnhancer(story: PreparedStory) {
   const updatedArgTypes = { ...story.argTypes };
 
@@ -160,6 +160,7 @@ function withSlotEnhancer(story: PreparedStory) {
   Object.entries(docGenProps).forEach(([key, argType]) => {
     const value: string = argType?.type?.name;
     if (value.includes('WithSlotShorthandValue')) {
+      hasSlotMatch = true;
       const match = value.match(slotRegex);
       if (match) {
         component.__docgenInfo.props![key].type.name = `Slot<\"${match[1]}\">`;
@@ -175,6 +176,18 @@ function withSlotEnhancer(story: PreparedStory) {
 
   return component;
 }
+
+const AdditionalApiDocs: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const styles = useStyles();
+  return (
+    <div className={styles.additionalInfo}>
+      <div className={styles.additionalInfoMessage}>
+        <InfoFilled className={styles.additionalInfoIcon} />
+        <div className={styles.infoIcon}>{children}</div>
+      </div>
+    </div>
+  );
+};
 const RenderArgsTable = ({
   hideArgsTable,
   story,
@@ -184,52 +197,60 @@ const RenderArgsTable = ({
   hideArgsTable: boolean;
   argTypes: StrictArgTypes;
 }) => {
-  const styles = useStyles();
-
   const storyCopy = { ...story };
-  const { component } = withSlotEnhancer(storyCopy);
+  type InternalComponentApi = {
+    __docgenInfo: { props?: Record<string, { type: { name: string } }> };
+    [k: string]: unknown;
+  };
+  // type DocgenProp = {
+  //   type: { name: string };
+  // };
+  const component = withSlotEnhancer(storyCopy).component as InternalComponentApi;
+  // const docGenProps = component?.__docgenInfo?.props;
+  // const hasArgSlotProp = docGenProps
+  //   ? Object.values(docGenProps).some((prop: DocgenProp) => {
+  //       const typeName = prop.type.name;
+  //       console.log(typeName); // Debugging statement
+  //       return typeName.startsWith('Slot') || typeName.startsWith('WithSlotShorthandValue');
+  //     })
+  //   : false;
+  const hasArgAsProp = story.argTypes.as && story.argTypes.as?.type?.name === 'enum';
 
-  // const hasSlot = story.argTypes.as && story.argTypes.type.value === 'Slot';
   return hideArgsTable ? null : (
     <>
-      {story.argTypes.as && story.argTypes.as?.type?.name === 'enum' && (
-        <div className={styles.additionalInfo}>
-          <div className={styles.additionalInfoMessage}>
-            <InfoFilled className={styles.additionalInfoIcon} />
-            <div className={styles.infoIcon}>
-              <b>
-                Native props are supported <span role="presentation">🙌</span>
-              </b>
-              <span>
-                All HTML attributes native to the {getNativeElementsList(story.argTypes.as.type.value)}, including all{' '}
-                <code>aria-*</code> and <code>data-*</code> attributes, can be applied as native props on this
-                component.
-              </span>
-            </div>
-          </div>
-          <div className={styles.additionalInfoMessage}>
-            <InfoFilled className={styles.additionalInfoIcon} />
-            <div className={styles.infoIcon}>
-              <b>
-                Customizing components with slots <span role="presentation">🙌</span>
-              </b>
-              <span>
-                Slots in Fluent UI React components are designed to be modified or replaced, providing a flexible
-                approach to customizing components. Each slot is exposed as a top-level prop and can be filled with
-                primitive values, JSX/TSX, props objects, or render functions. This allows for more dynamic and reusable
-                component structures, similar to slots in other frameworks.{' '}
-                <Link href="/?path=/docs/concepts-developer-customizing-components-with-slots--docs">
-                  Customizing components with slots{' '}
-                </Link>
-              </span>
-            </div>
-          </div>
-        </div>
+      {hasArgAsProp && (
+        <AdditionalApiDocs>
+          <b>
+            Native props are supported <span role="presentation">🙌</span>
+          </b>
+          <span>
+            All HTML attributes native to the
+            {getNativeElementsList(story.argTypes.as?.options)}, including all <code>aria-*</code> and{' '}
+            <code>data-*</code> attributes, can be applied as native props on this component.
+          </span>
+        </AdditionalApiDocs>
+      )}
+      {hasSlotMatch && (
+        <AdditionalApiDocs>
+          <b>
+            Customizing components with slots <span role="presentation">🙌</span>
+          </b>
+          <span>
+            Slots in Fluent UI React components are designed to be modified or replaced, providing a flexible approach
+            to customizing components. Each slot is exposed as a top-level prop and can be filled with primitive values,
+            JSX/TSX, props objects, or render functions. This allows for more dynamic and reusable component structures,
+            similar to slots in other frameworks.{' '}
+            <Link href="/?path=/docs/concepts-developer-customizing-components-with-slots--docs">
+              Customizing components with slots{' '}
+            </Link>
+          </span>
+        </AdditionalApiDocs>
       )}
       <ArgsTable of={component} />
     </>
   );
 };
+
 const RenderPrimaryStory = ({
   primaryStory,
   skipPrimaryStory,
