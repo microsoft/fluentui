@@ -36,7 +36,6 @@ describe('Token Analyzer', () => {
 
     const { styles, metadata } = analysis;
 
-    console.log(styles);
     // Verify root styles
     expect(styles.useStyles.root.tokens).toContainEqual(
       expect.objectContaining({
@@ -44,6 +43,24 @@ describe('Token Analyzer', () => {
         token: 'tokens.colorNeutralForeground1',
       }),
     );
+
+    // Verify anotherSlot styles
+    expect(styles.useStyles.anotherSlot.tokens).toContainEqual(
+      expect.objectContaining({
+        property: 'color',
+        token: 'tokens.colorNeutralForeground2',
+      }),
+    );
+
+    // Verify focus function styles
+    expect(styles.useStyles.focusIndicator.tokens).toEqual([]);
+    const focusStyle = styles.useStyles.focusIndicator.nested?.[':focus'];
+
+    expect(focusStyle?.tokens[0]).toEqual({
+      path: [],
+      property: 'textDecorationColor',
+      token: 'tokens.colorStrokeFocus2',
+    });
 
     // Verify metadata for conditional styles
     expect(metadata.styleConditions['styles.large']).toEqual({

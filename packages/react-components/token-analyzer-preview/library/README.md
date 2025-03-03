@@ -5,7 +5,7 @@ A static analysis tool that scans your project's style files to track and analyz
 ## TODO
 
 - ~~Some property assignments can also be function calls, we need to process this scenario~~
-- `createCustomFocusIndicatorStyle` is a special function that is used throughout the library so we might be able to special case it
+- ~~`createCustomFocusIndicatorStyle` is a special function that is used throughout the library so we might be able to special case it~~
 - if we have file imports we need to analyze those such as importing base styles
 - we also need to ensure var analysis is done correctly after the refactor
   ~~- Manage makeResetStyles (likely same as makeStyles)~~
@@ -13,7 +13,7 @@ A static analysis tool that scans your project's style files to track and analyz
 - ~~what if we have multiple `makeStyles` calls merged, are we handling that correctly or just nuking the conflicts in our output?~~
 - make sure this works with shorthand spread
 - as we update the functionality, we should update our test cases to reflect the new functionality we support and ensure it works.
-- if we have functions we can't process (or other code for that matter), can we add that data into our report so we know to manually go deal with it?
+- ~~if we have functions we can't process (or other code for that matter), can we add that data into our report so we know to manually go deal with it?~~
 - ~~assignedSlots in output to track which slots classes are applied to~~
 - ~~Add variables full name to metadata (i.e. classNames.icon instead of just 'icon)~~
 - Module importing
