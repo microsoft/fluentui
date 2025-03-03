@@ -366,10 +366,12 @@ export const Selector = () => {
   return (
     <>
       <div className={classes.topTabsAndSearchWrapper}>
+        {/*
         <TabList selectedValue={mode} onTabSelect={onModeTabSelect} aria-labelledby="selectorMode-text">
           <Tab value="byComponents">By components</Tab>
           <Tab value="byBehaviors">By behaviors</Tab>
         </TabList>
+*/}
         <Input
           contentBefore={<SearchRegular />}
           size="small"
