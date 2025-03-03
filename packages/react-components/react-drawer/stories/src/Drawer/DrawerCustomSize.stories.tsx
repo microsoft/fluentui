@@ -9,6 +9,8 @@ import {
   tokens,
   makeStyles,
   Input,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -31,9 +33,15 @@ export const CustomSize = () => {
   const [open, setOpen] = React.useState(false);
   const [customSize, setCustomSize] = React.useState(600);
 
+  // all Drawers need manual focus restoration attributes
+  // unless (as in the case of some inline drawers, you do not want automatic focus restoration)
+  const restoreFocusTargetAttributes = useRestoreFocusTarget();
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
+
   return (
     <div>
       <OverlayDrawer
+        {...restoreFocusSourceAttributes}
         open={open}
         position="end"
         onOpenChange={(_, state) => setOpen(state.open)}
@@ -60,7 +68,7 @@ export const CustomSize = () => {
       </OverlayDrawer>
 
       <div className={styles.main}>
-        <Button appearance="primary" onClick={() => setOpen(true)}>
+        <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setOpen(true)}>
           Open Drawer
         </Button>
 
