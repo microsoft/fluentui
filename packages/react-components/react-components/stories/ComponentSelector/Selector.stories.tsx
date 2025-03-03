@@ -22,7 +22,7 @@ import { ArrowDownRegular, SearchRegular } from '@fluentui/react-icons';
 
 import { removeFromArray, getComponentStoryUrl, getAllQuestions } from './utils';
 import questions from './selection-logic/Questions.json';
-import importedCategories from './selection-logic/Categories.json';
+import importedGroups from './selection-logic/Groups.json';
 import * as importedComponentsDefinitions from './components-definitions/index';
 import { add, create, get, set } from 'lodash';
 import { SelectionCard } from './SelectionCard';
@@ -118,13 +118,14 @@ const useStyles = makeStyles({
   },
 });
 
-interface ComponentCategory {
+interface ComponentGroup {
   id: string;
   title: string;
-  components: string[];
+  tags: string[];
+  questions: string[];
   cards?: React.ReactNode[];
 }
-const categories: ComponentCategory[] = importedCategories;
+const groups: ComponentGroup[] = importedGroups;
 
 interface SelectedComponent {
   name: string;
@@ -321,10 +322,10 @@ export const Selector = () => {
     });
     definitionsWithDisplayName.sort((a, b) => (a.displayName > b.displayName ? 1 : -1));
 
-    const result = categories.map(category => {
-      category.cards = [];
+    const result = groups.map(group => {
+      group.cards = [];
       definitionsWithDisplayName.forEach(definition => {
-        if (category.components.includes(definition.component)) {
+        if (group.tags.includes(definition.component)) {
           const selected = !!selectedComponents.find(component => definition.name === component.name);
           const card = (
             <>
@@ -337,10 +338,10 @@ export const Selector = () => {
               />
             </>
           );
-          category.cards?.push(card);
+          group.cards?.push(card);
         }
       });
-      return category;
+      return group;
     });
     return result;
   }, [filteredComponentsDefinitions, updateComponentSelection]);

@@ -1,5 +1,7 @@
 [
   {
+    "id": "actions",
+    "title": "Actions",
     "tags": [
       "Button",
       "Link",
@@ -10,59 +12,68 @@
       "LinkButton",
       "ToolbarToggleButton"
     ],
-    "name": "Actions",
     "questions": ["hasMoreActions", "doesNavigateToPage", "isOnOrOff", "controlAppearance", "toggleOrNotToggle"]
   },
   {
+    "id": "inputAndSelection",
+    "title": "Input and Selection",
     "tags": ["Checkbox", "Radio", "Switch", "MenuItemCheckbox", "MenuItemRadio", "ToolbarRadio", "ToolbarToggleButton"],
-    "questions": ["canSelectMultipleChoices", "autoSelect", "visibilityInOnce", "isInstantAction"],
-    "name": "Input & Selection"
+    "questions": ["canSelectMultipleChoices", "autoSelect", "visibilityInOnce", "isInstantAction"]
   },
   {
+    "id": "hintsAndTips",
+    "title": "Hints and tips",
     "tags": ["InfoLabel", "Tooltip"],
     "comment": "add custom infoIcon codesandbox",
-    "questions": ["hasInteractiveContent", "doesAppearOnHover", "activationSource"],
-    "name": "Hints and tips"
+    "questions": ["hasInteractiveContent", "doesAppearOnHover", "activationSource"]
   },
   {
+    "id": "structuresAndLists",
+    "title": "Structures and Lists",
     "tags": ["List", "Grid", "Treegrid", "Table", "Menu"],
-    "questions": ["navigationOrDisplayingData", "moreInteraction", "visualLayout", "relationships"],
-    "name": "Structures and lists"
+    "questions": ["navigationOrDisplayingData", "moreInteraction", "visualLayout", "relationships"]
   },
   {
+    "id": "contentGrouping",
+    "title": "Content Grouping",
     "tags": ["Card"],
-    "questions": ["cardPrimaryPurpose", "cardInteraction", "numberOfCards"],
-    "name": "Content grouping"
+    "questions": ["cardPrimaryPurpose", "cardInteraction", "numberOfCards"]
   },
   {
+    "id": "surfaces",
+    "title": "Surfaces",
     "tags": ["Dialog", "Popover", "TeachingPopover"],
-    "questions": ["dialogPrimaryPurpose", "dialogInteraction"],
-    "name": "Surfaces"
+    "questions": ["dialogPrimaryPurpose", "dialogInteraction"]
   },
   {
+    "id": "optionsAndPickers",
+    "title": "Options and Pickers",
     "tags": ["Combobox", "Dropdown", "Select"],
     "comment": "missing calendar and datepicker",
-    "questions": ["", "", ""],
-    "name": "Options and picker"
+    "questions": ["", "", ""]
   },
   {
+    "id": "navigationAndDisclosures",
+    "title": "Navigation and Disclosures",
     "tags": ["Tree", "Accordion", "Tabs"],
-    "questions": ["hasInteractiveContent", "doesAppearOnHover", "activationSource"],
-    "name": "Navigation & disclosure"
+    "questions": ["hasInteractiveContent", "doesAppearOnHover", "activationSource"]
   },
   {
+    "id": "notifications",
+    "title": "Notifications",
     "tags": ["MessageBar", "Badges", "Toast"],
-    "questions": ["", "", ""],
-    "name": "Notification"
+    "questions": ["", "", ""]
   },
   {
+    "id": "textInput",
+    "title": "Text Input",
     "tags": ["TextInput", "TextArea", "Field"],
-    "questions": ["", "", ""],
-    "name": "Text input"
+    "questions": ["", "", ""]
   },
   {
+    "id": "loadingAndProgress",
+    "title": "Loading and Progress",
     "tags": ["ProgressIndicator", "Spinner", "Skeleton"],
-    "questions": ["", "", ""],
-    "name": "Loading & progress"
+    "questions": ["", "", ""]
   }
 ]
