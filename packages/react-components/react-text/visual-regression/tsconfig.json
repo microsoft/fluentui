@@ -17,9 +17,6 @@
     },
     {
       "path": "./.storybook/tsconfig.json"
-    },
-    {
-      "path": "./tsconfig.vr.json"
     }
   ]
 }

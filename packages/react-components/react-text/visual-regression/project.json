@@ -24,24 +24,15 @@
       },
       "dependsOn": ["build-storybook"]
     },
+    "test-vr": {
+      "executor": "@fluentui/workspace-plugin:visual-regression",
+      "dependsOn": ["build-storybook"]
+    },
     "build-storybook": {
       "command": "storybook build -o dist/storybook",
       "options": {
         "cwd": "{projectRoot}"
       }
-    },
-    "test-vr": {
-      "command": "yarn playwright test",
-      "options": {
-        "cwd": "{projectRoot}"
-      },
-      "metadata": {
-        "help": {
-          "command": "yarn playwright test --help",
-          "example": {}
-        }
-      },
-      "dependsOn": ["build-storybook", "prepare-test-vr"]
     },
     "build": {
       "executor": "@nx/js:swc",
