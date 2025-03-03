@@ -197,10 +197,13 @@ function generateTokenVariables() {
       tokenFallback = escapeInlineToken(tokenFallback);
     }
 
-    // We don't nest semantic token fallbacks, as they could fallback to non-hover fluent 2 tokens etc.
-    const escapedTokenSemantic = tokenSemanticRef ? escapeInlineToken(tokenSemanticRef) : null;
+    // We only nest semantic tokens if no fallback, as they could override the fallback with fluent 2 tokens etc.
+    let escapedTokenSemantic = tokenSemanticRef ? escapeInlineToken(tokenSemanticRef) : null;
+    if (!tokenFallback && tokenSemanticName && foundTokens[tokenSemanticName]) {
+      escapedTokenSemantic = foundTokens[tokenSemanticName];
+    }
 
-    // TODO: Check if a token has a FST reference that falls back to another FST/fluent fallback?
+    let foundFallbacks = false;
     if (
       tokenFallback &&
       tokenSemanticRef &&
@@ -211,12 +214,15 @@ function generateTokenVariables() {
     ) {
       // Token has both a FST fallback and a Fluent fallback
       resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${escapedTokenSemantic}, ${tokenFallback}))`;
+      foundFallbacks = true;
     } else if (tokenFallback) {
       // Just in case a token falls back directly to a Fluent fallback
       resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${tokenFallback})`;
+      foundFallbacks = true;
     } else if (tokenSemanticRef) {
       // Token just has a FST reference fallback
       resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${escapedTokenSemantic})`;
+      foundFallbacks = true;
     }
 
     if (tokenData.name.startsWith('CTRL/')) {
@@ -238,7 +244,9 @@ function generateTokenVariables() {
     }
 
     // Track our tokens - we will use these to do fallback replacement for complex tokens as we find them.
-    foundTokens[token] = resolvedTokenFallback;
+    if (foundFallbacks) {
+      foundTokens[token] = resolvedTokenFallback;
+    }
   }
 
   fs.writeFileSync('./src/optional/tokens.ts', optionalTokens);

@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
 
-export const ctrlSliderBarHeight = `var(${ctrlSliderBarHeightRaw}, ${ctrlProgressHeightFilledRaw})`;
+export const ctrlSliderBarHeight = `var(${ctrlSliderBarHeightRaw}, var(${ctrlProgressHeightFilledRaw}, ${thickRaw}))`;
 export const ctrlSliderBarCorner = `var(${ctrlSliderBarCornerRaw}, var(${cornerCircularRaw}, ${circularRaw}))`;
 export const ctrlSliderBarForegroundFilledRest = `var(${ctrlSliderBarForegroundFilledRestRaw}, var(${backgroundCtrlBrandRestRaw}, ${brandBackgroundCompoundRestRaw}))`;
 export const ctrlSliderBarForegroundEmptyRest = `var(${ctrlSliderBarForegroundEmptyRestRaw}, var(${ctrlProgressBackgroundEmptyRaw}, ${tokens.colorNeutralStrokeAccessibleRest}))`;
@@ -26,7 +26,7 @@ export const ctrlSliderThumbInnerStrokeRest = `var(${ctrlSliderThumbInnerStrokeR
 export const ctrlSliderThumbInnerStrokeHover = `var(${ctrlSliderThumbInnerStrokeHoverRaw}, var(${backgroundCtrlBrandHoverRaw}, ${tokens.colorNeutralBackground1}))`;
 export const ctrlSliderThumbInnerStrokePressed = `var(${ctrlSliderThumbInnerStrokePressedRaw}, var(${backgroundCtrlBrandPressedRaw}, ${tokens.colorNeutralBackground1}))`;
 export const ctrlSliderThumbInnerStrokeDisabled = `var(${ctrlSliderThumbInnerStrokeDisabledRaw}, var(${backgroundCtrlBrandDisabledRaw}, ${tokens.colorNeutralBackground1}))`;
-export const ctrlSliderThumbOuterStrokewidth = `var(${ctrlSliderThumbOuterStrokewidthRaw}, ${strokewidthDefaultRaw})`;
+export const ctrlSliderThumbOuterStrokewidth = `var(${ctrlSliderThumbOuterStrokewidthRaw}, var(${strokewidthDefaultRaw}, ${tokens.strokeWidthThin}))`;
 export const ctrlSliderThumbOuterStrokeRest = `var(${ctrlSliderThumbOuterStrokeRestRaw}, var(${backgroundCtrlBrandRestRaw}, ${tokens.colorNeutralStroke1Rest}))`;
 export const ctrlSliderThumbOuterStrokeHover = `var(${ctrlSliderThumbOuterStrokeHoverRaw}, var(${backgroundCtrlBrandHoverRaw}, ${tokens.colorNeutralStroke1Rest}))`;
 export const ctrlSliderThumbOuterStrokePressed = `var(${ctrlSliderThumbOuterStrokePressedRaw}, var(${backgroundCtrlBrandPressedRaw}, ${tokens.colorNeutralStroke1Rest}))`;
@@ -34,7 +34,7 @@ export const ctrlSliderThumbOuterStrokeDisabled = `var(${ctrlSliderThumbOuterStr
 export const ctrlSliderSmThumbSizeRest = `var(${ctrlSliderSmThumbSizeRestRaw}, ${sizeCtrlSmIconRaw})`;
 export const ctrlSliderSmThumbSizeHover = `var(${ctrlSliderSmThumbSizeHoverRaw}, ${sizeCtrlSmIconRaw})`;
 export const ctrlSliderSmThumbSizePressed = `var(${ctrlSliderSmThumbSizePressedRaw}, ${sizeCtrlSmIconRaw})`;
-export const ctrlSliderSmBarHeight = `var(${ctrlSliderSmBarHeightRaw}, ${ctrlProgressSmHeightFilledRaw})`;
+export const ctrlSliderSmBarHeight = `var(${ctrlSliderSmBarHeightRaw}, var(${ctrlProgressSmHeightFilledRaw}, ${thickRaw}))`;
 export const ctrlSliderLgThumbSizeRest = `var(${ctrlSliderLgThumbSizeRestRaw}, ${sizeCtrlLgIconRaw})`;
 export const ctrlSliderLgBarHeight = `var(${ctrlSliderLgBarHeightRaw}, ${ctrlProgressLgHeightFilledRaw})`;
 export const ctrlSliderLgThumbSizeHover = `var(${ctrlSliderLgThumbSizeHoverRaw}, ${sizeCtrlLgIconRaw})`;
