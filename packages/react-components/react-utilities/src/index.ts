@@ -72,7 +72,7 @@ export {
   createPriorityQueue,
 } from './utils/index';
 
-export type { DistributiveOmit, UnionToIntersection } from './utils/types';
+export type { DistributiveOmit, UnionToIntersection, RefAttributes } from './utils/types';
 
 export type { PriorityQueue } from './utils/priorityQueue';
 
