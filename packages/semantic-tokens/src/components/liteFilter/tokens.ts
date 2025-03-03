@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
 
-export const ctrlLitefilterBackgroundSelected = 'var(${ctrlLitefilterBackgroundSelectedRaw}, ${backgroundCtrlBrandRestRaw})';
-export const ctrlLitefilterStrokeSelected = 'var(${ctrlLitefilterStrokeSelectedRaw}, ${strokeCtrlOnbrandRestRaw})';
-export const ctrlLitefilterForegroundSelected = 'var(${ctrlLitefilterForegroundSelectedRaw}, ${foregroundCtrlOnbrandRestRaw})';
-export const ctrlLitefilterStrokewidthSelected = 'var(${ctrlLitefilterStrokewidthSelectedRaw}, var(${strokewidthDefaultRaw}, ${tokens.strokeWidthThin}))';
+export const ctrlLitefilterBackgroundSelected = `var(${ctrlLitefilterBackgroundSelectedRaw}, var(${backgroundCtrlBrandRestRaw}, ${brandBackground1RestRaw}))`;
+export const ctrlLitefilterStrokeSelected = `var(${ctrlLitefilterStrokeSelectedRaw}, var(${strokeCtrlOnbrandRestRaw}, ${nullColorRaw}))`;
+export const ctrlLitefilterForegroundSelected = `var(${ctrlLitefilterForegroundSelectedRaw}, var(${foregroundCtrlOnbrandRestRaw}, ${tokens.colorNeutralForegroundOn Brand}))`;
+export const ctrlLitefilterStrokewidthSelected = `var(${ctrlLitefilterStrokewidthSelectedRaw}, var(${strokewidthDefaultRaw}, ${tokens.strokeWidthThin}))`;

@@ -107,7 +107,48 @@ function toCamelCase(str: string) {
     .join('');
 }
 
+function handleTokenTransforms(tokenString: string) {
+  // Base case
+  let formattedToken: string = toCamelCase(tokenString) + 'Raw';
+  // Token fallback may be a fluent 2 token or new FST, let's check known fluent 2 tokens
+  if (tokenString.length > 0) {
+    if (tokenString === 'Thin') {
+      formattedToken = `tokens.strokeWidthThin`;
+    } else if (tokenString.startsWith('Line-height')) {
+      const tokenFallbackArr = tokenString.split('/');
+      const tokenFallbackVal = tokenFallbackArr[tokenFallbackArr.length - 1];
+      formattedToken = `tokens.lineHeightBase${tokenFallbackVal}`;
+    } else if (tokenString.startsWith('Font-size')) {
+      const tokenFallbackArr = tokenString.split('/');
+      const tokenFallbackVal = tokenFallbackArr[tokenFallbackArr.length - 1];
+      formattedToken = `tokens.fontSizeBase${tokenFallbackVal}`;
+    } else if (tokenString.startsWith('Neutral/Stroke/Transparent')) {
+      formattedToken = `tokens.strokeNeutralTransparent`;
+    } else if (tokenString.startsWith('Neutral/Stroke/Disabled')) {
+      formattedToken = `tokens.strokeNeutralDisabled`;
+    } else if (tokenString.startsWith('Neutral/Stroke/')) {
+      const tokenFallbackArr = tokenString.split('/');
+      const tokenFallbackVal = tokenFallbackArr[2];
+      formattedToken = `tokens.colorNeutralStroke${tokenFallbackVal}`;
+    } else if (tokenString.startsWith('Neutral/Background/') || tokenString.startsWith('Neutral/Foreground/')) {
+      const tokenFallbackArr = tokenString.split('/');
+      const tokenFallbackArea = tokenFallbackArr[1];
+      const tokenFallbackVal = tokenFallbackArr[2];
+      const tokenFallbackType = tokenFallbackArr[tokenFallbackArr.length - 1];
+      if (tokenFallbackType === 'Rest') {
+        // Rest tokens don't have a qualifier
+        formattedToken = `tokens.colorNeutral${tokenFallbackArea}${tokenFallbackVal}`;
+      } else {
+        formattedToken = `tokens.colorNeutral${tokenFallbackArea}${tokenFallbackVal}${tokenFallbackType}`;
+      }
+    }
+  }
+
+  return formattedToken;
+}
+
 function generateTokenVariables() {
+  const foundTokens: { [tokenName: string]: string } = {};
   // Default our files to token imports
   // TODO: Add raw token imports
   let optionalTokens = generateImportHeaders();
@@ -119,43 +160,59 @@ function generateTokenVariables() {
     const tokenNameRaw = token + 'Raw';
 
     let tokenFallback: null | string = null;
+    let tokenFallbackName: null | string = null;
     let tokenSemanticRef: null | string = null;
+    let tokenSemanticName: null | string = null;
 
     if (tokenData.fst_reference.length > 0) {
-      tokenSemanticRef = toCamelCase(cleanFSTTokenName(tokenData.fst_reference)) + 'Raw';
+      tokenSemanticName = toCamelCase(cleanFSTTokenName(tokenData.fst_reference));
+      tokenSemanticRef = tokenSemanticName + 'Raw';
     }
 
-    // Token fallback may be a fluent 2 token or new FST, let's check known fluent 2 tokens
+    // Token fallback may be a fluent 2, we format these fallbacks manually
     if (tokenData.fallback.length > 0) {
-      if (tokenData.fallback === 'Thin') {
-        tokenFallback = `tokens.strokeWidthThin`;
-      } else if (tokenData.fallback.startsWith('Line-height')) {
-        const tokenFallbackArr = tokenData.fallback.split('/');
-        const tokenFallbackVal = tokenFallbackArr[tokenFallbackArr.length - 1];
-        tokenFallback = `tokens.lineHeightBase${tokenFallbackVal}`;
-      } else if (tokenData.fallback.startsWith('Font-size')) {
-        const tokenFallbackArr = tokenData.fallback.split('/');
-        const tokenFallbackVal = tokenFallbackArr[tokenFallbackArr.length - 1];
-        tokenFallback = `tokens.fontSizeBase${tokenFallbackVal}`;
-      } else {
-        // handle base case
-        tokenFallback = toCamelCase(tokenData.fallback) + 'Raw';
-      }
+      tokenFallbackName = toCamelCase(cleanFSTTokenName(tokenData.fallback));
+      tokenFallback = handleTokenTransforms(tokenData.fallback);
     }
 
     let resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)})`;
+
+    // The semantic token was processed already, use the full semantic token CSS var.
+    if (tokenFallbackName && foundTokens[tokenFallbackName]) {
+      tokenFallback = foundTokens[tokenFallbackName];
+    } else if (tokenFallback) {
+      tokenFallback = escapeInlineToken(tokenFallback);
+    }
+
+    // The fallback token was processed already, use the full fallback CSS var.
+    if (tokenSemanticName && foundTokens[tokenSemanticName]) {
+      tokenSemanticRef = foundTokens[tokenSemanticName];
+    } else if (tokenSemanticRef) {
+      tokenSemanticRef = escapeInlineToken(tokenSemanticRef);
+    }
+
     // TODO: Check if a token has a FST reference that falls back to another FST/fluent fallback?
-    if (tokenFallback && tokenSemanticRef && tokenFallback !== tokenSemanticRef) {
+    if (
+      tokenFallback &&
+      tokenSemanticRef &&
+      tokenFallback !== tokenSemanticRef &&
+      !tokenSemanticRef.includes(tokenFallback)
+    ) {
       // Token has both a FST fallback and a Fluent fallback
-      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(
-        tokenSemanticRef,
-      )}, ${escapeInlineToken(tokenFallback)}))`;
+      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${tokenSemanticRef}, ${tokenFallback}))`;
     } else if (tokenSemanticRef) {
       // Token just has a FST reference fallback
-      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${escapeInlineToken(tokenSemanticRef)})`;
+      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${tokenSemanticRef})`;
     } else if (tokenFallback) {
       // Just in case a token falls back directly to a Fluent fallback
-      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${escapeInlineToken(tokenFallback)})`;
+      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${tokenFallback})`;
+    }
+
+    if (token === 'ctrlLinkForegroundNeutralHover') {
+      console.log('Found ctrl link token:', tokenData);
+      console.log('Token fallback:', tokenFallback);
+      console.log('Token semantic ref:', tokenSemanticRef);
+      console.log('Resolved token fallback:', resolvedTokenFallback);
     }
 
     if (tokenData.name.startsWith('CTRL/')) {
@@ -164,17 +221,20 @@ function generateTokenVariables() {
       if (!componentTokens[component]) {
         componentTokens[component] = generateImportHeaders();
       }
-      componentTokens[component] += `export const ${token} = '${resolvedTokenFallback}';\n`;
+      componentTokens[component] += `export const ${token} = \`${resolvedTokenFallback}\`;\n`;
     } else {
       // We have a global token
       if (tokenData.optional) {
-        optionalTokens += `export const ${token} = '${resolvedTokenFallback}';\n`;
+        optionalTokens += `export const ${token} = \`${resolvedTokenFallback}\`;\n`;
       } else if (tokenData.nullable) {
-        nullableTokens += `export const ${token} = '${resolvedTokenFallback}';\n`;
+        nullableTokens += `export const ${token} = \`${resolvedTokenFallback}\`;\n`;
       } else {
-        controlTokens += `export const ${token} = '${resolvedTokenFallback}';\n`;
+        controlTokens += `export const ${token} = \`${resolvedTokenFallback}\`;\n`;
       }
     }
+
+    // Track our tokens - we will use these to do fallback replacement for complex tokens as we find them.
+    foundTokens[token] = resolvedTokenFallback;
   }
 
   fs.writeFileSync('./src/optional/tokens.ts', optionalTokens);
