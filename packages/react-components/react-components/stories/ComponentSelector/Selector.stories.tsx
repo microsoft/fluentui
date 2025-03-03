@@ -424,10 +424,14 @@ export const Selector = () => {
           <div>
             {categorizedComponents.map((category, index) => (
               <>
-                <Text as="h3" ref={index === 0 ? firstGroupItemRef : undefined} tabIndex={-1}>
-                  {category.title}
-                </Text>
-                <div className={classes.root}>{category.cards}</div>
+                {category.cards && category.cards.length > 0 && (
+                  <>
+                    <Text as="h3" ref={index === 0 ? firstGroupItemRef : undefined} tabIndex={-1}>
+                      {category.title}
+                    </Text>
+                    <div className={classes.root}>{category.cards}</div>
+                  </>
+                )}
               </>
             ))}
           </div>
