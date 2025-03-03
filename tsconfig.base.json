@@ -12,7 +12,6 @@
     "typeRoots": ["node_modules/@types", "./typings"],
     "baseUrl": ".",
     "paths": {
-      "@fluentui/visual-regression-utilities": ["tools/visual-regression-utilities/src/index.ts"],
       "@fluentui/babel-preset-global-context": ["packages/react-components/babel-preset-global-context/src/index.ts"],
       "@fluentui/babel-preset-storybook-full-source": [
         "packages/react-components/babel-preset-storybook-full-source/src/index.ts"
@@ -202,6 +201,7 @@
       "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
+      "@fluentui/visual-regression-utilities": ["tools/visual-regression-utilities/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
     }
   },
