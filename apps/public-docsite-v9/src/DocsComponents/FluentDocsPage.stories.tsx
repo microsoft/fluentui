@@ -202,18 +202,9 @@ const RenderArgsTable = ({
     __docgenInfo: { props?: Record<string, { type: { name: string } }> };
     [k: string]: unknown;
   };
-  // type DocgenProp = {
-  //   type: { name: string };
-  // };
+
   const component = withSlotEnhancer(storyCopy).component as InternalComponentApi;
-  // const docGenProps = component?.__docgenInfo?.props;
-  // const hasArgSlotProp = docGenProps
-  //   ? Object.values(docGenProps).some((prop: DocgenProp) => {
-  //       const typeName = prop.type.name;
-  //       console.log(typeName); // Debugging statement
-  //       return typeName.startsWith('Slot') || typeName.startsWith('WithSlotShorthandValue');
-  //     })
-  //   : false;
+
   const hasArgAsProp = story.argTypes.as && story.argTypes.as?.type?.name === 'enum';
 
   return hideArgsTable ? null : (
