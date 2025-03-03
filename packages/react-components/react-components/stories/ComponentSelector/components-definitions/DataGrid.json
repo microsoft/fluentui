@@ -1,5 +1,6 @@
 {
   "name": "DataGrid",
   "component": "DataGrid",
-  "note": "In Teams we use usually composite navigation!"
+  "note": "In Teams we use usually composite navigation!",
+  "attributes": []
 }
