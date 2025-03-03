@@ -2,7 +2,7 @@
 import { tokens } from '@fluentui/tokens';
 
 export const ctrlProgressBackgroundEmpty = `var(${ctrlProgressBackgroundEmptyRaw}, ${tokens.colorNeutralBackground6})`;
-export const ctrlProgressBackgroundFilled = `var(${ctrlProgressBackgroundFilledRaw}, var(var(${backgroundCtrlBrandRestRaw}, ${brandBackground1RestRaw}), var(${backgroundCtrlActivebrandRestRaw}, var(${backgroundCtrlBrandRestRaw}, ${brandBackground1RestRaw}))))`;
+export const ctrlProgressBackgroundFilled = `var(${ctrlProgressBackgroundFilledRaw}, var(${backgroundCtrlActivebrandRestRaw}, var(${backgroundCtrlBrandRestRaw}, ${brandBackground1RestRaw})))`;
 export const ctrlProgressCorner = `var(${ctrlProgressCornerRaw}, var(${cornerCircularRaw}, ${circularRaw}))`;
 export const ctrlProgressHeightFilled = `var(${ctrlProgressHeightFilledRaw}, ${thickRaw})`;
 export const ctrlProgressHeightEmpty = `var(${ctrlProgressHeightEmptyRaw}, var(${ctrlProgressHeightFilledRaw}, ${thickRaw}))`;

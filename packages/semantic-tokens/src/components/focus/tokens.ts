@@ -5,4 +5,4 @@ export const ctrlFocusPositionFigmaOnly = `var(${ctrlFocusPositionFigmaOnlyRaw})
 export const ctrlFocusInnerStrokewidth = `var(${ctrlFocusInnerStrokewidthRaw}, var(${strokewidthDefaultRaw}, ${tokens.strokeWidthThin}))`;
 export const ctrlFocusInnerStroke = `var(${ctrlFocusInnerStrokeRaw}, ${tokens.colorNeutralStrokeFocus})`;
 export const ctrlFocusOuterStrokewidth = `var(${ctrlFocusOuterStrokewidthRaw}, ${thickRaw})`;
-export const ctrlFocusOuterStroke = `var(${ctrlFocusOuterStrokeRaw}, var(var(${backgroundCtrlBrandRestRaw}, ${brandBackground1RestRaw}), ${tokens.colorNeutralStrokeFocus}))`;
+export const ctrlFocusOuterStroke = `var(${ctrlFocusOuterStrokeRaw}, var(${backgroundCtrlBrandRestRaw}, ${tokens.colorNeutralStrokeFocus}))`;

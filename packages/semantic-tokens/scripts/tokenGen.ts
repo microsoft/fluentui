@@ -177,42 +177,33 @@ function generateTokenVariables() {
 
     let resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)})`;
 
-    // The semantic token was processed already, use the full semantic token CSS var.
+    // If the fallback token was processed already, use the full token CSS reference.
     if (tokenFallbackName && foundTokens[tokenFallbackName]) {
       tokenFallback = foundTokens[tokenFallbackName];
     } else if (tokenFallback) {
       tokenFallback = escapeInlineToken(tokenFallback);
     }
 
-    // The fallback token was processed already, use the full fallback CSS var.
-    if (tokenSemanticName && foundTokens[tokenSemanticName]) {
-      tokenSemanticRef = foundTokens[tokenSemanticName];
-    } else if (tokenSemanticRef) {
-      tokenSemanticRef = escapeInlineToken(tokenSemanticRef);
-    }
+    // We don't nest semantic token fallbacks, as they could fallback to non-hover fluent 2 tokens etc.
+    const escapedTokenSemantic = tokenSemanticRef ? escapeInlineToken(tokenSemanticRef) : null;
 
     // TODO: Check if a token has a FST reference that falls back to another FST/fluent fallback?
     if (
       tokenFallback &&
       tokenSemanticRef &&
+      escapedTokenSemantic &&
       tokenFallback !== tokenSemanticRef &&
-      !tokenSemanticRef.includes(tokenFallback)
+      !tokenSemanticRef.includes(tokenFallback) &&
+      !tokenFallback.includes(tokenSemanticRef)
     ) {
       // Token has both a FST fallback and a Fluent fallback
-      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${tokenSemanticRef}, ${tokenFallback}))`;
-    } else if (tokenSemanticRef) {
-      // Token just has a FST reference fallback
-      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${tokenSemanticRef})`;
+      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${escapedTokenSemantic}, ${tokenFallback}))`;
     } else if (tokenFallback) {
       // Just in case a token falls back directly to a Fluent fallback
       resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${tokenFallback})`;
-    }
-
-    if (token === 'ctrlLinkForegroundNeutralHover') {
-      console.log('Found ctrl link token:', tokenData);
-      console.log('Token fallback:', tokenFallback);
-      console.log('Token semantic ref:', tokenSemanticRef);
-      console.log('Resolved token fallback:', resolvedTokenFallback);
+    } else if (tokenSemanticRef) {
+      // Token just has a FST reference fallback
+      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${escapedTokenSemantic})`;
     }
 
     if (tokenData.name.startsWith('CTRL/')) {

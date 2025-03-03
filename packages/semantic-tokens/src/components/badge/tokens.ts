@@ -2,12 +2,12 @@
 import { tokens } from '@fluentui/tokens';
 
 export const ctrlBadgeTextPaddingTop = `var(${ctrlBadgeTextPaddingTopRaw})`;
-export const ctrlBadgeTextPaddingBottom = `var(${ctrlBadgeTextPaddingBottomRaw}, var(${ctrlBadgeTextPaddingTopRaw}))`;
+export const ctrlBadgeTextPaddingBottom = `var(${ctrlBadgeTextPaddingBottomRaw}, ${ctrlBadgeTextPaddingTopRaw})`;
 export const ctrlBadgeSmTextPaddingTop = `var(${ctrlBadgeSmTextPaddingTopRaw})`;
-export const ctrlBadgeSmTextPaddingBottom = `var(${ctrlBadgeSmTextPaddingBottomRaw}, var(${ctrlBadgeSmTextPaddingTopRaw}))`;
+export const ctrlBadgeSmTextPaddingBottom = `var(${ctrlBadgeSmTextPaddingBottomRaw}, ${ctrlBadgeSmTextPaddingTopRaw})`;
 export const ctrlBadgeLgTextPaddingTop = `var(${ctrlBadgeLgTextPaddingTopRaw})`;
-export const ctrlBadgeLgTextPaddingBottom = `var(${ctrlBadgeLgTextPaddingBottomRaw}, var(${ctrlBadgeLgTextPaddingTopRaw}))`;
-export const ctrlBadgeIconTheme = `var(${ctrlBadgeIconThemeRaw}, var(${iconthemeCtrlDefaultRestRaw}))`;
+export const ctrlBadgeLgTextPaddingBottom = `var(${ctrlBadgeLgTextPaddingBottomRaw}, ${ctrlBadgeLgTextPaddingTopRaw})`;
+export const ctrlBadgeIconTheme = `var(${ctrlBadgeIconThemeRaw}, ${iconthemeCtrlDefaultRestRaw})`;
 export const ctrlBadgeBeaconSize = `var(${ctrlBadgeBeaconSizeRaw})`;
 export const ctrlBadgeSize = `var(${ctrlBadgeSizeRaw})`;
 export const ctrlBadgeCorner = `var(${ctrlBadgeCornerRaw})`;
