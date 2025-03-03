@@ -256,6 +256,17 @@ function multiFormat(date: Date, locale?: d3TimeLocaleObject, useUTC?: boolean) 
   )(date);
 }
 
+function isPowerOf10(num: number): boolean {
+  const roundedfinalYMax = handleFloatingPointPrecisionError(num);
+  return Math.log10(roundedfinalYMax) % 1 === 0;
+}
+
+//for reference, go through this 'https://docs.python.org/release/2.5.1/tut/node16.html'
+function handleFloatingPointPrecisionError(num: number): number {
+  const rounded = Math.round(num);
+  return Math.abs(num - rounded) < 1e-6 ? rounded : num;
+}
+
 /**
  * Creating Date x axis of the Chart
  * @export
@@ -410,7 +421,11 @@ function calculateRoundedTicks(minVal: number, maxVal: number, splitInto: number
   const finalYmin = minVal >= 0 && minVal === maxVal ? 0 : minVal;
   const finalYmax = minVal < 0 && minVal === maxVal ? 0 : maxVal;
   const ticksInterval = d3nice(finalYmin, finalYmax, splitInto);
-  return d3Ticks(ticksInterval[0], ticksInterval[ticksInterval.length - 1], splitInto);
+  const ticks = d3Ticks(ticksInterval[0], ticksInterval[ticksInterval.length - 1], splitInto);
+  if (ticks[ticks.length - 1] > finalYmax && isPowerOf10(finalYmax)) {
+    ticks.pop();
+  }
+  return ticks;
 }
 /**
  * This method used for creating data points for the y axis.

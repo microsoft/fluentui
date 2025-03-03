@@ -306,8 +306,8 @@ packages/react-components/react-infolabel/library @microsoft/cxe-prg
 packages/react-components/react-infolabel/stories @microsoft/cxe-prg
 packages/react-components/react-list/library @microsoft/teams-prg
 packages/react-components/react-list/stories @microsoft/teams-prg
-packages/react-components/react-motion/library @microsoft/teams-prg
-packages/react-components/react-motion/stories @microsoft/teams-prg
+packages/react-components/react-motion/library @microsoft/teams-prg @microsoft/fluent-motion-framework
+packages/react-components/react-motion/stories @microsoft/teams-prg @microsoft/fluent-motion-framework
 packages/react-components/react-teaching-popover/library @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-teaching-popover/stories @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-timepicker-compat/library @microsoft/teams-prg
@@ -319,8 +319,8 @@ packages/react-components/react-tag-picker/stories @microsoft/teams-prg
 packages/react-components/react-carousel/library @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
 packages/react-components/react-carousel/stories @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
 packages/react-components/recipes @microsoft/fluentui-react @sopranopillow
-packages/react-components/react-motion-components-preview/library @microsoft/teams-prg
-packages/react-components/react-motion-components-preview/stories @microsoft/teams-prg
+packages/react-components/react-motion-components-preview/library @microsoft/fluent-motion-framework
+packages/react-components/react-motion-components-preview/stories @microsoft/fluent-motion-framework
 packages/react-components/react-utilities-compat/library @microsoft/cxe-prg
 packages/react-components/react-utilities-compat/stories @microsoft/cxe-prg
 packages/react-components/react-color-picker-preview/library @microsoft/cxe-prg

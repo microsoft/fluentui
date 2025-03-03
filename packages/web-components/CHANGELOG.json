@@ -2,6 +2,63 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 28 Feb 2025 04:07:19 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.82",
+      "version": "3.0.0-beta.82",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "601470+mlijanto@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "2ccb82dd6469c10e7b3ade28b2e8b511f63c676c",
+            "comment": "Fixed button start and end slots inline spacing."
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "156b618aef1291bb65b87dc6f2a725210245676a",
+            "comment": "fix: position thumb properly at pointer coordinates"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5d23cf83aba5d3f603ae3d8d5e6bf34701cb14c0",
+            "comment": "fix: enable keyboard interactions after clicking on thumb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Feb 2025 04:06:04 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.81",
+      "version": "3.0.0-beta.81",
+      "comments": {
+        "none": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "aac812bbe00a89eec5c1eb7dbfcf3172f49f73fb",
+            "comment": "docs: add v2 to v3 migration docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Feb 2025 04:07:15 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.81",
+      "version": "3.0.0-beta.81",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "30294bd242b7ec3de554feb9081dca890d70a809",
+            "comment": "fix: dropdown should emit a change event when the value changes via user input"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Feb 2025 04:06:52 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.80",
       "version": "3.0.0-beta.80",
