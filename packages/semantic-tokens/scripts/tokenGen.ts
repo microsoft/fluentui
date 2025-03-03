@@ -46,7 +46,13 @@ function escapeInlineToken(token: string) {
 function cleanFSTTokenName(originalTokenName: string) {
   // Handle any name housekeeping or small token name fixes
 
-  const newtokenName = originalTokenName.replace('-', '/');
+  let newtokenName = originalTokenName.replace('-', '/');
+  // Ignore space
+  newtokenName = newtokenName.replace(' ', '');
+  // Ignore brackets (w/ leading slash)
+  newtokenName = newtokenName.replace('/(', '/');
+  // Ignore brackets
+  newtokenName = newtokenName.replace('(', '/').replace(')', '');
 
   return newtokenName;
 }
@@ -58,7 +64,7 @@ function generateTokenRawStrings() {
   const componentTokens: ComponentTokenMap = {};
   for (const token in tokensJSON) {
     const tokenData: Token = tokensJSON[token];
-    const tokenName = '--smtc-' + tokenData.name.split('/').join('-').toLowerCase();
+    const tokenName = tokenData.cssName;
     const tokenRawString = `export const ${token}Raw = '${tokenName}';\n`;
 
     if (tokenData.name.startsWith('CTRL/')) {
@@ -94,7 +100,9 @@ function generateTokenRawStrings() {
 }
 
 function toCamelCase(str: string) {
-  return str
+  let formattedString = cleanFSTTokenName(str);
+
+  return formattedString
     .split('/')
     .map(function (word: string, index: number) {
       // If it is the first word make sure to lowercase all the chars.
