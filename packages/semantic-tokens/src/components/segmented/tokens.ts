@@ -1,14 +1,14 @@
 // eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
 
-export const ctrlSegmentedBackgroundRest = `var(${ctrlSegmentedBackgroundRestRaw}, var(${backgroundCtrlOutlineRestRaw}, ${tokens.colorNeutralBackgroundTransparent}))`;
-export const ctrlSegmentedBackgroundHover = `var(${ctrlSegmentedBackgroundHoverRaw}, var(${backgroundCtrlOutlineHoverRaw}, ${tokens.colorNeutralBackgroundTransparentHover}))`;
-export const ctrlSegmentedBackgroundPressed = `var(${ctrlSegmentedBackgroundPressedRaw}, var(${backgroundCtrlOutlinePressedRaw}, ${tokens.colorNeutralBackgroundTransparentPressed}))`;
-export const ctrlSegmentedBackgroundDisabled = `var(${ctrlSegmentedBackgroundDisabledRaw}, var(${backgroundCtrlOutlineDisabledRaw}, ${tokens.colorNeutralBackgroundTransparentPressed}))`;
-export const ctrlSegmentedStrokeRest = `var(${ctrlSegmentedStrokeRestRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${tokens.colorNeutralStrokeAccessible}))`;
-export const ctrlSegmentedStrokeHover = `var(${ctrlSegmentedStrokeHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${tokens.colorNeutralStrokeAccessible}))`;
-export const ctrlSegmentedStrokePressed = `var(${ctrlSegmentedStrokePressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${tokens.colorNeutralStrokeAccessible}))`;
-export const ctrlSegmentedStrokeDisabled = `var(${ctrlSegmentedStrokeDisabledRaw}, var(${foregroundCtrlNeutralSecondaryDisabledRaw}, ${tokens.strokeNeutralDisabled}))`;
+export const ctrlSegmentedBackgroundRest = `var(${ctrlSegmentedBackgroundRestRaw}, var(${backgroundCtrlOutlineRestRaw}, ${tokens.colorTransparentBackground}))`;
+export const ctrlSegmentedBackgroundHover = `var(${ctrlSegmentedBackgroundHoverRaw}, var(${backgroundCtrlOutlineHoverRaw}, ${tokens.colorTransparentBackgroundHover}))`;
+export const ctrlSegmentedBackgroundPressed = `var(${ctrlSegmentedBackgroundPressedRaw}, var(${backgroundCtrlOutlinePressedRaw}, ${tokens.colorTransparentBackgroundPressed}))`;
+export const ctrlSegmentedBackgroundDisabled = `var(${ctrlSegmentedBackgroundDisabledRaw}, var(${backgroundCtrlOutlineDisabledRaw}, ${tokens.colorTransparentBackgroundPressed}))`;
+export const ctrlSegmentedStrokeRest = `var(${ctrlSegmentedStrokeRestRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${tokens.colorNeutralStrokeAccessibleRest}))`;
+export const ctrlSegmentedStrokeHover = `var(${ctrlSegmentedStrokeHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${tokens.colorNeutralStrokeAccessibleHover}))`;
+export const ctrlSegmentedStrokePressed = `var(${ctrlSegmentedStrokePressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${tokens.colorNeutralStrokeAccessiblePressed}))`;
+export const ctrlSegmentedStrokeDisabled = `var(${ctrlSegmentedStrokeDisabledRaw}, var(${foregroundCtrlNeutralSecondaryDisabledRaw}, ${tokens.colorNeutralStrokeDisabled}))`;
 export const ctrlSegmentedCornerRest = `var(${ctrlSegmentedCornerRestRaw}, ${cornerCtrlRestRaw})`;
 export const ctrlSegmentedCornerHover = `var(${ctrlSegmentedCornerHoverRaw}, ${cornerCtrlRestRaw})`;
 export const ctrlSegmentedCornerPressed = `var(${ctrlSegmentedCornerPressedRaw}, ${cornerCtrlRestRaw})`;

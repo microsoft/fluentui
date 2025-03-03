@@ -125,19 +125,24 @@ function handleTokenTransforms(tokenString: string) {
     } else if (tokenString.startsWith('Neutral/Stroke/Transparent')) {
       formattedToken = `tokens.strokeNeutralTransparent`;
     } else if (tokenString.startsWith('Neutral/Stroke/Disabled')) {
-      formattedToken = `tokens.strokeNeutralDisabled`;
+      formattedToken = `tokens.colorNeutralStrokeDisabled`;
     } else if (tokenString.startsWith('Neutral/Stroke/')) {
       const tokenFallbackArr = tokenString.split('/');
       const tokenFallbackVal = tokenFallbackArr[2];
-      formattedToken = `tokens.colorNeutralStroke${tokenFallbackVal}`;
+      // Hover etc. may be present
+      const tokenFallbackType = tokenFallbackArr.length > 3 ? tokenFallbackArr[3] : '';
+      formattedToken = `tokens.colorNeutralStroke${tokenFallbackVal}${tokenFallbackType}`;
     } else if (tokenString.startsWith('Neutral/Background/') || tokenString.startsWith('Neutral/Foreground/')) {
       const tokenFallbackArr = tokenString.split('/');
       const tokenFallbackArea = tokenFallbackArr[1];
       const tokenFallbackVal = tokenFallbackArr[2];
-      const tokenFallbackType = tokenFallbackArr[tokenFallbackArr.length - 1];
-      if (tokenFallbackType === 'Rest') {
-        // Rest tokens don't have a qualifier
-        formattedToken = `tokens.colorNeutral${tokenFallbackArea}${tokenFallbackVal}`;
+      // Fallback type, i.e. rest/hover/pressed
+      const tokenFallbackType =
+        tokenFallbackArr[tokenFallbackArr.length - 1] !== 'Rest' ? tokenFallbackArr[tokenFallbackArr.length - 1] : '';
+
+      if (tokenString.includes('Transparent')) {
+        // Handle transparent token format
+        formattedToken = `tokens.colorTransparentBackground${tokenFallbackType}`;
       } else {
         formattedToken = `tokens.colorNeutral${tokenFallbackArea}${tokenFallbackVal}${tokenFallbackType}`;
       }

@@ -2,7 +2,7 @@
 import { tokens } from '@fluentui/tokens';
 
 export const ctrlDialogBackground = `var(${ctrlDialogBackgroundRaw}, ${tokens.colorNeutralBackground1})`;
-export const ctrlDialogStroke = `var(${ctrlDialogStrokeRaw}, var(${nullColorRaw}, ${tokens.colorNeutralStroke2}))`;
+export const ctrlDialogStroke = `var(${ctrlDialogStrokeRaw}, var(${nullColorRaw}, ${tokens.colorNeutralStroke2Rest}))`;
 export const ctrlDialogBaseCorner = `var(${ctrlDialogBaseCornerRaw}, var(${cornerCardRestRaw}, ${x-largeRaw}))`;
 export const ctrlDialogBaseShadowKeyX = `var(${ctrlDialogBaseShadowKeyXRaw})`;
 export const ctrlDialogBaseShadowKeyY = `var(${ctrlDialogBaseShadowKeyYRaw})`;
