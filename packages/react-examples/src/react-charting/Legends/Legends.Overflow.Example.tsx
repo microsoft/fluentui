@@ -72,7 +72,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 7',
-        color: getColorFromToken(DataVizPalette.color11),
+        color: getColorFromToken(DataVizPalette.color3),
         action: () => {
           console.log('Legend7 clicked');
         },
