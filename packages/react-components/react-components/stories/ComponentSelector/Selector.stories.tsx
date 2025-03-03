@@ -1,9 +1,5 @@
 import * as React from 'react';
 import {
-  Accordion,
-  AccordionHeader,
-  AccordionItem,
-  AccordionPanel,
   Button,
   Field,
   Input,
@@ -141,7 +137,7 @@ export const Selector = () => {
   const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
   const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] = React.useState<Record<string, any>[]>([]);
 
-  const firstAccordionItemRef = React.useRef<Button>(null);
+  const firstGroupItemRef = React.useRef<Button>(null);
   const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
 
   const onModeTabSelect = (_, data) => {
@@ -162,13 +158,13 @@ export const Selector = () => {
 
   const onSelectedComponentDismiss = (_, data) => {
     if (selectedComponents.length === 1) {
-      firstAccordionItemRef.current?.focus();
+      firstGroupItemRef.current?.focus();
     }
     updateComponentSelection(data.value, false);
   };
 
   const onRemoveAllComponentsClick = () => {
-    firstAccordionItemRef.current?.focus();
+    firstGroupItemRef.current?.focus();
     setSelectedComponents([]);
   };
 
@@ -425,18 +421,16 @@ export const Selector = () => {
               </div>
             </>
           )}
-          <Accordion collapsible multiple>
+          <div>
             {categorizedComponents.map((category, index) => (
-              <AccordionItem key={category.id} value={category.id}>
-                <AccordionHeader as="h3" button={{ ref: index === 0 ? firstAccordionItemRef : undefined }}>
+              <>
+                <Text as="h3" ref={index === 0 ? firstGroupItemRef : undefined} tabIndex={-1}>
                   {category.title}
-                </AccordionHeader>
-                <AccordionPanel>
-                  <div className={classes.root}>{category.cards}</div>
-                </AccordionPanel>
-              </AccordionItem>
+                </Text>
+                <div className={classes.root}>{category.cards}</div>
+              </>
             ))}
-          </Accordion>
+          </div>
           {allQuestions.length > 0 && (
             <h2 className={classes.heading} id="questions">
               Questions
