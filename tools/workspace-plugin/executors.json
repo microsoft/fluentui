@@ -26,8 +26,8 @@
       "description": "clean executor - remove build artifacts."
     },
     "visual-regression": {
-      "implementation": "./src/executor/visual-regression/executor",
-      "schema": "./src/executor/visual-regression/schema.json",
+      "implementation": "./src/executors/visual-regression/executor",
+      "schema": "./src/executors/visual-regression/schema.json",
       "description": "visual-regression executor"
     }
   }

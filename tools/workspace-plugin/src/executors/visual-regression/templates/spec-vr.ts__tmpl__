@@ -1,0 +1,37 @@
+import { readdirSync, readFileSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { expect, test } from '@playwright/test';
+
+// Paths for snapshots
+const actualRoot = join(__dirname, '../screenshots'); // storywright generated images root
+const baselineRoot = join(__dirname, '__snapshots__'); // baseline root
+
+const actualSnapshots = existsSync(actualRoot) ? readdirSync(actualRoot) : [];
+const baselineSnapshots = existsSync(baselineRoot) ? readdirSync(baselineRoot) : [];
+
+if (!existsSync(baselineRoot)) {
+  console.warn(`No baseline snapshots exist yet! - ${baselineRoot}`);
+}
+
+const snapshotsToAssert = [...actualSnapshots];
+
+// Run tests for actual snapshots
+snapshotsToAssert.forEach(actualSnapshotFileName => {
+  const actualImgPath = join(actualRoot, actualSnapshotFileName);
+
+  test(`${actualSnapshotFileName}`, async ({ page }) => {
+    const actualImg = readFileSync(actualImgPath, 'base64');
+
+    // Render the image on a test page
+    await page.setContent(`
+      <html>
+        <body>
+          <img id="image" src="data:image/png;base64,${actualImg}" />
+        </body>
+      </html>
+    `);
+
+    // Compare the rendered image with the baseline
+    await expect(page.locator('#image')).toHaveScreenshot(actualSnapshotFileName);
+  });
+});
