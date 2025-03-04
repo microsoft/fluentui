@@ -36,40 +36,18 @@ const screenReaderOnlyStyle: React.CSSProperties = {
 
 export class StackedBarChartDynamicExample extends React.Component<{}, IExampleState> {
   private _colors = [
-    [
-      DefaultPalette.blueMid,
-      DefaultPalette.blue,
-      getColorFromToken(DataVizPalette.color6),
-      DefaultPalette.tealDark,
-      DefaultPalette.teal,
-      getColorFromToken(DataVizPalette.color1),
-    ],
-    [
-      DefaultPalette.redDark,
-      DefaultPalette.red,
-      DefaultPalette.orange,
-      DefaultPalette.orangeLight,
-      DefaultPalette.orangeLighter,
-      getColorFromToken(DataVizPalette.color10),
-      getColorFromToken(DataVizPalette.color2),
-    ],
-    [
-      DefaultPalette.greenDark,
-      DefaultPalette.green,
-      getColorFromToken(DataVizPalette.color5),
-      DefaultPalette.accent,
-      DefaultPalette.neutralSecondary,
-      getColorFromToken(DataVizPalette.color24),
-    ],
-    [
-      DefaultPalette.purpleDark,
-      DefaultPalette.purple,
-      DefaultPalette.neutralSecondaryAlt,
-      DefaultPalette.magentaDark,
-      DefaultPalette.magenta,
-      DefaultPalette.magentaLight,
-    ],
+    getColorFromToken(DataVizPalette.color1),
+    getColorFromToken(DataVizPalette.color2),
+    getColorFromToken(DataVizPalette.color3),
+    getColorFromToken(DataVizPalette.color4),
+    getColorFromToken(DataVizPalette.color5),
+    getColorFromToken(DataVizPalette.color6),
+    getColorFromToken(DataVizPalette.color7),
+    getColorFromToken(DataVizPalette.color8),
+    getColorFromToken(DataVizPalette.color9),
+    getColorFromToken(DataVizPalette.color10),
   ];
+  private _colorSet: [String] = [''];
 
   private _gradientColors = [
     [
@@ -164,6 +142,7 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
   }
 
   private _changeColors(): void {
+    this._colorSet = [''];
     this.setState(prevState => ({
       dynamicData: {
         chartTitle: 'Stacked Bar chart',
@@ -171,25 +150,25 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
           {
             ...prevState.dynamicData.chartData![0],
             legend: 'first',
-            color: this._randomColor(0),
+            color: this._randomColor(),
             gradient: this._randomGradient(0),
           },
           {
             ...prevState.dynamicData.chartData![1],
             legend: 'second',
-            color: this._randomColor(1),
+            color: this._randomColor(),
             gradient: this._randomGradient(1),
           },
           {
             ...prevState.dynamicData.chartData![2],
             legend: 'third',
-            color: this._randomColor(2),
+            color: this._randomColor(),
             gradient: this._randomGradient(2),
           },
           {
             ...prevState.dynamicData.chartData![3],
             legend: 'fourth',
-            color: this._randomColor(3),
+            color: this._randomColor(),
             gradient: this._randomGradient(3),
           },
         ],
@@ -203,8 +182,13 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
     return Math.random() * 45 + 5;
   }
 
-  private _randomColor(index: number): string {
-    return this._colors[index][Math.floor(Math.random() * this._colors[index].length)];
+  private _randomColor(): string {
+    const color = this._colors[Math.floor(Math.random() * this._colors.length)];
+    if (this._colorSet.includes(color)) {
+      return this._randomColor();
+    }
+    this._colorSet.push(color);
+    return color;
   }
 
   private _randomGradient(index: number): [string, string] {
