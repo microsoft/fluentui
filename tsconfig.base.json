@@ -201,6 +201,7 @@
       "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
+      "@fluentui/visual-regression-assert": ["tools/visual-regression-assert/src/index.ts"],
       "@fluentui/visual-regression-utilities": ["tools/visual-regression-utilities/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
     }
