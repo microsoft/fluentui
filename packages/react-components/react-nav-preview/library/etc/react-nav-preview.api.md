@@ -98,14 +98,27 @@ export const Nav: ForwardRefComponent<NavProps>;
 // @public
 export const NavCategory: ForwardRefComponent<NavCategoryProps>;
 
+// @public (undocumented)
+export type NavCategoryContextValues = {
+    categoryValue: NavCategoryContextValue;
+};
+
 // @public
 export const NavCategoryItem: ForwardRefComponent<NavCategoryItemProps>;
 
 // @public (undocumented)
 export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots>;
 
+// @public (undocumented)
+export type NavCategoryItemContextValues = {
+    navCategoryItem: NavCategoryItemContextValue;
+};
+
 // @public
 export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>>;
+
+// @public (undocumented)
+export const NavCategoryItemProvider: React_2.Provider<NavCategoryItemContextValue>;
 
 // @public (undocumented)
 export type NavCategoryItemSlots = {
@@ -125,6 +138,9 @@ export type NavCategoryProps = {
     value: NavItemValue;
     children?: React_2.ReactNode | null;
 };
+
+// @public (undocumented)
+export const NavCategoryProvider: React_2.Provider<NavCategoryContextValue>;
 
 // @public
 export type NavCategoryState = NavCategoryContextValue & Required<NavCategoryProps>;
@@ -442,14 +458,29 @@ export const useNav_unstable: (props: NavProps, ref: React_2.Ref<HTMLDivElement>
 // @public
 export const useNavCategory_unstable: (props: NavCategoryProps, ref: React_2.Ref<HTMLDivElement>) => NavCategoryState;
 
+// @public (undocumented)
+export const useNavCategoryContext_unstable: () => NavCategoryContextValue;
+
+// @public (undocumented)
+export function useNavCategoryContextValues_unstable(state: NavCategoryState): NavCategoryContextValues;
+
 // @public
 export const useNavCategoryItem_unstable: (props: NavCategoryItemProps, ref: React_2.Ref<HTMLButtonElement>) => NavCategoryItemState;
+
+// @public (undocumented)
+export const useNavCategoryItemContext_unstable: () => NavCategoryItemContextValue;
+
+// @public (undocumented)
+export function useNavCategoryItemContextValues_unstable(state: NavCategoryItemState): NavCategoryItemContextValues;
 
 // @public
 export const useNavCategoryItemStyles_unstable: (state: NavCategoryItemState) => NavCategoryItemState;
 
 // @public (undocumented)
 export const useNavContext_unstable: () => NavContextValue;
+
+// @public (undocumented)
+export function useNavContextValues_unstable(state: NavState): NavContextValues;
 
 // @public
 export const useNavDivider_unstable: (props: NavDividerProps, ref: React_2.Ref<HTMLElement>) => NavDividerState;
