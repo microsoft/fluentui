@@ -14,7 +14,14 @@ import {
   useId,
   Subtitle2,
 } from '@fluentui/react-components';
-import { ArrowDownRegular, SearchRegular, Link12Regular, Link20Regular, Link16Regular } from '@fluentui/react-icons';
+import {
+  ArrowDownRegular,
+  ArrowUpRegular,
+  SearchRegular,
+  Link12Regular,
+  Link20Regular,
+  Link16Regular,
+} from '@fluentui/react-icons';
 
 import { removeFromArray, getComponentStoryUrl, getAllQuestions } from './utils';
 import questions from './selection-logic/Questions.json';
@@ -134,6 +141,10 @@ const useStyles = makeStyles({
   clearSelection: {
     flexShrink: 0,
   },
+  fillOutSection: {
+    display: 'flex',
+    justifyContent: 'end',
+  },
 });
 
 interface ComponentGroup {
@@ -161,6 +172,14 @@ export const Selector = () => {
 
   const firstGroupItemRef = React.useRef<Button>(null);
   const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
+
+  const questionsSectionRef = React.useRef<HTMLDivElement | null>(null);
+
+  const scrollToQuestionsSection = () => {
+    if (questionsSectionRef.current) {
+      questionsSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const onModeTabSelect = (_, data) => {
     const newMode = data.value;
@@ -403,11 +422,6 @@ export const Selector = () => {
           value={filterText}
           onChange={onFilterChange}
         />
-        {allQuestions.length > 0 && (
-          <div>
-            <ArrowDownRegular /> <Link href="#questions">Fill out the checklist below</Link>{' '}
-          </div>
-        )}
       </div>
       <div id="#body" className={classes.bodyWrapper}>
         {mode === 'byComponents' && (
@@ -438,7 +452,7 @@ export const Selector = () => {
               ))}
             </div>
             {allQuestions.length > 0 && (
-              <h2 className={classes.heading} id="questions">
+              <h2 className={classes.heading} ref={questionsSectionRef}>
                 Questions
               </h2>
             )}
@@ -495,6 +509,12 @@ export const Selector = () => {
               </Tag>
             ))}
           </TagGroup>
+        </div>
+      )}
+      {allQuestions.length > 0 && (
+        <div className={classes.fillOutSection}>
+          <ArrowUpRegular />
+          <Link onClick={scrollToQuestionsSection}>Fill out the checklist below</Link>
         </div>
       )}
     </div>
