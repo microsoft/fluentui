@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { CardPreview, tokens, makeStyles, mergeClasses, FluentProvider } from '@fluentui/react-components';
+import { CardPreview, makeStyles, mergeClasses, FluentProvider } from '@fluentui/react-components';
 import type { CardState, FluentProviderCustomStyleHooks } from '@fluentui/react-components';
 
 const useCardPreviewStyle = makeStyles({
   root: {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: 'red',
     padding: '30px',
-    margin: 'auto',
   },
 });
 

@@ -1,14 +1,12 @@
 import * as React from 'react';
-import { makeStyles, Button, tokens, FluentProvider, mergeClasses } from '@fluentui/react-components';
+import { makeStyles, Button, FluentProvider, mergeClasses } from '@fluentui/react-components';
 import { ArrowReply16Regular, MoreHorizontal20Regular, Share16Regular } from '@fluentui/react-icons';
 import { CardFooter } from '@fluentui/react-components';
 import type { CardState, FluentProviderCustomStyleHooks } from '@fluentui/react-components';
 
 const useCardFooterStyle = makeStyles({
   root: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    width: '300px',
-    margin: 'auto',
+    backgroundColor: 'red',
   },
 });
 

@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { CardHeader } from '@fluentui/react-components';
-import { makeStyles, Button, Body1, Caption1, tokens, FluentProvider, mergeClasses } from '@fluentui/react-components';
+import { makeStyles, Button, Body1, Caption1, FluentProvider, mergeClasses } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import type { CardState, FluentProviderCustomStyleHooks } from '@fluentui/react-components';
 
 const useCardHeaderStyle = makeStyles({
   root: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    width: '300px',
-    margin: 'auto',
+    backgroundColor: 'red',
   },
 });
 

@@ -6,7 +6,6 @@ import {
   Caption1,
   Button,
   mergeClasses,
-  tokens,
   FluentProvider,
   Card,
   CardFooter,
@@ -18,10 +17,7 @@ import type { CardState, FluentProviderCustomStyleHooks } from '@fluentui/react-
 
 const useCardStyle = makeStyles({
   root: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    width: '620px',
-    maxWidth: '100%',
-    margin: 'auto',
+    backgroundColor: 'red',
   },
 });
 
