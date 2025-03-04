@@ -11,8 +11,8 @@
         "cwd": "{projectRoot}"
       }
     },
-    "prepare-test-vr": {
-      "command": "rm -rf dist/screenshots && storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
+    "generate-image-for-vrt": {
+      "command": "rm -rf dist/vrt/screenshots && storywright  --browsers chromium --url dist/storybook --destpath dist/vrt/actual --waitTimeScreenshot 500 --concurrency 4 --headless true",
       "options": {
         "cwd": "{projectRoot}"
       },
@@ -22,11 +22,28 @@
           "example": {}
         }
       },
-      "dependsOn": ["build-storybook"]
+      "dependsOn": ["build-storybook"],
+      "inputs": ["{projectRoot}/src/**/*.stories.tsx?"],
+      "outputs": ["{projectRoot}/dist/vrt/actual/**"],
+      "cache": true
     },
     "test-vr": {
       "executor": "@fluentui/workspace-plugin:visual-regression",
       "dependsOn": ["build-storybook"]
+    },
+    "test-vr-cli": {
+      "command": "visual-regression-assert --baselineDir dist/vrt/baseline --actualDir dist/vrt/actual --diffDir dist/vrt/diff --reportPath dist/vrt/report.html",
+      "options": {
+        "cwd": "{projectRoot}"
+      },
+      "dependsOn": ["build-storybook", "generate-image-for-vrt"],
+      "inputs": ["{projectRoot}/dist/vrt/screenshots/**"],
+      "metadata": {
+        "help": {
+          "command": "yarn visual-regression-assert --help",
+          "example": {}
+        }
+      }
     },
     "build-storybook": {
       "command": "storybook build -o dist/storybook",
