@@ -14,13 +14,13 @@ import {
   useId,
   Subtitle2,
 } from '@fluentui/react-components';
-import { ArrowDownRegular, SearchRegular } from '@fluentui/react-icons';
+import { ArrowDownRegular, SearchRegular, Link12Regular, Link20Regular, Link16Regular } from '@fluentui/react-icons';
 
 import { removeFromArray, getComponentStoryUrl, getAllQuestions } from './utils';
 import questions from './selection-logic/Questions.json';
 import importedGroups from './selection-logic/Groups.json';
 import * as importedComponentsDefinitions from './components-definitions/index';
-import { add, create, get, set } from 'lodash';
+import { add, create, filter, get, pad, set } from 'lodash';
 import { SelectionCard } from './SelectionCard';
 import { Question } from './Question';
 import { BehaviorSelection } from './BehaviorSelection';
@@ -57,13 +57,32 @@ const useStyles = makeStyles({
   },
   tooltip: { maxWidth: '500px important!', backgroundColor: 'red' },
   componentWrapper: {
-    margin: '10px',
-    padding: '10px',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
     display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
+    flexDirection: 'column',
+    flex: 1,
+    overflow: 'hidden',
+  },
+  bodyWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
+    padding: '20px',
+    overflowY: 'auto',
+    maxHeight: 'calc(100vh - 630px)',
+  },
+  footerWrapper: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    position: 'sticky',
+    bottom: '0',
+    width: '100%',
+    padding: '30px 0 0 0',
+    overflowX: 'auto',
+  },
+  headerWrapper: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    paddingRight: '50px',
   },
   questionsWrapper: {
     padding: '20px',
@@ -102,15 +121,18 @@ const useStyles = makeStyles({
   selectedComponentTitle: {
     marginBottom: '10px',
   },
-  selectedItemsAndNextButtonContainer: {
+  actionsHeaderWrapper: {
     display: 'flex',
-    justifyContent: 'space-between',
-    paddingRight: '50px',
+    margin: '15px 0',
   },
-  topTabsAndSearchWrapper: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    paddingRight: '50px',
+  actionsHeader: {
+    margin: 0,
+  },
+  actionsHeaderIcon: {
+    marginLeft: '5px',
+  },
+  clearSelection: {
+    flexShrink: 0,
   },
 });
 
@@ -182,10 +204,14 @@ export const Selector = () => {
     setFilteredComponentsDefinitions(
       componentsDefinitions.current.filter(definition => {
         const isMatchInName = definition.component.toLowerCase().includes(filterText.toLowerCase());
+        const componentGroup = groups.find(group => group.tags.find(tag => tag.includes(definition.component)));
         const isMatchInStory = definition.story
           ? definition.story.toLowerCase().includes(filterText.toLowerCase())
           : false;
-        return isMatchInName || isMatchInStory;
+        const isMatchInGroupTitle = componentGroup
+          ? componentGroup.title.toLowerCase().includes(filterText.toLowerCase())
+          : false;
+        return isMatchInName || isMatchInStory || isMatchInGroupTitle;
       }),
     );
   }, [setFilteredComponentsDefinitions, filterText]);
@@ -361,14 +387,14 @@ export const Selector = () => {
   const allQuestions = React.useMemo(() => getAllQuestions(selectedComponents, questions), [selectedComponents]);
 
   return (
-    <>
-      <div className={classes.topTabsAndSearchWrapper}>
+    <div className={classes.componentWrapper}>
+      <div id="#header" className={classes.headerWrapper}>
         {/*
         <TabList selectedValue={mode} onTabSelect={onModeTabSelect} aria-labelledby="selectorMode-text">
           <Tab value="byComponents">By components</Tab>
           <Tab value="byBehaviors">By behaviors</Tab>
         </TabList>
-*/}
+        */}
         <Input
           contentBefore={<SearchRegular />}
           size="small"
@@ -377,93 +403,100 @@ export const Selector = () => {
           value={filterText}
           onChange={onFilterChange}
         />
-      </div>
-      {mode === 'byComponents' && (
-        <>
-          <div className={classes.visuallyHidden}>
-            <Text role="status">{filteredComponentsDefinitions.length} components available.</Text>
-          </div>
-          <h2>Choose Component ({filteredComponentsDefinitions.length})</h2>
-          {selectedComponents.length > 0 && (
-            <>
-              <div className={classes.selectedComponentTitle}>
-                <Subtitle2>Selected components</Subtitle2>
-              </div>
-              <div className={classes.selectedItemsAndNextButtonContainer}>
-                <div>
-                  <Button shape="circular" onClick={onRemoveAllComponentsClick}>
-                    Clear selection
-                  </Button>
-                  <TagGroup
-                    onDismiss={onSelectedComponentDismiss}
-                    aria-label="Selected components"
-                    className={classes.selectedItemsContainer}
-                  >
-                    {selectedComponents.map(component => (
-                      <Tag
-                        className={classes.selectedItemTag}
-                        key={component.name}
-                        value={component.name}
-                        shape="circular"
-                        dismissible
-                        dismissIcon={{ 'aria-label': 'Remove' }}
-                      >
-                        {component.displayName}
-                      </Tag>
-                    ))}
-                  </TagGroup>
-                </div>
-                {allQuestions.length > 0 && (
-                  <div>
-                    <ArrowDownRegular /> <Link href="#questions">Fill out the checklist below</Link>{' '}
-                  </div>
-                )}
-              </div>
-            </>
-          )}
+        {allQuestions.length > 0 && (
           <div>
-            {categorizedComponents.map((category, index) => (
-              <>
-                {category.cards && category.cards.length > 0 && (
-                  <>
-                    <Text as="h3" ref={index === 0 ? firstGroupItemRef : undefined} tabIndex={-1}>
-                      {category.title}
-                    </Text>
-                    <div className={classes.root}>{category.cards}</div>
-                  </>
-                )}
-              </>
-            ))}
+            <ArrowDownRegular /> <Link href="#questions">Fill out the checklist below</Link>{' '}
           </div>
-          {allQuestions.length > 0 && (
-            <h2 className={classes.heading} id="questions">
-              Questions
-            </h2>
-          )}
-          {allQuestions.map((question, index) => (
-            <Question
-              key={question.id}
-              question={question}
-              number={index + 1}
-              updateDecisionForQuestion={updateDecisionForQuestion}
-            />
-          ))}
-        </>
+        )}
+      </div>
+      <div id="#body" className={classes.bodyWrapper}>
+        {mode === 'byComponents' && (
+          <>
+            <div className={classes.visuallyHidden}>
+              <Text role="status">{filteredComponentsDefinitions.length} components available.</Text>
+            </div>
+            {/* <h2>Choose Component ({filteredComponentsDefinitions.length})</h2> */}
+            <div>
+              {categorizedComponents.map((category, index) => (
+                <>
+                  {category.cards && category.cards.length > 0 && (
+                    <>
+                      <div className={classes.actionsHeaderWrapper}>
+                        <h3
+                          className={classes.actionsHeader}
+                          ref={index === 0 ? firstGroupItemRef : undefined}
+                          tabIndex={-1}
+                        >
+                          {category.title}
+                        </h3>
+                        {<Link20Regular className={classes.actionsHeaderIcon} />}
+                      </div>
+                      <div className={classes.root}>{category.cards}</div>
+                    </>
+                  )}
+                </>
+              ))}
+            </div>
+            {allQuestions.length > 0 && (
+              <h2 className={classes.heading} id="questions">
+                Questions
+              </h2>
+            )}
+            {allQuestions.map((question, index) => (
+              <Question
+                key={question.id}
+                question={question}
+                number={index + 1}
+                updateDecisionForQuestion={updateDecisionForQuestion}
+              />
+            ))}
+          </>
+        )}
+        {mode === 'byBehaviors' && (
+          <>
+            <BehaviorSelection updateBehaviorDecision={updateBehaviorDecision} />
+          </>
+        )}
+        {(matchingComponents.length > 0 || (matchingComponents.length === 0 && selectedBehaviours.length > 0)) && (
+          <h2 id="matching-heading" className={classes.heading}>
+            Matching Components {matchingComponents.length}
+          </h2>
+        )}
+        {matchingComponents.length === 0 && selectedBehaviours.length > 0 && (
+          <Text>No components match the given answers.</Text>
+        )}
+        {matchingComponents.length > 0 && <MatchingComponents components={matchingComponents} />}
+      </div>
+
+      {/* <div className={classes.selectedComponentTitle}>
+                <Subtitle2>Selected components</Subtitle2>
+              </div> */}
+
+      {selectedComponents.length > 0 && (
+        <div id="#footer" className={classes.footerWrapper}>
+          <Button className={classes.clearSelection} shape="circular" onClick={onRemoveAllComponentsClick}>
+            Clear selection
+          </Button>
+          <TagGroup
+            onDismiss={onSelectedComponentDismiss}
+            aria-label="Selected components"
+            className={classes.selectedItemsContainer}
+          >
+            {selectedComponents.map(component => (
+              <Tag
+                className={classes.selectedItemTag}
+                key={component.name}
+                value={component.name}
+                shape="circular"
+                dismissible
+                dismissIcon={{ 'aria-label': 'Remove' }}
+              >
+                {component.displayName}
+              </Tag>
+            ))}
+          </TagGroup>
+        </div>
       )}
-      {mode === 'byBehaviors' && (
-        <>
-          <BehaviorSelection updateBehaviorDecision={updateBehaviorDecision} />
-        </>
-      )}
-      {(matchingComponents.length > 0 || (matchingComponents.length === 0 && selectedBehaviours.length > 0)) && (
-        <h2 id="matching-heading" className={classes.heading}>
-          Matching Components {matchingComponents.length}
-        </h2>
-      )}
-      {matchingComponents.length === 0 && selectedBehaviours.length > 0 && (
-        <Text>No components match the given answers.</Text>
-      )}
-      {matchingComponents.length > 0 && <MatchingComponents components={matchingComponents} />}
-    </>
+    </div>
   );
 };

@@ -28,6 +28,7 @@ const useStyles = makeStyles({
     width: '250px',
     maxWidth: '100%',
     height: 'fit-content',
+    minHeight: '196px',
   },
 
   caption: {
