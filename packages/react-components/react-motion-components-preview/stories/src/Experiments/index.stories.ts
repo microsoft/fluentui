@@ -4,6 +4,7 @@ import ExperimentsDescription from './ExperimentsDescription.md';
 // import { Default } from './ExperimentsDefault.stories';
 // export { Default } from './ExperimentsDefault.stories';
 export { ExperimentsRotate as Rotate } from './ExperimentsRotate.stories';
+export { ExperimentsBlur as Blur } from './ExperimentsBlur.stories';
 
 export default {
   title: 'Motion/Experiments',

@@ -11,3 +11,4 @@ export { Fade, FadeSnappy, FadeRelaxed } from './components/Fade';
 export { Scale, ScaleSnappy, ScaleRelaxed } from './components/Scale';
 export { Slide, SlideSnappy, SlideRelaxed, createSlidePresence } from './components/Slide';
 export { Rotate } from './components/Rotate';
+export { Blur } from './components/Blur';
