@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "module": "CommonJS",
     "noEmit": false,
     "lib": ["ES2019", "dom"],
     "declaration": true,
