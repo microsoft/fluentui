@@ -311,12 +311,9 @@ test.describe('Tablist', () => {
     await expect(element).toHaveJSProperty('activeid', secondTabId);
   });
 
-  test("should associate panel elements with `aria-controls` attributes", async ({
-      fastPage,
-      page,
-  }) => {
-      const { element } = fastPage;
-      await fastPage.setTemplate(`
+  test('should associate panel elements with `aria-controls` attributes', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    await fastPage.setTemplate(`
           <fluent-tablist>
               <fluent-tab aria-controls="panel1">Tab one</fluent-tab>
               <fluent-tab aria-controls="panel2">Tab two</fluent-tab>
@@ -327,25 +324,25 @@ test.describe('Tablist', () => {
           <div id="panel3">Panel three</div>
       `);
 
-      const tabs = element.getByRole("tab");
-      const firstTab = tabs.nth(0);
-      const secondTab = tabs.nth(1);
-      const firstPanel = page.getByText("Panel one");
-      const secondPanel = page.getByText("Panel two");
-      const thirdPanel = page.getByText("Panel three");
+    const tabs = element.getByRole('tab');
+    const firstTab = tabs.nth(0);
+    const secondTab = tabs.nth(1);
+    const firstPanel = page.getByText('Panel one');
+    const secondPanel = page.getByText('Panel two');
+    const thirdPanel = page.getByText('Panel three');
 
-      await expect(firstTab).toHaveAttribute("aria-selected", "true");
-      await expect(firstPanel).toBeVisible();
-      await expect(firstPanel).toHaveRole("tabpanel");
-      await expect(secondPanel).toBeHidden();
-      await expect(secondPanel).toHaveRole("tabpanel");
-      await expect(thirdPanel).toBeHidden();
-      await expect(thirdPanel).toHaveRole("tabpanel");
+    await expect(firstTab).toHaveAttribute('aria-selected', 'true');
+    await expect(firstPanel).toBeVisible();
+    await expect(firstPanel).toHaveRole('tabpanel');
+    await expect(secondPanel).toBeHidden();
+    await expect(secondPanel).toHaveRole('tabpanel');
+    await expect(thirdPanel).toBeHidden();
+    await expect(thirdPanel).toHaveRole('tabpanel');
 
-      await secondTab.click();
+    await secondTab.click();
 
-      await expect(firstPanel).toBeHidden();
-      await expect(secondPanel).toBeVisible();
-      await expect(thirdPanel).toBeHidden();
-    });
+    await expect(firstPanel).toBeHidden();
+    await expect(secondPanel).toBeVisible();
+    await expect(thirdPanel).toBeHidden();
+  });
 });

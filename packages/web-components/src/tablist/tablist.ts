@@ -117,15 +117,15 @@ export class BaseTablist extends FASTElement {
       this.setTabs();
 
       for (const tab of this.tabs) {
-        const ariaControls = tab.getAttribute("aria-controls") ?? "";
+        const ariaControls = tab.getAttribute('aria-controls') ?? '';
         const rootNode = this.getRootNode() as Document | ShadowRoot;
         const panel = rootNode.getElementById(ariaControls);
         if (ariaControls && panel) {
-	        panel.role ??= "tabpanel";
-	        panel.hidden = this.activeid !== tab.id;
-	        this.tabPanelMap.set(tab, panel);
+          panel.role ??= 'tabpanel';
+          panel.hidden = this.activeid !== tab.id;
+          this.tabPanelMap.set(tab, panel);
         }
-			}
+      }
     }
   }
 
