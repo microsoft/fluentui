@@ -85,6 +85,21 @@ export class BaseTablist extends FASTElement {
     if (this.$fastController.isConnected && this.tabs.length > 0) {
       this.prevActiveTabIndex = this.tabs.findIndex((item: HTMLElement) => item.id === oldValue);
       this.setTabs();
+
+      if (oldValue) {
+        const prevActiveTab = this.tabs[this.prevActiveTabIndex];
+        const prevActivePanel = this.tabPanelMap.get(prevActiveTab);
+        if (prevActivePanel) {
+          prevActivePanel.hidden = true;
+        }
+      }
+
+      if (newValue && this.activetab) {
+        const activePanel = this.tabPanelMap.get(this.activetab);
+        if (activePanel) {
+          activePanel.hidden = false;
+        }
+      }
     }
   }
 
@@ -100,6 +115,17 @@ export class BaseTablist extends FASTElement {
     if (this.$fastController.isConnected && this.tabs.length > 0) {
       this.tabIds = this.getTabIds();
       this.setTabs();
+
+      for (const tab of this.tabs) {
+        const ariaControls = tab.getAttribute("aria-controls") ?? "";
+        const rootNode = this.getRootNode() as Document | ShadowRoot;
+        const panel = rootNode.getElementById(ariaControls);
+        if (ariaControls && panel) {
+	        panel.role ??= "tabpanel";
+	        panel.hidden = this.activeid !== tab.id;
+	        this.tabPanelMap.set(tab, panel);
+        }
+			}
     }
   }
 
@@ -112,6 +138,8 @@ export class BaseTablist extends FASTElement {
   private prevActiveTabIndex: number = 0;
   private activeTabIndex: number = 0;
   private tabIds!: Array<string>;
+
+  private tabPanelMap = new WeakMap<HTMLElement, HTMLElement>();
 
   private change = (): void => {
     this.$emit('change', this.activetab);
