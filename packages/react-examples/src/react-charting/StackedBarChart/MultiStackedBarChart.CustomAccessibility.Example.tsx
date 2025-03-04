@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { IChartDataPoint, MultiStackedBarChart, IChartProps } from '@fluentui/react-charting';
+import {
+  IChartDataPoint,
+  MultiStackedBarChart,
+  IChartProps,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionComponent<{}> = () => {
@@ -7,7 +13,7 @@ export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionCompo
     {
       legend: 'Debit card numbers (EU and USA)',
       data: 40,
-      color: DefaultPalette.red,
+      color: getColorFromToken(DataVizPalette.color1),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '40%',
       callOutAccessibilityData: { ariaLabel: 'Bar series 1 of 5 2020/04/30 40%' },
@@ -15,7 +21,7 @@ export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionCompo
     {
       legend: 'Passport numbers (USA)',
       data: 23,
-      color: DefaultPalette.green,
+      color: getColorFromToken(DataVizPalette.color5),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '23%',
       callOutAccessibilityData: { ariaLabel: 'Bar series 2 of 5 2020/04/30 23%' },
@@ -23,7 +29,7 @@ export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionCompo
     {
       legend: 'Social security numbers',
       data: 35,
-      color: DefaultPalette.yellow,
+      color: getColorFromToken(DataVizPalette.color3),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '35%',
       callOutAccessibilityData: { ariaLabel: 'Bar series 3 of 5 2020/04/30 35%' },
@@ -31,7 +37,7 @@ export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionCompo
     {
       legend: 'Credit card numbers',
       data: 87,
-      color: DefaultPalette.blueLight,
+      color: getColorFromToken(DataVizPalette.color2),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '87%',
       callOutAccessibilityData: { ariaLabel: 'Bar series 4 of 5 2020/04/30 87%' },
@@ -39,7 +45,7 @@ export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionCompo
     {
       legend: 'Tax identification numbers (USA)',
       data: 87,
-      color: DefaultPalette.black,
+      color: getColorFromToken(DataVizPalette.color8),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '87%',
       callOutAccessibilityData: { ariaLabel: 'Bar series 5 of 5 2020/04/30 87%' },
@@ -49,7 +55,7 @@ export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionCompo
     {
       legend: 'Debit card numbers (EU and USA)',
       data: 40,
-      color: DefaultPalette.red,
+      color: getColorFromToken(DataVizPalette.color1),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '40%',
       callOutAccessibilityData: { ariaLabel: 'Bar series 1 of 5 2020/04/30 40%' },
@@ -57,7 +63,7 @@ export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionCompo
     {
       legend: 'Passport numbers (USA)',
       data: 56,
-      color: DefaultPalette.green,
+      color: getColorFromToken(DataVizPalette.color5),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '56%',
       callOutAccessibilityData: { ariaLabel: 'Bar series 2 of 5 2020/04/30 56%' },
@@ -65,7 +71,7 @@ export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionCompo
     {
       legend: 'Social security numbers',
       data: 35,
-      color: DefaultPalette.yellow,
+      color: getColorFromToken(DataVizPalette.color3),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '35%',
       callOutAccessibilityData: { ariaLabel: 'Bar series 3 of 5 2020/04/30 35%' },
@@ -73,7 +79,7 @@ export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionCompo
     {
       legend: 'Credit card numbers',
       data: 92,
-      color: DefaultPalette.blueLight,
+      color: getColorFromToken(DataVizPalette.color2),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '92%',
       callOutAccessibilityData: { ariaLabel: 'Bar series 4 of 5 2020/04/30 92%' },
@@ -81,7 +87,7 @@ export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionCompo
     {
       legend: 'Tax identification numbers (USA)',
       data: 87,
-      color: DefaultPalette.black,
+      color: getColorFromToken(DataVizPalette.color8),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '87%',
       callOutAccessibilityData: { ariaLabel: 'Bar series 5 of 5 2020/04/30 87%' },
@@ -100,7 +106,7 @@ export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionCompo
     {
       legend: 'Credit card Numbers',
       data: 23,
-      color: DefaultPalette.green,
+      color: getColorFromToken(DataVizPalette.color2),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '87%',
       callOutAccessibilityData: { ariaLabel: 'Bar series 2 of 2 2020/04/30 87%' },
