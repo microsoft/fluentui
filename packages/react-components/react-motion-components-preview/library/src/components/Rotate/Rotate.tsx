@@ -1,8 +1,5 @@
 import { AtomMotion, createPresenceComponent, motionTokens, PresenceMotionFn } from '@fluentui/react-motion';
 import { fadeAtom } from '../../atoms/fade-atom';
-import * as React from 'react';
-
-// const enter
 
 type RotateRuntimeParams = {
   /** The axis to rotate around. */
@@ -40,8 +37,6 @@ const rotatePresenceFn: PresenceMotionFn<RotateRuntimeParams> = ({
   exitDuration = enterDuration,
   enterEasing = motionTokens.curveDecelerateMin,
   exitEasing = motionTokens.curveAccelerateMin,
-  // enterEasing = motionTokens.curveLinear,
-  // exitEasing = motionTokens.curveLinear,
   animateOpacity = true,
 }: RotateRuntimeParams) => {
   const enterAtoms: AtomMotion[] = [
@@ -74,15 +69,5 @@ const rotatePresenceFn: PresenceMotionFn<RotateRuntimeParams> = ({
 
 // Create a presence motion component to rotate an element from one angle to another, around the X, Y or Z axis.
 export const Rotate = createPresenceComponent(rotatePresenceFn);
-// export const Rotate = ({ perspective = '1000px', ...rest }: React.ComponentProps<typeof RotateInner>) => {
-// export const Rotate = ({ perspective = '1000px', ...rest }: React.ComponentProps<typeof RotateInner>) => {
-//   return (
-//     <div style={{ perspective }}>
-//       <RotateInner {...rest} />
-//     </div>
-//   );
-// };
 
 // TODO: test Rotate.In and .Out
-// TODO: maybe create a helper like wrapPresenceComponent
-// TODO: or leave perspective to the outside context to define
