@@ -4,7 +4,7 @@
     "parser": {
       "syntax": "typescript",
       "decorators": true,
-      "dynamicImport": true
+      "dynamicImport": false
     },
     "transform": {
       "decoratorMetadata": true,
@@ -15,7 +15,8 @@
     "loose": true
   },
   "module": {
-    "type": "commonjs"
+    "type": "commonjs",
+    "ignoreDynamic": true
   },
   "sourceMaps": true,
   "exclude": [

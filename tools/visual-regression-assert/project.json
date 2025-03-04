@@ -17,7 +17,7 @@
       "executor": "@nx/js:swc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/tools/visual-regression-assert",
+        "outputPath": "{projectRoot}/dist",
         "main": "tools/visual-regression-assert/src/index.ts",
         "tsConfig": "tools/visual-regression-assert/tsconfig.lib.json",
         "assets": ["tools/visual-regression-assert/*.md"]

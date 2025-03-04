@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "commonjs",
   "bin": {
-    "test-ssr": "./bin/visual-regression-assert.js"
+    "visual-regression-assert": "./bin/visual-regression-assert.js"
   },
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",
@@ -15,13 +15,8 @@
     "lib-commonjs"
   ],
   "dependencies": {
-    "@fluentui/react-provider": "^9.20.0",
-    "@fluentui/react-theme": "^9.1.24",
-    "@swc/helpers": "^0.5.1"
+    "@swc/helpers": "^0.5.1",
+    "pixelmatch": "^7.1.0"
   },
-  "peerDependencies": {
-    "@storybook/react": "^7.6.20",
-    "react": ">=16.14.0 <19.0.0",
-    "@types/react": ">=16.14.0 <19.0.0"
-  }
+  "peerDependencies": {}
 }

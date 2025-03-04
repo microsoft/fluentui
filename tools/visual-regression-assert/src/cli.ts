@@ -5,11 +5,12 @@ main();
 
 async function main() {
   const argv = yargs(process.argv.slice(2))
-    .usage('$0 <stories>', 'Run SSR tests for stories')
+    .usage('$0', 'Run VR tests for Images')
     .option('baselineDir', { type: 'string', demandOption: true })
     .option('actualDir', { type: 'string', demandOption: true })
     .option('diffDir', { type: 'string', demandOption: true })
     .option('reportPath', { type: 'string', demandOption: true })
+    .option('updateSnapshots', { type: 'boolean', default: false, alias: 'u' })
     .strict().argv;
 
   // Example usage:
@@ -20,9 +21,9 @@ async function main() {
 
   // runSnapshotTests(baselineDir, actualDir, diffDir, reportPath);
 
-  const { baselineDir, actualDir, diffDir, reportPath } = argv;
+  const { baselineDir, actualDir, diffDir, reportPath, updateSnapshots } = argv;
 
-  return runSnapshotTests(baselineDir, actualDir, diffDir, reportPath)
+  return runSnapshotTests(baselineDir, actualDir, diffDir, reportPath, updateSnapshots)
     .then(_ => {
       process.exit(0);
     })
