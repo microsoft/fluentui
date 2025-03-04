@@ -6,7 +6,6 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionComponent<{}> = () => {
   const firstChartPoints: IChartDataPoint[] = [
@@ -98,7 +97,7 @@ export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionCompo
     {
       legend: 'Phone Numbers',
       data: 40,
-      color: DefaultPalette.blue,
+      color: getColorFromToken(DataVizPalette.color1),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '87%',
       callOutAccessibilityData: { ariaLabel: 'Bar series 1 of 2 2020/04/30 87%' },

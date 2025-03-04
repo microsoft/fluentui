@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { IChartProps, ILineChartProps, LineChart, ILineChartDataPoint } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import {
+  IChartProps,
+  ILineChartProps,
+  LineChart,
+  ILineChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface ILineChartBasicState {
@@ -76,7 +82,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
         {
           legend: 'From_Legacy_to_O365',
           data: this._getdata(),
-          color: DefaultPalette.blue,
+          color: getColorFromToken(DataVizPalette.color1),
           onLineClick: () => console.log('From_Legacy_to_O365'),
           hideNonActiveDots: true,
           lineOptions: {
@@ -86,7 +92,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
         {
           legend: 'All',
           data: this._getdata2(),
-          color: DefaultPalette.green,
+          color: getColorFromToken(DataVizPalette.color5),
           lineOptions: {
             lineBorderWidth: '4',
           },
@@ -99,7 +105,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
               y: 282000,
             },
           ],
-          color: DefaultPalette.yellow,
+          color: getColorFromToken(DataVizPalette.color9),
         },
       ],
     };

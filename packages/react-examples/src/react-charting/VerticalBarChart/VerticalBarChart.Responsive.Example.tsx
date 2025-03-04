@@ -47,7 +47,7 @@ const points: IVerticalBarChartDataPoint[] = [
     x: 0,
     y: 10000,
     legend: 'Oranges',
-    color: DefaultPalette.accent,
+    color: getColorFromToken(DataVizPalette.color1),
     lineData: {
       y: 7000,
     },
@@ -56,7 +56,7 @@ const points: IVerticalBarChartDataPoint[] = [
     x: 10000,
     y: 50000,
     legend: 'Dogs',
-    color: DefaultPalette.blueDark,
+    color: getColorFromToken(DataVizPalette.color2),
     lineData: {
       y: 30000,
     },
@@ -65,7 +65,7 @@ const points: IVerticalBarChartDataPoint[] = [
     x: 25000,
     y: 30000,
     legend: 'Apples',
-    color: DefaultPalette.blueMid,
+    color: getColorFromToken(DataVizPalette.color3),
     lineData: {
       y: 3000,
     },
@@ -89,7 +89,7 @@ const points: IVerticalBarChartDataPoint[] = [
     x: 68000,
     y: 30000,
     legend: 'Cats',
-    color: DefaultPalette.blueDark,
+    color: getColorFromToken(DataVizPalette.color4),
     lineData: {
       y: 5000,
     },
