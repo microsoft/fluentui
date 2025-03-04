@@ -2,6 +2,29 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Fri, 21 Feb 2025 14:34:04 GMT",
+      "tag": "@fluentui/react-tabster_v9.24.0",
+      "version": "9.24.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "f42a127ac74016eff8c6c48f7eea020e266dffe1",
+            "comment": "fix: provide methods for elements such as live regions to not get hidden by modals"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "99ddb187429057e71a05f334e099fa0e8270f576",
+            "comment": "Nested modalizer fix and useActivateModal() hook to activate modals without moving focus."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2025 14:00:09 GMT",
       "tag": "@fluentui/react-tabster_v9.23.3",
       "version": "9.23.3",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: useAnnounce live regions do not get aria-hidden from tabster",
-  "packageName": "@fluentui/react-aria",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

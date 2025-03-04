@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-teaching-popover
 
-This log was last generated on Fri, 07 Feb 2025 10:42:12 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2025 14:34:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.3.0)
+
+Fri, 21 Feb 2025 14:34:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.2.4..@fluentui/react-teaching-popover_v9.3.0)
+
+### Minor changes
+
+- Bump @fluentui/react-popover to v9.10.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+- Bump @fluentui/react-button to v9.4.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+- Bump @fluentui/react-tabster to v9.24.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+- Bump @fluentui/react-aria to v9.14.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+
+### Patches
+
+- fix: TeachingPopoverCarousel fires announce() messages on slide change ([PR #33833](https://github.com/microsoft/fluentui/pull/33833) by sarah.higley@microsoft.com)
 
 ## [9.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.2.4)
 

@@ -2,6 +2,29 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Fri, 21 Feb 2025 14:34:03 GMT",
+      "tag": "@fluentui/react-aria_v9.14.0",
+      "version": "9.14.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "f42a127ac74016eff8c6c48f7eea020e266dffe1",
+            "comment": "fix: useAnnounce live regions do not get aria-hidden from tabster"
+          }
+        ],
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-tabster to v9.24.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2025 14:00:14 GMT",
       "tag": "@fluentui/react-aria_v9.13.14",
       "version": "9.13.14",

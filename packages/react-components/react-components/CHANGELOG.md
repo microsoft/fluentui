@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 18 Feb 2025 11:26:27 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2025 14:34:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.60.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.60.0)
+
+Fri, 21 Feb 2025 14:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.59.0..@fluentui/react-components_v9.60.0)
+
+### Minor changes
+
+- `@fluentui/react-carousel`
+  - feat: Implement props to control animation duration and autoplay interval ([PR #33820](https://github.com/microsoft/fluentui/pull/33820) by mifraser@microsoft.com)
+- `@fluentui/react-tabster`
+  - Nested modalizer fix and useActivateModal() hook to activate modals without moving focus. ([PR #33817](https://github.com/microsoft/fluentui/pull/33817) by marata@microsoft.com)
+
+### Patches
+
+- `@fluentui/priority-overflow`
+  - fix: Add a defensive check when getting overflow item records ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by lingfangao@hotmail.com)
+- `@fluentui/react-aria`
+  - fix: useAnnounce live regions do not get aria-hidden from tabster ([PR #33855](https://github.com/microsoft/fluentui/pull/33855) by sarah.higley@microsoft.com)
+- `@fluentui/react-popover`
+  - Update to satisfy the bumped Tabster 8.5.0. ([PR #33817](https://github.com/microsoft/fluentui/pull/33817) by marata@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: provide methods for elements such as live regions to not get hidden by modals ([PR #33855](https://github.com/microsoft/fluentui/pull/33855) by sarah.higley@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - fix: TeachingPopoverCarousel fires announce() messages on slide change ([PR #33833](https://github.com/microsoft/fluentui/pull/33833) by sarah.higley@microsoft.com)
 
 ## [9.59.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.59.0)
 

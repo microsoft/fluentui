@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 19 Feb 2025 07:21:16 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Feb 2025 07:15:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.58)
+
+Thu, 27 Feb 2025 07:15:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.57..@fluentui/react-charting_v5.23.58)
+
+### Patches
+
+- handle 10^N ymax case for rounded ticks ([PR #33870](https://github.com/microsoft/fluentui/pull/33870) by 74965306+Anush2303@users.noreply.github.com)
+
+## [5.23.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.57)
+
+Tue, 25 Feb 2025 07:20:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.56..@fluentui/react-charting_v5.23.57)
+
+### Patches
+
+- feat: make charts responsive ([PR #33723](https://github.com/microsoft/fluentui/pull/33723) by 110246001+krkshitij@users.noreply.github.com)
+
+## [5.23.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.56)
+
+Fri, 21 Feb 2025 07:22:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.55..@fluentui/react-charting_v5.23.56)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.9.21 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+- Bump @fluentui/theme-samples to v8.7.200 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+- Bump @fluentui/set-version to v8.2.24 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+- Bump @fluentui/react to v8.122.11 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
 
 ## [5.23.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.55)
 

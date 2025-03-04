@@ -16,6 +16,9 @@ const useContainerStyles = makeStyles({
     flexDirection: 'column',
     rowGap: '10px',
   },
+  tagGroup: {
+    flexWrap: 'wrap',
+  },
 });
 
 export const Sizes = () => {
@@ -26,7 +29,7 @@ export const Sizes = () => {
       {sizes.map(size => (
         <div key={size}>
           {`${size}: `}
-          <TagGroup size={size} aria-label={`${size} tag group example`}>
+          <TagGroup className={containerStyles.tagGroup} size={size} aria-label={`${size} tag group example`}>
             <InteractionTag>
               <InteractionTagPrimary media={<Avatar name="Katri Athokas" />}>{size}</InteractionTagPrimary>
             </InteractionTag>

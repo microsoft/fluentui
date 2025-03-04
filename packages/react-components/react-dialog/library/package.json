@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-dialog",
-  "version": "9.11.31",
+  "version": "9.12.0",
   "description": "Dialog component for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -31,11 +31,11 @@
     "@fluentui/react-motion": "^9.6.7",
     "@fluentui/react-motion-components-preview": "^0.4.3",
     "@fluentui/react-shared-contexts": "^9.21.2",
-    "@fluentui/react-aria": "^9.13.14",
+    "@fluentui/react-aria": "^9.14.0",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-tabster": "^9.23.3",
+    "@fluentui/react-tabster": "^9.24.0",
     "@fluentui/react-theme": "^9.1.24",
-    "@fluentui/react-portal": "^9.4.42",
+    "@fluentui/react-portal": "^9.5.0",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },

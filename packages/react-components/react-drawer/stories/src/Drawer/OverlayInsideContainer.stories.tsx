@@ -7,6 +7,8 @@ import {
   Button,
   makeStyles,
   tokens,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -33,10 +35,21 @@ export const OverlayInsideContainer = () => {
   const ref = React.useRef<HTMLDivElement>(null);
   const styles = useStyles();
 
+  // all Drawers need manual focus restoration attributes
+  // unless (as in the case of some inline drawers, you do not want automatic focus restoration)
+  const restoreFocusTargetAttributes = useRestoreFocusTarget();
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
+
   return (
     <div className={styles.root}>
       <div className={styles.container} ref={ref}>
-        <OverlayDrawer as="aside" mountNode={ref.current} open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+        <OverlayDrawer
+          as="aside"
+          {...restoreFocusSourceAttributes}
+          mountNode={ref.current}
+          open={isOpen}
+          onOpenChange={(_, { open }) => setIsOpen(open)}
+        >
           <DrawerHeader>
             <DrawerHeaderTitle
               action={
@@ -60,7 +73,7 @@ export const OverlayInsideContainer = () => {
         <p>Drawer will be rendered within this container</p>
       </div>
 
-      <Button appearance="primary" onClick={() => setIsOpen(true)}>
+      <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setIsOpen(true)}>
         Open Drawer
       </Button>
     </div>

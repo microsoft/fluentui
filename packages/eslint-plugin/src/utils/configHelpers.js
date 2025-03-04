@@ -87,6 +87,9 @@ module.exports = {
    */
   devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles, ...storyFiles],
 
+  /** Storybook stories */
+  storyFiles,
+
   /**
    * Whether linting is running in context of lint-staged (which should disable rules requiring
    * type info due to their significant perf penalty).
