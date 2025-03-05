@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-restricted-imports
-import { tokens } from '@fluentui/tokens';
+import { nullNumberRaw, strokewidthDefaultRaw } from "../../control/variables";
+import { ctrlSplitDividerStrokewidthOnoutlineRaw, ctrlSplitDividerStrokewidthOnsubtleRaw, ctrlSplitDividerStrokewidthRaw } from "./variables";
 
 export const ctrlSplitDividerStrokewidth = `var(${ctrlSplitDividerStrokewidthRaw}, ${strokewidthDefaultRaw})`;
 export const ctrlSplitDividerStrokewidthOnoutline = `var(${ctrlSplitDividerStrokewidthOnoutlineRaw}, ${strokewidthDefaultRaw})`;

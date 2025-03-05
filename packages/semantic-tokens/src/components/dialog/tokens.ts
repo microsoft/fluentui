@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-restricted-imports
-import { tokens } from '@fluentui/tokens';
+import { backgroundLayerPrimarySolidRaw, cornerCardRestRaw, nullColorRaw } from "../../control/variables";
+import { ctrlDialogBackgroundRaw, ctrlDialogBaseCornerRaw, ctrlDialogBaseShadowAmbientBlurRaw, ctrlDialogBaseShadowAmbientColorRaw, ctrlDialogBaseShadowAmbientXRaw, ctrlDialogBaseShadowAmbientYRaw, ctrlDialogBaseShadowKeyBlurRaw, ctrlDialogBaseShadowKeyColorRaw, ctrlDialogBaseShadowKeyXRaw, ctrlDialogBaseShadowKeyYRaw, ctrlDialogLayerBackgroundRaw, ctrlDialogLayerPaddingBottomRaw, ctrlDialogStrokeRaw } from "./variables";
 
 export const ctrlDialogBackground = `var(${ctrlDialogBackgroundRaw})`;
 export const ctrlDialogStroke = `var(${ctrlDialogStrokeRaw}, ${nullColorRaw})`;

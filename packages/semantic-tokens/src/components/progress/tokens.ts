@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-restricted-imports
-import { tokens } from '@fluentui/tokens';
+import { backgroundCtrlBrandRestRaw, cornerCircularRaw } from "../../control/variables";
+import { ctrlProgressBackgroundEmptyRaw, ctrlProgressBackgroundFilledRaw, ctrlProgressCornerRaw, ctrlProgressHeightEmptyRaw, ctrlProgressHeightFilledRaw, ctrlProgressLgHeightEmptyRaw, ctrlProgressLgHeightFilledRaw, ctrlProgressSmHeightEmptyRaw, ctrlProgressSmHeightFilledRaw } from "./variables";
 
 export const ctrlProgressBackgroundEmpty = `var(${ctrlProgressBackgroundEmptyRaw})`;
 export const ctrlProgressBackgroundFilled = `var(${ctrlProgressBackgroundFilledRaw}, ${backgroundCtrlBrandRestRaw})`;

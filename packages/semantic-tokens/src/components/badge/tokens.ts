@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-restricted-imports
-import { tokens } from '@fluentui/tokens';
+import { iconthemeCtrlDefaultRestRaw } from "../../control/variables";
+import { ctrlBadgeBeaconSizeRaw, ctrlBadgeCornerRaw, ctrlBadgeGapRaw, ctrlBadgeIconSizeFigmaOnlyRaw, ctrlBadgeIconSizeRaw, ctrlBadgeIconThemeRaw, ctrlBadgeLgCornerRaw, ctrlBadgeLgIconSizeFigmaOnlyRaw, ctrlBadgeLgIconSizeRaw, ctrlBadgeLgPaddingRaw, ctrlBadgeLgSizeRaw, ctrlBadgeLgTextPaddingBottomRaw, ctrlBadgeLgTextPaddingTopRaw, ctrlBadgePaddingRaw, ctrlBadgeSizeRaw, ctrlBadgeSmCornerRaw, ctrlBadgeSmIconSizeFigmaOnlyRaw, ctrlBadgeSmIconSizeRaw, ctrlBadgeSmPaddingRaw, ctrlBadgeSmSizeRaw, ctrlBadgeSmTextPaddingBottomRaw, ctrlBadgeSmTextPaddingTopRaw, ctrlBadgeTextPaddingBottomRaw, ctrlBadgeTextPaddingTopRaw } from "./variables";
 
 export const ctrlBadgeTextPaddingTop = `var(${ctrlBadgeTextPaddingTopRaw})`;
 export const ctrlBadgeTextPaddingBottom = `var(${ctrlBadgeTextPaddingBottomRaw}, ${ctrlBadgeTextPaddingTopRaw})`;

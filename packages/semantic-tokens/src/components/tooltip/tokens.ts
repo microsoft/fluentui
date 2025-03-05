@@ -1,5 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
-import { tokens } from '@fluentui/tokens';
+import { cornerCtrlRestRaw } from "../../control/variables";
+import { ctrlFabShadowRestAmbientBlurRaw, ctrlFabShadowRestAmbientColorRaw, ctrlFabShadowRestAmbientXRaw, ctrlFabShadowRestAmbientYRaw, ctrlFabShadowRestKeyBlurRaw, ctrlFabShadowRestKeyColorRaw, ctrlFabShadowRestKeyXRaw, ctrlFabShadowRestKeyYRaw } from "../fab/variables";
+import { ctrlTooltipBackgroundRaw, ctrlTooltipCornerRaw, ctrlTooltipForegroundRaw, ctrlTooltipShadowAmbientBlurRaw, ctrlTooltipShadowAmbientColorRaw, ctrlTooltipShadowAmbientXRaw, ctrlTooltipShadowAmbientYRaw, ctrlTooltipShadowKeyBlurRaw, ctrlTooltipShadowKeyColorRaw, ctrlTooltipShadowKeyXRaw, ctrlTooltipShadowKeyYRaw } from "./variables";
 
 export const ctrlTooltipShadowKeyX = `var(${ctrlTooltipShadowKeyXRaw}, ${ctrlFabShadowRestKeyXRaw})`;
 export const ctrlTooltipShadowKeyY = `var(${ctrlTooltipShadowKeyYRaw}, ${ctrlFabShadowRestKeyYRaw})`;

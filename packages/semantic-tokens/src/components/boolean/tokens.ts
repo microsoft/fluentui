@@ -1,4 +1,4 @@
 // eslint-disable-next-line no-restricted-imports
-import { tokens } from '@fluentui/tokens';
+import { ctrlBooleanSelectionhintRaw } from "./variables";
 
 export const ctrlBooleanSelectionhint = `var(${ctrlBooleanSelectionhintRaw})`;

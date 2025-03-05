@@ -14,6 +14,8 @@ const project = new Project({
 const tokensJSON: Record<string, any> = tokensJSONRaw;
 const fluentFallbacks: Record<string, string> = fluentFallbacksRaw;
 
+const exportList: Record<string, [string]> = {};
+
 interface Token {
   no: number;
   name: string;
@@ -216,9 +218,9 @@ function generateTokenVariables() {
   fs.writeFileSync('./src/control/tokens.ts', controlTokens);
   fs.writeFileSync('./src/nullable/tokens.ts', nullableTokens);
 
-  project.addSourceFileAtPathIfExists('./src/optional/tokens.ts');
-  project.addSourceFileAtPathIfExists('./src/control/tokens.ts');
-  project.addSourceFileAtPathIfExists('./src/nullable/tokens.ts');
+  project.addSourceFileAtPath('./src/optional/tokens.ts');
+  project.addSourceFileAtPath('./src/control/tokens.ts');
+  project.addSourceFileAtPath('./src/nullable/tokens.ts');
 
   for (const component in componentTokens) {
     var dir = `./src/components/${component}/`;
@@ -228,14 +230,15 @@ function generateTokenVariables() {
     }
     const componentTokensPath = `./src/components/${component}/tokens.ts`;
     fs.writeFileSync(componentTokensPath, componentTokens[component]);
-    project.addSourceFileAtPathIfExists(componentTokensPath);
+    project.addSourceFileAtPath(componentTokensPath);
   }
 
-  console.log('CHECKING:', project.getSourceFiles().length);
   project.getSourceFiles().forEach(sourceFile => {
     console.log('Fix missing imports from:', sourceFile.getFilePath());
-    sourceFile.fixMissingImports();
+    sourceFile.fixMissingImports().organizeImports().fixUnusedIdentifiers().formatText();
   });
+
+  project.save().then(() => console.log('Completed import statements'));
 }
 
 // Run script

@@ -1,5 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
-import { tokens } from '@fluentui/tokens';
+import { backgroundCtrlBrandRestRaw, iconthemeCtrlDefaultRestRaw, sizeCtrlIconRaw } from "../../control/variables";
+import { ctrlProgressBackgroundEmptyRaw } from "../progress/variables";
+import { ctrlRatingIconForegroundEmptyRaw, ctrlRatingIconForegroundFilledRaw, ctrlRatingIconGapRaw, ctrlRatingIconSizeRaw, ctrlRatingIconThemeRaw } from "./variables";
 
 export const ctrlRatingIconTheme = `var(${ctrlRatingIconThemeRaw}, ${iconthemeCtrlDefaultRestRaw})`;
 export const ctrlRatingIconGap = `var(${ctrlRatingIconGapRaw})`;

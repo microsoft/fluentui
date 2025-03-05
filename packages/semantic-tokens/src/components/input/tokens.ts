@@ -1,5 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
-import { tokens } from '@fluentui/tokens';
+import { backgroundCtrlBrandRestRaw, backgroundCtrlNeutralDisabledRaw, backgroundCtrlNeutralHoverRaw, backgroundCtrlNeutralPressedRaw, backgroundCtrlNeutralRestRaw, foregroundCtrlNeutralSecondaryRestRaw, foregroundCtrlOnbrandRestRaw, nullColorRaw, strokeCtrlOnoutlineDisabledRaw, strokeCtrlOnoutlineHoverRaw, strokeCtrlOnoutlinePressedRaw, strokeCtrlOnoutlineRestRaw, strokewidthDefaultRaw } from "../../control/variables";
+import { statusDangerStrokeRaw } from "../../optional/variables";
+import { ctrlInputBackgroundDisabledRaw, ctrlInputBackgroundErrorRaw, ctrlInputBackgroundHoverRaw, ctrlInputBackgroundPressedRaw, ctrlInputBackgroundRestRaw, ctrlInputBackgroundSelectedRaw, ctrlInputBottomlineStrokeDisabledRaw, ctrlInputBottomlineStrokeErrorRaw, ctrlInputBottomlineStrokeHoverRaw, ctrlInputBottomlineStrokePressedRaw, ctrlInputBottomlineStrokeRestRaw, ctrlInputBottomlineStrokeSelectedRaw, ctrlInputBottomlineStrokewidthHoverRaw, ctrlInputBottomlineStrokewidthPressedRaw, ctrlInputBottomlineStrokewidthRestRaw, ctrlInputBottomlineStrokewidthSelectedRaw, ctrlInputStrokeDisabledRaw, ctrlInputStrokeErrorRaw, ctrlInputStrokeHoverRaw, ctrlInputStrokePressedRaw, ctrlInputStrokeRestRaw, ctrlInputStrokeSelectedRaw, ctrlInputStrokewidthHoverRaw, ctrlInputStrokewidthPressedRaw, ctrlInputStrokewidthRestRaw, ctrlInputStrokewidthSelectedRaw, ctrlInputTextselectionBackgroundRaw, ctrlInputTextselectionForegroundRaw } from "./variables";
 
 export const ctrlInputBackgroundRest = `var(${ctrlInputBackgroundRestRaw}, ${backgroundCtrlNeutralRestRaw})`;
 export const ctrlInputBackgroundHover = `var(${ctrlInputBackgroundHoverRaw}, ${backgroundCtrlNeutralHoverRaw})`;
