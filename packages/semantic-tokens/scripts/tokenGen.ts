@@ -6,6 +6,7 @@ import tokensJSONRaw from './tokens.json';
 import fluentFallbacksRaw from './fluentOverrides.json';
 import fs from 'fs';
 import { Project } from 'ts-morph';
+import prettier from 'prettier';
 
 const project = new Project({
   tsConfigFilePath: './tsconfig.json',
@@ -300,8 +301,15 @@ function generateTokenVariables() {
     });
   }
 
-  // Format our exports
-  indexSourceFile.formatText();
+  const rawText = indexSourceFile.getText();
+  const formattedText = prettier.format(rawText, {
+    parser: 'typescript',
+    singleQuote: true,
+    printWidth: 120,
+  });
+
+  // Format our text to match prettier rules
+  indexSourceFile.replaceWithText(formattedText);
 
   // Save exports
   project.saveSync();
