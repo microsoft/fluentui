@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
 
-export const ctrlDialogBackground = `var(${ctrlDialogBackgroundRaw}, ${tokens.colorNeutralBackground1})`;
-export const ctrlDialogStroke = `var(${ctrlDialogStrokeRaw}, var(${nullColorRaw}, ${tokens.colorNeutralStroke2Rest}))`;
-export const ctrlDialogBaseCorner = `var(${ctrlDialogBaseCornerRaw}, var(${cornerCardRestRaw}, ${xLargeRaw}))`;
+export const ctrlDialogBackground = `var(${ctrlDialogBackgroundRaw})`;
+export const ctrlDialogStroke = `var(${ctrlDialogStrokeRaw}, ${nullColorRaw})`;
+export const ctrlDialogBaseCorner = `var(${ctrlDialogBaseCornerRaw}, ${cornerCardRestRaw})`;
 export const ctrlDialogBaseShadowKeyX = `var(${ctrlDialogBaseShadowKeyXRaw})`;
 export const ctrlDialogBaseShadowKeyY = `var(${ctrlDialogBaseShadowKeyYRaw})`;
 export const ctrlDialogBaseShadowKeyBlur = `var(${ctrlDialogBaseShadowKeyBlurRaw})`;
@@ -12,5 +12,5 @@ export const ctrlDialogBaseShadowAmbientX = `var(${ctrlDialogBaseShadowAmbientXR
 export const ctrlDialogBaseShadowAmbientY = `var(${ctrlDialogBaseShadowAmbientYRaw})`;
 export const ctrlDialogBaseShadowAmbientBlur = `var(${ctrlDialogBaseShadowAmbientBlurRaw})`;
 export const ctrlDialogBaseShadowAmbientColor = `var(${ctrlDialogBaseShadowAmbientColorRaw})`;
-export const ctrlDialogLayerBackground = `var(${ctrlDialogLayerBackgroundRaw}, var(${backgroundLayerPrimarySolidRaw}, ${tokens.colorNeutralBackground1}))`;
+export const ctrlDialogLayerBackground = `var(${ctrlDialogLayerBackgroundRaw}, ${backgroundLayerPrimarySolidRaw})`;
 export const ctrlDialogLayerPaddingBottom = `var(${ctrlDialogLayerPaddingBottomRaw})`;

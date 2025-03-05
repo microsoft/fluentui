@@ -2,7 +2,7 @@
 import { tokens } from '@fluentui/tokens';
 
 export const ctrlFocusPositionFigmaOnly = `var(${ctrlFocusPositionFigmaOnlyRaw})`;
-export const ctrlFocusInnerStrokewidth = `var(${ctrlFocusInnerStrokewidthRaw}, var(${strokewidthDefaultRaw}, ${tokens.strokeWidthThin}))`;
-export const ctrlFocusInnerStroke = `var(${ctrlFocusInnerStrokeRaw}, ${tokens.colorNeutralStrokeFocus1})`;
-export const ctrlFocusOuterStrokewidth = `var(${ctrlFocusOuterStrokewidthRaw}, ${thickRaw})`;
-export const ctrlFocusOuterStroke = `var(${ctrlFocusOuterStrokeRaw}, var(${backgroundCtrlBrandRestRaw}, ${tokens.colorNeutralStrokeFocus2}))`;
+export const ctrlFocusInnerStrokewidth = `var(${ctrlFocusInnerStrokewidthRaw}, ${strokewidthDefaultRaw})`;
+export const ctrlFocusInnerStroke = `var(${ctrlFocusInnerStrokeRaw})`;
+export const ctrlFocusOuterStrokewidth = `var(${ctrlFocusOuterStrokewidthRaw})`;
+export const ctrlFocusOuterStroke = `var(${ctrlFocusOuterStrokeRaw}, var(${backgroundCtrlBrandRestRaw}, ${tokens.colorStrokeFocus2}))`;

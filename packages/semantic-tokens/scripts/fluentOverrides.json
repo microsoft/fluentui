@@ -1,0 +1,14 @@
+{
+  "ctrlFocusOuterStroke": "tokens.colorStrokeFocus2",
+  "ctrlLinkForegroundBrandRest": "tokens.colorBrandForegroundLink",
+  "textStyleDefaultRegularFontfamily": "tokens.fontFamilyBase",
+  "textGlobalBody3Fontsize": "tokens.fontSizeBase300",
+  "textStyleDefaultRegularWeight": "tokens.fontWeightRegular",
+  "strokewidthDefault": "tokens.strokeWidthThin",
+  "ctrlLinkForegroundBrandHover": "tokens.colorBrandForegroundLinkHover",
+  "ctrlLinkForegroundBrandPressed": "tokens.colorBrandForegroundLinkPressed",
+  "ctrlLinkForegroundNeutralRest": "tokens.colorNeutralForeground2",
+  "ctrlLinkForegroundNeutralPressed": "tokens.colorNeutralForeground2Pressed",
+  "ctrlLinkForegroundNeutralHover": "tokens.colorNeutralForeground2Hover",
+  "foregroundCtrlNeutralPrimaryDisabled": "tokens.colorNeutralForeground2Disabled"
+}

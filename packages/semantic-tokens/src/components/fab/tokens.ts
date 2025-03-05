@@ -1,11 +1,11 @@
 // eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
 
-export const ctrlFabBackgroundRest = `var(${ctrlFabBackgroundRestRaw}, ${tokens.colorNeutralBackground1})`;
-export const ctrlFabBackgroundHover = `var(${ctrlFabBackgroundHoverRaw}, ${tokens.colorNeutralBackground1Hover})`;
-export const ctrlFabBackgroundPressed = `var(${ctrlFabBackgroundPressedRaw}, ${tokens.colorNeutralBackground1Pressed})`;
-export const ctrlFabBackgroundDisabled = `var(${ctrlFabBackgroundDisabledRaw}, ${tokens.colorNeutralBackgroundDisabled})`;
-export const ctrlFabCornerRest = `var(${ctrlFabCornerRestRaw}, var(${cornerCircularRaw}, ${circularRaw}))`;
+export const ctrlFabBackgroundRest = `var(${ctrlFabBackgroundRestRaw})`;
+export const ctrlFabBackgroundHover = `var(${ctrlFabBackgroundHoverRaw})`;
+export const ctrlFabBackgroundPressed = `var(${ctrlFabBackgroundPressedRaw})`;
+export const ctrlFabBackgroundDisabled = `var(${ctrlFabBackgroundDisabledRaw})`;
+export const ctrlFabCornerRest = `var(${ctrlFabCornerRestRaw}, ${cornerCircularRaw})`;
 export const ctrlFabShadowRestKeyX = `var(${ctrlFabShadowRestKeyXRaw})`;
 export const ctrlFabShadowRestKeyY = `var(${ctrlFabShadowRestKeyYRaw})`;
 export const ctrlFabShadowRestKeyBlur = `var(${ctrlFabShadowRestKeyBlurRaw})`;
@@ -26,5 +26,5 @@ export const ctrlFabShadowDisabledKeyX = `var(${ctrlFabShadowDisabledKeyXRaw}, $
 export const ctrlFabShadowDisabledKeyY = `var(${ctrlFabShadowDisabledKeyYRaw}, ${ctrlFabShadowPressedKeyYRaw})`;
 export const ctrlFabShadowDisabledKeyBlur = `var(${ctrlFabShadowDisabledKeyBlurRaw}, ${ctrlFabShadowPressedKeyBlurRaw})`;
 export const ctrlFabShadowDisabledKeyColor = `var(${ctrlFabShadowDisabledKeyColorRaw}, ${ctrlFabShadowPressedKeyColorRaw})`;
-export const ctrlFabCornerHover = `var(${ctrlFabCornerHoverRaw}, var(${cornerCircularRaw}, ${circularRaw}))`;
-export const ctrlFabCornerPressed = `var(${ctrlFabCornerPressedRaw}, var(${cornerCircularRaw}, ${circularRaw}))`;
+export const ctrlFabCornerHover = `var(${ctrlFabCornerHoverRaw}, ${cornerCircularRaw})`;
+export const ctrlFabCornerPressed = `var(${ctrlFabCornerPressedRaw}, ${cornerCircularRaw})`;
