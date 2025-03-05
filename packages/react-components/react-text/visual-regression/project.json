@@ -46,7 +46,7 @@
       }
     },
     "build-storybook": {
-      "command": "storybook build -o dist/storybook",
+      "command": "storybook build -o dist/storybook --quiet",
       "options": {
         "cwd": "{projectRoot}"
       }
