@@ -12,7 +12,7 @@
       }
     },
     "generate-image-for-vrt": {
-      "command": "rm -rf dist/vrt/screenshots && storywright  --browsers chromium --url dist/storybook --destpath dist/vrt/actual --waitTimeScreenshot 500 --concurrency 4 --headless true",
+      "command": "rm -rf dist/vrt/actual && storywright  --browsers chromium --url dist/storybook --destpath dist/vrt/actual --waitTimeScreenshot 500 --concurrency 4 --headless true",
       "options": {
         "cwd": "{projectRoot}"
       },
