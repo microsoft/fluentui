@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Adds custom style hooks to TeachingPopoverCarousel and related subcomponents.",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}
