@@ -110,9 +110,7 @@ jobs:
         if: failure()
         run: |
           echo "## ❌ Test Run Failed" >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
           cat packages/react-components/react-text/visual-regression/dist/vrt/report.md >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
@@ -120,7 +118,7 @@ jobs:
         with:
           name: vrt_report
           retention-days: 1
-          path: 'dist/vrt/**'
+          path: '**/dist/vrt/**'
 
       # - name: Upload VR screenshots
       #   uses: actions/upload-artifact@v4
