@@ -12,6 +12,7 @@ import {
 } from '@fluentui/react-charting';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export interface IExampleState {
   dynamicData: IChartProps;
@@ -71,7 +72,7 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
         chartData: [
           { legend: 'first', data: 40, color: getColorFromToken(DataVizPalette.color6) },
           { legend: 'second', data: 23, color: getColorFromToken(DataVizPalette.color10) },
-          { legend: 'third', data: 35, color: getColorFromToken(DataVizPalette.color22) },
+          { legend: 'third', data: 35, color: DefaultPalette.neutralSecondary },
           { legend: 'fourth', data: 87, color: getColorFromToken(DataVizPalette.color5) },
         ],
       },

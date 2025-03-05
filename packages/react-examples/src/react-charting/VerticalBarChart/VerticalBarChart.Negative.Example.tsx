@@ -87,7 +87,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         x: 0,
         y: 10000,
         legend: 'Oranges',
-        color: getColorFromToken(DataVizPalette.color1),
+        color: getColorFromToken(DataVizPalette.color21),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '4%',
         lineData: {
@@ -99,7 +99,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         x: 10000,
         y: -50000,
         legend: 'Dogs',
-        color: getColorFromToken(DataVizPalette.color2),
+        color: getColorFromToken(DataVizPalette.color22),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '-21%',
         lineData: {
@@ -111,7 +111,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         x: 25000,
         y: 30000,
         legend: 'Apples',
-        color: getColorFromToken(DataVizPalette.color3),
+        color: getColorFromToken(DataVizPalette.color23),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '12%',
         lineData: {
@@ -124,7 +124,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         x: 40000,
         y: -13000,
         legend: 'Bananas',
-        color: getColorFromToken(DataVizPalette.color6),
+        color: getColorFromToken(DataVizPalette.color24),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '-5%',
       },
@@ -132,7 +132,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         x: 52000,
         y: 43000,
         legend: 'Giraffes',
-        color: getColorFromToken(DataVizPalette.color11),
+        color: getColorFromToken(DataVizPalette.color25),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '18%',
         lineData: {
@@ -144,7 +144,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         x: 68000,
         y: -30000,
         legend: 'Cats',
-        color: getColorFromToken(DataVizPalette.color4),
+        color: getColorFromToken(DataVizPalette.color26),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '-12%',
         lineData: {
@@ -156,7 +156,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         x: 80000,
         y: 20000,
         legend: 'Elephants',
-        color: getColorFromToken(DataVizPalette.color11),
+        color: getColorFromToken(DataVizPalette.color27),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '8%',
         lineData: {
@@ -168,7 +168,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         x: 92000,
         y: -45000,
         legend: 'Monkeys',
-        color: getColorFromToken(DataVizPalette.color6),
+        color: getColorFromToken(DataVizPalette.color28),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '-19%',
         lineData: {
