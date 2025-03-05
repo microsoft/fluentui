@@ -140,15 +140,12 @@ export const baseButtonStyles = css`
     fill: currentColor;
   }
 
-  :is([slot='start'], ::slotted([slot='start'])) {
+  ::slotted([slot='start']) {
     margin-inline-end: var(--icon-spacing);
   }
 
-  :is([slot='end'], ::slotted([slot='end'])) {
+  ::slotted([slot='end']) {
     flex-shrink: 0;
-  }
-
-  :host(:not(${iconOnlyState})) :is([slot='end'], :host(:not(${iconOnlyState}))::slotted([slot='end'])) {
     margin-inline-start: var(--icon-spacing);
   }
 
