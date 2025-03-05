@@ -1,0 +1,136 @@
+name: VRT POC
+on:
+  push:
+    branches:
+      - hotell/fhl-spring-25
+  pull_request:
+    # TODO: once testing is done enable pull_request on all branches again
+    branches:
+      - hotell/fhl-spring-25
+  issue_comment:
+    types: [created]
+
+concurrency:
+  # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PREFER_TS_NODE: true
+  NX_VERBOSE_LOGGING: true
+
+jobs:
+  # TODO: it's not possible to update another JOB result to "success" in order to make PR mergeable
+  #
+  approve_vrt_diff:
+    if: github.event.issue.pull_request && contains(github.event.comment.body,'/approve-snapshots')
+    runs-on: ubuntu-latest
+    #   permissions:
+    #     statuses: write
+    steps:
+      - run: echo "Hello"
+  #     - name: Approve VRT Diff
+  #       uses: actions/github-script@v7
+  #       with:
+  #         script: |
+  #           const run = require('./.github/scripts/approve-pr-vrt-diff');
+  #           const config = { prId: context.payload.issue.number };
+  #           await run({github,context,core,config});
+
+  vrt_baseline:
+    if: ${{ github.repository_owner == 'microsoft' && github.event_name == 'push' && github.event_name!='pull_request' }}
+    runs-on: macos-14-xlarge
+    permissions:
+      contents: 'write'
+      actions: 'write'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn playwright install --with-deps
+      - run: yarn nx run visual-regression-assert:build
+
+      - name: Update VR tests baseline
+        run: yarn nx affected -t test-vr-cli -u --nxBail
+
+      - name: Report
+        if: always()
+        run: |
+          echo "## Run Result" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat packages/react-components/react-text/visual-regression/dist/vrt/report.json >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+  vrt_pr:
+    if: ${{ github.repository_owner == 'microsoft' && github.event_name == 'pull_request' }}
+    runs-on: macos-14-xlarge
+    permissions:
+      contents: 'read'
+      actions: 'read'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn playwright install --with-deps
+      - run: yarn nx run visual-regression-assert:build
+
+      - name: Run VR tests (generate screenshots)
+        run: yarn nx affected -t test-vr-cli --nxBail
+
+      - name: Report
+        if: failure()
+        run: |
+          echo "## ❌ Test Run Failed" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat packages/react-components/react-text/visual-regression/dist/vrt/report.md >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: vrt_report
+          retention-days: 1
+          path: 'dist/vrt/**'
+
+      # - name: Upload VR screenshots
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: vrscreenshot
+      #     retention-days: 1
+      #     path: ${{steps.screenshots_root.outputs.result}}
+
+      # - name: Save PR number
+      #   run: echo ${{ github.event.number }} > pr.txt
+      # - uses: actions/upload-artifact@v4
+      #   with:
+      #     name: pr-number
+      #     retention-days: 1
+      #     if-no-files-found: error
+      #     path: |
+      #       pr.txt
