@@ -9,6 +9,7 @@ import {
 import * as path from 'path';
 import { VisualRegressionSchema } from './schema';
 import { getProjectConfig, isPackageConverged } from '../../utils';
+import { addCodeowner } from '../add-codeowners';
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
@@ -16,6 +17,8 @@ export default async function (tree: Tree, schema: VisualRegressionSchema) {
   const options = normalizeOptions(tree, schema);
 
   addFiles(tree, options);
+
+  addCodeowner(tree, { packageName: options.projectConfig.name as string, owner: schema.owner as string });
 
   await formatFiles(tree);
 }
@@ -57,7 +60,7 @@ function normalizeOptions(tree: Tree, options: VisualRegressionSchema) {
       },
       'generate-image-for-vrt': {
         command:
-          'rm -rf dist/screenshots && storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true',
+          'rm -rf dist/vrt/actual && storywright  --browsers chromium --url dist/storybook --destpath dist/actual --waitTimeScreenshot 500 --concurrency 4 --headless true',
         options: {
           cwd: '{projectRoot}',
         },
@@ -90,7 +93,7 @@ function normalizeOptions(tree: Tree, options: VisualRegressionSchema) {
         },
       },
       'build-storybook': {
-        command: 'storybook build -o dist/storybook',
+        command: 'storybook build -o dist/storybook --quiet',
         options: {
           cwd: '{projectRoot}',
         },

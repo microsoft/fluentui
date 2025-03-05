@@ -17,3 +17,14 @@ Free, Secure and OSS VR testing solution based on:
 - Storybook to author VR scenarios
 - StoryWright for capturing Stories and their interactions
 - PlayWright test for running diffing and updating baseline
+
+**Usage:**
+
+- uses new VRT CLI with configured caching:
+
+`yarn <%= projectName %>:test-vr-cli`
+
+- DEPRECATED: uses custom nx generator ( under the hood uses playwright )
+
+`yarn <%= projectName %>:test-vr`
+

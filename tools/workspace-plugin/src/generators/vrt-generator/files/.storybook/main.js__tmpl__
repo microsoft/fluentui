@@ -23,6 +23,11 @@ module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig}
     reactDocgen: false,
   },
   webpackFinal: config => {
+    if (options.configType === 'PRODUCTION') {
+      // Disable source maps
+      config.devtool = false;
+    }
+
     registerTsPaths({ config, configFile: tsConfigPath });
     registerRules({ config, rules: [rules.griffelRule] });
 
