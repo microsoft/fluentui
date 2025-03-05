@@ -13,8 +13,8 @@ const project = new Project({
 
 const tokensJSON: Record<string, any> = tokensJSONRaw;
 const fluentFallbacks: Record<string, string> = fluentFallbacksRaw;
-
-const exportList: Record<string, [string]> = {};
+// Store exports so we can add them to index.ts at the end
+const exportList: Record<string, any> = {};
 
 interface Token {
   no: number;
@@ -71,6 +71,14 @@ function generateTokenRawStrings() {
   let controlRawTokens = '';
   let nullableRawTokens = '';
   const componentTokens: ComponentTokenMap = {};
+  const optionalVarFile = './src/optional/variables.ts';
+  exportList[optionalVarFile] = [];
+  const controlVarFile = './src/control/variables.ts';
+  exportList[controlVarFile] = [];
+  const nullableVarFile = './src/nullable/variables.ts';
+  exportList[nullableVarFile] = [];
+  const getComponentFile = (component: string) => `./src/components/${component}/variables.ts`;
+
   for (const token in tokensJSON) {
     const tokenData: Token = tokensJSON[token];
     const tokenName = tokenData.cssName;
@@ -83,23 +91,32 @@ function generateTokenRawStrings() {
         componentTokens[component] = '';
       }
       componentTokens[component] += tokenRawString;
+
+      if (!exportList[getComponentFile(component)]) {
+        const fileLoc = getComponentFile(component);
+        exportList[fileLoc] = [];
+      }
+      exportList[getComponentFile(component)].push(`${token}Raw`);
     } else {
       if (tokenData.optional) {
         optionalRawTokens += tokenRawString;
+        exportList[optionalVarFile].push(`${token}Raw`);
       } else if (tokenData.nullable) {
         nullableRawTokens += tokenRawString;
+        exportList[nullableVarFile].push(`${token}Raw`);
       } else {
         controlRawTokens += tokenRawString;
+        exportList[controlVarFile].push(`${token}Raw`);
       }
     }
   }
 
-  fs.writeFileSync('./src/optional/variables.ts', optionalRawTokens);
-  fs.writeFileSync('./src/control/variables.ts', controlRawTokens);
-  fs.writeFileSync('./src/nullable/variables.ts', nullableRawTokens);
-  project.addSourceFileAtPathIfExists('./src/optional/variables.ts');
-  project.addSourceFileAtPathIfExists('./src/control/variables.ts');
-  project.addSourceFileAtPathIfExists('./src/nullable/variables.ts');
+  fs.writeFileSync(optionalVarFile, optionalRawTokens);
+  fs.writeFileSync(controlVarFile, controlRawTokens);
+  fs.writeFileSync(nullableVarFile, nullableRawTokens);
+  project.addSourceFileAtPathIfExists(optionalVarFile);
+  project.addSourceFileAtPathIfExists(controlVarFile);
+  project.addSourceFileAtPathIfExists(nullableVarFile);
 
   for (const component in componentTokens) {
     var dir = `./src/components/${component}/`;
@@ -107,7 +124,7 @@ function generateTokenRawStrings() {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    const variablePath = `./src/components/${component}/variables.ts`;
+    const variablePath = getComponentFile(component);
     fs.writeFileSync(variablePath, componentTokens[component]);
     project.addSourceFileAtPathIfExists(variablePath);
   }
@@ -136,6 +153,15 @@ function generateTokenVariables() {
   let controlTokens = generateImportHeaders();
   let nullableTokens = generateImportHeaders();
   const componentTokens: ComponentTokenMap = {};
+
+  const optionalVarFile = './src/optional/tokens.ts';
+  exportList[optionalVarFile] = [];
+  const controlVarFile = './src/control/tokens.ts';
+  exportList[controlVarFile] = [];
+  const nullableVarFile = './src/nullable/tokens.ts';
+  exportList[nullableVarFile] = [];
+  const getComponentFile = (component: string) => `./src/components/${component}/tokens.ts`;
+
   for (const token in tokensJSON) {
     if (token.includes('(figma only)')) {
       // Superfluous tokens - SKIP
@@ -202,22 +228,37 @@ function generateTokenVariables() {
         componentTokens[component] = generateImportHeaders();
       }
       componentTokens[component] += `export const ${token} = \`${resolvedTokenFallback}\`;\n`;
+
+      if (!exportList[getComponentFile(component)]) {
+        const fileLoc = getComponentFile(component);
+        exportList[fileLoc] = [];
+      }
+      // Add to our list of exports for later
+      exportList[getComponentFile(component)].push(token);
     } else {
       // We have a global token
       if (tokenData.optional) {
         optionalTokens += `export const ${token} = \`${resolvedTokenFallback}\`;\n`;
+        // Add to our list of exports for later
+        exportList[optionalVarFile].push(token);
       } else if (tokenData.nullable) {
         nullableTokens += `export const ${token} = \`${resolvedTokenFallback}\`;\n`;
+        // Add to our list of exports for later
+        exportList[nullableVarFile].push(token);
       } else {
         controlTokens += `export const ${token} = \`${resolvedTokenFallback}\`;\n`;
+        // Add to our list of exports for later
+        exportList[controlVarFile].push(token);
       }
     }
   }
 
+  // Write files
   fs.writeFileSync('./src/optional/tokens.ts', optionalTokens);
   fs.writeFileSync('./src/control/tokens.ts', controlTokens);
   fs.writeFileSync('./src/nullable/tokens.ts', nullableTokens);
 
+  // Add source files for import statements
   project.addSourceFileAtPath('./src/optional/tokens.ts');
   project.addSourceFileAtPath('./src/control/tokens.ts');
   project.addSourceFileAtPath('./src/nullable/tokens.ts');
@@ -230,15 +271,41 @@ function generateTokenVariables() {
     }
     const componentTokensPath = `./src/components/${component}/tokens.ts`;
     fs.writeFileSync(componentTokensPath, componentTokens[component]);
+    // Add component source files for import statements
     project.addSourceFileAtPath(componentTokensPath);
   }
 
+  // Add import statements
   project.getSourceFiles().forEach(sourceFile => {
     console.log('Fix missing imports from:', sourceFile.getFilePath());
     sourceFile.fixMissingImports().organizeImports().fixUnusedIdentifiers().formatText();
   });
 
-  project.save().then(() => console.log('Completed import statements'));
+  // Save changes so far
+  project.saveSync();
+  console.log('Added import statements');
+
+  // Add export statements in index.ts
+  const indexFilePath = './src/index.ts';
+  // Clear index file and rewrite exports
+  fs.truncateSync(indexFilePath, 0);
+  // Add source file after we've cleaned it
+  const indexSourceFile = project.addSourceFileAtPath(indexFilePath);
+  for (const file in exportList) {
+    // Specifier should be relative and not include .ts
+    const importFilePath = file.replace('./src/', './').replace('.ts', '');
+    indexSourceFile.addExportDeclaration({
+      namedExports: exportList[file],
+      moduleSpecifier: importFilePath,
+    });
+  }
+
+  // Format our exports
+  indexSourceFile.formatText();
+
+  // Save exports
+  project.saveSync();
+  console.log('Added export statements');
 }
 
 // Run script
