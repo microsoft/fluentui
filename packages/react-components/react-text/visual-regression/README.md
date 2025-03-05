@@ -16,19 +16,28 @@ Free, Secure and OSS VR testing solution based on:
 
 - Storybook to author VR scenarios
 - StoryWright for capturing Stories and their interactions
-- PlayWright test for running diffing and updating baseline
+- ~PlayWright~ Custom VR Regression CLI for running diffing and updating baseline
 
 **Demo:**
 
 > ## NOTE: needs new StoryWright features:
 >
-> - https://github.com/microsoft/storywright/pull/73
-> - https://github.com/microsoft/storywright/pull/74
+> - [x] https://github.com/microsoft/storywright/pull/73
+> - [x] https://github.com/microsoft/storywright/pull/74
+
+**Usage:**
+
+- uses new VRT CLI with configured caching:
+
+`yarn react-text-visual-regression:test-vr-cli`
+
+- DEPRECATED: uses custom nx generator ( under the hood uses playwright )
 
 `yarn react-text-visual-regression:test-vr`
 
 ## TODO
 
-- [ ] check raw [pixelmatch](https://github.com/mapbox/pixelmatch) usage instead PW/test / custom NX Executor
+- [x] check raw [pixelmatch](https://github.com/mapbox/pixelmatch) usage instead PW/test / custom NX Executor
 - [ ] check using [pixelmatch](https://github.com/mapbox/pixelmatch) within storywright with implementing new API `--mode= assert | screenshot`
-- [ ] check using PW/test instead just PW within storywright
+- [x] check using PW/test instead just PW within storywright
+- [] setup CI and approval pipeline
