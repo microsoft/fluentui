@@ -1,0 +1,19 @@
+# @<%= npmScope %>/<%= projectName %>
+
+This library was generated with [Nx](https://nx.dev).
+
+## Building
+
+Run `nx build <%= projectName %>` to build the library.
+
+## Running unit tests
+
+Run `nx test <%= projectName %>` to execute the unit tests via [Jest](https://jestjs.io).
+
+## About
+
+Free, Secure and OSS VR testing solution based on:
+
+- Storybook to author VR scenarios
+- StoryWright for capturing Stories and their interactions
+- PlayWright test for running diffing and updating baseline
