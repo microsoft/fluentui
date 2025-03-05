@@ -40,7 +40,9 @@ jobs:
 
   vrt_baseline:
     if: ${{ github.repository_owner == 'microsoft' && github.event_name == 'push' && github.event_name!='pull_request' }}
-    runs-on: macos-14-xlarge
+    # NOTE: there is an issue on GH atm obtaining large runner - undo this change once resolved
+    # runs-on: macos-14-xlarge
+    runs-on: ubuntu-latest
     permissions:
       contents: 'write'
       actions: 'write'
@@ -76,7 +78,9 @@ jobs:
 
   vrt_pr:
     if: ${{ github.repository_owner == 'microsoft' && github.event_name == 'pull_request' }}
-    runs-on: macos-14-xlarge
+    # NOTE: there is an issue on GH atm obtaining large runner - undo this change once resolved
+    # runs-on: macos-14-xlarge
+    runs-on: ubuntu-latest
     permissions:
       contents: 'read'
       actions: 'read'
