@@ -7,7 +7,6 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
@@ -63,45 +62,45 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
     const { showLine } = this.state;
     const firstChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 40, color: getColorFromToken(DataVizPalette.color11) },
-      { legend: 'Metadata2', data: 5, color: DefaultPalette.blueMid },
+      { legend: 'Metadata2', data: 5, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 15, color: getColorFromToken(DataVizPalette.color6) },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 30, color: getColorFromToken(DataVizPalette.color11) },
-      { legend: 'Metadata2', data: 3, color: DefaultPalette.blueMid },
+      { legend: 'Metadata2', data: 3, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 40, color: getColorFromToken(DataVizPalette.color6) },
     ];
 
     const thirdChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 10, color: getColorFromToken(DataVizPalette.color11) },
-      { legend: 'Metadata2', data: 60, color: DefaultPalette.blueMid },
+      { legend: 'Metadata2', data: 60, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 30, color: getColorFromToken(DataVizPalette.color6) },
     ];
     const fourthChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 40, color: getColorFromToken(DataVizPalette.color11) },
-      { legend: 'Metadata2', data: 10, color: DefaultPalette.blueMid },
+      { legend: 'Metadata2', data: 10, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 30, color: getColorFromToken(DataVizPalette.color6) },
     ];
     const fifthChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 40, color: getColorFromToken(DataVizPalette.color11) },
-      { legend: 'Metadata2', data: 40, color: DefaultPalette.blueMid },
+      { legend: 'Metadata2', data: 40, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 40, color: getColorFromToken(DataVizPalette.color6) },
     ];
     const sixthChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 40, color: getColorFromToken(DataVizPalette.color11) },
-      { legend: 'Metadata2', data: 20, color: DefaultPalette.blueMid },
+      { legend: 'Metadata2', data: 20, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 40, color: getColorFromToken(DataVizPalette.color6) },
     ];
 
     const seventhChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 10, color: getColorFromToken(DataVizPalette.color11) },
-      { legend: 'Metadata2', data: 80, color: DefaultPalette.blueMid },
+      { legend: 'Metadata2', data: 80, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 20, color: getColorFromToken(DataVizPalette.color6) },
     ];
     const eightChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 50, color: getColorFromToken(DataVizPalette.color11) },
-      { legend: 'Metadata2', data: 50, color: DefaultPalette.blueMid },
+      { legend: 'Metadata2', data: 50, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 20, color: getColorFromToken(DataVizPalette.color6) },
     ];
 
@@ -117,7 +116,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
         ...(showLine && {
           lineData: [
             { y: 15, color: getColorFromToken(DataVizPalette.color10), legend: 'line1' },
-            { y: 70, color: DefaultPalette.magenta, legend: 'line3' },
+            { y: 70, color: getColorFromToken(DataVizPalette.color7), legend: 'line3' },
           ],
         }),
       },
@@ -126,8 +125,8 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
         xAxisPoint: 'March',
         ...(showLine && {
           lineData: [
-            { y: 65, color: DefaultPalette.greenDark, legend: 'line2' },
-            { y: 98, color: DefaultPalette.magenta, legend: 'line3' },
+            { y: 65, color: getColorFromToken(DataVizPalette.color5), legend: 'line2' },
+            { y: 98, color: getColorFromToken(DataVizPalette.color7), legend: 'line3' },
           ],
         }),
       },
@@ -137,8 +136,8 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
         ...(showLine && {
           lineData: [
             { y: 40, color: getColorFromToken(DataVizPalette.color10), legend: 'line1' },
-            { y: 50, color: DefaultPalette.greenDark, legend: 'line2' },
-            { y: 65, color: DefaultPalette.magenta, legend: 'line3' },
+            { y: 50, color: getColorFromToken(DataVizPalette.color5), legend: 'line2' },
+            { y: 65, color: getColorFromToken(DataVizPalette.color7), legend: 'line3' },
           ],
         }),
       },
@@ -148,7 +147,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
         ...(showLine && {
           lineData: [
             { y: 20, color: getColorFromToken(DataVizPalette.color10), legend: 'line1' },
-            { y: 65, color: DefaultPalette.greenDark, legend: 'line2' },
+            { y: 65, color: getColorFromToken(DataVizPalette.color5), legend: 'line2' },
           ],
         }),
       },
@@ -157,8 +156,8 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
         xAxisPoint: 'June',
         ...(showLine && {
           lineData: [
-            { y: 54, color: DefaultPalette.greenDark, legend: 'line2' },
-            { y: 87, color: DefaultPalette.magenta, legend: 'line3' },
+            { y: 54, color: getColorFromToken(DataVizPalette.color5), legend: 'line2' },
+            { y: 87, color: getColorFromToken(DataVizPalette.color7), legend: 'line3' },
           ],
         }),
       },
@@ -168,7 +167,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
         ...(showLine && {
           lineData: [
             { y: 10, color: getColorFromToken(DataVizPalette.color10), legend: 'line1' },
-            { y: 110, color: DefaultPalette.magenta, legend: 'line3' },
+            { y: 110, color: getColorFromToken(DataVizPalette.color7), legend: 'line3' },
           ],
         }),
       },
@@ -178,7 +177,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
         ...(showLine && {
           lineData: [
             { y: 45, color: getColorFromToken(DataVizPalette.color10), legend: 'line1' },
-            { y: 87, color: DefaultPalette.greenDark, legend: 'line2' },
+            { y: 87, color: getColorFromToken(DataVizPalette.color5), legend: 'line2' },
           ],
         }),
       },
@@ -188,7 +187,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
         ...(showLine && {
           lineData: [
             { y: 15, color: getColorFromToken(DataVizPalette.color10), legend: 'line1' },
-            { y: 60, color: DefaultPalette.magenta, legend: 'line3' },
+            { y: 60, color: getColorFromToken(DataVizPalette.color7), legend: 'line3' },
           ],
         }),
       },

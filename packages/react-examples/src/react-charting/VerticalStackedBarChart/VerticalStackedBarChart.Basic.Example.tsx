@@ -7,7 +7,6 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
@@ -113,7 +112,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata2',
         data: 5,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color10),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '8%',
       },
@@ -137,7 +136,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata2',
         data: 20,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color10),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '22%',
       },
@@ -161,7 +160,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata2',
         data: 28,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color10),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '27%',
       },
@@ -185,7 +184,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata2',
         data: 22,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color10),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '16%',
       },
@@ -205,8 +204,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
 
         ...(showLine && {
           lineData: [
-            { y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
-            { y: 10, legend: 'Recommended Builds', color: DefaultPalette.redDark },
+            { y: 42, legend: 'Supported Builds', color: getColorFromToken(DataVizPalette.color5) },
+            { y: 10, legend: 'Recommended Builds', color: getColorFromToken(DataVizPalette.color9) },
           ],
         }),
       },
@@ -214,7 +213,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         chartData: secondChartPoints,
         xAxisPoint: 20,
         ...(showLine && {
-          lineData: [{ y: 33, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+          lineData: [{ y: 33, legend: 'Supported Builds', color: getColorFromToken(DataVizPalette.color5) }],
         }),
       },
       {
@@ -222,8 +221,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         xAxisPoint: 40,
         ...(showLine && {
           lineData: [
-            { y: 60, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
-            { y: 20, legend: 'Recommended Builds', color: DefaultPalette.redDark },
+            { y: 60, legend: 'Supported Builds', color: getColorFromToken(DataVizPalette.color5) },
+            { y: 20, legend: 'Recommended Builds', color: getColorFromToken(DataVizPalette.color9) },
           ],
         }),
       },
@@ -232,8 +231,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         xAxisPoint: 60,
         ...(showLine && {
           lineData: [
-            { y: 41, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
-            { y: 10, legend: 'Recommended Builds', color: DefaultPalette.redDark },
+            { y: 41, legend: 'Supported Builds', color: getColorFromToken(DataVizPalette.color5) },
+            { y: 10, legend: 'Recommended Builds', color: getColorFromToken(DataVizPalette.color9) },
           ],
         }),
       },
@@ -242,8 +241,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         xAxisPoint: 80,
         ...(showLine && {
           lineData: [
-            { y: 100, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
-            { y: 70, legend: 'Recommended Builds', color: DefaultPalette.redDark },
+            { y: 100, legend: 'Supported Builds', color: getColorFromToken(DataVizPalette.color25) },
+            { y: 70, legend: 'Recommended Builds', color: getColorFromToken(DataVizPalette.color9) },
           ],
         }),
       },

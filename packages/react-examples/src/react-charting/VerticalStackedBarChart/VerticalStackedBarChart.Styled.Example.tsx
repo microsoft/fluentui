@@ -104,7 +104,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
           paddingBottom: '45px',
         },
         chartLabel: {
-          color: DefaultPalette.blueMid,
+          color: getColorFromToken(DataVizPalette.color1),
           ...DefaultFontStyles.large,
         },
         xAxisText: {

@@ -6,7 +6,6 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export class VerticalStackedBarChartReflowExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -23,7 +22,7 @@ export class VerticalStackedBarChartReflowExample extends React.Component<{}, {}
       {
         legend: 'Metadata2',
         data: 5,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         legend: 'Metadata3',
@@ -41,7 +40,7 @@ export class VerticalStackedBarChartReflowExample extends React.Component<{}, {}
       {
         legend: 'Metadata2',
         data: 20,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         legend: 'Metadata3',
@@ -59,7 +58,7 @@ export class VerticalStackedBarChartReflowExample extends React.Component<{}, {}
       {
         legend: 'Metadata2',
         data: 28,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         legend: 'Metadata3',
@@ -77,7 +76,7 @@ export class VerticalStackedBarChartReflowExample extends React.Component<{}, {}
       {
         legend: 'Metadata2',
         data: 22,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         legend: 'Metadata3',
