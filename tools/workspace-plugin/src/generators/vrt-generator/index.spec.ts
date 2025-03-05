@@ -7,6 +7,7 @@ import {
   addProjectConfiguration,
   joinPathFragments,
 } from '@nx/devkit';
+import { setupCodeowners } from '../../utils-testing';
 
 import generator from './index';
 
@@ -15,6 +16,7 @@ describe('visual-regression generator', () => {
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
+    tree = setupCodeowners(tree, { content: '' });
     tree = createLibrary(tree, 'react-text');
   });
 
@@ -22,7 +24,7 @@ describe('visual-regression generator', () => {
     it(`should throw error if one wants to add package to non v9 package`, async () => {
       createLibrary(tree, 'react-old', { tags: ['v8'], version: '8.123.4' });
       try {
-        await generator(tree, { project: 'react-old' });
+        await generator(tree, { project: 'react-old', owner: '@microsoft/cxe-prg' });
       } catch (err) {
         expect(err).toMatchInlineSnapshot(`[Error: this generator works only with v9 packages. "react-old" is not!]`);
       }
@@ -30,10 +32,10 @@ describe('visual-regression generator', () => {
 
     it(`should throw error if package already exists`, async () => {
       createLibrary(tree, 'react-one');
-      await generator(tree, { project: 'react-one' });
+      await generator(tree, { project: 'react-one', owner: '@microsoft/cxe-prg' });
 
       try {
-        await generator(tree, { project: 'react-one' });
+        await generator(tree, { project: 'react-one', owner: '@microsoft/cxe-prg' });
       } catch (err) {
         expect(err).toMatchInlineSnapshot(
           `[Error: Cannot create a new project react-one-visual-regression at packages/react-components/react-one/visual-regression. A project already exists in this directory.]`,
@@ -43,7 +45,7 @@ describe('visual-regression generator', () => {
   });
 
   it('should scaffold react package', async () => {
-    await generator(tree, { project: 'react-text' });
+    await generator(tree, { project: 'react-text', owner: '@microsoft/cxe-prg' });
 
     const vrtPackage = readProjectConfiguration(tree, 'react-text-visual-regression');
 
@@ -90,14 +92,14 @@ describe('visual-regression generator', () => {
             ],
           },
           "build-storybook": Object {
-            "command": "storybook build -o dist/storybook",
+            "command": "storybook build -o dist/storybook --quiet",
             "options": Object {
               "cwd": "{projectRoot}",
             },
           },
           "generate-image-for-vrt": Object {
             "cache": true,
-            "command": "rm -rf dist/screenshots && storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
+            "command": "rm -rf dist/vrt/actual && storywright  --browsers chromium --url dist/storybook --destpath dist/actual --waitTimeScreenshot 500 --concurrency 4 --headless true",
             "dependsOn": Array [
               "build-storybook",
             ],
@@ -222,6 +224,16 @@ describe('visual-regression generator', () => {
       - Storybook to author VR scenarios
       - StoryWright for capturing Stories and their interactions
       - PlayWright test for running diffing and updating baseline
+
+      **Usage:**
+
+      - uses new VRT CLI with configured caching:
+
+      \`yarn react-text-visual-regression:test-vr-cli\`
+
+      - DEPRECATED: uses custom nx generator ( under the hood uses playwright )
+
+      \`yarn react-text-visual-regression:test-vr\`
       "
     `);
 

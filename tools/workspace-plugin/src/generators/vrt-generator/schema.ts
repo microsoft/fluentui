@@ -6,11 +6,20 @@
  */
 
 /**
- * Create visual-regression package within FluentUI v9 package
+ * Create visual-regression package within FluentUI v9 component package
  */
 export interface VisualRegressionSchema {
   /**
    * The name of the component package
    */
   project: string;
+  /**
+   * Team owning the library. Will be written in CODEOWNERS
+   */
+  owner?:
+    | "@microsoft/cxe-red"
+    | "@microsoft/cxe-prg"
+    | "@microsoft/fluentui-react-build"
+    | "@microsoft/teams-prg"
+    | "@microsoft/xc-uxe";
 }
