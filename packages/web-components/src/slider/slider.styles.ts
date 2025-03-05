@@ -126,11 +126,6 @@ export const styles = css`
     width: var(--track-size);
   }
 
-  :host(${verticalState}) .track {
-    top: var(--track-overhang);
-    bottom: var(--track-overhang);
-  }
-
   .track::before {
     content: '';
     position: absolute;

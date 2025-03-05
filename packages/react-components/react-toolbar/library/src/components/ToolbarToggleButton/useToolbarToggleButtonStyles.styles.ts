@@ -4,8 +4,14 @@ import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { ToolbarToggleButtonState } from './ToolbarToggleButton.types';
 
 const useBaseStyles = makeStyles({
+  /* use subtle ToggleButton selected styles for Toolbar Radio selected state */
   selected: {
-    color: tokens.colorBrandForeground1,
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
+    color: tokens.colorNeutralForeground2Selected,
+  },
+
+  iconSelected: {
+    color: tokens.colorNeutralForeground2BrandSelected,
   },
 });
 
@@ -19,6 +25,10 @@ export const useToolbarToggleButtonStyles_unstable = (state: ToolbarToggleButton
   const toggleButtonStyles = useBaseStyles();
 
   state.root.className = mergeClasses(state.root.className, state.checked && toggleButtonStyles.selected);
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(state.icon.className, state.checked && toggleButtonStyles.iconSelected);
+  }
 
   return state;
 };

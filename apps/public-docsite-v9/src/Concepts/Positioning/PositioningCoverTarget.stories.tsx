@@ -20,32 +20,34 @@ const useExampleStyles = makeStyles({
 });
 
 const useGridExampleStyles = makeStyles({
+  wrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1em',
+    width: '100%',
+    overflow: 'scroll',
+  },
+
+  instructions: {
+    textAlign: 'center',
+  },
+
   targetContainer: {
     display: 'inline-grid',
-    gridTemplateColumns: 'repeat(5, 1fr)',
+    gridTemplateColumns: 'repeat(3, 1fr)',
     gridTemplateRows: 'repeat(5, 64px)',
     gap: '20px',
     margin: '16px 128px',
   },
 
-  instructions: {
-    gridRowStart: '3',
-    gridColumnStart: '2',
-    gridRowEnd: 'span 1',
-    gridColumnEnd: 'span 3',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
   aboveStart: {
     gridRowStart: '1',
-    gridColumnStart: '2',
+    gridColumnStart: '1',
     flexDirection: 'row-reverse',
   },
   above: {
     gridRowStart: '1',
-    gridColumnStart: '3',
+    gridColumnStart: '2',
     justifyContent: 'center',
     '& div:nth-child(2)': {
       display: 'none',
@@ -53,7 +55,7 @@ const useGridExampleStyles = makeStyles({
   },
   aboveEnd: {
     gridRowStart: '1',
-    gridColumnStart: '4',
+    gridColumnStart: '3',
   },
   beforeTop: {
     gridRowStart: '2',
@@ -82,7 +84,7 @@ const useGridExampleStyles = makeStyles({
   },
   afterTop: {
     gridRowStart: '2',
-    gridColumnStart: '5',
+    gridColumnStart: '3',
     flexDirection: 'column-reverse',
     '& div:nth-child(2)': {
       transform: 'rotate(90deg)',
@@ -90,7 +92,7 @@ const useGridExampleStyles = makeStyles({
   },
   after: {
     gridRowStart: '3',
-    gridColumnStart: '5',
+    gridColumnStart: '3',
     justifyContent: 'center',
     '& div:nth-child(2)': {
       display: 'none',
@@ -98,7 +100,7 @@ const useGridExampleStyles = makeStyles({
   },
   afterBottom: {
     gridRowStart: '4',
-    gridColumnStart: '5',
+    gridColumnStart: '3',
     flexDirection: 'column',
     '& div:nth-child(2)': {
       transform: 'rotate(90deg)',
@@ -107,14 +109,14 @@ const useGridExampleStyles = makeStyles({
   belowStart: {
     flexDirection: 'row-reverse',
     gridRowStart: '5',
-    gridColumnStart: '2',
+    gridColumnStart: '1',
     '& div:nth-child(2)': {
       transform: 'rotate(180deg)',
     },
   },
   below: {
     gridRowStart: '5',
-    gridColumnStart: '3',
+    gridColumnStart: '2',
     justifyContent: 'center',
     '& div:nth-child(2)': {
       display: 'none',
@@ -122,7 +124,7 @@ const useGridExampleStyles = makeStyles({
   },
   belowEnd: {
     gridRowStart: '5',
-    gridColumnStart: '4',
+    gridColumnStart: '3',
     '& div:nth-child(2)': {
       transform: 'rotate(180deg)',
     },
@@ -133,69 +135,71 @@ export const CoverTarget = () => {
   const styles = useGridExampleStyles();
 
   return (
-    <div className={styles.targetContainer}>
+    <div className={styles.wrapper}>
       <div className={styles.instructions}>Click each button to see its positioned element</div>
-      <PositionedComponent
-        positioning={{ position: 'above', align: 'start', coverTarget: true }}
-        targetClassName={styles.aboveStart}
-        targetContent="above-start"
-      />
-      <PositionedComponent
-        positioning={{ position: 'above', coverTarget: true }}
-        targetClassName={styles.above}
-        targetContent="above"
-      />
-      <PositionedComponent
-        positioning={{ position: 'above', align: 'end', coverTarget: true }}
-        targetClassName={styles.aboveEnd}
-        targetContent="above-end"
-      />
+      <div className={styles.targetContainer}>
+        <PositionedComponent
+          positioning={{ position: 'above', align: 'start', coverTarget: true }}
+          targetClassName={styles.aboveStart}
+          targetContent="above-start"
+        />
+        <PositionedComponent
+          positioning={{ position: 'above', coverTarget: true }}
+          targetClassName={styles.above}
+          targetContent="above"
+        />
+        <PositionedComponent
+          positioning={{ position: 'above', align: 'end', coverTarget: true }}
+          targetClassName={styles.aboveEnd}
+          targetContent="above-end"
+        />
 
-      <PositionedComponent
-        positioning={{ position: 'before', align: 'top', coverTarget: true }}
-        targetClassName={styles.beforeTop}
-        targetContent="before-top"
-      />
-      <PositionedComponent
-        positioning={{ position: 'before', coverTarget: true }}
-        targetClassName={styles.before}
-        targetContent="before"
-      />
-      <PositionedComponent
-        positioning={{ position: 'before', align: 'bottom', coverTarget: true }}
-        targetClassName={styles.beforeBottom}
-        targetContent="before-bottom"
-      />
-      <PositionedComponent
-        positioning={{ position: 'after', align: 'top', coverTarget: true }}
-        targetClassName={styles.afterTop}
-        targetContent="after-top"
-      />
-      <PositionedComponent
-        positioning={{ position: 'after', coverTarget: true }}
-        targetClassName={styles.after}
-        targetContent="after"
-      />
-      <PositionedComponent
-        positioning={{ position: 'after', align: 'bottom', coverTarget: true }}
-        targetClassName={styles.afterBottom}
-        targetContent="after-bottom"
-      />
-      <PositionedComponent
-        positioning={{ position: 'below', align: 'start', coverTarget: true }}
-        targetClassName={styles.belowStart}
-        targetContent="below-start"
-      />
-      <PositionedComponent
-        positioning={{ position: 'below', coverTarget: true }}
-        targetClassName={styles.below}
-        targetContent="below"
-      />
-      <PositionedComponent
-        positioning={{ position: 'below', align: 'end', coverTarget: true }}
-        targetClassName={styles.belowEnd}
-        targetContent="below-end"
-      />
+        <PositionedComponent
+          positioning={{ position: 'before', align: 'top', coverTarget: true }}
+          targetClassName={styles.beforeTop}
+          targetContent="before-top"
+        />
+        <PositionedComponent
+          positioning={{ position: 'before', coverTarget: true }}
+          targetClassName={styles.before}
+          targetContent="before"
+        />
+        <PositionedComponent
+          positioning={{ position: 'before', align: 'bottom', coverTarget: true }}
+          targetClassName={styles.beforeBottom}
+          targetContent="before-bottom"
+        />
+        <PositionedComponent
+          positioning={{ position: 'after', align: 'top', coverTarget: true }}
+          targetClassName={styles.afterTop}
+          targetContent="after-top"
+        />
+        <PositionedComponent
+          positioning={{ position: 'after', coverTarget: true }}
+          targetClassName={styles.after}
+          targetContent="after"
+        />
+        <PositionedComponent
+          positioning={{ position: 'after', align: 'bottom', coverTarget: true }}
+          targetClassName={styles.afterBottom}
+          targetContent="after-bottom"
+        />
+        <PositionedComponent
+          positioning={{ position: 'below', align: 'start', coverTarget: true }}
+          targetClassName={styles.belowStart}
+          targetContent="below-start"
+        />
+        <PositionedComponent
+          positioning={{ position: 'below', coverTarget: true }}
+          targetClassName={styles.below}
+          targetContent="below"
+        />
+        <PositionedComponent
+          positioning={{ position: 'below', align: 'end', coverTarget: true }}
+          targetClassName={styles.belowEnd}
+          targetContent="below-end"
+        />
+      </div>
     </div>
   );
 };
@@ -215,7 +219,7 @@ CoverTarget.parameters = {
 
 CoverTarget.decorators = [
   (Story: React.ElementType) => (
-    <div style={{ height: 700, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Story />
     </div>
   ),
