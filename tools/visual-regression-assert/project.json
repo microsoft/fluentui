@@ -20,7 +20,7 @@
         "outputPath": "{projectRoot}/dist",
         "main": "tools/visual-regression-assert/src/index.ts",
         "tsConfig": "tools/visual-regression-assert/tsconfig.lib.json",
-        "assets": ["tools/visual-regression-assert/*.md"]
+        "assets": ["tools/visual-regression-assert/*.md", "tools/visual-regression-assert/src/template/*"]
       }
     },
     "nx-release-publish": {
