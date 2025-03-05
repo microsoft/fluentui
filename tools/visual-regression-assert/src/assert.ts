@@ -1,3 +1,4 @@
+import { render } from 'ejs';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { cwd } from 'node:process';
@@ -11,6 +12,14 @@ interface Result {
   file: any;
   changeType?: 'add' | 'diff' | 'remove';
   error?: string;
+}
+
+function stripIndents(strings: { raw: readonly string[] }, ...values: string[]) {
+  return String.raw(strings, ...values)
+    .split('\n')
+    .map(line => line.trim())
+    .join('\n')
+    .trim();
 }
 
 async function loadPixelmatch() {
@@ -56,122 +65,128 @@ async function compareSnapshots(
   }
 }
 
+function generateJsonReport(
+  results: Result[],
+  paths: {
+    absolute: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
+    relative: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
+  },
+) {
+  const reportPath = paths.absolute.reportPath.replace('html', 'json');
+  fs.writeFileSync(reportPath, JSON.stringify(results, null, 2), 'utf-8');
+
+  console.log(`JSON report generated: ${reportPath}`);
+}
+
+function generateMarkdownReport(
+  results: Result[],
+  paths: {
+    absolute: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
+    relative: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
+  },
+) {
+  const template = fs.readFileSync(path.join(__dirname, 'template/report.md__tmpl__'), 'utf-8');
+  const generatedContent = results
+    .map(result => {
+      let generatedContent = stripIndents`
+            | ${result.file} | ${result.passed ? '✅ Passed' : '❌ Failed'} |
+            `;
+
+      if (!result.passed) {
+        if (result.error) {
+          generatedContent += `Error: ${result.error}`;
+          generatedContent += `<br/>`;
+        }
+        if (result.diffPixels) {
+          generatedContent += `Diff pixels: ${result.diffPixels}`;
+          // TODO: this is impossible to do in GitHub MD context without either uploading images to some cloud or inlining  them via BASE64 which would be catastrophic for GH GUI
+          // generatedContent += `<br/>`;
+          // generatedContent += `<figure><figcaption>Baseline</<figcaption><img src="${paths.baselineDir}/${result.file}" alt="Baseline"></figure>`;
+          // generatedContent += `<figure><figcaption>Actual</<figcaption><img src="${paths.actualDir}/${result.file}" alt="Actual"></figure>`;
+          // generatedContent += `<figure><figcaption>Diff</<figcaption><img src="${paths.diffDir}/${result.file}" alt="Diff"></figure>`;
+        }
+      }
+
+      generatedContent += `|`;
+
+      return generatedContent;
+    })
+    .join('\n');
+
+  const renderedMD = render(template, { content: generatedContent });
+
+  const reportPath = paths.absolute.reportPath.replace('html', 'md');
+  fs.writeFileSync(reportPath, renderedMD, 'utf-8');
+
+  console.log(`Markdown report generated: ${reportPath}`);
+}
+
 function generateHtmlReport(
   results: Result[],
-  paths: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string },
+  paths: {
+    absolute: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
+    relative: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
+  },
 ) {
-  let html = `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Visual Regression Report</title>
-      <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        table {
-            width: 90%;
-            max-width: 800px;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #007bff;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-
-        tr:hover {
-            background-color: #e9ecef;
-            transition: 0.2s;
-        }
-
-        td {
-            border-bottom: 1px solid #ddd;
-        }
-
-        @media (max-width: 600px) {
-            table {
-                width: 100%;
-            }
-
-            th, td {
-                padding: 8px;
-            }
-        }
-        .passed { color: green; }
-        .failed { color: red; }
-        .image-container { display: flex; flex-wrap: wrap; }
-        .image-container img { max-width: 300px; margin: 10px; }
-      </style>
-    </head>
-    <body>
-      <h1>Snapshot Comparison Report</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>File</th>
-            <th>Status</th>
-            <th>Details</th>
-          </tr>
-        </thead>
-        <tbody>
-  `;
-
-  results.forEach(result => {
-    html += `
+  const template = fs.readFileSync(path.join(__dirname, 'template/report.html__tmpl__'), 'utf-8');
+  const generatedContent = results
+    .map(result => {
+      let generatedContent = stripIndents`
           <tr>
             <td>${result.file}</td>
             <td class="${result.passed ? 'passed' : 'failed'}">${result.passed ? 'Passed' : 'Failed'}</td>
             <td>`;
 
-    if (!result.passed) {
-      if (result.error) {
-        html += `<p>Error: ${result.error}</p>`;
+      if (!result.passed) {
+        if (result.error) {
+          generatedContent += `<p>Error: ${result.error}</p>`;
+        }
+        if (result.diffPixels) {
+          const sanitizedFileName = encodeURIComponent(result.file);
+          const images = {
+            baseline: createRelativeImagePath(paths.relative.reportPath, paths.relative.baselineDir),
+            actual: createRelativeImagePath(paths.relative.reportPath, paths.relative.actualDir),
+            diff: createRelativeImagePath(paths.relative.reportPath, paths.relative.diffDir),
+          };
+          generatedContent += `<p>Diff pixels: ${result.diffPixels}</p>`;
+          generatedContent += `<div class="image-container">`;
+          generatedContent += `<figure><figcaption>Baseline</figcaption><img src="${path.join(
+            images.baseline,
+            sanitizedFileName,
+          )}" alt="Baseline"></figure>`;
+          generatedContent += `<figure><figcaption>Actual</figcaption><img src="${path.join(
+            images.actual,
+            sanitizedFileName,
+          )}" alt="Actual"></figure>`;
+          generatedContent += `<figure><figcaption>Diff</figcaption><img src="${path.join(
+            images.diff,
+            sanitizedFileName,
+          )}" alt="Diff"></figure>`;
+          generatedContent += `</div>`;
+        }
       }
-      if (result.diffPixels) {
-        html += `<p>Diff pixels: ${result.diffPixels}</p>`;
-        html += `<div class="image-container">`;
-        html += `<figure><figcaption>Baseline</<figcaption><img src="${paths.baselineDir}/${result.file}" alt="Baseline"></figure>`;
-        html += `<figure><figcaption>Actual</<figcaption><img src="${paths.actualDir}/${result.file}" alt="Actual"></figure>`;
-        html += `<figure><figcaption>Diff</<figcaption><img src="${paths.diffDir}/${result.file}" alt="Diff"></figure>`;
-        html += `</div>`;
-      }
-    }
 
-    html += `</td></tr>`;
-  });
+      generatedContent += `</td></tr>`;
 
-  html += `
-        </tbody>
-      </table>
-    </body>
-    </html>
-  `;
+      return generatedContent;
+    })
+    .join('\n');
 
-  fs.writeFileSync(paths.reportPath, html);
-  console.log(`HTML report generated: ${paths.reportPath}`);
+  const renderedHTML = render(template, { content: generatedContent });
+
+  fs.writeFileSync(paths.absolute.reportPath, renderedHTML);
+  console.log(`HTML report generated: ${paths.absolute.reportPath}`);
+}
+
+function createRelativeImagePath(reportFilePath: string, imageDirectory: string) {
+  try {
+    const reportDir = path.dirname(reportFilePath);
+    const relativePath = path.relative(reportDir, imageDirectory);
+    return path.join(relativePath, '/'); // Add a trailing slash for directory access
+  } catch (error) {
+    console.error('Error creating relative path:', error);
+    return ''; // Return an empty string in case of an error
+  }
 }
 
 export async function runSnapshotTests(
@@ -181,11 +196,17 @@ export async function runSnapshotTests(
   reportPath: string,
   updateSnapshots: boolean,
 ) {
+  const relativePaths = {
+    baselineDir,
+    actualDir,
+    diffDir,
+    reportPath,
+  };
   const normalizedPaths = {
-    baselineDir: path.join(cwd(), baselineDir),
-    actualDir: path.join(cwd(), actualDir),
-    diffDir: path.join(cwd(), diffDir),
-    reportPath: path.join(cwd(), reportPath),
+    baselineDir: path.join(cwd(), relativePaths.baselineDir),
+    actualDir: path.join(cwd(), relativePaths.actualDir),
+    diffDir: path.join(cwd(), relativePaths.diffDir),
+    reportPath: path.join(cwd(), relativePaths.reportPath),
   };
 
   if (!fs.existsSync(normalizedPaths.baselineDir)) {
@@ -258,8 +279,9 @@ export async function runSnapshotTests(
     }
   }
 
-  fs.writeFileSync(reportPath.replace('html', 'json'), JSON.stringify(results, null, 2), 'utf-8');
-  generateHtmlReport(results, normalizedPaths);
+  generateJsonReport(results, { absolute: normalizedPaths, relative: relativePaths });
+  generateHtmlReport(results, { absolute: normalizedPaths, relative: relativePaths });
+  generateMarkdownReport(results, { absolute: normalizedPaths, relative: relativePaths });
 
   if (!allPassed) {
     throw new Error(`snapshots contain diff`);
