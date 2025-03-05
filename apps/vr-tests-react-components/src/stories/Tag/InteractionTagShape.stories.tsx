@@ -1,15 +1,25 @@
 import * as React from 'react';
 import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
 import type { Meta } from '@storybook/react';
-import { getStoryVariant, withStoryWrightSteps, RTL } from '../../utilities';
+import { getStoryVariant, RTL } from '../../utilities';
 import { Avatar } from '@fluentui/react-avatar';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 
 const contentId = 'content-id';
 const dismissButtonId = 'dismiss-button-id';
-const steps = new Steps()
+
+const defaultSteps = new Steps()
   .snapshot('default')
 
+  // This needs to be added so that the focus outline is shown correctly
+  .executeScript(`document.querySelector('#${contentId}').setAttribute('data-fui-focus-visible', '')`)
+  .focus(`#${contentId}`)
+  .snapshot('focus content')
+  .executeScript(`document.querySelector('#${contentId}').removeAttribute('data-fui-focus-visible')`)
+  .end();
+
+const dismissSteps = new Steps()
+  .snapshot('default')
   // This needs to be added so that the focus outline is shown correctly
   .executeScript(`document.querySelector('#${contentId}').setAttribute('data-fui-focus-visible', '')`)
   .focus(`#${contentId}`)
@@ -21,13 +31,12 @@ const steps = new Steps()
   .focus(`#${dismissButtonId}`)
   .snapshot('focus dismiss')
   .executeScript(`document.querySelector('#${dismissButtonId}').removeAttribute('data-fui-focus-visible')`)
-
   .end();
 
 export default {
   title: 'InteractionTag Converged',
   component: InteractionTag,
-  decorators: [story => withStoryWrightSteps({ story, steps })],
+  parameters: { storyWright: { steps: defaultSteps } } satisfies StoryParameters,
 } satisfies Meta<typeof InteractionTag>;
 
 export const Rounded = () => (
@@ -61,6 +70,7 @@ export const RoundedDismissible = () => (
     <InteractionTagSecondary id={dismissButtonId} />
   </InteractionTag>
 );
+RoundedDismissible.parameters = { storyWright: { steps: dismissSteps } } satisfies StoryParameters;
 export const RoundedDismissibleRTL = getStoryVariant(RoundedDismissible, RTL);
 
 export const Circular = () => (
@@ -94,4 +104,6 @@ export const CircularDismissible = () => (
     <InteractionTagSecondary id={dismissButtonId} />
   </InteractionTag>
 );
+CircularDismissible.parameters = { storyWright: { steps: dismissSteps } } satisfies StoryParameters;
+
 export const CircularDismissibleRTL = getStoryVariant(CircularDismissible, RTL);
