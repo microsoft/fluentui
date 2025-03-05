@@ -22,7 +22,11 @@ module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig}
     // disable react-docgen-typescript (totally not needed here, slows things down a lot)
     reactDocgen: false,
   },
-  webpackFinal: config => {
+  webpackFinal: (config, options) => {
+    if (options.configType === 'PRODUCTION') {
+      // Disable source maps
+      config.devtool = false;
+    }
     registerTsPaths({ config, configFile: tsConfigPath });
     registerRules({ config, rules: [rules.griffelRule] });
 
