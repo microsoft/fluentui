@@ -1,4 +1,4 @@
-name: VRT CI | Comment on PR
+name: VRT POC | Comment on PR
 on:
   workflow_run:
     workflows: ['VRT POC']
