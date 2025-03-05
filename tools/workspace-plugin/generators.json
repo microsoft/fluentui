@@ -96,6 +96,11 @@
       "schema": "./src/generators/epic-generator/schema.json",
       "description": "DEPRECATED: Create a migration tracker issue epic and subsequent team sub-issues on GitHub for React v9",
       "hidden": true
+    },
+    "vrt-generator": {
+      "factory": "./src/generators/vrt-generator/index.ts",
+      "schema": "./src/generators/vrt-generator/schema.json",
+      "description": "Creates visual regression package setup needed for FluentUI v9 component"
     }
   }
 }
