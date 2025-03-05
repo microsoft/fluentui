@@ -24,14 +24,14 @@ export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
     {
       legend: 'Passport numbers (USA)',
       data: 23,
-      color: getColorFromToken(DataVizPalette.color1),
+      color: getColorFromToken(DataVizPalette.color5),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '23%',
     },
     {
       legend: 'Social security numbers',
       data: 35,
-      color: getColorFromToken(DataVizPalette.color1),
+      color: getColorFromToken(DataVizPalette.color3),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '35%',
     },
