@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 28 Feb 2025 04:07:19 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Mar 2025 04:07:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.83](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.83)
+
+Wed, 05 Mar 2025 04:07:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.82..@fluentui/web-components_v3.0.0-beta.83)
+
+### Changes
+
+- feat: auto associate tabpanels with tabs ([PR #33939](https://github.com/microsoft/fluentui/pull/33939) by machi@microsoft.com)
 
 ## [3.0.0-beta.82](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.82)
 
