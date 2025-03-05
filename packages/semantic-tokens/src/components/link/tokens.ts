@@ -1,31 +1,5 @@
 // eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
-import {
-  foregroundCtrlNeutralPrimaryRestRaw,
-  strokewidthDefaultRaw,
-  foregroundCtrlBrandRestRaw,
-  foregroundCtrlBrandHoverRaw,
-  foregroundCtrlBrandPressedRaw,
-} from '../../control/variables';
-import {
-  ctrlLinkForegroundNeutralRestRaw,
-  ctrlLinkForegroundNeutralHoverRaw,
-  ctrlLinkForegroundNeutralPressedRaw,
-  ctrlLinkForegroundBrandRestRaw,
-  ctrlLinkForegroundBrandHoverRaw,
-  ctrlLinkForegroundBrandPressedRaw,
-} from '../index';
-import {
-  ctrlLinkInlineStrokewidthRestRaw,
-  ctrlLinkInlineStrokewidthHoverRaw,
-  ctrlLinkInlineUnderlineDashedRaw,
-  ctrlLinkInlineUnderlineSolidFigmaOnlyRaw,
-  ctrlLinkOnpageStrokewidthRestRaw,
-  ctrlLinkOnpageStrokewidthHoverRaw,
-  ctrlLinkOnpageUnderlineDashedRaw,
-  ctrlLinkOnpageUnderlineSolidFigmaOnlyRaw,
-  ctrlLinkShowunderlineatrestRaw,
-} from './variables';
 
 export const ctrlLinkForegroundNeutralRest = `var(${ctrlLinkForegroundNeutralRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${tokens.colorNeutralForeground2}))`;
 export const ctrlLinkInlineStrokewidthRest = `var(${ctrlLinkInlineStrokewidthRestRaw}, ${strokewidthDefaultRaw})`;

@@ -5,6 +5,11 @@
 import tokensJSONRaw from './tokens.json';
 import fluentFallbacksRaw from './fluentOverrides.json';
 import fs from 'fs';
+import { Project } from 'ts-morph';
+
+const project = new Project({
+  tsConfigFilePath: './tsconfig.json',
+});
 
 const tokensJSON: Record<string, any> = tokensJSONRaw;
 const fluentFallbacks: Record<string, string> = fluentFallbacksRaw;
@@ -90,6 +95,9 @@ function generateTokenRawStrings() {
   fs.writeFileSync('./src/optional/variables.ts', optionalRawTokens);
   fs.writeFileSync('./src/control/variables.ts', controlRawTokens);
   fs.writeFileSync('./src/nullable/variables.ts', nullableRawTokens);
+  project.addSourceFileAtPathIfExists('./src/optional/variables.ts');
+  project.addSourceFileAtPathIfExists('./src/control/variables.ts');
+  project.addSourceFileAtPathIfExists('./src/nullable/variables.ts');
 
   for (const component in componentTokens) {
     var dir = `./src/components/${component}/`;
@@ -97,7 +105,9 @@ function generateTokenRawStrings() {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    fs.writeFileSync(`./src/components/${component}/variables.ts`, componentTokens[component]);
+    const variablePath = `./src/components/${component}/variables.ts`;
+    fs.writeFileSync(variablePath, componentTokens[component]);
+    project.addSourceFileAtPathIfExists(variablePath);
   }
 }
 
@@ -125,6 +135,11 @@ function generateTokenVariables() {
   let nullableTokens = generateImportHeaders();
   const componentTokens: ComponentTokenMap = {};
   for (const token in tokensJSON) {
+    if (token.includes('(figma only)')) {
+      // Superfluous tokens - SKIP
+      continue;
+    }
+
     const tokenData: Token = tokensJSON[token];
     const tokenNameRaw = token + 'Raw';
 
@@ -201,14 +216,26 @@ function generateTokenVariables() {
   fs.writeFileSync('./src/control/tokens.ts', controlTokens);
   fs.writeFileSync('./src/nullable/tokens.ts', nullableTokens);
 
+  project.addSourceFileAtPathIfExists('./src/optional/tokens.ts');
+  project.addSourceFileAtPathIfExists('./src/control/tokens.ts');
+  project.addSourceFileAtPathIfExists('./src/nullable/tokens.ts');
+
   for (const component in componentTokens) {
     var dir = `./src/components/${component}/`;
 
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    fs.writeFileSync(`./src/components/${component}/tokens.ts`, componentTokens[component]);
+    const componentTokensPath = `./src/components/${component}/tokens.ts`;
+    fs.writeFileSync(componentTokensPath, componentTokens[component]);
+    project.addSourceFileAtPathIfExists(componentTokensPath);
   }
+
+  console.log('CHECKING:', project.getSourceFiles().length);
+  project.getSourceFiles().forEach(sourceFile => {
+    console.log('Fix missing imports from:', sourceFile.getFilePath());
+    sourceFile.fixMissingImports();
+  });
 }
 
 // Run script
