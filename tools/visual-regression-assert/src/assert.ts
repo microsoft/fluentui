@@ -196,6 +196,12 @@ export async function runSnapshotTests(
   reportPath: string,
   updateSnapshots: boolean,
 ) {
+  if (updateSnapshots) {
+    console.info('======================');
+    console.info('💡 UPDATING SNAPSHOTS!');
+    console.info('======================');
+  }
+
   const relativePaths = {
     baselineDir,
     actualDir,
@@ -271,11 +277,14 @@ export async function runSnapshotTests(
       continue;
     }
 
-    const result = await compareSnapshots(baselinePath, actualPath, diffPath);
-    results.push({ file, ...result });
-
-    if (!result.passed) {
-      allPassed = false;
+    if (!updateSnapshots) {
+      const result = await compareSnapshots(baselinePath, actualPath, diffPath);
+      if (!result.passed) {
+        allPassed = false;
+      }
+      results.push({ file, ...result });
+    } else {
+      results.push({ file, passed: true });
     }
   }
 
