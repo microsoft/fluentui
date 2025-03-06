@@ -8,6 +8,7 @@ export { ExperimentsBlur as Blur } from './ExperimentsBlur.stories';
 export { ExperimentsSpiral as Spiral } from './ExperimentsSpiral.stories';
 export { ExperimentsWipe as Wipe } from './ExperimentsWipe.stories';
 export { ExperimentsSlideUnder as SlideUnder } from './ExperimentsSlideUnder.stories';
+export { ExperimentsSeries as Series } from './ExperimentsSeries.stories';
 
 export default {
   title: 'Motion/Experiments',
