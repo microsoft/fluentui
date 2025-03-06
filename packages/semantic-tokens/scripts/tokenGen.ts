@@ -289,6 +289,17 @@ function generateTokenVariables() {
   project.getSourceFiles().forEach(sourceFile => {
     console.log('Fix missing imports from:', sourceFile.getFilePath());
     sourceFile.fixMissingImports().organizeImports().fixUnusedIdentifiers().formatText();
+
+    // Format our text to match prettier rules
+    const rawText = sourceFile.getText();
+    const formattedText = prettier.format(rawText, {
+      parser: 'typescript',
+      singleQuote: true,
+      printWidth: 120,
+    });
+
+    // Format our text to match prettier rules
+    sourceFile.replaceWithText(formattedText);
   });
 
   // Save changes so far

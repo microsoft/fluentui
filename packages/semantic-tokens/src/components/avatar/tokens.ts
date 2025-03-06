@@ -1,6 +1,34 @@
-// eslint-disable-next-line no-restricted-imports
-import { backgroundCtrlBrandRestRaw, backgroundLayerPrimarySolidRaw, cornerCircularRaw, cornerCtrlRestRaw, nullNumberRaw, sizeCtrlDefaultRaw, sizeCtrlIconRaw, strokewidthDefaultRaw, textGlobalBody3FontsizeRaw, textGlobalBody3LineheightRaw } from "../../control/variables";
-import { ctrlAvatarActiveringSizeRaw, ctrlAvatarActiveringStrokeRaw, ctrlAvatarActiveringStrokewidthRaw, ctrlAvatarBackgroundRaw, ctrlAvatarCornerGroupRaw, ctrlAvatarCornerItemRaw, ctrlAvatarForegroundRaw, ctrlAvatarIconSizeRaw, ctrlAvatarPresencebadgeBackgroundBehindbadgeRaw, ctrlAvatarPresencebadgePaddingBottomrightoffsetRaw, ctrlAvatarPresencebadgeSizeRaw, ctrlAvatarPresencebadgeStrokewidthRaw, ctrlAvatarShowcutoutRaw, ctrlAvatarSizeRaw, ctrlAvatarTextFontsizeRaw, ctrlAvatarTextLineheightRaw, ctrlAvatarTextPaddingTopoffsetRaw } from "./variables";
+import {
+  backgroundCtrlBrandRestRaw,
+  backgroundLayerPrimarySolidRaw,
+  cornerCircularRaw,
+  cornerCtrlRestRaw,
+  nullNumberRaw,
+  sizeCtrlDefaultRaw,
+  sizeCtrlIconRaw,
+  strokewidthDefaultRaw,
+  textGlobalBody3FontsizeRaw,
+  textGlobalBody3LineheightRaw,
+} from '../../control/variables';
+import {
+  ctrlAvatarActiveringSizeRaw,
+  ctrlAvatarActiveringStrokeRaw,
+  ctrlAvatarActiveringStrokewidthRaw,
+  ctrlAvatarBackgroundRaw,
+  ctrlAvatarCornerGroupRaw,
+  ctrlAvatarCornerItemRaw,
+  ctrlAvatarForegroundRaw,
+  ctrlAvatarIconSizeRaw,
+  ctrlAvatarPresencebadgeBackgroundBehindbadgeRaw,
+  ctrlAvatarPresencebadgePaddingBottomrightoffsetRaw,
+  ctrlAvatarPresencebadgeSizeRaw,
+  ctrlAvatarPresencebadgeStrokewidthRaw,
+  ctrlAvatarShowcutoutRaw,
+  ctrlAvatarSizeRaw,
+  ctrlAvatarTextFontsizeRaw,
+  ctrlAvatarTextLineheightRaw,
+  ctrlAvatarTextPaddingTopoffsetRaw,
+} from './variables';
 
 export const ctrlAvatarSize = `var(${ctrlAvatarSizeRaw}, ${sizeCtrlDefaultRaw})`;
 export const ctrlAvatarCornerItem = `var(${ctrlAvatarCornerItemRaw}, ${cornerCircularRaw})`;

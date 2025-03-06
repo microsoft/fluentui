@@ -1,4 +1,5 @@
-export const ctrlComposerInputBottomStrokeWidthSelectedRestRaw = '--smtc-ctrl-Composer-input-bottom-stroke-width-selected-rest';
+export const ctrlComposerInputBottomStrokeWidthSelectedRestRaw =
+  '--smtc-ctrl-Composer-input-bottom-stroke-width-selected-rest';
 export const ctrlComposerInputBottomStrokeWidthRestRaw = '--smtc-ctrl-Composer-input-bottom-stroke-width-rest';
 export const ctrlComposerInputBottomStrokeWidthHoverRaw = '--smtc-ctrl-Composer-input-bottom-stroke-width-hover';
 export const ctrlComposerInputBottomStrokeWidthPressedRaw = '--smtc-ctrl-Composer-input-bottom-stroke-width-pressed';
@@ -14,7 +15,8 @@ export const ctrlComposerInputStrokeRestRaw = '--smtc-ctrl-Composer-input-stroke
 export const ctrlComposerInputStrokeHoverUsesGradientRaw = '--smtc-ctrl-Composer-input-stroke-hoverUsesGradient';
 export const ctrlComposerInputStrokePressedUsesGradientRaw = '--smtc-ctrl-Composer-input-stroke-pressedUsesGradient';
 export const ctrlComposerInputStrokeDisabledUsesGradientRaw = '--smtc-ctrl-Composer-input-stroke-disabledUsesGradient';
-export const ctrlComposerInputStrokeSelectedRestUsesGradientRaw = '--smtc-ctrl-Composer-input-stroke-selected-restUsesGradient';
+export const ctrlComposerInputStrokeSelectedRestUsesGradientRaw =
+  '--smtc-ctrl-Composer-input-stroke-selected-restUsesGradient';
 export const ctrlComposerInputStrokeWidthRestRaw = '--smtc-ctrl-Composer-input-stroke-width-rest';
 export const ctrlComposerInputStrokeWidthHoverRaw = '--smtc-ctrl-Composer-input-stroke-width-hover';
 export const ctrlComposerInputStrokeWidthPressedRaw = '--smtc-ctrl-Composer-input-stroke-width-pressed';
@@ -30,8 +32,10 @@ export const ctrlComposerInputShadowBlurRaw = '--smtc-ctrl-Composer-input-shadow
 export const ctrlComposerInputShadowColorRaw = '--smtc-ctrl-Composer-input-shadow-color';
 export const ctrlComposerContainerCornerRaw = '--smtc-ctrl-Composer-container-corner';
 export const ctrlComposerContainerBackgroundDefaultRaw = '--smtc-ctrl-Composer-container-background-default';
-export const ctrlComposerContainerBackgroundAcrylicColorBlendRaw = '--smtc-ctrl-Composer-container-background-acrylicColorBlend';
-export const ctrlComposerContainerBackgroundAcrylicLumBlendRaw = '--smtc-ctrl-Composer-container-background-acrylicLumBlend';
+export const ctrlComposerContainerBackgroundAcrylicColorBlendRaw =
+  '--smtc-ctrl-Composer-container-background-acrylicColorBlend';
+export const ctrlComposerContainerBackgroundAcrylicLumBlendRaw =
+  '--smtc-ctrl-Composer-container-background-acrylicLumBlend';
 export const ctrlComposerContainerShadowKeyXRaw = '--smtc-ctrl-Composer-container-shadow-key-x';
 export const ctrlComposerContainerShadowKeyYRaw = '--smtc-ctrl-Composer-container-shadow-key-y';
 export const ctrlComposerContainerShadowKeyBlurRaw = '--smtc-ctrl-Composer-container-shadow-key-blur';

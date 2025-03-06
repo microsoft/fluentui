@@ -1,6 +1,49 @@
-// eslint-disable-next-line no-restricted-imports
-import { backgroundFlyoutSolidRaw, nullColorRaw } from "../../control/variables";
-import { ctrlComposerContainerBackgroundAcrylicColorBlendRaw, ctrlComposerContainerBackgroundAcrylicLumBlendRaw, ctrlComposerContainerBackgroundDefaultRaw, ctrlComposerContainerCornerRaw, ctrlComposerContainerShadowAmbientBlurRaw, ctrlComposerContainerShadowAmbientColorRaw, ctrlComposerContainerShadowAmbientXRaw, ctrlComposerContainerShadowAmbientYRaw, ctrlComposerContainerShadowKeyBlurRaw, ctrlComposerContainerShadowKeyColorRaw, ctrlComposerContainerShadowKeyXRaw, ctrlComposerContainerShadowKeyYRaw, ctrlComposerContainerStrokeDefaultRaw, ctrlComposerInputBackgroundDisabledRaw, ctrlComposerInputBackgroundHoverRaw, ctrlComposerInputBackgroundPressedRaw, ctrlComposerInputBackgroundRestRaw, ctrlComposerInputBackgroundSelectedRestRaw, ctrlComposerInputBottomStrokeDisabledRaw, ctrlComposerInputBottomStrokeHoverRaw, ctrlComposerInputBottomStrokePressedRaw, ctrlComposerInputBottomStrokeRestRaw, ctrlComposerInputBottomStrokeSelectedRestRaw, ctrlComposerInputBottomStrokeWidthHoverRaw, ctrlComposerInputBottomStrokeWidthPressedRaw, ctrlComposerInputBottomStrokeWidthRestRaw, ctrlComposerInputBottomStrokeWidthSelectedRestRaw, ctrlComposerInputCornerHoverRaw, ctrlComposerInputCornerPressedRaw, ctrlComposerInputCornerRestRaw, ctrlComposerInputShadowBlurRaw, ctrlComposerInputShadowColorRaw, ctrlComposerInputShadowXOffsetRaw, ctrlComposerInputShadowYRaw, ctrlComposerInputStrokeDisabledUsesGradientRaw, ctrlComposerInputStrokeHoverUsesGradientRaw, ctrlComposerInputStrokePressedUsesGradientRaw, ctrlComposerInputStrokeRestRaw, ctrlComposerInputStrokeSelectedRestUsesGradientRaw, ctrlComposerInputStrokeWidthHoverRaw, ctrlComposerInputStrokeWidthPressedRaw, ctrlComposerInputStrokeWidthRestRaw, ctrlComposerInputStrokeWidthSelectedRestRaw } from "./variables";
+import { backgroundFlyoutSolidRaw, nullColorRaw } from '../../control/variables';
+import {
+  ctrlComposerContainerBackgroundAcrylicColorBlendRaw,
+  ctrlComposerContainerBackgroundAcrylicLumBlendRaw,
+  ctrlComposerContainerBackgroundDefaultRaw,
+  ctrlComposerContainerCornerRaw,
+  ctrlComposerContainerShadowAmbientBlurRaw,
+  ctrlComposerContainerShadowAmbientColorRaw,
+  ctrlComposerContainerShadowAmbientXRaw,
+  ctrlComposerContainerShadowAmbientYRaw,
+  ctrlComposerContainerShadowKeyBlurRaw,
+  ctrlComposerContainerShadowKeyColorRaw,
+  ctrlComposerContainerShadowKeyXRaw,
+  ctrlComposerContainerShadowKeyYRaw,
+  ctrlComposerContainerStrokeDefaultRaw,
+  ctrlComposerInputBackgroundDisabledRaw,
+  ctrlComposerInputBackgroundHoverRaw,
+  ctrlComposerInputBackgroundPressedRaw,
+  ctrlComposerInputBackgroundRestRaw,
+  ctrlComposerInputBackgroundSelectedRestRaw,
+  ctrlComposerInputBottomStrokeDisabledRaw,
+  ctrlComposerInputBottomStrokeHoverRaw,
+  ctrlComposerInputBottomStrokePressedRaw,
+  ctrlComposerInputBottomStrokeRestRaw,
+  ctrlComposerInputBottomStrokeSelectedRestRaw,
+  ctrlComposerInputBottomStrokeWidthHoverRaw,
+  ctrlComposerInputBottomStrokeWidthPressedRaw,
+  ctrlComposerInputBottomStrokeWidthRestRaw,
+  ctrlComposerInputBottomStrokeWidthSelectedRestRaw,
+  ctrlComposerInputCornerHoverRaw,
+  ctrlComposerInputCornerPressedRaw,
+  ctrlComposerInputCornerRestRaw,
+  ctrlComposerInputShadowBlurRaw,
+  ctrlComposerInputShadowColorRaw,
+  ctrlComposerInputShadowXOffsetRaw,
+  ctrlComposerInputShadowYRaw,
+  ctrlComposerInputStrokeDisabledUsesGradientRaw,
+  ctrlComposerInputStrokeHoverUsesGradientRaw,
+  ctrlComposerInputStrokePressedUsesGradientRaw,
+  ctrlComposerInputStrokeRestRaw,
+  ctrlComposerInputStrokeSelectedRestUsesGradientRaw,
+  ctrlComposerInputStrokeWidthHoverRaw,
+  ctrlComposerInputStrokeWidthPressedRaw,
+  ctrlComposerInputStrokeWidthRestRaw,
+  ctrlComposerInputStrokeWidthSelectedRestRaw,
+} from './variables';
 
 export const ctrlComposerInputBottomStrokeWidthSelectedRest = `var(${ctrlComposerInputBottomStrokeWidthSelectedRestRaw})`;
 export const ctrlComposerInputBottomStrokeWidthRest = `var(${ctrlComposerInputBottomStrokeWidthRestRaw})`;

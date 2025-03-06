@@ -1,6 +1,39 @@
-// eslint-disable-next-line no-restricted-imports
-import { cornerCircularRaw, shadowFlyoutKeyBlurRaw, shadowFlyoutKeyColorRaw, shadowFlyoutKeyXRaw, shadowFlyoutKeyYRaw } from "../../control/variables";
-import { ctrlFabBackgroundDisabledRaw, ctrlFabBackgroundHoverRaw, ctrlFabBackgroundPressedRaw, ctrlFabBackgroundRestRaw, ctrlFabCornerHoverRaw, ctrlFabCornerPressedRaw, ctrlFabCornerRestRaw, ctrlFabShadowDisabledKeyBlurRaw, ctrlFabShadowDisabledKeyColorRaw, ctrlFabShadowDisabledKeyXRaw, ctrlFabShadowDisabledKeyYRaw, ctrlFabShadowHoverKeyBlurRaw, ctrlFabShadowHoverKeyColorRaw, ctrlFabShadowHoverKeyXRaw, ctrlFabShadowHoverKeyYRaw, ctrlFabShadowPressedKeyBlurRaw, ctrlFabShadowPressedKeyColorRaw, ctrlFabShadowPressedKeyXRaw, ctrlFabShadowPressedKeyYRaw, ctrlFabShadowRestAmbientBlurRaw, ctrlFabShadowRestAmbientColorRaw, ctrlFabShadowRestAmbientXRaw, ctrlFabShadowRestAmbientYRaw, ctrlFabShadowRestKeyBlurRaw, ctrlFabShadowRestKeyColorRaw, ctrlFabShadowRestKeyXRaw, ctrlFabShadowRestKeyYRaw } from "./variables";
+import {
+  cornerCircularRaw,
+  shadowFlyoutKeyBlurRaw,
+  shadowFlyoutKeyColorRaw,
+  shadowFlyoutKeyXRaw,
+  shadowFlyoutKeyYRaw,
+} from '../../control/variables';
+import {
+  ctrlFabBackgroundDisabledRaw,
+  ctrlFabBackgroundHoverRaw,
+  ctrlFabBackgroundPressedRaw,
+  ctrlFabBackgroundRestRaw,
+  ctrlFabCornerHoverRaw,
+  ctrlFabCornerPressedRaw,
+  ctrlFabCornerRestRaw,
+  ctrlFabShadowDisabledKeyBlurRaw,
+  ctrlFabShadowDisabledKeyColorRaw,
+  ctrlFabShadowDisabledKeyXRaw,
+  ctrlFabShadowDisabledKeyYRaw,
+  ctrlFabShadowHoverKeyBlurRaw,
+  ctrlFabShadowHoverKeyColorRaw,
+  ctrlFabShadowHoverKeyXRaw,
+  ctrlFabShadowHoverKeyYRaw,
+  ctrlFabShadowPressedKeyBlurRaw,
+  ctrlFabShadowPressedKeyColorRaw,
+  ctrlFabShadowPressedKeyXRaw,
+  ctrlFabShadowPressedKeyYRaw,
+  ctrlFabShadowRestAmbientBlurRaw,
+  ctrlFabShadowRestAmbientColorRaw,
+  ctrlFabShadowRestAmbientXRaw,
+  ctrlFabShadowRestAmbientYRaw,
+  ctrlFabShadowRestKeyBlurRaw,
+  ctrlFabShadowRestKeyColorRaw,
+  ctrlFabShadowRestKeyXRaw,
+  ctrlFabShadowRestKeyYRaw,
+} from './variables';
 
 export const ctrlFabBackgroundRest = `var(${ctrlFabBackgroundRestRaw})`;
 export const ctrlFabBackgroundHover = `var(${ctrlFabBackgroundHoverRaw})`;

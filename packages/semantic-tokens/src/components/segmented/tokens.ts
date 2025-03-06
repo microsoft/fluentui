@@ -1,7 +1,56 @@
-// eslint-disable-next-line no-restricted-imports
-import { cornerCtrlLgRestRaw, cornerCtrlRestRaw, cornerCtrlSmRestRaw, foregroundCtrlNeutralSecondaryDisabledRaw, foregroundCtrlNeutralSecondaryRestRaw, nullColorRaw, nullNumberRaw } from "../../control/variables";
-import { backgroundCtrlOutlineDisabledRaw, backgroundCtrlOutlineHoverRaw, backgroundCtrlOutlinePressedRaw, backgroundCtrlOutlineRestRaw } from "../../nullable/variables";
-import { ctrlSegmentedBackgroundDisabledRaw, ctrlSegmentedBackgroundHoverRaw, ctrlSegmentedBackgroundPressedRaw, ctrlSegmentedBackgroundRestRaw, ctrlSegmentedCornerHoverRaw, ctrlSegmentedCornerPressedRaw, ctrlSegmentedCornerRestRaw, ctrlSegmentedGapRaw, ctrlSegmentedItemCornerHoverRaw, ctrlSegmentedItemCornerPressedRaw, ctrlSegmentedItemCornerRestRaw, ctrlSegmentedLgCornerHoverRaw, ctrlSegmentedLgCornerPressedRaw, ctrlSegmentedLgCornerRestRaw, ctrlSegmentedLgItemCornerHoverRaw, ctrlSegmentedLgItemCornerPressedRaw, ctrlSegmentedLgItemCornerRestRaw, ctrlSegmentedLgPaddingHoverRaw, ctrlSegmentedLgPaddingPressedRaw, ctrlSegmentedLgPaddingRestRaw, ctrlSegmentedPaddingHoverRaw, ctrlSegmentedPaddingPressedRaw, ctrlSegmentedPaddingRestRaw, ctrlSegmentedSmCornerHoverRaw, ctrlSegmentedSmCornerPressedRaw, ctrlSegmentedSmCornerRestRaw, ctrlSegmentedSmItemCornerHoverRaw, ctrlSegmentedSmItemCornerPressedRaw, ctrlSegmentedSmItemCornerRestRaw, ctrlSegmentedSmPaddingHoverRaw, ctrlSegmentedSmPaddingPressedRaw, ctrlSegmentedSmPaddingRestRaw, ctrlSegmentedStrokeDisabledRaw, ctrlSegmentedStrokeHoverRaw, ctrlSegmentedStrokePressedRaw, ctrlSegmentedStrokeRestRaw } from "./variables";
+import {
+  cornerCtrlLgRestRaw,
+  cornerCtrlRestRaw,
+  cornerCtrlSmRestRaw,
+  foregroundCtrlNeutralSecondaryDisabledRaw,
+  foregroundCtrlNeutralSecondaryRestRaw,
+  nullColorRaw,
+  nullNumberRaw,
+} from '../../control/variables';
+import {
+  backgroundCtrlOutlineDisabledRaw,
+  backgroundCtrlOutlineHoverRaw,
+  backgroundCtrlOutlinePressedRaw,
+  backgroundCtrlOutlineRestRaw,
+} from '../../nullable/variables';
+import {
+  ctrlSegmentedBackgroundDisabledRaw,
+  ctrlSegmentedBackgroundHoverRaw,
+  ctrlSegmentedBackgroundPressedRaw,
+  ctrlSegmentedBackgroundRestRaw,
+  ctrlSegmentedCornerHoverRaw,
+  ctrlSegmentedCornerPressedRaw,
+  ctrlSegmentedCornerRestRaw,
+  ctrlSegmentedGapRaw,
+  ctrlSegmentedItemCornerHoverRaw,
+  ctrlSegmentedItemCornerPressedRaw,
+  ctrlSegmentedItemCornerRestRaw,
+  ctrlSegmentedLgCornerHoverRaw,
+  ctrlSegmentedLgCornerPressedRaw,
+  ctrlSegmentedLgCornerRestRaw,
+  ctrlSegmentedLgItemCornerHoverRaw,
+  ctrlSegmentedLgItemCornerPressedRaw,
+  ctrlSegmentedLgItemCornerRestRaw,
+  ctrlSegmentedLgPaddingHoverRaw,
+  ctrlSegmentedLgPaddingPressedRaw,
+  ctrlSegmentedLgPaddingRestRaw,
+  ctrlSegmentedPaddingHoverRaw,
+  ctrlSegmentedPaddingPressedRaw,
+  ctrlSegmentedPaddingRestRaw,
+  ctrlSegmentedSmCornerHoverRaw,
+  ctrlSegmentedSmCornerPressedRaw,
+  ctrlSegmentedSmCornerRestRaw,
+  ctrlSegmentedSmItemCornerHoverRaw,
+  ctrlSegmentedSmItemCornerPressedRaw,
+  ctrlSegmentedSmItemCornerRestRaw,
+  ctrlSegmentedSmPaddingHoverRaw,
+  ctrlSegmentedSmPaddingPressedRaw,
+  ctrlSegmentedSmPaddingRestRaw,
+  ctrlSegmentedStrokeDisabledRaw,
+  ctrlSegmentedStrokeHoverRaw,
+  ctrlSegmentedStrokePressedRaw,
+  ctrlSegmentedStrokeRestRaw,
+} from './variables';
 
 export const ctrlSegmentedBackgroundRest = `var(${ctrlSegmentedBackgroundRestRaw}, var(${backgroundCtrlOutlineRestRaw}, ${nullColorRaw}))`;
 export const ctrlSegmentedBackgroundHover = `var(${ctrlSegmentedBackgroundHoverRaw}, var(${backgroundCtrlOutlineHoverRaw}, ${nullColorRaw}))`;

@@ -8,8 +8,10 @@ export const ctrlChoiceBaseBackgroundPressedRaw = '--smtc-ctrl-choice-base-backg
 export const ctrlChoiceBaseBackgroundDisabledRaw = '--smtc-ctrl-choice-base-background-disabled';
 export const ctrlChoiceBaseBackgroundIndeterminateRestRaw = '--smtc-ctrl-choice-base-background-indeterminate-rest';
 export const ctrlChoiceBaseBackgroundIndeterminateHoverRaw = '--smtc-ctrl-choice-base-background-indeterminate-hover';
-export const ctrlChoiceBaseBackgroundIndeterminatePressedRaw = '--smtc-ctrl-choice-base-background-indeterminate-pressed';
-export const ctrlChoiceBaseBackgroundIndeterminateDisabledRaw = '--smtc-ctrl-choice-base-background-indeterminate-disabled';
+export const ctrlChoiceBaseBackgroundIndeterminatePressedRaw =
+  '--smtc-ctrl-choice-base-background-indeterminate-pressed';
+export const ctrlChoiceBaseBackgroundIndeterminateDisabledRaw =
+  '--smtc-ctrl-choice-base-background-indeterminate-disabled';
 export const ctrlChoiceBaseStrokeRestRaw = '--smtc-ctrl-choice-base-stroke-rest';
 export const ctrlChoiceBaseStrokeHoverRaw = '--smtc-ctrl-choice-base-stroke-hover';
 export const ctrlChoiceBaseStrokePressedRaw = '--smtc-ctrl-choice-base-stroke-pressed';

@@ -1,6 +1,15 @@
-// eslint-disable-next-line no-restricted-imports
-import { backgroundCtrlBrandRestRaw, cornerCircularRaw } from "../../control/variables";
-import { ctrlProgressBackgroundEmptyRaw, ctrlProgressBackgroundFilledRaw, ctrlProgressCornerRaw, ctrlProgressHeightEmptyRaw, ctrlProgressHeightFilledRaw, ctrlProgressLgHeightEmptyRaw, ctrlProgressLgHeightFilledRaw, ctrlProgressSmHeightEmptyRaw, ctrlProgressSmHeightFilledRaw } from "./variables";
+import { backgroundCtrlBrandRestRaw, cornerCircularRaw } from '../../control/variables';
+import {
+  ctrlProgressBackgroundEmptyRaw,
+  ctrlProgressBackgroundFilledRaw,
+  ctrlProgressCornerRaw,
+  ctrlProgressHeightEmptyRaw,
+  ctrlProgressHeightFilledRaw,
+  ctrlProgressLgHeightEmptyRaw,
+  ctrlProgressLgHeightFilledRaw,
+  ctrlProgressSmHeightEmptyRaw,
+  ctrlProgressSmHeightFilledRaw,
+} from './variables';
 
 export const ctrlProgressBackgroundEmpty = `var(${ctrlProgressBackgroundEmptyRaw})`;
 export const ctrlProgressBackgroundFilled = `var(${ctrlProgressBackgroundFilledRaw}, ${backgroundCtrlBrandRestRaw})`;

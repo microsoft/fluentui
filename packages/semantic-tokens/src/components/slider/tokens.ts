@@ -1,7 +1,62 @@
-// eslint-disable-next-line no-restricted-imports
-import { backgroundCtrlBrandDisabledRaw, backgroundCtrlBrandHoverRaw, backgroundCtrlBrandPressedRaw, backgroundCtrlBrandRestRaw, cornerCircularRaw, foregroundCtrlOnbrandDisabledRaw, foregroundCtrlOnbrandRestRaw, sizeCtrlIconRaw, sizeCtrlLgIconRaw, sizeCtrlSmIconRaw, strokewidthDefaultRaw } from "../../control/variables";
-import { ctrlProgressBackgroundEmptyRaw, ctrlProgressHeightFilledRaw, ctrlProgressLgHeightFilledRaw, ctrlProgressSmHeightFilledRaw } from "../progress/variables";
-import { ctrlSliderBarCornerRaw, ctrlSliderBarForegroundEmptyDisabledRaw, ctrlSliderBarForegroundEmptyHoverRaw, ctrlSliderBarForegroundEmptyPressedRaw, ctrlSliderBarForegroundEmptyRestRaw, ctrlSliderBarForegroundFilledDisabledRaw, ctrlSliderBarForegroundFilledHoverRaw, ctrlSliderBarForegroundFilledPressedRaw, ctrlSliderBarForegroundFilledRestRaw, ctrlSliderBarHeightRaw, ctrlSliderLgBarHeightRaw, ctrlSliderLgThumbSizeHoverRaw, ctrlSliderLgThumbSizePressedRaw, ctrlSliderLgThumbSizeRestRaw, ctrlSliderSmBarHeightRaw, ctrlSliderSmThumbSizeHoverRaw, ctrlSliderSmThumbSizePressedRaw, ctrlSliderSmThumbSizeRestRaw, ctrlSliderThumbBackgroundDisabledRaw, ctrlSliderThumbBackgroundHoverRaw, ctrlSliderThumbBackgroundPressedRaw, ctrlSliderThumbBackgroundRestRaw, ctrlSliderThumbCornerRaw, ctrlSliderThumbInnerStrokeDisabledRaw, ctrlSliderThumbInnerStrokeHoverRaw, ctrlSliderThumbInnerStrokePressedRaw, ctrlSliderThumbInnerStrokeRestRaw, ctrlSliderThumbInnerStrokewidthHoverRaw, ctrlSliderThumbInnerStrokewidthPressedRaw, ctrlSliderThumbInnerStrokewidthRestRaw, ctrlSliderThumbOuterStrokeDisabledRaw, ctrlSliderThumbOuterStrokeHoverRaw, ctrlSliderThumbOuterStrokePressedRaw, ctrlSliderThumbOuterStrokeRestRaw, ctrlSliderThumbOuterStrokewidthRaw, ctrlSliderThumbSizeHoverRaw, ctrlSliderThumbSizePressedRaw, ctrlSliderThumbSizeRestRaw } from "./variables";
+import {
+  backgroundCtrlBrandDisabledRaw,
+  backgroundCtrlBrandHoverRaw,
+  backgroundCtrlBrandPressedRaw,
+  backgroundCtrlBrandRestRaw,
+  cornerCircularRaw,
+  foregroundCtrlOnbrandDisabledRaw,
+  foregroundCtrlOnbrandRestRaw,
+  sizeCtrlIconRaw,
+  sizeCtrlLgIconRaw,
+  sizeCtrlSmIconRaw,
+  strokewidthDefaultRaw,
+} from '../../control/variables';
+import {
+  ctrlProgressBackgroundEmptyRaw,
+  ctrlProgressHeightFilledRaw,
+  ctrlProgressLgHeightFilledRaw,
+  ctrlProgressSmHeightFilledRaw,
+} from '../progress/variables';
+import {
+  ctrlSliderBarCornerRaw,
+  ctrlSliderBarForegroundEmptyDisabledRaw,
+  ctrlSliderBarForegroundEmptyHoverRaw,
+  ctrlSliderBarForegroundEmptyPressedRaw,
+  ctrlSliderBarForegroundEmptyRestRaw,
+  ctrlSliderBarForegroundFilledDisabledRaw,
+  ctrlSliderBarForegroundFilledHoverRaw,
+  ctrlSliderBarForegroundFilledPressedRaw,
+  ctrlSliderBarForegroundFilledRestRaw,
+  ctrlSliderBarHeightRaw,
+  ctrlSliderLgBarHeightRaw,
+  ctrlSliderLgThumbSizeHoverRaw,
+  ctrlSliderLgThumbSizePressedRaw,
+  ctrlSliderLgThumbSizeRestRaw,
+  ctrlSliderSmBarHeightRaw,
+  ctrlSliderSmThumbSizeHoverRaw,
+  ctrlSliderSmThumbSizePressedRaw,
+  ctrlSliderSmThumbSizeRestRaw,
+  ctrlSliderThumbBackgroundDisabledRaw,
+  ctrlSliderThumbBackgroundHoverRaw,
+  ctrlSliderThumbBackgroundPressedRaw,
+  ctrlSliderThumbBackgroundRestRaw,
+  ctrlSliderThumbCornerRaw,
+  ctrlSliderThumbInnerStrokeDisabledRaw,
+  ctrlSliderThumbInnerStrokeHoverRaw,
+  ctrlSliderThumbInnerStrokePressedRaw,
+  ctrlSliderThumbInnerStrokeRestRaw,
+  ctrlSliderThumbInnerStrokewidthHoverRaw,
+  ctrlSliderThumbInnerStrokewidthPressedRaw,
+  ctrlSliderThumbInnerStrokewidthRestRaw,
+  ctrlSliderThumbOuterStrokeDisabledRaw,
+  ctrlSliderThumbOuterStrokeHoverRaw,
+  ctrlSliderThumbOuterStrokePressedRaw,
+  ctrlSliderThumbOuterStrokeRestRaw,
+  ctrlSliderThumbOuterStrokewidthRaw,
+  ctrlSliderThumbSizeHoverRaw,
+  ctrlSliderThumbSizePressedRaw,
+  ctrlSliderThumbSizeRestRaw,
+} from './variables';
 
 export const ctrlSliderBarHeight = `var(${ctrlSliderBarHeightRaw}, ${ctrlProgressHeightFilledRaw})`;
 export const ctrlSliderBarCorner = `var(${ctrlSliderBarCornerRaw}, ${cornerCircularRaw})`;
