@@ -22,9 +22,7 @@
     "test": "jest --passWithNoTests",
     "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
-    "verify-packaging": "just-scripts verify-packaging",
-    "generate:cs": "node ../../../scripts/utils/src/generate-component-selectors-index.ts",
-    "component-selectors": "yarn generate:cs && yarn workspace @fluentui/public-docsite-v9 storybook"
+    "verify-packaging": "just-scripts verify-packaging"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
