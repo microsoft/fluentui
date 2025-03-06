@@ -187,11 +187,17 @@ function generateTokenVariables() {
     let resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)})`;
 
     const fallbacksFallback = tokenSemanticName ? tokensJSON[tokenSemanticName] : null;
+
+    if (token === 'foregroundCtrlOnsubtleHover') {
+      console.log('FOUND FALLBACK tokenSemanticName:', tokenSemanticName);
+      console.log('FOUND FALLBACK:', fallbacksFallback);
+    }
     if (tokenSemanticRef && fallbacksFallback && fallbacksFallback.fst_reference.length > 0) {
       // TODO: Check if we even want this level of fallback complexity?
       // Maximum two fallbacks, no need for recursion.
-      const fallbackSemanticName = toCamelCase(cleanFSTTokenName(tokenData.fst_reference));
-      const fallbackSemanticRef = tokenSemanticName + 'Raw';
+      const fallbackSemanticName = toCamelCase(cleanFSTTokenName(fallbacksFallback.fst_reference));
+      const fallbackSemanticRef = fallbackSemanticName + 'Raw';
+
       // Our FST Fallback has one more additional layer of fallback
       if (fluentFallbacks[token]) {
         // Token has a FST fallback and a fluent override fallback

@@ -67,4 +67,4 @@ export const shadowLayerAmbientXRaw = '--smtc-shadow-layer-ambient-x';
 export const shadowLayerAmbientYRaw = '--smtc-shadow-layer-ambient-y';
 export const shadowLayerAmbientBlurRaw = '--smtc-shadow-layer-ambient-blur';
 export const shadowLayerAmbientColorRaw = '--smtc-shadow-layer-ambient-color';
-export const ctrlListShadowSelectedKeyY2Raw = '--smtc--ctrl-list-shadow-selected-key-y2';
+export const ctrlListShadowSelectedKeyY2Raw = '--smtc-ctrl-list-shadow-selected-key-y2';
