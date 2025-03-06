@@ -14,7 +14,7 @@ import {
 import { fadeAtom } from '../../../library/src/atoms/fade-atom';
 import { slideAtom } from '../../../library/src/atoms/slide-atom';
 import { PresenceMotionFnCreator } from '../../../library/src/types';
-import { PresenceComponent } from '@fluentui/react-motion/src/index';
+import { MotionComponentProps, PresenceComponent } from '@fluentui/react-motion/src/index';
 import { Blur, Collapse, Fade, FadeRelaxed, ScaleRelaxed, Slide } from '@fluentui/react-motion-components-preview';
 
 // import description from './ExperimentsWipe.stories.md';
@@ -98,6 +98,48 @@ const Series: React.FC<{ components: MotionComponentDef[] }> = ({ components }) 
 
   return <currentComponent.fn {...currentComponent.props} onMotionFinish={onMotionFinish} />;
 };
+
+type MotionComponentCreator = {
+  ({ onMotionFinish }: { onMotionFinish: MotionComponentProps['onMotionFinish'] }): React.ReactElement;
+};
+
+const SeriesB: React.FC<{ components: MotionComponentCreator[] }> = ({ components }) => {
+  const [index, setIndex] = React.useState(0);
+
+  const currentComponent = components[index];
+  const onMotionFinish = () => {
+    if (index < components.length - 1) {
+      setIndex(index + 1);
+    } else {
+      setIndex(0);
+    }
+  };
+
+  return currentComponent({ onMotionFinish });
+};
+
+const componentsB = ({ animateOpacity = true }): MotionComponentCreator[] => [
+  ({ onMotionFinish }) => (
+    <Blur.In onMotionFinish={onMotionFinish} animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </Blur.In>
+  ),
+  ({ onMotionFinish }) => (
+    <Blur.Out onMotionFinish={onMotionFinish} animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </Blur.Out>
+  ),
+  ({ onMotionFinish }) => (
+    <Blur.In onMotionFinish={onMotionFinish} animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </Blur.In>
+  ),
+  ({ onMotionFinish }) => (
+    <Blur.Out onMotionFinish={onMotionFinish} animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </Blur.Out>
+  ),
+];
 
 const componentsA = ({ animateOpacity = true }): MotionComponentDef[] => [
   {
@@ -227,6 +269,7 @@ export const ExperimentsSeries = () => {
   const durationMax = 2000;
 
   const seriesA = <Series components={componentsA({ animateOpacity })} />;
+  const seriesB = <SeriesB components={componentsB({ animateOpacity })} />;
 
   return (
     <div className={classes.container}>
@@ -244,7 +287,8 @@ export const ExperimentsSeries = () => {
         </Field>
       </div>
 
-      <div className={classes.card}>{seriesA}</div>
+      {/* <div className={classes.card}>{seriesA}</div> */}
+      <div className={classes.card}>{seriesB}</div>
     </div>
   );
 };
