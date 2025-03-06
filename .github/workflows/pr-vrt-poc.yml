@@ -136,15 +136,25 @@ jobs:
         run: |
           yarn visual-regression-assert report --outputPath dist/vrt
           cat dist/vrt/vrt-report.md >> $GITHUB_STEP_SUMMARY
+          ls -al dist/vrt
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
-        if: always()
         with:
           name: vrt_report
           retention-days: 1
           path: |
-            'dist/vrt'
+            dist/vrt/
+
+      - name: Save PR number
+        run: echo ${{ github.event.number }} > pr.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr-number
+          retention-days: 1
+          if-no-files-found: error
+          path: |
+            pr.txt
 
       # - name: Upload VR screenshots
       #   uses: actions/upload-artifact@v4
@@ -152,13 +162,3 @@ jobs:
       #     name: vrscreenshot
       #     retention-days: 1
       #     path: ${{steps.screenshots_root.outputs.result}}
-
-      # - name: Save PR number
-      #   run: echo ${{ github.event.number }} > pr.txt
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: pr-number
-      #     retention-days: 1
-      #     if-no-files-found: error
-      #     path: |
-      #       pr.txt
