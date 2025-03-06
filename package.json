@@ -29,7 +29,8 @@
     "prebuildto": "echo '⚠️ NOTE ⚠️:\nThis command is deprecated and will be removed.\nUse nx run <project>:<target> instead'",
     "buildto": "nx build --nxBail",
     "clean": "nx run-many -t clean --verbose",
-    "scrub": "node ./scripts/executors/src/scrub.js"
+    "scrub": "node ./scripts/executors/src/scrub.js",
+    "generate:cs": "node ./scripts/utils/src/generate-component-selectors-index.ts"
   },
   "devDependencies": {
     "@actions/core": "1.9.1",
