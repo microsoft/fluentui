@@ -34,7 +34,7 @@ export const createSlidePresence: PresenceMotionFnCreator<SlideVariantParams_uns
       );
     } else {
       // Since there is no fade-in, use visibility to show the element
-      enterAtoms.push(visibilityAtom({ direction: 'enter', duration: enterDuration }));
+      // enterAtoms.push(visibilityAtom({ direction: 'enter', duration: enterDuration }));
     }
 
     // ----- EXIT -----
@@ -57,7 +57,7 @@ export const createSlidePresence: PresenceMotionFnCreator<SlideVariantParams_uns
       );
     } else {
       // Since there is no fade-out, use visibility to hide the element
-      enterAtoms.push(visibilityAtom({ direction: 'exit', duration: exitDuration }));
+      // enterAtoms.push(visibilityAtom({ direction: 'exit', duration: exitDuration }));
     }
 
     return {
