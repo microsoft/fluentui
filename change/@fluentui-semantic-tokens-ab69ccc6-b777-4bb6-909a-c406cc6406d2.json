@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Initial semantic token package scaffolding",
+  "packageName": "@fluentui/semantic-tokens",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

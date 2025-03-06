@@ -272,6 +272,7 @@ packages/react-components/react-virtualizer/stories @microsoft/xc-uxe @Mitch-At-
 packages/react-components/react-skeleton/library @microsoft/cxe-prg
 packages/react-components/react-skeleton/stories @microsoft/cxe-prg
 packages/tokens @microsoft/teams-prg
+packages/semantic-tokens @microsoft/xc-uxe
 packages/react-components/react-tags/library @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-components/react-tags/stories @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-components/react-migration-v0-v9/library @microsoft/teams-prg
