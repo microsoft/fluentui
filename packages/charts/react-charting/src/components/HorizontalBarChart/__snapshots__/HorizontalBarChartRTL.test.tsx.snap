@@ -64,7 +64,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               <div
                 hidden=""
                 id="tooltip9"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 one
               </div>
@@ -200,7 +200,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               <div
                 hidden=""
                 id="tooltip12"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 two
               </div>
@@ -336,7 +336,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               <div
                 hidden=""
                 id="tooltip15"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 three
               </div>
@@ -490,7 +490,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               <div
                 hidden=""
                 id="tooltip9"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 one
               </div>
@@ -626,7 +626,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               <div
                 hidden=""
                 id="tooltip12"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 two
               </div>
@@ -762,7 +762,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               <div
                 hidden=""
                 id="tooltip15"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 three
               </div>
@@ -929,7 +929,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 <div
                   hidden=""
                   id="tooltip12"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 >
                   one
                 </div>
@@ -1065,7 +1065,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 <div
                   hidden=""
                   id="tooltip15"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 >
                   two
                 </div>
@@ -1201,7 +1201,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 <div
                   hidden=""
                   id="tooltip18"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 >
                   three
                 </div>
@@ -1368,7 +1368,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               <div
                 hidden=""
                 id="tooltip9"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 one
               </div>
@@ -1504,7 +1504,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               <div
                 hidden=""
                 id="tooltip12"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 two
               </div>
@@ -1640,7 +1640,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               <div
                 hidden=""
                 id="tooltip15"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 three
               </div>
@@ -1794,7 +1794,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               <div
                 hidden=""
                 id="tooltip9"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 one
               </div>
@@ -1930,7 +1930,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               <div
                 hidden=""
                 id="tooltip12"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 two
               </div>
@@ -2066,7 +2066,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               <div
                 hidden=""
                 id="tooltip15"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 three
               </div>

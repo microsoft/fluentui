@@ -29,6 +29,7 @@ exports[`PeoplePicker renders correctly 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
+          top: 0px;
           white-space: nowrap;
           width: 1px;
         }
@@ -194,6 +195,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
+          top: 0px;
           white-space: nowrap;
           width: 1px;
         }
@@ -502,6 +504,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           "overflow": "hidden",
                           "padding": 0,
                           "position": "absolute",
+                          "top": 0,
                           "whiteSpace": "nowrap",
                           "width": 1,
                         }
@@ -550,6 +553,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           "overflow": "hidden",
                           "padding": 0,
                           "position": "absolute",
+                          "top": 0,
                           "whiteSpace": "nowrap",
                           "width": 1,
                         }
@@ -598,6 +602,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           "overflow": "hidden",
                           "padding": 0,
                           "position": "absolute",
+                          "top": 0,
                           "whiteSpace": "nowrap",
                           "width": 1,
                         }
@@ -646,6 +651,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           "overflow": "hidden",
                           "padding": 0,
                           "position": "absolute",
+                          "top": 0,
                           "whiteSpace": "nowrap",
                           "width": 1,
                         }
