@@ -16,7 +16,7 @@ type BlurRuntimeParams = {
 const blurPresenceFn: PresenceMotionFn<BlurRuntimeParams> = ({
   // element,
   radius = '20px',
-  enterDuration = 500,
+  enterDuration = motionTokens.durationSlow,
   exitDuration = enterDuration,
   enterEasing = motionTokens.curveDecelerateMin,
   exitEasing = motionTokens.curveAccelerateMin,
