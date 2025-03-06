@@ -108,10 +108,12 @@ export const ExperimentsStagger = () => {
   // a function to create an array of Blur.In components
   const createMotionComponents = ({
     numItems,
+    itemSize = '25px',
     Component = Slide.In,
     props = {},
   }: {
     numItems: number;
+    itemSize?: string;
     Component?: Function;
     props?: Record<string, any>;
   }) => {
@@ -122,7 +124,7 @@ export const ExperimentsStagger = () => {
         // <Blur.In>
         // <span>
         <Component key={i} animateOpacity={animateOpacity} enterDuration={duration} {...props}>
-          <div style={{ backgroundColor, width: '25px', height: '25px', borderRadius: '0%' }} />
+          <div style={{ backgroundColor, width: itemSize, height: itemSize, borderRadius: '0%' }} />
         </Component>
         // </span>
         // </Blur.In>
@@ -130,47 +132,30 @@ export const ExperimentsStagger = () => {
     });
   };
 
-  // const staggerA = (
-  //   <Stagger delay={2}>
-  //     {createMotionComponents({
-  //       Component: Slide.In,
-  //       numItems: 400,
-  //       props: { orientation: 'vertical', distance: '200%' },
-  //     })}
-  //   </Stagger>
-  // );
-
-  const staggerB = (
-    <Stagger delay={2}>
-      {createMotionComponents({
-        Component: Slide.In,
-        numItems: 400,
-        props: { orientation: 'horizontal', distance: '-400%' },
-      })}
-    </Stagger>
-  );
-
   const seriesA = (
-    <Series>
-      <Stagger delay={30}>
+    <Series autoloop>
+      <Stagger delay={20}>
         {createMotionComponents({
           Component: FadeRelaxed.In,
           numItems: 100,
+          itemSize: '50px',
         })}
       </Stagger>
 
-      <Stagger delay={5}>
+      <Stagger delay={20}>
         {createMotionComponents({
           Component: Slide.In,
-          numItems: 225,
+          numItems: 100,
+          itemSize: '50px',
           props: { orientation: 'vertical', distance: '200%' },
         })}
       </Stagger>
 
-      <Stagger delay={5}>
+      <Stagger delay={20}>
         {createMotionComponents({
           Component: Slide.In,
-          numItems: 400,
+          numItems: 100,
+          itemSize: '50px',
           props: { orientation: 'horizontal', distance: '-400%' },
         })}
       </Stagger>

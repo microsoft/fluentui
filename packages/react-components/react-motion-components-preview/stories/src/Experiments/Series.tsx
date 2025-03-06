@@ -13,21 +13,27 @@ export const childrenOrFragmentToArray = (children: React.ReactNode): React.Reac
 };
 
 // A Series is a component that accepts an array of motion components and plays them in sequence
-// TODO: add a prop to control the autoplay
-// TODO: add onMotionFinish callback to support nesting of Series
 // TODO: add a Pause component to pause the series for a duration
-export const Series: React.FC = ({ children }) => {
+// TODO: add a delay between each component
+export const Series: React.FC<{
+  children: React.ReactNode;
+  autoloop?: boolean;
+  onMotionFinish?: () => void;
+}> = ({ children, autoloop = false, onMotionFinish = () => null }) => {
   const [index, setIndex] = React.useState(0);
 
   const components = childrenOrFragmentToArray(children);
   const currentComponent = components[index];
-  const onMotionFinish = () => {
+  const onComponentFinish = () => {
     if (index < components.length - 1) {
       setIndex(index + 1);
-    } else {
+    } else if (autoloop) {
       setIndex(0);
+    } else {
+      // TODO: call onMotionFinish only when the last component is finished
+      onMotionFinish();
     }
   };
 
-  return React.cloneElement(currentComponent, { onMotionFinish });
+  return React.cloneElement(currentComponent, { onMotionFinish: onComponentFinish });
 };
