@@ -25,21 +25,27 @@ export async function prepareReport(reportFilesGlob: string, outputPath: string)
     mkdirSync(absoluteRootPath, { recursive: true });
   }
 
+  const reportEntries = Object.entries(reports);
   let markdownReport = '# Visual Regression Repo Report\n\n';
-  Object.entries(reports).forEach(([project, report]) => {
-    const projectNameWithoutScope = project.replace(/^@[a-z-]+\//, '');
-    // copy project report
-    cpSync(
-      // TODO - resolve this hard coded path from metadata paths
-      join(report.metadata.project.root, 'dist/vrt'),
-      join(absoluteRootPath, projectNameWithoutScope),
-      { recursive: true },
-    );
 
-    // update markdownReport
-    const projectMdReport = readFileSync(report.metadata.paths.reportPath.replace('.html', '.md'), 'utf-8');
-    markdownReport = markdownReport + `## ${projectNameWithoutScope}\n\n` + projectMdReport + '\n\n';
-  });
+  if (reportEntries.length) {
+    reportEntries.forEach(([project, report]) => {
+      const projectNameWithoutScope = project.replace(/^@[a-z-]+\//, '');
+      // copy project report
+      cpSync(
+        // TODO - resolve this hard coded path from metadata paths
+        join(report.metadata.project.root, 'dist/vrt'),
+        join(absoluteRootPath, projectNameWithoutScope),
+        { recursive: true },
+      );
+
+      // update markdownReport
+      const projectMdReport = readFileSync(report.metadata.paths.reportPath.replace('.html', '.md'), 'utf-8');
+      markdownReport = markdownReport + `## ${projectNameWithoutScope}\n\n` + projectMdReport + '\n\n';
+    });
+  } else {
+    markdownReport += 'No Regressions found ✅';
+  }
 
   writeFileSync(join(absoluteRootPath, rootReportName), JSON.stringify(reports, null, 2));
   writeFileSync(join(absoluteRootPath, rootReportName.replace('.json', '.md')), markdownReport);
