@@ -77,22 +77,6 @@ const LoremIpsum = () => (
   </>
 );
 
-// A Series is a component that accepts an array of motion components and plays them in sequence
-const SeriesB: React.FC<{ components: React.ReactElement[] }> = ({ components }) => {
-  const [index, setIndex] = React.useState(0);
-
-  const currentComponent = components[index];
-  const onMotionFinish = () => {
-    if (index < components.length - 1) {
-      setIndex(index + 1);
-    } else {
-      setIndex(0);
-    }
-  };
-
-  return React.cloneElement(currentComponent, { onMotionFinish });
-};
-
 const isFragment = (child: React.ReactNode): child is React.ReactElement => {
   return React.isValidElement(child) && child.type === React.Fragment;
 };
@@ -106,10 +90,12 @@ const childrenOrFragmentToArray = (children: React.ReactNode): React.ReactElemen
 };
 
 // A Series is a component that accepts an array of motion components and plays them in sequence
-const SeriesC: React.FC = ({ children }) => {
+// TODO: add a prop to control the autoplay
+// TODO: add onMotionFinish callback to support nesting of Series
+// TODO: add a Pause component to pause the series for a duration
+const Series: React.FC = ({ children }) => {
   const [index, setIndex] = React.useState(0);
 
-  // const components = React.Children.toArray(children) as React.ReactElement[];
   const components = childrenOrFragmentToArray(children);
   const currentComponent = components[index];
   const onMotionFinish = () => {
@@ -122,86 +108,6 @@ const SeriesC: React.FC = ({ children }) => {
 
   return React.cloneElement(currentComponent, { onMotionFinish });
 };
-
-const componentsB = ({ animateOpacity = true }): React.ReactElement[] => [
-  <Blur.In animateOpacity={animateOpacity}>
-    <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
-  </Blur.In>,
-  <Blur.Out animateOpacity={animateOpacity}>
-    <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
-  </Blur.Out>,
-  <Blur.In animateOpacity={animateOpacity}>
-    <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
-  </Blur.In>,
-  <Blur.Out animateOpacity={animateOpacity}>
-    <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
-  </Blur.Out>,
-  <Collapse.In animateOpacity={animateOpacity}>
-    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-  </Collapse.In>,
-  <Collapse.Out animateOpacity={animateOpacity}>
-    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-  </Collapse.Out>,
-  <ScaleRelaxed.In animateOpacity={animateOpacity}>
-    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-  </ScaleRelaxed.In>,
-  <ScaleRelaxed.Out animateOpacity={animateOpacity}>
-    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-  </ScaleRelaxed.Out>,
-  <Slide.In distance="100%" orientation="vertical" animateOpacity={animateOpacity}>
-    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-  </Slide.In>,
-  <Slide.Out distance="100%" orientation="vertical" animateOpacity={animateOpacity}>
-    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-  </Slide.Out>,
-  <Slide.In distance="100%" orientation="horizontal" animateOpacity={animateOpacity}>
-    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-  </Slide.In>,
-  <Slide.Out distance="100%" orientation="horizontal" animateOpacity={animateOpacity}>
-    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-  </Slide.Out>,
-];
-
-const componentsC = ({ animateOpacity = true }): React.ReactFragment => (
-  <>
-    <Blur.In animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </Blur.In>
-    <Blur.Out animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </Blur.Out>
-    <Blur.In animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </Blur.In>
-    <Blur.Out animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </Blur.Out>
-    <Collapse.In animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </Collapse.In>
-    <Collapse.Out animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </Collapse.Out>
-    <ScaleRelaxed.In animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </ScaleRelaxed.In>
-    <ScaleRelaxed.Out animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </ScaleRelaxed.Out>
-    <Slide.In distance="100%" orientation="vertical" animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </Slide.In>
-    <Slide.Out distance="100%" orientation="vertical" animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </Slide.Out>
-    <Slide.In distance="100%" orientation="horizontal" animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </Slide.In>
-    <Slide.Out distance="100%" orientation="horizontal" animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </Slide.Out>
-  </>
-);
 
 export const ExperimentsSeries = () => {
   const classes = useClasses();
@@ -218,9 +124,46 @@ export const ExperimentsSeries = () => {
   const durationMin = 200;
   const durationMax = 2000;
 
-  // const seriesA = <Series components={componentsA({ animateOpacity })} />;
-  const seriesB = <SeriesB components={componentsB({ animateOpacity })} />;
-  const seriesC = <SeriesC>{componentsC({ animateOpacity })}</SeriesC>;
+  const series = (
+    <Series>
+      <Blur.In animateOpacity={animateOpacity}>
+        <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
+      </Blur.In>
+      <Blur.Out animateOpacity={animateOpacity}>
+        <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
+      </Blur.Out>
+      <Blur.In animateOpacity={animateOpacity}>
+        <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
+      </Blur.In>
+      <Blur.Out animateOpacity={animateOpacity}>
+        <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
+      </Blur.Out>
+      <Collapse.In animateOpacity={animateOpacity}>
+        <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+      </Collapse.In>
+      <Collapse.Out animateOpacity={animateOpacity}>
+        <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+      </Collapse.Out>
+      <ScaleRelaxed.In animateOpacity={animateOpacity}>
+        <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+      </ScaleRelaxed.In>
+      <ScaleRelaxed.Out animateOpacity={animateOpacity}>
+        <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+      </ScaleRelaxed.Out>
+      <Slide.In distance="100%" orientation="vertical" animateOpacity={animateOpacity}>
+        <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+      </Slide.In>
+      <Slide.Out distance="100%" orientation="vertical" animateOpacity={animateOpacity}>
+        <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+      </Slide.Out>
+      <Slide.In distance="100%" orientation="horizontal" animateOpacity={animateOpacity}>
+        <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+      </Slide.In>
+      <Slide.Out distance="100%" orientation="horizontal" animateOpacity={animateOpacity}>
+        <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+      </Slide.Out>
+    </Series>
+  );
 
   return (
     <div className={classes.container}>
@@ -238,8 +181,7 @@ export const ExperimentsSeries = () => {
         </Field>
       </div>
 
-      {/* <div className={classes.card}>{seriesB}</div> */}
-      <div className={classes.card}>{seriesC}</div>
+      <div className={classes.card}>{series}</div>
     </div>
   );
 };
