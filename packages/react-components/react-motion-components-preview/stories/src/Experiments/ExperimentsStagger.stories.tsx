@@ -19,6 +19,7 @@ import {
   Blur,
   Collapse,
   createFadePresence,
+  createSlidePresence,
   Fade,
   FadeRelaxed,
   Rotate,
@@ -97,6 +98,13 @@ const useClasses = makeStyles({
   },
 });
 
+const curveSpringRelaxed = `linear(
+  0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017,
+  1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%,
+  1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%,
+  0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
+)`;
+
 const LoremIpsum = () => (
   <>
     {'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '.repeat(
@@ -107,6 +115,24 @@ const LoremIpsum = () => (
 
 const FadeExtraGentle = createPresenceComponent(
   createFadePresence({ enterDuration: motionTokens.durationGentle * 5, enterEasing: motionTokens.curveAccelerateMin }),
+);
+
+const SlideSpringy = createPresenceComponent(
+  createSlidePresence({
+    enterDuration: motionTokens.durationNormal * 5,
+    enterEasing: curveSpringRelaxed,
+    exitDuration: motionTokens.durationNormal * 5,
+    exitEasing: motionTokens.curveAccelerateMax,
+  }),
+);
+
+const SlideMagnetic = createPresenceComponent(
+  createSlidePresence({
+    enterDuration: motionTokens.durationNormal * 5,
+    enterEasing: motionTokens.curveAccelerateMax,
+    exitDuration: motionTokens.durationNormal * 5,
+    exitEasing: motionTokens.curveAccelerateMax,
+  }),
 );
 
 export const ExperimentsStagger = () => {
@@ -171,17 +197,26 @@ export const ExperimentsStagger = () => {
 
       <Stagger delay={50}>
         {createMotionComponents({
-          Component: Slide.In,
+          Component: SlideSpringy.In,
           numItems: 100,
           itemSize: '50px',
-          props: { orientation: 'vertical', distance: '200%' },
+          props: { orientation: 'vertical', distance: '-100%' },
+        })}
+      </Stagger>
+
+      <Stagger delay={50}>
+        {createMotionComponents({
+          Component: SlideMagnetic.In,
+          numItems: 100,
+          itemSize: '50px',
+          props: { orientation: 'horizontal', distance: '200%' },
         })}
       </Stagger>
 
       <Stagger delay={50}>
         {createMotionComponents({
           Component: Rotate.In,
-          props: { axis: 'X' },
+          props: { axis: 'X', enterDuration: motionTokens.durationSlow * 8, enterEasing: curveSpringRelaxed },
           numItems: 100,
           itemSize: '50px',
         })}
@@ -190,7 +225,7 @@ export const ExperimentsStagger = () => {
       <Stagger delay={50}>
         {createMotionComponents({
           Component: Rotate.In,
-          props: { axis: 'Y' },
+          props: { axis: 'Y', enterDuration: motionTokens.durationSlow * 5, enterEasing: curveSpringRelaxed },
           numItems: 100,
           itemSize: '50px',
         })}
