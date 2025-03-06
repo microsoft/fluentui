@@ -32,6 +32,7 @@ export async function prepareReport(reportFilesGlob: string, outputPath: string)
     reportEntries.forEach(([project, report]) => {
       const projectNameWithoutScope = project.replace(/^@[a-z-]+\//, '');
       // copy project report
+      console.log(`Copy project report to: ${join(absoluteRootPath, projectNameWithoutScope)}`);
       cpSync(
         // TODO - resolve this hard coded path from metadata paths
         join(report.metadata.project.root, 'dist/vrt'),
@@ -47,6 +48,12 @@ export async function prepareReport(reportFilesGlob: string, outputPath: string)
     markdownReport += 'No Regressions found ✅';
   }
 
-  writeFileSync(join(absoluteRootPath, rootReportName), JSON.stringify(reports, null, 2));
-  writeFileSync(join(absoluteRootPath, rootReportName.replace('.json', '.md')), markdownReport);
+  const jsonReportPath = join(absoluteRootPath, rootReportName);
+  const markdownReportPath = join(absoluteRootPath, rootReportName.replace('.json', '.md'));
+  console.log('Creating reports:');
+  console.log(`- ${jsonReportPath}`);
+  console.log(`- ${markdownReportPath}`);
+
+  writeFileSync(jsonReportPath, JSON.stringify(reports, null, 2));
+  writeFileSync(markdownReportPath, markdownReport);
 }
