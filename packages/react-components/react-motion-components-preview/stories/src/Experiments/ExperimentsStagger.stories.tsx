@@ -82,6 +82,19 @@ const useClasses = makeStyles({
     // width: '100%',
     // height: '100%',
   },
+  staggerContainer: {
+    display: 'flex',
+    justifyContent: 'start',
+    alignContent: 'flex-start',
+    flexWrap: 'wrap',
+    perspective: '200px',
+    overflow: 'hidden',
+    // width: '500px',
+    height: '500px',
+    // gap: '10px',
+    gridArea: 'card',
+    // padding: '10px',
+  },
 });
 
 const LoremIpsum = () => (
@@ -211,9 +224,7 @@ export const ExperimentsStagger = () => {
       </div>
 
       {/* <div className={classes.card}>{staggerB}</div> */}
-      <div className={classes.card} style={{ perspective: '200px' }}>
-        {seriesA}
-      </div>
+      <div className={classes.staggerContainer}>{seriesA}</div>
     </div>
   );
 };
