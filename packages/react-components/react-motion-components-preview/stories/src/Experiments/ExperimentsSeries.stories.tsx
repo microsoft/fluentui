@@ -93,6 +93,36 @@ const SeriesB: React.FC<{ components: React.ReactElement[] }> = ({ components })
   return React.cloneElement(currentComponent, { onMotionFinish });
 };
 
+const isFragment = (child: React.ReactNode): child is React.ReactElement => {
+  return React.isValidElement(child) && child.type === React.Fragment;
+};
+
+// Convert children that is either React.Fragment or regular React.Children to an array of React elements
+const childrenOrFragmentToArray = (children: React.ReactNode): React.ReactElement[] => {
+  if (isFragment(children)) {
+    return React.Children.toArray(children.props.children) as React.ReactElement[];
+  }
+  return React.Children.toArray(children) as React.ReactElement[];
+};
+
+// A Series is a component that accepts an array of motion components and plays them in sequence
+const SeriesC: React.FC = ({ children }) => {
+  const [index, setIndex] = React.useState(0);
+
+  // const components = React.Children.toArray(children) as React.ReactElement[];
+  const components = childrenOrFragmentToArray(children);
+  const currentComponent = components[index];
+  const onMotionFinish = () => {
+    if (index < components.length - 1) {
+      setIndex(index + 1);
+    } else {
+      setIndex(0);
+    }
+  };
+
+  return React.cloneElement(currentComponent, { onMotionFinish });
+};
+
 const componentsB = ({ animateOpacity = true }): React.ReactElement[] => [
   <Blur.In animateOpacity={animateOpacity}>
     <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
@@ -132,6 +162,47 @@ const componentsB = ({ animateOpacity = true }): React.ReactElement[] => [
   </Slide.Out>,
 ];
 
+const componentsC = ({ animateOpacity = true }): React.ReactFragment => (
+  <>
+    <Blur.In animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </Blur.In>
+    <Blur.Out animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </Blur.Out>
+    <Blur.In animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </Blur.In>
+    <Blur.Out animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </Blur.Out>
+    <Collapse.In animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </Collapse.In>
+    <Collapse.Out animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </Collapse.Out>
+    <ScaleRelaxed.In animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </ScaleRelaxed.In>
+    <ScaleRelaxed.Out animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </ScaleRelaxed.Out>
+    <Slide.In distance="100%" orientation="vertical" animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </Slide.In>
+    <Slide.Out distance="100%" orientation="vertical" animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </Slide.Out>
+    <Slide.In distance="100%" orientation="horizontal" animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </Slide.In>
+    <Slide.Out distance="100%" orientation="horizontal" animateOpacity={animateOpacity}>
+      <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+    </Slide.Out>
+  </>
+);
+
 export const ExperimentsSeries = () => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
@@ -147,8 +218,9 @@ export const ExperimentsSeries = () => {
   const durationMin = 200;
   const durationMax = 2000;
 
-  const seriesA = <Series components={componentsA({ animateOpacity })} />;
+  // const seriesA = <Series components={componentsA({ animateOpacity })} />;
   const seriesB = <SeriesB components={componentsB({ animateOpacity })} />;
+  const seriesC = <SeriesC>{componentsC({ animateOpacity })}</SeriesC>;
 
   return (
     <div className={classes.container}>
@@ -166,7 +238,8 @@ export const ExperimentsSeries = () => {
         </Field>
       </div>
 
-      <div className={classes.card}>{seriesB}</div>
+      {/* <div className={classes.card}>{seriesB}</div> */}
+      <div className={classes.card}>{seriesC}</div>
     </div>
   );
 };
