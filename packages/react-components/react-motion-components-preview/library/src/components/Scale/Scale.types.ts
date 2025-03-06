@@ -1,5 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export type ScaleVariantParams_unstable = {
+  fromScale?: number;
+
   /** Time (ms) for the enter transition. Defaults to the `durationNormal` value (200 ms). */
   enterDuration?: number;
 
