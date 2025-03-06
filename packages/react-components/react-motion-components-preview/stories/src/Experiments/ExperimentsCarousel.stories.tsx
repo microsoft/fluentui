@@ -246,15 +246,15 @@ export const ExperimentsCarousel = () => {
       <div className={classes.photo3Up}>
         <Stagger delay={100}>
           <PhotoMotion>
-            <div className={`${classes.photo} ${classes.photo1}`}></div>
+            <div className={`${classes.photo} ${classes.photo1}`} />
           </PhotoMotion>
 
           <PhotoMotion>
-            <div className={`${classes.photo} ${classes.photo2}`}></div>
+            <div className={`${classes.photo} ${classes.photo2}`} />
           </PhotoMotion>
 
           <PhotoMotion>
-            <div className={`${classes.photo} ${classes.photo3}`}></div>
+            <div className={`${classes.photo} ${classes.photo3}`} />
           </PhotoMotion>
         </Stagger>
       </div>
