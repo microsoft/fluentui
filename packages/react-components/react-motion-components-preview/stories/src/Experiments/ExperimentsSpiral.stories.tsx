@@ -30,6 +30,7 @@ const useClasses = makeStyles({
     position: 'relative',
     left: '200px',
     top: '100px',
+    height: '200px',
     // backgroundColor: tokens.colorNeutralBackground1Hover,
   },
   controls: {
@@ -146,7 +147,7 @@ const mapper =
 const spiralPresenceFn: PresenceMotionFn<SpiralRuntimeParams> = ({
   // element,
   outRadius = 200,
-  inRadius = 60,
+  inRadius = 50,
   angle = 0,
   revolutions = 0.5,
   enterDuration = 500,
@@ -225,7 +226,7 @@ const avatarSpiral = ({
   autoplay,
   setVisible,
   classes,
-  radius = 50,
+  inRadius = 50,
 }: {
   visible: boolean;
   duration: number;
@@ -233,7 +234,7 @@ const avatarSpiral = ({
   setVisible: (visible: boolean) => void;
   classes: ReturnType<typeof useClasses>;
   numItems?: number;
-  radius?: number;
+  inRadius?: number;
 }) => {
   const angleIncrement = 360 / numItems;
 
@@ -247,6 +248,7 @@ const avatarSpiral = ({
             key={i}
             visible={visible}
             angle={i * angleIncrement}
+            inRadius={inRadius}
             enterDuration={duration}
             onMotionFinish={() => autoplay && setVisible(v => !v)}
           >
@@ -268,8 +270,8 @@ export const ExperimentsSpiral = () => {
   const [duration, setDuration] = React.useState<number>(500);
   const radiusSliderId = useId();
   const durationSliderId = useId();
-  const radiusMin = 2;
-  const radiusMax = 50;
+  const radiusMin = 30;
+  const radiusMax = 70;
   const durationMin = 50;
   const durationMax = 1000;
 
@@ -308,27 +310,27 @@ export const ExperimentsSpiral = () => {
           <Label aria-hidden>{durationMax}</Label>
         </div>
 
-        {/* <Label htmlFor={radiusSliderId}>radius: {radius}</Label>
+        <Label htmlFor={radiusSliderId}>radius: {radius}</Label>
         <div className={classes.sliderWrapper}>
           <Label aria-hidden>{radiusMin}</Label>
           <Slider
             min={radiusMin}
             max={radiusMax}
-            defaultValue={20}
+            defaultValue={radius}
             id={radiusSliderId}
             onChange={(_, data) => {
               setRadius(data.value);
             }}
           />
           <Label aria-hidden>{radiusMax}</Label>
-        </div> */}
+        </div>
       </div>
-      <div className={classes.card}></div>
 
       <div className={classes.card}>
         {avatarSpiral({
           numItems: 5,
           visible,
+          inRadius: radius,
           duration,
           autoplay,
           setVisible,
