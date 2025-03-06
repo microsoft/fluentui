@@ -77,8 +77,21 @@ jobs:
       - name: Affected Projects Count
         run: echo ${{steps.affected_projects_count.outputs.value}}
 
+      - name: Update Baseline
+        if: steps.affected_projects_count.outputs.value > 0
+        run: |
+          git config user.name "Fluent UI Build"
+          git config user.email "fluentui-internal@service.microsoft.com"
+          git add *.png
+          if [[ -n $(git status --porcelain) ]]; then
+            git commit -m "chore: update vrt baseline"
+            git push origin HEAD:${{ github.ref_name }}
+          else
+            echo "No PNG changes to commit."
+          fi
+
       - name: Report Updated Baseline
-        if: steps.affected_projects_count.outputs.value > 1
+        if: steps.affected_projects_count.outputs.value > 0
         run: |
           echo "## Run Result" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
