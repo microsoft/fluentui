@@ -100,8 +100,8 @@ export class GaugeChartSingleSegmentExample extends React.Component<{}, IGCSingl
             { size: this.state.chartValue, legend: 'Used' },
             {
               size: 100 - this.state.chartValue,
-              color: DataVizPalette.disabled,
-              gradient: getGradientFromToken(DataVizGradientPalette.disabled),
+              color: DataVizPalette.color5,
+              gradient: getGradientFromToken(DataVizGradientPalette.gradient6),
               legend: 'Available',
             },
           ]}
