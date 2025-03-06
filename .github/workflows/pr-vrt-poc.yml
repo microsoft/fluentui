@@ -134,7 +134,9 @@ jobs:
         with:
           name: vrt_report
           retention-days: 1
-          path: '**/dist/vrt/**'
+          path: |
+            '**/dist/vrt/**'
+            '!**/node_modules/**'
 
       # - name: Upload VR screenshots
       #   uses: actions/upload-artifact@v4
