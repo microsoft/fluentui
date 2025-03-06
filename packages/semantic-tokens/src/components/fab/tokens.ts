@@ -34,7 +34,6 @@ import {
   ctrlFabShadowRestKeyXRaw,
   ctrlFabShadowRestKeyYRaw,
 } from './variables';
-
 export const ctrlFabBackgroundRest = `var(${ctrlFabBackgroundRestRaw})`;
 export const ctrlFabBackgroundHover = `var(${ctrlFabBackgroundHoverRaw})`;
 export const ctrlFabBackgroundPressed = `var(${ctrlFabBackgroundPressedRaw})`;

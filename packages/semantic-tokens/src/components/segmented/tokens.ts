@@ -51,7 +51,6 @@ import {
   ctrlSegmentedStrokePressedRaw,
   ctrlSegmentedStrokeRestRaw,
 } from './variables';
-
 export const ctrlSegmentedBackgroundRest = `var(${ctrlSegmentedBackgroundRestRaw}, var(${backgroundCtrlOutlineRestRaw}, ${nullColorRaw}))`;
 export const ctrlSegmentedBackgroundHover = `var(${ctrlSegmentedBackgroundHoverRaw}, var(${backgroundCtrlOutlineHoverRaw}, ${nullColorRaw}))`;
 export const ctrlSegmentedBackgroundPressed = `var(${ctrlSegmentedBackgroundPressedRaw}, var(${backgroundCtrlOutlinePressedRaw}, ${nullColorRaw}))`;

@@ -7,7 +7,6 @@ import {
   ctrlRatingIconSizeRaw,
   ctrlRatingIconThemeRaw,
 } from './variables';
-
 export const ctrlRatingIconTheme = `var(${ctrlRatingIconThemeRaw}, ${iconthemeCtrlDefaultRestRaw})`;
 export const ctrlRatingIconGap = `var(${ctrlRatingIconGapRaw})`;
 export const ctrlRatingIconForegroundFilled = `var(${ctrlRatingIconForegroundFilledRaw}, ${backgroundCtrlBrandRestRaw})`;

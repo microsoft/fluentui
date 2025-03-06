@@ -239,7 +239,6 @@ import {
   textStyleDefaultRegularLetterspacingRaw,
   textStyleDefaultRegularWeightRaw,
 } from './variables';
-
 export const textGlobalDisplay1Fontsize = `var(${textGlobalDisplay1FontsizeRaw})`;
 export const textGlobalDisplay1Lineheight = `var(${textGlobalDisplay1LineheightRaw})`;
 export const textGlobalDisplay2Fontsize = `var(${textGlobalDisplay2FontsizeRaw})`;

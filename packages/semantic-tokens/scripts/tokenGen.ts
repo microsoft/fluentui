@@ -37,9 +37,8 @@ interface ComponentTokenMap {
 
 // ToDo, make this dynamic to handle all needed variables imported after/during files generation
 function generateImportHeaders() {
-  const esLintDisable = '// eslint-disable-next-line no-restricted-imports\n';
-  const importFluent = "import { tokens } from '@fluentui/tokens';\n\n";
-  return esLintDisable + importFluent;
+  const importFluent = "import { tokens } from '@fluentui/tokens';\n";
+  return importFluent;
 }
 
 function generateTokens() {
@@ -188,10 +187,6 @@ function generateTokenVariables() {
 
     const fallbacksFallback = tokenSemanticName ? tokensJSON[tokenSemanticName] : null;
 
-    if (token === 'foregroundCtrlOnsubtleHover') {
-      console.log('FOUND FALLBACK tokenSemanticName:', tokenSemanticName);
-      console.log('FOUND FALLBACK:', fallbacksFallback);
-    }
     if (tokenSemanticRef && fallbacksFallback && fallbacksFallback.fst_reference.length > 0) {
       // TODO: Check if we even want this level of fallback complexity?
       // Maximum two fallbacks, no need for recursion.
@@ -292,7 +287,7 @@ function generateTokenVariables() {
 
     // Format our text to match prettier rules
     const rawText = sourceFile.getText();
-    const formattedText = prettier.format(rawText, {
+    let formattedText = prettier.format(rawText, {
       parser: 'typescript',
       singleQuote: true,
       printWidth: 120,

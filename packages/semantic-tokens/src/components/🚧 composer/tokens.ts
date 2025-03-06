@@ -44,7 +44,6 @@ import {
   ctrlComposerInputStrokeWidthRestRaw,
   ctrlComposerInputStrokeWidthSelectedRestRaw,
 } from './variables';
-
 export const ctrlComposerInputBottomStrokeWidthSelectedRest = `var(${ctrlComposerInputBottomStrokeWidthSelectedRestRaw})`;
 export const ctrlComposerInputBottomStrokeWidthRest = `var(${ctrlComposerInputBottomStrokeWidthRestRaw})`;
 export const ctrlComposerInputBottomStrokeWidthHover = `var(${ctrlComposerInputBottomStrokeWidthHoverRaw})`;

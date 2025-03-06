@@ -14,7 +14,6 @@ import {
   ctrlDialogLayerPaddingBottomRaw,
   ctrlDialogStrokeRaw,
 } from './variables';
-
 export const ctrlDialogBackground = `var(${ctrlDialogBackgroundRaw})`;
 export const ctrlDialogStroke = `var(${ctrlDialogStrokeRaw}, ${nullColorRaw})`;
 export const ctrlDialogBaseCorner = `var(${ctrlDialogBaseCornerRaw}, ${cornerCardRestRaw})`;

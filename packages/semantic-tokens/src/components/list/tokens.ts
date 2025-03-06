@@ -70,7 +70,6 @@ import {
   ctrlListSplitDividerShowdividerRaw,
   ctrlListSplitDividerStrokeRaw,
 } from './variables';
-
 export const ctrlListPillWidth = `var(${ctrlListPillWidthRaw})`;
 export const ctrlListPillFullwidth = `var(${ctrlListPillFullwidthRaw})`;
 export const ctrlListPillStretchPaddingDefault = `var(${ctrlListPillStretchPaddingDefaultRaw})`;

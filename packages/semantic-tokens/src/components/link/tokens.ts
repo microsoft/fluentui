@@ -23,7 +23,6 @@ import {
   ctrlLinkOnpageUnderlineSolidFigmaOnlyRaw,
   ctrlLinkShowunderlineatrestRaw,
 } from './variables';
-
 export const ctrlLinkForegroundNeutralRest = `var(${ctrlLinkForegroundNeutralRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${tokens.colorNeutralForeground2}))`;
 export const ctrlLinkInlineStrokewidthRest = `var(${ctrlLinkInlineStrokewidthRestRaw}, ${strokewidthDefaultRaw})`;
 export const ctrlLinkInlineStrokewidthHover = `var(${ctrlLinkInlineStrokewidthHoverRaw}, ${strokewidthDefaultRaw})`;

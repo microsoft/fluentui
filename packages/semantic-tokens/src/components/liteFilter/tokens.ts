@@ -11,7 +11,6 @@ import {
   ctrlLitefilterStrokeSelectedRaw,
   ctrlLitefilterStrokewidthSelectedRaw,
 } from './variables';
-
 export const ctrlLitefilterBackgroundSelected = `var(${ctrlLitefilterBackgroundSelectedRaw}, ${backgroundCtrlBrandRestRaw})`;
 export const ctrlLitefilterStrokeSelected = `var(${ctrlLitefilterStrokeSelectedRaw}, var(${strokeCtrlOnbrandRestRaw}, ${nullColorRaw}))`;
 export const ctrlLitefilterForegroundSelected = `var(${ctrlLitefilterForegroundSelectedRaw}, ${foregroundCtrlOnbrandRestRaw})`;

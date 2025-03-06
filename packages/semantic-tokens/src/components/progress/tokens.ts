@@ -10,7 +10,6 @@ import {
   ctrlProgressSmHeightEmptyRaw,
   ctrlProgressSmHeightFilledRaw,
 } from './variables';
-
 export const ctrlProgressBackgroundEmpty = `var(${ctrlProgressBackgroundEmptyRaw})`;
 export const ctrlProgressBackgroundFilled = `var(${ctrlProgressBackgroundFilledRaw}, ${backgroundCtrlBrandRestRaw})`;
 export const ctrlProgressCorner = `var(${ctrlProgressCornerRaw}, ${cornerCircularRaw})`;
