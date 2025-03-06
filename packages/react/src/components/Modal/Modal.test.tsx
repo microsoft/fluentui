@@ -133,6 +133,7 @@ describe('Modal', () => {
 
     it('respects enableAriaHiddenSiblings=false', () => {
       const { getByText } = render(
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         <Modal isOpen enableAriaHiddenSiblings={false}>
           content
         </Modal>,
