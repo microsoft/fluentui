@@ -4,15 +4,9 @@ import * as path from 'node:path';
 import { cwd } from 'node:process';
 
 import { PNG } from 'pngjs';
-
-interface Result {
-  passed: boolean;
-  diffPixels?: any;
-  diffPath?: string;
-  file: any;
-  changeType?: 'add' | 'diff' | 'remove';
-  error?: string;
-}
+import { getPackageMetadata, loadPixelmatch } from './utils';
+import { dirname, join } from 'node:path';
+import { Metadata, Result, Report } from './types';
 
 function stripIndents(strings: { raw: readonly string[] }, ...values: string[]) {
   return String.raw(strings, ...values)
@@ -20,11 +14,6 @@ function stripIndents(strings: { raw: readonly string[] }, ...values: string[]) 
     .map(line => line.trim())
     .join('\n')
     .trim();
-}
-
-async function loadPixelmatch() {
-  const pixelmatch = (await import('pixelmatch')).default;
-  return pixelmatch;
 }
 
 async function compareSnapshots(
@@ -67,15 +56,24 @@ async function compareSnapshots(
 
 function generateJsonReport(
   results: Result[],
-  paths: {
-    absolute: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-    relative: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
+  options: {
+    metadata: Metadata;
+    reportFileName: string;
+    paths: {
+      absolute: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
+      relative: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
+    };
   },
 ) {
-  const reportPath = paths.absolute.reportPath.replace('html', 'json');
-  fs.writeFileSync(reportPath, JSON.stringify(results, null, 2), 'utf-8');
+  const { metadata, paths, reportFileName } = options;
+  const reportPathRoot = dirname(paths.absolute.reportPath);
 
-  console.log(`JSON report generated: ${reportPath}`);
+  const reportPathFile = join(reportPathRoot, reportFileName);
+  const report: Report = { results, metadata };
+
+  fs.writeFileSync(reportPathFile, JSON.stringify(report, null, 2), 'utf-8');
+
+  console.log(`JSON report generated: ${reportPathFile}`);
 }
 
 function generateMarkdownReport(
@@ -194,6 +192,7 @@ export async function runSnapshotTests(
   actualDir: string,
   diffDir: string,
   reportPath: string,
+  reportFileName: string,
   updateSnapshots: boolean,
 ) {
   if (updateSnapshots) {
@@ -213,6 +212,13 @@ export async function runSnapshotTests(
     actualDir: path.join(cwd(), relativePaths.actualDir),
     diffDir: path.join(cwd(), relativePaths.diffDir),
     reportPath: path.join(cwd(), relativePaths.reportPath),
+  };
+
+  const packageMeta = getPackageMetadata(normalizedPaths.reportPath);
+
+  const metadata = {
+    paths: normalizedPaths,
+    project: packageMeta,
   };
 
   if (!fs.existsSync(normalizedPaths.baselineDir)) {
@@ -288,7 +294,11 @@ export async function runSnapshotTests(
     }
   }
 
-  generateJsonReport(results, { absolute: normalizedPaths, relative: relativePaths });
+  generateJsonReport(results, {
+    metadata,
+    reportFileName,
+    paths: { absolute: normalizedPaths, relative: relativePaths },
+  });
   generateHtmlReport(results, { absolute: normalizedPaths, relative: relativePaths });
   generateMarkdownReport(results, { absolute: normalizedPaths, relative: relativePaths });
 
