@@ -139,6 +139,7 @@ jobs:
           ls -al dist/vrt
 
       - name: Upload Report
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: vrt_report
@@ -147,6 +148,7 @@ jobs:
             dist/vrt/
 
       - name: Save PR number
+        if: always()
         run: echo ${{ github.event.number }} > pr.txt
       - uses: actions/upload-artifact@v4
         with:
