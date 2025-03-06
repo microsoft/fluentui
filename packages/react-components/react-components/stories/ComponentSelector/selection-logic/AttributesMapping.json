@@ -1,10 +1,196 @@
 [
   {
     "id": "performsAction",
-    "components": ["Button", "SplitButton", "ToggleButton", "ToolbarToggleButton", "LinkButton"]
+    "components": ["Button", "MenuButton", "ToggleButton", "SplitButton", "ToolbarToggleButton", "LinkButton"]
   },
   {
     "id": "performsNavigation",
+    "components": ["Link", "Link", "LinkButton"]
+  },
+  {
+    "id": "primaryActionPlusDropdown",
+    "components": ["SplitButton"]
+  },
+  {
+    "id": "equealActions",
+    "components": ["MenuButton"]
+  },
+  {
+    "id": "toggle",
+    "components": ["Checkbox", "ToggleButton", "TreeSelection"]
+  },
+  {
+    "id": "notToggle",
+    "components": ["Link", "LinkButton"]
+  },
+  {
+    "id": "linkAsButton",
+    "components": ["LinkButton"]
+  },
+  {
+    "id": "appearanceAsLink",
     "components": ["Link"]
+  },
+  {
+    "id": "multipleChoices",
+    "components": ["Checkbox", "MenuItemCheckbox"]
+  },
+  {
+    "id": "singleChoice",
+    "components": ["Button", "MenuItemRadio", "RadioGroup", "Switch"]
+  },
+  {
+    "id": "autoSelect",
+    "components": []
+  },
+  {
+    "id": "notAutoSelect",
+    "components": ["Checkbox"]
+  },
+  {
+    "id": "visibilityOnScreen",
+    "components": ["Checkbox"]
+  },
+  {
+    "id": "visibilityInMenu",
+    "components": []
+  },
+  {
+    "id": "isInstantAction",
+    "components": []
+  },
+  {
+    "id": "isNotInstantAction",
+    "components": ["Checkbox"]
+  },
+  {
+    "id": "interactiveContent",
+    "components": [
+      "Accordion",
+      "Button",
+      "MenuButton",
+      "ToggleButton",
+      "SplitButton",
+      "InfoLabel",
+      "ListSingleAction",
+      "Menu",
+      "MenuButton",
+      "MenuItemRadio",
+      "MenuSubmenu",
+      "TableCellActions",
+      "TableCellNavigation",
+      "TabList",
+      "Tree",
+      "TreeGrid",
+      "TreeSelection"
+    ]
+  },
+  {
+    "id": "nonInteractiveContent",
+    "components": ["Tooltip"]
+  },
+  {
+    "id": "appearsOnHover",
+    "components": []
+  },
+  {
+    "id": "appearOnClick",
+    "components": []
+  },
+  {
+    "id": "sourceInfoIcon",
+    "components": []
+  },
+  {
+    "id": "sourceButton",
+    "components": []
+  },
+  {
+    "id": "tabularStructureNavigation",
+    "components": []
+  },
+  {
+    "id": "tabularStructureDisplayData",
+    "components": []
+  },
+  {
+    "id": "tabularStructureMoreInteraction",
+    "components": ["MenuSubmenu"]
+  },
+  {
+    "id": "tabularStructureOneInteraction",
+    "components": []
+  },
+  {
+    "id": "tabularStructureVerticalLayout",
+    "components": []
+  },
+  {
+    "id": "tabularStructureHorizontalLayout",
+    "components": []
+  },
+  {
+    "id": "tabularStructureGridLayout",
+    "components": []
+  },
+  {
+    "id": "tabularStructureDataNeedCategorization",
+    "components": ["Table", "TableCellActions", "TableCellNavigation"]
+  },
+  {
+    "id": "tabularStructureDataNotCategorized",
+    "components": []
+  },
+  {
+    "id": "tabularStructureDataNotCategorizedAndNeedSorting",
+    "components": []
+  },
+  {
+    "id": "cardPrimaryPurposeInteractive",
+    "components": []
+  },
+  {
+    "id": "cardPrimaryPurposeStatic",
+    "components": ["List", "ListSingleAction", "Table", "Text"]
+  },
+  {
+    "id": "cardMoreInteraction",
+    "components": []
+  },
+  {
+    "id": "cardOnePrimaryInteraction",
+    "components": []
+  },
+  {
+    "id": "cardFewToDisplay",
+    "components": []
+  },
+  {
+    "id": "cardMoreThanTwoDisplay",
+    "components": []
+  },
+  {
+    "id": "dialogLightweightInformation",
+    "components": []
+  },
+  {
+    "id": "dialogRequestsUserInteraction",
+    "components": []
+  },
+  {
+    "id": "dialogTeachingPopover",
+    "components": []
+  },
+  {
+    "id": "dialogRequiresInteractionBeforeContinue",
+    "components": []
+  },
+  {
+    "id": "dialogRequiresInteractionBeforeContinueLessImportant",
+    "components": []
+  },
+  {
+    "id": "dialogNotRequireInteractionBeforeContinue",
+    "components": []
   }
 ]
