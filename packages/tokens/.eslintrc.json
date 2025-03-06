@@ -5,7 +5,7 @@
     "no-restricted-imports": [
       "error",
       {
-        "patterns": ["react", "react-dom"]
+        "patterns": ["@fluentui/*", "react", "react-dom"]
       }
     ]
   }

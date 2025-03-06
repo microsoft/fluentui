@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { tokens } from '@fluentui/tokens';
 import { backgroundCtrlBrandRestRaw, strokewidthDefaultRaw } from '../../control/variables';
 import {

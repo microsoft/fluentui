@@ -293,6 +293,13 @@ function generateTokenVariables() {
       printWidth: 120,
     });
 
+    // TODO: Can we just fix/ignore this ESLint rule in this repo so this isn't needed?
+    // We have to manually inject eslint disable after formatting, because it deletes it.
+    if (formattedText.startsWith('import { tokens }')) {
+      const esLintDisable = '// eslint-disable-next-line no-restricted-imports\n';
+      formattedText = esLintDisable + formattedText;
+    }
+
     // Format our text to match prettier rules
     sourceFile.replaceWithText(formattedText);
   });
