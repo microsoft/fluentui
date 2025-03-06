@@ -26,6 +26,7 @@ import {
 import { removeFromArray, getComponentStoryUrl, getAllQuestions } from './utils';
 import questions from './selection-logic/Questions.json';
 import importedGroups from './selection-logic/Groups.json';
+import attributesMapping from './selection-logic/AttributesMapping.json';
 import * as importedComponentsDefinitions from './components-definitions/index';
 import { add, create, filter, get, pad, set } from 'lodash';
 import { SelectionCard } from './SelectionCard';
@@ -214,7 +215,8 @@ export const Selector = () => {
       Object.entries(importedComponentsDefinitions).forEach(([key, value]) => {
         componentsDefinitions.current.push(value);
       });
-      mergeBaseObjects();
+      mapAttributes();
+      // TODO: Remove this function after Base JSON files ar removed
       cleanUpBaseObjects();
     }
   }, []);
@@ -235,27 +237,19 @@ export const Selector = () => {
     );
   }, [setFilteredComponentsDefinitions, filterText]);
 
-  const mergeBaseObjects = () => {
+  const mapAttributes = () => {
     componentsDefinitions.current.forEach(definition => {
-      for (const key in definition) {
-        if (key === 'extends') {
-          const value = definition[key];
-          const attributesOfCurrentDefinition = definition.attributes;
-          // find the definition which the current definition is based on
-          const baseDefinition = componentsDefinitions.current.find(def => def.name === value);
-          const attributesOfBaseDefinition = baseDefinition?.attributes;
-
-          // create a definition copy with the name deleted
-          const tempDefinition = JSON.parse(JSON.stringify(baseDefinition));
-          delete tempDefinition.name;
-
-          // merge attributes of current JSON with Base JSON
-          if (attributesOfCurrentDefinition) {
-            tempDefinition.attributes = [...attributesOfBaseDefinition, ...attributesOfCurrentDefinition];
-          }
-          Object.assign(definition, tempDefinition);
+      definition.attributes = [];
+    });
+    attributesMapping.forEach(mapping => {
+      mapping.components.forEach(componentName => {
+        const foundDefinition = componentsDefinitions.current.find(definition => {
+          return definition.name === componentName;
+        });
+        if (foundDefinition) {
+          foundDefinition.attributes.push(mapping.id);
         }
-      }
+      });
     });
   };
 
