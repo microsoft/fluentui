@@ -157,7 +157,7 @@ const useStyles = makeStyles({
     marginBottom: '20px',
   },
   jumpToCategoryTags: {
-    overflowX: 'auto',
+    overflowX: 'hidden',
   },
   jumpToCategoryTag: {
     cursor: 'pointer',
