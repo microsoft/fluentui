@@ -18,8 +18,10 @@ import { MotionComponentProps, PresenceComponent } from '@fluentui/react-motion/
 import {
   Blur,
   Collapse,
+  createFadePresence,
   Fade,
   FadeRelaxed,
+  Rotate,
   ScaleRelaxed,
   Slide,
   Wipe,
@@ -90,6 +92,10 @@ const LoremIpsum = () => (
   </>
 );
 
+const FadeExtraGentle = createPresenceComponent(
+  createFadePresence({ enterDuration: motionTokens.durationGentle * 5, enterEasing: motionTokens.curveAccelerateMin }),
+);
+
 export const ExperimentsStagger = () => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
@@ -134,15 +140,23 @@ export const ExperimentsStagger = () => {
 
   const seriesA = (
     <Series autoloop>
-      <Stagger delay={20}>
+      <Stagger delay={50}>
         {createMotionComponents({
-          Component: FadeRelaxed.In,
+          Component: FadeExtraGentle.In,
           numItems: 100,
           itemSize: '50px',
         })}
       </Stagger>
 
-      <Stagger delay={20}>
+      <Stagger delay={50}>
+        {createMotionComponents({
+          Component: Blur.In,
+          numItems: 100,
+          itemSize: '50px',
+        })}
+      </Stagger>
+
+      <Stagger delay={50}>
         {createMotionComponents({
           Component: Slide.In,
           numItems: 100,
@@ -151,14 +165,32 @@ export const ExperimentsStagger = () => {
         })}
       </Stagger>
 
-      <Stagger delay={20}>
+      <Stagger delay={50}>
+        {createMotionComponents({
+          Component: Rotate.In,
+          props: { axis: 'X' },
+          numItems: 100,
+          itemSize: '50px',
+        })}
+      </Stagger>
+
+      <Stagger delay={50}>
+        {createMotionComponents({
+          Component: Rotate.In,
+          props: { axis: 'Y' },
+          numItems: 100,
+          itemSize: '50px',
+        })}
+      </Stagger>
+
+      {/* <Stagger delay={20}>
         {createMotionComponents({
           Component: Slide.In,
           numItems: 100,
           itemSize: '50px',
           props: { orientation: 'horizontal', distance: '-400%' },
         })}
-      </Stagger>
+      </Stagger> */}
     </Series>
   );
 
@@ -179,7 +211,9 @@ export const ExperimentsStagger = () => {
       </div>
 
       {/* <div className={classes.card}>{staggerB}</div> */}
-      <div className={classes.card}>{seriesA}</div>
+      <div className={classes.card} style={{ perspective: '200px' }}>
+        {seriesA}
+      </div>
     </div>
   );
 };
