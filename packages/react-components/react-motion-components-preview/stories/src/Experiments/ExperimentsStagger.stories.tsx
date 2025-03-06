@@ -25,6 +25,7 @@ import {
   Wipe,
 } from '@fluentui/react-motion-components-preview';
 import { Series } from './Series';
+import { Stagger } from './Stagger';
 
 // import description from './ExperimentsWipe.stories.md';
 
@@ -88,56 +89,6 @@ const LoremIpsum = () => (
     )}
   </>
 );
-
-const isFragment = (child: React.ReactNode): child is React.ReactElement => {
-  return React.isValidElement(child) && child.type === React.Fragment;
-};
-
-// Convert children that is either React.Fragment or regular React.Children to an array of React elements
-const childrenOrFragmentToArray = (children: React.ReactNode): React.ReactElement[] => {
-  if (isFragment(children)) {
-    return React.Children.toArray(children.props.children) as React.ReactElement[];
-  }
-  return React.Children.toArray(children) as React.ReactElement[];
-};
-
-// A Stagger is a component that accepts JSX children and renders them in a staggered manner with a set delay
-const Stagger: React.FC<{
-  children: React.ReactNode;
-  delay?: number;
-  autoloop?: boolean;
-  onMotionFinish?: () => void;
-}> = ({ children, delay = 500, autoloop = false, onMotionFinish = () => null }) => {
-  const [index, setIndex] = React.useState(0);
-  const components = childrenOrFragmentToArray(children);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      if (index < components.length - 1) {
-        setIndex(index + 1);
-      } else if (autoloop) {
-        setIndex(0);
-      } else {
-        // TODO: call onMotionFinish only when the last component is finished
-        onMotionFinish();
-      }
-    }, delay);
-
-    return () => clearTimeout(timer);
-  }, [index, delay, components.length, autoloop, onMotionFinish]);
-
-  // return all components up to the current index
-  return (
-    <>
-      {components.map((component, i) => {
-        if (i <= index) {
-          return React.cloneElement(component, { key: i });
-        }
-        return null;
-      })}
-    </>
-  );
-};
 
 export const ExperimentsStagger = () => {
   const classes = useClasses();
