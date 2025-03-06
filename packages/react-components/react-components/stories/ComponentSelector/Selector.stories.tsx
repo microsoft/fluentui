@@ -88,7 +88,7 @@ const useStyles = makeStyles({
     flex: 1,
     padding: '20px',
     overflowY: 'auto',
-    maxHeight: 'calc(100vh - 610px)',
+    maxHeight: 'calc(100vh - 490px)',
   },
   footerWrapper: {
     display: 'flex',
