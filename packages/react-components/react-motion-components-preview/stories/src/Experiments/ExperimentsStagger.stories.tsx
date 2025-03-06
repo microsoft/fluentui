@@ -24,6 +24,7 @@ import {
   Slide,
   Wipe,
 } from '@fluentui/react-motion-components-preview';
+import { Series } from './Series';
 
 // import description from './ExperimentsWipe.stories.md';
 
@@ -105,7 +106,8 @@ const Stagger: React.FC<{
   children: React.ReactNode;
   delay?: number;
   autoloop?: boolean;
-}> = ({ children, delay = 500, autoloop = false }) => {
+  onMotionFinish?: () => void;
+}> = ({ children, delay = 500, autoloop = false, onMotionFinish = () => null }) => {
   const [index, setIndex] = React.useState(0);
   const components = childrenOrFragmentToArray(children);
 
@@ -115,11 +117,14 @@ const Stagger: React.FC<{
         setIndex(index + 1);
       } else if (autoloop) {
         setIndex(0);
+      } else {
+        // TODO: call onMotionFinish only when the last component is finished
+        onMotionFinish();
       }
     }, delay);
 
     return () => clearTimeout(timer);
-  }, [index, delay, components.length]);
+  }, [index, delay, components.length, autoloop, onMotionFinish]);
 
   // return all components up to the current index
   return (
@@ -161,19 +166,64 @@ export const ExperimentsStagger = () => {
   }) => {
     return Array.from({ length: numItems }, (_, i) => {
       const t = i / numItems;
-      const backgroundColor = `hsl(${Math.floor(200 + t * 100)}, 100%, 50%)`;
+      const backgroundColor = `hsl(${Math.floor(180 + t * 120)}, 100%, 50%)`;
       return (
+        // <Blur.In>
+        // <span>
         <Component key={i} animateOpacity={animateOpacity} enterDuration={duration} {...props}>
           <div style={{ backgroundColor, width: '25px', height: '25px', borderRadius: '0%' }} />
         </Component>
+        // </span>
+        // </Blur.In>
       );
     });
   };
 
-  const stagger = (
-    <Stagger delay={5}>
-      {createMotionComponents({ numItems: 400, props: { orientation: 'horizontal', distance: '-200%' } })}
+  // const staggerA = (
+  //   <Stagger delay={2}>
+  //     {createMotionComponents({
+  //       Component: Slide.In,
+  //       numItems: 400,
+  //       props: { orientation: 'vertical', distance: '200%' },
+  //     })}
+  //   </Stagger>
+  // );
+
+  const staggerB = (
+    <Stagger delay={2}>
+      {createMotionComponents({
+        Component: Slide.In,
+        numItems: 400,
+        props: { orientation: 'horizontal', distance: '-400%' },
+      })}
     </Stagger>
+  );
+
+  const seriesA = (
+    <Series>
+      <Stagger delay={30}>
+        {createMotionComponents({
+          Component: FadeRelaxed.In,
+          numItems: 100,
+        })}
+      </Stagger>
+
+      <Stagger delay={5}>
+        {createMotionComponents({
+          Component: Slide.In,
+          numItems: 225,
+          props: { orientation: 'vertical', distance: '200%' },
+        })}
+      </Stagger>
+
+      <Stagger delay={5}>
+        {createMotionComponents({
+          Component: Slide.In,
+          numItems: 400,
+          props: { orientation: 'horizontal', distance: '-400%' },
+        })}
+      </Stagger>
+    </Series>
   );
 
   return (
@@ -192,7 +242,8 @@ export const ExperimentsStagger = () => {
         </Field>
       </div>
 
-      <div className={classes.card}>{stagger}</div>
+      {/* <div className={classes.card}>{staggerB}</div> */}
+      <div className={classes.card}>{seriesA}</div>
     </div>
   );
 };
