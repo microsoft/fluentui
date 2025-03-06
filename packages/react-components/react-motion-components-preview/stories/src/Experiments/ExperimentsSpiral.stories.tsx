@@ -182,7 +182,7 @@ const spiralPresenceFn: PresenceMotionFn<SpiralRuntimeParams> = ({
       keyframes,
       duration: enterDuration,
       easing: enterEasing,
-      fill: 'both',
+      fill: 'forwards',
     },
   ];
   if (animateOpacity) {
@@ -193,7 +193,7 @@ const spiralPresenceFn: PresenceMotionFn<SpiralRuntimeParams> = ({
       keyframes: [...keyframes].reverse(),
       duration: exitDuration,
       easing: exitEasing,
-      fill: 'both',
+      fill: 'forwards',
     },
   ];
   if (animateOpacity) {
@@ -270,6 +270,12 @@ export const ExperimentsSpiral = () => {
   const [radius, setRadius] = React.useState<number>(50);
   const [duration, setDuration] = React.useState<number>(500);
   const [quantity, setQuantity] = React.useState<number>(5);
+  const [key, setKey] = React.useState(0);
+
+  const forceRerender = () => {
+    setKey(key + 1);
+  };
+
   const radiusSliderId = useId();
   const durationSliderId = useId();
   const quantitySliderId = useId();
@@ -300,6 +306,7 @@ export const ExperimentsSpiral = () => {
             id={quantitySliderId}
             onChange={(_, data) => {
               setQuantity(data.value);
+              forceRerender();
             }}
           />
           <Label aria-hidden>{quantityMax}</Label>
@@ -333,6 +340,7 @@ export const ExperimentsSpiral = () => {
             defaultValue={radius}
             id={radiusSliderId}
             onChange={(_, data) => {
+              forceRerender();
               setRadius(data.value);
             }}
           />
@@ -343,6 +351,7 @@ export const ExperimentsSpiral = () => {
       <div className={classes.card}>
         <AvatarSpiral
           {...{
+            key,
             numItems: quantity,
             visible,
             inRadius: radius,
