@@ -25,12 +25,10 @@ const useClasses = makeStyles({
     display: 'grid',
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
     gap: '20px 10px',
-    // perspective: '1000px',
   },
   card: {
     display: 'flex',
     flexWrap: 'wrap',
-    // gap: '10px',
     gridArea: 'card',
     padding: '10px',
   },
@@ -39,7 +37,7 @@ const useClasses = makeStyles({
     padding: '20px',
   },
   controls: {
-    display: 'flex',
+    display: 'none',
     visibility: 'hidden',
     flexDirection: 'column',
     gridArea: 'controls',
@@ -67,10 +65,6 @@ const useClasses = makeStyles({
   },
   itemWrapper: {
     position: 'absolute',
-    // top: '0',
-    // left: '0',
-    // width: '100%',
-    // height: '100%',
   },
   staggerContainer: {
     display: 'flex',
@@ -79,11 +73,8 @@ const useClasses = makeStyles({
     flexWrap: 'wrap',
     perspective: '400px',
     overflow: 'hidden',
-    // width: '500px',
     minHeight: '500px',
-    // gap: '10px',
     gridArea: 'card',
-    // padding: '10px',
   },
   carouselContainer: {
     display: 'flex',
@@ -92,11 +83,8 @@ const useClasses = makeStyles({
     flexWrap: 'wrap',
     perspective: '400px',
     overflow: 'hidden',
-    // width: '500px',
     minHeight: '700px',
-    // gap: '10px',
     gridArea: 'card',
-    // padding: '10px',
     backgroundColor: 'black',
   },
   albumTitle: {
@@ -104,7 +92,6 @@ const useClasses = makeStyles({
     fontSize: '60px',
     fontWeight: 'bold',
     fontFamily: 'OpenSans, Arial, sans-serif',
-    // textAlign: 'left',
     marginTop: '80px',
     marginLeft: '50px',
   },
@@ -116,16 +103,56 @@ const useClasses = makeStyles({
     borderRadius: '20px',
     backgroundColor: 'grey',
     padding: '20px',
-    // width: '70px',
     height: '100%',
     boxShadow: '2px 2px 12px rgba(0, 0, 0, 0.8)', // Added drop shadow
   },
+  photo1: {
+    backgroundImage: 'url(https://picsum.photos/id/15/800/800)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  photo2: {
+    backgroundImage: 'url(https://picsum.photos/id/16/800/800)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  photo3: {
+    backgroundImage: 'url(https://picsum.photos/id/17/800/800)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  photo4: {
+    backgroundImage: 'url(https://picsum.photos/id/18/800/800)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  photo5: {
+    backgroundImage: 'url(https://picsum.photos/id/19/800/800)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  photo6: {
+    backgroundImage: 'url(https://picsum.photos/id/20/800/800)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  photo7: {
+    backgroundImage: 'url(https://picsum.photos/id/21/800/800)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  photo8: {
+    backgroundImage: 'url(https://picsum.photos/id/22/800/800)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+
   photo3Up: {
     display: 'grid',
     width: '500px',
     height: '400px',
     marginLeft: '100px',
-    marginTop: '150px',
+    marginTop: '100px',
 
     gridTemplateColumns: '1fr 1fr',
     gridTemplateRows: 'repeat(2, auto)',
@@ -149,7 +176,7 @@ const useClasses = makeStyles({
     width: '500px',
     height: '400px',
     marginLeft: '100px',
-    marginTop: '150px',
+    marginTop: '100px',
 
     gridTemplateColumns: 'repeat(2, 1fr)',
     gridTemplateRows: 'repeat(2, auto)',
@@ -210,49 +237,27 @@ export const ExperimentsCarousel = () => {
   // const durationMin = 200;
   // const durationMax = 2000;
 
-  const photo3Stagger = (
-    <Stagger delay={100}>
-      <PhotoMotion>
-        <div className={classes.photo}>A1</div>
-      </PhotoMotion>
-
-      <PhotoMotion>
-        <div className={classes.photo}>A2</div>
-      </PhotoMotion>
-
-      <PhotoMotion>
-        <div className={classes.photo}>A3</div>
-      </PhotoMotion>
-    </Stagger>
-  );
-
-  const photo4Stagger = (
-    <Stagger delay={100}>
-      <PhotoMotion>
-        <div className={classes.photo}>B1</div>
-      </PhotoMotion>
-
-      <PhotoMotion>
-        <div className={classes.photo}>B2</div>
-      </PhotoMotion>
-
-      <PhotoMotion>
-        <div className={classes.photo}>B3</div>
-      </PhotoMotion>
-
-      <PhotoMotion>
-        <div className={classes.photo}>B4</div>
-      </PhotoMotion>
-    </Stagger>
-  );
-
   const screenA = (
     <>
       <TitleMotion>
         <div className={classes.albumTitle}>Album A</div>
       </TitleMotion>
 
-      <div className={classes.photo3Up}>{photo3Stagger}</div>
+      <div className={classes.photo3Up}>
+        <Stagger delay={100}>
+          <PhotoMotion>
+            <div className={`${classes.photo} ${classes.photo1}`}></div>
+          </PhotoMotion>
+
+          <PhotoMotion>
+            <div className={`${classes.photo} ${classes.photo2}`}></div>
+          </PhotoMotion>
+
+          <PhotoMotion>
+            <div className={`${classes.photo} ${classes.photo3}`}></div>
+          </PhotoMotion>
+        </Stagger>
+      </div>
     </>
   );
 
@@ -262,7 +267,25 @@ export const ExperimentsCarousel = () => {
         <div className={classes.albumTitle}>Album B</div>
       </TitleMotion>
 
-      <div className={classes.photo4Up}>{photo4Stagger}</div>
+      <div className={classes.photo4Up}>
+        <Stagger delay={100}>
+          <PhotoMotion>
+            <div className={`${classes.photo} ${classes.photo4}`}></div>
+          </PhotoMotion>
+
+          <PhotoMotion>
+            <div className={`${classes.photo} ${classes.photo5}`}></div>
+          </PhotoMotion>
+
+          <PhotoMotion>
+            <div className={`${classes.photo} ${classes.photo6}`}></div>
+          </PhotoMotion>
+
+          <PhotoMotion>
+            <div className={`${classes.photo} ${classes.photo7}`}></div>
+          </PhotoMotion>
+        </Stagger>
+      </div>
     </>
   );
 
