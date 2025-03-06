@@ -134,11 +134,11 @@
     "question": "How the popup would be activated?",
     "answers": [
       {
-        "value": "onHover",
+        "value": "appearsOnHover",
         "text": "on hover and on focus with keyboard"
       },
       {
-        "value": "onClick",
+        "value": "appearOnClick",
         "text": "on click or enter key with keyboard"
       }
     ]
@@ -162,12 +162,12 @@
     "question": "What is the Primary Purpose?",
     "answers": [
       {
-        "value": "navigation",
+        "value": "tabularStructureNavigation",
         "text": "it is interactive (used for navigation or operation)",
         "comment": "return list, menu, dataGrid"
       },
       {
-        "value": "displayingData",
+        "value": "tabularStructureDisplayData",
         "text": "displaying non-interactive data or information",
         "comment": "return list, table"
       }
@@ -178,11 +178,11 @@
     "question": "Does it have one or more interactions associated with it?",
     "answers": [
       {
-        "value": "moreInteraction",
+        "value": "tabularStructureMoreInteraction",
         "text": "Yes, it's a combination of primary and additional actions (i.e. context menu, nested buttons or links)"
       },
       {
-        "value": "oneInteraction",
+        "value": "tabularStructureOneInteraction",
         "text": "One primary interaction only"
       }
     ]
@@ -192,15 +192,15 @@
     "question": "What is the desired visual layout you want?",
     "answers": [
       {
-        "value": "verticalLayout",
+        "value": "tabularStructureVerticalLayout",
         "text": "Vertical only"
       },
       {
-        "value": "horizontalLayout",
+        "value": "tabularStructureHorizontalLayout",
         "text": "Horizontal only"
       },
       {
-        "value": "gridLayout",
+        "value": "tabularStructureGridLayout",
         "text": "Grid layout both horizontal and vertical"
       }
     ]
@@ -210,15 +210,15 @@
     "question": "Is there relationships between rows and columns?",
     "answers": [
       {
-        "value": "onOrOff",
+        "value": "tabularStructureDataNeedCategorization",
         "text": "Yes, each column or row requires a heading."
       },
       {
-        "value": "notOnOrOff",
+        "value": "tabularStructureDataNotCategorized",
         "text": "All data is the same and doesn't required categorization."
       },
       {
-        "value": "notOnOrOff",
+        "value": "tabularStructureDataNotCategorizedAndNeedSorting",
         "text": "All data is the same and they requires sorting."
       }
     ]
@@ -242,11 +242,11 @@
     "question": "Does it have one or more interactions associated with it?",
     "answers": [
       {
-        "value": "cardPrimaryPurposeInteractive",
+        "value": "cardMoreInteraction",
         "text": "Yes, it's a combination of primary and additional actions (i.e. context menu, nested buttons or links) (If yes recommend card - role: Group, or ListItem as grid)"
       },
       {
-        "value": "cardPrimaryPurposeStatic",
+        "value": "cardOnePrimaryInteraction",
         "text": "One primary interaction only "
       }
     ]
@@ -256,11 +256,11 @@
     "question": "How many cards will you be using?",
     "answers": [
       {
-        "value": "cardPrimaryPurposeInteractive",
+        "value": "cardFewToDisplay",
         "text": "one or two cards"
       },
       {
-        "value": "cardPrimaryPurposeStatic",
+        "value": "cardMoreThanTwoDisplay",
         "text": "More than 2 cards"
       }
     ]
@@ -270,31 +270,17 @@
     "question": "What is the Primary Purpose?",
     "answers": [
       {
-        "value": "lightweightInformation",
+        "value": "dialogLightweightInformation",
         "comment": "this should be popover",
         "text": "Displays lightweight information or quick actions."
       },
       {
-        "value": "dasf",
+        "value": "dialogRequestsUserInteraction",
         "text": "Requests user input, confirmation, or decision-making"
       },
       {
-        "value": "afdsa",
+        "value": "dialogTeachingPopover",
         "text": "Provides in context teaching hints, that interrupt the user's attention (teaching UI)"
-      }
-    ]
-  },
-  {
-    "id": "dialogInteraction",
-    "question": "Do you require the user's attention and input before continuing?",
-    "answers": [
-      {
-        "value": "requiresUserInput",
-        "text": "Yes, The information is important and should not be missed. The user needs to confirm or take action (e.g., submit a form). Example Scenarios: A confirmation modal before deleting an item. A form dialog for user input (e.g., \"Edit Profile\"). A system alert requiring acknowledgment before proceeding. (Use alert dialog)"
-      },
-      {
-        "value": "doesNotRequireUserInput",
-        "text": "No, The user doesn't need to take any immediate action. The user should be able to continue interacting with the rest of the UI, it is not critical to read out the information on invocation of the popover. Example Scenarios: Displaying a quick preview of a file or item.Inline dropdowns for navigation or filter selection. "
       }
     ]
   },
@@ -303,16 +289,18 @@
     "question": "Do you require the user's attention and input before continuing?",
     "answers": [
       {
-        "value": "requiresUserInput",
-        "text": "the user flow is necessary, the user must make a choice before continuing"
+        "value": "dialogRequiresInteractionBeforeContinue",
+        "text": "the user flow is necessary, the user must make a choice before continuing",
+        "note": "alertDialog"
       },
       {
-        "value": "doesNotRequireUserInput",
+        "value": "dialogRequiresInteractionBeforeContinueLessImportant",
         "text": "The information is important to the user and needs to capture their attention"
       },
       {
-        "value": "popover",
-        "text": "If information can be glanced at without disrupting the flow , If the action is minor or non-critical, provides quick actions or helpful hints"
+        "value": "dialogNotRequireInteractionBeforeContinue",
+        "text": "If information can be glanced at without disrupting the flow , If the action is minor or non-critical, provides quick actions or helpful hints",
+        "note": "popover"
       }
     ]
   }
