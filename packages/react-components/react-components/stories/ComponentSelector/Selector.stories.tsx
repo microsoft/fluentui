@@ -7,12 +7,25 @@ import {
   Tab,
   TabList,
   Tag,
+  shorthands,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
   TagGroup,
+  OverflowItem,
+  useIsOverflowItemVisible,
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagPrimaryProps,
+  TagProps,
   Text,
   makeStyles,
   tokens,
   useId,
   Subtitle2,
+  useOverflowMenu,
 } from '@fluentui/react-components';
 import {
   ArrowDownRegular,
@@ -75,7 +88,7 @@ const useStyles = makeStyles({
     flex: 1,
     padding: '20px',
     overflowY: 'auto',
-    maxHeight: 'calc(100vh - 630px)',
+    maxHeight: 'calc(100vh - 610px)',
   },
   footerWrapper: {
     display: 'flex',
@@ -88,8 +101,7 @@ const useStyles = makeStyles({
   },
   headerWrapper: {
     display: 'flex',
-    justifyContent: 'flex-end',
-    paddingRight: '50px',
+    flexDirection: 'column',
   },
   questionsWrapper: {
     padding: '20px',
@@ -132,6 +144,26 @@ const useStyles = makeStyles({
     display: 'flex',
     margin: '15px 0',
   },
+  searchComponentInput: {
+    alignSelf: 'flex-end',
+  },
+  jumpToCategoryHeader: {
+    alignSelf: 'flex-start',
+    paddingLeft: '10px',
+  },
+  jumpToCategoryButtons: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginBottom: '20px',
+  },
+  jumpToCategoryTags: {
+    overflowX: 'auto',
+  },
+  jumpToCategoryTag: {
+    cursor: 'pointer',
+    color: 'white',
+    backgroundColor: '#5b5fc7',
+  },
   actionsHeader: {
     margin: 0,
   },
@@ -140,6 +172,13 @@ const useStyles = makeStyles({
   },
   clearSelection: {
     flexShrink: 0,
+  },
+  moreButton: {
+    color: 'white',
+    backgroundColor: '#5b5fc7',
+    maxHeight: '32px',
+    margin: '0 10px',
+    fontWeight: '400',
   },
   fillOutSection: {
     display: 'flex',
@@ -179,6 +218,21 @@ export const Selector = () => {
     if (questionsSectionRef.current) {
       questionsSectionRef.current.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const groupSectionRefs = React.useRef<HTMLDivElement[]>([]);
+
+  const setSectionRef = (el: HTMLDivElement | null, index: number) => {
+    if (el) {
+      groupSectionRefs.current[index] = el;
+      if (index === 0) {
+        firstGroupItemRef.current = el;
+      }
+    }
+  };
+
+  const onJumpToCategoryClick = (index: number) => {
+    groupSectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const onModeTabSelect = (_, data) => {
@@ -408,12 +462,6 @@ export const Selector = () => {
   return (
     <div className={classes.componentWrapper}>
       <div id="#header" className={classes.headerWrapper}>
-        {/*
-        <TabList selectedValue={mode} onTabSelect={onModeTabSelect} aria-labelledby="selectorMode-text">
-          <Tab value="byComponents">By components</Tab>
-          <Tab value="byBehaviors">By behaviors</Tab>
-        </TabList>
-        */}
         <Input
           contentBefore={<SearchRegular />}
           size="small"
@@ -421,7 +469,34 @@ export const Selector = () => {
           aria-label="Filter"
           value={filterText}
           onChange={onFilterChange}
+          className={classes.searchComponentInput}
         />
+        {categorizedComponents.length && <h4 className={classes.jumpToCategoryHeader}>Jump to category</h4>}
+        {mode === 'byComponents' && (
+          <div className={classes.jumpToCategoryButtons}>
+            <TagGroup aria-label="Jump to questions" className={classes.jumpToCategoryTags}>
+              {categorizedComponents.map((category, index) => (
+                <>
+                  {category.cards && category.cards.length > 0 && (
+                    <Tag
+                      className={classes.jumpToCategoryTag}
+                      appearance="brand"
+                      shape="circular"
+                      key={category.id}
+                      value={category.title}
+                      onClick={() => onJumpToCategoryClick(index)}
+                    >
+                      {category.title}
+                    </Tag>
+                  )}
+                </>
+              ))}
+            </TagGroup>
+            <Button className={classes.moreButton} shape="circular">
+              More
+            </Button>
+          </div>
+        )}
       </div>
       <div id="#body" className={classes.bodyWrapper}>
         {mode === 'byComponents' && (
@@ -438,7 +513,8 @@ export const Selector = () => {
                       <div className={classes.actionsHeaderWrapper}>
                         <h3
                           className={classes.actionsHeader}
-                          ref={index === 0 ? firstGroupItemRef : undefined}
+                          // ref={index === 0 ? firstGroupItemRef : undefined}
+                          ref={el => setSectionRef(el, index)}
                           tabIndex={-1}
                         >
                           {category.title}
