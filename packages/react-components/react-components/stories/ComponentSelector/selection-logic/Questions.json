@@ -1,43 +1,29 @@
 [
   {
-    "id": "hasMoreActions",
+    "id": "performsActionAndNavigation",
     "question": "What is the Primary Purpose?",
     "answers": [
       {
-        "value": "moreActions",
+        "value": "performsAction",
         "text": "Actions - a control performs an immediate action (e.g., submitting a form, triggering an event) "
       },
       {
-        "value": "singleAction",
+        "value": "performsNavigation",
         "text": "Navigation - it navigates to another page/section"
       }
     ]
   },
   {
-    "id": "doesNavigateToPage",
+    "id": "hasSecondaryActions",
     "question": "Do You Need to Offer Additional Options?",
     "answers": [
       {
-        "value": "navigatesToPage",
+        "value": "primaryActionPlusDropdown",
         "text": "there is a primary action with related actions available in a dropdown"
       },
       {
-        "value": "staysOnPage",
+        "value": "equealActions",
         "text": "all actions are equal in priority available in a dropdown"
-      }
-    ]
-  },
-  {
-    "id": "canSelectMultipleChoices",
-    "question": "What is the Primary Purpose?",
-    "answers": [
-      {
-        "value": "multipleChoices",
-        "text": "it is multi-select"
-      },
-      {
-        "value": "singleChoice",
-        "text": "it is mutually exclusive, i.e. only one choice can be selected at a time"
       }
     ]
   },
@@ -56,20 +42,6 @@
     ]
   },
   {
-    "id": "autoSelect",
-    "question": "What is the interaction model for selecting option?",
-    "answers": [
-      {
-        "value": "onOrOff",
-        "text": "Selection happens automatically when navigating with keyboard"
-      },
-      {
-        "value": "notOnOrOff",
-        "text": "Selection happens only when the user activates the control using keyboard or mouse"
-      }
-    ]
-  },
-  {
     "id": "controlAppearance",
     "question": "How Should the Control Appear and navigate ?",
     "answers": [
@@ -78,21 +50,51 @@
         "text": "it looks like a Link but it navigates within the application"
       },
       {
-        "value": "link",
+        "value": "appearanceAsLink",
         "text": "it looks like a link and it navigates to an external page"
       }
     ]
   },
   {
+    "id": "canSelectMultipleChoices",
+    "question": "Can you select multiple choices?",
+    "answers": [
+      {
+        "value": "multipleChoices",
+        "text": "it is multi-select"
+      },
+      {
+        "value": "singleChoice",
+        "text": "it is mutually exclusive, i.e. only one choice can be selected at a time"
+      }
+    ]
+  },
+  {
+    "id": "autoSelect",
+    "question": "What is the interaction model for selecting option?",
+    "answers": [
+      {
+        "value": "autoSelect",
+        "text": "Selection happens automatically when navigating with keyboard",
+        "toDo": "listbox can be autoselect !!!"
+      },
+      {
+        "value": "notAutoSelect",
+        "text": "Selection happens only when the user activates the control using keyboard or mouse"
+      }
+    ]
+  },
+
+  {
     "id": "visibilityInOnce",
     "question": "Can all available options be visible at once or is screen space limited?",
     "answers": [
       {
-        "value": "onScreen",
+        "value": "visibilityOnScreen",
         "text": "yes all options can be visible at once"
       },
       {
-        "value": "offScreen",
+        "value": "visibilityInMenu",
         "text": "there are too many options to fit withing the space available"
       }
     ]

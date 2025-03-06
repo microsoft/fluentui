@@ -1,0 +1,10 @@
+[
+  {
+    "id": "performsAction",
+    "components": ["Button", "SplitButton", "ToggleButton", "ToolbarToggleButton", "LinkButton"]
+  },
+  {
+    "id": "performsNavigation",
+    "components": ["Link"]
+  }
+]
