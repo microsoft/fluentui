@@ -1,7 +1,5 @@
-# Snapshot Comparison Report
+### Snapshot Comparison Report
 
-<!-- prettier-ignore-start -->
 | File | Status | Details |
 | ---- | ------ | ------- |
 <%- content %>
-<!-- prettier-ignore-end -->
