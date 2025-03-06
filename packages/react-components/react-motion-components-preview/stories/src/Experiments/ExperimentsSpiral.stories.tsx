@@ -179,10 +179,10 @@ const spiralPresenceFn: PresenceMotionFn<SpiralRuntimeParams> = ({
   // create the enter and exit atoms
   const enterAtoms: AtomMotion[] = [
     {
-      keyframes: keyframes,
+      keyframes,
       duration: enterDuration,
       easing: enterEasing,
-      fill: 'forwards',
+      fill: 'both',
     },
   ];
   if (animateOpacity) {
@@ -193,7 +193,7 @@ const spiralPresenceFn: PresenceMotionFn<SpiralRuntimeParams> = ({
       keyframes: [...keyframes].reverse(),
       duration: exitDuration,
       easing: exitEasing,
-      fill: 'forwards',
+      fill: 'both',
     },
   ];
   if (animateOpacity) {
@@ -219,7 +219,7 @@ const avatarItems = [
 
 // generalize avatarSpiral3 and avatarSpiral5 to accept a number of items
 // and a radius, and use the number of items to calculate the angles
-const avatarSpiral = ({
+const AvatarSpiral = ({
   numItems = 3,
   visible,
   duration,
@@ -247,13 +247,14 @@ const avatarSpiral = ({
           <Spiral
             key={i}
             visible={visible}
+            appear
             angle={i * angleIncrement}
             inRadius={inRadius}
             enterDuration={duration}
             onMotionFinish={() => autoplay && setVisible(v => !v)}
           >
             <div className={classes.itemWrapper}>
-              <Avatar name={name} badge={{ status: status as any }} />
+              <Avatar key={name} name={name} badge={{ status: status as any }} />
             </div>
           </Spiral>
         );
@@ -268,12 +269,16 @@ export const ExperimentsSpiral = () => {
   const [autoplay, setAutoplay] = React.useState<boolean>(false);
   const [radius, setRadius] = React.useState<number>(50);
   const [duration, setDuration] = React.useState<number>(500);
+  const [quantity, setQuantity] = React.useState<number>(5);
   const radiusSliderId = useId();
   const durationSliderId = useId();
+  const quantitySliderId = useId();
   const radiusMin = 30;
   const radiusMax = 70;
   const durationMin = 50;
   const durationMax = 1000;
+  const quantityMin = 3;
+  const quantityMax = 8;
 
   return (
     <div className={classes.container}>
@@ -282,20 +287,27 @@ export const ExperimentsSpiral = () => {
           <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
         </Field>
 
-        {/* <Field className={classes.field}>
-          <Switch
-            label="Autoplay"
-            checked={autoplay}
-            onChange={() => {
-              if (!autoplay) {
-                setVisible(!visible);
-              }
-              return setAutoplay(v => !v);
+        <Label weight="semibold" htmlFor={quantitySliderId}>
+          quantity: {quantity}
+        </Label>
+        <div className={classes.sliderWrapper}>
+          <Label aria-hidden>{quantityMin}</Label>
+          <Slider
+            min={quantityMin}
+            max={quantityMax}
+            defaultValue={5}
+            // step={1}
+            id={quantitySliderId}
+            onChange={(_, data) => {
+              setQuantity(data.value);
             }}
           />
-        </Field> */}
+          <Label aria-hidden>{quantityMax}</Label>
+        </div>
 
-        <Label htmlFor={durationSliderId}>duration: {duration}</Label>
+        <Label weight="semibold" htmlFor={durationSliderId}>
+          duration: {duration}
+        </Label>
         <div className={classes.sliderWrapper}>
           <Label aria-hidden>{durationMin}</Label>
           <Slider
@@ -310,7 +322,9 @@ export const ExperimentsSpiral = () => {
           <Label aria-hidden>{durationMax}</Label>
         </div>
 
-        <Label htmlFor={radiusSliderId}>radius: {radius}</Label>
+        <Label weight="semibold" htmlFor={radiusSliderId}>
+          radius: {radius}
+        </Label>
         <div className={classes.sliderWrapper}>
           <Label aria-hidden>{radiusMin}</Label>
           <Slider
@@ -327,15 +341,17 @@ export const ExperimentsSpiral = () => {
       </div>
 
       <div className={classes.card}>
-        {avatarSpiral({
-          numItems: 5,
-          visible,
-          inRadius: radius,
-          duration,
-          autoplay,
-          setVisible,
-          classes,
-        })}
+        <AvatarSpiral
+          {...{
+            numItems: quantity,
+            visible,
+            inRadius: radius,
+            duration,
+            autoplay,
+            setVisible,
+            classes,
+          }}
+        />
       </div>
     </div>
   );
