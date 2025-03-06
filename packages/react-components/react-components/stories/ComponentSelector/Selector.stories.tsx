@@ -34,6 +34,7 @@ import {
   Link12Regular,
   Link20Regular,
   Link16Regular,
+  ArrowRightRegular,
 } from '@fluentui/react-icons';
 
 import { removeFromArray, getComponentStoryUrl, getAllQuestions } from './utils';
@@ -93,7 +94,7 @@ const useStyles = makeStyles({
   },
   footerWrapper: {
     display: 'flex',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     position: 'sticky',
     bottom: '0',
     width: '100%',
@@ -151,6 +152,7 @@ const useStyles = makeStyles({
   jumpToCategoryHeader: {
     alignSelf: 'flex-start',
     paddingLeft: '10px',
+    fontSize: 'medium',
   },
   jumpToCategoryButtons: {
     display: 'flex',
@@ -159,6 +161,7 @@ const useStyles = makeStyles({
   },
   jumpToCategoryTags: {
     overflowX: 'hidden',
+    width: '800px',
   },
   jumpToCategoryTag: {
     cursor: 'pointer',
@@ -173,6 +176,7 @@ const useStyles = makeStyles({
   },
   clearSelection: {
     flexShrink: 0,
+    marginLeft: '10px',
   },
   moreButton: {
     color: 'white',
@@ -184,6 +188,10 @@ const useStyles = makeStyles({
   fillOutSection: {
     display: 'flex',
     justifyContent: 'end',
+  },
+  headerHeadingAndInput: {
+    display: 'flex',
+    justifyContent: 'space-between',
   },
 });
 
@@ -456,41 +464,45 @@ export const Selector = () => {
   return (
     <div className={classes.componentWrapper}>
       <div id="#header" className={classes.headerWrapper}>
-        <Input
-          contentBefore={<SearchRegular />}
-          size="small"
-          placeholder="Filter"
-          aria-label="Filter"
-          value={filterText}
-          onChange={onFilterChange}
-          className={classes.searchComponentInput}
-        />
-        {categorizedComponents.length && <h4 className={classes.jumpToCategoryHeader}>Jump to category</h4>}
-        {mode === 'byComponents' && (
-          <div className={classes.jumpToCategoryButtons}>
-            <TagGroup aria-label="Jump to questions" className={classes.jumpToCategoryTags}>
-              {categorizedComponents.map((category, index) => (
-                <>
-                  {category.cards && category.cards.length > 0 && (
-                    <Tag
-                      className={classes.jumpToCategoryTag}
-                      appearance="brand"
-                      shape="circular"
-                      key={category.id}
-                      value={category.title}
-                      onClick={() => onJumpToCategoryClick(index)}
-                    >
-                      {category.title}
-                    </Tag>
-                  )}
-                </>
-              ))}
-            </TagGroup>
-            <Button className={classes.moreButton} shape="circular">
-              More
-            </Button>
+        <div id="insideHeader">
+          <div id="firstBlock" className={classes.headerHeadingAndInput}>
+            {categorizedComponents.length && <h2 className={classes.jumpToCategoryHeader}>Jump to category</h2>}
+            <Input
+              contentBefore={<SearchRegular />}
+              size="small"
+              placeholder="Filter"
+              aria-label="Filter"
+              value={filterText}
+              onChange={onFilterChange}
+              className={classes.searchComponentInput}
+            />
           </div>
-        )}
+          {mode === 'byComponents' && (
+            <div className={classes.jumpToCategoryButtons}>
+              <TagGroup aria-label="Jump to questions" className={classes.jumpToCategoryTags}>
+                {categorizedComponents.map((category, index) => (
+                  <>
+                    {category.cards && category.cards.length > 0 && (
+                      <Tag
+                        className={classes.jumpToCategoryTag}
+                        appearance="brand"
+                        shape="circular"
+                        key={category.id}
+                        value={category.title}
+                        onClick={() => onJumpToCategoryClick(index)}
+                      >
+                        {category.title}
+                      </Tag>
+                    )}
+                  </>
+                ))}
+              </TagGroup>
+              <Button className={classes.moreButton} shape="circular">
+                More
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
       <div id="#body" className={classes.bodyWrapper}>
         {mode === 'byComponents' && (
@@ -558,33 +570,42 @@ export const Selector = () => {
 
       {selectedComponents.length > 0 && (
         <div id="#footer" className={classes.footerWrapper}>
-          <Button className={classes.clearSelection} shape="circular" onClick={onRemoveAllComponentsClick}>
-            Clear selection
-          </Button>
-          <TagGroup
-            onDismiss={onSelectedComponentDismiss}
-            aria-label="Selected components"
-            className={classes.selectedItemsContainer}
-          >
-            {selectedComponents.map(component => (
-              <Tag
-                className={classes.selectedItemTag}
-                key={component.name}
-                value={component.name}
+          <div id="selectionPart">
+            <Button className={classes.clearSelection} shape="circular" onClick={onRemoveAllComponentsClick}>
+              Clear selection
+            </Button>
+            <TagGroup
+              onDismiss={onSelectedComponentDismiss}
+              aria-label="Selected components"
+              className={classes.selectedItemsContainer}
+            >
+              {selectedComponents.map(component => (
+                <Tag
+                  className={classes.selectedItemTag}
+                  key={component.name}
+                  value={component.name}
+                  shape="circular"
+                  dismissible
+                  dismissIcon={{ 'aria-label': 'Remove' }}
+                >
+                  {component.displayName}
+                </Tag>
+              ))}
+            </TagGroup>
+          </div>
+          {allQuestions.length > 0 && (
+            <div className={classes.fillOutSection}>
+              <Button
                 shape="circular"
-                dismissible
-                dismissIcon={{ 'aria-label': 'Remove' }}
+                appearance="primary"
+                onClick={scrollToQuestionsSection}
+                icon={<ArrowRightRegular />}
+                iconPosition="after"
               >
-                {component.displayName}
-              </Tag>
-            ))}
-          </TagGroup>
-        </div>
-      )}
-      {allQuestions.length > 0 && (
-        <div className={classes.fillOutSection}>
-          <ArrowUpRegular />
-          <Link onClick={scrollToQuestionsSection}>Fill out the checklist below</Link>
+                Continue
+              </Button>
+            </div>
+          )}
         </div>
       )}
     </div>

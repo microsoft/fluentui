@@ -1,11 +1,19 @@
 [
   {
     "id": "performsAction",
-    "components": ["Button", "MenuButton", "ToggleButton", "SplitButton", "ToolbarToggleButton", "LinkButton"]
+    "components": [
+      "Button",
+      "MenuButton",
+      "ToggleButton",
+      "SplitButton",
+      "ToolbarToggleButton",
+      "LinkButton",
+      "ButtonBase"
+    ]
   },
   {
     "id": "performsNavigation",
-    "components": ["Link", "Link", "LinkButton"]
+    "components": ["Link", "Link", "LinkButton", "Link"]
   },
   {
     "id": "primaryActionPlusDropdown",
@@ -17,11 +25,11 @@
   },
   {
     "id": "toggle",
-    "components": ["Checkbox", "ToggleButton", "TreeSelection"]
+    "components": ["Checkbox", "ToggleButton", "TreeSelection", "MenuItemCheckbox"]
   },
   {
     "id": "notToggle",
-    "components": ["Link", "LinkButton"]
+    "components": ["Link", "LinkButton", "Link", "MenuButton", "SplitButton"]
   },
   {
     "id": "linkAsButton",
@@ -33,7 +41,7 @@
   },
   {
     "id": "multipleChoices",
-    "components": ["Checkbox", "MenuItemCheckbox"]
+    "components": ["Checkbox", "MenuItemCheckbox", "ToggleButton"]
   },
   {
     "id": "singleChoice",
@@ -41,11 +49,11 @@
   },
   {
     "id": "autoSelect",
-    "components": []
+    "components": ["MenuItemRadio", "RadioGroup", "Switch"]
   },
   {
     "id": "notAutoSelect",
-    "components": ["Checkbox"]
+    "components": ["Checkbox", "MenuItemCheckbox", "ToggleButton"]
   },
   {
     "id": "visibilityOnScreen",
@@ -53,11 +61,11 @@
   },
   {
     "id": "visibilityInMenu",
-    "components": []
+    "components": ["MenuItemCheckbox", "MenuItemRadio"]
   },
   {
     "id": "isInstantAction",
-    "components": []
+    "components": ["RadioGroup", "Switch"]
   },
   {
     "id": "isNotInstantAction",
@@ -82,7 +90,8 @@
       "TabList",
       "Tree",
       "TreeGrid",
-      "TreeSelection"
+      "TreeSelection",
+      "InfoLabel"
     ]
   },
   {
@@ -192,5 +201,90 @@
   {
     "id": "dialogNotRequireInteractionBeforeContinue",
     "components": []
+  },
+  {
+    "id": "expandable",
+    "components": ["Accordion"]
+  },
+  {
+    "id": "tabbable",
+    "components": ["Accordion"]
+  },
+  {
+    "id": "navigationByTabKey",
+    "components": ["ButtonBase", "Checkbox", "InfoLabel", "Link", "Accordion", "TableCellActions", "Tooltip"]
+  },
+  {
+    "id": "interactive",
+    "components": [
+      "ButtonBase",
+      "Checkbox",
+      "InfoLabel",
+      "Link",
+      "Accordion",
+      "ListSingleAction",
+      "MenuBase",
+      "TableCellActions",
+      "TableCellNavigation",
+      "TabList",
+      "Tooltip",
+      "TreeBase"
+    ]
+  },
+  {
+    "id": "singleAction",
+    "components": ["Button", "Link", "ToggleButton"]
+  },
+  {
+    "id": "notOnOrOff",
+    "components": ["Checkbox", "MenuItemCheckbox", "MenuItemRadio"]
+  },
+  {
+    "id": "onClick",
+    "components": ["InfoLabel"]
+  },
+  {
+    "id": "static",
+    "components": ["List", "Table", "Text"]
+  },
+  {
+    "id": "narratesPosition",
+    "components": ["ListBase", "MenuBase", "TableBase", "TabList", "TreeBase"]
+  },
+  {
+    "id": "singleColumn",
+    "components": ["ListBase"]
+  },
+  {
+    "id": "navigationByArrowKeys",
+    "components": ["ListSingleAction", "MenuBase", "TableCellNavigation", "TabList", "TreeBase"]
+  },
+  {
+    "id": "opensMenu",
+    "components": ["MenuButton"]
+  },
+  {
+    "id": "insideMenu",
+    "components": ["MenuBase"]
+  },
+  {
+    "id": "nested",
+    "components": ["MenuSubmenu"]
+  },
+  {
+    "id": "columnsAndRows",
+    "components": ["TableBase"]
+  },
+  {
+    "id": "textOrHeading",
+    "components": ["Text"]
+  },
+  {
+    "id": "onOrOff",
+    "components": ["ToggleButton"]
+  },
+  {
+    "id": "onHover",
+    "components": ["Tooltip"]
   }
 ]
